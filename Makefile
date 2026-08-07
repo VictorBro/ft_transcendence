@@ -61,7 +61,7 @@ DB_ENV := -e DATABASE_URL='$(DEFAULT_DATABASE_URL)'
 endif
 
 .PHONY: all run dev up build down logs ps shell test test-e2e lint format typecheck \
-        migrate seed studio reset-db ci clean certs tooling-image help
+        migrate seed studio reset-db ci clean certs tooling-image doctor help
 
 # --- the one command ---------------------------------------------------------
 
@@ -157,6 +157,9 @@ format: ## Rewrite every file with Prettier
 
 typecheck: ## tsc --noEmit across the workspace
 	pnpm run typecheck
+
+doctor: ## Check this machine can build, test and push: run it first on a new clone
+	./scripts/check-dev-env.sh
 
 ci: ## Everything the ci workflow runs, natively
 	./scripts/assert-ts-version.sh

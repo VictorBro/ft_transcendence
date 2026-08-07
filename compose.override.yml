@@ -119,6 +119,11 @@ services:
       # logs you out of GitHub. Narrow on purpose: the rest of ~/.config is
       # disposable.
       - gh-config:/home/node/.config/gh
+      # ssh config and known_hosts. VS Code forwards the agent, so no private
+      # key lives here; what does is the Host block pinning which forwarded
+      # identity github.com gets, which matters when the agent holds keys for
+      # more than one account. ssh requires mode 0700 on this directory.
+      - ssh-config:/home/node/.ssh
       # Playwright browser downloads (~/.cache/ms-playwright). Keeps `make all`
       # from re-downloading Chromium (~170 MB) after every container rebuild.
       - node-cache:/home/node/.cache
@@ -163,4 +168,5 @@ volumes:
   shell-history:
   vscode-extensions:
   gh-config:
+  ssh-config:
   node-cache:

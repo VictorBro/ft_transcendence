@@ -150,19 +150,23 @@ RUN echo 'node ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/node \
 # REQUIRED. Docker creates a missing mount target as root:root, and a named
 # volume seeds itself from whatever sits at that path in the image. If these
 # directories do not already exist owned by node, the volumes (claude-state,
-# shell-history, vscode-extensions, gh-config, node-cache) come up root-owned
-# and every write fails with EACCES.
+# shell-history, vscode-extensions, gh-config, ssh-config, node-cache) come up
+# root-owned and every write fails with EACCES.
 RUN mkdir -p \
         /home/node/.claude \
         /home/node/.cache/pnpm/store \
         /home/node/.config/gh \
+        /home/node/.ssh \
         /home/node/.vscode-server/extensions \
         /commandhistory \
         /pnpm \
         /workspace \
     && touch /commandhistory/.history \
     && printf 'store-dir=/home/node/.cache/pnpm/store\n' > /home/node/.npmrc \
-    && chown -R node:node /home/node /commandhistory /pnpm /workspace
+    && chown -R node:node /home/node /commandhistory /pnpm /workspace \
+    # ssh ignores its config and refuses agent identities if this is group or
+    # world readable. The volume inherits the mode from this directory.
+    && chmod 700 /home/node/.ssh
 
 # History for both shells, appended after every command rather than at exit: a
 # container that is torn down instead of logged out never gets to flush.
