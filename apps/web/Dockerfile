@@ -72,6 +72,14 @@ ENV NODE_ENV=production \
 RUN apt-get update \
     && apt-get install -y --no-install-recommends tini \
     && rm -rf /var/lib/apt/lists/*
+
+# The runtime is `node apps/web/server.js`; it never shells out to a package
+# manager. npm's own bundled dependencies are the only CVE findings this image
+# reports, and they cannot be fixed from pnpm-lock.yaml because they belong to
+# the base image. See the same block in apps/api/Dockerfile.
+RUN rm -rf /usr/local/lib/node_modules/npm /usr/local/lib/node_modules/corepack \
+    /usr/local/bin/npm /usr/local/bin/npx /usr/local/bin/corepack \
+    /usr/local/bin/yarn /usr/local/bin/yarnpkg
 WORKDIR /app
 
 # Standalone output mirrors the workspace layout below outputFileTracingRoot,

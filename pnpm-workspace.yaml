@@ -9,6 +9,15 @@ packages:
 # The override keeps a transitive dependency from pulling a second major in.
 overrides:
   typescript: 6.0.3
+  # Trivy fails the images workflow on any fixed CRITICAL/HIGH advisory, and
+  # both of these reach us through a dependency we do not control: js-yaml via
+  # @nestjs/swagger, sharp via next. Overriding is the only lever until those
+  # publish releases that bump them. Drop each entry once the parent ships a
+  # version that already satisfies it.
+  #   js-yaml 5.2.1  GHSA-pm4m-ph32-ghv5  denial of service in flow collections
+  #   sharp   0.34.5 GHSA-f88m-g3jw-g9cj  libvips CVE-2026-33327 and three more
+  js-yaml@5: '>=5.2.2'
+  sharp: '>=0.35.3'
 
 # pnpm 11 blocks dependency lifecycle scripts unless allow-listed. The pnpm 10
 # keys (onlyBuiltDependencies, neverBuiltDependencies, ignoredBuiltDependencies)

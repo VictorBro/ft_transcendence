@@ -70,6 +70,7 @@ From the GitHub releases API. Blog posts still show older majors; trust this tab
 | `docker/metadata-action` | v6.2.0 |
 | `docker/build-push-action` | v7.3.0 |
 | `aquasecurity/trivy-action` | v0.36.0 |
+| `github/codeql-action/upload-sarif` | v4.37.6 |
 | `gitleaks/gitleaks-action` | v3.0.0 |
 | `actions/upload-artifact` | v7.0.1 |
 | `actions/download-artifact` | v8.0.1 |
@@ -77,9 +78,18 @@ From the GitHub releases API. Blog posts still show older majors; trust this tab
 `upload-artifact` sharing the `v7.0.1` tag with `checkout` is a coincidence, not a copy-paste
 error. Both verified against the releases API.
 
-Trivy runs with `severity: CRITICAL,HIGH` and `ignore-unfixed: true`. Scanned with those exact
-flags, `node:24.18-bookworm-slim` reports **0** findings: the criticals an IDE scanner shows are
-all unfixed upstream, so there is nothing to action and the image job stays green.
+Trivy runs with `severity: CRITICAL,HIGH` and `ignore-unfixed: true`, and **reports rather than
+blocks**: an advisory published after a commit was written would otherwise turn a green PR red
+without the diff changing, and would stop the images being pushed at the same time. Results go
+to the repository Security tab.
+
+That claim of **0** findings held for OS packages only. Scanned on 2026-08-07 the same flags
+reported 8 npm-package findings, all of them from the npm bundled inside `node:24.18-bookworm-slim`
+(`tar`, `undici`, `ip-address`, `brace-expansion`). The prod stages of both Dockerfiles now delete
+npm, npx, corepack and yarn: the runtime is a bare `node dist/main.js`, so a package manager there
+is only attack surface, and the finding class disappears with it. Two further advisories were
+genuinely ours and are pinned through `overrides` in `pnpm-workspace.yaml`: `js-yaml` (via
+`@nestjs/swagger`) and `sharp` (via `next`).
 
 AI provider SDK: not pinned, provider undecided (plan §6).
 

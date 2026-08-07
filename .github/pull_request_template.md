@@ -8,7 +8,8 @@ Closes #
 # How to verify
 
 <!-- The commands a reviewer runs to see it work. Be specific: a route, a make
-     target, a test file. "Run the app" is not verification. -->
+     target, a test file. "Run the app" is not verification.
+     `make doctor` first if this is your first checkout of the branch. -->
 
 ```
 make dev
@@ -17,12 +18,12 @@ make dev
 
 # Checklist
 
+- [ ] `make all` is green locally. It runs every check CI runs, then the production stack, then Playwright against it, so green here means green there.
 - [ ] Commits follow Conventional Commits (`feat(api): ...`), so commitlint passes.
-- [ ] `make ci` is green locally.
 - [ ] New or changed behaviour has a test; coverage stays at or above 60% lines and functions.
 - [ ] No secret, key or token in the diff. New configuration is documented in `.env.example` and read through `compose.yml`.
 - [ ] Versions added or changed are pinned exactly and recorded in `docs/VERSIONS.md`.
-- [ ] Browser console is clean on every page this touches, in a production build.
+- [ ] A new dependency brings no CRITICAL or HIGH advisory. The `images` workflow scans and reports; a finding in a package we do not own is pinned through `overrides` in `pnpm-workspace.yaml`.
 - [ ] Schema changes ship with the generated migration; a pgvector column is hand-written SQL and stays out of `schema.prisma` (`docs/VERSIONS.md` trap 2).
 
 # Screenshots

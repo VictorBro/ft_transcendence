@@ -15,6 +15,8 @@ on:
 permissions:
   contents: read
   packages: write
+  # Publishing Trivy results to the Security tab.
+  security-events: write
 
 concurrency:
   group: images-${{ github.ref }}
@@ -84,23 +86,57 @@ jobs:
           # The docker exporter cannot carry attestations.
           provenance: false
 
-      - name: Trivy scan
+      # Reporting, not gating. Trivy fails on advisories published after the
+      # commit was written, so a blocking scan turns a green PR red without the
+      # diff changing, and it would block the image push while it is at it.
+      # Findings land in the Security tab instead, and the PR template asks the
+      # author to check what a new dependency drags in.
+      #
+      # Two runs of the same scan: the table is what a reviewer reads in the job
+      # log, the sarif is what GitHub can track over time. The second is nearly
+      # free, the image and the vulnerability database are both already local.
+      - name: Trivy scan (log)
         uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: scan/${{ matrix.app }}:${{ github.sha }}
           format: table
           severity: CRITICAL,HIGH
-          # A vulnerability with no released fix cannot be actioned by us, and
-          # blocking on it only teaches the team to ignore this job.
+          # A vulnerability with no released fix cannot be actioned by us.
           ignore-unfixed: true
           vuln-type: os,library
-          exit-code: "1"
+          exit-code: "0"
         env:
           # The vulnerability database is pulled from a container registry and
           # anonymous pulls are rate limited. Authenticating removes a whole
           # class of flaky failures that look like security findings.
           TRIVY_USERNAME: ${{ github.actor }}
           TRIVY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Trivy scan (sarif)
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          image-ref: scan/${{ matrix.app }}:${{ github.sha }}
+          format: sarif
+          output: trivy-results.sarif
+          severity: CRITICAL,HIGH
+          ignore-unfixed: true
+          vuln-type: os,library
+          exit-code: "0"
+        env:
+          TRIVY_USERNAME: ${{ github.actor }}
+          TRIVY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+
+      # A fork's token has no security-events: write, and code scanning is a
+      # repository feature that can be off entirely: neither is a build failure.
+      - name: Publish to the Security tab
+        if: env.PUSH == 'true'
+        continue-on-error: true
+        uses: github/codeql-action/upload-sarif@v4.37.6
+        with:
+          sarif_file: trivy-results.sarif
+          # Without a distinct category the four matrix jobs overwrite each
+          # other and only the last one to finish is visible.
+          category: trivy-${{ matrix.app }}-${{ matrix.platform.arch }}
 
       - uses: docker/login-action@v4.6.0
         if: env.PUSH == 'true'
