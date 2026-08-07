@@ -1,0 +1,31 @@
+name: Setup Node and pnpm
+description: Installs pnpm and Node, restores the lockfile-keyed pnpm store cache, and installs dependencies.
+
+inputs:
+  install:
+    description: Run pnpm install --frozen-lockfile. Set to "false" for jobs that only need the toolchain.
+    required: false
+    default: "true"
+
+runs:
+  using: composite
+  steps:
+    # pnpm has to exist before setup-node: `cache: pnpm` shells out to
+    # `pnpm store path` to find the directory it should cache.
+    #
+    # No `version:` input. pnpm/action-setup reads packageManager from the root
+    # package.json, and passing a second source of truth here is how the two
+    # drift apart.
+    - uses: pnpm/action-setup@v6.0.9
+
+    - uses: actions/setup-node@v7.0.0
+      with:
+        node-version-file: .nvmrc
+        cache: pnpm
+        cache-dependency-path: pnpm-lock.yaml
+
+    # --frozen-lockfile, always. A CI run that is allowed to update the lockfile
+    # is testing a dependency tree that does not exist on anyone's machine.
+    - if: inputs.install == 'true'
+      shell: bash
+      run: pnpm install --frozen-lockfile

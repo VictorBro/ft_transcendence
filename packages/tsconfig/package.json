@@ -1,0 +1,13 @@
+{
+  "name": "@ft/tsconfig",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "files": ["base.json", "library.json", "nest.json", "nextjs.json"],
+  "exports": {
+    "./base.json": "./base.json",
+    "./library.json": "./library.json",
+    "./nest.json": "./nest.json",
+    "./nextjs.json": "./nextjs.json"
+  }
+}

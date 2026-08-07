@@ -1,0 +1,38 @@
+# Patterns are relative to the REPO ROOT: that is the build context (see Dockerfile).
+#
+# BuildKit prefers <dockerfile>.dockerignore over <context>/.dockerignore, which
+# makes THIS the file it reads when the context is the repo root. Keep it identical
+# to the sibling .dockerignore.
+
+.git
+.github
+.devcontainer
+.vscode
+docs
+infra
+certs
+
+**/node_modules
+**/.pnpm-store
+**/dist
+**/build
+**/generated
+**/.next
+**/out
+**/coverage
+**/.turbo
+**/playwright-report
+**/test-results
+**/*.tsbuildinfo
+
+**/.env
+**/.env.*
+**/*.log
+
+**/Dockerfile
+**/Dockerfile.dockerignore
+**/.dockerignore
+compose*.yml
+Makefile
+**/*.md
+**/.DS_Store

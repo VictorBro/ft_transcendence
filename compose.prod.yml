@@ -1,0 +1,41 @@
+# Production overlay: the artifacts an evaluator runs, and the same ones the
+# console gate and Playwright test in CI.
+#
+#   docker compose -f compose.yml -f compose.prod.yml up -d --build
+#
+# The -f list is explicit on purpose. Naming any -f suppresses the automatic
+# load of compose.override.yml, which is what keeps the dev bind mounts out.
+#
+# There are no volumes here beyond the ones compose.yml already declares: the
+# prod images carry their own build output and run as a non-root user.
+
+services:
+  caddy:
+    restart: unless-stopped
+    # The prod images declare a HEALTHCHECK, so the proxy can wait for a real
+    # ready signal instead of "the process started".
+    depends_on:
+      web:
+        condition: service_healthy
+      api:
+        condition: service_healthy
+
+  web:
+    build:
+      target: prod
+    environment:
+      NODE_ENV: production
+    restart: unless-stopped
+
+  api:
+    build:
+      target: prod
+    environment:
+      NODE_ENV: production
+    restart: unless-stopped
+
+  db:
+    restart: unless-stopped
+
+  redis:
+    restart: unless-stopped

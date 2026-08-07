@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@ft/tsconfig/base.json",
+  // DOM is in `lib` even though nothing here runs in a page: Playwright's own
+  // types reference DOM interfaces (Locator returns ElementHandle<HTMLElement>),
+  // so a DOM-free lib fails typecheck inside node_modules.
+  "compilerOptions": {
+    "lib": ["ES2023", "DOM"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "isolatedModules": true,
+    "types": ["node"],
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules", "playwright-report", "test-results"],
+}

@@ -22,3 +22,25 @@ lerna-debug.log*
 # temp directory
 .temp
 .tmp
+
+# Monorepo build output (nested, the entries above only match the repo root)
+node_modules/
+dist/
+build/
+.next
+out
+*.tsbuildinfo
+
+# Task + test caches and reports
+.turbo
+coverage
+playwright-report
+test-results
+.pnpm-store
+
+# Local-only overrides and generated TLS material
+*.local
+certs
+
+# OS
+.DS_Store

@@ -1,0 +1,15 @@
+# Line-ending law for a mixed-OS team. Every text file is stored AND checked
+# out with LF, overriding any local core.autocrlf (git on Windows defaults it
+# to true). Without this, a Windows-side clone rewrites the shell scripts to
+# CRLF and they die in the containers with "/bin/sh^M: bad interpreter".
+* text=auto eol=lf
+
+# Auto-detection already treats these as binary; being explicit costs nothing
+# and protects against a misdetected edge case.
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
+*.woff binary
+*.woff2 binary

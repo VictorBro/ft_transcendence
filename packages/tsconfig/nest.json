@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "@ft nest",
+  "extends": "./base.json",
+  // moduleResolution is left implicit (derived from module: commonjs) to match the
+  // NestJS scaffold. Workspace packages consumed by the API therefore need main +
+  // types fields, not an exports map alone.
+  "compilerOptions": {
+    "target": "ES2023",
+    "module": "commonjs",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "declaration": true,
+    "removeComments": true,
+    "incremental": true,
+    "strictBindCallApply": true,
+    "noFallthroughCasesInSwitch": true,
+  },
+}

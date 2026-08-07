@@ -1,0 +1,23 @@
+@import 'tailwindcss';
+
+/* Tailwind 4 is CSS-first: there is no tailwind.config.js. Source detection is
+   declared explicitly so class scanning does not depend on the working
+   directory the build happens to run from inside the container. */
+@source '../app';
+@source '../components';
+
+@layer base {
+  :root {
+    /* Lets the browser paint form controls and scrollbars for the active
+       scheme, which is what keeps the `dark:` variants from looking half done. */
+    color-scheme: light dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    text-rendering: optimizeLegibility;
+  }
+}

@@ -1,0 +1,11 @@
+# Patterns are relative to the REPO ROOT: that is the build context.
+#
+# BuildKit prefers <dockerfile>.dockerignore over <context>/.dockerignore, so
+# this is the file it reads for the workspace image.
+#
+# The image copies two shell rc files and nothing else, so the context is cut
+# down to just this directory. Everything the developer works on arrives at
+# runtime through the bind mount, never through the build.
+
+*
+!.devcontainer

@@ -1,0 +1,42 @@
+{
+  "name": "@ft/ui",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "description": "@ft design system seed: source-only React components styled with Tailwind utilities.",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": ["src"],
+  "sideEffects": false,
+  "scripts": {
+    "lint": "eslint .",
+    "format:check": "prettier --check . --ignore-path ../../.prettierignore",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "test:cov": "vitest run --coverage"
+  },
+  "peerDependencies": {
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@ft/eslint-config": "workspace:*",
+    "@ft/tsconfig": "workspace:*",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@vitest/coverage-v8": "4.1.10",
+    "eslint": "10.8.0",
+    "prettier": "3.9.6",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "typescript": "6.0.3",
+    "vitest": "4.1.10"
+  }
+}

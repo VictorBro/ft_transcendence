@@ -1,0 +1,64 @@
+# CODEOWNERS routes review requests. Combined with the branch ruleset on main
+# (no direct pushes, one approving review, approvals dismissed on new commits),
+# it is what makes "reviewed by a teammate" a mechanism rather than a habit.
+#
+# NOTE: this file is listed in .prettierignore. VS Code detects it as Markdown,
+# and Prettier then rewrites the catch-all `*` below into a Markdown bullet
+# (`-`), which silently destroys the rule: `- @user` is a pattern matching a
+# file named "-". The Prettier CLI skips the file for lack of a parser, so
+# format:check reports success either way and CI cannot catch it. Do not remove
+# the ignore entry.
+#
+# Two separate effects, and only the first is on by default:
+#   1. routing    GitHub auto-requests review from the owner of every path a PR
+#                 touches. Works as soon as the handles are valid.
+#   2. gating     with "Require review from Code Owners" enabled in the ruleset,
+#                 the PR cannot merge until an OWNER approves, not just anyone.
+#
+# Rules:
+#   - later matches win, so the catch-all comes first;
+#   - an owner must be a repository COLLABORATOR WITH WRITE ACCESS or the entry
+#     is silently ignored, which reads as "protected" while requesting review
+#     from nobody. A pending, unaccepted invitation does not count;
+#   - directories need a trailing slash to match their contents;
+#   - after any edit, `gh api repos/VictorBro/ft_transcendence/codeowners/errors`
+#     reports every owner GitHub could not resolve. It does NOT validate
+#     patterns, so it would not notice the Markdown corruption described above.
+
+# --- default -----------------------------------------------------------------
+# The whole team owns everything. Deliberately flat: in the early phase all five
+# of us touch every area, so per-directory ownership would mostly add waiting
+# time without improving review quality. Split it the day PRs start going to the
+# wrong person.
+*   @VictorBro @avarrett @baschni @luca-mattei @VYAntares
+
+# --- narrow once roles are assigned ------------------------------------------
+# The subject requires documented team roles (PO, Scrum Master, Tech Lead,
+# Developers). When they are decided, give the paths below named owners: a
+# one-line change under any of them can turn every gate green without fixing
+# anything, by deleting a workflow step, relaxing a coverage threshold or
+# adding a console-gate allowlist entry. Those edits should not merge on a
+# distracted approval from someone reviewing a UI change.
+#
+# List at least TWO owners per path. With "Require review from Code Owners"
+# enabled, an author cannot approve their own PR, so a sole owner makes their
+# own infrastructure changes unmergeable.
+#
+# /.github/             @owner-a @owner-b
+# /scripts/             @owner-a @owner-b
+# /e2e/                 @owner-a @owner-b
+# /infra/               @owner-a @owner-b
+# /.devcontainer/       @owner-a @owner-b
+# /Makefile             @owner-a @owner-b
+# /compose.yml          @owner-a @owner-b
+# /compose.override.yml @owner-a @owner-b
+# /compose.prod.yml     @owner-a @owner-b
+# /apps/api/Dockerfile  @owner-a @owner-b
+# /apps/web/Dockerfile  @owner-a @owner-b
+#
+# docs/VERSIONS.md is load-bearing: traps 1 and 2 are enforced by CI against it,
+# and the pnpm files decide what every package resolves to. Whole-team review,
+# so a bump is a decision rather than a drive-by.
+# /docs/VERSIONS.md     @VictorBro @avarrett @baschni @luca-mattei @VYAntares
+# /pnpm-lock.yaml       @owner-a @owner-b
+# /pnpm-workspace.yaml  @owner-a @owner-b

@@ -1,0 +1,13 @@
+-- The pgvector extension is created here and nowhere else.
+--
+-- docs/VERSIONS.md trap 2: on Prisma 7, a column typed Unsupported("vector")
+-- makes `prisma migrate diff` report drift on every run (prisma/prisma#28867),
+-- and CI fails on drift. So schema.prisma declares scalar columns only, the
+-- extension is installed by this script, and the vector column plus its HNSW
+-- index arrive later in a hand-edited `migrate dev --create-only` migration.
+--
+-- Postgres runs /docker-entrypoint-initdb.d ONLY when the data directory is
+-- empty, against POSTGRES_DB. Editing this file has no effect on a database
+-- that already exists: drop the volume (`make reset-db`) or run the statement
+-- by hand. IF NOT EXISTS keeps both paths idempotent.
+CREATE EXTENSION IF NOT EXISTS vector;

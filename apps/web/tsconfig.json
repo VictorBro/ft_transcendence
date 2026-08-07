@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@ft/tsconfig/nextjs.json",
+  "compilerOptions": {
+    // No baseUrl: TypeScript 6 deprecates it, and with moduleResolution
+    // "bundler" these paths already resolve against this file.
+    "paths": {
+      "@/*": ["./*"],
+    },
+  },
+  // .next is not excluded on purpose: TypeScript skips dot-directories when
+  // expanding **, and the typed-route declarations Next writes there have to
+  // stay reachable through the explicit pattern.
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.mts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"],
+}

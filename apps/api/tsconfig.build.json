@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    // TypeScript 6 no longer infers rootDir from the common source directory
+    // (TS5011). It must be explicit, and it is what keeps the output at
+    // dist/main.js instead of dist/src/main.js.
+    "rootDir": "./src",
+    "tsBuildInfoFile": "./dist/tsconfig.build.tsbuildinfo",
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "dist", "coverage", "generated", "test", "**/*.spec.ts"],
+}

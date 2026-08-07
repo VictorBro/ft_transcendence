@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "@ft library",
+  "extends": "./base.json",
+  // CommonJS output so the NestJS runtime can require the package directly while
+  // the Next bundler still consumes it. Add jsx + DOM lib in the package itself if
+  // it ships components.
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "declarationMap": true,
+    "isolatedModules": true,
+    "incremental": true,
+  },
+}

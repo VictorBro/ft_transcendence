@@ -1,0 +1,157 @@
+// Devcontainer for ft_transcendence.
+//
+// This attaches to the `workspace` service, a plain shell container on the same
+// compose network as the app. Editing happens here; web and api still run as
+// their own services with their own dev images, exactly as `make dev` starts
+// them. Nothing about the app depends on VS Code being open.
+//
+// Spec: https://containers.dev/implementors/json_reference/
+{
+  "name": "ft_transcendence",
+
+  // Both files, in this order, so compose merges the dev overlay the same way a
+  // bare `docker compose up` does. compose.override.yml is where the workspace
+  // service, its named volumes and its env live.
+  "dockerComposeFile": ["../compose.yml", "../compose.override.yml"],
+  "service": "workspace",
+  "workspaceFolder": "/workspace",
+
+  // The workspace service sits behind `profiles: [devcontainer]`, so plain
+  // `docker compose up` skips it while naming it here activates the profile.
+  //
+  // Only the backing stores come up with it. Postgres and Redis are needed the
+  // moment you run a migration or a test, whereas web, api and caddy are
+  // started on demand with `make dev` and would otherwise sit there rebuilding
+  // on every file save whether or not anyone is looking at them.
+  "runServices": ["workspace", "db", "redis"],
+
+  // Deliberate, and the opposite of the default. `stopCompose` would stop the
+  // whole stack whenever the VS Code window closes, taking Postgres and Redis
+  // with it and killing anything running under `make dev` in another terminal.
+  // The cost of "none" is that the containers keep running after you close the
+  // editor; `make down` stops them.
+  "shutdownAction": "none",
+
+  // The compose service already sets `command: sleep infinity` with init: true.
+  // Overriding it would replace that PID 1 with the tool's own keepalive.
+  "overrideCommand": false,
+
+  // uid/gid 1000 in the image, which matches the first user account on a Linux
+  // host, so files written here are owned correctly on the host side too. When
+  // they differ, VS Code remaps the container uid automatically before attach.
+  "remoteUser": "node",
+
+  // 42 school machines: if that automatic uid remap fails there (no sudo on
+  // the host, restrictive setups), uncomment this to skip it and fix file
+  // ownership from a container shell instead; `node` has passwordless sudo
+  // inside, so the host restriction does not follow you in.
+  // "updateRemoteUserUID": false,
+
+  // The one sanctioned install. It runs on the developer's machine after the
+  // container exists, not during an image build, so it never races the
+  // lockfile in CI.
+  "postCreateCommand": "pnpm install",
+
+  // Compose resolves relative bind-mount paths on the docker DAEMON's side,
+  // i.e. against the HOST filesystem. Shells inside this container therefore
+  // need the host path of the repo for `make dev` / `docker compose` to mount
+  // the right directories; the compose files consume it as
+  // ${LOCAL_WORKSPACE_FOLDER:-.}. On the host the variable is unset and the
+  // "." fallback keeps behaving exactly as before.
+  "remoteEnv": {
+    "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
+  },
+
+  // No "features" block on purpose. Everything a feature would add (docker CLI,
+  // gh, zsh, sudo) is in .devcontainer/Dockerfile instead, where the version is
+  // visible and the layer is cached with the rest of the image.
+
+  // No "forwardPorts" either. caddy publishes 80, 443 and 443/udp straight to
+  // the host, so the app is reachable at https://localhost with the container
+  // ports never entering the picture.
+
+  // NOTE for whoever owns compose.override.yml: the image carries the docker
+  // CLI, buildx and compose plugins so `make` and `docker compose` work from
+  // inside this shell, but a compose-based devcontainer takes its mounts from
+  // the compose file, not from here. The workspace service therefore mounts
+  //     - /var/run/docker.sock:/var/run/docker-host.sock
+  // and its command runs .devcontainer/docker-init.sh, which bridges that
+  // socket to a node-owned /var/run/docker.sock via socat — the same mechanism
+  // as the official docker-outside-of-docker feature — so plain `docker ps`
+  // works here without sudo.
+
+  "customizations": {
+    "vscode": {
+      // Reinstalled automatically on every container rebuild. An extension
+      // installed by hand instead lands in ~/.vscode-server/extensions, which
+      // is why that path is also a named volume (compose.override.yml): what
+      // this list does not cover survives rebuilds through the volume.
+      "extensions": [
+        "anthropic.claude-code",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "Prisma.prisma",
+        "ms-azuretools.vscode-docker",
+        "bradlc.vscode-tailwindcss",
+        "ms-playwright.playwright",
+        "EditorConfig.EditorConfig",
+        "eamodio.gitlens"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        // ESLint fixes on save, Prettier formats on save. The two do not fight:
+        // eslint-config-prettier is applied last in @ft/eslint-config, so no
+        // lint rule has an opinion about layout.
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "explicit"
+        },
+
+        // ESLint 10 is flat-config only, and each package ships its own
+        // eslint.config.*. "auto" resolves the config relative to the file
+        // being linted instead of the repo root.
+        "eslint.useFlatConfig": true,
+        "eslint.workingDirectories": [{ "mode": "auto" }],
+
+        // Use the workspace TypeScript (6.0.3, pinned) rather than whatever
+        // version VS Code happens to bundle, which is what tsc and eslint see.
+        "js/ts.tsdk.path": "node_modules/typescript/lib",
+        "js/ts.tsdk.promptToUseWorkspaceVersion": true,
+
+        // Tailwind v4 has no tailwind.config.js: the config is the CSS entry
+        // point. The extension cannot guess that from a monorepo root.
+        "tailwindCSS.experimental.configFile": "apps/web/app/globals.css",
+
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "files.eol": "\n",
+
+        // Without this VS Code guesses Markdown for the extensionless
+        // CODEOWNERS, and format-on-save then rewrites its `*` catch-all into
+        // a Markdown bullet. .prettierignore already blocks the formatter; this
+        // also gives the file sane `#` comment highlighting. The ignore syntax
+        // is the closest built-in match for its glob-and-comment format.
+        "files.associations": {
+          "CODEOWNERS": "ignore"
+        },
+
+        // The repo is a bind mount. Watching build output burns inotify
+        // handles and produces nothing useful.
+        "files.watcherExclude": {
+          "**/.next/**": true,
+          "**/.turbo/**": true,
+          "**/coverage/**": true,
+          "**/dist/**": true,
+          "**/node_modules/**": true
+        },
+        "search.exclude": {
+          "**/.next": true,
+          "**/.turbo": true,
+          "**/coverage": true,
+          "**/dist": true,
+          "**/node_modules": true,
+          "**/pnpm-lock.yaml": true
+        }
+      }
+    }
+  }
+}
