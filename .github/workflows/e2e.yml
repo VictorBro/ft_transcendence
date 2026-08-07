@@ -9,15 +9,17 @@ name: e2e
 #                 every route, including client-side navigation.
 #   legal pages   e2e/tests/legal.spec.ts    /privacy and /terms answer 200 and
 #                 render real content, measured against a character floor.
+# See ci.yml: once per PR, once when the squash merge lands on main.
 on:
   push:
+    branches: [main]
   pull_request:
 
 permissions:
   contents: read
 
 concurrency:
-  group: e2e-${{ github.event_name }}-${{ github.ref }}
+  group: e2e-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:

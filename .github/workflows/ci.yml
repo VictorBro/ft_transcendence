@@ -4,18 +4,21 @@ name: ci
 # natively on the runner, because they are fast and their environment does not
 # affect the result. Anything that EXECUTES project code runs inside the `ci`
 # Docker stage, so a test passes here for the same reason it passes in prod.
+# Once per PR, against the simulated merge with main, and once more when the
+# squash merge lands. An unfiltered `push:` would fire a second, near-identical
+# run on every PR commit, because a push to a PR branch is also a synchronize.
 on:
   push:
+    branches: [main]
   pull_request:
 
 permissions:
   contents: read
 
-# event_name is part of the group on purpose: a push to a PR branch fires both
-# triggers, and without it the two runs would cancel each other and leave a
-# required check reporting "cancelled" forever.
+# PR runs use refs/pull/N/merge and main uses refs/heads/main, so the two never
+# share a group; a new commit only cancels the older run of its own PR.
 concurrency:
-  group: ci-${{ github.event_name }}-${{ github.ref }}
+  group: ci-${{ github.ref }}
   cancel-in-progress: true
 
 env:

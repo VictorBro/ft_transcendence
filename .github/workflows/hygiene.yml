@@ -4,15 +4,17 @@ name: hygiene
 # diff: a leaked credential, a commit message nobody can grade, an .env.example
 # that no longer matches what the stack reads, and a Prisma schema that has
 # drifted away from its migrations.
+# See ci.yml: once per PR, once when the squash merge lands on main.
 on:
   push:
+    branches: [main]
   pull_request:
 
 permissions:
   contents: read
 
 concurrency:
-  group: hygiene-${{ github.event_name }}-${{ github.ref }}
+  group: hygiene-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
