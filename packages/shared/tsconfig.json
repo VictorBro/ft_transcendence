@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@ft/tsconfig/library.json",
+  // The typecheck view: source plus tests. tsconfig.build.json narrows this to
+  // what ships. incremental is off here so the two configs cannot fight over one
+  // .tsbuildinfo file.
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "incremental": false,
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"],
+}

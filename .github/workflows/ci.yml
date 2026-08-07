@@ -1,0 +1,135 @@
+name: ci
+
+# Hybrid by design (TECHNICAL_PLAN.md section 5): checks that only read files run
+# natively on the runner, because they are fast and their environment does not
+# affect the result. Anything that EXECUTES project code runs inside the `ci`
+# Docker stage, so a test passes here for the same reason it passes in prod.
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+# event_name is part of the group on purpose: a push to a PR branch fires both
+# triggers, and without it the two runs would cancel each other and leave a
+# required check reporting "cancelled" forever.
+concurrency:
+  group: ci-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  DO_NOT_TRACK: "1"
+  NEXT_TELEMETRY_DISABLED: "1"
+  TURBO_TELEMETRY_DISABLED: "1"
+
+jobs:
+  # docs/VERSIONS.md trap 1. npm `latest` for typescript is 7.x, which has no
+  # decorator support (NestJS will not compile) and violates the
+  # typescript-eslint peer range (<6.1.0). One `pnpm up --latest` reintroduces
+  # it silently, so this is a first-class gate rather than a comment in a doc.
+  ts-version:
+    name: typescript is pinned at 6.0.3
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: ./.github/actions/setup
+      - run: ./scripts/assert-ts-version.sh
+
+  format:
+    name: format:check
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: ./.github/actions/setup
+      - run: pnpm run format:check
+
+  lint:
+    name: lint
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: ./.github/actions/setup
+      - run: pnpm run lint
+
+  typecheck:
+    name: typecheck
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: ./.github/actions/setup
+      - run: pnpm run typecheck
+
+  # Coverage thresholds live in each vitest config (60% lines, 60% functions)
+  # and are a merge blocker: the test command exits non-zero below them, so
+  # there is nothing to assert here.
+  unit-tests:
+    name: unit tests (${{ matrix.app }})
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # The image CMD also runs lint and typecheck. It is overridden here so
+          # those stay the responsibility of the native jobs above and are not
+          # paid for twice.
+          #
+          # TODO plan step 5: the api Supertest suite gains a database the day a
+          # PrismaService lands. Add a `services: postgres` block using
+          # pgvector/pgvector:0.8.6-pg18-trixie and pass DATABASE_URL through.
+          - app: api
+            command: pnpm --filter @ft/api run test:cov && pnpm --filter @ft/api run test:e2e
+          - app: web
+            command: pnpm --filter @ft/web run test:cov
+    steps:
+      - uses: actions/checkout@v7.0.1
+
+      - uses: docker/setup-buildx-action@v4.2.0
+
+      - name: Build the ci stage
+        uses: docker/build-push-action@v7.3.0
+        with:
+          context: .
+          file: apps/${{ matrix.app }}/Dockerfile
+          target: ci
+          load: true
+          tags: ft/${{ matrix.app }}:ci
+          cache-from: type=gha,scope=ci-${{ matrix.app }}
+          cache-to: type=gha,mode=max,scope=ci-${{ matrix.app }}
+
+      - name: Test with coverage
+        run: |
+          mkdir -p coverage
+          docker run --rm \
+            -v "$PWD/coverage:/coverage" \
+            ft/${{ matrix.app }}:ci \
+            sh -c "${{ matrix.command }} && cp -a /app/apps/${{ matrix.app }}/coverage/. /coverage/"
+
+      - name: Upload coverage
+        if: always()
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: coverage-${{ matrix.app }}
+          path: coverage
+          if-no-files-found: warn
+          retention-days: 7
+
+  # The Docker ci stages only cover the two apps. @ft/shared and @ft/ui have
+  # their own suites and thresholds, and they run natively: neither touches a
+  # runtime the container image would change.
+  package-tests:
+    name: package tests
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: ./.github/actions/setup
+      - run: pnpm exec turbo run test:cov --filter="./packages/*"
+
+  build:
+    name: build
+    needs: [ts-version, unit-tests]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: ./.github/actions/setup
+      - run: pnpm run build

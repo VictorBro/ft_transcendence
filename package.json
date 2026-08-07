@@ -1,0 +1,32 @@
+{
+  "name": "ft-transcendence",
+  "version": "0.0.0",
+  "private": true,
+  "description": "AI-driven foreign language learning platform (42 ft_transcendence)",
+  "license": "UNLICENSED",
+  "packageManager": "pnpm@11.18.0",
+  "engines": {
+    "node": ">=24.18.1 <25.0.0",
+    "pnpm": ">=11.18.0"
+  },
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "start": "turbo run start",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "test:cov": "turbo run test:cov",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "ci": "pnpm run format:check && turbo run lint typecheck test:cov build"
+  },
+  "devDependencies": {
+    "@ft/eslint-config": "workspace:*",
+    "@ft/tsconfig": "workspace:*",
+    "eslint": "10.8.0",
+    "prettier": "3.9.6",
+    "turbo": "2.10.8",
+    "typescript": "6.0.3"
+  }
+}

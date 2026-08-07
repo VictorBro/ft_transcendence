@@ -1,0 +1,211 @@
+name: images
+
+# Multi-arch container builds, published to GHCR.
+#
+# Trigger is `push` only. A pull request from this repository is a push to a
+# side branch of this repository, so adding `pull_request` would build and push
+# every commit twice.
+on:
+  push:
+    branches:
+      - "**"
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+  packages: write
+
+concurrency:
+  group: images-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  REGISTRY: ghcr.io
+  # A fork's GITHUB_TOKEN cannot write to the upstream package namespace. Build
+  # anyway, so a fork still finds out its Dockerfile is broken, but do not push.
+  PUSH: ${{ github.event.repository.fork == false }}
+
+jobs:
+  build:
+    name: build ${{ matrix.app }} (${{ matrix.platform.arch }})
+    runs-on: ${{ matrix.platform.runner }}
+    timeout-minutes: 45
+
+    # Native runners per architecture, not QEMU. Emulated arm64 Node builds take
+    # tens of minutes and occasionally miscompile native addons.
+    #
+    # ubuntu-24.04-arm is free and GA on public repositories. On a private repo
+    # it needs a paid plan, and the job will queue indefinitely without one.
+    strategy:
+      fail-fast: false
+      matrix:
+        app: [api, web]
+        platform:
+          - { arch: amd64, name: linux/amd64, runner: ubuntu-24.04 }
+          - { arch: arm64, name: linux/arm64, runner: ubuntu-24.04-arm }
+
+    steps:
+      - uses: actions/checkout@v7.0.1
+
+      # GHCR rejects any uppercase character in a repository path, and
+      # github.repository preserves the owner's capitalisation.
+      - name: Resolve the image name
+        id: image
+        run: echo "ref=${REGISTRY}/${GITHUB_REPOSITORY,,}/${{ matrix.app }}" >> "$GITHUB_OUTPUT"
+
+      - uses: docker/setup-buildx-action@v4.2.0
+
+      # Only the labels are used here. Tags are the merge job's business, but
+      # org.opencontainers.image.source has to be baked into each arch manifest:
+      # it is what makes GHCR link the package back to this repository, and a
+      # package with no source link is a package nobody can audit.
+      - uses: docker/metadata-action@v6.2.0
+        id: meta
+        with:
+          images: ${{ steps.image.outputs.ref }}
+          flavor: latest=false
+
+      # Built into the local daemon first so Trivy has a concrete image to read.
+      # The push build below is a full cache hit, so this is not a second build
+      # in any meaningful sense.
+      - name: Build the prod target for scanning
+        uses: docker/build-push-action@v7.3.0
+        with:
+          context: .
+          file: apps/${{ matrix.app }}/Dockerfile
+          target: prod
+          platforms: ${{ matrix.platform.name }}
+          load: true
+          tags: scan/${{ matrix.app }}:${{ github.sha }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha,scope=prod-${{ matrix.app }}-${{ matrix.platform.arch }}
+          cache-to: type=gha,mode=max,scope=prod-${{ matrix.app }}-${{ matrix.platform.arch }}
+          # The docker exporter cannot carry attestations.
+          provenance: false
+
+      - name: Trivy scan
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          image-ref: scan/${{ matrix.app }}:${{ github.sha }}
+          format: table
+          severity: CRITICAL,HIGH
+          # A vulnerability with no released fix cannot be actioned by us, and
+          # blocking on it only teaches the team to ignore this job.
+          ignore-unfixed: true
+          vuln-type: os,library
+          exit-code: "1"
+        env:
+          # The vulnerability database is pulled from a container registry and
+          # anonymous pulls are rate limited. Authenticating removes a whole
+          # class of flaky failures that look like security findings.
+          TRIVY_USERNAME: ${{ github.actor }}
+          TRIVY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: docker/login-action@v4.6.0
+        if: env.PUSH == 'true'
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Pushed by digest, with no tag. Tags belong to the manifest list that the
+      # merge job assembles: tagging here would leave the last arch to finish
+      # owning the tag, and half the fleet pulling the wrong architecture.
+      - name: Push by digest
+        id: push
+        if: env.PUSH == 'true'
+        uses: docker/build-push-action@v7.3.0
+        with:
+          context: .
+          file: apps/${{ matrix.app }}/Dockerfile
+          target: prod
+          platforms: ${{ matrix.platform.name }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha,scope=prod-${{ matrix.app }}-${{ matrix.platform.arch }}
+          outputs: type=image,name=${{ steps.image.outputs.ref }},push-by-digest=true,name-canonical=true,push=true
+
+      # The digest is passed to the merge job as an empty file named after it:
+      # artifacts move between jobs, job outputs from a matrix do not.
+      - name: Record the digest
+        if: env.PUSH == 'true'
+        run: |
+          mkdir -p "${{ runner.temp }}/digests"
+          digest="${{ steps.push.outputs.digest }}"
+          touch "${{ runner.temp }}/digests/${digest#sha256:}"
+
+      - name: Upload the digest
+        if: env.PUSH == 'true'
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: digests-${{ matrix.app }}-${{ matrix.platform.arch }}
+          path: ${{ runner.temp }}/digests/*
+          if-no-files-found: error
+          retention-days: 1
+
+  merge:
+    name: manifest ${{ matrix.app }}
+    needs: [build]
+    if: github.event.repository.fork == false
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        app: [api, web]
+
+    steps:
+      - uses: actions/checkout@v7.0.1
+
+      - name: Resolve the image name
+        id: image
+        run: echo "ref=${REGISTRY}/${GITHUB_REPOSITORY,,}/${{ matrix.app }}" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/download-artifact@v8.0.1
+        with:
+          path: ${{ runner.temp }}/digests
+          pattern: digests-${{ matrix.app }}-*
+          merge-multiple: true
+
+      - uses: docker/setup-buildx-action@v4.2.0
+
+      - uses: docker/login-action@v4.6.0
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # TECHNICAL_PLAN.md section 5:
+      #   side branch  -> <branch>-<shortsha>
+      #   main         -> main-<shortsha> and latest
+      #   tag vX.Y.Z   -> X.Y.Z, X.Y, X
+      # `type=ref,event=branch` covers the first two rows, because main is a
+      # branch like any other. `latest=false` in flavor stops the action adding
+      # its own latest on tag pushes, where it would race the main branch.
+      - uses: docker/metadata-action@v6.2.0
+        id: meta
+        with:
+          images: ${{ steps.image.outputs.ref }}
+          flavor: latest=false
+          tags: |
+            type=ref,event=branch,suffix=-{{sha}}
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+
+      - name: Create the manifest list
+        working-directory: ${{ runner.temp }}/digests
+        run: |
+          docker buildx imagetools create \
+            $(jq -cr '.tags | map("-t " + .) | join(" ")' <<< "$DOCKER_METADATA_OUTPUT_JSON") \
+            $(printf '${{ steps.image.outputs.ref }}@sha256:%s ' *)
+
+      - name: Inspect the published manifest
+        run: |
+          docker buildx imagetools inspect \
+            "${{ steps.image.outputs.ref }}:${{ steps.meta.outputs.version }}"
+
+# TODO: per-commit pushes accumulate. Add a scheduled prune of untagged versions
+# and of branch tags whose branch is gone, using actions/delete-package-versions
+# or the GHCR REST API. Not urgent while the package is small, and easier to get
+# right once the tag set has settled.

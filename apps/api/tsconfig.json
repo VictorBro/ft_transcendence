@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@ft/tsconfig/nest.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    // Its own build-info file: sharing one with tsconfig.build.json would mix a
+    // noEmit run's state into the emitting run's.
+    "tsBuildInfoFile": "./dist/tsconfig.tsbuildinfo",
+  },
+  // Tests are typechecked here and excluded from the build (tsconfig.build.json).
+  // `generated` is the Prisma client: emitted code, not ours to check.
+  "include": ["src/**/*.ts", "test/**/*.ts"],
+  "exclude": ["node_modules", "dist", "coverage", "generated"],
+}

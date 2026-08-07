@@ -1,0 +1,32 @@
+node_modules
+dist
+build
+out
+.next
+.turbo
+coverage
+playwright-report
+test-results
+pnpm-lock.yaml
+*.tsbuildinfo
+next-env.d.ts
+certs
+.pnpm-store
+CHANGELOG.md
+generated
+
+# Authored prose with hand-aligned tables. Prettier rewraps markdown tables and
+# would churn these on every run.
+docs
+
+# pnpm rewrites this file itself (it appends to minimumReleaseAgeExclude) using
+# single-quoted scalars, which the yaml override would then fight on every run.
+pnpm-workspace.yaml
+
+# Extensionless, so the Prettier CLI infers no parser and skips it, but VS Code
+# detects it as Markdown and the editor extension formats it on save. That
+# rewrites the catch-all `*` rule into a Markdown bullet `-`, which silently
+# turns "everyone owns everything" into "someone owns a file named -", with
+# format:check still green. The extension honours this file, so this entry is
+# what actually stops it.
+.github/CODEOWNERS

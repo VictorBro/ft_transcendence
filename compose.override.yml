@@ -1,0 +1,166 @@
+# Development overlay. Compose loads this automatically on top of compose.yml,
+# so `docker compose up` is the dev stack and nothing else has to be passed.
+#
+# The two things this file exists for:
+#   1. build the `dev` stage instead of the default last stage;
+#   2. bind-mount the repo for hot reload WITHOUT letting the host's
+#      node_modules reach the container.
+#
+# On (2): the bind mount at /app hides everything the image installed under it,
+# including node_modules built for linux by the image. Every node_modules path
+# is therefore re-masked with a named volume, which Docker seeds from the image
+# on first use. The volumes are per service, never shared: the two images run
+# `pnpm install --filter @ft/web...` and `--filter @ft/api...`, so their trees
+# are different and one would clobber the other.
+#
+# Stale volumes are the cost of this trick, so each service reinstalls on start.
+# With an unchanged lockfile pnpm exits in about a second; after a branch switch
+# it repairs the volume instead of failing with a missing module.
+#
+# confirm-modules-purge=false on those installs: on the FIRST boot the store
+# volume is empty, so pnpm decides the image-seeded node_modules must be purged
+# and rebuilt, and asks before doing it. A compose service has no TTY to answer
+# with and the container dies with ERR_PNPM_ABORTED_REMOVE_MODULES_DIR_NO_TTY
+# (the interactive cousin of VERSIONS.md trap 1ba). Purging is exactly what we
+# want, so answer yes by config.
+
+services:
+  web:
+    build:
+      target: dev
+    environment:
+      NODE_ENV: development
+    working_dir: /app
+    command: >
+      sh -c "pnpm install --frozen-lockfile --config.confirm-modules-purge=false --filter @ft/web... &&
+             pnpm --filter @ft/web run dev"
+    volumes:
+      # LOCAL_WORKSPACE_FOLDER: see the caddy service in compose.yml.
+      - ${LOCAL_WORKSPACE_FOLDER:-.}:/app
+      - web-node-modules-root:/app/node_modules
+      - web-node-modules-web:/app/apps/web/node_modules
+      - web-node-modules-api:/app/apps/api/node_modules
+      - web-node-modules-eslint-config:/app/packages/eslint-config/node_modules
+      - web-node-modules-shared:/app/packages/shared/node_modules
+      - web-node-modules-tsconfig:/app/packages/tsconfig/node_modules
+      - web-node-modules-ui:/app/packages/ui/node_modules
+      # e2e is a workspace member like any other (pnpm-workspace.yaml): leave
+      # it unmasked and the filtered install above purges the REPO's
+      # e2e/node_modules through the bind mount. Every workspace package needs
+      # an entry here, in the api service below, and in DEV_MASKED_DIRS in the
+      # Makefile.
+      - web-node-modules-e2e:/app/e2e/node_modules
+      # Build output is masked for the same reason as node_modules: this
+      # container runs as root, and `next dev` writing .next through the bind
+      # mount plants root-owned files in the repo that break the devcontainer's
+      # own `make ci` with EACCES. The volume also stops the dev server and a
+      # production `next build` fighting over one .next directory.
+      - web-next:/app/apps/web/.next
+      # PNPM_HOME=/pnpm in the image, so this is the content-addressable store.
+      # Keeping it makes the restart install a link operation, not a download.
+      - web-pnpm-store:/pnpm/store
+
+  api:
+    build:
+      target: dev
+    environment:
+      NODE_ENV: development
+    working_dir: /app
+    command: >
+      sh -c "pnpm install --frozen-lockfile --config.confirm-modules-purge=false --filter @ft/api... &&
+             pnpm --filter @ft/api run dev"
+    volumes:
+      # LOCAL_WORKSPACE_FOLDER: see the caddy service in compose.yml.
+      - ${LOCAL_WORKSPACE_FOLDER:-.}:/app
+      - api-node-modules-root:/app/node_modules
+      - api-node-modules-web:/app/apps/web/node_modules
+      - api-node-modules-api:/app/apps/api/node_modules
+      - api-node-modules-eslint-config:/app/packages/eslint-config/node_modules
+      - api-node-modules-shared:/app/packages/shared/node_modules
+      - api-node-modules-tsconfig:/app/packages/tsconfig/node_modules
+      - api-node-modules-ui:/app/packages/ui/node_modules
+      # See the note on web-node-modules-e2e above.
+      - api-node-modules-e2e:/app/e2e/node_modules
+      # Same reasoning as web-next above: `nest start --watch` compiles into
+      # dist as root, which must never reach the shared repo checkout. A mount
+      # point cannot be rmdir'ed (EBUSY), so the dev script runs with
+      # nest-cli.dev.json, whose only difference is deleteOutDir: false.
+      - api-dist:/app/apps/api/dist
+      - api-pnpm-store:/pnpm/store
+
+  # Devcontainer shell. Behind a profile, so `docker compose up` ignores it;
+  # VS Code names the service explicitly, which activates the profile.
+  workspace:
+    profiles:
+      - devcontainer
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+    working_dir: /workspace
+    environment:
+      # Without this, .claude.json is written to $HOME, outside the volume, and
+      # every container rebuild logs you out.
+      CLAUDE_CONFIG_DIR: /home/node/.claude
+      HISTFILE: /commandhistory/.history
+    volumes:
+      # LOCAL_WORKSPACE_FOLDER: see the caddy service in compose.yml.
+      - ${LOCAL_WORKSPACE_FOLDER:-.}:/workspace
+      # Per developer machine, not shared: auth tokens and history are personal.
+      - claude-state:/home/node/.claude
+      - shell-history:/commandhistory
+      # VS Code installs extensions into the container filesystem, so a rebuild
+      # deletes them all. The devcontainer.json list is reinstalled after that,
+      # but hand-installed ones would be gone: this volume keeps every
+      # extension (and its cache) across rebuilds. The server binaries in
+      # ~/.vscode-server/bin are left out on purpose: they are tied to the VS
+      # Code version and redownload cheaply.
+      - vscode-extensions:/home/node/.vscode-server/extensions
+      # `gh auth login` writes ~/.config/gh; without a volume every rebuild
+      # logs you out of GitHub. Narrow on purpose: the rest of ~/.config is
+      # disposable.
+      - gh-config:/home/node/.config/gh
+      # Playwright browser downloads (~/.cache/ms-playwright). Keeps `make all`
+      # from re-downloading Chromium (~170 MB) after every container rebuild.
+      - node-cache:/home/node/.cache
+      # docker-outside-of-docker: the CLI in this image drives the host daemon.
+      # Mounted at docker-HOST.sock, not docker.sock: the host socket is owned
+      # by root and a group that does not exist in this image, so docker-init.sh
+      # (the command below) bridges it to a node-owned /var/run/docker.sock via
+      # socat. Same mechanism as the devcontainers docker-outside-of-docker
+      # feature. Without the mount, `docker ps`, `make dev` and `make up` fail
+      # from inside the devcontainer with "Cannot connect to the Docker daemon".
+      - /var/run/docker.sock:/var/run/docker-host.sock
+    networks:
+      - ft
+    # PID 1 ignores signals it has no handler for, so a bare `sleep infinity`
+    # would only stop on SIGKILL after the timeout.
+    init: true
+    # docker-init.sh starts the socket bridge, then execs into sleep.
+    command: ["/usr/local/share/docker-init.sh", "sleep", "infinity"]
+
+volumes:
+  web-node-modules-root:
+  web-node-modules-web:
+  web-node-modules-api:
+  web-node-modules-eslint-config:
+  web-node-modules-shared:
+  web-node-modules-tsconfig:
+  web-node-modules-ui:
+  web-node-modules-e2e:
+  web-next:
+  web-pnpm-store:
+  api-node-modules-root:
+  api-node-modules-web:
+  api-node-modules-api:
+  api-node-modules-eslint-config:
+  api-node-modules-shared:
+  api-node-modules-tsconfig:
+  api-node-modules-ui:
+  api-node-modules-e2e:
+  api-dist:
+  api-pnpm-store:
+  claude-state:
+  shell-history:
+  vscode-extensions:
+  gh-config:
+  node-cache:

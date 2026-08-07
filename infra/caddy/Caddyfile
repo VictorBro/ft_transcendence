@@ -1,0 +1,67 @@
+# Single TLS entry point. web and api are served from one origin, which is what
+# removes CORS from the project and lets the session cookie stay first-party.
+#
+#   https://localhost/api/*  -> api:3001   (NestJS, global prefix "api")
+#   https://localhost/ws/*   -> api:3001   (socket.io)
+#   https://localhost/*      -> web:3000   (Next.js)
+{
+	# Caddy's own CA instead of ACME: there is no public domain to validate, and
+	# the subject still requires HTTPS. The root is stored in /data, which is a
+	# named volume, so the browser only has to be told to trust it once.
+	# Trust it on the host with: docker compose cp caddy:/data/caddy/pki/authorities/local/root.crt ./certs/
+	local_certs
+}
+
+# Site addresses:
+#   localhost, 127.0.0.1     browsers and Playwright on the machine running the stack
+#   caddy                    the compose service name, so `make all` can run the e2e
+#                            suite from INSIDE the devcontainer, where the published
+#                            host ports are not reachable
+#   {$CADDY_EXTRA_HOSTNAME}  remote access when the stack runs on a sudo-less school
+#                            computer: on YOUR device, point this name at the server's
+#                            LAN IP in /etc/hosts and import certs/ft-local-root.crt
+#                            into the browser (make certs prints the exact steps).
+#                            The default uses the RFC 6761 reserved .test TLD, which
+#                            never resolves on the public internet, so the name can
+#                            be squatted safely. Override it in .env.
+localhost, 127.0.0.1, caddy, {$CADDY_EXTRA_HOSTNAME:ft-transcendence.test} {
+	# Access log to stderr, so `docker compose logs caddy` shows which upstream
+	# a request actually reached. This is the first thing to check when a route
+	# 404s in the container but works locally.
+	log
+
+	encode zstd gzip
+
+	header {
+		-Server
+		X-Content-Type-Options nosniff
+		X-Frame-Options DENY
+		Referrer-Policy strict-origin-when-cross-origin
+		Permissions-Policy "camera=(), microphone=(), geolocation=()"
+		# Deliberately no Strict-Transport-Security. HSTS is keyed on the host
+		# name and ignores the port, so pinning "localhost" would force https on
+		# every other project a teammate runs there, for months. Add it together
+		# with a real domain.
+	}
+
+	# NestJS sets a global "api" prefix, so the prefix is forwarded intact.
+	# handle_path would strip it and every route would answer 404.
+	@api path /api /api/*
+	handle @api {
+		reverse_proxy api:3001
+	}
+
+	# socket.io. Caddy 2 detects the Upgrade handshake inside reverse_proxy;
+	# there is no websocket directive to add and none is needed. The gateway has
+	# to be mounted here (`path: '/ws'`) rather than on socket.io's default
+	# /socket.io, otherwise the request falls through to web below.
+	@ws path /ws /ws/*
+	handle @ws {
+		reverse_proxy api:3001
+	}
+
+	# Everything else, including /healthz, /privacy and /terms.
+	handle {
+		reverse_proxy web:3000
+	}
+}

@@ -1,0 +1,41 @@
+packages:
+  - 'apps/*'
+  - 'packages/*'
+  # Playwright suite. A workspace member so its deps resolve, and so
+  # `turbo run lint typecheck` reaches it like every other package.
+  - 'e2e'
+
+# TypeScript 7 has no decorator support and typescript-eslint caps at <6.1.0.
+# The override keeps a transitive dependency from pulling a second major in.
+overrides:
+  typescript: 6.0.3
+
+# pnpm 11 blocks dependency lifecycle scripts unless allow-listed. The pnpm 10
+# keys (onlyBuiltDependencies, neverBuiltDependencies, ignoredBuiltDependencies)
+# were REMOVED in pnpm 11 and are silently ignored; this map replaces all of them.
+allowBuilds:
+  # Downloads and places the query engine. Prisma cannot run without it.
+  '@prisma/engines': true
+  prisma: true
+  # Native binary behind unplugin-swc, which vitest needs for decorator metadata.
+  '@swc/core': true
+  # Next.js image optimisation.
+  sharp: true
+  # Telemetry only. Nothing depends on it functionally, so deny it.
+  '@scarf/scarf': false
+  # Not installed yet: arrives with password hashing in plan step 5. Listed now so
+  # the native build is not silently skipped the day it is added.
+  argon2: true
+
+# pnpm 11 defaults minimumReleaseAge to 1440 minutes: a version published less
+# than 24h ago is refused, which blunts npm account-takeover attacks. Keep it on.
+# pnpm appends to the list below by itself when a pin is newer than the window,
+# so commit those edits rather than reverting them.
+minimumReleaseAgeExclude:
+  - '@turbo/darwin-64@2.10.8'
+  - '@turbo/darwin-arm64@2.10.8'
+  - '@turbo/linux-64@2.10.8'
+  - '@turbo/linux-arm64@2.10.8'
+  - '@turbo/windows-64@2.10.8'
+  - '@turbo/windows-arm64@2.10.8'
+  - turbo@2.10.8

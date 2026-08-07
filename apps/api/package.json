@@ -1,0 +1,51 @@
+{
+  "name": "@ft/api",
+  "version": "0.0.0",
+  "private": true,
+  "description": "NestJS backend: business logic and data access for ft_transcendence",
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "nest start --watch --config nest-cli.dev.json",
+    "build": "nest build",
+    "start": "node dist/main.js",
+    "lint": "eslint .",
+    "format:check": "prettier --check . --ignore-path ../../.prettierignore",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:cov": "vitest run --coverage",
+    "test:e2e": "vitest run --config vitest.config.e2e.mts",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev",
+    "db:deploy": "prisma migrate deploy"
+  },
+  "dependencies": {
+    "@nestjs/common": "11.1.28",
+    "@nestjs/config": "4.0.4",
+    "@nestjs/core": "11.1.28",
+    "@nestjs/platform-express": "11.1.28",
+    "@nestjs/swagger": "11.4.6",
+    "@nestjs/throttler": "6.5.0",
+    "@prisma/client": "7.9.1",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.15.1",
+    "reflect-metadata": "^0.2.0",
+    "rxjs": "^7.8.0"
+  },
+  "devDependencies": {
+    "@ft/eslint-config": "workspace:*",
+    "@ft/tsconfig": "workspace:*",
+    "@nestjs/cli": "^11.0.24",
+    "@nestjs/testing": "11.1.28",
+    "@swc/core": "^1.15.47",
+    "@types/node": "^24.13.3",
+    "@types/supertest": "^7.2.1",
+    "@vitest/coverage-v8": "4.1.10",
+    "eslint": "10.8.0",
+    "prettier": "3.9.6",
+    "prisma": "7.9.1",
+    "supertest": "7.2.2",
+    "typescript": "6.0.3",
+    "unplugin-swc": "^1.5.9",
+    "vitest": "4.1.10"
+  }
+}

@@ -1,0 +1,29 @@
+// Prisma 7. Two things differ from every v6 tutorial:
+//   - the connection URL lives in ../prisma.config.ts, not in this block;
+//   - the generator is `prisma-client` (Rust-free) and `output` is mandatory.
+datasource db {
+  provider = "postgresql"
+}
+
+// Output lands outside src/ on purpose: the emitted client is TypeScript, and
+// keeping it out of tsconfig's `include` keeps typecheck, lint and coverage
+// measuring our code only.
+generator client {
+  provider     = "prisma-client"
+  output       = "../generated/prisma"
+  runtime      = "nodejs"
+  moduleFormat = "cjs"
+}
+
+// docs/VERSIONS.md trap 2: no vector column and no Unsupported() anywhere in
+// this file. Unsupported("vector") has an open migration-drift bug on Prisma 7
+// (prisma/prisma#28867). The extension is created by
+// infra/postgres/init/01-pgvector.sql, and the embedding column plus its HNSW
+// index arrive later through a hand-edited `migrate dev --create-only` SQL file.
+model User {
+  id          String   @id @default(uuid()) @db.Uuid
+  email       String   @unique
+  displayName String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

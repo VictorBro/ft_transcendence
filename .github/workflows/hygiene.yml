@@ -1,0 +1,177 @@
+name: hygiene
+
+# The gates that protect things a reviewer cannot reliably catch by reading a
+# diff: a leaked credential, a commit message nobody can grade, an .env.example
+# that no longer matches what the stack reads, and a Prisma schema that has
+# drifted away from its migrations.
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: hygiene-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gitleaks:
+    name: gitleaks
+    runs-on: ubuntu-24.04
+    steps:
+      # Full history: a secret that was committed and then removed is still in
+      # the repository, and a shallow clone would report the tree as clean.
+      - uses: actions/checkout@v7.0.1
+        with:
+          fetch-depth: 0
+
+      - uses: gitleaks/gitleaks-action@v3.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Free for personal accounts and public repositories. Only a GitHub
+          # Organization account needs a key; an unset secret is an empty
+          # string, which the action treats as "not licensed" rather than
+          # failing on a missing reference.
+          GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}
+
+  commitlint:
+    name: commitlint
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          fetch-depth: 0
+
+      # Toolchain only. commitlint is not a project dependency: it is fetched
+      # per run so it cannot influence the application dependency tree.
+      - uses: ./.github/actions/setup
+        with:
+          install: "false"
+
+      - name: Lint commit messages
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            from="${{ github.event.pull_request.base.sha }}"
+            to="${{ github.event.pull_request.head.sha }}"
+          else
+            from="${{ github.event.before }}"
+            to="${{ github.sha }}"
+          fi
+
+          # A brand-new branch reports an all-zero "before", and the range would
+          # cover the entire history of main.
+          # --package, not `pnpm dlx @commitlint/cli`: dlx derives the command
+          # name from the last path segment, which would be `cli`.
+          run_commitlint() {
+            pnpm dlx --package "@commitlint/cli@21.2.1" commitlint \
+              --config .github/commitlint.config.mjs --verbose "$@"
+          }
+
+          if [ -z "$from" ] || [ "$from" = "0000000000000000000000000000000000000000" ]; then
+            echo "No usable base commit, linting the tip commit only."
+            run_commitlint --last
+          else
+            run_commitlint --from "$from" --to "$to"
+          fi
+
+  env-example:
+    name: .env hygiene
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7.0.1
+
+      # Belt to the script's braces: the script asserts on `.env` exactly, this
+      # catches every variant (.env.local, apps/api/.env) anywhere in the tree.
+      - name: No dotenv file may be committed
+        run: |
+          tracked="$(git ls-files | grep -E '(^|/)\.env($|\.)' | grep -v '\.env\.example$' || true)"
+          if [ -n "$tracked" ]; then
+            echo "::error::dotenv files are committed:"
+            echo "$tracked"
+            echo "Remove them with 'git rm --cached <file>'. Only .env.example belongs in git."
+            exit 1
+          fi
+
+      # Pure bash, no toolchain needed.
+      - run: ./scripts/check-env-example.sh
+
+  prisma-drift:
+    name: prisma migration drift
+    runs-on: ubuntu-24.04
+
+    # docs/VERSIONS.md trap 2: the pgvector column and its HNSW index are added
+    # by hand-edited SQL rather than declared in schema.prisma, which is exactly
+    # the arrangement that drifts silently. This job is what makes the split
+    # safe to live with.
+    #
+    # The shadow database starts even on runs that skip the check below. That is
+    # a few seconds, and the alternative is a second job whose only job is to
+    # decide whether to run this one.
+    services:
+      shadow-db:
+        image: pgvector/pgvector:0.8.6-pg18-trixie
+        env:
+          POSTGRES_USER: shadow
+          POSTGRES_PASSWORD: shadow
+          POSTGRES_DB: shadow
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U shadow -d shadow"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
+    steps:
+      - uses: actions/checkout@v7.0.1
+
+      # TODO plan step 5: delete this guard once the first migration is
+      # committed. From that point a missing migrations directory is itself the
+      # bug, and the check becomes mandatory.
+      - name: Are there migrations to check
+        id: guard
+        run: |
+          dir=apps/api/prisma/migrations
+          if [ ! -d "$dir" ] || [ -z "$(ls -A "$dir" 2>/dev/null)" ]; then
+            echo "::notice title=Prisma drift check skipped::$dir does not exist yet. It becomes mandatory at plan step 5."
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - if: steps.guard.outputs.run == 'true'
+        uses: ./.github/actions/setup
+
+      - name: prisma migrate diff
+        if: steps.guard.outputs.run == 'true'
+        env:
+          # prisma.config.ts reads DATABASE_URL and defaults it to an empty
+          # string, which some subcommands reject before they look at the flags.
+          DATABASE_URL: postgresql://shadow:shadow@127.0.0.1:5432/shadow
+          SHADOW_DATABASE_URL: postgresql://shadow:shadow@127.0.0.1:5432/shadow
+        run: |
+          set +e
+          pnpm --filter @ft/api exec prisma migrate diff \
+            --from-migrations ./prisma/migrations \
+            --to-schema-datamodel ./prisma/schema.prisma \
+            --shadow-database-url "$SHADOW_DATABASE_URL" \
+            --exit-code
+          status=$?
+          set -e
+
+          case "$status" in
+            0)
+              echo "Migrations and schema.prisma agree."
+              ;;
+            2)
+              echo "::error title=Prisma drift::schema.prisma and prisma/migrations disagree."
+              echo "Run 'pnpm --filter @ft/api exec prisma migrate dev --create-only' and commit the SQL."
+              echo "If the change is a pgvector column, hand-edit that SQL: it must not be declared in schema.prisma."
+              exit 1
+              ;;
+            *)
+              echo "::error title=Prisma drift check failed::migrate diff exited with $status."
+              exit "$status"
+              ;;
+          esac

@@ -1,0 +1,52 @@
+# Interactive zsh config for the devcontainer, installed as /home/node/.zshrc.
+#
+# Two reasons this file exists at all:
+#   1. zsh runs its first-run setup wizard when no rc file is present;
+#   2. zsh defaults SAVEHIST to 0, so without it nothing is ever written to
+#      HISTFILE and the shell-history volume stays empty.
+
+# HISTFILE comes from the image and again from the workspace service. Honour it
+# if set so neither has to win, and fall back to the volume path otherwise.
+HISTFILE=${HISTFILE:-/commandhistory/.history}
+HISTSIZE=100000
+SAVEHIST=100000
+
+# INC_APPEND_HISTORY writes each command as it is run. APPEND_HISTORY alone only
+# flushes when the shell exits, which a discarded container never does.
+# Deliberately NOT EXTENDED_HISTORY: bash shares this file and cannot read the
+# `: <start>:<elapsed>;<command>` form.
+setopt APPEND_HISTORY INC_APPEND_HISTORY HIST_IGNORE_DUPS HIST_IGNORE_SPACE
+
+# -u accepts the completion directories without prompting. Some are group
+# writable in the image and compinit would otherwise stop for an answer nobody
+# is there to give.
+autoload -Uz compinit
+compinit -u -d "${HOME}/.cache/zcompdump"
+
+# Arrow-key menu for ambiguous completions, and case-insensitive matching.
+zmodload -i zsh/complist
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
+
+# Fish-style inline suggestions from history (grey text, right-arrow accepts)
+# and command highlighting. Both are Debian packages baked into the image;
+# guarded so a hand-built image without them still gets a working shell.
+[ -r /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ] &&
+  . /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Convention from its own README: source syntax highlighting LAST, after every
+# other plugin that binds ZLE widgets.
+[ -r /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] &&
+  . /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Branch in the prompt. vcs_info ships with zsh: no oh-my-zsh, no extra binary.
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:git:*' formats ' %F{blue}git:(%F{red}%b%F{blue})%f'
+# Without this, a rebase or merge falls back to vcs_info's own default layout.
+zstyle ':vcs_info:git:*' actionformats ' %F{blue}git:(%F{red}%b%F{blue}|%F{yellow}%a%F{blue})%f'
+precmd_functions+=(vcs_info)
+
+# PROMPT_SUBST re-expands vcs_info_msg_0_ on every prompt.
+setopt PROMPT_SUBST
+PROMPT='%F{magenta}ft%f %F{cyan}%~%f${vcs_info_msg_0_} %# '

@@ -1,0 +1,157 @@
+# Shared topology. Nothing dev-specific and nothing prod-specific lives here.
+#
+#   docker compose up                              -> this + compose.override.yml (dev)
+#   docker compose -f compose.yml -f compose.prod.yml up   -> prod
+#
+# Build targets are set by those overlays, never here: a bare `docker compose
+# build` would otherwise pick a stage that is wrong for one of the two.
+#
+# Every value is `${VAR:-default}` so the stack also comes up with no .env file,
+# which is what CI does. Copy .env.example to .env to change any of them.
+
+name: ft_transcendence
+
+services:
+  # The only service with published ports. Terminates TLS and routes by path,
+  # so web and api share one origin: no CORS, and cookies are first-party.
+  caddy:
+    image: caddy:2.11.4-alpine
+    # Long form even though the condition is the default: compose.prod.yml
+    # tightens it to service_healthy, and mixing the short and long forms
+    # across overlays is a merge the spec does not define.
+    depends_on:
+      web:
+        condition: service_started
+      api:
+        condition: service_started
+    environment:
+      # Extra site address served with the same internal CA, for reaching the
+      # stack from another device. See the Caddyfile header and .env.example.
+      CADDY_EXTRA_HOSTNAME: ${CADDY_EXTRA_HOSTNAME:-ft-transcendence.test}
+    ports:
+      # Overridable for hosts that cannot bind ports below 1024 (rootless
+      # Docker on a sudo-less school machine): set HTTP_PORT/HTTPS_PORT in
+      # .env, e.g. 8080/8443, and open https://localhost:8443 directly. The
+      # automatic http->https redirect assumes the default ports, so with
+      # overrides just use the https URL.
+      - "${HTTP_PORT:-80}:80"
+      - "${HTTPS_PORT:-443}:443"
+      # HTTP/3. Caddy enables it by default and the browser silently falls back
+      # to TCP without this line, which hides the misconfiguration.
+      - "${HTTPS_PORT:-443}:443/udp"
+    volumes:
+      # ${LOCAL_WORKSPACE_FOLDER:-.}: relative bind-mount paths resolve on the
+      # docker DAEMON's side, i.e. against the HOST filesystem. From a host
+      # shell "." is correct; from the devcontainer it is not, so
+      # devcontainer.json injects the host path into container shells and every
+      # repo bind mount in these files uses it. Unset (host, CI) it falls back
+      # to "." and nothing changes.
+      - ${LOCAL_WORKSPACE_FOLDER:-.}/infra/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      # The internal CA lives in /data. Without this volume every restart mints
+      # a new root and the browser warning comes back.
+      - caddy-data:/data
+      - caddy-config:/config
+    networks:
+      - ft
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://127.0.0.1:2019/config/"]
+      interval: 30s
+      timeout: 5s
+      start_period: 10s
+      retries: 3
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    # Ordering only. The home page renders an "api unavailable" state rather
+    # than failing, so web must not wait for a healthy api.
+    depends_on:
+      api:
+        condition: service_started
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      PORT: 3000
+      # Server components call NestJS over the internal network, plain http:
+      # TLS stops at caddy.
+      API_INTERNAL_URL: ${API_INTERNAL_URL:-http://api:3001}
+      NEXT_TELEMETRY_DISABLED: 1
+    networks:
+      - ft
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      PORT: 3001
+      # Surfaced by GET /api/health so a running container can be identified.
+      APP_VERSION: ${APP_VERSION:-0.0.0}
+      DATABASE_URL: ${DATABASE_URL:-postgresql://ft:ft_local_dev@db:5432/ft_transcendence?schema=public}
+      REDIS_URL: ${REDIS_URL:-redis://redis:6379}
+      LLM_PROVIDER: ${LLM_PROVIDER:-fixture}
+      LLM_API_KEY: ${LLM_API_KEY:-}
+      LLM_MODEL: ${LLM_MODEL:-}
+    networks:
+      - ft
+
+  db:
+    # Not the plain `postgres` image: it ships without pgvector. See
+    # docs/VERSIONS.md for the CVE that sets the 0.8.6 floor.
+    image: pgvector/pgvector:0.8.6-pg18-trixie
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-ft}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ft_local_dev}
+      POSTGRES_DB: ${POSTGRES_DB:-ft_transcendence}
+    volumes:
+      # Mounted one level above PGDATA on purpose. The Postgres 18 images moved
+      # the data directory to /var/lib/postgresql/18/docker, so a volume at the
+      # familiar /var/lib/postgresql/data would hold nothing and every restart
+      # would come up empty. The parent path is correct under both layouts.
+      - pg-data:/var/lib/postgresql
+      # Runs once, only while the data directory is empty. See the SQL file.
+      # LOCAL_WORKSPACE_FOLDER: see the caddy service.
+      - ${LOCAL_WORKSPACE_FOLDER:-.}/infra/postgres/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      # -h 127.0.0.1 matters: during init the entrypoint runs a temporary server
+      # on a unix socket only, and a socket-based pg_isready would report ready
+      # before 01-pgvector.sql has run.
+      test: ["CMD-SHELL", 'pg_isready -h 127.0.0.1 -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"']
+      interval: 5s
+      timeout: 5s
+      start_period: 30s
+      retries: 10
+    networks:
+      - ft
+
+  redis:
+    image: redis:8-alpine
+    # AOF on: BullMQ jobs and sessions should survive a restart. RDB snapshots
+    # alone lose up to a minute of writes.
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      start_period: 10s
+      retries: 5
+    networks:
+      - ft
+
+volumes:
+  pg-data:
+  redis-data:
+  caddy-data:
+  caddy-config:
+
+networks:
+  ft:
+    driver: bridge
