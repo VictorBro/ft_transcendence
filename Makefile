@@ -51,15 +51,19 @@ WAIT_TIMEOUT ?= 300
 # a site address for exactly this. /.dockerenv exists only inside a container.
 E2E_BASE_URL ?= $(if $(wildcard /.dockerenv),https://caddy,https://localhost)
 
-# Host the natively run tests reach the database on. Inside the devcontainer the
-# service is on the compose network and resolves by name; from a host shell it is
-# only reachable through the loopback port compose.override.yml publishes.
-DB_HOST := $(if $(wildcard /.dockerenv),db,127.0.0.1)
+# Hosts the natively run tests reach the stores on. Inside the devcontainer they
+# are on the compose network and resolve by service name; from a host shell only
+# through the loopback ports compose.override.yml publishes.
+IN_CONTAINER := $(wildcard /.dockerenv)
+DB_HOST    := $(if $(IN_CONTAINER),db,127.0.0.1)
+REDIS_HOST := $(if $(IN_CONTAINER),redis,127.0.0.1)
 
-# Exported so `pnpm test` and the Supertest suite see it without every recipe
-# repeating it. An existing value from the shell wins.
+# Exported so `pnpm test` and the Supertest suite see them without every recipe
+# repeating them. Existing values from the shell win.
 DATABASE_URL ?= postgresql://ft:ft_local_dev@$(DB_HOST):5432/ft_transcendence?schema=public
-export DATABASE_URL
+REDIS_URL    ?= redis://$(REDIS_HOST):6379
+SESSION_SECRET ?= dev-only-session-secret-change-me-at-least-32-chars
+export DATABASE_URL REDIS_URL SESSION_SECRET
 
 # DATABASE_URL for the tooling container, which runs ON the compose network and
 # therefore always uses the service name. A local .env wins; without one the
@@ -72,7 +76,7 @@ DB_ENV := -e DATABASE_URL='$(DEFAULT_DATABASE_URL)'
 endif
 
 .PHONY: all run dev up build down logs ps shell test test-e2e lint format typecheck \
-        migrate seed studio reset-db ci db-up clean certs tooling-image doctor help
+        migrate seed studio reset-db ci stores-up clean certs tooling-image doctor help
 
 # --- the one command ---------------------------------------------------------
 
@@ -166,13 +170,13 @@ typecheck: ## tsc --noEmit across the workspace
 doctor: ## Check this machine can build, test and push: run it first on a new clone
 	./scripts/check-dev-env.sh
 
-# The api Supertest suite boots the whole Nest graph, and PrismaService connects
-# on init, so a database has to exist. The ci workflow gets one from a `services:`
-# block; this is the local equivalent, and it keeps `make ci` self-contained.
-db-up:
-	@$(COMPOSE_DEV) up -d --wait db >/dev/null
+# The api Supertest suite boots the whole Nest graph, and both PrismaService and
+# RedisService connect on init, so the stores have to exist. The ci workflow gets
+# them from `services:` blocks; this is the local equivalent.
+stores-up:
+	@$(COMPOSE_DEV) up -d --wait db redis >/dev/null
 
-ci: db-up ## Everything the ci workflow runs, natively
+ci: stores-up ## Everything the ci workflow runs, natively
 	./scripts/assert-ts-version.sh
 	./scripts/check-env-example.sh
 	pnpm run ci

@@ -95,6 +95,7 @@ services:
       APP_VERSION: ${APP_VERSION:-0.0.0}
       DATABASE_URL: ${DATABASE_URL:-postgresql://ft:ft_local_dev@db:5432/ft_transcendence?schema=public}
       REDIS_URL: ${REDIS_URL:-redis://redis:6379}
+      SESSION_SECRET: ${SESSION_SECRET:-dev-only-session-secret-change-me-at-least-32-chars}
       LLM_PROVIDER: ${LLM_PROVIDER:-fixture}
       LLM_API_KEY: ${LLM_API_KEY:-}
       LLM_MODEL: ${LLM_MODEL:-}

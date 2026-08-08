@@ -4,6 +4,7 @@ import { HealthResponseSchema } from '@ft/shared';
 import { beforeEach, describe, expect, it } from 'vitest';
 
 import { PrismaService } from '../prisma/prisma.service';
+import { RedisService } from '../redis/redis.service';
 import { HealthController } from './health.controller';
 import { HealthService } from './health.service';
 
@@ -17,6 +18,7 @@ describe('HealthController', () => {
         HealthService,
         { provide: ConfigService, useValue: { get: () => '9.9.9' } },
         { provide: PrismaService, useValue: { ping: () => Promise.resolve(1) } },
+        { provide: RedisService, useValue: { ping: () => Promise.resolve(1) } },
       ],
     }).compile();
 

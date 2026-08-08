@@ -89,6 +89,17 @@ jobs:
           --health-timeout 5s
           --health-retries 10
 
+      # Sessions live here, so the auth suite needs it as much as the database.
+      redis:
+        image: redis:8-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+
     strategy:
       fail-fast: false
       matrix:
@@ -125,6 +136,8 @@ jobs:
           docker run --rm \
             --network host \
             -e DATABASE_URL="postgresql://ft:ft_local_dev@127.0.0.1:5432/ft_transcendence?schema=public" \
+            -e REDIS_URL="redis://127.0.0.1:6379" \
+            -e SESSION_SECRET="ci-only-session-secret-at-least-32-characters-long" \
             -v "$PWD/coverage:/coverage" \
             ft/${{ matrix.app }}:ci \
             sh -c "${{ matrix.command }} && cp -a /app/apps/${{ matrix.app }}/coverage/. /coverage/"

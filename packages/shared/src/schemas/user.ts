@@ -58,3 +58,18 @@ export const CreateUserSchema = z.object({
   locale: LocaleSchema.optional(),
 });
 export type CreateUserInput = z.infer<typeof CreateUserSchema>;
+
+/**
+ * Login deliberately does not reuse PasswordSchema. Its rules describe what a
+ * NEW password must contain, and applying them here would reject an older
+ * account's valid password with a message that reads like a policy complaint.
+ */
+export const LoginSchema = z.object({
+  email: z.email(),
+  password: z.string().min(1).max(128),
+});
+export type LoginInput = z.infer<typeof LoginSchema>;
+
+/** The signed-in user's own record: email included, passwordHash never. */
+export const SessionUserSchema = UserSchema.omit({ updatedAt: true });
+export type SessionUser = z.infer<typeof SessionUserSchema>;

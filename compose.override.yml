@@ -98,6 +98,11 @@ services:
     ports:
       - "127.0.0.1:5432:5432"
 
+  redis:
+    # Loopback only, same reasoning as the database above.
+    ports:
+      - "127.0.0.1:6379:6379"
+
   # Devcontainer shell. Behind a profile, so `docker compose up` ignores it;
   # VS Code names the service explicitly, which activates the profile.
   workspace:
