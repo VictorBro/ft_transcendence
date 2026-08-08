@@ -24,7 +24,7 @@ make dev
 - [ ] No secret, key or token in the diff. New configuration is documented in `.env.example` and read through `compose.yml`.
 - [ ] Versions added or changed are pinned exactly and recorded in `docs/VERSIONS.md`.
 - [ ] A new dependency brings no CRITICAL or HIGH advisory. The `images` workflow scans and reports; a finding in a package we do not own is pinned through `overrides` in `pnpm-workspace.yaml`.
-- [ ] Schema changes ship with the generated migration; a pgvector column is hand-written SQL and stays out of `schema.prisma` (`docs/VERSIONS.md` trap 2).
+- [ ] Schema changes ship with their generated migration.
 
 # Screenshots
 

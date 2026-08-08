@@ -57,9 +57,7 @@ CMD ["pnpm", "--filter", "@ft/api", "run", "dev"]
 FROM deps AS ci
 ENV CI=true
 COPY . .
-# Both are build inputs the context cannot carry: src/generated is dockerignored
-# because it is generated, and @ft/shared ships compiled dist rather than source.
-# Baked into the layer so every `docker run` of this image starts ready.
+# Build inputs the context cannot carry: one is generated, the other is compiled.
 RUN pnpm --filter @ft/api exec prisma generate \
     && pnpm --filter @ft/shared run build
 CMD ["sh", "-c", "pnpm --filter @ft/api run lint && pnpm --filter @ft/api run typecheck && pnpm --filter @ft/api run test:cov && pnpm --filter @ft/api run test:e2e"]
@@ -97,10 +95,8 @@ RUN --mount=type=cache,id=pnpm-store,target=/pnpm/store,sharing=locked \
 FROM node:24.18-bookworm-slim AS prod
 ENV NODE_ENV=production \
     PORT=3001
-# openssl for the same reason as the base stage: the Prisma engine links against
-# libssl at runtime, not only during install.
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends tini openssl ca-certificates \
+    && apt-get install -y --no-install-recommends tini \
     && rm -rf /var/lib/apt/lists/*
 
 # The runtime is `node dist/main.js`; it never shells out to a package manager.

@@ -12,10 +12,8 @@ export default defineConfig({
   },
   datasource: {
     url: process.env.DATABASE_URL ?? '',
-    // Spread rather than a default: Prisma 7 removed the --shadow-database-url
-    // flag, so `migrate diff --from-migrations` (the hygiene workflow) reads
-    // this instead, but every other command VALIDATES the key when present and
-    // rejects an empty string with P1013. Absent is the only safe "unset".
+    // `migrate diff --from-migrations` needs this; every other command rejects
+    // it as an empty string with P1013, so unset means absent, not ''.
     ...(shadowDatabaseUrl ? { shadowDatabaseUrl } : {}),
   },
 });

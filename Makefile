@@ -110,12 +110,9 @@ up: ## Build and start the production stack, wait until healthy
 
 # --- development -------------------------------------------------------------
 
-# Every path the dev overlay masks with a named volume, relative to the repo.
-# They must exist BEFORE compose creates the containers: docker creates a
-# missing mount point through the bind mount as root, and a root-owned
-# node_modules/ or dist/ in the repo then breaks the devcontainer's own builds
-# with EACCES. mkdir -p as the invoking user keeps ownership right and leaves
-# existing directories untouched. Grows together with compose.override.yml.
+# Every path compose.override.yml masks with a named volume. Docker creates a
+# missing mount point as root, and a root-owned dir in the repo then breaks the
+# devcontainer's own builds with EACCES, so they are made here first.
 DEV_MASKED_DIRS := node_modules \
                    apps/api/node_modules apps/web/node_modules \
                    packages/eslint-config/node_modules packages/shared/node_modules \
@@ -124,11 +121,8 @@ DEV_MASKED_DIRS := node_modules \
                    apps/api/dist apps/web/.next
 
 dev: ## Start the development stack: bind-mounted source, hot reload
-	@# rmdir first: pnpm deletes the node_modules of a package with no
-	@# dependencies, and the next container start recreates the missing mount
-	@# point root-owned. An EMPTY dir can be replaced by the invoking user
-	@# (parent-dir permission), so this self-heals; populated dirs are left
-	@# alone because rmdir refuses non-empty ones.
+	@# rmdir drops the empty root-owned leftovers; it refuses non-empty dirs, so
+	@# anything real is untouched.
 	@for d in $(DEV_MASKED_DIRS); do rmdir "$$d" 2>/dev/null || true; done
 	mkdir -p $(DEV_MASKED_DIRS)
 	$(COMPOSE_DEV) up -d --build --wait --wait-timeout $(WAIT_TIMEOUT)
@@ -212,7 +206,7 @@ seed: ## Load development data into the database
 studio: ## Prisma Studio on http://localhost:5555
 	@$(MAKE) --no-print-directory tooling-image
 	docker run --rm -it --network $(NETWORK) -p 5555:5555 $(DB_ENV) $(TOOLING_IMAGE) \
-	  pnpm --filter @ft/api exec prisma studio --port 5555 --hostname 0.0.0.0 --browser none
+	  pnpm --filter @ft/api exec prisma studio --port 5555 --browser none
 
 reset-db: ## DESTRUCTIVE: drop the database volume and start empty (FORCE=1 to skip the prompt)
 	@if [ -z "$(FORCE)" ]; then \

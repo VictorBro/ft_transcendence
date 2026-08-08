@@ -16,15 +16,8 @@ generator client {
   moduleFormat = "cjs"
 }
 
-// docs/VERSIONS.md trap 2: no vector column and no Unsupported() anywhere in
-// this file. Unsupported("vector") has an open migration-drift bug on Prisma 7
-// (prisma/prisma#28867). The extension is created by
-// infra/postgres/init/01-pgvector.sql, and the embedding column plus its HNSW
-// index arrive later through a hand-edited `migrate dev --create-only` SQL file.
-// Mirrors UserSchema in packages/shared/src/schemas/user.ts, which is the source
-// of truth for what crosses the network. Two rules keep them honest: the columns
-// here match that schema field for field, and passwordHash exists ONLY here
-// because no schema in @ft/shared may ever expose it.
+// Mirrors UserSchema in packages/shared/src/schemas/user.ts. passwordHash is the
+// one column with no counterpart there, and must stay that way.
 model User {
   id           String   @id @default(uuid()) @db.Uuid
   email        String   @unique

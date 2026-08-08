@@ -102,14 +102,8 @@ jobs:
     name: prisma migration drift
     runs-on: ubuntu-24.04
 
-    # docs/VERSIONS.md trap 2: the pgvector column and its HNSW index are added
-    # by hand-edited SQL rather than declared in schema.prisma, which is exactly
-    # the arrangement that drifts silently. This job is what makes the split
-    # safe to live with.
-    #
-    # The shadow database starts even on runs that skip the check below. That is
-    # a few seconds, and the alternative is a second job whose only job is to
-    # decide whether to run this one.
+    # migrate diff replays the migration directory into this database, so it
+    # needs the same extensions the real one has: pgvector, not plain postgres.
     services:
       shadow-db:
         image: pgvector/pgvector:0.8.6-pg18-trixie
@@ -138,10 +132,7 @@ jobs:
           SHADOW_DATABASE_URL: postgresql://shadow:shadow@127.0.0.1:5432/shadow
         run: |
           set +e
-          # Prisma 7 renamed --to-schema-datamodel to --to-schema and dropped
-          # --shadow-database-url entirely; the shadow database now comes from
-          # datasource.shadowDatabaseUrl in prisma.config.ts, which reads
-          # SHADOW_DATABASE_URL from the env set above.
+          # The shadow database comes from prisma.config.ts, not a flag.
           pnpm --filter @ft/api exec prisma migrate diff \
             --from-migrations ./prisma/migrations \
             --to-schema ./prisma/schema.prisma \
@@ -156,7 +147,6 @@ jobs:
             2)
               echo "::error title=Prisma drift::schema.prisma and prisma/migrations disagree."
               echo "Run 'pnpm --filter @ft/api exec prisma migrate dev --create-only' and commit the SQL."
-              echo "If the change is a pgvector column, hand-edit that SQL: it must not be declared in schema.prisma."
               exit 1
               ;;
             *)

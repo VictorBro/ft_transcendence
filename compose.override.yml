@@ -17,12 +17,9 @@
 # With an unchanged lockfile pnpm exits in about a second; after a branch switch
 # it repairs the volume instead of failing with a missing module.
 #
-# confirm-modules-purge=false on those installs: on the FIRST boot the store
-# volume is empty, so pnpm decides the image-seeded node_modules must be purged
-# and rebuilt, and asks before doing it. A compose service has no TTY to answer
-# with and the container dies with ERR_PNPM_ABORTED_REMOVE_MODULES_DIR_NO_TTY
-# (the interactive cousin of VERSIONS.md trap 1ba). Purging is exactly what we
-# want, so answer yes by config.
+# confirm-modules-purge=false: on first boot pnpm wants to purge the
+# image-seeded node_modules and asks first, which a service with no TTY cannot
+# answer (ERR_PNPM_ABORTED_REMOVE_MODULES_DIR_NO_TTY).
 
 services:
   web:
