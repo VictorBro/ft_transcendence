@@ -9,5 +9,5 @@
     "tsBuildInfoFile": "./dist/tsconfig.build.tsbuildinfo",
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["node_modules", "dist", "coverage", "generated", "test", "**/*.spec.ts"],
+  "exclude": ["node_modules", "dist", "coverage", "test", "**/*.spec.ts"],
 }

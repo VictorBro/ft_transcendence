@@ -57,6 +57,9 @@ CMD ["pnpm", "--filter", "@ft/api", "run", "dev"]
 FROM deps AS ci
 ENV CI=true
 COPY . .
+# Build inputs the context cannot carry: one is generated, the other is compiled.
+RUN pnpm --filter @ft/api exec prisma generate \
+    && pnpm --filter @ft/shared run build
 CMD ["sh", "-c", "pnpm --filter @ft/api run lint && pnpm --filter @ft/api run typecheck && pnpm --filter @ft/api run test:cov && pnpm --filter @ft/api run test:e2e"]
 
 # --------------------------------------------------------------------------- build
@@ -68,7 +71,10 @@ CMD ["sh", "-c", "pnpm --filter @ft/api run lint && pnpm --filter @ft/api run ty
 FROM deps AS build
 COPY . .
 RUN pnpm --filter @ft/api exec prisma generate
-RUN pnpm --filter @ft/api run build
+# The trailing "..." selects @ft/api AND its workspace dependencies, in
+# topological order: @ft/shared has to emit its dist before the api can compile
+# against it. Packages with no build script are skipped.
+RUN pnpm --filter "@ft/api..." run build
 
 # --------------------------------------------------------------------------- prune
 # Dropping devDependencies is its own stage on purpose. `prisma` is a
@@ -89,10 +95,8 @@ RUN --mount=type=cache,id=pnpm-store,target=/pnpm/store,sharing=locked \
 FROM node:24.18-bookworm-slim AS prod
 ENV NODE_ENV=production \
     PORT=3001
-# openssl for the same reason as the base stage: the Prisma engine links against
-# libssl at runtime, not only during install.
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends tini openssl ca-certificates \
+    && apt-get install -y --no-install-recommends tini \
     && rm -rf /var/lib/apt/lists/*
 
 # The runtime is `node dist/main.js`; it never shells out to a package manager.
@@ -110,6 +114,14 @@ COPY --from=prune --chown=node:node /app/node_modules ./node_modules
 COPY --from=prune --chown=node:node /app/apps/api/node_modules ./apps/api/node_modules
 COPY --from=prune --chown=node:node /app/apps/api/package.json ./apps/api/package.json
 COPY --from=prune --chown=node:node /app/apps/api/dist ./apps/api/dist
+# apps/api/node_modules/@ft/shared is a relative symlink into packages/shared,
+# so the target has to exist here or every import of @ft/shared fails at
+# startup with MODULE_NOT_FOUND. Its own node_modules is part of that: it holds
+# the symlink to zod, which the compiled schemas require at runtime. The source
+# is not needed, only the manifest, the emitted dist and those links.
+COPY --from=prune --chown=node:node /app/packages/shared/package.json ./packages/shared/package.json
+COPY --from=prune --chown=node:node /app/packages/shared/dist ./packages/shared/dist
+COPY --from=prune --chown=node:node /app/packages/shared/node_modules ./packages/shared/node_modules
 WORKDIR /app/apps/api
 USER node
 EXPOSE 3001

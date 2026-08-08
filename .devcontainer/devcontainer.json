@@ -135,19 +135,25 @@
         },
 
         // The repo is a bind mount. Watching build output burns inotify
-        // handles and produces nothing useful.
+        // handles and produces nothing useful. .pnpm-store is the big one:
+        // pnpm cannot hardlink across filesystems, so it keeps a project-local
+        // store of roughly 35k files here.
         "files.watcherExclude": {
           "**/.next/**": true,
+          "**/.pnpm-store/**": true,
           "**/.turbo/**": true,
           "**/coverage/**": true,
           "**/dist/**": true,
+          "**/generated/**": true,
           "**/node_modules/**": true
         },
         "search.exclude": {
           "**/.next": true,
+          "**/.pnpm-store": true,
           "**/.turbo": true,
           "**/coverage": true,
           "**/dist": true,
+          "**/generated": true,
           "**/node_modules": true,
           "**/pnpm-lock.yaml": true
         }

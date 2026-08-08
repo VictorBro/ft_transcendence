@@ -15,7 +15,7 @@ AI-assessed proficiency levelling, single-player practice, live two-player sessi
 | Frontend | **Next.js** (App Router) | Framework major module. SSR minor point. `next-intl` for the i18n module. Public pages indexable. |
 | Backend | **NestJS** | WebSocket gateways, DI (mockable LLM provider), guards, throttler, Swagger, validation pipes. Module boundaries map onto team members. |
 | Database | **Postgres 18 + pgvector** | RAG needs vector search; pgvector avoids a second datastore. |
-| ORM | **Prisma 7** | Minor module; `schema.prisma` doubles as the README schema doc. Vector column handled separately (VERSIONS.md, trap 2). |
+| ORM | **Prisma 7** | Minor module; `schema.prisma` doubles as the README schema doc. |
 | Cache / queue | **Redis** | Rate limiting, socket.io adapter, LLM cache, BullMQ. |
 | Proxy | **Caddy** | Single TLS entry point (mandatory HTTPS). Same-origin kills CORS; httpOnly cookies just work. Internal CA for dev certs. |
 | Real-time | **socket.io** | One transport for presence, sessions, LLM token streaming. |
@@ -53,8 +53,7 @@ ft_transcendence/
 │   ├── eslint-config/
 │   └── tsconfig/
 ├── infra/
-│   ├── caddy/Caddyfile
-│   └── postgres/init/01-pgvector.sql
+│   └── caddy/Caddyfile
 ├── docs/
 ├── compose.yml                    # topology: caddy · web · api · db · redis
 ├── compose.override.yml           # dev, auto-loaded: dev targets, bind mounts, workspace service
@@ -164,7 +163,7 @@ where it matters and keeps feedback fast where it doesn't.
 |---|---|---|
 | `ci.yml` | PR, push | Native: format check, lint, typecheck, TS-version assert (trap 1). Docker `ci` stage: unit tests + coverage, Supertest e2e (compose db). Then build. |
 | `e2e.yml` | PR, push | Prod-target compose up, then Playwright: user flows, **console gate**, **legal pages** (`/privacy`, `/terms` return 200 with real content). |
-| `hygiene.yml` | PR, push | gitleaks, commitlint, `.env.example` drift, fail if `.env` staged, `prisma migrate diff` (trap 2). |
+| `hygiene.yml` | PR, push | gitleaks, commitlint, `.env.example` drift, fail if `.env` staged, `prisma migrate diff`. |
 | `images.yml` | push to any branch; `v*` tags | Multi-arch build on every commit; tags per table below. |
 
 ### Multi-arch (`images.yml`)
@@ -307,7 +306,7 @@ The team clones the slice pattern per feature instead of inventing five differen
 | Risk | Mitigation |
 |---|---|
 | `pnpm up --latest` pulls TS 7 | Exact pin + CI version assert (VERSIONS.md trap 1) |
-| Prisma vector drift | Recipe + CI `migrate diff` (trap 2) |
+| Schema and migrations drift apart | CI `migrate diff` on every PR |
 | Node 26 LTS lands mid-project | Stay on 24; deliberate upgrade later (trap 3) |
 | Hydration warnings trip console gate | Gate live from day one; surfaces at the causing commit |
 | Slow HMR on bind mounts | Watch during step 5. Fallback: `apps/web` to Vite. **Costs the SSR minor point (16 → 15)**; budget still clears 14. |

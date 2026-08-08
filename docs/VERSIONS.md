@@ -34,7 +34,8 @@ Pin exactly (no caret unless noted) and re-verify before the first commit.
 | argon2 | 0.45.1 | Native addon: needs glibc prebuilds, see Debian note in plan. |
 | ioredis | 6.0.0 | |
 | BullMQ | 6.0.5 | |
-| Prisma / `@prisma/client` | 7.9.1 | Rust-free ESM client is the v7 default. See trap 2. |
+| Prisma / `@prisma/client` | 7.9.1 | Rust-free client is the v7 default. See trap 2. |
+| `@prisma/adapter-pg` | 7.9.1 | Mandatory with the Rust-free client, see trap 2. Track the `prisma` version exactly. |
 
 ## Infrastructure
 
@@ -46,6 +47,10 @@ Pin exactly (no caret unless noted) and re-verify before the first commit.
 
 pgvector must be >= 0.8.2: CVE-2026-3172, buffer overflow in parallel HNSW index builds.
 The plain `postgres` image does **not** include pgvector; use the image above.
+
+`CREATE EXTENSION IF NOT EXISTS vector;` belongs in the first migration that needs it. The CI
+shadow database replays migrations and nothing else, so an extension created anywhere else leaves
+`migrate diff` failing with `42704 type "vector" does not exist`.
 
 ## Testing
 
@@ -139,25 +144,33 @@ in that stage.
 Tracked as an optimisation, not a blocker: the images build and run. `pnpm deploy --filter`
 produces a self-contained prod tree and is the intended fix.
 
-## 1c. Prisma needs OpenSSL installed in slim images
+## 1c. Prisma CLI needs OpenSSL in slim images, the runtime does not
 
-`node:*-bookworm-slim` ships no libssl. Prisma cannot detect the OpenSSL version, falls back to
-`openssl-1.1.x` while bookworm is 3.x, and the engine fails at runtime. Install
-`openssl ca-certificates` in every stage that runs Prisma, build and runtime both.
+`node:*-bookworm-slim` ships no libssl and no CA bundle. The Prisma CLI probes for libssl and
+warns `failed to detect the libssl/openssl version to use ... Defaulting to "openssl-1.1.x"`, and
+the `schema-engine` binary it ships links `libssl.so.3`, so `base` installs
+`openssl ca-certificates` for every stage that runs the CLI.
 
-## 2. Prisma 7 + pgvector: vector column stays out of `schema.prisma`
+The prod stage needs neither: the runtime is the JS client over `@prisma/adapter-pg` and loads no
+engine, and node carries its own CA bundle for outbound TLS.
 
-`Unsupported("vector")` has an open migration-drift bug on v7
-([prisma#28867](https://github.com/prisma/prisma/issues/28867)). Recipe:
+## 2. The Rust-free Prisma client needs a driver adapter
 
-1. `CREATE EXTENSION vector;` in `infra/postgres/init/01-pgvector.sql`, never in a migration.
-2. `schema.prisma` declares scalar columns only.
-3. Vector column + HNSW index via `prisma migrate dev --create-only`, then hand-edit the SQL.
-4. Similarity queries via `$queryRaw` tagged templates, all inside one `EmbeddingRepository`.
-5. CI runs `prisma migrate diff`, fails on drift.
+The `prisma-client` generator emits a client with no query engine of its own, so it cannot talk to
+Postgres unaided: `new PrismaClient()` throws at construction with a message pointing at
+`@prisma/adapter-pg`. The adapter is a runtime dependency, not a dev one, and its version has to
+match `prisma` exactly.
 
-Cost: the embeddings table is half Prisma, half SQL. Document in README.
-If the drift check fires regularly, revisit Drizzle (native pgvector support).
+```ts
+super({ adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL }) });
+```
+
+Caught by a unit test rather than in production, which is the argument for `PrismaService` having
+a spec at all: with no adapter the failure is at container start, and only the Supertest suite or
+a real boot would otherwise have found it.
+
+The generated client is TypeScript, so `output` in `schema.prisma` points inside `src/`: `nest build`
+compiles it with everything else, and anything above `rootDir` cannot be emitted into `dist`.
 
 ## 3. Node 26 becomes LTS October 2026, mid-project
 

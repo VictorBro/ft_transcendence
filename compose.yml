@@ -115,13 +115,10 @@ services:
       # familiar /var/lib/postgresql/data would hold nothing and every restart
       # would come up empty. The parent path is correct under both layouts.
       - pg-data:/var/lib/postgresql
-      # Runs once, only while the data directory is empty. See the SQL file.
-      # LOCAL_WORKSPACE_FOLDER: see the caddy service.
-      - ${LOCAL_WORKSPACE_FOLDER:-.}/infra/postgres/init:/docker-entrypoint-initdb.d:ro
     healthcheck:
       # -h 127.0.0.1 matters: during init the entrypoint runs a temporary server
-      # on a unix socket only, and a socket-based pg_isready would report ready
-      # before 01-pgvector.sql has run.
+      # on a unix socket only, and a socket-based pg_isready reports ready before
+      # that server accepts TCP.
       test: ["CMD-SHELL", 'pg_isready -h 127.0.0.1 -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"']
       interval: 5s
       timeout: 5s

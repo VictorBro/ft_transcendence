@@ -69,6 +69,26 @@ jobs:
   unit-tests:
     name: unit tests (${{ matrix.app }})
     runs-on: ubuntu-24.04
+
+    # The Supertest suite boots the whole Nest graph, and PrismaService connects
+    # during onModuleInit, so it needs a real database. Declared for both matrix
+    # legs because `services` is a job-level key; the web leg simply ignores it,
+    # which costs a few seconds of container start.
+    services:
+      postgres:
+        image: pgvector/pgvector:0.8.6-pg18-trixie
+        env:
+          POSTGRES_USER: ft
+          POSTGRES_PASSWORD: ft_local_dev
+          POSTGRES_DB: ft_transcendence
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U ft -d ft_transcendence"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
     strategy:
       fail-fast: false
       matrix:
@@ -76,12 +96,8 @@ jobs:
           # The image CMD also runs lint and typecheck. It is overridden here so
           # those stay the responsibility of the native jobs above and are not
           # paid for twice.
-          #
-          # TODO plan step 5: the api Supertest suite gains a database the day a
-          # PrismaService lands. Add a `services: postgres` block using
-          # pgvector/pgvector:0.8.6-pg18-trixie and pass DATABASE_URL through.
           - app: api
-            command: pnpm --filter @ft/api run test:cov && pnpm --filter @ft/api run test:e2e
+            command: pnpm --filter @ft/api exec prisma migrate deploy && pnpm --filter @ft/api run test:cov && pnpm --filter @ft/api run test:e2e
           - app: web
             command: pnpm --filter @ft/web run test:cov
     steps:
@@ -103,7 +119,12 @@ jobs:
       - name: Test with coverage
         run: |
           mkdir -p coverage
+          # --network host: a `services:` container publishes on the RUNNER, and
+          # a plain `docker run` sits on its own bridge network where 127.0.0.1
+          # is the container itself.
           docker run --rm \
+            --network host \
+            -e DATABASE_URL="postgresql://ft:ft_local_dev@127.0.0.1:5432/ft_transcendence?schema=public" \
             -v "$PWD/coverage:/coverage" \
             ft/${{ matrix.app }}:ci \
             sh -c "${{ matrix.command }} && cp -a /app/apps/${{ matrix.app }}/coverage/. /coverage/"

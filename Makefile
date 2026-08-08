@@ -51,7 +51,18 @@ WAIT_TIMEOUT ?= 300
 # a site address for exactly this. /.dockerenv exists only inside a container.
 E2E_BASE_URL ?= $(if $(wildcard /.dockerenv),https://caddy,https://localhost)
 
-# DATABASE_URL for the tooling container. A local .env wins; without one the
+# Host the natively run tests reach the database on. Inside the devcontainer the
+# service is on the compose network and resolves by name; from a host shell it is
+# only reachable through the loopback port compose.override.yml publishes.
+DB_HOST := $(if $(wildcard /.dockerenv),db,127.0.0.1)
+
+# Exported so `pnpm test` and the Supertest suite see it without every recipe
+# repeating it. An existing value from the shell wins.
+DATABASE_URL ?= postgresql://ft:ft_local_dev@$(DB_HOST):5432/ft_transcendence?schema=public
+export DATABASE_URL
+
+# DATABASE_URL for the tooling container, which runs ON the compose network and
+# therefore always uses the service name. A local .env wins; without one the
 # compose defaults apply, which is what CI and a fresh clone use.
 DEFAULT_DATABASE_URL := postgresql://ft:ft_local_dev@db:5432/ft_transcendence?schema=public
 ifneq ($(wildcard .env),)
@@ -61,7 +72,7 @@ DB_ENV := -e DATABASE_URL='$(DEFAULT_DATABASE_URL)'
 endif
 
 .PHONY: all run dev up build down logs ps shell test test-e2e lint format typecheck \
-        migrate seed studio reset-db ci clean certs tooling-image doctor help
+        migrate seed studio reset-db ci db-up clean certs tooling-image doctor help
 
 # --- the one command ---------------------------------------------------------
 
@@ -99,12 +110,9 @@ up: ## Build and start the production stack, wait until healthy
 
 # --- development -------------------------------------------------------------
 
-# Every path the dev overlay masks with a named volume, relative to the repo.
-# They must exist BEFORE compose creates the containers: docker creates a
-# missing mount point through the bind mount as root, and a root-owned
-# node_modules/ or dist/ in the repo then breaks the devcontainer's own builds
-# with EACCES. mkdir -p as the invoking user keeps ownership right and leaves
-# existing directories untouched. Grows together with compose.override.yml.
+# Every path compose.override.yml masks with a named volume. Docker creates a
+# missing mount point as root, and a root-owned dir in the repo then breaks the
+# devcontainer's own builds with EACCES, so they are made here first.
 DEV_MASKED_DIRS := node_modules \
                    apps/api/node_modules apps/web/node_modules \
                    packages/eslint-config/node_modules packages/shared/node_modules \
@@ -113,11 +121,8 @@ DEV_MASKED_DIRS := node_modules \
                    apps/api/dist apps/web/.next
 
 dev: ## Start the development stack: bind-mounted source, hot reload
-	@# rmdir first: pnpm deletes the node_modules of a package with no
-	@# dependencies, and the next container start recreates the missing mount
-	@# point root-owned. An EMPTY dir can be replaced by the invoking user
-	@# (parent-dir permission), so this self-heals; populated dirs are left
-	@# alone because rmdir refuses non-empty ones.
+	@# rmdir drops the empty root-owned leftovers; it refuses non-empty dirs, so
+	@# anything real is untouched.
 	@for d in $(DEV_MASKED_DIRS); do rmdir "$$d" 2>/dev/null || true; done
 	mkdir -p $(DEV_MASKED_DIRS)
 	$(COMPOSE_DEV) up -d --build --wait --wait-timeout $(WAIT_TIMEOUT)
@@ -161,10 +166,17 @@ typecheck: ## tsc --noEmit across the workspace
 doctor: ## Check this machine can build, test and push: run it first on a new clone
 	./scripts/check-dev-env.sh
 
-ci: ## Everything the ci workflow runs, natively
+# The api Supertest suite boots the whole Nest graph, and PrismaService connects
+# on init, so a database has to exist. The ci workflow gets one from a `services:`
+# block; this is the local equivalent, and it keeps `make ci` self-contained.
+db-up:
+	@$(COMPOSE_DEV) up -d --wait db >/dev/null
+
+ci: db-up ## Everything the ci workflow runs, natively
 	./scripts/assert-ts-version.sh
 	./scripts/check-env-example.sh
 	pnpm run ci
+	pnpm --filter @ft/api exec prisma migrate deploy
 	pnpm --filter @ft/api run test:e2e
 
 # --- database ----------------------------------------------------------------
@@ -194,7 +206,7 @@ seed: ## Load development data into the database
 studio: ## Prisma Studio on http://localhost:5555
 	@$(MAKE) --no-print-directory tooling-image
 	docker run --rm -it --network $(NETWORK) -p 5555:5555 $(DB_ENV) $(TOOLING_IMAGE) \
-	  pnpm --filter @ft/api exec prisma studio --port 5555 --hostname 0.0.0.0 --browser none
+	  pnpm --filter @ft/api exec prisma studio --port 5555 --browser none
 
 reset-db: ## DESTRUCTIVE: drop the database volume and start empty (FORCE=1 to skip the prompt)
 	@if [ -z "$(FORCE)" ]; then \

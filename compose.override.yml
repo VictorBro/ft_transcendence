@@ -17,12 +17,9 @@
 # With an unchanged lockfile pnpm exits in about a second; after a branch switch
 # it repairs the volume instead of failing with a missing module.
 #
-# confirm-modules-purge=false on those installs: on the FIRST boot the store
-# volume is empty, so pnpm decides the image-seeded node_modules must be purged
-# and rebuilt, and asks before doing it. A compose service has no TTY to answer
-# with and the container dies with ERR_PNPM_ABORTED_REMOVE_MODULES_DIR_NO_TTY
-# (the interactive cousin of VERSIONS.md trap 1ba). Purging is exactly what we
-# want, so answer yes by config.
+# confirm-modules-purge=false: on first boot pnpm wants to purge the
+# image-seeded node_modules and asks first, which a service with no TTY cannot
+# answer (ERR_PNPM_ABORTED_REMOVE_MODULES_DIR_NO_TTY).
 
 services:
   web:
@@ -66,8 +63,13 @@ services:
     environment:
       NODE_ENV: development
     working_dir: /app
+    # @ft/shared is compiled TypeScript and the Prisma client is generated, so
+    # neither exists in a fresh volume. Both are cheap and idempotent, and doing
+    # them here means `make dev` works on a clone that has never run turbo.
     command: >
       sh -c "pnpm install --frozen-lockfile --config.confirm-modules-purge=false --filter @ft/api... &&
+             pnpm --filter @ft/shared run build &&
+             pnpm --filter @ft/api exec prisma generate &&
              pnpm --filter @ft/api run dev"
     volumes:
       # LOCAL_WORKSPACE_FOLDER: see the caddy service in compose.yml.
@@ -87,6 +89,14 @@ services:
       # nest-cli.dev.json, whose only difference is deleteOutDir: false.
       - api-dist:/app/apps/api/dist
       - api-pnpm-store:/pnpm/store
+
+  db:
+    # Loopback only, never 0.0.0.0: this publishes a database with a known
+    # development password, and a school machine shares its network. Bound here
+    # so `make ci` and a GUI client work from a host shell, where the compose
+    # network name `db` does not resolve.
+    ports:
+      - "127.0.0.1:5432:5432"
 
   # Devcontainer shell. Behind a profile, so `docker compose up` ignores it;
   # VS Code names the service explicitly, which activates the profile.

@@ -16,7 +16,10 @@ export class HealthController {
   @Get()
   @ApiOperation({ summary: 'Liveness probe' })
   @ApiOkResponse({ type: HealthResponseDto })
-  check(): HealthResponseDto {
+  // Always 200, including when a dependency is down: the body carries the
+  // verdict. A non-2xx here would make Docker restart a container whose only
+  // problem is that Postgres is still starting.
+  check(): Promise<HealthResponseDto> {
     return this.health.check();
   }
 }

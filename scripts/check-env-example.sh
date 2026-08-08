@@ -38,6 +38,9 @@ RUNTIME_INJECTED=(
   # Set by .github/workflows/e2e.yml, never by .env: the suite targets whatever
   # host the workflow brought up.
   E2E_BASE_URL
+  # Set by the prisma drift job in .github/workflows/hygiene.yml, which brings up
+  # its own throwaway database. Never points at a database anyone keeps.
+  SHADOW_DATABASE_URL
 )
 
 failures=0

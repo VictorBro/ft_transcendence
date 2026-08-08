@@ -56,7 +56,7 @@
 # /apps/api/Dockerfile  @owner-a @owner-b
 # /apps/web/Dockerfile  @owner-a @owner-b
 #
-# docs/VERSIONS.md is load-bearing: traps 1 and 2 are enforced by CI against it,
+# docs/VERSIONS.md is load-bearing: trap 1 is enforced by CI against it,
 # and the pnpm files decide what every package resolves to. Whole-team review,
 # so a bump is a decision rather than a drive-by.
 # /docs/VERSIONS.md     @VictorBro @avarrett @baschni @luca-mattei @VYAntares

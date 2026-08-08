@@ -3,8 +3,16 @@
   "globalDependencies": [".npmrc", ".nvmrc", ".prettierrc", ".prettierignore"],
   "globalEnv": ["CI", "NODE_ENV"],
   "tasks": {
+    // The Prisma client is emitted TypeScript that apps/api imports, so it is a
+    // build input rather than an artifact: without it, a fresh clone fails to
+    // typecheck, test or build until someone runs prisma generate by hand.
+    // Only apps/api defines this script; turbo skips the packages that do not.
+    "db:generate": {
+      "cache": false,
+      "outputs": ["src/generated/**"]
+    },
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "db:generate"],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
     },
     "dev": {
@@ -17,19 +25,19 @@
       "persistent": true
     },
     "lint": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "db:generate"],
       "outputs": []
     },
     "typecheck": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "db:generate"],
       "outputs": []
     },
     "test": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "db:generate"],
       "outputs": []
     },
     "test:cov": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "db:generate"],
       "outputs": ["coverage/**"]
     },
     "format:check": {

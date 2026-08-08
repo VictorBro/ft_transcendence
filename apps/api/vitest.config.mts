@@ -31,7 +31,15 @@ export default defineConfig({
       include: ['src/**/*.ts'],
       // Bootstrap wiring and DI-only module classes carry no logic to assert;
       // the e2e suite exercises them instead.
-      exclude: ['src/main.ts', 'src/app.setup.ts', 'src/**/*.module.ts', 'src/**/*.spec.ts'],
+      exclude: [
+        'src/main.ts',
+        'src/app.setup.ts',
+        'src/**/*.module.ts',
+        'src/**/*.spec.ts',
+        // Prisma's emitted client: not our code, and large enough to swamp the
+        // thresholds below.
+        'src/generated/**',
+      ],
       thresholds: {
         lines: 60,
         functions: 60,
