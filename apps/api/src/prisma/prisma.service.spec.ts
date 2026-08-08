@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { PrismaService } from './prisma.service';
 
@@ -9,10 +9,20 @@ import { PrismaService } from './prisma.service';
  * time.
  */
 describe('PrismaService', () => {
-  const service = new PrismaService();
+  const databaseUrl = 'postgresql://ft:ft_local_dev@db:5432/ft_transcendence?schema=public';
+  let service: PrismaService;
+
+  // Set explicitly rather than inherited from the shell: the constructor now
+  // refuses to build without it, and a unit test should not depend on how it
+  // was invoked.
+  beforeEach(() => {
+    process.env.DATABASE_URL = databaseUrl;
+    service = new PrismaService();
+  });
 
   afterEach(() => {
     vi.restoreAllMocks();
+    process.env.DATABASE_URL = databaseUrl;
   });
 
   it('connects during bootstrap rather than on the first query', async () => {
@@ -45,5 +55,17 @@ describe('PrismaService', () => {
     vi.spyOn(service, '$queryRaw').mockRejectedValue(new Error('ECONNREFUSED'));
 
     await expect(service.ping()).rejects.toThrow('ECONNREFUSED');
+  });
+
+  // Without this, node-postgres silently falls back to its PG* defaults and the
+  // eventual error names localhost, in a container that never mentioned it.
+  it.each([undefined, '', '   '])('refuses to construct with DATABASE_URL=%o', (value) => {
+    if (value === undefined) {
+      delete process.env.DATABASE_URL;
+    } else {
+      process.env.DATABASE_URL = value;
+    }
+
+    expect(() => new PrismaService()).toThrow(/DATABASE_URL is unset/);
   });
 });

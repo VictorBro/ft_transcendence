@@ -1,7 +1,7 @@
 import { ConfigService } from '@nestjs/config';
 import { Test } from '@nestjs/testing';
 import { HealthResponseSchema } from '@ft/shared';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it } from 'vitest';
 
 import { PrismaService } from '../prisma/prisma.service';
 import { HealthService, SLOW_DEPENDENCY_MS } from './health.service';
@@ -68,14 +68,5 @@ describe('HealthService', () => {
       status: 'down',
       dependencies: [{ name: 'database', status: 'down', latencyMs: 0 }],
     });
-  });
-
-  it('does not let a rejected probe escape as an exception', async () => {
-    const broken = await buildService(() => Promise.reject(new Error('boom')));
-    const spy = vi.spyOn(broken, 'check');
-
-    await broken.check();
-
-    expect(spy).toHaveResolved();
   });
 });

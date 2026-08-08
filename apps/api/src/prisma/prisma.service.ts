@@ -4,6 +4,23 @@ import { PrismaPg } from '@prisma/adapter-pg';
 import { PrismaClient } from '../generated/prisma/client';
 
 /**
+ * Validated before the client is constructed. Left undefined, node-postgres
+ * falls back to its own PG* defaults and eventually fails with a connection
+ * error naming localhost, which sends whoever is debugging a container to
+ * entirely the wrong place.
+ *
+ * A free function because `super()` must be the first statement in a class that
+ * has property initializers, so this cannot be inlined into the constructor.
+ */
+function requireDatabaseUrl(): string {
+  const url = process.env.DATABASE_URL;
+  if (url === undefined || url.trim() === '') {
+    throw new Error('DATABASE_URL is unset: the api cannot start. See .env.example.');
+  }
+  return url;
+}
+
+/**
  * The only place the Prisma client is instantiated. Everything that touches the
  * database injects this, so connection lifetime and logging are decided once.
  *
@@ -17,10 +34,10 @@ export class PrismaService extends PrismaClient implements OnModuleInit, OnModul
   private readonly logger = new Logger(PrismaService.name);
 
   constructor() {
-    // Read here rather than through ConfigService: the client is constructed
-    // before Nest resolves providers, and prisma.config.ts reads the same
-    // variable for the CLI, so the two cannot point at different databases.
-    super({ adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL }) });
+    // Read from the environment rather than through ConfigService: the client is
+    // constructed before Nest resolves providers, and prisma.config.ts reads the
+    // same variable for the CLI, so the two cannot point at different databases.
+    super({ adapter: new PrismaPg({ connectionString: requireDatabaseUrl() }) });
   }
 
   /**
