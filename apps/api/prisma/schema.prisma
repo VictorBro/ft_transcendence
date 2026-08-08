@@ -5,12 +5,13 @@ datasource db {
   provider = "postgresql"
 }
 
-// Output lands outside src/ on purpose: the emitted client is TypeScript, and
-// keeping it out of tsconfig's `include` keeps typecheck, lint and coverage
-// measuring our code only.
+// Inside src/ because the prisma-client generator emits TypeScript, not JavaScript:
+// it has to be compiled by `nest build` like any other source file, and rootDir
+// is src, so anything above it cannot be emitted. Lint, coverage and git all
+// exclude src/generated explicitly instead.
 generator client {
   provider     = "prisma-client"
-  output       = "../generated/prisma"
+  output       = "../src/generated/prisma"
   runtime      = "nodejs"
   moduleFormat = "cjs"
 }
@@ -20,10 +21,33 @@ generator client {
 // (prisma/prisma#28867). The extension is created by
 // infra/postgres/init/01-pgvector.sql, and the embedding column plus its HNSW
 // index arrive later through a hand-edited `migrate dev --create-only` SQL file.
+// Mirrors UserSchema in packages/shared/src/schemas/user.ts, which is the source
+// of truth for what crosses the network. Two rules keep them honest: the columns
+// here match that schema field for field, and passwordHash exists ONLY here
+// because no schema in @ft/shared may ever expose it.
 model User {
-  id          String   @id @default(uuid()) @db.Uuid
-  email       String   @unique
-  displayName String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id           String   @id @default(uuid()) @db.Uuid
+  email        String   @unique
+  displayName  String   @unique
+  passwordHash String
+  avatarUrl    String?
+  locale       Locale   @default(en)
+  role         Role     @default(USER)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+// Values match UserRoleSchema and LocaleSchema in @ft/shared. Adding a locale is
+// already a code change there (next-intl routing reads the same tuple), so the
+// migration this forces is a feature rather than a cost: the database rejects a
+// value the application has not been taught to render.
+enum Role {
+  USER
+  ADMIN
+}
+
+enum Locale {
+  en
+  fr
+  de
 }

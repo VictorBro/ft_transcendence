@@ -51,7 +51,18 @@ WAIT_TIMEOUT ?= 300
 # a site address for exactly this. /.dockerenv exists only inside a container.
 E2E_BASE_URL ?= $(if $(wildcard /.dockerenv),https://caddy,https://localhost)
 
-# DATABASE_URL for the tooling container. A local .env wins; without one the
+# Host the natively run tests reach the database on. Inside the devcontainer the
+# service is on the compose network and resolves by name; from a host shell it is
+# only reachable through the loopback port compose.override.yml publishes.
+DB_HOST := $(if $(wildcard /.dockerenv),db,127.0.0.1)
+
+# Exported so `pnpm test` and the Supertest suite see it without every recipe
+# repeating it. An existing value from the shell wins.
+DATABASE_URL ?= postgresql://ft:ft_local_dev@$(DB_HOST):5432/ft_transcendence?schema=public
+export DATABASE_URL
+
+# DATABASE_URL for the tooling container, which runs ON the compose network and
+# therefore always uses the service name. A local .env wins; without one the
 # compose defaults apply, which is what CI and a fresh clone use.
 DEFAULT_DATABASE_URL := postgresql://ft:ft_local_dev@db:5432/ft_transcendence?schema=public
 ifneq ($(wildcard .env),)
@@ -61,7 +72,7 @@ DB_ENV := -e DATABASE_URL='$(DEFAULT_DATABASE_URL)'
 endif
 
 .PHONY: all run dev up build down logs ps shell test test-e2e lint format typecheck \
-        migrate seed studio reset-db ci clean certs tooling-image doctor help
+        migrate seed studio reset-db ci db-up clean certs tooling-image doctor help
 
 # --- the one command ---------------------------------------------------------
 
@@ -161,10 +172,17 @@ typecheck: ## tsc --noEmit across the workspace
 doctor: ## Check this machine can build, test and push: run it first on a new clone
 	./scripts/check-dev-env.sh
 
-ci: ## Everything the ci workflow runs, natively
+# The api Supertest suite boots the whole Nest graph, and PrismaService connects
+# on init, so a database has to exist. The ci workflow gets one from a `services:`
+# block; this is the local equivalent, and it keeps `make ci` self-contained.
+db-up:
+	@$(COMPOSE_DEV) up -d --wait db >/dev/null
+
+ci: db-up ## Everything the ci workflow runs, natively
 	./scripts/assert-ts-version.sh
 	./scripts/check-env-example.sh
 	pnpm run ci
+	pnpm --filter @ft/api exec prisma migrate deploy
 	pnpm --filter @ft/api run test:e2e
 
 # --- database ----------------------------------------------------------------

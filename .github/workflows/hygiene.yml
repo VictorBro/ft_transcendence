@@ -128,25 +128,9 @@ jobs:
     steps:
       - uses: actions/checkout@v7.0.1
 
-      # TODO plan step 5: delete this guard once the first migration is
-      # committed. From that point a missing migrations directory is itself the
-      # bug, and the check becomes mandatory.
-      - name: Are there migrations to check
-        id: guard
-        run: |
-          dir=apps/api/prisma/migrations
-          if [ ! -d "$dir" ] || [ -z "$(ls -A "$dir" 2>/dev/null)" ]; then
-            echo "::notice title=Prisma drift check skipped::$dir does not exist yet. It becomes mandatory at plan step 5."
-            echo "run=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "run=true" >> "$GITHUB_OUTPUT"
-          fi
-
-      - if: steps.guard.outputs.run == 'true'
-        uses: ./.github/actions/setup
+      - uses: ./.github/actions/setup
 
       - name: prisma migrate diff
-        if: steps.guard.outputs.run == 'true'
         env:
           # prisma.config.ts reads DATABASE_URL and defaults it to an empty
           # string, which some subcommands reject before they look at the flags.
@@ -154,10 +138,13 @@ jobs:
           SHADOW_DATABASE_URL: postgresql://shadow:shadow@127.0.0.1:5432/shadow
         run: |
           set +e
+          # Prisma 7 renamed --to-schema-datamodel to --to-schema and dropped
+          # --shadow-database-url entirely; the shadow database now comes from
+          # datasource.shadowDatabaseUrl in prisma.config.ts, which reads
+          # SHADOW_DATABASE_URL from the env set above.
           pnpm --filter @ft/api exec prisma migrate diff \
             --from-migrations ./prisma/migrations \
-            --to-schema-datamodel ./prisma/schema.prisma \
-            --shadow-database-url "$SHADOW_DATABASE_URL" \
+            --to-schema ./prisma/schema.prisma \
             --exit-code
           status=$?
           set -e

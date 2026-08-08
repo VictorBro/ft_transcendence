@@ -34,7 +34,8 @@ Pin exactly (no caret unless noted) and re-verify before the first commit.
 | argon2 | 0.45.1 | Native addon: needs glibc prebuilds, see Debian note in plan. |
 | ioredis | 6.0.0 | |
 | BullMQ | 6.0.5 | |
-| Prisma / `@prisma/client` | 7.9.1 | Rust-free ESM client is the v7 default. See trap 2. |
+| Prisma / `@prisma/client` | 7.9.1 | Rust-free client is the v7 default. See traps 2 and 2b. |
+| `@prisma/adapter-pg` | 7.9.1 | Mandatory with the Rust-free client, see trap 2b. Track the `prisma` version exactly. |
 
 ## Infrastructure
 
@@ -158,6 +159,24 @@ produces a self-contained prod tree and is the intended fix.
 
 Cost: the embeddings table is half Prisma, half SQL. Document in README.
 If the drift check fires regularly, revisit Drizzle (native pgvector support).
+
+## 2b. The Rust-free Prisma client needs a driver adapter
+
+The `prisma-client` generator emits a client with no query engine of its own, so it cannot talk to
+Postgres unaided: `new PrismaClient()` throws at construction with a message pointing at
+`@prisma/adapter-pg`. The adapter is a runtime dependency, not a dev one, and its version has to
+match `prisma` exactly.
+
+```ts
+super({ adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL }) });
+```
+
+Caught by a unit test rather than in production, which is the argument for `PrismaService` having
+a spec at all: with no adapter the failure is at container start, and only the Supertest suite or
+a real boot would otherwise have found it.
+
+The generated client is TypeScript, so `output` in `schema.prisma` points inside `src/`: `nest build`
+compiles it with everything else, and anything above `rootDir` cannot be emitted into `dist`.
 
 ## 3. Node 26 becomes LTS October 2026, mid-project
 

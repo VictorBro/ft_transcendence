@@ -8,7 +8,8 @@
     "tsBuildInfoFile": "./dist/tsconfig.tsbuildinfo",
   },
   // Tests are typechecked here and excluded from the build (tsconfig.build.json).
-  // `generated` is the Prisma client: emitted code, not ours to check.
+  // src/generated is in: the Prisma client is TypeScript that has to compile
+  // into dist, and excluding it would only hide errors until runtime.
   "include": ["src/**/*.ts", "test/**/*.ts"],
-  "exclude": ["node_modules", "dist", "coverage", "generated"],
+  "exclude": ["node_modules", "dist", "coverage"],
 }

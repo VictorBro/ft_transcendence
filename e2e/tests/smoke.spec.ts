@@ -39,10 +39,15 @@ test.describe('production stack smoke', () => {
       service: 'web',
     });
 
+    // Against the production stack the database is up, so this is the one place
+    // that asserts a genuinely healthy dependency rather than just a valid shape.
     expect(await (await request.get('/api/health')).json()).toEqual({
       status: 'ok',
-      uptime: expect.any(Number),
+      service: 'api',
       version: expect.any(String),
+      uptimeSeconds: expect.any(Number),
+      checkedAt: expect.any(String),
+      dependencies: [{ name: 'database', status: 'ok', latencyMs: expect.any(Number) }],
     });
   });
 

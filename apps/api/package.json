@@ -19,12 +19,14 @@
     "db:deploy": "prisma migrate deploy"
   },
   "dependencies": {
+    "@ft/shared": "workspace:*",
     "@nestjs/common": "11.1.28",
     "@nestjs/config": "4.0.4",
     "@nestjs/core": "11.1.28",
     "@nestjs/platform-express": "11.1.28",
     "@nestjs/swagger": "11.4.6",
     "@nestjs/throttler": "6.5.0",
+    "@prisma/adapter-pg": "7.9.1",
     "@prisma/client": "7.9.1",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.15.1",

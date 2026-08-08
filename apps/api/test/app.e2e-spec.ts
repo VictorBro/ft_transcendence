@@ -1,5 +1,6 @@
 import { INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
+import { HealthResponseSchema } from '@ft/shared';
 import request from 'supertest';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
@@ -21,13 +22,19 @@ describe('API (e2e)', () => {
     await app.close();
   });
 
-  it('GET /api/health', async () => {
+  it('GET /api/health answers the shape @ft/shared publishes', async () => {
     const response = await request(app.getHttpServer()).get('/api/health').expect(200);
 
-    expect(response.body).toEqual({
+    // Parsed against the published schema rather than compared field by field,
+    // so the assertion fails on a contract break rather than on a new field.
+    const parsed = HealthResponseSchema.safeParse(response.body);
+    expect(parsed.error?.issues ?? []).toEqual([]);
+
+    // A real database backs this suite here and in CI, so a down dependency is
+    // a genuine failure, not an environment difference.
+    expect(response.body).toMatchObject({
       status: 'ok',
-      uptime: expect.any(Number),
-      version: expect.any(String),
+      dependencies: [{ name: 'database', status: 'ok' }],
     });
   });
 
