@@ -44,6 +44,7 @@ TOOLING_IMAGE := $(PROJECT)/api-tooling
 SERVICE      ?= api
 SERVICES     ?=
 WAIT_TIMEOUT ?= 300
+STUDIO_PORT  ?= 5555
 
 # Where Playwright points its browser. Inside the devcontainer caddy's
 # published ports live on the HOST, so the suite talks to the caddy service
@@ -137,7 +138,15 @@ dev: ## Start the development stack: bind-mounted source, hot reload
 # Compose matches containers by project label, so these work whichever overlay
 # started the stack. The dev file list is used because it is the shorter one.
 down: ## Stop the stack, keep the volumes
-	$(COMPOSE_DEV) down --remove-orphans
+	@# The workspace service is behind a profile, so it is invisible to compose
+	@# unless the profile is named. Doing that from inside the devcontainer would
+	@# stop the container running this command, so only the host activates it.
+	@if [ -f /.dockerenv ]; then \
+	  $(COMPOSE_DEV) down --remove-orphans; \
+	  echo "  workspace container left running: you are in it"; \
+	else \
+	  $(COMPOSE_DEV) --profile devcontainer down --remove-orphans; \
+	fi
 
 logs: ## Follow logs, all services or SERVICES="api web"
 	$(COMPOSE_DEV) logs -f --tail=200 $(SERVICES)
@@ -207,10 +216,18 @@ seed: ## Load development data into the database
 	docker run --rm --network $(NETWORK) $(DB_ENV) $(TOOLING_IMAGE) \
 	  pnpm --filter @ft/api run db:seed
 
-studio: ## Prisma Studio on http://localhost:5555
+studio: ## Prisma Studio, override with STUDIO_PORT=5556 if the port is taken
 	@$(MAKE) --no-print-directory tooling-image
-	docker run --rm -it --network $(NETWORK) -p 5555:5555 $(DB_ENV) $(TOOLING_IMAGE) \
-	  pnpm --filter @ft/api exec prisma studio --port 5555 --browser none
+	@printf '\n  Prisma Studio: http://127.0.0.1:%s\n\n' '$(STUDIO_PORT)'
+	@# Loopback only: Studio gives unauthenticated access to the whole database.
+	@# Run prisma directly; `pnpm exec` reports the child's 130 as its own 1.
+	@# 130 means SIGINT, i.e. Ctrl+C, which is how you stop a server.
+	@set +e; \
+	docker run --rm -it --network $(NETWORK) -p 127.0.0.1:$(STUDIO_PORT):5555 \
+	  $(DB_ENV) --workdir /app/apps/api $(TOOLING_IMAGE) \
+	  ./node_modules/.bin/prisma studio --port 5555 --browser none; \
+	status=$$?; \
+	case $$status in 0|130) exit 0 ;; *) exit $$status ;; esac
 
 reset-db: ## DESTRUCTIVE: drop the database volume and start empty (FORCE=1 to skip the prompt)
 	@if [ -z "$(FORCE)" ]; then \

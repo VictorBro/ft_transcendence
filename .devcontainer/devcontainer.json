@@ -125,6 +125,10 @@
         "terminal.integrated.defaultProfile.linux": "zsh",
         "files.eol": "\n",
 
+        // Compose already publishes every port. Auto-forwards add duplicates
+        // that outlive the command and squat host ports on the next run.
+        "remote.autoForwardPorts": false,
+
         // Without this VS Code guesses Markdown for the extensionless
         // CODEOWNERS, and format-on-save then rewrites its `*` catch-all into
         // a Markdown bullet. .prettierignore already blocks the formatter; this
