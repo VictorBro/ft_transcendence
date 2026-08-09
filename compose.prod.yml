@@ -32,6 +32,9 @@ services:
       target: prod
     environment:
       NODE_ENV: production
+      # No dev fallback here: compose.yml has one, and inheriting it would sign
+      # production cookies with a secret that is public in this repo.
+      SESSION_SECRET: ${SESSION_SECRET:?set an explicit SESSION_SECRET for production}
     restart: unless-stopped
 
   db:

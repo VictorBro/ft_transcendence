@@ -78,7 +78,17 @@ export class AuthController {
   @HttpCode(HttpStatus.NO_CONTENT)
   @ApiOperation({ summary: 'Destroy the current session' })
   async logout(@Req() request: Request): Promise<void> {
-    await new Promise<void>((resolve) => request.session.destroy(() => resolve()));
+    // Failing loudly rather than returning 204: if the store entry survives, the
+    // session is still usable and reporting success would be a lie.
+    await new Promise<void>((resolve, reject) => {
+      request.session.destroy((error) => {
+        if (error) {
+          reject(error instanceof Error ? error : new Error(String(error)));
+          return;
+        }
+        resolve();
+      });
+    });
     // The store entry is gone; this clears the now-dangling browser cookie.
     request.res?.clearCookie('ft.sid', { path: '/' });
   }
