@@ -2,10 +2,13 @@ import { Controller, Get } from '@nestjs/common';
 import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { SkipThrottle } from '@nestjs/throttler';
 
+import { Public } from '../auth/auth.decorators';
 import { HealthResponseDto } from './dto/health-response.dto';
 import { HealthService } from './health.service';
 
 @ApiTags('health')
+// The Docker HEALTHCHECK has no session and must never get a 401.
+@Public()
 // The Docker HEALTHCHECK and CI poll this endpoint. Sharing the per-IP throttle
 // budget with real traffic would make container health depend on load.
 @SkipThrottle()

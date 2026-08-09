@@ -3,6 +3,10 @@
   "extends": "@ft/tsconfig/nest.json",
   "compilerOptions": {
     "outDir": "./dist",
+    // Nothing imports this app's types, and emitting declarations makes every
+    // inferred type have to be nameable: createZodDto returns a type from a
+    // hashed internal path and fails with TS2883.
+    "declaration": false,
     // Its own build-info file: sharing one with tsconfig.build.json would mix a
     // noEmit run's state into the emitting run's.
     "tsBuildInfoFile": "./dist/tsconfig.tsbuildinfo",

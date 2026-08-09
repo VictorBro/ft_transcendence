@@ -31,6 +31,9 @@ jobs:
     env:
       COMPOSE: docker compose -f compose.yml -f compose.prod.yml
       E2E_BASE_URL: https://localhost
+      # compose.prod.yml requires this rather than inheriting the dev fallback,
+      # so a real deploy cannot sign cookies with a secret published in this repo.
+      SESSION_SECRET: ci-only-session-secret-at-least-32-characters-long
 
     steps:
       - uses: actions/checkout@v7.0.1
@@ -42,9 +45,9 @@ jobs:
       - name: Install the Chromium build Playwright pins
         run: pnpm --filter @ft/e2e exec playwright install --with-deps chromium
 
-      # No .env file. Every value in compose.yml is ${VAR:-default}, so the
-      # stack comes up with the committed defaults, which is exactly what an
-      # evaluator gets on a fresh clone.
+      # No .env file. Every value in compose.yml is ${VAR:-default} except
+      # SESSION_SECRET, supplied above, so the stack comes up with the committed
+      # defaults, which is what an evaluator gets on a fresh clone via `make`.
       - name: Start the production stack
         run: $COMPOSE up -d --build --wait --wait-timeout 300
 
@@ -62,6 +65,13 @@ jobs:
           done
           echo "::error::$E2E_BASE_URL/healthz never answered"
           exit 1
+
+      # The database comes up empty. Until the browser suite signed up an
+      # account, nothing here wrote a row and the missing tables went unnoticed.
+      # The prod image carries no Prisma CLI or schema, so this runs from a
+      # throwaway container built off the api build stage, exactly as `make` does.
+      - name: Apply migrations
+        run: make migrate
 
       - name: Run the suite
         run: pnpm --filter @ft/e2e run test:e2e

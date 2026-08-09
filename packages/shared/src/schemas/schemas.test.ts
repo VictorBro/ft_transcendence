@@ -8,6 +8,7 @@ import {
   HelloResponseSchema,
   LocaleSchema,
   PublicUserSchema,
+  SignUpFormSchema,
   SUPPORTED_LOCALES,
   UserSchema,
   isLocale,
@@ -161,5 +162,33 @@ describe('CreateUserSchema', () => {
     expect(CreateUserSchema.safeParse({ ...signup, password: 'NoDigitsInHere' }).success).toBe(
       false,
     );
+  });
+});
+
+describe('SignUpFormSchema', () => {
+  const valid = {
+    email: 'learner@example.com',
+    displayName: 'learner',
+    password: 'Correct-Horse-9',
+    confirmPassword: 'Correct-Horse-9',
+  };
+
+  it('accepts a matching confirmation', () => {
+    expect(SignUpFormSchema.safeParse(valid).success).toBe(true);
+  });
+
+  // The message has to land on the confirmation, not the password: blaming the
+  // first field sends the user to correct the one they probably typed right.
+  it('reports a mismatch against the confirmation field', () => {
+    const result = SignUpFormSchema.safeParse({ ...valid, confirmPassword: 'Correct-Horse-8' });
+
+    expect(result.success).toBe(false);
+    expect(result.error?.issues[0].path).toEqual(['confirmPassword']);
+    expect(result.error?.issues[0].message).toContain('do not match');
+  });
+
+  // The confirmation is a form concern; CreateUserSchema stays the wire contract.
+  it('is not part of what the API accepts', () => {
+    expect(Object.keys(CreateUserSchema.shape)).not.toContain('confirmPassword');
   });
 });

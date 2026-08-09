@@ -34,7 +34,10 @@ describe('API (e2e)', () => {
     // a genuine failure, not an environment difference.
     expect(response.body).toMatchObject({
       status: 'ok',
-      dependencies: [{ name: 'database', status: 'ok' }],
+      dependencies: [
+        { name: 'database', status: 'ok' },
+        { name: 'redis', status: 'ok' },
+      ],
     });
   });
 

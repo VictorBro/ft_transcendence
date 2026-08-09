@@ -3,6 +3,7 @@ import { ConfigService } from '@nestjs/config';
 import type { DependencyHealth, HealthStatus } from '@ft/shared';
 
 import { PrismaService } from '../prisma/prisma.service';
+import { RedisService } from '../redis/redis.service';
 import { HealthResponseDto } from './dto/health-response.dto';
 
 /** Above this a dependency answers, but not well enough to call healthy. */
@@ -15,6 +16,7 @@ export class HealthService {
   constructor(
     private readonly config: ConfigService,
     private readonly prisma: PrismaService,
+    private readonly redis: RedisService,
   ) {}
 
   /**
@@ -45,7 +47,12 @@ export class HealthService {
   }
 
   async check(): Promise<HealthResponseDto> {
-    const dependencies = [await this.probe('database', () => this.prisma.ping())];
+    // Probed together: one slow dependency should not add its latency to the
+    // other's reported number.
+    const dependencies = await Promise.all([
+      this.probe('database', () => this.prisma.ping()),
+      this.probe('redis', () => this.redis.ping()),
+    ]);
 
     return {
       status: HealthService.rollUp(dependencies),

@@ -44,6 +44,10 @@ TOOLING_IMAGE := $(PROJECT)/api-tooling
 SERVICE      ?= api
 SERVICES     ?=
 WAIT_TIMEOUT ?= 300
+STUDIO_PORT  ?= 5555
+# Matches the identities e2e/tests/auth.spec.ts signs up, so test-e2e can clear
+# them afterwards.
+E2E_EMAIL_PREFIX ?= browser-
 
 # Where Playwright points its browser. Inside the devcontainer caddy's
 # published ports live on the HOST, so the suite talks to the caddy service
@@ -51,15 +55,19 @@ WAIT_TIMEOUT ?= 300
 # a site address for exactly this. /.dockerenv exists only inside a container.
 E2E_BASE_URL ?= $(if $(wildcard /.dockerenv),https://caddy,https://localhost)
 
-# Host the natively run tests reach the database on. Inside the devcontainer the
-# service is on the compose network and resolves by name; from a host shell it is
-# only reachable through the loopback port compose.override.yml publishes.
-DB_HOST := $(if $(wildcard /.dockerenv),db,127.0.0.1)
+# Hosts the natively run tests reach the stores on. Inside the devcontainer they
+# are on the compose network and resolve by service name; from a host shell only
+# through the loopback ports compose.override.yml publishes.
+IN_CONTAINER := $(wildcard /.dockerenv)
+DB_HOST    := $(if $(IN_CONTAINER),db,127.0.0.1)
+REDIS_HOST := $(if $(IN_CONTAINER),redis,127.0.0.1)
 
-# Exported so `pnpm test` and the Supertest suite see it without every recipe
-# repeating it. An existing value from the shell wins.
+# Exported so `pnpm test` and the Supertest suite see them without every recipe
+# repeating them. Existing values from the shell win.
 DATABASE_URL ?= postgresql://ft:ft_local_dev@$(DB_HOST):5432/ft_transcendence?schema=public
-export DATABASE_URL
+REDIS_URL    ?= redis://$(REDIS_HOST):6379
+SESSION_SECRET ?= dev-only-session-secret-change-me-at-least-32-chars
+export DATABASE_URL REDIS_URL SESSION_SECRET
 
 # DATABASE_URL for the tooling container, which runs ON the compose network and
 # therefore always uses the service name. A local .env wins; without one the
@@ -72,7 +80,7 @@ DB_ENV := -e DATABASE_URL='$(DEFAULT_DATABASE_URL)'
 endif
 
 .PHONY: all run dev up build down logs ps shell test test-e2e lint format typecheck \
-        migrate seed studio reset-db ci db-up clean certs tooling-image doctor help
+        migrate seed studio reset-db ci stores-up clean certs tooling-image doctor help
 
 # --- the one command ---------------------------------------------------------
 
@@ -133,7 +141,15 @@ dev: ## Start the development stack: bind-mounted source, hot reload
 # Compose matches containers by project label, so these work whichever overlay
 # started the stack. The dev file list is used because it is the shorter one.
 down: ## Stop the stack, keep the volumes
-	$(COMPOSE_DEV) down --remove-orphans
+	@# The workspace service is behind a profile, so it is invisible to compose
+	@# unless the profile is named. Doing that from inside the devcontainer would
+	@# stop the container running this command, so only the host activates it.
+	@if [ -f /.dockerenv ]; then \
+	  $(COMPOSE_DEV) down --remove-orphans; \
+	  echo "  workspace container left running: you are in it"; \
+	else \
+	  $(COMPOSE_DEV) --profile devcontainer down --remove-orphans; \
+	fi
 
 logs: ## Follow logs, all services or SERVICES="api web"
 	$(COMPOSE_DEV) logs -f --tail=200 $(SERVICES)
@@ -152,7 +168,15 @@ test: ## Unit tests across the workspace
 test-e2e: ## Playwright against the production stack (starts it if needed)
 	@$(MAKE) --no-print-directory up
 	pnpm --filter @ft/e2e exec playwright install chromium
-	E2E_BASE_URL=$(E2E_BASE_URL) pnpm --filter @ft/e2e run test:e2e
+	@# The accounts the browser suite signs up are real rows. Removing them keeps
+	@# repeated runs from filling the database an evaluator is going to look at.
+	@# The prefix is set in e2e/tests/auth.spec.ts. RecoveryCode cascades.
+	@set +e; \
+	E2E_BASE_URL=$(E2E_BASE_URL) pnpm --filter @ft/e2e run test:e2e; \
+	status=$$?; \
+	$(COMPOSE_DEV) exec -T db psql -U ft -d ft_transcendence \
+	  -c "delete from \"User\" where email like '$(E2E_EMAIL_PREFIX)%@example.com';" >/dev/null; \
+	exit $$status
 
 lint: ## ESLint across the workspace
 	pnpm run lint
@@ -166,13 +190,13 @@ typecheck: ## tsc --noEmit across the workspace
 doctor: ## Check this machine can build, test and push: run it first on a new clone
 	./scripts/check-dev-env.sh
 
-# The api Supertest suite boots the whole Nest graph, and PrismaService connects
-# on init, so a database has to exist. The ci workflow gets one from a `services:`
-# block; this is the local equivalent, and it keeps `make ci` self-contained.
-db-up:
-	@$(COMPOSE_DEV) up -d --wait db >/dev/null
+# The api Supertest suite boots the whole Nest graph, and both PrismaService and
+# RedisService connect on init, so the stores have to exist. The ci workflow gets
+# them from `services:` blocks; this is the local equivalent.
+stores-up:
+	@$(COMPOSE_DEV) up -d --wait db redis >/dev/null
 
-ci: db-up ## Everything the ci workflow runs, natively
+ci: stores-up ## Everything the ci workflow runs, natively
 	./scripts/assert-ts-version.sh
 	./scripts/check-env-example.sh
 	pnpm run ci
@@ -203,10 +227,18 @@ seed: ## Load development data into the database
 	docker run --rm --network $(NETWORK) $(DB_ENV) $(TOOLING_IMAGE) \
 	  pnpm --filter @ft/api run db:seed
 
-studio: ## Prisma Studio on http://localhost:5555
+studio: ## Prisma Studio (restart it after make/reset-db: db gets a new container)
 	@$(MAKE) --no-print-directory tooling-image
-	docker run --rm -it --network $(NETWORK) -p 5555:5555 $(DB_ENV) $(TOOLING_IMAGE) \
-	  pnpm --filter @ft/api exec prisma studio --port 5555 --browser none
+	@printf '\n  Prisma Studio: http://127.0.0.1:%s\n\n' '$(STUDIO_PORT)'
+	@# Loopback only: Studio gives unauthenticated access to the whole database.
+	@# Run prisma directly; `pnpm exec` reports the child's 130 as its own 1.
+	@# 130 means SIGINT, i.e. Ctrl+C, which is how you stop a server.
+	@set +e; \
+	docker run --rm -it --network $(NETWORK) -p 127.0.0.1:$(STUDIO_PORT):5555 \
+	  $(DB_ENV) --workdir /app/apps/api $(TOOLING_IMAGE) \
+	  ./node_modules/.bin/prisma studio --port 5555 --browser none; \
+	status=$$?; \
+	case $$status in 0|130) exit 0 ;; *) exit $$status ;; esac
 
 reset-db: ## DESTRUCTIVE: drop the database volume and start empty (FORCE=1 to skip the prompt)
 	@if [ -z "$(FORCE)" ]; then \

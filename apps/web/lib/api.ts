@@ -3,9 +3,11 @@
  * presentation and SSR only, so nothing here knows about domain logic: it builds
  * a URL, calls the API over the internal Docker network, and narrows the answer.
  */
+import { SessionUserSchema, type SessionUser } from '@ft/shared';
 
 export const DEFAULT_API_INTERNAL_URL = 'http://api:3001';
 export const HELLO_PATH = '/api/hello';
+export const SESSION_PATH = '/api/auth/me';
 export const DEFAULT_TIMEOUT_MS = 2000;
 
 export interface HelloPayload {
@@ -20,6 +22,10 @@ export interface FetchHelloOptions {
   baseUrl?: string | undefined;
   timeoutMs?: number;
   fetchImpl?: typeof fetch;
+}
+
+export interface FetchSessionOptions extends FetchHelloOptions {
+  cookie?: string | undefined;
 }
 
 /** Falls back to the compose service name when API_INTERNAL_URL is unset or blank. */
@@ -57,6 +63,36 @@ export function describeFetchError(error: unknown): string {
     return error.name === 'TimeoutError' ? 'the request timed out' : error.message;
   }
   return 'an unknown network error occurred';
+}
+
+/**
+ * Reading the session during SSR. The browser's cookie never reaches the
+ * internal request on its own, so the caller forwards the header; without it
+ * every server-rendered page would believe nobody is signed in.
+ *
+ * Null covers both "signed out" and "API unreachable" on purpose: a rendered
+ * signed-out page is the right fallback for either, and throwing here would be
+ * a 500 on a page that has something useful to show.
+ */
+export async function fetchSession(options: FetchSessionOptions = {}): Promise<SessionUser | null> {
+  const { baseUrl, cookie, timeoutMs = DEFAULT_TIMEOUT_MS, fetchImpl = fetch } = options;
+
+  try {
+    const response = await fetchImpl(buildApiUrl(baseUrl, SESSION_PATH), {
+      cache: 'no-store',
+      headers: { accept: 'application/json', ...(cookie ? { cookie } : {}) },
+      signal: AbortSignal.timeout(timeoutMs),
+    });
+
+    if (!response.ok) {
+      return null;
+    }
+
+    const parsed = SessionUserSchema.safeParse(await response.json());
+    return parsed.success ? parsed.data : null;
+  } catch {
+    return null;
+  }
 }
 
 /**

@@ -47,7 +47,10 @@ test.describe('production stack smoke', () => {
       version: expect.any(String),
       uptimeSeconds: expect.any(Number),
       checkedAt: expect.any(String),
-      dependencies: [{ name: 'database', status: 'ok', latencyMs: expect.any(Number) }],
+      dependencies: [
+        { name: 'database', status: 'ok', latencyMs: expect.any(Number) },
+        { name: 'redis', status: 'ok', latencyMs: expect.any(Number) },
+      ],
     });
   });
 

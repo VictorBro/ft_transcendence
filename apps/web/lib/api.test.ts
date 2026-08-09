@@ -5,6 +5,7 @@ import {
   DEFAULT_API_INTERNAL_URL,
   describeFetchError,
   fetchHello,
+  fetchSession,
   HELLO_PATH,
   parseHelloPayload,
   resolveApiBaseUrl,
@@ -167,5 +168,58 @@ describe('fetchHello', () => {
     const result = await fetchHello({ fetchImpl });
 
     expect(result.status).toBe('unavailable');
+  });
+});
+
+describe('fetchSession', () => {
+  const user = {
+    id: '11111111-1111-4111-8111-111111111111',
+    email: 'learner@example.com',
+    displayName: 'learner',
+    avatarUrl: null,
+    locale: 'en',
+    role: 'USER',
+    createdAt: '2026-01-01T00:00:00.000Z',
+  };
+
+  it('returns the signed-in user and forwards the cookie', async () => {
+    const fetchImpl = vi.fn(async () => Response.json(user));
+
+    await expect(fetchSession({ cookie: 'ft.sid=abc', fetchImpl })).resolves.toEqual(user);
+    expect(fetchImpl).toHaveBeenCalledWith(
+      'http://api:3001/api/auth/me',
+      expect.objectContaining({ headers: expect.objectContaining({ cookie: 'ft.sid=abc' }) }),
+    );
+  });
+
+  it('omits the cookie header entirely when there is none', async () => {
+    const fetchImpl = vi.fn(async () => Response.json(user));
+
+    await fetchSession({ fetchImpl });
+    expect(fetchImpl).toHaveBeenCalledWith(
+      expect.any(String),
+      expect.objectContaining({ headers: { accept: 'application/json' } }),
+    );
+  });
+
+  // 401 is the ordinary signed-out answer, not an error worth a 500.
+  it('reads a 401 as signed out', async () => {
+    const fetchImpl = vi.fn(async () => new Response(null, { status: 401 }));
+
+    await expect(fetchSession({ fetchImpl })).resolves.toBeNull();
+  });
+
+  it('rejects a payload that is not a session user', async () => {
+    const fetchImpl = vi.fn(async () => Response.json({ id: 'not-a-uuid' }));
+
+    await expect(fetchSession({ fetchImpl })).resolves.toBeNull();
+  });
+
+  it('degrades to signed out when the API is unreachable', async () => {
+    const fetchImpl = vi.fn(async () => {
+      throw new Error('ECONNREFUSED');
+    });
+
+    await expect(fetchSession({ fetchImpl })).resolves.toBeNull();
   });
 });

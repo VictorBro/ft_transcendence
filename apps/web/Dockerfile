@@ -48,6 +48,9 @@ CMD ["sh", "-c", "pnpm install --frozen-lockfile --filter @ft/web... && pnpm dev
 # --- ci ---------------------------------------------------------------------
 FROM deps AS ci
 COPY . .
+# A build input the context cannot carry: @ft/shared resolves to dist/, which is
+# compiled, and web imports it. Same reason the api ci stage builds it.
+RUN pnpm --filter @ft/shared run build
 WORKDIR /app/apps/web
 CMD ["sh", "-c", "pnpm lint && pnpm typecheck && pnpm test:cov"]
 
@@ -56,8 +59,10 @@ CMD ["sh", "-c", "pnpm lint && pnpm typecheck && pnpm test:cov"]
 FROM deps AS build
 ENV NODE_ENV=production
 COPY . .
-WORKDIR /app/apps/web
-RUN pnpm build
+# The trailing "..." selects @ft/web AND its workspace dependencies, in
+# topological order: @ft/shared resolves to dist/, so it has to emit before
+# Next can resolve the import. Packages with no build script are skipped.
+RUN pnpm --filter "@ft/web..." run build
 
 
 # --- prod -------------------------------------------------------------------
