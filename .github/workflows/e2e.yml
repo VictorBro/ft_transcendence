@@ -66,6 +66,13 @@ jobs:
           echo "::error::$E2E_BASE_URL/healthz never answered"
           exit 1
 
+      # The database comes up empty. Until the browser suite signed up an
+      # account, nothing here wrote a row and the missing tables went unnoticed.
+      # The prod image carries no Prisma CLI or schema, so this runs from a
+      # throwaway container built off the api build stage, exactly as `make` does.
+      - name: Apply migrations
+        run: make migrate
+
       - name: Run the suite
         run: pnpm --filter @ft/e2e run test:e2e
 

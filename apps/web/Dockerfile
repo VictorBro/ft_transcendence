@@ -48,6 +48,9 @@ CMD ["sh", "-c", "pnpm install --frozen-lockfile --filter @ft/web... && pnpm dev
 # --- ci ---------------------------------------------------------------------
 FROM deps AS ci
 COPY . .
+# A build input the context cannot carry: @ft/shared resolves to dist/, which is
+# compiled, and web imports it. Same reason the api ci stage builds it.
+RUN pnpm --filter @ft/shared run build
 WORKDIR /app/apps/web
 CMD ["sh", "-c", "pnpm lint && pnpm typecheck && pnpm test:cov"]
 
