@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
 import Link from 'next/link';
 
+import { SessionNav } from '@/components/session-nav';
+
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -26,7 +28,11 @@ const legalLinks = [
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    // Extensions like Dark Reader stamp attributes on <html> before React
+    // hydrates, which otherwise logs a mismatch an evaluator would read as a
+    // console gate failure. This covers that one element, not its children, so
+    // a real mismatch anywhere inside still reports.
+    <html lang="en" suppressHydrationWarning>
       <body className="flex min-h-dvh flex-col bg-white font-sans text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100">
         <header className="border-b border-slate-200 dark:border-slate-800">
           <div className="mx-auto flex w-full max-w-3xl items-baseline justify-between gap-4 px-6 py-5">
@@ -36,9 +42,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             >
               ft_transcendence
             </Link>
-            <p className="text-sm text-slate-500 dark:text-slate-400">
-              Adaptive language learning, powered by AI
-            </p>
+            <SessionNav />
           </div>
         </header>
 

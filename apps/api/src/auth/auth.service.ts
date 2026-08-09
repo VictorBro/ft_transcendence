@@ -69,8 +69,16 @@ export class AuthService {
     }
   }
 
-  /** One message for both failures, so neither reveals whether the email exists. */
-  async validateCredentials(email: string, password: string): Promise<SessionUser> {
+  /**
+   * One message for both failures, so neither reveals whether the email exists.
+   * Reports the second factor alongside the user because the caller decides
+   * between a full session and a pending one, and a second query for a column
+   * this row already carries would be wasted.
+   */
+  async validateCredentials(
+    email: string,
+    password: string,
+  ): Promise<{ user: SessionUser; twoFactorEnabled: boolean }> {
     const user = await this.prisma.user.findUnique({ where: { email: email.toLowerCase() } });
 
     if (user === null) {
@@ -82,7 +90,19 @@ export class AuthService {
       throw new UnauthorizedException('Incorrect email or password');
     }
 
-    return AuthService.toSessionUser(user);
+    return {
+      user: AuthService.toSessionUser(user),
+      twoFactorEnabled: user.totpEnabledAt != null,
+    };
+  }
+
+  /** Re-authentication for privilege changes, where a live session is not enough. */
+  async verifyPassword(userId: string, password: string): Promise<boolean> {
+    const user = await this.prisma.user.findUnique({ where: { id: userId } });
+    if (user === null) {
+      return false;
+    }
+    return argon2.verify(user.passwordHash, password);
   }
 
   async findById(id: string): Promise<SessionUser | null> {

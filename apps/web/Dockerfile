@@ -56,8 +56,10 @@ CMD ["sh", "-c", "pnpm lint && pnpm typecheck && pnpm test:cov"]
 FROM deps AS build
 ENV NODE_ENV=production
 COPY . .
-WORKDIR /app/apps/web
-RUN pnpm build
+# The trailing "..." selects @ft/web AND its workspace dependencies, in
+# topological order: @ft/shared resolves to dist/, so it has to emit before
+# Next can resolve the import. Packages with no build script are skipped.
+RUN pnpm --filter "@ft/web..." run build
 
 
 # --- prod -------------------------------------------------------------------

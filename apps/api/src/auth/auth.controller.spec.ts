@@ -3,6 +3,7 @@ import type { Request } from 'express';
 
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
+import { TwoFactorService } from './two-factor.service';
 
 type DestroyCallback = (error?: unknown) => void;
 
@@ -14,11 +15,12 @@ function requestWith(destroy: (cb: DestroyCallback) => void) {
 
 describe('AuthController', () => {
   const auth = {} as AuthService;
+  const twoFactor = {} as TwoFactorService;
   let controller: AuthController;
 
   beforeEach(() => {
     vi.resetAllMocks();
-    controller = new AuthController(auth);
+    controller = new AuthController(auth, twoFactor);
   });
 
   it('clears the cookie once the session is destroyed', async () => {

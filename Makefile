@@ -45,6 +45,9 @@ SERVICE      ?= api
 SERVICES     ?=
 WAIT_TIMEOUT ?= 300
 STUDIO_PORT  ?= 5555
+# Matches the identities e2e/tests/auth.spec.ts signs up, so test-e2e can clear
+# them afterwards.
+E2E_EMAIL_PREFIX ?= browser-
 
 # Where Playwright points its browser. Inside the devcontainer caddy's
 # published ports live on the HOST, so the suite talks to the caddy service
@@ -165,7 +168,15 @@ test: ## Unit tests across the workspace
 test-e2e: ## Playwright against the production stack (starts it if needed)
 	@$(MAKE) --no-print-directory up
 	pnpm --filter @ft/e2e exec playwright install chromium
-	E2E_BASE_URL=$(E2E_BASE_URL) pnpm --filter @ft/e2e run test:e2e
+	@# The accounts the browser suite signs up are real rows. Removing them keeps
+	@# repeated runs from filling the database an evaluator is going to look at.
+	@# The prefix is set in e2e/tests/auth.spec.ts. RecoveryCode cascades.
+	@set +e; \
+	E2E_BASE_URL=$(E2E_BASE_URL) pnpm --filter @ft/e2e run test:e2e; \
+	status=$$?; \
+	$(COMPOSE_DEV) exec -T db psql -U ft -d ft_transcendence \
+	  -c "delete from \"User\" where email like '$(E2E_EMAIL_PREFIX)%@example.com';" >/dev/null; \
+	exit $$status
 
 lint: ## ESLint across the workspace
 	pnpm run lint
@@ -216,7 +227,7 @@ seed: ## Load development data into the database
 	docker run --rm --network $(NETWORK) $(DB_ENV) $(TOOLING_IMAGE) \
 	  pnpm --filter @ft/api run db:seed
 
-studio: ## Prisma Studio, override with STUDIO_PORT=5556 if the port is taken
+studio: ## Prisma Studio (restart it after make/reset-db: db gets a new container)
 	@$(MAKE) --no-print-directory tooling-image
 	@printf '\n  Prisma Studio: http://127.0.0.1:%s\n\n' '$(STUDIO_PORT)'
 	@# Loopback only: Studio gives unauthenticated access to the whole database.

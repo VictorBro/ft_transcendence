@@ -19,6 +19,10 @@ function userRow(overrides: Record<string, unknown> = {}) {
     role: 'USER',
     createdAt: new Date('2026-01-01T00:00:00.000Z'),
     updatedAt: new Date('2026-01-02T00:00:00.000Z'),
+    // Prisma returns every scalar, so the null columns belong here too: without
+    // them an absent field reads as undefined and the 2FA check inverts.
+    totpSecret: null,
+    totpEnabledAt: null,
     ...overrides,
   };
 }
@@ -97,7 +101,21 @@ describe('AuthService', () => {
 
       await expect(
         service.validateCredentials('learner@example.com', password),
-      ).resolves.toMatchObject({ email: 'learner@example.com' });
+      ).resolves.toMatchObject({
+        user: { email: 'learner@example.com' },
+        twoFactorEnabled: false,
+      });
+    });
+
+    // The caller branches on this, so a row with the column set must say so.
+    it('reports an enrolled second factor', async () => {
+      prisma.user.findUnique.mockResolvedValue(
+        userRow({ passwordHash: hash, totpEnabledAt: new Date() }),
+      );
+
+      await expect(
+        service.validateCredentials('learner@example.com', password),
+      ).resolves.toMatchObject({ twoFactorEnabled: true });
     });
 
     it('rejects the wrong password', async () => {

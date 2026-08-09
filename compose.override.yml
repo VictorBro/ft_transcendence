@@ -88,6 +88,10 @@ services:
       # point cannot be rmdir'ed (EBUSY), so the dev script runs with
       # nest-cli.dev.json, whose only difference is deleteOutDir: false.
       - api-dist:/app/apps/api/dist
+      # `prisma generate` in the command above also writes as root. Same
+      # treatment as dist: the host keeps the copy turbo generates for it, so a
+      # `make dev` never leaves files uid 0 in the checkout for `make` to trip on.
+      - api-generated:/app/apps/api/src/generated
       - api-pnpm-store:/pnpm/store
 
   db:
@@ -178,6 +182,7 @@ volumes:
   api-node-modules-ui:
   api-node-modules-e2e:
   api-dist:
+  api-generated:
   api-pnpm-store:
   claude-state:
   shell-history:

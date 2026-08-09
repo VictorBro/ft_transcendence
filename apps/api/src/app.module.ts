@@ -8,6 +8,7 @@ import { HealthModule } from './health/health.module';
 import { HelloModule } from './hello/hello.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { RedisModule } from './redis/redis.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { RedisModule } from './redis/redis.module';
     PrismaModule,
     RedisModule,
     AuthModule,
+    UsersModule,
     HealthModule,
     HelloModule,
   ],

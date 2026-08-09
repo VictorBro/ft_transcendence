@@ -28,6 +28,28 @@ model User {
   role         Role     @default(USER)
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
+
+  // Set when enrolment starts; totpEnabledAt stays null until a first code is
+  // verified, so an abandoned enrolment never blocks a login.
+  totpSecret    String?
+  totpEnabledAt DateTime?
+
+  recoveryCodes RecoveryCode[]
+}
+
+// Single-use fallback when the authenticator is lost. Stored as a SHA-256 digest
+// rather than argon2: the codes are 160 bits of randomness, so there is nothing
+// to brute force, and a plain digest lets a login check one indexed lookup
+// instead of ten argon2 verifications.
+model RecoveryCode {
+  id        String    @id @default(uuid()) @db.Uuid
+  userId    String    @db.Uuid
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  codeHash  String    @unique
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([userId])
 }
 
 // Values match UserRoleSchema and LocaleSchema in @ft/shared. Adding a locale is
