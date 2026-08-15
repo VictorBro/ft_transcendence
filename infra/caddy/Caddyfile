@@ -5,6 +5,7 @@
 #   https://localhost/ws/*   -> api:3001   (socket.io)
 #   https://localhost/*      -> web:3000   (Next.js)
 {
+  
 	# Caddy's own CA instead of ACME: there is no public domain to validate, and
 	# the subject still requires HTTPS. The root is stored in /data, which is a
 	# named volume, so the browser only has to be told to trust it once.

@@ -1,0 +1,66 @@
+model ChatbotConversation {
+	id				          String		      @id @default(dbgenerated("uuidv7()")) @db.Uuid
+	userId			        String		      @db.Uuid
+	chatbotId		        String		      @db.Uuid
+  chatbotMessageId    String?         @db.Uuid @unique
+	language		        Locale?
+	createdAt		        DateTime	    @default(now())
+
+	user			              User		@relation(fields: [userId], references: [id])
+	chatbot			            Chatbot 	@relation(fields: [chatbotId], references: [id])
+	initial_chatbot_msg			ChatbotMessage? 	@relation(fields: [chatbotMessageId], references: [id])
+
+	@@index([userId, id])
+
+	user_chatbot_message_pair				UserChatbotMessagePair[]
+}
+
+model Chatbot {
+	id					  String					@id @default(dbgenerated("uuidv7()")) @db.Uuid
+	createdAt			DateTime				@default(now())
+	name				  String
+	job					  String
+	education			String
+	hobbies				String
+	character			String
+
+	@@index([id])
+
+	user_chatbot_conversations	ChatbotConversation[]
+}
+
+model UserMessage {
+	id				String					@id @default(dbgenerated("uuidv7()")) @db.Uuid
+	conversationId	String					@db.Uuid
+	createdAt		DateTime				@default(now())
+	text			String
+
+	pair			UserChatbotMessagePair?
+  correction  MessageCorrection?
+}
+
+model ChatbotMessage {
+	id				String					@id @default(dbgenerated("uuidv7()")) @db.Uuid
+	createdAt		DateTime				@default(now())
+	text			String
+
+// if conversation shall start with a chatbot message no relation with a pair necessary
+	pair			                          UserChatbotMessagePair?
+  beeing_initial_msg_on_conversation  ChatbotConversation?
+}
+
+model UserChatbotMessagePair {
+	id					        String					@id @default(dbgenerated("uuidv7()")) @db.Uuid
+	conversationId			String					@db.Uuid
+	userMsgId			      String					      @db.Uuid @unique
+	chatbotMsgId			  String					  @db.Uuid @unique
+	createdAt			      DateTime				@default(now())
+	inputTokens			    Int					@default(0)
+	cacheWriteTokens	  Int					@default(0)
+	cacheReadTokens		  Int					@default(0)
+	outputTokens		    Int					@default(0)
+
+	conversation	    ChatbotConversation		@relation(fields: [conversationId], references: [id])
+	userMsg     	    UserMessage		        @relation(fields: [userMsgId], references: [id])
+	chatbotMsg  	    ChatbotMessage		     @relation(fields: [chatbotMsgId], references: [id])
+}
