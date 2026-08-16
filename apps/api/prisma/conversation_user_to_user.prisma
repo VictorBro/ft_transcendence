@@ -1,0 +1,15 @@
+//model UserConversation {
+//	id				String		@id @default(uuid()) @db.Uuid
+//	createdAt		DateTime	@default(now())
+//	user1Id			String		@db.Uuid
+//	user2Id			String		@db.Uuid
+//	language1		Locale?		@default(null)
+//	language2		Locale?		@default(null)
+//
+//	user1			User		@relation(fields: [user1Id], references: [id])
+//	user2			User		@relation(fields: [user2Id], references: [id])
+//	@@index([user1Id])
+//	@@index([user2Id])
+//
+//	user_user_messages				UserUserMessage[]
+//}

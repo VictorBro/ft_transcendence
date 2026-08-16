@@ -1,0 +1,60 @@
+model MessageCorrection {
+	id					String				@id @default(dbgenerated("uuidv7()")) @db.Uuid
+	userChatbotMsgId	String?				@db.Uuid @unique
+	// userUserMsgId		String?				@db.Uuid @unique
+	createdAt			DateTime			@default(now())
+
+	userChatbotMsg		UserMessage?			@relation(fields: [userChatbotMsgId],	references: [id])
+//	userUserMsg			UserUserMessage		@relation(fields: [userUserMsgId],		references: [id])
+
+	@@index([userChatbotMsgId, id])
+	// @@index([userUserMsgId, id])
+
+	mistakes								Mistake[]
+	formal_correction						  Correction?
+	idiomatic_correction					IdiomaticCorrection?
+}
+
+enum MistakeType {
+	latin_extended_characters
+	other_spelling
+	sentence_structure_and_word_order
+	other_grammar
+	expression_and_idiomatic_language
+}
+
+model Mistake {
+	id						String						@id @default(dbgenerated("uuidv7()")) @db.Uuid
+	messageCorrectionId		String						@db.Uuid
+	original				String
+	corrected				String
+
+
+	messageCorrection		MessageCorrection			@relation(fields: [messageCorrectionId],	references: [id])
+
+	@@index([messageCorrectionId])
+
+	TypeScript				MistakeType[]
+}
+
+model Correction {
+	id						String						@id @default(dbgenerated("uuidv7()")) @db.Uuid
+	messageCorrectionId		String						@db.Uuid @unique
+	text					String
+
+	messageCorrection		MessageCorrection			@relation(fields: [messageCorrectionId],	references: [id])
+
+	@@index([messageCorrectionId])
+
+}
+
+model IdiomaticCorrection {
+	id						String						@id @default(dbgenerated("uuidv7()")) @db.Uuid
+	messageCorrectionId		String						@db.Uuid @unique
+	text					String
+
+	messageCorrection		MessageCorrection			@relation(fields: [messageCorrectionId],	references: [id])
+
+	@@index([messageCorrectionId])
+
+}

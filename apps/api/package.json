@@ -24,8 +24,10 @@
     "@nestjs/config": "4.0.4",
     "@nestjs/core": "11.1.28",
     "@nestjs/platform-express": "11.1.28",
+    "@nestjs/platform-socket.io": "11.1.28",
     "@nestjs/swagger": "11.4.6",
     "@nestjs/throttler": "6.5.0",
+    "@nestjs/websockets": "^11.1.28",
     "@prisma/adapter-pg": "7.9.1",
     "@prisma/client": "7.9.1",
     "argon2": "0.45.1",
@@ -38,7 +40,8 @@
     "qrcode-generator": "2.0.4",
     "redis": "6.2.0",
     "reflect-metadata": "^0.2.0",
-    "rxjs": "^7.8.0"
+    "rxjs": "^7.8.0",
+    "socket.io": "^4.8.3"
   },
   "devDependencies": {
     "@ft/eslint-config": "workspace:*",

@@ -6,7 +6,7 @@ const shadowDatabaseUrl = process.env.SHADOW_DATABASE_URL;
 // variable is unset, and `prisma generate` runs during the Docker build, where
 // no database exists yet. Migration commands fail with a clear error instead.
 export default defineConfig({
-  schema: 'prisma/schema.prisma',
+  schema: 'prisma/',
   migrations: {
     path: 'prisma/migrations',
   },

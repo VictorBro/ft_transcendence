@@ -6,6 +6,8 @@ import { ZodValidationPipe } from 'nestjs-zod';
 
 import { RedisService } from './redis/redis.service';
 
+import { IoAdapter } from '@nestjs/platform-socket.io';
+
 export const API_PREFIX = 'api';
 
 export const SESSION_COOKIE = 'ft.sid';
@@ -32,7 +34,7 @@ export function configureApp(app: INestApplication): void {
   // request was secure from X-Forwarded-Proto. Without this, `cookie.secure`
   // suppresses the Set-Cookie header and nobody can log in.
   app.getHttpAdapter().getInstance().set('trust proxy', 1);
-
+  app.useWebSocketAdapter(new IoAdapter(app));
   // Zod, not class-validator: @ft/shared owns the rules and the browser applies
   // the same ones.
   app.useGlobalPipes(new ZodValidationPipe());

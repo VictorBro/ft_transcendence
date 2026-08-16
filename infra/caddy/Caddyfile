@@ -5,6 +5,7 @@
 #   https://localhost/ws/*   -> api:3001   (socket.io)
 #   https://localhost/*      -> web:3000   (Next.js)
 {
+
 	# Caddy's own CA instead of ACME: there is no public domain to validate, and
 	# the subject still requires HTTPS. The root is stored in /data, which is a
 	# named volume, so the browser only has to be told to trust it once.
@@ -55,11 +56,17 @@ localhost, 127.0.0.1, caddy, {$CADDY_EXTRA_HOSTNAME:ft-transcendence.test} {
 	# there is no websocket directive to add and none is needed. The gateway has
 	# to be mounted here (`path: '/ws'`) rather than on socket.io's default
 	# /socket.io, otherwise the request falls through to web below.
-	@ws path /ws /ws/*
-	handle @ws {
-		reverse_proxy api:3001
-	}
+@ws path /ws /ws/*
+handle @ws {
+	reverse_proxy api:3001
+}
 
+
+#@ws path /ws /ws/*
+#handle @ws {
+#    uri strip_prefix /ws
+#    reverse_proxy api:3001
+#}
 	# Everything else, including /healthz, /privacy and /terms.
 	handle {
 		reverse_proxy web:3000
