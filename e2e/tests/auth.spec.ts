@@ -104,8 +104,9 @@ test.describe('authentication in the browser', () => {
 
     await logIn(page, email);
 
-    await expect(page).toHaveURL(/\/profile$/);
-    await expect(page.getByRole('heading', { level: 1, name: displayName })).toBeVisible();
+    // Login lands on the home page rather than the profile, unlike signup.
+    await expect(page).toHaveURL(/\/$/);
+    await expect(page.getByRole('navigation', { name: 'Account' })).toContainText(displayName);
   });
 
   test('saves a profile edit and shows it in the header', async ({ page }) => {
@@ -182,7 +183,8 @@ test.describe('authentication in the browser', () => {
     await code.fill(totp.generate());
     await page.getByRole('button', { name: 'Verify' }).click();
 
-    await expect(page).toHaveURL(/\/profile$/);
-    await expect(page.getByRole('heading', { level: 1, name: displayName })).toBeVisible();
+    // Login lands on the home page rather than the profile, unlike signup.
+    await expect(page).toHaveURL(/\/$/);
+    await expect(page.getByRole('navigation', { name: 'Account' })).toContainText(displayName);
   });
 });
