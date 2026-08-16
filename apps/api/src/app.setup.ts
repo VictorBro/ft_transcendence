@@ -6,6 +6,11 @@ import { ZodValidationPipe } from 'nestjs-zod';
 
 import { RedisService } from './redis/redis.service';
 
+import { tmpdir } from 'os';
+import { join } from 'path';
+
+export const AVATAR_STORAGE_DIR = process.env.AVATAR_STORAGE_DIR ?? join(tmpdir(), 'ft-avatars');
+
 export const API_PREFIX = 'api';
 
 export const SESSION_COOKIE = 'ft.sid';

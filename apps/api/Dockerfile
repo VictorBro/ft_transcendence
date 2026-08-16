@@ -123,6 +123,10 @@ COPY --from=prune --chown=node:node /app/packages/shared/package.json ./packages
 COPY --from=prune --chown=node:node /app/packages/shared/dist ./packages/shared/dist
 COPY --from=prune --chown=node:node /app/packages/shared/node_modules ./packages/shared/node_modules
 WORKDIR /app/apps/api
+# Named volume mounted here at runtime (see compose.yml). Created and chowned
+# while still root, so the volume inherits node:node ownership on first mount
+# instead of coming up root-owned and EACCES-ing every upload.
+RUN mkdir -p /data/avatars && chown node:node /data/avatars
 USER node
 EXPOSE 3001
 HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=3 \

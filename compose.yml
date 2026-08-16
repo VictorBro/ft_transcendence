@@ -99,6 +99,9 @@ services:
       LLM_PROVIDER: ${LLM_PROVIDER:-fixture}
       LLM_API_KEY: ${LLM_API_KEY:-}
       LLM_MODEL: ${LLM_MODEL:-}
+      AVATAR_STORAGE_DIR: ${AVATAR_STORAGE_DIR:-/data/avatars}
+    volumes:
+      - avatars-data:/data/avatars
     networks:
       - ft
 
@@ -149,6 +152,7 @@ volumes:
   redis-data:
   caddy-data:
   caddy-config:
+  avatars-data:
 
 networks:
   ft:

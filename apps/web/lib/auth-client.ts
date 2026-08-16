@@ -109,3 +109,29 @@ export async function enableTwoFactor(
 export async function disableTwoFactor(password: string): Promise<ApiResult<void>> {
   return send<void>('/api/auth/2fa', { method: 'DELETE', body: JSON.stringify({ password }) });
 }
+
+export async function uploadAvatar(file: File): Promise<ApiResult<SessionUser>> {
+  const formData = new FormData();
+  formData.append('avatar', file);
+
+  let response: Response;
+  try {
+    response = await fetch('/api/users/me/avatar', {
+      method: 'POST',
+      credentials: 'same-origin',
+      body: formData,
+    });
+  } catch {
+    return { ok: false, message: 'Could not reach the server', status: 0 };
+  }
+
+  const responseBody: unknown = await response.json().catch(() => null);
+  if (!response.ok) {
+    return {
+      ok: false,
+      message: readMessage(responseBody, response.status),
+      status: response.status,
+    };
+  }
+  return { ok: true, data: responseBody as SessionUser };
+}

@@ -38,7 +38,8 @@
     "qrcode-generator": "2.0.4",
     "redis": "6.2.0",
     "reflect-metadata": "^0.2.0",
-    "rxjs": "^7.8.0"
+    "rxjs": "^7.8.0",
+    "multer": "^2.0.0"
   },
   "devDependencies": {
     "@ft/eslint-config": "workspace:*",
@@ -50,6 +51,7 @@
     "@types/express-session": "1.19.0",
     "@types/node": "^24.13.3",
     "@types/supertest": "^7.2.1",
+    "@types/multer": "^2.0.0",
     "@vitest/coverage-v8": "4.1.10",
     "eslint": "10.8.0",
     "prettier": "3.9.6",

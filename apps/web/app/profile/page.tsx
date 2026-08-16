@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import { requireUser } from '@/lib/session';
 import { ProfileForm } from './profile-form';
+import { Avatar } from '@/components/avatar';
 
 export const metadata: Metadata = { title: 'Profile' };
 
@@ -14,12 +15,15 @@ export default async function ProfilePage() {
 
   return (
     <div className="flex flex-col gap-10">
-      <section className="flex flex-col gap-2">
-        <h1 className="text-2xl font-semibold tracking-tight">{user.displayName}</h1>
-        <p className="text-sm text-slate-600 dark:text-slate-300">{user.email}</p>
-        <p className="text-sm text-slate-500 dark:text-slate-400">
-          Joined {new Date(user.createdAt).toLocaleDateString('en-GB')}
-        </p>
+      <section className="flex items-start justify-between gap-4">
+        <div className="flex flex-col gap-2">
+          <h1 className="text-2xl font-semibold tracking-tight">{user.displayName}</h1>
+          <p className="text-sm text-slate-600 dark:text-slate-300">{user.email}</p>
+          <p className="text-sm text-slate-500 dark:text-slate-400">
+            Joined {new Date(user.createdAt).toLocaleDateString('en-GB')}
+          </p>
+        </div>
+        <Avatar src={user.avatarUrl} alt="" size={128} />
       </section>
 
       <ProfileForm user={user} />

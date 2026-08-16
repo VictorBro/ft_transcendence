@@ -76,6 +76,9 @@ importers:
       express-session:
         specifier: 1.19.0
         version: 1.19.0(supports-color@8.1.1)
+      multer:
+        specifier: ^2.0.0
+        version: 2.2.0
       nestjs-zod:
         specifier: 5.5.0
         version: 5.5.0(@nestjs/common@11.1.28(class-transformer@0.5.1)(class-validator@0.15.1)(reflect-metadata@0.2.2)(rxjs@7.8.2)(supports-color@8.1.1))(@nestjs/swagger@11.4.6(@nestjs/common@11.1.28(class-transformer@0.5.1)(class-validator@0.15.1)(reflect-metadata@0.2.2)(rxjs@7.8.2)(supports-color@8.1.1))(@nestjs/core@11.1.28)(class-transformer@0.5.1)(class-validator@0.15.1)(reflect-metadata@0.2.2))(rxjs@7.8.2)(zod@4.4.3)
@@ -116,6 +119,9 @@ importers:
       '@types/express-session':
         specifier: 1.19.0
         version: 1.19.0
+      '@types/multer':
+        specifier: ^2.0.0
+        version: 2.2.0
       '@types/node':
         specifier: ^24.13.3
         version: 24.13.3
@@ -1674,6 +1680,9 @@ packages:
 
   '@types/methods@1.1.4':
     resolution: {integrity: sha512-ymXWVrDiCxTBE3+RIrrP533E70eA+9qu7zdWoHuOmGujkYtzf4HQF96b8nwHLqhuf4ykX61IGRIB38CC6/sImQ==}
+
+  '@types/multer@2.2.0':
+    resolution: {integrity: sha512-3U1troeqGV8Ntp7Q3klwf4zr23VEoqYVocYXaswm9+8z3O9UHDYAqLxjJ/h550iRADTjKdOdhhasXw6gD6kYtg==}
 
   '@types/node@24.13.3':
     resolution: {integrity: sha512-Dh8vAsV36ig5wa9OX4pXvMc9D3Veibfw2wix0CUwYODLD8nkj9UsLjASr49nPg+2eKzxhBV+v7L8pXvT4e639Q==}
@@ -5304,6 +5313,10 @@ snapshots:
   '@types/lodash@4.17.24': {}
 
   '@types/methods@1.1.4': {}
+
+  '@types/multer@2.2.0':
+    dependencies:
+      '@types/express': 5.0.6
 
   '@types/node@24.13.3':
     dependencies:
