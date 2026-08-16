@@ -8,11 +8,13 @@ export default function ChatPage() {
 
         <div className="flex-1 overflow-y-auto p-4">{/* liste de messages */}</div>
 
-        <div className="border-slate-200 p-4 dark:border-slate-800">
+        <div className="border-t border-slate-200 p-4 dark:border-slate-800">
           <div className="flex items-center gap-3">
             <input
               type="text"
-              placeholder="Your message.."
+              name="message"
+              aria-label="Message"
+              placeholder="Your message..."
               className="font-semibold flex-1 rounded-full border border-slate-200 bg-slate-100 px-5 py-3 text-sm outline-none dark:border-slate-700 dark:bg-slate-900"
             />
             <button

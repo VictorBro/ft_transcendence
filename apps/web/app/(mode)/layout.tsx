@@ -33,6 +33,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <div className="mx-auto flex w-full max-w-6xl items-baseline justify-between gap-4 px-6 py-5">
             <Link
               href="/dashboard"
+              aria-label="Back to dashboard"
               className="flex h-6 w-6 items-center justify-center rounded-full text-slate-400 transition-colors hover:bg-slate-800 hover:text-slate-100"
             >
               ✕
