@@ -127,6 +127,9 @@
     "avatarUrl": {
       "invalid": "Enter a valid URL"
     },
+    "avatar": {
+      "invalidFile": "That file could not be used as an avatar. Try a PNG, JPEG or WebP under 2 MiB."
+    },
     "profile": {
       "noChanges": "Change at least one field"
     },
@@ -162,8 +165,13 @@
   "ProfileForm": {
     "editProfile": "Edit profile",
     "displayName": "Display name",
-    "avatarUrl": "Avatar URL",
-    "avatarUrlHint": "Leave empty to use the default avatar.",
+    "avatar": "Avatar",
+    "uploadAvatar": "Upload avatar",
+    "changeAvatar": "Change avatar",
+    "removeAvatar": "Remove avatar",
+    "uploading": "Uploading...",
+    "removing": "Removing...",
+    "avatarTooLarge": "File is too large. Maximum size is 2 MiB.",
     "profileSaved": "Profile saved.",
     "saveChanges": "Save changes"
   },
