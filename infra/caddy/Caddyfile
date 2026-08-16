@@ -61,6 +61,7 @@ handle @ws {
 	reverse_proxy api:3001
 }
 
+
 #@ws path /ws /ws/*
 #handle @ws {
 #    uri strip_prefix /ws

@@ -14,9 +14,9 @@ export default function ChatPage() {
   const [messages, setMessages] = useState<string[]>([]);
 
   useEffect(() => {
-    const socket = io('/ws', {
-      path: '/ws/socket.io/',
-    });
+const socket = io('/chat', {
+  path: '/ws',
+});
 
     socket.on('connect', () => {
       console.log('CONNECTED:', socket.id);
