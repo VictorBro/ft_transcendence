@@ -13,9 +13,7 @@ import { Server, Socket } from 'socket.io';
   namespace: '/ws',
   cors: false,
 })
-export class ChatGateway
-  implements OnGatewayConnection, OnGatewayDisconnect
-{
+export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
   @WebSocketServer()
   server!: Server;
 
@@ -32,10 +30,7 @@ export class ChatGateway
   }
 
   @SubscribeMessage('chat')
-  handleChat(
-    @MessageBody() message: string,
-    @ConnectedSocket() socket: Socket,
-  ): void {
+  handleChat(@MessageBody() message: string, @ConnectedSocket() socket: Socket): void {
     console.log(`Received from ${socket.id}: ${message}`);
 
     // Send the message back to the sender.
