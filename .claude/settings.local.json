@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(docker compose *)",
+      "Bash(shasum /workspace/apps/web/public/logo.png)"
+    ]
+  }
+}

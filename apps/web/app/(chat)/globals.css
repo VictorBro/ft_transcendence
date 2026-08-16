@@ -6,6 +6,10 @@
 @source '../app';
 @source '../components';
 
+@theme {
+  --color-canvas: #fefefe;
+}
+
 @layer base {
   :root {
     /* Lets the browser paint form controls and scrollbars for the active
