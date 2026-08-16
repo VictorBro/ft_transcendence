@@ -16,7 +16,7 @@ export function LoginForm() {
 
   /** Landing on the profile proves the cookie survived the round trip. */
   function done() {
-    router.replace('/profile');
+    router.replace('/');
     router.refresh();
   }
 
