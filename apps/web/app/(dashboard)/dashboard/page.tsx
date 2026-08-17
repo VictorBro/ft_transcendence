@@ -78,6 +78,7 @@ export default async function LobbyPage() {
           <Link
             key={mode.id}
             href={mode.href}
+            aria-label={mode.title}
             className={`flex flex-col rounded-2xl border border-slate-200 p-6 dark:border-slate-800 min-h-44 transition-transform duration-200 hover:scale-102 ${mode.color}`}
           >
             <p className="font-semibold text-2xl mt-2">{mode.title}</p>
