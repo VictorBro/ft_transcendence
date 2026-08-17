@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Browser, type BrowserContext, type Page } from '@playwright/test';
 
 import { formatViolations, settle, watchConsole } from '../support/console-guard';
 
@@ -15,9 +15,7 @@ test.describe('dashboard access and navigation', () => {
   };
 
   // Fills the signup form and waits for the redirect to /profile, which only
-  // happens once the account exists and the session cookie is set. Every test
-  // below that needs to be signed in calls this first, because /dashboard and
-  // every mode page require a session.
+  // happens once the account exists and the session cookie is set.
   const createAccount = async (page: Page, fields: ReturnType<typeof identity>) => {
     await page.goto('/signup');
     await page.getByLabel('Email', { exact: true }).fill(fields.email);
@@ -26,6 +24,31 @@ test.describe('dashboard access and navigation', () => {
     await page.getByLabel('Confirm password', { exact: true }).fill(password);
     await page.getByRole('button', { name: 'Create account' }).click();
     await expect(page).toHaveURL(/\/profile$/);
+  };
+
+  // Every test below that needs to be signed in shares this one account
+  // instead of signing up again: dashboard.spec.ts otherwise racks up ~20
+  // signups (one per tile/stub/route, each hashing a password with argon2),
+  // which under parallel workers was slow enough to trip other tests'
+  // requests. Storage state is how Playwright hands a saved cookie jar to a
+  // fresh, isolated browser context without re-running the login flow.
+  let sharedDisplayName: string;
+  let storageState: Awaited<ReturnType<BrowserContext['storageState']>>;
+
+  test.beforeAll(async ({ browser }: { browser: Browser }) => {
+    const context = await browser.newContext();
+    const page = await context.newPage();
+    const { email, displayName } = identity();
+    sharedDisplayName = displayName;
+    await createAccount(page, { email, displayName });
+    storageState = await context.storageState();
+    await context.close();
+  });
+
+  // Hands back a fresh, isolated context signed in as the shared account.
+  const signedInPage = async (browser: Browser): Promise<Page> => {
+    const context = await browser.newContext({ storageState });
+    return context.newPage();
   };
 
   // The dashboard page calls requireUser(), so an anonymous visit must bounce
@@ -48,13 +71,13 @@ test.describe('dashboard access and navigation', () => {
   ];
 
   // One test per tile, generated from the table above rather than
-  // hand-written, so a 7th mode only needs a new row here. Each test signs in
-  // fresh, opens the dashboard, clicks the tile by its accessible name, and
-  // checks the resulting URL. `exact: true` on the role query matters because
-  // "Chat" is a literal prefix of "Chat progress".
+  // hand-written, so a 7th mode only needs a new row here. Each test reuses
+  // the shared signed-in account, opens the dashboard, clicks the tile by its
+  // accessible name, and checks the resulting URL. `exact: true` on the role
+  // query matters because "Chat" is a literal prefix of "Chat progress".
   for (const [title, href] of tiles) {
-    test(`clicking the ${title} tile navigates to ${href}`, async ({ page }) => {
-      await createAccount(page, identity());
+    test(`clicking the ${title} tile navigates to ${href}`, async ({ browser }) => {
+      const page = await signedInPage(browser);
 
       await page.goto('/dashboard');
       await page.getByRole('link', { name: title, exact: true }).click();
@@ -66,9 +89,8 @@ test.describe('dashboard access and navigation', () => {
   // The (mode) layout wraps every mode page with a back link and the same
   // account nav as the rest of the app. One page (/chat) stands in for all of
   // them: the layout is shared, so this is not per-page behaviour.
-  test('the back link on a mode page returns to the dashboard', async ({ page }) => {
-    const { email, displayName } = identity();
-    await createAccount(page, { email, displayName });
+  test('the back link on a mode page returns to the dashboard', async ({ browser }) => {
+    const page = await signedInPage(browser);
 
     await page.goto('/chat');
     await page.getByRole('link', { name: 'Back to dashboard' }).click();
@@ -79,12 +101,13 @@ test.describe('dashboard access and navigation', () => {
   // Same layout-sharing argument as the back-link test above: SessionNav is
   // reused from the (main) layout, and auth.spec.ts already proves it there.
   // This only checks it also renders correctly inside the (mode) layout.
-  test('the account nav on a mode page shows the signed-in user', async ({ page }) => {
-    const { email, displayName } = identity();
-    await createAccount(page, { email, displayName });
+  test('the account nav on a mode page shows the signed-in user', async ({ browser }) => {
+    const page = await signedInPage(browser);
 
     await page.goto('/chat');
-    await expect(page.getByRole('navigation', { name: 'Account' })).toContainText(displayName);
+    await expect(page.getByRole('navigation', { name: 'Account' })).toContainText(
+      sharedDisplayName,
+    );
   });
 
   // Stub pages behind the lobby tiles that have no dedicated feature yet:
@@ -93,13 +116,14 @@ test.describe('dashboard access and navigation', () => {
   // same ComingSoon copy.
   const stubs = tiles.filter(([title]) => title !== 'Chat');
 
-  // One test per stub route: sign in, open the route directly (not via the
-  // tile click, since that is already covered above), and check the
-  // ComingSoon component rendered with the right title plus its fixed body
-  // copy. Confirms the page isn't blank or throwing, not just that it exists.
+  // One test per stub route: reuse the shared signed-in account, open the
+  // route directly (not via the tile click, since that is already covered
+  // above), and check the ComingSoon component rendered with the right title
+  // plus its fixed body copy. Confirms the page isn't blank or throwing, not
+  // just that it exists.
   for (const [title, href] of stubs) {
-    test(`${href} shows the coming-soon placeholder for ${title}`, async ({ page }) => {
-      await createAccount(page, identity());
+    test(`${href} shows the coming-soon placeholder for ${title}`, async ({ browser }) => {
+      const page = await signedInPage(browser);
 
       await page.goto(href);
       await expect(page.getByText(title, { exact: true })).toBeVisible();
@@ -109,8 +133,8 @@ test.describe('dashboard access and navigation', () => {
 
   // These routes were dropped from PAGE_ROUTES in routes.ts once they started
   // requiring a session: an anonymous goto would just land on /login and test
-  // that page instead. Re-created here, signed in, so the console gate still
-  // covers them.
+  // that page instead. Reused here, signed in via the shared account, so the
+  // console gate still covers them.
   const consoleGatedRoutes = ['/dashboard', '/chat', ...stubs.map(([, href]) => href)];
 
   // Same assertion style as console.spec.ts: attach the listener before
@@ -118,8 +142,8 @@ test.describe('dashboard access and navigation', () => {
   // quiet so async errors have had time to surface, then require zero
   // console errors/warnings/uncaught exceptions/failed requests.
   for (const route of consoleGatedRoutes) {
-    test(`${route} logs nothing in the browser console when signed in`, async ({ page }) => {
-      await createAccount(page, identity());
+    test(`${route} logs nothing in the browser console when signed in`, async ({ browser }) => {
+      const page = await signedInPage(browser);
 
       const violations = watchConsole(page);
       await page.goto(route, { waitUntil: 'domcontentloaded' });
