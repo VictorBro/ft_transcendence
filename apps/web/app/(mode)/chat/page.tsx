@@ -1,4 +1,13 @@
-export default function ChatPage() {
+import { requireUser } from '@/lib/session';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = { title: 'Chat' };
+
+export const dynamic = 'force-dynamic';
+
+export default async function ChatPage() {
+  await requireUser();
+
   return (
     <div className="flex h-full gap-6">
       <section className="flex flex-1 min-w-0 flex-col rounded-2xl border border-slate-200 dark:border-slate-800">

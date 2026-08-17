@@ -1,5 +1,7 @@
 import Link from 'next/link';
 
+import { requireUser } from '@/lib/session';
+
 const modes = [
   {
     id: 'friends',
@@ -66,7 +68,9 @@ const panels = [
   },
 ];
 
-export default function LobbyPage() {
+export default async function LobbyPage() {
+  await requireUser();
+
   return (
     <div className="flex h-full gap-6">
       <div className="flex flex-1 min-w-0 flex-col gap-4 overflow-visible">
