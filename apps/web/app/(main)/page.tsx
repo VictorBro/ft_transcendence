@@ -43,10 +43,10 @@ export default async function HomePage() {
             everything below is wiring, not product.
           </p>
           <Link
-            href={user ? '/dashboard' : '/signup'}
+            href={user ? '/first-contact' : '/signup'}
             className="mt-4 flex w-fit items-center rounded-full bg-indigo-700 px-20 py-4 text-base font-semibold text-white shadow-sm transition-colors hover:bg-indigo-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-700 active:bg-indigo-900"
           >
-            {user ? 'Go to lobby' : 'Start now'}
+            {user ? 'Dashboard' : 'Start now'}
           </Link>
         </div>
         <Image

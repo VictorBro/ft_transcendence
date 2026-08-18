@@ -1,0 +1,67 @@
+@import 'tailwindcss';
+
+/* Tailwind 4 is CSS-first: there is no tailwind.config.js. Source detection is
+   declared explicitly so class scanning does not depend on the working
+   directory the build happens to run from inside the container. */
+@source '..';
+@source '../../components';
+
+@theme {
+  --color-canvas: #fefefe;
+
+  /* Entrance and exit are two animations rather than one cycle, because their
+     duration must not follow the hold. A single keyframe can only express its
+     phases as percentages of itself, so a longer hold would stretch the fades
+     with it; here 500ms is fixed and the hold is the component's business.
+     The duration is written out in both rather than shared through a var():
+     @theme resolves these at build time to generate the utilities, and a
+     var() pointing at a sibling token is not substituted at that point — it
+     would reach the browser as an invalid animation shorthand and never play.
+     Keep the two values equal so a transition cannot become asymmetric.
+
+     `both` covers the phases either side of the animation: backwards applies
+     the first frame before it starts, forwards holds the last one after it
+     ends. That is what keeps the text invisible while waiting and after the
+     exit, without an opacity-0 class — a plain declaration on the element
+     outranks the keyframes and would pin opacity at 0 for the whole run. */
+  --animate-fade-in: fade-in 500ms ease-out both;
+  --animate-fade-out: fade-out 500ms ease-in both;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(1rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(1rem);
+    }
+  }
+}
+
+@layer base {
+  :root {
+    /* Lets the browser paint form controls and scrollbars for the active
+       scheme, which is what keeps the `dark:` variants from looking half done. */
+    color-scheme: light dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    text-rendering: optimizeLegibility;
+  }
+}
