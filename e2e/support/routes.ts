@@ -49,3 +49,34 @@ export const LEGAL_ROUTES: PageRoute[] = [
   { path: '/privacy', name: 'privacy policy' },
   { path: '/terms', name: 'terms of service' },
 ];
+
+/**
+ * Every page that must expose the legal links, split by whether reaching it
+ * needs a session. The (main) shell carries the full footer and the (dashboard)
+ * and (mode) shells the compact LegalFooter, but all three publish the links
+ * under the same "Legal" nav, so one assertion covers each list.
+ *
+ * These exist because the footer was previously only checked on "/", which let
+ * the (dashboard) and (mode) shells ship with no footer at all while the test
+ * titled "every page" stayed green.
+ */
+export const PUBLIC_FOOTER_ROUTES: PageRoute[] = [
+  { path: '/', name: 'home' },
+  { path: '/privacy', name: 'privacy policy' },
+  { path: '/terms', name: 'terms of service' },
+  { path: '/login', name: 'login' },
+  { path: '/signup', name: 'signup' },
+];
+
+/** Same, for the routes behind requireUser(). */
+export const AUTHENTICATED_FOOTER_ROUTES: PageRoute[] = [
+  { path: '/dashboard', name: 'dashboard' },
+  { path: '/chat', name: 'chat' },
+  { path: '/chat-progress', name: 'chat progress' },
+  { path: '/word-mode', name: 'word mode' },
+  { path: '/sentence-mode', name: 'sentence mode' },
+  { path: '/roleplay', name: 'roleplay' },
+  { path: '/friends', name: 'friends' },
+  { path: '/profile', name: 'profile' },
+  { path: '/settings/2fa', name: 'two-factor settings' },
+];

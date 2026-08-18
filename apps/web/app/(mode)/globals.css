@@ -1,9 +1,16 @@
 @import 'tailwindcss';
 
+/* Tailwind 4 resolves `dark:` through prefers-color-scheme unless told
+   otherwise. The layouts put `dark` on <html> to pin the app to one palette,
+   so the variant has to follow that class or the two disagree: body stays
+   dark while every `dark:` utility switches off on a light OS. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* Tailwind 4 is CSS-first: there is no tailwind.config.js. Source detection is
    declared explicitly so class scanning does not depend on the working
    directory the build happens to run from inside the container. */
 @source '..';
+
 @source '../../components';
 
 @theme {
@@ -12,9 +19,10 @@
 
 @layer base {
   :root {
-    /* Lets the browser paint form controls and scrollbars for the active
-       scheme, which is what keeps the `dark:` variants from looking half done. */
-    color-scheme: light dark;
+    /* The app is pinned to the dark palette by the `dark` class on <html>, so
+       the browser has to paint form controls and scrollbars dark too — leaving
+       this as `light dark` would follow the OS and desync from the page. */
+    color-scheme: dark;
   }
 
   html {

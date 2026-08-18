@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 import Link from 'next/link';
 
 import { SessionNav } from '@/components/session-nav';
+import { LegalFooter } from '@/components/legal-footer';
 
 import './globals.css';
 
@@ -38,7 +39,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           </div>
         </header>
 
-        <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-12">{children}</main>
+        <main className="mx-auto w-full max-w-6xl flex-1 px-6 pt-8 pb-4">{children}</main>
+
+        <LegalFooter />
       </body>
     </html>
   );

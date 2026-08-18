@@ -14,8 +14,9 @@ import { UsersModule } from './users/users.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
-    // The anonymous ceiling. IdentityThrottlerGuard raises it for callers that
-    // carry a session, and counts each of them on their own key.
+    // One ceiling for everyone. What IdentityThrottlerGuard changes is not the
+    // number but who it is counted against: each account on its own key, each
+    // anonymous visitor on their own address.
     ThrottlerModule.forRoot({ throttlers: [{ ttl: 60_000, limit: 100 }] }),
     PrismaModule,
     RedisModule,

@@ -185,10 +185,27 @@ describe('fetchSession', () => {
   it('returns the signed-in user and forwards the cookie', async () => {
     const fetchImpl = vi.fn(async () => Response.json(user));
 
-    await expect(fetchSession({ cookie: 'ft.sid=abc', fetchImpl })).resolves.toEqual(user);
+    await expect(fetchSession({ cookie: 'ft.sid=abc', fetchImpl })).resolves.toEqual({
+      status: 'ok',
+      user,
+    });
     expect(fetchImpl).toHaveBeenCalledWith(
       'http://api:3001/api/auth/me',
       expect.objectContaining({ headers: expect.objectContaining({ cookie: 'ft.sid=abc' }) }),
+    );
+  });
+
+  // The API keys anonymous callers on the address it sees, and what it sees
+  // here is the web container unless this header carries the real one.
+  it('forwards the visitor address when given one', async () => {
+    const fetchImpl = vi.fn(async () => Response.json(user));
+
+    await fetchSession({ forwardedFor: '88.10.20.30', fetchImpl });
+    expect(fetchImpl).toHaveBeenCalledWith(
+      expect.any(String),
+      expect.objectContaining({
+        headers: expect.objectContaining({ 'x-forwarded-for': '88.10.20.30' }),
+      }),
     );
   });
 
@@ -206,20 +223,44 @@ describe('fetchSession', () => {
   it('reads a 401 as signed out', async () => {
     const fetchImpl = vi.fn(async () => new Response(null, { status: 401 }));
 
-    await expect(fetchSession({ fetchImpl })).resolves.toBeNull();
+    await expect(fetchSession({ fetchImpl })).resolves.toEqual({ status: 'signed-out' });
   });
 
-  it('rejects a payload that is not a session user', async () => {
+  // Throttling says "ask again later", never "you are not signed in". Reading
+  // it as a logout is what sent signed-in visitors back to /login.
+  it('reads a 429 as unavailable, not signed out', async () => {
+    const fetchImpl = vi.fn(async () => new Response(null, { status: 429 }));
+
+    await expect(fetchSession({ fetchImpl })).resolves.toMatchObject({
+      status: 'unavailable',
+    });
+  });
+
+  it('reads a 500 as unavailable, not signed out', async () => {
+    const fetchImpl = vi.fn(async () => new Response(null, { status: 500 }));
+
+    await expect(fetchSession({ fetchImpl })).resolves.toMatchObject({
+      status: 'unavailable',
+    });
+  });
+
+  // A 200 with a body we cannot read is not a verdict on the session: the API
+  // never said this visitor is signed out, so we must not say it either.
+  it('reads an unreadable payload as unavailable', async () => {
     const fetchImpl = vi.fn(async () => Response.json({ id: 'not-a-uuid' }));
 
-    await expect(fetchSession({ fetchImpl })).resolves.toBeNull();
+    await expect(fetchSession({ fetchImpl })).resolves.toMatchObject({
+      status: 'unavailable',
+    });
   });
 
-  it('degrades to signed out when the API is unreachable', async () => {
+  it('reads an unreachable API as unavailable', async () => {
     const fetchImpl = vi.fn(async () => {
       throw new Error('ECONNREFUSED');
     });
 
-    await expect(fetchSession({ fetchImpl })).resolves.toBeNull();
+    await expect(fetchSession({ fetchImpl })).resolves.toMatchObject({
+      status: 'unavailable',
+    });
   });
 });

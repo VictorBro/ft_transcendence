@@ -1,55 +1,20 @@
-import { expect, test, type Browser, type BrowserContext, type Page } from '@playwright/test';
+import { expect, test, type Browser, type Page } from '@playwright/test';
 
 import { formatViolations, settle, watchConsole } from '../support/console-guard';
+import { createSharedSession, type SharedSession } from '../support/session';
 
 test.describe('dashboard access and navigation', () => {
-  const password = 'Correct-Horse-9';
-
-  // A timestamp plus a small random suffix collides often enough across this
-  // many parallel tests to fail signup on a reused email. A UUID does not.
-  // displayName is capped at 32 characters, so only the first UUID segment is
-  // used there; the full UUID is fine in the email local part.
-  const identity = () => {
-    const stamp = crypto.randomUUID();
-    return { email: `browser-${stamp}@example.com`, displayName: `browser${stamp.split('-')[0]}` };
-  };
-
-  // Fills the signup form and waits for the redirect to /profile, which only
-  // happens once the account exists and the session cookie is set.
-  const createAccount = async (page: Page, fields: ReturnType<typeof identity>) => {
-    await page.goto('/signup');
-    await page.getByLabel('Email', { exact: true }).fill(fields.email);
-    await page.getByLabel('Display name', { exact: true }).fill(fields.displayName);
-    await page.getByLabel('Password', { exact: true }).fill(password);
-    await page.getByLabel('Confirm password', { exact: true }).fill(password);
-    await page.getByRole('button', { name: 'Create account' }).click();
-    await expect(page).toHaveURL(/\/profile$/);
-  };
-
   // Every test below that needs to be signed in shares this one account
-  // instead of signing up again: dashboard.spec.ts otherwise racks up ~20
-  // signups (one per tile/stub/route, each hashing a password with argon2),
-  // which under parallel workers was slow enough to trip other tests'
-  // requests. Storage state is how Playwright hands a saved cookie jar to a
-  // fresh, isolated browser context without re-running the login flow.
-  let sharedDisplayName: string;
-  let storageState: Awaited<ReturnType<BrowserContext['storageState']>>;
+  // instead of signing up again: this file otherwise racks up ~20 signups (one
+  // per tile/stub/route, each hashing a password with argon2), which under
+  // parallel workers was slow enough to trip other tests' requests.
+  let session: SharedSession;
 
   test.beforeAll(async ({ browser }: { browser: Browser }) => {
-    const context = await browser.newContext();
-    const page = await context.newPage();
-    const { email, displayName } = identity();
-    sharedDisplayName = displayName;
-    await createAccount(page, { email, displayName });
-    storageState = await context.storageState();
-    await context.close();
+    session = await createSharedSession(browser);
   });
 
-  // Hands back a fresh, isolated context signed in as the shared account.
-  const signedInPage = async (browser: Browser): Promise<Page> => {
-    const context = await browser.newContext({ storageState });
-    return context.newPage();
-  };
+  const signedInPage = (browser: Browser): Promise<Page> => session.signedInPage(browser);
 
   // The dashboard page calls requireUser(), so an anonymous visit must bounce
   // to /login rather than render the lobby. Proves the guard actually works,
@@ -106,7 +71,7 @@ test.describe('dashboard access and navigation', () => {
 
     await page.goto('/chat');
     await expect(page.getByRole('navigation', { name: 'Account' })).toContainText(
-      sharedDisplayName,
+      session.displayName,
     );
   });
 

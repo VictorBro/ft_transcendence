@@ -3,15 +3,14 @@ import { ThrottlerGuard, type ThrottlerRequest } from '@nestjs/throttler';
 import type { Request } from 'express';
 
 /**
- * Per-session quota. Far larger than the anonymous one because a session is
- * attributable and revocable: it belongs to one account, that account's traffic
- * is counted on its own key, and abuse can be answered by destroying the
- * session rather than by keeping every signed-in user on a short leash.
- *
- * Sized off page loads, not API calls: every server-rendered protected page
- * costs one /api/auth/me, so a burst of navigation adds up quickly and legibly.
+ * Marks a request that must be counted per address even when it carries a
+ * session. Set by handleRequest and read back by getTracker, which receives
+ * nothing but the request and so has no other way to learn what the route
+ * asked for. Symbol-keyed to stay clear of anything express puts on req.
  */
-export const SESSION_THROTTLE_LIMIT = 600;
+const IP_ONLY = Symbol('identity-throttler:ip-only');
+
+type TrackedRequest = Request & { [IP_ONLY]?: boolean };
 
 /**
  * Counts requests per caller identity instead of per `req.ip`.
@@ -20,18 +19,31 @@ export const SESSION_THROTTLE_LIMIT = 600;
  * Nothing reaches the API from a client address: Caddy proxies browser traffic,
  * and Next.js calls the API server-side from the `web` container for every
  * requireUser() on a protected page. Both arrive as a container IP, so the
- * whole platform shares one 100/min bucket and the 101st visitor in a minute is
- * signed out — fetchSession() maps any non-ok response to null, which
- * requireUser() cannot distinguish from "signed out" and answers with a
- * redirect to /login.
+ * whole platform shared one 100/min bucket and the 101st visitor in a minute
+ * was refused — a limit meant to curb one abuser applied to everyone at once.
  *
- * So the key is the session id when there is one, and the forwarded client
- * address otherwise. Authenticated traffic is metered per account; anonymous
- * traffic keeps the per-IP limit it has today.
+ * So the key is the account id when there is one, and the forwarded client
+ * address otherwise. Note the account id and not the session id: regenerate()
+ * on login mints a new session for the same user, and keying on it would let
+ * anyone reset their own counter by signing in again.
+ *
+ * The limit itself is left alone. 100/min is the ceiling every caller gets,
+ * signed in or not; the fix here was never that the number was too small, it
+ * was that the number was being shared. Routes that set their own limit are
+ * the exception and stay on the address, because identity is exactly what an
+ * attacker can multiply there.
  */
 @Injectable()
 export class IdentityThrottlerGuard extends ThrottlerGuard {
   protected override async getTracker(req: Request): Promise<string> {
+    // Checked before the session, and returning straight away, because the
+    // point is to ignore an identity the caller controls: a route that sets
+    // its own limit is guarding a secret, and must count every attempt made
+    // from one machine against one budget.
+    if ((req as TrackedRequest)[IP_ONLY]) {
+      return `ip:${this.clientAddress(req)}`;
+    }
+
     // sessionID exists as soon as express-session parses a cookie it issued,
     // but an anonymous visitor gets no session at all (saveUninitialized is
     // false), so this is only set for callers that actually carry one.
@@ -55,18 +67,24 @@ export class IdentityThrottlerGuard extends ThrottlerGuard {
   }
 
   /**
-   * Raises the ceiling for signed-in callers, and only where no route asked for
-   * something stricter. signup, login and 2fa/verify all carry their own
-   * @Throttle and must keep it: that is where brute-force protection lives.
+   * Decides which requests are counted per address rather than per account.
+   * signup, login and 2fa/verify all carry their own @Throttle and must keep
+   * it counted per address: that is where brute-force protection lives.
+   *
+   * Metering those routes per account would hand the attacker the key to his
+   * own bucket: sign in as one of N accounts he already controls and each one
+   * opens a fresh 5/min budget against the same victim, so the limit reads 5
+   * and behaves like 5N. Flagged here rather than in getTracker because this
+   * is where the route's own limit is known, and super.handleRequest() below
+   * is what calls getTracker.
    *
    * The override has to be detected through the reflector rather than by
    * comparing throttler.name, which is the name of the configured throttler
-   * ("default") on every route, decorated or not, and so would quietly lift the
-   * limit on exactly the endpoints that need it lowest.
+   * ("default") on every route, decorated or not, and so would quietly put
+   * every route back on the address.
    */
   protected override async handleRequest(requestProps: ThrottlerRequest): Promise<boolean> {
     const { context, throttler } = requestProps;
-    const req = this.getRequestResponse(context).req as Request;
 
     // Same reflector key and lookup order the base class uses to resolve a
     // route-level @Throttle, so "did a route set its own limit?" is answered
@@ -76,9 +94,9 @@ export class IdentityThrottlerGuard extends ThrottlerGuard {
       context.getClass(),
     ]);
 
-    const hasSession = req.session?.userId !== undefined;
-    if (hasSession && routeLimit === undefined) {
-      return super.handleRequest({ ...requestProps, limit: SESSION_THROTTLE_LIMIT });
+    if (routeLimit !== undefined) {
+      const req = this.getRequestResponse(context).req as TrackedRequest;
+      req[IP_ONLY] = true;
     }
 
     return super.handleRequest(requestProps);
