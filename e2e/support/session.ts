@@ -42,11 +42,21 @@ export const createAccount = async (page: Page, fields: Identity): Promise<void>
   await expect(page).toHaveURL(/\/profile$/);
 };
 
+export interface SignedIn {
+  page: Page;
+  /** Close this when the test ends; the context is not tracked anywhere else. */
+  context: BrowserContext;
+}
+
 export interface SharedSession {
   /** Display name of the account, for specs that assert on the account nav. */
   displayName: string;
-  /** Hands back a fresh, isolated context signed in as the shared account. */
-  signedInPage: (browser: Browser) => Promise<Page>;
+  /**
+   * Hands back a fresh, isolated context signed in as the shared account, and
+   * the context itself: nothing else holds a reference, so a caller that drops
+   * it leaves a live browser profile behind for the rest of the run.
+   */
+  signedInPage: (browser: Browser) => Promise<SignedIn>;
 }
 
 /**
@@ -66,9 +76,9 @@ export const createSharedSession = async (browser: Browser): Promise<SharedSessi
 
   return {
     displayName: fields.displayName,
-    signedInPage: async (target: Browser): Promise<Page> => {
+    signedInPage: async (target: Browser): Promise<SignedIn> => {
       const signedIn = await target.newContext({ storageState });
-      return signedIn.newPage();
+      return { page: await signedIn.newPage(), context: signedIn };
     },
   };
 };

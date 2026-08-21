@@ -47,6 +47,19 @@ test.describe('production stack smoke', () => {
     });
   });
 
+  test('web reaches api over the internal network', async ({ request }) => {
+    // Not covered by /api/health: that one goes browser -> Caddy -> api, a
+    // different hop and a different config from web -> api over API_INTERNAL_URL.
+    const response = await request.get('/healthz/upstream');
+
+    expect(response.status(), 'web could not reach api internally').toBe(200);
+    expect(await response.json()).toEqual({
+      status: 'ok',
+      service: 'web',
+      upstream: 'api',
+    });
+  });
+
   test('the OpenAPI document is served behind the same origin', async ({ request }) => {
     const response = await request.get('/api/docs-json');
 

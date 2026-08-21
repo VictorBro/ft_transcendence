@@ -9,13 +9,9 @@
 /* Tailwind 4 is CSS-first: there is no tailwind.config.js. Source detection is
    declared explicitly so class scanning does not depend on the working
    directory the build happens to run from inside the container. */
-@source '..';
+@source '.';
 
-@source '../../components';
-
-@theme {
-  --color-canvas: #fefefe;
-}
+@source '../components';
 
 @layer base {
   :root {

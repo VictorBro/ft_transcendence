@@ -1,70 +1,52 @@
-import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
 import Link from 'next/link';
 
 import { SessionNav } from '@/components/session-nav';
-
-import './globals.css';
-
-export const metadata: Metadata = {
-  title: {
-    default: 'ft_transcendence',
-    template: '%s | ft_transcendence',
-  },
-  description:
-    'An AI-driven platform for learning a foreign language: generated lessons, automatic levelling, and live practice with another learner.',
-  applicationName: 'ft_transcendence',
-};
-
-export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1,
-};
 
 const legalLinks = [
   { href: '/privacy', label: 'Privacy Policy' },
   { href: '/terms', label: 'Terms of Service' },
 ];
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+/**
+ * The marketing shell. `min-h-dvh` rather than the app shells' `h-dvh`: these
+ * pages are documents that may run past the viewport, and the full footer below
+ * is meant to be scrolled to, not pinned.
+ */
+
+export default function MainLayout({ children }: { children: ReactNode }) {
   return (
-    // Extensions like Dark Reader stamp attributes on <html> before React
-    // hydrates, which otherwise logs a mismatch an evaluator would read as a
-    // console gate failure. This covers that one element, not its children, so
-    // a real mismatch anywhere inside still reports.
-    <html lang="en" suppressHydrationWarning className="dark">
-      <body className="flex min-h-dvh flex-col bg-slate-950 font-sans text-slate-100 antialiased">
-        <header className="border-b border-slate-800">
-          <div className="mx-auto flex w-full max-w-6xl items-baseline justify-between gap-4 px-6 py-5">
-            <Link href="/" className="text-base font-semibold tracking-tight text-slate-100">
-              ft_transcendence
-            </Link>
-            <SessionNav />
-          </div>
-        </header>
+    <div className="flex min-h-dvh flex-col">
+      <header className="border-b border-slate-800">
+        <div className="mx-auto flex w-full max-w-6xl items-baseline justify-between gap-4 px-6 py-5">
+          <Link href="/" className="text-base font-semibold tracking-tight text-slate-100">
+            ft_transcendence
+          </Link>
+          <SessionNav />
+        </div>
+      </header>
 
-        <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-12">{children}</main>
+      <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-12">{children}</main>
 
-        <footer className="border-t border-slate-800">
-          <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-6 py-6 text-sm text-slate-400">
-            <p>An academic project. Not a commercial service.</p>
-            <nav aria-label="Legal">
-              <ul className="flex gap-6">
-                {legalLinks.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="underline underline-offset-4 hover:text-slate-100"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
-        </footer>
-      </body>
-    </html>
+      <footer className="border-t border-slate-800">
+        <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-6 py-6 text-sm text-slate-400">
+          <p>An academic project. Not a commercial service.</p>
+          <nav aria-label="Legal">
+            <ul className="flex gap-6">
+              {legalLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="underline underline-offset-4 hover:text-slate-100"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      </footer>
+    </div>
   );
 }

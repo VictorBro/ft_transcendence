@@ -10,7 +10,7 @@ export function LegalFooter() {
   return (
     <footer className="shrink-0 px-6 pb-4 pt-0 text-center text-[11px] text-slate-500">
       <nav aria-label="Legal">
-        Checkout our{' '}
+        An academic project. Not a commercial service. Checkout our{' '}
         <Link href="/privacy" className="underline underline-offset-4 hover:text-slate-300">
           Privacy Policy
         </Link>{' '}

@@ -84,7 +84,7 @@ test.describe('legal pages', () => {
 
     for (const route of AUTHENTICATED_FOOTER_ROUTES) {
       test(`both documents are reachable from the footer of ${route.name}`, async ({ browser }) => {
-        const page = await session.signedInPage(browser);
+        const { page, context } = await session.signedInPage(browser);
 
         await page.goto(route.path);
         // Without this the guard bouncing us to /login would still find a
@@ -93,6 +93,7 @@ test.describe('legal pages', () => {
         await expect(page).toHaveURL(new RegExp(`${route.path}$`));
 
         await expectLegalLinks(page);
+        await context.close();
       });
     }
   });

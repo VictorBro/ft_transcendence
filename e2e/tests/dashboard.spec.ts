@@ -1,7 +1,7 @@
-import { expect, test, type Browser, type Page } from '@playwright/test';
+import { expect, test, type Browser } from '@playwright/test';
 
 import { formatViolations, settle, watchConsole } from '../support/console-guard';
-import { createSharedSession, type SharedSession } from '../support/session';
+import { createSharedSession, type SharedSession, type SignedIn } from '../support/session';
 
 test.describe('dashboard access and navigation', () => {
   // Every test below that needs to be signed in shares this one account
@@ -14,7 +14,7 @@ test.describe('dashboard access and navigation', () => {
     session = await createSharedSession(browser);
   });
 
-  const signedInPage = (browser: Browser): Promise<Page> => session.signedInPage(browser);
+  const signedInPage = (browser: Browser): Promise<SignedIn> => session.signedInPage(browser);
 
   // The dashboard page calls requireUser(), so an anonymous visit must bounce
   // to /login rather than render the lobby. Proves the guard actually works,
@@ -42,12 +42,13 @@ test.describe('dashboard access and navigation', () => {
   // query matters because "Chat" is a literal prefix of "Chat progress".
   for (const [title, href] of tiles) {
     test(`clicking the ${title} tile navigates to ${href}`, async ({ browser }) => {
-      const page = await signedInPage(browser);
+      const { page, context } = await signedInPage(browser);
 
       await page.goto('/dashboard');
       await page.getByRole('link', { name: title, exact: true }).click();
 
       await expect(page).toHaveURL(new RegExp(`${href}$`));
+      await context.close();
     });
   }
 
@@ -55,24 +56,26 @@ test.describe('dashboard access and navigation', () => {
   // account nav as the rest of the app. One page (/chat) stands in for all of
   // them: the layout is shared, so this is not per-page behaviour.
   test('the back link on a mode page returns to the dashboard', async ({ browser }) => {
-    const page = await signedInPage(browser);
+    const { page, context } = await signedInPage(browser);
 
     await page.goto('/chat');
     await page.getByRole('link', { name: 'Back to dashboard' }).click();
 
     await expect(page).toHaveURL(/\/dashboard$/);
+    await context.close();
   });
 
   // Same layout-sharing argument as the back-link test above: SessionNav is
   // reused from the (main) layout, and auth.spec.ts already proves it there.
   // This only checks it also renders correctly inside the (mode) layout.
   test('the account nav on a mode page shows the signed-in user', async ({ browser }) => {
-    const page = await signedInPage(browser);
+    const { page, context } = await signedInPage(browser);
 
     await page.goto('/chat');
     await expect(page.getByRole('navigation', { name: 'Account' })).toContainText(
       session.displayName,
     );
+    await context.close();
   });
 
   // Stub pages behind the lobby tiles that have no dedicated feature yet:
@@ -88,11 +91,12 @@ test.describe('dashboard access and navigation', () => {
   // just that it exists.
   for (const [title, href] of stubs) {
     test(`${href} shows the coming-soon placeholder for ${title}`, async ({ browser }) => {
-      const page = await signedInPage(browser);
+      const { page, context } = await signedInPage(browser);
 
       await page.goto(href);
       await expect(page.getByText(title, { exact: true })).toBeVisible();
       await expect(page.getByText('This mode is still in development.')).toBeVisible();
+      await context.close();
     });
   }
 
@@ -108,7 +112,7 @@ test.describe('dashboard access and navigation', () => {
   // console errors/warnings/uncaught exceptions/failed requests.
   for (const route of consoleGatedRoutes) {
     test(`${route} logs nothing in the browser console when signed in`, async ({ browser }) => {
-      const page = await signedInPage(browser);
+      const { page, context } = await signedInPage(browser);
 
       const violations = watchConsole(page);
       await page.goto(route, { waitUntil: 'domcontentloaded' });
@@ -118,6 +122,7 @@ test.describe('dashboard access and navigation', () => {
         violations,
         `${route} produced browser console output:\n${formatViolations(violations)}\n`,
       ).toEqual([]);
+      await context.close();
     });
   }
 });

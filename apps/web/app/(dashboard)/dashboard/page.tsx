@@ -8,14 +8,12 @@ const modes = [
     title: 'Discuss with a friend',
     description:
       'Chat in real time with a friend in any language — we translate and correct for both of you.',
-    color: 'bg-slate-900',
     href: '/friends',
   },
   {
     id: 'chat',
     title: 'Chat',
     description: 'Boost your language skills by practicing with our AI-powered tutor.',
-    color: 'bg-slate-900',
     href: '/chat',
   },
   {
@@ -23,28 +21,24 @@ const modes = [
     title: 'Chat progress',
     description:
       'Follow a conversation path that adapts to your progress, from beginner to advanced.',
-    color: 'bg-slate-900',
     href: '/chat-progress',
   },
   {
     id: 'word',
     title: 'Word mode',
     description: 'Build your core vocabulary using our word lists.',
-    color: 'bg-slate-900',
     href: '/word-mode',
   },
   {
     id: 'sentence',
     title: 'Sentence mode',
     description: 'Build your language skills from the ground up.',
-    color: 'bg-slate-900',
     href: '/sentence-mode',
   },
   {
     id: 'roleplay',
     title: 'Roleplay',
     description: 'Practice with useful real-life scenarios.',
-    color: 'bg-slate-900',
     href: '/roleplay',
   },
 ];
@@ -79,7 +73,7 @@ export default async function LobbyPage() {
             key={mode.id}
             href={mode.href}
             aria-label={mode.title}
-            className={`flex flex-col rounded-2xl border border-slate-200 p-6 dark:border-slate-800 min-h-44 transition-transform duration-200 hover:scale-102 ${mode.color}`}
+            className="flex min-h-44 flex-col rounded-2xl border border-slate-200 bg-slate-900 p-6 transition-transform duration-200 hover:scale-102 dark:border-slate-800"
           >
             <p className="font-semibold text-2xl mt-2">{mode.title}</p>
             <p className="text-lg mt-6 max-w-xs text-slate-400">{mode.description}</p>

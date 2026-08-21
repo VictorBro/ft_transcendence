@@ -1,5 +1,6 @@
 import { cookies, headers } from 'next/headers';
 import { redirect } from 'next/navigation';
+import { cache } from 'react';
 import type { SessionUser } from '@ft/shared';
 
 import { fetchSession, type SessionResult } from './api';
@@ -13,8 +14,14 @@ import { fetchSession, type SessionResult } from './api';
  *
  * Callers interpret, because "unavailable" is harmless on a public page and
  * destructive on a protected one.
+ *
+ * Memoised per request with React's cache(): the layout's SessionNav and the
+ * page below it both ask for the session, and the fetch's cache: 'no-store'
+ * stops Next from deduping the two calls. The scope is a single render, so no
+ * result ever crosses from one visitor to another.
  */
-export async function loadSession(): Promise<SessionResult> {
+
+export const loadSession = cache(async function loadSession(): Promise<SessionResult> {
   const store = await cookies();
   const cookie = store
     .getAll()
@@ -32,7 +39,7 @@ export async function loadSession(): Promise<SessionResult> {
     cookie,
     forwardedFor: forwardedFor ?? undefined,
   });
-}
+});
 
 /**
  * For pages that render for everyone. Here a failed lookup may safely degrade
