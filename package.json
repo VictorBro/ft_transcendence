@@ -10,7 +10,7 @@
     "pnpm": ">=11.18.0"
   },
   "scripts": {
-    "prepare": "husky",
+    "prepare": "if command -v husky >/dev/null 2>&1; then husky; fi",
     "dev": "turbo run dev",
     "build": "turbo run build",
     "start": "turbo run start",
