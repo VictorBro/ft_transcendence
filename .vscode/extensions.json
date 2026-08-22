@@ -1,0 +1,18 @@
+{
+  // Same list as .devcontainer/devcontainer.json, which installs them
+  // automatically inside the container. Here they are only recommendations, so
+  // a teammate working on the host is prompted once on first open. Without
+  // this, format-on-save silently does nothing for them: the setting is there
+  // but the Prettier extension is not.
+  "recommendations": [
+    "anthropic.claude-code",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "Prisma.prisma",
+    "ms-azuretools.vscode-docker",
+    "bradlc.vscode-tailwindcss",
+    "ms-playwright.playwright",
+    "EditorConfig.EditorConfig",
+    "eamodio.gitlens"
+  ]
+}

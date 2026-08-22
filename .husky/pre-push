@@ -1,0 +1,10 @@
+# A fast subset of `make ci`, not a copy of it. Anything slower than a few
+# seconds gets bypassed with --no-verify, which is worse than not having it.
+# Warm this is about four seconds; cold it is however long one turbo build takes.
+#
+# `make` before a PR remains the real gate. This only catches the mistakes that
+# are cheap to catch.
+./scripts/assert-ts-version.sh
+./scripts/check-env-example.sh
+./scripts/check-app-boundaries.sh
+pnpm exec turbo run lint typecheck

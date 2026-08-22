@@ -38,6 +38,12 @@ playwright-report
 test-results
 .pnpm-store
 
+# VS Code: share the settings that make the repo build the same way for
+# everyone, keep personal files (launch configs, local tasks) out.
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
 # Local-only overrides and generated TLS material
 *.local
 certs

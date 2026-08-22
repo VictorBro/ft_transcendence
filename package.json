@@ -10,6 +10,7 @@
     "pnpm": ">=11.18.0"
   },
   "scripts": {
+    "prepare": "husky",
     "dev": "turbo run dev",
     "build": "turbo run build",
     "start": "turbo run start",
@@ -25,8 +26,13 @@
     "@ft/eslint-config": "workspace:*",
     "@ft/tsconfig": "workspace:*",
     "eslint": "10.8.0",
+    "husky": "9.1.7",
+    "lint-staged": "17.3.0",
     "prettier": "3.9.6",
     "turbo": "2.10.8",
     "typescript": "6.0.3"
+  },
+  "lint-staged": {
+    "*": ["prettier --write --ignore-unknown"]
   }
 }
