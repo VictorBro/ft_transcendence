@@ -13,7 +13,7 @@ export default async function ProfilePage() {
   const user = await requireUser();
 
   return (
-    <div className="flex flex-col gap-10">
+    <div className="mx-auto flex w-full max-w-md flex-col gap-10">
       <section className="flex flex-col gap-2">
         <h1 className="text-2xl font-semibold tracking-tight">{user.displayName}</h1>
         <p className="text-sm text-slate-600 dark:text-slate-300">{user.email}</p>

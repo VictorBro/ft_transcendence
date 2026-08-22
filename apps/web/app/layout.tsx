@@ -1,10 +1,16 @@
 import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
-import Link from 'next/link';
-
-import { SessionNav } from '@/components/session-nav';
 
 import './globals.css';
+
+/**
+ * Everything the three shells share and none of them vary: the document, the
+ * metadata and the one stylesheet. Each route group keeps its own layout for
+ * what it actually renders — (main) a logo header over a full footer, (dashboard)
+ * the same header over the compact one, (mode) a close button instead — and
+ * carries its own height rule on a wrapper, since <body> lives here now and
+ * cannot be `min-h-dvh` and `h-dvh` at once.
+ */
 
 export const metadata: Metadata = {
   title: {
@@ -21,53 +27,14 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-const legalLinks = [
-  { href: '/privacy', label: 'Privacy Policy' },
-  { href: '/terms', label: 'Terms of Service' },
-];
-
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     // Extensions like Dark Reader stamp attributes on <html> before React
     // hydrates, which otherwise logs a mismatch an evaluator would read as a
     // console gate failure. This covers that one element, not its children, so
     // a real mismatch anywhere inside still reports.
-    <html lang="en" suppressHydrationWarning>
-      <body className="flex min-h-dvh flex-col bg-white font-sans text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100">
-        <header className="border-b border-slate-200 dark:border-slate-800">
-          <div className="mx-auto flex w-full max-w-3xl items-baseline justify-between gap-4 px-6 py-5">
-            <Link
-              href="/"
-              className="text-base font-semibold tracking-tight text-slate-900 dark:text-slate-100"
-            >
-              ft_transcendence
-            </Link>
-            <SessionNav />
-          </div>
-        </header>
-
-        <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-12">{children}</main>
-
-        <footer className="border-t border-slate-200 dark:border-slate-800">
-          <div className="mx-auto flex w-full max-w-3xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-6 py-6 text-sm text-slate-500 dark:text-slate-400">
-            <p>An academic project. Not a commercial service.</p>
-            <nav aria-label="Legal">
-              <ul className="flex gap-6">
-                {legalLinks.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="underline underline-offset-4 hover:text-slate-900 dark:hover:text-slate-100"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
-        </footer>
-      </body>
+    <html lang="en" suppressHydrationWarning className="dark">
+      <body className="bg-slate-950 font-sans text-slate-100 antialiased">{children}</body>
     </html>
   );
 }

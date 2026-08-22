@@ -15,6 +15,7 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: workspaceRoot,
   },
+  allowedDevOrigins: ['ft-transcendence.test', 'localhost'],
   reactStrictMode: true,
   poweredByHeader: false,
 };

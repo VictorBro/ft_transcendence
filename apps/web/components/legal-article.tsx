@@ -2,7 +2,7 @@ import type { LegalDocument } from '@/lib/legal';
 
 export function LegalArticle({ doc }: { doc: LegalDocument }) {
   return (
-    <article className="flex flex-col gap-10">
+    <article className="flex flex-col gap-10 mx-auto max-w-prose">
       <header className="flex flex-col gap-4">
         <h1 className="text-3xl font-semibold tracking-tight">{doc.title}</h1>
         <p className="max-w-prose text-base leading-relaxed text-slate-600 dark:text-slate-300">

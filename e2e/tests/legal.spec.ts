@@ -1,6 +1,12 @@
-import { expect, test } from '@playwright/test';
+import type { Page } from '@playwright/test';
 
-import { LEGAL_MINIMUM_CHARACTERS, LEGAL_ROUTES } from '../support/routes';
+import {
+  AUTHENTICATED_FOOTER_ROUTES,
+  LEGAL_MINIMUM_CHARACTERS,
+  LEGAL_ROUTES,
+  PUBLIC_FOOTER_ROUTES,
+} from '../support/routes';
+import { expect, test } from '../support/session';
 
 /**
  * Rejection criterion: /privacy and /terms must exist and carry real content.
@@ -45,9 +51,12 @@ test.describe('legal pages', () => {
     });
   }
 
-  test('both documents are reachable from the footer of every page', async ({ page }) => {
-    await page.goto('/');
-
+  /**
+   * The claim the subject makes: both documents are one click away from
+   * wherever the reader happens to be. Every shell publishes them under a nav
+   * labelled "Legal", so the same assertion holds whichever footer rendered.
+   */
+  const expectLegalLinks = async (page: Page) => {
     const legalNav = page.getByRole('navigation', { name: 'Legal' });
     await expect(legalNav.getByRole('link', { name: 'Privacy Policy' })).toHaveAttribute(
       'href',
@@ -57,5 +66,28 @@ test.describe('legal pages', () => {
       'href',
       '/terms',
     );
+  };
+
+  for (const route of PUBLIC_FOOTER_ROUTES) {
+    test(`both documents are reachable from the footer of ${route.name}`, async ({ page }) => {
+      await page.goto(route.path);
+      await expectLegalLinks(page);
+    });
+  }
+
+  test.describe('behind a session', () => {
+    for (const route of AUTHENTICATED_FOOTER_ROUTES) {
+      test(`both documents are reachable from the footer of ${route.name}`, async ({
+        signedIn: page,
+      }) => {
+        await page.goto(route.path);
+        // Without this the guard bouncing us to /login would still find a
+        // footer there and pass, which is the failure mode that let the
+        // footerless shells ship in the first place.
+        await expect(page).toHaveURL(new RegExp(`${route.path}$`));
+
+        await expectLegalLinks(page);
+      });
+    }
   });
 });

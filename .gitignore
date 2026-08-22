@@ -41,6 +41,7 @@ test-results
 # Local-only overrides and generated TLS material
 *.local
 certs
+.claude/settings.local.json
 
 # OS
 .DS_Store

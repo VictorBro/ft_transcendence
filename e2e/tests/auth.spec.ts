@@ -1,5 +1,7 @@
-import { expect, test, type Page } from '@playwright/test';
+import type { Page } from '@playwright/test';
 import { Secret, TOTP } from 'otpauth';
+
+import { createAccount, expect, identity, PASSWORD, test } from '../support/session';
 
 /**
  * The browser half of authentication. Supertest already proves the API, so what
@@ -8,15 +10,6 @@ import { Secret, TOTP } from 'otpauth';
  * server renderer on the very next navigation.
  */
 test.describe('authentication in the browser', () => {
-  const password = 'Correct-Horse-9';
-
-  // Signing up writes real rows, which `make test-e2e` clears afterwards by
-  // matching this prefix. Keep it in step with E2E_EMAIL_PREFIX in the Makefile.
-  const identity = () => {
-    const stamp = `${Date.now()}${Math.floor(Math.random() * 1000)}`;
-    return { email: `browser-${stamp}@example.com`, displayName: `browser${stamp}` };
-  };
-
   /**
    * Exact labels throughout: "Password" alone also matches "Confirm password",
    * which Playwright reports as a strict mode violation rather than a guess.
@@ -34,17 +27,10 @@ test.describe('authentication in the browser', () => {
       .fill(fields.confirmPassword ?? fields.password);
   };
 
-  /** Signs up and waits for the profile, which is where a successful signup lands. */
-  const createAccount = async (page: Page, fields: ReturnType<typeof identity>) => {
-    await fillSignUp(page, { ...fields, password });
-    await page.getByRole('button', { name: 'Create account' }).click();
-    await expect(page).toHaveURL(/\/profile$/);
-  };
-
   const logIn = async (page: Page, email: string) => {
     await page.goto('/login');
     await page.getByLabel('Email', { exact: true }).fill(email);
-    await page.getByLabel('Password', { exact: true }).fill(password);
+    await page.getByLabel('Password', { exact: true }).fill(PASSWORD);
     await page.getByRole('button', { name: 'Sign in' }).click();
   };
 
@@ -77,7 +63,12 @@ test.describe('authentication in the browser', () => {
   test('refuses a signup whose two passwords disagree', async ({ page }) => {
     const { email, displayName } = identity();
 
-    await fillSignUp(page, { email, displayName, password, confirmPassword: `${password}x` });
+    await fillSignUp(page, {
+      email,
+      displayName,
+      password: PASSWORD,
+      confirmPassword: `${PASSWORD}x`,
+    });
     await page.getByRole('button', { name: 'Create account' }).click();
 
     await expect(page.locator('form').getByRole('alert')).toContainText('do not match');
@@ -104,8 +95,9 @@ test.describe('authentication in the browser', () => {
 
     await logIn(page, email);
 
-    await expect(page).toHaveURL(/\/profile$/);
-    await expect(page.getByRole('heading', { level: 1, name: displayName })).toBeVisible();
+    // Login lands on the home page rather than the profile, unlike signup.
+    await expect(page).toHaveURL(/\/$/);
+    await expect(page.getByRole('navigation', { name: 'Account' })).toContainText(displayName);
   });
 
   test('saves a profile edit and shows it in the header', async ({ page }) => {
@@ -182,7 +174,8 @@ test.describe('authentication in the browser', () => {
     await code.fill(totp.generate());
     await page.getByRole('button', { name: 'Verify' }).click();
 
-    await expect(page).toHaveURL(/\/profile$/);
-    await expect(page.getByRole('heading', { level: 1, name: displayName })).toBeVisible();
+    // Login lands on the home page rather than the profile, unlike signup.
+    await expect(page).toHaveURL(/\/$/);
+    await expect(page.getByRole('navigation', { name: 'Account' })).toContainText(displayName);
   });
 });

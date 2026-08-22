@@ -8,17 +8,10 @@ import { JSON_ROUTES } from '../support/routes';
  * other over the internal network.
  */
 test.describe('production stack smoke', () => {
-  test('home page renders and reports a reachable API', async ({ page }) => {
+  test('home page renders', async ({ page }) => {
     await page.goto('/');
 
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
-
-    // The badge is server-rendered from a real call to http://api:3001 inside
-    // the compose network, so "connected" is an end-to-end assertion: web can
-    // resolve and reach api. "unavailable" means the wiring is broken even
-    // though the page itself renders.
-    await expect(page.getByText('connected', { exact: true })).toBeVisible();
-    await expect(page.getByText('Hello from @ft/api')).toBeVisible();
   });
 
   for (const route of JSON_ROUTES) {
@@ -51,6 +44,19 @@ test.describe('production stack smoke', () => {
         { name: 'database', status: 'ok', latencyMs: expect.any(Number) },
         { name: 'redis', status: 'ok', latencyMs: expect.any(Number) },
       ],
+    });
+  });
+
+  test('web reaches api over the internal network', async ({ request }) => {
+    // Not covered by /api/health: that one goes browser -> Caddy -> api, a
+    // different hop and a different config from web -> api over API_INTERNAL_URL.
+    const response = await request.get('/healthz/upstream');
+
+    expect(response.status(), 'web could not reach api internally').toBe(200);
+    expect(await response.json()).toEqual({
+      status: 'ok',
+      service: 'web',
+      upstream: 'api',
     });
   });
 
