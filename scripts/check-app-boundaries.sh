@@ -25,10 +25,29 @@ cd "$repo_root"
 failures=0
 
 check() {
-  local pkg="$1" forbidden="$2" leaked
-  # tsc always emits forward slashes, on every platform, so one pattern works.
-  leaked="$(pnpm --filter "$pkg" exec tsc -p tsconfig.json --noEmit --listFiles 2>/dev/null \
-    | grep -F "/$forbidden/" || true)"
+  local pkg="$1" own="$2" forbidden="$3" listing leaked
+
+  # tsc's exit code is ignored on purpose: it exits non-zero on an ordinary type
+  # error while still printing the complete file listing first, and the listing
+  # is all this needs. `make ci` runs typecheck separately, so failing here too
+  # would report the same error twice.
+  listing="$(pnpm --filter "$pkg" exec tsc -p tsconfig.json --noEmit --listFiles 2>/dev/null || true)"
+
+  # A listing that does not contain the package's own sources means nothing was
+  # actually compiled, and grep would then match nothing and report a clean
+  # boundary that was never checked. This is not hypothetical: for an unknown
+  # package pnpm prints "No projects matched the filters" to STDOUT and exits
+  # ZERO, so neither the exit code nor an emptiness test catches a package that
+  # has been renamed out from under this script.
+  if ! printf '%s\n' "$listing" | grep -qF "/$own/"; then
+    printf 'FAIL  %s: no %s sources in the file listing, so nothing was verified\n' \
+      "$pkg" "$own" >&2
+    failures=$((failures + 1))
+    return
+  fi
+
+  # tsc emits forward slashes on every platform, so one pattern works everywhere.
+  leaked="$(printf '%s\n' "$listing" | grep -F "/$forbidden/" || true)"
 
   if [ -n "$leaked" ]; then
     printf 'FAIL  %s compiles source from %s:\n' "$pkg" "$forbidden" >&2
@@ -41,8 +60,8 @@ check() {
 
 printf 'Asserting apps/web and apps/api compile separately\n\n'
 
-check @ft/web apps/api
-check @ft/api apps/web
+check @ft/web apps/web apps/api
+check @ft/api apps/api apps/web
 
 printf '\n'
 if [ "$failures" -ne 0 ]; then
