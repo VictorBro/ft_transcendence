@@ -4,6 +4,7 @@ import { Throttle } from '@nestjs/throttler';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { IdentityThrottlerGuard } from './identity-throttler.guard';
+import { ThrottleByIp } from './throttle-by-ip.decorator';
 
 type FakeRequest = {
   session?: { userId?: string };
@@ -16,15 +17,20 @@ const ANONYMOUS_LIMIT = 100;
 const ROUTE_LIMIT = 5;
 
 /**
- * A real decorated handler rather than a mocked reflector. The guard finds a
- * route's own limit by building a metadata key from the throttler name, and a
- * mock would answer whatever key it was handed - including a misspelt one.
- * Going through @Throttle and a real Reflector means the lookup has to be
- * spelt exactly as Nest spells it or these tests stop passing.
+ * Real decorators and a real Reflector rather than a mock, which would answer
+ * whatever key it was handed and so could never catch a lookup that stopped
+ * matching what the decorator writes.
+ *
+ * `limitOnly` is the interesting one: it sets a budget without opting into
+ * address tracking, and must stay counted per account. That is the contract
+ * @ThrottleByIp exists to make explicit.
  */
 class RouteFixture {
-  @Throttle({ default: { limit: ROUTE_LIMIT, ttl: 60_000 } })
+  @ThrottleByIp(ROUTE_LIMIT)
   guarded(): void {}
+
+  @Throttle({ default: { limit: ROUTE_LIMIT, ttl: 60_000 } })
+  limitOnly(): void {}
 
   plain(): void {}
 }
@@ -166,9 +172,8 @@ describe('IdentityThrottlerGuard', () => {
 
     // The regression that matters. Counting login or 2fa/verify per account
     // would let an attacker open a fresh 5/min budget per account he controls,
-    // so a limit that reads 5 would behave like 5N. This fails if the metadata
-    // key the guard builds ever stops matching the one @Throttle writes.
-    it('counts a route with its own @Throttle against the address, session or not', async () => {
+    // so a limit that reads 5 would behave like 5N.
+    it('counts a @ThrottleByIp route against the address, session or not', async () => {
       await expect(
         keyCountedFor(
           { session: { userId: 'u1' }, ip: '203.0.113.7' },
@@ -177,8 +182,8 @@ describe('IdentityThrottlerGuard', () => {
       ).resolves.toBe(keyFor('ip:203.0.113.7', RouteFixture.prototype.guarded));
     });
 
-    // Pins the other half of that lookup: the decorated route must still be
-    // metered at its own 5, not at the global ceiling.
+    // Pins the other half: the decorated route must still be metered at its
+    // own 5, not at the global ceiling.
     it('keeps the route limit on a decorated route', async () => {
       await expect(
         limitCountedFor(
@@ -186,6 +191,18 @@ describe('IdentityThrottlerGuard', () => {
           RouteFixture.prototype.guarded,
         ),
       ).resolves.toBe(ROUTE_LIMIT);
+    });
+
+    // Opting into address tracking is explicit. A route that only sets a budget
+    // keeps the fair per-account key, so tightening a limit somewhere cannot
+    // silently put every user behind one NAT into a shared bucket.
+    it('leaves a route that only sets a limit counted per account', async () => {
+      await expect(
+        keyCountedFor(
+          { session: { userId: 'u1' }, ip: '203.0.113.7' },
+          RouteFixture.prototype.limitOnly,
+        ),
+      ).resolves.toBe(keyFor('user:u1', RouteFixture.prototype.limitOnly));
     });
 
     it('meters an undecorated route at the configured ceiling', async () => {

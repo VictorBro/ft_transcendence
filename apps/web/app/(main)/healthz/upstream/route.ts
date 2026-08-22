@@ -1,19 +1,25 @@
 import { NextResponse } from 'next/server';
 
-import { loadSession } from '@/lib/session';
+import { pingApi } from '@/lib/api';
 
-// Reports the internal web -> api hop, which no page does: currentUser() folds
-// "unavailable" into "signed-out" on purpose, so a wrong API_INTERNAL_URL still
-// renders a valid signed-out page. Like /healthz next door, this must never be
-// answered from a build-time snapshot.
+/**
+ * Reports the internal web -> api hop, which no page does: pages fold an
+ * unreachable API into the signed-out view on purpose, so a wrong
+ * API_INTERNAL_URL still renders a valid page and nothing fails.
+ *
+ * Deliberately not a session lookup. That would answer 503 for a caller who had
+ * merely exhausted their own rate limit, reporting a healthy API as down.
+ *
+ * Like /healthz next door, this must never be answered from a build snapshot.
+ */
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
-  const result = await loadSession();
+  const result = await pingApi({ baseUrl: process.env.API_INTERNAL_URL });
 
-  if (result.status === 'unavailable') {
+  if (result.status === 'unreachable') {
     return NextResponse.json(
-      { status: 'unavailable', service: 'web', upstream: 'api', reason: result.reason },
+      { status: 'unreachable', service: 'web', upstream: 'api', reason: result.reason },
       { status: 503 },
     );
   }

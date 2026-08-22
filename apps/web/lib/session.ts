@@ -28,10 +28,11 @@ export const loadSession = cache(async function loadSession(): Promise<SessionRe
     .map(({ name, value }) => `${name}=${value}`)
     .join('; ');
 
-  // Passed through unchanged rather than appended to: the API trusts one proxy
-  // hop and reads the left-most address, so adding this container's own would
-  // put the wrong entry there. Caddy is the sole ingress and rewrites the
-  // header, so what arrives here is the visitor's address.
+  // Passed through unchanged rather than appended to. The API sets `trust proxy`
+  // to 1, so it resolves req.ip to the RIGHT-most X-Forwarded-For entry;
+  // appending this container's address would make that entry the web container
+  // and put every anonymous visitor back in one bucket. Caddy is the sole
+  // ingress and rewrites the header, so what arrives here is the real address.
   const forwardedFor = (await headers()).get('x-forwarded-for');
 
   return fetchSession({

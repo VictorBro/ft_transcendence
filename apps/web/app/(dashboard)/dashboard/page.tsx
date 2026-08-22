@@ -1,13 +1,21 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { requireUser } from '@/lib/session';
 
+export const metadata: Metadata = { title: 'Lobby' };
+
+/**
+ * The lobby tiles. `href` is the route the tile opens; every one of these is
+ * mirrored by a row in e2e/tests/dashboard.spec.ts, so adding a mode here means
+ * adding it there too.
+ */
 const modes = [
   {
     id: 'friends',
     title: 'Discuss with a friend',
     description:
-      'Chat in real time with a friend in any language — we translate and correct for both of you.',
+      'Chat in real time with a friend in any language. We translate and correct for both of you.',
     href: '/friends',
   },
   {
@@ -43,50 +51,52 @@ const modes = [
   },
 ];
 
-const panels = [
-  {
-    id: 'panel-1',
-    height: 'h-60',
-  },
-  {
-    id: 'panel-2',
-    height: 'h-48',
-  },
-  {
-    id: 'panel-3',
-    height: 'h-44',
-  },
-  {
-    id: 'panel-4',
-    height: 'h-44',
-  },
-];
+/** Heights of the side panels, which have no content yet. */
+const panelHeights = ['h-60', 'h-48', 'h-44', 'h-44'];
 
 export default async function LobbyPage() {
   await requireUser();
 
   return (
-    <div className="flex h-full gap-6">
-      <div className="flex flex-1 min-w-0 flex-col gap-4 overflow-visible">
+    <div className="flex h-full min-h-0 gap-6">
+      {/* Nothing else on this page is a heading, so without one the lobby has an
+          empty outline for a screen reader. sr-only leaves the design as drawn. */}
+      <h1 className="sr-only">Practice modes</h1>
+
+      <div className="flex min-w-0 flex-1 flex-col gap-4 overflow-y-auto">
         {modes.map((mode) => (
           <Link
             key={mode.id}
             href={mode.href}
-            aria-label={mode.title}
-            className="flex min-h-44 flex-col rounded-2xl border border-slate-200 bg-slate-900 p-6 transition-transform duration-200 hover:scale-102 dark:border-slate-800"
+            // Prefetch off: each of the six would server-render the target's
+            // layout, and every one of those calls the API for the session.
+            prefetch={false}
+            // The card is one big link, so its accessible name would otherwise
+            // be the title and the description run together, leaving "Chat" and
+            // "Chat progress" indistinguishable. labelledby names it after the
+            // title alone; describedby keeps the description announced instead
+            // of dropping it, which a plain aria-label would have done.
+            aria-labelledby={`${mode.id}-title`}
+            aria-describedby={`${mode.id}-description`}
+            className="flex min-h-44 shrink-0 flex-col rounded-2xl border border-slate-800 bg-slate-900 p-6 transition-transform duration-200 hover:scale-102"
           >
-            <p className="font-semibold text-2xl mt-2">{mode.title}</p>
-            <p className="text-lg mt-6 max-w-xs text-slate-400">{mode.description}</p>
+            <p id={`${mode.id}-title`} className="mt-2 text-2xl font-semibold">
+              {mode.title}
+            </p>
+            <p id={`${mode.id}-description`} className="mt-6 max-w-xs text-lg text-slate-400">
+              {mode.description}
+            </p>
           </Link>
         ))}
       </div>
 
-      <aside className="flex w-[460px] shrink-0 flex-col gap-4 sticky self-start top-6">
-        {panels.map((panel) => (
-          <aside
-            key={panel.id}
-            className={`flex flex-col items-center justify-center rounded-2xl border border-slate-200 p-4 text-center dark:border-slate-800 ${panel.height}`}
-          ></aside>
+      {/* Placeholders for panels still to come. Plain divs, not <aside>: nested
+          empty landmarks are announced as empty regions. */}
+      <aside className="flex w-[460px] shrink-0 flex-col gap-4 overflow-y-auto">
+        {panelHeights.map((height, index) => (
+          // Index key: the list is a fixed literal, never reordered, and two
+          // panels share a height so the class is not unique.
+          <div key={index} className={`shrink-0 rounded-2xl border border-slate-800 ${height}`} />
         ))}
       </aside>
     </div>

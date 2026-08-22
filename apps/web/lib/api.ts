@@ -6,25 +6,17 @@
 import { SessionUserSchema, type SessionUser } from '@ft/shared';
 
 export const DEFAULT_API_INTERNAL_URL = 'http://api:3001';
-export const HELLO_PATH = '/api/hello';
 export const SESSION_PATH = '/api/auth/me';
+export const HEALTH_PATH = '/api/health';
 export const DEFAULT_TIMEOUT_MS = 2000;
 
-export interface HelloPayload {
-  message: string;
-  service?: string;
-}
-
-export type HelloResult =
-  { status: 'ok'; payload: HelloPayload } | { status: 'unavailable'; reason: string };
-
-export interface FetchHelloOptions {
+export interface ApiRequestOptions {
   baseUrl?: string | undefined;
   timeoutMs?: number;
   fetchImpl?: typeof fetch;
 }
 
-export interface FetchSessionOptions extends FetchHelloOptions {
+export interface FetchSessionOptions extends ApiRequestOptions {
   cookie?: string | undefined;
   /**
    * The visitor's own address, taken from the header Caddy set on the way in.
@@ -58,22 +50,6 @@ export function buildApiUrl(baseUrl: string | undefined, path: string): string {
   return `${resolveApiBaseUrl(baseUrl)}${suffix}`;
 }
 
-/**
- * The API contract lives in @ft/shared and is not wired up yet, so this stays
- * defensive: anything without a non-empty string `message` is treated as a miss.
- */
-export function parseHelloPayload(value: unknown): HelloPayload | null {
-  if (typeof value !== 'object' || value === null) {
-    return null;
-  }
-  const record = value as Record<string, unknown>;
-  const { message, service } = record;
-  if (typeof message !== 'string' || message.trim() === '') {
-    return null;
-  }
-  return typeof service === 'string' ? { message, service } : { message };
-}
-
 export function describeFetchError(error: unknown): string {
   if (error instanceof Error) {
     return error.name === 'TimeoutError' ? 'the request timed out' : error.message;
@@ -87,8 +63,8 @@ export function describeFetchError(error: unknown): string {
  * every server-rendered page would believe nobody is signed in.
  *
  * 401 is the only status that means "not authenticated": it is the sole
- * rejection AuthGuard raises. Everything else — 429, 5xx, a timeout, an API
- * that is not up yet — says nothing about the visitor and is reported as
+ * rejection AuthGuard raises. Everything else (429, 5xx, a timeout, an API
+ * that is not up yet) says nothing about the visitor and is reported as
  * unavailable, so no caller can mistake an incident for a verdict.
  */
 export async function fetchSession(options: FetchSessionOptions = {}): Promise<SessionResult> {
@@ -130,32 +106,29 @@ export async function fetchSession(options: FetchSessionOptions = {}): Promise<S
   }
 }
 
+export type PingResult = { status: 'ok' } | { status: 'unreachable'; reason: string };
+
 /**
- * Never throws. A dead API must degrade to a rendered fallback, because the home
- * page is server-rendered and an exception here would be a 500 at defence time.
+ * Whether the internal web -> api hop works at all. No page can answer this:
+ * they fold an unreachable API into the signed-out view on purpose, so a
+ * misconfigured API_INTERNAL_URL still renders a perfectly valid page.
+ *
+ * Any HTTP answer counts as reachable, including a 429 or a 500. The question
+ * is whether the hop exists, not whether the API is happy. Reporting the
+ * container as broken because the caller was rate-limited would be a false
+ * alarm, and /api/health already covers the API's own view of itself.
  */
-export async function fetchHello(options: FetchHelloOptions = {}): Promise<HelloResult> {
+export async function pingApi(options: ApiRequestOptions = {}): Promise<PingResult> {
   const { baseUrl, timeoutMs = DEFAULT_TIMEOUT_MS, fetchImpl = fetch } = options;
-  const url = buildApiUrl(baseUrl, HELLO_PATH);
 
   try {
-    const response = await fetchImpl(url, {
+    await fetchImpl(buildApiUrl(baseUrl, HEALTH_PATH), {
       cache: 'no-store',
       headers: { accept: 'application/json' },
       signal: AbortSignal.timeout(timeoutMs),
     });
-
-    if (!response.ok) {
-      return { status: 'unavailable', reason: `the API answered HTTP ${response.status}` };
-    }
-
-    const payload = parseHelloPayload(await response.json());
-    if (payload === null) {
-      return { status: 'unavailable', reason: 'the API returned an unexpected payload' };
-    }
-
-    return { status: 'ok', payload };
+    return { status: 'ok' };
   } catch (error) {
-    return { status: 'unavailable', reason: describeFetchError(error) };
+    return { status: 'unreachable', reason: describeFetchError(error) };
   }
 }

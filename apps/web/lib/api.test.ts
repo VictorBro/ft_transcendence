@@ -4,20 +4,12 @@ import {
   buildApiUrl,
   DEFAULT_API_INTERNAL_URL,
   describeFetchError,
-  fetchHello,
   fetchSession,
-  HELLO_PATH,
-  parseHelloPayload,
+  HEALTH_PATH,
+  pingApi,
   resolveApiBaseUrl,
+  SESSION_PATH,
 } from './api';
-
-function jsonResponse(body: unknown, init: ResponseInit = {}): Response {
-  return new Response(JSON.stringify(body), {
-    status: 200,
-    headers: { 'content-type': 'application/json' },
-    ...init,
-  });
-}
 
 describe('resolveApiBaseUrl', () => {
   it('falls back to the compose service name when unset', () => {
@@ -39,50 +31,15 @@ describe('resolveApiBaseUrl', () => {
 
 describe('buildApiUrl', () => {
   it('joins base and path', () => {
-    expect(buildApiUrl('http://api:3001', HELLO_PATH)).toBe('http://api:3001/api/hello');
+    expect(buildApiUrl('http://api:3001', SESSION_PATH)).toBe('http://api:3001/api/auth/me');
   });
 
   it('adds the missing leading slash', () => {
-    expect(buildApiUrl('http://api:3001', 'api/hello')).toBe('http://api:3001/api/hello');
+    expect(buildApiUrl('http://api:3001', 'api/health')).toBe('http://api:3001/api/health');
   });
 
   it('never produces a double slash', () => {
-    expect(buildApiUrl('http://api:3001/', '/api/hello')).toBe('http://api:3001/api/hello');
-  });
-});
-
-describe('parseHelloPayload', () => {
-  it('accepts a message only', () => {
-    expect(parseHelloPayload({ message: 'hello' })).toEqual({ message: 'hello' });
-  });
-
-  it('keeps the service name when present', () => {
-    expect(parseHelloPayload({ message: 'hello', service: 'api' })).toEqual({
-      message: 'hello',
-      service: 'api',
-    });
-  });
-
-  it('drops a non-string service', () => {
-    expect(parseHelloPayload({ message: 'hello', service: 42 })).toEqual({ message: 'hello' });
-  });
-
-  it('rejects anything without a usable message', () => {
-    const rejected: unknown[] = [
-      null,
-      undefined,
-      'hello',
-      7,
-      [],
-      {},
-      { message: '' },
-      { message: '   ' },
-      { message: 1 },
-    ];
-
-    for (const value of rejected) {
-      expect(parseHelloPayload(value)).toBeNull();
-    }
+    expect(buildApiUrl('http://api:3001/', HEALTH_PATH)).toBe('http://api:3001/api/health');
   });
 });
 
@@ -99,75 +56,6 @@ describe('describeFetchError', () => {
 
   it('handles a thrown non-error', () => {
     expect(describeFetchError('boom')).toBe('an unknown network error occurred');
-  });
-});
-
-describe('fetchHello', () => {
-  it('returns the parsed payload on success', async () => {
-    const fetchImpl = vi.fn<typeof fetch>(async () => {
-      return jsonResponse({ message: 'hello', service: 'api' });
-    });
-
-    const result = await fetchHello({ baseUrl: 'http://api:3001', fetchImpl });
-
-    expect(result).toEqual({ status: 'ok', payload: { message: 'hello', service: 'api' } });
-    expect(fetchImpl).toHaveBeenCalledWith('http://api:3001/api/hello', expect.anything());
-  });
-
-  it('uses the default base url when none is given', async () => {
-    const fetchImpl = vi.fn<typeof fetch>(async () => {
-      return jsonResponse({ message: 'hello' });
-    });
-
-    await fetchHello({ fetchImpl });
-
-    expect(fetchImpl).toHaveBeenCalledWith(
-      `${DEFAULT_API_INTERNAL_URL}${HELLO_PATH}`,
-      expect.anything(),
-    );
-  });
-
-  it('degrades on a non-2xx answer', async () => {
-    const fetchImpl = vi.fn<typeof fetch>(async () => {
-      return jsonResponse({ message: 'nope' }, { status: 503 });
-    });
-
-    await expect(fetchHello({ fetchImpl })).resolves.toEqual({
-      status: 'unavailable',
-      reason: 'the API answered HTTP 503',
-    });
-  });
-
-  it('degrades on an unexpected payload', async () => {
-    const fetchImpl = vi.fn<typeof fetch>(async () => {
-      return jsonResponse({ greeting: 'hello' });
-    });
-
-    await expect(fetchHello({ fetchImpl })).resolves.toEqual({
-      status: 'unavailable',
-      reason: 'the API returned an unexpected payload',
-    });
-  });
-
-  it('degrades instead of throwing when the API is down', async () => {
-    const fetchImpl = vi.fn<typeof fetch>(async () => {
-      throw new Error('connect ECONNREFUSED 172.18.0.3:3001');
-    });
-
-    await expect(fetchHello({ fetchImpl, timeoutMs: 50 })).resolves.toEqual({
-      status: 'unavailable',
-      reason: 'connect ECONNREFUSED 172.18.0.3:3001',
-    });
-  });
-
-  it('degrades when the body is not JSON', async () => {
-    const fetchImpl = vi.fn<typeof fetch>(async () => {
-      return new Response('<html>502</html>', { headers: { 'content-type': 'text/html' } });
-    });
-
-    const result = await fetchHello({ fetchImpl });
-
-    expect(result.status).toBe('unavailable');
   });
 });
 
@@ -261,6 +149,39 @@ describe('fetchSession', () => {
 
     await expect(fetchSession({ fetchImpl })).resolves.toMatchObject({
       status: 'unavailable',
+    });
+  });
+});
+
+describe('pingApi', () => {
+  it('calls the API health endpoint', async () => {
+    const fetchImpl = vi.fn(async () => Response.json({ status: 'ok' }));
+
+    await expect(pingApi({ fetchImpl })).resolves.toEqual({ status: 'ok' });
+    expect(fetchImpl).toHaveBeenCalledWith(
+      `${DEFAULT_API_INTERNAL_URL}${HEALTH_PATH}`,
+      expect.objectContaining({ cache: 'no-store' }),
+    );
+  });
+
+  // The question is whether the hop exists, not whether the API is happy.
+  // Answering "unreachable" for a rate-limited or erroring API would report a
+  // healthy container as down, and /api/health already covers the other half.
+  it('treats any HTTP answer as reachable', async () => {
+    for (const status of [429, 500, 503]) {
+      const fetchImpl = vi.fn(async () => new Response(null, { status }));
+      await expect(pingApi({ fetchImpl })).resolves.toEqual({ status: 'ok' });
+    }
+  });
+
+  it('reports a connection failure as unreachable', async () => {
+    const fetchImpl = vi.fn(async () => {
+      throw new Error('ECONNREFUSED');
+    });
+
+    await expect(pingApi({ fetchImpl })).resolves.toEqual({
+      status: 'unreachable',
+      reason: 'ECONNREFUSED',
     });
   });
 });
