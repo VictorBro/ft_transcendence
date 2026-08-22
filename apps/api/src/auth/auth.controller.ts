@@ -18,7 +18,6 @@ import {
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
-import { Throttle } from '@nestjs/throttler';
 import type {
   RecoveryCodes,
   SessionUser,
@@ -28,6 +27,7 @@ import type {
 } from '@ft/shared';
 import type { Request, Response } from 'express';
 
+import { ThrottleByIp } from '../throttler/throttle-by-ip.decorator';
 import { CurrentUser, Public } from './auth.decorators';
 import {
   DisableTwoFactorDto,
@@ -93,7 +93,7 @@ export class AuthController {
   @Post('signup')
   // Ten per minute per IP. Signup writes a row and runs argon2, so it is both
   // the most expensive unauthenticated endpoint and the one worth flooding.
-  @Throttle({ default: { limit: 10, ttl: 60_000 } })
+  @ThrottleByIp(10)
   @ApiOperation({ summary: 'Create an account and sign in' })
   @ApiCreatedResponse({ type: SessionUserDto })
   @ApiConflictResponse({ description: 'Email or display name already taken' })
@@ -107,7 +107,7 @@ export class AuthController {
   @Post('login')
   @HttpCode(HttpStatus.OK)
   // Tighter than signup: this is the endpoint a password guesser hammers.
-  @Throttle({ default: { limit: 5, ttl: 60_000 } })
+  @ThrottleByIp(5)
   @ApiOperation({ summary: 'Sign in with email and password' })
   @ApiOkResponse({ type: SessionUserDto })
   @ApiUnauthorizedResponse({ description: 'Incorrect email or password' })
@@ -138,7 +138,7 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   // As tight as login: this is the second half of the same guessing attempt,
   // and six digits is a far smaller space than a password.
-  @Throttle({ default: { limit: 5, ttl: 60_000 } })
+  @ThrottleByIp(5)
   @ApiOperation({ summary: 'Complete a login with a second factor' })
   @ApiOkResponse({ type: SessionUserDto })
   @ApiUnauthorizedResponse({ description: 'No pending login, or the code is wrong' })
@@ -181,6 +181,9 @@ export class AuthController {
 
   @Post('2fa/enable')
   @HttpCode(HttpStatus.OK)
+  // Behind a session, but still a secret check: a stolen cookie must not turn
+  // into a code-guessing oracle, and six digits is a small space.
+  @ThrottleByIp(5)
   @ApiOperation({ summary: 'Confirm enrolment and return the recovery codes' })
   @ApiOkResponse({ type: RecoveryCodesDto })
   @ApiUnauthorizedResponse({ description: 'That code is not valid' })
@@ -193,6 +196,9 @@ export class AuthController {
 
   @Delete('2fa')
   @HttpCode(HttpStatus.NO_CONTENT)
+  // The password check below is what makes this worth guessing against, so it
+  // is counted per address like login rather than per account.
+  @ThrottleByIp(5)
   @ApiOperation({ summary: 'Turn off two factor authentication' })
   @ApiUnauthorizedResponse({ description: 'Incorrect password' })
   async disableTwoFactor(

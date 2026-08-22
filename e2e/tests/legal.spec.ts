@@ -1,4 +1,4 @@
-import { expect, test, type Browser, type Page } from '@playwright/test';
+import type { Page } from '@playwright/test';
 
 import {
   AUTHENTICATED_FOOTER_ROUTES,
@@ -6,7 +6,7 @@ import {
   LEGAL_ROUTES,
   PUBLIC_FOOTER_ROUTES,
 } from '../support/routes';
-import { createSharedSession, type SharedSession } from '../support/session';
+import { expect, test } from '../support/session';
 
 /**
  * Rejection criterion: /privacy and /terms must exist and carry real content.
@@ -76,16 +76,10 @@ test.describe('legal pages', () => {
   }
 
   test.describe('behind a session', () => {
-    let session: SharedSession;
-
-    test.beforeAll(async ({ browser }: { browser: Browser }) => {
-      session = await createSharedSession(browser);
-    });
-
     for (const route of AUTHENTICATED_FOOTER_ROUTES) {
-      test(`both documents are reachable from the footer of ${route.name}`, async ({ browser }) => {
-        const { page, context } = await session.signedInPage(browser);
-
+      test(`both documents are reachable from the footer of ${route.name}`, async ({
+        signedIn: page,
+      }) => {
         await page.goto(route.path);
         // Without this the guard bouncing us to /login would still find a
         // footer there and pass, which is the failure mode that let the
@@ -93,7 +87,6 @@ test.describe('legal pages', () => {
         await expect(page).toHaveURL(new RegExp(`${route.path}$`));
 
         await expectLegalLinks(page);
-        await context.close();
       });
     }
   });

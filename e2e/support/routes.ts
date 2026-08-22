@@ -62,6 +62,10 @@ export const LEGAL_ROUTES: PageRoute[] = [
  */
 export const PUBLIC_FOOTER_ROUTES: PageRoute[] = [
   { path: '/', name: 'home' },
+  // The 404 renders in the root layout, not a route group's, so it is the one
+  // page that can lose the footer without any group layout changing. That is
+  // exactly how it lost it before, unnoticed.
+  { path: '/this-route-does-not-exist', name: 'not found', expectedStatus: 404 },
   { path: '/privacy', name: 'privacy policy' },
   { path: '/terms', name: 'terms of service' },
   { path: '/login', name: 'login' },

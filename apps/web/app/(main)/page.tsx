@@ -29,11 +29,14 @@ export default async function HomePage() {
           </Link>
         </div>
         <Image
-          src="/logoo.png"
+          src="/logo.png"
           alt="ft_transcendence logo"
           width={600}
           height={600}
           className="h-auto w-64 shrink-0 sm:w-[28rem]"
+          // Without this next/image assumes full viewport width and picks the
+          // largest srcset candidate for a 256px slot.
+          sizes="(min-width: 640px) 28rem, 16rem"
           priority
         />
       </section>

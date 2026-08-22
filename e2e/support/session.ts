@@ -1,16 +1,20 @@
-import { expect, type Browser, type BrowserContext, type Page } from '@playwright/test';
+import { test as base, expect, type BrowserContext, type Page } from '@playwright/test';
 
 /**
- * Shared signed-in browser context for the specs that need one.
+ * Signing in, for the specs that need an account but are not testing signup.
  *
- * Signing up per test racks up one argon2 password hash each, which under
- * parallel workers was slow enough to trip other tests' requests. Instead each
- * spec creates one account in a beforeAll hook and hands the saved cookie jar
- * to fresh, isolated contexts. Storage state is how Playwright does that
- * without re-running the login flow.
+ * One account per worker, not per test and not per file: each signup writes a
+ * row and runs argon2, and POST /auth/signup is limited to 10 a minute per
+ * address, so a suite that signs up per test spends its budget on setup and
+ * starts failing on a 429 it never asked for.
+ *
+ * Exposed as fixtures rather than helpers so teardown is Playwright's problem.
+ * A context closed by hand at the end of a test leaks whenever an assertion
+ * above it throws, which is exactly when the run is already going badly.
  */
 
-const PASSWORD = 'Correct-Horse-9';
+/** Shared by the signup helper below and by auth.spec.ts, which signs in with it. */
+export const PASSWORD = 'Correct-Horse-9';
 
 export interface Identity {
   email: string;
@@ -22,6 +26,9 @@ export interface Identity {
  * parallel tests to fail signup on a reused email. A UUID does not. displayName
  * is capped at 32 characters, so only the first UUID segment is used there; the
  * full UUID is fine in the email local part.
+ *
+ * The `browser-` prefix is what `make test-e2e` matches to delete these rows
+ * afterwards. Keep it in step with E2E_EMAIL_PREFIX in the Makefile.
  */
 export const identity = (): Identity => {
   const stamp = crypto.randomUUID();
@@ -42,43 +49,42 @@ export const createAccount = async (page: Page, fields: Identity): Promise<void>
   await expect(page).toHaveURL(/\/profile$/);
 };
 
-export interface SignedIn {
-  page: Page;
-  /** Close this when the test ends; the context is not tracked anywhere else. */
-  context: BrowserContext;
-}
+type StorageState = Awaited<ReturnType<BrowserContext['storageState']>>;
 
-export interface SharedSession {
-  /** Display name of the account, for specs that assert on the account nav. */
+export interface Account {
+  /** For specs that assert on the account nav. */
   displayName: string;
-  /**
-   * Hands back a fresh, isolated context signed in as the shared account, and
-   * the context itself: nothing else holds a reference, so a caller that drops
-   * it leaves a live browser profile behind for the rest of the run.
-   */
-  signedInPage: (browser: Browser) => Promise<SignedIn>;
+  storageState: StorageState;
 }
 
 /**
- * Creates one account and returns a handle that opens signed-in pages against
- * it. Call this once from a beforeAll hook; the returned object stays valid for
- * every test in the file.
+ * `account` is worker-scoped: created once, reused by every test that worker
+ * runs. `signedIn` is a plain page in a fresh context restored from it, so
+ * tests stay isolated from each other while sharing the one signup.
  */
-export const createSharedSession = async (browser: Browser): Promise<SharedSession> => {
-  const context = await browser.newContext();
-  const page = await context.newPage();
-  const fields = identity();
+export const test = base.extend<{ signedIn: Page }, { account: Account }>({
+  account: [
+    async ({ browser }, use) => {
+      const context = await browser.newContext();
+      const page = await context.newPage();
+      const fields = identity();
 
-  await createAccount(page, fields);
-  const storageState: Awaited<ReturnType<BrowserContext['storageState']>> =
-    await context.storageState();
-  await context.close();
+      await createAccount(page, fields);
+      const storageState = await context.storageState();
+      await context.close();
 
-  return {
-    displayName: fields.displayName,
-    signedInPage: async (target: Browser): Promise<SignedIn> => {
-      const signedIn = await target.newContext({ storageState });
-      return { page: await signedIn.newPage(), context: signedIn };
+      await use({ displayName: fields.displayName, storageState });
     },
-  };
-};
+    { scope: 'worker' },
+  ],
+
+  signedIn: async ({ browser, account }, use) => {
+    const context = await browser.newContext({ storageState: account.storageState });
+    await use(await context.newPage());
+    // Teardown runs whether the test passed or threw, which hand-written
+    // close() calls after the assertions do not.
+    await context.close();
+  },
+});
+
+export { expect };
