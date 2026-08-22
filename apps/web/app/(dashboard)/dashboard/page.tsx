@@ -52,7 +52,7 @@ const modes = [
 ];
 
 /** Heights of the side panels, which have no content yet. */
-const panelHeights = ['h-60', 'h-48', 'h-44', 'h-44'];
+const panelHeights = ['h-60', 'h-44', 'h-40', 'h-44'];
 
 export default async function LobbyPage() {
   await requireUser();
@@ -63,7 +63,7 @@ export default async function LobbyPage() {
           empty outline for a screen reader. sr-only leaves the design as drawn. */}
       <h1 className="sr-only">Practice modes</h1>
 
-      <div className="flex min-w-0 flex-1 flex-col gap-4 overflow-y-auto">
+      <div className="-mx-3 -my-3 flex min-w-0 flex-1 flex-col gap-4 overflow-y-auto px-3 py-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {modes.map((mode) => (
           <Link
             key={mode.id}
