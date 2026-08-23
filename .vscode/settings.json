@@ -1,0 +1,77 @@
+{
+  // Mirrors .devcontainer/devcontainer.json, which only applies when VS Code is
+  // attached to the devcontainer. This file covers everyone else, so a teammate
+  // who opens the folder on the host gets the same formatter and the same lint
+  // behaviour. Project correctness only: themes, fonts and layout stay personal.
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // ESLint fixes on save, Prettier formats on save. The two do not fight:
+  // eslint-config-prettier is applied last in @ft/eslint-config, so no lint rule
+  // has an opinion about layout.
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+
+  // A per-language formatter in someone's personal settings outranks a
+  // workspace-wide one, so every language we actually edit is named explicitly.
+  "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[json]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[jsonc]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[css]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[markdown]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[yaml]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+
+  // ESLint 10 is flat-config only, and each package ships its own
+  // eslint.config.*. "auto" resolves the config relative to the file being
+  // linted rather than the repo root, where there is none.
+  "eslint.useFlatConfig": true,
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+
+  // The workspace TypeScript (6.0.3, pinned), not whatever VS Code bundles,
+  // which is what tsc and eslint actually see. Relative on purpose: it resolves
+  // on Windows, macOS and Linux alike.
+  "js/ts.tsdk.path": "node_modules/typescript/lib",
+  "js/ts.tsdk.promptToUseWorkspaceVersion": true,
+
+  // Tailwind v4 has no tailwind.config.js: the CSS entry point is the config,
+  // and the extension cannot guess that from a monorepo root.
+  "tailwindCSS.experimental.configFile": "apps/web/app/globals.css",
+
+  // .gitattributes enforces LF at the git layer; this stops CRLF appearing in
+  // the editor in the first place on Windows.
+  "files.eol": "\n",
+
+  // Extensionless, so VS Code guesses Markdown and format-on-save rewrites the
+  // `*` catch-all into a Markdown bullet, silently turning "everyone owns
+  // everything" into "someone owns a file named -". .prettierignore stops the
+  // CLI; this stops the editor.
+  "files.associations": {
+    "CODEOWNERS": "ignore"
+  },
+
+  // The repo is a bind mount in the devcontainer. Watching build output burns
+  // inotify handles for nothing. .pnpm-store is the big one: pnpm cannot
+  // hardlink across filesystems, so it keeps ~35k files there.
+  "files.watcherExclude": {
+    "**/.next/**": true,
+    "**/.pnpm-store/**": true,
+    "**/.turbo/**": true,
+    "**/coverage/**": true,
+    "**/dist/**": true,
+    "**/generated/**": true,
+    "**/node_modules/**": true
+  },
+  "search.exclude": {
+    "**/.next": true,
+    "**/.pnpm-store": true,
+    "**/.turbo": true,
+    "**/coverage": true,
+    "**/dist": true,
+    "**/generated": true,
+    "**/node_modules": true,
+    "**/pnpm-lock.yaml": true
+  }
+}

@@ -1,0 +1,4 @@
+# Formats what you are about to commit, nothing else. lint-staged stashes the
+# unstaged half of a partially staged file first, so `git add -p` cannot quietly
+# commit the part you left out.
+pnpm exec lint-staged

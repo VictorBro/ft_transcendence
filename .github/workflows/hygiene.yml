@@ -1,9 +1,9 @@
 name: hygiene
 
 # The gates that protect things a reviewer cannot reliably catch by reading a
-# diff: a leaked credential, a commit message nobody can grade, an .env.example
-# that no longer matches what the stack reads, and a Prisma schema that has
-# drifted away from its migrations.
+# diff: a leaked credential, a commit message nobody can grade, a pull request
+# title that is about to become one, an .env.example that no longer matches what
+# the stack reads, and a Prisma schema that has drifted away from its migrations.
 # See ci.yml: once per PR, once when the squash merge lands on main.
 on:
   push:
@@ -76,6 +76,40 @@ jobs:
           else
             run_commitlint --from "$from" --to "$to"
           fi
+
+  pr-title:
+    name: pr title
+    # Nothing to lint on a push: the commitlint job above already covers what
+    # landed, and github.event.pull_request is not populated there.
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-24.04
+    steps:
+      # No fetch-depth: only the commitlint config is needed, not history.
+      - uses: actions/checkout@v7.0.1
+
+      - uses: ./.github/actions/setup
+        with:
+          install: "false"
+
+      # GitHub uses the PR title as the squash commit subject for any PR
+      # carrying more than one commit, so an unconventional title lands on main
+      # as an unconventional commit and fails the commitlint job above after the
+      # fact, when the only remedy left is rewriting a protected branch. This
+      # fails the pull request instead, while the title can still be edited.
+      #
+      # It has happened once: "Feat/chat home frontend (#20)", auto-generated
+      # from the branch name and never renamed, which is still red on main.
+      - name: Lint the pull request title
+        env:
+          # Passed through the environment and never interpolated into the
+          # script body with ${{ }}: a title is attacker-controlled text, and
+          # inlining it would be a shell injection.
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          # Same config as the commits, so one standard covers both. commitlint
+          # reads the message from stdin when given no --from/--to/--last.
+          printf '%s\n' "$PR_TITLE" | pnpm dlx --package "@commitlint/cli@21.2.1" commitlint \
+            --config .github/commitlint.config.mjs --verbose
 
   env-example:
     name: .env hygiene

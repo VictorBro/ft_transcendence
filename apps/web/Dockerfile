@@ -11,6 +11,7 @@ FROM node:24.18-bookworm-slim AS base
 ENV PNPM_HOME=/pnpm \
     PATH=/pnpm:$PATH \
     COREPACK_ENABLE_DOWNLOAD_PROMPT=0 \
+    HUSKY=0 \
     NEXT_TELEMETRY_DISABLED=1
 RUN corepack enable && corepack prepare pnpm@11.18.0 --activate
 WORKDIR /app

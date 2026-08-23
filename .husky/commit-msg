@@ -1,0 +1,6 @@
+# The same config .github/workflows/hygiene.yml uses, so a message that passes
+# here passes CI. Fetched rather than depended on, for the reason that workflow
+# gives: commitlint must not enter the application dependency tree. The first
+# run downloads it, every later one comes from the pnpm store.
+pnpm dlx --package "@commitlint/cli@21.2.1" commitlint \
+  --config .github/commitlint.config.mjs --edit "$1"

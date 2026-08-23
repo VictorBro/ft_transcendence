@@ -134,6 +134,12 @@ dev: ## Start the development stack: bind-mounted source, hot reload
 	@for d in $(DEV_MASKED_DIRS); do rmdir "$$d" 2>/dev/null || true; done
 	mkdir -p $(DEV_MASKED_DIRS)
 	$(COMPOSE_DEV) up -d --build --wait --wait-timeout $(WAIT_TIMEOUT)
+	@# Both are idempotent, and both are the reason a fresh clone used to come
+	@# up healthy with every login returning 500: the api dev container runs
+	@# `prisma generate`, which emits a client and creates zero tables, and
+	@# nothing exported Caddy's CA for the browser to trust.
+	@$(MAKE) --no-print-directory migrate
+	@$(MAKE) --no-print-directory certs
 	@printf '\n  Dev stack up: https://localhost\n'
 	@printf '  The web and api containers reinstall dependencies on start;\n'
 	@printf '  follow them with `make logs` until the servers report ready.\n\n'
@@ -199,6 +205,7 @@ stores-up:
 ci: stores-up ## Everything the ci workflow runs, natively
 	./scripts/assert-ts-version.sh
 	./scripts/check-env-example.sh
+	./scripts/check-app-boundaries.sh
 	pnpm run ci
 	pnpm --filter @ft/api exec prisma migrate deploy
 	pnpm --filter @ft/api run test:e2e

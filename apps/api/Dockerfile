@@ -10,7 +10,8 @@
 FROM node:24.18-bookworm-slim AS base
 ENV PNPM_HOME=/pnpm \
     PATH=/pnpm:$PATH \
-    COREPACK_ENABLE_DOWNLOAD_PROMPT=0
+    COREPACK_ENABLE_DOWNLOAD_PROMPT=0 \
+    HUSKY=0
 # node:*-bookworm-slim ships no libssl. Without it Prisma cannot detect the
 # OpenSSL version, silently falls back to openssl-1.1.x (bookworm is 3.x) and
 # then fails to load its engine at runtime. ca-certificates is needed for the
