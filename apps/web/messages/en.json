@@ -1,0 +1,193 @@
+{
+  "Test": {
+    "greeting": "stub: en"
+  },
+  "SessionNav": {
+    "accountNav": "Account",
+    "signIn": "Sign in",
+    "createAccount": "Create account"
+  },
+  "LanguageSwitcher": {
+    "label": "Language"
+  },
+  "Layout": {
+    "productName": "ft_transcendence",
+    "description": "An AI-driven platform for learning a foreign language: generated lessons, automatic levelling, and live practice with another learner."
+  },
+  "Footer": {
+    "legalNav": "Legal",
+    "academicProject": "An academic project. Not a commercial service.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "legalSentence": "An academic project. Not a commercial service. Check out our <privacy>Privacy Policy</privacy> and <terms>Terms of Service</terms>."
+  },
+  "HomePage": {
+    "headline": "Learn a language with a tutor that adapts to you!",
+    "intro": "ft_transcendence generates lessons, grades your answers, tracks the level it infers from them, and pairs you with another learner for live practice. This page is the skeleton: everything below is wiring, not product.",
+    "startNow": "Start now",
+    "goToLobby": "Go to lobby",
+    "logoAlt": "ft_transcendence logo"
+  },
+  "Lobby": {
+    "title": "Lobby",
+    "heading": "Practice modes",
+    "friendsTitle": "Discuss with a friend",
+    "friendsDescription": "Chat in real time with a friend in any language. We translate and correct for both of you.",
+    "chatTitle": "Chat",
+    "chatDescription": "Boost your language skills by practicing with our AI-powered tutor.",
+    "progressTitle": "Chat progress",
+    "progressDescription": "Follow a conversation path that adapts to your progress, from beginner to advanced.",
+    "wordTitle": "Word mode",
+    "wordDescription": "Build your core vocabulary using our word lists.",
+    "sentenceTitle": "Sentence mode",
+    "sentenceDescription": "Build your language skills from the ground up.",
+    "roleplayTitle": "Roleplay",
+    "roleplayDescription": "Practice with useful real-life scenarios."
+  },
+  "ComingSoon": {
+    "stillInDevelopment": "This mode is still in development. Check back soon."
+  },
+  "ModeLayout": {
+    "backToDashboard": "Back to dashboard"
+  },
+  "ChatPage": {
+    "title": "Chat",
+    "heading": "Chat with your tutor",
+    "tutor": "Tutor",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Your message...",
+    "sendMessage": "Send message",
+    "feedbackHeading": "Get feedback on your messages",
+    "feedbackIntro": "The AI will analyze your messages and give you personalized feedback."
+  },
+  "ErrorPage": {
+    "heading": "Something went wrong",
+    "intro": "We could not reach the service. You are still signed in, and this is usually over in a moment.",
+    "tryAgain": "Try again",
+    "goHome": "Go home"
+  },
+  "NotFoundPage": {
+    "title": "Page not found",
+    "heading": "Page not found",
+    "intro": "That address does not exist. It may have moved, or the link that brought you here may be out of date.",
+    "goHome": "Go home"
+  },
+  "LoginPage": {
+    "heading": "Sign in"
+  },
+  "LoginForm": {
+    "twoFactorPrompt": "Enter the six digit code from your authenticator app, or one of your recovery codes.",
+    "authenticationCode": "Authentication code",
+    "verify": "Verify",
+    "email": "Email",
+    "password": "Password",
+    "signIn": "Sign in",
+    "noAccountYet": "No account yet?",
+    "createOne": "Create one"
+  },
+  "SignUpPage": {
+    "heading": "Create an account"
+  },
+  "SignUpForm": {
+    "email": "Email",
+    "displayName": "Display name",
+    "displayNameHint": "Letters, digits, dot, underscore and hyphen. At least 3 characters.",
+    "password": "Password",
+    "passwordHint": "At least 12 characters, with an uppercase letter, a lowercase letter and a digit.",
+    "confirmPassword": "Confirm password",
+    "createAccount": "Create account",
+    "alreadyHaveAccount": "Already have an account?",
+    "signIn": "Sign in"
+  },
+  "Form": {
+    "working": "Working…"
+  },
+  "Errors": {
+    "displayName": {
+      "tooShort": "Display name needs at least 3 characters",
+      "tooLong": "Display name is limited to 32 characters",
+      "invalidCharacters": "Display name allows letters, digits, dot, underscore and hyphen"
+    },
+    "password": {
+      "tooShort": "Password needs at least 12 characters",
+      "tooLong": "Password is limited to 128 characters",
+      "needsLowercase": "Password needs a lowercase letter",
+      "needsUppercase": "Password needs an uppercase letter",
+      "needsDigit": "Password needs a digit",
+      "required": "Enter your password",
+      "mismatch": "The two passwords do not match"
+    },
+    "email": {
+      "invalid": "Enter a valid email address"
+    },
+    "auth": {
+      "invalidCredentials": "Incorrect email or password",
+      "incorrectPassword": "Incorrect password",
+      "identityTaken": "That email or display name is already taken",
+      "displayNameTaken": "That display name is already taken",
+      "passwordFirst": "Sign in with your password first"
+    },
+    "avatarUrl": {
+      "invalid": "Enter a valid URL"
+    },
+    "profile": {
+      "noChanges": "Change at least one field"
+    },
+    "twoFactor": {
+      "codeFormat": "Enter the six digit code from your authenticator app",
+      "recoveryCodeFormat": "That does not look like a recovery code",
+      "secondFactorFormat": "Enter a six digit code from your app, or one of your recovery codes",
+      "setupFirst": "Start two factor setup first",
+      "invalidCode": "That code is not valid"
+    },
+    "network": {
+      "unreachable": "Could not reach the server"
+    },
+    "server": {
+      "unexpected": "The server answered HTTP {status}"
+    },
+    "unknown": "Something went wrong. Please try again."
+  },
+  "LogOutButton": {
+    "signingOut": "Signing out…",
+    "signOut": "Sign out"
+  },
+  "LegalArticle": {
+    "lastUpdated": "Last updated"
+  },
+  "ProfilePage": {
+    "title": "Profile",
+    "joined": "Joined {date}",
+    "security": "Security",
+    "twoFactorPrompt": "Add a second factor so a stolen password is not enough to sign in.",
+    "twoFactorAuthentication": "Two factor authentication"
+  },
+  "ProfileForm": {
+    "editProfile": "Edit profile",
+    "displayName": "Display name",
+    "avatarUrl": "Avatar URL",
+    "avatarUrlHint": "Leave empty to use the default avatar.",
+    "profileSaved": "Profile saved.",
+    "saveChanges": "Save changes"
+  },
+  "TwoFactorPage": {
+    "heading": "Two factor authentication",
+    "intro": "An authenticator app generates a code that changes every 30 seconds. With it enabled, a stolen password alone will not sign anyone in."
+  },
+  "TwoFactorPanel": {
+    "saveRecoveryCodesHeading": "Save your recovery codes",
+    "recoveryCodesIntro": "Each code works once, if you lose your authenticator. This is the only time they are shown.",
+    "savedThem": "I have saved them",
+    "scanHeading": "Scan this code",
+    "qrAlt": "QR code for your authenticator app",
+    "cannotScan": "Cannot scan it? Enter this key by hand:",
+    "codeFromApp": "Code from your app",
+    "turnOn": "Turn on",
+    "enabledStatus": "Two factor authentication is on. {count} recovery codes left.",
+    "confirmPasswordToTurnOff": "Confirm your password to turn it off",
+    "turnOff": "Turn off",
+    "disabledStatus": "Two factor authentication is off.",
+    "working": "Working…",
+    "setUp": "Set up"
+  }
+}

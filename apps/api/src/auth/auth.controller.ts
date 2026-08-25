@@ -148,16 +148,16 @@ export class AuthController {
   ): Promise<SessionUser> {
     const pendingUserId = request.session.pendingUserId;
     if (pendingUserId === undefined) {
-      throw new UnauthorizedException('Sign in with your password first');
+      throw new UnauthorizedException('auth.passwordFirst');
     }
 
     if (!(await this.twoFactor.verifySecondFactor(pendingUserId, body.code))) {
-      throw new UnauthorizedException('That code is not valid');
+      throw new UnauthorizedException('twoFactor.invalidCode');
     }
 
     const user = await this.auth.findById(pendingUserId);
     if (user === null) {
-      throw new UnauthorizedException('Sign in with your password first');
+      throw new UnauthorizedException('auth.passwordFirst');
     }
 
     await startSession(request, user.id);
@@ -208,7 +208,7 @@ export class AuthController {
     // The password again, not just the session: an unattended browser should not
     // be enough to remove a factor.
     if (!(await this.auth.verifyPassword(user.id, body.password))) {
-      throw new UnauthorizedException('Incorrect password');
+      throw new UnauthorizedException('auth.incorrectPassword');
     }
     await this.twoFactor.disable(user.id);
   }

@@ -45,11 +45,12 @@ test.describe('console gate', () => {
   test('client-side navigation between pages stays silent', async ({ page }) => {
     const violations = watchConsole(page);
 
-    await page.goto('/', { waitUntil: 'domcontentloaded' });
+    await page.goto('/en', { waitUntil: 'domcontentloaded' });
     await settle(page);
 
-    // The footer links are next/link, so this exercises the client router
-    // rather than a fresh document load. Hydration errors surface here.
+    // The footer links are the Link from @/i18n/navigation, itself a next/link
+    // wrapper, so this exercises the client router rather than a fresh document
+    // load. Hydration errors surface here.
     //
     // Each step waits on the URL, not just on an h1: both pages have an h1, so
     // a heading assertion passes while the click's navigation is still in
@@ -57,8 +58,8 @@ test.describe('console gate', () => {
     // entry onto about:blank and the next click waits forever. toHaveURL
     // auto-retries until the navigation commits, which closes that race.
     const links: [string, string][] = [
-      ['Privacy Policy', '/privacy'],
-      ['Terms of Service', '/terms'],
+      ['Privacy Policy', '/en/privacy'],
+      ['Terms of Service', '/en/terms'],
     ];
     for (const [label, path] of links) {
       await page
@@ -69,7 +70,7 @@ test.describe('console gate', () => {
       await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
       await settle(page);
       await page.goBack();
-      await expect(page).toHaveURL('/');
+      await expect(page).toHaveURL('/en');
       await settle(page);
     }
 

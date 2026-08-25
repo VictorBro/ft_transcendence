@@ -1,6 +1,8 @@
 import path from 'node:path';
 import type { NextConfig } from 'next';
+import createNextIntlPlugin from 'next-intl/plugin';
 
+const withNextIntl = createNextIntlPlugin();
 // Next compiles this file to CommonJS today, so __dirname exists. `typeof`
 // keeps the lookup from throwing outright if that ever changes.
 const configDir = typeof __dirname === 'string' ? __dirname : process.cwd();
@@ -20,4 +22,4 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

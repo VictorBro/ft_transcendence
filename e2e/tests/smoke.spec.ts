@@ -8,6 +8,9 @@ import { JSON_ROUTES } from '../support/routes';
  * other over the internal network.
  */
 test.describe('production stack smoke', () => {
+  // Deliberately the bare path: with localePrefix 'always' this also proves the
+  // middleware redirect lands somewhere that renders, which no other smoke test
+  // covers.
   test('home page renders', async ({ page }) => {
     await page.goto('/');
 

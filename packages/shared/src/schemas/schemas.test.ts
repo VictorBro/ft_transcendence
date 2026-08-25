@@ -3,14 +3,20 @@ import { describe, expect, it } from 'vitest';
 import {
   CreateUserSchema,
   DEFAULT_LOCALE,
+  DisableTwoFactorSchema,
+  EnableTwoFactorSchema,
   HealthResponseSchema,
   HelloQuerySchema,
   HelloResponseSchema,
   LocaleSchema,
+  LoginSchema,
   PublicUserSchema,
+  SecondFactorSchema,
   SignUpFormSchema,
   SUPPORTED_LOCALES,
+  UpdateProfileSchema,
   UserSchema,
+  isErrorCode,
   isLocale,
 } from './index';
 
@@ -184,11 +190,51 @@ describe('SignUpFormSchema', () => {
 
     expect(result.success).toBe(false);
     expect(result.error?.issues[0].path).toEqual(['confirmPassword']);
-    expect(result.error?.issues[0].message).toContain('do not match');
+    expect(result.error?.issues[0].message).toBe('password.mismatch');
   });
 
   // The confirmation is a form concern; CreateUserSchema stays the wire contract.
   it('is not part of what the API accepts', () => {
     expect(Object.keys(CreateUserSchema.shape)).not.toContain('confirmPassword');
+  });
+});
+
+/**
+ * Half of the error contract: every message this package emits is an
+ * ERROR_CODES entry rather than a sentence. The other half — that each code has
+ * three translations — is asserted in apps/web/lib/messages.test.ts.
+ *
+ * The trap this exists for is Zod's own defaults: a rule declared without an
+ * explicit message still produces an issue, in English, that no catalogue can
+ * translate.
+ */
+describe('validation messages', () => {
+  const rejected = [
+    ['CreateUserSchema', CreateUserSchema, { email: 'nope', displayName: 'x', password: 'short' }],
+    ['LoginSchema', LoginSchema, { email: 'nope', password: '' }],
+    ['UpdateProfileSchema', UpdateProfileSchema, {}],
+    ['UpdateProfileSchema avatar', UpdateProfileSchema, { avatarUrl: 'not a url' }],
+    [
+      'SignUpFormSchema',
+      SignUpFormSchema,
+      {
+        email: 'learner@example.com',
+        displayName: 'learner',
+        password: 'Correct-Horse-9',
+        confirmPassword: 'Different-Horse-9',
+      },
+    ],
+    ['SecondFactorSchema', SecondFactorSchema, { code: 'neither' }],
+    ['EnableTwoFactorSchema', EnableTwoFactorSchema, { code: '12' }],
+    ['DisableTwoFactorSchema', DisableTwoFactorSchema, { password: '' }],
+  ] as const;
+
+  it.each(rejected)('%s reports codes, not prose', (_name, schema, input) => {
+    const result = schema.safeParse(input);
+
+    expect(result.success).toBe(false);
+    for (const issue of result.error?.issues ?? []) {
+      expect(isErrorCode(issue.message), `not a declared code: ${issue.message}`).toBe(true);
+    }
   });
 });

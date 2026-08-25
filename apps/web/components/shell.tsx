@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react';
-import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+
+import { Link } from '@/i18n/navigation';
 
 /**
  * The frame every page renders in. The three route groups differ in four ways
@@ -8,8 +10,13 @@ import Link from 'next/link';
  * so the header markup, the gutter and the max width live here once.
  *
  * Deliberately free of data fetching: `nav` is passed in rather than rendering
- * SessionNav directly, which keeps this usable from error.tsx (a client
- * boundary) and from a 404 that must not read cookies.
+ * SessionNav directly, which keeps this usable from the error boundary (a
+ * client component) and from a 404 that must not read cookies.
+ *
+ * Everything that renders this lives under [locale], which is why Wordmark can
+ * use the locale-aware Link. global-error.tsx deliberately does not: it answers
+ * when the layout holding the catalogue is what failed, and carries its own
+ * markup down to <html>.
  */
 
 const CONTAINER = 'mx-auto w-full max-w-6xl px-6';
@@ -57,9 +64,11 @@ export function Shell({ brand, nav, fill = false, footer, children }: ShellProps
 
 /** The wordmark, which doubles as the link home. */
 export function Wordmark() {
+  const t = useTranslations('Layout');
+
   return (
     <Link href="/" className="text-base font-semibold tracking-tight text-slate-100">
-      ft_transcendence
+      {t('productName')}
     </Link>
   );
 }

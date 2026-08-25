@@ -7,11 +7,16 @@ export type UserRole = z.infer<typeof UserRoleSchema>;
 
 export const UserIdSchema = z.uuid();
 
+/**
+ * Every message here is an ERROR_CODES entry rather than a sentence: the API
+ * returns these verbatim and the browser renders them in the reader's language.
+ * See ./errors.ts.
+ */
 export const DisplayNameSchema = z
   .string()
-  .min(3, 'Display name needs at least 3 characters')
-  .max(32, 'Display name is limited to 32 characters')
-  .regex(/^[\p{L}\p{N}._-]+$/u, 'Display name allows letters, digits, dot, underscore and hyphen');
+  .min(3, 'displayName.tooShort')
+  .max(32, 'displayName.tooLong')
+  .regex(/^[\p{L}\p{N}._-]+$/u, 'displayName.invalidCharacters');
 
 /**
  * Enforced identically by the signup form and by the API. argon2 hashes whatever
@@ -19,11 +24,11 @@ export const DisplayNameSchema = z
  */
 export const PasswordSchema = z
   .string()
-  .min(12, 'Password needs at least 12 characters')
-  .max(128, 'Password is limited to 128 characters')
-  .regex(/[a-z]/, 'Password needs a lowercase letter')
-  .regex(/[A-Z]/, 'Password needs an uppercase letter')
-  .regex(/\d/, 'Password needs a digit');
+  .min(12, 'password.tooShort')
+  .max(128, 'password.tooLong')
+  .regex(/[a-z]/, 'password.needsLowercase')
+  .regex(/[A-Z]/, 'password.needsUppercase')
+  .regex(/\d/, 'password.needsDigit');
 
 /**
  * Mirrors the Prisma `User` model in apps/api. Two rules keep them in sync:
@@ -32,9 +37,9 @@ export const PasswordSchema = z
  */
 export const UserSchema = z.object({
   id: UserIdSchema,
-  email: z.email(),
+  email: z.email('email.invalid'),
   displayName: DisplayNameSchema,
-  avatarUrl: z.url().nullable(),
+  avatarUrl: z.url('avatarUrl.invalid').nullable(),
   locale: LocaleSchema,
   role: UserRoleSchema,
   createdAt: z.iso.datetime(),
@@ -52,7 +57,7 @@ export const PublicUserSchema = UserSchema.pick({
 export type PublicUser = z.infer<typeof PublicUserSchema>;
 
 export const CreateUserSchema = z.object({
-  email: z.email(),
+  email: z.email('email.invalid'),
   displayName: DisplayNameSchema,
   password: PasswordSchema,
   locale: LocaleSchema.optional(),
@@ -68,7 +73,7 @@ export type CreateUserInput = z.infer<typeof CreateUserSchema>;
 export const SignUpFormSchema = CreateUserSchema.extend({
   confirmPassword: z.string(),
 }).refine((value) => value.password === value.confirmPassword, {
-  message: 'The two passwords do not match',
+  message: 'password.mismatch',
   path: ['confirmPassword'],
 });
 export type SignUpFormInput = z.infer<typeof SignUpFormSchema>;
@@ -79,8 +84,8 @@ export type SignUpFormInput = z.infer<typeof SignUpFormSchema>;
  * account's valid password with a message that reads like a policy complaint.
  */
 export const LoginSchema = z.object({
-  email: z.email(),
-  password: z.string().min(1).max(128),
+  email: z.email('email.invalid'),
+  password: z.string().min(1, 'password.required').max(128, 'password.tooLong'),
 });
 export type LoginInput = z.infer<typeof LoginSchema>;
 
@@ -98,7 +103,7 @@ export const UpdateProfileSchema = z
   .object({
     displayName: DisplayNameSchema.optional(),
     locale: LocaleSchema.optional(),
-    avatarUrl: z.url().nullable().optional(),
+    avatarUrl: z.url('avatarUrl.invalid').nullable().optional(),
   })
-  .refine((value) => Object.keys(value).length > 0, 'Change at least one field');
+  .refine((value) => Object.keys(value).length > 0, 'profile.noChanges');
 export type UpdateProfileInput = z.infer<typeof UpdateProfileSchema>;

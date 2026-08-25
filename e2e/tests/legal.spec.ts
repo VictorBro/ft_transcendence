@@ -53,18 +53,26 @@ test.describe('legal pages', () => {
 
   /**
    * The claim the subject makes: both documents are one click away from
-   * wherever the reader happens to be. Every shell publishes them under a nav
-   * labelled "Legal", so the same assertion holds whichever footer rendered.
+   * wherever the reader happens to be. Every shell labels that nav from the
+   * same Footer.legalNav key, so the same assertion holds whichever footer
+   * rendered. "Legal" is its English value, which is what this suite reads:
+   * every route here is pinned to /en. i18n.spec.ts asserts the French one.
+   *
+   * The hrefs are locale-prefixed on purpose. Both footers use the Link from
+   * @/i18n/navigation, so the href already carries the active locale and the
+   * click costs no middleware redirect. A bare /privacy here would mean the app
+   * had gone back to next/link and was relying on the NEXT_LOCALE cookie to
+   * repair the URL.
    */
   const expectLegalLinks = async (page: Page) => {
     const legalNav = page.getByRole('navigation', { name: 'Legal' });
     await expect(legalNav.getByRole('link', { name: 'Privacy Policy' })).toHaveAttribute(
       'href',
-      '/privacy',
+      '/en/privacy',
     );
     await expect(legalNav.getByRole('link', { name: 'Terms of Service' })).toHaveAttribute(
       'href',
-      '/terms',
+      '/en/terms',
     );
   };
 

@@ -117,10 +117,10 @@ export class TwoFactorService {
       select: { email: true, totpSecret: true },
     });
     if (user?.totpSecret == null) {
-      throw new BadRequestException('Start two factor setup first');
+      throw new BadRequestException('twoFactor.setupFirst');
     }
     if (!this.verifyCode(user.totpSecret, user.email, code)) {
-      throw new UnauthorizedException('That code is not valid');
+      throw new UnauthorizedException('twoFactor.invalidCode');
     }
 
     await this.enable(userId);

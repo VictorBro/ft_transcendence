@@ -2,8 +2,9 @@ import { z } from 'zod';
 
 /**
  * The i18n minor module needs three languages minimum. This tuple is the single
- * place that list lives: next-intl routing, the API's Accept-Language handling
- * and the User model all derive from it.
+ * place that list lives: next-intl's routing and the Accept-Language
+ * negotiation its middleware does, plus the User model's locale column, all
+ * derive from it.
  */
 export const SUPPORTED_LOCALES = ['en', 'fr', 'de'] as const;
 
