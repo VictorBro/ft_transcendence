@@ -116,11 +116,29 @@ github_identity() {
 }
 
 key_count=0
-if [ -n "${SSH_AUTH_SOCK:-}" ] && ssh-add -l >/dev/null 2>&1; then
-  key_count="$(ssh-add -l | wc -l | tr -d ' ')"
-  ok "ssh agent available, $key_count key(s)"
-else
+if [ -z "${SSH_AUTH_SOCK:-}" ]; then
   warn 'no ssh agent (VS Code forwards one; plain docker exec does not)'
+else
+  # ssh-add -l exits 0 holding keys, 1 when the agent answers but is empty, and
+  # 2 when it cannot be reached at all. Reporting 1 as "no ssh agent" sends you
+  # to look at the forwarding, which is the one part that is working: on a fresh
+  # machine the usual cause is simply that nobody has run ssh-add on the HOST.
+  ssh-add -l >/dev/null 2>&1
+  case $? in
+    0)
+      key_count="$(ssh-add -l | wc -l | tr -d ' ')"
+      ok "ssh agent available, $key_count key(s)"
+      ;;
+    1)
+      warn 'ssh agent reachable but holding no keys'
+      hint 'On the HOST, not in this container: ssh-add ~/.ssh/id_ed25519'
+      hint 'No key yet? ssh-keygen -t ed25519 -C "your@email", then add the'
+      hint '.pub at https://github.com/settings/keys'
+      ;;
+    *)
+      warn 'SSH_AUTH_SOCK is set but no agent answers on it'
+      ;;
+  esac
 fi
 
 identity="$(github_identity)"
