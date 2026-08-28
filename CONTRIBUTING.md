@@ -81,6 +81,30 @@ Day to day:
 - **Windows:** work inside **WSL2**, and keep the repository on the WSL2
   filesystem (`~/projects/...`), not on `C:\`. A Windows path bind-mounted into
   Docker Desktop crosses a filesystem boundary and makes hot reload crawl.
+- **42 school machines (rootless Docker, no root on the host):** four settings
+  differ, and none of them announce themselves when wrong. Check you are on a
+  rootless daemon first — `docker info -f '{{.SecurityOptions}}'` mentions
+  `rootless`, and `echo $DOCKER_HOST` prints a `/run/user/...` path:
+  - Launch the editor as `FT_DEVCONTAINER_USER=root code .`. On a rootless
+    daemon your host uid maps to uid 0 inside the container, so the default
+    `node` user cannot write the bind-mounted repo. Launching VS Code from the
+    desktop instead of a terminal skips your shell files, so put
+    `FT_DEVCONTAINER_USER=root` in `~/.config/environment.d/ft.conf` and log
+    back in.
+  - `DOCKER_SOCKET=/run/user/<your uid>/docker.sock` in `.env`. Run `id -u` and
+    paste the **number**: compose does no command substitution, so a literal
+    `$(id -u)` silently bind-mounts a directory over the socket and every make
+    target then fails with `failed to connect to the docker API`.
+  - `HTTP_PORT=8080` and `HTTPS_PORT=8443` in `.env`. Without root nothing can
+    bind below 1024. Open <https://localhost:8443> directly — the automatic
+    http→https redirect only exists on the default ports.
+  - `REDIS_PORT=6380` in `.env`. The clusters run their own redis on 6379, so
+    the default collides with `address already in use`.
+
+  Then **Dev Containers: Rebuild Container**. `.env` is read when the container
+  is created, not when a shell starts, so editing it in a running container
+  changes nothing until you rebuild.
+
 - **Everyone:** the devcontainer is the smoothest path. Open the folder in VS
   Code, "Reopen in Container", and the toolchain, extensions and hooks are
   already set up.
