@@ -22,6 +22,12 @@ export default defineConfig({
   outputDir: './test-results',
   fullyParallel: true,
 
+  // Signs up the one account the whole suite shares, before any worker starts.
+  // Without it that signup happens per worker, and since the default worker
+  // count is half the machine's cores, whether the run stays inside the signup
+  // rate limit depends on the machine. See support/global-setup.ts.
+  globalSetup: './support/global-setup.ts',
+
   // A .only left in a spec silently narrows the suite to one test and the gate
   // still reports green.
   forbidOnly: Boolean(process.env.CI),

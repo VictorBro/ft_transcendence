@@ -1,12 +1,17 @@
+import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
+
 import { test as base, expect, type BrowserContext, type Page } from '@playwright/test';
 
 /**
  * Signing in, for the specs that need an account but are not testing signup.
  *
- * One account per worker, not per test and not per file: each signup writes a
- * row and runs argon2, and POST /auth/signup is limited to 10 a minute per
- * address, so a suite that signs up per test spends its budget on setup and
- * starts failing on a 429 it never asked for.
+ * ONE account for the whole run, signed up in global-setup.ts. Not one per
+ * test, and no longer one per worker either: each signup writes a row, runs
+ * argon2, and spends from a budget of 10 a minute per address that the workers
+ * share, because they all reach the API through the same Caddy. Worker-scoped
+ * made the suite's signup count 6 + cores/2 -- see global-setup.ts for why that
+ * passes on one machine and 429s on another.
  *
  * Exposed as fixtures rather than helpers so teardown is Playwright's problem.
  * A context closed by hand at the end of a test leaks whenever an assertion
@@ -15,6 +20,14 @@ import { test as base, expect, type BrowserContext, type Page } from '@playwrigh
 
 /** Shared by the signup helper below and by auth.spec.ts, which signs in with it. */
 export const PASSWORD = 'Correct-Horse-9';
+
+/**
+ * Where global-setup.ts leaves the shared account for the `account` fixture.
+ * Resolved against this file, not the cwd, which is Playwright's for the config
+ * and the launcher's for a worker. Gitignored: it holds a live session cookie,
+ * and it is stale the moment `make test-e2e` deletes the row it belongs to.
+ */
+export const ACCOUNT_STATE_FILE = join(__dirname, '..', '.auth', 'account.json');
 
 export interface Identity {
   email: string;
@@ -46,7 +59,10 @@ export const createAccount = async (page: Page, fields: Identity): Promise<void>
   await page.getByLabel('Password', { exact: true }).fill(PASSWORD);
   await page.getByLabel('Confirm password', { exact: true }).fill(PASSWORD);
   await page.getByRole('button', { name: 'Create account' }).click();
-  await expect(page).toHaveURL(/\/profile$/);
+  // Explicit rather than the 10s in playwright.config.ts, because global-setup
+  // calls this outside the runner, where `expect` falls back to its own 5s
+  // default. Signup runs argon2, which is meant to be slow.
+  await expect(page).toHaveURL(/\/profile$/, { timeout: 15_000 });
 };
 
 type StorageState = Awaited<ReturnType<BrowserContext['storageState']>>;
@@ -58,22 +74,21 @@ export interface Account {
 }
 
 /**
- * `account` is worker-scoped: created once, reused by every test that worker
- * runs. `signedIn` is a plain page in a fresh context restored from it, so
- * tests stay isolated from each other while sharing the one signup.
+ * `account` is the file global-setup.ts wrote, read once per worker. `signedIn`
+ * is a plain page in a fresh context restored from it, so tests stay isolated
+ * from each other while sharing the one signup. Nothing that takes `signedIn`
+ * mutates the account, which is what makes one row safe to share; a spec that
+ * renames or deletes it needs its own, as auth.spec.ts already does.
  */
 export const test = base.extend<{ signedIn: Page }, { account: Account }>({
   account: [
-    async ({ browser }, use) => {
-      const context = await browser.newContext();
-      const page = await context.newPage();
-      const fields = identity();
-
-      await createAccount(page, fields);
-      const storageState = await context.storageState();
-      await context.close();
-
-      await use({ displayName: fields.displayName, storageState });
+    // Playwright requires the first argument to be a destructuring pattern even
+    // when a fixture depends on nothing, which is what trips no-empty-pattern.
+    // eslint-disable-next-line no-empty-pattern
+    async ({}, use) => {
+      // No try/catch: the only way this file is missing is global setup not
+      // having run, and its own failure is the message worth reading.
+      await use(JSON.parse(await readFile(ACCOUNT_STATE_FILE, 'utf8')) as Account);
     },
     { scope: 'worker' },
   ],

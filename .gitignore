@@ -31,12 +31,13 @@ build/
 out
 *.tsbuildinfo
 
-# Task + test caches and reports
+# Task + test caches and reports (.auth holds the e2e run's shared session)
 .turbo
 coverage
 playwright-report
 test-results
 .pnpm-store
+.auth
 
 # VS Code: share the settings that make the repo build the same way for
 # everyone, keep personal files (launch configs, local tasks) out.
