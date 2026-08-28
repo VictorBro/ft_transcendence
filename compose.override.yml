@@ -100,12 +100,12 @@ services:
     # so `make ci` and a GUI client work from a host shell, where the compose
     # network name `db` does not resolve.
     ports:
-      - "127.0.0.1:5432:5432"
+      - "127.0.0.1:${DB_PORT:-5432}:5432"
 
   redis:
     # Loopback only, same reasoning as the database above.
     ports:
-      - "127.0.0.1:6379:6379"
+      - "127.0.0.1:${REDIS_PORT:-6379}:6379"
 
   # Devcontainer shell. Behind a profile, so `docker compose up` ignores it;
   # VS Code names the service explicitly, which activates the profile.
@@ -147,13 +147,15 @@ services:
       # from re-downloading Chromium (~170 MB) after every container rebuild.
       - node-cache:/home/node/.cache
       # docker-outside-of-docker: the CLI in this image drives the host daemon.
-      # Mounted at docker-HOST.sock, not docker.sock: the host socket is owned
-      # by root and a group that does not exist in this image, so docker-init.sh
-      # (the command below) bridges it to a node-owned /var/run/docker.sock via
-      # socat. Same mechanism as the devcontainers docker-outside-of-docker
-      # feature. Without the mount, `docker ps`, `make dev` and `make up` fail
-      # from inside the devcontainer with "Cannot connect to the Docker daemon".
-      - /var/run/docker.sock:/var/run/docker-host.sock
+      # Mounted at docker-HOST.sock because docker-init.sh bridges it to a
+      # node-owned /var/run/docker.sock via socat, the same mechanism as the
+      # devcontainers feature of that name.
+      #
+      # The default is the rootful socket. On a rootless daemon set DOCKER_SOCKET
+      # to "${DOCKER_HOST#unix://}" in .env, or the mount arrives as
+      # nobody:nogroup and every docker command fails with an empty
+      # /tmp/docker-init.log, because docker-init.sh's `[ -S ]` guard still passes.
+      - ${DOCKER_SOCKET:-/var/run/docker.sock}:/var/run/docker-host.sock
     networks:
       - ft
     # PID 1 ignores signals it has no handler for, so a bare `sleep infinity`

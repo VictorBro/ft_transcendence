@@ -36,21 +36,38 @@
   // Overriding it would replace that PID 1 with the tool's own keepalive.
   "overrideCommand": false,
 
-  // uid/gid 1000 in the image, which matches the first user account on a Linux
-  // host, so files written here are owned correctly on the host side too. When
-  // they differ, VS Code remaps the container uid automatically before attach.
-  "remoteUser": "node",
+  // Who VS Code attaches as. Does not change PID 1, which stays the image's
+  // `USER node`. Templated because this file is shared and no single value
+  // fits both daemons: on a rootful one container uid 1000 is host uid 1000,
+  // while on a rootless one (the 42 clusters) container uid 0 is your host uid,
+  // so `node` cannot write the bind mount and the uid-remap build dies on
+  // `chown: Invalid argument` before the container ever starts.
+  //
+  // Which one you have: docker info -f '{{json .SecurityOptions}}' | grep rootless
+  // If rootless, set FT_DEVCONTAINER_USER=root where the EDITOR sees it, which
+  // is not a shell file when VS Code is started from the desktop:
+  //   echo FT_DEVCONTAINER_USER=root > ~/.config/environment.d/ft.conf  # re-login
+  // Unset means `node`; empty means empty.
+  "remoteUser": "${localEnv:FT_DEVCONTAINER_USER:node}",
 
-  // 42 school machines: if that automatic uid remap fails there (no sudo on
-  // the host, restrictive setups), uncomment this to skip it and fix file
-  // ownership from a container shell instead; `node` has passwordless sudo
-  // inside, so the host restriction does not follow you in.
-  // "updateRemoteUserUID": false,
+  // No-op as `node`; as `root` it keeps the session on the /home/node volumes
+  // instead of /root. Must be containerEnv, not remoteEnv: the server takes its
+  // home from the container's inspected env, which remoteEnv never reaches.
+  "containerEnv": { "HOME": "/home/node" },
+
+  // Not "updateRemoteUserUID": false. It is boolean-typed, so a ${localEnv:}
+  // string is dropped there in silence, and skipping the remap still leaves the
+  // session at uid 1000, which cannot write the repo on a rootless daemon.
 
   // The one sanctioned install. It runs on the developer's machine after the
   // container exists, not during an image build, so it never races the
   // lockfile in CI.
   "postCreateCommand": "pnpm install",
+
+  // ssh ignores $HOME and finds ~/.ssh through getpwuid(), so a root session
+  // would read /root/.ssh and miss the ssh-config volume. Repoints root's
+  // passwd home. uid 0 only: a `node` session exits at the first line.
+  "postStartCommand": ".devcontainer/root-ssh-fixup.sh",
 
   // Compose resolves relative bind-mount paths on the docker DAEMON's side,
   // i.e. against the HOST filesystem. Shells inside this container therefore
