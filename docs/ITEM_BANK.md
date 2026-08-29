@@ -11,8 +11,8 @@ Audience: whoever authors the French and German sets.
 ## 1. Two rules
 
 **Never copy items from a published test.** Goethe materials and sites like
-internationalenglishtest.com are protected. Imitate the *format* freely: four skills,
-four-option multiple choice, difficulty rising through the set. The *sentences* must be ours.
+internationalenglishtest.com are protected. Imitate the *format* freely: short questions,
+four options each, difficulty rising through the set. The *sentences* must be ours.
 
 **Placement questions are multiple choice only.** No free text, no translation. Those make good
 lesson exercises and bad measurements: scoring them needs an LLM judge, which is slow while a
@@ -79,7 +79,7 @@ One file per language and skill, under `content/items/`: `de-grammar.json`, `fr-
 
 | Field | Rule |
 |---|---|
-| `id` | Unique and **permanent**. `ItemExposure` points at it, so renumbering makes a learner see a question twice |
+| `id` | Unique and **permanent**. Past answers point at it, so renumbering makes a learner see a question twice |
 | `cefr` | `A1` to `C2` |
 | `topic` | From §4. Keeps a cell from being five questions about the same thing |
 | `passage` | Reading items only, omit otherwise |
@@ -144,25 +144,15 @@ model ItemBank {
   generated Boolean      @default(false)
   createdAt DateTime     @default(now())
 
-  exposures ItemExposure[]
+  answers   PlacementAnswer[]
 
   @@index([language, skill, cefr])
 }
-
-// What this learner has already been asked. The whole reason a retake is a new
-// test rather than the same one again.
-model ItemExposure {
-  userId   String   @db.Uuid
-  itemId   String
-  servedAt DateTime @default(now())
-
-  user User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  item ItemBank @relation(fields: [itemId], references: [id])
-
-  @@id([userId, itemId])
-  @@index([userId])
-}
 ```
+
+A learner is never asked the same question twice, but there is no second table
+for that: the `PlacementAnswer` rows of their past tests already record what they
+were asked. See [PRODUCT_ARCHITECTURE.md](PRODUCT_ARCHITECTURE.md) §7.2.
 
 There is deliberately no difficulty score, no served/correct counters and no calibration. Those
 would need hundreds of answers per question before they meant anything, and this platform will
@@ -175,7 +165,7 @@ assumes it works.
 
 Three steps, and the learner is never blocked:
 
-1. **Draw from the bank**, excluding anything in `ItemExposure` for this learner.
+1. **Draw from the bank**, excluding anything this learner has already been asked.
 2. **Nothing left at this level: generate one.** A structured LLM call against the same shape as
    above, validated, saved to `ItemBank` with `generated = true`, then served. It stays, so the
    next learner to reach that level gets it from step 1 for free. **The bank grows as it is used.**

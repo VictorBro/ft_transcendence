@@ -752,7 +752,7 @@ that test early, it is the cheapest possible proof of a rejection-criterion requ
    one language. Authored items, no generation yet.
 2. **`LlmProvider` + fixture**, `generateStructured` and `streamText`, plus the Zod schemas in
    `@ft/shared`. No vendor yet.
-3. **Onboarding + placement**, the adaptive ladder, bank sampling with `ItemExposure` exclusion,
+3. **Onboarding + placement**, the adaptive ladder, bank sampling excluding past answers,
    warm start on retake. Entirely on fixtures. The ladder and the exclusion are both plain
    unit tests: take the same test twice as the same user, assert zero item overlap.
 4. **Syllabus board**, server-rendered tiles from `SyllabusItem`.

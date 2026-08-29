@@ -41,6 +41,13 @@ export type GrammarTopic = z.infer<typeof GrammarTopicSchema>;
 
 export const OPTIONS_PER_ITEM = 4;
 
+/** The segment an id must carry for a given skill. */
+export const SKILL_ID_SEGMENT: Record<Skill, string> = {
+  grammar: 'gram',
+  vocabulary: 'voca',
+  reading: 'read',
+};
+
 /** `<language>-<3-letter skill>-<4 digits>`, for example `en-gram-0001`. */
 export const ITEM_ID_PATTERN = /^[a-z]{2}-(gram|voca|read)-\d{4}$/;
 
@@ -87,16 +94,19 @@ export const ItemFileSchema = z
       message: 'reading items need a passage, other skills must not have one',
       path: ['items'],
     },
+  )
+  // Ids are permanent and unique across every file, so one that disagrees with
+  // its own file eventually collides with the file it belongs in.
+  .refine(
+    (file) =>
+      file.items.every((i) => i.id.startsWith(`${file.language}-${SKILL_ID_SEGMENT[file.skill]}-`)),
+    {
+      message: "every id must start with the file's own language and skill, e.g. en-gram-0001",
+      path: ['items'],
+    },
   );
 
 export type ItemFile = z.infer<typeof ItemFileSchema>;
-
-/** The three-letter segment an id must carry for a given skill. */
-export const SKILL_ID_SEGMENT: Record<Skill, string> = {
-  grammar: 'gram',
-  vocabulary: 'voca',
-  reading: 'read',
-};
 
 /** `content/items/<language>-<skill>.json`, the name the seed script globs. */
 export function itemFileName(language: string, skill: Skill): string {

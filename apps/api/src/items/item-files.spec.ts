@@ -2,7 +2,7 @@ import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
-import { ItemFileSchema, itemFileName, SKILL_ID_SEGMENT, SKILLS, type Skill } from '@ft/shared';
+import { ItemFileSchema, itemFileName, SKILLS, type Skill } from '@ft/shared';
 
 /**
  * Validates the authored placement questions in content/items.
@@ -43,15 +43,6 @@ describe('content/items', () => {
     it('is named after the language and skill it declares', () => {
       if (!parsed.success) return;
       expect(name).toBe(itemFileName(parsed.data.language, parsed.data.skill));
-    });
-
-    it('gives every id the segment for its skill', () => {
-      if (!parsed.success) return;
-      const segment = SKILL_ID_SEGMENT[parsed.data.skill];
-      const wrong = parsed.data.items
-        .filter((item) => !item.id.startsWith(`${parsed.data.language}-${segment}-`))
-        .map((item) => item.id);
-      expect(wrong, `expected ids like ${parsed.data.language}-${segment}-0001`).toEqual([]);
     });
   });
 

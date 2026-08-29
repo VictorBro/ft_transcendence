@@ -101,6 +101,17 @@ describe('ItemFileSchema', () => {
     ).toBe(true);
   });
 
+  it("rejects an id that disagrees with the file's own language or skill", () => {
+    expect(
+      ItemFileSchema.safeParse({ ...file, items: [{ ...item, id: 'de-gram-0001' }] }).success,
+      'wrong language',
+    ).toBe(false);
+    expect(
+      ItemFileSchema.safeParse({ language: 'en', skill: 'vocabulary', items: [item] }).success,
+      'wrong skill',
+    ).toBe(false);
+  });
+
   it('rejects an empty file', () => {
     expect(ItemFileSchema.safeParse({ ...file, items: [] }).success).toBe(false);
   });
