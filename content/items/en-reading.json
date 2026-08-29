@@ -1,0 +1,29 @@
+{
+  "language": "en",
+  "skill": "reading",
+  "items": [
+    {
+      "id": "en-read-0001",
+      "cefr": "A2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Tom works from home three days a week. On Tuesdays and Thursdays he takes the train to the office, which takes about an hour each way. He does not mind the journey, because he uses the time to read.",
+      "prompt": "What does Tom do on the train?",
+      "options": ["He reads", "He sleeps", "He works", "He calls colleagues"],
+      "answer": "He reads"
+    },
+    {
+      "id": "en-read-0002",
+      "cefr": "B2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "For decades the museum displayed its collection exactly as the founder had arranged it in 1912, on the grounds that the arrangement was itself a historical document. Critics argued that this reverence carried a cost: visitors were shown the taste of one Edwardian collector rather than the objects themselves. The trustees have now approved a partial rehang.",
+      "prompt": "Why did critics object to the original arrangement?",
+      "options": [
+        "It showed one collector's taste rather than the objects",
+        "It damaged the objects over time",
+        "It was too expensive to maintain",
+        "It had been changed too often since 1912"
+      ],
+      "answer": "It showed one collector's taste rather than the objects"
+    }
+  ]
+}

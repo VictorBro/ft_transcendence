@@ -16,7 +16,7 @@ AI-assessed proficiency levelling, single-player practice, live two-player sessi
 | Backend | **NestJS** | WebSocket gateways, DI (mockable LLM provider), guards, throttler, Swagger, validation pipes. Module boundaries map onto team members. |
 | Database | **Postgres 18 + pgvector** | RAG needs vector search; pgvector avoids a second datastore. |
 | ORM | **Prisma 7** | Minor module; `schema.prisma` doubles as the README schema doc. |
-| Cache / queue | **Redis** | Rate limiting, socket.io adapter, LLM cache, BullMQ. |
+| Cache / sessions | **Redis** | Sessions, presence, the LLM response cache. |
 | Proxy | **Caddy** | Single TLS entry point (mandatory HTTPS). Same-origin kills CORS; httpOnly cookies just work. Internal CA for dev certs. |
 | Real-time | **socket.io** | One transport for presence, sessions, LLM token streaming. |
 | Monorepo | **pnpm workspaces + Turborepo** | Strict node_modules; cached tasks. |
@@ -223,65 +223,15 @@ stale branch tags, per-commit pushes accumulate fast.
 
 ---
 
-## 6. AI provider: deferred by design
+## 6. Product, AI and data model
 
-**No vendor or model chosen yet.** App code calls `llm.generate(...)` through an `LlmProvider`
-interface; the vendor is one file. Three implementations: `fixture` (dev + CI, free), `cached`,
-`real`.
-
-Cost model (~2,000 in / 500 out tokens per tutoring exchange, Anthropic list prices as example):
-
-| Tier | Per exchange | 10,000 exchanges |
-|---|---|---|
-| Small (Haiku-class) | ~$0.0045 | ~$45 |
-| Mid (Sonnet-class) | ~$0.014 | ~$140 |
-| Large (Opus-class) | ~$0.0225 | ~$225 |
-
-Decide with data: develop on `fixture`, instrument tokens from the first real call, then pick.
-Expect two tiers (small for bulk generation, larger for assessment); the interface makes that
-config.
-
-Controls before feature work: Redis per-user token budget (Nest guard), exercise cache keyed
-`(level, topic, seed)`, streaming proxied through the gateway so cancel stops billing, CI always
-on `fixture`.
+Moved to [PRODUCT_ARCHITECTURE.md](PRODUCT_ARCHITECTURE.md): the learner journey, the module
+list and their points, the AI provider and its cost controls, and the schema. One source of
+truth, so the two documents cannot disagree.
 
 ---
 
-## 7. Module points
-
-Baseline **16** (14 required):
-
-| Module | Pts |
-|---|---|
-| Framework FE + BE (Major) | 2 |
-| Real-time WebSockets (Major) | 2 |
-| User interaction: chat, profiles, friends (Major) | 2 |
-| LLM interface: streaming, rate limits, errors (Major) | 2 |
-| RAG over learning corpus (Major) | 2 |
-| Standard user management (Major) | 2 |
-| ORM (Minor) | 1 |
-| SSR (Minor) | 1 |
-| i18n, 3+ languages (Minor) | 1 |
-| Gamification (Minor) | 1 |
-
-Buffer candidates: Public API (Major 2; Swagger + API keys + throttler are already in the stack),
-analytics dashboard (Major 2), voice/pronunciation (Minor 1), design system (Minor 1), OAuth,
-2FA, GDPR (Minor 1 each).
-
-### Frame the two-player mode as a game (+9)
-
-Gaming modules require "at least one game implemented first". A timed **vocabulary duel** is a
-game and a natural product feature. Unlocks: web game 2, remote players 2, AI opponent 2,
-tournament 1, spectator 1, game stats 1. Decide early: it changes the data model and gateway
-design. (Grading ceiling is 14 + 5 bonus = 19, so 25 claimable points is healthy margin, not
-overreach.)
-
-Open question for staff: does Gamification require a game? (No explicit note in the subject,
-unlike its neighbours. Moot if the duel ships.)
-
----
-
-## 8. Build order
+## 7. Build order
 
 1. **Foundation**: pnpm workspace, Turborepo, tsconfig/eslint/prettier packages, Makefile.
 2. **Containers**: Dockerfiles, three compose files, Caddy TLS, pgvector image, Redis.
@@ -301,7 +251,7 @@ The team clones the slice pattern per feature instead of inventing five differen
 
 ---
 
-## 9. Risks
+## 8. Risks
 
 | Risk | Mitigation |
 |---|---|
@@ -310,6 +260,6 @@ The team clones the slice pattern per feature instead of inventing five differen
 | Node 26 LTS lands mid-project | Stay on 24; deliberate upgrade later (trap 3) |
 | Hydration warnings trip console gate | Gate live from day one; surfaces at the causing commit |
 | Slow HMR on bind mounts | Watch during step 5. Fallback: `apps/web` to Vite. **Costs the SSR minor point (16 → 15)**; budget still clears 14. |
-| LLM spend | §6 controls before feature work |
+| LLM spend | Cache, per-user budget and a global ceiling, see PRODUCT_ARCHITECTURE.md §5 |
 | RAG scope creep | Fix corpus + chunking before writing retrieval code |
 | Uneven commit distribution | CODEOWNERS, required reviews, periodic `git shortlog -sn` |

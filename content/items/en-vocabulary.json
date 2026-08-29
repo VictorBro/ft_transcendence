@@ -1,0 +1,54 @@
+{
+  "language": "en",
+  "skill": "vocabulary",
+  "items": [
+    {
+      "id": "en-voca-0001",
+      "cefr": "A1",
+      "topic": "information_structure_and_pragmatics",
+      "prompt": "I am very ___. Can I have some water?",
+      "options": ["thirsty", "hungry", "tired", "cold"],
+      "answer": "thirsty"
+    },
+    {
+      "id": "en-voca-0002",
+      "cefr": "A2",
+      "topic": "verb_usage",
+      "prompt": "She ___ a photo of the mountains.",
+      "options": ["took", "made", "did", "had"],
+      "answer": "took"
+    },
+    {
+      "id": "en-voca-0003",
+      "cefr": "B1",
+      "topic": "verb_usage",
+      "prompt": "He ___ up smoking three years ago and has never looked back.",
+      "options": ["gave", "took", "put", "got"],
+      "answer": "gave"
+    },
+    {
+      "id": "en-voca-0004",
+      "cefr": "B2",
+      "topic": "adjectives",
+      "prompt": "Her argument was ___, but it failed to persuade the committee.",
+      "options": ["compelling", "compelled", "compellingly", "compel"],
+      "answer": "compelling"
+    },
+    {
+      "id": "en-voca-0005",
+      "cefr": "C1",
+      "topic": "verb_usage",
+      "prompt": "The report ___ serious doubts about the safety of the procedure.",
+      "options": ["raises", "rises", "arises", "lifts"],
+      "answer": "raises"
+    },
+    {
+      "id": "en-voca-0006",
+      "cefr": "C2",
+      "topic": "information_structure_and_pragmatics",
+      "prompt": "The minister's answer was a masterclass in ___: forty words that committed to nothing.",
+      "options": ["obfuscation", "clarification", "elaboration", "confirmation"],
+      "answer": "obfuscation"
+    }
+  ]
+}
