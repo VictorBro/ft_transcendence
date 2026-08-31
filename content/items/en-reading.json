@@ -4,6 +4,51 @@
   "items": [
     {
       "id": "en-read-0001",
+      "cefr": "A1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Anna has a small dog called Pip. Every morning she takes him to the park before school. Pip likes to run after the birds.",
+      "prompt": "When does Anna take Pip to the park?",
+      "options": ["In the morning", "After school", "At night", "On Sundays"],
+      "answer": "In the morning"
+    },
+    {
+      "id": "en-read-0002",
+      "cefr": "A1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "The cafe on Green Street opens at eight o'clock. It sells coffee, tea and fresh bread. It is closed on Mondays.",
+      "prompt": "Which day is the cafe closed?",
+      "options": ["Monday", "Sunday", "Saturday", "Friday"],
+      "answer": "Monday"
+    },
+    {
+      "id": "en-read-0003",
+      "cefr": "A1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Luis lives in a flat above a bookshop. His flat is small, but it has a big window. From the window he can see the river.",
+      "prompt": "What can Luis see from his window?",
+      "options": ["The river", "The bookshop", "A garden", "The mountains"],
+      "answer": "The river"
+    },
+    {
+      "id": "en-read-0004",
+      "cefr": "A1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Sara goes to work by bus. The bus takes twenty minutes. When it rains, she takes a taxi instead.",
+      "prompt": "How does Sara travel when it rains?",
+      "options": ["By taxi", "By bus", "By bike", "On foot"],
+      "answer": "By taxi"
+    },
+    {
+      "id": "en-read-0005",
+      "cefr": "A1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "The library is next to the school. It has books, computers and a quiet room for studying. Children can borrow five books at a time.",
+      "prompt": "How many books can children borrow?",
+      "options": ["Five", "Two", "Ten", "Three"],
+      "answer": "Five"
+    },
+    {
+      "id": "en-read-0006",
       "cefr": "A2",
       "topic": "information_structure_and_pragmatics",
       "passage": "Tom works from home three days a week. On Tuesdays and Thursdays he takes the train to the office, which takes about an hour each way. He does not mind the journey, because he uses the time to read.",
@@ -12,7 +57,133 @@
       "answer": "He reads"
     },
     {
-      "id": "en-read-0002",
+      "id": "en-read-0007",
+      "cefr": "A2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Elena works in a small bakery near the station. She starts at five in the morning and bakes bread for the shops nearby. She does not mind the early start, because she finishes at lunchtime and has the whole afternoon free.",
+      "prompt": "Why does Elena not mind starting work so early?",
+      "options": [
+        "She finishes at lunchtime and has the afternoon free",
+        "The bakery is close to the station",
+        "She only works at the weekend",
+        "She bakes bread with her family"
+      ],
+      "answer": "She finishes at lunchtime and has the afternoon free"
+    },
+    {
+      "id": "en-read-0008",
+      "cefr": "A2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "The swimming pool is open every day except Wednesday. Tickets cost four euros, but students pay half price if they show a card. The pool is busiest after six in the evening.",
+      "prompt": "How can a student pay less for a ticket?",
+      "options": [
+        "By showing a student card",
+        "By coming after six",
+        "By buying several tickets",
+        "By swimming on Wednesday"
+      ],
+      "answer": "By showing a student card"
+    },
+    {
+      "id": "en-read-0009",
+      "cefr": "A2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Marc wanted to cook a fish soup for his friends, so he went to the market after work. He arrived at six, but the fish stall had already packed up for the day. He bought vegetables instead and made a soup without fish.",
+      "prompt": "What happened when Marc got to the market?",
+      "options": [
+        "The fish stall had already closed",
+        "The market was too expensive",
+        "He forgot what he needed",
+        "He bought a ready-made soup"
+      ],
+      "answer": "The fish stall had already closed"
+    },
+    {
+      "id": "en-read-0010",
+      "cefr": "A2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "The camping site by the lake has thirty places for tents. Visitors must book in summer, because it fills up quickly. In spring and autumn it is usually possible to arrive without booking.",
+      "prompt": "Why should visitors book in summer?",
+      "options": [
+        "The site fills up quickly then",
+        "The site is closed in spring",
+        "Tents are more expensive then",
+        "There are only thirty visitors"
+      ],
+      "answer": "The site fills up quickly then"
+    },
+    {
+      "id": "en-read-0011",
+      "cefr": "B1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "When Martin first moved to Toronto, he found the city overwhelming. The pace was faster than anything he had known, and for months he kept to his own neighbourhood. Gradually that changed. He now says the variety of the place is the reason he stays.",
+      "prompt": "How did Martin's view of Toronto change?",
+      "options": [
+        "He found it overwhelming at first but now values its variety",
+        "He enjoyed it at first but now finds it too fast",
+        "He still finds it overwhelming but has made friends",
+        "He disliked the city and plans to leave"
+      ],
+      "answer": "He found it overwhelming at first but now values its variety"
+    },
+    {
+      "id": "en-read-0012",
+      "cefr": "B1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "The town council introduced a free bicycle scheme last spring. Anyone can take a bike from one of the racks and leave it at another. The scheme has been popular, though the council admits that repairs are costing more than it expected.",
+      "prompt": "What problem does the council mention?",
+      "options": [
+        "Repairs cost more than expected",
+        "Nobody uses the bicycles",
+        "There are too few racks",
+        "The bicycles are being stolen"
+      ],
+      "answer": "Repairs cost more than expected"
+    },
+    {
+      "id": "en-read-0013",
+      "cefr": "B1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Rosa trained as an architect but left the profession after six years. She now restores old furniture in a workshop behind her house. She earns less than she did, but she says she has never regretted the change.",
+      "prompt": "What does Rosa say about leaving architecture?",
+      "options": [
+        "She does not regret it, despite earning less",
+        "She regrets it because she earns less",
+        "She plans to return to the profession",
+        "She left because the work was too hard"
+      ],
+      "answer": "She does not regret it, despite earning less"
+    },
+    {
+      "id": "en-read-0014",
+      "cefr": "B1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "The festival was due to take place in the main square, but heavy rain in the week before left the ground unusable. Organisers moved it to the sports hall at two days' notice. Attendance was lower than usual, which they blamed on the late change rather than the weather itself.",
+      "prompt": "What do the organisers think caused the lower attendance?",
+      "options": [
+        "The late change of venue",
+        "The rain on the day itself",
+        "The cost of the tickets",
+        "The size of the sports hall"
+      ],
+      "answer": "The late change of venue"
+    },
+    {
+      "id": "en-read-0015",
+      "cefr": "B1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Most guidebooks send visitors to the cathedral and the old bridge, and both are worth an hour. But the part of the city that stays with people is usually the market district, which few guidebooks mention at all.",
+      "prompt": "What does the writer suggest about the market district?",
+      "options": [
+        "It is memorable but often left out of guidebooks",
+        "It is the main attraction in every guidebook",
+        "It is less interesting than the cathedral",
+        "It is difficult for visitors to reach"
+      ],
+      "answer": "It is memorable but often left out of guidebooks"
+    },
+    {
+      "id": "en-read-0016",
       "cefr": "B2",
       "topic": "information_structure_and_pragmatics",
       "passage": "For decades the museum displayed its collection exactly as the founder had arranged it in 1912, on the grounds that the arrangement was itself a historical document. Critics argued that this reverence carried a cost: visitors were shown the taste of one Edwardian collector rather than the objects themselves. The trustees have now approved a partial rehang.",
@@ -24,6 +195,202 @@
         "It had been changed too often since 1912"
       ],
       "answer": "It showed one collector's taste rather than the objects"
+    },
+    {
+      "id": "en-read-0017",
+      "cefr": "B2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Public discussion tends to treat technological progress as self-evidently good, assuming that innovation improves society on its own. That assumption has a blind spot. Without oversight, new tools can just as easily entrench existing advantages, widen economic gaps and push already marginal groups further to the edge.",
+      "prompt": "According to the passage, what can innovation do without oversight?",
+      "options": [
+        "Entrench existing advantages and widen economic gaps",
+        "Improve society automatically",
+        "Remove the need for regulation",
+        "Reduce the influence of public discussion"
+      ],
+      "answer": "Entrench existing advantages and widen economic gaps"
+    },
+    {
+      "id": "en-read-0018",
+      "cefr": "B2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Remote work was widely predicted to empty city centres. Four years on, the picture is more mixed. Offices are indeed quieter midweek, but the cafes, gyms and shops around them have not closed in the numbers forecast. What has changed is the rhythm: the centre is busy on three days and subdued on two.",
+      "prompt": "What does the passage say has actually changed in city centres?",
+      "options": [
+        "The weekly rhythm of activity, rather than the overall level",
+        "The number of businesses, which fell as predicted",
+        "The kinds of shops that trade there",
+        "Nothing measurable has changed"
+      ],
+      "answer": "The weekly rhythm of activity, rather than the overall level"
+    },
+    {
+      "id": "en-read-0019",
+      "cefr": "B2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Despite the well-documented benefits of immunisation, a section of the public continues to believe that vaccines carry hidden risks. Public health officials note that it is rarely the science that fails to reach people. What sustains the doubt is the speed with which fear circulates compared with correction.",
+      "prompt": "What do officials identify as the main obstacle?",
+      "options": [
+        "Fear spreads faster than correction does",
+        "The scientific evidence is incomplete",
+        "Vaccines do carry hidden risks",
+        "People have not heard the scientific case"
+      ],
+      "answer": "Fear spreads faster than correction does"
+    },
+    {
+      "id": "en-read-0020",
+      "cefr": "B2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "The publisher had expected the memoir to sell modestly and printed accordingly. Then a single review, written by a critic with no particular following, was shared several hundred thousand times in a weekend. The second printing was ordered before the first had reached the shops.",
+      "prompt": "What does the passage suggest about the book's success?",
+      "options": [
+        "It came from an unexpected source rather than the critic's reputation",
+        "It was the result of careful planning by the publisher",
+        "It was caused by the critic's large following",
+        "It happened slowly over several months"
+      ],
+      "answer": "It came from an unexpected source rather than the critic's reputation"
+    },
+    {
+      "id": "en-read-0021",
+      "cefr": "C1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "For much of the twentieth century, city planners treated parks as pleasant but optional additions, the first thing cut when budgets tightened. That attitude has quietly reversed. As cities have grown denser and summers hotter, green spaces have come to be seen less as decoration than as infrastructure, performing measurable work that concrete cannot.\n\nNone of this makes parks simple to provide. Land in crowded cities is expensive, and a space meant for everyone must be designed with unusual care, or it risks serving no one well. But the old question, whether a city can afford its parks, is increasingly giving way to a sharper one: whether it can afford to be without them.",
+      "prompt": "What central change in thinking does the passage describe?",
+      "options": [
+        "Parks are now seen as essential infrastructure rather than decoration",
+        "Cities have found parks cheap and easy to provide",
+        "Cities increasingly regard parks as too expensive to justify",
+        "Planners have stopped cutting park budgets entirely"
+      ],
+      "answer": "Parks are now seen as essential infrastructure rather than decoration"
+    },
+    {
+      "id": "en-read-0022",
+      "cefr": "C1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "While a good deal of research links education to societal development, we should be careful not to mistake correlation for causation. Societies evolve through a complex interplay of factors, of which education is undoubtedly an integral part, but not the sole driving force.",
+      "prompt": "What does the author imply about studies linking education to development?",
+      "options": [
+        "They show a real connection, but not that education alone causes development",
+        "They prove education drives development more than any other factor",
+        "Their findings are unreliable and should be set aside",
+        "They overlook the link between education and development"
+      ],
+      "answer": "They show a real connection, but not that education alone causes development"
+    },
+    {
+      "id": "en-read-0023",
+      "cefr": "C1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "The argument for open-plan offices rested on an intuition about collaboration: remove the walls and conversation will follow. The evidence has been unkind to it. When one large firm tracked interactions before and after a move, face-to-face exchange fell by roughly seventy per cent, while email and messaging rose to fill the gap. People, it seems, respond to the loss of privacy by withdrawing into channels they can control.",
+      "prompt": "What does the evidence suggest about open-plan offices?",
+      "options": [
+        "Removing walls reduced face-to-face contact rather than increasing it",
+        "Collaboration increased as the designers had predicted",
+        "Employees preferred the new layout to the old one",
+        "Email use fell once people could speak directly"
+      ],
+      "answer": "Removing walls reduced face-to-face contact rather than increasing it"
+    },
+    {
+      "id": "en-read-0024",
+      "cefr": "C1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Restoration is never a neutral act. Every decision to return a building to a particular moment is also a decision to erase the centuries on either side of it. The nineteenth-century restorers who stripped medieval churches back to an imagined original were not preserving history so much as choosing which part of it deserved to survive.",
+      "prompt": "What is the author's main point about restoration?",
+      "options": [
+        "Choosing a period to restore to means erasing other periods",
+        "Medieval churches were restored more carefully than other buildings",
+        "Restoration should always return a building to its original state",
+        "Nineteenth-century restorers preserved history faithfully"
+      ],
+      "answer": "Choosing a period to restore to means erasing other periods"
+    },
+    {
+      "id": "en-read-0025",
+      "cefr": "C1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Economists have long treated the minimum wage as a straightforward test case: raise the price of labour and employers will buy less of it. A generation of empirical work has complicated that expectation without quite overturning it. Modest increases appear to cost few jobs; large ones, in low-wage regions, are another matter. The disagreement now is less about direction than about where the threshold lies.",
+      "prompt": "What is the current state of the disagreement?",
+      "options": [
+        "It concerns the threshold at which increases cost jobs",
+        "It concerns whether raising wages costs any jobs at all",
+        "It has been settled by recent empirical work",
+        "It concerns whether employers respond to prices"
+      ],
+      "answer": "It concerns the threshold at which increases cost jobs"
+    },
+    {
+      "id": "en-read-0026",
+      "cefr": "C2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "It has become customary to describe the archive as a neutral repository, a place where the past is kept rather than made. The metaphor flatters everyone involved. In practice an archive is the residue of a long series of judgements about what merited keeping, made by people with no obligation to explain themselves and no expectation that anyone would later ask. The historian who treats the surviving record as a sample of the past, rather than as a selection from it, has mistaken the nature of the evidence before a single document is read.",
+      "prompt": "What criticism does the author make of historians?",
+      "options": [
+        "Treating the surviving record as representative rather than selected",
+        "Failing to read enough of the documents available to them",
+        "Relying on archives instead of other kinds of evidence",
+        "Refusing to accept that archives are neutral repositories"
+      ],
+      "answer": "Treating the surviving record as representative rather than selected"
+    },
+    {
+      "id": "en-read-0027",
+      "cefr": "C2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "The received account of the printing press credits it with the spread of literacy, and by extension with the Reformation, the scientific revolution and much else besides. The chronology sits awkwardly with the claim. Literacy rates in much of Europe moved little for a century after Gutenberg, and where they did rise, cheap paper and vernacular schooling track the change more closely than movable type. None of this makes the press unimportant. It does suggest that it was one condition among several, and that the habit of treating it as the cause owes more to the tidiness of the story than to the evidence.",
+      "prompt": "What is the author's position on the printing press?",
+      "options": [
+        "It was one contributing condition, not the single cause it is made out to be",
+        "It had no meaningful effect on literacy or later change",
+        "It caused the rise in literacy, as the received account holds",
+        "Its effects were confined to the century after Gutenberg"
+      ],
+      "answer": "It was one contributing condition, not the single cause it is made out to be"
+    },
+    {
+      "id": "en-read-0028",
+      "cefr": "C2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Defenders of the reform present it as a technical adjustment, and in the narrow sense they are right: the change alters a formula, not a principle. Yet formulas are where principles are enacted, and a body that can revise the calculation without revisiting the commitment behind it has found a way to legislate while appearing merely to administer. The distinction between the two has always been thinner than constitutional theory allows.",
+      "prompt": "What is the author's objection to the reform?",
+      "options": [
+        "A technical change lets a body legislate under the appearance of administering",
+        "The formula in question was calculated incorrectly",
+        "Constitutional theory does not distinguish legislation from administration",
+        "The reform revisits a commitment that should have been left alone"
+      ],
+      "answer": "A technical change lets a body legislate under the appearance of administering"
+    },
+    {
+      "id": "en-read-0029",
+      "cefr": "C2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Her early novels were praised for a restraint that later critics have read as evasion. The charge is not unfounded, though it assumes a writer owes her material a full accounting. What the restraint achieves, in the best of the books, is a kind of pressure: the reader supplies what the prose withholds, and is implicated in the supplying. Whether that is a technique or an alibi is a question the novels themselves seem content to leave open.",
+      "prompt": "What does the author say about the restraint in the novels?",
+      "options": [
+        "It makes the reader complete the meaning, and the books leave its status unresolved",
+        "It is clearly an evasion of the material, as later critics argue",
+        "It is a technique the novels explicitly defend",
+        "It was praised early on but has since been shown to be a flaw"
+      ],
+      "answer": "It makes the reader complete the meaning, and the books leave its status unresolved"
+    },
+    {
+      "id": "en-read-0030",
+      "cefr": "C2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Proponents of prediction markets argue that they aggregate dispersed knowledge more honestly than polls, because participants stake something on being right. The mechanism is real, and where markets are liquid their record is respectable. The difficulty is that the questions most worth forecasting are precisely those on which few people will trade: distant, ambiguous in resolution, or morally charged enough that betting looks unseemly. The instrument works best on the questions we least need it for.",
+      "prompt": "What limitation of prediction markets does the passage identify?",
+      "options": [
+        "They function poorly on exactly the questions that matter most",
+        "Participants have no incentive to be accurate",
+        "Their record is worse than that of conventional polls",
+        "They resolve ambiguous questions too slowly"
+      ],
+      "answer": "They function poorly on exactly the questions that matter most"
     }
   ]
 }

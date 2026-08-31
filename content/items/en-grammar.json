@@ -20,6 +20,30 @@
     },
     {
       "id": "en-gram-0003",
+      "cefr": "A1",
+      "topic": "verb_usage",
+      "prompt": "My brother ___ coffee, so he drinks tea in the morning.",
+      "options": ["doesn't like", "don't like", "not like", "isn't like"],
+      "answer": "doesn't like"
+    },
+    {
+      "id": "en-gram-0004",
+      "cefr": "A1",
+      "topic": "pronouns",
+      "prompt": "That is my brother. ___ bike is the red one.",
+      "options": ["His", "Her", "Ours", "Yours"],
+      "answer": "His"
+    },
+    {
+      "id": "en-gram-0005",
+      "cefr": "A1",
+      "topic": "nouns_and_determiners",
+      "prompt": "We need ___ eggs to make the cake.",
+      "options": ["some", "much", "a", "any"],
+      "answer": "some"
+    },
+    {
+      "id": "en-gram-0006",
       "cefr": "A2",
       "topic": "verbs_morphology",
       "prompt": "I ___ to the cinema last Friday.",
@@ -27,7 +51,7 @@
       "answer": "went"
     },
     {
-      "id": "en-gram-0004",
+      "id": "en-gram-0007",
       "cefr": "A2",
       "topic": "comparison_and_quantity",
       "prompt": "This box is ___ than that one.",
@@ -35,7 +59,31 @@
       "answer": "heavier"
     },
     {
-      "id": "en-gram-0005",
+      "id": "en-gram-0008",
+      "cefr": "A2",
+      "topic": "verb_usage",
+      "prompt": "Don't worry, I ___ you back the moment I leave the office.",
+      "options": ["will call", "call", "going to call", "have called"],
+      "answer": "will call"
+    },
+    {
+      "id": "en-gram-0009",
+      "cefr": "A2",
+      "topic": "verbs_morphology",
+      "prompt": "They ___ dinner at eight o'clock, when the power went out.",
+      "options": ["were cooking", "cooked", "were cook", "are cooking"],
+      "answer": "were cooking"
+    },
+    {
+      "id": "en-gram-0010",
+      "cefr": "A2",
+      "topic": "prepositions_and_case",
+      "prompt": "The pharmacy is right ___ the corner, next to the bakery.",
+      "options": ["around", "between", "along", "across"],
+      "answer": "around"
+    },
+    {
+      "id": "en-gram-0011",
       "cefr": "B1",
       "topic": "subordinate_clauses",
       "prompt": "If it rains tomorrow, we ___ at home.",
@@ -43,7 +91,7 @@
       "answer": "will stay"
     },
     {
-      "id": "en-gram-0006",
+      "id": "en-gram-0012",
       "cefr": "B1",
       "topic": "verb_usage",
       "prompt": "She ___ in Berlin since 2019.",
@@ -51,7 +99,31 @@
       "answer": "has lived"
     },
     {
-      "id": "en-gram-0007",
+      "id": "en-gram-0013",
+      "cefr": "B1",
+      "topic": "verb_usage",
+      "prompt": "She doesn't play tennis anymore, but she ___ every weekend as a teenager.",
+      "options": ["used to play", "has played", "was played", "plays"],
+      "answer": "used to play"
+    },
+    {
+      "id": "en-gram-0014",
+      "cefr": "B1",
+      "topic": "negation",
+      "prompt": "The shop had closed early, so there weren't ___ sandwiches left.",
+      "options": ["any", "much", "some", "a few"],
+      "answer": "any"
+    },
+    {
+      "id": "en-gram-0015",
+      "cefr": "B1",
+      "topic": "verb_usage",
+      "prompt": "How about ___ the museum on Sunday instead?",
+      "options": ["visiting", "visit", "to visit", "for visiting"],
+      "answer": "visiting"
+    },
+    {
+      "id": "en-gram-0016",
       "cefr": "B2",
       "topic": "verbs_morphology",
       "prompt": "The bridge ___ last year after the flood.",
@@ -59,7 +131,7 @@
       "answer": "was rebuilt"
     },
     {
-      "id": "en-gram-0008",
+      "id": "en-gram-0017",
       "cefr": "B2",
       "topic": "verb_usage",
       "prompt": "I would rather you ___ me before making that decision.",
@@ -67,7 +139,31 @@
       "answer": "asked"
     },
     {
-      "id": "en-gram-0009",
+      "id": "en-gram-0018",
+      "cefr": "B2",
+      "topic": "subordinate_clauses",
+      "prompt": "Take an umbrella, ___ the storm arrives earlier than forecast.",
+      "options": ["in case", "otherwise", "so that", "in order to"],
+      "answer": "in case"
+    },
+    {
+      "id": "en-gram-0019",
+      "cefr": "B2",
+      "topic": "subordinate_clauses",
+      "prompt": "We'll miss the ferry ___ we leave within the hour.",
+      "options": ["unless", "if", "providing that", "except"],
+      "answer": "unless"
+    },
+    {
+      "id": "en-gram-0020",
+      "cefr": "B2",
+      "topic": "verb_usage",
+      "prompt": "I ___ this novel all week and I still don't know how it ends.",
+      "options": ["have been reading", "have read", "had been reading", "was reading"],
+      "answer": "have been reading"
+    },
+    {
+      "id": "en-gram-0021",
       "cefr": "C1",
       "topic": "syntax_and_sentence_structure",
       "prompt": "Not until the letter arrived ___ the truth.",
@@ -75,7 +171,7 @@
       "answer": "did she learn"
     },
     {
-      "id": "en-gram-0010",
+      "id": "en-gram-0022",
       "cefr": "C1",
       "topic": "subordinate_clauses",
       "prompt": "The proposal, ___ merits were never in doubt, was rejected on procedural grounds.",
@@ -83,7 +179,36 @@
       "answer": "whose"
     },
     {
-      "id": "en-gram-0011",
+      "id": "en-gram-0023",
+      "cefr": "C1",
+      "topic": "verbs_morphology",
+      "prompt": "The manuscript is thought ___ in a monastery some time before 1350.",
+      "options": [
+        "to have been written",
+        "to be written",
+        "to have written",
+        "having been written"
+      ],
+      "answer": "to have been written"
+    },
+    {
+      "id": "en-gram-0024",
+      "cefr": "C1",
+      "topic": "verb_usage",
+      "prompt": "She ___ for her keys for two days when she finally found them in her coat.",
+      "options": ["had been looking", "looked", "had been looked", "were looking"],
+      "answer": "had been looking"
+    },
+    {
+      "id": "en-gram-0025",
+      "cefr": "C1",
+      "topic": "syntax_and_sentence_structure",
+      "prompt": "What struck me most about the exhibition ___ the silence of the crowd.",
+      "options": ["was", "were", "being", "be"],
+      "answer": "was"
+    },
+    {
+      "id": "en-gram-0026",
       "cefr": "C2",
       "topic": "verb_usage",
       "prompt": "Had the committee ___ the risk, the project would never have been approved.",
@@ -91,12 +216,41 @@
       "answer": "understood"
     },
     {
-      "id": "en-gram-0012",
+      "id": "en-gram-0027",
       "cefr": "C2",
       "topic": "syntax_and_sentence_structure",
       "prompt": "___ though the evidence was, the jury remained unconvinced.",
       "options": ["Compelling", "Compellingly", "More compelling", "Compelled"],
       "answer": "Compelling"
+    },
+    {
+      "id": "en-gram-0028",
+      "cefr": "C2",
+      "topic": "verb_usage",
+      "prompt": "The pavement is bone dry, so it ___ during the night after all.",
+      "options": ["can't have rained", "hadn't rained", "couldn't rain", "mustn't have rained"],
+      "answer": "can't have rained"
+    },
+    {
+      "id": "en-gram-0029",
+      "cefr": "C2",
+      "topic": "subordinate_clauses",
+      "prompt": "Had she not intervened when she did, the negotiations ___ altogether.",
+      "options": ["would have collapsed", "will have collapsed", "would collapse", "had collapsed"],
+      "answer": "would have collapsed"
+    },
+    {
+      "id": "en-gram-0030",
+      "cefr": "C2",
+      "topic": "syntax_and_sentence_structure",
+      "prompt": "Rarely ___ an account so at odds with the documentary record.",
+      "options": [
+        "have historians encountered",
+        "historians have encountered",
+        "historians encountered",
+        "encountered historians"
+      ],
+      "answer": "have historians encountered"
     }
   ]
 }
