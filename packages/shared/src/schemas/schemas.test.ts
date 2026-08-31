@@ -4,8 +4,6 @@ import {
   CreateUserSchema,
   DEFAULT_LOCALE,
   HealthResponseSchema,
-  HelloQuerySchema,
-  HelloResponseSchema,
   LocaleSchema,
   PublicUserSchema,
   SignUpFormSchema,
@@ -84,34 +82,6 @@ describe('HealthResponseSchema', () => {
         checkedAt: '2026-08-01T10:00:00.000Z',
       }).success,
     ).toBe(false);
-  });
-});
-
-describe('hello', () => {
-  it('fills the defaults the frontend and backend must agree on', () => {
-    expect(HelloQuerySchema.parse({})).toEqual({ name: 'world', locale: DEFAULT_LOCALE });
-  });
-
-  it('trims the name before length checks', () => {
-    expect(HelloQuerySchema.parse({ name: '  ada  ' }).name).toBe('ada');
-    expect(HelloQuerySchema.safeParse({ name: '   ' }).success).toBe(false);
-  });
-
-  it('rejects an unsupported locale', () => {
-    expect(HelloQuerySchema.safeParse({ locale: 'es' }).success).toBe(false);
-  });
-
-  it('validates the response shape', () => {
-    const parsed = HelloResponseSchema.parse({
-      message: 'Bonjour, ada',
-      locale: 'fr',
-      generatedAt: '2026-08-01T10:00:00.000Z',
-    });
-
-    expect(parsed.locale).toBe('fr');
-    expect(HelloResponseSchema.safeParse({ ...parsed, generatedAt: 'yesterday' }).success).toBe(
-      false,
-    );
   });
 });
 

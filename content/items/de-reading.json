@@ -1,0 +1,406 @@
+{
+  "language": "de",
+  "skill": "reading",
+  "items": [
+    {
+      "id": "de-read-0001",
+      "cefr": "A1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Jonas wohnt in Leipzig. Er hat einen kleinen Hund, der Bruno heißt. Am Abend gehen die beiden zusammen im Park spazieren.",
+      "prompt": "Wann gehen Jonas und Bruno spazieren?",
+      "options": ["Am Abend", "Am Morgen", "Am Mittag", "Am Wochenende"],
+      "answer": "Am Abend"
+    },
+    {
+      "id": "de-read-0002",
+      "cefr": "A1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Der Supermarkt an der Ecke öffnet um acht Uhr. Am Sonntag ist er geschlossen. Das Obst dort ist frisch und günstig.",
+      "prompt": "An welchem Tag ist der Supermarkt geschlossen?",
+      "options": ["Am Sonntag", "Am Samstag", "Am Montag", "Am Freitag"],
+      "answer": "Am Sonntag"
+    },
+    {
+      "id": "de-read-0003",
+      "cefr": "A1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Emma wohnt in einer Wohnung im dritten Stock. Die Wohnung ist klein, aber sie hat einen Balkon. Vom Balkon aus sieht Emma die Berge.",
+      "prompt": "Was sieht Emma vom Balkon aus?",
+      "options": ["Die Berge", "Den Fluss", "Einen Park", "Das Meer"],
+      "answer": "Die Berge"
+    },
+    {
+      "id": "de-read-0004",
+      "cefr": "A1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Herr Braun fährt mit dem Fahrrad zur Arbeit. Er braucht zwanzig Minuten. Wenn es schneit, nimmt er die Straßenbahn.",
+      "prompt": "Was macht Herr Braun, wenn es schneit?",
+      "options": [
+        "Er nimmt die Straßenbahn",
+        "Er fährt mit dem Fahrrad",
+        "Er bleibt zu Hause",
+        "Er geht zu Fuß"
+      ],
+      "answer": "Er nimmt die Straßenbahn"
+    },
+    {
+      "id": "de-read-0005",
+      "cefr": "A1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Das Schwimmbad ist im Sommer jeden Tag geöffnet. Kinder zahlen zwei Euro, Erwachsene zahlen vier Euro.",
+      "prompt": "Wie viel zahlen Kinder für den Eintritt?",
+      "options": ["Zwei Euro", "Vier Euro", "Sechs Euro", "Nichts"],
+      "answer": "Zwei Euro"
+    },
+    {
+      "id": "de-read-0006",
+      "cefr": "A2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Lena lernt seit einem Jahr Spanisch. Sie hört spanische Podcasts auf dem Weg zur Arbeit und schaut Serien ohne Untertitel. Nächsten Sommer möchte sie nach Sevilla fahren, um die Sprache endlich richtig zu sprechen.",
+      "prompt": "Warum möchte Lena nach Sevilla fahren?",
+      "options": [
+        "Um Spanisch zu sprechen",
+        "Um ihre Familie zu besuchen",
+        "Um dort zu arbeiten",
+        "Um Serien zu schauen"
+      ],
+      "answer": "Um Spanisch zu sprechen"
+    },
+    {
+      "id": "de-read-0007",
+      "cefr": "A2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Das kleine Café am Marktplatz hat seit letztem Monat einen neuen Besitzer. Der Kuchen ist jetzt hausgemacht, und mittwochs gibt es Kaffee zum halben Preis. Deshalb ist es mittwochs oft schwer, einen freien Tisch zu finden.",
+      "prompt": "Warum ist das Café mittwochs so voll?",
+      "options": [
+        "Der Kaffee kostet dann nur die Hälfte",
+        "Es ist nur mittwochs geöffnet",
+        "Der Kuchen ist mittwochs frisch",
+        "Der neue Besitzer arbeitet nur mittwochs"
+      ],
+      "answer": "Der Kaffee kostet dann nur die Hälfte"
+    },
+    {
+      "id": "de-read-0008",
+      "cefr": "A2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Paul wollte seiner Freundin Blumen zum Geburtstag kaufen, aber der Blumenladen hatte schon zugemacht. Also hat er im Supermarkt Zutaten gekauft und ihr einen Kuchen gebacken. Sie hat sich sehr gefreut.",
+      "prompt": "Was hat Paul gemacht, als der Blumenladen zu war?",
+      "options": [
+        "Er hat einen Kuchen gebacken",
+        "Er hat Blumen im Supermarkt gekauft",
+        "Er ist zu einem anderen Laden gefahren",
+        "Er hat einen Kuchen gekauft"
+      ],
+      "answer": "Er hat einen Kuchen gebacken"
+    },
+    {
+      "id": "de-read-0009",
+      "cefr": "A2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Die Jugendherberge liegt zehn Minuten vom Bahnhof entfernt. Das Frühstück ist im Preis enthalten. Wer abends warm essen möchte, muss bis sechzehn Uhr Bescheid sagen.",
+      "prompt": "Was muss man tun, wenn man abends warm essen will?",
+      "options": [
+        "Bis sechzehn Uhr Bescheid sagen",
+        "Das Frühstück extra bezahlen",
+        "Vor zehn Uhr ankommen",
+        "Am Bahnhof anrufen"
+      ],
+      "answer": "Bis sechzehn Uhr Bescheid sagen"
+    },
+    {
+      "id": "de-read-0010",
+      "cefr": "A2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Seit Januar dürfen samstags keine Autos mehr in die Innenstadt. Viele Geschäftsleute hatten Angst, Kunden zu verlieren. Aber es ist das Gegenteil passiert: Es kommen mehr Menschen als vorher, und die Straßen sind voller Leben.",
+      "prompt": "Was ist seit dem Autoverbot passiert?",
+      "options": [
+        "Es kommen mehr Menschen in die Innenstadt",
+        "Die Geschäfte haben Kunden verloren",
+        "Die Innenstadt ist samstags leer",
+        "Die Autos parken jetzt in der Innenstadt"
+      ],
+      "answer": "Es kommen mehr Menschen in die Innenstadt"
+    },
+    {
+      "id": "de-read-0011",
+      "cefr": "B1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Als Miriam ins Homeoffice wechselte, dachte sie, sie hätte danach mehr Freizeit. Stattdessen saß sie abends immer länger am Schreibtisch und machte kaum noch Pausen. Erst feste Arbeitszeiten haben ihr geholfen. Heute sagt sie, dass sie eine gute Balance gefunden hat.",
+      "prompt": "Welches Problem hatte Miriam am Anfang?",
+      "options": [
+        "Sie arbeitete mehr als vorher",
+        "Sie hatte zu viel Freizeit",
+        "Sie machte zu viele Pausen",
+        "Sie fand keinen Schreibtisch"
+      ],
+      "answer": "Sie arbeitete mehr als vorher"
+    },
+    {
+      "id": "de-read-0012",
+      "cefr": "B1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Die Stadt hat im letzten Jahr in drei Vierteln Gemeinschaftsgärten angelegt. Das Projekt war so erfolgreich, dass es nun auf die ganze Stadt ausgeweitet wird — auch wenn sich einige Anwohner über den Lärm am Wochenende beschweren.",
+      "prompt": "Warum wird das Projekt ausgeweitet?",
+      "options": [
+        "Weil es erfolgreich war",
+        "Weil sich Anwohner beschwert haben",
+        "Weil es am Wochenende zu laut ist",
+        "Weil drei Viertel keine Gärten wollten"
+      ],
+      "answer": "Weil es erfolgreich war"
+    },
+    {
+      "id": "de-read-0013",
+      "cefr": "B1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Fünfzehn Jahre lang arbeitete Jan als Anwalt, dann kündigte er und eröffnete eine Fahrradwerkstatt in seiner Heimatstadt. Seine Kollegen waren sicher, dass er es nach einem halben Jahr bereuen würde. Drei Jahre später hat die Werkstatt zwei Angestellte, und Jan sagt, er habe die Entscheidung nie bereut.",
+      "prompt": "Was dachten Jans Kollegen über seine Entscheidung?",
+      "options": [
+        "Dass er sie bald bereuen würde",
+        "Dass die Werkstatt ein Erfolg würde",
+        "Dass er ein guter Anwalt bleiben sollte",
+        "Dass er Angestellte einstellen müsste"
+      ],
+      "answer": "Dass er sie bald bereuen würde"
+    },
+    {
+      "id": "de-read-0014",
+      "cefr": "B1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Der Wanderweg an der Küste war seit den Winterstürmen gesperrt. Die Reparaturen sollten im Frühjahr beginnen, verzögerten sich aber, weil Handwerker fehlten. Nun soll der Weg im September wieder geöffnet werden.",
+      "prompt": "Warum haben sich die Reparaturen verzögert?",
+      "options": [
+        "Weil Handwerker fehlten",
+        "Wegen neuer Stürme im Frühjahr",
+        "Weil das Geld nicht reichte",
+        "Weil der Weg zu stark besucht war"
+      ],
+      "answer": "Weil Handwerker fehlten"
+    },
+    {
+      "id": "de-read-0015",
+      "cefr": "B1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Die meisten Touristen bleiben nur einen Tag und besichtigen das Schloss. Das ist schade, denn die Dörfer in der Umgebung haben Wochenmärkte, kleine Werkstätten und Landschaften zu bieten, die man vom Schlosshof aus nicht einmal erahnt.",
+      "prompt": "Was möchte der Autor sagen?",
+      "options": [
+        "Auch die Umgebung ist einen Besuch wert",
+        "Das Schloss lohnt sich nicht",
+        "Ein Tag reicht für die ganze Region",
+        "Die Dörfer sind für Touristen gesperrt"
+      ],
+      "answer": "Auch die Umgebung ist einen Besuch wert"
+    },
+    {
+      "id": "de-read-0016",
+      "cefr": "B2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Jahrelang galt der Tourismus als Lösung aller wirtschaftlichen Probleme der Region. Die entstandenen Arbeitsplätze blieben jedoch saisonabhängig und schlecht bezahlt, während die Mieten das ganze Jahr über stiegen. Inzwischen räumt der Gemeinderat ein, dass die Wirtschaft breiter aufgestellt werden muss.",
+      "prompt": "Welche Bilanz zieht der Text zum Tourismus?",
+      "options": [
+        "Er hat weniger gebracht als versprochen",
+        "Er hat alle wirtschaftlichen Probleme gelöst",
+        "Er hat die Mieten sinken lassen",
+        "Er hat ganzjährige, gut bezahlte Stellen geschaffen"
+      ],
+      "answer": "Er hat weniger gebracht als versprochen"
+    },
+    {
+      "id": "de-read-0017",
+      "cefr": "B2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Das E-Book wurde lange als Feind des gedruckten Buches dargestellt. Die Zahlen erzählen eine andere Geschichte: Wer viel digital liest, kauft im Schnitt auch die meisten gedruckten Bücher. Die beiden Formate scheinen einander weniger zu verdrängen als zu ergänzen.",
+      "prompt": "Was zeigen die Zahlen laut dem Text?",
+      "options": [
+        "Die Formate ergänzen sich eher, als dass sie konkurrieren",
+        "Das E-Book verdrängt das gedruckte Buch",
+        "Digitale Leser kaufen keine gedruckten Bücher mehr",
+        "Gedruckte Bücher verkaufen sich besser als E-Books"
+      ],
+      "answer": "Die Formate ergänzen sich eher, als dass sie konkurrieren"
+    },
+    {
+      "id": "de-read-0018",
+      "cefr": "B2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Das Unternehmen hatte versprochen, dass durch die Automatisierung niemand entlassen würde — und hielt Wort: Gekündigt wurde niemandem. Doch frei werdende Stellen wurden nicht neu besetzt, und heute arbeiten in der Fertigung nur noch halb so viele Menschen wie vor zehn Jahren.",
+      "prompt": "Wie hat das Unternehmen die Belegschaft verkleinert?",
+      "options": [
+        "Frei werdende Stellen wurden nicht nachbesetzt",
+        "Die Hälfte der Beschäftigten wurde entlassen",
+        "Die Fertigung wurde geschlossen",
+        "Die Automatisierung wurde gestoppt"
+      ],
+      "answer": "Frei werdende Stellen wurden nicht nachbesetzt"
+    },
+    {
+      "id": "de-read-0019",
+      "cefr": "B2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Kritisiert wurde der Dokumentarfilm nicht für das, was er zeigt, sondern für das, was er weglässt: Die betroffenen Anwohner kommen an keiner Stelle selbst zu Wort. Der Regisseur verteidigte sich damit, er habe die Bilder sprechen lassen wollen. Überzeugt hat das weder die Presse noch das Publikum.",
+      "prompt": "Was wird dem Film vorgeworfen?",
+      "options": [
+        "Die Betroffenen kommen nicht selbst zu Wort",
+        "Er zeigt zu drastische Bilder",
+        "Er gibt die Aussagen der Anwohner falsch wieder",
+        "Er ist dem Publikum zu lang"
+      ],
+      "answer": "Die Betroffenen kommen nicht selbst zu Wort"
+    },
+    {
+      "id": "de-read-0020",
+      "cefr": "B2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Den kleinen Konzerthäusern wurde das Ende vorausgesagt: steigende Mieten auf der einen, übermächtige Streamingdienste auf der anderen Seite. Einige mussten tatsächlich schließen. Andere haben überlebt, weil sie ihr Modell geändert haben: Sie gehören inzwischen ihrem Publikum, das Anteile gezeichnet hat.",
+      "prompt": "Wie haben einige Konzerthäuser überlebt?",
+      "options": [
+        "Ihr Publikum wurde zum Miteigentümer",
+        "Die Mieten wurden gesenkt",
+        "Sie arbeiten mit Streamingdiensten zusammen",
+        "Sie haben die Eintrittspreise erhöht"
+      ],
+      "answer": "Ihr Publikum wurde zum Miteigentümer"
+    },
+    {
+      "id": "de-read-0021",
+      "cefr": "C1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Lange wurde eine Bibliothek an der Zahl ihrer Bücher gemessen. Diese Größe sagt heute wenig aus: Die Bestände lassen sich von zu Hause aus durchsuchen, und was die Menschen vor Ort suchen, ist ein Ort — zum Arbeiten, zum Lernen oder einfach, um zu sitzen, ohne etwas kaufen zu müssen. Bibliotheken, die das verstanden haben, haben sich verwandelt; die anderen sehen ihre Lesesäle leerer werden, so wertvoll ihre Sammlungen auch sein mögen.",
+      "prompt": "Welche Entwicklung beschreibt der Text?",
+      "options": [
+        "Die Bibliothek zählt heute mehr als Ort denn wegen ihrer Bestände",
+        "Bibliotheken schließen, weil ihnen die Bücher ausgehen",
+        "Die digitale Suche hat die Lesesäle gefüllt",
+        "Die Zahl der Bücher bleibt der beste Maßstab"
+      ],
+      "answer": "Die Bibliothek zählt heute mehr als Ort denn wegen ihrer Bestände"
+    },
+    {
+      "id": "de-read-0022",
+      "cefr": "C1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Der Erfolg von Aufforstungsprogrammen wird gern an der Zahl der gepflanzten Bäume gemessen — eine eindrucksvolle, leicht zu vermittelnde Größe. Doch die Hälfte der Setzlinge überlebt die ersten Jahre nicht, wenn Standort oder Pflege nicht stimmen. Die Zahl, auf die es ankäme — wie viele Bäume nach zehn Jahren noch stehen —, taucht in den Bilanzen so gut wie nie auf.",
+      "prompt": "Was kritisiert der Autor?",
+      "options": [
+        "Berichtet wird über das Pflanzen, nicht über das Überleben der Bäume",
+        "Es werden zu viele Bäume gepflanzt",
+        "Die Bilanzen übertreiben die Zahl der Pflanzungen",
+        "Aufforstung ist grundsätzlich wirkungslos"
+      ],
+      "answer": "Berichtet wird über das Pflanzen, nicht über das Überleben der Bäume"
+    },
+    {
+      "id": "de-read-0023",
+      "cefr": "C1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Die Rechtschreibreform zeigt ein dauerhaftes Paradox: Fast alle finden bestimmte Schreibweisen unsinnig, und fast niemand will sie geändert sehen. Denn Orthografie ist nicht nur ein Werkzeug, sondern ein mühsam erworbener Besitz, dessen Wert gerade in seiner Schwierigkeit liegt. Wer vereinfacht, entwertet die Anstrengung derer, die es gelernt haben.",
+      "prompt": "Wie erklärt der Autor den Widerstand gegen Reformen?",
+      "options": [
+        "Schwierige Rechtschreibung ist ein Besitz, den Vereinfachung entwerten würde",
+        "Niemand findet die heutigen Schreibweisen unsinnig",
+        "Die Reformvorschläge sind schlecht formuliert",
+        "Orthografie ist ein bloßes Werkzeug ohne symbolischen Wert"
+      ],
+      "answer": "Schwierige Rechtschreibung ist ein Besitz, den Vereinfachung entwerten würde"
+    },
+    {
+      "id": "de-read-0024",
+      "cefr": "C1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Der Erfolg regionaler Vermarktung beruht auf einem Versprechen von Transparenz: zu wissen, wer das herstellt, was man isst. Dieses Versprechen wird meist gehalten. Doch das Etikett »regional« ist zu einer Art Universalgarantie geworden — ökologisch, sozial, gesundheitlich —, die das Produkt gar nicht einlösen muss. Die Herkunft sagt etwas über die Entfernung, nicht über die Art der Erzeugung.",
+      "prompt": "Welche Grenze sieht der Autor beim Etikett »regional«?",
+      "options": [
+        "Nähe garantiert nicht die Eigenschaften, die man ihr zuschreibt",
+        "Regionale Erzeuger verschweigen ihre Identität",
+        "Regionale Produkte legen zu weite Wege zurück",
+        "Das Versprechen der Transparenz wird nie gehalten"
+      ],
+      "answer": "Nähe garantiert nicht die Eigenschaften, die man ihr zuschreibt"
+    },
+    {
+      "id": "de-read-0025",
+      "cefr": "C1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Dass Literaturjurys oft danebenliegen, hat die Geschichte gezeigt: übersehene Meisterwerke, vergessene Preisträger. Manche folgern daraus, man solle die Preise abschaffen. Das verwechselt zwei Aufgaben: Der Preis kürt nicht das beste Buch, sondern sorgt einmal im Jahr dafür, dass ein ganzes Land über Bücher spricht. Daran gemessen erfüllt selbst eine schlechte Wahl ihren Zweck.",
+      "prompt": "Wozu dienen Literaturpreise nach Ansicht des Autors wirklich?",
+      "options": [
+        "Sie schaffen ein gemeinsames Gespräch über Literatur",
+        "Sie ermitteln das beste Buch des Jahres",
+        "Sie korrigieren die Fehler früherer Jurys",
+        "Sie machen vergessene Preisträger wieder bekannt"
+      ],
+      "answer": "Sie schaffen ein gemeinsames Gespräch über Literatur"
+    },
+    {
+      "id": "de-read-0026",
+      "cefr": "C2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Dass Übersetzen Verrat sei, gilt als ausgemacht. So alt die Formel ist, so wenig versteht sie sich von selbst: Sie unterstellt ein stabiles Original, dessen Sinn jeder Lektüre vorausläge und nur transportiert werden müsste. Wer übersetzt, weiß es besser: Das Original schwankt, seine Mehrdeutigkeiten gehören zu seinem Bestand, und der angebliche Verrat besteht meist darin, wählen zu müssen, wo der Autor sich das Wählen ersparen konnte. Die Übersetzung beschädigt keinen ursprünglichen Sinn — sie macht Entscheidungen sichtbar, die das Original offenlassen durfte.",
+      "prompt": "Welche These vertritt der Autor?",
+      "options": [
+        "Übersetzen legt Entscheidungen offen, die das Original offenlassen konnte",
+        "Übersetzungen beschädigen zwangsläufig den Sinn des Originals",
+        "Gute Übersetzer transportieren den Sinn unverändert",
+        "Mehrdeutigkeiten verschwinden schon beim Lesen des Originals"
+      ],
+      "answer": "Übersetzen legt Entscheidungen offen, die das Original offenlassen konnte"
+    },
+    {
+      "id": "de-read-0027",
+      "cefr": "C2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Kennzahlen zum Wohlbefinden am Arbeitsplatz vermehren sich — und mit ihnen ein Paradox: Je genauer ein Unternehmen die Zufriedenheit seiner Beschäftigten misst, desto mehr scheint es sie zu schulden, und jede Abweichung wird zum Führungsfehler. Die Messung, die beschreiben sollte, beginnt vorzuschreiben. Man könnte das für einen Fortschritt halten — wäre da nicht der Umstand, dass sich ein Empfinden billiger verbessern lässt als seine Ursachen.",
+      "prompt": "Welches Risiko benennt der Autor?",
+      "options": [
+        "Dass am Empfinden statt an dessen Ursachen gearbeitet wird",
+        "Dass Unternehmen aufhören, Zufriedenheit zu messen",
+        "Dass Beschäftigte die Befragungen verweigern",
+        "Dass die Messungen zu teuer werden"
+      ],
+      "answer": "Dass am Empfinden statt an dessen Ursachen gearbeitet wird"
+    },
+    {
+      "id": "de-read-0028",
+      "cefr": "C2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Knappheit im Ausdruck gilt als Höflichkeit gegenüber dem Leser, und oft ist sie es. Sie kann aber auch ein Ausweichen sein: Der kurze Satz entscheidet, wo der lange hätte abwägen, einschränken, Zweifel eingestehen müssen. Manche knappen Texte sind nicht dicht, sondern kurz angebunden; ihre Autorität beruht auf dem Schweigen, zu dem sie Einwände verurteilen, weil sie ihnen keinen Raum gelassen haben.",
+      "prompt": "Was wirft der Autor manchen knappen Texten vor?",
+      "options": [
+        "Ihre Kürze verdrängt Einwände, statt sie zu entkräften",
+        "Sie sind länger, als ihr Inhalt rechtfertigt",
+        "Sie wägen so viel ab, dass sie unlesbar werden",
+        "Sie sind unhöflich gegenüber dem Leser"
+      ],
+      "answer": "Ihre Kürze verdrängt Einwände, statt sie zu entkräften"
+    },
+    {
+      "id": "de-read-0029",
+      "cefr": "C2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Der Begriff des immateriellen Kulturerbes sollte den Schutzgedanken auf lebendige Praktiken ausweiten: Sprachen, Handwerk, Feste. Die Absicht war großzügig, die Wirkung ist zwiespältiger. Eine Praxis einzutragen heißt, sie in dem Zustand festzuschreiben, in dem man sie vorgefunden hat, und Institutionen darüber entscheiden zu lassen, was fortan dazugehört und was sie verfälscht. Traditionen, die nur überlebt haben, weil sie sich unablässig wandelten, werden verpflichtet, sie selbst zu bleiben — eine Auflage, die ihre gesamte Geschichte widerlegt.",
+      "prompt": "Welchen paradoxen Effekt beschreibt der Text?",
+      "options": [
+        "Der Schutz schreibt fest, was vom Wandel lebte",
+        "Der Schutz beschleunigt das Verschwinden der Praktiken",
+        "Die Institutionen verlieren jedes Mitspracherecht",
+        "Der Schutz gilt nur noch für Bauwerke"
+      ],
+      "answer": "Der Schutz schreibt fest, was vom Wandel lebte"
+    },
+    {
+      "id": "de-read-0030",
+      "cefr": "C2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Crowdfunding-Plattformen treten als Demokratisierung des Mäzenatentums auf: Das Publikum entscheidet selbst, was entstehen soll. Das Argument setzt voraus, dass die Menge keinen vorhersehbaren Geschmack hat. Die finanzierten Projekte aber ähneln einander: Was beruhigt, überzeugt; was irritiert, scheitert. Der Mäzen alter Schule konnte sich allein irren und auf Unbekanntes setzen; die Menge irrt nur gemeinsam — und wettet nie.",
+      "prompt": "Welchen Einwand erhebt der Autor?",
+      "options": [
+        "Die Finanzierung durch die Menge begünstigt das Vorhersehbare",
+        "Die Plattformen wählen die Projekte selbst aus",
+        "Das klassische Mäzenatentum war demokratischer",
+        "Finanzierte Projekte scheitern häufiger als früher"
+      ],
+      "answer": "Die Finanzierung durch die Menge begünstigt das Vorhersehbare"
+    }
+  ]
+}

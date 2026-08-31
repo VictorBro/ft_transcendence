@@ -63,6 +63,22 @@ jobs:
       - uses: ./.github/actions/setup
       - run: pnpm run typecheck
 
+  # apps/web and apps/api must compile separately: the two tsconfig presets
+  # differ on decorators, so a file pulled into the wrong program either fails
+  # with a confusing TS1241 or, worse, drags @prisma/client and the argon2
+  # native addon into the browser bundle. Runs here and not only in the
+  # pre-push hook, because a hook is skippable with --no-verify.
+  #
+  # No db:generate step: the script only needs tsc's file listing, which it
+  # still emits when the generated Prisma client is absent (verified).
+  app-boundaries:
+    name: apps compile separately
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: ./.github/actions/setup
+      - run: ./scripts/check-app-boundaries.sh
+
   # Coverage thresholds live in each vitest config (60% lines, 60% functions)
   # and are a merge blocker: the test command exits non-zero below them, so
   # there is nothing to assert here.

@@ -109,6 +109,5 @@ describe('auth (e2e)', () => {
 
   it('leaves public routes reachable with the guard registered globally', async () => {
     await request(server()).get('/api/health').expect(200);
-    await request(server()).get('/api/hello').expect(200);
   });
 });

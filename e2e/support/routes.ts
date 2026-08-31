@@ -33,7 +33,6 @@ export const PAGE_ROUTES: PageRoute[] = [
 export const JSON_ROUTES: PageRoute[] = [
   { path: '/healthz', name: 'web healthcheck' },
   { path: '/api/health', name: 'api healthcheck' },
-  { path: '/api/hello', name: 'api hello' },
 ];
 
 /**

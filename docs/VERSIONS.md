@@ -28,7 +28,7 @@ Pin exactly (no caret unless noted) and re-verify before the first commit.
 | `@nestjs/swagger` | 11.4.6 | |
 | `@nestjs/throttler` | 6.5.0 | |
 | `@nestjs/config` | 4.0.4 | |
-| socket.io / client | 4.8.3 | `@socket.io/redis-adapter`: pin at scaffold time. |
+| socket.io / client | 4.8.3 | |
 | Zod | 4.4.3 | |
 | nestjs-zod | 5.5.0 | `createZodDto` bridges @ft/shared schemas to Nest and Swagger. |
 | argon2 | 0.45.1 | Native addon: needs glibc prebuilds, see Debian note in plan. |
@@ -38,7 +38,6 @@ Pin exactly (no caret unless noted) and re-verify before the first commit.
 | `redis` (node-redis) | 6.2.0 | `connect-redis` peers on this, not ioredis. |
 | otpauth | 9.5.1 | TOTP. One dependency (`@noble/hashes`), against otplib's six sub-packages. |
 | qrcode-generator | 2.0.4 | Zero dependencies. `qrcode` pulls `yargs` 15 into the runtime image for its CLI. |
-| BullMQ | 6.0.5 | |
 | Prisma / `@prisma/client` | 7.9.1 | Rust-free client is the v7 default. See trap 2. |
 | `@prisma/adapter-pg` | 7.9.1 | Mandatory with the Rust-free client, see trap 2. Track the `prisma` version exactly. |
 
