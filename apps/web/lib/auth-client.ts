@@ -6,7 +6,11 @@
  */
 import type { SessionUser } from '@ft/shared';
 
-export type ApiResult<T> = { ok: true; data: T } | { ok: false; message: string; status: number };
+/**
+ * Failures carry a code, never a sentence: the component that displays them
+ * turns it into text in the reader's language through useErrorMessage().
+ */
+export type ApiResult<T> = { ok: true; data: T } | { ok: false; code: string; status: number };
 
 /** The 202 branch of a login: password accepted, second factor still owed. */
 export type LoginResult = ApiResult<SessionUser> | { ok: 'twoFactor' };
@@ -14,10 +18,13 @@ export type LoginResult = ApiResult<SessionUser> | { ok: 'twoFactor' };
 const JSON_HEADERS = { 'content-type': 'application/json', accept: 'application/json' };
 
 /**
- * Nest reports Zod failures as an array of messages. Showing the first is enough
+ * Nest reports Zod failures as an array of codes. Showing the first is enough
  * for a form that validates the same rules client-side before submitting.
+ *
+ * The body is still read as `message`, which is what Nest's exception filter
+ * names the field; only its contents changed from prose to an ERROR_CODES entry.
  */
-function readMessage(body: unknown, status: number): string {
+function readCode(body: unknown): string | null {
   if (typeof body === 'object' && body !== null && 'message' in body) {
     const { message } = body as { message: unknown };
     if (typeof message === 'string') {
@@ -27,7 +34,7 @@ function readMessage(body: unknown, status: number): string {
       return message[0];
     }
   }
-  return `The server answered HTTP ${status}`;
+  return null;
 }
 
 async function send<T>(path: string, init: RequestInit = {}): Promise<ApiResult<T>> {
@@ -39,7 +46,7 @@ async function send<T>(path: string, init: RequestInit = {}): Promise<ApiResult<
       headers: { ...JSON_HEADERS, ...init.headers },
     });
   } catch {
-    return { ok: false, message: 'Could not reach the server', status: 0 };
+    return { ok: false, code: 'network.unreachable', status: 0 };
   }
 
   if (response.status === 204) {
@@ -48,7 +55,11 @@ async function send<T>(path: string, init: RequestInit = {}): Promise<ApiResult<
 
   const body: unknown = await response.json().catch(() => null);
   if (!response.ok) {
-    return { ok: false, message: readMessage(body, response.status), status: response.status };
+    return {
+      ok: false,
+      code: readCode(body) ?? 'server.unexpected',
+      status: response.status,
+    };
   }
   return { ok: true, data: body as T };
 }
@@ -66,7 +77,7 @@ export async function logIn(input: unknown): Promise<LoginResult> {
   }).catch(() => null);
 
   if (response === null) {
-    return { ok: false, message: 'Could not reach the server', status: 0 };
+    return { ok: false, code: 'network.unreachable', status: 0 };
   }
   if (response.status === 202) {
     return { ok: 'twoFactor' };
@@ -74,7 +85,11 @@ export async function logIn(input: unknown): Promise<LoginResult> {
 
   const body: unknown = await response.json().catch(() => null);
   if (!response.ok) {
-    return { ok: false, message: readMessage(body, response.status), status: response.status };
+    return {
+      ok: false,
+      code: readCode(body) ?? 'server.unexpected',
+      status: response.status,
+    };
   }
   return { ok: true, data: body as SessionUser };
 }

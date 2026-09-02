@@ -1,0 +1,193 @@
+{
+  "Test": {
+    "greeting": "stub: de"
+  },
+  "SessionNav": {
+    "accountNav": "Konto",
+    "signIn": "Anmelden",
+    "createAccount": "Konto erstellen"
+  },
+  "LanguageSwitcher": {
+    "label": "Sprache"
+  },
+  "Layout": {
+    "productName": "ft_transcendence",
+    "description": "Eine KI-gestützte Plattform zum Erlernen einer Fremdsprache: generierte Lektionen, automatische Niveaubestimmung und Live-Übungen mit anderen Lernenden."
+  },
+  "Footer": {
+    "legalNav": "Rechtliches",
+    "academicProject": "Ein akademisches Projekt. Kein kommerzieller Dienst.",
+    "privacyPolicy": "Datenschutzerklärung",
+    "termsOfService": "Nutzungsbedingungen",
+    "legalSentence": "Ein akademisches Projekt. Kein kommerzieller Dienst. Lies unsere <privacy>Datenschutzerklärung</privacy> und unsere <terms>Nutzungsbedingungen</terms>."
+  },
+  "HomePage": {
+    "headline": "Lerne eine Sprache mit einem Tutor, der sich dir anpasst!",
+    "intro": "ft_transcendence erstellt Lektionen, bewertet deine Antworten, verfolgt das daraus abgeleitete Niveau und verbindet dich mit einem anderen Lernenden für Live-Übungen. Diese Seite ist das Gerüst: alles darunter ist Verdrahtung, kein Produkt.",
+    "startNow": "Jetzt starten",
+    "goToLobby": "Zur Lobby",
+    "logoAlt": "ft_transcendence-Logo"
+  },
+  "Lobby": {
+    "title": "Lobby",
+    "heading": "Übungsmodi",
+    "friendsTitle": "Mit Freunden sprechen",
+    "friendsDescription": "Chatte in Echtzeit in jeder Sprache. Wir übersetzen und korrigieren für euch beide.",
+    "chatTitle": "Chat",
+    "chatDescription": "Verbessere deine Sprachkenntnisse im Gespräch mit unserem KI-Tutor.",
+    "progressTitle": "Chat-Fortschritt",
+    "progressDescription": "Folge einem Gesprächspfad, der sich deinem Fortschritt anpasst, von Anfänger bis Fortgeschritten.",
+    "wordTitle": "Wortmodus",
+    "wordDescription": "Baue deinen Grundwortschatz mit unseren Wortlisten auf.",
+    "sentenceTitle": "Satzmodus",
+    "sentenceDescription": "Baue deine Sprachkenntnisse von Grund auf auf.",
+    "roleplayTitle": "Rollenspiel",
+    "roleplayDescription": "Übe mit nützlichen Alltagsszenarien."
+  },
+  "ComingSoon": {
+    "stillInDevelopment": "Dieser Modus ist noch in Entwicklung. Schau bald wieder vorbei."
+  },
+  "ModeLayout": {
+    "backToDashboard": "Zurück zur Lobby"
+  },
+  "ChatPage": {
+    "title": "Chat",
+    "heading": "Mit deinem Tutor chatten",
+    "tutor": "Tutor",
+    "messageLabel": "Nachricht",
+    "messagePlaceholder": "Deine Nachricht …",
+    "sendMessage": "Nachricht senden",
+    "feedbackHeading": "Erhalte Rückmeldung zu deinen Nachrichten",
+    "feedbackIntro": "Die KI analysiert deine Nachrichten und gibt dir persönliche Rückmeldung."
+  },
+  "ErrorPage": {
+    "heading": "Etwas ist schiefgelaufen",
+    "intro": "Wir konnten den Dienst nicht erreichen. Du bist weiterhin angemeldet, und das ist meist nach einem Moment vorbei.",
+    "tryAgain": "Erneut versuchen",
+    "goHome": "Zur Startseite"
+  },
+  "NotFoundPage": {
+    "title": "Seite nicht gefunden",
+    "heading": "Seite nicht gefunden",
+    "intro": "Diese Adresse existiert nicht. Sie wurde vielleicht verschoben, oder der Link, der dich hierher gebracht hat, ist veraltet.",
+    "goHome": "Zur Startseite"
+  },
+  "LoginPage": {
+    "heading": "Anmelden"
+  },
+  "LoginForm": {
+    "twoFactorPrompt": "Gib den sechsstelligen Code aus deiner Authenticator-App ein oder einen deiner Wiederherstellungscodes.",
+    "authenticationCode": "Authentifizierungscode",
+    "verify": "Bestätigen",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "signIn": "Anmelden",
+    "noAccountYet": "Noch kein Konto?",
+    "createOne": "Jetzt erstellen"
+  },
+  "SignUpPage": {
+    "heading": "Konto erstellen"
+  },
+  "SignUpForm": {
+    "email": "E-Mail",
+    "displayName": "Anzeigename",
+    "displayNameHint": "Buchstaben, Ziffern, Punkt, Unterstrich und Bindestrich. Mindestens 3 Zeichen.",
+    "password": "Passwort",
+    "passwordHint": "Mindestens 12 Zeichen, mit einem Großbuchstaben, einem Kleinbuchstaben und einer Ziffer.",
+    "confirmPassword": "Passwort bestätigen",
+    "createAccount": "Konto erstellen",
+    "alreadyHaveAccount": "Bereits ein Konto?",
+    "signIn": "Anmelden"
+  },
+  "Form": {
+    "working": "Wird bearbeitet…"
+  },
+  "Errors": {
+    "displayName": {
+      "tooShort": "Der Anzeigename braucht mindestens 3 Zeichen",
+      "tooLong": "Der Anzeigename ist auf 32 Zeichen begrenzt",
+      "invalidCharacters": "Der Anzeigename erlaubt Buchstaben, Ziffern, Punkt, Unterstrich und Bindestrich"
+    },
+    "password": {
+      "tooShort": "Das Passwort braucht mindestens 12 Zeichen",
+      "tooLong": "Das Passwort ist auf 128 Zeichen begrenzt",
+      "needsLowercase": "Das Passwort braucht einen Kleinbuchstaben",
+      "needsUppercase": "Das Passwort braucht einen Großbuchstaben",
+      "needsDigit": "Das Passwort braucht eine Ziffer",
+      "required": "Gib dein Passwort ein",
+      "mismatch": "Die beiden Passwörter stimmen nicht überein"
+    },
+    "email": {
+      "invalid": "Gib eine gültige E-Mail-Adresse ein"
+    },
+    "auth": {
+      "invalidCredentials": "E-Mail-Adresse oder Passwort ist falsch",
+      "incorrectPassword": "Falsches Passwort",
+      "identityTaken": "Diese E-Mail-Adresse oder dieser Anzeigename ist bereits vergeben",
+      "displayNameTaken": "Dieser Anzeigename ist bereits vergeben",
+      "passwordFirst": "Melde dich zuerst mit deinem Passwort an"
+    },
+    "avatarUrl": {
+      "invalid": "Gib eine gültige URL ein"
+    },
+    "profile": {
+      "noChanges": "Ändere mindestens ein Feld"
+    },
+    "twoFactor": {
+      "codeFormat": "Gib den sechsstelligen Code aus deiner Authenticator-App ein",
+      "recoveryCodeFormat": "Das sieht nicht nach einem Wiederherstellungscode aus",
+      "secondFactorFormat": "Gib einen sechsstelligen Code aus deiner App oder einen deiner Wiederherstellungscodes ein",
+      "setupFirst": "Starte zuerst die Zwei-Faktor-Einrichtung",
+      "invalidCode": "Dieser Code ist nicht gültig"
+    },
+    "network": {
+      "unreachable": "Der Server ist nicht erreichbar"
+    },
+    "server": {
+      "unexpected": "Der Server antwortete mit HTTP {status}"
+    },
+    "unknown": "Etwas ist schiefgelaufen. Bitte versuche es erneut."
+  },
+  "LogOutButton": {
+    "signingOut": "Wird abgemeldet…",
+    "signOut": "Abmelden"
+  },
+  "LegalArticle": {
+    "lastUpdated": "Zuletzt aktualisiert"
+  },
+  "ProfilePage": {
+    "title": "Profil",
+    "joined": "Beigetreten am {date}",
+    "security": "Sicherheit",
+    "twoFactorPrompt": "Füge einen zweiten Faktor hinzu, damit ein gestohlenes Passwort nicht zur Anmeldung ausreicht.",
+    "twoFactorAuthentication": "Zwei-Faktor-Authentifizierung"
+  },
+  "ProfileForm": {
+    "editProfile": "Profil bearbeiten",
+    "displayName": "Anzeigename",
+    "avatarUrl": "Avatar-URL",
+    "avatarUrlHint": "Leer lassen, um den Standard-Avatar zu verwenden.",
+    "profileSaved": "Profil gespeichert.",
+    "saveChanges": "Änderungen speichern"
+  },
+  "TwoFactorPage": {
+    "heading": "Zwei-Faktor-Authentifizierung",
+    "intro": "Eine Authenticator-App generiert einen Code, der sich alle 30 Sekunden ändert. Mit aktivierter Funktion reicht ein gestohlenes Passwort allein nicht aus, um sich anzumelden."
+  },
+  "TwoFactorPanel": {
+    "saveRecoveryCodesHeading": "Speichere deine Wiederherstellungscodes",
+    "recoveryCodesIntro": "Jeder Code funktioniert nur einmal, falls du deinen Authenticator verlierst. Dies ist das einzige Mal, dass sie angezeigt werden.",
+    "savedThem": "Ich habe sie gespeichert",
+    "scanHeading": "Diesen Code scannen",
+    "qrAlt": "QR-Code für deine Authenticator-App",
+    "cannotScan": "Kann nicht gescannt werden? Gib diesen Schlüssel manuell ein:",
+    "codeFromApp": "Code aus deiner App",
+    "turnOn": "Aktivieren",
+    "enabledStatus": "Die Zwei-Faktor-Authentifizierung ist aktiviert. Noch {count} Wiederherstellungscodes übrig.",
+    "confirmPasswordToTurnOff": "Bestätige dein Passwort, um sie zu deaktivieren",
+    "turnOff": "Deaktivieren",
+    "disabledStatus": "Die Zwei-Faktor-Authentifizierung ist deaktiviert.",
+    "working": "Wird bearbeitet…",
+    "setUp": "Einrichten"
+  }
+}

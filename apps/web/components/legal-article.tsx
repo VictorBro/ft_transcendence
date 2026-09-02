@@ -1,6 +1,10 @@
+import { getTranslations } from 'next-intl/server';
+
 import type { LegalDocument } from '@/lib/legal';
 
-export function LegalArticle({ doc }: { doc: LegalDocument }) {
+export async function LegalArticle({ doc }: { doc: LegalDocument }) {
+  const t = await getTranslations('LegalArticle');
+
   return (
     <article className="flex flex-col gap-10 mx-auto max-w-prose">
       <header className="flex flex-col gap-4">
@@ -9,7 +13,7 @@ export function LegalArticle({ doc }: { doc: LegalDocument }) {
           {doc.intro}
         </p>
         <p className="text-sm text-slate-500 dark:text-slate-400">
-          Last updated <time dateTime={doc.lastUpdated}>{doc.lastUpdated}</time>
+          {t('lastUpdated')} <time dateTime={doc.lastUpdated}>{doc.lastUpdated}</time>
         </p>
       </header>
 

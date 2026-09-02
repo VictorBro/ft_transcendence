@@ -6,6 +6,18 @@
 
 export const LEGAL_MINIMUM_CHARACTERS = 1500;
 
+/**
+ * Addresses use the RFC 2606 reserved `.example` TLD on purpose: this is an
+ * academic build with no registered domain yet. Swap both before any public
+ * deployment, or the contact obligations below cannot be honoured.
+ *
+ * They sit here rather than in each translation because an address that varies
+ * per language is an address someone eventually mistypes, and because every
+ * per-locale content file already imports this module for the types below.
+ */
+export const PRIVACY_CONTACT_EMAIL = 'privacy@ft-transcendence.example';
+export const LEGAL_CONTACT_EMAIL = 'legal@ft-transcendence.example';
+
 export interface LegalSection {
   id: string;
   heading: string;

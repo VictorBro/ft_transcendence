@@ -37,19 +37,27 @@ describe('signUp', () => {
   });
 
   // Nest reports Zod failures as an array; showing "[object Object]" would be useless.
-  it('surfaces the first message of a validation array', async () => {
-    vi.stubGlobal('fetch', respondWith(400, { message: ['Password needs a digit', 'and more'] }));
+  it('surfaces the first code of a validation array', async () => {
+    vi.stubGlobal(
+      'fetch',
+      respondWith(400, { message: ['password.needsDigit', 'password.tooShort'] }),
+    );
 
     await expect(signUp({})).resolves.toMatchObject({
       ok: false,
-      message: 'Password needs a digit',
+      code: 'password.needsDigit',
     });
   });
 
-  it('falls back to the status when the body carries no message', async () => {
+  // A 502 from the proxy carries an HTML page, not a code. The status is kept so
+  // the generic message can name it.
+  it('falls back to a generic code when the body carries none', async () => {
     vi.stubGlobal('fetch', respondWith(500, {}));
 
-    await expect(signUp({})).resolves.toMatchObject({ message: 'The server answered HTTP 500' });
+    await expect(signUp({})).resolves.toMatchObject({
+      code: 'server.unexpected',
+      status: 500,
+    });
   });
 
   it('reports a dead network rather than throwing', async () => {
@@ -62,7 +70,7 @@ describe('signUp', () => {
 
     await expect(signUp({})).resolves.toEqual({
       ok: false,
-      message: 'Could not reach the server',
+      code: 'network.unreachable',
       status: 0,
     });
   });
@@ -83,11 +91,11 @@ describe('logIn', () => {
   });
 
   it('passes a wrong password through as an error', async () => {
-    vi.stubGlobal('fetch', respondWith(401, { message: 'Incorrect email or password' }));
+    vi.stubGlobal('fetch', respondWith(401, { message: 'auth.invalidCredentials' }));
 
     await expect(logIn({})).resolves.toMatchObject({
       ok: false,
-      message: 'Incorrect email or password',
+      code: 'auth.invalidCredentials',
       status: 401,
     });
   });

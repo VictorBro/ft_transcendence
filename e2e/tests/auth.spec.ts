@@ -18,7 +18,7 @@ test.describe('authentication in the browser', () => {
     page: Page,
     fields: { email: string; displayName: string; password: string; confirmPassword?: string },
   ) => {
-    await page.goto('/signup');
+    await page.goto('/en/signup');
     await page.getByLabel('Email', { exact: true }).fill(fields.email);
     await page.getByLabel('Display name', { exact: true }).fill(fields.displayName);
     await page.getByLabel('Password', { exact: true }).fill(fields.password);
@@ -28,7 +28,7 @@ test.describe('authentication in the browser', () => {
   };
 
   const logIn = async (page: Page, email: string) => {
-    await page.goto('/login');
+    await page.goto('/en/login');
     await page.getByLabel('Email', { exact: true }).fill(email);
     await page.getByLabel('Password', { exact: true }).fill(PASSWORD);
     await page.getByRole('button', { name: 'Sign in' }).click();
@@ -81,9 +81,9 @@ test.describe('authentication in the browser', () => {
     await createAccount(page, { email, displayName });
 
     await page.getByRole('button', { name: 'Sign out' }).click();
-    await expect(page).toHaveURL(/\/$/);
+    await expect(page).toHaveURL(/\/en$/);
 
-    await page.goto('/profile');
+    await page.goto('/en/profile');
     await expect(page).toHaveURL(/\/login$/);
   });
 
@@ -96,7 +96,8 @@ test.describe('authentication in the browser', () => {
     await logIn(page, email);
 
     // Login lands on the home page rather than the profile, unlike signup.
-    await expect(page).toHaveURL(/\/$/);
+    // The home is /en, not /: localePrefix is 'always', so no route is bare.
+    await expect(page).toHaveURL(/\/en$/);
     await expect(page.getByRole('navigation', { name: 'Account' })).toContainText(displayName);
   });
 
@@ -118,7 +119,7 @@ test.describe('authentication in the browser', () => {
 
     await createAccount(page, { email, displayName });
 
-    await page.goto('/settings/2fa');
+    await page.goto('/en/settings/2fa');
     await expect(page.getByText('Two factor authentication is off')).toBeVisible();
 
     await page.getByRole('button', { name: 'Set up' }).click();
@@ -132,7 +133,7 @@ test.describe('authentication in the browser', () => {
   });
 
   test('a signed-out visitor is sent to the login page', async ({ page }) => {
-    await page.goto('/settings/2fa');
+    await page.goto('/en/settings/2fa');
     await expect(page).toHaveURL(/\/login$/);
   });
 
@@ -141,7 +142,7 @@ test.describe('authentication in the browser', () => {
 
     await createAccount(page, { email, displayName });
 
-    await page.goto('/settings/2fa');
+    await page.goto('/en/settings/2fa');
     await page.getByRole('button', { name: 'Set up' }).click();
 
     // The secret is offered for manual entry, which lets the test act as the
@@ -175,7 +176,8 @@ test.describe('authentication in the browser', () => {
     await page.getByRole('button', { name: 'Verify' }).click();
 
     // Login lands on the home page rather than the profile, unlike signup.
-    await expect(page).toHaveURL(/\/$/);
+    // The home is /en, not /: localePrefix is 'always', so no route is bare.
+    await expect(page).toHaveURL(/\/en$/);
     await expect(page.getByRole('navigation', { name: 'Account' })).toContainText(displayName);
   });
 });

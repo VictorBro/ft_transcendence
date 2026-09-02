@@ -21,7 +21,7 @@ export class UsersService {
         'code' in error &&
         error.code === 'P2002'
       ) {
-        throw new ConflictException('That display name is already taken');
+        throw new ConflictException('auth.displayNameTaken');
       }
       throw error;
     }

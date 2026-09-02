@@ -63,7 +63,7 @@ export class AuthService {
         'code' in error &&
         error.code === 'P2002'
       ) {
-        throw new ConflictException('That email or display name is already taken');
+        throw new ConflictException('auth.identityTaken');
       }
       throw error;
     }
@@ -83,11 +83,11 @@ export class AuthService {
 
     if (user === null) {
       await argon2.verify(await DUMMY_HASH, password).catch(() => false);
-      throw new UnauthorizedException('Incorrect email or password');
+      throw new UnauthorizedException('auth.invalidCredentials');
     }
 
     if (!(await argon2.verify(user.passwordHash, password))) {
-      throw new UnauthorizedException('Incorrect email or password');
+      throw new UnauthorizedException('auth.invalidCredentials');
     }
 
     return {

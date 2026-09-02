@@ -1,9 +1,7 @@
 import { z } from 'zod';
 
 /** Authenticator codes are always six digits; the string keeps leading zeros. */
-export const TotpCodeSchema = z
-  .string()
-  .regex(/^\d{6}$/, 'Enter the six digit code from your authenticator app');
+export const TotpCodeSchema = z.string().regex(/^\d{6}$/, 'twoFactor.codeFormat');
 
 /**
  * Recovery codes are printed in groups for readability, so the separator is
@@ -21,13 +19,19 @@ export const RecoveryCodeSchema = z
       .string()
       .regex(
         new RegExp(`^[a-z0-9]{${RECOVERY_CODE_GROUPS * RECOVERY_CODE_GROUP_LENGTH}}$`),
-        'That does not look like a recovery code',
+        'twoFactor.recoveryCodeFormat',
       ),
   );
 
-/** Either factor satisfies the second step, so the login form accepts both. */
+/**
+ * Either factor satisfies the second step, so the login form accepts both.
+ *
+ * The union carries its own code: a failing union reports Zod's own
+ * "Invalid input" rather than the message of either branch, and that default is
+ * English no matter which language the page is in.
+ */
 export const SecondFactorSchema = z.object({
-  code: z.union([TotpCodeSchema, RecoveryCodeSchema]),
+  code: z.union([TotpCodeSchema, RecoveryCodeSchema], 'twoFactor.secondFactorFormat'),
 });
 export type SecondFactorInput = z.infer<typeof SecondFactorSchema>;
 
@@ -35,7 +39,9 @@ export const EnableTwoFactorSchema = z.object({ code: TotpCodeSchema });
 export type EnableTwoFactorInput = z.infer<typeof EnableTwoFactorSchema>;
 
 /** Disabling is a privilege change, so it costs the password again. */
-export const DisableTwoFactorSchema = z.object({ password: z.string().min(1).max(128) });
+export const DisableTwoFactorSchema = z.object({
+  password: z.string().min(1, 'password.required').max(128, 'password.tooLong'),
+});
 export type DisableTwoFactorInput = z.infer<typeof DisableTwoFactorSchema>;
 
 /**

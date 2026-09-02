@@ -1,3 +1,4 @@
+export * from './errors';
 export * from './health';
 export * from './item';
 export * from './locale';
