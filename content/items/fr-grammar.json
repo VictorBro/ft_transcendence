@@ -1,0 +1,246 @@
+{
+  "language": "fr",
+  "skill": "grammar",
+  "items": [
+    {
+      "id": "fr-gram-0001",
+      "cefr": "A1",
+      "topic": "verbs_morphology",
+      "prompt": "Je ___ étudiante à Lyon.",
+      "options": ["suis", "es", "est", "être"],
+      "answer": "suis"
+    },
+    {
+      "id": "fr-gram-0002",
+      "cefr": "A1",
+      "topic": "nouns_and_determiners",
+      "prompt": "Elle achète ___ baguette à la boulangerie.",
+      "options": ["une", "un", "des", "de"],
+      "answer": "une"
+    },
+    {
+      "id": "fr-gram-0003",
+      "cefr": "A1",
+      "topic": "pronouns",
+      "prompt": "C'est le vélo de Paul. C'est ___ vélo.",
+      "options": ["son", "sa", "ses", "leur"],
+      "answer": "son"
+    },
+    {
+      "id": "fr-gram-0004",
+      "cefr": "A1",
+      "topic": "verb_usage",
+      "prompt": "Ce soir, nous ___ au restaurant avec des amis.",
+      "options": ["allons", "allez", "vont", "va"],
+      "answer": "allons"
+    },
+    {
+      "id": "fr-gram-0005",
+      "cefr": "A1",
+      "topic": "negation",
+      "prompt": "Je ___ aime pas le café le soir.",
+      "options": ["n'", "ne", "non", "pas"],
+      "answer": "n'"
+    },
+    {
+      "id": "fr-gram-0006",
+      "cefr": "A2",
+      "topic": "verbs_morphology",
+      "prompt": "Hier, nous ___ un très bon film au cinéma.",
+      "options": ["avons vu", "avons voir", "sommes vu", "voyons"],
+      "answer": "avons vu"
+    },
+    {
+      "id": "fr-gram-0007",
+      "cefr": "A2",
+      "topic": "prepositions_and_case",
+      "prompt": "Elle habite ___ Portugal depuis deux ans.",
+      "options": ["au", "en", "à", "dans"],
+      "answer": "au"
+    },
+    {
+      "id": "fr-gram-0008",
+      "cefr": "A2",
+      "topic": "pronouns",
+      "prompt": "Tu as vu mes clés ? Je ne ___ trouve plus.",
+      "options": ["les", "la", "leur", "en"],
+      "answer": "les"
+    },
+    {
+      "id": "fr-gram-0009",
+      "cefr": "A2",
+      "topic": "comparison_and_quantity",
+      "prompt": "Ce restaurant est ___ cher que l'autre, on y va souvent.",
+      "options": ["moins", "meilleur", "mieux", "très"],
+      "answer": "moins"
+    },
+    {
+      "id": "fr-gram-0010",
+      "cefr": "A2",
+      "topic": "verb_usage",
+      "prompt": "Quand j'étais petit, je ___ au football tous les mercredis.",
+      "options": ["jouais", "joue", "ai joué", "jouerai"],
+      "answer": "jouais"
+    },
+    {
+      "id": "fr-gram-0011",
+      "cefr": "B1",
+      "topic": "subordinate_clauses",
+      "prompt": "Si j'avais plus de temps, j'___ un instrument de musique.",
+      "options": ["apprendrais", "apprendrai", "apprends", "apprenais"],
+      "answer": "apprendrais"
+    },
+    {
+      "id": "fr-gram-0012",
+      "cefr": "B1",
+      "topic": "verbs_morphology",
+      "prompt": "Il faut que tu ___ à l'heure demain matin.",
+      "options": ["sois", "es", "seras", "étais"],
+      "answer": "sois"
+    },
+    {
+      "id": "fr-gram-0013",
+      "cefr": "B1",
+      "topic": "pronouns",
+      "prompt": "Des vacances ? Oui, j'___ ai vraiment besoin.",
+      "options": ["en", "y", "les", "leur"],
+      "answer": "en"
+    },
+    {
+      "id": "fr-gram-0014",
+      "cefr": "B1",
+      "topic": "verb_usage",
+      "prompt": "Elle ___ de déménager quand elle a trouvé ce travail.",
+      "options": ["venait", "vient", "viendra", "est venue"],
+      "answer": "venait"
+    },
+    {
+      "id": "fr-gram-0015",
+      "cefr": "B1",
+      "topic": "prepositions_and_case",
+      "prompt": "Nous pensons souvent ___ nos années d'école.",
+      "options": ["à", "de", "sur", "vers"],
+      "answer": "à"
+    },
+    {
+      "id": "fr-gram-0016",
+      "cefr": "B2",
+      "topic": "subordinate_clauses",
+      "prompt": "Bien qu'il ___ déjà très tard, elle a répondu à mon message.",
+      "options": ["soit", "est", "était", "sera"],
+      "answer": "soit"
+    },
+    {
+      "id": "fr-gram-0017",
+      "cefr": "B2",
+      "topic": "agreement",
+      "prompt": "Les lettres qu'elle a ___ lundi sont déjà arrivées.",
+      "options": ["envoyées", "envoyé", "envoyés", "envoyée"],
+      "answer": "envoyées"
+    },
+    {
+      "id": "fr-gram-0018",
+      "cefr": "B2",
+      "topic": "verb_usage",
+      "prompt": "Après ___ ses études, il a voyagé un an en Asie.",
+      "options": ["avoir terminé", "terminer", "avoir terminant", "terminé"],
+      "answer": "avoir terminé"
+    },
+    {
+      "id": "fr-gram-0019",
+      "cefr": "B2",
+      "topic": "pronouns",
+      "prompt": "Le projet ___ je t'ai parlé a finalement été accepté.",
+      "options": ["dont", "que", "lequel", "où"],
+      "answer": "dont"
+    },
+    {
+      "id": "fr-gram-0020",
+      "cefr": "B2",
+      "topic": "verb_usage",
+      "prompt": "Tu ___ me prévenir que la réunion était annulée !",
+      "options": ["aurais pu", "avais pu", "auras pu", "pouvais"],
+      "answer": "aurais pu"
+    },
+    {
+      "id": "fr-gram-0021",
+      "cefr": "C1",
+      "topic": "syntax_and_sentence_structure",
+      "prompt": "À peine ___ la porte que le téléphone a sonné.",
+      "options": ["avait-elle ouvert", "elle avait ouvert", "avait ouvert-elle", "elle a ouvert"],
+      "answer": "avait-elle ouvert"
+    },
+    {
+      "id": "fr-gram-0022",
+      "cefr": "C1",
+      "topic": "verbs_morphology",
+      "prompt": "Je ne pense pas qu'il ___ la lettre avant son départ.",
+      "options": ["ait reçu", "a reçu", "avait reçu", "aura reçu"],
+      "answer": "ait reçu"
+    },
+    {
+      "id": "fr-gram-0023",
+      "cefr": "C1",
+      "topic": "subordinate_clauses",
+      "prompt": "Il a continué à parler, ___ qu'on lui ait demandé de conclure.",
+      "options": ["bien", "alors", "tandis", "même"],
+      "answer": "bien"
+    },
+    {
+      "id": "fr-gram-0024",
+      "cefr": "C1",
+      "topic": "verb_usage",
+      "prompt": "Quoi que vous ___, ne signez rien avant de consulter un avocat.",
+      "options": ["décidiez", "décidez", "déciderez", "avez décidé"],
+      "answer": "décidiez"
+    },
+    {
+      "id": "fr-gram-0025",
+      "cefr": "C1",
+      "topic": "negation",
+      "prompt": "Il ne nous reste ___ à espérer que le temps s'améliore.",
+      "options": ["plus qu'", "que d'", "rien qu'", "guère"],
+      "answer": "plus qu'"
+    },
+    {
+      "id": "fr-gram-0026",
+      "cefr": "C2",
+      "topic": "verbs_morphology",
+      "prompt": "Dès qu'il eut fini son discours, la salle ___ pour l'applaudir.",
+      "options": ["se leva", "se levait", "se lève", "se fut levée"],
+      "answer": "se leva"
+    },
+    {
+      "id": "fr-gram-0027",
+      "cefr": "C2",
+      "topic": "syntax_and_sentence_structure",
+      "prompt": "Force est de ___ que les résultats sont décevants.",
+      "options": ["constater", "constatation", "constate", "constaté"],
+      "answer": "constater"
+    },
+    {
+      "id": "fr-gram-0028",
+      "cefr": "C2",
+      "topic": "subordinate_clauses",
+      "prompt": "Le lendemain de la dispute, il s'est comporté comme si de rien n'___.",
+      "options": ["était", "avait", "est", "eût"],
+      "answer": "était"
+    },
+    {
+      "id": "fr-gram-0029",
+      "cefr": "C2",
+      "topic": "agreement",
+      "prompt": "Elle s'est ___ la main en tombant dans l'escalier.",
+      "options": ["cassé", "cassée", "cassés", "casser"],
+      "answer": "cassé"
+    },
+    {
+      "id": "fr-gram-0030",
+      "cefr": "C2",
+      "topic": "information_structure_and_pragmatics",
+      "prompt": "Le rapport est encourageant ; il n'en demeure pas ___ que des questions restent ouvertes.",
+      "options": ["moins", "plus", "autant", "guère"],
+      "answer": "moins"
+    }
+  ]
+}

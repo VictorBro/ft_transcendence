@@ -99,13 +99,16 @@ services:
     # development password, and a school machine shares its network. Bound here
     # so `make ci` and a GUI client work from a host shell, where the compose
     # network name `db` does not resolve.
+    #
+    # Host port is overridable for when 5432 is already taken. Only the host side
+    # moves: inside the network the port is always 5432.
     ports:
-      - "127.0.0.1:5432:5432"
+      - "127.0.0.1:${POSTGRES_HOST_PORT:-5432}:5432"
 
   redis:
-    # Loopback only, same reasoning as the database above.
+    # Loopback only and host-overridable, same as the database above.
     ports:
-      - "127.0.0.1:6379:6379"
+      - "127.0.0.1:${REDIS_HOST_PORT:-6379}:6379"
 
   # Devcontainer shell. Behind a profile, so `docker compose up` ignores it;
   # VS Code names the service explicitly, which activates the profile.

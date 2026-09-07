@@ -1,0 +1,246 @@
+{
+  "language": "de",
+  "skill": "grammar",
+  "items": [
+    {
+      "id": "de-gram-0001",
+      "cefr": "A1",
+      "topic": "verbs_morphology",
+      "prompt": "Wir ___ heute Abend zu Hause.",
+      "options": ["bleiben", "bleibt", "bleibst", "bleibe"],
+      "answer": "bleiben"
+    },
+    {
+      "id": "de-gram-0002",
+      "cefr": "A1",
+      "topic": "nouns_and_determiners",
+      "prompt": "Das ist ___ Apfel. Er ist noch grün.",
+      "options": ["ein", "eine", "einen", "einem"],
+      "answer": "ein"
+    },
+    {
+      "id": "de-gram-0003",
+      "cefr": "A1",
+      "topic": "pronouns",
+      "prompt": "Das ist Frau Weber. ___ Auto ist blau.",
+      "options": ["Ihr", "Sein", "Euer", "Dein"],
+      "answer": "Ihr"
+    },
+    {
+      "id": "de-gram-0004",
+      "cefr": "A1",
+      "topic": "verbs_morphology",
+      "prompt": "___ du gern Fußball?",
+      "options": ["Spielst", "Spielt", "Spiele", "Spielen"],
+      "answer": "Spielst"
+    },
+    {
+      "id": "de-gram-0005",
+      "cefr": "A1",
+      "topic": "negation",
+      "prompt": "Ich habe heute leider ___ Zeit.",
+      "options": ["keine", "nicht", "kein", "nein"],
+      "answer": "keine"
+    },
+    {
+      "id": "de-gram-0006",
+      "cefr": "A2",
+      "topic": "verbs_morphology",
+      "prompt": "Gestern ___ wir ins Kino gegangen.",
+      "options": ["sind", "haben", "hat", "werden"],
+      "answer": "sind"
+    },
+    {
+      "id": "de-gram-0007",
+      "cefr": "A2",
+      "topic": "prepositions_and_case",
+      "prompt": "Die Lampe hängt ___ dem Tisch.",
+      "options": ["über", "auf", "an", "zwischen"],
+      "answer": "über"
+    },
+    {
+      "id": "de-gram-0008",
+      "cefr": "A2",
+      "topic": "subordinate_clauses",
+      "prompt": "Ich bleibe heute zu Hause, weil ich krank ___.",
+      "options": ["bin", "ist", "sein", "bist"],
+      "answer": "bin"
+    },
+    {
+      "id": "de-gram-0009",
+      "cefr": "A2",
+      "topic": "comparison_and_quantity",
+      "prompt": "Mein Bruder ist zwei Jahre ___ als ich.",
+      "options": ["älter", "alt", "am ältesten", "ältere"],
+      "answer": "älter"
+    },
+    {
+      "id": "de-gram-0010",
+      "cefr": "A2",
+      "topic": "verb_usage",
+      "prompt": "Er ___ sehr gut kochen, alle loben sein Essen.",
+      "options": ["kann", "könnt", "kannst", "können"],
+      "answer": "kann"
+    },
+    {
+      "id": "de-gram-0011",
+      "cefr": "B1",
+      "topic": "subordinate_clauses",
+      "prompt": "Ich weiß noch nicht, ___ er morgen kommt oder nicht.",
+      "options": ["ob", "wenn", "als", "dass"],
+      "answer": "ob"
+    },
+    {
+      "id": "de-gram-0012",
+      "cefr": "B1",
+      "topic": "verbs_morphology",
+      "prompt": "Wenn ich mehr Zeit hätte, ___ ich ein Instrument lernen.",
+      "options": ["würde", "werde", "will", "wurde"],
+      "answer": "würde"
+    },
+    {
+      "id": "de-gram-0013",
+      "cefr": "B1",
+      "topic": "prepositions_and_case",
+      "prompt": "Wir freuen uns sehr ___ deinen Besuch nächste Woche.",
+      "options": ["auf", "über", "an", "für"],
+      "answer": "auf"
+    },
+    {
+      "id": "de-gram-0014",
+      "cefr": "B1",
+      "topic": "adjectives",
+      "prompt": "Er hat sich ein ___ Fahrrad gekauft.",
+      "options": ["neues", "neue", "neuen", "neuem"],
+      "answer": "neues"
+    },
+    {
+      "id": "de-gram-0015",
+      "cefr": "B1",
+      "topic": "verb_usage",
+      "prompt": "Das Formular muss bis Freitag ___ werden.",
+      "options": ["ausgefüllt", "ausfüllen", "füllte aus", "auszufüllen"],
+      "answer": "ausgefüllt"
+    },
+    {
+      "id": "de-gram-0016",
+      "cefr": "B2",
+      "topic": "subordinate_clauses",
+      "prompt": "___ er erst seit einem Jahr Deutsch lernt, hat er die Prüfung bestanden.",
+      "options": ["Obwohl", "Weil", "Damit", "Falls"],
+      "answer": "Obwohl"
+    },
+    {
+      "id": "de-gram-0017",
+      "cefr": "B2",
+      "topic": "verbs_morphology",
+      "prompt": "An deiner Stelle ___ ich das Angebot angenommen.",
+      "options": ["hätte", "habe", "wäre", "würde"],
+      "answer": "hätte"
+    },
+    {
+      "id": "de-gram-0018",
+      "cefr": "B2",
+      "topic": "prepositions_and_case",
+      "prompt": "___ des schlechten Wetters fand das Konzert im Freien statt.",
+      "options": ["Trotz", "Wegen", "Während", "Statt"],
+      "answer": "Trotz"
+    },
+    {
+      "id": "de-gram-0019",
+      "cefr": "B2",
+      "topic": "verb_usage",
+      "prompt": "Es hängt vom Wetter ___, ob wir am Samstag wandern gehen.",
+      "options": ["ab", "an", "auf", "aus"],
+      "answer": "ab"
+    },
+    {
+      "id": "de-gram-0020",
+      "cefr": "B2",
+      "topic": "adjectives",
+      "prompt": "Die im letzten Jahr ___ Brücke muss schon wieder repariert werden.",
+      "options": ["gebaute", "bauende", "gebaut", "bauliche"],
+      "answer": "gebaute"
+    },
+    {
+      "id": "de-gram-0021",
+      "cefr": "C1",
+      "topic": "syntax_and_sentence_structure",
+      "prompt": "Kaum ___ er angekommen, musste er schon wieder los.",
+      "options": ["war", "ist", "hatte", "wurde"],
+      "answer": "war"
+    },
+    {
+      "id": "de-gram-0022",
+      "cefr": "C1",
+      "topic": "subordinate_clauses",
+      "prompt": "Sie sah aus, als ___ sie tagelang nicht geschlafen.",
+      "options": ["hätte", "hatte", "wäre", "würde"],
+      "answer": "hätte"
+    },
+    {
+      "id": "de-gram-0023",
+      "cefr": "C1",
+      "topic": "nouns_and_determiners",
+      "prompt": "Die Journalistin hat den ___ nach seiner Meinung gefragt.",
+      "options": ["Präsidenten", "Präsident", "Präsidents", "Präsidentem"],
+      "answer": "Präsidenten"
+    },
+    {
+      "id": "de-gram-0024",
+      "cefr": "C1",
+      "topic": "syntax_and_sentence_structure",
+      "prompt": "Er hat den Vertrag unterschrieben, ohne ihn vorher gelesen ___.",
+      "options": ["zu haben", "haben", "zu hatte", "gehabt"],
+      "answer": "zu haben"
+    },
+    {
+      "id": "de-gram-0025",
+      "cefr": "C1",
+      "topic": "verb_usage",
+      "prompt": "Die aktuellen Zahlen ___ darauf hin, dass sich die Lage verbessert.",
+      "options": ["deuten", "zeigen", "führen", "gehen"],
+      "answer": "deuten"
+    },
+    {
+      "id": "de-gram-0026",
+      "cefr": "C2",
+      "topic": "prepositions_and_case",
+      "prompt": "Allen Warnungen zum ___ wurde der Stausee weiter befüllt.",
+      "options": ["Trotz", "Gegen", "Wider", "Entgegen"],
+      "answer": "Trotz"
+    },
+    {
+      "id": "de-gram-0027",
+      "cefr": "C2",
+      "topic": "verb_usage",
+      "prompt": "Sie ___ den Brief inzwischen wohl erhalten haben.",
+      "options": ["dürfte", "durfte", "möchte", "mochte"],
+      "answer": "dürfte"
+    },
+    {
+      "id": "de-gram-0028",
+      "cefr": "C2",
+      "topic": "nouns_and_determiners",
+      "prompt": "Es bedarf ___ ausdrücklichen Genehmigung der Behörde.",
+      "options": ["einer", "eine", "einen", "einem"],
+      "answer": "einer"
+    },
+    {
+      "id": "de-gram-0029",
+      "cefr": "C2",
+      "topic": "subordinate_clauses",
+      "prompt": "___ es auch regnen, das Fest findet auf jeden Fall statt.",
+      "options": ["Mag", "Kann", "Soll", "Will"],
+      "answer": "Mag"
+    },
+    {
+      "id": "de-gram-0030",
+      "cefr": "C2",
+      "topic": "verbs_morphology",
+      "prompt": "Der Zeuge gab an, er ___ den Angeklagten nie zuvor gesehen.",
+      "options": ["habe", "hat", "hätte gehabt", "wird"],
+      "answer": "habe"
+    }
+  ]
+}

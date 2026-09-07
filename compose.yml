@@ -130,7 +130,7 @@ services:
 
   redis:
     image: redis:8-alpine
-    # AOF on: BullMQ jobs and sessions should survive a restart. RDB snapshots
+    # AOF on: sessions should survive a restart. RDB snapshots
     # alone lose up to a minute of writes.
     command: ["redis-server", "--appendonly", "yes"]
     volumes:

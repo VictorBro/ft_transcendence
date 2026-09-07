@@ -1,0 +1,401 @@
+{
+  "language": "fr",
+  "skill": "reading",
+  "items": [
+    {
+      "id": "fr-read-0001",
+      "cefr": "A1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Léa habite à Lyon. Elle a un chat noir qui s'appelle Milo. Le soir, Milo dort sur le canapé du salon.",
+      "prompt": "Où dort Milo le soir ?",
+      "options": ["Sur le canapé", "Dans le jardin", "Sous le lit", "Dans la cuisine"],
+      "answer": "Sur le canapé"
+    },
+    {
+      "id": "fr-read-0002",
+      "cefr": "A1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Le marché du village a lieu le samedi matin. On y trouve des fruits, des légumes et du fromage. Il ferme à treize heures.",
+      "prompt": "Quand a lieu le marché ?",
+      "options": ["Le samedi matin", "Le dimanche", "Tous les jours", "Le soir"],
+      "answer": "Le samedi matin"
+    },
+    {
+      "id": "fr-read-0003",
+      "cefr": "A1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Karim travaille dans un magasin de sport. Il commence à neuf heures et finit à dix-huit heures. Le mardi, il ne travaille pas.",
+      "prompt": "Quel jour Karim ne travaille-t-il pas ?",
+      "options": ["Le mardi", "Le lundi", "Le samedi", "Le jeudi"],
+      "answer": "Le mardi"
+    },
+    {
+      "id": "fr-read-0004",
+      "cefr": "A1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Marie prend le métro pour aller à l'université. Le trajet dure quinze minutes. Quand il fait beau, elle y va à vélo.",
+      "prompt": "Comment Marie va-t-elle à l'université quand il fait beau ?",
+      "options": ["À vélo", "En métro", "En bus", "À pied"],
+      "answer": "À vélo"
+    },
+    {
+      "id": "fr-read-0005",
+      "cefr": "A1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "La piscine municipale est ouverte tous les jours en été. L'entrée coûte trois euros pour les enfants et cinq euros pour les adultes.",
+      "prompt": "Combien coûte l'entrée pour les enfants ?",
+      "options": ["Trois euros", "Cinq euros", "Deux euros", "Huit euros"],
+      "answer": "Trois euros"
+    },
+    {
+      "id": "fr-read-0006",
+      "cefr": "A2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Thomas apprend l'italien depuis six mois. Il regarde des films en version originale et écoute des chansons italiennes dans le bus. Il voudrait passer ses prochaines vacances à Rome pour pratiquer la langue.",
+      "prompt": "Pourquoi Thomas veut-il aller à Rome ?",
+      "options": [
+        "Pour pratiquer l'italien",
+        "Pour voir sa famille",
+        "Pour son travail",
+        "Pour apprendre à cuisiner"
+      ],
+      "answer": "Pour pratiquer l'italien"
+    },
+    {
+      "id": "fr-read-0007",
+      "cefr": "A2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Le petit cinéma de la rue Pasteur a rouvert le mois dernier après deux ans de travaux. Les places coûtent moins cher le lundi, et la salle est souvent pleine ce soir-là.",
+      "prompt": "Pourquoi la salle est-elle souvent pleine le lundi ?",
+      "options": [
+        "Les places sont moins chères ce jour-là",
+        "C'est le seul jour d'ouverture",
+        "Les travaux viennent de finir",
+        "Il n'y a pas d'autre cinéma"
+      ],
+      "answer": "Les places sont moins chères ce jour-là"
+    },
+    {
+      "id": "fr-read-0008",
+      "cefr": "A2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Claire voulait acheter un gâteau pour l'anniversaire de sa sœur, mais la pâtisserie était fermée. Elle a donc préparé une tarte aux pommes elle-même. Sa sœur a dit que c'était la meilleure tarte de sa vie.",
+      "prompt": "Qu'a fait Claire quand elle a trouvé la pâtisserie fermée ?",
+      "options": [
+        "Elle a fait une tarte elle-même",
+        "Elle a acheté un autre gâteau",
+        "Elle est allée dans une autre pâtisserie",
+        "Elle a annulé la fête"
+      ],
+      "answer": "Elle a fait une tarte elle-même"
+    },
+    {
+      "id": "fr-read-0009",
+      "cefr": "A2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "L'auberge de jeunesse se trouve à dix minutes à pied de la gare. Le petit-déjeuner est compris dans le prix, mais il faut réserver le repas du soir avant seize heures.",
+      "prompt": "Que faut-il faire pour dîner à l'auberge ?",
+      "options": [
+        "Réserver avant seize heures",
+        "Payer le petit-déjeuner",
+        "Arriver avant dix heures",
+        "Téléphoner à la gare"
+      ],
+      "answer": "Réserver avant seize heures"
+    },
+    {
+      "id": "fr-read-0010",
+      "cefr": "A2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Depuis janvier, le centre-ville est fermé aux voitures le dimanche. Les commerçants avaient peur de perdre des clients, mais c'est le contraire qui s'est produit : les rues n'ont jamais été aussi animées.",
+      "prompt": "Que s'est-il passé depuis la fermeture aux voitures ?",
+      "options": [
+        "Les rues sont plus animées qu'avant",
+        "Les commerçants ont perdu des clients",
+        "Le centre-ville est fermé tous les jours",
+        "Les voitures reviennent le dimanche"
+      ],
+      "answer": "Les rues sont plus animées qu'avant"
+    },
+    {
+      "id": "fr-read-0011",
+      "cefr": "B1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Quand Inès a commencé le télétravail, elle pensait gagner du temps. En réalité, elle travaillait plus tard le soir et faisait moins de pauses qu'au bureau. Elle a fini par s'imposer des horaires fixes, et dit aujourd'hui avoir trouvé un bon équilibre.",
+      "prompt": "Quel problème Inès a-t-elle rencontré au début ?",
+      "options": [
+        "Elle travaillait plus qu'avant",
+        "Elle perdait du temps dans les transports",
+        "Elle prenait trop de pauses",
+        "Elle ne trouvait pas de travail"
+      ],
+      "answer": "Elle travaillait plus qu'avant"
+    },
+    {
+      "id": "fr-read-0012",
+      "cefr": "B1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "La mairie a installé des composteurs partagés dans trois quartiers l'an dernier. L'expérience a si bien fonctionné qu'elle sera étendue à toute la ville, même si certains habitants se plaignent des odeurs en été.",
+      "prompt": "Pourquoi le projet sera-t-il étendu ?",
+      "options": [
+        "Parce que l'expérience a bien fonctionné",
+        "Parce que les habitants s'en plaignent",
+        "Parce que trois quartiers l'ont demandé",
+        "Parce que l'été approche"
+      ],
+      "answer": "Parce que l'expérience a bien fonctionné"
+    },
+    {
+      "id": "fr-read-0013",
+      "cefr": "B1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Journaliste pendant quinze ans, Malik a tout quitté pour ouvrir une librairie dans sa ville natale. Ses amis pensaient qu'il le regretterait au bout de six mois. Trois ans plus tard, la librairie est devenue un lieu de rencontre du quartier, et Malik ne regrette rien.",
+      "prompt": "Que pensaient les amis de Malik au moment de sa décision ?",
+      "options": [
+        "Qu'il regretterait vite son choix",
+        "Que la librairie serait un succès",
+        "Qu'il devait rester journaliste six mois de plus",
+        "Qu'il ouvrirait un café plutôt qu'une librairie"
+      ],
+      "answer": "Qu'il regretterait vite son choix"
+    },
+    {
+      "id": "fr-read-0014",
+      "cefr": "B1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Le sentier du littoral était fermé depuis les tempêtes de l'hiver. Les travaux, d'abord prévus pour le printemps, ont pris du retard à cause d'un manque d'ouvriers. Le sentier rouvrira finalement en septembre.",
+      "prompt": "Pourquoi les travaux ont-ils pris du retard ?",
+      "options": [
+        "Par manque d'ouvriers",
+        "À cause de nouvelles tempêtes",
+        "Parce que le budget était insuffisant",
+        "Parce que le sentier était trop fréquenté"
+      ],
+      "answer": "Par manque d'ouvriers"
+    },
+    {
+      "id": "fr-read-0015",
+      "cefr": "B1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Beaucoup de visiteurs ne passent qu'une journée dans la région et se contentent du château. C'est dommage : les villages des environs, moins connus, offrent des marchés, des ateliers d'artisans et des paysages que le château ne laisse pas deviner.",
+      "prompt": "Que suggère l'auteur ?",
+      "options": [
+        "Les villages des environs méritent aussi une visite",
+        "Le château ne vaut pas le déplacement",
+        "Il faut éviter la région en été",
+        "Une journée suffit pour tout voir"
+      ],
+      "answer": "Les villages des environs méritent aussi une visite"
+    },
+    {
+      "id": "fr-read-0016",
+      "cefr": "B2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Pendant des années, la municipalité a présenté le tourisme comme la solution à tous ses problèmes économiques. Les emplois créés sont pourtant restés saisonniers et mal payés, tandis que les loyers, eux, ont augmenté toute l'année. Le conseil municipal reconnaît désormais qu'il faut diversifier l'économie locale.",
+      "prompt": "Quel bilan le texte dresse-t-il du tourisme ?",
+      "options": [
+        "Ses bénéfices sont plus limités que promis",
+        "Il a résolu les problèmes économiques de la ville",
+        "Il a fait baisser les loyers toute l'année",
+        "Il a créé des emplois stables et bien payés"
+      ],
+      "answer": "Ses bénéfices sont plus limités que promis"
+    },
+    {
+      "id": "fr-read-0017",
+      "cefr": "B2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "On présente souvent la lecture numérique comme l'ennemie du livre papier. Les chiffres racontent une autre histoire : les gros lecteurs numériques sont aussi ceux qui achètent le plus de livres imprimés. Les deux formats semblent moins se concurrencer que se compléter.",
+      "prompt": "Que montrent les chiffres selon le texte ?",
+      "options": [
+        "Les deux formats se complètent plutôt qu'ils ne se concurrencent",
+        "Le numérique fait disparaître le livre papier",
+        "Les lecteurs numériques n'achètent plus de livres imprimés",
+        "Le livre papier est plus rentable que le numérique"
+      ],
+      "answer": "Les deux formats se complètent plutôt qu'ils ne se concurrencent"
+    },
+    {
+      "id": "fr-read-0018",
+      "cefr": "B2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "L'entreprise avait promis que l'automatisation ne supprimerait aucun emploi, et techniquement elle a tenu parole : personne n'a été licencié. Mais les départs à la retraite n'ont pas été remplacés, et l'atelier compte aujourd'hui moitié moins d'ouvriers qu'il y a dix ans.",
+      "prompt": "Comment l'entreprise a-t-elle réduit ses effectifs ?",
+      "options": [
+        "En ne remplaçant pas les départs à la retraite",
+        "En licenciant la moitié des ouvriers",
+        "En fermant l'atelier",
+        "En supprimant l'automatisation"
+      ],
+      "answer": "En ne remplaçant pas les départs à la retraite"
+    },
+    {
+      "id": "fr-read-0019",
+      "cefr": "B2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Le documentaire a été critiqué non pour ce qu'il montre, mais pour ce qu'il omet : à aucun moment les habitants concernés n'ont la parole. Le réalisateur se défend en expliquant qu'il voulait laisser parler les images. L'argument n'a convaincu ni la presse ni le public.",
+      "prompt": "Que reproche-t-on au documentaire ?",
+      "options": [
+        "Il ne donne pas la parole aux habitants concernés",
+        "Il montre des images trop violentes",
+        "Il déforme les propos des habitants",
+        "Il est trop long pour le public"
+      ],
+      "answer": "Il ne donne pas la parole aux habitants concernés"
+    },
+    {
+      "id": "fr-read-0020",
+      "cefr": "B2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Les prévisions annonçaient la disparition des petites salles de concert, coincées entre la hausse des loyers et la concurrence des grandes plateformes. Certaines ont effectivement fermé. D'autres ont survécu en changeant de modèle : elles appartiennent désormais à leur public, qui en est devenu actionnaire.",
+      "prompt": "Comment certaines salles ont-elles survécu ?",
+      "options": [
+        "En faisant de leur public leur actionnaire",
+        "En obtenant une baisse des loyers",
+        "En s'associant aux grandes plateformes",
+        "En augmentant le prix des billets"
+      ],
+      "answer": "En faisant de leur public leur actionnaire"
+    },
+    {
+      "id": "fr-read-0021",
+      "cefr": "C1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Longtemps, on a jugé une bibliothèque au nombre de ses livres. Cette mesure ne dit plus grand-chose : les collections se consultent à distance, et ce que les habitants viennent chercher sur place, c'est un lieu — pour travailler, se former, ou simplement s'asseoir sans rien devoir consommer. Les bibliothèques qui l'ont compris se sont transformées ; les autres voient leurs salles se vider, quels que soient les trésors de leurs rayonnages.",
+      "prompt": "Quelle évolution le texte décrit-il ?",
+      "options": [
+        "La bibliothèque vaut désormais davantage comme lieu que par ses collections",
+        "Les bibliothèques ferment faute de livres",
+        "La consultation à distance a rempli les salles de lecture",
+        "Le nombre de livres reste le meilleur critère de jugement"
+      ],
+      "answer": "La bibliothèque vaut désormais davantage comme lieu que par ses collections"
+    },
+    {
+      "id": "fr-read-0022",
+      "cefr": "C1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "On attribue volontiers le succès des campagnes de reboisement au nombre d'arbres plantés, chiffre spectaculaire et facile à communiquer. Or la moitié des plants ne survit pas aux premières années lorsqu'ils sont mal choisis ou mal entretenus. Le chiffre qui compte — celui des arbres vivants dix ans plus tard — ne figure presque jamais dans les bilans.",
+      "prompt": "Que critique l'auteur ?",
+      "options": [
+        "On communique sur les plantations plutôt que sur la survie des arbres",
+        "On plante trop d'arbres dans les campagnes",
+        "Les bilans surestiment le nombre d'arbres plantés",
+        "Les campagnes de reboisement coûtent trop cher"
+      ],
+      "answer": "On communique sur les plantations plutôt que sur la survie des arbres"
+    },
+    {
+      "id": "fr-read-0023",
+      "cefr": "C1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "La réforme de l'orthographe illustre un paradoxe durable : chacun s'accorde à trouver certaines graphies absurdes, et presque personne ne veut les voir changer. C'est que l'orthographe n'est pas seulement un outil ; c'est un capital, acquis à grand-peine, dont la valeur tient précisément à sa difficulté. Simplifier, c'est déprécier l'effort de ceux qui ont appris.",
+      "prompt": "Comment l'auteur explique-t-il la résistance aux réformes ?",
+      "options": [
+        "L'orthographe difficile est un capital que la simplification dévaluerait",
+        "Les graphies actuelles ne semblent absurdes à personne",
+        "Les réformes proposées sont mal rédigées",
+        "L'orthographe est un simple outil sans valeur symbolique"
+      ],
+      "answer": "L'orthographe difficile est un capital que la simplification dévaluerait"
+    },
+    {
+      "id": "fr-read-0024",
+      "cefr": "C1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Le succès des circuits courts repose sur une promesse de transparence : connaître celui qui produit ce que l'on mange. Promesse tenue, pour l'essentiel. Mais l'étiquette « local » en est venue à servir de garantie universelle — écologique, sociale, sanitaire — que rien n'oblige le produit à honorer. La proximité renseigne sur la distance parcourue, non sur la manière de produire.",
+      "prompt": "Quelle limite l'auteur voit-il à l'étiquette « local » ?",
+      "options": [
+        "La proximité ne garantit pas les qualités qu'on lui prête",
+        "Les producteurs locaux cachent leur identité",
+        "Les circuits courts parcourent trop de distance",
+        "La promesse de transparence n'est jamais tenue"
+      ],
+      "answer": "La proximité ne garantit pas les qualités qu'on lui prête"
+    },
+    {
+      "id": "fr-read-0025",
+      "cefr": "C1",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Que les jurys littéraires se trompent souvent, l'histoire l'a montré : des chefs-d'œuvre ignorés, des lauréats oubliés. On en conclut parfois qu'il faudrait supprimer les prix. C'est confondre deux fonctions : le prix ne désigne pas le meilleur livre, il organise, une fois l'an, une conversation nationale autour du fait de lire. À cette aune, même un mauvais choix remplit son office.",
+      "prompt": "Selon l'auteur, à quoi servent réellement les prix littéraires ?",
+      "options": [
+        "À créer une conversation collective autour de la lecture",
+        "À désigner le meilleur livre de l'année",
+        "À réparer les erreurs passées des jurys",
+        "À faire connaître les lauréats oubliés"
+      ],
+      "answer": "À créer une conversation collective autour de la lecture"
+    },
+    {
+      "id": "fr-read-0026",
+      "cefr": "C2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Il est entendu que la traduction trahit. La formule, pour être ancienne, ne va pas de soi : elle suppose un original stable, dont le sens préexisterait à toute lecture et qu'il s'agirait seulement de transporter. Or tout traducteur sait que l'original hésite, que ses ambiguïtés sont constitutives, et que « trahir » consiste le plus souvent à choisir là où l'auteur avait pu se dispenser de choisir. La traduction ne dégrade pas un sens premier ; elle rend visibles les décisions que l'original avait le luxe de laisser en suspens.",
+      "prompt": "Quelle thèse l'auteur défend-il ?",
+      "options": [
+        "Traduire révèle des choix que l'original pouvait laisser ouverts",
+        "La traduction dégrade nécessairement le sens de l'original",
+        "Un bon traducteur transporte le sens sans le modifier",
+        "Les ambiguïtés d'un texte disparaissent à la lecture"
+      ],
+      "answer": "Traduire révèle des choix que l'original pouvait laisser ouverts"
+    },
+    {
+      "id": "fr-read-0027",
+      "cefr": "C2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Les indicateurs de bien-être au travail prolifèrent, et avec eux un paradoxe : plus une entreprise mesure le bonheur de ses salariés, plus elle semble tenue d'en produire, et plus le moindre écart devient une faute de gestion. La mesure, censée décrire, se met à prescrire. On pourrait y voir un progrès. C'en serait un si l'obligation portait sur les conditions de travail plutôt que sur leur perception — car il est toujours moins coûteux d'améliorer un ressenti que de transformer ce qui le cause.",
+      "prompt": "Quel risque l'auteur identifie-t-il ?",
+      "options": [
+        "Que l'on agisse sur la perception du bien-être plutôt que sur ses causes",
+        "Que les entreprises cessent de mesurer le bien-être",
+        "Que les salariés refusent de répondre aux enquêtes",
+        "Que les conditions de travail deviennent trop coûteuses à mesurer"
+      ],
+      "answer": "Que l'on agisse sur la perception du bien-être plutôt que sur ses causes"
+    },
+    {
+      "id": "fr-read-0028",
+      "cefr": "C2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "On loue la concision comme une politesse faite au lecteur, et elle l'est souvent. Elle peut aussi être une esquive : la phrase brève tranche, là où la phrase longue aurait dû peser, nuancer, avouer ses doutes. Certains textes courts ne sont pas denses mais expéditifs ; leur autorité tient au silence qu'ils imposent aux objections, faute de leur avoir laissé la place d'exister.",
+      "prompt": "Que reproche l'auteur à certains textes concis ?",
+      "options": [
+        "Leur brièveté escamote les objections au lieu d'y répondre",
+        "Ils sont trop longs pour ce qu'ils ont à dire",
+        "Ils multiplient les nuances jusqu'à devenir illisibles",
+        "Ils manquent de politesse envers le lecteur"
+      ],
+      "answer": "Leur brièveté escamote les objections au lieu d'y répondre"
+    },
+    {
+      "id": "fr-read-0029",
+      "cefr": "C2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "La notion de patrimoine immatériel devait élargir la conservation aux pratiques vivantes : langues, savoir-faire, fêtes. L'intention était généreuse ; l'effet, plus ambigu. Inscrire une pratique, c'est la figer dans l'état où on l'a trouvée, et confier à des institutions le soin de dire ce qui, désormais, en relève ou la dénature. Des traditions qui n'avaient survécu qu'en se transformant sans cesse se voient sommées de rester elles-mêmes — injonction que leur histoire entière dément.",
+      "prompt": "Quel effet paradoxal de l'inscription au patrimoine le texte décrit-il ?",
+      "options": [
+        "Elle fige des pratiques qui vivaient de se transformer",
+        "Elle accélère la disparition des langues et des fêtes",
+        "Elle retire aux institutions tout droit de regard",
+        "Elle limite la conservation aux monuments matériels"
+      ],
+      "answer": "Elle fige des pratiques qui vivaient de se transformer"
+    },
+    {
+      "id": "fr-read-0030",
+      "cefr": "C2",
+      "topic": "information_structure_and_pragmatics",
+      "passage": "Les plateformes de financement participatif se présentent comme une démocratisation du mécénat : le public choisit directement ce qui mérite d'exister. L'argument suppose que la foule n'a pas de goûts prévisibles. Or les projets financés se ressemblent : ce qui rassure séduit, ce qui déroute échoue. Le mécène d'autrefois pouvait se tromper seul et parier sur l'inconnu ; la foule, elle, ne se trompe qu'en masse, et ne parie jamais.",
+      "prompt": "Quelle réserve l'auteur formule-t-il ?",
+      "options": [
+        "Le financement par la foule favorise le prévisible au détriment de l'audace",
+        "Les plateformes choisissent les projets à la place du public",
+        "Le mécénat traditionnel était plus démocratique",
+        "Les projets financés échouent plus souvent qu'avant"
+      ],
+      "answer": "Le financement par la foule favorise le prévisible au détriment de l'audace"
+    }
+  ]
+}

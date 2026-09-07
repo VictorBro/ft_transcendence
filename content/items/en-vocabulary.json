@@ -1,0 +1,246 @@
+{
+  "language": "en",
+  "skill": "vocabulary",
+  "items": [
+    {
+      "id": "en-voca-0001",
+      "cefr": "A1",
+      "topic": "information_structure_and_pragmatics",
+      "prompt": "I am very ___. Can I have some water?",
+      "options": ["thirsty", "hungry", "tired", "cold"],
+      "answer": "thirsty"
+    },
+    {
+      "id": "en-voca-0002",
+      "cefr": "A1",
+      "topic": "adjectives",
+      "prompt": "It is so ___ outside today that I don't want to leave the house.",
+      "options": ["cold", "coldly", "coldness", "colder"],
+      "answer": "cold"
+    },
+    {
+      "id": "en-voca-0003",
+      "cefr": "A1",
+      "topic": "verb_usage",
+      "prompt": "Hello, this is Nadia. Could I ___ to Sharon, please?",
+      "options": ["speak", "say", "tell", "call"],
+      "answer": "speak"
+    },
+    {
+      "id": "en-voca-0004",
+      "cefr": "A1",
+      "topic": "prepositions_and_case",
+      "prompt": "The car park is right ___ to the restaurant.",
+      "options": ["next", "beside", "behind", "in front"],
+      "answer": "next"
+    },
+    {
+      "id": "en-voca-0005",
+      "cefr": "A1",
+      "topic": "nouns_and_determiners",
+      "prompt": "We eat ___ in the morning, usually around seven.",
+      "options": ["breakfast", "lunch", "dinner", "supper"],
+      "answer": "breakfast"
+    },
+    {
+      "id": "en-voca-0006",
+      "cefr": "A2",
+      "topic": "verb_usage",
+      "prompt": "She pointed her camera at the mountains and ___ a photo.",
+      "options": ["took", "made", "did", "had"],
+      "answer": "took"
+    },
+    {
+      "id": "en-voca-0007",
+      "cefr": "A2",
+      "topic": "verb_usage",
+      "prompt": "The sun is strong today. You should ___ on some sunscreen before we go out.",
+      "options": ["put", "take", "dress", "wear"],
+      "answer": "put"
+    },
+    {
+      "id": "en-voca-0008",
+      "cefr": "A2",
+      "topic": "verb_usage",
+      "prompt": "Do you know where I can ___ a cheap charger near here? Mine just died.",
+      "options": ["get", "obtain", "acquire", "procure"],
+      "answer": "get"
+    },
+    {
+      "id": "en-voca-0009",
+      "cefr": "A2",
+      "topic": "adjectives",
+      "prompt": "The film was three hours long and I found it rather ___.",
+      "options": ["boring", "bored", "bore", "boredom"],
+      "answer": "boring"
+    },
+    {
+      "id": "en-voca-0010",
+      "cefr": "A2",
+      "topic": "nouns_and_determiners",
+      "prompt": "I keep my train ticket in my ___ so I don't lose it.",
+      "options": ["wallet", "kitchen", "balcony", "ceiling"],
+      "answer": "wallet"
+    },
+    {
+      "id": "en-voca-0011",
+      "cefr": "B1",
+      "topic": "verb_usage",
+      "prompt": "He ___ up smoking three years ago and hasn't touched a cigarette since.",
+      "options": ["gave", "took", "put", "got"],
+      "answer": "gave"
+    },
+    {
+      "id": "en-voca-0012",
+      "cefr": "B1",
+      "topic": "prepositions_and_case",
+      "prompt": "Could you look ___ my plants while I'm away next week?",
+      "options": ["after", "into", "for", "at"],
+      "answer": "after"
+    },
+    {
+      "id": "en-voca-0013",
+      "cefr": "B1",
+      "topic": "adjectives",
+      "prompt": "After nine hours of meetings, everyone in the room looked completely ___.",
+      "options": ["exhausted", "exhausting", "exhaust", "exhaustive"],
+      "answer": "exhausted"
+    },
+    {
+      "id": "en-voca-0014",
+      "cefr": "B1",
+      "topic": "verb_usage",
+      "prompt": "Even with a full-time job, she manages to ___ most of her evenings painting.",
+      "options": ["spend", "take", "use", "do"],
+      "answer": "spend"
+    },
+    {
+      "id": "en-voca-0015",
+      "cefr": "B1",
+      "topic": "verb_usage",
+      "prompt": "I don't get on with my neighbour, so I try to ___ talking about politics with him.",
+      "options": ["avoid", "prevent", "refuse", "escape"],
+      "answer": "avoid"
+    },
+    {
+      "id": "en-voca-0016",
+      "cefr": "B2",
+      "topic": "adjectives",
+      "prompt": "Her argument was ___, but it failed to persuade the committee.",
+      "options": ["compelling", "compelled", "compellingly", "compel"],
+      "answer": "compelling"
+    },
+    {
+      "id": "en-voca-0017",
+      "cefr": "B2",
+      "topic": "verb_usage",
+      "prompt": "You may not enjoy the winters here, but you'll have to ___, I'm afraid.",
+      "options": ["put up with them", "put them off", "tell them off", "sort them out"],
+      "answer": "put up with them"
+    },
+    {
+      "id": "en-voca-0018",
+      "cefr": "B2",
+      "topic": "nouns_and_determiners",
+      "prompt": "She has an excellent ___ of the subject, though she only took it up last year.",
+      "options": ["grasp", "grip", "hold", "catch"],
+      "answer": "grasp"
+    },
+    {
+      "id": "en-voca-0019",
+      "cefr": "B2",
+      "topic": "nouns_and_determiners",
+      "prompt": "The paper offered a careful ___ of the survey results.",
+      "options": ["interpretation", "misinterpretation", "interpreter", "interpretability"],
+      "answer": "interpretation"
+    },
+    {
+      "id": "en-voca-0020",
+      "cefr": "B2",
+      "topic": "verb_usage",
+      "prompt": "The deadline is tomorrow and we've barely started. We'd better ___.",
+      "options": ["get going", "get through", "get ahead", "get by"],
+      "answer": "get going"
+    },
+    {
+      "id": "en-voca-0021",
+      "cefr": "C1",
+      "topic": "verb_usage",
+      "prompt": "The report ___ serious doubts about the safety of the procedure.",
+      "options": ["raises", "rises", "arises", "lifts"],
+      "answer": "raises"
+    },
+    {
+      "id": "en-voca-0022",
+      "cefr": "C1",
+      "topic": "adjectives",
+      "prompt": "The link was ___ at best: one study, twelve participants, no control group.",
+      "options": ["tenuous", "tenacious", "tenable", "tentative"],
+      "answer": "tenuous"
+    },
+    {
+      "id": "en-voca-0023",
+      "cefr": "C1",
+      "topic": "verb_usage",
+      "prompt": "The two accounts of the incident ___ on almost every material detail.",
+      "options": ["diverge", "converge", "emerge", "submerge"],
+      "answer": "diverge"
+    },
+    {
+      "id": "en-voca-0024",
+      "cefr": "C1",
+      "topic": "nouns_and_determiners",
+      "prompt": "The policy was abandoned after a ___ of complaints from local residents.",
+      "options": ["barrage", "barrier", "baggage", "bargain"],
+      "answer": "barrage"
+    },
+    {
+      "id": "en-voca-0025",
+      "cefr": "C1",
+      "topic": "adjectives",
+      "prompt": "His praise was so ___ that nobody could tell whether he had liked the book.",
+      "options": ["equivocal", "unequivocal", "univocal", "vocal"],
+      "answer": "equivocal"
+    },
+    {
+      "id": "en-voca-0026",
+      "cefr": "C2",
+      "topic": "information_structure_and_pragmatics",
+      "prompt": "The minister's answer was a masterclass in ___: forty words that committed to nothing.",
+      "options": ["obfuscation", "clarification", "elaboration", "confirmation"],
+      "answer": "obfuscation"
+    },
+    {
+      "id": "en-voca-0027",
+      "cefr": "C2",
+      "topic": "adjectives",
+      "prompt": "The distinction he drew was so ___ that half the room missed it entirely.",
+      "options": ["subtle", "subdued", "substantial", "subsidiary"],
+      "answer": "subtle"
+    },
+    {
+      "id": "en-voca-0028",
+      "cefr": "C2",
+      "topic": "nouns_and_determiners",
+      "prompt": "Her resignation letter was read as a ___ of everything the board stood for.",
+      "options": ["repudiation", "reputation", "recuperation", "replication"],
+      "answer": "repudiation"
+    },
+    {
+      "id": "en-voca-0029",
+      "cefr": "C2",
+      "topic": "verb_usage",
+      "prompt": "The new regulations threaten to ___ the very protections they were meant to strengthen.",
+      "options": ["undermine", "underline", "undertake", "understate"],
+      "answer": "undermine"
+    },
+    {
+      "id": "en-voca-0030",
+      "cefr": "C2",
+      "topic": "adjectives",
+      "prompt": "The committee's approach was frustratingly ___, changing with whoever spoke last.",
+      "options": ["capricious", "capacious", "captious", "captivating"],
+      "answer": "capricious"
+    }
+  ]
+}

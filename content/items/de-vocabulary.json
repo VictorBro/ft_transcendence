@@ -1,0 +1,246 @@
+{
+  "language": "de",
+  "skill": "vocabulary",
+  "items": [
+    {
+      "id": "de-voca-0001",
+      "cefr": "A1",
+      "topic": "information_structure_and_pragmatics",
+      "prompt": "Ich habe großen ___. Gibt es etwas zu essen?",
+      "options": ["Hunger", "Durst", "Schlaf", "Spaß"],
+      "answer": "Hunger"
+    },
+    {
+      "id": "de-voca-0002",
+      "cefr": "A1",
+      "topic": "adjectives",
+      "prompt": "Im Winter ist es hier sehr ___, wir brauchen warme Jacken.",
+      "options": ["kalt", "heiß", "weich", "laut"],
+      "answer": "kalt"
+    },
+    {
+      "id": "de-voca-0003",
+      "cefr": "A1",
+      "topic": "verb_usage",
+      "prompt": "Ich ___ jeden Morgen um sieben Uhr auf.",
+      "options": ["stehe", "gehe", "komme", "mache"],
+      "answer": "stehe"
+    },
+    {
+      "id": "de-voca-0004",
+      "cefr": "A1",
+      "topic": "nouns_and_determiners",
+      "prompt": "Das Brot kaufe ich immer in der ___ an der Ecke.",
+      "options": ["Bäckerei", "Apotheke", "Buchhandlung", "Bank"],
+      "answer": "Bäckerei"
+    },
+    {
+      "id": "de-voca-0005",
+      "cefr": "A1",
+      "topic": "information_structure_and_pragmatics",
+      "prompt": "___ geht es dir? — Danke, gut!",
+      "options": ["Wie", "Was", "Wer", "Wo"],
+      "answer": "Wie"
+    },
+    {
+      "id": "de-voca-0006",
+      "cefr": "A2",
+      "topic": "verb_usage",
+      "prompt": "Kannst du bitte den Tisch ___? Das Essen ist gleich fertig.",
+      "options": ["decken", "stellen", "legen", "bauen"],
+      "answer": "decken"
+    },
+    {
+      "id": "de-voca-0007",
+      "cefr": "A2",
+      "topic": "nouns_and_determiners",
+      "prompt": "Mein Handy ist fast leer. Hast du ein ___ dabei?",
+      "options": ["Ladekabel", "Feuerzeug", "Wörterbuch", "Portemonnaie"],
+      "answer": "Ladekabel"
+    },
+    {
+      "id": "de-voca-0008",
+      "cefr": "A2",
+      "topic": "adjectives",
+      "prompt": "Die Prüfung war gar nicht schwer, sie war ziemlich ___.",
+      "options": ["leicht", "schwach", "klein", "weich"],
+      "answer": "leicht"
+    },
+    {
+      "id": "de-voca-0009",
+      "cefr": "A2",
+      "topic": "verb_usage",
+      "prompt": "Beeil dich, sonst ___ wir den Bus!",
+      "options": ["verpassen", "verlieren", "vergessen", "verlassen"],
+      "answer": "verpassen"
+    },
+    {
+      "id": "de-voca-0010",
+      "cefr": "A2",
+      "topic": "information_structure_and_pragmatics",
+      "prompt": "Entschuldigung, können Sie das bitte ___? Ich habe es nicht verstanden.",
+      "options": ["wiederholen", "wiedersehen", "widersprechen", "zurückgeben"],
+      "answer": "wiederholen"
+    },
+    {
+      "id": "de-voca-0011",
+      "cefr": "B1",
+      "topic": "verb_usage",
+      "prompt": "Ich muss noch einen Termin beim Zahnarzt ___.",
+      "options": ["vereinbaren", "bestellen", "einrichten", "besetzen"],
+      "answer": "vereinbaren"
+    },
+    {
+      "id": "de-voca-0012",
+      "cefr": "B1",
+      "topic": "nouns_and_determiners",
+      "prompt": "Bei Fragen wenden Sie sich bitte an die ___ im Erdgeschoss.",
+      "options": ["Auskunft", "Ausfahrt", "Aussicht", "Ausrede"],
+      "answer": "Auskunft"
+    },
+    {
+      "id": "de-voca-0013",
+      "cefr": "B1",
+      "topic": "adjectives",
+      "prompt": "Vielen Dank für deine Hilfe, das ist wirklich ___ von dir.",
+      "options": ["nett", "froh", "stolz", "brav"],
+      "answer": "nett"
+    },
+    {
+      "id": "de-voca-0014",
+      "cefr": "B1",
+      "topic": "verb_usage",
+      "prompt": "Er hat sich schnell an das Leben in der Großstadt ___.",
+      "options": ["gewöhnt", "gewonnen", "gewandt", "gewundert"],
+      "answer": "gewöhnt"
+    },
+    {
+      "id": "de-voca-0015",
+      "cefr": "B1",
+      "topic": "prepositions_and_case",
+      "prompt": "Sie interessiert sich schon lange ___ Geschichte.",
+      "options": ["für", "an", "über", "um"],
+      "answer": "für"
+    },
+    {
+      "id": "de-voca-0016",
+      "cefr": "B2",
+      "topic": "verb_usage",
+      "prompt": "Die Regierung will an der Reform ___, obwohl viele dagegen protestieren.",
+      "options": ["festhalten", "aufhalten", "anhalten", "enthalten"],
+      "answer": "festhalten"
+    },
+    {
+      "id": "de-voca-0017",
+      "cefr": "B2",
+      "topic": "nouns_and_determiners",
+      "prompt": "Der Streik führte zu erheblichen ___ im Bahnverkehr.",
+      "options": ["Beeinträchtigungen", "Bemühungen", "Beschäftigungen", "Berechtigungen"],
+      "answer": "Beeinträchtigungen"
+    },
+    {
+      "id": "de-voca-0018",
+      "cefr": "B2",
+      "topic": "adjectives",
+      "prompt": "Die Ergebnisse der Studie sind ___: Man kann daraus keine klaren Schlüsse ziehen.",
+      "options": ["widersprüchlich", "widerspenstig", "widerlich", "widerrechtlich"],
+      "answer": "widersprüchlich"
+    },
+    {
+      "id": "de-voca-0019",
+      "cefr": "B2",
+      "topic": "verb_usage",
+      "prompt": "Der Roman ___ das Leben einer Familie über drei Generationen.",
+      "options": ["schildert", "bildet", "malt", "zeichnet"],
+      "answer": "schildert"
+    },
+    {
+      "id": "de-voca-0020",
+      "cefr": "B2",
+      "topic": "information_structure_and_pragmatics",
+      "prompt": "___ hat sich der ganze Aufwand gelohnt: Das Projekt wurde ein voller Erfolg.",
+      "options": ["Letztendlich", "Neuerdings", "Bekanntlich", "Keineswegs"],
+      "answer": "Letztendlich"
+    },
+    {
+      "id": "de-voca-0021",
+      "cefr": "C1",
+      "topic": "verb_usage",
+      "prompt": "Die Verhandlungen ___ sich über Monate hin, ehe man sich einigte.",
+      "options": ["zogen", "dehnten", "streckten", "spannten"],
+      "answer": "zogen"
+    },
+    {
+      "id": "de-voca-0022",
+      "cefr": "C1",
+      "topic": "adjectives",
+      "prompt": "Trotz aller Kritik blieb sie in dieser Frage ___.",
+      "options": ["unnachgiebig", "unausweichlich", "unaufhaltsam", "unentbehrlich"],
+      "answer": "unnachgiebig"
+    },
+    {
+      "id": "de-voca-0023",
+      "cefr": "C1",
+      "topic": "nouns_and_determiners",
+      "prompt": "Der Artikel zieht eine aufschlussreiche ___ zwischen den beiden Finanzkrisen.",
+      "options": ["Parallele", "Gleichung", "Deckung", "Spiegelung"],
+      "answer": "Parallele"
+    },
+    {
+      "id": "de-voca-0024",
+      "cefr": "C1",
+      "topic": "verb_usage",
+      "prompt": "Diese Entdeckung ___ bisherige Annahmen grundlegend in Frage.",
+      "options": ["stellt", "setzt", "legt", "zieht"],
+      "answer": "stellt"
+    },
+    {
+      "id": "de-voca-0025",
+      "cefr": "C1",
+      "topic": "information_structure_and_pragmatics",
+      "prompt": "Seine Antwort war ___ gesagt enttäuschend.",
+      "options": ["gelinde", "geradezu", "gering", "gelassen"],
+      "answer": "gelinde"
+    },
+    {
+      "id": "de-voca-0026",
+      "cefr": "C2",
+      "topic": "nouns_and_determiners",
+      "prompt": "Mit kaum verhohlener ___ kommentierte er den Erfolg seines Rivalen.",
+      "options": ["Missgunst", "Misshandlung", "Missernte", "Missweisung"],
+      "answer": "Missgunst"
+    },
+    {
+      "id": "de-voca-0027",
+      "cefr": "C2",
+      "topic": "adjectives",
+      "prompt": "Seine Argumentation war so ___, dass selbst Fachleute ihr kaum folgen konnten.",
+      "options": ["verschachtelt", "verschraubt", "verschnürt", "verschüttet"],
+      "answer": "verschachtelt"
+    },
+    {
+      "id": "de-voca-0028",
+      "cefr": "C2",
+      "topic": "verb_usage",
+      "prompt": "Statt den Streit zu schlichten, hat sein Auftritt die Lage noch ___.",
+      "options": ["verschärft", "verschoben", "versetzt", "verstellt"],
+      "answer": "verschärft"
+    },
+    {
+      "id": "de-voca-0029",
+      "cefr": "C2",
+      "topic": "adjectives",
+      "prompt": "Seine Versprechungen erwiesen sich als ___: Nichts davon wurde eingehalten.",
+      "options": ["haltlos", "ratlos", "ahnungslos", "restlos"],
+      "answer": "haltlos"
+    },
+    {
+      "id": "de-voca-0030",
+      "cefr": "C2",
+      "topic": "information_structure_and_pragmatics",
+      "prompt": "Er ließ die Entscheidung bewusst in der ___, damit sich jeder ein eigenes Urteil bilden konnte.",
+      "options": ["Schwebe", "Schwelle", "Schleife", "Schwemme"],
+      "answer": "Schwebe"
+    }
+  ]
+}

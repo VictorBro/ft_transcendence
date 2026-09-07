@@ -1,0 +1,246 @@
+{
+  "language": "fr",
+  "skill": "vocabulary",
+  "items": [
+    {
+      "id": "fr-voca-0001",
+      "cefr": "A1",
+      "topic": "information_structure_and_pragmatics",
+      "prompt": "J'ai très ___. Est-ce qu'il reste du pain ?",
+      "options": ["faim", "soif", "froid", "peur"],
+      "answer": "faim"
+    },
+    {
+      "id": "fr-voca-0002",
+      "cefr": "A1",
+      "topic": "adjectives",
+      "prompt": "Attention, le thé est très ___, ne te brûle pas.",
+      "options": ["chaud", "froid", "grand", "long"],
+      "answer": "chaud"
+    },
+    {
+      "id": "fr-voca-0003",
+      "cefr": "A1",
+      "topic": "verb_usage",
+      "prompt": "Le matin, je ___ le bus pour aller au travail.",
+      "options": ["prends", "monte", "vais", "fais"],
+      "answer": "prends"
+    },
+    {
+      "id": "fr-voca-0004",
+      "cefr": "A1",
+      "topic": "nouns_and_determiners",
+      "prompt": "On achète le pain à la ___.",
+      "options": ["boulangerie", "pharmacie", "librairie", "banque"],
+      "answer": "boulangerie"
+    },
+    {
+      "id": "fr-voca-0005",
+      "cefr": "A1",
+      "topic": "prepositions_and_case",
+      "prompt": "Le chat dort ___ le canapé, on ne le voit pas.",
+      "options": ["sous", "dans", "entre", "chez"],
+      "answer": "sous"
+    },
+    {
+      "id": "fr-voca-0006",
+      "cefr": "A2",
+      "topic": "verb_usage",
+      "prompt": "Tu peux ___ la table ? Le dîner est prêt.",
+      "options": ["mettre", "poser", "placer", "monter"],
+      "answer": "mettre"
+    },
+    {
+      "id": "fr-voca-0007",
+      "cefr": "A2",
+      "topic": "nouns_and_determiners",
+      "prompt": "Mon téléphone n'a presque plus de ___, je dois le recharger.",
+      "options": ["batterie", "essence", "monnaie", "lumière"],
+      "answer": "batterie"
+    },
+    {
+      "id": "fr-voca-0008",
+      "cefr": "A2",
+      "topic": "adjectives",
+      "prompt": "Ce pull est trop ___ pour moi, il me faut la taille au-dessus.",
+      "options": ["petit", "jeune", "bas", "léger"],
+      "answer": "petit"
+    },
+    {
+      "id": "fr-voca-0009",
+      "cefr": "A2",
+      "topic": "verb_usage",
+      "prompt": "Dépêche-toi, on va ___ le train !",
+      "options": ["rater", "perdre", "laisser", "tomber"],
+      "answer": "rater"
+    },
+    {
+      "id": "fr-voca-0010",
+      "cefr": "A2",
+      "topic": "information_structure_and_pragmatics",
+      "prompt": "___ ! J'ai encore oublié mes clés au bureau.",
+      "options": ["Zut", "Merci", "Bravo", "Santé"],
+      "answer": "Zut"
+    },
+    {
+      "id": "fr-voca-0011",
+      "cefr": "B1",
+      "topic": "verb_usage",
+      "prompt": "Il faut que je ___ un rendez-vous chez le dentiste cette semaine.",
+      "options": ["prenne", "fasse", "mette", "pose"],
+      "answer": "prenne"
+    },
+    {
+      "id": "fr-voca-0012",
+      "cefr": "B1",
+      "topic": "nouns_and_determiners",
+      "prompt": "Avant de signer, lisez bien toutes les ___ du contrat.",
+      "options": ["conditions", "situations", "positions", "décisions"],
+      "answer": "conditions"
+    },
+    {
+      "id": "fr-voca-0013",
+      "cefr": "B1",
+      "topic": "adjectives",
+      "prompt": "Merci pour ton aide, c'est vraiment ___ de ta part.",
+      "options": ["gentil", "poli", "doux", "sage"],
+      "answer": "gentil"
+    },
+    {
+      "id": "fr-voca-0014",
+      "cefr": "B1",
+      "topic": "verb_usage",
+      "prompt": "Ne t'inquiète pas pour lui, il sait se ___ tout seul.",
+      "options": ["débrouiller", "dérouler", "déranger", "détendre"],
+      "answer": "débrouiller"
+    },
+    {
+      "id": "fr-voca-0015",
+      "cefr": "B1",
+      "topic": "prepositions_and_case",
+      "prompt": "Elle s'intéresse beaucoup ___ l'histoire de sa région.",
+      "options": ["à", "de", "pour", "sur"],
+      "answer": "à"
+    },
+    {
+      "id": "fr-voca-0016",
+      "cefr": "B2",
+      "topic": "verb_usage",
+      "prompt": "Le gouvernement a décidé de ___ la réforme malgré les protestations.",
+      "options": ["maintenir", "retenir", "soutenir", "obtenir"],
+      "answer": "maintenir"
+    },
+    {
+      "id": "fr-voca-0017",
+      "cefr": "B2",
+      "topic": "nouns_and_determiners",
+      "prompt": "La grève a entraîné d'importantes ___ dans les transports.",
+      "options": ["perturbations", "distractions", "éruptions", "démonstrations"],
+      "answer": "perturbations"
+    },
+    {
+      "id": "fr-voca-0018",
+      "cefr": "B2",
+      "topic": "adjectives",
+      "prompt": "Les résultats de l'étude restent ___ : impossible d'en tirer une conclusion.",
+      "options": ["ambigus", "ambiants", "amovibles", "ambulants"],
+      "answer": "ambigus"
+    },
+    {
+      "id": "fr-voca-0019",
+      "cefr": "B2",
+      "topic": "verb_usage",
+      "prompt": "Ce roman ___ l'histoire d'une famille sur trois générations.",
+      "options": ["retrace", "retire", "retient", "reporte"],
+      "answer": "retrace"
+    },
+    {
+      "id": "fr-voca-0020",
+      "cefr": "B2",
+      "topic": "information_structure_and_pragmatics",
+      "prompt": "___, après des mois de discussions, le projet a été approuvé à l'unanimité.",
+      "options": ["Finalement", "Éventuellement", "Actuellement", "Forcément"],
+      "answer": "Finalement"
+    },
+    {
+      "id": "fr-voca-0021",
+      "cefr": "C1",
+      "topic": "verb_usage",
+      "prompt": "Les négociations ont ___ sur un accord de dernière minute.",
+      "options": ["débouché", "abouti", "conclu", "terminé"],
+      "answer": "débouché"
+    },
+    {
+      "id": "fr-voca-0022",
+      "cefr": "C1",
+      "topic": "adjectives",
+      "prompt": "Malgré les critiques, il est resté ___ sur sa position.",
+      "options": ["inflexible", "incassable", "inaltérable", "insoluble"],
+      "answer": "inflexible"
+    },
+    {
+      "id": "fr-voca-0023",
+      "cefr": "C1",
+      "topic": "nouns_and_determiners",
+      "prompt": "L'article établit un ___ éclairant entre les deux crises financières.",
+      "options": ["parallèle", "pareil", "semblable", "comparatif"],
+      "answer": "parallèle"
+    },
+    {
+      "id": "fr-voca-0024",
+      "cefr": "C1",
+      "topic": "verb_usage",
+      "prompt": "Cette découverte ___ en cause tout ce que l'on croyait savoir.",
+      "options": ["remet", "repose", "retourne", "revient"],
+      "answer": "remet"
+    },
+    {
+      "id": "fr-voca-0025",
+      "cefr": "C1",
+      "topic": "information_structure_and_pragmatics",
+      "prompt": "Ses explications étaient pour le moins ___ : personne n'a compris où il voulait en venir.",
+      "options": ["confuses", "confondues", "confidentielles", "conformes"],
+      "answer": "confuses"
+    },
+    {
+      "id": "fr-voca-0026",
+      "cefr": "C2",
+      "topic": "nouns_and_determiners",
+      "prompt": "Le ministre s'est exprimé avec une ___ calculée, ne promettant rien de précis.",
+      "options": ["circonspection", "circonscription", "circonvolution", "circulation"],
+      "answer": "circonspection"
+    },
+    {
+      "id": "fr-voca-0027",
+      "cefr": "C2",
+      "topic": "adjectives",
+      "prompt": "Son style, d'une élégance ___, tranche avec la lourdeur de ses contemporains.",
+      "options": ["épurée", "épuisée", "épineuse", "éperdue"],
+      "answer": "épurée"
+    },
+    {
+      "id": "fr-voca-0028",
+      "cefr": "C2",
+      "topic": "verb_usage",
+      "prompt": "Loin d'apaiser le débat, sa déclaration n'a fait que l'___.",
+      "options": ["envenimer", "enjamber", "entériner", "enrayer"],
+      "answer": "envenimer"
+    },
+    {
+      "id": "fr-voca-0029",
+      "cefr": "C2",
+      "topic": "adjectives",
+      "prompt": "Ses promesses se sont révélées ___ : rien de ce qui était annoncé n'a été tenu.",
+      "options": ["fallacieuses", "fastidieuses", "fastueuses", "farouches"],
+      "answer": "fallacieuses"
+    },
+    {
+      "id": "fr-voca-0030",
+      "cefr": "C2",
+      "topic": "information_structure_and_pragmatics",
+      "prompt": "C'est à dessein qu'il a laissé la question ___, préférant que chacun se fasse sa propre opinion.",
+      "options": ["en suspens", "en instance", "en souffrance", "en défaut"],
+      "answer": "en suspens"
+    }
+  ]
+}

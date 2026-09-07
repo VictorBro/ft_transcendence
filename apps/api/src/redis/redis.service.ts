@@ -10,8 +10,8 @@ function requireRedisUrl(): string {
 }
 
 /**
- * The one Redis connection. Sessions, and later the socket.io adapter and the
- * throttler, all share it rather than opening their own.
+ * The one Redis connection. Sessions, and later presence and the generated
+ * lesson cache, all share it rather than opening their own.
  */
 @Injectable()
 export class RedisService implements OnModuleInit, OnModuleDestroy {

@@ -62,10 +62,22 @@ IN_CONTAINER := $(wildcard /.dockerenv)
 DB_HOST    := $(if $(IN_CONTAINER),db,127.0.0.1)
 REDIS_HOST := $(if $(IN_CONTAINER),redis,127.0.0.1)
 
+# Make does not read .env, so pull the two host ports out of it. A value already
+# in the environment wins.
+ENV_FILE := $(wildcard .env)
+env_get = $(strip $(if $(ENV_FILE),$(shell sed -n 's/^[[:space:]]*$(1)=//p' $(ENV_FILE) | tail -1)))
+POSTGRES_HOST_PORT ?= $(or $(call env_get,POSTGRES_HOST_PORT),5432)
+REDIS_HOST_PORT    ?= $(or $(call env_get,REDIS_HOST_PORT),6379)
+
+# Standard ports on the compose network, published ports from a host shell. A
+# wrong port here connects to another database instead of failing.
+DB_PORT    := $(if $(IN_CONTAINER),5432,$(POSTGRES_HOST_PORT))
+REDIS_PORT := $(if $(IN_CONTAINER),6379,$(REDIS_HOST_PORT))
+
 # Exported so `pnpm test` and the Supertest suite see them without every recipe
 # repeating them. Existing values from the shell win.
-DATABASE_URL ?= postgresql://ft:ft_local_dev@$(DB_HOST):5432/ft_transcendence?schema=public
-REDIS_URL    ?= redis://$(REDIS_HOST):6379
+DATABASE_URL ?= postgresql://ft:ft_local_dev@$(DB_HOST):$(DB_PORT)/ft_transcendence?schema=public
+REDIS_URL    ?= redis://$(REDIS_HOST):$(REDIS_PORT)
 SESSION_SECRET ?= dev-only-session-secret-change-me-at-least-32-chars
 export DATABASE_URL REDIS_URL SESSION_SECRET
 

@@ -41,12 +41,6 @@ describe('API (e2e)', () => {
     });
   });
 
-  it('GET /api/hello', async () => {
-    const response = await request(app.getHttpServer()).get('/api/hello').expect(200);
-
-    expect(response.body).toEqual({ message: 'Hello from @ft/api' });
-  });
-
   it('serves the OpenAPI document at /api/docs', async () => {
     const response = await request(app.getHttpServer()).get('/api/docs-json').expect(200);
 
