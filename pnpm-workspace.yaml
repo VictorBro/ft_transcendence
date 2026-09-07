@@ -35,6 +35,7 @@ allowBuilds:
   # Not installed yet: arrives with password hashing in plan step 5. Listed now so
   # the native build is not silently skipped the day it is added.
   argon2: true
+  '@parcel/watcher': true
 
 # pnpm 11 defaults minimumReleaseAge to 1440 minutes: a version published less
 # than 24h ago is refused, which blunts npm account-takeover attacks. Keep it on.

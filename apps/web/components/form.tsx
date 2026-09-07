@@ -2,6 +2,7 @@
 
 import type { InputHTMLAttributes, ReactNode } from 'react';
 import { useId } from 'react';
+import { useTranslations } from 'next-intl';
 
 type FieldProps = InputHTMLAttributes<HTMLInputElement> & {
   label: string;
@@ -50,13 +51,15 @@ export function FormError({ message }: { message: string | null }) {
 }
 
 export function SubmitButton({ pending, children }: { pending: boolean; children: ReactNode }) {
+  const t = useTranslations('Form');
+
   return (
     <button
       type="submit"
       disabled={pending}
       className="rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white disabled:opacity-60 dark:bg-slate-100 dark:text-slate-900"
     >
-      {pending ? 'Working…' : children}
+      {pending ? t('working') : children}
     </button>
   );
 }

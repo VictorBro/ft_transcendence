@@ -7,7 +7,7 @@ import {
   LEGAL_MINIMUM_CHARACTERS,
   type LegalDocument,
 } from './legal';
-import { legalDocuments, privacyPolicy, termsOfService } from './legal-content';
+import { getLegalContent, TRANSLATED_LOCALES } from './legal-content';
 
 const stub: LegalDocument = {
   slug: 'stub',
@@ -18,12 +18,18 @@ const stub: LegalDocument = {
   sections: [{ id: 'one', heading: 'One', paragraphs: ['A.', 'B.'] }],
 };
 
+// Every document of every written language, so adding a locale file to the
+// catalogue puts it under the same rejection-criterion assertions as the rest
+// without touching this file.
 // Typed as tuples so each() hands the callback (string, LegalDocument) rather
 // than a union of both.
-const published: [string, LegalDocument][] = [
-  ['privacy policy', privacyPolicy],
-  ['terms of service', termsOfService],
-];
+const published: [string, LegalDocument][] = TRANSLATED_LOCALES.flatMap((locale) => {
+  const { privacyPolicy, termsOfService } = getLegalContent(locale);
+  return [
+    [`privacy policy (${locale})`, privacyPolicy],
+    [`terms of service (${locale})`, termsOfService],
+  ] satisfies [string, LegalDocument][];
+});
 
 describe('legalDocumentText', () => {
   it('concatenates intro, headings and paragraphs in order', () => {
@@ -78,8 +84,26 @@ describe.each(published)('%s', (_name, doc) => {
   });
 });
 
-describe('legalDocuments', () => {
+describe.each(TRANSLATED_LOCALES)('legalDocuments (%s)', (locale) => {
   it('exposes both documents under unique slugs', () => {
-    expect(legalDocuments.map((doc) => doc.slug)).toEqual(['privacy', 'terms']);
+    expect(getLegalContent(locale).legalDocuments.map((doc) => doc.slug)).toEqual([
+      'privacy',
+      'terms',
+    ]);
+  });
+
+  // Section ids are URL anchors, so a link to /en/privacy#retention has to keep
+  // working when the reader switches to /fr/privacy#retention. Translating an id
+  // along with its heading is the easy mistake this catches.
+  it('keeps the English section anchors', () => {
+    const english = getLegalContent('en');
+    const translated = getLegalContent(locale);
+
+    expect(legalSectionIds(translated.privacyPolicy)).toEqual(
+      legalSectionIds(english.privacyPolicy),
+    );
+    expect(legalSectionIds(translated.termsOfService)).toEqual(
+      legalSectionIds(english.termsOfService),
+    );
   });
 });

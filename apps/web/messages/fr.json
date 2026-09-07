@@ -1,0 +1,193 @@
+{
+  "Test": {
+    "greeting": "stub: fr"
+  },
+  "SessionNav": {
+    "accountNav": "Compte",
+    "signIn": "Se connecter",
+    "createAccount": "Créer un compte"
+  },
+  "LanguageSwitcher": {
+    "label": "Langue"
+  },
+  "Layout": {
+    "productName": "ft_transcendence",
+    "description": "Une plateforme d'apprentissage des langues pilotée par IA : leçons générées, évaluation automatique du niveau et pratique en direct avec un autre apprenant."
+  },
+  "Footer": {
+    "legalNav": "Informations légales",
+    "academicProject": "Un projet académique. Pas un service commercial.",
+    "privacyPolicy": "Politique de confidentialité",
+    "termsOfService": "Conditions d'utilisation",
+    "legalSentence": "Un projet académique. Pas un service commercial. Consultez notre <privacy>politique de confidentialité</privacy> et nos <terms>conditions d'utilisation</terms>."
+  },
+  "HomePage": {
+    "headline": "Apprenez une langue avec un tuteur qui s'adapte à vous !",
+    "intro": "ft_transcendence génère des leçons, corrige vos réponses, suit le niveau qu'il en déduit, et vous associe à un autre apprenant pour une pratique en direct. Cette page est le squelette : tout ce qui suit est de la plomberie, pas du produit.",
+    "startNow": "Commencer",
+    "goToLobby": "Accéder au salon",
+    "logoAlt": "Logo ft_transcendence"
+  },
+  "Lobby": {
+    "title": "Salon",
+    "heading": "Modes d'entraînement",
+    "friendsTitle": "Discuter avec un ami",
+    "friendsDescription": "Discutez en temps réel avec un ami dans n'importe quelle langue. Nous traduisons et corrigeons pour vous deux.",
+    "chatTitle": "Conversation",
+    "chatDescription": "Développez vos compétences linguistiques en pratiquant avec notre tuteur IA.",
+    "progressTitle": "Progression guidée",
+    "progressDescription": "Suivez un parcours de conversation qui s'adapte à votre progression, du débutant à l'avancé.",
+    "wordTitle": "Mode mots",
+    "wordDescription": "Construisez votre vocabulaire de base à l'aide de nos listes de mots.",
+    "sentenceTitle": "Mode phrases",
+    "sentenceDescription": "Construisez vos compétences linguistiques depuis les fondations.",
+    "roleplayTitle": "Jeu de rôle",
+    "roleplayDescription": "Entraînez-vous avec des scénarios utiles de la vie courante."
+  },
+  "ComingSoon": {
+    "stillInDevelopment": "Ce mode est encore en développement. Revenez bientôt."
+  },
+  "ModeLayout": {
+    "backToDashboard": "Retour au salon"
+  },
+  "ChatPage": {
+    "title": "Conversation",
+    "heading": "Discuter avec votre tuteur",
+    "tutor": "Tuteur",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Votre message…",
+    "sendMessage": "Envoyer le message",
+    "feedbackHeading": "Recevez un retour sur vos messages",
+    "feedbackIntro": "L'IA analysera vos messages et vous donnera un retour personnalisé."
+  },
+  "ErrorPage": {
+    "heading": "Une erreur est survenue",
+    "intro": "Nous n'avons pas pu joindre le service. Vous êtes toujours connecté, et cela ne dure généralement qu'un instant.",
+    "tryAgain": "Réessayer",
+    "goHome": "Retour à l'accueil"
+  },
+  "NotFoundPage": {
+    "title": "Page introuvable",
+    "heading": "Page introuvable",
+    "intro": "Cette adresse n'existe pas. Elle a peut-être changé, ou le lien qui vous a amené ici n'est plus à jour.",
+    "goHome": "Retour à l'accueil"
+  },
+  "LoginPage": {
+    "heading": "Se connecter"
+  },
+  "LoginForm": {
+    "twoFactorPrompt": "Saisissez le code à six chiffres de votre application d'authentification, ou l'un de vos codes de récupération.",
+    "authenticationCode": "Code d'authentification",
+    "verify": "Vérifier",
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "signIn": "Se connecter",
+    "noAccountYet": "Pas encore de compte ?",
+    "createOne": "Créez-en un"
+  },
+  "SignUpPage": {
+    "heading": "Créer un compte"
+  },
+  "SignUpForm": {
+    "email": "E-mail",
+    "displayName": "Nom d'affichage",
+    "displayNameHint": "Lettres, chiffres, point, tiret bas et trait d'union. Au moins 3 caractères.",
+    "password": "Mot de passe",
+    "passwordHint": "Au moins 12 caractères, avec une majuscule, une minuscule et un chiffre.",
+    "confirmPassword": "Confirmer le mot de passe",
+    "createAccount": "Créer un compte",
+    "alreadyHaveAccount": "Vous avez déjà un compte ?",
+    "signIn": "Se connecter"
+  },
+  "Form": {
+    "working": "En cours…"
+  },
+  "Errors": {
+    "displayName": {
+      "tooShort": "Le nom d'affichage doit contenir au moins 3 caractères",
+      "tooLong": "Le nom d'affichage est limité à 32 caractères",
+      "invalidCharacters": "Le nom d'affichage accepte lettres, chiffres, point, tiret bas et trait d'union"
+    },
+    "password": {
+      "tooShort": "Le mot de passe doit contenir au moins 12 caractères",
+      "tooLong": "Le mot de passe est limité à 128 caractères",
+      "needsLowercase": "Le mot de passe doit contenir une minuscule",
+      "needsUppercase": "Le mot de passe doit contenir une majuscule",
+      "needsDigit": "Le mot de passe doit contenir un chiffre",
+      "required": "Saisissez votre mot de passe",
+      "mismatch": "Les deux mots de passe ne correspondent pas"
+    },
+    "email": {
+      "invalid": "Saisissez une adresse e-mail valide"
+    },
+    "auth": {
+      "invalidCredentials": "Adresse e-mail ou mot de passe incorrect",
+      "incorrectPassword": "Mot de passe incorrect",
+      "identityTaken": "Cette adresse e-mail ou ce nom d'affichage est déjà utilisé",
+      "displayNameTaken": "Ce nom d'affichage est déjà utilisé",
+      "passwordFirst": "Connectez-vous d'abord avec votre mot de passe"
+    },
+    "avatarUrl": {
+      "invalid": "Saisissez une URL valide"
+    },
+    "profile": {
+      "noChanges": "Modifiez au moins un champ"
+    },
+    "twoFactor": {
+      "codeFormat": "Saisissez le code à six chiffres de votre application d'authentification",
+      "recoveryCodeFormat": "Cela ne ressemble pas à un code de récupération",
+      "secondFactorFormat": "Saisissez un code à six chiffres de votre application, ou l'un de vos codes de récupération",
+      "setupFirst": "Commencez d'abord la configuration à deux facteurs",
+      "invalidCode": "Ce code n'est pas valide"
+    },
+    "network": {
+      "unreachable": "Impossible de joindre le serveur"
+    },
+    "server": {
+      "unexpected": "Le serveur a répondu HTTP {status}"
+    },
+    "unknown": "Une erreur est survenue. Réessayez."
+  },
+  "LogOutButton": {
+    "signingOut": "Déconnexion…",
+    "signOut": "Se déconnecter"
+  },
+  "LegalArticle": {
+    "lastUpdated": "Dernière mise à jour"
+  },
+  "ProfilePage": {
+    "title": "Profil",
+    "joined": "Inscrit le {date}",
+    "security": "Sécurité",
+    "twoFactorPrompt": "Ajoutez un second facteur pour qu'un mot de passe volé ne suffise pas à se connecter.",
+    "twoFactorAuthentication": "Authentification à deux facteurs"
+  },
+  "ProfileForm": {
+    "editProfile": "Modifier le profil",
+    "displayName": "Nom d'affichage",
+    "avatarUrl": "URL de l'avatar",
+    "avatarUrlHint": "Laissez vide pour utiliser l'avatar par défaut.",
+    "profileSaved": "Profil enregistré.",
+    "saveChanges": "Enregistrer les modifications"
+  },
+  "TwoFactorPage": {
+    "heading": "Authentification à deux facteurs",
+    "intro": "Une application d'authentification génère un code qui change toutes les 30 secondes. Une fois activée, un mot de passe volé seul ne suffit pas pour se connecter."
+  },
+  "TwoFactorPanel": {
+    "saveRecoveryCodesHeading": "Enregistrez vos codes de récupération",
+    "recoveryCodesIntro": "Chaque code fonctionne une seule fois, en cas de perte de votre authentificateur. C'est la seule fois où ils sont affichés.",
+    "savedThem": "Je les ai enregistrés",
+    "scanHeading": "Scannez ce code",
+    "qrAlt": "Code QR pour votre application d'authentification",
+    "cannotScan": "Impossible de scanner ? Saisissez cette clé manuellement :",
+    "codeFromApp": "Code depuis votre application",
+    "turnOn": "Activer",
+    "enabledStatus": "L'authentification à deux facteurs est activée. {count} codes de récupération restants.",
+    "confirmPasswordToTurnOff": "Confirmez votre mot de passe pour la désactiver",
+    "turnOff": "Désactiver",
+    "disabledStatus": "L'authentification à deux facteurs est désactivée.",
+    "working": "En cours…",
+    "setUp": "Configurer"
+  }
+}
