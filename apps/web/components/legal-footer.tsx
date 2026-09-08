@@ -26,7 +26,7 @@ export function LegalFooter({ full = false }: { full?: boolean }) {
       className={
         full
           ? 'border-t border-slate-800 px-6 py-6 text-center text-sm text-slate-400'
-          : 'shrink-0 px-6 pt-0 pb-4 text-center text-[11px] text-slate-500'
+          : 'shrink-0 px-6 pt-2 pb-3 text-center text-[11px] text-slate-500'
       }
     >
       <nav aria-label={t('legalNav')}>

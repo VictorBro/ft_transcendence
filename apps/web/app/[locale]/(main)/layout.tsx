@@ -10,7 +10,7 @@ import { Shell, Wordmark } from '@/components/shell';
  */
 export default function MainLayout({ children }: { children: ReactNode }) {
   return (
-    <Shell brand={<Wordmark />} nav={<HeaderNav />} footer={<LegalFooter full />}>
+    <Shell brand={<Wordmark />} nav={<HeaderNav />} fill footer={<LegalFooter />}>
       {children}
     </Shell>
   );
