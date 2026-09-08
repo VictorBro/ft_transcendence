@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
 
 import { Link } from '@/i18n/navigation';
@@ -14,7 +15,7 @@ import { Link } from '@/i18n/navigation';
 export function LegalFooter({ full = false }: { full?: boolean }) {
   const t = useTranslations('Footer');
 
-  const link = (href: string) => (chunks: React.ReactNode) => (
+  const link = (href: string) => (chunks: ReactNode) => (
     <Link href={href} className="underline underline-offset-4 hover:text-slate-300">
       {chunks}
     </Link>

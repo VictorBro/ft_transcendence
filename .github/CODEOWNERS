@@ -30,7 +30,7 @@
 # of us touch every area, so per-directory ownership would mostly add waiting
 # time without improving review quality. Split it the day PRs start going to the
 # wrong person.
-*   @VictorBro @avarrett @baschni @luca-mattei @VYAntares
+*   @VictorBro @avarrett @bastian-schnitzler @luca-mattei @VYAntares
 
 # --- narrow once roles are assigned ------------------------------------------
 # The subject requires documented team roles (PO, Scrum Master, Tech Lead,
@@ -59,6 +59,6 @@
 # docs/VERSIONS.md is load-bearing: trap 1 is enforced by CI against it,
 # and the pnpm files decide what every package resolves to. Whole-team review,
 # so a bump is a decision rather than a drive-by.
-# /docs/VERSIONS.md     @VictorBro @avarrett @baschni @luca-mattei @VYAntares
+# /docs/VERSIONS.md     @VictorBro @avarrett @bastian-schnitzler @luca-mattei @VYAntares
 # /pnpm-lock.yaml       @owner-a @owner-b
 # /pnpm-workspace.yaml  @owner-a @owner-b

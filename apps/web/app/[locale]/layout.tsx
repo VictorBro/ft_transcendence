@@ -51,11 +51,6 @@ export async function generateMetadata({
     },
     description: t('description'),
     applicationName: productName,
-    // The switcher is a <select>, so nothing links to the other locales. This
-    // is what says the page exists in three languages.
-    alternates: {
-      languages: Object.fromEntries(routing.locales.map((code) => [code, `/${code}`])),
-    },
   };
 }
 
