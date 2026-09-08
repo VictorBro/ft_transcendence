@@ -16,7 +16,7 @@
 @layer base {
   :root {
     /* The app is pinned to the dark palette by the `dark` class on <html>, so
-       the browser has to paint form controls and scrollbars dark too — leaving
+       the browser has to paint form controls and scrollbars dark too. Leaving
        this as `light dark` would follow the OS and desync from the page. */
     color-scheme: dark;
   }

@@ -9,26 +9,17 @@ import { routing } from '@/i18n/routing';
 import '../globals.css';
 
 /**
- * The root layout, and deliberately inside [locale] rather than above it.
+ * The root layout, inside [locale] on purpose.
  *
- * `lang` has to name the language actually rendered, or a screen reader
- * pronounces French with English phonemes. Reaching the locale from an
- * app/layout.tsx one level up would mean next/root-params, and root params only
- * exist when the root layout itself sits behind the dynamic segment — an
- * app/layout.tsx above this one produces none, and the generated module comes
- * back empty. Owning the document here makes the segment an ordinary param and
- * costs no experimental flag.
+ * <html lang> must name the language actually rendered, and only a layout
+ * behind the [locale] segment can read it as a plain param. One placed above
+ * would need next/root-params, which returns nothing from there.
  *
- * Everything the three shells share and none of them vary lives here: the
- * document, the metadata, the one stylesheet. Each route group keeps its own
- * layout for what it renders — (main) a logo header over a full footer,
- * (dashboard) the same header over the compact one, (mode) a close button
- * instead — and carries its own height rule on a wrapper, since <body> lives
- * here and cannot be `min-h-dvh` and `h-dvh` at once.
+ * Holds what all three shells share: the document, the metadata, the
+ * stylesheet. Each route group keeps its own layout for its header and footer.
  *
- * `messages` is handed to the provider whole, which is what ships every string
- * in the catalogue to the browser. That is the reason the legal documents are
- * NOT in it — see lib/legal-content.
+ * The whole catalogue goes to the browser through the provider, which is why
+ * the legal documents are not in it. See lib/legal-content.
  */
 
 export const viewport: Viewport = {
@@ -60,6 +51,11 @@ export async function generateMetadata({
     },
     description: t('description'),
     applicationName: productName,
+    // The switcher is a <select>, so nothing links to the other locales. This
+    // is what says the page exists in three languages.
+    alternates: {
+      languages: Object.fromEntries(routing.locales.map((code) => [code, `/${code}`])),
+    },
   };
 }
 

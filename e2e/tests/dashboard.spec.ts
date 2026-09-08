@@ -12,7 +12,7 @@ test.describe('dashboard access and navigation', () => {
 
   // Mirrors the `modes` array in dashboard/page.tsx: each lobby tile's visible
   // title paired with the route it should link to. The titles live in the Lobby
-  // namespace now, so these are the English values the catalogue holds — this
+  // namespace now, so these are the English values the catalogue holds. This
   // suite is pinned to /en.
   const tiles: [string, string][] = [
     ['Discuss with a friend', '/en/friends'],

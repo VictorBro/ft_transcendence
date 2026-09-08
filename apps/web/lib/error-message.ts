@@ -8,8 +8,7 @@ import { isErrorCode } from '@ft/shared';
  *
  * Zod issues, API responses and the fetch layer all hand back an ERROR_CODES
  * entry (see @ft/shared), so nothing upstream has to know which language the
- * reader uses. Anything unrecognised — a 500 rendered by the proxy, a code
- * added on the API side before its translation lands — falls back to one
+ * reader uses. Anything unrecognised falls back to one
  * generic sentence rather than showing English text inside a French page.
  *
  * `status` is passed on every call because `server.unexpected` interpolates it;

@@ -1,14 +1,14 @@
 {
-  "Test": {
-    "greeting": "stub: en"
-  },
   "SessionNav": {
     "accountNav": "Account",
     "signIn": "Sign in",
     "createAccount": "Create account"
   },
   "LanguageSwitcher": {
-    "label": "Language"
+    "label": "Language",
+    "en": "English",
+    "fr": "Français",
+    "de": "Deutsch"
   },
   "Layout": {
     "productName": "ft_transcendence",
@@ -16,9 +16,6 @@
   },
   "Footer": {
     "legalNav": "Legal",
-    "academicProject": "An academic project. Not a commercial service.",
-    "privacyPolicy": "Privacy Policy",
-    "termsOfService": "Terms of Service",
     "legalSentence": "An academic project. Not a commercial service. Check out our <privacy>Privacy Policy</privacy> and <terms>Terms of Service</terms>."
   },
   "HomePage": {

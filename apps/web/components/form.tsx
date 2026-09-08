@@ -26,11 +26,11 @@ export function Field({ label, hint, ...input }: FieldProps) {
       <input
         id={id}
         aria-describedby={hintId}
-        className="rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none focus-visible:ring-2 focus-visible:ring-slate-900 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:focus-visible:ring-slate-100"
+        className="rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus-visible:ring-2 focus-visible:ring-slate-100"
         {...input}
       />
       {hint ? (
-        <p id={hintId} className="text-xs text-slate-500 dark:text-slate-400">
+        <p id={hintId} className="text-xs text-slate-400">
           {hint}
         </p>
       ) : null}
@@ -44,7 +44,7 @@ export function FormError({ message }: { message: string | null }) {
     return null;
   }
   return (
-    <p role="alert" className="text-sm text-red-700 dark:text-red-400">
+    <p role="alert" className="text-sm text-red-400">
       {message}
     </p>
   );
@@ -57,7 +57,7 @@ export function SubmitButton({ pending, children }: { pending: boolean; children
     <button
       type="submit"
       disabled={pending}
-      className="rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white disabled:opacity-60 dark:bg-slate-100 dark:text-slate-900"
+      className="rounded-md bg-slate-100 px-4 py-2 text-sm font-medium text-slate-900 disabled:opacity-60"
     >
       {pending ? t('working') : children}
     </button>

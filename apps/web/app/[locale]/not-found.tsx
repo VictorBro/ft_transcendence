@@ -7,7 +7,7 @@ import { Link } from '@/i18n/navigation';
 /**
  * The 404 a reader actually sees. Every unmatched path goes through the
  * middleware first, which prefixes it with a locale, so it lands in [...rest]
- * next door and renders here — translated, with the legal links the subject
+ * next door and renders here: translated, with the legal links the subject
  * requires to be reachable from wherever the reader is.
  *
  * No account nav: this is rendered for unmatched paths and must not read

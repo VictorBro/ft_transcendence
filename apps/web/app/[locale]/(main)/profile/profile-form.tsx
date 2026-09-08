@@ -65,7 +65,7 @@ export function ProfileForm({ user }: { user: SessionUser }) {
 
       <FormError message={error} />
       {saved ? (
-        <p role="status" className="text-sm text-green-700 dark:text-green-400">
+        <p role="status" className="text-sm text-green-400">
           {t('profileSaved')}
         </p>
       ) : null}

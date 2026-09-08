@@ -1,20 +1,19 @@
-# ft_transcendence — Subject Summary
+# ft_transcendence: Subject Summary
 
 Condensed from `ft_transcendence.pdf` (42 subject, version 21.2, 31 pages).
-This is a working reference — the PDF remains the authority.
+This is a working reference: the PDF remains the authority.
 
 ## The project
 
-Final Common Core project, **group of 4–5 people**. Unlike the old version, the content is
-*your* choice: any real-world web app (Pong is now just one example among many).
+Final Common Core project, **group of 4–5 people**. The content is *your* choice: any real-world web app.
 Split into a **mandatory core** + **modules**.
 
 ## Team roles (mandatory)
 
-- **Product Owner (PO)** — product vision, backlog, priorities, validates work, talks to stakeholders.
-- **Project Manager / Scrum Master** — meetings, planning, progress tracking, risks and blockers.
-- **Technical Lead / Architect** — architecture, stack decisions, code quality, reviews critical changes.
-- **Developers** (all members) — implement features, review code, test, document.
+- **Product Owner (PO)**: product vision, backlog, priorities, validates work, talks to stakeholders.
+- **Project Manager / Scrum Master**: meetings, planning, progress tracking, risks and blockers.
+- **Technical Lead / Architect**: architecture, stack decisions, code quality, reviews critical changes.
+- **Developers** (all members): implement features, review code, test, document.
 
 With 4 people, one person can hold multiple roles. All roles must be documented in the
 README, and each member must be able to explain the project and their own contribution
@@ -30,7 +29,7 @@ work breakdown, peer code review, decision notes, a chat channel.
 - **Containerized** (Docker / Podman / equivalent), launched with a **single command**.
 - Compatible with the latest stable **Google Chrome**.
 - **No JS errors or warnings** in the browser console.
-- Accessible **Privacy Policy** and **Terms of Service** pages — real content, reachable
+- Accessible **Privacy Policy** and **Terms of Service** pages: real content, reachable
   (e.g. footer links). Missing or placeholder pages = **project rejected**.
 - **Multi-user simultaneous support**: concurrent logins, concurrent actions handled
   correctly, real-time updates propagated, no data corruption or race conditions.
@@ -51,7 +50,7 @@ work breakdown, peer code review, decision notes, a chat channel.
 > full ecosystem. React, Vue, Angular, Svelte, Next.js are frameworks; Express, Fastify,
 > NestJS, Django, Flask, Rails are frameworks. jQuery, Lodash, Axios are **not**.
 
-## Modules — 14 points required
+## Modules: 14 points required
 
 **Major = 2 points, Minor = 1 point.** Aiming above 14 is recommended, since a module that
 isn't fully functional at evaluation counts as **0**.
@@ -178,26 +177,26 @@ isn't fully functional at evaluation counts as **0**.
 - **Total: 14**
 
 The subject also lists ~25 other project ideas across gaming, social/collaborative,
-creative/media, productivity, and specialized niches — see chapter V of the PDF.
+creative/media, productivity, and specialized niches: see chapter V of the PDF.
 
 ## README requirements
 
 At the repo root, **in English**. Must contain:
 
 - First line, italicized: *This project has been created as part of the 42 curriculum by \<login1\>[, \<login2\>, …]*
-- **Description** — project name, goal, overview, key features.
-- **Instructions** — prerequisites (software, tools, versions, `.env` setup) and step-by-step run instructions.
-- **Resources** — references used **and how AI was used**, for which tasks and which parts of the project.
+- **Description**: project name, goal, overview, key features.
+- **Instructions**: prerequisites (software, tools, versions, `.env` setup) and step-by-step run instructions.
+- **Resources**: references used **and how AI was used**, for which tasks and which parts of the project.
 
 Additional sections required for this project:
 
-- **Team Information** — each member's role(s) and responsibilities.
-- **Project Management** — how work was organized, tools used, communication channels.
-- **Technical Stack** — frontend, backend, database (and why), other libraries, justification of major choices.
-- **Database Schema** — structure, tables/collections and relations, key fields and types.
-- **Features List** — every implemented feature, who worked on it, what it does.
-- **Modules** — all chosen modules, point calculation, justification for each (especially custom ones), how implemented, by whom.
-- **Individual Contributions** — detailed per-member breakdown, challenges faced and how they were solved.
+- **Team Information**: each member's role(s) and responsibilities.
+- **Project Management**: how work was organized, tools used, communication channels.
+- **Technical Stack**: frontend, backend, database (and why), other libraries, justification of major choices.
+- **Database Schema**: structure, tables/collections and relations, key fields and types.
+- **Features List**: every implemented feature, who worked on it, what it does.
+- **Modules**: all chosen modules, point calculation, justification for each (especially custom ones), how implemented, by whom.
+- **Individual Contributions**: detailed per-member breakdown, challenges faced and how they were solved.
 
 A poor or incomplete README hurts the evaluation.
 
@@ -209,16 +208,16 @@ Major = 2, Minor = 1, **capped at 5 bonus points**.
 
 ## Submission and evaluation
 
-- Only what's in the Git repository is evaluated — double-check file names.
+- Only what's in the Git repository is evaluated: double-check file names.
 - Every claimed module must be **demonstrated live**; non-functional or incomplete = 0 points.
 - The team will be asked how roles were distributed, how work was organized and communicated,
   and what each member contributed.
 - A **small live modification** of the project may be requested to verify real understanding
-  (a behaviour tweak, a few lines of code, an easy feature) — doable in a few minutes.
+  (a behaviour tweak, a few lines of code, an easy feature): doable in a few minutes.
 
 ## AI usage rules (chapter I)
 
 - Use AI to reduce repetitive work and to develop prompting skills, not to outsource understanding.
 - Only use AI-generated content you fully understand and can take responsibility for.
 - Systematically check, review, question and test anything generated.
-- Always seek peer review — being unable to explain your own code fails the evaluation.
+- Always seek peer review: being unable to explain your own code fails the evaluation.

@@ -77,7 +77,7 @@ export function SignUpForm() {
       />
       <FormError message={error} />
       <SubmitButton pending={pending}>{t('createAccount')}</SubmitButton>
-      <p className="text-sm text-slate-600 dark:text-slate-300">
+      <p className="text-sm text-slate-300">
         {t('alreadyHaveAccount')}{' '}
         <Link href="/login" className="underline underline-offset-4">
           {t('signIn')}
