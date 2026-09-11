@@ -10,8 +10,8 @@ import { usePathname, useRouter } from '@/i18n/navigation';
  * mobile picker come free, and it shows the current language. A custom dropdown
  * would be markup and focus handling for the same result.
  *
- * Nothing links to the other locales now, so [locale]/layout.tsx declares them
- * with hreflang instead.
+ * Nothing links to the other locales now. Crawlers still find them: the
+ * next-intl middleware in proxy.ts sends one hreflang Link header per route.
  */
 export function LanguageSwitcher() {
   const pathname = usePathname();

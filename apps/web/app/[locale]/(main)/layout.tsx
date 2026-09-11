@@ -6,7 +6,7 @@ import { Shell, Wordmark } from '@/components/shell';
 
 /**
  * The marketing and account shell. Not `fill`: these are documents that may run
- * past the viewport, and the full footer is meant to be scrolled to.
+ * past the viewport, so the footer sits after the content rather than pinned.
  */
 export default function MainLayout({ children }: { children: ReactNode }) {
   return (

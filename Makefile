@@ -217,8 +217,8 @@ report: ## Serve the last Playwright report on port 9323 (REPORT_PORT to change)
 	@# --host 0.0.0.0 so a forwarded port reaches it; no browser exists in here to open.
 	@set +e; \
 	pnpm --filter @ft/e2e exec playwright show-report --host 0.0.0.0 --port $(REPORT_PORT); \
-	status=$?; \
-	case $status in 0|130) exit 0 ;; *) exit $status ;; esac
+	status=$$?; \
+	case $$status in 0|130) exit 0 ;; *) exit $$status ;; esac
 
 doctor: ## Check this machine can build, test and push: run it first on a new clone
 	./scripts/check-dev-env.sh
