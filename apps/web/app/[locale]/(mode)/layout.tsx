@@ -1,9 +1,8 @@
 import type { ReactNode } from 'react';
 import { getTranslations } from 'next-intl/server';
 
-import { LanguageSwitcher } from '@/components/language-switcher';
+import { HeaderNav } from '@/components/header-nav';
 import { LegalFooter } from '@/components/legal-footer';
-import { SessionNav } from '@/components/session-nav';
 import { Shell } from '@/components/shell';
 import { Link } from '@/i18n/navigation';
 
@@ -26,12 +25,7 @@ export default async function ModeLayout({ children }: { children: ReactNode }) 
           ✕
         </Link>
       }
-      nav={
-        <div className="flex items-center gap-4">
-          <LanguageSwitcher />
-          <SessionNav />
-        </div>
-      }
+      nav={<HeaderNav />}
       fill
       footer={<LegalFooter />}
     >

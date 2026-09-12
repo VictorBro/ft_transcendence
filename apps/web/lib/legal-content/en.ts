@@ -65,9 +65,9 @@ export const privacyPolicy: LegalDocument = {
     },
     {
       id: 'cookies',
-      heading: '7. Cookies and local storage',
+      heading: '7. Cookies',
       paragraphs: [
-        'We set one strictly necessary cookie: an httpOnly, secure session cookie that keeps you signed in. It carries no tracking identifier and is not readable by client-side scripts. Local storage holds interface preferences such as language and theme.',
+        'We set two strictly necessary cookies. A session cookie keeps you signed in: it is httpOnly, secure and carries no tracking identifier, so client-side scripts cannot read it. A language cookie (NEXT_LOCALE) remembers which of the three languages to show you; it holds only a language code, which is also visible in the address bar. We do not use local storage.',
         'There are no advertising or analytics cookies, which is why the platform shows no cookie consent banner: strictly necessary cookies do not require one.',
       ],
     },

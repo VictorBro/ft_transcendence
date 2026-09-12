@@ -58,9 +58,8 @@ export const LEGAL_ROUTES: PageRoute[] = [
 
 /**
  * Every page that must expose the legal links, split by whether reaching it
- * needs a session. The (main) shell carries the full footer and the (dashboard)
- * and (mode) shells the compact LegalFooter, but all three label that nav from
- * the same Footer.legalNav key, so one assertion covers each list. These routes
+ * needs a session. Every shell renders the same LegalFooter and labels that nav
+ * from the Footer.legalNav key, so one assertion covers each list. These routes
  * are pinned to /en, so the value read is the English one.
  *
  * These exist because the footer was previously only checked on "/", which let

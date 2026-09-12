@@ -194,7 +194,7 @@ the editor window closes.
 
 > **Ports inside the devcontainer.** Compose publishes to the *host's* loopback,
 > and the devcontainer is just another container on the network. From a terminal
-> inside it, reach the stack by service name — `https://caddy/api/health`, not
+> inside it, reach the stack by service name, `https://caddy/api/health` rather than
 > `https://localhost`. From your browser on the host, `https://localhost` is right.
 
 ---
@@ -256,9 +256,9 @@ flowchart TB
 Two of those checks are **subject rejection criteria**, which is why they run
 against production images rather than a dev server:
 
-- **console gate** — zero console errors, warnings, uncaught exceptions or failed
+- **console gate**: zero console errors, warnings, uncaught exceptions or failed
   requests, on every route, including client-side navigation.
-- **legal pages** — `/privacy` and `/terms` answer 200 with real content.
+- **legal pages**: `/privacy` and `/terms` answer 200 with real content.
 
 `make ci` runs the same checks natively, and `make` runs all of it plus the
 production stack and Playwright.

@@ -81,7 +81,7 @@ export function LoginForm() {
       // <Field>, so without it React reuses the password input's DOM node for
       // the code input and the typed password reappears, in clear text.
       <form key="second-factor" onSubmit={onSubmit} className="flex flex-col gap-6" noValidate>
-        <p className="text-sm text-slate-600 dark:text-slate-300">{t('twoFactorPrompt')}</p>
+        <p className="text-sm text-slate-300">{t('twoFactorPrompt')}</p>
         <Field
           label={t('authenticationCode')}
           name="code"
@@ -108,7 +108,7 @@ export function LoginForm() {
       />
       <FormError message={error} />
       <SubmitButton pending={pending}>{t('signIn')}</SubmitButton>
-      <p className="text-sm text-slate-600 dark:text-slate-300">
+      <p className="text-sm text-slate-300">
         {t('noAccountYet')}{' '}
         <Link href="/signup" className="underline underline-offset-4">
           {t('createOne')}

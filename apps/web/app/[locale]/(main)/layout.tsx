@@ -1,26 +1,16 @@
 import type { ReactNode } from 'react';
 
-import { LanguageSwitcher } from '@/components/language-switcher';
-import { SessionNav } from '@/components/session-nav';
+import { HeaderNav } from '@/components/header-nav';
+import { LegalFooter } from '@/components/legal-footer';
 import { Shell, Wordmark } from '@/components/shell';
-import { SiteFooter } from '@/components/site-footer';
 
 /**
  * The marketing and account shell. Not `fill`: these are documents that may run
- * past the viewport, and the full footer is meant to be scrolled to.
+ * past the viewport, so the footer sits after the content rather than pinned.
  */
 export default function MainLayout({ children }: { children: ReactNode }) {
   return (
-    <Shell
-      brand={<Wordmark />}
-      nav={
-        <div className="flex items-center gap-4">
-          <LanguageSwitcher />
-          <SessionNav />
-        </div>
-      }
-      footer={<SiteFooter />}
-    >
+    <Shell brand={<Wordmark />} nav={<HeaderNav />} footer={<LegalFooter />}>
       {children}
     </Shell>
   );

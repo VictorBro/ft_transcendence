@@ -1,8 +1,7 @@
 /**
  * Error codes, not sentences.
  *
- * Everything that crosses a boundary — a Zod message from this package, an
- * exception from NestJS, a failure in the browser's fetch layer — travels as
+ * Everything that crosses a boundary travels as
  * one of these codes. The only place a human sentence exists is
  * apps/web/messages/{en,fr,de}.json, which is what makes an error message
  * translatable at all: a string rendered by the server cannot be re-rendered in

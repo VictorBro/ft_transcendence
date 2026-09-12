@@ -22,7 +22,7 @@ export default async function TwoFactorPage() {
     <div className="mx-auto flex w-full max-w-md flex-col gap-8">
       <div className="flex flex-col gap-2">
         <h1 className="text-2xl font-semibold tracking-tight">{t('heading')}</h1>
-        <p className="text-sm text-slate-600 dark:text-slate-300">{t('intro')}</p>
+        <p className="text-sm text-slate-300">{t('intro')}</p>
       </div>
       <TwoFactorPanel />
     </div>

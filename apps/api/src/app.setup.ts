@@ -36,8 +36,8 @@ export function configureApp(app: INestApplication): void {
   // Zod, not class-validator: @ft/shared owns the rules and the browser applies
   // the same ones.
   //
-  // Every `message` this API returns — from this pipe or from a thrown
-  // HttpException — is an ERROR_CODES entry, never a sentence. The reader's
+  // Every `message` this API returns is an ERROR_CODES entry, never a
+  // sentence, whether it comes from this pipe or a thrown HttpException. The reader's
   // language is known in the browser and nowhere near here, so the wording is
   // chosen there; see apps/web/lib/error-message.ts.
   app.useGlobalPipes(new ZodValidationPipe());

@@ -45,6 +45,7 @@ SERVICE      ?= api
 SERVICES     ?=
 WAIT_TIMEOUT ?= 300
 STUDIO_PORT  ?= 5555
+REPORT_PORT  ?= 9323
 # Matches the identities e2e/tests/auth.spec.ts signs up, so test-e2e can clear
 # them afterwards.
 E2E_EMAIL_PREFIX ?= browser-
@@ -91,7 +92,7 @@ else
 DB_ENV := -e DATABASE_URL='$(DEFAULT_DATABASE_URL)'
 endif
 
-.PHONY: all run dev up build down logs ps shell test test-e2e lint format typecheck \
+.PHONY: all run dev up build down logs ps shell test test-e2e lint format typecheck report \
         migrate seed studio reset-db ci stores-up clean certs tooling-image doctor help
 
 # --- the one command ---------------------------------------------------------
@@ -103,8 +104,9 @@ all:
 	@$(MAKE) --no-print-directory test-e2e
 	@printf '\n  ALL GREEN: checks, build, e2e (console gate included) all passed.\n'
 	@printf '  What you commit now will pass CI.\n'
-	@printf '  The PRODUCTION stack is now running at https://localhost:\n'
-	@printf '  run `make dev` to get hot reload back, `make down` to stop everything.\n\n'
+	@printf '  The PRODUCTION stack is now running at https://localhost\n'
+	@printf '  `make dev` gets hot reload back, `make down` stops everything.\n'
+	@printf '  `make report` opens the Playwright report.\n\n'
 
 # --- the evaluator path ------------------------------------------------------
 
@@ -189,8 +191,11 @@ test-e2e: ## Playwright against the production stack (starts it if needed)
 	@# The accounts the browser suite signs up are real rows. Removing them keeps
 	@# repeated runs from filling the database an evaluator is going to look at.
 	@# The prefix is set in e2e/tests/auth.spec.ts. RecoveryCode cascades.
+	@# stdin from /dev/null so Playwright skips its "To open last HTML report"
+	@# hint, which it gates on isTTY. The command it prints only works from e2e/;
+	@# `make report` works anywhere.
 	@set +e; \
-	E2E_BASE_URL=$(E2E_BASE_URL) pnpm --filter @ft/e2e run test:e2e; \
+	E2E_BASE_URL=$(E2E_BASE_URL) pnpm --filter @ft/e2e run test:e2e < /dev/null; \
 	status=$$?; \
 	$(COMPOSE_DEV) exec -T db psql -U ft -d ft_transcendence \
 	  -c "delete from \"User\" where email like '$(E2E_EMAIL_PREFIX)%@example.com';" >/dev/null; \
@@ -204,6 +209,16 @@ format: ## Rewrite every file with Prettier
 
 typecheck: ## tsc --noEmit across the workspace
 	pnpm run typecheck
+
+report: ## Serve the last Playwright report on port 9323 (REPORT_PORT to change)
+	@printf '\n  Playwright report: http://127.0.0.1:%s\n' '$(REPORT_PORT)'
+	@printf '  In a devcontainer, forward that port from the VS Code Ports panel.\n'
+	@printf '  Ctrl+C to stop.\n\n'
+	@# --host 0.0.0.0 so a forwarded port reaches it; no browser exists in here to open.
+	@set +e; \
+	pnpm --filter @ft/e2e exec playwright show-report --host 0.0.0.0 --port $(REPORT_PORT); \
+	status=$$?; \
+	case $$status in 0|130) exit 0 ;; *) exit $$status ;; esac
 
 doctor: ## Check this machine can build, test and push: run it first on a new clone
 	./scripts/check-dev-env.sh

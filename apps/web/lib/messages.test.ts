@@ -32,8 +32,8 @@ describe.each(Object.entries(CATALOGUES))('messages/%s.json', (locale, tree) => 
   /**
    * The other half of the contract asserted in @ft/shared's schemas.test.ts:
    * that package emits codes, this one owes each of them a sentence. A code
-   * without a translation renders as its own path — "password.mismatch" —
-   * under the form field, in every language.
+   * without a translation renders as its own path, "password.mismatch", under
+   * the form field, in every language.
    */
   it('translates exactly the declared error codes', () => {
     expect(keyPaths(tree.Errors as MessageTree).sort()).toEqual([...ERROR_CODES].sort());

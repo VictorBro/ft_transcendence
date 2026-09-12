@@ -65,9 +65,9 @@ export const privacyPolicy: LegalDocument = {
     },
     {
       id: 'cookies',
-      heading: '7. Cookies et stockage local',
+      heading: '7. Cookies',
       paragraphs: [
-        "Nous posons un seul cookie strictement nécessaire : un cookie de session httpOnly et sécurisé qui vous maintient connecté. Il ne porte aucun identifiant de suivi et n'est pas lisible par des scripts côté client. Le stockage local contient des préférences d'interface telles que la langue et le thème.",
+        "Nous posons deux cookies strictement nécessaires. Un cookie de session vous maintient connecté : il est httpOnly, sécurisé et ne porte aucun identifiant de suivi, si bien que les scripts côté client ne peuvent pas le lire. Un cookie de langue (NEXT_LOCALE) retient laquelle des trois langues vous afficher ; il ne contient qu'un code de langue, également visible dans la barre d'adresse. Nous n'utilisons pas le stockage local.",
         "Il n'y a pas de cookies publicitaires ou d'analyse, c'est pourquoi la plateforme n'affiche aucune bannière de consentement aux cookies : les cookies strictement nécessaires n'en requièrent pas.",
       ],
     },
@@ -117,7 +117,7 @@ export const termsOfService: LegalDocument = {
   slug: 'terms',
   title: "Conditions d'utilisation",
   description:
-    "Les règles d'utilisation de ft_transcendence : qui peut s'inscrire, ce qui constitue un usage acceptable, ce que sont — et ne sont pas — les leçons générées par IA, et comment les comptes prennent fin.",
+    "Les règles d'utilisation de ft_transcendence : qui peut s'inscrire, ce qui constitue un usage acceptable, ce que sont (et ne sont pas) les leçons générées par IA, et comment les comptes prennent fin.",
   lastUpdated: '2026-08-01',
   intro:
     "Ces conditions constituent l'accord entre vous et les mainteneurs de ft_transcendence. Elles sont courtes parce que le service est petit, et précises parce qu'un tuteur IA et des sessions en direct entre inconnus créent tous deux des situations que des conditions génériques ne couvrent pas.",

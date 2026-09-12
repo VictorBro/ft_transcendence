@@ -171,8 +171,8 @@ describe('SignUpFormSchema', () => {
 
 /**
  * Half of the error contract: every message this package emits is an
- * ERROR_CODES entry rather than a sentence. The other half — that each code has
- * three translations — is asserted in apps/web/lib/messages.test.ts.
+ * ERROR_CODES entry rather than a sentence. That each code has three
+ * translations is asserted in apps/web/lib/messages.test.ts.
  *
  * The trap this exists for is Zod's own defaults: a rule declared without an
  * explicit message still produces an issue, in English, that no catalogue can

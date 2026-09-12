@@ -65,9 +65,9 @@ export const privacyPolicy: LegalDocument = {
     },
     {
       id: 'cookies',
-      heading: '7. Cookies und lokaler Speicher',
+      heading: '7. Cookies',
       paragraphs: [
-        'Wir setzen ein einziges, unbedingt erforderliches Cookie: ein httpOnly, sicheres Sitzungscookie, das Sie angemeldet hält. Es enthält keine Tracking-Kennung und ist für clientseitige Skripte nicht lesbar. Der lokale Speicher enthält Oberflächeneinstellungen wie Sprache und Design.',
+        'Wir setzen zwei unbedingt erforderliche Cookies. Ein Sitzungscookie hält Sie angemeldet: es ist httpOnly, sicher und enthält keine Tracking-Kennung, sodass clientseitige Skripte es nicht lesen können. Ein Sprachcookie (NEXT_LOCALE) merkt sich, welche der drei Sprachen Ihnen angezeigt wird; es enthält nur einen Sprachcode, der ohnehin in der Adressleiste sichtbar ist. Einen lokalen Speicher verwenden wir nicht.',
         'Es gibt keine Werbe- oder Analyse-Cookies, weshalb die Plattform kein Cookie-Einwilligungsbanner anzeigt: unbedingt erforderliche Cookies erfordern keines.',
       ],
     },

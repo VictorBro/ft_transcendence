@@ -97,12 +97,22 @@ test.describe('internationalisation', () => {
         'Learn a language with a tutor',
       );
 
-      await page.getByRole('link', { name: 'fr', exact: true }).click();
+      await page.getByRole('combobox', { name: 'Language' }).selectOption('fr');
 
       await expect(page).toHaveURL('/fr');
       await expect(page.getByRole('heading', { level: 1 })).toContainText(
         "Apprenez une langue avec un tuteur qui s'adapte à vous",
       );
+    });
+
+    // A row of links could not show the current language. The select does, and
+    // its own label is translated too.
+    test('shows the current language, named in its own language', async ({ page }) => {
+      await page.goto('/de');
+
+      const switcher = page.getByRole('combobox', { name: 'Sprache' });
+      await expect(switcher).toHaveValue('de');
+      await expect(switcher.locator('option[value="fr"]')).toHaveText('Français');
     });
   });
 

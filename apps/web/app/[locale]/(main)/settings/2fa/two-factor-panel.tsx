@@ -96,8 +96,8 @@ export function TwoFactorPanel() {
     return (
       <section className="flex flex-col gap-4">
         <h2 className="text-lg font-medium">{t('saveRecoveryCodesHeading')}</h2>
-        <p className="text-sm text-slate-600 dark:text-slate-300">{t('recoveryCodesIntro')}</p>
-        <ul className="grid grid-cols-2 gap-2 rounded-md border border-slate-200 p-4 font-mono text-sm dark:border-slate-800">
+        <p className="text-sm text-slate-300">{t('recoveryCodesIntro')}</p>
+        <ul className="grid grid-cols-2 gap-2 rounded-md border border-slate-800 p-4 font-mono text-sm">
           {recoveryCodes.map((code) => (
             <li key={code}>{code}</li>
           ))}
@@ -105,7 +105,7 @@ export function TwoFactorPanel() {
         <button
           type="button"
           onClick={() => setRecoveryCodes(null)}
-          className="self-start rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white dark:bg-slate-100 dark:text-slate-900"
+          className="self-start rounded-md bg-slate-100 px-4 py-2 text-sm font-medium text-slate-900"
         >
           {t('savedThem')}
         </button>
@@ -123,9 +123,9 @@ export function TwoFactorPanel() {
           width={200}
           height={200}
           unoptimized
-          className="rounded-md border border-slate-200 dark:border-slate-800"
+          className="rounded-md border border-slate-800"
         />
-        <p className="text-sm text-slate-600 dark:text-slate-300">
+        <p className="text-sm text-slate-300">
           {t('cannotScan')} <code className="font-mono text-xs break-all">{setup.secret}</code>
         </p>
         <Field
@@ -144,7 +144,7 @@ export function TwoFactorPanel() {
   if (status?.enabled) {
     return (
       <form onSubmit={turnOff} className="flex flex-col gap-5" noValidate>
-        <p role="status" className="text-sm text-green-700 dark:text-green-400">
+        <p role="status" className="text-sm text-green-400">
           {t('enabledStatus', { count: status.recoveryCodesRemaining })}
         </p>
         <Field
@@ -162,13 +162,13 @@ export function TwoFactorPanel() {
 
   return (
     <div className="flex flex-col gap-4">
-      <p className="text-sm text-slate-600 dark:text-slate-300">{t('disabledStatus')}</p>
+      <p className="text-sm text-slate-300">{t('disabledStatus')}</p>
       <FormError message={error} />
       <button
         type="button"
         onClick={() => void startSetup()}
         disabled={pending}
-        className="self-start rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white disabled:opacity-60 dark:bg-slate-100 dark:text-slate-900"
+        className="self-start rounded-md bg-slate-100 px-4 py-2 text-sm font-medium text-slate-900 disabled:opacity-60"
       >
         {pending ? t('working') : t('setUp')}
       </button>
