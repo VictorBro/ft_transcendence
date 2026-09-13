@@ -93,7 +93,7 @@ export class AuthController {
   @Post('signup')
   // Ten per minute per IP. Signup writes a row and runs argon2, so it is both
   // the most expensive unauthenticated endpoint and the one worth flooding.
-  @ThrottleByIp(10)
+  @ThrottleByIp(30)
   @ApiOperation({ summary: 'Create an account and sign in' })
   @ApiCreatedResponse({ type: SessionUserDto })
   @ApiConflictResponse({ description: 'Email or display name already taken' })

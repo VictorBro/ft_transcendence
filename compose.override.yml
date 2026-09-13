@@ -95,13 +95,8 @@ services:
       - api-pnpm-store:/pnpm/store
 
   db:
-    # Loopback only, never 0.0.0.0: this publishes a database with a known
-    # development password, and a school machine shares its network. Bound here
-    # so `make ci` and a GUI client work from a host shell, where the compose
-    # network name `db` does not resolve.
-    #
-    # Host port is overridable for when 5432 is already taken. Only the host side
-    # moves: inside the network the port is always 5432.
+    # Expose the development database to the host on loopback only.
+    # The host port is configurable; containers always use db:5432.
     ports:
       - "127.0.0.1:${POSTGRES_HOST_PORT:-5432}:5432"
 
@@ -120,6 +115,7 @@ services:
       dockerfile: .devcontainer/Dockerfile
     working_dir: /workspace
     environment:
+      FT_DEVCONTAINER: "true"
       # Without this, .claude.json is written to $HOME, outside the volume, and
       # every container rebuild logs you out.
       CLAUDE_CONFIG_DIR: /home/node/.claude
