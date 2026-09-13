@@ -93,27 +93,39 @@ DB_ENV := -e DATABASE_URL='$(DEFAULT_DATABASE_URL)'
 endif
 
 .PHONY: all run dev up build down logs ps shell test test-e2e lint format typecheck report \
-        migrate seed studio reset-db ci stores-up clean certs tooling-image doctor help \
+        migrate migrate-new seed studio reset-db ci stores-up clean certs tooling-image doctor help \
 				check-devcontainer
 
-# prevent running most make commands outside dev container
-
+# Building on the host uses the wrong Node, the wrong pnpm store and a bind
+# mount, so most targets refuse to run there. FT_DEVCONTAINER is set on the
+# workspace service in compose.override.yml.
+#
+# A guard rail, not a boundary: .EXTRA_PREREQS needs GNU Make 4.3, and macOS
+# ships 3.81, where it is an ordinary unused variable and nothing fires.
 check-devcontainer:
 	@if [ "$${FT_DEVCONTAINER:-}" != "true" ]; then \
-		echo "ERROR: Make commands must be run inside the dev container."; \
-		exit 1; \
+	  printf 'This target has to run inside the devcontainer.\n' >&2; \
+	  printf '  In VS Code: Reopen in Container, then try again.\n' >&2; \
+	  printf '  Already inside? The container predates FT_DEVCONTAINER, so rebuild it.\n' >&2; \
+	  exit 1; \
 	fi
 
 .EXTRA_PREREQS = check-devcontainer
 
+# Exempt: the guard itself, what you run before or without a container, and the
+# compose passthroughs that only read state. Those are what you reach for from
+# the host exactly when the container is the thing that is broken.
 check-devcontainer: .EXTRA_PREREQS :=
 clean: .EXTRA_PREREQS :=
 help: .EXTRA_PREREQS :=
 doctor: .EXTRA_PREREQS :=
-# .github/workflows/e2e.yml:74 runs make migrate on a plain ubuntu-24.04 runner without FT_DEVCONTAINER
-migrate: .EXTRA_PREREQS :=
-tooling-image: .EXTRA_PREREQS :=
 down: .EXTRA_PREREQS :=
+logs: .EXTRA_PREREQS :=
+ps: .EXTRA_PREREQS :=
+shell: .EXTRA_PREREQS :=
+tooling-image: .EXTRA_PREREQS :=
+# .github/workflows/e2e.yml runs make migrate on a plain runner, no FT_DEVCONTAINER.
+migrate: .EXTRA_PREREQS :=
 
 
 # --- the one command ---------------------------------------------------------
@@ -225,8 +237,11 @@ test-e2e: ## Playwright against the production stack (starts it if needed)
 lint: ## ESLint across the workspace
 	pnpm run lint
 
-format: ## Rewrite every file with Prettier
+format: ## Rewrite every file with Prettier, and the schema with prisma format
 	pnpm run format
+	@# Prettier has no Prisma parser, so schema.prisma gets the formatter Prisma
+	@# ships instead. Same one the VS Code extension runs on save.
+	pnpm --filter @ft/api exec prisma format
 
 typecheck: ## tsc --noEmit across the workspace
 	pnpm run typecheck
@@ -254,6 +269,8 @@ ci: stores-up ## Everything the ci workflow runs, natively
 	./scripts/assert-ts-version.sh
 	./scripts/check-env-example.sh
 	./scripts/check-app-boundaries.sh
+	./scripts/check-prisma-format.sh
+	./scripts/check-prisma-drift.sh
 	pnpm run ci
 	pnpm --filter @ft/api exec prisma migrate deploy
 	pnpm --filter @ft/api run test:e2e
@@ -271,6 +288,16 @@ migrate: ## Apply pending Prisma migrations
 	$(MAKE) --no-print-directory tooling-image; \
 	docker run --rm --network $(NETWORK) $(DB_ENV) $(TOOLING_IMAGE) \
 	  pnpm --filter @ft/api exec prisma migrate deploy
+
+migrate-new: ## Turn schema.prisma changes into a migration: make migrate-new NAME=add_streaks
+	@if [ -z "$(NAME)" ]; then \
+	  printf 'migrate-new: name the change, e.g. make migrate-new NAME=add_streaks\n' >&2; \
+	  exit 1; \
+	fi
+	@# Writes the SQL, applies it and regenerates the client, so the next
+	@# typecheck already knows about the new columns. Commit the generated
+	@# directory under prisma/migrations with the schema change.
+	pnpm --filter @ft/api exec prisma migrate dev --name $(NAME)
 
 seed: ## Load development data into the database
 	@if ! grep -q '"db:seed"' apps/api/package.json; then \

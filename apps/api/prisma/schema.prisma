@@ -34,8 +34,8 @@ model User {
   totpSecret    String?
   totpEnabledAt DateTime?
 
-  recoveryCodes RecoveryCode[]
-  userLevels    UserLevel[]
+  recoveryCodes     RecoveryCode[]
+  userLevels        UserLevel[]
   userSeenQuestions UserSeenQuestion[]
 }
 
@@ -55,45 +55,45 @@ model RecoveryCode {
 }
 
 model UserLevel {
-    id          String   @id @default(uuid()) @db.Uuid
-    userId      String   @db.Uuid
-    user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-    lang        Language
-    level       Level?
-    dailyGoal   Int
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt
+  id        String   @id @default(uuid()) @db.Uuid
+  userId    String   @db.Uuid
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lang      Language
+  level     Level?
+  dailyGoal Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-    @@unique([userId, lang])
+  @@unique([userId, lang])
 }
 
 model QuestionBank {
-  id                String   @id @default(uuid()) @db.Uuid
-  sourceId          String?  @unique
-  lang              Language
-  level             Level
-  topic             Topic
-  category          QuestionCategory
-  readText          String?
-  question          String
-  options           String[]
-  answer            String
-  timeLimitS        Int
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
-
-  @@index([lang, level, category])
+  id         String           @id @default(uuid()) @db.Uuid
+  sourceId   String?          @unique
+  lang       Language
+  level      Level
+  topic      Topic
+  category   QuestionCategory
+  readText   String?
+  question   String
+  options    String[]
+  answer     String
+  timeLimitS Int
+  createdAt  DateTime         @default(now())
+  updatedAt  DateTime         @updatedAt
 
   userSeenQuestions UserSeenQuestion[]
+
+  @@index([lang, level, category])
 }
 
 model UserSeenQuestion {
-	id           String       @id @default(uuid()) @db.Uuid
-	userId	  	 String       @db.Uuid
-	user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
-	questionId	 String       @db.Uuid
-	questionBank QuestionBank @relation(fields: [questionId], references: [id], onDelete: Cascade)
-	createdAt    DateTime     @default(now())
+  id           String       @id @default(uuid()) @db.Uuid
+  userId       String       @db.Uuid
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  questionId   String       @db.Uuid
+  questionBank QuestionBank @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  createdAt    DateTime     @default(now())
   updatedAt    DateTime     @updatedAt
 
   @@unique([userId, questionId])

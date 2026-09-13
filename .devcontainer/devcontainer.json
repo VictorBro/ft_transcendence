@@ -100,6 +100,11 @@
       "settings": {
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+        // Prettier has no Prisma parser, so schema.prisma needs the formatter
+        // the Prisma extension ships. Without this it falls to the default
+        // above and format-on-save silently does nothing.
+        "[prisma]": { "editor.defaultFormatter": "Prisma.prisma" },
         // ESLint fixes on save, Prettier formats on save. The two do not fight:
         // eslint-config-prettier is applied last in @ft/eslint-config, so no
         // lint rule has an opinion about layout.

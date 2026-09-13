@@ -23,6 +23,10 @@
   "[css]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[markdown]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[yaml]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  // Prettier has no Prisma parser. Without this line schema.prisma falls to the
+  // workspace default above, format-on-save quietly does nothing, and the file
+  // drifts out of shape until `make ci` catches it.
+  "[prisma]": { "editor.defaultFormatter": "Prisma.prisma" },
 
   // ESLint 10 is flat-config only, and each package ships its own
   // eslint.config.*. "auto" resolves the config relative to the file being

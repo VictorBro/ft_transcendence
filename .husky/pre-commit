@@ -1,14 +1,12 @@
-branch="$(git branch --show-current)"
-
-if [ "$branch" = "main" ]; then
-echo "❌ Commits directly to 'main' are not allowed. Did you forget to create a new branch?"
-exit 1
+# main is protected, so a commit made there can only ever be moved off it again.
+# Failing now keeps the fix at `git switch -c` instead of a history rewrite.
+if [ "$(git branch --show-current)" = "main" ]; then
+  printf 'Commits go on a branch, not on main. Start one:\n' >&2
+  printf '  git switch -c feat/your-change\n' >&2
+  exit 1
 fi
-echo "\033[32m✔\033[0m You are not on main branch"
+
 # Formats what you are about to commit, nothing else. lint-staged stashes the
-
 # unstaged half of a partially staged file first, so `git add -p` cannot quietly
-
 # commit the part you left out.
-
 pnpm exec lint-staged

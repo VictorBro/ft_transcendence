@@ -175,7 +175,12 @@ jobs:
         run: |
           set +e
           # The shadow database comes from prisma.config.ts, not a flag.
-          pnpm --filter @ft/api exec prisma migrate diff \
+          #
+          # `cd` rather than `pnpm --filter @ft/api exec`: the filtered form
+          # reports the child's code as its own 1, so the 2 that means drift
+          # never arrived and the case below always took the catch-all branch.
+          cd apps/api
+          pnpm exec prisma migrate diff \
             --from-migrations ./prisma/migrations \
             --to-schema ./prisma/schema.prisma \
             --exit-code
