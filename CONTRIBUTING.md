@@ -98,9 +98,9 @@ ci/lint-pr-title
 docs/rag-corpus
 ```
 
-The prefix is the same word list as the commit types below. Nothing enforces
-it, but the branch name becomes the default pull request title, and that title
-becomes the commit message on `main`, so a good one saves work later.
+The prefix is the same word list as the commit types below. Use it: when a title
+has to be derived for you, a branch named this way is what it is derived from,
+and `ci/lint-pr-title` becomes `ci: lint pr title`.
 
 ---
 
@@ -159,8 +159,13 @@ knowing:
    title becomes the commit message on `main`. A title auto-generated from a
    branch name, like `Feat/chat home frontend`, lands on `main` as an
    ungradeable commit and fails the hygiene workflow after the fact, when the
-   only remedy is rewriting a protected branch. CI checks the title for exactly
-   this reason.
+   only remedy is rewriting a protected branch.
+
+   If you leave a title that cannot lint, the hygiene workflow writes one for
+   you: the subject of your only commit, or the branch name when there are
+   several. It only does this when the title is already broken, so a title you
+   chose is never touched. Write your own and it stays.
+
 3. Fill in the template. Say what changed and how you tested it.
 4. Wait for the four checks: `ci`, `e2e`, `hygiene`, `images`.
 5. Get one approving review. CODEOWNERS routes it.
