@@ -108,6 +108,7 @@ check-devcontainer:
 check-devcontainer: .EXTRA_PREREQS :=
 clean: .EXTRA_PREREQS :=
 help: .EXTRA_PREREQS :=
+doctor: .EXTRA_PREREQS :=
 
 
 # --- the one command ---------------------------------------------------------
