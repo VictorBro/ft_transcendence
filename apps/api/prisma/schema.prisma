@@ -35,6 +35,8 @@ model User {
   totpEnabledAt DateTime?
 
   recoveryCodes RecoveryCode[]
+  userLevels    UserLevel[]
+  userSeenQuestions UserSeenQuestion[]
 }
 
 // Single-use fallback when the authenticator is lost. Stored as a SHA-256 digest
@@ -52,6 +54,65 @@ model RecoveryCode {
   @@index([userId])
 }
 
+model UserLevel {
+    id          String   @id @default(uuid()) @db.Uuid
+    userId      String   @db.Uuid
+    user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    lang        Language
+    level       Level?
+    dailyGoal   Int
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+
+    @@unique([userId, lang])
+}
+
+model QuestionBank {
+  id                String   @id @default(uuid()) @db.Uuid
+  lang              Language
+  level             Level
+  category          QuestionCategory
+  readText          String?
+  question          String
+  options           String[]
+  answer            String
+  generated         Boolean
+  timeLimitS        Int
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@index([lang, level, category])
+
+  userSeenQuestions UserSeenQuestion[]
+}
+
+model UserSeenQuestion {
+	id           String       @id @default(uuid()) @db.Uuid
+	userId	  	 String       @db.Uuid
+	user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+	questionId	 String       @db.Uuid
+	questionBank QuestionBank @relation(fields: [questionId], references: [id], onDelete: Cascade)
+	createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
+  @@unique([userId, questionId])
+}
+
+enum QuestionCategory {
+  vocabulary
+  grammar
+  reading
+}
+
+enum Level {
+  A1
+  A2
+  B1
+  B2
+  C1
+  C2
+}
+
 // Values match UserRoleSchema and LocaleSchema in @ft/shared. Adding a locale is
 // already a code change there (next-intl routing reads the same tuple), so the
 // migration this forces is a feature rather than a cost: the database rejects a
@@ -62,6 +123,12 @@ enum Role {
 }
 
 enum Locale {
+  en
+  fr
+  de
+}
+
+enum Language {
   en
   fr
   de
