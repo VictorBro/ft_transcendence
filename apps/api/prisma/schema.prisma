@@ -69,7 +69,7 @@ model UserLevel {
 
 model QuestionBank {
   id                String   @id @default(uuid()) @db.Uuid
-  sourceId          String?
+  sourceId          String?  @unique
   lang              Language
   level             Level
   topic             Topic
