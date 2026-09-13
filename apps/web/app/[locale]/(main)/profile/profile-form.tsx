@@ -1,9 +1,10 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { UpdateProfileSchema, type SessionUser } from '@ft/shared';
+
+import { useRouter } from '@/i18n/navigation';
 
 import { updateProfile, uploadAvatar } from '@/lib/auth-client';
 import { useErrorMessage } from '@/lib/error-message';
@@ -17,7 +18,6 @@ export function ProfileForm({ user }: { user: SessionUser }) {
   const t = useTranslations('ProfileForm');
   const errorMessage = useErrorMessage();
   const [error, setError] = useState<string | null>(null);
-  const [saved, setSaved] = useState(false);
   const [pending, setPending] = useState(false);
   const [avatarError, setAvatarError] = useState<string | null>(null);
   const [removeAvatar, setRemoveAvatar] = useState(false);
@@ -69,7 +69,6 @@ export function ProfileForm({ user }: { user: SessionUser }) {
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setPending(true);
-    setSaved(false);
     const form = new FormData(event.currentTarget);
 
     try {
@@ -88,7 +87,7 @@ export function ProfileForm({ user }: { user: SessionUser }) {
       }
 
       setError(null);
-      setSaved(true);
+      router.push('/profile');
       // The header greets the user by name, so it has to re-render too.
       router.refresh();
     } finally {
@@ -134,11 +133,6 @@ export function ProfileForm({ user }: { user: SessionUser }) {
       </div>
 
       <FormError message={error} />
-      {saved ? (
-        <p role="status" className="text-sm text-green-400">
-          {t('profileSaved')}
-        </p>
-      ) : null}
       <SubmitButton pending={pending}>{t('saveChanges')}</SubmitButton>
     </form>
   );

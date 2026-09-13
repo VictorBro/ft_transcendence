@@ -158,6 +158,7 @@
   "ProfilePage": {
     "title": "Profil",
     "joined": "Inscrit le {date}",
+    "editProfile": "Modifier le profil",
     "security": "Sécurité",
     "twoFactorPrompt": "Ajoutez un second facteur pour qu'un mot de passe volé ne suffise pas à se connecter.",
     "twoFactorAuthentication": "Authentification à deux facteurs"
@@ -172,7 +173,6 @@
     "uploading": "Envoi en cours…",
     "removing": "Suppression…",
     "avatarTooLarge": "Le fichier est trop volumineux. Taille maximale : 2 Mio.",
-    "profileSaved": "Profil enregistré.",
     "saveChanges": "Enregistrer les modifications"
   },
   "TwoFactorPage": {

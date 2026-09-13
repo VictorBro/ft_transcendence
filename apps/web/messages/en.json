@@ -158,6 +158,7 @@
   "ProfilePage": {
     "title": "Profile",
     "joined": "Joined {date}",
+    "editProfile": "Edit profile",
     "security": "Security",
     "twoFactorPrompt": "Add a second factor so a stolen password is not enough to sign in.",
     "twoFactorAuthentication": "Two factor authentication"
@@ -172,7 +173,6 @@
     "uploading": "Uploading...",
     "removing": "Removing...",
     "avatarTooLarge": "File is too large. Maximum size is 2 MiB.",
-    "profileSaved": "Profile saved.",
     "saveChanges": "Save changes"
   },
   "TwoFactorPage": {

@@ -11,6 +11,7 @@ export function Avatar({ src, alt, size = 32 }: { src: string | null; alt: strin
       height={size}
       unoptimized={src !== null}
       className="rounded-full object-cover"
+      style={{ width: size, height: size }}
     />
   );
 }
