@@ -93,7 +93,8 @@ DB_ENV := -e DATABASE_URL='$(DEFAULT_DATABASE_URL)'
 endif
 
 .PHONY: all run dev up build down logs ps shell test test-e2e lint format typecheck report \
-        migrate seed studio reset-db ci stores-up clean certs tooling-image doctor help
+        migrate seed studio reset-db ci stores-up clean certs tooling-image doctor help \
+				check-devcontainer
 
 # prevent running most make commands outside dev container
 
@@ -109,6 +110,8 @@ check-devcontainer: .EXTRA_PREREQS :=
 clean: .EXTRA_PREREQS :=
 help: .EXTRA_PREREQS :=
 doctor: .EXTRA_PREREQS :=
+# .github/workflows/e2e.yml:74 runs make migrate on a plain ubuntu-24.04 runner without FT_DEVCONTAINER
+migrate: .EXTRA_PREREQS :=
 
 
 # --- the one command ---------------------------------------------------------
