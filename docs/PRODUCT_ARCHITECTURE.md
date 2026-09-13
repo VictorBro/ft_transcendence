@@ -73,25 +73,29 @@ and a single slip does not cost them a level.
 Every question carries its own countdown (`QuestionBank.timeLimitS`), and running out of time
 counts as a wrong answer. Without that, a stalled tab is an unbounded test.
 
-**Drawing a question is a cascade, never a wall:**
+**Drawing a question is a cascade, never a wall.** Every step draws from one cell, the
+`(lang, level, category)` being probed, so a French B1 grammar probe can only ever serve a French
+B1 grammar question:
 
 1. **The bank**, excluding everything this learner has already been served (`UserSeenQuestion`).
-2. **Nothing unseen left, so generate one.** A structured LLM call, schema-validated, written to
-   `QuestionBank` with no `sourceId`, then served. It stays, so the next learner to reach that
-   cell gets it from step 1. **The bank grows as it is used**, and a null `sourceId` is what
-   marks the rows no human reviewed.
-3. **Generation failed** (API down or rate limited): serve this learner's oldest seen question.
-   A repeat after months is a weak measurement, and an abandoned exam is no measurement at all.
+2. **Nothing unseen left in the cell, so generate one.** A structured LLM call, schema-validated,
+   written to `QuestionBank` with no `sourceId`, then served. It stays, so the next learner to
+   reach that cell gets it from step 1. **The bank grows as it is used**, and a null `sourceId`
+   is what marks the rows no human reviewed.
+3. **Generation failed** (API down or rate limited): serve the oldest question this learner has
+   seen in that cell. This is the one path that repeats a question, and it opens only while the
+   LLM is unreachable. A repeat after months is a weak measurement, and an abandoned exam is no
+   measurement at all.
 
 Bank first rather than generate every time buys three things. **Quality:** a seeded question was
 reviewed by a human once, a live one cannot be. **Cost:** near zero on the common path.
-**Provability:** "never the same question twice" is a `NOT EXISTS` over `UserSeenQuestion`, not a
-hope about sampling temperature.
+**Provability:** the exclusion is a `NOT EXISTS` over `UserSeenQuestion`, not a hope about
+sampling temperature.
 
 **Skipping and retaking.** A learner who already knows their level skips the exam and sets
-`UserLevel.level` directly. A retake is the same search run again: `UserSeenQuestion` guarantees
-fresh questions and the result overwrites `UserLevel.level`. Only the current level is stored,
-never a history of runs.
+`UserLevel.level` directly. A retake is the same search run again, drawing against the same
+`UserSeenQuestion` rows, so it asks new questions unless step 3 fires. The result overwrites
+`UserLevel.level`. Only the current level is stored, never a history of runs.
 
 **The run itself is not a table.** The bounds, the level being probed, the tally per category and
 the mistakes so far live in Redis for the length of the exam (§4). Two things outlive it: the

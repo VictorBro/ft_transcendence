@@ -125,8 +125,8 @@ Write plausible wrong answers. A distractor nobody would pick makes the question
 The files are validated by a test, so you get the answer in seconds rather than from CI:
 
 ```bash
-pnpm --filter @ft/api test           # just the item files
-make                                 # everything, before you open a PR
+pnpm --filter @ft/api test src/items/item-files.spec.ts   # just the item files
+make                                                      # everything, before the PR
 ```
 
 It fails, with the offending id and a readable message, on: an answer that is not one of the
@@ -193,10 +193,10 @@ Two ids on purpose. `id` is the internal key every other table points at, so not
 a question is re-seeded. `sourceId` is yours, it is how the seed finds the row to update, and
 editing a question in the JSON file changes the row instead of creating a second one.
 
-A learner is never asked the same question twice, and `UserSeenQuestion` is what guarantees it:
-the draw excludes every question already tied to that user. It is keyed per user and not per run,
-so a retake cannot serve an old question either. See
-[PRODUCT_ARCHITECTURE.md](PRODUCT_ARCHITECTURE.md) §7.2.
+A learner is not asked the same question twice: the draw excludes every question already tied to
+that user through `UserSeenQuestion`. It is keyed per user and not per run, so a retake cannot
+serve an old question either. The single exception is an LLM outage, step 3 of the cascade in
+[PRODUCT_ARCHITECTURE.md](PRODUCT_ARCHITECTURE.md) §1.2. Table detail is in §7.2 there.
 
 There is deliberately no difficulty score, no served/correct counters and no calibration. Those
 would need hundreds of answers per question before they meant anything, and this platform will
