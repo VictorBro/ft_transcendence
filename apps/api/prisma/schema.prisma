@@ -76,7 +76,7 @@ model QuestionBank {
   question          String
   options           String[]
   answer            String
-  generated         Boolean
+  generated         Boolean  @default(false)
   timeLimitS        Int
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
