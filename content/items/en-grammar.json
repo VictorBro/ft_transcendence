@@ -1,256 +1,286 @@
 {
-  "language": "en",
-  "skill": "grammar",
+  "lang": "en",
+  "category": "grammar",
   "items": [
     {
-      "id": "en-gram-0001",
-      "cefr": "A1",
+      "sourceId": "en-gram-0001",
+      "level": "A1",
       "topic": "verbs_morphology",
-      "prompt": "My sister ___ a doctor.",
+      "question": "My sister ___ a doctor.",
       "options": ["is", "am", "are", "be"],
-      "answer": "is"
+      "answer": "is",
+      "timeLimitS": 30
     },
     {
-      "id": "en-gram-0002",
-      "cefr": "A1",
+      "sourceId": "en-gram-0002",
+      "level": "A1",
       "topic": "agreement",
-      "prompt": "There ___ two cats in the garden.",
+      "question": "There ___ two cats in the garden.",
       "options": ["is", "are", "be", "am"],
-      "answer": "are"
+      "answer": "are",
+      "timeLimitS": 30
     },
     {
-      "id": "en-gram-0003",
-      "cefr": "A1",
+      "sourceId": "en-gram-0003",
+      "level": "A1",
       "topic": "verb_usage",
-      "prompt": "My brother ___ coffee, so he drinks tea in the morning.",
+      "question": "My brother ___ coffee, so he drinks tea in the morning.",
       "options": ["doesn't like", "don't like", "not like", "isn't like"],
-      "answer": "doesn't like"
+      "answer": "doesn't like",
+      "timeLimitS": 30
     },
     {
-      "id": "en-gram-0004",
-      "cefr": "A1",
+      "sourceId": "en-gram-0004",
+      "level": "A1",
       "topic": "pronouns",
-      "prompt": "That is my brother. ___ bike is the red one.",
+      "question": "That is my brother. ___ bike is the red one.",
       "options": ["His", "Her", "Ours", "Yours"],
-      "answer": "His"
+      "answer": "His",
+      "timeLimitS": 30
     },
     {
-      "id": "en-gram-0005",
-      "cefr": "A1",
+      "sourceId": "en-gram-0005",
+      "level": "A1",
       "topic": "nouns_and_determiners",
-      "prompt": "We need ___ eggs to make the cake.",
+      "question": "We need ___ eggs to make the cake.",
       "options": ["some", "much", "a", "any"],
-      "answer": "some"
+      "answer": "some",
+      "timeLimitS": 30
     },
     {
-      "id": "en-gram-0006",
-      "cefr": "A2",
+      "sourceId": "en-gram-0006",
+      "level": "A2",
       "topic": "verbs_morphology",
-      "prompt": "I ___ to the cinema last Friday.",
+      "question": "I ___ to the cinema last Friday.",
       "options": ["go", "went", "gone", "going"],
-      "answer": "went"
+      "answer": "went",
+      "timeLimitS": 45
     },
     {
-      "id": "en-gram-0007",
-      "cefr": "A2",
+      "sourceId": "en-gram-0007",
+      "level": "A2",
       "topic": "comparison_and_quantity",
-      "prompt": "This box is ___ than that one.",
+      "question": "This box is ___ than that one.",
       "options": ["heavy", "heavier", "heaviest", "more heavy"],
-      "answer": "heavier"
+      "answer": "heavier",
+      "timeLimitS": 45
     },
     {
-      "id": "en-gram-0008",
-      "cefr": "A2",
+      "sourceId": "en-gram-0008",
+      "level": "A2",
       "topic": "verb_usage",
-      "prompt": "Don't worry, I ___ you back the moment I leave the office.",
+      "question": "Don't worry, I ___ you back the moment I leave the office.",
       "options": ["will call", "call", "going to call", "have called"],
-      "answer": "will call"
+      "answer": "will call",
+      "timeLimitS": 45
     },
     {
-      "id": "en-gram-0009",
-      "cefr": "A2",
+      "sourceId": "en-gram-0009",
+      "level": "A2",
       "topic": "verbs_morphology",
-      "prompt": "They ___ dinner at eight o'clock, when the power went out.",
+      "question": "They ___ dinner at eight o'clock, when the power went out.",
       "options": ["were cooking", "cooked", "were cook", "are cooking"],
-      "answer": "were cooking"
+      "answer": "were cooking",
+      "timeLimitS": 45
     },
     {
-      "id": "en-gram-0010",
-      "cefr": "A2",
+      "sourceId": "en-gram-0010",
+      "level": "A2",
       "topic": "prepositions_and_case",
-      "prompt": "The pharmacy is right ___ the corner, next to the bakery.",
+      "question": "The pharmacy is right ___ the corner, next to the bakery.",
       "options": ["around", "between", "along", "across"],
-      "answer": "around"
+      "answer": "around",
+      "timeLimitS": 45
     },
     {
-      "id": "en-gram-0011",
-      "cefr": "B1",
+      "sourceId": "en-gram-0011",
+      "level": "B1",
       "topic": "subordinate_clauses",
-      "prompt": "If it rains tomorrow, we ___ at home.",
+      "question": "If it rains tomorrow, we ___ at home.",
       "options": ["stay", "will stay", "stayed", "would stay"],
-      "answer": "will stay"
+      "answer": "will stay",
+      "timeLimitS": 60
     },
     {
-      "id": "en-gram-0012",
-      "cefr": "B1",
+      "sourceId": "en-gram-0012",
+      "level": "B1",
       "topic": "verb_usage",
-      "prompt": "She ___ in Berlin since 2019.",
+      "question": "She ___ in Berlin since 2019.",
       "options": ["lives", "is living", "has lived", "lived"],
-      "answer": "has lived"
+      "answer": "has lived",
+      "timeLimitS": 60
     },
     {
-      "id": "en-gram-0013",
-      "cefr": "B1",
+      "sourceId": "en-gram-0013",
+      "level": "B1",
       "topic": "verb_usage",
-      "prompt": "She doesn't play tennis anymore, but she ___ every weekend as a teenager.",
+      "question": "She doesn't play tennis anymore, but she ___ every weekend as a teenager.",
       "options": ["used to play", "has played", "was played", "plays"],
-      "answer": "used to play"
+      "answer": "used to play",
+      "timeLimitS": 60
     },
     {
-      "id": "en-gram-0014",
-      "cefr": "B1",
+      "sourceId": "en-gram-0014",
+      "level": "B1",
       "topic": "negation",
-      "prompt": "The shop had closed early, so there weren't ___ sandwiches left.",
+      "question": "The shop had closed early, so there weren't ___ sandwiches left.",
       "options": ["any", "much", "some", "a few"],
-      "answer": "any"
+      "answer": "any",
+      "timeLimitS": 60
     },
     {
-      "id": "en-gram-0015",
-      "cefr": "B1",
+      "sourceId": "en-gram-0015",
+      "level": "B1",
       "topic": "verb_usage",
-      "prompt": "How about ___ the museum on Sunday instead?",
+      "question": "How about ___ the museum on Sunday instead?",
       "options": ["visiting", "visit", "to visit", "for visiting"],
-      "answer": "visiting"
+      "answer": "visiting",
+      "timeLimitS": 60
     },
     {
-      "id": "en-gram-0016",
-      "cefr": "B2",
+      "sourceId": "en-gram-0016",
+      "level": "B2",
       "topic": "verbs_morphology",
-      "prompt": "The bridge ___ last year after the flood.",
+      "question": "The bridge ___ last year after the flood.",
       "options": ["rebuilt", "was rebuilt", "has rebuilt", "rebuilding"],
-      "answer": "was rebuilt"
+      "answer": "was rebuilt",
+      "timeLimitS": 60
     },
     {
-      "id": "en-gram-0017",
-      "cefr": "B2",
+      "sourceId": "en-gram-0017",
+      "level": "B2",
       "topic": "verb_usage",
-      "prompt": "I would rather you ___ me before making that decision.",
+      "question": "I would rather you ___ me before making that decision.",
       "options": ["ask", "asked", "will ask", "would ask"],
-      "answer": "asked"
+      "answer": "asked",
+      "timeLimitS": 60
     },
     {
-      "id": "en-gram-0018",
-      "cefr": "B2",
+      "sourceId": "en-gram-0018",
+      "level": "B2",
       "topic": "subordinate_clauses",
-      "prompt": "Take an umbrella, ___ the storm arrives earlier than forecast.",
+      "question": "Take an umbrella, ___ the storm arrives earlier than forecast.",
       "options": ["in case", "otherwise", "so that", "in order to"],
-      "answer": "in case"
+      "answer": "in case",
+      "timeLimitS": 60
     },
     {
-      "id": "en-gram-0019",
-      "cefr": "B2",
+      "sourceId": "en-gram-0019",
+      "level": "B2",
       "topic": "subordinate_clauses",
-      "prompt": "We'll miss the ferry ___ we leave within the hour.",
+      "question": "We'll miss the ferry ___ we leave within the hour.",
       "options": ["unless", "if", "providing that", "except"],
-      "answer": "unless"
+      "answer": "unless",
+      "timeLimitS": 60
     },
     {
-      "id": "en-gram-0020",
-      "cefr": "B2",
+      "sourceId": "en-gram-0020",
+      "level": "B2",
       "topic": "verb_usage",
-      "prompt": "I ___ this novel all week and I still don't know how it ends.",
+      "question": "I ___ this novel all week and I still don't know how it ends.",
       "options": ["have been reading", "have read", "had been reading", "was reading"],
-      "answer": "have been reading"
+      "answer": "have been reading",
+      "timeLimitS": 60
     },
     {
-      "id": "en-gram-0021",
-      "cefr": "C1",
+      "sourceId": "en-gram-0021",
+      "level": "C1",
       "topic": "syntax_and_sentence_structure",
-      "prompt": "Not until the letter arrived ___ the truth.",
+      "question": "Not until the letter arrived ___ the truth.",
       "options": ["did she learn", "she learned", "she did learn", "learned she"],
-      "answer": "did she learn"
+      "answer": "did she learn",
+      "timeLimitS": 75
     },
     {
-      "id": "en-gram-0022",
-      "cefr": "C1",
+      "sourceId": "en-gram-0022",
+      "level": "C1",
       "topic": "subordinate_clauses",
-      "prompt": "The proposal, ___ merits were never in doubt, was rejected on procedural grounds.",
+      "question": "The proposal, ___ merits were never in doubt, was rejected on procedural grounds.",
       "options": ["whose", "which", "that", "whom"],
-      "answer": "whose"
+      "answer": "whose",
+      "timeLimitS": 75
     },
     {
-      "id": "en-gram-0023",
-      "cefr": "C1",
+      "sourceId": "en-gram-0023",
+      "level": "C1",
       "topic": "verbs_morphology",
-      "prompt": "The manuscript is thought ___ in a monastery some time before 1350.",
+      "question": "The manuscript is thought ___ in a monastery some time before 1350.",
       "options": [
         "to have been written",
         "to be written",
         "to have written",
         "having been written"
       ],
-      "answer": "to have been written"
+      "answer": "to have been written",
+      "timeLimitS": 75
     },
     {
-      "id": "en-gram-0024",
-      "cefr": "C1",
+      "sourceId": "en-gram-0024",
+      "level": "C1",
       "topic": "verb_usage",
-      "prompt": "She ___ for her keys for two days when she finally found them in her coat.",
+      "question": "She ___ for her keys for two days when she finally found them in her coat.",
       "options": ["had been looking", "looked", "had been looked", "were looking"],
-      "answer": "had been looking"
+      "answer": "had been looking",
+      "timeLimitS": 75
     },
     {
-      "id": "en-gram-0025",
-      "cefr": "C1",
+      "sourceId": "en-gram-0025",
+      "level": "C1",
       "topic": "syntax_and_sentence_structure",
-      "prompt": "What struck me most about the exhibition ___ the silence of the crowd.",
+      "question": "What struck me most about the exhibition ___ the silence of the crowd.",
       "options": ["was", "were", "being", "be"],
-      "answer": "was"
+      "answer": "was",
+      "timeLimitS": 75
     },
     {
-      "id": "en-gram-0026",
-      "cefr": "C2",
+      "sourceId": "en-gram-0026",
+      "level": "C2",
       "topic": "verb_usage",
-      "prompt": "Had the committee ___ the risk, the project would never have been approved.",
+      "question": "Had the committee ___ the risk, the project would never have been approved.",
       "options": ["understood", "understand", "been understood", "understanding"],
-      "answer": "understood"
+      "answer": "understood",
+      "timeLimitS": 90
     },
     {
-      "id": "en-gram-0027",
-      "cefr": "C2",
+      "sourceId": "en-gram-0027",
+      "level": "C2",
       "topic": "syntax_and_sentence_structure",
-      "prompt": "___ though the evidence was, the jury remained unconvinced.",
+      "question": "___ though the evidence was, the jury remained unconvinced.",
       "options": ["Compelling", "Compellingly", "More compelling", "Compelled"],
-      "answer": "Compelling"
+      "answer": "Compelling",
+      "timeLimitS": 90
     },
     {
-      "id": "en-gram-0028",
-      "cefr": "C2",
+      "sourceId": "en-gram-0028",
+      "level": "C2",
       "topic": "verb_usage",
-      "prompt": "The pavement is bone dry, so it ___ during the night after all.",
+      "question": "The pavement is bone dry, so it ___ during the night after all.",
       "options": ["can't have rained", "hadn't rained", "couldn't rain", "mustn't have rained"],
-      "answer": "can't have rained"
+      "answer": "can't have rained",
+      "timeLimitS": 90
     },
     {
-      "id": "en-gram-0029",
-      "cefr": "C2",
+      "sourceId": "en-gram-0029",
+      "level": "C2",
       "topic": "subordinate_clauses",
-      "prompt": "Had she not intervened when she did, the negotiations ___ altogether.",
+      "question": "Had she not intervened when she did, the negotiations ___ altogether.",
       "options": ["would have collapsed", "will have collapsed", "would collapse", "had collapsed"],
-      "answer": "would have collapsed"
+      "answer": "would have collapsed",
+      "timeLimitS": 90
     },
     {
-      "id": "en-gram-0030",
-      "cefr": "C2",
+      "sourceId": "en-gram-0030",
+      "level": "C2",
       "topic": "syntax_and_sentence_structure",
-      "prompt": "Rarely ___ an account so at odds with the documentary record.",
+      "question": "Rarely ___ an account so at odds with the documentary record.",
       "options": [
         "have historians encountered",
         "historians have encountered",
         "historians encountered",
         "encountered historians"
       ],
-      "answer": "have historians encountered"
+      "answer": "have historians encountered",
+      "timeLimitS": 90
     }
   ]
 }

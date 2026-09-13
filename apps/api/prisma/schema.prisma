@@ -69,14 +69,15 @@ model UserLevel {
 
 model QuestionBank {
   id                String   @id @default(uuid()) @db.Uuid
+  sourceId          String?  @unique
   lang              Language
   level             Level
+  topic             Topic
   category          QuestionCategory
   readText          String?
   question          String
   options           String[]
   answer            String
-  generated         Boolean
   timeLimitS        Int
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
@@ -132,4 +133,20 @@ enum Language {
   en
   fr
   de
+}
+
+enum Topic {
+  nouns_and_determiners
+  pronouns
+  verbs_morphology
+  verb_usage
+  syntax_and_sentence_structure
+  subordinate_clauses
+  prepositions_and_case
+  adjectives
+  adverbs
+  agreement
+  negation
+  comparison_and_quantity
+  information_structure_and_pragmatics
 }

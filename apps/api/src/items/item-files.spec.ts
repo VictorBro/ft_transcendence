@@ -2,7 +2,12 @@ import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
-import { ItemFileSchema, itemFileName, SKILLS, type Skill } from '@ft/shared';
+import {
+  ItemFileSchema,
+  itemFileName,
+  QUESTION_CATEGORIES,
+  type QuestionCategory,
+} from '@ft/shared';
 
 /**
  * Validates the authored placement questions in content/items.
@@ -42,7 +47,7 @@ describe('content/items', () => {
 
     it('is named after the language and skill it declares', () => {
       if (!parsed.success) return;
-      expect(name).toBe(itemFileName(parsed.data.language, parsed.data.skill));
+      expect(name).toBe(itemFileName(parsed.data.lang, parsed.data.category));
     });
   });
 
@@ -56,34 +61,34 @@ describe('content/items', () => {
       const parsed = ItemFileSchema.safeParse(read(name));
       if (!parsed.success) continue;
       for (const item of parsed.data.items) {
-        const previous = seen.get(item.id);
+        const previous = seen.get(item.sourceId);
         if (previous !== undefined) {
-          clashes.push(`${item.id} in both ${previous} and ${name}`);
+          clashes.push(`${item.sourceId} in both ${previous} and ${name}`);
         }
-        seen.set(item.id, name);
+        seen.set(item.sourceId, name);
       }
     }
 
     expect(clashes).toEqual([]);
   });
 
-  it('reports which skills a language has not been authored for yet', () => {
-    const byLanguage = new Map<string, Set<Skill>>();
+  it('reports which categories a language has not been authored for yet', () => {
+    const byLanguage = new Map<string, Set<QuestionCategory>>();
 
     for (const name of files) {
       const parsed = ItemFileSchema.safeParse(read(name));
       if (!parsed.success) continue;
-      const skills = byLanguage.get(parsed.data.language) ?? new Set<Skill>();
-      skills.add(parsed.data.skill);
-      byLanguage.set(parsed.data.language, skills);
+      const categories = byLanguage.get(parsed.data.lang) ?? new Set<QuestionCategory>();
+      categories.add(parsed.data.category);
+      byLanguage.set(parsed.data.lang, categories);
     }
 
     // Reported rather than asserted: a language part-way through authoring is a
     // normal state, and failing on it would block the person doing the work.
-    for (const [language, skills] of byLanguage) {
-      const missing = SKILLS.filter((skill) => !skills.has(skill));
+    for (const [lang, categories] of byLanguage) {
+      const missing = QUESTION_CATEGORIES.filter((category) => !categories.has(category));
       if (missing.length > 0) {
-        console.info(`content/items: ${language} has no ${missing.join(', ')} file yet`);
+        console.info(`content/items: ${lang} has no ${missing.join(', ')} file yet`);
       }
     }
 
