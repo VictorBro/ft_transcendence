@@ -115,6 +115,7 @@ services:
       dockerfile: .devcontainer/Dockerfile
     working_dir: /workspace
     environment:
+      FT_DEVCONTAINER: "true"
       # Without this, .claude.json is written to $HOME, outside the volume, and
       # every container rebuild logs you out.
       CLAUDE_CONFIG_DIR: /home/node/.claude
