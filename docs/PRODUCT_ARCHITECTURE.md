@@ -77,8 +77,9 @@ counts as a wrong answer. Without that, a stalled tab is an unbounded test.
 
 1. **The bank**, excluding everything this learner has already been served (`UserSeenQuestion`).
 2. **Nothing unseen left, so generate one.** A structured LLM call, schema-validated, written to
-   `QuestionBank` with `generated = true`, then served. It stays, so the next learner to reach
-   that cell gets it from step 1. **The bank grows as it is used.**
+   `QuestionBank` with no `sourceId`, then served. It stays, so the next learner to reach that
+   cell gets it from step 1. **The bank grows as it is used**, and a null `sourceId` is what
+   marks the rows no human reviewed.
 3. **Generation failed** (API down or rate limited): serve this learner's oldest seen question.
    A repeat after months is a weak measurement, and an abandoned exam is no measurement at all.
 
@@ -614,7 +615,7 @@ erDiagram
 | Table | Holds | Notes |
 |---|---|---|
 | `UserLevel` | userId, lang, level?, dailyGoal | Unique `(userId, lang)`, so a user may learn two languages. Onboarding writes it with `level` null; placement fills it in, or a learner who skips sets it directly. The goal sizes today's plan and defines the streak, it never locks content |
-| `QuestionBank` | id, lang, level, category, topic, readText?, question, options, answer, generated, timeLimitS | The reusable pool, seeded from `content/items/*.json` and grown at runtime when a learner exhausts a cell. `generated` marks the rows no human reviewed. Full spec in [ITEM_BANK.md](ITEM_BANK.md) |
+| `QuestionBank` | id, sourceId?, lang, level, topic, category, readText?, question, options, answer, timeLimitS | The reusable pool, seeded from `content/items/*.json` and grown at runtime when a learner exhausts a cell. `sourceId` is the authored id the seed matches on, and its absence marks a question the LLM wrote. Full spec in [ITEM_BANK.md](ITEM_BANK.md) |
 | `UserSeenQuestion` | userId, questionId | Unique `(userId, questionId)`. **The exposure record**, and the whole reason placement never repeats a question: the draw is a `NOT EXISTS` over these rows. It is per user and not per run, so a retake cannot serve an old question either |
 | `Topic` | lang, level, slug, title, summary, estimatedMinutes, position | **Seeded catalogue, not generated.** One row is one tile on the roadmap |
 | `Lesson` | userLevelId, topicId, status, score, explanation?, startedAt, completedAt | Unique `(userLevelId, topicId)`. **This is both the roadmap row and the lesson run**: `status` drives lock/unlock on the board, and the same row holds the result. Ordering comes from `Topic.position` |

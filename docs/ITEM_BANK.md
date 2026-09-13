@@ -46,8 +46,12 @@ accessibility story.
 
 ## 3. The shape of an item
 
-Every item is the same shape, whatever the skill: an optional passage, a question, four options,
-one correct answer. A reading item is simply one that has a passage.
+One file per language and category, under `content/items/`, named after the two it declares:
+`de-grammar.json`, `fr-reading.json`. The field names are the `QuestionBank` column names, so the
+seed is a straight insert.
+
+Every item is the same shape: a question, four options, one correct answer and a time limit.
+`content/items/de-grammar.json`:
 
 ```jsonc
 {
@@ -55,38 +59,62 @@ one correct answer. A reading item is simply one that has a passage.
   "category": "grammar",
   "items": [
     {
-      "id": "0f8a7c31-5d2e-4b16-9a44-1c7e0b3d5f82",
+      "sourceId": "de-gram-0001",
       "level": "A1",
       "topic": "verbs_morphology",
       "question": "Ich ___ aus Spanien.",
       "options": ["ist", "sind", "bin", "sein"],
-      "answer": "bin"
-    },
-    {
-      "id": "6b91d4e7-83af-42c0-b5d8-9e2f1a604c37",
-      "level": "A2",
-      "topic": "information_structure_and_pragmatics",
-      "readText": "Maria arbeitet in einer kleinen Bäckerei am Bahnhof. Sie beginnt um fünf Uhr morgens.",
-      "question": "Wann beginnt Maria mit der Arbeit?",
-      "options": ["Um fünf Uhr", "Um sieben Uhr", "Am Mittag", "Am Abend"],
-      "answer": "Um fünf Uhr"
+      "answer": "bin",
+      "timeLimitS": 30
     }
   ]
 }
 ```
 
-One file per language and category, under `content/items/`: `de-grammar.json`, `fr-reading.json`.
-The field names are the `QuestionBank` column names, so the seed is a straight insert.
+Reading is the one category that differs, and it differs by a single field: `readText`, the
+passage the question is about. It has its own file, so a reading item never sits next to a
+grammar one. `content/items/de-reading.json`:
+
+```jsonc
+{
+  "lang": "de",
+  "category": "reading",
+  "items": [
+    {
+      "sourceId": "de-read-0001",
+      "level": "A2",
+      "topic": "information_structure_and_pragmatics",
+      "readText": "Maria arbeitet in einer kleinen Bäckerei am Bahnhof. Sie beginnt um fünf Uhr morgens.",
+      "question": "Wann beginnt Maria mit der Arbeit?",
+      "options": ["Um fünf Uhr", "Um sieben Uhr", "Am Mittag", "Am Abend"],
+      "answer": "Um fünf Uhr",
+      "timeLimitS": 75
+    }
+  ]
+}
+```
 
 | Field | Rule |
 |---|---|
-| `id` | A UUID, generated once and **never changed**. It is the primary key and `UserSeenQuestion` rows point at it, so reissuing an id makes a learner see a question twice |
+| `sourceId` | `<language>-<gram\|voca\|read>-<4 digits>`, matching the file it lives in. Unique across every file and **permanent**: the seed matches on it, so reusing one overwrites another question |
 | `level` | `A1` to `C2` |
 | `topic` | From §4. Keeps a cell from being five questions about the same thing |
 | `readText` | Reading questions only, omit otherwise |
 | `question` | A fill-in-the-blank uses `___` |
 | `options` | Exactly 4, all different |
 | `answer` | The correct string, must appear verbatim in `options`. Text and not an index, so options can be shuffled when served |
+| `timeLimitS` | Seconds to answer. Long enough to read and think, short enough that looking it up does not fit |
+
+Time limits rise with the level and with how much there is to read. What the seeded set uses:
+
+| Category | A1 | A2 | B1 | B2 | C1 | C2 |
+|---|---|---|---|---|---|---|
+| `vocabulary` | 30 | 30 | 45 | 45 | 60 | 60 |
+| `grammar` | 30 | 45 | 60 | 60 | 75 | 90 |
+| `reading` | 60 to 75 | 75 to 90 | 90 | 105 to 120 | 120 to 165 | 150 to 180 |
+
+Reading is a range because the passage length drives it. Match a neighbour of the same length
+rather than picking a number.
 
 Write plausible wrong answers. A distractor nobody would pick makes the question free.
 
@@ -102,9 +130,10 @@ make                                 # everything, before you open a PR
 ```
 
 It fails, with the offending id and a readable message, on: an answer that is not one of the
-options, options that are not exactly four or are not all different, an id that is not a UUID or
-is reused by another file, a reading question with no `readText` or a non-reading one with it, an
-unknown `level` or `topic`, and any field that is not in the list above.
+options, options that are not exactly four or are not all different, a `sourceId` in the wrong
+format, reused by another file, or disagreeing with the language and category of the file it sits
+in, a reading question with no `readText` or a non-reading one with it, an unknown `level` or
+`topic`, a missing or non-positive `timeLimitS`, and any field that is not in the list above.
 
 `content/items/en-*.json` are working examples of all three shapes. Copy one and edit.
 
@@ -130,19 +159,19 @@ Two tables. The JSON files are the source of truth in git; the seed script loads
 
 ```prisma
 model QuestionBank {
-  id         String           @id @db.Uuid      // the id from the file
+  id         String           @id @default(uuid()) @db.Uuid
+  // The id from the file, and null on a question the LLM wrote at runtime.
+  // That is also how the two are told apart: a question with no sourceId is one
+  // no human reviewed.
+  sourceId   String?          @unique
   lang       Language
   level      Level
+  topic      Topic
   category   QuestionCategory                   // vocabulary | grammar | reading
-  topic      GrammarTopic
   readText   String?                            // reading questions only
   question   String
   options    String[]
   answer     String
-  // Written at runtime when a learner exhausted a cell and the LLM made a new
-  // question. It stays in the bank and is served to everyone afterwards.
-  // Flagged because, unlike the seeded ones, no human reviewed it.
-  generated  Boolean          @default(false)
   timeLimitS Int
   createdAt  DateTime         @default(now())
   updatedAt  DateTime         @updatedAt
@@ -160,8 +189,9 @@ model UserSeenQuestion {
 }
 ```
 
-`timeLimitS` is not authored. The seed sets it from the category, because a reading question
-needs longer than a vocabulary one.
+Two ids on purpose. `id` is the internal key every other table points at, so nothing breaks when
+a question is re-seeded. `sourceId` is yours, it is how the seed finds the row to update, and
+editing a question in the JSON file changes the row instead of creating a second one.
 
 A learner is never asked the same question twice, and `UserSeenQuestion` is what guarantees it:
 the draw excludes every question already tied to that user. It is keyed per user and not per run,
@@ -178,7 +208,7 @@ assumes it works.
 ## 6. When the bank runs dry
 
 A learner who exhausts a cell is never blocked: the app generates a question in the same shape as
-above, validates it, saves it with `generated = true` and serves it. It stays, so the next
+above, validates it, saves it with no `sourceId` and serves it. It stays, so the next
 learner to reach that cell gets it from the bank. **The bank grows as it is used**, which is why
 90 authored questions per language is enough. The full cascade, including what happens when the
 LLM is down, is in [PRODUCT_ARCHITECTURE.md](PRODUCT_ARCHITECTURE.md) §1.2.
