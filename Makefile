@@ -113,6 +113,7 @@ doctor: .EXTRA_PREREQS :=
 # .github/workflows/e2e.yml:74 runs make migrate on a plain ubuntu-24.04 runner without FT_DEVCONTAINER
 migrate: .EXTRA_PREREQS :=
 tooling-image: .EXTRA_PREREQS :=
+down: .EXTRA_PREREQS :=
 
 
 # --- the one command ---------------------------------------------------------
