@@ -4,7 +4,7 @@ if [ "$branch" = "main" ]; then
 echo "❌ Commits directly to 'main' are not allowed. Did you forget to create a new branch?"
 exit 1
 fi
-
+echo "✔ You are not on main branch"
 # Formats what you are about to commit, nothing else. lint-staged stashes the
 
 # unstaged half of a partially staged file first, so `git add -p` cannot quietly
