@@ -99,7 +99,7 @@ endif
 # prevent running most make commands outside dev container
 
 check-devcontainer:
-	@if [ "$$FT_DEVCONTAINER" != "true" ]; then \
+	@if [ "${FT_DEVCONTAINER:-}" != "true" ]; then \
 		echo "ERROR: Make commands must be run inside the dev container."; \
 		exit 1; \
 	fi
