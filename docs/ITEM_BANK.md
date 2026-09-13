@@ -26,15 +26,15 @@ measuring.
 
 | | |
 |---|---|
-| Skills | `grammar`, `vocabulary`, `reading` |
+| Categories | `grammar`, `vocabulary`, `reading` |
 | Levels | `A1 A2 B1 B2 C1 C2` |
 | Items per cell | 5 |
 | **Total per language** | **90** |
 
-Five per cell is deliberately modest. A test serves about 12 questions, a learner draws from
-their own level and its neighbours, so a few retakes exhaust their band and the app starts
-generating new questions, which is exactly the behaviour we want to demonstrate. A huge seed
-bank would hide that path rather than exercise it.
+Five per cell is deliberately modest. A run probes at most three levels and asks two questions
+per category at each, so two or three runs drain a learner's cells and the app starts generating
+new questions, which is exactly the behaviour we want to demonstrate. A huge seed bank would hide
+that path rather than exercise it.
 
 Start with `grammar` and `vocabulary`, which are one sentence each. Add `reading` after, since
 every item needs a passage written too.
@@ -51,23 +51,23 @@ one correct answer. A reading item is simply one that has a passage.
 
 ```jsonc
 {
-  "language": "de",
-  "skill": "grammar",
+  "lang": "de",
+  "category": "grammar",
   "items": [
     {
-      "id": "de-gram-0001",
-      "cefr": "A1",
+      "id": "0f8a7c31-5d2e-4b16-9a44-1c7e0b3d5f82",
+      "level": "A1",
       "topic": "verbs_morphology",
-      "prompt": "Ich ___ aus Spanien.",
+      "question": "Ich ___ aus Spanien.",
       "options": ["ist", "sind", "bin", "sein"],
       "answer": "bin"
     },
     {
-      "id": "de-read-0001",
-      "cefr": "A2",
+      "id": "6b91d4e7-83af-42c0-b5d8-9e2f1a604c37",
+      "level": "A2",
       "topic": "information_structure_and_pragmatics",
-      "passage": "Maria arbeitet in einer kleinen Bäckerei am Bahnhof. Sie beginnt um fünf Uhr morgens.",
-      "prompt": "Wann beginnt Maria mit der Arbeit?",
+      "readText": "Maria arbeitet in einer kleinen Bäckerei am Bahnhof. Sie beginnt um fünf Uhr morgens.",
+      "question": "Wann beginnt Maria mit der Arbeit?",
       "options": ["Um fünf Uhr", "Um sieben Uhr", "Am Mittag", "Am Abend"],
       "answer": "Um fünf Uhr"
     }
@@ -75,15 +75,16 @@ one correct answer. A reading item is simply one that has a passage.
 }
 ```
 
-One file per language and skill, under `content/items/`: `de-grammar.json`, `fr-reading.json`.
+One file per language and category, under `content/items/`: `de-grammar.json`, `fr-reading.json`.
+The field names are the `QuestionBank` column names, so the seed is a straight insert.
 
 | Field | Rule |
 |---|---|
-| `id` | Unique and **permanent**. Past answers point at it, so renumbering makes a learner see a question twice |
-| `cefr` | `A1` to `C2` |
+| `id` | A UUID, generated once and **never changed**. It is the primary key and `UserSeenQuestion` rows point at it, so reissuing an id makes a learner see a question twice |
+| `level` | `A1` to `C2` |
 | `topic` | From §4. Keeps a cell from being five questions about the same thing |
-| `passage` | Reading items only, omit otherwise |
-| `prompt` | The question. A fill-in-the-blank uses `___` |
+| `readText` | Reading questions only, omit otherwise |
+| `question` | A fill-in-the-blank uses `___` |
 | `options` | Exactly 4, all different |
 | `answer` | The correct string, must appear verbatim in `options`. Text and not an index, so options can be shuffled when served |
 
@@ -96,14 +97,14 @@ Write plausible wrong answers. A distractor nobody would pick makes the question
 The files are validated by a test, so you get the answer in seconds rather than from CI:
 
 ```bash
-pnpm --filter @ft/shared test        # just the item files
+pnpm --filter @ft/api test           # just the item files
 make                                 # everything, before you open a PR
 ```
 
 It fails, with the offending id and a readable message, on: an answer that is not one of the
-options, options that are not exactly four or are not all different, an id in the wrong format or
-reused by another file, a reading item with no passage or a non-reading item with one, an unknown
-`cefr` or `topic`, and any field that is not in the list above.
+options, options that are not exactly four or are not all different, an id that is not a UUID or
+is reused by another file, a reading question with no `readText` or a non-reading one with it, an
+unknown `level` or `topic`, and any field that is not in the list above.
 
 `content/items/en-*.json` are working examples of all three shapes. Copy one and edit.
 
@@ -128,31 +129,44 @@ lesson that teaches it speak the same language.
 Two tables. The JSON files are the source of truth in git; the seed script loads them.
 
 ```prisma
-model ItemBank {
-  id        String       @id                    // the id from the file
-  language  LearningLang
-  skill     Skill                               // grammar | vocabulary | reading
-  cefr      CefrLevel
-  topic     GrammarTopic
-  passage   String?                             // reading items only
-  prompt    String
-  options   String[]
-  answer    String
-  // Written at runtime when a learner exhausted their level and the LLM made a
-  // new question. It stays in the bank and is served to everyone afterwards.
+model QuestionBank {
+  id         String           @id @db.Uuid      // the id from the file
+  lang       Language
+  level      Level
+  category   QuestionCategory                   // vocabulary | grammar | reading
+  topic      GrammarTopic
+  readText   String?                            // reading questions only
+  question   String
+  options    String[]
+  answer     String
+  // Written at runtime when a learner exhausted a cell and the LLM made a new
+  // question. It stays in the bank and is served to everyone afterwards.
   // Flagged because, unlike the seeded ones, no human reviewed it.
-  generated Boolean      @default(false)
-  createdAt DateTime     @default(now())
+  generated  Boolean          @default(false)
+  timeLimitS Int
+  createdAt  DateTime         @default(now())
+  updatedAt  DateTime         @updatedAt
 
-  answers   PlacementAnswer[]
+  userSeenQuestions UserSeenQuestion[]
 
-  @@index([language, skill, cefr])
+  @@index([lang, level, category])
+}
+
+model UserSeenQuestion {
+  userId     String @db.Uuid
+  questionId String @db.Uuid
+
+  @@unique([userId, questionId])
 }
 ```
 
-A learner is never asked the same question twice, but there is no second table
-for that: the `PlacementAnswer` rows of their past tests already record what they
-were asked. See [PRODUCT_ARCHITECTURE.md](PRODUCT_ARCHITECTURE.md) §7.2.
+`timeLimitS` is not authored. The seed sets it from the category, because a reading question
+needs longer than a vocabulary one.
+
+A learner is never asked the same question twice, and `UserSeenQuestion` is what guarantees it:
+the draw excludes every question already tied to that user. It is keyed per user and not per run,
+so a retake cannot serve an old question either. See
+[PRODUCT_ARCHITECTURE.md](PRODUCT_ARCHITECTURE.md) §7.2.
 
 There is deliberately no difficulty score, no served/correct counters and no calibration. Those
 would need hundreds of answers per question before they meant anything, and this platform will
@@ -163,15 +177,11 @@ assumes it works.
 
 ## 6. When the bank runs dry
 
-Three steps, and the learner is never blocked:
-
-1. **Draw from the bank**, excluding anything this learner has already been asked.
-2. **Nothing left at this level: generate one.** A structured LLM call against the same shape as
-   above, validated, saved to `ItemBank` with `generated = true`, then served. It stays, so the
-   next learner to reach that level gets it from step 1 for free. **The bank grows as it is used.**
-3. **Generation failed** (API down or rate-limited): serve this learner's least recently seen
-   question. A repeat after months is a weaker measurement than a fresh question, and a far
-   better outcome than an abandoned test.
+A learner who exhausts a cell is never blocked: the app generates a question in the same shape as
+above, validates it, saves it with `generated = true` and serves it. It stays, so the next
+learner to reach that cell gets it from the bank. **The bank grows as it is used**, which is why
+90 authored questions per language is enough. The full cascade, including what happens when the
+LLM is down, is in [PRODUCT_ARCHITECTURE.md](PRODUCT_ARCHITECTURE.md) §1.2.
 
 ---
 
