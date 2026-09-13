@@ -1,4 +1,12 @@
+if [ "$branch" = "main" ]; then
+echo "❌ Commits directly to 'main' are not allowed. Did you forget to create a new branch?"
+exit 1
+fi
+
 # Formats what you are about to commit, nothing else. lint-staged stashes the
+
 # unstaged half of a partially staged file first, so `git add -p` cannot quietly
+
 # commit the part you left out.
+
 pnpm exec lint-staged

@@ -62,6 +62,9 @@
     "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
   },
 
+  "containerEnv": {
+    "FT_DEVCONTAINER": "true"
+  },
   // No "features" block on purpose. Everything a feature would add (docker CLI,
   // gh, zsh, sudo) is in .devcontainer/Dockerfile instead, where the version is
   // visible and the layer is cached with the rest of the image.

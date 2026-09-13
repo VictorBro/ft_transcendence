@@ -95,6 +95,21 @@ endif
 .PHONY: all run dev up build down logs ps shell test test-e2e lint format typecheck report \
         migrate seed studio reset-db ci stores-up clean certs tooling-image doctor help
 
+# prevent running most make commands outside dev container
+
+check-devcontainer:
+	@if [ "$$DEVCONTAINER" != "true" ]; then \
+		echo "ERROR: Make commands must be run inside the dev container."; \
+		exit 1; \
+	fi
+
+.EXTRA_PREREQS = check-devcontainer
+
+check-devcontainer: .EXTRA_PREREQS :=
+clean: .EXTRA_PREREQS :=
+help: .EXTRA_PREREQS :=
+
+
 # --- the one command ---------------------------------------------------------
 
 ## all: every CI check, then the running app, then Playwright against it
