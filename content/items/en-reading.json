@@ -217,7 +217,7 @@
       "level": "B2",
       "topic": "information_structure_and_pragmatics",
       "readText": "Public discussion tends to treat technological progress as self-evidently good, assuming that innovation improves society on its own. That assumption has a blind spot. Without oversight, new tools can just as easily entrench existing advantages, widen economic gaps and push already marginal groups further to the edge.",
-      "question": "According to the readText, what can innovation do without oversight?",
+      "question": "According to the passage, what can innovation do without oversight?",
       "options": [
         "Entrench existing advantages and widen economic gaps",
         "Improve society automatically",
@@ -232,7 +232,7 @@
       "level": "B2",
       "topic": "information_structure_and_pragmatics",
       "readText": "Remote work was widely predicted to empty city centres. Four years on, the picture is more mixed. Offices are indeed quieter midweek, but the cafes, gyms and shops around them have not closed in the numbers forecast. What has changed is the rhythm: the centre is busy on three days and subdued on two.",
-      "question": "What does the readText say has actually changed in city centres?",
+      "question": "What does the passage say has actually changed in city centres?",
       "options": [
         "The weekly rhythm of activity, rather than the overall level",
         "The number of businesses, which fell as predicted",
@@ -262,7 +262,7 @@
       "level": "B2",
       "topic": "information_structure_and_pragmatics",
       "readText": "The publisher had expected the memoir to sell modestly and printed accordingly. Then a single review, written by a critic with no particular following, was shared several hundred thousand times in a weekend. The second printing was ordered before the first had reached the shops.",
-      "question": "What does the readText suggest about the book's success?",
+      "question": "What does the passage suggest about the book's success?",
       "options": [
         "It came from an unexpected source rather than the critic's reputation",
         "It was the result of careful planning by the publisher",
@@ -277,7 +277,7 @@
       "level": "C1",
       "topic": "information_structure_and_pragmatics",
       "readText": "For much of the twentieth century, city planners treated parks as pleasant but optional additions, the first thing cut when budgets tightened. That attitude has quietly reversed. As cities have grown denser and summers hotter, green spaces have come to be seen less as decoration than as infrastructure, performing measurable work that concrete cannot.\n\nNone of this makes parks simple to provide. Land in crowded cities is expensive, and a space meant for everyone must be designed with unusual care, or it risks serving no one well. But the old question, whether a city can afford its parks, is increasingly giving way to a sharper one: whether it can afford to be without them.",
-      "question": "What central change in thinking does the readText describe?",
+      "question": "What central change in thinking does the passage describe?",
       "options": [
         "Parks are now seen as essential infrastructure rather than decoration",
         "Cities have found parks cheap and easy to provide",
@@ -412,7 +412,7 @@
       "level": "C2",
       "topic": "information_structure_and_pragmatics",
       "readText": "Proponents of prediction markets argue that they aggregate dispersed knowledge more honestly than polls, because participants stake something on being right. The mechanism is real, and where markets are liquid their record is respectable. The difficulty is that the questions most worth forecasting are precisely those on which few people will trade: distant, ambiguous in resolution, or morally charged enough that betting looks unseemly. The instrument works best on the questions we least need it for.",
-      "question": "What limitation of prediction markets does the readText identify?",
+      "question": "What limitation of prediction markets does the passage identify?",
       "options": [
         "They function poorly on exactly the questions that matter most",
         "Participants have no incentive to be accurate",

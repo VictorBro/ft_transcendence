@@ -7,6 +7,9 @@ CREATE TYPE "Level" AS ENUM ('A1', 'A2', 'B1', 'B2', 'C1', 'C2');
 -- CreateEnum
 CREATE TYPE "Language" AS ENUM ('en', 'fr', 'de');
 
+-- CreateEnum
+CREATE TYPE "Topic" AS ENUM ('nouns_and_determiners', 'pronouns', 'verbs_morphology', 'verb_usage', 'syntax_and_sentence_structure', 'subordinate_clauses', 'prepositions_and_case', 'adjectives', 'adverbs', 'agreement', 'negation', 'comparison_and_quantity', 'information_structure_and_pragmatics');
+
 -- CreateTable
 CREATE TABLE "UserLevel" (
     "id" UUID NOT NULL,
@@ -23,14 +26,15 @@ CREATE TABLE "UserLevel" (
 -- CreateTable
 CREATE TABLE "QuestionBank" (
     "id" UUID NOT NULL,
+    "sourceId" TEXT,
     "lang" "Language" NOT NULL,
     "level" "Level" NOT NULL,
+    "topic" "Topic" NOT NULL,
     "category" "QuestionCategory" NOT NULL,
     "readText" TEXT,
     "question" TEXT NOT NULL,
     "options" TEXT[],
     "answer" TEXT NOT NULL,
-    "generated" BOOLEAN NOT NULL,
     "timeLimitS" INTEGER NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,

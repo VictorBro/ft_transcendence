@@ -53,14 +53,15 @@ export const ITEM_ID_PATTERN = /^[a-z]{2}-(gram|voca|read)-\d{4}$/;
 
 export const ItemSchema = z
   .object({
-    id: z.string().regex(ITEM_ID_PATTERN, 'expected <lang>-<gram|voca|read>-<4 digits>'),
-    cefr: CefrLevelSchema,
+    sourceId: z.string().regex(ITEM_ID_PATTERN, 'expected <lang>-<gram|voca|read>-<4 digits>'),
+    level: CefrLevelSchema,
     topic: GrammarTopicSchema,
     /** Reading items only: the text the question is about. */
-    passage: z.string().min(1).optional(),
-    prompt: z.string().min(1),
+    readText: z.string().min(1).optional(),
+    question: z.string().min(1),
     options: z.array(z.string().min(1)).length(OPTIONS_PER_ITEM),
     answer: z.string().min(1),
+    timeLimitS: z.number().int().positive(),
   })
   .strict()
   // Stored as text rather than an index so options can be shuffled when served.
@@ -77,21 +78,21 @@ export type Item = z.infer<typeof ItemSchema>;
 
 export const ItemFileSchema = z
   .object({
-    language: LocaleSchema,
-    skill: SkillSchema,
+    lang: LocaleSchema,
+    category: SkillSchema,
     items: z.array(ItemSchema).min(1),
   })
   .strict()
-  .refine((file) => new Set(file.items.map((i) => i.id)).size === file.items.length, {
+  .refine((file) => new Set(file.items.map((i) => i.sourceId)).size === file.items.length, {
     message: 'ids must be unique within the file',
     path: ['items'],
   })
   // A reading question without its passage is unanswerable; a passage on a
   // grammar item is dead weight nobody will render.
   .refine(
-    (file) => file.items.every((i) => (file.skill === 'reading') === (i.passage !== undefined)),
+    (file) => file.items.every((i) => (file.category === 'reading') === (i.readText !== undefined)),
     {
-      message: 'reading items need a passage, other skills must not have one',
+      message: 'reading items need a readText, other skills must not have one',
       path: ['items'],
     },
   )
@@ -99,7 +100,9 @@ export const ItemFileSchema = z
   // its own file eventually collides with the file it belongs in.
   .refine(
     (file) =>
-      file.items.every((i) => i.id.startsWith(`${file.language}-${SKILL_ID_SEGMENT[file.skill]}-`)),
+      file.items.every((i) =>
+        i.sourceId.startsWith(`${file.lang}-${SKILL_ID_SEGMENT[file.category]}-`),
+      ),
     {
       message: "every id must start with the file's own language and skill, e.g. en-gram-0001",
       path: ['items'],

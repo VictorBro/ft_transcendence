@@ -42,7 +42,7 @@ describe('content/items', () => {
 
     it('is named after the language and skill it declares', () => {
       if (!parsed.success) return;
-      expect(name).toBe(itemFileName(parsed.data.language, parsed.data.skill));
+      expect(name).toBe(itemFileName(parsed.data.lang, parsed.data.category));
     });
   });
 
@@ -56,11 +56,11 @@ describe('content/items', () => {
       const parsed = ItemFileSchema.safeParse(read(name));
       if (!parsed.success) continue;
       for (const item of parsed.data.items) {
-        const previous = seen.get(item.id);
+        const previous = seen.get(item.sourceId);
         if (previous !== undefined) {
-          clashes.push(`${item.id} in both ${previous} and ${name}`);
+          clashes.push(`${item.sourceId} in both ${previous} and ${name}`);
         }
-        seen.set(item.id, name);
+        seen.set(item.sourceId, name);
       }
     }
 
@@ -73,9 +73,9 @@ describe('content/items', () => {
     for (const name of files) {
       const parsed = ItemFileSchema.safeParse(read(name));
       if (!parsed.success) continue;
-      const skills = byLanguage.get(parsed.data.language) ?? new Set<Skill>();
-      skills.add(parsed.data.skill);
-      byLanguage.set(parsed.data.language, skills);
+      const skills = byLanguage.get(parsed.data.lang) ?? new Set<Skill>();
+      skills.add(parsed.data.category);
+      byLanguage.set(parsed.data.lang, skills);
     }
 
     // Reported rather than asserted: a language part-way through authoring is a
