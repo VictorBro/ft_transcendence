@@ -5,7 +5,7 @@ This is a working reference: the PDF remains the authority.
 
 ## The project
 
-Final Common Core project, **group of 4–5 people**. The content is *your* choice: any real-world web app.
+Final Common Core project, **group of 4 to 5 people**. The content is *your* choice: any real-world web app.
 Split into a **mandatory core** + **modules**.
 
 ## Team roles (mandatory)

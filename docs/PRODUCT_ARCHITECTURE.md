@@ -16,13 +16,13 @@ The product is one loop, repeated. Everything in this document exists to serve i
 
 ```
 sign up / log in  →  onboarding  →  placement  →  syllabus  →  lesson  →  syllabus …
-                     (3 questions)  (adaptive)    (topic tiles)  (teach → drill → score)
+                     (2 questions)  (binary search) (topic tiles)  (teach → drill → score)
 ```
 
 | Step | What the learner sees | What the system does |
 |---|---|---|
-| **Onboarding** | 3 short questions: target language, current guess at level, daily goal (10, 15, 30 or 60 minutes) | Creates an `Enrollment` with `dailyGoalMinutes`. No AI call. |
-| **Placement** | 8–12 questions, each harder or easier than the last. Retakeable, never the same twice | Adaptive ladder in **our code**. Items are multiple choice, so scoring is a string comparison and the LLM is only called when the bank runs dry. Ends with a CEFR level + confidence. See §1.2 |
+| **Onboarding** | Two questions: which language to learn, and a daily goal (10, 15, 30 or 60 minutes) | Creates a `UserLevel` row. `level` stays null until placement sets it. No AI call. |
+| **Placement** | One question at a time, each with its own countdown. Skippable by a learner who already knows their level | Binary search over the six CEFR levels, in **our code**. Questions are multiple choice, so scoring is a string comparison, and the LLM is called only when the bank has nothing unseen left. Writes `UserLevel.level`. See §1.2 |
 | **Syllabus** | A board of topic tiles in order, locked until the one before is done | Selects `Topic` rows from the seeded catalogue for (language, level), writes one `Lesson` row per topic. No AI call. |
 | **Lesson** | Tutor explains the topic, shows examples, then drills exercises one at a time. Each answer comes back corrected, with the mistakes named | Explanation is RAG-grounded and streamed. Each exercise and each correction is a structured JSON call. |
 | **Result** | Mastery score, mistakes to review, next topic unlocked | Score computed **in code** from the `Exercise` rows. No AI call. |
@@ -36,111 +36,101 @@ This is the spine of the whole design, and it is worth defending in one place be
 other decision follows from it:
 
 - **It is explainable.** The subject requires you to explain your AI implementation at
-  evaluation. "A binary ladder over CEFR levels, eight items, stop when the estimate stabilises"
-  is explainable in one breath. "We asked the model to decide the level" is not.
+  evaluation. "A binary search over the six CEFR levels, six questions per level, a second
+  mistake ends the level" is explainable in one breath. "We asked the model to decide the level"
+  is not.
 - **It is testable.** With `LLM_PROVIDER=fixture` the entire progression is deterministic and
   unit-testable. Ask the LLM to own progression and nothing is testable without spending money.
 - **It is cheap.** Selecting topics, computing mastery, unlocking the next tile, none of that
   needs a token.
 - **It cannot embarrass you in a demo.** A model that decides to award B2 for a blank answer is
-  a live failure. A ladder in TypeScript cannot.
+  a live failure. A binary search in TypeScript cannot.
 
-### 1.2 Placement is repeatable, and never the same test twice
+### 1.2 Placement is a binary search, and never the same question twice
 
-A learner re-evaluates after finishing a level, or just to see whether they have moved. A test
-that asks the same questions measures memory, not proficiency. Three separate mechanisms, because
-they solve three different problems:
+A placement run answers exactly one question: which of the six CEFR levels is this learner at.
+It is a search in our code, not a judgment by the model.
 
-**a. Item variety, an item bank with per-user exclusion.**
+**The search.** Keep the range of levels still possible, `lo = A1` and `hi = C2`, and probe the
+middle of it. The first probe is therefore always B1.
 
-Items live in an `ItemBank` table, keyed by `(language, level, skill, type)`. A test draws from
-the bank **excluding everything this learner has already been asked**, which the
-`PlacementAnswer` rows of their previous tests already record.
-When a cell runs dry for a given learner, the LLM generates a fresh item, which is written back
-into the bank for everyone else.
+- **Level passed:** everything above is still in play, so `lo = level + 1`.
+- **Level failed:** everything below it is, so `hi = level - 1`.
+- **`lo > hi`:** the search is over. The result is the highest level passed, or A1 if none was.
 
-Bank-first rather than generate-every-time, for four reasons:
+Three probes settle six levels, so a run is at most three levels deep.
 
-- **Quality.** A bank is reviewed once. An item generated live during an evaluation can be
-  malformed, ambiguous, or in the wrong language, and there is no second chance.
-- **Cost.** Near zero for the common path.
-- **Provability.** "Different every time" becomes a `NOT EXISTS` clause, not a hope about
-  sampling temperature.
+**A worked run.** B1 is always the first probe. Six questions there, one of them wrong: that is
+still a pass, so `lo` becomes B2 and the next probe is the middle of B2 to C2, which is **C1**.
+Two wrong at C1: the level stops there, `hi` becomes B2, and the last probe is B2 itself. The
+answer is B2 if it passes and B1 if it does not.
 
-**Where the items come from, and how many.** The seed is drafted offline with the LLM (a
-script requests N items per cell against the item Zod schema), verified by a team member who
-speaks the language, committed as a JSON fixture and loaded by the seed script, exactly like the
-`Topic` catalogue. The grid is language x level x skill: 6 levels x 3 skills = 18 cells, seeded
-at 5 items each, so **90 items per language**. A test serves about 12, and a warm-started learner
-draws from their level and its neighbours, so a few retakes exhaust their band and generation
-takes over. That is deliberate: a seed large enough to never run dry would hide the path we most
-want to demonstrate. Authoring detail is in [ITEM_BANK.md](ITEM_BANK.md).
+**What passing a level means.** Six questions at that level, two from each category:
+`vocabulary`, `grammar` and `reading`. **One mistake is allowed; the second ends the level.**
+A learner who is out of their depth stops after two questions instead of sitting through six,
+and a single slip does not cost them a level.
 
-**When a learner has seen everything, the draw is a cascade, never a wall:**
+Every question carries its own countdown (`QuestionBank.timeLimitS`), and running out of time
+counts as a wrong answer. Without that, a stalled tab is an unbounded test.
 
-1. Bank, excluding seen (`NOT EXISTS` over this enrollment's `PlacementAnswer` rows).
-2. Generate live: one structured call, schema-validated (one retry on malformed), served,
-   recorded, written back to the bank.
-3. Generation failed (API down or rate-limited): relax exclusion and serve this learner's least
-   recently seen item (`ORDER BY servedAt`). A repeat after months is a weaker measurement; an
-   aborted test is none.
+**Drawing a question is a cascade, never a wall.** Every step draws from one cell, the
+`(lang, level, category)` being probed, so a French B1 grammar probe can only ever serve a French
+B1 grammar question:
 
-**b. Warm start, the ladder begins where the learner already is.**
+1. **The bank**, excluding everything this learner has already been served (`UserSeenQuestion`).
+2. **Nothing unseen left in the cell, so generate one.** A structured LLM call, schema-validated,
+   written to `QuestionBank` with no `sourceId`, then served. It stays, so the next learner to
+   reach that cell gets it from step 1. **The bank grows as it is used**, and a null `sourceId`
+   is what marks the rows no human reviewed.
+3. **Generation failed** (API down or rate limited): serve the oldest question this learner has
+   seen in that cell. This is the one path that repeats a question, and it opens only while the
+   LLM is unreachable. A repeat after months is a weak measurement, and an abandoned exam is no
+   measurement at all.
 
-A first test starts at B1 because we know nothing. A retake starts at `Enrollment.currentLevel`,
-so the ladder converges in fewer items: a shorter, less tedious test that is also more precise,
-because every item is spent near the boundary that actually matters.
+Bank first rather than generate every time buys three things. **Quality:** a seeded question was
+reviewed by a human once, a live one cannot be. **Cost:** near zero on the common path.
+**Provability:** the exclusion is a `NOT EXISTS` over `UserSeenQuestion`, not a hope about
+sampling temperature.
 
-**c. A balanced skill mix, always.**
+**Skipping and retaking.** A learner who already knows their level skips the exam and sets
+`UserLevel.level` directly. A retake is the same search run again, drawing against the same
+`UserSeenQuestion` rows, so it asks new questions unless step 3 fires. The result overwrites
+`UserLevel.level`. Only the current level is stored, never a history of runs.
 
-Every test draws an even spread of `grammar`, `vocabulary` and `reading` at the level being
-probed. It is tempting to weight a retake toward the skills a learner keeps getting wrong, and
-that is a trap: biasing selection toward known weaknesses biases the resulting level *downward*,
-so a learner who improved would watch their score fall. The answer to "what should I work on" is
-the roadmap, which already lists the topics for their level. The test answers "what level", and
-nothing else.
+**The run itself is not a table.** The bounds, the level being probed, the tally per category and
+the mistakes so far live in Redis for the length of the exam (§4). Two things outlive it: the
+`UserSeenQuestion` rows, and the final level.
 
-**d. Retake policy.** Store every test; the most recent *completed* one sets
-`Enrollment.currentLevel`, and the rest are the learner's level history for free. Gate retakes
-behind a cooldown (N days, or M topics completed since the last one) so the test cannot be
-farmed, and record why each test was started: `onboarding`, `retake`, `level_up_check`.
-
-**e. What a retake does to the roadmap.** Nothing, unless the level changed. Same level: the
-syllabus stays untouched and the learner continues where they were; the test still recorded a
-fresh confidence score. New level: completed `Lesson` rows keep their
-history and the not-yet-started remainder is replaced with the new level's topics. Regenerating
-the whole board would throw away mastery data to tell the learner what they already knew.
-
-**f. The whole test, drawn.** A thick border is an LLM call; every other box is our code. Note
-how few thick boxes there are: because items are multiple choice, a whole test can run without a
-single model call, and the LLM is reached only when a learner has exhausted their level.
+**The whole run, drawn.** A thick border is an LLM call. There is one, and it is reached only
+when a learner has exhausted a cell.
 
 ```mermaid
 flowchart TD
-    start(["Test starts"]) --> warm["Pick the starting level<br/><small>first test: B1, retake: Enrollment.currentLevel</small>"]
-    warm --> ask["The ladder asks for one item<br/><small>current level, balanced skill mix</small>"]
+    start(["Placement starts"]) --> bounds["lo = A1, hi = C2"]
+    bounds --> probe["Probe the middle level<br/><small>first probe is always B1</small>"]
+    probe --> draw["Ask for one unseen question<br/><small>two each: vocabulary, grammar, reading</small>"]
 
-    subgraph cascade["Drawing the item: a cascade, never a wall"]
-        bank["1. Bank, excluding everything<br/>this learner has seen"]
+    subgraph cascade["Drawing a question: a cascade, never a wall"]
+        bank["1. The bank, excluding this<br/>learner's seen rows"]
         gen["2. Generate one, save it to<br/>the bank, serve it"]
-        lru["3. This learner's<br/>least recently seen item"]
-        bank -- "level exhausted" --> gen
+        lru["3. This learner's oldest<br/>seen question"]
+        bank -- "nothing unseen left" --> gen
         gen -- "LLM down or 429" --> lru
     end
 
-    ask --> bank
-    cascade -- "first step that yields an item" --> serve["Serve it, record the answer"]
-    serve --> answer["The learner answers"]
-    answer --> judge["Compare to the stored answer<br/><small>multiple choice, so a string match</small>"]
-    judge -- "correct" --> up["One level up"]
-    judge -- "wrong" --> down["One level down"]
-    up --> enough{"8 to 12 items served,<br/>estimate stable?"}
-    down --> enough
-    enough -- "not yet" --> ask
-    enough -- "yes" --> result["CEFR level + confidence<br/><small>latest completed test sets currentLevel</small>"]
-    result --> changed{"Level changed?"}
-    changed -- "no" --> keep["Roadmap untouched:<br/>continue where you were"]
-    changed -- "yes" --> replace["Completed topics keep their history,<br/>the remainder is replaced"]
+    draw --> bank
+    cascade -- "first step that yields one" --> serve["Serve it, start the countdown,<br/>record it as seen"]
+    serve --> judge{"Correct, in time?"}
+    judge -- "yes" --> six{"Six asked at<br/>this level?"}
+    judge -- "no" --> second{"Second mistake<br/>at this level?"}
+    second -- "no" --> six
+    second -- "yes" --> failed["Level failed<br/><small>hi = level - 1</small>"]
+    six -- "not yet" --> draw
+    six -- "yes" --> passed["Level passed<br/><small>lo = level + 1</small>"]
+    passed --> over{"lo > hi?"}
+    failed --> over
+    over -- "no" --> probe
+    over -- "yes" --> result["Highest level passed<br/><small>written to UserLevel.level</small>"]
 
     classDef llm stroke-width:3px
     class gen llm
@@ -317,9 +307,9 @@ Use it. Four rules:
 
 ---
 
-## 4. Redis: five distinct jobs
+## 4. Redis: six distinct jobs
 
-Redis is already in the stack. It is not one thing, it is five, and they have different
+Redis is already in the stack. It is not one thing, it is six, and they have different
 lifetimes:
 
 | Job | Why Redis and not Postgres | Status |
@@ -329,6 +319,7 @@ lifetimes:
 | **LLM response cache** | Keyed `(language, level, topic, seed, locale)`. The same B1 *passé composé* explanation is generated once and served to everyone. The single biggest cost lever in the project | to build |
 | **Per-user token budget** | An atomic counter with a daily TTL, checked by a guard before any LLM call | to build |
 | **Presence** | `SETEX user:{id}:online` refreshed by socket heartbeat. Expiry *is* the disconnect detection, including for a client that vanished without a `disconnect` | to build |
+| **Placement run state** | The search bounds, the level being probed, the tally per category, the mistakes so far and the current question's deadline. It lives exactly as long as the exam, so a table would be a row deleted minutes after it was written. Expiry doubles as the abandoned-exam cleanup | to build |
 
 ---
 
@@ -492,7 +483,7 @@ watching a spinner, and to placement it would also add a moving part to the one 
 be explainable in a sentence, without improving the level estimate. The single sensible touchpoint is offline:
 when the bank runs dry and a fresh item is generated, retrieving a few level-graded example
 sentences to base it on makes the item more faithful to its claimed level. Optional, and only
-after bank, ladder and tutor all work.
+after bank, search and tutor all work.
 
 **Same generator, two different stores.** Lesson exercises and placement items are both
 LLM-generated, optionally RAG-grounded, so the natural question is why they are not handled the
@@ -500,8 +491,8 @@ same way. Because the artifacts have opposite jobs:
 
 | | Lesson exercise | Placement item |
 |---|---|---|
-| Stored in | Redis cache, keyed `(topic, level, seed)` | `ItemBank` rows |
-| Reuse | Same set for every learner: repeating practice material is harmless | Never the same twice per learner, enforced against past answers |
+| Stored in | Redis cache, keyed `(topic, level, seed)` | `QuestionBank` rows |
+| Reuse | Same set for every learner: repeating practice material is harmless | Never the same twice per learner, enforced against `UserSeenQuestion` |
 | Human review | None: the correction loop absorbs a weak exercise, it costs one drill | Before seeding: an ambiguous item mislabels everyone who sees it |
 | Comparability | Not needed | The point: generating a fresh test every time would measure March and May with different rulers |
 
@@ -519,7 +510,7 @@ Three sources, in descending order of how much of the corpus they should be:
 
 | Source | Licence | Use it for |
 |---|---|---|
-| **Written by us** | ours | Grammar reference notes, one per `Topic`. ~40–60 topics × ~400 words for one language. This is the backbone and the part that is genuinely our work |
+| **Written by us** | ours | Grammar reference notes, one per `Topic`. ~40 to 60 topics × ~400 words for one language. This is the backbone and the part that is genuinely our work |
 | **[Tatoeba](https://tatoeba.org)** | CC BY 2.0 FR | Graded example sentences. Millions of sentences with translations, downloadable as TSV. The single best source for authentic examples |
 | **[Wiktionary](https://kaikki.org)** (via Wiktextract JSON) | CC BY-SA 4.0 | Conjugation tables, definitions, usage notes, false friends |
 
@@ -588,8 +579,8 @@ That last row is the one that gets missed. Write it when the gateway is written,
 
 ## 7. Data model
 
-**Fourteen tables, two of which already exist.** Every one is load-bearing for a module we
-claim. The rule applied throughout: a table earns its place by being read at runtime, and a
+**Thirteen tables, three of which are already migrated** (`UserLevel`, `QuestionBank`,
+`UserSeenQuestion`). Every one is load-bearing for a module we claim. The rule applied throughout: a table earns its place by being read at runtime, and a
 1:1 relationship is a column, not a table.
 
 Everything is UUID-keyed, `createdAt` on anything worth dating, and every user-owned row cascades
@@ -597,43 +588,41 @@ on user delete, so deleting an account leaves nothing orphaned.
 
 ### 7.1 Languages
 
-Three, and every one of them is both an interface language and a learnable one: an English
-speaker learns French, a German speaker learns English. So one enum, the one that already exists
-in `schema.prisma`, used for `User.locale`, `Enrollment.targetLanguage`, `Topic.language` and
-`ItemBank.language` alike.
+Two enums with the same three values today, because they answer two different questions:
 
 ```prisma
-enum Locale    { en fr de }
-enum CefrLevel { A1 A2 B1 B2 C1 C2 }
+enum Locale   { en fr de }   // the language the interface is rendered in
+enum Language { en fr de }   // the language being taught
+enum Level    { A1 A2 B1 B2 C1 C2 }
 ```
 
-Split it into two enums the day a learnable language is added that the UI is *not* translated
-into, for example if Spanish becomes learnable while the interface stays in three languages.
-Until then two identical enums would be documentation pretending to be a type.
+`User.locale` is a display preference and follows next-intl's routing. `UserLevel.lang` and
+`QuestionBank.lang` say what a learner is studying. An English speaker learning French sets one
+to `en` and the other to `fr`, so collapsing them into one enum would make that row unsayable.
+They drift apart for real the day a learnable language ships that the UI is not translated into,
+and nothing has to change when it does.
 
 ### 7.2 Learning
 
 ```mermaid
 erDiagram
-    User          ||--o{ Enrollment      : "enrols in"
-    Enrollment    ||--o{ PlacementTest   : "levelled by"
-    PlacementTest ||--o{ PlacementAnswer : "asks"
-    ItemBank      ||--o{ PlacementAnswer : "asked as"
-    Enrollment    ||--o{ Lesson          : "roadmap of"
-    Topic         ||--o{ Lesson          : "taught in"
-    Lesson        ||--o{ Exercise        : "drills"
-    Exercise      ||--o{ Mistake         : "names"
-    Message       ||--o{ Mistake         : "also names"
+    User         ||--o{ UserLevel        : "learns"
+    User         ||--o{ UserSeenQuestion : "was asked"
+    QuestionBank ||--o{ UserSeenQuestion : "asked as"
+    UserLevel    ||--o{ Lesson           : "roadmap of"
+    Topic        ||--o{ Lesson           : "taught in"
+    Lesson       ||--o{ Exercise         : "drills"
+    Exercise     ||--o{ Mistake          : "names"
+    Message      ||--o{ Mistake          : "also names"
 ```
 
 | Table | Holds | Notes |
 |---|---|---|
-| `Enrollment` | userId, targetLanguage, currentLevel, dailyGoalMinutes | Unique `(userId, targetLanguage)`. A user may learn two languages. The goal sizes today's plan and defines the streak, it never locks content |
-| `PlacementTest` | enrollmentId, trigger, status, resultLevel, startedAt, completedAt | **Many per enrollment**, retakes are the point. The latest completed row sets `Enrollment.currentLevel`; the others are the learner's level history for free |
-| `PlacementAnswer` | testId, itemId, ordinal, chosen, correct | One question as it was asked in one test. **This is also the exposure record**: "has this learner seen this item" is `NOT EXISTS` over these rows joined to their tests, so no second table is needed to track it |
-| `ItemBank` | id, language, skill, cefr, topic, passage?, prompt, options, answer, generated | The reusable pool, seeded from `content/items/*.json` and grown at runtime. Full spec in [ITEM_BANK.md](ITEM_BANK.md) |
-| `Topic` | language, cefr, slug, title, summary, estimatedMinutes, position | **Seeded catalogue, not generated.** One row is one tile on the roadmap |
-| `Lesson` | enrollmentId, topicId, status, score, explanation?, startedAt, completedAt | Unique `(enrollmentId, topicId)`. **This is both the roadmap row and the lesson run**: `status` drives lock/unlock on the board, and the same row holds the result. Ordering comes from `Topic.position` |
+| `UserLevel` | userId, lang, level?, dailyGoal | Unique `(userId, lang)`, so a user may learn two languages. Onboarding writes it with `level` null; placement fills it in, or a learner who skips sets it directly. The goal sizes today's plan and defines the streak, it never locks content |
+| `QuestionBank` | id, sourceId?, lang, level, topic, category, readText?, question, options, answer, timeLimitS | The reusable pool, seeded from `content/items/*.json` and grown at runtime when a learner exhausts a cell. `sourceId` is the authored id the seed matches on, and its absence marks a question the LLM wrote. Full spec in [ITEM_BANK.md](ITEM_BANK.md) |
+| `UserSeenQuestion` | userId, questionId | Unique `(userId, questionId)`. **The exposure record**, and the whole reason placement never repeats a question: the draw is a `NOT EXISTS` over these rows. It is per user and not per run, so a retake cannot serve an old question either |
+| `Topic` | lang, level, slug, title, summary, estimatedMinutes, position | **Seeded catalogue, not generated.** One row is one tile on the roadmap |
+| `Lesson` | userLevelId, topicId, status, score, explanation?, startedAt, completedAt | Unique `(userLevelId, topicId)`. **This is both the roadmap row and the lesson run**: `status` drives lock/unlock on the board, and the same row holds the result. Ordering comes from `Topic.position` |
 | `Exercise` | lessonId, ordinal, type, prompt, options, expectedAnswer, learnerAnswer, correct, correctedText, feedback, answeredAt | The question, the answer and the correction in one row, because there is exactly one of each. Three tables here would be normalising a 1:1:1 |
 | `Mistake` | exerciseId?, messageId?, type, span, explanation | The one place a child table is right: one answer produces *many* mistakes and they must be countable by type in SQL. Exactly one of the two parents is set, a drill answer or a chat message, so the analytics cover how the learner writes and not only how they drill |
 
@@ -682,7 +671,7 @@ Presence is **not** a table. It is a Redis key with a TTL (§4).
 
 ### 7.4 What each module needs
 
-The point of the cut: the 16-point core needs **no table beyond the fourteen**, and most of the
+The point of the cut: the 16-point core needs **no table beyond the thirteen**, and most of the
 buffer modules need none either.
 
 | Module | Pts | Tables it needs |
@@ -748,14 +737,14 @@ that test early, it is the cheapest possible proof of a rejection-criterion requ
 
 ## 10. Build order
 
-1. **Domain migration**, the §7 tables, seeded `Topic` catalogue and a starter `ItemBank` for
-   one language. Authored items, no generation yet.
+1. **Domain migration**, the §7 tables, seeded `Topic` catalogue and a starter `QuestionBank` for
+   one language. Authored questions, no generation yet.
 2. **`LlmProvider` + fixture**, `generateStructured` and `streamText`, plus the Zod schemas in
    `@ft/shared`. No vendor yet.
-3. **Onboarding + placement**, the adaptive ladder, bank sampling excluding past answers,
-   warm start on retake. Entirely on fixtures. The ladder and the exclusion are both plain
-   unit tests: take the same test twice as the same user, assert zero item overlap.
-4. **Syllabus board**, server-rendered tiles from `SyllabusItem`.
+3. **Onboarding + placement**, the binary search and bank sampling excluding `UserSeenQuestion`.
+   Entirely on fixtures. Both are plain unit tests: sit the exam twice as the same user and
+   assert zero question overlap.
+4. **Syllabus board**, server-rendered tiles from `Topic` and `Lesson`.
 5. **Lesson loop**, explanation, exercises, corrections, scoring. Still on fixtures.
 6. **Wire Gemini**, flip `LLM_PROVIDER=real` behind the budget guard and the cache. First real
    spend happens here, with instrumentation already in place.
@@ -764,5 +753,5 @@ that test early, it is the cheapest possible proof of a rejection-criterion requ
 9. **Social**, friends, presence, and the cross-language chat of §1.5.
 10. **Buffer modules**, pick from §2 by cost.
 
-Steps 1–5 need no API key and no network. That is deliberate: four people can build the entire
+Steps 1 to 5 need no API key and no network. That is deliberate: four people can build the entire
 product on fixtures while one person settles the vendor.

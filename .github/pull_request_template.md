@@ -12,8 +12,7 @@ Closes #
      `make doctor` first if this is your first checkout of the branch. -->
 
 ```
-make dev
-# then ...
+make all
 ```
 
 # Checklist
@@ -23,8 +22,8 @@ make dev
 - [ ] New or changed behaviour has a test; coverage stays at or above 60% lines and functions.
 - [ ] No secret, key or token in the diff. New configuration is documented in `.env.example` and read through `compose.yml`.
 - [ ] Versions added or changed are pinned exactly and recorded in `docs/VERSIONS.md`.
-- [ ] A new dependency brings no CRITICAL or HIGH advisory. The `images` workflow scans and reports; a finding in a package we do not own is pinned through `overrides` in `pnpm-workspace.yaml`.
 - [ ] Schema changes ship with their generated migration.
+- [ ] Copilot's review is read and every comment is answered or fixed.
 
 # Screenshots
 

@@ -1,27 +1,32 @@
 import { z } from 'zod';
 
-import { LocaleSchema } from './locale';
+import { LanguageSchema } from './language';
 
 /**
  * Placement questions, as authored in `content/items/*.json` and seeded into
- * `ItemBank`. One schema validates the files in CI and parses them at seed time,
- * so a malformed item is caught by whoever wrote it rather than by whoever runs
- * the migration. Authoring guide: docs/ITEM_BANK.md.
+ * `QuestionBank`. One schema validates the files in CI and parses them at seed
+ * time, so a malformed item is caught by whoever wrote it rather than by
+ * whoever runs the migration. Authoring guide: docs/ITEM_BANK.md.
+ *
+ * The names below mirror the enums in schema.prisma, so a file, a row and a
+ * type all describe a question in the same words.
  */
 
-export const SKILLS = ['grammar', 'vocabulary', 'reading'] as const;
-export const SkillSchema = z.enum(SKILLS);
-export type Skill = z.infer<typeof SkillSchema>;
+export const QUESTION_CATEGORIES = ['grammar', 'vocabulary', 'reading'] as const;
+export const QuestionCategorySchema = z.enum(QUESTION_CATEGORIES);
+export type QuestionCategory = z.infer<typeof QuestionCategorySchema>;
 
-export const CEFR_LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'] as const;
-export const CefrLevelSchema = z.enum(CEFR_LEVELS);
-export type CefrLevel = z.infer<typeof CefrLevelSchema>;
+/** CEFR, from beginner to mastery. */
+export const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'] as const;
+export const LevelSchema = z.enum(LEVELS);
+export type Level = z.infer<typeof LevelSchema>;
 
 /**
- * A closed list on purpose: it keys both the items and the lesson topics, so an
- * item and the lesson that teaches it stay describable in the same words.
+ * A closed list on purpose: it keys both the questions and the lesson topics,
+ * so a question and the lesson that teaches it stay describable in the same
+ * words.
  */
-export const GRAMMAR_TOPICS = [
+export const TOPICS = [
   'nouns_and_determiners',
   'pronouns',
   'verbs_morphology',
@@ -36,31 +41,33 @@ export const GRAMMAR_TOPICS = [
   'comparison_and_quantity',
   'information_structure_and_pragmatics',
 ] as const;
-export const GrammarTopicSchema = z.enum(GRAMMAR_TOPICS);
-export type GrammarTopic = z.infer<typeof GrammarTopicSchema>;
+export const TopicSchema = z.enum(TOPICS);
+export type Topic = z.infer<typeof TopicSchema>;
 
 export const OPTIONS_PER_ITEM = 4;
 
-/** The segment an id must carry for a given skill. */
-export const SKILL_ID_SEGMENT: Record<Skill, string> = {
+/** The segment a sourceId must carry for a given category. */
+export const CATEGORY_ID_SEGMENT: Record<QuestionCategory, string> = {
   grammar: 'gram',
   vocabulary: 'voca',
   reading: 'read',
 };
 
-/** `<language>-<3-letter skill>-<4 digits>`, for example `en-gram-0001`. */
-export const ITEM_ID_PATTERN = /^[a-z]{2}-(gram|voca|read)-\d{4}$/;
+/** `<language>-<3-letter category>-<4 digits>`, for example `en-gram-0001`. */
+export const SOURCE_ID_PATTERN = /^[a-z]{2}-(gram|voca|read)-\d{4}$/;
 
 export const ItemSchema = z
   .object({
-    id: z.string().regex(ITEM_ID_PATTERN, 'expected <lang>-<gram|voca|read>-<4 digits>'),
-    cefr: CefrLevelSchema,
-    topic: GrammarTopicSchema,
-    /** Reading items only: the text the question is about. */
-    passage: z.string().min(1).optional(),
-    prompt: z.string().min(1),
+    sourceId: z.string().regex(SOURCE_ID_PATTERN, 'expected <lang>-<gram|voca|read>-<4 digits>'),
+    level: LevelSchema,
+    topic: TopicSchema,
+    /** Reading questions only: the text the question is about. */
+    readText: z.string().min(1).optional(),
+    question: z.string().min(1),
     options: z.array(z.string().min(1)).length(OPTIONS_PER_ITEM),
     answer: z.string().min(1),
+    /** Seconds on the clock. The exam counts a timeout as a wrong answer. */
+    timeLimitS: z.number().int().positive(),
   })
   .strict()
   // Stored as text rather than an index so options can be shuffled when served.
@@ -77,38 +84,41 @@ export type Item = z.infer<typeof ItemSchema>;
 
 export const ItemFileSchema = z
   .object({
-    language: LocaleSchema,
-    skill: SkillSchema,
+    lang: LanguageSchema,
+    category: QuestionCategorySchema,
     items: z.array(ItemSchema).min(1),
   })
   .strict()
-  .refine((file) => new Set(file.items.map((i) => i.id)).size === file.items.length, {
-    message: 'ids must be unique within the file',
+  .refine((file) => new Set(file.items.map((i) => i.sourceId)).size === file.items.length, {
+    message: 'sourceIds must be unique within the file',
     path: ['items'],
   })
-  // A reading question without its passage is unanswerable; a passage on a
-  // grammar item is dead weight nobody will render.
+  // A reading question without its text is unanswerable; a passage on a grammar
+  // question is dead weight nobody will render.
   .refine(
-    (file) => file.items.every((i) => (file.skill === 'reading') === (i.passage !== undefined)),
+    (file) => file.items.every((i) => (file.category === 'reading') === (i.readText !== undefined)),
     {
-      message: 'reading items need a passage, other skills must not have one',
+      message: 'reading questions need a readText, other categories must not have one',
       path: ['items'],
     },
   )
-  // Ids are permanent and unique across every file, so one that disagrees with
-  // its own file eventually collides with the file it belongs in.
+  // sourceIds are permanent and unique across every file, so one that disagrees
+  // with its own file eventually collides with the file it belongs in.
   .refine(
     (file) =>
-      file.items.every((i) => i.id.startsWith(`${file.language}-${SKILL_ID_SEGMENT[file.skill]}-`)),
+      file.items.every((i) =>
+        i.sourceId.startsWith(`${file.lang}-${CATEGORY_ID_SEGMENT[file.category]}-`),
+      ),
     {
-      message: "every id must start with the file's own language and skill, e.g. en-gram-0001",
+      message:
+        "every sourceId must start with the file's own language and category, e.g. en-gram-0001",
       path: ['items'],
     },
   );
 
 export type ItemFile = z.infer<typeof ItemFileSchema>;
 
-/** `content/items/<language>-<skill>.json`, the name the seed script globs. */
-export function itemFileName(language: string, skill: Skill): string {
-  return `${language}-${skill}.json`;
+/** `content/items/<lang>-<category>.json`, the name the seed script globs. */
+export function itemFileName(lang: string, category: QuestionCategory): string {
+  return `${lang}-${category}.json`;
 }

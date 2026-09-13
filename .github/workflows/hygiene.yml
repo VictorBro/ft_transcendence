@@ -9,6 +9,9 @@ on:
   push:
     branches: [main]
   pull_request:
+    # `edited` covers a rename. Without it the pr title job can never go green:
+    # a re-run replays the original payload, so it keeps linting the old title.
+    types: [opened, synchronize, reopened, edited]
 
 permissions:
   contents: read
@@ -83,6 +86,11 @@ jobs:
     # landed, and github.event.pull_request is not populated there.
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-24.04
+    # Only this job writes, and only to rename a pull request. Everything else
+    # in this file stays on the read-only default above.
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
       # No fetch-depth: only the commitlint config is needed, not history.
       - uses: actions/checkout@v7.0.1
@@ -94,22 +102,22 @@ jobs:
       # GitHub uses the PR title as the squash commit subject for any PR
       # carrying more than one commit, so an unconventional title lands on main
       # as an unconventional commit and fails the commitlint job above after the
-      # fact, when the only remedy left is rewriting a protected branch. This
-      # fails the pull request instead, while the title can still be edited.
+      # fact, when the only remedy left is rewriting a protected branch.
       #
       # It has happened once: "Feat/chat home frontend (#20)", auto-generated
       # from the branch name and never renamed, which is still red on main.
+      # The script renames the pull request instead of only complaining, because
+      # the titles that fail are the ones GitHub wrote, not the ones a human did.
       - name: Lint the pull request title
         env:
           # Passed through the environment and never interpolated into the
           # script body with ${{ }}: a title is attacker-controlled text, and
           # inlining it would be a shell injection.
           PR_TITLE: ${{ github.event.pull_request.title }}
-        run: |
-          # Same config as the commits, so one standard covers both. commitlint
-          # reads the message from stdin when given no --from/--to/--last.
-          printf '%s\n' "$PR_TITLE" | pnpm dlx --package "@commitlint/cli@21.2.1" commitlint \
-            --config .github/commitlint.config.mjs --verbose
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          BRANCH: ${{ github.event.pull_request.head.ref }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./scripts/pr-title.sh
 
   env-example:
     name: .env hygiene
@@ -167,7 +175,12 @@ jobs:
         run: |
           set +e
           # The shadow database comes from prisma.config.ts, not a flag.
-          pnpm --filter @ft/api exec prisma migrate diff \
+          #
+          # `cd` rather than `pnpm --filter @ft/api exec`: the filtered form
+          # reports the child's code as its own 1, so the 2 that means drift
+          # never arrived and the case below always took the catch-all branch.
+          cd apps/api
+          pnpm exec prisma migrate diff \
             --from-migrations ./prisma/migrations \
             --to-schema ./prisma/schema.prisma \
             --exit-code

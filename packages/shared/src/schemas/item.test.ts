@@ -1,12 +1,12 @@
 import { describe, expect, it } from 'vitest';
 
 import {
+  CATEGORY_ID_SEGMENT,
   ItemFileSchema,
   ItemSchema,
   itemFileName,
   OPTIONS_PER_ITEM,
-  SKILL_ID_SEGMENT,
-  SKILLS,
+  QUESTION_CATEGORIES,
   type Item,
 } from './item';
 
@@ -16,15 +16,16 @@ import {
  */
 
 const item: Item = {
-  id: 'en-gram-0001',
-  cefr: 'A1',
+  sourceId: 'en-gram-0001',
+  level: 'A1',
   topic: 'verbs_morphology',
-  prompt: 'My sister ___ a doctor.',
+  question: 'My sister ___ a doctor.',
   options: ['is', 'am', 'are', 'be'],
   answer: 'is',
+  timeLimitS: 30,
 };
 
-const file = { language: 'en', skill: 'grammar', items: [item] } as const;
+const file = { lang: 'en', category: 'grammar', items: [item] } as const;
 
 describe('ItemSchema', () => {
   it('accepts a well-formed item', () => {
@@ -47,15 +48,26 @@ describe('ItemSchema', () => {
     expect(ItemSchema.safeParse({ ...item, options: ['is', 'am', 'are'] }).success).toBe(false);
   });
 
-  it('rejects an id that is not <lang>-<skill>-<4 digits>', () => {
-    for (const id of ['en-gram-1', 'gram-0001', 'en-xxxx-0001', 'EN-GRAM-0001']) {
-      expect(ItemSchema.safeParse({ ...item, id }).success, id).toBe(false);
+  it('rejects a sourceId that is not <lang>-<gram|voca|read>-<4 digits>', () => {
+    for (const sourceId of ['en-gram-1', 'gram-0001', 'en-xxxx-0001', 'EN-GRAM-0001']) {
+      expect(ItemSchema.safeParse({ ...item, sourceId }).success, sourceId).toBe(false);
     }
   });
 
-  it('rejects an unknown cefr level or topic', () => {
-    expect(ItemSchema.safeParse({ ...item, cefr: 'B3' }).success).toBe(false);
+  it('rejects an unknown level or topic', () => {
+    expect(ItemSchema.safeParse({ ...item, level: 'B3' }).success).toBe(false);
     expect(ItemSchema.safeParse({ ...item, topic: 'made_up' }).success).toBe(false);
+  });
+
+  // The countdown the exam runs on. A missing or zero limit would either throw
+  // at insert or expire the question the moment it is served.
+  it('requires a positive whole timeLimitS', () => {
+    const { timeLimitS: _dropped, ...withoutLimit } = item;
+    expect(ItemSchema.safeParse(withoutLimit).success, 'missing').toBe(false);
+
+    for (const timeLimitS of [0, -30, 30.5]) {
+      expect(ItemSchema.safeParse({ ...item, timeLimitS }).success, `${timeLimitS}`).toBe(false);
+    }
   });
 
   // Strict, so a field somebody invented is a failure rather than silent data
@@ -70,45 +82,45 @@ describe('ItemFileSchema', () => {
     expect(ItemFileSchema.safeParse(file).success).toBe(true);
   });
 
-  it('rejects two items sharing an id', () => {
-    const clash = { ...file, items: [item, { ...item, prompt: 'Different.' }] };
+  it('rejects two items sharing a sourceId', () => {
+    const clash = { ...file, items: [item, { ...item, question: 'Different.' }] };
     expect(ItemFileSchema.safeParse(clash).success).toBe(false);
   });
 
-  it('requires a passage on reading items and forbids it elsewhere', () => {
-    const reading: Item = { ...item, id: 'en-read-0001' };
+  it('requires readText on reading questions and forbids it elsewhere', () => {
+    const reading: Item = { ...item, sourceId: 'en-read-0001' };
 
     expect(
-      ItemFileSchema.safeParse({ language: 'en', skill: 'reading', items: [reading] }).success,
-      'reading without a passage',
+      ItemFileSchema.safeParse({ lang: 'en', category: 'reading', items: [reading] }).success,
+      'reading without readText',
     ).toBe(false);
 
     expect(
       ItemFileSchema.safeParse({
         ...file,
-        items: [{ ...item, passage: 'Not needed here.' }],
+        items: [{ ...item, readText: 'Not needed here.' }],
       }).success,
-      'grammar with a passage',
+      'grammar with readText',
     ).toBe(false);
 
     expect(
       ItemFileSchema.safeParse({
-        language: 'en',
-        skill: 'reading',
-        items: [{ ...reading, passage: 'A short text.' }],
+        lang: 'en',
+        category: 'reading',
+        items: [{ ...reading, readText: 'A short text.' }],
       }).success,
-      'reading with a passage',
+      'reading with readText',
     ).toBe(true);
   });
 
-  it("rejects an id that disagrees with the file's own language or skill", () => {
+  it("rejects a sourceId that disagrees with the file's own language or category", () => {
     expect(
-      ItemFileSchema.safeParse({ ...file, items: [{ ...item, id: 'de-gram-0001' }] }).success,
+      ItemFileSchema.safeParse({ ...file, items: [{ ...item, sourceId: 'de-gram-0001' }] }).success,
       'wrong language',
     ).toBe(false);
     expect(
-      ItemFileSchema.safeParse({ language: 'en', skill: 'vocabulary', items: [item] }).success,
-      'wrong skill',
+      ItemFileSchema.safeParse({ lang: 'en', category: 'vocabulary', items: [item] }).success,
+      'wrong category',
     ).toBe(false);
   });
 
@@ -122,9 +134,9 @@ describe('naming helpers', () => {
     expect(itemFileName('de', 'vocabulary')).toBe('de-vocabulary.json');
   });
 
-  it('gives every skill an id segment', () => {
-    for (const skill of SKILLS) {
-      expect(SKILL_ID_SEGMENT[skill], skill).toMatch(/^[a-z]{4}$/);
+  it('gives every category a sourceId segment', () => {
+    for (const category of QUESTION_CATEGORIES) {
+      expect(CATEGORY_ID_SEGMENT[category], category).toMatch(/^[a-z]{4}$/);
     }
   });
 });

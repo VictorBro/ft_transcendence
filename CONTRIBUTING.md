@@ -46,11 +46,13 @@ Pushing again dismisses the approval, so ask for re-review.
 
 If a hook stops you, it is telling you something CI would have caught in five minutes:
 
-| It says                  | You do                                                       |
-| ------------------------ | ------------------------------------------------------------ |
-| commitlint errors        | Rewrite the message: `git commit --amend -m "fix(web): ..."` |
-| Prettier changed files   | Nothing, it already fixed and re-staged them                 |
-| lint or typecheck failed | Fix it, or `make format` if it is only formatting            |
+| It says                             | You do                                                          |
+| ----------------------------------- | --------------------------------------------------------------- |
+| Commits go on a branch, not on main | `git switch -c feat/your-change`, then commit again             |
+| commitlint errors                   | Rewrite the message: `git commit --amend -m "fix(web): ..."`    |
+| Prettier changed files              | Nothing, it already fixed and re-staged them                    |
+| lint or typecheck failed            | Fix it, or `make format` if it is only formatting               |
+| has to run inside the devcontainer  | Reopen in Container. Already inside? Rebuild it, see note below |
 
 ---
 
@@ -74,6 +76,20 @@ Day to day:
 | `make down`   | Stops the stack, keeps the data                                                           |
 | `make help`   | Every target                                                                              |
 
+### Changing a table
+
+Edit `apps/api/prisma/schema.prisma`, then:
+
+```bash
+make migrate-new NAME=add_streaks   # writes the SQL, applies it, regenerates the client
+```
+
+Commit the generated directory under `apps/api/prisma/migrations` together with
+the schema change. `make ci` fails if the two disagree, and prints the SQL you
+are missing, so a forgotten migration cannot reach CI. Nothing else is needed:
+the Prisma client regenerates on its own, because `db:generate` is a dependency
+of lint, typecheck, test and build in `turbo.json`.
+
 ### Platform notes
 
 - **Linux, macOS (Intel or Apple Silicon):** nothing special. Images build for
@@ -81,9 +97,16 @@ Day to day:
 - **Windows:** work inside **WSL2**, and keep the repository on the WSL2
   filesystem (`~/projects/...`), not on `C:\`. A Windows path bind-mounted into
   Docker Desktop crosses a filesystem boundary and makes hot reload crawl.
-- **Everyone:** the devcontainer is the smoothest path. Open the folder in VS
-  Code, "Reopen in Container", and the toolchain, extensions and hooks are
-  already set up.
+- **Everyone:** the devcontainer is not just the smoothest path, most `make`
+  targets refuse to run outside it. Open the folder in VS Code, "Reopen in
+  Container", and the toolchain, extensions and hooks are already set up.
+  `help`, `doctor`, `clean`, `down`, `ps`, `logs` and `shell` still work from
+  the host, so you can look at a container that will not start.
+
+If make says it has to run inside the devcontainer **and you are inside it**,
+your container is older than the check. Rebuild it: Command Palette, "Dev
+Containers: Rebuild Container". The flag it looks for arrived in
+`compose.override.yml`, so a container created before that does not carry it.
 
 ---
 
@@ -98,9 +121,9 @@ ci/lint-pr-title
 docs/rag-corpus
 ```
 
-The prefix is the same word list as the commit types below. Nothing enforces
-it, but the branch name becomes the default pull request title, and that title
-becomes the commit message on `main`, so a good one saves work later.
+The prefix is the same word list as the commit types below. Use it: when a title
+has to be derived for you, a branch named this way is what it is derived from,
+and `ci/lint-pr-title` becomes `ci: lint pr title`.
 
 ---
 
@@ -136,7 +159,7 @@ messages.
 
 | Hook         | Runs                                                                   | Roughly                     |
 | ------------ | ---------------------------------------------------------------------- | --------------------------- |
-| `pre-commit` | Prettier on the files you staged                                       | under a second              |
+| `pre-commit` | Refuses a commit on `main`, then Prettier on the files you staged      | under a second              |
 | `commit-msg` | commitlint on your message                                             | instant after the first run |
 | `pre-push`   | TypeScript version, `.env` hygiene, app boundaries, lint and typecheck | about four seconds warm     |
 
@@ -159,8 +182,13 @@ knowing:
    title becomes the commit message on `main`. A title auto-generated from a
    branch name, like `Feat/chat home frontend`, lands on `main` as an
    ungradeable commit and fails the hygiene workflow after the fact, when the
-   only remedy is rewriting a protected branch. CI checks the title for exactly
-   this reason.
+   only remedy is rewriting a protected branch.
+
+   If you leave a title that cannot lint, the hygiene workflow writes one for
+   you: the subject of your only commit, or the branch name when there are
+   several. It only does this when the title is already broken, so a title you
+   chose is never touched. Write your own and it stays.
+
 3. Fill in the template. Say what changed and how you tested it.
 4. Wait for the four checks: `ci`, `e2e`, `hygiene`, `images`.
 5. Get one approving review. CODEOWNERS routes it.
