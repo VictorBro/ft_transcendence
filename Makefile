@@ -99,7 +99,7 @@ endif
 # prevent running most make commands outside dev container
 
 check-devcontainer:
-	@if [ "${FT_DEVCONTAINER:-}" != "true" ]; then \
+	@if [ "$${FT_DEVCONTAINER:-}" != "true" ]; then \
 		echo "ERROR: Make commands must be run inside the dev container."; \
 		exit 1; \
 	fi
@@ -112,6 +112,7 @@ help: .EXTRA_PREREQS :=
 doctor: .EXTRA_PREREQS :=
 # .github/workflows/e2e.yml:74 runs make migrate on a plain ubuntu-24.04 runner without FT_DEVCONTAINER
 migrate: .EXTRA_PREREQS :=
+tooling-image: .EXTRA_PREREQS :=
 
 
 # --- the one command ---------------------------------------------------------
