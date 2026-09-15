@@ -21,8 +21,8 @@ sign up / log in  →  onboarding  →  placement  →  syllabus  →  lesson  �
 
 | Step | What the learner sees | What the system does |
 |---|---|---|
-| **Onboarding** | Two questions: which language to learn, and a daily goal (10, 15, 30 or 60 minutes) | Creates a `UserLevel` row. `level` stays null until placement sets it. No AI call. |
-| **Placement** | One question at a time, each with its own countdown. Skippable by a learner who already knows their level | Binary search over the six CEFR levels, in **our code**. Questions are multiple choice, so scoring is a string comparison, and the LLM is called only when the bank has nothing unseen left. Writes `UserLevel.level`. See §1.2 |
+| **Onboarding** | Two questions: which language to learn, and a daily goal (10, 30 or 60 minutes). Repeated per language, so adding a second course starts here again | Creates a `UserLevel` row for that `(user, language)`. `level` stays null until placement sets it. No AI call. |
+| **Placement** | One question at a time, each with its own countdown, then a red and green report. Skippable by a learner who already knows their level, and overridable if they disagree with the result | Binary search over the six CEFR levels, in **our code**. Questions are multiple choice, so scoring is a string comparison, and the LLM is called only when the bank has nothing unseen left. Writes `UserLevel.level`. See §1.2 |
 | **Syllabus** | A board of topic tiles in order, locked until the one before is done | Selects `Topic` rows from the seeded catalogue for (language, level), writes one `Lesson` row per topic. No AI call. |
 | **Lesson** | Tutor explains the topic, shows examples, then drills exercises one at a time. Each answer comes back corrected, with the mistakes named | Explanation is RAG-grounded and streamed. Each exercise and each correction is a structured JSON call. |
 | **Result** | Mastery score, mistakes to review, next topic unlocked | Score computed **in code** from the `Exercise` rows. No AI call. |
@@ -92,14 +92,26 @@ reviewed by a human once, a live one cannot be. **Cost:** near zero on the commo
 **Provability:** the exclusion is a `NOT EXISTS` over `UserSeenQuestion`, not a hope about
 sampling temperature.
 
-**Skipping and retaking.** A learner who already knows their level skips the exam and sets
-`UserLevel.level` directly. A retake is the same search run again, drawing against the same
-`UserSeenQuestion` rows, so it asks new questions unless step 3 fires. The result overwrites
-`UserLevel.level`. Only the current level is stored, never a history of runs.
+**The clock belongs to the server.** Each question carries its own `timeLimitS`, and the server
+stamps the moment it served the question. It stamps that once: a refresh re-reads the question
+with the time that is actually left, never a fresh limit. When the answer arrives the server
+recomputes the elapsed time and decides lateness itself, whatever the request claims, with a
+couple of seconds of grace for the network. The countdown in the browser is there so the learner
+can see it, and is never the thing that judges.
 
-**The run itself is not a table.** The bounds, the level being probed, the tally per category and
-the mistakes so far live in Redis for the length of the exam (§4). Two things outlive it: the
-`UserSeenQuestion` rows, and the final level.
+**Skipping, overriding and retaking.** A learner who already knows their level skips the exam and
+sets their level directly. A learner who disagrees with the result can change it on the spot. A
+retake is the same search run again, drawing against the same `UserSeenQuestion` rows, so it asks
+new questions unless step 3 fires. All three write through the same endpoint, and only the
+current level is stored, never a history of runs.
+
+**The report is red and green.** At the end the learner sees every question they were asked,
+their answer in red and the correct one in green. No explanations: nothing in the bank holds one.
+It is built from the run state and dies with it.
+
+**The run itself is not a table.** The bounds, the level being probed, the tally per category, the
+mistakes so far and the report live in Redis for the length of the exam (§4). Two things outlive
+it: the `UserSeenQuestion` rows, and the final level.
 
 **The whole run, drawn.** A thick border is an LLM call. There is one, and it is reached only
 when a learner has exhausted a cell.
@@ -138,13 +150,21 @@ flowchart TD
 
 ### 1.3 The daily goal shapes the session, never the syllabus
 
-Picked at onboarding, changeable in settings. It does exactly two things:
+**Ten, thirty or sixty minutes.** Picked at onboarding, changeable afterwards. It does exactly
+two things:
 
-- **Sizes "today's plan".** The dashboard proposes the next lesson and reviews whose
-  `Topic.estimatedMinutes` fit inside the goal, so a 10-minute learner sees one short drill and
-  a 60-minute learner sees a full lesson plus reviews.
+- **Sizes "today's plan".** A topic is written to take about ten minutes, so the goal is simply
+  how many of them fill a day: 10 gives one, 30 gives three, 60 gives six. That is why those
+  three values and not others; ten divides all of them evenly.
 - **Defines the streak.** A day joins the streak when `DailyStat.minutesActive` reaches the
   goal. That is the gamification module's raw material.
+
+**The roadmap is keyed by `(language, level)` and never by the goal.** Changing the goal
+regenerates nothing and moves no progress: the same list of topics is simply walked faster or
+slower. A roadmap per goal would mean three copies of every level to generate and review, and a
+learner dropping from 60 to 10 would need their completed topics mapped onto a different list.
+Cap `Topic.estimatedMinutes` near ten and none of that arises, because no single topic can
+overflow the smallest goal.
 
 What it must never do is gate content. A learner past their goal keeps going if they want; it
 is a target, not a cap, and a cap would punish exactly the behaviour the product exists for.
@@ -310,12 +330,19 @@ Use it. Four rules:
 ## 4. Redis: six distinct jobs
 
 Redis is already in the stack. It is not one thing, it is six, and they have different
-lifetimes:
+lifetimes.
+
+**Redis is here for expiry, not for sharing.** The api runs as a single replica and is meant to:
+one machine, one `docker compose up`, no orchestrator. Nothing below is in Redis so that a second
+process can read it. Every row is hot, disposable and expiring, which is a shape that wants a
+store with a TTL however many replicas there are. The rule of thumb, when something new comes up:
+if it has to survive from one request to the next, it is Redis or Postgres, and losing it costs a
+redo rather than data; if it does not, it is a plain constant or a per-request value in code.
 
 | Job | Why Redis and not Postgres | Status |
 |---|---|---|
 | **Session store** (`connect-redis`) | Sessions are hot, short-lived and disposable. Restarting the api must not log everyone out | in use |
-| **Throttler counters** | Per-minute counters with a TTL | not yet: `@nestjs/throttler` runs without a storage adapter, so counters are in process memory. Wire one in before a second api replica |
+| **Throttler counters** | Per-minute counters with a TTL | not yet: `@nestjs/throttler` runs without a storage adapter, so counters sit in process memory. Correct for one replica; the only cost is that a restart clears everyone's limit. Moving them is optional, not pending work |
 | **LLM response cache** | Keyed `(language, level, topic, seed, locale)`. The same B1 *passé composé* explanation is generated once and served to everyone. The single biggest cost lever in the project | to build |
 | **Per-user token budget** | An atomic counter with a daily TTL, checked by a guard before any LLM call | to build |
 | **Presence** | `SETEX user:{id}:online` refreshed by socket heartbeat. Expiry *is* the disconnect detection, including for a client that vanished without a `disconnect` | to build |
@@ -601,6 +628,22 @@ enum Level    { A1 A2 B1 B2 C1 C2 }
 to `en` and the other to `fr`, so collapsing them into one enum would make that row unsayable.
 They drift apart for real the day a learnable language ships that the UI is not translated into,
 and nothing has to change when it does.
+
+**Both appear in the URL, and they mean different things.** The course is a path segment:
+`/{locale}/learn/{lang}/…`, so `/fr/learn/de` is a French interface teaching German. Putting the
+course in the path rather than in a column is what lets a link be shared, the back button work,
+and two tabs sit on two courses at once. The header will therefore carry two language controls;
+they have to read differently, along the lines of "Interface: English" against "Learning: German",
+or nobody will know which one they just changed.
+
+`User.activeLang` exists for one job only: deciding where a bare sign-in lands when the URL says
+nothing. It is a convenience, not the source of truth, and any page that has a `lang` in its path
+ignores it.
+
+**A learner studies several languages at once, so "has this person onboarded" is always a
+question about `(userId, lang)`.** Someone who has finished French and is adding German still
+needs onboarding for German. A check that asks only "does this user have any level at all" gets
+that case wrong, silently, and only for the users who like the product most.
 
 ### 7.2 Learning
 
