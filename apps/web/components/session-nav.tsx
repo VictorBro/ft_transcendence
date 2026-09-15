@@ -1,7 +1,9 @@
+import { getTranslations } from 'next-intl/server';
+
 import { Link } from '@/i18n/navigation';
 import { currentUser } from '@/lib/session';
+import { Avatar } from './avatar';
 import { LogOutButton } from './log-out-button';
-import { getTranslations } from 'next-intl/server';
 
 /**
  * Server component, so the first paint already knows who is signed in. Doing
@@ -26,7 +28,8 @@ export async function SessionNav() {
 
   return (
     <nav aria-label={t('accountNav')} className="flex items-center gap-4 text-sm">
-      <Link href="/profile" className="underline underline-offset-4">
+      <Link href="/profile" className="flex items-center gap-4 underline underline-offset-4">
+        <Avatar src={user.avatarUrl} alt="" size={24} />
         {user.displayName}
       </Link>
       <LogOutButton />

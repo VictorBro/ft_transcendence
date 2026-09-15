@@ -1,34 +1,79 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { UpdateProfileSchema, type SessionUser } from '@ft/shared';
 
-import { updateProfile } from '@/lib/auth-client';
+import { useRouter } from '@/i18n/navigation';
+
+import { updateProfile, uploadAvatar } from '@/lib/auth-client';
 import { useErrorMessage } from '@/lib/error-message';
 import { Field, FormError, SubmitButton } from '@/components/form';
+import { Avatar } from '@/components/avatar';
+
+const MAX_AVATAR_SIZE = 2 * 1024 * 1024; // 2 MiB
 
 export function ProfileForm({ user }: { user: SessionUser }) {
   const router = useRouter();
   const t = useTranslations('ProfileForm');
   const errorMessage = useErrorMessage();
   const [error, setError] = useState<string | null>(null);
-  const [saved, setSaved] = useState(false);
   const [pending, setPending] = useState(false);
+  const [avatarError, setAvatarError] = useState<string | null>(null);
+  const [removeAvatar, setRemoveAvatar] = useState(false);
+  const [avatarPending, setAvatarPending] = useState(false);
+
+  async function onRemoveAvatar() {
+    setRemoveAvatar(true);
+    setAvatarPending(true);
+    setAvatarError(null);
+    try {
+      const result = await updateProfile({ avatarUrl: null });
+      if (!result.ok) {
+        setAvatarError(errorMessage(result.code, result.status));
+        return;
+      }
+      router.refresh();
+    } finally {
+      setRemoveAvatar(false);
+      setAvatarPending(false);
+    }
+  }
+
+  async function onAvatarChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const file = event.target.files?.[0];
+    if (!file) {
+      return;
+    }
+    event.target.value = '';
+
+    if (file.size > MAX_AVATAR_SIZE) {
+      setAvatarError(t('avatarTooLarge'));
+      return;
+    }
+
+    setAvatarPending(true);
+    setAvatarError(null);
+    try {
+      const result = await uploadAvatar(file);
+      if (!result.ok) {
+        setAvatarError(errorMessage(result.code, result.status));
+        return;
+      }
+      router.refresh();
+    } finally {
+      setAvatarPending(false);
+    }
+  }
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setPending(true);
-    setSaved(false);
     const form = new FormData(event.currentTarget);
 
     try {
-      const avatarUrl = String(form.get('avatarUrl') ?? '').trim();
       const parsed = UpdateProfileSchema.safeParse({
         displayName: String(form.get('displayName') ?? ''),
-        // An empty box means "remove it", which is null rather than an empty string.
-        avatarUrl: avatarUrl === '' ? null : avatarUrl,
       });
       if (!parsed.success) {
         setError(errorMessage(parsed.error.issues[0].message));
@@ -42,7 +87,7 @@ export function ProfileForm({ user }: { user: SessionUser }) {
       }
 
       setError(null);
-      setSaved(true);
+      router.push('/profile');
       // The header greets the user by name, so it has to re-render too.
       router.refresh();
     } finally {
@@ -55,20 +100,39 @@ export function ProfileForm({ user }: { user: SessionUser }) {
       <h2 className="text-lg font-medium">{t('editProfile')}</h2>
       <Field label={t('displayName')} name="displayName" defaultValue={user.displayName} required />
 
-      <Field
-        label={t('avatarUrl')}
-        name="avatarUrl"
-        type="url"
-        defaultValue={user.avatarUrl ?? ''}
-        hint={t('avatarUrlHint')}
-      />
+      <div className="flex flex-col gap-2">
+        <span className="text-sm font-medium">{t('avatar')}</span>
+        <div className="flex items-center gap-4">
+          <Avatar src={user.avatarUrl} alt="" size={64} />
+          <label className="cursor-pointer text-sm underline underline-offset-4">
+            {avatarPending
+              ? t('uploading')
+              : user.avatarUrl
+                ? t('changeAvatar')
+                : t('uploadAvatar')}
+            <input
+              type="file"
+              accept="image/png,image/jpeg,image/webp"
+              onChange={onAvatarChange}
+              className="sr-only"
+              disabled={avatarPending}
+            />
+          </label>
+          {user.avatarUrl !== null ? (
+            <button
+              type="button"
+              onClick={onRemoveAvatar}
+              className="text-sm underline underline-offset-4"
+              disabled={avatarPending || removeAvatar}
+            >
+              {removeAvatar ? t('removing') : t('removeAvatar')}
+            </button>
+          ) : null}
+        </div>
+        {avatarError ? <FormError message={avatarError} /> : null}
+      </div>
 
       <FormError message={error} />
-      {saved ? (
-        <p role="status" className="text-sm text-green-400">
-          {t('profileSaved')}
-        </p>
-      ) : null}
       <SubmitButton pending={pending}>{t('saveChanges')}</SubmitButton>
     </form>
   );
