@@ -110,8 +110,9 @@ their answer in red and the correct one in green. No explanations: nothing in th
 It is built from the run state and dies with it.
 
 **The run itself is not a table.** The bounds, the level being probed, the tally per category, the
-mistakes so far and the report live in Redis for the length of the exam (§4). Two things outlive
-it: the `UserSeenQuestion` rows, and the final level.
+mistakes so far and the report live in Redis under the learner's session, with a TTL (§4). Close
+the session and the run goes with it. Two things outlive it: the `UserSeenQuestion` rows, and the
+final level.
 
 **The whole run, drawn.** A thick border is an LLM call. There is one, and it is reached only
 when a learner has exhausted a cell.
@@ -346,7 +347,7 @@ redo rather than data; if it does not, it is a plain constant or a per-request v
 | **LLM response cache** | Keyed `(language, level, topic, seed, locale)`. The same B1 *passé composé* explanation is generated once and served to everyone. The single biggest cost lever in the project | to build |
 | **Per-user token budget** | An atomic counter with a daily TTL, checked by a guard before any LLM call | to build |
 | **Presence** | `SETEX user:{id}:online` refreshed by socket heartbeat. Expiry *is* the disconnect detection, including for a client that vanished without a `disconnect` | to build |
-| **Placement run state** | The search bounds, the level being probed, the tally per category, the mistakes so far and the current question's deadline. It lives exactly as long as the exam, so a table would be a row deleted minutes after it was written. Expiry doubles as the abandoned-exam cleanup | to build |
+| **Placement run state** | The search bounds, the level being probed, the tally per category, the mistakes so far, the current question's deadline and the report. **Keyed by the session, never by the user, and always with a TTL.** Keyed by the user it would outlive the login that started it and a learner would come back to a half-finished exam; keyed by the session it goes when they go, which is what was asked for. It lives exactly as long as the exam, so a table would be a row deleted minutes after it was written, and the TTL doubles as the abandoned-exam cleanup | to build |
 
 ---
 
