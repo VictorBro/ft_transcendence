@@ -127,6 +127,9 @@
     "avatarUrl": {
       "invalid": "Enter a valid URL"
     },
+    "avatar": {
+      "invalidFile": "That file could not be used as an avatar. Try a PNG, JPEG or WebP under 2 MiB."
+    },
     "profile": {
       "noChanges": "Change at least one field"
     },
@@ -155,6 +158,7 @@
   "ProfilePage": {
     "title": "Profile",
     "joined": "Joined {date}",
+    "editProfile": "Edit profile",
     "security": "Security",
     "twoFactorPrompt": "Add a second factor so a stolen password is not enough to sign in.",
     "twoFactorAuthentication": "Two factor authentication"
@@ -162,9 +166,13 @@
   "ProfileForm": {
     "editProfile": "Edit profile",
     "displayName": "Display name",
-    "avatarUrl": "Avatar URL",
-    "avatarUrlHint": "Leave empty to use the default avatar.",
-    "profileSaved": "Profile saved.",
+    "avatar": "Avatar",
+    "uploadAvatar": "Upload avatar",
+    "changeAvatar": "Change avatar",
+    "removeAvatar": "Remove avatar",
+    "uploading": "Uploading...",
+    "removing": "Removing...",
+    "avatarTooLarge": "File is too large. Maximum size is 2 MiB.",
     "saveChanges": "Save changes"
   },
   "TwoFactorPage": {
