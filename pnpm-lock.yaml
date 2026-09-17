@@ -83,7 +83,7 @@ importers:
         specifier: 1.19.0
         version: 1.19.0(supports-color@8.1.1)
       multer:
-        specifier: ^2.0.0
+        specifier: 2.2.0
         version: 2.2.0
       nestjs-zod:
         specifier: 5.5.0
@@ -126,7 +126,7 @@ importers:
         specifier: 1.19.0
         version: 1.19.0
       '@types/multer':
-        specifier: ^2.0.0
+        specifier: 2.2.0
         version: 2.2.0
       '@types/node':
         specifier: ^24.13.3

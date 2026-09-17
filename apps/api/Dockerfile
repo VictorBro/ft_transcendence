@@ -28,6 +28,10 @@ RUN apt-get update \
 RUN corepack enable && corepack prepare pnpm@11.18.0 --activate
 WORKDIR /app
 
+# Whichever stack mounts the avatars volume first seeds its ownership, so the
+# dev stage sets it too. `prod` repeats this line: it does not derive from base.
+RUN mkdir -p /data/avatars && chown node:node /data/avatars
+
 # --------------------------------------------------------------------------- deps
 # Manifests only, so this layer is invalidated by dependency changes and not by
 # source edits. --frozen-lockfile validates every importer the lockfile knows
@@ -124,10 +128,11 @@ COPY --from=prune --chown=node:node /app/packages/shared/package.json ./packages
 COPY --from=prune --chown=node:node /app/packages/shared/dist ./packages/shared/dist
 COPY --from=prune --chown=node:node /app/packages/shared/node_modules ./packages/shared/node_modules
 WORKDIR /app/apps/api
-# Named volume mounted here at runtime (see compose.yml). Created and chowned
-# while still root, so the volume inherits node:node ownership on first mount
-# instead of coming up root-owned and EACCES-ing every upload.
+
+# The avatars volume mounts here. Docker creates a missing mountpoint root-owned,
+# which the node user below cannot write to.
 RUN mkdir -p /data/avatars && chown node:node /data/avatars
+
 USER node
 EXPOSE 3001
 HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=3 \

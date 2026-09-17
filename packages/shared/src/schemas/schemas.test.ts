@@ -22,7 +22,7 @@ const validUser = {
   id: '3f0f9d1e-8a2c-4f3b-9c1d-6d2c5b8a7e41',
   email: 'ada@example.com',
   displayName: 'ada_lovelace',
-  avatarUrl: 'https://example.com/a.png',
+  avatarUrl: '/api/uploads/avatars/a.png',
   locale: 'fr',
   role: 'USER',
   createdAt: '2026-08-01T10:00:00.000Z',
@@ -183,7 +183,6 @@ describe('validation messages', () => {
     ['CreateUserSchema', CreateUserSchema, { email: 'nope', displayName: 'x', password: 'short' }],
     ['LoginSchema', LoginSchema, { email: 'nope', password: '' }],
     ['UpdateProfileSchema', UpdateProfileSchema, {}],
-    ['UpdateProfileSchema avatar', UpdateProfileSchema, { avatarUrl: 'not a url' }],
     [
       'SignUpFormSchema',
       SignUpFormSchema,

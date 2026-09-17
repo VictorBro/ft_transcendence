@@ -22,7 +22,6 @@ export const ERROR_CODES = [
   'password.required',
   'password.mismatch',
   'email.invalid',
-  'avatarUrl.invalid',
   'avatar.invalidFile',
   'profile.noChanges',
   'twoFactor.codeFormat',

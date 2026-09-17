@@ -92,5 +92,6 @@ export const AUTHENTICATED_FOOTER_ROUTES: PageRoute[] = [
   { path: '/en/roleplay', name: 'roleplay' },
   { path: '/en/friends', name: 'friends' },
   { path: '/en/profile', name: 'profile' },
+  { path: '/en/profile/edit', name: 'edit profile' },
   { path: '/en/settings/2fa', name: 'two-factor settings' },
 ];

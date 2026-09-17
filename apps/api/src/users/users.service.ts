@@ -1,28 +1,24 @@
-import { ConflictException, Injectable } from '@nestjs/common';
+import { ConflictException, Injectable, Logger } from '@nestjs/common';
 import type { SessionUser, UpdateProfileInput } from '@ft/shared';
 import { unlink } from 'fs/promises';
-import { join } from 'path';
+import { basename, join } from 'path';
 
 import { AuthService } from '../auth/auth.service';
 import { PrismaService } from '../prisma/prisma.service';
-import { AVATAR_STORAGE_DIR } from '../app.setup';
+import { AVATAR_ROUTE, AVATAR_STORAGE_DIR } from '../app.setup';
 
-const AVATAR_FILE_PATTERN = /^[0-9a-f-]{36}\.(?:png|jpg|webp)$/;
+/** Relative on purpose: see setAvatar. */
+export const AVATAR_URL_PREFIX = `${AVATAR_ROUTE}/`;
 
 @Injectable()
 export class UsersService {
+  private readonly logger = new Logger(UsersService.name);
+
   constructor(private readonly prisma: PrismaService) {}
 
   async updateProfile(userId: string, input: UpdateProfileInput): Promise<SessionUser> {
-    const previousPath =
-      input.avatarUrl !== undefined
-        ? await this.prisma.user.findUnique({ where: { id: userId }, select: { avatarUrl: true } })
-        : null;
     try {
       const user = await this.prisma.user.update({ where: { id: userId }, data: input });
-      if (previousPath?.avatarUrl && previousPath.avatarUrl !== user.avatarUrl) {
-        await this.deleteAvatarFile(previousPath.avatarUrl);
-      }
       return AuthService.toSessionUser(user);
     } catch (error) {
       // P2002 is the unique constraint on displayName. Same reasoning as signup:
@@ -39,14 +35,44 @@ export class UsersService {
     }
   }
 
-  async deleteAvatarFile(avatarUrl: string): Promise<void> {
-    const filename = avatarUrl.split('/').pop() ?? '';
-    if (!AVATAR_FILE_PATTERN.test(filename)) return; // Don't delete anything outside the avatars folder
+  /**
+   * Relative, not absolute: an url built from the request would carry a forged
+   * Host into the database, and next/image rejects unknown hosts. The file to
+   * delete comes from the user's own row, never from the request.
+   */
+  async setAvatar(userId: string, filename: string): Promise<SessionUser> {
+    return this.replaceAvatar(userId, `${AVATAR_URL_PREFIX}${filename}`);
+  }
+
+  /** Back to the default image, and the file goes with it. */
+  async clearAvatar(userId: string): Promise<SessionUser> {
+    return this.replaceAvatar(userId, null);
+  }
+
+  private async replaceAvatar(userId: string, avatarUrl: string | null): Promise<SessionUser> {
+    const before = await this.prisma.user.findUniqueOrThrow({
+      where: { id: userId },
+      select: { avatarUrl: true },
+    });
+    const user = await this.prisma.user.update({ where: { id: userId }, data: { avatarUrl } });
+
+    if (before.avatarUrl) {
+      await this.deleteAvatarFile(before.avatarUrl);
+    }
+    return AuthService.toSessionUser(user);
+  }
+
+  /** Best effort: the row is already updated, so a stuck file costs disk only. */
+  private async deleteAvatarFile(avatarUrl: string): Promise<void> {
+    // Nothing else should reach the column, but this runs an unlink: check anyway.
+    if (!avatarUrl.startsWith(AVATAR_URL_PREFIX)) return;
+    const filename = avatarUrl.slice(AVATAR_URL_PREFIX.length);
 
     try {
-      await unlink(join(AVATAR_STORAGE_DIR, filename));
-    } catch {
-      // log error ?
+      await unlink(join(AVATAR_STORAGE_DIR, basename(filename)));
+    } catch (error) {
+      if ((error as NodeJS.ErrnoException).code === 'ENOENT') return;
+      this.logger.warn(`could not delete avatar ${filename}: ${String(error)}`);
     }
   }
 }

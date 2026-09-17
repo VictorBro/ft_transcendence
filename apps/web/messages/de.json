@@ -124,11 +124,8 @@
       "displayNameTaken": "Dieser Anzeigename ist bereits vergeben",
       "passwordFirst": "Melde dich zuerst mit deinem Passwort an"
     },
-    "avatarUrl": {
-      "invalid": "Gib eine gültige URL ein"
-    },
     "avatar": {
-      "invalidFile": "Diese Datei kann nicht als Avatar verwendet werden. Versuche ein PNG, JPEG oder WebP unter 2 MiB."
+      "invalidFile": "Diese Datei kann nicht als Avatar verwendet werden. Versuche ein PNG, JPEG oder WebP."
     },
     "profile": {
       "noChanges": "Ändere mindestens ein Feld"
@@ -161,18 +158,17 @@
     "editProfile": "Profil bearbeiten",
     "security": "Sicherheit",
     "twoFactorPrompt": "Füge einen zweiten Faktor hinzu, damit ein gestohlenes Passwort nicht zur Anmeldung ausreicht.",
-    "twoFactorAuthentication": "Zwei-Faktor-Authentifizierung"
+    "twoFactorAuthentication": "Zwei-Faktor-Authentifizierung",
+    "backToProfile": "Zurück zum Profil"
   },
   "ProfileForm": {
-    "editProfile": "Profil bearbeiten",
     "displayName": "Anzeigename",
-    "avatar": "Avatar",
     "uploadAvatar": "Avatar hochladen",
     "changeAvatar": "Avatar ändern",
     "removeAvatar": "Avatar entfernen",
     "uploading": "Wird hochgeladen…",
     "removing": "Wird entfernt…",
-    "avatarTooLarge": "Die Datei ist zu groß. Maximale Größe: 2 MiB.",
+    "avatarTooLarge": "Die Datei ist zu groß. Maximale Größe: {size} MiB.",
     "saveChanges": "Änderungen speichern"
   },
   "TwoFactorPage": {

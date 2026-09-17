@@ -2,16 +2,14 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { UpdateProfileSchema, type SessionUser } from '@ft/shared';
+import { MAX_AVATAR_BYTES, UpdateProfileSchema, type SessionUser } from '@ft/shared';
 
 import { useRouter } from '@/i18n/navigation';
 
-import { updateProfile, uploadAvatar } from '@/lib/auth-client';
+import { removeAvatar, updateProfile, uploadAvatar } from '@/lib/auth-client';
 import { useErrorMessage } from '@/lib/error-message';
 import { Field, FormError, SubmitButton } from '@/components/form';
 import { Avatar } from '@/components/avatar';
-
-const MAX_AVATAR_SIZE = 2 * 1024 * 1024; // 2 MiB
 
 export function ProfileForm({ user }: { user: SessionUser }) {
   const router = useRouter();
@@ -20,23 +18,21 @@ export function ProfileForm({ user }: { user: SessionUser }) {
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
   const [avatarError, setAvatarError] = useState<string | null>(null);
-  const [removeAvatar, setRemoveAvatar] = useState(false);
-  const [avatarPending, setAvatarPending] = useState(false);
+  // One state, not a boolean each: the label has to say which action is running.
+  const [avatarPending, setAvatarPending] = useState<'upload' | 'remove' | null>(null);
 
   async function onRemoveAvatar() {
-    setRemoveAvatar(true);
-    setAvatarPending(true);
+    setAvatarPending('remove');
     setAvatarError(null);
     try {
-      const result = await updateProfile({ avatarUrl: null });
+      const result = await removeAvatar();
       if (!result.ok) {
         setAvatarError(errorMessage(result.code, result.status));
         return;
       }
       router.refresh();
     } finally {
-      setRemoveAvatar(false);
-      setAvatarPending(false);
+      setAvatarPending(null);
     }
   }
 
@@ -47,12 +43,12 @@ export function ProfileForm({ user }: { user: SessionUser }) {
     }
     event.target.value = '';
 
-    if (file.size > MAX_AVATAR_SIZE) {
-      setAvatarError(t('avatarTooLarge'));
+    if (file.size > MAX_AVATAR_BYTES) {
+      setAvatarError(t('avatarTooLarge', { size: MAX_AVATAR_BYTES / 1024 ** 2 }));
       return;
     }
 
-    setAvatarPending(true);
+    setAvatarPending('upload');
     setAvatarError(null);
     try {
       const result = await uploadAvatar(file);
@@ -62,7 +58,7 @@ export function ProfileForm({ user }: { user: SessionUser }) {
       }
       router.refresh();
     } finally {
-      setAvatarPending(false);
+      setAvatarPending(null);
     }
   }
 
@@ -95,17 +91,15 @@ export function ProfileForm({ user }: { user: SessionUser }) {
     }
   }
 
+  // The avatar saves the moment it is picked, the name only on submit, so they
+  // are kept apart: inside one form the button would look like it saved both.
   return (
-    <form onSubmit={onSubmit} className="flex max-w-sm flex-col gap-6" noValidate>
-      <h2 className="text-lg font-medium">{t('editProfile')}</h2>
-      <Field label={t('displayName')} name="displayName" defaultValue={user.displayName} required />
-
+    <div className="flex w-full flex-col gap-8">
       <div className="flex flex-col gap-2">
-        <span className="text-sm font-medium">{t('avatar')}</span>
         <div className="flex items-center gap-4">
-          <Avatar src={user.avatarUrl} alt="" size={64} />
+          <Avatar src={user.avatarUrl} name={user.displayName} size={64} />
           <label className="cursor-pointer text-sm underline underline-offset-4">
-            {avatarPending
+            {avatarPending === 'upload'
               ? t('uploading')
               : user.avatarUrl
                 ? t('changeAvatar')
@@ -115,7 +109,7 @@ export function ProfileForm({ user }: { user: SessionUser }) {
               accept="image/png,image/jpeg,image/webp"
               onChange={onAvatarChange}
               className="sr-only"
-              disabled={avatarPending}
+              disabled={avatarPending !== null}
             />
           </label>
           {user.avatarUrl !== null ? (
@@ -123,17 +117,25 @@ export function ProfileForm({ user }: { user: SessionUser }) {
               type="button"
               onClick={onRemoveAvatar}
               className="text-sm underline underline-offset-4"
-              disabled={avatarPending || removeAvatar}
+              disabled={avatarPending !== null}
             >
-              {removeAvatar ? t('removing') : t('removeAvatar')}
+              {avatarPending === 'remove' ? t('removing') : t('removeAvatar')}
             </button>
           ) : null}
         </div>
         {avatarError ? <FormError message={avatarError} /> : null}
       </div>
 
-      <FormError message={error} />
-      <SubmitButton pending={pending}>{t('saveChanges')}</SubmitButton>
-    </form>
+      <form onSubmit={onSubmit} className="flex flex-col gap-6" noValidate>
+        <Field
+          label={t('displayName')}
+          name="displayName"
+          defaultValue={user.displayName}
+          required
+        />
+        <FormError message={error} />
+        <SubmitButton pending={pending}>{t('saveChanges')}</SubmitButton>
+      </form>
+    </div>
   );
 }

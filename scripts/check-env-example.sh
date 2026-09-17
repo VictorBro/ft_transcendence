@@ -34,10 +34,11 @@ RUNTIME_INJECTED=(
   NEXT_TELEMETRY_DISABLED
   NODE_ENV
   PORT
-  TZ
   # Set by .github/workflows/e2e.yml, never by .env: the suite targets whatever
   # host the workflow brought up.
   E2E_BASE_URL
+  # Fixed by compose.yml to match the avatars volume mount.
+  AVATAR_STORAGE_DIR
   # Set by the prisma drift job in .github/workflows/hygiene.yml, which brings up
   # its own throwaway database. Never points at a database anyone keeps.
   SHADOW_DATABASE_URL

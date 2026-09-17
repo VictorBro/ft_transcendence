@@ -34,6 +34,7 @@ Pin exactly (no caret unless noted) and re-verify before the first commit.
 | argon2 | 0.45.1 | Native addon: needs glibc prebuilds, see Debian note in plan. |
 | express-session / `@types/express-session` | 1.19.0 | |
 | connect-redis | 10.0.0 | |
+| multer / `@types/multer` | 2.2.0 | Avatar uploads. Bundled with `@nestjs/platform-express`, but declared explicitly because the controller imports `diskStorage` directly. |
 | `@types/express` | 5.0.6 | pnpm does not hoist it out of @nestjs/platform-express. |
 | `redis` (node-redis) | 6.2.0 | `connect-redis` peers on this, not ioredis. |
 | otpauth | 9.5.1 | TOTP. One dependency (`@noble/hashes`), against otplib's six sub-packages. |

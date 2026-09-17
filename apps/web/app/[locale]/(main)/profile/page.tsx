@@ -31,7 +31,7 @@ export default async function ProfilePage() {
             {t('editProfile')}
           </Link>
         </div>
-        <Avatar src={user.avatarUrl} alt="" size={128} />
+        <Avatar src={user.avatarUrl} name={user.displayName} size={128} />
       </section>
 
       <section className="flex flex-col gap-3 border-t border-slate-800 pt-8">

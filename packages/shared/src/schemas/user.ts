@@ -39,7 +39,8 @@ export const UserSchema = z.object({
   id: UserIdSchema,
   email: z.email('email.invalid'),
   displayName: DisplayNameSchema,
-  avatarUrl: z.url('avatarUrl.invalid').nullable(),
+  // A path, not an absolute url, so z.url() would reject every real value.
+  avatarUrl: z.string().nullable(),
   locale: LocaleSchema,
   role: UserRoleSchema,
   createdAt: z.iso.datetime(),
@@ -98,12 +99,17 @@ export type SessionUser = z.infer<typeof SessionUserSchema>;
  * must be present: an empty body would otherwise report success while doing
  * nothing. Email and role are absent by design, since changing either is a
  * privilege change rather than a profile edit.
+ *
+ * `avatarUrl` is absent because it names a file on our disk: a caller who could
+ * set it could name someone else's file and have us delete it.
  */
 export const UpdateProfileSchema = z
   .object({
     displayName: DisplayNameSchema.optional(),
     locale: LocaleSchema.optional(),
-    avatarUrl: z.url('avatarUrl.invalid').nullable().optional(),
   })
   .refine((value) => Object.keys(value).length > 0, 'profile.noChanges');
 export type UpdateProfileInput = z.infer<typeof UpdateProfileSchema>;
+
+/** Shared so the browser refuses early and the server refuses again. */
+export const MAX_AVATAR_BYTES = 2 * 1024 * 1024;
