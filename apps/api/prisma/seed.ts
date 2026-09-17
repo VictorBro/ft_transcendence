@@ -15,7 +15,7 @@ function requireDatabaseUrl(): string {
   return url;
 }
 
-function findItemsDir(): string {
+export function findItemsDir(): string {
   const candidateFromRoot = resolve(process.cwd(), 'content/items');
   if (existsSync(candidateFromRoot)) {
     return candidateFromRoot;
@@ -34,6 +34,7 @@ export async function seedQuestionBank(dir: string, prisma: PrismaClient) {
   const jsonFiles = allEntries.filter((name) => name.endsWith('.json'));
 
   const operations = [];
+  const seenSourceIds = new Map<string, string>();
 
   for (const fileName of jsonFiles) {
     const fullPath = join(dir, fileName);
@@ -55,6 +56,12 @@ export async function seedQuestionBank(dir: string, prisma: PrismaClient) {
     const config = result.data;
 
     for (const item of config.items) {
+      const previousFile = seenSourceIds.get(item.sourceId);
+      if (previousFile !== undefined) {
+        throw new Error(`Duplicate sourceId "${item.sourceId}" in ${previousFile} and ${fileName}`);
+      }
+      seenSourceIds.set(item.sourceId, fileName);
+
       const itemFields = {
         lang: config.lang,
         category: config.category,

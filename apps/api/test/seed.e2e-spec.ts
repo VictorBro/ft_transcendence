@@ -3,7 +3,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { afterAll, afterEach, beforeAll, describe, expect, it } from 'vitest';
 
-import { seedQuestionBank } from '../prisma/seed';
+import { findItemsDir, seedQuestionBank } from '../prisma/seed';
 import { PrismaService } from '../src/prisma/prisma.service';
 
 const itemFile = (question: string) => ({
@@ -30,7 +30,10 @@ const itemFile = (question: string) => ({
 describe('seedQuestionBank (e2e)', () => {
   const validDir = join(__dirname, 'fixtures/seed-valid');
   const invalidDir = join(__dirname, 'fixtures/seed-invalid');
+  const duplicateDir = join(__dirname, 'fixtures/seed-duplicate');
+
   const seededSourceIds = ['en-gram-9001'];
+  const cleanupSourceIds = [...seededSourceIds, 'en-gram-9002'];
 
   let prisma: PrismaService;
   let editableDir: string;
@@ -41,7 +44,7 @@ describe('seedQuestionBank (e2e)', () => {
   });
 
   afterEach(async () => {
-    await prisma.questionBank.deleteMany({ where: { sourceId: { in: seededSourceIds } } });
+    await prisma.questionBank.deleteMany({ where: { sourceId: { in: cleanupSourceIds } } });
   });
 
   afterAll(async () => {
@@ -93,6 +96,40 @@ describe('seedQuestionBank (e2e)', () => {
   });
 
   it('fails loudly, naming the file and the reason, on a malformed item file', async () => {
-    await expect(seedQuestionBank(invalidDir, prisma)).rejects.toThrow(/en-grammar\.json/);
+    const attempt = seedQuestionBank(invalidDir, prisma);
+
+    await expect(attempt).rejects.toThrow(/en-grammar\.json/);
+    await expect(attempt).rejects.toThrow(/options/);
+    await expect(attempt).rejects.toThrow(/expected array to have >=4 items/);
+  });
+
+  it('fails before writing when two files share a sourceId', async () => {
+    await expect(seedQuestionBank(duplicateDir, prisma)).rejects.toThrow(/en-gram-9002/);
+    await expect(seedQuestionBank(duplicateDir, prisma)).rejects.toThrow(/en-grammar-a\.json/);
+    await expect(seedQuestionBank(duplicateDir, prisma)).rejects.toThrow(/en-grammar-b\.json/);
+
+    const row = await prisma.questionBank.findUnique({ where: { sourceId: 'en-gram-9002' } });
+    expect(row).toBeNull();
+  });
+
+  // Seeds the real content/items rather than a fixture: this is what covers
+  // findItemsDir, the walk over all nine files and the authored reading items,
+  // none of which the one-item fixtures exercise. It deliberately leaves its
+  // rows behind — that is the normal state of a seeded database, and afterEach
+  // only targets the 90xx fixture ids.
+  it('loads all 270 authored items from the real content directory', async () => {
+    await seedQuestionBank(findItemsDir(), prisma);
+
+    const total = await prisma.questionBank.count();
+    expect(total).toBeGreaterThanOrEqual(270);
+
+    const byPair = await prisma.questionBank.groupBy({
+      by: ['lang', 'category'],
+      _count: true,
+    });
+    expect(byPair).toHaveLength(9);
+    for (const pair of byPair) {
+      expect(pair._count).toBe(30);
+    }
   });
 });
