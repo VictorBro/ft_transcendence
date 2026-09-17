@@ -150,6 +150,18 @@ describe('clientPost', () => {
       expect.objectContaining({ body: '"hello"' }),
     );
   });
+
+  it('passes FormData directly without serializing', async () => {
+    const fetchMock = vi.fn(async () => Response.json('ok'));
+    vi.stubGlobal('fetch', fetchMock);
+    const formData = new FormData();
+    formData.append('avatar', 'test');
+    await clientPost(z.string(), '/api/resource', formData);
+    expect(fetchMock).toHaveBeenCalledWith(
+      '/api/resource',
+      expect.objectContaining({ body: formData }),
+    );
+  });
 });
 
 describe('send headers', () => {
@@ -175,7 +187,9 @@ describe('send headers', () => {
         return Response.json('ok');
       });
       vi.stubGlobal('fetch', fetchMock);
-      await expect(send(z.string(), '/api/test', { headers: input })).resolves.toEqual({
+      await expect(
+        send(z.string(), '/api/test', { headers: input, body: 'data' }),
+      ).resolves.toEqual({
         ok: true,
         data: 'ok',
       });
@@ -188,10 +202,45 @@ describe('send headers', () => {
     const fetchMock = vi.fn(async (_path: RequestInfo | URL, init?: RequestInit) => {
       const requestHeaders = new Headers(init?.headers);
       expect(requestHeaders.get('accept')).toBe('application/json');
-      expect(requestHeaders.get('content-type')).toBe('application/json');
+      expect(requestHeaders.get('content-type')).toBeNull();
       return Response.json('ok');
     });
     vi.stubGlobal('fetch', fetchMock);
     await expect(send(z.string(), '/api/test')).resolves.toEqual({ ok: true, data: 'ok' });
+  });
+
+  it('sets content-type to application/json when body is provided and not FormData', async () => {
+    const fetchMock = vi.fn(async (_path: RequestInfo | URL, init?: RequestInit) => {
+      const requestHeaders = new Headers(init?.headers);
+      expect(requestHeaders.get('content-type')).toBe('application/json');
+      return Response.json('ok');
+    });
+    vi.stubGlobal('fetch', fetchMock);
+    await expect(send(z.string(), '/api/test', { body: 'data' })).resolves.toEqual({
+      ok: true,
+      data: 'ok',
+    });
+  });
+
+  it('does not set content-type when body is FormData', async () => {
+    const fetchMock = vi.fn(async (_path: RequestInfo | URL, init?: RequestInit) => {
+      const requestHeaders = new Headers(init?.headers);
+      expect(requestHeaders.get('content-type')).toBeNull();
+      return Response.json('ok');
+    });
+    vi.stubGlobal('fetch', fetchMock);
+    const formData = new FormData();
+    await expect(send(z.string(), '/api/test', { body: formData })).resolves.toEqual({
+      ok: true,
+      data: 'ok',
+    });
+  });
+
+  it('rejects paths containing query parameters', async () => {
+    await expect(send(z.string(), '/api/test?query=1')).resolves.toEqual({
+      ok: false,
+      code: 'server.unexpected',
+      status: 400,
+    });
   });
 });

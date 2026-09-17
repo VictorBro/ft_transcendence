@@ -29,7 +29,7 @@ export interface FetchSessionOptions extends ApiRequestOptions {
   forwardedFor?: string | undefined;
 }
 
-type BaseResult<T> =
+export type BaseResult<T> =
   { status: 'ok'; data: T } | { status: 'signed-out' } | { status: 'unavailable'; reason: string };
 
 /**
@@ -38,13 +38,6 @@ type BaseResult<T> =
  * one. Collapsing them is what turned a 429 or a restart into a logout.
  */
 export type SessionResult = BaseResult<SessionUser>;
-
-/**
- * Three answers, not two. "signed-out" is a verdict the API delivered (401);
- * "unavailable" is the absence of a verdict, and the caller must not read it as
- * one. Collapsing them is what turned a 429 or a restart into a logout.
- */
-export type GetResult = BaseResult<unknown>;
 
 /** Falls back to the compose service name when API_INTERNAL_URL is unset or blank. */
 export function resolveApiBaseUrl(raw: string | undefined): string {
@@ -106,19 +99,22 @@ export async function fetchWithRequestHeaderAndIP<T>(
  *
  * @typeParam Schema - Schema defining the validated response output.
  * @param schema - Response validator, including async refinements.
- * @param api_path - API path relative to the configured internal base URL.
+ * @param apiPath - API path relative to the configured internal base URL.
  * @param options - Base URL, forwarded headers, timeout, and optional fetch implementation.
- * @param url_params - Query parameters; an empty record adds no question mark.
- * Supplied values replace matching parameters already present in the path.
+ * @param urlParams - Query parameters; an empty record adds no question mark.
  * @returns Validated data on success, signed-out for HTTP 401, or unavailable
  * for other HTTP failures, invalid JSON or payloads, timeouts, and network errors.
  */
-async function fetch_json<Schema extends z.ZodType>(
+async function fetchJson<Schema extends z.ZodType>(
   schema: Schema,
-  api_path: string,
+  apiPath: string,
   options: FetchSessionOptions = {},
-  url_params: Record<string, string> = {},
+  urlParams: Record<string, string> = {},
 ): Promise<BaseResult<z.infer<Schema>>> {
+  if (apiPath.includes('?')) {
+    return { status: 'unavailable', reason: 'the path must not contain query parameters' };
+  }
+
   const {
     baseUrl,
     cookie,
@@ -128,8 +124,8 @@ async function fetch_json<Schema extends z.ZodType>(
   } = options;
 
   try {
-    const url = new URL(buildApiUrl(baseUrl, api_path));
-    new URLSearchParams(url_params).forEach((value, key) => url.searchParams.set(key, value));
+    const url = new URL(buildApiUrl(baseUrl, apiPath));
+    new URLSearchParams(urlParams).forEach((value, key) => url.searchParams.set(key, value));
     const response = await fetchImpl(url.toString(), {
       cache: 'no-store',
       headers: {
@@ -142,6 +138,10 @@ async function fetch_json<Schema extends z.ZodType>(
 
     if (response.status === 401) {
       return { status: 'signed-out' };
+    }
+
+    if (response.status === 204) {
+      return { status: 'unavailable', reason: 'the API returned an empty payload' };
     }
 
     if (!response.ok) {
@@ -173,7 +173,7 @@ async function fetch_json<Schema extends z.ZodType>(
  * @returns The validated session user, signed-out, or unavailable.
  */
 export async function fetchSession(options: FetchSessionOptions = {}): Promise<SessionResult> {
-  return fetch_json(SessionUserSchema, SESSION_PATH, options);
+  return fetchJson(SessionUserSchema, SESSION_PATH, options);
 }
 
 /**
@@ -184,18 +184,16 @@ export async function fetchSession(options: FetchSessionOptions = {}): Promise<S
  *
  * @typeParam Schema - Schema defining the validated response output.
  * @param schema - Validator for a successful response body.
- * @param api_path - API path relative to the internal base URL.
- * @param url_params - Query parameters; defaults to an empty record.
+ * @param apiPath - API path relative to the internal base URL.
+ * @param urlParams - Query parameters; defaults to an empty record.
  * @returns Validated data, signed-out for HTTP 401, or unavailable on request failure.
  */
 export async function apiGet<Schema extends z.ZodType>(
   schema: Schema,
-  api_path: string,
-  url_params: Record<string, string> = {},
+  apiPath: string,
+  urlParams: Record<string, string> = {},
 ): Promise<BaseResult<z.infer<Schema>>> {
-  return fetchWithRequestHeaderAndIP((options) =>
-    fetch_json(schema, api_path, options, url_params),
-  );
+  return fetchWithRequestHeaderAndIP((options) => fetchJson(schema, apiPath, options, urlParams));
 }
 
 export type PingResult = { status: 'ok' } | { status: 'unreachable'; reason: string };

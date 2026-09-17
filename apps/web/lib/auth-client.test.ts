@@ -6,8 +6,10 @@ import {
   enableTwoFactor,
   logIn,
   logOut,
+  removeAvatar,
   signUp,
   updateProfile,
+  uploadAvatar,
   verifySecondFactor,
 } from './auth-client';
 
@@ -198,6 +200,37 @@ describe('the remaining endpoints', () => {
     expect(fetchMock).toHaveBeenCalledWith(
       '/api/users/me',
       expect.objectContaining({ method: 'PATCH' }),
+    );
+  });
+
+  it('uploads an avatar as FormData', async () => {
+    const updatedUser = { ...user, avatarUrl: '/avatars/1.png' };
+    const fetchMock = respondWith(200, updatedUser);
+    vi.stubGlobal('fetch', fetchMock);
+
+    const file = new File(['dummy content'], 'avatar.png', { type: 'image/png' });
+    await expect(uploadAvatar(file)).resolves.toEqual({ ok: true, data: updatedUser });
+    expect(fetchMock).toHaveBeenCalledWith(
+      '/api/users/me/avatar',
+      expect.objectContaining({
+        method: 'POST',
+        body: expect.any(FormData),
+        credentials: 'same-origin',
+      }),
+    );
+  });
+
+  it('removes an avatar', async () => {
+    const fetchMock = respondWith(200, user);
+    vi.stubGlobal('fetch', fetchMock);
+
+    await expect(removeAvatar()).resolves.toEqual({ ok: true, data: user });
+    expect(fetchMock).toHaveBeenCalledWith(
+      '/api/users/me/avatar',
+      expect.objectContaining({
+        method: 'DELETE',
+        credentials: 'same-origin',
+      }),
     );
   });
 

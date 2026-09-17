@@ -140,6 +140,15 @@ describe('fetchSession', () => {
     });
   });
 
+  it('reads a 204 as unavailable with an empty payload message', async () => {
+    const fetchImpl = vi.fn(async () => new Response(null, { status: 204 }));
+
+    await expect(fetchSession({ fetchImpl })).resolves.toEqual({
+      status: 'unavailable',
+      reason: 'the API returned an empty payload',
+    });
+  });
+
   // A 200 with a body we cannot read is not a verdict on the session: the API
   // never said this visitor is signed out, so we must not say it either.
   it('reads an unreadable payload as unavailable', async () => {
@@ -241,7 +250,7 @@ describe('apiGet', () => {
       { search: 'alice smith', page: '2' },
       'http://api:3001/api/users?search=alice+smith&page=2',
     ],
-    ['/api/users?page=1&sort=name', { page: '2' }, 'http://api:3001/api/users?page=2&sort=name'],
+    ['/api/users', { page: '2', sort: 'name' }, 'http://api:3001/api/users?page=2&sort=name'],
   ])('builds the query for %s with %j', async (path, params, expectedUrl) => {
     const fetchMock = vi
       .spyOn(globalThis, 'fetch')
@@ -265,6 +274,13 @@ describe('apiGet', () => {
     } finally {
       fetchMock.mockRestore();
     }
+  });
+
+  it('rejects paths containing query parameters', async () => {
+    await expect(apiGet(z.object({ name: z.string() }), '/api/users?page=1')).resolves.toEqual({
+      status: 'unavailable',
+      reason: 'the path must not contain query parameters',
+    });
   });
 
   it('supports async schema refinements', async () => {

@@ -29,12 +29,22 @@ export function readCode(body: unknown): string | null {
   return null;
 }
 
+function serializeBody(body: unknown): BodyInit | undefined {
+  if (body === undefined) {
+    return undefined;
+  }
+  if (typeof FormData !== 'undefined' && body instanceof FormData) {
+    return body;
+  }
+  return JSON.stringify(body);
+}
+
 /**
  * Sends a browser request and validates successful responses with the supplied schema.
  *
  * @param schema - Response validator; use a void schema for HTTP 204 responses.
  * @param path - Plain same-origin API path without a query string or fragment.
- * @param init - Fetch options, including the method and optional JSON body.
+ * @param init - Fetch options, including the method and optional body.
  * @param params - Optional query parameters to encode and append to the path.
  * @returns Validated data or an error code and HTTP status. Network failures use status 0.
  */
@@ -44,11 +54,19 @@ export async function send<Schema extends z.ZodType>(
   init: RequestInit = {},
   params: Record<string, string> = {},
 ): Promise<ApiResult<z.infer<Schema>>> {
+  if (path.includes('?')) {
+    return { ok: false, code: 'server.unexpected', status: 400 };
+  }
+
   let response: Response;
   try {
     const query = new URLSearchParams(params).toString();
     const requestPath = path + (query ? `?${query}` : '');
-    const headers = new Headers(JSON_HEADERS);
+    const headers = new Headers({ accept: 'application/json' });
+    const isFormData = typeof FormData !== 'undefined' && init.body instanceof FormData;
+    if (init.body !== undefined && !isFormData) {
+      headers.set('content-type', 'application/json');
+    }
     new Headers(init.headers).forEach((value, key) => headers.set(key, value));
     response = await fetch(requestPath, {
       ...init,
@@ -102,11 +120,11 @@ export function clientGet<Schema extends z.ZodType>(
 }
 
 /**
- * Sends a POST request with JSON data and validates the response.
+ * Sends a POST request with data and validates the response.
  *
  * @param schema - Response validator; use a void schema for HTTP 204.
  * @param path - API path without a query string or fragment.
- * @param body - Unserialized data; omitted bodies send no request body.
+ * @param body - Unserialized data or FormData; omitted bodies send no request body.
  * @param params - Optional query parameters.
  * @returns Validated data or an API error code and status.
  */
@@ -116,15 +134,15 @@ export function clientPost<Schema extends z.ZodType>(
   body?: unknown,
   params: Record<string, string> = {},
 ): Promise<ApiResult<z.infer<Schema>>> {
-  return send(schema, path, { method: 'POST', body: JSON.stringify(body) }, params);
+  return send(schema, path, { method: 'POST', body: serializeBody(body) }, params);
 }
 
 /**
- * Sends a PUT request with JSON data and validates the response.
+ * Sends a PUT request with data and validates the response.
  *
  * @param schema - Response validator; use a void schema for HTTP 204.
  * @param path - API path without a query string or fragment.
- * @param body - Unserialized data; omitted bodies send no request body.
+ * @param body - Unserialized data or FormData; omitted bodies send no request body.
  * @param params - Optional query parameters.
  * @returns Validated data or an API error code and status.
  */
@@ -134,15 +152,15 @@ export function clientPut<Schema extends z.ZodType>(
   body?: unknown,
   params: Record<string, string> = {},
 ): Promise<ApiResult<z.infer<Schema>>> {
-  return send(schema, path, { method: 'PUT', body: JSON.stringify(body) }, params);
+  return send(schema, path, { method: 'PUT', body: serializeBody(body) }, params);
 }
 
 /**
- * Sends a PATCH request with JSON data and validates the response.
+ * Sends a PATCH request with data and validates the response.
  *
  * @param schema - Response validator; use a void schema for HTTP 204.
  * @param path - API path without a query string or fragment.
- * @param body - Unserialized data; omitted bodies send no request body.
+ * @param body - Unserialized data or FormData; omitted bodies send no request body.
  * @param params - Optional query parameters.
  * @returns Validated data or an API error code and status.
  */
@@ -152,15 +170,15 @@ export function clientPatch<Schema extends z.ZodType>(
   body?: unknown,
   params: Record<string, string> = {},
 ): Promise<ApiResult<z.infer<Schema>>> {
-  return send(schema, path, { method: 'PATCH', body: JSON.stringify(body) }, params);
+  return send(schema, path, { method: 'PATCH', body: serializeBody(body) }, params);
 }
 
 /**
- * Sends a DELETE request with JSON data and validates the response.
+ * Sends a DELETE request with data and validates the response.
  *
  * @param schema - Response validator; use a void schema for HTTP 204.
  * @param path - API path without a query string or fragment.
- * @param body - Unserialized data; omitted bodies send no request body.
+ * @param body - Unserialized data or FormData; omitted bodies send no request body.
  * @param params - Optional query parameters.
  * @returns Validated data or an API error code and status.
  */
@@ -170,5 +188,5 @@ export function clientDelete<Schema extends z.ZodType>(
   body?: unknown,
   params: Record<string, string> = {},
 ): Promise<ApiResult<z.infer<Schema>>> {
-  return send(schema, path, { method: 'DELETE', body: JSON.stringify(body) }, params);
+  return send(schema, path, { method: 'DELETE', body: serializeBody(body) }, params);
 }

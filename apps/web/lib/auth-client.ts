@@ -21,57 +21,6 @@ const LoginResponseSchema = z.union([SessionUserSchema, TwoFactorRequiredSchema]
 /** The 202 branch of a login: password accepted, second factor still owed. */
 export type LoginResult = ApiResult<SessionUser> | { ok: 'twoFactor' };
 
-const JSON_HEADERS = { 'content-type': 'application/json', accept: 'application/json' };
-
-/**
- * Nest reports Zod failures as an array of codes. Showing the first is enough
- * for a form that validates the same rules client-side before submitting.
- *
- * The body is still read as `message`, which is what Nest's exception filter
- * names the field; only its contents changed from prose to an ERROR_CODES entry.
- */
-function readCode(body: unknown): string | null {
-  if (typeof body === 'object' && body !== null && 'message' in body) {
-    const { message } = body as { message: unknown };
-    if (typeof message === 'string') {
-      return message;
-    }
-    if (Array.isArray(message) && typeof message[0] === 'string') {
-      return message[0];
-    }
-  }
-  return null;
-}
-
-async function send<T>(path: string, init: RequestInit = {}): Promise<ApiResult<T>> {
-  let response: Response;
-  try {
-    response = await fetch(path, {
-      ...init,
-      credentials: 'same-origin',
-      // FormData sets its own Content-Type, boundary included. Overriding it
-      // makes the upload unparseable.
-      headers: init.body instanceof FormData ? undefined : JSON_HEADERS,
-    });
-  } catch {
-    return { ok: false, code: 'network.unreachable', status: 0 };
-  }
-
-  if (response.status === 204) {
-    return { ok: true, data: undefined as T };
-  }
-
-  const body: unknown = await response.json().catch(() => null);
-  if (!response.ok) {
-    return {
-      ok: false,
-      code: readCode(body) ?? 'server.unexpected',
-      status: response.status,
-    };
-  }
-  return { ok: true, data: body as T };
-}
-
 export async function signUp(input: unknown): Promise<ApiResult<SessionUser>> {
   return clientPost(SessionUserSchema, '/api/auth/signup', input);
 }
@@ -115,10 +64,10 @@ export async function disableTwoFactor(password: string): Promise<ApiResult<void
 export function uploadAvatar(file: File): Promise<ApiResult<SessionUser>> {
   const formData = new FormData();
   formData.append('avatar', file);
-  return send<SessionUser>('/api/users/me/avatar', { method: 'POST', body: formData });
+  return clientPost(SessionUserSchema, '/api/users/me/avatar', formData);
 }
 
 /** Back to the default image. The server deletes the file it was using. */
 export function removeAvatar(): Promise<ApiResult<SessionUser>> {
-  return send<SessionUser>('/api/users/me/avatar', { method: 'DELETE' });
+  return clientDelete(SessionUserSchema, '/api/users/me/avatar');
 }
