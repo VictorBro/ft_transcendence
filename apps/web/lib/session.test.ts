@@ -14,7 +14,14 @@ vi.mock('next/headers', () => ({
   headers: async () => ({ get: getHeader }),
 }));
 vi.mock('next/navigation', () => ({ redirect }));
-vi.mock('./api', () => ({ fetchSession }));
+vi.mock('./api', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('./api')>();
+
+  return {
+    ...actual,
+    fetchSession,
+  };
+});
 
 const { currentUser, requireUser } = await import('./session');
 
@@ -32,7 +39,7 @@ describe('currentUser', () => {
       { name: 'ft.sid', value: 'abc' },
       { name: 'other', value: 'xyz' },
     ]);
-    fetchSession.mockResolvedValue({ status: 'ok', user });
+    fetchSession.mockResolvedValue({ status: 'ok', data: user });
 
     await expect(currentUser()).resolves.toEqual(user);
     expect(fetchSession).toHaveBeenCalledWith(
@@ -85,7 +92,7 @@ describe('currentUser', () => {
 describe('requireUser', () => {
   it('returns the user when there is a session', async () => {
     getAll.mockReturnValue([{ name: 'ft.sid', value: 'abc' }]);
-    fetchSession.mockResolvedValue({ status: 'ok', user });
+    fetchSession.mockResolvedValue({ status: 'ok', data: user });
 
     await expect(requireUser()).resolves.toEqual(user);
     expect(redirect).not.toHaveBeenCalled();
