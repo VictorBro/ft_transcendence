@@ -1,45 +1,24 @@
-import { cookies, headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { cache } from 'react';
 import type { SessionUser } from '@ft/shared';
 
-import { fetchSession, type SessionResult } from './api';
+import { fetchSession, fetchWithRequestHeaderAndIP, type SessionResult } from './api';
 
 /**
- * The session as the server sees it, reported verbatim: this collects the
- * cookies and the forwarded address and hands back whatever the API said,
- * without deciding what it means. Reading cookies() makes every caller a
- * dynamic route, which is required anyway: a page that renders someone's name
- * must never be served from a cache built for someone else.
+ * Loads the validated session using the current request's cookies and visitor IP.
  *
- * Callers interpret, because "unavailable" is harmless on a public page and
- * destructive on a protected one.
+ * @remarks Requires a Next.js server request context. React's cache memoizes
+ * the result within a server render so the layout and page share the lookup.
+ * The underlying fetch uses cache: 'no-store' to avoid persisting session
+ * responses. No result is shared between visitors.
  *
- * Memoised per request with React's cache(): the layout's SessionNav and the
- * page below it both ask for the session, and the fetch's cache: 'no-store'
- * stops Next from deduping the two calls. The scope is a single render, so no
- * result ever crosses from one visitor to another.
+ * Callers decide how to handle signed-out and unavailable results: a public
+ * page may show less information, while a protected page must preserve errors.
+ *
+ * @returns The session user, signed-out, or unavailable without redirecting.
  */
-
 export const loadSession = cache(async function loadSession(): Promise<SessionResult> {
-  const store = await cookies();
-  const cookie = store
-    .getAll()
-    .map(({ name, value }) => `${name}=${value}`)
-    .join('; ');
-
-  // Passed through unchanged rather than appended to. The API sets `trust proxy`
-  // to 1, so it resolves req.ip to the RIGHT-most X-Forwarded-For entry;
-  // appending this container's address would make that entry the web container
-  // and put every anonymous visitor back in one bucket. Caddy is the sole
-  // ingress and rewrites the header, so what arrives here is the real address.
-  const forwardedFor = (await headers()).get('x-forwarded-for');
-
-  return fetchSession({
-    baseUrl: process.env.API_INTERNAL_URL,
-    cookie,
-    forwardedFor: forwardedFor ?? undefined,
-  });
+  return fetchWithRequestHeaderAndIP(fetchSession);
 });
 
 /**
@@ -49,7 +28,7 @@ export const loadSession = cache(async function loadSession(): Promise<SessionRe
  */
 export async function currentUser(): Promise<SessionUser | null> {
   const result = await loadSession();
-  return result.status === 'ok' ? result.user : null;
+  return result.status === 'ok' ? result.data : null;
 }
 
 /**
@@ -70,5 +49,5 @@ export async function requireUser(): Promise<SessionUser> {
   if (result.status === 'unavailable') {
     throw new Error(`Could not verify the session: ${result.reason}`);
   }
-  return result.user;
+  return result.data;
 }
