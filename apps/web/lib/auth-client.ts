@@ -43,7 +43,9 @@ async function send<T>(path: string, init: RequestInit = {}): Promise<ApiResult<
     response = await fetch(path, {
       ...init,
       credentials: 'same-origin',
-      headers: { ...JSON_HEADERS, ...init.headers },
+      // FormData sets its own Content-Type, boundary included. Overriding it
+      // makes the upload unparseable.
+      headers: init.body instanceof FormData ? undefined : JSON_HEADERS,
     });
   } catch {
     return { ok: false, code: 'network.unreachable', status: 0 };
@@ -123,4 +125,15 @@ export async function enableTwoFactor(
 
 export async function disableTwoFactor(password: string): Promise<ApiResult<void>> {
   return send<void>('/api/auth/2fa', { method: 'DELETE', body: JSON.stringify({ password }) });
+}
+
+export function uploadAvatar(file: File): Promise<ApiResult<SessionUser>> {
+  const formData = new FormData();
+  formData.append('avatar', file);
+  return send<SessionUser>('/api/users/me/avatar', { method: 'POST', body: formData });
+}
+
+/** Back to the default image. The server deletes the file it was using. */
+export function removeAvatar(): Promise<ApiResult<SessionUser>> {
+  return send<SessionUser>('/api/users/me/avatar', { method: 'DELETE' });
 }

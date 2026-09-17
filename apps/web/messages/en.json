@@ -124,8 +124,8 @@
       "displayNameTaken": "That display name is already taken",
       "passwordFirst": "Sign in with your password first"
     },
-    "avatarUrl": {
-      "invalid": "Enter a valid URL"
+    "avatar": {
+      "invalidFile": "That file could not be used as an avatar. Try a PNG, JPEG or WebP."
     },
     "profile": {
       "noChanges": "Change at least one field"
@@ -155,16 +155,20 @@
   "ProfilePage": {
     "title": "Profile",
     "joined": "Joined {date}",
+    "editProfile": "Edit profile",
     "security": "Security",
     "twoFactorPrompt": "Add a second factor so a stolen password is not enough to sign in.",
-    "twoFactorAuthentication": "Two factor authentication"
+    "twoFactorAuthentication": "Two factor authentication",
+    "backToProfile": "Back to profile"
   },
   "ProfileForm": {
-    "editProfile": "Edit profile",
     "displayName": "Display name",
-    "avatarUrl": "Avatar URL",
-    "avatarUrlHint": "Leave empty to use the default avatar.",
-    "profileSaved": "Profile saved.",
+    "uploadAvatar": "Upload avatar",
+    "changeAvatar": "Change avatar",
+    "removeAvatar": "Remove avatar",
+    "uploading": "Uploading...",
+    "removing": "Removing...",
+    "avatarTooLarge": "File is too large. Maximum size is {size} MiB.",
     "saveChanges": "Save changes"
   },
   "TwoFactorPage": {

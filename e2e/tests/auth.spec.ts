@@ -107,10 +107,12 @@ test.describe('authentication in the browser', () => {
 
     await createAccount(page, { email, displayName });
 
+    await page.getByRole('link', { name: 'Edit profile' }).click();
     await page.getByLabel('Display name').fill(renamed);
     await page.getByRole('button', { name: 'Save changes' }).click();
 
-    await expect(page.getByRole('status')).toContainText('Profile saved');
+    await expect(page).toHaveURL(/\/profile$/);
+    await expect(page.getByRole('heading', { level: 1, name: renamed })).toBeVisible();
     await expect(page.getByRole('navigation', { name: 'Account' })).toContainText(renamed);
   });
 
