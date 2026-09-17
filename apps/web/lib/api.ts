@@ -1,9 +1,12 @@
+import { cookies, headers } from 'next/headers';
+
 /**
  * The only place apps/web talks to NestJS. Per the architecture rule, Next does
  * presentation and SSR only, so nothing here knows about domain logic: it builds
  * a URL, calls the API over the internal Docker network, and narrows the answer.
  */
 import { SessionUserSchema, type SessionUser } from '@ft/shared';
+import type { z } from 'zod';
 
 export const DEFAULT_API_INTERNAL_URL = 'http://api:3001';
 export const SESSION_PATH = '/api/auth/me';
@@ -26,15 +29,15 @@ export interface FetchSessionOptions extends ApiRequestOptions {
   forwardedFor?: string | undefined;
 }
 
+export type BaseResult<T> =
+  { status: 'ok'; data: T } | { status: 'signed-out' } | { status: 'unavailable'; reason: string };
+
 /**
  * Three answers, not two. "signed-out" is a verdict the API delivered (401);
  * "unavailable" is the absence of a verdict, and the caller must not read it as
  * one. Collapsing them is what turned a 429 or a restart into a logout.
  */
-export type SessionResult =
-  | { status: 'ok'; user: SessionUser }
-  | { status: 'signed-out' }
-  | { status: 'unavailable'; reason: string };
+export type SessionResult = BaseResult<SessionUser>;
 
 /** Falls back to the compose service name when API_INTERNAL_URL is unset or blank. */
 export function resolveApiBaseUrl(raw: string | undefined): string {
@@ -58,16 +61,60 @@ export function describeFetchError(error: unknown): string {
 }
 
 /**
- * Reading the session during SSR. The browser's cookie never reaches the
- * internal request on its own, so the caller forwards the header; without it
- * every server-rendered page would believe nobody is signed in.
+ * Calls an API fetcher with the current Next.js request's cookies and visitor IP.
  *
- * 401 is the only status that means "not authenticated": it is the sole
- * rejection AuthGuard raises. Everything else (429, 5xx, a timeout, an API
- * that is not up yet) says nothing about the visitor and is reported as
- * unavailable, so no caller can mistake an incident for a verdict.
+ * @remarks Requires a server request context. Caddy's X-Forwarded-For value is
+ * forwarded unchanged so the API can rate-limit the visitor. Request-context
+ * errors and errors thrown by the callback propagate to the caller.
+ *
+ * @typeParam T - The fetcher's validated response data type.
+ * @param fetcher - Async callback receiving the internal base URL and forwarded headers.
+ * @returns The callback's result, preserving its response data type.
  */
-export async function fetchSession(options: FetchSessionOptions = {}): Promise<SessionResult> {
+export async function fetchWithRequestHeaderAndIP<T>(
+  fetcher: (options: FetchSessionOptions) => Promise<BaseResult<T>>,
+): Promise<BaseResult<T>> {
+  const store = await cookies();
+  const cookie = store
+    .getAll()
+    .map(({ name, value }) => `${name}=${value}`)
+    .join('; ');
+
+  // Passed through unchanged rather than appended to. The API sets `trust proxy`
+  // to 1, so it resolves req.ip to the RIGHT-most X-Forwarded-For entry;
+  // appending this container's address would make that entry the web container
+  // and put every anonymous visitor back in one bucket. Caddy is the sole
+  // ingress and rewrites the header, so what arrives here is the real address.
+  const forwardedFor = (await headers()).get('x-forwarded-for');
+
+  return fetcher({
+    baseUrl: process.env.API_INTERNAL_URL,
+    cookie,
+    forwardedFor: forwardedFor ?? undefined,
+  });
+}
+
+/**
+ * Performs an uncached GET request and validates its JSON body with a Zod schema.
+ *
+ * @typeParam Schema - Schema defining the validated response output.
+ * @param schema - Response validator, including async refinements.
+ * @param apiPath - API path relative to the configured internal base URL.
+ * @param options - Base URL, forwarded headers, timeout, and optional fetch implementation.
+ * @param urlParams - Query parameters; an empty record adds no question mark.
+ * @returns Validated data on success, signed-out for HTTP 401, or unavailable
+ * for other HTTP failures, invalid JSON or payloads, timeouts, and network errors.
+ */
+async function fetchJson<Schema extends z.ZodType>(
+  schema: Schema,
+  apiPath: string,
+  options: FetchSessionOptions = {},
+  urlParams: Record<string, string> = {},
+): Promise<BaseResult<z.infer<Schema>>> {
+  if (apiPath.includes('?')) {
+    return { status: 'unavailable', reason: 'the path must not contain query parameters' };
+  }
+
   const {
     baseUrl,
     cookie,
@@ -77,7 +124,9 @@ export async function fetchSession(options: FetchSessionOptions = {}): Promise<S
   } = options;
 
   try {
-    const response = await fetchImpl(buildApiUrl(baseUrl, SESSION_PATH), {
+    const url = new URL(buildApiUrl(baseUrl, apiPath));
+    new URLSearchParams(urlParams).forEach((value, key) => url.searchParams.set(key, value));
+    const response = await fetchImpl(url.toString(), {
       cache: 'no-store',
       headers: {
         accept: 'application/json',
@@ -91,19 +140,60 @@ export async function fetchSession(options: FetchSessionOptions = {}): Promise<S
       return { status: 'signed-out' };
     }
 
+    if (response.status === 204) {
+      return { status: 'unavailable', reason: 'the API returned an empty payload' };
+    }
+
     if (!response.ok) {
       return { status: 'unavailable', reason: `the API answered HTTP ${response.status}` };
     }
 
-    const parsed = SessionUserSchema.safeParse(await response.json());
+    const parsed = await schema.safeParseAsync(await response.json());
     if (!parsed.success) {
       return { status: 'unavailable', reason: 'the API returned an unexpected payload' };
     }
 
-    return { status: 'ok', user: parsed.data };
+    return { status: 'ok', data: parsed.data };
   } catch (error) {
     return { status: 'unavailable', reason: describeFetchError(error) };
   }
+}
+
+/**
+ * Fetches and validates the signed-in user's record from the session endpoint.
+ * The caller supplies browser cookies and visitor IP through the options;
+ * this function does not read the Next.js request itself.
+ *
+ * 401 is the only status that means "not authenticated": it is the sole
+ * rejection AuthGuard raises. Everything else (429, 5xx, a timeout, an API
+ * that is not up yet) says nothing about the visitor and is reported as
+ * unavailable, so no caller can mistake an incident for a verdict.
+ *
+ * @param options - Request configuration, including forwarded cookies and visitor IP.
+ * @returns The validated session user, signed-out, or unavailable.
+ */
+export async function fetchSession(options: FetchSessionOptions = {}): Promise<SessionResult> {
+  return fetchJson(SessionUserSchema, SESSION_PATH, options);
+}
+
+/**
+ * Fetches validated JSON using the current request's cookies and visitor IP.
+ *
+ * @remarks Requires a Next.js server request context. Request-context errors
+ * propagate; HTTP, JSON, validation, and network failures are returned as results.
+ *
+ * @typeParam Schema - Schema defining the validated response output.
+ * @param schema - Validator for a successful response body.
+ * @param apiPath - API path relative to the internal base URL.
+ * @param urlParams - Query parameters; defaults to an empty record.
+ * @returns Validated data, signed-out for HTTP 401, or unavailable on request failure.
+ */
+export async function apiGet<Schema extends z.ZodType>(
+  schema: Schema,
+  apiPath: string,
+  urlParams: Record<string, string> = {},
+): Promise<BaseResult<z.infer<Schema>>> {
+  return fetchWithRequestHeaderAndIP((options) => fetchJson(schema, apiPath, options, urlParams));
 }
 
 export type PingResult = { status: 'ok' } | { status: 'unreachable'; reason: string };

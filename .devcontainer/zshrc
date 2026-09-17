@@ -50,3 +50,5 @@ precmd_functions+=(vcs_info)
 # PROMPT_SUBST re-expands vcs_info_msg_0_ on every prompt.
 setopt PROMPT_SUBST
 PROMPT='%F{magenta}ft%f %F{cyan}%~%f${vcs_info_msg_0_} %# '
+
+alias croot='cd /workspace'

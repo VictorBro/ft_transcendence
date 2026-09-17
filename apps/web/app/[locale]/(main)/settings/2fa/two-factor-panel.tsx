@@ -3,25 +3,18 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { EnableTwoFactorSchema, type TwoFactorStatus } from '@ft/shared';
+import { EnableTwoFactorSchema, TwoFactorStatusSchema, type TwoFactorStatus } from '@ft/shared';
+import { clientGet, type ApiResult } from '@/lib/api-client';
+import { beginTwoFactorSetup, disableTwoFactor, enableTwoFactor } from '@/lib/auth-client';
 
-import {
-  beginTwoFactorSetup,
-  disableTwoFactor,
-  enableTwoFactor,
-  type ApiResult,
-} from '@/lib/auth-client';
 import { useErrorMessage } from '@/lib/error-message';
 import { Field, FormError, SubmitButton } from '@/components/form';
 
 type Setup = { secret: string; otpauthUri: string; qrDataUrl: string };
 
 async function loadStatus(): Promise<TwoFactorStatus | null> {
-  const response = await fetch('/api/auth/2fa', {
-    credentials: 'same-origin',
-    headers: { accept: 'application/json' },
-  }).catch(() => null);
-  return response?.ok ? ((await response.json()) as TwoFactorStatus) : null;
+  const response = await clientGet(TwoFactorStatusSchema, '/api/auth/2fa');
+  return response.ok ? response.data : null;
 }
 
 export function TwoFactorPanel() {
