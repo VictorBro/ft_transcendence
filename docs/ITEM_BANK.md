@@ -4,7 +4,7 @@ What to write, in what shape, so placement questions can be seeded, served and n
 the same learner. See [PRODUCT_ARCHITECTURE.md](PRODUCT_ARCHITECTURE.md) §1.2 for why the bank
 exists.
 
-Audience: whoever authors the French and German sets.
+Audience: whoever adds a language, or replaces a question that turned out to be wrong.
 
 ---
 
@@ -36,8 +36,10 @@ per category at each, so two or three runs drain a learner's cells and the app s
 new questions, which is exactly the behaviour we want to demonstrate. A huge seed bank would hide
 that path rather than exercise it.
 
-Start with `grammar` and `vocabulary`, which are one sentence each. Add `reading` after, since
-every item needs a passage written too.
+**English, French and German are already complete**, 90 items each. What follows is for adding a
+fourth language, or for replacing an item that turned out to be wrong. Starting a new language,
+write `grammar` and `vocabulary` first, since they are one sentence each, and `reading` after,
+because every item there needs a passage written too.
 
 **Listening is out of scope.** It needs recorded audio or TTS, file storage, playback and its own
 accessibility story.
@@ -135,7 +137,8 @@ format, reused by another file, or disagreeing with the language and category of
 in, a reading question with no `readText` or a non-reading one with it, an unknown `level` or
 `topic`, a missing or non-positive `timeLimitS`, and any field that is not in the list above.
 
-`content/items/en-*.json` are working examples of all three shapes. Copy one and edit.
+Every file under `content/items/` is a working example of its shape, in three languages. Copy
+the nearest one and edit.
 
 ## 4. Topics
 
