@@ -37,6 +37,15 @@ export const ERROR_CODES = [
   'auth.passwordFirst',
   'twoFactor.setupFirst',
   'twoFactor.invalidCode',
+  /** One course per language, which is what UserLevel's unique index enforces. */
+  'course.alreadyStarted',
+  'course.notFound',
+  'placement.inProgress',
+  'placement.notFound',
+  /** Left unfinished long enough that its clock is meaningless. */
+  'placement.expired',
+  /** No unseen question left for that language, level and category: a content gap. */
+  'placement.poolExhausted',
   /** The browser never reached the API: offline, DNS, proxy down. */
   'network.unreachable',
   /** A status the client has no specific wording for. Carries `{status}`. */

@@ -137,6 +137,16 @@
       "setupFirst": "Start two factor setup first",
       "invalidCode": "That code is not valid"
     },
+    "course": {
+      "alreadyStarted": "You have already started a course in that language",
+      "notFound": "You have no course in that language yet"
+    },
+    "placement": {
+      "inProgress": "A placement test is already running. Finish it first.",
+      "notFound": "No placement test is running",
+      "expired": "That placement test has expired. Start a new one.",
+      "poolExhausted": "There are not enough questions left for that test. Try again later."
+    },
     "network": {
       "unreachable": "Could not reach the server"
     },
