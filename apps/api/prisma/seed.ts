@@ -26,10 +26,14 @@ export function findItemsDir(): string {
     return candidateFromApi;
   }
 
-  throw new Error('Impossible to find directory content/items');
+  throw new Error(
+    `content/items not found: looked in ${candidateFromRoot} and ${candidateFromApi}. ` +
+      'Run db:seed from the repo root or from apps/api.',
+  );
 }
 
-export async function seedQuestionBank(dir: string, prisma: PrismaClient) {
+/** Returns how many questions were written, so a silent no-op is visible. */
+export async function seedQuestionBank(dir: string, prisma: PrismaClient): Promise<number> {
   const allEntries = await readdir(dir);
   const jsonFiles = allEntries.filter((name) => name.endsWith('.json'));
 
@@ -85,17 +89,18 @@ export async function seedQuestionBank(dir: string, prisma: PrismaClient) {
   }
 
   await prisma.$transaction(operations);
+  return operations.length;
 }
 
-// Only runs the seed when this file is executed directly (`db:seed`), not when
-// a test imports seedQuestionBank against its own fixtures and Prisma client.
+// Runs only when this file is the entry point, so a test importing
+// seedQuestionBank does not seed the real database.
 if (require.main === module) {
   const prisma = new PrismaClient({
     adapter: new PrismaPg({ connectionString: requireDatabaseUrl() }),
   });
 
   seedQuestionBank(findItemsDir(), prisma)
-    .then(() => console.log('done'))
+    .then((count) => console.log(`seeded ${count} questions from ${findItemsDir()}`))
     .catch((err) => {
       console.error(err);
       process.exit(1);

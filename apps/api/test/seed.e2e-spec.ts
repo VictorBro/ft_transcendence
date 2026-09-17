@@ -1,4 +1,4 @@
-import { mkdtemp, rm, writeFile } from 'node:fs/promises';
+import { mkdtemp, readdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { afterAll, afterEach, beforeAll, describe, expect, it } from 'vitest';
@@ -21,6 +21,18 @@ const itemFile = (question: string) => ({
     },
   ],
 });
+
+async function readAuthoredItems(dir: string): Promise<{ sourceId: string }[]> {
+  const files = (await readdir(dir)).filter((name) => name.endsWith('.json'));
+  const items: { sourceId: string }[] = [];
+  for (const file of files) {
+    const parsed = JSON.parse(await readFile(join(dir, file), 'utf-8')) as {
+      items: { sourceId: string }[];
+    };
+    items.push(...parsed.items);
+  }
+  return items;
+}
 
 /**
  * Needs a real Postgres: the acceptance criteria on issue #43 are about what
@@ -54,13 +66,27 @@ describe('seedQuestionBank (e2e)', () => {
     await prisma?.$disconnect();
   });
 
-  it('loads every item from the fixture directory', async () => {
+  it('loads every item from the fixture directory, with every column mapped', async () => {
     await seedQuestionBank(validDir, prisma);
 
     const rows = await prisma.questionBank.findMany({
       where: { sourceId: { in: seededSourceIds } },
     });
     expect(rows).toHaveLength(seededSourceIds.length);
+
+    // The whole row, not just the count: a field read from the wrong key still
+    // writes one row, and the exam is what breaks.
+    expect(rows[0]).toMatchObject({
+      lang: 'en',
+      category: 'grammar',
+      level: 'A1',
+      topic: 'verbs_morphology',
+      readText: null,
+      question: 'She ___ to school every day.',
+      options: ['walk', 'walks', 'walking', 'walked'],
+      answer: 'walks',
+      timeLimitS: 30,
+    });
   });
 
   it('running it twice leaves the same row count and id (idempotent upsert)', async () => {
@@ -112,24 +138,62 @@ describe('seedQuestionBank (e2e)', () => {
     expect(row).toBeNull();
   });
 
-  // Seeds the real content/items rather than a fixture: this is what covers
-  // findItemsDir, the walk over all nine files and the authored reading items,
-  // none of which the one-item fixtures exercise. It deliberately leaves its
-  // rows behind — that is the normal state of a seeded database, and afterEach
-  // only targets the 90xx fixture ids.
+  // Covers findItemsDir and the walk over all nine files, which the one-item
+  // fixtures cannot. Every query is scoped to the ids this call wrote: unscoped,
+  // a seed that loaded nothing still passed on an already-seeded database, and
+  // one unrelated row failed it. Its rows stay behind, which is the normal state
+  // of a seeded database; afterEach only targets the 90xx fixture ids.
   it('loads all 270 authored items from the real content directory', async () => {
-    await seedQuestionBank(findItemsDir(), prisma);
+    const dir = findItemsDir();
+    const authored = await readAuthoredItems(dir);
+    expect(authored).toHaveLength(270);
+    const where = { sourceId: { in: authored.map((item) => item.sourceId) } };
 
-    const total = await prisma.questionBank.count();
-    expect(total).toBeGreaterThanOrEqual(270);
+    // Compared before and after, because the rows survive between runs: merely
+    // counting them proves a previous seed, not this one. Not deleting them
+    // first, because UserSeenQuestion cascades off these ids and keeping it
+    // valid across re-seeds is the reason the script upserts at all.
+    const stamps = new Map(
+      (
+        await prisma.questionBank.findMany({ where, select: { sourceId: true, updatedAt: true } })
+      ).map((row) => [row.sourceId, row.updatedAt]),
+    );
+
+    expect(await seedQuestionBank(dir, prisma)).toBe(authored.length);
+
+    const touched = await prisma.questionBank.findMany({
+      where,
+      select: { sourceId: true, updatedAt: true },
+    });
+    expect(touched).toHaveLength(authored.length);
+    const stale = touched.filter((row) => {
+      const previous = stamps.get(row.sourceId);
+      return previous !== undefined && row.updatedAt <= previous;
+    });
+    expect(stale).toEqual([]);
 
     const byPair = await prisma.questionBank.groupBy({
       by: ['lang', 'category'],
+      where,
       _count: true,
     });
     expect(byPair).toHaveLength(9);
     for (const pair of byPair) {
       expect(pair._count).toBe(30);
     }
+
+    // The fixtures are all grammar, so this is the only place readText is
+    // written from a real value rather than from undefined.
+    const reading = await prisma.questionBank.findMany({
+      where: { ...where, category: 'reading' },
+    });
+    expect(reading).toHaveLength(90);
+    expect(reading.every((row) => row.readText !== null && row.readText !== '')).toBe(true);
+
+    const rest = await prisma.questionBank.findMany({
+      where: { ...where, category: { not: 'reading' } },
+    });
+    expect(rest).toHaveLength(180);
+    expect(rest.every((row) => row.readText === null)).toBe(true);
   });
 });

@@ -93,7 +93,7 @@ DB_ENV := -e DATABASE_URL='$(DEFAULT_DATABASE_URL)'
 endif
 
 .PHONY: all run dev up build down logs ps shell test test-e2e lint format typecheck report \
-        migrate migrate-new seed studio reset-db ci stores-up clean certs tooling-image doctor help \
+        migrate migrate-new seed db-ready studio reset-db ci stores-up clean certs tooling-image doctor help \
 				check-devcontainer
 
 # Building on the host uses the wrong Node, the wrong pnpm store and a bind
@@ -124,8 +124,11 @@ logs: .EXTRA_PREREQS :=
 ps: .EXTRA_PREREQS :=
 shell: .EXTRA_PREREQS :=
 tooling-image: .EXTRA_PREREQS :=
-# .github/workflows/e2e.yml runs make migrate on a plain runner, no FT_DEVCONTAINER.
+# .github/workflows/e2e.yml brings the stack up on a plain runner, no
+# FT_DEVCONTAINER, and a deployed environment is not a devcontainer either.
 migrate: .EXTRA_PREREQS :=
+seed: .EXTRA_PREREQS :=
+db-ready: .EXTRA_PREREQS :=
 
 
 # --- the one command ---------------------------------------------------------
@@ -146,8 +149,7 @@ all:
 ## run: build, start, migrate, seed, export the root CA (no checks)
 run:
 	@$(MAKE) --no-print-directory up
-	@$(MAKE) --no-print-directory migrate
-	@$(MAKE) --no-print-directory seed
+	@$(MAKE) --no-print-directory db-ready
 	@# certs runs last, not first: Caddy mints its internal CA on first boot, so
 	@# there is nothing to export until the stack is up.
 	@$(MAKE) --no-print-directory certs
@@ -185,7 +187,7 @@ dev: ## Start the development stack: bind-mounted source, hot reload
 	@# up healthy with every login returning 500: the api dev container runs
 	@# `prisma generate`, which emits a client and creates zero tables, and
 	@# nothing exported Caddy's CA for the browser to trust.
-	@$(MAKE) --no-print-directory migrate
+	@$(MAKE) --no-print-directory db-ready
 	@$(MAKE) --no-print-directory certs
 	@printf '\n  Dev stack up: https://localhost\n'
 	@printf '  The web and api containers reinstall dependencies on start;\n'
@@ -280,6 +282,12 @@ ci: stores-up ## Everything the ci workflow runs, natively
 tooling-image:
 	docker build -f apps/api/Dockerfile --target build -t $(TOOLING_IMAGE) .
 
+# Every path that brings a database up goes through here, so no environment
+# ends up migrated but with an empty question bank. Both halves are idempotent.
+db-ready: ## Apply migrations, then load the question bank
+	@$(MAKE) --no-print-directory migrate
+	@$(MAKE) --no-print-directory seed
+
 migrate: ## Apply pending Prisma migrations
 	@if [ ! -d "$(MIGRATIONS_DIR)" ] || [ -z "$$(ls -A '$(MIGRATIONS_DIR)' 2>/dev/null)" ]; then \
 	  printf 'migrate: no migrations in %s yet, nothing to apply.\n' '$(MIGRATIONS_DIR)'; \
@@ -326,7 +334,7 @@ reset-db: ## DESTRUCTIVE: drop the database volume and start empty (FORCE=1 to s
 	$(COMPOSE_DEV) rm -sf db
 	docker volume rm -f $(PG_VOLUME)
 	$(COMPOSE_DEV) up -d --wait --wait-timeout $(WAIT_TIMEOUT) db
-	@$(MAKE) --no-print-directory migrate
+	@$(MAKE) --no-print-directory db-ready
 	@# The api holds a connection pool against the database that just went away.
 	$(COMPOSE_DEV) restart api 2>/dev/null || true
 
