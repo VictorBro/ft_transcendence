@@ -15,6 +15,7 @@ Pin exactly (no caret unless noted) and re-verify before the first commit.
 | ESLint | 10.8.0 | |
 | typescript-eslint | 8.65.0 | Peer: `typescript >=4.8.4 <6.1.0`. |
 | Prettier | 3.9.6 | |
+| tsx | 4.23.13 | Runs `prisma/seed.ts`. devDependency only: the prod image runs compiled `dist/`. Pulls esbuild, whose postinstall needs the `allowBuilds` entry in `pnpm-workspace.yaml`. |
 
 ## Application
 
