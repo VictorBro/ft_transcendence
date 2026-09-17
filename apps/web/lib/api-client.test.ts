@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { z } from 'zod';
 import { TwoFactorStatusSchema, SessionUserSchema } from '@ft/shared';
-import { clientGet, clientPost, clientPut, clientPatch, clientDelete } from './api-client';
+import { send, clientGet, clientPost, clientPut, clientPatch, clientDelete } from './api-client';
 
 afterEach(() => vi.unstubAllGlobals());
 
@@ -149,5 +149,49 @@ describe('clientPost', () => {
       '/api/resource',
       expect.objectContaining({ body: '"hello"' }),
     );
+  });
+});
+
+describe('send headers', () => {
+  it.each([
+    ['record', { Authorization: 'Bearer token', Accept: 'text/plain' }],
+    ['Headers instance', new Headers({ Authorization: 'Bearer token', Accept: 'text/plain' })],
+    [
+      'tuple array',
+      [
+        ['Authorization', 'Bearer token'],
+        ['Accept', 'text/plain'],
+      ],
+    ],
+  ] satisfies [string, HeadersInit][])(
+    'merges %s headers without mutating the input',
+    async (_label, input) => {
+      const original = Array.from(new Headers(input).entries());
+      const fetchMock = vi.fn(async (_path: RequestInfo | URL, init?: RequestInit) => {
+        const requestHeaders = new Headers(init?.headers);
+        expect(requestHeaders.get('authorization')).toBe('Bearer token');
+        expect(requestHeaders.get('accept')).toBe('text/plain');
+        expect(requestHeaders.get('content-type')).toBe('application/json');
+        return Response.json('ok');
+      });
+      vi.stubGlobal('fetch', fetchMock);
+      await expect(send(z.string(), '/api/test', { headers: input })).resolves.toEqual({
+        ok: true,
+        data: 'ok',
+      });
+      expect(fetchMock).toHaveBeenCalledOnce();
+      expect(Array.from(new Headers(input).entries())).toEqual(original);
+    },
+  );
+
+  it('keeps default headers when none are supplied', async () => {
+    const fetchMock = vi.fn(async (_path: RequestInfo | URL, init?: RequestInit) => {
+      const requestHeaders = new Headers(init?.headers);
+      expect(requestHeaders.get('accept')).toBe('application/json');
+      expect(requestHeaders.get('content-type')).toBe('application/json');
+      return Response.json('ok');
+    });
+    vi.stubGlobal('fetch', fetchMock);
+    await expect(send(z.string(), '/api/test')).resolves.toEqual({ ok: true, data: 'ok' });
   });
 });

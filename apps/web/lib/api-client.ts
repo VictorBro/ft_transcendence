@@ -48,10 +48,12 @@ export async function send<Schema extends z.ZodType>(
   try {
     const query = new URLSearchParams(params).toString();
     const requestPath = path + (query ? `?${query}` : '');
+    const headers = new Headers(JSON_HEADERS);
+    new Headers(init.headers).forEach((value, key) => headers.set(key, value));
     response = await fetch(requestPath, {
       ...init,
       credentials: 'same-origin',
-      headers: { ...JSON_HEADERS, ...init.headers },
+      headers,
     });
   } catch {
     return { ok: false, code: 'network.unreachable', status: 0 };
