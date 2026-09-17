@@ -16,7 +16,8 @@
     "test:e2e": "vitest run --config vitest.config.e2e.mts",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
-    "db:deploy": "prisma migrate deploy"
+    "db:deploy": "prisma migrate deploy",
+    "db:seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
     "@ft/shared": "workspace:*",
@@ -33,13 +34,13 @@
     "class-validator": "^0.15.1",
     "connect-redis": "10.0.0",
     "express-session": "1.19.0",
+    "multer": "2.2.0",
     "nestjs-zod": "5.5.0",
     "otpauth": "9.5.1",
     "qrcode-generator": "2.0.4",
     "redis": "6.2.0",
     "reflect-metadata": "^0.2.0",
-    "rxjs": "^7.8.0",
-    "multer": "2.2.0"
+    "rxjs": "^7.8.0"
   },
   "devDependencies": {
     "@ft/eslint-config": "workspace:*",
@@ -49,14 +50,15 @@
     "@swc/core": "^1.15.47",
     "@types/express": "5.0.6",
     "@types/express-session": "1.19.0",
+    "@types/multer": "2.2.0",
     "@types/node": "^24.13.3",
     "@types/supertest": "^7.2.1",
-    "@types/multer": "2.2.0",
     "@vitest/coverage-v8": "4.1.10",
     "eslint": "10.8.0",
     "prettier": "3.9.6",
     "prisma": "7.9.1",
     "supertest": "7.2.2",
+    "tsx": "^4.23.13",
     "typescript": "6.0.3",
     "unplugin-swc": "^1.5.9",
     "vitest": "4.1.10"

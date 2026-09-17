@@ -9,7 +9,9 @@ export default defineConfig({
   schema: 'prisma/schema.prisma',
   migrations: {
     path: 'prisma/migrations',
+    seed: 'pnpm db:seed',
   },
+
   datasource: {
     url: process.env.DATABASE_URL ?? '',
     // `migrate diff --from-migrations` needs this; every other command rejects

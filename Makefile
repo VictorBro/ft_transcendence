@@ -300,11 +300,6 @@ migrate-new: ## Turn schema.prisma changes into a migration: make migrate-new NA
 	pnpm --filter @ft/api exec prisma migrate dev --name $(NAME)
 
 seed: ## Load development data into the database
-	@if ! grep -q '"db:seed"' apps/api/package.json; then \
-	  printf 'seed: apps/api has no "db:seed" script yet, nothing to load.\n'; \
-	  printf 'seed: TODO plan step 5, add prisma/seed.ts and the db:seed script.\n'; \
-	  exit 0; \
-	fi; \
 	$(MAKE) --no-print-directory tooling-image; \
 	docker run --rm --network $(NETWORK) $(DB_ENV) $(TOOLING_IMAGE) \
 	  pnpm --filter @ft/api run db:seed
