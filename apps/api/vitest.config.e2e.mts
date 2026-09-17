@@ -19,6 +19,8 @@ export default defineConfig({
     environment: 'node',
     include: ['test/**/*.e2e-spec.ts'],
     setupFiles: ['reflect-metadata'],
+    // app.setup requires it at import time, and CI runs this without a shell.
+    env: { AVATAR_STORAGE_DIR: '/tmp/ft-avatars-e2e' },
     // A cold container boots the whole Nest graph before the first assertion.
     testTimeout: 30_000,
     hookTimeout: 30_000,

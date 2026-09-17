@@ -1,4 +1,5 @@
 import { INestApplication } from '@nestjs/common';
+import { NestExpressApplication } from '@nestjs/platform-express';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { RedisStore } from 'connect-redis';
 import session from 'express-session';
@@ -6,7 +7,24 @@ import { ZodValidationPipe } from 'nestjs-zod';
 
 import { RedisService } from './redis/redis.service';
 
+/**
+ * Required like DATABASE_URL: a temp-directory default would accept uploads,
+ * store the url, and lose the file on the next restart without saying so.
+ */
+export const AVATAR_STORAGE_DIR = requireAvatarStorageDir();
+
+function requireAvatarStorageDir(): string {
+  const dir = process.env.AVATAR_STORAGE_DIR;
+  if (dir === undefined || dir.trim() === '') {
+    throw new Error('AVATAR_STORAGE_DIR is unset: the api cannot start. See compose.yml.');
+  }
+  return dir;
+}
+
 export const API_PREFIX = 'api';
+
+/** Repeats "api": useStaticAssets does not inherit setGlobalPrefix. */
+export const AVATAR_ROUTE = `/${API_PREFIX}/uploads/avatars`;
 
 export const SESSION_COOKIE = 'ft.sid';
 
@@ -27,6 +45,9 @@ function requireSessionSecret(): string {
  */
 export function configureApp(app: INestApplication): void {
   app.setGlobalPrefix(API_PREFIX);
+
+  // Here rather than in bootstrap() so the Supertest suite can reach it.
+  (app as NestExpressApplication).useStaticAssets(AVATAR_STORAGE_DIR, { prefix: AVATAR_ROUTE });
 
   // Caddy terminates TLS and forwards plain http, so express only learns the
   // request was secure from X-Forwarded-Proto. Without this, `cookie.secure`

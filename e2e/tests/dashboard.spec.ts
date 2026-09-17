@@ -1,4 +1,5 @@
 import { formatViolations, settle, watchConsole } from '../support/console-guard';
+import { AUTHENTICATED_FOOTER_ROUTES } from '../support/routes';
 import { expect, test } from '../support/session';
 
 test.describe('dashboard access and navigation', () => {
@@ -69,11 +70,10 @@ test.describe('dashboard access and navigation', () => {
     });
   }
 
-  // These routes were dropped from PAGE_ROUTES in routes.ts once they started
-  // requiring a session: an anonymous goto would just land on /login and test
-  // that page instead. Reused here, signed in, so the console gate still
-  // covers them.
-  const consoleGatedRoutes = ['/en/dashboard', '/en/chat', ...stubs.map(([, href]) => href)];
+  // Dropped from PAGE_ROUTES once they needed a session: an anonymous goto
+  // would land on /login and gate that page instead. Taken from routes.ts so a
+  // new page is covered by adding it there, as that file promises.
+  const consoleGatedRoutes = AUTHENTICATED_FOOTER_ROUTES.map((route) => route.path);
 
   // Same assertion style as console.spec.ts: attach the listener before
   // goto so load-time messages aren't missed, wait for the network to go

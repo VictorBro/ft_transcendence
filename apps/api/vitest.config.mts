@@ -25,6 +25,9 @@ export default defineConfig({
     environment: 'node',
     include: ['src/**/*.spec.ts'],
     setupFiles: ['reflect-metadata'],
+    // app.setup.ts refuses to load without it, and a unit test should not depend
+    // on the developer's shell. Nothing here writes a file.
+    env: { AVATAR_STORAGE_DIR: '/tmp/ft-avatars-unit' },
     coverage: {
       provider: 'v8',
       reporter: ['text', 'lcov'],
