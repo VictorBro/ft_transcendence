@@ -6,10 +6,22 @@ import {
   enableTwoFactor,
   logIn,
   logOut,
+  removeAvatar,
   signUp,
   updateProfile,
+  uploadAvatar,
   verifySecondFactor,
 } from './auth-client';
+
+const user = {
+  id: '11111111-1111-4111-8111-111111111111',
+  email: 'a@b.co',
+  displayName: 'learner',
+  avatarUrl: null,
+  locale: 'en',
+  role: 'USER',
+  createdAt: '2026-01-01T00:00:00.000Z',
+};
 
 function respondWith(status: number, body: unknown = null): typeof fetch {
   return vi.fn(async () =>
@@ -28,11 +40,11 @@ afterEach(() => {
 
 describe('signUp', () => {
   it('returns the created user', async () => {
-    vi.stubGlobal('fetch', respondWith(201, { id: 'u1', email: 'a@b.co' }));
+    vi.stubGlobal('fetch', respondWith(201, user));
 
     await expect(signUp({ email: 'a@b.co' })).resolves.toEqual({
       ok: true,
-      data: { id: 'u1', email: 'a@b.co' },
+      data: user,
     });
   });
 
@@ -78,16 +90,39 @@ describe('signUp', () => {
 
 describe('logIn', () => {
   it('returns the user when one factor is enough', async () => {
-    vi.stubGlobal('fetch', respondWith(200, { id: 'u1' }));
+    vi.stubGlobal('fetch', respondWith(200, user));
 
-    await expect(logIn({})).resolves.toEqual({ ok: true, data: { id: 'u1' } });
+    await expect(logIn({})).resolves.toEqual({ ok: true, data: user });
   });
 
-  // The 202 branch is the whole reason this call is not routed through send().
   it('reports a second factor on 202 without inventing a user', async () => {
     vi.stubGlobal('fetch', respondWith(202, { twoFactorRequired: true }));
 
     await expect(logIn({})).resolves.toEqual({ ok: 'twoFactor' });
+  });
+
+  it('posts credentials as JSON through the browser helper', async () => {
+    const fetchMock = respondWith(200, user);
+    vi.stubGlobal('fetch', fetchMock);
+    const input = { email: 'a@b.co', password: 'secret' };
+    await logIn(input);
+    expect(fetchMock).toHaveBeenCalledWith(
+      '/api/auth/login',
+      expect.objectContaining({
+        method: 'POST',
+        body: JSON.stringify(input),
+        credentials: 'same-origin',
+      }),
+    );
+  });
+
+  it.each([200, 202])('rejects an invalid login body for HTTP %i', async (status) => {
+    vi.stubGlobal('fetch', respondWith(status, { twoFactorRequired: false }));
+    await expect(logIn({})).resolves.toEqual({
+      ok: false,
+      code: 'server.unexpected',
+      status,
+    });
   });
 
   it('passes a wrong password through as an error', async () => {
@@ -133,7 +168,7 @@ describe('the calls that answer 204', () => {
 
 describe('the remaining endpoints', () => {
   it('verifies a second factor', async () => {
-    const fetchMock = respondWith(200, { id: 'u1' });
+    const fetchMock = respondWith(200, user);
     vi.stubGlobal('fetch', fetchMock);
 
     await expect(verifySecondFactor('123456')).resolves.toMatchObject({ ok: true });
@@ -158,13 +193,44 @@ describe('the remaining endpoints', () => {
   });
 
   it('patches the profile', async () => {
-    const fetchMock = respondWith(200, { id: 'u1', displayName: 'renamed' });
+    const fetchMock = respondWith(200, { ...user, displayName: 'renamed' });
     vi.stubGlobal('fetch', fetchMock);
 
     await expect(updateProfile({ displayName: 'renamed' })).resolves.toMatchObject({ ok: true });
     expect(fetchMock).toHaveBeenCalledWith(
       '/api/users/me',
       expect.objectContaining({ method: 'PATCH' }),
+    );
+  });
+
+  it('uploads an avatar as FormData', async () => {
+    const updatedUser = { ...user, avatarUrl: '/avatars/1.png' };
+    const fetchMock = respondWith(200, updatedUser);
+    vi.stubGlobal('fetch', fetchMock);
+
+    const file = new File(['dummy content'], 'avatar.png', { type: 'image/png' });
+    await expect(uploadAvatar(file)).resolves.toEqual({ ok: true, data: updatedUser });
+    expect(fetchMock).toHaveBeenCalledWith(
+      '/api/users/me/avatar',
+      expect.objectContaining({
+        method: 'POST',
+        body: expect.any(FormData),
+        credentials: 'same-origin',
+      }),
+    );
+  });
+
+  it('removes an avatar', async () => {
+    const fetchMock = respondWith(200, user);
+    vi.stubGlobal('fetch', fetchMock);
+
+    await expect(removeAvatar()).resolves.toEqual({ ok: true, data: user });
+    expect(fetchMock).toHaveBeenCalledWith(
+      '/api/users/me/avatar',
+      expect.objectContaining({
+        method: 'DELETE',
+        credentials: 'same-origin',
+      }),
     );
   });
 

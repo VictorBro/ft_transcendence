@@ -1,10 +1,18 @@
 import { describe, expect, it, vi } from 'vitest';
+import { z } from 'zod';
+
+vi.mock('next/headers', () => ({
+  cookies: async () => ({ getAll: () => [{ name: 'ft.sid', value: 'abc' }] }),
+  headers: async () => ({ get: () => '88.10.20.30' }),
+}));
 
 import {
   buildApiUrl,
   DEFAULT_API_INTERNAL_URL,
+  DEFAULT_TIMEOUT_MS,
   describeFetchError,
   fetchSession,
+  apiGet,
   HEALTH_PATH,
   pingApi,
   resolveApiBaseUrl,
@@ -75,7 +83,7 @@ describe('fetchSession', () => {
 
     await expect(fetchSession({ cookie: 'ft.sid=abc', fetchImpl })).resolves.toEqual({
       status: 'ok',
-      user,
+      data: user,
     });
     expect(fetchImpl).toHaveBeenCalledWith(
       'http://api:3001/api/auth/me',
@@ -132,6 +140,15 @@ describe('fetchSession', () => {
     });
   });
 
+  it('reads a 204 as unavailable with an empty payload message', async () => {
+    const fetchImpl = vi.fn(async () => new Response(null, { status: 204 }));
+
+    await expect(fetchSession({ fetchImpl })).resolves.toEqual({
+      status: 'unavailable',
+      reason: 'the API returned an empty payload',
+    });
+  });
+
   // A 200 with a body we cannot read is not a verdict on the session: the API
   // never said this visitor is signed out, so we must not say it either.
   it('reads an unreadable payload as unavailable', async () => {
@@ -140,6 +157,45 @@ describe('fetchSession', () => {
     await expect(fetchSession({ fetchImpl })).resolves.toMatchObject({
       status: 'unavailable',
     });
+  });
+
+  it('reads malformed JSON as unavailable, not signed out', async () => {
+    const fetchImpl = vi.fn(
+      async () =>
+        new Response('{invalid-json', {
+          status: 200,
+          headers: { 'content-type': 'application/json' },
+        }),
+    );
+
+    await expect(fetchSession({ fetchImpl })).resolves.toMatchObject({
+      status: 'unavailable',
+    });
+  });
+
+  it('reads a timeout as unavailable and applies the configured timeout', async () => {
+    const timeoutError = new DOMException('Timed out', 'TimeoutError');
+    const controller = new AbortController();
+    controller.abort(timeoutError);
+    const timeout = vi.spyOn(AbortSignal, 'timeout').mockReturnValue(controller.signal);
+    const fetchImpl = vi.fn(async (_input: RequestInfo | URL, init?: RequestInit) => {
+      init?.signal?.throwIfAborted();
+      return Response.json(user);
+    });
+
+    try {
+      await expect(fetchSession({ fetchImpl, timeoutMs: 25 })).resolves.toEqual({
+        status: 'unavailable',
+        reason: 'the request timed out',
+      });
+      expect(timeout).toHaveBeenCalledWith(25);
+      expect(fetchImpl).toHaveBeenCalledWith(
+        'http://api:3001/api/auth/me',
+        expect.objectContaining({ signal: controller.signal }),
+      );
+    } finally {
+      timeout.mockRestore();
+    }
   });
 
   it('reads an unreachable API as unavailable', async () => {
@@ -183,5 +239,123 @@ describe('pingApi', () => {
       status: 'unreachable',
       reason: 'ECONNREFUSED',
     });
+  });
+});
+
+describe('apiGet', () => {
+  it.each([
+    ['/api/users', {}, 'http://api:3001/api/users'],
+    [
+      '/api/users',
+      { search: 'alice smith', page: '2' },
+      'http://api:3001/api/users?search=alice+smith&page=2',
+    ],
+    ['/api/users', { page: '2', sort: 'name' }, 'http://api:3001/api/users?page=2&sort=name'],
+  ])('builds the query for %s with %j', async (path, params, expectedUrl) => {
+    const fetchMock = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(Response.json({ name: 'Alice' }));
+    try {
+      await expect(apiGet(z.object({ name: z.string() }), path, params)).resolves.toEqual({
+        status: 'ok',
+        data: { name: 'Alice' },
+      });
+      expect(fetchMock).toHaveBeenCalledWith(
+        expectedUrl,
+        expect.objectContaining({
+          cache: 'no-store',
+          headers: {
+            accept: 'application/json',
+            cookie: 'ft.sid=abc',
+            'x-forwarded-for': '88.10.20.30',
+          },
+        }),
+      );
+    } finally {
+      fetchMock.mockRestore();
+    }
+  });
+
+  it('rejects paths containing query parameters', async () => {
+    await expect(apiGet(z.object({ name: z.string() }), '/api/users?page=1')).resolves.toEqual({
+      status: 'unavailable',
+      reason: 'the path must not contain query parameters',
+    });
+  });
+
+  it('supports async schema refinements', async () => {
+    const fetchMock = vi.spyOn(globalThis, 'fetch').mockResolvedValue(Response.json('Alice'));
+    try {
+      const schema = z.string().refine(async (value) => value === 'Alice');
+      await expect(apiGet(schema, '/api/name')).resolves.toEqual({ status: 'ok', data: 'Alice' });
+    } finally {
+      fetchMock.mockRestore();
+    }
+  });
+});
+
+describe('server GET failure results', () => {
+  it.each([
+    [401, 'signed-out'],
+    [500, 'unavailable'],
+  ])('maps HTTP %i to %s', async (status, expectedStatus) => {
+    const fetchMock = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(new Response(null, { status }));
+    try {
+      await expect(apiGet(z.object({ name: z.string() }), '/api/users')).resolves.toMatchObject({
+        status: expectedStatus,
+      });
+    } finally {
+      fetchMock.mockRestore();
+    }
+  });
+
+  it.each([
+    ['invalid JSON', () => new Response('{broken', { status: 200 })],
+    ['invalid payload', () => Response.json({ name: 42 })],
+  ])('treats %s as unavailable', async (_label, response) => {
+    const fetchMock = vi.spyOn(globalThis, 'fetch').mockResolvedValue(response());
+    try {
+      await expect(apiGet(z.object({ name: z.string() }), '/api/users')).resolves.toMatchObject({
+        status: 'unavailable',
+      });
+    } finally {
+      fetchMock.mockRestore();
+    }
+  });
+
+  it('uses API_INTERNAL_URL and the default timeout while forwarding request headers', async () => {
+    vi.stubEnv('API_INTERNAL_URL', 'http://internal-api:3001');
+    const controller = new AbortController();
+    controller.abort(new DOMException('Timed out', 'TimeoutError'));
+    const timeout = vi.spyOn(AbortSignal, 'timeout').mockReturnValue(controller.signal);
+    const fetchMock = vi.spyOn(globalThis, 'fetch').mockImplementation(async (_input, init) => {
+      init?.signal?.throwIfAborted();
+      return Response.json({ name: 'Alice' });
+    });
+    try {
+      await expect(apiGet(z.object({ name: z.string() }), '/api/users')).resolves.toEqual({
+        status: 'unavailable',
+        reason: 'the request timed out',
+      });
+      expect(timeout).toHaveBeenCalledWith(DEFAULT_TIMEOUT_MS);
+      expect(fetchMock).toHaveBeenCalledWith(
+        'http://internal-api:3001/api/users',
+        expect.objectContaining({
+          cache: 'no-store',
+          signal: controller.signal,
+          headers: {
+            accept: 'application/json',
+            cookie: 'ft.sid=abc',
+            'x-forwarded-for': '88.10.20.30',
+          },
+        }),
+      );
+    } finally {
+      fetchMock.mockRestore();
+      timeout.mockRestore();
+      vi.unstubAllEnvs();
+    }
   });
 });
