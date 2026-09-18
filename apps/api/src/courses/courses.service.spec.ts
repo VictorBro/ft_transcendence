@@ -88,9 +88,11 @@ describe('CoursesService createCourse', () => {
       userLevel: { create: vi.fn().mockRejectedValue(prismaError('P2002')) },
     });
 
-    await expect(
-      service.createCourse('user-1', { lang: 'fr', dailyGoal: 60 }),
-    ).rejects.toBeInstanceOf(ConflictException);
+    const attempt = service.createCourse('user-1', { lang: 'fr', dailyGoal: 60 });
+
+    await expect(attempt).rejects.toBeInstanceOf(ConflictException);
+    // The code, not the class: the browser renders anything else as "unknown".
+    await expect(attempt).rejects.toMatchObject({ message: 'course.alreadyStarted' });
   });
 
   it('lets an unrelated database failure through instead of reporting a conflict', async () => {
@@ -172,12 +174,13 @@ describe('CoursesService setGoal and setLevel', () => {
       $transaction: vi.fn().mockRejectedValue(prismaError('P2025')),
     });
 
-    await expect(service.setGoal('user-1', 'de', { dailyGoal: 30 })).rejects.toBeInstanceOf(
-      NotFoundException,
-    );
-    await expect(service.setLevel('user-1', 'de', { level: 'A2' })).rejects.toBeInstanceOf(
-      NotFoundException,
-    );
+    for (const attempt of [
+      service.setGoal('user-1', 'de', { dailyGoal: 30 }),
+      service.setLevel('user-1', 'de', { level: 'A2' }),
+    ]) {
+      await expect(attempt).rejects.toBeInstanceOf(NotFoundException);
+      await expect(attempt).rejects.toMatchObject({ message: 'course.notFound' });
+    }
   });
 
   it('lets an unrelated database failure through instead of reporting a missing course', async () => {

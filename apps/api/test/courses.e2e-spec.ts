@@ -90,7 +90,12 @@ describe('courses (e2e)', () => {
 
   describe('the rules', () => {
     it('refuses a second course in a language already studied', async () => {
-      await agent.post('/api/courses').send({ lang: 'fr', dailyGoal: 60 }).expect(409);
+      const response = await agent
+        .post('/api/courses')
+        .send({ lang: 'fr', dailyGoal: 60 })
+        .expect(409);
+
+      expect(response.body.message).toBe('course.alreadyStarted');
     });
 
     // The conflict must not have overwritten what the round trip left behind.
@@ -102,11 +107,15 @@ describe('courses (e2e)', () => {
     });
 
     it('never creates a course implicitly from a goal change', async () => {
-      await agent.patch('/api/courses/de').send({ dailyGoal: 30 }).expect(404);
+      const response = await agent.patch('/api/courses/de').send({ dailyGoal: 30 }).expect(404);
+
+      expect(response.body.message).toBe('course.notFound');
     });
 
     it('never creates a course implicitly from a level change', async () => {
-      await agent.patch('/api/courses/de/level').send({ level: 'A1' }).expect(404);
+      const response = await agent.patch('/api/courses/de/level').send({ level: 'A1' }).expect(404);
+
+      expect(response.body.message).toBe('course.notFound');
     });
 
     it('rejects a daily goal outside the three the picker offers', async () => {

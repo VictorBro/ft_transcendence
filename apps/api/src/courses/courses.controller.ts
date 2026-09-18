@@ -1,13 +1,15 @@
 import {
   ApiConflictResponse,
+  ApiCreatedResponse,
   ApiNotFoundResponse,
   ApiOkResponse,
   ApiOperation,
+  ApiParam,
   ApiTags,
 } from '@nestjs/swagger';
 import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
 import { ZodValidationPipe } from 'nestjs-zod';
-import { LanguageSchema } from '@ft/shared';
+import { LanguageSchema, LEARNABLE_LANGUAGES } from '@ft/shared';
 import type { Language, SessionUser } from '@ft/shared';
 
 import { CoursesService } from './courses.service';
@@ -31,7 +33,7 @@ export class CoursesController {
 
   @Post()
   @ApiOperation({ summary: 'Start a course in a new language' })
-  @ApiOkResponse({ type: CourseDto })
+  @ApiCreatedResponse({ type: CourseDto })
   @ApiConflictResponse({ description: 'Language already studied' })
   createNewCourse(@CurrentUser() user: SessionUser, @Body() body: StartCourseDto) {
     return this.courses.createCourse(user.id, body);
@@ -39,6 +41,9 @@ export class CoursesController {
 
   @Patch(':lang')
   @ApiOperation({ summary: 'Change the daily goal, without touching level' })
+  // Declared by hand: `Language` is a type-only alias, so it reflects as Object
+  // and swagger drops the parameter instead of rendering a field for it.
+  @ApiParam({ name: 'lang', enum: [...LEARNABLE_LANGUAGES] })
   @ApiOkResponse({ type: CourseDto })
   @ApiNotFoundResponse({ description: 'No course in that language' })
   setGoal(
@@ -53,6 +58,7 @@ export class CoursesController {
   @ApiOperation({
     summary: 'Set the level when: onboarding skipped, evaluation result or learner override',
   })
+  @ApiParam({ name: 'lang', enum: [...LEARNABLE_LANGUAGES] })
   @ApiOkResponse({ type: CourseDto })
   @ApiNotFoundResponse({ description: 'No course in that language' })
   setLevel(
