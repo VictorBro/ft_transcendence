@@ -11,13 +11,7 @@ if ! [[ "$count" =~ ^[0-9]+$ ]]; then
   exit 1
 fi
 
-if (( count == 0 )); then
-  gh_limit=10000
-elif (( count > 500 )); then
-  gh_limit="$count"
-else
-  gh_limit=500
-fi
+gh_limit=1000000
 
 rows=()
 max_issue_width=0

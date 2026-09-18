@@ -21,7 +21,7 @@ done < <(
   gh pr list \
     --base main \
     --state merged \
-    --limit 500 \
+    --limit 1000000 \
     --json number,title,mergedAt,mergeCommit,closingIssuesReferences \
     --jq 'sort_by(.mergedAt) | reverse | .[0:30][] | [
       .mergedAt,
