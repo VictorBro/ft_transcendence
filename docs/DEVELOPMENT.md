@@ -13,6 +13,7 @@ Lists merged PRs with their originating branch and expands the commit history fo
 - Default: shows the last 3 PRs.
 - Pass a number argument to view more, e.g., `prc 5`.
 - Passing `0` lists merged PRs up to 50.
+- Passing `0` lists all merged PRs.
 
 ### `switch <commit-hash> | switch main`
 Allows you, from branch `main`, to switch into a specific commit in detached `HEAD` mode. This is useful to inspect or test the codebase at a certain PR merge.

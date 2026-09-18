@@ -18,9 +18,12 @@ while IFS=$'\x1f' read -r date hash pr issues title; do
 
   rows+=("$date"$'\x1f'"$hash"$'\x1f'"$pr"$'\x1f'"$issue_part"$'\x1f'"$title")
 done < <(
-  gh pr list --state merged --limit 30 \
+  gh pr list \
+    --base main \
+    --state merged \
+    --limit 500 \
     --json number,title,mergedAt,mergeCommit,closingIssuesReferences \
-    --jq '.[] | [
+    --jq 'sort_by(.mergedAt) | reverse | .[0:30][] | [
       .mergedAt,
       ((.mergeCommit.oid // "")[0:7]),
       "#\(.number)",

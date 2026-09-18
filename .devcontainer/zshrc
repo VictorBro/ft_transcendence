@@ -87,6 +87,16 @@ switch() {
     return 1
   fi
 
+  if ! git rev-parse --verify --quiet "$1^{commit}" >/dev/null; then
+    echo "Error: '$1' is not a valid commit."
+    return 1
+  fi
+
+  if ! git merge-base --is-ancestor "$1" main; then
+    echo "Error: Commit '$1' does not belong to main's history."
+    return 1
+  fi
+
   git switch --detach "$1" &&
     echo "You switched to $1 in detached HEAD mode. Switch back to main with 'switch main'."
 }
