@@ -51,10 +51,10 @@ precmd_functions+=(vcs_info)
 setopt PROMPT_SUBST
 PROMPT='%F{magenta}ft%f %F{cyan}%~%f${vcs_info_msg_0_} %# '
 
-export PATH="/workspace/.devcontainer:$PATH"
+# export PATH="/workspace/.devcontainer:$PATH"
 alias croot='cd /workspace'
-alias prs="pr-history.sh"
-alias prc="pr-commit-history.sh"
+alias prs="/workspace/.devcontainer/pr-history.sh"
+alias prc="/workspace/.devcontainer/pr-commit-history.sh"
 
 switch() {
   if [[ -z "$1" ]]; then
@@ -66,16 +66,23 @@ switch() {
 
   current_branch="$(git branch --show-current)"
 
+  local target_main="main"
+  if git rev-parse --verify --quiet origin/main >/dev/null; then
+    target_main="origin/main"
+  fi
+
   if [[ "$1" == "main" ]]; then
     if [[ "$current_branch" == "main" ]]; then
       echo "Already on main."
       return 0
     fi
 
-    # Allow detached HEAD only if the current commit belongs to main's history.
-    if [[ -z "$current_branch" ]] && git merge-base --is-ancestor HEAD main; then
-      git switch main
-      return
+    # Allow detached HEAD if the current commit belongs to main or origin/main's history.
+    if [[ -z "$current_branch" ]]; then
+      if git merge-base --is-ancestor HEAD main 2>/dev/null || git merge-base --is-ancestor HEAD "$target_main" 2>/dev/null; then
+        git switch main
+        return
+      fi
     fi
 
     echo "Error: 'switch main' is only allowed from branch main or from a detached HEAD on main's history."
@@ -88,11 +95,11 @@ switch() {
   fi
 
   if ! git rev-parse --verify --quiet "$1^{commit}" >/dev/null; then
-    echo "Error: '$1' is not a valid commit."
+    echo "Error: '$1' is not a valid commit in local history. (Try 'git fetch origin main' if recently merged)."
     return 1
   fi
 
-  if ! git merge-base --is-ancestor "$1" main; then
+  if ! git merge-base --is-ancestor "$1" main 2>/dev/null && ! git merge-base --is-ancestor "$1" "$target_main" 2>/dev/null; then
     echo "Error: Commit '$1' does not belong to main's history."
     return 1
   fi

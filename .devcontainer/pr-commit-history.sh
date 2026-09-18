@@ -62,7 +62,8 @@ for row in "${rows[@]}"; do
 
   gh pr view "$pr_number" 2>/dev/null \
     --json commits \
-    --jq '.commits[] | "    \(.oid[0:7])  \(.messageHeadline)"'
+    --jq '.commits[] | "    \(.oid[0:7])  \(.messageHeadline)"' ||
+    echo "    (could not retrieve commits for PR #$pr_number)"
 
   echo
 done
