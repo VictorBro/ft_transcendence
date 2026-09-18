@@ -43,7 +43,7 @@ export class CoursesService {
         'code' in error &&
         error.code === 'P2002'
       ) {
-        throw new ConflictException('course.alreadyExists');
+        throw new ConflictException('course.alreadyStarted');
       }
       throw error;
     }
