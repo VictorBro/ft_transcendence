@@ -6,7 +6,7 @@ count="${1:-3}"
 
 if ! [[ "$count" =~ ^[0-9]+$ ]]; then
   echo "Usage: $(basename "$0") [number-of-prs]"
-  echo "  default: 2"
+  echo "  default: 3"
   echo "  0:       all merged PRs"
   exit 1
 fi
@@ -21,7 +21,7 @@ rows=()
 max_issue_width=0
 
 # Fetch PR metadata first so we can determine the width of the issue column.
-while IFS=$'\x1f' read -r date hash pr issues title; do
+while IFS=$'\x1f' read -r date hash pr issues branch; do
   if [[ -n "$issues" ]]; then
     issue_part="($issues)"
   else
@@ -33,25 +33,25 @@ while IFS=$'\x1f' read -r date hash pr issues title; do
   fi
 
   rows+=(
-    "$date"$'\x1f'"$hash"$'\x1f'"$pr"$'\x1f'"$issue_part"$'\x1f'"$title"
+    "$date"$'\x1f'"$hash"$'\x1f'"$pr"$'\x1f'"$issue_part"$'\x1f'"$branch"
   )
 done < <(
   gh pr list \
     --state merged \
     --limit "$gh_limit" \
-    --json number,title,mergedAt,mergeCommit,closingIssuesReferences \
+    --json number,headRefName,mergedAt,mergeCommit,closingIssuesReferences \
     --jq '.[] | [
       .mergedAt,
       .mergeCommit.oid[0:7],
       "#\(.number)",
       ([.closingIssuesReferences[].number] | map("#\(.)") | join(", ")),
-      .title
+      .headRefName
     ] | join("\u001f")'
 )
 
 # Print each PR followed by its commits.
 for row in "${rows[@]}"; do
-  IFS=$'\x1f' read -r date hash pr issue_part title <<< "$row"
+  IFS=$'\x1f' read -r date hash pr issue_part branch <<< "$row"
 
   printf "[%s]  %s  %-5s  %-*s  %s\n" \
     "$(TZ=Europe/Zurich date -d "$date" '+%m-%d %H:%M')" \
@@ -59,7 +59,7 @@ for row in "${rows[@]}"; do
     "$pr" \
     "$max_issue_width" \
     "$issue_part" \
-    "$title"
+    "$branch"
 
   pr_number="${pr#\#}"
 
