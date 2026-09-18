@@ -33,6 +33,10 @@ function createService(
       findMany: vi.fn(),
       ...((prismaOverrides.questionBank as Record<string, unknown>) ?? {}),
     },
+    userSeenQuestion: {
+      create: vi.fn().mockResolvedValue({}),
+      ...((prismaOverrides.userSeenQuestion as Record<string, unknown>) ?? {}),
+    },
     ...prismaOverrides,
   };
 
@@ -143,8 +147,55 @@ describe('PlacementService', () => {
       expect(result.questionId).toBe(mockQuestion.id);
       expect(result.question).toBe(mockQuestion.question);
       expect(result.remainingS).toBeLessThanOrEqual(30);
-      expect(result.progress).toEqual({ answered: 1, total: 6 });
+      expect(result.progress).toEqual({ answered: 1, total: 17 });
       expect((result as Record<string, unknown>).answer).toBeUndefined();
+    });
+  });
+
+  describe('getMaxQuestionsRemaining', () => {
+    it('calculates remaining questions for initial B1 session', () => {
+      const session: ExamSession = {
+        lang: 'de',
+        lo: 'A1',
+        hi: 'C2',
+        level: 'B1',
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
+        total_asked: 0,
+        currentQuestionId: null,
+        servedAt: new Date().toISOString(),
+      };
+      expect(service.getMaxQuestionsRemaining(session)).toBe(18);
+    });
+
+    it('calculates remaining questions for narrowed boundary level A1', () => {
+      const session: ExamSession = {
+        lang: 'de',
+        lo: 'A1',
+        hi: 'A1',
+        level: 'A1',
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 1, vocabulary: 1, reading: 1 },
+        total_asked: 3,
+        currentQuestionId: null,
+        servedAt: new Date().toISOString(),
+      };
+      expect(service.getMaxQuestionsRemaining(session)).toBe(3);
+    });
+
+    it('returns at least 1 even if all questions in level are asked and bounds converged', () => {
+      const session: ExamSession = {
+        lang: 'de',
+        lo: 'C2',
+        hi: 'C2',
+        level: 'C2',
+        mistakesPerLevel: 1,
+        askedPerCategory: { grammar: 2, vocabulary: 2, reading: 2 },
+        total_asked: 6,
+        currentQuestionId: null,
+        servedAt: new Date().toISOString(),
+      };
+      expect(service.getMaxQuestionsRemaining(session)).toBe(1);
     });
   });
 
@@ -163,10 +214,16 @@ describe('PlacementService', () => {
 
       const result = await service.startPlacement('user-1', { lang: 'de' });
       expect(result.questionId).toBe(mockQuestion.id);
+      expect(prisma.userSeenQuestion.create).toHaveBeenCalledWith({
+        data: {
+          userId: 'user-1',
+          questionId: mockQuestion.id,
+        },
+      });
       expect(redis.client.hSet).toHaveBeenCalled();
       expect(redis.client.sAdd).toHaveBeenCalledWith(
-        'session:user-1:eval_questions',
-        mockQuestion.id,
+        'user:user-1:eval_questions',
+        JSON.stringify({ questionId: mockQuestion.id, choice: null }),
       );
     });
   });
@@ -193,7 +250,118 @@ describe('PlacementService', () => {
       prisma.questionBank.findUnique.mockResolvedValue(mockQuestion);
 
       const result = await service.getPlacement('user-1');
-      expect(result.questionId).toBe(mockQuestion.id);
+      expect('questionId' in result && result.questionId).toBe(mockQuestion.id);
+    });
+
+    it('handles timeout when elapsed time exceeds question limit', async () => {
+      redis.client.hGetAll.mockResolvedValue({
+        lang: 'de',
+        lo: 'A1',
+        hi: 'C2',
+        level: 'B1',
+        mistakesPerLevel: '0',
+        askedPerCategory: JSON.stringify({ grammar: 0, vocabulary: 0, reading: 0 }),
+        total_asked: '0',
+        currentQuestionId: mockQuestion.id,
+        servedAt: new Date(Date.now() - 60000).toISOString(),
+      });
+      prisma.questionBank.findUnique.mockResolvedValue(mockQuestion);
+      prisma.questionBank.findMany.mockResolvedValue([mockQuestion]);
+
+      const result = await service.getPlacement('user-1');
+      expect('questionId' in result && result.questionId).toBe(mockQuestion.id);
+      expect(redis.client.sAdd).toHaveBeenCalledWith(
+        'user:user-1:eval_questions',
+        JSON.stringify({ questionId: mockQuestion.id, choice: null }),
+      );
+    });
+  });
+
+  describe('adjustSessionFromAnswer', () => {
+    it('increments category count and total_asked on correct answer', async () => {
+      const session: ExamSession = {
+        lang: 'de',
+        lo: 'A1',
+        hi: 'C2',
+        level: 'B1',
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
+        total_asked: 0,
+        currentQuestionId: mockQuestion.id,
+        servedAt: new Date().toISOString(),
+      };
+
+      await service.adjustSessionFromAnswer('ist', mockQuestion, session);
+      expect(session.mistakesPerLevel).toBe(0);
+      expect(session.askedPerCategory.grammar).toBe(1);
+      expect(session.total_asked).toBe(1);
+      expect(session.level).toBe('B1');
+    });
+
+    it('drops level when mistakes reach 2', async () => {
+      const session: ExamSession = {
+        lang: 'de',
+        lo: 'A1',
+        hi: 'C2',
+        level: 'B1',
+        mistakesPerLevel: 1,
+        askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
+        total_asked: 1,
+        currentQuestionId: mockQuestion.id,
+        servedAt: new Date().toISOString(),
+      };
+
+      await service.adjustSessionFromAnswer('wrong', mockQuestion, session);
+      expect(session.mistakesPerLevel).toBe(0);
+      expect(session.hi).toBe('B1');
+      expect(session.level).toBe('A2');
+      expect(session.askedPerCategory).toEqual({ grammar: 0, vocabulary: 0, reading: 0 });
+      expect(session.total_asked).toBe(2);
+    });
+
+    it('advances level when level questions are completed', async () => {
+      const session: ExamSession = {
+        lang: 'de',
+        lo: 'A1',
+        hi: 'C2',
+        level: 'B1',
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 2, vocabulary: 2, reading: 1 },
+        total_asked: 5,
+        currentQuestionId: mockQuestion.id,
+        servedAt: new Date().toISOString(),
+      };
+
+      await service.adjustSessionFromAnswer('ist', mockQuestion, session);
+      expect(session.mistakesPerLevel).toBe(0);
+      expect(session.lo).toBe('B1');
+      expect(session.level).toBe('C1');
+      expect(session.askedPerCategory).toEqual({ grammar: 0, vocabulary: 0, reading: 0 });
+      expect(session.total_asked).toBe(6);
+    });
+  });
+
+  describe('getTimeOut', () => {
+    it('archives timeout answer and returns new question', async () => {
+      const session: ExamSession = {
+        lang: 'de',
+        lo: 'A1',
+        hi: 'C2',
+        level: 'B1',
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
+        total_asked: 0,
+        currentQuestionId: mockQuestion.id,
+        servedAt: new Date().toISOString(),
+      };
+      prisma.questionBank.findMany.mockResolvedValue([mockQuestion]);
+
+      const result = await service.getTimeOut('user-1', mockQuestion, session);
+      expect('questionId' in result && result.questionId).toBe(mockQuestion.id);
+      expect(redis.client.sAdd).toHaveBeenCalledWith(
+        'user:user-1:eval_questions',
+        JSON.stringify({ questionId: mockQuestion.id, choice: null }),
+      );
     });
   });
 
@@ -202,20 +370,80 @@ describe('PlacementService', () => {
       await service.quitPlacement('user-1');
 
       expect(redis.client.del).toHaveBeenCalledWith([
-        'session:user-1:eval',
-        'session:user-1:eval_questions',
+        'user:user-1:eval',
+        'user:user-1:eval_questions',
       ]);
     });
   });
 
   describe('submitAnswer', () => {
-    it('resolves without error', async () => {
-      await expect(
-        service.submitAnswer('user-1', {
-          questionId: mockQuestion.id,
-          choice: 'ist',
-        }),
-      ).resolves.toBeUndefined();
+    it('returns current question if submitted questionId does not match', async () => {
+      redis.client.hGetAll.mockResolvedValue({
+        lang: 'de',
+        lo: 'A1',
+        hi: 'C2',
+        level: 'B1',
+        mistakesPerLevel: '0',
+        askedPerCategory: JSON.stringify({ grammar: 0, vocabulary: 0, reading: 0 }),
+        total_asked: '0',
+        currentQuestionId: mockQuestion.id,
+        servedAt: new Date().toISOString(),
+      });
+      prisma.questionBank.findUnique.mockResolvedValue(mockQuestion);
+
+      const result = await service.submitAnswer('user-1', {
+        questionId: 'mismatched-id',
+        choice: 'ist',
+      });
+      expect('questionId' in result && result.questionId).toBe(mockQuestion.id);
+    });
+
+    it('delegates to getTimeOut if submitted after time limit', async () => {
+      redis.client.hGetAll.mockResolvedValue({
+        lang: 'de',
+        lo: 'A1',
+        hi: 'C2',
+        level: 'B1',
+        mistakesPerLevel: '0',
+        askedPerCategory: JSON.stringify({ grammar: 0, vocabulary: 0, reading: 0 }),
+        total_asked: '0',
+        currentQuestionId: mockQuestion.id,
+        servedAt: new Date(Date.now() - 60000).toISOString(),
+      });
+      prisma.questionBank.findUnique.mockResolvedValue(mockQuestion);
+      prisma.questionBank.findMany.mockResolvedValue([mockQuestion]);
+
+      const result = await service.submitAnswer('user-1', {
+        questionId: mockQuestion.id,
+        choice: 'ist',
+      });
+      expect('questionId' in result && result.questionId).toBe(mockQuestion.id);
+      expect(redis.client.sAdd).toHaveBeenCalledWith(
+        'user:user-1:eval_questions',
+        JSON.stringify({ questionId: mockQuestion.id, choice: null }),
+      );
+    });
+
+    it('processes answer and returns next question', async () => {
+      redis.client.hGetAll.mockResolvedValue({
+        lang: 'de',
+        lo: 'A1',
+        hi: 'C2',
+        level: 'B1',
+        mistakesPerLevel: '0',
+        askedPerCategory: JSON.stringify({ grammar: 0, vocabulary: 0, reading: 0 }),
+        total_asked: '0',
+        currentQuestionId: mockQuestion.id,
+        servedAt: new Date().toISOString(),
+      });
+      prisma.questionBank.findUnique.mockResolvedValue(mockQuestion);
+      prisma.questionBank.findMany.mockResolvedValue([mockQuestion]);
+
+      const result = await service.submitAnswer('user-1', {
+        questionId: mockQuestion.id,
+        choice: 'ist',
+      });
+      expect('questionId' in result && result.questionId).toBe(mockQuestion.id);
     });
   });
 });

@@ -67,7 +67,7 @@ export const ExamSessionSchema = z.object({
   lo: LevelSchema,
   hi: LevelSchema,
   level: LevelSchema,
-  mistakesPerLevel: z.number().int().nonnegative().min(0).max(PLACEMENT_ROUNDS.maxMistakes),
+  mistakesPerLevel: z.number().int().nonnegative().min(0).max(2),
   askedPerCategory: z.record(
     QuestionCategorySchema,
     z.int().nonnegative().min(0).max(PLACEMENT_ROUNDS.perCategory),
