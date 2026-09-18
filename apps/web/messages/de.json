@@ -137,6 +137,16 @@
       "setupFirst": "Starte zuerst die Zwei-Faktor-Einrichtung",
       "invalidCode": "Dieser Code ist nicht gültig"
     },
+    "course": {
+      "alreadyStarted": "Du hast in dieser Sprache bereits einen Kurs begonnen",
+      "notFound": "Du hast in dieser Sprache noch keinen Kurs"
+    },
+    "placement": {
+      "inProgress": "Ein Einstufungstest läuft bereits. Beende ihn zuerst.",
+      "notFound": "Es läuft kein Einstufungstest",
+      "expired": "Dieser Einstufungstest ist abgelaufen. Starte einen neuen.",
+      "poolExhausted": "Für diesen Test sind nicht genügend Fragen übrig. Versuche es später erneut."
+    },
     "network": {
       "unreachable": "Der Server ist nicht erreichbar"
     },

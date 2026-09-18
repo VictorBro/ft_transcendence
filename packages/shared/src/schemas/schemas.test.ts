@@ -1,16 +1,21 @@
 import { describe, expect, it } from 'vitest';
 
 import {
+  CourseSchema,
   CreateUserSchema,
+  DailyGoalSchema,
   DEFAULT_LOCALE,
   DisableTwoFactorSchema,
   EnableTwoFactorSchema,
   HealthResponseSchema,
   LocaleSchema,
   LoginSchema,
+  PlacementQuestionSchema,
   PublicUserSchema,
   SecondFactorSchema,
   SignUpFormSchema,
+  StartCourseSchema,
+  SubmitAnswerSchema,
   SUPPORTED_LOCALES,
   UpdateProfileSchema,
   UserSchema,
@@ -166,6 +171,55 @@ describe('SignUpFormSchema', () => {
   // The confirmation is a form concern; CreateUserSchema stays the wire contract.
   it('is not part of what the API accepts', () => {
     expect(Object.keys(CreateUserSchema.shape)).not.toContain('confirmPassword');
+  });
+});
+
+describe('course', () => {
+  it('accepts the three goals the interface offers', () => {
+    expect([10, 30, 60].map((goal) => DailyGoalSchema.parse(goal))).toEqual([10, 30, 60]);
+  });
+
+  // Three buttons in the UI, so a fourth value came from something else.
+  it('rejects a goal nobody can pick', () => {
+    expect(DailyGoalSchema.safeParse(15).success).toBe(false);
+    expect(StartCourseSchema.safeParse({ lang: 'de', dailyGoal: 15 }).success).toBe(false);
+  });
+
+  it('accepts a course that has no level yet', () => {
+    expect(CourseSchema.parse({ lang: 'de', level: null, dailyGoal: 30 }).level).toBeNull();
+  });
+});
+
+describe('placement', () => {
+  const question = {
+    questionId: 'b7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64',
+    category: 'grammar',
+    level: 'B1',
+    question: 'Er ___ gestern ins Kino gegangen.',
+    options: ['ist', 'hat', 'war', 'wird'],
+    timeLimitS: 30,
+    remainingS: 27,
+    progress: { answered: 2, total: 6 },
+  };
+
+  it('serves a question with no answer attached', () => {
+    expect(Object.keys(PlacementQuestionSchema.shape)).not.toContain('answer');
+  });
+
+  // The row this is built from carries the answer; shipping it decorates the exam.
+  it('rejects a question payload carrying the answer', () => {
+    expect(PlacementQuestionSchema.safeParse({ ...question, answer: 'ist' }).success).toBe(false);
+  });
+
+  it('reads an explicit null choice as a timeout', () => {
+    const parsed = SubmitAnswerSchema.parse({ questionId: question.questionId, choice: null });
+
+    expect(parsed.choice).toBeNull();
+  });
+
+  // Nullable, not optional: an absent field must not pass as a timeout.
+  it('rejects a missing choice', () => {
+    expect(SubmitAnswerSchema.safeParse({ questionId: question.questionId }).success).toBe(false);
   });
 });
 

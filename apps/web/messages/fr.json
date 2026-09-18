@@ -137,6 +137,16 @@
       "setupFirst": "Commencez d'abord la configuration à deux facteurs",
       "invalidCode": "Ce code n'est pas valide"
     },
+    "course": {
+      "alreadyStarted": "Vous avez déjà commencé un cours dans cette langue",
+      "notFound": "Vous n'avez pas encore de cours dans cette langue"
+    },
+    "placement": {
+      "inProgress": "Un test de positionnement est déjà en cours. Terminez-le d'abord.",
+      "notFound": "Aucun test de positionnement n'est en cours",
+      "expired": "Ce test de positionnement a expiré. Lancez-en un nouveau.",
+      "poolExhausted": "Il ne reste pas assez de questions pour ce test. Réessayez plus tard."
+    },
     "network": {
       "unreachable": "Impossible de joindre le serveur"
     },
