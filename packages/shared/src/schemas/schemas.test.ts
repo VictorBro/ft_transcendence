@@ -15,6 +15,7 @@ import {
   SecondFactorSchema,
   SignUpFormSchema,
   StartCourseSchema,
+  StartPlacementSchema,
   SubmitAnswerSchema,
   SUPPORTED_LOCALES,
   UpdateProfileSchema,
@@ -220,6 +221,14 @@ describe('placement', () => {
   // Nullable, not optional: an absent field must not pass as a timeout.
   it('rejects a missing choice', () => {
     expect(SubmitAnswerSchema.safeParse({ questionId: question.questionId }).success).toBe(false);
+  });
+
+  it('accepts a valid language to start a placement exam', () => {
+    expect(StartPlacementSchema.parse({ lang: 'de' })).toEqual({ lang: 'de' });
+  });
+
+  it('rejects an invalid language to start a placement exam', () => {
+    expect(StartPlacementSchema.safeParse({ lang: 'es' }).success).toBe(false);
   });
 });
 
