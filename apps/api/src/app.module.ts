@@ -9,6 +9,7 @@ import { PrismaModule } from './prisma/prisma.module';
 import { RedisModule } from './redis/redis.module';
 import { IdentityThrottlerGuard } from './throttler/identity-throttler.guard';
 import { UsersModule } from './users/users.module';
+import { CoursesModule } from './courses/courses.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { UsersModule } from './users/users.module';
     AuthModule,
     UsersModule,
     HealthModule,
+    CoursesModule,
   ],
   providers: [{ provide: APP_GUARD, useClass: IdentityThrottlerGuard }],
 })

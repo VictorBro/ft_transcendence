@@ -37,6 +37,7 @@ model User {
   recoveryCodes     RecoveryCode[]
   userLevels        UserLevel[]
   userSeenQuestions UserSeenQuestion[]
+  activeLang        Language?
 }
 
 // Single-use fallback when the authenticator is lost. Stored as a SHA-256 digest
