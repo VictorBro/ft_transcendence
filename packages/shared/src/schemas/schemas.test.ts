@@ -7,6 +7,7 @@ import {
   DEFAULT_LOCALE,
   DisableTwoFactorSchema,
   EnableTwoFactorSchema,
+  ExamSessionSchema,
   HealthResponseSchema,
   LocaleSchema,
   LoginSchema,
@@ -229,6 +230,52 @@ describe('placement', () => {
 
   it('rejects an invalid language to start a placement exam', () => {
     expect(StartPlacementSchema.safeParse({ lang: 'es' }).success).toBe(false);
+  });
+
+  it('validates a valid exam session', () => {
+    const session = {
+      lang: 'en',
+      lo: 'A1',
+      hi: 'C2',
+      level: 'B1',
+      mistakesPerLevel: 1,
+      askedPerCategory: { grammar: 1, vocabulary: 1, reading: 0 },
+      total_asked: 2,
+      currentQuestionId: 'b7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64',
+      servedAt: '2026-09-18T17:51:11.000Z',
+    };
+    expect(ExamSessionSchema.parse(session)).toEqual(session);
+  });
+
+  it('allows currentQuestionId to be null', () => {
+    const session = {
+      lang: 'fr',
+      lo: 'A1',
+      hi: 'B2',
+      level: 'A2',
+      mistakesPerLevel: 0,
+      askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
+      total_asked: 0,
+      currentQuestionId: null,
+      servedAt: '2026-09-18T17:51:11.000Z',
+    };
+    expect(ExamSessionSchema.parse(session).currentQuestionId).toBeNull();
+  });
+
+  it('rejects mistakesPerLevel exceeding 2 or below 0', () => {
+    const base = {
+      lang: 'en',
+      lo: 'A1',
+      hi: 'C2',
+      level: 'B1',
+      mistakesPerLevel: 3,
+      askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
+      total_asked: 0,
+      currentQuestionId: null,
+      servedAt: '2026-09-18T17:51:11.000Z',
+    };
+    expect(ExamSessionSchema.safeParse(base).success).toBe(false);
+    expect(ExamSessionSchema.safeParse({ ...base, mistakesPerLevel: -1 }).success).toBe(false);
   });
 });
 

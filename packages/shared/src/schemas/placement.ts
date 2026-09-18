@@ -61,3 +61,19 @@ export const PlacementResultSchema = z.object({
   report: z.array(PlacementReportEntrySchema),
 });
 export type PlacementResult = z.infer<typeof PlacementResultSchema>;
+
+export const ExamSessionSchema = z.object({
+  lang: LanguageSchema,
+  lo: LevelSchema,
+  hi: LevelSchema,
+  level: LevelSchema,
+  mistakesPerLevel: z.number().int().nonnegative().min(0).max(PLACEMENT_ROUNDS.maxMistakes),
+  askedPerCategory: z.record(
+    QuestionCategorySchema,
+    z.int().nonnegative().min(0).max(PLACEMENT_ROUNDS.perCategory),
+  ),
+  total_asked: z.number().int().nonnegative(),
+  currentQuestionId: z.string().nullable(),
+  servedAt: z.iso.datetime(),
+});
+export type ExamSession = z.infer<typeof ExamSessionSchema>;
