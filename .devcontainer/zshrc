@@ -53,7 +53,7 @@ PROMPT='%F{magenta}ft%f %F{cyan}%~%f${vcs_info_msg_0_} %# '
 
 export PATH="/workspace/.devcontainer:$PATH"
 alias croot='cd /workspace'
-alias pr="pr-history.sh"
+alias prs="pr-history.sh"
 alias prc="pr-commit-history.sh"
 
 switch() {
