@@ -7,18 +7,15 @@ count="${1:-3}"
 if ! [[ "$count" =~ ^[0-9]+$ ]]; then
   echo "Usage: $(basename "$0") [number-of-prs]"
   echo "  default: 3"
-  echo "  0:       merged PRs (up to 50)"
   echo "  0:       all merged PRs"
   exit 1
 fi
 
 if (( count == 0 )); then
-  gh_limit=50
   gh_limit=10000
 elif (( count > 500 )); then
   gh_limit="$count"
 else
-  gh_limit="$count"
   gh_limit=500
 fi
 
@@ -46,7 +43,6 @@ done < <(
     --state merged \
     --limit "$gh_limit" \
     --json number,headRefName,mergedAt,mergeCommit,closingIssuesReferences \
-    --jq '.[] | [
     --jq 'sort_by(.mergedAt) | reverse | (if '"$count"' == 0 then . else .[0:'"$count"'] end)[] | [
       .mergedAt,
       ((.mergeCommit.oid // "")[0:7]),
