@@ -64,12 +64,12 @@ switch() {
     return 1
   fi
 
-  if [[ "$1" == "main" ]]; then
-    current_branch="$(git branch --show-current)"
+  current_branch="$(git branch --show-current)"
 
+  if [[ "$1" == "main" ]]; then
     if [[ "$current_branch" == "main" ]]; then
-      git switch main
-      return
+      echo "Already on main."
+      return 0
     fi
 
     # Allow detached HEAD only if the current commit belongs to main's history.
@@ -79,6 +79,11 @@ switch() {
     fi
 
     echo "Error: 'switch main' is only allowed from branch main or from a detached HEAD on main's history."
+    return 1
+  fi
+
+  if [[ "$current_branch" != "main" ]]; then
+    echo "Error: 'switch <commit-hash>' is only allowed from branch main."
     return 1
   fi
 

@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 rows=()
 max_issue_width=0
 
 while IFS=$'\x1f' read -r date hash pr issues title; do
-  if [ -n "$issues" ]; then
+  if [[ -n "$issues" ]]; then
     issue_part="($issues)"
   else
     issue_part=""
@@ -20,7 +22,7 @@ done < <(
     --json number,title,mergedAt,mergeCommit,closingIssuesReferences \
     --jq '.[] | [
       .mergedAt,
-      .mergeCommit.oid[0:7],
+      ((.mergeCommit.oid // "")[0:7]),
       "#\(.number)",
       ([.closingIssuesReferences[].number] | map("#\(.)") | join(", ")),
       .title

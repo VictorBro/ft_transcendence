@@ -7,12 +7,12 @@ count="${1:-3}"
 if ! [[ "$count" =~ ^[0-9]+$ ]]; then
   echo "Usage: $(basename "$0") [number-of-prs]"
   echo "  default: 3"
-  echo "  0:       all merged PRs"
+  echo "  0:       merged PRs (up to 50)"
   exit 1
 fi
 
 if (( count == 0 )); then
-  gh_limit=1000000
+  gh_limit=50
 else
   gh_limit="$count"
 fi
@@ -42,7 +42,7 @@ done < <(
     --json number,headRefName,mergedAt,mergeCommit,closingIssuesReferences \
     --jq '.[] | [
       .mergedAt,
-      .mergeCommit.oid[0:7],
+      ((.mergeCommit.oid // "")[0:7]),
       "#\(.number)",
       ([.closingIssuesReferences[].number] | map("#\(.)") | join(", ")),
       .headRefName
@@ -63,7 +63,7 @@ for row in "${rows[@]}"; do
 
   pr_number="${pr#\#}"
 
-  gh pr view "$pr_number" \
+  gh pr view "$pr_number" 2>/dev/null \
     --json commits \
     --jq '.commits[] | "    \(.oid[0:7])  \(.messageHeadline)"'
 
