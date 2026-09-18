@@ -65,8 +65,21 @@ switch() {
   fi
 
   if [[ "$1" == "main" ]]; then
-    git switch main
-    return
+    current_branch="$(git branch --show-current)"
+
+    if [[ "$current_branch" == "main" ]]; then
+      git switch main
+      return
+    fi
+
+    # Allow detached HEAD only if the current commit belongs to main's history.
+    if [[ -z "$current_branch" ]] && git merge-base --is-ancestor HEAD main; then
+      git switch main
+      return
+    fi
+
+    echo "Error: 'switch main' is only allowed from branch main or from a detached HEAD on main's history."
+    return 1
   fi
 
   git switch --detach "$1" &&
