@@ -4,7 +4,7 @@ import { LevelSchema, OPTIONS_PER_ITEM, QuestionCategorySchema } from './item';
 
 /** The exam that decides a course's level. Questions come from content/items/*.json. */
 
-/** A full run is `perCategory` times the three QUESTION_CATEGORIES. The second mistake ends it. */
+/** A level is `perCategory` times the three QUESTION_CATEGORIES, and the second mistake ends it. */
 export const PLACEMENT_ROUNDS = { perCategory: 2, maxMistakes: 1 } as const;
 
 /**

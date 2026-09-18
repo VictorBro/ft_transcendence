@@ -203,7 +203,7 @@ describe('placement', () => {
   };
 
   it('serves a question with no answer attached', () => {
-    expect(PlacementQuestionSchema.parse(question)).not.toHaveProperty('answer');
+    expect(Object.keys(PlacementQuestionSchema.shape)).not.toContain('answer');
   });
 
   // The row this is built from carries the answer; shipping it decorates the exam.
