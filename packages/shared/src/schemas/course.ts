@@ -17,6 +17,12 @@ export const CourseSchema = z.object({
 });
 export type Course = z.infer<typeof CourseSchema>;
 
+export const CoursesSchema = z.object({
+  courses: z.array(CourseSchema),
+  activeLang: LanguageSchema.nullable(),
+});
+export type Courses = z.infer<typeof CoursesSchema>;
+
 /** No level here: only the placement exam sets it. */
 export const StartCourseSchema = z.object({
   lang: LanguageSchema,
@@ -26,3 +32,6 @@ export type StartCourseInput = z.infer<typeof StartCourseSchema>;
 
 export const SetLevelSchema = z.object({ level: LevelSchema });
 export type SetLevelInput = z.infer<typeof SetLevelSchema>;
+
+export const SetGoalSchema = z.object({ dailyGoal: DailyGoalSchema });
+export type SetGoalInput = z.infer<typeof SetGoalSchema>;
