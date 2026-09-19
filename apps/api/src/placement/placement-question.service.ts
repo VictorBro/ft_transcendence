@@ -68,7 +68,7 @@ export class PlacementQuestionService {
         },
       },
       orderBy: {
-        createdAt: 'desc',
+        updatedAt: 'asc',
       },
       take: 10,
       include: {
