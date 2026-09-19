@@ -1,8 +1,7 @@
 import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
 import {
   ExamSession,
-  ExamSessionSchema,
-  LEVELS,
+  TARGET_LEVELS,
   PlacementQuestion,
   PlacementQuestionSchema,
   PLACEMENT_ROUNDS,
@@ -12,12 +11,15 @@ import {
   PlacementResult,
 } from '@ft/shared';
 
+import assert from 'node:assert';
+
 import { QuestionBank } from '../generated/prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
-import { RedisService } from '../redis/redis.service';
+import { PlacementSessionService } from './placement-session.service';
 import { StartPlacementDto, SubmitAnswerDto } from './placement.dto';
+import session from 'express-session';
 
-export const PLACEMENT_REDIS_KEY_TTL = 3600;
+export { PLACEMENT_REDIS_KEY_TTL } from './placement-session.service';
 // we should preemptively generate questions, when a minimum amount is reached
 export const FETCH_NEW_QUESTIONS_FOR_CATEGORY_WHEN_REMAINING_LESS_THAN = 6;
 export const MAX_QUESTIONS_PER_LEVEL = 6;
@@ -27,51 +29,8 @@ export const START_LEVEL = 'B1';
 export class PlacementService {
   constructor(
     private readonly prisma: PrismaService,
-    private readonly redis: RedisService,
+    private readonly sessionService: PlacementSessionService,
   ) {}
-
-  private evalKey(userId: string): string {
-    return `user:${userId}:eval`;
-  }
-
-  private evalQuestionsKey(userId: string): string {
-    return `user:${userId}:eval_questions`;
-  }
-
-  async saveExamSession(userId: string, session: ExamSession): Promise<void> {
-    const key = this.evalKey(userId);
-    await this.redis.client.hSet(key, {
-      lang: session.lang,
-      lo: session.lo,
-      hi: session.hi,
-      level: session.level,
-      mistakesPerLevel: session.mistakesPerLevel.toString(),
-      askedPerCategory: JSON.stringify(session.askedPerCategory),
-      total_asked: session.total_asked.toString(),
-      currentQuestionId: session.currentQuestionId ?? '',
-      servedAt: session.servedAt,
-    });
-    await this.redis.client.expire(key, PLACEMENT_REDIS_KEY_TTL);
-  }
-
-  async loadExamSession(userId: string): Promise<ExamSession | null> {
-    const key = this.evalKey(userId);
-    const data = await this.redis.client.hGetAll(key);
-    if (!data || Object.keys(data).length === 0) {
-      return null;
-    }
-    return ExamSessionSchema.parse({
-      lang: data.lang,
-      lo: data.lo,
-      hi: data.hi,
-      level: data.level,
-      mistakesPerLevel: Number(data.mistakesPerLevel),
-      askedPerCategory: JSON.parse(data.askedPerCategory || '{}'),
-      total_asked: Number(data.total_asked ?? 0),
-      currentQuestionId: data.currentQuestionId ? data.currentQuestionId : null,
-      servedAt: data.servedAt,
-    });
-  }
 
   async getNewQuestion(_userId: string, session: ExamSession): Promise<[number, QuestionBank]> {
     const eligibleCategories = QUESTION_CATEGORIES.filter(
@@ -95,7 +54,30 @@ export class PlacementService {
     });
 
     if (questions.length === 0) {
-      throw new NotFoundException('placement.poolExhausted');
+      const recentSeen = await this.prisma.userSeenQuestion.findMany({
+        where: {
+          userId: _userId,
+          questionBank: {
+            lang: session.lang,
+            level: session.level,
+            category: cat,
+          },
+        },
+        orderBy: {
+          createdAt: 'desc',
+        },
+        take: 10,
+        include: {
+          questionBank: true,
+        },
+      });
+
+      if (recentSeen.length === 0) {
+        throw new NotFoundException('placement.poolExhausted');
+      }
+
+      const randomSeen = recentSeen[Math.floor(Math.random() * recentSeen.length)];
+      return [0, randomSeen.questionBank];
     }
 
     return [questions.length, questions[0]];
@@ -118,15 +100,15 @@ export class PlacementService {
     );
     const current_level_remaining = Math.max(0, MAX_QUESTIONS_PER_LEVEL - askedInCurrentLevel);
 
-    const loIndex = Math.max(0, LEVELS.indexOf(_session.lo));
-    const hiIndex = Math.max(0, LEVELS.indexOf(_session.hi));
-    const levelIndex = Math.max(0, LEVELS.indexOf(_session.level));
+    const loIndex = Math.max(0, TARGET_LEVELS.indexOf(_session.lo));
+    const hiIndex = Math.max(0, TARGET_LEVELS.indexOf(_session.hi));
+    const levelIndex = Math.max(0, TARGET_LEVELS.indexOf(_session.level));
 
     const lowerDistance = Math.max(0, levelIndex - loIndex);
     const max_lower =
       lowerDistance > 0 ? (Math.floor(Math.log2(lowerDistance)) + 1) * MAX_QUESTIONS_PER_LEVEL : 0;
 
-    const upperDistance = Math.max(0, hiIndex - levelIndex);
+    const upperDistance = Math.max(0, hiIndex - levelIndex - 1);
     const max_upper =
       upperDistance > 0 ? (Math.floor(Math.log2(upperDistance)) + 1) * MAX_QUESTIONS_PER_LEVEL : 0;
 
@@ -152,14 +134,14 @@ export class PlacementService {
       timeLimitS: _question.timeLimitS,
       remainingS,
       progress: {
-        answered: _session.total_asked,
+        answered: Object.values(_session.askedPerCategory).reduce((sum, count) => sum + count, 0),
         total: totalQuestions,
       },
     });
   }
 
   async startPlacement(_userId: string, _dto: StartPlacementDto): Promise<PlacementQuestion> {
-    const existing = await this.redis.client.exists(this.evalKey(_userId));
+    const existing = await this.sessionService.hasActiveSession(_userId);
     if (existing) {
       throw new ConflictException('placement.inProgress');
     }
@@ -167,11 +149,11 @@ export class PlacementService {
     const examSession: ExamSession = {
       lang: _dto.lang,
       lo: 'A1',
-      hi: 'C2',
+      hi: 'C2+',
       level: START_LEVEL,
       mistakesPerLevel: 0,
       askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-      total_asked: 0,
+      ended: false,
       currentQuestionId: null,
       servedAt: new Date().toISOString(),
     };
@@ -179,7 +161,6 @@ export class PlacementService {
     return this.getNewPlacementQuestion(_userId, examSession);
   }
 
-  // todo: get oldest user seen question, if for some reason no new questions available
   async getNewPlacementQuestion(
     _userId: string,
     examSession: ExamSession,
@@ -198,22 +179,18 @@ export class PlacementService {
         questionId: question.id,
       },
     });
-    await this.saveExamSession(_userId, examSession);
+    await this.sessionService.saveExamSession(_userId, examSession);
 
     const initialAnswer: SubmitAnswerInput = {
       questionId: examSession.currentQuestionId,
       choice: null,
     };
-    await this.archiveQuestionAnswer(_userId, SubmitAnswerSchema.parse(initialAnswer));
+    await this.sessionService.archiveQuestionAnswer(
+      _userId,
+      SubmitAnswerSchema.parse(initialAnswer),
+    );
 
     return this.createPlacementQuestion(question, examSession);
-  }
-
-  async archiveQuestionAnswer(_userId: string, answer: SubmitAnswerInput): Promise<void> {
-    const questionsSetKey = this.evalQuestionsKey(_userId);
-
-    await this.redis.client.sAdd(questionsSetKey, JSON.stringify(answer));
-    await this.redis.client.expire(questionsSetKey, PLACEMENT_REDIS_KEY_TTL);
   }
 
   async adjustSessionFromAnswer(
@@ -227,16 +204,13 @@ export class PlacementService {
       _session.mistakesPerLevel += 1;
     }
 
-    // enum LevelChange = {down, stay, up}
-    //levelChange = stay
     let levelChange: 'down' | 'stay' | 'up' = 'stay';
-    // if (_session.mistakesPerLevel === 2) {
-    //   levelChange = down
-    // } else {
-    //   numberAnsweredThisLevel = sum(_session.askedPerCategory)
-    //   numberAnswered === MAX_QUESTIONS_PER_LEVEL ? levelchange = up
-    // }
-    if (_session.mistakesPerLevel >= 2) {
+
+    const loIndex = TARGET_LEVELS.indexOf(_session.lo);
+    const hiIndex = TARGET_LEVELS.indexOf(_session.hi);
+    const currIndex = TARGET_LEVELS.indexOf(_session.level);
+
+    if (_session.mistakesPerLevel > PLACEMENT_ROUNDS.maxMistakes) {
       levelChange = 'down';
     } else {
       const askedInCurrentLevel = Object.values(_session.askedPerCategory).reduce(
@@ -248,49 +222,31 @@ export class PlacementService {
       }
     }
 
-    // if (levelChange == stay) || (leveChange == up && _session.level == _session.hi) || (levelChange == down && _session.level == _session.lo)
-    // {
-    //    _session.askedPerCategory[_question.category] += 1
-    // return;
-    // }
-    if (
-      levelChange === 'stay' ||
-      (levelChange === 'up' && _session.level === _session.hi) ||
-      (levelChange === 'down' && _session.level === _session.lo)
-    ) {
+    if (levelChange === 'stay') {
       _session.askedPerCategory[_question.category] =
         (_session.askedPerCategory[_question.category] ?? 0) + 1;
-      _session.total_asked += 1;
+      return;
+    } else if (levelChange === 'up' && currIndex === hiIndex - 1) {
+      _session.level = _session.hi;
+      _session.ended = true;
+      return;
+    } else if (levelChange === 'down' && currIndex === loIndex) {
+      _session.level = _session.lo;
+      _session.ended = true;
       return;
     }
 
-    // _session.askedPerCategory = {};
-    // session.mistakesPerLevel = 0;
-    // tempLevel = _session.level;
-    // if (levelChange == up) {
-    //   __session.level = LEVELS.indexOf(floor(_session.hi - _session.level) )
-    //   _session.lo = tempLevel
-    // } else {
-    //   __session.level = LEVELS.indexOf(floor(_session.level - _session.low) )
-    //   _session.hi = tempLevel
-    // }
     _session.askedPerCategory = { grammar: 0, vocabulary: 0, reading: 0 };
     _session.mistakesPerLevel = 0;
-    _session.total_asked += 1;
-
-    const tempLevel = _session.level;
-    const loIndex = LEVELS.indexOf(_session.lo);
-    const hiIndex = LEVELS.indexOf(_session.hi);
-    const currIndex = LEVELS.indexOf(_session.level);
 
     if (levelChange === 'up') {
-      _session.lo = tempLevel;
-      const nextIndex = Math.min(hiIndex, currIndex + Math.ceil((hiIndex - currIndex) / 2));
-      _session.level = LEVELS[nextIndex];
+      _session.lo = TARGET_LEVELS(currIndex + 1);
+      const nextIndex = Math.min(hiIndex - 1, currIndex + Math.ceil((hiIndex - currIndex) / 2));
+      _session.level = TARGET_LEVELS[nextIndex];
     } else {
-      _session.hi = tempLevel;
+      _session.hi = _session.level;
       const nextIndex = Math.max(loIndex, currIndex - Math.ceil((currIndex - loIndex) / 2));
-      _session.level = LEVELS[nextIndex];
+      _session.level = TARGET_LEVELS[nextIndex];
     }
   }
 
@@ -303,12 +259,9 @@ export class PlacementService {
       questionId: question.id,
       choice: null,
     };
-    await this.archiveQuestionAnswer(_userId, SubmitAnswerSchema.parse(lastAnswer));
-    const result = await this.adjustSessionFromAnswerAndCheckForTestEnd(
-      _dto.choice,
-      question,
-      session,
-    );
+    await this.sessionService.archiveQuestionAnswer(_userId, SubmitAnswerSchema.parse(lastAnswer));
+    await this.adjustSessionFromAnswer(lastAnswer.choice, question, session);
+    const result = await this.getResult(_userId, session);
     if (result !== undefined) {
       return result;
     }
@@ -320,18 +273,46 @@ export class PlacementService {
     return elapsedS >= question.timeLimitS;
   }
 
-  async getPlacement(_userId: string): Promise<PlacementQuestion | PlacementResult> {
-    const session = await this.loadExamSession(_userId);
+  async checkEndedOrTimedOut(
+    _userId: string,
+  ): Promise<
+    [ExamSession, QuestionBank | undefined, PlacementQuestion | PlacementResult | undefined]
+  > {
+    const session = await this.sessionService.loadExamSession(_userId);
     if (!session || !session.currentQuestionId) {
       throw new NotFoundException('placement.notFound');
     }
 
-    const question = await this.getQuestion(session.currentQuestionId);
-
-    if (!this.hasTimedOut(question, session.servedAt)) {
-      return this.createPlacementQuestion(question, session);
+    let result = await this.getResult(_userId, session);
+    if (result !== undefined) {
+      return [session, undefined, result];
     }
-    return this.getTimeOut(_userId, question, session);
+
+    const question = await this.getQuestion(session.currentQuestionId);
+    if (this.hasTimedOut(question, session.servedAt)) {
+      const lastAnswer: SubmitAnswerInput = {
+        questionId: question.id,
+        choice: null,
+      };
+      await this.sessionService.archiveQuestionAnswer(
+        _userId,
+        SubmitAnswerSchema.parse(lastAnswer),
+      );
+      await this.adjustSessionFromAnswer(lastAnswer.choice, question, session);
+      result = await this.getResult(_userId, session);
+      if (result !== undefined) {
+        return [session, question, result];
+      }
+      return [session, question, await this.getNewPlacementQuestion(_userId, session)];
+    }
+    return [session, question, undefined];
+  }
+
+  async getPlacement(_userId: string): Promise<PlacementQuestion | PlacementResult> {
+    const [session, question, result] = await this.checkEndedOrTimedOut(_userId);
+    if (result !== undefined) return result;
+    assert(question !== undefined);
+    return this.createPlacementQuestion(question, session);
   }
 
   async getResult(_userId: string, _session: ExamSession): Promise<PlacementResult | undefined> {
@@ -342,35 +323,26 @@ export class PlacementService {
     _userId: string,
     _dto: SubmitAnswerDto,
   ): Promise<PlacementQuestion | PlacementResult> {
-    const session = await this.loadExamSession(_userId);
-    if (!session || !session.currentQuestionId) {
-      throw new NotFoundException('placement.notFound');
-    }
+    const [session, question, result] = await this.checkEndedOrTimedOut(_userId);
+    if (result !== undefined) return result;
+    assert(question !== undefined);
 
-    const question = await this.getQuestion(session.currentQuestionId);
     if (_dto.questionId !== session.currentQuestionId) {
       return this.getPlacement(_userId);
     }
 
-    if (this.hasTimedOut(question, session.servedAt)) {
-      return this.getTimeOut(_userId, question, session);
-    }
+    await this.sessionService.archiveQuestionAnswer(_userId, _dto);
+    await this.adjustSessionFromAnswer(_dto.choice, question, session);
 
-    await this.archiveQuestionAnswer(_userId, _dto);
-
-    const result = await this.adjustSessionFromAnswerAndCheckForTestEnd(
-      _dto.choice,
-      question,
-      session,
-    );
-    if (result !== undefined) {
-      return result;
+    const result_user_answer = await this.getResult(_userId, session);
+    if (result_user_answer !== undefined) {
+      return result_user_answer;
     }
 
     return this.getNewPlacementQuestion(_userId, session);
   }
 
   async quitPlacement(_userId: string): Promise<void> {
-    await this.redis.client.del([this.evalKey(_userId), this.evalQuestionsKey(_userId)]);
+    await this.sessionService.deleteSession(_userId);
   }
 }
