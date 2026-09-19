@@ -64,14 +64,13 @@ export class PlacementService {
       }
     }
 
-    const fallbackCat = pool[Math.floor(Math.random() * pool.length)];
     const recentSeen = await this.prisma.userSeenQuestion.findMany({
       where: {
         userId: _userId,
         questionBank: {
           lang: session.lang,
           level: this.targetLevelToCEFRLevel(session.level),
-          category: fallbackCat,
+          category: { in: [...pool] },
         },
       },
       orderBy: {
@@ -84,30 +83,7 @@ export class PlacementService {
     });
 
     if (recentSeen.length === 0) {
-      const anyRecentSeen = await this.prisma.userSeenQuestion.findMany({
-        where: {
-          userId: _userId,
-          questionBank: {
-            lang: session.lang,
-            level: this.targetLevelToCEFRLevel(session.level),
-            category: { in: [...pool] },
-          },
-        },
-        orderBy: {
-          createdAt: 'desc',
-        },
-        take: 10,
-        include: {
-          questionBank: true,
-        },
-      });
-
-      if (anyRecentSeen.length === 0) {
-        throw new NotFoundException('placement.poolExhausted');
-      }
-
-      const randomSeen = anyRecentSeen[Math.floor(Math.random() * anyRecentSeen.length)];
-      return [0, randomSeen.questionBank];
+      throw new NotFoundException('placement.poolExhausted');
     }
 
     const randomSeen = recentSeen[Math.floor(Math.random() * recentSeen.length)];
