@@ -62,12 +62,16 @@ export function Shell({ brand, nav, fill = false, footer, children }: ShellProps
   );
 }
 
-/** The wordmark, which doubles as the link home. */
-export function Wordmark() {
+/**
+ * The wordmark, which doubles as the link home. "Home" differs by shell: the
+ * marketing page for a visitor, the app for someone signed in, who otherwise
+ * gets thrown out to the landing page with no way back.
+ */
+export function Wordmark({ href = '/' }: { href?: '/' | '/dashboard' }) {
   const t = useTranslations('Layout');
 
   return (
-    <Link href="/" className="text-base font-semibold tracking-tight text-slate-100">
+    <Link href={href} className="text-base font-semibold tracking-tight text-slate-100">
       {t('productName')}
     </Link>
   );
