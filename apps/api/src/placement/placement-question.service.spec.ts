@@ -158,7 +158,7 @@ describe('PlacementQuestionService', () => {
               level: 'B1',
             }),
           }),
-          orderBy: { createdAt: 'desc' },
+          orderBy: { updatedAt: 'asc' },
           take: 10,
           include: { questionBank: true },
         }),

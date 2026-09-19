@@ -19,6 +19,7 @@ export {
   FETCH_NEW_QUESTIONS_FOR_CATEGORY_WHEN_REMAINING_LESS_THAN,
   MAX_QUESTIONS_PER_LEVEL,
 } from './placement-question.service';
+export { NETWORK_GRACE_S } from './placement-progress.service';
 export const START_LEVEL = 'B1';
 
 @Injectable()
@@ -30,7 +31,7 @@ export class PlacementService {
   ) {}
 
   async getTimeOut(
-    _userId: string,
+    userId: string,
     question: QuestionBank,
     session: ExamSession,
   ): Promise<PlacementQuestion | PlacementResult> {
@@ -38,53 +39,53 @@ export class PlacementService {
       questionId: question.id,
       choice: null,
     };
-    await this.sessionService.archiveQuestionAnswer(_userId, SubmitAnswerSchema.parse(lastAnswer));
+    await this.sessionService.archiveQuestionAnswer(userId, SubmitAnswerSchema.parse(lastAnswer));
     session.totalAnswered += 1;
     await this.progressService.adjustSessionFromAnswer(
       lastAnswer.choice,
       question,
       session,
-      _userId,
+      userId,
     );
-    await this.sessionService.saveExamSession(_userId, session);
-    const result = await this.progressService.getResult(_userId, session);
+    await this.sessionService.saveExamSession(userId, session);
+    const result = await this.progressService.getResult(userId, session);
     if (result !== undefined) {
       return result;
     }
-    return this.questionService.getNewPlacementQuestion(_userId, session);
+    return this.questionService.getNewPlacementQuestion(userId, session);
   }
 
   async checkEndedOrTimedOut(
-    _userId: string,
+    userId: string,
   ): Promise<
     [ExamSession, QuestionBank | undefined, PlacementQuestion | PlacementResult | undefined]
   > {
-    const session = await this.sessionService.loadExamSession(_userId);
+    const session = await this.sessionService.loadExamSession(userId);
     if (!session || !session.currentQuestionId) {
       throw new NotFoundException('placement.notFound');
     }
 
-    const result = await this.progressService.getResult(_userId, session);
+    const result = await this.progressService.getResult(userId, session);
     if (result !== undefined) {
       return [session, undefined, result];
     }
 
     const question = await this.progressService.getQuestion(session.currentQuestionId);
     if (this.progressService.hasTimedOut(question, session.servedAt)) {
-      const timedOutResult = await this.getTimeOut(_userId, question, session);
+      const timedOutResult = await this.getTimeOut(userId, question, session);
       return [session, question, timedOutResult];
     }
     return [session, question, undefined];
   }
 
-  async startPlacement(_userId: string, _dto: StartPlacementDto): Promise<PlacementQuestion> {
-    const existing = await this.sessionService.hasActiveSession(_userId);
+  async startPlacement(userId: string, dto: StartPlacementDto): Promise<PlacementQuestion> {
+    const existing = await this.sessionService.hasActiveSession(userId);
     if (existing) {
       throw new ConflictException('placement.inProgress');
     }
 
     const examSession: ExamSession = {
-      lang: _dto.lang,
+      lang: dto.lang,
       lo: 'A1',
       hi: 'C3',
       level: START_LEVEL,
@@ -96,42 +97,42 @@ export class PlacementService {
       servedAt: new Date().toISOString(),
     };
 
-    return this.questionService.getNewPlacementQuestion(_userId, examSession);
+    return this.questionService.getNewPlacementQuestion(userId, examSession);
   }
 
-  async getPlacement(_userId: string): Promise<PlacementQuestion | PlacementResult> {
-    const [session, question, result] = await this.checkEndedOrTimedOut(_userId);
+  async getPlacement(userId: string): Promise<PlacementQuestion | PlacementResult> {
+    const [session, question, result] = await this.checkEndedOrTimedOut(userId);
     if (result !== undefined) return result;
     assert(question !== undefined);
     return this.questionService.createPlacementQuestion(question, session);
   }
 
   async submitAnswer(
-    _userId: string,
-    _dto: SubmitAnswerDto,
+    userId: string,
+    dto: SubmitAnswerDto,
   ): Promise<PlacementQuestion | PlacementResult> {
-    const [session, question, result] = await this.checkEndedOrTimedOut(_userId);
+    const [session, question, result] = await this.checkEndedOrTimedOut(userId);
     if (result !== undefined) return result;
     assert(question !== undefined);
 
-    if (_dto.questionId !== session.currentQuestionId) {
+    if (dto.questionId !== session.currentQuestionId) {
       return this.questionService.createPlacementQuestion(question, session);
     }
 
-    await this.sessionService.archiveQuestionAnswer(_userId, _dto);
+    await this.sessionService.archiveQuestionAnswer(userId, dto);
     session.totalAnswered += 1;
-    await this.progressService.adjustSessionFromAnswer(_dto.choice, question, session, _userId);
-    await this.sessionService.saveExamSession(_userId, session);
+    await this.progressService.adjustSessionFromAnswer(dto.choice, question, session, userId);
+    await this.sessionService.saveExamSession(userId, session);
 
-    const result_user_answer = await this.progressService.getResult(_userId, session);
-    if (result_user_answer !== undefined) {
-      return result_user_answer;
+    const resultUserAnswer = await this.progressService.getResult(userId, session);
+    if (resultUserAnswer !== undefined) {
+      return resultUserAnswer;
     }
 
-    return this.questionService.getNewPlacementQuestion(_userId, session);
+    return this.questionService.getNewPlacementQuestion(userId, session);
   }
 
-  async quitPlacement(_userId: string): Promise<void> {
-    await this.sessionService.deleteSession(_userId);
+  async quitPlacement(userId: string): Promise<void> {
+    await this.sessionService.deleteSession(userId);
   }
 }

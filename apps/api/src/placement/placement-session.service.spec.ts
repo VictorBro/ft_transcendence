@@ -134,10 +134,10 @@ describe('PlacementSessionService', () => {
     });
   });
 
-  describe('getQuestionsAnswer', () => {
+  describe('getQuestionAnswers', () => {
     it('returns empty array when redis list is empty', async () => {
       redis.client.lRange.mockResolvedValue([]);
-      const result = await service.getQuestionsAnswer('u-1');
+      const result = await service.getQuestionAnswers('u-1');
       expect(result).toEqual([]);
       expect(redis.client.lRange).toHaveBeenCalledWith('user:u-1:eval_questions', 0, -1);
     });
@@ -149,11 +149,8 @@ describe('PlacementSessionService', () => {
       ];
       redis.client.lRange.mockResolvedValue(answers.map((a) => JSON.stringify(a)));
 
-      const result = await service.getQuestionsAnswer('u-1');
+      const result = await service.getQuestionAnswers('u-1');
       expect(result).toEqual(answers);
-
-      const aliasResult = await service.getQuestionAnswers('u-1');
-      expect(aliasResult).toEqual(answers);
     });
   });
 

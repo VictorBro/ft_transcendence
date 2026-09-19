@@ -15,6 +15,8 @@ import { PrismaService } from '../prisma/prisma.service';
 import { PlacementSessionService } from './placement-session.service';
 import { MAX_QUESTIONS_PER_LEVEL } from './placement-question.service';
 
+export const NETWORK_GRACE_S = 3;
+
 @Injectable()
 export class PlacementProgressService {
   constructor(
@@ -114,13 +116,13 @@ export class PlacementProgressService {
 
   hasTimedOut(question: QuestionBank, servedAt: string): boolean {
     const elapsedS = Math.floor((Date.now() - new Date(servedAt).getTime()) / 1000);
-    return elapsedS >= question.timeLimitS;
+    return elapsedS >= question.timeLimitS + NETWORK_GRACE_S;
   }
 
   async getResult(_userId: string, _session: ExamSession): Promise<PlacementResult | undefined> {
     if (!_session.ended) return undefined;
 
-    const answers = await this.sessionService.getQuestionsAnswer(_userId);
+    const answers = await this.sessionService.getQuestionAnswers(_userId);
     const questionIds = answers.map((answer) => answer.questionId);
     const dbQuestions = await this.prisma.questionBank.findMany({
       where: {

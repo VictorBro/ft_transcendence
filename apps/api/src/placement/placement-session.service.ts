@@ -65,14 +65,10 @@ export class PlacementSessionService {
     await this.redis.client.expire(questionsListKey, PLACEMENT_REDIS_KEY_TTL);
   }
 
-  async getQuestionsAnswer(userId: string): Promise<SubmitAnswerInput[]> {
+  async getQuestionAnswers(userId: string): Promise<SubmitAnswerInput[]> {
     const questionsListKey = this.evalQuestionsKey(userId);
     const rawAnswers = await this.redis.client.lRange(questionsListKey, 0, -1);
     return rawAnswers.map((raw) => SubmitAnswerSchema.parse(JSON.parse(raw)));
-  }
-
-  async getQuestionAnswers(userId: string): Promise<SubmitAnswerInput[]> {
-    return this.getQuestionsAnswer(userId);
   }
 
   async deleteSession(userId: string): Promise<void> {

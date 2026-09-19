@@ -6,7 +6,7 @@ import type { QuestionBank } from '../generated/prisma/client';
 import type { PrismaService } from '../prisma/prisma.service';
 import type { RedisService } from '../redis/redis.service';
 import { PlacementSessionService } from './placement-session.service';
-import { PlacementProgressService } from './placement-progress.service';
+import { NETWORK_GRACE_S, PlacementProgressService } from './placement-progress.service';
 
 const mockQuestion: QuestionBank = {
   id: 'b7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64',
@@ -193,9 +193,16 @@ describe('PlacementProgressService', () => {
   });
 
   describe('hasTimedOut', () => {
-    it('returns true when elapsed exceeds time limit', () => {
-      const servedAt = new Date(Date.now() - 40000).toISOString();
+    it('returns true when elapsed exceeds time limit plus network grace', () => {
+      const servedAt = new Date(
+        Date.now() - (mockQuestion.timeLimitS + NETWORK_GRACE_S + 2) * 1000,
+      ).toISOString();
       expect(service.hasTimedOut(mockQuestion, servedAt)).toBe(true);
+    });
+
+    it('returns false when elapsed exceeds time limit but is within network grace', () => {
+      const servedAt = new Date(Date.now() - (mockQuestion.timeLimitS + 1) * 1000).toISOString();
+      expect(service.hasTimedOut(mockQuestion, servedAt)).toBe(false);
     });
 
     it('returns false when elapsed is within time limit', () => {
