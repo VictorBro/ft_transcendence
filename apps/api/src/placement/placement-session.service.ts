@@ -63,7 +63,6 @@ export class PlacementSessionService {
     const questionsListKey = this.evalQuestionsKey(userId);
     await this.redis.client.rPush(questionsListKey, JSON.stringify(answer));
     await this.redis.client.expire(questionsListKey, PLACEMENT_REDIS_KEY_TTL);
-    await this.redis.client.hIncrBy(this.evalKey(userId), 'totalAnswered', 1);
   }
 
   async getQuestionsAnswer(userId: string): Promise<SubmitAnswerInput[]> {

@@ -1,4 +1,8 @@
 {
+  // do not show function properties in the outline
+  "outline.showVariables": false,
+  "outline.showProperties": false,
+  "outline.showConstants": false,
   // Mirrors .devcontainer/devcontainer.json, which only applies when VS Code is
   // attached to the devcontainer. This file covers everyone else, so a teammate
   // who opens the folder on the host gets the same formatter and the same lint

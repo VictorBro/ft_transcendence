@@ -131,7 +131,6 @@ describe('PlacementSessionService', () => {
         'user:u-1:eval_questions',
         PLACEMENT_REDIS_KEY_TTL,
       );
-      expect(redis.client.hIncrBy).toHaveBeenCalledWith('user:u-1:eval', 'totalAnswered', 1);
     });
   });
 

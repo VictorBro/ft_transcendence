@@ -1,11 +1,11 @@
 import { ConflictException, NotFoundException } from '@nestjs/common';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import type { ExamSession } from '@ft/shared';
+import type { ExamSession, PlacementQuestion, PlacementResult } from '@ft/shared';
 
 import type { QuestionBank } from '../generated/prisma/client';
-import type { PrismaService } from '../prisma/prisma.service';
-import type { RedisService } from '../redis/redis.service';
 import { PlacementSessionService } from './placement-session.service';
+import { PlacementQuestionService } from './placement-question.service';
+import { PlacementProgressService } from './placement-progress.service';
 import { PlacementService } from './placement.service';
 
 const mockQuestion: QuestionBank = {
@@ -24,235 +24,73 @@ const mockQuestion: QuestionBank = {
   updatedAt: new Date(),
 };
 
-function createService(
-  prismaOverrides: Record<string, unknown> = {},
-  redisClientOverrides: Record<string, unknown> = {},
-) {
-  const prisma = {
-    questionBank: {
-      findUnique: vi.fn(),
-      findMany: vi.fn(),
-      ...((prismaOverrides.questionBank as Record<string, unknown>) ?? {}),
-    },
-    userSeenQuestion: {
-      findMany: vi.fn().mockResolvedValue([]),
-      create: vi.fn().mockResolvedValue({}),
-      upsert: vi.fn().mockResolvedValue({}),
-      ...((prismaOverrides.userSeenQuestion as Record<string, unknown>) ?? {}),
-    },
-    ...prismaOverrides,
-  };
+const mockPlacementQuestion: PlacementQuestion = {
+  questionId: mockQuestion.id,
+  category: 'grammar',
+  level: 'B1',
+  question: mockQuestion.question,
+  options: mockQuestion.options,
+  timeLimitS: 30,
+  remainingS: 30,
+  progress: {
+    answered: 0,
+    maxRemaining: 18,
+  },
+};
 
-  const redis = {
-    client: {
-      exists: vi.fn().mockResolvedValue(0),
-      hGetAll: vi.fn().mockResolvedValue({}),
-      hSet: vi.fn().mockResolvedValue(1),
-      hIncrBy: vi.fn().mockResolvedValue(1),
-      del: vi.fn().mockResolvedValue(1),
-      rPush: vi.fn().mockResolvedValue(1),
-      lRange: vi.fn().mockResolvedValue([]),
-      expire: vi.fn().mockResolvedValue(1),
-      ...redisClientOverrides,
-    },
-  };
+const mockPlacementResult: PlacementResult = {
+  targetLevel: 'B1',
+  report: [],
+};
 
-  const sessionService = new PlacementSessionService(redis as unknown as RedisService);
+function createPlacementService() {
+  const sessionService = {
+    hasActiveSession: vi.fn().mockResolvedValue(false),
+    saveExamSession: vi.fn().mockResolvedValue(undefined),
+    loadExamSession: vi.fn().mockResolvedValue(null),
+    archiveQuestionAnswer: vi.fn().mockResolvedValue(undefined),
+    deleteSession: vi.fn().mockResolvedValue(undefined),
+  } as unknown as PlacementSessionService;
+
+  const questionService = {
+    getNewPlacementQuestion: vi.fn().mockResolvedValue(mockPlacementQuestion),
+    createPlacementQuestion: vi.fn().mockReturnValue(mockPlacementQuestion),
+  } as unknown as PlacementQuestionService;
+
+  const progressService = {
+    getQuestion: vi.fn().mockResolvedValue(mockQuestion),
+    hasTimedOut: vi.fn().mockReturnValue(false),
+    adjustSessionFromAnswer: vi.fn().mockResolvedValue(undefined),
+    getResult: vi.fn().mockResolvedValue(undefined),
+  } as unknown as PlacementProgressService;
+
+  const service = new PlacementService(sessionService, questionService, progressService);
 
   return {
-    service: new PlacementService(prisma as unknown as PrismaService, sessionService),
+    service,
     sessionService,
-    prisma,
-    redis,
+    questionService,
+    progressService,
   };
 }
 
 describe('PlacementService', () => {
   let service: PlacementService;
-  let prisma: ReturnType<typeof createService>['prisma'];
-  let redis: ReturnType<typeof createService>['redis'];
+  let sessionService: ReturnType<typeof createPlacementService>['sessionService'];
+  let questionService: ReturnType<typeof createPlacementService>['questionService'];
+  let progressService: ReturnType<typeof createPlacementService>['progressService'];
 
   beforeEach(() => {
-    const created = createService();
+    const created = createPlacementService();
     service = created.service;
-    prisma = created.prisma;
-    redis = created.redis;
-  });
-
-  describe('getQuestion', () => {
-    it('returns question when found', async () => {
-      prisma.questionBank.findUnique.mockResolvedValue(mockQuestion);
-
-      const result = await service.getQuestion(mockQuestion.id);
-      expect(result).toEqual(mockQuestion);
-      expect(prisma.questionBank.findUnique).toHaveBeenCalledWith({
-        where: { id: mockQuestion.id },
-      });
-    });
-
-    it('throws NotFoundException when question not found', async () => {
-      prisma.questionBank.findUnique.mockResolvedValue(null);
-
-      await expect(service.getQuestion('missing-id')).rejects.toThrow(NotFoundException);
-    });
-  });
-
-  describe('getNewQuestion', () => {
-    const session: ExamSession = {
-      lang: 'de',
-      lo: 'A1',
-      hi: 'C2',
-      level: 'B1',
-      mistakesPerLevel: 0,
-      askedPerCategory: { vocabulary: 1, reading: 1, grammar: 0 },
-      totalAnswered: 0,
-      ended: false,
-      currentQuestionId: null,
-      servedAt: new Date().toISOString(),
-    };
-
-    it('queries prisma and returns count and first question', async () => {
-      prisma.questionBank.findMany.mockResolvedValue([mockQuestion]);
-
-      const [count, question] = await service.getNewQuestion('user-1', session);
-      expect(count).toBe(1);
-      expect(question).toEqual(mockQuestion);
-      expect(prisma.questionBank.findMany).toHaveBeenCalledWith(
-        expect.objectContaining({
-          where: expect.objectContaining({
-            lang: 'de',
-            level: 'B1',
-          }),
-        }),
-      );
-    });
-
-    it('throws NotFoundException when pool is exhausted', async () => {
-      prisma.questionBank.findMany.mockResolvedValue([]);
-
-      await expect(service.getNewQuestion('user-1', session)).rejects.toThrow(NotFoundException);
-    });
-
-    it('checks another eligible category if first category has no unseen questions', async () => {
-      prisma.questionBank.findMany.mockResolvedValueOnce([]).mockResolvedValueOnce([mockQuestion]);
-
-      const [count, question] = await service.getNewQuestion('user-1', session);
-      expect(count).toBe(0);
-      expect(question).toEqual(mockQuestion);
-      expect(prisma.questionBank.findMany).toHaveBeenCalledTimes(2);
-      expect(prisma.userSeenQuestion.findMany).not.toHaveBeenCalled();
-    });
-
-    it('returns [0, random question] from last 10 seen questions when unseen pool is empty', async () => {
-      prisma.questionBank.findMany.mockResolvedValue([]);
-      prisma.userSeenQuestion.findMany.mockResolvedValue([
-        {
-          id: 'seen-1',
-          userId: 'user-1',
-          questionId: mockQuestion.id,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-          questionBank: mockQuestion,
-        },
-      ]);
-
-      const [count, question] = await service.getNewQuestion('user-1', session);
-      expect(count).toBe(0);
-      expect(question).toEqual(mockQuestion);
-      expect(prisma.userSeenQuestion.findMany).toHaveBeenCalledWith(
-        expect.objectContaining({
-          where: expect.objectContaining({
-            userId: 'user-1',
-            questionBank: expect.objectContaining({
-              lang: 'de',
-              level: 'B1',
-            }),
-          }),
-          orderBy: { createdAt: 'desc' },
-          take: 10,
-          include: { questionBank: true },
-        }),
-      );
-    });
-  });
-
-  describe('createPlacementQuestion', () => {
-    it('constructs a valid PlacementQuestion from QuestionBank and ExamSession', async () => {
-      const session: ExamSession = {
-        lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
-        totalAnswered: 1,
-        ended: false,
-        currentQuestionId: mockQuestion.id,
-        servedAt: new Date(Date.now() - 5000).toISOString(),
-      };
-
-      const result = await service.createPlacementQuestion(mockQuestion, session);
-      expect(result.questionId).toBe(mockQuestion.id);
-      expect(result.question).toBe(mockQuestion.question);
-      expect(result.remainingS).toBeLessThanOrEqual(30);
-      expect(result.progress).toEqual({ answered: 1, maxRemaining: 17 });
-      expect((result as Record<string, unknown>).answer).toBeUndefined();
-    });
-  });
-
-  describe('getMaxQuestionsRemaining', () => {
-    it('calculates remaining questions for initial B1 session', () => {
-      const session: ExamSession = {
-        lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-        totalAnswered: 0,
-        ended: false,
-        currentQuestionId: null,
-        servedAt: new Date().toISOString(),
-      };
-      expect(service.getMaxQuestionsRemaining(session)).toBe(18);
-    });
-
-    it('calculates remaining questions for narrowed boundary level A1', () => {
-      const session: ExamSession = {
-        lang: 'de',
-        lo: 'A1',
-        hi: 'A1',
-        level: 'A1',
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 1, vocabulary: 1, reading: 1 },
-        totalAnswered: 3,
-        ended: false,
-        currentQuestionId: null,
-        servedAt: new Date().toISOString(),
-      };
-      expect(service.getMaxQuestionsRemaining(session)).toBe(3);
-    });
-
-    it('returns at least 1 even if all questions in level are asked and bounds converged', () => {
-      const session: ExamSession = {
-        lang: 'de',
-        lo: 'C2',
-        hi: 'C2',
-        level: 'C2',
-        mistakesPerLevel: 1,
-        askedPerCategory: { grammar: 2, vocabulary: 2, reading: 2 },
-        totalAnswered: 6,
-        ended: false,
-        currentQuestionId: null,
-        servedAt: new Date().toISOString(),
-      };
-      expect(service.getMaxQuestionsRemaining(session)).toBe(1);
-    });
+    sessionService = created.sessionService;
+    questionService = created.questionService;
+    progressService = created.progressService;
   });
 
   describe('startPlacement', () => {
     it('throws ConflictException if placement is already in progress', async () => {
-      redis.client.exists.mockResolvedValue(1);
+      vi.mocked(sessionService.hasActiveSession).mockResolvedValue(true);
 
       await expect(service.startPlacement('user-1', { lang: 'de' })).rejects.toThrow(
         ConflictException,
@@ -260,83 +98,92 @@ describe('PlacementService', () => {
     });
 
     it('initializes session and returns first question', async () => {
-      redis.client.exists.mockResolvedValue(0);
-      prisma.questionBank.findMany.mockResolvedValue([mockQuestion]);
+      vi.mocked(sessionService.hasActiveSession).mockResolvedValue(false);
 
       const result = await service.startPlacement('user-1', { lang: 'de' });
-      expect(result.questionId).toBe(mockQuestion.id);
-      expect(prisma.userSeenQuestion.upsert).toHaveBeenCalledWith({
-        where: {
-          userId_questionId: {
-            userId: 'user-1',
-            questionId: mockQuestion.id,
-          },
-        },
-        create: {
-          userId: 'user-1',
-          questionId: mockQuestion.id,
-        },
-        update: {
-          updatedAt: expect.any(Date),
-        },
-      });
-      expect(redis.client.hSet).toHaveBeenCalled();
-    });
-  });
-
-  describe('getPlacement', () => {
-    it('throws NotFoundException if no active session in redis', async () => {
-      redis.client.hGetAll.mockResolvedValue({});
-
-      await expect(service.getPlacement('user-1')).rejects.toThrow(NotFoundException);
-    });
-
-    it('returns the active placement question', async () => {
-      redis.client.hGetAll.mockResolvedValue({
-        lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
-        mistakesPerLevel: '0',
-        askedPerCategory: JSON.stringify({ grammar: 1, vocabulary: 0, reading: 0 }),
-        totalAnswered: '1',
-        ended: 'false',
-        currentQuestionId: mockQuestion.id,
-        servedAt: new Date().toISOString(),
-      });
-      prisma.questionBank.findUnique.mockResolvedValue(mockQuestion);
-
-      const result = await service.getPlacement('user-1');
-      expect('questionId' in result && result.questionId).toBe(mockQuestion.id);
-    });
-
-    it('handles timeout when elapsed time exceeds question limit', async () => {
-      redis.client.hGetAll.mockResolvedValue({
-        lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
-        mistakesPerLevel: '0',
-        askedPerCategory: JSON.stringify({ grammar: 0, vocabulary: 0, reading: 0 }),
-        totalAnswered: '0',
-        ended: 'false',
-        currentQuestionId: mockQuestion.id,
-        servedAt: new Date(Date.now() - 60000).toISOString(),
-      });
-      prisma.questionBank.findUnique.mockResolvedValue(mockQuestion);
-      prisma.questionBank.findMany.mockResolvedValue([mockQuestion]);
-
-      const result = await service.getPlacement('user-1');
-      expect('questionId' in result && result.questionId).toBe(mockQuestion.id);
-      expect(redis.client.rPush).toHaveBeenCalledWith(
-        'user:user-1:eval_questions',
-        JSON.stringify({ questionId: mockQuestion.id, choice: null }),
+      expect(result).toEqual(mockPlacementQuestion);
+      expect(questionService.getNewPlacementQuestion).toHaveBeenCalledWith(
+        'user-1',
+        expect.objectContaining({
+          lang: 'de',
+          level: 'B1',
+          totalAnswered: 0,
+        }),
       );
     });
   });
 
-  describe('adjustSessionFromAnswer', () => {
-    it('increments category count on correct answer', async () => {
+  describe('checkEndedOrTimedOut', () => {
+    it('throws NotFoundException if no session found', async () => {
+      vi.mocked(sessionService.loadExamSession).mockResolvedValue(null);
+
+      await expect(service.checkEndedOrTimedOut('user-1')).rejects.toThrow(NotFoundException);
+    });
+
+    it('throws NotFoundException if session has no currentQuestionId', async () => {
+      vi.mocked(sessionService.loadExamSession).mockResolvedValue({
+        lang: 'de',
+        lo: 'A1',
+        hi: 'C2',
+        level: 'B1',
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
+        totalAnswered: 0,
+        ended: false,
+        currentQuestionId: null,
+        servedAt: new Date().toISOString(),
+      });
+
+      await expect(service.checkEndedOrTimedOut('user-1')).rejects.toThrow(NotFoundException);
+    });
+
+    it('returns result when session already ended', async () => {
+      const session: ExamSession = {
+        lang: 'de',
+        lo: 'A1',
+        hi: 'C2',
+        level: 'B1',
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
+        totalAnswered: 6,
+        ended: true,
+        currentQuestionId: mockQuestion.id,
+        servedAt: new Date().toISOString(),
+      };
+      vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
+      vi.mocked(progressService.getResult).mockResolvedValue(mockPlacementResult);
+
+      const [resSession, question, result] = await service.checkEndedOrTimedOut('user-1');
+      expect(resSession).toBe(session);
+      expect(question).toBeUndefined();
+      expect(result).toBe(mockPlacementResult);
+    });
+
+    it('handles timeout when elapsed time exceeds question limit', async () => {
+      const session: ExamSession = {
+        lang: 'de',
+        lo: 'A1',
+        hi: 'C2',
+        level: 'B1',
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
+        totalAnswered: 0,
+        ended: false,
+        currentQuestionId: mockQuestion.id,
+        servedAt: new Date(Date.now() - 60000).toISOString(),
+      };
+      vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
+      vi.mocked(progressService.getResult).mockResolvedValue(undefined);
+      vi.mocked(progressService.getQuestion).mockResolvedValue(mockQuestion);
+      vi.mocked(progressService.hasTimedOut).mockReturnValue(true);
+
+      const [resSession, question, result] = await service.checkEndedOrTimedOut('user-1');
+      expect(resSession).toBe(session);
+      expect(question).toBe(mockQuestion);
+      expect(result).toBe(mockPlacementQuestion);
+    });
+
+    it('returns question and undefined result when session is active and within time', async () => {
       const session: ExamSession = {
         lang: 'de',
         lo: 'A1',
@@ -349,58 +196,94 @@ describe('PlacementService', () => {
         currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),
       };
+      vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
+      vi.mocked(progressService.getResult).mockResolvedValue(undefined);
+      vi.mocked(progressService.getQuestion).mockResolvedValue(mockQuestion);
+      vi.mocked(progressService.hasTimedOut).mockReturnValue(false);
 
-      await service.adjustSessionFromAnswer('ist', mockQuestion, session, 'user-1');
-      expect(session.mistakesPerLevel).toBe(0);
-      expect(session.askedPerCategory.grammar).toBe(1);
-      expect(session.level).toBe('B1');
+      const [resSession, question, result] = await service.checkEndedOrTimedOut('user-1');
+      expect(resSession).toBe(session);
+      expect(question).toBe(mockQuestion);
+      expect(result).toBeUndefined();
     });
+  });
 
-    it('drops level when mistakes reach 2', async () => {
-      const session: ExamSession = {
-        lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
-        mistakesPerLevel: 1,
-        askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
-        totalAnswered: 1,
-        ended: false,
-        currentQuestionId: mockQuestion.id,
-        servedAt: new Date().toISOString(),
-      };
-
-      await service.adjustSessionFromAnswer('wrong', mockQuestion, session, 'user-1');
-      expect(session.mistakesPerLevel).toBe(0);
-      expect(session.hi).toBe('B1');
-      expect(session.level).toBe('A2');
-      expect(session.askedPerCategory).toEqual({ grammar: 0, vocabulary: 0, reading: 0 });
-    });
-
-    it('advances level when level questions are completed', async () => {
+  describe('getTimeOut', () => {
+    it('archives timeout answer and returns new question when not ended', async () => {
       const session: ExamSession = {
         lang: 'de',
         lo: 'A1',
         hi: 'C2',
         level: 'B1',
         mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 2, vocabulary: 2, reading: 1 },
+        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
+        totalAnswered: 0,
+        ended: false,
+        currentQuestionId: mockQuestion.id,
+        servedAt: new Date().toISOString(),
+      };
+      vi.mocked(progressService.getResult).mockResolvedValue(undefined);
+
+      const result = await service.getTimeOut('user-1', mockQuestion, session);
+      expect(result).toBe(mockPlacementQuestion);
+      expect(sessionService.archiveQuestionAnswer).toHaveBeenCalledWith('user-1', {
+        questionId: mockQuestion.id,
+        choice: null,
+      });
+      expect(session.totalAnswered).toBe(1);
+      expect(progressService.adjustSessionFromAnswer).toHaveBeenCalledWith(
+        null,
+        mockQuestion,
+        session,
+        'user-1',
+      );
+      expect(sessionService.saveExamSession).toHaveBeenCalledWith('user-1', session);
+      expect(questionService.getNewPlacementQuestion).toHaveBeenCalledWith('user-1', session);
+    });
+
+    it('archives timeout answer and returns result when ended', async () => {
+      const session: ExamSession = {
+        lang: 'de',
+        lo: 'A1',
+        hi: 'C2',
+        level: 'B1',
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 5,
         ended: false,
         currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),
       };
+      vi.mocked(progressService.getResult).mockResolvedValue(mockPlacementResult);
 
-      await service.adjustSessionFromAnswer('ist', mockQuestion, session, 'user-1');
-      expect(session.mistakesPerLevel).toBe(0);
-      expect(session.lo).toBe('B1');
-      expect(session.level).toBe('C1');
-      expect(session.askedPerCategory).toEqual({ grammar: 0, vocabulary: 0, reading: 0 });
+      const result = await service.getTimeOut('user-1', mockQuestion, session);
+      expect(result).toBe(mockPlacementResult);
+      expect(questionService.getNewPlacementQuestion).not.toHaveBeenCalled();
     });
   });
 
-  describe('getTimeOut', () => {
-    it('archives timeout answer and returns new question', async () => {
+  describe('getPlacement', () => {
+    it('returns result when session is ended or timed out to a result', async () => {
+      const session: ExamSession = {
+        lang: 'de',
+        lo: 'A1',
+        hi: 'C2',
+        level: 'B1',
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
+        totalAnswered: 6,
+        ended: true,
+        currentQuestionId: mockQuestion.id,
+        servedAt: new Date().toISOString(),
+      };
+      vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
+      vi.mocked(progressService.getResult).mockResolvedValue(mockPlacementResult);
+
+      const result = await service.getPlacement('user-1');
+      expect(result).toEqual(mockPlacementResult);
+    });
+
+    it('returns current question when active', async () => {
       const session: ExamSession = {
         lang: 'de',
         lo: 'A1',
@@ -413,171 +296,131 @@ describe('PlacementService', () => {
         currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),
       };
-      prisma.questionBank.findMany.mockResolvedValue([mockQuestion]);
+      vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
+      vi.mocked(progressService.getResult).mockResolvedValue(undefined);
+      vi.mocked(progressService.getQuestion).mockResolvedValue(mockQuestion);
+      vi.mocked(progressService.hasTimedOut).mockReturnValue(false);
 
-      const result = await service.getTimeOut('user-1', mockQuestion, session);
-      expect('questionId' in result && result.questionId).toBe(mockQuestion.id);
-      expect(redis.client.rPush).toHaveBeenCalledWith(
-        'user:user-1:eval_questions',
-        JSON.stringify({ questionId: mockQuestion.id, choice: null }),
-      );
-    });
-  });
-
-  describe('getResult', () => {
-    it('returns undefined if session is not ended', async () => {
-      const session: ExamSession = {
-        lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-        totalAnswered: 0,
-        ended: false,
-        currentQuestionId: null,
-        servedAt: new Date().toISOString(),
-      };
-
-      const result = await service.getResult('user-1', session);
-      expect(result).toBeUndefined();
-    });
-
-    it('returns PlacementResult with report when session is ended', async () => {
-      const session: ExamSession = {
-        lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-        totalAnswered: 2,
-        ended: true,
-        currentQuestionId: null,
-        servedAt: new Date().toISOString(),
-      };
-
-      const q2 = {
-        ...mockQuestion,
-        id: '22222222-2222-4222-8222-222222222222',
-        question: 'Second question?',
-        answer: 'Haus',
-        options: ['Haus', 'Baum', 'Auto', 'Zug'],
-      };
-
-      redis.client.lRange.mockResolvedValue([
-        JSON.stringify({ questionId: mockQuestion.id, choice: 'ist' }),
-        JSON.stringify({ questionId: q2.id, choice: null }),
-      ]);
-      prisma.questionBank.findMany.mockResolvedValue([mockQuestion, q2]);
-
-      const result = await service.getResult('user-1', session);
-      expect(result).toBeDefined();
-      expect(result?.targetLevel).toBe('B1');
-      expect(result?.report).toHaveLength(2);
-      expect(result?.report).toEqual([
-        {
-          questionId: mockQuestion.id,
-          question: mockQuestion.question,
-          options: mockQuestion.options,
-          chosen: 'ist',
-          correct: 'ist',
-          wasCorrect: true,
-        },
-        {
-          questionId: q2.id,
-          question: q2.question,
-          options: q2.options,
-          chosen: null,
-          correct: 'Haus',
-          wasCorrect: false,
-        },
-      ]);
-    });
-  });
-
-  describe('quitPlacement', () => {
-    it('removes redis session and question set keys', async () => {
-      await service.quitPlacement('user-1');
-
-      expect(redis.client.del).toHaveBeenCalledWith([
-        'user:user-1:eval',
-        'user:user-1:eval_questions',
-      ]);
+      const result = await service.getPlacement('user-1');
+      expect(result).toEqual(mockPlacementQuestion);
+      expect(questionService.createPlacementQuestion).toHaveBeenCalledWith(mockQuestion, session);
     });
   });
 
   describe('submitAnswer', () => {
-    it('returns current question if submitted questionId does not match', async () => {
-      redis.client.hGetAll.mockResolvedValue({
+    it('returns current question if questionId does not match', async () => {
+      const session: ExamSession = {
         lang: 'de',
         lo: 'A1',
         hi: 'C2',
         level: 'B1',
-        mistakesPerLevel: '0',
-        askedPerCategory: JSON.stringify({ grammar: 0, vocabulary: 0, reading: 0 }),
-        totalAnswered: '0',
-        ended: 'false',
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
+        totalAnswered: 0,
+        ended: false,
         currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),
-      });
-      prisma.questionBank.findUnique.mockResolvedValue(mockQuestion);
+      };
+      vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
+      vi.mocked(progressService.getResult).mockResolvedValue(undefined);
+      vi.mocked(progressService.getQuestion).mockResolvedValue(mockQuestion);
+      vi.mocked(progressService.hasTimedOut).mockReturnValue(false);
 
       const result = await service.submitAnswer('user-1', {
-        questionId: 'mismatched-id',
+        questionId: 'other-question-id',
         choice: 'ist',
       });
-      expect('questionId' in result && result.questionId).toBe(mockQuestion.id);
+      expect(result).toEqual(mockPlacementQuestion);
+      expect(questionService.createPlacementQuestion).toHaveBeenCalledWith(mockQuestion, session);
+      expect(sessionService.archiveQuestionAnswer).not.toHaveBeenCalled();
     });
 
-    it('delegates to getTimeOut if submitted after time limit', async () => {
-      redis.client.hGetAll.mockResolvedValue({
+    it('returns result if checkEndedOrTimedOut returns a result', async () => {
+      const session: ExamSession = {
         lang: 'de',
         lo: 'A1',
         hi: 'C2',
         level: 'B1',
-        mistakesPerLevel: '0',
-        askedPerCategory: JSON.stringify({ grammar: 0, vocabulary: 0, reading: 0 }),
-        totalAnswered: '0',
-        ended: 'false',
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
+        totalAnswered: 6,
+        ended: true,
         currentQuestionId: mockQuestion.id,
-        servedAt: new Date(Date.now() - 60000).toISOString(),
-      });
-      prisma.questionBank.findUnique.mockResolvedValue(mockQuestion);
-      prisma.questionBank.findMany.mockResolvedValue([mockQuestion]);
+        servedAt: new Date().toISOString(),
+      };
+      vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
+      vi.mocked(progressService.getResult).mockResolvedValue(mockPlacementResult);
 
       const result = await service.submitAnswer('user-1', {
         questionId: mockQuestion.id,
         choice: 'ist',
       });
-      expect('questionId' in result && result.questionId).toBe(mockQuestion.id);
-      expect(redis.client.rPush).toHaveBeenCalledWith(
-        'user:user-1:eval_questions',
-        JSON.stringify({ questionId: mockQuestion.id, choice: null }),
-      );
+      expect(result).toEqual(mockPlacementResult);
     });
 
-    it('processes answer and returns next question', async () => {
-      redis.client.hGetAll.mockResolvedValue({
+    it('archives answer, adjusts session, and returns result if ended', async () => {
+      const session: ExamSession = {
         lang: 'de',
         lo: 'A1',
         hi: 'C2',
         level: 'B1',
-        mistakesPerLevel: '0',
-        askedPerCategory: JSON.stringify({ grammar: 0, vocabulary: 0, reading: 0 }),
-        totalAnswered: '0',
-        ended: 'false',
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
+        totalAnswered: 0,
+        ended: false,
         currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),
-      });
-      prisma.questionBank.findUnique.mockResolvedValue(mockQuestion);
-      prisma.questionBank.findMany.mockResolvedValue([mockQuestion]);
+      };
+      vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
+      vi.mocked(progressService.getResult)
+        .mockResolvedValueOnce(undefined) // first call in checkEndedOrTimedOut
+        .mockResolvedValueOnce(mockPlacementResult); // second call after answer
+      vi.mocked(progressService.getQuestion).mockResolvedValue(mockQuestion);
+      vi.mocked(progressService.hasTimedOut).mockReturnValue(false);
 
       const result = await service.submitAnswer('user-1', {
         questionId: mockQuestion.id,
         choice: 'ist',
       });
-      expect('questionId' in result && result.questionId).toBe(mockQuestion.id);
+      expect(result).toEqual(mockPlacementResult);
+      expect(sessionService.archiveQuestionAnswer).toHaveBeenCalledWith('user-1', {
+        questionId: mockQuestion.id,
+        choice: 'ist',
+      });
+      expect(sessionService.saveExamSession).toHaveBeenCalledWith('user-1', session);
+    });
+
+    it('archives answer, adjusts session, and returns next question if not ended', async () => {
+      const session: ExamSession = {
+        lang: 'de',
+        lo: 'A1',
+        hi: 'C2',
+        level: 'B1',
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
+        totalAnswered: 0,
+        ended: false,
+        currentQuestionId: mockQuestion.id,
+        servedAt: new Date().toISOString(),
+      };
+      vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
+      vi.mocked(progressService.getResult).mockResolvedValue(undefined);
+      vi.mocked(progressService.getQuestion).mockResolvedValue(mockQuestion);
+      vi.mocked(progressService.hasTimedOut).mockReturnValue(false);
+
+      const result = await service.submitAnswer('user-1', {
+        questionId: mockQuestion.id,
+        choice: 'ist',
+      });
+      expect(result).toEqual(mockPlacementQuestion);
+      expect(questionService.getNewPlacementQuestion).toHaveBeenCalledWith('user-1', session);
+    });
+  });
+
+  describe('quitPlacement', () => {
+    it('delegates to sessionService deleteSession', async () => {
+      await service.quitPlacement('user-1');
+      expect(sessionService.deleteSession).toHaveBeenCalledWith('user-1');
     });
   });
 });
