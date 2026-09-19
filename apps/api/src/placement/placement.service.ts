@@ -18,6 +18,7 @@ import { RedisService } from '../redis/redis.service';
 import { StartPlacementDto, SubmitAnswerDto } from './placement.dto';
 
 export const PLACEMENT_REDIS_KEY_TTL = 3600;
+// we should preemptively generate questions, when a minimum amount is reached
 export const FETCH_NEW_QUESTIONS_FOR_CATEGORY_WHEN_REMAINING_LESS_THAN = 6;
 export const MAX_QUESTIONS_PER_LEVEL = 6;
 export const START_LEVEL = 'B1';
@@ -178,6 +179,7 @@ export class PlacementService {
     return this.getNewPlacementQuestion(_userId, examSession);
   }
 
+  // todo: get oldest user seen question, if for some reason no new questions available
   async getNewPlacementQuestion(
     _userId: string,
     examSession: ExamSession,
@@ -185,7 +187,7 @@ export class PlacementService {
     const [available, question] = await this.getNewQuestion(_userId, examSession);
 
     if (available < FETCH_NEW_QUESTIONS_FOR_CATEGORY_WHEN_REMAINING_LESS_THAN) {
-      // todo for later PR: insert new questions into database
+      // todo for later PR: insert new questions into database, but asynchronously without user noticing
     }
 
     examSession.currentQuestionId = question.id;
@@ -219,9 +221,8 @@ export class PlacementService {
     _question: QuestionBank,
     _session: ExamSession,
   ): Promise<void> {
-    // correct: Bool = _answer ? (_answer = _question.correctAnswer) : False
     const isCorrect = _answer !== null && _answer === _question.answer;
-    // !correct ? _session.mistakesPerLevel += 1
+
     if (!isCorrect) {
       _session.mistakesPerLevel += 1;
     }
@@ -303,12 +304,20 @@ export class PlacementService {
       choice: null,
     };
     await this.archiveQuestionAnswer(_userId, SubmitAnswerSchema.parse(lastAnswer));
-    await this.adjustSessionFromAnswer(null, question, session);
-    const result = await this.getResult(_userId, session);
+    const result = await this.adjustSessionFromAnswerAndCheckForTestEnd(
+      _dto.choice,
+      question,
+      session,
+    );
     if (result !== undefined) {
       return result;
     }
     return this.getNewPlacementQuestion(_userId, session);
+  }
+
+  hasTimedOut(question: QuestionBank, servedAt: string): boolean {
+    const elapsedS = Math.floor((Date.now() - new Date(servedAt).getTime()) / 1000);
+    return elapsedS >= question.timeLimitS;
   }
 
   async getPlacement(_userId: string): Promise<PlacementQuestion | PlacementResult> {
@@ -318,8 +327,8 @@ export class PlacementService {
     }
 
     const question = await this.getQuestion(session.currentQuestionId);
-    const elapsedS = Math.floor((Date.now() - new Date(session.servedAt).getTime()) / 1000);
-    if (elapsedS < question.timeLimitS) {
+
+    if (!this.hasTimedOut(question, session.servedAt)) {
       return this.createPlacementQuestion(question, session);
     }
     return this.getTimeOut(_userId, question, session);
@@ -343,15 +352,17 @@ export class PlacementService {
       return this.getPlacement(_userId);
     }
 
-    const elapsedS = Math.floor((Date.now() - new Date(session.servedAt).getTime()) / 1000);
-    if (elapsedS >= question.timeLimitS) {
+    if (this.hasTimedOut(question, session.servedAt)) {
       return this.getTimeOut(_userId, question, session);
     }
 
     await this.archiveQuestionAnswer(_userId, _dto);
-    await this.adjustSessionFromAnswer(_dto.choice, question, session);
 
-    const result = await this.getResult(_userId, session);
+    const result = await this.adjustSessionFromAnswerAndCheckForTestEnd(
+      _dto.choice,
+      question,
+      session,
+    );
     if (result !== undefined) {
       return result;
     }
