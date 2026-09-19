@@ -22,6 +22,7 @@ export const LevelSchema = z.enum(LEVELS);
 export const TARGET_LEVELS = [...LEVELS, 'C2+'] as const;
 export const TargetLevelSchema = z.enum(TARGET_LEVELS);
 export type Level = z.infer<typeof LevelSchema>;
+export type TargetLevel = z.infer<typeof TargetLevelSchema>;
 
 /**
  * A closed list on purpose: it keys both the questions and the lesson topics,

@@ -31,6 +31,7 @@ export class PlacementSessionService {
       level: session.level,
       mistakesPerLevel: session.mistakesPerLevel.toString(),
       askedPerCategory: JSON.stringify(session.askedPerCategory),
+      totalAnswered: session.totalAnswered.toString(),
       ended: session.ended.toString(),
       currentQuestionId: session.currentQuestionId ?? '',
       servedAt: session.servedAt,
@@ -51,6 +52,7 @@ export class PlacementSessionService {
       level: data.level,
       mistakesPerLevel: Number(data.mistakesPerLevel),
       askedPerCategory: JSON.parse(data.askedPerCategory || '{}'),
+      totalAnswered: Number(data.totalAnswered ?? 0),
       ended: data.ended === 'true',
       currentQuestionId: data.currentQuestionId ? data.currentQuestionId : null,
       servedAt: data.servedAt,
@@ -61,6 +63,7 @@ export class PlacementSessionService {
     const questionsSetKey = this.evalQuestionsKey(userId);
     await this.redis.client.sAdd(questionsSetKey, JSON.stringify(answer));
     await this.redis.client.expire(questionsSetKey, PLACEMENT_REDIS_KEY_TTL);
+    await this.redis.client.hIncrBy(this.evalKey(userId), 'totalAnswered', 1);
   }
 
   async deleteSession(userId: string): Promise<void> {

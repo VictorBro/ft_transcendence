@@ -9,15 +9,15 @@ import {
   SubmitAnswerInput,
   SubmitAnswerSchema,
   PlacementResult,
+  TargetLevel,
 } from '@ft/shared';
 
 import assert from 'node:assert';
 
-import { QuestionBank } from '../generated/prisma/client';
+import { Level, QuestionBank } from '../generated/prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 import { PlacementSessionService } from './placement-session.service';
 import { StartPlacementDto, SubmitAnswerDto } from './placement.dto';
-import session from 'express-session';
 
 export { PLACEMENT_REDIS_KEY_TTL } from './placement-session.service';
 // we should preemptively generate questions, when a minimum amount is reached
@@ -32,35 +32,65 @@ export class PlacementService {
     private readonly sessionService: PlacementSessionService,
   ) {}
 
+  targetLevelToCEFRLevel(level: TargetLevel): Level {
+    assert(level !== 'C2+');
+    return level;
+  }
+
   async getNewQuestion(_userId: string, session: ExamSession): Promise<[number, QuestionBank]> {
     const eligibleCategories = QUESTION_CATEGORIES.filter(
       (cat) => (session.askedPerCategory[cat] ?? 0) < PLACEMENT_ROUNDS.perCategory,
     );
 
     const pool = eligibleCategories.length > 0 ? eligibleCategories : QUESTION_CATEGORIES;
-    const cat = pool[Math.floor(Math.random() * pool.length)];
+    const shuffledPool = [...pool].sort(() => Math.random() - 0.5);
 
-    const questions = await this.prisma.questionBank.findMany({
-      where: {
-        lang: session.lang,
-        level: session.level,
-        category: cat,
-        userSeenQuestions: {
-          none: {
-            userId: _userId,
+    for (const cat of shuffledPool) {
+      const questions = await this.prisma.questionBank.findMany({
+        where: {
+          lang: session.lang,
+          level: this.targetLevelToCEFRLevel(session.level),
+          category: cat,
+          userSeenQuestions: {
+            none: {
+              userId: _userId,
+            },
           },
         },
+      });
+
+      if (questions.length > 0) {
+        return [questions.length, questions[0]];
+      }
+    }
+
+    const fallbackCat = pool[Math.floor(Math.random() * pool.length)];
+    const recentSeen = await this.prisma.userSeenQuestion.findMany({
+      where: {
+        userId: _userId,
+        questionBank: {
+          lang: session.lang,
+          level: this.targetLevelToCEFRLevel(session.level),
+          category: fallbackCat,
+        },
+      },
+      orderBy: {
+        createdAt: 'desc',
+      },
+      take: 10,
+      include: {
+        questionBank: true,
       },
     });
 
-    if (questions.length === 0) {
-      const recentSeen = await this.prisma.userSeenQuestion.findMany({
+    if (recentSeen.length === 0) {
+      const anyRecentSeen = await this.prisma.userSeenQuestion.findMany({
         where: {
           userId: _userId,
           questionBank: {
             lang: session.lang,
-            level: session.level,
-            category: cat,
+            level: this.targetLevelToCEFRLevel(session.level),
+            category: { in: [...pool] },
           },
         },
         orderBy: {
@@ -72,15 +102,16 @@ export class PlacementService {
         },
       });
 
-      if (recentSeen.length === 0) {
+      if (anyRecentSeen.length === 0) {
         throw new NotFoundException('placement.poolExhausted');
       }
 
-      const randomSeen = recentSeen[Math.floor(Math.random() * recentSeen.length)];
+      const randomSeen = anyRecentSeen[Math.floor(Math.random() * anyRecentSeen.length)];
       return [0, randomSeen.questionBank];
     }
 
-    return [questions.length, questions[0]];
+    const randomSeen = recentSeen[Math.floor(Math.random() * recentSeen.length)];
+    return [0, randomSeen.questionBank];
   }
 
   async getQuestion(_questionId: string): Promise<QuestionBank> {
@@ -134,7 +165,7 @@ export class PlacementService {
       timeLimitS: _question.timeLimitS,
       remainingS,
       progress: {
-        answered: Object.values(_session.askedPerCategory).reduce((sum, count) => sum + count, 0),
+        answered: _session.totalAnswered,
         total: totalQuestions,
       },
     });
@@ -153,6 +184,7 @@ export class PlacementService {
       level: START_LEVEL,
       mistakesPerLevel: 0,
       askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
+      totalAnswered: 0,
       ended: false,
       currentQuestionId: null,
       servedAt: new Date().toISOString(),
@@ -173,23 +205,22 @@ export class PlacementService {
 
     examSession.currentQuestionId = question.id;
     examSession.servedAt = new Date().toISOString();
-    await this.prisma.userSeenQuestion.create({
-      data: {
+    await this.prisma.userSeenQuestion.upsert({
+      where: {
+        userId_questionId: {
+          userId: _userId,
+          questionId: question.id,
+        },
+      },
+      create: {
         userId: _userId,
         questionId: question.id,
       },
+      update: {
+        updatedAt: new Date(),
+      },
     });
     await this.sessionService.saveExamSession(_userId, examSession);
-
-    const initialAnswer: SubmitAnswerInput = {
-      questionId: examSession.currentQuestionId,
-      choice: null,
-    };
-    await this.sessionService.archiveQuestionAnswer(
-      _userId,
-      SubmitAnswerSchema.parse(initialAnswer),
-    );
-
     return this.createPlacementQuestion(question, examSession);
   }
 
@@ -240,7 +271,7 @@ export class PlacementService {
     _session.mistakesPerLevel = 0;
 
     if (levelChange === 'up') {
-      _session.lo = TARGET_LEVELS(currIndex + 1);
+      _session.lo = _session.level;
       const nextIndex = Math.min(hiIndex - 1, currIndex + Math.ceil((hiIndex - currIndex) / 2));
       _session.level = TARGET_LEVELS[nextIndex];
     } else {
@@ -260,7 +291,9 @@ export class PlacementService {
       choice: null,
     };
     await this.sessionService.archiveQuestionAnswer(_userId, SubmitAnswerSchema.parse(lastAnswer));
+    session.totalAnswered += 1;
     await this.adjustSessionFromAnswer(lastAnswer.choice, question, session);
+    await this.sessionService.saveExamSession(_userId, session);
     const result = await this.getResult(_userId, session);
     if (result !== undefined) {
       return result;
@@ -283,27 +316,15 @@ export class PlacementService {
       throw new NotFoundException('placement.notFound');
     }
 
-    let result = await this.getResult(_userId, session);
+    const result = await this.getResult(_userId, session);
     if (result !== undefined) {
       return [session, undefined, result];
     }
 
     const question = await this.getQuestion(session.currentQuestionId);
     if (this.hasTimedOut(question, session.servedAt)) {
-      const lastAnswer: SubmitAnswerInput = {
-        questionId: question.id,
-        choice: null,
-      };
-      await this.sessionService.archiveQuestionAnswer(
-        _userId,
-        SubmitAnswerSchema.parse(lastAnswer),
-      );
-      await this.adjustSessionFromAnswer(lastAnswer.choice, question, session);
-      result = await this.getResult(_userId, session);
-      if (result !== undefined) {
-        return [session, question, result];
-      }
-      return [session, question, await this.getNewPlacementQuestion(_userId, session)];
+      const timedOutResult = await this.getTimeOut(_userId, question, session);
+      return [session, question, timedOutResult];
     }
     return [session, question, undefined];
   }
@@ -332,7 +353,9 @@ export class PlacementService {
     }
 
     await this.sessionService.archiveQuestionAnswer(_userId, _dto);
+    session.totalAnswered += 1;
     await this.adjustSessionFromAnswer(_dto.choice, question, session);
+    await this.sessionService.saveExamSession(_userId, session);
 
     const result_user_answer = await this.getResult(_userId, session);
     if (result_user_answer !== undefined) {

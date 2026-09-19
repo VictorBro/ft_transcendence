@@ -37,6 +37,7 @@ function createService(
     userSeenQuestion: {
       findMany: vi.fn().mockResolvedValue([]),
       create: vi.fn().mockResolvedValue({}),
+      upsert: vi.fn().mockResolvedValue({}),
       ...((prismaOverrides.userSeenQuestion as Record<string, unknown>) ?? {}),
     },
     ...prismaOverrides,
@@ -47,6 +48,7 @@ function createService(
       exists: vi.fn().mockResolvedValue(0),
       hGetAll: vi.fn().mockResolvedValue({}),
       hSet: vi.fn().mockResolvedValue(1),
+      hIncrBy: vi.fn().mockResolvedValue(1),
       del: vi.fn().mockResolvedValue(1),
       sAdd: vi.fn().mockResolvedValue(1),
       sMembers: vi.fn().mockResolvedValue([]),
@@ -103,6 +105,7 @@ describe('PlacementService', () => {
       level: 'B1',
       mistakesPerLevel: 0,
       askedPerCategory: { vocabulary: 1, reading: 1, grammar: 0 },
+      totalAnswered: 0,
       ended: false,
       currentQuestionId: null,
       servedAt: new Date().toISOString(),
@@ -130,10 +133,27 @@ describe('PlacementService', () => {
       await expect(service.getNewQuestion('user-1', session)).rejects.toThrow(NotFoundException);
     });
 
+    it('checks another eligible category if first category has no unseen questions', async () => {
+      prisma.questionBank.findMany.mockResolvedValueOnce([]).mockResolvedValueOnce([mockQuestion]);
+
+      const [count, question] = await service.getNewQuestion('user-1', session);
+      expect(count).toBe(1);
+      expect(question).toEqual(mockQuestion);
+      expect(prisma.questionBank.findMany).toHaveBeenCalledTimes(2);
+      expect(prisma.userSeenQuestion.findMany).not.toHaveBeenCalled();
+    });
+
     it('returns [0, random question] from last 10 seen questions when unseen pool is empty', async () => {
       prisma.questionBank.findMany.mockResolvedValue([]);
       prisma.userSeenQuestion.findMany.mockResolvedValue([
-        { id: 'seen-1', questionBank: mockQuestion, createdAt: new Date() },
+        {
+          id: 'seen-1',
+          userId: 'user-1',
+          questionId: mockQuestion.id,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          questionBank: mockQuestion,
+        },
       ]);
 
       const [count, question] = await service.getNewQuestion('user-1', session);
@@ -143,6 +163,10 @@ describe('PlacementService', () => {
         expect.objectContaining({
           where: expect.objectContaining({
             userId: 'user-1',
+            questionBank: expect.objectContaining({
+              lang: 'de',
+              level: 'B1',
+            }),
           }),
           orderBy: { createdAt: 'desc' },
           take: 10,
@@ -161,6 +185,7 @@ describe('PlacementService', () => {
         level: 'B1',
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
+        totalAnswered: 1,
         ended: false,
         currentQuestionId: mockQuestion.id,
         servedAt: new Date(Date.now() - 5000).toISOString(),
@@ -184,6 +209,7 @@ describe('PlacementService', () => {
         level: 'B1',
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
+        totalAnswered: 0,
         ended: false,
         currentQuestionId: null,
         servedAt: new Date().toISOString(),
@@ -199,6 +225,7 @@ describe('PlacementService', () => {
         level: 'A1',
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 1, vocabulary: 1, reading: 1 },
+        totalAnswered: 3,
         ended: false,
         currentQuestionId: null,
         servedAt: new Date().toISOString(),
@@ -214,6 +241,7 @@ describe('PlacementService', () => {
         level: 'C2',
         mistakesPerLevel: 1,
         askedPerCategory: { grammar: 2, vocabulary: 2, reading: 2 },
+        totalAnswered: 6,
         ended: false,
         currentQuestionId: null,
         servedAt: new Date().toISOString(),
@@ -237,17 +265,22 @@ describe('PlacementService', () => {
 
       const result = await service.startPlacement('user-1', { lang: 'de' });
       expect(result.questionId).toBe(mockQuestion.id);
-      expect(prisma.userSeenQuestion.create).toHaveBeenCalledWith({
-        data: {
+      expect(prisma.userSeenQuestion.upsert).toHaveBeenCalledWith({
+        where: {
+          userId_questionId: {
+            userId: 'user-1',
+            questionId: mockQuestion.id,
+          },
+        },
+        create: {
           userId: 'user-1',
           questionId: mockQuestion.id,
         },
+        update: {
+          updatedAt: expect.any(Date),
+        },
       });
       expect(redis.client.hSet).toHaveBeenCalled();
-      expect(redis.client.sAdd).toHaveBeenCalledWith(
-        'user:user-1:eval_questions',
-        JSON.stringify({ questionId: mockQuestion.id, choice: null }),
-      );
     });
   });
 
@@ -266,6 +299,7 @@ describe('PlacementService', () => {
         level: 'B1',
         mistakesPerLevel: '0',
         askedPerCategory: JSON.stringify({ grammar: 1, vocabulary: 0, reading: 0 }),
+        totalAnswered: '1',
         ended: 'false',
         currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),
@@ -284,6 +318,7 @@ describe('PlacementService', () => {
         level: 'B1',
         mistakesPerLevel: '0',
         askedPerCategory: JSON.stringify({ grammar: 0, vocabulary: 0, reading: 0 }),
+        totalAnswered: '0',
         ended: 'false',
         currentQuestionId: mockQuestion.id,
         servedAt: new Date(Date.now() - 60000).toISOString(),
@@ -309,6 +344,7 @@ describe('PlacementService', () => {
         level: 'B1',
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
+        totalAnswered: 0,
         ended: false,
         currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),
@@ -328,6 +364,7 @@ describe('PlacementService', () => {
         level: 'B1',
         mistakesPerLevel: 1,
         askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
+        totalAnswered: 1,
         ended: false,
         currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),
@@ -348,6 +385,7 @@ describe('PlacementService', () => {
         level: 'B1',
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 2, vocabulary: 2, reading: 1 },
+        totalAnswered: 5,
         ended: false,
         currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),
@@ -370,6 +408,7 @@ describe('PlacementService', () => {
         level: 'B1',
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
+        totalAnswered: 0,
         ended: false,
         currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),
@@ -405,6 +444,7 @@ describe('PlacementService', () => {
         level: 'B1',
         mistakesPerLevel: '0',
         askedPerCategory: JSON.stringify({ grammar: 0, vocabulary: 0, reading: 0 }),
+        totalAnswered: '0',
         ended: 'false',
         currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),
@@ -426,6 +466,7 @@ describe('PlacementService', () => {
         level: 'B1',
         mistakesPerLevel: '0',
         askedPerCategory: JSON.stringify({ grammar: 0, vocabulary: 0, reading: 0 }),
+        totalAnswered: '0',
         ended: 'false',
         currentQuestionId: mockQuestion.id,
         servedAt: new Date(Date.now() - 60000).toISOString(),
@@ -452,6 +493,7 @@ describe('PlacementService', () => {
         level: 'B1',
         mistakesPerLevel: '0',
         askedPerCategory: JSON.stringify({ grammar: 0, vocabulary: 0, reading: 0 }),
+        totalAnswered: '0',
         ended: 'false',
         currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),

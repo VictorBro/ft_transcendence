@@ -10,6 +10,7 @@ function createSessionService(redisClientOverrides: Record<string, unknown> = {}
       exists: vi.fn().mockResolvedValue(0),
       hSet: vi.fn().mockResolvedValue(1),
       hGetAll: vi.fn().mockResolvedValue({}),
+      hIncrBy: vi.fn().mockResolvedValue(1),
       del: vi.fn().mockResolvedValue(1),
       sAdd: vi.fn().mockResolvedValue(1),
       expire: vi.fn().mockResolvedValue(1),
@@ -40,6 +41,7 @@ describe('PlacementSessionService', () => {
     level: 'B1',
     mistakesPerLevel: 0,
     askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
+    totalAnswered: 0,
     ended: false,
     currentQuestionId: 'b7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64',
     servedAt: '2026-09-18T19:00:00.000Z',
@@ -76,6 +78,7 @@ describe('PlacementSessionService', () => {
         level: 'B1',
         mistakesPerLevel: '0',
         askedPerCategory: JSON.stringify(sampleSession.askedPerCategory),
+        totalAnswered: '0',
         ended: 'false',
         currentQuestionId: sampleSession.currentQuestionId,
         servedAt: sampleSession.servedAt,
@@ -99,6 +102,7 @@ describe('PlacementSessionService', () => {
         level: 'B1',
         mistakesPerLevel: '0',
         askedPerCategory: JSON.stringify({ grammar: 1, vocabulary: 0, reading: 0 }),
+        totalAnswered: '0',
         ended: 'false',
         currentQuestionId: sampleSession.currentQuestionId,
         servedAt: sampleSession.servedAt,
@@ -126,6 +130,7 @@ describe('PlacementSessionService', () => {
         'user:u-1:eval_questions',
         PLACEMENT_REDIS_KEY_TTL,
       );
+      expect(redis.client.hIncrBy).toHaveBeenCalledWith('user:u-1:eval', 'totalAnswered', 1);
     });
   });
 
