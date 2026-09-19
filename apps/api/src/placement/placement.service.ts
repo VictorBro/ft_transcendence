@@ -9,7 +9,10 @@ import {
   SubmitAnswerInput,
   SubmitAnswerSchema,
   PlacementResult,
+  PlacementResultSchema,
+  PlacementReportEntry,
   TargetLevel,
+  Language,
 } from '@ft/shared';
 
 import assert from 'node:assert';
@@ -33,7 +36,7 @@ export class PlacementService {
   ) {}
 
   targetLevelToCEFRLevel(level: TargetLevel): Level {
-    assert(level !== 'C2+');
+    assert(level !== 'C3');
     return level;
   }
 
@@ -45,6 +48,7 @@ export class PlacementService {
     const pool = eligibleCategories.length > 0 ? eligibleCategories : QUESTION_CATEGORIES;
     const shuffledPool = [...pool].sort(() => Math.random() - 0.5);
 
+    let min_questions = Infinity;
     for (const cat of shuffledPool) {
       const questions = await this.prisma.questionBank.findMany({
         where: {
@@ -59,8 +63,9 @@ export class PlacementService {
         },
       });
 
+      min_questions = Math.min(min_questions, questions.length);
       if (questions.length > 0) {
-        return [questions.length, questions[0]];
+        return [min_questions, questions[0]];
       }
     }
 
@@ -156,7 +161,7 @@ export class PlacementService {
     const examSession: ExamSession = {
       lang: _dto.lang,
       lo: 'A1',
-      hi: 'C2+',
+      hi: 'C3',
       level: START_LEVEL,
       mistakesPerLevel: 0,
       askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
@@ -200,10 +205,31 @@ export class PlacementService {
     return this.createPlacementQuestion(question, examSession);
   }
 
+  async updateUserLevel(_userId: string, _lang: Language, _level: TargetLevel) {
+    await this.prisma.$transaction([
+      this.prisma.userLevel.update({
+        where: {
+          userId_lang: {
+            userId: _userId,
+            lang: _lang,
+          },
+        },
+        data: {
+          level: _level,
+        },
+      }),
+      this.prisma.user.update({
+        where: { id: _userId },
+        data: { activeLang: _lang },
+      }),
+    ]);
+  }
+
   async adjustSessionFromAnswer(
     _answer: string | null,
     _question: QuestionBank,
     _session: ExamSession,
+    _userId: string,
   ): Promise<void> {
     const isCorrect = _answer !== null && _answer === _question.answer;
 
@@ -236,10 +262,12 @@ export class PlacementService {
     } else if (levelChange === 'up' && currIndex === hiIndex - 1) {
       _session.level = _session.hi;
       _session.ended = true;
+      this.updateUserLevel(_userId, _session.lang, _session.level);
       return;
     } else if (levelChange === 'down' && currIndex === loIndex) {
       _session.level = _session.lo;
       _session.ended = true;
+      this.updateUserLevel(_userId, _session.lang, _session.level);
       return;
     }
 
@@ -268,7 +296,7 @@ export class PlacementService {
     };
     await this.sessionService.archiveQuestionAnswer(_userId, SubmitAnswerSchema.parse(lastAnswer));
     session.totalAnswered += 1;
-    await this.adjustSessionFromAnswer(lastAnswer.choice, question, session);
+    await this.adjustSessionFromAnswer(lastAnswer.choice, question, session, _userId);
     await this.sessionService.saveExamSession(_userId, session);
     const result = await this.getResult(_userId, session);
     if (result !== undefined) {
@@ -313,7 +341,37 @@ export class PlacementService {
   }
 
   async getResult(_userId: string, _session: ExamSession): Promise<PlacementResult | undefined> {
-    return undefined;
+    if (!_session.ended) return undefined;
+
+    const answers = await this.sessionService.getQuestionsAnswer(_userId);
+    const questionIds = answers.map((answer) => answer.questionId);
+    const dbQuestions = await this.prisma.questionBank.findMany({
+      where: {
+        id: { in: questionIds },
+      },
+    });
+
+    const questionsMap = new Map(dbQuestions.map((q) => [q.id, q]));
+    const report: PlacementReportEntry[] = [];
+
+    for (const answer of answers) {
+      const question = questionsMap.get(answer.questionId);
+      if (question) {
+        report.push({
+          questionId: question.id,
+          question: question.question,
+          options: question.options,
+          chosen: answer.choice,
+          correct: question.answer,
+          wasCorrect: answer.choice !== null && answer.choice === question.answer,
+        });
+      }
+    }
+
+    return PlacementResultSchema.parse({
+      targetLevel: _session.level,
+      report,
+    });
   }
 
   async submitAnswer(
@@ -330,7 +388,7 @@ export class PlacementService {
 
     await this.sessionService.archiveQuestionAnswer(_userId, _dto);
     session.totalAnswered += 1;
-    await this.adjustSessionFromAnswer(_dto.choice, question, session);
+    await this.adjustSessionFromAnswer(_dto.choice, question, session, _userId);
     await this.sessionService.saveExamSession(_userId, session);
 
     const result_user_answer = await this.getResult(_userId, session);

@@ -56,14 +56,14 @@ model RecoveryCode {
 }
 
 model UserLevel {
-  id        String   @id @default(uuid()) @db.Uuid
-  userId    String   @db.Uuid
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id        String       @id @default(uuid()) @db.Uuid
+  userId    String       @db.Uuid
+  user      User         @relation(fields: [userId], references: [id], onDelete: Cascade)
   lang      Language
-  level     Level?
+  level     TargetLevel?
   dailyGoal Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
 
   @@unique([userId, lang])
 }
@@ -113,6 +113,16 @@ enum Level {
   B2
   C1
   C2
+}
+
+enum TargetLevel {
+  A1
+  A2
+  B1
+  B2
+  C1
+  C2
+  C3
 }
 
 // Values match UserRoleSchema and LocaleSchema in @ft/shared. Adding a locale is

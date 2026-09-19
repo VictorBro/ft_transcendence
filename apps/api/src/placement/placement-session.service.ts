@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { ExamSession, ExamSessionSchema, SubmitAnswerInput } from '@ft/shared';
+import { ExamSession, ExamSessionSchema, SubmitAnswerInput, SubmitAnswerSchema } from '@ft/shared';
 
 import { RedisService } from '../redis/redis.service';
 
@@ -64,6 +64,16 @@ export class PlacementSessionService {
     await this.redis.client.sAdd(questionsSetKey, JSON.stringify(answer));
     await this.redis.client.expire(questionsSetKey, PLACEMENT_REDIS_KEY_TTL);
     await this.redis.client.hIncrBy(this.evalKey(userId), 'totalAnswered', 1);
+  }
+
+  async getQuestionsAnswer(userId: string): Promise<SubmitAnswerInput[]> {
+    const questionsSetKey = this.evalQuestionsKey(userId);
+    const rawAnswers = await this.redis.client.sMembers(questionsSetKey);
+    return rawAnswers.map((raw) => SubmitAnswerSchema.parse(JSON.parse(raw)));
+  }
+
+  async getQuestionAnswers(userId: string): Promise<SubmitAnswerInput[]> {
+    return this.getQuestionsAnswer(userId);
   }
 
   async deleteSession(userId: string): Promise<void> {

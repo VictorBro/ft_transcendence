@@ -49,6 +49,7 @@ export type SubmitAnswerInput = z.infer<typeof SubmitAnswerSchema>;
 export const PlacementReportEntrySchema = z.object({
   questionId: z.uuid(),
   question: z.string().min(1),
+  options: z.array(z.string().min(1)).length(OPTIONS_PER_ITEM),
   chosen: z.string().min(1).nullable(),
   correct: z.string().min(1),
   wasCorrect: z.boolean(),
@@ -57,7 +58,7 @@ export type PlacementReportEntry = z.infer<typeof PlacementReportEntrySchema>;
 
 /** The verdict, with the answers it was drawn from. */
 export const PlacementResultSchema = z.object({
-  level: LevelSchema,
+  targetLevel: TargetLevelSchema,
   report: z.array(PlacementReportEntrySchema),
 });
 export type PlacementResult = z.infer<typeof PlacementResultSchema>;

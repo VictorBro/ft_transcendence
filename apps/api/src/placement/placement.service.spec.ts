@@ -137,7 +137,7 @@ describe('PlacementService', () => {
       prisma.questionBank.findMany.mockResolvedValueOnce([]).mockResolvedValueOnce([mockQuestion]);
 
       const [count, question] = await service.getNewQuestion('user-1', session);
-      expect(count).toBe(1);
+      expect(count).toBe(0);
       expect(question).toEqual(mockQuestion);
       expect(prisma.questionBank.findMany).toHaveBeenCalledTimes(2);
       expect(prisma.userSeenQuestion.findMany).not.toHaveBeenCalled();
@@ -350,7 +350,7 @@ describe('PlacementService', () => {
         servedAt: new Date().toISOString(),
       };
 
-      await service.adjustSessionFromAnswer('ist', mockQuestion, session);
+      await service.adjustSessionFromAnswer('ist', mockQuestion, session, 'user-1');
       expect(session.mistakesPerLevel).toBe(0);
       expect(session.askedPerCategory.grammar).toBe(1);
       expect(session.level).toBe('B1');
@@ -370,7 +370,7 @@ describe('PlacementService', () => {
         servedAt: new Date().toISOString(),
       };
 
-      await service.adjustSessionFromAnswer('wrong', mockQuestion, session);
+      await service.adjustSessionFromAnswer('wrong', mockQuestion, session, 'user-1');
       expect(session.mistakesPerLevel).toBe(0);
       expect(session.hi).toBe('B1');
       expect(session.level).toBe('A2');
@@ -391,7 +391,7 @@ describe('PlacementService', () => {
         servedAt: new Date().toISOString(),
       };
 
-      await service.adjustSessionFromAnswer('ist', mockQuestion, session);
+      await service.adjustSessionFromAnswer('ist', mockQuestion, session, 'user-1');
       expect(session.mistakesPerLevel).toBe(0);
       expect(session.lo).toBe('B1');
       expect(session.level).toBe('C1');
@@ -421,6 +421,78 @@ describe('PlacementService', () => {
         'user:user-1:eval_questions',
         JSON.stringify({ questionId: mockQuestion.id, choice: null }),
       );
+    });
+  });
+
+  describe('getResult', () => {
+    it('returns undefined if session is not ended', async () => {
+      const session: ExamSession = {
+        lang: 'de',
+        lo: 'A1',
+        hi: 'C2',
+        level: 'B1',
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
+        totalAnswered: 0,
+        ended: false,
+        currentQuestionId: null,
+        servedAt: new Date().toISOString(),
+      };
+
+      const result = await service.getResult('user-1', session);
+      expect(result).toBeUndefined();
+    });
+
+    it('returns PlacementResult with report when session is ended', async () => {
+      const session: ExamSession = {
+        lang: 'de',
+        lo: 'A1',
+        hi: 'C2',
+        level: 'B1',
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
+        totalAnswered: 2,
+        ended: true,
+        currentQuestionId: null,
+        servedAt: new Date().toISOString(),
+      };
+
+      const q2 = {
+        ...mockQuestion,
+        id: '22222222-2222-4222-8222-222222222222',
+        question: 'Second question?',
+        answer: 'Haus',
+        options: ['Haus', 'Baum', 'Auto', 'Zug'],
+      };
+
+      redis.client.sMembers.mockResolvedValue([
+        JSON.stringify({ questionId: mockQuestion.id, choice: 'ist' }),
+        JSON.stringify({ questionId: q2.id, choice: null }),
+      ]);
+      prisma.questionBank.findMany.mockResolvedValue([mockQuestion, q2]);
+
+      const result = await service.getResult('user-1', session);
+      expect(result).toBeDefined();
+      expect(result?.targetLevel).toBe('B1');
+      expect(result?.report).toHaveLength(2);
+      expect(result?.report).toEqual([
+        {
+          questionId: mockQuestion.id,
+          question: mockQuestion.question,
+          options: mockQuestion.options,
+          chosen: 'ist',
+          correct: 'ist',
+          wasCorrect: true,
+        },
+        {
+          questionId: q2.id,
+          question: q2.question,
+          options: q2.options,
+          chosen: null,
+          correct: 'Haus',
+          wasCorrect: false,
+        },
+      ]);
     });
   });
 

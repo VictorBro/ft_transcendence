@@ -13,6 +13,7 @@ function createSessionService(redisClientOverrides: Record<string, unknown> = {}
       hIncrBy: vi.fn().mockResolvedValue(1),
       del: vi.fn().mockResolvedValue(1),
       sAdd: vi.fn().mockResolvedValue(1),
+      sMembers: vi.fn().mockResolvedValue([]),
       expire: vi.fn().mockResolvedValue(1),
       ...redisClientOverrides,
     },
@@ -131,6 +132,29 @@ describe('PlacementSessionService', () => {
         PLACEMENT_REDIS_KEY_TTL,
       );
       expect(redis.client.hIncrBy).toHaveBeenCalledWith('user:u-1:eval', 'totalAnswered', 1);
+    });
+  });
+
+  describe('getQuestionsAnswer', () => {
+    it('returns empty array when redis set is empty', async () => {
+      redis.client.sMembers.mockResolvedValue([]);
+      const result = await service.getQuestionsAnswer('u-1');
+      expect(result).toEqual([]);
+      expect(redis.client.sMembers).toHaveBeenCalledWith('user:u-1:eval_questions');
+    });
+
+    it('returns parsed SubmitAnswerInput array from redis set', async () => {
+      const answers: SubmitAnswerInput[] = [
+        { questionId: 'b7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64', choice: 'ist' },
+        { questionId: 'a1b2c3d4-e5f6-4a1b-8c2d-3e4f5a6b7c8d', choice: null },
+      ];
+      redis.client.sMembers.mockResolvedValue(answers.map((a) => JSON.stringify(a)));
+
+      const result = await service.getQuestionsAnswer('u-1');
+      expect(result).toEqual(answers);
+
+      const aliasResult = await service.getQuestionAnswers('u-1');
+      expect(aliasResult).toEqual(answers);
     });
   });
 
