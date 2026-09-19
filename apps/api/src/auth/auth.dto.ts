@@ -4,6 +4,7 @@ import {
   EnableTwoFactorSchema,
   LoginSchema,
   RecoveryCodesSchema,
+  TwoFactorRequiredSchema,
   SecondFactorSchema,
   SessionUserSchema,
   TwoFactorSetupSchema,
@@ -28,3 +29,4 @@ export class DisableTwoFactorDto extends createZodDto(DisableTwoFactorSchema) {}
 export class TwoFactorSetupDto extends createZodDto(TwoFactorSetupSchema) {}
 export class TwoFactorStatusDto extends createZodDto(TwoFactorStatusSchema) {}
 export class RecoveryCodesDto extends createZodDto(RecoveryCodesSchema) {}
+export class TwoFactorRequiredDto extends createZodDto(TwoFactorRequiredSchema) {}
