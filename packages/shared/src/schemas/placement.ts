@@ -32,7 +32,7 @@ export const PlacementQuestionSchema = z
     /** `answered` doubles as this question's index, counting from zero. */
     progress: z.object({
       answered: z.number().int().min(0),
-      total: z.number().int().positive(),
+      maxRemaining: z.number().int().positive(),
     }),
   })
   .strict();

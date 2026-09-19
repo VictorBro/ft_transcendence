@@ -201,7 +201,7 @@ describe('placement', () => {
     options: ['ist', 'hat', 'war', 'wird'],
     timeLimitS: 30,
     remainingS: 27,
-    progress: { answered: 2, total: 6 },
+    progress: { answered: 2, maxRemaining: 6 },
   };
 
   it('serves a question with no answer attached', () => {

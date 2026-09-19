@@ -50,8 +50,8 @@ function createService(
       hSet: vi.fn().mockResolvedValue(1),
       hIncrBy: vi.fn().mockResolvedValue(1),
       del: vi.fn().mockResolvedValue(1),
-      sAdd: vi.fn().mockResolvedValue(1),
-      sMembers: vi.fn().mockResolvedValue([]),
+      rPush: vi.fn().mockResolvedValue(1),
+      lRange: vi.fn().mockResolvedValue([]),
       expire: vi.fn().mockResolvedValue(1),
       ...redisClientOverrides,
     },
@@ -195,7 +195,7 @@ describe('PlacementService', () => {
       expect(result.questionId).toBe(mockQuestion.id);
       expect(result.question).toBe(mockQuestion.question);
       expect(result.remainingS).toBeLessThanOrEqual(30);
-      expect(result.progress).toEqual({ answered: 1, total: 17 });
+      expect(result.progress).toEqual({ answered: 1, maxRemaining: 17 });
       expect((result as Record<string, unknown>).answer).toBeUndefined();
     });
   });
@@ -328,7 +328,7 @@ describe('PlacementService', () => {
 
       const result = await service.getPlacement('user-1');
       expect('questionId' in result && result.questionId).toBe(mockQuestion.id);
-      expect(redis.client.sAdd).toHaveBeenCalledWith(
+      expect(redis.client.rPush).toHaveBeenCalledWith(
         'user:user-1:eval_questions',
         JSON.stringify({ questionId: mockQuestion.id, choice: null }),
       );
@@ -417,7 +417,7 @@ describe('PlacementService', () => {
 
       const result = await service.getTimeOut('user-1', mockQuestion, session);
       expect('questionId' in result && result.questionId).toBe(mockQuestion.id);
-      expect(redis.client.sAdd).toHaveBeenCalledWith(
+      expect(redis.client.rPush).toHaveBeenCalledWith(
         'user:user-1:eval_questions',
         JSON.stringify({ questionId: mockQuestion.id, choice: null }),
       );
@@ -465,7 +465,7 @@ describe('PlacementService', () => {
         options: ['Haus', 'Baum', 'Auto', 'Zug'],
       };
 
-      redis.client.sMembers.mockResolvedValue([
+      redis.client.lRange.mockResolvedValue([
         JSON.stringify({ questionId: mockQuestion.id, choice: 'ist' }),
         JSON.stringify({ questionId: q2.id, choice: null }),
       ]);
@@ -551,7 +551,7 @@ describe('PlacementService', () => {
         choice: 'ist',
       });
       expect('questionId' in result && result.questionId).toBe(mockQuestion.id);
-      expect(redis.client.sAdd).toHaveBeenCalledWith(
+      expect(redis.client.rPush).toHaveBeenCalledWith(
         'user:user-1:eval_questions',
         JSON.stringify({ questionId: mockQuestion.id, choice: null }),
       );

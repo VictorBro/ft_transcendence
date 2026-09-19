@@ -147,7 +147,7 @@ export class PlacementService {
       remainingS,
       progress: {
         answered: _session.totalAnswered,
-        total: totalQuestions,
+        maxRemaining: totalQuestions,
       },
     });
   }

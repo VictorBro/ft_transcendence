@@ -12,8 +12,8 @@ function createSessionService(redisClientOverrides: Record<string, unknown> = {}
       hGetAll: vi.fn().mockResolvedValue({}),
       hIncrBy: vi.fn().mockResolvedValue(1),
       del: vi.fn().mockResolvedValue(1),
-      sAdd: vi.fn().mockResolvedValue(1),
-      sMembers: vi.fn().mockResolvedValue([]),
+      rPush: vi.fn().mockResolvedValue(1),
+      lRange: vi.fn().mockResolvedValue([]),
       expire: vi.fn().mockResolvedValue(1),
       ...redisClientOverrides,
     },
@@ -115,7 +115,7 @@ describe('PlacementSessionService', () => {
   });
 
   describe('archiveQuestionAnswer', () => {
-    it('adds serialized answer to redis set and sets TTL', async () => {
+    it('adds serialized answer to redis list and sets TTL', async () => {
       const answer: SubmitAnswerInput = {
         questionId: 'b7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64',
         choice: 'ist',
@@ -123,7 +123,7 @@ describe('PlacementSessionService', () => {
 
       await service.archiveQuestionAnswer('u-1', answer);
 
-      expect(redis.client.sAdd).toHaveBeenCalledWith(
+      expect(redis.client.rPush).toHaveBeenCalledWith(
         'user:u-1:eval_questions',
         JSON.stringify(answer),
       );
@@ -136,19 +136,19 @@ describe('PlacementSessionService', () => {
   });
 
   describe('getQuestionsAnswer', () => {
-    it('returns empty array when redis set is empty', async () => {
-      redis.client.sMembers.mockResolvedValue([]);
+    it('returns empty array when redis list is empty', async () => {
+      redis.client.lRange.mockResolvedValue([]);
       const result = await service.getQuestionsAnswer('u-1');
       expect(result).toEqual([]);
-      expect(redis.client.sMembers).toHaveBeenCalledWith('user:u-1:eval_questions');
+      expect(redis.client.lRange).toHaveBeenCalledWith('user:u-1:eval_questions', 0, -1);
     });
 
-    it('returns parsed SubmitAnswerInput array from redis set', async () => {
+    it('returns parsed SubmitAnswerInput array from redis list', async () => {
       const answers: SubmitAnswerInput[] = [
         { questionId: 'b7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64', choice: 'ist' },
         { questionId: 'a1b2c3d4-e5f6-4a1b-8c2d-3e4f5a6b7c8d', choice: null },
       ];
-      redis.client.sMembers.mockResolvedValue(answers.map((a) => JSON.stringify(a)));
+      redis.client.lRange.mockResolvedValue(answers.map((a) => JSON.stringify(a)));
 
       const result = await service.getQuestionsAnswer('u-1');
       expect(result).toEqual(answers);
