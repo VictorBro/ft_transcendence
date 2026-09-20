@@ -31,7 +31,6 @@ function createMockQuestionBank(): QuestionBank[] {
           sourceId: `src-${level}-${cat}-${i}`,
           lang: 'de',
           level,
-          topic: `topic_${cat}`,
           topic: 'verbs_morphology',
           category: cat,
           readText: null,
