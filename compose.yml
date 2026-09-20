@@ -134,7 +134,7 @@ services:
       - ft
 
   redis:
-    image: redis:8-alpine
+    image: redis:8.10.1-alpine
     # AOF on: sessions should survive a restart. RDB snapshots
     # alone lose up to a minute of writes.
     command: ["redis-server", "--appendonly", "yes"]
