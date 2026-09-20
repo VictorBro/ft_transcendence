@@ -10,7 +10,7 @@
 #
 #   compose.deploy.yml   this file
 #   Caddyfile            infra/caddy/Caddyfile.prod, renamed
-#   .env                 see .env.deploy.example
+#   .env                 see infra/deploy/.env.example
 #
 # Everything else arrives from ghcr.io, which serves these packages publicly, so
 # the host needs no registry login.
