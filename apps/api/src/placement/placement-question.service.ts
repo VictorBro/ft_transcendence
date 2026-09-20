@@ -15,6 +15,10 @@ import { PrismaService } from '../prisma/prisma.service';
 import { PlacementSessionService } from './placement-session.service';
 
 export const FETCH_NEW_QUESTIONS_FOR_CATEGORY_WHEN_REMAINING_LESS_THAN = 6;
+export const LIMIT_UNSEEN_QUESTIONS_TO_RETRIEVE = Math.max(
+  100,
+  FETCH_NEW_QUESTIONS_FOR_CATEGORY_WHEN_REMAINING_LESS_THAN,
+);
 export const MAX_QUESTIONS_PER_LEVEL = 6;
 
 @Injectable()
@@ -50,6 +54,7 @@ export class PlacementQuestionService {
             },
           },
         },
+        take: LIMIT_UNSEEN_QUESTIONS_TO_RETRIEVE,
       });
 
       min_questions = Math.min(min_questions, questions.length);

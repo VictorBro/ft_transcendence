@@ -62,6 +62,7 @@ function createPlacementService() {
     hasTimedOut: vi.fn().mockReturnValue(false),
     adjustSessionFromAnswer: vi.fn().mockResolvedValue(undefined),
     getResult: vi.fn().mockResolvedValue(undefined),
+    checkOnboardingCompleted: vi.fn().mockResolvedValue(true),
   } as unknown as PlacementProgressService;
 
   const service = new PlacementService(sessionService, questionService, progressService);
@@ -88,6 +89,16 @@ describe('PlacementService', () => {
     progressService = created.progressService;
   });
 
+  describe('checkOnboardingCompleted', () => {
+    it('delegates to progressService.checkOnboardingCompleted', async () => {
+      vi.mocked(progressService.checkOnboardingCompleted).mockResolvedValue(true);
+
+      const result = await service.checkOnboardingCompleted('user-1', 'de');
+      expect(result).toBe(true);
+      expect(progressService.checkOnboardingCompleted).toHaveBeenCalledWith('user-1', 'de');
+    });
+  });
+
   describe('startPlacement', () => {
     it('throws ConflictException if placement is already in progress', async () => {
       vi.mocked(sessionService.hasActiveSession).mockResolvedValue(true);
@@ -97,8 +108,18 @@ describe('PlacementService', () => {
       );
     });
 
+    it('throws ConflictException if onboarding is incomplete', async () => {
+      vi.mocked(sessionService.hasActiveSession).mockResolvedValue(false);
+      vi.mocked(progressService.checkOnboardingCompleted).mockResolvedValue(false);
+
+      await expect(service.startPlacement('user-1', { lang: 'de' })).rejects.toThrow(
+        new ConflictException('placement.onboardingIncomplete'),
+      );
+    });
+
     it('initializes session and returns first question', async () => {
       vi.mocked(sessionService.hasActiveSession).mockResolvedValue(false);
+      vi.mocked(progressService.checkOnboardingCompleted).mockResolvedValue(true);
 
       const result = await service.startPlacement('user-1', { lang: 'de' });
       expect(result).toEqual(mockPlacementQuestion);

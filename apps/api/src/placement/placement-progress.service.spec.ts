@@ -41,6 +41,7 @@ function createService(
       ...((prismaOverrides.userSeenQuestion as Record<string, unknown>) ?? {}),
     },
     userLevel: {
+      findUnique: vi.fn().mockResolvedValue(null),
       update: vi.fn().mockResolvedValue({}),
       ...((prismaOverrides.userLevel as Record<string, unknown>) ?? {}),
     },
@@ -124,6 +125,40 @@ describe('PlacementProgressService', () => {
       expect(prisma.user.update).toHaveBeenCalledWith({
         where: { id: 'user-1' },
         data: { activeLang: 'de' },
+      });
+    });
+  });
+
+  describe('checkOnboardingCompleted', () => {
+    it('returns true when userLevel exists for user and language', async () => {
+      prisma.userLevel.findUnique.mockResolvedValue({ id: 'ul-1' });
+
+      const result = await service.checkOnboardingCompleted('user-1', 'de');
+      expect(result).toBe(true);
+      expect(prisma.userLevel.findUnique).toHaveBeenCalledWith({
+        where: {
+          userId_lang: {
+            userId: 'user-1',
+            lang: 'de',
+          },
+        },
+        select: { id: true },
+      });
+    });
+
+    it('returns false when userLevel does not exist', async () => {
+      prisma.userLevel.findUnique.mockResolvedValue(null);
+
+      const result = await service.checkOnboardingCompleted('user-1', 'fr');
+      expect(result).toBe(false);
+      expect(prisma.userLevel.findUnique).toHaveBeenCalledWith({
+        where: {
+          userId_lang: {
+            userId: 'user-1',
+            lang: 'fr',
+          },
+        },
+        select: { id: true },
       });
     });
   });

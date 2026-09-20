@@ -223,20 +223,84 @@ describe('PlacementQuestionService', () => {
       expect(service.getMaxQuestionsRemaining(session)).toBe(3);
     });
 
-    it('returns 0 when all questions in level are asked and bounds converged', () => {
+    it('calculates remaining questions on final question of converged final level', () => {
+      const session: ExamSession = {
+        lang: 'de',
+        lo: 'A1',
+        hi: 'A2',
+        level: 'A1',
+        mistakesPerLevel: 1,
+        askedPerCategory: { grammar: 2, vocabulary: 2, reading: 1 },
+        totalAnswered: 17,
+        ended: false,
+        currentQuestionId: mockQuestion.id,
+        servedAt: new Date().toISOString(),
+      };
+      expect(service.getMaxQuestionsRemaining(session)).toBe(1);
+    });
+
+    it('calculates remaining questions mid-level with upper branch exploration remaining', () => {
+      const session: ExamSession = {
+        lang: 'de',
+        lo: 'B2',
+        hi: 'C3',
+        level: 'C1',
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 1, vocabulary: 1, reading: 0 },
+        totalAnswered: 8,
+        ended: false,
+        currentQuestionId: mockQuestion.id,
+        servedAt: new Date().toISOString(),
+      };
+      expect(service.getMaxQuestionsRemaining(session)).toBe(10);
+    });
+
+    it('calculates remaining questions when probing top level C2', () => {
       const session: ExamSession = {
         lang: 'de',
         lo: 'C2',
-        hi: 'C2',
+        hi: 'C3',
         level: 'C2',
-        mistakesPerLevel: 1,
-        askedPerCategory: { grammar: 2, vocabulary: 2, reading: 2 },
-        totalAnswered: 6,
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
+        totalAnswered: 13,
         ended: false,
-        currentQuestionId: null,
+        currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),
       };
-      expect(service.getMaxQuestionsRemaining(session)).toBe(0);
+      expect(service.getMaxQuestionsRemaining(session)).toBe(5);
+    });
+
+    it('calculates remaining questions after stepping down to A2', () => {
+      const session: ExamSession = {
+        lang: 'de',
+        lo: 'A1',
+        hi: 'B1',
+        level: 'A2',
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
+        totalAnswered: 2,
+        ended: false,
+        currentQuestionId: mockQuestion.id,
+        servedAt: new Date().toISOString(),
+      };
+      expect(service.getMaxQuestionsRemaining(session)).toBe(12);
+    });
+
+    it('calculates remaining questions halfway through initial B1 level', () => {
+      const session: ExamSession = {
+        lang: 'de',
+        lo: 'A1',
+        hi: 'C3',
+        level: 'B1',
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 2, vocabulary: 1, reading: 0 },
+        totalAnswered: 3,
+        ended: false,
+        currentQuestionId: mockQuestion.id,
+        servedAt: new Date().toISOString(),
+      };
+      expect(service.getMaxQuestionsRemaining(session)).toBe(15);
     });
   });
 

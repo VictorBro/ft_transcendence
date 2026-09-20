@@ -54,6 +54,19 @@ export class PlacementProgressService {
     ]);
   }
 
+  async checkOnboardingCompleted(userId: string, lang: Language): Promise<boolean> {
+    const userLevel = await this.prisma.userLevel.findUnique({
+      where: {
+        userId_lang: {
+          userId,
+          lang,
+        },
+      },
+      select: { id: true },
+    });
+    return userLevel !== null;
+  }
+
   async adjustSessionFromAnswer(
     _answer: string | null,
     _question: QuestionBank,

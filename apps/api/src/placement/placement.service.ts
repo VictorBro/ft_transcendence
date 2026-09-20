@@ -1,6 +1,7 @@
 import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
 import {
   ExamSession,
+  Language,
   PlacementQuestion,
   PlacementResult,
   SubmitAnswerInput,
@@ -78,10 +79,18 @@ export class PlacementService {
     return [session, question, undefined];
   }
 
+  async checkOnboardingCompleted(userId: string, lang: Language): Promise<boolean> {
+    return this.progressService.checkOnboardingCompleted(userId, lang);
+  }
+
   async startPlacement(userId: string, dto: StartPlacementDto): Promise<PlacementQuestion> {
     const existing = await this.sessionService.hasActiveSession(userId);
     if (existing) {
       throw new ConflictException('placement.inProgress');
+    }
+
+    if (!(await this.checkOnboardingCompleted(userId, dto.lang))) {
+      throw new ConflictException('placement.onboardingIncomplete');
     }
 
     const examSession: ExamSession = {
@@ -101,9 +110,15 @@ export class PlacementService {
   }
 
   async getPlacement(userId: string): Promise<PlacementQuestion | PlacementResult> {
-    const [session, question, result] = await this.checkEndedOrTimedOut(userId);
-    if (result !== undefined) return result;
-    assert(question !== undefined);
+    const session = await this.sessionService.loadExamSession(userId);
+    if (!session || !session.currentQuestionId) {
+      throw new NotFoundException('placement.notFound');
+    }
+    const result = await this.progressService.getResult(userId, session);
+    if (result !== undefined) {
+      return result;
+    }
+    const question = await this.progressService.getQuestion(session.currentQuestionId);
     return this.questionService.createPlacementQuestion(question, session);
   }
 
