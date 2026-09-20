@@ -5,6 +5,9 @@ After=docker.service
 
 [Service]
 Type=oneshot
+# Default is 90s. A first pull is ~2.4 GB on a shared-core box, and systemd
+# killing the deploy partway is worse than a slow one.
+TimeoutStartSec=30min
 User=ubuntu
 WorkingDirectory=/home/ubuntu
 ExecStart=/home/ubuntu/deploy.sh
