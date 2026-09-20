@@ -1,0 +1,158 @@
+# Deployment topology: pulls released images, never builds.
+#
+#   docker compose -f compose.deploy.yml pull
+#   docker compose -f compose.deploy.yml --profile migrate run --rm migrate
+#   docker compose -f compose.deploy.yml up -d
+#
+# Standalone on purpose. compose.yml carries `build:` contexts that only make
+# sense next to a checkout, so a server that has no repo cannot use it as a base.
+# Three files are all a fresh host needs:
+#
+#   compose.deploy.yml   this file
+#   Caddyfile            infra/caddy/Caddyfile.prod, renamed
+#   .env                 see .env.deploy.example
+#
+# Everything else arrives from ghcr.io, which serves these packages publicly, so
+# the host needs no registry login.
+
+name: ft_transcendence
+
+services:
+  caddy:
+    image: caddy:2.11.4-alpine
+    depends_on:
+      web:
+        condition: service_healthy
+      api:
+        condition: service_healthy
+    environment:
+      # The certificate is issued for this name, so it must resolve publicly to
+      # this host before the stack starts.
+      SITE_DOMAIN: ${SITE_DOMAIN:?set the public hostname, e.g. ft.example.com}
+      # Let's Encrypt emails this address about expiry it could not renew.
+      ACME_EMAIL: ${ACME_EMAIL:?set an address for the certificate authority}
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      # The issued certificates live here. Lose it and every restart asks the
+      # CA again, which is rate limited to a handful per domain per week.
+      - caddy-data:/data
+      - caddy-config:/config
+    networks:
+      - ft
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://127.0.0.1:2019/config/"]
+      interval: 30s
+      timeout: 5s
+      start_period: 10s
+      retries: 3
+
+  web:
+    image: ghcr.io/victorbro/ft_transcendence/web:${IMAGE_TAG:-latest}
+    depends_on:
+      api:
+        condition: service_started
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      API_INTERNAL_URL: http://api:3001
+      NEXT_TELEMETRY_DISABLED: 1
+    networks:
+      - ft
+    restart: unless-stopped
+
+  api:
+    image: ghcr.io/victorbro/ft_transcendence/api:${IMAGE_TAG:-latest}
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      NODE_ENV: production
+      PORT: 3001
+      APP_VERSION: ${IMAGE_TAG:-latest}
+      DATABASE_URL: postgresql://${POSTGRES_USER:-ft}:${POSTGRES_PASSWORD:?set a real database password}@db:5432/${POSTGRES_DB:-ft_transcendence}?schema=public
+      REDIS_URL: redis://redis:6379
+      # No fallback: inheriting a default would sign production cookies with a
+      # secret that is public in this repo.
+      SESSION_SECRET: ${SESSION_SECRET:?set an explicit SESSION_SECRET, at least 32 characters}
+      LLM_PROVIDER: ${LLM_PROVIDER:-fixture}
+      LLM_API_KEY: ${LLM_API_KEY:-}
+      LLM_MODEL: ${LLM_MODEL:-}
+      AVATAR_STORAGE_DIR: /data/avatars
+    volumes:
+      - avatars-data:/data/avatars
+    networks:
+      - ft
+    restart: unless-stopped
+
+  # One-shot, behind a profile so `up` never starts it. Runs before the new api
+  # does, because a container booting against a schema it predates fails in ways
+  # that are harder to read than a failed migration.
+  #
+  # The build stage of apps/api/Dockerfile, published by images.yml: `prod`
+  # deliberately carries no Prisma CLI and no migrations. A stock node image is
+  # not a shortcut, see docs/VERSIONS.md trap 1c.
+  migrate:
+    image: ghcr.io/victorbro/ft_transcendence/tooling:${IMAGE_TAG:-latest}
+    profiles: [migrate]
+    command: ["pnpm", "--filter", "@ft/api", "exec", "prisma", "migrate", "deploy"]
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-ft}:${POSTGRES_PASSWORD:?set a real database password}@db:5432/${POSTGRES_DB:-ft_transcendence}?schema=public
+    networks:
+      - ft
+    restart: "no"
+
+  db:
+    image: pgvector/pgvector:0.8.6-pg18-trixie
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-ft}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set a real database password}
+      POSTGRES_DB: ${POSTGRES_DB:-ft_transcendence}
+    volumes:
+      # One level above PGDATA: Postgres 18 moved the data directory, so a
+      # volume at /var/lib/postgresql/data would hold nothing.
+      - pg-data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", 'pg_isready -h 127.0.0.1 -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"']
+      interval: 5s
+      timeout: 5s
+      start_period: 30s
+      retries: 10
+    networks:
+      - ft
+    restart: unless-stopped
+
+  redis:
+    image: redis:8-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      start_period: 10s
+      retries: 5
+    networks:
+      - ft
+    restart: unless-stopped
+
+volumes:
+  pg-data:
+  redis-data:
+  caddy-data:
+  caddy-config:
+  avatars-data:
+
+networks:
+  ft:
+    driver: bridge
