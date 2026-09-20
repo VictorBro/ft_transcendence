@@ -21,7 +21,7 @@ export function LanguageSwitcher() {
 
   return (
     <label className="flex items-center text-sm text-slate-400">
-      <span className="mr-2 hidden sm:inline">{t('label')}</span>
+      <span className="sr-only sm:not-sr-only sm:mr-2">{t('label')}</span>
       <select
         value={locale}
         // replace, not push: back should not undo a language change.

@@ -1,4 +1,21 @@
+import type { Page } from '@playwright/test';
+
 import { expect, test } from '../support/session';
+
+/**
+ * The account is worker-scoped and courses are never deleted, so a second test
+ * asking for the same language gets a 409. Both are a usable start; anything
+ * else means setup broke and every assertion after it would be meaningless.
+ * The goal is then pinned, because a course left over from an earlier test
+ * would otherwise decide it.
+ */
+async function ensureCourse(page: Page, lang: string, dailyGoal: number): Promise<void> {
+  const created = await page.request.post('/api/courses', { data: { lang, dailyGoal } });
+  expect([201, 409]).toContain(created.status());
+
+  const pinned = await page.request.patch(`/api/courses/${lang}`, { data: { dailyGoal } });
+  expect(pinned.status()).toBe(200);
+}
 
 /**
  * The fixture starts with no courses, so that state needs no setup. The rest
@@ -23,7 +40,7 @@ test.describe('course home', () => {
   test('the switcher shows no course when the page is one the learner has not started', async ({
     signedIn,
   }) => {
-    await signedIn.request.post('/api/courses', { data: { lang: 'de', dailyGoal: 30 } });
+    await ensureCourse(signedIn, 'de', 30);
     await signedIn.goto('/en/learn/en');
 
     await expect(signedIn.getByRole('combobox', { name: 'Course' })).toHaveValue('');
@@ -38,7 +55,7 @@ test.describe('course home', () => {
   test('shows the course with its level and goal, and the switcher appears', async ({
     signedIn,
   }) => {
-    await signedIn.request.post('/api/courses', { data: { lang: 'de', dailyGoal: 30 } });
+    await ensureCourse(signedIn, 'de', 30);
     await signedIn.goto('/en/learn/de');
 
     await expect(signedIn.getByRole('heading', { name: 'German' })).toBeVisible();
@@ -53,7 +70,7 @@ test.describe('course home', () => {
 
   // Surviving a reload is what separates a PATCH from a select that just moved.
   test('changing the daily goal persists', async ({ signedIn }) => {
-    await signedIn.request.post('/api/courses', { data: { lang: 'fr', dailyGoal: 10 } });
+    await ensureCourse(signedIn, 'fr', 10);
     await signedIn.goto('/en/learn/fr');
 
     await signedIn.getByRole('combobox', { name: 'Daily goal' }).selectOption('60');
@@ -66,8 +83,8 @@ test.describe('course home', () => {
   // The cookie is how /dashboard will know where to send the learner back to
   // (#52). Nothing reads it yet, so without this the middleware is unguarded.
   test('opening a course records it for next time', async ({ signedIn }) => {
-    await signedIn.request.post('/api/courses', { data: { lang: 'de', dailyGoal: 30 } });
-    await signedIn.request.post('/api/courses', { data: { lang: 'fr', dailyGoal: 10 } });
+    await ensureCourse(signedIn, 'de', 30);
+    await ensureCourse(signedIn, 'fr', 10);
 
     const cookie = async () =>
       (await signedIn.context().cookies()).find((c) => c.name === 'ft.lang');
@@ -88,8 +105,8 @@ test.describe('course home', () => {
   // Every page reads its course from the URL, so two tabs share no state worth
   // fighting over. Same context, so they share cookies and the session.
   test('two tabs can sit on two different courses', async ({ signedIn }) => {
-    await signedIn.request.post('/api/courses', { data: { lang: 'de', dailyGoal: 30 } });
-    await signedIn.request.post('/api/courses', { data: { lang: 'fr', dailyGoal: 10 } });
+    await ensureCourse(signedIn, 'de', 30);
+    await ensureCourse(signedIn, 'fr', 10);
 
     const second = await signedIn.context().newPage();
     try {
@@ -109,8 +126,8 @@ test.describe('course home', () => {
   });
 
   test('the switcher moves between courses', async ({ signedIn }) => {
-    await signedIn.request.post('/api/courses', { data: { lang: 'de', dailyGoal: 30 } });
-    await signedIn.request.post('/api/courses', { data: { lang: 'fr', dailyGoal: 10 } });
+    await ensureCourse(signedIn, 'de', 30);
+    await ensureCourse(signedIn, 'fr', 10);
     await signedIn.goto('/en/learn/de');
 
     await signedIn.getByRole('combobox', { name: 'Course' }).selectOption('fr');
