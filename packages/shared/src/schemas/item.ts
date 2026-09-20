@@ -56,9 +56,9 @@ export const CATEGORY_ID_SEGMENT: Record<QuestionCategory, string> = {
 /** `<language>-<3-letter category>-<4 digits>`, for example `en-gram-0001`. */
 export const SOURCE_ID_PATTERN = /^[a-z]{2}-(gram|voca|read)-\d{4}$/;
 
-export const ItemSchema = z
+/** Common fields shared by authored items and LLM-generated items. */
+const BaseItemObject = z
   .object({
-    sourceId: z.string().regex(SOURCE_ID_PATTERN, 'expected <lang>-<gram|voca|read>-<4 digits>'),
     level: LevelSchema,
     topic: TopicSchema,
     /** Reading questions only: the text the question is about. */
@@ -69,7 +69,26 @@ export const ItemSchema = z
     /** Seconds on the clock. The exam counts a timeout as a wrong answer. */
     timeLimitS: z.number().int().positive(),
   })
-  .strict()
+  .strict();
+
+/** Output expected from the LLM (no sourceId, it will be set to null in DB). */
+export const GeneratedItemSchema = BaseItemObject.refine(
+  (item) => item.options.includes(item.answer),
+  {
+    message: 'answer must appear verbatim in options',
+    path: ['answer'],
+  },
+).refine((item) => new Set(item.options).size === item.options.length, {
+  message: 'options must all be different',
+  path: ['options'],
+});
+
+export type GeneratedItem = z.infer<typeof GeneratedItemSchema>;
+
+/** Authored item from content/items/*.json (requires a valid sourceId). */
+export const ItemSchema = BaseItemObject.extend({
+  sourceId: z.string().regex(SOURCE_ID_PATTERN, 'expected <lang>-<gram|voca|read>-<4 digits>'),
+})
   // Stored as text rather than an index so options can be shuffled when served.
   .refine((item) => item.options.includes(item.answer), {
     message: 'answer must appear verbatim in options',
