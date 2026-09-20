@@ -41,6 +41,45 @@
     "roleplayTitle": "Roleplay",
     "roleplayDescription": "Practice with useful real-life scenarios."
   },
+  "Onboarding": {
+    "title": "Get started",
+    "chooseCourseHeading": "What do you want to learn?",
+    "chooseCourseIntro": "Pick a language and how long you want to practise each day. The pace can be changed later.",
+    "languageLegend": "Language to learn",
+    "goalLegend": "Daily goal",
+    "goalMinutes": "{minutes} min",
+    "next": "Next",
+    "chooseLevelIntro": "Take the placement test, or set your level yourself if you already know it.",
+    "takeTest": "Take the placement test",
+    "setLevelMyself": "I already know my level",
+    "levelLegend": "Level",
+    "confirmLevel": "Start learning",
+    "language": {
+      "en": "English",
+      "fr": "Français",
+      "de": "Deutsch"
+    },
+    "dailyGoalSummary": "Daily goal: {minutes} min",
+    "noNewLanguage": "No new language to add for now.",
+    "backToCourse": "Back to my {language} course",
+    "languageInSentence": {
+      "en": "English",
+      "fr": "French",
+      "de": "German"
+    },
+    "levelTile": {
+      "A0": "You are starting from scratch. Your lessons will aim at level A1.",
+      "A1": "You manage simple phrases. Your lessons will aim at level A2.",
+      "A2": "You handle everyday exchanges. Your lessons will aim at level B1.",
+      "B1": "You hold a conversation on familiar topics. Your lessons will aim at level B2.",
+      "B2": "You express yourself comfortably on a range of topics. Your lessons will aim at level C1.",
+      "C1": "You express yourself fluently, including on complex topics. Your lessons will aim at level C2.",
+      "C2": "You have mastered the language. Your lessons will maintain and refine it."
+    },
+    "ladderYou": "You",
+    "ladderGoal": "Goal",
+    "back": "Back"
+  },
   "ComingSoon": {
     "stillInDevelopment": "This mode is still in development. Check back soon."
   },

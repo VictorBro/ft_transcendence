@@ -29,3 +29,66 @@
     text-rendering: optimizeLegibility;
   }
 }
+
+@layer utilities {
+  /* The idle bob of the inline rocket. */
+  @keyframes liftoff {
+    0% {
+      transform: translateY(6px);
+      opacity: 0.2;
+    }
+    55% {
+      transform: translateY(-10px);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-24px);
+      opacity: 0;
+    }
+  }
+
+  .animate-liftoff {
+    animation: liftoff 900ms ease-in infinite;
+  }
+
+  /* `top` in percentages, so the rocket crosses whatever height its container
+     has: no measuring, and nothing to fix when the text above changes. */
+  @keyframes launch {
+    0% {
+      top: 88%;
+      opacity: 0;
+      transform: translateX(-50%) scale(0.8);
+    }
+    12% {
+      opacity: 1;
+    }
+    85% {
+      opacity: 1;
+    }
+    100% {
+      top: -6%;
+      opacity: 0;
+      transform: translateX(-50%) scale(1.1);
+    }
+  }
+
+  .animate-launch {
+    animation: launch 1500ms cubic-bezier(0.5, 0, 0.75, 0) forwards;
+  }
+
+  @keyframes twinkle {
+    0%,
+    100% {
+      transform: scale(0.4);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .animate-twinkle {
+    animation: twinkle 900ms ease-in-out infinite;
+  }
+}
