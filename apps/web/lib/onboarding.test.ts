@@ -37,7 +37,7 @@ describe('resolveOnboardingStep', () => {
 
 describe('nextLevel', () => {
   it('aims one level above what the learner knows', () => {
-    expect(nextLevel('A0')).toBe('A1');
+    expect(nextLevel('A1')).toBe('A2');
     expect(nextLevel('B1')).toBe('B2');
   });
 

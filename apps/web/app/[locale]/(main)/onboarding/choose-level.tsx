@@ -114,7 +114,7 @@ export function ChooseLevel({ course }: { course: Course }) {
         >
           <fieldset className="flex flex-col gap-3 border-0 p-0">
             <legend className="mb-1 text-sm font-medium">{t('levelLegend')}</legend>
-            <div className="grid grid-cols-7 gap-2">
+            <div className="grid grid-cols-6 gap-2">
               {LEVELS.map((option) => (
                 <label
                   key={option}

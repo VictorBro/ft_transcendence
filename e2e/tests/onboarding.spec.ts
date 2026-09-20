@@ -72,9 +72,9 @@ test.describe('onboarding', () => {
     await startGermanCourse(freshLearner, '10 min');
     await freshLearner.getByRole('button', { name: 'I already know my level' }).click();
 
-    await pick(freshLearner, 'Level', 'A0');
+    await pick(freshLearner, 'Level', 'A1');
     await expect(
-      freshLearner.getByText('You are starting from scratch. Your lessons will aim at level A1.'),
+      freshLearner.getByText('You manage simple phrases. Your lessons will aim at level A2.'),
     ).toBeVisible();
 
     await pick(freshLearner, 'Level', 'C2');

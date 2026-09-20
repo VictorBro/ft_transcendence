@@ -28,14 +28,6 @@ const item: Item = {
 const file = { lang: 'en', category: 'grammar', items: [item] } as const;
 
 describe('ItemSchema', () => {
-  /**
-   * A0 says a learner knows nothing yet, so there is nothing below A1 to ask.
-   * Without this, an item authored at A0 would sit in a pool no exam draws from.
-   */
-  it('rejects a question authored at A0', () => {
-    expect(ItemSchema.safeParse({ ...item, level: 'A0' }).success).toBe(false);
-  });
-
   it('accepts a well-formed item', () => {
     expect(ItemSchema.safeParse(item).success).toBe(true);
   });
