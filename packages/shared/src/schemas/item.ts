@@ -19,16 +19,21 @@ export type QuestionCategory = z.infer<typeof QuestionCategorySchema>;
 /**
  * CEFR, from beginner to mastery, plus A0.
  *
- * A0 is not a CEFR level: it is the common convention for "before A1", and it
- * exists because nothing else can say that a learner knows nothing yet. Without
- * it, a complete beginner and the placement exam that fails every A1 question
- * both have to be recorded as A1, which is false.
- *
- * It describes a learner, never a question: no item in content/items carries it.
+ * A0 is not a CEFR level: it is the convention for "before A1", and it exists
+ * because nothing else can say that a learner knows nothing yet.
  */
 export const LEVELS = ['A0', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2'] as const;
 export const LevelSchema = z.enum(LEVELS);
 export type Level = z.infer<typeof LevelSchema>;
+
+/**
+ * What a question can be worth. A0 describes a learner, so there is nothing
+ * below A1 to ask: an item authored at A0 must fail validation rather than sit
+ * in a pool no exam can draw from.
+ */
+export const QUESTION_LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'] as const;
+export const QuestionLevelSchema = z.enum(QUESTION_LEVELS);
+export type QuestionLevel = z.infer<typeof QuestionLevelSchema>;
 
 /**
  * A closed list on purpose: it keys both the questions and the lesson topics,
@@ -68,7 +73,7 @@ export const SOURCE_ID_PATTERN = /^[a-z]{2}-(gram|voca|read)-\d{4}$/;
 export const ItemSchema = z
   .object({
     sourceId: z.string().regex(SOURCE_ID_PATTERN, 'expected <lang>-<gram|voca|read>-<4 digits>'),
-    level: LevelSchema,
+    level: QuestionLevelSchema,
     topic: TopicSchema,
     /** Reading questions only: the text the question is about. */
     readText: z.string().min(1).optional(),

@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { LevelSchema, OPTIONS_PER_ITEM, QuestionCategorySchema } from './item';
+import { LevelSchema, OPTIONS_PER_ITEM, QuestionCategorySchema, QuestionLevelSchema } from './item';
 
 /** The exam that decides a course's level. Questions come from content/items/*.json. */
 
@@ -16,7 +16,7 @@ export const PlacementQuestionSchema = z
   .object({
     questionId: z.uuid(),
     category: QuestionCategorySchema,
-    level: LevelSchema,
+    level: QuestionLevelSchema,
     question: z.string().min(1),
     readText: z.string().min(1).optional(),
     options: z.array(z.string().min(1)).length(OPTIONS_PER_ITEM),
