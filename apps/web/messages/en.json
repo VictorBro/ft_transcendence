@@ -143,6 +143,7 @@
     },
     "placement": {
       "inProgress": "A placement test is already running. Finish it first.",
+      "invalidChoice": "Invalid answer choice for this question.",
       "notFound": "No placement test is running",
       "onboardingIncomplete": "Complete onboarding before taking the placement test.",
       "expired": "That placement test has expired. Start a new one.",

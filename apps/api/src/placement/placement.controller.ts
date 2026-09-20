@@ -1,5 +1,6 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Post } from '@nestjs/common';
 import {
+  ApiBadRequestResponse,
   ApiConflictResponse,
   ApiCreatedResponse,
   ApiExtraModels,
@@ -94,6 +95,9 @@ export class PlacementController {
         { $ref: getSchemaPath(PlacementResultDto) },
       ],
     },
+  })
+  @ApiBadRequestResponse({
+    description: 'Choice is not one of the question options (`placement.invalidChoice`)',
   })
   @ApiNotFoundResponse({ description: 'No active placement exam' })
   submitAnswer(

@@ -1,4 +1,4 @@
-import { ConflictException, NotFoundException } from '@nestjs/common';
+import { BadRequestException, ConflictException, NotFoundException } from '@nestjs/common';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import type { ExamSession, PlacementQuestion, PlacementResult } from '@ft/shared';
 
@@ -46,6 +46,7 @@ const mockPlacementResult: PlacementResult = {
 function createPlacementService() {
   const sessionService = {
     acquireLock: vi.fn().mockResolvedValue(true),
+    acquireLockWithRetry: vi.fn().mockResolvedValue(true),
     releaseLock: vi.fn().mockResolvedValue(undefined),
     hasActiveSession: vi.fn().mockResolvedValue(false),
     saveExamSession: vi.fn().mockResolvedValue(undefined),
@@ -126,6 +127,7 @@ describe('PlacementService', () => {
 
       const result = await service.startPlacement('user-1', { lang: 'de' });
       expect(result).toEqual(mockPlacementQuestion);
+      expect(sessionService.deleteSession).toHaveBeenCalledWith('user-1');
       expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1');
       expect(questionService.getNewPlacementQuestion).toHaveBeenCalledWith(
         'user-1',
@@ -135,6 +137,15 @@ describe('PlacementService', () => {
           totalAnswered: 0,
         }),
       );
+    });
+
+    it('purges existing stale session and leftover answers on start', async () => {
+      vi.mocked(sessionService.hasActiveSession).mockResolvedValue(false);
+      vi.mocked(progressService.checkOnboardingCompleted).mockResolvedValue(true);
+
+      await service.startPlacement('user-1', { lang: 'de' });
+
+      expect(sessionService.deleteSession).toHaveBeenCalledWith('user-1');
     });
   });
 
@@ -320,6 +331,52 @@ describe('PlacementService', () => {
   });
 
   describe('submitAnswer', () => {
+    it('throws ConflictException if lock cannot be acquired', async () => {
+      vi.mocked(sessionService.acquireLockWithRetry).mockResolvedValue(false);
+
+      await expect(
+        service.submitAnswer('user-1', { questionId: 'q-1', choice: 'a' }),
+      ).rejects.toThrow(new ConflictException('placement.inProgress'));
+      expect(sessionService.releaseLock).not.toHaveBeenCalled();
+    });
+
+    it('releases lock even if checkEndedOrTimedOut throws', async () => {
+      vi.mocked(sessionService.loadExamSession).mockResolvedValue(null);
+
+      await expect(
+        service.submitAnswer('user-1', { questionId: 'q-1', choice: 'a' }),
+      ).rejects.toThrow(NotFoundException);
+      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1');
+    });
+
+    it('throws BadRequestException and releases lock if choice is not in question options', async () => {
+      const session: ExamSession = {
+        lang: 'de',
+        lo: 'A1',
+        hi: 'C2',
+        level: 'B1',
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
+        totalAnswered: 0,
+        ended: false,
+        currentQuestionId: mockQuestion.id,
+        servedAt: new Date().toISOString(),
+      };
+      vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
+      vi.mocked(progressService.getResult).mockResolvedValue(undefined);
+      vi.mocked(progressService.getQuestion).mockResolvedValue(mockQuestion);
+      vi.mocked(progressService.hasTimedOut).mockReturnValue(false);
+
+      await expect(
+        service.submitAnswer('user-1', {
+          questionId: mockQuestion.id,
+          choice: 'not-an-option',
+        }),
+      ).rejects.toThrow(new BadRequestException('placement.invalidChoice'));
+      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1');
+      expect(sessionService.archiveQuestionAnswer).not.toHaveBeenCalled();
+    });
+
     it('returns current question if questionId does not match', async () => {
       const session: ExamSession = {
         lang: 'de',

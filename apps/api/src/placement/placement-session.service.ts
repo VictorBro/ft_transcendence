@@ -67,6 +67,32 @@ export class PlacementSessionService {
   }
 
   /**
+   * Attempts to acquire the lock, retrying with a short backoff if currently held.
+   * Useful for concurrent operations like answer submissions to absorb rapid double-clicks.
+   *
+   * @param userId - Unique identifier of the user.
+   * @param maxRetries - Maximum retry attempts (defaults to 10).
+   * @param delayMs - Delay in milliseconds between retries (defaults to 50).
+   * @param ttlSeconds - Time-to-live for the lock in seconds (defaults to `PLACEMENT_LOCK_TTL_SECONDS`).
+   * @returns `true` if lock was successfully acquired; `false` if timed out.
+   */
+  async acquireLockWithRetry(
+    userId: string,
+    maxRetries = 10,
+    delayMs = 50,
+    ttlSeconds = PLACEMENT_LOCK_TTL_SECONDS,
+  ): Promise<boolean> {
+    for (let i = 0; i <= maxRetries; i++) {
+      const acquired = await this.acquireLock(userId, ttlSeconds);
+      if (acquired) return true;
+      if (i < maxRetries) {
+        await new Promise((resolve) => setTimeout(resolve, delayMs));
+      }
+    }
+    return false;
+  }
+
+  /**
    * Checks whether an active placement session exists in Redis for the user.
    * Only checks key existence; there can be at most one placement session per user.
    *
@@ -87,19 +113,22 @@ export class PlacementSessionService {
    */
   async saveExamSession(userId: string, session: ExamSession): Promise<void> {
     const key = this.evalKey(userId);
-    await this.redis.client.hSet(key, {
-      lang: session.lang,
-      lo: session.lo,
-      hi: session.hi,
-      level: session.level,
-      mistakesPerLevel: session.mistakesPerLevel.toString(),
-      askedPerCategory: JSON.stringify(session.askedPerCategory),
-      totalAnswered: session.totalAnswered.toString(),
-      ended: session.ended.toString(),
-      currentQuestionId: session.currentQuestionId ?? '',
-      servedAt: session.servedAt,
-    });
-    await this.redis.client.expire(key, PLACEMENT_REDIS_KEY_TTL);
+    await this.redis.client
+      .multi()
+      .hSet(key, {
+        lang: session.lang,
+        lo: session.lo,
+        hi: session.hi,
+        level: session.level,
+        mistakesPerLevel: session.mistakesPerLevel.toString(),
+        askedPerCategory: JSON.stringify(session.askedPerCategory),
+        totalAnswered: session.totalAnswered.toString(),
+        ended: session.ended.toString(),
+        currentQuestionId: session.currentQuestionId ?? '',
+        servedAt: session.servedAt,
+      })
+      .expire(key, PLACEMENT_REDIS_KEY_TTL)
+      .exec();
   }
 
   /**
@@ -137,8 +166,11 @@ export class PlacementSessionService {
    */
   async archiveQuestionAnswer(userId: string, answer: SubmitAnswerInput): Promise<void> {
     const questionsListKey = this.evalQuestionsKey(userId);
-    await this.redis.client.rPush(questionsListKey, JSON.stringify(answer));
-    await this.redis.client.expire(questionsListKey, PLACEMENT_REDIS_KEY_TTL);
+    await this.redis.client
+      .multi()
+      .rPush(questionsListKey, JSON.stringify(answer))
+      .expire(questionsListKey, PLACEMENT_REDIS_KEY_TTL)
+      .exec();
   }
 
   /**

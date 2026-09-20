@@ -5,6 +5,13 @@ import type { RedisService } from '../redis/redis.service';
 import { PLACEMENT_REDIS_KEY_TTL, PlacementSessionService } from './placement-session.service';
 
 function createSessionService(redisClientOverrides: Record<string, unknown> = {}) {
+  const multiMock = {
+    hSet: vi.fn().mockReturnThis(),
+    rPush: vi.fn().mockReturnThis(),
+    expire: vi.fn().mockReturnThis(),
+    exec: vi.fn().mockResolvedValue([]),
+  };
+
   const redis = {
     client: {
       exists: vi.fn().mockResolvedValue(0),
@@ -16,6 +23,7 @@ function createSessionService(redisClientOverrides: Record<string, unknown> = {}
       lRange: vi.fn().mockResolvedValue([]),
       expire: vi.fn().mockResolvedValue(1),
       set: vi.fn().mockResolvedValue('OK'),
+      multi: vi.fn(() => multiMock),
       ...redisClientOverrides,
     },
   };
@@ -23,17 +31,20 @@ function createSessionService(redisClientOverrides: Record<string, unknown> = {}
   return {
     service: new PlacementSessionService(redis as unknown as RedisService),
     redis,
+    multiMock,
   };
 }
 
 describe('PlacementSessionService', () => {
   let service: PlacementSessionService;
   let redis: ReturnType<typeof createSessionService>['redis'];
+  let multiMock: ReturnType<typeof createSessionService>['multiMock'];
 
   beforeEach(() => {
     const created = createSessionService();
     service = created.service;
     redis = created.redis;
+    multiMock = created.multiMock;
   });
 
   const sampleSession: ExamSession = {
@@ -80,6 +91,29 @@ describe('PlacementSessionService', () => {
     });
   });
 
+  describe('acquireLockWithRetry', () => {
+    it('returns true immediately if lock is acquired on first attempt', async () => {
+      redis.client.set.mockResolvedValue('OK');
+      const result = await service.acquireLockWithRetry('u-1', 2, 1);
+      expect(result).toBe(true);
+      expect(redis.client.set).toHaveBeenCalledTimes(1);
+    });
+
+    it('returns true after retrying if lock is initially held', async () => {
+      redis.client.set.mockResolvedValueOnce(null).mockResolvedValueOnce('OK');
+      const result = await service.acquireLockWithRetry('u-1', 2, 1);
+      expect(result).toBe(true);
+      expect(redis.client.set).toHaveBeenCalledTimes(2);
+    });
+
+    it('returns false if lock cannot be acquired after max retries', async () => {
+      redis.client.set.mockResolvedValue(null);
+      const result = await service.acquireLockWithRetry('u-1', 2, 1);
+      expect(result).toBe(false);
+      expect(redis.client.set).toHaveBeenCalledTimes(3);
+    });
+  });
+
   describe('hasActiveSession', () => {
     it('returns true when session exists in redis', async () => {
       redis.client.exists.mockResolvedValue(1);
@@ -96,10 +130,11 @@ describe('PlacementSessionService', () => {
   });
 
   describe('saveExamSession', () => {
-    it('stores session data into redis hash with TTL', async () => {
+    it('stores session data into redis hash with TTL within a multi transaction', async () => {
       await service.saveExamSession('u-1', sampleSession);
 
-      expect(redis.client.hSet).toHaveBeenCalledWith('user:u-1:eval', {
+      expect(redis.client.multi).toHaveBeenCalled();
+      expect(multiMock.hSet).toHaveBeenCalledWith('user:u-1:eval', {
         lang: 'de',
         lo: 'A1',
         hi: 'C2',
@@ -111,7 +146,8 @@ describe('PlacementSessionService', () => {
         currentQuestionId: sampleSession.currentQuestionId,
         servedAt: sampleSession.servedAt,
       });
-      expect(redis.client.expire).toHaveBeenCalledWith('user:u-1:eval', PLACEMENT_REDIS_KEY_TTL);
+      expect(multiMock.expire).toHaveBeenCalledWith('user:u-1:eval', PLACEMENT_REDIS_KEY_TTL);
+      expect(multiMock.exec).toHaveBeenCalled();
     });
   });
 
@@ -142,7 +178,7 @@ describe('PlacementSessionService', () => {
   });
 
   describe('archiveQuestionAnswer', () => {
-    it('adds serialized answer to redis list and sets TTL', async () => {
+    it('adds serialized answer to redis list and sets TTL within a multi transaction', async () => {
       const answer: SubmitAnswerInput = {
         questionId: 'b7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64',
         choice: 'ist',
@@ -150,14 +186,16 @@ describe('PlacementSessionService', () => {
 
       await service.archiveQuestionAnswer('u-1', answer);
 
-      expect(redis.client.rPush).toHaveBeenCalledWith(
+      expect(redis.client.multi).toHaveBeenCalled();
+      expect(multiMock.rPush).toHaveBeenCalledWith(
         'user:u-1:eval_questions',
         JSON.stringify(answer),
       );
-      expect(redis.client.expire).toHaveBeenCalledWith(
+      expect(multiMock.expire).toHaveBeenCalledWith(
         'user:u-1:eval_questions',
         PLACEMENT_REDIS_KEY_TTL,
       );
+      expect(multiMock.exec).toHaveBeenCalled();
     });
   });
 

@@ -47,6 +47,14 @@ function createMockQuestionBank(): QuestionBank[] {
   return questions;
 }
 
+function getIncorrectChoice(question: QuestionBank): string {
+  const choice = question.options.find((option) => option !== question.answer);
+  if (choice === undefined) {
+    throw new Error(`Question ${question.id} has no incorrect option`);
+  }
+  return choice;
+}
+
 function setupPlacementEnvironment() {
   const questionBank = createMockQuestionBank();
   const questionMap = new Map(questionBank.map((q) => [q.id, q]));
@@ -148,8 +156,33 @@ function setupPlacementEnvironment() {
         }
         return keys.length;
       }),
-      expire: vi.fn(async () => 1),
+      expire: vi.fn(async (_key?: string, _ttl?: number) => 1),
       set: vi.fn(async () => 'OK'),
+      multi: vi.fn(() => {
+        const ops: (() => Promise<unknown>)[] = [];
+        const multiObj = {
+          hSet: vi.fn((key: string, data: Record<string, string>) => {
+            ops.push(() => redis.client.hSet(key, data));
+            return multiObj;
+          }),
+          rPush: vi.fn((key: string, val: string) => {
+            ops.push(() => redis.client.rPush(key, val));
+            return multiObj;
+          }),
+          expire: vi.fn((key: string, ttl: number) => {
+            ops.push(() => redis.client.expire(key, ttl));
+            return multiObj;
+          }),
+          exec: vi.fn(async () => {
+            const results = [];
+            for (const op of ops) {
+              results.push(await op());
+            }
+            return results;
+          }),
+        };
+        return multiObj;
+      }),
     },
   };
 
@@ -257,7 +290,7 @@ describe('Placement Exam Scenarios', () => {
       // At B1 and A2: answer incorrectly to fail down to A1
       // At A1: answer correctly to succeed A1
       const isA1 = question.level === 'A1';
-      const choice = isA1 ? qBankItem!.answer : 'wrong_choice';
+      const choice = isA1 ? qBankItem!.answer : getIncorrectChoice(qBankItem!);
 
       currentResponse = await env.service.submitAnswer(userId, {
         questionId: question.questionId,
@@ -369,7 +402,7 @@ describe('Placement Exam Scenarios', () => {
       const qBankItem = env.questionMap.get(question.questionId);
       expect(qBankItem).toBeDefined();
 
-      const choice = isMistake ? 'intentionally_wrong_answer' : qBankItem!.answer;
+      const choice = isMistake ? getIncorrectChoice(qBankItem!) : qBankItem!.answer;
 
       currentResponse = await env.service.submitAnswer(userId, {
         questionId: question.questionId,
@@ -428,7 +461,7 @@ describe('Placement Exam Scenarios', () => {
         const qBankItem = env.questionMap.get(question.questionId);
         expect(qBankItem).toBeDefined();
 
-        const choice = decision === 'up' ? qBankItem!.answer : 'wrong_choice';
+        const choice = decision === 'up' ? qBankItem!.answer : getIncorrectChoice(qBankItem!);
 
         currentResponse = await env.service.submitAnswer(userId, {
           questionId: question.questionId,
@@ -624,7 +657,7 @@ describe('Placement Exam Scenarios', () => {
       // Submit answer for the first question -> next question is served
       const nextQuestion = (await env.service.submitAnswer(userId, {
         questionId: firstQuestion.questionId,
-        choice: 'any_choice',
+        choice: getIncorrectChoice(env.questionMap.get(firstQuestion.questionId)!),
       })) as PlacementQuestion;
 
       // The next question is also already in userSeenQuestion before its answer arrives
@@ -646,6 +679,35 @@ describe('Placement Exam Scenarios', () => {
           updatedAt: expect.any(Date),
         },
       });
+    });
+
+    it('purges leftover answers from expired prior exam upon starting a new placement', async () => {
+      const userId = 'user-stale-answers-flow';
+      vi.mocked(env.prisma.userLevel.findUnique).mockResolvedValue({ id: 'ul-1' });
+
+      // Simulate a leftover answer list in redis (e.g. from an expired prior exam)
+      await env.redis.client.rPush(
+        `user:${userId}:eval_questions`,
+        JSON.stringify({ questionId: 'stale-question-id', choice: 'stale-choice' }),
+      );
+
+      // Start new placement exam
+      const firstQuestion = (await env.service.startPlacement(userId, {
+        lang: 'de',
+      })) as PlacementQuestion;
+      expect(firstQuestion).toBeDefined();
+
+      // Submit an answer to the new question
+      await env.service.submitAnswer(userId, {
+        questionId: firstQuestion.questionId,
+        choice: getIncorrectChoice(env.questionMap.get(firstQuestion.questionId)!),
+      });
+
+      // Verify that getQuestionAnswers contains ONLY the new answer, not the stale one
+      const rawAnswers = await env.redis.client.lRange(`user:${userId}:eval_questions`, 0, -1);
+      const parsedAnswers = rawAnswers.map((r) => JSON.parse(r));
+      expect(parsedAnswers).toHaveLength(1);
+      expect(parsedAnswers[0].questionId).toBe(firstQuestion.questionId);
     });
   });
 });

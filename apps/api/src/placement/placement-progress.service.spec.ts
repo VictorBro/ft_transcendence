@@ -1,4 +1,4 @@
-import { NotFoundException } from '@nestjs/common';
+import { BadRequestException, NotFoundException } from '@nestjs/common';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import type { ExamSession } from '@ft/shared';
 
@@ -164,6 +164,25 @@ describe('PlacementProgressService', () => {
   });
 
   describe('adjustSessionFromAnswer', () => {
+    it('throws BadRequestException if answer is not null and not in question options', async () => {
+      const session: ExamSession = {
+        lang: 'de',
+        lo: 'A1',
+        hi: 'C2',
+        level: 'B1',
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
+        totalAnswered: 0,
+        ended: false,
+        currentQuestionId: mockQuestion.id,
+        servedAt: new Date().toISOString(),
+      };
+
+      await expect(
+        service.adjustSessionFromAnswer('invalid-choice', mockQuestion, session, 'user-1'),
+      ).rejects.toThrow(new BadRequestException('placement.invalidChoice'));
+    });
+
     it('increments category count on correct answer', async () => {
       const session: ExamSession = {
         lang: 'de',
@@ -198,7 +217,7 @@ describe('PlacementProgressService', () => {
         servedAt: new Date().toISOString(),
       };
 
-      await service.adjustSessionFromAnswer('wrong', mockQuestion, session, 'user-1');
+      await service.adjustSessionFromAnswer('hat', mockQuestion, session, 'user-1');
       expect(session.mistakesPerLevel).toBe(0);
       expect(session.hi).toBe('B1');
       expect(session.level).toBe('A2');
@@ -271,7 +290,7 @@ describe('PlacementProgressService', () => {
         servedAt: new Date().toISOString(),
       };
 
-      await service.adjustSessionFromAnswer('wrong', mockQuestion, session, 'user-1');
+      await service.adjustSessionFromAnswer('hat', mockQuestion, session, 'user-1');
       expect(session.ended).toBe(true);
       expect(session.level).toBe('A1');
       expect(prisma.$transaction).toHaveBeenCalled();
@@ -322,7 +341,7 @@ describe('PlacementProgressService', () => {
           servedAt: new Date().toISOString(),
         };
 
-        await service.adjustSessionFromAnswer('wrong', mockQuestion, session, 'user-1');
+        await service.adjustSessionFromAnswer('hat', mockQuestion, session, 'user-1');
         expect(session.ended).toBe(true);
         expect(session.level).toBe('A1');
       });
@@ -379,7 +398,7 @@ describe('PlacementProgressService', () => {
           servedAt: new Date().toISOString(),
         };
 
-        await service.adjustSessionFromAnswer('wrong', mockQuestion, session, 'user-1');
+        await service.adjustSessionFromAnswer('hat', mockQuestion, session, 'user-1');
         expect(session.ended).toBe(true);
         expect(session.level).toBe('B2');
       });
@@ -417,7 +436,7 @@ describe('PlacementProgressService', () => {
           servedAt: new Date().toISOString(),
         };
 
-        await service.adjustSessionFromAnswer('wrong', mockQuestion, session, 'user-1');
+        await service.adjustSessionFromAnswer('hat', mockQuestion, session, 'user-1');
         expect(session.ended).toBe(true);
         expect(session.level).toBe('C2');
       });

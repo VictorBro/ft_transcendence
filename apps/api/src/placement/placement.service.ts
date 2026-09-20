@@ -1,4 +1,9 @@
-import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  ConflictException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { ExamSession, PlacementQuestion, PlacementResult, SubmitAnswerInput } from '@ft/shared';
 import assert from 'node:assert';
 
@@ -115,6 +120,8 @@ export class PlacementService {
         throw new ConflictException('placement.onboardingIncomplete');
       }
 
+      await this.sessionService.deleteSession(userId);
+
       const examSession: ExamSession = {
         lang: dto.lang,
         lo: 'A1',
@@ -164,22 +171,36 @@ export class PlacementService {
    *
    * @param userId - Unique identifier of the user.
    * @param dto - Answer payload containing the question ID and choice.
-   * @returns The next placement question or the final placement result if completed.
+   * @throws BadRequestException If choice is not null and not one of question.options (`placement.invalidChoice`).
+   * @throws ConflictException If the placement lock cannot be acquired (`placement.inProgress`).
    * @throws NotFoundException If no active placement session exists.
    */
   async submitAnswer(
     userId: string,
     dto: SubmitAnswerDto,
   ): Promise<PlacementQuestion | PlacementResult> {
-    const [session, question, result] = await this.checkEndedOrTimedOut(userId);
-    if (result !== undefined) return result;
-    assert(question !== undefined);
-
-    if (dto.questionId !== session.currentQuestionId) {
-      return this.questionService.createPlacementQuestion(question, session);
+    const acquired = await this.sessionService.acquireLockWithRetry(userId);
+    if (!acquired) {
+      throw new ConflictException('placement.inProgress');
     }
 
-    return this.processAnswer(userId, dto.choice, question, session);
+    try {
+      const [session, question, result] = await this.checkEndedOrTimedOut(userId);
+      if (result !== undefined) return result;
+      assert(question !== undefined);
+
+      if (dto.questionId !== session.currentQuestionId) {
+        return this.questionService.createPlacementQuestion(question, session);
+      }
+
+      if (dto.choice !== null && !question.options.includes(dto.choice)) {
+        throw new BadRequestException('placement.invalidChoice');
+      }
+
+      return await this.processAnswer(userId, dto.choice, question, session);
+    } finally {
+      await this.sessionService.releaseLock(userId);
+    }
   }
 
   /**

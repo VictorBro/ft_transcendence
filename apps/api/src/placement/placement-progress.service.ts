@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import {
   ExamSession,
   Language,
@@ -108,6 +108,10 @@ export class PlacementProgressService {
     session: ExamSession,
     userId: string,
   ): Promise<void> {
+    if (answer !== null && !question.options.includes(answer)) {
+      throw new BadRequestException('placement.invalidChoice');
+    }
+
     const isCorrect = answer !== null && answer === question.answer;
 
     if (!isCorrect) {

@@ -53,6 +53,12 @@ function createService(
       rPush: vi.fn().mockResolvedValue(1),
       lRange: vi.fn().mockResolvedValue([]),
       expire: vi.fn().mockResolvedValue(1),
+      multi: vi.fn(() => ({
+        hSet: vi.fn().mockReturnThis(),
+        rPush: vi.fn().mockReturnThis(),
+        expire: vi.fn().mockReturnThis(),
+        exec: vi.fn().mockResolvedValue([]),
+      })),
       ...redisClientOverrides,
     },
   };

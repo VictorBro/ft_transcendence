@@ -143,6 +143,7 @@
     },
     "placement": {
       "inProgress": "Ein Einstufungstest läuft bereits. Beende ihn zuerst.",
+      "invalidChoice": "Ungültige Antwortauswahl für diese Frage.",
       "notFound": "Es läuft kein Einstufungstest",
       "onboardingIncomplete": "Schließe das Onboarding ab, bevor du den Einstufungstest machst.",
       "expired": "Dieser Einstufungstest ist abgelaufen. Starte einen neuen.",

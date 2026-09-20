@@ -41,6 +41,7 @@ export const ERROR_CODES = [
   'course.alreadyStarted',
   'course.notFound',
   'placement.inProgress',
+  'placement.invalidChoice',
   'placement.notFound',
   'placement.onboardingIncomplete',
   /** Left unfinished long enough that its clock is meaningless. */
