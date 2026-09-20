@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { DailyGoalSchema, LEARNABLE_LANGUAGES, type DailyGoal, type Language } from '@ft/shared';
+import { LEARNABLE_LANGUAGES, type DailyGoal, type Language } from '@ft/shared';
 
 import { Link, useRouter } from '@/i18n/navigation';
 import { startCourse } from '@/lib/courses-client';
@@ -10,8 +10,8 @@ import { useErrorMessage } from '@/lib/error-message';
 import { FormError, SubmitButton } from '@/components/form';
 import { Flag } from '@/components/flag';
 
-/** Read from the schema, so adding a goal is one change and not two. */
-const DAILY_GOALS: readonly DailyGoal[] = DailyGoalSchema.options.map((option) => option.value);
+/** Typed against DailyGoal, so a value the schema drops stops compiling here. */
+const DAILY_GOALS: readonly DailyGoal[] = [10, 30, 60];
 
 /** Step one. "Next" writes the course at once, which is what lets step two
  *  survive a refresh or an abandoned exam. */
