@@ -34,6 +34,7 @@ function createMockQuestionBank(): QuestionBank[] {
           topic: 'verbs_morphology',
           category: cat,
           readText: null,
+          readText: cat === 'reading' ? `Read text for ${level} ${cat} ${i}` : null,
           question: `Question ${level} ${cat} ${i}`,
           options: [`correct_${level}_${cat}_${i}`, 'option_b', 'option_c', 'option_d'],
           answer: `correct_${level}_${cat}_${i}`,

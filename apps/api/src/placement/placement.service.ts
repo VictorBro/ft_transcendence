@@ -135,12 +135,15 @@ export class PlacementService {
    */
   async getPlacement(userId: string): Promise<PlacementQuestion | PlacementResult> {
     const session = await this.sessionService.loadExamSession(userId);
-    if (!session || !session.currentQuestionId) {
+    if (!session) {
       throw new NotFoundException('placement.notFound');
     }
     const result = await this.progressService.getResult(userId, session);
     if (result !== undefined) {
       return result;
+    }
+    if (!session.currentQuestionId) {
+      throw new NotFoundException('placement.notFound');
     }
     const question = await this.progressService.getQuestion(session.currentQuestionId);
     return this.questionService.createPlacementQuestion(question, session);

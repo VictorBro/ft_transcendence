@@ -42,8 +42,8 @@ export class PlacementQuestionService {
 
   /**
    * Retrieves a new question for the user's current level, balancing question categories.
-   * Prioritizes unseen questions from the question bank and falls back to least-recently-seen
-   * questions when the unseen pool is exhausted.
+   * Prioritizes randomly selected unseen questions from the question bank and falls back to
+   * least-recently-seen questions not yet served in the current session when the unseen pool is exhausted.
    *
    * @param userId - Unique identifier of the user.
    * @param session - Current exam session state.
@@ -56,10 +56,11 @@ export class PlacementQuestionService {
     );
 
     const pool = eligibleCategories.length > 0 ? eligibleCategories : QUESTION_CATEGORIES;
-    const shuffledPool = [...pool].sort(() => Math.random() - 0.5);
 
     let min_questions = Infinity;
-    for (const cat of shuffledPool) {
+    const availableCategoryQuestions: QuestionBank[][] = [];
+
+    for (const cat of pool) {
       const questions = await this.prisma.questionBank.findMany({
         where: {
           lang: session.lang,
@@ -76,13 +77,29 @@ export class PlacementQuestionService {
 
       min_questions = Math.min(min_questions, questions.length);
       if (questions.length > 0) {
-        return [min_questions, questions[0]];
+        availableCategoryQuestions.push(questions);
       }
+    }
+
+    if (availableCategoryQuestions.length > 0) {
+      const randomCategoryIndex = Math.floor(Math.random() * availableCategoryQuestions.length);
+      const chosenCategoryQuestions = availableCategoryQuestions[randomCategoryIndex];
+      const randomQuestionIndex = Math.floor(Math.random() * chosenCategoryQuestions.length);
+      return [min_questions, chosenCategoryQuestions[randomQuestionIndex]];
+    }
+
+    const answers = await this.sessionService.getQuestionAnswers(userId);
+    const excludeQuestionIds = answers.map((answer) => answer.questionId);
+    if (session.currentQuestionId) {
+      excludeQuestionIds.push(session.currentQuestionId);
     }
 
     const recentSeen = await this.prisma.userSeenQuestion.findMany({
       where: {
         userId,
+        ...(excludeQuestionIds.length > 0
+          ? { questionId: { notIn: [...new Set(excludeQuestionIds)] } }
+          : {}),
         questionBank: {
           lang: session.lang,
           level: this.targetLevelToCEFRLevel(session.level),
@@ -104,6 +121,38 @@ export class PlacementQuestionService {
 
     const randomSeen = recentSeen[Math.floor(Math.random() * recentSeen.length)];
     return [0, randomSeen.questionBank];
+  }
+
+  /**
+   * Shuffles question options pseudo-randomly using a deterministic seed so that
+   * repeated reads of the same served question preserve option order across reloads.
+   *
+   * @param options - Authored options array.
+   * @param seed - Seed string (typically question ID and servedAt timestamp).
+   * @returns Shuffled copy of the options array.
+   */
+  shuffleOptions(options: readonly string[], seed?: string): string[] {
+    const random = seed
+      ? (() => {
+          let hash = 0;
+          for (let i = 0; i < seed.length; i++) {
+            hash = (Math.imul(31, hash) + seed.charCodeAt(i)) | 0;
+          }
+          return () => {
+            hash = (hash + 0x6d2b79f5) | 0;
+            let t = Math.imul(hash ^ (hash >>> 15), 1 | hash);
+            t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+            return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+          };
+        })()
+      : Math.random;
+
+    const shuffled = [...options];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
   }
 
   /**
@@ -138,7 +187,7 @@ export class PlacementQuestionService {
 
   /**
    * Formats a database question into a validated client-facing `PlacementQuestion` DTO,
-   * computing remaining time and current exam progress metrics.
+   * computing remaining time, shuffling options, and calculating current exam progress metrics.
    *
    * @param question - Database question bank entity.
    * @param session - Current exam session state.
@@ -159,7 +208,7 @@ export class PlacementQuestionService {
       level: question.level,
       question: question.question,
       ...(question.readText ? { readText: question.readText } : {}),
-      options: question.options,
+      options: this.shuffleOptions(question.options, `${question.id}:${session.servedAt}`),
       timeLimitS: question.timeLimitS,
       remainingS,
       progress: {

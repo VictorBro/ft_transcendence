@@ -70,11 +70,13 @@ function createService(
 describe('PlacementQuestionService', () => {
   let service: PlacementQuestionService;
   let prisma: ReturnType<typeof createService>['prisma'];
+  let redis: ReturnType<typeof createService>['redis'];
 
   beforeEach(() => {
     const created = createService();
     service = created.service;
     prisma = created.prisma;
+    redis = created.redis;
   });
 
   describe('targetLevelToCEFRLevel', () => {
@@ -123,14 +125,34 @@ describe('PlacementQuestionService', () => {
       await expect(service.getNewQuestion('user-1', session)).rejects.toThrow(NotFoundException);
     });
 
-    it('checks another eligible category if first category has no unseen questions', async () => {
-      prisma.questionBank.findMany.mockResolvedValueOnce([]).mockResolvedValueOnce([mockQuestion]);
+    it('checks all eligible categories and returns question from non-empty category', async () => {
+      prisma.questionBank.findMany
+        .mockResolvedValueOnce([])
+        .mockResolvedValueOnce([mockQuestion])
+        .mockResolvedValueOnce([]);
 
       const [count, question] = await service.getNewQuestion('user-1', session);
       expect(count).toBe(0);
       expect(question).toEqual(mockQuestion);
-      expect(prisma.questionBank.findMany).toHaveBeenCalledTimes(2);
+      expect(prisma.questionBank.findMany).toHaveBeenCalledTimes(3);
       expect(prisma.userSeenQuestion.findMany).not.toHaveBeenCalled();
+    });
+
+    it('calculates true min_questions across all categories and selects a non-empty category randomly', async () => {
+      const qGrammar = { ...mockQuestion, id: 'q-gram', category: 'grammar' as const };
+      const qVocab = { ...mockQuestion, id: 'q-vocab', category: 'vocabulary' as const };
+      // 3 eligible categories: grammar has 10, vocabulary has 2, reading has 5
+      prisma.questionBank.findMany.mockImplementation(async ({ where }) => {
+        if (where.category === 'grammar') return Array(10).fill(qGrammar);
+        if (where.category === 'vocabulary') return Array(2).fill(qVocab);
+        return [];
+      });
+
+      const randomSpy = vi.spyOn(Math, 'random').mockReturnValue(0.99); // picks second available category (vocabulary)
+      const [minQuestions, question] = await service.getNewQuestion('user-1', session);
+      expect(minQuestions).toBe(0); // reading had 0, so min across all 3 is 0
+      expect(question.category).toBe('vocabulary');
+      randomSpy.mockRestore();
     });
 
     it('returns [0, random question] from last 10 seen questions when unseen pool is empty', async () => {
@@ -164,6 +186,54 @@ describe('PlacementQuestionService', () => {
         }),
       );
     });
+    it('selects randomly among multiple unseen questions', async () => {
+      const q1 = { ...mockQuestion, id: 'q-1' };
+      const q2 = { ...mockQuestion, id: 'q-2' };
+      const q3 = { ...mockQuestion, id: 'q-3' };
+      prisma.questionBank.findMany.mockResolvedValue([q1, q2, q3]);
+
+      const randomSpy = vi.spyOn(Math, 'random').mockReturnValue(0.7);
+      const [, question] = await service.getNewQuestion('user-1', session);
+      expect(question).toEqual(q3);
+      randomSpy.mockRestore();
+    });
+
+    it('excludes already answered questions and current question from fallback seen query', async () => {
+      const answeredQuestionId = 'a1111111-1111-4111-8111-111111111111';
+      const activeQuestionId = 'b2222222-2222-4222-8222-222222222222';
+
+      prisma.questionBank.findMany.mockResolvedValue([]);
+      redis.client.lRange.mockResolvedValue([
+        JSON.stringify({ questionId: answeredQuestionId, choice: 'ist' }),
+      ]);
+      const sessionWithCurrent: ExamSession = {
+        ...session,
+        currentQuestionId: activeQuestionId,
+      };
+
+      prisma.userSeenQuestion.findMany.mockResolvedValue([
+        {
+          id: 'seen-1',
+          userId: 'user-1',
+          questionId: mockQuestion.id,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          questionBank: mockQuestion,
+        },
+      ]);
+
+      const [count, question] = await service.getNewQuestion('user-1', sessionWithCurrent);
+      expect(count).toBe(0);
+      expect(question).toEqual(mockQuestion);
+      expect(prisma.userSeenQuestion.findMany).toHaveBeenCalledWith(
+        expect.objectContaining({
+          where: expect.objectContaining({
+            userId: 'user-1',
+            questionId: { notIn: [answeredQuestionId, activeQuestionId] },
+          }),
+        }),
+      );
+    });
   });
 
   describe('createPlacementQuestion', () => {
@@ -187,6 +257,42 @@ describe('PlacementQuestionService', () => {
       expect(result.remainingS).toBeLessThanOrEqual(30);
       expect(result.progress).toEqual({ answered: 1, maxRemaining: 17 });
       expect((result as Record<string, unknown>).answer).toBeUndefined();
+      expect([...result.options].sort()).toEqual([...mockQuestion.options].sort());
+    });
+
+    it('produces stable option ordering for the same served question across reloads', async () => {
+      const session: ExamSession = {
+        lang: 'de',
+        lo: 'A1',
+        hi: 'C2',
+        level: 'B1',
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
+        totalAnswered: 1,
+        ended: false,
+        currentQuestionId: mockQuestion.id,
+        servedAt: '2026-09-20T16:00:00.000Z',
+      };
+
+      const result1 = await service.createPlacementQuestion(mockQuestion, session);
+      const result2 = await service.createPlacementQuestion(mockQuestion, session);
+      expect(result1.options).toEqual(result2.options);
+    });
+  });
+
+  describe('shuffleOptions', () => {
+    it('preserves all items while shuffling', () => {
+      const options = ['opt1', 'opt2', 'opt3', 'opt4'];
+      const shuffled = service.shuffleOptions(options);
+      expect([...shuffled].sort()).toEqual([...options].sort());
+      expect(shuffled).toHaveLength(4);
+    });
+
+    it('returns deterministic output when seed is provided', () => {
+      const options = ['opt1', 'opt2', 'opt3', 'opt4'];
+      const shuffled1 = service.shuffleOptions(options, 'seed-abc');
+      const shuffled2 = service.shuffleOptions(options, 'seed-abc');
+      expect(shuffled1).toEqual(shuffled2);
     });
   });
 

@@ -18,22 +18,27 @@ export const PLACEMENT_ROUNDS = { perCategory: 2, maxMistakes: 1 } as const;
  * from carries `answer`, so `.strict()` makes a payload that still has it fail
  * the parse: the leak becomes a loud error instead of a silently stripped field.
  */
-export const PlacementQuestionSchema = z.strictObject({
-  questionId: z.uuid(),
-  category: QuestionCategorySchema,
-  level: LevelSchema,
-  question: z.string().min(1),
-  readText: z.string().min(1).optional(),
-  options: z.array(z.string().min(1)).length(OPTIONS_PER_ITEM),
-  /** Two clocks, so a reload resumes the countdown instead of restarting it. */
-  timeLimitS: z.number().int().positive(),
-  remainingS: z.number().int().min(0),
-  /** `answered` doubles as this question's index, counting from zero. */
-  progress: z.object({
-    answered: z.number().int().min(0),
-    maxRemaining: z.number().int().positive(),
-  }),
-});
+export const PlacementQuestionSchema = z
+  .strictObject({
+    questionId: z.uuid(),
+    category: QuestionCategorySchema,
+    level: LevelSchema,
+    question: z.string().min(1),
+    readText: z.string().min(1).nullable().optional(),
+    options: z.array(z.string().min(1)).length(OPTIONS_PER_ITEM),
+    /** Two clocks, so a reload resumes the countdown instead of restarting it. */
+    timeLimitS: z.number().int().positive(),
+    remainingS: z.number().int().min(0),
+    /** `answered` doubles as this question's index, counting from zero. */
+    progress: z.object({
+      answered: z.number().int().min(0),
+      maxRemaining: z.number().int().positive(),
+    }),
+  })
+  .refine((q) => (q.category === 'reading' ? q.readText != null : q.readText == null), {
+    message: 'reading questions need a readText, other categories must not have one',
+    path: ['readText'],
+  });
 export type PlacementQuestion = z.infer<typeof PlacementQuestionSchema>;
 
 /** Nullable but not optional: null is a timeout, scored wrong; absent is a broken client. */

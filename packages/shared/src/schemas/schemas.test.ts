@@ -213,6 +213,39 @@ describe('placement', () => {
     expect(PlacementQuestionSchema.safeParse({ ...question, answer: 'ist' }).success).toBe(false);
   });
 
+  it('requires non-null readText on reading questions', () => {
+    const readingQuestion = {
+      ...question,
+      category: 'reading',
+      readText: 'Ein kurzer Text zum Lesen.',
+    };
+    expect(PlacementQuestionSchema.safeParse(readingQuestion).success).toBe(true);
+
+    expect(
+      PlacementQuestionSchema.safeParse({ ...readingQuestion, readText: undefined }).success,
+    ).toBe(false);
+    expect(PlacementQuestionSchema.safeParse({ ...readingQuestion, readText: null }).success).toBe(
+      false,
+    );
+  });
+
+  it('forbids non-null readText on grammar and vocabulary questions', () => {
+    expect(PlacementQuestionSchema.safeParse(question).success).toBe(true);
+    expect(PlacementQuestionSchema.safeParse({ ...question, readText: null }).success).toBe(true);
+    expect(
+      PlacementQuestionSchema.safeParse({ ...question, readText: 'Not allowed here' }).success,
+    ).toBe(false);
+
+    const vocabQuestion = { ...question, category: 'vocabulary' };
+    expect(PlacementQuestionSchema.safeParse(vocabQuestion).success).toBe(true);
+    expect(PlacementQuestionSchema.safeParse({ ...vocabQuestion, readText: null }).success).toBe(
+      true,
+    );
+    expect(
+      PlacementQuestionSchema.safeParse({ ...vocabQuestion, readText: 'Not allowed here' }).success,
+    ).toBe(false);
+  });
+
   it('reads an explicit null choice as a timeout', () => {
     const parsed = SubmitAnswerSchema.parse({ questionId: question.questionId, choice: null });
 
