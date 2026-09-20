@@ -16,8 +16,17 @@ export const QUESTION_CATEGORIES = ['grammar', 'vocabulary', 'reading'] as const
 export const QuestionCategorySchema = z.enum(QUESTION_CATEGORIES);
 export type QuestionCategory = z.infer<typeof QuestionCategorySchema>;
 
-/** CEFR, from beginner to mastery. */
-export const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'] as const;
+/**
+ * CEFR, from beginner to mastery, plus A0.
+ *
+ * A0 is not a CEFR level: it is the common convention for "before A1", and it
+ * exists because nothing else can say that a learner knows nothing yet. Without
+ * it, a complete beginner and the placement exam that fails every A1 question
+ * both have to be recorded as A1, which is false.
+ *
+ * It describes a learner, never a question: no item in content/items carries it.
+ */
+export const LEVELS = ['A0', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2'] as const;
 export const LevelSchema = z.enum(LEVELS);
 export type Level = z.infer<typeof LevelSchema>;
 

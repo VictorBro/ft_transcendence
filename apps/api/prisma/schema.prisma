@@ -106,7 +106,11 @@ enum QuestionCategory {
   reading
 }
 
+// Mirrors LEVELS in @ft/shared. A0 is not a CEFR level: it is "before A1", and
+// it describes a learner who knows nothing yet. QuestionBank shares this enum
+// but never carries A0, since there is no question below A1 to ask.
 enum Level {
+  A0
   A1
   A2
   B1
