@@ -1,10 +1,12 @@
 import { randomUUID } from 'node:crypto';
+import { ConflictException } from '@nestjs/common';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import {
   type Level,
   type PlacementQuestion,
   type PlacementResult,
   type QuestionCategory,
+  type TargetLevel,
 } from '@ft/shared';
 
 import type { QuestionBank } from '../generated/prisma/client';
@@ -30,6 +32,7 @@ function createMockQuestionBank(): QuestionBank[] {
           lang: 'de',
           level,
           topic: `topic_${cat}`,
+          topic: 'verbs_morphology',
           category: cat,
           readText: null,
           question: `Question ${level} ${cat} ${i}`,
@@ -401,6 +404,248 @@ describe('Placement Exam Scenarios', () => {
       data: {
         level: 'C3',
       },
+    });
+  });
+
+  describe('All Possible Binary Search Level Paths', () => {
+    async function runPath(userId: string, decisions: Partial<Record<Level, 'up' | 'down'>>) {
+      let currentResponse: PlacementQuestion | PlacementResult = await env.service.startPlacement(
+        userId,
+        { lang: 'de' },
+      );
+
+      const uniqueLevelsTested: Level[] = [];
+      const questionsPerLevel: Record<string, number> = {};
+
+      while ('questionId' in currentResponse) {
+        const question = currentResponse as PlacementQuestion;
+        if (uniqueLevelsTested[uniqueLevelsTested.length - 1] !== question.level) {
+          uniqueLevelsTested.push(question.level);
+        }
+        questionsPerLevel[question.level] = (questionsPerLevel[question.level] ?? 0) + 1;
+
+        const decision = decisions[question.level] ?? 'up';
+        const qBankItem = env.questionMap.get(question.questionId);
+        expect(qBankItem).toBeDefined();
+
+        const choice = decision === 'up' ? qBankItem!.answer : 'wrong_choice';
+
+        currentResponse = await env.service.submitAnswer(userId, {
+          questionId: question.questionId,
+          choice,
+        });
+      }
+
+      return {
+        uniqueLevelsTested,
+        questionsPerLevel,
+        result: currentResponse as PlacementResult,
+      };
+    }
+
+    it.each([
+      {
+        name: 'B1 (up) -> C1 (up) -> C2 (up) => ends at C3',
+        decisions: { B1: 'up', C1: 'up', C2: 'up' } as Partial<Record<Level, 'up' | 'down'>>,
+        expectedLevels: ['B1', 'C1', 'C2'] as Level[],
+        expectedTargetLevel: 'C3' as TargetLevel,
+      },
+      {
+        name: 'B1 (up) -> C1 (up) -> C2 (down) => ends at C2',
+        decisions: { B1: 'up', C1: 'up', C2: 'down' } as Partial<Record<Level, 'up' | 'down'>>,
+        expectedLevels: ['B1', 'C1', 'C2'] as Level[],
+        expectedTargetLevel: 'C2' as TargetLevel,
+      },
+      {
+        name: 'B1 (up) -> C1 (down) -> B2 (up) => ends at C1',
+        decisions: { B1: 'up', C1: 'down', B2: 'up' } as Partial<Record<Level, 'up' | 'down'>>,
+        expectedLevels: ['B1', 'C1', 'B2'] as Level[],
+        expectedTargetLevel: 'C1' as TargetLevel,
+      },
+      {
+        name: 'B1 (up) -> C1 (down) -> B2 (down) => ends at B2',
+        decisions: { B1: 'up', C1: 'down', B2: 'down' } as Partial<Record<Level, 'up' | 'down'>>,
+        expectedLevels: ['B1', 'C1', 'B2'] as Level[],
+        expectedTargetLevel: 'B2' as TargetLevel,
+      },
+      {
+        name: 'B1 (down) -> A2 (up) => ends at B1',
+        decisions: { B1: 'down', A2: 'up' } as Partial<Record<Level, 'up' | 'down'>>,
+        expectedLevels: ['B1', 'A2'] as Level[],
+        expectedTargetLevel: 'B1' as TargetLevel,
+      },
+      {
+        name: 'B1 (down) -> A2 (down) -> A1 (up) => ends at A2',
+        decisions: { B1: 'down', A2: 'down', A1: 'up' } as Partial<Record<Level, 'up' | 'down'>>,
+        expectedLevels: ['B1', 'A2', 'A1'] as Level[],
+        expectedTargetLevel: 'A2' as TargetLevel,
+      },
+      {
+        name: 'B1 (down) -> A2 (down) -> A1 (down) => ends at A1',
+        decisions: { B1: 'down', A2: 'down', A1: 'down' } as Partial<Record<Level, 'up' | 'down'>>,
+        expectedLevels: ['B1', 'A2', 'A1'] as Level[],
+        expectedTargetLevel: 'A1' as TargetLevel,
+      },
+    ])('$name', async ({ decisions, expectedLevels, expectedTargetLevel }) => {
+      const userId = `path-${expectedLevels.join('-')}-${expectedTargetLevel}`;
+      const { uniqueLevelsTested, result } = await runPath(userId, decisions);
+
+      // Verify no level is tested twice on the path
+      expect(new Set(uniqueLevelsTested).size).toBe(uniqueLevelsTested.length);
+
+      // Verify the exact level progression path
+      expect(uniqueLevelsTested).toEqual(expectedLevels);
+
+      // Verify final target level
+      expect(result.targetLevel).toBe(expectedTargetLevel);
+
+      // Verify database update
+      expect(env.prisma.userLevel.update).toHaveBeenCalledWith({
+        where: {
+          userId_lang: {
+            userId,
+            lang: 'de',
+          },
+        },
+        data: {
+          level: expectedTargetLevel,
+        },
+      });
+    });
+  });
+
+  describe('Specific Acceptance Criteria', () => {
+    it('an answer arriving after timeLimitS plus grace is scored late even when the request claims the correct answer (with faked clock)', async () => {
+      const userId = 'user-timeout-correct-claimed';
+      const firstQuestion = (await env.service.startPlacement(userId, {
+        lang: 'de',
+      })) as PlacementQuestion;
+
+      const qBankItem = env.questionMap.get(firstQuestion.questionId)!;
+
+      // Advance clock past timeLimitS + NETWORK_GRACE_S
+      vi.advanceTimersByTime((firstQuestion.timeLimitS + NETWORK_GRACE_S + 2) * 1000);
+
+      // Client submits the correct choice, but arrived late
+      await env.service.submitAnswer(userId, {
+        questionId: firstQuestion.questionId,
+        choice: qBankItem.answer,
+      });
+
+      // The answer was scored late and saved as choice: null
+      const answers = await env.redis.client.lRange(`user:${userId}:eval_questions`, 0, -1);
+      expect(answers).toHaveLength(1);
+      const recorded = JSON.parse(answers[0]);
+      expect(recorded.choice).toBeNull();
+
+      // Session mistakesPerLevel is incremented as a mistake
+      const sessionData = await env.redis.client.hGetAll(`user:${userId}:eval`);
+      expect(sessionData.mistakesPerLevel).toBe('1');
+    });
+
+    it('refreshing does not reset remainingS', async () => {
+      const userId = 'user-refresh-timer';
+      const initialQuestion = (await env.service.startPlacement(userId, {
+        lang: 'de',
+      })) as PlacementQuestion;
+
+      expect(initialQuestion.remainingS).toBe(initialQuestion.timeLimitS);
+
+      // Advance clock by 10s and reload/refresh (call getPlacement)
+      vi.advanceTimersByTime(10_000);
+
+      const refreshed1 = (await env.service.getPlacement(userId)) as PlacementQuestion;
+      expect(refreshed1.questionId).toBe(initialQuestion.questionId);
+      expect(refreshed1.remainingS).toBe(initialQuestion.timeLimitS - 10);
+
+      // Advance clock by another 5s and reload again
+      vi.advanceTimersByTime(5_000);
+
+      const refreshed2 = (await env.service.getPlacement(userId)) as PlacementQuestion;
+      expect(refreshed2.questionId).toBe(initialQuestion.questionId);
+      expect(refreshed2.remainingS).toBe(initialQuestion.timeLimitS - 15);
+    });
+
+    it('no response ever contains the correct answer for the question being asked', async () => {
+      const userId = 'user-no-answer-leak';
+      const firstQuestion = (await env.service.startPlacement(userId, {
+        lang: 'de',
+      })) as PlacementQuestion;
+
+      expect((firstQuestion as Record<string, unknown>).answer).toBeUndefined();
+
+      const fetchedQuestion = (await env.service.getPlacement(userId)) as PlacementQuestion;
+      expect((fetchedQuestion as Record<string, unknown>).answer).toBeUndefined();
+
+      const qBankItem = env.questionMap.get(firstQuestion.questionId)!;
+      const nextQuestion = (await env.service.submitAnswer(userId, {
+        questionId: firstQuestion.questionId,
+        choice: qBankItem.answer,
+      })) as PlacementQuestion;
+
+      expect((nextQuestion as Record<string, unknown>).answer).toBeUndefined();
+    });
+
+    it('a second POST while a run is live returns 409 (ConflictException)', async () => {
+      const userId = 'user-second-post-live';
+      await env.service.startPlacement(userId, { lang: 'de' });
+
+      await expect(env.service.startPlacement(userId, { lang: 'de' })).rejects.toThrow(
+        ConflictException,
+      );
+    });
+
+    it('a served question is in UserSeenQuestion before its answer arrives', async () => {
+      const userId = 'user-seen-before-answer';
+      const firstQuestion = (await env.service.startPlacement(userId, {
+        lang: 'de',
+      })) as PlacementQuestion;
+
+      // Verify question is already in userSeenQuestion before submitting answer
+      expect(env.prisma.userSeenQuestion.upsert).toHaveBeenCalledWith({
+        where: {
+          userId_questionId: {
+            userId,
+            questionId: firstQuestion.questionId,
+          },
+        },
+        create: {
+          userId,
+          questionId: firstQuestion.questionId,
+        },
+        update: {
+          updatedAt: expect.any(Date),
+        },
+      });
+
+      const upsertCallsBeforeAnswer = vi.mocked(env.prisma.userSeenQuestion.upsert).mock.calls
+        .length;
+
+      // Submit answer for the first question -> next question is served
+      const nextQuestion = (await env.service.submitAnswer(userId, {
+        questionId: firstQuestion.questionId,
+        choice: 'any_choice',
+      })) as PlacementQuestion;
+
+      // The next question is also already in userSeenQuestion before its answer arrives
+      expect(vi.mocked(env.prisma.userSeenQuestion.upsert).mock.calls.length).toBeGreaterThan(
+        upsertCallsBeforeAnswer,
+      );
+      expect(env.prisma.userSeenQuestion.upsert).toHaveBeenCalledWith({
+        where: {
+          userId_questionId: {
+            userId,
+            questionId: nextQuestion.questionId,
+          },
+        },
+        create: {
+          userId,
+          questionId: nextQuestion.questionId,
+        },
+        update: {
+          updatedAt: expect.any(Date),
+        },
+      });
     });
   });
 });

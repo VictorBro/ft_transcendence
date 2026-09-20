@@ -287,6 +287,141 @@ describe('PlacementProgressService', () => {
         },
       });
     });
+
+    it('scores timeout (null answer) as a mistake', async () => {
+      const session: ExamSession = {
+        lang: 'de',
+        lo: 'A1',
+        hi: 'C2',
+        level: 'B1',
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
+        totalAnswered: 0,
+        ended: false,
+        currentQuestionId: mockQuestion.id,
+        servedAt: new Date().toISOString(),
+      };
+
+      await service.adjustSessionFromAnswer(null, mockQuestion, session, 'user-1');
+      expect(session.mistakesPerLevel).toBe(1);
+      expect(session.askedPerCategory.grammar).toBe(1);
+    });
+
+    describe('all six levels reachable as terminal outcomes against adjustSessionFromAnswer', () => {
+      it('reaches terminal outcome A1 on lower boundary failure', async () => {
+        const session: ExamSession = {
+          lang: 'de',
+          lo: 'A1',
+          hi: 'A2',
+          level: 'A1',
+          mistakesPerLevel: 1,
+          askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
+          totalAnswered: 7,
+          ended: false,
+          currentQuestionId: mockQuestion.id,
+          servedAt: new Date().toISOString(),
+        };
+
+        await service.adjustSessionFromAnswer('wrong', mockQuestion, session, 'user-1');
+        expect(session.ended).toBe(true);
+        expect(session.level).toBe('A1');
+      });
+
+      it('reaches terminal outcome A2 on passing A1 when hi is A2', async () => {
+        const session: ExamSession = {
+          lang: 'de',
+          lo: 'A1',
+          hi: 'A2',
+          level: 'A1',
+          mistakesPerLevel: 0,
+          askedPerCategory: { grammar: 2, vocabulary: 2, reading: 1 },
+          totalAnswered: 11,
+          ended: false,
+          currentQuestionId: mockQuestion.id,
+          servedAt: new Date().toISOString(),
+        };
+
+        await service.adjustSessionFromAnswer('ist', mockQuestion, session, 'user-1');
+        expect(session.ended).toBe(true);
+        expect(session.level).toBe('A2');
+      });
+
+      it('reaches terminal outcome B1 on passing A2 when hi is B1', async () => {
+        const session: ExamSession = {
+          lang: 'de',
+          lo: 'A1',
+          hi: 'B1',
+          level: 'A2',
+          mistakesPerLevel: 0,
+          askedPerCategory: { grammar: 2, vocabulary: 2, reading: 1 },
+          totalAnswered: 7,
+          ended: false,
+          currentQuestionId: mockQuestion.id,
+          servedAt: new Date().toISOString(),
+        };
+
+        await service.adjustSessionFromAnswer('ist', mockQuestion, session, 'user-1');
+        expect(session.ended).toBe(true);
+        expect(session.level).toBe('B1');
+      });
+
+      it('reaches terminal outcome B2 on failing B2 when lo is B2', async () => {
+        const session: ExamSession = {
+          lang: 'de',
+          lo: 'B2',
+          hi: 'C1',
+          level: 'B2',
+          mistakesPerLevel: 1,
+          askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
+          totalAnswered: 13,
+          ended: false,
+          currentQuestionId: mockQuestion.id,
+          servedAt: new Date().toISOString(),
+        };
+
+        await service.adjustSessionFromAnswer('wrong', mockQuestion, session, 'user-1');
+        expect(session.ended).toBe(true);
+        expect(session.level).toBe('B2');
+      });
+
+      it('reaches terminal outcome C1 on passing B2 when hi is C1', async () => {
+        const session: ExamSession = {
+          lang: 'de',
+          lo: 'B2',
+          hi: 'C1',
+          level: 'B2',
+          mistakesPerLevel: 0,
+          askedPerCategory: { grammar: 2, vocabulary: 2, reading: 1 },
+          totalAnswered: 17,
+          ended: false,
+          currentQuestionId: mockQuestion.id,
+          servedAt: new Date().toISOString(),
+        };
+
+        await service.adjustSessionFromAnswer('ist', mockQuestion, session, 'user-1');
+        expect(session.ended).toBe(true);
+        expect(session.level).toBe('C1');
+      });
+
+      it('reaches terminal outcome C2 on failing C2 when lo is C2', async () => {
+        const session: ExamSession = {
+          lang: 'de',
+          lo: 'C2',
+          hi: 'C3',
+          level: 'C2',
+          mistakesPerLevel: 1,
+          askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
+          totalAnswered: 13,
+          ended: false,
+          currentQuestionId: mockQuestion.id,
+          servedAt: new Date().toISOString(),
+        };
+
+        await service.adjustSessionFromAnswer('wrong', mockQuestion, session, 'user-1');
+        expect(session.ended).toBe(true);
+        expect(session.level).toBe('C2');
+      });
+    });
   });
 
   describe('hasTimedOut', () => {
