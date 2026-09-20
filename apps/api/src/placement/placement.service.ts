@@ -1,12 +1,5 @@
 import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
-import {
-  ExamSession,
-  Language,
-  PlacementQuestion,
-  PlacementResult,
-  SubmitAnswerInput,
-  SubmitAnswerSchema,
-} from '@ft/shared';
+import { ExamSession, PlacementQuestion, PlacementResult, SubmitAnswerInput } from '@ft/shared';
 import assert from 'node:assert';
 
 import { QuestionBank } from '../generated/prisma/client';
@@ -31,28 +24,26 @@ export class PlacementService {
     private readonly progressService: PlacementProgressService,
   ) {}
 
-  async getTimeOut(
+  private async processAnswer(
     userId: string,
+    choice: string | null,
     question: QuestionBank,
     session: ExamSession,
   ): Promise<PlacementQuestion | PlacementResult> {
-    const lastAnswer: SubmitAnswerInput = {
+    const answer: SubmitAnswerInput = {
       questionId: question.id,
-      choice: null,
+      choice,
     };
-    await this.sessionService.archiveQuestionAnswer(userId, SubmitAnswerSchema.parse(lastAnswer));
+    await this.sessionService.archiveQuestionAnswer(userId, answer);
     session.totalAnswered += 1;
-    await this.progressService.adjustSessionFromAnswer(
-      lastAnswer.choice,
-      question,
-      session,
-      userId,
-    );
-    await this.sessionService.saveExamSession(userId, session);
+    await this.progressService.adjustSessionFromAnswer(choice, question, session, userId);
+
     const result = await this.progressService.getResult(userId, session);
     if (result !== undefined) {
+      await this.sessionService.saveExamSession(userId, session);
       return result;
     }
+
     return this.questionService.getNewPlacementQuestion(userId, session);
   }
 
@@ -73,14 +64,10 @@ export class PlacementService {
 
     const question = await this.progressService.getQuestion(session.currentQuestionId);
     if (this.progressService.hasTimedOut(question, session.servedAt)) {
-      const timedOutResult = await this.getTimeOut(userId, question, session);
+      const timedOutResult = await this.processAnswer(userId, null, question, session);
       return [session, question, timedOutResult];
     }
     return [session, question, undefined];
-  }
-
-  async checkOnboardingCompleted(userId: string, lang: Language): Promise<boolean> {
-    return this.progressService.checkOnboardingCompleted(userId, lang);
   }
 
   async startPlacement(userId: string, dto: StartPlacementDto): Promise<PlacementQuestion> {
@@ -89,7 +76,7 @@ export class PlacementService {
       throw new ConflictException('placement.inProgress');
     }
 
-    if (!(await this.checkOnboardingCompleted(userId, dto.lang))) {
+    if (!(await this.progressService.checkOnboardingCompleted(userId, dto.lang))) {
       throw new ConflictException('placement.onboardingIncomplete');
     }
 
@@ -134,17 +121,7 @@ export class PlacementService {
       return this.questionService.createPlacementQuestion(question, session);
     }
 
-    await this.sessionService.archiveQuestionAnswer(userId, dto);
-    session.totalAnswered += 1;
-    await this.progressService.adjustSessionFromAnswer(dto.choice, question, session, userId);
-    await this.sessionService.saveExamSession(userId, session);
-
-    const resultUserAnswer = await this.progressService.getResult(userId, session);
-    if (resultUserAnswer !== undefined) {
-      return resultUserAnswer;
-    }
-
-    return this.questionService.getNewPlacementQuestion(userId, session);
+    return this.processAnswer(userId, dto.choice, question, session);
   }
 
   async quitPlacement(userId: string): Promise<void> {

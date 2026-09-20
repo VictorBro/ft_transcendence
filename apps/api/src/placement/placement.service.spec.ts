@@ -89,16 +89,6 @@ describe('PlacementService', () => {
     progressService = created.progressService;
   });
 
-  describe('checkOnboardingCompleted', () => {
-    it('delegates to progressService.checkOnboardingCompleted', async () => {
-      vi.mocked(progressService.checkOnboardingCompleted).mockResolvedValue(true);
-
-      const result = await service.checkOnboardingCompleted('user-1', 'de');
-      expect(result).toBe(true);
-      expect(progressService.checkOnboardingCompleted).toHaveBeenCalledWith('user-1', 'de');
-    });
-  });
-
   describe('startPlacement', () => {
     it('throws ConflictException if placement is already in progress', async () => {
       vi.mocked(sessionService.hasActiveSession).mockResolvedValue(true);
@@ -180,7 +170,7 @@ describe('PlacementService', () => {
       expect(result).toBe(mockPlacementResult);
     });
 
-    it('handles timeout when elapsed time exceeds question limit', async () => {
+    it('handles timeout when elapsed time exceeds question limit and exam continues', async () => {
       const session: ExamSession = {
         lang: 'de',
         lo: 'A1',
@@ -202,6 +192,47 @@ describe('PlacementService', () => {
       expect(resSession).toBe(session);
       expect(question).toBe(mockQuestion);
       expect(result).toBe(mockPlacementQuestion);
+      expect(sessionService.archiveQuestionAnswer).toHaveBeenCalledWith('user-1', {
+        questionId: mockQuestion.id,
+        choice: null,
+      });
+      expect(session.totalAnswered).toBe(1);
+      expect(progressService.adjustSessionFromAnswer).toHaveBeenCalledWith(
+        null,
+        mockQuestion,
+        session,
+        'user-1',
+      );
+      expect(sessionService.saveExamSession).not.toHaveBeenCalled();
+      expect(questionService.getNewPlacementQuestion).toHaveBeenCalledWith('user-1', session);
+    });
+
+    it('handles timeout when elapsed time exceeds question limit and exam ends', async () => {
+      const session: ExamSession = {
+        lang: 'de',
+        lo: 'A1',
+        hi: 'C2',
+        level: 'B1',
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
+        totalAnswered: 5,
+        ended: false,
+        currentQuestionId: mockQuestion.id,
+        servedAt: new Date(Date.now() - 60000).toISOString(),
+      };
+      vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
+      vi.mocked(progressService.getResult)
+        .mockResolvedValueOnce(undefined)
+        .mockResolvedValueOnce(mockPlacementResult);
+      vi.mocked(progressService.getQuestion).mockResolvedValue(mockQuestion);
+      vi.mocked(progressService.hasTimedOut).mockReturnValue(true);
+
+      const [resSession, question, result] = await service.checkEndedOrTimedOut('user-1');
+      expect(resSession).toBe(session);
+      expect(question).toBe(mockQuestion);
+      expect(result).toBe(mockPlacementResult);
+      expect(sessionService.saveExamSession).toHaveBeenCalledWith('user-1', session);
+      expect(questionService.getNewPlacementQuestion).not.toHaveBeenCalled();
     });
 
     it('returns question and undefined result when session is active and within time', async () => {
@@ -226,60 +257,6 @@ describe('PlacementService', () => {
       expect(resSession).toBe(session);
       expect(question).toBe(mockQuestion);
       expect(result).toBeUndefined();
-    });
-  });
-
-  describe('getTimeOut', () => {
-    it('archives timeout answer and returns new question when not ended', async () => {
-      const session: ExamSession = {
-        lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-        totalAnswered: 0,
-        ended: false,
-        currentQuestionId: mockQuestion.id,
-        servedAt: new Date().toISOString(),
-      };
-      vi.mocked(progressService.getResult).mockResolvedValue(undefined);
-
-      const result = await service.getTimeOut('user-1', mockQuestion, session);
-      expect(result).toBe(mockPlacementQuestion);
-      expect(sessionService.archiveQuestionAnswer).toHaveBeenCalledWith('user-1', {
-        questionId: mockQuestion.id,
-        choice: null,
-      });
-      expect(session.totalAnswered).toBe(1);
-      expect(progressService.adjustSessionFromAnswer).toHaveBeenCalledWith(
-        null,
-        mockQuestion,
-        session,
-        'user-1',
-      );
-      expect(sessionService.saveExamSession).toHaveBeenCalledWith('user-1', session);
-      expect(questionService.getNewPlacementQuestion).toHaveBeenCalledWith('user-1', session);
-    });
-
-    it('archives timeout answer and returns result when ended', async () => {
-      const session: ExamSession = {
-        lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-        totalAnswered: 5,
-        ended: false,
-        currentQuestionId: mockQuestion.id,
-        servedAt: new Date().toISOString(),
-      };
-      vi.mocked(progressService.getResult).mockResolvedValue(mockPlacementResult);
-
-      const result = await service.getTimeOut('user-1', mockQuestion, session);
-      expect(result).toBe(mockPlacementResult);
-      expect(questionService.getNewPlacementQuestion).not.toHaveBeenCalled();
     });
   });
 
