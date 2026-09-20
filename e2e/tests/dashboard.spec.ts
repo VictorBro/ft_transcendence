@@ -16,12 +16,8 @@ test.describe('dashboard access and navigation', () => {
   // namespace now, so these are the English values the catalogue holds. This
   // suite is pinned to /en.
   const tiles: [string, string][] = [
-    ['Discuss with a friend', '/en/friends'],
-    ['Chat', '/en/chat'],
-    ['Chat progress', '/en/chat-progress'],
-    ['Word mode', '/en/word-mode'],
-    ['Sentence mode', '/en/sentence-mode'],
-    ['Roleplay', '/en/roleplay'],
+    ['Tutor', '/en/chat'],
+    ['Cross-language chat', '/en/friends'],
   ];
 
   // One test per tile, generated from the table above rather than
@@ -60,7 +56,7 @@ test.describe('dashboard access and navigation', () => {
   // every tile except Chat, which has a real page. Asserting the title keeps
   // this from silently matching the wrong page if a future page reuses the
   // same ComingSoon copy.
-  const stubs = tiles.filter(([title]) => title !== 'Chat');
+  const stubs = tiles.filter(([, href]) => href !== '/en/chat');
 
   for (const [title, href] of stubs) {
     test(`${href} shows the coming-soon placeholder for ${title}`, async ({ signedIn }) => {
