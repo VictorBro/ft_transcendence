@@ -28,11 +28,28 @@ export class PlacementQuestionService {
     private readonly sessionService: PlacementSessionService,
   ) {}
 
+  /**
+   * Converts a placement `TargetLevel` to a database CEFR `Level`.
+   * Asserts that the level is not `'C3'`, as question bank items span up to `'C2'`.
+   *
+   * @param level - Placement target level to convert.
+   * @returns Corresponding database CEFR `Level`.
+   */
   targetLevelToCEFRLevel(level: TargetLevel): Level {
     assert(level !== 'C3');
     return level;
   }
 
+  /**
+   * Retrieves a new question for the user's current level, balancing question categories.
+   * Prioritizes unseen questions from the question bank and falls back to least-recently-seen
+   * questions when the unseen pool is exhausted.
+   *
+   * @param userId - Unique identifier of the user.
+   * @param session - Current exam session state.
+   * @returns A tuple `[minQuestions, question]` containing available count and the chosen question.
+   * @throws NotFoundException If no questions exist in the pool for this level (`placement.poolExhausted`).
+   */
   async getNewQuestion(userId: string, session: ExamSession): Promise<[number, QuestionBank]> {
     const eligibleCategories = QUESTION_CATEGORIES.filter(
       (cat) => (session.askedPerCategory[cat] ?? 0) < PLACEMENT_ROUNDS.perCategory,
@@ -89,6 +106,14 @@ export class PlacementQuestionService {
     return [0, randomSeen.questionBank];
   }
 
+  /**
+   * Calculates the maximum theoretical number of questions remaining in the exam.
+   * Combines remaining questions at the current level with worst-case remaining binary search steps.
+   * In active sessions, this value is guaranteed to be >= 1.
+   *
+   * @param session - Current exam session state.
+   * @returns Theoretical maximum number of questions remaining.
+   */
   getMaxQuestionsRemaining(session: ExamSession): number {
     const askedInCurrentLevel = Object.values(session.askedPerCategory).reduce(
       (sum, count) => sum + count,
@@ -111,6 +136,14 @@ export class PlacementQuestionService {
     return Math.max(0, current_level_remaining + Math.max(max_lower, max_upper));
   }
 
+  /**
+   * Formats a database question into a validated client-facing `PlacementQuestion` DTO,
+   * computing remaining time and current exam progress metrics.
+   *
+   * @param question - Database question bank entity.
+   * @param session - Current exam session state.
+   * @returns Validated client-facing placement question.
+   */
   async createPlacementQuestion(
     question: QuestionBank,
     session: ExamSession,
@@ -136,6 +169,14 @@ export class PlacementQuestionService {
     });
   }
 
+  /**
+   * Retrieves a new question, records it in `UserSeenQuestion`, updates session state,
+   * persists the session to Redis, and returns the formatted question.
+   *
+   * @param userId - Unique identifier of the user.
+   * @param examSession - Current mutable exam session state.
+   * @returns Newly served client-facing placement question.
+   */
   async getNewPlacementQuestion(
     userId: string,
     examSession: ExamSession,

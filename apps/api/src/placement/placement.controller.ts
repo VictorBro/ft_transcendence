@@ -27,6 +27,14 @@ import { PlacementService } from './placement.service';
 export class PlacementController {
   constructor(private readonly placement: PlacementService) {}
 
+  /**
+   * Starts a new placement exam for the authenticated user in the requested language.
+   *
+   * @param user - Authenticated session user initiating the exam.
+   * @param body - Parameters specifying the target language.
+   * @returns The first question of the placement exam.
+   * @throws ConflictException If an active exam is already in progress or onboarding is incomplete.
+   */
   @Post()
   @ApiOperation({ summary: 'Start a placement exam' })
   @ApiCreatedResponse({
@@ -43,6 +51,14 @@ export class PlacementController {
     return this.placement.startPlacement(user.id, body);
   }
 
+  /**
+   * Retrieves the current placement question or the final placement result if ended.
+   * Strictly read-only to preserve HTTP GET idempotency and avoid side effects.
+   *
+   * @param user - Authenticated session user.
+   * @returns Current placement question or the completed exam result.
+   * @throws NotFoundException If no active placement exam exists.
+   */
   @Get()
   @ApiOperation({ summary: 'Get current placement question or result' })
   @ApiOkResponse({
@@ -59,6 +75,15 @@ export class PlacementController {
     return this.placement.getPlacement(user.id);
   }
 
+  /**
+   * Submits an answer to the currently active placement question.
+   * Evaluates timeouts, updates difficulty adaptively, and advances the session.
+   *
+   * @param user - Authenticated session user submitting the answer.
+   * @param body - Submitted answer payload with question ID and chosen option.
+   * @returns The next placement question or the final placement result.
+   * @throws NotFoundException If no active placement exam exists.
+   */
   @Post('answers')
   @ApiOperation({ summary: 'Submit an answer to the current placement question' })
   @ApiCreatedResponse({
@@ -78,6 +103,12 @@ export class PlacementController {
     return this.placement.submitAnswer(user.id, body);
   }
 
+  /**
+   * Quits and abandons the current placement exam, purging active session data.
+   *
+   * @param user - Authenticated session user quitting the exam.
+   * @returns Promise resolving when the placement exam is cancelled.
+   */
   @Delete()
   @HttpCode(HttpStatus.NO_CONTENT)
   @ApiOperation({ summary: 'Quit the current placement exam' })

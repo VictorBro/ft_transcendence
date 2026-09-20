@@ -24,6 +24,17 @@ export class PlacementService {
     private readonly progressService: PlacementProgressService,
   ) {}
 
+  /**
+   * Processes a recorded or timed-out answer for the active session.
+   * Archives the answer in Redis, increments total answers, adjusts adaptive level progress,
+   * and either saves and returns the final result if completed or fetches the next question.
+   *
+   * @param userId - Unique identifier of the user.
+   * @param choice - Selected answer option, or `null` if timed out or skipped.
+   * @param question - Question bank entity that was answered.
+   * @param session - Current exam session state.
+   * @returns Next placement question or completed placement result.
+   */
   private async processAnswer(
     userId: string,
     choice: string | null,
@@ -47,6 +58,14 @@ export class PlacementService {
     return this.questionService.getNewPlacementQuestion(userId, session);
   }
 
+  /**
+   * Validates whether the current placement exam has already completed or if the current
+   * question has timed out. If timed out, automatically processes a null answer.
+   *
+   * @param userId - Unique identifier of the user.
+   * @returns Tuple of `[session, question, result]` where `result` is defined if ended or timed out.
+   * @throws NotFoundException If no active session or current question ID exists (`placement.notFound`).
+   */
   async checkEndedOrTimedOut(
     userId: string,
   ): Promise<
@@ -70,6 +89,16 @@ export class PlacementService {
     return [session, question, undefined];
   }
 
+  /**
+   * Initializes and starts a new placement exam session for the user.
+   * Verifies that no active placement session exists and that onboarding is completed.
+   *
+   * @param userId - Unique identifier of the user starting the exam.
+   * @param dto - Placement initiation payload containing the target language.
+   * @returns The first question of the placement exam.
+   * @throws ConflictException If a placement session is already in progress (`placement.inProgress`)
+   *   or onboarding has not been completed (`placement.onboardingIncomplete`).
+   */
   async startPlacement(userId: string, dto: StartPlacementDto): Promise<PlacementQuestion> {
     const existing = await this.sessionService.hasActiveSession(userId);
     if (existing) {
@@ -96,6 +125,14 @@ export class PlacementService {
     return this.questionService.getNewPlacementQuestion(userId, examSession);
   }
 
+  /**
+   * Retrieves the current placement question or the final placement result for the user.
+   * Kept strictly read-only to preserve HTTP GET idempotency without side effects.
+   *
+   * @param userId - Unique identifier of the user.
+   * @returns Current placement question or the completed exam result.
+   * @throws NotFoundException If no active session or current question ID exists (`placement.notFound`).
+   */
   async getPlacement(userId: string): Promise<PlacementQuestion | PlacementResult> {
     const session = await this.sessionService.loadExamSession(userId);
     if (!session || !session.currentQuestionId) {
@@ -109,6 +146,15 @@ export class PlacementService {
     return this.questionService.createPlacementQuestion(question, session);
   }
 
+  /**
+   * Submits an answer for the user's active question.
+   * Evaluates timeouts, ensures question ID matching, and processes answer advancement.
+   *
+   * @param userId - Unique identifier of the user.
+   * @param dto - Answer payload containing the question ID and choice.
+   * @returns The next placement question or the final placement result if completed.
+   * @throws NotFoundException If no active placement session exists.
+   */
   async submitAnswer(
     userId: string,
     dto: SubmitAnswerDto,
@@ -124,6 +170,12 @@ export class PlacementService {
     return this.processAnswer(userId, dto.choice, question, session);
   }
 
+  /**
+   * Quits and discards the active placement exam, removing session records from Redis.
+   *
+   * @param userId - Unique identifier of the user quitting the exam.
+   * @returns Promise resolving when the session records are deleted.
+   */
   async quitPlacement(userId: string): Promise<void> {
     await this.sessionService.deleteSession(userId);
   }

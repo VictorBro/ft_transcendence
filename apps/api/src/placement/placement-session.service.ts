@@ -9,19 +9,45 @@ export const PLACEMENT_REDIS_KEY_TTL = 3600;
 export class PlacementSessionService {
   constructor(private readonly redis: RedisService) {}
 
+  /**
+   * Generates the Redis hash key used to store the user's placement exam session.
+   *
+   * @param userId - Unique identifier of the user.
+   * @returns Redis key string for the exam session.
+   */
   evalKey(userId: string): string {
     return `user:${userId}:eval`;
   }
 
+  /**
+   * Generates the Redis list key used to archive submitted question answers.
+   *
+   * @param userId - Unique identifier of the user.
+   * @returns Redis key string for the answered questions list.
+   */
   evalQuestionsKey(userId: string): string {
     return `user:${userId}:eval_questions`;
   }
 
+  /**
+   * Checks whether an active placement session exists in Redis for the user.
+   * Only checks key existence; there can be at most one placement session per user.
+   *
+   * @param userId - Unique identifier of the user.
+   * @returns `true` if an active session key exists; otherwise `false`.
+   */
   async hasActiveSession(userId: string): Promise<boolean> {
     const existing = await this.redis.client.exists(this.evalKey(userId));
     return Boolean(existing);
   }
 
+  /**
+   * Serializes and persists the exam session fields into a Redis hash and resets its TTL.
+   *
+   * @param userId - Unique identifier of the user.
+   * @param session - Exam session state to persist.
+   * @returns Promise resolving when the session is saved in Redis.
+   */
   async saveExamSession(userId: string, session: ExamSession): Promise<void> {
     const key = this.evalKey(userId);
     await this.redis.client.hSet(key, {
@@ -39,6 +65,12 @@ export class PlacementSessionService {
     await this.redis.client.expire(key, PLACEMENT_REDIS_KEY_TTL);
   }
 
+  /**
+   * Loads and deserializes the exam session from Redis, validating the schema.
+   *
+   * @param userId - Unique identifier of the user.
+   * @returns The parsed `ExamSession`, or `null` if no active session exists.
+   */
   async loadExamSession(userId: string): Promise<ExamSession | null> {
     const key = this.evalKey(userId);
     const data = await this.redis.client.hGetAll(key);
@@ -59,18 +91,37 @@ export class PlacementSessionService {
     });
   }
 
+  /**
+   * Appends a submitted answer to the user's answers list in Redis and refreshes the key TTL.
+   *
+   * @param userId - Unique identifier of the user.
+   * @param answer - Answer input payload containing question ID and choice.
+   * @returns Promise resolving when the answer is appended.
+   */
   async archiveQuestionAnswer(userId: string, answer: SubmitAnswerInput): Promise<void> {
     const questionsListKey = this.evalQuestionsKey(userId);
     await this.redis.client.rPush(questionsListKey, JSON.stringify(answer));
     await this.redis.client.expire(questionsListKey, PLACEMENT_REDIS_KEY_TTL);
   }
 
+  /**
+   * Retrieves and parses all archived answers submitted by the user during the current session.
+   *
+   * @param userId - Unique identifier of the user.
+   * @returns Array of validated submitted answers in chronological order.
+   */
   async getQuestionAnswers(userId: string): Promise<SubmitAnswerInput[]> {
     const questionsListKey = this.evalQuestionsKey(userId);
     const rawAnswers = await this.redis.client.lRange(questionsListKey, 0, -1);
     return rawAnswers.map((raw) => SubmitAnswerSchema.parse(JSON.parse(raw)));
   }
 
+  /**
+   * Deletes both the exam session hash and the question answers list keys from Redis.
+   *
+   * @param userId - Unique identifier of the user.
+   * @returns Promise resolving when the Redis keys are removed.
+   */
   async deleteSession(userId: string): Promise<void> {
     await this.redis.client.del([this.evalKey(userId), this.evalQuestionsKey(userId)]);
   }
