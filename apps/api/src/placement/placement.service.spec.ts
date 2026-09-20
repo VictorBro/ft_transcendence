@@ -45,6 +45,8 @@ const mockPlacementResult: PlacementResult = {
 
 function createPlacementService() {
   const sessionService = {
+    acquireLock: vi.fn().mockResolvedValue(true),
+    releaseLock: vi.fn().mockResolvedValue(undefined),
     hasActiveSession: vi.fn().mockResolvedValue(false),
     saveExamSession: vi.fn().mockResolvedValue(undefined),
     loadExamSession: vi.fn().mockResolvedValue(null),
@@ -90,29 +92,41 @@ describe('PlacementService', () => {
   });
 
   describe('startPlacement', () => {
-    it('throws ConflictException if placement is already in progress', async () => {
+    it('throws ConflictException if lock cannot be acquired', async () => {
+      vi.mocked(sessionService.acquireLock).mockResolvedValue(false);
+
+      await expect(service.startPlacement('user-1', { lang: 'de' })).rejects.toThrow(
+        new ConflictException('placement.inProgress'),
+      );
+      expect(sessionService.releaseLock).not.toHaveBeenCalled();
+    });
+
+    it('throws ConflictException and releases lock if placement is already in progress', async () => {
       vi.mocked(sessionService.hasActiveSession).mockResolvedValue(true);
 
       await expect(service.startPlacement('user-1', { lang: 'de' })).rejects.toThrow(
         ConflictException,
       );
+      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1');
     });
 
-    it('throws ConflictException if onboarding is incomplete', async () => {
+    it('throws ConflictException and releases lock if onboarding is incomplete', async () => {
       vi.mocked(sessionService.hasActiveSession).mockResolvedValue(false);
       vi.mocked(progressService.checkOnboardingCompleted).mockResolvedValue(false);
 
       await expect(service.startPlacement('user-1', { lang: 'de' })).rejects.toThrow(
         new ConflictException('placement.onboardingIncomplete'),
       );
+      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1');
     });
 
-    it('initializes session and returns first question', async () => {
+    it('initializes session, returns first question, and releases lock', async () => {
       vi.mocked(sessionService.hasActiveSession).mockResolvedValue(false);
       vi.mocked(progressService.checkOnboardingCompleted).mockResolvedValue(true);
 
       const result = await service.startPlacement('user-1', { lang: 'de' });
       expect(result).toEqual(mockPlacementQuestion);
+      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1');
       expect(questionService.getNewPlacementQuestion).toHaveBeenCalledWith(
         'user-1',
         expect.objectContaining({

@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
 import {
   ExamSession,
   TARGET_LEVELS,
@@ -8,7 +8,6 @@ import {
   QUESTION_CATEGORIES,
   TargetLevel,
 } from '@ft/shared';
-import assert from 'node:assert';
 
 import { Level, QuestionBank } from '../generated/prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
@@ -30,13 +29,16 @@ export class PlacementQuestionService {
 
   /**
    * Converts a placement `TargetLevel` to a database CEFR `Level`.
-   * Asserts that the level is not `'C3'`, as question bank items span up to `'C2'`.
+   * Throws `ConflictException` if the level is `'C3'`, as question bank items span up to `'C2'`.
    *
    * @param level - Placement target level to convert.
    * @returns Corresponding database CEFR `Level`.
+   * @throws ConflictException If level is `'C3'` (`placement.expired`).
    */
   targetLevelToCEFRLevel(level: TargetLevel): Level {
-    assert(level !== 'C3');
+    if (level === 'C3') {
+      throw new ConflictException('placement.expired');
+    }
     return level;
   }
 
@@ -48,9 +50,14 @@ export class PlacementQuestionService {
    * @param userId - Unique identifier of the user.
    * @param session - Current exam session state.
    * @returns A tuple `[minQuestions, question]` containing available count and the chosen question.
+   * @throws ConflictException If the exam has ended or reached terminal level C3 (`placement.expired`).
    * @throws NotFoundException If no questions exist in the pool for this level (`placement.poolExhausted`).
    */
   async getNewQuestion(userId: string, session: ExamSession): Promise<[number, QuestionBank]> {
+    if (session.ended || session.level === 'C3') {
+      throw new ConflictException('placement.expired');
+    }
+
     const eligibleCategories = QUESTION_CATEGORIES.filter(
       (cat) => (session.askedPerCategory[cat] ?? 0) < PLACEMENT_ROUNDS.perCategory,
     );

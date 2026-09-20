@@ -15,6 +15,7 @@ function createSessionService(redisClientOverrides: Record<string, unknown> = {}
       rPush: vi.fn().mockResolvedValue(1),
       lRange: vi.fn().mockResolvedValue([]),
       expire: vi.fn().mockResolvedValue(1),
+      set: vi.fn().mockResolvedValue('OK'),
       ...redisClientOverrides,
     },
   };
@@ -48,9 +49,35 @@ describe('PlacementSessionService', () => {
     servedAt: '2026-09-18T19:00:00.000Z',
   };
 
-  it('generates consistent eval and eval_questions keys', () => {
+  it('generates consistent eval, eval_questions, and eval_lock keys', () => {
     expect(service.evalKey('u-1')).toBe('user:u-1:eval');
     expect(service.evalQuestionsKey('u-1')).toBe('user:u-1:eval_questions');
+    expect(service.evalLockKey('u-1')).toBe('user:u-1:eval_lock');
+  });
+
+  describe('acquireLock', () => {
+    it('returns true when lock is successfully acquired', async () => {
+      redis.client.set.mockResolvedValue('OK');
+      const result = await service.acquireLock('u-1');
+      expect(result).toBe(true);
+      expect(redis.client.set).toHaveBeenCalledWith('user:u-1:eval_lock', 'locked', {
+        NX: true,
+        EX: 5,
+      });
+    });
+
+    it('returns false when lock already exists', async () => {
+      redis.client.set.mockResolvedValue(null);
+      const result = await service.acquireLock('u-1');
+      expect(result).toBe(false);
+    });
+  });
+
+  describe('releaseLock', () => {
+    it('deletes the lock key from redis', async () => {
+      await service.releaseLock('u-1');
+      expect(redis.client.del).toHaveBeenCalledWith(['user:u-1:eval_lock']);
+    });
   });
 
   describe('hasActiveSession', () => {

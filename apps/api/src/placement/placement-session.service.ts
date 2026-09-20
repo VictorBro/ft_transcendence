@@ -4,6 +4,7 @@ import { ExamSession, ExamSessionSchema, SubmitAnswerInput, SubmitAnswerSchema }
 import { RedisService } from '../redis/redis.service';
 
 export const PLACEMENT_REDIS_KEY_TTL = 3600;
+export const PLACEMENT_LOCK_TTL_SECONDS = 5;
 
 @Injectable()
 export class PlacementSessionService {
@@ -27,6 +28,42 @@ export class PlacementSessionService {
    */
   evalQuestionsKey(userId: string): string {
     return `user:${userId}:eval_questions`;
+  }
+
+  /**
+   * Generates the Redis key used for mutual exclusion during placement initialization.
+   *
+   * @param userId - Unique identifier of the user.
+   * @returns Redis lock key string.
+   */
+  evalLockKey(userId: string): string {
+    return `user:${userId}:eval_lock`;
+  }
+
+  /**
+   * Atomically acquires a mutual exclusion lock for placement initialization.
+   * Uses Redis `SET ... NX EX` to prevent concurrent `startPlacement` calls from racing.
+   *
+   * @param userId - Unique identifier of the user.
+   * @param ttlSeconds - Time-to-live for the lock in seconds (defaults to `PLACEMENT_LOCK_TTL_SECONDS`).
+   * @returns `true` if lock was successfully acquired; `false` if already locked.
+   */
+  async acquireLock(userId: string, ttlSeconds = PLACEMENT_LOCK_TTL_SECONDS): Promise<boolean> {
+    const result = await this.redis.client.set(this.evalLockKey(userId), 'locked', {
+      NX: true,
+      EX: ttlSeconds,
+    });
+    return result !== null;
+  }
+
+  /**
+   * Releases the mutual exclusion lock for placement initialization.
+   *
+   * @param userId - Unique identifier of the user.
+   * @returns Promise resolving when the lock key is removed.
+   */
+  async releaseLock(userId: string): Promise<void> {
+    await this.redis.client.del([this.evalLockKey(userId)]);
   }
 
   /**

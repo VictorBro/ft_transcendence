@@ -100,29 +100,38 @@ export class PlacementService {
    *   or onboarding has not been completed (`placement.onboardingIncomplete`).
    */
   async startPlacement(userId: string, dto: StartPlacementDto): Promise<PlacementQuestion> {
-    const existing = await this.sessionService.hasActiveSession(userId);
-    if (existing) {
+    const acquired = await this.sessionService.acquireLock(userId);
+    if (!acquired) {
       throw new ConflictException('placement.inProgress');
     }
 
-    if (!(await this.progressService.checkOnboardingCompleted(userId, dto.lang))) {
-      throw new ConflictException('placement.onboardingIncomplete');
+    try {
+      const existing = await this.sessionService.hasActiveSession(userId);
+      if (existing) {
+        throw new ConflictException('placement.inProgress');
+      }
+
+      if (!(await this.progressService.checkOnboardingCompleted(userId, dto.lang))) {
+        throw new ConflictException('placement.onboardingIncomplete');
+      }
+
+      const examSession: ExamSession = {
+        lang: dto.lang,
+        lo: 'A1',
+        hi: 'C3',
+        level: START_LEVEL,
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
+        totalAnswered: 0,
+        ended: false,
+        currentQuestionId: null,
+        servedAt: new Date().toISOString(),
+      };
+
+      return await this.questionService.getNewPlacementQuestion(userId, examSession);
+    } finally {
+      await this.sessionService.releaseLock(userId);
     }
-
-    const examSession: ExamSession = {
-      lang: dto.lang,
-      lo: 'A1',
-      hi: 'C3',
-      level: START_LEVEL,
-      mistakesPerLevel: 0,
-      askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-      totalAnswered: 0,
-      ended: false,
-      currentQuestionId: null,
-      servedAt: new Date().toISOString(),
-    };
-
-    return this.questionService.getNewPlacementQuestion(userId, examSession);
   }
 
   /**

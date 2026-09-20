@@ -1,4 +1,4 @@
-import { NotFoundException } from '@nestjs/common';
+import { ConflictException, NotFoundException } from '@nestjs/common';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import type { ExamSession } from '@ft/shared';
 
@@ -84,8 +84,8 @@ describe('PlacementQuestionService', () => {
       expect(service.targetLevelToCEFRLevel('B1')).toBe('B1');
     });
 
-    it('asserts when level is C3', () => {
-      expect(() => service.targetLevelToCEFRLevel('C3')).toThrow();
+    it('throws ConflictException when level is C3', () => {
+      expect(() => service.targetLevelToCEFRLevel('C3')).toThrow(ConflictException);
     });
   });
 
@@ -123,6 +123,18 @@ describe('PlacementQuestionService', () => {
       prisma.questionBank.findMany.mockResolvedValue([]);
 
       await expect(service.getNewQuestion('user-1', session)).rejects.toThrow(NotFoundException);
+    });
+
+    it('throws ConflictException when session.ended is true', async () => {
+      await expect(service.getNewQuestion('user-1', { ...session, ended: true })).rejects.toThrow(
+        ConflictException,
+      );
+    });
+
+    it('throws ConflictException when session.level is C3', async () => {
+      await expect(service.getNewQuestion('user-1', { ...session, level: 'C3' })).rejects.toThrow(
+        ConflictException,
+      );
     });
 
     it('checks all eligible categories and returns question from non-empty category', async () => {

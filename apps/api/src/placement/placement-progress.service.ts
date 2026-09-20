@@ -132,9 +132,9 @@ export class PlacementProgressService {
       }
     }
 
+    session.askedPerCategory[question.category] =
+      (session.askedPerCategory[question.category] ?? 0) + 1;
     if (levelChange === 'stay') {
-      session.askedPerCategory[question.category] =
-        (session.askedPerCategory[question.category] ?? 0) + 1;
       return;
     } else if (levelChange === 'up' && currIndex === hiIndex - 1) {
       session.level = session.hi;
