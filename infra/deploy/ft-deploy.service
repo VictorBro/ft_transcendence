@@ -1,0 +1,10 @@
+[Unit]
+Description=Redeploy ft_transcendence when a released image moves
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=oneshot
+User=ubuntu
+WorkingDirectory=/home/ubuntu
+ExecStart=/home/ubuntu/deploy.sh
