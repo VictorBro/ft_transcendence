@@ -144,6 +144,7 @@
     "placement": {
       "inProgress": "Un test de positionnement est déjà en cours. Terminez-le d'abord.",
       "notFound": "Aucun test de positionnement n'est en cours",
+      "onboardingIncomplete": "Complétez l'intégration avant de passer le test de positionnement.",
       "expired": "Ce test de positionnement a expiré. Lancez-en un nouveau.",
       "poolExhausted": "Il ne reste pas assez de questions pour ce test. Réessayez plus tard."
     },

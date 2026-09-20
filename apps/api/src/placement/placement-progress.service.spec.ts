@@ -225,6 +225,68 @@ describe('PlacementProgressService', () => {
       expect(session.level).toBe('C1');
       expect(session.askedPerCategory).toEqual({ grammar: 0, vocabulary: 0, reading: 0 });
     });
+
+    it('ends exam with upper boundary level when completing questions at highest level (currIndex === hiIndex - 1)', async () => {
+      const session: ExamSession = {
+        lang: 'de',
+        lo: 'C2',
+        hi: 'C3',
+        level: 'C2',
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 2, vocabulary: 2, reading: 1 },
+        totalAnswered: 17,
+        ended: false,
+        currentQuestionId: mockQuestion.id,
+        servedAt: new Date().toISOString(),
+      };
+
+      await service.adjustSessionFromAnswer('ist', mockQuestion, session, 'user-1');
+      expect(session.ended).toBe(true);
+      expect(session.level).toBe('C3');
+      expect(prisma.$transaction).toHaveBeenCalled();
+      expect(prisma.userLevel.update).toHaveBeenCalledWith({
+        where: {
+          userId_lang: {
+            userId: 'user-1',
+            lang: 'de',
+          },
+        },
+        data: {
+          level: 'C3',
+        },
+      });
+    });
+
+    it('ends exam with lower boundary level when failing at lowest level (currIndex === loIndex)', async () => {
+      const session: ExamSession = {
+        lang: 'de',
+        lo: 'A1',
+        hi: 'A2',
+        level: 'A1',
+        mistakesPerLevel: 1,
+        askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
+        totalAnswered: 7,
+        ended: false,
+        currentQuestionId: mockQuestion.id,
+        servedAt: new Date().toISOString(),
+      };
+
+      await service.adjustSessionFromAnswer('wrong', mockQuestion, session, 'user-1');
+      expect(session.ended).toBe(true);
+      expect(session.level).toBe('A1');
+      expect(prisma.$transaction).toHaveBeenCalled();
+      expect(prisma.userLevel.update).toHaveBeenCalledWith({
+        where: {
+          userId_lang: {
+            userId: 'user-1',
+            lang: 'de',
+          },
+        },
+        data: {
+          level: 'A1',
+        },
+      });
+    });
   });
 
   describe('hasTimedOut', () => {

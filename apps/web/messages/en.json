@@ -144,6 +144,7 @@
     "placement": {
       "inProgress": "A placement test is already running. Finish it first.",
       "notFound": "No placement test is running",
+      "onboardingIncomplete": "Complete onboarding before taking the placement test.",
       "expired": "That placement test has expired. Start a new one.",
       "poolExhausted": "There are not enough questions left for that test. Try again later."
     },

@@ -33,7 +33,7 @@ export class PlacementQuestionService {
     return level;
   }
 
-  async getNewQuestion(_userId: string, session: ExamSession): Promise<[number, QuestionBank]> {
+  async getNewQuestion(userId: string, session: ExamSession): Promise<[number, QuestionBank]> {
     const eligibleCategories = QUESTION_CATEGORIES.filter(
       (cat) => (session.askedPerCategory[cat] ?? 0) < PLACEMENT_ROUNDS.perCategory,
     );
@@ -50,7 +50,7 @@ export class PlacementQuestionService {
           category: cat,
           userSeenQuestions: {
             none: {
-              userId: _userId,
+              userId,
             },
           },
         },
@@ -65,7 +65,7 @@ export class PlacementQuestionService {
 
     const recentSeen = await this.prisma.userSeenQuestion.findMany({
       where: {
-        userId: _userId,
+        userId,
         questionBank: {
           lang: session.lang,
           level: this.targetLevelToCEFRLevel(session.level),
@@ -89,16 +89,16 @@ export class PlacementQuestionService {
     return [0, randomSeen.questionBank];
   }
 
-  getMaxQuestionsRemaining(_session: ExamSession): number {
-    const askedInCurrentLevel = Object.values(_session.askedPerCategory).reduce(
+  getMaxQuestionsRemaining(session: ExamSession): number {
+    const askedInCurrentLevel = Object.values(session.askedPerCategory).reduce(
       (sum, count) => sum + count,
       0,
     );
     const current_level_remaining = Math.max(0, MAX_QUESTIONS_PER_LEVEL - askedInCurrentLevel);
 
-    const loIndex = Math.max(0, TARGET_LEVELS.indexOf(_session.lo));
-    const hiIndex = Math.max(0, TARGET_LEVELS.indexOf(_session.hi));
-    const levelIndex = Math.max(0, TARGET_LEVELS.indexOf(_session.level));
+    const loIndex = Math.max(0, TARGET_LEVELS.indexOf(session.lo));
+    const hiIndex = Math.max(0, TARGET_LEVELS.indexOf(session.hi));
+    const levelIndex = Math.max(0, TARGET_LEVELS.indexOf(session.level));
 
     const lowerDistance = Math.max(0, levelIndex - loIndex);
     const max_lower =
@@ -112,35 +112,35 @@ export class PlacementQuestionService {
   }
 
   async createPlacementQuestion(
-    _question: QuestionBank,
-    _session: ExamSession,
+    question: QuestionBank,
+    session: ExamSession,
   ): Promise<PlacementQuestion> {
-    const elapsedS = Math.floor((Date.now() - new Date(_session.servedAt).getTime()) / 1000);
-    const remainingS = Math.max(0, _question.timeLimitS - Math.max(0, elapsedS));
+    const elapsedS = Math.floor((Date.now() - new Date(session.servedAt).getTime()) / 1000);
+    const remainingS = Math.max(0, question.timeLimitS - Math.max(0, elapsedS));
 
-    const totalQuestions = this.getMaxQuestionsRemaining(_session);
+    const totalQuestions = this.getMaxQuestionsRemaining(session);
 
     return PlacementQuestionSchema.parse({
-      questionId: _question.id,
-      category: _question.category,
-      level: _question.level,
-      question: _question.question,
-      ...(_question.readText ? { readText: _question.readText } : {}),
-      options: _question.options,
-      timeLimitS: _question.timeLimitS,
+      questionId: question.id,
+      category: question.category,
+      level: question.level,
+      question: question.question,
+      ...(question.readText ? { readText: question.readText } : {}),
+      options: question.options,
+      timeLimitS: question.timeLimitS,
       remainingS,
       progress: {
-        answered: _session.totalAnswered,
+        answered: session.totalAnswered,
         maxRemaining: totalQuestions,
       },
     });
   }
 
   async getNewPlacementQuestion(
-    _userId: string,
+    userId: string,
     examSession: ExamSession,
   ): Promise<PlacementQuestion> {
-    const [available, question] = await this.getNewQuestion(_userId, examSession);
+    const [available, question] = await this.getNewQuestion(userId, examSession);
 
     if (available < FETCH_NEW_QUESTIONS_FOR_CATEGORY_WHEN_REMAINING_LESS_THAN) {
       // todo for later PR: insert new questions into database, but asynchronously without user noticing
@@ -151,19 +151,19 @@ export class PlacementQuestionService {
     await this.prisma.userSeenQuestion.upsert({
       where: {
         userId_questionId: {
-          userId: _userId,
+          userId,
           questionId: question.id,
         },
       },
       create: {
-        userId: _userId,
+        userId,
         questionId: question.id,
       },
       update: {
         updatedAt: new Date(),
       },
     });
-    await this.sessionService.saveExamSession(_userId, examSession);
+    await this.sessionService.saveExamSession(userId, examSession);
     return this.createPlacementQuestion(question, examSession);
   }
 }

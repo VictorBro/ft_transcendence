@@ -24,9 +24,9 @@ export class PlacementProgressService {
     private readonly sessionService: PlacementSessionService,
   ) {}
 
-  async getQuestion(_questionId: string): Promise<QuestionBank> {
+  async getQuestion(questionId: string): Promise<QuestionBank> {
     const question = await this.prisma.questionBank.findUnique({
-      where: { id: _questionId },
+      where: { id: questionId },
     });
     if (!question) {
       throw new NotFoundException('placement.notFound');
@@ -34,22 +34,22 @@ export class PlacementProgressService {
     return question;
   }
 
-  async updateUserLevel(_userId: string, _lang: Language, _level: TargetLevel) {
+  async updateUserLevel(userId: string, lang: Language, level: TargetLevel): Promise<void> {
     await this.prisma.$transaction([
       this.prisma.userLevel.update({
         where: {
           userId_lang: {
-            userId: _userId,
-            lang: _lang,
+            userId,
+            lang,
           },
         },
         data: {
-          level: _level,
+          level,
         },
       }),
       this.prisma.user.update({
-        where: { id: _userId },
-        data: { activeLang: _lang },
+        where: { id: userId },
+        data: { activeLang: lang },
       }),
     ]);
   }
@@ -68,27 +68,27 @@ export class PlacementProgressService {
   }
 
   async adjustSessionFromAnswer(
-    _answer: string | null,
-    _question: QuestionBank,
-    _session: ExamSession,
-    _userId: string,
+    answer: string | null,
+    question: QuestionBank,
+    session: ExamSession,
+    userId: string,
   ): Promise<void> {
-    const isCorrect = _answer !== null && _answer === _question.answer;
+    const isCorrect = answer !== null && answer === question.answer;
 
     if (!isCorrect) {
-      _session.mistakesPerLevel += 1;
+      session.mistakesPerLevel += 1;
     }
 
     let levelChange: 'down' | 'stay' | 'up' = 'stay';
 
-    const loIndex = TARGET_LEVELS.indexOf(_session.lo);
-    const hiIndex = TARGET_LEVELS.indexOf(_session.hi);
-    const currIndex = TARGET_LEVELS.indexOf(_session.level);
+    const loIndex = TARGET_LEVELS.indexOf(session.lo);
+    const hiIndex = TARGET_LEVELS.indexOf(session.hi);
+    const currIndex = TARGET_LEVELS.indexOf(session.level);
 
-    if (_session.mistakesPerLevel > PLACEMENT_ROUNDS.maxMistakes) {
+    if (session.mistakesPerLevel > PLACEMENT_ROUNDS.maxMistakes) {
       levelChange = 'down';
     } else {
-      const askedInCurrentLevel = Object.values(_session.askedPerCategory).reduce(
+      const askedInCurrentLevel = Object.values(session.askedPerCategory).reduce(
         (sum, count) => sum + count,
         0,
       );
@@ -98,32 +98,32 @@ export class PlacementProgressService {
     }
 
     if (levelChange === 'stay') {
-      _session.askedPerCategory[_question.category] =
-        (_session.askedPerCategory[_question.category] ?? 0) + 1;
+      session.askedPerCategory[question.category] =
+        (session.askedPerCategory[question.category] ?? 0) + 1;
       return;
     } else if (levelChange === 'up' && currIndex === hiIndex - 1) {
-      _session.level = _session.hi;
-      _session.ended = true;
-      await this.updateUserLevel(_userId, _session.lang, _session.level);
+      session.level = session.hi;
+      session.ended = true;
+      await this.updateUserLevel(userId, session.lang, session.level);
       return;
     } else if (levelChange === 'down' && currIndex === loIndex) {
-      _session.level = _session.lo;
-      _session.ended = true;
-      await this.updateUserLevel(_userId, _session.lang, _session.level);
+      session.level = session.lo;
+      session.ended = true;
+      await this.updateUserLevel(userId, session.lang, session.level);
       return;
     }
 
-    _session.askedPerCategory = { grammar: 0, vocabulary: 0, reading: 0 };
-    _session.mistakesPerLevel = 0;
+    session.askedPerCategory = { grammar: 0, vocabulary: 0, reading: 0 };
+    session.mistakesPerLevel = 0;
 
     if (levelChange === 'up') {
-      _session.lo = TARGET_LEVELS[Math.min(hiIndex, currIndex + 1)];
+      session.lo = TARGET_LEVELS[Math.min(hiIndex, currIndex + 1)];
       const nextIndex = Math.min(hiIndex - 1, currIndex + Math.ceil((hiIndex - currIndex) / 2));
-      _session.level = TARGET_LEVELS[nextIndex];
+      session.level = TARGET_LEVELS[nextIndex];
     } else {
-      _session.hi = _session.level;
+      session.hi = session.level;
       const nextIndex = Math.max(loIndex, currIndex - Math.ceil((currIndex - loIndex) / 2));
-      _session.level = TARGET_LEVELS[nextIndex];
+      session.level = TARGET_LEVELS[nextIndex];
     }
   }
 
@@ -132,10 +132,10 @@ export class PlacementProgressService {
     return elapsedS >= question.timeLimitS + NETWORK_GRACE_S;
   }
 
-  async getResult(_userId: string, _session: ExamSession): Promise<PlacementResult | undefined> {
-    if (!_session.ended) return undefined;
+  async getResult(userId: string, session: ExamSession): Promise<PlacementResult | undefined> {
+    if (!session.ended) return undefined;
 
-    const answers = await this.sessionService.getQuestionAnswers(_userId);
+    const answers = await this.sessionService.getQuestionAnswers(userId);
     const questionIds = answers.map((answer) => answer.questionId);
     const dbQuestions = await this.prisma.questionBank.findMany({
       where: {
@@ -161,7 +161,7 @@ export class PlacementProgressService {
     }
 
     return PlacementResultSchema.parse({
-      targetLevel: _session.level,
+      targetLevel: session.level,
       report,
     });
   }
