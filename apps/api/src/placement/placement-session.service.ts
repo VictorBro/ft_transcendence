@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { ConflictException, Injectable } from '@nestjs/common';
 import { ExamSession, ExamSessionSchema, SubmitAnswerInput, SubmitAnswerSchema } from '@ft/shared';
 
 import { RedisService } from '../redis/redis.service';
@@ -143,18 +143,22 @@ export class PlacementSessionService {
     if (!data || Object.keys(data).length === 0) {
       return null;
     }
-    return ExamSessionSchema.parse({
-      lang: data.lang,
-      lo: data.lo,
-      hi: data.hi,
-      level: data.level,
-      mistakesPerLevel: Number(data.mistakesPerLevel),
-      askedPerCategory: JSON.parse(data.askedPerCategory || '{}'),
-      totalAnswered: Number(data.totalAnswered ?? 0),
-      ended: data.ended === 'true',
-      currentQuestionId: data.currentQuestionId ? data.currentQuestionId : null,
-      servedAt: data.servedAt,
-    });
+    try {
+      return ExamSessionSchema.parse({
+        lang: data.lang,
+        lo: data.lo,
+        hi: data.hi,
+        level: data.level,
+        mistakesPerLevel: Number(data.mistakesPerLevel),
+        askedPerCategory: JSON.parse(data.askedPerCategory || '{}'),
+        totalAnswered: Number(data.totalAnswered ?? 0),
+        ended: data.ended === 'true',
+        currentQuestionId: data.currentQuestionId ? data.currentQuestionId : null,
+        servedAt: data.servedAt,
+      });
+    } catch {
+      throw new ConflictException('placement.invalidSession');
+    }
   }
 
   /**
@@ -182,7 +186,11 @@ export class PlacementSessionService {
   async getQuestionAnswers(userId: string): Promise<SubmitAnswerInput[]> {
     const questionsListKey = this.evalQuestionsKey(userId);
     const rawAnswers = await this.redis.client.lRange(questionsListKey, 0, -1);
-    return rawAnswers.map((raw) => SubmitAnswerSchema.parse(JSON.parse(raw)));
+    try {
+      return rawAnswers.map((raw) => SubmitAnswerSchema.parse(JSON.parse(raw)));
+    } catch {
+      throw new ConflictException('placement.invalidSession');
+    }
   }
 
   /**

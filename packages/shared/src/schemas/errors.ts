@@ -42,8 +42,10 @@ export const ERROR_CODES = [
   'course.notFound',
   'placement.inProgress',
   'placement.invalidChoice',
+  'placement.invalidSession',
   'placement.notFound',
   'placement.onboardingIncomplete',
+  'placement.questionMismatch',
   /** Left unfinished long enough that its clock is meaningless. */
   'placement.expired',
   /** No unseen question left for that language, level and category: a content gap. */

@@ -71,6 +71,9 @@ export class PlacementController {
       ],
     },
   })
+  @ApiConflictResponse({
+    description: 'Stored placement session is invalid (`placement.invalidSession`)',
+  })
   @ApiNotFoundResponse({ description: 'No active placement exam' })
   getPlacement(@CurrentUser() user: SessionUser): Promise<PlacementQuestion | PlacementResult> {
     return this.placement.getPlacement(user.id);
@@ -98,6 +101,10 @@ export class PlacementController {
   })
   @ApiBadRequestResponse({
     description: 'Choice is not one of the question options (`placement.invalidChoice`)',
+  })
+  @ApiConflictResponse({
+    description:
+      'Placement is busy, stored session is invalid, or question ID does not match the active question',
   })
   @ApiNotFoundResponse({ description: 'No active placement exam' })
   submitAnswer(

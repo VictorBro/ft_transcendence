@@ -172,7 +172,8 @@ export class PlacementService {
    * @param userId - Unique identifier of the user.
    * @param dto - Answer payload containing the question ID and choice.
    * @throws BadRequestException If choice is not null and not one of question.options (`placement.invalidChoice`).
-   * @throws ConflictException If the placement lock cannot be acquired (`placement.inProgress`).
+   * @throws ConflictException If the placement lock cannot be acquired (`placement.inProgress`)
+   *   or the submitted question does not match the active question (`placement.questionMismatch`).
    * @throws NotFoundException If no active placement session exists.
    */
   async submitAnswer(
@@ -190,7 +191,7 @@ export class PlacementService {
       assert(question !== undefined);
 
       if (dto.questionId !== session.currentQuestionId) {
-        return this.questionService.createPlacementQuestion(question, session);
+        throw new ConflictException('placement.questionMismatch');
       }
 
       if (dto.choice !== null && !question.options.includes(dto.choice)) {

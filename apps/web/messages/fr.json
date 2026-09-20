@@ -144,8 +144,10 @@
     "placement": {
       "inProgress": "Un test de positionnement est déjà en cours. Terminez-le d'abord.",
       "invalidChoice": "Choix de réponse invalide pour cette question.",
+      "invalidSession": "Ce test de positionnement n'est pas valide. Lancez-en un nouveau.",
       "notFound": "Aucun test de positionnement n'est en cours",
       "onboardingIncomplete": "Complétez l'intégration avant de passer le test de positionnement.",
+      "questionMismatch": "Cette question n'est plus active. Actualisez le test de positionnement et réessayez.",
       "expired": "Ce test de positionnement a expiré. Lancez-en un nouveau.",
       "poolExhausted": "Il ne reste pas assez de questions pour ce test. Réessayez plus tard."
     },

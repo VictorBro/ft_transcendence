@@ -377,7 +377,7 @@ describe('PlacementService', () => {
       expect(sessionService.archiveQuestionAnswer).not.toHaveBeenCalled();
     });
 
-    it('returns current question if questionId does not match', async () => {
+    it('throws placement.questionMismatch if questionId does not match', async () => {
       const session: ExamSession = {
         lang: 'de',
         lo: 'A1',
@@ -395,13 +395,14 @@ describe('PlacementService', () => {
       vi.mocked(progressService.getQuestion).mockResolvedValue(mockQuestion);
       vi.mocked(progressService.hasTimedOut).mockReturnValue(false);
 
-      const result = await service.submitAnswer('user-1', {
-        questionId: 'other-question-id',
-        choice: 'ist',
-      });
-      expect(result).toEqual(mockPlacementQuestion);
-      expect(questionService.createPlacementQuestion).toHaveBeenCalledWith(mockQuestion, session);
+      await expect(
+        service.submitAnswer('user-1', {
+          questionId: 'other-question-id',
+          choice: 'ist',
+        }),
+      ).rejects.toThrow(new ConflictException('placement.questionMismatch'));
       expect(sessionService.archiveQuestionAnswer).not.toHaveBeenCalled();
+      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1');
     });
 
     it('returns result if checkEndedOrTimedOut returns a result', async () => {

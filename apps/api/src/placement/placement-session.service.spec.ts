@@ -1,3 +1,4 @@
+import { ConflictException } from '@nestjs/common';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import type { ExamSession, SubmitAnswerInput } from '@ft/shared';
 
@@ -175,6 +176,28 @@ describe('PlacementSessionService', () => {
       const result = await service.loadExamSession('u-1');
       expect(result).toEqual(sampleSession);
     });
+
+    it.each([
+      ['malformed JSON', '{invalid'],
+      ['schema-invalid JSON', JSON.stringify({ grammar: -1 })],
+    ])('throws placement.invalidSession for %s', async (_description, askedPerCategory) => {
+      redis.client.hGetAll.mockResolvedValue({
+        lang: 'de',
+        lo: 'A1',
+        hi: 'C2',
+        level: 'B1',
+        mistakesPerLevel: '0',
+        askedPerCategory,
+        totalAnswered: '0',
+        ended: 'false',
+        currentQuestionId: sampleSession.currentQuestionId,
+        servedAt: sampleSession.servedAt,
+      });
+
+      await expect(service.loadExamSession('u-1')).rejects.toThrow(
+        new ConflictException('placement.invalidSession'),
+      );
+    });
   });
 
   describe('archiveQuestionAnswer', () => {
@@ -216,6 +239,17 @@ describe('PlacementSessionService', () => {
 
       const result = await service.getQuestionAnswers('u-1');
       expect(result).toEqual(answers);
+    });
+
+    it.each([
+      ['malformed JSON', '{invalid'],
+      ['schema-invalid JSON', JSON.stringify({ questionId: 'not-a-uuid', choice: 'ist' })],
+    ])('throws placement.invalidSession for %s', async (_description, rawAnswer) => {
+      redis.client.lRange.mockResolvedValue([rawAnswer]);
+
+      await expect(service.getQuestionAnswers('u-1')).rejects.toThrow(
+        new ConflictException('placement.invalidSession'),
+      );
     });
   });
 
