@@ -86,11 +86,8 @@ export const PUBLIC_FOOTER_ROUTES: PageRoute[] = [
 export const AUTHENTICATED_FOOTER_ROUTES: PageRoute[] = [
   { path: '/en/dashboard', name: 'dashboard' },
   { path: '/en/chat', name: 'chat' },
-  { path: '/en/chat-progress', name: 'chat progress' },
-  { path: '/en/word-mode', name: 'word mode' },
-  { path: '/en/sentence-mode', name: 'sentence mode' },
-  { path: '/en/roleplay', name: 'roleplay' },
   { path: '/en/friends', name: 'friends' },
+  { path: '/en/learn/de', name: 'course home' },
   { path: '/en/profile', name: 'profile' },
   { path: '/en/profile/edit', name: 'edit profile' },
   { path: '/en/settings/2fa', name: 'two-factor settings' },

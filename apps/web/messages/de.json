@@ -28,18 +28,35 @@
   "Lobby": {
     "title": "Lobby",
     "heading": "Übungsmodi",
-    "friendsTitle": "Mit Freunden sprechen",
-    "friendsDescription": "Chatte in Echtzeit in jeder Sprache. Wir übersetzen und korrigieren für euch beide.",
-    "chatTitle": "Chat",
-    "chatDescription": "Verbessere deine Sprachkenntnisse im Gespräch mit unserem KI-Tutor.",
-    "progressTitle": "Chat-Fortschritt",
-    "progressDescription": "Folge einem Gesprächspfad, der sich deinem Fortschritt anpasst, von Anfänger bis Fortgeschritten.",
-    "wordTitle": "Wortmodus",
-    "wordDescription": "Baue deinen Grundwortschatz mit unseren Wortlisten auf.",
-    "sentenceTitle": "Satzmodus",
-    "sentenceDescription": "Baue deine Sprachkenntnisse von Grund auf auf.",
-    "roleplayTitle": "Rollenspiel",
-    "roleplayDescription": "Übe mit nützlichen Alltagsszenarien."
+    "friendsTitle": "Sprachübergreifender Chat",
+    "friendsDescription": "Sprich mit einer anderen lernenden Person, jede in ihrer eigenen Sprache. Die KI übersetzt und korrigiert dabei.",
+    "chatTitle": "Tutor",
+    "chatDescription": "Erarbeite ein Thema mit dem KI-Tutor, verankert im Kursmaterial."
+  },
+  "Languages": {
+    "en": "Englisch",
+    "fr": "Französisch",
+    "de": "Deutsch"
+  },
+  "CourseSwitcher": {
+    "label": "Kurs",
+    "none": "Kein Kurs geöffnet",
+    "addLanguage": "Sprache hinzufügen…"
+  },
+  "Course": {
+    "title": "Kurs",
+    "heading": "{language}",
+    "level": "Niveau",
+    "notPlaced": "Noch nicht festgelegt",
+    "dailyGoal": "Tagesziel",
+    "minutesPerDay": "{minutes} Min.",
+    "takePlacement": "Einstufungstest machen",
+    "retakePlacement": "Einstufungstest wiederholen",
+    "notStudying": "Du lernst diese Sprache noch nicht.",
+    "startCourse": "Diesen Kurs beginnen",
+    "roadmapSoon": "Hier erscheint dein Lernpfad",
+    "practice": "Üben",
+    "thisCourse": "Dieser Kurs"
   },
   "Onboarding": {
     "title": "Loslegen",

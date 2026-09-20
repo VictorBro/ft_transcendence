@@ -28,18 +28,35 @@
   "Lobby": {
     "title": "Salon",
     "heading": "Modes d'entraînement",
-    "friendsTitle": "Discuter avec un ami",
-    "friendsDescription": "Discutez en temps réel avec un ami dans n'importe quelle langue. Nous traduisons et corrigeons pour vous deux.",
-    "chatTitle": "Conversation",
-    "chatDescription": "Développez vos compétences linguistiques en pratiquant avec notre tuteur IA.",
-    "progressTitle": "Progression guidée",
-    "progressDescription": "Suivez un parcours de conversation qui s'adapte à votre progression, du débutant à l'avancé.",
-    "wordTitle": "Mode mots",
-    "wordDescription": "Construisez votre vocabulaire de base à l'aide de nos listes de mots.",
-    "sentenceTitle": "Mode phrases",
-    "sentenceDescription": "Construisez vos compétences linguistiques depuis les fondations.",
-    "roleplayTitle": "Jeu de rôle",
-    "roleplayDescription": "Entraînez-vous avec des scénarios utiles de la vie courante."
+    "friendsTitle": "Discussion multilingue",
+    "friendsDescription": "Parlez avec un autre apprenant, chacun dans sa langue. L'IA traduit entre vous et corrige au passage.",
+    "chatTitle": "Tuteur",
+    "chatDescription": "Travaillez un sujet avec le tuteur IA, ancré dans le contenu du cours."
+  },
+  "Languages": {
+    "en": "anglais",
+    "fr": "français",
+    "de": "allemand"
+  },
+  "CourseSwitcher": {
+    "label": "Cours",
+    "none": "Aucun cours ouvert",
+    "addLanguage": "Ajouter une langue…"
+  },
+  "Course": {
+    "title": "Cours",
+    "heading": "{language}",
+    "level": "Niveau",
+    "notPlaced": "Pas encore défini",
+    "dailyGoal": "Objectif quotidien",
+    "minutesPerDay": "{minutes} min",
+    "takePlacement": "Passer le test de positionnement",
+    "retakePlacement": "Repasser le test de positionnement",
+    "notStudying": "Vous n'étudiez pas encore cette langue.",
+    "startCourse": "Commencer ce cours",
+    "roadmapSoon": "Votre parcours apparaîtra ici",
+    "practice": "Exercices",
+    "thisCourse": "Ce cours"
   },
   "Onboarding": {
     "title": "Commencer",

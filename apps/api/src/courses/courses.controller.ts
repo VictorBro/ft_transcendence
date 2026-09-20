@@ -6,6 +6,7 @@ import {
   ApiOperation,
   ApiParam,
   ApiTags,
+  ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
 import { ZodValidationPipe } from 'nestjs-zod';
@@ -27,6 +28,7 @@ export class CoursesController {
   @Get()
   @ApiOperation({ summary: 'List courses for the current user' })
   @ApiOkResponse({ type: CoursesDto })
+  @ApiUnauthorizedResponse({ description: 'No valid session' })
   listCourses(@CurrentUser() user: SessionUser) {
     return this.courses.listCoursesUser(user.id);
   }
@@ -34,6 +36,7 @@ export class CoursesController {
   @Post()
   @ApiOperation({ summary: 'Start a course in a new language' })
   @ApiCreatedResponse({ type: CourseDto })
+  @ApiUnauthorizedResponse({ description: 'No valid session' })
   @ApiConflictResponse({ description: 'Language already studied' })
   createNewCourse(@CurrentUser() user: SessionUser, @Body() body: StartCourseDto) {
     return this.courses.createCourse(user.id, body);
@@ -45,6 +48,7 @@ export class CoursesController {
   // and swagger drops the parameter instead of rendering a field for it.
   @ApiParam({ name: 'lang', enum: [...LEARNABLE_LANGUAGES] })
   @ApiOkResponse({ type: CourseDto })
+  @ApiUnauthorizedResponse({ description: 'No valid session' })
   @ApiNotFoundResponse({ description: 'No course in that language' })
   setGoal(
     @CurrentUser() user: SessionUser,
@@ -60,6 +64,7 @@ export class CoursesController {
   })
   @ApiParam({ name: 'lang', enum: [...LEARNABLE_LANGUAGES] })
   @ApiOkResponse({ type: CourseDto })
+  @ApiUnauthorizedResponse({ description: 'No valid session' })
   @ApiNotFoundResponse({ description: 'No course in that language' })
   setLevel(
     @CurrentUser() user: SessionUser,
