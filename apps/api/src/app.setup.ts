@@ -3,7 +3,7 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { RedisStore } from 'connect-redis';
 import session from 'express-session';
-import { ZodValidationPipe } from 'nestjs-zod';
+import { cleanupOpenApiDoc, ZodValidationPipe } from 'nestjs-zod';
 
 import { RedisService } from './redis/redis.service';
 
@@ -85,11 +85,25 @@ export function configureApp(app: INestApplication): void {
 
   const config = new DocumentBuilder()
     .setTitle('ft_transcendence API')
-    .setDescription('AI-driven foreign language learning platform')
-    .setVersion('1.0')
+    .setDescription(
+      'AI-driven foreign language learning platform.\n\n' +
+        'Errors carry an ERROR_CODES entry as `message`, never a sentence: the browser ' +
+        'translates the code. See packages/shared/src/schemas/errors.ts for the list.',
+    )
+    .setVersion(process.env.APP_VERSION ?? '0.0.0')
+    // Registered under the name `cookie`, which is what the decorators reference.
     .addCookieAuth(SESSION_COOKIE)
+    // AuthGuard is global, so the document is deny-by-default too. @Public()
+    // routes clear it with `security: []`.
+    .addSecurityRequirements('cookie')
     .build();
 
   // SwaggerModule does not inherit the global prefix, so the path repeats it.
-  SwaggerModule.setup(`${API_PREFIX}/docs`, app, SwaggerModule.createDocument(app, config));
+  // cleanupOpenApiDoc strips nestjs-zod's internal extensions and the 3.1 null
+  // syntax it emits, which are invalid under the 3.0.0 header.
+  SwaggerModule.setup(
+    `${API_PREFIX}/docs`,
+    app,
+    cleanupOpenApiDoc(SwaggerModule.createDocument(app, config)),
+  );
 }

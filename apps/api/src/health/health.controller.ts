@@ -17,7 +17,7 @@ export class HealthController {
   constructor(private readonly health: HealthService) {}
 
   @Get()
-  @ApiOperation({ summary: 'Liveness probe' })
+  @ApiOperation({ summary: 'Liveness probe', security: [] })
   @ApiOkResponse({ type: HealthResponseDto })
   // Always 200, including when a dependency is down: the body carries the
   // verdict. A non-2xx here would make Docker restart a container whose only

@@ -30,7 +30,7 @@ env:
 
 jobs:
   build:
-    name: build ${{ matrix.app }} (${{ matrix.platform.arch }})
+    name: build ${{ matrix.image.name }} (${{ matrix.platform.arch }})
     runs-on: ${{ matrix.platform.runner }}
     timeout-minutes: 45
 
@@ -42,7 +42,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        app: [api, web]
+        image:
+          - { name: api, app: api, target: prod }
+          - { name: web, app: web, target: prod }
+          # The build stage. prod deliberately carries no Prisma CLI and no
+          # migrations, so deployments run `prisma migrate deploy` from this.
+          - { name: tooling, app: api, target: build }
         platform:
           - { arch: amd64, name: linux/amd64, runner: ubuntu-24.04 }
           - { arch: arm64, name: linux/arm64, runner: ubuntu-24.04-arm }
@@ -54,7 +59,7 @@ jobs:
       # github.repository preserves the owner's capitalisation.
       - name: Resolve the image name
         id: image
-        run: echo "ref=${REGISTRY}/${GITHUB_REPOSITORY,,}/${{ matrix.app }}" >> "$GITHUB_OUTPUT"
+        run: echo "ref=${REGISTRY}/${GITHUB_REPOSITORY,,}/${{ matrix.image.name }}" >> "$GITHUB_OUTPUT"
 
       - uses: docker/setup-buildx-action@v4.2.0
 
@@ -72,17 +77,18 @@ jobs:
       # The push build below is a full cache hit, so this is not a second build
       # in any meaningful sense.
       - name: Build the prod target for scanning
+        if: matrix.image.target == 'prod'
         uses: docker/build-push-action@v7.3.0
         with:
           context: .
-          file: apps/${{ matrix.app }}/Dockerfile
-          target: prod
+          file: apps/${{ matrix.image.app }}/Dockerfile
+          target: ${{ matrix.image.target }}
           platforms: ${{ matrix.platform.name }}
           load: true
-          tags: scan/${{ matrix.app }}:${{ github.sha }}
+          tags: scan/${{ matrix.image.name }}:${{ github.sha }}
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=gha,scope=prod-${{ matrix.app }}-${{ matrix.platform.arch }}
-          cache-to: type=gha,mode=max,scope=prod-${{ matrix.app }}-${{ matrix.platform.arch }}
+          cache-from: type=gha,scope=${{ matrix.image.name }}-${{ matrix.platform.arch }}
+          cache-to: type=gha,mode=max,scope=${{ matrix.image.name }}-${{ matrix.platform.arch }}
           # The docker exporter cannot carry attestations.
           provenance: false
 
@@ -96,9 +102,10 @@ jobs:
       # log, the sarif is what GitHub can track over time. The second is nearly
       # free, the image and the vulnerability database are both already local.
       - name: Trivy scan (log)
+        if: matrix.image.target == 'prod'
         uses: aquasecurity/trivy-action@v0.36.0
         with:
-          image-ref: scan/${{ matrix.app }}:${{ github.sha }}
+          image-ref: scan/${{ matrix.image.name }}:${{ github.sha }}
           format: table
           severity: CRITICAL,HIGH
           # A vulnerability with no released fix cannot be actioned by us.
@@ -113,9 +120,10 @@ jobs:
           TRIVY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Trivy scan (sarif)
+        if: matrix.image.target == 'prod'
         uses: aquasecurity/trivy-action@v0.36.0
         with:
-          image-ref: scan/${{ matrix.app }}:${{ github.sha }}
+          image-ref: scan/${{ matrix.image.name }}:${{ github.sha }}
           format: sarif
           output: trivy-results.sarif
           severity: CRITICAL,HIGH
@@ -129,14 +137,14 @@ jobs:
       # A fork's token has no security-events: write, and code scanning is a
       # repository feature that can be off entirely: neither is a build failure.
       - name: Publish to the Security tab
-        if: env.PUSH == 'true'
+        if: env.PUSH == 'true' && matrix.image.target == 'prod'
         continue-on-error: true
         uses: github/codeql-action/upload-sarif@v4.37.6
         with:
           sarif_file: trivy-results.sarif
           # Without a distinct category the four matrix jobs overwrite each
           # other and only the last one to finish is visible.
-          category: trivy-${{ matrix.app }}-${{ matrix.platform.arch }}
+          category: trivy-${{ matrix.image.name }}-${{ matrix.platform.arch }}
 
       - uses: docker/login-action@v4.6.0
         if: env.PUSH == 'true'
@@ -154,11 +162,11 @@ jobs:
         uses: docker/build-push-action@v7.3.0
         with:
           context: .
-          file: apps/${{ matrix.app }}/Dockerfile
-          target: prod
+          file: apps/${{ matrix.image.app }}/Dockerfile
+          target: ${{ matrix.image.target }}
           platforms: ${{ matrix.platform.name }}
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=gha,scope=prod-${{ matrix.app }}-${{ matrix.platform.arch }}
+          cache-from: type=gha,scope=${{ matrix.image.name }}-${{ matrix.platform.arch }}
           outputs: type=image,name=${{ steps.image.outputs.ref }},push-by-digest=true,name-canonical=true,push=true
 
       # The digest is passed to the merge job as an empty file named after it:
@@ -174,32 +182,35 @@ jobs:
         if: env.PUSH == 'true'
         uses: actions/upload-artifact@v7.0.1
         with:
-          name: digests-${{ matrix.app }}-${{ matrix.platform.arch }}
+          name: digests-${{ matrix.image.name }}-${{ matrix.platform.arch }}
           path: ${{ runner.temp }}/digests/*
           if-no-files-found: error
           retention-days: 1
 
   merge:
-    name: manifest ${{ matrix.app }}
+    name: manifest ${{ matrix.image.name }}
     needs: [build]
     if: github.event.repository.fork == false
     runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
-        app: [api, web]
+        image:
+          - { name: api }
+          - { name: web }
+          - { name: tooling }
 
     steps:
       - uses: actions/checkout@v7.0.1
 
       - name: Resolve the image name
         id: image
-        run: echo "ref=${REGISTRY}/${GITHUB_REPOSITORY,,}/${{ matrix.app }}" >> "$GITHUB_OUTPUT"
+        run: echo "ref=${REGISTRY}/${GITHUB_REPOSITORY,,}/${{ matrix.image.name }}" >> "$GITHUB_OUTPUT"
 
       - uses: actions/download-artifact@v8.0.1
         with:
           path: ${{ runner.temp }}/digests
-          pattern: digests-${{ matrix.app }}-*
+          pattern: digests-${{ matrix.image.name }}-*
           merge-multiple: true
 
       - uses: docker/setup-buildx-action@v4.2.0

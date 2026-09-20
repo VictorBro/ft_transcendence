@@ -1,7 +1,30 @@
 import createMiddleware from 'next-intl/middleware';
-import { routing } from '@/i18n/routing';
+import type { NextRequest } from 'next/server';
 
-export default createMiddleware(routing);
+import { routing } from '@/i18n/routing';
+import { COURSE_COOKIE, learnPathLang } from '@/lib/course-path';
+
+const intl = createMiddleware(routing);
+
+/**
+ * next-intl's middleware, plus the cookie /dashboard reads to know where to
+ * land. Written here because a server component cannot set one during a render.
+ */
+export default function proxy(request: NextRequest) {
+  const response = intl(request);
+  const lang = learnPathLang(request.nextUrl.pathname);
+
+  if (lang !== null) {
+    response.cookies.set(COURSE_COOKIE, lang, {
+      path: '/',
+      httpOnly: true,
+      sameSite: 'lax',
+      maxAge: 60 * 60 * 24 * 365,
+    });
+  }
+
+  return response;
+}
 
 export const config = {
   // Match all pathnames except for
