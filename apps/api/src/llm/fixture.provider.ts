@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { GeneratedItem } from '@ft/shared';
+import { GeneratedBatch } from '@ft/shared';
 import { LlmProvider } from './llm.interface';
 
 /**
@@ -25,16 +25,50 @@ export class FixtureProvider implements LlmProvider {
    * Simulates structured generation by immediately returning a static, valid GeneratedItem.
    */
   async generateStructured<T>(_prompt: { system?: string; user: string }): Promise<T> {
-    const fakeItem: GeneratedItem = {
-      level: 'A1',
-      topic: 'nouns_and_determiners',
-      question: 'She eats ___ apple.',
-      options: ['an', 'a', 'the', 'some'],
-      answer: 'an',
-      timeLimitS: 30,
+    const fakeBatch: GeneratedBatch = {
+      items: [
+        {
+          level: 'A1',
+          topic: 'nouns_and_determiners',
+          question: 'She eats ___ apple.',
+          options: ['an', 'a', 'the', 'some'],
+          answer: 'an',
+          timeLimitS: 30,
+        },
+        {
+          level: 'A1',
+          topic: 'verbs_morphology',
+          question: 'They ___ in Paris.',
+          options: ['live', 'lives', 'living', 'lived'],
+          answer: 'live',
+          timeLimitS: 30,
+        },
+        {
+          level: 'A1',
+          topic: 'pronouns',
+          question: 'Give ___ the book, please.',
+          options: ['me', 'I', 'my', 'mine'],
+          answer: 'me',
+          timeLimitS: 30,
+        },
+        {
+          level: 'A1',
+          topic: 'adjectives',
+          question: 'It is a ___ day.',
+          options: ['sunny', 'sun', 'sunshine', 'sunned'],
+          answer: 'sunny',
+          timeLimitS: 30,
+        },
+        {
+          level: 'A1',
+          topic: 'negation',
+          question: 'He ___ not like coffee.',
+          options: ['does', 'do', 'is', 'has'],
+          answer: 'does',
+          timeLimitS: 30,
+        },
+      ],
     };
-
-    // `as T` tells TypeScript to trust that this fake item matches the expected generic type T.
-    return fakeItem as T;
+    return fakeBatch as T;
   }
 }
