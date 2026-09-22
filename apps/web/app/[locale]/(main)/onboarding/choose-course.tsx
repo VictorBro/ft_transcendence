@@ -66,11 +66,11 @@ export function ChooseCourse({
 
       <fieldset className="flex flex-col gap-3 border-0 p-0">
         <legend className="mb-1 text-sm font-medium">{t('languageLegend')}</legend>
-        <div className="flex flex-wrap gap-2">
+        <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
           {LEARNABLE_LANGUAGES.map((option) => (
             <label
               key={option}
-              className="flex cursor-pointer items-center gap-2 rounded-md border border-slate-700 px-4 py-2 text-sm has-checked:border-slate-100 has-checked:bg-slate-100 has-checked:text-slate-900 has-disabled:cursor-not-allowed has-disabled:opacity-40"
+              className="flex cursor-pointer items-center justify-center gap-2 rounded-md border border-slate-700 px-4 py-2 text-sm has-checked:border-slate-100 has-checked:bg-slate-100 has-checked:text-slate-900 has-disabled:cursor-not-allowed has-disabled:opacity-40"
             >
               <input
                 type="radio"
@@ -90,11 +90,11 @@ export function ChooseCourse({
 
       <fieldset className="flex flex-col gap-3 border-0 p-0">
         <legend className="mb-1 text-sm font-medium">{t('goalLegend')}</legend>
-        <div className="flex flex-wrap gap-2">
+        <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
           {DAILY_GOALS.map((option) => (
             <label
               key={option}
-              className="cursor-pointer rounded-md border border-slate-700 px-4 py-2 text-sm has-checked:border-slate-100 has-checked:bg-slate-100 has-checked:text-slate-900 has-disabled:cursor-not-allowed has-disabled:opacity-40"
+              className="cursor-pointer rounded-md border border-slate-700 px-4 py-2 text-center text-sm has-checked:border-slate-100 has-checked:bg-slate-100 has-checked:text-slate-900 has-disabled:cursor-not-allowed has-disabled:opacity-40"
             >
               <input
                 type="radio"
@@ -113,14 +113,20 @@ export function ChooseCourse({
 
       <FormError message={error} />
 
-      <div className="flex flex-wrap items-center gap-4">
+      {/* Laid out like step two: a full-width primary, the secondary centred
+       *  under it. A column also stretches the button, which is what every
+       *  other form in the app does. */}
+      <div className="flex flex-col gap-4">
         <SubmitButton pending={pending} disabled={locked || lang === null || dailyGoal === null}>
           {t('next')}
         </SubmitButton>
 
         {/* The way out of a screen with nothing left to offer. */}
         {locked && activeLang !== null ? (
-          <Link href={`/learn/${activeLang}`} className="text-sm underline underline-offset-4">
+          <Link
+            href={`/learn/${activeLang}`}
+            className="self-center text-sm underline underline-offset-4"
+          >
             {t('backToCourse', { language: t(`languageInSentence.${activeLang}`) })}
           </Link>
         ) : null}
