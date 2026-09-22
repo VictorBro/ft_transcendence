@@ -2,7 +2,6 @@ import { Language, Level, QuestionCategory, Topic, TOPICS } from '@ft/shared';
 
 export interface GenerateQuestionsPromptParams {
   lang: Language;
-  threshold: integer;
   level: Level;
   category: QuestionCategory;
   /** Liste optionnelle des topics à couvrir (par exemple 5 topics cibles) */
