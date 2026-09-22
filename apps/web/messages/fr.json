@@ -58,6 +58,45 @@
     "practice": "Exercices",
     "thisCourse": "Ce cours"
   },
+  "Onboarding": {
+    "title": "Commencer",
+    "chooseCourseHeading": "Que voulez-vous apprendre ?",
+    "chooseCourseIntro": "Choisissez une langue et le temps que vous voulez y consacrer chaque jour. Le rythme se change plus tard.",
+    "languageLegend": "Langue à apprendre",
+    "goalLegend": "Objectif quotidien",
+    "goalMinutes": "{minutes} min",
+    "next": "Suivant",
+    "chooseLevelIntro": "Passez le test de placement, ou indiquez votre niveau si vous le connaissez déjà.",
+    "takeTest": "Passer le test de placement",
+    "setLevelMyself": "Je connais déjà mon niveau",
+    "levelLegend": "Niveau",
+    "confirmLevel": "Commencer à apprendre",
+    "language": {
+      "en": "English",
+      "fr": "Français",
+      "de": "Deutsch"
+    },
+    "dailyGoalSummary": "Objectif quotidien : {minutes} min",
+    "noNewLanguage": "Aucune nouvelle langue à ajouter pour le moment.",
+    "backToCourse": "Revenir à mon cours en {language}",
+    "languageInSentence": {
+      "en": "anglais",
+      "fr": "français",
+      "de": "allemand"
+    },
+    "levelTile": {
+      "A0": "Vous partez de zéro. Vos leçons viseront le niveau A1.",
+      "A1": "Vous vous débrouillez avec des phrases simples. Vos leçons viseront le niveau A2.",
+      "A2": "Vous gérez les échanges du quotidien. Vos leçons viseront le niveau B1.",
+      "B1": "Vous tenez une conversation sur des sujets familiers. Vos leçons viseront le niveau B2.",
+      "B2": "Vous vous exprimez avec aisance sur des sujets variés. Vos leçons viseront le niveau C1.",
+      "C1": "Vous vous exprimez couramment, y compris sur des sujets complexes. Vos leçons viseront le niveau C2.",
+      "C2": "Vous maîtrisez la langue. Vos leçons entretiendront et affineront ce niveau."
+    },
+    "ladderYou": "Vous",
+    "ladderGoal": "Objectif",
+    "back": "Retour"
+  },
   "ComingSoon": {
     "stillInDevelopment": "Ce mode est encore en développement. Revenez bientôt."
   },

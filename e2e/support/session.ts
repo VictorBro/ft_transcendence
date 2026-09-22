@@ -62,7 +62,7 @@ export interface Account {
  * runs. `signedIn` is a plain page in a fresh context restored from it, so
  * tests stay isolated from each other while sharing the one signup.
  */
-export const test = base.extend<{ signedIn: Page }, { account: Account }>({
+export const test = base.extend<{ signedIn: Page; freshLearner: Page }, { account: Account }>({
   account: [
     async ({ browser }, use) => {
       const context = await browser.newContext();
@@ -83,6 +83,21 @@ export const test = base.extend<{ signedIn: Page }, { account: Account }>({
     await use(await context.newPage());
     // Teardown runs whether the test passed or threw, which hand-written
     // close() calls after the assertions do not.
+    await context.close();
+  },
+
+  /**
+   * An account nobody else has touched. Creating a course cannot be undone, so
+   * a test that creates one would leave the shared `account` unusable for any
+   * later test expecting a learner with none. It pays the signup cost `account`
+   * exists to avoid, so use it only where a pristine learner is the point.
+   */
+  freshLearner: async ({ browser }, use) => {
+    const context = await browser.newContext();
+    const page = await context.newPage();
+
+    await createAccount(page, identity());
+    await use(page);
     await context.close();
   },
 });

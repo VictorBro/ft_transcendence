@@ -58,6 +58,45 @@
     "practice": "Üben",
     "thisCourse": "Dieser Kurs"
   },
+  "Onboarding": {
+    "title": "Loslegen",
+    "chooseCourseHeading": "Was möchtest du lernen?",
+    "chooseCourseIntro": "Wähle eine Sprache und wie lange du täglich üben möchtest. Das Tempo lässt sich später ändern.",
+    "languageLegend": "Sprache zum Lernen",
+    "goalLegend": "Tagesziel",
+    "goalMinutes": "{minutes} Min.",
+    "next": "Weiter",
+    "chooseLevelIntro": "Mach den Einstufungstest, oder gib dein Niveau selbst an, wenn du es schon kennst.",
+    "takeTest": "Einstufungstest machen",
+    "setLevelMyself": "Ich kenne mein Niveau bereits",
+    "levelLegend": "Niveau",
+    "confirmLevel": "Mit dem Lernen beginnen",
+    "language": {
+      "en": "English",
+      "fr": "Français",
+      "de": "Deutsch"
+    },
+    "dailyGoalSummary": "Tagesziel: {minutes} Min.",
+    "noNewLanguage": "Derzeit keine neue Sprache zum Hinzufügen.",
+    "backToCourse": "Zurück zu meinem {language}-Kurs",
+    "languageInSentence": {
+      "en": "Englisch",
+      "fr": "Französisch",
+      "de": "Deutsch"
+    },
+    "levelTile": {
+      "A0": "Du fängst bei null an. Deine Lektionen zielen auf Niveau A1.",
+      "A1": "Du kommst mit einfachen Sätzen zurecht. Deine Lektionen zielen auf Niveau A2.",
+      "A2": "Du bewältigst alltägliche Gespräche. Deine Lektionen zielen auf Niveau B1.",
+      "B1": "Du führst Gespräche über vertraute Themen. Deine Lektionen zielen auf Niveau B2.",
+      "B2": "Du drückst dich zu vielen Themen sicher aus. Deine Lektionen zielen auf Niveau C1.",
+      "C1": "Du drückst dich fließend aus, auch bei komplexen Themen. Deine Lektionen zielen auf Niveau C2.",
+      "C2": "Du beherrschst die Sprache. Deine Lektionen erhalten und verfeinern dieses Niveau."
+    },
+    "ladderYou": "Du",
+    "ladderGoal": "Ziel",
+    "back": "Zurück"
+  },
   "ComingSoon": {
     "stillInDevelopment": "Dieser Modus ist noch in Entwicklung. Schau bald wieder vorbei."
   },
