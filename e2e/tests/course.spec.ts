@@ -95,6 +95,11 @@ test.describe('course home', () => {
     await signedIn.goto('/en/learn/fr');
     expect((await cookie())?.value).toBe('fr');
 
+    // Next prefetches the links on a course page. Those sit under /learn/<lang>
+    // too, and a link the learner only saw must not count as opening it.
+    await signedIn.request.get('/en/learn/de/placement');
+    expect((await cookie())?.value).toBe('fr');
+
     // Not a course page, so it must leave the last one alone rather than clear it.
     await signedIn.goto('/en/dashboard');
     expect((await cookie())?.value).toBe('fr');
