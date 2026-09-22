@@ -59,7 +59,7 @@ export class PlacementQuestionService {
     userId: string,
     session: ExamSession,
   ): Promise<[Partial<Record<QuestionCategory, number>>, QuestionBank]> {
-    if (session.ended || session.level === 'C3') {
+    if (session.ended || session.level === null || session.level === 'C3') {
       throw new ConflictException('placement.expired');
     }
 
@@ -184,7 +184,7 @@ export class PlacementQuestionService {
 
     const loIndex = Math.max(0, TARGET_LEVELS.indexOf(session.lo));
     const hiIndex = Math.max(0, TARGET_LEVELS.indexOf(session.hi));
-    const levelIndex = Math.max(0, TARGET_LEVELS.indexOf(session.level));
+    const levelIndex = Math.max(0, TARGET_LEVELS.indexOf(session.level ?? 'A1'));
 
     const lowerDistance = Math.max(0, levelIndex - loIndex);
     const max_lower =

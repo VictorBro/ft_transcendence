@@ -233,7 +233,7 @@ describe('PlacementSessionService', () => {
       );
     });
 
-    it('leaves a matching null-level abort marker for the future abort flow', async () => {
+    it('marks a matching null-level abort as ended with level null', async () => {
       redis.client.hGetAll.mockResolvedValue({
         evalId: sampleSession.evalId,
         lang: 'de',
@@ -254,7 +254,12 @@ describe('PlacementSessionService', () => {
 
       const result = await service.loadExamSession('u-1');
 
-      expect(result).toEqual(sampleSession);
+      expect(result).toEqual(
+        expect.objectContaining({
+          ended: true,
+          level: null,
+        }),
+      );
     });
 
     it.each([
