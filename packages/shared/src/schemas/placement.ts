@@ -61,7 +61,6 @@ export type PlacementReportEntry = z.infer<typeof PlacementReportEntrySchema>;
 
 /** The verdict, with the answers it was drawn from. */
 export const PlacementResultSchema = z.object({
-  targetLevel: TargetLevelSchema,
   targetLevel: TargetLevelSchema.nullable(),
   report: z.array(PlacementReportEntrySchema),
 });
