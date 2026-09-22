@@ -22,6 +22,11 @@ const setLevel = async (page: Page, level: string) => {
   await page.getByRole('button', { name: 'I already know my level' }).click();
   await pick(page, 'Level', level);
   await page.getByRole('button', { name: 'Start learning' }).click();
+  // The click returns before the handler does: it holds for the launch
+  // animation, then writes the level and leaves for the course. Navigating in
+  // that window cancels the write, and onboarding stays pinned on this step
+  // with no language form to go back to.
+  await page.waitForURL('**/learn/**');
 };
 
 test.describe('onboarding', () => {
