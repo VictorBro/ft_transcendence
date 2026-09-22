@@ -2,6 +2,7 @@ import { ConflictException } from '@nestjs/common';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import type { ExamSession, SubmitAnswerInput } from '@ft/shared';
 
+import type { PrismaService } from '../prisma/prisma.service';
 import type { RedisService } from '../redis/redis.service';
 import { PLACEMENT_REDIS_KEY_TTL, PlacementSessionService } from './placement-session.service';
 
@@ -28,10 +29,19 @@ function createSessionService(redisClientOverrides: Record<string, unknown> = {}
       ...redisClientOverrides,
     },
   };
+  const prisma = {
+    userLevel: {
+      findUnique: vi.fn().mockResolvedValue(null),
+    },
+  };
 
   return {
-    service: new PlacementSessionService(redis as unknown as RedisService),
+    service: new PlacementSessionService(
+      redis as unknown as RedisService,
+      prisma as unknown as PrismaService,
+    ),
     redis,
+    prisma,
     multiMock,
   };
 }
@@ -39,16 +49,19 @@ function createSessionService(redisClientOverrides: Record<string, unknown> = {}
 describe('PlacementSessionService', () => {
   let service: PlacementSessionService;
   let redis: ReturnType<typeof createSessionService>['redis'];
+  let prisma: ReturnType<typeof createSessionService>['prisma'];
   let multiMock: ReturnType<typeof createSessionService>['multiMock'];
 
   beforeEach(() => {
     const created = createSessionService();
     service = created.service;
     redis = created.redis;
+    prisma = created.prisma;
     multiMock = created.multiMock;
   });
 
   const sampleSession: ExamSession = {
+    evalId: 'd7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64',
     lang: 'de',
     lo: 'A1',
     hi: 'C2',
@@ -136,6 +149,7 @@ describe('PlacementSessionService', () => {
 
       expect(redis.client.multi).toHaveBeenCalled();
       expect(multiMock.hSet).toHaveBeenCalledWith('user:u-1:eval', {
+        evalId: sampleSession.evalId,
         lang: 'de',
         lo: 'A1',
         hi: 'C2',
@@ -161,6 +175,7 @@ describe('PlacementSessionService', () => {
 
     it('parses and returns valid ExamSession', async () => {
       redis.client.hGetAll.mockResolvedValue({
+        evalId: sampleSession.evalId,
         lang: 'de',
         lo: 'A1',
         hi: 'C2',
@@ -175,6 +190,71 @@ describe('PlacementSessionService', () => {
 
       const result = await service.loadExamSession('u-1');
       expect(result).toEqual(sampleSession);
+      expect(prisma.userLevel.findUnique).toHaveBeenCalledWith({
+        where: {
+          userId_lang: {
+            userId: 'u-1',
+            lang: 'de',
+          },
+        },
+        select: {
+          lastEvalSessionId: true,
+          lastEvalLevel: true,
+        },
+      });
+    });
+
+    it('restores an authoritative completed level from a matching database marker', async () => {
+      redis.client.hGetAll.mockResolvedValue({
+        evalId: sampleSession.evalId,
+        lang: 'de',
+        lo: 'A1',
+        hi: 'C3',
+        level: 'C2',
+        mistakesPerLevel: '0',
+        askedPerCategory: JSON.stringify({ grammar: 2, vocabulary: 2, reading: 1 }),
+        totalAnswered: '17',
+        ended: 'false',
+        currentQuestionId: sampleSession.currentQuestionId,
+        servedAt: sampleSession.servedAt,
+      });
+      prisma.userLevel.findUnique.mockResolvedValue({
+        lastEvalSessionId: sampleSession.evalId,
+        lastEvalLevel: 'C3',
+      });
+
+      const result = await service.loadExamSession('u-1');
+
+      expect(result).toEqual(
+        expect.objectContaining({
+          ended: true,
+          level: 'C3',
+        }),
+      );
+    });
+
+    it('leaves a matching null-level abort marker for the future abort flow', async () => {
+      redis.client.hGetAll.mockResolvedValue({
+        evalId: sampleSession.evalId,
+        lang: 'de',
+        lo: 'A1',
+        hi: 'C2',
+        level: 'B1',
+        mistakesPerLevel: '0',
+        askedPerCategory: JSON.stringify({ grammar: 1, vocabulary: 0, reading: 0 }),
+        totalAnswered: '0',
+        ended: 'false',
+        currentQuestionId: sampleSession.currentQuestionId,
+        servedAt: sampleSession.servedAt,
+      });
+      prisma.userLevel.findUnique.mockResolvedValue({
+        lastEvalSessionId: sampleSession.evalId,
+        lastEvalLevel: null,
+      });
+
+      const result = await service.loadExamSession('u-1');
+
+      expect(result).toEqual(sampleSession);
     });
 
     it.each([
@@ -182,6 +262,7 @@ describe('PlacementSessionService', () => {
       ['schema-invalid JSON', JSON.stringify({ grammar: -1 })],
     ])('throws placement.invalidSession for %s', async (_description, askedPerCategory) => {
       redis.client.hGetAll.mockResolvedValue({
+        evalId: sampleSession.evalId,
         lang: 'de',
         lo: 'A1',
         hi: 'C2',

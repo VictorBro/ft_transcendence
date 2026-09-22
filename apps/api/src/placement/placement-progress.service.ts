@@ -43,14 +43,21 @@ export class PlacementProgressService {
 
   /**
    * Persists the determined target level and updates the user's active language
-   * within an atomic database transaction.
+   * within an atomic database transaction if eval was not aborted. If eval was
+   * was aborted, update lastEvalLevel to null but do not update active language.
    *
    * @param userId - Unique identifier of the user.
    * @param lang - Target language of the placement exam.
    * @param level - Determined CEFR target level to store.
+   * @param evalId - Unique identifier of the completed placement evaluation.
    * @returns Promise resolving when the transaction finishes.
    */
-  async updateUserLevel(userId: string, lang: Language, level: TargetLevel): Promise<void> {
+  async updateUserLevel(
+    userId: string,
+    lang: Language,
+    level: TargetLevel | null,
+    evalId: string,
+  ): Promise<void> {
     await this.prisma.$transaction([
       this.prisma.userLevel.update({
         where: {
@@ -60,13 +67,20 @@ export class PlacementProgressService {
           },
         },
         data: {
+          lastEvalSessionId: evalId,
+          lastEvalLevel: level,
           level,
         },
       }),
-      this.prisma.user.update({
-        where: { id: userId },
-        data: { activeLang: lang },
-      }),
+
+      ...(level !== null
+        ? [
+            this.prisma.user.update({
+              where: { id: userId },
+              data: { activeLang: lang },
+            }),
+          ]
+        : []),
     ]);
   }
 
@@ -143,12 +157,12 @@ export class PlacementProgressService {
     } else if (levelChange === 'up' && currIndex === hiIndex - 1) {
       session.level = session.hi;
       session.ended = true;
-      await this.updateUserLevel(userId, session.lang, session.level);
+      await this.updateUserLevel(userId, session.lang, session.level, session.evalId);
       return;
     } else if (levelChange === 'down' && currIndex === loIndex) {
       session.level = session.lo;
       session.ended = true;
-      await this.updateUserLevel(userId, session.lang, session.level);
+      await this.updateUserLevel(userId, session.lang, session.level, session.evalId);
       return;
     }
 

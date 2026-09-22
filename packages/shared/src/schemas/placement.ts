@@ -67,10 +67,11 @@ export const PlacementResultSchema = z.object({
 export type PlacementResult = z.infer<typeof PlacementResultSchema>;
 
 export const ExamSessionSchema = z.object({
+  evalId: z.uuid(),
   lang: LanguageSchema,
   lo: TargetLevelSchema,
   hi: TargetLevelSchema,
-  level: TargetLevelSchema,
+  level: TargetLevelSchema.nullable(),
   mistakesPerLevel: z
     .number()
     .int()

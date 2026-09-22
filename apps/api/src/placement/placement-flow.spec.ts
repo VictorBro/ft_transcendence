@@ -186,7 +186,10 @@ function setupPlacementEnvironment() {
     },
   };
 
-  const sessionService = new PlacementSessionService(redis as unknown as RedisService);
+  const sessionService = new PlacementSessionService(
+    redis as unknown as RedisService,
+    prisma as unknown as PrismaService,
+  );
   const questionService = new PlacementQuestionService(
     prisma as unknown as PrismaService,
     sessionService,
@@ -264,6 +267,8 @@ describe('Placement Exam Scenarios', () => {
         },
       },
       data: {
+        lastEvalSessionId: expect.any(String),
+        lastEvalLevel: 'A1',
         level: 'A1',
       },
     });
@@ -317,6 +322,8 @@ describe('Placement Exam Scenarios', () => {
         },
       },
       data: {
+        lastEvalSessionId: expect.any(String),
+        lastEvalLevel: 'A2',
         level: 'A2',
       },
     });
@@ -367,6 +374,8 @@ describe('Placement Exam Scenarios', () => {
         },
       },
       data: {
+        lastEvalSessionId: expect.any(String),
+        lastEvalLevel: 'C3',
         level: 'C3',
       },
     });
@@ -435,6 +444,8 @@ describe('Placement Exam Scenarios', () => {
         },
       },
       data: {
+        lastEvalSessionId: expect.any(String),
+        lastEvalLevel: 'C3',
         level: 'C3',
       },
     });
@@ -541,6 +552,8 @@ describe('Placement Exam Scenarios', () => {
           },
         },
         data: {
+          lastEvalSessionId: expect.any(String),
+          lastEvalLevel: expectedTargetLevel,
           level: expectedTargetLevel,
         },
       });

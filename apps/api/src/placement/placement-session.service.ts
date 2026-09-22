@@ -1,6 +1,7 @@
 import { ConflictException, Injectable } from '@nestjs/common';
 import { ExamSession, ExamSessionSchema, SubmitAnswerInput, SubmitAnswerSchema } from '@ft/shared';
 
+import { PrismaService } from '../prisma/prisma.service';
 import { RedisService } from '../redis/redis.service';
 
 export const PLACEMENT_REDIS_KEY_TTL = 3600;
@@ -8,7 +9,10 @@ export const PLACEMENT_LOCK_TTL_SECONDS = 5;
 
 @Injectable()
 export class PlacementSessionService {
-  constructor(private readonly redis: RedisService) {}
+  constructor(
+    private readonly redis: RedisService,
+    private readonly prisma: PrismaService,
+  ) {}
 
   /**
    * Generates the Redis hash key used to store the user's placement exam session.
@@ -116,6 +120,7 @@ export class PlacementSessionService {
     await this.redis.client
       .multi()
       .hSet(key, {
+        evalId: session.evalId,
         lang: session.lang,
         lo: session.lo,
         hi: session.hi,
@@ -132,7 +137,8 @@ export class PlacementSessionService {
   }
 
   /**
-   * Loads and deserializes the exam session from Redis, validating the schema.
+   * Loads and deserializes the exam session from Redis, validates the schema, and reconciles
+   * completion against the durable evaluation marker in the database.
    *
    * @param userId - Unique identifier of the user.
    * @returns The parsed `ExamSession`, or `null` if no active session exists.
@@ -143,8 +149,10 @@ export class PlacementSessionService {
     if (!data || Object.keys(data).length === 0) {
       return null;
     }
+    let session: ExamSession;
     try {
-      return ExamSessionSchema.parse({
+      session = ExamSessionSchema.parse({
+        evalId: data.evalId,
         lang: data.lang,
         lo: data.lo,
         hi: data.hi,
@@ -159,6 +167,26 @@ export class PlacementSessionService {
     } catch {
       throw new ConflictException('placement.invalidSession');
     }
+
+    const userLevel = await this.prisma.userLevel.findUnique({
+      where: {
+        userId_lang: {
+          userId,
+          lang: session.lang,
+        },
+      },
+      select: {
+        lastEvalSessionId: true,
+        lastEvalLevel: true,
+      },
+    });
+
+    if (userLevel?.lastEvalSessionId === session.evalId) {
+      session.ended = true;
+      session.level = userLevel.lastEvalLevel;
+    }
+
+    return session;
   }
 
   /**

@@ -55,17 +55,16 @@ model RecoveryCode {
   @@index([userId])
 }
 
-// to avoid race conditions between redis and database teh last eval session has to put a unique identifier
-// when session is aborted or finished. if aborted last_eval_level will be null and level will not be set,
-// if completed, last_eval_level will be set identically to level and also activeLanguage will be set to
-// current language
+// A durable evaluation marker reconciles Redis sessions after completion or abort.
+// Completed evaluations set lastEvalLevel to the resulting level; aborted-session
+// handling will use a null lastEvalLevel in a later change.
 model UserLevel {
   id                String       @id @default(uuid()) @db.Uuid
   userId            String       @db.Uuid
   user              User         @relation(fields: [userId], references: [id], onDelete: Cascade)
   lang              Language
-  last_eval_session String?      @db.Uuid
-  last_eval_level   TargetLevel?
+  lastEvalSessionId String?      @map("last_eval_session") @db.Uuid
+  lastEvalLevel     TargetLevel? @map("last_eval_level")
   level             TargetLevel?
   dailyGoal         Int
   createdAt         DateTime     @default(now())

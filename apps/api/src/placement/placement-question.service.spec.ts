@@ -8,6 +8,8 @@ import type { RedisService } from '../redis/redis.service';
 import { PlacementSessionService } from './placement-session.service';
 import { PlacementQuestionService } from './placement-question.service';
 
+const EVAL_ID = 'd7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64';
+
 const mockQuestion: QuestionBank = {
   id: 'b7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64',
   sourceId: 'de-gram-0001',
@@ -63,7 +65,10 @@ function createService(
     },
   };
 
-  const sessionService = new PlacementSessionService(redis as unknown as RedisService);
+  const sessionService = new PlacementSessionService(
+    redis as unknown as RedisService,
+    prisma as unknown as PrismaService,
+  );
 
   return {
     service: new PlacementQuestionService(prisma as unknown as PrismaService, sessionService),
@@ -97,6 +102,7 @@ describe('PlacementQuestionService', () => {
 
   describe('getNewQuestion', () => {
     const session: ExamSession = {
+      evalId: EVAL_ID,
       lang: 'de',
       lo: 'A1',
       hi: 'C2',
@@ -276,6 +282,7 @@ describe('PlacementQuestionService', () => {
   describe('createPlacementQuestion', () => {
     it('constructs a valid PlacementQuestion from QuestionBank and ExamSession', async () => {
       const session: ExamSession = {
+        evalId: EVAL_ID,
         lang: 'de',
         lo: 'A1',
         hi: 'C2',
@@ -299,6 +306,7 @@ describe('PlacementQuestionService', () => {
 
     it('produces stable option ordering for the same served question across reloads', async () => {
       const session: ExamSession = {
+        evalId: EVAL_ID,
         lang: 'de',
         lo: 'A1',
         hi: 'C2',
@@ -336,6 +344,7 @@ describe('PlacementQuestionService', () => {
   describe('getMaxQuestionsRemaining', () => {
     it('calculates remaining questions for initial B1 session', () => {
       const session: ExamSession = {
+        evalId: EVAL_ID,
         lang: 'de',
         lo: 'A1',
         hi: 'C2',
@@ -352,6 +361,7 @@ describe('PlacementQuestionService', () => {
 
     it('calculates remaining questions for narrowed boundary level A1', () => {
       const session: ExamSession = {
+        evalId: EVAL_ID,
         lang: 'de',
         lo: 'A1',
         hi: 'A1',
@@ -368,6 +378,7 @@ describe('PlacementQuestionService', () => {
 
     it('calculates remaining questions on final question of converged final level', () => {
       const session: ExamSession = {
+        evalId: EVAL_ID,
         lang: 'de',
         lo: 'A1',
         hi: 'A2',
@@ -384,6 +395,7 @@ describe('PlacementQuestionService', () => {
 
     it('calculates remaining questions mid-level with upper branch exploration remaining', () => {
       const session: ExamSession = {
+        evalId: EVAL_ID,
         lang: 'de',
         lo: 'B2',
         hi: 'C3',
@@ -400,6 +412,7 @@ describe('PlacementQuestionService', () => {
 
     it('calculates remaining questions when probing top level C2', () => {
       const session: ExamSession = {
+        evalId: EVAL_ID,
         lang: 'de',
         lo: 'C2',
         hi: 'C3',
@@ -416,6 +429,7 @@ describe('PlacementQuestionService', () => {
 
     it('calculates remaining questions after stepping down to A2', () => {
       const session: ExamSession = {
+        evalId: EVAL_ID,
         lang: 'de',
         lo: 'A1',
         hi: 'B1',
@@ -432,6 +446,7 @@ describe('PlacementQuestionService', () => {
 
     it('calculates remaining questions halfway through initial B1 level', () => {
       const session: ExamSession = {
+        evalId: EVAL_ID,
         lang: 'de',
         lo: 'A1',
         hi: 'C3',
@@ -450,6 +465,7 @@ describe('PlacementQuestionService', () => {
   describe('getNewPlacementQuestion', () => {
     it('fetches new question and registers seen question', async () => {
       const session: ExamSession = {
+        evalId: EVAL_ID,
         lang: 'de',
         lo: 'A1',
         hi: 'C2',

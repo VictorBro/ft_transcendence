@@ -8,6 +8,8 @@ import type { RedisService } from '../redis/redis.service';
 import { PlacementSessionService } from './placement-session.service';
 import { NETWORK_GRACE_S, PlacementProgressService } from './placement-progress.service';
 
+const EVAL_ID = 'd7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64';
+
 const mockQuestion: QuestionBank = {
   id: 'b7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64',
   sourceId: 'de-gram-0001',
@@ -67,7 +69,10 @@ function createService(
     },
   };
 
-  const sessionService = new PlacementSessionService(redis as unknown as RedisService);
+  const sessionService = new PlacementSessionService(
+    redis as unknown as RedisService,
+    prisma as unknown as PrismaService,
+  );
 
   return {
     service: new PlacementProgressService(prisma as unknown as PrismaService, sessionService),
@@ -109,7 +114,7 @@ describe('PlacementProgressService', () => {
 
   describe('updateUserLevel', () => {
     it('updates user level and activeLang in transaction', async () => {
-      await service.updateUserLevel('user-1', 'de', 'B1');
+      await service.updateUserLevel('user-1', 'de', 'B1', EVAL_ID);
       expect(prisma.$transaction).toHaveBeenCalled();
       expect(prisma.userLevel.update).toHaveBeenCalledWith({
         where: {
@@ -119,6 +124,8 @@ describe('PlacementProgressService', () => {
           },
         },
         data: {
+          lastEvalSessionId: EVAL_ID,
+          lastEvalLevel: 'B1',
           level: 'B1',
         },
       });
@@ -166,6 +173,7 @@ describe('PlacementProgressService', () => {
   describe('adjustSessionFromAnswer', () => {
     it('throws BadRequestException if answer is not null and not in question options', async () => {
       const session: ExamSession = {
+        evalId: EVAL_ID,
         lang: 'de',
         lo: 'A1',
         hi: 'C2',
@@ -185,6 +193,7 @@ describe('PlacementProgressService', () => {
 
     it('increments category count on correct answer', async () => {
       const session: ExamSession = {
+        evalId: EVAL_ID,
         lang: 'de',
         lo: 'A1',
         hi: 'C2',
@@ -205,6 +214,7 @@ describe('PlacementProgressService', () => {
 
     it('drops level when mistakes reach 2', async () => {
       const session: ExamSession = {
+        evalId: EVAL_ID,
         lang: 'de',
         lo: 'A1',
         hi: 'C2',
@@ -226,6 +236,7 @@ describe('PlacementProgressService', () => {
 
     it('advances level when level questions are completed', async () => {
       const session: ExamSession = {
+        evalId: EVAL_ID,
         lang: 'de',
         lo: 'A1',
         hi: 'C2',
@@ -247,6 +258,7 @@ describe('PlacementProgressService', () => {
 
     it('ends exam with upper boundary level when completing questions at highest level (currIndex === hiIndex - 1)', async () => {
       const session: ExamSession = {
+        evalId: EVAL_ID,
         lang: 'de',
         lo: 'C2',
         hi: 'C3',
@@ -271,6 +283,8 @@ describe('PlacementProgressService', () => {
           },
         },
         data: {
+          lastEvalSessionId: EVAL_ID,
+          lastEvalLevel: 'C3',
           level: 'C3',
         },
       });
@@ -278,6 +292,7 @@ describe('PlacementProgressService', () => {
 
     it('ends exam with lower boundary level when failing at lowest level (currIndex === loIndex)', async () => {
       const session: ExamSession = {
+        evalId: EVAL_ID,
         lang: 'de',
         lo: 'A1',
         hi: 'A2',
@@ -302,6 +317,8 @@ describe('PlacementProgressService', () => {
           },
         },
         data: {
+          lastEvalSessionId: EVAL_ID,
+          lastEvalLevel: 'A1',
           level: 'A1',
         },
       });
@@ -309,6 +326,7 @@ describe('PlacementProgressService', () => {
 
     it('scores timeout (null answer) as a mistake', async () => {
       const session: ExamSession = {
+        evalId: EVAL_ID,
         lang: 'de',
         lo: 'A1',
         hi: 'C2',
@@ -329,6 +347,7 @@ describe('PlacementProgressService', () => {
     describe('all six levels reachable as terminal outcomes against adjustSessionFromAnswer', () => {
       it('reaches terminal outcome A1 on lower boundary failure', async () => {
         const session: ExamSession = {
+          evalId: EVAL_ID,
           lang: 'de',
           lo: 'A1',
           hi: 'A2',
@@ -348,6 +367,7 @@ describe('PlacementProgressService', () => {
 
       it('reaches terminal outcome A2 on passing A1 when hi is A2', async () => {
         const session: ExamSession = {
+          evalId: EVAL_ID,
           lang: 'de',
           lo: 'A1',
           hi: 'A2',
@@ -367,6 +387,7 @@ describe('PlacementProgressService', () => {
 
       it('reaches terminal outcome B1 on passing A2 when hi is B1', async () => {
         const session: ExamSession = {
+          evalId: EVAL_ID,
           lang: 'de',
           lo: 'A1',
           hi: 'B1',
@@ -386,6 +407,7 @@ describe('PlacementProgressService', () => {
 
       it('reaches terminal outcome B2 on failing B2 when lo is B2', async () => {
         const session: ExamSession = {
+          evalId: EVAL_ID,
           lang: 'de',
           lo: 'B2',
           hi: 'C1',
@@ -405,6 +427,7 @@ describe('PlacementProgressService', () => {
 
       it('reaches terminal outcome C1 on passing B2 when hi is C1', async () => {
         const session: ExamSession = {
+          evalId: EVAL_ID,
           lang: 'de',
           lo: 'B2',
           hi: 'C1',
@@ -424,6 +447,7 @@ describe('PlacementProgressService', () => {
 
       it('reaches terminal outcome C2 on failing C2 when lo is C2', async () => {
         const session: ExamSession = {
+          evalId: EVAL_ID,
           lang: 'de',
           lo: 'C2',
           hi: 'C3',
@@ -465,6 +489,7 @@ describe('PlacementProgressService', () => {
   describe('getResult', () => {
     it('returns undefined if session is not ended', async () => {
       const session: ExamSession = {
+        evalId: EVAL_ID,
         lang: 'de',
         lo: 'A1',
         hi: 'C2',
@@ -483,6 +508,7 @@ describe('PlacementProgressService', () => {
 
     it('returns PlacementResult with report when session is ended', async () => {
       const session: ExamSession = {
+        evalId: EVAL_ID,
         lang: 'de',
         lo: 'A1',
         hi: 'C2',

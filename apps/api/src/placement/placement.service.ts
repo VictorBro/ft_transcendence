@@ -6,6 +6,7 @@ import {
 } from '@nestjs/common';
 import { ExamSession, PlacementQuestion, PlacementResult, SubmitAnswerInput } from '@ft/shared';
 import assert from 'node:assert';
+import { randomUUID } from 'node:crypto';
 
 import { QuestionBank } from '../generated/prisma/client';
 import { PlacementSessionService } from './placement-session.service';
@@ -123,6 +124,7 @@ export class PlacementService {
       await this.sessionService.deleteSession(userId);
 
       const examSession: ExamSession = {
+        evalId: randomUUID(),
         lang: dto.lang,
         lo: 'A1',
         hi: 'C3',

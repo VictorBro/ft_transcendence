@@ -267,6 +267,7 @@ describe('placement', () => {
 
   it('validates a valid exam session', () => {
     const session = {
+      evalId: 'd7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64',
       lang: 'en',
       lo: 'A1',
       hi: 'C2',
@@ -283,6 +284,7 @@ describe('placement', () => {
 
   it('allows currentQuestionId to be null', () => {
     const session = {
+      evalId: 'd7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64',
       lang: 'fr',
       lo: 'A1',
       hi: 'B2',
@@ -299,6 +301,7 @@ describe('placement', () => {
 
   it('rejects mistakesPerLevel exceeding 2 or below 0', () => {
     const base = {
+      evalId: 'd7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64',
       lang: 'en',
       lo: 'A1',
       hi: 'C2',
@@ -312,6 +315,24 @@ describe('placement', () => {
     };
     expect(ExamSessionSchema.safeParse(base).success).toBe(false);
     expect(ExamSessionSchema.safeParse({ ...base, mistakesPerLevel: -1 }).success).toBe(false);
+  });
+
+  it('rejects an invalid evaluation ID', () => {
+    expect(
+      ExamSessionSchema.safeParse({
+        evalId: 'not-a-uuid',
+        lang: 'en',
+        lo: 'A1',
+        hi: 'C2',
+        level: 'B1',
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
+        totalAnswered: 0,
+        ended: false,
+        currentQuestionId: null,
+        servedAt: '2026-09-18T17:51:11.000Z',
+      }).success,
+    ).toBe(false);
   });
 });
 

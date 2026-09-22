@@ -8,6 +8,8 @@ import { PlacementQuestionService } from './placement-question.service';
 import { PlacementProgressService } from './placement-progress.service';
 import { PlacementService } from './placement.service';
 
+const EVAL_ID = 'd7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64';
+
 const mockQuestion: QuestionBank = {
   id: 'b7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64',
   sourceId: 'de-gram-0001',
@@ -132,6 +134,9 @@ describe('PlacementService', () => {
       expect(questionService.getNewPlacementQuestion).toHaveBeenCalledWith(
         'user-1',
         expect.objectContaining({
+          evalId: expect.stringMatching(
+            /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i,
+          ),
           lang: 'de',
           level: 'B1',
           totalAnswered: 0,
@@ -158,6 +163,7 @@ describe('PlacementService', () => {
 
     it('throws NotFoundException if session has no currentQuestionId', async () => {
       vi.mocked(sessionService.loadExamSession).mockResolvedValue({
+        evalId: EVAL_ID,
         lang: 'de',
         lo: 'A1',
         hi: 'C2',
@@ -175,6 +181,7 @@ describe('PlacementService', () => {
 
     it('returns result when session already ended', async () => {
       const session: ExamSession = {
+        evalId: EVAL_ID,
         lang: 'de',
         lo: 'A1',
         hi: 'C2',
@@ -197,6 +204,7 @@ describe('PlacementService', () => {
 
     it('handles timeout when elapsed time exceeds question limit and exam continues', async () => {
       const session: ExamSession = {
+        evalId: EVAL_ID,
         lang: 'de',
         lo: 'A1',
         hi: 'C2',
@@ -234,6 +242,7 @@ describe('PlacementService', () => {
 
     it('handles timeout when elapsed time exceeds question limit and exam ends', async () => {
       const session: ExamSession = {
+        evalId: EVAL_ID,
         lang: 'de',
         lo: 'A1',
         hi: 'C2',
@@ -262,6 +271,7 @@ describe('PlacementService', () => {
 
     it('returns question and undefined result when session is active and within time', async () => {
       const session: ExamSession = {
+        evalId: EVAL_ID,
         lang: 'de',
         lo: 'A1',
         hi: 'C2',
@@ -288,6 +298,7 @@ describe('PlacementService', () => {
   describe('getPlacement', () => {
     it('returns result when session is ended or timed out to a result', async () => {
       const session: ExamSession = {
+        evalId: EVAL_ID,
         lang: 'de',
         lo: 'A1',
         hi: 'C2',
@@ -308,6 +319,7 @@ describe('PlacementService', () => {
 
     it('returns current question when active', async () => {
       const session: ExamSession = {
+        evalId: EVAL_ID,
         lang: 'de',
         lo: 'A1',
         hi: 'C2',
@@ -351,6 +363,7 @@ describe('PlacementService', () => {
 
     it('throws BadRequestException and releases lock if choice is not in question options', async () => {
       const session: ExamSession = {
+        evalId: EVAL_ID,
         lang: 'de',
         lo: 'A1',
         hi: 'C2',
@@ -379,6 +392,7 @@ describe('PlacementService', () => {
 
     it('throws placement.questionMismatch if questionId does not match', async () => {
       const session: ExamSession = {
+        evalId: EVAL_ID,
         lang: 'de',
         lo: 'A1',
         hi: 'C2',
@@ -407,6 +421,7 @@ describe('PlacementService', () => {
 
     it('returns result if checkEndedOrTimedOut returns a result', async () => {
       const session: ExamSession = {
+        evalId: EVAL_ID,
         lang: 'de',
         lo: 'A1',
         hi: 'C2',
@@ -430,6 +445,7 @@ describe('PlacementService', () => {
 
     it('archives answer, adjusts session, and returns result if ended', async () => {
       const session: ExamSession = {
+        evalId: EVAL_ID,
         lang: 'de',
         lo: 'A1',
         hi: 'C2',
@@ -462,6 +478,7 @@ describe('PlacementService', () => {
 
     it('archives answer, adjusts session, and returns next question if not ended', async () => {
       const session: ExamSession = {
+        evalId: EVAL_ID,
         lang: 'de',
         lo: 'A1',
         hi: 'C2',
