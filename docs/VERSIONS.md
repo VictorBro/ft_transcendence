@@ -49,7 +49,7 @@ Pin exactly (no caret unless noted) and re-verify before the first commit.
 |---|---|
 | Postgres + pgvector | `pgvector/pgvector:0.8.6-pg18-trixie` (PG 18.4, pgvector 0.8.6) |
 | Caddy | 2.11.4 |
-| Redis | pin at scaffold time |
+| Redis | 8.10.1 (`redis:8.10.1-alpine`) |
 
 pgvector must be >= 0.8.2: CVE-2026-3172, buffer overflow in parallel HNSW index builds.
 The plain `postgres` image does **not** include pgvector; use the image above.

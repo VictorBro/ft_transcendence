@@ -13,8 +13,10 @@ import {
 import {
   ApiConflictResponse,
   ApiCreatedResponse,
+  ApiNoContentResponse,
   ApiOkResponse,
   ApiOperation,
+  ApiResponse,
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
@@ -37,6 +39,7 @@ import {
   SecondFactorDto,
   SessionUserDto,
   SignUpDto,
+  TwoFactorRequiredDto,
   TwoFactorSetupDto,
   TwoFactorStatusDto,
 } from './auth.dto';
@@ -94,7 +97,7 @@ export class AuthController {
   // Thirty per minute per IP. Signup writes a row and runs argon2, so it is
   // both the most expensive unauthenticated endpoint and the one worth flooding.
   @ThrottleByIp(30)
-  @ApiOperation({ summary: 'Create an account and sign in' })
+  @ApiOperation({ summary: 'Create an account and sign in', security: [] })
   @ApiCreatedResponse({ type: SessionUserDto })
   @ApiConflictResponse({ description: 'Email or display name already taken' })
   async signUp(@Body() body: SignUpDto, @Req() request: Request): Promise<SessionUser> {
@@ -108,8 +111,13 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   // Tighter than signup: this is the endpoint a password guesser hammers.
   @ThrottleByIp(5)
-  @ApiOperation({ summary: 'Sign in with email and password' })
+  @ApiOperation({ summary: 'Sign in with email and password', security: [] })
   @ApiOkResponse({ type: SessionUserDto })
+  @ApiResponse({
+    status: HttpStatus.ACCEPTED,
+    type: TwoFactorRequiredDto,
+    description: 'Credentials accepted, a second factor is required',
+  })
   @ApiUnauthorizedResponse({ description: 'Incorrect email or password' })
   async login(
     @Body() body: LoginDto,
@@ -139,7 +147,7 @@ export class AuthController {
   // As tight as login: this is the second half of the same guessing attempt,
   // and six digits is a far smaller space than a password.
   @ThrottleByIp(5)
-  @ApiOperation({ summary: 'Complete a login with a second factor' })
+  @ApiOperation({ summary: 'Complete a login with a second factor', security: [] })
   @ApiOkResponse({ type: SessionUserDto })
   @ApiUnauthorizedResponse({ description: 'No pending login, or the code is wrong' })
   async verifySecondFactor(
@@ -167,6 +175,7 @@ export class AuthController {
   @Get('2fa')
   @ApiOperation({ summary: 'Whether this account has a second factor' })
   @ApiOkResponse({ type: TwoFactorStatusDto })
+  @ApiUnauthorizedResponse({ description: 'No valid session' })
   twoFactorStatus(@CurrentUser() user: SessionUser): Promise<TwoFactorStatus> {
     return this.twoFactor.status(user.id);
   }
@@ -175,6 +184,7 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Begin enrolment and return the QR to scan' })
   @ApiOkResponse({ type: TwoFactorSetupDto })
+  @ApiUnauthorizedResponse({ description: 'No valid session' })
   setUpTwoFactor(@CurrentUser() user: SessionUser): Promise<TwoFactorSetup> {
     return this.twoFactor.beginEnrolment(user.id, user.email);
   }
@@ -186,7 +196,7 @@ export class AuthController {
   @ThrottleByIp(5)
   @ApiOperation({ summary: 'Confirm enrolment and return the recovery codes' })
   @ApiOkResponse({ type: RecoveryCodesDto })
-  @ApiUnauthorizedResponse({ description: 'That code is not valid' })
+  @ApiUnauthorizedResponse({ description: 'No valid session, or that code is not valid' })
   async enableTwoFactor(
     @Body() body: EnableTwoFactorDto,
     @CurrentUser() user: SessionUser,
@@ -200,7 +210,8 @@ export class AuthController {
   // is counted per address like login rather than per account.
   @ThrottleByIp(5)
   @ApiOperation({ summary: 'Turn off two factor authentication' })
-  @ApiUnauthorizedResponse({ description: 'Incorrect password' })
+  @ApiNoContentResponse({ description: 'Two factor authentication is off' })
+  @ApiUnauthorizedResponse({ description: 'No valid session, or the password is incorrect' })
   async disableTwoFactor(
     @Body() body: DisableTwoFactorDto,
     @CurrentUser() user: SessionUser,
@@ -217,7 +228,8 @@ export class AuthController {
   @Public()
   @Post('logout')
   @HttpCode(HttpStatus.NO_CONTENT)
-  @ApiOperation({ summary: 'Destroy the current session' })
+  @ApiOperation({ summary: 'Destroy the current session', security: [] })
+  @ApiNoContentResponse({ description: 'Signed out, whether or not there was a session' })
   async logout(@Req() request: Request): Promise<void> {
     // Failing loudly rather than returning 204: if the store entry survives, the
     // session is still usable and reporting success would be a lie.

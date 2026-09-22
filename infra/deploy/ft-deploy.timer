@@ -1,0 +1,14 @@
+[Unit]
+Description=Check for new ft_transcendence images
+
+[Timer]
+# After boot the stack is already coming up through restart: unless-stopped, so
+# this only needs to catch what changed while the box was down.
+OnBootSec=3min
+OnUnitActiveSec=5min
+# Spread the pull so every box does not hit the registry on the same second.
+RandomizedDelaySec=60
+Unit=ft-deploy.service
+
+[Install]
+WantedBy=timers.target

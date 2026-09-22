@@ -15,7 +15,17 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import type { Response } from 'express';
-import { ApiConflictResponse, ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBody,
+  ApiConflictResponse,
+  ApiConsumes,
+  ApiCreatedResponse,
+  ApiOkResponse,
+  ApiOperation,
+  ApiPayloadTooLargeResponse,
+  ApiTags,
+  ApiUnauthorizedResponse,
+} from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { randomUUID } from 'crypto';
@@ -86,6 +96,7 @@ export class UsersController {
   @ApiOperation({ summary: 'Update your own profile' })
   @ApiOkResponse({ type: SessionUserDto })
   @ApiConflictResponse({ description: 'Display name already taken' })
+  @ApiUnauthorizedResponse({ description: 'No valid session' })
   updateProfile(
     @Body() body: UpdateProfileDto,
     @CurrentUser() user: SessionUser,
@@ -95,7 +106,17 @@ export class UsersController {
 
   @Post('me/avatar')
   @ApiOperation({ summary: 'Upload your own avatar' })
-  @ApiOkResponse({ type: SessionUserDto })
+  @ApiConsumes('multipart/form-data')
+  @ApiBody({
+    schema: {
+      type: 'object',
+      required: ['avatar'],
+      properties: { avatar: { type: 'string', format: 'binary' } },
+    },
+  })
+  @ApiCreatedResponse({ type: SessionUserDto })
+  @ApiUnauthorizedResponse({ description: 'No valid session' })
+  @ApiPayloadTooLargeResponse({ description: 'avatar.invalidFile' })
   @UseInterceptors(
     FileInterceptor('avatar', {
       storage: diskStorage({
@@ -128,6 +149,7 @@ export class UsersController {
   @Delete('me/avatar')
   @ApiOperation({ summary: 'Remove your own avatar and fall back to the default' })
   @ApiOkResponse({ type: SessionUserDto })
+  @ApiUnauthorizedResponse({ description: 'No valid session' })
   removeAvatar(@CurrentUser() user: SessionUser): Promise<SessionUser> {
     return this.users.clearAvatar(user.id);
   }
