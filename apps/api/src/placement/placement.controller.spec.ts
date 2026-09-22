@@ -24,6 +24,7 @@ describe('PlacementController', () => {
       getPlacement: vi.fn(),
       submitAnswer: vi.fn(),
       quitPlacement: vi.fn(),
+      abortExam: vi.fn(),
     } as unknown as PlacementService;
 
     controller = new PlacementController(service);
@@ -52,5 +53,10 @@ describe('PlacementController', () => {
   it('delegates quitPlacement to service', async () => {
     await controller.quitPlacement(user);
     expect(service.quitPlacement).toHaveBeenCalledWith(user.id);
+  });
+
+  it('delegates abortExam to service', async () => {
+    await controller.abortExam(user);
+    expect(service.abortExam).toHaveBeenCalledWith(user.id);
   });
 });

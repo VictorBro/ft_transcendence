@@ -558,5 +558,39 @@ describe('PlacementProgressService', () => {
         },
       ]);
     });
+
+    it('returns PlacementResult with targetLevel: null when session was aborted', async () => {
+      const session: ExamSession = {
+        evalId: EVAL_ID,
+        lang: 'de',
+        lo: 'A1',
+        hi: 'C2',
+        level: null,
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
+        totalAnswered: 1,
+        ended: true,
+        currentQuestionId: null,
+        servedAt: new Date().toISOString(),
+      };
+
+      redis.client.lRange.mockResolvedValue([
+        JSON.stringify({ questionId: mockQuestion.id, choice: null }),
+      ]);
+      prisma.questionBank.findMany.mockResolvedValue([mockQuestion]);
+
+      const result = await service.getResult('user-1', session);
+      expect(result).toBeDefined();
+      expect(result?.targetLevel).toBeNull();
+      expect(result?.report).toHaveLength(1);
+      expect(result?.report[0]).toEqual({
+        questionId: mockQuestion.id,
+        question: mockQuestion.question,
+        options: mockQuestion.options,
+        chosen: null,
+        correct: 'ist',
+        wasCorrect: false,
+      });
+    });
   });
 });

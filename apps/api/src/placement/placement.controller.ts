@@ -127,4 +127,26 @@ export class PlacementController {
   quitPlacement(@CurrentUser() user: SessionUser): Promise<void> {
     return this.placement.quitPlacement(user.id);
   }
+
+  /**
+   * Aborts the current placement exam, archiving the current question with a null answer
+   * and returning the final placement result with `targetLevel: null`.
+   *
+   * @param user - Authenticated session user aborting the exam.
+   * @returns Placement result with `targetLevel: null` indicating an aborted exam.
+   * @throws NotFoundException If no active placement exam exists.
+   */
+  @Post('abort')
+  @ApiOperation({ summary: 'Abort the current placement exam' })
+  @ApiOkResponse({
+    type: PlacementResultDto,
+    description: 'Placement result with targetLevel: null indicating abortion',
+  })
+  @ApiConflictResponse({
+    description: 'Placement is busy (`placement.inProgress`)',
+  })
+  @ApiNotFoundResponse({ description: 'No active placement exam' })
+  abortExam(@CurrentUser() user: SessionUser): Promise<PlacementResult> {
+    return this.placement.abortExam(user.id);
+  }
 }

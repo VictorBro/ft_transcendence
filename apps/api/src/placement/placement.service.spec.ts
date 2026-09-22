@@ -68,6 +68,7 @@ function createPlacementService() {
     adjustSessionFromAnswer: vi.fn().mockResolvedValue(undefined),
     getResult: vi.fn().mockResolvedValue(undefined),
     checkOnboardingCompleted: vi.fn().mockResolvedValue(true),
+    updateUserLevel: vi.fn().mockResolvedValue(undefined),
   } as unknown as PlacementProgressService;
 
   const service = new PlacementService(sessionService, questionService, progressService);
@@ -508,6 +509,91 @@ describe('PlacementService', () => {
     it('delegates to sessionService deleteSession', async () => {
       await service.quitPlacement('user-1');
       expect(sessionService.deleteSession).toHaveBeenCalledWith('user-1');
+    });
+  });
+
+  describe('abortExam', () => {
+    const mockAbortedResult: PlacementResult = {
+      targetLevel: null,
+      report: [],
+    };
+
+    it('throws ConflictException if lock cannot be acquired', async () => {
+      vi.mocked(sessionService.acquireLockWithRetry).mockResolvedValue(false);
+
+      await expect(service.abortExam('user-1')).rejects.toThrow(
+        new ConflictException('placement.inProgress'),
+      );
+      expect(sessionService.releaseLock).not.toHaveBeenCalled();
+    });
+
+    it('throws NotFoundException if no active session', async () => {
+      vi.mocked(sessionService.loadExamSession).mockResolvedValue(null);
+
+      await expect(service.abortExam('user-1')).rejects.toThrow(NotFoundException);
+      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1');
+    });
+
+    it('returns existing result if session is already ended', async () => {
+      const session: ExamSession = {
+        evalId: EVAL_ID,
+        lang: 'de',
+        lo: 'A1',
+        hi: 'C2',
+        level: 'B1',
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
+        totalAnswered: 6,
+        ended: true,
+        currentQuestionId: mockQuestion.id,
+        servedAt: new Date().toISOString(),
+      };
+      vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
+      vi.mocked(progressService.getResult).mockResolvedValue(mockPlacementResult);
+
+      const result = await service.abortExam('user-1');
+      expect(result).toBe(mockPlacementResult);
+      expect(sessionService.archiveQuestionAnswer).not.toHaveBeenCalled();
+      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1');
+    });
+
+    it('archives current question with null choice, sets level to null, persists, and returns aborted result', async () => {
+      const session: ExamSession = {
+        evalId: EVAL_ID,
+        lang: 'de',
+        lo: 'A1',
+        hi: 'C2',
+        level: 'B1',
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
+        totalAnswered: 3,
+        ended: false,
+        currentQuestionId: mockQuestion.id,
+        servedAt: new Date().toISOString(),
+      };
+      vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
+      vi.mocked(progressService.getResult).mockResolvedValue(mockAbortedResult);
+      vi.mocked(progressService.updateUserLevel).mockResolvedValue(undefined);
+
+      const result = await service.abortExam('user-1');
+
+      expect(sessionService.archiveQuestionAnswer).toHaveBeenCalledWith('user-1', {
+        questionId: mockQuestion.id,
+        choice: null,
+      });
+      expect(session.ended).toBe(true);
+      expect(session.level).toBeNull();
+      expect(progressService.updateUserLevel).toHaveBeenCalledWith('user-1', 'de', null, EVAL_ID);
+      expect(sessionService.saveExamSession).toHaveBeenCalledWith('user-1', session);
+      expect(result).toBe(mockAbortedResult);
+      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1');
+    });
+
+    it('releases lock even if an error occurs', async () => {
+      vi.mocked(sessionService.loadExamSession).mockRejectedValue(new Error('redis down'));
+
+      await expect(service.abortExam('user-1')).rejects.toThrow('redis down');
+      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1');
     });
   });
 });

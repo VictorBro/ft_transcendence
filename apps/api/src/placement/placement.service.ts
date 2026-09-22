@@ -215,4 +215,53 @@ export class PlacementService {
   async quitPlacement(userId: string): Promise<void> {
     await this.sessionService.deleteSession(userId);
   }
+
+  /**
+   * Aborts the active placement exam, archiving the current unanswered question
+   * with `choice: null`, persisting `level = null` to the database (marking the
+   * eval as aborted, not completed), and returning the final result with the
+   * full report of all questions answered so far.
+   *
+   * @param userId - Unique identifier of the user aborting the exam.
+   * @returns Placement result with `targetLevel: null` indicating an aborted exam.
+   * @throws NotFoundException If no active placement session exists.
+   * @throws ConflictException If the placement lock cannot be acquired (`placement.inProgress`).
+   */
+  async abortExam(userId: string): Promise<PlacementResult> {
+    const acquired = await this.sessionService.acquireLockWithRetry(userId);
+    if (!acquired) {
+      throw new ConflictException('placement.inProgress');
+    }
+
+    try {
+      const session = await this.sessionService.loadExamSession(userId);
+      if (!session) {
+        throw new NotFoundException('placement.notFound');
+      }
+
+      if (session.ended) {
+        const existingResult = await this.progressService.getResult(userId, session);
+        assert(existingResult !== undefined);
+        return existingResult;
+      }
+
+      if (session.currentQuestionId) {
+        await this.sessionService.archiveQuestionAnswer(userId, {
+          questionId: session.currentQuestionId,
+          choice: null,
+        });
+      }
+
+      session.ended = true;
+      session.level = null;
+      await this.progressService.updateUserLevel(userId, session.lang, null, session.evalId);
+      await this.sessionService.saveExamSession(userId, session);
+
+      const result = await this.progressService.getResult(userId, session);
+      assert(result !== undefined);
+      return result;
+    } finally {
+      await this.sessionService.releaseLock(userId);
+    }
+  }
 }
