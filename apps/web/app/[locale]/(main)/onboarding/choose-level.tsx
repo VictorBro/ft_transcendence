@@ -2,10 +2,11 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { LEVELS, type Course, type Level } from '@ft/shared';
+import { type Course, type Level } from '@ft/shared';
 
 import { Link, useRouter } from '@/i18n/navigation';
 import { setCourseLevel } from '@/lib/courses-client';
+import { BEGINNER, MASTERY_OPTIONS, nextLevel } from '@/lib/onboarding';
 import { useErrorMessage } from '@/lib/error-message';
 import { FormError, SubmitButton } from '@/components/form';
 import { Flag } from '@/components/flag';
@@ -29,13 +30,18 @@ export function ChooseLevel({ course }: { course: Course }) {
   const t = useTranslations('Onboarding');
   const errorMessage = useErrorMessage();
   const [picking, setPicking] = useState(false);
-  const [level, setLevel] = useState<Level | null>(null);
+  // Three states, and the two empty-looking ones differ: undefined is nothing
+  // picked yet, null is "I have mastered nothing", which is a real answer.
+  const [mastered, setMastered] = useState<Level | null | undefined>(undefined);
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
   const [launching, setLaunching] = useState(false);
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (mastered === undefined) {
+      return;
+    }
     setPending(true);
     setError(null);
 
@@ -45,7 +51,9 @@ export function ChooseLevel({ course }: { course: Course }) {
     try {
       // Run together, so the launch costs nothing on a slow network.
       const [result] = await Promise.all([
-        setCourseLevel(course.lang, { level }),
+        // The course is one past what they have mastered: the column holds what
+        // we teach, never what they already know.
+        setCourseLevel(course.lang, { level: nextLevel(mastered) }),
         new Promise((resolve) => setTimeout(resolve, animated ? LAUNCH_MS : 0)),
       ]);
 
@@ -114,41 +122,41 @@ export function ChooseLevel({ course }: { course: Course }) {
         >
           <fieldset className="flex flex-col gap-3 border-0 p-0">
             <legend className="mb-1 text-sm font-medium">{t('levelLegend')}</legend>
-            <div className="grid grid-cols-6 gap-2">
-              {LEVELS.map((option) => (
+            <div className="grid grid-cols-7 gap-2">
+              {MASTERY_OPTIONS.map((option) => (
                 <label
-                  key={option}
+                  key={option ?? BEGINNER}
                   className="cursor-pointer rounded-md border border-slate-700 px-4 py-2 text-center text-sm has-checked:border-slate-100 has-checked:bg-slate-100 has-checked:text-slate-900"
                 >
                   <input
                     type="radio"
                     name="level"
-                    value={option}
-                    checked={level === option}
-                    onChange={() => setLevel(option)}
+                    value={option ?? BEGINNER}
+                    checked={mastered === option}
+                    onChange={() => setMastered(option)}
                     className="sr-only"
                   />
-                  {option}
+                  {option ?? BEGINNER}
                 </label>
               ))}
             </div>
           </fieldset>
 
           {/* role="status" so the change is announced, not only repainted. */}
-          {level === null ? null : (
+          {mastered === undefined ? null : (
             <div
               role="status"
               className="flex flex-col gap-4 rounded-md border border-slate-800 bg-slate-900 px-4 py-4"
             >
-              <LevelLadder level={level} />
-              <p className="text-sm text-slate-300">{t(`levelTile.${level}`)}</p>
+              <LevelLadder level={mastered} />
+              <p className="text-sm text-slate-300">{t(`levelTile.${mastered ?? BEGINNER}`)}</p>
             </div>
           )}
 
           <FormError message={error} />
 
           <div className="flex flex-col gap-4">
-            <SubmitButton pending={pending} disabled={level === null}>
+            <SubmitButton pending={pending} disabled={mastered === undefined}>
               {t('confirmLevel')}
             </SubmitButton>
             <button

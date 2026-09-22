@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
-import { CoursesSchema } from '@ft/shared';
 
-import { apiGet } from '@/lib/api';
+import { loadCourses } from '@/lib/courses';
 import { resolveOnboardingStep } from '@/lib/onboarding';
 import { ChooseCourse } from './choose-course';
 import { ChooseLevel } from './choose-level';
@@ -22,7 +21,7 @@ export const dynamic = 'force-dynamic';
  * language later. Not under /learn/[lang]: [lang] is what this page chooses.
  */
 export default async function OnboardingPage() {
-  const result = await apiGet(CoursesSchema, '/api/courses');
+  const result = await loadCourses();
 
   // This read answers the session question too, so requireUser() would only
   // add a round trip. An unavailable API is not a verdict about the visitor.

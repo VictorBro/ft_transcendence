@@ -1,27 +1,27 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { LEVELS, type Level } from '@ft/shared';
+import { type Level } from '@ft/shared';
 
-import { nextLevel } from '@/lib/onboarding';
+import { BEGINNER, MASTERY_OPTIONS, nextLevel } from '@/lib/onboarding';
 
 /**
  * Where the learner stands and where the course is taking them. Decorative:
  * the tile under it says the same thing in words.
  */
-export function LevelLadder({ level }: { level: Level }) {
+export function LevelLadder({ level }: { level: Level | null }) {
   const t = useTranslations('Onboarding');
   const target = nextLevel(level);
 
   return (
     <div className="flex items-end justify-between gap-1" aria-hidden>
-      {LEVELS.map((option) => {
+      {MASTERY_OPTIONS.map((option) => {
         const isCurrent = option === level;
         // C2 is both, and then the target mark would hide the current one.
         const isTarget = option === target && !isCurrent;
 
         return (
-          <div key={option} className="flex flex-1 flex-col items-center gap-1.5">
+          <div key={option ?? BEGINNER} className="flex flex-1 flex-col items-center gap-1.5">
             <span className="h-4 text-[10px] font-medium text-slate-400">
               {isCurrent ? t('ladderYou') : isTarget ? t('ladderGoal') : ''}
             </span>
@@ -39,7 +39,7 @@ export function LevelLadder({ level }: { level: Level }) {
                 isCurrent || isTarget ? 'font-semibold text-slate-200' : 'text-slate-500'
               }`}
             >
-              {option}
+              {option ?? BEGINNER}
             </span>
           </div>
         );

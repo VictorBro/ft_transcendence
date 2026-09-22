@@ -1,13 +1,26 @@
 import { LEVELS, type Course, type Level } from '@ft/shared';
 
 /**
- * What the course will teach: the level after the one the learner has reached.
- * C2 maps to itself, having nothing above it to aim at.
+ * Not a CEFR level and never stored: how the picker says "nothing yet". It is
+ * the only route to the A1 course, since every pick teaches the level above.
  */
-export function nextLevel(level: Level): Level {
-  const next = LEVELS[LEVELS.indexOf(level) + 1];
+export const BEGINNER = 'A0';
 
-  return next === undefined ? level : next;
+/** What a learner can claim to have mastered. Null is the beginner. */
+export const MASTERY_OPTIONS = [null, ...LEVELS] as const;
+
+/**
+ * What the course will teach: the level after the one the learner has reached.
+ * Null is a learner who has reached none, so their course is the first one. C2
+ * maps to itself, having nothing above it to aim at.
+ */
+export function nextLevel(mastered: Level | null): Level {
+  if (mastered === null) {
+    return LEVELS[0];
+  }
+  const next = LEVELS[LEVELS.indexOf(mastered) + 1];
+
+  return next === undefined ? mastered : next;
 }
 
 /**

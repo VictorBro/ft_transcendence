@@ -85,6 +85,7 @@
       "de": "allemand"
     },
     "levelTile": {
+      "A0": "Vous partez de zéro. Vos leçons viseront le niveau A1.",
       "A1": "Vous vous débrouillez avec des phrases simples. Vos leçons viseront le niveau A2.",
       "A2": "Vous gérez les échanges du quotidien. Vos leçons viseront le niveau B1.",
       "B1": "Vous tenez une conversation sur des sujets familiers. Vos leçons viseront le niveau B2.",

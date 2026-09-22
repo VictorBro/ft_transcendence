@@ -45,4 +45,9 @@ describe('nextLevel', () => {
   it('keeps C2 at C2', () => {
     expect(nextLevel('C2')).toBe('C2');
   });
+
+  /** A learner who has mastered nothing is the only way to reach the A1 course. */
+  it('starts a complete beginner at A1', () => {
+    expect(nextLevel(null)).toBe('A1');
+  });
 });

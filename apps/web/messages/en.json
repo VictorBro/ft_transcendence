@@ -85,6 +85,7 @@
       "de": "German"
     },
     "levelTile": {
+      "A0": "You are starting from scratch. Your lessons will aim at level A1.",
       "A1": "You manage simple phrases. Your lessons will aim at level A2.",
       "A2": "You handle everyday exchanges. Your lessons will aim at level B1.",
       "B1": "You hold a conversation on familiar topics. Your lessons will aim at level B2.",
