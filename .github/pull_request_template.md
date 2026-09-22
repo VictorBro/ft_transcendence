@@ -23,7 +23,9 @@ make all
 - [ ] No secret, key or token in the diff. New configuration is documented in `.env.example` and read through `compose.yml`.
 - [ ] Versions added or changed are pinned exactly and recorded in `docs/VERSIONS.md`.
 - [ ] Schema changes ship with their generated migration.
-- [ ] Copilot's review is read and every comment is answered or fixed.
+- [ ] In case you have changed scope of your issue you have documented this and agreed on change with owners of dependent issue
+- [ ] You have read the code of issues you depend on and have aligned with these issues owners in case of unclear points
+- [ ] You have requested agent's review (e.g. CoPilot) and rerequested it after each new commit
 
 # Screenshots
 
