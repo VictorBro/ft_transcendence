@@ -6,6 +6,7 @@ import {
   PlacementQuestionSchema,
   PLACEMENT_ROUNDS,
   QUESTION_CATEGORIES,
+  QuestionCategory,
   TargetLevel,
 } from '@ft/shared';
 
@@ -49,11 +50,15 @@ export class PlacementQuestionService {
    *
    * @param userId - Unique identifier of the user.
    * @param session - Current exam session state.
-   * @returns A tuple `[minQuestions, question]` containing available count and the chosen question.
+   * @returns A tuple `[availableByCategory, question]` containing the number of available unseen
+   * questions for every queried category and the chosen question.
    * @throws ConflictException If the exam has ended or reached terminal level C3 (`placement.expired`).
    * @throws NotFoundException If no questions exist in the pool for this level (`placement.poolExhausted`).
    */
-  async getNewQuestion(userId: string, session: ExamSession): Promise<[number, QuestionBank]> {
+  async getNewQuestion(
+    userId: string,
+    session: ExamSession,
+  ): Promise<[Partial<Record<QuestionCategory, number>>, QuestionBank]> {
     if (session.ended || session.level === 'C3') {
       throw new ConflictException('placement.expired');
     }
@@ -64,7 +69,7 @@ export class PlacementQuestionService {
 
     const pool = eligibleCategories.length > 0 ? eligibleCategories : QUESTION_CATEGORIES;
 
-    let min_questions = Infinity;
+    const availableByCategory: Partial<Record<QuestionCategory, number>> = {};
     const availableCategoryQuestions: QuestionBank[][] = [];
 
     for (const cat of pool) {
@@ -82,7 +87,7 @@ export class PlacementQuestionService {
         take: LIMIT_UNSEEN_QUESTIONS_TO_RETRIEVE,
       });
 
-      min_questions = Math.min(min_questions, questions.length);
+      availableByCategory[cat] = questions.length;
       if (questions.length > 0) {
         availableCategoryQuestions.push(questions);
       }
@@ -92,7 +97,7 @@ export class PlacementQuestionService {
       const randomCategoryIndex = Math.floor(Math.random() * availableCategoryQuestions.length);
       const chosenCategoryQuestions = availableCategoryQuestions[randomCategoryIndex];
       const randomQuestionIndex = Math.floor(Math.random() * chosenCategoryQuestions.length);
-      return [min_questions, chosenCategoryQuestions[randomQuestionIndex]];
+      return [availableByCategory, chosenCategoryQuestions[randomQuestionIndex]];
     }
 
     const answers = await this.sessionService.getQuestionAnswers(userId);
@@ -127,7 +132,7 @@ export class PlacementQuestionService {
     }
 
     const randomSeen = recentSeen[Math.floor(Math.random() * recentSeen.length)];
-    return [0, randomSeen.questionBank];
+    return [availableByCategory, randomSeen.questionBank];
   }
 
   /**
@@ -237,9 +242,13 @@ export class PlacementQuestionService {
     userId: string,
     examSession: ExamSession,
   ): Promise<PlacementQuestion> {
-    const [available, question] = await this.getNewQuestion(userId, examSession);
+    const [availableByCategory, question] = await this.getNewQuestion(userId, examSession);
 
-    if (available < FETCH_NEW_QUESTIONS_FOR_CATEGORY_WHEN_REMAINING_LESS_THAN) {
+    if (
+      Object.values(availableByCategory).some(
+        (available) => available < FETCH_NEW_QUESTIONS_FOR_CATEGORY_WHEN_REMAINING_LESS_THAN,
+      )
+    ) {
       // todo for later PR: insert new questions into database, but asynchronously without user noticing
     }
 

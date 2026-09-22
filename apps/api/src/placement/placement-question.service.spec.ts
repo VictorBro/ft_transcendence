@@ -109,11 +109,11 @@ describe('PlacementQuestionService', () => {
       servedAt: new Date().toISOString(),
     };
 
-    it('queries prisma and returns count and first question', async () => {
+    it('queries prisma and returns per-category counts and first question', async () => {
       prisma.questionBank.findMany.mockResolvedValue([mockQuestion]);
 
-      const [count, question] = await service.getNewQuestion('user-1', session);
-      expect(count).toBe(1);
+      const [counts, question] = await service.getNewQuestion('user-1', session);
+      expect(counts).toEqual({ grammar: 1, vocabulary: 1, reading: 1 });
       expect(question).toEqual(mockQuestion);
       expect(prisma.questionBank.findMany).toHaveBeenCalledWith(
         expect.objectContaining({
@@ -149,14 +149,33 @@ describe('PlacementQuestionService', () => {
         .mockResolvedValueOnce([mockQuestion])
         .mockResolvedValueOnce([]);
 
-      const [count, question] = await service.getNewQuestion('user-1', session);
-      expect(count).toBe(0);
+      const [counts, question] = await service.getNewQuestion('user-1', session);
+      expect(counts).toEqual({ grammar: 0, vocabulary: 1, reading: 0 });
       expect(question).toEqual(mockQuestion);
       expect(prisma.questionBank.findMany).toHaveBeenCalledTimes(3);
       expect(prisma.userSeenQuestion.findMany).not.toHaveBeenCalled();
     });
 
-    it('calculates true min_questions across all categories and selects a non-empty category randomly', async () => {
+    it('returns counts only for categories queried from the question bank', async () => {
+      const readingQuestion = { ...mockQuestion, category: 'reading' as const };
+      prisma.questionBank.findMany.mockResolvedValue([readingQuestion]);
+
+      const [counts, question] = await service.getNewQuestion('user-1', {
+        ...session,
+        askedPerCategory: { grammar: 2, vocabulary: 2, reading: 0 },
+      });
+
+      expect(counts).toEqual({ reading: 1 });
+      expect(question).toEqual(readingQuestion);
+      expect(prisma.questionBank.findMany).toHaveBeenCalledTimes(1);
+      expect(prisma.questionBank.findMany).toHaveBeenCalledWith(
+        expect.objectContaining({
+          where: expect.objectContaining({ category: 'reading' }),
+        }),
+      );
+    });
+
+    it('returns counts for every queried category and selects a non-empty category randomly', async () => {
       const qGrammar = { ...mockQuestion, id: 'q-gram', category: 'grammar' as const };
       const qVocab = { ...mockQuestion, id: 'q-vocab', category: 'vocabulary' as const };
       // 3 eligible categories: grammar has 10, vocabulary has 2, reading has 5
@@ -167,13 +186,13 @@ describe('PlacementQuestionService', () => {
       });
 
       const randomSpy = vi.spyOn(Math, 'random').mockReturnValue(0.99); // picks second available category (vocabulary)
-      const [minQuestions, question] = await service.getNewQuestion('user-1', session);
-      expect(minQuestions).toBe(0); // reading had 0, so min across all 3 is 0
+      const [counts, question] = await service.getNewQuestion('user-1', session);
+      expect(counts).toEqual({ grammar: 10, vocabulary: 2, reading: 0 });
       expect(question.category).toBe('vocabulary');
       randomSpy.mockRestore();
     });
 
-    it('returns [0, random question] from last 10 seen questions when unseen pool is empty', async () => {
+    it('returns zero per-category counts and a random question from the last 10 seen questions', async () => {
       prisma.questionBank.findMany.mockResolvedValue([]);
       prisma.userSeenQuestion.findMany.mockResolvedValue([
         {
@@ -186,8 +205,8 @@ describe('PlacementQuestionService', () => {
         },
       ]);
 
-      const [count, question] = await service.getNewQuestion('user-1', session);
-      expect(count).toBe(0);
+      const [counts, question] = await service.getNewQuestion('user-1', session);
+      expect(counts).toEqual({ grammar: 0, vocabulary: 0, reading: 0 });
       expect(question).toEqual(mockQuestion);
       expect(prisma.userSeenQuestion.findMany).toHaveBeenCalledWith(
         expect.objectContaining({
@@ -240,8 +259,8 @@ describe('PlacementQuestionService', () => {
         },
       ]);
 
-      const [count, question] = await service.getNewQuestion('user-1', sessionWithCurrent);
-      expect(count).toBe(0);
+      const [counts, question] = await service.getNewQuestion('user-1', sessionWithCurrent);
+      expect(counts).toEqual({ grammar: 0, vocabulary: 0, reading: 0 });
       expect(question).toEqual(mockQuestion);
       expect(prisma.userSeenQuestion.findMany).toHaveBeenCalledWith(
         expect.objectContaining({
