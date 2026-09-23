@@ -8,6 +8,7 @@ import { PlacementQuestionService } from './placement-question.service';
 import { PlacementProgressService } from './placement-progress.service';
 import { PlacementService } from './placement.service';
 
+const LOCK_TOKEN = 'placement-lock-token';
 const EVAL_ID = 'd7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64';
 
 const mockQuestion: QuestionBank = {
@@ -47,8 +48,8 @@ const mockPlacementResult: PlacementResult = {
 
 function createPlacementService() {
   const sessionService = {
-    acquireLock: vi.fn().mockResolvedValue(true),
-    acquireLockWithRetry: vi.fn().mockResolvedValue(true),
+    acquireLock: vi.fn().mockResolvedValue(LOCK_TOKEN),
+    acquireLockWithRetry: vi.fn().mockResolvedValue(LOCK_TOKEN),
     releaseLock: vi.fn().mockResolvedValue(undefined),
     hasActiveSession: vi.fn().mockResolvedValue(false),
     saveExamSession: vi.fn().mockResolvedValue(undefined),
@@ -96,7 +97,7 @@ describe('PlacementService', () => {
 
   describe('startPlacement', () => {
     it('throws ConflictException if lock cannot be acquired', async () => {
-      vi.mocked(sessionService.acquireLock).mockResolvedValue(false);
+      vi.mocked(sessionService.acquireLock).mockResolvedValue(null);
 
       await expect(service.startPlacement('user-1', { lang: 'de' })).rejects.toThrow(
         new ConflictException('placement.inProgress'),
@@ -110,7 +111,7 @@ describe('PlacementService', () => {
       await expect(service.startPlacement('user-1', { lang: 'de' })).rejects.toThrow(
         ConflictException,
       );
-      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1');
+      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1', LOCK_TOKEN);
     });
 
     it('throws ConflictException and releases lock if onboarding is incomplete', async () => {
@@ -120,7 +121,7 @@ describe('PlacementService', () => {
       await expect(service.startPlacement('user-1', { lang: 'de' })).rejects.toThrow(
         new ConflictException('placement.onboardingIncomplete'),
       );
-      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1');
+      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1', LOCK_TOKEN);
     });
 
     it('initializes session, returns first question, and releases lock', async () => {
@@ -130,7 +131,7 @@ describe('PlacementService', () => {
       const result = await service.startPlacement('user-1', { lang: 'de' });
       expect(result).toEqual(mockPlacementQuestion);
       expect(sessionService.deleteSession).toHaveBeenCalledWith('user-1');
-      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1');
+      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1', LOCK_TOKEN);
       expect(questionService.getNewPlacementQuestion).toHaveBeenCalledWith(
         'user-1',
         expect.objectContaining({
@@ -349,7 +350,7 @@ describe('PlacementService', () => {
 
   describe('submitAnswer', () => {
     it('throws ConflictException if lock cannot be acquired', async () => {
-      vi.mocked(sessionService.acquireLockWithRetry).mockResolvedValue(false);
+      vi.mocked(sessionService.acquireLockWithRetry).mockResolvedValue(null);
 
       await expect(
         service.submitAnswer('user-1', { questionId: 'q-1', choice: 'a' }),
@@ -363,7 +364,7 @@ describe('PlacementService', () => {
       await expect(
         service.submitAnswer('user-1', { questionId: 'q-1', choice: 'a' }),
       ).rejects.toThrow(NotFoundException);
-      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1');
+      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1', LOCK_TOKEN);
     });
 
     it('throws BadRequestException and releases lock if choice is not in question options', async () => {
@@ -392,7 +393,7 @@ describe('PlacementService', () => {
           choice: 'not-an-option',
         }),
       ).rejects.toThrow(new BadRequestException('placement.invalidChoice'));
-      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1');
+      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1', LOCK_TOKEN);
       expect(session.answers).toEqual([]);
     });
 
@@ -423,7 +424,7 @@ describe('PlacementService', () => {
         }),
       ).rejects.toThrow(new ConflictException('placement.questionMismatch'));
       expect(session.answers).toEqual([]);
-      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1');
+      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1', LOCK_TOKEN);
     });
 
     it('returns result if checkEndedOrTimedOut returns a result', async () => {
@@ -512,9 +513,29 @@ describe('PlacementService', () => {
   });
 
   describe('quitPlacement', () => {
-    it('delegates to sessionService deleteSession', async () => {
+    it('deletes the session while holding the placement lock', async () => {
       await service.quitPlacement('user-1');
+
+      expect(sessionService.acquireLockWithRetry).toHaveBeenCalledWith('user-1');
       expect(sessionService.deleteSession).toHaveBeenCalledWith('user-1');
+      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1', LOCK_TOKEN);
+    });
+
+    it('rejects quitting while another placement mutation owns the lock', async () => {
+      vi.mocked(sessionService.acquireLockWithRetry).mockResolvedValue(null);
+
+      await expect(service.quitPlacement('user-1')).rejects.toThrow(
+        new ConflictException('placement.inProgress'),
+      );
+      expect(sessionService.deleteSession).not.toHaveBeenCalled();
+      expect(sessionService.releaseLock).not.toHaveBeenCalled();
+    });
+
+    it('releases the lock when deleting the session fails', async () => {
+      vi.mocked(sessionService.deleteSession).mockRejectedValue(new Error('redis down'));
+
+      await expect(service.quitPlacement('user-1')).rejects.toThrow('redis down');
+      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1', LOCK_TOKEN);
     });
   });
 
@@ -525,7 +546,7 @@ describe('PlacementService', () => {
     };
 
     it('throws ConflictException if lock cannot be acquired', async () => {
-      vi.mocked(sessionService.acquireLockWithRetry).mockResolvedValue(false);
+      vi.mocked(sessionService.acquireLockWithRetry).mockResolvedValue(null);
 
       await expect(service.abortExam('user-1')).rejects.toThrow(
         new ConflictException('placement.inProgress'),
@@ -537,7 +558,7 @@ describe('PlacementService', () => {
       vi.mocked(sessionService.loadExamSession).mockResolvedValue(null);
 
       await expect(service.abortExam('user-1')).rejects.toThrow(NotFoundException);
-      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1');
+      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1', LOCK_TOKEN);
     });
 
     it('returns existing result if session is already ended', async () => {
@@ -561,7 +582,7 @@ describe('PlacementService', () => {
       const result = await service.abortExam('user-1');
       expect(result).toBe(mockPlacementResult);
       expect(session.answers).toEqual([]);
-      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1');
+      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1', LOCK_TOKEN);
     });
 
     it('archives current question with null choice, sets level to null, persists, and returns aborted result', async () => {
@@ -591,14 +612,14 @@ describe('PlacementService', () => {
       expect(progressService.updateUserLevel).toHaveBeenCalledWith('user-1', 'de', null, EVAL_ID);
       expect(sessionService.saveExamSession).toHaveBeenCalledWith('user-1', session);
       expect(result).toBe(mockAbortedResult);
-      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1');
+      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1', LOCK_TOKEN);
     });
 
     it('releases lock even if an error occurs', async () => {
       vi.mocked(sessionService.loadExamSession).mockRejectedValue(new Error('redis down'));
 
       await expect(service.abortExam('user-1')).rejects.toThrow('redis down');
-      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1');
+      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1', LOCK_TOKEN);
     });
   });
 });

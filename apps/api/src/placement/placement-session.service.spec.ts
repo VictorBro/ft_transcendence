@@ -9,6 +9,8 @@ import { PLACEMENT_REDIS_KEY_TTL, PlacementSessionService } from './placement-se
 function createSessionService(redisClientOverrides: Record<string, unknown> = {}) {
   const multiMock = {
     hSet: vi.fn().mockReturnThis(),
+    hGetAll: vi.fn().mockReturnThis(),
+    lRange: vi.fn().mockReturnThis(),
     rPush: vi.fn().mockReturnThis(),
     del: vi.fn().mockReturnThis(),
     expire: vi.fn().mockReturnThis(),
@@ -26,10 +28,18 @@ function createSessionService(redisClientOverrides: Record<string, unknown> = {}
       lRange: vi.fn().mockResolvedValue([]),
       expire: vi.fn().mockResolvedValue(1),
       set: vi.fn().mockResolvedValue('OK'),
+      eval: vi.fn().mockResolvedValue(1),
       multi: vi.fn(() => multiMock),
       ...redisClientOverrides,
     },
   };
+  multiMock.exec.mockImplementation(async () =>
+    Promise.all([
+      redis.client.hGetAll('user:u-1:eval'),
+      redis.client.lRange('user:u-1:eval_questions', 0, -1),
+    ]),
+  );
+
   const prisma = {
     userLevel: {
       findUnique: vi.fn().mockResolvedValue(null),
@@ -83,49 +93,90 @@ describe('PlacementSessionService', () => {
   });
 
   describe('acquireLock', () => {
-    it('returns true when lock is successfully acquired', async () => {
+    it('returns an ownership token when lock is successfully acquired', async () => {
       redis.client.set.mockResolvedValue('OK');
       const result = await service.acquireLock('u-1');
-      expect(result).toBe(true);
-      expect(redis.client.set).toHaveBeenCalledWith('user:u-1:eval_lock', 'locked', {
+      expect(result).toEqual(expect.any(String));
+      expect(redis.client.set).toHaveBeenCalledWith('user:u-1:eval_lock', result, {
         NX: true,
         EX: 5,
       });
     });
 
-    it('returns false when lock already exists', async () => {
+    it('renews an acquired lock before its lease expires', async () => {
+      vi.useFakeTimers();
+      redis.client.eval.mockResolvedValue(1);
+      let token: string | null = null;
+
+      try {
+        token = await service.acquireLock('u-1', 3);
+        await vi.advanceTimersByTimeAsync(1000);
+
+        expect(redis.client.eval).toHaveBeenCalledWith(expect.stringContaining('EXPIRE'), {
+          keys: ['user:u-1:eval_lock'],
+          arguments: [token, '3'],
+        });
+      } finally {
+        if (token) await service.releaseLock('u-1', token);
+        vi.useRealTimers();
+      }
+    });
+
+    it('returns null when lock already exists', async () => {
       redis.client.set.mockResolvedValue(null);
       const result = await service.acquireLock('u-1');
-      expect(result).toBe(false);
+      expect(result).toBeNull();
     });
   });
 
   describe('releaseLock', () => {
-    it('deletes the lock key from redis', async () => {
-      await service.releaseLock('u-1');
-      expect(redis.client.del).toHaveBeenCalledWith(['user:u-1:eval_lock']);
+    it('conditionally deletes only the lock owned by the supplied token', async () => {
+      await service.releaseLock('u-1', 'token-a');
+
+      expect(redis.client.eval).toHaveBeenCalledWith(expect.stringContaining('GET'), {
+        keys: ['user:u-1:eval_lock'],
+        arguments: ['token-a'],
+      });
+      expect(redis.client.del).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('extendLock', () => {
+    it('extends only the lock owned by the supplied token', async () => {
+      redis.client.eval.mockResolvedValue(1);
+
+      await expect(service.extendLock('u-1', 'token-a', 9)).resolves.toBe(true);
+      expect(redis.client.eval).toHaveBeenCalledWith(expect.stringContaining('EXPIRE'), {
+        keys: ['user:u-1:eval_lock'],
+        arguments: ['token-a', '9'],
+      });
+    });
+
+    it('reports loss of lock ownership', async () => {
+      redis.client.eval.mockResolvedValue(0);
+      await expect(service.extendLock('u-1', 'stale-token')).resolves.toBe(false);
     });
   });
 
   describe('acquireLockWithRetry', () => {
-    it('returns true immediately if lock is acquired on first attempt', async () => {
+    it('returns a token immediately if lock is acquired on first attempt', async () => {
       redis.client.set.mockResolvedValue('OK');
       const result = await service.acquireLockWithRetry('u-1', 2, 1);
-      expect(result).toBe(true);
+      expect(result).toEqual(expect.any(String));
       expect(redis.client.set).toHaveBeenCalledTimes(1);
     });
 
-    it('returns true after retrying if lock is initially held', async () => {
+    it('returns a token after retrying if lock is initially held', async () => {
       redis.client.set.mockResolvedValueOnce(null).mockResolvedValueOnce('OK');
       const result = await service.acquireLockWithRetry('u-1', 2, 1);
-      expect(result).toBe(true);
+      expect(result).toEqual(expect.any(String));
       expect(redis.client.set).toHaveBeenCalledTimes(2);
     });
 
-    it('returns false if lock cannot be acquired after max retries', async () => {
+    it('returns null if lock cannot be acquired after max retries', async () => {
       redis.client.set.mockResolvedValue(null);
       const result = await service.acquireLockWithRetry('u-1', 2, 1);
-      expect(result).toBe(false);
+      expect(result).toBeNull();
       expect(redis.client.set).toHaveBeenCalledTimes(3);
     });
   });
@@ -175,6 +226,8 @@ describe('PlacementSessionService', () => {
       redis.client.hGetAll.mockResolvedValue({});
       const result = await service.loadExamSession('u-1');
       expect(result).toBeNull();
+      expect(multiMock.hGetAll).toHaveBeenCalledWith('user:u-1:eval');
+      expect(multiMock.lRange).toHaveBeenCalledWith('user:u-1:eval_questions', 0, -1);
     });
 
     it('parses and returns valid ExamSession', async () => {

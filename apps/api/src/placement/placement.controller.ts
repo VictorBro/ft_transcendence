@@ -119,11 +119,13 @@ export class PlacementController {
    *
    * @param user - Authenticated session user quitting the exam.
    * @returns Promise resolving when the placement exam is cancelled.
+   * @throws ConflictException If another placement mutation holds the lock.
    */
   @Delete()
   @HttpCode(HttpStatus.NO_CONTENT)
   @ApiOperation({ summary: 'Quit the current placement exam' })
   @ApiNoContentResponse({ description: 'Placement exam cancelled' })
+  @ApiConflictResponse({ description: 'Placement is busy (`placement.inProgress`)' })
   quitPlacement(@CurrentUser() user: SessionUser): Promise<void> {
     return this.placement.quitPlacement(user.id);
   }

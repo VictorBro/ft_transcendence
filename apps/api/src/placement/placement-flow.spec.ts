@@ -158,9 +158,18 @@ function setupPlacementEnvironment() {
       }),
       expire: vi.fn(async (_key?: string, _ttl?: number) => 1),
       set: vi.fn(async () => 'OK'),
+      eval: vi.fn(async () => 1),
       multi: vi.fn(() => {
         const ops: (() => Promise<unknown>)[] = [];
         const multiObj = {
+          hGetAll: vi.fn((key: string) => {
+            ops.push(() => redis.client.hGetAll(key));
+            return multiObj;
+          }),
+          lRange: vi.fn((key: string, start: number, stop: number) => {
+            ops.push(() => redis.client.lRange(key, start, stop));
+            return multiObj;
+          }),
           hSet: vi.fn((key: string, data: Record<string, string>) => {
             ops.push(() => redis.client.hSet(key, data));
             return multiObj;

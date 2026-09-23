@@ -110,8 +110,8 @@ export class PlacementService {
    *   or onboarding has not been completed (`placement.onboardingIncomplete`).
    */
   async startPlacement(userId: string, dto: StartPlacementDto): Promise<PlacementQuestion> {
-    const acquired = await this.sessionService.acquireLock(userId);
-    if (!acquired) {
+    const lockToken = await this.sessionService.acquireLock(userId);
+    if (!lockToken) {
       throw new ConflictException('placement.inProgress');
     }
 
@@ -144,7 +144,7 @@ export class PlacementService {
 
       return await this.questionService.getNewPlacementQuestion(userId, examSession);
     } finally {
-      await this.sessionService.releaseLock(userId);
+      await this.sessionService.releaseLock(userId, lockToken);
     }
   }
 
@@ -187,8 +187,8 @@ export class PlacementService {
     userId: string,
     dto: SubmitAnswerDto,
   ): Promise<PlacementQuestion | PlacementResult> {
-    const acquired = await this.sessionService.acquireLockWithRetry(userId);
-    if (!acquired) {
+    const lockToken = await this.sessionService.acquireLockWithRetry(userId);
+    if (!lockToken) {
       throw new ConflictException('placement.inProgress');
     }
 
@@ -207,7 +207,7 @@ export class PlacementService {
 
       return await this.processAnswer(userId, dto.choice, question, session);
     } finally {
-      await this.sessionService.releaseLock(userId);
+      await this.sessionService.releaseLock(userId, lockToken);
     }
   }
 
@@ -218,7 +218,16 @@ export class PlacementService {
    * @returns Promise resolving when the session records are deleted.
    */
   async quitPlacement(userId: string): Promise<void> {
-    await this.sessionService.deleteSession(userId);
+    const lockToken = await this.sessionService.acquireLockWithRetry(userId);
+    if (!lockToken) {
+      throw new ConflictException('placement.inProgress');
+    }
+
+    try {
+      await this.sessionService.deleteSession(userId);
+    } finally {
+      await this.sessionService.releaseLock(userId, lockToken);
+    }
   }
 
   /**
@@ -233,8 +242,8 @@ export class PlacementService {
    * @throws ConflictException If the placement lock cannot be acquired (`placement.inProgress`).
    */
   async abortExam(userId: string): Promise<PlacementResult> {
-    const acquired = await this.sessionService.acquireLockWithRetry(userId);
-    if (!acquired) {
+    const lockToken = await this.sessionService.acquireLockWithRetry(userId);
+    if (!lockToken) {
       throw new ConflictException('placement.inProgress');
     }
 
@@ -266,7 +275,7 @@ export class PlacementService {
       assert(result !== undefined);
       return result;
     } finally {
-      await this.sessionService.releaseLock(userId);
+      await this.sessionService.releaseLock(userId, lockToken);
     }
   }
 }

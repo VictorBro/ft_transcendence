@@ -1,4 +1,5 @@
 import { ConflictException, Injectable } from '@nestjs/common';
+import { randomUUID } from 'node:crypto';
 import { ExamSession, ExamSessionSchema, SubmitAnswerSchema } from '@ft/shared';
 
 import { PrismaService } from '../prisma/prisma.service';
@@ -6,9 +7,23 @@ import { RedisService } from '../redis/redis.service';
 
 export const PLACEMENT_REDIS_KEY_TTL = 3600;
 export const PLACEMENT_LOCK_TTL_SECONDS = 5;
+const RELEASE_LOCK_SCRIPT = `
+  if redis.call("GET", KEYS[1]) == ARGV[1] then
+    return redis.call("DEL", KEYS[1])
+  end
+  return 0
+`;
+const EXTEND_LOCK_SCRIPT = `
+  if redis.call("GET", KEYS[1]) == ARGV[1] then
+    return redis.call("EXPIRE", KEYS[1], ARGV[2])
+  end
+  return 0
+`;
 
 @Injectable()
 export class PlacementSessionService {
+  private readonly lockHeartbeats = new Map<string, ReturnType<typeof setInterval>>();
+
   constructor(
     private readonly redis: RedisService,
     private readonly prisma: PrismaService,
@@ -50,24 +65,68 @@ export class PlacementSessionService {
    *
    * @param userId - Unique identifier of the user.
    * @param ttlSeconds - Time-to-live for the lock in seconds (defaults to `PLACEMENT_LOCK_TTL_SECONDS`).
-   * @returns `true` if lock was successfully acquired; `false` if already locked.
+   * @returns Unique ownership token, or null if the lock is already held.
    */
-  async acquireLock(userId: string, ttlSeconds = PLACEMENT_LOCK_TTL_SECONDS): Promise<boolean> {
-    const result = await this.redis.client.set(this.evalLockKey(userId), 'locked', {
+  async acquireLock(
+    userId: string,
+    ttlSeconds = PLACEMENT_LOCK_TTL_SECONDS,
+  ): Promise<string | null> {
+    const token = randomUUID();
+    const result = await this.redis.client.set(this.evalLockKey(userId), token, {
       NX: true,
       EX: ttlSeconds,
     });
-    return result !== null;
+    if (result === null) return null;
+
+    this.startLockHeartbeat(userId, token, ttlSeconds);
+    return token;
   }
 
   /**
    * Releases the mutual exclusion lock for placement initialization.
    *
    * @param userId - Unique identifier of the user.
+   * @param token - Ownership token returned during acquisition.
    * @returns Promise resolving when the lock key is removed.
    */
-  async releaseLock(userId: string): Promise<void> {
-    await this.redis.client.del([this.evalLockKey(userId)]);
+  async releaseLock(userId: string, token: string): Promise<void> {
+    this.stopLockHeartbeat(token);
+    await this.redis.client.eval(RELEASE_LOCK_SCRIPT, {
+      keys: [this.evalLockKey(userId)],
+      arguments: [token],
+    });
+  }
+
+  /** Extends a lock only while it is still owned by the supplied token. */
+  async extendLock(
+    userId: string,
+    token: string,
+    ttlSeconds = PLACEMENT_LOCK_TTL_SECONDS,
+  ): Promise<boolean> {
+    const result = await this.redis.client.eval(EXTEND_LOCK_SCRIPT, {
+      keys: [this.evalLockKey(userId)],
+      arguments: [token, ttlSeconds.toString()],
+    });
+    return result === 1;
+  }
+
+  private startLockHeartbeat(userId: string, token: string, ttlSeconds: number): void {
+    const intervalMs = Math.max(100, Math.floor((ttlSeconds * 1000) / 3));
+    const heartbeat = setInterval(() => {
+      void this.extendLock(userId, token, ttlSeconds)
+        .then((extended) => {
+          if (!extended) this.stopLockHeartbeat(token);
+        })
+        .catch(() => this.stopLockHeartbeat(token));
+    }, intervalMs);
+    heartbeat.unref();
+    this.lockHeartbeats.set(token, heartbeat);
+  }
+
+  private stopLockHeartbeat(token: string): void {
+    const heartbeat = this.lockHeartbeats.get(token);
+    if (heartbeat) clearInterval(heartbeat);
+    this.lockHeartbeats.delete(token);
   }
 
   /**
@@ -78,22 +137,22 @@ export class PlacementSessionService {
    * @param maxRetries - Maximum retry attempts (defaults to 10).
    * @param delayMs - Delay in milliseconds between retries (defaults to 50).
    * @param ttlSeconds - Time-to-live for the lock in seconds (defaults to `PLACEMENT_LOCK_TTL_SECONDS`).
-   * @returns `true` if lock was successfully acquired; `false` if timed out.
+   * @returns Unique ownership token, or null if acquisition times out.
    */
   async acquireLockWithRetry(
     userId: string,
     maxRetries = 10,
     delayMs = 50,
     ttlSeconds = PLACEMENT_LOCK_TTL_SECONDS,
-  ): Promise<boolean> {
+  ): Promise<string | null> {
     for (let i = 0; i <= maxRetries; i++) {
-      const acquired = await this.acquireLock(userId, ttlSeconds);
-      if (acquired) return true;
+      const token = await this.acquireLock(userId, ttlSeconds);
+      if (token) return token;
       if (i < maxRetries) {
         await new Promise((resolve) => setTimeout(resolve, delayMs));
       }
     }
-    return false;
+    return null;
   }
 
   /**
@@ -151,10 +210,13 @@ export class PlacementSessionService {
    */
   async loadExamSession(userId: string): Promise<ExamSession | null> {
     const key = this.evalKey(userId);
-    const [data, rawAnswers] = await Promise.all([
-      this.redis.client.hGetAll(key),
-      this.redis.client.lRange(this.evalQuestionsKey(userId), 0, -1),
-    ]);
+    const replies = await this.redis.client
+      .multi()
+      .hGetAll(key)
+      .lRange(this.evalQuestionsKey(userId), 0, -1)
+      .exec();
+    const data = replies[0] as unknown as Record<string, string>;
+    const rawAnswers = replies[1] as unknown as string[];
     if (!data || Object.keys(data).length === 0) {
       return null;
     }
