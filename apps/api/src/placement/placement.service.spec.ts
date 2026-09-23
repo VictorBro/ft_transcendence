@@ -352,6 +352,37 @@ describe('PlacementService', () => {
       expect(result).toEqual(mockPlacementQuestion);
       expect(questionService.createPlacementQuestion).toHaveBeenCalledWith(mockQuestion, session);
     });
+
+    it('throws NotFoundException when session does not exist', async () => {
+      vi.mocked(sessionService.loadExamSession).mockResolvedValue(null);
+
+      await expect(service.getPlacement('user-1')).rejects.toThrow(
+        new NotFoundException('placement.notFound'),
+      );
+    });
+
+    it('throws NotFoundException when session has no currentQuestionId', async () => {
+      const session: ExamSession = {
+        evalId: EVAL_ID,
+        lang: 'de',
+        lo: 'A1',
+        hi: 'C2',
+        level: 'B1',
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
+        totalAnswered: 0,
+        answers: [],
+        ended: false,
+        currentQuestionId: null,
+        servedAt: new Date().toISOString(),
+      };
+      vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
+      vi.mocked(progressService.getResult).mockResolvedValue(undefined);
+
+      await expect(service.getPlacement('user-1')).rejects.toThrow(
+        new NotFoundException('placement.notFound'),
+      );
+    });
   });
 
   describe('submitAnswer', () => {
@@ -430,6 +461,35 @@ describe('PlacementService', () => {
         }),
       ).rejects.toThrow(new ConflictException('placement.questionMismatch'));
       expect(session.answers).toEqual([]);
+      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1', LOCK_TOKEN);
+    });
+
+    it('throws placement.invalidSession if question was already answered in session', async () => {
+      const session: ExamSession = {
+        evalId: EVAL_ID,
+        lang: 'de',
+        lo: 'A1',
+        hi: 'C2',
+        level: 'B1',
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
+        totalAnswered: 1,
+        answers: [{ questionId: mockQuestion.id, choice: 'ist' }],
+        ended: false,
+        currentQuestionId: mockQuestion.id,
+        servedAt: new Date().toISOString(),
+      };
+      vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
+      vi.mocked(progressService.getResult).mockResolvedValue(undefined);
+      vi.mocked(progressService.getQuestion).mockResolvedValue(mockQuestion);
+      vi.mocked(progressService.hasTimedOut).mockReturnValue(false);
+
+      await expect(
+        service.submitAnswer('user-1', {
+          questionId: mockQuestion.id,
+          choice: 'ist',
+        }),
+      ).rejects.toThrow(new ConflictException('placement.invalidSession'));
       expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1', LOCK_TOKEN);
     });
 
@@ -589,6 +649,29 @@ describe('PlacementService', () => {
       const result = await service.abortExam('user-1');
       expect(result).toBe(mockPlacementResult);
       expect(session.answers).toEqual([]);
+      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1', LOCK_TOKEN);
+    });
+
+    it('throws placement.invalidSession and releases lock if active question was already answered', async () => {
+      const session: ExamSession = {
+        evalId: EVAL_ID,
+        lang: 'de',
+        lo: 'A1',
+        hi: 'C2',
+        level: 'B1',
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
+        totalAnswered: 1,
+        answers: [{ questionId: mockQuestion.id, choice: 'ist' }],
+        ended: false,
+        currentQuestionId: mockQuestion.id,
+        servedAt: new Date().toISOString(),
+      };
+      vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
+
+      await expect(service.abortExam('user-1')).rejects.toThrow(
+        new ConflictException('placement.invalidSession'),
+      );
       expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1', LOCK_TOKEN);
     });
 
