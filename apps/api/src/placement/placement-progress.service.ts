@@ -18,12 +18,16 @@ import {
 import { QuestionBank } from '../generated/prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 import { MAX_QUESTIONS_PER_LEVEL } from './placement-question.service';
+import { PlacementSessionService } from './placement-session.service';
 
 export const NETWORK_GRACE_S = 3;
 
 @Injectable()
 export class PlacementProgressService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly sessionService: PlacementSessionService,
+  ) {}
 
   /**
    * Retrieves a question by its unique identifier from the database question bank.
@@ -122,7 +126,7 @@ export class PlacementProgressService {
     question: QuestionBank,
     session: ExamSession,
     userId: string,
-  ): Promise<void> {
+  ): Promise<PlacementResult | undefined> {
     if (answer !== null && !question.options.includes(answer)) {
       throw new BadRequestException('placement.invalidChoice');
     }
@@ -163,12 +167,24 @@ export class PlacementProgressService {
       session.level = session.hi;
       session.ended = true;
       await this.updateUserLevel(userId, session.lang, session.level, session.evalId);
-      return;
+
+      await this.sessionService.saveExamSession(userId, session);
+      const result = await this.getResult(session);
+      if (result !== undefined) {
+        return result;
+      }
+      throw new ConflictException('placement.invalidSession');
     } else if (levelChange === 'down' && currIndex === loIndex) {
       session.level = session.lo;
       session.ended = true;
       await this.updateUserLevel(userId, session.lang, session.level, session.evalId);
-      return;
+
+      await this.sessionService.saveExamSession(userId, session);
+      const result = await this.getResult(session);
+      if (result !== undefined) {
+        return result;
+      }
+      throw new ConflictException('placement.invalidSession');
     }
 
     session.askedPerCategory = { grammar: 0, vocabulary: 0, reading: 0 };
@@ -183,6 +199,10 @@ export class PlacementProgressService {
       const nextIndex = Math.max(loIndex, currIndex - Math.ceil((currIndex - loIndex) / 2));
       session.level = TARGET_LEVELS[nextIndex];
     }
+
+    const newQuestion = await this.questionService.getNewPlacementQuestion(userId, session);
+    await this.sessionService.saveExamSession(userId, session);
+    return newQuestion;
   }
 
   /**

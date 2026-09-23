@@ -12,7 +12,6 @@ import {
 
 import { Level, QuestionBank } from '../generated/prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
-import { PlacementSessionService } from './placement-session.service';
 
 export const FETCH_NEW_QUESTIONS_FOR_CATEGORY_WHEN_REMAINING_LESS_THAN = 6;
 export const LIMIT_UNSEEN_QUESTIONS_TO_RETRIEVE = Math.max(
@@ -23,10 +22,7 @@ export const MAX_QUESTIONS_PER_LEVEL = 6;
 
 @Injectable()
 export class PlacementQuestionService {
-  constructor(
-    private readonly prisma: PrismaService,
-    private readonly sessionService: PlacementSessionService,
-  ) {}
+  constructor(private readonly prisma: PrismaService) {}
 
   /**
    * Converts a placement `TargetLevel` to a database CEFR `Level`.
@@ -98,6 +94,15 @@ export class PlacementQuestionService {
       const chosenCategoryQuestions = availableCategoryQuestions[randomCategoryIndex];
       const randomQuestionIndex = Math.floor(Math.random() * chosenCategoryQuestions.length);
       return [availableByCategory, chosenCategoryQuestions[randomQuestionIndex]];
+    }
+
+    if (
+      Object.values(availableByCategory).some(
+        (available) => available < FETCH_NEW_QUESTIONS_FOR_CATEGORY_WHEN_REMAINING_LESS_THAN,
+      )
+    ) {
+      // todo for later PR: insert new questions into database, but asynchronously without user noticing
+      // todo for Endrit: add parameter of alreadySeenQuestions to your function to not serve another function the user has already seen during the current session
     }
 
     const excludeQuestionIds = session.answers.map((answer) => answer.questionId);
@@ -231,7 +236,7 @@ export class PlacementQuestionService {
 
   /**
    * Retrieves a new question, records it in `UserSeenQuestion`, updates session state,
-   * persists the session to Redis, and returns the formatted question.
+   * and returns the formatted question.
    *
    * @param userId - Unique identifier of the user.
    * @param examSession - Current mutable exam session state.
@@ -241,15 +246,7 @@ export class PlacementQuestionService {
     userId: string,
     examSession: ExamSession,
   ): Promise<PlacementQuestion> {
-    const [availableByCategory, question] = await this.getNewQuestion(userId, examSession);
-
-    if (
-      Object.values(availableByCategory).some(
-        (available) => available < FETCH_NEW_QUESTIONS_FOR_CATEGORY_WHEN_REMAINING_LESS_THAN,
-      )
-    ) {
-      // todo for later PR: insert new questions into database, but asynchronously without user noticing
-    }
+    const [, question] = await this.getNewQuestion(userId, examSession);
 
     examSession.currentQuestionId = question.id;
     examSession.servedAt = new Date().toISOString();
@@ -268,7 +265,6 @@ export class PlacementQuestionService {
         updatedAt: new Date(),
       },
     });
-    await this.sessionService.saveExamSession(userId, examSession);
     return this.createPlacementQuestion(question, examSession);
   }
 }

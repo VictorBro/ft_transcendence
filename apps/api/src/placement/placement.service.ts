@@ -55,17 +55,7 @@ export class PlacementService {
       choice,
     });
     session.totalAnswered += 1;
-    await this.progressService.adjustSessionFromAnswer(choice, question, session, userId);
-
-    const result = await this.progressService.getResult(session);
-    if (result !== undefined) {
-      await this.sessionService.saveExamSession(userId, session);
-      return result;
-    }
-
-    const new_question = await this.questionService.getNewPlacementQuestion(userId, session);
-    await this.sessionService.saveExamSession(userId, session);
-    return new_question;
+    return await this.progressService.adjustSessionFromAnswer(choice, question, session, userId);
   }
 
   /**
@@ -142,7 +132,9 @@ export class PlacementService {
         servedAt: new Date().toISOString(),
       };
 
-      return await this.questionService.getNewPlacementQuestion(userId, examSession);
+      const newQuestion = await this.questionService.getNewPlacementQuestion(userId, examSession);
+      await this.sessionService.saveExamSession(userId, examSession);
+      return newQuestion;
     } finally {
       await this.sessionService.releaseLock(userId, lockToken);
     }

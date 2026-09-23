@@ -144,6 +144,10 @@ describe('PlacementService', () => {
           answers: [],
         }),
       );
+      expect(sessionService.saveExamSession).toHaveBeenCalledWith(
+        'user-1',
+        expect.objectContaining({ lang: 'de', level: 'B1', answers: [] }),
+      );
     });
 
     it('purges existing stale session and leftover answers on start', async () => {
@@ -238,7 +242,8 @@ describe('PlacementService', () => {
         session,
         'user-1',
       );
-      expect(sessionService.saveExamSession).not.toHaveBeenCalled();
+      expect(sessionService.saveExamSession).toHaveBeenCalledTimes(2);
+      expect(sessionService.saveExamSession).toHaveBeenLastCalledWith('user-1', session);
       expect(questionService.getNewPlacementQuestion).toHaveBeenCalledWith('user-1', session);
     });
 
@@ -268,6 +273,7 @@ describe('PlacementService', () => {
       expect(resSession).toBe(session);
       expect(question).toBe(mockQuestion);
       expect(result).toBe(mockPlacementResult);
+      expect(sessionService.saveExamSession).toHaveBeenCalledTimes(1);
       expect(sessionService.saveExamSession).toHaveBeenCalledWith('user-1', session);
       expect(questionService.getNewPlacementQuestion).not.toHaveBeenCalled();
     });
@@ -508,6 +514,7 @@ describe('PlacementService', () => {
         choice: 'ist',
       });
       expect(result).toEqual(mockPlacementQuestion);
+      expect(sessionService.saveExamSession).toHaveBeenCalledTimes(2);
       expect(questionService.getNewPlacementQuestion).toHaveBeenCalledWith('user-1', session);
     });
   });

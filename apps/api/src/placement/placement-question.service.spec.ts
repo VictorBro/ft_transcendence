@@ -80,11 +80,14 @@ function createService(
 
 describe('PlacementQuestionService', () => {
   let service: PlacementQuestionService;
+  let sessionService: PlacementSessionService;
   let prisma: ReturnType<typeof createService>['prisma'];
 
   beforeEach(() => {
     const created = createService();
     service = created.service;
+    sessionService = created.sessionService;
+    vi.spyOn(sessionService, 'saveExamSession').mockResolvedValue(undefined);
     prisma = created.prisma;
   });
 
@@ -503,6 +506,7 @@ describe('PlacementQuestionService', () => {
           updatedAt: expect.any(Date),
         },
       });
+      expect(sessionService.saveExamSession).not.toHaveBeenCalled();
     });
   });
 });
