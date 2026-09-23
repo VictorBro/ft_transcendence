@@ -6,7 +6,8 @@ import { LanguageSchema } from './language';
 /** A learner's enrolment in one language: what they study, and at what pace. */
 
 /** Minutes per day. A closed set, because each value is a button in the UI. */
-export const DailyGoalSchema = z.union([z.literal(10), z.literal(30), z.literal(60)]);
+export const DAILY_GOALS = [10, 30, 60] as const;
+export const DailyGoalSchema = z.literal(DAILY_GOALS);
 export type DailyGoal = z.infer<typeof DailyGoalSchema>;
 
 export const CourseSchema = z.object({

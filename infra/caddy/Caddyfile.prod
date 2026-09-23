@@ -1,0 +1,45 @@
+# Production entry point. Same routing as infra/caddy/Caddyfile, three
+# differences: a real domain instead of localhost, a certificate from Let's
+# Encrypt instead of Caddy's internal CA, and HSTS, which is only safe once the
+# name is ours.
+#
+# Copy this next to compose.deploy.yml as `Caddyfile`; that is the path the
+# caddy service bind-mounts.
+{
+	email {$ACME_EMAIL}
+}
+
+{$SITE_DOMAIN} {
+	log
+
+	encode zstd gzip
+
+	header {
+		-Server
+		X-Content-Type-Options nosniff
+		X-Frame-Options DENY
+		Referrer-Policy strict-origin-when-cross-origin
+		Permissions-Policy "camera=(), microphone=(), geolocation=()"
+		# Safe here and not in the dev Caddyfile: HSTS is keyed on the host name
+		# and ignores the port, so pinning it to localhost would force https on
+		# every other project a teammate runs there. A real domain is ours to pin.
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+	}
+
+	# NestJS sets a global "api" prefix, so the prefix is forwarded intact.
+	# handle_path would strip it and every route would answer 404.
+	@api path /api /api/*
+	handle @api {
+		reverse_proxy api:3001
+	}
+
+	# socket.io. Caddy 2 detects the Upgrade handshake inside reverse_proxy.
+	@ws path /ws /ws/*
+	handle @ws {
+		reverse_proxy api:3001
+	}
+
+	handle {
+		reverse_proxy web:3000
+	}
+}

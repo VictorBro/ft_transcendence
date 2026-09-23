@@ -28,18 +28,74 @@
   "Lobby": {
     "title": "Lobby",
     "heading": "Practice modes",
-    "friendsTitle": "Discuss with a friend",
-    "friendsDescription": "Chat in real time with a friend in any language. We translate and correct for both of you.",
-    "chatTitle": "Chat",
-    "chatDescription": "Boost your language skills by practicing with our AI-powered tutor.",
-    "progressTitle": "Chat progress",
-    "progressDescription": "Follow a conversation path that adapts to your progress, from beginner to advanced.",
-    "wordTitle": "Word mode",
-    "wordDescription": "Build your core vocabulary using our word lists.",
-    "sentenceTitle": "Sentence mode",
-    "sentenceDescription": "Build your language skills from the ground up.",
-    "roleplayTitle": "Roleplay",
-    "roleplayDescription": "Practice with useful real-life scenarios."
+    "friendsTitle": "Cross-language chat",
+    "friendsDescription": "Talk with another learner, each of you writing your own language. The AI translates between you and corrects as you go.",
+    "chatTitle": "Tutor",
+    "chatDescription": "Work through a topic with the AI tutor, grounded in the course material."
+  },
+  "Languages": {
+    "en": "English",
+    "fr": "French",
+    "de": "German"
+  },
+  "CourseSwitcher": {
+    "label": "Course",
+    "none": "No course open",
+    "addLanguage": "Add a language…"
+  },
+  "Course": {
+    "title": "Course",
+    "heading": "{language}",
+    "level": "Level",
+    "notPlaced": "Not set yet",
+    "dailyGoal": "Daily goal",
+    "minutesPerDay": "{minutes} min",
+    "takePlacement": "Take the placement test",
+    "retakePlacement": "Retake the placement test",
+    "notStudying": "You are not studying this language yet.",
+    "startCourse": "Start this course",
+    "roadmapSoon": "Your roadmap will appear here",
+    "practice": "Practice",
+    "thisCourse": "This course"
+  },
+  "Onboarding": {
+    "title": "Get started",
+    "chooseCourseHeading": "What do you want to learn?",
+    "chooseCourseIntro": "Pick a language and how long you want to practise each day. The pace can be changed later.",
+    "languageLegend": "Language to learn",
+    "goalLegend": "Daily goal",
+    "goalMinutes": "{minutes} min",
+    "next": "Next",
+    "chooseLevelIntro": "Take the placement test, or set your level yourself if you already know it.",
+    "takeTest": "Take the placement test",
+    "setLevelMyself": "I already know my level",
+    "levelLegend": "Level",
+    "confirmLevel": "Start learning",
+    "language": {
+      "en": "English",
+      "fr": "Français",
+      "de": "Deutsch"
+    },
+    "dailyGoalSummary": "Daily goal: {minutes} min",
+    "noNewLanguage": "No new language to add for now.",
+    "backToCourse": "Back to my {language} course",
+    "languageInSentence": {
+      "en": "English",
+      "fr": "French",
+      "de": "German"
+    },
+    "levelTile": {
+      "A0": "You are starting from scratch. Your lessons will aim at level A1.",
+      "A1": "You manage simple phrases. Your lessons will aim at level A2.",
+      "A2": "You handle everyday exchanges. Your lessons will aim at level B1.",
+      "B1": "You hold a conversation on familiar topics. Your lessons will aim at level B2.",
+      "B2": "You express yourself comfortably on a range of topics. Your lessons will aim at level C1.",
+      "C1": "You express yourself fluently, including on complex topics. Your lessons will aim at level C2.",
+      "C2": "You have mastered the language. Your lessons will maintain and refine it."
+    },
+    "ladderYou": "You",
+    "ladderGoal": "Goal",
+    "back": "Back"
   },
   "ComingSoon": {
     "stillInDevelopment": "This mode is still in development. Check back soon."
