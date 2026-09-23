@@ -1,5 +1,5 @@
 import { ConflictException, Injectable } from '@nestjs/common';
-import { ExamSession, ExamSessionSchema, SubmitAnswerInput, SubmitAnswerSchema } from '@ft/shared';
+import { ExamSession, ExamSessionSchema, SubmitAnswerSchema } from '@ft/shared';
 
 import { PrismaService } from '../prisma/prisma.service';
 import { RedisService } from '../redis/redis.service';
@@ -117,23 +117,29 @@ export class PlacementSessionService {
    */
   async saveExamSession(userId: string, session: ExamSession): Promise<void> {
     const key = this.evalKey(userId);
-    await this.redis.client
-      .multi()
-      .hSet(key, {
-        evalId: session.evalId,
-        lang: session.lang,
-        lo: session.lo,
-        hi: session.hi,
-        level: session.level ?? '',
-        mistakesPerLevel: session.mistakesPerLevel.toString(),
-        askedPerCategory: JSON.stringify(session.askedPerCategory),
-        totalAnswered: session.totalAnswered.toString(),
-        ended: session.ended.toString(),
-        currentQuestionId: session.currentQuestionId ?? '',
-        servedAt: session.servedAt,
-      })
-      .expire(key, PLACEMENT_REDIS_KEY_TTL)
-      .exec();
+    const questionsListKey = this.evalQuestionsKey(userId);
+    const transaction = this.redis.client.multi().hSet(key, {
+      evalId: session.evalId,
+      lang: session.lang,
+      lo: session.lo,
+      hi: session.hi,
+      level: session.level ?? '',
+      mistakesPerLevel: session.mistakesPerLevel.toString(),
+      askedPerCategory: JSON.stringify(session.askedPerCategory),
+      totalAnswered: session.totalAnswered.toString(),
+      ended: session.ended.toString(),
+      currentQuestionId: session.currentQuestionId ?? '',
+      servedAt: session.servedAt,
+    });
+
+    transaction.expire(key, PLACEMENT_REDIS_KEY_TTL).del(questionsListKey);
+    for (const answer of session.answers) {
+      transaction.rPush(questionsListKey, JSON.stringify(answer));
+    }
+    if (session.answers.length > 0) {
+      transaction.expire(questionsListKey, PLACEMENT_REDIS_KEY_TTL);
+    }
+    await transaction.exec();
   }
 
   /**
@@ -145,12 +151,19 @@ export class PlacementSessionService {
    */
   async loadExamSession(userId: string): Promise<ExamSession | null> {
     const key = this.evalKey(userId);
-    const data = await this.redis.client.hGetAll(key);
+    const [data, rawAnswers] = await Promise.all([
+      this.redis.client.hGetAll(key),
+      this.redis.client.lRange(this.evalQuestionsKey(userId), 0, -1),
+    ]);
     if (!data || Object.keys(data).length === 0) {
       return null;
     }
     let session: ExamSession;
     try {
+      const answers = rawAnswers.map((raw) => SubmitAnswerSchema.parse(JSON.parse(raw)));
+      if (new Set(answers.map((answer) => answer.questionId)).size !== answers.length) {
+        throw new Error('Duplicate question ID');
+      }
       session = ExamSessionSchema.parse({
         evalId: data.evalId,
         lang: data.lang,
@@ -160,6 +173,7 @@ export class PlacementSessionService {
         mistakesPerLevel: Number(data.mistakesPerLevel),
         askedPerCategory: JSON.parse(data.askedPerCategory || '{}'),
         totalAnswered: Number(data.totalAnswered ?? 0),
+        answers,
         ended: data.ended === 'true',
         currentQuestionId: data.currentQuestionId ? data.currentQuestionId : null,
         servedAt: data.servedAt,
@@ -187,38 +201,6 @@ export class PlacementSessionService {
     }
 
     return session;
-  }
-
-  /**
-   * Appends a submitted answer to the user's answers list in Redis and refreshes the key TTL.
-   *
-   * @param userId - Unique identifier of the user.
-   * @param answer - Answer input payload containing question ID and choice.
-   * @returns Promise resolving when the answer is appended.
-   */
-  async archiveQuestionAnswer(userId: string, answer: SubmitAnswerInput): Promise<void> {
-    const questionsListKey = this.evalQuestionsKey(userId);
-    await this.redis.client
-      .multi()
-      .rPush(questionsListKey, JSON.stringify(answer))
-      .expire(questionsListKey, PLACEMENT_REDIS_KEY_TTL)
-      .exec();
-  }
-
-  /**
-   * Retrieves and parses all archived answers submitted by the user during the current session.
-   *
-   * @param userId - Unique identifier of the user.
-   * @returns Array of validated submitted answers in chronological order.
-   */
-  async getQuestionAnswers(userId: string): Promise<SubmitAnswerInput[]> {
-    const questionsListKey = this.evalQuestionsKey(userId);
-    const rawAnswers = await this.redis.client.lRange(questionsListKey, 0, -1);
-    try {
-      return rawAnswers.map((raw) => SubmitAnswerSchema.parse(JSON.parse(raw)));
-    } catch {
-      throw new ConflictException('placement.invalidSession');
-    }
   }
 
   /**

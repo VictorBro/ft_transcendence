@@ -17,17 +17,13 @@ import {
 
 import { QuestionBank } from '../generated/prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
-import { PlacementSessionService } from './placement-session.service';
 import { MAX_QUESTIONS_PER_LEVEL } from './placement-question.service';
 
 export const NETWORK_GRACE_S = 3;
 
 @Injectable()
 export class PlacementProgressService {
-  constructor(
-    private readonly prisma: PrismaService,
-    private readonly sessionService: PlacementSessionService,
-  ) {}
+  constructor(private readonly prisma: PrismaService) {}
 
   /**
    * Retrieves a question by its unique identifier from the database question bank.
@@ -210,11 +206,10 @@ export class PlacementProgressService {
    * @param session - Current exam session state.
    * @returns Parsed `PlacementResult` if the session ended, or `undefined` if still active.
    */
-  async getResult(userId: string, session: ExamSession): Promise<PlacementResult | undefined> {
+  async getResult(session: ExamSession): Promise<PlacementResult | undefined> {
     if (!session.ended) return undefined;
 
-    const answers = await this.sessionService.getQuestionAnswers(userId);
-    const questionIds = answers.map((answer) => answer.questionId);
+    const questionIds = session.answers.map((answer) => answer.questionId);
     const dbQuestions = await this.prisma.questionBank.findMany({
       where: {
         id: { in: questionIds },
@@ -224,7 +219,7 @@ export class PlacementProgressService {
     const questionsMap = new Map(dbQuestions.map((q) => [q.id, q]));
     const report: PlacementReportEntry[] = [];
 
-    for (const answer of answers) {
+    for (const answer of session.answers) {
       const question = questionsMap.get(answer.questionId);
       if (question) {
         report.push({

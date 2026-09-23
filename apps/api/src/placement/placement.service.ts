@@ -4,7 +4,7 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { ExamSession, PlacementQuestion, PlacementResult, SubmitAnswerInput } from '@ft/shared';
+import { ExamSession, PlacementQuestion, PlacementResult } from '@ft/shared';
 import assert from 'node:assert';
 import { randomUUID } from 'node:crypto';
 
@@ -32,7 +32,7 @@ export class PlacementService {
 
   /**
    * Processes a recorded or timed-out answer for the active session.
-   * Archives the answer in Redis, increments total answers, adjusts adaptive level progress,
+   * Adds the answer to the session, increments total answers, adjusts adaptive level progress,
    * and either saves and returns the final result if completed or fetches the next question.
    *
    * @param userId - Unique identifier of the user.
@@ -47,15 +47,17 @@ export class PlacementService {
     question: QuestionBank,
     session: ExamSession,
   ): Promise<PlacementQuestion | PlacementResult> {
-    const answer: SubmitAnswerInput = {
+    if (session.answers.some((answer) => answer.questionId === question.id)) {
+      throw new ConflictException('placement.invalidSession');
+    }
+    session.answers.push({
       questionId: question.id,
       choice,
-    };
-    await this.sessionService.archiveQuestionAnswer(userId, answer);
+    });
     session.totalAnswered += 1;
     await this.progressService.adjustSessionFromAnswer(choice, question, session, userId);
 
-    const result = await this.progressService.getResult(userId, session);
+    const result = await this.progressService.getResult(session);
     if (result !== undefined) {
       await this.sessionService.saveExamSession(userId, session);
       return result;
@@ -82,7 +84,7 @@ export class PlacementService {
       throw new NotFoundException('placement.notFound');
     }
 
-    const result = await this.progressService.getResult(userId, session);
+    const result = await this.progressService.getResult(session);
     if (result !== undefined) {
       return [session, undefined, result];
     }
@@ -132,6 +134,7 @@ export class PlacementService {
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 0,
+        answers: [],
         ended: false,
         currentQuestionId: null,
         servedAt: new Date().toISOString(),
@@ -156,7 +159,7 @@ export class PlacementService {
     if (!session) {
       throw new NotFoundException('placement.notFound');
     }
-    const result = await this.progressService.getResult(userId, session);
+    const result = await this.progressService.getResult(session);
     if (result !== undefined) {
       return result;
     }
@@ -240,16 +243,16 @@ export class PlacementService {
       }
 
       if (session.ended) {
-        const existingResult = await this.progressService.getResult(userId, session);
+        const existingResult = await this.progressService.getResult(session);
         assert(existingResult !== undefined);
         return existingResult;
       }
 
       if (session.currentQuestionId) {
-        await this.sessionService.archiveQuestionAnswer(userId, {
-          questionId: session.currentQuestionId,
-          choice: null,
-        });
+        if (session.answers.some((answer) => answer.questionId === session.currentQuestionId)) {
+          throw new ConflictException('placement.invalidSession');
+        }
+        session.answers.push({ questionId: session.currentQuestionId, choice: null });
       }
 
       session.ended = true;
@@ -257,7 +260,7 @@ export class PlacementService {
       await this.progressService.updateUserLevel(userId, session.lang, null, session.evalId);
       await this.sessionService.saveExamSession(userId, session);
 
-      const result = await this.progressService.getResult(userId, session);
+      const result = await this.progressService.getResult(session);
       assert(result !== undefined);
       return result;
     } finally {

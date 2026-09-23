@@ -4,8 +4,6 @@ import type { ExamSession } from '@ft/shared';
 
 import type { QuestionBank } from '../generated/prisma/client';
 import type { PrismaService } from '../prisma/prisma.service';
-import type { RedisService } from '../redis/redis.service';
-import { PlacementSessionService } from './placement-session.service';
 import { NETWORK_GRACE_S, PlacementProgressService } from './placement-progress.service';
 
 const EVAL_ID = 'd7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64';
@@ -26,10 +24,7 @@ const mockQuestion: QuestionBank = {
   updatedAt: new Date(),
 };
 
-function createService(
-  prismaOverrides: Record<string, unknown> = {},
-  redisClientOverrides: Record<string, unknown> = {},
-) {
+function createService(prismaOverrides: Record<string, unknown> = {}) {
   const prisma = {
     questionBank: {
       findUnique: vi.fn(),
@@ -55,43 +50,20 @@ function createService(
     ...prismaOverrides,
   };
 
-  const redis = {
-    client: {
-      exists: vi.fn().mockResolvedValue(0),
-      hGetAll: vi.fn().mockResolvedValue({}),
-      hSet: vi.fn().mockResolvedValue(1),
-      hIncrBy: vi.fn().mockResolvedValue(1),
-      del: vi.fn().mockResolvedValue(1),
-      rPush: vi.fn().mockResolvedValue(1),
-      lRange: vi.fn().mockResolvedValue([]),
-      expire: vi.fn().mockResolvedValue(1),
-      ...redisClientOverrides,
-    },
-  };
-
-  const sessionService = new PlacementSessionService(
-    redis as unknown as RedisService,
-    prisma as unknown as PrismaService,
-  );
-
   return {
-    service: new PlacementProgressService(prisma as unknown as PrismaService, sessionService),
-    sessionService,
+    service: new PlacementProgressService(prisma as unknown as PrismaService),
     prisma,
-    redis,
   };
 }
 
 describe('PlacementProgressService', () => {
   let service: PlacementProgressService;
   let prisma: ReturnType<typeof createService>['prisma'];
-  let redis: ReturnType<typeof createService>['redis'];
 
   beforeEach(() => {
     const created = createService();
     service = created.service;
     prisma = created.prisma;
-    redis = created.redis;
   });
 
   describe('getQuestion', () => {
@@ -181,6 +153,7 @@ describe('PlacementProgressService', () => {
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 0,
+        answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),
@@ -201,6 +174,7 @@ describe('PlacementProgressService', () => {
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 0,
+        answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),
@@ -222,6 +196,7 @@ describe('PlacementProgressService', () => {
         mistakesPerLevel: 1,
         askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
         totalAnswered: 1,
+        answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),
@@ -244,6 +219,7 @@ describe('PlacementProgressService', () => {
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 2, vocabulary: 2, reading: 1 },
         totalAnswered: 5,
+        answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),
@@ -266,6 +242,7 @@ describe('PlacementProgressService', () => {
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 2, vocabulary: 2, reading: 1 },
         totalAnswered: 17,
+        answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),
@@ -300,6 +277,7 @@ describe('PlacementProgressService', () => {
         mistakesPerLevel: 1,
         askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
         totalAnswered: 7,
+        answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),
@@ -334,6 +312,7 @@ describe('PlacementProgressService', () => {
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 0,
+        answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),
@@ -355,6 +334,7 @@ describe('PlacementProgressService', () => {
           mistakesPerLevel: 1,
           askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
           totalAnswered: 7,
+          answers: [],
           ended: false,
           currentQuestionId: mockQuestion.id,
           servedAt: new Date().toISOString(),
@@ -375,6 +355,7 @@ describe('PlacementProgressService', () => {
           mistakesPerLevel: 0,
           askedPerCategory: { grammar: 2, vocabulary: 2, reading: 1 },
           totalAnswered: 11,
+          answers: [],
           ended: false,
           currentQuestionId: mockQuestion.id,
           servedAt: new Date().toISOString(),
@@ -395,6 +376,7 @@ describe('PlacementProgressService', () => {
           mistakesPerLevel: 0,
           askedPerCategory: { grammar: 2, vocabulary: 2, reading: 1 },
           totalAnswered: 7,
+          answers: [],
           ended: false,
           currentQuestionId: mockQuestion.id,
           servedAt: new Date().toISOString(),
@@ -415,6 +397,7 @@ describe('PlacementProgressService', () => {
           mistakesPerLevel: 1,
           askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
           totalAnswered: 13,
+          answers: [],
           ended: false,
           currentQuestionId: mockQuestion.id,
           servedAt: new Date().toISOString(),
@@ -435,6 +418,7 @@ describe('PlacementProgressService', () => {
           mistakesPerLevel: 0,
           askedPerCategory: { grammar: 2, vocabulary: 2, reading: 1 },
           totalAnswered: 17,
+          answers: [],
           ended: false,
           currentQuestionId: mockQuestion.id,
           servedAt: new Date().toISOString(),
@@ -455,6 +439,7 @@ describe('PlacementProgressService', () => {
           mistakesPerLevel: 1,
           askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
           totalAnswered: 13,
+          answers: [],
           ended: false,
           currentQuestionId: mockQuestion.id,
           servedAt: new Date().toISOString(),
@@ -497,12 +482,13 @@ describe('PlacementProgressService', () => {
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 0,
+        answers: [],
         ended: false,
         currentQuestionId: null,
         servedAt: new Date().toISOString(),
       };
 
-      const result = await service.getResult('user-1', session);
+      const result = await service.getResult(session);
       expect(result).toBeUndefined();
     });
 
@@ -516,6 +502,10 @@ describe('PlacementProgressService', () => {
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 2,
+        answers: [
+          { questionId: mockQuestion.id, choice: 'ist' },
+          { questionId: '22222222-2222-4222-8222-222222222222', choice: null },
+        ],
         ended: true,
         currentQuestionId: null,
         servedAt: new Date().toISOString(),
@@ -529,13 +519,9 @@ describe('PlacementProgressService', () => {
         options: ['Haus', 'Baum', 'Auto', 'Zug'],
       };
 
-      redis.client.lRange.mockResolvedValue([
-        JSON.stringify({ questionId: mockQuestion.id, choice: 'ist' }),
-        JSON.stringify({ questionId: q2.id, choice: null }),
-      ]);
       prisma.questionBank.findMany.mockResolvedValue([mockQuestion, q2]);
 
-      const result = await service.getResult('user-1', session);
+      const result = await service.getResult(session);
       expect(result).toBeDefined();
       expect(result?.targetLevel).toBe('B1');
       expect(result?.report).toHaveLength(2);
@@ -569,17 +555,14 @@ describe('PlacementProgressService', () => {
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 1,
+        answers: [{ questionId: mockQuestion.id, choice: null }],
         ended: true,
         currentQuestionId: null,
         servedAt: new Date().toISOString(),
       };
-
-      redis.client.lRange.mockResolvedValue([
-        JSON.stringify({ questionId: mockQuestion.id, choice: null }),
-      ]);
       prisma.questionBank.findMany.mockResolvedValue([mockQuestion]);
 
-      const result = await service.getResult('user-1', session);
+      const result = await service.getResult(session);
       expect(result).toBeDefined();
       expect(result?.targetLevel).toBeNull();
       expect(result?.report).toHaveLength(1);

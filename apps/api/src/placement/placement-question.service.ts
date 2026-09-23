@@ -100,8 +100,7 @@ export class PlacementQuestionService {
       return [availableByCategory, chosenCategoryQuestions[randomQuestionIndex]];
     }
 
-    const answers = await this.sessionService.getQuestionAnswers(userId);
-    const excludeQuestionIds = answers.map((answer) => answer.questionId);
+    const excludeQuestionIds = session.answers.map((answer) => answer.questionId);
     if (session.currentQuestionId) {
       excludeQuestionIds.push(session.currentQuestionId);
     }

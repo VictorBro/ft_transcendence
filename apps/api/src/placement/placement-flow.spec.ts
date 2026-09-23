@@ -169,6 +169,10 @@ function setupPlacementEnvironment() {
             ops.push(() => redis.client.rPush(key, val));
             return multiObj;
           }),
+          del: vi.fn((key: string) => {
+            ops.push(() => redis.client.del([key]));
+            return multiObj;
+          }),
           expire: vi.fn((key: string, ttl: number) => {
             ops.push(() => redis.client.expire(key, ttl));
             return multiObj;
@@ -194,10 +198,7 @@ function setupPlacementEnvironment() {
     prisma as unknown as PrismaService,
     sessionService,
   );
-  const progressService = new PlacementProgressService(
-    prisma as unknown as PrismaService,
-    sessionService,
-  );
+  const progressService = new PlacementProgressService(prisma as unknown as PrismaService);
   const service = new PlacementService(sessionService, questionService, progressService);
 
   return {
@@ -716,7 +717,7 @@ describe('Placement Exam Scenarios', () => {
         choice: getIncorrectChoice(env.questionMap.get(firstQuestion.questionId)!),
       });
 
-      // Verify that getQuestionAnswers contains ONLY the new answer, not the stale one
+      // Verify that the persisted answer list contains only the new answer, not the stale one
       const rawAnswers = await env.redis.client.lRange(`user:${userId}:eval_questions`, 0, -1);
       const parsedAnswers = rawAnswers.map((r) => JSON.parse(r));
       expect(parsedAnswers).toHaveLength(1);

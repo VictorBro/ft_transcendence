@@ -58,6 +58,7 @@ function createService(
       multi: vi.fn(() => ({
         hSet: vi.fn().mockReturnThis(),
         rPush: vi.fn().mockReturnThis(),
+        del: vi.fn().mockReturnThis(),
         expire: vi.fn().mockReturnThis(),
         exec: vi.fn().mockResolvedValue([]),
       })),
@@ -74,20 +75,17 @@ function createService(
     service: new PlacementQuestionService(prisma as unknown as PrismaService, sessionService),
     sessionService,
     prisma,
-    redis,
   };
 }
 
 describe('PlacementQuestionService', () => {
   let service: PlacementQuestionService;
   let prisma: ReturnType<typeof createService>['prisma'];
-  let redis: ReturnType<typeof createService>['redis'];
 
   beforeEach(() => {
     const created = createService();
     service = created.service;
     prisma = created.prisma;
-    redis = created.redis;
   });
 
   describe('targetLevelToCEFRLevel', () => {
@@ -110,6 +108,7 @@ describe('PlacementQuestionService', () => {
       mistakesPerLevel: 0,
       askedPerCategory: { vocabulary: 1, reading: 1, grammar: 0 },
       totalAnswered: 0,
+      answers: [],
       ended: false,
       currentQuestionId: null,
       servedAt: new Date().toISOString(),
@@ -246,11 +245,9 @@ describe('PlacementQuestionService', () => {
       const activeQuestionId = 'b2222222-2222-4222-8222-222222222222';
 
       prisma.questionBank.findMany.mockResolvedValue([]);
-      redis.client.lRange.mockResolvedValue([
-        JSON.stringify({ questionId: answeredQuestionId, choice: 'ist' }),
-      ]);
       const sessionWithCurrent: ExamSession = {
         ...session,
+        answers: [{ questionId: answeredQuestionId, choice: 'ist' }],
         currentQuestionId: activeQuestionId,
       };
 
@@ -290,6 +287,7 @@ describe('PlacementQuestionService', () => {
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
         totalAnswered: 1,
+        answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
         servedAt: new Date(Date.now() - 5000).toISOString(),
@@ -314,6 +312,7 @@ describe('PlacementQuestionService', () => {
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
         totalAnswered: 1,
+        answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
         servedAt: '2026-09-20T16:00:00.000Z',
@@ -352,6 +351,7 @@ describe('PlacementQuestionService', () => {
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 0,
+        answers: [],
         ended: false,
         currentQuestionId: null,
         servedAt: new Date().toISOString(),
@@ -369,6 +369,7 @@ describe('PlacementQuestionService', () => {
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 1, vocabulary: 1, reading: 1 },
         totalAnswered: 3,
+        answers: [],
         ended: false,
         currentQuestionId: null,
         servedAt: new Date().toISOString(),
@@ -386,6 +387,7 @@ describe('PlacementQuestionService', () => {
         mistakesPerLevel: 1,
         askedPerCategory: { grammar: 2, vocabulary: 2, reading: 1 },
         totalAnswered: 17,
+        answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),
@@ -403,6 +405,7 @@ describe('PlacementQuestionService', () => {
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 1, vocabulary: 1, reading: 0 },
         totalAnswered: 8,
+        answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),
@@ -420,6 +423,7 @@ describe('PlacementQuestionService', () => {
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
         totalAnswered: 13,
+        answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),
@@ -437,6 +441,7 @@ describe('PlacementQuestionService', () => {
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 2,
+        answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),
@@ -454,6 +459,7 @@ describe('PlacementQuestionService', () => {
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 2, vocabulary: 1, reading: 0 },
         totalAnswered: 3,
+        answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),
@@ -473,6 +479,7 @@ describe('PlacementQuestionService', () => {
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 0,
+        answers: [],
         ended: false,
         currentQuestionId: null,
         servedAt: new Date().toISOString(),

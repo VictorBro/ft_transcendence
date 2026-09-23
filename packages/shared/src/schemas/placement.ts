@@ -83,6 +83,7 @@ export const ExamSessionSchema = z.object({
     z.int().nonnegative().min(0).max(PLACEMENT_ROUNDS.perCategory),
   ),
   totalAnswered: z.number().int().nonnegative(),
+  answers: z.array(SubmitAnswerSchema),
   ended: z.boolean(),
   currentQuestionId: z.string().nullable(),
   servedAt: z.iso.datetime(),

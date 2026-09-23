@@ -53,7 +53,6 @@ function createPlacementService() {
     hasActiveSession: vi.fn().mockResolvedValue(false),
     saveExamSession: vi.fn().mockResolvedValue(undefined),
     loadExamSession: vi.fn().mockResolvedValue(null),
-    archiveQuestionAnswer: vi.fn().mockResolvedValue(undefined),
     deleteSession: vi.fn().mockResolvedValue(undefined),
   } as unknown as PlacementSessionService;
 
@@ -141,6 +140,7 @@ describe('PlacementService', () => {
           lang: 'de',
           level: 'B1',
           totalAnswered: 0,
+          answers: [],
         }),
       );
     });
@@ -172,6 +172,7 @@ describe('PlacementService', () => {
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 0,
+        answers: [],
         ended: false,
         currentQuestionId: null,
         servedAt: new Date().toISOString(),
@@ -190,6 +191,7 @@ describe('PlacementService', () => {
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 6,
+        answers: [],
         ended: true,
         currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),
@@ -213,6 +215,7 @@ describe('PlacementService', () => {
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 0,
+        answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
         servedAt: new Date(Date.now() - 60000).toISOString(),
@@ -226,10 +229,7 @@ describe('PlacementService', () => {
       expect(resSession).toBe(session);
       expect(question).toBe(mockQuestion);
       expect(result).toBe(mockPlacementQuestion);
-      expect(sessionService.archiveQuestionAnswer).toHaveBeenCalledWith('user-1', {
-        questionId: mockQuestion.id,
-        choice: null,
-      });
+      expect(session.answers).toEqual([{ questionId: mockQuestion.id, choice: null }]);
       expect(session.totalAnswered).toBe(1);
       expect(progressService.adjustSessionFromAnswer).toHaveBeenCalledWith(
         null,
@@ -251,6 +251,7 @@ describe('PlacementService', () => {
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 5,
+        answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
         servedAt: new Date(Date.now() - 60000).toISOString(),
@@ -280,6 +281,7 @@ describe('PlacementService', () => {
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 0,
+        answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),
@@ -307,6 +309,7 @@ describe('PlacementService', () => {
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 6,
+        answers: [],
         ended: true,
         currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),
@@ -328,6 +331,7 @@ describe('PlacementService', () => {
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 0,
+        answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),
@@ -372,6 +376,7 @@ describe('PlacementService', () => {
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 0,
+        answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),
@@ -388,7 +393,7 @@ describe('PlacementService', () => {
         }),
       ).rejects.toThrow(new BadRequestException('placement.invalidChoice'));
       expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1');
-      expect(sessionService.archiveQuestionAnswer).not.toHaveBeenCalled();
+      expect(session.answers).toEqual([]);
     });
 
     it('throws placement.questionMismatch if questionId does not match', async () => {
@@ -401,6 +406,7 @@ describe('PlacementService', () => {
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 0,
+        answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),
@@ -416,7 +422,7 @@ describe('PlacementService', () => {
           choice: 'ist',
         }),
       ).rejects.toThrow(new ConflictException('placement.questionMismatch'));
-      expect(sessionService.archiveQuestionAnswer).not.toHaveBeenCalled();
+      expect(session.answers).toEqual([]);
       expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1');
     });
 
@@ -430,6 +436,7 @@ describe('PlacementService', () => {
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 6,
+        answers: [],
         ended: true,
         currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),
@@ -454,6 +461,7 @@ describe('PlacementService', () => {
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 0,
+        answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),
@@ -470,10 +478,7 @@ describe('PlacementService', () => {
         choice: 'ist',
       });
       expect(result).toEqual(mockPlacementResult);
-      expect(sessionService.archiveQuestionAnswer).toHaveBeenCalledWith('user-1', {
-        questionId: mockQuestion.id,
-        choice: 'ist',
-      });
+      expect(session.answers).toEqual([{ questionId: mockQuestion.id, choice: 'ist' }]);
       expect(sessionService.saveExamSession).toHaveBeenCalledWith('user-1', session);
     });
 
@@ -487,6 +492,7 @@ describe('PlacementService', () => {
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 0,
+        answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),
@@ -544,6 +550,7 @@ describe('PlacementService', () => {
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 6,
+        answers: [],
         ended: true,
         currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),
@@ -553,7 +560,7 @@ describe('PlacementService', () => {
 
       const result = await service.abortExam('user-1');
       expect(result).toBe(mockPlacementResult);
-      expect(sessionService.archiveQuestionAnswer).not.toHaveBeenCalled();
+      expect(session.answers).toEqual([]);
       expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1');
     });
 
@@ -567,6 +574,7 @@ describe('PlacementService', () => {
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 3,
+        answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
         servedAt: new Date().toISOString(),
@@ -577,10 +585,7 @@ describe('PlacementService', () => {
 
       const result = await service.abortExam('user-1');
 
-      expect(sessionService.archiveQuestionAnswer).toHaveBeenCalledWith('user-1', {
-        questionId: mockQuestion.id,
-        choice: null,
-      });
+      expect(session.answers).toEqual([{ questionId: mockQuestion.id, choice: null }]);
       expect(session.ended).toBe(true);
       expect(session.level).toBeNull();
       expect(progressService.updateUserLevel).toHaveBeenCalledWith('user-1', 'de', null, EVAL_ID);

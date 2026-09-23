@@ -10,6 +10,7 @@ function createSessionService(redisClientOverrides: Record<string, unknown> = {}
   const multiMock = {
     hSet: vi.fn().mockReturnThis(),
     rPush: vi.fn().mockReturnThis(),
+    del: vi.fn().mockReturnThis(),
     expire: vi.fn().mockReturnThis(),
     exec: vi.fn().mockResolvedValue([]),
   };
@@ -69,6 +70,7 @@ describe('PlacementSessionService', () => {
     mistakesPerLevel: 0,
     askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
     totalAnswered: 0,
+    answers: [],
     ended: false,
     currentQuestionId: 'b7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64',
     servedAt: '2026-09-18T19:00:00.000Z',
@@ -162,6 +164,8 @@ describe('PlacementSessionService', () => {
         servedAt: sampleSession.servedAt,
       });
       expect(multiMock.expire).toHaveBeenCalledWith('user:u-1:eval', PLACEMENT_REDIS_KEY_TTL);
+      expect(multiMock.del).toHaveBeenCalledWith('user:u-1:eval_questions');
+      expect(multiMock.rPush).not.toHaveBeenCalled();
       expect(multiMock.exec).toHaveBeenCalled();
     });
   });
@@ -286,54 +290,99 @@ describe('PlacementSessionService', () => {
     });
   });
 
-  describe('archiveQuestionAnswer', () => {
-    it('adds serialized answer to redis list and sets TTL within a multi transaction', async () => {
-      const answer: SubmitAnswerInput = {
-        questionId: 'b7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64',
-        choice: 'ist',
-      };
+  describe('answer persistence', () => {
+    const answers: SubmitAnswerInput[] = [
+      { questionId: 'b7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64', choice: 'ist' },
+      { questionId: 'a1b2c3d4-e5f6-4a1b-8c2d-3e4f5a6b7c8d', choice: null },
+    ];
 
-      await service.archiveQuestionAnswer('u-1', answer);
+    it('replaces the Redis list with all session answers when saving', async () => {
+      await service.saveExamSession('u-1', { ...sampleSession, answers });
 
-      expect(redis.client.multi).toHaveBeenCalled();
-      expect(multiMock.rPush).toHaveBeenCalledWith(
+      expect(multiMock.del).toHaveBeenCalledWith('user:u-1:eval_questions');
+      expect(multiMock.rPush).toHaveBeenNthCalledWith(
+        1,
         'user:u-1:eval_questions',
-        JSON.stringify(answer),
+        JSON.stringify(answers[0]),
+      );
+      expect(multiMock.rPush).toHaveBeenNthCalledWith(
+        2,
+        'user:u-1:eval_questions',
+        JSON.stringify(answers[1]),
       );
       expect(multiMock.expire).toHaveBeenCalledWith(
         'user:u-1:eval_questions',
         PLACEMENT_REDIS_KEY_TTL,
       );
-      expect(multiMock.exec).toHaveBeenCalled();
-    });
-  });
-
-  describe('getQuestionAnswers', () => {
-    it('returns empty array when redis list is empty', async () => {
-      redis.client.lRange.mockResolvedValue([]);
-      const result = await service.getQuestionAnswers('u-1');
-      expect(result).toEqual([]);
-      expect(redis.client.lRange).toHaveBeenCalledWith('user:u-1:eval_questions', 0, -1);
     });
 
-    it('returns parsed SubmitAnswerInput array from redis list', async () => {
-      const answers: SubmitAnswerInput[] = [
-        { questionId: 'b7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64', choice: 'ist' },
-        { questionId: 'a1b2c3d4-e5f6-4a1b-8c2d-3e4f5a6b7c8d', choice: null },
-      ];
-      redis.client.lRange.mockResolvedValue(answers.map((a) => JSON.stringify(a)));
+    it('loads validated answers from the existing Redis list', async () => {
+      redis.client.hGetAll.mockResolvedValue({
+        evalId: sampleSession.evalId,
+        lang: 'de',
+        lo: 'A1',
+        hi: 'C2',
+        level: 'B1',
+        mistakesPerLevel: '0',
+        askedPerCategory: JSON.stringify(sampleSession.askedPerCategory),
+        totalAnswered: '2',
+        ended: 'false',
+        currentQuestionId: sampleSession.currentQuestionId,
+        servedAt: sampleSession.servedAt,
+      });
+      redis.client.lRange.mockResolvedValue(answers.map((answer) => JSON.stringify(answer)));
 
-      const result = await service.getQuestionAnswers('u-1');
-      expect(result).toEqual(answers);
+      await expect(service.loadExamSession('u-1')).resolves.toEqual({
+        ...sampleSession,
+        totalAnswered: 2,
+        answers,
+      });
     });
 
     it.each([
       ['malformed JSON', '{invalid'],
       ['schema-invalid JSON', JSON.stringify({ questionId: 'not-a-uuid', choice: 'ist' })],
-    ])('throws placement.invalidSession for %s', async (_description, rawAnswer) => {
+    ])('throws placement.invalidSession for %s answer data', async (_description, rawAnswer) => {
+      redis.client.hGetAll.mockResolvedValue({
+        evalId: sampleSession.evalId,
+        lang: 'de',
+        lo: 'A1',
+        hi: 'C2',
+        level: 'B1',
+        mistakesPerLevel: '0',
+        askedPerCategory: JSON.stringify(sampleSession.askedPerCategory),
+        totalAnswered: '1',
+        ended: 'false',
+        currentQuestionId: sampleSession.currentQuestionId,
+        servedAt: sampleSession.servedAt,
+      });
       redis.client.lRange.mockResolvedValue([rawAnswer]);
 
-      await expect(service.getQuestionAnswers('u-1')).rejects.toThrow(
+      await expect(service.loadExamSession('u-1')).rejects.toThrow(
+        new ConflictException('placement.invalidSession'),
+      );
+    });
+
+    it('rejects duplicate question IDs in the Redis list', async () => {
+      redis.client.hGetAll.mockResolvedValue({
+        evalId: sampleSession.evalId,
+        lang: 'de',
+        lo: 'A1',
+        hi: 'C2',
+        level: 'B1',
+        mistakesPerLevel: '0',
+        askedPerCategory: JSON.stringify(sampleSession.askedPerCategory),
+        totalAnswered: '2',
+        ended: 'false',
+        currentQuestionId: sampleSession.currentQuestionId,
+        servedAt: sampleSession.servedAt,
+      });
+      redis.client.lRange.mockResolvedValue([
+        JSON.stringify(answers[0]),
+        JSON.stringify(answers[0]),
+      ]);
+
+      await expect(service.loadExamSession('u-1')).rejects.toThrow(
         new ConflictException('placement.invalidSession'),
       );
     });
