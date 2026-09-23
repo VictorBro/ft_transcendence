@@ -63,7 +63,9 @@ export class PlacementService {
       return result;
     }
 
-    return this.questionService.getNewPlacementQuestion(userId, session);
+    const new_question = await this.questionService.getNewPlacementQuestion(userId, session);
+    await this.sessionService.saveExamSession(userId, session);
+    return new_question;
   }
 
   /**
