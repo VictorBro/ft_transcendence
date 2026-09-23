@@ -203,10 +203,7 @@ function setupPlacementEnvironment() {
     redis as unknown as RedisService,
     prisma as unknown as PrismaService,
   );
-  const questionService = new PlacementQuestionService(
-    prisma as unknown as PrismaService,
-    sessionService,
-  );
+  const questionService = new PlacementQuestionService(prisma as unknown as PrismaService);
   const progressService = new PlacementProgressService(prisma as unknown as PrismaService);
   const service = new PlacementService(sessionService, questionService, progressService);
 

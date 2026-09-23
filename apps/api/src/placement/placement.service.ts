@@ -55,7 +55,17 @@ export class PlacementService {
       choice,
     });
     session.totalAnswered += 1;
-    return await this.progressService.adjustSessionFromAnswer(choice, question, session, userId);
+    await this.progressService.adjustSessionFromAnswer(choice, question, session, userId);
+
+    const result = await this.progressService.getResult(session);
+    if (result !== undefined) {
+      await this.sessionService.saveExamSession(userId, session);
+      return result;
+    }
+
+    const newQuestion = await this.questionService.getNewPlacementQuestion(userId, session);
+    await this.sessionService.saveExamSession(userId, session);
+    return newQuestion;
   }
 
   /**

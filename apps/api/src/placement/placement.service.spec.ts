@@ -242,8 +242,8 @@ describe('PlacementService', () => {
         session,
         'user-1',
       );
-      expect(sessionService.saveExamSession).toHaveBeenCalledTimes(2);
-      expect(sessionService.saveExamSession).toHaveBeenLastCalledWith('user-1', session);
+      expect(sessionService.saveExamSession).toHaveBeenCalledTimes(1);
+      expect(sessionService.saveExamSession).toHaveBeenCalledWith('user-1', session);
       expect(questionService.getNewPlacementQuestion).toHaveBeenCalledWith('user-1', session);
     });
 
@@ -514,7 +514,7 @@ describe('PlacementService', () => {
         choice: 'ist',
       });
       expect(result).toEqual(mockPlacementQuestion);
-      expect(sessionService.saveExamSession).toHaveBeenCalledTimes(2);
+      expect(sessionService.saveExamSession).toHaveBeenCalledTimes(1);
       expect(questionService.getNewPlacementQuestion).toHaveBeenCalledWith('user-1', session);
     });
   });

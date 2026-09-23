@@ -4,8 +4,6 @@ import type { ExamSession } from '@ft/shared';
 
 import type { QuestionBank } from '../generated/prisma/client';
 import type { PrismaService } from '../prisma/prisma.service';
-import type { RedisService } from '../redis/redis.service';
-import { PlacementSessionService } from './placement-session.service';
 import { PlacementQuestionService } from './placement-question.service';
 
 const EVAL_ID = 'd7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64';
@@ -26,10 +24,7 @@ const mockQuestion: QuestionBank = {
   updatedAt: new Date(),
 };
 
-function createService(
-  prismaOverrides: Record<string, unknown> = {},
-  redisClientOverrides: Record<string, unknown> = {},
-) {
+function createService(prismaOverrides: Record<string, unknown> = {}) {
   const prisma = {
     questionBank: {
       findUnique: vi.fn(),
@@ -45,49 +40,19 @@ function createService(
     ...prismaOverrides,
   };
 
-  const redis = {
-    client: {
-      exists: vi.fn().mockResolvedValue(0),
-      hGetAll: vi.fn().mockResolvedValue({}),
-      hSet: vi.fn().mockResolvedValue(1),
-      hIncrBy: vi.fn().mockResolvedValue(1),
-      del: vi.fn().mockResolvedValue(1),
-      rPush: vi.fn().mockResolvedValue(1),
-      lRange: vi.fn().mockResolvedValue([]),
-      expire: vi.fn().mockResolvedValue(1),
-      multi: vi.fn(() => ({
-        hSet: vi.fn().mockReturnThis(),
-        rPush: vi.fn().mockReturnThis(),
-        del: vi.fn().mockReturnThis(),
-        expire: vi.fn().mockReturnThis(),
-        exec: vi.fn().mockResolvedValue([]),
-      })),
-      ...redisClientOverrides,
-    },
-  };
-
-  const sessionService = new PlacementSessionService(
-    redis as unknown as RedisService,
-    prisma as unknown as PrismaService,
-  );
-
   return {
-    service: new PlacementQuestionService(prisma as unknown as PrismaService, sessionService),
-    sessionService,
+    service: new PlacementQuestionService(prisma as unknown as PrismaService),
     prisma,
   };
 }
 
 describe('PlacementQuestionService', () => {
   let service: PlacementQuestionService;
-  let sessionService: PlacementSessionService;
   let prisma: ReturnType<typeof createService>['prisma'];
 
   beforeEach(() => {
     const created = createService();
     service = created.service;
-    sessionService = created.sessionService;
-    vi.spyOn(sessionService, 'saveExamSession').mockResolvedValue(undefined);
     prisma = created.prisma;
   });
 
@@ -506,7 +471,6 @@ describe('PlacementQuestionService', () => {
           updatedAt: expect.any(Date),
         },
       });
-      expect(sessionService.saveExamSession).not.toHaveBeenCalled();
     });
   });
 });
