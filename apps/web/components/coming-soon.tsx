@@ -10,8 +10,8 @@ export function ComingSoon({ title }: { title: string }) {
 
   return (
     <div className="flex h-full flex-col items-center justify-center gap-3 p-6 text-center">
-      <p className="text-6xl font-semibold">{title}</p>
-      <p className="max-w-sm text-2xl text-slate-400">{t('stillInDevelopment')}</p>
+      <p className="text-4xl font-semibold sm:text-6xl">{title}</p>
+      <p className="max-w-sm text-lg text-slate-400 sm:text-2xl">{t('stillInDevelopment')}</p>
     </div>
   );
 }

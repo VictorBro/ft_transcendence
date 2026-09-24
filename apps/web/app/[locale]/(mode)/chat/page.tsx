@@ -22,7 +22,7 @@ export default async function ChatPage() {
   const t = await getTranslations('ChatPage');
 
   return (
-    <div className="flex h-full min-h-0 gap-6">
+    <div className="flex h-full min-h-0 flex-col gap-6 lg:flex-row">
       {/*
         The heading is visually redundant next to the "Tutor" label, but without
         one this page has an empty heading outline and a screen reader lands
@@ -30,7 +30,7 @@ export default async function ChatPage() {
       */}
       <h1 className="sr-only">{t('heading')}</h1>
 
-      <section className="flex min-w-0 flex-1 flex-col rounded-2xl border border-slate-800">
+      <section className="flex min-h-96 min-w-0 flex-1 flex-col rounded-2xl border border-slate-800">
         <header className="flex items-center gap-3 border-b border-slate-800 px-5 py-4">
           <span className="font-semibold">{t('tutor')}</span>
         </header>
@@ -58,7 +58,7 @@ export default async function ChatPage() {
         </div>
       </section>
 
-      <aside className="flex w-[460px] shrink-0 flex-col items-center justify-center overflow-y-auto rounded-2xl border border-slate-800 p-4 text-center">
+      <aside className="flex w-full shrink-0 flex-col items-center justify-center overflow-y-auto rounded-2xl border border-slate-800 p-4 text-center lg:w-115">
         <p className="font-semibold">{t('feedbackHeading')}</p>
         <p className="mt-2 text-sm text-slate-400">{t('feedbackIntro')}</p>
       </aside>

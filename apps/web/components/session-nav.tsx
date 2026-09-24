@@ -27,10 +27,13 @@ export async function SessionNav() {
   }
 
   return (
-    <nav aria-label={t('accountNav')} className="flex items-center gap-4 text-sm">
-      <Link href="/profile" className="flex items-center gap-4 underline underline-offset-4">
+    <nav aria-label={t('accountNav')} className="flex min-w-0 items-center gap-4 text-sm">
+      <Link
+        href="/profile"
+        className="flex min-w-0 items-center gap-3 underline underline-offset-4"
+      >
         <Avatar src={user.avatarUrl} name={user.displayName} size={24} />
-        {user.displayName}
+        <span className="truncate">{user.displayName}</span>
       </Link>
       <LogOutButton />
     </nav>

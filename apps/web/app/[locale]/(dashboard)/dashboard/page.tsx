@@ -23,7 +23,7 @@ export default async function LobbyPage() {
   const panelHeights = ['h-60', 'h-44', 'h-40', 'h-44'];
 
   return (
-    <div className="flex h-full min-h-0 gap-6">
+    <div className="flex h-full min-h-0 flex-col gap-6 lg:flex-row">
       {/* Nothing else on this page is a heading, so without one the lobby has an
           empty outline for a screen reader. sr-only leaves the design as drawn. */}
       <h1 className="sr-only">{t('heading')}</h1>
@@ -33,8 +33,9 @@ export default async function LobbyPage() {
       </div>
 
       {/* Placeholders for panels still to come. Plain divs, not <aside>: nested
-          empty landmarks are announced as empty regions. */}
-      <aside className="flex w-[460px] shrink-0 flex-col gap-4 overflow-y-auto">
+          empty landmarks are announced as empty regions. Hidden below `lg`,
+          where empty boxes would be all a phone shows under the tiles. */}
+      <aside className="hidden w-115 shrink-0 flex-col gap-4 overflow-y-auto lg:flex">
         {panelHeights.map((height, index) => (
           // Index key: the list is a fixed literal, never reordered, and two
           // panels share a height so the class is not unique.
