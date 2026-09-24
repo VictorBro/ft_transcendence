@@ -78,8 +78,15 @@ export const test = base.extend<{ signedIn: Page; freshLearner: Page }, { accoun
     { scope: 'worker' },
   ],
 
-  signedIn: async ({ browser, account }, use) => {
-    const context = await browser.newContext({ storageState: account.storageState });
+  // `contextOptions` carries whatever the project or a test.use() asked for,
+  // viewport included. Building the context from `browser` alone silently
+  // ignores all of it, which left every signed-in page at the default desktop
+  // width no matter what the spec requested.
+  signedIn: async ({ browser, contextOptions, account }, use) => {
+    const context = await browser.newContext({
+      ...contextOptions,
+      storageState: account.storageState,
+    });
     await use(await context.newPage());
     // Teardown runs whether the test passed or threw, which hand-written
     // close() calls after the assertions do not.
@@ -92,8 +99,8 @@ export const test = base.extend<{ signedIn: Page; freshLearner: Page }, { accoun
    * later test expecting a learner with none. It pays the signup cost `account`
    * exists to avoid, so use it only where a pristine learner is the point.
    */
-  freshLearner: async ({ browser }, use) => {
-    const context = await browser.newContext();
+  freshLearner: async ({ browser, contextOptions }, use) => {
+    const context = await browser.newContext(contextOptions);
     const page = await context.newPage();
 
     await createAccount(page, identity());
