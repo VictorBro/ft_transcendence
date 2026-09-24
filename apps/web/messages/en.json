@@ -199,13 +199,11 @@
     },
     "placement": {
       "inProgress": "A placement test is already running. Finish it first.",
-      "invalidChoice": "Invalid answer choice for this question.",
-      "invalidSession": "This placement test is invalid. Start a new one.",
       "notFound": "No placement test is running",
-      "onboardingIncomplete": "Complete onboarding before taking the placement test.",
-      "questionMismatch": "This question is no longer active. Refresh the placement test and try again.",
       "expired": "That placement test has expired. Start a new one.",
-      "poolExhausted": "There are not enough questions left for that test. Try again later."
+      "poolExhausted": "There are not enough questions left for that test. Try again later.",
+      "questionMismatch": "This question is no longer active. Refresh the placement test and try again.",
+      "invalidChoice": "Invalid answer choice for this question."
     },
     "network": {
       "unreachable": "Could not reach the server"

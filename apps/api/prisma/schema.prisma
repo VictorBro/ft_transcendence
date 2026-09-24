@@ -55,20 +55,15 @@ model RecoveryCode {
   @@index([userId])
 }
 
-// A durable evaluation marker reconciles Redis sessions after completion or abort.
-// Completed evaluations set lastEvalLevel to the resulting level; aborted-session
-// handling will use a null lastEvalLevel in a later change.
 model UserLevel {
-  id                String       @id @default(uuid()) @db.Uuid
-  userId            String       @db.Uuid
-  user              User         @relation(fields: [userId], references: [id], onDelete: Cascade)
-  lang              Language
-  lastEvalSessionId String?      @map("last_eval_session") @db.Uuid
-  lastEvalLevel     TargetLevel? @map("last_eval_level")
-  level             TargetLevel?
-  dailyGoal         Int
-  createdAt         DateTime     @default(now())
-  updatedAt         DateTime     @updatedAt
+  id        String   @id @default(uuid()) @db.Uuid
+  userId    String   @db.Uuid
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lang      Language
+  level     Level?
+  dailyGoal Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@unique([userId, lang])
 }
@@ -118,16 +113,6 @@ enum Level {
   B2
   C1
   C2
-}
-
-enum TargetLevel {
-  A1
-  A2
-  B1
-  B2
-  C1
-  C2
-  C3
 }
 
 // Values match UserRoleSchema and LocaleSchema in @ft/shared. Adding a locale is

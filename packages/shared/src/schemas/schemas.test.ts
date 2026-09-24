@@ -7,7 +7,6 @@ import {
   DEFAULT_LOCALE,
   DisableTwoFactorSchema,
   EnableTwoFactorSchema,
-  ExamSessionSchema,
   HealthResponseSchema,
   LocaleSchema,
   LoginSchema,
@@ -16,7 +15,6 @@ import {
   SecondFactorSchema,
   SignUpFormSchema,
   StartCourseSchema,
-  StartPlacementSchema,
   SubmitAnswerSchema,
   SUPPORTED_LOCALES,
   UpdateProfileSchema,
@@ -201,7 +199,7 @@ describe('placement', () => {
     options: ['ist', 'hat', 'war', 'wird'],
     timeLimitS: 30,
     remainingS: 27,
-    progress: { answered: 2, maxRemaining: 6 },
+    progress: { answered: 2, total: 6 },
   };
 
   it('serves a question with no answer attached', () => {
@@ -213,39 +211,6 @@ describe('placement', () => {
     expect(PlacementQuestionSchema.safeParse({ ...question, answer: 'ist' }).success).toBe(false);
   });
 
-  it('requires non-null readText on reading questions', () => {
-    const readingQuestion = {
-      ...question,
-      category: 'reading',
-      readText: 'Ein kurzer Text zum Lesen.',
-    };
-    expect(PlacementQuestionSchema.safeParse(readingQuestion).success).toBe(true);
-
-    expect(
-      PlacementQuestionSchema.safeParse({ ...readingQuestion, readText: undefined }).success,
-    ).toBe(false);
-    expect(PlacementQuestionSchema.safeParse({ ...readingQuestion, readText: null }).success).toBe(
-      false,
-    );
-  });
-
-  it('forbids non-null readText on grammar and vocabulary questions', () => {
-    expect(PlacementQuestionSchema.safeParse(question).success).toBe(true);
-    expect(PlacementQuestionSchema.safeParse({ ...question, readText: null }).success).toBe(true);
-    expect(
-      PlacementQuestionSchema.safeParse({ ...question, readText: 'Not allowed here' }).success,
-    ).toBe(false);
-
-    const vocabQuestion = { ...question, category: 'vocabulary' };
-    expect(PlacementQuestionSchema.safeParse(vocabQuestion).success).toBe(true);
-    expect(PlacementQuestionSchema.safeParse({ ...vocabQuestion, readText: null }).success).toBe(
-      true,
-    );
-    expect(
-      PlacementQuestionSchema.safeParse({ ...vocabQuestion, readText: 'Not allowed here' }).success,
-    ).toBe(false);
-  });
-
   it('reads an explicit null choice as a timeout', () => {
     const parsed = SubmitAnswerSchema.parse({ questionId: question.questionId, choice: null });
 
@@ -255,88 +220,6 @@ describe('placement', () => {
   // Nullable, not optional: an absent field must not pass as a timeout.
   it('rejects a missing choice', () => {
     expect(SubmitAnswerSchema.safeParse({ questionId: question.questionId }).success).toBe(false);
-  });
-
-  it('accepts a valid language to start a placement exam', () => {
-    expect(StartPlacementSchema.parse({ lang: 'de' })).toEqual({ lang: 'de' });
-  });
-
-  it('rejects an invalid language to start a placement exam', () => {
-    expect(StartPlacementSchema.safeParse({ lang: 'es' }).success).toBe(false);
-  });
-
-  it('validates a valid exam session', () => {
-    const session = {
-      evalId: 'd7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64',
-      lang: 'en',
-      lo: 'A1',
-      hi: 'C2',
-      level: 'B1',
-      mistakesPerLevel: 1,
-      askedPerCategory: { grammar: 1, vocabulary: 1, reading: 0 },
-      totalAnswered: 2,
-      answers: [],
-      ended: false,
-      currentQuestionId: 'b7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64',
-      servedAt: '2026-09-18T17:51:11.000Z',
-    };
-    expect(ExamSessionSchema.parse(session)).toEqual(session);
-  });
-
-  it('allows currentQuestionId to be null', () => {
-    const session = {
-      evalId: 'd7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64',
-      lang: 'fr',
-      lo: 'A1',
-      hi: 'B2',
-      level: 'A2',
-      mistakesPerLevel: 0,
-      askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-      totalAnswered: 0,
-      answers: [],
-      ended: false,
-      currentQuestionId: null,
-      servedAt: '2026-09-18T17:51:11.000Z',
-    };
-    expect(ExamSessionSchema.parse(session).currentQuestionId).toBeNull();
-  });
-
-  it('rejects mistakesPerLevel exceeding 2 or below 0', () => {
-    const base = {
-      evalId: 'd7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64',
-      lang: 'en',
-      lo: 'A1',
-      hi: 'C2',
-      level: 'B1',
-      mistakesPerLevel: 3,
-      askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-      totalAnswered: 0,
-      answers: [],
-      ended: false,
-      currentQuestionId: null,
-      servedAt: '2026-09-18T17:51:11.000Z',
-    };
-    expect(ExamSessionSchema.safeParse(base).success).toBe(false);
-    expect(ExamSessionSchema.safeParse({ ...base, mistakesPerLevel: -1 }).success).toBe(false);
-  });
-
-  it('rejects an invalid evaluation ID', () => {
-    expect(
-      ExamSessionSchema.safeParse({
-        evalId: 'not-a-uuid',
-        lang: 'en',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-        totalAnswered: 0,
-        answers: [],
-        ended: false,
-        currentQuestionId: null,
-        servedAt: '2026-09-18T17:51:11.000Z',
-      }).success,
-    ).toBe(false);
   });
 });
 

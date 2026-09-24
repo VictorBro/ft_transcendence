@@ -9,6 +9,7 @@ import {
   ApiOkResponse,
   ApiOperation,
   ApiTags,
+  ApiUnauthorizedResponse,
   getSchemaPath,
 } from '@nestjs/swagger';
 import type { PlacementQuestion, PlacementResult, SessionUser } from '@ft/shared';
@@ -22,133 +23,74 @@ import {
 } from './placement.dto';
 import { PlacementService } from './placement.service';
 
+/** GET and the answer route return one or the other, depending on whether the run is over. */
+const QUESTION_OR_RESULT = {
+  oneOf: [
+    { $ref: getSchemaPath(PlacementQuestionDto) },
+    { $ref: getSchemaPath(PlacementResultDto) },
+  ],
+};
+
+/** A singleton resource, like /api/auth/me: the run belongs to the caller, so no id in the URL. */
 @ApiTags('placement')
 @ApiExtraModels(PlacementQuestionDto, PlacementResultDto)
+@ApiUnauthorizedResponse({ description: 'No valid session' })
 @Controller('placement')
 export class PlacementController {
   constructor(private readonly placement: PlacementService) {}
 
-  /**
-   * Starts a new placement exam for the authenticated user in the requested language.
-   *
-   * @param user - Authenticated session user initiating the exam.
-   * @param body - Parameters specifying the target language.
-   * @returns The first question of the placement exam.
-   * @throws ConflictException If an active exam is already in progress or onboarding is incomplete.
-   */
   @Post()
-  @ApiOperation({ summary: 'Start a placement exam' })
-  @ApiCreatedResponse({
-    type: PlacementQuestionDto,
-    description: 'First question of the placement exam',
+  @ApiOperation({ summary: 'Start a placement exam, or a retake once one is finished' })
+  @ApiCreatedResponse({ type: PlacementQuestionDto, description: 'The first question' })
+  @ApiNotFoundResponse({
+    description:
+      'No course in that language (`course.notFound`), or no unseen question (`placement.poolExhausted`)',
   })
-  @ApiConflictResponse({
-    description: 'A placement exam is already running or onboarding is incomplete',
-  })
-  startPlacement(
+  @ApiConflictResponse({ description: 'A run is already going (`placement.inProgress`)' })
+  start(
     @CurrentUser() user: SessionUser,
     @Body() body: StartPlacementDto,
   ): Promise<PlacementQuestion> {
-    return this.placement.startPlacement(user.id, body);
+    return this.placement.start(user.id, body.lang);
   }
 
-  /**
-   * Retrieves the current placement question or the final placement result if ended.
-   * Strictly read-only to preserve HTTP GET idempotency and avoid side effects.
-   *
-   * @param user - Authenticated session user.
-   * @returns Current placement question or the completed exam result.
-   * @throws NotFoundException If no active placement exam exists.
-   */
   @Get()
-  @ApiOperation({ summary: 'Get current placement question or result' })
-  @ApiOkResponse({
-    description: 'Current question or placement result',
-    schema: {
-      oneOf: [
-        { $ref: getSchemaPath(PlacementQuestionDto) },
-        { $ref: getSchemaPath(PlacementResultDto) },
-      ],
-    },
-  })
-  @ApiConflictResponse({
-    description: 'Stored placement session is invalid (`placement.invalidSession`)',
-  })
-  @ApiNotFoundResponse({ description: 'No active placement exam' })
-  getPlacement(@CurrentUser() user: SessionUser): Promise<PlacementQuestion | PlacementResult> {
-    return this.placement.getPlacement(user.id);
+  @ApiOperation({ summary: 'The question on screen, or the result once the run is over' })
+  @ApiOkResponse({ schema: QUESTION_OR_RESULT })
+  @ApiNotFoundResponse({ description: 'No run (`placement.notFound`)' })
+  @ApiConflictResponse({ description: 'Its question left the bank (`placement.expired`)' })
+  current(@CurrentUser() user: SessionUser): Promise<PlacementQuestion | PlacementResult> {
+    return this.placement.current(user.id);
   }
 
-  /**
-   * Submits an answer to the currently active placement question.
-   * Evaluates timeouts, updates difficulty adaptively, and advances the session.
-   *
-   * @param user - Authenticated session user submitting the answer.
-   * @param body - Submitted answer payload with question ID and chosen option.
-   * @returns The next placement question or the final placement result.
-   * @throws NotFoundException If no active placement exam exists.
-   */
   @Post('answers')
-  @ApiOperation({ summary: 'Submit an answer to the current placement question' })
+  @ApiOperation({ summary: 'Answer the question on screen' })
   @ApiCreatedResponse({
-    description: 'Next question or placement result',
-    schema: {
-      oneOf: [
-        { $ref: getSchemaPath(PlacementQuestionDto) },
-        { $ref: getSchemaPath(PlacementResultDto) },
-      ],
-    },
+    schema: QUESTION_OR_RESULT,
+    description: 'The next question, or the result',
   })
-  @ApiBadRequestResponse({
-    description: 'Choice is not one of the question options (`placement.invalidChoice`)',
+  @ApiBadRequestResponse({ description: 'Not one of the options (`placement.invalidChoice`)' })
+  @ApiNotFoundResponse({
+    description:
+      'No run (`placement.notFound`), or no unseen question left (`placement.poolExhausted`)',
   })
   @ApiConflictResponse({
     description:
-      'Placement is busy, stored session is invalid, or question ID does not match the active question',
+      'Not the question on screen, its question left the bank, or another request is running',
   })
-  @ApiNotFoundResponse({ description: 'No active placement exam' })
-  submitAnswer(
+  answer(
     @CurrentUser() user: SessionUser,
     @Body() body: SubmitAnswerDto,
   ): Promise<PlacementQuestion | PlacementResult> {
-    return this.placement.submitAnswer(user.id, body);
+    return this.placement.answer(user.id, body);
   }
 
-  /**
-   * Quits and abandons the current placement exam, purging active session data.
-   *
-   * @param user - Authenticated session user quitting the exam.
-   * @returns Promise resolving when the placement exam is cancelled.
-   * @throws ConflictException If another placement mutation holds the lock.
-   */
   @Delete()
   @HttpCode(HttpStatus.NO_CONTENT)
-  @ApiOperation({ summary: 'Quit the current placement exam' })
-  @ApiNoContentResponse({ description: 'Placement exam cancelled' })
-  @ApiConflictResponse({ description: 'Placement is busy (`placement.inProgress`)' })
-  quitPlacement(@CurrentUser() user: SessionUser): Promise<void> {
-    return this.placement.quitPlacement(user.id);
-  }
-
-  /**
-   * Aborts the current placement exam, archiving the current question with a null answer
-   * and returning the final placement result with `targetLevel: null`.
-   *
-   * @param user - Authenticated session user aborting the exam.
-   * @returns Placement result with `targetLevel: null` indicating an aborted exam.
-   * @throws NotFoundException If no active placement exam exists.
-   */
-  @Post('abort')
-  @ApiOperation({ summary: 'Abort the current placement exam' })
-  @ApiOkResponse({
-    type: PlacementResultDto,
-    description: 'Placement result with targetLevel: null indicating abortion',
-  })
-  @ApiConflictResponse({
-    description: 'Placement is busy (`placement.inProgress`)',
-  })
-  @ApiNotFoundResponse({ description: 'No active placement exam' })
-  abortExam(@CurrentUser() user: SessionUser): Promise<PlacementResult> {
-    return this.placement.abortExam(user.id);
+  @ApiOperation({ summary: 'Quit the run. The course level is left as it was' })
+  @ApiNoContentResponse({ description: 'Gone, or there was nothing to quit' })
+  @ApiConflictResponse({ description: 'Another request is running (`placement.inProgress`)' })
+  quit(@CurrentUser() user: SessionUser): Promise<void> {
+    return this.placement.quit(user.id);
   }
 }

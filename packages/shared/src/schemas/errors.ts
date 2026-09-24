@@ -41,15 +41,15 @@ export const ERROR_CODES = [
   'course.alreadyStarted',
   'course.notFound',
   'placement.inProgress',
-  'placement.invalidChoice',
-  'placement.invalidSession',
   'placement.notFound',
-  'placement.onboardingIncomplete',
-  'placement.questionMismatch',
-  /** Left unfinished long enough that its clock is meaningless. */
+  /** The question on screen left the bank under a running exam, which cannot go on. */
   'placement.expired',
   /** No unseen question left for that language, level and category: a content gap. */
   'placement.poolExhausted',
+  /** An answer to a question that is no longer on screen: a stale tab or a double click. */
+  'placement.questionMismatch',
+  /** A choice that is not one of the question's options. */
+  'placement.invalidChoice',
   /** The browser never reached the API: offline, DNS, proxy down. */
   'network.unreachable',
   /** A status the client has no specific wording for. Carries `{status}`. */
