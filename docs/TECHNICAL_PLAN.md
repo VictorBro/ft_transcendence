@@ -71,7 +71,7 @@ lockfile). Scaffold into a temp dir, move `src/` + app config into `apps/*`, del
 apps/api/src/
 ├── auth/          # signup, login, sessions, guards; 2FA/OAuth later
 ├── users/         # profiles, avatars, friends, presence
-├── lessons/       # curriculum, content CRUD
+├── lessons/       # seeded lesson catalogue, daily goal, results (no content CRUD)
 ├── assessment/    # level questionnaires, scoring, CEFR mapping
 ├── ai/            # LlmProvider iface, RAG retrieval, prompts
 ├── realtime/      # socket.io gateways: session, presence, chat

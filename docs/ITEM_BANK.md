@@ -151,8 +151,9 @@ comparison_and_quantity    information_structure_and_pragmatics
 ```
 
 Vocabulary and reading items use the closest fit, or
-`information_structure_and_pragmatics`. Same list keys the lesson topics, so an item and the
-lesson that teaches it speak the same language.
+`information_structure_and_pragmatics`. The same list labels grammar lessons (`Lesson.topic`), so a
+grammar item and the lesson that teaches it speak the same language. The other lesson kinds carry
+a `theme` instead (see [LESSONS.md](LESSONS.md)).
 
 ---
 
