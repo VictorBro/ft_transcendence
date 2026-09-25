@@ -394,7 +394,7 @@ redo rather than data; if it does not, it is a plain constant or a per-request v
 |---|---|---|
 | **Session store** (`connect-redis`) | Sessions are hot, short-lived and disposable. Restarting the api must not log everyone out | in use |
 | **Throttler counters** | Per-minute counters with a TTL | not yet: `@nestjs/throttler` runs without a storage adapter, so counters sit in process memory. Correct for one replica; the only cost is that a restart clears everyone's limit. Moving them is optional, not pending work |
-| **LLM response cache** | Keyed on the lesson id and a seed. The same B1 *passé composé* explanation is generated once and served to everyone. Whether the key also carries the interface language is for the lesson page milestone to decide. The single biggest cost lever in the project | to build |
+| **LLM response cache** | An explanation is keyed on the lesson id, an exercise set on the lesson id and a seed, so a redo can get a different set. The same B1 *passé composé* explanation is generated once and served to everyone. Whether the key also carries the interface language is for the lesson page milestone to decide. The single biggest cost lever in the project | to build |
 | **Per-user token budget** | An atomic counter with a daily TTL, checked by a guard before any LLM call | to build |
 | **Presence** | `SETEX user:{id}:online` refreshed by socket heartbeat. Expiry *is* the disconnect detection, including for a client that vanished without a `disconnect` | to build |
 | **Placement run state** | The search bounds, the level being probed, the tally per category, the mistakes so far, the current question's deadline and the report. **Keyed by the session, never by the user, and always with a TTL.** Keyed by the user it would outlive the login that started it and a learner would come back to a half-finished exam; keyed by the session it goes when they go, which is what was asked for. It lives exactly as long as the exam, so a table would be a row deleted minutes after it was written, and the TTL doubles as the abandoned-exam cleanup | to build |
@@ -525,12 +525,17 @@ flowchart LR
 2. Nearest-neighbour query, plain SQL thanks to pgvector:
 
 ```sql
-SELECT content, "documentId"
-FROM "DocumentChunk"
-WHERE language = $1 AND level = ANY($2)
-ORDER BY embedding <=> $3   -- cosine distance, served by the HNSW index
+SELECT c.content, c."documentId"
+FROM "DocumentChunk" c
+JOIN "Document" d ON d.id = c."documentId"
+WHERE d.language = $1 AND c.level = ANY($2)
+  AND c.topic = $4            -- a grammar lesson's cell; c.theme = $4 for the other kinds
+ORDER BY c.embedding <=> $3   -- cosine distance, served by the HNSW index
 LIMIT 5;
 ```
+
+A lesson's explanation keeps the last filter, so it retrieves only its own cell's reference.
+"Ask the tutor" drops it and searches the whole of the learner's levels.
 
 3. Put those chunks in the prompt: "answer using only these reference passages, cite the one
    you used". The model answers from our verified text instead of its memory, the UI shows the
@@ -539,7 +544,7 @@ LIMIT 5;
 ```mermaid
 flowchart LR
     q["Learner question,<br/>or the lesson's summary"] --> qe["Embed the question<br/><small>same model as ingest</small>"]
-    qe --> nn["Nearest-neighbour SQL<br/><small>top 5 by cosine distance,<br/>filtered on language and level</small>"]
+    qe --> nn["Nearest-neighbour SQL<br/><small>top 5 by cosine distance,<br/>filtered on language, level<br/>and the lesson's topic or theme</small>"]
     store[("DocumentChunk")] --> nn
     nn --> prompt["Prompt: answer only from these<br/>passages, cite the one you used"]
     prompt --> model["Gemini"]
@@ -627,8 +632,8 @@ That combination keeps `make` green on a clean clone and still lets the full cor
 Four layers, all before feature work:
 
 1. `LLM_PROVIDER=fixture` in CI and in every unit test. No test ever spends money.
-2. Redis cache keyed on the lesson id and a seed, explanations and exercises are generated once,
-   not once per learner.
+2. Redis cache, explanations keyed on the lesson id and exercise sets on the lesson id and a
+   seed: both are generated once, not once per learner.
    **Placement items are exempt.** Caching them by content key would hand every learner the same
    test and break §1.2 outright. Their reuse mechanism is the item bank plus per-user exclusion,
    which is a different thing that happens to look similar.
