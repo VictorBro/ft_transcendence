@@ -95,6 +95,23 @@ export class PlacementSessionService {
   }
 
   /**
+   * Releases the mutual exclusion lock only if the caller still owns it.
+   * Uses a Lua script for atomic compare-and-delete so an expired lock
+   * that has been re-acquired by another caller is never accidentally removed.
+   *
+   * @param userId - Unique identifier of the user.
+   * @param token  - Ownership token returned by {@link acquireLock}.
+   * @returns Promise resolving when the release attempt completes.
+   */
+  async releaseLock(userId: string, token: string): Promise<void> {
+    const script = `if redis.call("get",KEYS[1]) == ARGV[1] then return redis.call("del",KEYS[1]) else return 0 end`;
+    await this.redis.client.eval(script, {
+      keys: [this.evalLockKey(userId)],
+      arguments: [token],
+    });
+  }
+
+  /**
    * Checks whether an active placement session exists in Redis for the user.
    * Only checks key existence; there can be at most one placement session per user.
    *

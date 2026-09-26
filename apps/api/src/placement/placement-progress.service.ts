@@ -112,7 +112,7 @@ export class PlacementProgressService {
     answer: string | null,
     question: QuestionBank,
     session: ExamSession,
-    userId: string,
+    _userId: string,
   ): void {
     if (answer !== null && !question.options.includes(answer)) {
       throw new BadRequestException('placement.invalidChoice');

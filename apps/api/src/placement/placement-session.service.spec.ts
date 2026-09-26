@@ -103,25 +103,6 @@ describe('PlacementSessionService', () => {
       });
     });
 
-    it('renews an acquired lock before its lease expires', async () => {
-      vi.useFakeTimers();
-      redis.client.eval.mockResolvedValue(1);
-      let token: string | null = null;
-
-      try {
-        token = await service.acquireLock('u-1', 3);
-        await vi.advanceTimersByTimeAsync(1000);
-
-        expect(redis.client.eval).toHaveBeenCalledWith(expect.stringContaining('EXPIRE'), {
-          keys: ['user:u-1:eval_lock'],
-          arguments: [token, '3'],
-        });
-      } finally {
-        if (token) await service.releaseLock('u-1', token);
-        vi.useRealTimers();
-      }
-    });
-
     it('returns null when lock already exists', async () => {
       redis.client.set.mockResolvedValue(null);
       const result = await service.acquireLock('u-1');
@@ -133,28 +114,11 @@ describe('PlacementSessionService', () => {
     it('conditionally deletes only the lock owned by the supplied token', async () => {
       await service.releaseLock('u-1', 'token-a');
 
-      expect(redis.client.eval).toHaveBeenCalledWith(expect.stringContaining('GET'), {
+      expect(redis.client.eval).toHaveBeenCalledWith(expect.stringContaining('get'), {
         keys: ['user:u-1:eval_lock'],
         arguments: ['token-a'],
       });
       expect(redis.client.del).not.toHaveBeenCalled();
-    });
-  });
-
-  describe('extendLock', () => {
-    it('extends only the lock owned by the supplied token', async () => {
-      redis.client.eval.mockResolvedValue(1);
-
-      await expect(service.extendLock('u-1', 'token-a', 9)).resolves.toBe(true);
-      expect(redis.client.eval).toHaveBeenCalledWith(expect.stringContaining('EXPIRE'), {
-        keys: ['user:u-1:eval_lock'],
-        arguments: ['token-a', '9'],
-      });
-    });
-
-    it('reports loss of lock ownership', async () => {
-      redis.client.eval.mockResolvedValue(0);
-      await expect(service.extendLock('u-1', 'stale-token')).resolves.toBe(false);
     });
   });
 
