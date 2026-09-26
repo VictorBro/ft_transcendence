@@ -44,13 +44,11 @@ export class PlacementProgressService {
 
   /**
    * Persists the determined target level and updates the user's active language
-   * within an atomic database transaction if eval was not aborted. If eval was
-   * was aborted, update lastEvalLevel to null but do not update active language.
+   * within an atomic database transaction.
    *
    * @param userId - Unique identifier of the user.
    * @param lang - Target language of the placement exam.
    * @param level - Determined CEFR target level to store.
-   * @param evalId - Unique identifier of the completed placement evaluation.
    * @returns Promise resolving when the transaction finishes.
    */
   async updateUserLevel(userId: string, lang: Language, level: number | null): Promise<void> {

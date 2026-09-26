@@ -230,6 +230,14 @@ describe('PlacementSessionService', () => {
       expect(multiMock.lRange).toHaveBeenCalledWith('user:u-1:eval_questions', 0, -1);
     });
 
+    it('returns null when redis transaction returns null or incomplete replies', async () => {
+      multiMock.exec.mockResolvedValueOnce(null);
+      expect(await service.loadExamSession('u-1')).toBeNull();
+
+      multiMock.exec.mockResolvedValueOnce([]);
+      expect(await service.loadExamSession('u-1')).toBeNull();
+    });
+
     it('parses and returns valid ExamSession', async () => {
       redis.client.hGetAll.mockResolvedValue({
         evalId: sampleSession.evalId,

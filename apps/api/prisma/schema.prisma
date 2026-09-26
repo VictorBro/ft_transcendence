@@ -55,9 +55,6 @@ model RecoveryCode {
   @@index([userId])
 }
 
-// A durable evaluation marker reconciles Redis sessions after completion or abort.
-// Completed evaluations set lastEvalLevel to the resulting level; aborted-session
-// handling will use a null lastEvalLevel in a later change.
 model UserLevel {
   id        String   @id @default(uuid()) @db.Uuid
   userId    String   @db.Uuid

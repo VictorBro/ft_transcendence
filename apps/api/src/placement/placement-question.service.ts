@@ -33,7 +33,7 @@ export class PlacementQuestionService {
    * @param session - Current exam session state.
    * @returns A tuple `[availableByCategory, question]` containing the number of available unseen
    * questions for every queried category and the chosen question.
-   * @throws ConflictException If the exam has ended or reached terminal level C3 (`placement.expired`).
+   * @throws ConflictException If the exam has ended (`placement.expired`).
    * @throws NotFoundException If no questions exist in the pool for this level (`placement.poolExhausted`).
    */
   async getNewQuestion(
@@ -103,7 +103,7 @@ export class PlacementQuestionService {
           : {}),
         questionBank: {
           lang: session.lang,
-          level: LEVELS[Math.min(session.level, LEVELS.length)],
+          level: LEVELS[Math.max(0, Math.min(session.level, LEVELS.length - 1))],
           category: { in: [...pool] },
         },
       },

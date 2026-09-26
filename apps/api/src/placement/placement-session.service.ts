@@ -216,8 +216,11 @@ export class PlacementSessionService {
       .hGetAll(key)
       .lRange(this.evalQuestionsKey(userId), 0, -1)
       .exec();
+    if (!replies || replies.length < 2 || !replies[0]) {
+      return null;
+    }
     const data = replies[0] as unknown as Record<string, string>;
-    const rawAnswers = replies[1] as unknown as string[];
+    const rawAnswers = (replies[1] as unknown as string[]) ?? [];
     if (!data || Object.keys(data).length === 0) {
       return null;
     }

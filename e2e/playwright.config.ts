@@ -30,7 +30,7 @@ export default defineConfig({
   // that passes second time is a flaky app, not a flaky test, and hiding it
   // defeats the gate.
   retries: 0,
-  workers: process.env.CI ? 2 : undefined,
+  workers: process.env.CI ? 2 : 4,
 
   reporter: process.env.CI
     ? [['github'], ['html', { open: 'never', outputFolder: 'playwright-report' }]]
