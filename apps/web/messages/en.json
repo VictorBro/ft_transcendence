@@ -1,7 +1,6 @@
 {
   "SessionNav": {
     "accountNav": "Account",
-    "profile": "Profile",
     "signIn": "Sign in",
     "createAccount": "Create account"
   },
@@ -200,7 +199,11 @@
     },
     "placement": {
       "inProgress": "A placement test is already running. Finish it first.",
+      "invalidChoice": "Invalid answer choice for this question.",
+      "invalidSession": "This placement test is invalid. Start a new one.",
       "notFound": "No placement test is running",
+      "onboardingIncomplete": "Complete onboarding before taking the placement test.",
+      "questionMismatch": "This question is no longer active. Refresh the placement test and try again.",
       "expired": "That placement test has expired. Start a new one.",
       "poolExhausted": "There are not enough questions left for that test. Try again later."
     },
@@ -264,16 +267,18 @@
     "startHeading": "Evaluate your level",
     "startDescription": "The evaluation will help you determine your level in this language.",
     "starting": "Starting the test…",
-    "questionProgress": "Question {current} of {total}",
     "secondsLeft": "Seconds left: {seconds}",
-    "optionLabel": "Option {number}",
+    "optionLabel": "Answer options",
     "quitButton": "Quit test",
     "continueButton": "Continue",
     "resultHeading": "Placement report",
+    "reportQuestion": "Questions",
     "yourAnswer": "Your answer",
     "correctAnswer": "Correct answer",
     "noAnswer": "No answer",
-    "settingNote": "Score",
-    "levelLabel": "Level"
+    "levelLabel": "Your target level is",
+    "notPlaced": "Not placed",
+    "closeButton": "Close",
+    "closing": "Closing the test…"
   }
 }

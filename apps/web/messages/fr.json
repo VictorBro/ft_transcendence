@@ -1,7 +1,6 @@
 {
   "SessionNav": {
     "accountNav": "Compte",
-    "profile": "Profil",
     "signIn": "Se connecter",
     "createAccount": "Créer un compte"
   },
@@ -200,7 +199,11 @@
     },
     "placement": {
       "inProgress": "Un test de positionnement est déjà en cours. Terminez-le d'abord.",
+      "invalidChoice": "Choix de réponse invalide pour cette question.",
+      "invalidSession": "Ce test de positionnement n'est pas valide. Lancez-en un nouveau.",
       "notFound": "Aucun test de positionnement n'est en cours",
+      "onboardingIncomplete": "Complétez l'intégration avant de passer le test de positionnement.",
+      "questionMismatch": "Cette question n'est plus active. Actualisez le test de positionnement et réessayez.",
       "expired": "Ce test de positionnement a expiré. Lancez-en un nouveau.",
       "poolExhausted": "Il ne reste pas assez de questions pour ce test. Réessayez plus tard."
     },
@@ -264,16 +267,18 @@
     "startHeading": "Evaluer votre niveau",
     "startDescription": "L'évaluation vous aidera à déterminer votre niveau dans cette langue.",
     "starting": "Démarrage du test…",
-    "questionProgress": "Question {current} sur {total}",
     "secondsLeft": "{seconds} secondes restantes",
-    "optionLabel": "Option {number}",
+    "optionLabel": "Options de réponse",
     "quitButton": "Quitter le test",
     "continueButton": "Continuer",
     "resultHeading": "Rapport d'évaluation",
+    "reportQuestion": "Questions",
     "yourAnswer": "Votre réponse",
     "correctAnswer": "Réponse correcte",
     "noAnswer": "Aucune réponse",
-    "settingNote": "Score",
-    "levelLabel": "Niveau"
+    "levelLabel": "Votre niveau cible est",
+    "notPlaced": "Pas encore défini",
+    "closeButton": "Fermer",
+    "closing": "Fermeture du test…"
   }
 }
