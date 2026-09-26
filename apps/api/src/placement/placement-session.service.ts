@@ -8,23 +8,9 @@ import { RedisService } from '../redis/redis.service';
 
 export const PLACEMENT_REDIS_KEY_TTL = 3600;
 export const PLACEMENT_LOCK_TTL_SECONDS = 5;
-const RELEASE_LOCK_SCRIPT = `
-  if redis.call("GET", KEYS[1]) == ARGV[1] then
-    return redis.call("DEL", KEYS[1])
-  end
-  return 0
-`;
-const EXTEND_LOCK_SCRIPT = `
-  if redis.call("GET", KEYS[1]) == ARGV[1] then
-    return redis.call("EXPIRE", KEYS[1], ARGV[2])
-  end
-  return 0
-`;
 
 @Injectable()
 export class PlacementSessionService {
-  private readonly lockHeartbeats = new Map<string, ReturnType<typeof setInterval>>();
-
   constructor(
     private readonly redis: RedisService,
     private readonly prisma: PrismaService,
@@ -79,55 +65,7 @@ export class PlacementSessionService {
     });
     if (result === null) return null;
 
-    this.startLockHeartbeat(userId, token, ttlSeconds);
     return token;
-  }
-
-  /**
-   * Releases the mutual exclusion lock for placement initialization.
-   *
-   * @param userId - Unique identifier of the user.
-   * @param token - Ownership token returned during acquisition.
-   * @returns Promise resolving when the lock key is removed.
-   */
-  async releaseLock(userId: string, token: string): Promise<void> {
-    this.stopLockHeartbeat(token);
-    await this.redis.client.eval(RELEASE_LOCK_SCRIPT, {
-      keys: [this.evalLockKey(userId)],
-      arguments: [token],
-    });
-  }
-
-  /** Extends a lock only while it is still owned by the supplied token. */
-  async extendLock(
-    userId: string,
-    token: string,
-    ttlSeconds = PLACEMENT_LOCK_TTL_SECONDS,
-  ): Promise<boolean> {
-    const result = await this.redis.client.eval(EXTEND_LOCK_SCRIPT, {
-      keys: [this.evalLockKey(userId)],
-      arguments: [token, ttlSeconds.toString()],
-    });
-    return result === 1;
-  }
-
-  private startLockHeartbeat(userId: string, token: string, ttlSeconds: number): void {
-    const intervalMs = Math.max(100, Math.floor((ttlSeconds * 1000) / 3));
-    const heartbeat = setInterval(() => {
-      void this.extendLock(userId, token, ttlSeconds)
-        .then((extended) => {
-          if (!extended) this.stopLockHeartbeat(token);
-        })
-        .catch(() => this.stopLockHeartbeat(token));
-    }, intervalMs);
-    heartbeat.unref();
-    this.lockHeartbeats.set(token, heartbeat);
-  }
-
-  private stopLockHeartbeat(token: string): void {
-    const heartbeat = this.lockHeartbeats.get(token);
-    if (heartbeat) clearInterval(heartbeat);
-    this.lockHeartbeats.delete(token);
   }
 
   /**

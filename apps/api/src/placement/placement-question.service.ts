@@ -18,7 +18,7 @@ export const LIMIT_UNSEEN_QUESTIONS_TO_RETRIEVE = Math.max(
   100,
   FETCH_NEW_QUESTIONS_FOR_CATEGORY_WHEN_REMAINING_LESS_THAN,
 );
-export const MAX_QUESTIONS_PER_LEVEL = 6;
+export const MAX_QUESTIONS_PER_LEVEL = PLACEMENT_ROUNDS.perCategory * QUESTION_CATEGORIES.length;
 
 @Injectable()
 export class PlacementQuestionService {

@@ -19,7 +19,7 @@ import { QuestionBank } from '../generated/prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 import { MAX_QUESTIONS_PER_LEVEL } from './placement-question.service';
 
-export const NETWORK_GRACE_S = 3;
+export const NETWORK_GRACE_S = 2;
 
 @Injectable()
 export class PlacementProgressService {
@@ -108,12 +108,12 @@ export class PlacementProgressService {
    * @param userId - Unique identifier of the user.
    * @returns Promise resolving when session state adjustments and any terminal updates complete.
    */
-  async adjustSessionFromAnswer(
+  adjustSessionFromAnswer(
     answer: string | null,
     question: QuestionBank,
     session: ExamSession,
     userId: string,
-  ): Promise<void> {
+  ): void {
     if (answer !== null && !question.options.includes(answer)) {
       throw new BadRequestException('placement.invalidChoice');
     }
@@ -149,12 +149,10 @@ export class PlacementProgressService {
     } else if (levelChange === 'up' && session.level === session.hi - 1) {
       session.level = session.hi;
       session.ended = true;
-      await this.updateUserLevel(userId, session.lang, session.level);
       return;
     } else if (levelChange === 'down' && session.level === session.lo) {
       session.level = session.lo;
       session.ended = true;
-      await this.updateUserLevel(userId, session.lang, session.level);
       return;
     }
 
