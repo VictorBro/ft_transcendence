@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { learnPathLang } from './course-path';
+import { courseHomeLang, learnPathLang } from './course-path';
 import { findCourse, resolveLandingLang } from './courses';
 
 const de = { lang: 'de', level: 'B1', dailyGoal: 30 } as const;
@@ -59,4 +59,23 @@ describe('learnPathLang', () => {
   it.each(['/en/dashboard', '/en/profile/edit', '/de', '/'])('returns null for %s', (path) => {
     expect(learnPathLang(path)).toBeNull();
   });
+});
+
+describe('courseHomeLang', () => {
+  it.each([
+    ['/en/learn/de', 'de'],
+    ['/learn/en', 'en'],
+    ['/en/learn/fr/', 'fr'],
+  ])('reads the course out of %s', (path, expected) => {
+    expect(courseHomeLang(path)).toBe(expected);
+  });
+
+  // Next prefetches the links on a course page, so anything below the course
+  // home would let a link the learner only saw record itself as a visit.
+  it.each(['/en/learn/de/placement', '/learn/de/lesson/1', '/en/dashboard', '/'])(
+    'returns null for %s',
+    (path) => {
+      expect(courseHomeLang(path)).toBeNull();
+    },
+  );
 });

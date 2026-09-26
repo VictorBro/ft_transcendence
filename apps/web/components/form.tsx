@@ -50,13 +50,22 @@ export function FormError({ message }: { message: string | null }) {
   );
 }
 
-export function SubmitButton({ pending, children }: { pending: boolean; children: ReactNode }) {
+export function SubmitButton({
+  pending,
+  disabled = false,
+  children,
+}: {
+  pending: boolean;
+  /** An incomplete form is unclickable without the button reading "working". */
+  disabled?: boolean;
+  children: ReactNode;
+}) {
   const t = useTranslations('Form');
 
   return (
     <button
       type="submit"
-      disabled={pending}
+      disabled={pending || disabled}
       className="rounded-md bg-slate-100 px-4 py-2 text-sm font-medium text-slate-900 disabled:opacity-60"
     >
       {pending ? t('working') : children}

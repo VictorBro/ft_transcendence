@@ -2,7 +2,7 @@ import createMiddleware from 'next-intl/middleware';
 import type { NextRequest } from 'next/server';
 
 import { routing } from '@/i18n/routing';
-import { COURSE_COOKIE, learnPathLang } from '@/lib/course-path';
+import { COURSE_COOKIE, courseHomeLang } from '@/lib/course-path';
 
 const intl = createMiddleware(routing);
 
@@ -12,7 +12,7 @@ const intl = createMiddleware(routing);
  */
 export default function proxy(request: NextRequest) {
   const response = intl(request);
-  const lang = learnPathLang(request.nextUrl.pathname);
+  const lang = courseHomeLang(request.nextUrl.pathname);
 
   if (lang !== null) {
     response.cookies.set(COURSE_COOKIE, lang, {

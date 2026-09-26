@@ -1,21 +1,5 @@
-import type { Page } from '@playwright/test';
-
+import { ensureCourse } from '../support/courses';
 import { expect, test } from '../support/session';
-
-/**
- * The account is worker-scoped and courses are never deleted, so a second test
- * asking for the same language gets a 409. Both are a usable start; anything
- * else means setup broke and every assertion after it would be meaningless.
- * The goal is then pinned, because a course left over from an earlier test
- * would otherwise decide it.
- */
-async function ensureCourse(page: Page, lang: string, dailyGoal: number): Promise<void> {
-  const created = await page.request.post('/api/courses', { data: { lang, dailyGoal } });
-  expect([201, 409]).toContain(created.status());
-
-  const pinned = await page.request.patch(`/api/courses/${lang}`, { data: { dailyGoal } });
-  expect(pinned.status()).toBe(200);
-}
 
 /**
  * The fixture starts with no courses, so that state needs no setup. The rest
@@ -93,6 +77,11 @@ test.describe('course home', () => {
     expect((await cookie())?.value).toBe('de');
 
     await signedIn.goto('/en/learn/fr');
+    expect((await cookie())?.value).toBe('fr');
+
+    // Next prefetches the links on a course page. Those sit under /learn/<lang>
+    // too, and a link the learner only saw must not count as opening it.
+    await signedIn.request.get('/en/learn/de/placement');
     expect((await cookie())?.value).toBe('fr');
 
     // Not a course page, so it must leave the last one alone rather than clear it.
