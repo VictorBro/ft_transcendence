@@ -1,6 +1,9 @@
+import { ONBOARDED_COURSE } from './session';
+
 /**
  * Single list of what the gates walk. Adding a page means adding it here, and
- * the console gate then covers it automatically.
+ * the console gate then covers it automatically. A page behind requireUser()
+ * also needs `onboarded`, or the gate checks the login page it bounces to.
  */
 
 export interface PageRoute {
@@ -10,16 +13,22 @@ export interface PageRoute {
   name: string;
   /** Defaults to 200. Set it where a page is expected to answer otherwise. */
   expectedStatus?: number;
+  /**
+   * Visited as the onboarded account from session.ts rather than anonymously.
+   * Onboarded because the course home sends a learner without a placed course
+   * away, and every other page renders for that learner too.
+   */
+  onboarded?: boolean;
 }
 
 /**
  * Rendered HTML pages. Every one of these goes through the console gate.
  *
- * The last two are here because the gate guards a rejection criterion, and both
- * are surfaces an evaluator actually opens: /api/docs is printed by `make` and
- * is third-party Swagger UI whose console output is not ours, and the 404 page
- * is rendered by Next but was previously only checked over HTTP, so nothing
- * watched its console.
+ * /api/docs and the 404 are here because the gate guards a rejection criterion,
+ * and both are surfaces an evaluator actually opens: /api/docs is printed by
+ * `make` and is third-party Swagger UI whose console output is not ours, and the
+ * 404 page is rendered by Next but was previously only checked over HTTP, so
+ * nothing watched its console.
  */
 // Pinned to /en: the suite exercises one known language deterministically
 // rather than relying on Accept-Language negotiation picking the same default
@@ -34,6 +43,13 @@ export const PAGE_ROUTES: PageRoute[] = [
   { path: '/en/terms', name: 'terms of service' },
   { path: '/api/docs', name: 'api docs' },
   { path: '/this-route-does-not-exist', name: 'not found', expectedStatus: 404 },
+  { path: `/en/learn/${ONBOARDED_COURSE.lang}`, name: 'course home', onboarded: true },
+  { path: '/en/onboarding', name: 'onboarding', onboarded: true },
+  { path: '/en/chat', name: 'chat', onboarded: true },
+  { path: '/en/friends', name: 'friends', onboarded: true },
+  { path: '/en/profile', name: 'profile', onboarded: true },
+  { path: '/en/profile/edit', name: 'edit profile', onboarded: true },
+  { path: '/en/settings/2fa', name: 'two-factor settings', onboarded: true },
 ];
 
 /** JSON endpoints, checked with the request context rather than a browser. */
@@ -82,13 +98,11 @@ export const PUBLIC_FOOTER_ROUTES: PageRoute[] = [
   { path: '/en/signup', name: 'signup' },
 ];
 
-/** Same, for the routes behind requireUser(). */
-export const AUTHENTICATED_FOOTER_ROUTES: PageRoute[] = [
-  { path: '/en/dashboard', name: 'dashboard' },
-  { path: '/en/chat', name: 'chat' },
-  { path: '/en/friends', name: 'friends' },
-  { path: '/en/learn/de', name: 'course home' },
-  { path: '/en/profile', name: 'profile' },
-  { path: '/en/profile/edit', name: 'edit profile' },
-  { path: '/en/settings/2fa', name: 'two-factor settings' },
-];
+/**
+ * Same, for the routes behind requireUser(). Taken from PAGE_ROUTES since every
+ * signed-in page renders a shell with the footer, so the two cannot drift.
+ * /learn and /dashboard are absent on purpose: both only redirect.
+ */
+export const AUTHENTICATED_FOOTER_ROUTES: PageRoute[] = PAGE_ROUTES.filter(
+  (route) => route.onboarded,
+);

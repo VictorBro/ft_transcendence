@@ -103,7 +103,7 @@ sequenceDiagram
     A-->>B: 200 SessionUser + Set-Cookie ft.sid
 
     Note over B,C: next navigation
-    B->>C: GET /profile
+    B->>C: GET /learn
     C->>B: served by web (Next)
     Note over C,A: Next's server forwards the cookie
     C->>A: GET /api/auth/me

@@ -11,7 +11,7 @@ const course = (lang: Course['lang'], level: Course['level']): Course => ({
 
 describe('resolveOnboardingStep', () => {
   it('starts at the language choice when nothing is studied yet', () => {
-    expect(resolveOnboardingStep([])).toEqual({ step: 'chooseCourse' });
+    expect(resolveOnboardingStep([])).toEqual({ step: 'chooseCourse', preselected: null });
   });
 
   /** Where the refresh, the back button and the abandoned exam all arrive. */
@@ -25,6 +25,7 @@ describe('resolveOnboardingStep', () => {
   it('starts again at the language choice when every course has a level', () => {
     expect(resolveOnboardingStep([course('fr', 'B1'), course('de', 'A2')])).toEqual({
       step: 'chooseCourse',
+      preselected: null,
     });
   });
 
@@ -32,6 +33,34 @@ describe('resolveOnboardingStep', () => {
     expect(
       resolveOnboardingStep([course('de', null), course('fr', 'B1'), course('en', null)]),
     ).toEqual({ step: 'chooseLevel', course: course('en', null) });
+  });
+});
+
+describe('resolveOnboardingStep for the course the learner came from', () => {
+  it('opens the level choice for that course, not the newest unfinished one', () => {
+    expect(resolveOnboardingStep([course('de', null), course('en', null)], 'de')).toEqual({
+      step: 'chooseLevel',
+      course: course('de', null),
+    });
+  });
+
+  it('preselects a language the learner does not study yet', () => {
+    expect(resolveOnboardingStep([course('de', null)], 'fr')).toEqual({
+      step: 'chooseCourse',
+      preselected: 'fr',
+    });
+  });
+
+  // A placed course has nothing left to onboard, so the link behaves like a bare visit.
+  it('falls back to the usual step when that course already has a level', () => {
+    expect(resolveOnboardingStep([course('fr', 'B1'), course('de', null)], 'fr')).toEqual({
+      step: 'chooseLevel',
+      course: course('de', null),
+    });
+    expect(resolveOnboardingStep([course('fr', 'B1')], 'fr')).toEqual({
+      step: 'chooseCourse',
+      preselected: null,
+    });
   });
 });
 

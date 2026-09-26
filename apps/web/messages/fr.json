@@ -22,16 +22,12 @@
     "headline": "Apprenez une langue avec un tuteur qui s'adapte à vous !",
     "intro": "ft_transcendence génère des leçons, corrige vos réponses, suit le niveau qu'il en déduit, et vous associe à un autre apprenant pour une pratique en direct. Cette page est le squelette : tout ce qui suit est de la plomberie, pas du produit.",
     "startNow": "Commencer",
-    "goToLobby": "Accéder au salon",
+    "continueLearning": "Continuer à apprendre",
     "logoAlt": "Logo ft_transcendence"
   },
-  "Lobby": {
-    "title": "Salon",
-    "heading": "Modes d'entraînement",
-    "friendsTitle": "Discussion multilingue",
-    "friendsDescription": "Parlez avec un autre apprenant, chacun dans sa langue. L'IA traduit entre vous et corrige au passage.",
+  "Modes": {
     "chatTitle": "Tuteur",
-    "chatDescription": "Travaillez un sujet avec le tuteur IA, ancré dans le contenu du cours."
+    "friendsTitle": "Discussion multilingue"
   },
   "Languages": {
     "en": "anglais",
@@ -47,13 +43,9 @@
     "title": "Cours",
     "heading": "{language}",
     "level": "Niveau",
-    "notPlaced": "Pas encore défini",
     "dailyGoal": "Objectif quotidien",
     "minutesPerDay": "{minutes} min",
-    "takePlacement": "Passer le test de positionnement",
     "retakePlacement": "Repasser le test de positionnement",
-    "notStudying": "Vous n'étudiez pas encore cette langue.",
-    "startCourse": "Commencer ce cours",
     "roadmapSoon": "Votre parcours apparaîtra ici",
     "practice": "Exercices",
     "thisCourse": "Ce cours"
@@ -101,7 +93,7 @@
     "stillInDevelopment": "Ce mode est encore en développement. Revenez bientôt."
   },
   "ModeLayout": {
-    "backToDashboard": "Retour au salon"
+    "backToCourse": "Retour au cours"
   },
   "ChatPage": {
     "title": "Conversation",

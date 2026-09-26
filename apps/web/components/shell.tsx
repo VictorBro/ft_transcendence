@@ -67,7 +67,7 @@ export function Shell({ brand, nav, fill = false, footer, children }: ShellProps
  * marketing page for a visitor, the app for someone signed in, who otherwise
  * gets thrown out to the landing page with no way back.
  */
-export function Wordmark({ href = '/' }: { href?: '/' | '/dashboard' }) {
+export function Wordmark({ href = '/' }: { href?: '/' | '/learn' }) {
   const t = useTranslations('Layout');
 
   return (
