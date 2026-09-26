@@ -60,23 +60,21 @@ function createSessionService(redisClientOverrides: Record<string, unknown> = {}
 describe('PlacementSessionService', () => {
   let service: PlacementSessionService;
   let redis: ReturnType<typeof createSessionService>['redis'];
-  let prisma: ReturnType<typeof createSessionService>['prisma'];
   let multiMock: ReturnType<typeof createSessionService>['multiMock'];
 
   beforeEach(() => {
     const created = createSessionService();
     service = created.service;
     redis = created.redis;
-    prisma = created.prisma;
     multiMock = created.multiMock;
   });
 
   const sampleSession: ExamSession = {
     evalId: 'd7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64',
     lang: 'de',
-    lo: 'A1',
-    hi: 'C2',
-    level: 'B1',
+    lo: 0,
+    hi: 5,
+    level: 2,
     mistakesPerLevel: 0,
     askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
     totalAnswered: 0,
@@ -204,9 +202,9 @@ describe('PlacementSessionService', () => {
       expect(multiMock.hSet).toHaveBeenCalledWith('user:u-1:eval', {
         evalId: sampleSession.evalId,
         lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
+        lo: sampleSession.lo,
+        hi: sampleSession.hi,
+        level: sampleSession.level ?? '',
         mistakesPerLevel: '0',
         askedPerCategory: JSON.stringify(sampleSession.askedPerCategory),
         totalAnswered: '0',
@@ -234,9 +232,9 @@ describe('PlacementSessionService', () => {
       redis.client.hGetAll.mockResolvedValue({
         evalId: sampleSession.evalId,
         lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
+        lo: '0',
+        hi: '5',
+        level: '2',
         mistakesPerLevel: '0',
         askedPerCategory: JSON.stringify({ grammar: 1, vocabulary: 0, reading: 0 }),
         totalAnswered: '0',
@@ -247,56 +245,15 @@ describe('PlacementSessionService', () => {
 
       const result = await service.loadExamSession('u-1');
       expect(result).toEqual(sampleSession);
-      expect(prisma.userLevel.findUnique).toHaveBeenCalledWith({
-        where: {
-          userId_lang: {
-            userId: 'u-1',
-            lang: 'de',
-          },
-        },
-        select: {
-          lastEvalSessionId: true,
-          lastEvalLevel: true,
-        },
-      });
     });
 
-    it('restores an authoritative completed level from a matching database marker', async () => {
+    it('parses numeric level 0 correctly without falling back to null', async () => {
       redis.client.hGetAll.mockResolvedValue({
         evalId: sampleSession.evalId,
         lang: 'de',
-        lo: 'A1',
-        hi: 'C3',
-        level: 'C2',
-        mistakesPerLevel: '0',
-        askedPerCategory: JSON.stringify({ grammar: 2, vocabulary: 2, reading: 1 }),
-        totalAnswered: '17',
-        ended: 'false',
-        currentQuestionId: sampleSession.currentQuestionId,
-        servedAt: sampleSession.servedAt,
-      });
-      prisma.userLevel.findUnique.mockResolvedValue({
-        lastEvalSessionId: sampleSession.evalId,
-        lastEvalLevel: 'C3',
-      });
-
-      const result = await service.loadExamSession('u-1');
-
-      expect(result).toEqual(
-        expect.objectContaining({
-          ended: true,
-          level: 'C3',
-        }),
-      );
-    });
-
-    it('marks a matching null-level abort as ended with level null', async () => {
-      redis.client.hGetAll.mockResolvedValue({
-        evalId: sampleSession.evalId,
-        lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
+        lo: '0',
+        hi: '5',
+        level: '0',
         mistakesPerLevel: '0',
         askedPerCategory: JSON.stringify({ grammar: 1, vocabulary: 0, reading: 0 }),
         totalAnswered: '0',
@@ -304,19 +261,9 @@ describe('PlacementSessionService', () => {
         currentQuestionId: sampleSession.currentQuestionId,
         servedAt: sampleSession.servedAt,
       });
-      prisma.userLevel.findUnique.mockResolvedValue({
-        lastEvalSessionId: sampleSession.evalId,
-        lastEvalLevel: null,
-      });
 
       const result = await service.loadExamSession('u-1');
-
-      expect(result).toEqual(
-        expect.objectContaining({
-          ended: true,
-          level: null,
-        }),
-      );
+      expect(result).toEqual({ ...sampleSession, level: 0 });
     });
 
     it.each([
@@ -326,9 +273,9 @@ describe('PlacementSessionService', () => {
       redis.client.hGetAll.mockResolvedValue({
         evalId: sampleSession.evalId,
         lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
+        lo: '0',
+        hi: '5',
+        level: '2',
         mistakesPerLevel: '0',
         askedPerCategory,
         totalAnswered: '0',
@@ -373,9 +320,9 @@ describe('PlacementSessionService', () => {
       redis.client.hGetAll.mockResolvedValue({
         evalId: sampleSession.evalId,
         lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
+        lo: '0',
+        hi: '5',
+        level: '2',
         mistakesPerLevel: '0',
         askedPerCategory: JSON.stringify(sampleSession.askedPerCategory),
         totalAnswered: '2',
@@ -399,9 +346,9 @@ describe('PlacementSessionService', () => {
       redis.client.hGetAll.mockResolvedValue({
         evalId: sampleSession.evalId,
         lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
+        lo: '0',
+        hi: '5',
+        level: '2',
         mistakesPerLevel: '0',
         askedPerCategory: JSON.stringify(sampleSession.askedPerCategory),
         totalAnswered: '1',
@@ -420,9 +367,9 @@ describe('PlacementSessionService', () => {
       redis.client.hGetAll.mockResolvedValue({
         evalId: sampleSession.evalId,
         lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
+        lo: '0',
+        hi: '5',
+        level: '2',
         mistakesPerLevel: '0',
         askedPerCategory: JSON.stringify(sampleSession.askedPerCategory),
         totalAnswered: '2',

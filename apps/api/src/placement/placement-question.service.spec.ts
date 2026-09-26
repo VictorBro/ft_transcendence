@@ -56,23 +56,13 @@ describe('PlacementQuestionService', () => {
     prisma = created.prisma;
   });
 
-  describe('targetLevelToCEFRLevel', () => {
-    it('returns valid CEFR level', () => {
-      expect(service.targetLevelToCEFRLevel('B1')).toBe('B1');
-    });
-
-    it('throws ConflictException when level is C3', () => {
-      expect(() => service.targetLevelToCEFRLevel('C3')).toThrow(ConflictException);
-    });
-  });
-
   describe('getNewQuestion', () => {
     const session: ExamSession = {
       evalId: EVAL_ID,
       lang: 'de',
-      lo: 'A1',
-      hi: 'C2',
-      level: 'B1',
+      lo: 0,
+      hi: 5,
+      level: 2,
       mistakesPerLevel: 0,
       askedPerCategory: { vocabulary: 1, reading: 1, grammar: 0 },
       totalAnswered: 0,
@@ -110,8 +100,8 @@ describe('PlacementQuestionService', () => {
       );
     });
 
-    it('throws ConflictException when session.level is C3', async () => {
-      await expect(service.getNewQuestion('user-1', { ...session, level: 'C3' })).rejects.toThrow(
+    it('throws ConflictException when session.level is null', async () => {
+      await expect(service.getNewQuestion('user-1', { ...session, level: null })).rejects.toThrow(
         ConflictException,
       );
     });
@@ -249,9 +239,9 @@ describe('PlacementQuestionService', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
+        lo: 0,
+        hi: 5,
+        level: 2,
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
         totalAnswered: 1,
@@ -274,9 +264,9 @@ describe('PlacementQuestionService', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
+        lo: 0,
+        hi: 5,
+        level: 2,
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
         totalAnswered: 1,
@@ -313,9 +303,9 @@ describe('PlacementQuestionService', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
+        lo: 0,
+        hi: 5,
+        level: 2,
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 0,
@@ -331,9 +321,9 @@ describe('PlacementQuestionService', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
-        lo: 'A1',
-        hi: 'A1',
-        level: 'A1',
+        lo: 0,
+        hi: 0,
+        level: 0,
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 1, vocabulary: 1, reading: 1 },
         totalAnswered: 3,
@@ -349,9 +339,9 @@ describe('PlacementQuestionService', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
-        lo: 'A1',
-        hi: 'A2',
-        level: 'A1',
+        lo: 0,
+        hi: 1,
+        level: 0,
         mistakesPerLevel: 1,
         askedPerCategory: { grammar: 2, vocabulary: 2, reading: 1 },
         totalAnswered: 17,
@@ -367,9 +357,9 @@ describe('PlacementQuestionService', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
-        lo: 'B2',
-        hi: 'C3',
-        level: 'C1',
+        lo: 3,
+        hi: 6,
+        level: 4,
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 1, vocabulary: 1, reading: 0 },
         totalAnswered: 8,
@@ -385,9 +375,9 @@ describe('PlacementQuestionService', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
-        lo: 'C2',
-        hi: 'C3',
-        level: 'C2',
+        lo: 5,
+        hi: 6,
+        level: 5,
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
         totalAnswered: 13,
@@ -403,9 +393,9 @@ describe('PlacementQuestionService', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
-        lo: 'A1',
-        hi: 'B1',
-        level: 'A2',
+        lo: 0,
+        hi: 2,
+        level: 1,
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 2,
@@ -421,9 +411,9 @@ describe('PlacementQuestionService', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
-        lo: 'A1',
-        hi: 'C3',
-        level: 'B1',
+        lo: 0,
+        hi: 6,
+        level: 2,
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 2, vocabulary: 1, reading: 0 },
         totalAnswered: 3,
@@ -434,6 +424,24 @@ describe('PlacementQuestionService', () => {
       };
       expect(service.getMaxQuestionsRemaining(session)).toBe(15);
     });
+
+    it('throws ConflictException when session.level is null', () => {
+      const session: ExamSession = {
+        evalId: EVAL_ID,
+        lang: 'de',
+        lo: 0,
+        hi: 5,
+        level: null,
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
+        totalAnswered: 0,
+        answers: [],
+        ended: false,
+        currentQuestionId: null,
+        servedAt: new Date().toISOString(),
+      };
+      expect(() => service.getMaxQuestionsRemaining(session)).toThrow(ConflictException);
+    });
   });
 
   describe('getNewPlacementQuestion', () => {
@@ -441,9 +449,9 @@ describe('PlacementQuestionService', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
+        lo: 0,
+        hi: 5,
+        level: 2,
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 0,

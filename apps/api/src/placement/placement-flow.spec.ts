@@ -6,7 +6,6 @@ import {
   type PlacementQuestion,
   type PlacementResult,
   type QuestionCategory,
-  type TargetLevel,
 } from '@ft/shared';
 
 import type { QuestionBank } from '../generated/prisma/client';
@@ -274,8 +273,6 @@ describe('Placement Exam Scenarios', () => {
         },
       },
       data: {
-        lastEvalSessionId: expect.any(String),
-        lastEvalLevel: 'A1',
         level: 'A1',
       },
     });
@@ -329,14 +326,12 @@ describe('Placement Exam Scenarios', () => {
         },
       },
       data: {
-        lastEvalSessionId: expect.any(String),
-        lastEvalLevel: 'A2',
         level: 'A2',
       },
     });
   });
 
-  it('2. user starts test, will answer each question correctly. he will go through levels B1, C1, C2 with final result C3', async () => {
+  it('2. user starts test, will answer each question correctly. he will go through levels B1, C1 with final result C2', async () => {
     const userId = 'user-scenario-2';
     let currentResponse: PlacementQuestion | PlacementResult = await env.service.startPlacement(
       userId,
@@ -360,17 +355,16 @@ describe('Placement Exam Scenarios', () => {
       });
     }
 
-    expect(answersSubmitted).toBe(18);
+    expect(answersSubmitted).toBe(12);
 
-    // Verify progression through levels B1, C1, C2 (6 questions each)
+    // Verify progression through levels B1, C1 (6 questions each)
     expect(observedLevels.slice(0, 6)).toEqual(['B1', 'B1', 'B1', 'B1', 'B1', 'B1']);
     expect(observedLevels.slice(6, 12)).toEqual(['C1', 'C1', 'C1', 'C1', 'C1', 'C1']);
-    expect(observedLevels.slice(12, 18)).toEqual(['C2', 'C2', 'C2', 'C2', 'C2', 'C2']);
 
     expect('targetLevel' in currentResponse).toBe(true);
     const result = currentResponse as PlacementResult;
-    expect(result.targetLevel).toBe('C3');
-    expect(result.report).toHaveLength(18);
+    expect(result.targetLevel).toBe('C2');
+    expect(result.report).toHaveLength(12);
     expect(result.report.every((entry) => entry.wasCorrect)).toBe(true);
 
     expect(env.prisma.userLevel.update).toHaveBeenCalledWith({
@@ -381,14 +375,12 @@ describe('Placement Exam Scenarios', () => {
         },
       },
       data: {
-        lastEvalSessionId: expect.any(String),
-        lastEvalLevel: 'C3',
-        level: 'C3',
+        level: 'C2',
       },
     });
   });
 
-  it('3. user starts test, on each level will make mistake on random question out of 6, he will reach C3', async () => {
+  it('3. user starts test, on each level will make mistake on random question out of 6, he will reach C2', async () => {
     const userId = 'user-scenario-3';
     let currentResponse: PlacementQuestion | PlacementResult = await env.service.startPlacement(
       userId,
@@ -398,12 +390,8 @@ describe('Placement Exam Scenarios', () => {
     const observedLevels: Level[] = [];
     let answersSubmitted = 0;
 
-    // Pick random mistake index (0 to 5) for each of the 3 levels
-    const mistakeIndicesPerLevel = [
-      Math.floor(Math.random() * 6),
-      Math.floor(Math.random() * 6),
-      Math.floor(Math.random() * 6),
-    ];
+    // Pick random mistake index (0 to 5) for each of the 2 levels (B1 and C1)
+    const mistakeIndicesPerLevel = [Math.floor(Math.random() * 6), Math.floor(Math.random() * 6)];
 
     while ('questionId' in currentResponse) {
       const question = currentResponse as PlacementQuestion;
@@ -426,22 +414,21 @@ describe('Placement Exam Scenarios', () => {
       });
     }
 
-    expect(answersSubmitted).toBe(18);
+    expect(answersSubmitted).toBe(12);
 
-    // Verify progression through levels B1, C1, C2
+    // Verify progression through levels B1, C1
     expect(observedLevels.slice(0, 6)).toEqual(['B1', 'B1', 'B1', 'B1', 'B1', 'B1']);
     expect(observedLevels.slice(6, 12)).toEqual(['C1', 'C1', 'C1', 'C1', 'C1', 'C1']);
-    expect(observedLevels.slice(12, 18)).toEqual(['C2', 'C2', 'C2', 'C2', 'C2', 'C2']);
 
     expect('targetLevel' in currentResponse).toBe(true);
     const result = currentResponse as PlacementResult;
-    expect(result.targetLevel).toBe('C3');
-    expect(result.report).toHaveLength(18);
+    expect(result.targetLevel).toBe('C2');
+    expect(result.report).toHaveLength(12);
 
     const wrongAnswers = result.report.filter((entry) => !entry.wasCorrect);
     const correctAnswers = result.report.filter((entry) => entry.wasCorrect);
-    expect(wrongAnswers).toHaveLength(3);
-    expect(correctAnswers).toHaveLength(15);
+    expect(wrongAnswers).toHaveLength(2);
+    expect(correctAnswers).toHaveLength(10);
 
     expect(env.prisma.userLevel.update).toHaveBeenCalledWith({
       where: {
@@ -451,9 +438,7 @@ describe('Placement Exam Scenarios', () => {
         },
       },
       data: {
-        lastEvalSessionId: expect.any(String),
-        lastEvalLevel: 'C3',
-        level: 'C3',
+        level: 'C2',
       },
     });
   });
@@ -496,46 +481,40 @@ describe('Placement Exam Scenarios', () => {
 
     it.each([
       {
-        name: 'B1 (up) -> C1 (up) -> C2 (up) => ends at C3',
-        decisions: { B1: 'up', C1: 'up', C2: 'up' } as Partial<Record<Level, 'up' | 'down'>>,
-        expectedLevels: ['B1', 'C1', 'C2'] as Level[],
-        expectedTargetLevel: 'C3' as TargetLevel,
-      },
-      {
-        name: 'B1 (up) -> C1 (up) -> C2 (down) => ends at C2',
-        decisions: { B1: 'up', C1: 'up', C2: 'down' } as Partial<Record<Level, 'up' | 'down'>>,
-        expectedLevels: ['B1', 'C1', 'C2'] as Level[],
-        expectedTargetLevel: 'C2' as TargetLevel,
+        name: 'B1 (up) -> C1 (up) => ends at C2',
+        decisions: { B1: 'up', C1: 'up' } as Partial<Record<Level, 'up' | 'down'>>,
+        expectedLevels: ['B1', 'C1'] as Level[],
+        expectedTargetLevel: 'C2' as Level,
       },
       {
         name: 'B1 (up) -> C1 (down) -> B2 (up) => ends at C1',
         decisions: { B1: 'up', C1: 'down', B2: 'up' } as Partial<Record<Level, 'up' | 'down'>>,
         expectedLevels: ['B1', 'C1', 'B2'] as Level[],
-        expectedTargetLevel: 'C1' as TargetLevel,
+        expectedTargetLevel: 'C1' as Level,
       },
       {
         name: 'B1 (up) -> C1 (down) -> B2 (down) => ends at B2',
         decisions: { B1: 'up', C1: 'down', B2: 'down' } as Partial<Record<Level, 'up' | 'down'>>,
         expectedLevels: ['B1', 'C1', 'B2'] as Level[],
-        expectedTargetLevel: 'B2' as TargetLevel,
+        expectedTargetLevel: 'B2' as Level,
       },
       {
         name: 'B1 (down) -> A2 (up) => ends at B1',
         decisions: { B1: 'down', A2: 'up' } as Partial<Record<Level, 'up' | 'down'>>,
         expectedLevels: ['B1', 'A2'] as Level[],
-        expectedTargetLevel: 'B1' as TargetLevel,
+        expectedTargetLevel: 'B1' as Level,
       },
       {
         name: 'B1 (down) -> A2 (down) -> A1 (up) => ends at A2',
         decisions: { B1: 'down', A2: 'down', A1: 'up' } as Partial<Record<Level, 'up' | 'down'>>,
         expectedLevels: ['B1', 'A2', 'A1'] as Level[],
-        expectedTargetLevel: 'A2' as TargetLevel,
+        expectedTargetLevel: 'A2' as Level,
       },
       {
         name: 'B1 (down) -> A2 (down) -> A1 (down) => ends at A1',
         decisions: { B1: 'down', A2: 'down', A1: 'down' } as Partial<Record<Level, 'up' | 'down'>>,
         expectedLevels: ['B1', 'A2', 'A1'] as Level[],
-        expectedTargetLevel: 'A1' as TargetLevel,
+        expectedTargetLevel: 'A1' as Level,
       },
     ])('$name', async ({ decisions, expectedLevels, expectedTargetLevel }) => {
       const userId = `path-${expectedLevels.join('-')}-${expectedTargetLevel}`;
@@ -559,8 +538,6 @@ describe('Placement Exam Scenarios', () => {
           },
         },
         data: {
-          lastEvalSessionId: expect.any(String),
-          lastEvalLevel: expectedTargetLevel,
           level: expectedTargetLevel,
         },
       });

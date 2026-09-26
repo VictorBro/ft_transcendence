@@ -231,7 +231,10 @@ export class PlacementSessionService {
         lang: data.lang,
         lo: Number(data.lo),
         hi: Number(data.hi),
-        level: Number(data.level) || null,
+        level:
+          data.level !== undefined && data.level !== '' && !Number.isNaN(Number(data.level))
+            ? Number(data.level)
+            : null,
         mistakesPerLevel: Number(data.mistakesPerLevel),
         askedPerCategory: JSON.parse(data.askedPerCategory || '{}'),
         totalAnswered: Number(data.totalAnswered ?? 0),

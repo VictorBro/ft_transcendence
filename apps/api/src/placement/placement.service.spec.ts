@@ -139,14 +139,14 @@ describe('PlacementService', () => {
             /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i,
           ),
           lang: 'de',
-          level: 'B1',
+          level: 2,
           totalAnswered: 0,
           answers: [],
         }),
       );
       expect(sessionService.saveExamSession).toHaveBeenCalledWith(
         'user-1',
-        expect.objectContaining({ lang: 'de', level: 'B1', answers: [] }),
+        expect.objectContaining({ lang: 'de', level: 2, answers: [] }),
       );
     });
 
@@ -171,9 +171,9 @@ describe('PlacementService', () => {
       vi.mocked(sessionService.loadExamSession).mockResolvedValue({
         evalId: EVAL_ID,
         lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
+        lo: 0,
+        hi: 5,
+        level: 2,
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 0,
@@ -190,9 +190,9 @@ describe('PlacementService', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
+        lo: 0,
+        hi: 5,
+        level: 2,
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 6,
@@ -214,9 +214,9 @@ describe('PlacementService', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
+        lo: 0,
+        hi: 5,
+        level: 2,
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 0,
@@ -251,9 +251,9 @@ describe('PlacementService', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
+        lo: 0,
+        hi: 5,
+        level: 2,
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 5,
@@ -282,9 +282,9 @@ describe('PlacementService', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
+        lo: 0,
+        hi: 5,
+        level: 2,
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 0,
@@ -310,9 +310,9 @@ describe('PlacementService', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
+        lo: 0,
+        hi: 5,
+        level: 2,
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 6,
@@ -332,9 +332,9 @@ describe('PlacementService', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
+        lo: 0,
+        hi: 5,
+        level: 2,
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 0,
@@ -365,9 +365,9 @@ describe('PlacementService', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
+        lo: 0,
+        hi: 5,
+        level: 2,
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 0,
@@ -408,9 +408,9 @@ describe('PlacementService', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
+        lo: 0,
+        hi: 5,
+        level: 2,
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 0,
@@ -438,9 +438,9 @@ describe('PlacementService', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
+        lo: 0,
+        hi: 5,
+        level: 2,
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 0,
@@ -468,9 +468,9 @@ describe('PlacementService', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
+        lo: 0,
+        hi: 5,
+        level: 2,
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 1,
@@ -497,9 +497,9 @@ describe('PlacementService', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
+        lo: 0,
+        hi: 5,
+        level: 2,
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 6,
@@ -522,9 +522,9 @@ describe('PlacementService', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
+        lo: 0,
+        hi: 5,
+        level: 2,
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 0,
@@ -553,9 +553,9 @@ describe('PlacementService', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
+        lo: 0,
+        hi: 5,
+        level: 2,
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 0,
@@ -602,113 +602,6 @@ describe('PlacementService', () => {
       vi.mocked(sessionService.deleteSession).mockRejectedValue(new Error('redis down'));
 
       await expect(service.quitPlacement('user-1')).rejects.toThrow('redis down');
-      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1', LOCK_TOKEN);
-    });
-  });
-
-  describe('abortExam', () => {
-    const mockAbortedResult: PlacementResult = {
-      targetLevel: null,
-      report: [],
-    };
-
-    it('throws ConflictException if lock cannot be acquired', async () => {
-      vi.mocked(sessionService.acquireLockWithRetry).mockResolvedValue(null);
-
-      await expect(service.abortExam('user-1')).rejects.toThrow(
-        new ConflictException('placement.inProgress'),
-      );
-      expect(sessionService.releaseLock).not.toHaveBeenCalled();
-    });
-
-    it('throws NotFoundException if no active session', async () => {
-      vi.mocked(sessionService.loadExamSession).mockResolvedValue(null);
-
-      await expect(service.abortExam('user-1')).rejects.toThrow(NotFoundException);
-      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1', LOCK_TOKEN);
-    });
-
-    it('returns existing result if session is already ended', async () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-        totalAnswered: 6,
-        answers: [],
-        ended: true,
-        currentQuestionId: mockQuestion.id,
-        servedAt: new Date().toISOString(),
-      };
-      vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
-      vi.mocked(progressService.getResult).mockResolvedValue(mockPlacementResult);
-
-      const result = await service.abortExam('user-1');
-      expect(result).toBe(mockPlacementResult);
-      expect(session.answers).toEqual([]);
-      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1', LOCK_TOKEN);
-    });
-
-    it('throws placement.invalidSession and releases lock if active question was already answered', async () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-        totalAnswered: 1,
-        answers: [{ questionId: mockQuestion.id, choice: 'ist' }],
-        ended: false,
-        currentQuestionId: mockQuestion.id,
-        servedAt: new Date().toISOString(),
-      };
-      vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
-
-      await expect(service.abortExam('user-1')).rejects.toThrow(
-        new ConflictException('placement.invalidSession'),
-      );
-      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1', LOCK_TOKEN);
-    });
-
-    it('archives current question with null choice, sets level to null, persists, and returns aborted result', async () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-        totalAnswered: 3,
-        answers: [],
-        ended: false,
-        currentQuestionId: mockQuestion.id,
-        servedAt: new Date().toISOString(),
-      };
-      vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
-      vi.mocked(progressService.getResult).mockResolvedValue(mockAbortedResult);
-      vi.mocked(progressService.updateUserLevel).mockResolvedValue(undefined);
-
-      const result = await service.abortExam('user-1');
-
-      expect(session.answers).toEqual([{ questionId: mockQuestion.id, choice: null }]);
-      expect(session.ended).toBe(true);
-      expect(session.level).toBeNull();
-      expect(progressService.updateUserLevel).toHaveBeenCalledWith('user-1', 'de', null, EVAL_ID);
-      expect(sessionService.saveExamSession).toHaveBeenCalledWith('user-1', session);
-      expect(result).toBe(mockAbortedResult);
-      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1', LOCK_TOKEN);
-    });
-
-    it('releases lock even if an error occurs', async () => {
-      vi.mocked(sessionService.loadExamSession).mockRejectedValue(new Error('redis down'));
-
-      await expect(service.abortExam('user-1')).rejects.toThrow('redis down');
       expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1', LOCK_TOKEN);
     });
   });

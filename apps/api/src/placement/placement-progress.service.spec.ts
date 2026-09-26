@@ -1,4 +1,4 @@
-import { BadRequestException, NotFoundException } from '@nestjs/common';
+import { BadRequestException, ConflictException, NotFoundException } from '@nestjs/common';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import type { ExamSession } from '@ft/shared';
 
@@ -86,7 +86,7 @@ describe('PlacementProgressService', () => {
 
   describe('updateUserLevel', () => {
     it('updates user level and activeLang in transaction', async () => {
-      await service.updateUserLevel('user-1', 'de', 'B1', EVAL_ID);
+      await service.updateUserLevel('user-1', 'de', 2);
       expect(prisma.$transaction).toHaveBeenCalled();
       expect(prisma.userLevel.update).toHaveBeenCalledWith({
         where: {
@@ -96,8 +96,6 @@ describe('PlacementProgressService', () => {
           },
         },
         data: {
-          lastEvalSessionId: EVAL_ID,
-          lastEvalLevel: 'B1',
           level: 'B1',
         },
       });
@@ -105,6 +103,12 @@ describe('PlacementProgressService', () => {
         where: { id: 'user-1' },
         data: { activeLang: 'de' },
       });
+    });
+
+    it('throws ConflictException when level is null', async () => {
+      await expect(service.updateUserLevel('user-1', 'de', null)).rejects.toThrow(
+        ConflictException,
+      );
     });
   });
 
@@ -147,9 +151,9 @@ describe('PlacementProgressService', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
+        lo: 0,
+        hi: 5,
+        level: 2,
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 0,
@@ -168,9 +172,9 @@ describe('PlacementProgressService', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
+        lo: 0,
+        hi: 5,
+        level: 2,
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 0,
@@ -183,16 +187,16 @@ describe('PlacementProgressService', () => {
       await service.adjustSessionFromAnswer('ist', mockQuestion, session, 'user-1');
       expect(session.mistakesPerLevel).toBe(0);
       expect(session.askedPerCategory.grammar).toBe(1);
-      expect(session.level).toBe('B1');
+      expect(session.level).toBe(2);
     });
 
     it('drops level when mistakes reach 2', async () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
+        lo: 0,
+        hi: 5,
+        level: 2,
         mistakesPerLevel: 1,
         askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
         totalAnswered: 1,
@@ -204,8 +208,8 @@ describe('PlacementProgressService', () => {
 
       await service.adjustSessionFromAnswer('hat', mockQuestion, session, 'user-1');
       expect(session.mistakesPerLevel).toBe(0);
-      expect(session.hi).toBe('B1');
-      expect(session.level).toBe('A2');
+      expect(session.hi).toBe(2);
+      expect(session.level).toBe(1);
       expect(session.askedPerCategory).toEqual({ grammar: 0, vocabulary: 0, reading: 0 });
     });
 
@@ -213,9 +217,9 @@ describe('PlacementProgressService', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
+        lo: 0,
+        hi: 5,
+        level: 2,
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 2, vocabulary: 2, reading: 1 },
         totalAnswered: 5,
@@ -227,8 +231,8 @@ describe('PlacementProgressService', () => {
 
       await service.adjustSessionFromAnswer('ist', mockQuestion, session, 'user-1');
       expect(session.mistakesPerLevel).toBe(0);
-      expect(session.lo).toBe('B2');
-      expect(session.level).toBe('C1');
+      expect(session.lo).toBe(3);
+      expect(session.level).toBe(4);
       expect(session.askedPerCategory).toEqual({ grammar: 0, vocabulary: 0, reading: 0 });
     });
 
@@ -236,9 +240,9 @@ describe('PlacementProgressService', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
-        lo: 'C2',
-        hi: 'C3',
-        level: 'C2',
+        lo: 5,
+        hi: 6,
+        level: 5,
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 2, vocabulary: 2, reading: 1 },
         totalAnswered: 17,
@@ -250,7 +254,7 @@ describe('PlacementProgressService', () => {
 
       await service.adjustSessionFromAnswer('ist', mockQuestion, session, 'user-1');
       expect(session.ended).toBe(true);
-      expect(session.level).toBe('C3');
+      expect(session.level).toBe(6);
       expect(prisma.$transaction).toHaveBeenCalled();
       expect(prisma.userLevel.update).toHaveBeenCalledWith({
         where: {
@@ -260,9 +264,7 @@ describe('PlacementProgressService', () => {
           },
         },
         data: {
-          lastEvalSessionId: EVAL_ID,
-          lastEvalLevel: 'C3',
-          level: 'C3',
+          level: 'C2',
         },
       });
     });
@@ -271,9 +273,9 @@ describe('PlacementProgressService', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
-        lo: 'A1',
-        hi: 'A2',
-        level: 'A1',
+        lo: 0,
+        hi: 1,
+        level: 0,
         mistakesPerLevel: 1,
         askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
         totalAnswered: 7,
@@ -285,7 +287,7 @@ describe('PlacementProgressService', () => {
 
       await service.adjustSessionFromAnswer('hat', mockQuestion, session, 'user-1');
       expect(session.ended).toBe(true);
-      expect(session.level).toBe('A1');
+      expect(session.level).toBe(0);
       expect(prisma.$transaction).toHaveBeenCalled();
       expect(prisma.userLevel.update).toHaveBeenCalledWith({
         where: {
@@ -295,8 +297,6 @@ describe('PlacementProgressService', () => {
           },
         },
         data: {
-          lastEvalSessionId: EVAL_ID,
-          lastEvalLevel: 'A1',
           level: 'A1',
         },
       });
@@ -306,9 +306,9 @@ describe('PlacementProgressService', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
+        lo: 0,
+        hi: 5,
+        level: 2,
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 0,
@@ -328,9 +328,9 @@ describe('PlacementProgressService', () => {
         const session: ExamSession = {
           evalId: EVAL_ID,
           lang: 'de',
-          lo: 'A1',
-          hi: 'A2',
-          level: 'A1',
+          lo: 0,
+          hi: 1,
+          level: 0,
           mistakesPerLevel: 1,
           askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
           totalAnswered: 7,
@@ -342,16 +342,16 @@ describe('PlacementProgressService', () => {
 
         await service.adjustSessionFromAnswer('hat', mockQuestion, session, 'user-1');
         expect(session.ended).toBe(true);
-        expect(session.level).toBe('A1');
+        expect(session.level).toBe(0);
       });
 
       it('reaches terminal outcome A2 on passing A1 when hi is A2', async () => {
         const session: ExamSession = {
           evalId: EVAL_ID,
           lang: 'de',
-          lo: 'A1',
-          hi: 'A2',
-          level: 'A1',
+          lo: 0,
+          hi: 1,
+          level: 0,
           mistakesPerLevel: 0,
           askedPerCategory: { grammar: 2, vocabulary: 2, reading: 1 },
           totalAnswered: 11,
@@ -363,16 +363,16 @@ describe('PlacementProgressService', () => {
 
         await service.adjustSessionFromAnswer('ist', mockQuestion, session, 'user-1');
         expect(session.ended).toBe(true);
-        expect(session.level).toBe('A2');
+        expect(session.level).toBe(1);
       });
 
       it('reaches terminal outcome B1 on passing A2 when hi is B1', async () => {
         const session: ExamSession = {
           evalId: EVAL_ID,
           lang: 'de',
-          lo: 'A1',
-          hi: 'B1',
-          level: 'A2',
+          lo: 0,
+          hi: 2,
+          level: 1,
           mistakesPerLevel: 0,
           askedPerCategory: { grammar: 2, vocabulary: 2, reading: 1 },
           totalAnswered: 7,
@@ -384,16 +384,16 @@ describe('PlacementProgressService', () => {
 
         await service.adjustSessionFromAnswer('ist', mockQuestion, session, 'user-1');
         expect(session.ended).toBe(true);
-        expect(session.level).toBe('B1');
+        expect(session.level).toBe(2);
       });
 
       it('reaches terminal outcome B2 on failing B2 when lo is B2', async () => {
         const session: ExamSession = {
           evalId: EVAL_ID,
           lang: 'de',
-          lo: 'B2',
-          hi: 'C1',
-          level: 'B2',
+          lo: 3,
+          hi: 4,
+          level: 3,
           mistakesPerLevel: 1,
           askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
           totalAnswered: 13,
@@ -405,16 +405,16 @@ describe('PlacementProgressService', () => {
 
         await service.adjustSessionFromAnswer('hat', mockQuestion, session, 'user-1');
         expect(session.ended).toBe(true);
-        expect(session.level).toBe('B2');
+        expect(session.level).toBe(3);
       });
 
       it('reaches terminal outcome C1 on passing B2 when hi is C1', async () => {
         const session: ExamSession = {
           evalId: EVAL_ID,
           lang: 'de',
-          lo: 'B2',
-          hi: 'C1',
-          level: 'B2',
+          lo: 3,
+          hi: 4,
+          level: 3,
           mistakesPerLevel: 0,
           askedPerCategory: { grammar: 2, vocabulary: 2, reading: 1 },
           totalAnswered: 17,
@@ -426,16 +426,16 @@ describe('PlacementProgressService', () => {
 
         await service.adjustSessionFromAnswer('ist', mockQuestion, session, 'user-1');
         expect(session.ended).toBe(true);
-        expect(session.level).toBe('C1');
+        expect(session.level).toBe(4);
       });
 
       it('reaches terminal outcome C2 on failing C2 when lo is C2', async () => {
         const session: ExamSession = {
           evalId: EVAL_ID,
           lang: 'de',
-          lo: 'C2',
-          hi: 'C3',
-          level: 'C2',
+          lo: 5,
+          hi: 6,
+          level: 5,
           mistakesPerLevel: 1,
           askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
           totalAnswered: 13,
@@ -447,7 +447,7 @@ describe('PlacementProgressService', () => {
 
         await service.adjustSessionFromAnswer('hat', mockQuestion, session, 'user-1');
         expect(session.ended).toBe(true);
-        expect(session.level).toBe('C2');
+        expect(session.level).toBe(5);
       });
     });
   });
@@ -476,9 +476,9 @@ describe('PlacementProgressService', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
+        lo: 0,
+        hi: 5,
+        level: 2,
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 0,
@@ -496,9 +496,9 @@ describe('PlacementProgressService', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
-        level: 'B1',
+        lo: 0,
+        hi: 5,
+        level: 2,
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 2,
@@ -549,8 +549,8 @@ describe('PlacementProgressService', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
-        lo: 'A1',
-        hi: 'C2',
+        lo: 0,
+        hi: 5,
         level: null,
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },

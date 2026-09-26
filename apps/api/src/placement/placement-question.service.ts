@@ -1,17 +1,15 @@
 import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
 import {
   ExamSession,
-  TARGET_LEVELS,
   PlacementQuestion,
   PlacementQuestionSchema,
   PLACEMENT_ROUNDS,
   QUESTION_CATEGORIES,
   QuestionCategory,
-  TargetLevel,
   LEVELS,
 } from '@ft/shared';
 
-import { Level, QuestionBank } from '../generated/prisma/client';
+import { QuestionBank } from '../generated/prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 
 export const FETCH_NEW_QUESTIONS_FOR_CATEGORY_WHEN_REMAINING_LESS_THAN = 6;
@@ -58,7 +56,7 @@ export class PlacementQuestionService {
       const questions = await this.prisma.questionBank.findMany({
         where: {
           lang: session.lang,
-          level: LEVELS[Math.min(session.level, LEVELS.length)],
+          level: LEVELS[Math.max(0, Math.min(session.level, LEVELS.length - 1))],
           category: cat,
           userSeenQuestions: {
             none: {
@@ -166,15 +164,14 @@ export class PlacementQuestionService {
    * @returns Theoretical maximum number of questions remaining.
    */
   getMaxQuestionsRemaining(session: ExamSession): number {
+    if (session.level === null) {
+      throw new ConflictException('placement.invalidSession');
+    }
     const askedInCurrentLevel = Object.values(session.askedPerCategory).reduce(
       (sum, count) => sum + count,
       0,
     );
     const current_level_remaining = Math.max(0, MAX_QUESTIONS_PER_LEVEL - askedInCurrentLevel);
-
-    // const loIndex = Math.max(0, TARGET_LEVELS.indexOf(session.lo));
-    // const hiIndex = Math.max(0, TARGET_LEVELS.indexOf(session.hi));
-    // const levelIndex = Math.max(0, TARGET_LEVELS.indexOf(session.level ?? 'A1'));
 
     const lowerDistance = Math.max(0, session.level - session.lo);
     const max_lower =

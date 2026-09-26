@@ -11,14 +11,12 @@ import {
   PlacementReportEntry,
   PlacementResult,
   PlacementResultSchema,
-  Level,
   LEVELS,
 } from '@ft/shared';
 
 import { QuestionBank } from '../generated/prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 import { MAX_QUESTIONS_PER_LEVEL } from './placement-question.service';
-import { ExceptionsHandler } from '@nestjs/core/exceptions/exceptions-handler';
 
 export const NETWORK_GRACE_S = 3;
 
@@ -56,9 +54,9 @@ export class PlacementProgressService {
    */
   async updateUserLevel(userId: string, lang: Language, level: number | null): Promise<void> {
     if (level === null) {
-      throw new Exception();
+      throw new ConflictException('placement.invalidSession');
     }
-    const targetLevel = LEVELS[Math.min(level, LEVELS.length)];
+    const targetLevel = LEVELS[Math.max(0, Math.min(level, LEVELS.length - 1))];
     await this.prisma.$transaction([
       this.prisma.userLevel.update({
         where: {
@@ -72,14 +70,10 @@ export class PlacementProgressService {
         },
       }),
 
-      ...(level !== null
-        ? [
-            this.prisma.user.update({
-              where: { id: userId },
-              data: { activeLang: lang },
-            }),
-          ]
-        : []),
+      this.prisma.user.update({
+        where: { id: userId },
+        data: { activeLang: lang },
+      }),
     ]);
   }
 
@@ -234,7 +228,10 @@ export class PlacementProgressService {
     }
 
     return PlacementResultSchema.parse({
-      targetLevel: session.level !== null ? LEVELS[Math.min(session.level, LEVELS.length)] : null,
+      targetLevel:
+        session.level !== null
+          ? LEVELS[Math.max(0, Math.min(session.level, LEVELS.length - 1))]
+          : null,
       report,
     });
   }
