@@ -76,7 +76,7 @@ export class PlacementService {
    * @returns Tuple of `[session, question, result]` where `result` is defined if ended or timed out.
    * @throws NotFoundException If no active session or current question ID exists (`placement.notFound`).
    */
-  async checkEndedOrTimedOut(
+  async checkEndedOrTimedOutAndSaveNullAnswerIfTimedOut(
     userId: string,
   ): Promise<
     [ExamSession, QuestionBank | undefined, PlacementQuestion | PlacementResult | undefined]
@@ -195,7 +195,8 @@ export class PlacementService {
     }
 
     try {
-      const [session, question, result] = await this.checkEndedOrTimedOut(userId);
+      const [session, question, result] =
+        await this.checkEndedOrTimedOutAndSaveNullAnswerIfTimedOut(userId);
       if (result !== undefined) return result;
       assert(question !== undefined);
 

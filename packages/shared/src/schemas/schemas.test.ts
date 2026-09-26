@@ -7,7 +7,6 @@ import {
   DEFAULT_LOCALE,
   DisableTwoFactorSchema,
   EnableTwoFactorSchema,
-  ExamSessionSchema,
   HealthResponseSchema,
   LocaleSchema,
   LoginSchema,
