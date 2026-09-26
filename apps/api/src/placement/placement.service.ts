@@ -11,7 +11,6 @@ import { randomUUID } from 'node:crypto';
 import { ExamSession } from './placement.schema';
 
 import { QuestionBank } from '../generated/prisma/client';
-import { CoursesService } from '../courses/courses.service';
 import { PlacementSessionService } from './placement-session.service';
 import { PlacementQuestionService } from './placement-question.service';
 import { PlacementProgressService } from './placement-progress.service';
@@ -31,7 +30,6 @@ export class PlacementService {
     private readonly sessionService: PlacementSessionService,
     private readonly questionService: PlacementQuestionService,
     private readonly progressService: PlacementProgressService,
-    private readonly coursesService: CoursesService,
   ) {}
 
   /**
@@ -59,13 +57,9 @@ export class PlacementService {
       choice,
     });
     session.totalAnswered += 1;
-    this.progressService.adjustSessionFromAnswer(choice, question, session);
+    this.progressService.adjustSessionFromAnswer(choice, question, session, userId);
     if (session.ended) {
-      if (session.level === null) {
-        throw new ConflictException('placement.invalidSession');
-      }
-      const targetLevel = LEVELS[Math.max(0, Math.min(session.level, LEVELS.length - 1))];
-      await this.coursesService.setLevel(userId, session.lang, { level: targetLevel });
+      await this.progressService.updateUserLevel(userId, session.lang, session.level);
     }
 
     const result = await this.progressService.getResult(session);
@@ -126,39 +120,35 @@ export class PlacementService {
       throw new ConflictException('placement.inProgress');
     }
 
-    try {
-      const existing = await this.sessionService.hasActiveSession(userId);
-      if (existing) {
-        throw new ConflictException('placement.inProgress');
-      }
-
-      if (!(await this.progressService.checkOnboardingCompleted(userId, dto.lang))) {
-        throw new ConflictException('placement.onboardingIncomplete');
-      }
-
-      await this.sessionService.deleteSession(userId);
-
-      const examSession: ExamSession = {
-        evalId: randomUUID(),
-        lang: dto.lang,
-        lo: 0,
-        hi: 5,
-        level: LEVELS.indexOf(START_LEVEL),
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-        totalAnswered: 0,
-        answers: [],
-        ended: false,
-        currentQuestionId: null,
-        servedAt: new Date().toISOString(),
-      };
-
-      const newQuestion = await this.questionService.getNewPlacementQuestion(userId, examSession);
-      await this.sessionService.saveExamSession(userId, examSession);
-      return newQuestion;
-    } finally {
-      await this.sessionService.releaseLock(userId);
+    const existing = await this.sessionService.hasActiveSession(userId);
+    if (existing) {
+      throw new ConflictException('placement.inProgress');
     }
+
+    if (!(await this.progressService.checkOnboardingCompleted(userId, dto.lang))) {
+      throw new ConflictException('placement.onboardingIncomplete');
+    }
+
+    await this.sessionService.deleteSession(userId);
+
+    const examSession: ExamSession = {
+      evalId: randomUUID(),
+      lang: dto.lang,
+      lo: 0,
+      hi: 5,
+      level: LEVELS.indexOf(START_LEVEL),
+      mistakesPerLevel: 0,
+      askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
+      totalAnswered: 0,
+      answers: [],
+      ended: false,
+      currentQuestionId: null,
+      servedAt: new Date().toISOString(),
+    };
+
+    const newQuestion = await this.questionService.getNewPlacementQuestion(userId, examSession);
+    await this.sessionService.saveExamSession(userId, examSession);
+    return newQuestion;
   }
 
   /**
@@ -205,24 +195,20 @@ export class PlacementService {
       throw new ConflictException('placement.inProgress');
     }
 
-    try {
-      const [session, question, result] =
-        await this.checkEndedOrTimedOutAndSaveNullAnswerIfTimedOut(userId);
-      if (result !== undefined) return result;
-      assert(question !== undefined);
+    const [session, question, result] =
+      await this.checkEndedOrTimedOutAndSaveNullAnswerIfTimedOut(userId);
+    if (result !== undefined) return result;
+    assert(question !== undefined);
 
-      if (dto.questionId !== session.currentQuestionId) {
-        throw new ConflictException('placement.questionMismatch');
-      }
-
-      if (dto.choice !== null && !question.options.includes(dto.choice)) {
-        throw new BadRequestException('placement.invalidChoice');
-      }
-
-      return await this.processAnswer(userId, dto.choice, question, session);
-    } finally {
-      await this.sessionService.releaseLock(userId);
+    if (dto.questionId !== session.currentQuestionId) {
+      throw new ConflictException('placement.questionMismatch');
     }
+
+    if (dto.choice !== null && !question.options.includes(dto.choice)) {
+      throw new BadRequestException('placement.invalidChoice');
+    }
+
+    return await this.processAnswer(userId, dto.choice, question, session);
   }
 
   /**
@@ -237,10 +223,6 @@ export class PlacementService {
       throw new ConflictException('placement.inProgress');
     }
 
-    try {
-      await this.sessionService.deleteSession(userId);
-    } finally {
-      await this.sessionService.releaseLock(userId);
-    }
+    await this.sessionService.deleteSession(userId);
   }
 }
