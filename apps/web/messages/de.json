@@ -199,7 +199,11 @@
     },
     "placement": {
       "inProgress": "Ein Einstufungstest läuft bereits. Beende ihn zuerst.",
+      "invalidChoice": "Ungültige Antwortauswahl für diese Frage.",
+      "invalidSession": "Dieser Einstufungstest ist ungültig. Starte einen neuen.",
       "notFound": "Es läuft kein Einstufungstest",
+      "onboardingIncomplete": "Schließe das Onboarding ab, bevor du den Einstufungstest machst.",
+      "questionMismatch": "Diese Frage ist nicht mehr aktiv. Aktualisiere den Einstufungstest und versuche es erneut.",
       "expired": "Dieser Einstufungstest ist abgelaufen. Starte einen neuen.",
       "poolExhausted": "Für diesen Test sind nicht genügend Fragen übrig. Versuche es später erneut."
     },

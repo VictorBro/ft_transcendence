@@ -15,6 +15,7 @@ import {
   SecondFactorSchema,
   SignUpFormSchema,
   StartCourseSchema,
+  StartPlacementSchema,
   SubmitAnswerSchema,
   SUPPORTED_LOCALES,
   UpdateProfileSchema,
@@ -199,7 +200,7 @@ describe('placement', () => {
     options: ['ist', 'hat', 'war', 'wird'],
     timeLimitS: 30,
     remainingS: 27,
-    progress: { answered: 2, total: 6 },
+    progress: { answered: 2, maxRemaining: 6 },
   };
 
   it('serves a question with no answer attached', () => {
@@ -211,6 +212,39 @@ describe('placement', () => {
     expect(PlacementQuestionSchema.safeParse({ ...question, answer: 'ist' }).success).toBe(false);
   });
 
+  it('requires non-null readText on reading questions', () => {
+    const readingQuestion = {
+      ...question,
+      category: 'reading',
+      readText: 'Ein kurzer Text zum Lesen.',
+    };
+    expect(PlacementQuestionSchema.safeParse(readingQuestion).success).toBe(true);
+
+    expect(
+      PlacementQuestionSchema.safeParse({ ...readingQuestion, readText: undefined }).success,
+    ).toBe(false);
+    expect(PlacementQuestionSchema.safeParse({ ...readingQuestion, readText: null }).success).toBe(
+      false,
+    );
+  });
+
+  it('forbids non-null readText on grammar and vocabulary questions', () => {
+    expect(PlacementQuestionSchema.safeParse(question).success).toBe(true);
+    expect(PlacementQuestionSchema.safeParse({ ...question, readText: null }).success).toBe(true);
+    expect(
+      PlacementQuestionSchema.safeParse({ ...question, readText: 'Not allowed here' }).success,
+    ).toBe(false);
+
+    const vocabQuestion = { ...question, category: 'vocabulary' };
+    expect(PlacementQuestionSchema.safeParse(vocabQuestion).success).toBe(true);
+    expect(PlacementQuestionSchema.safeParse({ ...vocabQuestion, readText: null }).success).toBe(
+      true,
+    );
+    expect(
+      PlacementQuestionSchema.safeParse({ ...vocabQuestion, readText: 'Not allowed here' }).success,
+    ).toBe(false);
+  });
+
   it('reads an explicit null choice as a timeout', () => {
     const parsed = SubmitAnswerSchema.parse({ questionId: question.questionId, choice: null });
 
@@ -220,6 +254,14 @@ describe('placement', () => {
   // Nullable, not optional: an absent field must not pass as a timeout.
   it('rejects a missing choice', () => {
     expect(SubmitAnswerSchema.safeParse({ questionId: question.questionId }).success).toBe(false);
+  });
+
+  it('accepts a valid language to start a placement exam', () => {
+    expect(StartPlacementSchema.parse({ lang: 'de' })).toEqual({ lang: 'de' });
+  });
+
+  it('rejects an invalid language to start a placement exam', () => {
+    expect(StartPlacementSchema.safeParse({ lang: 'es' }).success).toBe(false);
   });
 });
 

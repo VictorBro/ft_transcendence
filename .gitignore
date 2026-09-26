@@ -50,6 +50,9 @@ test-results
 !.vscode/settings.json
 !.vscode/extensions.json
 
+# Agents
+AGENTS.md
+
 # Local-only overrides and generated TLS material
 *.local
 certs
