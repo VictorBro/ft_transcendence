@@ -7,9 +7,9 @@ import { Shell } from '@/components/shell';
 import { Link } from '@/i18n/navigation';
 
 /**
- * The practice shell: the same pinned frame as (dashboard), but the wordmark is
- * replaced by a close button, since a mode is something you leave rather than
- * navigate away from.
+ * The practice shell: the same frame as (dashboard), pinned from `lg` only, but
+ * the wordmark is replaced by a close button, since a mode is something you
+ * leave rather than navigate away from.
  */
 export default async function ModeLayout({ children }: { children: ReactNode }) {
   const t = await getTranslations('ModeLayout');
