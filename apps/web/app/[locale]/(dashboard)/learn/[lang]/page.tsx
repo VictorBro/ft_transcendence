@@ -68,8 +68,8 @@ export default async function CoursePage({ params }: { params: Promise<{ lang: s
   }
 
   return (
-    <div className="flex h-full min-h-0 gap-6">
-      <div className="-mx-3 -my-3 flex min-w-0 flex-1 flex-col gap-6 overflow-y-auto px-3 py-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+    <div className="flex h-full min-h-0 flex-col gap-6 lg:flex-row">
+      <div className="-mx-3 -my-3 flex min-w-0 flex-1 flex-col gap-6 px-3 py-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:overflow-y-auto">
         <h1 className="text-3xl font-semibold">{languageName(course.lang)}</h1>
 
         {/* The roadmap is the point of this page, so it holds the main column
@@ -86,7 +86,7 @@ export default async function CoursePage({ params }: { params: Promise<{ lang: s
         </section>
       </div>
 
-      <aside className="w-95 shrink-0">
+      <aside className="w-full shrink-0 lg:w-95">
         <section className="flex flex-col gap-3 rounded-2xl border border-slate-800 bg-slate-900 p-6">
           <h2 className="text-xs font-semibold tracking-widest text-slate-500 uppercase">
             {t('thisCourse')}

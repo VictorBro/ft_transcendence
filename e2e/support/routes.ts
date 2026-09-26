@@ -88,6 +88,7 @@ export const AUTHENTICATED_FOOTER_ROUTES: PageRoute[] = [
   { path: '/en/chat', name: 'chat' },
   { path: '/en/friends', name: 'friends' },
   { path: '/en/learn/de', name: 'course home' },
+  { path: '/en/onboarding', name: 'onboarding' },
   { path: '/en/profile', name: 'profile' },
   { path: '/en/profile/edit', name: 'edit profile' },
   { path: '/en/settings/2fa', name: 'two-factor settings' },

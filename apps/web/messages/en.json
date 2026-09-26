@@ -1,6 +1,7 @@
 {
   "SessionNav": {
     "accountNav": "Account",
+    "profile": "Profile",
     "signIn": "Sign in",
     "createAccount": "Create account"
   },
