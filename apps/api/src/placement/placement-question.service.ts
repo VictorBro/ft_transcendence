@@ -8,6 +8,7 @@ import {
   QUESTION_CATEGORIES,
   QuestionCategory,
   TargetLevel,
+  LEVELS,
 } from '@ft/shared';
 
 import { Level, QuestionBank } from '../generated/prisma/client';
@@ -25,21 +26,6 @@ export class PlacementQuestionService {
   constructor(private readonly prisma: PrismaService) {}
 
   /**
-   * Converts a placement `TargetLevel` to a database CEFR `Level`.
-   * Throws `ConflictException` if the level is `'C3'`, as question bank items span up to `'C2'`.
-   *
-   * @param level - Placement target level to convert.
-   * @returns Corresponding database CEFR `Level`.
-   * @throws ConflictException If level is `'C3'` (`placement.expired`).
-   */
-  targetLevelToCEFRLevel(level: TargetLevel): Level {
-    if (level === 'C3') {
-      throw new ConflictException('placement.expired');
-    }
-    return level;
-  }
-
-  /**
    * Retrieves a new question for the user's current level, balancing question categories.
    * Prioritizes randomly selected unseen questions from the question bank and falls back to
    * least-recently-seen questions not yet served in the current session when the unseen pool is exhausted.
@@ -55,7 +41,7 @@ export class PlacementQuestionService {
     userId: string,
     session: ExamSession,
   ): Promise<[Partial<Record<QuestionCategory, number>>, QuestionBank]> {
-    if (session.ended || session.level === null || session.level === 'C3') {
+    if (session.ended || session.level === null) {
       throw new ConflictException('placement.expired');
     }
 
@@ -72,7 +58,7 @@ export class PlacementQuestionService {
       const questions = await this.prisma.questionBank.findMany({
         where: {
           lang: session.lang,
-          level: this.targetLevelToCEFRLevel(session.level),
+          level: LEVELS[Math.min(session.level, LEVELS.length)],
           category: cat,
           userSeenQuestions: {
             none: {
@@ -118,7 +104,7 @@ export class PlacementQuestionService {
           : {}),
         questionBank: {
           lang: session.lang,
-          level: this.targetLevelToCEFRLevel(session.level),
+          level: LEVELS[Math.min(session.level, LEVELS.length)],
           category: { in: [...pool] },
         },
       },
@@ -186,15 +172,15 @@ export class PlacementQuestionService {
     );
     const current_level_remaining = Math.max(0, MAX_QUESTIONS_PER_LEVEL - askedInCurrentLevel);
 
-    const loIndex = Math.max(0, TARGET_LEVELS.indexOf(session.lo));
-    const hiIndex = Math.max(0, TARGET_LEVELS.indexOf(session.hi));
-    const levelIndex = Math.max(0, TARGET_LEVELS.indexOf(session.level ?? 'A1'));
+    // const loIndex = Math.max(0, TARGET_LEVELS.indexOf(session.lo));
+    // const hiIndex = Math.max(0, TARGET_LEVELS.indexOf(session.hi));
+    // const levelIndex = Math.max(0, TARGET_LEVELS.indexOf(session.level ?? 'A1'));
 
-    const lowerDistance = Math.max(0, levelIndex - loIndex);
+    const lowerDistance = Math.max(0, session.level - session.lo);
     const max_lower =
       lowerDistance > 0 ? (Math.floor(Math.log2(lowerDistance)) + 1) * MAX_QUESTIONS_PER_LEVEL : 0;
 
-    const upperDistance = Math.max(0, hiIndex - levelIndex - 1);
+    const upperDistance = Math.max(0, session.hi - session.level - 1);
     const max_upper =
       upperDistance > 0 ? (Math.floor(Math.log2(upperDistance)) + 1) * MAX_QUESTIONS_PER_LEVEL : 0;
 

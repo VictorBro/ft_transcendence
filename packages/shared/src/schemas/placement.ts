@@ -1,6 +1,6 @@
-import { z } from 'zod';
+import { int, z } from 'zod';
 
-import { LevelSchema, OPTIONS_PER_ITEM, QuestionCategorySchema, TargetLevelSchema } from './item';
+import { LevelSchema, OPTIONS_PER_ITEM, QuestionCategorySchema } from './item';
 import { LanguageSchema } from './language';
 
 /** The exam that decides a course's level. Questions come from content/items/*.json. */
@@ -61,7 +61,7 @@ export type PlacementReportEntry = z.infer<typeof PlacementReportEntrySchema>;
 
 /** The verdict, with the answers it was drawn from. */
 export const PlacementResultSchema = z.object({
-  targetLevel: TargetLevelSchema.nullable(),
+  targetLevel: LevelSchema.nullable(),
   report: z.array(PlacementReportEntrySchema),
 });
 export type PlacementResult = z.infer<typeof PlacementResultSchema>;
@@ -69,13 +69,12 @@ export type PlacementResult = z.infer<typeof PlacementResultSchema>;
 export const ExamSessionSchema = z.object({
   evalId: z.uuid(),
   lang: LanguageSchema,
-  lo: TargetLevelSchema,
-  hi: TargetLevelSchema,
-  level: TargetLevelSchema.nullable(),
+  lo: int().min(0).max(6),
+  hi: int().min(0).max(6),
+  level: int().min(0).max(6).nullable(),
   mistakesPerLevel: z
     .number()
     .int()
-    .nonnegative()
     .min(0)
     .max(PLACEMENT_ROUNDS.maxMistakes + 1),
   askedPerCategory: z.record(

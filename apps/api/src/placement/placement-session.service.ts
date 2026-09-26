@@ -229,9 +229,9 @@ export class PlacementSessionService {
       session = ExamSessionSchema.parse({
         evalId: data.evalId,
         lang: data.lang,
-        lo: data.lo,
-        hi: data.hi,
-        level: data.level || null,
+        lo: Number(data.lo),
+        hi: Number(data.hi),
+        level: Number(data.level) || null,
         mistakesPerLevel: Number(data.mistakesPerLevel),
         askedPerCategory: JSON.parse(data.askedPerCategory || '{}'),
         totalAnswered: Number(data.totalAnswered ?? 0),
@@ -242,24 +242,6 @@ export class PlacementSessionService {
       });
     } catch {
       throw new ConflictException('placement.invalidSession');
-    }
-
-    const userLevel = await this.prisma.userLevel.findUnique({
-      where: {
-        userId_lang: {
-          userId,
-          lang: session.lang,
-        },
-      },
-      select: {
-        lastEvalSessionId: true,
-        lastEvalLevel: true,
-      },
-    });
-
-    if (userLevel?.lastEvalSessionId === session.evalId) {
-      session.ended = true;
-      session.level = userLevel.lastEvalLevel;
     }
 
     return session;

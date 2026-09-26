@@ -130,9 +130,9 @@ export class PlacementService {
       const examSession: ExamSession = {
         evalId: randomUUID(),
         lang: dto.lang,
-        lo: 'A1',
-        hi: 'C3',
-        level: START_LEVEL,
+        lo: 0,
+        hi: 5,
+        level: 2,
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 0,
@@ -227,55 +227,6 @@ export class PlacementService {
 
     try {
       await this.sessionService.deleteSession(userId);
-    } finally {
-      await this.sessionService.releaseLock(userId, lockToken);
-    }
-  }
-
-  /**
-   * Aborts the active placement exam, archiving the current unanswered question
-   * with `choice: null`, persisting `level = null` to the database (marking the
-   * eval as aborted, not completed), and returning the final result with the
-   * full report of all questions answered so far.
-   *
-   * @param userId - Unique identifier of the user aborting the exam.
-   * @returns Placement result with `targetLevel: null` indicating an aborted exam.
-   * @throws NotFoundException If no active placement session exists.
-   * @throws ConflictException If the placement lock cannot be acquired (`placement.inProgress`).
-   */
-  async abortExam(userId: string): Promise<PlacementResult> {
-    const lockToken = await this.sessionService.acquireLockWithRetry(userId);
-    if (!lockToken) {
-      throw new ConflictException('placement.inProgress');
-    }
-
-    try {
-      const session = await this.sessionService.loadExamSession(userId);
-      if (!session) {
-        throw new NotFoundException('placement.notFound');
-      }
-
-      if (session.ended) {
-        const existingResult = await this.progressService.getResult(session);
-        assert(existingResult !== undefined);
-        return existingResult;
-      }
-
-      if (session.currentQuestionId) {
-        if (session.answers.some((answer) => answer.questionId === session.currentQuestionId)) {
-          throw new ConflictException('placement.invalidSession');
-        }
-        session.answers.push({ questionId: session.currentQuestionId, choice: null });
-      }
-
-      session.ended = true;
-      session.level = null;
-      await this.progressService.updateUserLevel(userId, session.lang, null, session.evalId);
-      await this.sessionService.saveExamSession(userId, session);
-
-      const result = await this.progressService.getResult(session);
-      assert(result !== undefined);
-      return result;
     } finally {
       await this.sessionService.releaseLock(userId, lockToken);
     }

@@ -11,13 +11,14 @@ import {
   PlacementReportEntry,
   PlacementResult,
   PlacementResultSchema,
-  TargetLevel,
-  TARGET_LEVELS,
+  Level,
+  LEVELS,
 } from '@ft/shared';
 
 import { QuestionBank } from '../generated/prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 import { MAX_QUESTIONS_PER_LEVEL } from './placement-question.service';
+import { ExceptionsHandler } from '@nestjs/core/exceptions/exceptions-handler';
 
 export const NETWORK_GRACE_S = 3;
 
@@ -53,12 +54,11 @@ export class PlacementProgressService {
    * @param evalId - Unique identifier of the completed placement evaluation.
    * @returns Promise resolving when the transaction finishes.
    */
-  async updateUserLevel(
-    userId: string,
-    lang: Language,
-    level: TargetLevel | null,
-    evalId: string,
-  ): Promise<void> {
+  async updateUserLevel(userId: string, lang: Language, level: number | null): Promise<void> {
+    if (level === null) {
+      throw new Exception();
+    }
+    const targetLevel = LEVELS[Math.min(level, LEVELS.length)];
     await this.prisma.$transaction([
       this.prisma.userLevel.update({
         where: {
@@ -68,9 +68,7 @@ export class PlacementProgressService {
           },
         },
         data: {
-          lastEvalSessionId: evalId,
-          lastEvalLevel: level,
-          level,
+          level: targetLevel,
         },
       }),
 
@@ -139,10 +137,6 @@ export class PlacementProgressService {
 
     let levelChange: 'down' | 'stay' | 'up' = 'stay';
 
-    const loIndex = TARGET_LEVELS.indexOf(session.lo);
-    const hiIndex = TARGET_LEVELS.indexOf(session.hi);
-    const currIndex = TARGET_LEVELS.indexOf(session.level);
-
     if (session.mistakesPerLevel > PLACEMENT_ROUNDS.maxMistakes) {
       levelChange = 'down';
     } else {
@@ -159,15 +153,15 @@ export class PlacementProgressService {
       (session.askedPerCategory[question.category] ?? 0) + 1;
     if (levelChange === 'stay') {
       return;
-    } else if (levelChange === 'up' && currIndex === hiIndex - 1) {
+    } else if (levelChange === 'up' && session.level === session.hi - 1) {
       session.level = session.hi;
       session.ended = true;
-      await this.updateUserLevel(userId, session.lang, session.level, session.evalId);
+      await this.updateUserLevel(userId, session.lang, session.level);
       return;
-    } else if (levelChange === 'down' && currIndex === loIndex) {
+    } else if (levelChange === 'down' && session.level === session.lo) {
       session.level = session.lo;
       session.ended = true;
-      await this.updateUserLevel(userId, session.lang, session.level, session.evalId);
+      await this.updateUserLevel(userId, session.lang, session.level);
       return;
     }
 
@@ -175,13 +169,19 @@ export class PlacementProgressService {
     session.mistakesPerLevel = 0;
 
     if (levelChange === 'up') {
-      session.lo = TARGET_LEVELS[Math.min(hiIndex, currIndex + 1)];
-      const nextIndex = Math.min(hiIndex - 1, currIndex + Math.ceil((hiIndex - currIndex) / 2));
-      session.level = TARGET_LEVELS[nextIndex];
+      session.lo = Math.min(session.hi, session.level + 1);
+      const nextIndex = Math.min(
+        session.hi - 1,
+        session.level + Math.ceil((session.hi - session.level) / 2),
+      );
+      session.level = nextIndex;
     } else {
       session.hi = session.level;
-      const nextIndex = Math.max(loIndex, currIndex - Math.ceil((currIndex - loIndex) / 2));
-      session.level = TARGET_LEVELS[nextIndex];
+      const nextIndex = Math.max(
+        session.lo,
+        session.level - Math.ceil((session.level - session.lo) / 2),
+      );
+      session.level = nextIndex;
     }
   }
 
@@ -234,7 +234,7 @@ export class PlacementProgressService {
     }
 
     return PlacementResultSchema.parse({
-      targetLevel: session.level,
+      targetLevel: session.level !== null ? LEVELS[Math.min(session.level, LEVELS.length)] : null,
       report,
     });
   }
