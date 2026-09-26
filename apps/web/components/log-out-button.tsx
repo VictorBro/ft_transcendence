@@ -29,7 +29,7 @@ export function LogOutButton() {
       type="button"
       onClick={() => void onClick()}
       disabled={pending}
-      className="underline underline-offset-4 disabled:opacity-60"
+      className="shrink-0 underline underline-offset-4 disabled:opacity-60"
     >
       {pending ? t('signingOut') : t('signOut')}
     </button>

@@ -1,6 +1,7 @@
 {
   "SessionNav": {
     "accountNav": "Compte",
+    "profile": "Profil",
     "signIn": "Se connecter",
     "createAccount": "Créer un compte"
   },

@@ -50,13 +50,17 @@ export function Shell({ brand, nav, fill = false, footer, children }: ShellProps
       </header>
 
       {/*
-        `min-h-0` is what makes `fill` work. A flex child defaults to
-        min-height:auto, which refuses to shrink below its content, so a tall
-        page pushes the footer off the screen and any overflow-y-auto inside
-        never gets a box to scroll in. Setting it here means a page can size
-        itself to the pane with h-full and own its own scrolling.
+        `min-h-0` is what makes `fill` work, from `lg` where the frame is
+        pinned. A flex child defaults to min-height:auto, which refuses to
+        shrink below its content, so a tall page pushes the footer off the
+        screen and the panes' lg:overflow-y-auto never gets a box to scroll in.
+        Setting it here means a page can size itself to the pane with h-full and
+        own its own scrolling. `flex flex-col` is for the pages that fill this
+        box with a single pane and centre inside it.
       */}
-      <main className={`${CONTAINER} flex-1 ${fill ? 'min-h-0 pt-8 pb-4' : 'py-8 sm:py-12'}`}>
+      <main
+        className={`${CONTAINER} flex-1 ${fill ? 'flex min-h-0 flex-col pt-8 pb-4' : 'py-8 sm:py-12'}`}
+      >
         {children}
       </main>
 

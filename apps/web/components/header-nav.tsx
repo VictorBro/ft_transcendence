@@ -8,7 +8,7 @@ import { SessionNav } from './session-nav';
  */
 export function HeaderNav() {
   return (
-    <div className="flex min-w-0 items-center gap-4">
+    <div className="flex min-w-0 flex-wrap items-center gap-x-4 gap-y-2">
       <LanguageSwitcher />
       <SessionNav />
     </div>

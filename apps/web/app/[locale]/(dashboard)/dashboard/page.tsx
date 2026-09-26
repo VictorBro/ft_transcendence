@@ -28,7 +28,7 @@ export default async function LobbyPage() {
           empty outline for a screen reader. sr-only leaves the design as drawn. */}
       <h1 className="sr-only">{t('heading')}</h1>
 
-      <div className="-mx-3 -my-3 flex min-w-0 flex-1 flex-col gap-4 overflow-y-auto px-3 py-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div className="-mx-3 -my-3 flex min-w-0 flex-1 flex-col gap-4 px-3 py-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:overflow-y-auto">
         <ModeTiles />
       </div>
 
