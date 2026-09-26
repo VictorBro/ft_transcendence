@@ -4,7 +4,7 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { ExamSession, PlacementQuestion, PlacementResult } from '@ft/shared';
+import { ExamSession, LEVELS, PlacementQuestion, PlacementResult } from '@ft/shared';
 import assert from 'node:assert';
 import { randomUUID } from 'node:crypto';
 
@@ -132,7 +132,7 @@ export class PlacementService {
         lang: dto.lang,
         lo: 0,
         hi: 5,
-        level: 2,
+        level: LEVELS.indexOf(START_LEVEL),
         mistakesPerLevel: 0,
         askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
         totalAnswered: 0,
