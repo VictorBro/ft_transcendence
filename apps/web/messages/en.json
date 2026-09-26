@@ -217,5 +217,23 @@
     "disabledStatus": "Two factor authentication is off.",
     "working": "Working…",
     "setUp": "Set up"
+  },
+  "Placement": {
+    "title": "Evaluation",
+    "startButton": "Start the test",
+    "startHeading": "Evaluate your level",
+    "startDescription": "The evaluation will help you determine your level in this language.",
+    "starting": "Starting the test…",
+    "questionProgress": "Question {current} of {total}",
+    "secondsLeft": "Seconds left: {seconds}",
+    "optionLabel": "Option {number}",
+    "quitButton": "Quit test",
+    "continueButton": "Continue",
+    "resultHeading": "Placement report",
+    "yourAnswer": "Your answer",
+    "correctAnswer": "Correct answer",
+    "noAnswer": "No answer",
+    "settingNote": "Score",
+    "levelLabel": "Level"
   }
 }

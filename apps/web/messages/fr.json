@@ -217,5 +217,23 @@
     "disabledStatus": "L'authentification à deux facteurs est désactivée.",
     "working": "En cours…",
     "setUp": "Configurer"
+  },
+  "Placement": {
+    "title": "Evaluation",
+    "startButton": "Commencer le test",
+    "startHeading": "Evaluer votre niveau",
+    "startDescription": "L'évaluation vous aidera à déterminer votre niveau dans cette langue.",
+    "starting": "Démarrage du test…",
+    "questionProgress": "Question {current} sur {total}",
+    "secondsLeft": "{seconds} secondes restantes",
+    "optionLabel": "Option {number}",
+    "quitButton": "Quitter le test",
+    "continueButton": "Continuer",
+    "resultHeading": "Rapport d'évaluation",
+    "yourAnswer": "Votre réponse",
+    "correctAnswer": "Réponse correcte",
+    "noAnswer": "Aucune réponse",
+    "settingNote": "Score",
+    "levelLabel": "Niveau"
   }
 }

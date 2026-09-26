@@ -217,5 +217,23 @@
     "disabledStatus": "Die Zwei-Faktor-Authentifizierung ist deaktiviert.",
     "working": "Wird bearbeitet…",
     "setUp": "Einrichten"
+  },
+  "Placement": {
+    "title": "Einstufungstest",
+    "startHeading": "Bewerte dein Niveau",
+    "startDescription": "Dieser Test bewertet dein Niveau in dieser Sprache. Er basiert auf deinen Antworten auf die Fragen und liefert dir am Ende einen detaillierten Bericht.",
+    "startButton": "Test starten",
+    "starting": "Test wird gestartet…",
+    "questionProgress": "Frage {current} von {total}",
+    "secondsLeft": "Verbleibende Sekunden: {seconds}",
+    "optionLabel": "Option {number}",
+    "quitButton": "Test beenden",
+    "resultHeading": "Einstufungstest",
+    "headingReport": "Einstufungsbericht",
+    "yourAnswer": "Deine Antwort",
+    "noAnswer": "Keine Antwort",
+    "correctAnswer": "Richtige Antwort",
+    "settingNote": "Hinweis: Dein Niveau wird anhand deiner",
+    "levelLabel": "Niveau"
   }
 }
