@@ -1,45 +1,76 @@
-import { formatViolations, settle, watchConsole } from '../support/console-guard';
-import { AUTHENTICATED_FOOTER_ROUTES } from '../support/routes';
-import { expect, test } from '../support/session';
+import { expect, ONBOARDED_COURSE, placeCourse, SECOND_COURSE, test } from '../support/session';
 
-test.describe('dashboard access and navigation', () => {
-  // The dashboard page calls requireUser(), so an anonymous visit must bounce
-  // to /login rather than render the lobby. Proves the guard actually works,
-  // not just that it is written.
+const home = `/en/learn/${ONBOARDED_COURSE.lang}`;
+
+test.describe('dashboard and mode pages', () => {
+  // /dashboard sends everyone to /learn, which calls requireCourses(), so an
+  // anonymous visit must still end on /login rather than render anything.
   test('a signed out visitor is sent to the login page', async ({ page }) => {
     await page.goto('/en/dashboard');
     await expect(page).toHaveURL(/\/login$/);
   });
 
-  // Mirrors the `modes` array in dashboard/page.tsx: each lobby tile's visible
-  // title paired with the route it should link to. The titles live in the Lobby
-  // namespace now, so these are the English values the catalogue holds. This
-  // suite is pinned to /en.
-  const tiles: [string, string][] = [
+  // The lobby is gone, but old links and bookmarks still point at it.
+  test('/dashboard sends a learner with no course to onboarding', async ({ signedIn }) => {
+    await signedIn.goto('/en/dashboard');
+
+    await expect(signedIn).toHaveURL(/\/en\/onboarding$/);
+    await expect(
+      signedIn.getByRole('heading', { name: 'What do you want to learn?' }),
+    ).toBeVisible();
+  });
+
+  // Placing French makes it activeLang, so only the cookie can pick German.
+  test('/dashboard sends an onboarded learner to the course they last opened', async ({
+    onboarded,
+  }) => {
+    await placeCourse(onboarded, SECOND_COURSE);
+    await onboarded.goto(home);
+    await onboarded.goto('/en/dashboard');
+
+    await expect(onboarded).toHaveURL(new RegExp(`${home}$`));
+  });
+
+  // Mirrors `modes` in components/practice-row.tsx: each link's visible title
+  // on the course home paired with the route it should open. English values,
+  // since this suite is pinned to /en.
+  const practice: [string, string][] = [
     ['Tutor', '/en/chat'],
     ['Cross-language chat', '/en/friends'],
   ];
 
-  // One test per tile, generated from the table above rather than
-  // hand-written, so a 7th mode only needs a new row here. `exact: true` on the
-  // role query matters because "Chat" is a literal prefix of "Chat progress".
-  for (const [title, href] of tiles) {
-    test(`clicking the ${title} tile navigates to ${href}`, async ({ signedIn }) => {
-      await signedIn.goto('/en/dashboard');
-      await signedIn.getByRole('link', { name: title, exact: true }).click();
+  // One test per link, generated from the table above, so a new mode only needs
+  // a row here. `exact: true` keeps a longer title from matching a shorter one.
+  for (const [title, href] of practice) {
+    test(`the ${title} link on the course home navigates to ${href}`, async ({ onboarded }) => {
+      await onboarded.goto(home);
+      await onboarded.getByRole('link', { name: title, exact: true }).click();
 
-      await expect(signedIn).toHaveURL(new RegExp(`${href}$`));
+      await expect(onboarded).toHaveURL(new RegExp(`${href}$`));
     });
   }
 
   // The (mode) layout wraps every mode page with a back link and the same
   // account nav as the rest of the app. One page (/chat) stands in for all of
-  // them: the layout is shared, so this is not per-page behaviour.
-  test('the back link on a mode page returns to the dashboard', async ({ signedIn }) => {
-    await signedIn.goto('/en/chat');
-    await signedIn.getByRole('link', { name: 'Back to dashboard' }).click();
+  // them: the layout is shared, so this is not per-page behaviour. French is
+  // placed last but German opened, so the link has to find its way back to German.
+  test('the back link on a mode page returns to the course', async ({ onboarded }) => {
+    await placeCourse(onboarded, SECOND_COURSE);
+    await onboarded.goto(home);
+    await onboarded.goto('/en/chat');
+    await onboarded.getByRole('link', { name: 'Back to course' }).click();
 
-    await expect(signedIn).toHaveURL(/\/dashboard$/);
+    await expect(onboarded).toHaveURL(new RegExp(`${home}$`));
+  });
+
+  // /learn rather than the course itself: from the course home it is the same
+  // page, and the layout cannot know which course is open anyway.
+  test('the wordmark in the course shell links to /learn', async ({ onboarded }) => {
+    await onboarded.goto(home);
+
+    await expect(
+      onboarded.getByRole('link', { name: 'ft_transcendence', exact: true }),
+    ).toHaveAttribute('href', '/en/learn');
   });
 
   // Same layout-sharing argument as the back-link test above: SessionNav is
@@ -52,11 +83,11 @@ test.describe('dashboard access and navigation', () => {
     );
   });
 
-  // Stub pages behind the lobby tiles that have no dedicated feature yet:
-  // every tile except Chat, which has a real page. Asserting the title keeps
+  // Stub pages behind the practice links that have no dedicated feature yet:
+  // every one except Chat, which has a real page. Asserting the title keeps
   // this from silently matching the wrong page if a future page reuses the
   // same ComingSoon copy.
-  const stubs = tiles.filter(([, href]) => href !== '/en/chat');
+  const stubs = practice.filter(([, href]) => href !== '/en/chat');
 
   for (const [title, href] of stubs) {
     test(`${href} shows the coming-soon placeholder for ${title}`, async ({ signedIn }) => {
@@ -66,25 +97,5 @@ test.describe('dashboard access and navigation', () => {
     });
   }
 
-  // Dropped from PAGE_ROUTES once they needed a session: an anonymous goto
-  // would land on /login and gate that page instead. Taken from routes.ts so a
-  // new page is covered by adding it there, as that file promises.
-  const consoleGatedRoutes = AUTHENTICATED_FOOTER_ROUTES.map((route) => route.path);
-
-  // Same assertion style as console.spec.ts: attach the listener before
-  // goto so load-time messages aren't missed, wait for the network to go
-  // quiet so async errors have had time to surface, then require zero
-  // console errors/warnings/uncaught exceptions/failed requests.
-  for (const route of consoleGatedRoutes) {
-    test(`${route} logs nothing in the browser console when signed in`, async ({ signedIn }) => {
-      const violations = watchConsole(signedIn);
-      await signedIn.goto(route, { waitUntil: 'domcontentloaded' });
-      await settle(signedIn);
-
-      expect(
-        violations,
-        `${route} produced browser console output:\n${formatViolations(violations)}\n`,
-      ).toEqual([]);
-    });
-  }
+  // Their console gate is in console.spec.ts, driven by `onboarded` in routes.ts.
 });
