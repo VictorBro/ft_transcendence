@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
-import { redirect } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
+import { LanguageSchema } from '@ft/shared';
 
-import { loadCourses } from '@/lib/courses';
+import { requireCourses } from '@/lib/courses';
 import { resolveOnboardingStep } from '@/lib/onboarding';
 import { ChooseCourse } from './choose-course';
 import { ChooseLevel } from './choose-level';
@@ -20,27 +20,25 @@ export const dynamic = 'force-dynamic';
  * Where a learner picks what to study, and the entry point for adding a
  * language later. Not under /learn/[lang]: [lang] is what this page chooses.
  */
-export default async function OnboardingPage() {
-  const result = await loadCourses();
-
-  // This read answers the session question too, so requireUser() would only
-  // add a round trip. An unavailable API is not a verdict about the visitor.
-  if (result.status === 'signed-out') {
-    redirect('/login');
-  }
-
-  if (result.status === 'unavailable') {
-    throw new Error(`Could not load the courses: ${result.reason}`);
-  }
-
-  const step = resolveOnboardingStep(result.data.courses);
+export default async function OnboardingPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ lang?: string | string[] }>;
+}) {
+  const { courses, activeLang } = await requireCourses();
+  // A hand-edited ?lang= is ignored rather than an error.
+  const wanted = LanguageSchema.safeParse((await searchParams).lang);
+  const step = resolveOnboardingStep(courses, wanted.success ? wanted.data : null);
 
   return (
     <div className="mx-auto flex w-full max-w-md flex-col gap-8">
       {step.step === 'chooseCourse' ? (
         <ChooseCourse
-          studied={result.data.courses.map((course) => course.lang)}
-          activeLang={result.data.activeLang}
+          // Remounts when ?lang= changes, since the preselection is only a starting value.
+          key={step.preselected}
+          studied={courses.map((course) => course.lang)}
+          activeLang={activeLang}
+          preselected={step.preselected}
         />
       ) : (
         <ChooseLevel course={step.course} />

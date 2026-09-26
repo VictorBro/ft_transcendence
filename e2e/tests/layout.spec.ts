@@ -1,8 +1,13 @@
 import { devices, type BrowserContext, type Page } from '@playwright/test';
-import { ensureCourse } from '../support/courses';
 import { expectFitsTheScreen } from '../support/layout';
 import { AUTHENTICATED_FOOTER_ROUTES, PUBLIC_FOOTER_ROUTES } from '../support/routes';
-import { createAccount, identity, test as base } from '../support/session';
+import {
+  createAccount,
+  identity,
+  ONBOARDED_COURSE,
+  placeCourse,
+  test as base,
+} from '../support/session';
 
 /**
  * 360px is the narrowest width worth gating: it is the most common Android
@@ -22,12 +27,11 @@ const longestDisplayName = (): string =>
   `browser${crypto.randomUUID().replace(/-/g, '').slice(0, 25)}`;
 
 /**
- * An account of its own, rather than the shared one. The gate needs a learner
- * with a course and a maximal display name, and the shared account cannot
- * supply either: without a course /learn renders a short centred offer to start
- * instead of the two-pane layout and the dashboard header drops the
- * CourseSwitcher, and renaming it would leave dashboard.spec.ts asserting a
- * name the account no longer has. One signup per worker buys both.
+ * An account of its own, rather than the onboarded one. The gate needs a
+ * placed course, since the course home sends anyone without one to onboarding,
+ * and a maximal display name, and renaming the shared account would leave
+ * dashboard.spec.ts asserting a name it no longer has. One signup per worker
+ * buys both.
  */
 type StorageState = Awaited<ReturnType<BrowserContext['storageState']>>;
 
@@ -38,7 +42,7 @@ const test = base.extend<{ learner: Page }, { maximalAccount: StorageState }>({
       const page = await context.newPage();
 
       await createAccount(page, { ...identity(), displayName: longestDisplayName() });
-      await ensureCourse(page, 'de', 30);
+      await placeCourse(page, ONBOARDED_COURSE);
 
       const storageState = await context.storageState();
       await context.close();
