@@ -95,6 +95,16 @@ export class PlacementSessionService {
   }
 
   /**
+   * Releases the mutual exclusion lock for placement operations.
+   *
+   * @param userId - Unique identifier of the user.
+   * @returns Promise resolving when the lock key is removed.
+   */
+  async releaseLock(userId: string): Promise<void> {
+    await this.redis.client.del([this.evalLockKey(userId)]);
+  }
+
+  /**
    * Checks whether an active placement session exists in Redis for the user.
    * Only checks key existence; there can be at most one placement session per user.
    *

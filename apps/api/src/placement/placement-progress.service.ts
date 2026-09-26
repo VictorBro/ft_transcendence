@@ -43,40 +43,6 @@ export class PlacementProgressService {
   }
 
   /**
-   * Persists the determined target level and updates the user's active language
-   * within an atomic database transaction.
-   *
-   * @param userId - Unique identifier of the user.
-   * @param lang - Target language of the placement exam.
-   * @param level - Determined CEFR target level to store.
-   * @returns Promise resolving when the transaction finishes.
-   */
-  async updateUserLevel(userId: string, lang: Language, level: number | null): Promise<void> {
-    if (level === null) {
-      throw new ConflictException('placement.invalidSession');
-    }
-    const targetLevel = LEVELS[Math.max(0, Math.min(level, LEVELS.length - 1))];
-    await this.prisma.$transaction([
-      this.prisma.userLevel.update({
-        where: {
-          userId_lang: {
-            userId,
-            lang,
-          },
-        },
-        data: {
-          level: targetLevel,
-        },
-      }),
-
-      this.prisma.user.update({
-        where: { id: userId },
-        data: { activeLang: lang },
-      }),
-    ]);
-  }
-
-  /**
    * Checks whether onboarding is completed for a user in a specific language
    * by verifying the existence of a corresponding `UserLevel` record in the database.
    *
@@ -100,19 +66,16 @@ export class PlacementProgressService {
   /**
    * Evaluates an answer and updates the adaptive placement session state.
    * Tracks mistakes and category counts, applies binary search level adjustments,
-   * and upon reaching a terminal boundary, marks the exam as ended and updates the user level.
+   * and upon reaching a terminal boundary, marks the exam as ended.
    *
    * @param answer - User's chosen option string, or `null` if timed out.
    * @param question - The question bank entity that was answered.
    * @param session - Current mutable exam session state.
-   * @param userId - Unique identifier of the user.
-   * @returns Promise resolving when session state adjustments and any terminal updates complete.
    */
   adjustSessionFromAnswer(
     answer: string | null,
     question: QuestionBank,
     session: ExamSession,
-    userId: string,
   ): void {
     if (answer !== null && !question.options.includes(answer)) {
       throw new BadRequestException('placement.invalidChoice');
