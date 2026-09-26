@@ -4,9 +4,8 @@ import { getTranslations } from 'next-intl/server';
 import { LanguageSchema } from '@ft/shared';
 
 import { Link } from '@/i18n/navigation';
-import { PracticeRow } from '@/components/mode-tiles';
-import { findCourse, loadCourses } from '@/lib/courses';
-import { requireUser } from '@/lib/session';
+import { PracticeRow } from '@/components/practice-row';
+import { findCourse, requireCourses } from '@/lib/courses';
 import { GoalPicker } from './goal-picker';
 
 /** Reads the session and the courses on every request. */
@@ -24,8 +23,8 @@ export async function generateMetadata({
 }
 
 export default async function CoursePage({ params }: { params: Promise<{ lang: string }> }) {
-  // First, so an anonymous visitor gets /login and not the error boundary.
-  await requireUser();
+  // First, so an anonymous visitor gets /login and not a 404 or onboarding.
+  const { courses } = await requireCourses();
 
   const { lang } = await params;
   const t = await getTranslations('Course');
@@ -37,34 +36,10 @@ export default async function CoursePage({ params }: { params: Promise<{ lang: s
     notFound();
   }
 
-  const result = await loadCourses();
-  if (result.status === 'signed-out') {
-    redirect('/login');
-  }
-  if (result.status === 'unavailable') {
-    // Like requireUser: the error boundary keeps the cookie, a redirect reads
-    // as a logout.
-    throw new Error(`Could not load the courses: ${result.reason}`);
-  }
-
-  const course = findCourse(result.data.courses, parsed.data);
-
-  if (course === null) {
-    // Not a 404: the language is real, they just do not study it yet.
-    return (
-      <div className="flex h-full min-h-0 flex-col gap-6">
-        <h1 className="text-3xl font-semibold">{languageName(parsed.data)}</h1>
-        <section className="flex flex-col items-start gap-4 rounded-2xl border border-slate-800 bg-slate-900 p-6">
-          <p className="text-lg text-slate-400">{t('notStudying')}</p>
-          <Link
-            href="/onboarding"
-            className="rounded-md bg-indigo-600 px-4 py-2 font-medium transition-colors hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
-          >
-            {t('startCourse')}
-          </Link>
-        </section>
-      </div>
-    );
+  // Only this page, not a layout: placement below it must stay reachable.
+  const course = findCourse(courses, parsed.data);
+  if (course === null || course.level === null) {
+    redirect(`/onboarding?lang=${parsed.data}`);
   }
 
   return (
@@ -94,9 +69,7 @@ export default async function CoursePage({ params }: { params: Promise<{ lang: s
 
           <p className="flex items-baseline justify-between gap-4 text-sm text-slate-400">
             <span>{t('level')}</span>
-            <span className="text-lg font-semibold text-slate-100">
-              {course.level ?? t('notPlaced')}
-            </span>
+            <span className="text-lg font-semibold text-slate-100">{course.level}</span>
           </p>
 
           <GoalPicker lang={course.lang} dailyGoal={course.dailyGoal} />
@@ -105,7 +78,7 @@ export default async function CoursePage({ params }: { params: Promise<{ lang: s
             href={`/learn/${course.lang}/placement`}
             className="text-sm text-slate-400 underline underline-offset-4 transition-colors hover:text-slate-100"
           >
-            {course.level === null ? t('takePlacement') : t('retakePlacement')}
+            {t('retakePlacement')}
           </Link>
         </section>
       </aside>

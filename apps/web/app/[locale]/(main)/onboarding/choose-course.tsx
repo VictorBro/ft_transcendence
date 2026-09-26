@@ -18,9 +18,12 @@ const DAILY_GOALS: readonly DailyGoal[] = [10, 30, 60];
 export function ChooseCourse({
   studied,
   activeLang,
+  preselected,
 }: {
   studied: readonly Language[];
   activeLang: Language | null;
+  /** The language the learner came from, via /onboarding?lang=. */
+  preselected: Language | null;
 }) {
   const router = useRouter();
   const t = useTranslations('Onboarding');
@@ -28,7 +31,9 @@ export function ChooseCourse({
   const available = LEARNABLE_LANGUAGES.filter((option) => !studied.includes(option));
   const locked = available.length === 0;
   // One language left means there is nothing to decide, so it starts selected.
-  const [lang, setLang] = useState<Language | null>(available.length === 1 ? available[0] : null);
+  const [lang, setLang] = useState<Language | null>(
+    preselected ?? (available.length === 1 ? available[0] : null),
+  );
   const [dailyGoal, setDailyGoal] = useState<DailyGoal | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
@@ -48,6 +53,8 @@ export function ChooseCourse({
         return;
       }
 
+      // A stale ?lang= would keep step one open when another language was picked.
+      router.replace(`/onboarding?lang=${result.data.lang}`);
       // Without this the server never re-reads, and the page stays on step one.
       router.refresh();
     } finally {

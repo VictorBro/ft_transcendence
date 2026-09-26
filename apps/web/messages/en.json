@@ -22,16 +22,12 @@
     "headline": "Learn a language with a tutor that adapts to you!",
     "intro": "ft_transcendence generates lessons, grades your answers, tracks the level it infers from them, and pairs you with another learner for live practice. This page is the skeleton: everything below is wiring, not product.",
     "startNow": "Start now",
-    "goToLobby": "Go to lobby",
+    "continueLearning": "Continue learning",
     "logoAlt": "ft_transcendence logo"
   },
-  "Lobby": {
-    "title": "Lobby",
-    "heading": "Practice modes",
-    "friendsTitle": "Cross-language chat",
-    "friendsDescription": "Talk with another learner, each of you writing your own language. The AI translates between you and corrects as you go.",
+  "Modes": {
     "chatTitle": "Tutor",
-    "chatDescription": "Work through a topic with the AI tutor, grounded in the course material."
+    "friendsTitle": "Cross-language chat"
   },
   "Languages": {
     "en": "English",
@@ -47,13 +43,9 @@
     "title": "Course",
     "heading": "{language}",
     "level": "Level",
-    "notPlaced": "Not set yet",
     "dailyGoal": "Daily goal",
     "minutesPerDay": "{minutes} min",
-    "takePlacement": "Take the placement test",
     "retakePlacement": "Retake the placement test",
-    "notStudying": "You are not studying this language yet.",
-    "startCourse": "Start this course",
     "roadmapSoon": "Your roadmap will appear here",
     "practice": "Practice",
     "thisCourse": "This course"
@@ -101,7 +93,7 @@
     "stillInDevelopment": "This mode is still in development. Check back soon."
   },
   "ModeLayout": {
-    "backToDashboard": "Back to dashboard"
+    "backToCourse": "Back to course"
   },
   "ChatPage": {
     "title": "Chat",

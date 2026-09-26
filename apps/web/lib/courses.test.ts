@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { courseHomeLang, learnPathLang } from './course-path';
-import { findCourse, resolveLandingLang } from './courses';
+import { findCourse, landingPath, resolveLandingLang } from './courses';
 
 const de = { lang: 'de', level: 'B1', dailyGoal: 30 } as const;
 const fr = { lang: 'fr', level: null, dailyGoal: 10 } as const;
@@ -12,8 +12,8 @@ describe('findCourse', () => {
     expect(findCourse([...courses], 'fr')).toEqual(fr);
   });
 
-  // The page offers to start the course instead of 404ing, so this has to be
-  // null rather than a throw.
+  // The page sends the learner to onboarding instead of 404ing, so this has to
+  // be null rather than a throw.
   it('returns null for a language the learner does not study', () => {
     expect(findCourse([...courses], 'en')).toBeNull();
   });
@@ -42,6 +42,23 @@ describe('resolveLandingLang', () => {
 
   it('has nowhere to land when there are no courses', () => {
     expect(resolveLandingLang('de', 'de', [])).toBeNull();
+  });
+});
+
+describe('landingPath', () => {
+  it('opens the course the learner last used', () => {
+    expect(landingPath('de', { courses: [...courses], activeLang: 'fr' })).toBe('/learn/de');
+  });
+
+  it('starts onboarding when there is no course', () => {
+    expect(landingPath(undefined, { courses: [], activeLang: null })).toBe('/onboarding');
+  });
+
+  // The course home only renders a placed course, so going there would cost a redirect.
+  it('resumes onboarding for that course when it has no level yet', () => {
+    expect(landingPath('fr', { courses: [...courses], activeLang: 'de' })).toBe(
+      '/onboarding?lang=fr',
+    );
   });
 });
 

@@ -21,10 +21,10 @@ export default async function HomePage() {
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-300">{t('intro')}</p>
           <Link
-            href={user ? '/dashboard' : '/signup'}
+            href={user ? '/learn' : '/signup'}
             className="mt-4 flex w-fit items-center rounded-full bg-indigo-700 px-20 py-4 text-base font-semibold text-white shadow-sm transition-colors hover:bg-indigo-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-700 active:bg-indigo-900"
           >
-            {user ? t('goToLobby') : t('startNow')}
+            {user ? t('continueLearning') : t('startNow')}
           </Link>
         </div>
         <Image

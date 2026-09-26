@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import type { Page } from '@playwright/test';
 
 import {
   formatViolations,
@@ -6,39 +6,52 @@ import {
   settle,
   watchConsole,
 } from '../support/console-guard';
-import { PAGE_ROUTES } from '../support/routes';
+import { PAGE_ROUTES, type PageRoute } from '../support/routes';
+import { expect, test } from '../support/session';
+
+/** Visits one route and fails on anything the browser console reported. */
+async function expectSilent(page: Page, route: PageRoute): Promise<void> {
+  // Before goto: listeners attached afterwards miss the load-time output.
+  const violations = watchConsole(page);
+
+  const expectedStatus = route.expectedStatus ?? 200;
+  const response = await page.goto(route.path, { waitUntil: 'domcontentloaded' });
+  expect(response, `no response for ${route.path}`).not.toBeNull();
+  expect(response?.status(), `${route.path} did not return ${expectedStatus}`).toBe(expectedStatus);
+
+  await settle(page);
+
+  // The browser reports the main document's own non-2xx status as a
+  // console.error. On a route that is supposed to answer 404 that line is
+  // the status assertion above working, not the app breaking, so it is the
+  // one message the gate tolerates. See isExpectedDocumentFailure.
+  const unexpected = violations.filter(
+    (violation) => !isExpectedDocumentFailure(violation, page.url(), expectedStatus),
+  );
+
+  expect(
+    unexpected,
+    `${route.path} produced browser console output:\n${formatViolations(unexpected)}\n`,
+  ).toEqual([]);
+}
 
 /**
  * Rejection criterion: no errors or warnings in the browser console on the
  * production build. One test per route so the report names the offender.
  */
 test.describe('console gate', () => {
-  for (const route of PAGE_ROUTES) {
+  for (const route of PAGE_ROUTES.filter((candidate) => !candidate.onboarded)) {
     test(`${route.name} (${route.path}) logs nothing`, async ({ page }) => {
-      // Before goto: listeners attached afterwards miss the load-time output.
-      const violations = watchConsole(page);
+      await expectSilent(page, route);
+    });
+  }
 
-      const expectedStatus = route.expectedStatus ?? 200;
-      const response = await page.goto(route.path, { waitUntil: 'domcontentloaded' });
-      expect(response, `no response for ${route.path}`).not.toBeNull();
-      expect(response?.status(), `${route.path} did not return ${expectedStatus}`).toBe(
-        expectedStatus,
-      );
-
-      await settle(page);
-
-      // The browser reports the main document's own non-2xx status as a
-      // console.error. On a route that is supposed to answer 404 that line is
-      // the status assertion above working, not the app breaking, so it is the
-      // one message the gate tolerates. See isExpectedDocumentFailure.
-      const unexpected = violations.filter(
-        (violation) => !isExpectedDocumentFailure(violation, page.url(), expectedStatus),
-      );
-
-      expect(
-        unexpected,
-        `${route.path} produced browser console output:\n${formatViolations(unexpected)}\n`,
-      ).toEqual([]);
+  for (const route of PAGE_ROUTES.filter((candidate) => candidate.onboarded)) {
+    test(`${route.name} (${route.path}) logs nothing when signed in`, async ({ onboarded }) => {
+      await expectSilent(onboarded, route);
+      // A guard redirect also answers 200, so without this the gate would pass
+      // on whatever page it bounced to.
+      await expect(onboarded).toHaveURL(new RegExp(`${route.path}$`));
     });
   }
 

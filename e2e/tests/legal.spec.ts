@@ -83,10 +83,11 @@ test.describe('legal pages', () => {
     });
   }
 
+  // As the onboarded account: the course home sends anyone else to onboarding.
   test.describe('behind a session', () => {
     for (const route of AUTHENTICATED_FOOTER_ROUTES) {
       test(`both documents are reachable from the footer of ${route.name}`, async ({
-        signedIn: page,
+        onboarded: page,
       }) => {
         await page.goto(route.path);
         // Without this the guard bouncing us to /login would still find a

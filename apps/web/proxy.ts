@@ -7,8 +7,8 @@ import { COURSE_COOKIE, courseHomeLang } from '@/lib/course-path';
 const intl = createMiddleware(routing);
 
 /**
- * next-intl's middleware, plus the cookie /dashboard reads to know where to
- * land. Written here because a server component cannot set one during a render.
+ * next-intl's middleware, plus the cookie /learn reads to know which course to
+ * open. Written here because a server component cannot set one during a render.
  */
 export default function proxy(request: NextRequest) {
   const response = intl(request);
