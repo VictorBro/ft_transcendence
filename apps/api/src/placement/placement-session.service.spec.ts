@@ -1,6 +1,8 @@
 import { ConflictException } from '@nestjs/common';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import type { ExamSession, SubmitAnswerInput } from '@ft/shared';
+import type { SubmitAnswerInput } from '@ft/shared';
+
+import type { ExamSession } from './placement.schema';
 
 import type { PrismaService } from '../prisma/prisma.service';
 import type { RedisService } from '../redis/redis.service';

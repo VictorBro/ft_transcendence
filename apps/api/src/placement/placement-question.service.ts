@@ -1,6 +1,5 @@
 import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
 import {
-  ExamSession,
   PlacementQuestion,
   PlacementQuestionSchema,
   PLACEMENT_ROUNDS,
@@ -8,6 +7,8 @@ import {
   QuestionCategory,
   LEVELS,
 } from '@ft/shared';
+
+import { ExamSession } from './placement.schema';
 
 import { QuestionBank } from '../generated/prisma/client';
 import { PrismaService } from '../prisma/prisma.service';

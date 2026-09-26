@@ -1,7 +1,8 @@
 import { ConflictException, Injectable } from '@nestjs/common';
 import { randomUUID } from 'node:crypto';
-import { ExamSession, ExamSessionSchema, SubmitAnswerSchema } from '@ft/shared';
+import { SubmitAnswerSchema } from '@ft/shared';
 
+import { ExamSession, ExamSessionSchema } from './placement.schema';
 import { PrismaService } from '../prisma/prisma.service';
 import { RedisService } from '../redis/redis.service';
 

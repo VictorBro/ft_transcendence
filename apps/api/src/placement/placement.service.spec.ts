@@ -1,6 +1,8 @@
 import { BadRequestException, ConflictException, NotFoundException } from '@nestjs/common';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import type { ExamSession, PlacementQuestion, PlacementResult } from '@ft/shared';
+import type { PlacementQuestion, PlacementResult } from '@ft/shared';
+
+import type { ExamSession } from './placement.schema';
 
 import type { QuestionBank } from '../generated/prisma/client';
 import { PlacementSessionService } from './placement-session.service';
@@ -160,11 +162,13 @@ describe('PlacementService', () => {
     });
   });
 
-  describe('checkEndedOrTimedOut', () => {
+  describe('checkEndedOrTimedOutAndSaveNullAnswerIfTimedOut', () => {
     it('throws NotFoundException if no session found', async () => {
       vi.mocked(sessionService.loadExamSession).mockResolvedValue(null);
 
-      await expect(service.checkEndedOrTimedOut('user-1')).rejects.toThrow(NotFoundException);
+      await expect(
+        service.checkEndedOrTimedOutAndSaveNullAnswerIfTimedOut('user-1'),
+      ).rejects.toThrow(NotFoundException);
     });
 
     it('throws NotFoundException if session has no currentQuestionId', async () => {
@@ -183,7 +187,9 @@ describe('PlacementService', () => {
         servedAt: new Date().toISOString(),
       });
 
-      await expect(service.checkEndedOrTimedOut('user-1')).rejects.toThrow(NotFoundException);
+      await expect(
+        service.checkEndedOrTimedOutAndSaveNullAnswerIfTimedOut('user-1'),
+      ).rejects.toThrow(NotFoundException);
     });
 
     it('returns result when session already ended', async () => {
@@ -204,7 +210,8 @@ describe('PlacementService', () => {
       vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
       vi.mocked(progressService.getResult).mockResolvedValue(mockPlacementResult);
 
-      const [resSession, question, result] = await service.checkEndedOrTimedOut('user-1');
+      const [resSession, question, result] =
+        await service.checkEndedOrTimedOutAndSaveNullAnswerIfTimedOut('user-1');
       expect(resSession).toBe(session);
       expect(question).toBeUndefined();
       expect(result).toBe(mockPlacementResult);
@@ -230,7 +237,8 @@ describe('PlacementService', () => {
       vi.mocked(progressService.getQuestion).mockResolvedValue(mockQuestion);
       vi.mocked(progressService.hasTimedOut).mockReturnValue(true);
 
-      const [resSession, question, result] = await service.checkEndedOrTimedOut('user-1');
+      const [resSession, question, result] =
+        await service.checkEndedOrTimedOutAndSaveNullAnswerIfTimedOut('user-1');
       expect(resSession).toBe(session);
       expect(question).toBe(mockQuestion);
       expect(result).toBe(mockPlacementQuestion);
@@ -269,7 +277,8 @@ describe('PlacementService', () => {
       vi.mocked(progressService.getQuestion).mockResolvedValue(mockQuestion);
       vi.mocked(progressService.hasTimedOut).mockReturnValue(true);
 
-      const [resSession, question, result] = await service.checkEndedOrTimedOut('user-1');
+      const [resSession, question, result] =
+        await service.checkEndedOrTimedOutAndSaveNullAnswerIfTimedOut('user-1');
       expect(resSession).toBe(session);
       expect(question).toBe(mockQuestion);
       expect(result).toBe(mockPlacementResult);
@@ -298,7 +307,8 @@ describe('PlacementService', () => {
       vi.mocked(progressService.getQuestion).mockResolvedValue(mockQuestion);
       vi.mocked(progressService.hasTimedOut).mockReturnValue(false);
 
-      const [resSession, question, result] = await service.checkEndedOrTimedOut('user-1');
+      const [resSession, question, result] =
+        await service.checkEndedOrTimedOutAndSaveNullAnswerIfTimedOut('user-1');
       expect(resSession).toBe(session);
       expect(question).toBe(mockQuestion);
       expect(result).toBeUndefined();

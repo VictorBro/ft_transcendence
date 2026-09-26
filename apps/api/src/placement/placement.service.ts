@@ -4,9 +4,11 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { ExamSession, LEVELS, PlacementQuestion, PlacementResult } from '@ft/shared';
+import { LEVELS, PlacementQuestion, PlacementResult } from '@ft/shared';
 import assert from 'node:assert';
 import { randomUUID } from 'node:crypto';
+
+import { ExamSession } from './placement.schema';
 
 import { QuestionBank } from '../generated/prisma/client';
 import { PlacementSessionService } from './placement-session.service';

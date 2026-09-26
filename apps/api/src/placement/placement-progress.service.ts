@@ -5,7 +5,6 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import {
-  ExamSession,
   Language,
   PLACEMENT_ROUNDS,
   PlacementReportEntry,
@@ -13,6 +12,8 @@ import {
   PlacementResultSchema,
   LEVELS,
 } from '@ft/shared';
+
+import { ExamSession } from './placement.schema';
 
 import { QuestionBank } from '../generated/prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
