@@ -1,4 +1,4 @@
-import { int, z } from 'zod';
+import { z } from 'zod';
 
 import { LevelSchema, OPTIONS_PER_ITEM, QuestionCategorySchema } from './item';
 import { LanguageSchema } from './language';
