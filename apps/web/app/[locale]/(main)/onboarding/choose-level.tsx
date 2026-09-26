@@ -126,7 +126,7 @@ export function ChooseLevel({ course }: { course: Course }) {
               {MASTERY_OPTIONS.map((option) => (
                 <label
                   key={option ?? BEGINNER}
-                  className="cursor-pointer rounded-md border border-slate-700 px-4 py-2 text-center text-sm has-checked:border-slate-100 has-checked:bg-slate-100 has-checked:text-slate-900"
+                  className="cursor-pointer rounded-md border border-slate-700 px-1 py-2 text-center text-sm has-checked:border-slate-100 has-checked:bg-slate-100 has-checked:text-slate-900 sm:px-4"
                 >
                   <input
                     type="radio"
