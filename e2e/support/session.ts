@@ -4,9 +4,10 @@ import { test as base, expect, type BrowserContext, type Page } from '@playwrigh
  * Signing in, for the specs that need an account but are not testing signup.
  *
  * One account per worker, not per test and not per file: each signup writes a
- * row and runs argon2, and POST /auth/signup is limited to 10 a minute per
- * address, so a suite that signs up per test spends its budget on setup and
- * starts failing on a 429 it never asked for.
+ * row and runs argon2, and POST /auth/signup is limited to 30 a minute per
+ * address. Every browser in the run shares that address, so the whole run
+ * shares one budget: a clean run already spends about 17 plus one per worker,
+ * and a suite that signs up per test starts failing on a 429 it never asked for.
  *
  * Exposed as fixtures rather than helpers so teardown is Playwright's problem.
  * A context closed by hand at the end of a test leaks whenever an assertion
