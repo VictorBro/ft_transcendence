@@ -114,6 +114,7 @@ export class PlacementSessionService {
       totalAnswered: session.totalAnswered.toString(),
       ended: session.ended.toString(),
       currentQuestionId: session.currentQuestionId ?? '',
+      currentOptions: session.currentOptions ? JSON.stringify(session.currentOptions) : '',
       servedAt: session.servedAt,
     });
 
@@ -168,6 +169,7 @@ export class PlacementSessionService {
         answers,
         ended: data.ended === 'true',
         currentQuestionId: data.currentQuestionId ? data.currentQuestionId : null,
+        currentOptions: data.currentOptions ? JSON.parse(data.currentOptions) : null,
         servedAt: data.servedAt,
       });
     } catch {

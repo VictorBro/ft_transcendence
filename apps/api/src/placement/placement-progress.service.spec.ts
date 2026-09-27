@@ -98,6 +98,7 @@ describe('PlacementProgressService', () => {
         answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
+        currentOptions: mockQuestion.options,
         servedAt: new Date().toISOString(),
       };
 
@@ -119,6 +120,7 @@ describe('PlacementProgressService', () => {
         answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
+        currentOptions: mockQuestion.options,
         servedAt: new Date().toISOString(),
       };
 
@@ -141,6 +143,7 @@ describe('PlacementProgressService', () => {
         answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
+        currentOptions: mockQuestion.options,
         servedAt: new Date().toISOString(),
       };
 
@@ -164,6 +167,7 @@ describe('PlacementProgressService', () => {
         answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
+        currentOptions: mockQuestion.options,
         servedAt: new Date().toISOString(),
       };
 
@@ -187,6 +191,7 @@ describe('PlacementProgressService', () => {
         answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
+        currentOptions: mockQuestion.options,
         servedAt: new Date().toISOString(),
       };
 
@@ -208,6 +213,7 @@ describe('PlacementProgressService', () => {
         answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
+        currentOptions: mockQuestion.options,
         servedAt: new Date().toISOString(),
       };
 
@@ -229,6 +235,7 @@ describe('PlacementProgressService', () => {
         answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
+        currentOptions: mockQuestion.options,
         servedAt: new Date().toISOString(),
       };
 
@@ -251,6 +258,7 @@ describe('PlacementProgressService', () => {
           answers: [],
           ended: false,
           currentQuestionId: mockQuestion.id,
+          currentOptions: mockQuestion.options,
           servedAt: new Date().toISOString(),
         };
 
@@ -272,6 +280,7 @@ describe('PlacementProgressService', () => {
           answers: [],
           ended: false,
           currentQuestionId: mockQuestion.id,
+          currentOptions: mockQuestion.options,
           servedAt: new Date().toISOString(),
         };
 
@@ -293,6 +302,7 @@ describe('PlacementProgressService', () => {
           answers: [],
           ended: false,
           currentQuestionId: mockQuestion.id,
+          currentOptions: mockQuestion.options,
           servedAt: new Date().toISOString(),
         };
 
@@ -314,6 +324,7 @@ describe('PlacementProgressService', () => {
           answers: [],
           ended: false,
           currentQuestionId: mockQuestion.id,
+          currentOptions: mockQuestion.options,
           servedAt: new Date().toISOString(),
         };
 
@@ -335,6 +346,7 @@ describe('PlacementProgressService', () => {
           answers: [],
           ended: false,
           currentQuestionId: mockQuestion.id,
+          currentOptions: mockQuestion.options,
           servedAt: new Date().toISOString(),
         };
 
@@ -356,6 +368,7 @@ describe('PlacementProgressService', () => {
           answers: [],
           ended: false,
           currentQuestionId: mockQuestion.id,
+          currentOptions: mockQuestion.options,
           servedAt: new Date().toISOString(),
         };
 
@@ -399,6 +412,7 @@ describe('PlacementProgressService', () => {
         answers: [],
         ended: false,
         currentQuestionId: null,
+        currentOptions: null,
         servedAt: new Date().toISOString(),
       };
 
@@ -422,6 +436,7 @@ describe('PlacementProgressService', () => {
         ],
         ended: true,
         currentQuestionId: null,
+        currentOptions: null,
         servedAt: new Date().toISOString(),
       };
 
@@ -472,6 +487,7 @@ describe('PlacementProgressService', () => {
         answers: [{ questionId: mockQuestion.id, choice: null }],
         ended: true,
         currentQuestionId: null,
+        currentOptions: null,
         servedAt: new Date().toISOString(),
       };
       prisma.questionBank.findMany.mockResolvedValue([mockQuestion]);

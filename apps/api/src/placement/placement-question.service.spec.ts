@@ -69,6 +69,7 @@ describe('PlacementQuestionService', () => {
       answers: [],
       ended: false,
       currentQuestionId: null,
+      currentOptions: null,
       servedAt: new Date().toISOString(),
     };
 
@@ -248,6 +249,7 @@ describe('PlacementQuestionService', () => {
         answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
+        currentOptions: mockQuestion.options,
         servedAt: new Date(Date.now() - 5000).toISOString(),
       };
 
@@ -257,10 +259,10 @@ describe('PlacementQuestionService', () => {
       expect(result.remainingS).toBeLessThanOrEqual(30);
       expect(result.progress).toEqual({ answered: 1, maxQuestionsRemaining: 17 });
       expect((result as Record<string, unknown>).answer).toBeUndefined();
-      expect([...result.options].sort()).toEqual([...mockQuestion.options].sort());
     });
 
-    it('produces stable option ordering for the same served question across reloads', async () => {
+    it('sends the options in the order stored when the question was served', async () => {
+      const served = ['war', 'wird', 'ist', 'hat'];
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
@@ -273,12 +275,37 @@ describe('PlacementQuestionService', () => {
         answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
+        currentOptions: served,
         servedAt: '2026-09-20T16:00:00.000Z',
       };
 
-      const result1 = await service.createPlacementQuestion(mockQuestion, session);
-      const result2 = await service.createPlacementQuestion(mockQuestion, session);
-      expect(result1.options).toEqual(result2.options);
+      // Pinned so a reshuffle could never land on `served` by chance.
+      const randomSpy = vi.spyOn(Math, 'random').mockReturnValue(0);
+      const result = await service.createPlacementQuestion(mockQuestion, session);
+      randomSpy.mockRestore();
+      expect(result.options).toEqual(served);
+    });
+
+    it('throws placement.invalidSession when the session has no served options', async () => {
+      const session: ExamSession = {
+        evalId: EVAL_ID,
+        lang: 'de',
+        lo: 0,
+        hi: 5,
+        level: 2,
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
+        totalAnswered: 1,
+        answers: [],
+        ended: false,
+        currentQuestionId: mockQuestion.id,
+        currentOptions: null,
+        servedAt: '2026-09-20T16:00:00.000Z',
+      };
+
+      await expect(service.createPlacementQuestion(mockQuestion, session)).rejects.toThrow(
+        new ConflictException('placement.invalidSession'),
+      );
     });
   });
 
@@ -290,11 +317,16 @@ describe('PlacementQuestionService', () => {
       expect(shuffled).toHaveLength(4);
     });
 
-    it('returns deterministic output when seed is provided', () => {
-      const options = ['opt1', 'opt2', 'opt3', 'opt4'];
-      const shuffled1 = service.shuffleOptions(options, 'seed-abc');
-      const shuffled2 = service.shuffleOptions(options, 'seed-abc');
-      expect(shuffled1).toEqual(shuffled2);
+    // 0.99 keeps every item in place, which an off-by-one shuffle never does: it
+    // could then never show the answer, listed first in the bank, in first place.
+    it.each([
+      [0, ['opt2', 'opt3', 'opt4', 'opt1']],
+      [0.99, ['opt1', 'opt2', 'opt3', 'opt4']],
+    ])('takes the order from Math.random (%s)', (random, expected) => {
+      const randomSpy = vi.spyOn(Math, 'random').mockReturnValue(random);
+      const shuffled = service.shuffleOptions(['opt1', 'opt2', 'opt3', 'opt4']);
+      randomSpy.mockRestore();
+      expect(shuffled).toEqual(expected);
     });
   });
 
@@ -312,6 +344,7 @@ describe('PlacementQuestionService', () => {
         answers: [],
         ended: false,
         currentQuestionId: null,
+        currentOptions: null,
         servedAt: new Date().toISOString(),
       };
       expect(service.getMaxQuestionsRemaining(session)).toBe(18);
@@ -330,6 +363,7 @@ describe('PlacementQuestionService', () => {
         answers: [],
         ended: false,
         currentQuestionId: null,
+        currentOptions: null,
         servedAt: new Date().toISOString(),
       };
       expect(service.getMaxQuestionsRemaining(session)).toBe(3);
@@ -348,6 +382,7 @@ describe('PlacementQuestionService', () => {
         answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
+        currentOptions: mockQuestion.options,
         servedAt: new Date().toISOString(),
       };
       expect(service.getMaxQuestionsRemaining(session)).toBe(1);
@@ -366,6 +401,7 @@ describe('PlacementQuestionService', () => {
         answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
+        currentOptions: mockQuestion.options,
         servedAt: new Date().toISOString(),
       };
       expect(service.getMaxQuestionsRemaining(session)).toBe(10);
@@ -384,6 +420,7 @@ describe('PlacementQuestionService', () => {
         answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
+        currentOptions: mockQuestion.options,
         servedAt: new Date().toISOString(),
       };
       expect(service.getMaxQuestionsRemaining(session)).toBe(5);
@@ -402,6 +439,7 @@ describe('PlacementQuestionService', () => {
         answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
+        currentOptions: mockQuestion.options,
         servedAt: new Date().toISOString(),
       };
       expect(service.getMaxQuestionsRemaining(session)).toBe(12);
@@ -420,6 +458,7 @@ describe('PlacementQuestionService', () => {
         answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
+        currentOptions: mockQuestion.options,
         servedAt: new Date().toISOString(),
       };
       expect(service.getMaxQuestionsRemaining(session)).toBe(15);
@@ -438,6 +477,7 @@ describe('PlacementQuestionService', () => {
         answers: [],
         ended: false,
         currentQuestionId: null,
+        currentOptions: null,
         servedAt: new Date().toISOString(),
       };
       expect(() => service.getMaxQuestionsRemaining(session)).toThrow(ConflictException);
@@ -458,6 +498,7 @@ describe('PlacementQuestionService', () => {
         answers: [],
         ended: false,
         currentQuestionId: null,
+        currentOptions: null,
         servedAt: new Date().toISOString(),
       };
       prisma.questionBank.findMany.mockResolvedValue([mockQuestion]);
@@ -479,6 +520,33 @@ describe('PlacementQuestionService', () => {
           updatedAt: expect.any(Date),
         },
       });
+    });
+
+    it("shuffles the new question's options once and replaces the previous order", async () => {
+      const session: ExamSession = {
+        evalId: EVAL_ID,
+        lang: 'de',
+        lo: 0,
+        hi: 5,
+        level: 2,
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
+        totalAnswered: 1,
+        answers: [{ questionId: 'a1111111-1111-4111-8111-111111111111', choice: 'a' }],
+        ended: false,
+        currentQuestionId: 'a1111111-1111-4111-8111-111111111111',
+        currentOptions: ['a', 'b', 'c', 'd'],
+        servedAt: new Date().toISOString(),
+      };
+      prisma.questionBank.findMany.mockResolvedValue([mockQuestion]);
+      const shuffled = ['war', 'wird', 'ist', 'hat'];
+      const shuffleSpy = vi.spyOn(service, 'shuffleOptions').mockReturnValueOnce(shuffled);
+
+      const result = await service.getNewPlacementQuestion('user-1', session);
+      expect(shuffleSpy).toHaveBeenCalledExactlyOnceWith(mockQuestion.options);
+      shuffleSpy.mockRestore();
+      expect(session.currentOptions).toEqual(shuffled);
+      expect(result.options).toEqual(shuffled);
     });
   });
 });

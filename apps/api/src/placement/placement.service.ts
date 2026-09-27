@@ -142,6 +142,7 @@ export class PlacementService {
         answers: [],
         ended: false,
         currentQuestionId: null,
+        currentOptions: null,
         servedAt: new Date().toISOString(),
       };
 

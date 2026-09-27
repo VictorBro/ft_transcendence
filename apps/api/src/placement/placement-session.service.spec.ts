@@ -83,6 +83,7 @@ describe('PlacementSessionService', () => {
     answers: [],
     ended: false,
     currentQuestionId: 'b7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64',
+    currentOptions: ['hat', 'ist', 'wird', 'war'],
     servedAt: '2026-09-18T19:00:00.000Z',
   };
 
@@ -176,6 +177,7 @@ describe('PlacementSessionService', () => {
         totalAnswered: '0',
         ended: 'false',
         currentQuestionId: sampleSession.currentQuestionId,
+        currentOptions: JSON.stringify(sampleSession.currentOptions),
         servedAt: sampleSession.servedAt,
       });
       expect(multiMock.expire).toHaveBeenCalledWith('user:u-1:eval', PLACEMENT_REDIS_KEY_TTL);
@@ -214,6 +216,7 @@ describe('PlacementSessionService', () => {
         totalAnswered: '0',
         ended: 'false',
         currentQuestionId: sampleSession.currentQuestionId,
+        currentOptions: JSON.stringify(sampleSession.currentOptions),
         servedAt: sampleSession.servedAt,
       });
 
@@ -233,11 +236,32 @@ describe('PlacementSessionService', () => {
         totalAnswered: '0',
         ended: 'false',
         currentQuestionId: sampleSession.currentQuestionId,
+        currentOptions: JSON.stringify(sampleSession.currentOptions),
         servedAt: sampleSession.servedAt,
       });
 
       const result = await service.loadExamSession('u-1');
       expect(result).toEqual({ ...sampleSession, level: 0 });
+    });
+
+    // A run saved before the field existed must keep loading, not turn into a 409.
+    it('loads a hash without stored options as currentOptions null', async () => {
+      redis.client.hGetAll.mockResolvedValue({
+        evalId: sampleSession.evalId,
+        lang: 'de',
+        lo: '0',
+        hi: '5',
+        level: '2',
+        mistakesPerLevel: '0',
+        askedPerCategory: JSON.stringify({ grammar: 1, vocabulary: 0, reading: 0 }),
+        totalAnswered: '0',
+        ended: 'false',
+        currentQuestionId: sampleSession.currentQuestionId,
+        servedAt: sampleSession.servedAt,
+      });
+
+      const result = await service.loadExamSession('u-1');
+      expect(result).toEqual({ ...sampleSession, currentOptions: null });
     });
 
     it.each([
@@ -255,6 +279,31 @@ describe('PlacementSessionService', () => {
         totalAnswered: '0',
         ended: 'false',
         currentQuestionId: sampleSession.currentQuestionId,
+        currentOptions: JSON.stringify(sampleSession.currentOptions),
+        servedAt: sampleSession.servedAt,
+      });
+
+      await expect(service.loadExamSession('u-1')).rejects.toThrow(
+        new ConflictException('placement.invalidSession'),
+      );
+    });
+
+    it.each([
+      ['malformed JSON', '[invalid'],
+      ['three options', JSON.stringify(['hat', 'ist', 'wird'])],
+    ])('throws placement.invalidSession for stored options with %s', async (_, currentOptions) => {
+      redis.client.hGetAll.mockResolvedValue({
+        evalId: sampleSession.evalId,
+        lang: 'de',
+        lo: '0',
+        hi: '5',
+        level: '2',
+        mistakesPerLevel: '0',
+        askedPerCategory: JSON.stringify({ grammar: 1, vocabulary: 0, reading: 0 }),
+        totalAnswered: '0',
+        ended: 'false',
+        currentQuestionId: sampleSession.currentQuestionId,
+        currentOptions,
         servedAt: sampleSession.servedAt,
       });
 
@@ -302,6 +351,7 @@ describe('PlacementSessionService', () => {
         totalAnswered: '2',
         ended: 'false',
         currentQuestionId: sampleSession.currentQuestionId,
+        currentOptions: JSON.stringify(sampleSession.currentOptions),
         servedAt: sampleSession.servedAt,
       });
       redis.client.lRange.mockResolvedValue(answers.map((answer) => JSON.stringify(answer)));
@@ -328,6 +378,7 @@ describe('PlacementSessionService', () => {
         totalAnswered: '1',
         ended: 'false',
         currentQuestionId: sampleSession.currentQuestionId,
+        currentOptions: JSON.stringify(sampleSession.currentOptions),
         servedAt: sampleSession.servedAt,
       });
       redis.client.lRange.mockResolvedValue([rawAnswer]);
@@ -349,6 +400,7 @@ describe('PlacementSessionService', () => {
         totalAnswered: '2',
         ended: 'false',
         currentQuestionId: sampleSession.currentQuestionId,
+        currentOptions: JSON.stringify(sampleSession.currentOptions),
         servedAt: sampleSession.servedAt,
       });
       redis.client.lRange.mockResolvedValue([
