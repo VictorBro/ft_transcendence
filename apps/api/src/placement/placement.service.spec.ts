@@ -5,7 +5,6 @@ import type { PlacementQuestion, PlacementResult } from '@ft/shared';
 import type { ExamSession } from './placement.schema';
 
 import type { QuestionBank } from '../generated/prisma/client';
-import { CoursesService } from '../courses/courses.service';
 import { PlacementSessionService } from './placement-session.service';
 import { PlacementQuestionService } from './placement-question.service';
 import { PlacementProgressService } from './placement-progress.service';
@@ -70,42 +69,17 @@ function createPlacementService() {
     hasTimedOut: vi.fn().mockReturnValue(false),
     adjustSessionFromAnswer: vi.fn().mockResolvedValue(undefined),
     getResult: vi.fn().mockResolvedValue(undefined),
+    checkOnboardingCompleted: vi.fn().mockResolvedValue(true),
+    updateUserLevel: vi.fn().mockResolvedValue(undefined),
   } as unknown as PlacementProgressService;
 
-  const coursesService = {
-    listCoursesUser: vi.fn().mockResolvedValue({
-      courses: [
-        {
-          id: 'course-1',
-          lang: 'de',
-          level: 'B1',
-          dailyGoal: 10,
-          createdAt: new Date().toISOString(),
-          updatedAt: new Date().toISOString(),
-        },
-      ],
-      activeLang: 'de',
-    }),
-    setLevel: vi.fn().mockResolvedValue({
-      level: 'B1',
-      lang: 'de',
-      dailyGoal: 10,
-    }),
-  } as unknown as CoursesService;
-
-  const service = new PlacementService(
-    sessionService,
-    questionService,
-    progressService,
-    coursesService,
-  );
+  const service = new PlacementService(sessionService, questionService, progressService);
 
   return {
     service,
     sessionService,
     questionService,
     progressService,
-    coursesService,
   };
 }
 
@@ -114,7 +88,6 @@ describe('PlacementService', () => {
   let sessionService: ReturnType<typeof createPlacementService>['sessionService'];
   let questionService: ReturnType<typeof createPlacementService>['questionService'];
   let progressService: ReturnType<typeof createPlacementService>['progressService'];
-  let coursesService: ReturnType<typeof createPlacementService>['coursesService'];
 
   beforeEach(() => {
     const created = createPlacementService();
@@ -122,7 +95,6 @@ describe('PlacementService', () => {
     sessionService = created.sessionService;
     questionService = created.questionService;
     progressService = created.progressService;
-    coursesService = created.coursesService;
   });
 
   describe('startPlacement', () => {
@@ -146,10 +118,7 @@ describe('PlacementService', () => {
 
     it('throws ConflictException and releases lock if onboarding is incomplete', async () => {
       vi.mocked(sessionService.hasActiveSession).mockResolvedValue(false);
-      vi.mocked(coursesService.listCoursesUser).mockResolvedValue({
-        courses: [],
-        activeLang: null,
-      });
+      vi.mocked(progressService.checkOnboardingCompleted).mockResolvedValue(false);
 
       await expect(service.startPlacement('user-1', { lang: 'de' })).rejects.toThrow(
         new ConflictException('placement.onboardingIncomplete'),
@@ -159,6 +128,7 @@ describe('PlacementService', () => {
 
     it('initializes session, returns first question, and releases lock', async () => {
       vi.mocked(sessionService.hasActiveSession).mockResolvedValue(false);
+      vi.mocked(progressService.checkOnboardingCompleted).mockResolvedValue(true);
 
       const result = await service.startPlacement('user-1', { lang: 'de' });
       expect(result).toEqual(mockPlacementQuestion);
@@ -184,6 +154,7 @@ describe('PlacementService', () => {
 
     it('purges existing stale session and leftover answers on start', async () => {
       vi.mocked(sessionService.hasActiveSession).mockResolvedValue(false);
+      vi.mocked(progressService.checkOnboardingCompleted).mockResolvedValue(true);
 
       await service.startPlacement('user-1', { lang: 'de' });
 
@@ -589,7 +560,7 @@ describe('PlacementService', () => {
       });
       expect(result).toEqual(mockPlacementResult);
       expect(session.answers).toEqual([{ questionId: mockQuestion.id, choice: 'ist' }]);
-      expect(coursesService.setLevel).toHaveBeenCalledWith('user-1', 'de', { level: 'B1' });
+      expect(progressService.updateUserLevel).toHaveBeenCalledWith('user-1', 'de', 2);
       expect(sessionService.saveExamSession).toHaveBeenCalledWith('user-1', session);
     });
 

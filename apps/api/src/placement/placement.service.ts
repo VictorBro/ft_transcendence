@@ -11,7 +11,6 @@ import { randomUUID } from 'node:crypto';
 import { ExamSession } from './placement.schema';
 
 import { QuestionBank } from '../generated/prisma/client';
-import { CoursesService } from '../courses/courses.service';
 import { PlacementSessionService } from './placement-session.service';
 import { PlacementQuestionService } from './placement-question.service';
 import { PlacementProgressService } from './placement-progress.service';
@@ -31,7 +30,6 @@ export class PlacementService {
     private readonly sessionService: PlacementSessionService,
     private readonly questionService: PlacementQuestionService,
     private readonly progressService: PlacementProgressService,
-    private readonly coursesService: CoursesService,
   ) {}
 
   /**
@@ -57,11 +55,7 @@ export class PlacementService {
     session.totalAnswered += 1;
     this.progressService.adjustSessionFromAnswer(choice, question, session);
     if (session.ended) {
-      if (session.level === null) {
-        throw new ConflictException('placement.invalidSession');
-      }
-      const targetLevel = LEVELS[Math.max(0, Math.min(session.level, LEVELS.length - 1))];
-      await this.coursesService.setLevel(userId, session.lang, { level: targetLevel });
+      await this.progressService.updateUserLevel(userId, session.lang, session.level);
     }
 
     const result = await this.progressService.getResult(session);
@@ -123,8 +117,7 @@ export class PlacementService {
         throw new ConflictException('placement.inProgress');
       }
 
-      const { courses } = await this.coursesService.listCoursesUser(userId);
-      if (!courses.some((course) => course.lang === dto.lang)) {
+      if (!(await this.progressService.checkOnboardingCompleted(userId, dto.lang))) {
         throw new ConflictException('placement.onboardingIncomplete');
       }
 

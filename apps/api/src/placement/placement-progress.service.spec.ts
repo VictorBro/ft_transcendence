@@ -1,4 +1,4 @@
-import { BadRequestException, NotFoundException } from '@nestjs/common';
+import { BadRequestException, ConflictException, NotFoundException } from '@nestjs/common';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import type { ExamSession } from './placement.schema';
 
@@ -81,6 +81,68 @@ describe('PlacementProgressService', () => {
       prisma.questionBank.findUnique.mockResolvedValue(null);
 
       await expect(service.getQuestion('missing-id')).rejects.toThrow(NotFoundException);
+    });
+  });
+
+  describe('updateUserLevel', () => {
+    it('updates user level and activeLang in transaction', async () => {
+      await service.updateUserLevel('user-1', 'de', 2);
+      expect(prisma.$transaction).toHaveBeenCalled();
+      expect(prisma.userLevel.update).toHaveBeenCalledWith({
+        where: {
+          userId_lang: {
+            userId: 'user-1',
+            lang: 'de',
+          },
+        },
+        data: {
+          level: 'B1',
+        },
+      });
+      expect(prisma.user.update).toHaveBeenCalledWith({
+        where: { id: 'user-1' },
+        data: { activeLang: 'de' },
+      });
+    });
+
+    it('throws ConflictException when level is null', async () => {
+      await expect(service.updateUserLevel('user-1', 'de', null)).rejects.toThrow(
+        ConflictException,
+      );
+    });
+  });
+
+  describe('checkOnboardingCompleted', () => {
+    it('returns true when userLevel exists for user and language', async () => {
+      prisma.userLevel.findUnique.mockResolvedValue({ id: 'ul-1' });
+
+      const result = await service.checkOnboardingCompleted('user-1', 'de');
+      expect(result).toBe(true);
+      expect(prisma.userLevel.findUnique).toHaveBeenCalledWith({
+        where: {
+          userId_lang: {
+            userId: 'user-1',
+            lang: 'de',
+          },
+        },
+        select: { id: true },
+      });
+    });
+
+    it('returns false when userLevel does not exist', async () => {
+      prisma.userLevel.findUnique.mockResolvedValue(null);
+
+      const result = await service.checkOnboardingCompleted('user-1', 'fr');
+      expect(result).toBe(false);
+      expect(prisma.userLevel.findUnique).toHaveBeenCalledWith({
+        where: {
+          userId_lang: {
+            userId: 'user-1',
+            lang: 'fr',
+          },
+        },
+        select: { id: true },
+      });
     });
   });
 
