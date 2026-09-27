@@ -9,6 +9,7 @@ import {
 import { PrismaService } from '../prisma/prisma.service';
 import { LLM_PROVIDER, LlmProvider } from '../llm/llm.interface';
 import { buildGenerateQuestionsPrompt } from './prompts/generate-questions.prompt';
+import { QuestionBank } from '../generated/prisma/client';
 
 /**
  * Service managing on-demand question replenishment and serving for placement exams.
@@ -43,7 +44,7 @@ export class QuestionGenerationService {
     lang: Language,
     level: Level,
     category: QuestionCategory,
-  ) {
+  ): Promise<QuestionBank | null> {
     const remainingCount = await this.prisma.questionBank.count({
       where: {
         lang,

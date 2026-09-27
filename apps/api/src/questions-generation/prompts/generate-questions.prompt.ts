@@ -30,7 +30,7 @@ export function buildGenerateQuestionsPrompt(params: GenerateQuestionsPromptPara
         : TOPICS;
 
   const system = `You are an expert CEFR language exam designer.
-You must generate exactly 5 multiple-choice placement questions for category "${category}".
+You must generate exactly 13 multiple-choice placement questions for category "${category}".
 Output strictly a JSON object with an "items" array containing 5 questions:
 {
   "items": [
