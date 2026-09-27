@@ -5,12 +5,11 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import {
-  Language,
+  LEVELS,
   PLACEMENT_ROUNDS,
   PlacementReportEntry,
   PlacementResult,
   PlacementResultSchema,
-  LEVELS,
 } from '@ft/shared';
 
 import { ExamSession } from './placement.schema';
@@ -38,54 +37,6 @@ export class PlacementProgressService {
       throw new NotFoundException('placement.notFound');
     }
     return question;
-  }
-
-  /**
-   * Persists the determined target level and updates the user's active language
-   * within an atomic database transaction.
-   *
-   * @throws ConflictException If the session level is null (`placement.invalidSession`).
-   */
-  async updateUserLevel(userId: string, lang: Language, level: number | null): Promise<void> {
-    if (level === null) {
-      throw new ConflictException('placement.invalidSession');
-    }
-    const targetLevel = LEVELS[Math.max(0, Math.min(level, LEVELS.length - 1))];
-    await this.prisma.$transaction([
-      this.prisma.userLevel.update({
-        where: {
-          userId_lang: {
-            userId,
-            lang,
-          },
-        },
-        data: {
-          level: targetLevel,
-        },
-      }),
-
-      this.prisma.user.update({
-        where: { id: userId },
-        data: { activeLang: lang },
-      }),
-    ]);
-  }
-
-  /**
-   * Checks whether onboarding is completed for a user in a specific language
-   * by verifying the existence of a corresponding `UserLevel` record in the database.
-   */
-  async checkOnboardingCompleted(userId: string, lang: Language): Promise<boolean> {
-    const userLevel = await this.prisma.userLevel.findUnique({
-      where: {
-        userId_lang: {
-          userId,
-          lang,
-        },
-      },
-      select: { id: true },
-    });
-    return userLevel !== null;
   }
 
   /**
