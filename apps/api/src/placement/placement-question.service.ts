@@ -149,6 +149,18 @@ export class PlacementQuestionService {
   }
 
   /**
+   * Recursively computes worst-case level probes (including current level)
+   * remaining until the placement exam terminates, mirroring binary search transitions.
+   */
+  private maxProbes(lo: number, hi: number, level: number): number {
+    const upProbes =
+      level >= hi - 1 ? 0 : this.maxProbes(level + 1, hi, level + Math.ceil((hi - level) / 2));
+    const downProbes =
+      level <= lo ? 0 : this.maxProbes(lo, level, level - Math.ceil((level - lo) / 2));
+    return 1 + Math.max(upProbes, downProbes);
+  }
+
+  /**
    * Calculates the maximum theoretical number of questions remaining in the exam.
    * Combines remaining questions at the current level with worst-case remaining binary search steps.
    * In active sessions, this value is guaranteed to be >= 1.
@@ -163,17 +175,8 @@ export class PlacementQuestionService {
       (sum, count) => sum + count,
       0,
     );
-    const current_level_remaining = Math.max(0, MAX_QUESTIONS_PER_LEVEL - askedInCurrentLevel);
-
-    const lowerDistance = Math.max(0, session.level - session.lo);
-    const max_lower =
-      lowerDistance > 0 ? (Math.floor(Math.log2(lowerDistance)) + 1) * MAX_QUESTIONS_PER_LEVEL : 0;
-
-    const upperDistance = Math.max(0, session.hi - session.level - 1);
-    const max_upper =
-      upperDistance > 0 ? (Math.floor(Math.log2(upperDistance)) + 1) * MAX_QUESTIONS_PER_LEVEL : 0;
-
-    return Math.max(0, current_level_remaining + Math.max(max_lower, max_upper));
+    const probes = this.maxProbes(session.lo, session.hi, session.level);
+    return Math.max(0, probes * MAX_QUESTIONS_PER_LEVEL - askedInCurrentLevel);
   }
 
   /**
