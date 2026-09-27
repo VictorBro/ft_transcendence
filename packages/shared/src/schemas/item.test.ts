@@ -2,11 +2,17 @@ import { describe, expect, it } from 'vitest';
 
 import {
   CATEGORY_ID_SEGMENT,
+  GeneratedItemSchema,
+  generatedBatchSchema,
   ItemFileSchema,
   ItemSchema,
   itemFileName,
   OPTIONS_PER_ITEM,
   QUESTION_CATEGORIES,
+  READING_BATCH_SIZE,
+  READING_TOPIC,
+  TOPICS,
+  type GeneratedItem,
   type Item,
 } from './item';
 
@@ -126,6 +132,67 @@ describe('ItemFileSchema', () => {
 
   it('rejects an empty file', () => {
     expect(ItemFileSchema.safeParse({ ...file, items: [] }).success).toBe(false);
+  });
+});
+
+// What the LLM sends back: the authored shape minus sourceId.
+const { sourceId: _sourceId, ...generated } = item;
+const generatedItem: GeneratedItem = generated;
+
+describe('GeneratedItemSchema', () => {
+  it('accepts a well-formed item without a sourceId', () => {
+    expect(GeneratedItemSchema.safeParse(generatedItem).success).toBe(true);
+  });
+
+  it('rejects an answer that is not one of the options', () => {
+    expect(GeneratedItemSchema.safeParse({ ...generatedItem, answer: 'was' }).success).toBe(false);
+  });
+
+  it('rejects duplicated options', () => {
+    expect(
+      GeneratedItemSchema.safeParse({ ...generatedItem, options: ['is', 'is', 'are', 'be'] })
+        .success,
+    ).toBe(false);
+  });
+});
+
+describe('generatedBatchSchema', () => {
+  const grammarBatch = TOPICS.map((topic) => ({ ...generatedItem, topic }));
+  const readingBatch = Array.from({ length: READING_BATCH_SIZE }, () => ({
+    ...generatedItem,
+    topic: READING_TOPIC,
+    readText: 'A short text.',
+  }));
+
+  it('accepts one question per topic for grammar and vocabulary', () => {
+    expect(generatedBatchSchema('grammar').safeParse({ items: grammarBatch }).success).toBe(true);
+    expect(generatedBatchSchema('vocabulary').safeParse({ items: grammarBatch }).success).toBe(
+      true,
+    );
+  });
+
+  it('rejects a grammar batch with a readText', () => {
+    const items = grammarBatch.map((i, n) => (n === 0 ? { ...i, readText: 'Not needed.' } : i));
+    expect(generatedBatchSchema('grammar').safeParse({ items }).success).toBe(false);
+  });
+
+  it('rejects a grammar batch that repeats a topic', () => {
+    const items = grammarBatch.map((i, n) => (n === 0 ? { ...i, topic: TOPICS[1] } : i));
+    expect(generatedBatchSchema('grammar').safeParse({ items }).success).toBe(false);
+  });
+
+  it(`accepts ${READING_BATCH_SIZE} reading questions with their passage`, () => {
+    expect(generatedBatchSchema('reading').safeParse({ items: readingBatch }).success).toBe(true);
+  });
+
+  it('rejects a reading question without a readText', () => {
+    const items = readingBatch.map((i, n) => (n === 0 ? { ...i, readText: undefined } : i));
+    expect(generatedBatchSchema('reading').safeParse({ items }).success).toBe(false);
+  });
+
+  it('rejects a reading question on another topic', () => {
+    const items = readingBatch.map((i, n) => (n === 0 ? { ...i, topic: TOPICS[0] } : i));
+    expect(generatedBatchSchema('reading').safeParse({ items }).success).toBe(false);
   });
 });
 
