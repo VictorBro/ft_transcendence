@@ -16,6 +16,7 @@ describe('ExamSessionSchema', () => {
       answers: [],
       ended: false,
       currentQuestionId: 'b7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64',
+      currentOptions: ['hat', 'ist', 'wird', 'war'],
       servedAt: '2026-09-18T17:51:11.000Z',
     };
     expect(ExamSessionSchema.parse(session)).toEqual(session);
@@ -34,9 +35,29 @@ describe('ExamSessionSchema', () => {
       answers: [],
       ended: false,
       currentQuestionId: null,
+      currentOptions: null,
       servedAt: '2026-09-18T17:51:11.000Z',
     };
     expect(ExamSessionSchema.parse(session).currentQuestionId).toBeNull();
+  });
+
+  it('rejects served options that are not exactly four', () => {
+    const session = {
+      evalId: 'd7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64',
+      lang: 'de',
+      lo: 0,
+      hi: 5,
+      level: 2,
+      mistakesPerLevel: 0,
+      askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
+      totalAnswered: 0,
+      answers: [],
+      ended: false,
+      currentQuestionId: 'b7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64',
+      currentOptions: ['hat', 'ist', 'wird'],
+      servedAt: '2026-09-18T17:51:11.000Z',
+    };
+    expect(() => ExamSessionSchema.parse(session)).toThrow();
   });
 
   it('rejects mistakesPerLevel exceeding 2 or below 0', () => {
@@ -52,6 +73,7 @@ describe('ExamSessionSchema', () => {
       answers: [],
       ended: false,
       currentQuestionId: null,
+      currentOptions: null,
       servedAt: '2026-09-18T17:51:11.000Z',
     };
     expect(ExamSessionSchema.safeParse(base).success).toBe(false);
@@ -72,6 +94,7 @@ describe('ExamSessionSchema', () => {
         answers: [],
         ended: false,
         currentQuestionId: null,
+        currentOptions: null,
         servedAt: '2026-09-18T17:51:11.000Z',
       }).success,
     ).toBe(false);

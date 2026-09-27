@@ -120,29 +120,11 @@ export class PlacementQuestionService {
     return [availableByCategory, randomSeen.questionBank];
   }
 
-  /**
-   * Shuffles question options pseudo-randomly using a deterministic seed so that
-   * repeated reads of the same served question preserve option order across reloads.
-   */
-  shuffleOptions(options: readonly string[], seed?: string): string[] {
-    const random = seed
-      ? (() => {
-          let hash = 0;
-          for (let i = 0; i < seed.length; i++) {
-            hash = (Math.imul(31, hash) + seed.charCodeAt(i)) | 0;
-          }
-          return () => {
-            hash = (hash + 0x6d2b79f5) | 0;
-            let t = Math.imul(hash ^ (hash >>> 15), 1 | hash);
-            t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
-            return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-          };
-        })()
-      : Math.random;
-
+  /** The bank lists the answer first in almost every item, so the order must not leak it. */
+  shuffleOptions(options: readonly string[]): string[] {
     const shuffled = [...options];
     for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(random() * (i + 1));
+      const j = Math.floor(Math.random() * (i + 1));
       [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
     }
     return shuffled;
@@ -181,12 +163,17 @@ export class PlacementQuestionService {
 
   /**
    * Formats a database question into a validated client-facing `PlacementQuestion` DTO,
-   * computing remaining time, shuffling options, and calculating current exam progress metrics.
+   * computing remaining time and progress, with the options in the order they were served.
+   *
+   * @throws ConflictException If the session has no served options (`placement.invalidSession`).
    */
   async createPlacementQuestion(
     question: QuestionBank,
     session: ExamSession,
   ): Promise<PlacementQuestion> {
+    if (session.currentOptions === null) {
+      throw new ConflictException('placement.invalidSession');
+    }
     const elapsedS = Math.floor((Date.now() - new Date(session.servedAt).getTime()) / 1000);
     const remainingS = Math.max(0, question.timeLimitS - Math.max(0, elapsedS));
 
@@ -198,7 +185,7 @@ export class PlacementQuestionService {
       level: question.level,
       question: question.question,
       ...(question.readText ? { readText: question.readText } : {}),
-      options: this.shuffleOptions(question.options, `${question.id}:${session.servedAt}`),
+      options: session.currentOptions,
       timeLimitS: question.timeLimitS,
       remainingS,
       progress: {
@@ -209,8 +196,8 @@ export class PlacementQuestionService {
   }
 
   /**
-   * Retrieves a new question, records it in `UserSeenQuestion`, updates session state,
-   * and returns the formatted question.
+   * Retrieves a new question, records it in `UserSeenQuestion`, updates session state
+   * (including the shuffled option order), and returns the formatted question.
    */
   async getNewPlacementQuestion(
     userId: string,
@@ -219,6 +206,7 @@ export class PlacementQuestionService {
     const [, question] = await this.getNewQuestion(userId, examSession);
 
     examSession.currentQuestionId = question.id;
+    examSession.currentOptions = this.shuffleOptions(question.options);
     examSession.servedAt = new Date().toISOString();
     await this.prisma.userSeenQuestion.upsert({
       where: {

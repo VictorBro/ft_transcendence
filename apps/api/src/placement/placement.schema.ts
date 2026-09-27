@@ -1,5 +1,6 @@
 import {
   LanguageSchema,
+  OPTIONS_PER_ITEM,
   PLACEMENT_ROUNDS,
   QuestionCategorySchema,
   SubmitAnswerSchema,
@@ -25,6 +26,8 @@ export const ExamSessionSchema = z.object({
   answers: z.array(SubmitAnswerSchema),
   ended: z.boolean(),
   currentQuestionId: z.string().nullable(),
+  /** Shuffled once when served, so a reload shows the same order. */
+  currentOptions: z.array(z.string().min(1)).length(OPTIONS_PER_ITEM).nullable(),
   servedAt: z.iso.datetime(),
 });
 export type ExamSession = z.infer<typeof ExamSessionSchema>;

@@ -586,6 +586,7 @@ describe('Placement Exam Scenarios', () => {
 
       const refreshed1 = (await env.service.getPlacement(userId)) as PlacementQuestion;
       expect(refreshed1.questionId).toBe(initialQuestion.questionId);
+      expect(refreshed1.options).toEqual(initialQuestion.options);
       expect(refreshed1.remainingS).toBe(initialQuestion.timeLimitS - 10);
 
       // Advance clock by another 5s and reload again

@@ -184,6 +184,7 @@ describe('PlacementService', () => {
         answers: [],
         ended: false,
         currentQuestionId: null,
+        currentOptions: null,
         servedAt: new Date().toISOString(),
       });
 
@@ -205,6 +206,7 @@ describe('PlacementService', () => {
         answers: [],
         ended: true,
         currentQuestionId: mockQuestion.id,
+        currentOptions: mockQuestion.options,
         servedAt: new Date().toISOString(),
       };
       vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
@@ -230,6 +232,7 @@ describe('PlacementService', () => {
         answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
+        currentOptions: mockQuestion.options,
         servedAt: new Date(Date.now() - 60000).toISOString(),
       };
       vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
@@ -267,6 +270,7 @@ describe('PlacementService', () => {
         answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
+        currentOptions: mockQuestion.options,
         servedAt: new Date(Date.now() - 60000).toISOString(),
       };
       vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
@@ -299,6 +303,7 @@ describe('PlacementService', () => {
         answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
+        currentOptions: mockQuestion.options,
         servedAt: new Date().toISOString(),
       };
       vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
@@ -328,6 +333,7 @@ describe('PlacementService', () => {
         answers: [],
         ended: true,
         currentQuestionId: mockQuestion.id,
+        currentOptions: mockQuestion.options,
         servedAt: new Date().toISOString(),
       };
       vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
@@ -350,6 +356,7 @@ describe('PlacementService', () => {
         answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
+        currentOptions: mockQuestion.options,
         servedAt: new Date().toISOString(),
       };
       vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
@@ -383,6 +390,7 @@ describe('PlacementService', () => {
         answers: [],
         ended: false,
         currentQuestionId: null,
+        currentOptions: null,
         servedAt: new Date().toISOString(),
       };
       vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
@@ -426,6 +434,7 @@ describe('PlacementService', () => {
         answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
+        currentOptions: mockQuestion.options,
         servedAt: new Date().toISOString(),
       };
       vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
@@ -456,6 +465,7 @@ describe('PlacementService', () => {
         answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
+        currentOptions: mockQuestion.options,
         servedAt: new Date().toISOString(),
       };
       vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
@@ -486,6 +496,7 @@ describe('PlacementService', () => {
         answers: [{ questionId: mockQuestion.id, choice: 'ist' }],
         ended: false,
         currentQuestionId: mockQuestion.id,
+        currentOptions: mockQuestion.options,
         servedAt: new Date().toISOString(),
       };
       vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
@@ -515,6 +526,7 @@ describe('PlacementService', () => {
         answers: [],
         ended: true,
         currentQuestionId: mockQuestion.id,
+        currentOptions: mockQuestion.options,
         servedAt: new Date().toISOString(),
       };
       vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
@@ -540,6 +552,7 @@ describe('PlacementService', () => {
         answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
+        currentOptions: mockQuestion.options,
         servedAt: new Date().toISOString(),
       };
       vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
@@ -577,6 +590,7 @@ describe('PlacementService', () => {
         answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
+        currentOptions: mockQuestion.options,
         servedAt: new Date().toISOString(),
       };
       vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);

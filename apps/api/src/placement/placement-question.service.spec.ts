@@ -69,6 +69,7 @@ describe('PlacementQuestionService', () => {
       answers: [],
       ended: false,
       currentQuestionId: null,
+      currentOptions: null,
       servedAt: new Date().toISOString(),
     };
 
@@ -248,6 +249,7 @@ describe('PlacementQuestionService', () => {
         answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
+        currentOptions: mockQuestion.options,
         servedAt: new Date(Date.now() - 5000).toISOString(),
       };
 
@@ -257,10 +259,10 @@ describe('PlacementQuestionService', () => {
       expect(result.remainingS).toBeLessThanOrEqual(30);
       expect(result.progress).toEqual({ answered: 1, maxQuestionsRemaining: 17 });
       expect((result as Record<string, unknown>).answer).toBeUndefined();
-      expect([...result.options].sort()).toEqual([...mockQuestion.options].sort());
     });
 
-    it('produces stable option ordering for the same served question across reloads', async () => {
+    it('sends the options in the order stored when the question was served', async () => {
+      const served = ['war', 'wird', 'ist', 'hat'];
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
@@ -273,12 +275,34 @@ describe('PlacementQuestionService', () => {
         answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
+        currentOptions: served,
         servedAt: '2026-09-20T16:00:00.000Z',
       };
 
-      const result1 = await service.createPlacementQuestion(mockQuestion, session);
-      const result2 = await service.createPlacementQuestion(mockQuestion, session);
-      expect(result1.options).toEqual(result2.options);
+      const result = await service.createPlacementQuestion(mockQuestion, session);
+      expect(result.options).toEqual(served);
+    });
+
+    it('throws placement.invalidSession when the session has no served options', async () => {
+      const session: ExamSession = {
+        evalId: EVAL_ID,
+        lang: 'de',
+        lo: 0,
+        hi: 5,
+        level: 2,
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
+        totalAnswered: 1,
+        answers: [],
+        ended: false,
+        currentQuestionId: mockQuestion.id,
+        currentOptions: null,
+        servedAt: '2026-09-20T16:00:00.000Z',
+      };
+
+      await expect(service.createPlacementQuestion(mockQuestion, session)).rejects.toThrow(
+        new ConflictException('placement.invalidSession'),
+      );
     });
   });
 
@@ -290,11 +314,15 @@ describe('PlacementQuestionService', () => {
       expect(shuffled).toHaveLength(4);
     });
 
-    it('returns deterministic output when seed is provided', () => {
-      const options = ['opt1', 'opt2', 'opt3', 'opt4'];
-      const shuffled1 = service.shuffleOptions(options, 'seed-abc');
-      const shuffled2 = service.shuffleOptions(options, 'seed-abc');
-      expect(shuffled1).toEqual(shuffled2);
+    it('draws the order from Math.random, so the first option does not stay first', () => {
+      const randomSpy = vi.spyOn(Math, 'random').mockReturnValue(0);
+      expect(service.shuffleOptions(['opt1', 'opt2', 'opt3', 'opt4'])).toEqual([
+        'opt2',
+        'opt3',
+        'opt4',
+        'opt1',
+      ]);
+      randomSpy.mockRestore();
     });
   });
 
@@ -312,6 +340,7 @@ describe('PlacementQuestionService', () => {
         answers: [],
         ended: false,
         currentQuestionId: null,
+        currentOptions: null,
         servedAt: new Date().toISOString(),
       };
       expect(service.getMaxQuestionsRemaining(session)).toBe(18);
@@ -330,6 +359,7 @@ describe('PlacementQuestionService', () => {
         answers: [],
         ended: false,
         currentQuestionId: null,
+        currentOptions: null,
         servedAt: new Date().toISOString(),
       };
       expect(service.getMaxQuestionsRemaining(session)).toBe(3);
@@ -348,6 +378,7 @@ describe('PlacementQuestionService', () => {
         answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
+        currentOptions: mockQuestion.options,
         servedAt: new Date().toISOString(),
       };
       expect(service.getMaxQuestionsRemaining(session)).toBe(1);
@@ -366,6 +397,7 @@ describe('PlacementQuestionService', () => {
         answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
+        currentOptions: mockQuestion.options,
         servedAt: new Date().toISOString(),
       };
       expect(service.getMaxQuestionsRemaining(session)).toBe(10);
@@ -384,6 +416,7 @@ describe('PlacementQuestionService', () => {
         answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
+        currentOptions: mockQuestion.options,
         servedAt: new Date().toISOString(),
       };
       expect(service.getMaxQuestionsRemaining(session)).toBe(5);
@@ -402,6 +435,7 @@ describe('PlacementQuestionService', () => {
         answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
+        currentOptions: mockQuestion.options,
         servedAt: new Date().toISOString(),
       };
       expect(service.getMaxQuestionsRemaining(session)).toBe(12);
@@ -420,6 +454,7 @@ describe('PlacementQuestionService', () => {
         answers: [],
         ended: false,
         currentQuestionId: mockQuestion.id,
+        currentOptions: mockQuestion.options,
         servedAt: new Date().toISOString(),
       };
       expect(service.getMaxQuestionsRemaining(session)).toBe(15);
@@ -438,6 +473,7 @@ describe('PlacementQuestionService', () => {
         answers: [],
         ended: false,
         currentQuestionId: null,
+        currentOptions: null,
         servedAt: new Date().toISOString(),
       };
       expect(() => service.getMaxQuestionsRemaining(session)).toThrow(ConflictException);
@@ -458,12 +494,15 @@ describe('PlacementQuestionService', () => {
         answers: [],
         ended: false,
         currentQuestionId: null,
+        currentOptions: null,
         servedAt: new Date().toISOString(),
       };
       prisma.questionBank.findMany.mockResolvedValue([mockQuestion]);
 
       const result = await service.getNewPlacementQuestion('user-1', session);
       expect(result.questionId).toBe(mockQuestion.id);
+      expect([...(session.currentOptions ?? [])].sort()).toEqual([...mockQuestion.options].sort());
+      expect(result.options).toEqual(session.currentOptions);
       expect(prisma.userSeenQuestion.upsert).toHaveBeenCalledWith({
         where: {
           userId_questionId: {
