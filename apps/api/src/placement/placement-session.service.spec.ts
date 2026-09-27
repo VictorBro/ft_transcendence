@@ -244,6 +244,26 @@ describe('PlacementSessionService', () => {
       expect(result).toEqual({ ...sampleSession, level: 0 });
     });
 
+    // A run saved before the field existed must keep loading, not turn into a 409.
+    it('loads a hash without stored options as currentOptions null', async () => {
+      redis.client.hGetAll.mockResolvedValue({
+        evalId: sampleSession.evalId,
+        lang: 'de',
+        lo: '0',
+        hi: '5',
+        level: '2',
+        mistakesPerLevel: '0',
+        askedPerCategory: JSON.stringify({ grammar: 1, vocabulary: 0, reading: 0 }),
+        totalAnswered: '0',
+        ended: 'false',
+        currentQuestionId: sampleSession.currentQuestionId,
+        servedAt: sampleSession.servedAt,
+      });
+
+      const result = await service.loadExamSession('u-1');
+      expect(result).toEqual({ ...sampleSession, currentOptions: null });
+    });
+
     it.each([
       ['malformed JSON', '{invalid'],
       ['schema-invalid JSON', JSON.stringify({ grammar: -1 })],

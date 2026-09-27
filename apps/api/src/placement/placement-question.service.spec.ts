@@ -279,7 +279,10 @@ describe('PlacementQuestionService', () => {
         servedAt: '2026-09-20T16:00:00.000Z',
       };
 
+      // Pinned so a reshuffle could never land on `served` by chance.
+      const randomSpy = vi.spyOn(Math, 'random').mockReturnValue(0);
       const result = await service.createPlacementQuestion(mockQuestion, session);
+      randomSpy.mockRestore();
       expect(result.options).toEqual(served);
     });
 
@@ -314,15 +317,16 @@ describe('PlacementQuestionService', () => {
       expect(shuffled).toHaveLength(4);
     });
 
-    it('draws the order from Math.random, so the first option does not stay first', () => {
-      const randomSpy = vi.spyOn(Math, 'random').mockReturnValue(0);
-      expect(service.shuffleOptions(['opt1', 'opt2', 'opt3', 'opt4'])).toEqual([
-        'opt2',
-        'opt3',
-        'opt4',
-        'opt1',
-      ]);
+    // 0.99 keeps every item in place, which an off-by-one shuffle never does: it
+    // could then never show the answer, listed first in the bank, in first place.
+    it.each([
+      [0, ['opt2', 'opt3', 'opt4', 'opt1']],
+      [0.99, ['opt1', 'opt2', 'opt3', 'opt4']],
+    ])('takes the order from Math.random (%s)', (random, expected) => {
+      const randomSpy = vi.spyOn(Math, 'random').mockReturnValue(random);
+      const shuffled = service.shuffleOptions(['opt1', 'opt2', 'opt3', 'opt4']);
       randomSpy.mockRestore();
+      expect(shuffled).toEqual(expected);
     });
   });
 
@@ -501,8 +505,6 @@ describe('PlacementQuestionService', () => {
 
       const result = await service.getNewPlacementQuestion('user-1', session);
       expect(result.questionId).toBe(mockQuestion.id);
-      expect([...(session.currentOptions ?? [])].sort()).toEqual([...mockQuestion.options].sort());
-      expect(result.options).toEqual(session.currentOptions);
       expect(prisma.userSeenQuestion.upsert).toHaveBeenCalledWith({
         where: {
           userId_questionId: {
@@ -518,6 +520,33 @@ describe('PlacementQuestionService', () => {
           updatedAt: expect.any(Date),
         },
       });
+    });
+
+    it("shuffles the new question's options once and replaces the previous order", async () => {
+      const session: ExamSession = {
+        evalId: EVAL_ID,
+        lang: 'de',
+        lo: 0,
+        hi: 5,
+        level: 2,
+        mistakesPerLevel: 0,
+        askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
+        totalAnswered: 1,
+        answers: [{ questionId: 'a1111111-1111-4111-8111-111111111111', choice: 'a' }],
+        ended: false,
+        currentQuestionId: 'a1111111-1111-4111-8111-111111111111',
+        currentOptions: ['a', 'b', 'c', 'd'],
+        servedAt: new Date().toISOString(),
+      };
+      prisma.questionBank.findMany.mockResolvedValue([mockQuestion]);
+      const shuffled = ['war', 'wird', 'ist', 'hat'];
+      const shuffleSpy = vi.spyOn(service, 'shuffleOptions').mockReturnValueOnce(shuffled);
+
+      const result = await service.getNewPlacementQuestion('user-1', session);
+      expect(shuffleSpy).toHaveBeenCalledExactlyOnceWith(mockQuestion.options);
+      shuffleSpy.mockRestore();
+      expect(session.currentOptions).toEqual(shuffled);
+      expect(result.options).toEqual(shuffled);
     });
   });
 });
