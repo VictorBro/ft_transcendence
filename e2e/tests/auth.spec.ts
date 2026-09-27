@@ -1,7 +1,7 @@
 import type { Page } from '@playwright/test';
 import { Secret, TOTP } from 'otpauth';
 
-import { createAccount, expect, identity, PASSWORD, test } from '../support/session';
+import { createAccount, expect, identity, PASSWORD, placeCourse, test } from '../support/session';
 
 /**
  * The browser half of authentication. Supertest already proves the API, so what
@@ -34,11 +34,14 @@ test.describe('authentication in the browser', () => {
     await page.getByRole('button', { name: 'Sign in' }).click();
   };
 
-  test('signs up, lands signed in, and survives a reload', async ({ page }) => {
+  // A new account has no course, so the first thing it sees is step one.
+  test('signs up, lands on onboarding, and survives a reload', async ({ page }) => {
     const { email, displayName } = identity();
 
     await createAccount(page, { email, displayName });
-    await expect(page.getByRole('heading', { level: 1, name: displayName })).toBeVisible();
+    await expect(
+      page.getByRole('heading', { level: 1, name: 'What do you want to learn?' }),
+    ).toBeVisible();
 
     // The header is server-rendered, so seeing the name proves the cookie
     // reached NestJS through Next rather than only living in the browser.
@@ -87,7 +90,14 @@ test.describe('authentication in the browser', () => {
     await expect(page).toHaveURL(/\/login$/);
   });
 
-  test('signs back in with the password', async ({ page }) => {
+  /**
+   * The login form only goes to /learn, which picks the page. landing.spec.ts
+   * covers its other cases by visiting it directly: POST /auth/login allows 5 a
+   * minute per address, and every login in the suite comes from the same one.
+   */
+  test('signs back in with the password and, with no course, lands on onboarding', async ({
+    page,
+  }) => {
     const { email, displayName } = identity();
 
     await createAccount(page, { email, displayName });
@@ -95,10 +105,21 @@ test.describe('authentication in the browser', () => {
 
     await logIn(page, email);
 
-    // Login lands on the home page rather than the profile, unlike signup.
-    // The home is /en, not /: localePrefix is 'always', so no route is bare.
-    await expect(page).toHaveURL(/\/en$/);
+    await expect(page).toHaveURL(/\/en\/onboarding$/);
     await expect(page.getByRole('navigation', { name: 'Account' })).toContainText(displayName);
+  });
+
+  test('signing in with a placed course opens it', async ({ page }) => {
+    const { email, displayName } = identity();
+
+    await createAccount(page, { email, displayName });
+    await placeCourse(page, { lang: 'fr', level: 'A2', dailyGoal: 10 });
+    await page.getByRole('button', { name: 'Sign out' }).click();
+
+    await logIn(page, email);
+
+    await expect(page).toHaveURL(/\/en\/learn\/fr$/);
+    await expect(page.getByRole('heading', { level: 1, name: 'French' })).toBeVisible();
   });
 
   test('saves a profile edit and shows it in the header', async ({ page }) => {
@@ -107,6 +128,7 @@ test.describe('authentication in the browser', () => {
 
     await createAccount(page, { email, displayName });
 
+    await page.goto('/en/profile');
     await page.getByRole('link', { name: 'Edit profile' }).click();
     await page.getByLabel('Display name').fill(renamed);
     await page.getByRole('button', { name: 'Save changes' }).click();
@@ -177,9 +199,8 @@ test.describe('authentication in the browser', () => {
     await code.fill(totp.generate());
     await page.getByRole('button', { name: 'Verify' }).click();
 
-    // Login lands on the home page rather than the profile, unlike signup.
-    // The home is /en, not /: localePrefix is 'always', so no route is bare.
-    await expect(page).toHaveURL(/\/en$/);
+    // The second step lands where the first would have: no course, so onboarding.
+    await expect(page).toHaveURL(/\/en\/onboarding$/);
     await expect(page.getByRole('navigation', { name: 'Account' })).toContainText(displayName);
   });
 });

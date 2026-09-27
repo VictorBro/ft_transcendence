@@ -23,7 +23,7 @@ export default async function ProfilePage() {
   return (
     <div className="mx-auto flex w-full max-w-md flex-col gap-10">
       <section className="flex items-start justify-between gap-4">
-        <div className="flex flex-col gap-2">
+        <div className="flex min-w-0 flex-col gap-2 wrap-break-word">
           <h1 className="text-2xl font-semibold tracking-tight">{user.displayName}</h1>
           <p className="text-sm text-slate-300">{user.email}</p>
           <p className="text-sm text-slate-400">{t('joined', { date: joinedDate })}</p>

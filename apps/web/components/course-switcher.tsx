@@ -39,7 +39,7 @@ export function CourseSwitcher({ courses }: { courses: Course[] }) {
         onChange={onChange}
         className="cursor-pointer rounded-md border border-slate-800 bg-slate-900 py-1 pr-7 pl-2 text-slate-300 transition-colors hover:text-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
       >
-        {/* On /dashboard nothing is open, so there has to be a value to show. */}
+        {/* On a 404 under /learn, no course is open. */}
         {current === null ? (
           <option value="" disabled>
             {t('none')}

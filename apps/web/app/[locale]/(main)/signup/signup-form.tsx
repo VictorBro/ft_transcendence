@@ -43,7 +43,8 @@ export function SignUpForm() {
         return;
       }
 
-      router.replace('/profile');
+      // A new account has no course yet, so /learn would only redirect here.
+      router.replace('/onboarding');
       router.refresh();
     } finally {
       setPending(false);

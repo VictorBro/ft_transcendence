@@ -12,7 +12,7 @@ export async function DashboardNav() {
   const courses = result.status === 'ok' ? result.data.courses : [];
 
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex min-w-0 flex-wrap items-center gap-x-4 gap-y-2">
       {courses.length > 0 ? <CourseSwitcher courses={courses} /> : null}
       <LanguageSwitcher />
       <SessionNav />
