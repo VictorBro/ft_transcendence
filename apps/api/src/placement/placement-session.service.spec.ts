@@ -1,424 +1,166 @@
 import { ConflictException } from '@nestjs/common';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
-import type { SubmitAnswerInput } from '@ft/shared';
+import { randomUUID } from 'node:crypto';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import type { ExamSession } from './placement.schema';
-
+import { examSession, fakeRedis } from '../../test/placement.fixtures';
 import type { PrismaService } from '../prisma/prisma.service';
 import type { RedisService } from '../redis/redis.service';
-import { PLACEMENT_REDIS_KEY_TTL, PlacementSessionService } from './placement-session.service';
+import { PlacementSessionService } from './placement-session.service';
 
-function createSessionService(redisClientOverrides: Record<string, unknown> = {}) {
-  const multiMock = {
-    hSet: vi.fn().mockReturnThis(),
-    hGetAll: vi.fn().mockReturnThis(),
-    lRange: vi.fn().mockReturnThis(),
-    rPush: vi.fn().mockReturnThis(),
-    del: vi.fn().mockReturnThis(),
-    expire: vi.fn().mockReturnThis(),
-    exec: vi.fn().mockResolvedValue([]),
-  };
-
-  const redis = {
-    client: {
-      exists: vi.fn().mockResolvedValue(0),
-      hSet: vi.fn().mockResolvedValue(1),
-      hGetAll: vi.fn().mockResolvedValue({}),
-      hIncrBy: vi.fn().mockResolvedValue(1),
-      del: vi.fn().mockResolvedValue(1),
-      rPush: vi.fn().mockResolvedValue(1),
-      lRange: vi.fn().mockResolvedValue([]),
-      expire: vi.fn().mockResolvedValue(1),
-      set: vi.fn().mockResolvedValue('OK'),
-      eval: vi.fn().mockResolvedValue(1),
-      multi: vi.fn(() => multiMock),
-      ...redisClientOverrides,
-    },
-  };
-  multiMock.exec.mockImplementation(async () =>
-    Promise.all([
-      redis.client.hGetAll('user:u-1:eval'),
-      redis.client.lRange('user:u-1:eval_questions', 0, -1),
-    ]),
-  );
-
-  const prisma = {
-    userLevel: {
-      findUnique: vi.fn().mockResolvedValue(null),
-    },
-  };
-
-  return {
-    service: new PlacementSessionService(
-      redis as unknown as RedisService,
-      prisma as unknown as PrismaService,
-    ),
-    redis,
-    prisma,
-    multiMock,
-  };
-}
+const RUN = 'user:u-1:eval';
+const ANSWERS = 'user:u-1:eval_questions';
+const LOCK = 'user:u-1:eval_lock';
 
 describe('PlacementSessionService', () => {
+  let redis: ReturnType<typeof fakeRedis>;
   let service: PlacementSessionService;
-  let redis: ReturnType<typeof createSessionService>['redis'];
-  let multiMock: ReturnType<typeof createSessionService>['multiMock'];
 
   beforeEach(() => {
-    const created = createSessionService();
-    service = created.service;
-    redis = created.redis;
-    multiMock = created.multiMock;
+    redis = fakeRedis();
+    service = new PlacementSessionService(redis as unknown as RedisService, {} as PrismaService);
   });
 
-  const sampleSession: ExamSession = {
-    evalId: 'd7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64',
-    lang: 'de',
-    lo: 0,
-    hi: 5,
-    level: 2,
-    mistakesPerLevel: 0,
-    askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
-    totalAnswered: 0,
-    answers: [],
-    ended: false,
-    currentQuestionId: 'b7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64',
-    currentOptions: ['hat', 'ist', 'wird', 'war'],
-    servedAt: '2026-09-18T19:00:00.000Z',
-  };
-
-  it('generates consistent eval, eval_questions, and eval_lock keys', () => {
-    expect(service.evalKey('u-1')).toBe('user:u-1:eval');
-    expect(service.evalQuestionsKey('u-1')).toBe('user:u-1:eval_questions');
-    expect(service.evalLockKey('u-1')).toBe('user:u-1:eval_lock');
-  });
-
-  describe('acquireLock', () => {
-    it('returns an ownership token when lock is successfully acquired', async () => {
-      redis.client.set.mockResolvedValue('OK');
-      const result = await service.acquireLock('u-1');
-      expect(result).toEqual(expect.any(String));
-      expect(redis.client.set).toHaveBeenCalledWith('user:u-1:eval_lock', result, {
-        NX: true,
-        EX: 5,
-      });
+  describe('the lock', () => {
+    afterEach(() => {
+      vi.useRealTimers();
+      vi.restoreAllMocks();
     });
 
-    it('returns null when lock already exists', async () => {
-      redis.client.set.mockResolvedValue(null);
-      const result = await service.acquireLock('u-1');
-      expect(result).toBeNull();
+    // Short, so a crashed holder does not lock the learner out for long.
+    it('goes to one caller at a time, for five seconds', async () => {
+      await expect(service.acquireLock('u-1')).resolves.toEqual(expect.any(String));
+      expect(redis.ttl.get(LOCK)).toBe(5);
+
+      await expect(service.acquireLock('u-1')).resolves.toBeNull();
     });
-  });
 
-  describe('releaseLock', () => {
-    it('conditionally deletes only the lock owned by the supplied token', async () => {
-      await service.releaseLock('u-1', 'token-a');
+    it('is released only by the token that holds it, not by one whose lock expired', async () => {
+      const stale = await service.acquireLock('u-1');
+      redis.data.delete(LOCK);
+      const token = await service.acquireLock('u-1');
 
-      expect(redis.client.eval).toHaveBeenCalledWith(expect.stringContaining('get'), {
-        keys: ['user:u-1:eval_lock'],
-        arguments: ['token-a'],
-      });
-      expect(redis.client.del).not.toHaveBeenCalled();
+      await service.releaseLock('u-1', stale!);
+      expect(redis.data.get(LOCK)).toBe(token);
+
+      await service.releaseLock('u-1', token!);
+      expect(redis.data.has(LOCK)).toBe(false);
+    });
+
+    // A double click: the first request frees the lock a moment later.
+    it('is waited for while another caller holds it', async () => {
+      vi.useFakeTimers();
+      await redis.client.set(LOCK, 'other');
+      setTimeout(() => redis.data.delete(LOCK), 100);
+
+      const waiting = service.acquireLockWithRetry('u-1');
+      await vi.runAllTimersAsync();
+
+      await expect(waiting).resolves.toEqual(expect.any(String));
+    });
+
+    it('is given up after the first try and maxRetries retries', async () => {
+      await redis.client.set(LOCK, 'other');
+      const set = vi.spyOn(redis.client, 'set');
+
+      await expect(service.acquireLockWithRetry('u-1', 2, 1)).resolves.toBeNull();
+      expect(set).toHaveBeenCalledTimes(3);
     });
   });
 
-  describe('acquireLockWithRetry', () => {
-    it('returns a token immediately if lock is acquired on first attempt', async () => {
-      redis.client.set.mockResolvedValue('OK');
-      const result = await service.acquireLockWithRetry('u-1', 2, 1);
-      expect(result).toEqual(expect.any(String));
-      expect(redis.client.set).toHaveBeenCalledTimes(1);
+  describe('the stored run', () => {
+    const answers = [
+      { questionId: randomUUID(), choice: 'ist' },
+      { questionId: randomUUID(), choice: null },
+    ];
+
+    // A1 is level 0, which a falsy check would turn into null, and 'fr' is not the default.
+    it.each([
+      ['with no question served yet', examSession()],
+      [
+        'mid-run at A1',
+        examSession({
+          lang: 'fr',
+          lo: 0,
+          hi: 1,
+          level: 0,
+          mistakesPerLevel: 1,
+          askedPerCategory: { grammar: 1, vocabulary: 1, reading: 0 },
+          totalAnswered: 2,
+          answers,
+          currentQuestionId: randomUUID(),
+          currentOptions: ['hat', 'ist', 'wird', 'war'],
+        }),
+      ],
+    ])('reads back %s exactly as saved', async (_, session) => {
+      await service.saveExamSession('u-1', session);
+
+      await expect(service.loadExamSession('u-1')).resolves.toEqual(session);
     });
 
-    it('returns a token after retrying if lock is initially held', async () => {
-      redis.client.set.mockResolvedValueOnce(null).mockResolvedValueOnce('OK');
-      const result = await service.acquireLockWithRetry('u-1', 2, 1);
-      expect(result).toEqual(expect.any(String));
-      expect(redis.client.set).toHaveBeenCalledTimes(2);
+    it('drops leftover answers and expires both keys after an hour', async () => {
+      await redis.client.rPush(ANSWERS, 'left over from an expired run');
+
+      await service.saveExamSession('u-1', examSession({ answers, totalAnswered: 2 }));
+
+      expect(redis.data.get(ANSWERS)).toEqual(answers.map((answer) => JSON.stringify(answer)));
+      expect(redis.ttl.get(RUN)).toBe(3600);
+      expect(redis.ttl.get(ANSWERS)).toBe(3600);
     });
 
-    it('returns null if lock cannot be acquired after max retries', async () => {
-      redis.client.set.mockResolvedValue(null);
-      const result = await service.acquireLockWithRetry('u-1', 2, 1);
-      expect(result).toBeNull();
-      expect(redis.client.set).toHaveBeenCalledTimes(3);
-    });
-  });
+    it('is active from the first save until it is deleted', async () => {
+      await expect(service.hasActiveSession('u-1')).resolves.toBe(false);
 
-  describe('hasActiveSession', () => {
-    it('returns true when session exists in redis', async () => {
-      redis.client.exists.mockResolvedValue(1);
-      const result = await service.hasActiveSession('u-1');
-      expect(result).toBe(true);
-      expect(redis.client.exists).toHaveBeenCalledWith('user:u-1:eval');
-    });
+      await service.saveExamSession('u-1', examSession({ answers, totalAnswered: 2 }));
+      await expect(service.hasActiveSession('u-1')).resolves.toBe(true);
 
-    it('returns false when session does not exist', async () => {
-      redis.client.exists.mockResolvedValue(0);
-      const result = await service.hasActiveSession('u-1');
-      expect(result).toBe(false);
-    });
-  });
-
-  describe('saveExamSession', () => {
-    it('stores session data into redis hash with TTL within a multi transaction', async () => {
-      await service.saveExamSession('u-1', sampleSession);
-
-      expect(redis.client.multi).toHaveBeenCalled();
-      expect(multiMock.hSet).toHaveBeenCalledWith('user:u-1:eval', {
-        evalId: sampleSession.evalId,
-        lang: 'de',
-        lo: sampleSession.lo,
-        hi: sampleSession.hi,
-        level: sampleSession.level ?? '',
-        mistakesPerLevel: '0',
-        askedPerCategory: JSON.stringify(sampleSession.askedPerCategory),
-        totalAnswered: '0',
-        ended: 'false',
-        currentQuestionId: sampleSession.currentQuestionId,
-        currentOptions: JSON.stringify(sampleSession.currentOptions),
-        servedAt: sampleSession.servedAt,
-      });
-      expect(multiMock.expire).toHaveBeenCalledWith('user:u-1:eval', PLACEMENT_REDIS_KEY_TTL);
-      expect(multiMock.del).toHaveBeenCalledWith('user:u-1:eval_questions');
-      expect(multiMock.rPush).not.toHaveBeenCalled();
-      expect(multiMock.exec).toHaveBeenCalled();
-    });
-  });
-
-  describe('loadExamSession', () => {
-    it('returns null when no data in redis', async () => {
-      redis.client.hGetAll.mockResolvedValue({});
-      const result = await service.loadExamSession('u-1');
-      expect(result).toBeNull();
-      expect(multiMock.hGetAll).toHaveBeenCalledWith('user:u-1:eval');
-      expect(multiMock.lRange).toHaveBeenCalledWith('user:u-1:eval_questions', 0, -1);
-    });
-
-    it('returns null when redis transaction returns null or incomplete replies', async () => {
-      multiMock.exec.mockResolvedValueOnce(null);
-      expect(await service.loadExamSession('u-1')).toBeNull();
-
-      multiMock.exec.mockResolvedValueOnce([]);
-      expect(await service.loadExamSession('u-1')).toBeNull();
-    });
-
-    it('parses and returns valid ExamSession', async () => {
-      redis.client.hGetAll.mockResolvedValue({
-        evalId: sampleSession.evalId,
-        lang: 'de',
-        lo: '0',
-        hi: '5',
-        level: '2',
-        mistakesPerLevel: '0',
-        askedPerCategory: JSON.stringify({ grammar: 1, vocabulary: 0, reading: 0 }),
-        totalAnswered: '0',
-        ended: 'false',
-        currentQuestionId: sampleSession.currentQuestionId,
-        currentOptions: JSON.stringify(sampleSession.currentOptions),
-        servedAt: sampleSession.servedAt,
-      });
-
-      const result = await service.loadExamSession('u-1');
-      expect(result).toEqual(sampleSession);
-    });
-
-    it('parses numeric level 0 correctly without falling back to null', async () => {
-      redis.client.hGetAll.mockResolvedValue({
-        evalId: sampleSession.evalId,
-        lang: 'de',
-        lo: '0',
-        hi: '5',
-        level: '0',
-        mistakesPerLevel: '0',
-        askedPerCategory: JSON.stringify({ grammar: 1, vocabulary: 0, reading: 0 }),
-        totalAnswered: '0',
-        ended: 'false',
-        currentQuestionId: sampleSession.currentQuestionId,
-        currentOptions: JSON.stringify(sampleSession.currentOptions),
-        servedAt: sampleSession.servedAt,
-      });
-
-      const result = await service.loadExamSession('u-1');
-      expect(result).toEqual({ ...sampleSession, level: 0 });
+      await service.deleteSession('u-1');
+      await expect(service.hasActiveSession('u-1')).resolves.toBe(false);
+      await expect(service.loadExamSession('u-1')).resolves.toBeNull();
+      expect(redis.data.has(ANSWERS)).toBe(false);
     });
 
     // A run saved before the field existed must keep loading, not turn into a 409.
-    it('loads a hash without stored options as currentOptions null', async () => {
-      redis.client.hGetAll.mockResolvedValue({
-        evalId: sampleSession.evalId,
-        lang: 'de',
-        lo: '0',
-        hi: '5',
-        level: '2',
-        mistakesPerLevel: '0',
-        askedPerCategory: JSON.stringify({ grammar: 1, vocabulary: 0, reading: 0 }),
-        totalAnswered: '0',
-        ended: 'false',
-        currentQuestionId: sampleSession.currentQuestionId,
-        servedAt: sampleSession.servedAt,
+    it('saved before currentOptions existed loads with currentOptions null', async () => {
+      const session = examSession({
+        currentQuestionId: randomUUID(),
+        currentOptions: ['a', 'b', 'c', 'd'],
       });
-
-      const result = await service.loadExamSession('u-1');
-      expect(result).toEqual({ ...sampleSession, currentOptions: null });
-    });
-
-    it.each([
-      ['malformed JSON', '{invalid'],
-      ['schema-invalid JSON', JSON.stringify({ grammar: -1 })],
-    ])('throws placement.invalidSession for %s', async (_description, askedPerCategory) => {
-      redis.client.hGetAll.mockResolvedValue({
-        evalId: sampleSession.evalId,
-        lang: 'de',
-        lo: '0',
-        hi: '5',
-        level: '2',
-        mistakesPerLevel: '0',
-        askedPerCategory,
-        totalAnswered: '0',
-        ended: 'false',
-        currentQuestionId: sampleSession.currentQuestionId,
-        currentOptions: JSON.stringify(sampleSession.currentOptions),
-        servedAt: sampleSession.servedAt,
-      });
-
-      await expect(service.loadExamSession('u-1')).rejects.toThrow(
-        new ConflictException('placement.invalidSession'),
-      );
-    });
-
-    it.each([
-      ['malformed JSON', '[invalid'],
-      ['three options', JSON.stringify(['hat', 'ist', 'wird'])],
-    ])('throws placement.invalidSession for stored options with %s', async (_, currentOptions) => {
-      redis.client.hGetAll.mockResolvedValue({
-        evalId: sampleSession.evalId,
-        lang: 'de',
-        lo: '0',
-        hi: '5',
-        level: '2',
-        mistakesPerLevel: '0',
-        askedPerCategory: JSON.stringify({ grammar: 1, vocabulary: 0, reading: 0 }),
-        totalAnswered: '0',
-        ended: 'false',
-        currentQuestionId: sampleSession.currentQuestionId,
-        currentOptions,
-        servedAt: sampleSession.servedAt,
-      });
-
-      await expect(service.loadExamSession('u-1')).rejects.toThrow(
-        new ConflictException('placement.invalidSession'),
-      );
-    });
-  });
-
-  describe('answer persistence', () => {
-    const answers: SubmitAnswerInput[] = [
-      { questionId: 'b7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64', choice: 'ist' },
-      { questionId: 'a1b2c3d4-e5f6-4a1b-8c2d-3e4f5a6b7c8d', choice: null },
-    ];
-
-    it('replaces the Redis list with all session answers when saving', async () => {
-      await service.saveExamSession('u-1', { ...sampleSession, answers });
-
-      expect(multiMock.del).toHaveBeenCalledWith('user:u-1:eval_questions');
-      expect(multiMock.rPush).toHaveBeenNthCalledWith(
-        1,
-        'user:u-1:eval_questions',
-        JSON.stringify(answers[0]),
-      );
-      expect(multiMock.rPush).toHaveBeenNthCalledWith(
-        2,
-        'user:u-1:eval_questions',
-        JSON.stringify(answers[1]),
-      );
-      expect(multiMock.expire).toHaveBeenCalledWith(
-        'user:u-1:eval_questions',
-        PLACEMENT_REDIS_KEY_TTL,
-      );
-    });
-
-    it('loads validated answers from the existing Redis list', async () => {
-      redis.client.hGetAll.mockResolvedValue({
-        evalId: sampleSession.evalId,
-        lang: 'de',
-        lo: '0',
-        hi: '5',
-        level: '2',
-        mistakesPerLevel: '0',
-        askedPerCategory: JSON.stringify(sampleSession.askedPerCategory),
-        totalAnswered: '2',
-        ended: 'false',
-        currentQuestionId: sampleSession.currentQuestionId,
-        currentOptions: JSON.stringify(sampleSession.currentOptions),
-        servedAt: sampleSession.servedAt,
-      });
-      redis.client.lRange.mockResolvedValue(answers.map((answer) => JSON.stringify(answer)));
+      await service.saveExamSession('u-1', session);
+      delete (redis.data.get(RUN) as Record<string, string>).currentOptions;
 
       await expect(service.loadExamSession('u-1')).resolves.toEqual({
-        ...sampleSession,
-        totalAnswered: 2,
-        answers,
+        ...session,
+        currentOptions: null,
       });
     });
 
     it.each([
-      ['malformed JSON', '{invalid'],
-      ['schema-invalid JSON', JSON.stringify({ questionId: 'not-a-uuid', choice: 'ist' })],
-    ])('throws placement.invalidSession for %s answer data', async (_description, rawAnswer) => {
-      redis.client.hGetAll.mockResolvedValue({
-        evalId: sampleSession.evalId,
-        lang: 'de',
-        lo: '0',
-        hi: '5',
-        level: '2',
-        mistakesPerLevel: '0',
-        askedPerCategory: JSON.stringify(sampleSession.askedPerCategory),
-        totalAnswered: '1',
-        ended: 'false',
-        currentQuestionId: sampleSession.currentQuestionId,
-        currentOptions: JSON.stringify(sampleSession.currentOptions),
-        servedAt: sampleSession.servedAt,
-      });
-      redis.client.lRange.mockResolvedValue([rawAnswer]);
+      ['a malformed askedPerCategory', { askedPerCategory: '{invalid' }, []],
+      [
+        'a negative category count',
+        { askedPerCategory: '{"grammar":-1,"vocabulary":0,"reading":0}' },
+        [],
+      ],
+      ['a third mistake', { mistakesPerLevel: '3' }, []],
+      ['a negative mistake count', { mistakesPerLevel: '-1' }, []],
+      ['an evalId that is not a uuid', { evalId: 'not-a-uuid' }, []],
+      ['an unknown language', { lang: 'xx' }, []],
+      ['a servedAt that is not an ISO time', { servedAt: 'yesterday' }, []],
+      ['malformed served options', { currentOptions: '[invalid' }, []],
+      ['three served options', { currentOptions: '["hat","ist","wird"]' }, []],
+      ['a malformed answer', {}, ['{invalid']],
+      ['an answer without a uuid', {}, ['{"questionId":"not-a-uuid","choice":"ist"}']],
+      ['one question answered twice', {}, [JSON.stringify(answers[0]), JSON.stringify(answers[0])]],
+    ])('is rejected as placement.invalidSession and dropped with %s', async (_, fields, stored) => {
+      await service.saveExamSession('u-1', examSession());
+      await redis.client.hSet(RUN, fields);
+      for (const raw of stored) await redis.client.rPush(ANSWERS, raw);
 
       await expect(service.loadExamSession('u-1')).rejects.toThrow(
         new ConflictException('placement.invalidSession'),
       );
-    });
-
-    it('rejects duplicate question IDs in the Redis list', async () => {
-      redis.client.hGetAll.mockResolvedValue({
-        evalId: sampleSession.evalId,
-        lang: 'de',
-        lo: '0',
-        hi: '5',
-        level: '2',
-        mistakesPerLevel: '0',
-        askedPerCategory: JSON.stringify(sampleSession.askedPerCategory),
-        totalAnswered: '2',
-        ended: 'false',
-        currentQuestionId: sampleSession.currentQuestionId,
-        currentOptions: JSON.stringify(sampleSession.currentOptions),
-        servedAt: sampleSession.servedAt,
-      });
-      redis.client.lRange.mockResolvedValue([
-        JSON.stringify(answers[0]),
-        JSON.stringify(answers[0]),
-      ]);
-
-      await expect(service.loadExamSession('u-1')).rejects.toThrow(
-        new ConflictException('placement.invalidSession'),
-      );
-    });
-  });
-
-  describe('deleteSession', () => {
-    it('deletes session and questions keys from redis', async () => {
-      await service.deleteSession('u-1');
-
-      expect(redis.client.del).toHaveBeenCalledWith(['user:u-1:eval', 'user:u-1:eval_questions']);
+      // Dropped, so the next start is not refused for a run nobody can read.
+      expect(redis.data.has(RUN)).toBe(false);
     });
   });
 });

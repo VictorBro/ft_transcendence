@@ -1,552 +1,225 @@
 import { ConflictException, NotFoundException } from '@nestjs/common';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { randomUUID } from 'node:crypto';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import type { QuestionCategory } from '@ft/shared';
+
 import type { ExamSession } from './placement.schema';
 
+import { examSession, questionRow } from '../../test/placement.fixtures';
 import type { QuestionBank } from '../generated/prisma/client';
 import type { PrismaService } from '../prisma/prisma.service';
-import { PlacementQuestionService } from './placement-question.service';
+import {
+  LIMIT_UNSEEN_QUESTIONS_TO_RETRIEVE,
+  PlacementQuestionService,
+} from './placement-question.service';
 
-const EVAL_ID = 'd7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64';
+const row = questionRow();
 
-const mockQuestion: QuestionBank = {
-  id: 'b7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64',
-  sourceId: 'de-gram-0001',
-  lang: 'de',
-  level: 'B1',
-  topic: 'verbs_morphology',
-  category: 'grammar',
-  readText: null,
-  question: 'Er ___ gestern ins Kino gegangen.',
-  options: ['ist', 'hat', 'war', 'wird'],
-  answer: 'ist',
-  timeLimitS: 30,
-  createdAt: new Date(),
-  updatedAt: new Date(),
-};
-
-function createService(prismaOverrides: Record<string, unknown> = {}) {
+/** `unseen` is what the bank still holds for this user, per category. */
+function serviceWith(unseen: Partial<Record<QuestionCategory, QuestionBank[]>> = {}) {
   const prisma = {
     questionBank: {
-      findUnique: vi.fn(),
-      findMany: vi.fn(),
-      ...((prismaOverrides.questionBank as Record<string, unknown>) ?? {}),
+      findMany: vi.fn(
+        async ({ where }: { where: { category: QuestionCategory } }) =>
+          unseen[where.category] ?? [],
+      ),
     },
     userSeenQuestion: {
-      findMany: vi.fn().mockResolvedValue([]),
-      create: vi.fn().mockResolvedValue({}),
-      upsert: vi.fn().mockResolvedValue({}),
-      ...((prismaOverrides.userSeenQuestion as Record<string, unknown>) ?? {}),
+      findMany: vi.fn(async (): Promise<{ questionBank: QuestionBank }[]> => []),
+      upsert: vi.fn(),
     },
-    ...prismaOverrides,
   };
-
-  return {
-    service: new PlacementQuestionService(prisma as unknown as PrismaService),
-    prisma,
-  };
+  return { prisma, service: new PlacementQuestionService(prisma as unknown as PrismaService) };
 }
 
 describe('PlacementQuestionService', () => {
-  let service: PlacementQuestionService;
-  let prisma: ReturnType<typeof createService>['prisma'];
-
-  beforeEach(() => {
-    const created = createService();
-    service = created.service;
-    prisma = created.prisma;
+  beforeEach(() => vi.useFakeTimers());
+  afterEach(() => {
+    vi.restoreAllMocks();
+    vi.useRealTimers();
   });
 
   describe('getNewQuestion', () => {
-    const session: ExamSession = {
-      evalId: EVAL_ID,
-      lang: 'de',
-      lo: 0,
-      hi: 5,
-      level: 2,
-      mistakesPerLevel: 0,
-      askedPerCategory: { vocabulary: 1, reading: 1, grammar: 0 },
-      totalAnswered: 0,
-      answers: [],
-      ended: false,
-      currentQuestionId: null,
-      currentOptions: null,
-      servedAt: new Date().toISOString(),
-    };
+    it('draws an unseen row of the run language and level, from the categories still open', async () => {
+      const reading = questionRow({ category: 'reading' });
+      const { service, prisma } = serviceWith({ reading: [reading] });
+      const session = examSession({ askedPerCategory: { grammar: 2, vocabulary: 2, reading: 0 } });
 
-    it('queries prisma and returns per-category counts and first question', async () => {
-      prisma.questionBank.findMany.mockResolvedValue([mockQuestion]);
-
-      const [counts, question] = await service.getNewQuestion('user-1', session);
-      expect(counts).toEqual({ grammar: 1, vocabulary: 1, reading: 1 });
-      expect(question).toEqual(mockQuestion);
-      expect(prisma.questionBank.findMany).toHaveBeenCalledWith(
-        expect.objectContaining({
-          where: expect.objectContaining({
-            lang: 'de',
-            level: 'B1',
-          }),
-        }),
-      );
+      await expect(service.getNewQuestion('u-1', session)).resolves.toEqual([
+        { reading: 1 },
+        reading,
+      ]);
+      expect(prisma.questionBank.findMany).toHaveBeenCalledExactlyOnceWith({
+        where: {
+          lang: 'de',
+          level: 'B1',
+          category: 'reading',
+          userSeenQuestions: { none: { userId: 'u-1' } },
+        },
+        take: LIMIT_UNSEEN_QUESTIONS_TO_RETRIEVE,
+      });
     });
 
-    it('throws NotFoundException when pool is exhausted', async () => {
-      prisma.questionBank.findMany.mockResolvedValue([]);
+    const grammar = [questionRow(), questionRow()];
+    const vocabulary = [
+      questionRow({ category: 'vocabulary' }),
+      questionRow({ category: 'vocabulary' }),
+    ];
 
-      await expect(service.getNewQuestion('user-1', session)).rejects.toThrow(NotFoundException);
-    });
+    it.each([
+      [0, grammar[0]],
+      [0.99, vocabulary[1]],
+    ])('picks the category, then the row, with Math.random (%s)', async (random, expected) => {
+      const { service, prisma } = serviceWith({ grammar, vocabulary });
+      vi.spyOn(Math, 'random').mockReturnValue(random);
 
-    it('throws ConflictException when session.ended is true', async () => {
-      await expect(service.getNewQuestion('user-1', { ...session, ended: true })).rejects.toThrow(
-        ConflictException,
-      );
-    });
-
-    it('throws ConflictException when session.level is null', async () => {
-      await expect(service.getNewQuestion('user-1', { ...session, level: null })).rejects.toThrow(
-        ConflictException,
-      );
-    });
-
-    it('checks all eligible categories and returns question from non-empty category', async () => {
-      prisma.questionBank.findMany
-        .mockResolvedValueOnce([])
-        .mockResolvedValueOnce([mockQuestion])
-        .mockResolvedValueOnce([]);
-
-      const [counts, question] = await service.getNewQuestion('user-1', session);
-      expect(counts).toEqual({ grammar: 0, vocabulary: 1, reading: 0 });
-      expect(question).toEqual(mockQuestion);
-      expect(prisma.questionBank.findMany).toHaveBeenCalledTimes(3);
+      await expect(service.getNewQuestion('u-1', examSession())).resolves.toEqual([
+        { grammar: 2, vocabulary: 2, reading: 0 },
+        expected,
+      ]);
       expect(prisma.userSeenQuestion.findMany).not.toHaveBeenCalled();
     });
 
-    it('returns counts only for categories queried from the question bank', async () => {
-      const readingQuestion = { ...mockQuestion, category: 'reading' as const };
-      prisma.questionBank.findMany.mockResolvedValue([readingQuestion]);
-
-      const [counts, question] = await service.getNewQuestion('user-1', {
-        ...session,
-        askedPerCategory: { grammar: 2, vocabulary: 2, reading: 0 },
+    it('once no open category has unseen rows, falls back to a random least recently seen one outside this run', async () => {
+      const { service, prisma } = serviceWith();
+      prisma.userSeenQuestion.findMany.mockResolvedValue(
+        vocabulary.map((questionBank) => ({ questionBank })),
+      );
+      vi.spyOn(Math, 'random').mockReturnValue(0.99);
+      const [answered, current] = [randomUUID(), randomUUID()];
+      const session = examSession({
+        askedPerCategory: { grammar: 2, vocabulary: 0, reading: 0 },
+        answers: [{ questionId: answered, choice: 'ist' }],
+        currentQuestionId: current,
       });
 
-      expect(counts).toEqual({ reading: 1 });
-      expect(question).toEqual(readingQuestion);
-      expect(prisma.questionBank.findMany).toHaveBeenCalledTimes(1);
-      expect(prisma.questionBank.findMany).toHaveBeenCalledWith(
-        expect.objectContaining({
-          where: expect.objectContaining({ category: 'reading' }),
-        }),
-      );
-    });
-
-    it('returns counts for every queried category and selects a non-empty category randomly', async () => {
-      const qGrammar = { ...mockQuestion, id: 'q-gram', category: 'grammar' as const };
-      const qVocab = { ...mockQuestion, id: 'q-vocab', category: 'vocabulary' as const };
-      // 3 eligible categories: grammar has 10, vocabulary has 2, reading has 5
-      prisma.questionBank.findMany.mockImplementation(async ({ where }) => {
-        if (where.category === 'grammar') return Array(10).fill(qGrammar);
-        if (where.category === 'vocabulary') return Array(2).fill(qVocab);
-        return [];
+      await expect(service.getNewQuestion('u-1', session)).resolves.toEqual([
+        { vocabulary: 0, reading: 0 },
+        vocabulary[1],
+      ]);
+      expect(prisma.userSeenQuestion.findMany).toHaveBeenCalledWith({
+        where: {
+          userId: 'u-1',
+          questionId: { notIn: [answered, current] },
+          questionBank: { lang: 'de', level: 'B1', category: { in: ['vocabulary', 'reading'] } },
+        },
+        orderBy: { updatedAt: 'asc' },
+        take: 10,
+        include: { questionBank: true },
       });
-
-      const randomSpy = vi.spyOn(Math, 'random').mockReturnValue(0.99); // picks second available category (vocabulary)
-      const [counts, question] = await service.getNewQuestion('user-1', session);
-      expect(counts).toEqual({ grammar: 10, vocabulary: 2, reading: 0 });
-      expect(question.category).toBe('vocabulary');
-      randomSpy.mockRestore();
     });
 
-    it('returns zero per-category counts and a random question from the last 10 seen questions', async () => {
-      prisma.questionBank.findMany.mockResolvedValue([]);
-      prisma.userSeenQuestion.findMany.mockResolvedValue([
-        {
-          id: 'seen-1',
-          userId: 'user-1',
-          questionId: mockQuestion.id,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-          questionBank: mockQuestion,
-        },
-      ]);
-
-      const [counts, question] = await service.getNewQuestion('user-1', session);
-      expect(counts).toEqual({ grammar: 0, vocabulary: 0, reading: 0 });
-      expect(question).toEqual(mockQuestion);
-      expect(prisma.userSeenQuestion.findMany).toHaveBeenCalledWith(
-        expect.objectContaining({
-          where: expect.objectContaining({
-            userId: 'user-1',
-            questionBank: expect.objectContaining({
-              lang: 'de',
-              level: 'B1',
-            }),
-          }),
-          orderBy: { updatedAt: 'asc' },
-          take: 10,
-          include: { questionBank: true },
-        }),
+    it('throws placement.poolExhausted when the level has nothing left to serve', async () => {
+      await expect(serviceWith().service.getNewQuestion('u-1', examSession())).rejects.toThrow(
+        new NotFoundException('placement.poolExhausted'),
       );
     });
-    it('selects randomly among multiple unseen questions', async () => {
-      const q1 = { ...mockQuestion, id: 'q-1' };
-      const q2 = { ...mockQuestion, id: 'q-2' };
-      const q3 = { ...mockQuestion, id: 'q-3' };
-      prisma.questionBank.findMany.mockResolvedValue([q1, q2, q3]);
 
-      const randomSpy = vi.spyOn(Math, 'random').mockReturnValue(0.7);
-      const [, question] = await service.getNewQuestion('user-1', session);
-      expect(question).toEqual(q3);
-      randomSpy.mockRestore();
+    it.each([
+      ['has ended', { ended: true }],
+      ['has no level', { level: null }],
+    ])('refuses to draw for a run that %s with placement.expired', async (_, state) => {
+      await expect(serviceWith().service.getNewQuestion('u-1', examSession(state))).rejects.toThrow(
+        new ConflictException('placement.expired'),
+      );
+    });
+  });
+
+  // 0.99 keeps every item in place, which an off-by-one shuffle never does: it
+  // could then never show the answer, listed first in the bank, in first place.
+  it.each([
+    [0, ['hat', 'war', 'wird', 'ist']],
+    [0.99, ['ist', 'hat', 'war', 'wird']],
+  ])('shuffles the options in the order Math.random gives (%s)', (random, expected) => {
+    vi.spyOn(Math, 'random').mockReturnValue(random);
+
+    expect(serviceWith().service.shuffleOptions(row.options)).toEqual(expected);
+  });
+
+  describe('getMaxQuestionsRemaining', () => {
+    it.each<[string, Partial<ExamSession>, number]>([
+      ['at the start', {}, 18],
+      ['halfway through B1', { askedPerCategory: { grammar: 2, vocabulary: 1, reading: 0 } }, 15],
+      [
+        'two into C1 after passing B1',
+        { lo: 3, level: 4, askedPerCategory: { grammar: 1, vocabulary: 1, reading: 0 } },
+        10,
+      ],
+      ['at A2 after failing B1', { hi: 2, level: 1 }, 12],
+      [
+        'on the last question at A1',
+        { hi: 1, level: 0, askedPerCategory: { grammar: 2, vocabulary: 2, reading: 1 } },
+        1,
+      ],
+    ])('counts the worst case %s', (_, state, expected) => {
+      expect(serviceWith().service.getMaxQuestionsRemaining(examSession(state))).toBe(expected);
     });
 
-    it('excludes already answered questions and current question from fallback seen query', async () => {
-      const answeredQuestionId = 'a1111111-1111-4111-8111-111111111111';
-      const activeQuestionId = 'b2222222-2222-4222-8222-222222222222';
-
-      prisma.questionBank.findMany.mockResolvedValue([]);
-      const sessionWithCurrent: ExamSession = {
-        ...session,
-        answers: [{ questionId: answeredQuestionId, choice: 'ist' }],
-        currentQuestionId: activeQuestionId,
-      };
-
-      prisma.userSeenQuestion.findMany.mockResolvedValue([
-        {
-          id: 'seen-1',
-          userId: 'user-1',
-          questionId: mockQuestion.id,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-          questionBank: mockQuestion,
-        },
-      ]);
-
-      const [counts, question] = await service.getNewQuestion('user-1', sessionWithCurrent);
-      expect(counts).toEqual({ grammar: 0, vocabulary: 0, reading: 0 });
-      expect(question).toEqual(mockQuestion);
-      expect(prisma.userSeenQuestion.findMany).toHaveBeenCalledWith(
-        expect.objectContaining({
-          where: expect.objectContaining({
-            userId: 'user-1',
-            questionId: { notIn: [answeredQuestionId, activeQuestionId] },
-          }),
-        }),
-      );
+    it('throws placement.invalidSession for a stored run without a level', () => {
+      expect(() =>
+        serviceWith().service.getMaxQuestionsRemaining(examSession({ level: null })),
+      ).toThrow(new ConflictException('placement.invalidSession'));
     });
   });
 
   describe('createPlacementQuestion', () => {
-    it('constructs a valid PlacementQuestion from QuestionBank and ExamSession', async () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 0,
-        hi: 5,
-        level: 2,
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
-        totalAnswered: 1,
-        answers: [],
-        ended: false,
-        currentQuestionId: mockQuestion.id,
-        currentOptions: mockQuestion.options,
-        servedAt: new Date(Date.now() - 5000).toISOString(),
-      };
+    const served = ['war', 'wird', 'ist', 'hat'];
 
-      const result = await service.createPlacementQuestion(mockQuestion, session);
-      expect(result.questionId).toBe(mockQuestion.id);
-      expect(result.question).toBe(mockQuestion.question);
-      expect(result.remainingS).toBeLessThanOrEqual(30);
-      expect(result.progress).toEqual({ answered: 1, maxQuestionsRemaining: 17 });
-      expect((result as Record<string, unknown>).answer).toBeUndefined();
-    });
-
-    it('sends the options in the order stored when the question was served', async () => {
-      const served = ['war', 'wird', 'ist', 'hat'];
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 0,
-        hi: 5,
-        level: 2,
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
-        totalAnswered: 1,
-        answers: [],
-        ended: false,
-        currentQuestionId: mockQuestion.id,
-        currentOptions: served,
-        servedAt: '2026-09-20T16:00:00.000Z',
-      };
-
+    it('sends the served option order, the clock and the progress, never the answer', async () => {
       // Pinned so a reshuffle could never land on `served` by chance.
-      const randomSpy = vi.spyOn(Math, 'random').mockReturnValue(0);
-      const result = await service.createPlacementQuestion(mockQuestion, session);
-      randomSpy.mockRestore();
-      expect(result.options).toEqual(served);
-    });
-
-    it('throws placement.invalidSession when the session has no served options', async () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 0,
-        hi: 5,
-        level: 2,
-        mistakesPerLevel: 0,
+      vi.spyOn(Math, 'random').mockReturnValue(0);
+      const session = examSession({
         askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
         totalAnswered: 1,
-        answers: [],
-        ended: false,
-        currentQuestionId: mockQuestion.id,
-        currentOptions: null,
-        servedAt: '2026-09-20T16:00:00.000Z',
-      };
+        currentOptions: served,
+        servedAt: new Date(Date.now() - 5_000).toISOString(),
+      });
 
-      await expect(service.createPlacementQuestion(mockQuestion, session)).rejects.toThrow(
-        new ConflictException('placement.invalidSession'),
-      );
-    });
-  });
-
-  describe('shuffleOptions', () => {
-    it('preserves all items while shuffling', () => {
-      const options = ['opt1', 'opt2', 'opt3', 'opt4'];
-      const shuffled = service.shuffleOptions(options);
-      expect([...shuffled].sort()).toEqual([...options].sort());
-      expect(shuffled).toHaveLength(4);
-    });
-
-    // 0.99 keeps every item in place, which an off-by-one shuffle never does: it
-    // could then never show the answer, listed first in the bank, in first place.
-    it.each([
-      [0, ['opt2', 'opt3', 'opt4', 'opt1']],
-      [0.99, ['opt1', 'opt2', 'opt3', 'opt4']],
-    ])('takes the order from Math.random (%s)', (random, expected) => {
-      const randomSpy = vi.spyOn(Math, 'random').mockReturnValue(random);
-      const shuffled = service.shuffleOptions(['opt1', 'opt2', 'opt3', 'opt4']);
-      randomSpy.mockRestore();
-      expect(shuffled).toEqual(expected);
-    });
-  });
-
-  describe('getMaxQuestionsRemaining', () => {
-    it('calculates remaining questions for initial B1 session', () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 0,
-        hi: 5,
-        level: 2,
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-        totalAnswered: 0,
-        answers: [],
-        ended: false,
-        currentQuestionId: null,
-        currentOptions: null,
-        servedAt: new Date().toISOString(),
-      };
-      expect(service.getMaxQuestionsRemaining(session)).toBe(18);
-    });
-
-    it('calculates remaining questions for narrowed boundary level A1', () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 0,
-        hi: 0,
-        level: 0,
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 1, vocabulary: 1, reading: 1 },
-        totalAnswered: 3,
-        answers: [],
-        ended: false,
-        currentQuestionId: null,
-        currentOptions: null,
-        servedAt: new Date().toISOString(),
-      };
-      expect(service.getMaxQuestionsRemaining(session)).toBe(3);
-    });
-
-    it('calculates remaining questions on final question of converged final level', () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 0,
-        hi: 1,
-        level: 0,
-        mistakesPerLevel: 1,
-        askedPerCategory: { grammar: 2, vocabulary: 2, reading: 1 },
-        totalAnswered: 17,
-        answers: [],
-        ended: false,
-        currentQuestionId: mockQuestion.id,
-        currentOptions: mockQuestion.options,
-        servedAt: new Date().toISOString(),
-      };
-      expect(service.getMaxQuestionsRemaining(session)).toBe(1);
-    });
-
-    it('calculates remaining questions mid-level with upper branch exploration remaining', () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 3,
-        hi: 6,
-        level: 4,
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 1, vocabulary: 1, reading: 0 },
-        totalAnswered: 8,
-        answers: [],
-        ended: false,
-        currentQuestionId: mockQuestion.id,
-        currentOptions: mockQuestion.options,
-        servedAt: new Date().toISOString(),
-      };
-      expect(service.getMaxQuestionsRemaining(session)).toBe(10);
-    });
-
-    it('calculates remaining questions when probing top level C2', () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 5,
-        hi: 6,
-        level: 5,
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
-        totalAnswered: 13,
-        answers: [],
-        ended: false,
-        currentQuestionId: mockQuestion.id,
-        currentOptions: mockQuestion.options,
-        servedAt: new Date().toISOString(),
-      };
-      expect(service.getMaxQuestionsRemaining(session)).toBe(5);
-    });
-
-    it('calculates remaining questions after stepping down to A2', () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 0,
-        hi: 2,
-        level: 1,
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-        totalAnswered: 2,
-        answers: [],
-        ended: false,
-        currentQuestionId: mockQuestion.id,
-        currentOptions: mockQuestion.options,
-        servedAt: new Date().toISOString(),
-      };
-      expect(service.getMaxQuestionsRemaining(session)).toBe(12);
-    });
-
-    it('calculates remaining questions halfway through initial B1 level', () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 0,
-        hi: 6,
-        level: 2,
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 2, vocabulary: 1, reading: 0 },
-        totalAnswered: 3,
-        answers: [],
-        ended: false,
-        currentQuestionId: mockQuestion.id,
-        currentOptions: mockQuestion.options,
-        servedAt: new Date().toISOString(),
-      };
-      expect(service.getMaxQuestionsRemaining(session)).toBe(15);
-    });
-
-    it('throws ConflictException when session.level is null', () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 0,
-        hi: 5,
-        level: null,
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-        totalAnswered: 0,
-        answers: [],
-        ended: false,
-        currentQuestionId: null,
-        currentOptions: null,
-        servedAt: new Date().toISOString(),
-      };
-      expect(() => service.getMaxQuestionsRemaining(session)).toThrow(ConflictException);
-    });
-  });
-
-  describe('getNewPlacementQuestion', () => {
-    it('fetches new question and registers seen question', async () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 0,
-        hi: 5,
-        level: 2,
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-        totalAnswered: 0,
-        answers: [],
-        ended: false,
-        currentQuestionId: null,
-        currentOptions: null,
-        servedAt: new Date().toISOString(),
-      };
-      prisma.questionBank.findMany.mockResolvedValue([mockQuestion]);
-
-      const result = await service.getNewPlacementQuestion('user-1', session);
-      expect(result.questionId).toBe(mockQuestion.id);
-      expect(prisma.userSeenQuestion.upsert).toHaveBeenCalledWith({
-        where: {
-          userId_questionId: {
-            userId: 'user-1',
-            questionId: mockQuestion.id,
-          },
-        },
-        create: {
-          userId: 'user-1',
-          questionId: mockQuestion.id,
-        },
-        update: {
-          updatedAt: expect.any(Date),
-        },
+      await expect(serviceWith().service.createPlacementQuestion(row, session)).resolves.toEqual({
+        questionId: row.id,
+        category: 'grammar',
+        level: 'B1',
+        question: row.question,
+        options: served,
+        timeLimitS: 30,
+        remainingS: 25,
+        progress: { answered: 1, maxQuestionsRemaining: 17 },
       });
     });
 
-    it("shuffles the new question's options once and replaces the previous order", async () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 0,
-        hi: 5,
-        level: 2,
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
-        totalAnswered: 1,
-        answers: [{ questionId: 'a1111111-1111-4111-8111-111111111111', choice: 'a' }],
-        ended: false,
-        currentQuestionId: 'a1111111-1111-4111-8111-111111111111',
-        currentOptions: ['a', 'b', 'c', 'd'],
-        servedAt: new Date().toISOString(),
-      };
-      prisma.questionBank.findMany.mockResolvedValue([mockQuestion]);
-      const shuffled = ['war', 'wird', 'ist', 'hat'];
-      const shuffleSpy = vi.spyOn(service, 'shuffleOptions').mockReturnValueOnce(shuffled);
+    it('sends the text of a reading question', async () => {
+      const reading = questionRow({ category: 'reading' });
+      const session = examSession({ currentOptions: served });
 
-      const result = await service.getNewPlacementQuestion('user-1', session);
-      expect(shuffleSpy).toHaveBeenCalledExactlyOnceWith(mockQuestion.options);
-      shuffleSpy.mockRestore();
-      expect(session.currentOptions).toEqual(shuffled);
-      expect(result.options).toEqual(shuffled);
+      const question = await serviceWith().service.createPlacementQuestion(reading, session);
+
+      expect(question.readText).toBe(reading.readText);
     });
+
+    it('throws placement.invalidSession when no options were served', async () => {
+      await expect(
+        serviceWith().service.createPlacementQuestion(row, examSession()),
+      ).rejects.toThrow(new ConflictException('placement.invalidSession'));
+    });
+  });
+
+  it('serves a new row: marks it seen, shuffles its options once and restarts the clock', async () => {
+    const { service, prisma } = serviceWith({ grammar: [row] });
+    vi.spyOn(Math, 'random').mockReturnValue(0);
+    const session = examSession({ servedAt: '2026-09-20T16:00:00.000Z' });
+
+    const question = await service.getNewPlacementQuestion('u-1', session);
+
+    expect(prisma.userSeenQuestion.upsert).toHaveBeenCalledWith({
+      where: { userId_questionId: { userId: 'u-1', questionId: row.id } },
+      create: { userId: 'u-1', questionId: row.id },
+      update: { updatedAt: new Date() },
+    });
+    expect(session).toMatchObject({
+      currentQuestionId: row.id,
+      currentOptions: ['hat', 'war', 'wird', 'ist'],
+      servedAt: new Date().toISOString(),
+    });
+    expect(question).toMatchObject({ questionId: row.id, options: session.currentOptions });
   });
 });
