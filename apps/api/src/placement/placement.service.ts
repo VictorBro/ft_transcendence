@@ -35,13 +35,9 @@ export class PlacementService {
   /**
    * Processes a recorded or timed-out answer for the active session.
    * Adds the answer to the session, increments total answers, adjusts adaptive level progress,
-   * and either saves and returns the final result if completed or fetches the next question.
+   * updates the user level if the exam ended, and either saves and returns the final result if completed or fetches the next question.
    *
-   * @param userId - Unique identifier of the user.
-   * @param choice - Selected answer option, or `null` if timed out or skipped.
-   * @param question - Question bank entity that was answered.
-   * @param session - Current exam session state.
-   * @returns Next placement question or completed placement result.
+   * @throws ConflictException If the question has already been answered (`placement.invalidSession`).
    */
   private async processAnswer(
     userId: string,
@@ -77,8 +73,6 @@ export class PlacementService {
    * Validates whether the current placement exam has already completed or if the current
    * question has timed out. If timed out, automatically processes a null answer.
    *
-   * @param userId - Unique identifier of the user.
-   * @returns Tuple of `[session, question, result]` where `result` is defined if ended or timed out.
    * @throws NotFoundException If no active session or current question ID exists (`placement.notFound`).
    */
   async checkEndedOrTimedOutAndSaveNullAnswerIfTimedOut(
@@ -108,9 +102,6 @@ export class PlacementService {
    * Initializes and starts a new placement exam session for the user.
    * Verifies that no active placement session exists and that onboarding is completed.
    *
-   * @param userId - Unique identifier of the user starting the exam.
-   * @param dto - Placement initiation payload containing the target language.
-   * @returns The first question of the placement exam.
    * @throws ConflictException If a placement session is already in progress (`placement.inProgress`)
    *   or onboarding has not been completed (`placement.onboardingIncomplete`).
    */
@@ -159,8 +150,6 @@ export class PlacementService {
    * Retrieves the current placement question or the final placement result for the user.
    * Kept strictly read-only to preserve HTTP GET idempotency without side effects.
    *
-   * @param userId - Unique identifier of the user.
-   * @returns Current placement question or the completed exam result.
    * @throws NotFoundException If no active session or current question ID exists (`placement.notFound`).
    */
   async getPlacement(userId: string): Promise<PlacementQuestion | PlacementResult> {
@@ -183,8 +172,6 @@ export class PlacementService {
    * Submits an answer for the user's active question.
    * Evaluates timeouts, ensures question ID matching, and processes answer advancement.
    *
-   * @param userId - Unique identifier of the user.
-   * @param dto - Answer payload containing the question ID and choice.
    * @throws BadRequestException If choice is not null and not one of question.options (`placement.invalidChoice`).
    * @throws ConflictException If the placement lock cannot be acquired (`placement.inProgress`)
    *   or the submitted question does not match the active question (`placement.questionMismatch`).
@@ -222,8 +209,7 @@ export class PlacementService {
   /**
    * Quits and discards the active placement exam, removing session records from Redis.
    *
-   * @param userId - Unique identifier of the user quitting the exam.
-   * @returns Promise resolving when the session records are deleted.
+   * @throws ConflictException If the placement lock cannot be acquired (`placement.inProgress`).
    */
   async quitPlacement(userId: string): Promise<void> {
     const lockToken = await this.sessionService.acquireLockWithRetry(userId);

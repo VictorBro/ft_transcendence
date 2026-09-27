@@ -28,8 +28,6 @@ export class PlacementProgressService {
   /**
    * Retrieves a question by its unique identifier from the database question bank.
    *
-   * @param questionId - Unique ID of the question to retrieve.
-   * @returns The corresponding question bank entity.
    * @throws NotFoundException If no question matches the given ID (`placement.notFound`).
    */
   async getQuestion(questionId: string): Promise<QuestionBank> {
@@ -46,10 +44,7 @@ export class PlacementProgressService {
    * Persists the determined target level and updates the user's active language
    * within an atomic database transaction.
    *
-   * @param userId - Unique identifier of the user.
-   * @param lang - Target language of the placement exam.
-   * @param level - Determined CEFR target level to store.
-   * @returns Promise resolving when the transaction finishes.
+   * @throws ConflictException If the session level is null (`placement.invalidSession`).
    */
   async updateUserLevel(userId: string, lang: Language, level: number | null): Promise<void> {
     if (level === null) {
@@ -79,10 +74,6 @@ export class PlacementProgressService {
   /**
    * Checks whether onboarding is completed for a user in a specific language
    * by verifying the existence of a corresponding `UserLevel` record in the database.
-   *
-   * @param userId - Unique identifier of the user.
-   * @param lang - Target language to verify onboarding for.
-   * @returns `true` if onboarding has been completed; otherwise `false`.
    */
   async checkOnboardingCompleted(userId: string, lang: Language): Promise<boolean> {
     const userLevel = await this.prisma.userLevel.findUnique({
@@ -100,13 +91,10 @@ export class PlacementProgressService {
   /**
    * Evaluates an answer and updates the adaptive placement session state.
    * Tracks mistakes and category counts, applies binary search level adjustments,
-   * and upon reaching a terminal boundary, marks the exam as ended and updates the user level.
+   * and upon reaching a terminal boundary, marks the exam as ended.
    *
-   * @param answer - User's chosen option string, or `null` if timed out.
-   * @param question - The question bank entity that was answered.
-   * @param session - Current mutable exam session state.
-   * @param userId - Unique identifier of the user.
-   * @returns Promise resolving when session state adjustments and any terminal updates complete.
+   * @throws BadRequestException If answer is not null and not in question options (`placement.invalidChoice`).
+   * @throws ConflictException If session level is null (`placement.invalidSession`).
    */
   adjustSessionFromAnswer(
     answer: string | null,
@@ -179,10 +167,6 @@ export class PlacementProgressService {
   /**
    * Determines whether the question has exceeded its allowed time limit,
    * accounting for network latency grace period (`NETWORK_GRACE_S`).
-   *
-   * @param question - Question bank entity containing `timeLimitS`.
-   * @param servedAt - ISO timestamp string of when the question was served.
-   * @returns `true` if the elapsed duration meets or exceeds `timeLimitS + NETWORK_GRACE_S`; otherwise `false`.
    */
   hasTimedOut(question: QuestionBank, servedAt: string): boolean {
     const elapsedS = Math.floor((Date.now() - new Date(servedAt).getTime()) / 1000);
@@ -192,10 +176,6 @@ export class PlacementProgressService {
   /**
    * Compiles the final placement result and detailed report if the exam has ended.
    * Retrieves answered questions and builds a comparison of submitted vs correct answers.
-   *
-   * @param userId - Unique identifier of the user.
-   * @param session - Current exam session state.
-   * @returns Parsed `PlacementResult` if the session ended, or `undefined` if still active.
    */
   async getResult(session: ExamSession): Promise<PlacementResult | undefined> {
     if (!session.ended) return undefined;

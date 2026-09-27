@@ -29,10 +29,6 @@ export class PlacementQuestionService {
    * Prioritizes randomly selected unseen questions from the question bank and falls back to
    * least-recently-seen questions not yet served in the current session when the unseen pool is exhausted.
    *
-   * @param userId - Unique identifier of the user.
-   * @param session - Current exam session state.
-   * @returns A tuple `[availableByCategory, question]` containing the number of available unseen
-   * questions for every queried category and the chosen question.
    * @throws ConflictException If the exam has ended (`placement.expired`).
    * @throws NotFoundException If no questions exist in the pool for this level (`placement.poolExhausted`).
    */
@@ -127,10 +123,6 @@ export class PlacementQuestionService {
   /**
    * Shuffles question options pseudo-randomly using a deterministic seed so that
    * repeated reads of the same served question preserve option order across reloads.
-   *
-   * @param options - Authored options array.
-   * @param seed - Seed string (typically question ID and servedAt timestamp).
-   * @returns Shuffled copy of the options array.
    */
   shuffleOptions(options: readonly string[], seed?: string): string[] {
     const random = seed
@@ -161,8 +153,7 @@ export class PlacementQuestionService {
    * Combines remaining questions at the current level with worst-case remaining binary search steps.
    * In active sessions, this value is guaranteed to be >= 1.
    *
-   * @param session - Current exam session state.
-   * @returns Theoretical maximum number of questions remaining.
+   * @throws ConflictException If the session level is null (`placement.invalidSession`).
    */
   getMaxQuestionsRemaining(session: ExamSession): number {
     if (session.level === null) {
@@ -188,10 +179,6 @@ export class PlacementQuestionService {
   /**
    * Formats a database question into a validated client-facing `PlacementQuestion` DTO,
    * computing remaining time, shuffling options, and calculating current exam progress metrics.
-   *
-   * @param question - Database question bank entity.
-   * @param session - Current exam session state.
-   * @returns Validated client-facing placement question.
    */
   async createPlacementQuestion(
     question: QuestionBank,
@@ -221,10 +208,6 @@ export class PlacementQuestionService {
   /**
    * Retrieves a new question, records it in `UserSeenQuestion`, updates session state,
    * and returns the formatted question.
-   *
-   * @param userId - Unique identifier of the user.
-   * @param examSession - Current mutable exam session state.
-   * @returns Newly served client-facing placement question.
    */
   async getNewPlacementQuestion(
     userId: string,

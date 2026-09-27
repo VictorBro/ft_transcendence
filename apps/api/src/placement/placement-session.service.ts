@@ -18,9 +18,6 @@ export class PlacementSessionService {
 
   /**
    * Generates the Redis hash key used to store the user's placement exam session.
-   *
-   * @param userId - Unique identifier of the user.
-   * @returns Redis key string for the exam session.
    */
   evalKey(userId: string): string {
     return `user:${userId}:eval`;
@@ -28,9 +25,6 @@ export class PlacementSessionService {
 
   /**
    * Generates the Redis list key used to archive submitted question answers.
-   *
-   * @param userId - Unique identifier of the user.
-   * @returns Redis key string for the answered questions list.
    */
   evalQuestionsKey(userId: string): string {
     return `user:${userId}:eval_questions`;
@@ -38,9 +32,6 @@ export class PlacementSessionService {
 
   /**
    * Generates the Redis key used for mutual exclusion during placement initialization.
-   *
-   * @param userId - Unique identifier of the user.
-   * @returns Redis lock key string.
    */
   evalLockKey(userId: string): string {
     return `user:${userId}:eval_lock`;
@@ -49,10 +40,6 @@ export class PlacementSessionService {
   /**
    * Atomically acquires a mutual exclusion lock for placement initialization.
    * Uses Redis `SET ... NX EX` to prevent concurrent `startPlacement` calls from racing.
-   *
-   * @param userId - Unique identifier of the user.
-   * @param ttlSeconds - Time-to-live for the lock in seconds (defaults to `PLACEMENT_LOCK_TTL_SECONDS`).
-   * @returns Unique ownership token, or null if the lock is already held.
    */
   async acquireLock(
     userId: string,
@@ -71,12 +58,6 @@ export class PlacementSessionService {
   /**
    * Attempts to acquire the lock, retrying with a short backoff if currently held.
    * Useful for concurrent operations like answer submissions to absorb rapid double-clicks.
-   *
-   * @param userId - Unique identifier of the user.
-   * @param maxRetries - Maximum retry attempts (defaults to 10).
-   * @param delayMs - Delay in milliseconds between retries (defaults to 50).
-   * @param ttlSeconds - Time-to-live for the lock in seconds (defaults to `PLACEMENT_LOCK_TTL_SECONDS`).
-   * @returns Unique ownership token, or null if acquisition times out.
    */
   async acquireLockWithRetry(
     userId: string,
@@ -98,10 +79,6 @@ export class PlacementSessionService {
    * Releases the mutual exclusion lock only if the caller still owns it.
    * Uses a Lua script for atomic compare-and-delete so an expired lock
    * that has been re-acquired by another caller is never accidentally removed.
-   *
-   * @param userId - Unique identifier of the user.
-   * @param token  - Ownership token returned by {@link acquireLock}.
-   * @returns Promise resolving when the release attempt completes.
    */
   async releaseLock(userId: string, token: string): Promise<void> {
     const script = `if redis.call("get",KEYS[1]) == ARGV[1] then return redis.call("del",KEYS[1]) else return 0 end`;
@@ -114,9 +91,6 @@ export class PlacementSessionService {
   /**
    * Checks whether an active placement session exists in Redis for the user.
    * Only checks key existence; there can be at most one placement session per user.
-   *
-   * @param userId - Unique identifier of the user.
-   * @returns `true` if an active session key exists; otherwise `false`.
    */
   async hasActiveSession(userId: string): Promise<boolean> {
     const existing = await this.redis.client.exists(this.evalKey(userId));
@@ -125,10 +99,6 @@ export class PlacementSessionService {
 
   /**
    * Serializes and persists the exam session fields into a Redis hash and resets its TTL.
-   *
-   * @param userId - Unique identifier of the user.
-   * @param session - Exam session state to persist.
-   * @returns Promise resolving when the session is saved in Redis.
    */
   async saveExamSession(userId: string, session: ExamSession): Promise<void> {
     const key = this.evalKey(userId);
@@ -158,11 +128,9 @@ export class PlacementSessionService {
   }
 
   /**
-   * Loads and deserializes the exam session from Redis, validates the schema, and reconciles
-   * completion against the durable evaluation marker in the database.
+   * Loads and deserializes the exam session from Redis and validates the schema.
    *
-   * @param userId - Unique identifier of the user.
-   * @returns The parsed `ExamSession`, or `null` if no active session exists.
+   * @throws ConflictException If the stored session data is invalid (`placement.invalidSession`).
    */
   async loadExamSession(userId: string): Promise<ExamSession | null> {
     const key = this.evalKey(userId);
@@ -211,9 +179,6 @@ export class PlacementSessionService {
 
   /**
    * Deletes both the exam session hash and the question answers list keys from Redis.
-   *
-   * @param userId - Unique identifier of the user.
-   * @returns Promise resolving when the Redis keys are removed.
    */
   async deleteSession(userId: string): Promise<void> {
     await this.redis.client.del([this.evalKey(userId), this.evalQuestionsKey(userId)]);
