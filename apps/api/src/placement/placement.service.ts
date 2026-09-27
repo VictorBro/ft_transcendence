@@ -53,7 +53,7 @@ export class PlacementService {
       choice,
     });
     session.totalAnswered += 1;
-    this.progressService.adjustSessionFromAnswer(choice, question, session, userId);
+    this.progressService.adjustSessionFromAnswer(choice, question, session);
     if (session.ended) {
       await this.progressService.updateUserLevel(userId, session.lang, session.level);
     }

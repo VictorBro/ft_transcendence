@@ -147,7 +147,7 @@ describe('PlacementProgressService', () => {
   });
 
   describe('adjustSessionFromAnswer', () => {
-    it('throws BadRequestException if answer is not null and not in question options', async () => {
+    it('throws BadRequestException if answer is not null and not in question options', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
@@ -163,12 +163,12 @@ describe('PlacementProgressService', () => {
         servedAt: new Date().toISOString(),
       };
 
-      await expect(
-        service.adjustSessionFromAnswer('invalid-choice', mockQuestion, session, 'user-1'),
-      ).rejects.toThrow(new BadRequestException('placement.invalidChoice'));
+      expect(() =>
+        service.adjustSessionFromAnswer('invalid-choice', mockQuestion, session),
+      ).toThrow(new BadRequestException('placement.invalidChoice'));
     });
 
-    it('increments category count on correct answer', async () => {
+    it('increments category count on correct answer', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
@@ -184,13 +184,13 @@ describe('PlacementProgressService', () => {
         servedAt: new Date().toISOString(),
       };
 
-      await service.adjustSessionFromAnswer('ist', mockQuestion, session, 'user-1');
+      service.adjustSessionFromAnswer('ist', mockQuestion, session);
       expect(session.mistakesPerLevel).toBe(0);
       expect(session.askedPerCategory.grammar).toBe(1);
       expect(session.level).toBe(2);
     });
 
-    it('drops level when mistakes reach 2', async () => {
+    it('drops level when mistakes reach 2', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
@@ -206,14 +206,14 @@ describe('PlacementProgressService', () => {
         servedAt: new Date().toISOString(),
       };
 
-      await service.adjustSessionFromAnswer('hat', mockQuestion, session, 'user-1');
+      service.adjustSessionFromAnswer('hat', mockQuestion, session);
       expect(session.mistakesPerLevel).toBe(0);
       expect(session.hi).toBe(2);
       expect(session.level).toBe(1);
       expect(session.askedPerCategory).toEqual({ grammar: 0, vocabulary: 0, reading: 0 });
     });
 
-    it('advances level when level questions are completed', async () => {
+    it('advances level when level questions are completed', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
@@ -229,14 +229,14 @@ describe('PlacementProgressService', () => {
         servedAt: new Date().toISOString(),
       };
 
-      await service.adjustSessionFromAnswer('ist', mockQuestion, session, 'user-1');
+      service.adjustSessionFromAnswer('ist', mockQuestion, session);
       expect(session.mistakesPerLevel).toBe(0);
       expect(session.lo).toBe(3);
       expect(session.level).toBe(4);
       expect(session.askedPerCategory).toEqual({ grammar: 0, vocabulary: 0, reading: 0 });
     });
 
-    it('ends exam with upper boundary level when completing questions at highest level (currIndex === hiIndex - 1)', async () => {
+    it('ends exam with upper boundary level when completing questions at highest level (currIndex === hiIndex - 1)', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
@@ -252,24 +252,12 @@ describe('PlacementProgressService', () => {
         servedAt: new Date().toISOString(),
       };
 
-      await service.adjustSessionFromAnswer('ist', mockQuestion, session, 'user-1');
+      service.adjustSessionFromAnswer('ist', mockQuestion, session);
       expect(session.ended).toBe(true);
       expect(session.level).toBe(6);
-      expect(prisma.$transaction).toHaveBeenCalled();
-      expect(prisma.userLevel.update).toHaveBeenCalledWith({
-        where: {
-          userId_lang: {
-            userId: 'user-1',
-            lang: 'de',
-          },
-        },
-        data: {
-          level: 'C2',
-        },
-      });
     });
 
-    it('ends exam with lower boundary level when failing at lowest level (currIndex === loIndex)', async () => {
+    it('ends exam with lower boundary level when failing at lowest level (currIndex === loIndex)', () => {
       const session: ExamSession = {
         evalId: EVAL_ID,
         lang: 'de',
@@ -285,21 +273,9 @@ describe('PlacementProgressService', () => {
         servedAt: new Date().toISOString(),
       };
 
-      await service.adjustSessionFromAnswer('hat', mockQuestion, session, 'user-1');
+      service.adjustSessionFromAnswer('hat', mockQuestion, session);
       expect(session.ended).toBe(true);
       expect(session.level).toBe(0);
-      expect(prisma.$transaction).toHaveBeenCalled();
-      expect(prisma.userLevel.update).toHaveBeenCalledWith({
-        where: {
-          userId_lang: {
-            userId: 'user-1',
-            lang: 'de',
-          },
-        },
-        data: {
-          level: 'A1',
-        },
-      });
     });
 
     it('scores timeout (null answer) as a mistake', async () => {
@@ -318,13 +294,13 @@ describe('PlacementProgressService', () => {
         servedAt: new Date().toISOString(),
       };
 
-      await service.adjustSessionFromAnswer(null, mockQuestion, session, 'user-1');
+      service.adjustSessionFromAnswer(null, mockQuestion, session);
       expect(session.mistakesPerLevel).toBe(1);
       expect(session.askedPerCategory.grammar).toBe(1);
     });
 
     describe('all six levels reachable as terminal outcomes against adjustSessionFromAnswer', () => {
-      it('reaches terminal outcome A1 on lower boundary failure', async () => {
+      it('reaches terminal outcome A1 on lower boundary failure', () => {
         const session: ExamSession = {
           evalId: EVAL_ID,
           lang: 'de',
@@ -340,12 +316,12 @@ describe('PlacementProgressService', () => {
           servedAt: new Date().toISOString(),
         };
 
-        await service.adjustSessionFromAnswer('hat', mockQuestion, session, 'user-1');
+        service.adjustSessionFromAnswer('hat', mockQuestion, session);
         expect(session.ended).toBe(true);
         expect(session.level).toBe(0);
       });
 
-      it('reaches terminal outcome A2 on passing A1 when hi is A2', async () => {
+      it('reaches terminal outcome A2 on passing A1 when hi is A2', () => {
         const session: ExamSession = {
           evalId: EVAL_ID,
           lang: 'de',
@@ -361,12 +337,12 @@ describe('PlacementProgressService', () => {
           servedAt: new Date().toISOString(),
         };
 
-        await service.adjustSessionFromAnswer('ist', mockQuestion, session, 'user-1');
+        service.adjustSessionFromAnswer('ist', mockQuestion, session);
         expect(session.ended).toBe(true);
         expect(session.level).toBe(1);
       });
 
-      it('reaches terminal outcome B1 on passing A2 when hi is B1', async () => {
+      it('reaches terminal outcome B1 on passing A2 when hi is B1', () => {
         const session: ExamSession = {
           evalId: EVAL_ID,
           lang: 'de',
@@ -382,12 +358,12 @@ describe('PlacementProgressService', () => {
           servedAt: new Date().toISOString(),
         };
 
-        await service.adjustSessionFromAnswer('ist', mockQuestion, session, 'user-1');
+        service.adjustSessionFromAnswer('ist', mockQuestion, session);
         expect(session.ended).toBe(true);
         expect(session.level).toBe(2);
       });
 
-      it('reaches terminal outcome B2 on failing B2 when lo is B2', async () => {
+      it('reaches terminal outcome B2 on failing B2 when lo is B2', () => {
         const session: ExamSession = {
           evalId: EVAL_ID,
           lang: 'de',
@@ -403,12 +379,12 @@ describe('PlacementProgressService', () => {
           servedAt: new Date().toISOString(),
         };
 
-        await service.adjustSessionFromAnswer('hat', mockQuestion, session, 'user-1');
+        service.adjustSessionFromAnswer('hat', mockQuestion, session);
         expect(session.ended).toBe(true);
         expect(session.level).toBe(3);
       });
 
-      it('reaches terminal outcome C1 on passing B2 when hi is C1', async () => {
+      it('reaches terminal outcome C1 on passing B2 when hi is C1', () => {
         const session: ExamSession = {
           evalId: EVAL_ID,
           lang: 'de',
@@ -424,12 +400,12 @@ describe('PlacementProgressService', () => {
           servedAt: new Date().toISOString(),
         };
 
-        await service.adjustSessionFromAnswer('ist', mockQuestion, session, 'user-1');
+        service.adjustSessionFromAnswer('ist', mockQuestion, session);
         expect(session.ended).toBe(true);
         expect(session.level).toBe(4);
       });
 
-      it('reaches terminal outcome C2 on failing C2 when lo is C2', async () => {
+      it('reaches terminal outcome C2 on failing C2 when lo is C2', () => {
         const session: ExamSession = {
           evalId: EVAL_ID,
           lang: 'de',
@@ -445,7 +421,7 @@ describe('PlacementProgressService', () => {
           servedAt: new Date().toISOString(),
         };
 
-        await service.adjustSessionFromAnswer('hat', mockQuestion, session, 'user-1');
+        service.adjustSessionFromAnswer('hat', mockQuestion, session);
         expect(session.ended).toBe(true);
         expect(session.level).toBe(5);
       });

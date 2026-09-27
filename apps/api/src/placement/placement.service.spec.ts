@@ -248,7 +248,6 @@ describe('PlacementService', () => {
         null,
         mockQuestion,
         session,
-        'user-1',
       );
       expect(sessionService.saveExamSession).toHaveBeenCalledTimes(1);
       expect(sessionService.saveExamSession).toHaveBeenCalledWith('user-1', session);
@@ -544,6 +543,11 @@ describe('PlacementService', () => {
         servedAt: new Date().toISOString(),
       };
       vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
+      vi.mocked(progressService.adjustSessionFromAnswer).mockImplementation(
+        (_choice, _question, s) => {
+          s.ended = true;
+        },
+      );
       vi.mocked(progressService.getResult)
         .mockResolvedValueOnce(undefined) // first call in checkEndedOrTimedOut
         .mockResolvedValueOnce(mockPlacementResult); // second call after answer
@@ -556,6 +560,7 @@ describe('PlacementService', () => {
       });
       expect(result).toEqual(mockPlacementResult);
       expect(session.answers).toEqual([{ questionId: mockQuestion.id, choice: 'ist' }]);
+      expect(progressService.updateUserLevel).toHaveBeenCalledWith('user-1', 'de', 2);
       expect(sessionService.saveExamSession).toHaveBeenCalledWith('user-1', session);
     });
 
