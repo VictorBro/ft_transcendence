@@ -3,7 +3,6 @@ import { randomUUID } from 'node:crypto';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { examSession, fakeRedis } from '../../test/placement.fixtures';
-import type { PrismaService } from '../prisma/prisma.service';
 import type { RedisService } from '../redis/redis.service';
 import { PlacementSessionService } from './placement-session.service';
 
@@ -17,7 +16,7 @@ describe('PlacementSessionService', () => {
 
   beforeEach(() => {
     redis = fakeRedis();
-    service = new PlacementSessionService(redis as unknown as RedisService, {} as PrismaService);
+    service = new PlacementSessionService(redis as unknown as RedisService);
   });
 
   describe('the lock', () => {

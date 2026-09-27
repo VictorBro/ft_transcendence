@@ -1,9 +1,4 @@
-import {
-  BadRequestException,
-  ConflictException,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
+import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
 import {
   LEVELS,
   PLACEMENT_ROUNDS,
@@ -44,7 +39,6 @@ export class PlacementProgressService {
    * Tracks mistakes and category counts, applies binary search level adjustments,
    * and upon reaching a terminal boundary, marks the exam as ended.
    *
-   * @throws BadRequestException If answer is not null and not in question options (`placement.invalidChoice`).
    * @throws ConflictException If session level is null (`placement.invalidSession`).
    */
   adjustSessionFromAnswer(
@@ -52,10 +46,6 @@ export class PlacementProgressService {
     question: QuestionBank,
     session: ExamSession,
   ): void {
-    if (answer !== null && !question.options.includes(answer)) {
-      throw new BadRequestException('placement.invalidChoice');
-    }
-
     if (session.level === null) {
       throw new ConflictException('placement.invalidSession');
     }

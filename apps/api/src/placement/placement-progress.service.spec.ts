@@ -1,4 +1,4 @@
-import { BadRequestException, NotFoundException } from '@nestjs/common';
+import { NotFoundException } from '@nestjs/common';
 import { randomUUID } from 'node:crypto';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
@@ -79,12 +79,6 @@ describe('PlacementProgressService', () => {
       progress.adjustSessionFromAnswer(answer, row, session);
 
       expect(session).toMatchObject(expected);
-    });
-
-    it('rejects a choice that is not one of the options', () => {
-      expect(() => progress.adjustSessionFromAnswer('nope', row, examSession())).toThrow(
-        new BadRequestException('placement.invalidChoice'),
-      );
     });
   });
 

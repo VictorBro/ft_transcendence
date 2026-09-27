@@ -48,7 +48,7 @@ describe('PlacementService', () => {
     vi.useFakeTimers();
     redis = fakeRedis();
     const prisma = bankPrisma(bank) as unknown as PrismaService;
-    sessions = new PlacementSessionService(redis as unknown as RedisService, prisma);
+    sessions = new PlacementSessionService(redis as unknown as RedisService);
     courses = {
       listCoursesUser: vi.fn().mockResolvedValue({ courses: [{ lang: 'fr' }], activeLang: null }),
       setLevel: vi.fn(),
