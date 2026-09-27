@@ -158,10 +158,10 @@ describe('GeneratedItemSchema', () => {
 
 describe('generatedBatchSchema', () => {
   const grammarBatch = TOPICS.map((topic) => ({ ...generatedItem, topic }));
-  const readingBatch = Array.from({ length: READING_BATCH_SIZE }, () => ({
+  const readingBatch = Array.from({ length: READING_BATCH_SIZE }, (_, n) => ({
     ...generatedItem,
     topic: READING_TOPIC,
-    readText: 'A short text.',
+    readText: `A short text, number ${n}.`,
   }));
 
   it('accepts one question per topic for grammar and vocabulary', () => {
@@ -192,6 +192,13 @@ describe('generatedBatchSchema', () => {
 
   it('rejects a reading question on another topic', () => {
     const items = readingBatch.map((i, n) => (n === 0 ? { ...i, topic: TOPICS[0] } : i));
+    expect(generatedBatchSchema('reading').safeParse({ items }).success).toBe(false);
+  });
+
+  it('rejects a reading batch that reuses a passage', () => {
+    const items = readingBatch.map((i, n) =>
+      n === 0 ? { ...i, readText: readingBatch[1].readText } : i,
+    );
     expect(generatedBatchSchema('reading').safeParse({ items }).success).toBe(false);
   });
 });

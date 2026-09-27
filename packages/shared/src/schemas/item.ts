@@ -106,6 +106,9 @@ export function generatedBatchSchema(category: QuestionCategory) {
         .refine((list) => list.every((i) => i.readText !== undefined), {
           message: 'reading questions need a readText',
         })
+        .refine((list) => new Set(list.map((i) => i.readText)).size === READING_BATCH_SIZE, {
+          message: 'reading questions need distinct readText passages',
+        })
         .refine((list) => list.every((i) => i.topic === READING_TOPIC), {
           message: `reading questions must use the topic ${READING_TOPIC}`,
         }),

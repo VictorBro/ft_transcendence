@@ -238,7 +238,7 @@ export class QuestionGenerationService {
         questionId: { notIn: excludeQuestionIds },
         questionBank: { lang, level, category }, // Filter through the foreign relation
       },
-      orderBy: { updatedAt: 'asc' }, // The oldest question this learner was ever served
+      orderBy: { updatedAt: 'asc' }, // Least recently served: re-serving bumps updatedAt, so fallbacks rotate
       include: { questionBank: true }, // SQL JOIN to attach the full QuestionBank record
     });
 

@@ -355,7 +355,8 @@ redo rather than data; if it does not, it is a plain constant or a per-request v
 
 ### Provider
 
-`LLM_PROVIDER` stays `fixture | cached | real`, and CI stays on `fixture` forever. The vendor is
+`LLM_PROVIDER` is `fixture | gemini` (`cached` is planned, not implemented yet), and CI stays on
+`fixture` forever. The vendor is
 one file behind the `LlmProvider` interface. Team decision: **Gemini 3.1 Flash-Lite**, chosen
 for native JSON-schema output and price.
 
@@ -761,7 +762,7 @@ load-bearing.
 | `@nestjs/throttler` | Four jobs, see §6 | keep |
 | Playwright + console gate | The zero-console-errors **rejection criterion** | keep |
 | CI: ci / e2e / hygiene / images | gitleaks, commitlint, `.env` hygiene, Prisma drift | keep |
-| `LLM_PROVIDER` fixture/cached/real | Free CI, deterministic tests, swappable vendor | keep, now points at Gemini |
+| `LLM_PROVIDER` fixture/gemini | Free CI, deterministic tests, swappable vendor | keep, now points at Gemini |
 
 ## 9. Two things that will quietly cost you points
 
@@ -790,7 +791,7 @@ that test early, it is the cheapest possible proof of a rejection-criterion requ
    assert zero question overlap.
 4. **Syllabus board**, server-rendered tiles from `Topic` and `Lesson`.
 5. **Lesson loop**, explanation, exercises, corrections, scoring. Still on fixtures.
-6. **Wire Gemini**, flip `LLM_PROVIDER=real` behind the budget guard and the cache. First real
+6. **Wire Gemini**, flip `LLM_PROVIDER=gemini` behind the budget guard and the cache. First real
    spend happens here, with instrumentation already in place.
 7. **Socket gateway**, auth guard, tutor stream, presence.
 8. **RAG**, corpus files, ingest script, retrieval in the explanation prompt.
