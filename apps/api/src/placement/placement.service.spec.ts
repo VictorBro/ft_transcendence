@@ -39,7 +39,7 @@ const mockPlacementQuestion: PlacementQuestion = {
   remainingS: 30,
   progress: {
     answered: 0,
-    maxRemaining: 18,
+    maxQuestionsRemaining: 18,
   },
 };
 

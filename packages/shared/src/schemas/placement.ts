@@ -24,18 +24,19 @@ export const PlacementQuestionSchema = z
     category: QuestionCategorySchema,
     level: LevelSchema,
     question: z.string().min(1),
-    readText: z.string().min(1).nullable().optional(),
+    readText: z.string().min(1).optional(),
     options: z.array(z.string().min(1)).length(OPTIONS_PER_ITEM),
     /** Two clocks, so a reload resumes the countdown instead of restarting it. */
     timeLimitS: z.number().int().positive(),
     remainingS: z.number().int().min(0),
     /** `answered` doubles as this question's index, counting from zero. */
-    progress: z.object({
+    progress: z.strictObject({
       answered: z.number().int().min(0),
-      maxRemaining: z.number().int().positive(),
+      // depending on how many errors the user makes, the remaining questions can sink fastly, maxQuestionsRemaining gives this number after each user answer anew
+      maxQuestionsRemaining: z.number().int().positive(),
     }),
   })
-  .refine((q) => (q.category === 'reading' ? q.readText != null : q.readText == null), {
+  .refine((q) => (q.category === 'reading' ? q.readText !== undefined : q.readText === undefined), {
     message: 'reading questions need a readText, other categories must not have one',
     path: ['readText'],
   });

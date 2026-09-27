@@ -200,7 +200,7 @@ describe('placement', () => {
     options: ['ist', 'hat', 'war', 'wird'],
     timeLimitS: 30,
     remainingS: 27,
-    progress: { answered: 2, maxRemaining: 6 },
+    progress: { answered: 2, maxQuestionsRemaining: 6 },
   };
 
   it('serves a question with no answer attached', () => {
@@ -212,7 +212,16 @@ describe('placement', () => {
     expect(PlacementQuestionSchema.safeParse({ ...question, answer: 'ist' }).success).toBe(false);
   });
 
-  it('requires non-null readText on reading questions', () => {
+  it('rejects unexpected fields in the progress object', () => {
+    expect(
+      PlacementQuestionSchema.safeParse({
+        ...question,
+        progress: { ...question.progress, extra: true },
+      }).success,
+    ).toBe(false);
+  });
+
+  it('requires readText on reading questions', () => {
     const readingQuestion = {
       ...question,
       category: 'reading',
@@ -228,17 +237,23 @@ describe('placement', () => {
     );
   });
 
-  it('forbids non-null readText on grammar and vocabulary questions', () => {
+  it('forbids readText on grammar and vocabulary questions', () => {
     expect(PlacementQuestionSchema.safeParse(question).success).toBe(true);
-    expect(PlacementQuestionSchema.safeParse({ ...question, readText: null }).success).toBe(true);
+    expect(PlacementQuestionSchema.safeParse({ ...question, readText: undefined }).success).toBe(
+      true,
+    );
+    expect(PlacementQuestionSchema.safeParse({ ...question, readText: null }).success).toBe(false);
     expect(
       PlacementQuestionSchema.safeParse({ ...question, readText: 'Not allowed here' }).success,
     ).toBe(false);
 
     const vocabQuestion = { ...question, category: 'vocabulary' };
     expect(PlacementQuestionSchema.safeParse(vocabQuestion).success).toBe(true);
+    expect(
+      PlacementQuestionSchema.safeParse({ ...vocabQuestion, readText: undefined }).success,
+    ).toBe(true);
     expect(PlacementQuestionSchema.safeParse({ ...vocabQuestion, readText: null }).success).toBe(
-      true,
+      false,
     );
     expect(
       PlacementQuestionSchema.safeParse({ ...vocabQuestion, readText: 'Not allowed here' }).success,

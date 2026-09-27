@@ -97,7 +97,7 @@ describe('placement (e2e)', () => {
       const parsed = PlacementQuestionSchema.parse(response.body);
       expect(parsed.level).toBe('B1');
       expect(parsed.progress.answered).toBe(0);
-      expect(parsed.progress.maxRemaining).toBeGreaterThanOrEqual(1);
+      expect(parsed.progress.maxQuestionsRemaining).toBeGreaterThanOrEqual(1);
       expect(parsed.options).toHaveLength(4);
     });
 

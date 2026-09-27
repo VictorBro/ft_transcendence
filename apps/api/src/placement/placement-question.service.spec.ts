@@ -255,7 +255,7 @@ describe('PlacementQuestionService', () => {
       expect(result.questionId).toBe(mockQuestion.id);
       expect(result.question).toBe(mockQuestion.question);
       expect(result.remainingS).toBeLessThanOrEqual(30);
-      expect(result.progress).toEqual({ answered: 1, maxRemaining: 17 });
+      expect(result.progress).toEqual({ answered: 1, maxQuestionsRemaining: 17 });
       expect((result as Record<string, unknown>).answer).toBeUndefined();
       expect([...result.options].sort()).toEqual([...mockQuestion.options].sort());
     });

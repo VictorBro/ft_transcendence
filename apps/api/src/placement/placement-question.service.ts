@@ -200,7 +200,7 @@ export class PlacementQuestionService {
       remainingS,
       progress: {
         answered: session.totalAnswered,
-        maxRemaining: totalQuestions,
+        maxQuestionsRemaining: totalQuestions,
       },
     });
   }
