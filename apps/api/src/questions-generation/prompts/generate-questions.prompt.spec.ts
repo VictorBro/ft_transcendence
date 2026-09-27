@@ -12,10 +12,12 @@ describe('buildGenerateQuestionsPrompt', () => {
     expect(system).toContain('category "grammar"');
     expect(system).toContain('"___"');
     expect(system).toContain('Do NOT include "readText"');
-    expect(system).toContain('Each of the 5 questions MUST have a DIFFERENT topic');
+    expect(system).toContain('exactly 13 multiple-choice placement questions');
+    expect(system).toContain('exactly ONE question for EACH of these 13 topics');
+    expect(system).toContain('subordinate_clauses');
     expect(system).toContain('around 60 seconds');
     expect(system).toContain('language "fr"');
-    expect(user).toContain('Generate 5 B1 grammar questions in "fr"');
+    expect(user).toContain('Generate 13 B1 grammar questions in "fr", one for each topic');
   });
 
   it('builds a vocabulary prompt with 30s target for A1', () => {
@@ -29,7 +31,7 @@ describe('buildGenerateQuestionsPrompt', () => {
     expect(system).toContain('Do NOT include "readText"');
     expect(system).toContain('around 30 seconds');
     expect(system).toContain('language "de"');
-    expect(user).toContain('Generate 5 A1 vocabulary questions in "de"');
+    expect(user).toContain('Generate 13 A1 vocabulary questions in "de"');
   });
 
   it('builds a reading prompt requiring standalone passages and fixed topic', () => {
@@ -40,12 +42,13 @@ describe('buildGenerateQuestionsPrompt', () => {
     });
 
     expect(system).toContain('category "reading"');
+    expect(system).toContain('exactly 5 multiple-choice placement questions');
     expect(system).toContain('"readText": string');
     expect(system).toContain(
       'Every question MUST have its own distinct, standalone "readText" passage',
     );
     expect(system).toContain('"topic": "information_structure_and_pragmatics"');
     expect(system).toContain('around 75-90 seconds');
-    expect(user).toContain('Generate 5 A2 reading questions in "en"');
+    expect(user).toContain('Generate 5 A2 reading comprehension questions with passages in "en"');
   });
 });

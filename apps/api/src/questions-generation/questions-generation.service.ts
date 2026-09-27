@@ -3,7 +3,7 @@ import {
   Language,
   Level,
   QuestionCategory,
-  GeneratedBatchSchema,
+  generatedBatchSchema,
   GeneratedBatch,
 } from '@ft/shared';
 import { PrismaService } from '../prisma/prisma.service';
@@ -26,6 +26,23 @@ export class QuestionGenerationService {
   private readonly logger = new Logger(QuestionGenerationService.name);
 
   /**
+   * Registry of LLM generations currently running, one entry per cell.
+   *
+   * A Map is a key -> value dictionary:
+   * - key: the cell, as the string "lang:level:category" (e.g. "fr:B1:grammar").
+   * - value: the Promise of the running replenishQuestions call for that cell.
+   *
+   * NestJS services are singletons: one instance serves every request of every user,
+   * so this Map is shared by all learners. That is what lets a second learner see
+   * that a generation for the same cell is already running and skip it
+   * (Issue #54: "generation happens once per cell, not once per learner").
+   *
+   * Limit: it lives in the memory of one Node process. Several API instances would
+   * each have their own Map; a cross-instance lock would need Redis.
+   */
+  private readonly inFlight = new Map<string, Promise<void>>();
+
+  /**
    * The constructor uses TypeScript parameter properties ("private readonly"):
    * - "private": limits access strictly to within this class.
    * - "readonly": prevents reassignment after initialization.
@@ -44,6 +61,7 @@ export class QuestionGenerationService {
     lang: Language,
     level: Level,
     category: QuestionCategory,
+    excludeQuestionIds: string[] = [],
   ): Promise<QuestionBank | null> {
     const remainingCount = await this.prisma.questionBank.count({
       where: {
@@ -54,21 +72,58 @@ export class QuestionGenerationService {
       },
     });
 
-    if (remainingCount <= 2) {
-      await this.replenishQuestions(lang, level, category);
-    }
+    if (remainingCount <= 2) this.triggerReplenish(lang, level, category);
 
-    return this.serveQuestion(userId, lang, level, category);
+    return this.serveQuestion(userId, lang, level, category, excludeQuestionIds);
   }
 
   /**
-   * Replenishes the QuestionBank with a batch of 5 new questions when the unseen pool runs low.
+   * Starts a replenishment in the background, without making the learner wait for the LLM.
+   *
+   * Why this method is NOT async:
+   * - `async` only means "this function returns a Promise". Calling it without `await`
+   *   is allowed: the call returns the Promise immediately and the caller moves on.
+   * - replenishQuestions runs synchronously until its first `await` (the LLM request),
+   *   then pauses and hands back a pending Promise. triggerReplenish returns right after,
+   *   and getOrGenerateQuestion serves a question straight away.
+   * - When the LLM answers, the Node.js event loop resumes replenishQuestions where it
+   *   paused (validation, then createMany), even though the learner's HTTP response was
+   *   sent long ago. Nobody waits for it: that is what "in the background" means.
+   *
+   * Logic:
+   * 1. Builds the cell key and skips if a generation for that cell is already running.
+   * 2. Starts replenishQuestions without `await` and keeps its Promise ("job").
+   * 3. Attaches .catch: an un-awaited Promise that rejects with no handler becomes an
+   *    "unhandled rejection", which can crash the whole API process.
+   * 4. Attaches .finally: removes the key once the job ends (success or failure),
+   *    otherwise the cell would stay marked as running and never be replenished again.
+   * 5. Registers the job in inFlight so concurrent requests see it.
+   */
+  private triggerReplenish(lang: Language, level: Level, category: QuestionCategory): void {
+    // 1. One key per cell: same lang + level + category = same key
+    const key = `${lang}:${level}:${category}`;
+    if (this.inFlight.has(key)) return; // Already generating for this cell, do not start a duplicate
+
+    // 2. No `await`: the LLM call starts now, and this method does not wait for it
+    const job = this.replenishQuestions(lang, level, category)
+      // 3. Mandatory error handler for a Promise nobody awaits
+      .catch((error) => this.logger.error(`Replenish crashed for ${key}: ${error}`))
+      // 4. Runs last, whatever happened: frees the cell for a future replenishment
+      .finally(() => this.inFlight.delete(key));
+
+    // 5. Set synchronously, before any other request can run, so the has() check above is reliable
+    this.inFlight.set(key, job);
+  }
+
+  /**
+   * Replenishes the QuestionBank with a batch of new questions when the unseen pool runs low:
+   * one question per topic (13) for grammar and vocabulary, READING_BATCH_SIZE (5) for reading.
    *
    * Logic:
    * 1. Constructs the prompt ({ system, user }) for the specific cell (lang, level, category).
    * 2. Attempts LLM generation with exactly 1 retry on malformed JSON or network failure (Issue #54).
-   * 3. Validates structure against GeneratedBatchSchema.
-   * 4. Persists the 5 items to QuestionBank with sourceId = null (marker for unreviewed AI questions).
+   * 3. Validates structure against generatedBatchSchema(category): batch size and topic coverage.
+   * 4. Persists the items to QuestionBank with sourceId = null (marker for unreviewed AI questions).
    */
   private async replenishQuestions(
     lang: Language,
@@ -77,6 +132,7 @@ export class QuestionGenerationService {
   ): Promise<void> {
     // 1. Build prompt containing system persona and user constraints
     const prompt = buildGenerateQuestionsPrompt({ lang, level, category });
+    const batchSchema = generatedBatchSchema(category);
 
     // Scoped outside the loop with union type (GeneratedBatch | null)
     // so it survives loop execution and acts as a sentinel for success.
@@ -86,7 +142,7 @@ export class QuestionGenerationService {
     for (let attempt = 1; attempt <= 2; attempt++) {
       try {
         const raw = await this.llmProvider.generateStructured<GeneratedBatch>(prompt);
-        const result = GeneratedBatchSchema.safeParse(raw);
+        const result = batchSchema.safeParse(raw);
 
         if (result.success) {
           batch = result.data;
@@ -118,7 +174,7 @@ export class QuestionGenerationService {
       data: batch.items.map((item) => ({
         sourceId: null, // Critical Issue #54 rule: null marks unreviewed LLM rows
         lang,
-        level: item.level,
+        level, // The requested cell, not item.level: the LLM may drift and misfile the question
         topic: item.topic,
         category,
         question: item.question,
@@ -130,7 +186,7 @@ export class QuestionGenerationService {
     });
 
     this.logger.log(
-      `Successfully generated and inserted 5 questions for ${lang}-${level}-${category}`,
+      `Successfully generated and inserted ${batch.items.length} questions for ${lang}-${level}-${category}`,
     );
   }
 
@@ -156,6 +212,7 @@ export class QuestionGenerationService {
     lang: Language,
     level: Level,
     category: QuestionCategory,
+    excludeQuestionIds: string[],
   ) {
     // 1. Primary path: find the first question this learner has not seen yet
     const question = await this.prisma.questionBank.findFirst({
@@ -178,9 +235,10 @@ export class QuestionGenerationService {
     const oldestSeen = await this.prisma.userSeenQuestion.findFirst({
       where: {
         userId,
+        questionId: { notIn: excludeQuestionIds },
         questionBank: { lang, level, category }, // Filter through the foreign relation
       },
-      orderBy: { createdAt: 'asc' }, // The oldest question this learner was ever served
+      orderBy: { updatedAt: 'asc' }, // The oldest question this learner was ever served
       include: { questionBank: true }, // SQL JOIN to attach the full QuestionBank record
     });
 

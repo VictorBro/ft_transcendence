@@ -2,52 +2,10 @@ import { describe, expect, it, vi, beforeEach } from 'vitest';
 import type { PrismaService } from '../prisma/prisma.service';
 import type { LlmProvider } from '../llm/llm.interface';
 import { QuestionGenerationService } from './questions-generation.service';
-import type { GeneratedBatch } from '@ft/shared';
+import { FIXTURE_TOPIC_BATCH } from '../llm/fixture.provider';
+import { TOPICS, type GeneratedBatch } from '@ft/shared';
 
-const VALID_BATCH: GeneratedBatch = {
-  items: [
-    {
-      level: 'A1',
-      topic: 'nouns_and_determiners',
-      question: 'She eats ___ apple.',
-      options: ['an', 'a', 'the', 'some'],
-      answer: 'an',
-      timeLimitS: 30,
-    },
-    {
-      level: 'A1',
-      topic: 'verbs_morphology',
-      question: 'They ___ in Paris.',
-      options: ['live', 'lives', 'living', 'lived'],
-      answer: 'live',
-      timeLimitS: 30,
-    },
-    {
-      level: 'A1',
-      topic: 'pronouns',
-      question: 'Give ___ the book.',
-      options: ['me', 'I', 'my', 'mine'],
-      answer: 'me',
-      timeLimitS: 30,
-    },
-    {
-      level: 'A1',
-      topic: 'adjectives',
-      question: 'It is a ___ day.',
-      options: ['sunny', 'sun', 'sunshine', 'sunned'],
-      answer: 'sunny',
-      timeLimitS: 30,
-    },
-    {
-      level: 'A1',
-      topic: 'negation',
-      question: 'He ___ not like coffee.',
-      options: ['does', 'do', 'is', 'has'],
-      answer: 'does',
-      timeLimitS: 30,
-    },
-  ],
-};
+const VALID_BATCH = FIXTURE_TOPIC_BATCH;
 
 const DUMMY_QUESTION = {
   id: 'q-1',
@@ -126,11 +84,12 @@ describe('QuestionGenerationService', () => {
   });
 
   describe('When pool runs dry (<= 2 questions remaining)', () => {
-    it('triggers LLM generation, persists 5 items with sourceId = null, and serves a question', async () => {
+    it('triggers LLM generation, persists one item per topic with sourceId = null, and serves a question', async () => {
       prismaMock.questionBank.count.mockResolvedValue(1);
       prismaMock.questionBank.findFirst.mockResolvedValue(DUMMY_QUESTION);
 
       const result = await service.getOrGenerateQuestion('user-1', 'en', 'A1', 'grammar');
+      await service['inFlight'].get('en:A1:grammar');
 
       expect(llmProviderMock.generateStructured).toHaveBeenCalledTimes(1);
       expect(prismaMock.questionBank.createMany).toHaveBeenCalledWith({
@@ -144,10 +103,37 @@ describe('QuestionGenerationService', () => {
           }),
         ]),
       });
-      // Verifies 5 items were saved
       const createManyCall = prismaMock.questionBank.createMany.mock.calls[0][0];
-      expect(createManyCall.data).toHaveLength(5);
+      expect(createManyCall.data).toHaveLength(TOPICS.length);
       expect(result).toEqual(DUMMY_QUESTION);
+    });
+
+    it('files generated questions under the requested level, not the one the LLM wrote', async () => {
+      prismaMock.questionBank.count.mockResolvedValue(0);
+      prismaMock.questionBank.findFirst.mockResolvedValue(DUMMY_QUESTION);
+
+      await service.getOrGenerateQuestion('user-1', 'en', 'B2', 'grammar');
+      await service['inFlight'].get('en:B2:grammar');
+
+      const createManyCall = prismaMock.questionBank.createMany.mock.calls[0][0];
+      expect(createManyCall.data.every((row: { level: string }) => row.level === 'B2')).toBe(true);
+    });
+
+    it('rejects a batch that repeats a topic instead of covering all of them', async () => {
+      prismaMock.questionBank.count.mockResolvedValue(0);
+      prismaMock.questionBank.findFirst.mockResolvedValue(DUMMY_QUESTION);
+
+      const [first, ...rest] = VALID_BATCH.items;
+      const repeatedTopic: GeneratedBatch = {
+        items: [first, ...rest.slice(0, -1), { ...first, question: 'He eats ___ egg.' }],
+      };
+      vi.mocked(llmProviderMock.generateStructured).mockResolvedValue(repeatedTopic);
+
+      await service.getOrGenerateQuestion('user-1', 'en', 'A1', 'grammar');
+      await service['inFlight'].get('en:A1:grammar');
+
+      expect(llmProviderMock.generateStructured).toHaveBeenCalledTimes(2);
+      expect(prismaMock.questionBank.createMany).not.toHaveBeenCalled();
     });
   });
 
@@ -165,6 +151,7 @@ describe('QuestionGenerationService', () => {
         .mockResolvedValueOnce(VALID_BATCH);
 
       const result = await service.getOrGenerateQuestion('user-1', 'en', 'A1', 'grammar');
+      await service['inFlight'].get('en:A1:grammar');
 
       expect(llmProviderMock.generateStructured).toHaveBeenCalledTimes(2);
       expect(prismaMock.questionBank.createMany).toHaveBeenCalledTimes(1);
@@ -180,6 +167,7 @@ describe('QuestionGenerationService', () => {
         .mockResolvedValueOnce(VALID_BATCH);
 
       const result = await service.getOrGenerateQuestion('user-1', 'en', 'A1', 'grammar');
+      await service['inFlight'].get('en:A1:grammar');
 
       expect(llmProviderMock.generateStructured).toHaveBeenCalledTimes(2);
       expect(prismaMock.questionBank.createMany).toHaveBeenCalledTimes(1);
@@ -208,18 +196,23 @@ describe('QuestionGenerationService', () => {
 
       prismaMock.userSeenQuestion.findFirst.mockResolvedValue(oldestSeenRecord);
 
-      const result = await service.getOrGenerateQuestion('user-1', 'fr', 'A1', 'grammar');
+      const result = await service.getOrGenerateQuestion('user-1', 'fr', 'A1', 'grammar', [
+        'q-answered',
+        'q-current',
+      ]);
+      await service['inFlight'].get('fr:A1:grammar');
 
       // No malformed or dummy questions persisted
       expect(prismaMock.questionBank.createMany).not.toHaveBeenCalled();
 
-      // Fallback query checked the oldest seen question for this user and cell
+      // Fallback skips questions already served in this run
       expect(prismaMock.userSeenQuestion.findFirst).toHaveBeenCalledWith({
         where: {
           userId: 'user-1',
+          questionId: { notIn: ['q-answered', 'q-current'] },
           questionBank: { lang: 'fr', level: 'A1', category: 'grammar' },
         },
-        orderBy: { createdAt: 'asc' },
+        orderBy: { updatedAt: 'asc' },
         include: { questionBank: true },
       });
 

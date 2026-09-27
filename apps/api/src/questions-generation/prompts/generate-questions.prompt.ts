@@ -1,11 +1,16 @@
-import { Language, Level, QuestionCategory, Topic, TOPICS } from '@ft/shared';
+import {
+  Language,
+  Level,
+  QuestionCategory,
+  READING_BATCH_SIZE,
+  READING_TOPIC,
+  TOPICS,
+} from '@ft/shared';
 
 export interface GenerateQuestionsPromptParams {
   lang: Language;
   level: Level;
   category: QuestionCategory;
-  /** Liste optionnelle des topics à couvrir (par exemple 5 topics cibles) */
-  topics?: Topic[];
 }
 
 const TIME_LIMIT_TARGETS: Record<QuestionCategory, Record<Level, string>> = {
@@ -18,20 +23,17 @@ export function buildGenerateQuestionsPrompt(params: GenerateQuestionsPromptPara
   system: string;
   user: string;
 } {
-  const { lang, level, category, topics } = params;
+  const { lang, level, category } = params;
   const targetTimeS = TIME_LIMIT_TARGETS[category][level];
+  const isReading = category === 'reading';
 
-  // Si reading: topic unique imposé. Sinon, utiliser les topics passés ou tout TOPICS.
-  const allowedTopics =
-    category === 'reading'
-      ? ['information_structure_and_pragmatics']
-      : topics && topics.length > 0
-        ? topics
-        : TOPICS;
+  // Reading: few questions, all on one topic. Grammar and vocabulary: one question per topic.
+  const count = isReading ? READING_BATCH_SIZE : TOPICS.length;
+  const allowedTopics = isReading ? [READING_TOPIC] : TOPICS;
 
   const system = `You are an expert CEFR language exam designer.
-You must generate exactly 13 multiple-choice placement questions for category "${category}".
-Output strictly a JSON object with an "items" array containing 5 questions:
+You must generate exactly ${count} multiple-choice placement questions for category "${category}".
+Output strictly a JSON object with an "items" array containing ${count} questions:
 {
   "items": [
     {
@@ -40,20 +42,16 @@ Output strictly a JSON object with an "items" array containing 5 questions:
       "question": string,
       "options": [string, string, string, string],
       "answer": string,
-      "timeLimitS": number${category === 'reading' ? ',\n      "readText": string' : ''}
+      "timeLimitS": number${isReading ? ',\n      "readText": string' : ''}
     }
   ]
 }
 Rules:
 1. Category & Topic constraints:
 ${
-  category === 'reading'
-    ? `   - Every question MUST have its own distinct, standalone "readText" passage (25-100 words appropriate for ${level}). Do NOT reuse passages between questions.\n   - All 5 questions must have "topic": "information_structure_and_pragmatics".`
-    : `   - Do NOT include "readText".\n   - "question" must be a fill-in-the-blank sentence containing "___".\n   - ${
-        topics && topics.length === 5
-          ? `You MUST generate exactly ONE question for EACH of these 5 topics:\n     ${topics.join(', ')}`
-          : `Each of the 5 questions MUST have a DIFFERENT topic chosen from:\n     ${allowedTopics.join(', ')}`
-      }`
+  isReading
+    ? `   - Every question MUST have its own distinct, standalone "readText" passage (25-100 words appropriate for ${level}). Do NOT reuse passages between questions.\n   - All ${count} questions must have "topic": "${READING_TOPIC}".`
+    : `   - Do NOT include "readText".\n   - "question" must be a fill-in-the-blank sentence containing "___".\n   - You MUST generate exactly ONE question for EACH of these ${count} topics. No topic may be repeated or skipped:\n     ${TOPICS.join(', ')}`
 }
 2. Options & Answer constraints:
    - "options" must contain EXACTLY 4 strings.
@@ -68,12 +66,9 @@ ${
 5. Strict output format:
    - Output raw JSON only. No markdown formatting (no \`\`\`json), no commentary.`;
 
-  const user =
-    category === 'reading'
-      ? `Generate 5 ${level} reading comprehension questions with passages in "${lang}".`
-      : topics && topics.length === 5
-        ? `Generate 5 ${level} ${category} questions in "${lang}" covering topics: ${topics.join(', ')}.`
-        : `Generate 5 ${level} ${category} questions in "${lang}".`;
+  const user = isReading
+    ? `Generate ${count} ${level} reading comprehension questions with passages in "${lang}".`
+    : `Generate ${count} ${level} ${category} questions in "${lang}", one for each topic.`;
 
   return { system, user };
 }
