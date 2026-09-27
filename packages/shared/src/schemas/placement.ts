@@ -1,8 +1,14 @@
 import { z } from 'zod';
 
 import { LevelSchema, OPTIONS_PER_ITEM, QuestionCategorySchema } from './item';
+import { LanguageSchema } from './language';
 
 /** The exam that decides a course's level. Questions come from content/items/*.json. */
+
+export const StartPlacementSchema = z.object({
+  lang: LanguageSchema,
+});
+export type StartPlacementInput = z.infer<typeof StartPlacementSchema>;
 
 /** A level is `perCategory` times the three QUESTION_CATEGORIES, and the second mistake ends it. */
 export const PLACEMENT_ROUNDS = { perCategory: 2, maxMistakes: 1 } as const;
@@ -13,7 +19,7 @@ export const PLACEMENT_ROUNDS = { perCategory: 2, maxMistakes: 1 } as const;
  * the parse: the leak becomes a loud error instead of a silently stripped field.
  */
 export const PlacementQuestionSchema = z
-  .object({
+  .strictObject({
     questionId: z.uuid(),
     category: QuestionCategorySchema,
     level: LevelSchema,
@@ -24,12 +30,16 @@ export const PlacementQuestionSchema = z
     timeLimitS: z.number().int().positive(),
     remainingS: z.number().int().min(0),
     /** `answered` doubles as this question's index, counting from zero. */
-    progress: z.object({
+    progress: z.strictObject({
       answered: z.number().int().min(0),
-      total: z.number().int().positive(),
+      // depending on how many errors the user makes, the remaining questions can sink fastly, maxQuestionsRemaining gives this number after each user answer anew
+      maxQuestionsRemaining: z.number().int().positive(),
     }),
   })
-  .strict();
+  .refine((q) => (q.category === 'reading' ? q.readText !== undefined : q.readText === undefined), {
+    message: 'reading questions need a readText, other categories must not have one',
+    path: ['readText'],
+  });
 export type PlacementQuestion = z.infer<typeof PlacementQuestionSchema>;
 
 /** Nullable but not optional: null is a timeout, scored wrong; absent is a broken client. */
@@ -43,6 +53,7 @@ export type SubmitAnswerInput = z.infer<typeof SubmitAnswerSchema>;
 export const PlacementReportEntrySchema = z.object({
   questionId: z.uuid(),
   question: z.string().min(1),
+  options: z.array(z.string().min(1)).length(OPTIONS_PER_ITEM),
   chosen: z.string().min(1).nullable(),
   correct: z.string().min(1),
   wasCorrect: z.boolean(),
@@ -51,7 +62,7 @@ export type PlacementReportEntry = z.infer<typeof PlacementReportEntrySchema>;
 
 /** The verdict, with the answers it was drawn from. */
 export const PlacementResultSchema = z.object({
-  level: LevelSchema,
+  targetLevel: LevelSchema.nullable(),
   report: z.array(PlacementReportEntrySchema),
 });
 export type PlacementResult = z.infer<typeof PlacementResultSchema>;

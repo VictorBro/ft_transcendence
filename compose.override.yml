@@ -189,6 +189,7 @@ volumes:
   api-generated:
   api-pnpm-store:
   claude-state:
+  gemini-state:
   shell-history:
   vscode-extensions:
   gh-config:
