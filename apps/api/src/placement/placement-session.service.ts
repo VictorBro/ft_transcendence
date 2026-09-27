@@ -173,6 +173,7 @@ export class PlacementSessionService {
         servedAt: data.servedAt,
       });
     } catch {
+      this.deleteSession(userId);
       throw new ConflictException('placement.invalidSession');
     }
 

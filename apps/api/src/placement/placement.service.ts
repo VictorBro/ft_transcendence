@@ -149,6 +149,11 @@ export class PlacementService {
       const newQuestion = await this.questionService.getNewPlacementQuestion(userId, examSession);
       await this.sessionService.saveExamSession(userId, examSession);
       return newQuestion;
+    } catch (error) {
+      if (error instanceof NotFoundException && error.message === 'placement.poolExhausted') {
+        await this.sessionService.deleteSession(userId);
+      }
+      throw error;
     } finally {
       await this.sessionService.releaseLock(userId, lockToken);
     }
@@ -209,6 +214,11 @@ export class PlacementService {
       }
 
       return await this.processAnswer(userId, dto.choice, question, session);
+    } catch (error) {
+      if (error instanceof NotFoundException && error.message === 'placement.poolExhausted') {
+        await this.sessionService.deleteSession(userId);
+      }
+      throw error;
     } finally {
       await this.sessionService.releaseLock(userId, lockToken);
     }
