@@ -1,666 +1,268 @@
 import { BadRequestException, ConflictException, NotFoundException } from '@nestjs/common';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
-import type { PlacementQuestion, PlacementResult } from '@ft/shared';
+import { randomUUID } from 'node:crypto';
+import { afterEach, beforeEach, describe, expect, it, type Mock, vi } from 'vitest';
+import type { Level, PlacementQuestion, PlacementResult, SubmitAnswerInput } from '@ft/shared';
 
-import type { ExamSession } from './placement.schema';
-
-import type { QuestionBank } from '../generated/prisma/client';
-import { CoursesService } from '../courses/courses.service';
-import { PlacementSessionService } from './placement-session.service';
+import {
+  bankPrisma,
+  examSession,
+  fakeRedis,
+  placementBank,
+  wrongChoice,
+} from '../../test/placement.fixtures';
+import type { CoursesService } from '../courses/courses.service';
+import type { PrismaService } from '../prisma/prisma.service';
+import type { RedisService } from '../redis/redis.service';
+import { NETWORK_GRACE_S, PlacementProgressService } from './placement-progress.service';
 import { PlacementQuestionService } from './placement-question.service';
-import { PlacementProgressService } from './placement-progress.service';
+import { PlacementSessionService } from './placement-session.service';
 import { PlacementService } from './placement.service';
 
-const LOCK_TOKEN = 'placement-lock-token';
-const EVAL_ID = 'd7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64';
+const USER = 'u-1';
+const LOCK = `user:${USER}:eval_lock`;
+const inProgress = new ConflictException('placement.inProgress');
+const notFound = new NotFoundException('placement.notFound');
 
-const mockQuestion: QuestionBank = {
-  id: 'b7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64',
-  sourceId: 'de-gram-0001',
-  lang: 'de',
-  level: 'B1',
-  topic: 'verbs_morphology',
-  category: 'grammar',
-  readText: null,
-  question: 'Er ___ gestern ins Kino gegangen.',
-  options: ['ist', 'hat', 'war', 'wird'],
-  answer: 'ist',
-  timeLimitS: 30,
-  createdAt: new Date(),
-  updatedAt: new Date(),
-};
-
-const mockPlacementQuestion: PlacementQuestion = {
-  questionId: mockQuestion.id,
-  category: 'grammar',
-  level: 'B1',
-  question: mockQuestion.question,
-  options: mockQuestion.options,
-  timeLimitS: 30,
-  remainingS: 30,
-  progress: {
-    answered: 0,
-    maxQuestionsRemaining: 18,
-  },
-};
-
-const mockPlacementResult: PlacementResult = {
-  targetLevel: 'B1',
-  report: [],
-};
-
-function createPlacementService() {
-  const sessionService = {
-    acquireLock: vi.fn().mockResolvedValue(LOCK_TOKEN),
-    acquireLockWithRetry: vi.fn().mockResolvedValue(LOCK_TOKEN),
-    releaseLock: vi.fn().mockResolvedValue(undefined),
-    hasActiveSession: vi.fn().mockResolvedValue(false),
-    saveExamSession: vi.fn().mockResolvedValue(undefined),
-    loadExamSession: vi.fn().mockResolvedValue(null),
-    deleteSession: vi.fn().mockResolvedValue(undefined),
-  } as unknown as PlacementSessionService;
-
-  const questionService = {
-    getNewPlacementQuestion: vi.fn().mockResolvedValue(mockPlacementQuestion),
-    createPlacementQuestion: vi.fn().mockReturnValue(mockPlacementQuestion),
-  } as unknown as PlacementQuestionService;
-
-  const progressService = {
-    getQuestion: vi.fn().mockResolvedValue(mockQuestion),
-    hasTimedOut: vi.fn().mockReturnValue(false),
-    adjustSessionFromAnswer: vi.fn().mockResolvedValue(undefined),
-    getResult: vi.fn().mockResolvedValue(undefined),
-  } as unknown as PlacementProgressService;
-
-  const coursesService = {
-    listCoursesUser: vi.fn().mockResolvedValue({
-      courses: [
-        {
-          id: 'course-1',
-          lang: 'de',
-          level: 'B1',
-          dailyGoal: 10,
-          createdAt: new Date().toISOString(),
-          updatedAt: new Date().toISOString(),
-        },
-      ],
-      activeLang: 'de',
-    }),
-    setLevel: vi.fn().mockResolvedValue({
-      level: 'B1',
-      lang: 'de',
-      dailyGoal: 10,
-    }),
-  } as unknown as CoursesService;
-
-  const service = new PlacementService(
-    sessionService,
-    questionService,
-    progressService,
-    coursesService,
-  );
-
-  return {
-    service,
-    sessionService,
-    questionService,
-    progressService,
-    coursesService,
-  };
-}
-
+/**
+ * The real services over an in-memory bank and Redis: only the course a
+ * result is written to is stubbed, since CoursesService has its own spec.
+ */
 describe('PlacementService', () => {
+  // French, so a language that falls back to the 'de' default shows.
+  const bank = placementBank('fr');
+  let redis: ReturnType<typeof fakeRedis>;
+  let sessions: PlacementSessionService;
+  let courses: { listCoursesUser: Mock; setLevel: Mock };
   let service: PlacementService;
-  let sessionService: ReturnType<typeof createPlacementService>['sessionService'];
-  let questionService: ReturnType<typeof createPlacementService>['questionService'];
-  let progressService: ReturnType<typeof createPlacementService>['progressService'];
-  let coursesService: ReturnType<typeof createPlacementService>['coursesService'];
+
+  const start = () => service.startPlacement(USER, { lang: 'fr' });
+  const answer = (question: PlacementQuestion, right: boolean) => {
+    const row = bank.find((candidate) => candidate.id === question.questionId)!;
+    return service.submitAnswer(USER, {
+      questionId: row.id,
+      choice: right ? row.answer : wrongChoice(row),
+    });
+  };
 
   beforeEach(() => {
-    const created = createPlacementService();
-    service = created.service;
-    sessionService = created.sessionService;
-    questionService = created.questionService;
-    progressService = created.progressService;
-    coursesService = created.coursesService;
+    vi.useFakeTimers();
+    redis = fakeRedis();
+    const prisma = bankPrisma(bank) as unknown as PrismaService;
+    sessions = new PlacementSessionService(redis as unknown as RedisService);
+    courses = {
+      listCoursesUser: vi.fn().mockResolvedValue({ courses: [{ lang: 'fr' }], activeLang: null }),
+      setLevel: vi.fn(),
+    };
+    service = new PlacementService(
+      sessions,
+      new PlacementQuestionService(prisma),
+      new PlacementProgressService(prisma),
+      courses as unknown as CoursesService,
+    );
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
+    vi.restoreAllMocks();
   });
 
   describe('startPlacement', () => {
-    it('throws ConflictException if lock cannot be acquired', async () => {
-      vi.mocked(sessionService.acquireLock).mockResolvedValue(null);
+    it('opens a run at B1 and serves its first question', async () => {
+      const first = await start();
 
-      await expect(service.startPlacement('user-1', { lang: 'de' })).rejects.toThrow(
-        new ConflictException('placement.inProgress'),
-      );
-      expect(sessionService.releaseLock).not.toHaveBeenCalled();
-    });
-
-    it('throws ConflictException and releases lock if placement is already in progress', async () => {
-      vi.mocked(sessionService.hasActiveSession).mockResolvedValue(true);
-
-      await expect(service.startPlacement('user-1', { lang: 'de' })).rejects.toThrow(
-        ConflictException,
-      );
-      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1', LOCK_TOKEN);
-    });
-
-    it('throws ConflictException and releases lock if onboarding is incomplete', async () => {
-      vi.mocked(sessionService.hasActiveSession).mockResolvedValue(false);
-      vi.mocked(coursesService.listCoursesUser).mockResolvedValue({
-        courses: [],
-        activeLang: null,
+      expect(first).toMatchObject({
+        level: 'B1',
+        remainingS: 30,
+        progress: { answered: 0, maxQuestionsRemaining: 18 },
       });
+      await expect(sessions.loadExamSession(USER)).resolves.toMatchObject({
+        level: 2,
+        answers: [],
+        currentQuestionId: first.questionId,
+        currentOptions: first.options,
+      });
+    });
 
-      await expect(service.startPlacement('user-1', { lang: 'de' })).rejects.toThrow(
+    it('refuses a second run while one is live, and releases its lock', async () => {
+      await start();
+
+      await expect(start()).rejects.toThrow(inProgress);
+      expect(redis.data.has(LOCK)).toBe(false);
+    });
+
+    it('refuses a language the user has no course in', async () => {
+      courses.listCoursesUser.mockResolvedValue({ courses: [{ lang: 'de' }], activeLang: 'de' });
+
+      await expect(start()).rejects.toThrow(
         new ConflictException('placement.onboardingIncomplete'),
       );
-      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1', LOCK_TOKEN);
+      expect(redis.data.has(LOCK)).toBe(false);
     });
 
-    it('initializes session, returns first question, and releases lock', async () => {
-      vi.mocked(sessionService.hasActiveSession).mockResolvedValue(false);
+    it('refuses to start while another request holds the lock', async () => {
+      await redis.client.set(LOCK, 'other');
 
-      const result = await service.startPlacement('user-1', { lang: 'de' });
-      expect(result).toEqual(mockPlacementQuestion);
-      expect(sessionService.deleteSession).toHaveBeenCalledWith('user-1');
-      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1', LOCK_TOKEN);
-      expect(questionService.getNewPlacementQuestion).toHaveBeenCalledWith(
-        'user-1',
-        expect.objectContaining({
-          evalId: expect.stringMatching(
-            /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i,
-          ),
-          lang: 'de',
-          level: 2,
-          totalAnswered: 0,
-          answers: [],
-        }),
-      );
-      expect(sessionService.saveExamSession).toHaveBeenCalledWith(
-        'user-1',
-        expect.objectContaining({ lang: 'de', level: 2, answers: [] }),
-      );
-    });
-
-    it('purges existing stale session and leftover answers on start', async () => {
-      vi.mocked(sessionService.hasActiveSession).mockResolvedValue(false);
-
-      await service.startPlacement('user-1', { lang: 'de' });
-
-      expect(sessionService.deleteSession).toHaveBeenCalledWith('user-1');
+      await expect(start()).rejects.toThrow(inProgress);
+      expect(redis.data.get(LOCK)).toBe('other');
     });
   });
 
-  describe('checkEndedOrTimedOutAndSaveNullAnswerIfTimedOut', () => {
-    it('throws NotFoundException if no session found', async () => {
-      vi.mocked(sessionService.loadExamSession).mockResolvedValue(null);
+  it('throws placement.notFound without a run, or with a stored run that serves nothing', async () => {
+    const orphan: SubmitAnswerInput = { questionId: randomUUID(), choice: null };
+    await expect(service.getPlacement(USER)).rejects.toThrow(notFound);
+    await expect(service.submitAnswer(USER, orphan)).rejects.toThrow(notFound);
 
-      await expect(
-        service.checkEndedOrTimedOutAndSaveNullAnswerIfTimedOut('user-1'),
-      ).rejects.toThrow(NotFoundException);
-    });
-
-    it('throws NotFoundException if session has no currentQuestionId', async () => {
-      vi.mocked(sessionService.loadExamSession).mockResolvedValue({
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 0,
-        hi: 5,
-        level: 2,
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-        totalAnswered: 0,
-        answers: [],
-        ended: false,
-        currentQuestionId: null,
-        currentOptions: null,
-        servedAt: new Date().toISOString(),
-      });
-
-      await expect(
-        service.checkEndedOrTimedOutAndSaveNullAnswerIfTimedOut('user-1'),
-      ).rejects.toThrow(NotFoundException);
-    });
-
-    it('returns result when session already ended', async () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 0,
-        hi: 5,
-        level: 2,
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-        totalAnswered: 6,
-        answers: [],
-        ended: true,
-        currentQuestionId: mockQuestion.id,
-        currentOptions: mockQuestion.options,
-        servedAt: new Date().toISOString(),
-      };
-      vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
-      vi.mocked(progressService.getResult).mockResolvedValue(mockPlacementResult);
-
-      const [resSession, question, result] =
-        await service.checkEndedOrTimedOutAndSaveNullAnswerIfTimedOut('user-1');
-      expect(resSession).toBe(session);
-      expect(question).toBeUndefined();
-      expect(result).toBe(mockPlacementResult);
-    });
-
-    it('handles timeout when elapsed time exceeds question limit and exam continues', async () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 0,
-        hi: 5,
-        level: 2,
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-        totalAnswered: 0,
-        answers: [],
-        ended: false,
-        currentQuestionId: mockQuestion.id,
-        currentOptions: mockQuestion.options,
-        servedAt: new Date(Date.now() - 60000).toISOString(),
-      };
-      vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
-      vi.mocked(progressService.getResult).mockResolvedValue(undefined);
-      vi.mocked(progressService.getQuestion).mockResolvedValue(mockQuestion);
-      vi.mocked(progressService.hasTimedOut).mockReturnValue(true);
-
-      const [resSession, question, result] =
-        await service.checkEndedOrTimedOutAndSaveNullAnswerIfTimedOut('user-1');
-      expect(resSession).toBe(session);
-      expect(question).toBe(mockQuestion);
-      expect(result).toBe(mockPlacementQuestion);
-      expect(session.answers).toEqual([{ questionId: mockQuestion.id, choice: null }]);
-      expect(session.totalAnswered).toBe(1);
-      expect(progressService.adjustSessionFromAnswer).toHaveBeenCalledWith(
-        null,
-        mockQuestion,
-        session,
-      );
-      expect(sessionService.saveExamSession).toHaveBeenCalledTimes(1);
-      expect(sessionService.saveExamSession).toHaveBeenCalledWith('user-1', session);
-      expect(questionService.getNewPlacementQuestion).toHaveBeenCalledWith('user-1', session);
-    });
-
-    it('handles timeout when elapsed time exceeds question limit and exam ends', async () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 0,
-        hi: 5,
-        level: 2,
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-        totalAnswered: 5,
-        answers: [],
-        ended: false,
-        currentQuestionId: mockQuestion.id,
-        currentOptions: mockQuestion.options,
-        servedAt: new Date(Date.now() - 60000).toISOString(),
-      };
-      vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
-      vi.mocked(progressService.getResult)
-        .mockResolvedValueOnce(undefined)
-        .mockResolvedValueOnce(mockPlacementResult);
-      vi.mocked(progressService.getQuestion).mockResolvedValue(mockQuestion);
-      vi.mocked(progressService.hasTimedOut).mockReturnValue(true);
-
-      const [resSession, question, result] =
-        await service.checkEndedOrTimedOutAndSaveNullAnswerIfTimedOut('user-1');
-      expect(resSession).toBe(session);
-      expect(question).toBe(mockQuestion);
-      expect(result).toBe(mockPlacementResult);
-      expect(sessionService.saveExamSession).toHaveBeenCalledTimes(1);
-      expect(sessionService.saveExamSession).toHaveBeenCalledWith('user-1', session);
-      expect(questionService.getNewPlacementQuestion).not.toHaveBeenCalled();
-    });
-
-    it('returns question and undefined result when session is active and within time', async () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 0,
-        hi: 5,
-        level: 2,
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-        totalAnswered: 0,
-        answers: [],
-        ended: false,
-        currentQuestionId: mockQuestion.id,
-        currentOptions: mockQuestion.options,
-        servedAt: new Date().toISOString(),
-      };
-      vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
-      vi.mocked(progressService.getResult).mockResolvedValue(undefined);
-      vi.mocked(progressService.getQuestion).mockResolvedValue(mockQuestion);
-      vi.mocked(progressService.hasTimedOut).mockReturnValue(false);
-
-      const [resSession, question, result] =
-        await service.checkEndedOrTimedOutAndSaveNullAnswerIfTimedOut('user-1');
-      expect(resSession).toBe(session);
-      expect(question).toBe(mockQuestion);
-      expect(result).toBeUndefined();
-    });
+    await sessions.saveExamSession(USER, examSession());
+    await expect(service.getPlacement(USER)).rejects.toThrow(notFound);
+    await expect(service.submitAnswer(USER, orphan)).rejects.toThrow(notFound);
+    expect(redis.data.has(LOCK)).toBe(false);
   });
 
-  describe('getPlacement', () => {
-    it('returns result when session is ended or timed out to a result', async () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 0,
-        hi: 5,
-        level: 2,
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-        totalAnswered: 6,
-        answers: [],
-        ended: true,
-        currentQuestionId: mockQuestion.id,
-        currentOptions: mockQuestion.options,
-        servedAt: new Date().toISOString(),
-      };
-      vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
-      vi.mocked(progressService.getResult).mockResolvedValue(mockPlacementResult);
+  it('serves the same question on reload, with the clock running down to zero', async () => {
+    const first = await start();
+    vi.advanceTimersByTime(10_000);
+    await expect(service.getPlacement(USER)).resolves.toEqual({ ...first, remainingS: 20 });
 
-      const result = await service.getPlacement('user-1');
-      expect(result).toEqual(mockPlacementResult);
-    });
+    // A GET never scores the timeout, so even past the grace it shows no time left.
+    vi.advanceTimersByTime((first.timeLimitS + NETWORK_GRACE_S) * 1000);
+    await expect(service.getPlacement(USER)).resolves.toEqual({ ...first, remainingS: 0 });
+  });
 
-    it('returns current question when active', async () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 0,
-        hi: 5,
-        level: 2,
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-        totalAnswered: 0,
-        answers: [],
-        ended: false,
-        currentQuestionId: mockQuestion.id,
-        currentOptions: mockQuestion.options,
-        servedAt: new Date().toISOString(),
-      };
-      vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
-      vi.mocked(progressService.getResult).mockResolvedValue(undefined);
-      vi.mocked(progressService.getQuestion).mockResolvedValue(mockQuestion);
-      vi.mocked(progressService.hasTimedOut).mockReturnValue(false);
+  it('drops the run when the bank runs dry mid-run, so the learner can start again', async () => {
+    const first = await start();
+    const exhausted = new NotFoundException('placement.poolExhausted');
+    vi.spyOn(PlacementQuestionService.prototype, 'getNewPlacementQuestion').mockRejectedValue(
+      exhausted,
+    );
 
-      const result = await service.getPlacement('user-1');
-      expect(result).toEqual(mockPlacementQuestion);
-      expect(questionService.createPlacementQuestion).toHaveBeenCalledWith(mockQuestion, session);
-    });
-
-    it('throws NotFoundException when session does not exist', async () => {
-      vi.mocked(sessionService.loadExamSession).mockResolvedValue(null);
-
-      await expect(service.getPlacement('user-1')).rejects.toThrow(
-        new NotFoundException('placement.notFound'),
-      );
-    });
-
-    it('throws NotFoundException when session has no currentQuestionId', async () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 0,
-        hi: 5,
-        level: 2,
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-        totalAnswered: 0,
-        answers: [],
-        ended: false,
-        currentQuestionId: null,
-        currentOptions: null,
-        servedAt: new Date().toISOString(),
-      };
-      vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
-      vi.mocked(progressService.getResult).mockResolvedValue(undefined);
-
-      await expect(service.getPlacement('user-1')).rejects.toThrow(
-        new NotFoundException('placement.notFound'),
-      );
-    });
+    await expect(answer(first, true)).rejects.toThrow(exhausted);
+    await expect(sessions.loadExamSession(USER)).resolves.toBeNull();
+    expect(redis.data.has(LOCK)).toBe(false);
   });
 
   describe('submitAnswer', () => {
-    it('throws ConflictException if lock cannot be acquired', async () => {
-      vi.mocked(sessionService.acquireLockWithRetry).mockResolvedValue(null);
+    it('records the answer and serves the next question before it lets go of the lock', async () => {
+      const first = await start();
+      const save = vi.spyOn(sessions, 'saveExamSession');
+      const release = vi.spyOn(sessions, 'releaseLock');
 
-      await expect(
-        service.submitAnswer('user-1', { questionId: 'q-1', choice: 'a' }),
-      ).rejects.toThrow(new ConflictException('placement.inProgress'));
-      expect(sessionService.releaseLock).not.toHaveBeenCalled();
-    });
+      const next = await answer(first, true);
 
-    it('releases lock even if checkEndedOrTimedOut throws', async () => {
-      vi.mocked(sessionService.loadExamSession).mockResolvedValue(null);
-
-      await expect(
-        service.submitAnswer('user-1', { questionId: 'q-1', choice: 'a' }),
-      ).rejects.toThrow(NotFoundException);
-      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1', LOCK_TOKEN);
-    });
-
-    it('throws BadRequestException and releases lock if choice is not in question options', async () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 0,
-        hi: 5,
-        level: 2,
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-        totalAnswered: 0,
-        answers: [],
-        ended: false,
-        currentQuestionId: mockQuestion.id,
-        currentOptions: mockQuestion.options,
-        servedAt: new Date().toISOString(),
-      };
-      vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
-      vi.mocked(progressService.getResult).mockResolvedValue(undefined);
-      vi.mocked(progressService.getQuestion).mockResolvedValue(mockQuestion);
-      vi.mocked(progressService.hasTimedOut).mockReturnValue(false);
-
-      await expect(
-        service.submitAnswer('user-1', {
-          questionId: mockQuestion.id,
-          choice: 'not-an-option',
-        }),
-      ).rejects.toThrow(new BadRequestException('placement.invalidChoice'));
-      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1', LOCK_TOKEN);
-      expect(session.answers).toEqual([]);
-    });
-
-    it('throws placement.questionMismatch if questionId does not match', async () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 0,
-        hi: 5,
-        level: 2,
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-        totalAnswered: 0,
-        answers: [],
-        ended: false,
-        currentQuestionId: mockQuestion.id,
-        currentOptions: mockQuestion.options,
-        servedAt: new Date().toISOString(),
-      };
-      vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
-      vi.mocked(progressService.getResult).mockResolvedValue(undefined);
-      vi.mocked(progressService.getQuestion).mockResolvedValue(mockQuestion);
-      vi.mocked(progressService.hasTimedOut).mockReturnValue(false);
-
-      await expect(
-        service.submitAnswer('user-1', {
-          questionId: 'other-question-id',
-          choice: 'ist',
-        }),
-      ).rejects.toThrow(new ConflictException('placement.questionMismatch'));
-      expect(session.answers).toEqual([]);
-      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1', LOCK_TOKEN);
-    });
-
-    it('throws placement.invalidSession if question was already answered in session', async () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 0,
-        hi: 5,
-        level: 2,
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-        totalAnswered: 1,
-        answers: [{ questionId: mockQuestion.id, choice: 'ist' }],
-        ended: false,
-        currentQuestionId: mockQuestion.id,
-        currentOptions: mockQuestion.options,
-        servedAt: new Date().toISOString(),
-      };
-      vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
-      vi.mocked(progressService.getResult).mockResolvedValue(undefined);
-      vi.mocked(progressService.getQuestion).mockResolvedValue(mockQuestion);
-      vi.mocked(progressService.hasTimedOut).mockReturnValue(false);
-
-      await expect(
-        service.submitAnswer('user-1', {
-          questionId: mockQuestion.id,
-          choice: 'ist',
-        }),
-      ).rejects.toThrow(new ConflictException('placement.invalidSession'));
-      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1', LOCK_TOKEN);
-    });
-
-    it('returns result if checkEndedOrTimedOut returns a result', async () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 0,
-        hi: 5,
-        level: 2,
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-        totalAnswered: 6,
-        answers: [],
-        ended: true,
-        currentQuestionId: mockQuestion.id,
-        currentOptions: mockQuestion.options,
-        servedAt: new Date().toISOString(),
-      };
-      vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
-      vi.mocked(progressService.getResult).mockResolvedValue(mockPlacementResult);
-
-      const result = await service.submitAnswer('user-1', {
-        questionId: mockQuestion.id,
-        choice: 'ist',
+      expect(next).toMatchObject({ progress: { answered: 1 } });
+      expect(next).not.toMatchObject({ questionId: first.questionId });
+      await expect(sessions.loadExamSession(USER)).resolves.toMatchObject({
+        answers: [{ questionId: first.questionId, choice: expect.any(String) }],
       });
-      expect(result).toEqual(mockPlacementResult);
+      expect(save).toHaveBeenCalledBefore(release);
     });
 
-    it('archives answer, adjusts session, and returns result if ended', async () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 0,
-        hi: 5,
-        level: 2,
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-        totalAnswered: 0,
-        answers: [],
-        ended: false,
-        currentQuestionId: mockQuestion.id,
-        currentOptions: mockQuestion.options,
-        servedAt: new Date().toISOString(),
-      };
-      vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
-      vi.mocked(progressService.adjustSessionFromAnswer).mockImplementation(
-        (_choice, _question, s) => {
-          s.ended = true;
-        },
+    it('scores an answer that arrives after timeLimitS plus grace as a timeout, even a right one', async () => {
+      const first = await start();
+      vi.advanceTimersByTime((first.timeLimitS + NETWORK_GRACE_S) * 1000);
+
+      await expect(answer(first, true)).resolves.toMatchObject({ progress: { answered: 1 } });
+      await expect(sessions.loadExamSession(USER)).resolves.toMatchObject({
+        mistakesPerLevel: 1,
+        answers: [{ questionId: first.questionId, choice: null }],
+      });
+    });
+
+    it.each([
+      [
+        'a choice outside the options',
+        (first: PlacementQuestion) => ({ questionId: first.questionId, choice: 'nope' }),
+        new BadRequestException('placement.invalidChoice'),
+      ],
+      [
+        'an answer to another question',
+        (first: PlacementQuestion) => ({ questionId: randomUUID(), choice: first.options[0] }),
+        new ConflictException('placement.questionMismatch'),
+      ],
+    ])('rejects %s and leaves the run as it was', async (_, dto, error) => {
+      const first = await start();
+
+      await expect(service.submitAnswer(USER, dto(first))).rejects.toThrow(error);
+      await expect(service.getPlacement(USER)).resolves.toEqual(first);
+      expect(redis.data.has(LOCK)).toBe(false);
+    });
+
+    it('rejects a stored run that already holds an answer to its current question', async () => {
+      const row = bank[0];
+      await sessions.saveExamSession(
+        USER,
+        examSession({
+          totalAnswered: 1,
+          answers: [{ questionId: row.id, choice: row.answer }],
+          currentQuestionId: row.id,
+          currentOptions: row.options,
+        }),
       );
-      vi.mocked(progressService.getResult)
-        .mockResolvedValueOnce(undefined) // first call in checkEndedOrTimedOut
-        .mockResolvedValueOnce(mockPlacementResult); // second call after answer
-      vi.mocked(progressService.getQuestion).mockResolvedValue(mockQuestion);
-      vi.mocked(progressService.hasTimedOut).mockReturnValue(false);
 
-      const result = await service.submitAnswer('user-1', {
-        questionId: mockQuestion.id,
-        choice: 'ist',
-      });
-      expect(result).toEqual(mockPlacementResult);
-      expect(session.answers).toEqual([{ questionId: mockQuestion.id, choice: 'ist' }]);
-      expect(coursesService.setLevel).toHaveBeenCalledWith('user-1', 'de', { level: 'B1' });
-      expect(sessionService.saveExamSession).toHaveBeenCalledWith('user-1', session);
-    });
-
-    it('archives answer, adjusts session, and returns next question if not ended', async () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 0,
-        hi: 5,
-        level: 2,
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-        totalAnswered: 0,
-        answers: [],
-        ended: false,
-        currentQuestionId: mockQuestion.id,
-        currentOptions: mockQuestion.options,
-        servedAt: new Date().toISOString(),
-      };
-      vi.mocked(sessionService.loadExamSession).mockResolvedValue(session);
-      vi.mocked(progressService.getResult).mockResolvedValue(undefined);
-      vi.mocked(progressService.getQuestion).mockResolvedValue(mockQuestion);
-      vi.mocked(progressService.hasTimedOut).mockReturnValue(false);
-
-      const result = await service.submitAnswer('user-1', {
-        questionId: mockQuestion.id,
-        choice: 'ist',
-      });
-      expect(result).toEqual(mockPlacementQuestion);
-      expect(sessionService.saveExamSession).toHaveBeenCalledTimes(1);
-      expect(questionService.getNewPlacementQuestion).toHaveBeenCalledWith('user-1', session);
+      await expect(
+        service.submitAnswer(USER, { questionId: row.id, choice: row.answer }),
+      ).rejects.toThrow(new ConflictException('placement.invalidSession'));
     });
   });
 
+  it('refuses to answer or quit while another request holds the lock', async () => {
+    const first = await start();
+    await redis.client.set(LOCK, 'other');
+
+    const answering = expect(answer(first, true)).rejects.toThrow(inProgress);
+    const quitting = expect(service.quitPlacement(USER)).rejects.toThrow(inProgress);
+    await vi.runAllTimersAsync();
+    await Promise.all([answering, quitting]);
+
+    await expect(service.getPlacement(USER)).resolves.toEqual(first);
+    expect(redis.data.get(LOCK)).toBe('other');
+  });
+
   describe('quitPlacement', () => {
-    it('deletes the session while holding the placement lock', async () => {
-      await service.quitPlacement('user-1');
+    it('deletes the run', async () => {
+      await start();
 
-      expect(sessionService.acquireLockWithRetry).toHaveBeenCalledWith('user-1');
-      expect(sessionService.deleteSession).toHaveBeenCalledWith('user-1');
-      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1', LOCK_TOKEN);
+      await service.quitPlacement(USER);
+
+      await expect(service.getPlacement(USER)).rejects.toThrow(notFound);
+      expect(redis.data.has(LOCK)).toBe(false);
     });
 
-    it('rejects quitting while another placement mutation owns the lock', async () => {
-      vi.mocked(sessionService.acquireLockWithRetry).mockResolvedValue(null);
+    it('releases the lock when the delete fails', async () => {
+      vi.spyOn(redis.client, 'del').mockRejectedValueOnce(new Error('redis down'));
 
-      await expect(service.quitPlacement('user-1')).rejects.toThrow(
-        new ConflictException('placement.inProgress'),
-      );
-      expect(sessionService.deleteSession).not.toHaveBeenCalled();
-      expect(sessionService.releaseLock).not.toHaveBeenCalled();
+      await expect(service.quitPlacement(USER)).rejects.toThrow('redis down');
+      expect(redis.data.has(LOCK)).toBe(false);
     });
+  });
 
-    it('releases the lock when deleting the session fails', async () => {
-      vi.mocked(sessionService.deleteSession).mockRejectedValue(new Error('redis down'));
+  // One row per result the exam can give. A level takes six right answers to
+  // pass and a second mistake to fail it, which fixes the answer count.
+  it.each([
+    ['B1 pass, C1 pass', 12, 'C2'],
+    ['B1 pass, C1 fail, B2 pass', 14, 'C1'],
+    ['B1 pass, C1 fail, B2 fail', 10, 'B2'],
+    ['B1 fail, A2 pass', 8, 'B1'],
+    ['B1 fail, A2 fail, A1 pass', 10, 'A2'],
+    ['B1 fail, A2 fail, A1 fail', 6, 'A1'],
+  ])('%s: %i answers, placed at %s', async (path, answered, target) => {
+    const steps = path.split(', ');
+    const levels: Level[] = [];
+    let step: PlacementQuestion | PlacementResult = await start();
+    while ('questionId' in step) {
+      levels.push(step.level);
+      step = await answer(step, steps.includes(`${step.level} pass`));
+    }
 
-      await expect(service.quitPlacement('user-1')).rejects.toThrow('redis down');
-      expect(sessionService.releaseLock).toHaveBeenCalledWith('user-1', LOCK_TOKEN);
-    });
+    expect(levels.filter((level, i) => level !== levels[i - 1])).toEqual(
+      steps.map((visit) => visit.slice(0, 2)),
+    );
+    expect(levels).toHaveLength(answered);
+    expect(step).toEqual({ targetLevel: target, report: expect.any(Array) });
+    expect(step.report).toHaveLength(answered);
+    expect(courses.setLevel).toHaveBeenCalledExactlyOnceWith(USER, 'fr', { level: target });
+    await expect(service.getPlacement(USER)).resolves.toEqual(step);
+    await expect(
+      service.submitAnswer(USER, { questionId: randomUUID(), choice: null }),
+    ).resolves.toEqual(step);
   });
 });

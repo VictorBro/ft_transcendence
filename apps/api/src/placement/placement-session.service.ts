@@ -3,7 +3,6 @@ import { randomUUID } from 'node:crypto';
 import { SubmitAnswerSchema } from '@ft/shared';
 
 import { ExamSession, ExamSessionSchema } from './placement.schema';
-import { PrismaService } from '../prisma/prisma.service';
 import { RedisService } from '../redis/redis.service';
 
 export const PLACEMENT_REDIS_KEY_TTL = 3600;
@@ -11,10 +10,7 @@ export const PLACEMENT_LOCK_TTL_SECONDS = 5;
 
 @Injectable()
 export class PlacementSessionService {
-  constructor(
-    private readonly redis: RedisService,
-    private readonly prisma: PrismaService,
-  ) {}
+  constructor(private readonly redis: RedisService) {}
 
   /**
    * Generates the Redis hash key used to store the user's placement exam session.
@@ -173,7 +169,7 @@ export class PlacementSessionService {
         servedAt: data.servedAt,
       });
     } catch {
-      this.deleteSession(userId);
+      await this.deleteSession(userId);
       throw new ConflictException('placement.invalidSession');
     }
 

@@ -45,6 +45,7 @@ SERVICE      ?= api
 SERVICES     ?=
 WAIT_TIMEOUT ?= 300
 STUDIO_PORT  ?= 5555
+REDIS_UI_PORT ?= 5540
 REPORT_PORT  ?= 9323
 # Matches the identities e2e/tests/auth.spec.ts signs up, so test-e2e can clear
 # them afterwards.
@@ -93,7 +94,7 @@ DB_ENV := -e DATABASE_URL='$(DEFAULT_DATABASE_URL)'
 endif
 
 .PHONY: all run dev up build down logs ps shell test test-e2e lint format typecheck report \
-        migrate migrate-new seed db-ready studio reset-db ci stores-up clean certs tooling-image doctor help \
+        migrate migrate-new seed db-ready studio redis-ui reset-db ci stores-up clean certs tooling-image doctor help \
 				check-devcontainer
 
 # Building on the host uses the wrong Node, the wrong pnpm store and a bind
@@ -322,6 +323,18 @@ studio: ## Prisma Studio (restart it after make/reset-db: db gets a new containe
 	docker run --rm -it --network $(NETWORK) -p 127.0.0.1:$(STUDIO_PORT):5555 \
 	  $(DB_ENV) --workdir /app/apps/api $(TOOLING_IMAGE) \
 	  ./node_modules/.bin/prisma studio --port 5555 --browser none; \
+	status=$$?; \
+	case $$status in 0|130) exit 0 ;; *) exit $$status ;; esac
+
+redis-ui: ## RedisInsight on the dev redis: sessions and placement runs, live
+	@printf '\n  RedisInsight: http://127.0.0.1:%s\n\n' '$(REDIS_UI_PORT)'
+	@# Loopback only, like studio: it reads and deletes any key, unauthenticated.
+	@# Nothing is kept between runs; the connection is configured from the env.
+	@set +e; \
+	docker run --rm -it --network $(NETWORK) -p 127.0.0.1:$(REDIS_UI_PORT):5540 \
+	  -e RI_REDIS_HOST=redis -e RI_REDIS_PORT=6379 -e RI_REDIS_ALIAS=ft_transcendence \
+	  -e RI_ACCEPT_TERMS_AND_CONDITIONS=true \
+	  redis/redisinsight:3.8.0; \
 	status=$$?; \
 	case $$status in 0|130) exit 0 ;; *) exit $$status ;; esac
 

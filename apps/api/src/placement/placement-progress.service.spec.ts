@@ -1,509 +1,145 @@
-import { BadRequestException, NotFoundException } from '@nestjs/common';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { NotFoundException } from '@nestjs/common';
+import { randomUUID } from 'node:crypto';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+
 import type { ExamSession } from './placement.schema';
 
-import type { QuestionBank } from '../generated/prisma/client';
+import { bankPrisma, examSession, questionRow, wrongChoice } from '../../test/placement.fixtures';
 import type { PrismaService } from '../prisma/prisma.service';
-import { NETWORK_GRACE_S, PlacementProgressService } from './placement-progress.service';
+import { PlacementProgressService } from './placement-progress.service';
 
-const EVAL_ID = 'd7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64';
-
-const mockQuestion: QuestionBank = {
-  id: 'b7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64',
-  sourceId: 'de-gram-0001',
-  lang: 'de',
-  level: 'B1',
-  topic: 'verbs_morphology',
-  category: 'grammar',
-  readText: null,
-  question: 'Er ___ gestern ins Kino gegangen.',
-  options: ['ist', 'hat', 'war', 'wird'],
-  answer: 'ist',
-  timeLimitS: 30,
-  createdAt: new Date(),
-  updatedAt: new Date(),
-};
-
-function createService(prismaOverrides: Record<string, unknown> = {}) {
-  const prisma = {
-    questionBank: {
-      findUnique: vi.fn(),
-      findMany: vi.fn(),
-      ...((prismaOverrides.questionBank as Record<string, unknown>) ?? {}),
-    },
-    userSeenQuestion: {
-      findMany: vi.fn().mockResolvedValue([]),
-      create: vi.fn().mockResolvedValue({}),
-      upsert: vi.fn().mockResolvedValue({}),
-      ...((prismaOverrides.userSeenQuestion as Record<string, unknown>) ?? {}),
-    },
-    userLevel: {
-      findUnique: vi.fn().mockResolvedValue(null),
-      update: vi.fn().mockResolvedValue({}),
-      ...((prismaOverrides.userLevel as Record<string, unknown>) ?? {}),
-    },
-    user: {
-      update: vi.fn().mockResolvedValue({}),
-      ...((prismaOverrides.user as Record<string, unknown>) ?? {}),
-    },
-    $transaction: vi.fn().mockImplementation((args) => Promise.all(args)),
-    ...prismaOverrides,
-  };
-
-  return {
-    service: new PlacementProgressService(prisma as unknown as PrismaService),
-    prisma,
-  };
-}
+const row = questionRow();
+// Its answer is not listed first, unlike most bank rows.
+const other = questionRow({
+  category: 'vocabulary',
+  options: ['Baum', 'Haus', 'Auto', 'Zug'],
+  answer: 'Haus',
+});
+const progress = new PlacementProgressService(bankPrisma([other, row]) as unknown as PrismaService);
 
 describe('PlacementProgressService', () => {
-  let service: PlacementProgressService;
-  let prisma: ReturnType<typeof createService>['prisma'];
-
-  beforeEach(() => {
-    const created = createService();
-    service = created.service;
-    prisma = created.prisma;
-  });
-
-  describe('getQuestion', () => {
-    it('returns question when found', async () => {
-      prisma.questionBank.findUnique.mockResolvedValue(mockQuestion);
-
-      const result = await service.getQuestion(mockQuestion.id);
-      expect(result).toEqual(mockQuestion);
-      expect(prisma.questionBank.findUnique).toHaveBeenCalledWith({
-        where: { id: mockQuestion.id },
-      });
-    });
-
-    it('throws NotFoundException when question not found', async () => {
-      prisma.questionBank.findUnique.mockResolvedValue(null);
-
-      await expect(service.getQuestion('missing-id')).rejects.toThrow(NotFoundException);
-    });
+  it('finds a question by id and throws placement.notFound for an unknown one', async () => {
+    await expect(progress.getQuestion(row.id)).resolves.toEqual(row);
+    await expect(progress.getQuestion(randomUUID())).rejects.toThrow(
+      new NotFoundException('placement.notFound'),
+    );
   });
 
   describe('adjustSessionFromAnswer', () => {
-    it('throws BadRequestException if answer is not null and not in question options', () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 0,
-        hi: 5,
-        level: 2,
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-        totalAnswered: 0,
-        answers: [],
-        ended: false,
-        currentQuestionId: mockQuestion.id,
-        currentOptions: mockQuestion.options,
-        servedAt: new Date().toISOString(),
-      };
+    const fresh = { grammar: 0, vocabulary: 0, reading: 0 };
+    const sixth = { askedPerCategory: { grammar: 2, vocabulary: 2, reading: 1 } };
 
-      expect(() =>
-        service.adjustSessionFromAnswer('invalid-choice', mockQuestion, session),
-      ).toThrow(new BadRequestException('placement.invalidChoice'));
-    });
+    it.each<[string, Partial<ExamSession>, string | null, Partial<ExamSession>]>([
+      [
+        'a right answer counts the category',
+        {},
+        row.answer,
+        { mistakesPerLevel: 0, askedPerCategory: { ...fresh, grammar: 1 }, level: 2 },
+      ],
+      [
+        'a wrong answer is a mistake',
+        {},
+        wrongChoice(row),
+        { mistakesPerLevel: 1, askedPerCategory: { ...fresh, grammar: 1 }, level: 2 },
+      ],
+      [
+        'a timeout is a mistake',
+        {},
+        null,
+        { mistakesPerLevel: 1, askedPerCategory: { ...fresh, grammar: 1 }, level: 2 },
+      ],
+      [
+        'the second mistake halves down to A2',
+        { mistakesPerLevel: 1, askedPerCategory: { ...fresh, grammar: 1 } },
+        null,
+        { lo: 0, hi: 2, level: 1, mistakesPerLevel: 0, askedPerCategory: fresh, ended: false },
+      ],
+      [
+        'the sixth answer passes B1 despite one mistake and halves up to C1',
+        { ...sixth, mistakesPerLevel: 1 },
+        row.answer,
+        { lo: 3, hi: 5, level: 4, mistakesPerLevel: 0, askedPerCategory: fresh, ended: false },
+      ],
+      [
+        'passing C1, the level below hi, ends the run at C2',
+        { ...sixth, lo: 3, level: 4 },
+        row.answer,
+        { level: 5, ended: true },
+      ],
+      [
+        'failing A1, the level at lo, ends the run at A1',
+        { lo: 0, hi: 1, level: 0, mistakesPerLevel: 1 },
+        null,
+        { level: 0, ended: true },
+      ],
+    ])('%s', (_, state, answer, expected) => {
+      // Cloned, so a row that mutates its nested state cannot leak into the next one.
+      const session = examSession(structuredClone(state));
 
-    it('increments category count on correct answer', () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 0,
-        hi: 5,
-        level: 2,
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-        totalAnswered: 0,
-        answers: [],
-        ended: false,
-        currentQuestionId: mockQuestion.id,
-        currentOptions: mockQuestion.options,
-        servedAt: new Date().toISOString(),
-      };
+      progress.adjustSessionFromAnswer(answer, row, session);
 
-      service.adjustSessionFromAnswer('ist', mockQuestion, session);
-      expect(session.mistakesPerLevel).toBe(0);
-      expect(session.askedPerCategory.grammar).toBe(1);
-      expect(session.level).toBe(2);
-    });
-
-    it('drops level when mistakes reach 2', () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 0,
-        hi: 5,
-        level: 2,
-        mistakesPerLevel: 1,
-        askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
-        totalAnswered: 1,
-        answers: [],
-        ended: false,
-        currentQuestionId: mockQuestion.id,
-        currentOptions: mockQuestion.options,
-        servedAt: new Date().toISOString(),
-      };
-
-      service.adjustSessionFromAnswer('hat', mockQuestion, session);
-      expect(session.mistakesPerLevel).toBe(0);
-      expect(session.hi).toBe(2);
-      expect(session.level).toBe(1);
-      expect(session.askedPerCategory).toEqual({ grammar: 0, vocabulary: 0, reading: 0 });
-    });
-
-    it('advances level when level questions are completed', () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 0,
-        hi: 5,
-        level: 2,
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 2, vocabulary: 2, reading: 1 },
-        totalAnswered: 5,
-        answers: [],
-        ended: false,
-        currentQuestionId: mockQuestion.id,
-        currentOptions: mockQuestion.options,
-        servedAt: new Date().toISOString(),
-      };
-
-      service.adjustSessionFromAnswer('ist', mockQuestion, session);
-      expect(session.mistakesPerLevel).toBe(0);
-      expect(session.lo).toBe(3);
-      expect(session.level).toBe(4);
-      expect(session.askedPerCategory).toEqual({ grammar: 0, vocabulary: 0, reading: 0 });
-    });
-
-    it('ends exam with upper boundary level when completing questions at highest level (currIndex === hiIndex - 1)', () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 5,
-        hi: 6,
-        level: 5,
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 2, vocabulary: 2, reading: 1 },
-        totalAnswered: 17,
-        answers: [],
-        ended: false,
-        currentQuestionId: mockQuestion.id,
-        currentOptions: mockQuestion.options,
-        servedAt: new Date().toISOString(),
-      };
-
-      service.adjustSessionFromAnswer('ist', mockQuestion, session);
-      expect(session.ended).toBe(true);
-      expect(session.level).toBe(6);
-    });
-
-    it('ends exam with lower boundary level when failing at lowest level (currIndex === loIndex)', () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 0,
-        hi: 1,
-        level: 0,
-        mistakesPerLevel: 1,
-        askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
-        totalAnswered: 7,
-        answers: [],
-        ended: false,
-        currentQuestionId: mockQuestion.id,
-        currentOptions: mockQuestion.options,
-        servedAt: new Date().toISOString(),
-      };
-
-      service.adjustSessionFromAnswer('hat', mockQuestion, session);
-      expect(session.ended).toBe(true);
-      expect(session.level).toBe(0);
-    });
-
-    it('scores timeout (null answer) as a mistake', async () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 0,
-        hi: 5,
-        level: 2,
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-        totalAnswered: 0,
-        answers: [],
-        ended: false,
-        currentQuestionId: mockQuestion.id,
-        currentOptions: mockQuestion.options,
-        servedAt: new Date().toISOString(),
-      };
-
-      service.adjustSessionFromAnswer(null, mockQuestion, session);
-      expect(session.mistakesPerLevel).toBe(1);
-      expect(session.askedPerCategory.grammar).toBe(1);
-    });
-
-    describe('all six levels reachable as terminal outcomes against adjustSessionFromAnswer', () => {
-      it('reaches terminal outcome A1 on lower boundary failure', () => {
-        const session: ExamSession = {
-          evalId: EVAL_ID,
-          lang: 'de',
-          lo: 0,
-          hi: 1,
-          level: 0,
-          mistakesPerLevel: 1,
-          askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
-          totalAnswered: 7,
-          answers: [],
-          ended: false,
-          currentQuestionId: mockQuestion.id,
-          currentOptions: mockQuestion.options,
-          servedAt: new Date().toISOString(),
-        };
-
-        service.adjustSessionFromAnswer('hat', mockQuestion, session);
-        expect(session.ended).toBe(true);
-        expect(session.level).toBe(0);
-      });
-
-      it('reaches terminal outcome A2 on passing A1 when hi is A2', () => {
-        const session: ExamSession = {
-          evalId: EVAL_ID,
-          lang: 'de',
-          lo: 0,
-          hi: 1,
-          level: 0,
-          mistakesPerLevel: 0,
-          askedPerCategory: { grammar: 2, vocabulary: 2, reading: 1 },
-          totalAnswered: 11,
-          answers: [],
-          ended: false,
-          currentQuestionId: mockQuestion.id,
-          currentOptions: mockQuestion.options,
-          servedAt: new Date().toISOString(),
-        };
-
-        service.adjustSessionFromAnswer('ist', mockQuestion, session);
-        expect(session.ended).toBe(true);
-        expect(session.level).toBe(1);
-      });
-
-      it('reaches terminal outcome B1 on passing A2 when hi is B1', () => {
-        const session: ExamSession = {
-          evalId: EVAL_ID,
-          lang: 'de',
-          lo: 0,
-          hi: 2,
-          level: 1,
-          mistakesPerLevel: 0,
-          askedPerCategory: { grammar: 2, vocabulary: 2, reading: 1 },
-          totalAnswered: 7,
-          answers: [],
-          ended: false,
-          currentQuestionId: mockQuestion.id,
-          currentOptions: mockQuestion.options,
-          servedAt: new Date().toISOString(),
-        };
-
-        service.adjustSessionFromAnswer('ist', mockQuestion, session);
-        expect(session.ended).toBe(true);
-        expect(session.level).toBe(2);
-      });
-
-      it('reaches terminal outcome B2 on failing B2 when lo is B2', () => {
-        const session: ExamSession = {
-          evalId: EVAL_ID,
-          lang: 'de',
-          lo: 3,
-          hi: 4,
-          level: 3,
-          mistakesPerLevel: 1,
-          askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
-          totalAnswered: 13,
-          answers: [],
-          ended: false,
-          currentQuestionId: mockQuestion.id,
-          currentOptions: mockQuestion.options,
-          servedAt: new Date().toISOString(),
-        };
-
-        service.adjustSessionFromAnswer('hat', mockQuestion, session);
-        expect(session.ended).toBe(true);
-        expect(session.level).toBe(3);
-      });
-
-      it('reaches terminal outcome C1 on passing B2 when hi is C1', () => {
-        const session: ExamSession = {
-          evalId: EVAL_ID,
-          lang: 'de',
-          lo: 3,
-          hi: 4,
-          level: 3,
-          mistakesPerLevel: 0,
-          askedPerCategory: { grammar: 2, vocabulary: 2, reading: 1 },
-          totalAnswered: 17,
-          answers: [],
-          ended: false,
-          currentQuestionId: mockQuestion.id,
-          currentOptions: mockQuestion.options,
-          servedAt: new Date().toISOString(),
-        };
-
-        service.adjustSessionFromAnswer('ist', mockQuestion, session);
-        expect(session.ended).toBe(true);
-        expect(session.level).toBe(4);
-      });
-
-      it('reaches terminal outcome C2 on failing C2 when lo is C2', () => {
-        const session: ExamSession = {
-          evalId: EVAL_ID,
-          lang: 'de',
-          lo: 5,
-          hi: 6,
-          level: 5,
-          mistakesPerLevel: 1,
-          askedPerCategory: { grammar: 1, vocabulary: 0, reading: 0 },
-          totalAnswered: 13,
-          answers: [],
-          ended: false,
-          currentQuestionId: mockQuestion.id,
-          currentOptions: mockQuestion.options,
-          servedAt: new Date().toISOString(),
-        };
-
-        service.adjustSessionFromAnswer('hat', mockQuestion, session);
-        expect(session.ended).toBe(true);
-        expect(session.level).toBe(5);
-      });
+      expect(session).toMatchObject(expected);
     });
   });
 
   describe('hasTimedOut', () => {
-    it('returns true when elapsed exceeds time limit plus network grace', () => {
-      const servedAt = new Date(
-        Date.now() - (mockQuestion.timeLimitS + NETWORK_GRACE_S + 2) * 1000,
-      ).toISOString();
-      expect(service.hasTimedOut(mockQuestion, servedAt)).toBe(true);
-    });
+    beforeEach(() => vi.useFakeTimers());
+    afterEach(() => vi.useRealTimers());
 
-    it('returns false when elapsed exceeds time limit but is within network grace', () => {
-      const servedAt = new Date(Date.now() - (mockQuestion.timeLimitS + 1) * 1000).toISOString();
-      expect(service.hasTimedOut(mockQuestion, servedAt)).toBe(false);
-    });
+    // 30s to answer, plus two seconds for the network.
+    it.each([
+      [0, false],
+      [31, false],
+      [32, true],
+    ])('after %ss says %s', (elapsedS, expected) => {
+      const servedAt = new Date(Date.now() - elapsedS * 1000).toISOString();
 
-    it('returns false when elapsed is within time limit', () => {
-      const servedAt = new Date().toISOString();
-      expect(service.hasTimedOut(mockQuestion, servedAt)).toBe(false);
+      expect(progress.hasTimedOut(row, servedAt)).toBe(expected);
     });
   });
 
   describe('getResult', () => {
-    it('returns undefined if session is not ended', async () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 0,
-        hi: 5,
-        level: 2,
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-        totalAnswered: 0,
-        answers: [],
-        ended: false,
-        currentQuestionId: null,
-        currentOptions: null,
-        servedAt: new Date().toISOString(),
-      };
-
-      const result = await service.getResult(session);
-      expect(result).toBeUndefined();
+    it('has none while the run is going', async () => {
+      await expect(progress.getResult(examSession())).resolves.toBeUndefined();
     });
 
-    it('returns PlacementResult with report when session is ended', async () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 0,
-        hi: 5,
-        level: 2,
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-        totalAnswered: 2,
-        answers: [
-          { questionId: mockQuestion.id, choice: 'ist' },
-          { questionId: '22222222-2222-4222-8222-222222222222', choice: null },
+    // `other` comes first in the bank, so answer order has to come from the session.
+    it('reports the level and every answer in the order given, skipping rows gone from the bank', async () => {
+      const answers = [
+        { questionId: row.id, choice: row.answer },
+        { questionId: randomUUID(), choice: 'ist' },
+        { questionId: other.id, choice: 'Baum' },
+      ];
+
+      await expect(
+        progress.getResult(examSession({ ended: true, level: 4, answers })),
+      ).resolves.toEqual({
+        targetLevel: 'C1',
+        report: [
+          {
+            questionId: row.id,
+            question: row.question,
+            options: row.options,
+            chosen: 'ist',
+            correct: 'ist',
+            wasCorrect: true,
+          },
+          {
+            questionId: other.id,
+            question: other.question,
+            options: other.options,
+            chosen: 'Baum',
+            correct: 'Haus',
+            wasCorrect: false,
+          },
         ],
-        ended: true,
-        currentQuestionId: null,
-        currentOptions: null,
-        servedAt: new Date().toISOString(),
-      };
-
-      const q2 = {
-        ...mockQuestion,
-        id: '22222222-2222-4222-8222-222222222222',
-        question: 'Second question?',
-        answer: 'Haus',
-        options: ['Haus', 'Baum', 'Auto', 'Zug'],
-      };
-
-      prisma.questionBank.findMany.mockResolvedValue([mockQuestion, q2]);
-
-      const result = await service.getResult(session);
-      expect(result).toBeDefined();
-      expect(result?.targetLevel).toBe('B1');
-      expect(result?.report).toHaveLength(2);
-      expect(result?.report).toEqual([
-        {
-          questionId: mockQuestion.id,
-          question: mockQuestion.question,
-          options: mockQuestion.options,
-          chosen: 'ist',
-          correct: 'ist',
-          wasCorrect: true,
-        },
-        {
-          questionId: q2.id,
-          question: q2.question,
-          options: q2.options,
-          chosen: null,
-          correct: 'Haus',
-          wasCorrect: false,
-        },
-      ]);
+      });
     });
 
-    it('returns PlacementResult with targetLevel: null when session was aborted', async () => {
-      const session: ExamSession = {
-        evalId: EVAL_ID,
-        lang: 'de',
-        lo: 0,
-        hi: 5,
-        level: null,
-        mistakesPerLevel: 0,
-        askedPerCategory: { grammar: 0, vocabulary: 0, reading: 0 },
-        totalAnswered: 1,
-        answers: [{ questionId: mockQuestion.id, choice: null }],
-        ended: true,
-        currentQuestionId: null,
-        currentOptions: null,
-        servedAt: new Date().toISOString(),
-      };
-      prisma.questionBank.findMany.mockResolvedValue([mockQuestion]);
+    it('reports targetLevel null for a stored run without a level', async () => {
+      const result = await progress.getResult(examSession({ ended: true, level: null }));
 
-      const result = await service.getResult(session);
-      expect(result).toBeDefined();
-      expect(result?.targetLevel).toBeNull();
-      expect(result?.report).toHaveLength(1);
-      expect(result?.report[0]).toEqual({
-        questionId: mockQuestion.id,
-        question: mockQuestion.question,
-        options: mockQuestion.options,
-        chosen: null,
-        correct: 'ist',
-        wasCorrect: false,
-      });
+      expect(result).toEqual({ targetLevel: null, report: [] });
     });
   });
 });
