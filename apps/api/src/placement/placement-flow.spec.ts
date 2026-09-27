@@ -11,6 +11,7 @@ import {
 import type { QuestionBank } from '../generated/prisma/client';
 import type { PrismaService } from '../prisma/prisma.service';
 import type { RedisService } from '../redis/redis.service';
+import { CoursesService } from '../courses/courses.service';
 import { NETWORK_GRACE_S, PlacementProgressService } from './placement-progress.service';
 import { PlacementQuestionService } from './placement-question.service';
 import { PlacementSessionService } from './placement-session.service';
@@ -117,9 +118,25 @@ function setupPlacementEnvironment() {
     },
     userLevel: {
       findUnique: vi.fn(async () => ({ id: 'ul-1' })),
-      update: vi.fn(async () => ({})),
+      update: vi.fn(
+        async ({
+          where,
+          data,
+        }: {
+          where: { userId_lang: { userId: string; lang: string } };
+          data: { level?: Level; dailyGoal?: number };
+        }) => ({
+          lang: where.userId_lang.lang,
+          level: data.level ?? 'B1',
+          dailyGoal: 10,
+        }),
+      ),
     },
     user: {
+      findUnique: vi.fn(async () => ({
+        activeLang: 'de',
+        userLevels: [{ lang: 'de', dailyGoal: 10, level: 'B1' }],
+      })),
       update: vi.fn(async () => ({})),
     },
     $transaction: vi.fn(async (args: Promise<unknown>[]) => Promise.all(args)),
@@ -204,7 +221,13 @@ function setupPlacementEnvironment() {
   );
   const questionService = new PlacementQuestionService(prisma as unknown as PrismaService);
   const progressService = new PlacementProgressService(prisma as unknown as PrismaService);
-  const service = new PlacementService(sessionService, questionService, progressService);
+  const coursesService = new CoursesService(prisma as unknown as PrismaService);
+  const service = new PlacementService(
+    sessionService,
+    questionService,
+    progressService,
+    coursesService,
+  );
 
   return {
     service,
@@ -265,17 +288,19 @@ describe('Placement Exam Scenarios', () => {
     expect(result.report.every((entry) => !entry.wasCorrect)).toBe(true);
     expect(result.report.every((entry) => entry.chosen === null)).toBe(true);
 
-    expect(env.prisma.userLevel.update).toHaveBeenCalledWith({
-      where: {
-        userId_lang: {
-          userId,
-          lang: 'de',
+    expect(env.prisma.userLevel.update).toHaveBeenCalledWith(
+      expect.objectContaining({
+        where: {
+          userId_lang: {
+            userId,
+            lang: 'de',
+          },
         },
-      },
-      data: {
-        level: 'A1',
-      },
-    });
+        data: {
+          level: 'A1',
+        },
+      }),
+    );
   });
 
   it('user fails B1 and A2, but succeeds on A1: test ends with target level A2', async () => {
@@ -318,17 +343,19 @@ describe('Placement Exam Scenarios', () => {
     expect(result.targetLevel).toBe('A2');
     expect(result.report).toHaveLength(10);
 
-    expect(env.prisma.userLevel.update).toHaveBeenCalledWith({
-      where: {
-        userId_lang: {
-          userId,
-          lang: 'de',
+    expect(env.prisma.userLevel.update).toHaveBeenCalledWith(
+      expect.objectContaining({
+        where: {
+          userId_lang: {
+            userId,
+            lang: 'de',
+          },
         },
-      },
-      data: {
-        level: 'A2',
-      },
-    });
+        data: {
+          level: 'A2',
+        },
+      }),
+    );
   });
 
   it('2. user starts test, will answer each question correctly. he will go through levels B1, C1 with final result C2', async () => {
@@ -367,17 +394,19 @@ describe('Placement Exam Scenarios', () => {
     expect(result.report).toHaveLength(12);
     expect(result.report.every((entry) => entry.wasCorrect)).toBe(true);
 
-    expect(env.prisma.userLevel.update).toHaveBeenCalledWith({
-      where: {
-        userId_lang: {
-          userId,
-          lang: 'de',
+    expect(env.prisma.userLevel.update).toHaveBeenCalledWith(
+      expect.objectContaining({
+        where: {
+          userId_lang: {
+            userId,
+            lang: 'de',
+          },
         },
-      },
-      data: {
-        level: 'C2',
-      },
-    });
+        data: {
+          level: 'C2',
+        },
+      }),
+    );
   });
 
   it('3. user starts test, on each level will make mistake on random question out of 6, he will reach C2', async () => {
@@ -430,17 +459,19 @@ describe('Placement Exam Scenarios', () => {
     expect(wrongAnswers).toHaveLength(2);
     expect(correctAnswers).toHaveLength(10);
 
-    expect(env.prisma.userLevel.update).toHaveBeenCalledWith({
-      where: {
-        userId_lang: {
-          userId,
-          lang: 'de',
+    expect(env.prisma.userLevel.update).toHaveBeenCalledWith(
+      expect.objectContaining({
+        where: {
+          userId_lang: {
+            userId,
+            lang: 'de',
+          },
         },
-      },
-      data: {
-        level: 'C2',
-      },
-    });
+        data: {
+          level: 'C2',
+        },
+      }),
+    );
   });
 
   describe('All Possible Binary Search Level Paths', () => {
@@ -530,17 +561,19 @@ describe('Placement Exam Scenarios', () => {
       expect(result.targetLevel).toBe(expectedTargetLevel);
 
       // Verify database update
-      expect(env.prisma.userLevel.update).toHaveBeenCalledWith({
-        where: {
-          userId_lang: {
-            userId,
-            lang: 'de',
+      expect(env.prisma.userLevel.update).toHaveBeenCalledWith(
+        expect.objectContaining({
+          where: {
+            userId_lang: {
+              userId,
+              lang: 'de',
+            },
           },
-        },
-        data: {
-          level: expectedTargetLevel,
-        },
-      });
+          data: {
+            level: expectedTargetLevel,
+          },
+        }),
+      );
     });
   });
 
