@@ -2,7 +2,8 @@
   "SessionNav": {
     "accountNav": "Account",
     "signIn": "Sign in",
-    "createAccount": "Create account"
+    "createAccount": "Create account",
+    "profile": "Profil"
   },
   "LanguageSwitcher": {
     "label": "Language",
@@ -267,7 +268,6 @@
     "startHeading": "Evaluate your level",
     "startDescription": "The evaluation will help you determine your level in this language.",
     "starting": "Starting the test…",
-    "secondsLeft": "Seconds left: {seconds}",
     "optionLabel": "Answer options",
     "quitButton": "Quit test",
     "continueButton": "Continue",

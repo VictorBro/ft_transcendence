@@ -85,23 +85,6 @@ export function PlacementExam({
     state != null && !isPlacementResult(state) ? state : null;
   const [remaining, setRemaining] = useState(question?.remainingS ?? 0);
 
-  // useEffect(() => {
-  //   if (question !== null) {
-  //     setRemaining(question.remainingS);
-  //   }
-  // }, [question]);
-
-  //local clock
-  // useEffect(() => {
-  //   if (question === null) {
-  //     return;
-  //   }
-  //   const interval = setInterval(() => {
-  //     setRemaining((seconds) => Math.max(0, seconds - 1));
-  //   }, 1000);
-  //   return () => clearInterval(interval);
-  // }, [question]);
-
   const answer = useCallback(
     async (choice: string | null) => {
       if (question === null) return;
@@ -122,7 +105,8 @@ export function PlacementExam({
   );
 
   const timeOut = useRef<string | null>(null);
-  //The three useEffect depends on [question] which means dont touch anything is questionId did not change
+
+  //The useEffect depends on [question] which means dont touch anything is the question (object) did not change
   //get time allowed for a specific question
   useEffect(() => {
     if (question === null) {
@@ -142,16 +126,6 @@ export function PlacementExam({
     }, 1000);
     return () => clearInterval(interval);
   }, [question, answer]);
-
-  //automatic soumission when chrono
-  // const timeOut = useRef<string | null>(null);
-  // useEffect(() => {
-  //   if (question === null || remaining > 0 || timeOut.current === question.questionId) {
-  //     return;
-  //   }
-  //   timeOut.current = question.questionId;
-  //   void answer(null);
-  // }, [remaining, question, answer]);
 
   async function closePlacement() {
     setPending(true);
@@ -226,6 +200,7 @@ export function PlacementExam({
             <span className="text-xs font-semibold tracking-widest text-indigo-300 uppercase">
               {t('levelLabel')}
             </span>
+            {/* <span className="text-6xl font-bold text-end text-indigo-300">{state.targetLevel}</span> */}
             <span className="text-6xl font-bold text-end text-indigo-300">{state.level}</span>
           </div>
 
@@ -264,6 +239,13 @@ export function PlacementExam({
           >
             {pending ? t('closing') : t('closeButton')}
           </button>
+          {/*
+            No plain "continue" link here: the Close button above quits the run
+            before navigating. Leaving without quitting keeps the session alive in
+            Redis for its full hour, and one live session blocks starting another in
+            any language — so a link straight out would strand the learner, able to
+            read the report but not to retake until the TTL expired.
+          */}
           {/* <Link
           href={`/learn/${lang}`}
           className="self-start rounded-md bg-indigo-600 px-6 py-3 font-medium transition-colors hover:bg-indigo-500"
@@ -276,8 +258,9 @@ export function PlacementExam({
   }
 
   return (
-    <div className="mx-auto flex h-full max-w-2xl flex-col gap-6 overflow-y-auto py-6">
+    <div className="mx-auto flex w-full h-full max-w-2xl flex-col gap-6 overflow-y-auto py-6">
       <div className="flex items-center justify-between text-sm text-slate-400 gap-7">
+        {/* <ProgressBar answered={state.progress.answered} total={state.progress.maxRemaining} /> */}
         <ProgressBar answered={state.progress.answered} total={state.progress.total} />
         <span role="timer" aria-live="polite">
           <CountdownRing remaining={remaining} total={state.timeLimitS} />

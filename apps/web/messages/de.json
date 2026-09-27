@@ -2,7 +2,8 @@
   "SessionNav": {
     "accountNav": "Konto",
     "signIn": "Anmelden",
-    "createAccount": "Konto erstellen"
+    "createAccount": "Konto erstellen",
+    "profile": "Profil"
   },
   "LanguageSwitcher": {
     "label": "Sprache",
@@ -267,7 +268,6 @@
     "startDescription": "Dieser Test bewertet dein Niveau in dieser Sprache. Er basiert auf deinen Antworten auf die Fragen und liefert dir am Ende einen detaillierten Bericht.",
     "startButton": "Test starten",
     "starting": "Test wird gestartet…",
-    "secondsLeft": "Verbleibende Sekunden: {seconds}",
     "optionLabel": "Antwortoptionen",
     "quitButton": "Test beenden",
     "resultHeading": "Einstufungstest",
