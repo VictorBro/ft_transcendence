@@ -1,13 +1,7 @@
-import { devices, type BrowserContext, type Page } from '@playwright/test';
+import { devices } from '@playwright/test';
 import { expectFitsTheScreen } from '../support/layout';
 import { AUTHENTICATED_FOOTER_ROUTES, PUBLIC_FOOTER_ROUTES } from '../support/routes';
-import {
-  createAccount,
-  identity,
-  ONBOARDED_COURSE,
-  placeCourse,
-  test as base,
-} from '../support/session';
+import { test } from '../support/session';
 
 /**
  * 360px is the narrowest width worth gating: it is the most common Android
@@ -17,47 +11,6 @@ import {
  * spreading it would put this file in workers of its own for nothing.
  */
 const { defaultBrowserType: _browser, ...phone } = devices['Pixel 5'];
-
-/**
- * The longest name the schema allows, and the worst case for a layout: names
- * are letters, digits, dots, underscores and hyphens, so 32 characters can
- * arrive with nothing to break on. Unique per worker, because signup is.
- */
-const longestDisplayName = (): string =>
-  `browser${crypto.randomUUID().replace(/-/g, '').slice(0, 25)}`;
-
-/**
- * An account of its own, rather than the onboarded one. The gate needs a
- * placed course, since the course home sends anyone without one to onboarding,
- * and a maximal display name, and renaming the shared account would leave
- * dashboard.spec.ts asserting a name it no longer has. One signup per worker
- * buys both.
- */
-type StorageState = Awaited<ReturnType<BrowserContext['storageState']>>;
-
-const test = base.extend<{ learner: Page }, { maximalAccount: StorageState }>({
-  maximalAccount: [
-    async ({ browser }, use) => {
-      const context = await browser.newContext();
-      const page = await context.newPage();
-
-      await createAccount(page, { ...identity(), displayName: longestDisplayName() });
-      await placeCourse(page, ONBOARDED_COURSE);
-
-      const storageState = await context.storageState();
-      await context.close();
-
-      await use(storageState);
-    },
-    { scope: 'worker' },
-  ],
-
-  learner: async ({ browser, maximalAccount }, use) => {
-    const context = await browser.newContext({ storageState: maximalAccount });
-    await use(await context.newPage());
-    await context.close();
-  },
-});
 
 test.use({ ...phone, viewport: { width: 360, height: 800 } });
 
@@ -81,9 +34,10 @@ test.describe('every page fits a phone screen', () => {
   }
 
   for (const { path, name } of AUTHENTICATED_FOOTER_ROUTES) {
-    test(`the ${name} page fits when signed in`, async ({ learner }) => {
-      await learner.goto(path);
-      await expectFitsTheScreen(learner, path);
+    // The onboarded account: a placed course and the longest display name allowed.
+    test(`the ${name} page fits when signed in`, async ({ onboarded }) => {
+      await onboarded.goto(path);
+      await expectFitsTheScreen(onboarded, path);
     });
   }
 });
