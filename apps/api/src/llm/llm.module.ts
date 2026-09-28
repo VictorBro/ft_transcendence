@@ -32,7 +32,7 @@ export function selectLlmProvider(
       // Factory function executed at application startup to pick the active provider
       useFactory: (config: ConfigService, fixture: FixtureProvider, gemini: GeminiProvider) => {
         // Read LLM_PROVIDER from environment variables (defaults to 'fixture')
-        selectLlmProvider(config.get<string>('LLM_PROVIDER', 'fixture'), fixture, gemini);
+        return selectLlmProvider(config.get<string>('LLM_PROVIDER', 'fixture'), fixture, gemini);
       },
     },
   ],
