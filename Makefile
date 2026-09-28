@@ -287,7 +287,7 @@ tooling-image:
 # ends up migrated but with an empty question bank. Both halves are idempotent.
 db-ready: ## Apply migrations, then load the question bank
 	@$(MAKE) --no-print-directory migrate
-# 	@$(MAKE) --no-print-directory seed
+	@$(MAKE) --no-print-directory seed
 
 migrate: ## Apply pending Prisma migrations
 	@if [ ! -d "$(MIGRATIONS_DIR)" ] || [ -z "$$(ls -A '$(MIGRATIONS_DIR)' 2>/dev/null)" ]; then \
