@@ -1,7 +1,7 @@
 import { devices } from '@playwright/test';
 import { expectFitsTheScreen } from '../support/layout';
 import { AUTHENTICATED_FOOTER_ROUTES, PUBLIC_FOOTER_ROUTES } from '../support/routes';
-import { test } from '../support/session';
+import { placeCourse, SECOND_COURSE, test } from '../support/session';
 
 /**
  * 360px is the narrowest width worth gating: it is the most common Android
@@ -34,8 +34,11 @@ test.describe('every page fits a phone screen', () => {
   }
 
   for (const { path, name } of AUTHENTICATED_FOOTER_ROUTES) {
-    // The onboarded account: a placed course and the longest display name allowed.
+    // The onboarded account, with the longest display name allowed. Other specs
+    // may add SECOND_COURSE to it, so the gate adds it too and always measures
+    // the fuller header, whatever ran before it in the worker.
     test(`the ${name} page fits when signed in`, async ({ onboarded }) => {
+      await placeCourse(onboarded, SECOND_COURSE);
       await onboarded.goto(path);
       await expectFitsTheScreen(onboarded, path);
     });
