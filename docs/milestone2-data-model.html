@@ -47,9 +47,14 @@ a.il{color:var(--text-accent);text-decoration:none}a.il:hover,a.il:focus-visible
 .tw{overflow-x:auto}
 table.t{border-collapse:collapse;font-family:var(--font-mono);font-size:12px;width:100%;min-width:420px}
 table.t th,table.t td{text-align:right;padding:4px 10px;border-bottom:0.5px solid var(--border);color:var(--text-secondary)}
+table.t .pc{color:var(--text-muted)}
 table.t th{font-weight:500;color:var(--text-primary)}
 table.t th:first-child,table.t td:first-child{text-align:left;color:var(--text-primary);font-weight:500}
 .ct .n{font-weight:400;color:var(--text-muted);margin-left:4px}
+.jump{cursor:pointer}.jump:hover{filter:brightness(.96)}.jump:focus-visible{outline:2px solid var(--text-accent);outline-offset:2px}
+section.g{scroll-margin-top:calc(12px + env(safe-area-inset-top,0px))}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 @media (max-width:560px){.cards.two{grid-template-columns:1fr}}
 </style>
 </head>
@@ -59,10 +64,10 @@ table.t th:first-child,table.t td:first-child{text-align:left;color:var(--text-p
 <p class="intro">Every lesson format of the Course Roadmap and Lessons milestone, grouped by layer: the enums and constants, the shared contract, the content files, the checks and seed that guard the database, the Prisma models, and the API schemas. Each card lists the issues that reference it. References cover #77 and #79–#82.</p>
 
 <div class="leg">
-<span class="m k-e">Enums + constants · #77 / #79</span><span class="m k-c">Shared contract · #77</span><span class="m k-f">Content files · #77</span><span class="m k-q">CI checks + seed · #77 / #79</span><span class="m k-d">Database · #79</span><span class="m k-a">API schemas · #77</span>
+<span class="m k-e jump" data-target="enums" role="link" tabindex="0">Enums + constants · #77 / #79</span><span class="m k-c jump" data-target="contract" role="link" tabindex="0">Shared contract · #77</span><span class="m k-f jump" data-target="content" role="link" tabindex="0">Content files · #77</span><span class="m k-q jump" data-target="checks" role="link" tabindex="0">CI checks + seed · #77 / #79</span><span class="m k-d jump" data-target="database" role="link" tabindex="0">Database · #79</span><span class="m k-a jump" data-target="api" role="link" tabindex="0">API schemas · #77</span>
 </div>
 
-<section class="g k-e"><div class="gh"><i class="ti ti-list-details" aria-hidden="true"></i>Enums and constants<span class="def">defined in #77</span><span class="def">Prisma enums in #79</span></div>
+<section class="g k-e" id="enums"><div class="gh"><i class="ti ti-list-details" aria-hidden="true"></i>Enums and constants<span class="def">defined in #77</span><span class="def">Prisma enums in #79</span></div>
 <div class="gd">Every fixed value set and number the other layers rely on. The TypeScript lists live in packages/shared; the Prisma enums mirror them in the database and must stay in sync.</div>
 <div class="cards">
 <div class="c"><div class="ct">LessonKind<span class="n">(4)</span></div><div class="cp">LESSON_KINDS · Prisma LessonKind</div><div class="f">grammar<br>vocabulary<br>functions<br>reading</div><div class="ref">Referenced in <span>#77</span><span>#79</span><span>#81</span></div></div>
@@ -73,18 +78,18 @@ table.t th:first-child,table.t td:first-child{text-align:left;color:var(--text-p
 <div class="c"><div class="ct">LessonStatus<span class="n">(3)</span></div><div class="cp">API enum, derived</div><div class="f">todo | failed | done</div><div class="ref">Referenced in <span>#77</span><span>#80</span><span>#81</span></div></div>
 <div class="c"><div class="ct">Global constants</div><div class="cp">packages/shared</div><div class="f"><b>LESSON_MINUTES</b> = 10<br><b>EXTRA_COUNT</b> = 3<br><b>LESSON_PASS_MARK</b> = 70<br><b>LEVEL_PASS_SHARE</b> = 0.8<br><b>LESSONS_PAGE_SIZE</b> = 20<br><b>COMPLETE_LANGUAGES</b> = [] for now</div><div class="ref">Referenced in <span>#77</span><span>#80</span><span>#81</span></div></div>
 <div class="c"><div class="ct">Text limits</div><div class="cp">quoted by the generator prompt</div><div class="f"><b>title</b> 1–80, <b>summary</b> 1–200<br><b>brief strings</b> ≤300<br><b>term</b> ≤60, <b>gloss</b> ≤120<br><b>LessonId</b> ≤64, <b>q</b> ≤100</div><div class="ref">Referenced in <span>#77</span><span>#81</span></div></div>
-<div class="c wide"><div class="ct">LESSONS_PER_LEVEL · KIND_SHARES</div><div class="cp">per level, same for every language · shares in %</div><div class="tw"><table class="t">
+<div class="c wide"><div class="ct">LESSONS_PER_LEVEL · KIND_SHARES</div><div class="cp">per level, same for every language · lessons per kind (share)</div><div class="tw"><table class="t">
 <tr><th>Level</th><th>Lessons</th><th>grammar</th><th>vocabulary</th><th>functions</th><th>reading</th></tr>
-<tr><td>A1</td><td>120</td><td>35</td><td>45</td><td>12</td><td>8</td></tr>
-<tr><td>A2</td><td>150</td><td>35</td><td>40</td><td>12</td><td>13</td></tr>
-<tr><td>B1</td><td>230</td><td>25</td><td>48</td><td>10</td><td>17</td></tr>
-<tr><td>B2</td><td>250</td><td>20</td><td>50</td><td>12</td><td>18</td></tr>
-<tr><td>C1</td><td>260</td><td>10</td><td>50</td><td>12</td><td>28</td></tr>
-<tr><td>C2</td><td>320</td><td>8</td><td>52</td><td>10</td><td>30</td></tr>
+<tr><td>A1</td><td>120</td><td>42 <span class="pc">(35%)</span></td><td>54 <span class="pc">(45%)</span></td><td>14 <span class="pc">(12%)</span></td><td>10 <span class="pc">(8%)</span></td></tr>
+<tr><td>A2</td><td>150</td><td>52 <span class="pc">(35%)</span></td><td>60 <span class="pc">(40%)</span></td><td>18 <span class="pc">(12%)</span></td><td>20 <span class="pc">(13%)</span></td></tr>
+<tr><td>B1</td><td>230</td><td>58 <span class="pc">(25%)</span></td><td>110 <span class="pc">(48%)</span></td><td>23 <span class="pc">(10%)</span></td><td>39 <span class="pc">(17%)</span></td></tr>
+<tr><td>B2</td><td>250</td><td>50 <span class="pc">(20%)</span></td><td>125 <span class="pc">(50%)</span></td><td>30 <span class="pc">(12%)</span></td><td>45 <span class="pc">(18%)</span></td></tr>
+<tr><td>C1</td><td>260</td><td>26 <span class="pc">(10%)</span></td><td>130 <span class="pc">(50%)</span></td><td>31 <span class="pc">(12%)</span></td><td>73 <span class="pc">(28%)</span></td></tr>
+<tr><td>C2</td><td>320</td><td>26 <span class="pc">(8%)</span></td><td>166 <span class="pc">(52%)</span></td><td>32 <span class="pc">(10%)</span></td><td>96 <span class="pc">(30%)</span></td></tr>
 </table></div><div class="ref">Referenced in <span>#77</span></div></div>
 </div></section>
 
-<section class="g k-c"><div class="gh"><i class="ti ti-package" aria-hidden="true"></i>Shared contract<span class="def">defined in #77</span><span class="def">packages/shared/src/schemas/lesson.ts</span></div>
+<section class="g k-c" id="contract"><div class="gh"><i class="ti ti-package" aria-hidden="true"></i>Shared contract<span class="def">defined in #77</span><span class="def">packages/shared/src/schemas/lesson.ts</span></div>
 <div class="gd">Zod schemas, enums, constants and helpers imported by the generator, seed, API and web. No database access, so it lands first and unblocks everything else.</div>
 <div class="cards">
 <div class="c"><div class="ct">LessonDraft</div><div class="cp">what the generator asks for</div><div class="f"><b>title</b>: 1–80<br><b>summary</b>: 1–200<br><b>brief</b>: LessonBrief</div><div class="ref">Referenced in <span>#77</span></div></div>
@@ -93,7 +98,7 @@ table.t th:first-child,table.t td:first-child{text-align:left;color:var(--text-p
 <div class="c"><div class="ct">Helpers</div><div class="cp">functions</div><div class="f"><b>foldText</b>: NFD, strip marks, lower, ß→ss, œ→oe, æ→ae<br><b>outlineFileName</b>, <b>lessonFileName</b></div><div class="ref">Referenced in <span>#77</span><span>#79</span><span>#81</span></div></div>
 </div></section>
 
-<section class="g k-f"><div class="gh"><i class="ti ti-file" aria-hidden="true"></i>Content files (JSON)<span class="def">defined in #77</span><span class="def">content/</span></div>
+<section class="g k-f" id="content"><div class="gh"><i class="ti ti-file" aria-hidden="true"></i>Content files (JSON)<span class="def">defined in #77</span><span class="def">content/</span></div>
 <div class="gd">The authored source of truth, committed to git. Outlines are the plan for a level; lesson files are the finished content the generator produces from them. One file per language and level.</div>
 <div class="cards two">
 <div class="c"><div class="ct">LessonOutlineFile</div><div class="cp">outlines/&lt;lang&gt;-&lt;level&gt;.json</div><div class="f"><b>lang</b><br><b>level</b><br><b>entries</b>: LessonOutlineEntry[]<br>count = LESSONS_PER_LEVEL[level]</div><div class="ref">Referenced in <span>#77</span></div></div>
@@ -102,7 +107,7 @@ table.t th:first-child,table.t td:first-child{text-align:left;color:var(--text-p
 <div class="c gr"><div class="ct">LessonEntry</div><div class="cp">classification + draft</div><div class="f"><b>id, kind, topic?, theme?</b><br><b>title</b>, <b>summary</b><br><b>brief</b>: LessonBrief<br>no lang / level / position</div><div class="ref">Referenced in <span>#77</span><span>#79</span></div></div>
 </div></section>
 
-<section class="g k-q"><div class="gh"><i class="ti ti-shield-check" aria-hidden="true"></i>CI checks and seed<span class="def">specs in #77</span><span class="def">seed in #79</span></div>
+<section class="g k-q" id="checks"><div class="gh"><i class="ti ti-shield-check" aria-hidden="true"></i>CI checks and seed<span class="def">specs in #77</span><span class="def">seed in #79</span></div>
 <div class="gd">Gatekeepers between files and database. The specs reject content that breaks rules the schemas can't express alone; the seed loads valid files into Postgres and refuses to delete shipped lessons.</div>
 <div class="cards">
 <div class="c"><div class="ct">outline-files.spec</div><div class="cp">apps/api/src/lessons/</div><div class="f">parses, file name matches<br>exactly LESSONS_PER_LEVEL<br>kind share ±10 pts, ≥5 %<br>ids unique across 6 files</div><div class="ref">Referenced in <span>#77</span></div></div>
@@ -110,7 +115,7 @@ table.t th:first-child,table.t td:first-child{text-align:left;color:var(--text-p
 <div class="c"><div class="ct">seedLessons(dir, prisma)</div><div class="cp">prisma/seed.ts · db:seed</div><div class="f">parses with LessonFileSchema<br>duplicate id → fail<br>id only in db → fail<br>upsert, position = index+1<br>only diffs, one transaction</div><div class="ref">Referenced in <span>#79</span></div></div>
 </div></section>
 
-<section class="g k-d"><div class="gh"><i class="ti ti-database" aria-hidden="true"></i>Database (Prisma)<span class="def">defined in #79</span><span class="def">migration add_lessons</span></div>
+<section class="g k-d" id="database"><div class="gh"><i class="ti ti-database" aria-hidden="true"></i>Database (Prisma)<span class="def">defined in #79</span><span class="def">migration add_lessons</span></div>
 <div class="gd">Runtime storage. Lesson is a read-only copy of the files, written only by the seed. LessonResult and the streak columns hold learner state.</div>
 <div class="cards">
 <div class="c"><div class="ct">Lesson</div><div class="cp">idx(lang, level, position)</div><div class="f"><b>id</b> String PK<br><b>lang</b> Language, <b>level</b> Level<br><b>position</b> Int, <b>kind</b> LessonKind<br><b>topic</b> Topic?, <b>theme</b> Theme?<br><b>title</b>, <b>summary</b>, <b>brief</b> Json<br><b>updatedAt</b></div><div class="ref">Referenced in <span>#79</span><span>#80</span><span>#81</span><span>#82</span></div></div>
@@ -118,7 +123,7 @@ table.t th:first-child,table.t td:first-child{text-align:left;color:var(--text-p
 <div class="c"><div class="ct">UserLevel</div><div class="cp">existing, extended</div><div class="f">… existing fields<br><b>+ streak</b> Int = 0<br><b>+ bestStreak</b> Int = 0<br><b>+ lastGoalDay</b> Date?</div><div class="ref">Referenced in <span>#79</span><span>#80</span><span>#81</span><span>#82</span></div></div>
 </div></section>
 
-<section class="g k-a"><div class="gh"><i class="ti ti-api" aria-hidden="true"></i>API schemas<span class="def">defined in #77</span><span class="def">nullable, not optional</span></div>
+<section class="g k-a" id="api"><div class="gh"><i class="ti ti-world" aria-hidden="true"></i>API schemas<span class="def">defined in #77</span><span class="def">nullable, not optional</span></div>
 <div class="gd">Request and response shapes between API and web: the daily view, the searchable list, and finishing a lesson. Queries never fail on a bad URL; they fall back to defaults.</div>
 <div class="cards">
 <div class="c"><div class="ct">LessonCard</div><div class="cp">no brief</div><div class="f"><b>id, level, position, kind</b><br><b>topic | theme</b>: null by kind<br><b>title, summary, status</b><br><b>score, day, finishedAt</b>: null if never started</div><div class="ref">Referenced in <span>#77</span><span>#81</span></div></div>
@@ -152,6 +157,11 @@ table.t th:first-child,table.t td:first-child{text-align:left;color:var(--text-p
 const base='https://github.com/VictorBro/ft_transcendence/issues/';
 document.querySelectorAll('.intro, .def, .ref span, .leg .m, .rel .d').forEach(el=>{
   el.innerHTML=el.innerHTML.replace(/#(\d+)/g,(m,n)=>'<a class="il" href="'+base+n+'" title="Open issue #'+n+' on GitHub">#'+n+'</a>');
+});
+document.querySelectorAll('.jump').forEach(el=>{
+  const go=()=>document.getElementById(el.dataset.target).scrollIntoView({block:'start'});
+  el.addEventListener('click',e=>{if(e.target.closest('a'))return;go();});
+  el.addEventListener('keydown',e=>{if(e.target!==el)return;if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});
 });
 </script>
 </body>
