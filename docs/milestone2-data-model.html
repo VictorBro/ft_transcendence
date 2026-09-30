@@ -12,10 +12,10 @@
   --font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   --font-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
 }
-.k-f{--gb:#FAEEDA;--gd:#EF9F27;--gt:#633806}.k-c{--gb:#EEEDFE;--gd:#AFA9EC;--gt:#3C3489}.k-q{--gb:#E1F5EE;--gd:#5DCAA5;--gt:#085041}.k-d{--gb:#EAF3DE;--gd:#97C459;--gt:#27500A}.k-a{--gb:#FAECE7;--gd:#F0997B;--gt:#712B13}.gr{--cb:#F1EFE8}
+.k-f{--gb:#FAEEDA;--gd:#EF9F27;--gt:#633806}.k-c{--gb:#EEEDFE;--gd:#AFA9EC;--gt:#3C3489}.k-q{--gb:#E1F5EE;--gd:#5DCAA5;--gt:#085041}.k-d{--gb:#EAF3DE;--gd:#97C459;--gt:#27500A}.k-a{--gb:#FAECE7;--gd:#F0997B;--gt:#712B13}.gr{--cb:#F1EFE8}.k-e{--gb:#E6F1FB;--gd:#85B7EB;--gt:#0C447C}
 @media (prefers-color-scheme:dark){
   :root{--surface-0:#1F1E1D;--surface-1:#262624;--surface-2:#30302E;--border:rgba(222,220,209,.15);--text-primary:#F5F4EF;--text-secondary:#C2C0B6;--text-muted:#9C9A92;--text-accent:#85B7EB}
-  .k-f{--gb:#412402;--gd:#BA7517;--gt:#FAC775}.k-c{--gb:#26215C;--gd:#7F77DD;--gt:#CECBF6}.k-q{--gb:#04342C;--gd:#1D9E75;--gt:#9FE1CB}.k-d{--gb:#173404;--gd:#639922;--gt:#C0DD97}.k-a{--gb:#4A1B0C;--gd:#D85A30;--gt:#F5C4B3}.gr{--cb:#444441}
+  .k-f{--gb:#412402;--gd:#BA7517;--gt:#FAC775}.k-c{--gb:#26215C;--gd:#7F77DD;--gt:#CECBF6}.k-q{--gb:#04342C;--gd:#1D9E75;--gt:#9FE1CB}.k-d{--gb:#173404;--gd:#639922;--gt:#C0DD97}.k-a{--gb:#4A1B0C;--gd:#D85A30;--gt:#F5C4B3}.gr{--cb:#444441}.k-e{--gb:#042C53;--gd:#378ADD;--gt:#B5D4F4}
 }
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--font-sans)}
@@ -43,17 +43,46 @@ a.il{color:var(--text-accent);text-decoration:none}a.il:hover,a.il:focus-visible
 .rel i{color:var(--text-muted);text-align:center}
 .leg{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px;font-size:12px}
 .leg .m{font-family:var(--font-sans)}
+.c.wide{grid-column:1/-1}
+.tw{overflow-x:auto}
+table.t{border-collapse:collapse;font-family:var(--font-mono);font-size:12px;width:100%;min-width:420px}
+table.t th,table.t td{text-align:right;padding:4px 10px;border-bottom:0.5px solid var(--border);color:var(--text-secondary)}
+table.t th{font-weight:500;color:var(--text-primary)}
+table.t th:first-child,table.t td:first-child{text-align:left;color:var(--text-primary);font-weight:500}
+.ct .n{font-weight:400;color:var(--text-muted);margin-left:4px}
 @media (max-width:560px){.cards.two{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <main>
 <h1>Lessons data model</h1>
-<p class="intro">Every lesson format of the Course Roadmap and Lessons milestone, grouped by layer: the shared contract, the content files, the checks and seed that guard the database, the Prisma models, and the API schemas. Each card lists the issues that reference it. References cover #77 and #79–#82.</p>
+<p class="intro">Every lesson format of the Course Roadmap and Lessons milestone, grouped by layer: the enums and constants, the shared contract, the content files, the checks and seed that guard the database, the Prisma models, and the API schemas. Each card lists the issues that reference it. References cover #77 and #79–#82.</p>
 
 <div class="leg">
-<span class="m k-c">Shared contract · #77</span><span class="m k-f">Content files · #77</span><span class="m k-q">CI checks + seed · #77 / #79</span><span class="m k-d">Database · #79</span><span class="m k-a">API schemas · #77</span>
+<span class="m k-e">Enums + constants · #77 / #79</span><span class="m k-c">Shared contract · #77</span><span class="m k-f">Content files · #77</span><span class="m k-q">CI checks + seed · #77 / #79</span><span class="m k-d">Database · #79</span><span class="m k-a">API schemas · #77</span>
 </div>
+
+<section class="g k-e"><div class="gh"><i class="ti ti-list-details" aria-hidden="true"></i>Enums and constants<span class="def">defined in #77</span><span class="def">Prisma enums in #79</span></div>
+<div class="gd">Every fixed value set and number the other layers rely on. The TypeScript lists live in packages/shared; the Prisma enums mirror them in the database and must stay in sync.</div>
+<div class="cards">
+<div class="c"><div class="ct">LessonKind<span class="n">(4)</span></div><div class="cp">LESSON_KINDS · Prisma LessonKind</div><div class="f">grammar<br>vocabulary<br>functions<br>reading</div><div class="ref">Referenced in <span>#77</span><span>#79</span><span>#81</span></div></div>
+<div class="c"><div class="ct">Theme<span class="n">(14)</span></div><div class="cp">THEMES · Prisma Theme · non-grammar only</div><div class="f">personal_identification, house_and_home, daily_life, free_time, travel, relations, health, education, shopping, food_and_drink, services, places, language, weather</div><div class="ref">Referenced in <span>#77</span><span>#79</span></div></div>
+<div class="c"><div class="ct">Topic<span class="n">(13)</span></div><div class="cp">TOPICS in item.ts · Prisma Topic · grammar only</div><div class="f">nouns_and_determiners, pronouns, verbs_morphology, verb_usage, syntax_and_sentence_structure, subordinate_clauses, prepositions_and_case, adjectives, adverbs, agreement, negation, comparison_and_quantity, information_structure_and_pragmatics</div><div class="ref">Referenced in <span>#77</span><span>#79</span></div></div>
+<div class="c"><div class="ct">Level<span class="n">(6)</span></div><div class="cp">Prisma Level · existing</div><div class="f">A1, A2, B1, B2, C1, C2</div><div class="ref">Referenced in <span>#77</span><span>#79</span><span>#80</span></div></div>
+<div class="c"><div class="ct">Language</div><div class="cp">Prisma Language · existing</div><div class="f">the course language, like UserLevel.lang<br>never Locale</div><div class="ref">Referenced in <span>#77</span><span>#79</span></div></div>
+<div class="c"><div class="ct">LessonStatus<span class="n">(3)</span></div><div class="cp">API enum, derived</div><div class="f">todo | failed | done</div><div class="ref">Referenced in <span>#77</span><span>#80</span><span>#81</span></div></div>
+<div class="c"><div class="ct">Global constants</div><div class="cp">packages/shared</div><div class="f"><b>LESSON_MINUTES</b> = 10<br><b>EXTRA_COUNT</b> = 3<br><b>LESSON_PASS_MARK</b> = 70<br><b>LEVEL_PASS_SHARE</b> = 0.8<br><b>LESSONS_PAGE_SIZE</b> = 20<br><b>COMPLETE_LANGUAGES</b> = [] for now</div><div class="ref">Referenced in <span>#77</span><span>#80</span><span>#81</span></div></div>
+<div class="c"><div class="ct">Text limits</div><div class="cp">quoted by the generator prompt</div><div class="f"><b>title</b> 1–80, <b>summary</b> 1–200<br><b>brief strings</b> ≤300<br><b>term</b> ≤60, <b>gloss</b> ≤120<br><b>LessonId</b> ≤64, <b>q</b> ≤100</div><div class="ref">Referenced in <span>#77</span><span>#81</span></div></div>
+<div class="c wide"><div class="ct">LESSONS_PER_LEVEL · KIND_SHARES</div><div class="cp">per level, same for every language · shares in %</div><div class="tw"><table class="t">
+<tr><th>Level</th><th>Lessons</th><th>grammar</th><th>vocabulary</th><th>functions</th><th>reading</th></tr>
+<tr><td>A1</td><td>120</td><td>35</td><td>45</td><td>12</td><td>8</td></tr>
+<tr><td>A2</td><td>150</td><td>35</td><td>40</td><td>12</td><td>13</td></tr>
+<tr><td>B1</td><td>230</td><td>25</td><td>48</td><td>10</td><td>17</td></tr>
+<tr><td>B2</td><td>250</td><td>20</td><td>50</td><td>12</td><td>18</td></tr>
+<tr><td>C1</td><td>260</td><td>10</td><td>50</td><td>12</td><td>28</td></tr>
+<tr><td>C2</td><td>320</td><td>8</td><td>52</td><td>10</td><td>30</td></tr>
+</table></div><div class="ref">Referenced in <span>#77</span></div></div>
+</div></section>
 
 <section class="g k-c"><div class="gh"><i class="ti ti-package" aria-hidden="true"></i>Shared contract<span class="def">defined in #77</span><span class="def">packages/shared/src/schemas/lesson.ts</span></div>
 <div class="gd">Zod schemas, enums, constants and helpers imported by the generator, seed, API and web. No database access, so it lands first and unblocks everything else.</div>
@@ -61,8 +90,6 @@ a.il{color:var(--text-accent);text-decoration:none}a.il:hover,a.il:focus-visible
 <div class="c"><div class="ct">LessonDraft</div><div class="cp">what the generator asks for</div><div class="f"><b>title</b>: 1–80<br><b>summary</b>: 1–200<br><b>brief</b>: LessonBrief</div><div class="ref">Referenced in <span>#77</span></div></div>
 <div class="c"><div class="ct">LessonBrief</div><div class="cp">strict · strings ≤300</div><div class="f"><b>objective</b><br><b>points</b> 2–6, <b>examples</b> 3–8<br><b>pitfalls</b> 1–4<br><b>vocabulary</b> 6–15 {term ≤60, gloss ≤120}<br>required when kind=vocabulary</div><div class="ref">Referenced in <span>#77</span><span>#79</span><span>#81</span></div></div>
 <div class="c"><div class="ct">LessonId</div><div class="cp">primary key, never changes</div><div class="f">&lt;lang&gt;-&lt;english-words&gt;<br>[a-z-], max 64<br>no level in the id</div><div class="ref">Referenced in <span>#77</span><span>#79</span><span>#81</span><span>#82</span></div></div>
-<div class="c"><div class="ct">Enums</div><div class="cp">constant lists</div><div class="f"><b>LESSON_KINDS</b>: grammar, vocabulary, functions, reading<br><b>THEMES</b>: 14 Threshold themes<br><b>TOPICS</b>: stays in item.ts</div><div class="ref">Referenced in <span>#77</span><span>#79</span><span>#81</span></div></div>
-<div class="c"><div class="ct">Constants</div><div class="cp">per level + global</div><div class="f"><b>LESSONS_PER_LEVEL</b>, <b>KIND_SHARES</b><br>LESSON_MINUTES=10, EXTRA_COUNT=3<br>PASS_MARK=70, LEVEL_PASS_SHARE=0.8<br>PAGE_SIZE=20, title/summary limits</div><div class="ref">Referenced in <span>#77</span><span>#80</span><span>#81</span></div></div>
 <div class="c"><div class="ct">Helpers</div><div class="cp">functions</div><div class="f"><b>foldText</b>: NFD, strip marks, lower, ß→ss, œ→oe, æ→ae<br><b>outlineFileName</b>, <b>lessonFileName</b></div><div class="ref">Referenced in <span>#77</span><span>#79</span><span>#81</span></div></div>
 </div></section>
 
@@ -89,14 +116,12 @@ a.il{color:var(--text-accent);text-decoration:none}a.il:hover,a.il:focus-visible
 <div class="c"><div class="ct">Lesson</div><div class="cp">idx(lang, level, position)</div><div class="f"><b>id</b> String PK<br><b>lang</b> Language, <b>level</b> Level<br><b>position</b> Int, <b>kind</b> LessonKind<br><b>topic</b> Topic?, <b>theme</b> Theme?<br><b>title</b>, <b>summary</b>, <b>brief</b> Json<br><b>updatedAt</b></div><div class="ref">Referenced in <span>#79</span><span>#80</span><span>#81</span><span>#82</span></div></div>
 <div class="c"><div class="ct">LessonResult</div><div class="cp">pk(userLevelId, lessonId)</div><div class="f"><b>userLevelId</b> → UserLevel, cascade<br><b>lessonId</b> → Lesson, restrict<br><b>score</b> Int<br><b>day</b> Date<br><b>finishedAt</b> DateTime</div><div class="ref">Referenced in <span>#79</span><span>#80</span><span>#81</span><span>#82</span></div></div>
 <div class="c"><div class="ct">UserLevel</div><div class="cp">existing, extended</div><div class="f">… existing fields<br><b>+ streak</b> Int = 0<br><b>+ bestStreak</b> Int = 0<br><b>+ lastGoalDay</b> Date?</div><div class="ref">Referenced in <span>#79</span><span>#80</span><span>#81</span><span>#82</span></div></div>
-<div class="c"><div class="ct">New enums</div><div class="cp">prisma</div><div class="f"><b>LessonKind</b><br><b>Theme</b></div><div class="ref">Referenced in <span>#79</span></div></div>
 </div></section>
 
 <section class="g k-a"><div class="gh"><i class="ti ti-api" aria-hidden="true"></i>API schemas<span class="def">defined in #77</span><span class="def">nullable, not optional</span></div>
 <div class="gd">Request and response shapes between API and web: the daily view, the searchable list, and finishing a lesson. Queries never fail on a bad URL; they fall back to defaults.</div>
 <div class="cards">
 <div class="c"><div class="ct">LessonCard</div><div class="cp">no brief</div><div class="f"><b>id, level, position, kind</b><br><b>topic | theme</b>: null by kind<br><b>title, summary, status</b><br><b>score, day, finishedAt</b>: null if never started</div><div class="ref">Referenced in <span>#77</span><span>#81</span></div></div>
-<div class="c"><div class="ct">LessonStatus</div><div class="cp">enum</div><div class="f">todo | failed | done</div><div class="ref">Referenced in <span>#77</span><span>#80</span><span>#81</span></div></div>
 <div class="c"><div class="ct">Today</div><div class="cp">daily view</div><div class="f"><b>day, target, met</b><br><b>done, proposed, extra</b>: LessonCard[]<br><b>streak</b> {current, best, today}<br><b>progress</b> {total, attempted, passed, needed, complete}<br><b>levelAfter</b></div><div class="ref">Referenced in <span>#77</span><span>#80</span><span>#81</span></div></div>
 <div class="c"><div class="ct">LessonQuery</div><div class="cp">url params, .catch → default</div><div class="f"><b>q</b> trimmed, ≤100<br><b>status, kind, topic, theme</b>: comma lists<br><b>sort</b>=position, <b>dir</b>=asc<br><b>group</b>=none, <b>page</b>=1</div><div class="ref">Referenced in <span>#77</span><span>#81</span></div></div>
 <div class="c"><div class="ct">LessonPage</div><div class="cp">paginated list</div><div class="f"><b>day</b>, <b>levelTotal</b><br><b>items</b>: LessonCard[]<br><b>total, page, pageSize</b></div><div class="ref">Referenced in <span>#77</span><span>#81</span></div></div>
@@ -106,14 +131,15 @@ a.il{color:var(--text-accent);text-decoration:none}a.il:hover,a.il:focus-visible
 
 <section class="g" style="--gb:transparent;--gd:var(--border);--gt:var(--text-primary)"><div class="gh"><i class="ti ti-arrows-exchange" aria-hidden="true"></i>Relations between formats</div>
 <div class="gd">How one shape turns into another as data moves through the layers. Block color = the group it belongs to.</div>
-<div class="leg"><span class="m k-c">Shared contract</span><span class="m k-f">Content files</span><span class="m k-q">CI + seed</span><span class="m k-d">Database</span><span class="m k-a">API</span></div>
+<div class="leg"><span class="m k-e">Enums + constants</span><span class="m k-c">Shared contract</span><span class="m k-f">Content files</span><span class="m k-q">CI + seed</span><span class="m k-d">Database</span><span class="m k-a">API</span></div>
 <div class="relwrap"><div class="rel">
 <span class="m k-c">LessonDraft</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-f">LessonEntry</span><span class="d">The generator's title, summary and brief are merged into the outline classification.</span>
 <span class="m k-f">LessonOutlineEntry</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-f">LessonEntry</span><span class="d">Keeps id, kind, topic, theme; drops workingTitle and intent. lesson-files.spec enforces the match.</span>
 <span class="m k-f">LessonFile</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-q">seedLessons</span><span class="d">Parsed with LessonFileSchema; bad files and duplicate ids fail by name.</span>
 <span class="m k-q">seedLessons</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-d">Lesson</span><span class="d">Adds lang and level from the file, position from the array index. Upserts only changes.</span>
 <span class="m k-c">LessonBrief</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-d">Lesson.brief</span><span class="d">Validated by Zod on the way in, stored as untyped Json, never selected by the read routes.</span>
-<span class="m k-c">Enums</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-d">Prisma enums</span><span class="d">LESSON_KINDS and THEMES mirror LessonKind and Theme; kept in sync by hand.</span>
+<span class="m k-e">LESSON_KINDS, THEMES</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-e">LessonKind, Theme</span><span class="d">The TypeScript lists in #77 mirror the Prisma enums in #79; kept in sync by hand.</span>
+<span class="m k-e">LESSONS_PER_LEVEL, KIND_SHARES</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-q">outline-files.spec</span><span class="d">Each outline must have exactly the level's count, and each kind within 10 points of its share.</span>
 <span class="m k-d">Lesson + LessonResult</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-a">LessonCard</span><span class="d">Mapped to rule types in #80, then to a card; no result means status todo and nulls.</span>
 <span class="m k-a">LessonCard</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-a">Today, LessonPage</span><span class="d">Both views are containers of cards.</span>
 <span class="m k-a">LessonQuery</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-a">LessonPage</span><span class="d">Filters, sort, group and page drive the in-memory search; total follows filters, levelTotal doesn't.</span>
