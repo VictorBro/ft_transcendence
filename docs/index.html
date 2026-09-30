@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lessons data model · ft_transcendence</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+<style>
+:root{
+  --surface-0:#FAFAF8;--surface-1:#F5F4EF;--surface-2:#FFFFFF;
+  --border:rgba(31,30,29,.15);--text-primary:#1F1E1D;--text-secondary:#5E5D59;--text-muted:#8A8983;--text-accent:#185FA5;
+  --font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --font-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+}
+.k-f{--gb:#FAEEDA;--gd:#EF9F27;--gt:#633806}.k-c{--gb:#EEEDFE;--gd:#AFA9EC;--gt:#3C3489}.k-q{--gb:#E1F5EE;--gd:#5DCAA5;--gt:#085041}.k-d{--gb:#EAF3DE;--gd:#97C459;--gt:#27500A}.k-a{--gb:#FAECE7;--gd:#F0997B;--gt:#712B13}.gr{--cb:#F1EFE8}
+@media (prefers-color-scheme:dark){
+  :root{--surface-0:#1F1E1D;--surface-1:#262624;--surface-2:#30302E;--border:rgba(222,220,209,.15);--text-primary:#F5F4EF;--text-secondary:#C2C0B6;--text-muted:#9C9A92;--text-accent:#85B7EB}
+  .k-f{--gb:#412402;--gd:#BA7517;--gt:#FAC775}.k-c{--gb:#26215C;--gd:#7F77DD;--gt:#CECBF6}.k-q{--gb:#04342C;--gd:#1D9E75;--gt:#9FE1CB}.k-d{--gb:#173404;--gd:#639922;--gt:#C0DD97}.k-a{--gb:#4A1B0C;--gd:#D85A30;--gt:#F5C4B3}.gr{--cb:#444441}
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--font-sans)}
+main{max-width:1100px;margin:0 auto;padding:calc(24px + env(safe-area-inset-top,0px)) 20px calc(40px + env(safe-area-inset-bottom,0px))}
+h1{font-size:22px;font-weight:500;margin:0 0 6px}
+.intro{font-size:14px;line-height:1.6;color:var(--text-secondary);margin:0 0 18px;max-width:75ch}
+.g{background:var(--gb);border:0.5px solid var(--gd);border-radius:12px;padding:14px;margin:0 0 14px}
+.gh{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500;margin:0 0 4px;color:var(--gt);flex-wrap:wrap}
+.gd{font-size:13px;line-height:1.5;color:var(--gt);opacity:.85;margin:0 0 10px}
+.def{font-size:11px;padding:2px 8px;border-radius:999px;border:0.5px solid var(--gd);background:var(--surface-2);color:var(--text-secondary);font-weight:400}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.cards.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.c{background:var(--cb,var(--surface-2));border:0.5px solid var(--border);border-radius:8px;padding:10px 12px;display:flex;flex-direction:column}
+.ct{font-family:var(--font-mono);font-size:13px;font-weight:500;color:var(--text-primary);margin:0 0 2px}
+.cp{font-size:11px;color:var(--text-muted);margin:0 0 6px;font-family:var(--font-mono)}
+.f{font-family:var(--font-mono);font-size:12px;line-height:1.6;color:var(--text-secondary);flex:1}
+.f b{font-weight:500;color:var(--text-primary)}
+.ref{margin-top:8px;padding-top:6px;border-top:0.5px solid var(--border);font-size:11px;color:var(--text-muted);display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.ref span{font-family:var(--font-mono);background:var(--surface-2);border:0.5px solid var(--border);border-radius:4px;padding:0 5px;color:var(--text-secondary)}
+a.il{color:var(--text-accent);text-decoration:none}a.il:hover,a.il:focus-visible{text-decoration:underline}
+.relwrap{overflow-x:auto}
+.rel{display:grid;grid-template-columns:minmax(140px,1fr) 20px minmax(140px,1fr) 2fr;gap:6px 10px;align-items:center;font-size:12px;min-width:640px}
+.m{font-family:var(--font-mono);background:var(--gb);border:0.5px solid var(--gd);color:var(--gt);border-radius:6px;padding:4px 8px}
+.rel .d{color:var(--text-secondary);line-height:1.5}
+.rel i{color:var(--text-muted);text-align:center}
+.leg{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px;font-size:12px}
+.leg .m{font-family:var(--font-sans)}
+@media (max-width:560px){.cards.two{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main>
+<h1>Lessons data model</h1>
+<p class="intro">Every lesson format of the Course Roadmap and Lessons milestone, grouped by layer: the shared contract, the content files, the checks and seed that guard the database, the Prisma models, and the API schemas. Each card lists the issues that reference it. References cover #77 and #79–#82.</p>
+
+<div class="leg">
+<span class="m k-c">Shared contract · #77</span><span class="m k-f">Content files · #77</span><span class="m k-q">CI checks + seed · #77 / #79</span><span class="m k-d">Database · #79</span><span class="m k-a">API schemas · #77</span>
+</div>
+
+<section class="g k-c"><div class="gh"><i class="ti ti-package" aria-hidden="true"></i>Shared contract<span class="def">defined in #77</span><span class="def">packages/shared/src/schemas/lesson.ts</span></div>
+<div class="gd">Zod schemas, enums, constants and helpers imported by the generator, seed, API and web. No database access, so it lands first and unblocks everything else.</div>
+<div class="cards">
+<div class="c"><div class="ct">LessonDraft</div><div class="cp">what the generator asks for</div><div class="f"><b>title</b>: 1–80<br><b>summary</b>: 1–200<br><b>brief</b>: LessonBrief</div><div class="ref">Referenced in <span>#77</span></div></div>
+<div class="c"><div class="ct">LessonBrief</div><div class="cp">strict · strings ≤300</div><div class="f"><b>objective</b><br><b>points</b> 2–6, <b>examples</b> 3–8<br><b>pitfalls</b> 1–4<br><b>vocabulary</b> 6–15 {term ≤60, gloss ≤120}<br>required when kind=vocabulary</div><div class="ref">Referenced in <span>#77</span><span>#79</span><span>#81</span></div></div>
+<div class="c"><div class="ct">LessonId</div><div class="cp">primary key, never changes</div><div class="f">&lt;lang&gt;-&lt;english-words&gt;<br>[a-z-], max 64<br>no level in the id</div><div class="ref">Referenced in <span>#77</span><span>#79</span><span>#81</span><span>#82</span></div></div>
+<div class="c"><div class="ct">Enums</div><div class="cp">constant lists</div><div class="f"><b>LESSON_KINDS</b>: grammar, vocabulary, functions, reading<br><b>THEMES</b>: 14 Threshold themes<br><b>TOPICS</b>: stays in item.ts</div><div class="ref">Referenced in <span>#77</span><span>#79</span><span>#81</span></div></div>
+<div class="c"><div class="ct">Constants</div><div class="cp">per level + global</div><div class="f"><b>LESSONS_PER_LEVEL</b>, <b>KIND_SHARES</b><br>LESSON_MINUTES=10, EXTRA_COUNT=3<br>PASS_MARK=70, LEVEL_PASS_SHARE=0.8<br>PAGE_SIZE=20, title/summary limits</div><div class="ref">Referenced in <span>#77</span><span>#80</span><span>#81</span></div></div>
+<div class="c"><div class="ct">Helpers</div><div class="cp">functions</div><div class="f"><b>foldText</b>: NFD, strip marks, lower, ß→ss, œ→oe, æ→ae<br><b>outlineFileName</b>, <b>lessonFileName</b></div><div class="ref">Referenced in <span>#77</span><span>#79</span><span>#81</span></div></div>
+</div></section>
+
+<section class="g k-f"><div class="gh"><i class="ti ti-file" aria-hidden="true"></i>Content files (JSON)<span class="def">defined in #77</span><span class="def">content/</span></div>
+<div class="gd">The authored source of truth, committed to git. Outlines are the plan for a level; lesson files are the finished content the generator produces from them. One file per language and level.</div>
+<div class="cards two">
+<div class="c"><div class="ct">LessonOutlineFile</div><div class="cp">outlines/&lt;lang&gt;-&lt;level&gt;.json</div><div class="f"><b>lang</b><br><b>level</b><br><b>entries</b>: LessonOutlineEntry[]<br>count = LESSONS_PER_LEVEL[level]</div><div class="ref">Referenced in <span>#77</span></div></div>
+<div class="c gr"><div class="ct">LessonOutlineEntry</div><div class="cp">classification + plan</div><div class="f"><b>id</b>: LessonId<br><b>kind</b>: LessonKind<br><b>topic?</b> grammar only<br><b>theme?</b> all other kinds<br><b>workingTitle</b>, <b>intent</b></div><div class="ref">Referenced in <span>#77</span></div></div>
+<div class="c"><div class="ct">LessonFile</div><div class="cp">lessons/&lt;lang&gt;-&lt;level&gt;.json</div><div class="f"><b>lang</b><br><b>level</b><br><b>lessons</b>: LessonEntry[]<br>same ids + order as outline</div><div class="ref">Referenced in <span>#77</span><span>#79</span></div></div>
+<div class="c gr"><div class="ct">LessonEntry</div><div class="cp">classification + draft</div><div class="f"><b>id, kind, topic?, theme?</b><br><b>title</b>, <b>summary</b><br><b>brief</b>: LessonBrief<br>no lang / level / position</div><div class="ref">Referenced in <span>#77</span><span>#79</span></div></div>
+</div></section>
+
+<section class="g k-q"><div class="gh"><i class="ti ti-shield-check" aria-hidden="true"></i>CI checks and seed<span class="def">specs in #77</span><span class="def">seed in #79</span></div>
+<div class="gd">Gatekeepers between files and database. The specs reject content that breaks rules the schemas can't express alone; the seed loads valid files into Postgres and refuses to delete shipped lessons.</div>
+<div class="cards">
+<div class="c"><div class="ct">outline-files.spec</div><div class="cp">apps/api/src/lessons/</div><div class="f">parses, file name matches<br>exactly LESSONS_PER_LEVEL<br>kind share ±10 pts, ≥5 %<br>ids unique across 6 files</div><div class="ref">Referenced in <span>#77</span></div></div>
+<div class="c"><div class="ct">lesson-files.spec</div><div class="cp">apps/api/src/lessons/</div><div class="f">parses, outline exists<br>ids, kind, topic, theme = outline<br>titles unique after foldText<br>COMPLETE_LANGUAGES → 6 files</div><div class="ref">Referenced in <span>#77</span></div></div>
+<div class="c"><div class="ct">seedLessons(dir, prisma)</div><div class="cp">prisma/seed.ts · db:seed</div><div class="f">parses with LessonFileSchema<br>duplicate id → fail<br>id only in db → fail<br>upsert, position = index+1<br>only diffs, one transaction</div><div class="ref">Referenced in <span>#79</span></div></div>
+</div></section>
+
+<section class="g k-d"><div class="gh"><i class="ti ti-database" aria-hidden="true"></i>Database (Prisma)<span class="def">defined in #79</span><span class="def">migration add_lessons</span></div>
+<div class="gd">Runtime storage. Lesson is a read-only copy of the files, written only by the seed. LessonResult and the streak columns hold learner state.</div>
+<div class="cards">
+<div class="c"><div class="ct">Lesson</div><div class="cp">idx(lang, level, position)</div><div class="f"><b>id</b> String PK<br><b>lang</b> Language, <b>level</b> Level<br><b>position</b> Int, <b>kind</b> LessonKind<br><b>topic</b> Topic?, <b>theme</b> Theme?<br><b>title</b>, <b>summary</b>, <b>brief</b> Json<br><b>updatedAt</b></div><div class="ref">Referenced in <span>#79</span><span>#80</span><span>#81</span><span>#82</span></div></div>
+<div class="c"><div class="ct">LessonResult</div><div class="cp">pk(userLevelId, lessonId)</div><div class="f"><b>userLevelId</b> → UserLevel, cascade<br><b>lessonId</b> → Lesson, restrict<br><b>score</b> Int<br><b>day</b> Date<br><b>finishedAt</b> DateTime</div><div class="ref">Referenced in <span>#79</span><span>#80</span><span>#81</span><span>#82</span></div></div>
+<div class="c"><div class="ct">UserLevel</div><div class="cp">existing, extended</div><div class="f">… existing fields<br><b>+ streak</b> Int = 0<br><b>+ bestStreak</b> Int = 0<br><b>+ lastGoalDay</b> Date?</div><div class="ref">Referenced in <span>#79</span><span>#80</span><span>#81</span><span>#82</span></div></div>
+<div class="c"><div class="ct">New enums</div><div class="cp">prisma</div><div class="f"><b>LessonKind</b><br><b>Theme</b></div><div class="ref">Referenced in <span>#79</span></div></div>
+</div></section>
+
+<section class="g k-a"><div class="gh"><i class="ti ti-api" aria-hidden="true"></i>API schemas<span class="def">defined in #77</span><span class="def">nullable, not optional</span></div>
+<div class="gd">Request and response shapes between API and web: the daily view, the searchable list, and finishing a lesson. Queries never fail on a bad URL; they fall back to defaults.</div>
+<div class="cards">
+<div class="c"><div class="ct">LessonCard</div><div class="cp">no brief</div><div class="f"><b>id, level, position, kind</b><br><b>topic | theme</b>: null by kind<br><b>title, summary, status</b><br><b>score, day, finishedAt</b>: null if never started</div><div class="ref">Referenced in <span>#77</span><span>#81</span></div></div>
+<div class="c"><div class="ct">LessonStatus</div><div class="cp">enum</div><div class="f">todo | failed | done</div><div class="ref">Referenced in <span>#77</span><span>#80</span><span>#81</span></div></div>
+<div class="c"><div class="ct">Today</div><div class="cp">daily view</div><div class="f"><b>day, target, met</b><br><b>done, proposed, extra</b>: LessonCard[]<br><b>streak</b> {current, best, today}<br><b>progress</b> {total, attempted, passed, needed, complete}<br><b>levelAfter</b></div><div class="ref">Referenced in <span>#77</span><span>#80</span><span>#81</span></div></div>
+<div class="c"><div class="ct">LessonQuery</div><div class="cp">url params, .catch → default</div><div class="f"><b>q</b> trimmed, ≤100<br><b>status, kind, topic, theme</b>: comma lists<br><b>sort</b>=position, <b>dir</b>=asc<br><b>group</b>=none, <b>page</b>=1</div><div class="ref">Referenced in <span>#77</span><span>#81</span></div></div>
+<div class="c"><div class="ct">LessonPage</div><div class="cp">paginated list</div><div class="f"><b>day</b>, <b>levelTotal</b><br><b>items</b>: LessonCard[]<br><b>total, page, pageSize</b></div><div class="ref">Referenced in <span>#77</span><span>#81</span></div></div>
+<div class="c"><div class="ct">FinishLesson → FinishResult</div><div class="cp">PUT …/lessons/:id/result</div><div class="f">in: <b>score</b> int 0–100<br>out: <b>countedToday</b>, <b>doneCount</b>, <b>target</b>, <b>goalJustMet</b></div><div class="ref">Referenced in <span>#77</span><span>#82</span></div></div>
+<div class="c"><div class="ct">Error codes</div><div class="cp">errors.ts · en/fr/de</div><div class="f">course.notPlaced<br>lesson.notFound<br>lesson.invalidScore</div><div class="ref">Referenced in <span>#77</span><span>#81</span><span>#82</span></div></div>
+</div></section>
+
+<section class="g" style="--gb:transparent;--gd:var(--border);--gt:var(--text-primary)"><div class="gh"><i class="ti ti-arrows-exchange" aria-hidden="true"></i>Relations between formats</div>
+<div class="gd">How one shape turns into another as data moves through the layers. Block color = the group it belongs to.</div>
+<div class="leg"><span class="m k-c">Shared contract</span><span class="m k-f">Content files</span><span class="m k-q">CI + seed</span><span class="m k-d">Database</span><span class="m k-a">API</span></div>
+<div class="relwrap"><div class="rel">
+<span class="m k-c">LessonDraft</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-f">LessonEntry</span><span class="d">The generator's title, summary and brief are merged into the outline classification.</span>
+<span class="m k-f">LessonOutlineEntry</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-f">LessonEntry</span><span class="d">Keeps id, kind, topic, theme; drops workingTitle and intent. lesson-files.spec enforces the match.</span>
+<span class="m k-f">LessonFile</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-q">seedLessons</span><span class="d">Parsed with LessonFileSchema; bad files and duplicate ids fail by name.</span>
+<span class="m k-q">seedLessons</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-d">Lesson</span><span class="d">Adds lang and level from the file, position from the array index. Upserts only changes.</span>
+<span class="m k-c">LessonBrief</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-d">Lesson.brief</span><span class="d">Validated by Zod on the way in, stored as untyped Json, never selected by the read routes.</span>
+<span class="m k-c">Enums</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-d">Prisma enums</span><span class="d">LESSON_KINDS and THEMES mirror LessonKind and Theme; kept in sync by hand.</span>
+<span class="m k-d">Lesson + LessonResult</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-a">LessonCard</span><span class="d">Mapped to rule types in #80, then to a card; no result means status todo and nulls.</span>
+<span class="m k-a">LessonCard</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-a">Today, LessonPage</span><span class="d">Both views are containers of cards.</span>
+<span class="m k-a">LessonQuery</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-a">LessonPage</span><span class="d">Filters, sort, group and page drive the in-memory search; total follows filters, levelTotal doesn't.</span>
+<span class="m k-d">UserLevel streak cols</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-a">Today.streak</span><span class="d">streak, bestStreak and lastGoalDay become current, best and today via currentStreak.</span>
+<span class="m k-a">FinishLesson</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-d">LessonResult, UserLevel</span><span class="d">Upserts the result (best score kept) and may write the streak.</span>
+<span class="m k-d">LessonResult, UserLevel</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-a">FinishResult</span><span class="d">countedToday and doneCount come from that day's rows; goalJustMet is true only when this call wrote the streak.</span>
+</div></div></section>
+</main>
+<script>
+const base='https://github.com/VictorBro/ft_transcendence/issues/';
+document.querySelectorAll('.intro, .def, .ref span, .leg .m, .rel .d').forEach(el=>{
+  el.innerHTML=el.innerHTML.replace(/#(\d+)/g,(m,n)=>'<a class="il" href="'+base+n+'" title="Open issue #'+n+' on GitHub">#'+n+'</a>');
+});
+</script>
+</body>
+</html>
