@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
 <style>
 :root{
+  --m1-bg:#E8E7E1;
   --surface-0:#FAFAF8;--surface-1:#F5F4EF;--surface-2:#FFFFFF;
   --border:rgba(31,30,29,.15);--text-primary:#1F1E1D;--text-secondary:#5E5D59;--text-muted:#8A8983;--text-accent:#185FA5;
   --font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -14,7 +15,7 @@
 }
 .k-f{--gb:#FAEEDA;--gd:#EF9F27;--gt:#633806}.k-c{--gb:#EEEDFE;--gd:#AFA9EC;--gt:#3C3489}.k-q{--gb:#E1F5EE;--gd:#5DCAA5;--gt:#085041}.k-d{--gb:#EAF3DE;--gd:#97C459;--gt:#27500A}.k-a{--gb:#FAECE7;--gd:#F0997B;--gt:#712B13}.gr{--cb:#F1EFE8}.k-e{--gb:#E6F1FB;--gd:#85B7EB;--gt:#0C447C}
 @media (prefers-color-scheme:dark){
-  :root{--surface-0:#1F1E1D;--surface-1:#262624;--surface-2:#30302E;--border:rgba(222,220,209,.15);--text-primary:#F5F4EF;--text-secondary:#C2C0B6;--text-muted:#9C9A92;--text-accent:#85B7EB}
+  :root{--m1-bg:#3A3A37;--surface-0:#1F1E1D;--surface-1:#262624;--surface-2:#30302E;--border:rgba(222,220,209,.15);--text-primary:#F5F4EF;--text-secondary:#C2C0B6;--text-muted:#9C9A92;--text-accent:#85B7EB}
   .k-f{--gb:#412402;--gd:#BA7517;--gt:#FAC775}.k-c{--gb:#26215C;--gd:#7F77DD;--gt:#CECBF6}.k-q{--gb:#04342C;--gd:#1D9E75;--gt:#9FE1CB}.k-d{--gb:#173404;--gd:#639922;--gt:#C0DD97}.k-a{--gb:#4A1B0C;--gd:#D85A30;--gt:#F5C4B3}.gr{--cb:#444441}.k-e{--gb:#042C53;--gd:#378ADD;--gt:#B5D4F4}
 }
 *{box-sizing:border-box}
@@ -37,6 +38,11 @@ h1{font-size:22px;font-weight:500;margin:0 0 6px}
 .en li::before{content:counter(en);flex-shrink:0;width:17px;height:17px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-sans);font-size:9.5px;font-weight:500;line-height:1;color:var(--gt);background:var(--gb);border:0.5px solid var(--gd)}
 .en li span{min-width:0;overflow-wrap:anywhere}
 .en-x{margin-top:6px;padding-top:5px;border-top:0.5px dashed var(--border)}
+.c.m1{background:var(--m1-bg)}
+.m1t{float:right;font-family:var(--font-sans);font-size:10px;font-weight:500;color:var(--text-secondary);background:var(--surface-2);border:0.5px solid var(--border);border-radius:999px;padding:1px 7px;text-decoration:none;margin-left:6px}
+.m1t:hover,.m1t:focus-visible{text-decoration:underline}
+.m1note{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-secondary);margin:-4px 0 14px}
+.m1note i{width:14px;height:14px;border-radius:3px;background:var(--m1-bg);border:0.5px solid var(--border)}
 .f b{font-weight:500;color:var(--text-primary)}
 .ref{margin-top:8px;padding-top:6px;border-top:0.5px solid var(--border);font-size:11px;color:var(--text-muted);display:flex;flex-wrap:wrap;gap:4px;align-items:center}
 .ref span{font-family:var(--font-mono);background:var(--surface-2);border:0.5px solid var(--border);border-radius:4px;padding:0 5px;color:var(--text-secondary)}
@@ -72,15 +78,16 @@ html{scroll-behavior:smooth}
 <div class="leg">
 <span class="m k-e jump" data-target="enums" role="link" tabindex="0">Enums + constants · #77 / #79</span><span class="m k-c jump" data-target="contract" role="link" tabindex="0">Shared contract · #77</span><span class="m k-f jump" data-target="content" role="link" tabindex="0">Content files · #77</span><span class="m k-q jump" data-target="checks" role="link" tabindex="0">CI checks + seed · #77 / #79</span><span class="m k-d jump" data-target="database" role="link" tabindex="0">Database · #79</span><span class="m k-a jump" data-target="api" role="link" tabindex="0">API schemas · #77</span>
 </div>
+<p class="m1note"><i aria-hidden="true"></i>Grey cards tagged "from milestone 1" are reused from the Onboarding milestone, not reimplemented.</p>
 
 <section class="g k-e" id="enums"><div class="gh"><i class="ti ti-list-details" aria-hidden="true"></i>Enums and constants<span class="def">defined in #77</span><span class="def">Prisma enums in #79</span></div>
 <div class="gd">Every fixed value set and number the other layers rely on. The TypeScript lists live in packages/shared; the Prisma enums mirror them in the database and must stay in sync.</div>
 <div class="cards">
 <div class="c"><div class="ct">LessonKind<span class="n">(4)</span></div><div class="cp">LESSON_KINDS · Prisma LessonKind</div><div class="f"><ol class="en"><li><span>grammar</span></li><li><span>vocabulary</span></li><li><span>functions</span></li><li><span>reading</span></li></ol></div><div class="ref">Referenced in <span>#77</span><span>#79</span><span>#81</span></div></div>
 <div class="c"><div class="ct">Theme<span class="n">(14)</span></div><div class="cp">THEMES · Prisma Theme · non-grammar only</div><div class="f"><ol class="en"><li><span>personal_identification</span></li><li><span>house_and_home</span></li><li><span>daily_life</span></li><li><span>free_time</span></li><li><span>travel</span></li><li><span>relations</span></li><li><span>health</span></li><li><span>education</span></li><li><span>shopping</span></li><li><span>food_and_drink</span></li><li><span>services</span></li><li><span>places</span></li><li><span>language</span></li><li><span>weather</span></li></ol></div><div class="ref">Referenced in <span>#77</span><span>#79</span></div></div>
-<div class="c"><div class="ct">Topic<span class="n">(13)</span></div><div class="cp">TOPICS in item.ts · Prisma Topic · grammar only</div><div class="f"><ol class="en"><li><span>nouns_and_determiners</span></li><li><span>pronouns</span></li><li><span>verbs_morphology</span></li><li><span>verb_usage</span></li><li><span>syntax_and_sentence_structure</span></li><li><span>subordinate_clauses</span></li><li><span>prepositions_and_case</span></li><li><span>adjectives</span></li><li><span>adverbs</span></li><li><span>agreement</span></li><li><span>negation</span></li><li><span>comparison_and_quantity</span></li><li><span>information_structure_and_pragmatics</span></li></ol></div><div class="ref">Referenced in <span>#77</span><span>#79</span></div></div>
-<div class="c"><div class="ct">Level<span class="n">(6)</span></div><div class="cp">Prisma Level · existing</div><div class="f"><ol class="en"><li><span>A1</span></li><li><span>A2</span></li><li><span>B1</span></li><li><span>B2</span></li><li><span>C1</span></li><li><span>C2</span></li></ol></div><div class="ref">Referenced in <span>#77</span><span>#79</span><span>#80</span></div></div>
-<div class="c"><div class="ct">Language<span class="n">(3)</span></div><div class="cp">Prisma Language · existing</div><div class="f"><ol class="en"><li><span>en</span></li><li><span>fr</span></li><li><span>de</span></li></ol><div class="en-x">the course language, like UserLevel.lang<br>never Locale</div></div><div class="ref">Referenced in <span>#77</span><span>#79</span></div></div>
+<div class="c m1"><div class="ct">Topic<span class="n">(13)</span><a class="m1t" href="milestone1-data-model.html#enums" title="Defined in milestone 1, reused unchanged">from milestone 1</a></div><div class="cp">TOPICS in item.ts · Prisma Topic · grammar only</div><div class="f"><ol class="en"><li><span>nouns_and_determiners</span></li><li><span>pronouns</span></li><li><span>verbs_morphology</span></li><li><span>verb_usage</span></li><li><span>syntax_and_sentence_structure</span></li><li><span>subordinate_clauses</span></li><li><span>prepositions_and_case</span></li><li><span>adjectives</span></li><li><span>adverbs</span></li><li><span>agreement</span></li><li><span>negation</span></li><li><span>comparison_and_quantity</span></li><li><span>information_structure_and_pragmatics</span></li></ol></div><div class="ref">Referenced in <span>#77</span><span>#79</span></div></div>
+<div class="c m1"><div class="ct">Level<span class="n">(6)</span><a class="m1t" href="milestone1-data-model.html#enums" title="Defined in milestone 1, reused unchanged">from milestone 1</a></div><div class="cp">Prisma Level · existing</div><div class="f"><ol class="en"><li><span>A1</span></li><li><span>A2</span></li><li><span>B1</span></li><li><span>B2</span></li><li><span>C1</span></li><li><span>C2</span></li></ol></div><div class="ref">Referenced in <span>#77</span><span>#79</span><span>#80</span></div></div>
+<div class="c m1"><div class="ct">Language<span class="n">(3)</span><a class="m1t" href="milestone1-data-model.html#enums" title="Defined in milestone 1, reused unchanged">from milestone 1</a></div><div class="cp">Prisma Language · existing</div><div class="f"><ol class="en"><li><span>en</span></li><li><span>fr</span></li><li><span>de</span></li></ol><div class="en-x">the course language, like UserLevel.lang<br>never Locale</div></div><div class="ref">Referenced in <span>#77</span><span>#79</span></div></div>
 <div class="c"><div class="ct">LessonStatus<span class="n">(3)</span></div><div class="cp">API enum, derived</div><div class="f"><ol class="en"><li><span>todo</span></li><li><span>failed</span></li><li><span>done</span></li></ol></div><div class="ref">Referenced in <span>#77</span><span>#80</span><span>#81</span></div></div>
 <div class="c"><div class="ct">Global constants</div><div class="cp">packages/shared</div><div class="f"><b>LESSON_MINUTES</b> = 10<br><b>EXTRA_COUNT</b> = 3<br><b>LESSON_PASS_MARK</b> = 70<br><b>LEVEL_PASS_SHARE</b> = 0.8<br><b>LESSONS_PAGE_SIZE</b> = 20<br><b>COMPLETE_LANGUAGES</b> = [] for now</div><div class="ref">Referenced in <span>#77</span><span>#80</span><span>#81</span></div></div>
 <div class="c"><div class="ct">Text limits</div><div class="cp">quoted by the generator prompt</div><div class="f"><b>title</b> 1–80, <b>summary</b> 1–200<br><b>brief strings</b> ≤300<br><b>term</b> ≤60, <b>gloss</b> ≤120<br><b>LessonId</b> ≤64, <b>q</b> ≤100</div><div class="ref">Referenced in <span>#77</span><span>#81</span></div></div>
