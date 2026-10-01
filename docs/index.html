@@ -331,7 +331,11 @@ function renderIssues(){
     el.replaceWith(div);
   });
 }
-const linkify=s=>s.replace(/#(\d+)/g,(m,n)=>'<a href="'+issueUrl(n)+'" title="Open issue #'+n+' on GitHub">#'+n+'</a>');
+/* Issue titles for the hover text on the graph's issue links, as of 1 October 2026. */
+const GRAPH_TITLES={76:"docs: record the lesson, daily goal and streak decisions",77:"feat(shared): lesson contracts and the content checks",78:"feat: store the learner's time zone",79:"feat(api): lesson tables, and seed the lessons on every stack",80:"feat(api): roadmap rules as pure functions",81:"feat(api): today and all lessons reads, with the lesson search",82:"feat(api): finish a lesson, meet the goal, keep the streak",83:"feat(api): an offline lesson generator",84:"feat(content): French A1, outline and lessons",85:"feat(api): seed demo learners on development stacks",86:"feat(web): the daily goal page",87:"feat(web): the all lessons page, with advanced search",88:"feat(content): outline the German lessons, A1 to C2",89:"feat(content): outline the English lessons, A1 to C2",90:"feat(content): outline the French lessons, A1 to C2",91:"feat(content): generate and review the German lessons",92:"feat(content): generate and review the English lessons",93:"feat(content): generate and review the French lessons, A2 to C2",94:"feat: gamification rules, XP, challenges and achievements",95:"feat(api): award XP, the daily challenge and achievements",96:"feat(web): lesson stub page and the roadmap e2e",97:"feat(web): rank, challenge and achievements pages"};
+const graphTitle=n=>'#'+n+': '+(GRAPH_TITLES[n]||'');
+const attr=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const linkify=s=>s.replace(/#(\d+)/g,(m,n)=>'<a href="'+issueUrl(n)+'" title="'+attr(graphTitle(n))+'">#'+n+'</a>');
 
 /* Milestone 2 graph, from milestone2_groups.mermaid. Layout pins and removed edges are left out. */
 const EDGES=[
@@ -350,13 +354,12 @@ const graph=document.getElementById('g2');
 const svg=graph.querySelector('svg.edges');
 /* Issue numbers in the nodes become chips coloured by the state shown in the groups list below. */
 graph.querySelectorAll('.gn p').forEach(p=>{
-  p.innerHTML=p.textContent.trim().split(/\s+/).map(t=>{const n=t.slice(1);return '<a class="inum" data-n="'+n+'" href="'+issueUrl(n)+'" title="Open issue #'+n+' on GitHub">#'+n+'</a>';}).join('');
+  p.innerHTML=p.textContent.trim().split(/\s+/).map(t=>{const n=t.slice(1);return '<a class="inum" data-n="'+n+'" href="'+issueUrl(n)+'" title="'+attr(graphTitle(n))+'">#'+n+'</a>';}).join('');
 });
 function syncGraphStates(){
   graph.querySelectorAll('a.inum').forEach(a=>{
     const i=ISSUES[a.dataset.n],st=i?statusOf(i):'open';
     a.classList.toggle('closed',st==='closed');a.classList.toggle('work',st==='work');
-    a.title='Issue #'+a.dataset.n+', '+STATUS_TEXT[st];
   });
 }
 const labels=EDGES.map(e=>{const d=document.createElement('div');d.className='elbl';d.innerHTML=e[3].map(linkify).join('<br>');graph.appendChild(d);return d;});
