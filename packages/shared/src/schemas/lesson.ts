@@ -128,20 +128,22 @@ export const LessonSummarySchema = text(LESSON_SUMMARY_MAX);
  * all compare text through it. The letters NFD cannot split are replaced
  * first, umlauts included, since NFD would otherwise turn `ä` into `a`.
  */
-const FOLDED_LETTERS: Record<string, string> = {
+const FOLDED_LETTERS = {
   ä: 'ae',
   ö: 'oe',
   ü: 'ue',
   ß: 'ss',
   œ: 'oe',
   æ: 'ae',
-};
+} as const;
+type FoldedLetter = keyof typeof FOLDED_LETTERS;
+const FOLDED_LETTER = new RegExp(`[${Object.keys(FOLDED_LETTERS).join('')}]`, 'g');
 
 export function foldText(s: string): string {
   return s
     .normalize('NFC')
     .toLowerCase()
-    .replace(/[äöüßœæ]/g, (letter) => FOLDED_LETTERS[letter] ?? letter)
+    .replace(FOLDED_LETTER, (letter) => FOLDED_LETTERS[letter as FoldedLetter])
     .normalize('NFD')
     .replace(/\p{M}/gu, '');
 }

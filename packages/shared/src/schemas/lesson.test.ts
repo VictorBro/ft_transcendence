@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { LEVELS } from './item';
 import {
   FinishLessonSchema,
+  FinishResultSchema,
   foldText,
   KIND_COUNTS,
   KIND_SHARES,
@@ -15,8 +16,10 @@ import {
   LessonIdSchema,
   LessonOutlineEntrySchema,
   LessonOutlineFileSchema,
+  LessonPageSchema,
   LessonQuerySchema,
   outlineFileName,
+  TodaySchema,
   type LessonCard,
   type LessonEntry,
   type LessonOutlineEntry,
@@ -407,5 +410,71 @@ describe('FinishLessonSchema', () => {
       expect(result.success, JSON.stringify(input)).toBe(false);
       expect(result.error?.issues.map((i) => i.message)).toEqual(['lesson.invalidScore']);
     }
+  });
+});
+
+describe('TodaySchema', () => {
+  // GET /api/courses/fr/today from #81: French A1, goal 30, one failed redo so far.
+  const today = {
+    day: '2026-10-12',
+    target: 3,
+    met: false,
+    done: [card],
+    proposed: [],
+    extra: [],
+    streak: { current: 2, best: 2, today: false },
+    progress: { total: 120, attempted: 4, passed: 2, needed: 96, complete: false },
+    levelAfter: 'A2',
+  };
+
+  it('accepts a day, and a last level with nothing after it', () => {
+    expect(TodaySchema.safeParse(today).success).toBe(true);
+    expect(TodaySchema.safeParse({ ...today, levelAfter: null }).success).toBe(true);
+  });
+
+  it('keeps every field, null rather than absent', () => {
+    const { levelAfter: _dropped, ...withoutLevelAfter } = today;
+    expect(TodaySchema.safeParse(withoutLevelAfter).success).toBe(false);
+  });
+
+  it('rejects a card that carries its brief', () => {
+    expect(TodaySchema.safeParse({ ...today, done: [{ ...card, brief }] }).success).toBe(false);
+  });
+});
+
+describe('LessonPageSchema', () => {
+  const page = {
+    day: '2026-10-12',
+    levelTotal: 120,
+    items: [card],
+    total: 1,
+    page: 1,
+    pageSize: 20,
+  };
+
+  it('accepts a page of cards', () => {
+    expect(LessonPageSchema.safeParse(page).success).toBe(true);
+    expect(LessonPageSchema.safeParse({ ...page, items: [], total: 0 }).success).toBe(true);
+  });
+
+  it('rejects page 0 and a bad day', () => {
+    expect(LessonPageSchema.safeParse({ ...page, page: 0 }).success).toBe(false);
+    expect(LessonPageSchema.safeParse({ ...page, day: '2026-10-12T00:00:00Z' }).success).toBe(
+      false,
+    );
+  });
+});
+
+describe('FinishResultSchema', () => {
+  const result = { countedToday: true, doneCount: 3, target: 3, goalJustMet: true };
+
+  it('accepts the result of a finish', () => {
+    expect(FinishResultSchema.safeParse(result).success).toBe(true);
+  });
+
+  it('rejects a missing field and a negative count', () => {
+    const { goalJustMet: _dropped, ...withoutGoal } = result;
+    expect(FinishResultSchema.safeParse(withoutGoal).success).toBe(false);
+    expect(FinishResultSchema.safeParse({ ...result, doneCount: -1 }).success).toBe(false);
   });
 });
