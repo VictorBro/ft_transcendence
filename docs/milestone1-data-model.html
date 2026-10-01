@@ -86,11 +86,16 @@ html{scroll-behavior:smooth}
 footer{font-size:12px;color:var(--text-muted);margin-top:18px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 @media (max-width:560px){.tally{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.topnav{display:flex;flex-wrap:wrap;gap:4px;margin:0 0 18px;padding:4px;border:0.5px solid var(--border);border-radius:10px;background:var(--surface-2);width:fit-content;max-width:100%}
+.topnav a{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-secondary);text-decoration:none;padding:5px 10px;border-radius:7px}
+.topnav a:hover{color:var(--text-primary);background:var(--surface-1)}
+.topnav a:focus-visible{outline:2px solid var(--text-accent);outline-offset:1px}
+.topnav a[aria-current="page"]{color:var(--surface-0);background:var(--text-primary);font-weight:500}
 </style>
 </head>
 <body>
 <main>
-<p style="margin:0 0 10px;font-size:13px"><a href="./" style="color:var(--text-accent);text-decoration:none">&larr; All milestones</a></p>
+<nav class="topnav" aria-label="Project docs"><a href="index.html"><i class="ti ti-layout-dashboard" aria-hidden="true"></i>Overview</a><a href="milestone1-data-model.html" aria-current="page"><i class="ti ti-git-compare" aria-hidden="true"></i>Data model · M1</a><a href="milestone2-data-model.html"><i class="ti ti-database" aria-hidden="true"></i>Data model · M2</a></nav>
 <h1>Onboarding data model: spec vs code</h1>
 <p class="intro">Every data format of the Onboarding and Evaluation milestone, grouped by layer, with each one checked against the latest <code>main</code>. Each card is marked by how the code compares with what the issues specified, and lists the issues that reference it. References cover #43–#54. Where a value changed, the spec's version is struck through and the code's version is highlighted.</p>
 

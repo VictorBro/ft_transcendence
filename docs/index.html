@@ -112,10 +112,16 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
   .stage{flex:none}
   .arrow{flex:none;height:16px;transform:rotate(90deg)}
 }
+.topnav{display:flex;flex-wrap:wrap;gap:4px;margin:0 0 18px;padding:4px;border:0.5px solid var(--border);border-radius:10px;background:var(--surface-2);width:fit-content;max-width:100%}
+.topnav a{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-secondary);text-decoration:none;padding:5px 10px;border-radius:7px}
+.topnav a:hover{color:var(--text-primary);background:var(--surface-1)}
+.topnav a:focus-visible{outline:2px solid var(--text-accent);outline-offset:1px}
+.topnav a[aria-current="page"]{color:var(--surface-0);background:var(--text-primary);font-weight:500}
 </style>
 </head>
 <body>
 <main>
+<nav class="topnav" aria-label="Project docs"><a href="index.html" aria-current="page"><i class="ti ti-layout-dashboard" aria-hidden="true"></i>Overview</a><a href="milestone1-data-model.html"><i class="ti ti-git-compare" aria-hidden="true"></i>Data model · M1</a><a href="milestone2-data-model.html"><i class="ti ti-database" aria-hidden="true"></i>Data model · M2</a></nav>
 <p class="eyebrow">ft_transcendence · project docs</p>
 <h1>Milestones</h1>
 <p class="intro">ft_transcendence is an AI-driven platform for learning a foreign language. A short adaptive test places each learner at a CEFR level, and a roadmap then gives them lessons sized to their daily goal. This page summarises the milestones in progress: what each one delivers, how its issues depend on each other, and the data model behind it.</p>
