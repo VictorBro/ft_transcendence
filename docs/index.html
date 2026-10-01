@@ -13,11 +13,13 @@
   --font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   --font-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
   --open:#3B6D11;--open-bg:#EAF3DE;--closed:#534AB7;--closed-bg:#EEEDFE;
+  --st-open:#3B6D11;--st-open-bg:#F1F7EA;--st-work:#BA7517;--st-work-bg:#FDF4E4;--st-closed:#534AB7;--st-closed-bg:#F3F2FD;
 }
 .k-1{--gb:#E6F1FB;--gd:#85B7EB;--gt:#0C447C}.k-2{--gb:#FAEEDA;--gd:#EF9F27;--gt:#633806}
 @media (prefers-color-scheme:dark){
   :root{--surface-0:#1F1E1D;--surface-1:#262624;--surface-2:#30302E;--border:rgba(222,220,209,.15);--text-primary:#F5F4EF;--text-secondary:#C2C0B6;--text-muted:#9C9A92;--text-accent:#85B7EB;
-    --open:#97C459;--open-bg:#173404;--closed:#AFA9EC;--closed-bg:#26215C}
+    --open:#97C459;--open-bg:#173404;--closed:#AFA9EC;--closed-bg:#26215C;
+    --st-open:#97C459;--st-open-bg:#1E2B13;--st-work:#EF9F27;--st-work-bg:#33240C;--st-closed:#AFA9EC;--st-closed-bg:#24213F}
   .k-1{--gb:#042C53;--gd:#378ADD;--gt:#B5D4F4}.k-2{--gb:#412402;--gd:#BA7517;--gt:#FAC775}
 }
 *{box-sizing:border-box}
@@ -53,13 +55,24 @@ figcaption{font-size:12px;color:var(--text-muted);margin-top:6px;line-height:1.5
 .arrow{flex:0 0 14px;display:flex;align-items:center;justify-content:center;color:var(--text-muted)}
 .grp{border:0.5px dashed var(--border);border-radius:8px;padding:6px;display:flex;flex-direction:column;gap:6px}
 .grp-h{font-size:11px;color:var(--text-muted);padding:0 2px}
-.iss{display:flex;gap:6px;align-items:flex-start;text-decoration:none;font-size:12px;line-height:1.35;color:var(--text-primary);background:var(--surface-1);border:0.5px solid var(--border);border-radius:7px;padding:6px 8px}
-.iss:hover{border-color:var(--text-accent)}
-.iss:focus-visible{outline:2px solid var(--text-accent);outline-offset:2px}
-.iss .no{font-family:var(--font-mono);color:var(--text-muted);flex-shrink:0}
-.iss .t{flex:1}
-.dot{flex-shrink:0;margin-top:2px;font-size:10px;font-weight:500;padding:1px 5px;border-radius:999px}
-.dot.open{color:var(--open);background:var(--open-bg)}.dot.closed{color:var(--closed);background:var(--closed-bg)}
+.iss{--st:var(--st-open);--st-bg:var(--st-open-bg);position:relative;display:grid;grid-template-columns:auto 1fr auto;grid-template-areas:"no . who" "t t t" ". . pr";gap:3px 6px;font-size:12px;line-height:1.35;color:var(--text-primary);background:var(--st-bg);border:0.5px solid var(--border);border-left:4px solid var(--st);border-radius:7px;padding:6px 8px 5px}
+a.iss{text-decoration:none}
+.iss.work{--st:var(--st-work);--st-bg:var(--st-work-bg)}.iss.closed{--st:var(--st-closed);--st-bg:var(--st-closed-bg)}
+.iss:hover{border-color:var(--text-accent);border-left-color:var(--st)}
+.iss .no{grid-area:no;font-family:var(--font-mono);color:var(--text-muted)}
+.iss .t{grid-area:t;color:var(--text-primary);text-decoration:none}
+.iss .t::after{content:"";position:absolute;inset:0;border-radius:7px}
+.iss .t:focus-visible{outline:none}.iss .t:focus-visible::after{outline:2px solid var(--text-accent);outline-offset:2px}
+.iss .who{grid-area:who;justify-self:end;position:relative;z-index:1;display:inline-flex;align-items:center;gap:4px;max-width:110px;font-size:11px;color:var(--text-secondary);text-decoration:none}
+.iss .who img{width:16px;height:16px;border-radius:50%;flex-shrink:0;background:var(--surface-2)}
+.iss .who span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.iss .who:hover span,.iss .who:focus-visible span{text-decoration:underline}
+.iss .pr{grid-area:pr;justify-self:end;position:relative;z-index:1;display:inline-flex;align-items:center;gap:3px;font-family:var(--font-mono);font-size:10.5px;color:var(--text-accent);text-decoration:none}
+.iss .pr:hover,.iss .pr:focus-visible{text-decoration:underline}
+.sw{display:inline-flex;align-items:center;gap:5px}
+.sw::before{content:"";width:12px;height:12px;border-radius:3px;background:var(--b);border:0.5px solid var(--border);border-left:4px solid var(--c)}
+.sw.open{--c:var(--st-open);--b:var(--st-open-bg)}.sw.work{--c:var(--st-work);--b:var(--st-work-bg)}.sw.closed{--c:var(--st-closed);--b:var(--st-closed-bg)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .dm{display:flex;gap:14px;align-items:center;text-decoration:none;color:var(--text-primary);border:0.5px solid var(--gd);background:var(--gb);border-radius:10px;padding:12px 14px}
 .dm:hover{filter:brightness(.97)}
 .dm i{font-size:26px;color:var(--gt)}
@@ -85,7 +98,7 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 .gn.sink{background:var(--n-sink-bg);border-color:var(--n-sink-bd);border-style:dashed}
 .gn.summit{background:var(--n-sum-bg);border-color:var(--n-sum-bd);border-width:3px}
 .gn a.inum{text-decoration:none;font-size:11px;font-weight:500;padding:1px 5px;border-radius:999px;color:var(--open);background:var(--open-bg)}
-.gn a.inum.closed{color:var(--closed);background:var(--closed-bg)}
+.gn a.inum.work{color:var(--st-work);background:var(--st-work-bg);box-shadow:inset 0 0 0 1px var(--st-work)}.gn a.inum.closed{color:var(--closed);background:var(--closed-bg)}
 .gn a.inum:hover,.gn a.inum:focus-visible{text-decoration:underline}
 .elbl{position:absolute;z-index:2;transform:translate(-50%,-50%);background:var(--lbl-bg);border:0.5px solid var(--border);border-radius:5px;padding:2px 5px;font-family:var(--font-mono);font-size:10.5px;line-height:1.45;color:var(--text-secondary);white-space:nowrap;text-align:center}
 .elbl a{color:var(--text-accent);text-decoration:none}.elbl a:hover,.elbl a:focus-visible{text-decoration:underline}
@@ -127,33 +140,34 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 <figcaption>From the milestone on GitHub. Select it to open it at full size.</figcaption>
 
 <h3>Dependency flow</h3>
-<div class="legend"><span class="dot closed">closed</span><span class="dot open">open</span><span>Each column depends on the ones before it, as stated in the issues.</span></div>
+<div class="legend"><span class="sw open">open</span><span class="sw work">in work</span><span class="sw closed">closed</span><span>Top right: who is responsible (author of the linked PR, else the assignee). Bottom right: the linked PR.</span></div>
+<p class="legend">Each column depends on the ones before it, as stated in the issues.</p>
 <div class="flow">
 <div class="stage"><div class="stage-h">Foundations</div>
-<a class="iss" data-n="44" href="#"><span class="no">#44</span><span class="t">Record the onboarding and placement decisions</span><span class="dot closed">closed</span></a>
-<a class="iss" data-n="43" href="#"><span class="no">#43</span><span class="t">Seed the question bank</span><span class="dot closed">closed</span></a>
-<a class="iss" data-n="45" href="#"><span class="no">#45</span><span class="t">Generic API client</span><span class="dot closed">closed</span></a>
+<a class="iss" data-n="44" href="#"><span class="no">#44</span><span class="t">Record the onboarding and placement decisions</span></a>
+<a class="iss" data-n="43" href="#"><span class="no">#43</span><span class="t">Seed the question bank</span></a>
+<a class="iss" data-n="45" href="#"><span class="no">#45</span><span class="t">Generic API client</span></a>
 </div>
 <div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
 <div class="stage"><div class="stage-h">Contracts</div>
-<a class="iss" data-n="46" href="#"><span class="no">#46</span><span class="t">Course and placement contracts</span><span class="dot closed">closed</span></a>
+<a class="iss" data-n="46" href="#"><span class="no">#46</span><span class="t">Course and placement contracts</span></a>
 </div>
 <div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
 <div class="stage"><div class="stage-h">Courses</div>
-<a class="iss" data-n="47" href="#"><span class="no">#47</span><span class="t">Courses API and the unified level write</span><span class="dot closed">closed</span></a>
+<a class="iss" data-n="47" href="#"><span class="no">#47</span><span class="t">Courses API and the unified level write</span></a>
 </div>
 <div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
 <div class="stage"><div class="stage-h">Features</div>
-<a class="iss" data-n="48" href="#"><span class="no">#48</span><span class="t">Placement exam API over Redis</span><span class="dot closed">closed</span></a>
-<a class="iss" data-n="49" href="#"><span class="no">#49</span><span class="t">Onboarding, per course</span><span class="dot closed">closed</span></a>
-<a class="iss" data-n="51" href="#"><span class="no">#51</span><span class="t">Course dashboard and switcher</span><span class="dot closed">closed</span></a>
+<a class="iss" data-n="48" href="#"><span class="no">#48</span><span class="t">Placement exam API over Redis</span></a>
+<a class="iss" data-n="49" href="#"><span class="no">#49</span><span class="t">Onboarding, per course</span></a>
+<a class="iss" data-n="51" href="#"><span class="no">#51</span><span class="t">Course dashboard and switcher</span></a>
 </div>
 <div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
 <div class="stage"><div class="stage-h">Finish</div>
-<a class="iss" data-n="52" href="#"><span class="no">#52</span><span class="t">Post-auth landing and guards</span><span class="dot closed">closed</span></a>
-<a class="iss" data-n="53" href="#"><span class="no">#53</span><span class="t">Onboarded e2e fixture</span><span class="dot closed">closed</span></a>
-<a class="iss" data-n="50" href="#"><span class="no">#50</span><span class="t">Placement exam page and result</span><span class="dot open">open</span></a>
-<a class="iss" data-n="54" href="#"><span class="no">#54</span><span class="t">Generate a question when the pool runs dry</span><span class="dot open">open</span></a>
+<a class="iss" data-n="52" href="#"><span class="no">#52</span><span class="t">Post-auth landing and guards</span></a>
+<a class="iss" data-n="53" href="#"><span class="no">#53</span><span class="t">Onboarded e2e fixture</span></a>
+<a class="iss" data-n="50" href="#"><span class="no">#50</span><span class="t">Placement exam page and result</span></a>
+<a class="iss" data-n="54" href="#"><span class="no">#54</span><span class="t">Generate a question when the pool runs dry</span></a>
 </div>
 </div>
 
@@ -190,61 +204,62 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 <div class="gn sink" id="G6b" style="grid-column:11;grid-row:3"><b>G6b</b><span>profiles DE, EN, FR: A1 - C2</span><p>#91 #92 #93</p><i>SINK</i></div>
 </div>
 </div>
-<div class="glegend"><span><svg width="34" height="10" aria-hidden="true"><line x1="0" y1="5" x2="34" y2="5" stroke="var(--edge-crit)" stroke-width="3"/></svg>critical path</span><span><svg width="34" height="10" aria-hidden="true"><line x1="0" y1="5" x2="34" y2="5" stroke="var(--edge)" stroke-width="1.5"/></svg>content branch</span><span class="swatch summit">summit</span><span class="swatch sink">sink</span><span>Issue numbers are coloured by state and link to GitHub.</span></div>
+<div class="glegend"><span><svg width="34" height="10" aria-hidden="true"><line x1="0" y1="5" x2="34" y2="5" stroke="var(--edge-crit)" stroke-width="3"/></svg>critical path</span><span><svg width="34" height="10" aria-hidden="true"><line x1="0" y1="5" x2="34" y2="5" stroke="var(--edge)" stroke-width="1.5"/></svg>content branch</span><span class="swatch summit">summit</span><span class="swatch sink">sink</span><span>Issue numbers are coloured by status, as in the groups below, and link to GitHub.</span></div>
 <figcaption>Edges carry the issue-level dependencies they stand for. Edges already implied by an intermediate group are left out, and #84 → #90 is drawn as #90 → #84 to keep the map readable.</figcaption>
 
 <h3>Groups</h3>
-<div class="legend"><span class="dot closed">closed</span><span class="dot open">open</span><span>Groups with the same number (a, b) can run in parallel.</span></div>
+<div class="legend"><span class="sw open">open</span><span class="sw work">in work</span><span class="sw closed">closed</span><span>Top right: who is responsible (author of the linked PR, else the assignee). Bottom right: the linked PR.</span></div>
+<p class="legend">Groups with the same number (a, b) can run in parallel.</p>
 <div class="flow">
 <div class="stage"><div class="stage-h">G1</div>
-<a class="iss" data-n="76" href="#"><span class="no">#76</span><span class="t">Doc: lesson, goal and streak decisions</span><span class="dot open">open</span></a>
-<a class="iss" data-n="77" href="#"><span class="no">#77</span><span class="t">Lesson contracts and content checks</span><span class="dot open">open</span></a>
-<a class="iss" data-n="78" href="#"><span class="no">#78</span><span class="t">Learner's time zone</span><span class="dot open">open</span></a>
+<a class="iss" data-n="76" href="#"><span class="no">#76</span><span class="t">Doc: lesson, goal and streak decisions</span></a>
+<a class="iss" data-n="77" href="#"><span class="no">#77</span><span class="t">Lesson contracts and content checks</span></a>
+<a class="iss" data-n="78" href="#"><span class="no">#78</span><span class="t">Learner's time zone</span></a>
 </div>
 <div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
 <div class="stage">
 <div class="grp"><div class="grp-h">G2a</div>
-<a class="iss" data-n="79" href="#"><span class="no">#79</span><span class="t">Lesson tables and seed</span><span class="dot open">open</span></a>
-<a class="iss" data-n="80" href="#"><span class="no">#80</span><span class="t">Roadmap rules</span><span class="dot open">open</span></a>
-<a class="iss" data-n="83" href="#"><span class="no">#83</span><span class="t">Offline lesson generator</span><span class="dot open">open</span></a>
+<a class="iss" data-n="79" href="#"><span class="no">#79</span><span class="t">Lesson tables and seed</span></a>
+<a class="iss" data-n="80" href="#"><span class="no">#80</span><span class="t">Roadmap rules</span></a>
+<a class="iss" data-n="83" href="#"><span class="no">#83</span><span class="t">Offline lesson generator</span></a>
 </div>
 <div class="grp"><div class="grp-h">G2b · outlines A1–C2</div>
-<a class="iss" data-n="88" href="#"><span class="no">#88</span><span class="t">German outline</span><span class="dot open">open</span></a>
-<a class="iss" data-n="89" href="#"><span class="no">#89</span><span class="t">English outline</span><span class="dot open">open</span></a>
-<a class="iss" data-n="90" href="#"><span class="no">#90</span><span class="t">French outline</span><span class="dot open">open</span></a>
+<a class="iss" data-n="88" href="#"><span class="no">#88</span><span class="t">German outline</span></a>
+<a class="iss" data-n="89" href="#"><span class="no">#89</span><span class="t">English outline</span></a>
+<a class="iss" data-n="90" href="#"><span class="no">#90</span><span class="t">French outline</span></a>
 </div>
 </div>
 <div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
 <div class="stage">
 <div class="grp"><div class="grp-h">G3a</div>
-<a class="iss" data-n="81" href="#"><span class="no">#81</span><span class="t">Today and all-lessons reads</span><span class="dot open">open</span></a>
-<a class="iss" data-n="82" href="#"><span class="no">#82</span><span class="t">Finish a lesson, keep the streak</span><span class="dot open">open</span></a>
+<a class="iss" data-n="81" href="#"><span class="no">#81</span><span class="t">Today and all-lessons reads</span></a>
+<a class="iss" data-n="82" href="#"><span class="no">#82</span><span class="t">Finish a lesson, keep the streak</span></a>
 </div>
 <div class="grp"><div class="grp-h">G3b</div>
-<a class="iss" data-n="84" href="#"><span class="no">#84</span><span class="t">French A1 profiles</span><span class="dot open">open</span></a>
+<a class="iss" data-n="84" href="#"><span class="no">#84</span><span class="t">French A1 profiles</span></a>
 </div>
 </div>
 <div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
 <div class="stage"><div class="stage-h">G4</div>
-<a class="iss" data-n="85" href="#"><span class="no">#85</span><span class="t">Demo learners</span><span class="dot open">open</span></a>
-<a class="iss" data-n="86" href="#"><span class="no">#86</span><span class="t">Daily goal page</span><span class="dot open">open</span></a>
-<a class="iss" data-n="87" href="#"><span class="no">#87</span><span class="t">All lessons page with search</span><span class="dot open">open</span></a>
+<a class="iss" data-n="85" href="#"><span class="no">#85</span><span class="t">Demo learners</span></a>
+<a class="iss" data-n="86" href="#"><span class="no">#86</span><span class="t">Daily goal page</span></a>
+<a class="iss" data-n="87" href="#"><span class="no">#87</span><span class="t">All lessons page with search</span></a>
 </div>
 <div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
 <div class="stage"><div class="stage-h">G5</div>
-<a class="iss" data-n="94" href="#"><span class="no">#94</span><span class="t">Gamification rules</span><span class="dot open">open</span></a>
-<a class="iss" data-n="95" href="#"><span class="no">#95</span><span class="t">XP, challenge and achievements API</span><span class="dot open">open</span></a>
-<a class="iss" data-n="96" href="#"><span class="no">#96</span><span class="t">Lesson stub page and roadmap e2e</span><span class="dot open">open</span></a>
+<a class="iss" data-n="94" href="#"><span class="no">#94</span><span class="t">Gamification rules</span></a>
+<a class="iss" data-n="95" href="#"><span class="no">#95</span><span class="t">XP, challenge and achievements API</span></a>
+<a class="iss" data-n="96" href="#"><span class="no">#96</span><span class="t">Lesson stub page and roadmap e2e</span></a>
 </div>
 <div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
 <div class="stage">
 <div class="grp"><div class="grp-h">G6a · summit</div>
-<a class="iss" data-n="97" href="#"><span class="no">#97</span><span class="t">Rank, challenge and achievements pages</span><span class="dot open">open</span></a>
+<a class="iss" data-n="97" href="#"><span class="no">#97</span><span class="t">Rank, challenge and achievements pages</span></a>
 </div>
 <div class="grp"><div class="grp-h">G6b · lessons A1–C2</div>
-<a class="iss" data-n="91" href="#"><span class="no">#91</span><span class="t">German lessons</span><span class="dot open">open</span></a>
-<a class="iss" data-n="92" href="#"><span class="no">#92</span><span class="t">English lessons</span><span class="dot open">open</span></a>
-<a class="iss" data-n="93" href="#"><span class="no">#93</span><span class="t">French lessons, A2–C2</span><span class="dot open">open</span></a>
+<a class="iss" data-n="91" href="#"><span class="no">#91</span><span class="t">German lessons</span></a>
+<a class="iss" data-n="92" href="#"><span class="no">#92</span><span class="t">English lessons</span></a>
+<a class="iss" data-n="93" href="#"><span class="no">#93</span><span class="t">French lessons, A2–C2</span></a>
 </div>
 </div>
 </div>
@@ -254,12 +269,68 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 </div>
 </section>
 
-<footer>Issue states shown as of 1 October 2026; they refresh from GitHub when the page loads. Source: <a href="https://github.com/VictorBro/ft_transcendence">VictorBro/ft_transcendence</a> · <a href="https://github.com/VictorBro/ft_transcendence/milestones">all milestones</a>.</footer>
+<footer>Issue states, assignees and linked PRs as of 1 October 2026. States and assignees refresh from GitHub when the page loads; linked PRs do not. Source: <a href="https://github.com/VictorBro/ft_transcendence">VictorBro/ft_transcendence</a> · <a href="https://github.com/VictorBro/ft_transcendence/milestones">all milestones</a>.</footer>
 </main>
 <script>
 const repo='VictorBro/ft_transcendence';
-document.querySelectorAll('.iss').forEach(a=>{a.href='https://github.com/'+repo+'/issues/'+a.dataset.n;});
 const issueUrl=n=>'https://github.com/'+repo+'/issues/'+n;
+/* Snapshot of each issue: state, assignees, and the PR linked in its Development panel
+   (merged first, then open, then the newest). State and assignees refresh live below;
+   linked PRs need an authenticated API, so they come from this snapshot. */
+const ISSUES={43:{s:"closed",a:["VYAntares"],pr:[58,"VYAntares","merged"]},
+44:{s:"closed",a:["VictorBro"],pr:[55,"VictorBro","merged"]},
+45:{s:"closed",a:["bastian-schnitzler"],pr:[57,"bastian-schnitzler","merged"]},
+46:{s:"closed",a:["luca-mattei"],pr:[59,"luca-mattei","merged"]},
+47:{s:"closed",a:["avarrett"],pr:[60,"avarrett","merged"]},
+48:{s:"closed",a:["bastian-schnitzler"],pr:[71,"bastian-schnitzler","merged"]},
+49:{s:"closed",a:["luca-mattei"],pr:[67,"luca-mattei","merged"]},
+50:{s:"open",a:["avarrett"],pr:null},
+51:{s:"closed",a:["VictorBro"],pr:[64,"VictorBro","merged"]},
+52:{s:"closed",a:["VictorBro"],pr:[99,"VictorBro","merged"]},
+53:{s:"closed",a:["luca-mattei"],pr:null},
+54:{s:"open",a:["VYAntares"],pr:[69,"VYAntares","open"]},
+76:{s:"open",a:["VictorBro"],pr:[98,"VictorBro","open"]},
+77:{s:"open",a:["bastian-schnitzler"],pr:null},
+78:{s:"open",a:[],pr:null},
+79:{s:"open",a:[],pr:null},
+80:{s:"open",a:[],pr:null},
+81:{s:"open",a:[],pr:null},
+82:{s:"open",a:[],pr:null},
+83:{s:"open",a:[],pr:null},
+84:{s:"open",a:["bastian-schnitzler"],pr:null},
+85:{s:"open",a:[],pr:null},
+86:{s:"open",a:[],pr:null},
+87:{s:"open",a:[],pr:null},
+88:{s:"open",a:[],pr:null},
+89:{s:"open",a:[],pr:null},
+90:{s:"open",a:["bastian-schnitzler"],pr:null},
+91:{s:"open",a:[],pr:null},
+92:{s:"open",a:[],pr:null},
+93:{s:"open",a:[],pr:null},
+94:{s:"open",a:[],pr:null},
+95:{s:"open",a:[],pr:null},
+96:{s:"open",a:[],pr:null},
+97:{s:"open",a:[],pr:null}};
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+/* Responsible: whoever opened the linked PR, else the first assignee. */
+const responsible=i=>i.pr?i.pr[1]:(i.a[0]||null);
+/* Closed, else in work when someone is responsible, else open. */
+const statusOf=i=>i.s==='closed'?'closed':(responsible(i)?'work':'open');
+const STATUS_TEXT={open:'open',work:'in work',closed:'closed'};
+function renderIssues(){
+  document.querySelectorAll('.iss').forEach(el=>{
+    const n=el.dataset.n,i=ISSUES[n];
+    const title=el.dataset.title||el.querySelector('.t').textContent;
+    const st=i?statusOf(i):'open',who=i&&responsible(i),pr=i&&i.pr;
+    const div=document.createElement('div');
+    div.className='iss '+st;div.dataset.n=n;div.dataset.title=title;
+    div.innerHTML='<span class="no">#'+n+'</span>'
+      +(who?'<a class="who" href="https://github.com/'+esc(who)+'" title="Responsible: '+esc(who)+'"><img src="https://github.com/'+esc(who)+'.png?size=32" alt="" width="16" height="16" loading="lazy"><span>'+esc(who)+'</span></a>':'')
+      +'<a class="t" href="'+issueUrl(n)+'" title="Issue #'+n+', '+STATUS_TEXT[st]+'">'+esc(title)+'<span class="sr"> ('+STATUS_TEXT[st]+')</span></a>'
+      +(pr?'<a class="pr" href="https://github.com/'+repo+'/pull/'+pr[0]+'" title="Linked PR #'+pr[0]+', '+pr[2]+'"><i class="ti ti-git-pull-request" aria-hidden="true"></i>#'+pr[0]+'</a>':'');
+    el.replaceWith(div);
+  });
+}
 const linkify=s=>s.replace(/#(\d+)/g,(m,n)=>'<a href="'+issueUrl(n)+'" title="Open issue #'+n+' on GitHub">#'+n+'</a>');
 
 /* Milestone 2 graph, from milestone2_groups.mermaid. Layout pins and removed edges are left out. */
@@ -283,8 +354,9 @@ graph.querySelectorAll('.gn p').forEach(p=>{
 });
 function syncGraphStates(){
   graph.querySelectorAll('a.inum').forEach(a=>{
-    const d=document.querySelector('.iss[data-n="'+a.dataset.n+'"] .dot');
-    a.classList.toggle('closed',!!d&&d.classList.contains('closed'));
+    const i=ISSUES[a.dataset.n],st=i?statusOf(i):'open';
+    a.classList.toggle('closed',st==='closed');a.classList.toggle('work',st==='work');
+    a.title='Issue #'+a.dataset.n+', '+STATUS_TEXT[st];
   });
 }
 const labels=EDGES.map(e=>{const d=document.createElement('div');d.className='elbl';d.innerHTML=e[3].map(linkify).join('<br>');graph.appendChild(d);return d;});
@@ -305,6 +377,7 @@ function drawGraph(){
     labels[i].style.top=((y1+y2)/2)+'px';
   });
 }
+renderIssues();
 drawGraph();syncGraphStates();
 if('ResizeObserver' in window)new ResizeObserver(drawGraph).observe(graph);
 addEventListener('load',drawGraph);
@@ -312,7 +385,7 @@ if(document.fonts&&document.fonts.ready)document.fonts.ready.then(drawGraph);
 
 function setProgress(section){
   const chips=[...section.querySelectorAll('.iss')];
-  const closed=chips.filter(c=>c.querySelector('.dot').classList.contains('closed')).length;
+  const closed=chips.filter(c=>c.classList.contains('closed')).length;
   const total=chips.length;
   const bar=section.querySelector('.bar');
   bar.setAttribute('aria-valuenow',closed);bar.setAttribute('aria-valuemax',total);
@@ -320,17 +393,17 @@ function setProgress(section){
   section.querySelector('.prog-t').textContent=closed+' of '+total+' issues closed';
 }
 
-/* Refresh issue states from the public API; keep the snapshot if it fails or is rate-limited. */
+/* Refresh state and assignees from the public API; keep the snapshot if it fails or is rate-limited. */
 document.querySelectorAll('section.ms').forEach(async section=>{
   try{
     const r=await fetch('https://api.github.com/repos/'+repo+'/issues?milestone='+section.dataset.milestone+'&state=all&per_page=100',{headers:{accept:'application/vnd.github+json'}});
     if(!r.ok)return;
     const issues=await r.json();
-    const state=new Map(issues.map(i=>[String(i.number),i.state]));
-    section.querySelectorAll('.iss').forEach(a=>{
-      const s=state.get(a.dataset.n);if(!s)return;
-      const d=a.querySelector('.dot');d.className='dot '+s;d.textContent=s;
+    issues.forEach(g=>{
+      const i=ISSUES[g.number];if(!i||g.pull_request)return;
+      i.s=g.state;i.a=(g.assignees||[]).map(u=>u.login);
     });
+    renderIssues();
     setProgress(section);
     syncGraphStates();
   }catch(e){}
