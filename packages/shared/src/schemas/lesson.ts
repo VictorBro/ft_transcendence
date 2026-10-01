@@ -125,13 +125,10 @@ export const LessonSummarySchema = text(LESSON_SUMMARY_MAX);
 
 /**
  * The only fold: the title check, the generator's clash check and the search
- * all compare text through it. The letters NFD cannot split are replaced
- * first, umlauts included, since NFD would otherwise turn `ä` into `a`.
+ * all compare text through it. NFD turns umlauts into their bare vowel, so
+ * `Madchen` finds `Mädchen`; the letters NFD cannot split are spelled out.
  */
 const FOLDED_LETTERS = {
-  ä: 'ae',
-  ö: 'oe',
-  ü: 'ue',
   ß: 'ss',
   œ: 'oe',
   æ: 'ae',
@@ -160,7 +157,10 @@ export const LessonBriefSchema = z.strictObject({
   points: z.array(text(BRIEF_TEXT_MAX)).min(BRIEF_POINTS.min).max(BRIEF_POINTS.max),
   examples: z.array(text(BRIEF_TEXT_MAX)).min(BRIEF_EXAMPLES.min).max(BRIEF_EXAMPLES.max),
   pitfalls: z.array(text(BRIEF_TEXT_MAX)).min(BRIEF_PITFALLS.min).max(BRIEF_PITFALLS.max),
-  /** Required on vocabulary lessons, optional on the others. */
+  /**
+   * The one optional part of the brief: LessonEntrySchema requires it on
+   * vocabulary lessons, the other kinds may leave it out.
+   */
   vocabulary: z
     .array(VocabularyEntrySchema)
     .min(BRIEF_VOCABULARY.min)

@@ -131,16 +131,16 @@ describe('LessonIdSchema', () => {
 });
 
 describe('foldText', () => {
-  it('lowercases, drops accents and spells out the letters NFD cannot split', () => {
+  it('lowercases, drops accents and umlauts and spells out the letters NFD cannot split', () => {
     expect(foldText('Élève')).toBe('eleve');
     expect(foldText('Straße')).toBe('strasse');
     expect(foldText('Œuvre')).toBe('oeuvre');
     expect(foldText('Æsthetik')).toBe('aesthetik');
-    expect(foldText('Übung')).toBe(foldText('uebung'));
-    expect(foldText('Mädchen, schön')).toBe('maedchen, schoen');
+    expect(foldText('Übung')).toBe(foldText('ubung'));
+    expect(foldText('Mädchen, schön, Tür')).toBe('madchen, schon, tur');
     expect(foldText('Ça va ?')).toBe('ca va ?');
     // Typed on some keyboards as a plus a combining diaeresis.
-    expect(foldText('Ma\u0308dchen')).toBe('maedchen');
+    expect(foldText('Ma\u0308dchen')).toBe('madchen');
   });
 });
 
@@ -210,6 +210,15 @@ describe('LessonEntrySchema', () => {
 
   it('rejects a vocabulary lesson without vocabulary', () => {
     expect(LessonEntrySchema.safeParse({ ...vocabularyLesson, brief }).success).toBe(false);
+  });
+
+  // Only brief.vocabulary is optional on the other kinds, never the brief itself.
+  it('requires the brief on every kind and allows vocabulary on any', () => {
+    const { brief: _, ...withoutBrief } = grammarLesson;
+    expect(LessonEntrySchema.safeParse(withoutBrief).success).toBe(false);
+    expect(
+      LessonEntrySchema.safeParse({ ...grammarLesson, brief: { ...brief, vocabulary } }).success,
+    ).toBe(true);
   });
 
   it('bounds the brief lists', () => {
