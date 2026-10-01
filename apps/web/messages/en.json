@@ -188,7 +188,12 @@
     },
     "course": {
       "alreadyStarted": "You have already started a course in that language",
-      "notFound": "You have no course in that language yet"
+      "notFound": "You have no course in that language yet",
+      "notPlaced": "Take the placement test first to start this course"
+    },
+    "lesson": {
+      "notFound": "That lesson does not exist",
+      "invalidScore": "The score must be a whole number from 0 to 100"
     },
     "placement": {
       "inProgress": "A placement test is already running. Finish it first.",
