@@ -245,8 +245,12 @@ footer{font-size:12px;color:var(--text-muted);margin-top:18px}
 </main>
 <script>
 const base='https://github.com/VictorBro/ft_transcendence/issues/';
+/* Title and status of each linked issue, as of 1 October 2026, for the hover text. */
+const ISSUE_INFO={43:["feat(api): seed the question bank from content/items", "closed"],44:["docs: record the onboarding and placement decisions", "closed"],45:["refactor(web): a generic api client for pages beyond auth", "closed"],46:["feat(shared): course and placement contracts", "closed"],47:["feat(api): courses module and the unified level write path", "closed"],48:["feat(api): placement exam as a singleton resource over redis", "closed"],49:["feat(web): onboarding, per course", "closed"],50:["feat(web): placement exam page and result", "in work"],51:["feat(web): course dashboard and switcher", "closed"],52:["feat(web): post-auth landing and onboarding guards", "closed"],53:["test(e2e): onboarded account fixture and guard fallout", "closed"],54:["feat(api): generate a question when the pool runs dry", "in work"],71:["feat: 48 placement exam api", "merged pull request"]};
+const hoverText=n=>{const i=ISSUE_INFO[n];return i?'#'+n+': '+i[0]+', '+i[1]:'#'+n;};
+const attr=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 document.querySelectorAll('.intro, .def, .ref span, .leg .m, .rel .d, .note, table.dt td:nth-child(2), table.dt td:nth-child(3), table.dt td:nth-child(4), .ct, .cp, .f, footer').forEach(el=>{
-  el.innerHTML=el.innerHTML.replace(/(^|[^\w&])#(\d+)\b/g,(m,p,n)=>p+'<a class="il" href="'+base+n+'" title="Open issue #'+n+' on GitHub">#'+n+'</a>');
+  el.innerHTML=el.innerHTML.replace(/(^|[^\w&])#(\d+)\b/g,(m,p,n)=>p+'<a class="il" href="'+base+n+'" title="'+attr(hoverText(n))+'">#'+n+'</a>');
 });
 document.querySelectorAll('.jump').forEach(el=>{
   const go=()=>document.getElementById(el.dataset.target).scrollIntoView({block:'start'});

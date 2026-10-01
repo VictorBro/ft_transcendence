@@ -156,8 +156,12 @@ html{scroll-behavior:smooth}
 </main>
 <script>
 const base='https://github.com/VictorBro/ft_transcendence/issues/';
+/* Title and status of each linked issue, as of 1 October 2026, for the hover text. */
+const ISSUE_INFO={77:["feat(shared): lesson contracts and the content checks", "in work"],79:["feat(api): lesson tables, and seed the lessons on every stack", "open"],80:["feat(api): roadmap rules as pure functions", "open"],81:["feat(api): today and all lessons reads, with the lesson search", "open"],82:["feat(api): finish a lesson, meet the goal, keep the streak", "open"]};
+const hoverText=n=>{const i=ISSUE_INFO[n];return i?'#'+n+': '+i[0]+', '+i[1]:'#'+n;};
+const attr=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 document.querySelectorAll('.intro, .def, .ref span, .leg .m, .rel .d').forEach(el=>{
-  el.innerHTML=el.innerHTML.replace(/#(\d+)/g,(m,n)=>'<a class="il" href="'+base+n+'" title="Open issue #'+n+' on GitHub">#'+n+'</a>');
+  el.innerHTML=el.innerHTML.replace(/#(\d+)/g,(m,n)=>'<a class="il" href="'+base+n+'" title="'+attr(hoverText(n))+'">#'+n+'</a>');
 });
 document.querySelectorAll('.jump').forEach(el=>{
   const go=()=>document.getElementById(el.dataset.target).scrollIntoView({block:'start'});
