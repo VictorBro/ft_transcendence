@@ -38,6 +38,8 @@ h1{font-size:26px;font-weight:500;margin:0 0 8px}
 .prog{display:flex;align-items:center;gap:10px;margin-top:12px;font-size:12px;color:var(--gt)}
 .bar{flex:1;max-width:320px;height:8px;border-radius:999px;background:var(--surface-2);border:0.5px solid var(--gd);overflow:hidden}
 .bar span{display:block;height:100%;background:var(--gd);border-radius:999px;transition:width .4s}
+.ms-link{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:13px;font-weight:500;text-decoration:none;color:var(--gt);background:var(--surface-2);border:0.5px solid var(--gd);border-radius:999px;padding:5px 12px}
+.ms-link:hover,.ms-link:focus-visible{text-decoration:underline}
 .ms-body{padding:16px 18px 18px}
 h3{font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin:18px 0 10px}
 h3:first-child{margin-top:0}
@@ -65,6 +67,33 @@ figcaption{font-size:12px;color:var(--text-muted);margin-top:6px;line-height:1.5
 .dm span{font-size:13px;color:var(--gt);opacity:.85;line-height:1.45}
 .legend{display:flex;gap:10px;font-size:12px;color:var(--text-secondary);align-items:center;margin:0 0 8px;flex-wrap:wrap}
 footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
+/* milestone 2 dependency graph */
+:root{--n-base-bg:#e7f5e9;--n-base-bd:#2b8a3e;--n-sink-bg:#ede9fe;--n-sink-bd:#4c1d95;--n-sum-bg:#fff4d6;--n-sum-bd:#d97706;--edge:#8A8983;--edge-crit:#2b8a3e;--lbl-bg:#FFFFFF}
+@media (prefers-color-scheme:dark){:root{--n-base-bg:#173404;--n-base-bd:#639922;--n-sink-bg:#26215C;--n-sink-bd:#7F77DD;--n-sum-bg:#412402;--n-sum-bd:#EF9F27;--edge:#9C9A92;--edge-crit:#97C459;--lbl-bg:#30302E}}
+.gwrap{overflow-x:auto;border:0.5px solid var(--border);border-radius:10px;background:var(--surface-1);padding:16px}
+.gwrap:focus-visible{outline:2px solid var(--text-accent);outline-offset:2px}
+.graph{position:relative;display:grid;grid-template-columns:150px 160px 150px 136px 150px 112px 150px 112px 150px 112px 150px;grid-template-rows:auto auto auto;row-gap:34px;width:max-content;align-items:center}
+.edges{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.edges>path{fill:none;stroke:var(--edge);stroke-width:1.5}
+.edges>path.crit{stroke:var(--edge-crit);stroke-width:3}
+.gn{position:relative;z-index:1;border-radius:8px;border:1.5px solid;padding:8px 10px;font-size:11.5px;line-height:1.35;color:var(--text-primary);text-align:center}
+.gn b{display:block;font-size:13px;font-weight:600}
+.gn span{display:block;color:var(--text-secondary);margin-top:2px}
+.gn p{margin:6px 0 0;display:flex;flex-wrap:wrap;gap:4px;justify-content:center;font-family:var(--font-mono)}
+.gn i{display:block;font-size:10px;letter-spacing:.08em;color:var(--text-muted);margin-top:4px}
+.gn.base{background:var(--n-base-bg);border-color:var(--n-base-bd)}
+.gn.sink{background:var(--n-sink-bg);border-color:var(--n-sink-bd);border-style:dashed}
+.gn.summit{background:var(--n-sum-bg);border-color:var(--n-sum-bd);border-width:3px}
+.gn a.inum{text-decoration:none;font-size:11px;font-weight:500;padding:1px 5px;border-radius:999px;color:var(--open);background:var(--open-bg)}
+.gn a.inum.closed{color:var(--closed);background:var(--closed-bg)}
+.gn a.inum:hover,.gn a.inum:focus-visible{text-decoration:underline}
+.elbl{position:absolute;z-index:2;transform:translate(-50%,-50%);background:var(--lbl-bg);border:0.5px solid var(--border);border-radius:5px;padding:2px 5px;font-family:var(--font-mono);font-size:10.5px;line-height:1.45;color:var(--text-secondary);white-space:nowrap;text-align:center}
+.elbl a{color:var(--text-accent);text-decoration:none}.elbl a:hover,.elbl a:focus-visible{text-decoration:underline}
+.glegend{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;font-size:12px;color:var(--text-secondary);margin:8px 0 0}
+.glegend span{display:inline-flex;align-items:center;gap:6px}
+.swatch{padding:1px 8px;border-radius:5px;border:1.5px solid}
+.swatch.summit{background:var(--n-sum-bg);border-color:var(--n-sum-bd);border-width:2.5px}
+.swatch.sink{background:var(--n-sink-bg);border-color:var(--n-sink-bd);border-style:dashed}
 @media (max-width:700px){
   .flow{flex-direction:column}
   .stage{flex:none}
@@ -90,6 +119,7 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 <h2>Onboarding and Evaluation</h2>
 <p>A new learner chooses a language and a daily goal of 10, 30 or 60 minutes, then takes an adaptive placement exam or sets their level themselves. The exam runs a binary search from B1 over 270 authored questions, with the server owning the clock. The learner then lands on the course home, and can switch between courses or add another language.</p>
 <div class="prog"><div class="bar" role="progressbar" aria-label="Milestone 1 issues closed" aria-valuemin="0" aria-valuemax="12" aria-valuenow="10"><span style="width:83.3%"></span></div><span class="prog-t">10 of 12 issues closed</span></div>
+<a class="ms-link" href="https://github.com/VictorBro/ft_transcendence/milestone/1"><i class="ti ti-brand-github" aria-hidden="true"></i>Open milestone 1 on GitHub<i class="ti ti-arrow-up-right" aria-hidden="true"></i></a>
 </div>
 <div class="ms-body">
 <h3>Map</h3>
@@ -139,11 +169,29 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 <h2>Course Roadmap and Lessons</h2>
 <p>The course page: a daily goal page and an all lessons page over a seeded syllabus of A1 to C2 lessons per language, with results, the streak and level completion. The lesson page itself is the next milestone.</p>
 <div class="prog"><div class="bar" role="progressbar" aria-label="Milestone 2 issues closed" aria-valuemin="0" aria-valuemax="22" aria-valuenow="0"><span style="width:0%"></span></div><span class="prog-t">0 of 22 issues closed</span></div>
+<a class="ms-link" href="https://github.com/VictorBro/ft_transcendence/milestone/2"><i class="ti ti-brand-github" aria-hidden="true"></i>Open milestone 2 on GitHub<i class="ti ti-arrow-up-right" aria-hidden="true"></i></a>
 </div>
 <div class="ms-body">
 <h3>Dependency graph</h3>
-<figure><a href="https://github.com/user-attachments/assets/46f21d80-a017-4983-9cb0-50dd4a046ea2" title="Open the full-size graph"><img src="https://github.com/user-attachments/assets/46f21d80-a017-4983-9cb0-50dd4a046ea2" width="1568" height="258" loading="lazy" alt="Dependency graph of milestone 2 from G1 (docs, contracts, user time zone) through G2a and G2b, G3a and G3b, G4 and G5, to G6a (gamification pages, the summit) and G6b (lesson profiles in DE, EN and FR, the sink)."></a></figure>
-<figcaption>From the milestone on GitHub. The same groups follow below, with a link to each issue.</figcaption>
+<div class="gwrap" tabindex="0" role="group" aria-label="Milestone 2 dependency graph. Scrolls sideways on narrow screens.">
+<div class="graph" id="g2">
+<svg class="edges" aria-hidden="true"><defs>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--edge)"/></marker>
+<marker id="ahc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--edge-crit)"/></marker>
+</defs></svg>
+<div class="gn base" id="G1" style="grid-column:1;grid-row:2"><b>G1</b><span>Doc, Contracts, User Timezone</span><p>#76 #77 #78</p></div>
+<div class="gn base" id="G2a" style="grid-column:3;grid-row:1"><b>G2a</b><span>Lesson Profile (DB), Roadmap Logic, Lesson profile LLM Generator</span><p>#79 #80 #83</p></div>
+<div class="gn base" id="G2b" style="grid-column:3;grid-row:3"><b>G2b</b><span>outline DE, EN, FR: A1 - C2</span><p>#88 #89 #90</p></div>
+<div class="gn base" id="G3a" style="grid-column:5;grid-row:1"><b>G3a</b><span>Roadmap API, Roadmap Write API</span><p>#81 #82</p></div>
+<div class="gn base" id="G3b" style="grid-column:5;grid-row:3"><b>G3b</b><span>French A1 profiles</span><p>#84</p></div>
+<div class="gn base" id="G4" style="grid-column:7;grid-row:2"><b>G4</b><span>demo users, daily goal page, search page</span><p>#85 #86 #87</p></div>
+<div class="gn base" id="G5" style="grid-column:9;grid-row:2"><b>G5</b><span>gamification logic, lesson stub page and e2e tests</span><p>#94 #95 #96</p></div>
+<div class="gn summit" id="G6a" style="grid-column:11;grid-row:1"><b>G6a</b><span>gamification pages</span><p>#97</p><i>SUMMIT</i></div>
+<div class="gn sink" id="G6b" style="grid-column:11;grid-row:3"><b>G6b</b><span>profiles DE, EN, FR: A1 - C2</span><p>#91 #92 #93</p><i>SINK</i></div>
+</div>
+</div>
+<div class="glegend"><span><svg width="34" height="10" aria-hidden="true"><line x1="0" y1="5" x2="34" y2="5" stroke="var(--edge-crit)" stroke-width="3"/></svg>critical path</span><span><svg width="34" height="10" aria-hidden="true"><line x1="0" y1="5" x2="34" y2="5" stroke="var(--edge)" stroke-width="1.5"/></svg>content branch</span><span class="swatch summit">summit</span><span class="swatch sink">sink</span><span>Issue numbers are coloured by state and link to GitHub.</span></div>
+<figcaption>Edges carry the issue-level dependencies they stand for. Edges already implied by an intermediate group are left out, and #84 → #90 is drawn as #90 → #84 to keep the map readable.</figcaption>
 
 <h3>Groups</h3>
 <div class="legend"><span class="dot closed">closed</span><span class="dot open">open</span><span>Groups with the same number (a, b) can run in parallel.</span></div>
@@ -211,6 +259,56 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 <script>
 const repo='VictorBro/ft_transcendence';
 document.querySelectorAll('.iss').forEach(a=>{a.href='https://github.com/'+repo+'/issues/'+a.dataset.n;});
+const issueUrl=n=>'https://github.com/'+repo+'/issues/'+n;
+const linkify=s=>s.replace(/#(\d+)/g,(m,n)=>'<a href="'+issueUrl(n)+'" title="Open issue #'+n+' on GitHub">#'+n+'</a>');
+
+/* Milestone 2 graph, from milestone2_groups.mermaid. Layout pins and removed edges are left out. */
+const EDGES=[
+  ['G1','G2a',true,['#77 → #79, #80','#76, #77 → #83']],
+  ['G2a','G3a',true,['#79, #80 → #81, #82']],
+  ['G3a','G4',true,['#82 → #85','#81, #82 → #86','#81 → #87']],
+  ['G4','G5',true,['#85 → #95','#86, #87 → #96']],
+  ['G5','G6a',true,['#95, #96 → #97']],
+  ['G1','G2b',false,['#76, #77 → #88, #89, #90']],
+  ['G2a','G3b',false,['#79, #83 → #84']],
+  ['G2b','G3b',false,['#90 → #84']],
+  ['G3b','G4',false,['#84 → #86, #87']],
+  ['G3b','G6b',false,['#84 → #93']],
+];
+const graph=document.getElementById('g2');
+const svg=graph.querySelector('svg.edges');
+/* Issue numbers in the nodes become chips coloured by the state shown in the groups list below. */
+graph.querySelectorAll('.gn p').forEach(p=>{
+  p.innerHTML=p.textContent.trim().split(/\s+/).map(t=>{const n=t.slice(1);return '<a class="inum" data-n="'+n+'" href="'+issueUrl(n)+'" title="Open issue #'+n+' on GitHub">#'+n+'</a>';}).join('');
+});
+function syncGraphStates(){
+  graph.querySelectorAll('a.inum').forEach(a=>{
+    const d=document.querySelector('.iss[data-n="'+a.dataset.n+'"] .dot');
+    a.classList.toggle('closed',!!d&&d.classList.contains('closed'));
+  });
+}
+const labels=EDGES.map(e=>{const d=document.createElement('div');d.className='elbl';d.innerHTML=e[3].map(linkify).join('<br>');graph.appendChild(d);return d;});
+function drawGraph(){
+  const g=graph.getBoundingClientRect();
+  const box=id=>{const r=document.getElementById(id).getBoundingClientRect();return{l:r.left-g.left,r:r.right-g.left,t:r.top-g.top,b:r.bottom-g.top,cy:(r.top+r.bottom)/2-g.top};};
+  svg.querySelectorAll(':scope>path').forEach(p=>p.remove());
+  EDGES.forEach(([a,b,crit],i)=>{
+    const s=box(a),t=box(b);
+    const x1=s.r,y1=s.cy,x2=t.l-2,y2=t.cy,dx=Math.max(40,(x2-x1)*0.5);
+    const p=document.createElementNS('http://www.w3.org/2000/svg','path');
+    p.setAttribute('d','M'+x1+','+y1+' C'+(x1+dx)+','+y1+' '+(x2-dx)+','+y2+' '+x2+','+y2);
+    if(crit)p.setAttribute('class','crit');
+    p.setAttribute('marker-end',crit?'url(#ahc)':'url(#ah)');
+    svg.appendChild(p);
+    /* label at the curve's midpoint (t = 0.5 of a symmetric cubic) */
+    labels[i].style.left=((x1+x2)/2)+'px';
+    labels[i].style.top=((y1+y2)/2)+'px';
+  });
+}
+drawGraph();syncGraphStates();
+if('ResizeObserver' in window)new ResizeObserver(drawGraph).observe(graph);
+addEventListener('load',drawGraph);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(drawGraph);
 
 function setProgress(section){
   const chips=[...section.querySelectorAll('.iss')];
@@ -234,6 +332,7 @@ document.querySelectorAll('section.ms').forEach(async section=>{
       const d=a.querySelector('.dot');d.className='dot '+s;d.textContent=s;
     });
     setProgress(section);
+    syncGraphStates();
   }catch(e){}
 });
 </script>
