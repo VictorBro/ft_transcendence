@@ -103,7 +103,7 @@ sequenceDiagram
     A-->>B: 200 SessionUser + Set-Cookie ft.sid
 
     Note over B,C: next navigation
-    B->>C: GET /profile
+    B->>C: GET /learn
     C->>B: served by web (Next)
     Note over C,A: Next's server forwards the cookie
     C->>A: GET /api/auth/me
@@ -208,12 +208,15 @@ network, built from the api `build` stage (`ft_transcendence/api-tooling`).
 flowchart LR
     subgraph net["ft_transcendence_ft"]
         db[("db")]
+        redis[("redis")]
         api["api"]
     end
 
     make["make migrate<br/>make seed<br/>make reset-db"] -->|"throwaway container"| db
     studio["make studio"] -->|"throwaway container"| db
     studio -.->|"127.0.0.1:5555"| browser1["Browser"]
+    redisui["make redis-ui"] -->|"throwaway container"| redis
+    redisui -.->|"127.0.0.1:5540"| browser3["Browser"]
 
     browser2["Browser"] -->|"https://localhost/api/docs"| api
 ```
@@ -222,6 +225,7 @@ flowchart LR
 |---|---|---|
 | **Swagger UI** | `https://localhost/api/docs` | Served by the api itself, so it arrives through Caddy on the same origin. `/api/docs-json` is the raw OpenAPI document. Signed in? The `ft.sid` cookie rides along, so "Try it out" works on guarded routes with nothing to paste. |
 | **Prisma Studio** | `http://127.0.0.1:5555` after `make studio` | Loopback only: it is unauthenticated read-write access to the whole database. `STUDIO_PORT=5556` if the port is taken. Restart it after `make` or `make reset-db`, since db gets a new container and Studio keeps the old connection. |
+| **RedisInsight** | `http://127.0.0.1:5540` after `make redis-ui` | Loopback only, for the same reason: it reads and deletes any key, with no login. Shows sessions and placement runs live. `REDIS_UI_PORT=5541` if the port is taken. Nothing is kept between runs; the connection comes from the environment. |
 
 There is no Adminer or pgAdmin service in this project; Prisma Studio is the
 database browser, and it already knows the schema.

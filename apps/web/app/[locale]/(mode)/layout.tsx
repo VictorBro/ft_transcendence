@@ -18,8 +18,8 @@ export default async function ModeLayout({ children }: { children: ReactNode }) 
     <Shell
       brand={
         <Link
-          href="/dashboard"
-          aria-label={t('backToDashboard')}
+          href="/learn"
+          aria-label={t('backToCourse')}
           className="flex h-6 w-6 items-center justify-center rounded-full text-slate-400 transition-colors hover:bg-slate-800 hover:text-slate-100"
         >
           ✕

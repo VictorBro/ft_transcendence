@@ -19,9 +19,9 @@ export function LoginForm() {
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
 
-  /** Landing on the profile proves the cookie survived the round trip. */
+  /** /learn reads the session on the server, which proves the cookie survived. */
   function done() {
-    router.replace('/');
+    router.replace('/learn');
     router.refresh();
   }
 

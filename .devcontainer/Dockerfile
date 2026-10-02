@@ -154,6 +154,7 @@ RUN echo 'node ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/node \
 # root-owned and every write fails with EACCES.
 RUN mkdir -p \
         /home/node/.claude \
+        /home/node/.gemini \
         /home/node/.cache/pnpm/store \
         /home/node/.config/gh \
         /home/node/.ssh \
