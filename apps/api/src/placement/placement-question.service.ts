@@ -12,12 +12,14 @@ import { ExamSession } from './placement.schema';
 
 import { QuestionBank } from '../generated/prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
-import { QuestionGenerationService } from '../questions-generation/questions-generation.service';
+import {
+  QuestionGenerationService,
+  REPLENISH_WHEN_REMAINING_AT_MOST,
+} from '../questions-generation/questions-generation.service';
 
-export const FETCH_NEW_QUESTIONS_FOR_CATEGORY_WHEN_REMAINING_LESS_THAN = 6;
 export const LIMIT_UNSEEN_QUESTIONS_TO_RETRIEVE = Math.max(
   100,
-  FETCH_NEW_QUESTIONS_FOR_CATEGORY_WHEN_REMAINING_LESS_THAN,
+  REPLENISH_WHEN_REMAINING_AT_MOST + 1,
 );
 export const MAX_QUESTIONS_PER_LEVEL = PLACEMENT_ROUNDS.perCategory * QUESTION_CATEGORIES.length;
 
@@ -71,7 +73,7 @@ export class PlacementQuestionService {
       });
 
       availableByCategory[cat] = questions.length;
-      if (questions.length < FETCH_NEW_QUESTIONS_FOR_CATEGORY_WHEN_REMAINING_LESS_THAN) {
+      if (questions.length <= REPLENISH_WHEN_REMAINING_AT_MOST) {
         this.questionGeneration.triggerReplenish(session.lang, level, cat);
       }
       if (questions.length > 0) {

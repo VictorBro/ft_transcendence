@@ -11,6 +11,9 @@ import { LLM_PROVIDER, LlmProvider } from '../llm/llm.interface';
 import { buildGenerateQuestionsPrompt } from './prompts/generate-questions.prompt';
 import { QuestionBank } from '../generated/prisma/client';
 
+/** A cell (lang + level + category) is restocked once a learner has this many unseen questions or fewer left. */
+export const REPLENISH_WHEN_REMAINING_AT_MOST = 3;
+
 /**
  * Service managing on-demand question replenishment and serving for placement exams.
  *
@@ -72,7 +75,9 @@ export class QuestionGenerationService {
       },
     });
 
-    if (remainingCount <= 2) this.triggerReplenish(lang, level, category);
+    if (remainingCount <= REPLENISH_WHEN_REMAINING_AT_MOST) {
+      this.triggerReplenish(lang, level, category);
+    }
 
     return this.serveQuestion(userId, lang, level, category, excludeQuestionIds);
   }

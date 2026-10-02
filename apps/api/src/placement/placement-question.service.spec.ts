@@ -8,9 +8,11 @@ import type { ExamSession } from './placement.schema';
 import { examSession, questionRow } from '../../test/placement.fixtures';
 import type { QuestionBank } from '../generated/prisma/client';
 import type { PrismaService } from '../prisma/prisma.service';
-import type { QuestionGenerationService } from '../questions-generation/questions-generation.service';
 import {
-  FETCH_NEW_QUESTIONS_FOR_CATEGORY_WHEN_REMAINING_LESS_THAN,
+  type QuestionGenerationService,
+  REPLENISH_WHEN_REMAINING_AT_MOST,
+} from '../questions-generation/questions-generation.service';
+import {
   LIMIT_UNSEEN_QUESTIONS_TO_RETRIEVE,
   PlacementQuestionService,
 } from './placement-question.service';
@@ -120,9 +122,8 @@ describe('PlacementQuestionService', () => {
     });
 
     it('restocks in the background each open category running low on unseen rows', async () => {
-      const plenty = Array.from(
-        { length: FETCH_NEW_QUESTIONS_FOR_CATEGORY_WHEN_REMAINING_LESS_THAN },
-        () => questionRow({ category: 'vocabulary' }),
+      const plenty = Array.from({ length: REPLENISH_WHEN_REMAINING_AT_MOST + 1 }, () =>
+        questionRow({ category: 'vocabulary' }),
       );
       const { service, questionGeneration } = serviceWith({ grammar, vocabulary: plenty });
 

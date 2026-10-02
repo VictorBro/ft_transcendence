@@ -61,9 +61,9 @@ describe('QuestionGenerationService', () => {
     );
   });
 
-  describe('When pool is sufficiently stocked (> 2 questions remaining)', () => {
+  describe('When pool is sufficiently stocked (> 3 questions remaining)', () => {
     it('serves the question directly without triggering LLM replenishment', async () => {
-      prismaMock.questionBank.count.mockResolvedValue(3);
+      prismaMock.questionBank.count.mockResolvedValue(4);
       prismaMock.questionBank.findFirst.mockResolvedValue(DUMMY_QUESTION);
 
       const result = await service.getOrGenerateQuestion('user-1', 'fr', 'A1', 'grammar');
@@ -83,7 +83,7 @@ describe('QuestionGenerationService', () => {
     });
   });
 
-  describe('When pool runs dry (<= 2 questions remaining)', () => {
+  describe('When pool runs dry (<= 3 questions remaining)', () => {
     it('triggers LLM generation, persists one item per topic with sourceId = null, and serves a question', async () => {
       prismaMock.questionBank.count.mockResolvedValue(1);
       prismaMock.questionBank.findFirst.mockResolvedValue(DUMMY_QUESTION);
