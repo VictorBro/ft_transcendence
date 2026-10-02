@@ -106,14 +106,22 @@ export interface Account {
   storageState: StorageState;
 }
 
+/**
+ * The longest name the schema allows, and the worst case for a layout: names
+ * are letters, digits, dots, underscores and hyphens, so 32 characters can
+ * arrive with nothing to break on. Unique per call, because signup is.
+ */
+const longestDisplayName = (): string =>
+  `browser${crypto.randomUUID().replace(/-/g, '').slice(0, 25)}`;
+
 /** Signs up in a throwaway context, runs `setUp` as that user, keeps the cookies. */
 const newAccount = async (
   browser: Browser,
   setUp: (page: Page) => Promise<void> = async () => {},
+  fields: Identity = identity(),
 ): Promise<Account> => {
   const context = await browser.newContext();
   const page = await context.newPage();
-  const fields = identity();
 
   await createAccount(page, fields);
   await setUp(page);
@@ -148,7 +156,9 @@ const pageFor = async (
  * started a course on it would break that for every later test in the worker.
  * `onboardedAccount` has ONBOARDED_COURSE placed, so the course home and
  * everything behind it render. Tests add at most SECOND_COURSE, always placed:
- * specs rely on it having no unplaced course and no English one.
+ * specs rely on it having no unplaced course and no English one. It also has
+ * the longest display name allowed, so layout.spec.ts can gate phone widths on
+ * it rather than pay one more signup per worker against the 30 a minute.
  */
 export const test = base.extend<
   { signedIn: Page; onboarded: Page; freshLearner: Page },
@@ -163,7 +173,12 @@ export const test = base.extend<
 
   onboardedAccount: [
     async ({ browser }, use) => {
-      await use(await newAccount(browser, (page) => placeCourse(page, ONBOARDED_COURSE)));
+      await use(
+        await newAccount(browser, (page) => placeCourse(page, ONBOARDED_COURSE), {
+          ...identity(),
+          displayName: longestDisplayName(),
+        }),
+      );
     },
     { scope: 'worker' },
   ],

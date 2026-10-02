@@ -12,22 +12,29 @@ import { ExamSession } from './placement.schema';
 
 import { QuestionBank } from '../generated/prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
+import {
+  QuestionGenerationService,
+  REPLENISH_WHEN_REMAINING_AT_MOST,
+} from '../questions-generation/questions-generation.service';
 
-export const FETCH_NEW_QUESTIONS_FOR_CATEGORY_WHEN_REMAINING_LESS_THAN = 6;
 export const LIMIT_UNSEEN_QUESTIONS_TO_RETRIEVE = Math.max(
   100,
-  FETCH_NEW_QUESTIONS_FOR_CATEGORY_WHEN_REMAINING_LESS_THAN,
+  REPLENISH_WHEN_REMAINING_AT_MOST + 1,
 );
 export const MAX_QUESTIONS_PER_LEVEL = PLACEMENT_ROUNDS.perCategory * QUESTION_CATEGORIES.length;
 
 @Injectable()
 export class PlacementQuestionService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly questionGeneration: QuestionGenerationService,
+  ) {}
 
   /**
    * Retrieves a new question for the user's current level, balancing question categories.
    * Prioritizes randomly selected unseen questions from the question bank and falls back to
    * least-recently-seen questions not yet served in the current session when the unseen pool is exhausted.
+   * Any category running low on unseen questions is restocked in the background, without delaying this draw.
    *
    * @throws ConflictException If the exam has ended (`placement.expired`).
    * @throws NotFoundException If no questions exist in the pool for this level (`placement.poolExhausted`).
@@ -45,6 +52,7 @@ export class PlacementQuestionService {
     );
 
     const pool = eligibleCategories.length > 0 ? eligibleCategories : QUESTION_CATEGORIES;
+    const level = LEVELS[Math.max(0, Math.min(session.level, LEVELS.length - 1))];
 
     const availableByCategory: Partial<Record<QuestionCategory, number>> = {};
     const availableCategoryQuestions: QuestionBank[][] = [];
@@ -53,7 +61,7 @@ export class PlacementQuestionService {
       const questions = await this.prisma.questionBank.findMany({
         where: {
           lang: session.lang,
-          level: LEVELS[Math.max(0, Math.min(session.level, LEVELS.length - 1))],
+          level,
           category: cat,
           userSeenQuestions: {
             none: {
@@ -65,6 +73,9 @@ export class PlacementQuestionService {
       });
 
       availableByCategory[cat] = questions.length;
+      if (questions.length <= REPLENISH_WHEN_REMAINING_AT_MOST) {
+        this.questionGeneration.triggerReplenish(session.lang, level, cat);
+      }
       if (questions.length > 0) {
         availableCategoryQuestions.push(questions);
       }
@@ -75,15 +86,6 @@ export class PlacementQuestionService {
       const chosenCategoryQuestions = availableCategoryQuestions[randomCategoryIndex];
       const randomQuestionIndex = Math.floor(Math.random() * chosenCategoryQuestions.length);
       return [availableByCategory, chosenCategoryQuestions[randomQuestionIndex]];
-    }
-
-    if (
-      Object.values(availableByCategory).some(
-        (available) => available < FETCH_NEW_QUESTIONS_FOR_CATEGORY_WHEN_REMAINING_LESS_THAN,
-      )
-    ) {
-      // todo for later PR: insert new questions into database, but asynchronously without user noticing
-      // todo for Endrit: add parameter of alreadySeenQuestions to your function to not serve another function the user has already seen during the current session
     }
 
     const excludeQuestionIds = session.answers.map((answer) => answer.questionId);
@@ -99,7 +101,7 @@ export class PlacementQuestionService {
           : {}),
         questionBank: {
           lang: session.lang,
-          level: LEVELS[Math.max(0, Math.min(session.level, LEVELS.length - 1))],
+          level,
           category: { in: [...pool] },
         },
       },
