@@ -263,14 +263,16 @@
     "optionLabel": "Antwortoptionen",
     "quitButton": "Test beenden",
     "resultHeading": "Einstufungstest",
-    "headingReport": "Einstufungsbericht",
     "reportQuestion": "Fragen",
     "yourAnswer": "Deine Antwort",
     "noAnswer": "Keine Antwort",
+    "correct": "Richtig",
+    "incorrect": "Falsch",
     "correctAnswer": "Richtige Antwort",
     "levelLabel": "Zielniveau für deine Lektionen",
     "notPlaced": "Du wurdest noch nicht eingestuft.",
     "closeButton": "Schließen",
-    "closing": "Wird geschlossen…"
+    "closing": "Wird geschlossen…",
+    "continueButton": "Weiterlernen"
   }
 }

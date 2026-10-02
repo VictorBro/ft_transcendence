@@ -267,6 +267,8 @@
     "reportQuestion": "Questions",
     "yourAnswer": "Votre réponse",
     "correctAnswer": "Réponse correcte",
+    "correct": "Correct",
+    "incorrect": "Incorrect",
     "noAnswer": "Aucune réponse",
     "levelLabel": "Votre niveau cible est",
     "notPlaced": "Pas encore défini",

@@ -55,9 +55,9 @@ function CountdownRing({ remaining, total }: { remaining: number; total: number 
 }
 
 function ProgressBar({ answered, total }: { answered: number; total: number }) {
-  const percentage = (answered / total) * 100;
+  const percentage = total === 0 ? 0 : (answered / total) * 100;
   return (
-    <div className="h-2 w-full rounded-full bg-slate-800">
+    <div className="h-2 flex-1 rounded-full bg-slate-800">
       <div
         className="h-full rounded-full bg-indigo-500 transition-all"
         style={{ width: `${percentage}%` }}
@@ -106,8 +106,9 @@ export function PlacementExam({
 
   const timeOut = useRef<string | null>(null);
 
-  //The useEffect depends on [question] which means dont touch anything is the question (object) did not change
-  //get time allowed for a specific question
+  //The useEffect depends on [question] which means dont
+  //touch anything is the question (object) did not
+  //change get time allowed for a specific question
   useEffect(() => {
     if (question === null) {
       return;
@@ -160,13 +161,14 @@ export function PlacementExam({
   async function quit() {
     setPending(true);
     try {
-      // const result =
-      await quitPlacement();
-      // To check, if we dont check for !result.ok => redis session stay active and user cannot retake placement. But it will block him from leaving placement.
-      // if (!result.ok) {
-      //   setError(errorMessage(result.code, result.status));
-      //   return;
-      // }
+      const result = await quitPlacement();
+      // if we dont check for !result.ok => redis session stay active
+      // and user cannot retake placement. But it may block him from
+      // leaving placement in case of an error.
+      if (!result.ok) {
+        setError(errorMessage(result.code, result.status));
+        return;
+      }
       router.push('/onboarding');
     } finally {
       setPending(false);
@@ -200,8 +202,7 @@ export function PlacementExam({
             <span className="text-xs font-semibold tracking-widest text-indigo-300 uppercase">
               {t('levelLabel')}
             </span>
-            {/* <span className="text-6xl font-bold text-end text-indigo-300">{state.targetLevel}</span> */}
-            <span className="text-6xl font-bold text-end text-indigo-300">{state.level}</span>
+            <span className="text-6xl font-bold text-end text-indigo-300">{state.targetLevel}</span>
           </div>
 
           <table className="w-full text-left text-sm">
@@ -218,13 +219,15 @@ export function PlacementExam({
                 <tr key={entry.questionId} className="border-t border-slate-800">
                   <td className="py-2 pr-4 text-slate-300">{entry.question}</td>
                   <td className="py-2 pr-4 text-slate-300">{entry.chosen ?? t('noAnswer')}</td>
-                  {entry.chosen === entry.correct ? (
+                  {entry.wasCorrect ? (
                     <td className="py-2 text-slate-400"></td>
                   ) : (
                     <td className="py-2 text-slate-400">{entry.correct}</td>
                   )}
                   <td className="py-2 text-center text-lg">
-                    <span>{entry.chosen === entry.correct ? '✓' : '❌'}</span>
+                    <span role="img" aria-label={entry.wasCorrect ? t('correct') : t('incorrect')}>
+                      {entry.wasCorrect ? '✓' : '❌'}
+                    </span>
                   </td>
                 </tr>
               ))}
@@ -260,9 +263,11 @@ export function PlacementExam({
   return (
     <div className="mx-auto flex w-full h-full max-w-2xl flex-col gap-6 overflow-y-auto py-6">
       <div className="flex items-center justify-between text-sm text-slate-400 gap-7">
-        {/* <ProgressBar answered={state.progress.answered} total={state.progress.maxRemaining} /> */}
-        <ProgressBar answered={state.progress.answered} total={state.progress.total} />
-        <span role="timer" aria-live="polite">
+        <ProgressBar
+          answered={state.progress.answered}
+          total={state.progress.answered + state.progress.maxQuestionsRemaining}
+        />
+        <span role="timer" aria-live="polite" className="shrink-0">
           <CountdownRing remaining={remaining} total={state.timeLimitS} />
         </span>
       </div>

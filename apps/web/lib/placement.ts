@@ -1,5 +1,3 @@
-// import { PlacementQuestionSchema, PlacementResult, PlacementResultSchema } from '@ft/shared';
-// import { z } from 'zod';
 import {
   type FetchSessionOptions,
   buildApiUrl,
@@ -48,7 +46,7 @@ export async function fetchPlacement(options: FetchSessionOptions): Promise<Plac
 
     const parsed = await PlacementStateSchema.safeParseAsync(await response.json());
     if (!parsed.success) {
-      return { status: 'unavailable', reason: 'the API an unexpected payload' };
+      return { status: 'unavailable', reason: 'the API returned an unexpected payload' };
     }
 
     return { status: 'ok', data: parsed.data };
