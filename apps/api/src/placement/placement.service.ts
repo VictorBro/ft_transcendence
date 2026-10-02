@@ -18,10 +18,7 @@ import { PlacementProgressService } from './placement-progress.service';
 import { StartPlacementDto, SubmitAnswerDto } from './placement.dto';
 
 export { PLACEMENT_REDIS_KEY_TTL } from './placement-session.service';
-export {
-  FETCH_NEW_QUESTIONS_FOR_CATEGORY_WHEN_REMAINING_LESS_THAN,
-  MAX_QUESTIONS_PER_LEVEL,
-} from './placement-question.service';
+export { MAX_QUESTIONS_PER_LEVEL } from './placement-question.service';
 export { NETWORK_GRACE_S } from './placement-progress.service';
 export const START_LEVEL = 'B1';
 

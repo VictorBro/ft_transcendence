@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 
 import { CoursesModule } from '../courses/courses.module';
+import { QuestionGenerationModule } from '../questions-generation/questions-generation.module';
 import { PlacementController } from './placement.controller';
 import { PlacementService } from './placement.service';
 import { PlacementSessionService } from './placement-session.service';
@@ -8,7 +9,7 @@ import { PlacementQuestionService } from './placement-question.service';
 import { PlacementProgressService } from './placement-progress.service';
 
 @Module({
-  imports: [CoursesModule],
+  imports: [CoursesModule, QuestionGenerationModule],
   controllers: [PlacementController],
   providers: [
     PlacementService,
