@@ -99,7 +99,7 @@ export class QuestionGenerationService {
    *    otherwise the cell would stay marked as running and never be replenished again.
    * 5. Registers the job in inFlight so concurrent requests see it.
    */
-  private triggerReplenish(lang: Language, level: Level, category: QuestionCategory): void {
+  triggerReplenish(lang: Language, level: Level, category: QuestionCategory): void {
     // 1. One key per cell: same lang + level + category = same key
     const key = `${lang}:${level}:${category}`;
     if (this.inFlight.has(key)) return; // Already generating for this cell, do not start a duplicate

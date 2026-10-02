@@ -8,7 +8,9 @@ import type { ExamSession } from './placement.schema';
 import { examSession, questionRow } from '../../test/placement.fixtures';
 import type { QuestionBank } from '../generated/prisma/client';
 import type { PrismaService } from '../prisma/prisma.service';
+import type { QuestionGenerationService } from '../questions-generation/questions-generation.service';
 import {
+  FETCH_NEW_QUESTIONS_FOR_CATEGORY_WHEN_REMAINING_LESS_THAN,
   LIMIT_UNSEEN_QUESTIONS_TO_RETRIEVE,
   PlacementQuestionService,
 } from './placement-question.service';
@@ -29,7 +31,15 @@ function serviceWith(unseen: Partial<Record<QuestionCategory, QuestionBank[]>> =
       upsert: vi.fn(),
     },
   };
-  return { prisma, service: new PlacementQuestionService(prisma as unknown as PrismaService) };
+  const questionGeneration = { triggerReplenish: vi.fn() };
+  return {
+    prisma,
+    questionGeneration,
+    service: new PlacementQuestionService(
+      prisma as unknown as PrismaService,
+      questionGeneration as unknown as QuestionGenerationService,
+    ),
+  };
 }
 
 describe('PlacementQuestionService', () => {
@@ -107,6 +117,20 @@ describe('PlacementQuestionService', () => {
         take: 10,
         include: { questionBank: true },
       });
+    });
+
+    it('restocks in the background each open category running low on unseen rows', async () => {
+      const plenty = Array.from(
+        { length: FETCH_NEW_QUESTIONS_FOR_CATEGORY_WHEN_REMAINING_LESS_THAN },
+        () => questionRow({ category: 'vocabulary' }),
+      );
+      const { service, questionGeneration } = serviceWith({ grammar, vocabulary: plenty });
+
+      await service.getNewQuestion('u-1', examSession());
+
+      expect(questionGeneration.triggerReplenish).toHaveBeenCalledTimes(2);
+      expect(questionGeneration.triggerReplenish).toHaveBeenCalledWith('de', 'B1', 'grammar');
+      expect(questionGeneration.triggerReplenish).toHaveBeenCalledWith('de', 'B1', 'reading');
     });
 
     it('throws placement.poolExhausted when the level has nothing left to serve', async () => {
