@@ -1,6 +1,6 @@
 import type { Page } from '@playwright/test';
 
-import { expect, ONBOARDED_COURSE, test } from '../support/session';
+import { expect, ONBOARDED_COURSE, placeCourse, test } from '../support/session';
 
 /**
  * The acceptance criteria of #50 that only a browser can check: that no response
@@ -46,6 +46,13 @@ test.describe('placement exam', () => {
 
   test.afterEach(async ({ onboarded }) => {
     await clearRun(onboarded);
+    /*
+     * The level is restored too, not just the run: a run that reaches its end
+     * writes the verdict through setLevel, and the account is worker-scoped. Left
+     * alone, the exam's level would fail course.spec.ts, which expects
+     * ONBOARDED_COURSE.level — in another file, for no visible reason.
+     */
+    await placeCourse(onboarded, ONBOARDED_COURSE);
   });
 
   test('a signed out visitor is sent to the login page', async ({ page }) => {
@@ -71,27 +78,43 @@ test.describe('placement exam', () => {
    */
   test('no response carries the answer to the question on screen', async ({ onboarded }) => {
     const payloads: string[] = [];
+    // The bodies are collected as promises and awaited below. Reading them
+    // fire-and-forget races the assertions, which then run over an empty list
+    // and pass without having looked at anything.
+    const reading: Promise<void>[] = [];
     onboarded.on('response', (response) => {
       if (!response.url().includes('/api/placement')) {
         return;
       }
-      void response
-        .text()
-        .then((body) => payloads.push(body))
-        .catch(() => {
-          /* a 204 has no body to read */
-        });
+      reading.push(
+        response.text().then(
+          (body) => {
+            payloads.push(body);
+          },
+          () => {
+            /* a 204 has no body to read */
+          },
+        ),
+      );
     });
 
     await startRun(onboarded);
+
+    // The answer response is the one worth checking, and it is awaited by URL:
+    // networkidle can settle before it has been received, which would leave only
+    // the start response under assertion.
+    const answered = onboarded.waitForResponse((response) =>
+      response.url().includes('/api/placement/answers'),
+    );
     await options(onboarded).getByRole('button').first().click();
+    await answered;
     await expect(question(onboarded)).toBeVisible();
 
-    // networkidle is what the console gate waits on, so this also proves the
-    // page settles between questions instead of polling for the clock.
-    await onboarded.waitForLoadState('networkidle');
+    await Promise.all(reading);
 
-    expect(payloads.length).toBeGreaterThan(0);
+    // Both of them: the start and the answer. One alone would mean the wait above
+    // let the test through before the exam had moved on.
+    expect(payloads.length).toBeGreaterThan(1);
     for (const body of payloads) {
       expect(body).not.toContain('"answer"');
       expect(body).not.toContain('"correct"');
@@ -117,11 +140,11 @@ test.describe('placement exam', () => {
   /**
    * Time runs out, nobody clicks, and the exam still moves on.
    *
-   * Deliberately slow: the countdown is waited out for real, because the
-   * trigger lives inside a React state updater and a faked clock (page.clock)
-   * advances the interval without React ever processing the update, so the
-   * submission never fires and the test passes or fails for the wrong reason.
-   * A seeded question allows up to 165 seconds, hence the timeout below.
+   * Deliberately slow: the countdown is waited out for real. A seeded question
+   * allows up to 165 seconds, hence the timeout below. The submission is now a
+   * plain setTimeout rather than a side effect inside a state updater, so
+   * page.clock could drive it instead — left for its own change, since a faked
+   * clock has to be installed before the first navigation the fixture makes.
    */
   test('the countdown running out answers for the learner', async ({ onboarded }) => {
     test.setTimeout(240_000);
@@ -144,13 +167,16 @@ test.describe('placement exam', () => {
     test.setTimeout(180_000);
     await startRun(onboarded);
 
-    const asked: string[] = [];
+    const asked: { question: string; chosen: string }[] = [];
     const ended = onboarded.getByRole('heading', { name: 'Placement report' });
 
     for (let step = 0; step < 30 && !(await ended.isVisible()); step += 1) {
       const current = await question(onboarded).innerText();
-      asked.push(current);
-      await options(onboarded).getByRole('button').first().click();
+      const first = options(onboarded).getByRole('button').first();
+      // Read before the click: the option is gone once the exam moves on, and
+      // the report has to show back what was picked.
+      asked.push({ question: current, chosen: await first.innerText() });
+      await first.click();
 
       /*
        * Waited on positively, because both outcomes are possible and a negative
@@ -172,8 +198,13 @@ test.describe('placement exam', () => {
     await expect(ended).toBeVisible();
     await expect(report(onboarded)).toHaveCount(asked.length);
 
-    for (const [index, text] of asked.entries()) {
-      await expect(report(onboarded).nth(index).locator('td').first()).toHaveText(text);
+    for (const [index, entry] of asked.entries()) {
+      const cells = report(onboarded).nth(index).locator('td');
+      await expect(cells.nth(0)).toHaveText(entry.question);
+      await expect(cells.nth(1)).toHaveText(entry.chosen);
+      // Filled on every row, including the ones answered correctly: a blank cell
+      // there leaves the learner checking their answer against nothing.
+      await expect(cells.nth(2)).not.toBeEmpty();
     }
 
     // Red and green: every row carries its verdict, named for a screen reader
@@ -187,11 +218,14 @@ test.describe('placement exam', () => {
    * run per learner would otherwise block every later start until its TTL ran
    * out, with the report unreachable in the meantime.
    */
-  test('quitting clears the run and returns to onboarding', async ({ onboarded }) => {
+  test('quitting clears the run and returns to the course', async ({ onboarded }) => {
     await startRun(onboarded);
 
     await onboarded.getByRole('button', { name: 'Quit test' }).click();
-    await expect(onboarded).toHaveURL(/\/onboarding/);
+    // The course home, not onboarding: quitting part-way through never writes a
+    // level, so the course is still placed, and CoursePage is what forwards an
+    // unplaced one to /onboarding?lang=.
+    await expect(onboarded).toHaveURL(new RegExp(`/learn/${ONBOARDED_COURSE.lang}$`));
 
     const afterQuit = await onboarded.request.get('/api/placement');
     expect(afterQuit.status()).toBe(404);

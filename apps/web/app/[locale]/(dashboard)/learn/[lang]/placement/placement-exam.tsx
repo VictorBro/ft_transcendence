@@ -85,56 +85,71 @@ export function PlacementExam({
     state != null && !isPlacementResult(state) ? state : null;
   const [remaining, setRemaining] = useState(question?.remainingS ?? 0);
 
+  const inFlight = useRef<string | null>(null);
   const answer = useCallback(
     async (choice: string | null) => {
-      if (question === null) return;
+      if (question === null || inFlight.current !== null) return;
+      inFlight.current = question.questionId;
       setPending(true);
       setError(null);
       try {
         const result = await submitPlacementAnswer(question.questionId, choice);
         if (!result.ok) {
+          inFlight.current = null;
           setError(errorMessage(result.code, result.status));
           return;
         }
         setState(result.data);
       } finally {
+        inFlight.current = null;
         setPending(false);
       }
     },
     [question, errorMessage],
   );
 
-  const timeOut = useRef<string | null>(null);
-
-  //The useEffect depends on [question] which means dont
-  //touch anything is the question (object) did not
-  //change get time allowed for a specific question
+  // A deadline captured once per question, not a count of ticks: a hidden tab
+  // gets its interval throttled, while the server still measures the limit from
+  // servedAt. Reading the clock keeps the display honest after a wake-up.
   useEffect(() => {
     if (question === null) {
       return;
     }
-    setRemaining(question.remainingS);
-    timeOut.current = null;
-    const interval = setInterval(() => {
-      setRemaining((seconds) => {
-        const next = Math.max(0, seconds - 1);
-        if (next === 0 && timeOut.current !== question.questionId) {
-          timeOut.current = question.questionId;
-          void answer(null);
-        }
-        return next;
-      });
-    }, 1000);
+    const deadline = Date.now() + question.remainingS * 1000;
+    const tick = () => {
+      setRemaining(Math.max(0, Math.ceil((deadline - Date.now()) / 1000)));
+    };
+
+    // Four times a second so the last second is not swallowed by a tick landing
+    // just past the boundary. It costs no extra render: the ceiling only changes
+    // on a whole second, and React bails out on an identical state.
+    tick();
+    const interval = setInterval(tick, 250);
     return () => clearInterval(interval);
+  }, [question]);
+
+  useEffect(() => {
+    if (question === null) {
+      return;
+    }
+    const timer = setTimeout(() => void answer(null), question.remainingS * 1000);
+    return () => clearTimeout(timer);
   }, [question, answer]);
 
-  async function closePlacement() {
+  /*
+   * Both ways out of the exam, because both have to clear the run server-side
+   * before navigating. hasActiveSession only tests for the key, so a run left
+   * behind — ended or abandoned — answers 409 to every later start for its full
+   * hour. On a failure the page stays put and says why: navigating anyway would
+   * strand the learner with a run they can neither finish nor replace.
+   */
+  async function leave() {
     setPending(true);
     setError(null);
     try {
-      const res = await quitPlacement();
-      if (!res.ok) {
-        setError(errorMessage(res.code, res.status));
+      const result = await quitPlacement();
+      if (!result.ok) {
+        setError(errorMessage(result.code, result.status));
         return;
       }
       router.push(`/learn/${lang}`);
@@ -153,23 +168,6 @@ export function PlacementExam({
         return;
       }
       setState(result.data);
-    } finally {
-      setPending(false);
-    }
-  }
-
-  async function quit() {
-    setPending(true);
-    try {
-      const result = await quitPlacement();
-      // if we dont check for !result.ok => redis session stay active
-      // and user cannot retake placement. But it may block him from
-      // leaving placement in case of an error.
-      if (!result.ok) {
-        setError(errorMessage(result.code, result.status));
-        return;
-      }
-      router.push('/onboarding');
     } finally {
       setPending(false);
     }
@@ -196,13 +194,15 @@ export function PlacementExam({
   if (isPlacementResult(state)) {
     return (
       <div className="-mx-3 -my-3 flex h-full flex-col overflow-y-auto px-3 py-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        <div className="mx-auto flex h-full max-w-2xl flex-col gap-6">
+        <div className="mx-auto flex w-full h-full max-w-2xl flex-col gap-6">
           <h1 className="text-3xl font-semibold">{t('resultHeading')}</h1>
           <div className="flex flex-col gap-1 rounded-2xl border border-indigo-500/30 bg-indigo-500/10 px-10 py-6">
             <span className="text-xs font-semibold tracking-widest text-indigo-300 uppercase">
               {t('levelLabel')}
             </span>
-            <span className="text-6xl font-bold text-end text-indigo-300">{state.targetLevel}</span>
+            <span className="text-6xl font-bold text-end text-indigo-300">
+              {state.targetLevel ?? t('notPlaced')}
+            </span>
           </div>
 
           <table className="w-full text-left text-sm">
@@ -218,12 +218,17 @@ export function PlacementExam({
               {state.report.map((entry) => (
                 <tr key={entry.questionId} className="border-t border-slate-800">
                   <td className="py-2 pr-4 text-slate-300">{entry.question}</td>
-                  <td className="py-2 pr-4 text-slate-300">{entry.chosen ?? t('noAnswer')}</td>
-                  {entry.wasCorrect ? (
-                    <td className="py-2 text-slate-400"></td>
-                  ) : (
-                    <td className="py-2 text-slate-400">{entry.correct}</td>
-                  )}
+                  <td
+                    className={`py-2 pr-4 ${entry.wasCorrect ? 'text-green-400' : 'text-red-400'}`}
+                  >
+                    {entry.chosen ?? t('noAnswer')}
+                  </td>
+                  {/* Filled on every row, right answers included: this table is
+                      what the learner revises from, and a blank cell leaves them
+                      checking their own answer against nothing. */}
+                  <td className="py-2 text-green-400">{entry.correct}</td>
+                  {/* Colour alone does not carry the verdict (WCAG 1.4.1), so it
+                      is also a name a screen reader reads out. */}
                   <td className="py-2 text-center text-lg">
                     <span role="img" aria-label={entry.wasCorrect ? t('correct') : t('incorrect')}>
                       {entry.wasCorrect ? '✓' : '❌'}
@@ -234,27 +239,17 @@ export function PlacementExam({
             </tbody>
           </table>
 
+          <FormError message={error} />
+
+          {/* A button and not a Link: leave() clears the run before navigating. */}
           <button
             type="button"
-            onClick={() => void closePlacement()}
+            onClick={() => void leave()}
             disabled={pending}
             className="self-start rounded-md bg-indigo-600 px-6 py-3 font-medium transition-colors hover:bg-indigo-500 disabled:opacity-60"
           >
-            {pending ? t('closing') : t('closeButton')}
+            {t('continueButton')}
           </button>
-          {/*
-            No plain "continue" link here: the Close button above quits the run
-            before navigating. Leaving without quitting keeps the session alive in
-            Redis for its full hour, and one live session blocks starting another in
-            any language — so a link straight out would strand the learner, able to
-            read the report but not to retake until the TTL expired.
-          */}
-          {/* <Link
-          href={`/learn/${lang}`}
-          className="self-start rounded-md bg-indigo-600 px-6 py-3 font-medium transition-colors hover:bg-indigo-500"
-        >
-          {t('continueButton')}
-        </Link> */}
         </div>
       </div>
     );
@@ -267,7 +262,7 @@ export function PlacementExam({
           answered={state.progress.answered}
           total={state.progress.answered + state.progress.maxQuestionsRemaining}
         />
-        <span role="timer" aria-live="polite" className="shrink-0">
+        <span role="timer" className="shrink-0">
           <CountdownRing remaining={remaining} total={state.timeLimitS} />
         </span>
       </div>
@@ -298,7 +293,7 @@ export function PlacementExam({
 
       <button
         type="button"
-        onClick={() => void quit()}
+        onClick={() => void leave()}
         disabled={pending}
         className="self-start text-sm text-slate-400 underline underline-offset-4 hover:text-slate-100"
       >

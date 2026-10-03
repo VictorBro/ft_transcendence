@@ -255,24 +255,22 @@
     "setUp": "Configurer"
   },
   "Placement": {
-    "title": "Evaluation",
+    "title": "Évaluation",
     "startButton": "Commencer le test",
-    "startHeading": "Evaluer votre niveau",
+    "startHeading": "Évaluer votre niveau",
     "startDescription": "L'évaluation vous aidera à déterminer votre niveau dans cette langue.",
     "starting": "Démarrage du test…",
     "optionLabel": "Options de réponse",
     "quitButton": "Quitter le test",
-    "continueButton": "Continuer",
     "resultHeading": "Rapport d'évaluation",
     "reportQuestion": "Questions",
     "yourAnswer": "Votre réponse",
     "correctAnswer": "Réponse correcte",
+    "noAnswer": "Aucune réponse",
     "correct": "Correct",
     "incorrect": "Incorrect",
-    "noAnswer": "Aucune réponse",
     "levelLabel": "Votre niveau cible est",
     "notPlaced": "Pas encore défini",
-    "closeButton": "Fermer",
-    "closing": "Fermeture du test…"
+    "continueButton": "Continuer"
   }
 }

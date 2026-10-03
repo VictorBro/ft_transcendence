@@ -3,7 +3,7 @@
     "accountNav": "Account",
     "signIn": "Sign in",
     "createAccount": "Create account",
-    "profile": "Profil"
+    "profile": "Profile"
   },
   "LanguageSwitcher": {
     "label": "Language",
@@ -262,17 +262,15 @@
     "starting": "Starting the test…",
     "optionLabel": "Answer options",
     "quitButton": "Quit test",
-    "continueButton": "Continue",
     "resultHeading": "Placement report",
     "reportQuestion": "Questions",
     "yourAnswer": "Your answer",
     "correctAnswer": "Correct answer",
+    "noAnswer": "No answer",
     "correct": "Correct",
     "incorrect": "Incorrect",
-    "noAnswer": "No answer",
     "levelLabel": "Your target level is",
     "notPlaced": "Not placed",
-    "closeButton": "Close",
-    "closing": "Closing the test…"
+    "continueButton": "Continue"
   }
 }

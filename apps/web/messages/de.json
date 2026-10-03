@@ -271,8 +271,6 @@
     "correctAnswer": "Richtige Antwort",
     "levelLabel": "Zielniveau für deine Lektionen",
     "notPlaced": "Du wurdest noch nicht eingestuft.",
-    "closeButton": "Schließen",
-    "closing": "Wird geschlossen…",
-    "continueButton": "Weiterlernen"
+    "continueButton": "Weiter"
   }
 }
