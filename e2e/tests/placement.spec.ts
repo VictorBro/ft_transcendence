@@ -385,6 +385,15 @@ test.describe('placement exam', () => {
     }
     // A long report scrolls inside its pane, never the page around it.
     await expectPinned(onboarded, PLACEMENT);
+
+    // Ended right here, so the way out goes on. Found again from the course
+    // page, the same report leads back instead.
+    await onboarded.getByRole('link', { name: 'Continue' }).click();
+    await expect(onboarded).toHaveURL(new RegExp(`/learn/${ONBOARDED_COURSE.lang}` + '$'));
+    await onboarded.getByRole('link', { name: 'Take the placement test' }).click();
+    await expect(result(onboarded)).toBeVisible();
+    await expect(onboarded.getByRole('link', { name: 'Back to course' })).toBeVisible();
+    await expect(onboarded.getByRole('link', { name: 'Continue' })).toBeHidden();
   });
 
   /**
@@ -414,6 +423,11 @@ test.describe('placement exam', () => {
     // The sentence, since the ladder above it names every level too.
     await expect(onboarded.getByText(`Your lessons will be at ${expected}.`)).toBeVisible();
     expect(await courseLevel(onboarded, ONBOARDED_COURSE.lang)).toBe(expected);
+    // A new level changes where the course is taught, not the way back to it.
+    await expect(onboarded.getByRole('link', { name: 'Back to course' })).toHaveAttribute(
+      'href',
+      `/en/learn/${ONBOARDED_COURSE.lang}`,
+    );
 
     // The report outlives the change, but the level over it is the course's now.
     await onboarded.reload();
@@ -424,7 +438,7 @@ test.describe('placement exam', () => {
   /**
    * Walking away from an open run times out every question, which measures
    * nothing. The course keeps its level, so the result says so in place of a
-   * level to change, and Continue goes back to the course as it was.
+   * level to change, and the link leads back to the course as it was.
    */
   test('a run where every question timed out leaves the level alone', async ({ onboarded }) => {
     const { applied, report = [] } = await finishRun(onboarded, ONBOARDED_COURSE.lang, timeOut);
@@ -443,14 +457,15 @@ test.describe('placement exam', () => {
     await expect(onboarded.getByRole('button', { name: 'Retake the test' })).toBeVisible();
     expect(await courseLevel(onboarded, ONBOARDED_COURSE.lang)).toBe(ONBOARDED_COURSE.level);
 
-    await onboarded.getByRole('link', { name: 'Continue' }).click();
+    await onboarded.getByRole('link', { name: 'Back to course' }).click();
     await expect(onboarded).toHaveURL(new RegExp(`/learn/${ONBOARDED_COURSE.lang}$`));
   });
 
   /**
-   * The course page does not open without a level, so Continue goes to
-   * onboarding. Then the page itself places the course and the next run times
-   * out: the notice must name the level written on this page, with no reload.
+   * The course page does not open without a level, so the way on is to choose
+   * one in onboarding. Then the page itself places the course and the next run
+   * times out: the notice must name the level written on this page, with no
+   * reload.
    */
   test('a run where every question timed out sets no level on a new course, nor undoes one', async ({
     freshLearner,
@@ -467,7 +482,7 @@ test.describe('placement exam', () => {
       ),
     ).toBeVisible();
     expect(await courseLevel(freshLearner, ONBOARDED_COURSE.lang)).toBeNull();
-    await expect(freshLearner.getByRole('link', { name: 'Continue' })).toHaveAttribute(
+    await expect(freshLearner.getByRole('link', { name: 'Choose your level' })).toHaveAttribute(
       'href',
       `/en/onboarding?lang=${ONBOARDED_COURSE.lang}`,
     );
@@ -525,19 +540,22 @@ test.describe('placement exam', () => {
   });
 
   /**
-   * A finished run blocks nothing: Continue is a plain link that leaves the
-   * report for a reload to find, and Retake replaces it on the spot rather than
-   * after the hour the run is kept for.
+   * A finished run blocks nothing: the link to the course leaves the report for
+   * a later visit to find, and Retake replaces it on the spot rather than after
+   * the hour the run is kept for. Found again, the report leads back rather than
+   * on: the learner already went on once.
    */
   test('a finished run is retaken without waiting', async ({ onboarded }) => {
     await finishRun(onboarded);
     await onboarded.goto(PLACEMENT);
 
-    await onboarded.getByRole('link', { name: 'Continue' }).click();
+    await onboarded.getByRole('link', { name: 'Back to course' }).click();
     await expect(onboarded).toHaveURL(new RegExp(`/learn/${ONBOARDED_COURSE.lang}$`));
 
     await onboarded.getByRole('link', { name: 'Take the placement test' }).click();
     await expect(result(onboarded)).toBeVisible();
+    await expect(onboarded.getByRole('link', { name: 'Continue' })).toBeHidden();
+    await expect(onboarded.getByRole('link', { name: 'Back to course' })).toBeVisible();
     await onboarded.getByRole('button', { name: 'Retake the test' }).click();
 
     await expect(options(onboarded)).toBeVisible();

@@ -7,7 +7,7 @@ import type { Language, Level, PlacementReportEntry, PlacementResult } from '@ft
 import { Link } from '@/i18n/navigation';
 import { masteredBelow } from '@/lib/level';
 import { ChangeLevel } from '@/components/change-level';
-import { FormError, PRIMARY_BUTTON } from '@/components/form';
+import { FormError, PRIMARY_BUTTON, SECONDARY_BUTTON } from '@/components/form';
 import { LevelSummary } from '@/components/level-picker';
 
 /**
@@ -19,6 +19,7 @@ export function ResultScreen({
   level,
   onLevelChange,
   exit,
+  finishedHere,
   pending,
   error,
   onRetake,
@@ -30,8 +31,10 @@ export function ResultScreen({
    */
   level: Level | null;
   onLevelChange: (level: Level) => void;
-  /** Where the course is when the run left it alone. */
+  /** Where the course is: the course page, or onboarding while it has no level. */
   exit: string;
+  /** Answered to its end on this page, rather than loaded with it. */
+  finishedHere: boolean;
   pending: boolean;
   error: string | null;
   onRetake: () => void;
@@ -69,31 +72,32 @@ export function ResultScreen({
           </p>
         )}
 
-        <div className="flex flex-col gap-2">
-          <Link
-            href={applied ? `/learn/${lang}` : exit}
-            className={`${PRIMARY_BUTTON} sm:self-start sm:px-8`}
-          >
-            {t('continueButton')}
+        {/* One row of actions from sm up. ChangeLevel goes last: its picker
+            wraps onto a full line under the row. */}
+        <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          {/* "Continue" only for a run answered on this page; a report that
+              came with the page load leads back. */}
+          <Link href={exit} className={`${PRIMARY_BUTTON} sm:px-8`}>
+            {level === null
+              ? t('chooseLevel')
+              : finishedHere
+                ? t('continueButton')
+                : t('backToCourse')}
           </Link>
+          <button type="button" onClick={onRetake} disabled={pending} className={SECONDARY_BUTTON}>
+            {t('retakeButton')}
+          </button>
           {applied ? (
             <ChangeLevel
               lang={lang}
               level={level}
               label={t('overrideButton')}
               onSaved={onLevelChange}
+              variant="button"
             />
           ) : null}
-          <FormError message={error} />
-          <button
-            type="button"
-            onClick={onRetake}
-            disabled={pending}
-            className="inline-flex min-h-11 items-center self-start text-sm text-slate-300 underline underline-offset-4 transition-colors hover:text-slate-100 disabled:opacity-60"
-          >
-            {t('retakeButton')}
-          </button>
         </div>
+        <FormError message={error} />
       </section>
 
       <section aria-labelledby={answersHeading} className="flex flex-col gap-2">

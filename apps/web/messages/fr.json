@@ -284,6 +284,8 @@
     "allTimedOut": "Le temps s'est écoulé à chaque question : votre cours reste au niveau {level}.",
     "allTimedOutNoLevel": "Le temps s'est écoulé à chaque question : aucun niveau n'a été fixé. Repassez le test ou choisissez votre niveau vous-même.",
     "continueButton": "Continuer",
+    "backToCourse": "Retour au cours",
+    "chooseLevel": "Choisir votre niveau",
     "overrideButton": "Ce n'est pas votre niveau ?",
     "retakeButton": "Repasser le test",
     "answersHeading": "Vos réponses",

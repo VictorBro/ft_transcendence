@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import type { Language, Level } from '@ft/shared';
 
@@ -20,17 +20,21 @@ export function ChangeLevel({
   level,
   label,
   onSaved,
+  variant = 'link',
 }: {
   lang: Language;
   level: Level;
   label: string;
   /** Without it the page refreshes to show the new level. */
   onSaved?: (level: Level) => void;
+  /** A link in running text, or a button among other actions. */
+  variant?: 'link' | 'button';
 }) {
   const router = useRouter();
   const t = useTranslations('Level');
   const errorMessage = useErrorMessage();
   const toggle = useRef<HTMLButtonElement>(null);
+  const form = useRef<HTMLFormElement>(null);
   const [open, setOpen] = useState(false);
   const [mastered, setMastered] = useState<Level | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -41,6 +45,11 @@ export function ChangeLevel({
     setMastered(masteredBelow(level));
     setOpen(true);
   }
+
+  // Opened low in a pane, Save would sit below the fold with nothing hinting at it.
+  useEffect(() => {
+    if (open) form.current?.scrollIntoView({ block: 'nearest' });
+  }, [open]);
 
   // The buttons that closed it are gone, so focus goes back where it started.
   function close() {
@@ -71,22 +80,28 @@ export function ChangeLevel({
   }
 
   return (
-    <div className="flex flex-col gap-4">
+    // As a button it joins the row of actions around it, and the picker wraps
+    // onto a full line of its own under that row.
+    <div className={variant === 'button' ? 'contents' : 'flex flex-col gap-4'}>
       <button
         ref={toggle}
         type="button"
         onClick={open ? close : show}
         aria-expanded={open}
-        className="inline-flex min-h-11 items-center self-start text-sm text-slate-300 underline underline-offset-4 transition-colors hover:text-slate-100"
+        className={
+          variant === 'button'
+            ? `${SECONDARY_BUTTON} aria-expanded:border-slate-500 aria-expanded:bg-slate-800`
+            : 'inline-flex min-h-11 items-center self-start text-sm text-slate-300 underline underline-offset-4 transition-colors hover:text-slate-100'
+        }
       >
         {label}
       </button>
 
       {open ? (
-        <form onSubmit={onSubmit} className="flex flex-col gap-4" noValidate>
+        <form ref={form} onSubmit={onSubmit} className="flex basis-full flex-col gap-4" noValidate>
           <LevelPicker value={mastered} onChange={setMastered} />
           <FormError message={error} />
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-3 sm:flex">
             <SubmitButton pending={pending} disabled={target === level}>
               {t('save')}
             </SubmitButton>

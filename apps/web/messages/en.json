@@ -284,6 +284,8 @@
     "allTimedOut": "Time ran out on every question, so your course stays at {level}.",
     "allTimedOutNoLevel": "Time ran out on every question, so no level was set. Retake the test, or choose your level yourself.",
     "continueButton": "Continue",
+    "backToCourse": "Back to course",
+    "chooseLevel": "Choose your level",
     "overrideButton": "Not your level?",
     "retakeButton": "Retake the test",
     "answersHeading": "Your answers",

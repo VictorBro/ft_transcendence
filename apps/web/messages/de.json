@@ -284,6 +284,8 @@
     "allTimedOut": "Bei jeder Frage ist die Zeit abgelaufen, deshalb bleibt dein Kurs auf Niveau {level}.",
     "allTimedOutNoLevel": "Bei jeder Frage ist die Zeit abgelaufen, deshalb wurde kein Niveau festgelegt. Mach den Test noch einmal oder wähle dein Niveau selbst.",
     "continueButton": "Weiter",
+    "backToCourse": "Zurück zum Kurs",
+    "chooseLevel": "Niveau wählen",
     "overrideButton": "Nicht dein Niveau?",
     "retakeButton": "Test wiederholen",
     "answersHeading": "Deine Antworten",

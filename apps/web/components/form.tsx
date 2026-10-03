@@ -50,11 +50,15 @@ export function FormError({ message }: { message: string | null }) {
   );
 }
 
-/** For the links and plain buttons that stand in for one of the two below. */
-export const PRIMARY_BUTTON =
-  'rounded-md bg-slate-100 px-4 py-2 text-center text-sm font-medium text-slate-900 disabled:opacity-60';
-export const SECONDARY_BUTTON =
-  'rounded-md border border-slate-700 px-4 py-2 text-center text-sm font-medium text-slate-200 transition-colors hover:bg-slate-800 disabled:opacity-60';
+/**
+ * For the links and plain buttons that stand in for one of the two below. 44px
+ * tall at least, a thumb's width, and the ring offset so it reads around a
+ * light fill too.
+ */
+const BUTTON =
+  'inline-flex min-h-11 cursor-pointer items-center justify-center rounded-md border px-4 py-2 text-center text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-100 disabled:cursor-not-allowed disabled:opacity-60';
+export const PRIMARY_BUTTON = `${BUTTON} border-transparent bg-slate-100 text-slate-900 hover:bg-white disabled:bg-slate-100`;
+export const SECONDARY_BUTTON = `${BUTTON} border-slate-700 text-slate-200 hover:bg-slate-800 disabled:bg-transparent`;
 
 export function SubmitButton({
   pending,

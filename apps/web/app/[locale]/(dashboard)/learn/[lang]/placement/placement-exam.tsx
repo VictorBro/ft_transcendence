@@ -39,6 +39,7 @@ export function PlacementExam({
   // The course as this page knows it: the server's level, then whatever an
   // applied run or a pick on the result writes, with no reload in between.
   const [level, setLevel] = useState<Level | null>(courseLevel);
+  const [finishedHere, setFinishedHere] = useState(false);
 
   // Onboarding owns an unplaced course, the course page a placed one.
   const exit = level === null ? `/onboarding?lang=${lang}` : `/learn/${lang}`;
@@ -74,8 +75,11 @@ export function PlacementExam({
     const result = await send(() => submitPlacementAnswer(questionId, choice));
     if (result.ok) {
       setState(result.data);
-      if (isPlacementResult(result.data) && result.data.applied) {
-        setLevel(result.data.targetLevel);
+      if (isPlacementResult(result.data)) {
+        setFinishedHere(true);
+        if (result.data.applied) {
+          setLevel(result.data.targetLevel);
+        }
       }
       return;
     }
@@ -114,6 +118,7 @@ export function PlacementExam({
           level={level}
           onLevelChange={setLevel}
           exit={exit}
+          finishedHere={finishedHere}
           pending={pending}
           error={error}
           onRetake={start}
