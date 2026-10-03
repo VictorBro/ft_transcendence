@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ft_transcendence milestones</title>
+<meta name="description" content="Milestones of ft_transcendence, an AI-driven language-learning platform: what each one delivers, how its issues depend on each other, and its data model.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+<style>
+:root{
+  --surface-0:#FAFAF8;--surface-1:#F5F4EF;--surface-2:#FFFFFF;
+  --border:rgba(31,30,29,.15);--text-primary:#1F1E1D;--text-secondary:#5E5D59;--text-muted:#8A8983;--text-accent:#185FA5;
+  --font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --font-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+  --open:#3B6D11;--open-bg:#EAF3DE;--closed:#534AB7;--closed-bg:#EEEDFE;
+  --st-open:#3B6D11;--st-open-bg:#F1F7EA;--st-work:#BA7517;--st-work-bg:#FDF4E4;--st-closed:#534AB7;--st-closed-bg:#F3F2FD;
+}
+.k-1{--gb:#E6F1FB;--gd:#85B7EB;--gt:#0C447C}.k-2{--gb:#FAEEDA;--gd:#EF9F27;--gt:#633806}
+@media (prefers-color-scheme:dark){
+  :root{--surface-0:#1F1E1D;--surface-1:#262624;--surface-2:#30302E;--border:rgba(222,220,209,.15);--text-primary:#F5F4EF;--text-secondary:#C2C0B6;--text-muted:#9C9A92;--text-accent:#85B7EB;
+    --open:#97C459;--open-bg:#173404;--closed:#AFA9EC;--closed-bg:#26215C;
+    --st-open:#97C459;--st-open-bg:#1E2B13;--st-work:#EF9F27;--st-work-bg:#33240C;--st-closed:#AFA9EC;--st-closed-bg:#24213F}
+  .k-1{--gb:#042C53;--gd:#378ADD;--gt:#B5D4F4}.k-2{--gb:#412402;--gd:#BA7517;--gt:#FAC775}
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--font-sans)}
+main{max-width:1100px;margin:0 auto;padding:calc(28px + env(safe-area-inset-top,0px)) 20px calc(40px + env(safe-area-inset-bottom,0px))}
+a{color:var(--text-accent)}
+.eyebrow{font-family:var(--font-mono);font-size:12px;color:var(--text-muted);margin:0 0 6px}
+h1{font-size:26px;font-weight:500;margin:0 0 8px}
+.intro{font-size:15px;line-height:1.6;color:var(--text-secondary);margin:0 0 20px;max-width:72ch}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px}
+.toc a{display:inline-flex;align-items:center;gap:6px;font-size:13px;text-decoration:none;color:var(--gt);background:var(--gb);border:0.5px solid var(--gd);border-radius:999px;padding:5px 12px}
+.toc a:hover{filter:brightness(.97)}
+.ms{background:var(--surface-2);border:0.5px solid var(--border);border-radius:14px;margin:0 0 22px;overflow:hidden;scroll-margin-top:12px}
+.ms-head{background:var(--gb);border-bottom:0.5px solid var(--gd);padding:16px 18px;color:var(--gt)}
+.ms-head .num{font-family:var(--font-mono);font-size:12px;opacity:.85}
+.ms-head h2{font-size:19px;font-weight:500;margin:2px 0 8px;color:var(--gt)}
+.ms-head p{font-size:14px;line-height:1.55;margin:0;max-width:75ch;color:var(--gt);opacity:.9}
+.prog{display:flex;align-items:center;gap:10px;margin-top:12px;font-size:12px;color:var(--gt)}
+.bar{flex:1;max-width:320px;height:8px;border-radius:999px;background:var(--surface-2);border:0.5px solid var(--gd);overflow:hidden}
+.bar span{display:block;height:100%;background:var(--gd);border-radius:999px;transition:width .4s}
+.ms-link{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:13px;font-weight:500;text-decoration:none;color:var(--gt);background:var(--surface-2);border:0.5px solid var(--gd);border-radius:999px;padding:5px 12px}
+.ms-link:hover,.ms-link:focus-visible{text-decoration:underline}
+.ms-body{padding:16px 18px 18px}
+h3{font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin:18px 0 10px}
+h3:first-child{margin-top:0}
+figure{margin:0}
+figure a{display:block;border:0.5px solid var(--border);border-radius:10px;overflow:hidden;background:var(--surface-1)}
+figure img{display:block;width:100%;height:auto}
+figcaption{font-size:12px;color:var(--text-muted);margin-top:6px;line-height:1.5}
+.flow{display:flex;gap:6px;align-items:stretch;overflow-x:auto;padding-bottom:4px}
+.stage{flex:1 0 170px;display:flex;flex-direction:column;gap:6px}
+.stage-h{font-size:11px;font-weight:500;color:var(--text-secondary);font-family:var(--font-mono);padding:0 2px}
+.arrow{flex:0 0 14px;display:flex;align-items:center;justify-content:center;color:var(--text-muted)}
+.grp{border:0.5px dashed var(--border);border-radius:8px;padding:6px;display:flex;flex-direction:column;gap:6px}
+.grp-h{font-size:11px;color:var(--text-muted);padding:0 2px}
+.iss{--st:var(--st-open);--st-bg:var(--st-open-bg);position:relative;display:grid;grid-template-columns:auto 1fr auto;grid-template-areas:"no . who" "t t t" ". . pr";gap:3px 6px;font-size:12px;line-height:1.35;color:var(--text-primary);background:var(--st-bg);border:0.5px solid var(--border);border-left:4px solid var(--st);border-radius:7px;padding:6px 8px 5px}
+a.iss{text-decoration:none}
+.iss.work{--st:var(--st-work);--st-bg:var(--st-work-bg)}.iss.closed{--st:var(--st-closed);--st-bg:var(--st-closed-bg)}
+.iss:hover{border-color:var(--text-accent);border-left-color:var(--st)}
+.iss .no{grid-area:no;font-family:var(--font-mono);color:var(--text-muted)}
+.iss .t{grid-area:t;color:var(--text-primary);text-decoration:none}
+.iss .t::after{content:"";position:absolute;inset:0;border-radius:7px}
+.iss .t:focus-visible{outline:none}.iss .t:focus-visible::after{outline:2px solid var(--text-accent);outline-offset:2px}
+.iss .who{grid-area:who;justify-self:end;position:relative;z-index:1;display:inline-flex;align-items:center;gap:4px;max-width:110px;font-size:11px;color:var(--text-secondary);text-decoration:none}
+.iss .who img{width:16px;height:16px;border-radius:50%;flex-shrink:0;background:var(--surface-2)}
+.iss .who span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.iss .who:hover span,.iss .who:focus-visible span{text-decoration:underline}
+.iss .pr{grid-area:pr;justify-self:end;position:relative;z-index:1;display:inline-flex;align-items:center;gap:3px;font-family:var(--font-mono);font-size:10.5px;color:var(--text-accent);text-decoration:none}
+.iss .pr:hover,.iss .pr:focus-visible{text-decoration:underline}
+.sw{display:inline-flex;align-items:center;gap:5px}
+.sw::before{content:"";width:12px;height:12px;border-radius:3px;background:var(--b);border:0.5px solid var(--border);border-left:4px solid var(--c)}
+.sw.open{--c:var(--st-open);--b:var(--st-open-bg)}.sw.work{--c:var(--st-work);--b:var(--st-work-bg)}.sw.closed{--c:var(--st-closed);--b:var(--st-closed-bg)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.dm{display:flex;gap:14px;align-items:center;text-decoration:none;color:var(--text-primary);border:0.5px solid var(--gd);background:var(--gb);border-radius:10px;padding:12px 14px}
+.dm:hover{filter:brightness(.97)}
+.dm i{font-size:26px;color:var(--gt)}
+.dm b{display:block;font-weight:500;font-size:14px;color:var(--gt)}
+.dm span{font-size:13px;color:var(--gt);opacity:.85;line-height:1.45}
+.legend{display:flex;gap:10px;font-size:12px;color:var(--text-secondary);align-items:center;margin:0 0 8px;flex-wrap:wrap}
+footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
+/* milestone 2 dependency graph */
+:root{--n-base-bg:#e7f5e9;--n-base-bd:#2b8a3e;--n-sink-bg:#ede9fe;--n-sink-bd:#4c1d95;--n-sum-bg:#fff4d6;--n-sum-bd:#d97706;--edge:#8A8983;--edge-crit:#2b8a3e;--lbl-bg:#FFFFFF}
+@media (prefers-color-scheme:dark){:root{--n-base-bg:#173404;--n-base-bd:#639922;--n-sink-bg:#26215C;--n-sink-bd:#7F77DD;--n-sum-bg:#412402;--n-sum-bd:#EF9F27;--edge:#9C9A92;--edge-crit:#97C459;--lbl-bg:#30302E}}
+.gwrap{overflow-x:auto;border:0.5px solid var(--border);border-radius:10px;background:var(--surface-1);padding:16px}
+.gwrap:focus-visible{outline:2px solid var(--text-accent);outline-offset:2px}
+.graph{position:relative;display:grid;grid-template-columns:150px 160px 150px 136px 150px 112px 150px 112px 150px 112px 150px;grid-template-rows:auto auto auto;row-gap:34px;width:max-content;align-items:center}
+.edges{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.edges>path{fill:none;stroke:var(--edge);stroke-width:1.5}
+.edges>path.crit{stroke:var(--edge-crit);stroke-width:3}
+.gn{position:relative;z-index:1;border-radius:8px;border:1.5px solid;padding:8px 10px;font-size:11.5px;line-height:1.35;color:var(--text-primary);text-align:center}
+.gn b{display:block;font-size:13px;font-weight:600}
+.gn span{display:block;color:var(--text-secondary);margin-top:2px}
+.gn p{margin:6px 0 0;display:flex;flex-wrap:wrap;gap:4px;justify-content:center;font-family:var(--font-mono)}
+.gn i{display:block;font-size:10px;letter-spacing:.08em;color:var(--text-muted);margin-top:4px}
+.gn.base{background:var(--n-base-bg);border-color:var(--n-base-bd)}
+.gn.sink{background:var(--n-sink-bg);border-color:var(--n-sink-bd);border-style:dashed}
+.gn.summit{background:var(--n-sum-bg);border-color:var(--n-sum-bd);border-width:3px}
+.gn a.inum{text-decoration:none;font-size:11px;font-weight:500;padding:1px 5px;border-radius:999px;color:var(--open);background:var(--open-bg)}
+.gn a.inum.work{color:var(--st-work);background:var(--st-work-bg);box-shadow:inset 0 0 0 1px var(--st-work)}.gn a.inum.closed{color:var(--closed);background:var(--closed-bg)}
+.gn a.inum:hover,.gn a.inum:focus-visible{text-decoration:underline}
+.elbl{position:absolute;z-index:2;transform:translate(-50%,-50%);background:var(--lbl-bg);border:0.5px solid var(--border);border-radius:5px;padding:2px 5px;font-family:var(--font-mono);font-size:10.5px;line-height:1.45;color:var(--text-secondary);white-space:nowrap;text-align:center}
+.elbl a{color:var(--text-accent);text-decoration:none}.elbl a:hover,.elbl a:focus-visible{text-decoration:underline}
+.glegend{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;font-size:12px;color:var(--text-secondary);margin:8px 0 0}
+.glegend span{display:inline-flex;align-items:center;gap:6px}
+.swatch{padding:1px 8px;border-radius:5px;border:1.5px solid}
+.swatch.summit{background:var(--n-sum-bg);border-color:var(--n-sum-bd);border-width:2.5px}
+.swatch.sink{background:var(--n-sink-bg);border-color:var(--n-sink-bd);border-style:dashed}
+@media (max-width:700px){
+  .flow{flex-direction:column}
+  .stage{flex:none}
+  .arrow{flex:none;height:16px;transform:rotate(90deg)}
+}
+.topnav{display:flex;flex-wrap:wrap;gap:4px;margin:0 0 18px;padding:4px;border:0.5px solid var(--border);border-radius:10px;background:var(--surface-2);width:fit-content;max-width:100%}
+.topnav a{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-secondary);text-decoration:none;padding:5px 10px;border-radius:7px}
+.topnav a:hover{color:var(--text-primary);background:var(--surface-1)}
+.topnav a:focus-visible{outline:2px solid var(--text-accent);outline-offset:1px}
+.topnav a[aria-current="page"]{color:var(--surface-0);background:var(--text-primary);font-weight:500}
+</style>
+</head>
+<body>
+<main>
+<nav class="topnav" aria-label="Project docs"><a href="index.html" aria-current="page"><i class="ti ti-layout-dashboard" aria-hidden="true"></i>Overview</a><a href="milestone1-data-model.html"><i class="ti ti-git-compare" aria-hidden="true"></i>Data model · M1</a><a href="milestone2-data-model.html"><i class="ti ti-database" aria-hidden="true"></i>Data model · M2</a></nav>
+<p class="eyebrow">ft_transcendence · project docs</p>
+<h1>Milestones</h1>
+<p class="intro">ft_transcendence is an AI-driven platform for learning a foreign language. A short adaptive test places each learner at a CEFR level, and a roadmap then gives them lessons sized to their daily goal. This page summarises the milestones in progress: what each one delivers, how its issues depend on each other, and the data model behind it.</p>
+
+<nav class="toc" aria-label="Milestones">
+<a class="k-1" href="#m1"><i class="ti ti-target-arrow" aria-hidden="true"></i>1 · Onboarding and Evaluation</a>
+<a class="k-2" href="#m2"><i class="ti ti-route" aria-hidden="true"></i>2 · Course Roadmap and Lessons</a>
+</nav>
+
+<!-- MILESTONE 1 -->
+<section class="ms k-1" id="m1" data-milestone="1">
+<div class="ms-head">
+<div class="num">Milestone 1</div>
+<h2>Onboarding and Evaluation</h2>
+<p>A new learner chooses a language and a daily goal of 10, 30 or 60 minutes, then takes an adaptive placement exam or sets their level themselves. The exam runs a binary search from B1 over 270 authored questions, with the server owning the clock. The learner then lands on the course home, and can switch between courses or add another language.</p>
+<div class="prog"><div class="bar" role="progressbar" aria-label="Milestone 1 issues closed" aria-valuemin="0" aria-valuemax="12" aria-valuenow="10"><span style="width:83.3%"></span></div><span class="prog-t">10 of 12 issues closed</span></div>
+<a class="ms-link" href="https://github.com/VictorBro/ft_transcendence/milestone/1"><i class="ti ti-brand-github" aria-hidden="true"></i>Open milestone 1 on GitHub<i class="ti ti-arrow-up-right" aria-hidden="true"></i></a>
+</div>
+<div class="ms-body">
+<h3>Map</h3>
+<figure><a href="https://github.com/user-attachments/assets/6c795292-8002-4741-bdd1-bb01e64a4921" title="Open the full-size map"><img src="https://github.com/user-attachments/assets/6c795292-8002-4741-bdd1-bb01e64a4921" width="1942" height="809" loading="lazy" alt="Illustrated quest map of milestone 1. Paths connect the issues from 'Seed question bank' (#43) and 'Course + placement contracts' (#46) through 'Generic API client' (#45), 'Courses + unified level write path' (#47), 'Onboarding' (#49) and 'Placement exam API' (#48), to 'Dashboard + switcher' (#51), 'Post-auth landing + onboarding guards' (#52), 'Placement page + result' (#50), 'Generate question when pool runs dry' (#54) and 'E2E fixture + guard fallout' (#53)."></a></figure>
+<figcaption>From the milestone on GitHub. Select it to open it at full size.</figcaption>
+
+<h3>Dependency flow</h3>
+<div class="legend"><span class="sw open">open</span><span class="sw work">in work</span><span class="sw closed">closed</span><span>Top right: who is responsible (author of the linked PR, else the assignee). Bottom right: the linked PR.</span></div>
+<p class="legend">Each column depends on the ones before it, as stated in the issues.</p>
+<div class="flow">
+<div class="stage"><div class="stage-h">Foundations</div>
+<a class="iss" data-n="44" href="#"><span class="no">#44</span><span class="t">Record the onboarding and placement decisions</span></a>
+<a class="iss" data-n="43" href="#"><span class="no">#43</span><span class="t">Seed the question bank</span></a>
+<a class="iss" data-n="45" href="#"><span class="no">#45</span><span class="t">Generic API client</span></a>
+</div>
+<div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
+<div class="stage"><div class="stage-h">Contracts</div>
+<a class="iss" data-n="46" href="#"><span class="no">#46</span><span class="t">Course and placement contracts</span></a>
+</div>
+<div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
+<div class="stage"><div class="stage-h">Courses</div>
+<a class="iss" data-n="47" href="#"><span class="no">#47</span><span class="t">Courses API and the unified level write</span></a>
+</div>
+<div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
+<div class="stage"><div class="stage-h">Features</div>
+<a class="iss" data-n="48" href="#"><span class="no">#48</span><span class="t">Placement exam API over Redis</span></a>
+<a class="iss" data-n="49" href="#"><span class="no">#49</span><span class="t">Onboarding, per course</span></a>
+<a class="iss" data-n="51" href="#"><span class="no">#51</span><span class="t">Course dashboard and switcher</span></a>
+</div>
+<div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
+<div class="stage"><div class="stage-h">Finish</div>
+<a class="iss" data-n="52" href="#"><span class="no">#52</span><span class="t">Post-auth landing and guards</span></a>
+<a class="iss" data-n="53" href="#"><span class="no">#53</span><span class="t">Onboarded e2e fixture</span></a>
+<a class="iss" data-n="50" href="#"><span class="no">#50</span><span class="t">Placement exam page and result</span></a>
+<a class="iss" data-n="54" href="#"><span class="no">#54</span><span class="t">Generate a question when the pool runs dry</span></a>
+</div>
+</div>
+
+<h3>Data model</h3>
+<a class="dm" href="milestone1-data-model.html"><i class="ti ti-git-compare" aria-hidden="true"></i><div><b>Onboarding data model: spec vs code</b><span>Every format from the shared contract to the Redis run state, checked against main, with each difference between the issues and the code.</span></div></a>
+</div>
+</section>
+
+<!-- MILESTONE 2 -->
+<section class="ms k-2" id="m2" data-milestone="2">
+<div class="ms-head">
+<div class="num">Milestone 2</div>
+<h2>Course Roadmap and Lessons</h2>
+<p>The course page: a daily goal page and an all lessons page over a seeded syllabus of A1 to C2 lessons per language, with results, the streak and level completion. The lesson page itself is the next milestone.</p>
+<div class="prog"><div class="bar" role="progressbar" aria-label="Milestone 2 issues closed" aria-valuemin="0" aria-valuemax="22" aria-valuenow="0"><span style="width:0%"></span></div><span class="prog-t">0 of 22 issues closed</span></div>
+<a class="ms-link" href="https://github.com/VictorBro/ft_transcendence/milestone/2"><i class="ti ti-brand-github" aria-hidden="true"></i>Open milestone 2 on GitHub<i class="ti ti-arrow-up-right" aria-hidden="true"></i></a>
+</div>
+<div class="ms-body">
+<h3>Dependency graph</h3>
+<div class="gwrap" tabindex="0" role="group" aria-label="Milestone 2 dependency graph. Scrolls sideways on narrow screens.">
+<div class="graph" id="g2">
+<svg class="edges" aria-hidden="true"><defs>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--edge)"/></marker>
+<marker id="ahc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--edge-crit)"/></marker>
+</defs></svg>
+<div class="gn base" id="G1" style="grid-column:1;grid-row:2"><b>G1</b><span>Doc, Contracts, User Timezone</span><p>#76 #77 #78</p></div>
+<div class="gn base" id="G2a" style="grid-column:3;grid-row:1"><b>G2a</b><span>Lesson Profile (DB), Roadmap Logic, Lesson profile LLM Generator</span><p>#79 #80 #83</p></div>
+<div class="gn base" id="G2b" style="grid-column:3;grid-row:3"><b>G2b</b><span>outline DE, EN, FR:<br>A1 - C2</span><p>#105 #88 #89 #90</p></div>
+<div class="gn base" id="G3a" style="grid-column:5;grid-row:1"><b>G3a</b><span>Roadmap API, Roadmap Write API</span><p>#81 #82</p></div>
+<div class="gn base" id="G3b" style="grid-column:5;grid-row:3"><b>G3b</b><span>French A1 profiles</span><p>#84</p></div>
+<div class="gn base" id="G4" style="grid-column:7;grid-row:2"><b>G4</b><span>demo users, daily goal page, search page</span><p>#85 #86 #87</p></div>
+<div class="gn base" id="G5" style="grid-column:9;grid-row:2"><b>G5</b><span>gamification logic, lesson stub page and e2e tests</span><p>#94 #95 #96</p></div>
+<div class="gn summit" id="G6a" style="grid-column:11;grid-row:1"><b>G6a</b><span>gamification pages</span><p>#97</p><i>SUMMIT</i></div>
+<div class="gn sink" id="G6b" style="grid-column:11;grid-row:3"><b>G6b</b><span>profiles DE, EN, FR:<br>A1 - C2</span><p>#91 #92 #93</p><i>SINK</i></div>
+</div>
+</div>
+<div class="glegend"><span><svg width="34" height="10" aria-hidden="true"><line x1="0" y1="5" x2="34" y2="5" stroke="var(--edge-crit)" stroke-width="3"/></svg>critical path</span><span><svg width="34" height="10" aria-hidden="true"><line x1="0" y1="5" x2="34" y2="5" stroke="var(--edge)" stroke-width="1.5"/></svg>content branch</span><span class="swatch summit">summit</span><span class="swatch sink">sink</span><span>Issue numbers are coloured by status, as in the groups below, and link to GitHub.</span></div>
+<figcaption>Edges carry the issue-level dependencies they stand for. Edges already implied by an intermediate group are left out. Inside G2b, the French outline #90 builds on the French A1 outline #105.</figcaption>
+
+<h3>Groups</h3>
+<div class="legend"><span class="sw open">open</span><span class="sw work">in work</span><span class="sw closed">closed</span><span>Top right: who is responsible (author of the linked PR, else the assignee). Bottom right: the linked PR.</span></div>
+<p class="legend">Groups with the same number (a, b) can run in parallel.</p>
+<div class="flow">
+<div class="stage"><div class="stage-h">G1</div>
+<a class="iss" data-n="76" href="#"><span class="no">#76</span><span class="t">Doc: lesson, goal and streak decisions</span></a>
+<a class="iss" data-n="77" href="#"><span class="no">#77</span><span class="t">Lesson contracts and content checks</span></a>
+<a class="iss" data-n="78" href="#"><span class="no">#78</span><span class="t">Learner's time zone</span></a>
+</div>
+<div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
+<div class="stage">
+<div class="grp"><div class="grp-h">G2a</div>
+<a class="iss" data-n="79" href="#"><span class="no">#79</span><span class="t">Lesson tables and seed</span></a>
+<a class="iss" data-n="80" href="#"><span class="no">#80</span><span class="t">Roadmap rules</span></a>
+<a class="iss" data-n="83" href="#"><span class="no">#83</span><span class="t">Offline lesson generator</span></a>
+</div>
+<div class="grp"><div class="grp-h">G2b · outlines A1–C2</div>
+<a class="iss" data-n="105" href="#"><span class="no">#105</span><span class="t">French A1 outline</span></a>
+<a class="iss" data-n="88" href="#"><span class="no">#88</span><span class="t">German outline</span></a>
+<a class="iss" data-n="89" href="#"><span class="no">#89</span><span class="t">English outline</span></a>
+<a class="iss" data-n="90" href="#"><span class="no">#90</span><span class="t">French outline, A2–C2</span></a>
+</div>
+</div>
+<div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
+<div class="stage">
+<div class="grp"><div class="grp-h">G3a</div>
+<a class="iss" data-n="81" href="#"><span class="no">#81</span><span class="t">Today and all-lessons reads</span></a>
+<a class="iss" data-n="82" href="#"><span class="no">#82</span><span class="t">Finish a lesson, keep the streak</span></a>
+</div>
+<div class="grp"><div class="grp-h">G3b</div>
+<a class="iss" data-n="84" href="#"><span class="no">#84</span><span class="t">French A1 lessons</span></a>
+</div>
+</div>
+<div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
+<div class="stage"><div class="stage-h">G4</div>
+<a class="iss" data-n="85" href="#"><span class="no">#85</span><span class="t">Demo learners</span></a>
+<a class="iss" data-n="86" href="#"><span class="no">#86</span><span class="t">Daily goal page</span></a>
+<a class="iss" data-n="87" href="#"><span class="no">#87</span><span class="t">All lessons page with search</span></a>
+</div>
+<div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
+<div class="stage"><div class="stage-h">G5</div>
+<a class="iss" data-n="94" href="#"><span class="no">#94</span><span class="t">Gamification rules</span></a>
+<a class="iss" data-n="95" href="#"><span class="no">#95</span><span class="t">XP, challenge and achievements API</span></a>
+<a class="iss" data-n="96" href="#"><span class="no">#96</span><span class="t">Lesson stub page and roadmap e2e</span></a>
+</div>
+<div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
+<div class="stage">
+<div class="grp"><div class="grp-h">G6a · summit</div>
+<a class="iss" data-n="97" href="#"><span class="no">#97</span><span class="t">Rank, challenge and achievements pages</span></a>
+</div>
+<div class="grp"><div class="grp-h">G6b · lessons A1–C2</div>
+<a class="iss" data-n="91" href="#"><span class="no">#91</span><span class="t">German lessons</span></a>
+<a class="iss" data-n="92" href="#"><span class="no">#92</span><span class="t">English lessons</span></a>
+<a class="iss" data-n="93" href="#"><span class="no">#93</span><span class="t">French lessons, A2–C2</span></a>
+</div>
+</div>
+</div>
+
+<h3>Data model</h3>
+<a class="dm" href="milestone2-data-model.html"><i class="ti ti-database" aria-hidden="true"></i><div><b>Lessons data model</b><span>Every lesson format, from enums and content files through the seed and Prisma models to the API schemas, with the issues that reference each one.</span></div></a>
+</div>
+</section>
+
+<footer>Issue states, assignees and linked PRs as of 3 October 2026. States and assignees refresh from GitHub when the page loads; linked PRs do not. Source: <a href="https://github.com/VictorBro/ft_transcendence">VictorBro/ft_transcendence</a> · <a href="https://github.com/VictorBro/ft_transcendence/milestones">all milestones</a>.</footer>
+</main>
+<script>
+const repo='VictorBro/ft_transcendence';
+const issueUrl=n=>'https://github.com/'+repo+'/issues/'+n;
+/* Snapshot of each issue: state, assignees, and the PR linked in its Development panel
+   (merged first, then open, then the newest). State and assignees refresh live below;
+   linked PRs need an authenticated API, so they come from this snapshot. */
+const ISSUES={43:{s:"closed",a:["VYAntares"],pr:[58,"VYAntares","merged"]},
+44:{s:"closed",a:["VictorBro"],pr:[55,"VictorBro","merged"]},
+45:{s:"closed",a:["bastian-schnitzler"],pr:[57,"bastian-schnitzler","merged"]},
+46:{s:"closed",a:["luca-mattei"],pr:[59,"luca-mattei","merged"]},
+47:{s:"closed",a:["avarrett"],pr:[60,"avarrett","merged"]},
+48:{s:"closed",a:["bastian-schnitzler"],pr:[71,"bastian-schnitzler","merged"]},
+49:{s:"closed",a:["luca-mattei"],pr:[67,"luca-mattei","merged"]},
+50:{s:"open",a:["avarrett"],pr:[104,"avarrett","open"]},
+51:{s:"closed",a:["VictorBro"],pr:[64,"VictorBro","merged"]},
+52:{s:"closed",a:["VictorBro"],pr:[99,"VictorBro","merged"]},
+53:{s:"closed",a:["luca-mattei"],pr:null},
+54:{s:"closed",a:["VYAntares"],pr:[69,"VYAntares","merged"]},
+76:{s:"open",a:["VictorBro"],pr:[98,"VictorBro","open"]},
+77:{s:"open",a:["bastian-schnitzler"],pr:[103,"bastian-schnitzler","open"]},
+78:{s:"open",a:["luca-mattei"],pr:null},
+79:{s:"open",a:[],pr:null},
+80:{s:"open",a:[],pr:null},
+81:{s:"open",a:[],pr:null},
+82:{s:"open",a:[],pr:null},
+83:{s:"open",a:[],pr:null},
+84:{s:"open",a:["bastian-schnitzler"],pr:null},
+85:{s:"open",a:[],pr:null},
+86:{s:"open",a:[],pr:null},
+87:{s:"open",a:[],pr:null},
+88:{s:"open",a:[],pr:null},
+89:{s:"open",a:[],pr:null},
+90:{s:"open",a:["bastian-schnitzler"],pr:null},
+91:{s:"open",a:[],pr:null},
+92:{s:"open",a:[],pr:null},
+93:{s:"open",a:[],pr:null},
+94:{s:"open",a:[],pr:null},
+95:{s:"open",a:[],pr:null},
+96:{s:"open",a:[],pr:null},
+97:{s:"open",a:[],pr:null},
+105:{s:"open",a:["bastian-schnitzler"],pr:null}};
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+/* Responsible: whoever opened the linked PR, else the first assignee. */
+const responsible=i=>i.pr?i.pr[1]:(i.a[0]||null);
+/* Closed, else in work when someone is responsible, else open. */
+const statusOf=i=>i.s==='closed'?'closed':(responsible(i)?'work':'open');
+const STATUS_TEXT={open:'open',work:'in work',closed:'closed'};
+function renderIssues(){
+  document.querySelectorAll('.iss').forEach(el=>{
+    const n=el.dataset.n,i=ISSUES[n];
+    const title=el.dataset.title||el.querySelector('.t').textContent;
+    const st=i?statusOf(i):'open',who=i&&responsible(i),pr=i&&i.pr;
+    const div=document.createElement('div');
+    div.className='iss '+st;div.dataset.n=n;div.dataset.title=title;
+    div.innerHTML='<span class="no">#'+n+'</span>'
+      +(who?'<a class="who" href="https://github.com/'+esc(who)+'" title="Responsible: '+esc(who)+'"><img src="https://github.com/'+esc(who)+'.png?size=32" alt="" width="16" height="16" loading="lazy"><span>'+esc(who)+'</span></a>':'')
+      +'<a class="t" href="'+issueUrl(n)+'" title="Issue #'+n+', '+STATUS_TEXT[st]+'">'+esc(title)+'<span class="sr"> ('+STATUS_TEXT[st]+')</span></a>'
+      +(pr?'<a class="pr" href="https://github.com/'+repo+'/pull/'+pr[0]+'" title="Linked PR #'+pr[0]+', '+pr[2]+'"><i class="ti ti-git-pull-request" aria-hidden="true"></i>#'+pr[0]+'</a>':'');
+    el.replaceWith(div);
+  });
+}
+/* Issue titles for the hover text on the graph's issue links, as of 3 October 2026. */
+const GRAPH_TITLES={76:"docs: record the lesson, daily goal and streak decisions",77:"feat(shared): lesson contracts and the content checks",78:"feat: store the learner's time zone",79:"feat(api): lesson tables, and seed the lessons on every stack",80:"feat(api): roadmap rules as pure functions",81:"feat(api): today and all lessons reads, with the lesson search",82:"feat(api): finish a lesson, meet the goal, keep the streak",83:"feat(api): an offline lesson generator",84:"feat(content): generate and review the French A1 lessons",85:"feat(api): seed demo learners on development stacks",86:"feat(web): the daily goal page",87:"feat(web): the all lessons page, with advanced search",88:"feat(content): outline the German lessons, A1 to C2",89:"feat(content): outline the English lessons, A1 to C2",90:"feat(content): outline the French lessons, A2 to C2",91:"feat(content): generate and review the German lessons",92:"feat(content): generate and review the English lessons",93:"feat(content): generate and review the French lessons, A2 to C2",94:"feat: gamification rules, XP, challenges and achievements",95:"feat(api): award XP, the daily challenge and achievements",96:"feat(web): lesson stub page and the roadmap e2e",97:"feat(web): rank, challenge and achievements pages",105:"feat(content): outline the French A1 lessons"};
+const graphTitle=n=>'#'+n+': '+(GRAPH_TITLES[n]||'');
+const attr=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const linkify=s=>s.replace(/#(\d+)/g,(m,n)=>'<a href="'+issueUrl(n)+'" title="'+attr(graphTitle(n))+'">#'+n+'</a>');
+
+/* Milestone 2 graph, from milestone2_groups.mermaid. Layout pins and removed edges are left out. */
+const EDGES=[
+  ['G1','G2a',true,['#77 → #79, #80','#76, #77 → #83']],
+  ['G2a','G3a',true,['#79, #80 → #81, #82']],
+  ['G3a','G4',true,['#82 → #85','#81, #82 → #86','#81 → #87']],
+  ['G4','G5',true,['#85 → #95','#86, #87 → #96']],
+  ['G5','G6a',true,['#95, #96 → #97']],
+  ['G1','G2b',false,['#76, #77 → #88, #89, #90','#76, #77 → #105']],
+  ['G2a','G3b',false,['#79, #83 → #84']],
+  ['G2b','G3b',false,['#105 → #84']],
+  ['G3b','G4',false,['#84 → #86, #87']],
+  ['G3b','G6b',false,['#84 → #93']],
+];
+const graph=document.getElementById('g2');
+const svg=graph.querySelector('svg.edges');
+/* Issue numbers in the nodes become chips coloured by the state shown in the groups list below. */
+graph.querySelectorAll('.gn p').forEach(p=>{
+  p.innerHTML=p.textContent.trim().split(/\s+/).map(t=>{const n=t.slice(1);return '<a class="inum" data-n="'+n+'" href="'+issueUrl(n)+'" title="'+attr(graphTitle(n))+'">#'+n+'</a>';}).join('');
+});
+function syncGraphStates(){
+  graph.querySelectorAll('a.inum').forEach(a=>{
+    const i=ISSUES[a.dataset.n],st=i?statusOf(i):'open';
+    a.classList.toggle('closed',st==='closed');a.classList.toggle('work',st==='work');
+  });
+}
+const labels=EDGES.map(e=>{const d=document.createElement('div');d.className='elbl';d.innerHTML=e[3].map(linkify).join('<br>');graph.appendChild(d);return d;});
+function drawGraph(){
+  const g=graph.getBoundingClientRect();
+  const box=id=>{const r=document.getElementById(id).getBoundingClientRect();return{l:r.left-g.left,r:r.right-g.left,t:r.top-g.top,b:r.bottom-g.top,cy:(r.top+r.bottom)/2-g.top};};
+  svg.querySelectorAll(':scope>path').forEach(p=>p.remove());
+  EDGES.forEach(([a,b,crit],i)=>{
+    const s=box(a),t=box(b);
+    const x1=s.r,y1=s.cy,x2=t.l-2,y2=t.cy,dx=Math.max(40,(x2-x1)*0.5);
+    const p=document.createElementNS('http://www.w3.org/2000/svg','path');
+    p.setAttribute('d','M'+x1+','+y1+' C'+(x1+dx)+','+y1+' '+(x2-dx)+','+y2+' '+x2+','+y2);
+    if(crit)p.setAttribute('class','crit');
+    p.setAttribute('marker-end',crit?'url(#ahc)':'url(#ah)');
+    svg.appendChild(p);
+    /* label at the curve's midpoint (t = 0.5 of a symmetric cubic) */
+    labels[i].style.left=((x1+x2)/2)+'px';
+    labels[i].style.top=((y1+y2)/2)+'px';
+  });
+}
+renderIssues();
+drawGraph();syncGraphStates();
+if('ResizeObserver' in window)new ResizeObserver(drawGraph).observe(graph);
+addEventListener('load',drawGraph);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(drawGraph);
+
+function setProgress(section){
+  const chips=[...section.querySelectorAll('.iss')];
+  const closed=chips.filter(c=>c.classList.contains('closed')).length;
+  const total=chips.length;
+  const bar=section.querySelector('.bar');
+  bar.setAttribute('aria-valuenow',closed);bar.setAttribute('aria-valuemax',total);
+  bar.querySelector('span').style.width=(total?closed/total*100:0)+'%';
+  section.querySelector('.prog-t').textContent=closed+' of '+total+' issues closed';
+}
+
+/* Refresh state and assignees from the public API; keep the snapshot if it fails or is rate-limited. */
+document.querySelectorAll('section.ms').forEach(async section=>{
+  try{
+    const r=await fetch('https://api.github.com/repos/'+repo+'/issues?milestone='+section.dataset.milestone+'&state=all&per_page=100',{headers:{accept:'application/vnd.github+json'}});
+    if(!r.ok)return;
+    const issues=await r.json();
+    issues.forEach(g=>{
+      const i=ISSUES[g.number];if(!i||g.pull_request)return;
+      i.s=g.state;i.a=(g.assignees||[]).map(u=>u.login);
+    });
+    renderIssues();
+    setProgress(section);
+    syncGraphStates();
+  }catch(e){}
+});
+</script>
+</body>
+</html>
