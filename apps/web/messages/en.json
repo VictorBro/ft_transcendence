@@ -1,9 +1,9 @@
 {
   "SessionNav": {
     "accountNav": "Account",
-    "profile": "Profile",
     "signIn": "Sign in",
-    "createAccount": "Create account"
+    "createAccount": "Create account",
+    "profile": "Profile"
   },
   "LanguageSwitcher": {
     "label": "Language",
@@ -258,5 +258,27 @@
     "disabledStatus": "Two factor authentication is off.",
     "working": "Working…",
     "setUp": "Set up"
+  },
+  "Placement": {
+    "title": "Evaluation",
+    "startButton": "Start the test",
+    "startHeading": "Evaluate your level",
+    "startDescription": "The evaluation will help you determine your level in this language.",
+    "starting": "Starting the test…",
+    "optionLabel": "Answer options",
+    "quitButton": "Quit test",
+    "resultHeading": "Placement report",
+    "reportQuestion": "Questions",
+    "yourAnswer": "Your answer",
+    "correctAnswer": "Correct answer",
+    "noAnswer": "No answer",
+    "correct": "Correct",
+    "incorrect": "Incorrect",
+    "levelLabel": "Your target level is",
+    "notPlaced": "Not placed",
+    "continueButton": "Continue",
+    "overrideButton": "Not your level?",
+    "overrideLegend": "Choose your level",
+    "overrideSubmit": "Save this level"
   }
 }

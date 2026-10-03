@@ -1,9 +1,9 @@
 {
   "SessionNav": {
     "accountNav": "Konto",
-    "profile": "Profil",
     "signIn": "Anmelden",
-    "createAccount": "Konto erstellen"
+    "createAccount": "Konto erstellen",
+    "profile": "Profil"
   },
   "LanguageSwitcher": {
     "label": "Sprache",
@@ -258,5 +258,27 @@
     "disabledStatus": "Die Zwei-Faktor-Authentifizierung ist deaktiviert.",
     "working": "Wird bearbeitet…",
     "setUp": "Einrichten"
+  },
+  "Placement": {
+    "title": "Einstufungstest",
+    "startHeading": "Bewerte dein Niveau",
+    "startDescription": "Dieser Test bewertet dein Niveau in dieser Sprache. Er basiert auf deinen Antworten auf die Fragen und liefert dir am Ende einen detaillierten Bericht.",
+    "startButton": "Test starten",
+    "starting": "Test wird gestartet…",
+    "optionLabel": "Antwortoptionen",
+    "quitButton": "Test beenden",
+    "resultHeading": "Einstufungstest",
+    "reportQuestion": "Fragen",
+    "yourAnswer": "Deine Antwort",
+    "noAnswer": "Keine Antwort",
+    "correct": "Richtig",
+    "incorrect": "Falsch",
+    "correctAnswer": "Richtige Antwort",
+    "levelLabel": "Zielniveau für deine Lektionen",
+    "notPlaced": "Du wurdest noch nicht eingestuft.",
+    "continueButton": "Weiterlernen",
+    "overrideButton": "Nicht dein Niveau?",
+    "overrideLegend": "Wähle dein Niveau",
+    "overrideSubmit": "Dieses Niveau speichern"
   }
 }

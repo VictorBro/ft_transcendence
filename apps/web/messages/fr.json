@@ -1,9 +1,9 @@
 {
   "SessionNav": {
     "accountNav": "Compte",
-    "profile": "Profil",
     "signIn": "Se connecter",
-    "createAccount": "Créer un compte"
+    "createAccount": "Créer un compte",
+    "profile": "Profil"
   },
   "LanguageSwitcher": {
     "label": "Langue",
@@ -258,5 +258,27 @@
     "disabledStatus": "L'authentification à deux facteurs est désactivée.",
     "working": "En cours…",
     "setUp": "Configurer"
+  },
+  "Placement": {
+    "title": "Évaluation",
+    "startButton": "Commencer le test",
+    "startHeading": "Évaluer votre niveau",
+    "startDescription": "L'évaluation vous aidera à déterminer votre niveau dans cette langue.",
+    "starting": "Démarrage du test…",
+    "optionLabel": "Options de réponse",
+    "quitButton": "Quitter le test",
+    "resultHeading": "Rapport d'évaluation",
+    "reportQuestion": "Questions",
+    "yourAnswer": "Votre réponse",
+    "correctAnswer": "Réponse correcte",
+    "noAnswer": "Aucune réponse",
+    "correct": "Correct",
+    "incorrect": "Incorrect",
+    "levelLabel": "Votre niveau cible est",
+    "notPlaced": "Pas encore défini",
+    "continueButton": "Continuer",
+    "overrideButton": "Ce n'est pas votre niveau ?",
+    "overrideLegend": "Choisissez votre niveau",
+    "overrideSubmit": "Enregistrer ce niveau"
   }
 }

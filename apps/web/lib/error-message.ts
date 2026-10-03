@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { isErrorCode } from '@ft/shared';
+import { useCallback } from 'react';
 
 /**
  * The one place an error code becomes a sentence.
@@ -17,5 +18,8 @@ import { isErrorCode } from '@ft/shared';
 export function useErrorMessage(): (code: string, status?: number) => string {
   const t = useTranslations('Errors');
 
-  return (code, status = 0) => t(isErrorCode(code) ? code : 'unknown', { status });
+  return useCallback(
+    (code, status = 0) => t(isErrorCode(code) ? code : 'unknown', { status }),
+    [t],
+  );
 }
