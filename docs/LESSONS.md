@@ -48,9 +48,10 @@ shopping                   food_and_drink    services        places
 language                   weather
 ```
 
-**For the learner:** a `title` (1 to 80 characters) and a `summary` (1 to 200), plain trimmed
-strings. They appear on the daily goal page and the all lessons page, and the text search matches
-them.
+**For the learner:** a `title` (1 to 80 characters) and a `summary` (1 to 200), plain strings.
+They appear on the daily goal page and the all lessons page, and the text search matches them. A
+string with leading or trailing spaces is rejected, never trimmed silently: the generator trims the
+model's output before it writes.
 
 **For the tutor:** a `brief`, which the next milestone's tutor turns into the lesson itself. The
 learner never sees it, and the API never sends it to the browser.
@@ -64,6 +65,7 @@ learner never sees it, and the API never sends it to the browser.
 | `vocabulary` | 6 to 15 | `{ term, gloss }` pairs. Required on vocabulary lessons, optional on the others |
 
 Every brief string is at most 300 characters, a `term` at most 60 and a `gloss` at most 120.
+Leading or trailing spaces are rejected, as for the title.
 
 **One language per lesson: the course's.** The title, the summary, the brief and the outline
 line are all in the language being learned, like a question in the bank. The interface language
@@ -80,7 +82,7 @@ language, so it works for every interface language.
 
 ---
 
-## 2. Counts and kind shares per level
+## 2. Counts per level and per kind
 
 The same for de, en and fr: 1,330 lessons per language, about 4,000 in all.
 
@@ -95,30 +97,36 @@ The same for de, en and fr: 1,330 lessons per language, about 4,000 in all.
 
 The counts are exact: they live in `LESSONS_PER_LEVEL` (`packages/shared/src/schemas/lesson.ts`)
 and CI rejects an outline with one entry more or less. To change a count, open a PR that changes
-the constant, for all three languages at once, and stays inside the allowed range. Every language
-keeps the same count, because the sources agree across the three: the differences go in the
-kind shares below.
+the constant and `KIND_COUNTS` with it, for all three languages at once, and stays inside the
+allowed range. Every language keeps the same count, because the sources agree across the three:
+the differences go in the counts per kind below.
 
-**Kind shares per level**, in %, from `KIND_SHARES`:
+**Lessons per kind**, from `KIND_COUNTS[lang][level]`. German and French have more grammar at A1
+to B1, English more vocabulary at B1 to C2.
+
+German and French:
 
 | Level | Grammar | Vocabulary | Functions | Reading |
 |---|---|---|---|---|
-| A1 | 35 | 45 | 12 | 8 |
-| A2 | 35 | 40 | 12 | 13 |
-| B1 | 25 | 48 | 10 | 17 |
-| B2 | 20 | 50 | 12 | 18 |
-| C1 | 10 | 50 | 12 | 28 |
-| C2 | 8 | 52 | 10 | 30 |
+| A1 | 48 | 48 | 14 | 10 |
+| A2 | 60 | 52 | 18 | 20 |
+| B1 | 68 | 100 | 22 | 40 |
+| B2 | 50 | 125 | 30 | 45 |
+| C1 | 26 | 130 | 32 | 72 |
+| C2 | 26 | 166 | 32 | 96 |
 
-The grammar share falls from B1, and the number of grammar lessons falls after B2 (40 to 60 per
-level up to B2, about 26 at C1 and C2). Vocabulary and reading take the rest. Each language may
-shift about 5 points between kinds, and the count per level stays the same:
+English:
 
-| Language | Shift |
-|---|---|
-| de | About 5 points more grammar at A1 to B1 (cases, adjective endings, word order) |
-| fr | About 5 points more grammar at A1 to B1 (verb forms, object pronouns, the subjunctive) |
-| en | About 5 points more vocabulary at B1 to C2 (phrasal verbs, idioms) |
+| Level | Grammar | Vocabulary | Functions | Reading |
+|---|---|---|---|---|
+| A1 | 42 | 54 | 14 | 10 |
+| A2 | 50 | 60 | 20 | 20 |
+| B1 | 46 | 122 | 22 | 40 |
+| B2 | 38 | 136 | 30 | 46 |
+| C1 | 14 | 142 | 30 | 74 |
+| C2 | 16 | 182 | 32 | 90 |
+
+These counts are exact too: CI requires each kind's count, with no tolerance.
 
 ---
 
@@ -214,7 +222,7 @@ The lesson it becomes in `content/lessons/fr-a1.json`, all in French:
 
 **Writing an outline:**
 
-- Exactly the level's count, with the kind shares of §2.
+- Exactly the level's count, with the counts per kind of §2.
 - One focus per lesson, sized to ten minutes.
 - Each lesson builds on the ones before it, and on the levels below.
 - No two entries teach the same thing, across all six levels of the language.
@@ -233,7 +241,8 @@ The lesson it becomes in `content/lessons/fr-a1.json`, all in French:
 | **Permanent once on `main`** | Learners' results attach to it |
 
 Once an id is on `main`, you may retitle, rewrite or move the lesson, but never rename or
-delete it. The seed fails if the database has an id that no file has.
+delete it. The seed fails if the database has an id that no file has, except the `<lang>-test-`
+ids that specs give their fixture lessons.
 
 ---
 
@@ -242,7 +251,7 @@ delete it. The seed fails if the database has an id that no file has.
 One PR, three steps:
 
 1. Move its outline entry and its lesson to the other level's files, with the same id.
-2. Move one lesson back the other way, so both counts stay exact.
+2. Move one lesson of the same kind back the other way, so both levels' counts stay exact.
 3. Nothing else: the seed updates `level` and `position`, and results stay attached.
 
 ---
@@ -272,10 +281,10 @@ A failure names the file and the entry.
 | Outline file | Parses as `{ lang, level, entries }`, named after its lang and level |
 | Lesson file | Parses as `{ lang, level, lessons }`, with the field limits of §1 |
 | Counts | Exactly `LESSONS_PER_LEVEL[level]` entries |
-| Kind shares | Each kind within 10 points of `KIND_SHARES`, and at least 5% of the level, so a daily challenge that asks for one kind always finds lessons of it |
+| Kind counts | Each kind has exactly its count from the language's `KIND_COUNTS`, so a daily challenge that asks for one kind always finds lessons of it |
 | Topic and theme | `topic` exactly on grammar, `theme` exactly on the others, `vocabulary` on every vocabulary lesson |
-| Ids | Start with the file's language, unique across the language's six files |
-| Titles | Unique within a language after `foldText` (accents removed, lowercase, ß to ss, œ to oe, æ to ae) |
+| Ids | Start with the file's language, unique across the language's six files. None starts with `<lang>-test-`, a prefix kept for spec fixtures ([#79](https://github.com/VictorBro/ft_transcendence/issues/79)) |
+| Titles | Unique within a language after `foldText` (accents and umlauts removed, lowercase, ß to ss, œ to oe, æ to ae). The lesson search also tries ae, oe and ue as a, o and u for German ([#81](https://github.com/VictorBro/ft_transcendence/issues/81)), but `foldText` itself does not |
 | Lessons match the outline | Every lesson file has an outline, with the same ids in the same order and the same kind, topic and theme |
 | Complete languages | A language in `COMPLETE_LANGUAGES` has all six lesson files |
 
@@ -343,8 +352,9 @@ bank ([ITEM_BANK.md](ITEM_BANK.md) §1).
 
 ## 11. French A1 goes first
 
-**French A1 goes first**, on its own
-([#84](https://github.com/VictorBro/ft_transcendence/issues/84)). It is the demo level and every
+**French A1 goes first**, on its own: its outline is
+[#105](https://github.com/VictorBro/ft_transcendence/issues/105) and its lessons are
+[#84](https://github.com/VictorBro/ft_transcendence/issues/84). It is the demo level and every
 e2e test runs on it, and most of the team speaks French, so a full read and a second reader are
 easy to find.
 

@@ -57,14 +57,15 @@ middle of it. The first probe is therefore always B1.
 
 - **Level passed:** everything above is still in play, so `lo = level + 1`.
 - **Level failed:** everything below it is, so `hi = level - 1`.
-- **`lo > hi`:** the search is over. The result is the highest level passed, or A1 if none was.
+- **`lo > hi`:** the search is over. The result is `lo`, the level to learn: one above the highest
+  level passed, capped at C2, or A1 if none was passed.
 
 Three probes settle six levels, so a run is at most three levels deep.
 
 **A worked run.** B1 is always the first probe. Six questions there, one of them wrong: that is
 still a pass, so `lo` becomes B2 and the next probe is the middle of B2 to C2, which is **C1**.
 Two wrong at C1: the level stops there, `hi` becomes B2, and the last probe is B2 itself. The
-answer is B2 if it passes and B1 if it does not.
+result is C1 if it passes and B2 if it does not, one above the highest level passed.
 
 **What passing a level means.** Six questions at that level, two from each category:
 `vocabulary`, `grammar` and `reading`. **One mistake is allowed; the second ends the level.**
@@ -144,7 +145,7 @@ flowchart TD
     passed --> over{"lo > hi?"}
     failed --> over
     over -- "no" --> probe
-    over -- "yes" --> result["Highest level passed<br/><small>written to UserLevel.level</small>"]
+    over -- "yes" --> result["One above the highest level passed, capped at C2<br/><small>written to UserLevel.level</small>"]
 
     classDef llm stroke-width:3px
     class gen llm
