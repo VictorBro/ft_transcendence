@@ -1,0 +1,846 @@
+{
+  "lang": "fr",
+  "level": "A1",
+  "entries": [
+    {
+      "id": "fr-greetings-and-goodbyes",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Saluer et prendre congé",
+      "intent": "Saluer et prendre congé à tout moment de la journée avec bonjour, bonsoir, salut, au revoir, à bientôt, et demander « Ça va ? »."
+    },
+    {
+      "id": "fr-subject-pronouns",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Les pronoms sujets",
+      "intent": "Employer les pronoms sujets je, tu, il, elle, nous, vous, ils et elles, choisir ils ou elles selon le groupe, et tu ou vous selon la personne à qui on parle."
+    },
+    {
+      "id": "fr-alphabet-and-accents",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "L'alphabet et les accents",
+      "intent": "Épeler son nom et son prénom avec les lettres de l'alphabet et nommer les signes : accent aigu, grave, circonflexe, cédille, tréma."
+    },
+    {
+      "id": "fr-verb-etre-present",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Le verbe être au présent",
+      "intent": "Conjuguer être au présent avec tous les pronoms pour dire sa nationalité, sa profession ou son état : je suis, tu es, il est…"
+    },
+    {
+      "id": "fr-countries-and-nationalities",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Pays et nationalités",
+      "intent": "Nommer une douzaine de pays et la nationalité qui leur correspond, au masculin et au féminin : l'Espagne, espagnol, espagnole ; le Japon, japonais, japonaise."
+    },
+    {
+      "id": "fr-introducing-yourself",
+      "kind": "functions",
+      "theme": "personal_identification",
+      "workingTitle": "Se présenter",
+      "intent": "Se présenter en quelques phrases : dire son nom avec « je m'appelle », sa nationalité, sa ville avec « j'habite à » et les langues qu'on parle."
+    },
+    {
+      "id": "fr-indefinite-articles-and-noun-gender",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Un, une, des : le genre des noms",
+      "intent": "Employer un, une et des devant les noms et retenir que chaque nom français est masculin ou féminin : un livre, une table, des stylos."
+    },
+    {
+      "id": "fr-numbers-zero-to-twenty",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Les nombres de 0 à 20",
+      "intent": "Compter de zéro à vingt et reconnaître ces nombres à l'oral, par exemple un numéro de page ou de salle, en prononçant bien six, dix et vingt."
+    },
+    {
+      "id": "fr-here-there-now-tomorrow",
+      "kind": "grammar",
+      "topic": "adverbs",
+      "workingTitle": "Ici, là, maintenant, demain",
+      "intent": "Situer une personne ou une action par rapport à soi et au moment où on parle avec ici, là, maintenant, aujourd'hui, demain, bientôt et tout de suite."
+    },
+    {
+      "id": "fr-classroom-objects",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Les objets de la classe",
+      "intent": "Nommer une douzaine d'objets de la classe avec leur article : un livre, un cahier, un stylo, une table, une chaise, un tableau…"
+    },
+    {
+      "id": "fr-er-verbs-present",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Les verbes en -er au présent",
+      "intent": "Conjuguer parler, habiter et aimer au présent avec tous les pronoms et prononcer les terminaisons muettes -e, -es et -ent."
+    },
+    {
+      "id": "fr-asking-to-repeat-and-spell",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Faire répéter, faire épeler",
+      "intent": "Dire qu'on ne comprend pas, faire répéter, faire épeler et demander de parler lentement : « Pardon ? », « Ça s'écrit comment ? »."
+    },
+    {
+      "id": "fr-jobs-and-professions",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Les professions",
+      "intent": "Nommer une douzaine de métiers courants (médecin, professeur, serveur, vendeur, infirmier…) et dire sa profession sans article : je suis étudiant."
+    },
+    {
+      "id": "fr-definite-articles-and-elision",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Le, la, l', les",
+      "intent": "Employer le, la, l' et les, avec l'élision devant une voyelle ou un h muet (l'ami, l'hôtel), et après aimer, adorer ou détester : j'aime le café."
+    },
+    {
+      "id": "fr-family-members",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "La famille",
+      "intent": "Nommer une douzaine de membres de la famille avec leur article : le père, la mère, le frère, la sœur, les grands-parents, le cousin…"
+    },
+    {
+      "id": "fr-yes-no-questions",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Poser une question fermée",
+      "intent": "Poser une question fermée par l'intonation (Tu parles anglais ?) ou avec est-ce que, et y répondre par oui ou non."
+    },
+    {
+      "id": "fr-verb-avoir-present",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Le verbe avoir au présent",
+      "intent": "Conjuguer avoir au présent avec tous les pronoms, dire son âge (j'ai vingt ans) et dire ce qu'on possède."
+    },
+    {
+      "id": "fr-classroom-instructions",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Les consignes de la classe",
+      "intent": "Comprendre une dizaine de consignes de classe à l'écrit et à l'oral : écoutez, lisez, écrivez, répétez, complétez, cochez, ouvrez le livre…"
+    },
+    {
+      "id": "fr-asking-about-someone",
+      "kind": "functions",
+      "theme": "personal_identification",
+      "workingTitle": "Poser des questions à quelqu'un",
+      "intent": "Demander à une personne son nom, son âge, sa ville, sa profession et les langues qu'elle parle, et répondre aux mêmes questions."
+    },
+    {
+      "id": "fr-personal-details-on-a-form",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Remplir une fiche",
+      "intent": "Comprendre une dizaine de mots d'un formulaire : nom, prénom, adresse, date de naissance, lieu de naissance, célibataire, marié, signature…"
+    },
+    {
+      "id": "fr-negation-ne-pas",
+      "kind": "grammar",
+      "topic": "negation",
+      "workingTitle": "La négation ne… pas",
+      "intent": "Mettre une phrase à la forme négative avec ne… pas autour du verbe, et n' devant une voyelle : je ne parle pas, je n'habite pas."
+    },
+    {
+      "id": "fr-days-of-the-week",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Les jours de la semaine",
+      "intent": "Nommer les sept jours de la semaine et les moments de la journée (le matin, l'après-midi, le soir) et dire quel jour on est."
+    },
+    {
+      "id": "fr-prepositions-chez-and-avec",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "Chez, avec",
+      "intent": "Dire chez qui on est ou on habite et avec qui on fait quelque chose : j'habite chez mes parents, je suis chez Paul, je travaille avec Léa."
+    },
+    {
+      "id": "fr-reading-an-online-profile",
+      "kind": "reading",
+      "theme": "personal_identification",
+      "workingTitle": "Lire un profil en ligne",
+      "intent": "Lire le profil court d'une personne sur un site d'échange linguistique et retrouver son nom, son âge, sa ville, sa profession et ses langues."
+    },
+    {
+      "id": "fr-regular-noun-plurals",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Le pluriel des noms",
+      "intent": "Former le pluriel des noms avec -s et -x (un gâteau, des gâteaux) et savoir que ce s final ne se prononce pas : on entend le pluriel dans l'article."
+    },
+    {
+      "id": "fr-rooms-of-the-home",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Les pièces du logement",
+      "intent": "Nommer une dizaine de pièces et parties du logement : la cuisine, la chambre, le salon, la salle de bains, les toilettes, le balcon, le jardin…"
+    },
+    {
+      "id": "fr-thanking-and-apologising",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Remercier et s'excuser",
+      "intent": "Remercier, s'excuser et répondre à un remerciement ou à une excuse : merci beaucoup, de rien, pardon, excusez-moi, ce n'est pas grave."
+    },
+    {
+      "id": "fr-cest-ce-sont-voici-voila",
+      "kind": "grammar",
+      "topic": "information_structure_and_pragmatics",
+      "workingTitle": "C'est, ce sont, voici, voilà",
+      "intent": "Présenter ou montrer une personne ou une chose avec c'est, ce sont, voici et voilà : C'est Paul. Ce sont des amis. Voici la clé."
+    },
+    {
+      "id": "fr-numbers-twenty-one-to-one-hundred",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Les nombres de 21 à 100",
+      "intent": "Compter de 21 à 100, avec les formes difficiles soixante-dix, quatre-vingts et quatre-vingt-dix, et comprendre un prix en euros."
+    },
+    {
+      "id": "fr-months-and-dates",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Les mois et la date",
+      "intent": "Nommer les douze mois et dire la date : le 1er mai, le 14 juillet, nous sommes le lundi 3 mars."
+    },
+    {
+      "id": "fr-possessives-mon-ton-son",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Mon, ton, son",
+      "intent": "Employer mon, ma, mes, ton, ta, tes, son, sa, ses selon le genre et le nombre de ce qu'on possède, et mon devant une voyelle : mon amie."
+    },
+    {
+      "id": "fr-colors",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Les couleurs",
+      "intent": "Nommer une douzaine de couleurs pour décrire un objet : rouge, bleu, vert, jaune, noir, blanc, gris, rose, marron, orange, violet…"
+    },
+    {
+      "id": "fr-prepositions-with-cities-and-countries",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "À Paris, en France, au Japon",
+      "intent": "Dire où on habite avec à + ville, en + pays féminin, au + pays masculin et aux + pays pluriel : à Lyon, en Italie, au Canada, aux États-Unis."
+    },
+    {
+      "id": "fr-introducing-someone",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Présenter quelqu'un",
+      "intent": "Présenter un ami ou un membre de sa famille et réagir à une présentation : « Je te présente Marc », « Voici ma sœur », « Enchanté ! »."
+    },
+    {
+      "id": "fr-furniture-and-appliances",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Les meubles",
+      "intent": "Nommer une douzaine de meubles et d'appareils de la maison : un lit, une armoire, un canapé, une table, un frigo, une lampe, une étagère…"
+    },
+    {
+      "id": "fr-question-words",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Où, quand, comment… ?",
+      "intent": "Poser des questions ouvertes avec où, quand, comment, combien, pourquoi, qui et que, dont Qui est-ce ? et Qu'est-ce que c'est ?, en début ou en fin de phrase : Tu habites où ?"
+    },
+    {
+      "id": "fr-telling-the-time",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "L'heure",
+      "intent": "Demander et dire l'heure (Il est quelle heure ? Il est huit heures et quart, midi, moins le quart) et lire une heure comme 18 h 30."
+    },
+    {
+      "id": "fr-feminine-of-nouns-for-people",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Le féminin des noms de personnes",
+      "intent": "Former le féminin des noms de personnes et de métiers : un étudiant, une étudiante ; un acteur, une actrice ; un serveur, une serveuse ; un, une journaliste."
+    },
+    {
+      "id": "fr-places-in-town",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Les lieux de la ville",
+      "intent": "Nommer une douzaine de lieux de la ville : la gare, la poste, la banque, la mairie, le musée, le parc, l'hôpital, le cinéma…"
+    },
+    {
+      "id": "fr-reading-public-signs",
+      "kind": "reading",
+      "theme": "places",
+      "workingTitle": "Lire les panneaux",
+      "intent": "Comprendre des panneaux courts dans un lieu public (entrée, sortie, fermé, défense de fumer, poussez, tirez) pour savoir où aller et ce qui est interdit."
+    },
+    {
+      "id": "fr-verb-aller-present",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Le verbe aller",
+      "intent": "Conjuguer aller au présent et dire où on va avec à la et à l' : je vais à la poste, nous allons à l'école."
+    },
+    {
+      "id": "fr-shops-and-shopkeepers",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Les commerces",
+      "intent": "Nommer une dizaine de commerces et les personnes qui y travaillent : la boulangerie et le boulanger, la pharmacie et le pharmacien, le supermarché…"
+    },
+    {
+      "id": "fr-contractions-au-and-aux",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "À + le = au",
+      "intent": "Contracter à + le en au et à + les en aux (au cinéma, aux toilettes), mais garder à la et à l' au féminin et devant une voyelle."
+    },
+    {
+      "id": "fr-hobbies-and-leisure",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Les loisirs",
+      "intent": "Nommer une douzaine de loisirs : lire, voyager, cuisiner, danser, chanter, la musique, le cinéma, les jeux vidéo, la photo, la randonnée…"
+    },
+    {
+      "id": "fr-present-progressive-etre-en-train-de",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Être en train de",
+      "intent": "Dire qu'une action est en cours au moment où on parle avec être en train de + infinitif : je suis en train de manger, ils sont en train de jouer."
+    },
+    {
+      "id": "fr-talking-about-likes",
+      "kind": "functions",
+      "theme": "free_time",
+      "workingTitle": "Dire ce qu'on aime",
+      "intent": "Dire ce qu'on aime ou non (j'aime le cinéma, j'adore danser), demander les goûts de l'autre et réagir : moi aussi, moi non, un peu, beaucoup, pas du tout."
+    },
+    {
+      "id": "fr-sports",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Les sports",
+      "intent": "Nommer une dizaine de sports (le football, le tennis, la natation, le vélo, le ski…) et les lieux où on les pratique : le stade, la piscine."
+    },
+    {
+      "id": "fr-verb-faire-present",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Le verbe faire",
+      "intent": "Conjuguer faire au présent, en particulier nous faisons et vous faites, et parler de ses activités : faire du sport, faire les courses."
+    },
+    {
+      "id": "fr-reading-a-text-message",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Lire un SMS",
+      "intent": "Lire un court SMS d'un ami qui propose de se voir et retrouver le jour, l'heure et le lieu du rendez-vous."
+    },
+    {
+      "id": "fr-drinks-at-the-cafe",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Au café : les boissons",
+      "intent": "Nommer une douzaine de boissons et de produits de café : un café, un thé, un chocolat chaud, un jus d'orange, une eau minérale, un croissant…"
+    },
+    {
+      "id": "fr-polite-requests-je-voudrais",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Je voudrais…",
+      "intent": "Demander poliment avec je voudrais, j'aimerais et vous pourriez + infinitif, plutôt qu'avec je veux, dans un magasin ou au café."
+    },
+    {
+      "id": "fr-ordering-at-a-cafe",
+      "kind": "functions",
+      "theme": "food_and_drink",
+      "workingTitle": "Commander au café",
+      "intent": "Commander une boisson au café, demander le prix et l'addition, et répondre au serveur : « Vous désirez ? », « Un café, s'il vous plaît »."
+    },
+    {
+      "id": "fr-fruit-and-vegetables",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Les fruits et légumes",
+      "intent": "Nommer une quinzaine de fruits et légumes courants : une pomme, une banane, une orange, une fraise, une tomate, une carotte, une pomme de terre…"
+    },
+    {
+      "id": "fr-partitive-articles",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Du, de la, de l'",
+      "intent": "Employer du, de la et de l' pour une quantité qu'on ne compte pas (je mange du pain, je bois de l'eau), à la différence de un et une."
+    },
+    {
+      "id": "fr-everyday-groceries",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Les courses de base",
+      "intent": "Nommer une douzaine de produits courants : le pain, le lait, le beurre, le fromage, les œufs, le riz, les pâtes, la viande, le poisson…"
+    },
+    {
+      "id": "fr-there-is-il-y-a",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Il y a",
+      "intent": "Dire ce qui se trouve dans un lieu avec il y a (Dans le frigo, il y a du lait et des œufs) et demander « Qu'est-ce qu'il y a ? »."
+    },
+    {
+      "id": "fr-packaging-and-weights",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Les emballages et les poids",
+      "intent": "Nommer une dizaine de quantités et d'emballages : un kilo, un gramme, un litre, une bouteille, une boîte, un paquet, une tranche, un pot, une douzaine."
+    },
+    {
+      "id": "fr-negative-article-pas-de",
+      "kind": "grammar",
+      "topic": "negation",
+      "workingTitle": "Pas de, pas d'",
+      "intent": "Remplacer un, une, des, du et de la par de ou d' après une négation : je n'ai pas de voiture, il n'y a pas de lait."
+    },
+    {
+      "id": "fr-restaurant-words",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Au restaurant",
+      "intent": "Nommer une douzaine de mots du restaurant : la carte, le menu, l'entrée, le plat, le dessert, le serveur, la réservation, l'addition, le pourboire…"
+    },
+    {
+      "id": "fr-reading-a-restaurant-menu",
+      "kind": "reading",
+      "theme": "food_and_drink",
+      "workingTitle": "Lire la carte d'un restaurant",
+      "intent": "Lire la carte d'un petit restaurant et trouver les plats, les boissons, les prix et ce que comprend la formule du jour."
+    },
+    {
+      "id": "fr-quantity-words-with-de",
+      "kind": "grammar",
+      "topic": "comparison_and_quantity",
+      "workingTitle": "Beaucoup de, un peu de",
+      "intent": "Exprimer une quantité avec beaucoup de, un peu de, assez de, trop de et combien de + nom, sans article, comme après un kilo de : trop de sel."
+    },
+    {
+      "id": "fr-clothes",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Les vêtements",
+      "intent": "Nommer une quinzaine de vêtements et d'accessoires : un pantalon, une jupe, une robe, une chemise, un pull, un manteau, des chaussures, un chapeau…"
+    },
+    {
+      "id": "fr-demonstrative-determiners",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Ce, cet, cette, ces",
+      "intent": "Montrer un objet avec ce, cet, cette et ces (ce pull, cet anorak, cette robe, ces chaussures), avec cet devant une voyelle ou un h muet."
+    },
+    {
+      "id": "fr-buying-clothes",
+      "kind": "functions",
+      "theme": "shopping",
+      "workingTitle": "Acheter un vêtement",
+      "intent": "Acheter un vêtement : dire ce qu'on cherche, demander une taille, une couleur et le prix, essayer, puis dire « Je le prends » ou « Non, merci »."
+    },
+    {
+      "id": "fr-adjective-agreement",
+      "kind": "grammar",
+      "topic": "agreement",
+      "workingTitle": "L'accord de l'adjectif",
+      "intent": "Accorder l'adjectif en genre et en nombre avec le nom (une petite maison, des chaussures noires, elle est italienne), y compris -eux/-euse et -if/-ive."
+    },
+    {
+      "id": "fr-physical-description",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Décrire le physique",
+      "intent": "Décrire une personne avec une douzaine de mots : grand, petit, mince, jeune, âgé, les cheveux blonds, bruns, courts, longs, les yeux bleus, une barbe…"
+    },
+    {
+      "id": "fr-adjective-position",
+      "kind": "grammar",
+      "topic": "adjectives",
+      "workingTitle": "La place de l'adjectif",
+      "intent": "Placer l'adjectif après le nom (une voiture rouge), sauf quelques adjectifs courts et fréquents comme grand, petit, bon, jeune, joli (un petit café)."
+    },
+    {
+      "id": "fr-personality-adjectives",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Le caractère",
+      "intent": "Décrire le caractère d'une personne avec une douzaine d'adjectifs : sympathique, gentil, drôle, timide, calme, sérieux, bavard, curieux…"
+    },
+    {
+      "id": "fr-reading-a-flat-ad",
+      "kind": "reading",
+      "theme": "house_and_home",
+      "workingTitle": "Lire une annonce de logement",
+      "intent": "Lire une petite annonce de location et trouver le type de logement, le nombre de pièces, le quartier, le loyer et comment contacter le propriétaire."
+    },
+    {
+      "id": "fr-numbers-above-one-hundred-and-years",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Les grands nombres et les années",
+      "intent": "Lire et dire les nombres à partir de cent (deux cents, mille, deux mille vingt-six) pour dire une année, un prix ou une distance."
+    },
+    {
+      "id": "fr-interrogative-quel",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Quel, quelle, quels, quelles",
+      "intent": "Poser une question avec quel, quelle, quels ou quelles accordé au nom : Quelle heure est-il ? Quel est ton numéro ? Tu aimes quels films ?"
+    },
+    {
+      "id": "fr-weather-expressions",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "Le temps qu'il fait",
+      "intent": "Dire le temps qu'il fait avec une dizaine d'expressions : il fait beau, chaud, froid, il pleut, il neige, il y a du vent, du soleil, des nuages."
+    },
+    {
+      "id": "fr-reflexive-verbs-present",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Les verbes pronominaux",
+      "intent": "Conjuguer au présent des verbes pronominaux courants comme s'appeler, se lever, se laver et se coucher, avec me, te, se, nous, vous, se."
+    },
+    {
+      "id": "fr-daily-routine",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Une journée ordinaire",
+      "intent": "Nommer une douzaine d'actions de la journée, du lever au coucher : se réveiller, se lever, se doucher, s'habiller, prendre le petit-déjeuner…"
+    },
+    {
+      "id": "fr-time-prepositions",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "À 8 heures, en mai, le lundi",
+      "intent": "Situer un moment avec à + heure, en + mois ou année, le + jour pour une habitude (le lundi, je nage) et le + date (le 3 mai)."
+    },
+    {
+      "id": "fr-streets-and-directions",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Dans la rue",
+      "intent": "Nommer une dizaine de mots pour s'orienter en ville : la rue, l'avenue, la place, le carrefour, le feu, le pont, à droite, à gauche, tout droit."
+    },
+    {
+      "id": "fr-prepositions-of-place",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "Sur, sous, devant, derrière",
+      "intent": "Situer un objet ou un lieu avec sur, sous, dans, devant, derrière, entre, à côté de et en face de : le chat est sous la table."
+    },
+    {
+      "id": "fr-asking-the-way",
+      "kind": "functions",
+      "theme": "places",
+      "workingTitle": "Demander son chemin",
+      "intent": "Demander son chemin à un passant et comprendre une indication simple : « Pardon, où est la gare ? », « Vous allez tout droit, puis à gauche »."
+    },
+    {
+      "id": "fr-reading-a-holiday-postcard",
+      "kind": "reading",
+      "theme": "weather",
+      "workingTitle": "Lire une carte postale",
+      "intent": "Lire une carte postale de vacances et trouver où est l'auteur, avec qui, le temps qu'il fait et ce qu'il fait chaque jour."
+    },
+    {
+      "id": "fr-meals-of-the-day",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Les repas de la journée",
+      "intent": "Nommer les repas et une dizaine d'aliments qui vont avec : le petit-déjeuner, le déjeuner, le goûter, le dîner, les céréales, la confiture, la soupe…"
+    },
+    {
+      "id": "fr-verbs-prendre-and-boire",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Prendre et boire",
+      "intent": "Conjuguer prendre, apprendre, comprendre et boire au présent, en particulier au pluriel : nous prenons, ils prennent, nous buvons, ils boivent."
+    },
+    {
+      "id": "fr-means-of-transport",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Les transports",
+      "intent": "Nommer une dizaine de moyens de transport et dire comment on se déplace : prendre le bus, le métro, le train, l'avion, aller à pied, à vélo, en voiture."
+    },
+    {
+      "id": "fr-modal-verbs-vouloir-pouvoir-devoir",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Vouloir, pouvoir, devoir",
+      "intent": "Conjuguer vouloir, pouvoir et devoir au présent et les suivre d'un infinitif pour dire un souhait, une possibilité ou une obligation : je peux venir."
+    },
+    {
+      "id": "fr-going-out",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Les sorties",
+      "intent": "Nommer une dizaine de mots pour sortir : le cinéma, le concert, le théâtre, l'exposition, la fête, le billet, la séance, le rendez-vous…"
+    },
+    {
+      "id": "fr-possessives-notre-votre-leur",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Notre, votre, leur",
+      "intent": "Employer notre, nos, votre, vos, leur et leurs quand il y a plusieurs possesseurs : notre maison, vos amis, leurs enfants."
+    },
+    {
+      "id": "fr-inviting-accepting-refusing",
+      "kind": "functions",
+      "theme": "free_time",
+      "workingTitle": "Inviter, accepter, refuser",
+      "intent": "Inviter quelqu'un à une sortie, accepter ou refuser poliment avec une excuse simple : « Tu veux venir ? », « Avec plaisir ! », « Désolé, je ne peux pas »."
+    },
+    {
+      "id": "fr-near-future-aller-infinitive",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Le futur proche",
+      "intent": "Parler de ses projets proches avec aller + infinitif (ce soir, je vais dîner avec Léa), à la forme affirmative et négative : je ne vais pas sortir."
+    },
+    {
+      "id": "fr-celebrations-and-wishes",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Les fêtes",
+      "intent": "Nommer une dizaine de mots des fêtes et des vœux : un anniversaire, Noël, le Nouvel An, un cadeau, un gâteau, bon anniversaire, joyeux Noël, bonne année."
+    },
+    {
+      "id": "fr-reading-a-party-invitation",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Lire une invitation",
+      "intent": "Lire une invitation à une fête et trouver l'occasion, la date, l'heure, le lieu, ce qu'il faut apporter et comment répondre."
+    },
+    {
+      "id": "fr-personal-belongings",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Les objets personnels",
+      "intent": "Nommer une douzaine d'objets personnels : les clés, le portefeuille, le sac, le téléphone portable, les lunettes, la montre, le parapluie…"
+    },
+    {
+      "id": "fr-verbs-venir-partir-sortir",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Venir, partir, sortir",
+      "intent": "Conjuguer venir, partir, sortir et dormir au présent (je viens, ils viennent, je pars, nous sortons) et dire d'où on vient."
+    },
+    {
+      "id": "fr-at-the-train-station",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "À la gare",
+      "intent": "Nommer une douzaine de mots de la gare : le billet, l'aller simple, l'aller-retour, le quai, la voie, le départ, l'arrivée, le retard, le guichet…"
+    },
+    {
+      "id": "fr-stressed-pronouns",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Moi, toi, lui…",
+      "intent": "Employer les pronoms toniques moi, toi, lui, elle, nous, vous, eux, elles pour insister, après une préposition (avec moi) et dans moi aussi, moi non plus."
+    },
+    {
+      "id": "fr-buying-a-train-ticket",
+      "kind": "functions",
+      "theme": "travel",
+      "workingTitle": "Acheter un billet de train",
+      "intent": "Acheter un billet au guichet : dire sa destination, le jour et l'heure, choisir un aller simple ou un aller-retour, demander le prix et le quai."
+    },
+    {
+      "id": "fr-recent-past-venir-de",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Je viens de…",
+      "intent": "Dire qu'une action vient juste de se passer avec venir de + infinitif : je viens d'arriver, le train vient de partir."
+    },
+    {
+      "id": "fr-luggage-and-travel-documents",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Préparer un voyage",
+      "intent": "Nommer une dizaine de mots pour partir en voyage : la valise, le sac à dos, le passeport, la carte d'identité, l'aéroport, le vol, la réservation…"
+    },
+    {
+      "id": "fr-negation-ne-jamais",
+      "kind": "grammar",
+      "topic": "negation",
+      "workingTitle": "Ne… jamais",
+      "intent": "Dire qu'on ne fait jamais quelque chose avec ne… jamais (je ne bois jamais de café) et répondre à une question avec « jamais »."
+    },
+    {
+      "id": "fr-reading-a-train-timetable",
+      "kind": "reading",
+      "theme": "travel",
+      "workingTitle": "Lire un horaire de train",
+      "intent": "Lire un horaire de train ou un tableau des départs et trouver l'heure de départ, l'heure d'arrivée, la voie et les retards."
+    },
+    {
+      "id": "fr-hotel-words",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "À l'hôtel",
+      "intent": "Nommer une douzaine de mots de l'hôtel : la réception, une chambre simple, une chambre double, la clé, la nuit, le petit-déjeuner compris, l'ascenseur…"
+    },
+    {
+      "id": "fr-parts-of-the-body",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Le corps",
+      "intent": "Nommer une quinzaine de parties du corps : la tête, les yeux, le nez, la bouche, les oreilles, le dos, le ventre, le bras, la main, la jambe, le pied…"
+    },
+    {
+      "id": "fr-imperative-mood",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "L'impératif",
+      "intent": "Donner une consigne à l'impératif (écoute, prenez, allons), sans s à la 2e personne des verbes en -er, et à la forme négative : ne fume pas."
+    },
+    {
+      "id": "fr-household-chores",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Les tâches ménagères",
+      "intent": "Nommer une dizaine de tâches de la maison : faire le ménage, la vaisselle, la cuisine, les courses, ranger, passer l'aspirateur, sortir la poubelle…"
+    },
+    {
+      "id": "fr-il-faut-infinitive",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Il faut + infinitif",
+      "intent": "Dire ce qui est nécessaire ou interdit avec il faut et il ne faut pas + infinitif : il faut réserver, il ne faut pas fumer ici."
+    },
+    {
+      "id": "fr-making-a-reservation",
+      "kind": "functions",
+      "theme": "services",
+      "workingTitle": "Réserver une table ou une chambre",
+      "intent": "Réserver une table au restaurant ou une chambre d'hôtel : dire la date, l'heure ou le nombre de nuits, le nombre de personnes, et demander le prix ou les conditions."
+    },
+    {
+      "id": "fr-school-subjects",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Les matières",
+      "intent": "Nommer une douzaine de matières et de mots de l'école : les mathématiques, l'histoire, la géographie, l'anglais, le sport, un cours, un examen, une note…"
+    },
+    {
+      "id": "fr-reading-a-course-timetable",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Lire un emploi du temps",
+      "intent": "Lire l'emploi du temps d'une école de langues et trouver quel cours a lieu quel jour, à quelle heure, dans quelle salle et avec quel professeur."
+    },
+    {
+      "id": "fr-intensity-adverbs",
+      "kind": "grammar",
+      "topic": "adverbs",
+      "workingTitle": "Très, trop, beaucoup",
+      "intent": "Nuancer avec très et trop devant un adjectif (très cher, trop grand) et avec beaucoup ou un peu après un verbe : il travaille beaucoup."
+    },
+    {
+      "id": "fr-feeling-ill",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Être malade",
+      "intent": "Dire qu'on est malade avec une dizaine d'expressions : j'ai mal à la tête, au ventre, j'ai de la fièvre, un rhume, la grippe, je tousse, je suis fatigué."
+    },
+    {
+      "id": "fr-connectors-et-ou-mais-alors",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Et, ou, mais, alors",
+      "intent": "Relier deux idées avec et, ou, mais et alors (il pleut, alors je prends le bus) pour écrire quelques phrases qui s'enchaînent."
+    },
+    {
+      "id": "fr-post-office-and-bank",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "À la poste et à la banque",
+      "intent": "Nommer une douzaine de mots de la poste et de la banque : une lettre, un colis, un timbre, une enveloppe, le distributeur, la carte bancaire, l'argent…"
+    },
+    {
+      "id": "fr-past-tense-with-avoir",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Le passé composé avec avoir",
+      "intent": "Raconter une action passée au passé composé avec avoir (j'ai mangé, j'ai fini) et quelques participes irréguliers courants : fait, pris, eu, été, bu, vu."
+    },
+    {
+      "id": "fr-doctor-and-pharmacy",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Chez le médecin",
+      "intent": "Nommer une dizaine de mots du médecin et de la pharmacie : le rendez-vous, la consultation, l'ordonnance, le médicament, le comprimé, le sirop…"
+    },
+    {
+      "id": "fr-purpose-with-pour",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Pour + infinitif",
+      "intent": "Dire dans quel but on fait quelque chose avec pour + infinitif (j'apprends le français pour voyager) et à qui une chose est destinée avec pour + nom."
+    },
+    {
+      "id": "fr-booking-a-doctors-appointment",
+      "kind": "functions",
+      "theme": "health",
+      "workingTitle": "Prendre rendez-vous chez le médecin",
+      "intent": "Prendre rendez-vous chez le médecin par téléphone, dire ce qu'on a, puis accepter ou changer le jour et l'heure proposés."
+    },
+    {
+      "id": "fr-past-tense-with-etre",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Le passé composé avec être",
+      "intent": "Former le passé composé avec être pour aller, venir, arriver, partir, rester et naître, et accorder le participe : elle est partie, ils sont allés."
+    },
+    {
+      "id": "fr-friends-neighbours-colleagues",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Amis, voisins, collègues",
+      "intent": "Nommer une dizaine de personnes de son entourage : un ami, un copain, une copine, un voisin, un collègue, le chef, un camarade de classe…"
+    },
+    {
+      "id": "fr-time-markers-depuis-il-y-a-dans",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "Depuis, il y a, dans",
+      "intent": "Situer dans le temps avec depuis (j'habite ici depuis deux ans), il y a (je suis arrivé il y a trois jours) et dans (je pars dans une semaine)."
+    },
+    {
+      "id": "fr-reading-written-directions",
+      "kind": "reading",
+      "theme": "places",
+      "workingTitle": "Lire un itinéraire",
+      "intent": "Lire un court message qui explique le chemin d'un lieu à un autre (sortir du métro, prendre la deuxième rue à gauche, c'est en face de la poste) et trouver la destination."
+    },
+    {
+      "id": "fr-languages-and-learning",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Les langues et l'apprentissage",
+      "intent": "Nommer une dizaine de mots pour parler des langues : une langue, un mot, une phrase, la grammaire, le dictionnaire, traduire, apprendre, parler couramment…"
+    },
+    {
+      "id": "fr-seasons-and-temperatures",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "Les saisons et la température",
+      "intent": "Nommer les quatre saisons avec en été, en automne, en hiver et au printemps, et dire la température : il fait vingt degrés, il fait moins cinq."
+    }
+  ]
+}
