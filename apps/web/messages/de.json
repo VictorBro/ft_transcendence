@@ -177,7 +177,8 @@
       "invalidFile": "Diese Datei kann nicht als Avatar verwendet werden. Versuche ein PNG, JPEG oder WebP."
     },
     "profile": {
-      "noChanges": "Ändere mindestens ein Feld"
+      "noChanges": "Ändere mindestens ein Feld",
+      "invalidTimeZone": "Diese Zeitzone ist unbekannt"
     },
     "twoFactor": {
       "codeFormat": "Gib den sechsstelligen Code aus deiner Authenticator-App ein",

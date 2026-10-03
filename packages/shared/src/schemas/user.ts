@@ -19,6 +19,23 @@ export const DisplayNameSchema = z
   .regex(/^[\p{L}\p{N}._-]+$/u, 'displayName.invalidCharacters');
 
 /**
+ * An IANA zone as the browser reports it. Validity is whatever Intl accepts:
+ * Intl.supportedValuesOf('timeZone') would be shorter, but on Node 24 it lists
+ * neither UTC (the column default) nor Europe/Kyiv.
+ */
+export const TimeZoneSchema = z
+  .string()
+  .max(64, 'profile.invalidTimeZone')
+  .refine((timeZone) => {
+    try {
+      new Intl.DateTimeFormat('en', { timeZone });
+      return true;
+    } catch {
+      return false;
+    }
+  }, 'profile.invalidTimeZone');
+
+/**
  * Enforced identically by the signup form and by the API. argon2 hashes whatever
  * it is given, so length is the only defence that matters here.
  */
@@ -42,6 +59,7 @@ export const UserSchema = z.object({
   // A path, not an absolute url, so z.url() would reject every real value.
   avatarUrl: z.string().nullable(),
   locale: LocaleSchema,
+  timeZone: TimeZoneSchema,
   role: UserRoleSchema,
   createdAt: z.iso.datetime(),
   updatedAt: z.iso.datetime(),
@@ -107,6 +125,7 @@ export const UpdateProfileSchema = z
   .object({
     displayName: DisplayNameSchema.optional(),
     locale: LocaleSchema.optional(),
+    timeZone: TimeZoneSchema.optional(),
   })
   .refine((value) => Object.keys(value).length > 0, 'profile.noChanges');
 export type UpdateProfileInput = z.infer<typeof UpdateProfileSchema>;

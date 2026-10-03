@@ -19,6 +19,7 @@ const user = {
   displayName: 'learner',
   avatarUrl: null,
   locale: 'en',
+  timeZone: 'UTC',
   role: 'USER',
   createdAt: '2026-01-01T00:00:00.000Z',
 };

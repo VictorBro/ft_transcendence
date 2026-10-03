@@ -156,4 +156,28 @@ describe('users avatars (e2e)', () => {
       .send({ avatarUrl: '/api/uploads/avatars/someone-elses.png' })
       .expect(400);
   });
+
+  // Kyiv last: Intl calls it Europe/Kiev, and a renamed copy would never match
+  // what the browser sends, so the row must hold the string as given.
+  it('stores a time zone exactly as sent', async () => {
+    for (const timeZone of ['UTC', 'Etc/UTC', 'Europe/Kyiv']) {
+      const response = await agent.patch('/api/users/me').send({ timeZone }).expect(200);
+      expect(response.body.timeZone).toBe(timeZone);
+    }
+
+    const row = await prisma.user.findUniqueOrThrow({ where: { email } });
+    expect(row.timeZone).toBe('Europe/Kyiv');
+  });
+
+  it('rejects an unknown time zone with a code', async () => {
+    const response = await agent
+      .patch('/api/users/me')
+      .send({ timeZone: 'Mars/Olympus' })
+      .expect(400);
+
+    // A Zod failure carries its codes in `errors`; `message` is nestjs-zod's own.
+    expect(response.body.errors.map((e: { message: string }) => e.message)).toEqual([
+      'profile.invalidTimeZone',
+    ]);
+  });
 });
