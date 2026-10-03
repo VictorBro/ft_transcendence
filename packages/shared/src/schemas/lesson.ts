@@ -118,15 +118,26 @@ export const BRIEF_PITFALLS = { min: 1, max: 4 } as const;
 export const BRIEF_VOCABULARY = { min: 6, max: 15 } as const;
 
 /**
- * Plain text that is already trimmed. Rejected rather than trimmed, so the
- * files stay canonical: the generator trims the model's output itself.
+ * Control characters (newlines and tabs included) and the invisible ones
+ * trim() leaves: zero-width space, joiners, byte order mark. Model output can
+ * carry them, and none belongs in a one-line text.
+ */
+const HIDDEN_CHARACTER = /[\p{Cc}\u200b-\u200d\ufeff]/u;
+
+/**
+ * Plain one-line text that is already trimmed. Rejected rather than trimmed,
+ * so the files stay canonical: the generator trims the model's output itself.
  */
 function text(max: number) {
   return z
     .string()
     .min(1)
     .max(max)
-    .refine((s) => s === s.trim(), 'must not start or end with whitespace');
+    .refine((s) => s === s.trim(), 'must not start or end with whitespace')
+    .refine(
+      (s) => !HIDDEN_CHARACTER.test(s),
+      'must not contain line breaks or invisible characters',
+    );
 }
 
 export const LessonTitleSchema = text(LESSON_TITLE_MAX);
@@ -410,7 +421,8 @@ function commaList<const T extends readonly [string, ...string[]]>(values: T) {
 export const LessonQuerySchema = z.object({
   q: z
     .string()
-    .transform((q) => q.trim().slice(0, LESSON_QUERY_MAX))
+    // Cut by code point, so an emoji is never split, and trim again after the cut.
+    .transform((q) => [...q.trim()].slice(0, LESSON_QUERY_MAX).join('').trim())
     .catch(''),
   status: commaList(LESSON_STATUSES),
   kind: commaList(LESSON_KINDS),
@@ -419,7 +431,8 @@ export const LessonQuerySchema = z.object({
   sort: z.enum(LESSON_SORTS).catch('position'),
   dir: z.enum(SORT_DIRECTIONS).catch('asc'),
   group: z.enum(LESSON_GROUPS).catch('none'),
-  page: z.coerce.number().int().min(1).catch(1),
+  // Digits only: Number() would read 0x10 as 16 and 1e2 as 100.
+  page: z.string().regex(/^\d+$/).transform(Number).pipe(z.number().int().min(1)).catch(1),
 });
 export type LessonQuery = z.infer<typeof LessonQuerySchema>;
 

@@ -218,8 +218,32 @@ describe('LessonEntrySchema', () => {
     ).toBe(false);
   });
 
+  it('rejects line breaks and characters trim() cannot see', () => {
+    for (const title of [
+      '\u200bLe, la, les',
+      'Le, la,\nles',
+      'Le,\tla',
+      'Le\u200d la',
+      '\ufeffLe',
+    ]) {
+      expect(LessonEntrySchema.safeParse({ ...grammarLesson, title }).success, title).toBe(false);
+    }
+    expect(
+      LessonEntrySchema.safeParse({
+        ...grammarLesson,
+        brief: { ...brief, points: ['le\nla', 'la'] },
+      }).success,
+    ).toBe(false);
+    expect(LessonEntrySchema.safeParse({ ...grammarLesson, title: 'Où ? Là !' }).success).toBe(
+      true,
+    );
+  });
+
   it('rejects text that is not trimmed, rather than trimming it', () => {
     expect(LessonEntrySchema.safeParse({ ...grammarLesson, title: ' Le, la, les' }).success).toBe(
+      false,
+    );
+    expect(LessonEntrySchema.safeParse({ ...grammarLesson, title: 'Le, la, les ' }).success).toBe(
       false,
     );
     expect(
@@ -431,6 +455,22 @@ describe('LessonQuerySchema', () => {
 
   it('defaults every field', () => {
     expect(LessonQuerySchema.parse({})).toEqual(defaults);
+  });
+
+  it('cuts q to 100 code points and trims what is left', () => {
+    const cut = (q: string) => LessonQuerySchema.parse({ q }).q;
+    expect(cut(`${'a'.repeat(99)} b`)).toBe('a'.repeat(99));
+    expect(cut(`${'a'.repeat(99)}😀x`)).toBe(`${'a'.repeat(99)}😀`);
+    expect(cut(`${'a'.repeat(100)}😀`)).toBe('a'.repeat(100));
+    expect(cut('a'.repeat(150))).toHaveLength(100);
+  });
+
+  it('reads page from digits only', () => {
+    const page = (value: string) => LessonQuerySchema.parse({ page: value }).page;
+    expect(page('12')).toBe(12);
+    for (const value of ['0x10', '1e2', '2.5', '-3', ' 4', '']) {
+      expect(page(value), value).toBe(1);
+    }
   });
 
   it('falls back to the defaults and drops unknown list values', () => {
