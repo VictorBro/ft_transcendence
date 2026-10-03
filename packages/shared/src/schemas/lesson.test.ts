@@ -21,6 +21,7 @@ import {
   outlineFileName,
   TodaySchema,
   type LessonCard,
+  type LessonStatus,
   type LessonEntry,
   type LessonOutlineEntry,
 } from './lesson';
@@ -379,6 +380,32 @@ describe('LessonCardSchema', () => {
       LessonCardSchema.safeParse({ ...card, kind: 'reading', theme: 'free_time' }).success,
     ).toBe(false);
     expect(LessonCardSchema.safeParse({ ...card, day: '12/10/2026' }).success).toBe(false);
+  });
+
+  // Status is derived from the best score, so a card can never contradict itself.
+  it('rejects a status that does not follow the score', () => {
+    const at = (score: number, status: LessonStatus) =>
+      LessonCardSchema.safeParse({ ...card, score, status }).success;
+    expect(at(69, 'failed')).toBe(true);
+    expect(at(70, 'done')).toBe(true);
+    expect(at(69, 'done')).toBe(false);
+    expect(at(70, 'failed')).toBe(false);
+    expect(at(10, 'done')).toBe(false);
+    expect(at(90, 'failed')).toBe(false);
+    expect(at(55, 'todo')).toBe(false);
+
+    const never = { ...card, score: null, day: null, finishedAt: null };
+    expect(LessonCardSchema.safeParse({ ...never, status: 'todo' }).success).toBe(true);
+    expect(LessonCardSchema.safeParse({ ...never, status: 'done' }).success).toBe(false);
+    expect(LessonCardSchema.safeParse({ ...never, status: 'failed' }).success).toBe(false);
+  });
+
+  it('sets score, day and finishedAt together or not at all', () => {
+    expect(LessonCardSchema.safeParse({ ...card, day: null }).success).toBe(false);
+    expect(LessonCardSchema.safeParse({ ...card, finishedAt: null }).success).toBe(false);
+    expect(LessonCardSchema.safeParse({ ...card, status: 'todo', score: null }).success).toBe(
+      false,
+    );
   });
 
   // The same text rules as the lesson files, so the API never serves what CI rejects.

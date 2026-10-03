@@ -311,6 +311,11 @@ export type LessonStatus = z.infer<typeof LessonStatusSchema>;
 
 const ScoreSchema = z.number().int().min(0).max(100);
 
+function statusOf(best: number | null): LessonStatus {
+  if (best === null) return 'todo';
+  return best >= LESSON_PASS_MARK ? 'done' : 'failed';
+}
+
 /**
  * A lesson in a list, without its brief. Strict, so a payload that still
  * carries the brief fails the parse instead of shipping it unnoticed.
@@ -333,7 +338,18 @@ export const LessonCardSchema = z
     day: CourseDaySchema.nullable(),
     finishedAt: z.iso.datetime().nullable(),
   })
-  .refine(hasItsClassification, CLASSIFICATION_ISSUE);
+  .refine(hasItsClassification, CLASSIFICATION_ISSUE)
+  .refine(
+    (card) =>
+      [card.score, card.day, card.finishedAt].every(
+        (field) => (field === null) === (card.score === null),
+      ),
+    { message: 'score, day and finishedAt are all null or all set', path: ['score'] },
+  )
+  .refine((card) => card.status === statusOf(card.score), {
+    message: `status must follow the score: none is todo, ${LESSON_PASS_MARK} or more is done, less is failed`,
+    path: ['status'],
+  });
 export type LessonCard = z.infer<typeof LessonCardSchema>;
 
 const countSchema = z.number().int().min(0);
