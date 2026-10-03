@@ -1,6 +1,7 @@
 {
   "SessionNav": {
     "accountNav": "Konto",
+    "profile": "Profil",
     "signIn": "Anmelden",
     "createAccount": "Konto erstellen"
   },
@@ -22,16 +23,12 @@
     "headline": "Lerne eine Sprache mit einem Tutor, der sich dir anpasst!",
     "intro": "ft_transcendence erstellt Lektionen, bewertet deine Antworten, verfolgt das daraus abgeleitete Niveau und verbindet dich mit einem anderen Lernenden für Live-Übungen. Diese Seite ist das Gerüst: alles darunter ist Verdrahtung, kein Produkt.",
     "startNow": "Jetzt starten",
-    "goToLobby": "Zur Lobby",
+    "continueLearning": "Weiterlernen",
     "logoAlt": "ft_transcendence-Logo"
   },
-  "Lobby": {
-    "title": "Lobby",
-    "heading": "Übungsmodi",
-    "friendsTitle": "Sprachübergreifender Chat",
-    "friendsDescription": "Sprich mit einer anderen lernenden Person, jede in ihrer eigenen Sprache. Die KI übersetzt und korrigiert dabei.",
+  "Modes": {
     "chatTitle": "Tutor",
-    "chatDescription": "Erarbeite ein Thema mit dem KI-Tutor, verankert im Kursmaterial."
+    "friendsTitle": "Sprachübergreifender Chat"
   },
   "Languages": {
     "en": "Englisch",
@@ -47,13 +44,9 @@
     "title": "Kurs",
     "heading": "{language}",
     "level": "Niveau",
-    "notPlaced": "Noch nicht festgelegt",
     "dailyGoal": "Tagesziel",
     "minutesPerDay": "{minutes} Min.",
-    "takePlacement": "Einstufungstest machen",
     "retakePlacement": "Einstufungstest wiederholen",
-    "notStudying": "Du lernst diese Sprache noch nicht.",
-    "startCourse": "Diesen Kurs beginnen",
     "roadmapSoon": "Hier erscheint dein Lernpfad",
     "practice": "Üben",
     "thisCourse": "Dieser Kurs"
@@ -101,7 +94,7 @@
     "stillInDevelopment": "Dieser Modus ist noch in Entwicklung. Schau bald wieder vorbei."
   },
   "ModeLayout": {
-    "backToDashboard": "Zurück zur Lobby"
+    "backToCourse": "Zurück zum Kurs"
   },
   "ChatPage": {
     "title": "Chat",
@@ -199,7 +192,11 @@
     },
     "placement": {
       "inProgress": "Ein Einstufungstest läuft bereits. Beende ihn zuerst.",
+      "invalidChoice": "Ungültige Antwortauswahl für diese Frage.",
+      "invalidSession": "Dieser Einstufungstest ist ungültig. Starte einen neuen.",
       "notFound": "Es läuft kein Einstufungstest",
+      "onboardingIncomplete": "Schließe das Onboarding ab, bevor du den Einstufungstest machst.",
+      "questionMismatch": "Diese Frage ist nicht mehr aktiv. Aktualisiere den Einstufungstest und versuche es erneut.",
       "expired": "Dieser Einstufungstest ist abgelaufen. Starte einen neuen.",
       "poolExhausted": "Für diesen Test sind nicht genügend Fragen übrig. Versuche es später erneut."
     },

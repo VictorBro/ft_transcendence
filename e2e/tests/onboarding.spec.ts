@@ -2,7 +2,8 @@ import type { Page } from '@playwright/test';
 
 import { expect, test } from '../support/session';
 
-// `freshLearner`, not the shared account: only a new account has no courses.
+// `freshLearner` wherever a test starts a course: the shared `signedIn` account
+// is every other spec's learner with none, so tests that only look use it.
 
 /** The radio is sr-only, so its own label intercepts a click aimed at it. */
 const pick = (page: Page, group: string, option: string) =>
@@ -13,6 +14,9 @@ const startCourse = async (page: Page, language: string, goal: string) => {
   await pick(page, 'Language to learn', language);
   await pick(page, 'Daily goal', goal);
   await page.getByRole('button', { name: 'Next' }).click();
+  // Next refreshes and replaces the URL at once, and the refresh can paint step
+  // two before ?lang= lands. Waiting here gives every test the settled URL.
+  await page.waitForURL(/\/onboarding\?lang=[a-z]{2}$/);
 };
 
 const startGermanCourse = (page: Page, goal: string) => startCourse(page, 'Deutsch', goal);
@@ -30,11 +34,11 @@ const setLevel = async (page: Page, level: string) => {
 };
 
 test.describe('onboarding', () => {
-  test('a learner with no courses starts at the language step', async ({ freshLearner }) => {
-    await freshLearner.goto('/en/onboarding');
+  test('a learner with no courses starts at the language step', async ({ signedIn }) => {
+    await signedIn.goto('/en/onboarding');
 
     await expect(
-      freshLearner.getByRole('heading', { name: 'What do you want to learn?' }),
+      signedIn.getByRole('heading', { name: 'What do you want to learn?' }),
     ).toBeVisible();
   });
 
@@ -128,21 +132,37 @@ test.describe('onboarding', () => {
     await expect(freshLearner.getByText('A1', { exact: true })).toBeVisible();
   });
 
-  /**
-   * Both links into this page were written by #51 while the page did not exist,
-   * so until now they could only have reached a 404. They are the whole reason
-   * a learner ever gets here, and nothing else clicks them.
-   */
-  test('the course page offers a language the learner has not started', async ({
+  /** What a course page sends for a language the learner does not study yet. */
+  test('a language passed in the URL arrives picked', async ({ signedIn }) => {
+    await signedIn.goto('/en/onboarding?lang=fr');
+
+    const languages = signedIn.getByRole('group', { name: 'Language to learn' });
+    await expect(languages.getByRole('radio', { name: 'Français' })).toBeChecked();
+    await expect(languages.getByRole('radio', { checked: true })).toHaveCount(1);
+  });
+
+  /** A hand-edited URL must not become an error page. */
+  test('an unknown language in the URL is ignored', async ({ signedIn }) => {
+    await signedIn.goto('/en/onboarding?lang=zz');
+
+    await expect(
+      signedIn.getByRole('heading', { name: 'What do you want to learn?' }),
+    ).toBeVisible();
+    const languages = signedIn.getByRole('group', { name: 'Language to learn' });
+    await expect(languages.getByRole('radio', { checked: true })).toHaveCount(0);
+  });
+
+  /** The URL still names French, so step two must follow the pick, not the URL. */
+  test('picking another language than the one passed in starts that one', async ({
     freshLearner,
   }) => {
-    await freshLearner.goto('/en/learn/en');
-    await freshLearner.getByRole('link', { name: 'Start this course' }).click();
+    await freshLearner.goto('/en/onboarding?lang=fr');
+    await pick(freshLearner, 'Language to learn', 'Deutsch');
+    await pick(freshLearner, 'Daily goal', '30 min');
+    await freshLearner.getByRole('button', { name: 'Next' }).click();
 
-    await expect(freshLearner).toHaveURL(/\/onboarding$/);
-    await expect(
-      freshLearner.getByRole('heading', { name: 'What do you want to learn?' }),
-    ).toBeVisible();
+    await expect(freshLearner).toHaveURL(/\/en\/onboarding\?lang=de$/);
+    await expect(freshLearner.getByRole('heading', { name: 'Deutsch' })).toBeVisible();
   });
 
   test('the switcher can add a language', async ({ freshLearner }) => {

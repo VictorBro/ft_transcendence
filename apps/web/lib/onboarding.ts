@@ -1,4 +1,4 @@
-import { LEVELS, type Course, type Level } from '@ft/shared';
+import { LEVELS, type Course, type Language, type Level } from '@ft/shared';
 
 /**
  * Not a CEFR level and never stored: how the picker says "nothing yet". It is
@@ -28,12 +28,29 @@ export function nextLevel(mastered: Level | null): Level {
  * held in React state: the step then survives a refresh, a back button and an
  * abandoned placement exam without handling any of them on its own.
  */
-export type OnboardingStep = { step: 'chooseCourse' } | { step: 'chooseLevel'; course: Course };
+export type OnboardingStep =
+  { step: 'chooseCourse'; preselected: Language | null } | { step: 'chooseLevel'; course: Course };
 
-export function resolveOnboardingStep(courses: readonly Course[]): OnboardingStep {
-  const unfinished = courses.findLast((course) => course.level === null);
+/**
+ * `wanted` is the course the learner came from, so with two unplaced courses
+ * they finish the one they clicked rather than the newest.
+ */
+export function resolveOnboardingStep(
+  courses: readonly Course[],
+  wanted: Language | null = null,
+): OnboardingStep {
+  const course = courses.find((candidate) => candidate.lang === wanted);
+
+  if (wanted !== null && course === undefined) {
+    return { step: 'chooseCourse', preselected: wanted };
+  }
+  if (course?.level === null) {
+    return { step: 'chooseLevel', course };
+  }
+
+  const unfinished = courses.findLast((candidate) => candidate.level === null);
 
   return unfinished === undefined
-    ? { step: 'chooseCourse' }
+    ? { step: 'chooseCourse', preselected: null }
     : { step: 'chooseLevel', course: unfinished };
 }
