@@ -12,6 +12,7 @@ import {
 } from '../../test/placement.fixtures';
 import type { CoursesService } from '../courses/courses.service';
 import type { PrismaService } from '../prisma/prisma.service';
+import type { QuestionGenerationService } from '../questions-generation/questions-generation.service';
 import type { RedisService } from '../redis/redis.service';
 import { NETWORK_GRACE_S, PlacementProgressService } from './placement-progress.service';
 import { PlacementQuestionService } from './placement-question.service';
@@ -55,7 +56,9 @@ describe('PlacementService', () => {
     };
     service = new PlacementService(
       sessions,
-      new PlacementQuestionService(prisma),
+      new PlacementQuestionService(prisma, {
+        triggerReplenish: vi.fn(),
+      } as unknown as QuestionGenerationService),
       new PlacementProgressService(prisma),
       courses as unknown as CoursesService,
     );
