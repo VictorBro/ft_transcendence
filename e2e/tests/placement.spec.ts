@@ -40,7 +40,7 @@ const secondsLeft = async (page: Page): Promise<number> =>
 const options = (page: Page) => page.getByRole('group', { name: 'Answer options' });
 const result = (page: Page) => page.getByRole('heading', { name: 'Your result' });
 const answers = (page: Page) =>
-  page.getByRole('region', { name: 'Your answers' }).getByRole('listitem');
+  page.getByRole('region', { name: /^Your latest exam result/ }).getByRole('listitem');
 
 /** One answer of a finished run, as GET /api/placement reports it. */
 interface ReportEntry {

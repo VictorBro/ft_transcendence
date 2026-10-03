@@ -7,7 +7,7 @@ import type { Language, Level, PlacementReportEntry, PlacementResult } from '@ft
 import { Link } from '@/i18n/navigation';
 import { masteredBelow } from '@/lib/level';
 import { ChangeLevel } from '@/components/change-level';
-import { FormError, PRIMARY_BUTTON, SECONDARY_BUTTON } from '@/components/form';
+import { FormError, GO_BUTTON, PRIMARY_BUTTON, WARN_BUTTON } from '@/components/form';
 import { LevelSummary } from '@/components/level-picker';
 
 /**
@@ -50,7 +50,18 @@ export function ResultScreen({
   return (
     <div className="mx-auto flex w-full max-w-2xl flex-col gap-10 py-6 wrap-break-word">
       <section className="flex flex-col gap-6">
-        <h1 className="text-2xl font-semibold tracking-tight">{t('resultHeading')}</h1>
+        <div className="flex items-center justify-between gap-4">
+          <h1 className="text-2xl font-semibold tracking-tight">{t('resultHeading')}</h1>
+          {/* "Continue" only for a run answered on this page; a report that
+              came with the page load leads back. */}
+          <Link href={exit} className={`${PRIMARY_BUTTON} shrink-0 sm:px-8`}>
+            {level === null
+              ? t('chooseLevel')
+              : finishedHere
+                ? t('continueButton')
+                : t('backToCourse')}
+          </Link>
+        </div>
 
         {applied ? (
           <LevelSummary mastered={masteredBelow(level)}>
@@ -72,19 +83,14 @@ export function ResultScreen({
           </p>
         )}
 
-        {/* One row of actions from sm up. ChangeLevel goes last: its picker
-            wraps onto a full line under the row. */}
-        <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-          {/* "Continue" only for a run answered on this page; a report that
-              came with the page load leads back. */}
-          <Link href={exit} className={`${PRIMARY_BUTTON} sm:px-8`}>
-            {level === null
-              ? t('chooseLevel')
-              : finishedHere
-                ? t('continueButton')
-                : t('backToCourse')}
-          </Link>
-          <button type="button" onClick={onRetake} disabled={pending} className={SECONDARY_BUTTON}>
+        {/* Both actions share the row from sm up. */}
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <button
+            type="button"
+            onClick={onRetake}
+            disabled={pending}
+            className={`${GO_BUTTON} sm:flex-1`}
+          >
             {t('retakeButton')}
           </button>
           {applied ? (
@@ -93,7 +99,7 @@ export function ResultScreen({
               level={level}
               label={t('overrideButton')}
               onSaved={onLevelChange}
-              variant="button"
+              className={`${WARN_BUTTON} sm:flex-1`}
             />
           ) : null}
         </div>
@@ -102,7 +108,11 @@ export function ResultScreen({
 
       <section aria-labelledby={answersHeading} className="flex flex-col gap-2">
         <h2 id={answersHeading} className="text-lg font-semibold">
-          {t('answersHeading')}
+          {/* The level the exam gave, which stays put when the learner then
+              changes the course's. A run that was not applied gave none. */}
+          {result.applied
+            ? t('answersHeadingLevel', { level: result.targetLevel })
+            : t('answersHeading')}
         </h2>
         <ol className="flex flex-col divide-y divide-slate-800">
           {report.map((entry) => (

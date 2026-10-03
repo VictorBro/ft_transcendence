@@ -58,7 +58,11 @@ export function FormError({ message }: { message: string | null }) {
 const BUTTON =
   'inline-flex min-h-11 cursor-pointer items-center justify-center rounded-md border px-4 py-2 text-center text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-100 disabled:cursor-not-allowed disabled:opacity-60';
 export const PRIMARY_BUTTON = `${BUTTON} border-transparent bg-slate-100 text-slate-900 hover:bg-white disabled:bg-slate-100`;
-export const SECONDARY_BUTTON = `${BUTTON} border-slate-700 text-slate-200 hover:bg-slate-800 disabled:bg-transparent`;
+const OUTLINE = `${BUTTON} border-slate-700 text-slate-200 disabled:bg-transparent`;
+export const SECONDARY_BUTTON = `${OUTLINE} hover:bg-slate-800`;
+/** Outlined too, tinted on hover by where they lead: a fresh start, or a correction. */
+export const GO_BUTTON = `${OUTLINE} hover:border-green-500/60 hover:bg-green-500/10 hover:text-green-300`;
+export const WARN_BUTTON = `${OUTLINE} hover:border-red-500/60 hover:bg-red-500/10 hover:text-red-300`;
 
 export function SubmitButton({
   pending,
