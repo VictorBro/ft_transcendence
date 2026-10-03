@@ -724,11 +724,11 @@
       "intent": "Dire ce qui est nécessaire ou interdit avec il faut et il ne faut pas + infinitif : il faut réserver, il ne faut pas fumer ici."
     },
     {
-      "id": "fr-booking-a-hotel-room",
+      "id": "fr-making-a-reservation",
       "kind": "functions",
       "theme": "services",
-      "workingTitle": "Réserver une chambre",
-      "intent": "Réserver une chambre d'hôtel par téléphone ou à la réception : dire les dates et le nombre de personnes, demander le prix et si le petit-déjeuner est compris."
+      "workingTitle": "Réserver une table ou une chambre",
+      "intent": "Réserver une table au restaurant ou une chambre d'hôtel : dire la date, l'heure ou le nombre de nuits, le nombre de personnes, et demander le prix ou les conditions."
     },
     {
       "id": "fr-school-subjects",
@@ -822,11 +822,11 @@
       "intent": "Situer dans le temps avec depuis (j'habite ici depuis deux ans), il y a (je suis arrivé il y a trois jours) et dans (je pars dans une semaine)."
     },
     {
-      "id": "fr-reading-opening-hours",
+      "id": "fr-reading-written-directions",
       "kind": "reading",
-      "theme": "services",
-      "workingTitle": "Lire des horaires d'ouverture",
-      "intent": "Lire les horaires d'ouverture d'une poste, d'une banque ou d'un magasin et trouver quand on peut y aller, y compris la pause de midi et le dimanche."
+      "theme": "places",
+      "workingTitle": "Lire un itinéraire",
+      "intent": "Lire un court message qui explique le chemin d'un lieu à un autre (sortir du métro, prendre la deuxième rue à gauche, c'est en face de la poste) et trouver la destination."
     },
     {
       "id": "fr-languages-and-learning",
