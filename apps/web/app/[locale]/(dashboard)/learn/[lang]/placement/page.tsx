@@ -4,7 +4,8 @@ import { getTranslations } from 'next-intl/server';
 import { LanguageSchema } from '@ft/shared';
 
 import { findCourse, requireCourses } from '@/lib/courses';
-import { loadPlacement } from '@/lib/placement';
+import { apiFind } from '@/lib/api';
+import { PlacementStateSchema } from '@/lib/placement-schema';
 import { PlacementExam } from './placement-exam';
 
 export const dynamic = 'force-dynamic';
@@ -33,11 +34,13 @@ export default async function PlacementPage({ params }: { params: Promise<{ lang
   // Unlike CoursePage, a null level is exactly who this page is for: placement
   // is what sets it. Only a language the learner does not study is sent back to
   // onboarding, where the course gets created.
-  if (findCourse(courses, parsed.data) === null) {
+  const course = findCourse(courses, parsed.data);
+  if (course === null) {
     redirect(`/onboarding?lang=${parsed.data}`);
   }
 
-  const result = await loadPlacement();
+  // A 404 is no run yet: the page offers the start control for it.
+  const result = await apiFind(PlacementStateSchema, '/api/placement');
 
   // The session died between the two reads. A 401 is the one failure where a
   // redirect tells the truth, so it goes to /login like requireCourses.
@@ -49,5 +52,11 @@ export default async function PlacementPage({ params }: { params: Promise<{ lang
     throw new Error(`Could not load placement: ${result.reason}`);
   }
 
-  return <PlacementExam lang={parsed.data} initial={result.status === 'ok' ? result.data : null} />;
+  return (
+    <PlacementExam
+      lang={parsed.data}
+      courseLevel={course.level}
+      initial={result.status === 'ok' ? result.data : null}
+    />
+  );
 }

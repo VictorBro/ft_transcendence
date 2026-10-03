@@ -271,6 +271,9 @@
     "correctAnswer": "Richtige Antwort",
     "levelLabel": "Zielniveau für deine Lektionen",
     "notPlaced": "Du wurdest noch nicht eingestuft.",
-    "continueButton": "Weiterlernen"
+    "continueButton": "Weiterlernen",
+    "overrideButton": "Nicht dein Niveau?",
+    "overrideLegend": "Wähle dein Niveau",
+    "overrideSubmit": "Dieses Niveau speichern"
   }
 }

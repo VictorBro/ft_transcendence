@@ -271,6 +271,9 @@
     "incorrect": "Incorrect",
     "levelLabel": "Votre niveau cible est",
     "notPlaced": "Pas encore défini",
-    "continueButton": "Continuer"
+    "continueButton": "Continuer",
+    "overrideButton": "Ce n'est pas votre niveau ?",
+    "overrideLegend": "Choisissez votre niveau",
+    "overrideSubmit": "Enregistrer ce niveau"
   }
 }

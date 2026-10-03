@@ -1,6 +1,6 @@
 'use client';
 
-import type { Language, PlacementQuestion } from '@ft/shared';
+import type { Language, Level, PlacementQuestion } from '@ft/shared';
 import { isPlacementResult, type PlacementState } from '@/lib/placement-schema';
 import { useRouter } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
@@ -8,6 +8,7 @@ import { useErrorMessage } from '@/lib/error-message';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { FormError } from '@/components/form';
 import { quitPlacement, startPlacement, submitPlacementAnswer } from '@/lib/placement-client';
+import { LevelOverride } from './level-override';
 
 function CountdownRing({ remaining, total }: { remaining: number; total: number }) {
   const radius = 20;
@@ -68,9 +69,11 @@ function ProgressBar({ answered, total }: { answered: number; total: number }) {
 
 export function PlacementExam({
   lang,
+  courseLevel,
   initial,
 }: {
   lang: Language;
+  courseLevel: Level | null;
   initial: PlacementState | null;
 }) {
   const router = useRouter();
@@ -80,15 +83,22 @@ export function PlacementExam({
   const [state, setState] = useState<PlacementState | null>(initial);
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
+  // The learner's own pick, once saved, replaces the verdict on screen. A reload
+  // finds the run's verdict again, but the course holds any pick saved since.
+  const [overridden, setOverridden] = useState<Level | null>(
+    initial !== null && isPlacementResult(initial) ? courseLevel : null,
+  );
 
   const question: PlacementQuestion | null =
     state != null && !isPlacementResult(state) ? state : null;
   const [remaining, setRemaining] = useState(question?.remainingS ?? 0);
 
+  // Kept after a success: the old question's timer can still fire before React
+  // swaps the question in, and must not post a stale null for it.
   const inFlight = useRef<string | null>(null);
   const answer = useCallback(
     async (choice: string | null) => {
-      if (question === null || inFlight.current !== null) return;
+      if (question === null || inFlight.current === question.questionId) return;
       inFlight.current = question.questionId;
       setPending(true);
       setError(null);
@@ -101,7 +111,6 @@ export function PlacementExam({
         }
         setState(result.data);
       } finally {
-        inFlight.current = null;
         setPending(false);
       }
     },
@@ -196,12 +205,16 @@ export function PlacementExam({
       <div className="-mx-3 -my-3 flex h-full flex-col overflow-y-auto px-3 py-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         <div className="mx-auto flex w-full h-full max-w-2xl flex-col gap-6">
           <h1 className="text-3xl font-semibold">{t('resultHeading')}</h1>
-          <div className="flex flex-col gap-1 rounded-2xl border border-indigo-500/30 bg-indigo-500/10 px-10 py-6">
+          {/* role="status" so a saved override is announced, not only repainted. */}
+          <div
+            role="status"
+            className="flex flex-col gap-1 rounded-2xl border border-indigo-500/30 bg-indigo-500/10 px-10 py-6"
+          >
             <span className="text-xs font-semibold tracking-widest text-indigo-300 uppercase">
               {t('levelLabel')}
             </span>
             <span className="text-6xl font-bold text-end text-indigo-300">
-              {state.targetLevel ?? t('notPlaced')}
+              {overridden ?? state.targetLevel ?? t('notPlaced')}
             </span>
           </div>
 
@@ -238,6 +251,12 @@ export function PlacementExam({
               ))}
             </tbody>
           </table>
+
+          <LevelOverride
+            lang={lang}
+            level={overridden ?? state.targetLevel}
+            onSaved={setOverridden}
+          />
 
           <FormError message={error} />
 

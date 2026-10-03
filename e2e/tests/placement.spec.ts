@@ -164,6 +164,8 @@ test.describe('placement exam', () => {
    * first option, which the binary search settles in at most a few levels.
    */
   test('the report lists every question asked, in order', async ({ onboarded }) => {
+    // Up to 18 answers (three levels of six questions), each a round trip,
+    // plus the override: past the 30s default once workers share the stack.
     test.setTimeout(180_000);
     await startRun(onboarded);
 
@@ -205,12 +207,42 @@ test.describe('placement exam', () => {
       // Filled on every row, including the ones answered correctly: a blank cell
       // there leaves the learner checking their answer against nothing.
       await expect(cells.nth(2)).not.toBeEmpty();
+
+      // Red and green, and a verdict named for a screen reader rather than left
+      // to colour alone. The right answer is on the row, so it decides which.
+      const right = (await cells.nth(2).innerText()) === entry.chosen;
+      await expect(cells.nth(1)).toHaveClass(right ? /text-green-400/ : /text-red-400/);
+      await expect(cells.nth(2)).toHaveClass(/text-green-400/);
+      await expect(cells.nth(3).getByRole('img')).toHaveAccessibleName(
+        right ? 'Correct' : 'Incorrect',
+      );
     }
 
-    // Red and green: every row carries its verdict, named for a screen reader
-    // rather than left to colour alone.
-    const verdicts = onboarded.getByRole('img', { name: /^(Correct|Incorrect)$/ });
-    await expect(verdicts).toHaveCount(asked.length);
+    // The override writes through PATCH /api/courses/:lang/level, then shows on
+    // the page. Any level but the verdict, so the write is visible.
+    const { targetLevel } = await (await onboarded.request.get('/api/placement')).json();
+    const override = targetLevel === 'C1' ? 'A2' : 'C1';
+    await onboarded.getByRole('button', { name: 'Not your level?' }).click();
+    // The radio is sr-only, so its own label takes the click.
+    await onboarded
+      .getByRole('group', { name: 'Choose your level' })
+      .getByText(override, { exact: true })
+      .click();
+    const patched = onboarded.waitForResponse(
+      (response) =>
+        response.request().method() === 'PATCH' &&
+        response.url().endsWith(`/api/courses/${ONBOARDED_COURSE.lang}/level`),
+    );
+    await onboarded.getByRole('button', { name: 'Save this level' }).click();
+    expect((await patched).status()).toBe(200);
+
+    // The open picker's label also reads the level, so wait for it to close.
+    await expect(onboarded.getByRole('group', { name: 'Choose your level' })).toBeHidden();
+    await expect(onboarded.getByText(override, { exact: true })).toBeVisible();
+    const { courses } = await (await onboarded.request.get('/api/courses')).json();
+    expect(courses).toContainEqual(
+      expect.objectContaining({ lang: ONBOARDED_COURSE.lang, level: override }),
+    );
   });
 
   /**
