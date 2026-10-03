@@ -4,7 +4,12 @@ import { randomUUID } from 'node:crypto';
 import request from 'supertest';
 import type TestAgent from 'supertest/lib/agent';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { type PlacementQuestion, PlacementQuestionSchema, PlacementResultSchema } from '@ft/shared';
+import {
+  type Level,
+  type PlacementQuestion,
+  PlacementQuestionSchema,
+  PlacementResultSchema,
+} from '@ft/shared';
 
 import { AppModule } from '../src/app.module';
 import { configureApp } from '../src/app.setup';
@@ -133,7 +138,7 @@ describe('placement (e2e)', () => {
       const response = await agent.post('/api/placement').send({ lang: 'de' }).expect(201);
 
       first = PlacementQuestionSchema.parse(response.body);
-      expect(first).toMatchObject({ level: 'B1', progress: { answered: 0 } });
+      expect(first).toMatchObject({ lang: 'de', level: 'B1', progress: { answered: 0 } });
     });
 
     // remainingS may tick between two requests; everything else must hold still.
@@ -184,19 +189,53 @@ describe('placement (e2e)', () => {
 
     it('runs to a result and places the course there', async () => {
       let body = (await agent.post('/api/placement').send({ lang: 'de' }).expect(201)).body;
+      const levels: Level[] = [];
       // Pass B1, fail C1, pass B2: both directions, and a result that is neither end.
       while ('questionId' in body) {
+        levels.push(body.level);
         body = (await answer(agent, body, body.level !== 'C1')).body;
       }
 
       const result = PlacementResultSchema.parse(body);
-      expect(result.targetLevel).toBe('C1');
-      expect(result.report).toHaveLength(14);
+      expect(result).toMatchObject({ lang: 'de', targetLevel: 'C1', applied: true });
+      expect(levels).toHaveLength(14);
+      expect(result.report.map((entry) => entry.level)).toEqual(levels);
       expect((await agent.get('/api/placement').expect(200)).body).toEqual(result);
       expect((await agent.get('/api/courses').expect(200)).body).toEqual({
         courses: [{ lang: 'de', level: 'C1', dailyGoal: 30 }],
         activeLang: 'de',
       });
+    });
+
+    // A learner who walks away times out on every question: the run ends at A1, the course stays.
+    it('leaves the course at its level when every answer timed out', async () => {
+      let body = (await agent.post('/api/placement').send({ lang: 'de' }).expect(201)).body;
+      while ('questionId' in body) {
+        body = (
+          await agent
+            .post('/api/placement/answers')
+            .send({ questionId: body.questionId, choice: null })
+            .expect(201)
+        ).body;
+      }
+
+      const result = PlacementResultSchema.parse(body);
+      expect(result).toMatchObject({ lang: 'de', targetLevel: 'A1', applied: false });
+      expect((await agent.get('/api/placement').expect(200)).body).toEqual(result);
+      expect((await agent.get('/api/courses').expect(200)).body.courses).toEqual([
+        { lang: 'de', level: 'C1', dailyGoal: 30 },
+      ]);
+    });
+
+    // No DELETE first: a finished run only holds its report.
+    it('replaces the finished run on the next start', async () => {
+      const { body } = await agent.post('/api/placement').send({ lang: 'de' }).expect(201);
+      const retake = PlacementQuestionSchema.parse(body);
+
+      expect(retake).toMatchObject({ lang: 'de', level: 'B1', progress: { answered: 0 } });
+      expect((await agent.get('/api/placement').expect(200)).body.questionId).toBe(
+        retake.questionId,
+      );
 
       await agent.delete('/api/placement').expect(204);
     });

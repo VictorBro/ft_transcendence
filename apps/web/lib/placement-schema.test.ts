@@ -5,6 +5,7 @@ import { isPlacementResult, PlacementStateSchema } from './placement-schema';
 
 /** A grammar question carries no readText: the schema's refine rejects one. */
 const question: PlacementQuestion = {
+  lang: 'fr',
   questionId: '11111111-1111-4111-8111-111111111111',
   category: 'grammar',
   level: 'B1',
@@ -16,10 +17,13 @@ const question: PlacementQuestion = {
 };
 
 const result: PlacementResult = {
+  lang: 'fr',
   targetLevel: 'B2',
+  applied: true,
   report: [
     {
       questionId: '11111111-1111-4111-8111-111111111111',
+      level: 'B1',
       question: 'Hier, je ___ au cinéma.',
       options: ['vais', 'suis allé', 'irai', 'allais'],
       chosen: 'vais',
@@ -37,6 +41,28 @@ describe('PlacementStateSchema', () => {
     ['the result once the exam has ended', result],
   ])('accepts %s', (_, payload) => {
     expect(PlacementStateSchema.parse(payload)).toEqual(payload);
+  });
+
+  // Unknown keys are stripped, not refused, so a field the schema lost would
+  // vanish here and the debrief would render without it.
+  it('keeps the passage and the level of a reading entry in the result', () => {
+    const reading: PlacementResult = {
+      ...result,
+      report: [
+        {
+          questionId: '22222222-2222-4222-8222-222222222222',
+          level: 'A2',
+          question: 'Comment Marie va-t-elle au travail ?',
+          readText: 'Tous les matins, Marie prend le train de huit heures pour aller au travail.',
+          options: ['En train', 'En bus', 'À pied', 'En voiture'],
+          chosen: 'En train',
+          correct: 'En train',
+          wasCorrect: true,
+        },
+      ],
+    };
+
+    expect(PlacementStateSchema.parse(reading)).toEqual(reading);
   });
 
   // A 200 carrying neither shape says nothing about the run, and parsing it as

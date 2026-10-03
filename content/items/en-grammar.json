@@ -77,7 +77,7 @@
     {
       "sourceId": "en-gram-0009",
       "level": "A2",
-      "topic": "verbs_morphology",
+      "topic": "verb_usage",
       "question": "They ___ dinner at eight o'clock, when the power went out.",
       "options": ["were cooking", "cooked", "were cook", "are cooking"],
       "answer": "were cooking",
@@ -123,9 +123,9 @@
       "sourceId": "en-gram-0014",
       "level": "B1",
       "topic": "negation",
-      "question": "The shop had closed early, so there weren't ___ sandwiches left.",
-      "options": ["any", "much", "some", "a few"],
-      "answer": "any",
+      "question": "I haven't finished the report yet, and Mark hasn't ___.",
+      "options": ["either", "too", "neither", "also"],
+      "answer": "either",
       "timeLimitS": 60
     },
     {
@@ -141,17 +141,17 @@
       "sourceId": "en-gram-0016",
       "level": "B2",
       "topic": "verbs_morphology",
-      "question": "The bridge ___ last year after the flood.",
-      "options": ["rebuilt", "was rebuilt", "has rebuilt", "rebuilding"],
-      "answer": "was rebuilt",
+      "question": "We had to take a detour because the bridge ___ after the flood.",
+      "options": ["was being rebuilt", "was rebuilding", "had rebuilt", "was been rebuilt"],
+      "answer": "was being rebuilt",
       "timeLimitS": 60
     },
     {
       "sourceId": "en-gram-0017",
       "level": "B2",
       "topic": "verb_usage",
-      "question": "I would rather you ___ me before making that decision.",
-      "options": ["ask", "asked", "will ask", "would ask"],
+      "question": "Next time, I would rather you ___ me before making a decision like that.",
+      "options": ["asked", "to ask", "will ask", "would ask"],
       "answer": "asked",
       "timeLimitS": 60
     },
@@ -178,7 +178,7 @@
       "level": "B2",
       "topic": "verb_usage",
       "question": "I ___ this novel all week and I still don't know how it ends.",
-      "options": ["have been reading", "have read", "had been reading", "was reading"],
+      "options": ["have been reading", "have read", "had been reading", "am reading"],
       "answer": "have been reading",
       "timeLimitS": 60
     },
@@ -218,27 +218,32 @@
       "sourceId": "en-gram-0024",
       "level": "C1",
       "topic": "verb_usage",
-      "question": "She ___ for her keys for two days when she finally found them in her coat.",
-      "options": ["had been looking", "looked", "had been looked", "were looking"],
-      "answer": "had been looking",
+      "question": "If he hadn't missed the last train, he ___ in his own bed right now instead of on a station bench.",
+      "options": ["would be sleeping", "would have slept", "will sleep", "had slept"],
+      "answer": "would be sleeping",
       "timeLimitS": 75
     },
     {
       "sourceId": "en-gram-0025",
       "level": "C1",
       "topic": "syntax_and_sentence_structure",
-      "question": "What struck me most about the exhibition ___ the silence of the crowd.",
-      "options": ["was", "were", "being", "be"],
-      "answer": "was",
+      "question": "All I wanted to do after the long flight was ___ straight to bed.",
+      "options": ["go", "going", "went", "to going"],
+      "answer": "go",
       "timeLimitS": 75
     },
     {
       "sourceId": "en-gram-0026",
       "level": "C2",
       "topic": "verb_usage",
-      "question": "Had the committee ___ the risk, the project would never have been approved.",
-      "options": ["understood", "understand", "been understood", "understanding"],
-      "answer": "understood",
+      "question": "___ the risk, the project would never have been approved.",
+      "options": [
+        "Had the committee understood",
+        "Should the committee understand",
+        "Did the committee understand",
+        "Has the committee understood"
+      ],
+      "answer": "Had the committee understood",
       "timeLimitS": 90
     },
     {
@@ -255,7 +260,7 @@
       "level": "C2",
       "topic": "verb_usage",
       "question": "The pavement is bone dry, so it ___ during the night after all.",
-      "options": ["can't have rained", "hadn't rained", "couldn't rain", "mustn't have rained"],
+      "options": ["can't have rained", "needn't have rained", "hadn't rained", "couldn't rain"],
       "answer": "can't have rained",
       "timeLimitS": 90
     },
@@ -263,23 +268,18 @@
       "sourceId": "en-gram-0029",
       "level": "C2",
       "topic": "subordinate_clauses",
-      "question": "Had she not intervened when she did, the negotiations ___ altogether.",
-      "options": ["would have collapsed", "will have collapsed", "would collapse", "had collapsed"],
-      "answer": "would have collapsed",
+      "question": "___ her timely intervention, the negotiations would have collapsed altogether.",
+      "options": ["But for", "Unless", "If not", "Despite"],
+      "answer": "But for",
       "timeLimitS": 90
     },
     {
       "sourceId": "en-gram-0030",
       "level": "C2",
       "topic": "syntax_and_sentence_structure",
-      "question": "Rarely ___ an account so at odds with the documentary record.",
-      "options": [
-        "have historians encountered",
-        "historians have encountered",
-        "historians encountered",
-        "encountered historians"
-      ],
-      "answer": "have historians encountered",
+      "question": "___ no reliable witnesses to the accident, the police had little choice but to close the case.",
+      "options": ["There being", "There were", "Being", "It being"],
+      "answer": "There being",
       "timeLimitS": 90
     }
   ]

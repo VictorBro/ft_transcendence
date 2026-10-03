@@ -12,8 +12,8 @@ import {
  * One account per worker, not per test and not per file: each signup writes a
  * row and runs argon2, and POST /auth/signup is limited to 30 a minute per
  * address. Every browser in the run shares that address, so the whole run
- * shares one budget: a clean run already spends about 17 plus one per worker,
- * and a suite that signs up per test starts failing on a 429 it never asked for.
+ * shares one budget: a clean run spends about 24, two of them per worker, so
+ * one more worker or a few more signups per run starts failing on a 429.
  *
  * Exposed as fixtures rather than helpers so teardown is Playwright's problem.
  * A context closed by hand at the end of a test leaks whenever an assertion
@@ -43,17 +43,15 @@ export const identity = (): Identity => {
 };
 
 /**
- * Fills the signup form and waits for the redirect to /onboarding, which only
- * happens once the account exists and the session cookie is set.
+ * Signs up through the API, which leaves the session cookie in the page's
+ * context. The form has its own tests in auth.spec.ts; everywhere else it is
+ * setup, and a slow machine pays seconds per account for it.
  */
-export const createAccount = async (page: Page, fields: Identity): Promise<void> => {
-  await page.goto('/signup');
-  await page.getByLabel('Email', { exact: true }).fill(fields.email);
-  await page.getByLabel('Display name', { exact: true }).fill(fields.displayName);
-  await page.getByLabel('Password', { exact: true }).fill(PASSWORD);
-  await page.getByLabel('Confirm password', { exact: true }).fill(PASSWORD);
-  await page.getByRole('button', { name: 'Create account' }).click();
-  await expect(page).toHaveURL(/\/onboarding$/);
+export const signUp = async (page: Page, fields: Identity = identity()): Promise<void> => {
+  const created = await page.request.post('/api/auth/signup', {
+    data: { ...fields, password: PASSWORD },
+  });
+  expect(created.status()).toBe(201);
 };
 
 export interface CourseFields {
@@ -92,6 +90,12 @@ export const placeCourse = async (page: Page, course: CourseFields): Promise<voi
   expect(level.status()).toBe(200);
 };
 
+/** The level the API holds for one of the account's courses. */
+export const courseLevel = async (page: Page, lang: string): Promise<string | null> => {
+  const { courses } = await (await page.request.get('/api/courses')).json();
+  return courses.find((course: { lang: string }) => course.lang === lang).level;
+};
+
 /** What every onboarded account studies. routes.ts opens its course home. */
 export const ONBOARDED_COURSE = { lang: 'de', level: 'B1', dailyGoal: 30 } as const;
 
@@ -123,7 +127,7 @@ const newAccount = async (
   const context = await browser.newContext();
   const page = await context.newPage();
 
-  await createAccount(page, fields);
+  await signUp(page, fields);
   await setUp(page);
   const storageState = await context.storageState();
   await context.close();
@@ -202,7 +206,7 @@ export const test = base.extend<
     const context = await browser.newContext();
     const page = await context.newPage();
 
-    await createAccount(page, identity());
+    await signUp(page);
     await use(page);
     await context.close();
   },

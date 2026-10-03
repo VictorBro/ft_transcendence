@@ -4,6 +4,7 @@ import type { PlacementQuestion, PlacementResult } from '@ft/shared';
 import { quitPlacement, startPlacement, submitPlacementAnswer } from './placement-client';
 
 const question: PlacementQuestion = {
+  lang: 'fr',
   questionId: '11111111-1111-4111-8111-111111111111',
   category: 'grammar',
   level: 'B1',
@@ -15,10 +16,13 @@ const question: PlacementQuestion = {
 };
 
 const result: PlacementResult = {
+  lang: 'fr',
   targetLevel: 'B2',
+  applied: true,
   report: [
     {
       questionId: '11111111-1111-4111-8111-111111111111',
+      level: 'B1',
       question: 'Hier, je ___ au cinéma.',
       options: ['vais', 'suis allé', 'irai', 'allais'],
       chosen: null,
@@ -77,6 +81,19 @@ describe('startPlacement', () => {
     await expect(startPlacement('de')).resolves.toMatchObject({
       ok: false,
       code: 'placement.onboardingIncomplete',
+    });
+  });
+
+  // The page reads lang to tell its own run from one in another language, so a
+  // question without it belongs nowhere and must not reach the screen.
+  it('refuses a question that does not say its language', async () => {
+    const { lang: _lang, ...unlabelled } = question;
+    vi.stubGlobal('fetch', respondWith(201, unlabelled));
+
+    await expect(startPlacement('de')).resolves.toEqual({
+      ok: false,
+      code: 'server.unexpected',
+      status: 201,
     });
   });
 
@@ -142,6 +159,15 @@ describe('submitPlacementAnswer', () => {
     await expect(
       submitPlacementAnswer('11111111-1111-4111-8111-111111111111', 'vais'),
     ).resolves.toEqual({ ok: true, data: result });
+  });
+
+  // A run that ended without a verdict has no level to show or to save.
+  it('refuses a result without a target level', async () => {
+    vi.stubGlobal('fetch', respondWith(201, { ...result, targetLevel: null }));
+
+    await expect(
+      submitPlacementAnswer('11111111-1111-4111-8111-111111111111', 'vais'),
+    ).resolves.toEqual({ ok: false, code: 'server.unexpected', status: 201 });
   });
 
   it('surfaces a question mismatch', async () => {

@@ -1,7 +1,7 @@
 import { devices } from '@playwright/test';
 import { expectFitsTheScreen } from '../support/layout';
 import { AUTHENTICATED_FOOTER_ROUTES, PUBLIC_FOOTER_ROUTES } from '../support/routes';
-import { placeCourse, SECOND_COURSE, test } from '../support/session';
+import { expect, ONBOARDED_COURSE, placeCourse, SECOND_COURSE, test } from '../support/session';
 
 /**
  * 360px is the narrowest width worth gating: it is the most common Android
@@ -43,4 +43,64 @@ test.describe('every page fits a phone screen', () => {
       await expectFitsTheScreen(onboarded, path);
     });
   }
+});
+
+/*
+ * The exam's two other screens are only reached by answering, so the run is
+ * faked at the network: German at its widest, a long reading passage and
+ * compounds with nowhere to break, which a real draw only serves by chance.
+ */
+const LONG_WORDS = 'Donaudampfschifffahrtsgesellschaft Rechtsschutzversicherungsgesellschaften';
+const ID = '11111111-1111-4111-8111-111111111111';
+const options = [
+  'Beeinträchtigungen',
+  'Verantwortungsbewusstsein',
+  'Geschwindigkeitsbegrenzung',
+  LONG_WORDS,
+];
+
+const readingQuestion = {
+  lang: ONBOARDED_COURSE.lang,
+  questionId: ID,
+  category: 'reading',
+  level: 'B2',
+  readText: `${LONG_WORDS}. `.repeat(12),
+  question: `Was bedeutet ${LONG_WORDS}?`,
+  options,
+  timeLimitS: 120,
+  remainingS: 120,
+  progress: { answered: 0, maxQuestionsRemaining: 18 },
+};
+
+const result = {
+  lang: ONBOARDED_COURSE.lang,
+  targetLevel: 'C1',
+  applied: true,
+  report: [
+    {
+      questionId: ID,
+      level: readingQuestion.level,
+      question: readingQuestion.question,
+      readText: readingQuestion.readText,
+      options,
+      chosen: options[0],
+      correct: LONG_WORDS,
+      wasCorrect: false,
+    },
+  ],
+};
+
+test('the placement question and result fit a phone screen', async ({ onboarded }) => {
+  const path = `/en/learn/${ONBOARDED_COURSE.lang}/placement`;
+  await onboarded.route('**/api/placement', (route) => route.fulfill({ json: readingQuestion }));
+  await onboarded.route('**/api/placement/answers', (route) => route.fulfill({ json: result }));
+
+  await onboarded.goto(path);
+  await onboarded.getByRole('button', { name: 'Start the test' }).click();
+  await expect(onboarded.getByRole('timer')).toBeVisible();
+  await expectFitsTheScreen(onboarded, `${path} (question)`);
+
+  await onboarded.getByRole('button', { name: options[0] }).click();
+  await expect(onboarded.getByRole('heading', { name: 'Your result' })).toBeVisible();
+  await expectFitsTheScreen(onboarded, `${path} (result)`);
 });

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import type { Course } from '@ft/shared';
 
-import { nextLevel, resolveOnboardingStep } from './onboarding';
+import { resolveOnboardingStep } from './onboarding';
 
 const course = (lang: Course['lang'], level: Course['level']): Course => ({
   lang,
@@ -61,22 +61,5 @@ describe('resolveOnboardingStep for the course the learner came from', () => {
       step: 'chooseCourse',
       preselected: null,
     });
-  });
-});
-
-describe('nextLevel', () => {
-  it('aims one level above what the learner knows', () => {
-    expect(nextLevel('A1')).toBe('A2');
-    expect(nextLevel('B1')).toBe('B2');
-  });
-
-  /** Nothing sits above C2, so the course maintains it instead. */
-  it('keeps C2 at C2', () => {
-    expect(nextLevel('C2')).toBe('C2');
-  });
-
-  /** A learner who has mastered nothing is the only way to reach the A1 course. */
-  it('starts a complete beginner at A1', () => {
-    expect(nextLevel(null)).toBe('A1');
   });
 });

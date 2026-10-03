@@ -5,7 +5,7 @@
     {
       "sourceId": "en-voca-0001",
       "level": "A1",
-      "topic": "information_structure_and_pragmatics",
+      "topic": "adjectives",
       "question": "I am very ___. Can I have some water?",
       "options": ["thirsty", "hungry", "tired", "cold"],
       "answer": "thirsty",
@@ -15,8 +15,8 @@
       "sourceId": "en-voca-0002",
       "level": "A1",
       "topic": "adjectives",
-      "question": "It is so ___ outside today that I don't want to leave the house.",
-      "options": ["cold", "coldly", "coldness", "colder"],
+      "question": "It is very ___ outside today, so wear a warm coat.",
+      "options": ["cold", "hot", "sunny", "dry"],
       "answer": "cold",
       "timeLimitS": 30
     },
@@ -54,7 +54,7 @@
       "question": "She pointed her camera at the mountains and ___ a photo.",
       "options": ["took", "made", "did", "had"],
       "answer": "took",
-      "timeLimitS": 30
+      "timeLimitS": 45
     },
     {
       "sourceId": "en-voca-0007",
@@ -63,16 +63,16 @@
       "question": "The sun is strong today. You should ___ on some sunscreen before we go out.",
       "options": ["put", "take", "dress", "wear"],
       "answer": "put",
-      "timeLimitS": 30
+      "timeLimitS": 45
     },
     {
       "sourceId": "en-voca-0008",
       "level": "A2",
       "topic": "verb_usage",
       "question": "Do you know where I can ___ a cheap charger near here? Mine just died.",
-      "options": ["get", "obtain", "acquire", "procure"],
-      "answer": "get",
-      "timeLimitS": 30
+      "options": ["buy", "sell", "pay", "spend"],
+      "answer": "buy",
+      "timeLimitS": 45
     },
     {
       "sourceId": "en-voca-0009",
@@ -81,16 +81,16 @@
       "question": "The film was three hours long and I found it rather ___.",
       "options": ["boring", "bored", "bore", "boredom"],
       "answer": "boring",
-      "timeLimitS": 30
+      "timeLimitS": 45
     },
     {
       "sourceId": "en-voca-0010",
       "level": "A2",
       "topic": "nouns_and_determiners",
-      "question": "I keep my train ticket in my ___ so I don't lose it.",
-      "options": ["wallet", "kitchen", "balcony", "ceiling"],
+      "question": "I never go out without my ___. My bank cards and some cash are in it.",
+      "options": ["wallet", "umbrella", "ticket", "map"],
       "answer": "wallet",
-      "timeLimitS": 30
+      "timeLimitS": 45
     },
     {
       "sourceId": "en-voca-0011",
@@ -142,7 +142,7 @@
       "level": "B2",
       "topic": "adjectives",
       "question": "Her argument was ___, but it failed to persuade the committee.",
-      "options": ["compelling", "compelled", "compellingly", "compel"],
+      "options": ["compelling", "compulsive", "compulsory", "complacent"],
       "answer": "compelling",
       "timeLimitS": 45
     },
@@ -151,7 +151,7 @@
       "level": "B2",
       "topic": "verb_usage",
       "question": "You may not enjoy the winters here, but you'll have to ___, I'm afraid.",
-      "options": ["put up with them", "put them off", "tell them off", "sort them out"],
+      "options": ["put up with them", "make up for them", "come up with them", "look down on them"],
       "answer": "put up with them",
       "timeLimitS": 45
     },
@@ -168,8 +168,8 @@
       "sourceId": "en-voca-0019",
       "level": "B2",
       "topic": "nouns_and_determiners",
-      "question": "The paper offered a careful ___ of the survey results.",
-      "options": ["interpretation", "misinterpretation", "interpreter", "interpretability"],
+      "question": "The survey results are open to ___: some read them as good news, others as a warning.",
+      "options": ["interpretation", "translation", "explanation", "definition"],
       "answer": "interpretation",
       "timeLimitS": 45
     },
@@ -186,9 +186,9 @@
       "sourceId": "en-voca-0021",
       "level": "C1",
       "topic": "verb_usage",
-      "question": "The report ___ serious doubts about the safety of the procedure.",
-      "options": ["raises", "rises", "arises", "lifts"],
-      "answer": "raises",
+      "question": "The report ___ serious doubt on the safety of the procedure.",
+      "options": ["casts", "pours", "lays", "levels"],
+      "answer": "casts",
       "timeLimitS": 60
     },
     {
@@ -196,7 +196,7 @@
       "level": "C1",
       "topic": "adjectives",
       "question": "The link was ___ at best: one study, twelve participants, no control group.",
-      "options": ["tenuous", "tenacious", "tenable", "tentative"],
+      "options": ["tenuous", "tenacious", "tedious", "tenured"],
       "answer": "tenuous",
       "timeLimitS": 60
     },
@@ -204,7 +204,7 @@
       "sourceId": "en-voca-0023",
       "level": "C1",
       "topic": "verb_usage",
-      "question": "The two accounts of the incident ___ on almost every material detail.",
+      "question": "The two accounts of the incident ___ on almost every material detail, so they cannot both be true.",
       "options": ["diverge", "converge", "emerge", "submerge"],
       "answer": "diverge",
       "timeLimitS": 60
@@ -214,7 +214,7 @@
       "level": "C1",
       "topic": "nouns_and_determiners",
       "question": "The policy was abandoned after a ___ of complaints from local residents.",
-      "options": ["barrage", "barrier", "baggage", "bargain"],
+      "options": ["barrage", "pang", "shred", "stroke"],
       "answer": "barrage",
       "timeLimitS": 60
     },
@@ -230,9 +230,9 @@
     {
       "sourceId": "en-voca-0026",
       "level": "C2",
-      "topic": "information_structure_and_pragmatics",
+      "topic": "nouns_and_determiners",
       "question": "The minister's answer was a masterclass in ___: forty words that committed to nothing.",
-      "options": ["obfuscation", "clarification", "elaboration", "confirmation"],
+      "options": ["obfuscation", "ostentation", "obsequiousness", "exoneration"],
       "answer": "obfuscation",
       "timeLimitS": 60
     },
@@ -240,9 +240,9 @@
       "sourceId": "en-voca-0027",
       "level": "C2",
       "topic": "adjectives",
-      "question": "The distinction he drew was so ___ that half the room missed it entirely.",
-      "options": ["subtle", "subdued", "substantial", "subsidiary"],
-      "answer": "subtle",
+      "question": "The distinction he drew was so ___ that half the room could not follow it.",
+      "options": ["abstruse", "abrasive", "abject", "abstemious"],
+      "answer": "abstruse",
       "timeLimitS": 60
     },
     {
@@ -259,8 +259,8 @@
       "level": "C2",
       "topic": "verb_usage",
       "question": "The new regulations threaten to ___ the very protections they were meant to strengthen.",
-      "options": ["undermine", "underline", "undertake", "understate"],
-      "answer": "undermine",
+      "options": ["eviscerate", "extol", "expiate", "extrapolate"],
+      "answer": "eviscerate",
       "timeLimitS": 60
     },
     {

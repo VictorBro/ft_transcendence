@@ -5,7 +5,7 @@ import { LanguageSchema } from '@ft/shared';
 
 import { findCourse, requireCourses } from '@/lib/courses';
 import { apiFind } from '@/lib/api';
-import { PlacementStateSchema } from '@/lib/placement-schema';
+import { isPlacementResult, PlacementStateSchema } from '@/lib/placement-schema';
 import { PlacementExam } from './placement-exam';
 
 export const dynamic = 'force-dynamic';
@@ -52,11 +52,20 @@ export default async function PlacementPage({ params }: { params: Promise<{ lang
     throw new Error(`Could not load placement: ${result.reason}`);
   }
 
+  const run = result.status === 'ok' ? result.data : null;
+
+  // One run per learner, whatever the language. A live one elsewhere is where
+  // the learner belongs; a finished one elsewhere is only a report, which the
+  // start control here replaces.
+  if (run !== null && run.lang !== parsed.data && !isPlacementResult(run)) {
+    redirect(`/learn/${run.lang}/placement`);
+  }
+
   return (
     <PlacementExam
       lang={parsed.data}
       courseLevel={course.level}
-      initial={result.status === 'ok' ? result.data : null}
+      initial={run?.lang === parsed.data ? run : null}
     />
   );
 }
