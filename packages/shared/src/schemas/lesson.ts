@@ -56,24 +56,33 @@ export const LESSONS_PER_LEVEL: Record<Level, number> = {
   C2: 320,
 };
 
-/** How many lessons of each kind a level has. Each row sums to LESSONS_PER_LEVEL. */
-export const KIND_COUNTS: Record<Level, Record<LessonKind, number>> = {
-  A1: { grammar: 42, vocabulary: 54, functions: 14, reading: 10 },
-  A2: { grammar: 52, vocabulary: 60, functions: 18, reading: 20 },
-  B1: { grammar: 58, vocabulary: 110, functions: 23, reading: 39 },
+/** German and French share one mix. */
+const DE_FR_KIND_COUNTS: Record<Level, Record<LessonKind, number>> = {
+  A1: { grammar: 48, vocabulary: 48, functions: 14, reading: 10 },
+  A2: { grammar: 60, vocabulary: 52, functions: 18, reading: 20 },
+  B1: { grammar: 68, vocabulary: 100, functions: 22, reading: 40 },
   B2: { grammar: 50, vocabulary: 125, functions: 30, reading: 45 },
-  C1: { grammar: 26, vocabulary: 130, functions: 31, reading: 73 },
+  C1: { grammar: 26, vocabulary: 130, functions: 32, reading: 72 },
   C2: { grammar: 26, vocabulary: 166, functions: 32, reading: 96 },
 };
 
-/** The same mix in percent, which the outline check allows 10 points of slack around. */
-export const KIND_SHARES: Record<Level, Record<LessonKind, number>> = {
-  A1: { grammar: 35, vocabulary: 45, functions: 12, reading: 8 },
-  A2: { grammar: 35, vocabulary: 40, functions: 12, reading: 13 },
-  B1: { grammar: 25, vocabulary: 48, functions: 10, reading: 17 },
-  B2: { grammar: 20, vocabulary: 50, functions: 12, reading: 18 },
-  C1: { grammar: 10, vocabulary: 50, functions: 12, reading: 28 },
-  C2: { grammar: 8, vocabulary: 52, functions: 10, reading: 30 },
+/**
+ * How many lessons of each kind a level has, per language. Each row sums to
+ * LESSONS_PER_LEVEL, and the outline check wants these numbers exactly.
+ * German and French have more grammar from A1 to B1, English more vocabulary
+ * from B1 to C2.
+ */
+export const KIND_COUNTS: Record<Language, Record<Level, Record<LessonKind, number>>> = {
+  de: DE_FR_KIND_COUNTS,
+  fr: DE_FR_KIND_COUNTS,
+  en: {
+    A1: { grammar: 42, vocabulary: 54, functions: 14, reading: 10 },
+    A2: { grammar: 50, vocabulary: 60, functions: 20, reading: 20 },
+    B1: { grammar: 46, vocabulary: 122, functions: 22, reading: 40 },
+    B2: { grammar: 38, vocabulary: 136, functions: 30, reading: 46 },
+    C1: { grammar: 14, vocabulary: 142, functions: 30, reading: 74 },
+    C2: { grammar: 16, vocabulary: 182, functions: 32, reading: 90 },
+  },
 };
 
 /**

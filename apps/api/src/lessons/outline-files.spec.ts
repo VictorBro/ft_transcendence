@@ -3,7 +3,7 @@ import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
 import {
-  KIND_SHARES,
+  KIND_COUNTS,
   LESSON_KINDS,
   LESSONS_PER_LEVEL,
   LessonOutlineFileSchema,
@@ -20,11 +20,6 @@ import {
 
 // vitest runs with the package as cwd.
 const OUTLINES_DIR = join(process.cwd(), '../..', 'content/outlines');
-
-/** How far a kind's share may stray from KIND_SHARES, in percentage points. */
-const SHARE_SLACK = 10;
-/** The least share any kind may have, so every daily challenge has lessons at every level. */
-const MIN_SHARE = 5;
 
 function read(name: string): unknown {
   try {
@@ -78,16 +73,12 @@ describe('content/outlines', () => {
       expect(outline.entries.length, name).toBe(LESSONS_PER_LEVEL[outline.level]);
     });
 
-    it(`keeps each kind within ${SHARE_SLACK} points of its share, and at ${MIN_SHARE}% or more`, () => {
+    it('has exactly as many lessons of each kind as its language and level plan', () => {
       if (!outline) return;
-      const total = outline.entries.length;
       const offenders = LESSON_KINDS.flatMap((kind) => {
         const count = outline.entries.filter((entry) => entry.kind === kind).length;
-        const share = (100 * count) / total;
-        const expected = KIND_SHARES[outline.level][kind];
-        return Math.abs(share - expected) > SHARE_SLACK || share < MIN_SHARE
-          ? [`${kind}: ${count} of ${total} is ${share.toFixed(1)}%, expected ${expected}%`]
-          : [];
+        const expected = KIND_COUNTS[outline.lang][outline.level][kind];
+        return count === expected ? [] : [`${kind}: ${count}, expected ${expected}`];
       });
       expect(offenders, name).toEqual([]);
     });

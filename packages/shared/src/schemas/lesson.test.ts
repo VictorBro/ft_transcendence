@@ -1,12 +1,12 @@
 import { describe, expect, it } from 'vitest';
 
 import { LEVELS } from './item';
+import { LEARNABLE_LANGUAGES } from './language';
 import {
   FinishLessonSchema,
   FinishResultSchema,
   foldText,
   KIND_COUNTS,
-  KIND_SHARES,
   LESSON_KINDS,
   LESSONS_PER_LEVEL,
   LessonCardSchema,
@@ -91,18 +91,48 @@ const card: LessonCard = {
   finishedAt: '2026-10-12T07:10:00.000Z',
 };
 
-describe('LESSONS_PER_LEVEL, KIND_COUNTS and KIND_SHARES', () => {
-  it.each(LEVELS)('%s: the counts add up and stay near the shares', (level) => {
-    const counts = KIND_COUNTS[level];
+describe('LESSONS_PER_LEVEL and KIND_COUNTS', () => {
+  const cases = LEARNABLE_LANGUAGES.flatMap((lang) =>
+    LEVELS.map((level) => [lang, level] as const),
+  );
+
+  // Every kind at every level, so every daily challenge has lessons to pick from.
+  it.each(cases)('%s %s: the counts add up, and every kind has lessons', (lang, level) => {
+    const counts = KIND_COUNTS[lang][level];
     const total = LESSON_KINDS.reduce((sum, kind) => sum + counts[kind], 0);
     expect(total).toBe(LESSONS_PER_LEVEL[level]);
 
     for (const kind of LESSON_KINDS) {
-      const share = (100 * counts[kind]) / total;
-      expect(Math.abs(share - KIND_SHARES[level][kind]), kind).toBeLessThanOrEqual(10);
-      expect(share, kind).toBeGreaterThanOrEqual(5);
+      expect(counts[kind], kind).toBeGreaterThan(0);
     }
-    expect(LESSON_KINDS.reduce((sum, kind) => sum + KIND_SHARES[level][kind], 0)).toBe(100);
+  });
+
+  // The tables of #77, cell by cell: a typo that keeps the row sum would pass the test above.
+  it('gives German and French the same mix, and English its own', () => {
+    const row = (grammar: number, vocabulary: number, functions: number, reading: number) => ({
+      grammar,
+      vocabulary,
+      functions,
+      reading,
+    });
+    const deFr = {
+      A1: row(48, 48, 14, 10),
+      A2: row(60, 52, 18, 20),
+      B1: row(68, 100, 22, 40),
+      B2: row(50, 125, 30, 45),
+      C1: row(26, 130, 32, 72),
+      C2: row(26, 166, 32, 96),
+    };
+    expect(KIND_COUNTS.de).toEqual(deFr);
+    expect(KIND_COUNTS.fr).toEqual(deFr);
+    expect(KIND_COUNTS.en).toEqual({
+      A1: row(42, 54, 14, 10),
+      A2: row(50, 60, 20, 20),
+      B1: row(46, 122, 22, 40),
+      B2: row(38, 136, 30, 46),
+      C1: row(14, 142, 30, 74),
+      C2: row(16, 182, 32, 90),
+    });
   });
 });
 
