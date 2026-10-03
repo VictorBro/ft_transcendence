@@ -3,6 +3,7 @@ export * from './errors';
 export * from './health';
 export * from './item';
 export * from './language';
+export * from './lesson';
 export * from './locale';
 export * from './placement';
 export * from './two-factor';

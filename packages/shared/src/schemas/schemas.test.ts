@@ -7,6 +7,7 @@ import {
   DEFAULT_LOCALE,
   DisableTwoFactorSchema,
   EnableTwoFactorSchema,
+  FinishLessonSchema,
   HealthResponseSchema,
   LocaleSchema,
   LoginSchema,
@@ -324,6 +325,7 @@ describe('validation messages', () => {
     ['SecondFactorSchema', SecondFactorSchema, { code: 'neither' }],
     ['EnableTwoFactorSchema', EnableTwoFactorSchema, { code: '12' }],
     ['DisableTwoFactorSchema', DisableTwoFactorSchema, { password: '' }],
+    ['FinishLessonSchema', FinishLessonSchema, { score: 70.5 }],
   ] as const;
 
   it.each(rejected)('%s reports codes, not prose', (_name, schema, input) => {

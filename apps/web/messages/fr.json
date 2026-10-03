@@ -189,7 +189,12 @@
     },
     "course": {
       "alreadyStarted": "Vous avez déjà commencé un cours dans cette langue",
-      "notFound": "Vous n'avez pas encore de cours dans cette langue"
+      "notFound": "Vous n'avez pas encore de cours dans cette langue",
+      "notPlaced": "Passez d'abord le test de positionnement pour commencer ce cours"
+    },
+    "lesson": {
+      "notFound": "Cette leçon n'existe pas",
+      "invalidScore": "Le score doit être un nombre entier de 0 à 100"
     },
     "placement": {
       "inProgress": "Un test de positionnement est déjà en cours. Terminez-le d'abord.",

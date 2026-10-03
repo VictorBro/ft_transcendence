@@ -189,7 +189,12 @@
     },
     "course": {
       "alreadyStarted": "Du hast in dieser Sprache bereits einen Kurs begonnen",
-      "notFound": "Du hast in dieser Sprache noch keinen Kurs"
+      "notFound": "Du hast in dieser Sprache noch keinen Kurs",
+      "notPlaced": "Mach zuerst den Einstufungstest, um diesen Kurs zu beginnen"
+    },
+    "lesson": {
+      "notFound": "Diese Lektion gibt es nicht",
+      "invalidScore": "Die Punktzahl muss eine ganze Zahl von 0 bis 100 sein"
     },
     "placement": {
       "inProgress": "Ein Einstufungstest läuft bereits. Beende ihn zuerst.",
