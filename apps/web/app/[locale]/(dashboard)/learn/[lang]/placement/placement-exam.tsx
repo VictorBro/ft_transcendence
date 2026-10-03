@@ -98,7 +98,7 @@ export function PlacementExam({
   }
 
   return (
-    <div className="-mx-3 -my-3 flex min-w-0 flex-col px-3 py-3 scrollbar-none [&::-webkit-scrollbar]:hidden lg:h-full lg:overflow-y-auto">
+    <div className="relative -mx-3 -my-3 flex min-w-0 flex-col px-3 py-3 scrollbar-none [&::-webkit-scrollbar]:hidden lg:h-full lg:overflow-y-auto">
       {state === null ? (
         <StartScreen
           lang={lang}

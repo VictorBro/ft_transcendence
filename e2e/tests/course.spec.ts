@@ -1,3 +1,4 @@
+import { expectPinned } from '../support/layout';
 import {
   courseLevel,
   enrol,
@@ -89,6 +90,7 @@ test.describe('course home', () => {
     await expect(levels.getByRole('radio', { name: 'A1' })).toBeChecked();
     const save = onboarded.getByRole('button', { name: 'Save' });
     await expect(save).toBeDisabled();
+    await expectPinned(onboarded, `/en/learn/${SECOND_COURSE.lang}`);
 
     // The radio is sr-only, so its own label takes the click.
     await levels.getByText('B1', { exact: true }).click();

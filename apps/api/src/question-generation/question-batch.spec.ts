@@ -1,6 +1,4 @@
-import { readFileSync } from 'node:fs';
-import { join } from 'node:path';
-import { type GeneratedItem, LEVELS, QUESTION_CATEGORIES, type QuestionCategory } from '@ft/shared';
+import { type GeneratedItem, LEVELS, type QuestionCategory } from '@ft/shared';
 import { describe, expect, it } from 'vitest';
 
 import { type Cell, freshItems, toRows } from './question-batch';
@@ -13,17 +11,16 @@ const item = (question: string, readText?: string): GeneratedItem => ({
   ...(readText && { readText }),
 });
 
-// vitest runs with the package as cwd.
-const ITEM_BANK = readFileSync(join(process.cwd(), '../..', 'docs/ITEM_BANK.md'), 'utf8');
-
-/** A row of the authoring guide's table, A1 to C2, the top of a range like `60 to 75`. */
-function documentedLimits(category: QuestionCategory): number[] {
-  const row = ITEM_BANK.split('\n').find((line) => line.startsWith(`| \`${category}\` |`));
-  return (row ?? '')
-    .split('|')
-    .slice(2, -1)
-    .map((cell) => Number(cell.trim().split(' ').at(-1)));
-}
+/**
+ * The table in docs/ITEM_BANK.md section 3, A1 to C2, reading at the top of each
+ * range. Written out rather than read from the doc: the image CI tests in ships
+ * no docs. Change both together.
+ */
+const DOCUMENTED_LIMITS: Record<QuestionCategory, number[]> = {
+  vocabulary: [30, 45, 45, 45, 60, 60],
+  grammar: [30, 45, 60, 60, 75, 90],
+  reading: [75, 105, 90, 120, 165, 180],
+};
 
 describe('freshItems', () => {
   it('drops a question the cell already has, whatever its case or spacing', () => {
@@ -75,14 +72,17 @@ describe('toRows', () => {
     );
   });
 
-  it.each(QUESTION_CATEGORIES)(
+  it.each(Object.entries(DOCUMENTED_LIMITS))(
     'gives %s the limits of docs/ITEM_BANK.md, reading at the top of each range',
-    (category) => {
+    (category, documented) => {
       const limits = LEVELS.map(
-        (level) => toRows({ lang: 'de', level, category }, [item('Er ___.')])[0].timeLimitS,
+        (level) =>
+          toRows({ lang: 'de', level, category: category as QuestionCategory }, [
+            item('Er ___.'),
+          ])[0].timeLimitS,
       );
 
-      expect(limits).toEqual(documentedLimits(category));
+      expect(limits).toEqual(documented);
     },
   );
 });

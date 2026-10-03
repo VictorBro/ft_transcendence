@@ -1,5 +1,6 @@
 import type { Locator, Page } from '@playwright/test';
 
+import { expectPinned } from '../support/layout';
 import {
   courseLevel,
   enrol,
@@ -382,6 +383,8 @@ test.describe('placement exam', () => {
     for (const [index, entry] of report.entries()) {
       await expectAnswer(answers(onboarded).nth(index), entry);
     }
+    // A long report scrolls inside its pane, never the page around it.
+    await expectPinned(onboarded, PLACEMENT);
   });
 
   /**
@@ -399,6 +402,7 @@ test.describe('placement exam', () => {
     await onboarded.getByRole('button', { name: 'Not your level?' }).click();
     const save = onboarded.getByRole('button', { name: 'Save' });
     await expect(save).toBeDisabled();
+    await expectPinned(onboarded, PLACEMENT);
     // The radio is sr-only, so its own label takes the click.
     await onboarded
       .getByRole('group', { name: 'Your level' })
