@@ -82,6 +82,16 @@ describe('content/outlines', () => {
       });
       expect(offenders, name).toEqual([]);
     });
+
+    // Spec fixtures use `<lang>-test-` ids and delete them after each run (#79),
+    // so an authored lesson with that prefix would be wiped with them.
+    it('uses no id with the reserved <lang>-test- prefix', () => {
+      if (!outline) return;
+      const reserved = outline.entries
+        .map((entry) => entry.id)
+        .filter((id) => id.startsWith(`${outline.lang}-test-`));
+      expect(reserved, name).toEqual([]);
+    });
   });
 
   // Ids are permanent: Lesson's primary key, and what results point at. A level

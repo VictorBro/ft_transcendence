@@ -380,6 +380,13 @@ describe('LessonCardSchema', () => {
     ).toBe(false);
     expect(LessonCardSchema.safeParse({ ...card, day: '12/10/2026' }).success).toBe(false);
   });
+
+  // The same text rules as the lesson files, so the API never serves what CI rejects.
+  it('holds title and summary to the lesson file limits', () => {
+    expect(LessonCardSchema.safeParse({ ...card, title: 'Le, la, les ' }).success).toBe(false);
+    expect(LessonCardSchema.safeParse({ ...card, title: 'a'.repeat(81) }).success).toBe(false);
+    expect(LessonCardSchema.safeParse({ ...card, summary: 'a'.repeat(201) }).success).toBe(false);
+  });
 });
 
 describe('LessonQuerySchema', () => {

@@ -324,8 +324,8 @@ export const LessonCardSchema = z
     kind: LessonKindSchema,
     topic: TopicSchema.nullable(),
     theme: ThemeSchema.nullable(),
-    title: z.string().min(1),
-    summary: z.string().min(1),
+    title: LessonTitleSchema,
+    summary: LessonSummarySchema,
     status: LessonStatusSchema,
     /** The best score. Null, like day and finishedAt, for a lesson never started. */
     score: ScoreSchema.nullable(),
