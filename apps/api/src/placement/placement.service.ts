@@ -34,7 +34,8 @@ export class PlacementService {
   /**
    * Processes a recorded or timed-out answer for the active session.
    * Adds the answer to the session, increments total answers, adjusts adaptive level progress,
-   * updates the user level if the exam ended, and either saves and returns the final result if completed or fetches the next question.
+   * writes the verdict to the course if the exam ended and the result is applied, and either saves
+   * and returns the final result if completed or fetches the next question.
    *
    * @throws ConflictException If the question has already been answered (`placement.invalidSession`).
    */
@@ -53,16 +54,12 @@ export class PlacementService {
     });
     session.totalAnswered += 1;
     this.progressService.adjustSessionFromAnswer(choice, question, session);
-    if (session.ended) {
-      if (session.level === null) {
-        throw new ConflictException('placement.invalidSession');
-      }
-      const targetLevel = LEVELS[Math.max(0, Math.min(session.level, LEVELS.length - 1))];
-      await this.coursesService.setLevel(userId, session.lang, { level: targetLevel });
-    }
 
     const result = await this.progressService.getResult(session);
     if (result !== undefined) {
+      if (result.applied) {
+        await this.coursesService.setLevel(userId, session.lang, { level: result.targetLevel });
+      }
       await this.sessionService.saveExamSession(userId, session);
       return result;
     }
@@ -102,11 +99,12 @@ export class PlacementService {
   }
 
   /**
-   * Initializes and starts a new placement exam session for the user.
-   * Verifies that no active placement session exists and that onboarding is completed.
+   * Initializes and starts a new placement exam session for the user, replacing a finished one.
+   * Verifies that no run is still being answered and that onboarding is completed.
    *
-   * @throws ConflictException If a placement session is already in progress (`placement.inProgress`)
+   * @throws ConflictException If a run is still being answered, in any language (`placement.inProgress`)
    *   or onboarding has not been completed (`placement.onboardingIncomplete`).
+   * @throws NotFoundException If the level has nothing to serve (`placement.poolExhausted`).
    */
   async startPlacement(userId: string, dto: StartPlacementDto): Promise<PlacementQuestion> {
     const lockToken = await this.sessionService.acquireLock(userId);
@@ -115,8 +113,8 @@ export class PlacementService {
     }
 
     try {
-      const existing = await this.sessionService.hasActiveSession(userId);
-      if (existing) {
+      // Live in any language: a second tab must not wipe a run someone is answering.
+      if (await this.sessionService.hasLiveSession(userId)) {
         throw new ConflictException('placement.inProgress');
       }
 
@@ -124,8 +122,6 @@ export class PlacementService {
       if (!courses.some((course) => course.lang === dto.lang)) {
         throw new ConflictException('placement.onboardingIncomplete');
       }
-
-      await this.sessionService.deleteSession(userId);
 
       const examSession: ExamSession = {
         evalId: randomUUID(),
@@ -144,13 +140,9 @@ export class PlacementService {
       };
 
       const newQuestion = await this.questionService.getNewPlacementQuestion(userId, examSession);
+      // A retake overwrites the finished run only now, so one that cannot draw keeps its report.
       await this.sessionService.saveExamSession(userId, examSession);
       return newQuestion;
-    } catch (error) {
-      if (error instanceof NotFoundException && error.message === 'placement.poolExhausted') {
-        await this.sessionService.deleteSession(userId);
-      }
-      throw error;
     } finally {
       await this.sessionService.releaseLock(userId, lockToken);
     }

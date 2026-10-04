@@ -106,16 +106,27 @@ describe('PlacementSessionService', () => {
       expect(redis.ttl.get(ANSWERS)).toBe(3600);
     });
 
-    it('is active from the first save until it is deleted', async () => {
-      await expect(service.hasActiveSession('u-1')).resolves.toBe(false);
+    it('is live from the first save until it ends or is deleted', async () => {
+      await expect(service.hasLiveSession('u-1')).resolves.toBe(false);
 
       await service.saveExamSession('u-1', examSession({ answers, totalAnswered: 2 }));
-      await expect(service.hasActiveSession('u-1')).resolves.toBe(true);
+      await expect(service.hasLiveSession('u-1')).resolves.toBe(true);
+
+      // Still stored, for the report, but no longer in the way of a retake.
+      await service.saveExamSession('u-1', examSession({ answers, totalAnswered: 2, ended: true }));
+      await expect(service.hasLiveSession('u-1')).resolves.toBe(false);
 
       await service.deleteSession('u-1');
-      await expect(service.hasActiveSession('u-1')).resolves.toBe(false);
       await expect(service.loadExamSession('u-1')).resolves.toBeNull();
       expect(redis.data.has(ANSWERS)).toBe(false);
+    });
+
+    // Saved before the field existed: nothing says it is being answered.
+    it('is not live when stored without an ended field', async () => {
+      await service.saveExamSession('u-1', examSession());
+      delete (redis.data.get(RUN) as Record<string, string>).ended;
+
+      await expect(service.hasLiveSession('u-1')).resolves.toBe(false);
     });
 
     // A run saved before the field existed must keep loading, not turn into a 409.

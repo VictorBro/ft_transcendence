@@ -40,6 +40,11 @@ export const ERROR_CODES = [
   /** One course per language, which is what UserLevel's unique index enforces. */
   'course.alreadyStarted',
   'course.notFound',
+  /** The course exists but the placement exam has not set its level yet. */
+  'course.notPlaced',
+  'lesson.notFound',
+  /** Not a whole number from 0 to 100. */
+  'lesson.invalidScore',
   'placement.inProgress',
   'placement.invalidChoice',
   'placement.invalidSession',

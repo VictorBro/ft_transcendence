@@ -7,10 +7,13 @@ import {
   DEFAULT_LOCALE,
   DisableTwoFactorSchema,
   EnableTwoFactorSchema,
+  FinishLessonSchema,
   HealthResponseSchema,
   LocaleSchema,
   LoginSchema,
   PlacementQuestionSchema,
+  PlacementReportEntrySchema,
+  PlacementResultSchema,
   PublicUserSchema,
   SecondFactorSchema,
   SignUpFormSchema,
@@ -193,6 +196,7 @@ describe('course', () => {
 
 describe('placement', () => {
   const question = {
+    lang: 'de',
     questionId: 'b7c1e4a2-5d38-4f6b-9a02-1e7c8d3f5b64',
     category: 'grammar',
     level: 'B1',
@@ -202,6 +206,16 @@ describe('placement', () => {
     remainingS: 27,
     progress: { answered: 2, maxQuestionsRemaining: 6 },
   };
+  const entry = {
+    questionId: question.questionId,
+    level: 'B1',
+    question: question.question,
+    options: question.options,
+    chosen: 'hat',
+    correct: 'ist',
+    wasCorrect: false,
+  };
+  const result = { lang: 'de', targetLevel: 'B2', applied: true, report: [entry] };
 
   it('serves a question with no answer attached', () => {
     expect(Object.keys(PlacementQuestionSchema.shape)).not.toContain('answer');
@@ -260,6 +274,44 @@ describe('placement', () => {
     ).toBe(false);
   });
 
+  // A page for one language has to tell another language's run from its own.
+  it('names the language of the run on both payloads', () => {
+    expect(PlacementQuestionSchema.safeParse({ ...question, lang: undefined }).success).toBe(false);
+    expect(PlacementResultSchema.safeParse(result).success).toBe(true);
+    expect(PlacementResultSchema.safeParse({ ...result, lang: undefined }).success).toBe(false);
+  });
+
+  it('rejects a language nobody can learn on both payloads', () => {
+    expect(PlacementQuestionSchema.safeParse({ ...question, lang: 'es' }).success).toBe(false);
+    expect(PlacementResultSchema.safeParse({ ...result, lang: 'es' }).success).toBe(false);
+  });
+
+  it('rejects a result without a level', () => {
+    expect(PlacementResultSchema.safeParse({ ...result, targetLevel: null }).success).toBe(false);
+  });
+
+  // Absent would read as not applied, telling a placed learner their level was kept.
+  it('requires a result to say whether its verdict was applied', () => {
+    expect(PlacementResultSchema.parse({ ...result, applied: false }).applied).toBe(false);
+    expect(PlacementResultSchema.safeParse({ ...result, applied: undefined }).success).toBe(false);
+  });
+
+  it('rejects a report entry without its question level, or with an unknown one', () => {
+    expect(PlacementReportEntrySchema.parse(entry).level).toBe('B1');
+    expect(PlacementReportEntrySchema.safeParse({ ...entry, level: undefined }).success).toBe(
+      false,
+    );
+    expect(PlacementReportEntrySchema.safeParse({ ...entry, level: 'D1' }).success).toBe(false);
+  });
+
+  it('keeps the text of a reading entry, and rejects an empty or null one', () => {
+    const reading = { ...entry, readText: 'Ein kurzer Text zum Lesen.' };
+
+    expect(PlacementReportEntrySchema.parse(reading)).toEqual(reading);
+    expect(PlacementReportEntrySchema.safeParse({ ...entry, readText: '' }).success).toBe(false);
+    expect(PlacementReportEntrySchema.safeParse({ ...entry, readText: null }).success).toBe(false);
+  });
+
   it('reads an explicit null choice as a timeout', () => {
     const parsed = SubmitAnswerSchema.parse({ questionId: question.questionId, choice: null });
 
@@ -307,6 +359,7 @@ describe('validation messages', () => {
     ['SecondFactorSchema', SecondFactorSchema, { code: 'neither' }],
     ['EnableTwoFactorSchema', EnableTwoFactorSchema, { code: '12' }],
     ['DisableTwoFactorSchema', DisableTwoFactorSchema, { password: '' }],
+    ['FinishLessonSchema', FinishLessonSchema, { score: 70.5 }],
   ] as const;
 
   it.each(rejected)('%s reports codes, not prose', (_name, schema, input) => {

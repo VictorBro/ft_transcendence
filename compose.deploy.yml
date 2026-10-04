@@ -81,8 +81,8 @@ services:
       # No fallback: inheriting a default would sign production cookies with a
       # secret that is public in this repo.
       SESSION_SECRET: ${SESSION_SECRET:?set an explicit SESSION_SECRET, at least 32 characters}
-      # No fallback: fixture serves English under every language, so it must be
-      # an explicit choice, never inherited.
+      # No fallback: fixture generates no questions, so a learner who has seen a
+      # level gets only repeats. It must be an explicit choice, never inherited.
       LLM_PROVIDER: ${LLM_PROVIDER:?set LLM_PROVIDER to fixture or gemini}
       LLM_API_KEY: ${LLM_API_KEY:-}
       LLM_MODEL: ${LLM_MODEL:-}

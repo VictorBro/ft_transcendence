@@ -47,8 +47,8 @@ WAIT_TIMEOUT ?= 300
 STUDIO_PORT  ?= 5555
 REDIS_UI_PORT ?= 5540
 REPORT_PORT  ?= 9323
-# Matches the identities e2e/tests/auth.spec.ts signs up, so test-e2e can clear
-# them afterwards.
+# Matches identity() in e2e/support/session.ts, so the suite can clear the
+# accounts it signs up afterwards.
 E2E_EMAIL_PREFIX ?= browser-
 
 # Where Playwright points its browser. Inside the devcontainer caddy's
@@ -93,7 +93,7 @@ else
 DB_ENV := -e DATABASE_URL='$(DEFAULT_DATABASE_URL)'
 endif
 
-.PHONY: all run dev up build down logs ps shell test test-e2e lint format typecheck report \
+.PHONY: all run dev up build down logs ps shell test test-e2e playwright lint format typecheck report \
         migrate migrate-new seed db-ready studio redis-ui reset-db ci stores-up clean certs tooling-image doctor help \
 				check-devcontainer
 
@@ -138,7 +138,7 @@ db-ready: .EXTRA_PREREQS :=
 all:
 	@$(MAKE) --no-print-directory ci
 	@$(MAKE) --no-print-directory run
-	@$(MAKE) --no-print-directory test-e2e
+	@$(MAKE) --no-print-directory playwright
 	@printf '\n  ALL GREEN: checks, build, e2e (console gate included) all passed.\n'
 	@printf '  What you commit now will pass CI.\n'
 	@printf '  The PRODUCTION stack is now running at https://localhost\n'
@@ -223,10 +223,15 @@ test: ## Unit tests across the workspace
 
 test-e2e: ## Playwright against the production stack (starts it if needed)
 	@$(MAKE) --no-print-directory up
+	@$(MAKE) --no-print-directory playwright
+
+# The suite alone, for a caller that has just brought the stack up: `all` gets
+# it from `run`, and a second `up` is one more build and health wait.
+playwright:
 	pnpm --filter @ft/e2e exec playwright install chromium
 	@# The accounts the browser suite signs up are real rows. Removing them keeps
 	@# repeated runs from filling the database an evaluator is going to look at.
-	@# The prefix is set in e2e/tests/auth.spec.ts. RecoveryCode cascades.
+	@# The prefix is set by identity() in e2e/support/session.ts. RecoveryCode cascades.
 	@# stdin from /dev/null so Playwright skips its "To open last HTML report"
 	@# hint, which it gates on isTTY. The command it prints only works from e2e/;
 	@# `make report` works anywhere.

@@ -56,7 +56,10 @@ export function Shell({ brand, nav, fill = false, footer, children }: ShellProps
         screen and the panes' lg:overflow-y-auto never gets a box to scroll in.
         Setting it here means a page can size itself to the pane with h-full and
         own its own scrolling. `flex flex-col` is for the pages that fill this
-        box with a single pane and centre inside it.
+        box with a single pane and centre inside it. A pane that scrolls also
+        needs `relative`: an sr-only label is absolutely positioned, and with
+        no positioned ancestor it escapes the pane and makes the whole page
+        scroll, header and footer included.
       */}
       <main
         className={`${CONTAINER} flex-1 ${fill ? 'flex min-h-0 flex-col pt-8 pb-4' : 'py-8 sm:py-12'}`}

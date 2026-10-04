@@ -1,9 +1,9 @@
 {
   "SessionNav": {
     "accountNav": "Account",
-    "profile": "Profile",
     "signIn": "Sign in",
-    "createAccount": "Create account"
+    "createAccount": "Create account",
+    "profile": "Profile"
   },
   "LanguageSwitcher": {
     "label": "Language",
@@ -43,10 +43,11 @@
   "Course": {
     "title": "Course",
     "heading": "{language}",
-    "level": "Level",
+    "level": "Course level",
+    "changeLevel": "Change level",
     "dailyGoal": "Daily goal",
     "minutesPerDay": "{minutes} min",
-    "retakePlacement": "Retake the placement test",
+    "takePlacement": "Take the placement test",
     "roadmapSoon": "Your roadmap will appear here",
     "practice": "Practice",
     "thisCourse": "This course"
@@ -54,7 +55,7 @@
   "Onboarding": {
     "title": "Get started",
     "chooseCourseHeading": "What do you want to learn?",
-    "chooseCourseIntro": "Pick a language and how long you want to practise each day. The pace can be changed later.",
+    "chooseCourseIntro": "Pick a language and how long you want to practise each day. You can change the pace later.",
     "languageLegend": "Language to learn",
     "goalLegend": "Daily goal",
     "goalMinutes": "{minutes} min",
@@ -62,7 +63,6 @@
     "chooseLevelIntro": "Take the placement test, or set your level yourself if you already know it.",
     "takeTest": "Take the placement test",
     "setLevelMyself": "I already know my level",
-    "levelLegend": "Level",
     "confirmLevel": "Start learning",
     "language": {
       "en": "English",
@@ -70,25 +70,32 @@
       "de": "Deutsch"
     },
     "dailyGoalSummary": "Daily goal: {minutes} min",
-    "noNewLanguage": "No new language to add for now.",
+    "noNewLanguage": "You are already learning every language we offer.",
     "backToCourse": "Back to my {language} course",
     "languageInSentence": {
       "en": "English",
       "fr": "French",
       "de": "German"
     },
-    "levelTile": {
-      "A0": "You are starting from scratch. Your lessons will aim at level A1.",
-      "A1": "You manage simple phrases. Your lessons will aim at level A2.",
-      "A2": "You handle everyday exchanges. Your lessons will aim at level B1.",
-      "B1": "You hold a conversation on familiar topics. Your lessons will aim at level B2.",
-      "B2": "You express yourself comfortably on a range of topics. Your lessons will aim at level C1.",
-      "C1": "You express yourself fluently, including on complex topics. Your lessons will aim at level C2.",
-      "C2": "You have mastered the language. Your lessons will maintain and refine it."
-    },
+    "back": "Back"
+  },
+  "Level": {
+    "legend": "Your level",
     "ladderYou": "You",
     "ladderGoal": "Goal",
-    "back": "Back"
+    "description": {
+      "A0": "You are starting from scratch.",
+      "A1": "You manage simple phrases.",
+      "A2": "You handle everyday exchanges.",
+      "B1": "You hold a conversation on familiar topics.",
+      "B2": "You express yourself comfortably on a range of topics.",
+      "C1": "You express yourself fluently, including on complex topics.",
+      "C2": "You have mastered the language."
+    },
+    "lessonsAt": "Your lessons will be at {level}.",
+    "lessonsAtTop": "Your lessons will maintain and refine it.",
+    "save": "Save",
+    "cancel": "Cancel"
   },
   "ComingSoon": {
     "stillInDevelopment": "This mode is still in development. Check back soon."
@@ -188,7 +195,12 @@
     },
     "course": {
       "alreadyStarted": "You have already started a course in that language",
-      "notFound": "You have no course in that language yet"
+      "notFound": "You have no course in that language yet",
+      "notPlaced": "Choose your level first to start this course"
+    },
+    "lesson": {
+      "notFound": "That lesson does not exist",
+      "invalidScore": "The score must be a whole number from 0 to 100"
     },
     "placement": {
       "inProgress": "A placement test is already running. Finish it first.",
@@ -253,5 +265,37 @@
     "disabledStatus": "Two factor authentication is off.",
     "working": "Working…",
     "setUp": "Set up"
+  },
+  "Placement": {
+    "title": "Placement test",
+    "startHeading": "Find your level",
+    "startDescription": "Questions on vocabulary, grammar and reading in {language}. The test adapts to your answers and stops as soon as it knows your level. Each question is timed.",
+    "startCurrent": "Your lessons are at {level} now. The test sets a new level, and you can still change it afterwards.",
+    "startButton": "Start the test",
+    "back": "Back",
+    "optionLabel": "Answer options",
+    "timeLeft": "Seconds left",
+    "quitButton": "Quit the test",
+    "quitConfirm": "Quit now? Your answers so far will be lost.",
+    "quitConfirmYes": "Quit",
+    "quitConfirmNo": "Keep going",
+    "resultHeading": "Your result",
+    "score": "{correct} of {total} correct",
+    "allTimedOut": "Time ran out on every question, so your course stays at {level}.",
+    "allTimedOutNoLevel": "Time ran out on every question, so no level was set. Retake the test, or choose your level yourself.",
+    "continueButton": "Continue",
+    "backToCourse": "Back to course",
+    "chooseLevel": "Choose your level",
+    "overrideButton": "Not your level?",
+    "retakeButton": "Retake the test",
+    "answersHeading": "Your latest exam result",
+    "answersHeadingLevel": "Your latest exam result – {level}",
+    "showText": "Show the text",
+    "yourAnswer": "Your answer",
+    "correctAnswer": "Correct answer",
+    "noAnswer": "Out of time",
+    "correct": "Correct",
+    "incorrect": "Incorrect",
+    "questionLevel": "Level {level}"
   }
 }

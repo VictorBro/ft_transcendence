@@ -111,12 +111,15 @@ Time limits rise with the level and with how much there is to read. What the see
 
 | Category | A1 | A2 | B1 | B2 | C1 | C2 |
 |---|---|---|---|---|---|---|
-| `vocabulary` | 30 | 30 | 45 | 45 | 60 | 60 |
+| `vocabulary` | 30 | 45 | 45 | 45 | 60 | 60 |
 | `grammar` | 30 | 45 | 60 | 60 | 75 | 90 |
-| `reading` | 60 to 75 | 75 to 90 | 90 | 105 to 120 | 120 to 165 | 150 to 180 |
+| `reading` | 60 to 75 | 75 to 105 | 90 | 105 to 120 | 120 to 165 | 150 to 180 |
 
-Reading is a range because the passage length drives it. Match a neighbour of the same length
-rather than picking a number.
+Reading is a range because the amount of text drives it: the passage and the four options, since
+long options take reading too. Match a neighbour with the same amount rather than picking a
+number, and compare characters rather than words: German compounds make a passage look shorter
+than it reads. A generated question gets its limit from this table, reading at the top of the
+range, never from the model.
 
 Write plausible wrong answers. A distractor nobody would pick makes the question free.
 
@@ -153,7 +156,10 @@ comparison_and_quantity    information_structure_and_pragmatics
 Vocabulary and reading items use the closest fit, or
 `information_structure_and_pragmatics`. The same list labels grammar lessons (`Lesson.topic`), so a
 grammar item and the lesson that teaches it speak the same language. The other lesson kinds carry
-a `theme` instead (see [LESSONS.md](LESSONS.md)).
+a `theme` instead (see [LESSONS.md](LESSONS.md)). Generated items are held to the list too:
+vocabulary under `VOCABULARY_TOPICS` in `packages/shared/src/schemas/item.ts` (the word classes,
+plus `information_structure_and_pragmatics` for set phrases), reading always under
+`information_structure_and_pragmatics`.
 
 ---
 
@@ -199,8 +205,9 @@ editing a question in the JSON file changes the row instead of creating a second
 
 A learner is not asked the same question twice: the draw excludes every question already tied to
 that user through `UserSeenQuestion`. It is keyed per user and not per run, so a retake cannot
-serve an old question either. The single exception is an LLM outage, step 3 of the cascade in
-[PRODUCT_ARCHITECTURE.md](PRODUCT_ARCHITECTURE.md) §1.2. Table detail is in §7.2 there.
+serve an old question either. The single exception is a cell the LLM could not refill in time
+(§6), step 3 of the cascade in [PRODUCT_ARCHITECTURE.md](PRODUCT_ARCHITECTURE.md) §1.2. Table
+detail is in §7.2 there.
 
 There is deliberately no difficulty score, no served/correct counters and no calibration. Those
 would need hundreds of answers per question before they meant anything, and this platform will
@@ -211,11 +218,20 @@ assumes it works.
 
 ## 6. When the bank runs dry
 
-A learner who exhausts a cell is never blocked: the app generates a question in the same shape as
-above, validates it, saves it with no `sourceId` and serves it. It stays, so the next
-learner to reach that cell gets it from the bank. **The bank grows as it is used**, which is why
-90 authored questions per language is enough. The full cascade, including what happens when the
-LLM is down, is in [PRODUCT_ARCHITECTURE.md](PRODUCT_ARCHITECTURE.md) §1.2.
+A learner is never blocked. When a draw finds a learner down to 3 unseen questions in a cell
+(language, level, category), the API asks the LLM for a batch for that cell in the background, and
+the draw does not wait for it: 13 grammar questions, one per topic, 10 vocabulary questions, or 5
+reading questions, each on its own passage. The batch is checked against `generatedBatchSchema`,
+questions the cell already has are dropped, and the rest are saved with no `sourceId`, the cell's
+level and the time limit from §2. They stay, so the next learner to reach that cell gets them from
+the bank. **The bank grows as it is used**, which is why 90 authored questions per language is
+enough.
+
+A batch is retried once when a retry can help (rate limit, server error, a reply that breaks the
+schema), and a cell whose batch failed or added nothing is left alone for 10 minutes. A learner
+with nothing unseen left meanwhile gets the question they saw longest ago. The full cascade is in
+[PRODUCT_ARCHITECTURE.md](PRODUCT_ARCHITECTURE.md) §1.2. The code is in
+`apps/api/src/question-generation/`.
 
 ---
 
@@ -229,3 +245,10 @@ sentence sounds natural rather than translated.
 
 The README's Resources section has to record that the LLM drafted them and who verified them.
 The subject requires it.
+
+To see what the model writes for one level, run a real restock in every language and read what it
+stored. It writes to `DATABASE_URL` and, with `gemini`, spends a call per cell:
+
+```bash
+LLM_PROVIDER=gemini pnpm --filter @ft/api generation:try b1 vocabulary grammar
+```

@@ -25,7 +25,7 @@
       "level": "A1",
       "topic": "verb_usage",
       "question": "Ich ___ jeden Morgen um sieben Uhr auf.",
-      "options": ["stehe", "gehe", "komme", "mache"],
+      "options": ["stehe", "gehe", "komme", "schlafe"],
       "answer": "stehe",
       "timeLimitS": 30
     },
@@ -42,7 +42,7 @@
       "sourceId": "de-voca-0005",
       "level": "A1",
       "topic": "information_structure_and_pragmatics",
-      "question": "___ geht es dir? — Danke, gut!",
+      "question": "Hallo Anna, ___ geht es dir heute?",
       "options": ["Wie", "Was", "Wer", "Wo"],
       "answer": "Wie",
       "timeLimitS": 30
@@ -54,7 +54,7 @@
       "question": "Kannst du bitte den Tisch ___? Das Essen ist gleich fertig.",
       "options": ["decken", "stellen", "legen", "bauen"],
       "answer": "decken",
-      "timeLimitS": 30
+      "timeLimitS": 45
     },
     {
       "sourceId": "de-voca-0007",
@@ -63,7 +63,7 @@
       "question": "Mein Handy ist fast leer. Hast du ein ___ dabei?",
       "options": ["Ladekabel", "Feuerzeug", "Wörterbuch", "Portemonnaie"],
       "answer": "Ladekabel",
-      "timeLimitS": 30
+      "timeLimitS": 45
     },
     {
       "sourceId": "de-voca-0008",
@@ -72,7 +72,7 @@
       "question": "Die Prüfung war gar nicht schwer, sie war ziemlich ___.",
       "options": ["leicht", "schwach", "klein", "weich"],
       "answer": "leicht",
-      "timeLimitS": 30
+      "timeLimitS": 45
     },
     {
       "sourceId": "de-voca-0009",
@@ -81,7 +81,7 @@
       "question": "Beeil dich, sonst ___ wir den Bus!",
       "options": ["verpassen", "verlieren", "vergessen", "verlassen"],
       "answer": "verpassen",
-      "timeLimitS": 30
+      "timeLimitS": 45
     },
     {
       "sourceId": "de-voca-0010",
@@ -90,14 +90,14 @@
       "question": "Entschuldigung, können Sie das bitte ___? Ich habe es nicht verstanden.",
       "options": ["wiederholen", "wiedersehen", "widersprechen", "zurückgeben"],
       "answer": "wiederholen",
-      "timeLimitS": 30
+      "timeLimitS": 45
     },
     {
       "sourceId": "de-voca-0011",
       "level": "B1",
       "topic": "verb_usage",
       "question": "Ich muss noch einen Termin beim Zahnarzt ___.",
-      "options": ["vereinbaren", "bestellen", "einrichten", "besetzen"],
+      "options": ["vereinbaren", "verschreiben", "einrichten", "besetzen"],
       "answer": "vereinbaren",
       "timeLimitS": 45
     },
@@ -114,9 +114,9 @@
       "sourceId": "de-voca-0013",
       "level": "B1",
       "topic": "adjectives",
-      "question": "Vielen Dank für deine Hilfe, das ist wirklich ___ von dir.",
-      "options": ["nett", "froh", "stolz", "brav"],
-      "answer": "nett",
+      "question": "Du hast die Rechnung für uns alle bezahlt? Das ist wirklich ___ von dir.",
+      "options": ["großzügig", "geizig", "neugierig", "gemütlich"],
+      "answer": "großzügig",
       "timeLimitS": 45
     },
     {
@@ -132,9 +132,9 @@
       "sourceId": "de-voca-0015",
       "level": "B1",
       "topic": "prepositions_and_case",
-      "question": "Sie interessiert sich schon lange ___ Geschichte.",
-      "options": ["für", "an", "über", "um"],
-      "answer": "für",
+      "question": "Sie ärgert sich immer noch ___ den Fehler, den sie in der Prüfung gemacht hat.",
+      "options": ["über", "auf", "an", "um"],
+      "answer": "über",
       "timeLimitS": 45
     },
     {
@@ -169,7 +169,7 @@
       "level": "B2",
       "topic": "verb_usage",
       "question": "Der Roman ___ das Leben einer Familie über drei Generationen.",
-      "options": ["schildert", "bildet", "malt", "zeichnet"],
+      "options": ["schildert", "bildet", "malt", "verfasst"],
       "answer": "schildert",
       "timeLimitS": 45
     },
@@ -178,7 +178,7 @@
       "level": "B2",
       "topic": "information_structure_and_pragmatics",
       "question": "___ hat sich der ganze Aufwand gelohnt: Das Projekt wurde ein voller Erfolg.",
-      "options": ["Letztendlich", "Neuerdings", "Bekanntlich", "Keineswegs"],
+      "options": ["Letztendlich", "Neuerdings", "Vergeblich", "Keineswegs"],
       "answer": "Letztendlich",
       "timeLimitS": 45
     },
@@ -232,7 +232,7 @@
       "level": "C2",
       "topic": "nouns_and_determiners",
       "question": "Mit kaum verhohlener ___ kommentierte er den Erfolg seines Rivalen.",
-      "options": ["Missgunst", "Misshandlung", "Missernte", "Missweisung"],
+      "options": ["Missgunst", "Misshandlung", "Schadenfreude", "Missdeutung"],
       "answer": "Missgunst",
       "timeLimitS": 60
     },
@@ -241,7 +241,7 @@
       "level": "C2",
       "topic": "adjectives",
       "question": "Seine Argumentation war so ___, dass selbst Fachleute ihr kaum folgen konnten.",
-      "options": ["verschachtelt", "verschraubt", "verschnürt", "verschüttet"],
+      "options": ["verschachtelt", "verschlissen", "verschnürt", "verschüttet"],
       "answer": "verschachtelt",
       "timeLimitS": 60
     },
@@ -250,16 +250,16 @@
       "level": "C2",
       "topic": "verb_usage",
       "question": "Statt den Streit zu schlichten, hat sein Auftritt die Lage noch ___.",
-      "options": ["verschärft", "verschoben", "versetzt", "verstellt"],
-      "answer": "verschärft",
+      "options": ["zugespitzt", "zugeschnitten", "zugemutet", "zugetragen"],
+      "answer": "zugespitzt",
       "timeLimitS": 60
     },
     {
       "sourceId": "de-voca-0029",
       "level": "C2",
       "topic": "adjectives",
-      "question": "Seine Versprechungen erwiesen sich als ___: Nichts davon wurde eingehalten.",
-      "options": ["haltlos", "ratlos", "ahnungslos", "restlos"],
+      "question": "Die Vorwürfe gegen den Minister erwiesen sich als ___: Es gab keinerlei Beweise.",
+      "options": ["haltlos", "stichhaltig", "lückenlos", "ratlos"],
       "answer": "haltlos",
       "timeLimitS": 60
     },

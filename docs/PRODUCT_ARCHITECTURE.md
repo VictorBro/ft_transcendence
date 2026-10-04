@@ -22,7 +22,7 @@ sign up / log in  →  onboarding  →  placement   →    daily goal    →    
 | Step | What the learner sees | What the system does |
 |---|---|---|
 | **Onboarding** | Two questions: which language to learn, and a daily goal (10, 30 or 60 minutes). Repeated per language, so adding a second course starts here again | Creates a `UserLevel` row for that `(user, language)`. `level` stays null until placement sets it. No AI call. |
-| **Placement** | One question at a time, each with its own countdown, then a red and green report. Skippable by a learner who already knows their level, and overridable if they disagree with the result | Binary search over the six CEFR levels, in **our code**. Questions are multiple choice, so scoring is a string comparison, and the LLM is called only when the bank has nothing unseen left. Writes `UserLevel.level`. See §1.2 |
+| **Placement** | One question at a time, each with its own countdown, then a red and green report. Skippable by a learner who already knows their level, and overridable if they disagree with the result | Binary search over the six CEFR levels, in **our code**. Questions are multiple choice, so scoring is a string comparison, and the LLM restocks a cell in the background once a learner is down to 3 unseen questions in it. Writes `UserLevel.level`. See §1.2 |
 | **Daily goal** | Today's lessons from the level's syllabus: the ones that meet the goal, three extra, the streak and the level's progress. Nothing is locked: any lesson of the course language can be opened, and the all lessons page lists the whole level | Reads the seeded `Lesson` catalogue for (language, level) and the course's `LessonResult` rows, and proposes the lowest lessons not yet passed (§1.3). Writes nothing. No AI call. How the syllabus is sized and written is in [LESSONS.md](LESSONS.md) |
 | **Lesson** | Tutor explains the lesson, shows examples, then drills exercises one at a time. Each answer comes back corrected, with the mistakes named. **This is the next milestone**: until it ships, a stub page finishes a lesson with a typed score | Explanation is RAG-grounded and streamed. Each exercise and each correction is a structured JSON call. |
 | **Result** | The score, mistakes to review, and the lesson counted toward today's goal, pass or fail | Score computed **in code** from the `Exercise` rows. The course's `LessonResult` keeps the best score, and the streak moves when the goal becomes met. No AI call. |
@@ -80,14 +80,17 @@ counts as a wrong answer. Without that, a stalled tab is an unbounded test.
 B1 grammar question:
 
 1. **The bank**, excluding everything this learner has already been served (`UserSeenQuestion`).
-2. **Nothing unseen left in the cell, so generate one.** A structured LLM call, schema-validated,
-   written to `QuestionBank` with no `sourceId`, then served. It stays, so the next learner to
-   reach that cell gets it from step 1. **The bank grows as it is used**, and a null `sourceId`
-   is what marks the rows no human reviewed.
-3. **Generation failed** (API down or rate limited): serve the oldest question this learner has
-   seen in that cell. This is the one path that repeats a question, and it opens only while the
-   LLM is unreachable. A repeat after months is a weak measurement, and an abandoned exam is no
-   measurement at all.
+   Written rows, the ones with a `sourceId`, go first: a generated row is drawn only once the
+   learner has no unseen written row left in the cell.
+2. **Down to 3 unseen in the cell, so restock it in the background.** One structured LLM call
+   returns a batch for the cell (13 grammar, 10 vocabulary or 5 reading). It is schema-validated,
+   deduplicated against the cell and written to `QuestionBank` with no `sourceId`. The draw never
+   waits for it: the new rows reach this learner and the next ones through step 1. **The bank
+   grows as it is used**, and a null `sourceId` is what marks the rows no human reviewed.
+3. **Nothing unseen left** (generation failed, has not landed yet, or there is no key): serve the
+   question this learner saw longest ago at that level, never one already asked in this run.
+   This is the one path that repeats a question. A repeat after months is a weak measurement,
+   and an abandoned exam is no measurement at all.
 
 Bank first rather than generate every time buys three things. **Quality:** a seeded question was
 reviewed by a human once, a live one cannot be. **Cost:** near zero on the common path.
@@ -105,7 +108,9 @@ can see it, and is never the thing that judges.
 sets their level directly. A learner who disagrees with the result can change it on the spot. A
 retake is the same search run again, drawing against the same `UserSeenQuestion` rows, so it asks
 new questions unless step 3 fires. All three write through the same endpoint, and only the
-current level is stored, never a history of runs.
+current level is stored, never a history of runs. A run where every answer timed out writes
+nothing: a learner who walked away measured nothing, so the course keeps the level it had, or
+stays without one, and the result says so with `applied: false`.
 
 **The report is red and green.** At the end the learner sees every question they were asked,
 their answer in red and the correct one in green. No explanations: nothing in the bank holds one.
@@ -116,8 +121,8 @@ mistakes so far and the report live in Redis under the learner's session, with a
 the session and the run goes with it. Two things outlive it: the `UserSeenQuestion` rows, and the
 final level.
 
-**The whole run, drawn.** A thick border is an LLM call. There is one, and it is reached only
-when a learner has exhausted a cell.
+**The whole run, drawn.** A thick border is an LLM call. There is one, off the draw's path: a
+cell is restocked in the background once a learner is down to 3 unseen questions in it.
 
 ```mermaid
 flowchart TD
@@ -127,10 +132,11 @@ flowchart TD
 
     subgraph cascade["Drawing a question: a cascade, never a wall"]
         bank["1. The bank, excluding this<br/>learner's seen rows"]
-        gen["2. Generate one, save it to<br/>the bank, serve it"]
+        gen["2. Restock the cell in the background<br/><small>at 3 unseen or fewer, never waited for</small>"]
         lru["3. This learner's oldest<br/>seen question"]
-        bank -- "nothing unseen left" --> gen
-        gen -- "LLM down or 429" --> lru
+        bank -. "running low" .-> gen
+        gen -. "new rows" .-> bank
+        bank -- "nothing unseen left" --> lru
     end
 
     draw --> bank
@@ -145,7 +151,7 @@ flowchart TD
     passed --> over{"lo > hi?"}
     failed --> over
     over -- "no" --> probe
-    over -- "yes" --> result["One above the highest level passed, capped at C2<br/><small>written to UserLevel.level</small>"]
+    over -- "yes" --> result["One above the highest level passed<br/><small>capped at C2, written to UserLevel.level</small>"]
 
     classDef llm stroke-width:3px
     class gen llm
@@ -583,9 +589,9 @@ same way. Because the artifacts have opposite jobs:
 | Comparability | Not needed | The point: generating a fresh test every time would measure March and May with different rulers |
 
 The bank is placement's cache with per-user exclusion and a review gate, because its content is a
-measuring instrument rather than practice material. The two flows meet in cascade step 2: an
-exhausted level generates a fresh item exactly like an exercise, but writes it into the bank so
-it is excluded from that learner's next test and reused for everybody else's.
+measuring instrument rather than practice material. The two flows meet in cascade step 2: a
+cell running low gets a fresh batch exactly like an exercise set, but written into the bank, so
+everybody reuses it and each learner still meets each question only once.
 
 **Never embed user-generated content into the shared index.** One learner's practice text
 retrieved into another learner's lesson is a data leak, and a live one during a demo.
@@ -732,7 +738,7 @@ erDiagram
 | Table | Holds | Notes |
 |---|---|---|
 | `UserLevel` | userId, lang, level?, dailyGoal, streak, bestStreak, lastGoalDay?, xp, lastChallengeDay?, challengesDone | Unique `(userId, lang)`, so a user may learn two languages. Onboarding writes it with `level` null; placement fills it in, or a learner who skips sets it directly. The goal sizes today's plan and defines the streak, it never locks content. `streak`, `bestStreak` and `lastGoalDay` are the whole streak (§1.3); `xp`, `lastChallengeDay` and `challengesDone` are the gamification counters. All of them are per course, and finishing and goal changes take a row lock on this row (§9) |
-| `QuestionBank` | id, sourceId?, lang, level, topic, category, readText?, question, options, answer, timeLimitS | The reusable pool, seeded from `content/items/*.json` and grown at runtime when a learner exhausts a cell. `sourceId` is the authored id the seed matches on, and its absence marks a question the LLM wrote. Full spec in [ITEM_BANK.md](ITEM_BANK.md) |
+| `QuestionBank` | id, sourceId?, lang, level, topic, category, readText?, question, options, answer, timeLimitS | The reusable pool, seeded from `content/items/*.json` and grown at runtime when a learner runs low in a cell. `sourceId` is the authored id the seed matches on, and its absence marks a question the LLM wrote. Full spec in [ITEM_BANK.md](ITEM_BANK.md) |
 | `UserSeenQuestion` | userId, questionId | Unique `(userId, questionId)`. **The exposure record**, and the whole reason placement never repeats a question: the draw is a `NOT EXISTS` over these rows. It is per user and not per run, so a retake cannot serve an old question either |
 | `Lesson` | id, lang, level, position, kind, topic?, theme?, title, summary, brief | **The seeded catalogue, never written at runtime.** One row is one lesson of the syllabus, seeded from `content/lessons` by `db:seed`. `id` is the authored key: the language and a few English words, no level, so a lesson can move level and keep its results. It is permanent once on `main`. `kind` is grammar, vocabulary, functions or reading; `topic` (the `Topic` enum) is set exactly on grammar lessons, `theme` exactly on the others. **One language per lesson**: everything in it is in the course language, like a question in the bank. `title` and `summary` are for the learner, `brief` is for the tutor and never sent to the browser. Index on `(lang, level, position)`. Full guide in [LESSONS.md](LESSONS.md) |
 | `LessonResult` | userLevelId, lessonId, score, day, finishedAt | Primary key `(userLevelId, lessonId)`: **one row per course and lesson, with no history.** Every finish upserts it: `score` keeps the best, `day` is the learner's day of the latest finish, `finishedAt` its moment. No row means not started, a best of 70 or more means done, anything else failed. Today's count is the rows whose `day` is today |
