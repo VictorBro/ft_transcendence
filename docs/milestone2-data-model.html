@@ -66,6 +66,9 @@ table.t td.dif{color:var(--text-primary);font-weight:600}
 :root{--st-open:#3B6D11;--st-work:#BA7517;--st-closed:#534AB7}
 @media (prefers-color-scheme:dark){:root{--st-open:#97C459;--st-work:#EF9F27;--st-closed:#AFA9EC}}
 a.il.st-open,a.il.st-work,a.il.st-closed{white-space:nowrap}
+a.il.ready{border-radius:4px;padding:0 3px;box-shadow:0 0 0 1.5px var(--ready)}
+.stleg i.ready{width:12px;height:10px;border-radius:3px;background:none;box-shadow:0 0 0 1.5px var(--ready)}
+:root{--ready:#2B8A3E}@media (prefers-color-scheme:dark){:root{--ready:#7CC94A}}
 a.il.st-open::before,a.il.st-work::before,a.il.st-closed::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;margin:0 3px 1px 0;vertical-align:middle;background:var(--sc)}
 a.il.st-open{--sc:var(--st-open)}a.il.st-work{--sc:var(--st-work)}a.il.st-closed{--sc:var(--st-closed);text-decoration:line-through;text-decoration-thickness:1px}
 a.il.st-closed:hover{text-decoration:underline}
@@ -102,7 +105,7 @@ html{scroll-behavior:smooth}
 <div class="leg">
 <span class="m k-e jump" data-target="enums" role="link" tabindex="0">Enums + constants · #77 / #79</span><span class="m k-c jump" data-target="contract" role="link" tabindex="0">Shared contract · #77</span><span class="m k-f jump" data-target="content" role="link" tabindex="0">Content files · #77</span><span class="m k-q jump" data-target="checks" role="link" tabindex="0">CI checks + seed · #77 / #79</span><span class="m k-d jump" data-target="database" role="link" tabindex="0">Database · #78 / #79</span><span class="m k-a jump" data-target="api" role="link" tabindex="0">API schemas · #77</span>
 </div>
-<p class="stleg" id="stleg"><b>Issue status</b><span><i style="background:var(--st-open)"></i>open</span><span><i style="background:var(--st-work)"></i>in work (assigned or a PR linked)</span><span><i style="background:var(--st-closed)"></i>closed</span><span id="live">Snapshot of 4 October 2026, refreshed from GitHub on load.</span></p>
+<p class="stleg" id="stleg"><b>Issue status</b><span><i style="background:var(--st-open)"></i>open</span><span><i style="background:var(--st-work)"></i>in work (assigned or a PR linked)</span><span><i style="background:var(--st-closed)"></i>closed</span><span><i class="ready"></i>green frame: not blocked</span><span id="live">Snapshot of 4 October 2026, refreshed from GitHub on load.</span></p>
 <p class="m1note"><i aria-hidden="true"></i>Grey cards tagged "from milestone 1" are reused from the Onboarding milestone, not reimplemented.</p>
 
 <section class="g k-e" id="enums"><div class="gh"><i class="ti ti-list-details" aria-hidden="true"></i>Enums and constants<span class="def">defined in #77</span><span class="def">Prisma enums in #79</span></div>
@@ -209,11 +212,14 @@ html{scroll-behavior:smooth}
 const base='https://github.com/VictorBro/ft_transcendence/issues/';
 /* Title, state, assignees and linked PR of each issue, as of 4 October 2026.
    Replaced by the live state from GitHub (gh-status.js) when the page loads. */
-const ISSUES={76:{t:"docs: record the lesson, daily goal and streak decisions",s:"open",a:["VictorBro"],pr:[98,"VictorBro","open"]},77:{t:"feat(shared): lesson contracts and the content checks",s:"closed",a:["bastian-schnitzler"],pr:[103,"bastian-schnitzler","merged"]},78:{t:"feat: store the learner's time zone",s:"open",a:["luca-mattei"],pr:[109,"luca-mattei","open"]},79:{t:"feat(api): lesson tables, and seed the lessons on every stack",s:"open",a:[],pr:null},80:{t:"feat(api): roadmap rules as pure functions",s:"open",a:["VYAntares"],pr:null},81:{t:"feat(api): today and all lessons reads, with the lesson search",s:"open",a:[],pr:null},82:{t:"feat(api): finish a lesson, meet the goal, keep the streak",s:"open",a:[],pr:null},83:{t:"feat(api): an offline lesson generator",s:"open",a:[],pr:null},87:{t:"feat(web): the all lessons page, with advanced search",s:"open",a:[],pr:null},88:{t:"feat(content): outline the German lessons, A1 to C2",s:"open",a:[],pr:null},89:{t:"feat(content): outline the English lessons, A1 to C2",s:"open",a:[],pr:null},90:{t:"feat(content): outline the French lessons, A2 to C2",s:"open",a:["bastian-schnitzler"],pr:null},105:{t:"feat(content): outline the French A1 lessons",s:"open",a:["bastian-schnitzler"],pr:[107,"bastian-schnitzler","open"]}};
+const ISSUES={76:{t:"docs: record the lesson, daily goal and streak decisions",s:"open",a:["VictorBro"],b:0,pr:[98,"VictorBro","open"]},77:{t:"feat(shared): lesson contracts and the content checks",s:"closed",a:["bastian-schnitzler"],pr:[103,"bastian-schnitzler","merged"]},78:{t:"feat: store the learner's time zone",s:"open",a:["luca-mattei"],b:0,pr:[109,"luca-mattei","open"]},79:{t:"feat(api): lesson tables, and seed the lessons on every stack",s:"open",a:[],b:0,pr:null},80:{t:"feat(api): roadmap rules as pure functions",s:"open",a:["VYAntares"],b:0,pr:null},81:{t:"feat(api): today and all lessons reads, with the lesson search",s:"open",a:[],b:3,pr:null},82:{t:"feat(api): finish a lesson, meet the goal, keep the streak",s:"open",a:[],b:3,pr:null},83:{t:"feat(api): an offline lesson generator",s:"open",a:[],b:1,pr:null},87:{t:"feat(web): the all lessons page, with advanced search",s:"open",a:[],b:3,pr:null},88:{t:"feat(content): outline the German lessons, A1 to C2",s:"open",a:[],b:1,pr:null},89:{t:"feat(content): outline the English lessons, A1 to C2",s:"open",a:[],b:1,pr:null},90:{t:"feat(content): outline the French lessons, A2 to C2",s:"open",a:["bastian-schnitzler"],b:2,pr:null},105:{t:"feat(content): outline the French A1 lessons",s:"open",a:["bastian-schnitzler"],b:1,pr:[107,"bastian-schnitzler","open"]}};
 const STATUS_TEXT={open:'open',work:'in work',closed:'closed'};
 /* Closed, else in work when it has a PR or an assignee, else open. */
 const statusOf=i=>i.s==='closed'?'closed':((i.pr||i.a.length)?'work':'open');
-const hoverText=n=>{const i=ISSUES[n];if(!i)return '#'+n;return '#'+n+': '+i.t+', '+STATUS_TEXT[statusOf(i)]+(i.pr?' (PR #'+i.pr[0]+' '+i.pr[2]+')':'');};
+/* Ready to work on: still open and none of its blocking issues is open. */
+const isReady=i=>!!i&&i.s!=='closed'&&i.b===0;
+const blockText=i=>!i||i.s==='closed'||i.b==null?'':(i.b?', blocked by '+i.b+' open issue'+(i.b>1?'s':''):', not blocked');
+const hoverText=n=>{const i=ISSUES[n];if(!i)return '#'+n;return '#'+n+': '+i.t+', '+STATUS_TEXT[statusOf(i)]+blockText(i)+(i.pr?' (PR #'+i.pr[0]+' '+i.pr[2]+')':'');};
 const attr=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 document.querySelectorAll('.intro, .def, .ref span, .leg .m, .rel .d, .f, .gd').forEach(el=>{
   el.innerHTML=el.innerHTML.replace(/(^|[^\w&])#(\d+)\b/g,(m,p,n)=>p+'<a class="il" data-n="'+n+'" href="'+base+n+'">#'+n+'</a>');
@@ -223,6 +229,7 @@ function paintIssues(){
   document.querySelectorAll('a.il[data-n]').forEach(a=>{
     const i=ISSUES[a.dataset.n];
     a.classList.remove('st-open','st-work','st-closed');
+    a.classList.toggle('ready',isReady(i));
     if(!i){a.title='#'+a.dataset.n;return;}
     a.classList.add('st-'+statusOf(i));
     a.title=hoverText(a.dataset.n);
@@ -230,7 +237,7 @@ function paintIssues(){
 }
 paintIssues();
 window.ghStatus.then(live=>{
-  Object.keys(live).forEach(n=>{const g=live[n];ISSUES[n]={t:g.t,s:g.s,a:g.a,pr:g.pr||(ISSUES[n]&&ISSUES[n].pr)||null};});
+  Object.keys(live).forEach(n=>{const g=live[n];ISSUES[n]={t:g.t,s:g.s,a:g.a,b:g.b,pr:g.pr||(ISSUES[n]&&ISSUES[n].pr)||null};});
   paintIssues();
   document.getElementById('live').textContent='Live from GitHub.';
 }).catch(()=>{document.getElementById('live').textContent='GitHub could not be reached: snapshot of 4 October 2026.';});

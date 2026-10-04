@@ -1,10 +1,11 @@
 /* Live issue state for the docs pages, from the public GitHub API.
-   window.ghStatus resolves to {number: {s, a, t, pr}}:
+   window.ghStatus resolves to {number: {s, a, t, pr, b}}:
      s  issue state, "open" or "closed"
      a  assignee logins
      t  issue title
      pr [number, author, "merged" | "open" | "closed"] of the PR that closes the issue
         (merged first, then open, then the newest), or null
+     b  open issues blocking it (GitHub's issue dependencies), null if unknown
    A PR counts as linked when its body says "closes #N", "fixes #N" or "resolves #N",
    the same keywords GitHub uses for the Development panel.
    Unauthenticated calls are limited to 60 an hour, so the result is cached for
@@ -12,7 +13,7 @@
    then keep the snapshot they ship with. */
 (function(){
   var REPO='VictorBro/ft_transcendence',API='https://api.github.com/repos/'+REPO;
-  var KEY='ftt-gh-status-v1',TTL=5*60*1000;
+  var KEY='ftt-gh-status-v2',TTL=5*60*1000;
   var CLOSES=/\b(?:close[sd]?|fix(?:e[sd])?|resolve[sd]?)\s*:?\s+#(\d+)\b/gi;
   var RANK={merged:0,open:1,closed:2};
 
@@ -37,7 +38,8 @@
     var d={};
     res[0].forEach(function(g){
       if(g.pull_request)return;
-      d[g.number]={s:g.state,a:(g.assignees||[]).map(function(u){return u.login;}),t:g.title,pr:null};
+      var dep=g.issue_dependencies_summary;
+      d[g.number]={s:g.state,a:(g.assignees||[]).map(function(u){return u.login;}),t:g.title,pr:null,b:dep?dep.blocked_by:null};
     });
     res[1].forEach(function(p){
       var pr=[p.number,p.user.login,p.merged_at?'merged':p.state],seen={},m;

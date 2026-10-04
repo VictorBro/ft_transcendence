@@ -13,13 +13,13 @@
   --font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   --font-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
   --open:#3B6D11;--open-bg:#EAF3DE;--closed:#534AB7;--closed-bg:#EEEDFE;
-  --st-open:#3B6D11;--st-open-bg:#F1F7EA;--st-work:#BA7517;--st-work-bg:#FDF4E4;--st-closed:#534AB7;--st-closed-bg:#F3F2FD;
+  --ready:#2B8A3E;--st-open:#3B6D11;--st-open-bg:#F1F7EA;--st-work:#BA7517;--st-work-bg:#FDF4E4;--st-closed:#534AB7;--st-closed-bg:#F3F2FD;
 }
 .k-1{--gb:#E6F1FB;--gd:#85B7EB;--gt:#0C447C}.k-2{--gb:#FAEEDA;--gd:#EF9F27;--gt:#633806}
 @media (prefers-color-scheme:dark){
   :root{--surface-0:#1F1E1D;--surface-1:#262624;--surface-2:#30302E;--border:rgba(222,220,209,.15);--text-primary:#F5F4EF;--text-secondary:#C2C0B6;--text-muted:#9C9A92;--text-accent:#85B7EB;
     --open:#97C459;--open-bg:#173404;--closed:#AFA9EC;--closed-bg:#26215C;
-    --st-open:#97C459;--st-open-bg:#1E2B13;--st-work:#EF9F27;--st-work-bg:#33240C;--st-closed:#AFA9EC;--st-closed-bg:#24213F}
+    --ready:#7CC94A;--st-open:#97C459;--st-open-bg:#1E2B13;--st-work:#EF9F27;--st-work-bg:#33240C;--st-closed:#AFA9EC;--st-closed-bg:#24213F}
   .k-1{--gb:#042C53;--gd:#378ADD;--gt:#B5D4F4}.k-2{--gb:#412402;--gd:#BA7517;--gt:#FAC775}
 }
 *{box-sizing:border-box}
@@ -59,6 +59,8 @@ figcaption{font-size:12px;color:var(--text-muted);margin-top:6px;line-height:1.5
 a.iss{text-decoration:none}
 .iss.work{--st:var(--st-work);--st-bg:var(--st-work-bg)}.iss.closed{--st:var(--st-closed);--st-bg:var(--st-closed-bg)}
 .iss:hover{border-color:var(--text-accent);border-left-color:var(--st)}
+.iss.ready{box-shadow:0 0 0 1.5px var(--ready)}
+.sw.ready::before{background:var(--surface-2);border:0.5px solid var(--border);box-shadow:0 0 0 1.5px var(--ready)}
 .iss .no{grid-area:no;font-family:var(--font-mono);color:var(--text-muted)}
 .iss .t{grid-area:t;color:var(--text-primary);text-decoration:none}
 .iss .t::after{content:"";position:absolute;inset:0;border-radius:7px}
@@ -100,6 +102,7 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 .gn a.inum{text-decoration:none;font-size:11px;font-weight:500;padding:1px 5px;border-radius:999px;color:var(--open);background:var(--open-bg)}
 .gn a.inum.work{color:var(--st-work);background:var(--st-work-bg);box-shadow:inset 0 0 0 1px var(--st-work)}.gn a.inum.closed{color:var(--closed);background:var(--closed-bg)}
 .gn a.inum:hover,.gn a.inum:focus-visible{text-decoration:underline}
+.gn a.inum.ready{box-shadow:0 0 0 1.5px var(--ready)}.gn a.inum.work.ready{box-shadow:inset 0 0 0 1px var(--st-work),0 0 0 1.5px var(--ready)}
 .elbl{position:absolute;z-index:2;transform:translate(-50%,-50%);background:var(--lbl-bg);border:0.5px solid var(--border);border-radius:5px;padding:2px 5px;font-family:var(--font-mono);font-size:10.5px;line-height:1.45;color:var(--text-secondary);white-space:nowrap;text-align:center}
 .elbl a{color:var(--text-accent);text-decoration:none}.elbl a:hover,.elbl a:focus-visible{text-decoration:underline}
 .glegend{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;font-size:12px;color:var(--text-secondary);margin:8px 0 0}
@@ -152,7 +155,7 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 <figcaption>From the milestone on GitHub. Select it to open it at full size.</figcaption>
 
 <h3>Dependency flow</h3>
-<div class="legend"><span class="sw open">open</span><span class="sw work">in work</span><span class="sw closed">closed</span><span>Top right: who is responsible (author of the linked PR, else the assignee). Bottom right: the linked PR.</span></div>
+<div class="legend"><span class="sw open">open</span><span class="sw work">in work</span><span class="sw closed">closed</span><span class="sw ready">green frame: not blocked, all its blocking issues are closed</span><span>Top right: who is responsible (author of the linked PR, else the assignee). Bottom right: the linked PR.</span></div>
 <p class="legend">Each column depends on the ones before it, as stated in the issues.</p>
 <div class="flow">
 <div class="stage"><div class="stage-h">Foundations</div>
@@ -220,7 +223,7 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 <figcaption>Edges carry the issue-level dependencies they stand for. Edges already implied by an intermediate group are left out. Inside G2b, the French outline #90 builds on the French A1 outline #105.</figcaption>
 
 <h3>Groups</h3>
-<div class="legend"><span class="sw open">open</span><span class="sw work">in work</span><span class="sw closed">closed</span><span>Top right: who is responsible (author of the linked PR, else the assignee). Bottom right: the linked PR.</span></div>
+<div class="legend"><span class="sw open">open</span><span class="sw work">in work</span><span class="sw closed">closed</span><span class="sw ready">green frame: not blocked, all its blocking issues are closed</span><span>Top right: who is responsible (author of the linked PR, else the assignee). Bottom right: the linked PR.</span></div>
 <p class="legend">Groups with the same number (a, b) can run in parallel.</p>
 <div class="flow">
 <div class="stage"><div class="stage-h">G1</div>
@@ -303,45 +306,48 @@ const ISSUES={43:{s:"closed",a:["VYAntares"],pr:[58,"VYAntares","merged"]},
 52:{s:"closed",a:["VictorBro"],pr:[99,"VictorBro","merged"]},
 53:{s:"closed",a:["luca-mattei"],pr:null},
 54:{s:"closed",a:["VYAntares"],pr:[69,"VYAntares","merged"]},
-76:{s:"open",a:["VictorBro"],pr:[98,"VictorBro","open"]},
+76:{s:"open",a:["VictorBro"],b:0,pr:[98,"VictorBro","open"]},
 77:{s:"closed",a:["bastian-schnitzler"],pr:[103,"bastian-schnitzler","merged"]},
-78:{s:"open",a:["luca-mattei"],pr:[109,"luca-mattei","open"]},
-79:{s:"open",a:[],pr:null},
-80:{s:"open",a:["VYAntares"],pr:null},
-81:{s:"open",a:[],pr:null},
-82:{s:"open",a:[],pr:null},
-83:{s:"open",a:[],pr:null},
-84:{s:"open",a:[],pr:null},
-85:{s:"open",a:[],pr:null},
-86:{s:"open",a:[],pr:null},
-87:{s:"open",a:[],pr:null},
-88:{s:"open",a:[],pr:null},
-89:{s:"open",a:[],pr:null},
-90:{s:"open",a:["bastian-schnitzler"],pr:null},
-91:{s:"open",a:[],pr:null},
-92:{s:"open",a:[],pr:null},
-93:{s:"open",a:[],pr:null},
-94:{s:"open",a:[],pr:null},
-95:{s:"open",a:[],pr:null},
-96:{s:"open",a:[],pr:null},
-97:{s:"open",a:[],pr:null},
-105:{s:"open",a:["bastian-schnitzler"],pr:[107,"bastian-schnitzler","open"]}};
+78:{s:"open",a:["luca-mattei"],b:0,pr:[109,"luca-mattei","open"]},
+79:{s:"open",a:[],b:0,pr:null},
+80:{s:"open",a:["VYAntares"],b:0,pr:null},
+81:{s:"open",a:[],b:3,pr:null},
+82:{s:"open",a:[],b:3,pr:null},
+83:{s:"open",a:[],b:1,pr:null},
+84:{s:"open",a:[],b:3,pr:null},
+85:{s:"open",a:[],b:3,pr:null},
+86:{s:"open",a:[],b:4,pr:null},
+87:{s:"open",a:[],b:3,pr:null},
+88:{s:"open",a:[],b:1,pr:null},
+89:{s:"open",a:[],b:1,pr:null},
+90:{s:"open",a:["bastian-schnitzler"],b:2,pr:null},
+91:{s:"open",a:[],b:4,pr:null},
+92:{s:"open",a:[],b:4,pr:null},
+93:{s:"open",a:[],b:4,pr:null},
+94:{s:"open",a:[],b:1,pr:null},
+95:{s:"open",a:[],b:5,pr:null},
+96:{s:"open",a:[],b:4,pr:null},
+97:{s:"open",a:[],b:3,pr:null},
+105:{s:"open",a:["bastian-schnitzler"],b:1,pr:[107,"bastian-schnitzler","open"]}};
 const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 /* Responsible: whoever opened the linked PR, else the first assignee. */
 const responsible=i=>i.pr?i.pr[1]:(i.a[0]||null);
 /* Closed, else in work when someone is responsible, else open. */
 const statusOf=i=>i.s==='closed'?'closed':(responsible(i)?'work':'open');
 const STATUS_TEXT={open:'open',work:'in work',closed:'closed'};
+/* Ready to work on: still open and none of its blocking issues (GitHub's issue dependencies) is open. */
+const isReady=i=>!!i&&i.s!=='closed'&&i.b===0;
+const blockText=i=>!i||i.s==='closed'||i.b==null?'':(i.b?', blocked by '+i.b+' open issue'+(i.b>1?'s':''):', not blocked');
 function renderIssues(){
   document.querySelectorAll('.iss').forEach(el=>{
     const n=el.dataset.n,i=ISSUES[n];
     const title=el.dataset.title||el.querySelector('.t').textContent;
     const st=i?statusOf(i):'open',who=i&&responsible(i),pr=i&&i.pr;
     const div=document.createElement('div');
-    div.className='iss '+st;div.dataset.n=n;div.dataset.title=title;
+    div.className='iss '+st+(isReady(i)?' ready':'');div.dataset.n=n;div.dataset.title=title;
     div.innerHTML='<span class="no">#'+n+'</span>'
       +(who?'<a class="who" href="https://github.com/'+esc(who)+'" title="Responsible: '+esc(who)+'"><img src="https://github.com/'+esc(who)+'.png?size=32" alt="" width="16" height="16" loading="lazy"><span>'+esc(who)+'</span></a>':'')
-      +'<a class="t" href="'+issueUrl(n)+'" title="Issue #'+n+', '+STATUS_TEXT[st]+'">'+esc(title)+'<span class="sr"> ('+STATUS_TEXT[st]+')</span></a>'
+      +'<a class="t" href="'+issueUrl(n)+'" title="Issue #'+n+', '+STATUS_TEXT[st]+blockText(i)+'">'+esc(title)+'<span class="sr"> ('+STATUS_TEXT[st]+blockText(i)+')</span></a>'
       +(pr?'<a class="pr" href="https://github.com/'+repo+'/pull/'+pr[0]+'" title="Linked PR #'+pr[0]+', '+pr[2]+'"><i class="ti ti-git-pull-request" aria-hidden="true"></i>#'+pr[0]+'</a>':'');
     el.replaceWith(div);
   });
@@ -374,7 +380,7 @@ graph.querySelectorAll('.gn p').forEach(p=>{
 function syncGraphStates(){
   graph.querySelectorAll('a.inum').forEach(a=>{
     const i=ISSUES[a.dataset.n],st=i?statusOf(i):'open';
-    a.classList.toggle('closed',st==='closed');a.classList.toggle('work',st==='work');
+    a.classList.toggle('closed',st==='closed');a.classList.toggle('work',st==='work');a.classList.toggle('ready',isReady(i));
   });
 }
 const labels=EDGES.map(e=>{const d=document.createElement('div');d.className='elbl';d.innerHTML=e[3].map(linkify).join('<br>');graph.appendChild(d);return d;});
@@ -417,7 +423,7 @@ window.ghStatus.then(live=>{
   Object.keys(ISSUES).forEach(n=>{
     const g=live[n];if(!g)return;
     const i=ISSUES[n];
-    i.s=g.s;i.a=g.a;if(g.pr)i.pr=g.pr;
+    i.s=g.s;i.a=g.a;if(g.pr)i.pr=g.pr;if(g.b!=null)i.b=g.b;
     if(g.t)GRAPH_TITLES[n]=g.t;
   });
   renderIssues();

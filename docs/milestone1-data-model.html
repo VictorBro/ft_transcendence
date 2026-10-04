@@ -92,6 +92,9 @@ footer{font-size:12px;color:var(--text-muted);margin-top:18px}
 .topnav a:focus-visible{outline:2px solid var(--text-accent);outline-offset:1px}
 .topnav a[aria-current="page"]{color:var(--surface-0);background:var(--text-primary);font-weight:500}
 a.il.st-open,a.il.st-work,a.il.st-closed{white-space:nowrap}
+a.il.ready{border-radius:4px;padding:0 3px;box-shadow:0 0 0 1.5px var(--ready)}
+.stleg i.ready{width:12px;height:10px;border-radius:3px;background:none;box-shadow:0 0 0 1.5px var(--ready)}
+:root{--ready:#2B8A3E}@media (prefers-color-scheme:dark){:root{--ready:#7CC94A}}
 a.il.st-open::before,a.il.st-work::before,a.il.st-closed::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;margin:0 3px 1px 0;vertical-align:middle;background:var(--sc)}
 a.il.st-open{--sc:#3B6D11}a.il.st-work{--sc:#BA7517}a.il.st-closed{--sc:#534AB7}
 @media (prefers-color-scheme:dark){a.il.st-open{--sc:#97C459}a.il.st-work{--sc:#EF9F27}a.il.st-closed{--sc:#AFA9EC}}
@@ -121,7 +124,7 @@ a.il.st-open{--sc:#3B6D11}a.il.st-work{--sc:#BA7517}a.il.st-closed{--sc:#534AB7}
 <span><del>spec</del> → <ins>code</ins></span>
 </div>
 
-<p class="stleg"><b>Issue links</b><span><i style="background:#3B6D11"></i>open</span><span><i style="background:#BA7517"></i>in work</span><span><i style="background:#534AB7"></i>closed</span><span>live from GitHub</span></p>
+<p class="stleg"><b>Issue links</b><span><i style="background:#3B6D11"></i>open</span><span><i style="background:#BA7517"></i>in work</span><span><i style="background:#534AB7"></i>closed</span><span><i class="ready"></i>green frame: not blocked</span><span>live from GitHub</span></p>
 <div class="tally" id="tally" aria-live="polite"></div>
 
 <div class="leg">
@@ -282,7 +285,10 @@ const ISSUES={43:{t:"feat(api): seed the question bank from content/items",s:"cl
 const PRS={69:"feat(api): generate questions when pool runs dry (#54), merged pull request",71:"feat: 48 placement exam api, merged pull request",104:"feat: 50 placement and result, merged pull request"};
 const STATUS_TEXT={open:'open',work:'in work',closed:'closed'};
 const statusOf=i=>i.s==='closed'?'closed':((i.pr||i.a.length)?'work':'open');
-const hoverText=n=>{const i=ISSUES[n];if(i)return '#'+n+': '+i.t+', '+STATUS_TEXT[statusOf(i)]+(i.pr?' (PR #'+i.pr[0]+' '+i.pr[2]+')':'');return '#'+n+(PRS[n]?': '+PRS[n]:'');};
+/* Ready to work on: still open and none of its blocking issues is open. */
+const isReady=i=>!!i&&i.s!=='closed'&&i.b===0;
+const blockText=i=>!i||i.s==='closed'||i.b==null?'':(i.b?', blocked by '+i.b+' open issue'+(i.b>1?'s':''):', not blocked');
+const hoverText=n=>{const i=ISSUES[n];if(i)return '#'+n+': '+i.t+', '+STATUS_TEXT[statusOf(i)]+blockText(i)+(i.pr?' (PR #'+i.pr[0]+' '+i.pr[2]+')':'');return '#'+n+(PRS[n]?': '+PRS[n]:'');};
 const attr=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 document.querySelectorAll('.intro, .def, .ref span, .leg .m, .rel .d, .note, table.dt td:nth-child(2), table.dt td:nth-child(3), table.dt td:nth-child(4), .ct, .cp, .f, footer').forEach(el=>{
   el.innerHTML=el.innerHTML.replace(/(^|[^\w&])#(\d+)\b/g,(m,p,n)=>p+'<a class="il" data-n="'+n+'" href="'+base+n+'">#'+n+'</a>');
@@ -292,13 +298,14 @@ function paintIssues(){
   document.querySelectorAll('a.il[data-n]').forEach(a=>{
     const i=ISSUES[a.dataset.n];
     a.classList.remove('st-open','st-work','st-closed');
+    a.classList.toggle('ready',isReady(i));
     if(i)a.classList.add('st-'+statusOf(i));
     a.title=hoverText(a.dataset.n);
   });
 }
 paintIssues();
 window.ghStatus.then(live=>{
-  Object.keys(live).forEach(n=>{const g=live[n];ISSUES[n]={t:g.t,s:g.s,a:g.a,pr:g.pr||(ISSUES[n]&&ISSUES[n].pr)||null};});
+  Object.keys(live).forEach(n=>{const g=live[n];ISSUES[n]={t:g.t,s:g.s,a:g.a,b:g.b,pr:g.pr||(ISSUES[n]&&ISSUES[n].pr)||null};});
   paintIssues();
   document.getElementById('live').textContent='Issue states are live from GitHub.';
 }).catch(()=>{document.getElementById('live').textContent='Issue states: snapshot, GitHub could not be reached.';});
