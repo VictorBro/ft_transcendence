@@ -18,6 +18,14 @@
  *   chore(ci): pin trivy-action to v0.36.0
  */
 export default {
+  ignores: [
+    // Copilot Autofix appends this trailer to agent-generated commits. Keep
+    // linting those commits when they already follow Conventional Commits, but
+    // skip the legacy sentence-style subjects from the agent.
+    (message) =>
+      message.includes('Co-authored-by: Copilot Autofix powered by AI <175728472+Copilot@users.noreply.github.com>') &&
+      !/^[a-z]+(?:\([^)]+\))?!?: .+/.test((message.split('\n', 1)[0] ?? '').trim()),
+  ],
   rules: {
     'type-enum': [
       2,
