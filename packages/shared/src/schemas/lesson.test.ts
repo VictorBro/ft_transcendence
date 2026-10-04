@@ -10,8 +10,8 @@ import {
   LESSON_KINDS,
   LESSONS_PER_LEVEL,
   LessonCardSchema,
-  LessonEntrySchema,
-  LessonFileSchema,
+  LessonDraftEntrySchema,
+  LessonDraftFileSchema,
   lessonFileName,
   LessonIdSchema,
   LessonOutlineEntrySchema,
@@ -22,7 +22,7 @@ import {
   TodaySchema,
   type LessonCard,
   type LessonStatus,
-  type LessonEntry,
+  type LessonDraftEntry,
   type LessonOutlineEntry,
 } from './lesson';
 
@@ -59,7 +59,7 @@ const vocabulary = ['le café', 'le thé', "l'eau", 'le jus', 'le lait', 'la bi�
   gloss: 'une boisson',
 }));
 
-const grammarLesson: LessonEntry = {
+const grammarLesson: LessonDraftEntry = {
   id: 'fr-definite-articles',
   kind: 'grammar',
   topic: 'nouns_and_determiners',
@@ -68,7 +68,7 @@ const grammarLesson: LessonEntry = {
   brief,
 };
 
-const vocabularyLesson: LessonEntry = {
+const vocabularyLesson: LessonDraftEntry = {
   id: 'fr-cafe-drinks',
   kind: 'vocabulary',
   theme: 'food_and_drink',
@@ -205,16 +205,16 @@ describe('LessonOutlineEntrySchema', () => {
   });
 });
 
-describe('LessonEntrySchema', () => {
+describe('LessonDraftEntrySchema', () => {
   it('accepts a grammar and a vocabulary lesson', () => {
-    expect(LessonEntrySchema.safeParse(grammarLesson).success).toBe(true);
-    expect(LessonEntrySchema.safeParse(vocabularyLesson).success).toBe(true);
+    expect(LessonDraftEntrySchema.safeParse(grammarLesson).success).toBe(true);
+    expect(LessonDraftEntrySchema.safeParse(vocabularyLesson).success).toBe(true);
   });
 
   it('rejects an empty title and a title given as an object', () => {
-    expect(LessonEntrySchema.safeParse({ ...grammarLesson, title: '' }).success).toBe(false);
+    expect(LessonDraftEntrySchema.safeParse({ ...grammarLesson, title: '' }).success).toBe(false);
     expect(
-      LessonEntrySchema.safeParse({ ...grammarLesson, title: { fr: 'Le, la, les' } }).success,
+      LessonDraftEntrySchema.safeParse({ ...grammarLesson, title: { fr: 'Le, la, les' } }).success,
     ).toBe(false);
   });
 
@@ -226,28 +226,30 @@ describe('LessonEntrySchema', () => {
       'Le\u200d la',
       '\ufeffLe',
     ]) {
-      expect(LessonEntrySchema.safeParse({ ...grammarLesson, title }).success, title).toBe(false);
+      expect(LessonDraftEntrySchema.safeParse({ ...grammarLesson, title }).success, title).toBe(
+        false,
+      );
     }
     expect(
-      LessonEntrySchema.safeParse({
+      LessonDraftEntrySchema.safeParse({
         ...grammarLesson,
         brief: { ...brief, points: ['le\nla', 'la'] },
       }).success,
     ).toBe(false);
-    expect(LessonEntrySchema.safeParse({ ...grammarLesson, title: 'Où ? Là !' }).success).toBe(
+    expect(LessonDraftEntrySchema.safeParse({ ...grammarLesson, title: 'Où ? Là !' }).success).toBe(
       true,
     );
   });
 
   it('rejects text that is not trimmed, rather than trimming it', () => {
-    expect(LessonEntrySchema.safeParse({ ...grammarLesson, title: ' Le, la, les' }).success).toBe(
-      false,
-    );
-    expect(LessonEntrySchema.safeParse({ ...grammarLesson, title: 'Le, la, les ' }).success).toBe(
-      false,
-    );
     expect(
-      LessonEntrySchema.safeParse({
+      LessonDraftEntrySchema.safeParse({ ...grammarLesson, title: ' Le, la, les' }).success,
+    ).toBe(false);
+    expect(
+      LessonDraftEntrySchema.safeParse({ ...grammarLesson, title: 'Le, la, les ' }).success,
+    ).toBe(false);
+    expect(
+      LessonDraftEntrySchema.safeParse({
         ...grammarLesson,
         brief: { ...brief, points: ['le ', 'la'] },
       }).success,
@@ -255,36 +257,37 @@ describe('LessonEntrySchema', () => {
   });
 
   it('rejects a title or summary over its limit', () => {
-    expect(LessonEntrySchema.safeParse({ ...grammarLesson, title: 'a'.repeat(81) }).success).toBe(
-      false,
-    );
     expect(
-      LessonEntrySchema.safeParse({ ...grammarLesson, summary: 'a'.repeat(201) }).success,
+      LessonDraftEntrySchema.safeParse({ ...grammarLesson, title: 'a'.repeat(81) }).success,
+    ).toBe(false);
+    expect(
+      LessonDraftEntrySchema.safeParse({ ...grammarLesson, summary: 'a'.repeat(201) }).success,
     ).toBe(false);
   });
 
   it('rejects a vocabulary lesson without vocabulary', () => {
-    expect(LessonEntrySchema.safeParse({ ...vocabularyLesson, brief }).success).toBe(false);
+    expect(LessonDraftEntrySchema.safeParse({ ...vocabularyLesson, brief }).success).toBe(false);
   });
 
   // Only brief.vocabulary is optional on the other kinds, never the brief itself.
   it('requires the brief on every kind and allows vocabulary on any', () => {
     const { brief: _, ...withoutBrief } = grammarLesson;
-    expect(LessonEntrySchema.safeParse(withoutBrief).success).toBe(false);
+    expect(LessonDraftEntrySchema.safeParse(withoutBrief).success).toBe(false);
     expect(
-      LessonEntrySchema.safeParse({ ...grammarLesson, brief: { ...brief, vocabulary } }).success,
+      LessonDraftEntrySchema.safeParse({ ...grammarLesson, brief: { ...brief, vocabulary } })
+        .success,
     ).toBe(true);
   });
 
   it('bounds the brief lists', () => {
     const tooFew = { ...grammarLesson, brief: { ...brief, examples: ['le café', 'la table'] } };
-    expect(LessonEntrySchema.safeParse(tooFew).success).toBe(false);
+    expect(LessonDraftEntrySchema.safeParse(tooFew).success).toBe(false);
 
     const shortVocabulary = {
       ...vocabularyLesson,
       brief: { ...brief, vocabulary: vocabulary.slice(0, 5) },
     };
-    expect(LessonEntrySchema.safeParse(shortVocabulary).success).toBe(false);
+    expect(LessonDraftEntrySchema.safeParse(shortVocabulary).success).toBe(false);
   });
 });
 
@@ -347,17 +350,17 @@ describe('LessonOutlineFileSchema', () => {
   });
 });
 
-describe('LessonFileSchema', () => {
-  const file = { lang: 'fr', level: 'A1', lessons: [grammarLesson, vocabularyLesson] };
+describe('LessonDraftFileSchema', () => {
+  const file = { lang: 'fr', level: 'A1', drafts: [grammarLesson, vocabularyLesson] };
 
   it('accepts a well-formed file', () => {
-    expect(LessonFileSchema.safeParse(file).success).toBe(true);
+    expect(LessonDraftFileSchema.safeParse(file).success).toBe(true);
   });
 
   it('rejects an id of another language and a duplicate id', () => {
-    expect(LessonFileSchema.safeParse({ ...file, lang: 'de' }).success).toBe(false);
+    expect(LessonDraftFileSchema.safeParse({ ...file, lang: 'de' }).success).toBe(false);
     expect(
-      LessonFileSchema.safeParse({ ...file, lessons: [grammarLesson, grammarLesson] }).success,
+      LessonDraftFileSchema.safeParse({ ...file, drafts: [grammarLesson, grammarLesson] }).success,
     ).toBe(false);
   });
 });
