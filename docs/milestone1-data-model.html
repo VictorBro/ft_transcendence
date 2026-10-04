@@ -93,6 +93,8 @@ footer{font-size:12px;color:var(--text-muted);margin-top:18px}
 .topnav a[aria-current="page"]{color:var(--surface-0);background:var(--text-primary);font-weight:500}
 a.il.st-open,a.il.st-work,a.il.st-closed{white-space:nowrap}
 a.il.ready{border-radius:4px;padding:0 3px;box-shadow:0 0 0 1.5px var(--ready)}
+.ref span.ready{border-color:var(--ready);box-shadow:0 0 0 1px var(--ready)}
+.ref span.ready a.il.ready{box-shadow:none;padding:0}
 .stleg i.ready{width:12px;height:10px;border-radius:3px;background:none;box-shadow:0 0 0 1.5px var(--ready)}
 :root{--ready:#2B8A3E}@media (prefers-color-scheme:dark){:root{--ready:#7CC94A}}
 a.il.st-open::before,a.il.st-work::before,a.il.st-closed::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;margin:0 3px 1px 0;vertical-align:middle;background:var(--sc)}
@@ -124,7 +126,7 @@ a.il.st-open{--sc:#3B6D11}a.il.st-work{--sc:#BA7517}a.il.st-closed{--sc:#534AB7}
 <span><del>spec</del> → <ins>code</ins></span>
 </div>
 
-<p class="stleg"><b>Issue links</b><span><i style="background:#3B6D11"></i>open</span><span><i style="background:#BA7517"></i>in work</span><span><i style="background:#534AB7"></i>closed</span><span><i class="ready"></i>green frame: not blocked</span><span>live from GitHub</span></p>
+<p class="stleg"><b>Issue links</b><span><i style="background:#3B6D11"></i>open</span><span><i style="background:#BA7517"></i>in work</span><span><i style="background:#534AB7"></i>closed</span><span><i class="ready"></i>green frame: ready, open and not blocked, nobody on it yet</span><span>live from GitHub</span></p>
 <div class="tally" id="tally" aria-live="polite"></div>
 
 <div class="leg">
@@ -285,8 +287,8 @@ const ISSUES={43:{t:"feat(api): seed the question bank from content/items",s:"cl
 const PRS={69:"feat(api): generate questions when pool runs dry (#54), merged pull request",71:"feat: 48 placement exam api, merged pull request",104:"feat: 50 placement and result, merged pull request"};
 const STATUS_TEXT={open:'open',work:'in work',closed:'closed'};
 const statusOf=i=>i.s==='closed'?'closed':((i.pr||i.a.length)?'work':'open');
-/* Ready to work on: still open and none of its blocking issues is open. */
-const isReady=i=>!!i&&i.s!=='closed'&&i.b===0;
+/* Ready to work on: open, none of its blocking issues open, nobody on it yet. */
+const isReady=i=>!!i&&statusOf(i)==='open'&&i.b===0;
 const blockText=i=>!i||i.s==='closed'||i.b==null?'':(i.b?', blocked by '+i.b+' open issue'+(i.b>1?'s':''):', not blocked');
 const hoverText=n=>{const i=ISSUES[n];if(i)return '#'+n+': '+i.t+', '+STATUS_TEXT[statusOf(i)]+blockText(i)+(i.pr?' (PR #'+i.pr[0]+' '+i.pr[2]+')':'');return '#'+n+(PRS[n]?': '+PRS[n]:'');};
 const attr=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -299,6 +301,7 @@ function paintIssues(){
     const i=ISSUES[a.dataset.n];
     a.classList.remove('st-open','st-work','st-closed');
     a.classList.toggle('ready',isReady(i));
+    if(a.parentElement.matches('.ref span'))a.parentElement.classList.toggle('ready',isReady(i));
     if(i)a.classList.add('st-'+statusOf(i));
     a.title=hoverText(a.dataset.n);
   });
