@@ -85,12 +85,11 @@ export class PlacementSessionService {
   }
 
   /**
-   * Checks whether an active placement session exists in Redis for the user.
-   * Only checks key existence; there can be at most one placement session per user.
+   * Whether the user's run is still being answered. A finished run only holds
+   * its report, and one missing the field cannot be resumed, so neither counts.
    */
-  async hasActiveSession(userId: string): Promise<boolean> {
-    const existing = await this.redis.client.exists(this.evalKey(userId));
-    return Boolean(existing);
+  async hasLiveSession(userId: string): Promise<boolean> {
+    return (await this.redis.client.hGet(this.evalKey(userId), 'ended')) === 'false';
   }
 
   /**

@@ -122,7 +122,8 @@ if git rev-parse --git-dir >/dev/null 2>&1; then
   while IFS= read -r path; do
     [ -n "$path" ] || continue
     case "$path" in
-      "$EXAMPLE_FILE") ;;
+      # Templates are committed on purpose, infra/deploy's included.
+      "$EXAMPLE_FILE" | */"$EXAMPLE_FILE") ;;
       .env | .env.* | */.env | */.env.*)
         fail "$path is staged. Secrets belong in an untracked $ENV_FILE."
         ;;

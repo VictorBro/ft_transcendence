@@ -99,6 +99,9 @@ export function fakeRedis() {
       });
       return strings.length;
     },
+    async hGet(key: string, field: string) {
+      return (data.get(key) as Record<string, string> | undefined)?.[field] ?? null;
+    },
     async hGetAll(key: string) {
       return (data.get(key) as Record<string, string> | undefined) ?? {};
     },
@@ -169,7 +172,7 @@ export function bankPrisma(rows: QuestionBank[]) {
       upsert: async ({ create }: { create: { userId: string; questionId: string } }) =>
         seen.add(`${create.userId}:${create.questionId}`),
       // A bank from placementBank never runs out of unseen rows, so no fallback draw.
-      findMany: async () => [],
+      findFirst: async () => null,
     },
   };
 }

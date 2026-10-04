@@ -25,7 +25,7 @@
       "level": "A1",
       "topic": "pronouns",
       "question": "Das ist Frau Weber. ___ Auto ist blau.",
-      "options": ["Ihr", "Sein", "Euer", "Dein"],
+      "options": ["Ihr", "Sein", "Ihre", "Dein"],
       "answer": "Ihr",
       "timeLimitS": 30
     },
@@ -69,9 +69,14 @@
       "sourceId": "de-gram-0008",
       "level": "A2",
       "topic": "subordinate_clauses",
-      "question": "Ich bleibe heute zu Hause, weil ich krank ___.",
-      "options": ["bin", "ist", "sein", "bist"],
-      "answer": "bin",
+      "question": "Der Arzt sagt, dass ___.",
+      "options": [
+        "ich heute im Bett bleiben muss",
+        "ich muss heute im Bett bleiben",
+        "muss ich heute im Bett bleiben",
+        "ich heute muss im Bett bleiben"
+      ],
+      "answer": "ich heute im Bett bleiben muss",
       "timeLimitS": 45
     },
     {
@@ -87,9 +92,9 @@
       "sourceId": "de-gram-0010",
       "level": "A2",
       "topic": "verb_usage",
-      "question": "Er ___ sehr gut kochen, alle loben sein Essen.",
-      "options": ["kann", "könnt", "kannst", "können"],
-      "answer": "kann",
+      "question": "Im Museum ___ man die Bilder nicht anfassen, das ist verboten.",
+      "options": ["darf", "muss", "dürfen", "will"],
+      "answer": "darf",
       "timeLimitS": 45
     },
     {
@@ -114,7 +119,7 @@
       "sourceId": "de-gram-0013",
       "level": "B1",
       "topic": "prepositions_and_case",
-      "question": "Wir freuen uns sehr ___ deinen Besuch nächste Woche.",
+      "question": "Wir freuen uns schon sehr ___ deinen Besuch nächste Woche.",
       "options": ["auf", "über", "an", "für"],
       "answer": "auf",
       "timeLimitS": 60
@@ -150,7 +155,7 @@
       "sourceId": "de-gram-0017",
       "level": "B2",
       "topic": "verbs_morphology",
-      "question": "An deiner Stelle ___ ich das Angebot angenommen.",
+      "question": "Ich an deiner Stelle ___ das Angebot angenommen.",
       "options": ["hätte", "habe", "wäre", "würde"],
       "answer": "hätte",
       "timeLimitS": 60
@@ -160,7 +165,7 @@
       "level": "B2",
       "topic": "prepositions_and_case",
       "question": "___ des schlechten Wetters fand das Konzert im Freien statt.",
-      "options": ["Trotz", "Wegen", "Während", "Statt"],
+      "options": ["Trotz", "Wegen", "Infolge", "Statt"],
       "answer": "Trotz",
       "timeLimitS": 60
     },
@@ -195,18 +200,23 @@
       "sourceId": "de-gram-0022",
       "level": "C1",
       "topic": "subordinate_clauses",
-      "question": "Sie sah aus, als ___ sie tagelang nicht geschlafen.",
-      "options": ["hätte", "hatte", "wäre", "würde"],
-      "answer": "hätte",
+      "question": "Sie sah aus, als ___.",
+      "options": [
+        "hätte sie tagelang nicht geschlafen",
+        "sie hätte tagelang nicht geschlafen",
+        "hatte sie tagelang nicht geschlafen",
+        "sie tagelang nicht geschlafen hätte"
+      ],
+      "answer": "hätte sie tagelang nicht geschlafen",
       "timeLimitS": 75
     },
     {
       "sourceId": "de-gram-0023",
       "level": "C1",
       "topic": "nouns_and_determiners",
-      "question": "Die Journalistin hat den ___ nach seiner Meinung gefragt.",
-      "options": ["Präsidenten", "Präsident", "Präsidents", "Präsidentem"],
-      "answer": "Präsidenten",
+      "question": "Die Herkunft dieses ___ ist bis heute ungeklärt.",
+      "options": ["Namens", "Namen", "Name", "Names"],
+      "answer": "Namens",
       "timeLimitS": 75
     },
     {
@@ -214,7 +224,7 @@
       "level": "C1",
       "topic": "syntax_and_sentence_structure",
       "question": "Er hat den Vertrag unterschrieben, ohne ihn vorher gelesen ___.",
-      "options": ["zu haben", "haben", "zu hatte", "gehabt"],
+      "options": ["zu haben", "haben", "zu sein", "gehabt"],
       "answer": "zu haben",
       "timeLimitS": 75
     },
@@ -241,7 +251,7 @@
       "level": "C2",
       "topic": "verb_usage",
       "question": "Sie ___ den Brief inzwischen wohl erhalten haben.",
-      "options": ["dürfte", "durfte", "möchte", "mochte"],
+      "options": ["dürfte", "durfte", "darf", "dürfe"],
       "answer": "dürfte",
       "timeLimitS": 90
     },
@@ -249,9 +259,14 @@
       "sourceId": "de-gram-0028",
       "level": "C2",
       "topic": "nouns_and_determiners",
-      "question": "Es bedarf ___ ausdrücklichen Genehmigung der Behörde.",
-      "options": ["einer", "eine", "einen", "einem"],
-      "answer": "einer",
+      "question": "Für den Umbau bedarf es ___.",
+      "options": [
+        "eines schriftlichen Antrags",
+        "einen schriftlichen Antrag",
+        "einem schriftlichen Antrag",
+        "ein schriftlicher Antrag"
+      ],
+      "answer": "eines schriftlichen Antrags",
       "timeLimitS": 90
     },
     {
@@ -259,7 +274,7 @@
       "level": "C2",
       "topic": "subordinate_clauses",
       "question": "___ es auch regnen, das Fest findet auf jeden Fall statt.",
-      "options": ["Mag", "Kann", "Soll", "Will"],
+      "options": ["Mag", "Muss", "Darf", "Mochte"],
       "answer": "Mag",
       "timeLimitS": 90
     },
@@ -268,7 +283,7 @@
       "level": "C2",
       "topic": "verbs_morphology",
       "question": "Der Zeuge gab an, er ___ den Angeklagten nie zuvor gesehen.",
-      "options": ["habe", "hat", "hätte gehabt", "wird"],
+      "options": ["habe", "hat", "sei", "würde"],
       "answer": "habe",
       "timeLimitS": 90
     }

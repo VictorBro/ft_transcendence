@@ -12,7 +12,7 @@ import {
 } from '../../test/placement.fixtures';
 import type { CoursesService } from '../courses/courses.service';
 import type { PrismaService } from '../prisma/prisma.service';
-import type { QuestionGenerationService } from '../questions-generation/questions-generation.service';
+import type { QuestionStockService } from '../question-generation/question-stock.service';
 import type { RedisService } from '../redis/redis.service';
 import { NETWORK_GRACE_S, PlacementProgressService } from './placement-progress.service';
 import { PlacementQuestionService } from './placement-question.service';
@@ -20,29 +20,42 @@ import { PlacementSessionService } from './placement-session.service';
 import { PlacementService } from './placement.service';
 
 const USER = 'u-1';
+const RUN = `user:${USER}:eval`;
 const LOCK = `user:${USER}:eval_lock`;
 const inProgress = new ConflictException('placement.inProgress');
+const onboardingIncomplete = new ConflictException('placement.onboardingIncomplete');
+const invalidSession = new ConflictException('placement.invalidSession');
 const notFound = new NotFoundException('placement.notFound');
+const poolExhausted = new NotFoundException('placement.poolExhausted');
 
 /**
  * The real services over an in-memory bank and Redis: only the course a
  * result is written to is stubbed, since CoursesService has its own spec.
  */
 describe('PlacementService', () => {
-  // French, so a language that falls back to the 'de' default shows.
-  const bank = placementBank('fr');
+  // French, so a language that falls back to the 'de' default shows. English
+  // for a retake in another language.
+  const bank = [...placementBank('fr'), ...placementBank('en')];
   let redis: ReturnType<typeof fakeRedis>;
   let sessions: PlacementSessionService;
   let courses: { listCoursesUser: Mock; setLevel: Mock };
   let service: PlacementService;
 
-  const start = () => service.startPlacement(USER, { lang: 'fr' });
+  const start = (lang: 'fr' | 'en' = 'fr') => service.startPlacement(USER, { lang });
   const answer = (question: PlacementQuestion, right: boolean) => {
     const row = bank.find((candidate) => candidate.id === question.questionId)!;
     return service.submitAnswer(USER, {
       questionId: row.id,
       choice: right ? row.answer : wrongChoice(row),
     });
+  };
+  const timeOut = (question: PlacementQuestion) =>
+    service.submitAnswer(USER, { questionId: question.questionId, choice: null });
+  // Six wrong answers end a run at A1, the shortest way to a result.
+  const finish = async () => {
+    let step: PlacementQuestion | PlacementResult = await start();
+    while ('questionId' in step) step = await answer(step, false);
+    return step;
   };
 
   beforeEach(() => {
@@ -51,14 +64,16 @@ describe('PlacementService', () => {
     const prisma = bankPrisma(bank) as unknown as PrismaService;
     sessions = new PlacementSessionService(redis as unknown as RedisService);
     courses = {
-      listCoursesUser: vi.fn().mockResolvedValue({ courses: [{ lang: 'fr' }], activeLang: null }),
+      listCoursesUser: vi
+        .fn()
+        .mockResolvedValue({ courses: [{ lang: 'fr' }, { lang: 'en' }], activeLang: null }),
       setLevel: vi.fn(),
     };
     service = new PlacementService(
       sessions,
       new PlacementQuestionService(prisma, {
-        triggerReplenish: vi.fn(),
-      } as unknown as QuestionGenerationService),
+        restock: vi.fn(),
+      } as unknown as QuestionStockService),
       new PlacementProgressService(prisma),
       courses as unknown as CoursesService,
     );
@@ -74,6 +89,7 @@ describe('PlacementService', () => {
       const first = await start();
 
       expect(first).toMatchObject({
+        lang: 'fr',
         level: 'B1',
         remainingS: 30,
         progress: { answered: 0, maxQuestionsRemaining: 18 },
@@ -86,20 +102,72 @@ describe('PlacementService', () => {
       });
     });
 
-    it('refuses a second run while one is live, and releases its lock', async () => {
-      await start();
+    it.each(['fr', 'en'] as const)(
+      'refuses a %s run while one is live, and releases its lock',
+      async (lang) => {
+        const first = await start();
 
-      await expect(start()).rejects.toThrow(inProgress);
+        await expect(start(lang)).rejects.toThrow(inProgress);
+        await expect(service.getPlacement(USER)).resolves.toEqual(first);
+        expect(redis.data.has(LOCK)).toBe(false);
+      },
+    );
+
+    it.each(['fr', 'en'] as const)('replaces a finished run with a new %s one', async (lang) => {
+      await finish();
+
+      const retake = await start(lang);
+
+      expect(retake).toMatchObject({ lang, level: 'B1', progress: { answered: 0 } });
+      await expect(sessions.loadExamSession(USER)).resolves.toMatchObject({
+        lang,
+        ended: false,
+        answers: [],
+      });
       expect(redis.data.has(LOCK)).toBe(false);
+    });
+
+    it('keeps the finished run and its report when the retake has nothing to serve', async () => {
+      const result = await finish();
+      vi.spyOn(PlacementQuestionService.prototype, 'getNewQuestion').mockRejectedValue(
+        poolExhausted,
+      );
+
+      await expect(start()).rejects.toThrow(poolExhausted);
+      await expect(service.getPlacement(USER)).resolves.toEqual(result);
+      expect(redis.data.has(LOCK)).toBe(false);
+    });
+
+    it('replaces a stored run that has no ended field', async () => {
+      await sessions.saveExamSession(
+        USER,
+        examSession({ totalAnswered: 1, answers: [{ questionId: randomUUID(), choice: null }] }),
+      );
+      delete (redis.data.get(RUN) as Record<string, string>).ended;
+
+      const first = await start();
+
+      await expect(sessions.hasLiveSession(USER)).resolves.toBe(true);
+      await expect(sessions.loadExamSession(USER)).resolves.toMatchObject({
+        lang: 'fr',
+        answers: [],
+        currentQuestionId: first.questionId,
+      });
     });
 
     it('refuses a language the user has no course in', async () => {
       courses.listCoursesUser.mockResolvedValue({ courses: [{ lang: 'de' }], activeLang: 'de' });
 
-      await expect(start()).rejects.toThrow(
-        new ConflictException('placement.onboardingIncomplete'),
-      );
+      await expect(start()).rejects.toThrow(onboardingIncomplete);
       expect(redis.data.has(LOCK)).toBe(false);
+    });
+
+    it('refuses a retake in a language the user has no course in, and keeps the finished run', async () => {
+      const result = await finish();
+      courses.listCoursesUser.mockResolvedValue({ courses: [{ lang: 'fr' }], activeLang: 'fr' });
+
+      await expect(start('en')).rejects.toThrow(onboardingIncomplete);
+      await expect(service.getPlacement(USER)).resolves.toEqual(result);
     });
 
     it('refuses to start while another request holds the lock', async () => {
@@ -121,6 +189,20 @@ describe('PlacementService', () => {
     expect(redis.data.has(LOCK)).toBe(false);
   });
 
+  it('refuses to show or answer a finished run stored without a level, until a start replaces it', async () => {
+    await sessions.saveExamSession(
+      USER,
+      examSession({ ended: true, level: null, currentQuestionId: randomUUID() }),
+    );
+
+    await expect(service.getPlacement(USER)).rejects.toThrow(invalidSession);
+    await expect(
+      service.submitAnswer(USER, { questionId: randomUUID(), choice: null }),
+    ).rejects.toThrow(invalidSession);
+    expect(redis.data.has(LOCK)).toBe(false);
+    await expect(start()).resolves.toMatchObject({ lang: 'fr', level: 'B1' });
+  });
+
   it('serves the same question on reload, with the clock running down to zero', async () => {
     const first = await start();
     vi.advanceTimersByTime(10_000);
@@ -133,12 +215,11 @@ describe('PlacementService', () => {
 
   it('drops the run when the bank runs dry mid-run, so the learner can start again', async () => {
     const first = await start();
-    const exhausted = new NotFoundException('placement.poolExhausted');
     vi.spyOn(PlacementQuestionService.prototype, 'getNewPlacementQuestion').mockRejectedValue(
-      exhausted,
+      poolExhausted,
     );
 
-    await expect(answer(first, true)).rejects.toThrow(exhausted);
+    await expect(answer(first, true)).rejects.toThrow(poolExhausted);
     await expect(sessions.loadExamSession(USER)).resolves.toBeNull();
     expect(redis.data.has(LOCK)).toBe(false);
   });
@@ -203,7 +284,7 @@ describe('PlacementService', () => {
 
       await expect(
         service.submitAnswer(USER, { questionId: row.id, choice: row.answer }),
-      ).rejects.toThrow(new ConflictException('placement.invalidSession'));
+      ).rejects.toThrow(invalidSession);
     });
   });
 
@@ -238,6 +319,26 @@ describe('PlacementService', () => {
     });
   });
 
+  // A learner who walks away from an open run times out on every question.
+  it('ends a run where every answer timed out without touching the course', async () => {
+    let step: PlacementQuestion | PlacementResult = await start();
+    while ('questionId' in step) step = await timeOut(step);
+
+    expect(step).toMatchObject({ lang: 'fr', targetLevel: 'A1', applied: false });
+    expect(step.report.map((entry) => entry.chosen)).toEqual(Array(6).fill(null));
+    expect(courses.setLevel).not.toHaveBeenCalled();
+    await expect(service.getPlacement(USER)).resolves.toEqual(step);
+  });
+
+  it('places the course after a run with a single real answer, even a wrong one', async () => {
+    let step: PlacementQuestion | PlacementResult = await answer(await start(), false);
+    while ('questionId' in step) step = await timeOut(step);
+
+    expect(step).toMatchObject({ lang: 'fr', targetLevel: 'A1', applied: true });
+    expect(courses.setLevel).toHaveBeenCalledExactlyOnceWith(USER, 'fr', { level: 'A1' });
+    await expect(service.getPlacement(USER)).resolves.toEqual(step);
+  });
+
   // One row per result the exam can give. A level takes six right answers to
   // pass and a second mistake to fail it, which fixes the answer count.
   it.each([
@@ -260,8 +361,13 @@ describe('PlacementService', () => {
       steps.map((visit) => visit.slice(0, 2)),
     );
     expect(levels).toHaveLength(answered);
-    expect(step).toEqual({ targetLevel: target, report: expect.any(Array) });
-    expect(step.report).toHaveLength(answered);
+    expect(step).toEqual({
+      lang: 'fr',
+      targetLevel: target,
+      applied: true,
+      report: expect.any(Array),
+    });
+    expect(step.report.map((entry) => entry.level)).toEqual(levels);
     expect(courses.setLevel).toHaveBeenCalledExactlyOnceWith(USER, 'fr', { level: target });
     await expect(service.getPlacement(USER)).resolves.toEqual(step);
     await expect(

@@ -116,9 +116,15 @@ export class PlacementProgressService {
   /**
    * Compiles the final placement result and detailed report if the exam has ended.
    * Retrieves answered questions and builds a comparison of submitted vs correct answers.
+   * `applied` is false when every answer timed out, which tells the caller to leave the course alone.
+   *
+   * @throws ConflictException If an ended session has no level (`placement.invalidSession`).
    */
   async getResult(session: ExamSession): Promise<PlacementResult | undefined> {
     if (!session.ended) return undefined;
+    if (session.level === null) {
+      throw new ConflictException('placement.invalidSession');
+    }
 
     const questionIds = session.answers.map((answer) => answer.questionId);
     const dbQuestions = await this.prisma.questionBank.findMany({
@@ -135,7 +141,9 @@ export class PlacementProgressService {
       if (question) {
         report.push({
           questionId: question.id,
+          level: question.level,
           question: question.question,
+          ...(question.readText ? { readText: question.readText } : {}),
           options: question.options,
           chosen: answer.choice,
           correct: question.answer,
@@ -145,10 +153,10 @@ export class PlacementProgressService {
     }
 
     return PlacementResultSchema.parse({
-      targetLevel:
-        session.level !== null
-          ? LEVELS[Math.max(0, Math.min(session.level, LEVELS.length - 1))]
-          : null,
+      lang: session.lang,
+      targetLevel: LEVELS[Math.max(0, Math.min(session.level, LEVELS.length - 1))],
+      // A learner who walked away from the run measured nothing.
+      applied: session.answers.some((answer) => answer.choice !== null),
       report,
     });
   }

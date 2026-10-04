@@ -4,6 +4,7 @@ import { getTranslations } from 'next-intl/server';
 import { LanguageSchema } from '@ft/shared';
 
 import { Link } from '@/i18n/navigation';
+import { ChangeLevel } from '@/components/change-level';
 import { PracticeRow } from '@/components/practice-row';
 import { findCourse, requireCourses } from '@/lib/courses';
 import { GoalPicker } from './goal-picker';
@@ -44,7 +45,7 @@ export default async function CoursePage({ params }: { params: Promise<{ lang: s
 
   return (
     <div className="flex h-full min-h-0 flex-col gap-6 lg:flex-row">
-      <div className="-mx-3 -my-3 flex min-w-0 flex-1 flex-col gap-6 px-3 py-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:overflow-y-auto">
+      <div className="relative -mx-3 -my-3 flex min-w-0 flex-1 flex-col gap-6 px-3 py-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:overflow-y-auto">
         <h1 className="text-3xl font-semibold">{languageName(course.lang)}</h1>
 
         {/* The roadmap is the point of this page, so it holds the main column
@@ -67,18 +68,25 @@ export default async function CoursePage({ params }: { params: Promise<{ lang: s
             {t('thisCourse')}
           </h2>
 
-          <p className="flex items-baseline justify-between gap-4 text-sm text-slate-400">
-            <span>{t('level')}</span>
-            <span className="text-lg font-semibold text-slate-100">{course.level}</span>
-          </p>
+          <div className="flex flex-col">
+            {/* role="status", so a level saved below is announced. */}
+            <p
+              role="status"
+              className="flex items-baseline justify-between gap-4 text-sm text-slate-400"
+            >
+              <span>{t('level')}</span>
+              <span className="text-lg font-semibold text-slate-100">{course.level}</span>
+            </p>
+            <ChangeLevel lang={course.lang} level={course.level} label={t('changeLevel')} />
+          </div>
 
           <GoalPicker lang={course.lang} dailyGoal={course.dailyGoal} />
 
           <Link
             href={`/learn/${course.lang}/placement`}
-            className="text-sm text-slate-400 underline underline-offset-4 transition-colors hover:text-slate-100"
+            className="inline-flex min-h-11 items-center self-start text-sm text-slate-400 underline underline-offset-4 transition-colors hover:text-slate-100"
           >
-            {t('retakePlacement')}
+            {t('takePlacement')}
           </Link>
         </section>
       </aside>

@@ -7,11 +7,9 @@ import type { ExamSession } from './placement.schema';
 
 import { examSession, questionRow } from '../../test/placement.fixtures';
 import type { QuestionBank } from '../generated/prisma/client';
+import type { LlmProvider } from '../llm/llm.provider';
 import type { PrismaService } from '../prisma/prisma.service';
-import {
-  type QuestionGenerationService,
-  REPLENISH_WHEN_REMAINING_AT_MOST,
-} from '../questions-generation/questions-generation.service';
+import { QuestionStockService } from '../question-generation/question-stock.service';
 import {
   LIMIT_UNSEEN_QUESTIONS_TO_RETRIEVE,
   PlacementQuestionService,
@@ -29,17 +27,17 @@ function serviceWith(unseen: Partial<Record<QuestionCategory, QuestionBank[]>> =
       ),
     },
     userSeenQuestion: {
-      findMany: vi.fn(async (): Promise<{ questionBank: QuestionBank }[]> => []),
+      findFirst: vi.fn(async (): Promise<{ questionBank: QuestionBank } | null> => null),
       upsert: vi.fn(),
     },
   };
-  const questionGeneration = { triggerReplenish: vi.fn() };
+  const stock = { restock: vi.fn() };
   return {
     prisma,
-    questionGeneration,
+    stock,
     service: new PlacementQuestionService(
       prisma as unknown as PrismaService,
-      questionGeneration as unknown as QuestionGenerationService,
+      stock as unknown as QuestionStockService,
     ),
   };
 }
@@ -68,6 +66,7 @@ describe('PlacementQuestionService', () => {
           category: 'reading',
           userSeenQuestions: { none: { userId: 'u-1' } },
         },
+        orderBy: { sourceId: { sort: 'asc', nulls: 'last' } },
         take: LIMIT_UNSEEN_QUESTIONS_TO_RETRIEVE,
       });
     });
@@ -89,15 +88,58 @@ describe('PlacementQuestionService', () => {
         { grammar: 2, vocabulary: 2, reading: 0 },
         expected,
       ]);
-      expect(prisma.userSeenQuestion.findMany).not.toHaveBeenCalled();
+      expect(prisma.userSeenQuestion.findFirst).not.toHaveBeenCalled();
     });
 
-    it('once no open category has unseen rows, falls back to a random least recently seen one outside this run', async () => {
-      const { service, prisma } = serviceWith();
-      prisma.userSeenQuestion.findMany.mockResolvedValue(
-        vocabulary.map((questionBank) => ({ questionBank })),
+    // questionRow is generated, sourceId null, unless given the id of a row people wrote.
+    const written = questionRow({ sourceId: 'de-gram-0001' });
+
+    it.each([0, 0.99])(
+      'serves a written row while one is unseen, even with generated rows unseen beside it (%s)',
+      async (random) => {
+        const { service } = serviceWith({ grammar: [grammar[0], written, grammar[1]] });
+        vi.spyOn(Math, 'random').mockReturnValue(random);
+        const session = examSession({
+          askedPerCategory: { grammar: 0, vocabulary: 2, reading: 2 },
+        });
+
+        await expect(service.getNewQuestion('u-1', session)).resolves.toEqual([
+          { grammar: 3 },
+          written,
+        ]);
+      },
+    );
+
+    // Category first, as ever: a written row elsewhere does not pull the draw to its category.
+    it('serves a generated row once its category has no unseen written row left', async () => {
+      const { service } = serviceWith({
+        grammar: [grammar[0]],
+        vocabulary: [questionRow({ category: 'vocabulary', sourceId: 'de-voca-0001' })],
+      });
+      vi.spyOn(Math, 'random').mockReturnValue(0);
+
+      await expect(service.getNewQuestion('u-1', examSession())).resolves.toEqual([
+        { grammar: 1, vocabulary: 1, reading: 0 },
+        grammar[0],
+      ]);
+    });
+
+    // A cell full of generated rows is well stocked, whatever is left of the written ones.
+    it('hands the stock every unseen row of a category, written and generated', async () => {
+      const { service, stock } = serviceWith({ grammar: [written, ...grammar] });
+      const session = examSession({ askedPerCategory: { grammar: 0, vocabulary: 2, reading: 2 } });
+
+      await service.getNewQuestion('u-1', session);
+
+      expect(stock.restock).toHaveBeenCalledExactlyOnceWith(
+        { lang: 'de', level: 'B1', category: 'grammar' },
+        3,
       );
-      vi.spyOn(Math, 'random').mockReturnValue(0.99);
+    });
+
+    it('once no open category has unseen rows, falls back to the one seen longest ago, outside this run', async () => {
+      const { service, prisma } = serviceWith();
+      prisma.userSeenQuestion.findFirst.mockResolvedValue({ questionBank: vocabulary[1] });
       const [answered, current] = [randomUUID(), randomUUID()];
       const session = examSession({
         askedPerCategory: { grammar: 2, vocabulary: 0, reading: 0 },
@@ -109,29 +151,60 @@ describe('PlacementQuestionService', () => {
         { vocabulary: 0, reading: 0 },
         vocabulary[1],
       ]);
-      expect(prisma.userSeenQuestion.findMany).toHaveBeenCalledWith({
+      expect(prisma.userSeenQuestion.findFirst).toHaveBeenCalledWith({
         where: {
           userId: 'u-1',
           questionId: { notIn: [answered, current] },
           questionBank: { lang: 'de', level: 'B1', category: { in: ['vocabulary', 'reading'] } },
         },
         orderBy: { updatedAt: 'asc' },
-        take: 10,
         include: { questionBank: true },
       });
     });
 
-    it('restocks in the background each open category running low on unseen rows', async () => {
-      const plenty = Array.from({ length: REPLENISH_WHEN_REMAINING_AT_MOST + 1 }, () =>
-        questionRow({ category: 'vocabulary' }),
-      );
-      const { service, questionGeneration } = serviceWith({ grammar, vocabulary: plenty });
+    it('hands the stock what each open category has left unseen, without waiting for it', async () => {
+      const { service, stock } = serviceWith({ grammar });
+      stock.restock.mockReturnValue(new Promise(() => {}));
+      const session = examSession({ askedPerCategory: { grammar: 0, vocabulary: 2, reading: 0 } });
 
-      await service.getNewQuestion('u-1', examSession());
+      await service.getNewQuestion('u-1', session);
 
-      expect(questionGeneration.triggerReplenish).toHaveBeenCalledTimes(2);
-      expect(questionGeneration.triggerReplenish).toHaveBeenCalledWith('de', 'B1', 'grammar');
-      expect(questionGeneration.triggerReplenish).toHaveBeenCalledWith('de', 'B1', 'reading');
+      expect(stock.restock.mock.calls).toEqual([
+        [{ lang: 'de', level: 'B1', category: 'grammar' }, 2],
+        [{ lang: 'de', level: 'B1', category: 'reading' }, 0],
+      ]);
+    });
+
+    // A learner who drained the bank is exactly who needs it topped up.
+    it.each([
+      ['falls back to the one seen longest ago', { questionBank: row }],
+      ['has nothing left to serve', null],
+    ])('still asks the stock for every open category when the draw %s', async (_, oldest) => {
+      const { service, prisma, stock } = serviceWith();
+      prisma.userSeenQuestion.findFirst.mockResolvedValue(oldest);
+      const session = examSession({ askedPerCategory: { grammar: 2, vocabulary: 0, reading: 0 } });
+
+      await Promise.allSettled([service.getNewQuestion('u-1', session)]);
+
+      expect(stock.restock.mock.calls).toEqual([
+        [{ lang: 'de', level: 'B1', category: 'vocabulary' }, 0],
+        [{ lang: 'de', level: 'B1', category: 'reading' }, 0],
+      ]);
+    });
+
+    // The take caps the count the stock sees. At or below its threshold, a full
+    // cell would be restocked on every draw.
+    it('takes more unseen rows than the stock restocks at, so a full cell is left alone', async () => {
+      const llm = { generateStructured: vi.fn() };
+      const stock = new QuestionStockService({} as PrismaService, llm as unknown as LlmProvider);
+
+      await expect(
+        stock.restock(
+          { lang: 'de', level: 'B1', category: 'grammar' },
+          LIMIT_UNSEEN_QUESTIONS_TO_RETRIEVE,
+        ),
+      ).resolves.toEqual({ status: 'stocked', inserted: 0 });
+      expect(llm.generateStructured).not.toHaveBeenCalled();
     });
 
     it('throws placement.poolExhausted when the level has nothing left to serve', async () => {
@@ -201,6 +274,7 @@ describe('PlacementQuestionService', () => {
       });
 
       await expect(serviceWith().service.createPlacementQuestion(row, session)).resolves.toEqual({
+        lang: 'de',
         questionId: row.id,
         category: 'grammar',
         level: 'B1',
