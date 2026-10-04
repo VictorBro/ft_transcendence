@@ -239,8 +239,8 @@ function paintIssues(){
   });
 }
 paintIssues();
-window.ghStatus.then(live=>{
-  Object.keys(live).forEach(n=>{const g=live[n];ISSUES[n]={t:g.t,s:g.s,a:g.a,b:g.b,pr:g.pr||(ISSUES[n]&&ISSUES[n].pr)||null};});
+(window.ghStatus||Promise.reject(new Error('gh-status.js not loaded'))).then(live=>{
+  Object.keys(live).forEach(n=>{const g=live[n];ISSUES[n]={t:g.t,s:g.s,a:g.a,b:g.b,pr:g.pr};});
   paintIssues();
   document.getElementById('live').textContent='Live from GitHub.';
 }).catch(()=>{document.getElementById('live').textContent='GitHub could not be reached: snapshot of 4 October 2026.';});

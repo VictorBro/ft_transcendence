@@ -42,7 +42,7 @@
       d[g.number]={s:g.state,a:(g.assignees||[]).map(function(u){return u.login;}),t:g.title,pr:null,b:dep?dep.blocked_by:null};
     });
     res[1].forEach(function(p){
-      var pr=[p.number,p.user.login,p.merged_at?'merged':p.state],seen={},m;
+      var pr=[p.number,p.user?p.user.login:null,p.merged_at?'merged':p.state],seen={},m;
       CLOSES.lastIndex=0;
       while((m=CLOSES.exec(p.body||''))){
         var i=d[m[1]];

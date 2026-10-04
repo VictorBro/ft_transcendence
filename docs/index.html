@@ -329,7 +329,7 @@ const ISSUES={43:{s:"closed",a:["VYAntares"],pr:[58,"VYAntares","merged"]},
 105:{s:"open",a:["bastian-schnitzler"],b:1,pr:[107,"bastian-schnitzler","open"]}};
 const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 /* Responsible: whoever opened the linked PR, else the first assignee. */
-const responsible=i=>i.pr?i.pr[1]:(i.a[0]||null);
+const responsible=i=>(i.pr&&i.pr[1])||i.a[0]||null;
 /* Closed, else in work when someone is responsible, else open. */
 /* Closed; else in work when someone is responsible; else ready when no open issue blocks it; else open. */
 const statusOf=i=>i.s==='closed'?'closed':(responsible(i)?'work':(i.b===0?'ready':'open'));
@@ -416,11 +416,11 @@ function setProgress(section){
 
 /* Refresh state, assignees and linked PRs from the public API (gh-status.js); keep the snapshot if it fails or is rate-limited. */
 document.querySelectorAll('section.ms').forEach(setProgress);
-window.ghStatus.then(live=>{
+(window.ghStatus||Promise.reject(new Error('gh-status.js not loaded'))).then(live=>{
   Object.keys(ISSUES).forEach(n=>{
     const g=live[n];if(!g)return;
     const i=ISSUES[n];
-    i.s=g.s;i.a=g.a;if(g.pr)i.pr=g.pr;if(g.b!=null)i.b=g.b;
+    i.s=g.s;i.a=g.a;i.pr=g.pr;if(g.b!=null)i.b=g.b;
     if(g.t)GRAPH_TITLES[n]=g.t;
   });
   renderIssues();
