@@ -13,13 +13,13 @@
   --font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   --font-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
   --open:#3B6D11;--open-bg:#EAF3DE;--closed:#534AB7;--closed-bg:#EEEDFE;
-  --st-open:#3B6D11;--st-open-bg:#F1F7EA;--st-work:#BA7517;--st-work-bg:#FDF4E4;--st-closed:#534AB7;--st-closed-bg:#F3F2FD;
+  --ready:#2B8A3E;--st-open:#3B6D11;--st-open-bg:#F1F7EA;--st-work:#BA7517;--st-work-bg:#FDF4E4;--st-closed:#534AB7;--st-closed-bg:#F3F2FD;
 }
 .k-1{--gb:#E6F1FB;--gd:#85B7EB;--gt:#0C447C}.k-2{--gb:#FAEEDA;--gd:#EF9F27;--gt:#633806}
 @media (prefers-color-scheme:dark){
   :root{--surface-0:#1F1E1D;--surface-1:#262624;--surface-2:#30302E;--border:rgba(222,220,209,.15);--text-primary:#F5F4EF;--text-secondary:#C2C0B6;--text-muted:#9C9A92;--text-accent:#85B7EB;
     --open:#97C459;--open-bg:#173404;--closed:#AFA9EC;--closed-bg:#26215C;
-    --st-open:#97C459;--st-open-bg:#1E2B13;--st-work:#EF9F27;--st-work-bg:#33240C;--st-closed:#AFA9EC;--st-closed-bg:#24213F}
+    --ready:#7CC94A;--st-open:#97C459;--st-open-bg:#1E2B13;--st-work:#EF9F27;--st-work-bg:#33240C;--st-closed:#AFA9EC;--st-closed-bg:#24213F}
   .k-1{--gb:#042C53;--gd:#378ADD;--gt:#B5D4F4}.k-2{--gb:#412402;--gd:#BA7517;--gt:#FAC775}
 }
 *{box-sizing:border-box}
@@ -55,9 +55,9 @@ figcaption{font-size:12px;color:var(--text-muted);margin-top:6px;line-height:1.5
 .arrow{flex:0 0 14px;display:flex;align-items:center;justify-content:center;color:var(--text-muted)}
 .grp{border:0.5px dashed var(--border);border-radius:8px;padding:6px;display:flex;flex-direction:column;gap:6px}
 .grp-h{font-size:11px;color:var(--text-muted);padding:0 2px}
-.iss{--st:var(--st-open);--st-bg:var(--st-open-bg);position:relative;display:grid;grid-template-columns:auto 1fr auto;grid-template-areas:"no . who" "t t t" ". . pr";gap:3px 6px;font-size:12px;line-height:1.35;color:var(--text-primary);background:var(--st-bg);border:0.5px solid var(--border);border-left:4px solid var(--st);border-radius:7px;padding:6px 8px 5px}
+.iss{--st:var(--text-muted);--st-bg:var(--surface-2);position:relative;display:grid;grid-template-columns:auto 1fr auto;grid-template-areas:"no . who" "t t t" ". . pr";gap:3px 6px;font-size:12px;line-height:1.35;color:var(--text-primary);background:var(--st-bg);border:0.5px solid var(--border);border-left:4px solid var(--st);border-radius:7px;padding:6px 8px 5px}
 a.iss{text-decoration:none}
-.iss.work{--st:var(--st-work);--st-bg:var(--st-work-bg)}.iss.closed{--st:var(--st-closed);--st-bg:var(--st-closed-bg)}
+.iss.ready{--st:var(--st-open);--st-bg:var(--st-open-bg)}.iss.work{--st:var(--st-work);--st-bg:var(--st-work-bg)}.iss.closed{--st:var(--st-closed);--st-bg:var(--st-closed-bg)}
 .iss:hover{border-color:var(--text-accent);border-left-color:var(--st)}
 .iss .no{grid-area:no;font-family:var(--font-mono);color:var(--text-muted)}
 .iss .t{grid-area:t;color:var(--text-primary);text-decoration:none}
@@ -71,7 +71,7 @@ a.iss{text-decoration:none}
 .iss .pr:hover,.iss .pr:focus-visible{text-decoration:underline}
 .sw{display:inline-flex;align-items:center;gap:5px}
 .sw::before{content:"";width:12px;height:12px;border-radius:3px;background:var(--b);border:0.5px solid var(--border);border-left:4px solid var(--c)}
-.sw.open{--c:var(--st-open);--b:var(--st-open-bg)}.sw.work{--c:var(--st-work);--b:var(--st-work-bg)}.sw.closed{--c:var(--st-closed);--b:var(--st-closed-bg)}
+.sw.open{--c:var(--text-muted);--b:var(--surface-2)}.sw.ready{--c:var(--st-open);--b:var(--st-open-bg)}.sw.work{--c:var(--st-work);--b:var(--st-work-bg)}.sw.closed{--c:var(--st-closed);--b:var(--st-closed-bg)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .dm{display:flex;gap:14px;align-items:center;text-decoration:none;color:var(--text-primary);border:0.5px solid var(--gd);background:var(--gb);border-radius:10px;padding:12px 14px}
 .dm:hover{filter:brightness(.97)}
@@ -97,9 +97,10 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 .gn.base{background:var(--n-base-bg);border-color:var(--n-base-bd)}
 .gn.sink{background:var(--n-sink-bg);border-color:var(--n-sink-bd);border-style:dashed}
 .gn.summit{background:var(--n-sum-bg);border-color:var(--n-sum-bd);border-width:3px}
-.gn a.inum{text-decoration:none;font-size:11px;font-weight:500;padding:1px 5px;border-radius:999px;color:var(--open);background:var(--open-bg)}
+.gn a.inum{text-decoration:none;font-size:11px;font-weight:500;padding:1px 5px;border-radius:999px;color:var(--open);background:transparent}
 .gn a.inum.work{color:var(--st-work);background:var(--st-work-bg);box-shadow:inset 0 0 0 1px var(--st-work)}.gn a.inum.closed{color:var(--closed);background:var(--closed-bg)}
 .gn a.inum:hover,.gn a.inum:focus-visible{text-decoration:underline}
+.gn a.inum.ready{box-shadow:0 0 0 1.5px var(--ready)}
 .elbl{position:absolute;z-index:2;transform:translate(-50%,-50%);background:var(--lbl-bg);border:0.5px solid var(--border);border-radius:5px;padding:2px 5px;font-family:var(--font-mono);font-size:10.5px;line-height:1.45;color:var(--text-secondary);white-space:nowrap;text-align:center}
 .elbl a{color:var(--text-accent);text-decoration:none}.elbl a:hover,.elbl a:focus-visible{text-decoration:underline}
 .glegend{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;font-size:12px;color:var(--text-secondary);margin:8px 0 0}
@@ -117,11 +118,17 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 .topnav a:hover{color:var(--text-primary);background:var(--surface-1)}
 .topnav a:focus-visible{outline:2px solid var(--text-accent);outline-offset:1px}
 .topnav a[aria-current="page"]{color:var(--surface-0);background:var(--text-primary);font-weight:500}
+.navrow{display:flex;flex-wrap:wrap;align-items:stretch;gap:12px;margin:0 0 18px}
+.navrow .topnav{margin:0}
+.prod{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--text-primary);text-decoration:none;padding:9px 14px;border:0.5px solid var(--border);border-radius:10px;background:var(--surface-2)}
+.prod:hover{background:var(--surface-1)}
+.prod:focus-visible{outline:2px solid var(--text-accent);outline-offset:1px}
+.prod .ti-arrow-up-right{color:var(--text-muted)}
 </style>
 </head>
 <body>
 <main>
-<nav class="topnav" aria-label="Project docs"><a href="index.html" aria-current="page"><i class="ti ti-layout-dashboard" aria-hidden="true"></i>Overview</a><a href="milestone1-data-model.html"><i class="ti ti-git-compare" aria-hidden="true"></i>Data model · M1</a><a href="milestone2-data-model.html"><i class="ti ti-database" aria-hidden="true"></i>Data model · M2</a></nav>
+<div class="navrow"><nav class="topnav" aria-label="Project docs"><a href="index.html" aria-current="page"><i class="ti ti-layout-dashboard" aria-hidden="true"></i>Overview</a><a href="milestone1-data-model.html"><i class="ti ti-git-compare" aria-hidden="true"></i>Data model · M1</a><a href="milestone2-data-model.html"><i class="ti ti-database" aria-hidden="true"></i>Data model · M2</a></nav><a class="prod" href="https://transcendence.dpdns.org" title="The deployed app on the VPS: transcendence.dpdns.org"><i class="ti ti-rocket" aria-hidden="true"></i>production<i class="ti ti-arrow-up-right" aria-hidden="true"></i></a></div>
 <p class="eyebrow">ft_transcendence · project docs</p>
 <h1>Milestones</h1>
 <p class="intro">ft_transcendence is an AI-driven platform for learning a foreign language. A short adaptive test places each learner at a CEFR level, and a roadmap then gives them lessons sized to their daily goal. This page summarises the milestones in progress: what each one delivers, how its issues depend on each other, and the data model behind it.</p>
@@ -136,8 +143,8 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 <div class="ms-head">
 <div class="num">Milestone 1</div>
 <h2>Onboarding and Evaluation</h2>
-<p>A new learner chooses a language and a daily goal of 10, 30 or 60 minutes, then takes an adaptive placement exam or sets their level themselves. The exam runs a binary search from B1 over 270 authored questions, with the server owning the clock. The learner then lands on the course home, and can switch between courses or add another language.</p>
-<div class="prog"><div class="bar" role="progressbar" aria-label="Milestone 1 issues closed" aria-valuemin="0" aria-valuemax="12" aria-valuenow="10"><span style="width:83.3%"></span></div><span class="prog-t">10 of 12 issues closed</span></div>
+<p>A new learner chooses a language and a daily goal of 10, 30 or 60 minutes, then takes an adaptive placement exam or sets their level themselves. The exam runs a binary search from B1 over 270 authored questions, with the server owning the clock. The learner then lands on the course home, and can switch between courses or add another language. All issues are closed: the placement page and its result screen (#50) landed with PR #104.</p>
+<div class="prog"><div class="bar" role="progressbar" aria-label="Milestone 1 issues closed" aria-valuemin="0" aria-valuemax="12" aria-valuenow="12"><span style="width:100%"></span></div><span class="prog-t">12 of 12 issues closed</span></div>
 <a class="ms-link" href="https://github.com/VictorBro/ft_transcendence/milestone/1"><i class="ti ti-brand-github" aria-hidden="true"></i>Open milestone 1 on GitHub<i class="ti ti-arrow-up-right" aria-hidden="true"></i></a>
 </div>
 <div class="ms-body">
@@ -146,7 +153,7 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 <figcaption>From the milestone on GitHub. Select it to open it at full size.</figcaption>
 
 <h3>Dependency flow</h3>
-<div class="legend"><span class="sw open">open</span><span class="sw work">in work</span><span class="sw closed">closed</span><span>Top right: who is responsible (author of the linked PR, else the assignee). Bottom right: the linked PR.</span></div>
+<div class="legend"><span class="sw open">open, blocked</span><span class="sw ready">ready: open, not blocked and nobody on it yet</span><span class="sw work">in work</span><span class="sw closed">closed</span><span>Top right: who is responsible (author of the linked PR, else the assignee). Bottom right: the linked PR.</span></div>
 <p class="legend">Each column depends on the ones before it, as stated in the issues.</p>
 <div class="flow">
 <div class="stage"><div class="stage-h">Foundations</div>
@@ -187,8 +194,8 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 <div class="ms-head">
 <div class="num">Milestone 2</div>
 <h2>Course Roadmap and Lessons</h2>
-<p>The course page: a daily goal page and an all lessons page over a seeded syllabus of A1 to C2 lessons per language, with results, the streak and level completion. The lesson page itself is the next milestone.</p>
-<div class="prog"><div class="bar" role="progressbar" aria-label="Milestone 2 issues closed" aria-valuemin="0" aria-valuemax="22" aria-valuenow="0"><span style="width:0%"></span></div><span class="prog-t">0 of 22 issues closed</span></div>
+<p>The course page: a daily goal page and an all lessons page over a seeded syllabus of A1 to C2 lessons per language, with results, the streak and level completion. The lesson page itself is the next milestone. The lesson contracts and content checks (#77) are on main, with exact lesson counts per kind for French and German and for English; the time zone (#78) and the French A1 outline (#105) are in review.</p>
+<div class="prog"><div class="bar" role="progressbar" aria-label="Milestone 2 issues closed" aria-valuemin="0" aria-valuemax="22" aria-valuenow="1"><span style="width:4.5%"></span></div><span class="prog-t">1 of 22 issues closed</span></div>
 <a class="ms-link" href="https://github.com/VictorBro/ft_transcendence/milestone/2"><i class="ti ti-brand-github" aria-hidden="true"></i>Open milestone 2 on GitHub<i class="ti ti-arrow-up-right" aria-hidden="true"></i></a>
 </div>
 <div class="ms-body">
@@ -210,11 +217,11 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 <div class="gn sink" id="G6b" style="grid-column:11;grid-row:3"><b>G6b</b><span>profiles DE, EN, FR:<br>A1 - C2</span><p>#91 #92 #93</p><i>SINK</i></div>
 </div>
 </div>
-<div class="glegend"><span><svg width="34" height="10" aria-hidden="true"><line x1="0" y1="5" x2="34" y2="5" stroke="var(--edge-crit)" stroke-width="3"/></svg>critical path</span><span><svg width="34" height="10" aria-hidden="true"><line x1="0" y1="5" x2="34" y2="5" stroke="var(--edge)" stroke-width="1.5"/></svg>content branch</span><span class="swatch summit">summit</span><span class="swatch sink">sink</span><span>Issue numbers are coloured by status, as in the groups below, and link to GitHub.</span></div>
+<div class="glegend"><span><svg width="34" height="10" aria-hidden="true"><line x1="0" y1="5" x2="34" y2="5" stroke="var(--edge-crit)" stroke-width="3"/></svg>critical path</span><span><svg width="34" height="10" aria-hidden="true"><line x1="0" y1="5" x2="34" y2="5" stroke="var(--edge)" stroke-width="1.5"/></svg>content branch</span><span class="swatch summit">summit</span><span class="swatch sink">sink</span><span>Issue numbers are coloured by status and link to GitHub. A green frame marks a ready issue: open, all its blocking issues closed, and nobody on it yet.</span></div>
 <figcaption>Edges carry the issue-level dependencies they stand for. Edges already implied by an intermediate group are left out. Inside G2b, the French outline #90 builds on the French A1 outline #105.</figcaption>
 
 <h3>Groups</h3>
-<div class="legend"><span class="sw open">open</span><span class="sw work">in work</span><span class="sw closed">closed</span><span>Top right: who is responsible (author of the linked PR, else the assignee). Bottom right: the linked PR.</span></div>
+<div class="legend"><span class="sw open">open, blocked</span><span class="sw ready">ready: open, not blocked and nobody on it yet</span><span class="sw work">in work</span><span class="sw closed">closed</span><span>Top right: who is responsible (author of the linked PR, else the assignee). Bottom right: the linked PR.</span></div>
 <p class="legend">Groups with the same number (a, b) can run in parallel.</p>
 <div class="flow">
 <div class="stage"><div class="stage-h">G1</div>
@@ -276,8 +283,9 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 </div>
 </section>
 
-<footer>Issue states, assignees and linked PRs as of 3 October 2026. States and assignees refresh from GitHub when the page loads; linked PRs do not. Source: <a href="https://github.com/VictorBro/ft_transcendence">VictorBro/ft_transcendence</a> · <a href="https://github.com/VictorBro/ft_transcendence/milestones">all milestones</a>.</footer>
+<footer>Issue states, assignees and linked PRs as of 4 October 2026, the last merge on main being PR #104. All three refresh from the GitHub API when the page loads (cached for five minutes); a linked PR is one whose description says "closes #N". <span id="live"></span> Source: <a href="https://github.com/VictorBro/ft_transcendence">VictorBro/ft_transcendence</a> · <a href="https://github.com/VictorBro/ft_transcendence/milestones">all milestones</a>.</footer>
 </main>
+<script src="gh-status.js"></script>
 <script>
 const repo='VictorBro/ft_transcendence';
 const issueUrl=n=>'https://github.com/'+repo+'/issues/'+n;
@@ -291,40 +299,42 @@ const ISSUES={43:{s:"closed",a:["VYAntares"],pr:[58,"VYAntares","merged"]},
 47:{s:"closed",a:["avarrett"],pr:[60,"avarrett","merged"]},
 48:{s:"closed",a:["bastian-schnitzler"],pr:[71,"bastian-schnitzler","merged"]},
 49:{s:"closed",a:["luca-mattei"],pr:[67,"luca-mattei","merged"]},
-50:{s:"open",a:["avarrett"],pr:[104,"avarrett","open"]},
+50:{s:"closed",a:["avarrett"],pr:[104,"avarrett","merged"]},
 51:{s:"closed",a:["VictorBro"],pr:[64,"VictorBro","merged"]},
 52:{s:"closed",a:["VictorBro"],pr:[99,"VictorBro","merged"]},
 53:{s:"closed",a:["luca-mattei"],pr:null},
 54:{s:"closed",a:["VYAntares"],pr:[69,"VYAntares","merged"]},
-76:{s:"open",a:["VictorBro"],pr:[98,"VictorBro","open"]},
-77:{s:"open",a:["bastian-schnitzler"],pr:[103,"bastian-schnitzler","open"]},
-78:{s:"open",a:["luca-mattei"],pr:null},
-79:{s:"open",a:[],pr:null},
-80:{s:"open",a:[],pr:null},
-81:{s:"open",a:[],pr:null},
-82:{s:"open",a:[],pr:null},
-83:{s:"open",a:[],pr:null},
-84:{s:"open",a:["bastian-schnitzler"],pr:null},
-85:{s:"open",a:[],pr:null},
-86:{s:"open",a:[],pr:null},
-87:{s:"open",a:[],pr:null},
-88:{s:"open",a:[],pr:null},
-89:{s:"open",a:[],pr:null},
-90:{s:"open",a:["bastian-schnitzler"],pr:null},
-91:{s:"open",a:[],pr:null},
-92:{s:"open",a:[],pr:null},
-93:{s:"open",a:[],pr:null},
-94:{s:"open",a:[],pr:null},
-95:{s:"open",a:[],pr:null},
-96:{s:"open",a:[],pr:null},
-97:{s:"open",a:[],pr:null},
-105:{s:"open",a:["bastian-schnitzler"],pr:null}};
+76:{s:"open",a:["VictorBro"],b:0,pr:[98,"VictorBro","open"]},
+77:{s:"closed",a:["bastian-schnitzler"],pr:[103,"bastian-schnitzler","merged"]},
+78:{s:"open",a:["luca-mattei"],b:0,pr:[109,"luca-mattei","open"]},
+79:{s:"open",a:[],b:0,pr:null},
+80:{s:"open",a:["VYAntares"],b:0,pr:null},
+81:{s:"open",a:[],b:3,pr:null},
+82:{s:"open",a:[],b:3,pr:null},
+83:{s:"open",a:[],b:1,pr:null},
+84:{s:"open",a:[],b:3,pr:null},
+85:{s:"open",a:[],b:3,pr:null},
+86:{s:"open",a:[],b:4,pr:null},
+87:{s:"open",a:[],b:3,pr:null},
+88:{s:"open",a:[],b:1,pr:null},
+89:{s:"open",a:[],b:1,pr:null},
+90:{s:"open",a:["bastian-schnitzler"],b:2,pr:null},
+91:{s:"open",a:[],b:4,pr:null},
+92:{s:"open",a:[],b:4,pr:null},
+93:{s:"open",a:[],b:4,pr:null},
+94:{s:"open",a:[],b:1,pr:null},
+95:{s:"open",a:[],b:5,pr:null},
+96:{s:"open",a:[],b:4,pr:null},
+97:{s:"open",a:[],b:3,pr:null},
+105:{s:"open",a:["bastian-schnitzler"],b:1,pr:[107,"bastian-schnitzler","open"]}};
 const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 /* Responsible: whoever opened the linked PR, else the first assignee. */
-const responsible=i=>i.pr?i.pr[1]:(i.a[0]||null);
+const responsible=i=>(i.pr&&i.pr[1])||i.a[0]||null;
 /* Closed, else in work when someone is responsible, else open. */
-const statusOf=i=>i.s==='closed'?'closed':(responsible(i)?'work':'open');
-const STATUS_TEXT={open:'open',work:'in work',closed:'closed'};
+/* Closed; else in work when someone is responsible; else ready when no open issue blocks it; else open. */
+const statusOf=i=>i.s==='closed'?'closed':(responsible(i)?'work':(i.b===0?'ready':'open'));
+const STATUS_TEXT={open:'open',ready:'ready',work:'in work',closed:'closed'};
+const blockText=i=>!i||i.s==='closed'||i.b==null?'':(i.b?', blocked by '+i.b+' open issue'+(i.b>1?'s':''):', not blocked');
 function renderIssues(){
   document.querySelectorAll('.iss').forEach(el=>{
     const n=el.dataset.n,i=ISSUES[n];
@@ -334,12 +344,12 @@ function renderIssues(){
     div.className='iss '+st;div.dataset.n=n;div.dataset.title=title;
     div.innerHTML='<span class="no">#'+n+'</span>'
       +(who?'<a class="who" href="https://github.com/'+esc(who)+'" title="Responsible: '+esc(who)+'"><img src="https://github.com/'+esc(who)+'.png?size=32" alt="" width="16" height="16" loading="lazy"><span>'+esc(who)+'</span></a>':'')
-      +'<a class="t" href="'+issueUrl(n)+'" title="Issue #'+n+', '+STATUS_TEXT[st]+'">'+esc(title)+'<span class="sr"> ('+STATUS_TEXT[st]+')</span></a>'
+      +'<a class="t" href="'+issueUrl(n)+'" title="Issue #'+n+', '+STATUS_TEXT[st]+blockText(i)+'">'+esc(title)+'<span class="sr"> ('+STATUS_TEXT[st]+blockText(i)+')</span></a>'
       +(pr?'<a class="pr" href="https://github.com/'+repo+'/pull/'+pr[0]+'" title="Linked PR #'+pr[0]+', '+pr[2]+'"><i class="ti ti-git-pull-request" aria-hidden="true"></i>#'+pr[0]+'</a>':'');
     el.replaceWith(div);
   });
 }
-/* Issue titles for the hover text on the graph's issue links, as of 3 October 2026. */
+/* Issue titles for the hover text on the graph's issue links, as of 4 October 2026; replaced by the live titles. */
 const GRAPH_TITLES={76:"docs: record the lesson, daily goal and streak decisions",77:"feat(shared): lesson contracts and the content checks",78:"feat: store the learner's time zone",79:"feat(api): lesson tables, and seed the lessons on every stack",80:"feat(api): roadmap rules as pure functions",81:"feat(api): today and all lessons reads, with the lesson search",82:"feat(api): finish a lesson, meet the goal, keep the streak",83:"feat(api): an offline lesson generator",84:"feat(content): generate and review the French A1 lessons",85:"feat(api): seed demo learners on development stacks",86:"feat(web): the daily goal page",87:"feat(web): the all lessons page, with advanced search",88:"feat(content): outline the German lessons, A1 to C2",89:"feat(content): outline the English lessons, A1 to C2",90:"feat(content): outline the French lessons, A2 to C2",91:"feat(content): generate and review the German lessons",92:"feat(content): generate and review the English lessons",93:"feat(content): generate and review the French lessons, A2 to C2",94:"feat: gamification rules, XP, challenges and achievements",95:"feat(api): award XP, the daily challenge and achievements",96:"feat(web): lesson stub page and the roadmap e2e",97:"feat(web): rank, challenge and achievements pages",105:"feat(content): outline the French A1 lessons"};
 const graphTitle=n=>'#'+n+': '+(GRAPH_TITLES[n]||'');
 const attr=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -367,7 +377,7 @@ graph.querySelectorAll('.gn p').forEach(p=>{
 function syncGraphStates(){
   graph.querySelectorAll('a.inum').forEach(a=>{
     const i=ISSUES[a.dataset.n],st=i?statusOf(i):'open';
-    a.classList.toggle('closed',st==='closed');a.classList.toggle('work',st==='work');
+    a.classList.toggle('closed',st==='closed');a.classList.toggle('work',st==='work');a.classList.toggle('ready',st==='ready');
   });
 }
 const labels=EDGES.map(e=>{const d=document.createElement('div');d.className='elbl';d.innerHTML=e[3].map(linkify).join('<br>');graph.appendChild(d);return d;});
@@ -404,21 +414,21 @@ function setProgress(section){
   section.querySelector('.prog-t').textContent=closed+' of '+total+' issues closed';
 }
 
-/* Refresh state and assignees from the public API; keep the snapshot if it fails or is rate-limited. */
-document.querySelectorAll('section.ms').forEach(async section=>{
-  try{
-    const r=await fetch('https://api.github.com/repos/'+repo+'/issues?milestone='+section.dataset.milestone+'&state=all&per_page=100',{headers:{accept:'application/vnd.github+json'}});
-    if(!r.ok)return;
-    const issues=await r.json();
-    issues.forEach(g=>{
-      const i=ISSUES[g.number];if(!i||g.pull_request)return;
-      i.s=g.state;i.a=(g.assignees||[]).map(u=>u.login);
-    });
-    renderIssues();
-    setProgress(section);
-    syncGraphStates();
-  }catch(e){}
-});
+/* Refresh state, assignees and linked PRs from the public API (gh-status.js); keep the snapshot if it fails or is rate-limited. */
+document.querySelectorAll('section.ms').forEach(setProgress);
+(window.ghStatus||Promise.reject(new Error('gh-status.js not loaded'))).then(live=>{
+  Object.keys(ISSUES).forEach(n=>{
+    const g=live[n];if(!g)return;
+    const i=ISSUES[n];
+    i.s=g.s;i.a=g.a;i.pr=g.pr;if(g.b!=null)i.b=g.b;
+    if(g.t)GRAPH_TITLES[n]=g.t;
+  });
+  renderIssues();
+  document.querySelectorAll('section.ms').forEach(setProgress);
+  syncGraphStates();
+  graph.querySelectorAll('a.inum').forEach(a=>a.title=graphTitle(a.dataset.n));
+  document.getElementById('live').textContent='Now showing the live state from GitHub.';
+}).catch(()=>{document.getElementById('live').textContent='GitHub could not be reached, so this is the snapshot.';});
 </script>
 </body>
 </html>
