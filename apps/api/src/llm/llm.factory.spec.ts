@@ -21,7 +21,7 @@ describe('createLlmProvider', () => {
   it.each([undefined, ''])('falls back to Flash-Lite when LLM_MODEL is %j', (model) => {
     expect(
       createLlmProvider({ LLM_PROVIDER: 'gemini', LLM_API_KEY: 'k', LLM_MODEL: model }),
-    ).toStrictEqual(new GeminiProvider({ apiKey: 'k', model: 'gemini-3.1-flash-lite' }));
+    ).toStrictEqual(new GeminiProvider({ apiKey: 'k', model: 'gemini-3.6-flash' }));
   });
 
   // The module calls this at boot, so a missing key stops the API from starting.
