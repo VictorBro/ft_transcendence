@@ -122,13 +122,16 @@ scp infra/caddy/Caddyfile.prod ubuntu@140.238.209.2:~/Caddyfile
 scp infra/deploy/.env.example ubuntu@140.238.209.2:~/.env
 ```
 
-Fill in three values; the rest of the template is already correct.
+Set or check these values; the rest of the template is already correct.
 
 | Key | Value |
 | --- | --- |
 | `ACME_EMAIL` | a real address |
 | `SESSION_SECRET` | `openssl rand -hex 32` |
 | `POSTGRES_PASSWORD` | `openssl rand -hex 32`, **hex not base64**: it goes into `DATABASE_URL` and a `/` breaks the parse |
+| `LLM_PROVIDER` | already `gemini`, which generates questions when a level runs low; `fixture` generates none |
+| `LLM_API_KEY` | the Gemini key, sent from the devcontainer (below). With `gemini` and no key the api refuses to start |
+| `LLM_MODEL` | leave empty to follow the api's default, `gemini-3.6-flash` (`apps/api/src/llm/llm.factory.ts`); set it only to hold a model |
 
 On the server, so the secrets stay out of your shell history:
 
@@ -137,14 +140,26 @@ sed -i "s|^SESSION_SECRET=.*|SESSION_SECRET=$(openssl rand -hex 32)|" .env
 sed -i "s|^POSTGRES_PASSWORD=.*|POSTGRES_PASSWORD=$(openssl rand -hex 32)|" .env
 ```
 
+The key comes from the local `.env`, from the devcontainer rather than the server, so it never
+shows on screen or lands in a shell history:
+
+```bash
+grep '^LLM_API_KEY=' .env | ssh -i ~/.ssh/id_ed25519_vic ubuntu@140.238.209.2 \
+  'read -r line && sed -i "s|^LLM_API_KEY=.*|$line|" ~/.env'
+```
+
 ```bash
 docker compose -f compose.deploy.yml --profile migrate pull
 docker compose -f compose.deploy.yml --profile migrate run --rm migrate
+docker compose -f compose.deploy.yml --profile migrate run --rm seed
 docker compose -f compose.deploy.yml up -d
 ```
 
-`--profile migrate` on the pull is required, or the tooling image that runs the migration is
-skipped. The migration prints almost nothing on success; `echo $?` is the signal.
+`--profile migrate` on the pull is required, or the tooling image that runs the migration and
+the seed is skipped. The migration prints almost nothing on success; `echo $?` is the signal.
+The seed prints how many written questions it loaded from `content/items`. It upserts them by
+`sourceId` and writes no users, so running it again is safe. Without it the question bank is
+empty and no placement test can start.
 
 ```bash
 docker compose -f compose.deploy.yml ps
@@ -156,8 +171,12 @@ docker compose -f compose.deploy.yml logs caddy    # if the certificate fails
 
 ## Redeploying
 
-Same three commands. Migrate before `up -d` so the schema is in place when the new code
-starts.
+Same four commands. Migrate and seed before `up -d`, so the schema and the questions are in
+place when the new code starts.
+
+A change to `.env` alone, such as a new `LLM_PROVIDER`, takes only the last one: `up -d`
+recreates the containers whose settings changed. The timer below reacts to images, never to
+`.env`.
 
 `IMAGE_TAG` defaults to `latest`, which follows `main`. Pin it to a `main-<sha>` tag in `.env`
 to hold or roll back a release.
@@ -166,8 +185,9 @@ to hold or roll back a release.
 
 ## Automatic deploys
 
-A timer on the box pulls every five minutes and redeploys only when an image moved. Pull-based
-rather than GitHub Actions connecting inward, so no deploy credential exists to leak.
+A timer on the box pulls every five minutes and redeploys only when an image moved: it
+migrates, seeds, then starts the new release. Pull-based rather than GitHub Actions connecting
+inward, so no deploy credential exists to leak.
 
 ```bash
 scp infra/deploy/deploy.sh ubuntu@140.238.209.2:~/
@@ -191,3 +211,10 @@ journalctl -u ft-deploy.service -n 50     # what it did
 
 Most runs print `no change` and stop before starting anything. To freeze deploys, pin
 `IMAGE_TAG` to a `main-<sha>` in `.env`; the timer keeps running and keeps finding nothing.
+
+The files on the host are copies. When `compose.deploy.yml` or `deploy.sh` change in the repo,
+copy them again; the timer picks up the new script on its next run:
+
+```bash
+scp compose.deploy.yml infra/deploy/deploy.sh ubuntu@140.238.209.2:~/
+```

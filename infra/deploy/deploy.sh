@@ -53,7 +53,11 @@ echo "deploying $revisions"
 # so the running stack is left alone and the next tick retries.
 dc run --rm migrate
 
-# No --profile here, or compose would start the one-shot migrate as a service.
+# Content next, before the new api serves from it: the seed upserts the written
+# questions by sourceId, so an item fix ships with the release that carries it.
+dc run --rm seed
+
+# No --profile here, or compose would start the one-shot migrate and seed as services.
 docker compose -f "$COMPOSE" up -d
 
 # Only now is this state known good.
