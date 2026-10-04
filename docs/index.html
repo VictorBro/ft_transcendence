@@ -207,14 +207,14 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 <marker id="ahc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--edge-crit)"/></marker>
 </defs></svg>
 <div class="gn base" id="G1" style="grid-column:1;grid-row:2"><b>G1</b><span>Doc, Contracts, User Timezone</span><p>#76 #77 #78</p></div>
-<div class="gn base" id="G2a" style="grid-column:3;grid-row:1"><b>G2a</b><span>Lesson Profile (DB), Roadmap Logic, Lesson profile LLM Generator</span><p>#79 #80 #83</p></div>
+<div class="gn base" id="G2a" style="grid-column:3;grid-row:1"><b>G2a</b><span>Lesson Profile (DB), Roadmap Logic, Lesson draft generator</span><p>#79 #80 #83</p></div>
 <div class="gn base" id="G2b" style="grid-column:3;grid-row:3"><b>G2b</b><span>outline DE, EN, FR:<br>A1 - C2</span><p>#105 #88 #89 #90</p></div>
 <div class="gn base" id="G3a" style="grid-column:5;grid-row:1"><b>G3a</b><span>Roadmap API, Roadmap Write API</span><p>#81 #82</p></div>
-<div class="gn base" id="G3b" style="grid-column:5;grid-row:3"><b>G3b</b><span>French A1 profiles</span><p>#84</p></div>
+<div class="gn base" id="G3b" style="grid-column:5;grid-row:3"><b>G3b</b><span>generate French A1 lesson drafts</span><p>#84</p></div>
 <div class="gn base" id="G4" style="grid-column:7;grid-row:2"><b>G4</b><span>demo users, daily goal page, search page</span><p>#85 #86 #87</p></div>
 <div class="gn base" id="G5" style="grid-column:9;grid-row:2"><b>G5</b><span>gamification logic, lesson stub page and e2e tests</span><p>#94 #95 #96</p></div>
 <div class="gn summit" id="G6a" style="grid-column:11;grid-row:1"><b>G6a</b><span>gamification pages</span><p>#97</p><i>SUMMIT</i></div>
-<div class="gn sink" id="G6b" style="grid-column:11;grid-row:3"><b>G6b</b><span>profiles DE, EN, FR:<br>A1 - C2</span><p>#91 #92 #93</p><i>SINK</i></div>
+<div class="gn sink" id="G6b" style="grid-column:11;grid-row:3"><b>G6b</b><span>generate lesson drafts DE, EN, FR:<br>A1 - C2</span><p>#91 #92 #93</p><i>SINK</i></div>
 </div>
 </div>
 <div class="glegend"><span><svg width="34" height="10" aria-hidden="true"><line x1="0" y1="5" x2="34" y2="5" stroke="var(--edge-crit)" stroke-width="3"/></svg>critical path</span><span><svg width="34" height="10" aria-hidden="true"><line x1="0" y1="5" x2="34" y2="5" stroke="var(--edge)" stroke-width="1.5"/></svg>content branch</span><span class="swatch summit">summit</span><span class="swatch sink">sink</span><span>Issue numbers are coloured by status and link to GitHub. A green frame marks a ready issue: open, all its blocking issues closed, and nobody on it yet.</span></div>
@@ -234,7 +234,7 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 <div class="grp"><div class="grp-h">G2a</div>
 <a class="iss" data-n="79" href="#"><span class="no">#79</span><span class="t">Lesson tables and seed</span></a>
 <a class="iss" data-n="80" href="#"><span class="no">#80</span><span class="t">Roadmap rules</span></a>
-<a class="iss" data-n="83" href="#"><span class="no">#83</span><span class="t">Offline lesson generator</span></a>
+<a class="iss" data-n="83" href="#"><span class="no">#83</span><span class="t">Offline lesson draft generator</span></a>
 </div>
 <div class="grp"><div class="grp-h">G2b · outlines A1–C2</div>
 <a class="iss" data-n="105" href="#"><span class="no">#105</span><span class="t">French A1 outline</span></a>
@@ -249,8 +249,8 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 <a class="iss" data-n="81" href="#"><span class="no">#81</span><span class="t">Today and all-lessons reads</span></a>
 <a class="iss" data-n="82" href="#"><span class="no">#82</span><span class="t">Finish a lesson, keep the streak</span></a>
 </div>
-<div class="grp"><div class="grp-h">G3b</div>
-<a class="iss" data-n="84" href="#"><span class="no">#84</span><span class="t">French A1 lessons</span></a>
+<div class="grp"><div class="grp-h">G3b · generate lesson drafts</div>
+<a class="iss" data-n="84" href="#"><span class="no">#84</span><span class="t">French A1 lesson drafts</span></a>
 </div>
 </div>
 <div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
@@ -270,10 +270,10 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 <div class="grp"><div class="grp-h">G6a · summit</div>
 <a class="iss" data-n="97" href="#"><span class="no">#97</span><span class="t">Rank, challenge and achievements pages</span></a>
 </div>
-<div class="grp"><div class="grp-h">G6b · lessons A1–C2</div>
-<a class="iss" data-n="91" href="#"><span class="no">#91</span><span class="t">German lessons</span></a>
-<a class="iss" data-n="92" href="#"><span class="no">#92</span><span class="t">English lessons</span></a>
-<a class="iss" data-n="93" href="#"><span class="no">#93</span><span class="t">French lessons, A2–C2</span></a>
+<div class="grp"><div class="grp-h">G6b · generate lesson drafts A1–C2</div>
+<a class="iss" data-n="91" href="#"><span class="no">#91</span><span class="t">German lesson drafts</span></a>
+<a class="iss" data-n="92" href="#"><span class="no">#92</span><span class="t">English lesson drafts</span></a>
+<a class="iss" data-n="93" href="#"><span class="no">#93</span><span class="t">French lesson drafts, A2–C2</span></a>
 </div>
 </div>
 </div>

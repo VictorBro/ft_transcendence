@@ -5,7 +5,7 @@ import { describe, expect, it } from 'vitest';
 import {
   COMPLETE_LANGUAGES,
   foldText,
-  LessonFileSchema,
+  LessonDraftFileSchema,
   lessonFileName,
   LessonOutlineFileSchema,
   LEVELS,
@@ -34,13 +34,13 @@ function read(dir: string, name: string): unknown {
   }
 }
 
-/** `lessons.12 (fr-greetings).brief.points: ...`, so an author can find the line to fix. */
+/** `drafts.12 (fr-greetings).brief.points: ...`, so an author can find the line to fix. */
 function describeIssues(raw: unknown, issues: { path: PropertyKey[]; message: string }[]): string {
-  const lessons = (raw as { lessons?: { id?: unknown }[] } | null)?.lessons;
+  const drafts = (raw as { drafts?: { id?: unknown }[] } | null)?.drafts;
   return issues
     .map(({ path, message }) => {
       const [key, index, ...rest] = path;
-      const id = key === 'lessons' && typeof index === 'number' ? lessons?.[index]?.id : undefined;
+      const id = key === 'drafts' && typeof index === 'number' ? drafts?.[index]?.id : undefined;
       const where =
         typeof id === 'string'
           ? [`${String(key)}.${String(index)} (${id})`, ...rest.map(String)].join('.')
@@ -54,7 +54,9 @@ const files = readdirSync(LESSONS_DIR)
   .filter((name) => name.endsWith('.json'))
   .sort();
 const raws = new Map(files.map((name) => [name, read(LESSONS_DIR, name)]));
-const parsed = new Map(files.map((name) => [name, LessonFileSchema.safeParse(raws.get(name))]));
+const parsed = new Map(
+  files.map((name) => [name, LessonDraftFileSchema.safeParse(raws.get(name))]),
+);
 
 describe('content/lessons', () => {
   describe.each(files)('%s', (name) => {
@@ -87,12 +89,12 @@ describe('content/lessons', () => {
 
       const entries = outline.data.entries;
       const mismatches: string[] = [];
-      for (let i = 0; i < Math.max(entries.length, file.lessons.length); i++) {
+      for (let i = 0; i < Math.max(entries.length, file.drafts.length); i++) {
         const planned = entries[i];
-        const lesson = file.lessons[i];
+        const lesson = file.drafts[i];
         if (!planned || !lesson) {
           mismatches.push(
-            `lessons.${i}: ${lesson ? `${lesson.id} is not in the outline` : `${planned!.id} is missing`}`,
+            `drafts.${i}: ${lesson ? `${lesson.id} is not in the outline` : `${planned!.id} is missing`}`,
           );
           continue;
         }
@@ -101,7 +103,7 @@ describe('content/lessons', () => {
         );
         if (differs.length > 0) {
           mismatches.push(
-            `lessons.${i} (${lesson.id}): ${differs
+            `drafts.${i} (${lesson.id}): ${differs
               .map(
                 (key) =>
                   `${key} is ${lesson[key] ?? 'absent'}, outline has ${planned[key] ?? 'absent'}`,
@@ -122,7 +124,7 @@ describe('content/lessons', () => {
 
     for (const [name, result] of parsed) {
       if (!result.success) continue;
-      for (const lesson of result.data.lessons) {
+      for (const lesson of result.data.drafts) {
         const key = `${result.data.lang}:${foldText(lesson.title)}`;
         const where = `${name} ${lesson.id}`;
         const previous = seen.get(key);
