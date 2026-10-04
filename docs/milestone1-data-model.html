@@ -91,11 +91,24 @@ footer{font-size:12px;color:var(--text-muted);margin-top:18px}
 .topnav a:hover{color:var(--text-primary);background:var(--surface-1)}
 .topnav a:focus-visible{outline:2px solid var(--text-accent);outline-offset:1px}
 .topnav a[aria-current="page"]{color:var(--surface-0);background:var(--text-primary);font-weight:500}
+a.il.st-open,a.il.st-work,a.il.st-closed{white-space:nowrap}
+a.il.st-open::before,a.il.st-work::before,a.il.st-closed::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;margin:0 3px 1px 0;vertical-align:middle;background:var(--sc)}
+a.il.st-open{--sc:#3B6D11}a.il.st-work{--sc:#BA7517}a.il.st-closed{--sc:#534AB7}
+@media (prefers-color-scheme:dark){a.il.st-open{--sc:#97C459}a.il.st-work{--sc:#EF9F27}a.il.st-closed{--sc:#AFA9EC}}
+.stleg{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;font-size:12px;color:var(--text-secondary);margin:0 0 12px}
+.stleg b{font-weight:500;color:var(--text-primary)}
+.stleg i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;vertical-align:middle}
+.navrow{display:flex;flex-wrap:wrap;align-items:stretch;gap:12px;margin:0 0 18px}
+.navrow .topnav{margin:0}
+.prod{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--text-primary);text-decoration:none;padding:9px 14px;border:0.5px solid var(--border);border-radius:10px;background:var(--surface-2)}
+.prod:hover{background:var(--surface-1)}
+.prod:focus-visible{outline:2px solid var(--text-accent);outline-offset:1px}
+.prod .ti-arrow-up-right{color:var(--text-muted)}
 </style>
 </head>
 <body>
 <main>
-<nav class="topnav" aria-label="Project docs"><a href="index.html"><i class="ti ti-layout-dashboard" aria-hidden="true"></i>Overview</a><a href="milestone1-data-model.html" aria-current="page"><i class="ti ti-git-compare" aria-hidden="true"></i>Data model · M1</a><a href="milestone2-data-model.html"><i class="ti ti-database" aria-hidden="true"></i>Data model · M2</a></nav>
+<div class="navrow"><nav class="topnav" aria-label="Project docs"><a href="index.html"><i class="ti ti-layout-dashboard" aria-hidden="true"></i>Overview</a><a href="milestone1-data-model.html" aria-current="page"><i class="ti ti-git-compare" aria-hidden="true"></i>Data model · M1</a><a href="milestone2-data-model.html"><i class="ti ti-database" aria-hidden="true"></i>Data model · M2</a></nav><a class="prod" href="https://transcendence.dpdns.org" title="The deployed app on the VPS: transcendence.dpdns.org"><i class="ti ti-rocket" aria-hidden="true"></i>production<i class="ti ti-arrow-up-right" aria-hidden="true"></i></a></div>
 <h1>Onboarding data model: spec vs code</h1>
 <p class="intro">Every data format of the Onboarding and Evaluation milestone, grouped by layer, with each one checked against the latest <code>main</code>. Each card is marked by how the code compares with what the issues specified, and lists the issues that reference it. References cover #43 to #54. Where a value changed, the spec's version is struck through and the code's version is highlighted.</p>
 
@@ -108,6 +121,7 @@ footer{font-size:12px;color:var(--text-muted);margin-top:18px}
 <span><del>spec</del> → <ins>code</ins></span>
 </div>
 
+<p class="stleg"><b>Issue links</b><span><i style="background:#3B6D11"></i>open</span><span><i style="background:#BA7517"></i>in work</span><span><i style="background:#534AB7"></i>closed</span><span>live from GitHub</span></p>
 <div class="tally" id="tally" aria-live="polite"></div>
 
 <div class="leg">
@@ -190,7 +204,7 @@ footer{font-size:12px;color:var(--text-muted);margin-top:18px}
 
 <!-- WEB -->
 <section class="g k-w" id="web"><div class="gh"><i class="ti ti-browser" aria-hidden="true"></i>Web (Next.js)<span class="def">#45, #49 to #53</span><span class="def">apps/web</span></div>
-<div class="gd">The pages that read and write these shapes. Onboarding, the course home and the guards are built. The placement page and its result screen (#50) are not.</div>
+<div class="gd">The pages that read and write these shapes. Onboarding, the course home and the guards are built. The placement page and its result screen (#50) followed with PR #104, so every page of the milestone is built.</div>
 <div class="cards">
 <div class="c is-add"><div class="ch"><div class="ct">API clients</div><span class="st add"><i class="ti ti-plus" aria-hidden="true"></i>Added</span></div><div class="cp">lib/api.ts · lib/api-client.ts</div><div class="f">server <b>apiGet</b> → ok | signed-out | unavailable<br>browser <b>send</b> → ApiResult { ok, data } | { ok:false, code, status }<br>clientGet / Post / Patch <ins>/ Put / Delete</ins><br>no apiPost, as agreed in #45</div><div class="ref">Referenced in <span>#45</span></div></div>
 <div class="c"><div class="ch"><div class="ct">/onboarding</div><span class="st ok"><i class="ti ti-check" aria-hidden="true"></i>As spec</span></div><div class="cp">resolveOnboardingStep(courses, ?lang)</div><div class="f">step read from the API: level null → step 2<br>step 1: POST /api/courses<br>studied languages disabled, <b>?lang=</b> reopens one<br>step 2: test link or level picker</div><div class="ref">Referenced in <span>#49</span><span>#52</span></div></div>
@@ -256,17 +270,38 @@ footer{font-size:12px;color:var(--text-muted);margin-top:18px}
 <tr data-k="add"><td><span class="st add"><i class="ti ti-plus" aria-hidden="true"></i>Added</span></td><td>#53 → #50</td><td>Happy-path exam e2e within the 30 s timeout.</td><td>e2e/tests/placement.spec.ts; the countdown runs on a faked browser clock.</td><td>e2e/tests/</td></tr>
 </tbody></table></div></section>
 
-<footer>Compared against <code>main</code> at e6bd06e, the latest merge on 3 October 2026 (PR #69, question generation for #54). Open issues at that point: #50, with PR #104 in review.</footer>
+<footer>Compared against <code>main</code> at 111417d, the latest merge on 4 October 2026 (PR #104, the placement page for #50). All twelve issues of the milestone are closed. <span id="live"></span></footer>
 </main>
+<script src="gh-status.js"></script>
 <script>
 const base='https://github.com/VictorBro/ft_transcendence/issues/';
 /* Title and status of each linked issue, as of 3 October 2026, for the hover text. */
-const ISSUE_INFO={43:["feat(api): seed the question bank from content/items", "closed"],44:["docs: record the onboarding and placement decisions", "closed"],45:["refactor(web): a generic api client for pages beyond auth", "closed"],46:["feat(shared): course and placement contracts", "closed"],47:["feat(api): courses module and the unified level write path", "closed"],48:["feat(api): placement exam as a singleton resource over redis", "closed"],49:["feat(web): onboarding, per course", "closed"],50:["feat(web): placement exam page and result", "in work"],51:["feat(web): course dashboard and switcher", "closed"],52:["feat(web): post-auth landing and onboarding guards", "closed"],53:["test(e2e): onboarded account fixture and guard fallout", "closed"],54:["feat(api): generate a question when the pool runs dry", "closed"],69:["feat(api): generate questions when pool runs dry (#54)", "merged pull request"],71:["feat: 48 placement exam api", "merged pull request"],104:["feat: 50 placement and result", "open pull request"]};
-const hoverText=n=>{const i=ISSUE_INFO[n];return i?'#'+n+': '+i[0]+', '+i[1]:'#'+n;};
+/* Title, state and linked PR of each issue, as of 4 October 2026; replaced by the live state from GitHub (gh-status.js). */
+const ISSUES={43:{t:"feat(api): seed the question bank from content/items",s:"closed",a:["VYAntares"],pr:[58,"VYAntares","merged"]},44:{t:"docs: record the onboarding and placement decisions",s:"closed",a:["VictorBro"],pr:[55,"VictorBro","merged"]},45:{t:"refactor(web): a generic api client for pages beyond auth",s:"closed",a:["bastian-schnitzler"],pr:[57,"bastian-schnitzler","merged"]},46:{t:"feat(shared): course and placement contracts",s:"closed",a:["luca-mattei"],pr:[59,"luca-mattei","merged"]},47:{t:"feat(api): courses module and the unified level write path",s:"closed",a:["avarrett"],pr:[60,"avarrett","merged"]},48:{t:"feat(api): placement exam as a singleton resource over redis",s:"closed",a:["bastian-schnitzler"],pr:[71,"bastian-schnitzler","merged"]},49:{t:"feat(web): onboarding, per course",s:"closed",a:["luca-mattei"],pr:[67,"luca-mattei","merged"]},50:{t:"feat(web): placement exam page and result",s:"closed",a:["avarrett"],pr:[104,"avarrett","merged"]},51:{t:"feat(web): course dashboard and switcher",s:"closed",a:["VictorBro"],pr:[64,"VictorBro","merged"]},52:{t:"feat(web): post-auth landing and onboarding guards",s:"closed",a:["VictorBro"],pr:[99,"VictorBro","merged"]},53:{t:"test(e2e): onboarded account fixture and guard fallout",s:"closed",a:["luca-mattei"],pr:null},54:{t:"feat(api): generate a question when the pool runs dry",s:"closed",a:["VYAntares"],pr:[69,"VYAntares","merged"]}};
+/* Pull requests mentioned on the page; they are not issues, so they get no status dot. */
+const PRS={69:"feat(api): generate questions when pool runs dry (#54), merged pull request",71:"feat: 48 placement exam api, merged pull request",104:"feat: 50 placement and result, merged pull request"};
+const STATUS_TEXT={open:'open',work:'in work',closed:'closed'};
+const statusOf=i=>i.s==='closed'?'closed':((i.pr||i.a.length)?'work':'open');
+const hoverText=n=>{const i=ISSUES[n];if(i)return '#'+n+': '+i.t+', '+STATUS_TEXT[statusOf(i)]+(i.pr?' (PR #'+i.pr[0]+' '+i.pr[2]+')':'');return '#'+n+(PRS[n]?': '+PRS[n]:'');};
 const attr=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 document.querySelectorAll('.intro, .def, .ref span, .leg .m, .rel .d, .note, table.dt td:nth-child(2), table.dt td:nth-child(3), table.dt td:nth-child(4), .ct, .cp, .f, footer').forEach(el=>{
-  el.innerHTML=el.innerHTML.replace(/(^|[^\w&])#(\d+)\b/g,(m,p,n)=>p+'<a class="il" href="'+base+n+'" title="'+attr(hoverText(n))+'">#'+n+'</a>');
+  el.innerHTML=el.innerHTML.replace(/(^|[^\w&])#(\d+)\b/g,(m,p,n)=>p+'<a class="il" data-n="'+n+'" href="'+base+n+'">#'+n+'</a>');
 });
+/* Colour every issue link by its state. */
+function paintIssues(){
+  document.querySelectorAll('a.il[data-n]').forEach(a=>{
+    const i=ISSUES[a.dataset.n];
+    a.classList.remove('st-open','st-work','st-closed');
+    if(i)a.classList.add('st-'+statusOf(i));
+    a.title=hoverText(a.dataset.n);
+  });
+}
+paintIssues();
+window.ghStatus.then(live=>{
+  Object.keys(live).forEach(n=>{const g=live[n];ISSUES[n]={t:g.t,s:g.s,a:g.a,pr:g.pr||(ISSUES[n]&&ISSUES[n].pr)||null};});
+  paintIssues();
+  document.getElementById('live').textContent='Issue states are live from GitHub.';
+}).catch(()=>{document.getElementById('live').textContent='Issue states: snapshot, GitHub could not be reached.';});
 document.querySelectorAll('.jump').forEach(el=>{
   const go=()=>document.getElementById(el.dataset.target).scrollIntoView({block:'start'});
   el.addEventListener('click',e=>{if(e.target.closest('a'))return;go();});

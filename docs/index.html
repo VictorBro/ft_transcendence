@@ -117,11 +117,17 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 .topnav a:hover{color:var(--text-primary);background:var(--surface-1)}
 .topnav a:focus-visible{outline:2px solid var(--text-accent);outline-offset:1px}
 .topnav a[aria-current="page"]{color:var(--surface-0);background:var(--text-primary);font-weight:500}
+.navrow{display:flex;flex-wrap:wrap;align-items:stretch;gap:12px;margin:0 0 18px}
+.navrow .topnav{margin:0}
+.prod{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--text-primary);text-decoration:none;padding:9px 14px;border:0.5px solid var(--border);border-radius:10px;background:var(--surface-2)}
+.prod:hover{background:var(--surface-1)}
+.prod:focus-visible{outline:2px solid var(--text-accent);outline-offset:1px}
+.prod .ti-arrow-up-right{color:var(--text-muted)}
 </style>
 </head>
 <body>
 <main>
-<nav class="topnav" aria-label="Project docs"><a href="index.html" aria-current="page"><i class="ti ti-layout-dashboard" aria-hidden="true"></i>Overview</a><a href="milestone1-data-model.html"><i class="ti ti-git-compare" aria-hidden="true"></i>Data model · M1</a><a href="milestone2-data-model.html"><i class="ti ti-database" aria-hidden="true"></i>Data model · M2</a></nav>
+<div class="navrow"><nav class="topnav" aria-label="Project docs"><a href="index.html" aria-current="page"><i class="ti ti-layout-dashboard" aria-hidden="true"></i>Overview</a><a href="milestone1-data-model.html"><i class="ti ti-git-compare" aria-hidden="true"></i>Data model · M1</a><a href="milestone2-data-model.html"><i class="ti ti-database" aria-hidden="true"></i>Data model · M2</a></nav><a class="prod" href="https://transcendence.dpdns.org" title="The deployed app on the VPS: transcendence.dpdns.org"><i class="ti ti-rocket" aria-hidden="true"></i>production<i class="ti ti-arrow-up-right" aria-hidden="true"></i></a></div>
 <p class="eyebrow">ft_transcendence · project docs</p>
 <h1>Milestones</h1>
 <p class="intro">ft_transcendence is an AI-driven platform for learning a foreign language. A short adaptive test places each learner at a CEFR level, and a roadmap then gives them lessons sized to their daily goal. This page summarises the milestones in progress: what each one delivers, how its issues depend on each other, and the data model behind it.</p>
@@ -136,8 +142,8 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 <div class="ms-head">
 <div class="num">Milestone 1</div>
 <h2>Onboarding and Evaluation</h2>
-<p>A new learner chooses a language and a daily goal of 10, 30 or 60 minutes, then takes an adaptive placement exam or sets their level themselves. The exam runs a binary search from B1 over 270 authored questions, with the server owning the clock. The learner then lands on the course home, and can switch between courses or add another language.</p>
-<div class="prog"><div class="bar" role="progressbar" aria-label="Milestone 1 issues closed" aria-valuemin="0" aria-valuemax="12" aria-valuenow="10"><span style="width:83.3%"></span></div><span class="prog-t">10 of 12 issues closed</span></div>
+<p>A new learner chooses a language and a daily goal of 10, 30 or 60 minutes, then takes an adaptive placement exam or sets their level themselves. The exam runs a binary search from B1 over 270 authored questions, with the server owning the clock. The learner then lands on the course home, and can switch between courses or add another language. All issues are closed: the placement page and its result screen (#50) landed with PR #104.</p>
+<div class="prog"><div class="bar" role="progressbar" aria-label="Milestone 1 issues closed" aria-valuemin="0" aria-valuemax="12" aria-valuenow="12"><span style="width:100%"></span></div><span class="prog-t">12 of 12 issues closed</span></div>
 <a class="ms-link" href="https://github.com/VictorBro/ft_transcendence/milestone/1"><i class="ti ti-brand-github" aria-hidden="true"></i>Open milestone 1 on GitHub<i class="ti ti-arrow-up-right" aria-hidden="true"></i></a>
 </div>
 <div class="ms-body">
@@ -187,8 +193,8 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 <div class="ms-head">
 <div class="num">Milestone 2</div>
 <h2>Course Roadmap and Lessons</h2>
-<p>The course page: a daily goal page and an all lessons page over a seeded syllabus of A1 to C2 lessons per language, with results, the streak and level completion. The lesson page itself is the next milestone.</p>
-<div class="prog"><div class="bar" role="progressbar" aria-label="Milestone 2 issues closed" aria-valuemin="0" aria-valuemax="22" aria-valuenow="0"><span style="width:0%"></span></div><span class="prog-t">0 of 22 issues closed</span></div>
+<p>The course page: a daily goal page and an all lessons page over a seeded syllabus of A1 to C2 lessons per language, with results, the streak and level completion. The lesson page itself is the next milestone. The lesson contracts and content checks (#77) are on main, with exact lesson counts per kind for French and German and for English; the time zone (#78) and the French A1 outline (#105) are in review.</p>
+<div class="prog"><div class="bar" role="progressbar" aria-label="Milestone 2 issues closed" aria-valuemin="0" aria-valuemax="22" aria-valuenow="1"><span style="width:4.5%"></span></div><span class="prog-t">1 of 22 issues closed</span></div>
 <a class="ms-link" href="https://github.com/VictorBro/ft_transcendence/milestone/2"><i class="ti ti-brand-github" aria-hidden="true"></i>Open milestone 2 on GitHub<i class="ti ti-arrow-up-right" aria-hidden="true"></i></a>
 </div>
 <div class="ms-body">
@@ -276,8 +282,9 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 </div>
 </section>
 
-<footer>Issue states, assignees and linked PRs as of 3 October 2026. States and assignees refresh from GitHub when the page loads; linked PRs do not. Source: <a href="https://github.com/VictorBro/ft_transcendence">VictorBro/ft_transcendence</a> · <a href="https://github.com/VictorBro/ft_transcendence/milestones">all milestones</a>.</footer>
+<footer>Issue states, assignees and linked PRs as of 4 October 2026, the last merge on main being PR #104. All three refresh from the GitHub API when the page loads (cached for five minutes); a linked PR is one whose description says "closes #N". <span id="live"></span> Source: <a href="https://github.com/VictorBro/ft_transcendence">VictorBro/ft_transcendence</a> · <a href="https://github.com/VictorBro/ft_transcendence/milestones">all milestones</a>.</footer>
 </main>
+<script src="gh-status.js"></script>
 <script>
 const repo='VictorBro/ft_transcendence';
 const issueUrl=n=>'https://github.com/'+repo+'/issues/'+n;
@@ -291,20 +298,20 @@ const ISSUES={43:{s:"closed",a:["VYAntares"],pr:[58,"VYAntares","merged"]},
 47:{s:"closed",a:["avarrett"],pr:[60,"avarrett","merged"]},
 48:{s:"closed",a:["bastian-schnitzler"],pr:[71,"bastian-schnitzler","merged"]},
 49:{s:"closed",a:["luca-mattei"],pr:[67,"luca-mattei","merged"]},
-50:{s:"open",a:["avarrett"],pr:[104,"avarrett","open"]},
+50:{s:"closed",a:["avarrett"],pr:[104,"avarrett","merged"]},
 51:{s:"closed",a:["VictorBro"],pr:[64,"VictorBro","merged"]},
 52:{s:"closed",a:["VictorBro"],pr:[99,"VictorBro","merged"]},
 53:{s:"closed",a:["luca-mattei"],pr:null},
 54:{s:"closed",a:["VYAntares"],pr:[69,"VYAntares","merged"]},
 76:{s:"open",a:["VictorBro"],pr:[98,"VictorBro","open"]},
-77:{s:"open",a:["bastian-schnitzler"],pr:[103,"bastian-schnitzler","open"]},
-78:{s:"open",a:["luca-mattei"],pr:null},
+77:{s:"closed",a:["bastian-schnitzler"],pr:[103,"bastian-schnitzler","merged"]},
+78:{s:"open",a:["luca-mattei"],pr:[109,"luca-mattei","open"]},
 79:{s:"open",a:[],pr:null},
-80:{s:"open",a:[],pr:null},
+80:{s:"open",a:["VYAntares"],pr:null},
 81:{s:"open",a:[],pr:null},
 82:{s:"open",a:[],pr:null},
 83:{s:"open",a:[],pr:null},
-84:{s:"open",a:["bastian-schnitzler"],pr:null},
+84:{s:"open",a:[],pr:null},
 85:{s:"open",a:[],pr:null},
 86:{s:"open",a:[],pr:null},
 87:{s:"open",a:[],pr:null},
@@ -318,7 +325,7 @@ const ISSUES={43:{s:"closed",a:["VYAntares"],pr:[58,"VYAntares","merged"]},
 95:{s:"open",a:[],pr:null},
 96:{s:"open",a:[],pr:null},
 97:{s:"open",a:[],pr:null},
-105:{s:"open",a:["bastian-schnitzler"],pr:null}};
+105:{s:"open",a:["bastian-schnitzler"],pr:[107,"bastian-schnitzler","open"]}};
 const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 /* Responsible: whoever opened the linked PR, else the first assignee. */
 const responsible=i=>i.pr?i.pr[1]:(i.a[0]||null);
@@ -339,7 +346,7 @@ function renderIssues(){
     el.replaceWith(div);
   });
 }
-/* Issue titles for the hover text on the graph's issue links, as of 3 October 2026. */
+/* Issue titles for the hover text on the graph's issue links, as of 4 October 2026; replaced by the live titles. */
 const GRAPH_TITLES={76:"docs: record the lesson, daily goal and streak decisions",77:"feat(shared): lesson contracts and the content checks",78:"feat: store the learner's time zone",79:"feat(api): lesson tables, and seed the lessons on every stack",80:"feat(api): roadmap rules as pure functions",81:"feat(api): today and all lessons reads, with the lesson search",82:"feat(api): finish a lesson, meet the goal, keep the streak",83:"feat(api): an offline lesson generator",84:"feat(content): generate and review the French A1 lessons",85:"feat(api): seed demo learners on development stacks",86:"feat(web): the daily goal page",87:"feat(web): the all lessons page, with advanced search",88:"feat(content): outline the German lessons, A1 to C2",89:"feat(content): outline the English lessons, A1 to C2",90:"feat(content): outline the French lessons, A2 to C2",91:"feat(content): generate and review the German lessons",92:"feat(content): generate and review the English lessons",93:"feat(content): generate and review the French lessons, A2 to C2",94:"feat: gamification rules, XP, challenges and achievements",95:"feat(api): award XP, the daily challenge and achievements",96:"feat(web): lesson stub page and the roadmap e2e",97:"feat(web): rank, challenge and achievements pages",105:"feat(content): outline the French A1 lessons"};
 const graphTitle=n=>'#'+n+': '+(GRAPH_TITLES[n]||'');
 const attr=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -404,21 +411,21 @@ function setProgress(section){
   section.querySelector('.prog-t').textContent=closed+' of '+total+' issues closed';
 }
 
-/* Refresh state and assignees from the public API; keep the snapshot if it fails or is rate-limited. */
-document.querySelectorAll('section.ms').forEach(async section=>{
-  try{
-    const r=await fetch('https://api.github.com/repos/'+repo+'/issues?milestone='+section.dataset.milestone+'&state=all&per_page=100',{headers:{accept:'application/vnd.github+json'}});
-    if(!r.ok)return;
-    const issues=await r.json();
-    issues.forEach(g=>{
-      const i=ISSUES[g.number];if(!i||g.pull_request)return;
-      i.s=g.state;i.a=(g.assignees||[]).map(u=>u.login);
-    });
-    renderIssues();
-    setProgress(section);
-    syncGraphStates();
-  }catch(e){}
-});
+/* Refresh state, assignees and linked PRs from the public API (gh-status.js); keep the snapshot if it fails or is rate-limited. */
+document.querySelectorAll('section.ms').forEach(setProgress);
+window.ghStatus.then(live=>{
+  Object.keys(ISSUES).forEach(n=>{
+    const g=live[n];if(!g)return;
+    const i=ISSUES[n];
+    i.s=g.s;i.a=g.a;if(g.pr)i.pr=g.pr;
+    if(g.t)GRAPH_TITLES[n]=g.t;
+  });
+  renderIssues();
+  document.querySelectorAll('section.ms').forEach(setProgress);
+  syncGraphStates();
+  graph.querySelectorAll('a.inum').forEach(a=>a.title=graphTitle(a.dataset.n));
+  document.getElementById('live').textContent='Now showing the live state from GitHub.';
+}).catch(()=>{document.getElementById('live').textContent='GitHub could not be reached, so this is the snapshot.';});
 </script>
 </body>
 </html>
