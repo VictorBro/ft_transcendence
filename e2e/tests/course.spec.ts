@@ -103,8 +103,11 @@ test.describe('course home', () => {
     await expect(onboarded.getByRole('status')).toContainText('B2');
   });
 
-  /** Cancel throws the pick away: nothing is written, and reopening starts over. */
-  test('cancelling a level change saves nothing', async ({ onboarded }) => {
+  /**
+   * Cancel and Escape throw the pick away: nothing is written, the focus goes
+   * back to the toggle, and reopening starts over.
+   */
+  test('cancelling or escaping a level change saves nothing', async ({ onboarded }) => {
     await placeCourse(onboarded, SECOND_COURSE);
     await onboarded.goto(`/en/learn/${SECOND_COURSE.lang}`);
     const toggle = onboarded.getByRole('button', { name: 'Change level' });
@@ -114,6 +117,14 @@ test.describe('course home', () => {
     await levels.getByText('B1', { exact: true }).click();
     await onboarded.getByRole('button', { name: 'Cancel' }).click();
 
+    await expect(levels).toBeHidden();
+    await expect(toggle).toBeFocused();
+    expect(await courseLevel(onboarded, SECOND_COURSE.lang)).toBe(SECOND_COURSE.level);
+    await toggle.click();
+    await expect(levels.getByRole('radio', { name: 'A1' })).toBeChecked();
+
+    await levels.getByText('B1', { exact: true }).click();
+    await onboarded.keyboard.press('Escape');
     await expect(levels).toBeHidden();
     await expect(toggle).toBeFocused();
     expect(await courseLevel(onboarded, SECOND_COURSE.lang)).toBe(SECOND_COURSE.level);

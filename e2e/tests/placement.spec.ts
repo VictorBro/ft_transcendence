@@ -408,8 +408,17 @@ test.describe('placement exam', () => {
     const [pick, expected] = targetLevel === 'C1' ? ['A1', 'A2'] : ['B2', 'C1'];
     await onboarded.goto(PLACEMENT);
 
+    // The exam's own verdict titles the answers it was drawn from.
+    const answersHeading = onboarded.getByRole('heading', {
+      name: `Your latest exam result – ${targetLevel}`,
+    });
+    await expect(answersHeading).toBeVisible();
+
     await onboarded.getByRole('button', { name: 'Not your level?' }).click();
-    const save = onboarded.getByRole('button', { name: 'Save' });
+    // A modal over the page, not a picker pushed into it.
+    const dialog = onboarded.getByRole('dialog', { name: 'Not your level?' });
+    await expect(dialog).toBeVisible();
+    const save = dialog.getByRole('button', { name: 'Save' });
     await expect(save).toBeDisabled();
     await expectPinned(onboarded, PLACEMENT);
     // The radio is sr-only, so its own label takes the click.
@@ -419,7 +428,7 @@ test.describe('placement exam', () => {
       .click();
     await save.click();
 
-    await expect(onboarded.getByRole('group', { name: 'Your level' })).toBeHidden();
+    await expect(dialog).toBeHidden();
     // The sentence, since the ladder above it names every level too.
     await expect(onboarded.getByText(`Your lessons will be at ${expected}.`)).toBeVisible();
     expect(await courseLevel(onboarded, ONBOARDED_COURSE.lang)).toBe(expected);
@@ -429,10 +438,12 @@ test.describe('placement exam', () => {
       `/en/learn/${ONBOARDED_COURSE.lang}`,
     );
 
-    // The report outlives the change, but the level over it is the course's now.
+    // The report outlives the change, but the level over it is the course's now,
+    // while the answers keep the level the exam gave.
     await onboarded.reload();
     await expect(result(onboarded)).toBeVisible();
     await expect(onboarded.getByText(`Your lessons will be at ${expected}.`)).toBeVisible();
+    await expect(answersHeading).toBeVisible();
   });
 
   /**
@@ -453,6 +464,10 @@ test.describe('placement exam', () => {
     // The sentence under the level card, which names the course it would teach.
     await expect(onboarded.getByText(/Your lessons will be at/)).toBeHidden();
     await expect(onboarded.getByRole('button', { name: 'Not your level?' })).toBeHidden();
+    // Nothing measured, so no level titles the answers.
+    await expect(
+      onboarded.getByRole('heading', { name: 'Your latest exam result', exact: true }),
+    ).toBeVisible();
     await expect(answers(onboarded)).toHaveCount(report.length);
     await expect(onboarded.getByRole('button', { name: 'Retake the test' })).toBeVisible();
     expect(await courseLevel(onboarded, ONBOARDED_COURSE.lang)).toBe(ONBOARDED_COURSE.level);
