@@ -44,6 +44,14 @@ export const PAGE_ROUTES: PageRoute[] = [
   { path: '/api/docs', name: 'api docs' },
   { path: '/this-route-does-not-exist', name: 'not found', expectedStatus: 404 },
   { path: `/en/learn/${ONBOARDED_COURSE.lang}`, name: 'course home', onboarded: true },
+  // The start control, since the fixture account has no run open. The countdown
+  // on a live question is a local timer and issues no requests, so neither state
+  // keeps the page from reaching networkidle.
+  {
+    path: `/en/learn/${ONBOARDED_COURSE.lang}/placement`,
+    name: 'placement exam',
+    onboarded: true,
+  },
   { path: '/en/onboarding', name: 'onboarding', onboarded: true },
   { path: '/en/chat', name: 'chat', onboarded: true },
   { path: '/en/friends', name: 'friends', onboarded: true },

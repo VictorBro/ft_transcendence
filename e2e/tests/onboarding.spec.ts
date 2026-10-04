@@ -1,17 +1,18 @@
 import type { Page } from '@playwright/test';
 
-import { expect, test } from '../support/session';
+import { enrol, expect, placeCourse, test } from '../support/session';
 
 // `freshLearner` wherever a test starts a course: the shared `signedIn` account
 // is every other spec's learner with none, so tests that only look use it.
+// Setup goes through the API: only the tests about a step click through it.
 
 /** The radio is sr-only, so its own label intercepts a click aimed at it. */
 const pick = (page: Page, group: string, option: string) =>
   page.getByRole('group', { name: group }).getByText(option, { exact: true }).click();
 
-const startCourse = async (page: Page, language: string, goal: string) => {
+const startGermanCourse = async (page: Page, goal: string) => {
   await page.goto('/en/onboarding');
-  await pick(page, 'Language to learn', language);
+  await pick(page, 'Language to learn', 'Deutsch');
   await pick(page, 'Daily goal', goal);
   await page.getByRole('button', { name: 'Next' }).click();
   // Next refreshes and replaces the URL at once, and the refresh can paint step
@@ -19,12 +20,16 @@ const startCourse = async (page: Page, language: string, goal: string) => {
   await page.waitForURL(/\/onboarding\?lang=[a-z]{2}$/);
 };
 
-const startGermanCourse = (page: Page, goal: string) => startCourse(page, 'Deutsch', goal);
+/** Step two for German, with step one done through the API. */
+const atLevelStep = async (page: Page) => {
+  await enrol(page, 'de', 30);
+  await page.goto('/en/onboarding?lang=de');
+};
 
 /** Step two, taking the manual route rather than the placement exam. */
 const setLevel = async (page: Page, level: string) => {
   await page.getByRole('button', { name: 'I already know my level' }).click();
-  await pick(page, 'Level', level);
+  await pick(page, 'Your level', level);
   await page.getByRole('button', { name: 'Start learning' }).click();
   // The click returns before the handler does: it holds for the launch
   // animation, then writes the level and leaves for the course. Navigating in
@@ -58,10 +63,10 @@ test.describe('onboarding', () => {
   });
 
   test('switching to setting the level yourself needs no reload', async ({ freshLearner }) => {
-    await startGermanCourse(freshLearner, '10 min');
+    await atLevelStep(freshLearner);
 
     const url = freshLearner.url();
-    const levels = freshLearner.getByRole('group', { name: 'Level' });
+    const levels = freshLearner.getByRole('group', { name: 'Your level' });
 
     await expect(levels).toBeHidden();
 
@@ -76,26 +81,26 @@ test.describe('onboarding', () => {
     expect(freshLearner.url()).toBe(url);
   });
 
-  /** The tile is the only thing that says what a CEFR code is worth. */
+  /** The summary is the only thing that says what a CEFR code is worth. */
   test('picking a level explains what it means', async ({ freshLearner }) => {
-    await startGermanCourse(freshLearner, '10 min');
+    await atLevelStep(freshLearner);
     await freshLearner.getByRole('button', { name: 'I already know my level' }).click();
 
-    await pick(freshLearner, 'Level', 'A1');
+    await pick(freshLearner, 'Your level', 'A1');
     await expect(
-      freshLearner.getByText('You manage simple phrases. Your lessons will aim at level A2.'),
+      freshLearner.getByText('You manage simple phrases. Your lessons will be at A2.'),
     ).toBeVisible();
 
-    await pick(freshLearner, 'Level', 'C2');
+    await pick(freshLearner, 'Your level', 'C2');
     await expect(
       freshLearner.getByText(
         'You have mastered the language. Your lessons will maintain and refine it.',
       ),
     ).toBeVisible();
 
-    await pick(freshLearner, 'Level', 'A0');
+    await pick(freshLearner, 'Your level', 'A0');
     await expect(
-      freshLearner.getByText('You are starting from scratch. Your lessons will aim at level A1.'),
+      freshLearner.getByText('You are starting from scratch. Your lessons will be at A1.'),
     ).toBeVisible();
   });
 
@@ -105,7 +110,7 @@ test.describe('onboarding', () => {
    * the shift could be dropped or doubled and every other test would still pass.
    */
   test('the course starts one level above what the learner claims', async ({ freshLearner }) => {
-    await startGermanCourse(freshLearner, '30 min');
+    await atLevelStep(freshLearner);
     await setLevel(freshLearner, 'B1');
 
     await expect(freshLearner.getByText('This course')).toBeVisible();
@@ -114,19 +119,19 @@ test.describe('onboarding', () => {
 
   /** Landing on the picker with nothing chosen must not offer to start. */
   test('the start button stays disabled until a level is picked', async ({ freshLearner }) => {
-    await startGermanCourse(freshLearner, '30 min');
+    await atLevelStep(freshLearner);
     await freshLearner.getByRole('button', { name: 'I already know my level' }).click();
 
     const start = freshLearner.getByRole('button', { name: 'Start learning' });
     await expect(start).toBeDisabled();
 
-    await pick(freshLearner, 'Level', 'A0');
+    await pick(freshLearner, 'Your level', 'A0');
     await expect(start).toBeEnabled();
   });
 
   /** The only route to the A1 course: every other pick lands above it. */
   test('a complete beginner gets the A1 course', async ({ freshLearner }) => {
-    await startGermanCourse(freshLearner, '30 min');
+    await atLevelStep(freshLearner);
     await setLevel(freshLearner, 'A0');
 
     await expect(freshLearner.getByText('A1', { exact: true })).toBeVisible();
@@ -165,25 +170,22 @@ test.describe('onboarding', () => {
     await expect(freshLearner.getByRole('heading', { name: 'Deutsch' })).toBeVisible();
   });
 
-  test('the switcher can add a language', async ({ freshLearner }) => {
-    await startGermanCourse(freshLearner, '30 min');
-    await setLevel(freshLearner, 'B1');
+  // The onboarded account studies German, placed, and never English.
+  test('the switcher can add a language', async ({ onboarded }) => {
+    await onboarded.goto('/en/learn/de');
 
-    await freshLearner.getByRole('combobox', { name: 'Course' }).selectOption('__add');
+    await onboarded.getByRole('combobox', { name: 'Course' }).selectOption('__add');
 
-    await expect(freshLearner).toHaveURL(/\/onboarding$/);
-    const languages = freshLearner.getByRole('group', { name: 'Language to learn' });
+    await expect(onboarded).toHaveURL(/\/onboarding$/);
+    const languages = onboarded.getByRole('group', { name: 'Language to learn' });
     await expect(languages.getByRole('radio', { name: 'Deutsch' })).toBeDisabled();
   });
 
   /** The case a boolean "has onboarded" flag on the user would get wrong. */
-  test('a language already studied cannot be picked again', async ({ freshLearner }) => {
-    await startGermanCourse(freshLearner, '60 min');
-    await setLevel(freshLearner, 'B1');
+  test('a language already studied cannot be picked again', async ({ onboarded }) => {
+    await onboarded.goto('/en/onboarding');
 
-    await freshLearner.goto('/en/onboarding');
-
-    const languages = freshLearner.getByRole('group', { name: 'Language to learn' });
+    const languages = onboarded.getByRole('group', { name: 'Language to learn' });
     await expect(languages.getByRole('radio', { name: 'Deutsch' })).toBeDisabled();
     await expect(languages.getByRole('radio', { name: 'English' })).toBeEnabled();
   });
@@ -192,18 +194,16 @@ test.describe('onboarding', () => {
   test('every language studied leaves the form inert, with a way back', async ({
     freshLearner,
   }) => {
-    for (const [language, level] of [
-      ['Deutsch', 'B1'],
-      ['Français', 'A2'],
-      ['English', 'C1'],
-    ]) {
-      await startCourse(freshLearner, language, '30 min');
-      await setLevel(freshLearner, level);
+    // English last: the last write is the course "back" offers.
+    for (const lang of ['de', 'fr', 'en']) {
+      await placeCourse(freshLearner, { lang, level: 'B1', dailyGoal: 30 });
     }
 
     await freshLearner.goto('/en/onboarding');
 
-    await expect(freshLearner.getByText('No new language to add for now.')).toBeVisible();
+    await expect(
+      freshLearner.getByText('You are already learning every language we offer.'),
+    ).toBeVisible();
     await expect(freshLearner.getByRole('radio', { name: 'Deutsch' })).toBeDisabled();
     await expect(freshLearner.getByRole('radio', { name: '30 min' })).toBeDisabled();
     await expect(freshLearner.getByRole('button', { name: 'Next' })).toBeDisabled();

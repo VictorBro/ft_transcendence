@@ -1,7 +1,7 @@
 import type { Page } from '@playwright/test';
 import { Secret, TOTP } from 'otpauth';
 
-import { createAccount, expect, identity, PASSWORD, placeCourse, test } from '../support/session';
+import { expect, identity, PASSWORD, placeCourse, signUp, test } from '../support/session';
 
 /**
  * The browser half of authentication. Supertest already proves the API, so what
@@ -38,7 +38,9 @@ test.describe('authentication in the browser', () => {
   test('signs up, lands on onboarding, and survives a reload', async ({ page }) => {
     const { email, displayName } = identity();
 
-    await createAccount(page, { email, displayName });
+    await fillSignUp(page, { email, displayName, password: PASSWORD });
+    await page.getByRole('button', { name: 'Create account' }).click();
+    await expect(page).toHaveURL(/\/en\/onboarding$/);
     await expect(
       page.getByRole('heading', { level: 1, name: 'What do you want to learn?' }),
     ).toBeVisible();
@@ -79,9 +81,8 @@ test.describe('authentication in the browser', () => {
   });
 
   test('signs out and loses access to the profile', async ({ page }) => {
-    const { email, displayName } = identity();
-
-    await createAccount(page, { email, displayName });
+    await signUp(page);
+    await page.goto('/en/onboarding');
 
     await page.getByRole('button', { name: 'Sign out' }).click();
     await expect(page).toHaveURL(/\/en$/);
@@ -98,35 +99,39 @@ test.describe('authentication in the browser', () => {
   test('signs back in with the password and, with no course, lands on onboarding', async ({
     page,
   }) => {
-    const { email, displayName } = identity();
+    const fields = identity();
 
-    await createAccount(page, { email, displayName });
+    await signUp(page, fields);
+    await page.goto('/en/onboarding');
     await page.getByRole('button', { name: 'Sign out' }).click();
 
-    await logIn(page, email);
+    await logIn(page, fields.email);
 
     await expect(page).toHaveURL(/\/en\/onboarding$/);
-    await expect(page.getByRole('navigation', { name: 'Account' })).toContainText(displayName);
+    await expect(page.getByRole('navigation', { name: 'Account' })).toContainText(
+      fields.displayName,
+    );
   });
 
   test('signing in with a placed course opens it', async ({ page }) => {
-    const { email, displayName } = identity();
+    const fields = identity();
 
-    await createAccount(page, { email, displayName });
+    await signUp(page, fields);
     await placeCourse(page, { lang: 'fr', level: 'A2', dailyGoal: 10 });
+    await page.goto('/en/learn');
     await page.getByRole('button', { name: 'Sign out' }).click();
 
-    await logIn(page, email);
+    await logIn(page, fields.email);
 
     await expect(page).toHaveURL(/\/en\/learn\/fr$/);
     await expect(page.getByRole('heading', { level: 1, name: 'French' })).toBeVisible();
   });
 
   test('saves a profile edit and shows it in the header', async ({ page }) => {
-    const { email, displayName } = identity();
-    const renamed = `${displayName}x`;
+    const fields = identity();
+    const renamed = `${fields.displayName}x`;
 
-    await createAccount(page, { email, displayName });
+    await signUp(page, fields);
 
     await page.goto('/en/profile');
     await page.getByRole('link', { name: 'Edit profile' }).click();
@@ -139,9 +144,7 @@ test.describe('authentication in the browser', () => {
   });
 
   test('offers two factor enrolment with a scannable QR', async ({ page }) => {
-    const { email, displayName } = identity();
-
-    await createAccount(page, { email, displayName });
+    await signUp(page);
 
     await page.goto('/en/settings/2fa');
     await expect(page.getByText('Two factor authentication is off')).toBeVisible();
@@ -164,7 +167,7 @@ test.describe('authentication in the browser', () => {
   test('enrols in 2FA, then signs in with the code', async ({ page }) => {
     const { email, displayName } = identity();
 
-    await createAccount(page, { email, displayName });
+    await signUp(page, { email, displayName });
 
     await page.goto('/en/settings/2fa');
     await page.getByRole('button', { name: 'Set up' }).click();

@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 
 import { CoursesModule } from '../courses/courses.module';
-import { QuestionGenerationModule } from '../questions-generation/questions-generation.module';
+import { QuestionGenerationModule } from '../question-generation/question-generation.module';
 import { PlacementController } from './placement.controller';
 import { PlacementService } from './placement.service';
 import { PlacementSessionService } from './placement-session.service';

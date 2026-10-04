@@ -1,9 +1,9 @@
 {
   "SessionNav": {
     "accountNav": "Compte",
-    "profile": "Profil",
     "signIn": "Se connecter",
-    "createAccount": "Créer un compte"
+    "createAccount": "Créer un compte",
+    "profile": "Profil"
   },
   "LanguageSwitcher": {
     "label": "Langue",
@@ -43,10 +43,11 @@
   "Course": {
     "title": "Cours",
     "heading": "{language}",
-    "level": "Niveau",
+    "level": "Niveau du cours",
+    "changeLevel": "Modifier le niveau",
     "dailyGoal": "Objectif quotidien",
     "minutesPerDay": "{minutes} min",
-    "retakePlacement": "Repasser le test de positionnement",
+    "takePlacement": "Passer le test de positionnement",
     "roadmapSoon": "Votre parcours apparaîtra ici",
     "practice": "Exercices",
     "thisCourse": "Ce cours"
@@ -54,15 +55,14 @@
   "Onboarding": {
     "title": "Commencer",
     "chooseCourseHeading": "Que voulez-vous apprendre ?",
-    "chooseCourseIntro": "Choisissez une langue et le temps que vous voulez y consacrer chaque jour. Le rythme se change plus tard.",
+    "chooseCourseIntro": "Choisissez une langue et le temps que vous voulez y consacrer chaque jour. Vous pourrez changer de rythme plus tard.",
     "languageLegend": "Langue à apprendre",
     "goalLegend": "Objectif quotidien",
     "goalMinutes": "{minutes} min",
     "next": "Suivant",
-    "chooseLevelIntro": "Passez le test de placement, ou indiquez votre niveau si vous le connaissez déjà.",
-    "takeTest": "Passer le test de placement",
+    "chooseLevelIntro": "Passez le test de positionnement, ou indiquez votre niveau si vous le connaissez déjà.",
+    "takeTest": "Passer le test de positionnement",
     "setLevelMyself": "Je connais déjà mon niveau",
-    "levelLegend": "Niveau",
     "confirmLevel": "Commencer à apprendre",
     "language": {
       "en": "English",
@@ -70,25 +70,32 @@
       "de": "Deutsch"
     },
     "dailyGoalSummary": "Objectif quotidien : {minutes} min",
-    "noNewLanguage": "Aucune nouvelle langue à ajouter pour le moment.",
+    "noNewLanguage": "Vous apprenez déjà toutes les langues proposées.",
     "backToCourse": "Revenir à mon cours en {language}",
     "languageInSentence": {
       "en": "anglais",
       "fr": "français",
       "de": "allemand"
     },
-    "levelTile": {
-      "A0": "Vous partez de zéro. Vos leçons viseront le niveau A1.",
-      "A1": "Vous vous débrouillez avec des phrases simples. Vos leçons viseront le niveau A2.",
-      "A2": "Vous gérez les échanges du quotidien. Vos leçons viseront le niveau B1.",
-      "B1": "Vous tenez une conversation sur des sujets familiers. Vos leçons viseront le niveau B2.",
-      "B2": "Vous vous exprimez avec aisance sur des sujets variés. Vos leçons viseront le niveau C1.",
-      "C1": "Vous vous exprimez couramment, y compris sur des sujets complexes. Vos leçons viseront le niveau C2.",
-      "C2": "Vous maîtrisez la langue. Vos leçons entretiendront et affineront ce niveau."
-    },
+    "back": "Retour"
+  },
+  "Level": {
+    "legend": "Votre niveau",
     "ladderYou": "Vous",
     "ladderGoal": "Objectif",
-    "back": "Retour"
+    "description": {
+      "A0": "Vous partez de zéro.",
+      "A1": "Vous vous débrouillez avec des phrases simples.",
+      "A2": "Vous gérez les échanges du quotidien.",
+      "B1": "Vous tenez une conversation sur des sujets familiers.",
+      "B2": "Vous vous exprimez avec aisance sur des sujets variés.",
+      "C1": "Vous vous exprimez couramment, y compris sur des sujets complexes.",
+      "C2": "Vous maîtrisez la langue."
+    },
+    "lessonsAt": "Vos leçons seront de niveau {level}.",
+    "lessonsAtTop": "Vos leçons entretiendront et affineront ce niveau.",
+    "save": "Enregistrer",
+    "cancel": "Annuler"
   },
   "ComingSoon": {
     "stillInDevelopment": "Ce mode est encore en développement. Revenez bientôt."
@@ -190,7 +197,7 @@
     "course": {
       "alreadyStarted": "Vous avez déjà commencé un cours dans cette langue",
       "notFound": "Vous n'avez pas encore de cours dans cette langue",
-      "notPlaced": "Passez d'abord le test de positionnement pour commencer ce cours"
+      "notPlaced": "Choisissez d'abord votre niveau pour commencer ce cours"
     },
     "lesson": {
       "notFound": "Cette leçon n'existe pas",
@@ -259,5 +266,37 @@
     "disabledStatus": "L'authentification à deux facteurs est désactivée.",
     "working": "En cours…",
     "setUp": "Configurer"
+  },
+  "Placement": {
+    "title": "Test de positionnement",
+    "startHeading": "Trouvez votre niveau",
+    "startDescription": "Des questions de vocabulaire, de grammaire et de compréhension écrite en {language}. Le test s'adapte à vos réponses et s'arrête dès qu'il connaît votre niveau. Chaque question est chronométrée.",
+    "startCurrent": "Vos leçons sont actuellement de niveau {level}. Le test fixera un nouveau niveau, que vous pourrez encore modifier ensuite.",
+    "startButton": "Commencer le test",
+    "back": "Retour",
+    "optionLabel": "Réponses possibles",
+    "timeLeft": "Secondes restantes",
+    "quitButton": "Quitter le test",
+    "quitConfirm": "Quitter maintenant ? Vos réponses jusqu'ici seront perdues.",
+    "quitConfirmYes": "Quitter",
+    "quitConfirmNo": "Continuer le test",
+    "resultHeading": "Votre résultat",
+    "score": "{correct, plural, one {# bonne réponse} other {# bonnes réponses}} sur {total}",
+    "allTimedOut": "Le temps s'est écoulé à chaque question : votre cours reste au niveau {level}.",
+    "allTimedOutNoLevel": "Le temps s'est écoulé à chaque question : aucun niveau n'a été fixé. Repassez le test ou choisissez votre niveau vous-même.",
+    "continueButton": "Continuer",
+    "backToCourse": "Retour au cours",
+    "chooseLevel": "Choisir votre niveau",
+    "overrideButton": "Ce n'est pas votre niveau ?",
+    "retakeButton": "Repasser le test",
+    "answersHeading": "Votre dernier résultat d'examen",
+    "answersHeadingLevel": "Votre dernier résultat d'examen – {level}",
+    "showText": "Afficher le texte",
+    "yourAnswer": "Votre réponse",
+    "correctAnswer": "Bonne réponse",
+    "noAnswer": "Temps écoulé",
+    "correct": "Correct",
+    "incorrect": "Incorrect",
+    "questionLevel": "Niveau {level}"
   }
 }

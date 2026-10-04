@@ -12,28 +12,23 @@ import { ExamSession } from './placement.schema';
 
 import { QuestionBank } from '../generated/prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
-import {
-  QuestionGenerationService,
-  REPLENISH_WHEN_REMAINING_AT_MOST,
-} from '../questions-generation/questions-generation.service';
+import { QuestionStockService } from '../question-generation/question-stock.service';
 
-export const LIMIT_UNSEEN_QUESTIONS_TO_RETRIEVE = Math.max(
-  100,
-  REPLENISH_WHEN_REMAINING_AT_MOST + 1,
-);
+export const LIMIT_UNSEEN_QUESTIONS_TO_RETRIEVE = 100;
 export const MAX_QUESTIONS_PER_LEVEL = PLACEMENT_ROUNDS.perCategory * QUESTION_CATEGORIES.length;
 
 @Injectable()
 export class PlacementQuestionService {
   constructor(
     private readonly prisma: PrismaService,
-    private readonly questionGeneration: QuestionGenerationService,
+    private readonly stock: QuestionStockService,
   ) {}
 
   /**
    * Retrieves a new question for the user's current level, balancing question categories.
-   * Prioritizes randomly selected unseen questions from the question bank and falls back to
-   * least-recently-seen questions not yet served in the current session when the unseen pool is exhausted.
+   * Prioritizes randomly selected unseen questions from the question bank, written ones before
+   * generated ones within a category, and falls back to the one the user saw longest ago, outside
+   * the current session, when the unseen pool is exhausted.
    * Any category running low on unseen questions is restocked in the background, without delaying this draw.
    *
    * @throws ConflictException If the exam has ended (`placement.expired`).
@@ -69,15 +64,18 @@ export class PlacementQuestionService {
             },
           },
         },
+        // Written rows first, so the take never hides one behind generated rows.
+        orderBy: { sourceId: { sort: 'asc', nulls: 'last' } },
         take: LIMIT_UNSEEN_QUESTIONS_TO_RETRIEVE,
       });
 
       availableByCategory[cat] = questions.length;
-      if (questions.length <= REPLENISH_WHEN_REMAINING_AT_MOST) {
-        this.questionGeneration.triggerReplenish(session.lang, level, cat);
-      }
-      if (questions.length > 0) {
-        availableCategoryQuestions.push(questions);
+      void this.stock.restock({ lang: session.lang, level, category: cat }, questions.length);
+      // Nobody reviewed a generated row, so it waits until the written ones are all seen.
+      const written = questions.filter((question) => question.sourceId !== null);
+      const servable = written.length > 0 ? written : questions;
+      if (servable.length > 0) {
+        availableCategoryQuestions.push(servable);
       }
     }
 
@@ -93,7 +91,8 @@ export class PlacementQuestionService {
       excludeQuestionIds.push(session.currentQuestionId);
     }
 
-    const recentSeen = await this.prisma.userSeenQuestion.findMany({
+    // Serving it bumps updatedAt, so repeated fallbacks cycle through the whole level.
+    const oldest = await this.prisma.userSeenQuestion.findFirst({
       where: {
         userId,
         ...(excludeQuestionIds.length > 0
@@ -108,18 +107,16 @@ export class PlacementQuestionService {
       orderBy: {
         updatedAt: 'asc',
       },
-      take: 10,
       include: {
         questionBank: true,
       },
     });
 
-    if (recentSeen.length === 0) {
+    if (oldest === null) {
       throw new NotFoundException('placement.poolExhausted');
     }
 
-    const randomSeen = recentSeen[Math.floor(Math.random() * recentSeen.length)];
-    return [availableByCategory, randomSeen.questionBank];
+    return [availableByCategory, oldest.questionBank];
   }
 
   /** The bank lists the answer first in almost every item, so the order must not leak it. */
@@ -182,6 +179,7 @@ export class PlacementQuestionService {
     const totalQuestions = this.getMaxQuestionsRemaining(session);
 
     return PlacementQuestionSchema.parse({
+      lang: session.lang,
       questionId: question.id,
       category: question.category,
       level: question.level,

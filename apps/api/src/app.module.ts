@@ -10,7 +10,6 @@ import { RedisModule } from './redis/redis.module';
 import { IdentityThrottlerGuard } from './throttler/identity-throttler.guard';
 import { UsersModule } from './users/users.module';
 import { CoursesModule } from './courses/courses.module';
-import { QuestionGenerationModule } from './questions-generation/questions-generation.module';
 import { PlacementModule } from './placement/placement.module';
 
 @Module({
@@ -26,7 +25,6 @@ import { PlacementModule } from './placement/placement.module';
     UsersModule,
     HealthModule,
     CoursesModule,
-    QuestionGenerationModule,
     PlacementModule,
   ],
   providers: [{ provide: APP_GUARD, useClass: IdentityThrottlerGuard }],

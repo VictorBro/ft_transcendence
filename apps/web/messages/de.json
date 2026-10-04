@@ -1,9 +1,9 @@
 {
   "SessionNav": {
     "accountNav": "Konto",
-    "profile": "Profil",
     "signIn": "Anmelden",
-    "createAccount": "Konto erstellen"
+    "createAccount": "Konto erstellen",
+    "profile": "Profil"
   },
   "LanguageSwitcher": {
     "label": "Sprache",
@@ -43,10 +43,11 @@
   "Course": {
     "title": "Kurs",
     "heading": "{language}",
-    "level": "Niveau",
+    "level": "Kursniveau",
+    "changeLevel": "Niveau ändern",
     "dailyGoal": "Tagesziel",
     "minutesPerDay": "{minutes} Min.",
-    "retakePlacement": "Einstufungstest wiederholen",
+    "takePlacement": "Einstufungstest machen",
     "roadmapSoon": "Hier erscheint dein Lernpfad",
     "practice": "Üben",
     "thisCourse": "Dieser Kurs"
@@ -54,15 +55,14 @@
   "Onboarding": {
     "title": "Loslegen",
     "chooseCourseHeading": "Was möchtest du lernen?",
-    "chooseCourseIntro": "Wähle eine Sprache und wie lange du täglich üben möchtest. Das Tempo lässt sich später ändern.",
-    "languageLegend": "Sprache zum Lernen",
+    "chooseCourseIntro": "Wähle eine Sprache und wie lange du täglich üben möchtest. Du kannst das Tempo später ändern.",
+    "languageLegend": "Sprache",
     "goalLegend": "Tagesziel",
     "goalMinutes": "{minutes} Min.",
     "next": "Weiter",
-    "chooseLevelIntro": "Mach den Einstufungstest, oder gib dein Niveau selbst an, wenn du es schon kennst.",
+    "chooseLevelIntro": "Mach den Einstufungstest oder gib dein Niveau selbst an, wenn du es schon kennst.",
     "takeTest": "Einstufungstest machen",
     "setLevelMyself": "Ich kenne mein Niveau bereits",
-    "levelLegend": "Niveau",
     "confirmLevel": "Mit dem Lernen beginnen",
     "language": {
       "en": "English",
@@ -70,25 +70,32 @@
       "de": "Deutsch"
     },
     "dailyGoalSummary": "Tagesziel: {minutes} Min.",
-    "noNewLanguage": "Derzeit keine neue Sprache zum Hinzufügen.",
+    "noNewLanguage": "Du lernst bereits alle verfügbaren Sprachen.",
     "backToCourse": "Zurück zu meinem {language}-Kurs",
     "languageInSentence": {
       "en": "Englisch",
       "fr": "Französisch",
       "de": "Deutsch"
     },
-    "levelTile": {
-      "A0": "Du fängst bei null an. Deine Lektionen zielen auf Niveau A1.",
-      "A1": "Du kommst mit einfachen Sätzen zurecht. Deine Lektionen zielen auf Niveau A2.",
-      "A2": "Du bewältigst alltägliche Gespräche. Deine Lektionen zielen auf Niveau B1.",
-      "B1": "Du führst Gespräche über vertraute Themen. Deine Lektionen zielen auf Niveau B2.",
-      "B2": "Du drückst dich zu vielen Themen sicher aus. Deine Lektionen zielen auf Niveau C1.",
-      "C1": "Du drückst dich fließend aus, auch bei komplexen Themen. Deine Lektionen zielen auf Niveau C2.",
-      "C2": "Du beherrschst die Sprache. Deine Lektionen erhalten und verfeinern dieses Niveau."
-    },
+    "back": "Zurück"
+  },
+  "Level": {
+    "legend": "Dein Niveau",
     "ladderYou": "Du",
     "ladderGoal": "Ziel",
-    "back": "Zurück"
+    "description": {
+      "A0": "Du fängst bei null an.",
+      "A1": "Du kommst mit einfachen Sätzen zurecht.",
+      "A2": "Du bewältigst alltägliche Gespräche.",
+      "B1": "Du führst Gespräche über vertraute Themen.",
+      "B2": "Du drückst dich zu vielen Themen sicher aus.",
+      "C1": "Du drückst dich fließend aus, auch bei komplexen Themen.",
+      "C2": "Du beherrschst die Sprache."
+    },
+    "lessonsAt": "Deine Lektionen sind auf Niveau {level}.",
+    "lessonsAtTop": "Deine Lektionen erhalten und verfeinern dieses Niveau.",
+    "save": "Speichern",
+    "cancel": "Abbrechen"
   },
   "ComingSoon": {
     "stillInDevelopment": "Dieser Modus ist noch in Entwicklung. Schau bald wieder vorbei."
@@ -190,7 +197,7 @@
     "course": {
       "alreadyStarted": "Du hast in dieser Sprache bereits einen Kurs begonnen",
       "notFound": "Du hast in dieser Sprache noch keinen Kurs",
-      "notPlaced": "Mach zuerst den Einstufungstest, um diesen Kurs zu beginnen"
+      "notPlaced": "Wähle zuerst dein Niveau, um diesen Kurs zu beginnen"
     },
     "lesson": {
       "notFound": "Diese Lektion gibt es nicht",
@@ -259,5 +266,37 @@
     "disabledStatus": "Die Zwei-Faktor-Authentifizierung ist deaktiviert.",
     "working": "Wird bearbeitet…",
     "setUp": "Einrichten"
+  },
+  "Placement": {
+    "title": "Einstufungstest",
+    "startHeading": "Finde dein Niveau",
+    "startDescription": "Fragen zu Wortschatz, Grammatik und Leseverstehen auf {language}. Der Test passt sich deinen Antworten an und endet, sobald er dein Niveau kennt. Jede Frage hat ein Zeitlimit.",
+    "startCurrent": "Deine Lektionen sind gerade auf Niveau {level}. Der Test legt ein neues Niveau fest, das du danach noch ändern kannst.",
+    "startButton": "Test starten",
+    "back": "Zurück",
+    "optionLabel": "Antwortmöglichkeiten",
+    "timeLeft": "Verbleibende Sekunden",
+    "quitButton": "Test abbrechen",
+    "quitConfirm": "Jetzt abbrechen? Deine bisherigen Antworten gehen verloren.",
+    "quitConfirmYes": "Abbrechen",
+    "quitConfirmNo": "Weitermachen",
+    "resultHeading": "Dein Ergebnis",
+    "score": "{correct} von {total} richtig",
+    "allTimedOut": "Bei jeder Frage ist die Zeit abgelaufen, deshalb bleibt dein Kurs auf Niveau {level}.",
+    "allTimedOutNoLevel": "Bei jeder Frage ist die Zeit abgelaufen, deshalb wurde kein Niveau festgelegt. Mach den Test noch einmal oder wähle dein Niveau selbst.",
+    "continueButton": "Weiter",
+    "backToCourse": "Zurück zum Kurs",
+    "chooseLevel": "Niveau wählen",
+    "overrideButton": "Nicht dein Niveau?",
+    "retakeButton": "Test wiederholen",
+    "answersHeading": "Dein letztes Prüfungsergebnis",
+    "answersHeadingLevel": "Dein letztes Prüfungsergebnis – {level}",
+    "showText": "Text anzeigen",
+    "yourAnswer": "Deine Antwort",
+    "correctAnswer": "Richtige Antwort",
+    "noAnswer": "Zeit abgelaufen",
+    "correct": "Richtig",
+    "incorrect": "Falsch",
+    "questionLevel": "Niveau {level}"
   }
 }

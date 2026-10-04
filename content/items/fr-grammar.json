@@ -87,9 +87,9 @@
       "sourceId": "fr-gram-0010",
       "level": "A2",
       "topic": "verb_usage",
-      "question": "Quand j'étais petit, je ___ au football tous les mercredis.",
-      "options": ["jouais", "joue", "ai joué", "jouerai"],
-      "answer": "jouais",
+      "question": "Quand nous étions petits, nous ___ d'habitude au football le mercredi.",
+      "options": ["jouions", "jouons", "avons joué", "jouerons"],
+      "answer": "jouions",
       "timeLimitS": 45
     },
     {
@@ -114,7 +114,7 @@
       "sourceId": "fr-gram-0013",
       "level": "B1",
       "topic": "pronouns",
-      "question": "Des vacances ? Oui, j'___ ai vraiment besoin.",
+      "question": "Des vacances ? Oui, nous ___ avons vraiment besoin.",
       "options": ["en", "y", "les", "leur"],
       "answer": "en",
       "timeLimitS": 60
@@ -160,7 +160,7 @@
       "level": "B2",
       "topic": "verb_usage",
       "question": "Après ___ ses études, il a voyagé un an en Asie.",
-      "options": ["avoir terminé", "terminer", "avoir terminant", "terminé"],
+      "options": ["avoir terminé", "terminer", "terminant", "terminé"],
       "answer": "avoir terminé",
       "timeLimitS": 60
     },
@@ -177,8 +177,8 @@
       "sourceId": "fr-gram-0020",
       "level": "B2",
       "topic": "verb_usage",
-      "question": "Tu ___ me prévenir que la réunion était annulée !",
-      "options": ["aurais pu", "avais pu", "auras pu", "pouvais"],
+      "question": "Je me suis déplacé pour rien : tu ___ me prévenir que la réunion était annulée !",
+      "options": ["aurais pu", "avais pu", "auras pu", "as pu"],
       "answer": "aurais pu",
       "timeLimitS": 60
     },
@@ -186,17 +186,17 @@
       "sourceId": "fr-gram-0021",
       "level": "C1",
       "topic": "syntax_and_sentence_structure",
-      "question": "À peine ___ la porte que le téléphone a sonné.",
-      "options": ["avait-elle ouvert", "elle avait ouvert", "avait ouvert-elle", "elle a ouvert"],
-      "answer": "avait-elle ouvert",
+      "question": "___ avait-elle ouvert la porte que le téléphone a sonné.",
+      "options": ["À peine", "Aussitôt", "Sans doute", "Encore"],
+      "answer": "À peine",
       "timeLimitS": 75
     },
     {
       "sourceId": "fr-gram-0022",
       "level": "C1",
       "topic": "verbs_morphology",
-      "question": "Je ne pense pas qu'il ___ la lettre avant son départ.",
-      "options": ["ait reçu", "a reçu", "avait reçu", "aura reçu"],
+      "question": "Il ne m'a toujours pas répondu, si tant est qu'il ___ ma lettre.",
+      "options": ["ait reçu", "a reçu", "aurait reçu", "avait reçu"],
       "answer": "ait reçu",
       "timeLimitS": 75
     },
@@ -204,9 +204,9 @@
       "sourceId": "fr-gram-0023",
       "level": "C1",
       "topic": "subordinate_clauses",
-      "question": "Il a continué à parler, ___ qu'on lui ait demandé de conclure.",
-      "options": ["bien", "alors", "tandis", "même"],
-      "answer": "bien",
+      "question": "Il aurait continué à parler, ___ on lui aurait demandé de conclure.",
+      "options": ["quand bien même", "même si", "à moins qu'", "pour peu qu'"],
+      "answer": "quand bien même",
       "timeLimitS": 75
     },
     {
@@ -222,8 +222,8 @@
       "sourceId": "fr-gram-0025",
       "level": "C1",
       "topic": "negation",
-      "question": "Il ne nous reste ___ à espérer que le temps s'améliore.",
-      "options": ["plus qu'", "que d'", "rien qu'", "guère"],
+      "question": "Nous avons tout essayé : il ne nous reste ___ à espérer que le temps s'améliore.",
+      "options": ["plus qu'", "pas qu'", "que d'", "guère"],
       "answer": "plus qu'",
       "timeLimitS": 75
     },
@@ -240,9 +240,9 @@
       "sourceId": "fr-gram-0027",
       "level": "C2",
       "topic": "syntax_and_sentence_structure",
-      "question": "Force est de ___ que les résultats sont décevants.",
-      "options": ["constater", "constatation", "constate", "constaté"],
-      "answer": "constater",
+      "question": "___ de constater que les résultats sont décevants.",
+      "options": ["Force est", "Forcé est", "Forcée est", "À force est"],
+      "answer": "Force est",
       "timeLimitS": 90
     },
     {

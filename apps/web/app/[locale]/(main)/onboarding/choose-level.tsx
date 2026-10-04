@@ -6,11 +6,11 @@ import { type Course, type Level } from '@ft/shared';
 
 import { Link, useRouter } from '@/i18n/navigation';
 import { setCourseLevel } from '@/lib/courses-client';
-import { BEGINNER, MASTERY_OPTIONS, nextLevel } from '@/lib/onboarding';
+import { nextLevel } from '@/lib/level';
 import { useErrorMessage } from '@/lib/error-message';
-import { FormError, SubmitButton } from '@/components/form';
+import { FormError, PRIMARY_BUTTON, SubmitButton } from '@/components/form';
 import { Flag } from '@/components/flag';
-import { LevelLadder } from './level-ladder';
+import { LevelPicker } from '@/components/level-picker';
 import { Rocket } from './rocket';
 
 /** Matches the `launch` keyframes in globals.css. */
@@ -96,10 +96,7 @@ export function ChooseLevel({ course }: { course: Course }) {
 
       {launching || picking ? null : (
         <div className="flex flex-col gap-3">
-          <Link
-            href={`/learn/${course.lang}/placement`}
-            className="rounded-md bg-slate-100 px-4 py-2 text-center text-sm font-medium text-slate-900"
-          >
+          <Link href={`/learn/${course.lang}/placement`} className={PRIMARY_BUTTON}>
             {t('takeTest')}
           </Link>
 
@@ -107,7 +104,7 @@ export function ChooseLevel({ course }: { course: Course }) {
             type="button"
             onClick={() => setPicking(true)}
             aria-expanded={picking}
-            className="self-center text-sm text-slate-300 underline underline-offset-4"
+            className="inline-flex min-h-11 items-center self-center text-sm text-slate-300 underline underline-offset-4"
           >
             {t('setLevelMyself')}
           </button>
@@ -120,38 +117,7 @@ export function ChooseLevel({ course }: { course: Course }) {
           className={`flex flex-col gap-6 ${launching ? 'hidden' : ''}`}
           noValidate
         >
-          <fieldset className="flex flex-col gap-3 border-0 p-0">
-            <legend className="mb-1 text-sm font-medium">{t('levelLegend')}</legend>
-            <div className="grid grid-cols-7 gap-2">
-              {MASTERY_OPTIONS.map((option) => (
-                <label
-                  key={option ?? BEGINNER}
-                  className="cursor-pointer rounded-md border border-slate-700 px-1 py-2 text-center text-sm has-checked:border-slate-100 has-checked:bg-slate-100 has-checked:text-slate-900 sm:px-4"
-                >
-                  <input
-                    type="radio"
-                    name="level"
-                    value={option ?? BEGINNER}
-                    checked={mastered === option}
-                    onChange={() => setMastered(option)}
-                    className="sr-only"
-                  />
-                  {option ?? BEGINNER}
-                </label>
-              ))}
-            </div>
-          </fieldset>
-
-          {/* role="status" so the change is announced, not only repainted. */}
-          {mastered === undefined ? null : (
-            <div
-              role="status"
-              className="flex flex-col gap-4 rounded-md border border-slate-800 bg-slate-900 px-4 py-4"
-            >
-              <LevelLadder level={mastered} />
-              <p className="text-sm text-slate-300">{t(`levelTile.${mastered ?? BEGINNER}`)}</p>
-            </div>
-          )}
+          <LevelPicker value={mastered} onChange={setMastered} />
 
           <FormError message={error} />
 
@@ -162,7 +128,7 @@ export function ChooseLevel({ course }: { course: Course }) {
             <button
               type="button"
               onClick={() => setPicking(false)}
-              className="self-center text-sm text-slate-300 underline underline-offset-4"
+              className="inline-flex min-h-11 items-center self-center text-sm text-slate-300 underline underline-offset-4"
             >
               {t('back')}
             </button>
