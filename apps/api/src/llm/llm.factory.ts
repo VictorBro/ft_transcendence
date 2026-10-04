@@ -2,7 +2,7 @@ import { FixtureProvider } from './fixture.provider';
 import { GeminiProvider } from './gemini.provider';
 import { LlmProvider } from './llm.provider';
 
-const DEFAULT_GEMINI_MODEL = 'gemini-3.1-flash-lite';
+const DEFAULT_GEMINI_MODEL = 'gemini-3.6-flash';
 
 type LlmEnv = Partial<Record<'LLM_PROVIDER' | 'LLM_API_KEY' | 'LLM_MODEL', string>>;
 
