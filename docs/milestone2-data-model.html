@@ -161,7 +161,7 @@ html{scroll-behavior:smooth}
 </div></section>
 
 <section class="g k-f" id="content"><div class="gh"><i class="ti ti-file" aria-hidden="true"></i>Content files (JSON)<span class="def">defined in #77</span><span class="def">content/</span></div>
-<div class="gd">The authored source of truth, committed to git. Outlines are the plan for a level; lesson files are the finished content the generator produces from them. One file per language and level.</div>
+<div class="gd">The authored source of truth, committed to git. Outlines are the plan for a level; lesson draft files contain the generated title, summary and tutor brief, but not the exercises used in an actual lesson. One file per language and level.</div>
 <div class="cards two">
 <div class="c" id="LessonOutlineFile"><div class="ct">LessonOutlineFile</div><div class="cp">outlines/&lt;lang&gt;-&lt;level&gt;.json</div><div class="f"><b>lang</b><br><b>level</b><br><b>entries</b>: LessonOutlineEntry[]<br>count = LESSONS_PER_LEVEL[level]<br>per kind = KIND_COUNTS[lang][level]<br>ids start with lang, unique in the file</div><div class="ref">Referenced in <span>#77</span><span>#88</span><span>#89</span><span>#90</span><span>#105</span></div></div>
 <div class="c gr" id="LessonOutlineEntry"><div class="ct">LessonOutlineEntry</div><div class="cp">classification + plan</div><div class="f"><b>id</b>: LessonId<br><b>kind</b>: LessonKind<br><b>topic?</b> grammar only<br><b>theme?</b> all other kinds<br><b>workingTitle</b> 1–80, <b>intent</b> 1–200</div><div class="ref">Referenced in <span>#77</span></div></div>
