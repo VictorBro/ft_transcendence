@@ -23,8 +23,9 @@ export default {
     // linting those commits when they already follow Conventional Commits, but
     // skip the legacy sentence-style subjects from the agent.
     (message) =>
-      message.includes('Co-authored-by: Copilot Autofix powered by AI <175728472+Copilot@users.noreply.github.com>') &&
-      !/^[a-z]+(?:\([^)]+\))?!?: .+/.test((message.split('\n', 1)[0] ?? '').trim()),
+      message.includes(
+        'Co-authored-by: Copilot Autofix powered by AI <175728472+Copilot@users.noreply.github.com>',
+      ) && !/^[a-z]+(?:\([^)]+\))?!?: .+/.test((message.split('\n', 1)[0] ?? '').trim()),
   ],
   rules: {
     'type-enum': [
