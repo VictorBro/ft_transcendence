@@ -39,6 +39,9 @@ export type BaseResult<T> =
  */
 export type SessionResult = BaseResult<SessionUser>;
 
+/** A 404 read as an answer, nothing there, rather than as a failure. */
+export type FindResult<T> = BaseResult<T> | { status: 'not-found' };
+
 /** Falls back to the compose service name when API_INTERNAL_URL is unset or blank. */
 export function resolveApiBaseUrl(raw: string | undefined): string {
   const trimmed = raw?.trim();
@@ -67,13 +70,13 @@ export function describeFetchError(error: unknown): string {
  * forwarded unchanged so the API can rate-limit the visitor. Request-context
  * errors and errors thrown by the callback propagate to the caller.
  *
- * @typeParam T - The fetcher's validated response data type.
+ * @typeParam R - The fetcher's result type.
  * @param fetcher - Async callback receiving the internal base URL and forwarded headers.
- * @returns The callback's result, preserving its response data type.
+ * @returns The callback's result, unchanged.
  */
-export async function fetchWithRequestHeaderAndIP<T>(
-  fetcher: (options: FetchSessionOptions) => Promise<BaseResult<T>>,
-): Promise<BaseResult<T>> {
+export async function fetchWithRequestHeaderAndIP<R>(
+  fetcher: (options: FetchSessionOptions) => Promise<R>,
+): Promise<R> {
   const store = await cookies();
   const cookie = store
     .getAll()
@@ -102,15 +105,31 @@ export async function fetchWithRequestHeaderAndIP<T>(
  * @param apiPath - API path relative to the configured internal base URL.
  * @param options - Base URL, forwarded headers, timeout, and optional fetch implementation.
  * @param urlParams - Query parameters; an empty record adds no question mark.
- * @returns Validated data on success, signed-out for HTTP 401, or unavailable
- * for other HTTP failures, invalid JSON or payloads, timeouts, and network errors.
+ * @param notFound - Read a 404 as not-found instead of unavailable.
+ * @returns Validated data on success, signed-out for HTTP 401, not-found for
+ * HTTP 404 when `notFound` is set, or unavailable for other HTTP failures,
+ * invalid JSON or payloads, timeouts, and network errors.
  */
+async function fetchJson<Schema extends z.ZodType>(
+  schema: Schema,
+  apiPath: string,
+  options: FetchSessionOptions,
+  urlParams: Record<string, string>,
+  notFound: true,
+): Promise<FindResult<z.infer<Schema>>>;
+async function fetchJson<Schema extends z.ZodType>(
+  schema: Schema,
+  apiPath: string,
+  options?: FetchSessionOptions,
+  urlParams?: Record<string, string>,
+): Promise<BaseResult<z.infer<Schema>>>;
 async function fetchJson<Schema extends z.ZodType>(
   schema: Schema,
   apiPath: string,
   options: FetchSessionOptions = {},
   urlParams: Record<string, string> = {},
-): Promise<BaseResult<z.infer<Schema>>> {
+  notFound = false,
+): Promise<FindResult<z.infer<Schema>>> {
   if (apiPath.includes('?')) {
     return { status: 'unavailable', reason: 'the path must not contain query parameters' };
   }
@@ -138,6 +157,10 @@ async function fetchJson<Schema extends z.ZodType>(
 
     if (response.status === 401) {
       return { status: 'signed-out' };
+    }
+
+    if (notFound && response.status === 404) {
+      return { status: 'not-found' };
     }
 
     if (response.status === 204) {
@@ -194,6 +217,20 @@ export async function apiGet<Schema extends z.ZodType>(
   urlParams: Record<string, string> = {},
 ): Promise<BaseResult<z.infer<Schema>>> {
   return fetchWithRequestHeaderAndIP((options) => fetchJson(schema, apiPath, options, urlParams));
+}
+
+/**
+ * Like apiGet, but a 404 is an answer, not a failure: the resource is not
+ * there, so the page shows that instead of an error boundary.
+ */
+export async function apiFind<Schema extends z.ZodType>(
+  schema: Schema,
+  apiPath: string,
+  urlParams: Record<string, string> = {},
+): Promise<FindResult<z.infer<Schema>>> {
+  return fetchWithRequestHeaderAndIP((options) =>
+    fetchJson(schema, apiPath, options, urlParams, true),
+  );
 }
 
 export type PingResult = { status: 'ok' } | { status: 'unreachable'; reason: string };

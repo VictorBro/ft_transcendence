@@ -43,7 +43,7 @@
       "level": "A1",
       "topic": "prepositions_and_case",
       "question": "Le chat dort ___ le canapé, on ne le voit pas.",
-      "options": ["sous", "dans", "entre", "chez"],
+      "options": ["sous", "sur", "entre", "chez"],
       "answer": "sous",
       "timeLimitS": 30
     },
@@ -54,7 +54,7 @@
       "question": "Tu peux ___ la table ? Le dîner est prêt.",
       "options": ["mettre", "poser", "placer", "monter"],
       "answer": "mettre",
-      "timeLimitS": 30
+      "timeLimitS": 45
     },
     {
       "sourceId": "fr-voca-0007",
@@ -63,7 +63,7 @@
       "question": "Mon téléphone n'a presque plus de ___, je dois le recharger.",
       "options": ["batterie", "essence", "monnaie", "lumière"],
       "answer": "batterie",
-      "timeLimitS": 30
+      "timeLimitS": 45
     },
     {
       "sourceId": "fr-voca-0008",
@@ -72,7 +72,7 @@
       "question": "Ce pull est trop ___ pour moi, il me faut la taille au-dessus.",
       "options": ["petit", "jeune", "bas", "léger"],
       "answer": "petit",
-      "timeLimitS": 30
+      "timeLimitS": 45
     },
     {
       "sourceId": "fr-voca-0009",
@@ -81,7 +81,7 @@
       "question": "Dépêche-toi, on va ___ le train !",
       "options": ["rater", "perdre", "laisser", "tomber"],
       "answer": "rater",
-      "timeLimitS": 30
+      "timeLimitS": 45
     },
     {
       "sourceId": "fr-voca-0010",
@@ -90,7 +90,7 @@
       "question": "___ ! J'ai encore oublié mes clés au bureau.",
       "options": ["Zut", "Merci", "Bravo", "Santé"],
       "answer": "Zut",
-      "timeLimitS": 30
+      "timeLimitS": 45
     },
     {
       "sourceId": "fr-voca-0011",
@@ -114,9 +114,9 @@
       "sourceId": "fr-voca-0013",
       "level": "B1",
       "topic": "adjectives",
-      "question": "Merci pour ton aide, c'est vraiment ___ de ta part.",
-      "options": ["gentil", "poli", "doux", "sage"],
-      "answer": "gentil",
+      "question": "Il ne prête jamais rien et refuse toujours de payer sa part : il est vraiment ___.",
+      "options": ["radin", "dépensier", "têtu", "bavard"],
+      "answer": "radin",
       "timeLimitS": 45
     },
     {
@@ -131,10 +131,10 @@
     {
       "sourceId": "fr-voca-0015",
       "level": "B1",
-      "topic": "prepositions_and_case",
-      "question": "Elle s'intéresse beaucoup ___ l'histoire de sa région.",
-      "options": ["à", "de", "pour", "sur"],
-      "answer": "à",
+      "topic": "adverbs",
+      "question": "Je ne l'ai pas fait ___, je te promets, c'était un accident.",
+      "options": ["exprès", "volontiers", "autrement", "auparavant"],
+      "answer": "exprès",
       "timeLimitS": 45
     },
     {
@@ -142,7 +142,7 @@
       "level": "B2",
       "topic": "verb_usage",
       "question": "Le gouvernement a décidé de ___ la réforme malgré les protestations.",
-      "options": ["maintenir", "retenir", "soutenir", "obtenir"],
+      "options": ["maintenir", "retenir", "entretenir", "détenir"],
       "answer": "maintenir",
       "timeLimitS": 45
     },
@@ -160,7 +160,7 @@
       "level": "B2",
       "topic": "adjectives",
       "question": "Les résultats de l'étude restent ___ : impossible d'en tirer une conclusion.",
-      "options": ["ambigus", "ambiants", "amovibles", "ambulants"],
+      "options": ["ambigus", "concluants", "rassurants", "précis"],
       "answer": "ambigus",
       "timeLimitS": 45
     },
@@ -176,9 +176,9 @@
     {
       "sourceId": "fr-voca-0020",
       "level": "B2",
-      "topic": "information_structure_and_pragmatics",
+      "topic": "adverbs",
       "question": "___, après des mois de discussions, le projet a été approuvé à l'unanimité.",
-      "options": ["Finalement", "Éventuellement", "Actuellement", "Forcément"],
+      "options": ["Finalement", "Éventuellement", "Actuellement", "Sensiblement"],
       "answer": "Finalement",
       "timeLimitS": 45
     },
@@ -187,7 +187,7 @@
       "level": "C1",
       "topic": "verb_usage",
       "question": "Les négociations ont ___ sur un accord de dernière minute.",
-      "options": ["débouché", "abouti", "conclu", "terminé"],
+      "options": ["débouché", "tablé", "insisté", "misé"],
       "answer": "débouché",
       "timeLimitS": 60
     },
@@ -205,7 +205,7 @@
       "level": "C1",
       "topic": "nouns_and_determiners",
       "question": "L'article établit un ___ éclairant entre les deux crises financières.",
-      "options": ["parallèle", "pareil", "semblable", "comparatif"],
+      "options": ["parallèle", "pareil", "semblable", "équivalent"],
       "answer": "parallèle",
       "timeLimitS": 60
     },
@@ -221,10 +221,10 @@
     {
       "sourceId": "fr-voca-0025",
       "level": "C1",
-      "topic": "information_structure_and_pragmatics",
+      "topic": "adjectives",
       "question": "Ses explications étaient pour le moins ___ : personne n'a compris où il voulait en venir.",
-      "options": ["confuses", "confondues", "confidentielles", "conformes"],
-      "answer": "confuses",
+      "options": ["nébuleuses", "scrupuleuses", "fructueuses", "chaleureuses"],
+      "answer": "nébuleuses",
       "timeLimitS": 60
     },
     {

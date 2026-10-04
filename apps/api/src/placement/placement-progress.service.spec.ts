@@ -1,4 +1,4 @@
-import { NotFoundException } from '@nestjs/common';
+import { ConflictException, NotFoundException } from '@nestjs/common';
 import { randomUUID } from 'node:crypto';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
@@ -9,9 +9,10 @@ import type { PrismaService } from '../prisma/prisma.service';
 import { PlacementProgressService } from './placement-progress.service';
 
 const row = questionRow();
-// Its answer is not listed first, unlike most bank rows.
+// Its answer is not listed first, unlike most bank rows, and it has a passage and its own level.
 const other = questionRow({
-  category: 'vocabulary',
+  category: 'reading',
+  level: 'A2',
   options: ['Baum', 'Haus', 'Auto', 'Zug'],
   answer: 'Haus',
 });
@@ -104,7 +105,7 @@ describe('PlacementProgressService', () => {
     });
 
     // `other` comes first in the bank, so answer order has to come from the session.
-    it('reports the level and every answer in the order given, skipping rows gone from the bank', async () => {
+    it('reports the target level and each answer at its question level, in order, skipping rows gone from the bank', async () => {
       const answers = [
         { questionId: row.id, choice: row.answer },
         { questionId: randomUUID(), choice: 'ist' },
@@ -114,10 +115,13 @@ describe('PlacementProgressService', () => {
       await expect(
         progress.getResult(examSession({ ended: true, level: 4, answers })),
       ).resolves.toEqual({
+        lang: 'de',
         targetLevel: 'C1',
+        applied: true,
         report: [
           {
             questionId: row.id,
+            level: 'B1',
             question: row.question,
             options: row.options,
             chosen: 'ist',
@@ -126,7 +130,9 @@ describe('PlacementProgressService', () => {
           },
           {
             questionId: other.id,
+            level: 'A2',
             question: other.question,
+            readText: other.readText,
             options: other.options,
             chosen: 'Baum',
             correct: 'Haus',
@@ -136,10 +142,25 @@ describe('PlacementProgressService', () => {
       });
     });
 
-    it('reports targetLevel null for a stored run without a level', async () => {
-      const result = await progress.getResult(examSession({ ended: true, level: null }));
+    // The one real answer may even be wrong: it is the learner taking the test.
+    it.each([
+      ['every answer timed out', false, null],
+      ['one answer was given', true, wrongChoice(row)],
+    ])('reports a run where %s as applied: %s', async (_, applied, choice) => {
+      const answers = [
+        { questionId: other.id, choice: null },
+        { questionId: row.id, choice },
+      ];
 
-      expect(result).toEqual({ targetLevel: null, report: [] });
+      await expect(
+        progress.getResult(examSession({ ended: true, level: 0, answers })),
+      ).resolves.toMatchObject({ targetLevel: 'A1', applied });
+    });
+
+    it('refuses an ended run without a level', async () => {
+      await expect(progress.getResult(examSession({ ended: true, level: null }))).rejects.toThrow(
+        new ConflictException('placement.invalidSession'),
+      );
     });
   });
 });

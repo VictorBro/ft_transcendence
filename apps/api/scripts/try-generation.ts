@@ -1,54 +1,57 @@
 /**
- * Full-path check: prompt -> provider -> validation -> retry -> createMany, for the
- * vocabulary category of one level in every learnable language, then prints the rows
- * each cell inserted.
- * WRITES to the database (sourceId = null) and, with Gemini, spends tokens: 3 LLM calls.
+ * Restocks one level of the bank for real (prompt, provider, validation, dedup,
+ * insert) in every learnable language, for the given categories or all three,
+ * and prints what each cell gained. WRITES to DATABASE_URL and, with Gemini,
+ * spends tokens: one call per cell, two when it retries.
  *
- *   LLM_PROVIDER=gemini pnpm --filter @ft/api exec tsx --env-file=../../.env scripts/try-generation.ts b1
+ *   LLM_PROVIDER=gemini pnpm --filter @ft/api generation:try b1 vocabulary grammar
  */
-import { ConfigService } from '@nestjs/config';
-import { LEARNABLE_LANGUAGES, LEVELS, LevelSchema, QuestionCategory } from '@ft/shared';
-import { FixtureProvider } from '../src/llm/fixture.provider';
-import { GeminiProvider } from '../src/llm/gemini.provider';
-import { selectLlmProvider } from '../src/llm/llm.module';
-import { PrismaService } from '../src/prisma/prisma.service';
-import { QuestionGenerationService } from '../src/questions-generation/questions-generation.service';
+import {
+  LEARNABLE_LANGUAGES,
+  LEVELS,
+  LevelSchema,
+  QUESTION_CATEGORIES,
+  QuestionCategorySchema,
+} from '@ft/shared';
+import { z } from 'zod';
 
-const CATEGORY: QuestionCategory = 'vocabulary';
+import { createLlmProvider } from '../src/llm/llm.factory';
+import { PrismaService } from '../src/prisma/prisma.service';
+import { QuestionStockService } from '../src/question-generation/question-stock.service';
 
 async function main() {
-  // Accepts "b1" as well as "B1".
-  const parsedLevel = LevelSchema.safeParse(process.argv[2]?.toUpperCase());
-  if (!parsedLevel.success) {
-    console.error(`Usage: try-generation.ts <level>, level one of ${LEVELS.join(', ')}`);
+  const level = LevelSchema.safeParse(process.argv[2]?.toUpperCase());
+  const picked = z.array(QuestionCategorySchema).safeParse(process.argv.slice(3));
+  if (!level.success || !picked.success) {
+    console.error(
+      `Usage: generation:try <${LEVELS.join('|')}> [${QUESTION_CATEGORIES.join('|')} ...]`,
+    );
     process.exitCode = 1;
     return;
   }
-  const level = parsedLevel.data;
-
-  // Without a module, ConfigService reads straight from process.env.
-  const config = new ConfigService();
-  const provider = selectLlmProvider(
-    config.get<string>('LLM_PROVIDER', 'fixture'),
-    new FixtureProvider(),
-    new GeminiProvider(config),
-  );
+  const categories = picked.data.length > 0 ? picked.data : QUESTION_CATEGORIES;
   const prisma = new PrismaService();
-  const service = new QuestionGenerationService(prisma, provider);
+  const stock = new QuestionStockService(prisma, createLlmProvider(process.env));
 
   try {
-    // One call per language, one after the other.
     for (const lang of LEARNABLE_LANGUAGES) {
-      const started = new Date();
-      // Bracket access skips `private`: same method the API runs in the background, awaited here.
-      await service['replenishQuestions'](lang, level, CATEGORY);
+      for (const category of categories) {
+        const cell = { lang, level: level.data, category };
+        const started = new Date();
+        const { status } = await stock.restock(cell, 0);
+        const ms = Date.now() - started.getTime();
+        if (status !== 'filled') process.exitCode = 1;
 
-      const rows = await prisma.questionBank.findMany({
-        where: { lang, level, category: CATEGORY, sourceId: null, createdAt: { gte: started } },
-        orderBy: { createdAt: 'asc' },
-      });
-      console.log(`\n=== ${lang}-${level}-${CATEGORY}: ${rows.length} rows inserted ===`);
-      console.log(JSON.stringify(rows, null, 2));
+        const rows = await prisma.questionBank.findMany({
+          where: { ...cell, sourceId: null, createdAt: { gte: started } },
+          select: { topic: true, readText: true, question: true, options: true, answer: true },
+          orderBy: { createdAt: 'asc' },
+        });
+        console.log(
+          `\n=== ${lang} ${level.data} ${category}: ${status}, ${rows.length} new, ${ms} ms`,
+        );
+        console.log(JSON.stringify(rows, null, 2));
+      }
     }
   } finally {
     await prisma.$disconnect();

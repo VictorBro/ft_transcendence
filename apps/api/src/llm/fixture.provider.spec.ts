@@ -1,31 +1,17 @@
 import { describe, expect, it } from 'vitest';
-import { generatedBatchSchema, READING_BATCH_SIZE, TOPICS } from '@ft/shared';
-import { buildGenerateQuestionsPrompt } from '../questions-generation/prompts/generate-questions.prompt';
+
 import { FixtureProvider } from './fixture.provider';
+import { LlmError } from './llm.provider';
 
 describe('FixtureProvider', () => {
-  const provider = new FixtureProvider();
+  // Not retryable, so a restock gives up at once and cools down instead of asking twice.
+  it('declines every request as a failure nothing can retry', async () => {
+    const reply = new FixtureProvider().generateStructured();
 
-  it.each(['grammar', 'vocabulary'] as const)(
-    'returns one valid question per topic for %s',
-    async (category) => {
-      const batch = await provider.generateStructured(
-        buildGenerateQuestionsPrompt({ lang: 'en', level: 'A1', category }),
-      );
-
-      const parsed = generatedBatchSchema(category).safeParse(batch);
-      expect(parsed.success).toBe(true);
-      expect(parsed.data?.items).toHaveLength(TOPICS.length);
-    },
-  );
-
-  it('returns a valid reading batch, each question with its passage', async () => {
-    const batch = await provider.generateStructured(
-      buildGenerateQuestionsPrompt({ lang: 'en', level: 'A1', category: 'reading' }),
-    );
-
-    const parsed = generatedBatchSchema('reading').safeParse(batch);
-    expect(parsed.success).toBe(true);
-    expect(parsed.data?.items).toHaveLength(READING_BATCH_SIZE);
+    await expect(reply).rejects.toBeInstanceOf(LlmError);
+    await expect(reply).rejects.toMatchObject({
+      message: 'LLM_PROVIDER=fixture writes no questions',
+      retryable: false,
+    });
   });
 });

@@ -79,3 +79,18 @@ export async function expectFitsTheScreen(page: Page, route: string): Promise<vo
       .join('\n')}\n`,
   ).toEqual([]);
 }
+
+/**
+ * From `lg` the dashboard shell is pinned to the window and each pane scrolls
+ * on its own, so the document must not scroll at all: when it does, the header
+ * and footer scroll away with the content. Needs a desktop viewport.
+ */
+export async function expectPinned(page: Page, route: string): Promise<void> {
+  const overflow = await page.evaluate(
+    () => document.documentElement.scrollHeight - document.documentElement.clientHeight,
+  );
+  expect(
+    overflow,
+    `${route} scrolls the whole page by ${overflow}px instead of only its pane`,
+  ).toBeLessThanOrEqual(0);
+}

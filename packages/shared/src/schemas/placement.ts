@@ -20,6 +20,8 @@ export const PLACEMENT_ROUNDS = { perCategory: 2, maxMistakes: 1 } as const;
  */
 export const PlacementQuestionSchema = z
   .strictObject({
+    /** The run's, so a page for another language can tell it is not its own. */
+    lang: LanguageSchema,
     questionId: z.uuid(),
     category: QuestionCategorySchema,
     level: LevelSchema,
@@ -52,7 +54,11 @@ export type SubmitAnswerInput = z.infer<typeof SubmitAnswerSchema>;
 /** One line of the debrief, and the only place an answer is published. */
 export const PlacementReportEntrySchema = z.object({
   questionId: z.uuid(),
+  /** The question's own, so the debrief shows which level each answer probed. */
+  level: LevelSchema,
   question: z.string().min(1),
+  /** Reading questions only, so the answer can be checked against its text. */
+  readText: z.string().min(1).optional(),
   options: z.array(z.string().min(1)).length(OPTIONS_PER_ITEM),
   chosen: z.string().min(1).nullable(),
   correct: z.string().min(1),
@@ -62,7 +68,10 @@ export type PlacementReportEntry = z.infer<typeof PlacementReportEntrySchema>;
 
 /** The verdict, with the answers it was drawn from. */
 export const PlacementResultSchema = z.object({
-  targetLevel: LevelSchema.nullable(),
+  lang: LanguageSchema,
+  targetLevel: LevelSchema,
+  /** Whether the verdict was written to the course: false when every answer timed out. */
+  applied: z.boolean(),
   report: z.array(PlacementReportEntrySchema),
 });
 export type PlacementResult = z.infer<typeof PlacementResultSchema>;

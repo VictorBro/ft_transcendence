@@ -12,6 +12,7 @@ import {
   DEFAULT_TIMEOUT_MS,
   describeFetchError,
   fetchSession,
+  apiFind,
   apiGet,
   HEALTH_PATH,
   pingApi,
@@ -294,9 +295,60 @@ describe('apiGet', () => {
   });
 });
 
+describe('apiFind', () => {
+  const schema = z.object({ name: z.string() });
+
+  it('returns the data and forwards the cookie and the visitor address', async () => {
+    const fetchMock = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(Response.json({ name: 'Alice' }));
+    try {
+      await expect(apiFind(schema, '/api/placement')).resolves.toEqual({
+        status: 'ok',
+        data: { name: 'Alice' },
+      });
+      expect(fetchMock).toHaveBeenCalledWith(
+        `${DEFAULT_API_INTERNAL_URL}/api/placement`,
+        expect.objectContaining({
+          headers: {
+            accept: 'application/json',
+            cookie: 'ft.sid=abc',
+            'x-forwarded-for': '88.10.20.30',
+          },
+        }),
+      );
+    } finally {
+      fetchMock.mockRestore();
+    }
+  });
+
+  // A 404 means nothing is there, which the page can show. Every other failure
+  // stays unavailable: a 409 is a placement run that exists but is broken.
+  it.each([
+    [404, 'not-found'],
+    [401, 'signed-out'],
+    [409, 'unavailable'],
+    [500, 'unavailable'],
+    [204, 'unavailable'],
+  ])('maps HTTP %i to %s', async (status, expected) => {
+    const fetchMock = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(new Response(null, { status }));
+    try {
+      await expect(apiFind(schema, '/api/placement')).resolves.toMatchObject({
+        status: expected,
+      });
+    } finally {
+      fetchMock.mockRestore();
+    }
+  });
+});
+
 describe('server GET failure results', () => {
   it.each([
     [401, 'signed-out'],
+    // Only apiFind reads a 404 as an answer.
+    [404, 'unavailable'],
     [500, 'unavailable'],
   ])('maps HTTP %i to %s', async (status, expectedStatus) => {
     const fetchMock = vi
