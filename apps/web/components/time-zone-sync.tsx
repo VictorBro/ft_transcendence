@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 
-import { useRouter } from '@/i18n/navigation';
+import { usePathname, useRouter } from '@/i18n/navigation';
 import { updateProfile } from '@/lib/auth-client';
 
 /**
@@ -15,6 +15,9 @@ import { updateProfile } from '@/lib/auth-client';
  */
 export function TimeZoneSync({ storedTimeZone }: { storedTimeZone: string }) {
   const router = useRouter();
+  // Read only as a trigger: the layout stays mounted from page to page, so
+  // without it a failed PATCH would wait for a full reload.
+  const pathname = usePathname();
 
   useEffect(() => {
     const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -28,7 +31,7 @@ export function TimeZoneSync({ storedTimeZone }: { storedTimeZone: string }) {
         router.refresh();
       }
     });
-  }, [storedTimeZone, router]);
+  }, [storedTimeZone, router, pathname]);
 
   return null;
 }
