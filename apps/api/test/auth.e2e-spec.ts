@@ -48,7 +48,7 @@ describe('auth (e2e)', () => {
       .send({ email, displayName, password })
       .expect(201);
 
-    expect(response.body).toMatchObject({ email, displayName, role: 'USER' });
+    expect(response.body).toMatchObject({ email, displayName, role: 'USER', timeZone: 'UTC' });
     expect(response.body).not.toHaveProperty('passwordHash');
 
     const cookie = response.headers['set-cookie'][0];
@@ -87,6 +87,7 @@ describe('auth (e2e)', () => {
     await agent.post('/api/auth/login').send({ email, password }).expect(200);
     const me = await agent.get('/api/auth/me').expect(200);
     expect(me.body.email).toBe(email);
+    expect(me.body.timeZone).toBe('UTC');
 
     await agent.post('/api/auth/logout').expect(204);
     await agent.get('/api/auth/me').expect(401);

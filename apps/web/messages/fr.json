@@ -184,7 +184,8 @@
       "invalidFile": "Ce fichier ne peut pas être utilisé comme avatar. Essayez un PNG, JPEG ou WebP."
     },
     "profile": {
-      "noChanges": "Modifiez au moins un champ"
+      "noChanges": "Modifiez au moins un champ",
+      "invalidTimeZone": "Ce fuseau horaire n'est pas reconnu"
     },
     "twoFactor": {
       "codeFormat": "Saisissez le code à six chiffres de votre application d'authentification",

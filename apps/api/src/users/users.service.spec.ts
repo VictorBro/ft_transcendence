@@ -20,6 +20,7 @@ const ROW = {
   displayName: 'Ada',
   avatarUrl: null as string | null,
   locale: 'en',
+  timeZone: 'UTC',
   role: 'USER',
   createdAt: new Date(),
 };
