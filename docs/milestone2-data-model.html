@@ -13,10 +13,10 @@
   --font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   --font-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
 }
-.k-f{--gb:#FAEEDA;--gd:#EF9F27;--gt:#633806}.k-c{--gb:#EEEDFE;--gd:#AFA9EC;--gt:#3C3489}.k-q{--gb:#E1F5EE;--gd:#5DCAA5;--gt:#085041}.k-d{--gb:#EAF3DE;--gd:#97C459;--gt:#27500A}.k-a{--gb:#FAECE7;--gd:#F0997B;--gt:#712B13}.gr{--cb:#F1EFE8}.k-e{--gb:#E6F1FB;--gd:#85B7EB;--gt:#0C447C}.k-s{--gb:#FBEAF0;--gd:#ED93B1;--gt:#72243E}.k-h{--gb:#F1EFE8;--gd:#B4B2A9;--gt:#444441}
+.k-f{--gb:#FAEEDA;--gd:#EF9F27;--gt:#633806}.k-c{--gb:#EEEDFE;--gd:#AFA9EC;--gt:#3C3489}.k-q{--gb:#E1F5EE;--gd:#5DCAA5;--gt:#085041}.k-d{--gb:#EAF3DE;--gd:#97C459;--gt:#27500A}.k-a{--gb:#FAECE7;--gd:#F0997B;--gt:#712B13}.gr{--cb:#F1EFE8}.k-e{--gb:#E6F1FB;--gd:#85B7EB;--gt:#0C447C}.k-n{--gb:#FBF3DB;--gd:#E0B84A;--gt:#5C4405}.k-s{--gb:#FBEAF0;--gd:#ED93B1;--gt:#72243E}.k-h{--gb:#F1EFE8;--gd:#B4B2A9;--gt:#444441}
 @media (prefers-color-scheme:dark){
   :root{--m1-bg:#3A3A37;--surface-0:#1F1E1D;--surface-1:#262624;--surface-2:#30302E;--border:rgba(222,220,209,.15);--text-primary:#F5F4EF;--text-secondary:#C2C0B6;--text-muted:#9C9A92;--text-accent:#85B7EB}
-  .k-f{--gb:#412402;--gd:#BA7517;--gt:#FAC775}.k-c{--gb:#26215C;--gd:#7F77DD;--gt:#CECBF6}.k-q{--gb:#04342C;--gd:#1D9E75;--gt:#9FE1CB}.k-d{--gb:#173404;--gd:#639922;--gt:#C0DD97}.k-a{--gb:#4A1B0C;--gd:#D85A30;--gt:#F5C4B3}.gr{--cb:#444441}.k-e{--gb:#042C53;--gd:#378ADD;--gt:#B5D4F4}.k-s{--gb:#4B1528;--gd:#D4537E;--gt:#F4C0D1}.k-h{--gb:#2C2C2A;--gd:#5F5E5A;--gt:#D3D1C7}
+  .k-f{--gb:#412402;--gd:#BA7517;--gt:#FAC775}.k-c{--gb:#26215C;--gd:#7F77DD;--gt:#CECBF6}.k-q{--gb:#04342C;--gd:#1D9E75;--gt:#9FE1CB}.k-d{--gb:#173404;--gd:#639922;--gt:#C0DD97}.k-a{--gb:#4A1B0C;--gd:#D85A30;--gt:#F5C4B3}.gr{--cb:#444441}.k-e{--gb:#042C53;--gd:#378ADD;--gt:#B5D4F4}.k-n{--gb:#3A2E06;--gd:#B08A1E;--gt:#F2DB94}.k-s{--gb:#4B1528;--gd:#D4537E;--gt:#F4C0D1}.k-h{--gb:#2C2C2A;--gd:#5F5E5A;--gt:#D3D1C7}
 }
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--font-sans)}
@@ -100,6 +100,7 @@ html{scroll-behavior:smooth}
 .prod:focus-visible{outline:2px solid var(--text-accent);outline-offset:1px}
 .prod .ti-arrow-up-right{color:var(--text-muted)}
 .topnav.repo .repo-l{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--text-primary);padding:5px 8px 5px 10px;border-right:0.5px solid var(--border);margin-right:2px}
+.f .md{font-family:var(--font-sans);color:var(--text-primary)}
 </style>
 </head>
 <body>
@@ -110,7 +111,7 @@ html{scroll-behavior:smooth}
 
 <div class="leg">
 <span class="m k-e jump" data-target="enums" role="link" tabindex="0">Enums + constants · #77 / #79</span><span class="m k-c jump" data-target="contract" role="link" tabindex="0">Shared contract · #77</span><span class="m k-f jump" data-target="content" role="link" tabindex="0">Content files · #77</span><span class="m k-q jump" data-target="checks" role="link" tabindex="0">CI checks + seed · #77 / #79</span><span class="m k-d jump" data-target="database" role="link" tabindex="0">Database · #78 / #79</span><span class="m k-a jump" data-target="api" role="link" tabindex="0">API schemas · #77 / #94</span><span class="m k-s jump" data-target="service" role="link" tabindex="0">Service types · #80 / #82 / #94</span><span class="m k-h jump" data-target="helper" role="link" tabindex="0">Helper types · one issue each</span>
-</div>
+<span class="m k-n jump" data-target="modules" role="link" tabindex="0">NestJS modules</span></div>
 <p class="stleg" id="stleg"><b>Issue status</b><span><i style="background:var(--st-open)"></i>open</span><span><i style="background:var(--st-work)"></i>in work (assigned or a PR linked)</span><span><i style="background:var(--st-closed)"></i>closed</span><span><i class="ready"></i>green frame: ready, open and not blocked, nobody on it yet</span><span id="live">Snapshot of 4 October 2026, refreshed from GitHub on load.</span></p>
 <p class="m1note"><i aria-hidden="true"></i>Grey cards tagged "from milestone 1", "existing" or "Prisma" are reused, not reimplemented.</p>
 
@@ -250,6 +251,17 @@ html{scroll-behavior:smooth}
 <span class="m k-a">FinishLesson</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-d">LessonResult, UserLevel</span><span class="d">Upserts the result (best score kept) and may write the streak.</span>
 <span class="m k-d">LessonResult, UserLevel</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-a">FinishResult</span><span class="d">countedToday and doneCount come from that day's rows; goalJustMet is true only when this call wrote the streak.</span>
 </div></div></section>
+<section class="g k-n" id="modules"><div class="gh"><i class="ti ti-box-model-2" aria-hidden="true"></i>NestJS modules<span class="def">apps/api/src</span><span class="def">PrismaModule and RedisModule are global, so no module imports them.</span></div>
+<div class="gd">The modules this milestone adds or changes in the API, with their routes, providers and the issues that touch them. "planned" is not on main yet, "changed" exists and gains code here.</div>
+<div class="cards two">
+<div class="c" id="LessonsModule"><div class="ct">LessonsModule<span class="pt" title="Planned in milestone 2, not on main yet">planned</span></div><div class="cp">apps/api/src/lessons · new, registered in app.module.ts</div><div class="f"><span class="md">Everything a learner does with lessons: the daily view, the searchable list, finishing a lesson, and from #95 XP, the daily challenge and achievements.</span><br><b>Controller</b>: LessonsController, /api/courses/:lang<br><b>Routes</b>: GET today, GET lessons, GET lessons/:id (#81); PUT lessons/:id/result behind LessonStubGuard (#82); GET achievements (#95)<br><b>Providers</b>: LessonsService: the reads (#81) and finish (#82); LessonStubGuard (#82)<br><b>Plain functions</b>: roadmap.rules.ts (#80), goal.ts: lockCourse, meetGoal (#82), gamification.rules.ts (#94), gamification.ts: award (#95)<br><b>Uses</b>: PrismaService; whichever of #81 and #82 lands first creates the module</div><div class="ref">Referenced in <span>#80</span><span>#81</span><span>#82</span><span>#85</span><span>#94</span><span>#95</span><span>#96</span></div></div>
+<div class="c m1" id="CoursesModule-m2"><div class="ct">CoursesModule<span class="pt" title="Existing module, changed in milestone 2">changed</span></div><div class="cp">apps/api/src/courses · existing, changed</div><div class="f"><span class="md">setGoal gets its own interactive transaction under the course lock, so lowering the goal can meet the day and award its XP.</span><br><b>#82</b>: setGoal: lockCourse, update goal and activeLang, then meetGoal; setLevel keeps write() unchanged<br><b>#95</b>: setGoal also calls award<br><b>Why no new provider</b>: lockCourse and meetGoal are plain functions in lessons/goal.ts, so no circular import</div><div class="ref">Referenced in <span>#82</span><span>#95</span></div></div>
+<div class="c m1" id="UsersModule"><div class="ct">UsersModule · AuthModule<span class="pt" title="Existing modules, changed in milestone 2">changed</span></div><div class="cp">apps/api/src/users · apps/api/src/auth · existing, changed</div><div class="f"><span class="md">The learner's time zone: stored on the user, sent with the session, written once by the browser when it differs.</span><br><b>#78</b>: PATCH /api/users/me accepts timeZone (TimeZoneSchema); AuthService.toSessionUser maps it; GET /api/auth/me returns it</div><div class="ref">Referenced in <span>#78</span></div></div>
+<div class="c m1" id="AppModule"><div class="ct">AppModule · app.setup.ts<span class="pt" title="Existing module, changed in milestone 2">changed</span></div><div class="cp">apps/api/src · existing, changed</div><div class="f"><span class="md">Wires every module, and from #108 makes every error message an error code.</span><br><b>#81</b>: imports LessonsModule<br><b>#108</b>: validation pipe throws the Zod issue codes; ThrottlerModule errorMessage is a code</div><div class="ref">Referenced in <span>#81</span><span>#108</span></div></div>
+<div class="c m1" id="LlmModule-m2"><div class="ct">LlmModule<span class="pt" title="Existing module, reused in milestone 2">reused</span></div><div class="cp">apps/api/src/llm · existing, reused</div><div class="f"><span class="md">Unchanged as a module. The lesson draft generator builds its provider the same way, outside Nest.</span><br><b>#83</b>: LlmPurpose gains lesson-draft:${LessonKind}; createLlmProvider from LLM_PROVIDER, gemini only</div><div class="ref">Referenced in <span>#83</span></div></div>
+<div class="c" id="Outside-Nest"><div class="ct">Outside Nest</div><div class="cp">scripts and the seed · no module</div><div class="f"><span class="md">Code of this milestone that runs without a Nest context, so it builds what it needs by hand.</span><br><b>Generator</b>: apps/api/scripts/generate-lessons.ts and lessons/generator (#83): lessons:generate &lt;lang&gt; &lt;level&gt;<br><b>Seed</b>: prisma/seed.ts: seedLessons (#79), seedDemo with new AuthService, CoursesService, LessonsService (#85)</div><div class="ref">Referenced in <span>#79</span><span>#83</span><span>#85</span></div></div>
+</div></section>
+
 </main>
 <script src="gh-status.js"></script>
 <script>
