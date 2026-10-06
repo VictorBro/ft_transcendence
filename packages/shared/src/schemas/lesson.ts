@@ -179,7 +179,7 @@ export const LessonBriefSchema = z.strictObject({
   examples: z.array(text(BRIEF_TEXT_MAX)).min(BRIEF_EXAMPLES.min).max(BRIEF_EXAMPLES.max),
   pitfalls: z.array(text(BRIEF_TEXT_MAX)).min(BRIEF_PITFALLS.min).max(BRIEF_PITFALLS.max),
   /**
-   * The one optional part of the brief: LessonEntrySchema requires it on
+   * The one optional part of the brief: LessonDraftEntrySchema requires it on
    * vocabulary lessons, the other kinds may leave it out.
    */
   vocabulary: z
@@ -235,14 +235,14 @@ export type LessonDraft = z.infer<typeof LessonDraftSchema>;
  * The outline's classification plus the draft. No lang, level or position:
  * the seed takes them from the file and the entry's place in it.
  */
-export const LessonEntrySchema = z
+export const LessonDraftEntrySchema = z
   .strictObject({ ...classification, ...LessonDraftSchema.shape })
   .refine(hasItsClassification, CLASSIFICATION_ISSUE)
   .refine((entry) => entry.kind !== 'vocabulary' || entry.brief.vocabulary !== undefined, {
     message: 'vocabulary lessons need brief.vocabulary',
     path: ['brief', 'vocabulary'],
   });
-export type LessonEntry = z.infer<typeof LessonEntrySchema>;
+export type LessonDraftEntry = z.infer<typeof LessonDraftEntrySchema>;
 
 /**
  * Ids start with the file's own language and are unique in the file. Reported
@@ -283,21 +283,21 @@ export const LessonOutlineFileSchema = z
 export type LessonOutlineFile = z.infer<typeof LessonOutlineFileSchema>;
 
 /** content/lessons/<lang>-<level>.json, in the same order as its outline. */
-export const LessonFileSchema = z
+export const LessonDraftFileSchema = z
   .strictObject({
     lang: LanguageSchema,
     level: LevelSchema,
-    lessons: z.array(LessonEntrySchema).min(1),
+    drafts: z.array(LessonDraftEntrySchema).min(1),
   })
   .superRefine((file, ctx) => {
     checkIds(
       file.lang,
-      file.lessons.map((lesson) => lesson.id),
-      'lessons',
+      file.drafts.map((draft) => draft.id),
+      'drafts',
       ctx,
     );
   });
-export type LessonFile = z.infer<typeof LessonFileSchema>;
+export type LessonDraftFile = z.infer<typeof LessonDraftFileSchema>;
 
 /** `content/outlines/<lang>-<level>.json`, e.g. `de-a1.json`. */
 export function outlineFileName(lang: string, level: Level): string {
