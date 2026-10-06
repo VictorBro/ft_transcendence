@@ -269,11 +269,11 @@
       "intent": "Read a blog post about one person's working day (a nurse, a baker, a bus driver) and find their routine, their hours and what they like and dislike about the job."
     },
     {
-      "id": "en-could-for-past-ability-and-requests",
+      "id": "en-could-for-past-ability",
       "kind": "grammar",
       "topic": "verb_usage",
-      "workingTitle": "Could: past ability and polite requests",
-      "intent": "Say what you were able to do in the past with could and couldn't, and ask politely with Could you or Could I: I couldn't swim when I was five. Could you help me?"
+      "workingTitle": "Could and couldn't: past ability",
+      "intent": "Say what you could and couldn't do in the past, and ask about it, with could + base form for every person: I couldn't swim when I was five. Could you swim as a child?"
     },
     {
       "id": "en-asking-for-permission",
