@@ -220,11 +220,11 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 </div>
 </div>
 <div class="glegend"><span><svg width="34" height="10" aria-hidden="true"><line x1="0" y1="5" x2="34" y2="5" stroke="var(--edge-crit)" stroke-width="3"/></svg>critical path</span><span><svg width="34" height="10" aria-hidden="true"><line x1="0" y1="5" x2="34" y2="5" stroke="var(--edge)" stroke-width="1.5"/></svg>content branch</span><span class="swatch summit">summit</span><span class="swatch sink">sink</span><span>Issue numbers are coloured by status and link to GitHub. A green frame marks a ready issue: open, all its blocking issues closed, and nobody on it yet.</span></div>
-<figcaption>Edges carry the issue-level dependencies they stand for. Edges already implied by an intermediate group are left out. G1b sits above G1a: #76 waits for #117. Inside G2b, the French outline #90 builds on the French A1 outline #105. #79 also waits for #48 from milestone 1, which is closed. The fixes #106 and #108 have no dependencies and are listed under the groups.</figcaption>
+<figcaption>Edges carry the issue-level dependencies they stand for. Edges already implied by an intermediate group are left out. G1b sits above G1a: #76 waits for #117, and inside G1b the prototype #117 waits for the designs #115 and #116. The final lesson brief of #117 also gates the lesson drafts: #84 and #91 to #93 wait for it. Those edges are not drawn, because G1b → G1a → G2a → G3b → G6b already implies them. Inside G2b, the French outline #90 builds on the French A1 outline #105. #79 also waits for #48 from milestone 1, which is closed. The fixes #106 and #108 have no dependencies and are listed under the groups.</figcaption>
 
 <h3>Groups</h3>
 <div class="legend"><span class="sw open">open, blocked</span><span class="sw ready">ready: open, not blocked and nobody on it yet</span><span class="sw work">in work</span><span class="sw closed">closed</span><span>Top right: who is responsible (author of the linked PR, else the assignee). Bottom right: the linked PR.</span></div>
-<p class="legend">Groups with the same number (a, b) can run in parallel. One exception: #76 in G1a waits for #117 in G1b.</p>
+<p class="legend">Groups with the same number (a, b) can run in parallel. One exception: #76 in G1a waits for #117 in G1b. Inside G1b, #117 waits for #115 and #116.</p>
 <div class="flow">
 <div class="stage">
 <div class="grp"><div class="grp-h">G1a</div>
