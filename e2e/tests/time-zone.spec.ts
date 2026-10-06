@@ -1,11 +1,27 @@
-import type { Request } from '@playwright/test';
+import type { Page, Request } from '@playwright/test';
 
+import { formatViolations, watchConsole } from '../support/console-guard';
 import { expect, ONBOARDED_COURSE, placeCourse, SECOND_COURSE, test } from '../support/session';
 
 const home = `/en/learn/${ONBOARDED_COURSE.lang}`;
 
 const isProfilePatch = (request: Request) =>
   request.method() === 'PATCH' && new URL(request.url()).pathname === '/api/users/me';
+
+/** The server components of `path`, as router.refresh() and a client navigation fetch them. */
+const isPageFetch = (request: Request, path: string) => {
+  const headers = request.headers();
+  return (
+    request.method() === 'GET' &&
+    headers.rsc === '1' &&
+    !('next-router-prefetch' in headers) &&
+    new URL(request.url()).pathname === path
+  );
+};
+
+/** Past the next paint, so the effects of the last commit have run and sent their requests. */
+const afterEffects = (page: Page) =>
+  page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => setTimeout(resolve))));
 
 test.describe('time zone sync', () => {
   // Anything but the UTC every other spec runs in, so the new account differs.
@@ -14,6 +30,8 @@ test.describe('time zone sync', () => {
   test('stores the browser zone once, then never again', async ({ freshLearner: page }) => {
     // Through the API, so the first page under the course shell is the visit below.
     await placeCourse(page, ONBOARDED_COURSE);
+    // The console gate runs in UTC, so this is the only spec where the sync runs.
+    const violations = watchConsole(page);
 
     let patches = 0;
     page.on('request', (request) => {
@@ -21,10 +39,13 @@ test.describe('time zone sync', () => {
     });
 
     const patched = page.waitForResponse((response) => isProfilePatch(response.request()));
+    // Fails the test if refresh() goes: the stored zone would stay UTC, and every page would PATCH.
+    const refreshed = page.waitForResponse((response) => isPageFetch(response.request(), home));
     await page.goto(home);
     expect((await patched).status()).toBe(200);
-    // Lets the router.refresh() land: a second PATCH would come after it.
-    await page.waitForLoadState('networkidle');
+    await refreshed;
+    // A second PATCH would come from the render that refresh() causes.
+    await afterEffects(page);
     expect(patches).toBe(1);
 
     const me = await page.request.get('/api/auth/me');
@@ -33,6 +54,8 @@ test.describe('time zone sync', () => {
     await page.goto(home);
     await page.waitForLoadState('networkidle');
     expect(patches).toBe(1);
+
+    expect(violations, `the sync logged:\n${formatViolations(violations)}\n`).toEqual([]);
   });
 
   test('retries on the next page when the PATCH fails', async ({ freshLearner: page }) => {
@@ -80,9 +103,15 @@ test.describe('time zone sync', () => {
     expect((await rejected).status()).toBe(400);
 
     // The same client-side switch that retries after a 500.
-    await page.getByRole('combobox', { name: 'Course' }).selectOption(SECOND_COURSE.lang);
-    await expect(page).toHaveURL(new RegExp(`/learn/${SECOND_COURSE.lang}$`));
-    await page.waitForLoadState('networkidle');
+    const switched = page.waitForResponse((response) =>
+      isPageFetch(response.request(), `/en/learn/${SECOND_COURSE.lang}`),
+    );
+    const course = page.getByRole('combobox', { name: 'Course' });
+    await course.selectOption(SECOND_COURSE.lang);
+    await switched;
+    // The switcher reads the URL, so this value means the new page is committed.
+    await expect(course).toHaveValue(SECOND_COURSE.lang);
+    await afterEffects(page);
     expect(patches).toBe(1);
   });
 });

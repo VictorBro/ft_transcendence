@@ -25,8 +25,9 @@ export function TimeZoneSync({ storedTimeZone }: { storedTimeZone: string }) {
   const rejected = useRef(false);
 
   useEffect(() => {
+    // Older browsers may not resolve a zone: there is nothing to send then.
     const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    if (timeZone === storedTimeZone || inFlight.current || rejected.current) {
+    if (!timeZone || timeZone === storedTimeZone || inFlight.current || rejected.current) {
       return;
     }
 

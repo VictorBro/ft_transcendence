@@ -118,6 +118,12 @@ describe('UserSchema', () => {
     expect(UserSchema.safeParse({ ...validUser, role: 'ROOT' }).success).toBe(false);
   });
 
+  it('reads a stored zone this ICU does not know', () => {
+    expect(UserSchema.parse({ ...validUser, timeZone: 'Mars/Olympus' }).timeZone).toBe(
+      'Mars/Olympus',
+    );
+  });
+
   it('keeps the email out of the public projection', () => {
     const publicUser = PublicUserSchema.parse(validUser);
 
@@ -136,7 +142,14 @@ describe('TimeZoneSchema', () => {
     const result = TimeZoneSchema.safeParse(zone);
 
     expect(result.success).toBe(false);
-    expect(result.error?.issues.map((issue) => issue.message)).toContain('profile.invalidTimeZone');
+    expect(result.error?.issues.map((issue) => issue.message)).toEqual(['profile.invalidTimeZone']);
+  });
+
+  // The Intl check rejects a long value too, so only the code shows the length check ran.
+  it('stops a long value at the length check', () => {
+    const result = TimeZoneSchema.safeParse(`Europe/${'x'.repeat(64)}`);
+
+    expect(result.error?.issues.map((issue) => issue.code)).toEqual(['too_big']);
   });
 });
 

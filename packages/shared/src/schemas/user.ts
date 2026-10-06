@@ -25,7 +25,8 @@ export const DisplayNameSchema = z
  */
 export const TimeZoneSchema = z
   .string()
-  .max(64, 'profile.invalidTimeZone')
+  // Aborts, so a long value neither reaches Intl nor reports the code twice.
+  .max(64, { error: 'profile.invalidTimeZone', abort: true })
   .refine((timeZone) => {
     try {
       new Intl.DateTimeFormat('en', { timeZone });
@@ -59,7 +60,9 @@ export const UserSchema = z.object({
   // A path, not an absolute url, so z.url() would reject every real value.
   avatarUrl: z.string().nullable(),
   locale: LocaleSchema,
-  timeZone: TimeZoneSchema,
+  // Checked on write only: a zone the API accepted may be newer than the ICU of
+  // whoever reads the session, and failing that parse would break login.
+  timeZone: z.string(),
   role: UserRoleSchema,
   createdAt: z.iso.datetime(),
   updatedAt: z.iso.datetime(),
