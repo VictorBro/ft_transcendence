@@ -105,6 +105,7 @@ export const LessonIdSchema = z
   .string()
   .max(LESSON_ID_MAX)
   .regex(LESSON_ID_PATTERN, 'expected <lang>-<words>: lowercase letters and hyphens');
+export type LessonId = z.infer<typeof LessonIdSchema>;
 
 /** Quoted by the generator's prompt, so exported rather than inlined. */
 export const LESSON_TITLE_MAX = 80;
@@ -314,6 +315,7 @@ export function lessonFileName(lang: string, level: Level): string {
 
 /** YYYY-MM-DD, the learner's course day in their time zone. */
 export const CourseDaySchema = z.iso.date();
+export type CourseDay = z.infer<typeof CourseDaySchema>;
 
 /** No result: todo. A best score at or above LESSON_PASS_MARK: done. Else failed. */
 export const LESSON_STATUSES = ['todo', 'failed', 'done'] as const;
