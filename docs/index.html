@@ -195,7 +195,7 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 <div class="ms-head">
 <div class="num">Milestone 2</div>
 <h2>Course Roadmap and Lessons</h2>
-<p>The course page: a daily goal page and an all lessons page over a seeded syllabus of A1 to C2 lesson drafts per language, with results, the streak and level completion. The lesson page itself is the next milestone. On main: the lesson contracts and content checks (#77), the French A1 outline (#105, PR #107) and the rename to lesson drafts (PR #114). In review: the time zone (#78, PR #109) and the lesson docs (#76, PR #98). New in G1b: designing reading lessons and function levels and a lesson prototype (#115 to #117); #76 now waits for the final lesson brief of #117.</p>
+<p>The course page: a daily goal page and an all lessons page over a seeded syllabus of A1 to C2 lesson drafts per language, with results, the streak and level completion. The lesson page itself is the next milestone. On main: the lesson contracts and content checks (#77), the French A1 outline (#105, PR #107) and the rename to lesson drafts (PR #114). In review: the time zone (#78, PR #109) and the lesson docs (#76, PR #98). New in G1a: designing reading lessons and function levels and a lesson prototype (#115 to #117); #76 now waits for the final lesson brief of #117.</p>
 <div class="prog"><div class="bar" role="progressbar" aria-label="Milestone 2 issues closed" aria-valuemin="0" aria-valuemax="22" aria-valuenow="1"><span style="width:4.5%"></span></div><span class="prog-t">1 of 22 issues closed</span></div>
 <a class="ms-link" href="https://github.com/VictorBro/ft_transcendence/milestone/2"><i class="ti ti-brand-github" aria-hidden="true"></i>Open milestone 2 on GitHub<i class="ti ti-arrow-up-right" aria-hidden="true"></i></a>
 </div>
@@ -207,8 +207,8 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--edge)"/></marker>
 <marker id="ahc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--edge-crit)"/></marker>
 </defs></svg>
-<div class="gn base" id="G1b" style="grid-column:1;grid-row:1"><b>G1b</b><span>Lesson design: reading, functions, prototype</span><p>#115 #116 #117</p></div>
-<div class="gn base" id="G1a" style="grid-column:1;grid-row:2"><b>G1a</b><span>Doc, Contracts, User Timezone</span><p>#76 #77 #78</p></div>
+<div class="gn base" id="G1a" style="grid-column:1;grid-row:1"><b>G1a</b><span>Lesson design: reading, functions, prototype</span><p>#115 #116 #117</p></div>
+<div class="gn base" id="G1b" style="grid-column:1;grid-row:2"><b>G1b</b><span>Doc, Contracts, User Timezone</span><p>#76 #77 #78</p></div>
 <div class="gn base" id="G2a" style="grid-column:3;grid-row:1"><b>G2a</b><span>Lesson Profile (DB), Roadmap Logic, Lesson draft generator</span><p>#79 #80 #83</p></div>
 <div class="gn base" id="G2b" style="grid-column:3;grid-row:3"><b>G2b</b><span>outline DE, EN, FR:<br>A1 - C2</span><p>#105 #88 #89 #90</p></div>
 <div class="gn base" id="G3a" style="grid-column:5;grid-row:1"><b>G3a</b><span>Roadmap API, Roadmap Write API</span><p>#81 #82</p></div>
@@ -220,22 +220,22 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 </div>
 </div>
 <div class="glegend"><span><svg width="34" height="10" aria-hidden="true"><line x1="0" y1="5" x2="34" y2="5" stroke="var(--edge-crit)" stroke-width="3"/></svg>critical path</span><span><svg width="34" height="10" aria-hidden="true"><line x1="0" y1="5" x2="34" y2="5" stroke="var(--edge)" stroke-width="1.5"/></svg>content branch</span><span class="swatch summit">summit</span><span class="swatch sink">sink</span><span>Issue numbers are coloured by status and link to GitHub. A green frame marks a ready issue: open, all its blocking issues closed, and nobody on it yet.</span></div>
-<figcaption>Edges carry the issue-level dependencies they stand for. Edges already implied by an intermediate group are left out. G1b sits above G1a: #76 waits for #117, and inside G1b the prototype #117 waits for the designs #115 and #116. The final lesson brief of #117 also gates the lesson drafts: #84 and #91 to #93 wait for it. Those edges are not drawn, because G1b → G1a → G2a → G3b → G6b already implies them. Inside G2b, the French outline #90 builds on the French A1 outline #105. #79 also waits for #48 from milestone 1, which is closed. The fixes #106 and #108 have no dependencies and are listed under the groups.</figcaption>
+<figcaption>Edges carry the issue-level dependencies they stand for. Edges already implied by an intermediate group are left out. G1a sits above G1b: #76 waits for #117, and inside G1a the prototype #117 waits for the designs #115 and #116. The final lesson brief of #117 also gates the lesson drafts: #84 and #91 to #93 wait for it. Those edges are not drawn, because G1a → G1b → G2a → G3b → G6b already implies them. Inside G2b, the French outline #90 builds on the French A1 outline #105. #79 also waits for #48 from milestone 1, which is closed. The fixes #106 and #108 have no dependencies and are listed under the groups.</figcaption>
 
 <h3>Groups</h3>
 <div class="legend"><span class="sw open">open, blocked</span><span class="sw ready">ready: open, not blocked and nobody on it yet</span><span class="sw work">in work</span><span class="sw closed">closed</span><span>Top right: who is responsible (author of the linked PR, else the assignee). Bottom right: the linked PR.</span></div>
-<p class="legend">Groups with the same number (a, b) can run in parallel. One exception: #76 in G1a waits for #117 in G1b. Inside G1b, #117 waits for #115 and #116.</p>
+<p class="legend">Groups with the same number (a, b) can run in parallel. One exception: #76 in G1b waits for #117 in G1a. Inside G1a, #117 waits for #115 and #116.</p>
 <div class="flow">
 <div class="stage">
-<div class="grp"><div class="grp-h">G1a</div>
-<a class="iss" data-n="76" href="#"><span class="no">#76</span><span class="t">Doc: lesson, goal and streak decisions</span></a>
-<a class="iss" data-n="77" href="#"><span class="no">#77</span><span class="t">Lesson contracts and content checks</span></a>
-<a class="iss" data-n="78" href="#"><span class="no">#78</span><span class="t">Learner's time zone</span></a>
-</div>
-<div class="grp"><div class="grp-h">G1b · lesson design</div>
+<div class="grp"><div class="grp-h">G1a · lesson design</div>
 <a class="iss" data-n="115" href="#"><span class="no">#115</span><span class="t">Design reading lessons</span></a>
 <a class="iss" data-n="116" href="#"><span class="no">#116</span><span class="t">Design function levels</span></a>
 <a class="iss" data-n="117" href="#"><span class="no">#117</span><span class="t">Lesson prototype and final lesson brief</span></a>
+</div>
+<div class="grp"><div class="grp-h">G1b</div>
+<a class="iss" data-n="76" href="#"><span class="no">#76</span><span class="t">Doc: lesson, goal and streak decisions</span></a>
+<a class="iss" data-n="77" href="#"><span class="no">#77</span><span class="t">Lesson contracts and content checks</span></a>
+<a class="iss" data-n="78" href="#"><span class="no">#78</span><span class="t">Learner's time zone</span></a>
 </div>
 </div>
 <div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
@@ -377,13 +377,13 @@ const linkify=s=>s.replace(/#(\d+)/g,(m,n)=>'<a href="'+issueUrl(n)+'" title="'+
 
 /* Milestone 2 graph, from milestone2_groups.mermaid. Layout pins and removed edges are left out. */
 const EDGES=[
-  ['G1b','G1a',true,['#117 → #76']],
-  ['G1a','G2a',true,['#77 → #79, #80','#76, #77 → #83']],
+  ['G1a','G1b',true,['#117 → #76']],
+  ['G1b','G2a',true,['#77 → #79, #80','#76, #77 → #83']],
   ['G2a','G3a',true,['#79, #80 → #81, #82']],
   ['G3a','G4',true,['#82 → #85','#81, #82 → #86','#81 → #87']],
   ['G4','G5',true,['#85 → #95','#86, #87 → #96']],
   ['G5','G6a',true,['#95, #96 → #97']],
-  ['G1a','G2b',false,['#77 → #88, #89, #90, #105']],
+  ['G1b','G2b',false,['#77 → #88, #89, #90, #105']],
   ['G2a','G3b',false,['#79, #83 → #84']],
   ['G2b','G3b',false,['#105 → #84']],
   ['G3b','G4',false,['#84 → #86, #87']],
