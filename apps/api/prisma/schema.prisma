@@ -28,6 +28,7 @@ model User {
   role         Role     @default(USER)
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
+  timeZone     String   @default("UTC")
 
   // Set when enrolment starts; totpEnabledAt stays null until a first code is
   // verified, so an abandoned enrolment never blocks a login.
