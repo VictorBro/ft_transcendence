@@ -1,0 +1,846 @@
+{
+  "lang": "en",
+  "level": "A1",
+  "entries": [
+    {
+      "id": "en-greetings",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Saying hello and goodbye",
+      "intent": "Greet people and say goodbye, formally or informally, at any time of day: Good morning, Hi, How are you?, Fine, thanks, Goodbye, Bye, See you later."
+    },
+    {
+      "id": "en-subject-pronouns",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Subject pronouns: I, you, he, she, it, we, they",
+      "intent": "Use I, you, he, she, it, we and they as the subject of a sentence: he for Tom, she for Anna, it for a thing or an animal, they for more than one person or thing."
+    },
+    {
+      "id": "en-verb-be-positive",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "The verb be: I'm, you're, he's",
+      "intent": "Use am, is and are with every pronoun, and their short forms, to say who people are and where they are from: I'm Tom. She's Anna. We're from Spain."
+    },
+    {
+      "id": "en-countries-and-nationalities",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Countries and nationalities",
+      "intent": "Name about eight countries and their nationalities, both with a capital letter: Italy, Italian, Japan, Japanese, Brazil, Brazilian, the UK, British."
+    },
+    {
+      "id": "en-introducing-yourself",
+      "kind": "functions",
+      "theme": "personal_identification",
+      "workingTitle": "Introducing yourself",
+      "intent": "Say your name and where you are from, and ask someone new the same: Hi, I'm Ana, I'm from Brazil, What's your name?, Where are you from?, Nice to meet you."
+    },
+    {
+      "id": "en-alphabet-and-spelling",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "The alphabet and spelling",
+      "intent": "Say the 26 letters and spell a name or an email address aloud: capital letter, small letter, double l, dot, at, hyphen, How do you spell that?"
+    },
+    {
+      "id": "en-numbers-zero-to-twenty",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Numbers 0 to 20",
+      "intent": "Count from zero to twenty and say a phone number digit by digit: three, eight, eleven, twelve, fifteen, twenty, oh for zero, double five."
+    },
+    {
+      "id": "en-everyday-feelings",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Everyday feelings",
+      "intent": "Say how you feel with about ten adjectives: happy, sad, tired, sleepy, hungry, thirsty, bored, fine."
+    },
+    {
+      "id": "en-verb-be-negative",
+      "kind": "grammar",
+      "topic": "negation",
+      "workingTitle": "Be in the negative: I'm not, isn't, aren't",
+      "intent": "Make be negative with not and its short forms: I'm not tired. He isn't here. We aren't hungry. You're not late."
+    },
+    {
+      "id": "en-verb-be-questions-and-short-answers",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Questions with be: Are you tired?",
+      "intent": "Ask yes or no questions by putting am, is or are first (Are you tired? Is she from Italy?) and answer with short answers: Yes, I am. No, she isn't."
+    },
+    {
+      "id": "en-saying-please-thank-you-and-sorry",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Saying please, thank you and sorry",
+      "intent": "Ask politely, thank people and apologise, and give the usual replies: Please, Thank you very much, You're welcome, Sorry, Excuse me, That's OK."
+    },
+    {
+      "id": "en-articles-a-and-an",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "A and an: a book, an apple",
+      "intent": "Use a before a consonant sound and an before a vowel sound, with one thing or a job: a book, an apple, an hour, a university, she's a nurse."
+    },
+    {
+      "id": "en-jobs",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Jobs",
+      "intent": "Name about fourteen common jobs: teacher, nurse, doctor, waiter, shop assistant, engineer, police officer, chef."
+    },
+    {
+      "id": "en-possessive-determiners",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "My, your, his, her, its, our, their",
+      "intent": "Say who something belongs to with my, your, his, her, its, our and their before a noun, choosing his or her by the owner: her brother, his sister, their car."
+    },
+    {
+      "id": "en-family-members",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "My family",
+      "intent": "Name about twelve close family members: mum, dad, parents, brother, sister, son, daughter, wife."
+    },
+    {
+      "id": "en-possessive-apostrophe-s",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Possessive 's: Anna's brother",
+      "intent": "Show who something belongs to with 's after a name or a singular noun and s' after a regular plural: Tom's wife, my sister's name, my parents' car."
+    },
+    {
+      "id": "en-friends-neighbours-and-colleagues",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Friends, neighbours and colleagues",
+      "intent": "Name about twelve words for people around you: man, woman, child, friend, best friend, neighbour, colleague, flatmate."
+    },
+    {
+      "id": "en-introducing-someone",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Introducing someone",
+      "intent": "Introduce a friend or a member of your family and reply when someone is introduced to you: This is my friend Tom, This is my sister, Nice to meet you, too."
+    },
+    {
+      "id": "en-question-words-with-be",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Question words with be: What's your name?",
+      "intent": "Ask for information with what, where, who, how and how old before be: What's your name? Where are you from? How old is she? Who's that?"
+    },
+    {
+      "id": "en-numbers-to-one-hundred-and-prices",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Numbers 20 to 100 and prices",
+      "intent": "Count from 20 to 100, hear the difference between thirteen and thirty, and say prices in pounds and pence: forty, seventy-five, two pounds fifty, ninety-nine p."
+    },
+    {
+      "id": "en-personal-details",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Name, address and other details",
+      "intent": "Understand about twelve details a form asks for and fill in your own: first name, surname, address, postcode, date of birth, nationality, occupation, signature."
+    },
+    {
+      "id": "en-asking-someone-to-repeat",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Asking someone to repeat",
+      "intent": "Say you don't understand and ask someone to repeat or slow down: Sorry?, I don't understand, Can you say that again, please?, Can you speak more slowly?"
+    },
+    {
+      "id": "en-regular-and-irregular-plurals",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Plural nouns: books, boxes, babies, children",
+      "intent": "Form plurals with -s, with -es after s, x, ch and sh, and with -ies after a consonant and y (books, boxes, babies), plus common irregular ones: men, women, children, people."
+    },
+    {
+      "id": "en-classroom-objects",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Classroom objects",
+      "intent": "Name about twelve things in a classroom: book, notebook, pen, pencil, rubber (US eraser), ruler, pencil case, board."
+    },
+    {
+      "id": "en-this-that-these-those",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "This, that, these, those",
+      "intent": "Point to things near you with this and these and further away with that and those, before a noun or on their own: this bag, those shoes, What's that?"
+    },
+    {
+      "id": "en-personal-belongings",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Things in your bag",
+      "intent": "Name about twelve things people carry every day: keys, wallet, purse, mobile, watch, umbrella, hairbrush, water bottle."
+    },
+    {
+      "id": "en-colours",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Colours",
+      "intent": "Name about twelve colours and make them light or dark: red, blue, yellow, grey, brown, pink, light blue, dark green."
+    },
+    {
+      "id": "en-adjective-position-and-very",
+      "kind": "grammar",
+      "topic": "adjectives",
+      "workingTitle": "Adjectives: a red bag, the bag is red",
+      "intent": "Put an adjective before a noun or after be, never with a plural -s, and make it stronger with very: a red bag, two red bags, the bag is blue, I'm very tired."
+    },
+    {
+      "id": "en-have-got-for-possession",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Have got: I've got a sister",
+      "intent": "Talk about family and things you own with have got and has got, in the negative and in questions: I've got two brothers. She hasn't got a car. Have you got a pen?"
+    },
+    {
+      "id": "en-buying-something-in-a-shop",
+      "kind": "functions",
+      "theme": "shopping",
+      "workingTitle": "Buying something in a shop",
+      "intent": "Ask for something in a shop, ask the price and pay: Have you got any postcards?, How much is this?, Two, please, Here you are, Thanks, bye."
+    },
+    {
+      "id": "en-days-and-parts-of-the-day",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Days of the week and parts of the day",
+      "intent": "Name the seven days of the week and the parts of the day: Monday, Saturday, weekend, morning, afternoon, evening, night, today."
+    },
+    {
+      "id": "en-everyday-verbs",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Everyday verbs",
+      "intent": "Name about fourteen everyday verbs for what people do: live, work, speak, eat, drink, play, watch, like, know, want, need, buy, drive."
+    },
+    {
+      "id": "en-present-simple-i-you-we-they",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Present simple: I, you, we, they",
+      "intent": "Talk about habits and facts with the present simple after I, you, we and they, using the base form of the verb: I work in a bank. We live in Leeds."
+    },
+    {
+      "id": "en-at-work",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "At work",
+      "intent": "Say where you work and who you work with in about twelve words: office, factory, company, boss, customer, computer, work in a bank, work from home."
+    },
+    {
+      "id": "en-reading-an-online-profile",
+      "kind": "reading",
+      "theme": "personal_identification",
+      "workingTitle": "Reading an online profile",
+      "intent": "Read a short profile on a language exchange site and find the person's name, age, home town, job, family and the languages they speak."
+    },
+    {
+      "id": "en-clock-times",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Clock times",
+      "intent": "Tell the time and read times written in figures: o'clock, half past, quarter to, ten past, midday, midnight, am, pm."
+    },
+    {
+      "id": "en-daily-routine",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "My day",
+      "intent": "Name about twelve everyday actions, from getting up to going to bed: wake up, get up, have a shower, get dressed, go to work, get home, go to bed."
+    },
+    {
+      "id": "en-present-simple-he-she-it",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Present simple: he, she, it",
+      "intent": "Use the present simple with he, she, it or one person or thing, adding -s, -es or -ies and using has for have: she works, my sister watches TV, it goes, he studies, she has."
+    },
+    {
+      "id": "en-meals-of-the-day",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Meals of the day",
+      "intent": "Name the meals of the day and about ten foods that go with them: breakfast, lunch, dinner, tea (an evening meal), cereal, toast, jam, soup."
+    },
+    {
+      "id": "en-present-simple-negative",
+      "kind": "grammar",
+      "topic": "negation",
+      "workingTitle": "Present simple negative: don't, doesn't",
+      "intent": "Make the present simple negative with don't or doesn't + base form, with no -s on the verb after doesn't: I don't drink coffee. He doesn't work on Sundays."
+    },
+    {
+      "id": "en-drinks-and-snacks-at-the-cafe",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Drinks and snacks at the café",
+      "intent": "Name about twelve drinks and snacks people order in a café: tea, white coffee, hot chocolate, orange juice, sandwich, cake, crisps (US chips)."
+    },
+    {
+      "id": "en-ordering-at-a-cafe",
+      "kind": "functions",
+      "theme": "food_and_drink",
+      "workingTitle": "Ordering at a café",
+      "intent": "Order a drink and a snack at a café, say if it is to eat in or take away, and pay: Can I have a tea, please?, Eat in or take away?, How much is that?"
+    },
+    {
+      "id": "en-reading-a-cafe-menu-board",
+      "kind": "reading",
+      "theme": "food_and_drink",
+      "workingTitle": "Reading a café menu board",
+      "intent": "Read the menu board in a café and find the drinks, snacks, sizes and prices (small, large, tea £1.90, sandwich £3.50) to choose what you want."
+    },
+    {
+      "id": "en-present-simple-yes-no-questions",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Questions with do: Do you like it?",
+      "intent": "Ask yes or no questions with do or does + subject + base form and give short answers: Do you live here? Yes, I do. Does she drive? No, she doesn't."
+    },
+    {
+      "id": "en-hobbies",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Hobbies",
+      "intent": "Name about twelve free-time activities: reading, cooking, dancing, singing, listening to music, watching TV, playing video games, travelling."
+    },
+    {
+      "id": "en-like-love-hate-with-ing",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Like, love and hate + -ing",
+      "intent": "Talk about likes and dislikes with love, like, don't like and hate + a noun or the -ing form: I love music. She hates getting up early. I don't like cooking."
+    },
+    {
+      "id": "en-saying-what-you-like",
+      "kind": "functions",
+      "theme": "free_time",
+      "workingTitle": "Saying what you like",
+      "intent": "Say what you like and don't like, ask about someone else's likes and react: I love swimming, I don't like jazz, Do you like football?, Me too, Not really."
+    },
+    {
+      "id": "en-present-simple-wh-questions",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Wh- questions: Where do you work?",
+      "intent": "Ask open questions in the order question word + do or does + subject + base form: Where do you work? What time does the film start? What does he do?"
+    },
+    {
+      "id": "en-films-concerts-and-shows",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Films, concerts and shows",
+      "intent": "Name about twelve words for going out in the evening: cinema, film, concert, theatre, show, club, ticket, tonight."
+    },
+    {
+      "id": "en-reading-a-local-event-poster",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Reading a poster for a local event",
+      "intent": "Read a poster for a local event (a concert, a street market, a fun run) and find what it is, the day, the time, the place and the price: free entry, adults £5."
+    },
+    {
+      "id": "en-adverbs-of-frequency",
+      "kind": "grammar",
+      "topic": "adverbs",
+      "workingTitle": "Adverbs of frequency: always, often, never",
+      "intent": "Say how often with always, usually, often, sometimes and never, before the main verb but after be (I often walk to work, she's never late), and ask about it: How often do you swim?"
+    },
+    {
+      "id": "en-household-chores",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Housework",
+      "intent": "Name about ten jobs around the house: do the washing-up, do the cleaning, do the washing, do the ironing, hoover, make the bed, take out the rubbish (US trash)."
+    },
+    {
+      "id": "en-definite-article-the",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "A or the: a cat, the cat",
+      "intent": "Use a for something new or one of many and the for something already known or the only one: I've got a cat. The cat is black. The sun is hot."
+    },
+    {
+      "id": "en-pets-and-farm-animals",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Pets and farm animals",
+      "intent": "Name about fifteen pets and farm animals: dog, cat, rabbit, horse, cow, sheep, pig, hen."
+    },
+    {
+      "id": "en-object-pronouns",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Object pronouns: me, him, her, us, them",
+      "intent": "Use me, you, him, her, it, us and them after a verb or a preposition instead of I, he, she, we or they: I know him. She likes us. This is for them."
+    },
+    {
+      "id": "en-languages-and-learning",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Languages and learning",
+      "intent": "Name about twelve words for talking about languages and learning them: language, word, sentence, question, answer, mean, translate, dictionary."
+    },
+    {
+      "id": "en-imperatives-and-let",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Imperatives: sit down, don't run, let's go",
+      "intent": "Give instructions with the base form of the verb, make them negative with don't, and suggest doing something together with let's: Open the window. Don't touch it. Let's go."
+    },
+    {
+      "id": "en-classroom-instructions",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Classroom instructions",
+      "intent": "Understand about twelve instructions from a teacher or a coursebook: listen, read, write, repeat, open your books, work in pairs, tick, match."
+    },
+    {
+      "id": "en-parts-of-the-body",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Parts of the body",
+      "intent": "Name about fifteen parts of the body: head, face, eye, ear, nose, mouth, hand, leg."
+    },
+    {
+      "id": "en-headaches-and-colds",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Headaches and colds",
+      "intent": "Say that you are ill and what is wrong with about ten words: ill, feel sick, headache, stomach ache, toothache, a cold, a temperature, feel better."
+    },
+    {
+      "id": "en-telling-a-doctor-what-is-wrong",
+      "kind": "functions",
+      "theme": "health",
+      "workingTitle": "Telling a doctor what is wrong",
+      "intent": "Tell a doctor or a chemist what is wrong and answer simple questions: I feel ill, I've got a headache, My back hurts, Does it hurt here?, Yes, a little."
+    },
+    {
+      "id": "en-reading-a-doctors-surgery-notice",
+      "kind": "reading",
+      "theme": "health",
+      "workingTitle": "Reading a notice at the doctor's",
+      "intent": "Read the notice on a doctor's surgery door and find the opening hours, how to make an appointment and who to call when it is closed (111, or 999 in an emergency)."
+    },
+    {
+      "id": "en-phone-and-internet",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Phone and internet",
+      "intent": "Name about twelve words for phones and going online: mobile number, call, text, email, website, app, password, Wi-Fi."
+    },
+    {
+      "id": "en-rooms-of-the-home",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Rooms of the home",
+      "intent": "Name about twelve rooms and parts of a home: kitchen, bedroom, living room, bathroom, toilet, hall, upstairs, downstairs."
+    },
+    {
+      "id": "en-prepositions-of-place",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "Prepositions of place: in, on, under",
+      "intent": "Say where things are with in, on, under, next to, near, between, behind, in front of and opposite: The keys are on the table. The bank is opposite the station."
+    },
+    {
+      "id": "en-furniture-and-appliances",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Furniture and appliances",
+      "intent": "Name about twelve pieces of furniture and large appliances: bed, wardrobe, sofa, armchair, shelf, fridge, cooker, lamp."
+    },
+    {
+      "id": "en-leaving-a-note",
+      "kind": "functions",
+      "theme": "daily_life",
+      "workingTitle": "Leaving a note",
+      "intent": "Leave a short note to say where you are and when you will be back: I'm at the gym, Back at six, Your dinner is in the fridge, Call me if you need anything."
+    },
+    {
+      "id": "en-there-is-there-are",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "There is, there are",
+      "intent": "Say what is in a place with there's + a singular noun and there are + a plural, with a, some or a number: There's a sofa. There are some books. There are two chairs."
+    },
+    {
+      "id": "en-adjectives-for-a-home",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Adjectives for a home",
+      "intent": "Describe a house or a flat (US apartment) with about twelve adjectives: big, small, new, old, modern, quiet, noisy, light."
+    },
+    {
+      "id": "en-months-and-dates",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Months and dates",
+      "intent": "Name the twelve months and say dates with ordinal numbers, the day before the month: January, first, second, third, twenty-first, the sixth of May."
+    },
+    {
+      "id": "en-prepositions-of-time-at-on-in",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "At, on, in for times and dates",
+      "intent": "Say when with at for clock times, on for days and dates and in for months, years and parts of the day: at six, on Monday, in May, in the morning, but at night and at the weekend (US on the weekend)."
+    },
+    {
+      "id": "en-celebrations-and-wishes",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Celebrations",
+      "intent": "Name about twelve words for special days and the wishes that go with them: birthday, Christmas, New Year, present, card, party, Happy birthday, Merry Christmas."
+    },
+    {
+      "id": "en-reading-a-party-invitation",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Reading a party invitation",
+      "intent": "Read a birthday party invitation on a card or in a message and find the occasion, the date, the time, the place, what to bring and how to reply (Please reply by 10 May)."
+    },
+    {
+      "id": "en-places-in-town",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Places in town",
+      "intent": "Name about twelve places in a town: station, post office, bank, museum, park, hospital, library, town centre."
+    },
+    {
+      "id": "en-there-is-there-are-negative-and-questions",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "There isn't, there aren't, is there?",
+      "intent": "Ask what is in a place (Is there a lift? Are there any shops?) and say what is missing with there isn't a and there aren't any: There aren't any trees."
+    },
+    {
+      "id": "en-shops-and-what-they-sell",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Shops",
+      "intent": "Name about twelve shops and what they sell, with the British 's: baker's, butcher's, chemist's (US drugstore), newsagent's, supermarket, bookshop."
+    },
+    {
+      "id": "en-streets-and-directions",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Streets and directions",
+      "intent": "Name about twelve words for finding your way in a town: road, street, roundabout, traffic lights, turn left, go straight on, the first on the right."
+    },
+    {
+      "id": "en-asking-the-way",
+      "kind": "functions",
+      "theme": "places",
+      "workingTitle": "Asking the way",
+      "intent": "Ask a passer-by where a place is and understand a short answer: Excuse me, is there a bank near here?, Where's the station?, Is it far?, It's on the left, next to the café."
+    },
+    {
+      "id": "en-reading-public-signs",
+      "kind": "reading",
+      "theme": "places",
+      "workingTitle": "Reading signs in public places",
+      "intent": "Read short signs in stations, shops and streets (Way in, Way out, Push, Pull, Toilets, Lift, Closed, No smoking) to know where to go and what is not allowed."
+    },
+    {
+      "id": "en-and-but-or-so-because",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "And, but, or, so, because",
+      "intent": "Join two ideas with and, but and or, give a result with so and a reason with because: It's late, so let's go home. I walk to work because it isn't far."
+    },
+    {
+      "id": "en-can-for-ability",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Can and can't for ability",
+      "intent": "Say what you can and can't do with can + base form, with no -s and no to, and ask about it: I can swim. She can't drive. Can you cook? Yes, I can."
+    },
+    {
+      "id": "en-sports-and-places-to-play",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Sports and where you play them",
+      "intent": "Name about twelve sports and the places for them, with play, go or do: play football, play tennis, go swimming, go cycling, do yoga, pitch, swimming pool."
+    },
+    {
+      "id": "en-can-for-requests-and-permission",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Can for requests and permission: Can I sit here?",
+      "intent": "Ask for things and for help with can (Can I have a coffee? Can you help me?), ask if something is allowed (Can I sit here?) and answer politely: Yes, of course."
+    },
+    {
+      "id": "en-at-the-restaurant",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "At the restaurant",
+      "intent": "Name about twelve words for a meal in a restaurant: menu, starter, main course, dessert, set menu, the bill (US check), tip, table for two."
+    },
+    {
+      "id": "en-would-like-and-like",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Would like: I'd like a coffee",
+      "intent": "Ask for things politely with I'd like + a noun or to + base form, offer with would you like, and tell it apart from like: Would you like to sit down? I'd like a tea, please. I like tea."
+    },
+    {
+      "id": "en-kitchen-and-table-objects",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Things in the kitchen",
+      "intent": "Name about twelve things for cooking and eating: plate, bowl, cup, mug, glass, knife, fork, saucepan."
+    },
+    {
+      "id": "en-welcoming-a-guest",
+      "kind": "functions",
+      "theme": "house_and_home",
+      "workingTitle": "Welcoming a guest",
+      "intent": "Welcome a visitor to your home, offer a drink and show them around: Come in, Take a seat, Would you like a cup of tea?, This is the kitchen, The bathroom is upstairs."
+    },
+    {
+      "id": "en-fruit-and-vegetables",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Fruit and vegetables",
+      "intent": "Name about fifteen common fruit and vegetables: apple, banana, strawberry, grapes, tomato, carrot, potato, onion."
+    },
+    {
+      "id": "en-everyday-food",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Everyday food",
+      "intent": "Name about twelve basic foods people buy every week: bread, milk, butter, cheese, eggs, rice, pasta, sugar."
+    },
+    {
+      "id": "en-countable-and-uncountable-nouns",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Countable and uncountable nouns",
+      "intent": "Tell nouns you can count (an apple, two eggs) from nouns you can't (bread, water, rice), which take no a and no plural, and use some with both: some eggs, some milk."
+    },
+    {
+      "id": "en-how-much-how-many-a-lot-of",
+      "kind": "grammar",
+      "topic": "comparison_and_quantity",
+      "workingTitle": "How much, how many, a lot of",
+      "intent": "Ask about quantity with how many + plural noun and how much + uncountable noun, and answer with a lot of: How many eggs? How much milk? We've got a lot of bread."
+    },
+    {
+      "id": "en-packets-tins-and-weights",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Packets, tins, kilos and litres",
+      "intent": "Name about twelve containers and quantities used when shopping for food: bottle, carton, packet, tin (US can), jar, gram, kilo, litre."
+    },
+    {
+      "id": "en-some-and-any",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Some and any",
+      "intent": "Use any in negatives and questions and some in offers and requests, with plural and uncountable nouns: I haven't got any eggs. Do you need any milk? Would you like some tea?"
+    },
+    {
+      "id": "en-clothes",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Clothes",
+      "intent": "Name about fifteen everyday clothes: trousers (US pants), jeans, shirt, jumper (US sweater), dress, skirt, coat, trainers (US sneakers)."
+    },
+    {
+      "id": "en-reading-a-department-store-guide",
+      "kind": "reading",
+      "theme": "shopping",
+      "workingTitle": "Reading a department store guide",
+      "intent": "Read the floor guide in a department store and find which floor sells what (basement, ground floor, first floor) and where the lift, the toilets and the café are."
+    },
+    {
+      "id": "en-present-continuous-form",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Present continuous: I'm working",
+      "intent": "Say what is happening now with am, is or are + -ing, spelling the -ing form correctly: I'm reading, she's sitting, they're making dinner."
+    },
+    {
+      "id": "en-what-people-look-like",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "What people look like",
+      "intent": "Describe what someone looks like with about twelve words: tall, short, slim, young, old, fair hair, dark hair, beard."
+    },
+    {
+      "id": "en-present-continuous-negative-and-questions",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Present continuous: negatives and questions",
+      "intent": "Make the present continuous negative with not and ask by putting am, is or are first: I'm not listening. They aren't watching TV. Are you working? What are you doing?"
+    },
+    {
+      "id": "en-the-weather",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "The weather",
+      "intent": "Say what the weather is like with about twelve words: sun, rain, snow, wind, sunny, cloudy, windy, it's raining."
+    },
+    {
+      "id": "en-chatting-about-the-weather",
+      "kind": "functions",
+      "theme": "weather",
+      "workingTitle": "Chatting about the weather",
+      "intent": "Make small talk about the weather and ask what it is like somewhere else: Lovely day today!, It's really cold, What's the weather like in Rome?, Is it raining there?"
+    },
+    {
+      "id": "en-seasons-and-temperature",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "Seasons and temperature",
+      "intent": "Name the four seasons and say the temperature: spring, summer, autumn (US fall), winter, hot, cold, degrees, minus five."
+    },
+    {
+      "id": "en-present-simple-or-continuous",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Present simple or present continuous",
+      "intent": "Choose the present simple for habits and facts and the present continuous for now and around now: I usually walk to work, but today I'm taking the bus."
+    },
+    {
+      "id": "en-means-of-transport",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Transport",
+      "intent": "Name about twelve ways to travel and say how you get somewhere: car, bus, train, plane, bike, taxi, by bus, on foot."
+    },
+    {
+      "id": "en-at-the-train-station",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "At the train station",
+      "intent": "Name about twelve words for a train journey: ticket office, single, return, platform, timetable, departure, delayed, cancelled."
+    },
+    {
+      "id": "en-reading-a-departures-board",
+      "kind": "reading",
+      "theme": "travel",
+      "workingTitle": "Reading a departures board and timetable",
+      "intent": "Read a station departures board and a simple bus or train timetable and find the departure and arrival times, the platform, and words like on time, delayed and cancelled."
+    },
+    {
+      "id": "en-was-and-were",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Was and were",
+      "intent": "Talk about the past with was and were in the positive, the negative and questions: I was at home. They weren't late. Where were you?"
+    },
+    {
+      "id": "en-big-numbers-and-years",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Big numbers and years",
+      "intent": "Say numbers above 100 and years the British way: a hundred and five, a thousand, a million, two thousand and twenty-six, nineteen ninety."
+    },
+    {
+      "id": "en-past-time-expressions",
+      "kind": "grammar",
+      "topic": "adverbs",
+      "workingTitle": "Past time expressions: yesterday, last, ago",
+      "intent": "Say when something happened with yesterday, last + a day, week, month or year (no the) and a period + ago: I was there last Monday. We were in Rome two years ago."
+    },
+    {
+      "id": "en-at-the-hotel",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "At the hotel",
+      "intent": "Name about twelve words for staying in a hotel: reception, single room, double room, twin room, key card, lift (US elevator), breakfast included."
+    },
+    {
+      "id": "en-checking-in-at-a-hotel",
+      "kind": "functions",
+      "theme": "services",
+      "workingTitle": "Checking in at a hotel",
+      "intent": "Check in at a hotel reception, give and spell your name, say how many nights and ask about breakfast: I've got a reservation, It's for two nights, What time is breakfast?"
+    },
+    {
+      "id": "en-past-simple-regular-verbs",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Past simple: regular verbs",
+      "intent": "Form the past simple of regular verbs with -ed, -d or -ied, doubling some consonants, and say the ending three ways: worked, lived, studied, stopped, wanted."
+    },
+    {
+      "id": "en-post-office-and-bank",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "At the post office and the bank",
+      "intent": "Name about twelve words for sending post and getting money: letter, parcel, stamp, envelope, postbox, cash machine, coin, note."
+    },
+    {
+      "id": "en-reading-a-missed-delivery-card",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Reading a missed delivery card",
+      "intent": "Read the card a delivery driver leaves when you are out and find when they came, where your parcel is now (with your neighbour at number 12) and when you can collect it."
+    },
+    {
+      "id": "en-past-simple-irregular-verbs",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Past simple: irregular verbs",
+      "intent": "Use the past simple of about twenty common irregular verbs to say what you did: went, had, saw, got, made, came, bought, ate."
+    },
+    {
+      "id": "en-luggage-and-travel-documents",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Luggage, passports and flights",
+      "intent": "Name about ten words for packing and travelling: suitcase, rucksack (US backpack), passport, ID card, flight, airport, pack, unpack."
+    },
+    {
+      "id": "en-past-simple-negative-and-questions",
+      "kind": "grammar",
+      "topic": "negation",
+      "workingTitle": "Past simple: didn't and did you?",
+      "intent": "Make the past simple negative with didn't + base form and ask with did + subject + base form: I didn't see it. Did you go out? Yes, I did."
+    },
+    {
+      "id": "en-school-subjects",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "School subjects",
+      "intent": "Name about twelve school subjects: maths, English, French, history, geography, science, art, PE (physical education)."
+    },
+    {
+      "id": "en-going-to-for-plans",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Going to for plans",
+      "intent": "Talk about plans and intentions with am, is or are + going to + base form, in all forms: I'm going to visit my parents. Are you going to stay? We aren't going to buy it."
+    },
+    {
+      "id": "en-holiday-places",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Holiday places",
+      "intent": "Name about ten places to go on holiday and say where you are going: the seaside, the beach, the mountains, the countryside, a lake, a campsite, abroad."
+    },
+    {
+      "id": "en-reading-a-holiday-postcard",
+      "kind": "reading",
+      "theme": "weather",
+      "workingTitle": "Reading a holiday postcard",
+      "intent": "Read a holiday postcard, see how it opens and closes (Dear Sam, Hi Mum, Love, See you soon) and find where the writer is, who with, what they are doing and what the weather is like."
+    }
+  ]
+}
