@@ -3,13 +3,26 @@ import type { ReactNode } from 'react';
 import { DashboardNav } from '@/components/dashboard-nav';
 import { LegalFooter } from '@/components/legal-footer';
 import { Shell, Wordmark } from '@/components/shell';
+import { TimeZoneSync } from '@/components/time-zone-sync';
+import { currentUser } from '@/lib/session';
 
 /** The course shell: pinned to the viewport from `lg`, where the pane below owns
  *  the scroll. Below it the panes stack and the page scrolls instead. */
-export default function DashboardLayout({ children }: { children: ReactNode }) {
+export default async function DashboardLayout({ children }: { children: ReactNode }) {
+  // Only reads the session: the pages decide what a signed-out visitor gets.
+  const user = await currentUser();
+
   return (
-    <Shell brand={<Wordmark href="/learn" />} nav={<DashboardNav />} fill footer={<LegalFooter />}>
-      {children}
-    </Shell>
+    <>
+      {user ? <TimeZoneSync storedTimeZone={user.timeZone} /> : null}
+      <Shell
+        brand={<Wordmark href="/learn" />}
+        nav={<DashboardNav />}
+        fill
+        footer={<LegalFooter />}
+      >
+        {children}
+      </Shell>
+    </>
   );
 }

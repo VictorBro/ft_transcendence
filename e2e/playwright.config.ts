@@ -44,6 +44,9 @@ export default defineConfig({
     // Caddy signs with its own internal CA (`local_certs`), which no runner
     // trusts. Terminating TLS is still exercised; only the chain is skipped.
     ignoreHTTPSErrors: true,
+    // The column default, so a new account never syncs its zone mid-test. The
+    // spec that tests the sync sets its own.
+    timezoneId: 'UTC',
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
     video: 'off',
