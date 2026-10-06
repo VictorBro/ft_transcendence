@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 import { usePathname, useRouter } from '@/i18n/navigation';
 import { updateProfile } from '@/lib/auth-client';
@@ -18,17 +18,26 @@ export function TimeZoneSync({ storedTimeZone }: { storedTimeZone: string }) {
   // Read only as a trigger: the layout stays mounted from page to page, so
   // without it a failed PATCH would wait for a full reload.
   const pathname = usePathname();
+  // A page change while a PATCH is pending would otherwise send a second one.
+  const inFlight = useRef(false);
+  // A 400 rejects the zone itself: the browser reports the same one on every
+  // page, so retrying waits for the next mount.
+  const rejected = useRef(false);
 
   useEffect(() => {
     const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    if (timeZone === storedTimeZone) {
+    if (timeZone === storedTimeZone || inFlight.current || rejected.current) {
       return;
     }
 
-    // A failure needs no message: the next page tries again.
+    inFlight.current = true;
+    // A failure needs no message: the next page tries again, unless it was a 400.
     void updateProfile({ timeZone }).then((result) => {
+      inFlight.current = false;
       if (result.ok) {
         router.refresh();
+      } else if (result.status === 400) {
+        rejected.current = true;
       }
     });
   }, [storedTimeZone, router, pathname]);

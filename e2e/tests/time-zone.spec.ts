@@ -60,4 +60,29 @@ test.describe('time zone sync', () => {
     const me = await page.request.get('/api/auth/me');
     expect((await me.json()).timeZone).toBe('Pacific/Honolulu');
   });
+
+  test('does not retry a zone the server rejects', async ({ freshLearner: page }) => {
+    await placeCourse(page, SECOND_COURSE);
+    await placeCourse(page, ONBOARDED_COURSE);
+
+    // What the API answers for a zone its ICU does not know.
+    await page.route('**/api/users/me', (route) =>
+      route.request().method() === 'PATCH' ? route.fulfill({ status: 400 }) : route.fallback(),
+    );
+
+    let patches = 0;
+    page.on('request', (request) => {
+      if (isProfilePatch(request)) patches += 1;
+    });
+
+    const rejected = page.waitForResponse((response) => isProfilePatch(response.request()));
+    await page.goto(home);
+    expect((await rejected).status()).toBe(400);
+
+    // The same client-side switch that retries after a 500.
+    await page.getByRole('combobox', { name: 'Course' }).selectOption(SECOND_COURSE.lang);
+    await expect(page).toHaveURL(new RegExp(`/learn/${SECOND_COURSE.lang}$`));
+    await page.waitForLoadState('networkidle');
+    expect(patches).toBe(1);
+  });
 });
