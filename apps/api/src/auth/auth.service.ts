@@ -36,6 +36,7 @@ export class AuthService {
       displayName: user.displayName,
       avatarUrl: user.avatarUrl,
       locale: user.locale,
+      timeZone: user.timeZone,
       role: user.role,
       createdAt: user.createdAt.toISOString(),
     };

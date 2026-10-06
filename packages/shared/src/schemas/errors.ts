@@ -24,6 +24,7 @@ export const ERROR_CODES = [
   'email.invalid',
   'avatar.invalidFile',
   'profile.noChanges',
+  'profile.invalidTimeZone',
   'twoFactor.codeFormat',
   'twoFactor.recoveryCodeFormat',
   /** Neither an authenticator code nor a recovery code, at the login step. */
