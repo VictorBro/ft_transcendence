@@ -40,13 +40,20 @@ export function ChangeLevel({
     if (open) dialog.current?.showModal();
   }, [open]);
 
+  // Unmounts the form in the same render as the page's update: the close event
+  // comes a task later, and until then the page would show two levels.
+  function close() {
+    setOpen(false);
+    dialog.current?.close();
+  }
+
   function saved(target: Level) {
     if (onSaved) {
       onSaved(target);
     } else {
       router.refresh();
     }
-    dialog.current?.close();
+    close();
   }
 
   return (
@@ -64,14 +71,7 @@ export function ChangeLevel({
       >
         {/* Mounted per opening: a closed dialog leaves no second picker in the
             page, and each opening starts over from the course as it is. */}
-        {open ? (
-          <LevelForm
-            lang={lang}
-            level={level}
-            onSaved={saved}
-            onCancel={() => dialog.current?.close()}
-          />
-        ) : null}
+        {open ? <LevelForm lang={lang} level={level} onSaved={saved} onCancel={close} /> : null}
       </dialog>
     </>
   );
