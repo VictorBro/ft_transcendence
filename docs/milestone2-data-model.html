@@ -112,7 +112,7 @@ html{scroll-behavior:smooth}
 <div class="leg">
 <span class="m k-e jump" data-target="enums" role="link" tabindex="0">Enums + constants · #77 / #79</span><span class="m k-c jump" data-target="contract" role="link" tabindex="0">Shared contract · #77</span><span class="m k-f jump" data-target="content" role="link" tabindex="0">Content files · #77</span><span class="m k-q jump" data-target="checks" role="link" tabindex="0">CI checks + seed · #77 / #79</span><span class="m k-d jump" data-target="database" role="link" tabindex="0">Database · #78 / #79</span><span class="m k-a jump" data-target="api" role="link" tabindex="0">API schemas · #77 / #94</span><span class="m k-s jump" data-target="service" role="link" tabindex="0">Service types · #80 / #82 / #94</span><span class="m k-h jump" data-target="helper" role="link" tabindex="0">Helper types · one issue each</span>
 <span class="m k-n jump" data-target="modules" role="link" tabindex="0">NestJS modules</span></div>
-<p class="stleg" id="stleg"><b>Issue status</b><span><i style="background:var(--st-open)"></i>open</span><span><i style="background:var(--st-work)"></i>in work (assigned or a PR linked)</span><span><i style="background:var(--st-closed)"></i>closed</span><span><i class="ready"></i>green frame: ready, open and not blocked, nobody on it yet</span><span id="live">Snapshot of 4 October 2026, refreshed from GitHub on load.</span></p>
+<p class="stleg" id="stleg"><b>Issue status</b><span><i style="background:var(--st-open)"></i>open</span><span><i style="background:var(--st-work)"></i>in work (assigned or a PR linked)</span><span><i style="background:var(--st-closed)"></i>closed</span><span><i class="ready"></i>green frame: ready, open and not blocked, nobody on it yet</span><span id="live">Snapshot of 6 October 2026, refreshed from GitHub on load.</span></p>
 <p class="m1note"><i aria-hidden="true"></i>Grey cards tagged "from milestone 1", "existing" or "Prisma" are reused, not reimplemented.</p>
 
 <section class="g k-e" id="enums"><div class="gh"><i class="ti ti-list-details" aria-hidden="true"></i>Enums and constants<span class="def">defined in #77</span><span class="def">Prisma enums in #79</span><span class="def">gamification in #94</span></div>
@@ -266,9 +266,36 @@ html{scroll-behavior:smooth}
 <script src="gh-status.js"></script>
 <script>
 const base='https://github.com/VictorBro/ft_transcendence/issues/';
-/* Title, state, assignees and linked PR of each issue, as of 4 October 2026.
+/* Title, state, assignees and linked PR of each issue, as of 6 October 2026.
    Replaced by the live state from GitHub (gh-status.js) when the page loads. */
-const ISSUES={76:{t:"docs: record the lesson, daily goal and streak decisions",s:"open",a:["VictorBro"],b:0,pr:[98,"VictorBro","open"]},77:{t:"feat(shared): lesson contracts and the content checks",s:"closed",a:["bastian-schnitzler"],pr:[103,"bastian-schnitzler","merged"]},78:{t:"feat: store the learner's time zone",s:"open",a:["luca-mattei"],b:0,pr:[109,"luca-mattei","open"]},79:{t:"feat(api): lesson tables, and seed the lessons on every stack",s:"open",a:[],b:0,pr:null},80:{t:"feat(api): roadmap rules as pure functions",s:"open",a:["VYAntares"],b:0,pr:null},81:{t:"feat(api): today and all lessons reads, with the lesson search",s:"open",a:[],b:3,pr:null},82:{t:"feat(api): finish a lesson, meet the goal, keep the streak",s:"open",a:[],b:3,pr:null},83:{t:"feat(api): an offline lesson generator",s:"open",a:[],b:1,pr:null},87:{t:"feat(web): the all lessons page, with advanced search",s:"open",a:[],b:3,pr:null},88:{t:"feat(content): outline the German lessons, A1 to C2",s:"open",a:[],b:1,pr:null},89:{t:"feat(content): outline the English lessons, A1 to C2",s:"open",a:[],b:1,pr:null},90:{t:"feat(content): outline the French lessons, A2 to C2",s:"open",a:["bastian-schnitzler"],b:2,pr:null},84:{t:"feat(content): generate and review the French A1 lessons",s:"open",a:[],b:3,pr:null},85:{t:"feat(api): seed demo learners on development stacks",s:"open",a:[],b:3,pr:null},86:{t:"feat(web): the daily goal page",s:"open",a:[],b:4,pr:null},91:{t:"feat(content): generate and review the German lessons",s:"open",a:[],b:4,pr:null},92:{t:"feat(content): generate and review the English lessons",s:"open",a:[],b:4,pr:null},93:{t:"feat(content): generate and review the French lessons, A2 to C2",s:"open",a:[],b:4,pr:null},94:{t:"feat: gamification rules, XP, challenges and achievements",s:"open",a:[],b:1,pr:null},95:{t:"feat(api): award XP, the daily challenge and achievements",s:"open",a:[],b:5,pr:null},96:{t:"feat(web): lesson stub page and the roadmap e2e",s:"open",a:[],b:4,pr:null},97:{t:"feat(web): rank, challenge and achievements pages",s:"open",a:[],b:3,pr:null},105:{t:"feat(content): outline the French A1 lessons",s:"open",a:["bastian-schnitzler"],b:1,pr:[107,"bastian-schnitzler","open"]}};
+const ISSUES={76:{t:"docs: record the lesson, daily goal and streak decisions",s:"open",a:["VictorBro"],b:1,pr:[98, "VictorBro", "open"]},
+77:{t:"feat(shared): lesson contracts and the content checks",s:"closed",a:["bastian-schnitzler"],b:0,pr:[103, "bastian-schnitzler", "merged"]},
+78:{t:"feat: store the learner's time zone",s:"open",a:["luca-mattei"],b:0,pr:[109, "luca-mattei", "open"]},
+79:{t:"feat(api): lesson tables, and seed the lessons on every stack",s:"open",a:["luca-mattei"],b:0,pr:null},
+80:{t:"feat(api): roadmap rules as pure functions",s:"open",a:["avarrett"],b:0,pr:null},
+81:{t:"feat(api): today and all lessons reads, with the lesson search",s:"open",a:[],b:3,pr:null},
+82:{t:"feat(api): finish a lesson, meet the goal, keep the streak",s:"open",a:[],b:3,pr:null},
+83:{t:"feat(api): an offline lesson generator",s:"open",a:[],b:1,pr:null},
+84:{t:"feat(content): generate and review the French A1 lesson drafts",s:"open",a:[],b:2,pr:null},
+85:{t:"feat(api): seed demo learners on development stacks",s:"open",a:[],b:3,pr:null},
+86:{t:"feat(web): the daily goal page",s:"open",a:[],b:4,pr:null},
+87:{t:"feat(web): the all lessons page, with advanced search",s:"open",a:[],b:3,pr:null},
+88:{t:"feat(content): outline the German lessons, A1 to C2",s:"open",a:[],b:0,pr:null},
+89:{t:"feat(content): outline the English lessons, A1 to C2",s:"open",a:["VictorBro"],b:0,pr:[119, "VictorBro", "open"]},
+90:{t:"feat(content): outline the French lessons, A2 to C2",s:"open",a:[],b:0,pr:null},
+91:{t:"feat(content): generate and review the German lesson drafts",s:"open",a:[],b:4,pr:null},
+92:{t:"feat(content): generate and review the English lesson drafts",s:"open",a:[],b:4,pr:null},
+93:{t:"feat(content): generate and review the French lesson drafts, A2 to C2",s:"open",a:[],b:4,pr:null},
+94:{t:"feat: gamification rules, XP, challenges and achievements",s:"open",a:[],b:1,pr:null},
+95:{t:"feat(api): award XP, the daily challenge and achievements",s:"open",a:[],b:5,pr:null},
+96:{t:"feat(web): lesson stub page and the roadmap e2e",s:"open",a:[],b:4,pr:null},
+97:{t:"feat(web): rank, challenge and achievements pages",s:"open",a:[],b:3,pr:null},
+105:{t:"feat(content): outline the French A1 lessons",s:"closed",a:["bastian-schnitzler"],b:0,pr:[107, "bastian-schnitzler", "merged"]},
+106:{t:"fix(web): address French learners with tu, as the German messages do with du",s:"open",a:[],b:0,pr:null},
+108:{t:"fix(api): send an error code in every error message",s:"open",a:[],b:0,pr:null},
+115:{t:"req: design reading lessons",s:"open",a:[],b:0,pr:null},
+116:{t:"req: design function levels",s:"open",a:[],b:0,pr:null},
+117:{t:"feat: lesson prototype and final lesson brief",s:"open",a:["bastian-schnitzler"],b:0,pr:null}};
 const STATUS_TEXT={open:'open',work:'in work',closed:'closed'};
 /* Closed, else in work when it has a PR or an assignee, else open. */
 const statusOf=i=>i.s==='closed'?'closed':((i.pr||i.a.length)?'work':'open');
@@ -297,7 +324,7 @@ paintIssues();
   Object.keys(live).forEach(n=>{const g=live[n];ISSUES[n]={t:g.t,s:g.s,a:g.a,b:g.b,pr:g.pr};});
   paintIssues();
   document.getElementById('live').textContent='Live from GitHub.';
-}).catch(()=>{document.getElementById('live').textContent='GitHub could not be reached: snapshot of 4 October 2026.';});
+}).catch(()=>{document.getElementById('live').textContent='GitHub could not be reached: snapshot of 6 October 2026.';});
 document.querySelectorAll('.jump').forEach(el=>{
   const go=()=>document.getElementById(el.dataset.target).scrollIntoView({block:'start'});
   el.addEventListener('click',e=>{if(e.target.closest('a'))return;go();});
