@@ -1,0 +1,2246 @@
+{
+  "lang": "fr",
+  "level": "C2",
+  "entries": [
+    {
+      "id": "fr-social-class-in-words",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Ce que nos mots disent de nous",
+      "intent": "Repérer les mots qui trahissent un milieu social : déjeuner ou dîner, souper, maman ou ma mère, un canapé ou un sofa, au coiffeur ou chez le coiffeur, la toilette ou les toilettes."
+    },
+    {
+      "id": "fr-stylistic-on",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Les visages de on",
+      "intent": "Interpréter on selon le contexte et l'effet produit : on de modestie (on a voulu montrer…), on de reproche (alors, on ne dit plus bonjour ?), on de complicité, on qui exclut."
+    },
+    {
+      "id": "fr-pejorative-suffixes",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Chauffard, paperasse, bellâtre",
+      "intent": "Comprendre la valeur péjorative de suffixes comme -ard, -asse, -âtre, -aille, -aud, -ailler : un chauffard, la paperasse, un bellâtre, la marmaille, un lourdaud, criailler."
+    },
+    {
+      "id": "fr-independent-subjunctive",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Vive la République ! Qu'il entre !",
+      "intent": "Reconnaître et employer le subjonctif en proposition indépendante : souhait (Vive la mariée !), ordre (Qu'il entre !), hypothèse (Soit un triangle…), formules figées (Advienne que pourra)."
+    },
+    {
+      "id": "fr-diminutives-and-pet-names",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Fillette, frérot, mon lapin",
+      "intent": "Reconnaître les diminutifs et les mots tendres : -et, -ette, -ot, -on, -ounet (fillette, frérot, chaton, mon chou), et l'effet de tendresse ou de condescendance."
+    },
+    {
+      "id": "fr-nuances-of-lying",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Mentir, travestir, affabuler",
+      "intent": "Distinguer les verbes du mensonge et de la déformation : mentir, travestir, falsifier, maquiller, déguiser la vérité, affabuler, enjoliver, broder, mystifier."
+    },
+    {
+      "id": "fr-proximity-agreement-and-syllepsis",
+      "kind": "grammar",
+      "topic": "agreement",
+      "workingTitle": "L'accord de proximité et la syllepse",
+      "intent": "Comprendre les accords qui suivent le sens plutôt que la forme : la plupart sont venus, un des rares qui soient, des gens heureux mais de vieilles gens, l'accord de proximité."
+    },
+    {
+      "id": "fr-verbal-tics",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "En vrai, au final, j'avoue",
+      "intent": "Repérer les tics de langage d'aujourd'hui et leur effet sur l'auditeur : en vrai, au final, de base, juste génial, c'est clair, carrément, grave, voilà, genre."
+    },
+    {
+      "id": "fr-nuances-of-stealing",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Dérober, chaparder, détourner",
+      "intent": "Choisir le verbe du vol selon la gravité et le registre : voler, dérober, subtiliser, chaparder, piquer, détourner, escroquer, spolier, piller, faucher."
+    },
+    {
+      "id": "fr-hyperbolic-comparisons",
+      "kind": "grammar",
+      "topic": "comparison_and_quantity",
+      "workingTitle": "Plus bête que méchant, tant s'en faut",
+      "intent": "Manier les comparaisons de la langue soutenue et familière : il est plus bête que méchant, rien de moins que, tant s'en faut, ni plus ni moins, on ne peut plus clair."
+    },
+    {
+      "id": "fr-buzzwords",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Résilience, impacter, sociétal",
+      "intent": "Repérer les mots à la mode du discours public et ce qu'ils usent ou cachent : résilience, bienveillance, impacter, sociétal, inclusif, faire sens, au niveau de, acter."
+    },
+    {
+      "id": "fr-management-speak",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Embarquer les équipes, être force de proposition",
+      "intent": "Décoder le langage managérial et le reformuler simplement : embarquer les équipes, être force de proposition, monter en compétences, challenger, prioriser, être aligné."
+    },
+    {
+      "id": "fr-nuances-of-deceiving",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Duper, berner, enfumer",
+      "intent": "Nuancer l'idée de tromper selon le registre : tromper, duper, abuser, berner, leurrer, flouer, rouler, embobiner, enfumer, faire prendre des vessies pour des lanternes."
+    },
+    {
+      "id": "fr-familiar-intensifiers",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Vachement, archi, méga",
+      "intent": "Graduer les intensifs familiers et leur époque : vachement, drôlement, rudement, super, hyper, méga, archi, trop, grave, de ouf, et l'effet qu'ils produisent."
+    },
+    {
+      "id": "fr-nuances-of-eating-and-drinking",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Se sustenter, picorer, siroter",
+      "intent": "Distinguer les façons de manger et de boire selon la manière et le registre : se sustenter, se restaurer, grignoter, picorer, dévorer, se goinfrer, siroter, se désaltérer, picoler."
+    },
+    {
+      "id": "fr-old-fashioned-insults",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Maraud, faquin, malotru",
+      "intent": "Comprendre les insultes désuètes ou littéraires et leur emploi ironique aujourd'hui : maraud, faquin, malotru, butor, goujat, mufle, pignouf, gredin, vaurien."
+    },
+    {
+      "id": "fr-bird-names-as-insults",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Une buse, une pie, un pigeon",
+      "intent": "Comprendre les noms d'oiseaux employés pour qualifier les gens : une buse, une pie, un pigeon, une oie blanche, un drôle d'oiseau, une tête de linotte, un vieux hibou."
+    },
+    {
+      "id": "fr-nuances-of-sleeping",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "S'assoupir, somnoler, roupiller",
+      "intent": "Nuancer le sommeil du soutenu au familier : dormir, sommeiller, somnoler, s'assoupir, s'endormir, faire la sieste, piquer un somme, roupiller, pioncer."
+    },
+    {
+      "id": "fr-temperaments",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Sanguin, bilieux, atrabilaire",
+      "intent": "Comprendre les mots hérités de la théorie des humeurs pour décrire un tempérament : sanguin, bilieux, lymphatique, flegmatique, mélancolique, atrabilaire, avoir des humeurs."
+    },
+    {
+      "id": "fr-anacoluthon",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "En attendant, l'erreur",
+      "intent": "Repérer et corriger la rupture de construction, notamment le participe ou le gérondif mal rattaché : « En attendant votre réponse, veuillez agréer… », « Étant malade, le médecin est venu »."
+    },
+    {
+      "id": "fr-nuances-of-working",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Œuvrer, trimer, s'atteler à",
+      "intent": "Distinguer les verbes du travail selon l'effort et le registre : travailler, œuvrer, s'atteler à, s'échiner, besogner, trimer, bosser, turbiner, plancher sur."
+    },
+    {
+      "id": "fr-natives-mistakes",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Pallier à, malgré que, se rappeler de",
+      "intent": "Repérer les tournures fautives fréquentes même chez les francophones et la forme correcte : pallier à, malgré que, se rappeler de, on a convenu, aller au coiffeur."
+    },
+    {
+      "id": "fr-pleonasms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Monter en haut, prévoir à l'avance",
+      "intent": "Repérer les pléonasmes courants et dire quand l'insistance est voulue : monter en haut, prévoir à l'avance, au jour d'aujourd'hui, une panacée universelle, s'avérer vrai."
+    },
+    {
+      "id": "fr-whether-or-not-clauses",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Qu'il pleuve ou qu'il vente",
+      "intent": "Exprimer une alternative indifférente avec que… ou que + subjonctif et soit… soit : qu'il pleuve ou qu'il vente, on partira ; qu'on l'approuve ou non, la loi s'applique."
+    },
+    {
+      "id": "fr-nuances-of-leaving",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "S'éclipser, déguerpir, filer à l'anglaise",
+      "intent": "Dire comment on s'en va, de la politesse à la fuite : prendre congé, se retirer, s'éclipser, filer à l'anglaise, s'esquiver, décamper, déguerpir, prendre la poudre d'escampette."
+    },
+    {
+      "id": "fr-nuances-of-mocking",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Railler, persifler, brocarder",
+      "intent": "Graduer la moquerie : taquiner, se moquer, railler, persifler, brocarder, tourner en dérision, ridiculiser, se gausser, mettre en boîte, se payer la tête de."
+    },
+    {
+      "id": "fr-rewriting-in-another-register",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Réécrire dans un autre registre",
+      "intent": "Réécrire un même message dans trois registres (familier, courant, soutenu) et expliquer les choix de mots, de syntaxe et de ponctuation qui font la différence."
+    },
+    {
+      "id": "fr-taboo-topics-vocabulary",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Argent, mort, sexe : parler avec tact",
+      "intent": "Choisir les mots qui permettent d'aborder les sujets délicats sans choquer : gagner bien sa vie, être à l'aise, partir, une relation, être intime, les rapports, les toilettes."
+    },
+    {
+      "id": "fr-nuances-of-flattering",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Encenser, aduler, cirer les pompes",
+      "intent": "Distinguer l'éloge sincère de la flatterie : complimenter, louer, encenser, porter aux nues, aduler, flatter, flagorner, passer de la pommade, cirer les pompes."
+    },
+    {
+      "id": "fr-discussing-taboo-subjects",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Aborder un sujet délicat avec tact",
+      "intent": "Aborder un sujet délicat (l'argent, la maladie, la religion, la politique) dans un dîner ou au travail sans mettre mal à l'aise, et savoir quand battre en retraite."
+    },
+    {
+      "id": "fr-french-small-talk",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Briller dans une conversation mondaine",
+      "intent": "Entretenir une conversation mondaine à la française : rebondir sur un sujet léger, placer un trait d'esprit, citer à propos, contredire avec grâce et ne jamais monopoliser."
+    },
+    {
+      "id": "fr-titles-and-forms-of-address",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Maître, Monsieur le Ministre, Votre Excellence",
+      "intent": "Employer les titres et formes d'adresse protocolaires : Maître, Docteur, Monsieur le Ministre, Madame la Présidente, Monseigneur, Votre Excellence, mon général, Majesté."
+    },
+    {
+      "id": "fr-forms-of-love",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Béguin, idylle, amour platonique",
+      "intent": "Nuancer les formes de l'amour : un béguin, un coup de cœur, une idylle, une liaison, une passion, une amitié amoureuse, un amour platonique, une toquade, une flamme."
+    },
+    {
+      "id": "fr-nuances-of-boring",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Lasser, importuner, assommer",
+      "intent": "Nuancer l'ennui que l'on cause : ennuyer, lasser, importuner, assommer, barber, raser, bassiner, exaspérer, accabler de, tenir la jambe."
+    },
+    {
+      "id": "fr-high-society",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Le gratin, le tout-Paris, un mondain",
+      "intent": "Parler de la vie mondaine avec une douzaine de mots : un mondain, le gratin, le tout-Paris, un salon, une soirée de gala, le carnet mondain, le beau monde, le gotha, un parvenu."
+    },
+    {
+      "id": "fr-figures-of-analogy",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Métaphore, allégorie, personnification",
+      "intent": "Reconnaître et employer les figures d'analogie et en mesurer l'effet : la comparaison, la métaphore, la métaphore filée, l'allégorie, la personnification."
+    },
+    {
+      "id": "fr-nuances-of-hesitating",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Tergiverser, atermoyer, se tâter",
+      "intent": "Distinguer les verbes de l'hésitation : hésiter, balancer, tergiverser, atermoyer, temporiser, louvoyer, tâtonner, se tâter, ne savoir sur quel pied danser."
+    },
+    {
+      "id": "fr-figures-of-substitution",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Métonymie, synecdoque, périphrase",
+      "intent": "Reconnaître les figures de substitution : la métonymie (boire un verre), la synecdoque (une voile pour un bateau), la périphrase (la Ville lumière), l'antonomase."
+    },
+    {
+      "id": "fr-parallelism-and-gradation",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Parallélisme, gradation, rythme ternaire",
+      "intent": "Construire des phrases rythmées par le parallélisme, la gradation et le rythme ternaire, et en mesurer l'effet dans un discours : « Je suis venu, j'ai vu, j'ai vaincu »."
+    },
+    {
+      "id": "fr-figures-of-opposition",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Antithèse, oxymore, chiasme",
+      "intent": "Reconnaître et manier les figures d'opposition : l'antithèse, l'oxymore (cette obscure clarté), le chiasme, le paradoxe, l'antiphrase."
+    },
+    {
+      "id": "fr-nuances-of-dying",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Décéder, s'éteindre, passer l'arme à gauche",
+      "intent": "Parler de la mort selon le registre et le tact : décéder, s'éteindre, disparaître, périr, trépasser, mourir, succomber, casser sa pipe, passer l'arme à gauche."
+    },
+    {
+      "id": "fr-figures-of-emphasis",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Anaphore, hyperbole, accumulation",
+      "intent": "Reconnaître et employer les figures d'insistance : l'anaphore, la répétition, l'accumulation, l'énumération, la gradation, l'hyperbole."
+    },
+    {
+      "id": "fr-figures-of-understatement",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Litote, prétérition, euphémisme",
+      "intent": "Manier les figures de l'atténuation et de l'esquive : la litote (Va, je ne te hais point), l'euphémisme, la prétérition (je ne vous parlerai pas de…), la réticence."
+    },
+    {
+      "id": "fr-nuances-of-hiding",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Dissimuler, occulter, receler",
+      "intent": "Distinguer les verbes de la dissimulation : cacher, dissimuler, masquer, camoufler, occulter, taire, passer sous silence, receler, escamoter, étouffer une affaire."
+    },
+    {
+      "id": "fr-religion-in-everyday-words",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Bigot, mécréant, grenouille de bénitier",
+      "intent": "Comprendre les mots de la religion passés dans la langue et leur connotation : un bigot, une grenouille de bénitier, un mécréant, une bondieuserie, prêcher, une croisade."
+    },
+    {
+      "id": "fr-rhetorical-questions",
+      "kind": "grammar",
+      "topic": "information_structure_and_pragmatics",
+      "workingTitle": "La question rhétorique",
+      "intent": "Employer la question qui n'attend pas de réponse pour affirmer, accuser ou faire réfléchir : « Qui peut encore croire que… ? », « Faut-il rappeler que… ? »."
+    },
+    {
+      "id": "fr-rhetoric-vocabulary",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Ethos, pathos, exorde, péroraison",
+      "intent": "Analyser un discours avec les mots de la rhétorique : l'ethos, le pathos, le logos, l'exorde, la péroraison, la captatio benevolentiae, une envolée, un effet de manche."
+    },
+    {
+      "id": "fr-nuances-of-showing-off",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Arborer, exhiber, faire étalage",
+      "intent": "Nuancer l'idée de montrer selon l'intention : montrer, présenter, exposer, arborer, afficher, exhiber, étaler, faire étalage de, faire montre de, parader."
+    },
+    {
+      "id": "fr-kinds-of-speeches",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Allocution, harangue, réquisitoire",
+      "intent": "Distinguer les genres de discours : une allocution, une harangue, un plaidoyer, un réquisitoire, une diatribe, un pamphlet, une oraison funèbre, un laïus, un prêche."
+    },
+    {
+      "id": "fr-speaking-at-length",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Pérorer, palabrer, jacasser",
+      "intent": "Nuancer la parole abondante ou creuse : discourir, pérorer, palabrer, disserter, jacasser, papoter, bavasser, radoter, gloser, tenir le crachoir."
+    },
+    {
+      "id": "fr-ellipsis-and-nominal-sentences",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Belle journée. Rien à signaler.",
+      "intent": "Employer la phrase nominale et l'ellipse pour un effet de rapidité ou d'émotion : « Belle journée. » « Rien à signaler. » « Lui, ministre ? Jamais. »"
+    },
+    {
+      "id": "fr-improvising-a-speech",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Improviser sur un sujet imposé",
+      "intent": "Parler trois minutes sur un sujet tiré au sort : trouver un angle, une accroche, deux idées fortes et une chute, sans notes."
+    },
+    {
+      "id": "fr-nuances-of-crying",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Sangloter, larmoyer, chialer",
+      "intent": "Distinguer les façons de pleurer : pleurer, verser une larme, sangloter, fondre en larmes, éclater en sanglots, larmoyer, pleurnicher, geindre, chialer."
+    },
+    {
+      "id": "fr-pleading-a-cause",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Plaider une cause",
+      "intent": "Plaider une cause devant un auditoire à convaincre : exposer les faits sous le jour le plus favorable, anticiper les objections et finir par un appel à l'émotion maîtrisé."
+    },
+    {
+      "id": "fr-reading-a-parliamentary-speech",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire un grand discours parlementaire",
+      "intent": "Lire un grand discours prononcé à l'Assemblée (par exemple sur l'abolition de la peine de mort) et analyser sa construction, ses figures et sa péroraison."
+    },
+    {
+      "id": "fr-nuances-of-shouting",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Vociférer, s'égosiller, brailler",
+      "intent": "Nuancer la voix forte : crier, hurler, vociférer, s'égosiller, brailler, beugler, tonitruer, glapir, s'époumoner, pousser des cris d'orfraie."
+    },
+    {
+      "id": "fr-reading-the-appeal-of-june-eighteenth",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Lire l'appel du 18 Juin",
+      "intent": "Lire l'appel du 18 juin 1940, le replacer dans son contexte et montrer comment sa brièveté, ses répétitions et son ton portent l'espoir."
+    },
+    {
+      "id": "fr-reading-jaures",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Lire Jaurès",
+      "intent": "Lire un extrait du discours de Jaurès à la jeunesse et dégager sa conception du courage, ainsi que les procédés oratoires qui la font vibrer."
+    },
+    {
+      "id": "fr-twentieth-century-memory",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "La Résistance, l'Occupation, Mai 68",
+      "intent": "Comprendre les mots de la mémoire du XXe siècle : les poilus, l'Occupation, la Résistance, la Collaboration, la Libération, les Trente Glorieuses, Mai 68, la décolonisation."
+    },
+    {
+      "id": "fr-reading-a-courtroom-plea",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire une plaidoirie",
+      "intent": "Lire une plaidoirie d'avocat, en suivre la stratégie (attendrir, semer le doute, retourner l'accusation) et repérer les effets oratoires."
+    },
+    {
+      "id": "fr-nuances-of-loving-and-hating",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Chérir, affectionner, exécrer",
+      "intent": "Graduer l'attachement et l'aversion : chérir, affectionner, s'éprendre de, idolâtrer, apprécier, détester, abhorrer, exécrer, honnir, ne pas pouvoir sentir quelqu'un."
+    },
+    {
+      "id": "fr-reading-a-funeral-oration",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Lire une oraison funèbre de Bossuet",
+      "intent": "Lire un extrait d'oraison funèbre de Bossuet et analyser l'ampleur de la période, les antithèses et la méditation sur la vanité des grandeurs."
+    },
+    {
+      "id": "fr-reading-a-reception-speech",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire un discours de réception à l'Académie",
+      "intent": "Lire un discours de réception à l'Académie française, repérer l'éloge obligé du prédécesseur, l'humour feutré et ce que le nouvel élu dit de lui-même."
+    },
+    {
+      "id": "fr-nuances-of-wanting",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Convoiter, briguer, aspirer à",
+      "intent": "Distinguer les verbes du désir et de l'ambition : souhaiter, désirer, convoiter, briguer, ambitionner, aspirer à, lorgner, guigner, avoir des vues sur, rêver de."
+    },
+    {
+      "id": "fr-arguing-against-bad-faith",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Tenir tête à un interlocuteur de mauvaise foi",
+      "intent": "Garder le cap face à un interlocuteur de mauvaise foi : nommer le procédé, refuser le faux dilemme, ramener aux faits sans s'énerver."
+    },
+    {
+      "id": "fr-writing-a-pamphlet",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Écrire un texte polémique",
+      "intent": "Écrire une lettre ouverte ou un billet polémique : choisir une cible, un ton (indigné, ironique), des formules qui frappent, sans tomber dans l'insulte."
+    },
+    {
+      "id": "fr-nuances-of-understanding",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Saisir, appréhender, piger",
+      "intent": "Nuancer la compréhension : comprendre, saisir, appréhender, concevoir, discerner, percevoir, piger, capter, entraver, y voir clair."
+    },
+    {
+      "id": "fr-kinds-of-humour",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Satire, parodie, pastiche, absurde",
+      "intent": "Distinguer les formes du comique : la satire, la parodie, le pastiche, le burlesque, l'absurde, l'humour noir, le pince-sans-rire, la caricature, le comique de répétition."
+    },
+    {
+      "id": "fr-wordplay",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Calembour, contrepèterie, à-peu-près",
+      "intent": "Reconnaître et créer des jeux de mots : le calembour, la contrepèterie, l'à-peu-près, le mot-valise, la paronomase, le double sens, et l'art de les placer."
+    },
+    {
+      "id": "fr-affective-imperfect",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Il était sage, mon bébé ?",
+      "intent": "Comprendre les emplois affectifs de l'imparfait : imparfait hypocoristique (il était sage, mon bébé ?), forain (qu'est-ce qu'il lui fallait, à la dame ?), d'imminence contrariée."
+    },
+    {
+      "id": "fr-french-education-system-jargon",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "L'agrégation, le CAPES, un REP",
+      "intent": "Comprendre le jargon de l'Éducation nationale : l'agrégation, le CAPES, un professeur agrégé, un inspecteur, un REP, le collège unique, le conseil de classe, la carte scolaire."
+    },
+    {
+      "id": "fr-nuances-of-forgetting",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Omettre, négliger, faire l'impasse",
+      "intent": "Distinguer l'oubli involontaire de l'omission délibérée : oublier, omettre, négliger, perdre de vue, faire l'impasse sur, passer outre, laisser de côté, faire abstraction de, zapper."
+    },
+    {
+      "id": "fr-telling-a-joke",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Raconter une histoire drôle",
+      "intent": "Raconter une histoire drôle en soignant le rythme, les silences et la chute, et rattraper une blague qui tombe à plat."
+    },
+    {
+      "id": "fr-deadpan-humour",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Pratiquer l'humour pince-sans-rire",
+      "intent": "Faire de l'humour à froid sans prévenir, avec le ton le plus sérieux possible, et lire sur le visage de l'autre s'il a compris."
+    },
+    {
+      "id": "fr-nuances-of-insisting",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "S'acharner, s'obstiner, revenir à la charge",
+      "intent": "Nuancer l'insistance, du positif au négatif : persévérer, persister, insister, s'obstiner, s'entêter, s'acharner, revenir à la charge, ne pas en démordre, enfoncer le clou."
+    },
+    {
+      "id": "fr-answering-with-irony",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Répondre à une attaque par l'humour",
+      "intent": "Désamorcer une remarque blessante ou une provocation par une réplique ironique ou un trait d'esprit, sans perdre la face ni envenimer la situation."
+    },
+    {
+      "id": "fr-scope-of-negation",
+      "kind": "grammar",
+      "topic": "negation",
+      "workingTitle": "Tous ne sont pas venus",
+      "intent": "Comprendre la portée de la négation et les ambiguïtés qu'elle crée : tous ne sont pas venus (certains seulement), je ne travaille pas pour gagner de l'argent, pas toujours, toujours pas."
+    },
+    {
+      "id": "fr-mockery-and-contempt-phrases",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Mon œil ! Tu parles !",
+      "intent": "Comprendre les répliques d'ironie et de mépris : mon œil !, tu parles !, c'est ça, oui, et ta sœur ?, la belle affaire !, quelle blague !, à d'autres !, cause toujours."
+    },
+    {
+      "id": "fr-nuances-of-imitating",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Singer, pasticher, plagier",
+      "intent": "Distinguer l'emprunt légitime de la copie : s'inspirer de, imiter, reproduire, copier, singer, contrefaire, pasticher, parodier, plagier, calquer."
+    },
+    {
+      "id": "fr-reading-a-comic-monologue",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire un sketch à jeux de mots",
+      "intent": "Lire un sketch écrit à la manière de Raymond Devos et expliquer comment les jeux de mots et la logique absurde construisent le comique."
+    },
+    {
+      "id": "fr-reading-dark-humour",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire un texte d'humour noir",
+      "intent": "Lire une chronique d'humour noir à la manière de Pierre Desproges, repérer la cible réelle sous la provocation et dire où passe la limite."
+    },
+    {
+      "id": "fr-nuances-of-calming-and-stirring",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Apaiser, tempérer, galvaniser",
+      "intent": "Distinguer ce qui calme et ce qui excite : apaiser, calmer, tempérer, modérer, désamorcer, stimuler, exciter, électriser, galvaniser, échauffer les esprits."
+    },
+    {
+      "id": "fr-reading-an-oulipo-text",
+      "kind": "reading",
+      "theme": "language",
+      "workingTitle": "Lire un texte oulipien",
+      "intent": "Lire un texte écrit sous contrainte (lipogramme, texte à la manière des Exercices de style) et dire ce que la contrainte fait à la langue."
+    },
+    {
+      "id": "fr-advanced-film-vocabulary",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Champ-contrechamp, contre-plongée, raccord",
+      "intent": "Analyser une séquence de film avec précision : le champ-contrechamp, la plongée, la contre-plongée, le raccord, le montage alterné, le plan fixe, la profondeur de champ."
+    },
+    {
+      "id": "fr-reading-flaubert-received-ideas",
+      "kind": "reading",
+      "theme": "language",
+      "workingTitle": "Lire le Dictionnaire des idées reçues",
+      "intent": "Lire des articles du Dictionnaire des idées reçues de Flaubert, expliquer leur ironie et en écrire deux à la même manière sur des clichés d'aujourd'hui."
+    },
+    {
+      "id": "fr-reading-asterix-wordplay",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire Astérix et ses jeux de mots",
+      "intent": "Lire une page de bande dessinée humoristique à la manière d'Astérix et décoder ses calembours, ses anachronismes et ses clins d'œil à l'histoire et à l'actualité."
+    },
+    {
+      "id": "fr-nuances-of-beauty",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Joli, ravissant, somptueux",
+      "intent": "Graduer la beauté selon ce qu'on décrit : joli, mignon, charmant, ravissant, beau, superbe, splendide, magnifique, somptueux, sublime."
+    },
+    {
+      "id": "fr-reading-a-parody-news-site",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire une fausse information parodique",
+      "intent": "Lire un article d'un site d'information parodique et repérer ce qui le rend crédible au premier regard, puis ce qui trahit la parodie."
+    },
+    {
+      "id": "fr-reading-aphorisms",
+      "kind": "reading",
+      "theme": "language",
+      "workingTitle": "Lire des aphorismes",
+      "intent": "Lire des aphorismes de Jules Renard et de moralistes, expliquer leur double sens et leur cruauté, et dire ce qui fait la réussite d'une formule brève."
+    },
+    {
+      "id": "fr-nuances-of-ugliness",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Disgracieux, ingrat, hideux",
+      "intent": "Nuancer la laideur avec tact ou sans pitié : quelconque, ingrat, disgracieux, laid, vilain, moche, hideux, repoussant, affreux, monstrueux."
+    },
+    {
+      "id": "fr-reading-bar-talk",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Lire des brèves de comptoir",
+      "intent": "Lire des répliques de café à la manière des brèves de comptoir, et analyser la sagesse populaire, les raccourcis et les tournures de l'oral qu'elles condensent."
+    },
+    {
+      "id": "fr-reading-film-dialogue-in-slang",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire des dialogues de polar à l'ancienne",
+      "intent": "Lire des dialogues de film policier des années soixante, à la manière de Michel Audiard, décoder l'argot et expliquer le comique des répliques."
+    },
+    {
+      "id": "fr-nuances-of-intelligence",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Astucieux, perspicace, retors",
+      "intent": "Distinguer les formes d'intelligence : intelligent, brillant, malin, astucieux, futé, perspicace, sagace, subtil, rusé, retors, roublard."
+    },
+    {
+      "id": "fr-reading-montaigne",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Lire Montaigne",
+      "intent": "Lire un passage des Essais en français modernisé, suivre la pensée qui se cherche et se contredit, et dire ce que Montaigne entend par « se peindre »."
+    },
+    {
+      "id": "fr-past-conditional-second-form",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "S'il eût su, j'eusse aimé",
+      "intent": "Reconnaître le conditionnel passé deuxième forme (il eût fallu, j'eusse aimé, s'il eût su) dans la langue littéraire et le transposer en français courant."
+    },
+    {
+      "id": "fr-feasting-words",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Festin, agapes, ripailles",
+      "intent": "Nommer les repas d'exception et leurs excès : un festin, des agapes, un banquet, des ripailles, faire bombance, bâfrer, une table frugale, un repas pantagruélique."
+    },
+    {
+      "id": "fr-reading-pascal",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Lire Pascal",
+      "intent": "Lire un fragment des Pensées (le divertissement, le roseau pensant) et reconstituer l'argument sous la force des formules."
+    },
+    {
+      "id": "fr-nuances-of-foolishness",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Naïf, crédule, obtus",
+      "intent": "Nuancer le manque de jugement : naïf, ingénu, crédule, candide, niais, benêt, sot, obtus, borné, bête comme ses pieds."
+    },
+    {
+      "id": "fr-reading-la-bruyere",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Lire un portrait de La Bruyère",
+      "intent": "Lire un portrait des Caractères, en dégager le type humain visé et montrer comment le récit d'un comportement suffit à faire la satire."
+    },
+    {
+      "id": "fr-reading-la-rochefoucauld",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Lire les maximes de La Rochefoucauld",
+      "intent": "Lire une série de maximes, reformuler chacune, et montrer comment l'auteur ramène les vertus à l'amour-propre."
+    },
+    {
+      "id": "fr-nuances-of-courage",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Audacieux, téméraire, intrépide",
+      "intent": "Distinguer le courage de l'imprudence : courageux, brave, vaillant, audacieux, hardi, intrépide, téméraire, inconscient, culotté, casse-cou."
+    },
+    {
+      "id": "fr-literary-relative-clauses",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Laquelle, quoi, du temps que",
+      "intent": "Reconnaître les relatives de la langue littéraire : lequel sujet (une lettre, laquelle…), quoi relatif (ce à quoi, sans quoi, après quoi), où et que temporels."
+    },
+    {
+      "id": "fr-reading-madame-de-sevigne",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Lire une lettre de Madame de Sévigné",
+      "intent": "Lire une lettre de Madame de Sévigné, apprécier l'art de raconter une nouvelle et repérer les marques de l'oralité et de la complicité."
+    },
+    {
+      "id": "fr-reading-saint-simon",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Lire un portrait de Saint-Simon",
+      "intent": "Lire un portrait de courtisan tiré des Mémoires de Saint-Simon et analyser la férocité du trait, l'ampleur de la phrase et le regard sur la cour."
+    },
+    {
+      "id": "fr-nuances-of-stinginess",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Regardant, parcimonieux, pingre",
+      "intent": "Nuancer le rapport à l'argent, de la sagesse au vice : économe, regardant, parcimonieux, avare, pingre, radin, grippe-sou, près de ses sous."
+    },
+    {
+      "id": "fr-rare-determiners",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Maint, d'aucuns, nul, quelconque",
+      "intent": "Reconnaître les déterminants et indéfinis rares de l'écrit soutenu : maintes fois, d'aucuns pensent, nul ne sait, un quelconque prétexte, moult détails, force arguments."
+    },
+    {
+      "id": "fr-ancien-regime-court",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Courtisan, faveur, disgrâce",
+      "intent": "Comprendre les mots de la cour et de l'Ancien Régime qu'on lit chez les moralistes : un courtisan, la faveur, la disgrâce, une charge, un privilège, un grand, le lever du roi."
+    },
+    {
+      "id": "fr-nuances-of-pride",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Fierté, vanité, morgue",
+      "intent": "Distinguer les nuances de l'orgueil : la fierté, l'amour-propre, l'orgueil, la vanité, la suffisance, la fatuité, la morgue, la condescendance, la superbe."
+    },
+    {
+      "id": "fr-food-criticism-vocabulary",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Une mise en bouche, sublimer, une assiette généreuse",
+      "intent": "Parler comme un critique gastronomique : une mise en bouche, une assiette, la cuisson parfaite, sublimer un produit, une sauce nappante, une cuisine d'auteur, la générosité."
+    },
+    {
+      "id": "fr-old-oaths",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Sacrebleu, diantre, ventre-saint-gris",
+      "intent": "Reconnaître les jurons d'autrefois, leurs origines et leur emploi parodique aujourd'hui : sacrebleu, morbleu, diantre, palsambleu, ventre-saint-gris, mille sabords."
+    },
+    {
+      "id": "fr-old-money-and-measures",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Un écu, une lieue, un arpent",
+      "intent": "Comprendre les monnaies et mesures anciennes qu'on rencontre dans les textes : un écu, un louis, un sou, un liard, une pistole, une lieue, une toise, un arpent, une aune."
+    },
+    {
+      "id": "fr-nuances-of-shame",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Gêne, embarras, pudeur",
+      "intent": "Distinguer la honte et ses voisines : la gêne, l'embarras, la confusion, la honte, l'humiliation, la pudeur, la réserve, le remords, rougir jusqu'aux oreilles."
+    },
+    {
+      "id": "fr-reading-marivaux",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire une scène de Marivaux",
+      "intent": "Lire une scène de Marivaux et montrer comment le marivaudage fait avancer l'amour par le langage même : malentendus, détours, aveux retardés."
+    },
+    {
+      "id": "fr-reading-the-misanthrope",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire Le Misanthrope",
+      "intent": "Lire la première scène du Misanthrope et analyser le débat entre Alceste et Philinte sur la sincérité et la politesse, en vers."
+    },
+    {
+      "id": "fr-game-idioms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Jouer cartes sur table, damer le pion",
+      "intent": "Comprendre les expressions venues du jeu : jouer cartes sur table, abattre ses cartes, avoir un atout, damer le pion, échec et mat, brouiller les cartes, jouer son va-tout."
+    },
+    {
+      "id": "fr-reading-corneille",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire les stances du Cid",
+      "intent": "Lire les stances de Rodrigue et montrer comment la forme, les antithèses et les refrains font entendre un dilemme entre l'amour et l'honneur."
+    },
+    {
+      "id": "fr-nuances-of-joy",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Allégresse, liesse, félicité",
+      "intent": "Graduer la joie individuelle et collective : le contentement, la satisfaction, la gaieté, la joie, l'allégresse, l'euphorie, l'exaltation, la liesse, la félicité."
+    },
+    {
+      "id": "fr-reading-ronsard",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire un sonnet de Ronsard",
+      "intent": "Lire un sonnet de Ronsard, retrouver le thème du temps qui fuit, analyser les images et comparer avec une version moderne du carpe diem."
+    },
+    {
+      "id": "fr-reading-rabelais",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire Rabelais",
+      "intent": "Lire un extrait de Gargantua en français modernisé, goûter l'énumération, la démesure et le comique, et dégager la critique de l'éducation qu'il porte."
+    },
+    {
+      "id": "fr-nuances-of-sorrow",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Chagrin, peine, affliction",
+      "intent": "Graduer la tristesse : la peine, le chagrin, la tristesse, le vague à l'âme, le désespoir, la détresse, l'affliction, la désolation, avoir le cœur gros."
+    },
+    {
+      "id": "fr-reading-descartes",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Lire Descartes",
+      "intent": "Lire un extrait du Discours de la méthode, reconstituer les règles et dire pourquoi le choix d'écrire en français, et à la première personne, compte."
+    },
+    {
+      "id": "fr-reading-montesquieu",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Lire les Lettres persanes",
+      "intent": "Lire une des Lettres persanes et montrer comment le regard faussement naïf d'un étranger fait la satire de la société française."
+    },
+    {
+      "id": "fr-elegance",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Tiré à quatre épingles, débraillé",
+      "intent": "Parler d'élégance et de négligé : le chic, l'élégance, la coquetterie, un dandy, tiré à quatre épingles, bien mis, débraillé, fagoté, attifé, négligé."
+    },
+    {
+      "id": "fr-reading-the-encyclopedie",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Lire un article de l'Encyclopédie",
+      "intent": "Lire un article de l'Encyclopédie (par exemple « Autorité politique ») et repérer les audaces qu'il glisse sous un ton prudent."
+    },
+    {
+      "id": "fr-nuances-of-anger",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Courroux, ire, exaspération",
+      "intent": "Graduer la colère, du soutenu au familier : l'irritation, l'agacement, l'exaspération, la colère, la fureur, la rage, le courroux, l'ire, être furax."
+    },
+    {
+      "id": "fr-old-letter-formulas",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Votre très humble serviteur",
+      "intent": "Comprendre les formules épistolaires d'autrefois et leur sens réel : je suis votre très humble et très obéissant serviteur, je vous baise les mains, agréez, Monsieur."
+    },
+    {
+      "id": "fr-fronted-que-clause",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Qu'il soit parti m'étonne",
+      "intent": "Placer une complétive en tête de phrase, avec le subjonctif, pour mettre un fait en relief : qu'il soit parti m'étonne ; que l'on puisse en douter prouve…"
+    },
+    {
+      "id": "fr-nuances-of-tiredness",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Las, éreinté, fourbu",
+      "intent": "Graduer la fatigue : fatigué, las, éreinté, épuisé, exténué, harassé, fourbu, rompu, vanné, lessivé, sur les rotules."
+    },
+    {
+      "id": "fr-reading-rousseau",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Lire les Confessions",
+      "intent": "Lire un épisode des Confessions de Rousseau (le ruban volé) et analyser comment l'aveu se fait aussi plaidoyer."
+    },
+    {
+      "id": "fr-reading-diderot",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire Jacques le fataliste",
+      "intent": "Lire un extrait de Jacques le fataliste et montrer comment Diderot joue avec le lecteur : interruptions, questions, refus de raconter."
+    },
+    {
+      "id": "fr-reading-laclos",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Lire Les Liaisons dangereuses",
+      "intent": "Lire une lettre des Liaisons dangereuses et repérer comment son auteur manipule son destinataire tout en révélant au lecteur ses vrais desseins."
+    },
+    {
+      "id": "fr-nuances-of-size",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Exigu, infime, colossal",
+      "intent": "Choisir le mot juste pour la taille : petit, menu, exigu, minuscule, infime, riquiqui, grand, vaste, imposant, colossal, démesuré, titanesque."
+    },
+    {
+      "id": "fr-elliptical-concessives",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Encore que, si tant est que, pour peu que",
+      "intent": "Employer les tournures concessives et restrictives de l'écrit soutenu : encore que, si tant est que, pour peu que, tant s'en faut, sauf à, à supposer que."
+    },
+    {
+      "id": "fr-reading-the-declaration-of-rights",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire la Déclaration des droits de l'homme",
+      "intent": "Lire la Déclaration de 1789, reformuler ses principes et montrer ce que le choix de chaque mot (naturels, imprescriptibles, nul) engage."
+    },
+    {
+      "id": "fr-fine-crafts",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Savoir-faire, maroquinerie, orfèvrerie",
+      "intent": "Parler d'artisanat d'art et de luxe : un savoir-faire, un artisan d'art, la maroquinerie, l'orfèvrerie, la haute joaillerie, un compagnon, un chef-d'œuvre, le fait main."
+    },
+    {
+      "id": "fr-nuances-of-speed",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Prompt, expéditif, poussif",
+      "intent": "Nuancer la vitesse et la lenteur : rapide, prompt, vif, expéditif, hâtif, précipité, fulgurant, lent, traînard, nonchalant, indolent, poussif."
+    },
+    {
+      "id": "fr-reading-voltaire-on-tolerance",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Lire le Traité sur la tolérance",
+      "intent": "Lire la « Prière à Dieu » du Traité sur la tolérance de Voltaire et analyser comment la prière devient un argument contre le fanatisme."
+    },
+    {
+      "id": "fr-reading-beaumarchais",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire le monologue de Figaro",
+      "intent": "Lire le monologue de Figaro et montrer comment la plainte personnelle devient une critique des privilèges."
+    },
+    {
+      "id": "fr-nuances-of-talkativeness",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Volubile, prolixe, disert",
+      "intent": "Distinguer les bavards : bavard, loquace, volubile, disert, prolixe, intarissable, verbeux, un moulin à paroles, taiseux, laconique."
+    },
+    {
+      "id": "fr-revolution-vocabulary",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Sans-culotte, la Terreur, girondin",
+      "intent": "Comprendre les mots de la Révolution qui vivent encore dans la langue : l'Ancien Régime, les états généraux, un sans-culotte, la Terreur, un girondin, la carmagnole, la guillotine."
+    },
+    {
+      "id": "fr-reading-tocqueville",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire Tocqueville",
+      "intent": "Lire un passage de De la démocratie en Amérique sur le despotisme doux et dire en quoi cette analyse parle encore aux démocraties d'aujourd'hui."
+    },
+    {
+      "id": "fr-reading-chateaubriand",
+      "kind": "reading",
+      "theme": "personal_identification",
+      "workingTitle": "Lire Chateaubriand",
+      "intent": "Lire un extrait des Mémoires d'outre-tombe (la grive de Montboissier) et analyser comment une sensation fait resurgir le passé dans une prose musicale."
+    },
+    {
+      "id": "fr-nuances-of-strangeness",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Insolite, saugrenu, incongru",
+      "intent": "Qualifier l'étrange avec précision : bizarre, étrange, curieux, insolite, singulier, déconcertant, saugrenu, incongru, farfelu, abracadabrant."
+    },
+    {
+      "id": "fr-narrative-infinitive",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Et chacun de rire",
+      "intent": "Reconnaître l'infinitif de narration, qui marque une réaction vive et immédiate dans un récit : et chacun de rire ; et lui de répondre que…"
+    },
+    {
+      "id": "fr-reading-stendhal",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire Stendhal",
+      "intent": "Lire un extrait du Rouge et le Noir, repérer l'ironie du narrateur à l'égard de Julien et dire ce que cette distance apporte."
+    },
+    {
+      "id": "fr-nuances-of-difficulty",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Ardu, épineux, corsé",
+      "intent": "Graduer la difficulté et la facilité : ardu, malaisé, épineux, délicat, corsé, coton, aisé, élémentaire, enfantin, simple comme bonjour, un jeu d'enfant."
+    },
+    {
+      "id": "fr-reading-balzac",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire Balzac",
+      "intent": "Lire la fin du Père Goriot (« À nous deux maintenant ! ») et montrer comment Balzac fait de Rastignac le type d'une ambition et d'une époque."
+    },
+    {
+      "id": "fr-regional-houses",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Longère, mas, maison de maître",
+      "intent": "Reconnaître les types de maisons de France et leurs connotations : une longère, un mas, un chalet, une maison de maître, une gentilhommière, une chaumière, une bicoque, une masure."
+    },
+    {
+      "id": "fr-period-furniture",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Une bergère, un guéridon, un secrétaire",
+      "intent": "Reconnaître le mobilier ancien qui peuple les romans : une bergère, un guéridon, un secrétaire, une commode, une console, une psyché, un bonheur-du-jour, un trumeau."
+    },
+    {
+      "id": "fr-garden-and-park-vocabulary",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Charmille, tonnelle, parterre",
+      "intent": "Décrire un jardin ou un parc avec les mots de la littérature : un parterre, un bosquet, une charmille, une tonnelle, une allée, un verger, une roseraie, une orangerie, un jardin à la française."
+    },
+    {
+      "id": "fr-nuances-of-importance",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Capital, primordial, futile, oiseux",
+      "intent": "Graduer l'importance : capital, crucial, primordial, essentiel, déterminant, majeur, secondaire, accessoire, futile, superflu, vain, oiseux."
+    },
+    {
+      "id": "fr-period-clothing",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Redingote, crinoline, haut-de-forme",
+      "intent": "Reconnaître les vêtements d'autrefois : une redingote, un jabot, un haut-de-forme, une crinoline, un corset, des bas de soie, une ombrelle, un gilet brodé, des guêtres."
+    },
+    {
+      "id": "fr-old-trades",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Rémouleur, colporteur, lavandière",
+      "intent": "Comprendre les noms de métiers disparus qu'on lit dans les romans du XIXe siècle : un rémouleur, un colporteur, une lavandière, un allumeur de réverbères, un cocher, une blanchisseuse."
+    },
+    {
+      "id": "fr-nuances-of-obviousness",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Manifeste, patent, flagrant",
+      "intent": "Qualifier ce qui est évident : clair, net, évident, manifeste, patent, flagrant, criant, indiscutable, avéré, cela saute aux yeux, clair comme de l'eau de roche."
+    },
+    {
+      "id": "fr-detached-apposition",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Seule, elle attendait",
+      "intent": "Employer l'apposition et l'épithète détachée pour varier la phrase et resserrer le récit : seule, elle attendait ; fils d'ouvrier, il connaissait la faim."
+    },
+    {
+      "id": "fr-reading-hugo-novel",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire Les Misérables",
+      "intent": "Lire un extrait des Misérables et analyser comment Hugo mêle récit, digression et prise de position morale."
+    },
+    {
+      "id": "fr-reading-hugo-poetry",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire Hugo poète",
+      "intent": "Lire « Demain, dès l'aube… » et montrer comment le poème cache jusqu'au dernier vers le but du voyage, et ce que cette attente produit."
+    },
+    {
+      "id": "fr-nuances-of-wickedness",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Malveillant, perfide, mesquin",
+      "intent": "Nuancer la méchanceté : méchant, malveillant, malintentionné, mesquin, perfide, venimeux, fielleux, sournois, cruel, sadique, une langue de vipère."
+    },
+    {
+      "id": "fr-reading-musset",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire Musset",
+      "intent": "Lire la tirade de Perdican dans On ne badine pas avec l'amour et montrer comment le personnage passe de l'amertume à un éloge de l'amour."
+    },
+    {
+      "id": "fr-old-rural-life",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Moisson, vendanges, transhumance",
+      "intent": "Comprendre les mots de la vie rurale d'autrefois qu'on retrouve en littérature : la moisson, les vendanges, la transhumance, un métayer, un lavoir, la veillée, le battage."
+    },
+    {
+      "id": "fr-reading-michelet",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Lire Michelet",
+      "intent": "Lire une page de l'Histoire de France de Michelet et montrer comment l'historien fait de l'histoire un récit lyrique, avec un peuple pour héros."
+    },
+    {
+      "id": "fr-nuances-of-madness",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Insensé, extravagant, aberrant",
+      "intent": "Qualifier l'irrationnel, du comportement à l'idée : insensé, déraisonnable, extravagant, aberrant, délirant, absurde, loufoque, dément, une idée tordue."
+    },
+    {
+      "id": "fr-reading-renan",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire « Qu'est-ce qu'une nation ? »",
+      "intent": "Lire un extrait de la conférence de Renan, reformuler sa définition de la nation et la confronter à d'autres définitions fondées sur la langue ou la race."
+    },
+    {
+      "id": "fr-reading-feydeau",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire une scène de vaudeville",
+      "intent": "Lire une scène de Feydeau et démonter la mécanique comique : portes qui claquent, quiproquos, accélération du rythme et personnages pris au piège."
+    },
+    {
+      "id": "fr-theatre-idioms",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Coup de théâtre, en coulisses, faire son cinéma",
+      "intent": "Comprendre les expressions venues de la scène : un coup de théâtre, en coulisses, jouer la comédie, tenir le premier rôle, faire son cinéma, brûler les planches, un four."
+    },
+    {
+      "id": "fr-nuances-of-wealth-and-poverty",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Nanti, cossu, démuni, indigent",
+      "intent": "Parler de richesse et de pauvreté avec la juste connotation : aisé, fortuné, nanti, cossu, opulent, plein aux as, démuni, indigent, nécessiteux, sans le sou."
+    },
+    {
+      "id": "fr-double-compound-tenses",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Quand il a eu fini",
+      "intent": "Reconnaître et employer les temps surcomposés de l'oral et de certaines régions : quand il a eu fini, dès qu'elle a eu compris, et leur valeur d'antériorité."
+    },
+    {
+      "id": "fr-reading-jaccuse",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire « J'accuse… ! »",
+      "intent": "Lire un extrait de « J'accuse… ! » de Zola et analyser comment l'anaphore, la nomination des coupables et l'engagement personnel transforment un article en acte."
+    },
+    {
+      "id": "fr-reading-rimbaud",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire Rimbaud",
+      "intent": "Lire un poème de Rimbaud (« Ma Bohème » ou « Le Dormeur du val »), analyser les images et montrer où se loge la surprise."
+    },
+    {
+      "id": "fr-nuances-of-beginnings-and-ends",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Prémices, genèse, épilogue",
+      "intent": "Nommer les commencements et les fins : l'origine, la genèse, les prémices, l'aube, l'amorce, les balbutiements, le déclin, le crépuscule, l'issue, l'épilogue."
+    },
+    {
+      "id": "fr-reading-verlaine",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire Verlaine",
+      "intent": "Lire « Chanson d'automne » ou « Mon rêve familier » et montrer comment le choix des sons, du rythme et du vers impair fait de la poésie une musique."
+    },
+    {
+      "id": "fr-reading-mallarme",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire un sonnet de Mallarmé",
+      "intent": "Lire un sonnet de Mallarmé, en proposer une lecture argumentée et dire ce que son obscurité volontaire demande au lecteur."
+    },
+    {
+      "id": "fr-nuances-of-desire",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Velléité, lubie, convoitise",
+      "intent": "Distinguer les formes du désir : une envie, une aspiration, un souhait, une velléité, un caprice, une lubie, une tocade, la convoitise, l'ambition, la soif de."
+    },
+    {
+      "id": "fr-literary-travel-vocabulary",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Errance, périple, ailleurs",
+      "intent": "Parler du voyage comme expérience : l'errance, un périple, une odyssée, l'ailleurs, l'exotisme, le nomadisme, l'appel du large, un voyageur et un touriste."
+    },
+    {
+      "id": "fr-reading-baudelaire-as-critic",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire Baudelaire critique d'art",
+      "intent": "Lire un extrait des Salons de Baudelaire et dire ce qu'il attend d'un peintre, et comment sa prose critique est elle-même un art."
+    },
+    {
+      "id": "fr-reading-flauberts-letters",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire Flaubert sur le style",
+      "intent": "Lire des lettres de Flaubert à Louise Colet sur le travail du style et reformuler sa conception du mot juste et du « livre sur rien »."
+    },
+    {
+      "id": "fr-craft-idioms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Un travail d'orfèvre, tailler une bavette",
+      "intent": "Comprendre les expressions venues des métiers : un travail d'orfèvre, cousu main, mettre la dernière main, tailler une bavette, être du bâtiment, remettre sur le métier."
+    },
+    {
+      "id": "fr-reading-an-old-recipe",
+      "kind": "reading",
+      "theme": "food_and_drink",
+      "workingTitle": "Lire une recette ancienne",
+      "intent": "Lire une recette d'un grand livre de cuisine du début du XXe siècle, comprendre ses termes techniques et ses mesures, et la transposer pour une cuisine d'aujourd'hui."
+    },
+    {
+      "id": "fr-nuances-of-flaws",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Travers, tare, faille",
+      "intent": "Nommer les défauts avec la bonne gravité : un travers, une manie, une faiblesse, un défaut, une faille, une tare, un vice, un péché mignon."
+    },
+    {
+      "id": "fr-reading-an-old-etiquette-guide",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Lire un manuel de savoir-vivre d'autrefois",
+      "intent": "Lire un extrait de manuel de savoir-vivre de la Belle Époque, dégager les règles et ce qu'elles disent des rapports entre classes et entre sexes."
+    },
+    {
+      "id": "fr-reading-an-old-newspaper",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire un journal de 1900",
+      "intent": "Lire un article de journal de 1900 et repérer ce qui a changé dans la langue de la presse : longueur des phrases, ton, vocabulaire, place du journaliste."
+    },
+    {
+      "id": "fr-nuances-of-cunning",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Stratagème, subterfuge, combine",
+      "intent": "Distinguer les ruses : une ruse, un stratagème, un subterfuge, un artifice, une feinte, une manœuvre, une manigance, une combine, un tour de passe-passe."
+    },
+    {
+      "id": "fr-reading-proust",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire Proust",
+      "intent": "Lire un passage de Du côté de chez Swann (la madeleine) et suivre une phrase longue jusqu'au bout pour comprendre comment elle épouse le travail de la mémoire."
+    },
+    {
+      "id": "fr-long-periodic-sentences",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "La phrase longue",
+      "intent": "Construire et lire une phrase longue sans perdre le lecteur : incises, subordonnées en cascade, reprises, et place de l'information principale."
+    },
+    {
+      "id": "fr-nuances-of-pleasure",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Délectation, volupté, régal",
+      "intent": "Nuancer le plaisir : l'agrément, le plaisir, la délectation, la volupté, la jouissance, un régal, un délice, savourer, se délecter, se pourlécher les babines."
+    },
+    {
+      "id": "fr-reading-colette",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire Colette",
+      "intent": "Lire un extrait de Colette et montrer comment la précision des sensations (couleurs, odeurs, bruits) fait revivre un monde."
+    },
+    {
+      "id": "fr-nuances-of-writing-and-reading",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Griffonner, consigner, compulser",
+      "intent": "Distinguer les façons d'écrire et de lire : rédiger, consigner, griffonner, gribouiller, noircir du papier, feuilleter, parcourir, survoler, compulser, dévorer."
+    },
+    {
+      "id": "fr-reading-an-oral-style-novel",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire un roman à l'oralité travaillée",
+      "intent": "Lire un extrait de roman écrit dans une langue parlée et argotique, à la manière de Céline, et montrer ce que la ponctuation et la syntaxe disloquée produisent."
+    },
+    {
+      "id": "fr-reading-absurdist-theatre",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire une scène de théâtre de l'absurde",
+      "intent": "Lire une scène de théâtre de l'absurde, montrer comment les dialogues tournent à vide et dire ce que ce langage déréglé révèle de la condition humaine."
+    },
+    {
+      "id": "fr-nuances-of-noise-and-mess",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Brouhaha, tintamarre, capharnaüm",
+      "intent": "Qualifier le bruit et le désordre : un brouhaha, un vacarme, un tapage, un raffut, un tintamarre, la pagaille, un fouillis, un bazar, un capharnaüm, un foutoir."
+    },
+    {
+      "id": "fr-reading-elliptical-prose",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire une prose de l'ellipse",
+      "intent": "Lire un récit au style elliptique, à la manière de Marguerite Duras, et montrer comment les silences, les répétitions et les phrases brèves portent l'émotion."
+    },
+    {
+      "id": "fr-quotation-marks-and-distance",
+      "kind": "grammar",
+      "topic": "information_structure_and_pragmatics",
+      "workingTitle": "Les guillemets de distance",
+      "intent": "Comprendre l'îlot textuel et les guillemets qui prennent leurs distances avec un mot : ces « réformes », une « erreur » de communication, et l'ironie qu'ils introduisent."
+    },
+    {
+      "id": "fr-nuances-of-faces",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Minois, trogne, frimousse",
+      "intent": "Choisir le mot qui dit l'affection ou le mépris pour un visage : un visage, une figure, une face, un minois, une frimousse, une bouille, une trogne, une gueule, un faciès."
+    },
+    {
+      "id": "fr-reading-a-writers-journal",
+      "kind": "reading",
+      "theme": "personal_identification",
+      "workingTitle": "Lire le Journal de Gide",
+      "intent": "Lire des pages du Journal d'André Gide, distinguer l'introspection, la réflexion sur l'écriture et le témoignage sur son époque."
+    },
+    {
+      "id": "fr-reading-sociological-memoir",
+      "kind": "reading",
+      "theme": "personal_identification",
+      "workingTitle": "Lire un récit de transfuge de classe",
+      "intent": "Lire un récit autobiographique de transfuge de classe et analyser comment l'écriture volontairement plate devient un outil d'analyse sociale."
+    },
+    {
+      "id": "fr-reading-a-memory-novel",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire un roman de la mémoire",
+      "intent": "Lire un extrait de roman où un narrateur enquête sur un passé brumeux, à la manière de Patrick Modiano, et analyser l'effet des noms propres, des dates et des blancs."
+    },
+    {
+      "id": "fr-reading-an-existentialist-novel",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire un roman existentialiste",
+      "intent": "Lire un extrait de roman à la manière de La Nausée, repérer comment l'expérience concrète d'un objet ouvre sur une réflexion sur l'existence."
+    },
+    {
+      "id": "fr-reading-a-humanist-essay",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Lire un essai sur l'absurde et la révolte",
+      "intent": "Lire un essai qui pose la question du sens de la vie, à la manière du Mythe de Sisyphe, et reconstruire l'argument jusqu'à sa conclusion."
+    },
+    {
+      "id": "fr-reading-a-feminist-classic",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Lire un classique de la pensée féministe",
+      "intent": "Lire un extrait d'essai féministe fondateur, à la manière du Deuxième Sexe, dégager la thèse (« on ne naît pas femme… ») et la manière dont elle est démontrée."
+    },
+    {
+      "id": "fr-nuances-of-fighting",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "En découdre, croiser le fer, se crêper le chignon",
+      "intent": "Nuancer la querelle et la bagarre : se battre, se bagarrer, en découdre, croiser le fer, en venir aux mains, se colleter, se crêper le chignon, s'écharper."
+    },
+    {
+      "id": "fr-reading-cultural-myths",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Lire une analyse des mythes du quotidien",
+      "intent": "Lire une analyse d'un objet du quotidien (le vin, le Tour de France, une publicité) à la manière des Mythologies de Barthes, et dire ce qu'elle dévoile."
+    },
+    {
+      "id": "fr-reading-a-polemic-on-language",
+      "kind": "reading",
+      "theme": "language",
+      "workingTitle": "Lire un pamphlet sur la langue",
+      "intent": "Lire un essai polémique sur la « dégradation » du français, démonter ses arguments et le confronter à ce que disent les linguistes de l'évolution des langues."
+    },
+    {
+      "id": "fr-reading-an-anthropologists-travelogue",
+      "kind": "reading",
+      "theme": "travel",
+      "workingTitle": "Lire un récit d'anthropologue",
+      "intent": "Lire un récit de voyage d'anthropologue qui commence par « Je hais les voyages », à la manière de Tristes Tropiques, et dire ce qu'il reproche au tourisme."
+    },
+    {
+      "id": "fr-reading-bergson-on-laughter",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Lire Bergson sur le rire",
+      "intent": "Lire un extrait du Rire de Bergson (« du mécanique plaqué sur du vivant »), reformuler la thèse et l'appliquer à une scène comique de son choix."
+    },
+    {
+      "id": "fr-advanced-versification",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Hémistiche, césure, diérèse",
+      "intent": "Analyser un vers avec précision : l'hémistiche, la césure, la diérèse, la synérèse, le e muet, la rime riche, embrassée ou croisée, l'enjambement, le rejet."
+    },
+    {
+      "id": "fr-reading-apollinaire",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire Apollinaire",
+      "intent": "Lire « Le Pont Mirabeau » et un calligramme, et montrer comment l'absence de ponctuation et la mise en page renouvellent la poésie."
+    },
+    {
+      "id": "fr-rare-colours",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Incarnat, céladon, mordoré",
+      "intent": "Nommer les couleurs avec la précision d'un écrivain : incarnat, vermeil, pourpre, carmin, céladon, ocre, nacré, mordoré, opalin, cendré, bleu de Prusse."
+    },
+    {
+      "id": "fr-reading-villon",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire Villon",
+      "intent": "Lire la « Ballade des pendus » en version modernisée, retrouver la forme de la ballade et dire ce que le poète demande à son lecteur."
+    },
+    {
+      "id": "fr-feudal-vocabulary",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Suzerain, vassal, fief",
+      "intent": "Comprendre les mots de la féodalité et ce qu'il en reste dans la langue : un suzerain, un vassal, un fief, un serf, un donjon, la gabelle, la corvée, prêter allégeance."
+    },
+    {
+      "id": "fr-church-architecture",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Nef, parvis, sacristie",
+      "intent": "Nommer les parties d'une église et les mots du culte qu'on rencontre en littérature : la nef, le chœur, le parvis, la sacristie, le clocher, un vitrail, les vêpres, un vicaire."
+    },
+    {
+      "id": "fr-light-and-shadow",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Pénombre, chatoiement, blafard",
+      "intent": "Décrire la lumière et l'ombre avec finesse : la pénombre, la lueur, le chatoiement, le miroitement, irisé, blafard, opalescent, diaphane, crépusculaire."
+    },
+    {
+      "id": "fr-nuances-of-scolding",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Sermonner, admonester, tancer",
+      "intent": "Graduer le reproche, de l'autorité à la familiarité : réprimander, sermonner, admonester, tancer, morigéner, faire la leçon, faire les gros yeux, remonter les bretelles."
+    },
+    {
+      "id": "fr-reading-prose-poetry",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire un poème en prose sur un objet",
+      "intent": "Lire un poème en prose consacré à un objet ordinaire, à la manière de Francis Ponge, et montrer comment le texte refait le monde à partir des mots."
+    },
+    {
+      "id": "fr-reading-popular-poetry",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire une poésie populaire et ludique",
+      "intent": "Lire un poème à la manière de Prévert, repérer les inventaires, les jeux de mots et l'émotion simple qui en fait une poésie de tous."
+    },
+    {
+      "id": "fr-literary-character-adjectives",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Pusillanime, magnanime, acariâtre",
+      "intent": "Qualifier un caractère avec les adjectifs de la langue littéraire : pusillanime, magnanime, veule, acariâtre, atrabilaire, débonnaire, primesautier, fat, revêche."
+    },
+    {
+      "id": "fr-reading-negritude-poetry",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire la poésie de la négritude",
+      "intent": "Lire un poème dans l'esprit de la négritude, situer le mouvement et analyser comment le rythme et les images affirment une identité."
+    },
+    {
+      "id": "fr-reading-poetic-song-lyrics",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire une chanson aux jeux de mots savants",
+      "intent": "Lire une chanson aux jeux de mots virtuoses, à la manière de Gainsbourg, et décoder les rimes, les doubles sens et l'ironie."
+    },
+    {
+      "id": "fr-reading-rap-lyrics",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire un texte de rap",
+      "intent": "Lire un texte de rap français, analyser les rimes multisyllabiques, les références, l'argot et le verlan, et dire ce qu'il dit de son époque."
+    },
+    {
+      "id": "fr-rare-abstract-nouns",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Acrimonie, aménité, véhémence",
+      "intent": "Employer des noms abstraits rares mais justes : l'acrimonie, l'aménité, la véhémence, la componction, la mansuétude, la pusillanimité, la superbe, l'opiniâtreté."
+    },
+    {
+      "id": "fr-newsroom-jargon",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Marronnier, chapô, papier",
+      "intent": "Comprendre le jargon des journalistes : un marronnier, un chapô, une accroche, un papier, une manchette, la une, un bouclage, une pige, un sujet bateau."
+    },
+    {
+      "id": "fr-complex-inversion",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Pierre viendra-t-il ?",
+      "intent": "Employer l'interrogation à inversion complexe de l'écrit soutenu (Pierre viendra-t-il ? Le ministre a-t-il menti ?) et l'inversion dans les subordonnées : que vienne le printemps."
+    },
+    {
+      "id": "fr-rare-adverbs",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Subrepticement, fortuitement, sciemment",
+      "intent": "Employer des adverbes précis de l'écrit soutenu : incidemment, subrepticement, fortuitement, impunément, sciemment, inopinément, derechef, nommément."
+    },
+    {
+      "id": "fr-reading-two-editorials",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire deux éditoriaux de bords opposés",
+      "intent": "Lire l'éditorial de deux quotidiens de sensibilité opposée sur le même événement et montrer comment le choix des mots révèle leur ligne politique."
+    },
+    {
+      "id": "fr-reading-satirical-headlines",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire les titres d'un journal satirique",
+      "intent": "Lire les titres d'un hebdomadaire satirique et décoder leurs calembours, leurs allusions et la cible de chacun."
+    },
+    {
+      "id": "fr-nuances-of-evading",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Se dérober, éluder, esquiver",
+      "intent": "Distinguer les façons de fuir une situation ou une question : fuir, s'enfuir, s'évader, se dérober, esquiver, éluder, contourner, botter en touche, se défiler."
+    },
+    {
+      "id": "fr-formal-adverbial-phrases",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "À bon escient, de guerre lasse",
+      "intent": "Employer les locutions adverbiales soutenues : à bon escient, à son corps défendant, de guerre lasse, de prime abord, sur-le-champ, de concert, tout de go, à dessein."
+    },
+    {
+      "id": "fr-reading-an-intellectuals-long-interview",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire un grand entretien",
+      "intent": "Lire un long entretien avec un intellectuel, reconstituer sa pensée sur une question et repérer les points où le journaliste le pousse dans ses retranchements."
+    },
+    {
+      "id": "fr-reading-a-theatre-review",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire une critique de théâtre",
+      "intent": "Lire la critique d'une mise en scène d'un classique, distinguer ce qui est jugé (le texte, les acteurs, la mise en scène) et apprécier le style du critique."
+    },
+    {
+      "id": "fr-reading-a-writers-column",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire la chronique d'un écrivain",
+      "intent": "Lire une chronique d'actualité tenue par un écrivain et montrer comment le style personnel fait passer une prise de position."
+    },
+    {
+      "id": "fr-quibbling-verbs",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Ergoter, chicaner, épiloguer",
+      "intent": "Distinguer les verbes de la discussion stérile ou pointilleuse : ergoter, chicaner, pinailler, épiloguer, gloser, discutailler, chipoter, se perdre en arguties."
+    },
+    {
+      "id": "fr-classical-sequence-of-tenses",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "La concordance classique et ses libertés",
+      "intent": "Comprendre la concordance des temps classique (je voulais qu'il vînt) et les libertés du français actuel (je voulais qu'il vienne), et ce que chaque choix signale."
+    },
+    {
+      "id": "fr-legal-jargon",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Attendu que, en l'espèce, débouter",
+      "intent": "Comprendre le jargon judiciaire : en l'espèce, attendu que, ester en justice, débouter, se pourvoir, un justiciable, la partie adverse, le demandeur, le défendeur."
+    },
+    {
+      "id": "fr-rural-idioms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "La charrue avant les bœufs",
+      "intent": "Comprendre les expressions venues de la vie rurale : mettre la charrue avant les bœufs, ménager la chèvre et le chou, revenir à ses moutons, tirer les marrons du feu, faire ses choux gras."
+    },
+    {
+      "id": "fr-reading-a-court-ruling",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire un arrêt de la Cour de cassation",
+      "intent": "Lire un arrêt de la Cour de cassation, comprendre sa structure (faits, moyens, solution) et reformuler sa portée en langage courant."
+    },
+    {
+      "id": "fr-reading-the-constitution",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire la Constitution",
+      "intent": "Lire le préambule et quelques articles de la Constitution de 1958 et montrer comment la concision du texte laisse une place à l'interprétation."
+    },
+    {
+      "id": "fr-advanced-law",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Préjudice, prescription, vice de forme",
+      "intent": "Parler de droit avec précision : un préjudice, la responsabilité civile, la prescription, un vice de forme, une personne morale, un ayant droit, la jurisprudence constante."
+    },
+    {
+      "id": "fr-military-idioms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Battre en retraite, être sur le qui-vive",
+      "intent": "Comprendre les expressions venues de la guerre : battre en retraite, être sur le qui-vive, baisser la garde, sonner le glas, monter au créneau, essuyer les plâtres, à brûle-pourpoint."
+    },
+    {
+      "id": "fr-old-slang",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Le grisbi, la gnôle, un rade",
+      "intent": "Comprendre l'argot d'autrefois qu'on retrouve dans les polars et les dialogues de films : le grisbi, la gnôle, un rade, un pruneau, se faire la malle, une gonzesse, un cave."
+    },
+    {
+      "id": "fr-diplomatic-language",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Persona non grata, bons offices",
+      "intent": "Comprendre la langue de la diplomatie : une démarche, un communiqué conjoint, une note verbale, rappeler son ambassadeur, persona non grata, les bons offices, des « échanges francs »."
+    },
+    {
+      "id": "fr-political-currents",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Souverainisme, libéralisme, populisme",
+      "intent": "Situer les grands courants politiques et leurs connotations : le libéralisme, la social-démocratie, le souverainisme, le populisme, le centrisme, le gaullisme, l'extrême gauche."
+    },
+    {
+      "id": "fr-biblical-idioms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "S'en laver les mains, porter sa croix",
+      "intent": "Comprendre les expressions venues de la Bible : s'en laver les mains, porter sa croix, l'enfant prodigue, rendre à César, la traversée du désert, un jugement de Salomon."
+    },
+    {
+      "id": "fr-advanced-economics",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Politique monétaire, dette souveraine",
+      "intent": "Comprendre l'économie avec précision : la politique monétaire, la banque centrale, la dette souveraine, la stagflation, la désinflation, un plan de relance, l'austérité."
+    },
+    {
+      "id": "fr-reading-an-ethics-committee-opinion",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire l'avis d'un comité d'éthique",
+      "intent": "Lire l'avis d'un comité d'éthique sur une question de fin de vie, suivre la pesée des arguments et repérer la prudence des formulations."
+    },
+    {
+      "id": "fr-reading-an-exam-jury-report",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Lire un rapport de jury de concours",
+      "intent": "Lire un extrait de rapport de jury d'un concours de l'enseignement, dégager ce que le jury attend et ce qu'il reproche aux candidats, et leur façon de le dire."
+    },
+    {
+      "id": "fr-historical-idioms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Payer rubis sur l'ongle, être sur la sellette",
+      "intent": "Comprendre des expressions héritées de l'histoire : payer rubis sur l'ongle, être sur la sellette, être mis à l'index, à la queue leu leu, faire la Saint-Barthélemy, aller à Canossa."
+    },
+    {
+      "id": "fr-internet-culture",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Troller, un mème, le clash",
+      "intent": "Comprendre le vocabulaire de la culture en ligne : troller, un troll, un mème, un clash, buzzer, un bad buzz, la cancel culture, un influenceur, une chambre d'écho."
+    },
+    {
+      "id": "fr-handling-a-trick-question",
+      "kind": "functions",
+      "theme": "services",
+      "workingTitle": "Répondre à une question piège",
+      "intent": "Répondre à la question piège d'un journaliste ou d'un jury : repérer le piège, refuser les présupposés, et répondre à sa façon sans paraître esquiver."
+    },
+    {
+      "id": "fr-fixed-idioms-with-faire",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Faire fi, faire florès, faire amende honorable",
+      "intent": "Employer à bon escient des locutions figées avec faire : faire fi de, faire florès, faire amende honorable, faire le pied de grue, faire les frais de, faire bonne chère."
+    },
+    {
+      "id": "fr-interviewing-a-reluctant-guest",
+      "kind": "functions",
+      "theme": "services",
+      "workingTitle": "Interviewer quelqu'un de réticent",
+      "intent": "Faire parler un interlocuteur réticent : questions ouvertes, silences, relances, reformulations, et savoir revenir à la charge sans le braquer."
+    },
+    {
+      "id": "fr-swear-words-and-registers",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Zut, mince, punaise",
+      "intent": "Graduer les jurons et les exclamations de dépit, et savoir lesquels passent en public : zut, mince, punaise, flûte, purée, la vache, bon sang, et les plus grossiers."
+    },
+    {
+      "id": "fr-replying-publicly-to-criticism",
+      "kind": "functions",
+      "theme": "services",
+      "workingTitle": "Répondre publiquement à une critique",
+      "intent": "Répondre par écrit à une critique publique : reconnaître ce qui est fondé, rectifier ce qui est faux, garder le ton et ne pas en faire une polémique."
+    },
+    {
+      "id": "fr-famous-quotations",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Paris vaut bien une messe",
+      "intent": "Reconnaître les citations passées dans la langue et leur sens actuel : Paris vaut bien une messe, l'enfer, c'est les autres, après moi le déluge, l'État, c'est moi, je pense, donc je suis."
+    },
+    {
+      "id": "fr-advanced-philosophy",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Ontologie, épistémologie, phénoménologie",
+      "intent": "Comprendre les termes de la philosophie : l'ontologie, l'épistémologie, la phénoménologie, l'existentialisme, le structuralisme, le relativisme, l'utilitarisme."
+    },
+    {
+      "id": "fr-epistemology",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Paradigme, réfutable, empirisme",
+      "intent": "Parler de la démarche scientifique : une théorie, un paradigme, réfutable, l'empirisme, une loi, un modèle, une hypothèse ad hoc, la reproductibilité."
+    },
+    {
+      "id": "fr-life-sciences",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Génome, épigénétique, sélection naturelle",
+      "intent": "Parler des sciences du vivant avec précision : un génome, l'épigénétique, la sélection naturelle, l'évolution, une mutation, l'hérédité, une espèce, la biodiversité génétique."
+    },
+    {
+      "id": "fr-resignation-phrases",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Contre mauvaise fortune bon cœur",
+      "intent": "Exprimer la résignation et le fatalisme : faire contre mauvaise fortune bon cœur, à la grâce de Dieu, c'est la vie, on n'y peut rien, il faut bien, ainsi va le monde."
+    },
+    {
+      "id": "fr-relational-adjectives",
+      "kind": "grammar",
+      "topic": "adjectives",
+      "workingTitle": "Un voyage présidentiel, une décision ministérielle",
+      "intent": "Comprendre les adjectifs de relation, qui ne se graduent pas et ne précèdent pas le nom : un voyage présidentiel, la crise sanitaire, une chaleur estivale, une analyse sociologique."
+    },
+    {
+      "id": "fr-learned-medical-words",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Étiologie, nosocomial, iatrogène",
+      "intent": "Comprendre le vocabulaire médical savant : l'étiologie, un pronostic, nosocomial, iatrogène, pathogène, prophylactique, idiopathique, une comorbidité."
+    },
+    {
+      "id": "fr-excess-idioms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "À tire-larigot, à gogo, en veux-tu en voilà",
+      "intent": "Exprimer l'abondance et l'excès : à tire-larigot, à gogo, à foison, en veux-tu en voilà, à tout bout de champ, plein à craquer, à n'en plus finir, à la pelle."
+    },
+    {
+      "id": "fr-psychoanalysis",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Refoulement, sublimation, surmoi",
+      "intent": "Comprendre les mots de la psychanalyse passés dans la langue : le refoulement, la sublimation, le surmoi, le complexe d'Œdipe, un acte manqué, un transfert, le ça."
+    },
+    {
+      "id": "fr-political-ecology",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "Décroissance, anthropocène, écocide",
+      "intent": "Comprendre le vocabulaire de l'écologie politique : la décroissance, l'anthropocène, l'écocide, la justice climatique, l'effondrement, la sobriété heureuse, l'écoanxiété."
+    },
+    {
+      "id": "fr-literary-impersonal-il",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Il est des gens qui…",
+      "intent": "Reconnaître les tournures impersonnelles littéraires : il est des gens qui, il n'est que de, il sied, il appert, il advint que, il s'en faut de peu."
+    },
+    {
+      "id": "fr-familiar-forms-of-address",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Mon vieux, ma belle, chef",
+      "intent": "Comprendre les termes d'adresse familiers et leur nuance : mon vieux, ma belle, mon grand, ma puce, chef, patron, frérot, l'ami, et quand ils deviennent condescendants."
+    },
+    {
+      "id": "fr-precision-and-guesswork-idioms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Au poil, à la louche, à vue de nez",
+      "intent": "Opposer la précision et l'à-peu-près : au poil, au millimètre, pile poil, réglé comme du papier à musique, à la louche, à vue de nez, au pifomètre, grosso modo."
+    },
+    {
+      "id": "fr-rare-prepositions",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "À même le sol, à l'envi, de par",
+      "intent": "Employer les prépositions et locutions rares de l'écrit : à même le sol, à l'envi, de par sa fonction, ès qualités, hormis, nonobstant, moyennant, à l'aune de."
+    },
+    {
+      "id": "fr-art-history",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Clair-obscur, maniérisme, baroque",
+      "intent": "Parler d'histoire de l'art avec précision : le clair-obscur, la perspective, le maniérisme, le baroque, le classicisme, le romantisme, le fauvisme, le cubisme."
+    },
+    {
+      "id": "fr-vivid-familiar-idioms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Avoir la gueule de bois, avoir les crocs",
+      "intent": "Comprendre les expressions familières les plus imagées : avoir la gueule de bois, se mettre la rate au court-bouillon, avoir un coup dans le nez, avoir les crocs."
+    },
+    {
+      "id": "fr-literary-history",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "La Pléiade, le symbolisme, le Nouveau Roman",
+      "intent": "Situer les grands courants littéraires : la Pléiade, le classicisme, les Lumières, le romantisme, le réalisme, le symbolisme, le surréalisme, le Nouveau Roman."
+    },
+    {
+      "id": "fr-narrative-techniques",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Analepse, prolepse, mise en abyme",
+      "intent": "Analyser la construction d'un récit : l'analepse, la prolepse, l'ellipse, le sommaire, la scène, la mise en abyme, le narrateur omniscient, le récit enchâssé."
+    },
+    {
+      "id": "fr-reading-the-surrealist-manifesto",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire un manifeste artistique",
+      "intent": "Lire un extrait du Manifeste du surréalisme, définir ce que le mouvement revendique et montrer comment le texte pratique ce qu'il prône."
+    },
+    {
+      "id": "fr-food-idioms-advanced",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "La cerise sur le gâteau, être chocolat",
+      "intent": "Comprendre les expressions culinaires de tous registres : mettre les petits plats dans les grands, la cerise sur le gâteau, être chocolat, pédaler dans la choucroute, mi-figue mi-raisin."
+    },
+    {
+      "id": "fr-reading-a-full-research-article",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Lire un article de recherche en entier",
+      "intent": "Lire un article de recherche en sciences humaines, de l'introduction à la discussion, et juger si les conclusions sont à la hauteur des données présentées."
+    },
+    {
+      "id": "fr-reading-conference-proceedings",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Lire les actes d'un colloque",
+      "intent": "Lire la contribution d'un chercheur aux actes d'un colloque et situer sa position par rapport aux travaux qu'il discute."
+    },
+    {
+      "id": "fr-madness-idioms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Une araignée au plafond, travailler du chapeau",
+      "intent": "Parler de folie et de bizarrerie avec humour : avoir une araignée au plafond, travailler du chapeau, être timbré, déménager, perdre la boule, ne pas tourner rond."
+    },
+    {
+      "id": "fr-written-speech",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "T'es, y a, chais pas",
+      "intent": "Comprendre la transcription de l'oral à l'écrit dans les romans et les BD : t'es, y a, chais pas, m'enfin, p'tit, faut pas, ouais, et l'effet de réalisme recherché."
+    },
+    {
+      "id": "fr-explaining-a-literary-text",
+      "kind": "functions",
+      "theme": "education",
+      "workingTitle": "Faire une explication de texte",
+      "intent": "Présenter à l'oral l'explication d'un texte littéraire : le situer, dégager un projet de lecture, l'analyser mouvement par mouvement et conclure."
+    },
+    {
+      "id": "fr-summarising-in-few-words",
+      "kind": "functions",
+      "theme": "education",
+      "workingTitle": "Résumer un texte au quart de sa longueur",
+      "intent": "Contracter un texte argumentatif au quart de sa longueur en gardant l'énonciation et l'ordre des idées, sans citer ni commenter."
+    },
+    {
+      "id": "fr-effort-and-idleness-idioms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Se la couler douce, suer sang et eau",
+      "intent": "Opposer l'effort et la paresse en expressions : se la couler douce, coincer la bulle, se tourner les pouces, suer sang et eau, se tuer à la tâche, mettre les bouchées doubles."
+    },
+    {
+      "id": "fr-writing-a-briefing-note",
+      "kind": "functions",
+      "theme": "education",
+      "workingTitle": "Rédiger une note de synthèse",
+      "intent": "Rédiger une note de synthèse à partir de plusieurs documents : un titre, une introduction qui pose le problème, un plan en deux parties, aucune opinion personnelle."
+    },
+    {
+      "id": "fr-giving-a-lecture",
+      "kind": "functions",
+      "theme": "education",
+      "workingTitle": "Faire une conférence",
+      "intent": "Tenir une conférence devant un public averti : annoncer le propos, ménager des digressions qui servent l'idée, reprendre le fil et conclure avec une ouverture."
+    },
+    {
+      "id": "fr-reasoning-by-the-absurd",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Raisonner par l'absurde",
+      "intent": "Réfuter une thèse en tirant ses conséquences jusqu'à l'absurde : « Si l'on suit ce raisonnement, il faudrait aussi… », et savoir quand ce procédé devient malhonnête."
+    },
+    {
+      "id": "fr-secrecy-idioms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Motus et bouche cousue, en catimini",
+      "intent": "Parler de secret et de discrétion : motus et bouche cousue, en catimini, sous le manteau, à mots couverts, en douce, sous le sceau du secret, à la dérobée, en loucedé."
+    },
+    {
+      "id": "fr-changing-your-mind-gracefully",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Changer d'avis avec élégance",
+      "intent": "Reconnaître publiquement qu'on a changé d'avis, ou qu'on avait tort, sans perdre la face : « Vos arguments m'ont fait réfléchir », « J'avais sous-estimé… »."
+    },
+    {
+      "id": "fr-nuanced-public-opinion-on-sensitive-issues",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "S'exprimer en public sur un sujet sensible",
+      "intent": "Prendre position en public sur un sujet sensible en reconnaissant la complexité, en respectant les autres positions et en assumant clairement la sienne."
+    },
+    {
+      "id": "fr-speed-idioms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "En un clin d'œil, à toute berzingue",
+      "intent": "Dire la vitesse et la lenteur en images : en un clin d'œil, en deux temps trois mouvements, à toute berzingue, à fond la caisse, sur les chapeaux de roue, à pas de tortue."
+    },
+    {
+      "id": "fr-regional-words-of-france",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Chocolatine, poche, gavé",
+      "intent": "Reconnaître des mots régionaux de France et leur aire : chocolatine, poche (sac), gavé (très), péguer, une serpillière ou une wassingue, chocolatine ou pain au chocolat."
+    },
+    {
+      "id": "fr-quebec-expressions",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "S'enfarger, c'est plate, avoir de la misère",
+      "intent": "Comprendre des expressions du français québécois : s'enfarger, c'est plate, avoir de la misère à, être tanné, une job, magasiner, bienvenue pour de rien, la fin de semaine."
+    },
+    {
+      "id": "fr-reading-quebec-joual",
+      "kind": "reading",
+      "theme": "language",
+      "workingTitle": "Lire un texte en joual",
+      "intent": "Lire un dialogue de théâtre québécois écrit en joual, à la manière de Michel Tremblay, et dire ce que cette langue populaire affirme face au français normé."
+    },
+    {
+      "id": "fr-etymological-doublets",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Hôtel et hôpital, frêle et fragile",
+      "intent": "Découvrir les doublets étymologiques et leurs sens séparés : hôtel et hôpital, frêle et fragile, écouter et ausculter, poison et potion, raide et rigide, sevrer et séparer."
+    },
+    {
+      "id": "fr-loanwords-history",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Algèbre, toubib, banque",
+      "intent": "Retrouver l'origine de mots empruntés à l'arabe, à l'italien, à l'anglais ou au néerlandais : algèbre, toubib, banque, balcon, redingote, matelot, bizarre, kiosque."
+    },
+    {
+      "id": "fr-reading-creole-inflected-prose",
+      "kind": "reading",
+      "theme": "language",
+      "workingTitle": "Lire une prose créolisée",
+      "intent": "Lire un extrait de roman antillais qui mêle français et créole, à la manière de Patrick Chamoiseau, et analyser l'effet de ces mots et de ces rythmes."
+    },
+    {
+      "id": "fr-eponyms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Une poubelle, une silhouette, un béchamel",
+      "intent": "Découvrir les noms communs nés de noms de personnes : une poubelle, une silhouette, la béchamel, un mécène, une mansarde, le sadisme, un lambda, un harpagon."
+    },
+    {
+      "id": "fr-brand-names-as-common-nouns",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Un frigo, un scotch, un Caddie",
+      "intent": "Repérer les marques devenues noms communs et leur équivalent neutre : un frigo, un Kleenex, un scotch, un Bic, un Caddie, un Post-it, un Rimmel, un Thermos."
+    },
+    {
+      "id": "fr-explaining-french-culture",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Expliquer un trait culturel français",
+      "intent": "Expliquer à un étranger un trait culturel français (la grève, le repas, le goût du débat, la bise) en le replaçant dans l'histoire et sans tomber dans le cliché."
+    },
+    {
+      "id": "fr-living-archaisms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Naguère, céans, d'antan",
+      "intent": "Comprendre les archaïsmes encore employés, souvent avec ironie : naguère, céans, d'antan, ouïr, moult, icelui, occire, quérir, oncques, de belle lurette."
+    },
+    {
+      "id": "fr-reading-a-rewrite-of-a-classic",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire une réécriture d'un classique",
+      "intent": "Lire un extrait d'un roman qui répond à un classique en donnant la parole à un personnage resté muet, et dire ce que ce renversement de point de vue change."
+    },
+    {
+      "id": "fr-neologisms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Divulgâcher, infox, adulescent",
+      "intent": "Comprendre les néologismes récents et les procédés qui les forment : divulgâcher, infox, adulescent, courriel, mot-dièse, écoanxiété, uberiser, et l'avis des institutions."
+    },
+    {
+      "id": "fr-place-names",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Ce que disent les noms de lieux",
+      "intent": "Comprendre ce que révèlent les noms de lieux : les finales -ac, -y, -ville, -court, -heim, les Villeneuve, les Plessis, la Beauce, le Bocage, le Causse."
+    },
+    {
+      "id": "fr-handling-intercultural-misunderstanding",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Négocier un malentendu interculturel",
+      "intent": "Comprendre et désamorcer un malentendu né de codes culturels différents (direct ou indirect, ponctualité, hiérarchie) en nommant la différence sans juger."
+    },
+    {
+      "id": "fr-winds-of-france",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "Le mistral, la tramontane, l'autan",
+      "intent": "Connaître les vents de France et leur caractère : le mistral, la tramontane, l'autan, le foehn, le noroît, le suroît, la bise, et les expressions qui en viennent."
+    },
+    {
+      "id": "fr-criticised-anglicisms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Impacter, initier, adresser un problème",
+      "intent": "Repérer les anglicismes de sens et de construction critiqués et leur équivalent : impacter, initier un projet, adresser un problème, réaliser que, faire du sens, en charge de."
+    },
+    {
+      "id": "fr-hunting-and-fishing-idioms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Être aux abois, mordre à l'hameçon",
+      "intent": "Comprendre les expressions venues de la chasse et de la pêche : être aux abois, tomber dans le panneau, mordre à l'hameçon, noyer le poisson, courir deux lièvres à la fois, être à l'affût."
+    },
+    {
+      "id": "fr-pastiching-a-style",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Pasticher un style",
+      "intent": "Écrire un court texte à la manière d'un auteur ou d'un genre (une maxime classique, un article de presse, un discours) et expliquer les traits imités."
+    },
+    {
+      "id": "fr-maritime-vocabulary",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Bâbord, tenir le cap, mener sa barque",
+      "intent": "Parler de mer et de navigation, et des expressions qui en viennent : bâbord, tribord, le large, jeter l'ancre, louvoyer, mener sa barque, tenir le cap, être dans les eaux de."
+    },
+    {
+      "id": "fr-praising-to-criticise",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Critiquer sous couvert d'éloge",
+      "intent": "Formuler une critique sous l'apparence d'un compliment, et la reconnaître chez les autres : « C'est très… original », « Vous avez eu le mérite d'essayer »."
+    },
+    {
+      "id": "fr-using-litotes-in-speech",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Dire moins pour faire entendre plus",
+      "intent": "Manier la litote et l'understatement à l'oral pour faire entendre plus qu'on ne dit : « Ce n'est pas mal du tout », « Il n'est pas idiot », « Ce n'était pas une réussite »."
+    },
+    {
+      "id": "fr-mediating-between-parties",
+      "kind": "functions",
+      "theme": "services",
+      "workingTitle": "Mener une médiation",
+      "intent": "Mener une médiation entre deux parties en conflit : faire exposer chaque position, reformuler les intérêts réels, chercher une issue que chacun puisse accepter."
+    },
+    {
+      "id": "fr-existential-boredom",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Spleen, acédie, désœuvrement",
+      "intent": "Nommer les formes de l'ennui et du mal de vivre : le spleen, le désœuvrement, la lassitude, l'acédie, la neurasthénie, le vague à l'âme, le mal du siècle, l'ennui mortel."
+    },
+    {
+      "id": "fr-negotiating-in-a-crisis",
+      "kind": "functions",
+      "theme": "services",
+      "workingTitle": "Négocier en situation de crise",
+      "intent": "Négocier dans l'urgence et sous pression : garder son calme, faire baisser la tension, séparer l'essentiel de l'accessoire et obtenir un engagement précis."
+    },
+    {
+      "id": "fr-official-speech",
+      "kind": "functions",
+      "theme": "services",
+      "workingTitle": "Prononcer un discours officiel",
+      "intent": "Prononcer un discours officiel (inauguration, commémoration) : respecter le protocole des salutations, trouver le ton juste et éviter la langue de bois."
+    },
+    {
+      "id": "fr-debating-at-a-high-level",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Porter la contradiction dans un débat d'idées",
+      "intent": "Discuter une thèse savante avec un spécialiste : reformuler sa position avec exactitude, en montrer une limite, proposer un contre-exemple et maintenir la courtoisie."
+    },
+    {
+      "id": "fr-reading-love-letters",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Lire une correspondance amoureuse",
+      "intent": "Lire des lettres d'amour d'écrivains du XIXe siècle et analyser comment chacun dit la passion, l'absence et la jalousie selon son tempérament."
+    },
+    {
+      "id": "fr-ghostwriting-a-speech",
+      "kind": "functions",
+      "theme": "services",
+      "workingTitle": "Écrire un discours pour quelqu'un d'autre",
+      "intent": "Rédiger un discours pour une autre personne en épousant sa voix, son statut et son public, et préparer les passages qu'elle pourra adapter."
+    },
+    {
+      "id": "fr-reading-a-poetic-travelogue",
+      "kind": "reading",
+      "theme": "travel",
+      "workingTitle": "Lire un carnet de route d'écrivain voyageur",
+      "intent": "Lire un extrait de récit de voyage d'écrivain, à la manière de L'Usage du monde, et montrer comment le voyage devient une manière d'être au monde."
+    },
+    {
+      "id": "fr-reading-a-novel-of-antiquity",
+      "kind": "reading",
+      "theme": "personal_identification",
+      "workingTitle": "Lire un roman historique à la première personne",
+      "intent": "Lire un extrait de roman historique écrit comme les mémoires d'un empereur romain, à la manière de Yourcenar, et analyser la sagesse et la gravité de la voix."
+    },
+    {
+      "id": "fr-playing-with-registers-for-effect",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Jouer sur les registres pour faire rire",
+      "intent": "Créer un effet comique en mêlant les registres : parler d'un sujet trivial en style noble, ou d'un sujet grave en langue familière, et doser l'effet."
+    },
+    {
+      "id": "fr-reading-a-feminist-parliamentary-speech",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire un discours pour les droits des femmes",
+      "intent": "Lire un discours parlementaire en faveur d'une loi sur les droits des femmes et analyser comment l'oratrice répond d'avance aux objections et choisit ses mots."
+    },
+    {
+      "id": "fr-reading-a-pantheon-speech",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire un discours d'hommage national",
+      "intent": "Lire un discours d'hommage au Panthéon et analyser l'ampleur lyrique, les apostrophes et la construction d'une mémoire collective."
+    },
+    {
+      "id": "fr-speaking-with-double-meaning",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Tenir un discours à double entente",
+      "intent": "Parler devant plusieurs publics à la fois en disant une chose que chacun comprendra à sa manière, et repérer quand un orateur ou un texte le fait."
+    },
+    {
+      "id": "fr-classical-music-theory",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Tonalité, contrepoint, leitmotiv",
+      "intent": "Parler de musique savante : la tonalité, le mode majeur ou mineur, l'harmonie, le contrepoint, un leitmotiv, une fugue, un crescendo, la dissonance, un mouvement lent."
+    }
+  ]
+}

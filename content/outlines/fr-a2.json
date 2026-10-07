@@ -1,0 +1,1056 @@
+{
+  "lang": "fr",
+  "level": "A2",
+  "entries": [
+    {
+      "id": "fr-telling-about-your-weekend",
+      "kind": "functions",
+      "theme": "free_time",
+      "workingTitle": "Raconter son week-end",
+      "intent": "Raconter son week-end en quatre ou cinq phrases au passé composé, puis relancer l'autre : « Et toi, tu as fait quoi ? », « C'était bien ? »."
+    },
+    {
+      "id": "fr-re-verbs-present",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Attendre, vendre, répondre",
+      "intent": "Conjuguer au présent attendre, vendre, répondre, entendre et perdre (j'attends, il répond, nous perdons) et former leur participe en -u : attendu, vendu."
+    },
+    {
+      "id": "fr-irregular-past-participles",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Les participes passés irréguliers",
+      "intent": "Raconter au passé composé avec les participes irréguliers les plus fréquents : mis, dit, écrit, lu, ouvert, pu, voulu, dû, su, connu, reçu."
+    },
+    {
+      "id": "fr-past-time-expressions",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Hier, avant-hier, la semaine dernière",
+      "intent": "Situer un événement passé avec une dizaine d'expressions : hier soir, avant-hier, la semaine dernière, le mois dernier, l'été dernier, ce matin, tout à l'heure."
+    },
+    {
+      "id": "fr-past-tense-negative",
+      "kind": "grammar",
+      "topic": "negation",
+      "workingTitle": "Le passé composé à la forme négative",
+      "intent": "Placer ne… pas autour de l'auxiliaire au passé composé (je n'ai pas compris, elle n'est pas venue) et répondre non à une question sur le passé."
+    },
+    {
+      "id": "fr-sequencing-words-for-a-story",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "D'abord, ensuite, enfin",
+      "intent": "Raconter des actions dans l'ordre avec une dizaine de mots : d'abord, puis, ensuite, après, à la fin, enfin, finalement, tout à coup."
+    },
+    {
+      "id": "fr-all-verbs-with-etre",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Tous les verbes avec être",
+      "intent": "Employer être au passé composé avec monter, descendre, entrer, sortir, tomber, rentrer, retourner, devenir et mourir, et accorder le participe : elles sont rentrées."
+    },
+    {
+      "id": "fr-reading-a-travel-blog",
+      "kind": "reading",
+      "theme": "travel",
+      "workingTitle": "Lire un blog de voyage",
+      "intent": "Lire un billet de blog sur trois jours à Marseille et retrouver l'ordre des visites, le petit problème du deuxième jour et le meilleur moment du séjour."
+    },
+    {
+      "id": "fr-reflexive-verbs-past",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Les verbes pronominaux au passé composé",
+      "intent": "Raconter sa matinée avec des verbes pronominaux au passé composé, toujours avec être : je me suis levé, elle s'est habillée, on ne s'est pas réveillés."
+    },
+    {
+      "id": "fr-holiday-activities",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Les activités de vacances",
+      "intent": "Dire ce qu'on a fait en vacances avec une douzaine d'expressions : se baigner, bronzer, faire une randonnée, visiter un musée, faire du camping, se reposer."
+    },
+    {
+      "id": "fr-already-never-not-yet",
+      "kind": "grammar",
+      "topic": "adverbs",
+      "workingTitle": "Déjà, jamais, pas encore",
+      "intent": "Parler de ses expériences avec déjà, ne… jamais et pas encore au passé composé : Tu es déjà allé à Paris ? Non, jamais. Pas encore, mais bientôt."
+    },
+    {
+      "id": "fr-opinion-adjectives",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "C'était génial, c'était nul",
+      "intent": "Dire comment c'était avec une douzaine d'adjectifs : génial, super, passionnant, drôle, pas mal, moyen, ennuyeux, nul, bizarre, et répondre à « C'était comment ? »."
+    },
+    {
+      "id": "fr-adverb-position-past",
+      "kind": "grammar",
+      "topic": "adverbs",
+      "workingTitle": "La place des adverbes au passé composé",
+      "intent": "Placer bien, mal, beaucoup, trop, souvent et déjà entre l'auxiliaire et le participe : j'ai bien dormi, on a beaucoup marché, il a trop mangé."
+    },
+    {
+      "id": "fr-life-events",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Les grandes étapes de la vie",
+      "intent": "Raconter une vie avec une douzaine de mots : naître, grandir, faire ses études, se marier, avoir un enfant, déménager, prendre sa retraite, mourir."
+    },
+    {
+      "id": "fr-reading-a-short-biography",
+      "kind": "reading",
+      "theme": "personal_identification",
+      "workingTitle": "Lire une courte biographie",
+      "intent": "Lire la courte biographie d'une personnalité française et remettre dans l'ordre les grandes étapes de sa vie avec leur date."
+    },
+    {
+      "id": "fr-pendant-jusqua-a-partir-de",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "Pendant, jusqu'à, à partir de",
+      "intent": "Dire combien de temps dure une action, quand elle s'arrête et quand elle commence : j'ai dormi pendant dix heures, je travaille jusqu'à 18 h, à partir de lundi."
+    },
+    {
+      "id": "fr-personality-adjectives",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Le caractère",
+      "intent": "Décrire le caractère de quelqu'un avec une quinzaine d'adjectifs : gentil, sympa, drôle, timide, sérieux, bavard, calme, généreux, paresseux, curieux."
+    },
+    {
+      "id": "fr-more-irregular-feminine-adjectives",
+      "kind": "grammar",
+      "topic": "agreement",
+      "workingTitle": "Blanc, blanche ; gentil, gentille",
+      "intent": "Former le féminin d'adjectifs irréguliers courants : blanc, blanche ; long, longue ; gentil, gentille ; cher, chère ; doux, douce ; frais, fraîche ; gros, grosse."
+    },
+    {
+      "id": "fr-beau-nouveau-vieux",
+      "kind": "grammar",
+      "topic": "adjectives",
+      "workingTitle": "Beau, nouveau, vieux",
+      "intent": "Employer beau, nouveau et vieux avant le nom, avec bel, nouvel et vieil devant une voyelle : un bel appartement, un vieil ami, une nouvelle voiture."
+    },
+    {
+      "id": "fr-comparing-with-adjectives",
+      "kind": "grammar",
+      "topic": "comparison_and_quantity",
+      "workingTitle": "Plus grand que, aussi grand que",
+      "intent": "Comparer deux personnes ou deux choses avec plus, moins ou aussi + adjectif + que : Léa est plus grande que son frère, le train est moins cher que l'avion."
+    },
+    {
+      "id": "fr-feelings-and-emotions",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Les sentiments",
+      "intent": "Dire ce qu'on ressent avec une douzaine de mots : content, heureux, triste, déçu, inquiet, fâché, fier, surpris, stressé, jaloux, avoir peur, avoir honte."
+    },
+    {
+      "id": "fr-expressions-with-avoir",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Avoir faim, avoir envie, avoir besoin",
+      "intent": "Exprimer un état ou un besoin avec une douzaine d'expressions avec avoir : avoir faim, soif, chaud, froid, sommeil, envie de, besoin de, l'air fatigué, raison, tort."
+    },
+    {
+      "id": "fr-bon-bien-meilleur-mieux",
+      "kind": "grammar",
+      "topic": "comparison_and_quantity",
+      "workingTitle": "Bon ou bien, meilleur ou mieux",
+      "intent": "Choisir bon ou meilleur avec un nom, bien ou mieux avec un verbe : c'est un bon film, il est meilleur que l'autre ; elle chante bien, elle chante mieux que moi."
+    },
+    {
+      "id": "fr-asking-for-and-giving-news",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Prendre et donner des nouvelles",
+      "intent": "Demander des nouvelles à quelqu'un qu'on n'a pas vu depuis longtemps et en donner : « Ça fait longtemps ! », « Quoi de neuf ? », « Et ta famille, ça va ? »."
+    },
+    {
+      "id": "fr-si-to-contradict-a-negative",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Répondre « si » à une négation",
+      "intent": "Répondre oui à une question négative avec si, et réagir avec moi si, moi non plus ou pas moi : Tu ne viens pas ? Si, je viens !"
+    },
+    {
+      "id": "fr-verbs-mettre-voir-croire",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Mettre, voir, croire",
+      "intent": "Conjuguer mettre, voir et croire au présent (je mets, nous voyons, ils croient) et dire ce qu'on croit : je crois que oui, je ne crois pas."
+    },
+    {
+      "id": "fr-friendship-and-love",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Amitié et amour",
+      "intent": "Parler des relations avec une douzaine d'expressions : se rencontrer, s'entendre bien, se disputer, se réconcilier, tomber amoureux, sortir avec quelqu'un, se séparer."
+    },
+    {
+      "id": "fr-reciprocal-verbs",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "On s'appelle, ils se sont rencontrés",
+      "intent": "Dire qu'une action est réciproque avec se, nous ou vous : on s'appelle tous les jours, nous nous écrivons souvent, ils se sont rencontrés à Lyon."
+    },
+    {
+      "id": "fr-superlatives",
+      "kind": "grammar",
+      "topic": "comparison_and_quantity",
+      "workingTitle": "Le plus, le moins, le meilleur",
+      "intent": "Dire qui ou quoi arrive en tête avec le superlatif : le plus grand, la moins chère, le meilleur restaurant du quartier, la ville la plus belle de France."
+    },
+    {
+      "id": "fr-reading-a-friends-email-with-news",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Lire un mail plein de nouvelles",
+      "intent": "Lire le mail d'une amie qui raconte ses derniers mois (nouveau travail, déménagement, rencontre) et dire ce qui a changé dans sa vie."
+    },
+    {
+      "id": "fr-comparing-quantities-and-actions",
+      "kind": "grammar",
+      "topic": "comparison_and_quantity",
+      "workingTitle": "Plus de, autant de, autant que",
+      "intent": "Comparer des quantités avec plus de, moins de, autant de + nom, et des actions avec plus, moins, autant que : il travaille autant que moi, j'ai moins de temps."
+    },
+    {
+      "id": "fr-congratulating-and-sympathising",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Féliciter et consoler",
+      "intent": "Réagir à une bonne ou à une mauvaise nouvelle : « Félicitations ! », « Je suis content pour toi », « Bon courage ! », « Je suis désolé », « Pas de chance ! »."
+    },
+    {
+      "id": "fr-exclamations-quel-and-comme",
+      "kind": "grammar",
+      "topic": "information_structure_and_pragmatics",
+      "workingTitle": "Quelle bonne idée ! Comme c'est beau !",
+      "intent": "Montrer son enthousiasme ou sa surprise avec quel + nom et comme ou qu'est-ce que + phrase : Quel dommage ! Comme il a grandi ! Qu'est-ce que c'est beau !"
+    },
+    {
+      "id": "fr-renting-and-moving",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Louer et déménager",
+      "intent": "Parler de son logement avec une douzaine de mots : le loyer, les charges, le propriétaire, le locataire, la colocation, meublé, le bail, déménager, emménager."
+    },
+    {
+      "id": "fr-ordinal-numbers",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Premier, deuxième, dernier",
+      "intent": "Dire un rang ou un étage avec les nombres ordinaux : premier, première, deuxième, troisième, vingt et unième, dernier : j'habite au cinquième étage."
+    },
+    {
+      "id": "fr-neighbourhood-life",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "La vie de quartier",
+      "intent": "Décrire son quartier avec une douzaine de mots : animé, calme, bruyant, le marché, les commerces, l'immeuble, le voisinage, en banlieue, au centre-ville."
+    },
+    {
+      "id": "fr-direct-object-pronouns",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Le, la, les : les pronoms compléments",
+      "intent": "Remplacer un complément direct par le, la, l' ou les avant le verbe : le pain ? Je le prends. Les clés, je les ai. Ta voisine, je ne la connais pas."
+    },
+    {
+      "id": "fr-pronoun-y-for-places",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Le pronom y",
+      "intent": "Remplacer un lieu par y pour ne pas le répéter : Tu vas au marché ? J'y vais demain. On y habite depuis deux ans. Je n'y suis jamais allé."
+    },
+    {
+      "id": "fr-relative-qui",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Le pronom relatif qui",
+      "intent": "Relier deux phrases avec qui pour préciser une personne ou une chose sujet du verbe : j'ai un voisin qui joue du piano, c'est un quartier qui bouge."
+    },
+    {
+      "id": "fr-relative-que",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Le pronom relatif que",
+      "intent": "Relier deux phrases avec que quand la personne ou la chose est complément (le film que j'ai vu, la voisine que tu connais) et choisir entre qui et que."
+    },
+    {
+      "id": "fr-pets",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Les animaux de compagnie",
+      "intent": "Parler de son animal avec une dizaine de mots : un chien, un chat, un lapin, un poisson rouge, promener le chien, nourrir, le vétérinaire, la laisse, adopter."
+    },
+    {
+      "id": "fr-verbs-like-ouvrir",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Ouvrir, offrir, découvrir",
+      "intent": "Conjuguer ouvrir, offrir, découvrir et souffrir au présent comme des verbes en -er (j'ouvre, tu offres) et former leur participe : ouvert, offert, découvert."
+    },
+    {
+      "id": "fr-negation-plus-rien-personne",
+      "kind": "grammar",
+      "topic": "negation",
+      "workingTitle": "Ne… plus, ne… rien, ne… personne",
+      "intent": "Dire qu'une chose a cessé ou qu'il n'y a rien ni personne : je n'habite plus ici, il n'y a rien dans le frigo, je ne connais personne dans l'immeuble."
+    },
+    {
+      "id": "fr-breakdowns-at-home",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Les pannes à la maison",
+      "intent": "Décrire un problème dans son logement avec une dizaine de mots : une fuite, une panne, le chauffage, l'ampoule, cassé, bouché, ne marche plus, le plombier."
+    },
+    {
+      "id": "fr-reporting-a-problem-to-the-landlord",
+      "kind": "functions",
+      "theme": "house_and_home",
+      "workingTitle": "Signaler une panne au propriétaire",
+      "intent": "Appeler son propriétaire pour signaler une panne, dire depuis quand elle dure et demander une intervention : « Le chauffage ne marche plus depuis lundi »."
+    },
+    {
+      "id": "fr-relative-ou",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Le pronom relatif où",
+      "intent": "Préciser un lieu ou un moment avec où : la ville où je suis né, le café où on se retrouve, le jour où je suis arrivé."
+    },
+    {
+      "id": "fr-asking-a-neighbour-a-favour",
+      "kind": "functions",
+      "theme": "house_and_home",
+      "workingTitle": "Demander un service à un voisin",
+      "intent": "Demander un petit service à un voisin (arroser les plantes, garder un colis, prêter un outil), accepter ou refuser et remercier : « Est-ce que vous pourriez… ? »."
+    },
+    {
+      "id": "fr-sorting-waste",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Trier ses déchets",
+      "intent": "Parler du tri avec une dizaine de mots : la poubelle jaune, le verre, le carton, les déchets, trier, recycler, jeter, le composteur, la déchetterie, gaspiller."
+    },
+    {
+      "id": "fr-reading-building-rules",
+      "kind": "reading",
+      "theme": "house_and_home",
+      "workingTitle": "Lire le règlement d'un immeuble",
+      "intent": "Lire le règlement affiché dans le hall d'un immeuble et dire ce qui est permis, interdit ou obligatoire pour les poubelles, le bruit, les vélos et les animaux."
+    },
+    {
+      "id": "fr-indefinite-pronouns",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Quelqu'un, quelque chose, quelque part",
+      "intent": "Parler d'une personne, d'une chose ou d'un lieu sans le préciser : quelqu'un a sonné, j'ai oublié quelque chose, on va quelque part ? quelque chose de bon."
+    },
+    {
+      "id": "fr-school-years",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "L'école, le collège, le lycée",
+      "intent": "Parler de sa scolarité avec une douzaine de mots : l'école maternelle, primaire, le collège, le lycée, la récré, la cantine, le maître, la maîtresse, redoubler."
+    },
+    {
+      "id": "fr-imperfect-tense-forms",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "L'imparfait : la formation",
+      "intent": "Former l'imparfait à partir de nous au présent (nous finissons, je finissais) avec -ais, -ait, -ions, -iez, -aient, et retenir la forme irrégulière j'étais."
+    },
+    {
+      "id": "fr-imperfect-for-past-habits",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "L'imparfait des habitudes",
+      "intent": "Raconter ses habitudes d'enfant à l'imparfait avec quand j'étais petit, tous les étés ou le dimanche : on allait chez ma grand-mère, je jouais dans la rue."
+    },
+    {
+      "id": "fr-tout-toute-tous-toutes",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Tout, toute, tous, toutes",
+      "intent": "Accorder tout avec le nom qui suit (tout le temps, toute la journée, tous les étés, toutes les semaines) et l'employer seul : ils sont tous venus."
+    },
+    {
+      "id": "fr-childhood-games",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Les jeux d'enfants",
+      "intent": "Raconter ses jeux d'enfant avec une dizaine de mots : jouer à cache-cache, au ballon, aux cartes, à la poupée, la balançoire, la cour, les jeux de société, le dessin animé."
+    },
+    {
+      "id": "fr-frequency-adverbs",
+      "kind": "grammar",
+      "topic": "adverbs",
+      "workingTitle": "Souvent, parfois, rarement",
+      "intent": "Dire la fréquence d'une habitude avec toujours, souvent, d'habitude, parfois, de temps en temps et rarement, en les plaçant au bon endroit dans la phrase."
+    },
+    {
+      "id": "fr-sharing-a-childhood-memory",
+      "kind": "functions",
+      "theme": "personal_identification",
+      "workingTitle": "Raconter un souvenir d'enfance",
+      "intent": "Raconter un souvenir d'enfance en quelques phrases (où on habitait, avec qui on jouait, ce qu'on adorait) et demander : « Et toi, tu étais comment, petit ? »."
+    },
+    {
+      "id": "fr-cetait-il-y-avait-il-faisait",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "C'était, il y avait, il faisait",
+      "intent": "Décrire un lieu ou un moment du passé avec c'était, il y avait, il faisait et on était : c'était une petite maison, il y avait un grand jardin, il faisait chaud."
+    },
+    {
+      "id": "fr-countryside-and-nature",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "La campagne et la nature",
+      "intent": "Décrire un paysage avec une douzaine de mots : la forêt, le champ, la rivière, la colline, la ferme, le village, le chemin, la vache, le cheval, les oiseaux."
+    },
+    {
+      "id": "fr-imperfect-vs-past-tense",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Imparfait ou passé composé ?",
+      "intent": "Distinguer dans un récit le décor à l'imparfait et les actions au passé composé : il pleuvait quand je suis sorti, on dormait quand le téléphone a sonné."
+    },
+    {
+      "id": "fr-reading-a-childhood-testimony",
+      "kind": "reading",
+      "theme": "personal_identification",
+      "workingTitle": "Lire un témoignage sur l'enfance",
+      "intent": "Lire le témoignage d'une grand-mère sur son enfance à la campagne et dire ce qui a changé par rapport à la vie d'aujourd'hui."
+    },
+    {
+      "id": "fr-reading-a-short-story",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire une histoire courte",
+      "intent": "Lire une courte histoire au passé, séparer les événements au passé composé du décor à l'imparfait, puis résumer la fin en une phrase."
+    },
+    {
+      "id": "fr-cooking-verbs",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Les verbes de la cuisine",
+      "intent": "Suivre une recette avec une douzaine de verbes : éplucher, couper, mélanger, ajouter, verser, faire cuire, faire bouillir, faire revenir, mettre au four, servir."
+    },
+    {
+      "id": "fr-tastes",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Sucré, salé, épicé",
+      "intent": "Décrire le goût d'un plat avec une douzaine de mots : sucré, salé, épicé, amer, acide, gras, léger, délicieux, fade, trop cuit, croustillant."
+    },
+    {
+      "id": "fr-reading-a-recipe",
+      "kind": "reading",
+      "theme": "food_and_drink",
+      "workingTitle": "Lire une recette",
+      "intent": "Lire une recette simple, retrouver les ingrédients, les quantités et l'ordre des étapes, et comprendre les verbes à l'infinitif ou à l'impératif."
+    },
+    {
+      "id": "fr-pronoun-en-for-quantities",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Le pronom en",
+      "intent": "Remplacer un nom précédé de du, de la, des ou d'une quantité par en : Tu veux du pain ? Oui, j'en veux. Des pommes ? J'en prends trois. Je n'en ai plus."
+    },
+    {
+      "id": "fr-at-the-market",
+      "kind": "functions",
+      "theme": "food_and_drink",
+      "workingTitle": "Au marché",
+      "intent": "Acheter au marché en précisant la quantité et en répondant au marchand : « Je vais en prendre un kilo », « Et avec ceci ? », « Ce sera tout », « Je vous dois combien ? »."
+    },
+    {
+      "id": "fr-approximate-quantities",
+      "kind": "grammar",
+      "topic": "comparison_and_quantity",
+      "workingTitle": "Une dizaine, la moitié, un quart",
+      "intent": "Donner une quantité approximative ou une fraction : une dizaine, une vingtaine, une centaine, la moitié, un tiers, un quart, la plupart des gens."
+    },
+    {
+      "id": "fr-french-dishes",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Les plats de chez nous",
+      "intent": "Reconnaître et décrire une douzaine de plats français : la quiche, le croque-monsieur, la raclette, le pot-au-feu, la crêpe, la ratatouille, la tarte Tatin."
+    },
+    {
+      "id": "fr-diets-and-allergies",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Végétarien, allergique, sans gluten",
+      "intent": "Expliquer ce qu'on ne mange pas avec une dizaine de mots : végétarien, végan, allergique à, sans gluten, sans lactose, le porc, les fruits de mer, un régime."
+    },
+    {
+      "id": "fr-object-pronouns-past-tense",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Je l'ai vu, j'y suis allé, j'en ai pris",
+      "intent": "Placer le, la, les, y et en devant l'auxiliaire au passé composé et dans la négation : je l'ai acheté hier, on y est allés, je n'en ai pas pris."
+    },
+    {
+      "id": "fr-spelling-change-verbs",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Acheter, préférer, appeler",
+      "intent": "Conjuguer au présent les verbes qui changent d'accent ou doublent leur consonne : j'achète, nous achetons ; je préfère, vous préférez ; j'appelle, nous appelons."
+    },
+    {
+      "id": "fr-paying",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Payer en espèces ou par carte",
+      "intent": "Payer avec une dizaine de mots : en espèces, par carte, sans contact, la monnaie, rendre la monnaie, le ticket de caisse, la caisse, une réduction, gratuit."
+    },
+    {
+      "id": "fr-cer-ger-yer-verbs",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Manger, commencer, payer",
+      "intent": "Conjuguer au présent les verbes en -ger, -cer et -yer : nous mangeons, nous commençons, je paie, j'envoie, il essaie, nous nettoyons."
+    },
+    {
+      "id": "fr-spending-and-saving",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Dépenser et économiser",
+      "intent": "Parler de son budget avec une dizaine de mots : dépenser, économiser, coûter cher, bon marché, prêter, emprunter, rembourser, un compte, être fauché."
+    },
+    {
+      "id": "fr-reading-second-hand-ads",
+      "kind": "reading",
+      "theme": "shopping",
+      "workingTitle": "Lire des petites annonces d'occasion",
+      "intent": "Lire des annonces de vente entre particuliers et trouver pour chaque objet son état, son prix, s'il est négociable et comment le récupérer."
+    },
+    {
+      "id": "fr-job-search",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Chercher un emploi",
+      "intent": "Parler d'une recherche d'emploi avec une douzaine de mots : une offre, un CV, une lettre de motivation, un entretien, un stage, un CDD, un CDI, à temps partiel, postuler."
+    },
+    {
+      "id": "fr-verbs-with-a-or-de-infinitive",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Commencer à, arrêter de",
+      "intent": "Construire un verbe suivi d'un infinitif avec à ou de : commencer à, apprendre à, réussir à, arrêter de, essayer de, oublier de, décider de, finir de."
+    },
+    {
+      "id": "fr-reading-a-job-ad",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Lire une offre d'emploi",
+      "intent": "Lire une offre d'emploi et trouver le poste, le lieu, les horaires, le contrat, le profil demandé et la façon de postuler."
+    },
+    {
+      "id": "fr-expressions-with-faire",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Faire la queue, faire attention",
+      "intent": "Employer une douzaine d'expressions courantes avec faire : faire la queue, faire attention, faire un tour, faire la grasse matinée, faire semblant, faire la fête, faire peur."
+    },
+    {
+      "id": "fr-savoir-and-connaitre",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Savoir ou connaître ?",
+      "intent": "Choisir entre savoir (un fait, une chose qu'on sait faire) et connaître (une personne, un lieu) : je sais nager, je sais où il habite, je connais bien Lyon."
+    },
+    {
+      "id": "fr-hours-leave-and-pay",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Les horaires, les congés, le salaire",
+      "intent": "Décrire ses conditions de travail avec une douzaine de mots : les horaires, les congés, le salaire, une réunion, le chef, les heures supplémentaires, être en arrêt maladie."
+    },
+    {
+      "id": "fr-talking-about-your-job",
+      "kind": "functions",
+      "theme": "daily_life",
+      "workingTitle": "Parler de son travail",
+      "intent": "Présenter son poste, ses tâches et ses horaires, et dire ce qu'on aime ou non dans son travail : « Je m'occupe de… », « Le plus dur, c'est… »."
+    },
+    {
+      "id": "fr-irregular-plurals",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Un journal, des journaux",
+      "intent": "Former les pluriels irréguliers courants : un journal, des journaux ; un travail, des travaux ; un œil, des yeux ; un bijou, des bijoux ; un monsieur, des messieurs."
+    },
+    {
+      "id": "fr-studies-and-diplomas",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Les études",
+      "intent": "Parler de ses études avec une douzaine de mots : la fac, une licence, un master, un diplôme, un examen, une matière, les notes, réussir, rater, s'inscrire."
+    },
+    {
+      "id": "fr-email-openings-and-closings",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Bonjour Madame, cordialement, bises",
+      "intent": "Commencer et finir un mail selon le destinataire avec une dizaine de formules : Madame, Monsieur, Bonjour Paul, Cordialement, Bien à vous, Bises, À plus."
+    },
+    {
+      "id": "fr-verbs-with-indirect-objects",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Téléphoner à, aider quelqu'un",
+      "intent": "Distinguer les verbes construits avec à (téléphoner à, parler à, répondre à, demander à) et ceux qui ont un complément direct : aider, appeler, attendre quelqu'un."
+    },
+    {
+      "id": "fr-indirect-object-pronouns",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Lui et leur",
+      "intent": "Remplacer un complément introduit par à par lui ou leur : Tu as appelé ta mère ? Oui, je lui ai téléphoné. Je leur écris demain."
+    },
+    {
+      "id": "fr-reading-a-course-brochure",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Lire le programme d'un stage",
+      "intent": "Lire la présentation d'un stage d'été (danse, cuisine, langue) et trouver le public visé, le contenu de chaque jour, le prix et ce qu'il faut apporter."
+    },
+    {
+      "id": "fr-me-te-nous-vous-objects",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Me, te, nous, vous",
+      "intent": "Employer me, te, nous et vous comme compléments, directs ou indirects : il m'appelle, je te remercie, elle nous a invités, je vous écris pour…"
+    },
+    {
+      "id": "fr-illnesses-and-symptoms",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Les maladies et les symptômes",
+      "intent": "Expliquer ce qu'on a avec une douzaine de mots : un rhume, la grippe, de la fièvre, tousser, éternuer, avoir le nez qui coule, avoir mal au cœur, une allergie."
+    },
+    {
+      "id": "fr-at-the-pharmacy",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "À la pharmacie",
+      "intent": "Comprendre une dizaine de mots de la pharmacie : un médicament, une ordonnance, un comprimé, un sirop, une crème, un pansement, deux fois par jour, avant les repas."
+    },
+    {
+      "id": "fr-asking-a-pharmacist-for-advice",
+      "kind": "functions",
+      "theme": "health",
+      "workingTitle": "Demander conseil au pharmacien",
+      "intent": "Expliquer ses symptômes au pharmacien, dire depuis quand on les a et comprendre comment prendre le médicament : « Vous en prenez un matin et soir »."
+    },
+    {
+      "id": "fr-advice-with-tu-devrais",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Tu devrais, à ta place",
+      "intent": "Donner un conseil avec tu devrais, vous devriez, il vaut mieux et à ta place : tu devrais te reposer, il vaut mieux rester au lit, à ta place, j'irais chez le médecin."
+    },
+    {
+      "id": "fr-chaque-plusieurs-quelques",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Chaque, plusieurs, quelques",
+      "intent": "Parler d'un nombre imprécis avec quelques, plusieurs, certains, chaque et aucun : chaque matin, plusieurs fois par jour, quelques jours, aucune idée."
+    },
+    {
+      "id": "fr-reading-a-medicine-box",
+      "kind": "reading",
+      "theme": "health",
+      "workingTitle": "Lire une boîte de médicament",
+      "intent": "Lire l'étiquette et la posologie d'un médicament courant et dire combien en prendre, à quel moment, pendant combien de jours et pour qui il est déconseillé."
+    },
+    {
+      "id": "fr-imperative-with-pronouns",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Dis-moi, lève-toi, ne t'inquiète pas",
+      "intent": "Placer le pronom après le verbe à l'impératif affirmatif (dis-moi, prends-le, lève-toi) et devant à l'impératif négatif : ne t'inquiète pas, ne le prends pas."
+    },
+    {
+      "id": "fr-minor-accidents",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Les petits accidents",
+      "intent": "Raconter un petit accident avec une dizaine d'expressions : tomber, se casser le bras, se tordre la cheville, se couper, se brûler, une blessure, un plâtre, les urgences."
+    },
+    {
+      "id": "fr-doctors-and-specialists",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Le généraliste et les spécialistes",
+      "intent": "Savoir qui consulter avec une dizaine de mots : le médecin généraliste, le dentiste, l'ophtalmo, le kiné, le pédiatre, la sage-femme, une consultation, la carte Vitale."
+    },
+    {
+      "id": "fr-sport-and-results",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Gagner, perdre, s'entraîner",
+      "intent": "Parler d'un match avec une douzaine de mots : l'équipe, le joueur, le match, le score, gagner, perdre, faire match nul, marquer un but, s'entraîner, le championnat."
+    },
+    {
+      "id": "fr-healthy-habits",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Prendre soin de soi",
+      "intent": "Parler de ses habitudes de santé avec une douzaine d'expressions : dormir assez, manger équilibré, bouger, arrêter de fumer, boire de l'eau, se détendre, être en forme."
+    },
+    {
+      "id": "fr-adverbs-in-ment",
+      "kind": "grammar",
+      "topic": "adverbs",
+      "workingTitle": "Les adverbes en -ment",
+      "intent": "Former un adverbe en -ment à partir du féminin de l'adjectif (lentement, doucement, sérieusement) et retenir vraiment, gentiment, évidemment, couramment."
+    },
+    {
+      "id": "fr-reading-health-tips",
+      "kind": "reading",
+      "theme": "health",
+      "workingTitle": "Lire des conseils pour bien dormir",
+      "intent": "Lire un court article de conseils pour mieux dormir et classer les conseils en deux colonnes : ce qu'il faut faire et ce qu'il faut éviter."
+    },
+    {
+      "id": "fr-on-time-late-early",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "À l'heure, en retard, en avance",
+      "intent": "Parler de ponctualité avec une dizaine d'expressions : être à l'heure, en retard, en avance, être pressé, avoir le temps, se dépêcher, rater le bus, attendre longtemps."
+    },
+    {
+      "id": "fr-apologising-and-giving-a-reason",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "S'excuser et se justifier",
+      "intent": "S'excuser d'un retard ou d'un oubli en donnant la raison (« Désolé, j'ai raté le bus », « J'ai complètement oublié ») et répondre aux excuses de l'autre."
+    },
+    {
+      "id": "fr-giving-reasons-comme-car",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Comme et car",
+      "intent": "Donner une raison avec comme en début de phrase et car à l'écrit, à côté de parce que : comme il pleuvait, on est restés ; je ne viens pas, car je suis malade."
+    },
+    {
+      "id": "fr-future-tense-regular",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Le futur simple",
+      "intent": "Former le futur simple des verbes réguliers à partir de l'infinitif avec -ai, -as, -a, -ons, -ez, -ont : je partirai, nous finirons, ils prendront."
+    },
+    {
+      "id": "fr-future-tense-irregular-stems",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Je serai, j'aurai, j'irai",
+      "intent": "Retenir les radicaux irréguliers du futur : serai, aurai, irai, ferai, pourrai, voudrai, viendrai, verrai, devrai, saurai, et il faudra."
+    },
+    {
+      "id": "fr-future-time-expressions",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "La semaine prochaine, dans dix ans",
+      "intent": "Situer un projet dans l'avenir avec une dizaine d'expressions : après-demain, la semaine prochaine, l'année prochaine, dans dix ans, plus tard, un jour, à l'avenir."
+    },
+    {
+      "id": "fr-talking-about-plans",
+      "kind": "functions",
+      "theme": "personal_identification",
+      "workingTitle": "Parler de ses projets",
+      "intent": "Parler de ses projets et dire s'ils sont sûrs ou non : « Je pars en juin », « J'ai l'intention de… », « J'aimerais bien… », « Je ne sais pas encore, peut-être… »."
+    },
+    {
+      "id": "fr-near-future-or-simple-future",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Je vais partir ou je partirai ?",
+      "intent": "Choisir entre le futur proche pour un projet décidé ou tout proche et le futur simple pour un avenir plus lointain, une promesse ou une prévision."
+    },
+    {
+      "id": "fr-noun-endings-and-gender",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Masculin ou féminin ? Les terminaisons",
+      "intent": "Deviner le genre d'un nom grâce à sa terminaison : -tion, -té, -ure souvent féminins ; -ment, -age, -eau souvent masculins, avec les exceptions courantes."
+    },
+    {
+      "id": "fr-weather-forecast-words",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "Averses, éclaircies, orages",
+      "intent": "Comprendre une prévision météo avec une douzaine de mots : une averse, une éclaircie, un orage, le brouillard, nuageux, ensoleillé, doux, frais, les températures."
+    },
+    {
+      "id": "fr-reading-a-weather-forecast",
+      "kind": "reading",
+      "theme": "weather",
+      "workingTitle": "Lire la météo de la semaine",
+      "intent": "Lire un bulletin météo au futur et dire quel temps il fera chaque jour dans chaque région, et quel jour choisir pour une sortie."
+    },
+    {
+      "id": "fr-real-conditions-with-si",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Si + présent",
+      "intent": "Dire ce qui arrivera si une condition se réalise avec si + présent, puis futur, présent ou impératif : s'il fait beau, on ira à la plage ; si tu as le temps, appelle-moi."
+    },
+    {
+      "id": "fr-reading-a-horoscope",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire un horoscope",
+      "intent": "Lire un horoscope de la semaine au futur et dire ce qu'il annonce à chaque signe pour l'amour, le travail et la santé."
+    },
+    {
+      "id": "fr-arranging-to-meet",
+      "kind": "functions",
+      "theme": "free_time",
+      "workingTitle": "Fixer et déplacer un rendez-vous",
+      "intent": "Se mettre d'accord sur un jour, une heure et un lieu, puis déplacer le rendez-vous : « Ça t'irait samedi ? », « Plutôt dimanche », « On se retrouve où ? »."
+    },
+    {
+      "id": "fr-phone-calls-and-messages",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Appeler, rappeler, raccrocher",
+      "intent": "Téléphoner et laisser des messages avec une douzaine de mots : appeler, rappeler, décrocher, raccrocher, laisser un message, le répondeur, un texto, un vocal, c'est occupé."
+    },
+    {
+      "id": "fr-phoning-and-leaving-a-message",
+      "kind": "functions",
+      "theme": "services",
+      "workingTitle": "Téléphoner et laisser un message",
+      "intent": "Appeler un cabinet ou un service, se présenter, demander une personne et laisser un message : « Je vous appelle au sujet de… », « Elle peut me rappeler ? »."
+    },
+    {
+      "id": "fr-internet-and-smartphones",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Internet et le smartphone",
+      "intent": "Utiliser une douzaine de mots du numérique : télécharger, une appli, un mot de passe, se connecter, un lien, une pièce jointe, le wifi, recharger, un réseau social."
+    },
+    {
+      "id": "fr-online-shopping",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Acheter en ligne",
+      "intent": "Commander sur internet avec une douzaine de mots : le panier, la commande, la livraison, le colis, le suivi, retourner, rembourser, le délai, en rupture de stock."
+    },
+    {
+      "id": "fr-reading-an-order-confirmation",
+      "kind": "reading",
+      "theme": "shopping",
+      "workingTitle": "Lire une confirmation de commande",
+      "intent": "Lire un mail de confirmation de commande et trouver les articles, le total, la date et le mode de livraison, et ce qu'il faut faire pour un retour."
+    },
+    {
+      "id": "fr-returning-a-faulty-item",
+      "kind": "functions",
+      "theme": "shopping",
+      "workingTitle": "Rapporter un article",
+      "intent": "Rapporter un article défectueux au magasin, expliquer ce qui ne va pas et demander un échange ou un remboursement : « Il ne marche plus », « Je peux l'échanger ? »."
+    },
+    {
+      "id": "fr-possessive-pronouns",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Le mien, le tien, le sien",
+      "intent": "Remplacer possessif + nom par un pronom possessif : C'est ton vélo ? Non, le mien est rouge. Ce ne sont pas tes clés, ce sont les miennes."
+    },
+    {
+      "id": "fr-describing-an-outfit",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Rayé, à fleurs, décontracté",
+      "intent": "Décrire une tenue avec une douzaine de mots : rayé, à carreaux, à fleurs, uni, serré, large, élégant, décontracté, ça te va bien, c'est à la mode."
+    },
+    {
+      "id": "fr-demonstrative-pronouns",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Celui-ci, celle-là",
+      "intent": "Choisir entre plusieurs objets sans répéter le nom avec celui, celle, ceux et celles, suivis de -ci, -là ou de : je préfère celle-ci, celui de mon frère."
+    },
+    {
+      "id": "fr-shapes-and-materials",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Les formes et les matières",
+      "intent": "Décrire un objet avec une douzaine de mots : rond, carré, rectangulaire, en bois, en métal, en plastique, en cuir, en coton, lourd, léger, neuf."
+    },
+    {
+      "id": "fr-reporting-a-lost-item",
+      "kind": "functions",
+      "theme": "services",
+      "workingTitle": "Déclarer une perte",
+      "intent": "Signaler un objet perdu ou volé, dire où et quand on l'a perdu et le décrire précisément : la forme, la couleur, la matière, la marque, ce qu'il contient."
+    },
+    {
+      "id": "fr-reading-a-town-hall-notice",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire un avis de la mairie",
+      "intent": "Lire un avis de la mairie (travaux, fermeture, collecte des déchets) et dire ce qui change, quand, où, et ce que les habitants doivent faire."
+    },
+    {
+      "id": "fr-inverted-questions",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Les questions avec inversion",
+      "intent": "Comprendre et poser une question avec inversion dans un contexte poli ou écrit : Où habitez-vous ? Pouvez-vous m'aider ? Avez-vous réservé ? A-t-il appelé ?"
+    },
+    {
+      "id": "fr-holiday-accommodation",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Gîte, camping, chambre d'hôtes",
+      "intent": "Choisir un hébergement avec une dizaine de mots : un camping, un gîte, une auberge de jeunesse, une chambre d'hôtes, une location, la demi-pension, complet, disponible."
+    },
+    {
+      "id": "fr-reading-a-tourist-brochure",
+      "kind": "reading",
+      "theme": "travel",
+      "workingTitle": "Lire une brochure touristique",
+      "intent": "Lire la brochure d'un office de tourisme et choisir une activité selon ses goûts, le prix, les horaires et l'âge des enfants."
+    },
+    {
+      "id": "fr-public-transport",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Les transports en commun",
+      "intent": "Se déplacer en ville avec une douzaine de mots : la ligne, la station, l'arrêt, la correspondance, changer à, le terminus, le ticket, l'abonnement, valider, la grève."
+    },
+    {
+      "id": "fr-driving-and-roads",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "La voiture et la route",
+      "intent": "Parler de la route avec une douzaine de mots : le permis, l'autoroute, le péage, l'essence, faire le plein, se garer, un bouchon, la vitesse, tomber en panne."
+    },
+    {
+      "id": "fr-at-the-airport",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "À l'aéroport",
+      "intent": "Se repérer à l'aéroport avec une douzaine de mots : l'enregistrement, la carte d'embarquement, la porte, le contrôle de sécurité, le bagage en soute, embarquer, atterrir, décoller."
+    },
+    {
+      "id": "fr-dealing-with-a-travel-problem",
+      "kind": "functions",
+      "theme": "travel",
+      "workingTitle": "Un problème en voyage",
+      "intent": "Expliquer un problème en voyage (train annulé, valise perdue, voiture en panne) et demander une solution : « Qu'est-ce que je peux faire ? », « Il y a un autre train ? »."
+    },
+    {
+      "id": "fr-tourist-sights",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Visiter une ville",
+      "intent": "Préparer une visite avec une douzaine de mots : le monument, le château, la cathédrale, la vieille ville, l'office de tourisme, la visite guidée, le plan, l'entrée, les horaires."
+    },
+    {
+      "id": "fr-reading-a-travel-forum",
+      "kind": "reading",
+      "theme": "travel",
+      "workingTitle": "Lire un forum de voyageurs",
+      "intent": "Lire les réponses d'un forum à la question « Que faire à Lyon en deux jours ? » et noter les lieux conseillés, ceux à éviter et les astuces pratiques."
+    },
+    {
+      "id": "fr-before-doing-avant-de",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Avant de partir, après le dîner",
+      "intent": "Ordonner deux actions avec avant de + infinitif et avant ou après + nom : avant de partir, ferme la fenêtre ; après le dîner, on se promène."
+    },
+    {
+      "id": "fr-films-and-series",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Films et séries",
+      "intent": "Parler de films et de séries avec une douzaine de mots : une comédie, un film d'horreur, un dessin animé, une série, un épisode, une saison, le réalisateur, en VO, sous-titré."
+    },
+    {
+      "id": "fr-giving-your-opinion",
+      "kind": "functions",
+      "theme": "free_time",
+      "workingTitle": "Donner son avis",
+      "intent": "Donner son avis sur un film, un lieu ou une idée et le justifier en une phrase : « Je trouve que c'est trop long », « À mon avis… », « Pour moi, c'est… parce que… »."
+    },
+    {
+      "id": "fr-reading-film-reviews",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire des critiques de film",
+      "intent": "Lire deux critiques courtes du même film, dire si chaque auteur l'a aimé ou non et relever les mots qui le montrent."
+    },
+    {
+      "id": "fr-jouer-a-jouer-de-faire-de",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Jouer au foot, jouer du piano",
+      "intent": "Parler d'un sport ou d'un instrument avec jouer à (jouer au tennis), jouer de (jouer de la guitare) et faire de (faire du vélo, faire du piano)."
+    },
+    {
+      "id": "fr-music",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "La musique",
+      "intent": "Parler de musique avec une douzaine de mots : un chanteur, un groupe, une chanson, un album, un concert, un festival, le rap, le jazz, écouter en ligne, chanter juste, faux."
+    },
+    {
+      "id": "fr-books-and-press",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Livres, BD et journaux",
+      "intent": "Parler de lecture avec une douzaine de mots : un roman, une BD, un polar, un magazine, le journal, un auteur, un personnage, une histoire vraie, emprunter à la bibliothèque."
+    },
+    {
+      "id": "fr-on-for-people-in-general",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "On, les gens, tout le monde",
+      "intent": "Employer on pour parler des gens en général (en France, on dîne vers 20 h) et choisir entre on, les gens et tout le monde avec le bon accord du verbe."
+    },
+    {
+      "id": "fr-french-festivals",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "La Chandeleur, le 14 Juillet",
+      "intent": "Raconter une dizaine de fêtes et traditions françaises : la galette des rois, la Chandeleur, Pâques, le 1er Mai, la Fête de la musique, le 14 Juillet, la Toussaint."
+    },
+    {
+      "id": "fr-agreeing-and-disagreeing",
+      "kind": "functions",
+      "theme": "free_time",
+      "workingTitle": "Être d'accord ou pas",
+      "intent": "Dire qu'on est d'accord ou non et réagir à l'avis de l'autre : « Je suis d'accord avec toi », « Tu as raison », « Moi, je ne trouve pas », « Pas du tout ! »."
+    },
+    {
+      "id": "fr-french-speaking-world",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Le français dans le monde",
+      "intent": "Situer une dizaine de pays et régions où l'on parle français et dire comment on appelle leurs habitants : le Québec, la Belgique, la Suisse, le Sénégal, la Martinique."
+    },
+    {
+      "id": "fr-reading-a-local-news-story",
+      "kind": "reading",
+      "theme": "places",
+      "workingTitle": "Lire un fait divers",
+      "intent": "Lire un court fait divers dans le journal local et dire ce qui s'est passé, où, quand, à qui, et comment l'histoire s'est terminée."
+    }
+  ]
+}

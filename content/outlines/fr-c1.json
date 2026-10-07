@@ -1,0 +1,1826 @@
+{
+  "lang": "fr",
+  "level": "C1",
+  "entries": [
+    {
+      "id": "fr-beyond-avoir-etre-mettre",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Au-delà d'avoir, être, mettre",
+      "intent": "Remplacer les verbes passe-partout par un verbe précis selon le contexte : éprouver une crainte, constituer un risque, commettre une erreur, effectuer un virement, dresser un bilan."
+    },
+    {
+      "id": "fr-formal-verbs-of-saying",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Souligner, préciser, objecter",
+      "intent": "Introduire les propos d'autrui avec le verbe qui en dit la fonction : souligner, préciser, rappeler, nuancer, avancer, objecter, concéder, insinuer, déplorer, se féliciter de."
+    },
+    {
+      "id": "fr-epistemic-modality",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Il se pourrait que, il doit s'agir de",
+      "intent": "Moduler le degré de certitude d'une affirmation avec devoir, pouvoir, sembler, paraître, il se pourrait que, il n'est pas exclu que, et mesurer l'effet sur le lecteur."
+    },
+    {
+      "id": "fr-verbs-of-opinion",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Estimer, considérer, soutenir",
+      "intent": "Choisir le verbe d'opinion qui convient à la force de la position : estimer, considérer, juger, soutenir, affirmer, admettre, contester, récuser, se rallier à, adhérer à."
+    },
+    {
+      "id": "fr-problem-challenge-stake",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Problème, enjeu, défi, écueil",
+      "intent": "Distinguer des noms proches pour parler d'une difficulté : un problème, une difficulté, un obstacle, un écueil, un enjeu, un défi, une gageure, un frein, une impasse."
+    },
+    {
+      "id": "fr-popularising-a-complex-idea",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Vulgariser une notion complexe",
+      "intent": "Expliquer une notion complexe à un public non spécialiste en choisissant une analogie, un exemple concret et des mots simples, sans fausser l'idée."
+    },
+    {
+      "id": "fr-change-and-evolve",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Modifier, transformer, évoluer",
+      "intent": "Nuancer l'idée de changement avec une douzaine de verbes : modifier, transformer, remanier, réformer, bouleverser, évoluer, muter, se métamorphoser, infléchir, ajuster."
+    },
+    {
+      "id": "fr-link-and-relation",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Rapport, lien, corrélation",
+      "intent": "Distinguer des noms proches pour parler d'une relation entre deux choses : un rapport, une relation, un lien, une corrélation, une causalité, une interdépendance, une analogie."
+    },
+    {
+      "id": "fr-show-and-prove",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Montrer, démontrer, attester",
+      "intent": "Distinguer les verbes de la preuve selon leur force : montrer, indiquer, suggérer, révéler, démontrer, prouver, établir, attester, témoigner de, corroborer."
+    },
+    {
+      "id": "fr-increase-and-strengthen",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Accroître, renforcer, amplifier",
+      "intent": "Choisir le verbe juste pour une hausse ou un renforcement : augmenter, accroître, renforcer, consolider, amplifier, intensifier, aggraver, attiser, décupler."
+    },
+    {
+      "id": "fr-adverb-scope",
+      "kind": "grammar",
+      "topic": "adverbs",
+      "workingTitle": "Il a seulement dit, il a dit seulement",
+      "intent": "Placer un adverbe pour viser le bon élément et comprendre le changement de sens : heureusement, il a compris ; il a heureusement compris ; seulement lui ; lui seulement."
+    },
+    {
+      "id": "fr-paronyms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Éminent ou imminent ?",
+      "intent": "Ne plus confondre une douzaine de paronymes : éminent et imminent, conjecture et conjoncture, effraction et infraction, collision et collusion, prodige et prodigue."
+    },
+    {
+      "id": "fr-intensity-adjectives",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Considérable, notable, minime, dérisoire",
+      "intent": "Qualifier une ampleur avec l'adjectif juste : considérable, notable, sensible, substantiel, appréciable, modeste, minime, marginal, négligeable, dérisoire."
+    },
+    {
+      "id": "fr-voicing-reservations",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Émettre des réserves",
+      "intent": "Exprimer des réserves sur une proposition sans la rejeter : « Sur le principe, je suis favorable, mais… », « J'aurais une réserve sur… », « Cela mérite d'être approfondi »."
+    },
+    {
+      "id": "fr-judging-adverbs",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Manifestement, prétendument, assurément",
+      "intent": "Signaler son jugement sur ce qu'on rapporte avec une douzaine d'adverbes : manifestement, visiblement, apparemment, prétendument, assurément, indéniablement, vraisemblablement."
+    },
+    {
+      "id": "fr-suspect-and-presume",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Soupçonner, présumer, se douter",
+      "intent": "Exprimer une supposition avec précision : supposer, présumer, soupçonner, se douter de, se douter que, conjecturer, pressentir, flairer, subodorer."
+    },
+    {
+      "id": "fr-fine-preposition-choices",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "En ville ou dans la ville ?",
+      "intent": "Choisir la préposition qui convient au sens : en ville ou dans la ville, dans le journal ou sur le site, à vélo ou en vélo, aimé de tous ou par tous, sur le moment."
+    },
+    {
+      "id": "fr-quantity-in-formal-writing",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Une infime minorité, la quasi-totalité",
+      "intent": "Exprimer des proportions dans un écrit soutenu : une infime minorité, une part non négligeable, la quasi-totalité, la majeure partie, un tant soit peu, un nombre croissant de."
+    },
+    {
+      "id": "fr-criticise-and-condemn",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Reprocher, dénoncer, fustiger",
+      "intent": "Graduer la critique avec une douzaine de verbes : reprocher, critiquer, déplorer, blâmer, désapprouver, dénoncer, condamner, fustiger, stigmatiser, vilipender."
+    },
+    {
+      "id": "fr-reading-dictionary-entries",
+      "kind": "reading",
+      "theme": "language",
+      "workingTitle": "Lire des articles de dictionnaire",
+      "intent": "Lire les articles d'un dictionnaire de langue pour des mots proches et s'appuyer sur les définitions, les marques de registre et les exemples pour choisir le mot juste."
+    },
+    {
+      "id": "fr-formal-connectors",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Or, dès lors, de surcroît, a fortiori",
+      "intent": "Articuler un raisonnement écrit avec une douzaine de connecteurs soutenus : or, ainsi, dès lors, de surcroît, en l'occurrence, a fortiori, du reste, partant, au demeurant."
+    },
+    {
+      "id": "fr-formal-concession-markers",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Toujours est-il que, il n'en demeure pas moins",
+      "intent": "Concéder puis maintenir son point avec une dizaine de tournures soutenues : quoi qu'il en soit, toujours est-il que, il n'en demeure pas moins que, force est de reconnaître."
+    },
+    {
+      "id": "fr-project-management",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Piloter un projet, un livrable, un jalon",
+      "intent": "Parler de gestion de projet avec une douzaine de mots : piloter, un jalon, un livrable, un comité de pilotage, arbitrer, le périmètre, une feuille de route, un retard de planning."
+    },
+    {
+      "id": "fr-formal-impersonal-phrases",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Il convient de, force est de constater",
+      "intent": "Employer les tournures impersonnelles de l'écrit soutenu et en mesurer l'effet : il importe de, il convient de, il en va de, il s'avère que, force est de constater que."
+    },
+    {
+      "id": "fr-pitching-a-project",
+      "kind": "functions",
+      "theme": "daily_life",
+      "workingTitle": "Défendre un projet devant un jury",
+      "intent": "Présenter un projet devant un jury ou un comité : capter l'attention, exposer le besoin, la solution et les moyens, puis conclure sur ce qu'on attend d'eux."
+    },
+    {
+      "id": "fr-human-resources",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Recrutement, entretien annuel, mobilité",
+      "intent": "Parler de ressources humaines avec une douzaine de mots : le recrutement, la fiche de poste, l'entretien annuel, la mobilité interne, le turnover, la marque employeur, l'intégration."
+    },
+    {
+      "id": "fr-handling-tough-questions",
+      "kind": "functions",
+      "theme": "daily_life",
+      "workingTitle": "Répondre aux questions d'un jury",
+      "intent": "Répondre aux questions, y compris hostiles, après une présentation : reformuler la question, admettre une limite, recentrer et renvoyer à ses arguments."
+    },
+    {
+      "id": "fr-employment-law",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Rupture conventionnelle, préavis, prud'hommes",
+      "intent": "Comprendre le droit du travail avec une douzaine de mots : un préavis, une rupture conventionnelle, un licenciement économique, les prud'hommes, une clause de non-concurrence."
+    },
+    {
+      "id": "fr-classical-allusions",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Franchir le Rubicon, une épée de Damoclès",
+      "intent": "Comprendre des expressions héritées de l'histoire et de la mythologie : franchir le Rubicon, une épée de Damoclès, une victoire à la Pyrrhus, le talon d'Achille, le supplice de Tantale."
+    },
+    {
+      "id": "fr-nominal-or-verbal-style",
+      "kind": "grammar",
+      "topic": "information_structure_and_pragmatics",
+      "workingTitle": "Style nominal ou style verbal",
+      "intent": "Choisir entre style nominal (Hausse des prix : ouverture d'une enquête) et style verbal selon le genre du texte, et réécrire une phrase lourde pour la rendre plus vivante."
+    },
+    {
+      "id": "fr-workplace-collocations",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Mener un projet, assurer un suivi",
+      "intent": "Employer les collocations du monde professionnel : mener un projet, assurer le suivi, respecter un délai, prendre en charge, faire remonter une information, dégager des priorités."
+    },
+    {
+      "id": "fr-helping-verbs",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Épauler, seconder, venir en aide",
+      "intent": "Nuancer l'idée d'aide avec une douzaine de verbes : aider, soutenir, épauler, seconder, assister, appuyer, encourager, venir en aide à, prêter main-forte, tendre la main."
+    },
+    {
+      "id": "fr-responsibility-words",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Assumer, se défausser, incomber",
+      "intent": "Parler de responsabilité avec une douzaine de mots : assumer, endosser, incomber à, se dédouaner, se défausser, rejeter la faute sur, porter le chapeau, un bouc émissaire."
+    },
+    {
+      "id": "fr-disagreeing-with-a-manager",
+      "kind": "functions",
+      "theme": "daily_life",
+      "workingTitle": "Exprimer un désaccord à un supérieur",
+      "intent": "Exprimer un désaccord à un supérieur sans remettre en cause son autorité : « Je me permets d'attirer votre attention sur… », « Je m'interroge sur… », « Ne pourrait-on pas… ? »."
+    },
+    {
+      "id": "fr-paris-quarters",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Rive gauche, le Marais, les arrondissements",
+      "intent": "Comprendre les références à Paris avec une douzaine de mots : la Rive gauche, la Rive droite, le Marais, les arrondissements, le périphérique, les Grands Boulevards, un bobo."
+    },
+    {
+      "id": "fr-reading-an-employment-contract",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Lire un contrat de travail",
+      "intent": "Lire un contrat de travail, repérer les clauses importantes (période d'essai, mobilité, confidentialité, non-concurrence) et dire lesquelles mériteraient d'être négociées."
+    },
+    {
+      "id": "fr-calling-someone-to-order",
+      "kind": "functions",
+      "theme": "daily_life",
+      "workingTitle": "Recadrer sans braquer",
+      "intent": "Recadrer un collaborateur qui ne respecte pas un engagement : décrire les faits, en montrer les effets, écouter sa version et convenir d'une suite."
+    },
+    {
+      "id": "fr-reading-a-specification",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Lire un cahier des charges",
+      "intent": "Lire un cahier des charges, distinguer les exigences obligatoires des souhaits, et repérer ce qui reste flou et devra être précisé avec le client."
+    },
+    {
+      "id": "fr-truth-and-lies-idioms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Mener en bateau, noyer le poisson",
+      "intent": "Parler de vérité et de mensonge avec une douzaine d'expressions : mener en bateau, monter un bateau, noyer le poisson, prendre pour argent comptant, la vérité toute nue, cousu de fil blanc."
+    },
+    {
+      "id": "fr-workplace-wellbeing",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Santé au travail, ergonomie, absentéisme",
+      "intent": "Parler de santé au travail avec une douzaine de mots : les troubles musculosquelettiques, l'ergonomie, la médecine du travail, l'absentéisme, les risques psychosociaux, la pénibilité."
+    },
+    {
+      "id": "fr-breaking-bad-news",
+      "kind": "functions",
+      "theme": "daily_life",
+      "workingTitle": "Annoncer une mauvaise nouvelle",
+      "intent": "Annoncer une mauvaise nouvelle (un refus, une réorganisation, un échec) avec clarté et égards : préparer, dire les faits sans détour, expliquer, puis ouvrir sur la suite."
+    },
+    {
+      "id": "fr-reading-an-annual-report",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Lire un rapport d'activité",
+      "intent": "Lire l'éditorial et les chiffres clés d'un rapport d'activité, et distinguer les résultats réels de la mise en valeur que l'entreprise fait d'elle-même."
+    },
+    {
+      "id": "fr-running-an-appraisal",
+      "kind": "functions",
+      "theme": "daily_life",
+      "workingTitle": "Mener un entretien annuel",
+      "intent": "Mener ou vivre un entretien annuel : faire le bilan de l'année, valoriser les réussites, aborder les difficultés et fixer des objectifs précis pour l'année suivante."
+    },
+    {
+      "id": "fr-reporting-on-a-meeting",
+      "kind": "functions",
+      "theme": "daily_life",
+      "workingTitle": "Rendre compte d'une réunion",
+      "intent": "Rendre compte d'une réunion à un collègue absent, à l'oral ou par mail : l'essentiel d'abord, puis les décisions, les points en suspens et ce qu'on attend de lui."
+    },
+    {
+      "id": "fr-reading-company-rules",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Lire un règlement intérieur",
+      "intent": "Lire le règlement intérieur d'une entreprise et dire ce qu'il encadre (horaires, sécurité, sanctions, usage du matériel) et quels droits il rappelle aux salariés."
+    },
+    {
+      "id": "fr-finance",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Marchés, actions, actionnaires",
+      "intent": "Comprendre la finance avec une douzaine de mots : les marchés, la Bourse, une action, un actionnaire, un dividende, un placement, spéculer, une valorisation, une OPA."
+    },
+    {
+      "id": "fr-speech-idioms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Ne pas mâcher ses mots, tourner autour du pot",
+      "intent": "Décrire une façon de parler avec une douzaine d'expressions : ne pas mâcher ses mots, tourner autour du pot, avoir la langue bien pendue, avoir le dernier mot, parler à tort et à travers."
+    },
+    {
+      "id": "fr-advanced-concession",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Si riche soit-il, quand bien même",
+      "intent": "Concéder avec force : si riche soit-il, aussi brillant qu'il soit, tout fatigué qu'il est, quand bien même il l'aurait voulu, pour autant que je sache."
+    },
+    {
+      "id": "fr-real-estate-deals",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Compromis de vente, frais de notaire, viager",
+      "intent": "Comprendre un achat immobilier avec une douzaine de mots : un compromis de vente, les frais de notaire, un acte authentique, une hypothèque, un viager, une plus-value, l'usufruit."
+    },
+    {
+      "id": "fr-marketing",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Cible, positionnement, notoriété",
+      "intent": "Parler de marketing avec une douzaine de mots : une cible, le positionnement, la notoriété, une stratégie, fidéliser, une étude de marché, une campagne, un lancement, l'image de marque."
+    },
+    {
+      "id": "fr-reading-a-press-release",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Lire un communiqué de presse",
+      "intent": "Lire le communiqué de presse d'une entreprise qui ferme une usine et repérer ce que les formules choisies (réorganisation, adaptation, plan de sauvegarde) évitent de dire."
+    },
+    {
+      "id": "fr-reading-an-economic-outlook",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Lire une note de conjoncture",
+      "intent": "Lire une note de conjoncture économique, comprendre ses prévisions et repérer la prudence de leurs formulations : sous réserve que, devrait, selon toute vraisemblance."
+    },
+    {
+      "id": "fr-accounting",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Bilan, marge, exercice",
+      "intent": "Comprendre un budget d'entreprise avec une douzaine de mots : le bilan, le compte de résultat, l'exercice, les charges, les recettes, la marge, la trésorerie, un amortissement."
+    },
+    {
+      "id": "fr-international-trade",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Export, douanes, délocalisation",
+      "intent": "Parler de commerce international avec une douzaine de mots : l'export, les douanes, un droit de douane, la mondialisation, une délocalisation, la relocalisation, la chaîne d'approvisionnement."
+    },
+    {
+      "id": "fr-handling-an-angry-customer",
+      "kind": "functions",
+      "theme": "shopping",
+      "workingTitle": "Gérer un client mécontent",
+      "intent": "Recevoir la plainte d'un client mécontent, désamorcer sa colère, reconnaître ce qui doit l'être et proposer une solution ou un geste commercial."
+    },
+    {
+      "id": "fr-loin-de-au-lieu-de-quitte-a",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Loin de, au lieu de, quitte à",
+      "intent": "Opposer ou envisager une alternative avec loin de, au lieu de, plutôt que de, quitte à + infinitif : loin de s'arranger, la situation empire ; quitte à partir, partons tôt."
+    },
+    {
+      "id": "fr-power-idioms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Tirer les ficelles, retourner sa veste",
+      "intent": "Parler de pouvoir et de stratégie avec une douzaine d'expressions : tirer les ficelles, avoir le vent en poupe, retourner sa veste, mettre de l'huile sur le feu, prendre le pouls."
+    },
+    {
+      "id": "fr-entrepreneurship",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Créer sa boîte, un associé",
+      "intent": "Parler de création d'entreprise avec une douzaine de mots : créer sa boîte, un business plan, un associé, un incubateur, un auto-entrepreneur, le seuil de rentabilité, déposer le bilan."
+    },
+    {
+      "id": "fr-customer-relations",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Fidéliser, geste commercial, SAV",
+      "intent": "Parler de relation client avec une douzaine de mots : fidéliser, la satisfaction, une réclamation, un geste commercial, le service après-vente, un avoir, la carte de fidélité."
+    },
+    {
+      "id": "fr-reading-a-call-for-tenders",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Lire un appel d'offres",
+      "intent": "Lire un appel d'offres public, trouver l'objet du marché, les critères de sélection, les pièces à fournir et la date limite, et dire si une petite entreprise peut répondre."
+    },
+    {
+      "id": "fr-start-up-jargon",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Disruptif, pitcher, scaler",
+      "intent": "Comprendre le jargon des start-up et le traduire en français courant : disruptif, pitcher, scaler, un use case, une roadmap, l'onboarding, être en mode projet."
+    },
+    {
+      "id": "fr-negotiating-a-contract",
+      "kind": "functions",
+      "theme": "daily_life",
+      "workingTitle": "Négocier un contrat",
+      "intent": "Négocier les termes d'un contrat avec un partenaire : défendre ses priorités, échanger des concessions, éviter de dévoiler sa marge et formaliser l'accord."
+    },
+    {
+      "id": "fr-commitment-verbs",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "S'engager à, garantir, se porter garant",
+      "intent": "Exprimer un engagement avec le verbe juste : promettre, s'engager à, garantir, assurer, certifier, se porter garant de, donner sa parole, tenir ses engagements."
+    },
+    {
+      "id": "fr-neighbour-law",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Trouble de voisinage, mitoyen, servitude",
+      "intent": "Régler un différend de voisinage avec une douzaine de mots : un trouble anormal de voisinage, un mur mitoyen, une servitude de passage, une haie, un conciliateur, un constat."
+    },
+    {
+      "id": "fr-consumer-law",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Vice caché, délai de rétractation",
+      "intent": "Faire valoir ses droits de consommateur avec une douzaine de mots : un vice caché, la garantie légale, le délai de rétractation, une clause abusive, un litige, un médiateur."
+    },
+    {
+      "id": "fr-reading-a-comparative-test",
+      "kind": "reading",
+      "theme": "shopping",
+      "workingTitle": "Lire un test comparatif",
+      "intent": "Lire un test comparatif d'une association de consommateurs, comprendre les critères et la méthode, et justifier un choix selon ses propres priorités."
+    },
+    {
+      "id": "fr-setback-idioms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Essuyer un revers, battre de l'aile",
+      "intent": "Parler d'échecs et de difficultés en registre soigné : essuyer un revers, battre de l'aile, faire long feu, tourner court, être au point mort, partir en fumée, un coup d'épée dans l'eau."
+    },
+    {
+      "id": "fr-chasing-politely",
+      "kind": "functions",
+      "theme": "daily_life",
+      "workingTitle": "Relancer poliment",
+      "intent": "Relancer quelqu'un qui ne répond pas ou ne paie pas, en restant courtois mais de plus en plus ferme : « Sauf erreur de ma part… », « Je me permets de revenir vers vous… »."
+    },
+    {
+      "id": "fr-writing-a-delicate-formal-letter",
+      "kind": "functions",
+      "theme": "services",
+      "workingTitle": "Rédiger un courrier délicat",
+      "intent": "Rédiger un courrier formel délicat (refus, contestation, demande de délai) en trouvant le ton juste : ferme sur le fond, courtois dans la forme, précis sur la suite attendue."
+    },
+    {
+      "id": "fr-reading-a-formal-notice",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire une mise en demeure",
+      "intent": "Lire une lettre de mise en demeure, identifier ce qui est reproché, ce qui est exigé, le délai accordé et les suites annoncées, et juger le ton employé."
+    },
+    {
+      "id": "fr-implying-without-saying",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Faire passer un message sans le dire",
+      "intent": "Faire comprendre un reproche, un refus ou une demande sans les formuler directement, et repérer quand l'autre fait de même : « Ce serait bien que quelqu'un… »."
+    },
+    {
+      "id": "fr-mood-changes-meaning",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Je comprends qu'il soit parti",
+      "intent": "Comprendre comment le mode change le sens d'un verbe : je comprends qu'il est parti (je constate) et je comprends qu'il soit parti (je l'admets) ; dire que + subjonctif."
+    },
+    {
+      "id": "fr-social-graces",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Savoir-vivre, impair, être de mise",
+      "intent": "Parler des usages sociaux avec une douzaine de mots : le savoir-vivre, la bienséance, un impair, une gaffe, être de mise, être malvenu, faire bonne figure, sauver les apparences."
+    },
+    {
+      "id": "fr-reading-a-tense-email-chain",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Lire un échange de mails tendu",
+      "intent": "Lire un échange de mails entre collègues, repérer comment la tension monte derrière les formules polies et dire ce que chacun reproche vraiment à l'autre."
+    },
+    {
+      "id": "fr-using-irony",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Manier l'ironie",
+      "intent": "Reconnaître l'ironie dans une conversation et l'employer à bon escient, en sachant quand elle blesse : « Bravo, quelle ponctualité ! », « Génial, il ne manquait plus que ça »."
+    },
+    {
+      "id": "fr-luck-idioms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Tomber à pic, avoir la baraka",
+      "intent": "Parler de chance et de hasard avec une douzaine d'expressions : tomber à pic, avoir la baraka, être né sous une bonne étoile, le hasard fait bien les choses, l'échapper belle."
+    },
+    {
+      "id": "fr-euphemisms",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Les euphémismes",
+      "intent": "Reconnaître une douzaine d'euphémismes et ce qu'ils adoucissent : un demandeur d'emploi, un plan social, il nous a quittés, une personne âgée, en situation de handicap, un malentendant."
+    },
+    {
+      "id": "fr-culinary-techniques",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Mijoter, déglacer, une émulsion",
+      "intent": "Comprendre les techniques culinaires avec une douzaine de mots : mijoter, déglacer, réduire, flamber, blanchir, une émulsion, un fond, un roux, une liaison, à feu doux."
+    },
+    {
+      "id": "fr-hypothesis-without-si",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Tu m'aurais appelé, je serais venu",
+      "intent": "Exprimer une hypothèse sans si par l'inversion ou la juxtaposition : serait-il malade, il viendrait quand même ; tu m'aurais prévenu, je serais venu."
+    },
+    {
+      "id": "fr-power-relationships",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Emprise, influence, manipulation",
+      "intent": "Décrire les rapports de force avec une douzaine de mots : l'emprise, l'ascendant, l'influence, manipuler, la domination, la soumission, l'intimidation, un pervers narcissique."
+    },
+    {
+      "id": "fr-reading-between-the-lines-of-property-ads",
+      "kind": "reading",
+      "theme": "house_and_home",
+      "workingTitle": "Décoder les annonces immobilières",
+      "intent": "Lire des annonces immobilières et décoder leurs euphémismes : au calme (isolé), cosy (petit), à rafraîchir (à refaire), proche des transports (bruyant), beaucoup de cachet."
+    },
+    {
+      "id": "fr-emotional-nuances",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Amertume, désarroi, ambivalence",
+      "intent": "Nommer des émotions complexes avec une douzaine de mots : l'amertume, la mélancolie, le désarroi, la culpabilité, l'ambivalence, le dépit, la rancœur, l'appréhension."
+    },
+    {
+      "id": "fr-emotion-verbs",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Émouvoir, consterner, accabler",
+      "intent": "Dire l'effet d'une nouvelle avec une douzaine de verbes : émouvoir, toucher, bouleverser, consterner, accabler, affliger, indigner, réjouir, ravir, combler, enthousiasmer."
+    },
+    {
+      "id": "fr-declining-and-keeping-the-relationship",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Décliner sans fermer la porte",
+      "intent": "Décliner une offre, une invitation ou un poste en préservant la relation : remercier, expliquer sans trop se justifier et laisser la porte ouverte pour la suite."
+    },
+    {
+      "id": "fr-temper-idioms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Sortir de ses gonds, garder son sang-froid",
+      "intent": "Parler de colère et de maîtrise de soi : sortir de ses gonds, monter sur ses grands chevaux, prendre sur soi, garder son sang-froid, ronger son frein, ne pas se laisser démonter."
+    },
+    {
+      "id": "fr-connotation",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Les mots qui jugent",
+      "intent": "Repérer la connotation de mots apparemment neutres : régime ou gouvernement, clandestin ou sans-papiers, réforme ou casse, frugal ou pingre, militant ou activiste."
+    },
+    {
+      "id": "fr-reading-a-diplomatic-refusal",
+      "kind": "reading",
+      "theme": "language",
+      "workingTitle": "Lire un refus diplomatique",
+      "intent": "Lire un mail de refus enveloppé de formules aimables, reconstituer le vrai message et dire quelle marge de négociation il laisse encore."
+    },
+    {
+      "id": "fr-reading-a-resignation-letter",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Lire une lettre de démission",
+      "intent": "Lire une lettre de démission très polie, repérer ce qu'elle reproche à demi-mot à l'entreprise et dire quelle image l'auteur veut laisser de son départ."
+    },
+    {
+      "id": "fr-precise-character-adjectives",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Affable, ombrageux, pondéré",
+      "intent": "Décrire un caractère avec précision grâce à une douzaine d'adjectifs : affable, ombrageux, pondéré, impétueux, flegmatique, versatile, intègre, opiniâtre, désinvolte, taciturne."
+    },
+    {
+      "id": "fr-behaviour-nouns",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Désinvolture, arrogance, humilité",
+      "intent": "Qualifier un comportement avec une douzaine de noms : la désinvolture, l'arrogance, la complaisance, la condescendance, l'humilité, la bienveillance, la retenue, l'aplomb."
+    },
+    {
+      "id": "fr-talking-about-achievements-modestly",
+      "kind": "functions",
+      "theme": "personal_identification",
+      "workingTitle": "Valoriser ses réussites sans se vanter",
+      "intent": "Parler de ses réussites avec la modestie attendue en France sans se dévaloriser : « J'ai eu la chance de… », « Avec l'équipe, nous avons… », « Je suis assez fier de… »."
+    },
+    {
+      "id": "fr-cheese-and-terroir",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "AOP, affiné, pâte persillée",
+      "intent": "Parler de fromage et de terroir avec une douzaine de mots : une AOP, affiné, une pâte molle, une pâte pressée, persillée, une croûte fleurie, un affineur, le lait cru."
+    },
+    {
+      "id": "fr-reading-an-unreliable-narrator",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Lire un récit au narrateur peu fiable",
+      "intent": "Lire un récit à la première personne et repérer les indices qui montrent que le narrateur se trompe ou nous trompe sur lui-même."
+    },
+    {
+      "id": "fr-surprise-in-formal-register",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Stupéfait, sidéré, tomber des nues",
+      "intent": "Exprimer la surprise avec intensité et dans le bon registre : être stupéfait, abasourdi, sidéré, médusé, interloqué, tomber des nues, ne pas en revenir, en rester bouche bée."
+    },
+    {
+      "id": "fr-money-idioms-formal",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Joindre les deux bouts, être dans le rouge",
+      "intent": "Parler d'argent avec des expressions imagées de tous registres : joindre les deux bouts, être dans le rouge, renflouer les caisses, mettre du beurre dans les épinards, rouler sur l'or."
+    },
+    {
+      "id": "fr-journalistic-genres",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Éditorial, billet, reportage, brève",
+      "intent": "Distinguer les genres de la presse avec une douzaine de mots : un éditorial, une chronique, un billet, un reportage, une enquête, une brève, une dépêche, un portrait, une tribune."
+    },
+    {
+      "id": "fr-reading-an-editorial-for-implicit-meaning",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire l'implicite d'un éditorial",
+      "intent": "Lire un éditorial engagé, repérer ses présupposés et ses sous-entendus, et reformuler ce qu'il suggère sans jamais l'écrire."
+    },
+    {
+      "id": "fr-theme-and-focus",
+      "kind": "grammar",
+      "topic": "information_structure_and_pragmatics",
+      "workingTitle": "Ordonner l'information",
+      "intent": "Choisir l'ordre des éléments (passif, clivée, détachement, antéposition) pour mettre en avant le thème ou l'information nouvelle et orienter la lecture."
+    },
+    {
+      "id": "fr-press-collocations",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Une flambée des prix, une levée de boucliers",
+      "intent": "Reconnaître les collocations de la presse : une flambée des prix, une vague de licenciements, une levée de boucliers, un bras de fer, une sortie de crise, un coup de semonce."
+    },
+    {
+      "id": "fr-crisis-vocabulary",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Escalade, enlisement, sortie de crise",
+      "intent": "Décrire l'évolution d'une crise avec une douzaine de mots : une crise, une escalade, un enlisement, une impasse, un tournant, un apaisement, une sortie de crise, une trêve."
+    },
+    {
+      "id": "fr-reading-a-wire-and-the-article",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire une dépêche et l'article qui en est tiré",
+      "intent": "Comparer une dépêche d'agence et l'article qu'un journal en a tiré, et dire ce que le journaliste a ajouté, retiré ou orienté."
+    },
+    {
+      "id": "fr-journalistic-metaphors",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "La ligne rouge, le feu vert, la boîte de Pandore",
+      "intent": "Comprendre les métaphores favorites des médias : franchir la ligne rouge, donner son feu vert, ouvrir la boîte de Pandore, un séisme politique, la partie émergée de l'iceberg."
+    },
+    {
+      "id": "fr-moderating-a-debate",
+      "kind": "functions",
+      "theme": "services",
+      "workingTitle": "Animer un débat",
+      "intent": "Animer un débat public : présenter les intervenants, distribuer la parole équitablement, relancer, couper court aux digressions et synthétiser les positions en conclusion."
+    },
+    {
+      "id": "fr-fear-and-anxiety-nuances",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Crainte, angoisse, effroi",
+      "intent": "Distinguer les mots de la peur selon leur intensité : l'appréhension, la crainte, l'inquiétude, l'anxiété, l'angoisse, la frayeur, l'épouvante, l'effroi, la terreur."
+    },
+    {
+      "id": "fr-reading-a-long-form-report",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire un grand reportage",
+      "intent": "Lire un grand reportage de plusieurs pages et suivre comment le journaliste alterne scènes, témoignages, chiffres et analyse pour construire son propos."
+    },
+    {
+      "id": "fr-sensory-words-sound-and-light",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Grincer, crépiter, scintiller",
+      "intent": "Décrire sons et lumières avec une douzaine de verbes : grincer, craquer, crépiter, bourdonner, chuinter, tinter, briller, scintiller, étinceler, miroiter, vaciller."
+    },
+    {
+      "id": "fr-reading-a-press-portrait",
+      "kind": "reading",
+      "theme": "personal_identification",
+      "workingTitle": "Lire un portrait de presse",
+      "intent": "Lire le portrait d'un grand patron dans un quotidien et montrer comment les détails, les citations et les adjectifs dessinent un jugement sans jamais l'énoncer."
+    },
+    {
+      "id": "fr-stylistic-inversion",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Reste une question, telle est la difficulté",
+      "intent": "Reconnaître et employer l'inversion stylistique de l'écrit : reste une question, telle est la difficulté, ainsi naquit…, à cela s'ajoute…, rares sont ceux qui…"
+    },
+    {
+      "id": "fr-broadcast-media",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Audimat, plateau, grille des programmes",
+      "intent": "Parler de télévision et de radio avec une douzaine de mots : l'audimat, un plateau, une grille des programmes, un chroniqueur, une matinale, une émission phare, le prime time."
+    },
+    {
+      "id": "fr-reading-a-political-interview",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire une interview politique",
+      "intent": "Lire l'interview d'un ministre, repérer les questions esquivées, les formules toutes faites et l'écart entre la question posée et la réponse donnée."
+    },
+    {
+      "id": "fr-media-law",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Diffamation, droit à l'image, secret des sources",
+      "intent": "Parler du droit des médias avec une douzaine de mots : la liberté de la presse, la diffamation, le droit à l'image, le secret des sources, la censure, un droit de réponse."
+    },
+    {
+      "id": "fr-reading-a-right-of-reply",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire un droit de réponse",
+      "intent": "Lire un article puis le droit de réponse de la personne mise en cause, et comparer leurs versions des faits et leurs stratégies."
+    },
+    {
+      "id": "fr-ways-of-laughing",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Sourire, ricaner, pouffer",
+      "intent": "Distinguer les façons de rire avec une douzaine de verbes : sourire, rire aux éclats, glousser, pouffer, ricaner, s'esclaffer, se tordre de rire, avoir le fou rire."
+    },
+    {
+      "id": "fr-reading-an-op-ed-by-academics",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire une tribune d'universitaires",
+      "intent": "Lire une tribune signée par des universitaires et analyser comment elle s'appuie sur l'autorité de ses auteurs, des données et des exemples pour peser dans le débat."
+    },
+    {
+      "id": "fr-synthesising-documents",
+      "kind": "functions",
+      "theme": "services",
+      "workingTitle": "Faire la synthèse de plusieurs documents",
+      "intent": "Présenter oralement la synthèse de trois documents sur un même thème, en confrontant leurs points de vue sans ajouter le sien."
+    },
+    {
+      "id": "fr-reading-a-document-file-for-synthesis",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire un dossier pour en faire la synthèse",
+      "intent": "Lire un dossier de trois ou quatre documents sur un thème de société, dégager la problématique commune et classer les idées par convergences et divergences."
+    },
+    {
+      "id": "fr-political-cant",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "La langue de bois",
+      "intent": "Reconnaître la langue de bois et ce qu'elle masque : des mesures fortes, le dialogue social, une réforme ambitieuse, un ajustement, une croissance négative, une pause."
+    },
+    {
+      "id": "fr-reading-a-satirical-piece",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire un billet satirique",
+      "intent": "Lire un billet satirique sur l'actualité et expliquer les cibles, les procédés (fausse naïveté, exagération, antiphrase) et la portée de la critique."
+    },
+    {
+      "id": "fr-reading-a-debate-transcript",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire la transcription d'un débat télévisé",
+      "intent": "Lire la transcription d'un débat télévisé et analyser les stratégies des intervenants : interruptions, attaques personnelles, changements de sujet, appels à l'émotion."
+    },
+    {
+      "id": "fr-sensory-words-smell-and-touch",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Une senteur, un relent, rugueux, soyeux",
+      "intent": "Décrire odeurs et textures avec une douzaine de mots : un parfum, une senteur, un relent, des effluves, nauséabond, rugueux, lisse, soyeux, râpeux, moite, poisseux."
+    },
+    {
+      "id": "fr-democratic-life",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Référendum, motion de censure, coalition",
+      "intent": "Comprendre la vie démocratique avec une douzaine de mots : un référendum, une motion de censure, une coalition, la cohabitation, une majorité relative, une dissolution, un remaniement."
+    },
+    {
+      "id": "fr-ne-alone",
+      "kind": "grammar",
+      "topic": "negation",
+      "workingTitle": "Je ne saurais, je n'ose",
+      "intent": "Reconnaître et employer ne sans pas dans la langue soutenue : je ne saurais dire, je n'ose y croire, il ne cesse de pleuvoir, si je ne me trompe, je ne peux le lui reprocher."
+    },
+    {
+      "id": "fr-verbs-of-looking",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Contempler, scruter, entrevoir",
+      "intent": "Distinguer les verbes du regard : regarder, contempler, observer, scruter, fixer, dévisager, apercevoir, entrevoir, jeter un coup d'œil, lorgner."
+    },
+    {
+      "id": "fr-advanced-justice",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Jurisprudence, cassation, sursis",
+      "intent": "Comprendre l'actualité judiciaire avec une douzaine de mots : la jurisprudence, un pourvoi en cassation, une peine avec sursis, la détention provisoire, une mise en examen, un non-lieu."
+    },
+    {
+      "id": "fr-reading-a-court-decision",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire une décision de justice",
+      "intent": "Lire une décision de justice simplifiée, retrouver les faits, la question posée au juge, les arguments des parties et la solution retenue."
+    },
+    {
+      "id": "fr-geopolitics",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Traité, sanctions, cessez-le-feu",
+      "intent": "Parler de géopolitique avec une douzaine de mots : un conflit, une alliance, un traité, des sanctions, la diplomatie, un cessez-le-feu, une puissance, l'ingérence, un sommet."
+    },
+    {
+      "id": "fr-reading-a-geopolitical-analysis",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire une analyse géopolitique",
+      "intent": "Lire une analyse d'une crise internationale et distinguer les faits, les hypothèses de l'auteur et les intérêts prêtés à chacun des acteurs."
+    },
+    {
+      "id": "fr-paying-tribute",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Faire l'éloge de quelqu'un",
+      "intent": "Prononcer un discours d'hommage (départ à la retraite, anniversaire, remise de prix) : évoquer un parcours, une anecdote, des qualités, et lever son verre."
+    },
+    {
+      "id": "fr-european-union",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Directive, État membre, souveraineté",
+      "intent": "Comprendre l'Union européenne avec une douzaine de mots : la Commission, le Parlement européen, le Conseil, un État membre, une directive, un règlement, la souveraineté."
+    },
+    {
+      "id": "fr-reading-a-law-article",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire un article de loi et son commentaire",
+      "intent": "Lire un article du Code civil puis un commentaire qui l'explique, et appliquer la règle à un cas concret."
+    },
+    {
+      "id": "fr-verbs-of-thinking",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Méditer, ruminer, envisager",
+      "intent": "Nuancer l'acte de penser avec une douzaine de verbes : réfléchir, méditer, songer, cogiter, ruminer, envisager, concevoir, mûrir un projet, se creuser la tête."
+    },
+    {
+      "id": "fr-local-government",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Région, département, préfet",
+      "intent": "Comprendre l'organisation territoriale avec une douzaine de mots : la région, le département, la commune, une intercommunalité, le préfet, un conseil municipal, une compétence."
+    },
+    {
+      "id": "fr-dispute-nouns",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Différend, litige, contentieux",
+      "intent": "Distinguer les mots du désaccord selon le contexte : un désaccord, un différend, un litige, un contentieux, une querelle, une brouille, un conflit, une controverse."
+    },
+    {
+      "id": "fr-reading-a-letter-of-recommendation",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Lire une lettre de recommandation",
+      "intent": "Lire une lettre de recommandation et distinguer les éloges sincères des formules convenues, en repérant aussi ce qu'elle ne dit pas."
+    },
+    {
+      "id": "fr-literary-negation",
+      "kind": "grammar",
+      "topic": "negation",
+      "workingTitle": "Ne… guère, ne… point, nullement",
+      "intent": "Reconnaître les négations littéraires ou soutenues et leur nuance : ne… guère, ne… point, nullement, aucunement, nul ne, sans nul doute."
+    },
+    {
+      "id": "fr-taxation",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Niche fiscale, évasion fiscale",
+      "intent": "Parler de fiscalité avec une douzaine de mots : l'impôt sur le revenu, la TVA, un prélèvement, une niche fiscale, l'évasion fiscale, la fraude, un contribuable, un barème."
+    },
+    {
+      "id": "fr-reading-a-public-audit-report",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire un rapport public",
+      "intent": "Lire la synthèse d'un rapport public sur une politique publique, distinguer les constats, les critiques et les recommandations, et repérer le ton institutionnel."
+    },
+    {
+      "id": "fr-administrative-jargon",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Ledit, ci-après, à compter de",
+      "intent": "Comprendre le jargon administratif et juridique : ledit, ci-après dénommé, sous réserve de, à compter de, le cas échéant, conformément à, nonobstant, à titre gracieux."
+    },
+    {
+      "id": "fr-reading-a-circular",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire une circulaire",
+      "intent": "Lire une circulaire administrative, trouver à qui elle s'adresse, ce qu'elle change et à partir de quand, sous les formules impersonnelles."
+    },
+    {
+      "id": "fr-reading-a-briefing-note",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Lire une note de synthèse",
+      "intent": "Lire une note de synthèse administrative et vérifier qu'elle restitue fidèlement et sans parti pris les documents sur lesquels elle s'appuie."
+    },
+    {
+      "id": "fr-asking-and-demanding",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Solliciter, réclamer, exiger",
+      "intent": "Graduer une demande avec une douzaine de verbes : demander, solliciter, prier, réclamer, revendiquer, exiger, sommer, implorer, supplier, quémander."
+    },
+    {
+      "id": "fr-discrimination-and-law",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Discrimination, égalité de traitement",
+      "intent": "Parler de discrimination avec une douzaine de mots : la discrimination à l'embauche, un délit, l'égalité de traitement, le racisme ordinaire, un préjugé, le Défenseur des droits."
+    },
+    {
+      "id": "fr-reading-a-privacy-policy",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire une politique de confidentialité",
+      "intent": "Lire la politique de confidentialité d'une application, trouver quelles données sont collectées, pourquoi, combien de temps, et comment exercer ses droits."
+    },
+    {
+      "id": "fr-digital-society",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Fracture numérique, souveraineté numérique",
+      "intent": "Parler des enjeux du numérique avec une douzaine de mots : la fracture numérique, la souveraineté numérique, la cybersurveillance, l'open data, un géant du numérique, la régulation."
+    },
+    {
+      "id": "fr-bioethics",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "PMA, fin de vie, don d'organes",
+      "intent": "Suivre un débat de bioéthique avec une douzaine de mots : la PMA, la fin de vie, l'euthanasie, le suicide assisté, les soins palliatifs, le don d'organes, le consentement."
+    },
+    {
+      "id": "fr-arguing-in-writing",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Rédiger un essai argumenté",
+      "intent": "Rédiger un essai argumenté : poser une problématique, annoncer le plan, enchaîner des paragraphes construits et conclure en ouvrant une perspective."
+    },
+    {
+      "id": "fr-plutot-que-de-mieux-vaut",
+      "kind": "grammar",
+      "topic": "comparison_and_quantity",
+      "workingTitle": "Plutôt que de, mieux vaut… que de",
+      "intent": "Exprimer une préférence argumentée avec plutôt que de, mieux vaut… que de, autant… que, préférer… à : mieux vaut prévenir que guérir ; plutôt que de se plaindre, agissons."
+    },
+    {
+      "id": "fr-faith-and-belief",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Foi, sacré, rite",
+      "intent": "Parler de religion avec nuance grâce à une douzaine de mots : la foi, le sacré, le profane, un rite, un pèlerinage, la spiritualité, un dogme, la tolérance, le blasphème."
+    },
+    {
+      "id": "fr-reading-a-sociology-text",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Lire un texte de sociologie",
+      "intent": "Lire un extrait de sociologie sur la reproduction sociale, suivre l'argumentation, reformuler les concepts clés et dire sur quelles données elle repose."
+    },
+    {
+      "id": "fr-reading-ads-and-wordplay",
+      "kind": "reading",
+      "theme": "language",
+      "workingTitle": "Lire les jeux de mots publicitaires",
+      "intent": "Lire des affiches publicitaires, expliquer leurs jeux de mots et leurs références culturelles, et dire quel effet elles cherchent à produire."
+    },
+    {
+      "id": "fr-accepting-and-refusing-verbs",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Consentir, se résigner, décliner, récuser",
+      "intent": "Nuancer l'acceptation et le refus : accepter, consentir, se résigner, céder, tolérer, décliner, rejeter, récuser, opposer une fin de non-recevoir."
+    },
+    {
+      "id": "fr-migration",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Asile, exil, diaspora",
+      "intent": "Parler de migrations avec une douzaine de mots : le droit d'asile, un exilé, un demandeur d'asile, la diaspora, un flux migratoire, l'intégration, l'assimilation, le regroupement familial."
+    },
+    {
+      "id": "fr-restrictive-and-non-restrictive-relatives",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Les élèves qui, les élèves, qui…",
+      "intent": "Distinguer la relative déterminative et la relative explicative et ce que change la virgule : les élèves qui étaient malades sont restés ; les élèves, qui étaient malades, sont restés."
+    },
+    {
+      "id": "fr-family-law",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Filiation, autorité parentale, pension",
+      "intent": "Comprendre le droit de la famille avec une douzaine de mots : la filiation, l'autorité parentale, une pension alimentaire, l'adoption, la tutelle, un divorce par consentement mutuel."
+    },
+    {
+      "id": "fr-offering-condolences",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Présenter ses condoléances",
+      "intent": "Présenter ses condoléances à l'oral et par écrit avec les mots justes, selon qu'on est proche ou non : « Je suis de tout cœur avec vous », « Je garde de lui le souvenir de… »."
+    },
+    {
+      "id": "fr-reading-an-obituary",
+      "kind": "reading",
+      "theme": "personal_identification",
+      "workingTitle": "Lire une nécrologie",
+      "intent": "Lire la nécrologie d'une personnalité, suivre la façon dont elle retrace une vie et repérer ce que les formules choisies laissent entendre sur la personne."
+    },
+    {
+      "id": "fr-empathy-and-listening",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Empathie, écoute, assertivité",
+      "intent": "Parler de communication avec une douzaine de mots : l'empathie, l'écoute active, la bienveillance, l'assertivité, un non-dit, exprimer un besoin, la communication non violente."
+    },
+    {
+      "id": "fr-reading-a-private-diary",
+      "kind": "reading",
+      "theme": "personal_identification",
+      "workingTitle": "Lire un journal intime",
+      "intent": "Lire des pages de journal intime, suivre l'évolution d'un état d'esprit au fil des jours et relever ce que l'auteur ne s'avoue pas tout à fait."
+    },
+    {
+      "id": "fr-thanking-formally",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Remercier dans les formes",
+      "intent": "Remercier de façon formelle à l'oral ou par écrit, avec chaleur sans excès : « Je tiens à vous exprimer ma profonde reconnaissance », « Votre aide m'a été précieuse »."
+    },
+    {
+      "id": "fr-starting-and-finishing-verbs",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Entamer, amorcer, parachever",
+      "intent": "Dire précisément qu'on commence ou qu'on finit : entamer, amorcer, inaugurer, initier, se lancer dans, achever, clore, parachever, mener à terme, mettre un terme à."
+    },
+    {
+      "id": "fr-reading-a-writers-letters",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Lire une correspondance d'écrivain",
+      "intent": "Lire quelques lettres d'un écrivain à un ami, repérer le registre de chaque lettre et ce qu'elles révèlent de la relation et du travail d'écriture."
+    },
+    {
+      "id": "fr-essay-writing-words",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Problématique, thèse, antithèse",
+      "intent": "Parler de dissertation avec une douzaine de mots : une problématique, un plan, une thèse, une antithèse, une synthèse, une transition, une citation, une ouverture, un exemple."
+    },
+    {
+      "id": "fr-reading-an-abstract",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Lire le résumé d'un article scientifique",
+      "intent": "Lire le résumé d'un article de recherche et retrouver la question posée, la méthode, les résultats et les limites que les auteurs reconnaissent."
+    },
+    {
+      "id": "fr-reading-a-crisis-statement",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire un communiqué de crise",
+      "intent": "Lire le communiqué d'une entreprise après un scandale, et analyser comment il reconnaît, minimise ou déplace la responsabilité."
+    },
+    {
+      "id": "fr-absolute-participle",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Le dîner terminé, chacun rentra",
+      "intent": "Comprendre et employer la proposition participe à sujet propre : le dîner terminé, chacun rentra ; la nuit tombant, ils allumèrent un feu ; les dés étant jetés…"
+    },
+    {
+      "id": "fr-academic-research",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Corpus, méthodologie, plagiat",
+      "intent": "Parler de recherche universitaire avec une douzaine de mots : un corpus, la méthodologie, une bibliographie, une note de bas de page, citer, une source primaire, le plagiat."
+    },
+    {
+      "id": "fr-building-a-problematic",
+      "kind": "functions",
+      "theme": "education",
+      "workingTitle": "Construire une problématique",
+      "intent": "Transformer un sujet en problématique : en dégager les tensions, formuler la question qui les réunit, et annoncer un plan qui y répond."
+    },
+    {
+      "id": "fr-academic-collocations",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Émettre une hypothèse, étayer une thèse",
+      "intent": "Employer les collocations du discours universitaire : émettre une hypothèse, soulever une question, étayer une thèse, nuancer un propos, mettre en évidence, tirer des conclusions."
+    },
+    {
+      "id": "fr-reading-a-thesis-introduction",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Lire l'introduction d'un mémoire",
+      "intent": "Lire l'introduction d'un mémoire universitaire et retrouver l'objet, la problématique, la méthode et l'annonce du plan."
+    },
+    {
+      "id": "fr-hindering-verbs",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Entraver, freiner, compromettre",
+      "intent": "Parler de ce qui bloque avec une douzaine de verbes : empêcher, entraver, freiner, gêner, ralentir, faire obstacle à, compromettre, paralyser, contrecarrer, enrayer."
+    },
+    {
+      "id": "fr-philosophy",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Conscience, libre arbitre, éthique",
+      "intent": "Parler de philosophie avec une douzaine de mots : la conscience, le libre arbitre, la morale, l'éthique, un concept, le doute, la raison, l'existence, le déterminisme."
+    },
+    {
+      "id": "fr-reading-an-essay-chapter",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Lire un chapitre d'essai",
+      "intent": "Lire un chapitre d'essai sur le travail, en dégager le plan et la thèse, et distinguer les arguments, les exemples et les concessions de l'auteur."
+    },
+    {
+      "id": "fr-history-words",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Ancien Régime, Lumières, colonisation",
+      "intent": "Parler d'histoire avec une douzaine de mots : une époque, l'Ancien Régime, les Lumières, la Révolution, une dynastie, la colonisation, la décolonisation, une guerre mondiale."
+    },
+    {
+      "id": "fr-memory-and-oblivion",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Commémorer, la mémoire collective",
+      "intent": "Parler de mémoire avec une douzaine de mots : se remémorer, évoquer, commémorer, un devoir de mémoire, la mémoire collective, un lieu de mémoire, tomber dans l'oubli."
+    },
+    {
+      "id": "fr-reading-a-historical-source",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Lire une source historique",
+      "intent": "Lire un document d'époque (lettre, proclamation, article), le situer dans son contexte et dire ce qu'il apprend à l'historien et quelles sont ses limites."
+    },
+    {
+      "id": "fr-statistics",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Moyenne, médiane, marge d'erreur",
+      "intent": "Lire des données chiffrées avec une douzaine de mots : la moyenne, la médiane, un écart, une corrélation, une causalité, un échantillon, une marge d'erreur, une variable."
+    },
+    {
+      "id": "fr-reading-national-statistics",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Lire une étude statistique nationale",
+      "intent": "Lire une note de l'institut de statistique sur les revenus, interpréter les tableaux et formuler trois constats précis sans dire plus que les chiffres."
+    },
+    {
+      "id": "fr-reading-a-bad-faith-blog-post",
+      "kind": "reading",
+      "theme": "language",
+      "workingTitle": "Repérer les sophismes d'un billet de blog",
+      "intent": "Lire un billet de blog polémique et repérer ses sophismes : généralisation abusive, homme de paille, faux dilemme, appel à la peur, argument d'autorité."
+    },
+    {
+      "id": "fr-mistakes-nouns",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Bévue, impair, lapsus",
+      "intent": "Nommer l'erreur avec précision : une maladresse, une bévue, une gaffe, un impair, une faute, une erreur de jugement, une coquille, un lapsus, un contresens."
+    },
+    {
+      "id": "fr-pronouns-for-whole-ideas",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "J'en doute, il en va de même",
+      "intent": "Reprendre une idée entière avec le, en ou y dans des tournures fréquentes : j'en doute, il en va de même, s'en tenir à, je m'y attendais, je le crains, comme je le disais."
+    },
+    {
+      "id": "fr-social-sciences",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Indicateur, tendance, enquête qualitative",
+      "intent": "Parler de sciences sociales avec une douzaine de mots : une enquête qualitative, un entretien, un indicateur, une tendance, un facteur, un biais, un panel, un terrain."
+    },
+    {
+      "id": "fr-reading-a-book-review-in-a-journal",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Lire une recension d'ouvrage",
+      "intent": "Lire la recension d'un ouvrage savant, retrouver ce que le livre apporte selon le recenseur et les réserves qu'il formule."
+    },
+    {
+      "id": "fr-psychology-words",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Déni, projection, mécanisme de défense",
+      "intent": "Comprendre la psychologie avec une douzaine de mots : l'inconscient, le déni, la projection, un mécanisme de défense, un traumatisme, la résilience, un biais cognitif."
+    },
+    {
+      "id": "fr-reading-a-lecture-transcript",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Lire une conférence transcrite",
+      "intent": "Lire la transcription d'une conférence, repérer les marques de l'oral et reconstituer le plan de l'intervention."
+    },
+    {
+      "id": "fr-linguistics",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Étymologie, emprunt, néologisme",
+      "intent": "Parler de la langue avec une douzaine de mots : l'étymologie, un emprunt, un néologisme, un phonème, une syllabe, la norme, l'usage, un régionalisme, un archaïsme."
+    },
+    {
+      "id": "fr-reading-about-spelling",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Lire un article sur l'orthographe",
+      "intent": "Lire un article de linguiste sur les réformes de l'orthographe, résumer les arguments en présence et dire où se situe l'auteur."
+    },
+    {
+      "id": "fr-punctuation-and-meaning",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Une virgule qui change tout",
+      "intent": "Utiliser la ponctuation pour structurer une phrase longue et éviter les ambiguïtés : virgule, point-virgule, deux-points, tiret, parenthèses, et leur effet sur le sens."
+    },
+    {
+      "id": "fr-success-and-flop-nouns",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Fiasco, camouflet, succès d'estime",
+      "intent": "Qualifier une réussite ou un échec avec une douzaine de mots : un triomphe, un succès d'estime, un carton, une réussite éclatante, un fiasco, un camouflet, un flop, un revers."
+    },
+    {
+      "id": "fr-reading-an-opening-chapter",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire un incipit",
+      "intent": "Lire l'incipit d'un roman, dire ce qu'il installe (lieu, époque, narrateur, ton) et formuler des hypothèses sur la suite."
+    },
+    {
+      "id": "fr-past-anterior",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Quand il eut fini",
+      "intent": "Reconnaître le passé antérieur (il eut fini, elle fut partie) dans un récit au passé simple et comprendre qu'il marque une action achevée juste avant une autre."
+    },
+    {
+      "id": "fr-reading-a-naturalist-description",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire une description naturaliste",
+      "intent": "Lire une description de Zola, repérer comment le lieu est vu, l'accumulation des détails et ce que le décor dit des personnages."
+    },
+    {
+      "id": "fr-reading-political-slogans",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire des slogans et leurs présupposés",
+      "intent": "Lire des slogans politiques et publicitaires, dégager ce qu'ils présupposent sans le dire et dire pourquoi ils sont efficaces."
+    },
+    {
+      "id": "fr-imperfect-subjunctive",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Qu'il fût, qu'il eût",
+      "intent": "Reconnaître l'imparfait et le plus-que-parfait du subjonctif dans un texte littéraire (qu'il fût, qu'elle eût, qu'il eût été) et les transposer en français courant."
+    },
+    {
+      "id": "fr-literary-analysis",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Procédé, focalisation, registre",
+      "intent": "Analyser un texte avec une douzaine de mots : un procédé, une figure de style, le registre lyrique, tragique ou comique, la focalisation, le point de vue, le champ lexical."
+    },
+    {
+      "id": "fr-free-indirect-speech",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Le discours indirect libre",
+      "intent": "Reconnaître le discours indirect libre, où les pensées d'un personnage se mêlent au récit sans verbe introducteur, et en mesurer l'effet."
+    },
+    {
+      "id": "fr-reading-free-indirect-speech",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire Flaubert : les pensées d'Emma",
+      "intent": "Lire un passage de Madame Bovary, distinguer la voix du narrateur et celle d'Emma, et dire ce que l'ironie de Flaubert laisse entendre."
+    },
+    {
+      "id": "fr-judging-reasoning",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Pertinent, fallacieux, spécieux",
+      "intent": "Évaluer un raisonnement avec une douzaine d'adjectifs : pertinent, judicieux, rigoureux, cohérent, convaincant, fallacieux, spécieux, simpliste, bancal, tiré par les cheveux."
+    },
+    {
+      "id": "fr-narrative-imperfect",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Le lendemain, il partait pour Rome",
+      "intent": "Comprendre l'imparfait narratif, qui présente un événement ponctuel comme un tableau : le lendemain, il partait pour Rome ; deux ans plus tard, elle mourait."
+    },
+    {
+      "id": "fr-literary-portraits",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Un visage émacié, une démarche nonchalante",
+      "intent": "Faire un portrait littéraire avec une douzaine de mots : un visage émacié, des traits fins, un teint hâlé, un regard fuyant, une démarche nonchalante, une voix éraillée."
+    },
+    {
+      "id": "fr-literary-weather",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "Un ciel plombé, le crachin, le crépuscule",
+      "intent": "Décrire le temps et la lumière dans un registre littéraire : un ciel plombé, une bruine, le crachin, une chaleur accablante, l'aube, le crépuscule, un ciel d'encre, une éclaircie."
+    },
+    {
+      "id": "fr-reading-a-detached-narrative",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire un récit à l'écriture blanche",
+      "intent": "Lire un récit au style sobre et détaché, à la manière de L'Étranger, décrire cette écriture blanche et dire ce que l'indifférence apparente du narrateur produit."
+    },
+    {
+      "id": "fr-historical-future",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Il mourra en 1821",
+      "intent": "Comprendre le futur historique des biographies, qui raconte le passé depuis un point de vue antérieur : né en Corse, il deviendra empereur et mourra en exil."
+    },
+    {
+      "id": "fr-reading-voltaire",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire un conte de Voltaire",
+      "intent": "Lire un extrait de Candide, repérer l'ironie de Voltaire (fausse naïveté, énumérations, antiphrases) et dire quelles idées il attaque."
+    },
+    {
+      "id": "fr-reading-a-fantastic-tale",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire un récit fantastique",
+      "intent": "Lire un extrait du Horla de Maupassant et montrer comment le texte maintient l'hésitation entre explication rationnelle et surnaturel."
+    },
+    {
+      "id": "fr-reading-a-detective-novel",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire un roman policier",
+      "intent": "Lire un chapitre de roman policier, relever les indices semés par l'auteur et les fausses pistes, et proposer une hypothèse sur le coupable."
+    },
+    {
+      "id": "fr-reading-autofiction",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire un récit d'autofiction",
+      "intent": "Lire un extrait d'autofiction contemporaine et repérer comment l'auteur mêle souvenirs, analyse et invention dans un style volontairement plat ou au contraire travaillé."
+    },
+    {
+      "id": "fr-reading-a-writer-interview",
+      "kind": "reading",
+      "theme": "personal_identification",
+      "workingTitle": "Lire l'interview d'un écrivain",
+      "intent": "Lire l'interview d'une romancière sur son dernier livre, distinguer ce qu'elle dit de son travail, de ses intentions et de sa vie, et ce qu'elle évite."
+    },
+    {
+      "id": "fr-judging-style",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Limpide, alambiqué, ampoulé",
+      "intent": "Évaluer un style d'écriture avec une douzaine d'adjectifs : limpide, fluide, concis, percutant, alambiqué, ampoulé, laborieux, emphatique, plat, elliptique."
+    },
+    {
+      "id": "fr-reading-francophone-literature",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire un roman francophone",
+      "intent": "Lire un extrait de roman d'un auteur africain ou antillais, repérer comment il fait entendre une autre manière de parler français et ce que cela apporte au récit."
+    },
+    {
+      "id": "fr-reading-an-author-preface",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire une préface",
+      "intent": "Lire la préface qu'un auteur écrit pour son livre et dire comment il oriente la lecture : ce qu'il revendique, ce qu'il prévient et ce qu'il refuse."
+    },
+    {
+      "id": "fr-theatre-words",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Tirade, aparté, mise en scène",
+      "intent": "Parler de théâtre avec une douzaine de mots : une tirade, une réplique, un aparté, un monologue, la mise en scène, un dramaturge, le dénouement, une didascalie, le quatrième mur."
+    },
+    {
+      "id": "fr-reading-moliere",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire une scène de Molière",
+      "intent": "Lire une scène de Molière, repérer les ressorts du comique (situation, caractère, mots, répétition) et dire ce que la scène critique dans la société de son temps."
+    },
+    {
+      "id": "fr-reading-a-classical-tirade",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire une tirade en alexandrins",
+      "intent": "Lire une tirade de tragédie classique en alexandrins, en suivre le raisonnement et dire comment le rythme et les rimes servent l'émotion du personnage."
+    },
+    {
+      "id": "fr-poetry-words",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Vers, strophe, alexandrin, sonnet",
+      "intent": "Parler de poésie avec une douzaine de mots : un vers, une strophe, une rime, l'alexandrin, un sonnet, un quatrain, l'enjambement, le vers libre, une allitération."
+    },
+    {
+      "id": "fr-reading-baudelaire",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire un poème de Baudelaire",
+      "intent": "Lire un poème des Fleurs du mal, dégager le thème, analyser deux images et dire ce que la forme du sonnet apporte au sens."
+    },
+    {
+      "id": "fr-time-adjectives",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Éphémère, pérenne, révolu",
+      "intent": "Qualifier la durée et l'époque avec une douzaine d'adjectifs : éphémère, passager, durable, pérenne, immuable, révolu, désuet, obsolète, intemporel, séculaire."
+    },
+    {
+      "id": "fr-adjective-before-for-effect",
+      "kind": "grammar",
+      "topic": "adjectives",
+      "workingTitle": "Un magnifique paysage, un paysage magnifique",
+      "intent": "Placer un adjectif avant le nom pour un effet affectif ou stylistique (une magnifique soirée, une terrible erreur) et comprendre la nuance par rapport à la place habituelle."
+    },
+    {
+      "id": "fr-reading-free-verse",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire un poème en vers libres",
+      "intent": "Lire un poème contemporain en vers libres et montrer comment la disposition sur la page, les blancs et les répétitions créent le rythme sans la rime."
+    },
+    {
+      "id": "fr-auteur-cinema",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Nouvelle Vague, plan-séquence, hors-champ",
+      "intent": "Parler de cinéma d'auteur avec une douzaine de mots : la Nouvelle Vague, un plan-séquence, un travelling, le hors-champ, une ellipse, la mise en scène, un film d'auteur."
+    },
+    {
+      "id": "fr-reading-a-specialist-film-review",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire une critique de revue de cinéma",
+      "intent": "Lire une critique dans une revue spécialisée, comprendre son vocabulaire technique et dire sur quels éléments de mise en scène repose le jugement du critique."
+    },
+    {
+      "id": "fr-reading-a-forum-with-innuendo",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Lire les sous-entendus d'un forum",
+      "intent": "Lire une discussion de forum où les échanges restent polis en surface, et repérer les piques, les allusions et les alliances entre participants."
+    },
+    {
+      "id": "fr-architecture",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Façade, voûte, style haussmannien",
+      "intent": "Parler d'architecture avec une douzaine de mots : une façade, une voûte, une colonne, le style haussmannien, l'art nouveau, le béton brut, un édifice, la restauration."
+    },
+    {
+      "id": "fr-reading-an-exhibition-review",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire la critique d'une exposition",
+      "intent": "Lire la critique d'une exposition d'art contemporain, distinguer description, interprétation et jugement, et dire si le critique convainc."
+    },
+    {
+      "id": "fr-writing-a-critical-review",
+      "kind": "functions",
+      "theme": "free_time",
+      "workingTitle": "Rédiger une critique",
+      "intent": "Écrire la critique d'un livre, d'un film ou d'une exposition : présenter l'œuvre, défendre un jugement argumenté et le nuancer, sans tomber dans le résumé."
+    },
+    {
+      "id": "fr-classical-music",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Symphonie, orchestre, mouvement",
+      "intent": "Parler de musique classique avec une douzaine de mots : une symphonie, un orchestre, un chef d'orchestre, un mouvement, un opéra, un concerto, un soliste, une partition."
+    },
+    {
+      "id": "fr-attributing-causes",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Imputer à, être imputable, tenir à",
+      "intent": "Attribuer une cause en registre soutenu : imputer à, attribuer à, être imputable à, tenir à, procéder de, résulter de, être lié à, être à l'origine de."
+    },
+    {
+      "id": "fr-reading-protest-songs",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire une chanson engagée",
+      "intent": "Lire une chanson engagée à la manière de Brassens ou de Brel, repérer la cible, les images et l'humour, et dire ce qu'elle dénonce."
+    },
+    {
+      "id": "fr-sports-commentary",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Une remontée, un doublé, sur le fil",
+      "intent": "Comprendre le commentaire sportif avec une douzaine d'expressions : une remontée, un doublé, une contre-attaque, l'emporter sur le fil, un match à rebondissements, être mené."
+    },
+    {
+      "id": "fr-giving-an-occasion-speech",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Improviser un discours de circonstance",
+      "intent": "Prendre la parole au pied levé lors d'une fête ou d'un événement : remercier, dire quelques mots personnels et conclure en quelques phrases bien rythmées."
+    },
+    {
+      "id": "fr-reading-a-contemporary-play",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire une scène de théâtre contemporain",
+      "intent": "Lire une scène de théâtre contemporain aux répliques courtes et elliptiques, et reconstituer ce que les personnages ne disent pas."
+    },
+    {
+      "id": "fr-reading-an-award-speech",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire un discours de remise de prix",
+      "intent": "Lire le discours de remerciement d'une lauréate, repérer ce qui relève du rituel et ce qui est personnel, et dire quel message elle fait passer."
+    },
+    {
+      "id": "fr-hospital",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Interne, bloc opératoire, réanimation",
+      "intent": "Parler de l'hôpital avec une douzaine de mots : un interne, un chef de service, le bloc opératoire, une hospitalisation, la réanimation, une intervention, un pronostic, un protocole."
+    },
+    {
+      "id": "fr-chronic-illness",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Diabète, hypertension, traitement de fond",
+      "intent": "Parler de maladies chroniques avec une douzaine de mots : le diabète, l'hypertension, l'asthme, une maladie auto-immune, un traitement de fond, une rémission, une rechute."
+    },
+    {
+      "id": "fr-reading-demanding-popular-science",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Lire un article de vulgarisation exigeant",
+      "intent": "Lire un article sur les neurosciences de la mémoire, suivre l'enchaînement des expériences décrites et dire ce qu'elles permettent ou non de conclure."
+    },
+    {
+      "id": "fr-latin-expressions",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "A priori, de facto, in extremis",
+      "intent": "Employer à bon escient une douzaine de locutions latines : a priori, a posteriori, de facto, in extremis, ad hoc, sine qua non, grosso modo, vice versa, stricto sensu."
+    },
+    {
+      "id": "fr-diplomatic-vocabulary",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Terrain d'entente, statu quo, faire un pas",
+      "intent": "Parler de négociation avec une douzaine de mots : un terrain d'entente, une concession, faire un pas vers, le statu quo, une impasse, un compromis acceptable, sortir de l'ornière."
+    },
+    {
+      "id": "fr-cautious-hypotheses-on-data",
+      "kind": "functions",
+      "theme": "education",
+      "workingTitle": "Formuler des hypothèses prudentes",
+      "intent": "Commenter des données sans conclure trop vite : « Ces chiffres semblent indiquer… », « On ne peut exclure que… », « Il faudrait vérifier si… », « Corrélation ne veut pas dire causalité »."
+    },
+    {
+      "id": "fr-ecology-science",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "Écosystème, érosion, espèce invasive",
+      "intent": "Parler d'écologie scientifique avec une douzaine de mots : un écosystème, l'érosion, une espèce invasive, la déforestation, la pollinisation, un puits de carbone, la résilience."
+    },
+    {
+      "id": "fr-risk-vocabulary",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Aléa, menace, péril",
+      "intent": "Parler de risque avec précision : un risque, un aléa, une menace, un danger, un péril, la vulnérabilité, l'exposition, prévenir, parer à, conjurer, un principe de précaution."
+    },
+    {
+      "id": "fr-physical-geography",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Relief, estuaire, bassin versant",
+      "intent": "Décrire un territoire avec une douzaine de mots : le relief, un massif, un plateau, un bassin versant, un estuaire, un delta, une plaine alluviale, un littoral, un affluent."
+    },
+    {
+      "id": "fr-infrastructure",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Grande vitesse, fret, désenclavement",
+      "intent": "Parler d'infrastructures avec une douzaine de mots : une ligne à grande vitesse, un réseau, le fret, un échangeur, un chantier, le désenclavement, une concession autoroutière."
+    },
+    {
+      "id": "fr-formal-spoken-register",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Vous n'êtes pas sans savoir…",
+      "intent": "Parler dans un registre soutenu sans paraître pompeux : vous n'êtes pas sans savoir, il va sans dire, permettez-moi de, je ne manquerai pas de, si je puis dire, à mon sens."
+    },
+    {
+      "id": "fr-formal-courtesy-phrases",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Je vous en prie, je n'y manquerai pas",
+      "intent": "Employer les formules de courtoisie de l'oral soutenu : je vous en prie, faites, après vous, je n'y manquerai pas, mes respects, avec plaisir, c'est moi qui vous remercie."
+    },
+    {
+      "id": "fr-tricky-participle-agreements",
+      "kind": "grammar",
+      "topic": "agreement",
+      "workingTitle": "Les efforts qu'il a fallu",
+      "intent": "Résoudre les accords délicats du participe passé : les efforts qu'il a fallu, la chaleur qu'il a fait, des pommes, j'en ai mangé, la maison que j'ai fait construire."
+    },
+    {
+      "id": "fr-youth-slang",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "C'est chaud, de ouf, le seum",
+      "intent": "Comprendre le français des jeunes et son registre : c'est chaud, grave, de ouf, j'avoue, le seum, la hess, wesh, en mode, frère, et savoir où ne pas l'employer."
+    },
+    {
+      "id": "fr-demonyms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Stéphanois, messins, monégasques",
+      "intent": "Retrouver le nom des habitants de villes et pays dont le gentilé surprend : les Stéphanois, les Messins, les Havrais, les Nancéiens, les Monégasques, les Malgaches, les Chypriotes."
+    },
+    {
+      "id": "fr-adapting-your-register",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Adapter son discours à son interlocuteur",
+      "intent": "Dire la même chose à un ami, à un client et à une directrice en adaptant le vocabulaire, la syntaxe, les formules et le degré de familiarité."
+    },
+    {
+      "id": "fr-african-french",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Le français d'Afrique",
+      "intent": "Découvrir une douzaine de mots et tournures du français d'Afrique de l'Ouest et centrale : une essencerie, un taxi-brousse, gâter, ambiancer, une tantie, enceinter, la go."
+    },
+    {
+      "id": "fr-tout-demi-nu-possible",
+      "kind": "grammar",
+      "topic": "agreement",
+      "workingTitle": "Tout émue, demi-heure, nu-pieds",
+      "intent": "Accorder les mots variables ou non : tout émue mais toute heureuse, une demi-heure mais une heure et demie, nu-pieds mais pieds nus, les meilleurs résultats possible."
+    },
+    {
+      "id": "fr-words-that-changed-meaning",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Formidable, étonner, ennui",
+      "intent": "Comprendre les mots qui ont changé de sens et pièges à la lecture des classiques : formidable, étonner, ennui, génie, travailler, gêne, charmer, un amant, se fâcher."
+    },
+    {
+      "id": "fr-countering-with-a-question",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Répondre à une objection par une question",
+      "intent": "Retourner une objection par une question qui en montre les limites : « Et si l'on appliquait ce raisonnement à… ? », « Qu'est-ce qui vous permet de l'affirmer ? »."
+    },
+    {
+      "id": "fr-difficult-noun-genders",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Un apogée, une échappatoire",
+      "intent": "Retenir le genre de noms qui trompent même les francophones : un apogée, une échappatoire, un tentacule, une icône, un pétale, une oasis, un astérisque, une espèce."
+    },
+    {
+      "id": "fr-nouns-that-change-with-gender",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Le livre, la livre ; le tour, la tour",
+      "intent": "Distinguer les noms qui changent de sens selon le genre : le livre et la livre, le tour et la tour, le poste et la poste, le mode et la mode, le manche et la manche."
+    },
+    {
+      "id": "fr-compound-noun-plurals",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Des après-midi, des chefs-d'œuvre",
+      "intent": "Former le pluriel des noms composés courants : des chefs-d'œuvre, des après-midi, des porte-monnaie, des grands-mères, des arcs-en-ciel, des timbres-poste."
+    },
+    {
+      "id": "fr-formal-prepositional-phrases",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "À l'instar de, au détriment de, eu égard à",
+      "intent": "Employer les locutions prépositives soutenues : à l'instar de, au détriment de, en dépit de, eu égard à, à l'encontre de, en vertu de, à l'aune de, au regard de."
+    },
+    {
+      "id": "fr-correcting-in-public",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Rectifier une erreur en public",
+      "intent": "Corriger une erreur, la sienne ou celle d'un autre, devant un public sans faire perdre la face : « Permettez-moi de rectifier un point », « Je me suis mal exprimé tout à l'heure »."
+    },
+    {
+      "id": "fr-reading-co-ownership-minutes",
+      "kind": "reading",
+      "theme": "house_and_home",
+      "workingTitle": "Lire un procès-verbal d'assemblée générale",
+      "intent": "Lire le procès-verbal d'une assemblée de copropriétaires, retrouver les résolutions votées, les majorités et les travaux décidés."
+    },
+    {
+      "id": "fr-introducing-a-speaker",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Présenter un intervenant",
+      "intent": "Présenter officiellement un intervenant avant une conférence : son parcours en quelques traits, le sujet, ce que le public va en retirer, et lui donner la parole."
+    },
+    {
+      "id": "fr-expressing-emotion-with-restraint",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Dire une émotion forte avec retenue",
+      "intent": "Exprimer une émotion forte (colère, chagrin, émotion) en public ou au travail avec retenue et sincérité : « Je ne vous cache pas que… », « Vous comprendrez que je sois touché »."
+    },
+    {
+      "id": "fr-formal-time-expressions",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "D'ores et déjà, sous peu, de longue date",
+      "intent": "Situer dans le temps en registre soutenu : d'ores et déjà, sous peu, de longue date, à brève échéance, à l'heure actuelle, jusqu'à nouvel ordre, dans les meilleurs délais."
+    }
+  ]
+}
