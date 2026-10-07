@@ -14,12 +14,12 @@
   --ok:#3B6D11;--ok-bg:#EAF3DE;--chg:#854F0B;--chg-bg:#FAEEDA;--add:#185FA5;--add-bg:#E6F1FB;--miss:#A32D2D;--miss-bg:#FCEBEB;
   --del:#A32D2D;--ins-bg:#E1F5EE;--ins:#085041;
 }
-.k-f{--gb:#FAEEDA;--gd:#EF9F27;--gt:#633806}.k-c{--gb:#EEEDFE;--gd:#AFA9EC;--gt:#3C3489}.k-q{--gb:#E1F5EE;--gd:#5DCAA5;--gt:#085041}.k-d{--gb:#EAF3DE;--gd:#97C459;--gt:#27500A}.k-a{--gb:#FAECE7;--gd:#F0997B;--gt:#712B13}.k-e{--gb:#E6F1FB;--gd:#85B7EB;--gt:#0C447C}.k-w{--gb:#FBEAF0;--gd:#ED93B1;--gt:#72243E}
+.k-f{--gb:#FAEEDA;--gd:#EF9F27;--gt:#633806}.k-c{--gb:#EEEDFE;--gd:#AFA9EC;--gt:#3C3489}.k-q{--gb:#E1F5EE;--gd:#5DCAA5;--gt:#085041}.k-d{--gb:#EAF3DE;--gd:#97C459;--gt:#27500A}.k-a{--gb:#FAECE7;--gd:#F0997B;--gt:#712B13}.k-e{--gb:#E6F1FB;--gd:#85B7EB;--gt:#0C447C}.k-n{--gb:#FBF3DB;--gd:#E0B84A;--gt:#5C4405}.k-w{--gb:#FBEAF0;--gd:#ED93B1;--gt:#72243E}
 @media (prefers-color-scheme:dark){
   :root{--surface-0:#1F1E1D;--surface-1:#262624;--surface-2:#30302E;--border:rgba(222,220,209,.15);--text-primary:#F5F4EF;--text-secondary:#C2C0B6;--text-muted:#9C9A92;--text-accent:#85B7EB;
     --ok:#97C459;--ok-bg:#173404;--chg:#FAC775;--chg-bg:#412402;--add:#85B7EB;--add-bg:#042C53;--miss:#F09595;--miss-bg:#501313;
     --del:#F09595;--ins-bg:#04342C;--ins:#9FE1CB}
-  .k-f{--gb:#412402;--gd:#BA7517;--gt:#FAC775}.k-c{--gb:#26215C;--gd:#7F77DD;--gt:#CECBF6}.k-q{--gb:#04342C;--gd:#1D9E75;--gt:#9FE1CB}.k-d{--gb:#173404;--gd:#639922;--gt:#C0DD97}.k-a{--gb:#4A1B0C;--gd:#D85A30;--gt:#F5C4B3}.k-e{--gb:#042C53;--gd:#378ADD;--gt:#B5D4F4}.k-w{--gb:#4B1528;--gd:#D4537E;--gt:#F4C0D1}
+  .k-f{--gb:#412402;--gd:#BA7517;--gt:#FAC775}.k-c{--gb:#26215C;--gd:#7F77DD;--gt:#CECBF6}.k-q{--gb:#04342C;--gd:#1D9E75;--gt:#9FE1CB}.k-d{--gb:#173404;--gd:#639922;--gt:#C0DD97}.k-a{--gb:#4A1B0C;--gd:#D85A30;--gt:#F5C4B3}.k-e{--gb:#042C53;--gd:#378ADD;--gt:#B5D4F4}.k-n{--gb:#3A2E06;--gd:#B08A1E;--gt:#F2DB94}.k-w{--gb:#4B1528;--gd:#D4537E;--gt:#F4C0D1}
 }
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--font-sans)}
@@ -109,11 +109,16 @@ a.il.st-open{--sc:#3B6D11}a.il.st-work{--sc:#BA7517}a.il.st-closed{--sc:#534AB7}
 .prod:hover{background:var(--surface-1)}
 .prod:focus-visible{outline:2px solid var(--text-accent);outline-offset:1px}
 .prod .ti-arrow-up-right{color:var(--text-muted)}
+.topnav.repo .repo-l{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--text-primary);padding:5px 8px 5px 10px;border-right:0.5px solid var(--border);margin-right:2px}
+.f .md{font-family:var(--font-sans);color:var(--text-primary)}
+.pt{float:right;font-family:var(--font-sans);font-size:10px;font-weight:500;color:var(--text-secondary);background:var(--surface-2);border:0.5px solid var(--border);border-radius:999px;padding:1px 7px;margin-left:6px}
+.cards.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:560px){.cards.two{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <main>
-<div class="navrow"><nav class="topnav" aria-label="Project docs"><a href="index.html"><i class="ti ti-layout-dashboard" aria-hidden="true"></i>Overview</a><a href="milestone1-data-model.html" aria-current="page"><i class="ti ti-git-compare" aria-hidden="true"></i>Data model · M1</a><a href="milestone2-data-model.html"><i class="ti ti-database" aria-hidden="true"></i>Data model · M2</a></nav><a class="prod" href="https://transcendence.dpdns.org" title="The deployed app on the VPS: transcendence.dpdns.org"><i class="ti ti-rocket" aria-hidden="true"></i>production<i class="ti ti-arrow-up-right" aria-hidden="true"></i></a></div>
+<div class="navrow"><nav class="topnav" aria-label="Project docs"><a href="index.html"><i class="ti ti-layout-dashboard" aria-hidden="true"></i>Overview</a><a href="milestone1-data-model.html" aria-current="page"><i class="ti ti-git-compare" aria-hidden="true"></i>Data model · M1</a><a href="milestone2-data-model.html"><i class="ti ti-database" aria-hidden="true"></i>Data model · M2</a></nav><a class="prod" href="https://transcendence.dpdns.org" title="The deployed app on the VPS: transcendence.dpdns.org"><i class="ti ti-rocket" aria-hidden="true"></i>production<i class="ti ti-arrow-up-right" aria-hidden="true"></i></a><a class="prod" href="https://bastian-schnitzler.github.io/lesson_prototype/" title="The lesson prototype: bastian-schnitzler.github.io/lesson_prototype"><i class="ti ti-flask" aria-hidden="true"></i>prototype<i class="ti ti-arrow-up-right" aria-hidden="true"></i></a><nav class="topnav repo" aria-label="ft_transcendence on GitHub"><span class="repo-l"><i class="ti ti-brand-github" aria-hidden="true"></i>ft_transcendence</span><a href="https://github.com/VictorBro/ft_transcendence"><i class="ti ti-code" aria-hidden="true"></i>code</a><a href="https://github.com/VictorBro/ft_transcendence/pulls"><i class="ti ti-git-pull-request" aria-hidden="true"></i>PRs</a><a href="https://github.com/users/VictorBro/projects/1"><i class="ti ti-layout-kanban" aria-hidden="true"></i>Kanban</a><a href="https://github.com/VictorBro/ft_transcendence/milestones"><i class="ti ti-flag" aria-hidden="true"></i>milestones</a><a href="https://github.com/VictorBro/ft_transcendence/issues"><i class="ti ti-circle-dot" aria-hidden="true"></i>issues</a></nav></div>
 <h1>Onboarding data model: spec vs code</h1>
 <p class="intro">Every data format of the Onboarding and Evaluation milestone, grouped by layer, with each one checked against the latest <code>main</code>. Each card is marked by how the code compares with what the issues specified, and lists the issues that reference it. References cover #43 to #54. Where a value changed, the spec's version is struck through and the code's version is highlighted.</p>
 
@@ -131,7 +136,7 @@ a.il.st-open{--sc:#3B6D11}a.il.st-work{--sc:#BA7517}a.il.st-closed{--sc:#534AB7}
 
 <div class="leg">
 <span class="m k-e jump" data-target="enums" role="link" tabindex="0">Enums + constants · #46</span><span class="m k-c jump" data-target="contract" role="link" tabindex="0">Shared contract · #46</span><span class="m k-f jump" data-target="content" role="link" tabindex="0">Content + seed · #43</span><span class="m k-d jump" data-target="database" role="link" tabindex="0">Database · #47</span><span class="m k-q jump" data-target="redis" role="link" tabindex="0">Redis run state · #48</span><span class="m k-a jump" data-target="api" role="link" tabindex="0">API · #47 / #48</span><span class="m k-w jump" data-target="web" role="link" tabindex="0">Web · #45 / #49 to #52</span>
-</div>
+<span class="m k-n jump" data-target="modules" role="link" tabindex="0">NestJS modules</span></div>
 
 <!-- ENUMS -->
 <section class="g k-e" id="enums"><div class="gh"><i class="ti ti-list-details" aria-hidden="true"></i>Enums and constants<span class="def">defined in #46</span><span class="def">packages/shared · apps/api/src/placement</span></div>
@@ -274,6 +279,15 @@ a.il.st-open{--sc:#3B6D11}a.il.st-work{--sc:#BA7517}a.il.st-closed{--sc:#534AB7}
 <tr data-k="add"><td><span class="st add"><i class="ti ti-plus" aria-hidden="true"></i>Added</span></td><td>#50</td><td>Placement page, countdown, result with red/green report, A0 to C2 override, Placement namespace.</td><td>As specified, plus a quit confirmation, Retake on the result, and Change level on the course home with the same picker.</td><td>apps/web/app/[locale]/(dashboard)/learn/[lang]/</td></tr>
 <tr data-k="add"><td><span class="st add"><i class="ti ti-plus" aria-hidden="true"></i>Added</span></td><td>#53 → #50</td><td>Happy-path exam e2e within the 30 s timeout.</td><td>e2e/tests/placement.spec.ts; the countdown runs on a faked browser clock.</td><td>e2e/tests/</td></tr>
 </tbody></table></div></section>
+
+<section class="g k-n" id="modules"><div class="gh"><i class="ti ti-box-model-2" aria-hidden="true"></i>NestJS modules<span class="def">apps/api/src</span><span class="def">PrismaModule and RedisModule are global, so no module imports them.</span></div>
+<div class="gd">The modules this milestone added to the API: what each one does, its routes, providers, imports and exports. Auth, Users, Health, Prisma and Redis come from before this milestone.</div>
+<div class="cards two">
+<div class="c" id="CoursesModule"><div class="ct">CoursesModule</div><div class="cp">apps/api/src/courses · PR #60</div><div class="f"><span class="md">A learner's courses, one per language: start one, set the daily goal, and the unified write path for the level.</span><br><b>Controller</b>: CoursesController, /api/courses<br><b>Routes</b>: GET /, POST /, PATCH /:lang (goal), PATCH /:lang/level<br><b>Providers</b>: CoursesService: listCoursesUser, createCourse, setGoal, setLevel<br><b>Exports</b>: CoursesService, used by PlacementModule<br><b>Uses</b>: PrismaService</div><div class="ref">Referenced in <span>#46</span><span>#47</span><span>#48</span><span>#49</span><span>#50</span><span>#51</span><span>#52</span><span>#53</span></div></div>
+<div class="c" id="PlacementModule"><div class="ct">PlacementModule</div><div class="cp">apps/api/src/placement · PRs #71, #101, #104</div><div class="f"><span class="md">The adaptive placement exam as a singleton resource per learner: a binary search over the levels, its run state in Redis, the server owning the clock.</span><br><b>Controller</b>: PlacementController, /api/placement<br><b>Routes</b>: POST / (start), GET / (question or result), POST /answers, DELETE / (quit)<br><b>Providers</b>: PlacementService (start, get, answer, quit), PlacementSessionService (Redis keys, lock, run state), PlacementQuestionService (draw, shuffle once), PlacementProgressService (timeouts, scoring, result)<br><b>Imports</b>: CoursesModule (setLevel), QuestionGenerationModule<br><b>Exports</b>: all four services<br><b>Uses</b>: PrismaService, RedisService</div><div class="ref">Referenced in <span>#46</span><span>#48</span><span>#50</span><span>#53</span><span>#54</span></div></div>
+<div class="c" id="QuestionGenerationModule"><div class="ct">QuestionGenerationModule</div><div class="cp">apps/api/src/question-generation · PRs #69, #104</div><div class="f"><span class="md">Keeps every (language, level, category) cell of the question bank stocked: when a learner is down to 3 unseen questions, it asks the LLM for a batch in the background.</span><br><b>Controller</b>: none<br><b>Providers</b>: QuestionStockService: restock(cell, unseen), one job per cell, a failed batch rests the cell<br><b>Imports</b>: LlmModule<br><b>Exports</b>: QuestionStockService, used by PlacementQuestionService</div><div class="ref">Referenced in <span>#54</span><span>#48</span></div></div>
+<div class="c" id="LlmModule"><div class="ct">LlmModule</div><div class="cp">apps/api/src/llm · PRs #69, #104</div><div class="f"><span class="md">The one way to call an LLM: a provider chosen at boot from the environment, failing at startup on a bad setting rather than at the first call.</span><br><b>Controller</b>: none<br><b>Providers</b>: LLM_PROVIDER from createLlmProvider: GeminiProvider or FixtureProvider<br><b>Config</b>: LLM_PROVIDER, LLM_API_KEY, LLM_MODEL<br><b>Exports</b>: LLM_PROVIDER (LlmProvider.generateStructured)</div><div class="ref">Referenced in <span>#54</span></div></div>
+</div></section>
 
 <footer>Compared against <code>main</code> at 111417d, the latest merge on 4 October 2026 (PR #104, the placement page for #50). All twelve issues of the milestone are closed. <span id="live"></span></footer>
 </main>
