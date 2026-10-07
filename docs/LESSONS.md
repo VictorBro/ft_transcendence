@@ -228,6 +228,15 @@ The lesson it becomes in `content/lessons/fr-a1.json`, all in French:
 - No two entries teach the same thing, across all six levels of the language.
 - An LLM may write the first draft. A fluent speaker then reads every entry (§9).
 
+**With Claude Code:** `/outline-language <lang>`, for example `/outline-language es`, writes the
+first draft of a language's six outlines the way English and German were written. It researches
+the language's level inventories and exams, plans every entry across the six levels at once,
+orders each level, has each level reviewed twice (curriculum and native speaker), and checks that
+every lesson has one focus. It asks first for the standard variety, the title conventions per
+kind and the readers, and leaves the reading in §9 to people. The language must already be in
+`LEARNABLE_LANGUAGES` and `KIND_COUNTS`. The instructions are in
+`.claude/skills/outline-language/SKILL.md`, the steps in `.claude/workflows/outline-language.js`.
+
 ---
 
 ## 5. Ids
@@ -271,10 +280,13 @@ from CI:
 ```bash
 pnpm --filter @ft/api test src/lessons/outline-files.spec.ts   # the outlines
 pnpm --filter @ft/api test src/lessons/lesson-files.spec.ts    # the lessons
+pnpm --filter @ft/api outlines:check <lang>                    # one language's outlines, while writing
 make                                                           # everything, before the PR
 ```
 
-A failure names the file and the entry.
+A failure names the file and the entry. `outlines:check` also checks what the specs leave to
+reviewers: the key order, no level in an id, and no dashes, quotation marks or double spaces.
+Add `--level B1` to see only that file's problems when several people share one language.
 
 | Check | Rule |
 |---|---|
