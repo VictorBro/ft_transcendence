@@ -139,7 +139,10 @@ describe('queue', () => {
   });
 
   it('orders passed lessons least recently finished first, position as a tiebreak', () => {
-    const lessons = [lesson('l1', 1), lesson('l2', 2), lesson('l3', 2)];
+    // l3 comes before l2 in the array but sits at a later position, and the two
+    // share a finishedAt: only the position tiebreak can put l2 first. Ordering
+    // them the other way round would let a stable sort pass without it.
+    const lessons = [lesson('l1', 1), lesson('l3', 3), lesson('l2', 2)];
     const results = [
       result('l1', 90, '2026-01-01', '2026-01-03T10:00:00Z'),
       result('l2', 90, '2026-01-01', '2026-01-01T10:00:00Z'),
@@ -263,6 +266,35 @@ describe('plan', () => {
     // one fewer: target(10) - done.length = 1 - 1 = 0.
     expect(today.proposed).toEqual([]);
   });
+
+  it('goal 60 with only two lessons not yet passed: four review lessons, a different four the next day', () => {
+    // l1 and l2 have no result at all; l3 to l10 are passed, l3 least recently.
+    const reviews = ['l3', 'l4', 'l5', 'l6', 'l7', 'l8', 'l9', 'l10'].map((id, i) =>
+      result(id, 85, `2026-01-0${i + 1}`, `2026-01-0${i + 1}T10:00:00Z`),
+    );
+
+    expect(plan(lessons, reviews, '2026-01-10', 60)).toEqual({
+      done: [],
+      proposed: ['l1', 'l2', 'l3', 'l4', 'l5', 'l6'],
+      extra: ['l7', 'l8', 'l9'],
+    });
+
+    // Those six are finished on the 10th, so on the 11th they are the most
+    // recent and the four left over lead the review queue instead.
+    const onTheTenth = ['l1', 'l2', 'l3', 'l4', 'l5', 'l6'].map((id, i) =>
+      result(id, 85, '2026-01-10', `2026-01-10T1${i}:00:00Z`),
+    );
+    const after = [
+      ...reviews.filter((r) => !onTheTenth.some((o) => o.lessonId === r.lessonId)),
+      ...onTheTenth,
+    ];
+
+    expect(plan(lessons, after, '2026-01-11', 60)).toEqual({
+      done: [],
+      proposed: ['l7', 'l8', 'l9', 'l10', 'l1', 'l2'],
+      extra: ['l3', 'l4', 'l5'],
+    });
+  });
 });
 
 describe('levelProgress', () => {
@@ -306,6 +338,24 @@ describe('levelProgress', () => {
     expect(levelProgress(lessons, results).complete).toBe(true);
   });
 
+  it('is not complete while a lesson is unattempted, even with enough passed', () => {
+    // 200 passed meets `needed`, but ten lessons were never opened. 80% is the
+    // bar to pass; every lesson still has to be tried once, so a learner cannot
+    // finish a level by skipping the ones they expect to fail.
+    const lessons = Array.from({ length: 250 }, (_, i) => lesson(`l${i}`, i + 1));
+    const results = Array.from({ length: 240 }, (_, i) =>
+      result(`l${i}`, i < 200 ? 85 : 40, '2026-01-01', '2026-01-01T10:00:00Z'),
+    );
+
+    expect(levelProgress(lessons, results)).toEqual({
+      total: 250,
+      attempted: 240,
+      passed: 200,
+      needed: 200,
+      complete: false,
+    });
+  });
+
   it('no lessons: not complete', () => {
     expect(levelProgress([], [])).toEqual({
       total: 0,
@@ -337,9 +387,13 @@ describe('localDay', () => {
   });
 
   it('is one calendar day across a daylight saving change', () => {
-    // Europe/Zurich springs forward from 02:00 to 03:00 CET on 2026-03-29.
-    expect(localDay(new Date('2026-03-29T00:30:00Z'), 'Europe/Zurich')).toBe('2026-03-29');
-    expect(localDay(new Date('2026-03-29T01:30:00Z'), 'Europe/Zurich')).toBe('2026-03-29');
+    // Europe/Zurich springs forward 02:00 -> 03:00 on 2026-03-29, so that day
+    // is 23 hours long: 23:00Z the day before (CET) to 22:00Z (CEST). Each edge
+    // rules out a different wrong reading — plain UTC calls the first 03-28,
+    // and a fixed +01:00 calls the last 03-29.
+    expect(localDay(new Date('2026-03-28T23:00:00Z'), 'Europe/Zurich')).toBe('2026-03-29');
+    expect(localDay(new Date('2026-03-29T21:59:00Z'), 'Europe/Zurich')).toBe('2026-03-29');
+    expect(localDay(new Date('2026-03-29T22:00:00Z'), 'Europe/Zurich')).toBe('2026-03-30');
   });
 });
 
@@ -438,6 +492,15 @@ describe('metOn and currentStreak', () => {
     const streak = { streak: 2, bestStreak: 6, lastGoalDay: '2026-09-28' };
     expect(metOn(streak, '2026-09-28')).toEqual(streak);
     expect(currentStreak(streak, '2026-09-28')).toBe(2);
+  });
+
+  it('leaves the streak alone for a day before lastGoalDay', () => {
+    // courseDay never hands back a day earlier than lastGoalDay, but the rule
+    // lives here: a rewound day must not restart a live streak, nor move
+    // lastGoalDay back so that a later day reads as consecutive.
+    const streak = { streak: 3, bestStreak: 5, lastGoalDay: '2026-01-06' };
+    expect(metOn(streak, '2026-01-05')).toEqual(streak);
+    expect(metOn(streak, '2025-12-31')).toEqual(streak);
   });
 });
 

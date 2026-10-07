@@ -156,7 +156,7 @@ export function levelProgress(lessons: RuleLesson[], results: RuleResult[]): Tod
 
   const total = lessons.length;
   const attempted = relevant.length;
-  const passed = relevant.filter((result) => result.score >= LESSON_PASS_MARK).length;
+  const passed = relevant.filter((result) => statusOf(result) === 'done').length;
   const needed = Math.ceil(LEVEL_PASS_SHARE * total);
 
   return {
@@ -169,10 +169,9 @@ export function levelProgress(lessons: RuleLesson[], results: RuleResult[]): Tod
 }
 
 /**
- * The level after this one, null after C2. Named levelAfter, not nextLevel:
- * onboarding already has a nextLevel (apps/web/lib/onboarding.ts) that maps
- * C2 to C2, for a different question ("what should this course teach").
- * Here C2 has nothing after it.
+ * The level after this one, null after C2. Not named nextLevel: the web app's
+ * apps/web/lib/level.ts has one, answering a different question — what a course
+ * should teach, where C2 maps to itself rather than to nothing.
  */
 export function levelAfter(level: Level): Level | null {
   return LEVELS[LEVELS.indexOf(level) + 1] ?? null;
@@ -180,9 +179,11 @@ export function levelAfter(level: Level): Level | null {
 
 /**
  * The calendar day `at` falls on in `timeZone`, as that zone's own civil
- * calendar names it. formatToParts, not `.format()`: a formatted string's
- * field order depends on the locale, but its parts are always typed, so
- * reading `year`/`month`/`day` off them is correct whatever locale is passed.
+ * calendar names it. The locale is pinned to 'en' so the result stays a
+ * CourseDay — fa-IR would return another date entirely, and CourseDay is a bare
+ * string alias with no runtime check, so nothing downstream would catch it.
+ * formatToParts, not `.format()`, whose field order and separators are the
+ * locale's.
  */
 export function localDay(at: Date, timeZone: string): CourseDay {
   const parts = new Intl.DateTimeFormat('en', {
@@ -219,12 +220,12 @@ export function previousDay(day: CourseDay): CourseDay {
 
 /**
  * The streak after a day the goal was met. Meeting `lastGoalDay` again is a
- * no-op, so lowering the goal mid-day and meeting it a second time cannot
- * inflate the streak. Meeting the day right after it extends it; anything
- * else, including a gap, restarts it at one.
+ * no-op, and so is any day before it: lowering the goal mid-day, or a clock
+ * that slipped back, does not inflate the streak. Meeting the day right after
+ * it extends it; anything else, including a gap, restarts it at one.
  */
 export function metOn(streak: CourseStreak, day: CourseDay): CourseStreak {
-  if (streak.lastGoalDay === day) {
+  if (streak.lastGoalDay !== null && day <= streak.lastGoalDay) {
     return streak;
   }
   const consecutive = streak.lastGoalDay !== null && previousDay(day) === streak.lastGoalDay;
