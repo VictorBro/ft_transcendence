@@ -20,7 +20,7 @@ const PNG = Buffer.from(
   'base64',
 );
 
-describe('users avatars (e2e)', () => {
+describe('users (e2e)', () => {
   let app: INestApplication;
   let prisma: PrismaService;
   let agent: TestAgent;
@@ -52,108 +52,136 @@ describe('users avatars (e2e)', () => {
   const server = () => app.getHttpServer();
   const filenameOf = (avatarUrl: string) => avatarUrl.split('/').pop() ?? '';
 
-  it('refuses an anonymous upload', async () => {
-    await request(server())
-      .post('/api/users/me/avatar')
-      .attach('avatar', PNG, { filename: 'a.png', contentType: 'image/png' })
-      .expect(401);
+  describe('avatars', () => {
+    it('refuses an anonymous upload', async () => {
+      await request(server())
+        .post('/api/users/me/avatar')
+        .attach('avatar', PNG, { filename: 'a.png', contentType: 'image/png' })
+        .expect(401);
+    });
+
+    it('stores a relative path and serves the file back', async () => {
+      const response = await agent
+        .post('/api/users/me/avatar')
+        .attach('avatar', PNG, { filename: 'a.png', contentType: 'image/png' })
+        .expect(201);
+
+      const avatarUrl: string = response.body.avatarUrl;
+      written.push(filenameOf(avatarUrl));
+
+      // Relative, so a forged Host never reaches the database.
+      expect(avatarUrl).toMatch(/^\/api\/uploads\/avatars\/[0-9a-f-]+\.png$/);
+
+      // Proves the repeated "api" prefix on the static route.
+      await request(server())
+        .get(avatarUrl)
+        .expect(200)
+        .expect('content-type', /image\/png/);
+    });
+
+    it('deletes the previous file when the avatar is replaced', async () => {
+      const first = await agent
+        .post('/api/users/me/avatar')
+        .attach('avatar', PNG, { filename: 'a.png', contentType: 'image/png' })
+        .expect(201);
+      const oldFile = filenameOf(first.body.avatarUrl);
+
+      const second = await agent
+        .post('/api/users/me/avatar')
+        .attach('avatar', PNG, { filename: 'b.png', contentType: 'image/png' })
+        .expect(201);
+      written.push(filenameOf(second.body.avatarUrl));
+
+      expect(await readdir(AVATAR_STORAGE_DIR)).not.toContain(oldFile);
+    });
+
+    it('rejects a type that is not an image, with a code the browser can translate', async () => {
+      const response = await agent
+        .post('/api/users/me/avatar')
+        .attach('avatar', Buffer.from('%PDF-1.4'), {
+          filename: 'cv.pdf',
+          contentType: 'application/pdf',
+        })
+        .expect(400);
+
+      expect(response.body.message).toBe('avatar.invalidFile');
+    });
+
+    // Without reading the bytes, anything can be stored and served back as an image.
+    it('rejects a file whose bytes are not the type it claims, and keeps nothing', async () => {
+      const before = await readdir(AVATAR_STORAGE_DIR);
+
+      const response = await agent
+        .post('/api/users/me/avatar')
+        .attach('avatar', Buffer.from('MZ\x90\x00this is not a png at all'), {
+          filename: 'payload.png',
+          contentType: 'image/png',
+        })
+        .expect(400);
+
+      expect(response.body.message).toBe('avatar.invalidFile');
+      expect(await readdir(AVATAR_STORAGE_DIR)).toEqual(before);
+    });
+
+    // Nest's default here is the sentence "File too large", which renders as
+    // "unknown" in the browser.
+    it('rejects an oversized file with a code, not a sentence', async () => {
+      const response = await agent
+        .post('/api/users/me/avatar')
+        .attach('avatar', Buffer.alloc(MAX_AVATAR_BYTES + 1), {
+          filename: 'big.png',
+          contentType: 'image/png',
+        })
+        .expect(413);
+
+      expect(response.body.message).toBe('avatar.invalidFile');
+    });
+
+    it('removes the avatar and its file', async () => {
+      const uploaded = await agent
+        .post('/api/users/me/avatar')
+        .attach('avatar', PNG, { filename: 'a.png', contentType: 'image/png' })
+        .expect(201);
+      const file = filenameOf(uploaded.body.avatarUrl);
+
+      const response = await agent.delete('/api/users/me/avatar').expect(200);
+
+      expect(response.body.avatarUrl).toBeNull();
+      expect(await readdir(AVATAR_STORAGE_DIR)).not.toContain(file);
+    });
+
+    // The column names a file on our disk, so the generic patch must not set it.
+    it('will not let the profile patch set an avatar url', async () => {
+      await agent
+        .patch('/api/users/me')
+        .send({ avatarUrl: '/api/uploads/avatars/someone-elses.png' })
+        .expect(400);
+    });
   });
 
-  it('stores a relative path and serves the file back', async () => {
-    const response = await agent
-      .post('/api/users/me/avatar')
-      .attach('avatar', PNG, { filename: 'a.png', contentType: 'image/png' })
-      .expect(201);
+  describe('time zone', () => {
+    // Kyiv last: Intl calls it Europe/Kiev, and a renamed copy would never match
+    // what the browser sends, so the row must hold the string as given.
+    it('stores a time zone exactly as sent', async () => {
+      for (const timeZone of ['UTC', 'Etc/UTC', 'Europe/Kyiv']) {
+        const response = await agent.patch('/api/users/me').send({ timeZone }).expect(200);
+        expect(response.body.timeZone).toBe(timeZone);
+      }
 
-    const avatarUrl: string = response.body.avatarUrl;
-    written.push(filenameOf(avatarUrl));
+      const row = await prisma.user.findUniqueOrThrow({ where: { email } });
+      expect(row.timeZone).toBe('Europe/Kyiv');
+    });
 
-    // Relative, so a forged Host never reaches the database.
-    expect(avatarUrl).toMatch(/^\/api\/uploads\/avatars\/[0-9a-f-]+\.png$/);
+    it('rejects an unknown time zone with a code', async () => {
+      const response = await agent
+        .patch('/api/users/me')
+        .send({ timeZone: 'Mars/Olympus' })
+        .expect(400);
 
-    // Proves the repeated "api" prefix on the static route.
-    await request(server())
-      .get(avatarUrl)
-      .expect(200)
-      .expect('content-type', /image\/png/);
-  });
-
-  it('deletes the previous file when the avatar is replaced', async () => {
-    const first = await agent
-      .post('/api/users/me/avatar')
-      .attach('avatar', PNG, { filename: 'a.png', contentType: 'image/png' })
-      .expect(201);
-    const oldFile = filenameOf(first.body.avatarUrl);
-
-    const second = await agent
-      .post('/api/users/me/avatar')
-      .attach('avatar', PNG, { filename: 'b.png', contentType: 'image/png' })
-      .expect(201);
-    written.push(filenameOf(second.body.avatarUrl));
-
-    expect(await readdir(AVATAR_STORAGE_DIR)).not.toContain(oldFile);
-  });
-
-  it('rejects a type that is not an image, with a code the browser can translate', async () => {
-    const response = await agent
-      .post('/api/users/me/avatar')
-      .attach('avatar', Buffer.from('%PDF-1.4'), {
-        filename: 'cv.pdf',
-        contentType: 'application/pdf',
-      })
-      .expect(400);
-
-    expect(response.body.message).toBe('avatar.invalidFile');
-  });
-
-  // Without reading the bytes, anything can be stored and served back as an image.
-  it('rejects a file whose bytes are not the type it claims, and keeps nothing', async () => {
-    const before = await readdir(AVATAR_STORAGE_DIR);
-
-    const response = await agent
-      .post('/api/users/me/avatar')
-      .attach('avatar', Buffer.from('MZ\x90\x00this is not a png at all'), {
-        filename: 'payload.png',
-        contentType: 'image/png',
-      })
-      .expect(400);
-
-    expect(response.body.message).toBe('avatar.invalidFile');
-    expect(await readdir(AVATAR_STORAGE_DIR)).toEqual(before);
-  });
-
-  // Nest's default here is the sentence "File too large", which renders as
-  // "unknown" in the browser.
-  it('rejects an oversized file with a code, not a sentence', async () => {
-    const response = await agent
-      .post('/api/users/me/avatar')
-      .attach('avatar', Buffer.alloc(MAX_AVATAR_BYTES + 1), {
-        filename: 'big.png',
-        contentType: 'image/png',
-      })
-      .expect(413);
-
-    expect(response.body.message).toBe('avatar.invalidFile');
-  });
-
-  it('removes the avatar and its file', async () => {
-    const uploaded = await agent
-      .post('/api/users/me/avatar')
-      .attach('avatar', PNG, { filename: 'a.png', contentType: 'image/png' })
-      .expect(201);
-    const file = filenameOf(uploaded.body.avatarUrl);
-
-    const response = await agent.delete('/api/users/me/avatar').expect(200);
-
-    expect(response.body.avatarUrl).toBeNull();
-    expect(await readdir(AVATAR_STORAGE_DIR)).not.toContain(file);
-  });
-
-  // The column names a file on our disk, so the generic patch must not set it.
-  it('will not let the profile patch set an avatar url', async () => {
-    await agent
-      .patch('/api/users/me')
-      .send({ avatarUrl: '/api/uploads/avatars/someone-elses.png' })
-      .expect(400);
+      // A Zod failure carries its codes in `errors`; `message` is nestjs-zod's own.
+      expect(response.body.errors.map((e: { message: string }) => e.message)).toEqual([
+        'profile.invalidTimeZone',
+      ]);
+    });
   });
 });

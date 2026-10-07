@@ -1,0 +1,1056 @@
+{
+  "lang": "en",
+  "level": "A2",
+  "entries": [
+    {
+      "id": "en-life-events",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Life events",
+      "intent": "Name about twelve big moments in a person's life: be born, grow up, start school, leave school, get a job, get married, have a baby, retire."
+    },
+    {
+      "id": "en-past-simple-wh-questions",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Wh- questions in the past: Where did you go?",
+      "intent": "Ask about the past with question word + did + subject + base form, including how long, how much, what time and a preposition at the end: Where did you go? How long did you stay? Who did you go with?"
+    },
+    {
+      "id": "en-extended-family-and-partners",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Extended family and partners",
+      "intent": "Name about twelve more relatives and partners: aunt, uncle, cousin, niece, nephew, grandson, granddaughter, boyfriend."
+    },
+    {
+      "id": "en-there-was-there-were",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "There was, there were",
+      "intent": "Describe a place or an event in the past with there was and there were, in the negative and in questions: There was a party. There weren't any taxis. Was there a lift?"
+    },
+    {
+      "id": "en-words-for-telling-a-story-in-order",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Words for telling a story in order",
+      "intent": "Put events in order when you tell a story or explain how to do something, with about ten words and phrases: first, then, next, after that, later, suddenly, finally, in the end."
+    },
+    {
+      "id": "en-talking-about-your-weekend",
+      "kind": "functions",
+      "theme": "free_time",
+      "workingTitle": "Talking about your weekend",
+      "intent": "Ask a friend about their weekend and tell them about yours in order: How was your weekend?, What did you do?, We went to the seaside, There was a market, Then we had lunch, It was great."
+    },
+    {
+      "id": "en-reading-a-short-biography",
+      "kind": "reading",
+      "theme": "personal_identification",
+      "workingTitle": "Reading a short biography",
+      "intent": "Read the short life story of a famous person, put the main events in order (was born in, grew up, moved to, won, died in) and say what they are known for."
+    },
+    {
+      "id": "en-holiday-activities",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Holiday activities",
+      "intent": "Name about twelve things people do on holiday: go sightseeing, sunbathe, swim in the sea, buy souvenirs, go on a tour, hire a bike, explore."
+    },
+    {
+      "id": "en-degree-adverbs-a-bit-really-so",
+      "kind": "grammar",
+      "topic": "adverbs",
+      "workingTitle": "A bit, really, so, extremely",
+      "intent": "Make an adjective weaker or stronger with a bit, really, so and extremely: It's a bit cold. The test was really easy. I'm so tired. The hotel was extremely expensive."
+    },
+    {
+      "id": "en-opinion-adjectives",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Opinion adjectives",
+      "intent": "Say what you think of a place, a film or a meal with about twelve adjectives: amazing, brilliant, fantastic, lovely, awful, terrible, horrible, strange."
+    },
+    {
+      "id": "en-giving-your-opinion",
+      "kind": "functions",
+      "theme": "free_time",
+      "workingTitle": "Giving your opinion",
+      "intent": "Say what you thought of a film, a meal or a place, and agree or disagree with a friend: What did you think of it?, I thought it was brilliant, I agree, Really? I found it boring."
+    },
+    {
+      "id": "en-reading-holiday-posts-and-captions",
+      "kind": "reading",
+      "theme": "travel",
+      "workingTitle": "Reading holiday posts and photo captions",
+      "intent": "Read social media posts and photo captions from a trip and find where the writer went, what they did each day and what it was like (amazing, really crowded, freezing)."
+    },
+    {
+      "id": "en-prepositions-of-movement",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "Prepositions of movement: into, across, past",
+      "intent": "Say which way someone goes with into, out of, across, along, through, past, up, down, over and round: Walk along the river, then go over the bridge."
+    },
+    {
+      "id": "en-around-the-city",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Around the city",
+      "intent": "Name about twelve things you see in city streets: square, corner, pavement (US sidewalk), zebra crossing, bridge, high street, bench, fountain."
+    },
+    {
+      "id": "en-giving-directions",
+      "kind": "functions",
+      "theme": "places",
+      "workingTitle": "Giving directions",
+      "intent": "Give someone directions in town, with or without a map: Go along this road, Take the second left, Cross the bridge, It's opposite the post office, You can't miss it."
+    },
+    {
+      "id": "en-comparative-adjectives",
+      "kind": "grammar",
+      "topic": "comparison_and_quantity",
+      "workingTitle": "Comparative adjectives: bigger, more expensive",
+      "intent": "Compare two things with -er or more + adjective + than, with spelling changes and irregular forms: cheaper, bigger, easier, more expensive, better, worse."
+    },
+    {
+      "id": "en-buildings-in-town",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Buildings in town",
+      "intent": "Name about twelve buildings and places to visit in a town: castle, cathedral, town hall, stadium, sports centre, shopping centre, art gallery, concert hall."
+    },
+    {
+      "id": "en-superlative-adjectives",
+      "kind": "grammar",
+      "topic": "comparison_and_quantity",
+      "workingTitle": "Superlative adjectives: the biggest, the best",
+      "intent": "Compare one thing with the rest of its group using the + -est or the most, followed by in or of: the tallest building in the city, the most expensive of all, the best, the worst."
+    },
+    {
+      "id": "en-services-in-town",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Services in town",
+      "intent": "Name about twelve places in town where you get help or a service: police station, fire station, tourist information, garage, hairdresser's, dentist's, launderette."
+    },
+    {
+      "id": "en-reading-a-tourist-leaflet-with-a-map",
+      "kind": "reading",
+      "theme": "places",
+      "workingTitle": "Reading a tourist leaflet and town map",
+      "intent": "Read a tourist leaflet with a town map and find the main sights, opening times, ticket prices and how to get there (opposite the museum, a ten-minute walk from the station)."
+    },
+    {
+      "id": "en-as-as-comparisons",
+      "kind": "grammar",
+      "topic": "comparison_and_quantity",
+      "workingTitle": "As big as, not as big as",
+      "intent": "Say two things are equal with as + adjective + as, and that one is less with not as + adjective + as: She's as tall as her mother. The bus isn't as fast as the train."
+    },
+    {
+      "id": "en-types-of-home",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Types of home",
+      "intent": "Name about twelve kinds of British home and their parts: detached house, semi-detached house, terraced house, bungalow, cottage, block of flats, floor, stairs."
+    },
+    {
+      "id": "en-too-and-enough-with-adjectives",
+      "kind": "grammar",
+      "topic": "comparison_and_quantity",
+      "workingTitle": "Too and enough with adjectives",
+      "intent": "Say something is more or less than you need with too before an adjective and enough after it: It's too hot. The room isn't big enough."
+    },
+    {
+      "id": "en-bedroom-and-bathroom",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Bedroom and bathroom",
+      "intent": "Name about fourteen things in a bedroom and a bathroom: pillow, duvet, blanket, sheet, towel, soap, toothbrush, mirror."
+    },
+    {
+      "id": "en-one-and-ones",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "One and ones: the red one",
+      "intent": "Avoid repeating a noun with one and ones after an adjective, this, that or which: I don't like this shirt. I prefer the blue one. This one's cheaper. Which ones do you want?"
+    },
+    {
+      "id": "en-comparing-two-flats",
+      "kind": "functions",
+      "theme": "house_and_home",
+      "workingTitle": "Comparing two flats",
+      "intent": "Compare two flats with a friend and say which one you prefer and why: This one's bigger, but that one's nearer the station, It isn't as noisy, I prefer the first one because it's cheaper."
+    },
+    {
+      "id": "en-reading-a-flatmate-wanted-ad",
+      "kind": "reading",
+      "theme": "house_and_home",
+      "workingTitle": "Reading an ad for a flatmate",
+      "intent": "Read a post from someone looking for a flatmate (US roommate) and find what the room and flat are like, the rent and bills, and the kind of person they want (tidy, non-smoker, quiet)."
+    },
+    {
+      "id": "en-outdoor-activities",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Outdoor activities",
+      "intent": "Name about twelve activities people do outdoors: camping, hiking, fishing, sailing, climbing, horse riding, skiing, picnic."
+    },
+    {
+      "id": "en-verb-plus-ing-form",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Verb + -ing: enjoy cooking, mind waiting",
+      "intent": "Use the -ing form after verbs like enjoy, finish, mind, stop and spend time: I enjoy reading. Do you mind waiting? He spent the day cooking."
+    },
+    {
+      "id": "en-indoor-games-and-hobbies",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Indoor games and hobbies",
+      "intent": "Name about twelve games and hobbies for indoors: chess, cards, board game, jigsaw, crossword, dice, paint, draw."
+    },
+    {
+      "id": "en-music-and-instruments",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Music and instruments",
+      "intent": "Name about twelve words for making music: guitar, piano, drums, violin, trumpet, band, singer, play the guitar."
+    },
+    {
+      "id": "en-ing-after-prepositions-and-as-subject",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "-ing after prepositions and as a subject",
+      "intent": "Use the -ing form after a preposition and as the subject of a sentence: I'm good at cooking. Thanks for coming. Swimming is good for you."
+    },
+    {
+      "id": "en-making-suggestions",
+      "kind": "functions",
+      "theme": "free_time",
+      "workingTitle": "Making suggestions",
+      "intent": "Suggest things to do at the weekend, react to other people's ideas and agree on a plan: Why don't we go to the beach?, How about going bowling?, Good idea, I'm not sure, it's a bit expensive."
+    },
+    {
+      "id": "en-jobs-and-what-people-do",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Jobs and what people do",
+      "intent": "Name about twelve more jobs and say what each person does: receptionist, mechanic, pilot, journalist, farmer, builder, fix cars, serve customers."
+    },
+    {
+      "id": "en-verb-plus-to-infinitive",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Verb + to: want to, decide to",
+      "intent": "Use the to-infinitive after verbs like want, need, hope, decide, plan, learn and forget: I want to travel. She decided to leave. Don't forget to call."
+    },
+    {
+      "id": "en-the-workplace",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "The workplace",
+      "intent": "Name about twelve words for working life: meeting, manager, staff, printer, part-time, full-time, lunch break, day off."
+    },
+    {
+      "id": "en-have-to-and-do-not-have-to",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Have to and don't have to",
+      "intent": "Say what is necessary with have to or has to, and that something is not necessary with don't have to: I have to work on Saturday. You don't have to come."
+    },
+    {
+      "id": "en-reading-a-blog-about-a-working-day",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Reading a blog about a working day",
+      "intent": "Read a blog post about one person's working day (a nurse, a baker, a bus driver) and find their routine, their hours and what they like and dislike about the job."
+    },
+    {
+      "id": "en-could-for-past-ability",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Could and couldn't: past ability",
+      "intent": "Say what you could and couldn't do in the past, and ask about it, with could + base form for every person: I couldn't swim when I was five. Could you swim as a child?"
+    },
+    {
+      "id": "en-asking-for-permission",
+      "kind": "functions",
+      "theme": "daily_life",
+      "workingTitle": "Asking for permission",
+      "intent": "Ask for permission at work or in someone's home, and say yes or no politely: Is it OK if I leave a bit early?, Could I use your phone?, Of course, go ahead, Sorry, not right now."
+    },
+    {
+      "id": "en-money-and-income",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Money and income",
+      "intent": "Name about twelve words for earning and spending money: earn, salary, spend, save, cost, pay for, rich, poor, pocket money."
+    },
+    {
+      "id": "en-infinitive-of-purpose",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Infinitive of purpose: I went out to buy milk",
+      "intent": "Say why someone does something with to + base form, not for + verb: I went to the shop to buy bread. She's saving money to buy a car."
+    },
+    {
+      "id": "en-sports-kit-and-results",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Sports kit and results",
+      "intent": "Name about twelve words for playing and following sport: ball, racket, net, goal, team, match, win, lose."
+    },
+    {
+      "id": "en-adverbs-of-manner",
+      "kind": "grammar",
+      "topic": "adverbs",
+      "workingTitle": "Adverbs of manner: slowly, well, fast",
+      "intent": "Say how someone does something with adjective + -ly (quickly, carefully, happily), after the verb or its object, and the irregular ones: well, fast, hard, late."
+    },
+    {
+      "id": "en-comparative-and-superlative-adverbs",
+      "kind": "grammar",
+      "topic": "comparison_and_quantity",
+      "workingTitle": "Comparative and superlative adverbs",
+      "intent": "Compare how people do things with more and most + an -ly adverb, -er and -est for short adverbs, and better and best: She drives more carefully than me. He works harder. Who sings the best?"
+    },
+    {
+      "id": "en-exercise-and-healthy-habits",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Exercise and healthy habits",
+      "intent": "Name about twelve words for staying healthy: exercise, fit, healthy, unhealthy, go for a run, lose weight, sleep well, fresh air."
+    },
+    {
+      "id": "en-must-and-must-not",
+      "kind": "grammar",
+      "topic": "negation",
+      "workingTitle": "Must and mustn't",
+      "intent": "Give strong rules and advice with must, and say something is not allowed with mustn't, unlike don't have to (no need): You must wear a helmet. You mustn't smoke here."
+    },
+    {
+      "id": "en-reading-swimming-pool-rules",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Reading the rules at a swimming pool",
+      "intent": "Read the rules at a swimming pool or gym and find what you must do, what you mustn't do and why (Shower before swimming, No running, No diving in the shallow end)."
+    },
+    {
+      "id": "en-tv-programmes-and-films",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "TV programmes and films",
+      "intent": "Name about twelve kinds of TV programme and film: comedy, cartoon, documentary, the news, series, quiz show, horror film, action film."
+    },
+    {
+      "id": "en-present-continuous-for-arrangements",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Present continuous for future arrangements",
+      "intent": "Talk about fixed plans with other people, or with a time and place, using the present continuous: I'm meeting Sam at six. We're flying to Rome on Friday."
+    },
+    {
+      "id": "en-inviting-someone-out",
+      "kind": "functions",
+      "theme": "free_time",
+      "workingTitle": "Inviting someone out",
+      "intent": "Invite someone out, and accept an invitation or say no politely with a reason: Would you like to come to the cinema on Friday?, I'd love to, I'm afraid I can't, I'm working that evening."
+    },
+    {
+      "id": "en-invitations-and-parties",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Invitations and parties",
+      "intent": "Name about twelve words for parties and the people at them: invite, invitation, guest, host, celebrate, wedding, barbecue, fancy dress."
+    },
+    {
+      "id": "en-will-for-predictions",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Will and won't for predictions",
+      "intent": "Say what you think will happen with will or won't + base form, often after I think or probably: I think it'll be sunny tomorrow. She won't like it."
+    },
+    {
+      "id": "en-festivals-in-the-uk",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Festivals in the UK",
+      "intent": "Name about twelve British holidays and festivals and what happens on them: bank holiday, Easter, Boxing Day, Bonfire Night, Halloween, Pancake Day, fireworks."
+    },
+    {
+      "id": "en-will-and-shall-for-offers-and-decisions",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Will and shall: offers, promises, decisions",
+      "intent": "Decide on the spot, offer and promise with will (I'll have the soup. I'll help you. I won't be late.), and offer or suggest with shall: Shall I open the window? Shall we go?"
+    },
+    {
+      "id": "en-arranging-to-meet",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Arranging to meet",
+      "intent": "Agree a time and place to meet, then confirm or change the plan by message: What time shall we meet?, Let's say seven outside the station, Can we make it half past instead?"
+    },
+    {
+      "id": "en-reading-a-local-news-report",
+      "kind": "reading",
+      "theme": "places",
+      "workingTitle": "Reading a short local news report",
+      "intent": "Read a short local news report about a festival, a road closure or a football match and find who, what, where and when, and what happens next."
+    },
+    {
+      "id": "en-weather-forecast-words",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "Weather forecast words",
+      "intent": "Name about twelve words heard in a simple weather forecast: forecast, bright, sunny spells, showers, dry, wet, cool, damp, heavy rain."
+    },
+    {
+      "id": "en-going-to-for-predictions",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Going to for predictions: it's going to rain",
+      "intent": "Predict what is about to happen from what you can see now with going to: Look at those clouds. It's going to rain. Be careful! You're going to fall!"
+    },
+    {
+      "id": "en-bad-weather",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "Bad weather",
+      "intent": "Name about twelve words for stormy and cold weather: storm, thunder, lightning, fog, foggy, ice, icy, freezing."
+    },
+    {
+      "id": "en-might-and-may-for-possibility",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Might and may for possibility",
+      "intent": "Say something is possible but not certain with might or may + base form and their negatives: I might go out later. It may rain. She might not come."
+    },
+    {
+      "id": "en-reading-a-regional-weather-report",
+      "kind": "reading",
+      "theme": "weather",
+      "workingTitle": "Reading a regional weather report",
+      "intent": "Read a short written weather report and find the weather and temperatures for each part of the country and time of day (showers in the north, sunny spells later, highs of 18)."
+    },
+    {
+      "id": "en-supermarkets-and-department-stores",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Supermarkets and department stores",
+      "intent": "Name about twelve words for shopping in a supermarket or a department store: escalator, trolley, basket, aisle, cashier, self-service till, carrier bag, loyalty card."
+    },
+    {
+      "id": "en-a-few-a-little-much-many",
+      "kind": "grammar",
+      "topic": "comparison_and_quantity",
+      "workingTitle": "A few, a little, much, many",
+      "intent": "Talk about amounts with a few and many + plural noun and a little and much + uncountable noun, using much and many mostly in negatives and questions: a few friends, not much time."
+    },
+    {
+      "id": "en-in-a-clothes-shop",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "In a clothes shop",
+      "intent": "Name about twelve words for buying clothes: try on, fit, suit, tight, changing room, queue, pay by card, receipt."
+    },
+    {
+      "id": "en-sizes-patterns-and-materials",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Sizes, patterns and materials",
+      "intent": "Describe clothes by size, pattern and material with about twelve words: medium, large, plain, striped, spotted, cotton, wool, leather."
+    },
+    {
+      "id": "en-buying-clothes",
+      "kind": "functions",
+      "theme": "shopping",
+      "workingTitle": "Buying clothes",
+      "intent": "Buy clothes in a shop: ask for a size or a colour, try things on, say how they fit and decide: Have you got this in a medium?, Can I try it on?, It's too tight, I'll take it."
+    },
+    {
+      "id": "en-accessories-and-jewellery",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Accessories and jewellery",
+      "intent": "Name about twelve accessories and pieces of jewellery: belt, scarf, gloves, handbag, sunglasses, ring, necklace, earrings."
+    },
+    {
+      "id": "en-shapes-and-materials",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Shapes and what things are made of",
+      "intent": "Say what shape a thing is and what it is made of with about twelve words: round, square, circle, triangle, flat, plastic, metal, glass, wood, wooden, gold, silver, made of."
+    },
+    {
+      "id": "en-possessive-pronouns-and-whose",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Possessive pronouns and whose: It's mine",
+      "intent": "Ask who something belongs to with whose and answer with mine, yours, his, hers, ours or theirs, with no noun after them: Whose is this coat? It's mine."
+    },
+    {
+      "id": "en-reading-a-product-page",
+      "kind": "reading",
+      "theme": "shopping",
+      "workingTitle": "Reading a product page online",
+      "intent": "Read a product page on a shopping website and find the main features, sizes, colours, price, delivery options and star rating, then compare it with a cheaper model."
+    },
+    {
+      "id": "en-sending-a-parcel",
+      "kind": "functions",
+      "theme": "services",
+      "workingTitle": "Sending a parcel",
+      "intent": "Send a parcel at the post office and ask about the price and delivery: I'd like to send this to Leeds, How much is it first class?, When will it get there?, Can I have a receipt?"
+    },
+    {
+      "id": "en-cooking-verbs",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Verbs for cooking",
+      "intent": "Use about fourteen verbs for preparing and cooking food: boil, fry, bake, roast, grill, mix, stir, pour."
+    },
+    {
+      "id": "en-too-much-too-many-enough-with-nouns",
+      "kind": "grammar",
+      "topic": "comparison_and_quantity",
+      "workingTitle": "Too much, too many, enough + noun",
+      "intent": "Say there is more or less of something than you need with too much or too many + noun and enough before a noun: too much sugar, too many cars, not enough chairs."
+    },
+    {
+      "id": "en-meat-fish-and-dairy",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Meat, fish and dairy",
+      "intent": "Name about fifteen kinds of meat, fish and dairy food: chicken, beef, lamb, bacon, sausage, salmon, prawns, yoghurt."
+    },
+    {
+      "id": "en-no-none-and-not-any",
+      "kind": "grammar",
+      "topic": "negation",
+      "workingTitle": "No, none and not any",
+      "intent": "Use no + noun with a positive verb to mean not any (There's no milk. There isn't any milk.), and answer with none: How many tickets are left? None."
+    },
+    {
+      "id": "en-reading-a-simple-recipe",
+      "kind": "reading",
+      "theme": "food_and_drink",
+      "workingTitle": "Reading a simple recipe",
+      "intent": "Read a short illustrated recipe, find the ingredients and amounts (200 g flour, two eggs, a pinch of salt) and follow the steps in order: first, then, after that, finally."
+    },
+    {
+      "id": "en-indefinite-pronouns",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Something, anyone, nobody, everywhere",
+      "intent": "Use some-, any-, no- and every- with -thing, -one, -body and -where, with only one negative: Someone called. I didn't see anyone. Nobody knows. It's everywhere."
+    },
+    {
+      "id": "en-food-and-taste-adjectives",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "How food tastes",
+      "intent": "Describe food and how it tastes with about twelve adjectives: sweet, salty, spicy, delicious, fresh, raw, burnt, homemade."
+    },
+    {
+      "id": "en-ordering-a-meal-in-a-restaurant",
+      "kind": "functions",
+      "theme": "food_and_drink",
+      "workingTitle": "Ordering a meal in a restaurant",
+      "intent": "Order a meal, ask about a dish and say what you can't eat: I'll have the soup to start, What's in the pie?, I'm allergic to nuts, Could we have the bill, please?"
+    },
+    {
+      "id": "en-british-dishes",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "British dishes",
+      "intent": "Name about twelve traditional British dishes: fish and chips, full English breakfast, roast dinner, jacket potato, beans on toast, shepherd's pie, crumble."
+    },
+    {
+      "id": "en-articles-general-and-specific",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Articles: the or no article",
+      "intent": "Use no article for things in general and the for specific ones (I love music. The music in this film is great.), plus fixed phrases with no article: at home, by bus."
+    },
+    {
+      "id": "en-reading-short-cafe-reviews",
+      "kind": "reading",
+      "theme": "food_and_drink",
+      "workingTitle": "Reading short café reviews to choose a place",
+      "intent": "Read three short reviews of cafés and decide which one suits each person, looking at price, food, opening times and atmosphere (cosy, noisy, great for families)."
+    },
+    {
+      "id": "en-past-participles",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Past participles: worked, seen, written",
+      "intent": "Form the past participle of regular verbs with -ed and learn common irregular ones, some different from the past simple: worked, been, seen, done, gone, written, eaten."
+    },
+    {
+      "id": "en-at-the-airport",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "At the airport",
+      "intent": "Name about twelve words for a trip through an airport: check-in desk, bag drop, security, departure lounge, gate, boarding pass, arrivals, baggage reclaim."
+    },
+    {
+      "id": "en-present-perfect-for-experience",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Present perfect: Have you ever been to Rome?",
+      "intent": "Talk about life experiences with have or has + past participle, with ever in questions and never in answers: Have you ever been to Japan? I've never eaten sushi."
+    },
+    {
+      "id": "en-holiday-accommodation",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Holiday accommodation",
+      "intent": "Name about twelve places to stay and words for booking them: B&B, guest house, youth hostel, caravan, tent, sleeping bag, vacancies, fully booked."
+    },
+    {
+      "id": "en-reporting-a-problem-in-a-hotel",
+      "kind": "functions",
+      "theme": "travel",
+      "workingTitle": "Reporting a problem in a hotel",
+      "intent": "Tell hotel reception about a problem with your room and ask them to fix it: There isn't any hot water, The air conditioning doesn't work, Could someone come and look at it?"
+    },
+    {
+      "id": "en-present-perfect-or-past-simple-for-experience",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Present perfect or past simple: I've been, I went",
+      "intent": "Use the present perfect for an experience with no time given, then the past simple for details or a finished time: I've been to Rome. I went there in 2019."
+    },
+    {
+      "id": "en-reading-a-hotel-booking-confirmation",
+      "kind": "reading",
+      "theme": "travel",
+      "workingTitle": "Reading a hotel booking confirmation",
+      "intent": "Read a hotel or hostel booking confirmation email and find the dates, the room, the price, the check-in time and the last day you can cancel for free."
+    },
+    {
+      "id": "en-cars-and-roads",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Cars and roads",
+      "intent": "Name about twelve words for travelling by car: driver, driving licence, car park (US parking lot), motorway, petrol station, traffic jam, parking space, mile, kilometre."
+    },
+    {
+      "id": "en-present-perfect-just-already-yet",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Present perfect: just, already, yet",
+      "intent": "Talk about recent actions with the present perfect and just, already and yet, in the right position: I've just eaten. She's already left. Have you finished yet?"
+    },
+    {
+      "id": "en-buses-and-the-underground",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Buses and the Underground",
+      "intent": "Name about twelve words for city buses and trains: bus stop, bus station, fare, ticket machine, the Underground, the Tube (US subway), line, next stop."
+    },
+    {
+      "id": "en-phrasal-verbs-of-movement",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Phrasal verbs of movement",
+      "intent": "Understand and use about ten phrasal verbs for moving, and what each one means: come in, go out, get in, get out, get on, get off, come back, go back, go away."
+    },
+    {
+      "id": "en-buying-a-train-ticket",
+      "kind": "functions",
+      "theme": "travel",
+      "workingTitle": "Buying a train ticket",
+      "intent": "Buy a train ticket and ask about times, changes and platforms: A return to York, please, When's the next train?, Do I have to change?, Which platform does it leave from?"
+    },
+    {
+      "id": "en-illnesses-and-symptoms",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Illnesses and symptoms",
+      "intent": "Name about twelve common illnesses and symptoms: flu, cough, sore throat, earache, runny nose, fever, sneeze, rash."
+    },
+    {
+      "id": "en-present-perfect-for-and-since",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Present perfect with for and since",
+      "intent": "Say how long something has lasted with the present perfect, for + a period and since + a starting point: I've lived here for ten years. I've known her since May. How long have you been here?"
+    },
+    {
+      "id": "en-at-the-doctors-and-the-chemists",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "At the doctor's and the chemist's",
+      "intent": "Name about twelve words for getting medical help: appointment, GP, surgery, prescription, medicine, tablets, cough mixture, plaster."
+    },
+    {
+      "id": "en-seeing-a-doctor-about-a-cold",
+      "kind": "functions",
+      "theme": "health",
+      "workingTitle": "Seeing a doctor about a cold",
+      "intent": "Describe cold or flu symptoms to a doctor, say how long you have had them and understand the advice: I've had a sore throat since Monday, I can't sleep, Take two tablets every four hours."
+    },
+    {
+      "id": "en-reading-a-medicine-label",
+      "kind": "reading",
+      "theme": "health",
+      "workingTitle": "Reading a medicine label",
+      "intent": "Read the label on a box of medicine from the chemist's and find the dose, how often to take it, before or after food, and the warnings (Do not take more than 8 tablets in 24 hours)."
+    },
+    {
+      "id": "en-should-for-advice",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Should and shouldn't for advice",
+      "intent": "Give and ask for advice with should and shouldn't + base form: You should see a doctor. You shouldn't stay up late. What should I wear?"
+    },
+    {
+      "id": "en-accidents-and-injuries",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Accidents and injuries",
+      "intent": "Name about twelve words for everyday accidents and what happens next: fall over, trip, break your arm, cut your finger, bleed, ambulance, A&E (US ER)."
+    },
+    {
+      "id": "en-reflexive-pronouns",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Reflexive pronouns: myself, yourself",
+      "intent": "Use myself, yourself, himself, herself, itself, ourselves, yourselves and themselves when the subject and the object are the same: I cut myself. Help yourself."
+    },
+    {
+      "id": "en-past-continuous",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Past continuous: I was working",
+      "intent": "Say what was in progress at a time in the past with was or were + -ing, in all forms: At eight I was having dinner. They weren't listening. What were you doing?"
+    },
+    {
+      "id": "en-books-comics-and-magazines",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Books, comics and magazines",
+      "intent": "Name about twelve words for things people read for fun: novel, story, fairy tale, magazine, newspaper, comic, writer, page."
+    },
+    {
+      "id": "en-past-continuous-and-past-simple",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Past continuous and past simple: when, while",
+      "intent": "Show a short action interrupting a longer one with when and while: I was cooking when the phone rang. While we were walking, it started to rain."
+    },
+    {
+      "id": "en-apologising-and-giving-reasons",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Apologising and giving reasons",
+      "intent": "Apologise for being late or forgetting something, give a reason and accept an apology: I'm so sorry I'm late, I missed the bus, I completely forgot, Don't worry about it."
+    },
+    {
+      "id": "en-reading-a-short-story-or-comic-strip",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Reading a short story or comic strip",
+      "intent": "Read a short simple story or comic strip about an everyday situation, follow what happens in order and say who the characters are and how it ends."
+    },
+    {
+      "id": "en-school-places-and-people",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "School places and people",
+      "intent": "Name about twelve places and people in a British school: headteacher, pupil, classmate, playground, canteen, staffroom, school uniform, lesson."
+    },
+    {
+      "id": "en-used-to-for-past-habits",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Used to: I used to live in Leeds",
+      "intent": "Talk about past habits and states that are no longer true with used to, didn't use to and Did you use to: I used to play tennis. We didn't use to have a car."
+    },
+    {
+      "id": "en-tests-and-exams",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Tests and exams",
+      "intent": "Name about twelve words for tests and school work: homework, test, exam, revise, pass, fail, mark, term."
+    },
+    {
+      "id": "en-prepositions-for-during-until-by",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "For, during, until, by: time prepositions",
+      "intent": "Talk about time with for + a period, during + an event, until for when something stops and by for a deadline: for two hours, during the film, until six, by Friday."
+    },
+    {
+      "id": "en-periods-of-time",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Periods of time",
+      "intent": "Name about twelve words for periods of time and days around today: second, half an hour, weekday, fortnight, decade, century, the day after tomorrow."
+    },
+    {
+      "id": "en-college-and-university",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "College and university",
+      "intent": "Name about twelve words for studying after school: college, university, course, student, lecture, lecturer, degree, evening class."
+    },
+    {
+      "id": "en-reading-an-evening-class-web-page",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Reading an evening class web page",
+      "intent": "Read a web page for evening classes and find the courses, levels, days and times, fees and how to enrol (Italian conversation, Tuesdays 7 to 9 pm, £120 for ten weeks)."
+    },
+    {
+      "id": "en-introducing-yourself-by-email",
+      "kind": "functions",
+      "theme": "personal_identification",
+      "workingTitle": "Introducing yourself by email",
+      "intent": "Write a short email to introduce yourself to a host family or a new colleague: Dear Mrs Lee, My name is..., I work as a..., I'm looking forward to meeting you, Best wishes."
+    },
+    {
+      "id": "en-personality-adjectives",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Personality",
+      "intent": "Describe what someone is like with about twelve adjectives: friendly, shy, kind, funny, clever, lazy, hard-working, polite."
+    },
+    {
+      "id": "en-defining-relative-clauses",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Relative clauses: who, which, that, where",
+      "intent": "Say which person, thing or place you mean with who, which, that or where: the woman who lives next door, the bus that goes to town, the café where we met."
+    },
+    {
+      "id": "en-more-feelings",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "More feelings",
+      "intent": "Say how you feel with about twelve new adjectives: angry, worried, nervous, scared, excited, surprised, proud, relaxed."
+    },
+    {
+      "id": "en-adjectives-ending-in-ed-and-ing",
+      "kind": "grammar",
+      "topic": "adjectives",
+      "workingTitle": "Adjectives with -ed and -ing: bored, boring",
+      "intent": "Use -ed adjectives for how a person feels and -ing adjectives for what causes the feeling: I was bored because the film was boring. It was a tiring day and I felt tired."
+    },
+    {
+      "id": "en-exclamations-what-a-and-how",
+      "kind": "grammar",
+      "topic": "information_structure_and_pragmatics",
+      "workingTitle": "Exclamations: What a view! How nice!",
+      "intent": "React strongly with what a + adjective + noun, what + plural or uncountable noun, and how + adjective: What a lovely day! What awful weather! How kind of you!"
+    },
+    {
+      "id": "en-showing-sympathy",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Showing sympathy",
+      "intent": "Share a worry or bad news and react kindly when a friend shares theirs: I'm really worried about my exam, I've got flu, Oh no, I'm sorry to hear that, Good luck!, I hope you feel better soon."
+    },
+    {
+      "id": "en-friends-and-keeping-in-touch",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Friends and keeping in touch",
+      "intent": "Use about ten common phrases about friendship: make friends, meet up, keep in touch, lose touch, fall out, spend time with, get to know."
+    },
+    {
+      "id": "en-reading-greetings-cards-and-notes",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Reading greetings cards",
+      "intent": "Read birthday, congratulations, get well and thank you cards and find why each one was sent and what the writer wishes or feels (Well done, Get well soon, Thanks so much for)."
+    },
+    {
+      "id": "en-hugs-handshakes-and-smiles",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Hugs, handshakes and smiles",
+      "intent": "Name about twelve things people do when they meet or show a feeling: shake hands, hug, kiss, wave, smile, laugh, cry, shout."
+    },
+    {
+      "id": "en-in-the-countryside",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "In the countryside",
+      "intent": "Name about twelve things you see in the countryside: field, hill, wood, forest, river, stream, village, farm."
+    },
+    {
+      "id": "en-time-clauses-with-present-for-future",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "When, before, as soon as + present for future",
+      "intent": "Talk about the future with when, before, after, until and as soon as + present simple, not will: I'll call you when I arrive. Wait until the light turns green."
+    },
+    {
+      "id": "en-wild-animals-and-insects",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Wild animals and insects",
+      "intent": "Name about fifteen wild animals and insects: lion, elephant, monkey, bear, snake, bee, spider, butterfly."
+    },
+    {
+      "id": "en-zero-conditional",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Zero conditional: if you heat ice, it melts",
+      "intent": "Talk about things that are always true with if or when + present simple in both clauses: If you heat ice, it melts. If I'm tired, I go to bed early."
+    },
+    {
+      "id": "en-first-conditional",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "First conditional: if it rains, we'll stay in",
+      "intent": "Talk about a possible future situation and its result with if + present simple and will, can or an imperative: If it rains, we'll stay in. If you see Tom, tell him."
+    },
+    {
+      "id": "en-bank-accounts",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Banks and currency",
+      "intent": "Name about twelve words for using a bank: bank account, PIN, balance, take out money, pay in, change money, exchange rate, currency."
+    },
+    {
+      "id": "en-reading-cash-machine-screens",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Reading cash machine screens",
+      "intent": "Read the screens of a cash machine (US ATM) and follow them step by step (Insert your card, Enter your PIN, Take your card), and understand messages such as Transaction cancelled."
+    },
+    {
+      "id": "en-the-garden",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "The garden",
+      "intent": "Name about twelve things in a garden and jobs to do there: grass, flower, tree, bush, pond, fence, shed, water the plants."
+    },
+    {
+      "id": "en-electrical-things-at-home",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Electrical things at home",
+      "intent": "Name about twelve machines and fittings that use electricity at home: washing machine, dishwasher, microwave, kettle, iron, toaster, plug, switch."
+    },
+    {
+      "id": "en-phrasal-verbs-at-home",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Phrasal verbs at home",
+      "intent": "Understand and use about ten phrasal verbs for everyday things at home, and what each one means: put on, take off, turn on, turn off, turn up, turn down, pick up, give back."
+    },
+    {
+      "id": "en-phrasal-verbs-object-position",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Phrasal verbs: turn it on, not turn on it",
+      "intent": "With phrasal verbs like turn on and pick up, put a noun object before or after the particle, but a pronoun only before it: Turn on the light. Turn the light on. Turn it on."
+    },
+    {
+      "id": "en-asking-a-neighbour-for-a-favour",
+      "kind": "functions",
+      "theme": "house_and_home",
+      "workingTitle": "Asking a neighbour for a favour",
+      "intent": "Ask a neighbour for a favour, offer help in return and answer requests: Could you water my plants while I'm away?, Can I borrow your ladder?, Sure, no problem, Let me know if you need anything."
+    },
+    {
+      "id": "en-reading-a-notice-from-the-landlord",
+      "kind": "reading",
+      "theme": "house_and_home",
+      "workingTitle": "Reading a notice from the landlord",
+      "intent": "Read a notice from a landlord or building manager and find what will happen, when, and what residents have to do (the water will be off on Monday, put your bins out on Thursday)."
+    },
+    {
+      "id": "en-phone-calls",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Phone calls",
+      "intent": "Name about twelve words for making and getting phone calls: ring, answer, missed call, call back, hang up, voicemail, signal, top up."
+    },
+    {
+      "id": "en-emails-and-messages",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Emails and messages",
+      "intent": "Name about twelve words for writing and sending emails: send, receive, reply, forward, attachment, inbox, subject line, spam."
+    },
+    {
+      "id": "en-taking-a-phone-message",
+      "kind": "functions",
+      "theme": "daily_life",
+      "workingTitle": "Taking a phone message",
+      "intent": "Answer the phone for a colleague, take a simple message and pass it on: I'm afraid she's not here, Can I take a message?, Can she call you back?, Sam called about the meeting."
+    },
+    {
+      "id": "en-reading-a-friends-email-with-news",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Reading an email from a friend",
+      "intent": "Read a friend's email with news about a new flat, job or course, find what has happened and the questions the writer asks, so you know what to answer."
+    },
+    {
+      "id": "en-gadgets-and-devices",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Gadgets and devices",
+      "intent": "Name about twelve devices and the words that go with them: laptop, tablet, smartphone, charger, headphones, screen, battery, download."
+    },
+    {
+      "id": "en-have-take-and-go",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Phrases with have, take and go",
+      "intent": "Use about twelve common phrases with have, take and go: have a rest, have fun, have a look, take a photo, take a taxi, take your time, go for a walk."
+    },
+    {
+      "id": "en-also-too-as-well-either",
+      "kind": "grammar",
+      "topic": "adverbs",
+      "workingTitle": "Also, too, as well, either",
+      "intent": "Add information with also before the main verb and too or as well at the end, and with either at the end of a negative: I also speak French. I don't like it either."
+    },
+    {
+      "id": "en-grammar-and-punctuation-words",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Grammar and punctuation words",
+      "intent": "Name about twelve words for talking about grammar and punctuation: noun, verb, adjective, singular, plural, past tense, full stop (US period), comma."
+    },
+    {
+      "id": "en-so-do-i-neither-do-i",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "So do I, neither do I",
+      "intent": "Agree with someone using so, neither or nor + auxiliary + subject, in the same tense: I like jazz. So do I. I can't swim. Neither can I. I wasn't there. Nor was I."
+    },
+    {
+      "id": "en-checking-you-understand",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Checking you understand",
+      "intent": "Show you are following and check that you have understood: Right, I see, Sorry, did you say Tuesday?, So you mean I need to pay now?, Is that right?"
+    },
+    {
+      "id": "en-agreement-everyone-people-plural-nouns",
+      "kind": "grammar",
+      "topic": "agreement",
+      "workingTitle": "Agreement: everyone is, people are",
+      "intent": "Use a singular verb after everyone, somebody and nothing, and a plural verb after people, the police and plural-only nouns: Everyone is here. People are friendly. My jeans are new."
+    },
+    {
+      "id": "en-reading-tips-for-learning-words",
+      "kind": "reading",
+      "theme": "language",
+      "workingTitle": "Reading an article with tips for learning words",
+      "intent": "Read a short article with tips for learning English words (keep a notebook, use flashcards, learn words in groups) and find each tip and the reason for it."
+    }
+  ]
+}

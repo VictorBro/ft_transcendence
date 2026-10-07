@@ -21,6 +21,7 @@ import {
   StartPlacementSchema,
   SubmitAnswerSchema,
   SUPPORTED_LOCALES,
+  TimeZoneSchema,
   UpdateProfileSchema,
   UserSchema,
   isErrorCode,
@@ -33,6 +34,7 @@ const validUser = {
   displayName: 'ada_lovelace',
   avatarUrl: '/api/uploads/avatars/a.png',
   locale: 'fr',
+  timeZone: 'UTC',
   role: 'USER',
   createdAt: '2026-08-01T10:00:00.000Z',
   updatedAt: '2026-08-01T10:00:00.000Z',
@@ -116,11 +118,38 @@ describe('UserSchema', () => {
     expect(UserSchema.safeParse({ ...validUser, role: 'ROOT' }).success).toBe(false);
   });
 
+  it('reads a stored zone this ICU does not know', () => {
+    expect(UserSchema.parse({ ...validUser, timeZone: 'Mars/Olympus' }).timeZone).toBe(
+      'Mars/Olympus',
+    );
+  });
+
   it('keeps the email out of the public projection', () => {
     const publicUser = PublicUserSchema.parse(validUser);
 
     expect(publicUser).not.toHaveProperty('email');
     expect(Object.keys(publicUser).sort()).toEqual(['avatarUrl', 'displayName', 'id', 'locale']);
+  });
+});
+
+describe('TimeZoneSchema', () => {
+  // UTC and Europe/Kyiv are the two Intl.supportedValuesOf leaves out.
+  it.each(['UTC', 'Etc/UTC', 'Europe/Kyiv', 'Pacific/Honolulu'])('keeps %s as given', (zone) => {
+    expect(TimeZoneSchema.parse(zone)).toBe(zone);
+  });
+
+  it.each(['Mars/Olympus', '', `Europe/${'x'.repeat(64)}`])('rejects %j with its code', (zone) => {
+    const result = TimeZoneSchema.safeParse(zone);
+
+    expect(result.success).toBe(false);
+    expect(result.error?.issues.map((issue) => issue.message)).toEqual(['profile.invalidTimeZone']);
+  });
+
+  // The Intl check rejects a long value too, so only the code shows the length check ran.
+  it('stops a long value at the length check', () => {
+    const result = TimeZoneSchema.safeParse(`Europe/${'x'.repeat(64)}`);
+
+    expect(result.error?.issues.map((issue) => issue.code)).toEqual(['too_big']);
   });
 });
 
@@ -346,6 +375,7 @@ describe('validation messages', () => {
     ['CreateUserSchema', CreateUserSchema, { email: 'nope', displayName: 'x', password: 'short' }],
     ['LoginSchema', LoginSchema, { email: 'nope', password: '' }],
     ['UpdateProfileSchema', UpdateProfileSchema, {}],
+    ['UpdateProfileSchema (time zone)', UpdateProfileSchema, { timeZone: 'Mars/Olympus' }],
     [
       'SignUpFormSchema',
       SignUpFormSchema,

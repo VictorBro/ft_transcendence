@@ -1,0 +1,1826 @@
+{
+  "lang": "en",
+  "level": "C1",
+  "entries": [
+    {
+      "id": "en-subtle-character-traits",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Precise adjectives for character",
+      "intent": "Describe personality precisely with about fifteen adjectives: conscientious, assertive, impulsive, meticulous, aloof, gregarious, complacent, headstrong."
+    },
+    {
+      "id": "en-positive-and-negative-words-for-people",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Positive and negative words for the same trait",
+      "intent": "Choose between words for the same trait that show approval or criticism, about twelve words in pairs: sensitive or touchy, thrifty or tight-fisted, inquisitive or nosy, self-assured or cocky."
+    },
+    {
+      "id": "en-will-for-typical-behaviour-and-assumptions",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Will for typical behaviour: she'll talk for hours",
+      "intent": "Describe typical behaviour and make confident guesses with will, and complain with stressed will or would: She'll sit for hours reading. That'll be Sam. He WILL leave his socks on the floor."
+    },
+    {
+      "id": "en-idioms-for-personality",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Idioms for personality",
+      "intent": "Say what people are like with about twelve idioms: set in your ways, down to earth, full of yourself, have a heart of gold, have a short fuse, have a big mouth, wear your heart on your sleeve."
+    },
+    {
+      "id": "en-reading-advanced-dictionary-entries",
+      "kind": "reading",
+      "theme": "language",
+      "workingTitle": "Reading dictionary usage notes on near synonyms",
+      "intent": "Use the register labels, collocations and usage notes of dictionary entries to choose between near synonyms (error, mistake, slip, oversight) and explain why one fits."
+    },
+    {
+      "id": "en-precise-physical-description",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Precise words for how people look",
+      "intent": "Describe how people look in precise detail with about twelve words: stocky, lanky, petite, slender, scruffy, immaculate, weather-beaten, clean-shaven."
+    },
+    {
+      "id": "en-self-image-and-identity",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Self-image and identity",
+      "intent": "Talk about how people see themselves with about twelve words and phrases: self-awareness, self-image, self-doubt, persona, identity crisis, sense of belonging, comfort zone."
+    },
+    {
+      "id": "en-reading-a-long-magazine-profile-of-a-chef",
+      "kind": "reading",
+      "theme": "personal_identification",
+      "workingTitle": "Reading a long magazine profile of a chef",
+      "intent": "Read a long magazine profile of a celebrated chef and infer the chef's personality from the details the writer chooses to show, rather than from direct description."
+    },
+    {
+      "id": "en-nuanced-emotions",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Nuanced emotions",
+      "intent": "Name mixed and precise feelings with about fifteen adjectives: apprehensive, elated, indignant, resentful, nostalgic, ambivalent, exasperated, wistful."
+    },
+    {
+      "id": "en-idioms-for-moods-and-feelings",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Idioms for moods and feelings",
+      "intent": "Describe moods vividly with about twelve idioms: over the moon, on cloud nine, down in the dumps, on edge, at the end of your tether, a bag of nerves."
+    },
+    {
+      "id": "en-reading-a-newspaper-obituary",
+      "kind": "reading",
+      "theme": "personal_identification",
+      "workingTitle": "Reading a newspaper obituary",
+      "intent": "Read the obituary of a scientist, follow how it tells the story of a life, moving between work and family, and say what its tone suggests about the writer's view of the person."
+    },
+    {
+      "id": "en-communication-styles",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Communication styles",
+      "intent": "Describe how people speak and express themselves with about twelve adjectives: blunt, tactful, outspoken, evasive, long-winded, articulate, curt, reticent."
+    },
+    {
+      "id": "en-colloquial-british-english",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Colloquial British English",
+      "intent": "Understand and use about twelve informal British words in relaxed conversation: knackered, gobsmacked, skint, quid, brolly, dodgy, faff, chock-a-block."
+    },
+    {
+      "id": "en-joining-in-the-banter",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Joining in the banter",
+      "intent": "Join in friendly teasing among friends and take a joke well: Very funny, You're never going to let me forget that, are you?, I'll take that as a compliment, Says you!"
+    },
+    {
+      "id": "en-reading-an-email-full-of-in-jokes",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Reading an old friend's email full of in-jokes",
+      "intent": "Read a long email from an old friend full of in-jokes, teasing and references to shared memories, and work out the real news and the feelings that the humour carries or hides."
+    },
+    {
+      "id": "en-vague-language-and-approximation",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Vague language and approximation",
+      "intent": "Be deliberately approximate in speech with about twelve expressions: or so, give or take, or thereabouts, the best part of, upwards of, getting on for, and whatnot."
+    },
+    {
+      "id": "en-reading-an-article-on-british-dialects",
+      "kind": "reading",
+      "theme": "language",
+      "workingTitle": "Reading an article on British regional dialects",
+      "intent": "Read an article on regional dialects in Britain and identify the features it describes (words, grammar, pronunciation) and the attitudes to them, including the writer's own."
+    },
+    {
+      "id": "en-stance-markers",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Stance markers",
+      "intent": "Show your attitude to what you say with about twelve markers: admittedly, frankly, needless to say, if anything, as it happens, understandably, ironically, to be fair."
+    },
+    {
+      "id": "en-binomials-pros-and-cons",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Fixed word pairs",
+      "intent": "Use about fifteen binomials in their fixed order: pros and cons, odds and ends, safe and sound, peace and quiet, ups and downs, wear and tear, sick and tired."
+    },
+    {
+      "id": "en-common-similes",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Common similes",
+      "intent": "Make descriptions vivid with about twelve fixed similes: as light as a feather, sleep like a log, as good as gold, as cool as a cucumber, as clear as mud, like clockwork."
+    },
+    {
+      "id": "en-disagreeing-diplomatically",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Disagreeing diplomatically",
+      "intent": "Voice strong disagreement with a committee's plan without causing offence: I have serious reservations about this, With respect, I think we're overlooking..., I'm not sure that's the best way forward."
+    },
+    {
+      "id": "en-reading-a-sarcastic-forum-thread-on-grammar",
+      "kind": "reading",
+      "theme": "language",
+      "workingTitle": "Reading a sarcastic forum thread about grammar",
+      "intent": "Read a forum thread in which posters argue with sarcasm over a usage rule (split infinitives, less or fewer) and tell each poster's real position from what they literally write."
+    },
+    {
+      "id": "en-relationship-dynamics",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Relationship dynamics",
+      "intent": "Describe how relationships work and change with about twelve words: rapport, chemistry, mutual respect, bond, tension, strained, rift, estrangement, close-knit."
+    },
+    {
+      "id": "en-relationship-idioms",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Idioms for love and couples",
+      "intent": "Talk about love and couples with about twelve idioms: head over heels, love at first sight, an item, a match made in heaven, pop the question, tie the knot, on the rocks."
+    },
+    {
+      "id": "en-reading-an-opinion-piece-on-online-friendship",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Reading an opinion piece on online friendship",
+      "intent": "Read an opinion piece claiming that social media weakens friendship and identify how the writer handles each counter-argument: conceding it, dismissing it or ignoring it."
+    },
+    {
+      "id": "en-phrasal-verbs-for-persuading",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Phrasal verbs for persuading",
+      "intent": "Persuade people, or give way to them, with about twelve phrasal verbs: talk into, talk out of, win over, bring round, push for, go along with, back down."
+    },
+    {
+      "id": "en-asking-a-big-favour-tactfully",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Asking a big favour tactfully",
+      "intent": "Ask for a big favour in a way that makes it easy to refuse: I hate to ask, but..., I wouldn't ask if it weren't important, Feel free to say no, No pressure at all."
+    },
+    {
+      "id": "en-unreal-past-its-time-would-rather-as-if",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Unreal past: it's time we left, I'd rather you didn't",
+      "intent": "Use a past tense with present meaning after it's (high) time, would rather + subject, and as if or as though: It's time we left. I'd rather you didn't smoke. He talks as if he knew everything."
+    },
+    {
+      "id": "en-conflict-and-reconciliation",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Conflict and reconciliation",
+      "intent": "Talk about disputes and how they end with about twelve words: feud, grievance, bad blood, flashpoint, stalemate, defuse, mediator, reconciliation, extend an olive branch."
+    },
+    {
+      "id": "en-reading-a-sociology-article-on-the-decline-of-clubs",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Reading a sociology article on the decline of clubs",
+      "intent": "Read a sociology article on why fewer people join clubs and societies, and tell the survey data from the writer's explanation of it, noting other readings the figures allow."
+    },
+    {
+      "id": "en-adverb-and-adjective-collocations",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Adverb and adjective collocations",
+      "intent": "Strengthen adjectives with the adverb that naturally goes with them, about twelve pairs: deeply concerned, highly unlikely, bitterly disappointed, fully aware, painfully slow."
+    },
+    {
+      "id": "en-smoothing-over-an-awkward-moment",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Smoothing over an awkward moment",
+      "intent": "Smooth over an awkward moment after a social blunder, yours or someone else's: I'm sure no offence was meant, Let's just forget it, Well, moving swiftly on..., I could have put that better."
+    },
+    {
+      "id": "en-reading-a-psychologist-on-why-we-laugh",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Reading a psychologist's article on laughter",
+      "intent": "Read a psychologist's article on why we laugh, follow the argument and how each example supports it, and identify the writer's attitude to rival theories."
+    },
+    {
+      "id": "en-interior-design",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Interior design",
+      "intent": "Describe how a home is designed and furnished with about twelve words: minimalist, open-plan, period features, feature wall, fixtures and fittings, statement piece, clutter-free."
+    },
+    {
+      "id": "en-materials-and-finishes",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Materials and finishes",
+      "intent": "Say what things are made of and how they look with about twelve words: marble, granite, oak, brass, stainless steel, laminate, glossy, matt, polished."
+    },
+    {
+      "id": "en-reading-an-interior-design-feature",
+      "kind": "reading",
+      "theme": "house_and_home",
+      "workingTitle": "Reading an interior design feature",
+      "intent": "Read a magazine feature on the redesign of a Victorian terraced house and follow the description of space, light and materials and the designer's reasons for each choice."
+    },
+    {
+      "id": "en-household-sounds",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Household sounds",
+      "intent": "Describe the noises of a house with about twelve verbs: creak, rattle, hum, buzz, whirr, gurgle, drip, slam, squeak, tick."
+    },
+    {
+      "id": "en-suffixes-ish-wise-proof-friendly",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Suffixes -ish, -wise, -ward, -proof, -friendly and -fold",
+      "intent": "Build and understand words with -ish, -wise, -ward, -proof, -friendly and -fold: fortyish, money-wise, homeward, soundproof, family-friendly, tenfold."
+    },
+    {
+      "id": "en-reading-a-tense-email-chain-between-neighbours",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Reading a tense email chain between neighbours",
+      "intent": "Read an email chain between neighbours about a shared garden and trace the growing irritation behind the polite phrases (as I mentioned before, just to be clear, with respect)."
+    },
+    {
+      "id": "en-idioms-about-home",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Idioms about home",
+      "intent": "Use about ten idioms built on home: make yourself at home, a home from home, hit home, home and dry, close to home, nothing to write home about, home truths."
+    },
+    {
+      "id": "en-mediating-between-neighbours",
+      "kind": "functions",
+      "theme": "house_and_home",
+      "workingTitle": "Mediating between neighbours",
+      "intent": "Help neighbours in a dispute find what each could give up: What would it take for you to...?, Would you be open to...?, If he agreed to..., could you...?, That sounds like a fair compromise."
+    },
+    {
+      "id": "en-gardening-and-plant-care",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Gardening and plant care",
+      "intent": "Talk about looking after a garden with about twelve words: perennial, seedling, cutting, prune, weed, fertiliser, bloom, wilt, greenhouse, allotment."
+    },
+    {
+      "id": "en-compound-adjectives-for-things-and-ideas",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Compound adjectives for things and ideas",
+      "intent": "Describe tasks, products and ideas with about twelve compound adjectives: time-consuming, far-reaching, thought-provoking, long-lasting, labour-saving, eye-catching."
+    },
+    {
+      "id": "en-workplace-culture",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Workplace culture",
+      "intent": "Talk about how people work together today with about twelve words: work-life balance, flexitime, remote working, hot-desking, office politics, presenteeism, team-building."
+    },
+    {
+      "id": "en-reading-an-article-on-a-four-day-week-trial",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Reading an article on a four-day week trial",
+      "intent": "Read a long article on a four-day working week trial and separate the trial's actual results from what supporters and critics claim those results prove."
+    },
+    {
+      "id": "en-professional-development",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Professional development",
+      "intent": "Talk about building a career with about twelve words: career path, mentor, appraisal, transferable skills, job shadowing, sabbatical, career break, freelance, headhunt."
+    },
+    {
+      "id": "en-time-idioms",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Time idioms",
+      "intent": "Talk about time and timing with about ten idioms: in the nick of time, against the clock, a race against time, once in a blue moon, kill time, behind the times."
+    },
+    {
+      "id": "en-networking-at-a-professional-event",
+      "kind": "functions",
+      "theme": "daily_life",
+      "workingTitle": "Networking at a professional event",
+      "intent": "Make contacts at a conference, say briefly what you do and offer introductions: We specialise in..., You might want to talk to..., I'd be happy to put you in touch with..., Mind if I drop you a line?"
+    },
+    {
+      "id": "en-business-idioms",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Business idioms",
+      "intent": "Use about twelve idioms common at work: get the ball rolling, cut corners, think outside the box, back to square one, call it a day, a ballpark figure, the bottom line."
+    },
+    {
+      "id": "en-cleft-sentences-it-and-what",
+      "kind": "grammar",
+      "topic": "information_structure_and_pragmatics",
+      "workingTitle": "Cleft sentences: it was Anna who, what I need is",
+      "intent": "Focus on one part of a sentence with it is or it was + focus + who or that, and with what + clause + be: It was Anna who called, not Tom. What I need is a holiday."
+    },
+    {
+      "id": "en-reading-a-long-article-on-the-gig-economy",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Reading a long article on the gig economy",
+      "intent": "Read a long-form article on the gig economy and assess how the writer combines personal stories with statistics, and whether that evidence really supports the conclusion."
+    },
+    {
+      "id": "en-abbreviations-and-acronyms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Abbreviations and acronyms",
+      "intent": "Read and use about fifteen abbreviations from emails, notes and forms, including two that people confuse: i.e. and e.g., NB, cf., FYI, encl., c/o, approx., TBC, ETA, PTO, RSVP, w/c."
+    },
+    {
+      "id": "en-reading-a-personal-essay-built-on-anecdote",
+      "kind": "reading",
+      "theme": "personal_identification",
+      "workingTitle": "Reading a personal essay on a career change",
+      "intent": "Read a personal essay about changing career at forty and see how the writer turns personal anecdotes into a general argument the reader can accept or reject."
+    },
+    {
+      "id": "en-negotiating-a-salary",
+      "kind": "functions",
+      "theme": "daily_life",
+      "workingTitle": "Negotiating a salary",
+      "intent": "Negotiate pay or contract terms, trading concessions without losing goodwill: I was hoping for something closer to..., Is there any flexibility on...?, I could accept that if..."
+    },
+    {
+      "id": "en-describing-music",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Words for how music sounds",
+      "intent": "Say how music sounds and feels with about twelve words: catchy, haunting, upbeat, mellow, soulful, infectious, discordant, harmony, tempo, acoustic."
+    },
+    {
+      "id": "en-theatre-production",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Theatre production and performance",
+      "intent": "Talk about how a play is staged and received with about twelve words: playwright, rehearsal, dress rehearsal, understudy, props, opening night, matinee, curtain call, standing ovation."
+    },
+    {
+      "id": "en-reading-a-scene-from-a-modern-play",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Reading a scene from a modern play",
+      "intent": "Read a scene from a modern play and work out the subtext: what the characters want, feel or hide behind what they actually say to each other."
+    },
+    {
+      "id": "en-film-making",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Film-making",
+      "intent": "Talk about how films are made with about twelve words: screenplay, cinematography, footage, editing, close-up, on location, stunt double, dubbed, subtitled."
+    },
+    {
+      "id": "en-contemporary-art",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Contemporary art",
+      "intent": "Talk about art today and how it is shown with about twelve words: installation, conceptual art, street art, mixed media, canvas, curator, retrospective, provocative."
+    },
+    {
+      "id": "en-arts-funding-and-taste",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Arts funding and cultural taste",
+      "intent": "Discuss who pays for culture and who it is for with about twelve words: patron, subsidy, arts grant, arts council, highbrow, lowbrow, mainstream, elitist."
+    },
+    {
+      "id": "en-reading-an-exhibition-catalogue-essay",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Reading an exhibition catalogue essay",
+      "intent": "Read a curator's essay in an exhibition catalogue and separate the description of the works from the curator's interpretation and the claims made for the artist."
+    },
+    {
+      "id": "en-leadership-and-management",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Leadership and management",
+      "intent": "Describe how people lead and manage teams with about twelve words: delegate, oversee, accountable, empower, micromanage, hands-off, chain of command, morale."
+    },
+    {
+      "id": "en-formal-meetings",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Formal meetings",
+      "intent": "Name the parts and procedures of a formal meeting with about twelve words: agenda, minutes, quorum, consensus, unanimous, a show of hands, adjourn, action points, any other business."
+    },
+    {
+      "id": "en-chairing-a-meeting",
+      "kind": "functions",
+      "theme": "daily_life",
+      "workingTitle": "Chairing a meeting",
+      "intent": "Open a meeting, move through the agenda, keep to time and close each item: Shall we make a start?, Let's move on to item three, I'm conscious of the time, Can we agree on that?"
+    },
+    {
+      "id": "en-reading-meeting-minutes-between-the-lines",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Reading meeting minutes between the lines",
+      "intent": "Read the minutes of a staff meeting and find the decisions, the actions and who owns them, and the disagreement hidden in neutral wording (concerns were raised, it was noted)."
+    },
+    {
+      "id": "en-mandative-subjunctive-and-should",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "The subjunctive after suggest and insist",
+      "intent": "Follow suggest, insist and it is vital that with should + verb, the formal bare subjunctive or, in British English, the present simple: I suggest that he should apply, he apply or he applies."
+    },
+    {
+      "id": "en-formal-work-verbs",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Formal verbs for work",
+      "intent": "Describe work tasks in formal English with about twelve verbs: implement, facilitate, allocate, liaise, prioritise, coordinate, consolidate, expedite, undertake."
+    },
+    {
+      "id": "en-phrasal-verbs-for-ideas-and-impressions",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Phrasal verbs for ideas and impressions",
+      "intent": "Talk about understanding and coming across with about twelve phrasal verbs: come across as, get across, take in, sink in, make out, come down to, boil down to, catch on."
+    },
+    {
+      "id": "en-writing-a-reference",
+      "kind": "functions",
+      "theme": "daily_life",
+      "workingTitle": "Writing a reference",
+      "intent": "Write a reference for a former colleague or student: I have known Maya for three years, She consistently..., I have no hesitation in recommending her for..."
+    },
+    {
+      "id": "en-reading-between-the-lines-of-a-job-reference",
+      "kind": "reading",
+      "theme": "personal_identification",
+      "workingTitle": "Reading between the lines of a job reference",
+      "intent": "Read a reference for a job applicant and find what it praises, what it carefully leaves out and what faint praise (always punctual, a pleasant colleague) tells the employer."
+    },
+    {
+      "id": "en-everyday-euphemisms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Everyday euphemisms",
+      "intent": "Recognise and use about twelve polite ways of saying awkward things: between jobs, let someone go, economical with the truth, senior citizens, of a certain age, use the facilities."
+    },
+    {
+      "id": "en-money-idioms",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Money idioms",
+      "intent": "Talk about spending and saving with about ten idioms: tighten your belt, save for a rainy day, in the red, a nest egg, money to burn, foot the bill, pay your way."
+    },
+    {
+      "id": "en-the-economy",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "The economy",
+      "intent": "Discuss the state of the economy with about twelve words: recession, downturn, recovery, boom, slump, inflation, GDP, living standards, consumer spending."
+    },
+    {
+      "id": "en-reading-a-restructuring-memo",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Reading a restructuring memo for euphemisms",
+      "intent": "Read an internal memo announcing a restructuring and translate its euphemisms (streamlining, a leaner structure, new opportunities) into what will actually happen to staff."
+    },
+    {
+      "id": "en-business-strategy",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Business strategy",
+      "intent": "Discuss how companies grow and compete with about twelve words: merger, takeover, acquisition, stakeholder, revenue, turnover, market share, diversify, outsource."
+    },
+    {
+      "id": "en-breaking-bad-news-at-work",
+      "kind": "functions",
+      "theme": "daily_life",
+      "workingTitle": "Breaking bad news at work",
+      "intent": "Give disappointing news to a colleague tactfully and handle their reaction: I'm afraid I have some bad news, Unfortunately, the board has decided..., I know this isn't what you were hoping for."
+    },
+    {
+      "id": "en-verbs-and-adverbs-for-trends",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Verbs and adverbs for trends",
+      "intent": "Describe how figures change with about twelve verbs and adverbs: soar, plummet, surge, dip, fluctuate, peak, level off, plateau, considerably, steeply, dramatically."
+    },
+    {
+      "id": "en-reading-a-news-report-on-company-results",
+      "kind": "reading",
+      "theme": "shopping",
+      "workingTitle": "Reading financial news on a retailer's results",
+      "intent": "Read a news report on a retailer's annual results and work out what the main figures (sales, profit, margins) mean and how different analysts interpret them."
+    },
+    {
+      "id": "en-investment",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Investment",
+      "intent": "Talk about investing money with about twelve words: shares, the stock market, stockbroker, investor, dividend, portfolio, bonds, return on investment, high-risk."
+    },
+    {
+      "id": "en-pensions-and-long-term-saving",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Pensions and long-term saving",
+      "intent": "Talk about saving for later life with about twelve words: state pension, workplace pension, contributions, lump sum, annuity, compound interest, ISA, retirement age."
+    },
+    {
+      "id": "en-reading-a-personal-finance-column-on-mortgages",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Reading a personal finance column on mortgages",
+      "intent": "Read a newspaper column on choosing a mortgage and identify each piece of advice and the conditions under which the columnist says it holds (fixed or variable, long or short term)."
+    },
+    {
+      "id": "en-literary-techniques",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Literary techniques",
+      "intent": "Name the tools writers use with about twelve words: metaphor, simile, imagery, irony, symbolism, foreshadowing, flashback, personification, motif."
+    },
+    {
+      "id": "en-reading-an-extract-from-a-contemporary-novel",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Reading an extract from a contemporary novel",
+      "intent": "Read an extract from a contemporary novel and infer the characters' motives and the narrator's point of view from dialogue, gesture and detail."
+    },
+    {
+      "id": "en-books-and-publishing",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Books and publishing",
+      "intent": "Talk about how books reach readers with about twelve words: publisher, manuscript, edition, royalties, ghostwriter, blurb, page-turner, out of print, self-publish."
+    },
+    {
+      "id": "en-reading-a-contemporary-poem",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Reading a contemporary poem",
+      "intent": "Read a short contemporary poem, follow how the speaker's attitude shifts from the first lines to the last and describe the tone at each stage."
+    },
+    {
+      "id": "en-inversion-after-negative-adverbials",
+      "kind": "grammar",
+      "topic": "information_structure_and_pragmatics",
+      "workingTitle": "Inversion: never have I seen, little did she know",
+      "intent": "Add emphasis in formal style by putting never, rarely, seldom, little, hardly, no sooner, not only or under no circumstances first and inverting: Never have I seen such a mess. Little did she know."
+    },
+    {
+      "id": "en-collocations-for-reviews",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Collocations for reviews",
+      "intent": "Praise or criticise a book, film or show with about twelve collocations: critically acclaimed, highly recommended, a compelling read, fall flat, wooden acting, a lacklustre performance."
+    },
+    {
+      "id": "en-reading-a-review-that-compares-two-books",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Reading a review that compares two books",
+      "intent": "Read a review comparing two non-fiction books on the same subject and follow how the reviewer weighs one against the other, which one wins and on what grounds."
+    },
+    {
+      "id": "en-building-on-what-others-have-said",
+      "kind": "functions",
+      "theme": "free_time",
+      "workingTitle": "Building on what others have said",
+      "intent": "Link your contribution to earlier points in a book club discussion: Picking up on what Sam said..., To build on that..., That ties in with..., I'd go even further than Ana and say..."
+    },
+    {
+      "id": "en-reading-a-short-story-with-an-open-ending",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Reading a short story with an open ending",
+      "intent": "Read a literary short story that ends without resolution and argue for one interpretation of the ending, using clues from earlier in the text."
+    },
+    {
+      "id": "en-marketing",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Marketing",
+      "intent": "Talk about how products are marketed with about twelve words: market research, target market, niche market, brand image, brand loyalty, rebrand, endorsement, word of mouth."
+    },
+    {
+      "id": "en-persuasive-advertising-language",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Persuasive advertising language",
+      "intent": "Recognise about twelve words and phrases adverts use to persuade: limited edition, exclusive offer, while stocks last, unbeatable, hassle-free, new and improved, award-winning."
+    },
+    {
+      "id": "en-reading-advertising-copy-for-misleading-claims",
+      "kind": "reading",
+      "theme": "shopping",
+      "workingTitle": "Reading advertising copy for misleading claims",
+      "intent": "Read adverts for skincare products and explain how their claims mislead without lying (up to, helps reduce, clinically tested, nine out of ten women agreed)."
+    },
+    {
+      "id": "en-describing-style-and-fit",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Style and fit",
+      "intent": "Describe clothes and personal style with about twelve words: chic, elegant, flattering, tailored, figure-hugging, oversized, vintage, timeless, effortless."
+    },
+    {
+      "id": "en-luxury-and-value",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Budget, mid-range and luxury",
+      "intent": "Place products on the scale from cheap to luxurious with about twelve words: no-frills, budget, bargain-basement, mass-market, mid-range, upmarket, high-end, premium."
+    },
+    {
+      "id": "en-consumer-law",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Consumer law",
+      "intent": "Know your legal rights as a buyer with about twelve words: terms and conditions, statutory rights, small claims court, cooling-off period, liable, breach of contract, chargeback."
+    },
+    {
+      "id": "en-getting-a-straight-answer",
+      "kind": "functions",
+      "theme": "shopping",
+      "workingTitle": "Getting a straight answer",
+      "intent": "Probe and rephrase your questions until a salesperson or a supplier gives a clear answer: So what you're telling me is..., Let me put it another way, Is that a yes or a no?"
+    },
+    {
+      "id": "en-reading-an-evasive-reply-to-a-complaint",
+      "kind": "reading",
+      "theme": "shopping",
+      "workingTitle": "Reading an evasive reply to a complaint",
+      "intent": "Read a company's carefully worded answer to a formal complaint and separate firm commitments from hedges and non-promises (we will look into, where possible, at our discretion)."
+    },
+    {
+      "id": "en-ethical-consumption",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Ethical consumption",
+      "intent": "Discuss buying with a conscience with about twelve words: fair trade, ethical sourcing, cruelty-free, sweatshop, child labour, greenwashing, shop local, conscious consumer."
+    },
+    {
+      "id": "en-reading-a-consumer-investigation-into-hidden-fees",
+      "kind": "reading",
+      "theme": "shopping",
+      "workingTitle": "Reading a consumer investigation into hidden fees",
+      "intent": "Read a consumer magazine's investigation into hidden booking fees and compare what it found with the explanations the companies gave in response."
+    },
+    {
+      "id": "en-tech-words-in-everyday-speech",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Tech words in everyday speech",
+      "intent": "Use about twelve computing words with their everyday meanings: a glitch, by default, bandwidth (time and energy), take it offline, ping someone, a workaround."
+    },
+    {
+      "id": "en-technology-and-society",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Technology and society",
+      "intent": "Discuss how technology changes society with about twelve words: automation, algorithm, big data, disruption, digital divide, digital literacy, digital native, tech giant."
+    },
+    {
+      "id": "en-coordinating-a-project-remotely",
+      "kind": "functions",
+      "theme": "daily_life",
+      "workingTitle": "Coordinating a project remotely",
+      "intent": "Coordinate a remote team project in writing, giving instructions and weighing up proposals: Could everyone send their sections by Friday?, I've left some comments, I'd lean towards option two."
+    },
+    {
+      "id": "en-cybersecurity",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Cybersecurity",
+      "intent": "Talk about keeping data and devices safe with about twelve words: malware, ransomware, spyware, encryption, firewall, data breach, two-factor authentication, identity theft."
+    },
+    {
+      "id": "en-reading-a-privacy-policy",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Reading a privacy policy",
+      "intent": "Read an app's privacy policy and find, through its vague wording, what data is collected, who it is shared with, how long it is kept and how to opt out."
+    },
+    {
+      "id": "en-relative-clauses-with-quantifiers-and-whereby",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Relative clauses: some of which, all of whom, whereby",
+      "intent": "Add information formally with a quantifier + of which or of whom, and with whereby: She has three sons, all of whom are doctors. It's a system whereby members pay monthly."
+    },
+    {
+      "id": "en-security-and-surveillance",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Security and surveillance",
+      "intent": "Talk about how public places are kept secure with about twelve words: CCTV, surveillance, patrol, crackdown, metal detector, bag search, ID badge, security clearance."
+    },
+    {
+      "id": "en-reading-an-article-on-smart-homes-and-privacy",
+      "kind": "reading",
+      "theme": "house_and_home",
+      "workingTitle": "Reading an article on smart homes and privacy",
+      "intent": "Read an article on smart home devices and weigh the benefits it describes against the privacy risks it raises, then identify where the writer finally stands."
+    },
+    {
+      "id": "en-nouns-as-verbs-and-verbs-as-nouns",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Nouns as verbs, verbs as nouns",
+      "intent": "Use about twelve words that change class with no suffix (conversion): to google, to bin, to head a team, to shoulder the blame, to pocket, a must, a good buy, a rethink."
+    },
+    {
+      "id": "en-technical-language",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Technical language",
+      "intent": "Describe how devices and systems work with about twelve technical words: specification, component, mechanism, interface, output, compatible, configure, calibrate, malfunction."
+    },
+    {
+      "id": "en-scientific-developments",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Scientific developments",
+      "intent": "Discuss advances in science and technology with about twelve words: cutting-edge, stem cells, gene therapy, cloning, nanotechnology, robotics, quantum computing, 3D printing."
+    },
+    {
+      "id": "en-reading-a-product-white-paper",
+      "kind": "reading",
+      "theme": "shopping",
+      "workingTitle": "Reading a product white paper",
+      "intent": "Read a technology firm's white paper on a home battery and separate measurable specifications from marketing claims that the reader has no way to check."
+    },
+    {
+      "id": "en-describing-destinations",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Adjectives for holiday destinations",
+      "intent": "Describe holiday places as a travel writer would with about twelve adjectives: breathtaking, unspoilt, secluded, idyllic, tranquil, quaint, far-flung, tucked away."
+    },
+    {
+      "id": "en-travel-idioms",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Travel idioms",
+      "intent": "Talk about travel with about ten idioms: hit the road, travel light, get itchy feet, live out of a suitcase, catch the travel bug, a whistle-stop tour, the open road."
+    },
+    {
+      "id": "en-reading-a-sponsored-travel-feature",
+      "kind": "reading",
+      "theme": "travel",
+      "workingTitle": "Reading a sponsored travel feature",
+      "intent": "Read a magazine feature about a remote Scottish island, spot the signs that a sponsor paid for the trip and judge how that shapes the praise and what is left out."
+    },
+    {
+      "id": "en-formal-transport-language",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Formal transport language",
+      "intent": "Understand about twelve formal words and phrases from travel announcements and notices: depart, commence boarding, alight, disembark, terminate, onward journey, calling at."
+    },
+    {
+      "id": "en-detours-and-stopovers",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Routes, detours and stopovers",
+      "intent": "Talk about planning and changing a route with about twelve words: detour, stopover, layover (US), en route, in transit, the scenic route, a leg of the journey, a short cut."
+    },
+    {
+      "id": "en-escalating-a-complaint",
+      "kind": "functions",
+      "theme": "travel",
+      "workingTitle": "Escalating a complaint",
+      "intent": "Take a complaint about a rail company or an airline further when the first answer is not good enough: I'd like to escalate this, This is the third time I've raised it, Unless this is resolved, I'll..."
+    },
+    {
+      "id": "en-reading-hotel-replies-to-bad-reviews",
+      "kind": "reading",
+      "theme": "travel",
+      "workingTitle": "Reading a hotel's replies to bad reviews",
+      "intent": "Read guests' negative reviews of a hotel and the manager's public replies, and judge which replies calm the complaint and which sound defensive, sarcastic or insincere."
+    },
+    {
+      "id": "en-inverted-conditionals",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Inverted conditionals: had I known, should you need",
+      "intent": "Write formal conditions without if by inverting had, should and were: Had I known, I would have called. Should you need help, ask at reception. Were she to resign, who would replace her?"
+    },
+    {
+      "id": "en-transport-infrastructure",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Transport infrastructure",
+      "intent": "Talk about roads, rail and the networks around them with about twelve words: bypass, ring road, flyover, underpass, toll road, viaduct, slip road, level crossing, bottleneck."
+    },
+    {
+      "id": "en-reading-a-rail-accident-investigation-report",
+      "kind": "reading",
+      "theme": "travel",
+      "workingTitle": "Reading a rail accident investigation report",
+      "intent": "Read the summary of a rail accident investigation and follow the chain of causes, from the immediate cause to the underlying ones, and the recommendations made."
+    },
+    {
+      "id": "en-electric-and-shared-transport",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Electric and shared transport",
+      "intent": "Talk about new ways of getting around with about twelve words: electric vehicle, hybrid, charging point, range anxiety, e-scooter, e-bike, car club, ride-hailing, self-driving car."
+    },
+    {
+      "id": "en-sustainable-tourism",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Sustainable tourism",
+      "intent": "Discuss the impact of tourism and how to reduce it with about twelve words: mass tourism, carbon offsetting, ecotourism, responsible travel, slow travel, flight shame, local economy."
+    },
+    {
+      "id": "en-reading-an-essay-in-praise-of-slow-travel",
+      "kind": "reading",
+      "theme": "travel",
+      "workingTitle": "Reading an essay in praise of slow travel",
+      "intent": "Read an essay arguing for slow travel by train and boat, identify the values behind the argument and the objections the writer anticipates and answers."
+    },
+    {
+      "id": "en-living-abroad",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Living abroad",
+      "intent": "Talk about moving to and settling in another country with about twelve words: expat, relocate, emigrate, culture shock, adjust, settle in, put down roots, host country."
+    },
+    {
+      "id": "en-reading-visa-rules-and-exceptions",
+      "kind": "reading",
+      "theme": "travel",
+      "workingTitle": "Reading visa rules and their exceptions",
+      "intent": "Read an official page of visa rules for working abroad and work out which conditions apply to which applicant, where the exceptions lie and which documents each case needs."
+    },
+    {
+      "id": "en-false-friends",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "False friends",
+      "intent": "Avoid mistakes with about twelve English words that look like words in other languages but mean something else: actual, eventual, sympathetic, embarrassed, pretend, attend, deception, fabric."
+    },
+    {
+      "id": "en-interpreting-informally",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Interpreting informally",
+      "intent": "Interpret informally between colleagues, giving the sense rather than every word and explaining cultural references: Roughly, she's saying..., There's no direct equivalent, but..., It's a bit like..."
+    },
+    {
+      "id": "en-globalisation",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Globalisation",
+      "intent": "Discuss a connected world with about twelve words: free movement, multinational, global supply chain, interdependence, emerging economies, cultural exchange, homogenisation."
+    },
+    {
+      "id": "en-national-identity",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "National identity",
+      "intent": "Discuss nations and belonging with about twelve words: separatism, national pride, patriotism, nationalism, regional identity, national anthem, independence movement."
+    },
+    {
+      "id": "en-reading-a-memoir-of-migration",
+      "kind": "reading",
+      "theme": "personal_identification",
+      "workingTitle": "Reading a memoir of migration",
+      "intent": "Read an extract from a memoir about moving to Britain as a child and infer the writer's feelings about identity and belonging from what is shown rather than stated."
+    },
+    {
+      "id": "en-university-admissions",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "University admissions",
+      "intent": "Follow the British university application process with about twelve words: UCAS, foundation year, entry requirements, predicted grades, conditional offer, clearing, deferred entry."
+    },
+    {
+      "id": "en-education-policy",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Education policy",
+      "intent": "Discuss how schools are run and judged in England with about twelve words: national curriculum, league tables, Ofsted, academy, free school, special educational needs, inclusive education."
+    },
+    {
+      "id": "en-reading-scholarship-guidelines",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Reading the guidelines for a scholarship",
+      "intent": "Read the guidelines for a postgraduate scholarship and decide who is eligible, how applications are scored and which conditions an applicant could easily miss."
+    },
+    {
+      "id": "en-learning-and-the-brain",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Learning and the brain",
+      "intent": "Discuss how memory and attention work with about twelve words: cognitive, neuroscience, short-term memory, long-term memory, retention, recall, concentration, attention span."
+    },
+    {
+      "id": "en-writing-a-personal-statement",
+      "kind": "functions",
+      "theme": "education",
+      "workingTitle": "Writing a personal statement",
+      "intent": "Write a personal statement for a university or job application: What first drew me to this subject was..., Having worked as..., I am particularly keen to..., I believe I would bring..."
+    },
+    {
+      "id": "en-academic-verbs",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Academic verbs",
+      "intent": "Describe what research and academic writing do with about fifteen verbs: analyse, assess, evaluate, examine, interpret, outline, demonstrate, indicate, illustrate."
+    },
+    {
+      "id": "en-nominalisation-in-formal-writing",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Nominalisation in formal writing",
+      "intent": "Write formally by turning clauses into noun phrases (they arrived late becomes their late arrival) and refer back with summary nouns (this decision) and with the former and the latter."
+    },
+    {
+      "id": "en-reading-an-article-on-language-and-thought",
+      "kind": "reading",
+      "theme": "language",
+      "workingTitle": "Reading an article on language and thought",
+      "intent": "Read an article on whether the language we speak shapes how we think, and weigh the evidence it offers for the strong and the weak versions of the idea."
+    },
+    {
+      "id": "en-academic-nouns",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Academic nouns",
+      "intent": "Discuss ideas in academic English with about fifteen nouns: approach, concept, framework, perspective, factor, criterion, phenomenon, dimension, scope, significance."
+    },
+    {
+      "id": "en-verb-and-noun-collocations-in-formal-writing",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Verb and noun collocations in formal writing",
+      "intent": "Use about twelve verb and noun collocations of formal writing: raise concerns, pose a threat, address an issue, draw a conclusion, conduct research, meet the criteria, gain insight."
+    },
+    {
+      "id": "en-asking-thought-provoking-questions",
+      "kind": "functions",
+      "theme": "education",
+      "workingTitle": "Asking thought-provoking questions",
+      "intent": "Ask open questions that push a group to think further and build on their answers: What makes you say that?, How does that fit with...?, What would happen if...?, Is that always true?"
+    },
+    {
+      "id": "en-flavour-words",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Flavour words",
+      "intent": "Describe flavours precisely with about twelve adjectives: tangy, zesty, rich, aromatic, savoury, smoky, earthy, subtle, overpowering."
+    },
+    {
+      "id": "en-fine-dining",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Fine dining",
+      "intent": "Talk about top-end restaurants with about twelve words: gourmet, delicacy, tasting menu, signature dish, Michelin-starred, sommelier, wine pairing, palate."
+    },
+    {
+      "id": "en-reading-a-witty-restaurant-review",
+      "kind": "reading",
+      "theme": "food_and_drink",
+      "workingTitle": "Reading a witty restaurant review",
+      "intent": "Read a restaurant review packed with jokes and wordplay and work out the critic's real verdict on the food, the service and the value for money behind the humour."
+    },
+    {
+      "id": "en-food-idioms",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Food idioms",
+      "intent": "Use about twelve idioms built on food: a piece of cake, not my cup of tea, the icing on the cake, take something with a pinch of salt, spill the beans, sell like hot cakes."
+    },
+    {
+      "id": "en-reading-an-essay-on-a-regional-food-culture",
+      "kind": "reading",
+      "theme": "food_and_drink",
+      "workingTitle": "Reading an essay on a regional food culture",
+      "intent": "Read a food writer's essay on the cooking of one region and see how description, memory and argument combine to make the case for its value."
+    },
+    {
+      "id": "en-dining-etiquette",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Dining etiquette",
+      "intent": "Talk about formal meals and table manners with about twelve words: black tie, place setting, seating plan, dress code, guest of honour, say grace, second helping."
+    },
+    {
+      "id": "en-nutrition-science",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Nutrition science",
+      "intent": "Discuss what food does in the body with about twelve words: metabolism, digestion, gut health, fibre, saturated fat, antioxidant, micronutrients, blood sugar, deficiency."
+    },
+    {
+      "id": "en-reading-a-business-proposal-for-a-cafe",
+      "kind": "reading",
+      "theme": "food_and_drink",
+      "workingTitle": "Reading a business proposal for a café",
+      "intent": "Read a proposal to open a second branch of a café and assess the case it makes: the costs, the expected income, the risks it admits and the ones it plays down."
+    },
+    {
+      "id": "en-conceding-a-point",
+      "kind": "functions",
+      "theme": "food_and_drink",
+      "workingTitle": "Conceding a point",
+      "intent": "Grant part of an opposing argument while standing your ground, in a debate about eating meat: I'll grant you that..., That's a fair point, but it doesn't change the fact that..., True, but..."
+    },
+    {
+      "id": "en-food-security",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Food security",
+      "intent": "Discuss whether the world can feed itself with about twelve words: food prices, food shortage, famine, malnutrition, crop failure, staple crop, food bank, food aid."
+    },
+    {
+      "id": "en-reading-a-report-on-a-food-labelling-scandal",
+      "kind": "reading",
+      "theme": "food_and_drink",
+      "workingTitle": "Reading a report on a food labelling scandal",
+      "intent": "Read a report on a meat mislabelling scandal and trace how the problem spread along the supply chain and whom the writer holds responsible, and why."
+    },
+    {
+      "id": "en-utilities",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Utilities",
+      "intent": "Deal with water, gas and electricity services with about twelve words: supplier, unit rate, standing charge, meter reading, switch supplier, power cut, the National Grid, hosepipe ban."
+    },
+    {
+      "id": "en-red-tape-and-bureaucracy",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Red tape and bureaucracy",
+      "intent": "Talk about dealing with officials and forms with about twelve words: red tape, paperwork, bureaucrat, form-filling, backlog, processing time, rubber-stamp, jump through hoops."
+    },
+    {
+      "id": "en-setting-the-record-straight-in-writing",
+      "kind": "functions",
+      "theme": "services",
+      "workingTitle": "Setting the record straight in writing",
+      "intent": "Write to an organisation to correct a misunderstanding or a mistake about you: I would like to clarify that..., Contrary to what your letter states..., I trust this resolves the matter."
+    },
+    {
+      "id": "en-wills-and-legal-documents",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Wills and legal documents",
+      "intent": "Understand about twelve words from everyday legal documents: will, executor, probate, deed, clause, power of attorney, witness a signature, legal guardian."
+    },
+    {
+      "id": "en-reading-contract-clauses-on-liability",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Reading contract clauses on liability and termination",
+      "intent": "Read clauses from a business service contract on liability and ending the agreement and work out who is responsible for what, under which conditions and with which exceptions."
+    },
+    {
+      "id": "en-tax-and-public-money",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Tax and public money",
+      "intent": "Discuss taxes and government spending with about twelve words: income tax, VAT, National Insurance, tax return, tax bracket, loophole, public spending, budget deficit."
+    },
+    {
+      "id": "en-reading-tax-guidance-for-the-self-employed",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Reading tax guidance for the self-employed",
+      "intent": "Read official tax guidance for sole traders and find which expenses can be claimed, under what conditions, and which missed deadlines lead to a penalty."
+    },
+    {
+      "id": "en-advanced-participle-clauses",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Participle clauses: not knowing, being asked, with prices rising",
+      "intent": "Use past participle clauses, not + -ing, being + past participle and with + object + -ing: Built in 1900, the hall needs work. Not knowing what to say, I left. With prices rising, people spend less."
+    },
+    {
+      "id": "en-formal-equivalents-of-phrasal-verbs",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Formal equivalents of phrasal verbs",
+      "intent": "Replace about twelve everyday phrasal verbs with formal verbs: put off and postpone, find out and discover, carry on and continue, set up and establish, put up with and tolerate."
+    },
+    {
+      "id": "en-reading-a-plain-english-style-guide",
+      "kind": "reading",
+      "theme": "language",
+      "workingTitle": "Reading a plain English style guide",
+      "intent": "Read a guide to plain English and use its principles (short sentences, active verbs, everyday words) to judge which version of an official letter works best and why."
+    },
+    {
+      "id": "en-rewording-a-text-for-a-general-reader",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Explaining a document in plain words",
+      "intent": "Explain a document such as a contract clause or an official letter to a relative who has not read it: This part says that..., Put simply..., What it doesn't say is..., The bit to watch out for is..."
+    },
+    {
+      "id": "en-reading-a-letter-rejecting-an-insurance-claim",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Reading a letter rejecting an insurance claim",
+      "intent": "Read an insurer's letter turning down a claim and identify the grounds given, the policy terms quoted and the steps and deadline for challenging the decision."
+    },
+    {
+      "id": "en-medical-specialists",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Medical specialists",
+      "intent": "Name health professionals by speciality and talk about being referred, with about twelve words: consultant, cardiologist, dermatologist, paediatrician, anaesthetist, oncologist, midwife, referral."
+    },
+    {
+      "id": "en-diagnosis-and-prognosis",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Diagnosis and prognosis",
+      "intent": "Understand what doctors say about an illness with about twelve words: diagnose, misdiagnose, prognosis, chronic, acute, terminal, remission, relapse, underlying condition."
+    },
+    {
+      "id": "en-reading-a-consent-form-for-a-procedure",
+      "kind": "reading",
+      "theme": "health",
+      "workingTitle": "Reading a consent form for a medical procedure",
+      "intent": "Read a patient information and consent form for a minor operation and find the risks, the alternatives, the recovery time and exactly what you agree to by signing."
+    },
+    {
+      "id": "en-health-idioms",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Health idioms",
+      "intent": "Talk about feeling ill and getting better with about ten idioms: under the weather, off colour, run-down, on the mend, back on your feet, fighting fit, a clean bill of health."
+    },
+    {
+      "id": "en-may-well-and-might-as-well",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "May well, might well, might as well",
+      "intent": "Say something is quite likely with may well, might well or could well, and that there is no better option with might as well or may as well: It may well rain. We might as well go home."
+    },
+    {
+      "id": "en-speaking-up-for-a-relative-at-the-doctors",
+      "kind": "functions",
+      "theme": "health",
+      "workingTitle": "Speaking up for a relative at the doctor's",
+      "intent": "Speak up for an elderly relative at a medical appointment and make sure their concerns are heard: I'm not sure my mother fully understood, Could you explain why...?, We'd like a second opinion."
+    },
+    {
+      "id": "en-mental-health-and-support",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Mental health and support",
+      "intent": "Talk about mental illness and getting help with about twelve words: depression, panic attack, eating disorder, mental health crisis, stigma, counselling, talking therapy, mindfulness."
+    },
+    {
+      "id": "en-reading-an-article-on-burnout-at-work",
+      "kind": "reading",
+      "theme": "health",
+      "workingTitle": "Reading an article on burnout at work",
+      "intent": "Read a long article on burnout and separate the research it cites from the writer's interpretation and the advice it gives, judging how well each is supported."
+    },
+    {
+      "id": "en-alternative-medicine",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Alternative medicine",
+      "intent": "Discuss treatments outside mainstream medicine with about twelve words: acupuncture, homeopathy, herbal remedy, aromatherapy, chiropractor, holistic, complementary, unproven."
+    },
+    {
+      "id": "en-public-health",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Public health",
+      "intent": "Discuss health across a population with about twelve words: outbreak, epidemic, pandemic, contagious, quarantine, self-isolate, screening, herd immunity, life expectancy."
+    },
+    {
+      "id": "en-reading-a-public-health-campaign",
+      "kind": "reading",
+      "theme": "health",
+      "workingTitle": "Reading a public health campaign",
+      "intent": "Read leaflets and posters from a campaign to cut drinking and identify the audience each one targets and how it persuades: fear, humour, statistics or social pressure."
+    },
+    {
+      "id": "en-ageing-and-care",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Ageing and care",
+      "intent": "Talk about growing old and needing support with about twelve words: frail, dementia, memory loss, carer, home help, respite care, sheltered housing, independent living."
+    },
+    {
+      "id": "en-social-care-services",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Social care",
+      "intent": "Understand how social services protect people with about twelve words: social worker, caseworker, safeguarding, child protection, foster care, in care, vulnerable adult, care package."
+    },
+    {
+      "id": "en-writing-a-letter-of-condolence",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Writing a letter of condolence",
+      "intent": "Write a sympathy card or a longer letter after a death: I was so sorry to hear about..., He will be greatly missed, I have such happy memories of..., Please don't hesitate to call."
+    },
+    {
+      "id": "en-broadcasting",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Broadcasting",
+      "intent": "Talk about how television and radio are run with about twelve words: broadcaster, public service broadcasting, licence fee, prime time, the watershed, ratings, coverage, bias."
+    },
+    {
+      "id": "en-the-business-of-sport",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "The business of sport",
+      "intent": "Discuss money and rules in professional sport with about twelve words: sponsorship, broadcasting rights, transfer fee, prize money, governing body, doping, match-fixing, ban."
+    },
+    {
+      "id": "en-sport-idioms",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Sport idioms in everyday English",
+      "intent": "Use about twelve idioms from sport at work and in daily life: move the goalposts, a level playing field, on the ball, the ball is in your court, par for the course, jump the gun."
+    },
+    {
+      "id": "en-reading-a-football-column-full-of-idiom",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Reading a football column full of idiom",
+      "intent": "Read a football column rich in idiom and metaphor (a game of two halves, parking the bus) and pin down what the columnist actually thinks of the team and its manager."
+    },
+    {
+      "id": "en-leisure-trends",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Leisure trends",
+      "intent": "Talk about new ways of spending free time with about twelve words: forest bathing, glamping, wellness, digital detox, wild swimming, escape room, bucket list, hobbyist."
+    },
+    {
+      "id": "en-giving-an-in-depth-interview",
+      "kind": "functions",
+      "theme": "personal_identification",
+      "workingTitle": "Giving an in-depth interview",
+      "intent": "Give a long interview about your life or work, developing your answers and returning to your point after interruptions: That's a complicated question, If I could go back to what you asked earlier..."
+    },
+    {
+      "id": "en-fitness-and-physical-performance",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Fitness and physical performance",
+      "intent": "Talk about training and physical ability with about twelve words: stamina, endurance, agility, flexibility, posture, core strength, pull a muscle, recovery time, overtraining."
+    },
+    {
+      "id": "en-landscape-description",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Landscape description",
+      "intent": "Describe natural scenery vividly with about twelve words and phrases: rolling hills, jagged peaks, sheer cliffs, a rugged coastline, barren, lush, dense forest, winding."
+    },
+    {
+      "id": "en-fronting-for-focus",
+      "kind": "grammar",
+      "topic": "information_structure_and_pragmatics",
+      "workingTitle": "Fronting: that I can't accept",
+      "intent": "Put an object first for emphasis, or a complement or a place adverbial first with inversion: That I can't accept. More worrying is the cost. On the hill stood a castle."
+    },
+    {
+      "id": "en-physical-geography",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Physical geography",
+      "intent": "Describe how the land is shaped with about twelve words: terrain, altitude, tectonic plates, fault line, erosion, sediment, flood plain, fertile, arid."
+    },
+    {
+      "id": "en-light-and-sky",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "Light and sky",
+      "intent": "Describe light and the sky at different times with about twelve words: dawn, daybreak, dusk, twilight, half-light, haze, glare, gloom, starlit."
+    },
+    {
+      "id": "en-weather-idioms",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "Weather idioms",
+      "intent": "Use about ten idioms built on weather: a storm in a teacup, it never rains but it pours, come rain or shine, weather the storm, get wind of, under a cloud."
+    },
+    {
+      "id": "en-reading-first-hand-accounts-of-a-great-storm",
+      "kind": "reading",
+      "theme": "weather",
+      "workingTitle": "Reading first-hand accounts of a great storm",
+      "intent": "Read several eyewitness accounts of a famous storm and compare what each person noticed, felt and remembered, and how time has shaped each story."
+    },
+    {
+      "id": "en-meteorology",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "Meteorology",
+      "intent": "Understand how weather is explained and measured with about twelve words: meteorologist, high pressure, low pressure, cold front, warm front, isobar, precipitation, humidity, visibility."
+    },
+    {
+      "id": "en-reading-how-weather-forecasts-are-made",
+      "kind": "reading",
+      "theme": "weather",
+      "workingTitle": "Reading an article on how forecasts are made",
+      "intent": "Read a science article on weather forecasting and explain how computer models work, what a 70 per cent chance of rain means and why forecasts become less reliable further ahead."
+    },
+    {
+      "id": "en-climate-science",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "Climate science",
+      "intent": "Discuss the science of climate change with about twelve words: climate model, feedback loop, tipping point, permafrost, mitigation, adaptation, carbon neutral, net zero, carbon budget."
+    },
+    {
+      "id": "en-reading-an-article-on-the-little-ice-age",
+      "kind": "reading",
+      "theme": "weather",
+      "workingTitle": "Reading an article on the Little Ice Age",
+      "intent": "Read an article on the Little Ice Age and separate the historical evidence (diaries, frost fairs on the Thames, harvest records) from the scientists' interpretation of it."
+    },
+    {
+      "id": "en-hypothesising-about-the-climate",
+      "kind": "functions",
+      "theme": "weather",
+      "workingTitle": "Hypothesising about the climate",
+      "intent": "Speculate about the climate under different scenarios, past and future: Had we acted sooner..., Should temperatures rise further..., Were the ice sheets to melt faster..."
+    },
+    {
+      "id": "en-reading-a-city-climate-adaptation-plan",
+      "kind": "reading",
+      "theme": "weather",
+      "workingTitle": "Reading a city's climate adaptation plan",
+      "intent": "Read a city's plan for adapting to heatwaves and flooding and find the risks it expects, the measures it proposes and how it ranks them by cost and urgency."
+    },
+    {
+      "id": "en-disaster-response",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "Disaster response",
+      "intent": "Follow news about the aftermath of a disaster with about twelve words: devastation, death toll, displaced, aftermath, relief effort, humanitarian aid, emergency shelter, rebuild."
+    },
+    {
+      "id": "en-reading-a-feature-with-paragraphs-removed",
+      "kind": "reading",
+      "theme": "places",
+      "workingTitle": "Reading a long feature with missing paragraphs",
+      "intent": "Read a long feature about a town rebuilt after a flood and put its missing paragraphs back, using reference words, linking phrases and the flow of ideas."
+    },
+    {
+      "id": "en-ecosystems",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Ecosystems",
+      "intent": "Explain how living things depend on each other with about twelve words: keystone species, food chain, food web, predator, pollinator, native species, invasive species, habitat loss."
+    },
+    {
+      "id": "en-environmental-policy",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Environmental policy",
+      "intent": "Discuss how governments protect nature with about twelve words: sustainability, biodiversity, deforestation, overfishing, environmental impact, green taxes, the polluter pays principle."
+    },
+    {
+      "id": "en-reading-a-report-on-farmland-bird-decline",
+      "kind": "reading",
+      "theme": "house_and_home",
+      "workingTitle": "Reading a report on the decline of farmland birds",
+      "intent": "Read an environmental report on falling numbers of farmland birds and link each finding to the causes it proposes and the recommendations it makes."
+    },
+    {
+      "id": "en-signposting-a-long-talk",
+      "kind": "functions",
+      "theme": "education",
+      "workingTitle": "Signposting a long talk",
+      "intent": "Guide listeners through a long talk on a local conservation project with clear signposts: I've divided my talk into three parts, I'll return to this point later, That brings me to..."
+    },
+    {
+      "id": "en-animal-welfare",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Animal welfare",
+      "intent": "Discuss how animals are treated with about twelve words: animal rights, welfare standards, cruelty, neglect, humane, captivity, sanctuary, rescue centre, battery hens, animal testing."
+    },
+    {
+      "id": "en-sustainable-living-at-home",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Sustainable living at home",
+      "intent": "Talk about living with less waste with about twelve words: zero waste, compost, refill, reusable, upcycle, repair café, pre-loved, declutter, make do and mend."
+    },
+    {
+      "id": "en-urban-planning",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Urban planning",
+      "intent": "Discuss how towns are planned and renewed with about twelve words: regeneration, green belt, brownfield site, zoning, mixed-use, high-density, new town, pedestrianise."
+    },
+    {
+      "id": "en-reading-a-local-history-of-a-high-street",
+      "kind": "reading",
+      "theme": "places",
+      "workingTitle": "Reading a local history of a high street",
+      "intent": "Read a local history of one high street, follow how its shops and people changed over a century and tell the historian's evidence from their nostalgia for what was lost."
+    },
+    {
+      "id": "en-megacities-and-urbanisation",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Megacities and urbanisation",
+      "intent": "Discuss the growth of huge cities with about twelve words: megacity, metropolis, urbanisation, population density, commuter belt, satellite town, shanty town, slum."
+    },
+    {
+      "id": "en-concession-no-matter-however-whatever",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "No matter what, however hard, whatever",
+      "intent": "Say that something makes no difference with no matter + wh-word, however + adjective or adverb, and whatever, whoever or wherever: No matter what you say, I'm going. However hard I try, I never win."
+    },
+    {
+      "id": "en-the-housing-crisis",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "The housing crisis",
+      "intent": "Discuss the shortage of homes with about twelve words: affordable housing, social housing, house-building, rent controls, priced out, eviction, rough sleeping, gentrification."
+    },
+    {
+      "id": "en-reading-a-feature-on-gentrification",
+      "kind": "reading",
+      "theme": "places",
+      "workingTitle": "Reading a feature on gentrification",
+      "intent": "Read a feature on the regeneration of a former docks area and show how the choice and order of quotes from residents, developers and the council reveal the writer's side."
+    },
+    {
+      "id": "en-buying-property-and-planning-permission",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Buying property and planning permission",
+      "intent": "Follow the steps of buying a home and getting permission to build, with about twelve words: surveyor, conveyancing, freehold, leasehold, gazumping, completion, planning permission, listed building."
+    },
+    {
+      "id": "en-reading-a-planning-application-and-objections",
+      "kind": "reading",
+      "theme": "house_and_home",
+      "workingTitle": "Reading a planning application and objections",
+      "intent": "Read a planning application for a home extension and the neighbours' letters of objection, and weigh the arguments on each side against the planning rules quoted."
+    },
+    {
+      "id": "en-handling-questions-during-a-talk",
+      "kind": "functions",
+      "theme": "education",
+      "workingTitle": "Handling questions during a talk",
+      "intent": "Deal with residents' questions while presenting a housing plan and keep to your outline: That's actually my next point, I'll come to that in a moment, Could we save questions on cost for the end?"
+    },
+    {
+      "id": "en-place-idioms",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Idioms about places",
+      "intent": "Use about ten idioms built on place and distance: a stone's throw, the middle of nowhere, the back of beyond, all over the place, put somewhere on the map, go places."
+    },
+    {
+      "id": "en-reading-a-commentary-on-house-prices",
+      "kind": "reading",
+      "theme": "house_and_home",
+      "workingTitle": "Reading a commentary on house prices",
+      "intent": "Read a commentary forecasting house prices and separate confident predictions from cautious ones, noting what each forecast depends on (interest rates, wages, new building)."
+    },
+    {
+      "id": "en-political-institutions",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Political institutions",
+      "intent": "Discuss how a democracy works with about twelve words: constituency, MP, cabinet, the opposition, coalition, manifesto, referendum, by-election, legislation."
+    },
+    {
+      "id": "en-political-idioms",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Political idioms",
+      "intent": "Talk about politics with about ten idioms: a political football, a hot potato, toe the line, sit on the fence, a U-turn, grass roots, the corridors of power, a lame duck."
+    },
+    {
+      "id": "en-reading-a-political-editorial-for-assumptions",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Reading a political editorial for hidden assumptions",
+      "intent": "Read a political editorial and uncover the assumptions it never states and the stance implied by its choice of words, beyond the argument it makes openly."
+    },
+    {
+      "id": "en-social-inequality",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Social inequality",
+      "intent": "Discuss wealth and opportunity in society with about twelve words: social mobility, privilege, disadvantaged, marginalised, deprivation, the poverty line, the welfare state, benefits."
+    },
+    {
+      "id": "en-gender-and-equality",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Gender and equality",
+      "intent": "Discuss equality between women and men with about twelve words: gender roles, stereotype, sexism, feminism, equal opportunities, glass ceiling, gender pay gap, paternity leave."
+    },
+    {
+      "id": "en-reading-an-executive-summary-of-a-policy-report",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Reading the executive summary of a policy report",
+      "intent": "Read the executive summary of a report on youth unemployment and link each recommendation to the evidence offered for it, noting any that rest on little evidence."
+    },
+    {
+      "id": "en-human-rights",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Human rights",
+      "intent": "Discuss rights and their abuse with about twelve words: political prisoner, freedom of speech, censorship, the right to privacy, persecution, dissident, asylum, violation."
+    },
+    {
+      "id": "en-prefixes-counter-anti-semi-inter",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Prefixes counter-, anti-, pro-, semi-, multi-, inter- and trans-",
+      "intent": "Build and understand words with counter-, anti-, pro-, semi-, multi-, inter- and trans-: counterproductive, anti-ageing, pro-democracy, semi-retired, interconnected, transatlantic."
+    },
+    {
+      "id": "en-ellipsis-and-substitution",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Ellipsis and substitution: do so, those of, if necessary",
+      "intent": "Avoid repetition in formal writing with do so, that of and those of, and short clauses like if so and if necessary: He promised to help and did so. Her salary is double that of her boss."
+    },
+    {
+      "id": "en-spoken-markers-for-building-an-argument",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Spoken markers for building an argument",
+      "intent": "Add, contrast and sum up points in conversation with about twelve markers: for a start, on top of that, what's more, then again, that said, all the same, at any rate, all in all."
+    },
+    {
+      "id": "en-arguing-your-case-in-a-formal-debate",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Arguing your case in a formal debate",
+      "intent": "Argue a formal position in a debate and respond to counter-arguments: My opponent argues that..., That argument overlooks..., Even if we accept that..., it does not follow that..."
+    },
+    {
+      "id": "en-reading-a-satirical-news-article",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Reading a satirical news article",
+      "intent": "Read a satirical story written in the style of straight news, recognise that it is satire, name its target and point to the details that give the joke away."
+    },
+    {
+      "id": "en-adjective-and-noun-collocations",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Adjective and noun collocations",
+      "intent": "Use about twelve strong adjective and noun collocations: a narrow escape, a heated debate, a vested interest, a sweeping statement, a foregone conclusion, a tall order."
+    },
+    {
+      "id": "en-courts-and-justice",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Courts and justice",
+      "intent": "Follow a criminal case with about twelve words: prosecution, defence, defendant, summing-up, testify, cross-examine, hung jury, acquit, convict, appeal, legal aid."
+    },
+    {
+      "id": "en-serious-crime",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Serious crime",
+      "intent": "Talk about serious crime and how it is solved with about twelve words: murder, manslaughter, assault, motive, alibi, forensic evidence, organised crime, money laundering."
+    },
+    {
+      "id": "en-reading-a-summary-of-a-court-judgment",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Reading a summary of a court judgment",
+      "intent": "Read a published summary of a court judgment and follow the judge's reasoning from the facts found, through the law applied, to the outcome."
+    },
+    {
+      "id": "en-war-and-peace",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "War and peace",
+      "intent": "Follow news about war and peace with about twelve words: invasion, occupation, troops, air strike, civilian casualties, war crime, ceasefire, truce, treaty, peacekeeping force."
+    },
+    {
+      "id": "en-reading-a-long-investigative-report",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Reading a long investigative report",
+      "intent": "Read a long investigation into how a council awarded its contracts and separate proven facts from allegations, noting how the reporter signals doubt (it is understood, sources claim)."
+    },
+    {
+      "id": "en-faith-and-belief",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Faith and belief",
+      "intent": "Talk about religious and non-religious views with about twelve words: faith, devout, spiritual, sacred, ritual, pilgrimage, convert, atheist, agnostic, secular."
+    },
+    {
+      "id": "en-reading-a-guide-to-a-medieval-cathedral",
+      "kind": "reading",
+      "theme": "places",
+      "workingTitle": "Reading a guide to a medieval cathedral",
+      "intent": "Read a visitor guide to a medieval cathedral and follow its tour of the building (nave, choir, cloister) and the reasons it gives for the site's historical importance."
+    },
+    {
+      "id": "en-monarchy-and-empire",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Monarchy and empire",
+      "intent": "Talk about kings, queens and empires in history with about twelve words: reign, dynasty, heir, throne, coronation, abdicate, succession, the Crown, colony, colonial rule."
+    },
+    {
+      "id": "en-philosophy-and-ideas",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Philosophy and ideas",
+      "intent": "Discuss basic philosophical ideas with about twelve words: ethics, morality, logic, reasoning, rational, principle, free will, thought experiment, ideal."
+    },
+    {
+      "id": "en-pinning-down-an-abstract-idea",
+      "kind": "functions",
+      "theme": "education",
+      "workingTitle": "Pinning down an abstract idea",
+      "intent": "Ask questions that pin down a complex or abstract idea: How would you define...?, Is that the same as...?, Where would you draw the line between...?, Could you give a concrete example?"
+    },
+    {
+      "id": "en-phrasal-verbs-for-discussion",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Phrasal verbs for discussion",
+      "intent": "Raise, support and reject ideas in a discussion with about twelve phrasal verbs: bring up, point out, put forward, back up, rule out, touch on, dwell on, follow up."
+    },
+    {
+      "id": "en-research-methods",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Research methods",
+      "intent": "Talk about how a study is designed and run with about twelve words: methodology, participant, sample, questionnaire, case study, pilot study, variable, qualitative, quantitative, findings."
+    },
+    {
+      "id": "en-reading-a-journal-abstract-and-introduction",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Reading a journal abstract and introduction",
+      "intent": "Read the abstract and introduction of a research article and identify the research question, the gap it claims to fill, the method and the main claim."
+    },
+    {
+      "id": "en-medical-research",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Medical research",
+      "intent": "Discuss how new treatments are tested with about twelve words: clinical trial, randomised, double-blind, placebo, control group, efficacy, pharmaceutical company, lab results."
+    },
+    {
+      "id": "en-hedging-with-modals-and-passives",
+      "kind": "grammar",
+      "topic": "information_structure_and_pragmatics",
+      "workingTitle": "Hedging: it would seem, it could be argued",
+      "intent": "Make claims more cautious with tend to, would seem or appear, and modal passives: Prices tend to rise in winter. It would seem that the plan has failed. It could be argued that it costs too much."
+    },
+    {
+      "id": "en-words-for-cautious-claims",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Words for cautious claims",
+      "intent": "Make academic claims more careful with about twelve adverbs and phrases: arguably, largely, broadly, relatively, potentially, to some extent, in part, in most cases."
+    },
+    {
+      "id": "en-reading-the-discussion-section-of-a-study",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Reading the discussion section of a study",
+      "intent": "Read the discussion section of a research article and tell firm findings from cautious claims (may suggest, appears to) and from the limitations the authors admit."
+    },
+    {
+      "id": "en-restating-and-evaluating-others-points",
+      "kind": "functions",
+      "theme": "education",
+      "workingTitle": "Restating and evaluating others' points",
+      "intent": "Restate a speaker's argument in a seminar, check you have it right and test what follows: If I understand you correctly..., Is that a fair summary?, Which would mean..., Doesn't that assume...?"
+    },
+    {
+      "id": "en-reporting-verbs-for-sources",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Reporting verbs for sources",
+      "intent": "Report what writers claim and show how far you accept it with about twelve verbs: claim, maintain, contend, assert, acknowledge, observe, highlight, challenge, question."
+    },
+    {
+      "id": "en-reading-a-health-news-story-against-its-study",
+      "kind": "reading",
+      "theme": "health",
+      "workingTitle": "Reading a health news story and the study behind it",
+      "intent": "Read a news story about diet and heart disease next to the study it reports, and spot where the claims grew stronger or lost their conditions in the retelling."
+    },
+    {
+      "id": "en-citing-and-referencing",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Citing and referencing",
+      "intent": "Acknowledge sources in academic work with about twelve words: cite, citation, quotation, paraphrase, footnote, in-text citation, et al., reference list, bibliography, plagiarism."
+    },
+    {
+      "id": "en-reading-a-university-plagiarism-policy",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Reading a university plagiarism policy",
+      "intent": "Read a university's rules on academic misconduct and sort clear breaches from grey areas (close paraphrase, reusing your own work, AI tools) and the penalty for each."
+    },
+    {
+      "id": "en-linking-adverbs-in-formal-writing",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Linking adverbs in formal writing",
+      "intent": "Connect sentences in formal writing with about twelve linking adverbs: moreover, furthermore, consequently, accordingly, nonetheless, conversely, likewise, notably, in turn."
+    },
+    {
+      "id": "en-reading-an-annotated-reading-list",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Reading an annotated reading list",
+      "intent": "Read a lecturer's annotated reading list for an essay and decide which sources to start with, using the notes on scope, viewpoint, date and difficulty."
+    },
+    {
+      "id": "en-bringing-several-sources-together",
+      "kind": "functions",
+      "theme": "education",
+      "workingTitle": "Bringing several sources together",
+      "intent": "Combine and compare what several sources say before giving your own view: While the first study claims..., the second..., Taken together, they suggest..., Neither source addresses..."
+    },
+    {
+      "id": "en-reading-four-academics-on-one-question",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Reading four academics on one question",
+      "intent": "Read four short texts by academics on whether arts subjects should be compulsory at school and find where each writer agrees or disagrees with the others."
+    },
+    {
+      "id": "en-words-with-several-meanings",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Words with several meanings",
+      "intent": "Use the different senses of about twelve common words (polysemy): run a business, settle a bill, the latest issue, a public figure, a sound argument, a field of study."
+    },
+    {
+      "id": "en-idioms-for-situations",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Idioms for situations",
+      "intent": "Comment on situations and outcomes with about twelve idioms: the last straw, a blessing in disguise, the tip of the iceberg, a drop in the ocean, a long shot, a vicious circle."
+    },
+    {
+      "id": "en-reading-a-nineteenth-century-short-story",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Reading a nineteenth-century short story",
+      "intent": "Read a short story from the 1800s and follow its plot and characters through older vocabulary, long sentences and formal dialogue."
+    }
+  ]
+}
