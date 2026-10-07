@@ -281,7 +281,7 @@
       "sourceId": "fr-read-0021",
       "level": "C1",
       "topic": "information_structure_and_pragmatics",
-      "readText": "Longtemps, on a jugé une bibliothèque au nombre de ses livres. Cette mesure ne dit plus grand-chose : les collections se consultent à distance, et ce que les habitants viennent chercher sur place, c'est un lieu — pour travailler, se former, ou simplement s'asseoir sans rien devoir consommer. Les bibliothèques qui l'ont compris se sont transformées ; les autres voient leurs salles se vider, quels que soient les trésors de leurs rayonnages.",
+      "readText": "Longtemps, on a jugé une bibliothèque au nombre de ses livres. Cette mesure ne dit plus grand-chose : les collections se consultent à distance, et ce que les habitants viennent chercher sur place, c'est un lieu pour travailler, se former, ou simplement s'asseoir sans rien devoir consommer. Les bibliothèques qui l'ont compris se sont transformées ; les autres voient leurs salles se vider, quels que soient les trésors de leurs rayonnages.",
       "question": "Quelle évolution le texte décrit-il ?",
       "options": [
         "On vient désormais chercher un lieu plus que des livres",
@@ -326,7 +326,7 @@
       "sourceId": "fr-read-0024",
       "level": "C1",
       "topic": "information_structure_and_pragmatics",
-      "readText": "Le succès des circuits courts repose sur une promesse de transparence : connaître celui qui produit ce que l'on mange. Promesse tenue, pour l'essentiel. Mais l'étiquette « local » en est venue à servir de garantie universelle — écologique, sociale, sanitaire — que rien n'oblige le produit à honorer. La proximité renseigne sur la distance parcourue, non sur la manière de produire.",
+      "readText": "Le succès des circuits courts repose sur une promesse de transparence : connaître celui qui produit ce que l'on mange. Promesse tenue, pour l'essentiel. Mais l'étiquette « local » en est venue à servir de garantie universelle écologique, sociale, sanitaire que rien n'oblige le produit à honorer. La proximité renseigne sur la distance parcourue, non sur la manière de produire.",
       "question": "Quelle limite l'auteur voit-il à l'étiquette « local » ?",
       "options": [
         "La proximité ne garantit pas les qualités qu'on lui prête",
@@ -371,7 +371,7 @@
       "sourceId": "fr-read-0027",
       "level": "C2",
       "topic": "information_structure_and_pragmatics",
-      "readText": "Les indicateurs de bien-être au travail prolifèrent, et avec eux un paradoxe : plus une entreprise mesure le bonheur de ses salariés, plus elle semble tenue d'en produire, et plus le moindre écart devient une faute de gestion. La mesure, censée décrire, se met à prescrire. On pourrait y voir un progrès. C'en serait un si l'obligation portait sur les conditions de travail plutôt que sur leur perception — car il est toujours moins coûteux d'améliorer un ressenti que de transformer ce qui le cause.",
+      "readText": "Les indicateurs de bien-être au travail prolifèrent, et avec eux un paradoxe : plus une entreprise mesure le bonheur de ses salariés, plus elle semble tenue d'en produire, et plus le moindre écart devient une faute de gestion. La mesure, censée décrire, se met à prescrire. On pourrait y voir un progrès. C'en serait un si l'obligation portait sur les conditions de travail plutôt que sur leur perception car il est toujours moins coûteux d'améliorer un ressenti que de transformer ce qui le cause.",
       "question": "Quel risque l'auteur identifie-t-il ?",
       "options": [
         "Que l'on soigne le ressenti plutôt que ses causes",
@@ -401,7 +401,7 @@
       "sourceId": "fr-read-0029",
       "level": "C2",
       "topic": "information_structure_and_pragmatics",
-      "readText": "La notion de patrimoine immatériel devait élargir la conservation aux pratiques vivantes : langues, savoir-faire, fêtes. L'intention était généreuse ; l'effet, plus ambigu. Inscrire une pratique, c'est la figer dans l'état où on l'a trouvée, et confier à des institutions le soin de dire ce qui, désormais, en relève ou la dénature. Des traditions qui n'avaient survécu qu'en se transformant sans cesse se voient sommées de rester elles-mêmes — injonction que leur histoire entière dément.",
+      "readText": "La notion de patrimoine immatériel devait élargir la conservation aux pratiques vivantes : langues, savoir-faire, fêtes. L'intention était généreuse ; l'effet, plus ambigu. Inscrire une pratique, c'est la figer dans l'état où on l'a trouvée, et confier à des institutions le soin de dire ce qui, désormais, en relève ou la dénature. Des traditions qui n'avaient survécu qu'en se transformant sans cesse se voient sommées de rester elles-mêmes injonction que leur histoire entière dément.",
       "question": "Quel effet paradoxal de l'inscription au patrimoine le texte décrit-il ?",
       "options": [
         "Elle fige des pratiques qui vivaient de se transformer",

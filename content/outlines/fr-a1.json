@@ -70,7 +70,7 @@
       "kind": "grammar",
       "topic": "adverbs",
       "workingTitle": "Ici, là, maintenant, demain",
-      "intent": "Situer une personne ou une action par rapport à soi et au moment où on parle avec ici, là, maintenant, aujourd'hui, demain, bientôt et tout de suite."
+      "intent": "Situer une personne ou une action par rapport à soi et au moment où on parle avec ici, là, maintenant, aujourd'hui, demain, bientôt et tout de suite : Je suis ici. J'arrive tout de suite."
     },
     {
       "id": "fr-classroom-objects",
@@ -168,7 +168,7 @@
       "kind": "reading",
       "theme": "personal_identification",
       "workingTitle": "Lire un profil en ligne",
-      "intent": "Lire le profil court d'une personne sur un site d'échange linguistique et retrouver son nom, son âge, sa ville, sa profession et ses langues."
+      "intent": "Lire le profil court d'une personne sur un site d'échange linguistique (Je m'appelle Ana, j'ai 25 ans) et retrouver son nom, son âge, sa ville, sa profession et ses langues."
     },
     {
       "id": "fr-regular-noun-plurals",
@@ -378,7 +378,7 @@
       "kind": "reading",
       "theme": "daily_life",
       "workingTitle": "Lire un SMS",
-      "intent": "Lire un court SMS d'un ami qui propose de se voir et retrouver le jour, l'heure et le lieu du rendez-vous."
+      "intent": "Lire un court SMS d'un ami qui propose de se voir (On se voit samedi ? 15 h au café de la gare ?) et retrouver le jour, l'heure et le lieu du rendez-vous."
     },
     {
       "id": "fr-verbs-prendre-and-boire",
@@ -399,7 +399,7 @@
       "kind": "grammar",
       "topic": "verb_usage",
       "workingTitle": "Demander poliment avec je voudrais",
-      "intent": "Demander poliment avec je voudrais, j'aimerais et vous pourriez + infinitif, plutôt qu'avec je veux, dans un magasin ou au café."
+      "intent": "Demander poliment avec je voudrais, j'aimerais et vous pourriez + infinitif, plutôt qu'avec je veux : je voudrais un café, vous pourriez répéter ?"
     },
     {
       "id": "fr-ordering-at-a-cafe",
@@ -462,7 +462,7 @@
       "kind": "reading",
       "theme": "food_and_drink",
       "workingTitle": "Lire la carte d'un restaurant",
-      "intent": "Lire la carte d'un petit restaurant et trouver les plats, les boissons, les prix et ce que comprend la formule du jour."
+      "intent": "Lire la carte d'un petit restaurant et trouver les plats, les boissons, les prix et ce que comprend la formule du jour (entrée, plat, dessert, 15 euros)."
     },
     {
       "id": "fr-quantity-and-intensity",
@@ -532,7 +532,7 @@
       "kind": "reading",
       "theme": "house_and_home",
       "workingTitle": "Lire une annonce de logement",
-      "intent": "Lire une petite annonce de location et trouver le type de logement, le nombre de pièces, le quartier, le loyer et comment contacter le propriétaire."
+      "intent": "Lire une petite annonce de location (studio, deux pièces, centre-ville, 650 euros par mois) et trouver le logement, le quartier, le loyer et comment contacter le propriétaire."
     },
     {
       "id": "fr-weather-expressions",
@@ -560,7 +560,7 @@
       "kind": "grammar",
       "topic": "verbs_morphology",
       "workingTitle": "Les verbes pronominaux",
-      "intent": "Conjuguer au présent des verbes pronominaux courants comme s'appeler, se lever, se laver et se coucher, avec me, te, se, nous, vous, se."
+      "intent": "Conjuguer au présent des verbes pronominaux courants avec me, te, se, nous, vous, se : je m'appelle Léa, il se lève à sept heures, nous nous couchons tard."
     },
     {
       "id": "fr-daily-routine",
@@ -651,7 +651,7 @@
       "kind": "reading",
       "theme": "free_time",
       "workingTitle": "Lire le programme d'un cinéma",
-      "intent": "Lire le programme d'un cinéma et trouver le titre du film, le jour et l'heure de la séance, la salle et le prix du billet."
+      "intent": "Lire le programme d'un cinéma et trouver le titre du film, le jour et l'heure de la séance, la salle et le prix du billet (mardi, 20 h 15, salle 3, 9 euros)."
     },
     {
       "id": "fr-possessives-notre-votre-leur",
@@ -686,7 +686,7 @@
       "kind": "reading",
       "theme": "relations",
       "workingTitle": "Lire une invitation",
-      "intent": "Lire une invitation à une fête et trouver l'occasion, la date, l'heure, le lieu, ce qu'il faut apporter et comment répondre."
+      "intent": "Lire une invitation à une fête et trouver l'occasion, la date, l'heure, le lieu, ce qu'il faut apporter et comment répondre (un dessert, réponse par SMS avant jeudi)."
     },
     {
       "id": "fr-personal-belongings",
@@ -742,7 +742,7 @@
       "kind": "reading",
       "theme": "travel",
       "workingTitle": "Lire un horaire de train",
-      "intent": "Lire un horaire de train ou un tableau des départs et trouver l'heure de départ, l'heure d'arrivée, la voie et les retards."
+      "intent": "Lire un horaire de train ou un tableau des départs et trouver l'heure de départ, l'heure d'arrivée, la voie et les retards (départ 8 h 12, voie B, retard 10 min)."
     },
     {
       "id": "fr-hotel-words",

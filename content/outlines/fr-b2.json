@@ -49,7 +49,7 @@
       "kind": "reading",
       "theme": "services",
       "workingTitle": "Lire un éditorial",
-      "intent": "Lire l'éditorial d'un quotidien, formuler sa thèse en une phrase et repérer les procédés par lesquels l'éditorialiste cherche à convaincre."
+      "intent": "Lire l'éditorial d'un quotidien, formuler sa thèse en une phrase et repérer les procédés qui doivent convaincre (questions rhétoriques, chiffres choc, il est temps que)."
     },
     {
       "id": "fr-avoir-beau",
@@ -83,8 +83,8 @@
       "id": "fr-cause-etant-donne-que",
       "kind": "grammar",
       "topic": "subordinate_clauses",
-      "workingTitle": "Étant donné que, vu que, faute de",
-      "intent": "Exprimer la cause de façon plus précise avec étant donné que, vu que, dans la mesure où, sous prétexte que, faute de et à force de : faute de temps, j'ai abandonné."
+      "workingTitle": "Étant donné que, vu que, à force de",
+      "intent": "Exprimer la cause avec plus de précision : étant donné que, vu que, dans la mesure où, sous prétexte que et à force de : vu qu'il pleut, on reste ; à force de travailler, il a réussi."
     },
     {
       "id": "fr-cause-and-effect-words",
@@ -98,7 +98,7 @@
       "kind": "reading",
       "theme": "services",
       "workingTitle": "Lire deux tribunes opposées",
-      "intent": "Lire deux tribunes qui s'opposent sur la semaine de quatre jours à l'école, comparer leurs arguments et dire lequel répond le mieux à l'autre."
+      "intent": "Lire deux tribunes opposées sur la semaine de quatre jours à l'école (fatigue des enfants, garde, rythmes), comparer leurs arguments et dire laquelle répond le mieux à l'autre."
     },
     {
       "id": "fr-cest-que-explanation",
@@ -118,15 +118,15 @@
       "id": "fr-hedging-words",
       "kind": "vocabulary",
       "theme": "language",
-      "workingTitle": "Plutôt, relativement, a priori",
-      "intent": "Nuancer avec une douzaine de mots : plutôt, relativement, assez, en partie, plus ou moins, a priori, en principe, dans l'ensemble, globalement, éventuellement, il semblerait que."
+      "workingTitle": "Relativement, a priori, en principe",
+      "intent": "Nuancer avec une douzaine de mots : relativement, en partie, plus ou moins, a priori, en principe, dans l'ensemble, globalement, éventuellement, il semblerait que, dans une large mesure."
     },
     {
       "id": "fr-reading-a-letter-to-the-editor",
       "kind": "reading",
       "theme": "language",
       "workingTitle": "Lire un courrier des lecteurs",
-      "intent": "Lire une lettre de lecteur qui répond à un article, retrouver ce qu'elle conteste et juger si sa réfutation est convaincante."
+      "intent": "Lire une lettre de lecteur qui répond à un article, retrouver ce qu'elle conteste (votre journaliste affirme que, or) et juger si sa réfutation est convaincante."
     },
     {
       "id": "fr-writing-an-argued-opinion",
@@ -147,14 +147,14 @@
       "kind": "reading",
       "theme": "free_time",
       "workingTitle": "Lire un extrait de roman",
-      "intent": "Lire un extrait de roman contemporain au passé simple, suivre l'enchaînement des actions et dire ce que les détails révèlent de l'état d'esprit du personnage."
+      "intent": "Lire un extrait de roman contemporain au passé simple, suivre l'enchaînement des actions et dire ce que les détails (un geste, un silence, un objet) révèlent du personnage."
     },
     {
       "id": "fr-simple-past-and-imperfect",
       "kind": "grammar",
       "topic": "verb_usage",
       "workingTitle": "Passé simple et imparfait dans le récit",
-      "intent": "Distinguer dans un récit écrit le premier plan au passé simple et l'arrière-plan à l'imparfait, et comprendre pourquoi l'oral choisit le passé composé."
+      "intent": "Distinguer dans un récit écrit le premier plan au passé simple et l'arrière-plan à l'imparfait : il faisait nuit quand elle ouvrit la porte ; à l'oral, on dirait elle a ouvert."
     },
     {
       "id": "fr-time-expressions-in-narration",
@@ -210,7 +210,7 @@
       "kind": "reading",
       "theme": "free_time",
       "workingTitle": "Lire une nouvelle réaliste",
-      "intent": "Lire une nouvelle réaliste du XIXe siècle, résumer l'intrigue, décrire le milieu social des personnages et expliquer la portée de la fin."
+      "intent": "Lire une nouvelle réaliste du XIXe siècle (Maupassant), résumer l'intrigue, décrire le milieu social des personnages et expliquer la portée de la fin."
     },
     {
       "id": "fr-describing-an-atmosphere",
@@ -238,7 +238,7 @@
       "kind": "reading",
       "theme": "free_time",
       "workingTitle": "Lire un extrait de pièce de théâtre",
-      "intent": "Lire un dialogue de théâtre, repérer les didascalies, le conflit entre les personnages et ce que chacun cache derrière ses répliques."
+      "intent": "Lire un dialogue de théâtre, repérer les didascalies (à part, il sort), le conflit entre les personnages et ce que chacun cache derrière ses répliques."
     },
     {
       "id": "fr-approximate-quantity-words",
@@ -259,7 +259,7 @@
       "kind": "reading",
       "theme": "free_time",
       "workingTitle": "Lire une fable de La Fontaine",
-      "intent": "Lire une fable de La Fontaine, comprendre les mots anciens grâce au contexte, résumer l'histoire et reformuler la morale en français d'aujourd'hui."
+      "intent": "Lire une fable de La Fontaine, comprendre les mots anciens grâce au contexte (maître, ouïr, sitôt), résumer l'histoire et reformuler la morale en français d'aujourd'hui."
     },
     {
       "id": "fr-management-and-teams",
@@ -273,7 +273,7 @@
       "kind": "vocabulary",
       "theme": "daily_life",
       "workingTitle": "Faire un point, une deadline, un process",
-      "intent": "Comprendre le jargon de bureau et ses équivalents : faire un point, une deadline ou une échéance, un process, un brief, le reporting, être en copie, caler un rendez-vous."
+      "intent": "Comprendre une douzaine de mots du jargon de bureau et leurs équivalents : faire un point, une deadline ou une échéance, un process, un brief, le reporting, être en copie, caler un rendez-vous."
     },
     {
       "id": "fr-body-idioms",
@@ -343,7 +343,7 @@
       "kind": "reading",
       "theme": "daily_life",
       "workingTitle": "Lire un compte rendu de réunion",
-      "intent": "Lire un compte rendu de réunion et dire quelles décisions ont été prises, qui doit faire quoi, avant quand, et ce qui reste en suspens."
+      "intent": "Lire un compte rendu de réunion et dire quelles décisions ont été prises, qui doit faire quoi, avant quand, et ce qui reste en suspens (point reporté, à valider, relevé de décisions)."
     },
     {
       "id": "fr-indicative-or-subjunctive-tricky-cases",
@@ -378,7 +378,7 @@
       "kind": "reading",
       "theme": "daily_life",
       "workingTitle": "Lire un mail professionnel délicat",
-      "intent": "Lire un mail où une responsable recadre poliment un collaborateur et dégager ce qui est reproché, ce qui est demandé et ce qui est sous-entendu."
+      "intent": "Lire un mail où une responsable recadre poliment un collaborateur (je me permets de revenir sur, je compte sur vous pour) et dégager ce qui est reproché, demandé et sous-entendu."
     },
     {
       "id": "fr-animal-idioms",
@@ -448,14 +448,14 @@
       "kind": "vocabulary",
       "theme": "relations",
       "workingTitle": "Ça m'énerve, ras-le-bol",
-      "intent": "Exprimer son agacement du plus poli au plus familier : ça m'agace, ça m'énerve, j'en ai assez, j'en ai marre, ras-le-bol, ça me saoule, c'est insupportable."
+      "intent": "Exprimer son agacement avec une dizaine d'expressions, du plus poli au plus familier : ça m'agace, ça m'énerve, j'en ai assez, j'en ai marre, ras-le-bol, ça me saoule (fam.), c'est insupportable."
     },
     {
       "id": "fr-expressing-enthusiasm",
       "kind": "vocabulary",
       "theme": "relations",
       "workingTitle": "Ravi, emballé, ça déchire",
-      "intent": "Exprimer son enthousiasme selon le registre : je suis ravi, enchanté, emballé, c'est formidable, génial, top, trop bien, je kiffe, ça déchire."
+      "intent": "Exprimer son enthousiasme avec une dizaine de mots selon le registre : je suis ravi, enchanté, emballé, c'est formidable, génial, top, trop bien, je kiffe (fam.), ça déchire (fam.)."
     },
     {
       "id": "fr-idiomatic-en-and-y",
@@ -483,14 +483,14 @@
       "kind": "vocabulary",
       "theme": "personal_identification",
       "workingTitle": "Économe ou radin ?",
-      "intent": "Choisir entre deux mots pour un même trait selon qu'on approuve ou qu'on critique : économe ou radin, ambitieux ou arriviste, prudent ou peureux, franc ou brutal."
+      "intent": "Choisir entre deux mots pour un même trait selon qu'on approuve ou critique, une douzaine en tout : économe ou radin, ambitieux ou arriviste, prudent ou peureux, franc ou brutal."
     },
     {
       "id": "fr-colour-idioms",
       "kind": "vocabulary",
       "theme": "language",
       "workingTitle": "Rire jaune, voir rouge",
-      "intent": "Employer une douzaine d'expressions avec des couleurs : rire jaune, voir rouge, être blanc comme un linge, broyer du noir, être fleur bleue, montrer patte blanche, être vert de rage."
+      "intent": "Employer une douzaine d'expressions avec des couleurs : rire jaune, voir rouge, être blanc comme un linge, travailler au noir, être fleur bleue, montrer patte blanche, être vert de rage."
     },
     {
       "id": "fr-personality-idioms",
@@ -511,7 +511,7 @@
       "kind": "reading",
       "theme": "relations",
       "workingTitle": "Lire un article de psychologie",
-      "intent": "Lire un article de vulgarisation sur la jalousie dans l'amitié, séparer les observations des explications, et retenir les conseils de la psychologue."
+      "intent": "Lire un article de vulgarisation sur la jalousie entre amis, séparer les observations des explications (cela s'explique par) et retenir les conseils de la psychologue."
     },
     {
       "id": "fr-clearing-up-a-misunderstanding",
@@ -574,7 +574,7 @@
       "kind": "reading",
       "theme": "relations",
       "workingTitle": "Lire des commentaires en ligne",
-      "intent": "Lire une série de commentaires sous un article et distinguer les avis sincères, l'ironie, la provocation et le simple hors-sujet."
+      "intent": "Lire des commentaires sous un article et distinguer les avis sincères, l'ironie (bravo, quel génie), la provocation et le hors-sujet."
     },
     {
       "id": "fr-journalism",
@@ -637,7 +637,7 @@
       "kind": "reading",
       "theme": "services",
       "workingTitle": "Lire une enquête journalistique",
-      "intent": "Lire une enquête sur une entreprise qui pollue une rivière et suivre comment le journaliste établit les faits, croise ses sources et donne la parole à chaque partie."
+      "intent": "Lire une enquête sur une usine qui pollue une rivière et suivre comment le journaliste établit les faits, croise ses sources (selon un ancien salarié, contactée, la direction) et fait parler chacun."
     },
     {
       "id": "fr-cybersecurity",
@@ -658,7 +658,7 @@
       "kind": "reading",
       "theme": "services",
       "workingTitle": "Lire une chronique radio",
-      "intent": "Lire la transcription d'une chronique radio d'actualité, distinguer l'information du commentaire et dire où le chroniqueur fait de l'ironie."
+      "intent": "Lire la transcription d'une chronique radio d'actualité, distinguer l'information du commentaire et dire où le chroniqueur fait de l'ironie (formidable, on n'arrête pas le progrès)."
     },
     {
       "id": "fr-summarising-a-discussion",
@@ -679,7 +679,7 @@
       "kind": "reading",
       "theme": "education",
       "workingTitle": "Lire un article sur l'IA",
-      "intent": "Lire un article sur l'IA à l'école, dégager les promesses, les risques et les règles proposées, et repérer la position de l'auteur."
+      "intent": "Lire un article sur l'IA à l'école, dégager les promesses (un tuteur pour chacun), les risques (la triche, les biais) et les règles proposées, et repérer la position de l'auteur."
     },
     {
       "id": "fr-french-institutions",
@@ -700,7 +700,7 @@
       "kind": "vocabulary",
       "theme": "language",
       "workingTitle": "Un coup de main, tenter le coup",
-      "intent": "Employer une douzaine d'expressions avec coup : un coup de main, un coup de fil, un coup de pouce, un coup de foudre, tenter le coup, sur le coup, après coup, du coup."
+      "intent": "Employer une douzaine d'expressions avec coup : un coup de main, un coup de fil, un coup de pouce, prendre un coup de vieux, tenter le coup, après coup, boire un coup, en mettre un coup."
     },
     {
       "id": "fr-past-conditional",
@@ -749,7 +749,7 @@
       "kind": "reading",
       "theme": "services",
       "workingTitle": "Lire un tract syndical",
-      "intent": "Lire un tract appelant à la grève et dire qui l'écrit, ce qui est revendiqué, contre quoi, et avec quels arguments et quel ton."
+      "intent": "Lire un tract appelant à la grève et dire qui l'écrit, ce qui est revendiqué, contre quoi, et avec quels arguments et quel ton (tous mobilisés, assez, nous exigeons)."
     },
     {
       "id": "fr-mixed-conditionals",
@@ -805,14 +805,14 @@
       "kind": "vocabulary",
       "theme": "language",
       "workingTitle": "Prendre la mouche, tenir le coup",
-      "intent": "Employer une douzaine d'expressions avec des verbes courants : prendre la mouche, tenir le coup, passer un savon, mettre les voiles, prendre l'air, tenir la route, passer l'éponge."
+      "intent": "Employer une douzaine d'expressions avec des verbes courants : prendre la mouche, tenir le coup, passer un savon, mettre les voiles, prendre l'air, tenir la route, mettre les pieds dans le plat."
     },
     {
       "id": "fr-reading-an-open-letter",
       "kind": "reading",
       "theme": "services",
       "workingTitle": "Lire une lettre ouverte",
-      "intent": "Lire une lettre ouverte d'un collectif de médecins au gouvernement, résumer la demande et analyser comment le texte cherche à mobiliser l'opinion."
+      "intent": "Lire une lettre ouverte de médecins au gouvernement, résumer la demande et analyser comment elle mobilise l'opinion (nous, soignants, alertons ; il y a urgence ; combien faudra-t-il)."
     },
     {
       "id": "fr-crime-and-security",
@@ -847,7 +847,7 @@
       "kind": "reading",
       "theme": "services",
       "workingTitle": "Lire un bail",
-      "intent": "Lire les clauses principales d'un bail d'habitation et dire ce qui incombe au locataire et au propriétaire, et comment résilier."
+      "intent": "Lire les clauses principales d'un bail et dire ce qui incombe au locataire et au propriétaire et comment résilier (le dépôt de garantie, l'état des lieux, un préavis d'un mois)."
     },
     {
       "id": "fr-economy",
@@ -861,7 +861,7 @@
       "kind": "reading",
       "theme": "daily_life",
       "workingTitle": "Lire un article économique",
-      "intent": "Lire un article sur la hausse des prix de l'énergie, relier chiffres et explications et distinguer les causes, les effets et les mesures annoncées."
+      "intent": "Lire un article sur la hausse des prix de l'énergie, relier chiffres et explications et distinguer causes, effets et mesures (le bouclier tarifaire, sur un an, sous l'effet de)."
     },
     {
       "id": "fr-consequence-tellement-que",
@@ -896,7 +896,7 @@
       "kind": "functions",
       "theme": "shopping",
       "workingTitle": "Écrire une lettre de réclamation",
-      "intent": "Rédiger une réclamation formelle : rappeler les faits et les dates, citer ses droits, formuler une demande précise et fixer un délai, avec la formule finale adaptée."
+      "intent": "Rédiger une réclamation formelle avec les faits, ses droits, une demande précise et un délai : « Conformément à l'article… », « Sans réponse de votre part sous quinze jours… »."
     },
     {
       "id": "fr-scams",
@@ -924,7 +924,7 @@
       "kind": "reading",
       "theme": "shopping",
       "workingTitle": "Lire des conditions générales",
-      "intent": "Lire les conditions générales d'un abonnement en ligne et trouver la durée d'engagement, la reconduction tacite, les frais cachés et la façon de résilier."
+      "intent": "Lire les conditions générales d'un abonnement en ligne et trouver la durée d'engagement, la reconduction tacite, les frais cachés et la façon de résilier (sans frais, préavis)."
     },
     {
       "id": "fr-fashion-industry",
@@ -966,7 +966,7 @@
       "kind": "reading",
       "theme": "daily_life",
       "workingTitle": "Lire la synthèse d'une étude",
-      "intent": "Lire la synthèse d'une étude sur les Français et l'argent, interpréter les graphiques et rédiger mentalement les trois conclusions principales."
+      "intent": "Lire la synthèse d'une étude sur les Français et l'argent, lire ses graphiques (en hausse de, un tiers des sondés, près de la moitié) et en tirer les trois conclusions principales."
     },
     {
       "id": "fr-public-health",
@@ -980,14 +980,14 @@
       "kind": "vocabulary",
       "theme": "health",
       "workingTitle": "La santé mentale",
-      "intent": "Parler de santé mentale avec une douzaine de mots : l'anxiété, la dépression, un trouble, consulter un psy, une thérapie, la charge mentale, l'épuisement, la résilience."
+      "intent": "Parler de santé mentale avec une douzaine de mots : l'anxiété, la dépression, un trouble, consulter un psy, une thérapie, la souffrance psychique, l'épuisement, la résilience."
     },
     {
       "id": "fr-reading-a-mental-health-testimony",
       "kind": "reading",
       "theme": "health",
       "workingTitle": "Lire un témoignage sur la santé mentale",
-      "intent": "Lire le témoignage d'un étudiant sur une dépression, suivre les étapes de son parcours et relever ce qui l'a aidé à s'en sortir."
+      "intent": "Lire le témoignage d'un étudiant sur sa dépression, suivre les étapes de son parcours (le déni, oser en parler, la thérapie) et relever ce qui l'a aidé à s'en sortir."
     },
     {
       "id": "fr-purpose-de-peur-que",
@@ -1015,7 +1015,7 @@
       "kind": "vocabulary",
       "theme": "language",
       "workingTitle": "Être dans le pétrin, à côté de la plaque",
-      "intent": "Employer une douzaine d'expressions sur les difficultés et les erreurs : être dans le pétrin, à côté de la plaque, se planter, galérer, tomber à l'eau, ramer, faire chou blanc."
+      "intent": "Employer une douzaine d'expressions sur les difficultés et les erreurs : être dans le pétrin, à côté de la plaque, se mettre dans de beaux draps, galérer, tomber à l'eau, ramer, faire chou blanc."
     },
     {
       "id": "fr-future-perfect-for-guesses",
@@ -1029,7 +1029,7 @@
       "kind": "vocabulary",
       "theme": "health",
       "workingTitle": "Dépendance et sevrage",
-      "intent": "Parler d'addiction avec une douzaine de mots : la dépendance, être accro, le tabac, l'alcool, le sevrage, décrocher, rechuter, une cure, le manque, la prévention."
+      "intent": "Parler d'addiction avec une douzaine de mots : la dépendance, une addiction, le tabac, l'alcool, le sevrage, décrocher, rechuter, une cure, le manque, la prévention."
     },
     {
       "id": "fr-wellbeing",
@@ -1057,7 +1057,7 @@
       "kind": "reading",
       "theme": "health",
       "workingTitle": "Lire un article de vulgarisation médicale",
-      "intent": "Lire un article sur les effets du jeûne, distinguer ce qui est démontré de ce qui est seulement supposé et repérer comment le journaliste nuance."
+      "intent": "Lire un article sur les effets du jeûne, distinguer le démontré du supposé et repérer comment le journaliste nuance (les premiers résultats suggèrent, rien ne prouve encore)."
     },
     {
       "id": "fr-ageing-and-care",
@@ -1085,7 +1085,7 @@
       "kind": "reading",
       "theme": "health",
       "workingTitle": "Lire un dossier sur les déserts médicaux",
-      "intent": "Lire un dossier de presse sur les déserts médicaux et classer les solutions proposées selon qui les défend et ce qu'elles coûtent."
+      "intent": "Lire un dossier de presse sur les déserts médicaux et classer les solutions (les maisons de santé, la téléconsultation, l'obligation d'installation) selon qui les défend et leur coût."
     },
     {
       "id": "fr-ecological-transition",
@@ -1113,14 +1113,14 @@
       "kind": "reading",
       "theme": "weather",
       "workingTitle": "Lire le résumé d'un rapport sur le climat",
-      "intent": "Lire le résumé d'un rapport sur le climat en France, relier les chiffres aux tendances et distinguer les constats, les projections et les recommandations."
+      "intent": "Lire le résumé d'un rapport sur le climat en France, relier chiffres et tendances et distinguer constats, projections et recommandations (on observe, d'ici 2050, il convient de)."
     },
     {
       "id": "fr-not-understanding",
       "kind": "vocabulary",
       "theme": "language",
       "workingTitle": "C'est du chinois, je suis largué",
-      "intent": "Dire qu'on ne comprend pas, du plus poli au plus familier : je ne vois pas bien, je ne saisis pas, ça me dépasse, c'est du chinois, je suis largué, je n'y comprends rien."
+      "intent": "Dire qu'on ne comprend pas avec une dizaine d'expressions, du plus poli au plus familier : je ne saisis pas, ça me dépasse, c'est du chinois, je suis largué (fam.), je n'y comprends rien."
     },
     {
       "id": "fr-water-resources",
@@ -1169,7 +1169,7 @@
       "kind": "reading",
       "theme": "education",
       "workingTitle": "Lire l'interview d'une chercheuse",
-      "intent": "Lire l'interview d'une astrophysicienne, reformuler ses explications avec ses propres mots et relever comment elle rend accessible une idée complexe."
+      "intent": "Lire l'interview d'une astrophysicienne, reformuler ses explications et relever comment elle rend une idée complexe accessible (imaginez, c'est un peu comme, autrement dit)."
     },
     {
       "id": "fr-space",
@@ -1190,7 +1190,7 @@
       "kind": "reading",
       "theme": "weather",
       "workingTitle": "Lire un article sur le surtourisme",
-      "intent": "Lire un article sur le surtourisme dans une ville côtière, dégager les nuisances, les intérêts en jeu et les mesures prises par la mairie."
+      "intent": "Lire un article sur le surtourisme dans une ville côtière, dégager les nuisances, les intérêts en jeu et les mesures prises par la mairie (quotas, taxe de séjour, accès réservé)."
     },
     {
       "id": "fr-articles-with-abstract-nouns",
@@ -1239,7 +1239,7 @@
       "kind": "reading",
       "theme": "free_time",
       "workingTitle": "Lire une critique littéraire",
-      "intent": "Lire la critique d'un roman de la rentrée littéraire, séparer le résumé de l'analyse et relever les mots qui montrent l'enthousiasme ou les réserves du critique."
+      "intent": "Lire la critique d'un roman de la rentrée, séparer le résumé de l'analyse et relever les mots de l'enthousiasme ou des réserves (une écriture ciselée, on peine à croire, un brin long)."
     },
     {
       "id": "fr-literature",
@@ -1267,7 +1267,7 @@
       "kind": "reading",
       "theme": "free_time",
       "workingTitle": "Lire les paroles d'une chanson à texte",
-      "intent": "Lire les paroles d'une chanson à texte, retrouver l'histoire qu'elle raconte et expliquer les images et les jeux de mots qui portent son message."
+      "intent": "Lire les paroles d'une chanson à texte, retrouver l'histoire qu'elle raconte et expliquer les images et les jeux de mots qui portent son message (une métaphore, un double sens)."
     },
     {
       "id": "fr-ce-dont-ce-a-quoi",
@@ -1281,7 +1281,7 @@
       "kind": "vocabulary",
       "theme": "free_time",
       "workingTitle": "La BD franco-belge",
-      "intent": "Parler de bande dessinée avec une douzaine de mots : une planche, une case, une bulle, un album, le dessinateur, le scénariste, un roman graphique, le festival d'Angoulême."
+      "intent": "Parler de bande dessinée avec une douzaine de mots : une planche, une case, une bulle, un album, le dessinateur, le scénariste, un phylactère, le festival d'Angoulême."
     },
     {
       "id": "fr-reading-a-comic-strip",
@@ -1351,14 +1351,14 @@
       "kind": "reading",
       "theme": "free_time",
       "workingTitle": "Lire l'analyse d'un match",
-      "intent": "Lire l'analyse d'un match dans un quotidien sportif, comprendre le vocabulaire technique et dire à quoi le journaliste attribue la victoire."
+      "intent": "Lire l'analyse d'un match dans un quotidien sportif, comprendre le vocabulaire technique (le pressing, une contre-attaque, la possession) et dire à quoi le journaliste attribue la victoire."
     },
     {
       "id": "fr-three-registers",
       "kind": "vocabulary",
       "theme": "language",
       "workingTitle": "Manger, bouffer, se restaurer",
-      "intent": "Reconnaître les trois registres d'un même mot et choisir selon la situation : bouffer, manger, se restaurer ; le fric, l'argent, les fonds ; se barrer, partir, s'en aller."
+      "intent": "Reconnaître les trois registres d'une douzaine de mots et choisir selon la situation : bouffer, manger, se restaurer ; le fric, l'argent, les fonds ; se barrer, partir, s'en aller."
     },
     {
       "id": "fr-spoken-negation",
@@ -1414,7 +1414,7 @@
       "kind": "vocabulary",
       "theme": "language",
       "workingTitle": "Septante, nonante, char",
-      "intent": "Reconnaître des différences entre le français de France, de Belgique, de Suisse et du Québec : septante, nonante, le dîner, le souper, un char, magasiner, une blonde."
+      "intent": "Reconnaître une douzaine de différences entre le français de France, de Belgique, de Suisse et du Québec : septante, nonante, le dîner, le souper, un char, magasiner, une blonde."
     },
     {
       "id": "fr-reading-about-new-words",
@@ -1456,7 +1456,7 @@
       "kind": "vocabulary",
       "theme": "language",
       "workingTitle": "Autrement dit, à savoir, en clair",
-      "intent": "Reconnaître et employer une dizaine de marqueurs de reformulation : c'est-à-dire, autrement dit, en d'autres termes, à savoir, en clair, bref, en somme, pour ainsi dire."
+      "intent": "Reformuler avec une dizaine de marqueurs : c'est-à-dire, autrement dit, en d'autres termes, en un mot, en clair, pour ainsi dire, ou plutôt, soit, plus exactement."
     },
     {
       "id": "fr-verbs-and-their-prepositions",
@@ -1470,14 +1470,14 @@
       "kind": "reading",
       "theme": "language",
       "workingTitle": "Lire une chronique humoristique",
-      "intent": "Lire une chronique d'humour sur les petites manies des Français, repérer l'ironie et l'exagération, et dire ce que l'auteur critique vraiment."
+      "intent": "Lire une chronique d'humour sur les petites manies des Français (râler, la bise, l'apéro), repérer l'ironie et l'exagération et dire ce que l'auteur critique vraiment."
     },
     {
       "id": "fr-reading-about-the-french-academy",
       "kind": "reading",
       "theme": "language",
       "workingTitle": "Lire un article sur l'Académie française",
-      "intent": "Lire un article sur le rôle de l'Académie française et les débats qu'elle suscite, et résumer les positions en présence."
+      "intent": "Lire un article sur l'Académie française et les débats qu'elle suscite (la féminisation des noms de métier, les anglicismes) et résumer les positions en présence."
     },
     {
       "id": "fr-collocations-faire-prendre-donner",
@@ -1498,7 +1498,7 @@
       "kind": "vocabulary",
       "theme": "language",
       "workingTitle": "Une peur bleue, une pluie battante",
-      "intent": "Intensifier avec l'adjectif qui va naturellement avec le nom : une peur bleue, une pluie battante, un froid glacial, un silence de mort, un succès fou, une colère noire."
+      "intent": "Intensifier avec une douzaine d'adjectifs qui vont naturellement avec le nom : une peur bleue, une pluie battante, un froid glacial, un silence de mort, un succès fou, une colère noire."
     },
     {
       "id": "fr-verbs-for-rising-and-falling",
@@ -1519,35 +1519,35 @@
       "kind": "vocabulary",
       "theme": "language",
       "workingTitle": "Franchement, à vrai dire, en gros",
-      "intent": "Ponctuer un propos oral avec une douzaine de marqueurs : franchement, honnêtement, à vrai dire, en gros, en fait, carrément, genre, quand même, je veux dire, voilà."
+      "intent": "Ponctuer un propos oral avec une douzaine de marqueurs : franchement, honnêtement, à vrai dire, en gros, pour tout dire, carrément, genre (fam.), quand même, je veux dire, voilà."
     },
     {
       "id": "fr-making-a-formal-apology",
       "kind": "functions",
       "theme": "services",
       "workingTitle": "Présenter des excuses officielles",
-      "intent": "Présenter des excuses au nom d'un service ou d'une entreprise : reconnaître le problème, assumer la responsabilité, expliquer sans se défausser et proposer une réparation."
+      "intent": "Présenter des excuses au nom d'une entreprise, assumer et proposer une réparation : « Nous vous prions de bien vouloir nous excuser », « Ce retard nous est imputable », « En dédommagement… »."
     },
     {
       "id": "fr-formal-letter-formulas",
       "kind": "vocabulary",
       "theme": "language",
       "workingTitle": "Je vous prie d'agréer…",
-      "intent": "Comprendre et employer les formules du courrier formel : Madame, Monsieur ; je vous saurais gré de ; veuillez trouver ci-joint ; je vous prie d'agréer l'expression de mes salutations distinguées."
+      "intent": "Employer une dizaine de formules du courrier formel : Madame, Monsieur ; je vous saurais gré de ; veuillez trouver ci-joint ; je vous prie d'agréer l'expression de mes salutations distinguées."
     },
     {
       "id": "fr-homophones",
       "kind": "vocabulary",
       "theme": "language",
       "workingTitle": "A ou à, ses ou ces, quel que ou quelque",
-      "intent": "Distinguer à l'écrit les homophones qui posent problème : a et à, ou et où, ses et ces, se et ce, quand et quant, quelque et quel que, davantage et d'avantage."
+      "intent": "Distinguer à l'écrit une quinzaine d'homophones : a et à, ou et où, ses et ces, se et ce, quand et quant, quelque et quel que, davantage et d'avantage."
     },
     {
       "id": "fr-reading-a-contest-letter",
       "kind": "reading",
       "theme": "services",
       "workingTitle": "Lire une lettre de contestation",
-      "intent": "Lire une lettre qui conteste une amende de stationnement, repérer les arguments, les preuves avancées et la demande, et juger si elle a des chances d'aboutir."
+      "intent": "Lire une lettre qui conteste une amende de stationnement, repérer les arguments, les preuves (photo, ticket horodaté) et la demande, et juger si elle a des chances d'aboutir."
     },
     {
       "id": "fr-school-debates",
@@ -1561,7 +1561,7 @@
       "kind": "reading",
       "theme": "education",
       "workingTitle": "Lire un article d'opinion sur l'école",
-      "intent": "Lire un article d'opinion sur les devoirs à la maison, résumer la thèse, et évaluer la solidité des arguments et des chiffres cités."
+      "intent": "Lire un article d'opinion sur les devoirs à la maison, résumer la thèse et évaluer la solidité des arguments et des chiffres (selon une enquête, la majorité des parents)."
     },
     {
       "id": "fr-higher-education",
@@ -1589,14 +1589,14 @@
       "kind": "reading",
       "theme": "education",
       "workingTitle": "Lire un court essai",
-      "intent": "Lire un court essai sur le bonheur, suivre la progression du raisonnement et distinguer les idées de l'auteur de celles qu'il cite pour les discuter."
+      "intent": "Lire un court essai sur le bonheur, suivre la progression du raisonnement et distinguer les idées de l'auteur de celles qu'il cite pour les discuter (pour Épicure, on objectera que)."
     },
     {
       "id": "fr-reading-a-history-article",
       "kind": "reading",
       "theme": "education",
       "workingTitle": "Lire un article d'histoire",
-      "intent": "Lire un article de magazine sur un épisode de l'histoire de France, remettre les faits dans l'ordre et distinguer les faits des interprétations des historiens."
+      "intent": "Lire un article de magazine sur un épisode de l'histoire de France, remettre les faits dans l'ordre et distinguer faits et interprétations (pour certains historiens, il est probable que)."
     },
     {
       "id": "fr-teaching-methods",
@@ -1610,21 +1610,21 @@
       "kind": "reading",
       "theme": "personal_identification",
       "workingTitle": "Lire la biographie d'un écrivain",
-      "intent": "Lire la biographie détaillée d'un écrivain du XXe siècle et relier les événements de sa vie aux grands thèmes de son œuvre."
+      "intent": "Lire la biographie d'un écrivain du XXe siècle (Camus) et relier les événements de sa vie (l'enfance à Alger, la guerre) aux grands thèmes de son œuvre."
     },
     {
       "id": "fr-reading-a-folk-tale",
       "kind": "reading",
       "theme": "free_time",
       "workingTitle": "Lire un conte de Perrault",
-      "intent": "Lire un conte de Perrault, en repérer les étapes, comparer avec la version qu'on connaît et dire ce que la morale finale ajoute à l'histoire."
+      "intent": "Lire un conte de Perrault (Le Petit Chaperon rouge), en repérer les étapes, comparer avec la version qu'on connaît et dire ce que la morale finale ajoute à l'histoire."
     },
     {
       "id": "fr-reading-a-science-fiction-story",
       "kind": "reading",
       "theme": "free_time",
       "workingTitle": "Lire une nouvelle de science-fiction",
-      "intent": "Lire une nouvelle de science-fiction, décrire le monde imaginé, et dire quelle question sur notre société elle pose."
+      "intent": "Lire une nouvelle de science-fiction, décrire le monde imaginé (une ville sans nuit, des souvenirs à vendre) et dire quelle question sur notre société elle pose."
     },
     {
       "id": "fr-french-territories",
@@ -1652,14 +1652,14 @@
       "kind": "reading",
       "theme": "places",
       "workingTitle": "Lire un article sur un projet d'urbanisme",
-      "intent": "Lire un article de presse régionale sur un projet d'écoquartier contesté et présenter les arguments des élus, des riverains et des associations."
+      "intent": "Lire un article de presse régionale sur un écoquartier contesté et présenter les arguments des élus, des riverains et des associations (la densité, les espaces verts, le trafic)."
     },
     {
       "id": "fr-urban-planning",
       "kind": "vocabulary",
       "theme": "places",
       "workingTitle": "Écoquartier, étalement urbain",
-      "intent": "Parler d'urbanisme avec une douzaine de mots : un écoquartier, l'étalement urbain, la mixité sociale, végétaliser, une zone piétonne, la densité, un aménagement."
+      "intent": "Parler d'urbanisme avec une douzaine de mots : un écoquartier, l'étalement urbain, une friche, végétaliser, un îlot de chaleur, la densité, un aménagement."
     },
     {
       "id": "fr-renovation",
@@ -1715,7 +1715,7 @@
       "kind": "reading",
       "theme": "travel",
       "workingTitle": "Lire une charte de voyage responsable",
-      "intent": "Lire la charte d'une agence de voyage responsable et dire quels engagements sont précis et vérifiables et lesquels restent des formules vagues."
+      "intent": "Lire la charte d'une agence de voyage responsable et dire quels engagements sont précis et vérifiables (100 % de guides locaux) et lesquels restent vagues (respecter la planète)."
     },
     {
       "id": "fr-wine-tasting",
@@ -1736,21 +1736,21 @@
       "kind": "vocabulary",
       "theme": "food_and_drink",
       "workingTitle": "Onctueux, fondant, relevé",
-      "intent": "Décrire une saveur ou une texture avec précision : onctueux, moelleux, fondant, croquant, croustillant, acidulé, relevé, corsé, écœurant, raffiné, rustique."
+      "intent": "Décrire une saveur ou une texture avec une douzaine d'adjectifs : onctueux, moelleux, fondant, croquant, croustillant, acidulé, relevé, corsé, écœurant, raffiné, rustique."
     },
     {
       "id": "fr-reading-a-food-chronicle",
       "kind": "reading",
       "theme": "food_and_drink",
       "workingTitle": "Lire une chronique gastronomique",
-      "intent": "Lire une chronique sur un plat régional, repérer la part de souvenir, d'histoire et de recette, et dire ce que l'auteur veut défendre."
+      "intent": "Lire une chronique sur un plat régional (le cassoulet), repérer la part de souvenir, d'histoire et de recette, et dire ce que l'auteur veut défendre."
     },
     {
       "id": "fr-learned-prefixes",
       "kind": "vocabulary",
       "theme": "language",
       "workingTitle": "Auto-, anti-, inter-, néo-",
-      "intent": "Comprendre des mots formés avec des préfixes savants : auto- (autonome), anti- (antidote), inter- (international), multi-, néo-, poly-, post-, pré-, sous-, sur-."
+      "intent": "Comprendre une dizaine de préfixes savants : auto- (autonome), anti- (antidote), inter- (international), multi- (multiculturel), néo- (néologisme), poly-, post-, sous-, sur-."
     }
   ]
 }

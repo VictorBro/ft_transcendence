@@ -56,7 +56,7 @@
       "kind": "reading",
       "theme": "travel",
       "workingTitle": "Lire un blog de voyage",
-      "intent": "Lire un billet de blog sur trois jours à Marseille et retrouver l'ordre des visites, le petit problème du deuxième jour et le meilleur moment du séjour."
+      "intent": "Lire un billet de blog sur trois jours à Marseille (le Vieux-Port, les calanques, le Panier) et retrouver l'ordre des visites, le petit problème du deuxième jour et le meilleur moment."
     },
     {
       "id": "fr-reflexive-verbs-past",
@@ -105,7 +105,7 @@
       "kind": "reading",
       "theme": "personal_identification",
       "workingTitle": "Lire une courte biographie",
-      "intent": "Lire la courte biographie d'une personnalité française et remettre dans l'ordre les grandes étapes de sa vie avec leur date."
+      "intent": "Lire la courte biographie d'une chanteuse française et remettre dans l'ordre les étapes de sa vie avec leur date (née en 1975, a grandi à Lille, premier album en 2001)."
     },
     {
       "id": "fr-pendant-jusqua-a-partir-de",
@@ -343,7 +343,7 @@
       "kind": "reading",
       "theme": "house_and_home",
       "workingTitle": "Lire le règlement d'un immeuble",
-      "intent": "Lire le règlement affiché dans le hall d'un immeuble et dire ce qui est permis, interdit ou obligatoire pour les poubelles, le bruit, les vélos et les animaux."
+      "intent": "Lire le règlement affiché dans le hall d'un immeuble et dire ce qui est permis, interdit ou obligatoire (il est interdit de fumer, les vélos restent dans la cour)."
     },
     {
       "id": "fr-indefinite-pronouns",
@@ -392,7 +392,7 @@
       "kind": "grammar",
       "topic": "adverbs",
       "workingTitle": "Souvent, parfois, rarement",
-      "intent": "Dire la fréquence d'une habitude avec toujours, souvent, d'habitude, parfois, de temps en temps et rarement, en les plaçant au bon endroit dans la phrase."
+      "intent": "Dire la fréquence d'une habitude avec toujours, souvent, d'habitude, parfois, de temps en temps et rarement, bien placés : je vais souvent au cinéma, d'habitude je dîne tôt."
     },
     {
       "id": "fr-sharing-a-childhood-memory",
@@ -427,14 +427,14 @@
       "kind": "reading",
       "theme": "personal_identification",
       "workingTitle": "Lire un témoignage sur l'enfance",
-      "intent": "Lire le témoignage d'une grand-mère sur son enfance à la campagne et dire ce qui a changé par rapport à la vie d'aujourd'hui."
+      "intent": "Lire le témoignage d'une grand-mère sur son enfance à la campagne (on allait à l'école à pied, il n'y avait pas de télé) et dire ce qui a changé depuis."
     },
     {
       "id": "fr-reading-a-short-story",
       "kind": "reading",
       "theme": "free_time",
       "workingTitle": "Lire une histoire courte",
-      "intent": "Lire une courte histoire au passé, séparer les événements au passé composé du décor à l'imparfait, puis résumer la fin en une phrase."
+      "intent": "Lire une courte histoire au passé, séparer les événements (il est entré, elle a crié) du décor à l'imparfait (il faisait nuit), puis résumer la fin en une phrase."
     },
     {
       "id": "fr-cooking-verbs",
@@ -455,7 +455,7 @@
       "kind": "reading",
       "theme": "food_and_drink",
       "workingTitle": "Lire une recette",
-      "intent": "Lire une recette simple, retrouver les ingrédients, les quantités et l'ordre des étapes, et comprendre les verbes à l'infinitif ou à l'impératif."
+      "intent": "Lire une recette simple, retrouver les ingrédients, les quantités et l'ordre des étapes, et comprendre les consignes à l'infinitif ou à l'impératif : éplucher, faites cuire."
     },
     {
       "id": "fr-pronoun-en-for-quantities",
@@ -532,7 +532,7 @@
       "kind": "reading",
       "theme": "shopping",
       "workingTitle": "Lire des petites annonces d'occasion",
-      "intent": "Lire des annonces de vente entre particuliers et trouver pour chaque objet son état, son prix, s'il est négociable et comment le récupérer."
+      "intent": "Lire des annonces de vente entre particuliers et trouver pour chaque objet son état, son prix et comment le récupérer (très bon état, prix à débattre, à venir chercher)."
     },
     {
       "id": "fr-job-search",
@@ -553,7 +553,7 @@
       "kind": "reading",
       "theme": "daily_life",
       "workingTitle": "Lire une offre d'emploi",
-      "intent": "Lire une offre d'emploi et trouver le poste, le lieu, les horaires, le contrat, le profil demandé et la façon de postuler."
+      "intent": "Lire une offre d'emploi et trouver le poste, le lieu, les horaires, le contrat et le profil demandé (CDD de six mois, temps partiel, débutant accepté, envoyer CV)."
     },
     {
       "id": "fr-expressions-with-faire",
@@ -672,7 +672,7 @@
       "kind": "reading",
       "theme": "health",
       "workingTitle": "Lire une boîte de médicament",
-      "intent": "Lire l'étiquette et la posologie d'un médicament courant et dire combien en prendre, à quel moment, pendant combien de jours et pour qui il est déconseillé."
+      "intent": "Lire la boîte et la notice d'un médicament courant et dire combien en prendre, quand, combien de jours et pour qui il est déconseillé (deux comprimés par jour, dès 12 ans)."
     },
     {
       "id": "fr-imperative-with-pronouns",
@@ -721,7 +721,7 @@
       "kind": "reading",
       "theme": "health",
       "workingTitle": "Lire des conseils pour bien dormir",
-      "intent": "Lire un court article de conseils pour mieux dormir et classer les conseils en deux colonnes : ce qu'il faut faire et ce qu'il faut éviter."
+      "intent": "Lire un court article de conseils pour mieux dormir et les classer en deux colonnes, à faire et à éviter (se coucher à heure fixe, pas d'écran le soir, pas de café)."
     },
     {
       "id": "fr-on-time-late-early",
@@ -777,7 +777,7 @@
       "kind": "grammar",
       "topic": "verb_usage",
       "workingTitle": "Je vais partir ou je partirai ?",
-      "intent": "Choisir entre le futur proche pour un projet décidé ou tout proche et le futur simple pour un avenir plus lointain, une promesse ou une prévision."
+      "intent": "Choisir le futur proche pour un projet décidé ou tout proche et le futur simple pour un avenir lointain ou une promesse : je vais partir demain ; un jour, j'habiterai à la mer."
     },
     {
       "id": "fr-noun-endings-and-gender",
@@ -798,7 +798,7 @@
       "kind": "reading",
       "theme": "weather",
       "workingTitle": "Lire la météo de la semaine",
-      "intent": "Lire un bulletin météo au futur et dire quel temps il fera chaque jour dans chaque région, et quel jour choisir pour une sortie."
+      "intent": "Lire un bulletin météo au futur (il pleuvra, le soleil reviendra) et dire quel temps il fera chaque jour dans chaque région, et quel jour choisir pour une sortie."
     },
     {
       "id": "fr-real-conditions-with-si",
@@ -812,7 +812,7 @@
       "kind": "reading",
       "theme": "free_time",
       "workingTitle": "Lire un horoscope",
-      "intent": "Lire un horoscope de la semaine au futur et dire ce qu'il annonce à chaque signe pour l'amour, le travail et la santé."
+      "intent": "Lire un horoscope de la semaine au futur et dire ce qu'il annonce à chaque signe pour l'amour, le travail et la santé (vous ferez une rencontre, soyez patient)."
     },
     {
       "id": "fr-arranging-to-meet",
@@ -854,7 +854,7 @@
       "kind": "reading",
       "theme": "shopping",
       "workingTitle": "Lire une confirmation de commande",
-      "intent": "Lire un mail de confirmation de commande et trouver les articles, le total, la date et le mode de livraison, et ce qu'il faut faire pour un retour."
+      "intent": "Lire un mail de confirmation de commande et trouver les articles, le total, la date et le mode de livraison (en point relais, sous 48 h) et comment faire un retour."
     },
     {
       "id": "fr-returning-a-faulty-item",
@@ -924,7 +924,7 @@
       "kind": "reading",
       "theme": "travel",
       "workingTitle": "Lire une brochure touristique",
-      "intent": "Lire la brochure d'un office de tourisme et choisir une activité selon ses goûts, le prix, les horaires et l'âge des enfants."
+      "intent": "Lire la brochure d'un office de tourisme et choisir une activité selon ses goûts, le prix, les horaires et l'âge des enfants (tarif réduit, gratuit pour les moins de 6 ans)."
     },
     {
       "id": "fr-public-transport",
@@ -994,7 +994,7 @@
       "kind": "reading",
       "theme": "free_time",
       "workingTitle": "Lire des critiques de film",
-      "intent": "Lire deux critiques courtes du même film, dire si chaque auteur l'a aimé ou non et relever les mots qui le montrent."
+      "intent": "Lire deux critiques courtes du même film, dire si chaque auteur l'a aimé ou non et relever les mots qui le montrent (un vrai bijou, on s'ennuie, à voir absolument)."
     },
     {
       "id": "fr-jouer-a-jouer-de-faire-de",
@@ -1050,7 +1050,7 @@
       "kind": "reading",
       "theme": "places",
       "workingTitle": "Lire un fait divers",
-      "intent": "Lire un court fait divers dans le journal local et dire ce qui s'est passé, où, quand, à qui, et comment l'histoire s'est terminée."
+      "intent": "Lire un court fait divers du journal local (un chien retrouvé, un vol à la boulangerie) et dire ce qui s'est passé, où, quand, à qui, et comment ça s'est terminé."
     }
   ]
 }

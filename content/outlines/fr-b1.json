@@ -28,7 +28,7 @@
       "kind": "grammar",
       "topic": "verb_usage",
       "workingTitle": "Raconter avec trois temps",
-      "intent": "Raconter une histoire en choisissant entre passé composé, imparfait et plus-que-parfait selon le rôle de chaque action : un événement, le décor, ou ce qui s'était passé avant."
+      "intent": "Raconter une histoire en choisissant le temps selon le rôle de chaque action : il pleuvait (décor), je suis sorti (événement), j'avais oublié mon parapluie (ce qui précède)."
     },
     {
       "id": "fr-time-markers-in-a-story",
@@ -42,7 +42,7 @@
       "kind": "reading",
       "theme": "personal_identification",
       "workingTitle": "Lire un portrait dans un magazine",
-      "intent": "Lire le portrait d'une femme qui a changé de métier à quarante ans et expliquer pourquoi elle a changé, comment elle s'y est prise et ce qu'elle en pense aujourd'hui."
+      "intent": "Lire le portrait d'une femme devenue boulangère à quarante ans et expliquer pourquoi elle a changé, comment elle s'y est prise (une formation, un prêt) et ce qu'elle en pense."
     },
     {
       "id": "fr-past-near-future-and-recent-past",
@@ -91,7 +91,7 @@
       "kind": "reading",
       "theme": "personal_identification",
       "workingTitle": "Lire un extrait de récit d'enfance",
-      "intent": "Lire un extrait de récit autobiographique et séparer ce que l'auteur raconte, ce qu'il ressentait à l'époque et ce qu'il en pense aujourd'hui."
+      "intent": "Lire un extrait de récit d'enfance et séparer ce que l'auteur raconte, ce qu'il ressentait alors (j'avais honte) et ce qu'il en pense aujourd'hui (je comprends maintenant)."
     },
     {
       "id": "fr-then-and-nowadays",
@@ -112,7 +112,7 @@
       "kind": "reading",
       "theme": "free_time",
       "workingTitle": "Lire une nouvelle à chute",
-      "intent": "Lire une courte nouvelle, suivre l'ordre réel des événements malgré les retours en arrière, puis expliquer en quoi la fin surprend."
+      "intent": "Lire une courte nouvelle, suivre l'ordre réel des événements malgré les retours en arrière (trois ans plus tôt, la veille) et expliquer en quoi la fin surprend."
     },
     {
       "id": "fr-y-and-en-with-verbs",
@@ -245,7 +245,7 @@
       "kind": "reading",
       "theme": "relations",
       "workingTitle": "Lire le courrier des lecteurs",
-      "intent": "Lire la lettre d'un lecteur à une rubrique de conseils et la réponse de la journaliste, puis résumer le problème et les solutions proposées."
+      "intent": "Lire la lettre d'un lecteur à une rubrique de conseils (ma belle-mère s'invite tous les dimanches) et la réponse de la journaliste, puis résumer le problème et les solutions."
     },
     {
       "id": "fr-couples",
@@ -280,7 +280,7 @@
       "kind": "reading",
       "theme": "relations",
       "workingTitle": "Lire un forum de parents",
-      "intent": "Lire une discussion entre parents sur l'âge du premier téléphone portable et classer les avis selon leurs arguments."
+      "intent": "Lire une discussion entre parents sur l'âge du premier portable et classer les avis selon leurs arguments (la sécurité, le harcèlement, les écrans, l'autonomie)."
     },
     {
       "id": "fr-big-family-occasions",
@@ -329,7 +329,7 @@
       "kind": "functions",
       "theme": "daily_life",
       "workingTitle": "Répondre en entretien",
-      "intent": "Répondre aux questions classiques d'un entretien : se présenter, parler de son expérience, d'une qualité et d'un défaut, et dire pourquoi on veut ce poste."
+      "intent": "Répondre aux questions classiques d'un entretien sur son parcours, une qualité, un défaut et sa motivation : « Je suis quelqu'un de rigoureux », « Ce poste m'attire parce que… »."
     },
     {
       "id": "fr-indirect-questions",
@@ -420,7 +420,7 @@
       "kind": "reading",
       "theme": "daily_life",
       "workingTitle": "Lire des témoignages sur le télétravail",
-      "intent": "Lire trois témoignages de salariés sur le télétravail et dire qui est pour, qui est contre, et avec quels arguments."
+      "intent": "Lire trois témoignages de salariés sur le télétravail et dire qui est pour, qui est contre, et avec quels arguments (moins de trajets, l'isolement, la frontière avec la vie privée)."
     },
     {
       "id": "fr-verbs-like-conduire",
@@ -469,14 +469,14 @@
       "kind": "reading",
       "theme": "education",
       "workingTitle": "Lire un bulletin scolaire",
-      "intent": "Lire un bulletin trimestriel et dire dans quelles matières l'élève progresse, où il a du mal et ce que conseillent les professeurs."
+      "intent": "Lire un bulletin trimestriel et dire où l'élève progresse, où il a du mal et ce que conseillent les professeurs (bon trimestre, peut mieux faire, doit participer davantage)."
     },
     {
       "id": "fr-three-ways-to-ask",
       "kind": "grammar",
       "topic": "syntax_and_sentence_structure",
       "workingTitle": "Tu viens ? Est-ce que tu viens ? Viens-tu ?",
-      "intent": "Choisir entre l'intonation, est-ce que et l'inversion selon la situation : entre amis, au travail, à l'écrit, et reconnaître le registre de chaque forme."
+      "intent": "Choisir entre l'intonation, est-ce que et l'inversion selon la situation : Tu viens ? entre amis, Est-ce que vous venez ? au travail, Venez-vous ? à l'écrit."
     },
     {
       "id": "fr-asking-for-clarification",
@@ -511,7 +511,7 @@
       "kind": "vocabulary",
       "theme": "language",
       "workingTitle": "Lire, lecture, lecteur",
-      "intent": "Trouver les mots d'une même famille pour varier ses phrases : lire, la lecture, un lecteur ; nager, la nage, un nageur ; vendre, la vente, un vendeur ; décider, une décision."
+      "intent": "Trouver une douzaine de mots d'une même famille pour varier ses phrases : lire, la lecture, un lecteur ; nager, la nage, un nageur ; vendre, la vente ; décider, une décision."
     },
     {
       "id": "fr-prefixes",
@@ -525,7 +525,7 @@
       "kind": "reading",
       "theme": "education",
       "workingTitle": "Lire un article sur la mémoire",
-      "intent": "Lire un article sur la façon dont on retient le vocabulaire et dégager les trois méthodes conseillées avec leurs arguments."
+      "intent": "Lire un article sur la façon dont on retient le vocabulaire et dégager les trois méthodes conseillées avec leurs arguments (réviser à intervalles, dormir, se tester)."
     },
     {
       "id": "fr-student-life",
@@ -574,14 +574,14 @@
       "kind": "functions",
       "theme": "services",
       "workingTitle": "Se renseigner auprès d'une administration",
-      "intent": "Se renseigner sur une démarche : demander les pièces à fournir, les délais, les horaires, et ce qu'il faut faire si un document manque ou si le dossier est incomplet."
+      "intent": "Se renseigner sur une démarche, les pièces à fournir, les délais et ce qu'il faut faire si un document manque : « Quels justificatifs faut-il ? », « Et si je n'ai pas l'original ? »."
     },
     {
       "id": "fr-reading-an-official-letter",
       "kind": "reading",
       "theme": "services",
       "workingTitle": "Lire un courrier administratif",
-      "intent": "Lire un courrier d'une administration et trouver ce qu'on vous demande, avant quelle date, et ce qui se passe si vous ne répondez pas."
+      "intent": "Lire un courrier d'une administration et trouver ce qu'on vous demande, avant quelle date et ce qui arrive sans réponse (pièces justificatives, sous quinze jours, dossier clos)."
     },
     {
       "id": "fr-passive-voice",
@@ -609,7 +609,7 @@
       "kind": "reading",
       "theme": "services",
       "workingTitle": "Lire la page d'aide d'une banque",
-      "intent": "Lire la page d'aide d'une banque en ligne et trouver comment faire opposition sur une carte perdue, en combien de temps et à quel prix."
+      "intent": "Lire la page d'aide d'une banque en ligne et trouver comment faire opposition sur une carte perdue, en combien de temps et à quel prix (depuis l'appli, 24 h sur 24, gratuit)."
     },
     {
       "id": "fr-negative-infinitive",
@@ -637,7 +637,7 @@
       "kind": "grammar",
       "topic": "pronouns",
       "workingTitle": "Lequel, laquelle ?",
-      "intent": "Demander de choisir entre plusieurs choses ou personnes avec lequel, laquelle, lesquels et lesquelles : J'ai visité deux appartements. — Lequel tu préfères ?"
+      "intent": "Demander de choisir entre plusieurs choses ou personnes avec lequel, laquelle, lesquels et lesquelles : J'ai visité deux appartements. Lequel tu préfères ?"
     },
     {
       "id": "fr-diy-and-repairs",
@@ -714,14 +714,14 @@
       "kind": "functions",
       "theme": "shopping",
       "workingTitle": "Faire une réclamation",
-      "intent": "Faire une réclamation au téléphone ou au guichet : exposer le problème, rappeler les faits, dire ce qu'on attend, et insister poliment si la réponse ne convient pas."
+      "intent": "Faire une réclamation au téléphone ou au guichet, rappeler les faits et dire ce qu'on attend : « J'ai commandé le 3 mai et je n'ai rien reçu », « Je souhaiterais être remboursé »."
     },
     {
       "id": "fr-reading-return-conditions",
       "kind": "reading",
       "theme": "shopping",
       "workingTitle": "Lire des conditions de retour",
-      "intent": "Lire les conditions de retour d'un site marchand et dire dans quel délai, à quelles conditions et à quels frais un client peut renvoyer un article."
+      "intent": "Lire les conditions de retour d'un site marchand et dire dans quel délai, à quelles conditions et à quels frais renvoyer un article (sous 30 jours, non porté, retour gratuit)."
     },
     {
       "id": "fr-consequence-donc-si-bien-que",
@@ -742,7 +742,7 @@
       "kind": "reading",
       "theme": "shopping",
       "workingTitle": "Lire des avis de clients",
-      "intent": "Lire une dizaine d'avis sur un produit, séparer les points positifs et négatifs et décider si l'achat en vaut la peine."
+      "intent": "Lire une dizaine d'avis sur un produit, séparer les points positifs et négatifs (facile à monter, bruyant, fragile) et décider si l'achat en vaut la peine."
     },
     {
       "id": "fr-opposition-pourtant-alors-que",
@@ -784,7 +784,7 @@
       "kind": "reading",
       "theme": "daily_life",
       "workingTitle": "Lire un article sur le budget des familles",
-      "intent": "Lire un article sur le coût des courses pour une famille, repérer les chiffres importants et les conseils donnés pour dépenser moins."
+      "intent": "Lire un article sur le coût des courses pour une famille, repérer les chiffres importants (une hausse de 8 %, 600 euros par mois) et les conseils pour dépenser moins."
     },
     {
       "id": "fr-food-labels",
@@ -798,7 +798,7 @@
       "kind": "grammar",
       "topic": "nouns_and_determiners",
       "workingTitle": "Avec ou sans article ?",
-      "intent": "Savoir quand on ne met pas d'article : avec patience, sans sucre, en voiture, avoir besoin de, une table en bois, une tasse à café, Paris, capitale de la France."
+      "intent": "Ne pas mettre d'article après avec, sans et en, ni dans les noms qui disent la matière ou l'usage : avec patience, sans sucre, en voiture, une table en bois, une tasse à café."
     },
     {
       "id": "fr-inside-the-body",
@@ -819,21 +819,21 @@
       "kind": "functions",
       "theme": "health",
       "workingTitle": "Décrire ses symptômes au médecin",
-      "intent": "Expliquer au médecin ce qu'on ressent, depuis quand, à quel moment c'est pire, ce qu'on a déjà pris, puis poser ses questions sur le traitement."
+      "intent": "Expliquer au médecin ce qu'on ressent, depuis quand et ce qu'on a déjà pris, puis poser ses questions : « Ça me lance la nuit », « J'ai pris du paracétamol », « C'est grave ? »."
     },
     {
       "id": "fr-subjunctive-after-feelings",
       "kind": "grammar",
       "topic": "verb_usage",
       "workingTitle": "Je suis content que tu viennes",
-      "intent": "Dire ce qu'on ressent face à l'action d'un autre avec être content que, avoir peur que, regretter que, c'est dommage que + subjonctif."
+      "intent": "Dire ce qu'on ressent face à l'action d'un autre avec être content que, avoir peur que, regretter que + subjonctif : je suis contente que tu sois là, j'ai peur qu'il se perde."
     },
     {
       "id": "fr-reading-a-medicine-leaflet",
       "kind": "reading",
       "theme": "health",
       "workingTitle": "Lire une notice de médicament",
-      "intent": "Lire une notice complète, trouver la posologie, les contre-indications et les effets indésirables, et dire si on peut prendre le médicament dans une situation donnée."
+      "intent": "Lire une notice complète, trouver la posologie, les contre-indications et les effets indésirables (somnolence, nausées) et dire si on peut prendre le médicament dans un cas donné."
     },
     {
       "id": "fr-stress-and-exhaustion",
@@ -861,7 +861,7 @@
       "kind": "reading",
       "theme": "health",
       "workingTitle": "Lire un article sur les écrans et le sommeil",
-      "intent": "Lire un article de vulgarisation sur les écrans et le sommeil, et distinguer les faits établis, les hypothèses et les conseils pratiques."
+      "intent": "Lire un article de vulgarisation sur les écrans et le sommeil et distinguer les faits établis, les hypothèses et les conseils (selon une étude, il se pourrait que, évitez de)."
     },
     {
       "id": "fr-purpose-pour-que-afin-de",
@@ -896,7 +896,7 @@
       "kind": "reading",
       "theme": "health",
       "workingTitle": "Lire un programme d'entraînement",
-      "intent": "Lire un programme de course à pied pour débutants sur huit semaines et dire ce qu'il faut faire chaque semaine et quelles erreurs éviter."
+      "intent": "Lire un programme de course à pied sur huit semaines pour débutants, dire ce qu'il faut faire chaque semaine (alterner marche et course, trois sorties) et quelles erreurs éviter."
     },
     {
       "id": "fr-emergencies",
@@ -924,7 +924,7 @@
       "kind": "reading",
       "theme": "free_time",
       "workingTitle": "Lire une critique de presse",
-      "intent": "Lire une critique de film dans un journal, séparer le résumé de l'intrigue de l'avis du critique, et relever ses arguments pour et contre."
+      "intent": "Lire une critique de film dans un journal, séparer le résumé de l'intrigue de l'avis du critique et relever ses arguments pour et contre (un scénario habile, une fin bâclée)."
     },
     {
       "id": "fr-nuanced-likes-and-dislikes",
@@ -945,7 +945,7 @@
       "kind": "grammar",
       "topic": "subordinate_clauses",
       "workingTitle": "Il dit que, il demande si",
-      "intent": "Rapporter ce que quelqu'un dit ou demande avec dire que, demander si, demander ce que et demander de + infinitif, en adaptant les pronoms et les possessifs."
+      "intent": "Rapporter ce que quelqu'un dit ou demande avec dire que, demander si, demander ce que et demander de + infinitif : il dit qu'il est malade, elle me demande si je viens."
     },
     {
       "id": "fr-book-genres",
@@ -959,7 +959,7 @@
       "kind": "reading",
       "theme": "free_time",
       "workingTitle": "Lire des quatrièmes de couverture",
-      "intent": "Lire plusieurs quatrièmes de couverture, dire de quel genre est chaque livre et lequel conviendrait à un ami selon ses goûts."
+      "intent": "Lire plusieurs quatrièmes de couverture, dire de quel genre est chaque livre (un polar haletant, une saga familiale) et lequel conviendrait à un ami selon ses goûts."
     },
     {
       "id": "fr-verbs-like-peindre",
@@ -994,7 +994,7 @@
       "kind": "reading",
       "theme": "free_time",
       "workingTitle": "Lire les panneaux d'une exposition",
-      "intent": "Lire les textes d'une exposition sur un peintre, situer les grandes périodes de son œuvre et expliquer ce qui change de l'une à l'autre."
+      "intent": "Lire les panneaux d'une exposition sur un peintre, situer les grandes périodes de son œuvre (les années parisiennes, la période bleue) et dire ce qui change de l'une à l'autre."
     },
     {
       "id": "fr-neither-nor",
@@ -1050,14 +1050,14 @@
       "kind": "functions",
       "theme": "travel",
       "workingTitle": "Après une annulation",
-      "intent": "Après l'annulation d'un vol ou d'un train, exposer sa situation, demander les options, négocier un remboursement ou un hébergement et faire confirmer par écrit."
+      "intent": "Après un vol ou un train annulé, exposer sa situation et demander les options : « Quelles solutions vous me proposez ? », « L'hôtel est pris en charge ? », « Vous pouvez me l'écrire ? »."
     },
     {
       "id": "fr-reading-passenger-rights",
       "kind": "reading",
       "theme": "travel",
       "workingTitle": "Lire ses droits de passager",
-      "intent": "Lire une page sur les droits des passagers aériens et dire quelle indemnisation on peut obtenir selon la durée du retard et la distance du vol."
+      "intent": "Lire une page sur les droits des passagers aériens et dire quelle indemnisation obtenir selon le retard et la distance (plus de trois heures, 250 euros, moins de 1 500 km)."
     },
     {
       "id": "fr-reported-speech-past",
@@ -1092,7 +1092,7 @@
       "kind": "reading",
       "theme": "travel",
       "workingTitle": "Lire un récit de voyage",
-      "intent": "Lire un extrait de récit de voyage, suivre l'itinéraire et relever comment l'auteur décrit les lieux et les gens qu'il rencontre."
+      "intent": "Lire un extrait de récit de voyage, suivre l'itinéraire et relever comment l'auteur décrit les lieux et les gens qu'il rencontre (un village perché, un berger bavard)."
     },
     {
       "id": "fr-hiking-and-camping",
@@ -1134,7 +1134,7 @@
       "kind": "reading",
       "theme": "travel",
       "workingTitle": "Lire un guide touristique",
-      "intent": "Lire la page d'un guide sur une ville, trouver les incontournables et les conseils pratiques, et dire ce que l'auteur déconseille."
+      "intent": "Lire la page d'un guide sur une ville, trouver les incontournables et les conseils pratiques et dire ce que l'auteur déconseille (à ne pas manquer, à éviter en août, bon plan)."
     },
     {
       "id": "fr-selon-malgre-sauf-parmi",
@@ -1176,7 +1176,7 @@
       "kind": "reading",
       "theme": "services",
       "workingTitle": "Lire les titres de la une",
-      "intent": "Lire les titres et les chapeaux de la une d'un journal, dire de quoi parle chaque article et dans quelle rubrique il se trouve."
+      "intent": "Lire les titres et les chapeaux de la une d'un journal, dire de quoi parle chaque article et dans quelle rubrique il se trouve (Société, Économie, International, Sports)."
     },
     {
       "id": "fr-common-acronyms",
@@ -1211,14 +1211,14 @@
       "kind": "reading",
       "theme": "services",
       "workingTitle": "Lire un article d'actualité",
-      "intent": "Lire un article d'actualité, répondre aux questions qui, quoi, où, quand, comment et pourquoi, et distinguer les faits des déclarations."
+      "intent": "Lire un article d'actualité, répondre aux questions qui, quoi, où, quand, comment et pourquoi, et distinguer les faits des déclarations (selon le maire, a-t-il affirmé)."
     },
     {
       "id": "fr-impersonal-expressions",
       "kind": "grammar",
       "topic": "syntax_and_sentence_structure",
       "workingTitle": "Il paraît que, il s'agit de",
-      "intent": "Employer les tournures impersonnelles courantes : il paraît que, il s'agit de, il reste, il manque, il suffit de, il vaut mieux, il se trouve que."
+      "intent": "Employer les tournures impersonnelles courantes : il paraît qu'il va neiger, il s'agit d'une erreur, il suffit de demander, il reste du pain, il se trouve que je le connais."
     },
     {
       "id": "fr-politics-basics",
@@ -1232,14 +1232,14 @@
       "kind": "reading",
       "theme": "services",
       "workingTitle": "Lire un sondage",
-      "intent": "Lire les résultats d'un sondage sur les Français et les vacances, interpréter les pourcentages et résumer les tendances principales."
+      "intent": "Lire un sondage sur les Français et les vacances, interpréter les pourcentages (un sur deux, 38 % des sondés, en baisse) et résumer les tendances principales."
     },
     {
       "id": "fr-proportions",
       "kind": "grammar",
       "topic": "comparison_and_quantity",
       "workingTitle": "La majorité, un sur trois",
-      "intent": "Exprimer des proportions avec la majorité de, la plupart des, un Français sur trois, près de la moitié, deux fois plus, et accorder le verbe correctement."
+      "intent": "Exprimer des proportions avec la majorité de, la plupart des, un sur trois, près de la moitié, deux fois plus, et accorder le verbe : la plupart des gens partent en août."
     },
     {
       "id": "fr-social-networks",
@@ -1281,7 +1281,7 @@
       "kind": "grammar",
       "topic": "pronouns",
       "workingTitle": "Je le sais, je l'espère",
-      "intent": "Reprendre toute une idée avec le pronom neutre le : Il est parti ? — Je le sais. Tu viendras ? — Je l'espère. Elle est contente, et elle le dit."
+      "intent": "Reprendre toute une idée avec le pronom neutre le : Il est parti ? Je le sais. Tu viendras ? Je l'espère. Elle est contente, et elle le dit."
     },
     {
       "id": "fr-relatives-after-prepositions",
@@ -1316,7 +1316,7 @@
       "kind": "reading",
       "theme": "weather",
       "workingTitle": "Lire une tribune",
-      "intent": "Lire une courte tribune sur l'interdiction des voitures en centre-ville, trouver la position de l'auteur, ses arguments et l'exemple qu'il donne."
+      "intent": "Lire une courte tribune contre les voitures en centre-ville et trouver la position de l'auteur, ses arguments et l'exemple qu'il donne (la pollution, le bruit, la ville de Pontevedra)."
     },
     {
       "id": "fr-extreme-weather",
@@ -1330,7 +1330,7 @@
       "kind": "reading",
       "theme": "weather",
       "workingTitle": "Lire une alerte météo",
-      "intent": "Lire un bulletin de vigilance orange et dire quels départements sont concernés, quels risques sont annoncés et ce qu'on demande à la population."
+      "intent": "Lire un bulletin de vigilance orange et dire quels départements sont concernés, quels risques sont annoncés et ce qu'on demande aux habitants (limitez vos déplacements)."
     },
     {
       "id": "fr-concession-meme-si-quand-meme",
@@ -1358,7 +1358,7 @@
       "kind": "reading",
       "theme": "weather",
       "workingTitle": "Lire une infographie sur les transports",
-      "intent": "Lire une infographie sur les émissions de CO2 selon les modes de transport et comparer les chiffres pour choisir le trajet le moins polluant."
+      "intent": "Lire une infographie sur les émissions de CO2 des transports et comparer les chiffres (grammes par kilomètre, l'avion, le TGV, la voiture) pour choisir le trajet le moins polluant."
     },
     {
       "id": "fr-weather-idioms",
@@ -1407,7 +1407,7 @@
       "kind": "reading",
       "theme": "relations",
       "workingTitle": "Lire un appel aux bénévoles",
-      "intent": "Lire l'appel d'une association qui cherche des bénévoles et dire quelles missions elle propose, quel engagement elle demande et comment s'inscrire."
+      "intent": "Lire l'appel d'une association qui cherche des bénévoles et dire quelles missions elle propose, quel engagement elle demande (deux heures par semaine) et comment s'inscrire."
     },
     {
       "id": "fr-combined-negations",
@@ -1456,7 +1456,7 @@
       "kind": "reading",
       "theme": "personal_identification",
       "workingTitle": "Lire le blog d'un expatrié",
-      "intent": "Lire le blog d'un Français installé au Québec et relever ce qui l'a surpris, ce qui lui manque et les conseils qu'il donne à ceux qui veulent partir."
+      "intent": "Lire le blog d'un Français installé au Québec et relever ce qui l'a surpris (l'hiver, le tutoiement), ce qui lui manque et les conseils qu'il donne à ceux qui veulent partir."
     },
     {
       "id": "fr-quand-with-future",
@@ -1491,7 +1491,7 @@
       "kind": "reading",
       "theme": "free_time",
       "workingTitle": "Lire une lettre à soi-même",
-      "intent": "Lire la lettre qu'une adolescente écrit à elle-même pour dans dix ans et relever ses espoirs, ses peurs et les conseils qu'elle se donne."
+      "intent": "Lire la lettre qu'une adolescente écrit à elle-même pour dans dix ans et relever ses espoirs, ses peurs et ses conseils (j'espère que tu auras osé, n'oublie pas de rire)."
     },
     {
       "id": "fr-avant-que-jusqua-ce-que",
@@ -1526,7 +1526,7 @@
       "kind": "reading",
       "theme": "daily_life",
       "workingTitle": "Lire un article sur la déconnexion",
-      "intent": "Lire un article sur une semaine sans smartphone et résumer le problème de départ, ce que l'auteur a vécu et ce qu'il en retient."
+      "intent": "Lire un article sur une semaine sans smartphone et résumer le problème de départ, ce que l'auteur a vécu (le manque, l'ennui, puis le calme) et ce qu'il en retient."
     },
     {
       "id": "fr-anglicisms",
@@ -1547,7 +1547,7 @@
       "kind": "reading",
       "theme": "house_and_home",
       "workingTitle": "Lire le mode d'emploi d'un appareil",
-      "intent": "Lire le mode d'emploi d'un appareil ménager, trouver comment le mettre en marche, l'entretenir et que faire en cas de panne."
+      "intent": "Lire le mode d'emploi d'un appareil ménager, trouver comment le mettre en marche, l'entretenir et que faire en cas de panne (appuyer trois secondes, détartrer, voyant rouge)."
     },
     {
       "id": "fr-informal-everyday-french",
@@ -1603,14 +1603,14 @@
       "kind": "reading",
       "theme": "food_and_drink",
       "workingTitle": "Lire l'histoire d'un plat",
-      "intent": "Lire un article sur l'origine du croissant ou de la baguette, séparer la légende de ce qui est attesté, et retenir les grandes étapes de son histoire."
+      "intent": "Lire un article sur l'origine du croissant, séparer la légende de ce qui est attesté (selon la légende, en réalité, les historiens pensent que) et retenir les étapes de son histoire."
     },
     {
       "id": "fr-more-precise-words",
       "kind": "vocabulary",
       "theme": "language",
       "workingTitle": "Plus précis que faire et dire",
-      "intent": "Remplacer des mots trop vagues par des mots précis : faire un gâteau devient préparer, dire devient expliquer, une chose devient un objet, un sujet ou un problème."
+      "intent": "Remplacer une douzaine d'emplois de mots vagues par des mots précis : faire un gâteau devient préparer, dire devient expliquer, une chose devient un objet, un sujet, un problème."
     }
   ]
 }
