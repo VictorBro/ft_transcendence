@@ -1,0 +1,2246 @@
+{
+  "lang": "de",
+  "level": "C2",
+  "entries": [
+    {
+      "id": "de-verbs-of-walking",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Verben des Gehens",
+      "intent": "Etwa zwölf Verben für Arten des Gehens unterscheiden: schlendern, schleichen, stapfen, hinken, taumeln, trotten, waten, huschen."
+    },
+    {
+      "id": "de-verbs-of-looking",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Verben des Sehens",
+      "intent": "Etwa zwölf Verben für Arten des Schauens unterscheiden: starren, spähen, mustern, blinzeln, schielen, erblicken, glotzen (ugs.), gaffen (abwertend)."
+    },
+    {
+      "id": "de-tense-as-style",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Gestern sitze ich im Zug: Tempus als Stilmittel",
+      "intent": "Szenisches Präsens (Gestern sitze ich im Zug, da ...) und Futur als Befehl (Du wirst jetzt schlafen gehen!) gezielt einsetzen, um lebendig zu erzählen oder Nachdruck zu verleihen."
+    },
+    {
+      "id": "de-verbs-of-speaking",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Verben des Sprechens",
+      "intent": "Etwa zwölf Verben für Arten des Sprechens unterscheiden: flüstern, murmeln, stammeln, nuscheln, lallen, keifen, brüllen, schwafeln (ugs.)."
+    },
+    {
+      "id": "de-involuntary-body-reactions",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Unwillkürliche Körperreaktionen",
+      "intent": "Etwa zwölf unwillkürliche Reaktionen des Körpers benennen: zusammenzucken, erröten, erbleichen, frösteln, schlottern, sich verschlucken, der Schluckauf, die Gänsehaut."
+    },
+    {
+      "id": "de-telling-a-story-for-effect",
+      "kind": "functions",
+      "theme": "personal_identification",
+      "workingTitle": "Eine Geschichte pointiert erzählen",
+      "intent": "Eine Anekdote mit Spannung, Timing und Pointe erzählen: Und jetzt kommt's. Ob du's glaubst oder nicht, der Schlüssel lag im Kühlschrank. Lange Rede, kurzer Sinn: Wir kamen zu spät."
+    },
+    {
+      "id": "de-gossip",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Klatsch und Tratsch",
+      "intent": "Mit etwa zwölf Wörtern über Gerede und Gerüchte sprechen: der Klatsch, tratschen, lästern, munkeln, die Gerüchteküche, durchsickern, hinter jemandes Rücken reden."
+    },
+    {
+      "id": "de-reading-literary-reportage",
+      "kind": "reading",
+      "theme": "personal_identification",
+      "workingTitle": "Eine literarische Reportage lesen",
+      "intent": "Eine lange Reportage über einen Wanderschäfer in der Rhön lesen und die Mittel erkennen, die sie aus der Literatur übernimmt (Szenen, rekonstruierte Dialoge, zurückgehaltene Informationen)."
+    },
+    {
+      "id": "de-intelligence-words",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Klugheit und Dummheit",
+      "intent": "Etwa zwölf Wörter für Klugheit, Dummheit und Leichtgläubigkeit unterscheiden: scharfsinnig, gewitzt, gerissen, belesen, begriffsstutzig, einfältig, leichtgläubig, die Auffassungsgabe."
+    },
+    {
+      "id": "de-virtues-and-vices",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Tugenden und Laster",
+      "intent": "Etwa zwölf Tugenden und Laster mit Artikel benennen: die Tugend, das Laster, die Redlichkeit, die Demut, die Mäßigung, der Hochmut, die Habgier, die Eitelkeit."
+    },
+    {
+      "id": "de-course-of-life",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Lebenswege",
+      "intent": "Ein Leben mit etwa zwölf Wörtern erzählen: der Werdegang, die prägenden Jahre (Pl.), der Wendepunkt, die Lebensmitte, der Lebensabend, das Greisenalter, der Nachlass, posthum."
+    },
+    {
+      "id": "de-reading-a-biography-that-weighs-its-sources",
+      "kind": "reading",
+      "theme": "personal_identification",
+      "workingTitle": "Eine Biografie mit widersprüchlichen Quellen lesen",
+      "intent": "Ein Kapitel einer Biografie lesen, das widersprüchliche Zeugnisse über eine Malerin vergleicht, und nachvollziehen, wie die Biografin die Glaubwürdigkeit jeder Quelle beurteilt."
+    },
+    {
+      "id": "de-body-idioms",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Körperteile in Redewendungen",
+      "intent": "Etwa zwölf Redewendungen mit Körperteilen verwenden: die Nase rümpfen, jemandem die kalte Schulter zeigen, Haare auf den Zähnen haben, jemandem unter die Arme greifen."
+    },
+    {
+      "id": "de-nested-clauses",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Schachtelsätze: mehrfach eingebettete Nebensätze",
+      "intent": "Satzgefüge mit mehrfach eingebetteten Nebensätzen und gehäuften Verben am Ende verstehen und in klarere Sätze zerlegen: ..., dass er, als er merkte, dass es zu spät war, umkehrte."
+    },
+    {
+      "id": "de-feelings-towards-others",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Gefühle anderen gegenüber",
+      "intent": "Haltungen zu anderen Menschen mit etwa zwölf Nomen ausdrücken: die Zuneigung, die Ehrfurcht, die Bewunderung, das Mitgefühl, der Groll, die Verachtung, die Missgunst, die Häme."
+    },
+    {
+      "id": "de-closeness-idioms",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Nähe und Distanz in Redewendungen",
+      "intent": "Mit etwa zwölf Redewendungen beschreiben, wie Menschen zueinander stehen: ein Herz und eine Seele sein, durch dick und dünn gehen, sich nicht riechen können, jemanden links liegen lassen."
+    },
+    {
+      "id": "de-addressing-tensions-in-a-group",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Spannungen in einer Gruppe ansprechen",
+      "intent": "Unausgesprochene Spannungen in einer Gruppe behutsam zur Sprache bringen: Ich habe den Eindruck, dass hier etwas in der Luft liegt. Sollen wir das offen ansprechen? Bitte nehmt das nicht persönlich."
+    },
+    {
+      "id": "de-etiquette",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Etikette und Fauxpas",
+      "intent": "Mit etwa zwölf Wörtern über gutes und schlechtes Benehmen sprechen: die Etikette, der Knigge, der Anstand, unschicklich, der Fauxpas, sich danebenbenehmen, sich blamieren."
+    },
+    {
+      "id": "de-social-strata",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Gesellschaftsschichten",
+      "intent": "Über soziale Schichten mit etwa zwölf Wörtern sprechen und ihren Ton einschätzen: das Bürgertum, der Bildungsbürger, der Adel, die Oberschicht, das Prekariat, die Elite, der Emporkömmling."
+    },
+    {
+      "id": "de-reading-an-ethnological-essay-on-table-manners",
+      "kind": "reading",
+      "theme": "food_and_drink",
+      "workingTitle": "Einen ethnologischen Essay über Tischsitten lesen",
+      "intent": "Einen ethnologischen Essay lesen, der Tischregeln (Messer und Gabel, wer wem nachschenkt, Anstoßen mit Blickkontakt) als Zeichen von Stand und Zugehörigkeit deutet, und seiner Argumentation folgen."
+    },
+    {
+      "id": "de-titles-and-address",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Titel und Ehrenanreden",
+      "intent": "Etwa zwölf akademische, berufliche und Ehrentitel in Anrede und Brief verstehen: Herr Professor, Frau Doktor, Frau Magistra (österr.), der Hofrat (österr.), Exzellenz, Hochwürden."
+    },
+    {
+      "id": "de-reading-old-parish-and-civil-registers",
+      "kind": "reading",
+      "theme": "personal_identification",
+      "workingTitle": "Alte Kirchenbücher und Standesamtsregister lesen",
+      "intent": "Abschriften aus Kirchenbüchern und Standesamtsregistern lesen, Abkürzungen, alte Berufe und lateinische Begriffe deuten (ehel., Tagelöhner, copuliert) und eine Familiengeschichte rekonstruieren."
+    },
+    {
+      "id": "de-wealth-and-poverty",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Reichtum und Armut",
+      "intent": "Reichtum und Armut mit etwa zwölf Wörtern im passenden Register beschreiben: betucht, begütert, gut situiert, vermögend, mittellos, verarmt, abgebrannt (ugs.), am Hungertuch nagen."
+    },
+    {
+      "id": "de-formal-subjunctive-ii-forms",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Stünde, hülfe, würfe: seltene Konjunktiv-II-Formen",
+      "intent": "Seltene einfache Konjunktiv-II-Formen wie stünde, hülfe, würfe und begönne in gehobenen Texten erkennen und bei Doppelformen wie stünde oder stände, hülfe oder hälfe die übliche wählen."
+    },
+    {
+      "id": "de-reading-nineteenth-century-social-reportage",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Eine Sozialreportage aus dem 19. Jahrhundert lesen",
+      "intent": "Eine Sozialreportage über Fabrikarbeiterinnen im 19. Jahrhundert lesen und Beobachtungen, Zahlen und moralische Urteile des Verfassers in der älteren Prosa unterscheiden."
+    },
+    {
+      "id": "de-labels-for-people",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Menschentypen in der Umgangssprache",
+      "intent": "Etwa zwölf umgangssprachliche Bezeichnungen für Menschentypen und ihren Ton kennen: der Streber, der Spießer, der Besserwisser, der Morgenmuffel, der Tollpatsch, die Nervensäge."
+    },
+    {
+      "id": "de-manipulation",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Beeinflussung und Manipulation",
+      "intent": "Etwa zwölf Wörter für das Beeinflussen anderer unterscheiden: schmeicheln, beschwatzen, umgarnen, einwickeln (ugs.), einlullen, bedrängen, nötigen, die Gehirnwäsche."
+    },
+    {
+      "id": "de-conflict-idioms",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Streit in Redewendungen",
+      "intent": "Mit etwa zwölf Redewendungen über Streit und Versöhnung sprechen: sich in die Haare kriegen, Öl ins Feuer gießen, jemandem die Leviten lesen, die Wogen glätten, das Kriegsbeil begraben."
+    },
+    {
+      "id": "de-calming-a-heated-online-discussion",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Eine hitzige Onlinediskussion beruhigen",
+      "intent": "In einem aufgeheizten Thread so antworten, dass sich die Lage beruhigt: Lasst uns bitte sachlich bleiben. Ich glaube, im Kern meinen wir dasselbe. Persönliche Angriffe bringen uns nicht weiter."
+    },
+    {
+      "id": "de-humour",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Spielarten des Humors",
+      "intent": "Etwa zwölf Arten von Humor und Komik benennen: der schwarze Humor, der Galgenhumor, die Satire, der Sarkasmus, die Parodie, der Running Gag, das Kabarett, die Situationskomik."
+    },
+    {
+      "id": "de-reading-a-political-cabaret-transcript",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Das Transkript eines Kabarettprogramms lesen",
+      "intent": "Das Transkript eines politischen Kabarettprogramms lesen und erklären, wie Bühnenfigur, Timing, Anspielungen und wiederkehrende Pointen die Witze tragen."
+    },
+    {
+      "id": "de-word-play",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Wortspiele und Doppelsinn",
+      "intent": "Etwa zwölf Begriffe rund um das Spiel mit Wörtern verstehen: das Wortspiel, der Kalauer, doppeldeutig, zweideutig, die Anspielung, das Teekesselchen, der Zungenbrecher, der Schüttelreim."
+    },
+    {
+      "id": "de-verb-first-for-style",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Kommt ein Mann zum Arzt: Verberststellung im Erzählen",
+      "intent": "Verberstsätze am Anfang von Witzen und in lebhaften Erzählungen verstehen und selbst einsetzen: Kommt ein Mann zum Arzt ... Sitzen zwei Freunde im Café, sagt der eine zum anderen ..."
+    },
+    {
+      "id": "de-reading-punning-tabloid-headlines",
+      "kind": "reading",
+      "theme": "language",
+      "workingTitle": "Wortspiele in Boulevardschlagzeilen lesen",
+      "intent": "Schlagzeilen der Boulevardpresse lesen, Wortspiele, Anspielungen und Umgangssprache entschlüsseln und die Wertung erkennen, die jede Schlagzeile der Nachricht mitgibt."
+    },
+    {
+      "id": "de-colour-idioms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Farben in Redewendungen",
+      "intent": "Etwa zwölf Redewendungen mit Farben verstehen und verwenden: blau sein, grün hinter den Ohren sein, ins Blaue hinein, das Blaue vom Himmel versprechen, rotsehen, schwarzsehen."
+    },
+    {
+      "id": "de-blends",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Kofferwörter",
+      "intent": "Etwa zwölf Kofferwörter erkennen und in ihre Teile zerlegen: jein, das Denglisch, der Smog, der Brunch, das Motel, der Kurlaub, die Stagflation, das Infotainment."
+    },
+    {
+      "id": "de-hyperbole",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Übertreibungen im Alltag",
+      "intent": "Etwa zwölf typische Übertreibungen der Alltagssprache erkennen und gezielt einsetzen: sich totlachen, eine halbe Ewigkeit, zum hundertsten Mal, Berge von Arbeit, vor Hunger sterben."
+    },
+    {
+      "id": "de-giving-a-speech-at-a-celebration",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Eine Rede bei einer Feier halten",
+      "intent": "Bei Hochzeit, Jubiläum oder Abschied eine herzliche, humorvolle Rede halten: Liebe Familie, liebe Freundinnen und Freunde! Wer Paul kennt, weiß, dass er nie pünktlich ist. Erheben wir die Gläser!"
+    },
+    {
+      "id": "de-poetry",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Lyrik",
+      "intent": "Etwa zwölf Begriffe zur Beschreibung von Gedichten verwenden: der Vers, die Strophe, der Reim, das Metrum, der Jambus, die Alliteration, das Sonett, das lyrische Ich."
+    },
+    {
+      "id": "de-reading-nonsense-verse",
+      "kind": "reading",
+      "theme": "language",
+      "workingTitle": "Nonsens-Lyrik lesen",
+      "intent": "Nonsens-Gedichte von Christian Morgenstern und Joachim Ringelnatz lesen und erklären, wie Klang, Grammatik und verdrehte Logik erfundenen Wörtern Sinn verleihen."
+    },
+    {
+      "id": "de-number-idioms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Zahlen in Redewendungen",
+      "intent": "Etwa zwölf Redewendungen mit Zahlen verwenden: fünf gerade sein lassen, auf Nummer sicher gehen, zwei Fliegen mit einer Klappe schlagen, das fünfte Rad am Wagen sein."
+    },
+    {
+      "id": "de-stage-idioms",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Theater in Redewendungen",
+      "intent": "Etwa zwölf Redewendungen aus dem Theater verwenden: im Rampenlicht stehen, hinter den Kulissen, über die Bühne gehen, eine Szene machen, die Fäden ziehen, aus der Rolle fallen."
+    },
+    {
+      "id": "de-reading-weimar-era-satire",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Eine Satire der Weimarer Zeit lesen",
+      "intent": "Eine Satire von Kurt Tucholsky lesen und Ziel, Mittel und historischen Hintergrund erschließen (Bürokratie, Militarismus, Spießbürgertum in der Weimarer Republik)."
+    },
+    {
+      "id": "de-football-idioms",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Fußball in Redewendungen",
+      "intent": "Etwa zwölf Wendungen aus dem Fußball in Alltag und Politik verstehen: die Steilvorlage, den Ball flach halten, ins Abseits geraten, ein Heimspiel haben, nachtreten, der Joker."
+    },
+    {
+      "id": "de-cards-and-luck-idioms",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Spiel und Glück in Redewendungen",
+      "intent": "Etwa zwölf Redewendungen aus Karten- und Glücksspiel verwenden: alles auf eine Karte setzen, die Karten auf den Tisch legen, mit gezinkten Karten spielen, va banque spielen."
+    },
+    {
+      "id": "de-leaving-idioms",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Aufbruch in Redewendungen",
+      "intent": "Etwa zwölf Wendungen für schnelles Weggehen verstehen und verwenden: sich aus dem Staub machen, sich auf die Socken machen, das Weite suchen, über alle Berge sein, Fersengeld geben."
+    },
+    {
+      "id": "de-reading-an-ironic-travel-guide",
+      "kind": "reading",
+      "theme": "travel",
+      "workingTitle": "Einen ironischen Reiseführer lesen",
+      "intent": "Einen durchgehend ironischen Reiseführer über eine deutsche Großstadt lesen und die praktischen Tipps unter den Spitzen gegen Touristen und Einheimische herausfiltern."
+    },
+    {
+      "id": "de-journey-metaphors",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Der Lebensweg als Reise",
+      "intent": "Mit etwa zwölf Bildern der Reise über Lebensentscheidungen sprechen: am Scheideweg stehen, die Weichen stellen, auf der Strecke bleiben, in eine Sackgasse geraten, das Etappenziel."
+    },
+    {
+      "id": "de-ships-and-aircraft",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Schiff und Flugzeug",
+      "intent": "Etwa fünfzehn Teile und Positionen von Schiff und Flugzeug benennen: der Bug, das Heck, das Backbord, das Steuerbord, der Rumpf, der Kiel, die Tragfläche, das Fahrwerk."
+    },
+    {
+      "id": "de-passive-subjunctive-ii",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Hätte verhindert werden können: Passiv im Konjunktiv II",
+      "intent": "Das Passiv im Konjunktiv II der Gegenwart und Vergangenheit bilden, auch mit Modalverb und im Nebensatz: Das Haus würde abgerissen. Ich glaube, dass der Unfall hätte verhindert werden können."
+    },
+    {
+      "id": "de-apologising-on-behalf-of-a-company",
+      "kind": "functions",
+      "theme": "travel",
+      "workingTitle": "Sich im Namen eines Unternehmens entschuldigen",
+      "intent": "Für ein Bahn- oder Reiseunternehmen öffentlich und glaubwürdig um Entschuldigung bitten: Wir bedauern die Ausfälle zutiefst. Wir übernehmen die volle Verantwortung und haben Maßnahmen ergriffen."
+    },
+    {
+      "id": "de-migration-history",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Migration und Diaspora",
+      "intent": "Mit etwa zwölf Wörtern über Migrationsgeschichte sprechen: die Diaspora, der Gastarbeiter, das Anwerbeabkommen, die zweite Generation, der Spätaussiedler, das Exil, entwurzelt."
+    },
+    {
+      "id": "de-residence-law",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Aufenthaltsrecht",
+      "intent": "Etwa zwölf Begriffe des Aufenthaltsrechts verstehen: die Niederlassungserlaubnis, die Blaue Karte EU, der Familiennachzug, die Duldung, die Fiktionsbescheinigung, die doppelte Staatsbürgerschaft."
+    },
+    {
+      "id": "de-tourism-critique",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Tourismuskritik",
+      "intent": "Mit etwa zwölf Begriffen über die Schattenseiten des Tourismus sprechen: der Overtourism, die Kommerzialisierung, die Disneyfizierung, die Belastungsgrenze, die inszenierte Authentizität."
+    },
+    {
+      "id": "de-reading-an-essay-on-tourism-and-authenticity",
+      "kind": "reading",
+      "theme": "travel",
+      "workingTitle": "Einen Essay über Tourismus und Authentizität lesen",
+      "intent": "Einen kulturkritischen Essay über die Suche nach dem echten Reiseerlebnis lesen und dem abstrakten Gedankengang samt seinen ironischen Wendungen gegen die Leser folgen."
+    },
+    {
+      "id": "de-historical-travel",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Reisen in früheren Zeiten",
+      "intent": "Etwa zwölf Wörter für das Reisen vor der Eisenbahn verstehen: die Postkutsche, der Postillion, die Droschke, der Kutscher, das Fuhrwerk, die Poststation, der Schlagbaum, die Kavalierstour."
+    },
+    {
+      "id": "de-reading-a-cultural-history-of-the-railway",
+      "kind": "reading",
+      "theme": "travel",
+      "workingTitle": "Eine Kulturgeschichte der Eisenbahn lesen",
+      "intent": "Einen Essay über die Eisenbahn im Deutschland des 19. Jahrhunderts lesen und seine weitreichenden Thesen zu Zeit, Raum und Nation gegen die angeführten Belege abwägen."
+    },
+    {
+      "id": "de-taste-and-style",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Geschmack und Stil",
+      "intent": "Kleidung und Einrichtung mit etwa zwölf Wörtern stilistisch beurteilen: geschmackvoll, stilsicher, gediegen, extravagant, bieder, altbacken, kitschig, der Kitsch."
+    },
+    {
+      "id": "de-connoisseurship",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Kennerschaft und Raritäten",
+      "intent": "Mit etwa zwölf Wörtern über Sammeln auf hohem Niveau sprechen: der Kenner, der Connaisseur, die Kennerschaft, die Rarität, das Sammlerstück, der Liebhaberwert, die Provenienz, erlesen."
+    },
+    {
+      "id": "de-auctions-and-antiques",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Auktion und Antiquitäten",
+      "intent": "Etwa zwölf Begriffe aus Auktionshaus und Antiquitätenhandel verstehen: die Auktion, ersteigern, das Gebot, der Zuschlag, der Schätzwert, die Antiquität, die Patina, der Kunsthandel."
+    },
+    {
+      "id": "de-subjective-modals-passive",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Soll gestohlen worden sein: Vermutungen im Passiv",
+      "intent": "Vermutungen und Gerüchte über vergangene Vorgänge mit Modalverb und Infinitiv Perfekt Passiv ausdrücken: Das Bild soll gestohlen worden sein. Der Fehler dürfte übersehen worden sein."
+    },
+    {
+      "id": "de-reading-an-auction-catalogue",
+      "kind": "reading",
+      "theme": "shopping",
+      "workingTitle": "Einen Auktionskatalog lesen",
+      "intent": "Einträge eines Auktionskatalogs lesen und die verschlüsselten Formeln zu Zuschreibung, Zustand und Herkunft deuten (zugeschrieben, Umkreis von, altersbedingte Gebrauchsspuren, Provenienz)."
+    },
+    {
+      "id": "de-price-idioms",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Preise in Redewendungen",
+      "intent": "Mit etwa zwölf Wendungen über billig und teuer sprechen: für ein Butterbrot, für einen Apfel und ein Ei, sündhaft teuer, ein Heidengeld kosten, jemanden übers Ohr hauen, der Wucher."
+    },
+    {
+      "id": "de-high-street-change",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Wandel der Innenstädte",
+      "intent": "Mit etwa zwölf Wörtern über den Wandel des Handels in der Innenstadt sprechen: das Ladensterben, die Verödung, die Filialisierung, die Laufkundschaft, der Pop-up-Store, die Belebung."
+    },
+    {
+      "id": "de-reading-a-social-history-of-the-department-store",
+      "kind": "reading",
+      "theme": "shopping",
+      "workingTitle": "Eine Sozialgeschichte des Kaufhauses lesen",
+      "intent": "Einen sozialgeschichtlichen Essay über die großen Warenhäuser um 1900 lesen und seiner These über Bürgertum, neue Freiheiten für Frauen und die Erfindung des Begehrens folgen."
+    },
+    {
+      "id": "de-calming-an-angry-customer",
+      "kind": "functions",
+      "theme": "shopping",
+      "workingTitle": "Aufgebrachte Kundschaft beruhigen",
+      "intent": "Einen verärgerten Kunden beruhigen, ohne vorschnell Schuld einzugestehen, und Abhilfe anbieten: Ich kann Ihren Ärger gut nachvollziehen. Lassen Sie uns gemeinsam eine Lösung finden."
+    },
+    {
+      "id": "de-jewellery-and-gems",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Schmuck und Edelsteine",
+      "intent": "Etwa zwölf Wörter für Schmuck und Edelsteine genau verwenden: der Juwelier, der Edelstein, der Saphir, der Smaragd, das Karat, der Schliff, die Fassung, vergoldet, versilbert, das Feingold."
+    },
+    {
+      "id": "de-reading-luxury-goods-advertising",
+      "kind": "reading",
+      "theme": "shopping",
+      "workingTitle": "Werbung für Luxusgüter lesen",
+      "intent": "Werbetexte für eine Manufakturuhr lesen und zeigen, wie sie Herkunft, Handwerk, Status und eine Geschichte über den Käufer verkaufen statt das Produkt selbst."
+    },
+    {
+      "id": "de-consumer-psychology",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Konsumpsychologie",
+      "intent": "Etwa zwölf Begriffe der Konsumpsychologie verstehen: der Impulskauf, der Kaufreiz, das Nudging, die künstliche Verknappung, der Ankereffekt, die Markentreue, die Zahlungsbereitschaft."
+    },
+    {
+      "id": "de-reading-on-the-psychology-of-prices",
+      "kind": "reading",
+      "theme": "shopping",
+      "workingTitle": "Einen Artikel zur Preispsychologie lesen",
+      "intent": "Einen verhaltensökonomischen Artikel über Preise lesen, die Experimente dahinter finden (Ankereffekt, Lockangebot, Schwellenpreis 9,99 Euro) und beurteilen, was sie wirklich belegen."
+    },
+    {
+      "id": "de-euphemisms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Euphemismen",
+      "intent": "Etwa zwölf beschönigende Wörter aus Wirtschaft und Alltag erkennen und entschlüsseln: die Preisanpassung, freisetzen, das Nullwachstum, suboptimal, vollschlank, sozial schwach."
+    },
+    {
+      "id": "de-reading-four-promotional-texts-at-speed",
+      "kind": "reading",
+      "theme": "shopping",
+      "workingTitle": "Vier Werbe- und Informationstexte schnell lesen",
+      "intent": "Vier Werbe- und Informationstexte zu Sprachreisen unter Zeitdruck überfliegen und gezielt die Angaben finden, die bestimmte Fragen beantworten (Zielgruppe, Bedingungen, versteckte Kosten)."
+    },
+    {
+      "id": "de-writing-an-advertising-text",
+      "kind": "functions",
+      "theme": "free_time",
+      "workingTitle": "Einen Werbe- und Informationstext verfassen",
+      "intent": "Für einen Kurs oder ein Festival einen ansprechenden Werbetext schreiben: Entdecken Sie die Welt des Tangos! Ob Anfängerin oder Profi, bei uns sind alle willkommen. Sichern Sie sich jetzt Ihren Platz."
+    },
+    {
+      "id": "de-reading-a-consumer-dystopia",
+      "kind": "reading",
+      "theme": "shopping",
+      "workingTitle": "Eine dystopische Erzählung über Konsum lesen",
+      "intent": "Eine dystopische Erzählung lesen, in der alle ein monatliches Konsumsoll erfüllen müssen, und herausarbeiten, welche Idee über die Konsumgesellschaft die erfundene Welt auf die Probe stellt."
+    },
+    {
+      "id": "de-eating-and-drinking-verbs",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Verben des Essens und Trinkens",
+      "intent": "Etwa zwölf Verben für Arten des Essens und Trinkens unterscheiden: schlürfen, nippen, knabbern, naschen, schlemmen, verschlingen, im Essen herumstochern, mampfen (ugs.)."
+    },
+    {
+      "id": "de-food-slang",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Essen umgangssprachlich und regional",
+      "intent": "Etwa zwölf umgangssprachliche und regionale Wörter rund ums Essen kennen: die Stulle (nordd.), die Bemme (sächs.), die Brotzeit (südd.), die Jause (österr.), der Fraß (abwertend), spachteln."
+    },
+    {
+      "id": "de-nested-attributes",
+      "kind": "grammar",
+      "topic": "adjectives",
+      "workingTitle": "Die von der Regierung beschlossene Reform: verschachtelte Attribute",
+      "intent": "Nominalgruppen mit mehreren Partizipialattributen, Genitiven und Relativsätzen zerlegen und verständlich umschreiben: die von der Regierung im letzten Jahr beschlossene Reform des Rentensystems."
+    },
+    {
+      "id": "de-smells",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Düfte und Gerüche",
+      "intent": "Gerüche mit etwa zwölf Wörtern genau beschreiben: der Duft, der Gestank, der Mief (ugs.), muffig, modrig, beißend, betörend, säuerlich."
+    },
+    {
+      "id": "de-texture-and-mouthfeel",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Konsistenz und Mundgefühl",
+      "intent": "Die Konsistenz von Speisen mit etwa zwölf Wörtern beschreiben: knusprig, cremig, samtig, sämig, zäh, mehlig, luftig, auf der Zunge zergehen."
+    },
+    {
+      "id": "de-reading-professional-wine-descriptions",
+      "kind": "reading",
+      "theme": "food_and_drink",
+      "workingTitle": "Professionelle Weinbeschreibungen lesen",
+      "intent": "Weinbeschreibungen von Fachleuten lesen, bildhafte Angaben zu Geschmack und Textur deuten und echtes Lob von höflicher Zurückhaltung unterscheiden (mineralisch, schmelzig, gefälliger Alltagswein)."
+    },
+    {
+      "id": "de-gastronomy",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Gastronomie als Beruf",
+      "intent": "Etwa zwölf Begriffe aus Restaurantküche und Gastgewerbe verstehen: die Küchenbrigade, der Küchenchef, der Souschef, der Patissier, die Mise en Place, das Gastgewerbe, die Systemgastronomie."
+    },
+    {
+      "id": "de-reading-a-history-of-viennese-coffee-houses",
+      "kind": "reading",
+      "theme": "food_and_drink",
+      "workingTitle": "Eine Geschichte des Wiener Kaffeehauses lesen",
+      "intent": "Einen kulturgeschichtlichen Text über das Wiener Kaffeehaus lesen und verfolgen, wie es zum Ort von Literatur, Politik und Müßiggang wurde (der Ober, die Melange, das Zeitungsregal)."
+    },
+    {
+      "id": "de-start-ups",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Gründerszene",
+      "intent": "Etwa zwölf Begriffe der Gründerszene verstehen: das Start-up, der Gründer, die Gründerin, das Risikokapital, die Finanzierungsrunde, der Business Angel, die Unternehmensbewertung, der Exit."
+    },
+    {
+      "id": "de-pitching-a-business-idea",
+      "kind": "functions",
+      "theme": "food_and_drink",
+      "workingTitle": "Eine Geschäftsidee überzeugend vorstellen",
+      "intent": "Geldgebern die Idee für ein Café überzeugend präsentieren: Stellen Sie sich ein Café vor, das nichts wegwirft. Was uns unterscheidet, ist die regionale Küche. Wir suchen Partner, die mit uns wachsen."
+    },
+    {
+      "id": "de-culinary-terms",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Küchenfachbegriffe",
+      "intent": "Etwa zwölf Fachbegriffe aus anspruchsvollen Rezepten verstehen: blanchieren, flambieren, legieren, ablöschen, abschmecken, reduzieren, der Fond, die Mehlschwitze."
+    },
+    {
+      "id": "de-subjunctive-i-set-phrases",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Es lebe, man nehme: Konjunktiv I in festen Wendungen",
+      "intent": "Den Konjunktiv I in Wunschformeln, Anleitungen und Wendungen wie sei es ... sei es, koste es, was es wolle und wie dem auch sei verstehen und verwenden: Man nehme drei Eier."
+    },
+    {
+      "id": "de-reading-an-eighteenth-century-cookbook",
+      "kind": "reading",
+      "theme": "food_and_drink",
+      "workingTitle": "Ein Kochbuch aus dem 18. Jahrhundert lesen",
+      "intent": "Ein Rezept aus einem Kochbuch des 18. Jahrhunderts lesen und alte Schreibweisen, Maße und Verfahren in heute nachkochbare Schritte übertragen (ein Loth, ein Quentlein, ein Nößel)."
+    },
+    {
+      "id": "de-food-politics",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Ernährungspolitik",
+      "intent": "Etwa zwölf Begriffe aus Debatten über Ernährungspolitik verstehen: die Zuckersteuer, die Lebensmittelampel, das Tierwohllabel, die Agrarsubvention, die Agrarlobby, die Ernährungswende."
+    },
+    {
+      "id": "de-reading-an-analysis-of-a-sugar-tax",
+      "kind": "reading",
+      "theme": "food_and_drink",
+      "workingTitle": "Eine Analyse zur Zuckersteuer lesen",
+      "intent": "Eine Analyse zu einer Abgabe auf gesüßte Getränke lesen und ihre Belege zur Gesundheit gegen die Einwände der Industrie und den Vorwurf sozialer Ungerechtigkeit abwägen."
+    },
+    {
+      "id": "de-food-metaphors",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Suppe, Brot und Wurst in Redewendungen",
+      "intent": "Mit etwa zwölf Redewendungen aus der Küche über Ärger und Mühe sprechen: die Suppe auslöffeln, in den sauren Apfel beißen, kleine Brötchen backen, die beleidigte Leberwurst spielen."
+    },
+    {
+      "id": "de-reading-the-feast-in-buddenbrooks",
+      "kind": "reading",
+      "theme": "food_and_drink",
+      "workingTitle": "Das Festessen in den Buddenbrooks lesen",
+      "intent": "Die Szene des Festessens zu Beginn von Thomas Manns Buddenbrooks lesen und zeigen, wie Speisen, Sitzordnung und Gespräche Stellung und Spannungen der Familie verraten."
+    },
+    {
+      "id": "de-building-site",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Hausbau vom Fundament bis zur Abnahme",
+      "intent": "Etwa zwölf Wörter vom Bau eines Hauses verstehen: der Bauherr, das Fundament, der Rohbau, das Richtfest, das Gerüst, der Polier, der Estrich, die Bauabnahme."
+    },
+    {
+      "id": "de-decay-and-reconstruction",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Verfall und Wiederaufbau",
+      "intent": "Mit etwa zwölf Wörtern über den Zustand alter Bauwerke sprechen: die Bausubstanz, baufällig, verwahrlost, der Verfall, der Abriss, der Wiederaufbau, die Rekonstruktion, originalgetreu."
+    },
+    {
+      "id": "de-property-law",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Rechte an Grundstücken",
+      "intent": "Etwa zwölf Begriffe zu Grundstücken und Eigentum verstehen: das Wegerecht, das Vorkaufsrecht, das Erbbaurecht, das Wohnrecht, der Nießbrauch, die Grundschuld, die Zwangsversteigerung."
+    },
+    {
+      "id": "de-talking-a-friend-out-of-a-risky-decision",
+      "kind": "functions",
+      "theme": "house_and_home",
+      "workingTitle": "Einer Freundin ein riskantes Vorhaben ausreden",
+      "intent": "Einer Freundin taktvoll vom Kauf eines baufälligen Hauses abraten: Ich sag dir das als Freundin. Hast du bedacht, was die Sanierung kostet? Ich stehe zu dir, egal wie du dich entscheidest."
+    },
+    {
+      "id": "de-legal-register",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Juristendeutsch",
+      "intent": "Etwa zwölf Begriffe der Rechtssprache verstehen: der Tatbestand, die Rechtsprechung, die Rechtsfolge, die Befugnis, der Kläger, der Beklagte, vorsätzlich, unverzüglich."
+    },
+    {
+      "id": "de-reading-a-lawyers-letter-in-a-boundary-dispute",
+      "kind": "reading",
+      "theme": "house_and_home",
+      "workingTitle": "Ein Anwaltsschreiben im Nachbarstreit lesen",
+      "intent": "Das Schreiben einer Anwältin im Streit um eine Grundstücksgrenze lesen und die Position der Mandantin, verdeckte Drohungen und stillschweigende Zugeständnisse erkennen."
+    },
+    {
+      "id": "de-officialese",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Amtsdeutsch für Alltägliches",
+      "intent": "Etwa zwölf amtliche Wörter für Alltägliches verstehen und in Alltagssprache übertragen: das Postwertzeichen (Briefmarke), der Fahrausweis, die Lichtzeichenanlage (Ampel), der Erziehungsberechtigte."
+    },
+    {
+      "id": "de-administrative-steps",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Akten und Vorgänge",
+      "intent": "Etwa zwölf Wörter für den Weg eines Vorgangs durch die Verwaltung verstehen: der Vorgang, der Aktenvermerk, die Wiedervorlage, der Eingangsstempel, abzeichnen, gegenzeichnen, nachreichen."
+    },
+    {
+      "id": "de-official-nominal-style",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Die Zahlung erfolgt: Nominalstil der Behörden",
+      "intent": "Genitivketten und Verben wie erfolgen, vornehmen und durchführen in Amts- und Fachtexten verstehen und in den Verbalstil übertragen: Die Prüfung erfolgt durch das Amt. Das Amt prüft."
+    },
+    {
+      "id": "de-civil-service",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Öffentlicher Dienst",
+      "intent": "Etwa zwölf Begriffe aus dem öffentlichen Dienst verstehen: der Beamte, die Beamtin, verbeamtet, die Laufbahn, die Besoldung, das Ressort, der Staatssekretär, die Dienstaufsicht."
+    },
+    {
+      "id": "de-writing-a-delicate-letter",
+      "kind": "functions",
+      "theme": "services",
+      "workingTitle": "Einen heiklen Brief schreiben",
+      "intent": "Einen heiklen Geschäftsbrief, etwa zum Ende einer langen Zusammenarbeit, im richtigen Ton schreiben: Es fällt uns nicht leicht, Ihnen dies mitzuteilen. Wir wissen die Zusammenarbeit sehr zu schätzen."
+    },
+    {
+      "id": "de-liability-and-risk",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Haftung und Risiko",
+      "intent": "Etwa zwölf Begriffe zu Haftung und Schaden verstehen: haften, die Haftung, der Haftungsausschluss, die Fahrlässigkeit, grob fahrlässig, das Restrisiko, der Schadensersatz, für etwas einstehen."
+    },
+    {
+      "id": "de-reading-home-contents-insurance-small-print",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Das Kleingedruckte einer Hausratversicherung lesen",
+      "intent": "Definitionen und Ausschlüsse einer Hausratversicherung lesen und in Grenzfällen entscheiden, was genau versichert ist (Fahrraddiebstahl nachts, gekipptes Fenster, Überspannung)."
+    },
+    {
+      "id": "de-contract-law",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Vertragsrecht",
+      "intent": "Etwa zwölf Begriffe aus Verträgen verstehen: die Klausel, die Vertragsstrafe, die Willenserklärung, die Geschäftsfähigkeit, die Schriftform, unwirksam, sittenwidrig, anfechtbar."
+    },
+    {
+      "id": "de-reading-a-force-majeure-clause",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Eine Klausel zur höheren Gewalt lesen",
+      "intent": "Eine Klausel zur höheren Gewalt in einem Liefervertrag lesen und ihren Umfang bestimmen: welche Ereignisse zählen, welche Anzeigepflicht gilt und was aus den Pflichten beider Seiten wird."
+    },
+    {
+      "id": "de-architectural-styles",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Baustile",
+      "intent": "Etwa zwölf Baustile und Epochen der Architektur unterscheiden: die Romanik, die Gotik, die Renaissance, der Barock, der Klassizismus, die Gründerzeit, der Jugendstil, das Bauhaus."
+    },
+    {
+      "id": "de-reading-a-notarial-house-purchase-contract",
+      "kind": "reading",
+      "theme": "house_and_home",
+      "workingTitle": "Einen notariellen Kaufvertrag lesen",
+      "intent": "Den Entwurf eines notariellen Kaufvertrags für ein Haus lesen und Pflichten, Sicherungen und Risiken beider Seiten finden (Auflassungsvormerkung, Gewährleistungsausschluss, Fälligkeit)."
+    },
+    {
+      "id": "de-standing-in-for-a-colleague-on-the-phone",
+      "kind": "functions",
+      "theme": "daily_life",
+      "workingTitle": "Eine Kollegin am Telefon vertreten",
+      "intent": "Am Telefon eine Kollegin vertreten, ohne sich vorschnell festzulegen: Frau Lenz ist diese Woche nicht im Haus, ich vertrete sie. Dazu kann ich noch nichts Verbindliches sagen. Ich melde mich morgen."
+    },
+    {
+      "id": "de-data-protection-law",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Datenschutzrecht",
+      "intent": "Etwa zwölf Begriffe des Datenschutzrechts verstehen: die Datenschutz-Grundverordnung (DSGVO), die Einwilligung, die personenbezogenen Daten (Pl.), das Auskunftsrecht, die Löschung, die Datenpanne."
+    },
+    {
+      "id": "de-reading-a-guide-to-inheritance-law",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Einen Ratgeber zum Erbrecht lesen",
+      "intent": "Einen Ratgeber zum Erbrecht lesen und seine Begriffe auf eine Familie anwenden: wer gesetzlich erbt, wer einen Pflichtteil erhält und was ein Testament ändern kann."
+    },
+    {
+      "id": "de-postpositions-rare-prepositions",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "Um des Friedens willen: nachgestellte und seltene Präpositionen",
+      "intent": "Nachgestellte und umschließende Präpositionen wie halber und um ... willen und seltene wie kraft, mangels, vorbehaltlich und zuzüglich verwenden: der Ordnung halber, kraft seines Amtes."
+    },
+    {
+      "id": "de-reading-a-patent-specification",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Eine Patentschrift lesen",
+      "intent": "Beschreibung und Ansprüche einer Patentschrift lesen und herausfinden, was genau geschützt ist und was ein Wettbewerber noch herstellen dürfte (dadurch gekennzeichnet, dass)."
+    },
+    {
+      "id": "de-courts-of-dach",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Gerichte in D-A-CH",
+      "intent": "Etwa zwölf Begriffe zum Aufbau der Gerichte in D-A-CH verstehen: das Amtsgericht, das Landgericht, der Bundesgerichtshof, die Instanz, die Berufung, das Bundesgericht (schweiz.)."
+    },
+    {
+      "id": "de-arrest-and-custody",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Festnahme und Haft",
+      "intent": "Etwa zwölf Begriffe aus dem Strafverfahren verstehen: die Untersuchungshaft, der Haftbefehl, die Fluchtgefahr, die Vernehmung, das Aussageverweigerungsrecht, der Pflichtverteidiger, der Gewahrsam."
+    },
+    {
+      "id": "de-reading-gdpr-articles",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Artikel der Datenschutz-Grundverordnung lesen",
+      "intent": "Ausgewählte Artikel der DSGVO lesen und anhand von Begriffsbestimmungen, Verweisen und Ausnahmen klären, wann ein Unternehmen Daten löschen muss (Recht auf Löschung, berechtigtes Interesse)."
+    },
+    {
+      "id": "de-rewording-to-remove-ambiguity",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Mehrdeutiges eindeutig umformulieren",
+      "intent": "Anweisungen oder Vereinbarungen so umformulieren, dass sie nur eine Lesart zulassen: Präziser ausgedrückt: Das gilt nur für Neukunden. Der Versand ist nicht gemeint. Spät heißt hier: nach 21 Uhr."
+    },
+    {
+      "id": "de-reading-a-judgment-with-a-dissenting-opinion",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Ein Urteil mit Sondervotum lesen",
+      "intent": "Ein Urteil des Bundesverfassungsgerichts mit Sondervotum lesen, beide Begründungen nachzeichnen und den Punkt bestimmen, an dem Senatsmehrheit und abweichende Richterin auseinandergehen."
+    },
+    {
+      "id": "de-punishment-debates",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Debatten um Strafe",
+      "intent": "Mit etwa zwölf Begriffen über Sinn und Zweck von Strafe diskutieren: die Resozialisierung, die Abschreckung, die Sühne, der Strafvollzug, die Sicherungsverwahrung, die Rückfallquote."
+    },
+    {
+      "id": "de-effort-idioms",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Arbeit und Mühe in Redewendungen",
+      "intent": "Mit etwa zwölf Redewendungen über Fleiß und Faulheit sprechen: sich ins Zeug legen, sich ein Bein ausreißen, keinen Finger rühren, auf der faulen Haut liegen, eine ruhige Kugel schieben (ugs.)."
+    },
+    {
+      "id": "de-management-jargon",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Managementsprache",
+      "intent": "Etwa zwölf Wörter des Managementjargons verstehen und ihren Ton einschätzen: die Synergie, proaktiv, skalieren, das Commitment, der Benchmark, das Onboarding, die Agilität, zeitnah."
+    },
+    {
+      "id": "de-reading-a-management-theory-article",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Einen Artikel zur Managementtheorie lesen",
+      "intent": "Einen Artikel über ein Führungsmodell und seine Kritiker lesen, hinter dem Jargon die Kernaussage finden und das Menschenbild benennen, auf dem das Modell beruht."
+    },
+    {
+      "id": "de-apposition-case-agreement",
+      "kind": "grammar",
+      "topic": "agreement",
+      "workingTitle": "Mit Herrn Weber, unserem Leiter: Appositionen",
+      "intent": "Appositionen und Gruppen mit als im selben Kasus wie ihr Bezugswort anschließen, auch bei Datumsangaben: mit Herrn Weber, unserem Leiter; ihm als Arzt; am Montag, dem 3. Mai."
+    },
+    {
+      "id": "de-success-and-failure-idioms",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Erfolg und Scheitern in Redewendungen",
+      "intent": "Mit etwa zwölf Redewendungen über Erfolg und Misserfolg sprechen: den Bogen raushaben, Oberwasser haben, auf keinen grünen Zweig kommen, Schiffbruch erleiden, baden gehen (ugs.)."
+    },
+    {
+      "id": "de-giving-firm-instructions-tactfully",
+      "kind": "functions",
+      "theme": "daily_life",
+      "workingTitle": "Bestimmt und taktvoll Anweisungen geben",
+      "intent": "Unter Zeitdruck klare Anweisungen geben und das Team trotzdem mitnehmen: Ich muss darauf bestehen, dass der Bericht heute rausgeht. Mir ist bewusst, dass das viel ist. Ich verlasse mich auf euch."
+    },
+    {
+      "id": "de-rise-and-decline",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Aufstieg und Niedergang",
+      "intent": "Etwa zwölf Wörter für Blüte und Niedergang von Unternehmen unterscheiden: florieren, boomen, kriseln, straucheln, kollabieren, abwickeln, der Konkurs, die Zahlungsunfähigkeit."
+    },
+    {
+      "id": "de-reading-a-business-case-study",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Eine Fallstudie aus der Wirtschaft lesen",
+      "intent": "Eine Fallstudie über einen Familienbetrieb in der Krise lesen und die Entscheidungspunkte, das jeweils verfügbare Wissen und das offene Dilemma für die Leser herausarbeiten."
+    },
+    {
+      "id": "de-collective-bargaining",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Tarifpolitik",
+      "intent": "Etwa zwölf Begriffe aus Tarifverhandlungen verstehen: der Tarifvertrag, die Tarifrunde, der Warnstreik, die Urabstimmung, die Friedenspflicht, der Arbeitgeberverband, die Gewerkschaft."
+    },
+    {
+      "id": "de-corporate-governance",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Vorstand und Aufsichtsrat",
+      "intent": "Etwa zwölf Begriffe zur Führung großer Unternehmen verstehen: der Vorstand, der Aufsichtsrat, die Hauptversammlung, der Aktionär, die Bilanz, der Geschäftsbericht, die Compliance, die Satzung."
+    },
+    {
+      "id": "de-reading-a-board-foreword-in-an-annual-report",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Das Vorwort eines Geschäftsberichts lesen",
+      "intent": "Das Vorwort des Vorstands in einem Geschäftsbericht lesen und die zuversichtliche Erzählung mit den Zahlen weiter hinten vergleichen (herausforderndes Umfeld, Sondereffekte, bereinigt)."
+    },
+    {
+      "id": "de-digital-ethics",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Ethik der Digitalisierung",
+      "intent": "Mit etwa zwölf Begriffen über ethische Fragen der Digitalisierung sprechen: der Algorithmus, die Verzerrung, die Nachvollziehbarkeit, die Rechenschaftspflicht, die Blackbox, der Deepfake."
+    },
+    {
+      "id": "de-reading-a-study-on-automation",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Eine Studie zur Automatisierung lesen",
+      "intent": "Eine Institutsstudie zu Automatisierung und Arbeitsplätzen lesen und zeigen, wie ihre Ergebnisse von den Annahmen des Modells abhängen und was sich ändert, wenn eine Annahme fällt."
+    },
+    {
+      "id": "de-taking-criticism-gracefully",
+      "kind": "functions",
+      "theme": "daily_life",
+      "workingTitle": "Kritik gelassen annehmen",
+      "intent": "Harte Kritik an der eigenen Arbeit annehmen, ohne in die Defensive zu gehen, und das Nützliche herausfiltern: Danke, dass Sie das so offen sagen. Da ist etwas dran. Was genau hat Sie nicht überzeugt?"
+    },
+    {
+      "id": "de-credit-and-debt",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Kredit und Schulden",
+      "intent": "Etwa zwölf Begriffe rund um Kredite und Schulden verstehen: die Bonität, die Auskunftei, die Tilgung, die Umschuldung, die Zinsbindung, der Dispokredit, der Gläubiger, die Privatinsolvenz."
+    },
+    {
+      "id": "de-further-passive-alternatives",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Es bleibt abzuwarten: weitere Passiversatzformen",
+      "intent": "Passivische Bedeutung mit es gilt ... zu, bleiben plus zu-Infinitiv, gehören plus Partizip II (ugs.) und reflexiven Formen ausdrücken: Das Buch liest sich leicht. Das gehört verboten."
+    },
+    {
+      "id": "de-financial-markets",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Finanzmärkte",
+      "intent": "Etwa zwölf Begriffe aus Finanznachrichten verstehen: der Leitzins, die Notenbank, die Anleihe, der Aktienkurs, der Kurssturz, die Volatilität, der Hedgefonds, die Börsenaufsicht."
+    },
+    {
+      "id": "de-reading-risk-warnings-in-a-prospectus",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Risikohinweise in einem Wertpapierprospekt lesen",
+      "intent": "Die Risikohinweise eines Wertpapierprospekts lesen und beurteilen, welche Warnungen echtes Gewicht haben und welche bloße Standardformeln sind (Totalverlust, Emittentenrisiko)."
+    },
+    {
+      "id": "de-economic-metaphors",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Wirtschaftsmetaphern",
+      "intent": "Etwa zwölf Bilder aus Wirtschaftsnachrichten verstehen: die Talsohle, die Durststrecke, die Blase, die Konjunkturspritze, der Rettungsschirm, die Lohn-Preis-Spirale, das Zugpferd."
+    },
+    {
+      "id": "de-reading-a-regulators-letter",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Das Schreiben einer Aufsichtsbehörde lesen",
+      "intent": "Das Schreiben der Finanzaufsicht an eine Bank lesen und Feststellungen, Auflagen mit Fristen und angedeutete, aber nicht ausgesprochene Konsequenzen herausarbeiten."
+    },
+    {
+      "id": "de-trade-policy",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Handelspolitik",
+      "intent": "Etwa zwölf Begriffe der Handelspolitik verstehen: der Protektionismus, der Schutzzoll, das Handelsdefizit, die Handelsbilanz, das Embargo, das Dumping, die Zollunion, die Strafzölle (Pl.)."
+    },
+    {
+      "id": "de-reading-about-the-economic-miracle",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Eine Darstellung des Wirtschaftswunders lesen",
+      "intent": "Eine wirtschaftsgeschichtliche Darstellung des Wirtschaftswunders lesen und prüfen, wie sie Mythos und Daten gegeneinander abwägt (Währungsreform, Marshallplan, Anwerbeabkommen)."
+    },
+    {
+      "id": "de-foundations-and-ngos",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Stiftungen und NGOs",
+      "intent": "Etwa zwölf Begriffe zu Stiftungen und gemeinnützigen Organisationen verstehen: die Stiftung, gemeinnützig, die Nichtregierungsorganisation, die Philanthropie, das Mäzenatentum, der Förderverein."
+    },
+    {
+      "id": "de-negotiating-a-package-deal",
+      "kind": "functions",
+      "theme": "services",
+      "workingTitle": "Eine Paketlösung verhandeln",
+      "intent": "In einer Verhandlung Zugeständnisse bündeln und als Gesamtpaket anbieten: Wenn Sie uns beim Preis entgegenkommen, können wir bei der Laufzeit nachgeben. Die Lieferfrist ist für uns eine rote Linie."
+    },
+    {
+      "id": "de-political-rhetoric",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Politische Rhetorik",
+      "intent": "Politische Reden mit etwa zwölf Begriffen kritisch einordnen: die Polemik, die Demagogie, die Worthülse, die Floskel, die Parole, die Brandrede, populistisch, polarisieren."
+    },
+    {
+      "id": "de-reading-the-hessian-courier",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Den Hessischen Landboten lesen",
+      "intent": "Einen Auszug aus Büchners Flugschrift Der Hessische Landbote lesen und ihre Rhetorik analysieren: Gegensätze, Zahlen, biblische Sprache und Aufruf (Friede den Hütten! Krieg den Palästen!)."
+    },
+    {
+      "id": "de-reported-speech-distance",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Redewiedergabe im Text: neutral oder distanziert",
+      "intent": "Längere Redewiedergaben ohne Einleitungsverb schreiben und mit Indikativ, Konjunktiv I oder II Zustimmung, Neutralität oder Zweifel zeigen: Er sei unschuldig. Er wäre unschuldig."
+    },
+    {
+      "id": "de-pejorative-words",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Abwertende Wörter",
+      "intent": "Etwa zwölf abwertende Wörter und ihren Ton erkennen: das Machwerk, das Pamphlet, das Gerede, das Geschreibsel, der Schreiberling, der Klüngel, die Machenschaften (Pl.), das Gebaren."
+    },
+    {
+      "id": "de-reading-voices-in-a-long-opinion-piece",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Einen langen Meinungstext zwischen den Zeilen lesen",
+      "intent": "Einen langen Meinungsessay zu einer Gesellschaftsfrage lesen und unterscheiden, welche Haltung der Autor selbst vertritt und welche er nur referiert, ironisch zitiert oder andeutet."
+    },
+    {
+      "id": "de-pr-and-spin",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "PR und Meinungsmache",
+      "intent": "Mit etwa zwölf Wörtern über Öffentlichkeitsarbeit und Meinungsmache sprechen: der Spin, der Spindoktor, die Meinungsmache, die Deutungshoheit, lancieren, das Dementi, die Sprachregelung."
+    },
+    {
+      "id": "de-hype-and-restraint",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Aufbauschen und Herunterspielen",
+      "intent": "Etwa zwölf Verben für das Übertreiben und Verharmlosen von Ereignissen unterscheiden: aufbauschen, hochjubeln, hochspielen, dramatisieren, herunterspielen, verharmlosen, kleinreden."
+    },
+    {
+      "id": "de-handling-hostile-questions",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Mit feindseligen Fragen umgehen",
+      "intent": "In einer öffentlichen Debatte bei Angriffen gelassen bleiben und Unterstellungen zurückweisen: Ich weise diese Unterstellung entschieden zurück. Lassen Sie mich den Sachverhalt richtigstellen."
+    },
+    {
+      "id": "de-parliamentary-procedure",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Parlamentarische Verfahren",
+      "intent": "Etwa zwölf Begriffe aus dem Parlamentsbetrieb verstehen: der Gesetzentwurf, die erste Lesung, der Ausschuss, die Anhörung, die Fraktion, die Plenarsitzung, das Misstrauensvotum, die Vertrauensfrage."
+    },
+    {
+      "id": "de-reading-a-parliamentary-plenary-record",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Ein Plenarprotokoll des Bundestags lesen",
+      "intent": "Das Plenarprotokoll einer Bundestagsdebatte lesen, Redestrategien und Vermerke deuten (Beifall bei, Zuruf, Heiterkeit) und erkennen, wer wen provoziert und wer worauf reagiert."
+    },
+    {
+      "id": "de-social-movements",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Soziale Bewegungen",
+      "intent": "Mit etwa zwölf Wörtern über Protest und Bürgerengagement sprechen: die Bürgerinitiative, die Protestbewegung, die Petition, die Mahnwache, der Sitzstreik, der zivile Ungehorsam, mobilisieren."
+    },
+    {
+      "id": "de-unrest",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Unruhen und Ausschreitungen",
+      "intent": "Etwa zwölf Wörter aus Berichten über Unruhen verstehen: die Ausschreitungen (Pl.), der Krawall, die Randale, der Aufruhr, der Tumult, der Wasserwerfer, niederschlagen, die Ausgangssperre."
+    },
+    {
+      "id": "de-reading-two-newspapers-on-one-event",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Zwei Zeitungen über dasselbe Ereignis lesen",
+      "intent": "Die Berichte zweier Zeitungen über dieselbe Demonstration lesen und zeigen, wie Überschrift, Wortwahl und Reihenfolge der Fakten das Ereignis in ein gegensätzliches Licht rücken."
+    },
+    {
+      "id": "de-truth-and-lies-idioms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Wahrheit und Lüge in Redewendungen",
+      "intent": "Mit etwa zwölf Wendungen über Wahrheit und Täuschung sprechen: jemandem einen Bären aufbinden, jemanden hinters Licht führen, flunkern, jemandem reinen Wein einschenken."
+    },
+    {
+      "id": "de-proverbs",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Sprichwörter",
+      "intent": "Etwa zwölf bekannte Sprichwörter verstehen und passend anführen: Lügen haben kurze Beine; Wer A sagt, muss auch B sagen; Der Apfel fällt nicht weit vom Stamm; Übung macht den Meister."
+    },
+    {
+      "id": "de-reading-allusions-to-the-classics",
+      "kind": "reading",
+      "theme": "language",
+      "workingTitle": "Klassikerzitate in der Presse lesen",
+      "intent": "Pressetexte lesen, die auf Schiller, Goethe und die Bibel anspielen (die Axt im Haus, ich armer Tor, Perlen vor die Säue), und erklären, was jede Anspielung hinzufügt."
+    },
+    {
+      "id": "de-agreement-coordinated-subjects",
+      "kind": "grammar",
+      "topic": "agreement",
+      "workingTitle": "Du und ich, die Mehrheit der Befragten: Kongruenz des Verbs",
+      "intent": "Person und Zahl des Verbs bei verbundenen Subjekten und nach Mengenangaben wählen: Du und ich haben recht. Weder er noch sie hat (haben) angerufen. Die Mehrheit der Befragten ist (sind) dagegen."
+    },
+    {
+      "id": "de-forms-of-state",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Staatsformen",
+      "intent": "Etwa zwölf Staats- und Herrschaftsformen unterscheiden: die Monarchie, die Republik, die Diktatur, die Oligarchie, die Theokratie, die direkte Demokratie, autoritär, totalitär."
+    },
+    {
+      "id": "de-steering-a-discussion-towards-a-decision",
+      "kind": "functions",
+      "theme": "daily_life",
+      "workingTitle": "Eine Diskussion zu einer Entscheidung führen",
+      "intent": "Eine kontroverse Debatte bündeln und zu einer tragfähigen Entscheidung führen: Ich denke, wir haben alle Argumente gehört. Lassen Sie uns entscheiden. Welchen Vorschlag können alle mittragen?"
+    },
+    {
+      "id": "de-diplomacy",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Diplomatie",
+      "intent": "Etwa zwölf Begriffe der Diplomatie verstehen: der Botschafter, die Botschafterin, einbestellen, die Protestnote, das Abkommen, die Sanktion, das Gipfeltreffen, der Staatsbesuch, bilateral."
+    },
+    {
+      "id": "de-military-and-war-reporting",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Militär und Kriegsberichterstattung",
+      "intent": "Etwa zwölf Wörter aus Berichten über Krieg und Militär verstehen: die Offensive, der Rückzug, die Front, die Kampfhandlungen (Pl.), der Luftangriff, die Zivilbevölkerung, die Mobilmachung."
+    },
+    {
+      "id": "de-reading-trakls-war-poem-grodek",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Trakls Gedicht Grodek lesen",
+      "intent": "Georg Trakls Gedicht Grodek lesen und deuten, wie dichte Bilder, Farben und Klang den Schrecken des Krieges ausdrücken, ohne ihn zu schildern."
+    },
+    {
+      "id": "de-social-cohesion",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Gesellschaftlicher Zusammenhalt",
+      "intent": "Mit etwa zwölf Wörtern über den Zusammenhalt einer Gesellschaft sprechen: der Zusammenhalt, der Gemeinsinn, das Gemeinwohl, das Miteinander, die Spaltung, die Entfremdung, das Gemeinwesen."
+    },
+    {
+      "id": "de-reading-an-essay-on-the-idea-of-home",
+      "kind": "reading",
+      "theme": "places",
+      "workingTitle": "Einen Essay über den Begriff Heimat lesen",
+      "intent": "Einen Essay über den Begriff Heimat lesen und nachzeichnen, wie der Autor Geschichte, Missbrauch und neue Deutungen des Wortes abwägt und zu einem eigenen Begriff gelangt."
+    },
+    {
+      "id": "de-gender-fair-language",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Geschlechtergerechte Sprache",
+      "intent": "Etwa zwölf Formen geschlechtergerechter Sprache erkennen und einordnen: die Beidnennung (Kolleginnen und Kollegen), die Studierenden (Pl.), die Lehrkraft, der Genderstern, das generische Maskulinum."
+    },
+    {
+      "id": "de-moral-terms",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Moralische Begriffe",
+      "intent": "Moralische Urteile mit etwa zwölf Wörtern genau formulieren: das Gewissen, die Schuld, die Integrität, die Doppelmoral, die Rechtschaffenheit, verwerflich, vertretbar, skrupellos."
+    },
+    {
+      "id": "de-taking-a-stand-on-principle",
+      "kind": "functions",
+      "theme": "daily_life",
+      "workingTitle": "Aus Überzeugung Position beziehen",
+      "intent": "Im Beruf aus Gewissensgründen widersprechen, entschieden und respektvoll zugleich: Das kann ich mit meinem Gewissen nicht vereinbaren. Hier ist für mich eine Grenze erreicht. Das trage ich nicht mit."
+    },
+    {
+      "id": "de-latin-phrases",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Lateinische Ausdrücke",
+      "intent": "Etwa zwölf lateinische Ausdrücke der Bildungssprache verstehen und verwenden: de facto, ad hoc, per se, a priori, pro forma, die Conditio sine qua non, der Status quo, in dubio pro reo."
+    },
+    {
+      "id": "de-abstract-nouns",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Abstrakta der Bildungssprache",
+      "intent": "Etwa zwölf abstrakte Nomen aus Sachtexten verstehen und verwenden: die Ambivalenz, die Diskrepanz, die Kohärenz, die Kontingenz, die Implikation, die Dichotomie, der Paradigmenwechsel."
+    },
+    {
+      "id": "de-reading-a-long-text-section-by-section",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Einen langen Sachtext abschnittsweise lesen",
+      "intent": "Einen langen Sachtext über Gedächtnis und digitale Medien lesen und jedem Abschnitt seine Hauptaussage zuordnen, auch wenn mehrere Abschnitte ähnliche Stichwörter enthalten."
+    },
+    {
+      "id": "de-causal-wo-nachdem-verb-first",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Wo du doch so müde bist: Gründe mit wo, nachdem und Verberstsatz",
+      "intent": "Gründe mit wo ... doch und mit einem Verberstsatz mit doch angeben und kausales nachdem (südd., österr.) erkennen: Wo du doch so müde bist, bleib hier. Er blieb ruhig, wusste er doch Bescheid."
+    },
+    {
+      "id": "de-proving-and-refuting",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Beweis und Widerlegung",
+      "intent": "Etwa zwölf Wörter für das Stützen und Entkräften von Thesen verwenden: untermauern, erhärten, stichhaltig, die Beweisführung, entkräften, anfechten, verifizieren, falsifizieren."
+    },
+    {
+      "id": "de-formal-adjectives-for-ideas",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Gehobene Adjektive für Gedanken",
+      "intent": "Gedanken und Texte mit etwa zwölf gehobenen Adjektiven beurteilen: stringent, fundiert, schlüssig, differenziert, profund, tiefgründig, haltlos, fragwürdig."
+    },
+    {
+      "id": "de-reading-texts-on-a-scientific-controversy",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Texte zu einer wissenschaftlichen Kontroverse lesen",
+      "intent": "Mehrere Beiträge zu einer umstrittenen These lesen und darstellen, was jeder voraussetzt, welche Belege er anführt und welche neuen Daten den Streit entscheiden könnten."
+    },
+    {
+      "id": "de-fallacies",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Fehlschlüsse und Scheinargumente",
+      "intent": "Schwache Argumente mit etwa zwölf Begriffen benennen: der Fehlschluss, der Zirkelschluss, das Scheinargument, das Totschlagargument, an den Haaren herbeigezogen, der Vergleich hinkt."
+    },
+    {
+      "id": "de-playing-devils-advocate",
+      "kind": "functions",
+      "theme": "education",
+      "workingTitle": "Den Advocatus Diaboli spielen",
+      "intent": "Bewusst und erkennbar die Gegenposition einnehmen, um eine Idee zu prüfen: Lassen Sie mich mal den Advocatus Diaboli spielen. Was, wenn genau das Gegenteil zutrifft? Nur als Gedankenspiel."
+    },
+    {
+      "id": "de-statistics",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Statistische Begriffe",
+      "intent": "Etwa zwölf Begriffe der Statistik in Studien und Nachrichten verstehen: der Mittelwert, der Median, die Streuung, die Korrelation, die Kausalität, signifikant, die Hochrechnung, der Ausreißer."
+    },
+    {
+      "id": "de-scientific-method",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Wissenschaftliche Methode",
+      "intent": "Etwa zwölf Begriffe zum Aufbau von Experimenten verstehen: die Versuchsanordnung, die Kontrollgruppe, die Variable, die Messung, die Fehlerquelle, reproduzierbar, die Validität."
+    },
+    {
+      "id": "de-academia",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Hochschule und Wissenschaftsbetrieb",
+      "intent": "Etwa zwölf Begriffe aus dem Wissenschaftsbetrieb verstehen: die Habilitation, die Berufung, der Lehrstuhl, die Drittmittel (Pl.), der Mittelbau, die Juniorprofessur, die Lehrverpflichtung."
+    },
+    {
+      "id": "de-reading-a-peer-review-report",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Ein Gutachten im Peer-Review lesen",
+      "intent": "Das Gutachten zu einem eingereichten Fachaufsatz lesen und hinter den höflichen Konventionen das eigentliche Urteil und die wirklich geforderten Änderungen erkennen."
+    },
+    {
+      "id": "de-historiography",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Geschichtsschreibung",
+      "intent": "Etwa zwölf Begriffe der Geschichtsschreibung und Erinnerungskultur verstehen: die Chronik, das Archiv, der Zeitzeuge, die Zäsur, die Erinnerungskultur, das Gedenken, revisionistisch."
+    },
+    {
+      "id": "de-reading-historians-in-dispute",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Eine Debatte unter Historikern lesen",
+      "intent": "Beiträge aus dem Historikerstreit von 1986 lesen und Positionen, Vorwürfe und rhetorische Strategien der Beteiligten im Streit um die Deutung der NS-Zeit nachvollziehen."
+    },
+    {
+      "id": "de-genitive-verbs-adjectives",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "Der Opfer gedenken: Genitiv bei Verben und Adjektiven",
+      "intent": "Verben und Adjektive mit Genitiv wie gedenken, bedürfen, sich enthalten, bewusst, würdig und überdrüssig in gehobener Sprache verwenden: Das bedarf einer Erklärung."
+    },
+    {
+      "id": "de-reading-an-excavation-report",
+      "kind": "reading",
+      "theme": "places",
+      "workingTitle": "Einen Grabungsbericht lesen",
+      "intent": "Einen Grabungsbericht aus Kalkriese, dem vermuteten Ort der Varusschlacht, lesen und Methode und Funde von der Deutung der Archäologen trennen."
+    },
+    {
+      "id": "de-doubt-words",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Wörter des Zweifels",
+      "intent": "Mit etwa zwölf Wörtern Distanz zu einer Behauptung zeigen: vermeintlich, mutmaßlich, angeblich, sogenannt, ominös, dubios, unbelegt, ungesichert."
+    },
+    {
+      "id": "de-certainty-words",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Wörter der Gewissheit",
+      "intent": "Mit etwa zwölf gehobenen Wörtern Gewissheit ausdrücken, auch verneint: zweifelsohne, fraglos, unbestreitbar, nachweislich, erwiesenermaßen, unweigerlich, allemal, keineswegs, mitnichten."
+    },
+    {
+      "id": "de-explaining-a-complex-topic-to-lay-people",
+      "kind": "functions",
+      "theme": "education",
+      "workingTitle": "Ein komplexes Thema für Laien erklären",
+      "intent": "Ein Fachthema mündlich für Laien verständlich machen und bei Bedarf umsteuern: Vereinfacht gesagt, funktioniert das wie ein Filter. Ich merke, das war zu abstrakt. Ich versuche es mit einem Beispiel."
+    },
+    {
+      "id": "de-word-roots-in-science",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Wortstämme in Fachwörtern",
+      "intent": "Fachwörter über etwa zwölf griechische und lateinische Wortteile erschließen: hydro-, thermo-, chrono-, geo-, -skop, -logie, -phobie, -kratie (die Chronologie, das Mikroskop)."
+    },
+    {
+      "id": "de-learning-idioms",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Wissen und Lernen in Redewendungen",
+      "intent": "Etwa zwölf Redewendungen über Wissen und Nichtwissen verwenden: jemandem geht ein Licht auf, etwas aus dem Effeff können, nur Bahnhof verstehen, ein Buch mit sieben Siegeln."
+    },
+    {
+      "id": "de-schools-of-thought",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Denkrichtungen",
+      "intent": "Etwa zwölf philosophische Strömungen und Begriffe unterscheiden: der Idealismus, der Materialismus, der Existenzialismus, der Pragmatismus, der Utilitarismus, die Dialektik."
+    },
+    {
+      "id": "de-reading-an-interview-with-a-philosopher",
+      "kind": "reading",
+      "theme": "personal_identification",
+      "workingTitle": "Ein langes Interview mit einer Philosophin lesen",
+      "intent": "Ein langes Zeitungsinterview mit einer Philosophin lesen, abstrakten Gedankengängen in gesprochener Form folgen und erkennen, wo sie Fragen umdeutet oder ihnen ausweicht."
+    },
+    {
+      "id": "de-educated-foreign-adjectives",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Bildungssprachliche Fremdwörter",
+      "intent": "Etwa zwölf bildungssprachliche Adjektive aus dem Lateinischen und Französischen verstehen und verwenden: eklatant, subtil, latent, marginal, obsolet, prekär, diffus, rudimentär."
+    },
+    {
+      "id": "de-reading-a-lecture-transcript",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Das Transkript einer Vorlesung lesen",
+      "intent": "Das Transkript einer Vorlesung zur Erkenntnistheorie lesen und den Aufbau des gesprochenen Arguments mit Abschweifungen, Wiederholungen und Gliederungssignalen nachzeichnen."
+    },
+    {
+      "id": "de-adjective-endings-doubtful-cases",
+      "kind": "grammar",
+      "topic": "adjectives",
+      "workingTitle": "Manche neue oder neuen? Zweifelsfälle der Adjektivdeklination",
+      "intent": "Adjektivendungen in Zweifelsfällen wählen: nach manche, solche, sämtliche und folgende, nach wir und ihr, bei zwei Adjektiven im Dativ (wir Deutschen, mit frischem grünem Salat)."
+    },
+    {
+      "id": "de-reading-kants-essay-on-enlightenment",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Kants Schrift über die Aufklärung lesen",
+      "intent": "Den Anfang von Kants Schrift Was ist Aufklärung? lesen und die Schritte des Arguments in eigenen Worten wiedergeben (selbstverschuldete Unmündigkeit, Faulheit und Feigheit, sapere aude)."
+    },
+    {
+      "id": "de-managing-a-disruptive-participant",
+      "kind": "functions",
+      "theme": "education",
+      "workingTitle": "Einen Störenfried souverän bremsen",
+      "intent": "In einem Seminar jemanden bremsen, der ständig dazwischenredet, ohne ihn bloßzustellen: Ich verstehe Ihr Anliegen, möchte aber jetzt anderen das Wort geben. Das klären wir gern unter vier Augen."
+    },
+    {
+      "id": "de-health-metaphors",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Krankheitsmetaphern in Debatten",
+      "intent": "Etwa zwölf Bilder aus der Medizin in Politik und Wirtschaft verstehen: die bittere Pille, die Rosskur, das Allheilmittel, die Schocktherapie, gesundschrumpfen, der kranke Mann Europas."
+    },
+    {
+      "id": "de-medical-terminology",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Medizinische Fachsprache",
+      "intent": "Etwa zwölf Begriffe der Medizinsprache in Befunden und Artikeln verstehen: die Anamnese, die Indikation, die Kontraindikation, die Inzidenz, die Prävalenz, die Pathologie, symptomatisch."
+    },
+    {
+      "id": "de-medical-procedures",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Untersuchungen und Eingriffe",
+      "intent": "Etwa zwölf medizinische Untersuchungen und Eingriffe benennen: die Computertomografie, die Kernspintomografie, die Biopsie, die Endoskopie, die Narkose, der Eingriff, minimalinvasiv."
+    },
+    {
+      "id": "de-reading-clinical-trial-results",
+      "kind": "reading",
+      "theme": "health",
+      "workingTitle": "Den Ergebnisteil einer klinischen Studie lesen",
+      "intent": "Den Ergebnisteil einer klinischen Studie lesen, Aufbau und Endpunkte verstehen (randomisiert, doppelblind, Placebo) und erkennen, was die Autoren bewusst nicht behaupten."
+    },
+    {
+      "id": "de-sports-medicine",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Sportmedizin",
+      "intent": "Etwa zwölf Begriffe aus der Sportmedizin verstehen: der Kreuzbandriss, der Meniskus, die Sehne, der Bänderriss, die Zerrung, der Ermüdungsbruch, das Übertraining, die Leistungsdiagnostik."
+    },
+    {
+      "id": "de-reading-an-epidemiological-report",
+      "kind": "reading",
+      "theme": "health",
+      "workingTitle": "Einen epidemiologischen Bericht lesen",
+      "intent": "Einen epidemiologischen Wochenbericht des Robert Koch-Instituts lesen und erklären, was seine Kennzahlen zeigen und was nicht (Inzidenz, Meldeverzug, Dunkelziffer, Übersterblichkeit)."
+    },
+    {
+      "id": "de-questioning-the-evidence-behind-a-claim",
+      "kind": "functions",
+      "theme": "health",
+      "workingTitle": "Die Belege für eine Behauptung hinterfragen",
+      "intent": "Die Belege für eine Gesundheitsbehauptung kritisch und höflich hinterfragen: Worauf stützt sich diese Aussage? Wie groß war die Stichprobe? Korrelation ist nicht gleich Kausalität."
+    },
+    {
+      "id": "de-disability",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Behinderung und Teilhabe",
+      "intent": "Mit etwa zwölf Wörtern respektvoll über Behinderung sprechen: die Behinderung, die Teilhabe, die Assistenz, gehörlos, sehbehindert, die Gebärdensprache, der Schwerbehindertenausweis."
+    },
+    {
+      "id": "de-health-policy",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Gesundheitspolitik",
+      "intent": "Etwa zwölf Begriffe aus der Gesundheitspolitik verstehen: die Fallpauschale, der Pflegenotstand, die Zweiklassenmedizin, die Bürgerversicherung, die Kostendämpfung, die Landarztquote."
+    },
+    {
+      "id": "de-reading-a-health-economics-article",
+      "kind": "reading",
+      "theme": "health",
+      "workingTitle": "Einen Artikel zur Gesundheitsökonomie lesen",
+      "intent": "Einen Fachartikel zur Bewertung neuer Arzneimittel lesen und der Kostenargumentation samt Antworten auf ethische Einwände folgen (Zusatznutzen, Kosten pro gewonnenem Lebensjahr)."
+    },
+    {
+      "id": "de-formal-demonstratives-derer",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Derjenige, derer, welcher: Pronomen der Schriftsprache",
+      "intent": "Derjenige vor Relativsätzen verwenden, derer von deren unterscheiden und mit welcher ein doppeltes die die vermeiden: die Zahl derer, die zustimmen."
+    },
+    {
+      "id": "de-bioethics",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Bioethik",
+      "intent": "Etwa zwölf Begriffe aus bioethischen Debatten verstehen: die Präimplantationsdiagnostik, die Leihmutterschaft, die Organspende, die Widerspruchslösung, die Sterbehilfe, die Gentherapie."
+    },
+    {
+      "id": "de-reading-an-ethics-council-opinion",
+      "kind": "reading",
+      "theme": "health",
+      "workingTitle": "Eine Stellungnahme des Ethikrats lesen",
+      "intent": "Eine Stellungnahme des Deutschen Ethikrats zur Organspende lesen und die Argumente für Widerspruchs- und Entscheidungslösung samt ihrer Abwägung nachzeichnen."
+    },
+    {
+      "id": "de-psychological-concepts",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Psychologische Begriffe",
+      "intent": "Etwa zwölf Begriffe der Psychologie in Alltag und Medien verstehen: das Unterbewusstsein, die Projektion, die Resilienz, das Trauma, die Neurose, die Sublimierung, die kognitive Dissonanz."
+    },
+    {
+      "id": "de-helping-someone-think-through-a-decision",
+      "kind": "functions",
+      "theme": "health",
+      "workingTitle": "Jemandem helfen, eine Entscheidung zu durchdenken",
+      "intent": "Jemanden bei einer schweren Entscheidung über Pflege oder Behandlung begleiten, ohne ihn zu lenken: Was spricht für dich dafür, was dagegen? Wie würdest du dich in einem Jahr damit fühlen?"
+    },
+    {
+      "id": "de-reading-freuds-interpretation-of-dreams",
+      "kind": "reading",
+      "theme": "health",
+      "workingTitle": "Freuds Traumdeutung lesen",
+      "intent": "Einen Auszug aus Sigmund Freuds Die Traumdeutung lesen, der Argumentation an einem Traumbeispiel folgen und Beobachtung, Deutung und Theorie unterscheiden (manifester und latenter Trauminhalt)."
+    },
+    {
+      "id": "de-clipped-words",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Kurzwörter: Uni, Promi, Kripo",
+      "intent": "Etwa zwölf Kurzwörter auflösen, ihr Genus vom Vollwort ableiten und den Plural meist auf -s bilden: die Uni, der Promi, die Demo, das Abi, die Kripo, der Akku, das Navi, der Krimi."
+    },
+    {
+      "id": "de-insight-and-self-deception",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Einsicht und Selbsttäuschung",
+      "intent": "Mit etwa zwölf Wörtern über Selbsterkenntnis sprechen: die Einsicht, die Selbsttäuschung, sich etwas vormachen, die Verdrängung, das Bauchgefühl, der blinde Fleck, die Selbstkritik."
+    },
+    {
+      "id": "de-reading-an-eighteenth-century-medical-book",
+      "kind": "reading",
+      "theme": "health",
+      "workingTitle": "Ein medizinisches Buch des 18. Jahrhunderts lesen",
+      "intent": "Einen Auszug aus Hufelands Buch über die Kunst, das Leben zu verlängern, lesen, der älteren Prosa folgen und noch gültige Beobachtungen von überholten Lehren trennen (Lebenskraft, Diät)."
+    },
+    {
+      "id": "de-death-and-dying",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Tod und Sterben",
+      "intent": "Mit etwa zwölf Wörtern im passenden Register über den Tod sprechen: das Ableben, entschlafen, verscheiden, das Zeitliche segnen, den Löffel abgeben (salopp), die Hinterbliebenen (Pl.), der Nachruf."
+    },
+    {
+      "id": "de-comforting-someone-in-a-crisis",
+      "kind": "functions",
+      "theme": "health",
+      "workingTitle": "Jemanden in einer Krise trösten",
+      "intent": "Jemandem nach einer schweren Diagnose beistehen, ohne leere Floskeln zu benutzen: Du musst jetzt gar nichts entscheiden. Ich bin für dich da. Es ist völlig in Ordnung, traurig und wütend zu sein."
+    },
+    {
+      "id": "de-stage-and-screen-criticism",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Theater- und Filmkritik",
+      "intent": "Inszenierungen mit etwa zwölf Wörtern aus Kritiken beurteilen: werkgetreu, das Regietheater, die Lesart, plakativ, prätentiös, kongenial, der Verriss, verreißen."
+    },
+    {
+      "id": "de-music-theory",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Musiktheorie",
+      "intent": "Etwa zwölf Grundbegriffe der Musiktheorie verstehen: die Tonart, das Dur, das Moll, die Tonleiter, der Akkord, die Partitur, die Dissonanz, der Kontrapunkt."
+    },
+    {
+      "id": "de-reading-an-opera-review",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Eine Opernkritik lesen",
+      "intent": "Die Kritik einer Wagner-Inszenierung lesen, musikalische und literarische Anspielungen entschlüsseln und das Urteil über Regie, Dirigat und Gesang herausarbeiten."
+    },
+    {
+      "id": "de-litotes-double-negation",
+      "kind": "grammar",
+      "topic": "negation",
+      "workingTitle": "Nicht unumstritten: Untertreibung mit doppelter Verneinung",
+      "intent": "Mit doppelter Verneinung vorsichtig oder ironisch bewerten und einschätzen, wie stark sie das Urteil abschwächt: nicht unumstritten, nicht ohne Risiko, nicht unbegabt, kein Unbekannter."
+    },
+    {
+      "id": "de-art-criticism",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Kunstkritik",
+      "intent": "Gemälde mit etwa zwölf Begriffen der Kunstkritik beschreiben: die Komposition, die Farbgebung, der Pinselstrich, der Duktus, die Perspektive, gegenständlich, expressiv, das Œuvre."
+    },
+    {
+      "id": "de-literary-criticism",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Literaturkritik",
+      "intent": "Etwa zwölf Begriffe der Literaturkritik verstehen und verwenden: die Erzählperspektive, die Figurenzeichnung, der Spannungsbogen, die Intertextualität, die Rezeption eines Werks, epigonal."
+    },
+    {
+      "id": "de-reading-feuilleton-literary-criticism",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Eine Literaturkritik im Feuilleton lesen",
+      "intent": "Eine ausführliche Literaturkritik im Feuilleton lesen und die feinen Abstufungen zwischen Lob und Verriss deuten (durchaus ambitioniert, nicht frei von Längen, ein großer kleiner Roman)."
+    },
+    {
+      "id": "de-expressing-mixed-feelings-precisely",
+      "kind": "functions",
+      "theme": "free_time",
+      "workingTitle": "Gemischte Gefühle genau ausdrücken",
+      "intent": "Zwiespältige Eindrücke von einem Theaterstück oder Buch präzise abstufen: Ich bin hin- und hergerissen. Es hat mich berührt, aber nicht überzeugt. Da bleibt ein schaler Nachgeschmack."
+    },
+    {
+      "id": "de-words-from-literary-prose",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Wörter der Erzählliteratur",
+      "intent": "Etwa zwölf gehobene Wörter für innere Zustände aus Romanen verstehen: das Gemüt, die Schwermut, die Muße, die Abgeschiedenheit, versonnen, entrückt, ahnungsvoll, verzagt."
+    },
+    {
+      "id": "de-reading-kafkas-metamorphosis",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Kafkas Verwandlung lesen",
+      "intent": "Den Anfang von Franz Kafkas Erzählung Die Verwandlung lesen und zeigen, wie der nüchterne, sachliche Erzählton das Absurde selbstverständlich erscheinen lässt."
+    },
+    {
+      "id": "de-archaic-words",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Veraltete und poetische Wörter",
+      "intent": "Etwa zwölf veraltete Wörter in älteren Texten verstehen: das Antlitz, das Gemach, der Odem, der Jüngling, die Jungfer, das Weib (heute abwertend), weiland, gar (für sehr), wandeln."
+    },
+    {
+      "id": "de-reading-lessings-ring-parable",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lessings Ringparabel lesen",
+      "intent": "Die Ringparabel aus Lessings Nathan der Weise lesen, die Gleichnisstruktur entschlüsseln und ihre Botschaft der Toleranz zwischen den drei Religionen erläutern."
+    },
+    {
+      "id": "de-correlative-conjunctions-formal",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Teils ... teils, nicht so sehr ... als vielmehr: mehrteilige Konnektoren",
+      "intent": "Mehrteilige Konnektoren wie teils ... teils, mal ... mal, bald ... bald, nicht so sehr ... als vielmehr und je nachdem, ob verwenden: Die Kritiken waren teils begeistert, teils vernichtend."
+    },
+    {
+      "id": "de-reading-an-obituary-of-a-controversial-figure",
+      "kind": "reading",
+      "theme": "personal_identification",
+      "workingTitle": "Den Nachruf auf eine umstrittene Person lesen",
+      "intent": "Den Nachruf auf einen umstrittenen Verleger lesen, die Gewichtung von Lob und Tadel bestimmen und entschlüsseln, was verhüllende Wendungen andeuten (streitbar, eigenwillig, nicht immer bequem)."
+    },
+    {
+      "id": "de-looks-in-literature",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Aussehen in literarischen Texten",
+      "intent": "Etwa zwölf literarische Wörter für Gestalt und Gesicht verstehen: die Gestalt, die Gesichtszüge (Pl.), hager, ausgemergelt, wohlgenährt, verhärmt, anmutig, die Anmut."
+    },
+    {
+      "id": "de-reviewing-a-book",
+      "kind": "functions",
+      "theme": "free_time",
+      "workingTitle": "Ein Buch besprechen",
+      "intent": "Eine pointierte Buchbesprechung schreiben, die Stärken und Schwächen abwägt: Der Roman besticht durch seine Sprache. Im zweiten Teil verliert sich die Handlung. Wer sich darauf einlässt, wird belohnt."
+    },
+    {
+      "id": "de-reading-hoffmanns-sandman",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Hoffmanns Sandmann lesen",
+      "intent": "Einen Auszug aus E. T. A. Hoffmanns Der Sandmann lesen und Hinweise für beide Lesarten sammeln: Nathanaels Wahn oder eine unheimliche Wirklichkeit."
+    },
+    {
+      "id": "de-character-in-literature",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Charakter in literarischen Texten",
+      "intent": "Etwa zwölf Wörter für Figuren in Erzähltexten verstehen: der Sonderling, verschroben, schrullig, gütig, sanftmütig, hinterlistig, durchtrieben, abgebrüht."
+    },
+    {
+      "id": "de-reading-the-jews-beech-novella",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Die Judenbuche lesen",
+      "intent": "Die Szene um den Tod des Försters Brandis aus Droste-Hülshoffs Judenbuche lesen und zeigen, wie Auslassungen im Erzählen offenlassen, was Friedrich wusste und wollte."
+    },
+    {
+      "id": "de-literary-settings",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Schauplatz und Atmosphäre",
+      "intent": "Die Atmosphäre eines Ortes mit etwa zwölf Wörtern beschreiben: der Schauplatz, die Szenerie, trostlos, beklemmend, verwunschen, heimelig, menschenleer, öde."
+    },
+    {
+      "id": "de-reading-fontanes-effi-briest",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Fontanes Effi Briest lesen",
+      "intent": "Einen Auszug aus Theodor Fontanes Effi Briest lesen und zeigen, wie der Roman durch Andeutung, Plauderton und Auslassung die Zwänge der Gesellschaft kritisiert (ein weites Feld)."
+    },
+    {
+      "id": "de-urban-design",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Stadtgestaltung",
+      "intent": "Etwa zwölf Begriffe der Stadtgestaltung verstehen: das Stadtbild, die Sichtachse, die Flaniermeile, die Promenade, der Boulevard, die Begegnungszone, die Blockrandbebauung, die Platzgestaltung."
+    },
+    {
+      "id": "de-spatial-metaphors",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Raum als Metapher",
+      "intent": "Etwa zwölf räumliche Bilder für abstrakte Verhältnisse verwenden: das Terrain, die Grauzone, das Spannungsfeld, die Nische, Neuland betreten, eine Grenze ziehen, das Feld abstecken."
+    },
+    {
+      "id": "de-reading-architecture-criticism",
+      "kind": "reading",
+      "theme": "places",
+      "workingTitle": "Eine Architekturkritik lesen",
+      "intent": "Die Kritik eines neuen Museumsbaus lesen und verfolgen, wie der Kritiker Form, Material, Funktion und Wirkung im Stadtraum bewertet und sein Urteil begründet."
+    },
+    {
+      "id": "de-urban-quarters",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Stadtviertel und ihr Ruf",
+      "intent": "Etwa zwölf Wörter für Stadtviertel und ihren Ruf verwenden: der Kiez, das Szeneviertel, das Villenviertel, das Arbeiterviertel, die Plattenbausiedlung, die Trabantenstadt, die Peripherie."
+    },
+    {
+      "id": "de-reading-flaneur-prose",
+      "kind": "reading",
+      "theme": "places",
+      "workingTitle": "Flaneurprosa lesen",
+      "intent": "Einen Auszug aus Franz Hessels Spazieren in Berlin lesen und zeigen, wie der Flaneur aus beiläufigen Beobachtungen, Ironie und Abschweifungen ein Bild der Stadt entwirft."
+    },
+    {
+      "id": "de-middle-field-information-order",
+      "kind": "grammar",
+      "topic": "information_structure_and_pragmatics",
+      "workingTitle": "Bekanntes vor Neuem: Wortfolge im Mittelfeld",
+      "intent": "Satzglieder im Mittelfeld nach ihrem Informationswert ordnen, Bekanntes vor Neuem: Ich habe das Buch einem Freund geliehen. Ich habe dem Freund ein Buch geliehen."
+    },
+    {
+      "id": "de-reading-on-the-car-friendly-city",
+      "kind": "reading",
+      "theme": "places",
+      "workingTitle": "Texte zur autogerechten Stadt lesen",
+      "intent": "Einen Planungstext der Nachkriegszeit zur autogerechten Stadt und eine heutige Kritik daran lesen und Leitbilder, Argumente und Folgen für das Stadtbild vergleichen."
+    },
+    {
+      "id": "de-lobbying-the-local-council",
+      "kind": "functions",
+      "theme": "places",
+      "workingTitle": "Bei der Gemeinde für ein Anliegen werben",
+      "intent": "Den Gemeinderat in einem Schreiben von einem Anliegen überzeugen: Wir appellieren an den Gemeinderat, den Park zu erhalten. Über 800 Menschen haben unterschrieben. Gern wirken wir an einer Lösung mit."
+    },
+    {
+      "id": "de-reading-an-old-berlin-guidebook",
+      "kind": "reading",
+      "theme": "places",
+      "workingTitle": "Einen Reiseführer von 1900 lesen",
+      "intent": "Einen Auszug aus einem Berliner Reiseführer um 1900 lesen und Stadtbild, Ratschläge für Reisende und zeittypische Wertungen mit dem heutigen Berlin vergleichen."
+    },
+    {
+      "id": "de-place-names",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Ortsnamen und ihre Bedeutung",
+      "intent": "Die Herkunft deutscher Ortsnamen an etwa zwölf typischen Endungen erkennen: -dorf, -heim, -hausen, -ingen, -burg, -bach, -furt, -stedt (Frankfurt, Göttingen)."
+    },
+    {
+      "id": "de-border-regions",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Grenzregionen",
+      "intent": "Etwa zwölf Begriffe zu Grenzregionen im deutschen Sprachraum verstehen: der Grenzgänger, grenzüberschreitend, das Dreiländereck, die Euregio, die Exklave, das Elsass, Südtirol."
+    },
+    {
+      "id": "de-reading-a-reportage-with-missing-paragraphs",
+      "kind": "reading",
+      "theme": "places",
+      "workingTitle": "Eine Reportage mit fehlenden Absätzen lesen",
+      "intent": "Eine lange Reportage über eine Grenzstadt an der Oder lesen und entfernte Absätze anhand von Zeitfolge, Verweisen und Perspektivwechseln an ihren Platz setzen."
+    },
+    {
+      "id": "de-weather-lore",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "Wetter und Bauernregeln",
+      "intent": "Etwa zwölf Begriffe aus dem Wetterjahr und den Bauernregeln kennen: die Eisheiligen (Pl.), die Schafskälte, die Hundstage (Pl.), der Altweibersommer, der Siebenschläfer, die Raunächte (Pl.)."
+    },
+    {
+      "id": "de-extreme-weather-terms",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "Extremwetter in der Fachsprache",
+      "intent": "Etwa zwölf Fachbegriffe aus Unwetterwarnungen verstehen: der Starkregen, die Sturzflut, die Superzelle, der Tornado, die Hitzeglocke, die Omegalage, der Pegelstand, die Warnstufe."
+    },
+    {
+      "id": "de-emergency-planning",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Katastrophenschutz",
+      "intent": "Etwa zwölf Begriffe des Bevölkerungsschutzes verstehen: der Katastrophenschutz, der Krisenstab, das Technische Hilfswerk (THW), die Sirene, der Warntag, die Notfallvorsorge, der Notvorrat."
+    },
+    {
+      "id": "de-briefing-the-public-on-severe-weather",
+      "kind": "functions",
+      "theme": "weather",
+      "workingTitle": "Bei einem Unwetter die Bevölkerung informieren",
+      "intent": "Bei einem Unwetter die Bevölkerung ruhig, klar und verbindlich informieren: Bitte bleiben Sie in Ihren Häusern. Wir informieren Sie, sobald sich die Lage ändert. Rufen Sie die 112 nur im Notfall an."
+    },
+    {
+      "id": "de-formal-comparisons",
+      "kind": "grammar",
+      "topic": "comparison_and_quantity",
+      "workingTitle": "Mehr denn je: Vergleiche in gehobener Sprache",
+      "intent": "Gehobene Vergleiche mit denn, nichts weniger als und alles andere als verstehen und formulieren: mehr denn je, eher als Mahnung denn als Lob, alles andere als einfach, umso mehr, als die Zeit drängt."
+    },
+    {
+      "id": "de-atmospheric-science",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "Atmosphärenphysik",
+      "intent": "Etwa zwölf Begriffe zum Aufbau der Atmosphäre verstehen: die Troposphäre, die Stratosphäre, die Ozonschicht, der Jetstream, das Aerosol, die Konvektion, die Verdunstung, die Kondensation."
+    },
+    {
+      "id": "de-reading-a-shipping-forecast",
+      "kind": "reading",
+      "theme": "weather",
+      "workingTitle": "Einen Seewetterbericht lesen",
+      "intent": "Einen Seewetterbericht für Nord- und Ostsee lesen, Fachsprache und Kürzel entschlüsseln (Südwest 6 bis 7, Böen 8, See 3 Meter, diesig) und entscheiden, ob ein Segeltörn vertretbar ist."
+    },
+    {
+      "id": "de-climate-negotiations",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "Klimaverhandlungen",
+      "intent": "Etwa zwölf Begriffe aus internationalen Klimaverhandlungen verstehen: die Klimakonferenz, die Vertragsstaaten (Pl.), die Selbstverpflichtung, die Dekarbonisierung, die Klimafinanzierung."
+    },
+    {
+      "id": "de-reading-a-climate-report-summary",
+      "kind": "reading",
+      "theme": "weather",
+      "workingTitle": "Die Zusammenfassung eines Klimaberichts lesen",
+      "intent": "Die Zusammenfassung eines Klimaberichts für politische Entscheidungsträger lesen und die abgestufte Sprache der Unsicherheit genau deuten (wahrscheinlich, sehr wahrscheinlich, mit hohem Vertrauen)."
+    },
+    {
+      "id": "de-weather-metaphors",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "Wetterbilder in Politik und Wirtschaft",
+      "intent": "Etwa zwölf Wetterbilder aus den Nachrichten verstehen: die Großwetterlage, das Stimmungstief, der Gegenwind, die Flaute, das Tauwetter, die Eiszeit, ein Sturm der Entrüstung."
+    },
+    {
+      "id": "de-reading-a-debate-on-geoengineering",
+      "kind": "reading",
+      "theme": "weather",
+      "workingTitle": "Eine Debatte über Geoengineering lesen",
+      "intent": "Gegensätzliche Beiträge zur künstlichen Kühlung der Erde lesen und naturwissenschaftliche, ethische und politische Argumente auseinanderhalten und gewichten (Schwefel in der Stratosphäre)."
+    },
+    {
+      "id": "de-circular-economy",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Kreislaufwirtschaft",
+      "intent": "Etwa zwölf Begriffe der Kreislaufwirtschaft verstehen: die Kreislaufwirtschaft, die Abfallvermeidung, die Wertstoffe (Pl.), das Upcycling, die Obsoleszenz, die Reparierbarkeit, der Sekundärrohstoff."
+    },
+    {
+      "id": "de-ecological-crisis",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Sprache der Umweltkrise",
+      "intent": "Etwa zwölf Begriffe aus Debatten über die ökologische Krise verstehen: das Artensterben, der Raubbau, die Übernutzung, unumkehrbar, die planetaren Grenzen (Pl.), das Anthropozän."
+    },
+    {
+      "id": "de-reading-an-analysis-of-rewilding-policy",
+      "kind": "reading",
+      "theme": "house_and_home",
+      "workingTitle": "Eine Analyse zur Renaturierung lesen",
+      "intent": "Eine politische Analyse zur Wiedervernässung von Mooren und Renaturierung von Flüssen lesen und Ziele, Konflikte mit der Landwirtschaft und die Bewertung der Autorin herausarbeiten."
+    },
+    {
+      "id": "de-linguistic-terms",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Sprachwissenschaftliche Begriffe",
+      "intent": "Mit etwa zwölf Begriffen fachlich über Sprache sprechen: das Morphem, die Wortart, die Etymologie, die Konnotation, die Denotation, das Register, die Varietät, der Soziolekt."
+    },
+    {
+      "id": "de-reading-a-dispute-over-correct-german",
+      "kind": "reading",
+      "theme": "language",
+      "workingTitle": "Einen Streit über richtiges Deutsch lesen",
+      "intent": "Einen Schlagabtausch zwischen einer Sprachwissenschaftlerin und einem Sprachpfleger lesen und beschreibende und vorschreibende Positionen samt Argumenten unterscheiden (Verfall oder Wandel)."
+    },
+    {
+      "id": "de-spoken-german-grammar",
+      "kind": "grammar",
+      "topic": "information_structure_and_pragmatics",
+      "workingTitle": "Weil ich hab keine Zeit: Grammatik der gesprochenen Sprache",
+      "intent": "Merkmale gesprochener Sprache wie weil mit Verbzweitstellung, wegen mit Dativ, am-Progressiv, Doppelperfekt und Herausstellung erkennen und vom Standard unterscheiden: Ich hab es vergessen gehabt."
+    },
+    {
+      "id": "de-preserving-tone-when-interpreting",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Ton und Register beim Sprachmitteln wahren",
+      "intent": "Beim Dolmetschen nicht nur den Inhalt, sondern auch Ton, Ironie und Schärfe wiedergeben: Sie hat das deutlich schärfer formuliert. Das war ironisch gemeint. Wörtlich übersetzt klänge das zu höflich."
+    },
+    {
+      "id": "de-reading-two-translations-of-one-text",
+      "kind": "reading",
+      "theme": "language",
+      "workingTitle": "Zwei Übersetzungen eines Textes vergleichend lesen",
+      "intent": "Den Anfang von Hamlets Monolog Sein oder Nichtsein in Schlegels Übersetzung und in einer heutigen Fassung lesen und zeigen, wie Wortwahl, Versmaß und Ton die Figur jeweils anders zeichnen."
+    },
+    {
+      "id": "de-eponyms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Eponyme: Wörter aus Namen",
+      "intent": "Etwa zwölf Wörter erkennen, die auf Personennamen zurückgehen: röntgen, kneippen, der Duden, der Diesel, der Zeppelin, die Litfaßsäule, der Dobermann, die Guillotine."
+    },
+    {
+      "id": "de-yiddish-loanwords",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Wörter aus dem Jiddischen",
+      "intent": "Etwa zwölf Wörter jiddischer Herkunft und ihren meist umgangssprachlichen Ton kennen: der Schlamassel, die Chuzpe, meschugge, malochen, der Zoff, Massel haben, Tacheles reden, der Ganove."
+    },
+    {
+      "id": "de-latin-and-greek-prefixes",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Lateinische und griechische Vorsilben",
+      "intent": "Die Bedeutung von etwa zehn Vorsilben aus dem Lateinischen und Griechischen erschließen: prä-, post-, inter-, poly-, mono-, pseudo-, hyper-, anti- (postmodern, polyglott, monoton)."
+    },
+    {
+      "id": "de-reading-a-newspaper-in-fraktur",
+      "kind": "reading",
+      "theme": "language",
+      "workingTitle": "Eine Zeitung in Fraktur lesen",
+      "intent": "Eine Zeitungsseite um 1900 in Fraktur lesen, die Buchstaben sicher erkennen (langes s, Ligaturen) und Schreibungen vor der Reform von 1901 verstehen (Thür, Theil, giebt)."
+    },
+    {
+      "id": "de-north-and-south",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Norddeutsch und Süddeutsch",
+      "intent": "Etwa zwölf typisch nord- oder süddeutsche Wörter erkennen und einordnen: schnacken, dröge, plietsch, der Feudel, die Deern, gell, der Bub, grantig, die Gaudi, der Schmarrn."
+    },
+    {
+      "id": "de-reading-a-dialect-poem",
+      "kind": "reading",
+      "theme": "language",
+      "workingTitle": "Ein Mundartgedicht lesen",
+      "intent": "Ein Gedicht in bairischer, alemannischer oder plattdeutscher Mundart mit Worthilfen lesen, seinen Sinn auf Hochdeutsch wiedergeben und zeigen, was der Dialekt an Klang und Nähe beiträgt."
+    },
+    {
+      "id": "de-austrian-german",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Österreichisches Deutsch",
+      "intent": "Etwa zwölf österreichische Wörter und ihre Entsprechung in Deutschland kennen: der Sessel (Stuhl), der Kasten (Schrank), der Polster (Kissen), das Sackerl (Tüte), die Trafik, der Erlagschein."
+    },
+    {
+      "id": "de-reading-schnitzlers-lieutenant-gustl",
+      "kind": "reading",
+      "theme": "language",
+      "workingTitle": "Schnitzlers Leutnant Gustl lesen",
+      "intent": "Einen Auszug aus Arthur Schnitzlers Leutnant Gustl lesen, dem inneren Monolog folgen und Wiener Umgangssprache und den Ehrenkodex des Offiziers erkennen."
+    },
+    {
+      "id": "de-austrian-swiss-grammar",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Ich bin gesessen: Grammatik in Österreich und der Schweiz",
+      "intent": "Grammatische Besonderheiten Österreichs und der Schweiz erkennen: Perfekt mit sein bei sitzen, stehen, liegen, Plural wie die Wägen, Fugen-s wie in Zugsverspätung, Genus wie das Cola, das Tram."
+    },
+    {
+      "id": "de-reading-zweigs-world-of-yesterday",
+      "kind": "reading",
+      "theme": "personal_identification",
+      "workingTitle": "Zweigs Welt von Gestern lesen",
+      "intent": "Einen Auszug aus Stefan Zweigs Die Welt von Gestern lesen und verfolgen, wie Erinnerung, Nostalgie und historisches Urteil das Bild Wiens vor 1914 formen."
+    },
+    {
+      "id": "de-swiss-standard-german",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Schweizer Hochdeutsch",
+      "intent": "Etwa zwölf Schweizer Wörter der Standardsprache und ihre Entsprechung in Deutschland kennen: das Trottoir (Gehweg), das Billett, zügeln (umziehen), der Abwart (Hausmeister), die Pendenz."
+    },
+    {
+      "id": "de-reading-kellers-clothes-make-the-man",
+      "kind": "reading",
+      "theme": "language",
+      "workingTitle": "Eine Novelle Gottfried Kellers lesen",
+      "intent": "Einen Auszug aus Gottfried Kellers Kleider machen Leute lesen, der Verwechslungsgeschichte folgen und Schweizer Wörter und die Ironie des Erzählers erkennen."
+    },
+    {
+      "id": "de-responding-to-regional-speech",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Auf regionale Sprache angemessen reagieren",
+      "intent": "Dialekt und regionale Ausdrücke verstehen, freundlich nachfragen und passend antworten: Meinen Sie mit Semmel ein Brötchen? Heuer heißt also dieses Jahr, oder? Ich antworte lieber auf Hochdeutsch."
+    },
+    {
+      "id": "de-landforms",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Landformen",
+      "intent": "Etwa zwölf Landformen genau benennen: die Klamm, die Düne, das Watt, die Steilküste, die Förde, der Fjord, die Moräne, der Krater."
+    },
+    {
+      "id": "de-cultural-landscape",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Kulturlandschaft",
+      "intent": "Etwa zwölf Elemente der bäuerlichen Kulturlandschaft benennen: die Hecke, der Knick, der Feldrain, die Streuobstwiese, die Allee, die Trockenmauer, der Weinberg, die Alm (schweiz. Alp)."
+    },
+    {
+      "id": "de-botany",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Botanik",
+      "intent": "Etwa zwölf botanische Begriffe für Aufbau und Wachstum von Pflanzen verwenden: der Stängel, die Knospe, der Spross, das Wurzelwerk, die Pollen (Pl.), keimen, die Bestäubung, die Fotosynthese."
+    },
+    {
+      "id": "de-reading-nature-writing",
+      "kind": "reading",
+      "theme": "house_and_home",
+      "workingTitle": "Naturprosa lesen",
+      "intent": "Einen Text zeitgenössischer Naturprosa über einen Auwald lesen und verfolgen, wie genaue Beobachtung in Nachdenken über Zeit, Verlust und Zugehörigkeit übergeht."
+    },
+    {
+      "id": "de-doubtful-gender",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Nomen mit zwei Artikeln: der oder das Joghurt",
+      "intent": "Etwa zwölf Nomen kennen, die bei gleicher Bedeutung zwei Artikel haben, und den üblicheren wählen: der oder das Joghurt, der oder das Liter, der oder das Spagat, das oder der Virus."
+    },
+    {
+      "id": "de-hunting-language",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Jägersprache",
+      "intent": "Etwa zwölf Wörter der Jägersprache und daraus stammende Wendungen kennen: der Hochsitz, die Pirsch, die Fährte, das Rotwild, die Lauscher (Pl.), waidgerecht, jemandem durch die Lappen gehen."
+    },
+    {
+      "id": "de-reading-rilkes-panther",
+      "kind": "reading",
+      "theme": "house_and_home",
+      "workingTitle": "Rilkes Panther lesen",
+      "intent": "Rainer Maria Rilkes Gedicht Der Panther lesen und zeigen, wie das Dinggedicht durch Rhythmus, Wiederholung und Blickführung die Gefangenschaft spürbar macht."
+    },
+    {
+      "id": "de-animal-idioms",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Tiere in Redewendungen",
+      "intent": "Etwa zwölf Redewendungen mit Tieren verwenden: den Bock zum Gärtner machen, die Kuh vom Eis holen, da liegt der Hund begraben, einen Frosch im Hals haben, einen Vogel haben (ugs.)."
+    },
+    {
+      "id": "de-modal-particle-combinations",
+      "kind": "grammar",
+      "topic": "information_structure_and_pragmatics",
+      "workingTitle": "Doch mal, ja wohl, denn eigentlich: Kombinationen von Modalpartikeln",
+      "intent": "Kombinationen wie doch mal, ja wohl und denn eigentlich und betonte Partikeln verstehen und ihren Ton nutzen: Komm doch mal vorbei! Das ist ja wohl nicht dein Ernst!"
+    },
+    {
+      "id": "de-animal-sounds-used-for-people",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Tierlaute und ihr übertragener Gebrauch",
+      "intent": "Etwa zwölf Verben für Tierlaute kennen und ihren Gebrauch für Menschen verstehen: wiehern, grunzen, blöken, meckern, schnattern, gackern, knurren, fauchen."
+    },
+    {
+      "id": "de-verbs-of-light-and-fire",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Verben von Licht und Feuer",
+      "intent": "Etwa zwölf Verben für Licht und Feuer unterscheiden: glühen, glimmen, flackern, lodern, schimmern, glitzern, gleißen, sengen."
+    },
+    {
+      "id": "de-reading-hoelderlins-half-of-life",
+      "kind": "reading",
+      "theme": "house_and_home",
+      "workingTitle": "Hölderlins Gedicht Hälfte des Lebens lesen",
+      "intent": "Friedrich Hölderlins Gedicht Hälfte des Lebens lesen, den Gegensatz der beiden Strophen (Sommerfülle, Winterkälte) herausarbeiten und als Bild einer Lebenswende deuten."
+    },
+    {
+      "id": "de-hosting-an-event",
+      "kind": "functions",
+      "theme": "free_time",
+      "workingTitle": "Eine Veranstaltung moderieren",
+      "intent": "Durch eine Veranstaltung führen, Gäste begrüßen, Redner ankündigen und überleiten: Es ist mir eine große Freude, Sie heute hier willkommen zu heißen. Bitte begrüßen Sie mit mir Frau Professorin Lange."
+    },
+    {
+      "id": "de-onomatopoeia",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Lautmalerei: Wasser, Wind und Feuer",
+      "intent": "Etwa zwölf lautmalende Verben für Geräusche der Natur verstehen und verwenden: plätschern, gluckern, prasseln, rieseln, säuseln, rascheln, knistern, zischen."
+    },
+    {
+      "id": "de-weather-in-literature",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "Wetter in der Literatur",
+      "intent": "Stimmungen mit etwa zwölf literarischen Wetterwörtern beschreiben: der Dunst, diesig, fahl, bleiern, der Nebelschleier, das Wetterleuchten, die Abendkühle, drückend."
+    },
+    {
+      "id": "de-reading-the-flood-in-the-dykemaster",
+      "kind": "reading",
+      "theme": "weather",
+      "workingTitle": "Die Sturmflut im Schimmelreiter lesen",
+      "intent": "Die Sturmflutszene aus Theodor Storms Der Schimmelreiter lesen und deuten, wie Naturgewalt, Aberglaube und die Schuld des Deichgrafen im Bild des Sturms zusammenkommen."
+    },
+    {
+      "id": "de-exploration",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Entdeckungsreisen",
+      "intent": "Mit etwa zwölf Wörtern über historische Entdeckungsreisen sprechen: die Expedition, die Seefahrt, der Seeweg, der Entdecker, kartieren, umsegeln, die Kolonie, der Kolonialismus."
+    },
+    {
+      "id": "de-reading-humboldts-travel-account",
+      "kind": "reading",
+      "theme": "travel",
+      "workingTitle": "Einen Reisebericht Alexander von Humboldts lesen",
+      "intent": "Einen Auszug aus Alexander von Humboldts Reisebericht aus Südamerika lesen und Messung, Naturbeschreibung und Staunen in seiner wissenschaftlichen Prosa unterscheiden."
+    },
+    {
+      "id": "de-travel-writing",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Wörter der Reiseliteratur",
+      "intent": "Orte und Wege mit etwa zwölf Wörtern wie in der Reiseliteratur beschreiben: unwegsam, die Rast, die Herberge, der Pilger, die Wanderschaft, gen Süden, sonnendurchflutet, windumtost."
+    },
+    {
+      "id": "de-reading-heines-harz-journey",
+      "kind": "reading",
+      "theme": "travel",
+      "workingTitle": "Heines Harzreise lesen",
+      "intent": "Einen Auszug aus Heinrich Heines Die Harzreise lesen und den Wechsel zwischen Naturschilderung, Spott über Philister und Professoren und romantischer Stimmung erkennen."
+    },
+    {
+      "id": "de-precise-collocations",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Gehobene Kollokationen",
+      "intent": "Etwa zwölf gehobene Verbindungen aus Nomen und Verb verwenden: Zweifel hegen, Bedenken äußern, Anstoß erregen, eine Debatte entfachen, Vorwürfe erheben, eine Frist verstreichen lassen."
+    },
+    {
+      "id": "de-reading-wegeners-greenland-diary",
+      "kind": "reading",
+      "theme": "weather",
+      "workingTitle": "Wegeners Grönlandtagebuch lesen",
+      "intent": "Einträge aus Alfred Wegeners Tagebuch einer Grönlandexpedition lesen und aus Untertreibung und Auslassungen die wachsende Gefahr und die Verfassung des Schreibers erschließen."
+    },
+    {
+      "id": "de-formal-time-words",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Gehobene Zeitadverbien",
+      "intent": "Etwa zwölf gehobene Zeitadverbien verstehen und verwenden: unlängst, jüngst, fortan, zeitlebens, seinerzeit, ehedem, vormals, alsbald, dereinst."
+    },
+    {
+      "id": "de-strong-weak-verb-doublets",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Schuf oder schaffte? Verben mit zwei Formen",
+      "intent": "Verben mit starken und schwachen Formen nach der Bedeutung unterscheiden: schaffen (schuf, schaffte), bewegen (bewog, bewegte), erschrecken (erschrak, erschreckte), senden (sandte, sendete)."
+    },
+    {
+      "id": "de-reading-goethes-italian-journey",
+      "kind": "reading",
+      "theme": "travel",
+      "workingTitle": "Goethes Italienische Reise lesen",
+      "intent": "Einen Brief aus Goethes Italienischer Reise lesen und erkennen, wie Beobachtung, Selbstbildung und Begeisterung für die Antike den Reisebericht prägen."
+    },
+    {
+      "id": "de-old-home-words",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Alte Wörter rund ums Haus",
+      "intent": "Etwa zwölf ältere Wörter für Räume und Teile des Hauses verstehen: die Stube, die gute Stube, die Diele, die Kammer, der Speicher (Dachboden), der Erker, die Waschküche, der Kachelofen."
+    },
+    {
+      "id": "de-reading-the-goethe-schiller-letters",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Den Briefwechsel zwischen Goethe und Schiller lesen",
+      "intent": "Briefe aus dem Briefwechsel zwischen Goethe und Schiller lesen und Höflichkeitsformeln, Freundschaft und künstlerischen Streit im Briefstil der Weimarer Klassik erkennen."
+    },
+    {
+      "id": "de-declining-an-honour-gracefully",
+      "kind": "functions",
+      "theme": "free_time",
+      "workingTitle": "Eine ehrenvolle Anfrage ablehnen, ohne zu kränken",
+      "intent": "Eine schmeichelhafte Anfrage, etwa für eine Rede bei einer Buchpremiere, ablehnen, ohne die Beziehung zu belasten: Das ehrt mich sehr, aber ich muss leider absagen. So gern ich es täte, es geht nicht."
+    },
+    {
+      "id": "de-reading-an-eighteenth-century-diary",
+      "kind": "reading",
+      "theme": "personal_identification",
+      "workingTitle": "Ein Tagebuch aus dem 18. Jahrhundert lesen",
+      "intent": "Ein Tagebuch aus dem 18. Jahrhundert lesen, ältere Schreibweisen und Wendungen verstehen (seyn, bey, itzt, Frauenzimmer) und aus den Einträgen Alltag und Weltsicht des Schreibers erschließen."
+    },
+    {
+      "id": "de-discourse-markers",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Diskursmarker mit Nuance",
+      "intent": "Etwa zwölf Signale zum Gliedern und Kommentieren mit Nuance verwenden: sprich, will heißen, wohlgemerkt, notabene, apropos, nebenbei bemerkt, sage und schreibe, zugespitzt gesagt."
+    },
+    {
+      "id": "de-reading-the-study-scene-in-faust",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Die Paktszene aus Goethes Faust lesen",
+      "intent": "Die Wette zwischen Faust und Mephisto aus der zweiten Studierzimmerszene von Faust I lesen, Fausts Verzweiflung und die Bedingung des Pakts nachvollziehen (Verweile doch! du bist so schön!)."
+    },
+    {
+      "id": "de-functional-verb-phrases-with-geraten",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Funktionsverbgefüge mit geraten",
+      "intent": "Etwa zwölf Gefüge mit geraten für ungewollte Zustände verwenden: in Verruf geraten, in Verzug geraten, ins Stocken geraten, in Vergessenheit geraten, ins Hintertreffen geraten."
+    },
+    {
+      "id": "de-reading-a-baroque-sonnet",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Ein barockes Sonett lesen",
+      "intent": "Ein Sonett von Andreas Gryphius lesen, Form und Gegensätze erkennen und das Vanitas-Motiv vor dem Hintergrund des Dreißigjährigen Krieges deuten (Es ist alles eitel)."
+    },
+    {
+      "id": "de-degree-adverbs",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Gradadverbien: überaus, schier, leidlich",
+      "intent": "Aussagen mit etwa zwölf Gradadverbien genau verstärken oder abschwächen: überaus, ungemein, schier, geradezu, weitaus, leidlich, halbwegs, ansatzweise, mehr schlecht als recht."
+    },
+    {
+      "id": "de-reading-luthers-bible-translation",
+      "kind": "reading",
+      "theme": "language",
+      "workingTitle": "Luthers Bibel von 1545 lesen",
+      "intent": "Einen Abschnitt aus Luthers Bibel von 1545 neben einer heutigen Fassung lesen, Sprachwandel beschreiben und Redewendungen finden, die bis heute leben (sein Licht unter den Scheffel stellen)."
+    }
+  ]
+}

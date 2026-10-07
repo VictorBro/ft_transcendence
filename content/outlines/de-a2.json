@@ -1,0 +1,1056 @@
+{
+  "lang": "de",
+  "level": "A2",
+  "entries": [
+    {
+      "id": "de-stages-of-life",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Lebensphasen",
+      "intent": "Etwa zwölf Wörter für die Abschnitte eines Lebens nennen: die Geburt, geboren, das Baby, die Kindheit, die Jugend, erwachsen, das Alter, die Rente, der Rentner, die Rentnerin."
+    },
+    {
+      "id": "de-participles-separable-inseparable",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Partizip II: trennbare, untrennbare und -ieren-Verben",
+      "intent": "Das Partizip II mit -ge- in der Mitte bei trennbaren Verben und ohne ge- bei be-, ver-, er- und -ieren bilden: eingekauft, angerufen, besucht, verkauft, telefoniert."
+    },
+    {
+      "id": "de-extended-family",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Die ganze Familie",
+      "intent": "Etwa zwölf weitere Verwandte mit Artikel und weiblicher Form nennen: der Onkel, die Tante, der Cousin, die Cousine, der Neffe, die Nichte, der Enkel, die Enkelin, die Verwandten (Pl.)."
+    },
+    {
+      "id": "de-irregular-participles",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Unregelmäßige Partizipien",
+      "intent": "Unregelmäßige Partizipien in Gruppen mit gleichem Vokalwechsel lernen und gemischte Verben erkennen: getrunken, geschrieben, geflogen, gebracht, gedacht, gewusst."
+    },
+    {
+      "id": "de-perfect-haben-or-sein",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Perfekt: haben oder sein?",
+      "intent": "Im Perfekt sein bei Orts- und Zustandswechsel und bei sein und bleiben wählen, sonst haben: Ich bin nach Rom gefahren. Er ist eingeschlafen. Wer hat das Auto gefahren?"
+    },
+    {
+      "id": "de-time-words",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Adverbien der Zeit: bald, montags, manchmal",
+      "intent": "Etwa vierzehn Zeitadverbien für Zeitpunkt und Häufigkeit verstehen und benutzen: vorgestern, übermorgen, damals, früher, gleich, bald, morgens, abends, montags, immer, oft, manchmal, selten, nie."
+    },
+    {
+      "id": "de-time-prepositions-seit-vor-in",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "Zeitangaben mit seit, vor und in",
+      "intent": "Mit seit und Präsens sagen, wie lange etwas schon dauert, mit vor, wann es war, und mit in, wann es sein wird: seit zwei Jahren, vor einem Monat, in drei Tagen."
+    },
+    {
+      "id": "de-talking-about-your-life",
+      "kind": "functions",
+      "theme": "personal_identification",
+      "workingTitle": "Vom eigenen Leben erzählen",
+      "intent": "Von wichtigen Stationen des eigenen Lebens erzählen und nachfragen: Ich bin in Izmir aufgewachsen. Seit zwei Jahren wohne ich in Kassel. Früher war ich Lehrerin. Und du?"
+    },
+    {
+      "id": "de-possessive-articles-dative",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Possessivartikel im Dativ",
+      "intent": "Possessivartikel im Dativ mit -em, -er, -em und im Plural mit -en verwenden, mit -n am Nomen im Plural und eur- statt euer-: mit meinem Bruder, bei unserer Oma, mit euren Kindern."
+    },
+    {
+      "id": "de-reading-an-email-from-a-friend",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Eine E-Mail von einer Freundin lesen",
+      "intent": "Eine persönliche E-Mail über einen Umzug und eine neue Arbeit lesen, den Neuigkeiten folgen und erkennen, worum die Freundin bittet (Kannst du mich im Mai besuchen?)."
+    },
+    {
+      "id": "de-partnership-and-marital-status",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Partnerschaft und Familienstand",
+      "intent": "Etwa zwölf Wörter für Partnerschaft und Familienstand nennen: der Partner, die Partnerin, sich verlieben, verliebt, heiraten, die Hochzeit, die Ehe, der Ehemann, die Ehefrau, getrennt, geschieden."
+    },
+    {
+      "id": "de-possession-genitive-s-and-von",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Besitz: Annas Auto, das Auto von Anna",
+      "intent": "Besitz mit s bei Namen ohne Apostroph, mit Apostroph nach -s, -x und -z, und mit von und Dativ angeben: Annas Auto, Max' Fahrrad, das Haus von meinen Eltern."
+    },
+    {
+      "id": "de-past-tense-modal-verbs",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Präteritum der Modalverben",
+      "intent": "Die Modalverben im Präteritum mit -te und ohne Umlaut bilden und statt des Perfekts verwenden: Ich konnte nicht kommen. Wir mussten lange warten. Sie wollte anrufen."
+    },
+    {
+      "id": "de-congratulating-and-sympathising",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Gratulieren und Mitgefühl zeigen",
+      "intent": "Zum Geburtstag, zur Hochzeit oder zur bestandenen Prüfung gratulieren, Gutes wünschen und Mitgefühl zeigen: Herzlichen Glückwunsch zur Hochzeit! Viel Erfolg! Gute Besserung! Oh, das tut mir leid."
+    },
+    {
+      "id": "de-flat-hunting",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Wohnungssuche",
+      "intent": "Etwa zwölf Wörter für die Suche nach einer Mietwohnung nennen: die Anzeige, die Miete, die Kaltmiete, die Nebenkosten (Pl.), die Kaution, der Vermieter, die Vermieterin, möbliert, die Besichtigung."
+    },
+    {
+      "id": "de-schon-noch-erst",
+      "kind": "grammar",
+      "topic": "adverbs",
+      "workingTitle": "Schon, noch, erst",
+      "intent": "Mit schon sagen, dass etwas früher oder mehr als erwartet ist, mit erst, dass es später oder weniger ist, und mit noch, dass es andauert: Es ist schon zehn. Ich bin erst auf Seite 5. Er schläft noch."
+    },
+    {
+      "id": "de-the-building",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Das Wohnhaus",
+      "intent": "Etwa zwölf Teile eines Wohnhauses mit Artikel nennen: das Erdgeschoss, der Stock, die Treppe (österr. die Stiege), der Aufzug (schweiz. der Lift), das Dach, der Eingang, die Klingel, der Briefkasten."
+    },
+    {
+      "id": "de-noch-nicht-nicht-mehr",
+      "kind": "grammar",
+      "topic": "negation",
+      "workingTitle": "Noch nicht, nicht mehr, kein ... mehr",
+      "intent": "Schon mit noch nicht und noch mit nicht mehr oder kein ... mehr verneinen: Hast du schon gegessen? Nein, noch nicht. Ich rauche nicht mehr. Wir haben keine Milch mehr."
+    },
+    {
+      "id": "de-two-way-prepositions",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "Wechselpräpositionen: wo oder wohin?",
+      "intent": "Die neun Wechselpräpositionen mit Dativ auf die Frage wo und mit Akkusativ auf die Frage wohin verwenden, auch ins und ans: Ich gehe ins Kino. Ich bin im Kino."
+    },
+    {
+      "id": "de-reading-flat-ads",
+      "kind": "reading",
+      "theme": "house_and_home",
+      "workingTitle": "Wohnungsanzeigen lesen",
+      "intent": "Wohnungsanzeigen mit Abkürzungen entschlüsseln (2 ZKB, 60 qm, KM, NK, EBK, ab sofort) und Wohnungen nach Miete, Größe und Lage vergleichen."
+    },
+    {
+      "id": "de-position-verbs",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Stellen und stehen, legen und liegen",
+      "intent": "Stellen, legen, setzen und hängen mit Akkusativ für die Bewegung und stehen, liegen, sitzen und hängen mit Dativ für den Ort verwenden: Ich lege das Buch auf den Tisch. Es liegt auf dem Tisch."
+    },
+    {
+      "id": "de-moving-house",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Der Umzug",
+      "intent": "Etwa zwölf Wörter für einen Umzug nennen, viele davon trennbare Verben: der Umzug, umziehen, einziehen, ausziehen, der Karton, die Kiste, der Transporter, tragen, aufbauen, abbauen."
+    },
+    {
+      "id": "de-hin-and-her",
+      "kind": "grammar",
+      "topic": "adverbs",
+      "workingTitle": "Hin und her: Richtungsadverbien",
+      "intent": "Mit hin eine Richtung vom Sprecher weg und mit her zum Sprecher ausdrücken und hinein, heraus und die kurzen Formen rein und raus verstehen: Komm her! Wo gehst du hin? Kommt rein!"
+    },
+    {
+      "id": "de-garden-and-balcony",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Garten und Balkon",
+      "intent": "Etwa zwölf Wörter für Garten und Balkon mit Artikel und Plural nennen: der Garten, die Pflanze, die Blume, der Baum (die Bäume), die Wiese, der Rasen, der Blumentopf, die Erde, gießen."
+    },
+    {
+      "id": "de-indefinite-and-possessive-pronouns",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Pronomen statt Nomen: einer, keiner, meiner",
+      "intent": "Ein Nomen mit einer, keiner oder meiner (neutral eins, keins, meins) ersetzen und welche im Plural verwenden: Hast du einen Stift? Ich habe keinen. Das ist meins."
+    },
+    {
+      "id": "de-asking-questions-at-a-flat-viewing",
+      "kind": "functions",
+      "theme": "house_and_home",
+      "workingTitle": "Bei einer Wohnungsbesichtigung nachfragen",
+      "intent": "Bei einer Wohnungsbesichtigung nach Miete, Nebenkosten und Einzug fragen: Ist die Wohnung noch frei? Wie hoch sind die Nebenkosten? Ab wann kann man einziehen? Ich möchte die Wohnung gern nehmen."
+    },
+    {
+      "id": "de-cooking",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Kochen und Backen",
+      "intent": "Etwa zwölf Wörter zum Kochen nennen: das Rezept, die Zutat, die Pfanne, der Deckel, der Backofen, grillen und unregelmäßige Verben wie braten (gebraten), backen (gebacken), schneiden (geschnitten)."
+    },
+    {
+      "id": "de-meat-fish-and-dairy",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Fleisch, Fisch, Milchprodukte",
+      "intent": "Etwa zwölf Sorten Fleisch, Fisch und Milchprodukte nennen: das Rindfleisch, das Hackfleisch, der Schinken, der Lachs, die Sahne (österr. das Obers, schweiz. der Rahm), der Quark (österr. der Topfen)."
+    },
+    {
+      "id": "de-reading-a-simple-recipe",
+      "kind": "reading",
+      "theme": "food_and_drink",
+      "workingTitle": "Ein einfaches Rezept lesen",
+      "intent": "Ein kurzes Rezept lesen, die Zutaten mit Mengen finden und die Schritte in der richtigen Reihenfolge verstehen (Zwiebeln schneiden, alles 10 Minuten kochen, mit Salz würzen)."
+    },
+    {
+      "id": "de-dative-personal-pronouns",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Personalpronomen im Dativ",
+      "intent": "Alle Dativpronomen verwenden und ihm von ihn und ihr (Dativ von sie) von ihr (Plural von du) unterscheiden: Ich helfe ihm. Wie geht es ihr? Das gehört uns."
+    },
+    {
+      "id": "de-dative-verbs-gefallen",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Dativverben: gefallen, schmecken, passen",
+      "intent": "Verben wie gefallen, schmecken, passen und stehen verwenden, bei denen die Sache Subjekt ist und die Person im Dativ steht: Der Film gefällt mir. Die Jacke steht dir gut."
+    },
+    {
+      "id": "de-tastes",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Geschmack und Gewürze",
+      "intent": "Etwa zwölf Wörter für Geschmack und Gewürze nennen: süß, salzig, sauer, scharf, bitter, lecker, frisch, fettig, das Gewürz, der Pfeffer, der Senf, der Essig."
+    },
+    {
+      "id": "de-adjective-endings-definite",
+      "kind": "grammar",
+      "topic": "adjectives",
+      "workingTitle": "Adjektivendungen nach der, die, das",
+      "intent": "Adjektive nach dem bestimmten Artikel und nach dieser im Nominativ und Akkusativ deklinieren, mit -e im Singular und -en im maskulinen Akkusativ: der alte Tisch, den alten Tisch."
+    },
+    {
+      "id": "de-adjective-endings-indefinite",
+      "kind": "grammar",
+      "topic": "adjectives",
+      "workingTitle": "Adjektivendungen nach ein, kein, mein",
+      "intent": "Adjektive nach ein, kein und Possessivartikel im Nominativ und Akkusativ deklinieren, mit -er und -es als Genuszeichen: ein alter Tisch, ein neues Bett, keine kleine Lampe."
+    },
+    {
+      "id": "de-ordering-and-complaining-in-a-restaurant",
+      "kind": "functions",
+      "theme": "food_and_drink",
+      "workingTitle": "Im Restaurant bestellen und sich beschweren",
+      "intent": "Im Restaurant nach Empfehlungen fragen, bestellen und höflich reklamieren: Was können Sie empfehlen? Ich nehme das Schnitzel mit Salat. Entschuldigung, die Suppe ist leider kalt."
+    },
+    {
+      "id": "de-reading-cafe-reviews",
+      "kind": "reading",
+      "theme": "food_and_drink",
+      "workingTitle": "Online-Bewertungen eines Cafés lesen",
+      "intent": "Kurze Bewertungen eines Cafés mit Sternen lesen, Lob und Kritik finden (leckerer Kuchen, aber langsamer Service, etwas teuer) und entscheiden, ob man hingeht."
+    },
+    {
+      "id": "de-trades-and-workplaces",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Berufe und Arbeitsorte",
+      "intent": "Etwa zwölf weitere Berufe mit weiblicher Form und Arbeitsorte nennen: der Mechaniker, die Mechanikerin, der Friseur, die Friseurin, der Krankenpfleger, die Krankenpflegerin, die Baustelle, die Fabrik."
+    },
+    {
+      "id": "de-nouns-for-people-er",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Nomen auf -er und -erin: der Maler, die Malerin",
+      "intent": "Etwa zwölf Nomen für Personen aus Verben bilden und verstehen, mit -er maskulin und -erin feminin: malen, der Maler, die Malerin; fahren, der Fahrer; besuchen, der Besucher; backen, der Bäcker."
+    },
+    {
+      "id": "de-weil-clauses",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Nebensätze mit weil",
+      "intent": "Auf die Frage warum mit weil antworten, mit Komma und Verb am Ende, und weil von denn unterscheiden: Warum kommst du nicht? Ich komme nicht, weil ich krank bin. Ich komme nicht, denn ich bin krank."
+    },
+    {
+      "id": "de-working-hours",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Arbeitszeit",
+      "intent": "Etwa zwölf Wörter rund um die Arbeitszeit nennen: die Arbeitszeit, der Arbeitstag, die Mittagspause, der Feierabend, frei haben, der Urlaubstag, die Teilzeit, die Vollzeit, der Minijob."
+    },
+    {
+      "id": "de-dass-clauses",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Nebensätze mit dass",
+      "intent": "Nach sagen, glauben, finden und hoffen einen Nebensatz mit dass und dem Verb am Ende bilden und dass von das unterscheiden: Ich hoffe, dass du kommst. Es ist schön, dass du da bist."
+    },
+    {
+      "id": "de-verb-final-multiple-verb-parts",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Nebensätze mit trennbaren Verben, Modalverben und Perfekt",
+      "intent": "Im Nebensatz trennbare Verben zusammenschreiben und Modalverb oder haben und sein ganz ans Ende stellen: weil er früh aufsteht, dass ich nicht kommen kann, weil sie gegangen ist."
+    },
+    {
+      "id": "de-reading-job-ads-for-mini-jobs",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Stellenanzeigen für Minijobs lesen",
+      "intent": "Kurze Stellenanzeigen für Aushilfen und Minijobs lesen und Tätigkeit, Arbeitszeit, Anforderungen und Kontakt finden (Teilzeit, m/w/d, ab sofort, gute Deutschkenntnisse)."
+    },
+    {
+      "id": "de-wer-wen-wem",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Wer, wen, wem?",
+      "intent": "Mit wer nach dem Subjekt, mit wen nach dem Akkusativobjekt und mit wem nach dem Dativobjekt fragen: Wer kommt? Wen besuchst du? Wem gehört die Tasche?"
+    },
+    {
+      "id": "de-appointments",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Termine und Verabredungen",
+      "intent": "Etwa zwölf Wörter für Termine und Verabredungen nennen: der Termin, die Verabredung, der Kalender, vereinbaren, verschieben, absagen, zusagen, pünktlich, rechtzeitig, zu spät."
+    },
+    {
+      "id": "de-finding-a-time-to-meet",
+      "kind": "functions",
+      "theme": "daily_life",
+      "workingTitle": "Einen gemeinsamen Termin finden",
+      "intent": "Mit Blick in den Kalender einen Termin finden, der allen passt: Wann passt es dir? Dienstag geht bei mir leider nicht. Und Donnerstag? Ja, aber erst ab sechs. Gut, dann lass uns Donnerstag nehmen."
+    },
+    {
+      "id": "de-reading-a-reply-to-a-job-application",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Eine Antwort auf eine Bewerbung lesen",
+      "intent": "Die Antwort einer Firma auf eine Bewerbung lesen und an festen Formeln Einladung und Absage unterscheiden (Wir laden Sie herzlich ein. Leider haben wir uns anders entschieden)."
+    },
+    {
+      "id": "de-school-subjects-and-grades",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Schulfächer und Noten",
+      "intent": "Etwa zwölf Schulfächer und Wörter für Noten nennen: die Mathematik (kurz Mathe), die Biologie, die Geschichte, die Kunst, das Fach, die Note, das Zeugnis; die Eins ist in Deutschland die beste Note."
+    },
+    {
+      "id": "de-wenn-clauses",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Nebensätze mit wenn",
+      "intent": "Bedingungen und wiederholte Zeitpunkte mit wenn und dem Verb am Ende ausdrücken und wenn von der Frage wann unterscheiden: Ich fahre mit dem Bus, wenn es regnet."
+    },
+    {
+      "id": "de-school-life",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Schulalltag",
+      "intent": "Etwa zwölf Wörter für den Alltag in der Schule nennen: der Schüler, die Schülerin, die Klasse, der Stundenplan, die Pause, die Hausaufgaben (Pl.), die Klassenfahrt, der Elternabend, die Ferien (Pl.)."
+    },
+    {
+      "id": "de-reading-a-letter-from-school",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Einen Elternbrief der Schule lesen",
+      "intent": "Einen Brief der Schule an die Eltern lesen (Klassenfahrt, Wandertag) und finden: Datum, Kosten, was man unterschreibt und bis wann man den Abschnitt zurückgibt."
+    },
+    {
+      "id": "de-subordinate-clause-first",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Nebensatz vor dem Hauptsatz",
+      "intent": "Einen Nebensatz an den Anfang stellen und das Verb des Hauptsatzes direkt nach dem Komma folgen lassen: Wenn ich Zeit habe, komme ich. Weil es kalt ist, bleiben wir zu Hause."
+    },
+    {
+      "id": "de-talking-to-the-nursery-teacher",
+      "kind": "functions",
+      "theme": "education",
+      "workingTitle": "Mit der Erzieherin sprechen",
+      "intent": "In der Kita kurze Absprachen mit der Erzieherin treffen: Lea hat heute einen Arzttermin, ich hole sie schon um zwei ab. Ihre Oma holt sie morgen ab. Wann ist der nächste Elternabend?"
+    },
+    {
+      "id": "de-german-course",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Deutschkurs und Prüfung",
+      "intent": "Etwa zwölf Wörter für Kurs und Prüfung nennen: der Kursleiter, die Kursleiterin, der Teilnehmer, das Niveau, die Anmeldung, üben, wiederholen, die Prüfung, bestehen, das Zertifikat."
+    },
+    {
+      "id": "de-connectors-deshalb-sonst-ausserdem",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Deshalb, sonst, außerdem",
+      "intent": "Mit deshalb eine Folge, mit sonst eine Warnung und mit außerdem eine Ergänzung anschließen, mit dem Verb auf Position 2: Es regnet, deshalb bleibe ich zu Hause."
+    },
+    {
+      "id": "de-reading-an-adult-education-programme",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Das Kursprogramm der Volkshochschule lesen",
+      "intent": "Kursangebote der Volkshochschule lesen und einen Kurs nach Niveau, Wochentag, Gebühr und Anmeldeschluss auswählen (Spanisch für Anfänger, 10 Termine, 89 Euro, Anmeldung bis 15. September)."
+    },
+    {
+      "id": "de-team-sports",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Mannschaft und Training",
+      "intent": "Etwa zwölf Wörter für Mannschaftssport nennen: die Mannschaft, das Training, trainieren, der Trainer, die Trainerin, das Spiel, der Spieler, die Spielerin, das Tor, gewinnen, verlieren."
+    },
+    {
+      "id": "de-reflexive-verbs",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Reflexive Verben im Akkusativ",
+      "intent": "Reflexive Verben mit mich, dich, sich, uns und euch verwenden, auch Verben wie waschen, die es mit und ohne sich gibt, und uns, euch, sich für gegenseitige Handlungen: Wir treffen uns um acht."
+    },
+    {
+      "id": "de-feelings",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Gefühle",
+      "intent": "Etwa zwölf Gefühle als Nomen, Adjektiv oder Verb nennen: die Freude, die Angst, sich freuen, sich ärgern, glücklich, zufrieden, wütend, nervös, überrascht, die Lust."
+    },
+    {
+      "id": "de-verbs-with-prepositions",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "Verben mit Präpositionen",
+      "intent": "Verben mit fester Präposition wie warten auf, sprechen über und sich freuen auf oder über als Einheit lernen und verwenden: Ich warte auf den Bus. Wir freuen uns auf den Urlaub."
+    },
+    {
+      "id": "de-wor-and-dar-words",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Wo(r)- und da(r)-: worauf, darauf",
+      "intent": "Mit wo(r)- nach Sachen fragen und mit da(r)- auf sie verweisen, -r- vor Vokal, bei Personen aber Präposition und Pronomen: Worauf wartest du? Auf den Bus. Darauf warte ich auch. Auf wen? Auf ihn."
+    },
+    {
+      "id": "de-outdoor-activities",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Aktivitäten in der Natur",
+      "intent": "Etwa zwölf Aktivitäten in der Natur und Dinge dafür nennen: wandern, die Wanderung, klettern, segeln, angeln, campen, Ski fahren, das Zelt, der Rucksack."
+    },
+    {
+      "id": "de-dative-with-adjectives",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "Dativ mit Adjektiven: mir ist kalt",
+      "intent": "Mit Dativ und Adjektiv sagen, wie es jemandem geht oder wie man etwas findet: Mir ist kalt. Ist dir schlecht? Die Musik ist mir zu laut. Das ist mir egal."
+    },
+    {
+      "id": "de-music",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Musik und Instrumente",
+      "intent": "Etwa zwölf Wörter für Musik nennen: das Instrument, die Gitarre, das Klavier, die Geige, das Schlagzeug, die Band, der Chor, das Lied, singen, der Sänger, die Sängerin."
+    },
+    {
+      "id": "de-saying-what-you-think-and-why",
+      "kind": "functions",
+      "theme": "free_time",
+      "workingTitle": "Sagen, wie man etwas findet",
+      "intent": "Filme, Musik oder Bücher bewerten und kurz begründen: Ich finde den Film super, weil er so lustig ist. Das Buch gefällt mir nicht so. Das Ende war mir zu traurig. Und dir?"
+    },
+    {
+      "id": "de-reading-a-festival-programme",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Das Programm eines Stadtfests lesen",
+      "intent": "Das Programm eines Stadtfests über drei Tage lesen und eine Veranstaltung nach Tag, Uhrzeit, Alter und Preis auswählen (Kinderprogramm ab 4 Jahren, Abendkonzert, Eintritt 8 Euro)."
+    },
+    {
+      "id": "de-personal-care",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Körperpflege",
+      "intent": "Etwa zwölf Dinge und Tätigkeiten der Körperpflege nennen: die Zahnbürste, die Zahnpasta, die Seife, das Handtuch, der Kamm, sich die Zähne putzen, sich kämmen, sich rasieren, sich schminken."
+    },
+    {
+      "id": "de-at-the-doctor",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Der Arztbesuch",
+      "intent": "Etwa zwölf Wörter für den Arztbesuch nennen: die Praxis, der Hausarzt, die Hausärztin, die Sprechstunde, das Wartezimmer, die Versichertenkarte, die Krankenkasse, untersuchen, das Rezept."
+    },
+    {
+      "id": "de-sollen-instructions",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Das Modalverb sollen",
+      "intent": "Mit sollen die Anweisung einer anderen Person weitergeben und mit Soll ich ...? Hilfe anbieten: Der Arzt sagt, ich soll viel trinken. Soll ich das Fenster aufmachen?"
+    },
+    {
+      "id": "de-colds-and-flu",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Erkältung und Grippe",
+      "intent": "Etwa zwölf Wörter für Erkältung und leichte Krankheiten nennen: die Erkältung, die Grippe, der Husten, der Schnupfen, die Halsschmerzen (Pl.), die Bauchschmerzen (Pl.), der Durchfall, husten, niesen."
+    },
+    {
+      "id": "de-calling-in-sick",
+      "kind": "functions",
+      "theme": "health",
+      "workingTitle": "Sich krankmelden",
+      "intent": "Bei der Arbeit oder in der Schule anrufen und sich oder sein Kind krankmelden: Hier ist Nowak. Ich bin krank und kann heute nicht kommen. Mein Sohn hat Fieber und bleibt zu Hause."
+    },
+    {
+      "id": "de-konjunktiv-ii-forms",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Konjunktiv II: hätte, wäre, könnte, würde",
+      "intent": "Die Formen hätte, wäre, könnte und würde bilden und für höfliche Bitten und Fragen verwenden: Könnten Sie mir helfen? Wäre das möglich? Würden Sie das Fenster schließen?"
+    },
+    {
+      "id": "de-advice-sollte",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Sollte und könnte: Rat und Vorschlag",
+      "intent": "Mit sollte einen Rat und mit könnte einen Vorschlag geben und den Rat von einer Pflicht mit müssen unterscheiden: Du solltest früh ins Bett gehen. Wir könnten am Sonntag wandern. Sie müssen zum Arzt."
+    },
+    {
+      "id": "de-emergencies",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Notfall und Polizei",
+      "intent": "Etwa zwölf Wörter für Notfälle nennen: der Notfall, der Notruf, die Polizei, der Polizist, die Polizistin, die Feuerwehr, der Krankenwagen, der Unfall, das Feuer, der Brand, die Hilfe."
+    },
+    {
+      "id": "de-medicines",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Medikamente",
+      "intent": "Etwa zwölf Wörter rund um Medikamente nennen: das Medikament, die Salbe, die Tropfen (Pl.), das Pflaster, der Hustensaft, die Packungsbeilage (auch der Beipackzettel), einnehmen, rezeptfrei."
+    },
+    {
+      "id": "de-reading-medicine-dosage",
+      "kind": "reading",
+      "theme": "health",
+      "workingTitle": "Die Dosierung auf dem Beipackzettel lesen",
+      "intent": "Den Abschnitt zur Dosierung auf einem Beipackzettel lesen und finden, wie viel man wann nimmt und für wen das Mittel nicht ist (dreimal täglich, nach dem Essen, nicht für Kinder unter 6 Jahren)."
+    },
+    {
+      "id": "de-asking-for-advice-at-the-pharmacy",
+      "kind": "functions",
+      "theme": "health",
+      "workingTitle": "In der Apotheke um Rat fragen",
+      "intent": "In der Apotheke ein Mittel gegen Beschwerden verlangen und nach der Einnahme fragen: Ich hätte gern etwas gegen Husten. Brauche ich ein Rezept? Wie oft soll ich die Tabletten nehmen?"
+    },
+    {
+      "id": "de-accessories-and-winter-clothes",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Accessoires und Winterkleidung",
+      "intent": "Etwa zwölf Accessoires und Wintersachen mit Artikel und Plural nennen: der Mantel, der Schal, die Mütze, der Handschuh (die Handschuhe), der Stiefel (die Stiefel), der Gürtel, die Sonnenbrille."
+    },
+    {
+      "id": "de-adjective-endings-dative-plural",
+      "kind": "grammar",
+      "topic": "adjectives",
+      "workingTitle": "Adjektivendungen im Dativ und Plural",
+      "intent": "Adjektive im Dativ nach jedem Artikel und im Plural nach Artikel mit -en verwenden: mit dem neuen Auto, in einer kleinen Stadt, die alten Häuser, keine neuen Schuhe."
+    },
+    {
+      "id": "de-sizes-and-materials",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Größe, Stoff, Muster",
+      "intent": "Etwa zwölf Wörter für Größe, Stoff und Muster von Kleidung nennen: die Größe, eng, weit, die Baumwolle, die Wolle, das Leder, die Seide, kariert, gestreift, gepunktet, einfarbig."
+    },
+    {
+      "id": "de-welcher-was-fuer-ein",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Welcher oder was für ein?",
+      "intent": "Mit welcher aus einer bekannten Auswahl fragen, mit Endungen wie dieser, und mit was für ein nach der Art: Welchen Pullover nimmst du? Was für ein Auto hast du?"
+    },
+    {
+      "id": "de-reading-a-department-store-directory",
+      "kind": "reading",
+      "theme": "shopping",
+      "workingTitle": "Die Informationstafel im Kaufhaus lesen",
+      "intent": "Die Informationstafel eines Kaufhauses lesen und finden, welche Abteilung in welchem Stockwerk ist (Untergeschoss, Erdgeschoss, 1. Stock) und wo Kundenservice, Kasse und Toiletten sind."
+    },
+    {
+      "id": "de-demonstrative-pronouns",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Demonstrativpronomen: der, die, das",
+      "intent": "Der, die und das als betonte Pronomen statt eines Nomens verwenden, oft auf Position 1: Wie findest du den Rock? Den finde ich toll. Die Schuhe? Die sind zu klein."
+    },
+    {
+      "id": "de-comparative-with-als",
+      "kind": "grammar",
+      "topic": "comparison_and_quantity",
+      "workingTitle": "Der Komparativ mit als",
+      "intent": "Den Komparativ mit -er und als bilden, mit Umlaut bei vielen kurzen Adjektiven und den Sonderformen besser, mehr, lieber und höher: Berlin ist größer als Bonn."
+    },
+    {
+      "id": "de-trying-on-and-exchanging-clothes",
+      "kind": "functions",
+      "theme": "shopping",
+      "workingTitle": "Kleidung anprobieren und umtauschen",
+      "intent": "Kleidung anprobieren, nach einer anderen Größe fragen und etwas umtauschen: Kann ich die Jacke anprobieren? Haben Sie die eine Nummer größer? Ich möchte die Hose umtauschen."
+    },
+    {
+      "id": "de-appearance-in-detail",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Haare, Gesicht und Figur",
+      "intent": "Das Aussehen einer Person mit etwa zwölf weiteren Wörtern genauer beschreiben: das Gesicht, die Frisur, lockig, glatt, der Bart, die Glatze, die Figur, dick, dünn, hübsch, sportlich."
+    },
+    {
+      "id": "de-nicht-sondern",
+      "kind": "grammar",
+      "topic": "negation",
+      "workingTitle": "Nicht ..., sondern",
+      "intent": "Mit nicht oder kein und sondern eine Aussage korrigieren und sondern von aber unterscheiden: Das ist nicht mein Bruder, sondern mein Vater. Ich trinke keinen Tee, sondern Kaffee."
+    },
+    {
+      "id": "de-character-adjectives",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Adjektive für den Charakter",
+      "intent": "Menschen mit etwa zwölf Adjektiven charakterisieren: nett, freundlich, lustig, sympathisch, fleißig, faul, ruhig, ernst, langweilig, interessant."
+    },
+    {
+      "id": "de-modal-particles-mal-doch-denn",
+      "kind": "grammar",
+      "topic": "information_structure_and_pragmatics",
+      "workingTitle": "Modalpartikeln: mal, doch, denn",
+      "intent": "Bitten mit mal und doch freundlicher machen und in Fragen mit denn Interesse oder Überraschung zeigen: Kannst du mal kommen? Setz dich doch! Was machst du denn hier?"
+    },
+    {
+      "id": "de-holidays-of-the-year",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Feste und Feiertage",
+      "intent": "Feiertage und Feste nennen: Weihnachten, Ostern, Pfingsten, Silvester, Neujahr (meist ohne Artikel), der Karneval (auch der Fasching, die Fastnacht), der Feiertag, der Adventskranz, das Osterei."
+    },
+    {
+      "id": "de-dative-and-accusative-objects",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Verben mit Dativ und Akkusativ",
+      "intent": "Verben wie geben, schenken, zeigen und bringen mit der Person im Dativ und der Sache im Akkusativ verwenden, Dativ vor Akkusativ: Ich schenke meiner Mutter Blumen."
+    },
+    {
+      "id": "de-offering-and-accepting-du",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Das Du anbieten und annehmen",
+      "intent": "Fragen, ob man sich duzt, das Du anbieten und freundlich darauf reagieren: Duzt man sich hier im Verein? Wollen wir uns duzen? Gern, ich bin Sara. Sag einfach du."
+    },
+    {
+      "id": "de-my-neighbourhood",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Mein Stadtviertel",
+      "intent": "Etwa zwölf Wörter für das eigene Viertel nennen: das Viertel, der Stadtteil, das Zentrum, die Innenstadt, die Fußgängerzone, der Marktplatz, die Brücke, die Umgebung, in der Nähe."
+    },
+    {
+      "id": "de-reading-a-local-news-item",
+      "kind": "reading",
+      "theme": "places",
+      "workingTitle": "Eine kurze Lokalnachricht lesen",
+      "intent": "Eine kurze Meldung aus der Lokalzeitung lesen (neuer Spielplatz, Eröffnung einer Bibliothek) und finden, was passiert ist oder passieren wird, wo und wann."
+    },
+    {
+      "id": "de-route-prepositions",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "Präpositionen für den Weg: durch, entlang, gegenüber",
+      "intent": "Einen Weg mit durch, um ... herum, an ... vorbei, entlang und gegenüber beschreiben: durch den Park, um den See herum, am Rathaus vorbei, die Straße entlang, gegenüber der Post."
+    },
+    {
+      "id": "de-bus-and-train",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Fahrten mit Bus und Bahn",
+      "intent": "Etwa zwölf Wörter für Fahrten mit Bus und Bahn nennen: die Haltestelle, einsteigen, aussteigen, die Linie, die Endstation, die Tageskarte, der Fahrgast, die Durchsage, die Verspätung."
+    },
+    {
+      "id": "de-word-order-time-manner-place",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Zeit, Art, Ort: die Reihenfolge im Satz",
+      "intent": "Mehrere Angaben im Mittelfeld meist in der Reihenfolge Zeit, Art und Weise, Ort anordnen: Ich fahre morgen mit dem Zug nach Hamburg. Wir essen heute zusammen im Garten."
+    },
+    {
+      "id": "de-reading-a-public-transport-fare-chart",
+      "kind": "reading",
+      "theme": "places",
+      "workingTitle": "Den Tarifplan für Bus und Bahn lesen",
+      "intent": "Den Tarifplan und das Menü am Fahrkartenautomaten lesen und die passende Fahrkarte für eine Fahrt in der Stadt wählen (Kurzstrecke, Einzelfahrt, Tageskarte, Tarifzone A, vor Fahrtantritt entwerten)."
+    },
+    {
+      "id": "de-car-and-road",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Auto und Straße",
+      "intent": "Etwa zwölf Wörter rund ums Autofahren nennen: der Führerschein, die Tankstelle, tanken, das Benzin, parken (schweiz. parkieren), der Parkplatz, die Garage, die Autobahn, die Landstraße, der Stau."
+    },
+    {
+      "id": "de-explaining-the-way-by-public-transport",
+      "kind": "functions",
+      "theme": "places",
+      "workingTitle": "Mit Bus und Bahn den Weg erklären",
+      "intent": "Jemandem erklären, wie man mit Bus und Bahn an einen Ort kommt: Nimm die U2 bis zum Marktplatz. Dort steigst du in die Linie 5 um. Dann sind es noch fünf Minuten zu Fuß."
+    },
+    {
+      "id": "de-in-the-supermarket",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Der Einkauf im Supermarkt",
+      "intent": "Etwa zwölf Wörter für den Einkauf im Supermarkt nennen: der Einkaufswagen, der Korb, die Kasse, die Schlange, der Kassenbon, die Tüte, das Sonderangebot, die Öffnungszeiten (Pl.), geöffnet."
+    },
+    {
+      "id": "de-quantities-without-preposition",
+      "kind": "grammar",
+      "topic": "comparison_and_quantity",
+      "workingTitle": "Mengenangaben: eine Flasche Wasser",
+      "intent": "Maß und Menge ohne Präposition vor das Nomen stellen und Kilo, Gramm, Liter und Stück im Plural ohne Endung lassen: zwei Kilo Äpfel, eine Flasche Saft, drei Stück Kuchen."
+    },
+    {
+      "id": "de-household-and-drugstore",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Haushalt und Drogerie",
+      "intent": "Etwa zwölf Dinge aus Drogerie und Haushaltsabteilung nennen: die Drogerie, das Waschmittel, das Spülmittel, das Toilettenpapier, die Küchenrolle, die Glühbirne, die Batterie, die Sonnencreme."
+    },
+    {
+      "id": "de-viel-viele-wenig",
+      "kind": "grammar",
+      "topic": "comparison_and_quantity",
+      "workingTitle": "Viel, viele, wenig, wenige",
+      "intent": "Viel und wenig ohne Endung vor Nomen im Singular und viele und wenige vor Nomen im Plural verwenden: viel Zeit, wenig Geld, viele Leute, wenige Fehler. Beim Verb ohne Endung: Er arbeitet viel."
+    },
+    {
+      "id": "de-jeder-alle-einige-manche",
+      "kind": "grammar",
+      "topic": "comparison_and_quantity",
+      "workingTitle": "Jeder, alle, einige, manche",
+      "intent": "Jeder mit dem Singular und alle, einige und manche mit dem Plural verwenden, mit den Endungen von dieser: jeder Schüler, alle Kinder, einige Freunde, manche Leute."
+    },
+    {
+      "id": "de-money-in-daily-life",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Geld im Alltag",
+      "intent": "Etwa zwölf Wörter für Geld im Alltag nennen: das Bargeld, das Kleingeld, die Münze, der Schein, das Taschengeld, verdienen, ausgeben, sparen, leihen, wechseln."
+    },
+    {
+      "id": "de-time-expressions-accusative",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Zeitangaben im Akkusativ",
+      "intent": "Zeitangaben ohne Präposition in den Akkusativ setzen: jeden Montag, nächsten Monat, letzte Woche, dieses Jahr, den ganzen Tag."
+    },
+    {
+      "id": "de-at-the-bank",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Bankgeschäfte",
+      "intent": "Etwa zwölf Wörter für Bankgeschäfte nennen: das Konto, die Bankkarte, die Kreditkarte, die PIN, der Geldautomat, der Schalter, abheben, einzahlen, überweisen, die Überweisung."
+    },
+    {
+      "id": "de-reading-a-bill-and-bank-statement",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Rechnung und Kontoauszug lesen",
+      "intent": "Eine Rechnung und einen Kontoauszug lesen und finden, wie viel man an wen bis wann zahlt und ob das Geld abgebucht ist (Rechnungsbetrag, fällig am, IBAN, Verwendungszweck, Lastschrift)."
+    },
+    {
+      "id": "de-clouds-and-temperatures",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "Wolken, Nebel und Gewitter",
+      "intent": "Das Wetter mit etwa zwölf weiteren Wörtern genauer beschreiben: die Wolke, bewölkt, der Nebel, neblig, das Gewitter, regnerisch, windig, die Temperatur, der Grad, minus, plus."
+    },
+    {
+      "id": "de-superlative-with-am",
+      "kind": "grammar",
+      "topic": "comparison_and_quantity",
+      "workingTitle": "Der Superlativ mit am",
+      "intent": "Den Superlativ mit am ...-sten bilden, mit -esten nach -t, -d, -s und -z, und am besten, am meisten und am liebsten verwenden: Im Januar ist es am kältesten."
+    },
+    {
+      "id": "de-chatting-about-weather-and-seasons",
+      "kind": "functions",
+      "theme": "weather",
+      "workingTitle": "Über Wetter und Jahreszeiten plaudern",
+      "intent": "Mit Nachbarn oder Kollegen über das Wetter plaudern und Jahreszeiten vergleichen: Heute ist es aber kalt! Bei euch ist es im Winter wärmer, oder? Am liebsten mag ich den Frühling."
+    },
+    {
+      "id": "de-verb-werden",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Das Verb werden",
+      "intent": "Werden mit du wirst und er wird konjugieren und mit Nomen oder Adjektiv eine Veränderung ausdrücken, im Perfekt mit sein: Sie wird Ärztin. Es wird kalt. Er ist müde geworden."
+    },
+    {
+      "id": "de-comparison-so-wie",
+      "kind": "grammar",
+      "topic": "comparison_and_quantity",
+      "workingTitle": "Vergleiche mit so ... wie",
+      "intent": "Gleichheit mit so ... wie und genauso ... wie und Unterschied mit nicht so ... wie ausdrücken: Tom ist so alt wie ich. Der Bus ist nicht so schnell wie der Zug."
+    },
+    {
+      "id": "de-landscapes",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Landschaften",
+      "intent": "Etwa zwölf Wörter für Landschaften mit Artikel nennen: die Landschaft, das Tal, der Fluss, die Insel, die Küste, das Ufer, das Gebirge, der Hügel, der Wasserfall, die Wüste."
+    },
+    {
+      "id": "de-german-speaking-countries",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "D-A-CH: Länder und Städte",
+      "intent": "Etwa zwölf Wörter für Regionen und Städte in Deutschland, Österreich und der Schweiz nennen: das Bundesland, der Kanton, die Hauptstadt, der Norden, der Süden, Bayern, Tirol, Wien, Zürich."
+    },
+    {
+      "id": "de-reading-a-newspaper-weather-report",
+      "kind": "reading",
+      "theme": "weather",
+      "workingTitle": "Den Wetterbericht in der Zeitung lesen",
+      "intent": "Den Wetterbericht in der Zeitung lesen und das Wetter für morgen in einer Region finden: Temperaturen, Regen, Wind und Aussichten (im Norden Schauer, im Süden bis 25 Grad)."
+    },
+    {
+      "id": "de-holiday-activities",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Aktivitäten im Urlaub",
+      "intent": "Etwa zwölf Wörter für Aktivitäten im Urlaub nennen: der Ausflug, die Sehenswürdigkeit, besichtigen, die Stadtführung, die Rundfahrt, baden, sich sonnen, sich erholen, das Souvenir, die Postkarte."
+    },
+    {
+      "id": "de-travel-destinations-wo-wohin",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "Reiseziele: ans Meer, in die Berge, auf die Insel",
+      "intent": "Bei Reisezielen an, in oder auf statt nach wählen, an für Meer und See, in für Berge und Länder mit Artikel, auf für Inseln: ans Meer, am Meer, in die Berge, auf der Insel, in die Schweiz."
+    },
+    {
+      "id": "de-accommodation",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Unterkunft",
+      "intent": "Etwa zwölf Wörter für Unterkünfte nennen: das Einzelzimmer, das Doppelzimmer, die Pension, die Ferienwohnung, die Jugendherberge, der Campingplatz, die Übernachtung, die Rezeption, reservieren."
+    },
+    {
+      "id": "de-where-from-aus-von",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "Woher? Aus oder von",
+      "intent": "Auf die Frage woher mit aus antworten, wo man in sagt, und mit von, wo man zu, an oder auf sagt: aus dem Kino, aus der Schweiz, vom Arzt, vom Strand."
+    },
+    {
+      "id": "de-reading-a-booking-confirmation",
+      "kind": "reading",
+      "theme": "travel",
+      "workingTitle": "Eine Buchungsbestätigung lesen",
+      "intent": "Die Bestätigung einer Hotel- oder Bahnbuchung lesen und Daten, Preis, Leistungen und Stornofrist prüfen (inkl. Frühstück, kostenlos stornierbar bis 18 Uhr am Vortag)."
+    },
+    {
+      "id": "de-at-the-airport",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Die Flugreise",
+      "intent": "Etwa zwölf Wörter für eine Flugreise nennen: der Flug, der Abflug, die Landung, landen, einchecken, die Bordkarte, das Handgepäck, die Sicherheitskontrolle, der Zoll."
+    },
+    {
+      "id": "de-asking-at-the-ticket-office",
+      "kind": "functions",
+      "theme": "travel",
+      "workingTitle": "Am Bahnschalter nach einer Verbindung fragen",
+      "intent": "Am Schalter nach einer Verbindung fragen und Umsteigen, Fahrzeit und Preis klären: Gibt es eine direkte Verbindung nach Bremen? Wo muss ich umsteigen? Wie lange dauert die Fahrt? Was kostet das?"
+    },
+    {
+      "id": "de-wishes-wuerde-gern",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Wünsche mit würde, hätte und wäre",
+      "intent": "Mit würde, gern oder lieber und dem Infinitiv am Ende Wünsche und Träume ausdrücken, auch mit hätte und wäre: Ich würde gern in Paris leben. Ich wäre jetzt lieber im Bett."
+    },
+    {
+      "id": "de-post-and-parcels",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Post und Pakete",
+      "intent": "Etwa zwölf Wörter für Briefe und Pakete nennen: der Brief, das Paket, das Päckchen, die Briefmarke, der Umschlag, der Absender, der Empfänger, schicken, abholen, das Porto."
+    },
+    {
+      "id": "de-passive-present",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Das Passiv im Präsens",
+      "intent": "Mit werden und Partizip II sagen, was gemacht wird, wenn die Handlung wichtiger ist als die Person: Die Straße wird repariert. Hier werden Fahrräder verkauft."
+    },
+    {
+      "id": "de-at-the-computer",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Die Arbeit am Computer",
+      "intent": "Etwa zwölf Wörter für die Arbeit am Computer nennen: der Bildschirm, die Tastatur, die Maus, der Drucker, die Datei, das Passwort, drucken, speichern, löschen, herunterladen."
+    },
+    {
+      "id": "de-lassen-with-infinitive",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Das Verb lassen mit Infinitiv",
+      "intent": "Mit lassen und dem Infinitiv am Satzende sagen, dass jemand anderes etwas für uns tut oder dass wir etwas erlauben: Ich lasse mein Auto reparieren. Sie lässt die Kinder spielen."
+    },
+    {
+      "id": "de-writing-a-semi-formal-email",
+      "kind": "functions",
+      "theme": "daily_life",
+      "workingTitle": "Eine halbformelle E-Mail schreiben",
+      "intent": "Der Kursleiterin per E-Mail auf eine Einladung antworten, danken, zusagen und etwas fragen: Liebe Frau Brandt, vielen Dank für die Einladung. Ich komme gern. Soll ich etwas mitbringen? Viele Grüße"
+    },
+    {
+      "id": "de-animals",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Tiere",
+      "intent": "Etwa fünfzehn Haus- und Bauernhoftiere mit Artikel und Plural nennen: das Haustier, der Hund, die Katze, das Kaninchen, der Vogel (die Vögel), das Pferd, die Kuh (die Kühe), das Schwein, das Huhn."
+    },
+    {
+      "id": "de-nicht-muessen-nicht-duerfen",
+      "kind": "grammar",
+      "topic": "negation",
+      "workingTitle": "Nicht müssen oder nicht dürfen?",
+      "intent": "Nicht müssen für fehlende Pflicht und nicht dürfen für ein Verbot unterscheiden: Du musst nicht kommen, aber du kannst. Hier darf man nicht rauchen."
+    },
+    {
+      "id": "de-reading-house-rules",
+      "kind": "reading",
+      "theme": "house_and_home",
+      "workingTitle": "Eine Hausordnung lesen",
+      "intent": "Die Hausordnung eines Mietshauses lesen und die wichtigsten Regeln finden: Ruhezeiten (22 bis 6 Uhr, sonntags), Treppenhausreinigung, Müll und was im Hof erlaubt ist."
+    },
+    {
+      "id": "de-jemand-niemand",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Jemand und niemand",
+      "intent": "Mit jemand und niemand über eine unbekannte oder keine Person sprechen, mit dem Verb in der er-Form: Ist jemand zu Hause? Niemand hat angerufen. Hat jemand meinen Schlüssel?"
+    },
+    {
+      "id": "de-asking-the-neighbours-for-a-favour",
+      "kind": "functions",
+      "theme": "house_and_home",
+      "workingTitle": "Die Nachbarn um einen Gefallen bitten",
+      "intent": "Nachbarn höflich um einen Gefallen bitten, selbst Hilfe anbieten und Bescheid geben: Könnten Sie mein Paket annehmen? Kann ich Ihnen helfen? Wir feiern am Samstag, es wird vielleicht etwas lauter."
+    },
+    {
+      "id": "de-tv-and-radio",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Fernsehen und Radio",
+      "intent": "Etwa zwölf Wörter für Fernsehen und Radio nennen: der Fernseher, das Radio, der Sender, die Sendung, das Programm, die Nachrichten (Pl.), die Serie, der Krimi, die Talkshow."
+    },
+    {
+      "id": "de-common-simple-past-forms",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Präteritum: häufige Formen erkennen",
+      "intent": "Häufige Präteritumformen in Geschichten und Berichten erkennen und dem Infinitiv zuordnen: es gab, sie kam, er ging, wir sagten, ich fand, sie stand."
+    },
+    {
+      "id": "de-books-and-magazines",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Bücher und Zeitschriften",
+      "intent": "Etwa zwölf Wörter rund ums Lesen nennen: der Roman, das Kapitel, das Märchen, der Comic, die Zeitschrift, die Zeitung, der Autor, die Autorin, die Bibliothek, ausleihen."
+    },
+    {
+      "id": "de-reading-a-short-biography",
+      "kind": "reading",
+      "theme": "personal_identification",
+      "workingTitle": "Eine Kurzbiografie lesen",
+      "intent": "Die kurze Biografie einer bekannten Person lesen und die wichtigsten Lebensstationen mit Jahreszahlen finden (wurde 1920 in Hamburg geboren, studierte in Wien, heiratete, starb 1995)."
+    },
+    {
+      "id": "de-wissen-kennen",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Wissen oder kennen?",
+      "intent": "Wissen für Fakten und vor Nebensätzen und kennen für Personen, Orte und Dinge verwenden, mit ich weiß und er weiß: Ich kenne Anna. Ich weiß, dass sie in Bonn wohnt."
+    },
+    {
+      "id": "de-indirect-questions-ob",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Indirekte Fragen mit ob",
+      "intent": "Eine Ja-Nein-Frage als Nebensatz mit ob und dem Verb am Ende wiedergeben und ob von wenn unterscheiden: Ich weiß nicht, ob er kommt. Weißt du, ob der Laden offen ist?"
+    },
+    {
+      "id": "de-registering-your-address",
+      "kind": "functions",
+      "theme": "services",
+      "workingTitle": "Sich beim Bürgeramt anmelden",
+      "intent": "Sich nach dem Umzug beim Bürgeramt anmelden und nach Unterlagen fragen: Ich möchte meinen Wohnsitz anmelden. Welche Unterlagen brauche ich? Wissen Sie, ob ich einen Termin brauche?"
+    },
+    {
+      "id": "de-indirect-w-questions",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Indirekte W-Fragen",
+      "intent": "W-Fragen als Nebensatz mit dem Fragewort am Anfang und dem Verb am Ende bilden, besonders für höfliche Fragen: Wissen Sie, wo der Bahnhof ist? Ich weiß nicht, wann er kommt."
+    },
+    {
+      "id": "de-reading-an-appointment-letter-from-an-office",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Eine Einladung vom Amt lesen",
+      "intent": "Einen Brief vom Bürgeramt oder Jobcenter lesen, der zu einem Termin einlädt, und Datum, Uhrzeit, Zimmer und mitzubringende Unterlagen finden (Personalausweis, Meldebescheinigung)."
+    },
+    {
+      "id": "de-languages-and-words",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Sprachen und Wörter",
+      "intent": "Etwa zwölf Wörter zum Sprechen über Sprachen nennen: die Muttersprache, die Fremdsprache, das Wort (die Wörter), der Satz, die Bedeutung, die Aussprache, übersetzen, die Übersetzung, erklären."
+    },
+    {
+      "id": "de-relative-clauses-nominative-accusative",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Relativsätze im Nominativ und Akkusativ",
+      "intent": "Relativsätze mit der, die, das und im Akkusativ den bilden, mit dem Genus des Nomens und dem Verb am Ende: der Mann, der hier wohnt, der Film, den ich mag."
+    },
+    {
+      "id": "de-compound-nouns",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Zusammengesetzte Nomen im Alltag",
+      "intent": "Zusammengesetzte Nomen aus bekannten Wörtern verstehen und bilden, der Artikel kommt vom letzten Teil: das Kinderbett, die Haustür, der Apfelsaft, die Handynummer, der Busfahrer."
+    },
+    {
+      "id": "de-describing-a-missing-word",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Ein fehlendes Wort umschreiben",
+      "intent": "Sagen, dass einem ein Wort fehlt, und es umschreiben: Wie heißt das noch mal? Mir fällt das Wort nicht ein. Das ist so ein Ding für die Küche. Damit macht man Dosen auf."
+    },
+    {
+      "id": "de-zu-infinitive-after-nouns-and-adjectives",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Infinitiv mit zu nach Nomen und Adjektiven",
+      "intent": "Nach Lust haben, Zeit haben und es ist mit Adjektiv einen Infinitiv mit zu am Ende bilden: Ich habe keine Lust zu kochen. Hast du Zeit, mir zu helfen? Es ist wichtig, jeden Tag zu üben."
+    },
+    {
+      "id": "de-reading-tips-for-learning-words",
+      "kind": "reading",
+      "theme": "language",
+      "workingTitle": "Tipps zum Wörterlernen lesen",
+      "intent": "Einen kurzen Ratgebertext zum Vokabellernen lesen, die Tipps herausfinden (Lernkarten, Nomen immer mit Artikel lernen, jeden Tag zehn Minuten) und entscheiden, welche man ausprobiert."
+    }
+  ]
+}
