@@ -784,7 +784,7 @@
       "kind": "functions",
       "theme": "relations",
       "workingTitle": "Beileid aussprechen",
-      "intent": "Mündlich und schriftlich angemessen Beileid ausdrücken und Hilfe anbieten: Mein herzliches Beileid. Es tut mir aufrichtig leid. Wenn ich etwas für dich tun kann, sag es bitte. In stiller Anteilnahme."
+      "intent": "Mündlich/schriftlich angemessen Beileid ausdrücken und Hilfe anbieten: Mein herzliches Beileid. Es tut mir aufrichtig leid. Wenn ich etwas für dich tun kann, sag bitte Bescheid. In stiller Anteilnahme"
     },
     {
       "id": "de-describing-destinations",
@@ -1337,7 +1337,7 @@
       "kind": "grammar",
       "topic": "subordinate_clauses",
       "workingTitle": "Zu schön, als dass es wahr sein könnte: irreale Folgen",
-      "intent": "Folgen, die nicht eintreten, mit zu ..., als dass, ohne dass und so ..., dass im Konjunktiv II ausdrücken: Er ist zu stolz, als dass er um Hilfe bitten würde."
+      "intent": "Folgen, die nicht eintreten, mit zu ..., als dass und ohne dass im Konjunktiv II ausdrücken: Er ist zu stolz, als dass er um Hilfe bitten würde."
     },
     {
       "id": "de-meteorology",

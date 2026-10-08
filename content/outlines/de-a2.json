@@ -210,7 +210,7 @@
       "kind": "grammar",
       "topic": "pronouns",
       "workingTitle": "Personalpronomen im Dativ",
-      "intent": "Alle Dativpronomen verwenden und ihm von ihn und ihr (Dativ von sie) von ihr (Plural von du) unterscheiden: Ich helfe ihm. Wie geht es ihr? Das gehört uns."
+      "intent": "Alle Dativpronomen verwenden und ihm von ihn und ihr (Dativ von sie) von euch (Plural von du) unterscheiden: Ich helfe ihm. Wie geht es ihr? Das gehört uns."
     },
     {
       "id": "de-dative-verbs-gefallen",
@@ -833,7 +833,7 @@
       "kind": "grammar",
       "topic": "prepositions_and_case",
       "workingTitle": "Reiseziele: ans Meer, in die Berge, auf die Insel",
-      "intent": "Bei Reisezielen an, in oder auf statt nach wählen, an für Meer und See, in für Berge und Länder mit Artikel, auf für Inseln: ans Meer, am Meer, in die Berge, auf der Insel, in die Schweiz."
+      "intent": "Bei Reisezielen an, in oder auf statt nach wählen, an für Meer und See, in für Berge und Länder mit Artikel, auf für Inseln: ans/am Meer, in die/den Berge, auf die/der Insel, in die Schweiz."
     },
     {
       "id": "de-accommodation",
