@@ -100,10 +100,19 @@ services:
   # The build stage of apps/api/Dockerfile, published by images.yml: `prod`
   # deliberately carries no Prisma CLI and no migrations. A stock node image is
   # not a shortcut, see docs/VERSIONS.md trap 1c.
+  #
+  # Seeds after migrating: the question bank and the lessons ship as files in
+  # content/, which the tooling image carries. Both upsert on the authored ids,
+  # so running the seed on every deploy is safe.
   migrate:
     image: ghcr.io/victorbro/ft_transcendence/tooling:${IMAGE_TAG:-latest}
     profiles: [migrate]
-    command: ["pnpm", "--filter", "@ft/api", "exec", "prisma", "migrate", "deploy"]
+    command:
+      [
+        "sh",
+        "-c",
+        "pnpm --filter @ft/api exec prisma migrate deploy && pnpm --filter @ft/api run db:seed",
+      ]
     depends_on:
       db:
         condition: service_healthy
