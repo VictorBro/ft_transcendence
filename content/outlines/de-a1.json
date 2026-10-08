@@ -304,6 +304,13 @@
       "intent": "Die Karte eines Cafés lesen und Getränke, Kuchen, Größen und Preise finden (Tee 2,80 Euro, Cappuccino groß 3,90 Euro, Apfelkuchen), um etwas auszuwählen und die Rechnung zu schätzen."
     },
     {
+      "id": "de-ordering-at-a-cafe",
+      "kind": "functions",
+      "theme": "food_and_drink",
+      "workingTitle": "Im Café bestellen und bezahlen",
+      "intent": "Im Café Getränke und Kuchen bestellen und bezahlen: Einen Tee, bitte. Ein Stück Apfelkuchen, bitte. Zahlen, bitte! Zusammen oder getrennt? Stimmt so."
+    },
+    {
       "id": "de-stem-vowel-change-verbs",
       "kind": "grammar",
       "topic": "verbs_morphology",

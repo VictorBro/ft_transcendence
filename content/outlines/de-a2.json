@@ -507,13 +507,6 @@
       "intent": "Die Formen hätte, wäre, könnte und würde bilden und für höfliche Bitten und Fragen verwenden: Könnten Sie mir helfen? Wäre das möglich? Würden Sie das Fenster schließen?"
     },
     {
-      "id": "de-ordering-at-a-cafe",
-      "kind": "functions",
-      "theme": "food_and_drink",
-      "workingTitle": "Im Café bestellen und bezahlen",
-      "intent": "Im Café Getränke und Kuchen bestellen und bezahlen: Ich hätte gern einen Tee. Ein Stück Apfelkuchen, bitte. Zahlen, bitte! Zusammen oder getrennt? Stimmt so."
-    },
-    {
       "id": "de-advice-sollte",
       "kind": "grammar",
       "topic": "verb_usage",
