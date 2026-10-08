@@ -35,7 +35,7 @@
       "kind": "functions",
       "theme": "personal_identification",
       "workingTitle": "Sich vorstellen",
-      "intent": "Sich mit Namen, Herkunft und Wohnort vorstellen und das Gegenüber dasselbe fragen: Ich heiße Lena und komme aus Polen. Wie heißen Sie? Wo wohnst du?"
+      "intent": "Sich mit Namen, Herkunft und Wohnort vorstellen und das Gegenüber dasselbe fragen: Ich heiße Lena und komme aus Polen. Wie heißt du? Woher kommst du?"
     },
     {
       "id": "de-regular-verbs-present",
@@ -126,7 +126,7 @@
       "kind": "functions",
       "theme": "relations",
       "workingTitle": "Bitten, danken und sich entschuldigen",
-      "intent": "Höflich um etwas bitten, sich bedanken und entschuldigen und darauf reagieren: Können Sie mir bitte helfen? Ja, gern. Vielen Dank! Gern geschehen. Entschuldigung! Das tut mir leid. Kein Problem."
+      "intent": "Höflich um etwas bitten, sich bedanken und entschuldigen und darauf reagieren: Hilf mir bitte. Ja, gern. Vielen Dank! Gern geschehen. Entschuldigung! Das tut mir leid. Kein Problem."
     },
     {
       "id": "de-classroom-objects",
@@ -302,13 +302,6 @@
       "theme": "food_and_drink",
       "workingTitle": "Die Karte im Café lesen",
       "intent": "Die Karte eines Cafés lesen und Getränke, Kuchen, Größen und Preise finden (Tee 2,80 Euro, Cappuccino groß 3,90 Euro, Apfelkuchen), um etwas auszuwählen und die Rechnung zu schätzen."
-    },
-    {
-      "id": "de-ordering-at-a-cafe",
-      "kind": "functions",
-      "theme": "food_and_drink",
-      "workingTitle": "Im Café bestellen und bezahlen",
-      "intent": "Im Café Getränke und Kuchen bestellen und bezahlen: Ich hätte gern einen Tee. Ein Stück Apfelkuchen, bitte. Zahlen, bitte! Zusammen oder getrennt? Stimmt so."
     },
     {
       "id": "de-stem-vowel-change-verbs",
