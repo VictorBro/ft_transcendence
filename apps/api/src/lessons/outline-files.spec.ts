@@ -3,6 +3,7 @@ import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
 import {
+  foldText,
   KIND_COUNTS,
   LESSON_KINDS,
   LESSONS_PER_LEVEL,
@@ -108,6 +109,28 @@ describe('content/outlines', () => {
           clashes.push(`${entry.id} in both ${previous} and ${name}`);
         }
         seen.set(entry.id, name);
+      }
+    }
+
+    expect(clashes).toEqual([]);
+  });
+
+  // The working title becomes the lesson's title, which lesson-files.spec.ts
+  // checks the same way: a clash is cheaper to fix in the outline.
+  it('has no working title used twice within a language, after folding', () => {
+    const seen = new Map<string, string>();
+    const clashes: string[] = [];
+
+    for (const [name, result] of parsed) {
+      if (!result.success) continue;
+      for (const entry of result.data.entries) {
+        const key = `${result.data.lang}:${foldText(entry.workingTitle)}`;
+        const where = `${name} ${entry.id}`;
+        const previous = seen.get(key);
+        if (previous !== undefined) {
+          clashes.push(`"${entry.workingTitle}" in both ${previous} and ${where}`);
+        }
+        seen.set(key, where);
       }
     }
 

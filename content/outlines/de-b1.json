@@ -1,0 +1,1616 @@
+{
+  "lang": "de",
+  "level": "B1",
+  "entries": [
+    {
+      "id": "de-personality-traits",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Charaktereigenschaften",
+      "intent": "Einen Menschen mit etwa vierzehn Wörtern genauer beschreiben: die Eigenschaft, zuverlässig, ehrlich, geduldig, neugierig, ordentlich, vernünftig, selbstständig."
+    },
+    {
+      "id": "de-simple-past-regular",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Präteritum: regelmäßige Verben",
+      "intent": "Das Präteritum regelmäßiger Verben mit -te und den Personalendungen bilden, -ete nach -t und -d, bei ich und er ohne Personalendung: ich machte, du machtest, sie arbeitete."
+    },
+    {
+      "id": "de-emotions-and-moods",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Gefühle und Stimmungen",
+      "intent": "Über Gefühle und Launen mit etwa vierzehn Wörtern sprechen: die Stimmung, die Laune, die Aufregung, die Hoffnung, die Erleichterung, die Langeweile, sich schämen, aufgeregt."
+    },
+    {
+      "id": "de-simple-past-irregular",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Präteritum: unregelmäßige und gemischte Verben",
+      "intent": "Das Präteritum unregelmäßiger Verben mit Vokalwechsel ohne -te und gemischter Verben mit Vokalwechsel und -te bilden: fuhr, ging, schrieb, lag, brachte, dachte, wusste."
+    },
+    {
+      "id": "de-likes-and-dislikes",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Vorlieben und Abneigungen",
+      "intent": "Starke Vorlieben und Abneigungen mit etwa zwölf Wörtern ausdrücken: die Vorliebe, die Abneigung, die Leidenschaft, begeistert, verrückt nach (ugs.), nicht ausstehen können, nicht leiden können."
+    },
+    {
+      "id": "de-simple-past-or-perfect",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Präteritum oder Perfekt?",
+      "intent": "Das Präteritum für geschriebene Erzählungen und Berichte und das Perfekt für das Gespräch wählen, bei sein, haben und Modalverben aber auch mündlich das Präteritum."
+    },
+    {
+      "id": "de-telling-about-a-past-experience",
+      "kind": "functions",
+      "theme": "personal_identification",
+      "workingTitle": "Von einem Erlebnis erzählen",
+      "intent": "Ein persönliches Erlebnis lebendig erzählen und sagen, wie man sich dabei gefühlt hat: Damals war ich ziemlich nervös. Plötzlich klingelte das Telefon. Am Ende war ich richtig stolz."
+    },
+    {
+      "id": "de-als-or-wenn",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Als oder wenn?",
+      "intent": "Als für ein einmaliges Ereignis in der Vergangenheit und wenn für Wiederholung oder Gegenwart wählen: Als ich zehn war, zogen wir um. Immer wenn er kam, brachte er Blumen mit."
+    },
+    {
+      "id": "de-reading-a-blog-about-a-fresh-start",
+      "kind": "reading",
+      "theme": "personal_identification",
+      "workingTitle": "Einen Blog über einen Neuanfang lesen",
+      "intent": "Einen Blogbeitrag über ein Auslandsjahr lesen und richtige von falschen Aussagen unterscheiden (Am Anfang war alles fremd, inzwischen fühle ich mich hier zu Hause)."
+    },
+    {
+      "id": "de-friendship",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Freundschaft",
+      "intent": "Über Freundschaften mit etwa dreizehn Wörtern sprechen: die Freundschaft, der Freundeskreis, der Kumpel (ugs.), das Vertrauen, treu, sich gut verstehen, sich streiten, sich vertragen."
+    },
+    {
+      "id": "de-past-perfect",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Das Plusquamperfekt",
+      "intent": "Das Plusquamperfekt mit hatte oder war und Partizip II bilden, um zu sagen, was vor einem anderen Ereignis in der Vergangenheit geschah: Als wir ankamen, war der Zug schon abgefahren."
+    },
+    {
+      "id": "de-love-and-marriage",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Liebe und Ehe",
+      "intent": "Etwa vierzehn Wörter von der Verlobung bis zur Scheidung verwenden: die Beziehung, sich verloben, die Verlobung, das Standesamt, die Trauung, der Ehepartner, die Trennung, sich scheiden lassen."
+    },
+    {
+      "id": "de-nachdem-bevor",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Nebensätze mit nachdem und bevor",
+      "intent": "Mit nachdem und bevor die Reihenfolge zweier Handlungen ausdrücken, im nachdem-Satz oft mit Plusquamperfekt: Nachdem wir gegessen hatten, gingen wir spazieren. Bevor du gehst, ruf mich an."
+    },
+    {
+      "id": "de-family-life",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Familienleben und Erziehung",
+      "intent": "Etwa vierzehn Wörter zu Familienalltag und Erziehung verwenden: erziehen, die Erziehung, streng, verwöhnen, alleinerziehend, die Elternzeit, das Elterngeld, das Kindergeld."
+    },
+    {
+      "id": "de-prepositional-verbs-case",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "Präpositionalverben: Akkusativ oder Dativ?",
+      "intent": "Bei Verben mit Präposition den Kasus mitlernen, bei auf und über meist Akkusativ, bei an je nach Verb: an den Urlaub denken, am Kurs teilnehmen, vor der Gefahr warnen."
+    },
+    {
+      "id": "de-expressing-joy-disappointment-and-worry",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Freude, Enttäuschung und Sorge ausdrücken",
+      "intent": "Gefühle zeigen und auf die Gefühle anderer eingehen: Ich freue mich so für dich! Ich bin echt enttäuscht. Ich mache mir Sorgen um meine Mutter. Das kann ich gut verstehen."
+    },
+    {
+      "id": "de-life-events",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Familienfeste und Trauerfälle",
+      "intent": "Etwa vierzehn Wörter für Feste und Trauer in der Familie verwenden: die Taufe, die Konfirmation, das Jubiläum, die Beerdigung (auch das Begräbnis), der Friedhof, die Trauer, das Beileid."
+    },
+    {
+      "id": "de-dative-verbs-person-object",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Verben mit Dativobjekt",
+      "intent": "Verben mit der Person im Dativ wie antworten, gratulieren, vertrauen, folgen und begegnen von Verben mit Akkusativ wie fragen und anrufen unterscheiden: Ich antworte dir. Ich frage dich."
+    },
+    {
+      "id": "de-reading-a-long-personal-email",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Eine lange persönliche E-Mail lesen",
+      "intent": "Eine lange E-Mail einer Freundin über Ereignisse, Gefühle und Pläne lesen und auch die Bitte erkennen, die sie nur andeutet (Ich weiß noch nicht, wer am Wochenende meine Katze füttert)."
+    },
+    {
+      "id": "de-bis-seitdem",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Nebensätze mit bis und seitdem",
+      "intent": "Mit bis einen Endpunkt und mit seit oder seitdem einen Anfangspunkt ausdrücken, bei seitdem oft mit Präsens: Warte, bis ich komme. Seitdem ich hier wohne, fahre ich Rad."
+    },
+    {
+      "id": "de-habits-and-routines",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Gewohnheiten",
+      "intent": "Über Gewohnheiten mit etwa zwölf Wörtern sprechen: die Gewohnheit, die Angewohnheit, sich gewöhnen an, gewohnt, der Alltag, die Routine, üblich, ausnahmsweise."
+    },
+    {
+      "id": "de-waehrend-sobald-solange",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Nebensätze mit während, sobald und solange",
+      "intent": "Gleichzeitigkeit mit während, sofortige Abfolge mit sobald und gleiche Dauer mit solange ausdrücken: Während er kocht, lese ich. Sobald ich da bin, rufe ich an. Solange es regnet, bleiben wir drinnen."
+    },
+    {
+      "id": "de-everyday-mishaps",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Missgeschicke",
+      "intent": "Kleine Missgeschicke im Alltag mit etwa zwölf Wörtern erzählen: verschlafen, verpassen, verschütten, kaputtgehen, fallen lassen, verlegen, das Pech, aus Versehen."
+    },
+    {
+      "id": "de-reading-a-simple-short-story",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Eine einfache Kurzgeschichte lesen",
+      "intent": "Eine Kurzgeschichte mit einfacher Handlung lesen und verstehen, wer die Figuren sind, warum sie so handeln und wie die Geschichte ausgeht (plötzlich, deshalb, am Ende)."
+    },
+    {
+      "id": "de-answering-a-personal-email",
+      "kind": "functions",
+      "theme": "free_time",
+      "workingTitle": "Eine persönliche E-Mail beantworten",
+      "intent": "Auf die E-Mail einer Freundin antworten, von sich erzählen und ein Treffen vorschlagen: Liebe Jana, danke für deine Nachricht! Bei mir gibt es auch Neues. Wollen wir uns im Juni treffen? Liebe Grüße"
+    },
+    {
+      "id": "de-everyday-services",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Dienstleister im Alltag",
+      "intent": "Etwa zwölf Wörter für Dienstleistungen im Alltag verwenden: die Reinigung, der Schlüsseldienst, die Änderungsschneiderei, der Friseursalon, kürzen, färben, sich die Haare schneiden lassen."
+    },
+    {
+      "id": "de-vor-bevor-vorher",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Vor, bevor, vorher: Präposition, Konjunktion, Adverb",
+      "intent": "Vor, bevor und vorher sowie nach, nachdem und danach unterscheiden und die passende Wortstellung wählen: vor dem Essen, bevor wir essen, vorher essen wir noch Suppe."
+    },
+    {
+      "id": "de-smartphone-and-apps",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Smartphone und Apps",
+      "intent": "Etwa vierzehn Wörter rund ums Smartphone verwenden: die App, das WLAN, der Akku, aufladen, installieren, das Update, der Speicher, die Benachrichtigung, die Einstellungen (Pl.)."
+    },
+    {
+      "id": "de-reading-ads-from-different-media",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Anzeigen aus verschiedenen Medien lesen",
+      "intent": "Anzeigen aus Zeitung, Aushang und Internet lesen (Umzugshilfe, Nachhilfe, Reparaturservice) und für jede Person die passende finden oder erkennen, dass keine passt."
+    },
+    {
+      "id": "de-food-preparation",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Zubereitung in der Küche",
+      "intent": "Etwa vierzehn Verben und Küchengeräte zum Zubereiten nennen: schälen, reiben, rühren, würzen, anbraten, abgießen, das Sieb, die Reibe, der Schneebesen."
+    },
+    {
+      "id": "de-adjective-endings-no-article",
+      "kind": "grammar",
+      "topic": "adjectives",
+      "workingTitle": "Adjektivendungen ohne Artikel",
+      "intent": "Adjektive ohne Artikel so deklinieren, dass sie den Kasus zeigen wie sonst der Artikel: kalte Milch, frisches Brot, mit heißem Wasser, bei schönem Wetter, guten Appetit."
+    },
+    {
+      "id": "de-healthy-eating",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Gesunde Ernährung",
+      "intent": "Etwa zwölf Wörter zu gesundem Essen verwenden: die Ernährung, das Fett, die Vitamine (Pl.), die Ballaststoffe (Pl.), das Vollkornbrot, ausgewogen, kalorienarm, fettarm."
+    },
+    {
+      "id": "de-adjective-endings-after-quantifiers",
+      "kind": "grammar",
+      "topic": "adjectives",
+      "workingTitle": "Adjektivendungen nach viele, einige, alle",
+      "intent": "Adjektive nach viele, einige, wenige und Zahlen wie ohne Artikel und nach alle wie nach die deklinieren: viele nette Leute, zwei neue Kollegen, alle netten Leute."
+    },
+    {
+      "id": "de-reading-a-food-blog-recipe",
+      "kind": "reading",
+      "theme": "food_and_drink",
+      "workingTitle": "Ein Rezept in einem Foodblog lesen",
+      "intent": "Ein Rezept in einem Foodblog lesen, die Schritte zwischen den persönlichen Geschichten der Bloggerin finden und Varianten erkennen (statt Sahne geht auch Joghurt, vegan mit Tofu)."
+    },
+    {
+      "id": "de-diets-and-allergies",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Ernährungsweisen und Allergien",
+      "intent": "Etwa zwölf Wörter zu Ernährungsweisen und Unverträglichkeiten verwenden: vegetarisch, vegan, die Allergie, die Unverträglichkeit, glutenfrei, laktosefrei, der Inhaltsstoff, enthalten."
+    },
+    {
+      "id": "de-explaining-a-dish-to-guests",
+      "kind": "functions",
+      "theme": "food_and_drink",
+      "workingTitle": "Gästen ein Gericht erklären",
+      "intent": "Gästen ein Gericht aus der eigenen Region erklären und nach Essgewohnheiten fragen: Das isst man bei uns mit Reis. Isst du Fleisch? Ich kann auch etwas Vegetarisches kochen."
+    },
+    {
+      "id": "de-nominalised-infinitive-beim-zum",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "Beim und zum mit Infinitiv als Nomen",
+      "intent": "Mit beim und einem Infinitiv als Nomen sagen, was gleichzeitig passiert, und mit zum, wofür etwas dient: beim Kochen, beim Autofahren, eine Brille zum Lesen, Zeit zum Ausruhen."
+    },
+    {
+      "id": "de-eating-out",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Der Restaurantbesuch",
+      "intent": "Etwa zwölf Wörter für den Besuch im Lokal verwenden: die Vorspeise, die Nachspeise, das Tagesgericht, die Reservierung, die Bedienung, das Trinkgeld, der Stammtisch, der Biergarten."
+    },
+    {
+      "id": "de-regional-food-words",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Essen in D-A-CH",
+      "intent": "Etwa zwölf österreichische und Schweizer Wörter für Lebensmittel dem in Deutschland üblichen Wort zuordnen: österr. der Paradeiser, die Marille, der Karfiol; schweiz. das Rüebli, das Poulet."
+    },
+    {
+      "id": "de-workplace-tasks",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Arbeitsalltag",
+      "intent": "Etwa vierzehn Wörter für den Alltag im Betrieb mit Artikel und Plural nennen: die Besprechung, das Projekt, der Auftrag, die Abteilung, die Kantine, der Dienstplan, die Unterlagen (Pl.), erledigen."
+    },
+    {
+      "id": "de-reading-minutes-of-a-team-meeting",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Das Protokoll einer Teambesprechung lesen",
+      "intent": "Das Protokoll einer Teambesprechung lesen und herausfinden, was entschieden wurde und wer welche Aufgabe bis wann erledigt (Ergebnisse, zuständig: Frau Kaya, bis 15. März, offene Punkte)."
+    },
+    {
+      "id": "de-n-declension",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Die n-Deklination",
+      "intent": "Maskuline Nomen auf -e, -ent, -ant und -ist sowie Mensch, Herr und Nachbar außer im Nominativ Singular mit -(e)n verwenden: der Kollege, den Kollegen, dem Studenten, Herrn Weber."
+    },
+    {
+      "id": "de-shifts-and-safety",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Schichtarbeit und Arbeitsschutz",
+      "intent": "Etwa zwölf Wörter aus Fabrik und Lager verstehen: die Schicht, die Nachtschicht, der Arbeitsschutz, die Schutzkleidung, der Helm, die Vorschrift, der Arbeitsunfall, die Sicherheitsschuhe (Pl.)."
+    },
+    {
+      "id": "de-job-search",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Stellensuche",
+      "intent": "Etwa vierzehn Wörter für die Arbeitssuche verwenden: die Stellenanzeige, die Bewerbung, sich bewerben, das Vorstellungsgespräch, der Arbeitgeber, arbeitslos, die Agentur für Arbeit (österr. das AMS)."
+    },
+    {
+      "id": "de-adjectives-as-nouns",
+      "kind": "grammar",
+      "topic": "adjectives",
+      "workingTitle": "Adjektive und Partizipien als Nomen",
+      "intent": "Adjektive und Partizipien als Nomen großschreiben und wie Adjektive deklinieren: der Deutsche, ein Deutscher, die Angestellten, ein Erwachsener, etwas Neues, nichts Besonderes, alles Gute."
+    },
+    {
+      "id": "de-reading-a-skilled-job-ad",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Eine Stellenanzeige für Fachkräfte lesen",
+      "intent": "Eine Stellenanzeige für eine Fachkraft lesen, die Abschnitte Ihre Aufgaben, Ihr Profil und Wir bieten verstehen und das eigene Profil mit den Anforderungen vergleichen."
+    },
+    {
+      "id": "de-cv-and-career",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Der Lebenslauf",
+      "intent": "Die eigene Schul- und Berufslaufbahn mit etwa zwölf Wörtern darstellen: der Lebenslauf, der Schulabschluss, die Berufserfahrung, die Kenntnisse (Pl.), das Praktikum, die Lücke im Lebenslauf."
+    },
+    {
+      "id": "de-adjectives-with-prepositions",
+      "kind": "grammar",
+      "topic": "adjectives",
+      "workingTitle": "Adjektive mit Präpositionen",
+      "intent": "Adjektive mit fester Präposition verwenden und den Kasus mitlernen: stolz auf, zufrieden mit, interessiert an, abhängig von, bekannt für, verheiratet mit."
+    },
+    {
+      "id": "de-reading-a-tabular-cv",
+      "kind": "reading",
+      "theme": "personal_identification",
+      "workingTitle": "Einen tabellarischen Lebenslauf lesen",
+      "intent": "Einen tabellarischen Lebenslauf lesen, Ausbildung, Berufserfahrung und Kenntnisse finden (Sprachkenntnisse, EDV-Kenntnisse, Führerschein Klasse B) und Lücken erkennen."
+    },
+    {
+      "id": "de-answering-questions-in-a-job-interview",
+      "kind": "functions",
+      "theme": "daily_life",
+      "workingTitle": "Im Vorstellungsgespräch antworten und nachfragen",
+      "intent": "Im Vorstellungsgespräch über Erfahrung und Stärken sprechen und selbst Fragen stellen: Ich habe drei Jahre als Köchin gearbeitet. Ich arbeite gern im Team. Wie sind die Arbeitszeiten?"
+    },
+    {
+      "id": "de-un-and-los",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Adjektive mit un- und -los",
+      "intent": "Etwa vierzehn Adjektive mit un- für das Gegenteil und mit -los für ohne verstehen und bilden: unfreundlich, unmöglich, ungesund, unbekannt, kostenlos, hoffnungslos, sprachlos, ratlos."
+    },
+    {
+      "id": "de-consequence-adverbs-deswegen-darum",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Deswegen, darum, daher, also",
+      "intent": "Folgen mit deswegen, darum, daher und also anschließen, auf Position 1 vor dem Verb oder im Mittelfeld: Ich war krank, darum bin ich zu Hause geblieben. Der Bus kam nicht, also gingen wir zu Fuß."
+    },
+    {
+      "id": "de-noun-suffixes-ung-heit-keit",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Nomen auf -ung, -heit, -keit",
+      "intent": "Etwa vierzehn Nomen aus Verben und Adjektiven bilden und verstehen: meinen, die Meinung; erfahren, die Erfahrung; frei, die Freiheit; möglich, die Möglichkeit; schwierig, die Schwierigkeit."
+    },
+    {
+      "id": "de-gender-by-ending",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Das Genus an der Endung erkennen",
+      "intent": "Das Genus vieler Nomen an der Endung erkennen: feminin auf -ung, -heit, -keit, -ion, -tät, neutral auf -chen, -lein, -ment, -um, maskulin auf -ling, -ismus und -ig."
+    },
+    {
+      "id": "de-anglicisms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Anglizismen",
+      "intent": "Etwa vierzehn Anglizismen mit ihrem Artikel verwenden: der Job, das Team, das Meeting, der Laptop, das Feedback, cool, chillen; der Beamer ist ein Scheinanglizismus."
+    },
+    {
+      "id": "de-reading-a-learners-dictionary-entry",
+      "kind": "reading",
+      "theme": "language",
+      "workingTitle": "Einen Eintrag im Lernerwörterbuch lesen",
+      "intent": "Einen Wörterbucheintrag lesen und Artikel, Plural, Betonung, feste Präposition und Beispielsatz nutzen, um ein Wort richtig zu verwenden (der Antrag, die Anträge; einen Antrag auf etwas stellen)."
+    },
+    {
+      "id": "de-abbreviations",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Abkürzungen",
+      "intent": "Etwa vierzehn häufige Abkürzungen lesen, aussprechen und verstehen: z. B., usw., d. h., bzw., ca., Nr., Tel., der Lkw, der Pkw, das Kfz."
+    },
+    {
+      "id": "de-furnishing",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Einrichtung und Dekoration",
+      "intent": "Eine Wohnung mit etwa vierzehn Wörtern einrichten, Nomen mit Plural: der Teppich, der Vorhang (die Vorhänge), das Regal, die Kommode, der Spiegel, das Kissen, die Decke, gemütlich."
+    },
+    {
+      "id": "de-relative-clauses-dative",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Relativsätze im Dativ",
+      "intent": "Relativsätze mit den Relativpronomen dem, der, dem und im Plural denen bilden: der Freund, dem ich helfe, die Kollegin, der ich das Buch gebe, die Kinder, denen wir vorlesen."
+    },
+    {
+      "id": "de-home-repairs",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Reparaturen in der Wohnung",
+      "intent": "Schäden in der Wohnung mit etwa dreizehn Wörtern benennen: der Wasserhahn, das Rohr, die Heizung, undicht, verstopft, der Schimmel, der Schaden, der Hausmeister (schweiz. der Hauswart)."
+    },
+    {
+      "id": "de-reporting-damage-to-the-landlord",
+      "kind": "functions",
+      "theme": "house_and_home",
+      "workingTitle": "Dem Vermieter einen Schaden melden",
+      "intent": "Dem Vermieter oder der Hausverwaltung einen Schaden melden und um Reparatur bitten: Die Heizung ist seit drei Tagen kaputt. Wann kann ein Handwerker kommen? Könnten Sie sich bitte bald darum kümmern?"
+    },
+    {
+      "id": "de-relative-clauses-prepositions",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Relativsätze mit Präposition",
+      "intent": "Die Präposition vor das Relativpronomen stellen und den Kasus nach der Präposition wählen: die Stadt, in der ich wohne, der Freund, mit dem ich reise, das Thema, über das wir sprechen."
+    },
+    {
+      "id": "de-tools-and-diy",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Werkzeug und Heimwerken",
+      "intent": "Etwa vierzehn Werkzeuge und Tätigkeiten mit Artikel und Plural nennen: der Hammer (die Hämmer), der Nagel, die Schraube, der Bohrer, die Zange, die Leiter, bohren, streichen."
+    },
+    {
+      "id": "de-relative-wo-was",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Relativsätze mit wo und was",
+      "intent": "Wo nach Orten und was nach alles, nichts, etwas, das und Superlativen als Relativwort verwenden: die Stadt, wo ich geboren bin, alles, was du brauchst, das Beste, was ich kenne."
+    },
+    {
+      "id": "de-shapes-and-materials",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Formen, Maße und Materialien",
+      "intent": "Gegenstände mit etwa vierzehn Wörtern nach Form, Maß und Material beschreiben: rund, eckig, flach, spitz, die Länge, die Breite, die Höhe, messen, das Holz, das Metall, das Plastik."
+    },
+    {
+      "id": "de-electrical-goods",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Elektrogeräte",
+      "intent": "Etwa vierzehn Elektrogeräte und Zubehör mit Artikel und Plural nennen: der Staubsauger, die Spülmaschine, der Wasserkocher, das Ladegerät, der Stecker, die Steckdose, die Bedienungsanleitung."
+    },
+    {
+      "id": "de-derselbe-der-gleiche",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Derselbe oder der gleiche?",
+      "intent": "Derselbe für ein und dasselbe Ding und der gleiche für ein Ding derselben Art verwenden und beide Teile deklinieren: Wir wohnen im selben Haus. Sie trägt das gleiche Kleid wie ich."
+    },
+    {
+      "id": "de-reading-a-manual-with-troubleshooting",
+      "kind": "reading",
+      "theme": "house_and_home",
+      "workingTitle": "Eine Bedienungsanleitung lesen",
+      "intent": "Die Bedienungsanleitung einer Waschmaschine lesen, den Schritten folgen und in der Tabelle zu Störungen die Lösung für ein Problem finden (Tür lässt sich nicht öffnen, Fehlercode E21)."
+    },
+    {
+      "id": "de-inside-the-body",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Organe",
+      "intent": "Etwa vierzehn innere Organe und Teile des Körpers mit Artikel und Plural nennen: das Herz, die Lunge, der Magen (die Mägen), die Leber, die Niere, das Blut, der Knochen, das Gehirn."
+    },
+    {
+      "id": "de-reflexive-pronouns-dative",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Reflexivpronomen im Dativ",
+      "intent": "Mir und dir als Reflexivpronomen verwenden, wenn es noch ein Akkusativobjekt gibt, auch bei Körperteilen: Ich wasche mir die Hände. Kauf dir etwas Schönes! Ich wünsche mir Ruhe."
+    },
+    {
+      "id": "de-kinds-of-pain",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Schmerzen und Beschwerden",
+      "intent": "Beschwerden mit etwa zwölf Wörtern genauer beschreiben: stechen, brennen, jucken, der Krampf, schwindlig, übel, der Ausschlag, die Entzündung, geschwollen."
+    },
+    {
+      "id": "de-obwohl-clauses",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Nebensätze mit obwohl",
+      "intent": "Mit obwohl einen Gegengrund nennen, mit dem Verb am Ende: Obwohl es regnet, gehen wir spazieren. Er ging zur Arbeit, obwohl er krank war."
+    },
+    {
+      "id": "de-injuries-and-first-aid",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Verletzungen und Erste Hilfe",
+      "intent": "Etwa dreizehn Wörter für Unfälle und Erste Hilfe verwenden: die Verletzung, die Wunde, bluten, der Verband, sich etwas brechen, verstauchen, der Notarzt, die stabile Seitenlage."
+    },
+    {
+      "id": "de-describing-symptoms-in-detail",
+      "kind": "functions",
+      "theme": "health",
+      "workingTitle": "Beim Arzt Beschwerden genau beschreiben",
+      "intent": "Beim Arzt Beschwerden, Dauer und Verlauf genau beschreiben und nach dem weiteren Vorgehen fragen: Seit einer Woche habe ich Rückenschmerzen. Es wird schlimmer, wenn ich lange sitze."
+    },
+    {
+      "id": "de-reading-side-effects-on-a-leaflet",
+      "kind": "reading",
+      "theme": "health",
+      "workingTitle": "Nebenwirkungen auf dem Beipackzettel lesen",
+      "intent": "Die Abschnitte zu Gegenanzeigen und Nebenwirkungen auf einem Beipackzettel lesen und erkennen, wann man das Mittel nicht nehmen darf und worauf man achten muss (häufig, selten, Wechselwirkungen)."
+    },
+    {
+      "id": "de-trotzdem",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Trotzdem im Hauptsatz",
+      "intent": "Mit trotzdem einen Gegengrund im Hauptsatz ausdrücken, auf Position 1 oder nach dem Verb, und Sätze mit obwohl umformen: Es regnet. Trotzdem gehen wir spazieren."
+    },
+    {
+      "id": "de-healthy-living",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Gesunder Lebensstil",
+      "intent": "Etwa zwölf Wörter für einen gesunden Alltag verwenden: der Stress, sich entspannen, die Bewegung, mit dem Rauchen aufhören, der Nichtraucher, abnehmen, zunehmen, ausreichend schlafen."
+    },
+    {
+      "id": "de-reading-an-article-on-everyday-stress",
+      "kind": "reading",
+      "theme": "health",
+      "workingTitle": "Einen Artikel über Stress im Alltag lesen",
+      "intent": "Einen Ratgeberartikel über Stress im Alltag lesen, Ursachen und Tipps finden und entscheiden, welche Tipps zum eigenen Leben passen (Pausen planen, das Handy abends ausschalten)."
+    },
+    {
+      "id": "de-fitness",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Fitness",
+      "intent": "Etwa zwölf Wörter rund ums Training im Studio verwenden: das Fitnessstudio, die Übung, die Kraft, die Ausdauer, das Krafttraining, die Hantel, das Gewicht, sich dehnen."
+    },
+    {
+      "id": "de-verbs-with-bare-infinitive",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Verben mit Infinitiv ohne zu",
+      "intent": "Nach gehen, kommen, bleiben und lernen und nach sehen und hören mit Objekt einen Infinitiv ohne zu verwenden: Wir gehen einkaufen. Ich lerne schwimmen. Ich höre ihn singen."
+    },
+    {
+      "id": "de-competitions",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Wettkämpfe",
+      "intent": "Etwa zwölf Wörter zu Wettkämpfen und Turnieren nennen: der Wettkampf, die Meisterschaft, das Turnier, das Ergebnis, unentschieden, der Schiedsrichter, der Sieger und die Siegerin."
+    },
+    {
+      "id": "de-reading-an-interview-with-an-athlete",
+      "kind": "reading",
+      "theme": "personal_identification",
+      "workingTitle": "Ein Interview mit einer Sportlerin lesen",
+      "intent": "Ein Zeitschrifteninterview mit einer Sportlerin lesen und Fakten über ihr Leben von ihren Meinungen und Gefühlen trennen (seit meinem achten Lebensjahr, ich finde, für mich zählt)."
+    },
+    {
+      "id": "de-creative-hobbies",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Kreative Hobbys",
+      "intent": "Etwa zwölf Wörter für Handarbeit und kreative Freizeit nennen: basteln, stricken, nähen, töpfern, die Handarbeit, der Pinsel, die Nadel, der Faden."
+    },
+    {
+      "id": "de-volunteering-and-clubs",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Ehrenamt und Vereinsleben",
+      "intent": "Etwa zwölf Wörter zum Engagement in Vereinen verwenden: das Ehrenamt, ehrenamtlich, das Mitglied, die Mitgliedschaft, der Mitgliedsbeitrag, sich engagieren, die freiwillige Feuerwehr."
+    },
+    {
+      "id": "de-spoken-markers",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Gesprächswörter: also, na ja, übrigens",
+      "intent": "Etwa zwölf typische Wörter der gesprochenen Sprache verstehen und passend verwenden: also, na ja, genau, ach so, stimmt, echt, übrigens, jedenfalls, sowieso, immerhin."
+    },
+    {
+      "id": "de-modal-particles-ja-eben-halt",
+      "kind": "grammar",
+      "topic": "information_structure_and_pragmatics",
+      "workingTitle": "Modalpartikeln: ja, eben, halt, eigentlich",
+      "intent": "Mit ja auf Bekanntes verweisen, mit eben oder halt (eher süddeutsch) Unabänderliches ausdrücken und mit eigentlich beiläufig fragen: Du weißt ja, wie er ist. Das ist eben so. Wie heißt du eigentlich?"
+    },
+    {
+      "id": "de-starting-and-ending-a-conversation",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Ein Gespräch beginnen, in Gang halten und beenden",
+      "intent": "Mit Bekannten ins Gespräch kommen, es in Gang halten und höflich beenden: Kennen wir uns nicht vom Kurs? Übrigens, wie war dein Urlaub? Ich muss leider los, ich habe gleich einen Termin."
+    },
+    {
+      "id": "de-games-and-streaming",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Spiele und Streaming",
+      "intent": "Etwa zwölf Wörter zu Videospielen und Serien verwenden: das Videospiel, die Konsole, das Level, der Spielstand, streamen, die Folge, die Staffel, zocken (ugs.)."
+    },
+    {
+      "id": "de-reading-an-article-about-a-survey",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Einen Artikel über eine Umfrage lesen",
+      "intent": "Einen Zeitungsartikel über eine Umfrage zur Freizeit von Jugendlichen lesen und die wichtigsten Ergebnisse mit ihren Zahlen finden (fast jeder Zweite, nur 15 Prozent, mehr als früher)."
+    },
+    {
+      "id": "de-rail-travel",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Bahnreisen",
+      "intent": "Etwa vierzehn Wörter für längere Bahnreisen nennen: der Fernzug, der Regionalzug, die Sitzplatzreservierung, das Abteil, der Wagen, der Speisewagen, der Zugbegleiter und die Zugbegleiterin."
+    },
+    {
+      "id": "de-falls-clauses",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Bedingungen mit falls",
+      "intent": "Mit falls eine mögliche Bedingung ausdrücken, die anders als wenn nie zeitlich gemeint ist: Falls du Hilfe brauchst, ruf mich an. Nimm einen Schirm mit, falls es regnet."
+    },
+    {
+      "id": "de-delays-and-cancellations",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Verspätungen und Ausfälle",
+      "intent": "Etwa zwölf Wörter für Störungen im Bahn- und Flugverkehr verstehen: ausfallen, der Ausfall, der Streik, der Ersatzverkehr, die Umleitung, der Anschlusszug, die Entschädigung, sich verspäten."
+    },
+    {
+      "id": "de-reading-an-article-about-a-rail-strike",
+      "kind": "reading",
+      "theme": "travel",
+      "workingTitle": "Einen Zeitungsartikel über einen Bahnstreik lesen",
+      "intent": "Einen Zeitungsartikel über einen Bahnstreik lesen und finden, was passiert, wer betroffen ist, wie lange der Streik dauert und welche Alternativen es gibt (Notfahrplan, Fernbus)."
+    },
+    {
+      "id": "de-travel-bookings",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Reisebüro und Buchung",
+      "intent": "Etwa zwölf Wörter für das Buchen einer Reise verwenden: das Reisebüro, die Pauschalreise, die Buchung, stornieren, die Anzahlung, die Bestätigung, inklusive, die Reiserücktrittsversicherung."
+    },
+    {
+      "id": "de-comparison-clauses",
+      "kind": "grammar",
+      "topic": "comparison_and_quantity",
+      "workingTitle": "Vergleichssätze mit als und wie",
+      "intent": "Vergleiche mit als und wie und einem Nebensatz bilden und anders als verwenden: Es war schöner, als ich dachte. Es ist nicht so schwer, wie alle sagen. Er ist anders als sein Bruder."
+    },
+    {
+      "id": "de-types-of-holiday",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Urlaubsarten",
+      "intent": "Etwa zwölf Arten von Urlaub nennen und vergleichen: der Badeurlaub, der Aktivurlaub, der Campingurlaub, die Kreuzfahrt, die Rundreise, der Städtetrip, der Urlaub auf dem Bauernhof."
+    },
+    {
+      "id": "de-reading-a-package-holiday-offer",
+      "kind": "reading",
+      "theme": "travel",
+      "workingTitle": "Ein Pauschalreiseangebot lesen",
+      "intent": "Die Beschreibung einer Pauschalreise lesen und herausfinden, was im Preis enthalten ist und was extra kostet (Halbpension, Transfer inklusive, Kurtaxe vor Ort, Liegen gegen Gebühr)."
+    },
+    {
+      "id": "de-booking-a-room-by-phone",
+      "kind": "functions",
+      "theme": "travel",
+      "workingTitle": "Ein Zimmer telefonisch reservieren",
+      "intent": "Telefonisch ein Zimmer reservieren und nach Leistungen und Bedingungen fragen: Ich möchte ein Doppelzimmer vom 3. bis 5. Juni reservieren. Ist das Frühstück inklusive? Kann ich kostenlos stornieren?"
+    },
+    {
+      "id": "de-precise-weather-words",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "Das Wetter im Detail",
+      "intent": "Das Wetter mit etwa zwölf genaueren Wörtern beschreiben: schwül, heiter, wechselhaft, frostig, glatt, das Glatteis, der Nieselregen, der Schauer."
+    },
+    {
+      "id": "de-future-with-werden",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Das Futur I",
+      "intent": "Mit werden und Infinitiv Versprechen und Vorhersagen und mit wohl Vermutungen ausdrücken, für Pläne aber meist das Präsens nehmen: Ich werde dich anrufen. Er wird wohl krank sein."
+    },
+    {
+      "id": "de-seasons-in-nature",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "Jahreszeiten in der Natur",
+      "intent": "Etwa zwölf Wörter für die Natur im Lauf des Jahres verwenden: blühen, die Blüte, das Laub, die Ernte, der Frost, schmelzen, der Sonnenaufgang, der Sonnenuntergang."
+    },
+    {
+      "id": "de-so-dass",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "So ..., dass und sodass",
+      "intent": "Folgen mit so und Adjektiv und dass oder mit sodass nach dem Hauptsatz ausdrücken: Es war so kalt, dass wir zu Hause blieben. Es regnete stark, sodass das Fest ausfiel."
+    },
+    {
+      "id": "de-severe-weather",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "Unwetter",
+      "intent": "Etwa zwölf Wörter für Unwetter und ihre Folgen nennen: das Unwetter, der Sturm, der Hagel, der Blitz, der Donner, das Hochwasser, die Überschwemmung, die Dürre."
+    },
+    {
+      "id": "de-making-guesses",
+      "kind": "functions",
+      "theme": "weather",
+      "workingTitle": "Vermutungen äußern",
+      "intent": "Vermutungen über Wetter und Pläne äußern und sagen, wie sicher man ist: Vielleicht regnet es morgen. Wahrscheinlich fällt der Ausflug aus. Bestimmt kommt sie noch. Ich nehme an, dass es kalt wird."
+    },
+    {
+      "id": "de-reading-a-severe-weather-warning",
+      "kind": "reading",
+      "theme": "weather",
+      "workingTitle": "Eine Unwetterwarnung lesen",
+      "intent": "Eine Unwetterwarnung des Wetterdienstes lesen und Warnstufe, Region, Zeitraum und Verhaltenstipps finden (Sturmböen bis 90 km/h, Aufenthalt im Freien vermeiden)."
+    },
+    {
+      "id": "de-school-systems",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Schulsysteme in D-A-CH",
+      "intent": "Etwa zwölf Schulformen und Abschlüsse in D-A-CH nennen: die Grundschule (österr. die Volksschule, schweiz. die Primarschule), das Gymnasium, die Realschule, das Abitur (österr., schweiz. die Matura)."
+    },
+    {
+      "id": "de-zu-infinitive-after-verbs",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Infinitiv mit zu nach Verben",
+      "intent": "Nach Verben wie versuchen, vergessen, anfangen und vorhaben einen Infinitiv mit zu bilden, bei trennbaren Verben mit zu in der Mitte: Ich versuche, pünktlich zu sein. Vergiss nicht anzurufen."
+    },
+    {
+      "id": "de-childcare",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Kinderbetreuung",
+      "intent": "Etwa zwölf Wörter zur Betreuung kleiner Kinder verstehen: die Kita, die Krippe, die Tagesmutter, der Hort, der Betreuungsplatz, die Eingewöhnung, der Erzieher und die Erzieherin."
+    },
+    {
+      "id": "de-nicht-brauchen-zu",
+      "kind": "grammar",
+      "topic": "negation",
+      "workingTitle": "Nicht brauchen zu",
+      "intent": "Mit nicht brauchen und Infinitiv mit zu sagen, dass etwas nicht nötig ist, und mit nur brauchen zu, dass wenig nötig ist: Du brauchst nicht zu kommen. Du brauchst nur anzurufen."
+    },
+    {
+      "id": "de-reading-an-invitation-to-a-parents-evening",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Eine Einladung zum Elternabend lesen",
+      "intent": "Eine Einladung zum Elternabend mit Tagesordnung lesen und finden, was besprochen und entschieden wird und was man vorbereiten soll (Wahl der Elternvertreter, Projektwoche, Kosten)."
+    },
+    {
+      "id": "de-study-skills",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Lerntechniken",
+      "intent": "Etwa zwölf Wörter für gutes Lernen verwenden: sich etwas merken, auswendig lernen, die Lernkarte, zusammenfassen, unterstreichen, die Notiz, sich konzentrieren, die Eselsbrücke."
+    },
+    {
+      "id": "de-talking-to-a-teacher-about-your-child",
+      "kind": "functions",
+      "theme": "education",
+      "workingTitle": "Mit der Lehrerin über das eigene Kind sprechen",
+      "intent": "Im Elterngespräch nach dem Kind fragen und gemeinsam Lösungen suchen: Wie kommt Ali im Unterricht zurecht? Er sagt, dass Mathe schwer für ihn ist. Was können wir zu Hause tun?"
+    },
+    {
+      "id": "de-um-zu",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Finalsätze mit um ... zu",
+      "intent": "Mit um ... zu ein Ziel nennen, wenn das Subjekt gleich ist, mit um am Anfang und zu und Infinitiv am Ende: Ich lerne Deutsch, um in Berlin zu studieren."
+    },
+    {
+      "id": "de-exams-and-certificates",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Prüfungen und Bescheinigungen",
+      "intent": "Etwa zwölf Wörter rund um Prüfungen und Nachweise verwenden: die Klausur, mündlich, schriftlich, durchfallen, die Bewertung, die Punktzahl, der Nachweis, die Bescheinigung."
+    },
+    {
+      "id": "de-nouns-with-prepositions",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "Nomen mit Präpositionen",
+      "intent": "Nomen mit fester Präposition und Kasus verwenden, oft wie beim Verb: die Angst vor der Prüfung, die Lust auf Kaffee, das Interesse an Musik, die Bitte um Hilfe."
+    },
+    {
+      "id": "de-university-life",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Studium",
+      "intent": "Etwa vierzehn Wörter für das Studium verwenden: das Semester, die Vorlesung, das Seminar, die Hausarbeit, das Referat, die Mensa, das Studienfach, sich einschreiben."
+    },
+    {
+      "id": "de-damit-or-um-zu",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Damit oder um ... zu?",
+      "intent": "Damit bei verschiedenen Subjekten und um ... zu bei gleichem Subjekt wählen, ohne wollen im damit-Satz: Ich spreche langsam, damit mich alle verstehen."
+    },
+    {
+      "id": "de-vocational-training",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Die Ausbildung",
+      "intent": "Etwa zwölf Wörter zur dualen Ausbildung verstehen: die Ausbildung, der oder die Auszubildende, der Azubi, der Ausbildungsbetrieb, die Berufsschule, die Lehre, der Lehrling, die Abschlussprüfung."
+    },
+    {
+      "id": "de-reading-about-an-apprenticeship",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Die Beschreibung eines Ausbildungsberufs lesen",
+      "intent": "Die Beschreibung eines Ausbildungsberufs lesen und Aufgaben, Voraussetzungen, Dauer, die Aufteilung zwischen Betrieb und Berufsschule und die Vergütung finden (duale Ausbildung, drei Jahre)."
+    },
+    {
+      "id": "de-ohne-statt-zu",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Ohne ... zu und statt ... zu",
+      "intent": "Mit ohne ... zu sagen, dass eine erwartete Handlung fehlt, und mit statt ... zu eine Alternative nennen: Er ging, ohne sich zu verabschieden. Statt zu lernen, sah sie fern."
+    },
+    {
+      "id": "de-further-training",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Weiterbildung",
+      "intent": "Etwa zwölf Wörter für das Lernen im Beruf verwenden: die Weiterbildung, die Fortbildung, die Umschulung, die Qualifikation, die Anerkennung, einen Abschluss anerkennen lassen, der Bildungsurlaub."
+    },
+    {
+      "id": "de-giving-a-short-presentation",
+      "kind": "functions",
+      "theme": "education",
+      "workingTitle": "Eine kurze Präsentation halten",
+      "intent": "Ein Alltagsthema mit eigener Erfahrung, Vor- und Nachteilen und Meinung kurz präsentieren: Mein Thema ist Homeoffice. In meinem Heimatland ist das selten. Ein Vorteil ist, dass man Zeit spart."
+    },
+    {
+      "id": "de-reading-about-recognition-of-qualifications",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Informationen zur Anerkennung von Abschlüssen lesen",
+      "intent": "Eine Informationsseite zur Anerkennung ausländischer Berufsabschlüsse lesen und Schritte, zuständige Stelle, Unterlagen und Kosten finden (beglaubigte Kopie, Übersetzung)."
+    },
+    {
+      "id": "de-da-or-weil",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Gründe mit da oder weil",
+      "intent": "Da für einen bekannten oder schon genannten Grund wählen, meist am Satzanfang, und weil für den neuen, wichtigen Grund, auch als Antwort auf warum: Da du schon hier bist, kannst du mir helfen."
+    },
+    {
+      "id": "de-pay-and-contracts",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Arbeitsvertrag und Lohn",
+      "intent": "Etwa vierzehn Wörter aus Arbeitsvertrag und Lohnabrechnung verstehen: der Lohn, das Gehalt, brutto, netto, die Überstunden (Pl.), die Probezeit, der Urlaubsanspruch, die Kündigung."
+    },
+    {
+      "id": "de-reading-an-employment-contract",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Einen Arbeitsvertrag lesen",
+      "intent": "Einen Arbeitsvertrag lesen und vor der Unterschrift die wichtigsten Punkte finden: Arbeitszeit, Probezeit, Urlaubstage, Gehalt und Kündigungsfrist."
+    },
+    {
+      "id": "de-online-shopping",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Onlineshopping",
+      "intent": "Etwa vierzehn Wörter für das Bestellen im Internet verstehen: der Warenkorb, die Bestellung, die Lieferung, liefern, der Versand, die Rücksendung, das Kundenkonto, versandkostenfrei."
+    },
+    {
+      "id": "de-comparative-superlative-attributive",
+      "kind": "grammar",
+      "topic": "comparison_and_quantity",
+      "workingTitle": "Komparativ und Superlativ vor dem Nomen",
+      "intent": "Komparativ und Superlativ vor einem Nomen mit Adjektivendung verwenden: ein größeres Auto, die beste Idee, mit dem schnellsten Zug, in einer kleineren Wohnung."
+    },
+    {
+      "id": "de-sales-and-offers",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Angebote und Rabatte",
+      "intent": "Etwa zwölf Wörter für günstige Angebote verstehen: der Rabatt, der Schlussverkauf, reduziert, das Schnäppchen, der Gutschein, die Aktion, der Ausverkauf, im Angebot."
+    },
+    {
+      "id": "de-reading-buying-advice",
+      "kind": "reading",
+      "theme": "shopping",
+      "workingTitle": "Eine Kaufberatung lesen",
+      "intent": "Die Kaufberatung zu Fahrradhelmen in einem Verbrauchermagazin lesen und die Kriterien finden, auf die man beim Kauf achten soll (Passform, Belüftung, Prüfsiegel, Gewicht)."
+    },
+    {
+      "id": "de-complaints-and-returns",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Reklamation und Umtausch",
+      "intent": "Etwa zwölf Wörter rund um defekte Ware verwenden: reklamieren, die Reklamation, die Garantie, defekt, beschädigt, der Kratzer, die Quittung, der Mangel (die Mängel)."
+    },
+    {
+      "id": "de-quantifiers-paar-mehrere-beide",
+      "kind": "grammar",
+      "topic": "comparison_and_quantity",
+      "workingTitle": "Ein paar, mehrere, beide",
+      "intent": "Mit ein paar, mehrere und beide unbestimmte oder genaue Mengen angeben und ein paar von ein Paar unterscheiden: ein paar Tage, ein Paar Schuhe, mehrere Male, beide Kinder."
+    },
+    {
+      "id": "de-returning-faulty-goods",
+      "kind": "functions",
+      "theme": "shopping",
+      "workingTitle": "Defekte Ware reklamieren",
+      "intent": "Ein defektes Gerät reklamieren und Umtausch, Reparatur oder Erstattung verlangen: Ich habe den Wasserkocher letzte Woche gekauft, er funktioniert nicht mehr. Ich hätte gern mein Geld zurück."
+    },
+    {
+      "id": "de-ways-to-pay",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Zahlungsarten",
+      "intent": "Etwa zwölf Wörter für verschiedene Arten zu bezahlen verwenden: bar, mit Karte, kontaktlos, die Kartenzahlung, die Rate, in Raten zahlen, das Wechselgeld, der Beleg."
+    },
+    {
+      "id": "de-pronoun-order-two-objects",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Zwei Objekte: die Stellung der Pronomen",
+      "intent": "Bei zwei Objekten Pronomen vor Nomen und das Akkusativpronomen vor das Dativpronomen stellen: Ich gebe dem Kind den Ball. Ich gebe ihn dem Kind. Ich gebe ihn ihm."
+    },
+    {
+      "id": "de-fashion",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Mode",
+      "intent": "Kleidung und Stil mit etwa zwölf Wörtern beschreiben: die Mode, modisch, altmodisch, elegant, bequem, der Stil, die Marke, sich kleiden."
+    },
+    {
+      "id": "de-reading-online-return-conditions",
+      "kind": "reading",
+      "theme": "shopping",
+      "workingTitle": "Die Rückgabebedingungen eines Onlineshops lesen",
+      "intent": "Die Widerrufs- und Rückgabebedingungen eines Onlineshops lesen und Frist, Kosten und Schritte finden (14 Tage Widerrufsrecht, Rücksendeetikett, Erstattung des Kaufpreises)."
+    },
+    {
+      "id": "de-manners",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Höflichkeit und Umgangsformen",
+      "intent": "Etwa zwölf Wörter für gutes und schlechtes Benehmen verwenden: das Benehmen, sich benehmen, die Sitte, der Brauch, die Rücksicht, die Pünktlichkeit, frech, das Gastgeschenk."
+    },
+    {
+      "id": "de-unreal-conditions-present",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Irreale Bedingungen in der Gegenwart",
+      "intent": "Irreale Bedingungen mit wenn und Konjunktiv II in beiden Satzteilen ausdrücken, mit würde, hätte, wäre und Modalverben: Wenn ich mehr Zeit hätte, würde ich öfter reisen."
+    },
+    {
+      "id": "de-public-holidays-dach",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Gesetzliche Feiertage in D-A-CH",
+      "intent": "Etwa zwölf Wörter rund um Feiertage in D-A-CH nennen: der Tag der Deutschen Einheit, der Nationalfeiertag (österr.), der Bundesfeiertag (schweiz.), Christi Himmelfahrt, Fronleichnam, der Brückentag."
+    },
+    {
+      "id": "de-unreal-wishes-present",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Irreale Wünsche in der Gegenwart",
+      "intent": "Unerfüllbare Wünsche für die Gegenwart mit wenn und doch oder nur und Konjunktiv II und mit ich wünschte ausdrücken: Wenn ich doch mehr Zeit hätte! Ich wünschte, ich wäre am Meer."
+    },
+    {
+      "id": "de-reading-an-advice-column",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Eine Ratgeberkolumne lesen",
+      "intent": "Eine Leserfrage und die Antwort in einer Ratgeberkolumne lesen, Problem und Ratschläge benennen und beurteilen, ob der Rat hilft (Streit mit der Mitbewohnerin, Eifersucht unter Geschwistern)."
+    },
+    {
+      "id": "de-asking-for-and-giving-advice",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Um Rat bitten und Ratschläge geben",
+      "intent": "Ein Problem schildern, um Rat bitten und Ratschläge geben oder annehmen: Was würdest du an meiner Stelle tun? Ich würde zuerst mit ihr reden. Danke, das probiere ich aus."
+    },
+    {
+      "id": "de-konjunktiv-ii-past",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Konjunktiv II der Vergangenheit",
+      "intent": "Mit hätte oder wäre und Partizip II Bedauern und irreale Bedingungen in der Vergangenheit ausdrücken: Ich hätte gern geholfen. Wenn ich das gewusst hätte, wäre ich gekommen."
+    },
+    {
+      "id": "de-household-budget",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Einnahmen und Ausgaben",
+      "intent": "Etwa zwölf Wörter für das Geld im Haushalt verwenden: die Einnahmen (Pl.), die Ausgaben (Pl.), die Fixkosten (Pl.), die Schulden (Pl.), das Budget, sich etwas leisten, knapp, sparsam."
+    },
+    {
+      "id": "de-genitive-articles",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Der Genitiv: Artikel und Nomen",
+      "intent": "Den Genitiv mit des und -(e)s bei maskulinen und neutralen Nomen und der bei femininen Nomen und im Plural bilden, auch eines und meines: das Auto des Lehrers, die Farbe der Tür."
+    },
+    {
+      "id": "de-bank-accounts",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Girokonto und Dauerauftrag",
+      "intent": "Etwa vierzehn Wörter für das eigene Bankkonto verstehen: das Girokonto, ein Konto eröffnen, der Kontostand, der Dauerauftrag, das Onlinebanking, das Konto überziehen, die Zinsen (Pl.), der Kredit."
+    },
+    {
+      "id": "de-genitive-prepositions",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "Wegen, trotz, während und statt mit Genitiv",
+      "intent": "Wegen, trotz, während und statt mit dem Genitiv verwenden und wissen, dass man mündlich oft den Dativ hört: wegen des Regens, trotz der Kälte, während der Pause, statt eines Briefes."
+    },
+    {
+      "id": "de-reading-a-letter-from-the-bank",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Einen Brief der Bank lesen",
+      "intent": "Einen Brief der Bank über neue Kontogebühren lesen und verstehen, was sich ab wann ändert und was man tun kann (Kontoführungsgebühr, Zustimmung, Widerspruch, kostenlos kündigen)."
+    },
+    {
+      "id": "de-insurance",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Versicherungen",
+      "intent": "Etwa zwölf Wörter zu Versicherungen verstehen: die Versicherung, die Haftpflichtversicherung, die Hausratversicherung, die Kfz-Versicherung, der Beitrag, die Police, die Selbstbeteiligung."
+    },
+    {
+      "id": "de-genitive-adjective-endings",
+      "kind": "grammar",
+      "topic": "adjectives",
+      "workingTitle": "Adjektivendungen im Genitiv",
+      "intent": "Adjektive im Genitiv nach Artikel mit -en und ohne Artikel im Femininum und Plural mit -er verwenden: wegen des schlechten Wetters, die Wohnung meiner alten Freundin, trotz großer Mühe."
+    },
+    {
+      "id": "de-phone-and-internet-contracts",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Handyvertrag und Internet",
+      "intent": "Etwa vierzehn Wörter aus Handy- und Internetverträgen verstehen: der Tarif, die Flatrate, das Datenvolumen, die Mindestlaufzeit, der Anbieter, der Router, der Anschluss."
+    },
+    {
+      "id": "de-passing-on-a-message",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Eine Nachricht weitergeben",
+      "intent": "Eine Nachricht für jemanden entgegennehmen und richtig weitergeben: Frau Lang hat angerufen. Sie lässt ausrichten, dass das Treffen ausfällt. Sie hat gefragt, ob du sie zurückrufen kannst."
+    },
+    {
+      "id": "de-prepositional-correlates",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Darauf, daran: Präpositionaladverb vor dass-Satz und Infinitiv",
+      "intent": "Bei Verben mit Präposition einen dass-Satz oder Infinitiv mit zu durch darauf, daran oder darüber ankündigen: Ich freue mich darauf, dich zu sehen. Denk daran, dass morgen frei ist."
+    },
+    {
+      "id": "de-reading-a-tariff-comparison",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Einen Tarifvergleich lesen",
+      "intent": "Einen Vergleich von Handytarifen mit Tabelle und Text lesen und nach Preis, Laufzeit, Datenvolumen und Bedingungen einen Tarif wählen (monatlich kündbar, 24 Monate Mindestlaufzeit)."
+    },
+    {
+      "id": "de-offices-and-forms",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Ämter und Anträge",
+      "intent": "Etwa vierzehn Wörter für den Kontakt mit Behörden verwenden: das Amt, die Behörde, der Antrag, beantragen, die Gebühr, die Frist, der Bescheid, der Sachbearbeiter und die Sachbearbeiterin."
+    },
+    {
+      "id": "de-inside-outside-genitive",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "Innerhalb und außerhalb",
+      "intent": "Innerhalb und außerhalb mit Genitiv oder mit von und Dativ für Ort und Zeit verwenden: innerhalb einer Woche, außerhalb der Stadt, innerhalb von drei Tagen."
+    },
+    {
+      "id": "de-residence-and-citizenship",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Aufenthalt und Einbürgerung",
+      "intent": "Etwa zwölf Wörter zu Aufenthalt und Einbürgerung verstehen: die Ausländerbehörde, der Aufenthaltstitel, die Arbeitserlaubnis, die Einbürgerung, der Einbürgerungstest, die Staatsangehörigkeit."
+    },
+    {
+      "id": "de-passive-with-modal-verbs",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Passiv mit Modalverben",
+      "intent": "Regeln und Aufgaben im Passiv mit Modalverb ausdrücken, am Satzende Partizip II und werden: Der Antrag muss unterschrieben werden. Die Fenster sollen geputzt werden."
+    },
+    {
+      "id": "de-identity-papers",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Ausweise und Urkunden",
+      "intent": "Etwa zwölf Wörter für Ausweise und Urkunden verwenden: der Personalausweis, der Reisepass, die Geburtsurkunde, die Heiratsurkunde, das Passfoto, gültig, ablaufen, verlängern."
+    },
+    {
+      "id": "de-official-letters",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Post vom Amt",
+      "intent": "Etwa zwölf Wörter aus Briefen von Behörden verstehen: das Schreiben, die Mahnung, der Widerspruch, die Zahlungsfrist, das Einschreiben, das Aktenzeichen, fristgerecht, umgehend."
+    },
+    {
+      "id": "de-reading-an-official-decision-letter",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Einen Bescheid vom Amt lesen",
+      "intent": "Einen Bescheid lesen, der fehlende Unterlagen nennt, und verstehen, was man bis wann schicken muss und was sonst passiert (Aktenzeichen, Frist, sonst wird der Antrag abgelehnt)."
+    },
+    {
+      "id": "de-clarifying-a-letter-from-an-authority",
+      "kind": "functions",
+      "theme": "services",
+      "workingTitle": "Fragen zu einem Brief vom Amt klären",
+      "intent": "In einer Beratung klären, was ein Brief vom Amt verlangt: Ich habe diesen Brief bekommen und verstehe ihn nicht ganz. Bis wann muss ich das abgeben? Was passiert, wenn ich die Frist verpasse?"
+    },
+    {
+      "id": "de-tenancy",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Mietvertrag und Hausordnung",
+      "intent": "Etwa vierzehn Wörter aus Mietvertrag und Hausordnung verstehen: die Kündigungsfrist, die Nebenkostenabrechnung, die Wohngemeinschaft (WG), der Untermieter, die Wohnungsübergabe, die Haustierhaltung."
+    },
+    {
+      "id": "de-paired-conjunctions",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Entweder ... oder, sowohl ... als auch, nicht nur ... sondern auch",
+      "intent": "Mit entweder ... oder eine Alternative und mit sowohl ... als auch und nicht nur ... sondern auch eine Aufzählung ausdrücken: Wir fahren entweder heute oder morgen."
+    },
+    {
+      "id": "de-reading-a-rental-contract",
+      "kind": "reading",
+      "theme": "house_and_home",
+      "workingTitle": "Einen Mietvertrag lesen",
+      "intent": "Die wichtigsten Paragrafen eines Mietvertrags lesen und finden, was Mieter dürfen und müssen (Kaution, Kündigungsfrist von drei Monaten, Haustiere, Schönheitsreparaturen)."
+    },
+    {
+      "id": "de-neighbourhood-life",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Nachbarschaft",
+      "intent": "Etwa zwölf Wörter für das Zusammenleben im Mietshaus verwenden: die Nachbarschaft, die Hausgemeinschaft, die Mittagsruhe, der Lärm, der Aushang, das Schwarze Brett, rücksichtsvoll, sich beschweren."
+    },
+    {
+      "id": "de-zwar-aber-jedoch",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Zwar ..., aber und jedoch",
+      "intent": "Mit zwar ... aber etwas zugeben und dann einschränken und jedoch als schriftliches aber verwenden: Die Wohnung ist zwar klein, aber sehr hell. Der Preis ist jedoch hoch."
+    },
+    {
+      "id": "de-energy-at-home",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Energie im Haushalt",
+      "intent": "Etwa zwölf Wörter zu Strom und Heizung verwenden: der Strom, das Gas, der Heizkörper, die Heizkosten (Pl.), der Verbrauch, die Stromrechnung, lüften, Energie sparen."
+    },
+    {
+      "id": "de-waste-sorting",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Mülltrennung",
+      "intent": "Etwa vierzehn Wörter zum Trennen von Abfall verwenden: die Mülltonne, der Biomüll, der Restmüll, das Altpapier, der Glascontainer, der gelbe Sack, das Pfand, die Pfandflasche."
+    },
+    {
+      "id": "de-sorting-out-a-noise-problem",
+      "kind": "functions",
+      "theme": "house_and_home",
+      "workingTitle": "Mit Nachbarn ein Lärmproblem lösen",
+      "intent": "Nachbarn höflich auf Lärm ansprechen und gemeinsam eine Lösung finden: Entschuldigen Sie, die Musik war gestern sehr laut. Ab 22 Uhr ist Nachtruhe. Könnten Sie dann leiser sein?"
+    },
+    {
+      "id": "de-shelf-life-and-leftovers",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Haltbarkeit und Reste",
+      "intent": "Etwa zwölf Wörter zur Haltbarkeit von Lebensmitteln verstehen: das Mindesthaltbarkeitsdatum, haltbar, abgelaufen, verderben, schimmelig, die Reste (Pl.), einfrieren, das Tiefkühlfach."
+    },
+    {
+      "id": "de-reading-a-utilities-statement",
+      "kind": "reading",
+      "theme": "house_and_home",
+      "workingTitle": "Eine Nebenkostenabrechnung lesen",
+      "intent": "Die jährliche Nebenkostenabrechnung lesen, die Posten verstehen (Heizung, Wasser, Müllabfuhr, Hausmeister) und sehen, ob man nachzahlen muss oder Geld zurückbekommt."
+    },
+    {
+      "id": "de-city-life",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Stadtleben",
+      "intent": "Das Leben in der Stadt mit etwa zwölf Wörtern beschreiben: die Großstadt, die Kleinstadt, der Vorort, das Nachtleben, das Kulturangebot, die Lebensqualität, lebendig."
+    },
+    {
+      "id": "de-passive-simple-past",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Das Passiv im Präteritum",
+      "intent": "Das Passiv im Präteritum mit wurde und Partizip II bilden, vor allem in Berichten und Texten über Geschichte: Das Rathaus wurde 1890 gebaut. Die Gäste wurden herzlich begrüßt."
+    },
+    {
+      "id": "de-castles-and-old-towns",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Burgen, Schlösser, Altstädte",
+      "intent": "Etwa vierzehn Wörter für historische Sehenswürdigkeiten mit Artikel und Plural nennen: das Schloss (die Schlösser), die Burg, der Dom, das Denkmal, die Altstadt, der Turm, die Ruine."
+    },
+    {
+      "id": "de-passive-present-perfect",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Das Passiv im Perfekt",
+      "intent": "Das Passiv im Perfekt mit sein, Partizip II und worden bilden, nie mit geworden: Die Brücke ist repariert worden. Bist du schon gefragt worden?"
+    },
+    {
+      "id": "de-reading-a-city-guide-entry",
+      "kind": "reading",
+      "theme": "places",
+      "workingTitle": "Einen Stadtführertext lesen",
+      "intent": "Den Text eines Stadtführers zu einer Sehenswürdigkeit lesen und Geschichte, Öffnungszeiten, Eintritt und Tipps finden (im 13. Jahrhundert erbaut, Turmbesteigung, montags geschlossen)."
+    },
+    {
+      "id": "de-country-life",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Leben auf dem Land",
+      "intent": "Das Leben auf dem Land mit etwa zwölf Wörtern beschreiben: der Bauernhof, das Feld, die Weide, die Scheune, das Vieh, abgelegen, ländlich, der Bauer und die Bäuerin."
+    },
+    {
+      "id": "de-participle-ii-as-adjective",
+      "kind": "grammar",
+      "topic": "adjectives",
+      "workingTitle": "Partizip II als Adjektiv",
+      "intent": "Das Partizip II vor einem Nomen mit Adjektivendung für ein Ergebnis oder einen Vorgang verwenden: die geschlossene Tür, ein gekochtes Ei, das reservierte Zimmer, frisch gewaschene Hemden."
+    },
+    {
+      "id": "de-adjectives-for-places",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Adjektive für Orte",
+      "intent": "Orte mit etwa zwölf Adjektiven beschreiben und bewerten: malerisch, belebt, idyllisch, sehenswert, einladend, ungemütlich, heruntergekommen, eintönig."
+    },
+    {
+      "id": "de-public-facilities",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Öffentliche Einrichtungen",
+      "intent": "Etwa zwölf öffentliche Einrichtungen einer Stadt nennen: die Volkshochschule, die Stadtbücherei, das Jugendzentrum, der Spielplatz, das Hallenbad, das Freibad, das Gemeindezentrum."
+    },
+    {
+      "id": "de-reading-library-rules",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Die Benutzerordnung einer Bibliothek lesen",
+      "intent": "Die Benutzerordnung einer Stadtbibliothek lesen und Rechte, Pflichten und Gebühren finden (Leihfrist vier Wochen, zweimal verlängern, Mahngebühr, Ersatz bei Verlust)."
+    },
+    {
+      "id": "de-maps-and-compass-points",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Karten und Himmelsrichtungen",
+      "intent": "Lage und Richtung mit etwa zwölf Wörtern angeben: die Himmelsrichtung, nördlich, südlich, östlich, westlich, die Landkarte, der Stadtplan, die Entfernung, das Navi."
+    },
+    {
+      "id": "de-passive-agent-von-durch",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Passiv mit von oder durch",
+      "intent": "Im Passiv die handelnde Person mit von und eine Ursache mit durch nennen, wenn sie wichtig sind: Der Brief wurde von der Chefin unterschrieben. Das Dach wurde durch den Sturm beschädigt."
+    },
+    {
+      "id": "de-car-parts-and-breakdowns",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Auto: Teile und Pannen",
+      "intent": "Etwa vierzehn Autoteile und Wörter für Pannen nennen: der Reifen, der Motor, die Bremse, der Scheinwerfer, der Kofferraum, die Panne, der Abschleppdienst, die Werkstatt."
+    },
+    {
+      "id": "de-solving-a-problem-when-travelling",
+      "kind": "functions",
+      "theme": "travel",
+      "workingTitle": "Ein Problem auf Reisen lösen",
+      "intent": "Auf Reisen ein Problem am Schalter oder an der Rezeption schildern und nach Lösungen fragen: Mein Koffer ist nicht angekommen. Ich habe meinen Anschluss verpasst. Was kann ich jetzt tun?"
+    },
+    {
+      "id": "de-traffic-rules",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Verkehrsregeln",
+      "intent": "Etwa vierzehn Wörter zu Regeln im Straßenverkehr verstehen: die Vorfahrt, das Verkehrsschild, die Geschwindigkeit, überholen, die Einbahnstraße, der Strafzettel, das Bußgeld, der Blitzer (ugs.)."
+    },
+    {
+      "id": "de-reading-a-roadworks-notice",
+      "kind": "reading",
+      "theme": "places",
+      "workingTitle": "Eine Meldung über eine Baustelle lesen",
+      "intent": "Eine Meldung über eine Baustelle lesen und gesperrte Straßen, Zeitraum, Umleitung und Ersatzverkehr finden (Vollsperrung ab Montag, Umleitung über die Ringstraße, Ersatzbusse)."
+    },
+    {
+      "id": "de-ausser-bis-auf",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "Außer und bis auf",
+      "intent": "Mit außer und Dativ und mit bis auf und Akkusativ Ausnahmen nennen: Alle außer mir waren da. Bis auf einen Fehler ist alles richtig. Wir haben täglich außer sonntags geöffnet."
+    },
+    {
+      "id": "de-geography-basics",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Geografie",
+      "intent": "Etwa zwölf Wörter für Länder und Regionen verwenden: der Kontinent, das Nachbarland, die Grenze, die Region, die Bevölkerung, der Einwohner, die Fläche, der Quadratkilometer."
+    },
+    {
+      "id": "de-reading-a-travel-blog-about-a-hike",
+      "kind": "reading",
+      "theme": "travel",
+      "workingTitle": "Einen Reiseblog über eine Wanderung lesen",
+      "intent": "Einen Reiseblog über eine mehrtägige Alpenwanderung lesen und Route, Übernachtungen, Eindrücke und Tipps finden (Hüttenübernachtung, Trittsicherheit nötig, früh losgehen)."
+    },
+    {
+      "id": "de-art-and-exhibitions",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Kunst und Ausstellungen",
+      "intent": "Etwa zwölf Wörter für Museum und Galerie verwenden: das Gemälde, die Zeichnung, die Skulptur, die Galerie, die Ausstellung, malen, zeichnen, der Künstler und die Künstlerin."
+    },
+    {
+      "id": "de-foreign-noun-plurals",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Der Plural von Fremdwörtern",
+      "intent": "Den Plural von Fremdwörtern auf -um, -a und -o kennen: das Museum, die Museen; das Thema, die Themen; die Firma, die Firmen; das Konto, die Konten; das Visum, die Visa."
+    },
+    {
+      "id": "de-planning-an-outing-together",
+      "kind": "functions",
+      "theme": "free_time",
+      "workingTitle": "Gemeinsam einen Ausflug planen",
+      "intent": "Mit Freunden einen Ausflug planen, Vorschläge machen und sich einigen: Wir könnten doch zuerst ins Museum gehen. Hättest du Lust auf ein Picknick? Wer bringt was mit? Gut, so machen wir es."
+    },
+    {
+      "id": "de-film-and-cinema",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Film und Kino",
+      "intent": "Über Filme mit etwa vierzehn Wörtern sprechen: der Spielfilm, die Komödie, der Thriller, der Dokumentarfilm, die Hauptrolle, die Handlung, der Regisseur und die Regisseurin."
+    },
+    {
+      "id": "de-reading-a-film-review",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Eine Filmkritik lesen",
+      "intent": "Eine Filmkritik in einem Stadtmagazin lesen, die Handlung von der Bewertung trennen und die Empfehlung finden (sehenswert, etwas langatmig, drei von fünf Sternen)."
+    },
+    {
+      "id": "de-exclamative-sentences",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Ausrufesätze: Wie schön das ist!",
+      "intent": "Ausrufe mit wie, was für ein und so ein bilden, nach wie und was für ein mit dem Verb am Ende: Wie schön das ist! Was für ein tolles Konzert das war! So ein Pech!"
+    },
+    {
+      "id": "de-theatre-and-concerts",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Theater und Konzerte",
+      "intent": "Etwa vierzehn Wörter für Theater, Oper und Konzert nennen: die Bühne, die Aufführung, die Vorstellung, das Publikum, der Applaus, die Oper, das Orchester, die Eintrittskarte."
+    },
+    {
+      "id": "de-reading-a-grimm-fairy-tale",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Ein Märchen der Brüder Grimm lesen",
+      "intent": "Ein leicht gekürztes Märchen der Brüder Grimm lesen, dem Ablauf folgen und typische Elemente erkennen (Es war einmal, drei Aufgaben, die böse Stiefmutter, ein glückliches Ende)."
+    },
+    {
+      "id": "de-in-hospital",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Aufenthalt im Krankenhaus",
+      "intent": "Etwa vierzehn Wörter für die Zeit im Krankenhaus (österr., schweiz. das Spital) verstehen: die Station, die Notaufnahme, die Operation, operieren, die Pflegekraft, die Besuchszeit, entlassen."
+    },
+    {
+      "id": "de-negation-position",
+      "kind": "grammar",
+      "topic": "negation",
+      "workingTitle": "Die Stellung von nicht",
+      "intent": "Mit nicht den ganzen Satz oder nur einen Teil verneinen und nicht vor Präpositionalergänzung, Adjektiv und letzten Verbteil, aber nach Pronomen stellen: Ich habe ihn nicht gesehen."
+    },
+    {
+      "id": "de-sick-notes-and-health-insurance",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Krankschreibung und Krankenversicherung",
+      "intent": "Etwa zwölf Wörter zu Krankschreibung und Krankenkasse verstehen: krankschreiben, die Arbeitsunfähigkeitsbescheinigung, die Überweisung zum Facharzt, die Zuzahlung, gesetzlich oder privat versichert."
+    },
+    {
+      "id": "de-writing-a-short-formal-email",
+      "kind": "functions",
+      "theme": "education",
+      "workingTitle": "Eine kurze formelle E-Mail schreiben",
+      "intent": "Der Kursleitung schreiben, sich entschuldigen und um etwas bitten: Sehr geehrter Herr Weber, entschuldigen Sie, dass ich gefehlt habe. Könnten Sie mir die Unterlagen schicken? Mit freundlichen Grüßen"
+    },
+    {
+      "id": "de-specialist-doctors",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Fachärzte im Alltag",
+      "intent": "Etwa zwölf Fachärzte und ihre Leistungen mit Artikel nennen: der Augenarzt, die Hautärztin, der HNO-Arzt, die Frauenärztin, der Orthopäde, die Zahnärztin, die Füllung, die Zahnreinigung, der Sehtest."
+    },
+    {
+      "id": "de-weder-noch",
+      "kind": "grammar",
+      "topic": "negation",
+      "workingTitle": "Weder ... noch",
+      "intent": "Mit weder ... noch zwei Dinge zugleich verneinen, ohne ein weiteres nicht oder kein: Ich habe weder Zeit noch Geld. Er trinkt weder Kaffee noch Tee."
+    },
+    {
+      "id": "de-check-ups-and-vaccination",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Vorsorge und Impfung",
+      "intent": "Etwa zwölf Wörter zu Vorsorge und Impfungen verwenden: die Impfung, impfen, der Impfpass, die Vorsorgeuntersuchung, der Kinderarzt, der Blutdruck, die Blutprobe, der Ultraschall."
+    },
+    {
+      "id": "de-reading-a-health-insurance-brochure",
+      "kind": "reading",
+      "theme": "health",
+      "workingTitle": "Eine Broschüre der Krankenkasse lesen",
+      "intent": "Eine Broschüre der Krankenkasse lesen und herausfinden, welche Leistungen die Kasse bezahlt und wie man sie nutzt (Vorsorgeuntersuchung, Bonusprogramm, Impfungen, Zahnreinigung)."
+    },
+    {
+      "id": "de-press",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Presse",
+      "intent": "Etwa zwölf Wörter für Zeitungen und Zeitschriften nennen: die Tageszeitung, das Magazin, der Artikel, die Überschrift, das Interview, das Abonnement, der Journalist und die Journalistin."
+    },
+    {
+      "id": "de-placeholder-es",
+      "kind": "grammar",
+      "topic": "information_structure_and_pragmatics",
+      "workingTitle": "Es als Platzhalter am Satzanfang",
+      "intent": "Es auf Position 1 als Platzhalter verwenden, wenn das Subjekt später kommt, und es weglassen, wenn etwas anderes vorne steht: Es kommen viele Gäste. Heute kommen viele Gäste."
+    },
+    {
+      "id": "de-news-and-events",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Nachrichten und Ereignisse",
+      "intent": "Etwa zwölf Wörter für aktuelle Meldungen verstehen: das Ereignis, die Meldung, der Bericht, berichten, passieren, aktuell, die Schlagzeile, die Pressekonferenz."
+    },
+    {
+      "id": "de-reading-short-news-items",
+      "kind": "reading",
+      "theme": "places",
+      "workingTitle": "Kurzmeldungen aus der Zeitung lesen",
+      "intent": "Fünf kurze Meldungen aus der Zeitung schnell lesen, das Thema jeder Meldung erfassen und die passende Überschrift zuordnen (Brand in Lagerhalle, Freibad öffnet früher)."
+    },
+    {
+      "id": "de-social-media",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Soziale Medien",
+      "intent": "Etwa zwölf Wörter für soziale Medien verwenden, auch Verben aus dem Englischen: posten (gepostet), teilen, liken, der Kommentar, das Profil, der Follower, die Plattform."
+    },
+    {
+      "id": "de-agreeing-and-disagreeing",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Zustimmen und widersprechen",
+      "intent": "Im Gespräch zustimmen, teilweise zustimmen oder widersprechen und kurz begründen: Da hast du völlig recht. Ja, schon, aber das ist zu teuer. Das sehe ich anders, ich finde es sinnvoll."
+    },
+    {
+      "id": "de-reading-forum-comments-on-a-debate",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Forumskommentare zu einer Streitfrage lesen",
+      "intent": "Kommentare in einem Onlineforum zu einer Streitfrage lesen (Handyverbot an Schulen) und für jede Person entscheiden, ob sie dafür oder dagegen ist und warum."
+    },
+    {
+      "id": "de-politics-basics",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Politik: erste Begriffe",
+      "intent": "Etwa vierzehn politische Grundbegriffe verstehen: die Regierung, die Partei, die Wahl, wählen, das Parlament, die Demokratie, der Minister, der Bundeskanzler und die Bundeskanzlerin."
+    },
+    {
+      "id": "de-crime-basics",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Kriminalität",
+      "intent": "Etwa zwölf Wörter zu Diebstahl und Einbruch verwenden: der Diebstahl, stehlen, einbrechen, der Einbruch, der Zeuge, die Anzeige bei der Polizei, festnehmen, der Dieb und die Diebin."
+    },
+    {
+      "id": "de-collective-noun-agreement",
+      "kind": "grammar",
+      "topic": "agreement",
+      "workingTitle": "Sammelnamen und Verb: die Polizei kommt",
+      "intent": "Das Verb nach der grammatischen Zahl richten, Plural bei die Leute und die Eltern, Singular bei die Polizei, die Familie und das Team: Die Polizei kommt gleich. Die Leute warten."
+    },
+    {
+      "id": "de-adjective-suffixes-bar-lich-ig",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Adjektive auf -bar, -lich, -ig",
+      "intent": "Etwa vierzehn Adjektive mit -bar, -lich und -ig verstehen und bilden: essbar, waschbar, erreichbar, jährlich, ärgerlich, freundschaftlich, eisig, eilig."
+    },
+    {
+      "id": "de-separable-or-inseparable",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Trennbar oder untrennbar?",
+      "intent": "An der Betonung erkennen, ob eine Vorsilbe trennbar ist: betonte wie ab-, ein-, zurück- trennen sich, unbetonte wie be-, emp-, ent-, er-, ge-, ver-, zer- nie: er gibt zurück, er empfiehlt."
+    },
+    {
+      "id": "de-on-and-off-verbs",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Verbpaare: an und aus, auf und zu",
+      "intent": "Etwa vierzehn trennbare Verben in Gegensatzpaaren verwenden: anmachen und ausmachen, aufmachen und zumachen, einschalten und ausschalten, einpacken und auspacken, abschließen und aufschließen."
+    },
+    {
+      "id": "de-checking-you-have-understood",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Prüfen, ob man richtig verstanden hat",
+      "intent": "Nachfragen, ob man etwas richtig verstanden hat, und um ein Beispiel bitten: Habe ich Sie richtig verstanden, dass der Kurs ausfällt? Meinen Sie damit die Anmeldung? Könnten Sie ein Beispiel geben?"
+    },
+    {
+      "id": "de-irgend-words",
+      "kind": "grammar",
+      "topic": "adverbs",
+      "workingTitle": "Irgendwer, irgendwo, irgendwann",
+      "intent": "Mit irgendwer, irgendetwas, irgendein, irgendwo, irgendwann und irgendwie ausdrücken, dass etwas unbekannt oder unwichtig ist: Irgendwer hat angerufen. Wir treffen uns irgendwann."
+    },
+    {
+      "id": "de-reading-about-multilingual-families",
+      "kind": "reading",
+      "theme": "language",
+      "workingTitle": "Einen Artikel über mehrsprachige Familien lesen",
+      "intent": "Einen Artikel über Mehrsprachigkeit in Familien lesen und die wichtigsten Aussagen und Ratschläge an Eltern finden (eine Person, eine Sprache; keine Angst vor Sprachmischung)."
+    },
+    {
+      "id": "de-science-basics",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Naturwissenschaften",
+      "intent": "Etwa zwölf Wörter aus den Naturwissenschaften nennen: die Wissenschaft, der Wissenschaftler, die Chemie, das Experiment, der Versuch, die Theorie, die Erfindung, die Entdeckung."
+    },
+    {
+      "id": "de-je-desto",
+      "kind": "grammar",
+      "topic": "comparison_and_quantity",
+      "workingTitle": "Je ..., desto",
+      "intent": "Mit je und Komparativ (Verb am Ende) und desto oder umso und Komparativ (Verb danach) zwei Entwicklungen verbinden: Je mehr ich übe, desto besser spreche ich."
+    },
+    {
+      "id": "de-wild-and-farm-animals",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Tiere in Wald und Feld",
+      "intent": "Etwa vierzehn Wildtiere und weitere Nutztiere mit Artikel und Plural nennen: der Fuchs (die Füchse), das Reh, der Hase, der Igel, der Maulwurf, das Insekt, die Biene, das Schaf, die Ziege."
+    },
+    {
+      "id": "de-climate-change-basics",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "Klimawandel: Grundbegriffe",
+      "intent": "Etwa zwölf Grundwörter zum Klimawandel verstehen: das Klima, die Erderwärmung, das Treibhausgas, das Kohlendioxid, der Umweltschutz, die erneuerbaren Energien (Pl.), schützen."
+    },
+    {
+      "id": "de-vorfeld-emphasis",
+      "kind": "grammar",
+      "topic": "information_structure_and_pragmatics",
+      "workingTitle": "Das Vorfeld: Was steht am Satzanfang?",
+      "intent": "Ein Objekt oder eine Angabe ins Vorfeld stellen, um an Bekanntes anzuknüpfen oder einen Kontrast zu zeigen: Den Film kenne ich schon. Am Wochenende arbeite ich nie."
+    },
+    {
+      "id": "de-reading-an-article-about-seasonal-food",
+      "kind": "reading",
+      "theme": "food_and_drink",
+      "workingTitle": "Einen Artikel über regionales Essen lesen",
+      "intent": "Einen Artikel über regionales und saisonales Essen lesen und die Hauptaussage mit ihren Beispielen finden (Spargel im Frühling, kurze Transportwege, Wochenmarkt)."
+    }
+  ]
+}
