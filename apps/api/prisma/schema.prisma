@@ -66,6 +66,12 @@ model UserLevel {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+  streak      Int       @default(0)
+  bestStreak  Int       @default(0)
+  lastGoalDay DateTime? @db.Date
+
+  lessonResults LessonResult[]
+
   @@unique([userId, lang])
 }
 
@@ -99,6 +105,41 @@ model UserSeenQuestion {
   updatedAt    DateTime     @updatedAt
 
   @@unique([userId, questionId])
+}
+
+// Seeded from content/lessons/*.json. The id is the authored key the seed
+// matches on, so a shipped lesson is edited or moved, never deleted.
+model Lesson {
+  id        String     @id
+  lang      Language
+  level     Level
+  position  Int
+  kind      LessonKind
+  topic     Topic?
+  theme     Theme?
+  title     String
+  summary   String
+  brief     Json
+  updatedAt DateTime   @updatedAt
+
+  results LessonResult[]
+
+  @@index([lang, level, position])
+}
+
+// One row per course and lesson: a redo updates it rather than adding one.
+// Restrict, so deleting a lesson that has results fails instead of erasing them.
+model LessonResult {
+  userLevelId String    @db.Uuid
+  userLevel   UserLevel @relation(fields: [userLevelId], references: [id], onDelete: Cascade)
+  lessonId    String
+  lesson      Lesson    @relation(fields: [lessonId], references: [id], onDelete: Restrict)
+  score       Int
+  day         DateTime  @db.Date
+  finishedAt  DateTime
+
+  @@id([userLevelId, lessonId])
+  @@index([userLevelId, day])
 }
 
 enum QuestionCategory {
@@ -151,4 +192,29 @@ enum Topic {
   negation
   comparison_and_quantity
   information_structure_and_pragmatics
+}
+
+// Values match LESSON_KINDS and THEMES in @ft/shared.
+enum LessonKind {
+  grammar
+  vocabulary
+  functions
+  reading
+}
+
+enum Theme {
+  personal_identification
+  house_and_home
+  daily_life
+  free_time
+  travel
+  relations
+  health
+  education
+  shopping
+  food_and_drink
+  services
+  places
+  language
+  weather
 }
