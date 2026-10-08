@@ -840,7 +840,7 @@
       "kind": "grammar",
       "topic": "prepositions_and_case",
       "workingTitle": "Reiseziele: ans Meer, in die Berge, auf die Insel",
-      "intent": "Bei Reisezielen an, in oder auf statt nach wählen, an für Meer und See, in für Berge und Länder mit Artikel, auf für Inseln: ans Meer, am Meer, in die Berge, in den Bergen, auf der Insel, in die Schweiz."
+      "intent": "Bei Reisezielen an, in oder auf statt nach wählen, an für Meer und See, in für Berge und Länder mit Artikel, auf für Inseln: ans/am Meer, in die/den Berge, auf die/der Insel, in die Schweiz."
     },
     {
       "id": "de-accommodation",
