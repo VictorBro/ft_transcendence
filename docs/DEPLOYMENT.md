@@ -144,7 +144,12 @@ docker compose -f compose.deploy.yml up -d
 ```
 
 `--profile migrate` on the pull is required, or the tooling image that runs the migration is
-skipped. The migration prints almost nothing on success; `echo $?` is the signal.
+skipped. `migrate` applies the migrations, then runs `db:seed`: the question bank and the
+lessons ship as files in `content/`, so a fresh database needs them before the app is usable.
+Both upsert on the authored ids, so the seed is safe on every redeploy. On success it ends with
+`seeded N questions` and `seeded N lessons`, where `N lessons` counts only new or changed rows.
+It fails, and writes nothing, if the database holds a lesson that no file has: a shipped
+lesson is edited or moved, never deleted.
 
 ```bash
 docker compose -f compose.deploy.yml ps

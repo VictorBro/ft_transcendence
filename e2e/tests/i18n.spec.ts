@@ -52,7 +52,7 @@ test.describe('internationalisation', () => {
       await expect(
         page.getByRole('heading', {
           level: 1,
-          name: "Apprenez une langue avec un tuteur qui s'adapte à vous",
+          name: "Apprends une langue avec un tuteur qui s'adapte à toi",
         }),
       ).toBeVisible();
       await expect(page.getByRole('link', { name: 'Se connecter' })).toBeVisible();
@@ -101,7 +101,7 @@ test.describe('internationalisation', () => {
 
       await expect(page).toHaveURL('/fr');
       await expect(page.getByRole('heading', { level: 1 })).toContainText(
-        "Apprenez une langue avec un tuteur qui s'adapte à vous",
+        "Apprends une langue avec un tuteur qui s'adapte à toi",
       );
     });
 
