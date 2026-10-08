@@ -154,10 +154,11 @@ comparison_and_quantity    information_structure_and_pragmatics
 ```
 
 Vocabulary and reading items use the closest fit, or
-`information_structure_and_pragmatics`. Same list keys the lesson topics, so an item and the
-lesson that teaches it speak the same language. Generated items are held to that: vocabulary files
-under `VOCABULARY_TOPICS` in `packages/shared/src/schemas/item.ts` (the word classes, plus
-`information_structure_and_pragmatics` for set phrases), reading always under
+`information_structure_and_pragmatics`. The same list labels grammar lessons (`Lesson.topic`), so a
+grammar item and the lesson that teaches it speak the same language. The other lesson kinds carry
+a `theme` instead (see [LESSONS.md](LESSONS.md)). Generated items are held to the list too:
+vocabulary under `VOCABULARY_TOPICS` in `packages/shared/src/schemas/item.ts` (the word classes,
+plus `information_structure_and_pragmatics` for set phrases), reading always under
 `information_structure_and_pragmatics`.
 
 ---

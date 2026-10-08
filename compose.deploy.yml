@@ -1,7 +1,8 @@
 # Deployment topology: pulls released images, never builds.
 #
-#   docker compose -f compose.deploy.yml pull
+#   docker compose -f compose.deploy.yml --profile migrate pull
 #   docker compose -f compose.deploy.yml --profile migrate run --rm migrate
+#   docker compose -f compose.deploy.yml --profile migrate run --rm seed
 #   docker compose -f compose.deploy.yml up -d
 #
 # Standalone on purpose. compose.yml carries `build:` contexts that only make
@@ -100,7 +101,7 @@ services:
   # The build stage of apps/api/Dockerfile, published by images.yml: `prod`
   # deliberately carries no Prisma CLI and no migrations. A stock node image is
   # not a shortcut, see docs/VERSIONS.md trap 1c.
-  migrate:
+  migrate: &tooling
     image: ghcr.io/victorbro/ft_transcendence/tooling:${IMAGE_TAG:-latest}
     profiles: [migrate]
     command: ["pnpm", "--filter", "@ft/api", "exec", "prisma", "migrate", "deploy"]
@@ -112,6 +113,13 @@ services:
     networks:
       - ft
     restart: "no"
+
+  # One-shot as well, from the same image: upserts content/items into the
+  # question bank by sourceId, so the written questions of a release reach the
+  # bank with it. Safe to repeat, and it writes no users.
+  seed:
+    <<: *tooling
+    command: ["pnpm", "--filter", "@ft/api", "run", "db:seed"]
 
   db:
     image: pgvector/pgvector:0.8.6-pg18-trixie
