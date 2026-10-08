@@ -1,9 +1,10 @@
 import { existsSync } from 'node:fs';
 import { readdir, readFile } from 'node:fs/promises';
 import { resolve, join } from 'node:path';
-import { PrismaClient } from '../src/generated/prisma/client';
+import { isDeepStrictEqual } from 'node:util';
+import { Prisma, PrismaClient } from '../src/generated/prisma/client';
 import { PrismaPg } from '@prisma/adapter-pg';
-import { ItemFileSchema } from '@ft/shared';
+import { ItemFileSchema, LessonDraftFileSchema } from '@ft/shared';
 
 // Same guard as PrismaService: left undefined, node-postgres falls back to its
 // own PG* defaults and fails with a misleading localhost connection error.
@@ -15,19 +16,19 @@ function requireDatabaseUrl(): string {
   return url;
 }
 
-export function findItemsDir(): string {
-  const candidateFromRoot = resolve(process.cwd(), 'content/items');
+export function findContentDir(kind: 'items' | 'lessons'): string {
+  const candidateFromRoot = resolve(process.cwd(), 'content', kind);
   if (existsSync(candidateFromRoot)) {
     return candidateFromRoot;
   }
 
-  const candidateFromApi = resolve(process.cwd(), '../../content/items');
+  const candidateFromApi = resolve(process.cwd(), '../../content', kind);
   if (existsSync(candidateFromApi)) {
     return candidateFromApi;
   }
 
   throw new Error(
-    `content/items not found: looked in ${candidateFromRoot} and ${candidateFromApi}. ` +
+    `content/${kind} not found: looked in ${candidateFromRoot} and ${candidateFromApi}. ` +
       'Run db:seed from the repo root or from apps/api.',
   );
 }
@@ -92,6 +93,86 @@ export async function seedQuestionBank(dir: string, prisma: PrismaClient): Promi
   return operations.length;
 }
 
+/**
+ * Returns how many lessons were written: new or changed rows only, so a second
+ * run returns 0 and leaves every updatedAt as it was.
+ */
+export async function seedLessons(dir: string, prisma: PrismaClient): Promise<number> {
+  const allEntries = await readdir(dir);
+  const jsonFiles = allEntries.filter((name) => name.endsWith('.json'));
+
+  const rows = new Map<string, Prisma.LessonCreateInput>();
+  const fileOfId = new Map<string, string>();
+
+  for (const fileName of jsonFiles) {
+    const content = await readFile(join(dir, fileName), 'utf-8');
+
+    let parsed: unknown;
+    try {
+      parsed = JSON.parse(content);
+    } catch (err) {
+      throw new Error(`Invalid JSON in ${fileName}`, { cause: err });
+    }
+
+    const result = LessonDraftFileSchema.safeParse(parsed);
+    if (!result.success) {
+      throw new Error(`Invalid lesson file ${fileName}: ${result.error.message}`);
+    }
+
+    const file = result.data;
+    file.drafts.forEach((draft, index) => {
+      const previousFile = fileOfId.get(draft.id);
+      if (previousFile !== undefined) {
+        throw new Error(`Duplicate lesson id "${draft.id}" in ${previousFile} and ${fileName}`);
+      }
+      fileOfId.set(draft.id, fileName);
+
+      rows.set(draft.id, {
+        id: draft.id,
+        lang: file.lang,
+        level: file.level,
+        position: index + 1,
+        kind: draft.kind,
+        topic: draft.topic ?? null,
+        theme: draft.theme ?? null,
+        title: draft.title,
+        summary: draft.summary,
+        brief: draft.brief,
+      });
+    });
+  }
+
+  const existing = await prisma.lesson.findMany();
+
+  // `<lang>-test-` ids are spec fixtures (#81, #82, #95). One left behind by an
+  // interrupted run must not count as a deleted lesson, or every later seed
+  // fails until someone removes it.
+  const removed = existing
+    .filter((lesson) => !rows.has(lesson.id) && !lesson.id.startsWith(`${lesson.lang}-test-`))
+    .map((lesson) => lesson.id);
+  if (removed.length > 0) {
+    throw new Error(
+      `Lessons in the database but in no file: ${removed.join(', ')}. ` +
+        'A shipped lesson is edited or moved, never deleted.',
+    );
+  }
+
+  const existingById = new Map(existing.map((lesson) => [lesson.id, lesson]));
+  const writes = [...rows.values()].filter((row) => {
+    const current = existingById.get(row.id);
+    if (current === undefined) return true;
+    // isDeepStrictEqual ignores key order, which jsonb does not keep.
+    const { id: _id, updatedAt: _updatedAt, ...currentFields } = current;
+    const { id: _rowId, ...rowFields } = row;
+    return !isDeepStrictEqual(currentFields, rowFields);
+  });
+
+  await prisma.$transaction(
+    writes.map((row) => prisma.lesson.upsert({ where: { id: row.id }, create: row, update: row })),
+  );
+  return writes.length;
+}
+
 // Runs only when this file is the entry point, so a test importing
 // seedQuestionBank does not seed the real database.
 if (require.main === module) {
@@ -99,8 +180,10 @@ if (require.main === module) {
     adapter: new PrismaPg({ connectionString: requireDatabaseUrl() }),
   });
 
-  seedQuestionBank(findItemsDir(), prisma)
-    .then((count) => console.log(`seeded ${count} questions from ${findItemsDir()}`))
+  seedQuestionBank(findContentDir('items'), prisma)
+    .then((count) => console.log(`seeded ${count} questions from ${findContentDir('items')}`))
+    .then(() => seedLessons(findContentDir('lessons'), prisma))
+    .then((count) => console.log(`seeded ${count} lessons from ${findContentDir('lessons')}`))
     .catch((err) => {
       console.error(err);
       process.exit(1);
