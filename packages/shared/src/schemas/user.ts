@@ -13,7 +13,7 @@ export const UserIdSchema = z.uuid();
  * See ./errors.ts.
  */
 export const DisplayNameSchema = z
-  .string()
+  .string('displayName.tooShort')
   .min(3, 'displayName.tooShort')
   .max(32, 'displayName.tooLong')
   .regex(/^[\p{L}\p{N}._-]+$/u, 'displayName.invalidCharacters');
@@ -24,7 +24,7 @@ export const DisplayNameSchema = z
  * neither UTC (the column default) nor Europe/Kyiv.
  */
 export const TimeZoneSchema = z
-  .string()
+  .string('profile.invalidTimeZone')
   // Aborts, so a long value neither reaches Intl nor reports the code twice.
   .max(64, { error: 'profile.invalidTimeZone', abort: true })
   .refine((timeZone) => {
@@ -41,7 +41,7 @@ export const TimeZoneSchema = z
  * it is given, so length is the only defence that matters here.
  */
 export const PasswordSchema = z
-  .string()
+  .string('password.required')
   .min(12, 'password.tooShort')
   .max(128, 'password.tooLong')
   .regex(/[a-z]/, 'password.needsLowercase')
@@ -107,7 +107,7 @@ export type SignUpFormInput = z.infer<typeof SignUpFormSchema>;
  */
 export const LoginSchema = z.object({
   email: z.email('email.invalid'),
-  password: z.string().min(1, 'password.required').max(128, 'password.tooLong'),
+  password: z.string('password.required').min(1, 'password.required').max(128, 'password.tooLong'),
 });
 export type LoginInput = z.infer<typeof LoginSchema>;
 

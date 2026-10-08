@@ -3,9 +3,11 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { RedisStore } from 'connect-redis';
 import session from 'express-session';
-import { cleanupOpenApiDoc, ZodValidationPipe } from 'nestjs-zod';
+import { cleanupOpenApiDoc } from 'nestjs-zod';
 
+import { ErrorCodeFilter } from './error-code.filter';
 import { RedisService } from './redis/redis.service';
+import { CodeValidationPipe } from './validation.pipe';
 
 /**
  * Required like DATABASE_URL: a temp-directory default would accept uploads,
@@ -61,7 +63,10 @@ export function configureApp(app: INestApplication): void {
   // sentence, whether it comes from this pipe or a thrown HttpException. The reader's
   // language is known in the browser and nowhere near here, so the wording is
   // chosen there; see apps/web/lib/error-message.ts.
-  app.useGlobalPipes(new ZodValidationPipe());
+  app.useGlobalPipes(new CodeValidationPipe());
+  // And whatever never reaches the pipe or our throws: a malformed or oversized
+  // body, an unknown route, a crash.
+  app.useGlobalFilters(new ErrorCodeFilter(app.getHttpAdapter()));
 
   app.use(
     session({

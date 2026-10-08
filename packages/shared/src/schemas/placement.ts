@@ -46,8 +46,8 @@ export type PlacementQuestion = z.infer<typeof PlacementQuestionSchema>;
 
 /** Nullable but not optional: null is a timeout, scored wrong; absent is a broken client. */
 export const SubmitAnswerSchema = z.object({
-  questionId: z.uuid(),
-  choice: z.string().min(1).nullable(),
+  questionId: z.uuid('placement.questionMismatch'),
+  choice: z.string('placement.invalidChoice').min(1, 'placement.invalidChoice').nullable(),
 });
 export type SubmitAnswerInput = z.infer<typeof SubmitAnswerSchema>;
 

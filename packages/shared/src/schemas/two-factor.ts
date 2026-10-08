@@ -1,7 +1,9 @@
 import { z } from 'zod';
 
 /** Authenticator codes are always six digits; the string keeps leading zeros. */
-export const TotpCodeSchema = z.string().regex(/^\d{6}$/, 'twoFactor.codeFormat');
+export const TotpCodeSchema = z
+  .string('twoFactor.codeFormat')
+  .regex(/^\d{6}$/, 'twoFactor.codeFormat');
 
 /**
  * Recovery codes are printed in groups for readability, so the separator is
@@ -12,7 +14,7 @@ export const RECOVERY_CODE_GROUP_LENGTH = 5;
 export const RECOVERY_CODE_COUNT = 10;
 
 export const RecoveryCodeSchema = z
-  .string()
+  .string('twoFactor.recoveryCodeFormat')
   .transform((value) => value.replace(/[\s-]/g, '').toLowerCase())
   .pipe(
     z
@@ -40,7 +42,7 @@ export type EnableTwoFactorInput = z.infer<typeof EnableTwoFactorSchema>;
 
 /** Disabling is a privilege change, so it costs the password again. */
 export const DisableTwoFactorSchema = z.object({
-  password: z.string().min(1, 'password.required').max(128, 'password.tooLong'),
+  password: z.string('password.required').min(1, 'password.required').max(128, 'password.tooLong'),
 });
 export type DisableTwoFactorInput = z.infer<typeof DisableTwoFactorSchema>;
 

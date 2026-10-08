@@ -178,14 +178,16 @@
       "incorrectPassword": "Falsches Passwort",
       "identityTaken": "Diese E-Mail-Adresse oder dieser Anzeigename ist bereits vergeben",
       "displayNameTaken": "Dieser Anzeigename ist bereits vergeben",
-      "passwordFirst": "Melde dich zuerst mit deinem Passwort an"
+      "passwordFirst": "Melde dich zuerst mit deinem Passwort an",
+      "sessionRequired": "Bitte melde dich an, um fortzufahren"
     },
     "avatar": {
       "invalidFile": "Diese Datei kann nicht als Avatar verwendet werden. Versuche ein PNG, JPEG oder WebP."
     },
     "profile": {
       "noChanges": "Ändere mindestens ein Feld",
-      "invalidTimeZone": "Diese Zeitzone ist unbekannt"
+      "invalidTimeZone": "Diese Zeitzone ist unbekannt",
+      "invalidLocale": "Diese Oberflächensprache wird nicht unterstützt"
     },
     "twoFactor": {
       "codeFormat": "Gib den sechsstelligen Code aus deiner Authenticator-App ein",
@@ -197,7 +199,10 @@
     "course": {
       "alreadyStarted": "Du hast in dieser Sprache bereits einen Kurs begonnen",
       "notFound": "Du hast in dieser Sprache noch keinen Kurs",
-      "notPlaced": "Wähle zuerst dein Niveau, um diesen Kurs zu beginnen"
+      "notPlaced": "Wähle zuerst dein Niveau, um diesen Kurs zu beginnen",
+      "unknownLanguage": "Diese Sprache wird nicht angeboten",
+      "invalidGoal": "Wähle ein Tagesziel von 10, 30 oder 60 Minuten",
+      "invalidLevel": "Dieses Niveau gibt es nicht"
     },
     "lesson": {
       "notFound": "Diese Lektion gibt es nicht",
@@ -213,11 +218,16 @@
       "expired": "Dieser Einstufungstest ist abgelaufen. Starte einen neuen.",
       "poolExhausted": "Für diesen Test sind nicht genügend Fragen übrig. Versuche es später erneut."
     },
+    "request": {
+      "invalid": "Die Anfrage konnte nicht gelesen werden",
+      "tooLarge": "Die Anfrage ist zu groß"
+    },
     "network": {
       "unreachable": "Der Server ist nicht erreichbar"
     },
     "server": {
-      "unexpected": "Der Server antwortete mit HTTP {status}"
+      "unexpected": "Der Server antwortete mit HTTP {status}",
+      "rateLimited": "Zu viele Versuche. Versuche es in einer Minute erneut"
     },
     "unknown": "Etwas ist schiefgelaufen. Bitte versuche es erneut."
   },

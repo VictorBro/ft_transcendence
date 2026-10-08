@@ -25,6 +25,8 @@ export const ERROR_CODES = [
   'avatar.invalidFile',
   'profile.noChanges',
   'profile.invalidTimeZone',
+  /** Not one of SUPPORTED_LOCALES. */
+  'profile.invalidLocale',
   'twoFactor.codeFormat',
   'twoFactor.recoveryCodeFormat',
   /** Neither an authenticator code nor a recovery code, at the login step. */
@@ -36,6 +38,8 @@ export const ERROR_CODES = [
   'auth.identityTaken',
   'auth.displayNameTaken',
   'auth.passwordFirst',
+  /** No session, or one whose user no longer exists: sign in again. */
+  'auth.sessionRequired',
   'twoFactor.setupFirst',
   'twoFactor.invalidCode',
   /** One course per language, which is what UserLevel's unique index enforces. */
@@ -43,6 +47,12 @@ export const ERROR_CODES = [
   'course.notFound',
   /** The course exists but the placement exam has not set its level yet. */
   'course.notPlaced',
+  /** Not one of LEARNABLE_LANGUAGES, e.g. `/api/courses/klingon`. */
+  'course.unknownLanguage',
+  /** Not one of DAILY_GOALS. */
+  'course.invalidGoal',
+  /** Not one of LEVELS. */
+  'course.invalidLevel',
   'lesson.notFound',
   /** Not a whole number from 0 to 100. */
   'lesson.invalidScore',
@@ -56,10 +66,16 @@ export const ERROR_CODES = [
   'placement.expired',
   /** No unseen question left for that language, level and category: a content gap. */
   'placement.poolExhausted',
+  /** A body no schema rule names: not JSON, not an object, a field of the wrong type. */
+  'request.invalid',
+  /** A body over the parser's size limit. */
+  'request.tooLarge',
   /** The browser never reached the API: offline, DNS, proxy down. */
   'network.unreachable',
   /** A status the client has no specific wording for. Carries `{status}`. */
   'server.unexpected',
+  /** Too many requests from one address or session; the throttler's reply. */
+  'server.rateLimited',
   /** Last resort, so an unrecognised code degrades to a translated sentence
    *  instead of leaking English server text into a French page. */
   'unknown',

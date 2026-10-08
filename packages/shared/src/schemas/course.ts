@@ -1,13 +1,13 @@
 import { z } from 'zod';
 
-import { LevelSchema } from './item';
+import { LEVELS, LevelSchema } from './item';
 import { LanguageSchema } from './language';
 
 /** A learner's enrolment in one language: what they study, and at what pace. */
 
 /** Minutes per day. A closed set, because each value is a button in the UI. */
 export const DAILY_GOALS = [10, 30, 60] as const;
-export const DailyGoalSchema = z.literal(DAILY_GOALS);
+export const DailyGoalSchema = z.literal(DAILY_GOALS, 'course.invalidGoal');
 export type DailyGoal = z.infer<typeof DailyGoalSchema>;
 
 export const CourseSchema = z.object({
@@ -31,7 +31,12 @@ export const StartCourseSchema = z.object({
 });
 export type StartCourseInput = z.infer<typeof StartCourseSchema>;
 
-export const SetLevelSchema = z.object({ level: LevelSchema });
+/**
+ * Its own enum rather than LevelSchema, which also checks the content files:
+ * there Zod's own message names the allowed levels, which helps whoever writes
+ * them more than a code would.
+ */
+export const SetLevelSchema = z.object({ level: z.enum(LEVELS, 'course.invalidLevel') });
 export type SetLevelInput = z.infer<typeof SetLevelSchema>;
 
 export const SetGoalSchema = z.object({ dailyGoal: DailyGoalSchema });

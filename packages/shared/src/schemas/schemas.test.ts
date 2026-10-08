@@ -9,6 +9,7 @@ import {
   EnableTwoFactorSchema,
   FinishLessonSchema,
   HealthResponseSchema,
+  LanguageSchema,
   LocaleSchema,
   LoginSchema,
   PlacementQuestionSchema,
@@ -16,6 +17,8 @@ import {
   PlacementResultSchema,
   PublicUserSchema,
   SecondFactorSchema,
+  SetGoalSchema,
+  SetLevelSchema,
   SignUpFormSchema,
   StartCourseSchema,
   StartPlacementSchema,
@@ -390,6 +393,28 @@ describe('validation messages', () => {
     ['EnableTwoFactorSchema', EnableTwoFactorSchema, { code: '12' }],
     ['DisableTwoFactorSchema', DisableTwoFactorSchema, { password: '' }],
     ['FinishLessonSchema', FinishLessonSchema, { score: 70.5 }],
+    ['LanguageSchema', LanguageSchema, 'klingon'],
+    // A missing or mistyped field: Zod's "expected string" unless the base type has a code.
+    ['CreateUserSchema (missing fields)', CreateUserSchema, {}],
+    [
+      'CreateUserSchema (locale)',
+      CreateUserSchema,
+      { email: 'a@b.co', displayName: 'abc', password: 'Correct-Horse-9', locale: 'xx' },
+    ],
+    ['LoginSchema (missing fields)', LoginSchema, {}],
+    [
+      'UpdateProfileSchema (wrong types)',
+      UpdateProfileSchema,
+      { displayName: 5, timeZone: 5, locale: 5 },
+    ],
+    ['EnableTwoFactorSchema (missing code)', EnableTwoFactorSchema, {}],
+    ['DisableTwoFactorSchema (missing password)', DisableTwoFactorSchema, {}],
+    ['SecondFactorSchema (wrong type)', SecondFactorSchema, { code: 5 }],
+    ['StartCourseSchema', StartCourseSchema, { lang: 'fr', dailyGoal: 15 }],
+    ['SetGoalSchema', SetGoalSchema, {}],
+    ['SetLevelSchema', SetLevelSchema, { level: 'Z9' }],
+    ['StartPlacementSchema', StartPlacementSchema, {}],
+    ['SubmitAnswerSchema', SubmitAnswerSchema, { questionId: 'nope', choice: 5 }],
   ] as const;
 
   it.each(rejected)('%s reports codes, not prose', (_name, schema, input) => {

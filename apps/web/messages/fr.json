@@ -178,14 +178,16 @@
       "incorrectPassword": "Mot de passe incorrect",
       "identityTaken": "Cette adresse e-mail ou ce nom d'affichage est déjà utilisé",
       "displayNameTaken": "Ce nom d'affichage est déjà utilisé",
-      "passwordFirst": "Connectez-vous d'abord avec votre mot de passe"
+      "passwordFirst": "Connectez-vous d'abord avec votre mot de passe",
+      "sessionRequired": "Connexion requise pour continuer"
     },
     "avatar": {
       "invalidFile": "Ce fichier ne peut pas être utilisé comme avatar. Essayez un PNG, JPEG ou WebP."
     },
     "profile": {
       "noChanges": "Modifiez au moins un champ",
-      "invalidTimeZone": "Ce fuseau horaire n'est pas reconnu"
+      "invalidTimeZone": "Ce fuseau horaire n'est pas reconnu",
+      "invalidLocale": "Cette langue d'interface n'est pas prise en charge"
     },
     "twoFactor": {
       "codeFormat": "Saisissez le code à six chiffres de votre application d'authentification",
@@ -197,7 +199,10 @@
     "course": {
       "alreadyStarted": "Vous avez déjà commencé un cours dans cette langue",
       "notFound": "Vous n'avez pas encore de cours dans cette langue",
-      "notPlaced": "Choisissez d'abord votre niveau pour commencer ce cours"
+      "notPlaced": "Choisissez d'abord votre niveau pour commencer ce cours",
+      "unknownLanguage": "Cette langue n'est pas proposée",
+      "invalidGoal": "Objectif quotidien possible : 10, 30 ou 60 minutes",
+      "invalidLevel": "Ce niveau n'existe pas"
     },
     "lesson": {
       "notFound": "Cette leçon n'existe pas",
@@ -213,11 +218,16 @@
       "expired": "Ce test de positionnement a expiré. Lancez-en un nouveau.",
       "poolExhausted": "Il ne reste pas assez de questions pour ce test. Réessayez plus tard."
     },
+    "request": {
+      "invalid": "La requête est illisible",
+      "tooLarge": "La requête est trop volumineuse"
+    },
     "network": {
       "unreachable": "Impossible de joindre le serveur"
     },
     "server": {
-      "unexpected": "Le serveur a répondu HTTP {status}"
+      "unexpected": "Le serveur a répondu HTTP {status}",
+      "rateLimited": "Trop de tentatives. Nouvel essai possible dans une minute"
     },
     "unknown": "Une erreur est survenue. Réessayez."
   },
