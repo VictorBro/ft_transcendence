@@ -25,5 +25,8 @@ export default defineConfig({
     // A cold container boots the whole Nest graph before the first assertion.
     testTimeout: 30_000,
     hookTimeout: 30_000,
+    // Specs insert and delete shared catalogue rows (fixture lessons, results
+    // over a whole level), so two files at once would see each other's rows.
+    fileParallelism: false,
   },
 });

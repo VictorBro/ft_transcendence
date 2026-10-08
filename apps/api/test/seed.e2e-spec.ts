@@ -1,9 +1,10 @@
-import { mkdtemp, readdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { randomUUID } from 'node:crypto';
+import { copyFile, mkdir, mkdtemp, readdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { afterAll, afterEach, beforeAll, describe, expect, it } from 'vitest';
 
-import { findItemsDir, seedQuestionBank } from '../prisma/seed';
+import { findContentDir, seedLessons, seedQuestionBank } from '../prisma/seed';
 import { PrismaService } from '../src/prisma/prisma.service';
 
 const itemFile = (question: string) => ({
@@ -138,13 +139,13 @@ describe('seedQuestionBank (e2e)', () => {
     expect(row).toBeNull();
   });
 
-  // Covers findItemsDir and the walk over all nine files, which the one-item
+  // Covers findContentDir and the walk over all nine files, which the one-item
   // fixtures cannot. Every query is scoped to the ids this call wrote: unscoped,
   // a seed that loaded nothing still passed on an already-seeded database, and
   // one unrelated row failed it. Its rows stay behind, which is the normal state
   // of a seeded database; afterEach only targets the 90xx fixture ids.
   it('loads all 270 authored items from the real content directory', async () => {
-    const dir = findItemsDir();
+    const dir = findContentDir('items');
     const authored = await readAuthoredItems(dir);
     expect(authored).toHaveLength(270);
     const where = { sourceId: { in: authored.map((item) => item.sourceId) } };
@@ -195,5 +196,251 @@ describe('seedQuestionBank (e2e)', () => {
     });
     expect(rest).toHaveLength(180);
     expect(rest.every((row) => row.readText === null)).toBe(true);
+  });
+});
+
+const lessonDraft = (id: string, title: string) => ({
+  id,
+  kind: 'grammar' as const,
+  topic: 'nouns_and_determiners' as const,
+  title,
+  summary: 'A fixture lesson.',
+  brief: {
+    objective: 'Pick the right article.',
+    points: ['One point.', 'Another point.'],
+    examples: ['The cat.', 'A dog.', 'An apple.'],
+    pitfalls: ['Mixing them up.'],
+  },
+});
+
+const lessonFile = (drafts: unknown[]) => ({
+  lang: 'en',
+  level: 'A1',
+  drafts,
+});
+
+/**
+ * Fixture lessons use `en-test-` ids, which the seed's unknown-id check skips,
+ * so one left behind by an interrupted run never blocks a later seed. Every
+ * directory also carries the real lesson files: without them, an authored
+ * lesson already in the database would count as deleted.
+ */
+describe('seedLessons (e2e)', () => {
+  const FIXTURE_IDS = { startsWith: 'en-test-' };
+
+  let prisma: PrismaService;
+  let dir: string;
+  let userId: string | undefined;
+
+  async function writeLessonDir(files: Record<string, unknown>): Promise<string> {
+    await rm(dir, { recursive: true, force: true });
+    await mkdir(dir);
+    const realDir = findContentDir('lessons');
+    for (const name of (await readdir(realDir)).filter((n) => n.endsWith('.json'))) {
+      await copyFile(join(realDir, name), join(dir, name));
+    }
+    for (const [name, content] of Object.entries(files)) {
+      await writeFile(
+        join(dir, name),
+        typeof content === 'string' ? content : JSON.stringify(content),
+      );
+    }
+    return dir;
+  }
+
+  async function courseWithResult(lessonId: string): Promise<string> {
+    const suffix = randomUUID();
+    const user = await prisma.user.create({
+      data: {
+        email: `seed-${suffix}@example.test`,
+        displayName: `seed-${suffix}`,
+        passwordHash: 'unused',
+        userLevels: { create: { lang: 'en', level: 'A1', dailyGoal: 10 } },
+      },
+      include: { userLevels: true },
+    });
+    userId = user.id;
+    const userLevelId = user.userLevels[0].id;
+    await prisma.lessonResult.create({
+      data: {
+        userLevelId,
+        lessonId,
+        score: 55,
+        day: new Date('2026-10-12'),
+        finishedAt: new Date('2026-10-12T07:10:00Z'),
+      },
+    });
+    return userLevelId;
+  }
+
+  beforeAll(async () => {
+    prisma = new PrismaService();
+    dir = join(await mkdtemp(join(tmpdir(), 'seed-lessons-')), 'lessons');
+  });
+
+  afterEach(async () => {
+    // The user first: its results cascade, and Restrict blocks the lessons.
+    if (userId !== undefined) {
+      await prisma.user.delete({ where: { id: userId } });
+      userId = undefined;
+    }
+    await prisma.lesson.deleteMany({ where: { id: FIXTURE_IDS } });
+  });
+
+  afterAll(async () => {
+    if (dir !== undefined) {
+      await rm(join(dir, '..'), { recursive: true, force: true });
+    }
+    await prisma?.$disconnect();
+  });
+
+  it('maps every column and takes lang, level and position from the file', async () => {
+    await writeLessonDir({
+      'en-test.json': lessonFile([
+        lessonDraft('en-test-first', 'First'),
+        lessonDraft('en-test-second', 'Second'),
+      ]),
+    });
+
+    expect(await seedLessons(dir, prisma)).toBe(2);
+
+    const row = await prisma.lesson.findUniqueOrThrow({ where: { id: 'en-test-second' } });
+    expect(row).toMatchObject({
+      lang: 'en',
+      level: 'A1',
+      position: 2,
+      kind: 'grammar',
+      topic: 'nouns_and_determiners',
+      theme: null,
+      title: 'Second',
+      summary: 'A fixture lesson.',
+      brief: lessonDraft('x', 'x').brief,
+    });
+  });
+
+  it('writes nothing on a second run, so updatedAt stays the same', async () => {
+    await writeLessonDir({
+      'en-test.json': lessonFile([lessonDraft('en-test-first', 'First')]),
+    });
+    await seedLessons(dir, prisma);
+    const before = await prisma.lesson.findUniqueOrThrow({ where: { id: 'en-test-first' } });
+
+    expect(await seedLessons(dir, prisma)).toBe(0);
+
+    const after = await prisma.lesson.findUniqueOrThrow({ where: { id: 'en-test-first' } });
+    expect(after.updatedAt).toEqual(before.updatedAt);
+  });
+
+  it('keeps the id and the results through a retitle and a reorder', async () => {
+    await writeLessonDir({
+      'en-test.json': lessonFile([
+        lessonDraft('en-test-first', 'First'),
+        lessonDraft('en-test-second', 'Second'),
+      ]),
+    });
+    await seedLessons(dir, prisma);
+    const userLevelId = await courseWithResult('en-test-first');
+
+    await writeLessonDir({
+      'en-test.json': lessonFile([
+        lessonDraft('en-test-second', 'Second'),
+        lessonDraft('en-test-first', 'First, retitled'),
+      ]),
+    });
+    expect(await seedLessons(dir, prisma)).toBe(2);
+
+    const moved = await prisma.lesson.findUniqueOrThrow({ where: { id: 'en-test-first' } });
+    expect(moved).toMatchObject({ title: 'First, retitled', position: 2 });
+    const result = await prisma.lessonResult.findUniqueOrThrow({
+      where: { userLevelId_lessonId: { userLevelId, lessonId: 'en-test-first' } },
+    });
+    expect(result.score).toBe(55);
+  });
+
+  it('refuses to delete a lesson that has a result (Restrict)', async () => {
+    await writeLessonDir({
+      'en-test.json': lessonFile([lessonDraft('en-test-first', 'First')]),
+    });
+    await seedLessons(dir, prisma);
+    await courseWithResult('en-test-first');
+
+    await expect(prisma.lesson.delete({ where: { id: 'en-test-first' } })).rejects.toThrow();
+    expect(await prisma.lesson.findUnique({ where: { id: 'en-test-first' } })).not.toBeNull();
+  });
+
+  it('fails on an id missing from the files, names it, and writes nothing', async () => {
+    // Not a test- id, since the check skips those: removed in the finally,
+    // so only a crash inside this test can leave it behind.
+    const orphan = 'en-seed-orphan';
+    await writeLessonDir({
+      'en-test.json': lessonFile([lessonDraft('en-test-first', 'First')]),
+    });
+    await seedLessons(dir, prisma);
+    await prisma.lesson.create({
+      data: { ...lessonDraft(orphan, 'Orphan'), lang: 'en', level: 'A1', position: 99 },
+    });
+    try {
+      await writeLessonDir({
+        'en-test.json': lessonFile([lessonDraft('en-test-first', 'First, edited')]),
+      });
+
+      await expect(seedLessons(dir, prisma)).rejects.toThrow(orphan);
+
+      const untouched = await prisma.lesson.findUniqueOrThrow({ where: { id: 'en-test-first' } });
+      expect(untouched.title).toBe('First');
+    } finally {
+      await prisma.lesson.delete({ where: { id: orphan } });
+    }
+  });
+
+  it('ignores a leftover test- lesson that no file has', async () => {
+    await writeLessonDir({
+      'en-test.json': lessonFile([lessonDraft('en-test-leftover', 'Leftover')]),
+    });
+    await seedLessons(dir, prisma);
+
+    await writeLessonDir({});
+    await expect(seedLessons(dir, prisma)).resolves.toBeTypeOf('number');
+  });
+
+  it('fails naming the file on a malformed lesson file', async () => {
+    await writeLessonDir({
+      'en-test.json': lessonFile([{ ...lessonDraft('en-test-first', 'First'), topic: undefined }]),
+    });
+    await expect(seedLessons(dir, prisma)).rejects.toThrow(/en-test\.json/);
+
+    await writeLessonDir({ 'en-test.json': '{ not json' });
+    await expect(seedLessons(dir, prisma)).rejects.toThrow(/en-test\.json/);
+  });
+
+  it('fails naming both files when two share an id', async () => {
+    await writeLessonDir({
+      'en-test-a.json': lessonFile([lessonDraft('en-test-twice', 'Twice')]),
+      'en-test-b.json': lessonFile([lessonDraft('en-test-twice', 'Twice')]),
+    });
+
+    const attempt = seedLessons(dir, prisma);
+    await expect(attempt).rejects.toThrow(/en-test-a\.json/);
+    await expect(attempt).rejects.toThrow(/en-test-b\.json/);
+    expect(await prisma.lesson.findUnique({ where: { id: 'en-test-twice' } })).toBeNull();
+  });
+
+  // Today content/lessons holds only .gitkeep, so this is also the empty-
+  // directory case. Once lessons land, it checks their positions.
+  it('seeds the real content directory with positions 1..N per lang and level', async () => {
+    await expect(seedLessons(findContentDir('lessons'), prisma)).resolves.toBeTypeOf('number');
+
+    const rows = await prisma.lesson.findMany({
+      select: { id: true, lang: true, level: true, position: true },
+      orderBy: { position: 'asc' },
+    });
+    const byCell = new Map<string, typeof rows>();
+    for (const row of rows.filter((r) => !r.id.startsWith(`${r.lang}-test-`))) {
+      const key = `${row.lang}-${row.level}`;
+      byCell.set(key, [...(byCell.get(key) ?? []), row]);
+    }
+    for (const cell of byCell.values()) {
+      expect(cell.map((row) => row.position)).toEqual(cell.map((_, index) => index + 1));
+    }
   });
 });
