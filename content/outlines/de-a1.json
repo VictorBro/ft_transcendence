@@ -1,0 +1,846 @@
+{
+  "lang": "de",
+  "level": "A1",
+  "entries": [
+    {
+      "id": "de-greetings",
+      "kind": "functions",
+      "theme": "personal_identification",
+      "workingTitle": "Begrüßen und verabschieden",
+      "intent": "Je nach Person und Tageszeit passend grüßen und sich verabschieden."
+    },
+    {
+      "id": "de-subject-pronouns",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Personalpronomen im Nominativ",
+      "intent": "Die Personalpronomen ich, du, er, sie, es, wir, ihr, sie und Sie verwenden und du für Freunde und Familie, Sie für Fremde und im Beruf wählen."
+    },
+    {
+      "id": "de-verb-sein-present",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Das Verb sein im Präsens",
+      "intent": "Das Verb sein in allen Personen konjugieren, um Namen, Herkunft, Beruf und Befinden anzugeben: ich bin, du bist, er ist, wir sind, ihr seid, Sie sind."
+    },
+    {
+      "id": "de-countries-and-languages",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Länder, Nationalitäten, Sprachen",
+      "intent": "Etwa zwölf Länder, Nationalitäten und Sprachen nennen, die meisten Länder ohne Artikel: Deutschland, Österreich, aber die Schweiz und die Türkei; der Deutsche, die Deutsche, die Spanierin, Spanisch."
+    },
+    {
+      "id": "de-introducing-yourself",
+      "kind": "functions",
+      "theme": "personal_identification",
+      "workingTitle": "Sich vorstellen",
+      "intent": "Sich mit Namen, Herkunft und Wohnort vorstellen und das Gegenüber dasselbe fragen: Ich heiße Lena und komme aus Polen. Wie heißt du? Woher kommst du?"
+    },
+    {
+      "id": "de-regular-verbs-present",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Regelmäßige Verben im Präsens",
+      "intent": "Regelmäßige Verben wie wohnen, lernen und arbeiten mit -e, -st, -t, -en konjugieren, mit -est und -et nach -t und -d und nur -t nach -s, -ß und -z: du arbeitest, er arbeitet, du heißt."
+    },
+    {
+      "id": "de-alphabet-and-spelling",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Das Alphabet",
+      "intent": "Die Buchstaben des Alphabets aussprechen, auch ä, ö, ü und ß (das Eszett), und Zeichen in Namen und Adressen nennen: der Buchstabe, groß, klein, der Punkt, der Bindestrich, das At-Zeichen."
+    },
+    {
+      "id": "de-w-questions",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "W-Fragen: wer, was, wo, woher, wie",
+      "intent": "Fragen mit wer, was, wo, woher und wie bilden und in Frage und Antwort das Verb auf Position 2 stellen: Woher kommst du? Ich komme aus Polen."
+    },
+    {
+      "id": "de-numbers-to-twenty",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Zahlen von 0 bis 20",
+      "intent": "Von null bis zwanzig zählen und eine Telefonnummer Ziffer für Ziffer sagen: eins, zwei (am Telefon oft zwo), sechs, sieben, sechzehn, siebzehn, die Zahl, die Telefonnummer."
+    },
+    {
+      "id": "de-how-you-feel",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Adjektive für das Befinden",
+      "intent": "Mit etwa zehn Adjektiven sagen, wie man sich fühlt: Es geht mir gut, prima, schlecht. Ich bin müde, wach, froh, traurig, hungrig, durstig, satt."
+    },
+    {
+      "id": "de-asking-how-someone-is",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Fragen, wie es jemandem geht",
+      "intent": "Mit du oder Sie fragen, wie es jemandem geht, und passend antworten: Wie geht es Ihnen? Wie geht's dir? Danke, gut. Es geht. Und Ihnen?"
+    },
+    {
+      "id": "de-everyday-verbs",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Verben für jeden Tag",
+      "intent": "Etwa vierzehn häufige Verben für alltägliche Tätigkeiten verstehen und benutzen: machen, kaufen, brauchen, gehen, fahren, essen, trinken, schlafen, sprechen, schreiben, fragen, sagen, spielen."
+    },
+    {
+      "id": "de-yes-no-questions",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Ja-Nein-Fragen",
+      "intent": "Ja-Nein-Fragen mit dem Verb auf Position 1 bilden und mit ja oder nein antworten: Wohnst du in Berlin? Sprechen Sie Englisch? Ja, ein bisschen."
+    },
+    {
+      "id": "de-family",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Die Familie",
+      "intent": "Etwa zehn Familienmitglieder mit Artikel nennen: der Vater, die Mutter, die Eltern (Pl.), der Bruder, die Schwester, die Geschwister (Pl.), der Sohn, die Tochter, die Oma, der Opa."
+    },
+    {
+      "id": "de-verb-haben-present",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Das Verb haben im Präsens",
+      "intent": "Das Verb haben mit den Formen du hast und er hat konjugieren und für Familie, Besitz und feste Ausdrücke verwenden: Ich habe zwei Schwestern. Hast du Zeit? Wir haben Hunger."
+    },
+    {
+      "id": "de-formal-and-plural-sie",
+      "kind": "grammar",
+      "topic": "agreement",
+      "workingTitle": "Sie, sie und sie",
+      "intent": "Sie (höflich), sie (Singular) und sie (Plural) an Großschreibung, Verbendung und Kontext unterscheiden: Woher kommen Sie? Sie arbeitet hier. Wo wohnen sie?"
+    },
+    {
+      "id": "de-jobs",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Berufe",
+      "intent": "Etwa zwölf Berufe mit Artikel und weiblicher Form nennen: der Lehrer, die Lehrerin, der Arzt, die Ärztin, der Koch, die Köchin, der Verkäufer, die Verkäuferin, der Kellner, die Kellnerin."
+    },
+    {
+      "id": "de-saying-please-thank-you-and-sorry",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Bitten, danken und sich entschuldigen",
+      "intent": "Höflich um etwas bitten, sich bedanken und entschuldigen und darauf reagieren: Hilf mir bitte. Ja, gern. Vielen Dank! Gern geschehen. Entschuldigung! Das tut mir leid. Kein Problem."
+    },
+    {
+      "id": "de-classroom-objects",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Dinge im Kursraum",
+      "intent": "Etwa zwölf Dinge im Kursraum mit Artikel und Plural nennen: das Buch (die Bücher), das Heft, der Kugelschreiber (kurz der Kuli), der Bleistift, der Radiergummi, das Blatt, die Tafel."
+    },
+    {
+      "id": "de-definite-articles-gender",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Der, die, das: das Genus",
+      "intent": "Den bestimmten Artikel nach dem Genus wählen, jedes Nomen mit Artikel lernen und Nomen großschreiben: der Kuli, die Tafel, das Buch und im Plural immer die."
+    },
+    {
+      "id": "de-possessive-articles-mein-dein",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Possessivartikel: mein, dein, Ihr",
+      "intent": "Mit mein, dein und Ihr sagen, wem etwas gehört, mit -e bei femininen Nomen und im Plural: mein Bruder, meine Schwester, dein Buch, Ihre Telefonnummer, meine Eltern."
+    },
+    {
+      "id": "de-people-around-you",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Menschen im Alltag",
+      "intent": "Etwa zwölf Wörter für Menschen im Alltag mit Artikel nennen: der Mann, die Frau, der Junge, das Mädchen, das Kind, die Leute (Pl.), der Freund, die Freundin, der Nachbar, der Kollege, die Kollegin."
+    },
+    {
+      "id": "de-introducing-someone",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Jemanden vorstellen",
+      "intent": "Freunde, Familie oder Kollegen vorstellen und auf eine Vorstellung reagieren: Das ist meine Schwester Mia. Das ist Herr Demir, mein Kollege. Freut mich!"
+    },
+    {
+      "id": "de-negation-nicht",
+      "kind": "grammar",
+      "topic": "negation",
+      "workingTitle": "Verneinung mit nicht",
+      "intent": "Sätze mit nicht verneinen, am Satzende oder vor Adjektiv und Ortsangabe: Ich komme nicht. Ich bin nicht müde. Er wohnt nicht in Wien."
+    },
+    {
+      "id": "de-hobbies",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Hobbys",
+      "intent": "Etwa zwölf Wörter für Hobbys und Freizeit nennen: das Hobby, die Freizeit, lesen, schwimmen, tanzen, kochen, Musik hören, fotografieren, spazieren gehen, Freunde treffen."
+    },
+    {
+      "id": "de-ja-nein-doch",
+      "kind": "grammar",
+      "topic": "negation",
+      "workingTitle": "Ja, nein, doch",
+      "intent": "Einer verneinten Frage mit doch widersprechen und ihr mit nein zustimmen: Wohnst du nicht in Wien? Doch, ich wohne in Wien. Nein, ich wohne in Graz."
+    },
+    {
+      "id": "de-personal-details",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Angaben zur Person",
+      "intent": "Etwa zwölf Wörter für Angaben zur Person mit Artikel nennen: der Vorname, der Familienname, die Adresse, die Postleitzahl, der Wohnort, das Geburtsdatum, der Geburtsort, ledig, verheiratet."
+    },
+    {
+      "id": "de-reading-an-online-profile",
+      "kind": "reading",
+      "theme": "personal_identification",
+      "workingTitle": "Ein Online-Profil lesen",
+      "intent": "Ein kurzes Profil auf einer Seite für Sprachtandems lesen und Namen, Alter, Herkunft, Wohnort, Beruf, Sprachen und Hobbys der Person finden (Ich heiße Mara, bin 28 und komme aus Graz)."
+    },
+    {
+      "id": "de-things-in-your-bag",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Dinge in der Tasche",
+      "intent": "Etwa zwölf Dinge, die man jeden Tag dabeihat, mit Artikel nennen: der Schlüssel, das Portemonnaie (auch der Geldbeutel), der Ausweis, der Regenschirm, das Taschentuch, die Kopfhörer (Pl.)."
+    },
+    {
+      "id": "de-opposite-adjectives",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Gegensätze",
+      "intent": "Etwa zwölf Adjektive in Gegensatzpaaren nennen: groß und klein, alt und neu, alt und jung, schnell und langsam, richtig und falsch, offen und geschlossen, leicht und schwer."
+    },
+    {
+      "id": "de-predicative-adjectives",
+      "kind": "grammar",
+      "topic": "adjectives",
+      "workingTitle": "Adjektive nach sein",
+      "intent": "Adjektive nach sein ohne Endung verwenden und mit sehr, ziemlich und zu abstufen: Das Buch ist sehr alt. Der Regenschirm ist ziemlich klein. Die Tasche ist zu schwer."
+    },
+    {
+      "id": "de-pronouns-for-things",
+      "kind": "grammar",
+      "topic": "agreement",
+      "workingTitle": "Er, sie, es für Dinge",
+      "intent": "Nomen durch er, sie oder es nach ihrem grammatischen Genus ersetzen, auch bei Dingen, und durch sie im Plural: Ist der Schlüssel neu? Ja, er ist neu."
+    },
+    {
+      "id": "de-asking-someone-to-repeat",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Nachfragen und buchstabieren lassen",
+      "intent": "Sagen, dass man etwas nicht versteht, und um Wiederholung, Erklärung oder Buchstabieren bitten: Wie bitte? Noch einmal, bitte. Langsamer, bitte. Wie schreibt man das? Was heißt das?"
+    },
+    {
+      "id": "de-indefinite-articles",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Ein, eine: der unbestimmte Artikel",
+      "intent": "Ein für maskuline und neutrale und eine für feminine Nomen verwenden, im Plural ohne Artikel, und ein für Neues, der für Bekanntes: Das ist ein Schlüssel. Der Schlüssel ist alt."
+    },
+    {
+      "id": "de-negation-kein",
+      "kind": "grammar",
+      "topic": "negation",
+      "workingTitle": "Verneinung mit kein",
+      "intent": "Nomen mit ein oder ohne Artikel mit kein und keine verneinen und kein von nicht unterscheiden: Das ist kein Kuli. Wir haben keine Kinder. Der Kuli ist nicht neu."
+    },
+    {
+      "id": "de-classroom-instructions",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Arbeitsanweisungen",
+      "intent": "Etwa zwölf Wörter aus Arbeitsanweisungen in Übungen und Prüfungen verstehen: lesen, hören, ankreuzen, ergänzen, zuordnen, markieren, die Aufgabe, die Lösung, das Beispiel."
+    },
+    {
+      "id": "de-noun-plurals-e-en-s",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Der Plural: -e, -(e)n und -s",
+      "intent": "Den Plural der häufigsten Gruppen bilden: -(e)n bei den meisten Feminina (die Tafeln), -e bei vielen Maskulina (die Bleistifte) und -s bei vielen Fremdwörtern (die Hobbys)."
+    },
+    {
+      "id": "de-cafe-drinks-and-cake",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Getränke und Kuchen",
+      "intent": "Etwa zwölf Getränke und Kuchen mit Artikel nennen: der Kaffee, der Tee, der Kakao, das Mineralwasser, der Saft, die Milch, die Cola, das Bier, der Wein, der Kuchen."
+    },
+    {
+      "id": "de-zero-article",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Der Nullartikel: Nomen ohne Artikel",
+      "intent": "Nomen ohne Artikel verwenden bei Beruf und Nationalität nach sein, bei nicht zählbaren Nomen wie Wasser und Milch und im unbestimmten Plural: Sie ist Ärztin. Ich trinke Wasser. Hast du Geschwister?"
+    },
+    {
+      "id": "de-accusative-articles",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Der Akkusativ: den, einen, keinen",
+      "intent": "Nach Verben wie haben, brauchen, kaufen und suchen das Objekt in den Akkusativ setzen, bei dem sich nur der maskuline Artikel ändert: Ich suche den Schlüssel. Wir kaufen einen Kuchen."
+    },
+    {
+      "id": "de-numbers-and-prices",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Zahlen bis 1000 und Preise",
+      "intent": "Zahlen von 21 bis 1000 sagen, die Einer vor den Zehnern, und Preise nennen: einundzwanzig, dreißig, siebzig, hundert, tausend, der Euro, der Cent, kosten, 2,50 Euro (zwei Euro fünfzig)."
+    },
+    {
+      "id": "de-modal-verb-moechten",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Das Modalverb möchten",
+      "intent": "Mit möchte höflich sagen, was man will, mit einem Nomen oder einem Infinitiv am Satzende und ohne -t bei er und sie: Ich möchte einen Tee. Er möchte zahlen."
+    },
+    {
+      "id": "de-reading-a-cafe-menu",
+      "kind": "reading",
+      "theme": "food_and_drink",
+      "workingTitle": "Die Karte im Café lesen",
+      "intent": "Die Karte eines Cafés lesen und Getränke, Kuchen, Größen und Preise finden (Tee 2,80 Euro, Cappuccino groß 3,90 Euro, Apfelkuchen), um etwas auszuwählen und die Rechnung zu schätzen."
+    },
+    {
+      "id": "de-ordering-at-a-cafe",
+      "kind": "functions",
+      "theme": "food_and_drink",
+      "workingTitle": "Im Café bestellen und bezahlen",
+      "intent": "Im Café Getränke und Kuchen bestellen und bezahlen: Einen Tee, bitte. Ein Stück Apfelkuchen, bitte. Zahlen, bitte! Zusammen oder getrennt? Stimmt so."
+    },
+    {
+      "id": "de-stem-vowel-change-verbs",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Verben mit Vokalwechsel",
+      "intent": "Verben mit Vokalwechsel bei du und er, sie, es konjugieren: a zu ä (du fährst), e zu i (er spricht, sie isst, du nimmst) und e zu ie (er liest, du siehst)."
+    },
+    {
+      "id": "de-clock-times",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Die Uhrzeit",
+      "intent": "Uhrzeiten offiziell und umgangssprachlich sagen: die Uhr, die Stunde, die Minute, zwanzig Uhr dreißig, Viertel nach drei, Viertel vor vier, halb vier für 3.30 Uhr, kurz vor acht."
+    },
+    {
+      "id": "de-days-and-times-of-day",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Wochentage und Tageszeiten",
+      "intent": "Die Wochentage, alle maskulin, und die Tageszeiten nennen: die Woche, der Montag, der Samstag (norddt. auch der Sonnabend), das Wochenende, der Morgen, der Vormittag, der Abend, die Nacht, heute."
+    },
+    {
+      "id": "de-months-and-years",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Monate und Jahreszahlen",
+      "intent": "Die zwölf Monate, alle maskulin, nennen und Jahreszahlen sagen: der Januar (österr. der Jänner), der März, der Juli, der Dezember, das Jahr, neunzehnhundertneunzig, zweitausendsechsundzwanzig."
+    },
+    {
+      "id": "de-time-prepositions-um-am-im",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "Zeitangaben mit um, am und im",
+      "intent": "Auf die Frage wann mit um für die Uhrzeit, am für Tage und Tageszeiten und im für Monate antworten, aber in der Nacht: um acht Uhr, am Montag, am Abend, im Juli."
+    },
+    {
+      "id": "de-verb-second-position",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Inversion: das Verb auf Position 2",
+      "intent": "Eine Zeit- oder Ortsangabe an den Satzanfang und das Subjekt hinter das Verb stellen, weil das Verb auf Position 2 bleibt: Heute arbeite ich. Am Montag habe ich frei."
+    },
+    {
+      "id": "de-sports",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Sport",
+      "intent": "Etwa zwölf Sportarten und Orte für Sport nennen: der Fußball, der Basketball, das Tennis, das Tischtennis, das Schwimmbad, der Sportplatz, der Verein, joggen, Rad fahren."
+    },
+    {
+      "id": "de-moegen-and-gern",
+      "kind": "grammar",
+      "topic": "adverbs",
+      "workingTitle": "Mögen und gern",
+      "intent": "Mit gern beim Verb sagen, was man gern tut, und mit mögen und einem Nomen, was man mag: Ich schwimme gern. Er tanzt nicht gern. Ich mag Fußball. Magst du Tee?"
+    },
+    {
+      "id": "de-going-out",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Kino, Konzert und Kneipe",
+      "intent": "Etwa zwölf Wörter für den Abend in der Stadt mit Artikel nennen: das Kino, der Film, das Konzert, das Theater, der Club (auch die Disco), die Kneipe, die Bar, das Ticket, ausgehen."
+    },
+    {
+      "id": "de-modal-verb-koennen",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Das Modalverb können",
+      "intent": "Mit können Fähigkeit und Möglichkeit ausdrücken, mit ich kann und er kann ohne Endung und dem Infinitiv am Satzende: Ich kann gut kochen. Kannst du morgen kommen?"
+    },
+    {
+      "id": "de-reading-an-event-poster",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Ein Veranstaltungsplakat lesen",
+      "intent": "Ein Plakat für einen Flohmarkt oder ein Konzert lesen und finden, was wann und wo stattfindet und was es kostet (Eintritt frei, Kinder bis 12 Jahre 2 Euro)."
+    },
+    {
+      "id": "de-arranging-to-meet",
+      "kind": "functions",
+      "theme": "free_time",
+      "workingTitle": "Sich verabreden",
+      "intent": "Jemanden zu einer Freizeitaktivität einladen und zusagen oder absagen: Hast du am Samstag Zeit? Gehen wir ins Kino? Ja, gern! Um wie viel Uhr? Leider nicht, da arbeite ich."
+    },
+    {
+      "id": "de-meals-and-breakfast",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Mahlzeiten und Frühstück",
+      "intent": "Die Mahlzeiten des Tages und etwa zehn Dinge zum Frühstück nennen: das Frühstück, das Mittagessen, das Abendessen, das Brötchen (österr. die Semmel), das Brot, die Butter, das Ei, der Käse."
+    },
+    {
+      "id": "de-daily-routine",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Der Tagesablauf",
+      "intent": "Etwa zwölf Tätigkeiten vom Morgen bis zum Abend nennen, auch trennbare Verben: aufwachen, aufstehen, duschen, frühstücken, sich anziehen, einkaufen, fernsehen, ins Bett gehen."
+    },
+    {
+      "id": "de-separable-verbs",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Trennbare Verben",
+      "intent": "Trennbare Verben wie aufstehen und anrufen verwenden, mit der Vorsilbe am Satzende und nach einem Modalverb ungetrennt am Ende: Ich stehe um sieben auf. Ich kann morgen nicht früh aufstehen."
+    },
+    {
+      "id": "de-housework",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Hausarbeit",
+      "intent": "Etwa zehn Tätigkeiten im Haushalt nennen: putzen, aufräumen, Wäsche waschen, spülen (auch abwaschen), staubsaugen, bügeln, das Bett machen, den Müll rausbringen."
+    },
+    {
+      "id": "de-phone-and-internet",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Telefon und Internet",
+      "intent": "Etwa zwölf Wörter für Telefon und Internet nennen: das Handy, das Telefon, anrufen, der Anruf, die Nachricht, die E-Mail, das Internet, der Computer, die Webseite."
+    },
+    {
+      "id": "de-accusative-personal-pronouns",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Personalpronomen im Akkusativ",
+      "intent": "Die Akkusativpronomen mich, dich, ihn, sie, es, uns, euch und Sie nach Verben mit Objekt verwenden: Ich rufe dich morgen an. Kennst du ihn? Wir besuchen euch."
+    },
+    {
+      "id": "de-reading-a-text-message",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Eine Kurznachricht lesen",
+      "intent": "Eine kurze Nachricht von einer Freundin lesen und finden, wann und wo man sich trifft und was sie möchte (Treffen wir uns um sechs am Kino? Ich komme etwas später)."
+    },
+    {
+      "id": "de-past-war-hatte",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Präteritum: war und hatte",
+      "intent": "Mit war und hatte über Vergangenes sprechen, auch im Gespräch, mit gleicher Form bei ich und er: Gestern war ich müde. Wir hatten keine Zeit. Wo warst du?"
+    },
+    {
+      "id": "de-writing-a-short-message",
+      "kind": "functions",
+      "theme": "daily_life",
+      "workingTitle": "Eine kurze Nachricht schreiben",
+      "intent": "Freunden oder der Familie eine kurze Nachricht mit Anrede und Gruß schreiben: Hallo Tim, ich komme heute später, so um sieben. Bis dann! Liebe Grüße von Ana."
+    },
+    {
+      "id": "de-at-work",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Der Arbeitsplatz",
+      "intent": "Etwa zwölf Wörter für den Arbeitsplatz mit Artikel und weiblicher Form nennen: das Büro, die Firma, die Arbeit, der Arbeitsplatz, der Chef, die Chefin, der Kunde, die Kundin."
+    },
+    {
+      "id": "de-possessive-articles-sein-ihr-unser",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Possessivartikel: sein, ihr, unser, euer",
+      "intent": "Sein bei er und es und ihr bei sie im Singular und Plural wählen und unser und euer verwenden: Tom und seine Schwester, Anna und ihr Bruder, unser Haus, eure Kinder."
+    },
+    {
+      "id": "de-possessive-articles-accusative",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Possessivartikel im Akkusativ",
+      "intent": "Possessivartikel im Akkusativ wie ein bilden, mit -en nur im Maskulinum: Ich suche meinen Schlüssel. Hast du meine Telefonnummer? Wir besuchen unseren Opa."
+    },
+    {
+      "id": "de-fruit-and-vegetables",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Obst und Gemüse",
+      "intent": "Etwa fünfzehn Sorten Obst und Gemüse mit Artikel und Plural nennen: der Apfel (die Äpfel), die Banane, die Orange, die Erdbeere, die Tomate, die Kartoffel, die Karotte (auch die Möhre), die Zwiebel."
+    },
+    {
+      "id": "de-everyday-food",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Lebensmittel",
+      "intent": "Etwa zwölf Lebensmittel für jeden Tag mit Artikel nennen: der Reis, die Nudeln (Pl.), das Fleisch, der Fisch, das Hähnchen, der Zucker, das Salz, das Öl, die Schokolade."
+    },
+    {
+      "id": "de-noun-plurals-umlaut-er",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Der Plural: Umlaut, -er und ohne Endung",
+      "intent": "Weitere Pluralgruppen erkennen: Umlaut und -e (die Ärzte), -er mit Umlaut, wo möglich (die Eier, die Bücher), und keine Endung nach -er, -el und -en, manchmal mit Umlaut (die Brötchen, die Äpfel)."
+    },
+    {
+      "id": "de-quantities-and-packs",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Mengen und Verpackungen",
+      "intent": "Etwa zwölf Mengen und Verpackungen für den Einkauf mit Artikel nennen: das Kilo, das Gramm, das Pfund, der Liter, die Flasche, die Dose, die Packung, der Becher, das Stück, die Scheibe."
+    },
+    {
+      "id": "de-man-etwas-nichts-alles",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Man, etwas, nichts, alles",
+      "intent": "Mit man und der er-Form über Regeln und Gewohnheiten sprechen und etwas, nichts und alles ohne Endung verwenden: Hier spricht man Deutsch. Ich brauche nichts. Alles ist gut."
+    },
+    {
+      "id": "de-shops",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Geschäfte",
+      "intent": "Etwa zwölf Geschäfte und Orte zum Einkaufen mit Artikel nennen: der Supermarkt, die Bäckerei, die Metzgerei (auch die Fleischerei), der Kiosk, das Kaufhaus, der Markt, die Buchhandlung."
+    },
+    {
+      "id": "de-reading-a-supermarket-leaflet",
+      "kind": "reading",
+      "theme": "shopping",
+      "workingTitle": "Einen Supermarktprospekt lesen",
+      "intent": "Den Prospekt eines Supermarkts lesen und finden, was im Angebot ist, wie viel man bekommt und was es kostet (500 g, 1 kg, pro Stück, statt 2,49 nur 1,99 Euro)."
+    },
+    {
+      "id": "de-asking-for-something-in-a-shop",
+      "kind": "functions",
+      "theme": "shopping",
+      "workingTitle": "Im Geschäft nach Produkten und Preisen fragen",
+      "intent": "Im Geschäft nach einem Produkt und seinem Preis fragen und etwas kaufen: Haben Sie Tomaten? Was kostet ein Kilo? Gut, ich nehme zwei Kilo. Das ist alles, danke."
+    },
+    {
+      "id": "de-places-in-town",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Orte in der Stadt",
+      "intent": "Etwa zwölf Orte in der Stadt mit Artikel und Plural nennen: der Bahnhof, die Post, die Bank, das Rathaus, das Museum, der Park, die Kirche, die Schule, das Krankenhaus (österr., schweiz. das Spital)."
+    },
+    {
+      "id": "de-modal-verbs-muessen-duerfen",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Modalverben: müssen und dürfen",
+      "intent": "Mit müssen eine Pflicht und mit dürfen eine Erlaubnis ausdrücken und mit Darf ich ...? höflich fragen: Ich muss heute arbeiten. Darf ich hier parken? Du darfst gern bleiben."
+    },
+    {
+      "id": "de-directions",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Wege, Richtungen und Lage",
+      "intent": "Etwa vierzehn Wörter für Weg und Lage nennen: die Straße, der Platz, die Ecke, die Ampel, die Kreuzung, links, rechts, geradeaus, oben, unten, vorne, hinten, nah, weit."
+    },
+    {
+      "id": "de-reading-public-signs",
+      "kind": "reading",
+      "theme": "places",
+      "workingTitle": "Schilder im Alltag lesen",
+      "intent": "Kurze Schilder am Bahnhof, im Geschäft und auf der Straße verstehen (Eingang, Ausgang, Drücken, Ziehen, Rauchen verboten, Bitte klingeln) und wissen, wohin man geht und was verboten ist."
+    },
+    {
+      "id": "de-imperative-sie",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Der Imperativ mit Sie",
+      "intent": "Höfliche Aufforderungen mit dem Imperativ für Sie bilden, Verb zuerst, dann Sie, trennbare Vorsilbe am Ende: Kommen Sie bitte herein. Nehmen Sie Platz. Rufen Sie mich an."
+    },
+    {
+      "id": "de-asking-the-way",
+      "kind": "functions",
+      "theme": "places",
+      "workingTitle": "Nach dem Weg fragen",
+      "intent": "Passanten nach dem Weg fragen und eine einfache Wegbeschreibung verstehen: Entschuldigung, wo ist die Post? Ist das weit? Gehen Sie geradeaus und dann links."
+    },
+    {
+      "id": "de-transport",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Verkehrsmittel",
+      "intent": "Etwa zwölf Verkehrsmittel mit Artikel nennen: das Auto, der Bus, der Zug, die U-Bahn, die S-Bahn, die Straßenbahn (österr. auch die Bim), das Fahrrad (schweiz. das Velo), das Flugzeug, das Taxi."
+    },
+    {
+      "id": "de-dative-after-prepositions",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "Der Dativ nach mit, bei, zu, von, aus, nach",
+      "intent": "Nach mit, bei, zu, von, aus und nach den Dativ mit dem, der, dem und den verwenden und zum, zur, beim und vom bilden: mit dem Bus, zur Arbeit, beim Arzt, mit den Kindern."
+    },
+    {
+      "id": "de-directions-nach-in-zu",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "Wohin? Nach, in, zu",
+      "intent": "Auf die Frage wohin mit nach bei Städten, Ländern und nach Hause, mit in und Akkusativ und mit zu bei Personen und Orten antworten: nach Wien, in die Stadt, zum Arzt."
+    },
+    {
+      "id": "de-weather-and-seasons",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "Wetter und Jahreszeiten",
+      "intent": "Mit etwa zwölf Wörtern sagen, wie das Wetter ist, und die Jahreszeiten nennen: die Sonne, der Regen, der Schnee, der Wind, sonnig, warm, kalt, der Frühling, der Sommer, der Herbst, der Winter."
+    },
+    {
+      "id": "de-holiday-and-luggage",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Urlaub und Gepäck",
+      "intent": "Etwa zwölf Wörter für eine Urlaubsreise mit Artikel nennen: der Urlaub, die Reise, das Gepäck, der Koffer, der Pass, das Hotel, der Strand, der Flughafen, buchen, packen."
+    },
+    {
+      "id": "de-modal-verb-wollen",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Das Modalverb wollen",
+      "intent": "Mit wollen einen festen Plan oder Willen ausdrücken, stärker als möchte, mit ich will und er will: Ich will im Sommer nach Spanien fahren. Willst du mitkommen?"
+    },
+    {
+      "id": "de-at-the-station",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Bahnhof und Zugfahrt",
+      "intent": "Etwa zwölf Wörter für eine Zugfahrt mit Artikel nennen: die Fahrkarte, der Fahrkartenautomat, das Gleis, der Bahnsteig, die Abfahrt, die Ankunft, der Fahrplan, abfahren, ankommen, umsteigen."
+    },
+    {
+      "id": "de-buying-a-train-ticket",
+      "kind": "functions",
+      "theme": "travel",
+      "workingTitle": "Eine Fahrkarte kaufen",
+      "intent": "Am Schalter eine Fahrkarte kaufen und nach Abfahrt und Gleis fragen: Eine Fahrkarte nach Köln, bitte. Einfach oder hin und zurück? Wann fährt der Zug? Von welchem Gleis?"
+    },
+    {
+      "id": "de-reading-a-departures-board",
+      "kind": "reading",
+      "theme": "travel",
+      "workingTitle": "Abfahrtstafel und Fahrplan lesen",
+      "intent": "Eine Abfahrtstafel am Bahnhof und einen einfachen Fahrplan lesen und Abfahrt, Ankunft, Gleis und Verspätung eines Zuges finden (ICE, RE, S-Bahn, heute ca. 10 Minuten später)."
+    },
+    {
+      "id": "de-perfect-with-haben",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Das Perfekt mit haben",
+      "intent": "Das Perfekt mit haben und dem Partizip am Satzende bilden, regelmäßig mit ge-...-t und bei häufigen Verben mit ge-...-en: Ich habe gekocht. Wir haben Pizza gegessen."
+    },
+    {
+      "id": "de-town-and-country",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Stadt und Land",
+      "intent": "Etwa zwölf Wörter für Stadt, Dorf und Natur mit Artikel nennen: die Stadt, das Dorf, das Land, die Natur, der See, das Meer, der Berg (die Berge), der Wald."
+    },
+    {
+      "id": "de-perfect-with-sein",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Das Perfekt mit sein",
+      "intent": "Das Perfekt von Verben der Bewegung mit sein bilden, ebenso bei bleiben und passieren: Ich bin nach Hause gegangen. Sie ist gestern gekommen. Was ist passiert?"
+    },
+    {
+      "id": "de-sequence-adverbs",
+      "kind": "grammar",
+      "topic": "adverbs",
+      "workingTitle": "Zuerst, dann, danach: die Reihenfolge",
+      "intent": "Handlungen mit zuerst, dann, danach und zum Schluss ordnen und nach diesen Wörtern das Verb auf Position 2 stellen: Zuerst frühstücke ich, dann gehe ich zur Arbeit."
+    },
+    {
+      "id": "de-reading-a-holiday-postcard",
+      "kind": "reading",
+      "theme": "weather",
+      "workingTitle": "Eine Urlaubspostkarte lesen",
+      "intent": "Eine Postkarte aus dem Urlaub lesen, Anrede und Gruß erkennen (Liebe Anna, Hallo Tom, Viele Grüße, Bis bald) und finden, wo die Person ist, mit wem und wie das Wetter ist."
+    },
+    {
+      "id": "de-body-parts",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Körperteile",
+      "intent": "Etwa fünfzehn Körperteile mit Artikel und Plural nennen: der Kopf, das Auge (die Augen), das Ohr, die Nase, der Mund, der Zahn (die Zähne), die Hand (die Hände), das Bein, der Bauch, der Rücken."
+    },
+    {
+      "id": "de-being-ill",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Kranksein: Fieber und Schmerzen",
+      "intent": "Etwa zehn Wörter rund ums Kranksein nennen: krank, gesund, erkältet, das Fieber, die Kopfschmerzen (Pl.), die Tablette, die Apotheke, wehtun, im Bett bleiben."
+    },
+    {
+      "id": "de-dative-pronouns-mir-dir",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Dativpronomen: mir, dir, Ihnen",
+      "intent": "Die Dativpronomen mir, dir und Ihnen mit helfen, danken, gehören und wehtun verwenden: Kannst du mir helfen? Das Handy gehört mir. Mir tut der Kopf weh. Tut Ihnen der Rücken weh?"
+    },
+    {
+      "id": "de-imperative-du-ihr",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Der Imperativ mit du und ihr",
+      "intent": "Den Imperativ für du ohne -st und ohne Pronomen bilden, mit e zu i, aber ohne Umlaut, und für ihr wie im Präsens: Komm! Nimm das! Fahr langsam! Seid bitte leise!"
+    },
+    {
+      "id": "de-making-a-doctors-appointment",
+      "kind": "functions",
+      "theme": "health",
+      "workingTitle": "Einen Arzttermin vereinbaren",
+      "intent": "In der Praxis anrufen, kurz sagen, was man hat, und einen Termin vereinbaren: Ich brauche einen Termin. Ich habe Fieber. Geht es am Montag um zehn? Ja, das passt."
+    },
+    {
+      "id": "de-time-prepositions-vor-nach-ab",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "Zeitangaben mit vor, nach, ab und von ... bis",
+      "intent": "Zeitspannen mit von ... bis und ab angeben und mit vor und nach und Dativ sagen, was früher oder später passiert: von neun bis fünf, ab Montag, nach dem Essen, vor der Arbeit."
+    },
+    {
+      "id": "de-reading-surgery-opening-hours",
+      "kind": "reading",
+      "theme": "health",
+      "workingTitle": "Die Sprechzeiten einer Arztpraxis lesen",
+      "intent": "Das Schild einer Arztpraxis lesen und finden, wann sie geöffnet ist (Mo bis Fr 8 bis 12 und 15 bis 18 Uhr, Mi nachmittags geschlossen) und welche Nummer man sonst wählt (116 117, im Notfall 112)."
+    },
+    {
+      "id": "de-coordinating-conjunctions",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Und, oder, aber, denn",
+      "intent": "Hauptsätze mit und, oder, aber und denn verbinden, ohne die Wortstellung zu ändern, mit Komma vor aber und denn: Ich bleibe heute zu Hause, denn ich habe Fieber."
+    },
+    {
+      "id": "de-rooms",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Zimmer und Räume",
+      "intent": "Etwa zwölf Zimmer und Teile der Wohnung mit Artikel und Plural nennen: die Küche, das Bad, das Schlafzimmer, das Wohnzimmer, der Flur, der Balkon, der Keller, die Toilette, die Tür, das Fenster."
+    },
+    {
+      "id": "de-furniture",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Möbel und Geräte",
+      "intent": "Etwa zwölf Möbel und große Geräte mit Artikel und Plural nennen: der Tisch (die Tische), der Stuhl (die Stühle), das Bett, der Schrank, das Sofa, die Lampe, der Kühlschrank, der Herd."
+    },
+    {
+      "id": "de-es-gibt",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Es gibt mit Akkusativ",
+      "intent": "Mit es gibt und Akkusativ sagen, was es an einem Ort gibt oder nicht gibt: Im Zimmer gibt es einen Tisch. Hier gibt es keinen Supermarkt. Gibt es hier ein Café?"
+    },
+    {
+      "id": "de-place-prepositions-dative",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "Wo? In, an, auf, unter mit Dativ",
+      "intent": "Auf die Frage wo mit in, an, auf und unter und dem Dativ antworten, auch mit im und am: Das Buch liegt auf dem Tisch. Ich bin im Büro. Wir wohnen am See."
+    },
+    {
+      "id": "de-describing-a-flat",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Adjektive für die Wohnung",
+      "intent": "Eine Wohnung mit etwa zwölf Wörtern beschreiben: hell, dunkel, ruhig, laut, modern, schön, praktisch, zentral, die Lage, der Quadratmeter."
+    },
+    {
+      "id": "de-tableware",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Geschirr und Besteck",
+      "intent": "Etwa zwölf Dinge zum Essen und Kochen mit Artikel und Plural nennen: der Teller, die Tasse, das Glas (die Gläser), das Messer, die Gabel, der Löffel, der Topf (die Töpfe), die Schüssel."
+    },
+    {
+      "id": "de-birthdays-and-presents",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Geburtstag und Geschenke",
+      "intent": "Etwa zwölf Wörter für eine Geburtstagsfeier mit Artikel nennen: der Geburtstag, die Feier, die Party, das Geschenk, die Einladung, der Gast, die Torte, die Kerze, feiern, einladen, schenken."
+    },
+    {
+      "id": "de-ordinal-numbers-dates",
+      "kind": "grammar",
+      "topic": "comparison_and_quantity",
+      "workingTitle": "Ordnungszahlen und Datum",
+      "intent": "Ordnungszahlen mit -te bis 19 und -ste ab 20 bilden, mit den Sonderformen erste, dritte, siebte und achte, und das Datum mit am und -en angeben: der zweite Mai, am dritten Juli."
+    },
+    {
+      "id": "de-filling-in-a-form",
+      "kind": "functions",
+      "theme": "services",
+      "workingTitle": "Ein Formular ausfüllen",
+      "intent": "Ein Anmeldeformular für einen Deutschkurs ausfüllen: Familienname, Vorname, Straße, Postleitzahl und Wohnort, Geburtsdatum (03.05.1990) eintragen, ledig oder verheiratet ankreuzen, unterschreiben."
+    },
+    {
+      "id": "de-accusative-prepositions-fuer-ohne-gegen",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "Für, ohne und gegen mit Akkusativ",
+      "intent": "Nach für, ohne und gegen immer den Akkusativ verwenden, auch bei Pronomen: ein Geschenk für meinen Sohn, Tee ohne Zucker, ohne dich, ein Mittel gegen Kopfschmerzen."
+    },
+    {
+      "id": "de-reading-a-party-invitation",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Eine Einladung zum Geburtstag lesen",
+      "intent": "Eine Einladung zur Geburtstagsfeier lesen und finden: Anlass, Tag, Uhrzeit, Ort, was man mitbringen soll und bis wann man antwortet (Bitte sagt bis Freitag Bescheid)."
+    },
+    {
+      "id": "de-at-the-restaurant",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Das Essen im Restaurant",
+      "intent": "Etwa zwölf Wörter für ein Essen im Restaurant nennen: die Speisekarte, die Getränkekarte, das Getränk, das Gericht, die Suppe, der Salat, das Hauptgericht, die Portion, die Rechnung, frei, besetzt."
+    },
+    {
+      "id": "de-colours",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Farben",
+      "intent": "Etwa zwölf Farben nennen und mit hell- und dunkel- abstufen: rot, blau, grün, gelb, schwarz, weiß, grau, braun, rosa, lila, hellblau, dunkelgrün."
+    },
+    {
+      "id": "de-clothes",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Kleidung",
+      "intent": "Etwa fünfzehn Kleidungsstücke mit Artikel und Plural nennen: die Hose, die Jeans, das Hemd, die Bluse, der Rock, das Kleid, die Jacke, der Pullover, das T-Shirt, der Schuh (die Schuhe)."
+    },
+    {
+      "id": "de-demonstrative-dieser",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Dieser, diese, dieses",
+      "intent": "Mit dieser, diese und dieses auf etwas zeigen und auswählen, mit den Endungen von der, die, das: Dieser Pullover ist schön. Ich nehme diesen Rock und diese Schuhe."
+    },
+    {
+      "id": "de-appearance",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Aussehen",
+      "intent": "Mit etwa zehn Wörtern beschreiben, wie jemand aussieht: aussehen, schlank, blond, dunkelhaarig, die Haare (Pl.), lang, kurz, die Brille, tragen."
+    }
+  ]
+}
