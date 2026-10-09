@@ -1,0 +1,1616 @@
+{
+  "lang": "fr",
+  "level": "B1",
+  "entries": [
+    {
+      "id": "fr-telling-your-life-story",
+      "kind": "functions",
+      "theme": "personal_identification",
+      "workingTitle": "Raconter son parcours",
+      "intent": "Raconter son parcours personnel ou professionnel en reliant les étapes : « Après le bac, je suis parti… », « C'est là que j'ai rencontré… », « Depuis, je… »."
+    },
+    {
+      "id": "fr-pluperfect",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Le plus-que-parfait",
+      "intent": "Former le plus-que-parfait (j'avais fini, elle était partie) et l'employer pour une action antérieure à un moment passé : quand je suis arrivé, le film avait commencé."
+    },
+    {
+      "id": "fr-turning-points",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Un tournant dans la vie",
+      "intent": "Raconter les moments clés d'une vie avec une douzaine d'expressions : un tournant, changer de vie, s'installer, se lancer, repartir de zéro, réaliser un rêve, tourner la page."
+    },
+    {
+      "id": "fr-narrative-tenses-together",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Raconter avec trois temps",
+      "intent": "Raconter une histoire en choisissant le temps selon le rôle de chaque action : il pleuvait (décor), je suis sorti (événement), j'avais oublié mon parapluie (ce qui précède)."
+    },
+    {
+      "id": "fr-time-markers-in-a-story",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Ce jour-là, la veille, le lendemain",
+      "intent": "Situer les moments d'un récit passé avec une douzaine d'expressions : ce jour-là, la veille, le lendemain, deux jours plus tard, à ce moment-là, au bout d'un moment, soudain."
+    },
+    {
+      "id": "fr-reading-a-magazine-portrait",
+      "kind": "reading",
+      "theme": "personal_identification",
+      "workingTitle": "Lire un portrait dans un magazine",
+      "intent": "Lire le portrait d'une femme devenue boulangère à quarante ans et expliquer pourquoi elle a changé, comment elle s'y est prise (une formation, un prêt) et ce qu'elle en pense."
+    },
+    {
+      "id": "fr-past-near-future-and-recent-past",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "J'allais partir, je venais d'arriver",
+      "intent": "Employer aller et venir de à l'imparfait dans un récit : j'allais sortir quand il a appelé ; on venait d'arriver quand l'orage a éclaté."
+    },
+    {
+      "id": "fr-appearance-and-looks",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Avoir l'air, ressembler à",
+      "intent": "Décrire l'apparence de quelqu'un avec une douzaine de mots : avoir l'air fatigué, ressembler à, ridé, bronzé, les taches de rousseur, une coupe de cheveux, faire jeune, faire son âge."
+    },
+    {
+      "id": "fr-strengths-and-flaws",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Qualités et défauts",
+      "intent": "Parler de ses qualités et de ses défauts avec une quinzaine de mots : patient, têtu, ambitieux, rancunier, débrouillard, susceptible, honnête, maladroit, avoir du caractère."
+    },
+    {
+      "id": "fr-past-participle-agreement-with-avoir",
+      "kind": "grammar",
+      "topic": "agreement",
+      "workingTitle": "L'accord du participe avec avoir",
+      "intent": "Accorder le participe passé avec le complément direct placé avant avoir : la lettre que j'ai écrite, ces photos, je les ai prises, quelles villes as-tu visitées ?"
+    },
+    {
+      "id": "fr-remembering",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Se souvenir, ça me manque",
+      "intent": "Parler de ses souvenirs avec une dizaine d'expressions : se souvenir de, se rappeler, ça me rappelle, un bon souvenir, oublier, ça me manque, avoir la nostalgie de."
+    },
+    {
+      "id": "fr-ca-fait-que",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Ça fait deux ans que…",
+      "intent": "Dire depuis combien de temps dure une situation avec ça fait… que, il y a… que et depuis : ça fait deux ans que j'habite ici, il y a longtemps qu'on ne s'est pas vus."
+    },
+    {
+      "id": "fr-reading-an-autobiography-extract",
+      "kind": "reading",
+      "theme": "personal_identification",
+      "workingTitle": "Lire un extrait de récit d'enfance",
+      "intent": "Lire un extrait de récit d'enfance et séparer ce que l'auteur raconte, ce qu'il ressentait alors (j'avais honte) et ce qu'il en pense aujourd'hui (je comprends maintenant)."
+    },
+    {
+      "id": "fr-then-and-nowadays",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Autrefois, de nos jours",
+      "intent": "Comparer les époques avec une dizaine d'expressions : autrefois, à l'époque, dans le temps, jadis, de nos jours, aujourd'hui, actuellement, désormais, à l'avenir."
+    },
+    {
+      "id": "fr-time-clauses",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Pendant que, depuis que, dès que",
+      "intent": "Situer deux actions l'une par rapport à l'autre avec pendant que, depuis que, dès que, une fois que et au moment où : depuis qu'il habite à Paris, il ne conduit plus."
+    },
+    {
+      "id": "fr-reading-a-story-with-a-twist",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire une nouvelle à chute",
+      "intent": "Lire une courte nouvelle, suivre l'ordre réel des événements malgré les retours en arrière (trois ans plus tôt, la veille) et expliquer en quoi la fin surprend."
+    },
+    {
+      "id": "fr-y-and-en-with-verbs",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "J'y pense, j'en parle",
+      "intent": "Employer y et en avec les verbes construits avec à et de (penser à son avenir, j'y pense ; parler de son voyage, j'en parle), mais à lui, de lui pour une personne."
+    },
+    {
+      "id": "fr-filler-words",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Bon, ben, en fait, du coup",
+      "intent": "Reconnaître et employer une dizaine de petits mots de l'oral : bon, ben, alors, en fait, du coup, quoi, tu vois, enfin, bref, en sachant qu'ils sont familiers."
+    },
+    {
+      "id": "fr-keeping-a-conversation-going",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Faire durer la conversation",
+      "intent": "Relancer une conversation par des questions et des réactions : « Ah bon ? », « Et alors ? », « C'est-à-dire ? », « Raconte ! », « Et ça s'est passé comment ? »."
+    },
+    {
+      "id": "fr-reacting-to-a-story",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Sans blague ! Ça alors !",
+      "intent": "Réagir à une histoire avec une douzaine d'exclamations : sans blague, ça alors, c'est pas vrai, tu rigoles, quelle horreur, génial, la honte, quel soulagement."
+    },
+    {
+      "id": "fr-dislocation",
+      "kind": "grammar",
+      "topic": "information_structure_and_pragmatics",
+      "workingTitle": "Moi, le café, j'adore ça",
+      "intent": "Mettre en avant le sujet d'une phrase à l'oral en le détachant et en le reprenant par un pronom : moi, je trouve que… ; le café, j'adore ça ; ton frère, je l'ai vu hier."
+    },
+    {
+      "id": "fr-strong-emotions",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Ému, soulagé, bouleversé",
+      "intent": "Dire une émotion forte avec une douzaine de mots : ému, bouleversé, soulagé, angoissé, enthousiaste, furieux, vexé, gêné, touché, découragé, avoir le trac."
+    },
+    {
+      "id": "fr-conditional-present",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Le conditionnel présent",
+      "intent": "Former le conditionnel présent avec le radical du futur et les terminaisons de l'imparfait : je voudrais, tu pourrais, il faudrait, nous aimerions, ils seraient."
+    },
+    {
+      "id": "fr-advising-a-friend",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Conseiller un ami",
+      "intent": "Écouter le problème d'un ami et le conseiller avec tact : « Moi, à ta place… », « Tu as pensé à… ? », « Ce serait peut-être mieux de… », « Rien ne t'oblige à… »."
+    },
+    {
+      "id": "fr-social-life",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Sortir et recevoir",
+      "intent": "Parler de sa vie sociale avec une douzaine d'expressions : inviter des amis, recevoir, un apéro, une soirée, un pot de départ, trinquer, rester chez soi, sortir en boîte."
+    },
+    {
+      "id": "fr-double-object-pronouns",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Je te le donne, je le lui dis",
+      "intent": "Combiner deux pronoms compléments dans le bon ordre : je te le prête, elle nous les a montrées, je le lui ai dit, il y en a, donne-le-moi."
+    },
+    {
+      "id": "fr-social-etiquette",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Les codes de politesse",
+      "intent": "Parler des usages avec une douzaine d'expressions : se faire la bise, serrer la main, tutoyer, vouvoyer, arriver à l'heure, apporter quelque chose, un cadeau d'hôte, mal élevé."
+    },
+    {
+      "id": "fr-reading-an-article-on-la-bise",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Lire un article sur la bise",
+      "intent": "Lire un article sur la bise en France (combien, à qui, selon les régions) et résumer les règles et les exceptions qu'il présente."
+    },
+    {
+      "id": "fr-imperfect-for-suggestions",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Si on allait au cinéma ?",
+      "intent": "Proposer une activité avec si + imparfait (Si on allait au cinéma ? Et si on partait demain ?) et accepter ou refuser la proposition."
+    },
+    {
+      "id": "fr-turning-down-tactfully",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Refuser sans vexer",
+      "intent": "Refuser une invitation ou une proposition sans vexer : remercier, donner une raison, proposer autre chose : « C'est gentil, mais… », « Une autre fois avec plaisir »."
+    },
+    {
+      "id": "fr-body-language",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Les gestes et les mimiques",
+      "intent": "Comprendre une douzaine de gestes et de mimiques : hocher la tête, hausser les épaules, faire un clin d'œil, froncer les sourcils, croiser les bras, faire la moue, bof."
+    },
+    {
+      "id": "fr-relative-dont",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Le pronom relatif dont",
+      "intent": "Relier deux phrases avec dont pour remplacer un complément introduit par de : l'ami dont je t'ai parlé, le livre dont j'ai besoin, une ville dont je suis fier."
+    },
+    {
+      "id": "fr-misunderstandings-and-quarrels",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Malentendus et disputes",
+      "intent": "Parler d'un conflit avec une douzaine de mots : un malentendu, en vouloir à quelqu'un, vexer, faire la tête, bouder, crier, s'excuser, pardonner, faire la paix, passer l'éponge."
+    },
+    {
+      "id": "fr-ce-qui-ce-que",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Ce qui, ce que",
+      "intent": "Parler d'une chose sans la nommer avec ce qui et ce que : je ne sais pas ce qui s'est passé, dis-moi ce que tu veux, fais ce que tu peux."
+    },
+    {
+      "id": "fr-reading-an-advice-column",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Lire le courrier des lecteurs",
+      "intent": "Lire la lettre d'un lecteur à une rubrique de conseils (ma belle-mère s'invite tous les dimanches) et la réponse de la journaliste, puis résumer le problème et les solutions."
+    },
+    {
+      "id": "fr-couples",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "La vie à deux",
+      "intent": "Parler de la vie de couple avec une douzaine de mots : le coup de foudre, être en couple, vivre ensemble, se pacser, se fiancer, la jalousie, tromper, rompre, la garde des enfants."
+    },
+    {
+      "id": "fr-extended-family",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Belle-mère, demi-frère, famille recomposée",
+      "intent": "Parler de sa famille élargie avec une douzaine de mots : la belle-mère, le beau-frère, le demi-frère, une famille recomposée, l'aîné, le cadet, le petit dernier, les proches."
+    },
+    {
+      "id": "fr-cest-qui-cest-que",
+      "kind": "grammar",
+      "topic": "information_structure_and_pragmatics",
+      "workingTitle": "C'est moi qui…, c'est là que…",
+      "intent": "Mettre un élément en relief avec c'est… qui et c'est… que : c'est moi qui ai appelé, c'est à Lyon que je l'ai rencontrée, c'est pour ça que je suis venu."
+    },
+    {
+      "id": "fr-bringing-up-children",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Élever ses enfants",
+      "intent": "Parler d'éducation avec une douzaine de mots : élever, gâter, punir, gronder, féliciter, les devoirs, l'argent de poche, l'autorité, être sévère, laisser faire, faire une bêtise."
+    },
+    {
+      "id": "fr-reading-a-parenting-forum",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Lire un forum de parents",
+      "intent": "Lire une discussion entre parents sur l'âge du premier portable et classer les avis selon leurs arguments (la sécurité, le harcèlement, les écrans, l'autonomie)."
+    },
+    {
+      "id": "fr-big-family-occasions",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Mariages, baptêmes, obsèques",
+      "intent": "Parler des grandes cérémonies avec une douzaine de mots : un faire-part, la mairie, les témoins, la lune de miel, un baptême, des obsèques, les condoléances, un enterrement."
+    },
+    {
+      "id": "fr-hosting-guests",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Recevoir des invités",
+      "intent": "Accueillir des invités, proposer à boire, complimenter et remercier : « Entrez, je vous en prie », « Servez-vous », « C'est délicieux », « Merci pour cette belle soirée »."
+    },
+    {
+      "id": "fr-end-of-year-holidays",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Le réveillon, la bûche, les étrennes",
+      "intent": "Raconter les fêtes de fin d'année avec une douzaine de mots : le réveillon, la bûche, le sapin, la dinde, le foie gras, les huîtres, les étrennes, se souhaiter la bonne année."
+    },
+    {
+      "id": "fr-company-and-roles",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "L'entreprise et ses postes",
+      "intent": "Décrire une entreprise avec une douzaine de mots : un service, un poste, le responsable, le stagiaire, le siège, une filiale, embaucher, licencier, démissionner, la direction."
+    },
+    {
+      "id": "fr-job-interview-words",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "L'entretien d'embauche",
+      "intent": "Préparer un entretien avec une douzaine de mots : le recruteur, une candidature, l'expérience, les compétences, les points forts, la période d'essai, le salaire brut et net."
+    },
+    {
+      "id": "fr-professional-qualities",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Rigoureux, autonome, organisé",
+      "intent": "Décrire ses qualités professionnelles avec une douzaine d'adjectifs : rigoureux, autonome, organisé, motivé, ponctuel, polyvalent, fiable, avoir l'esprit d'équipe, le sens du contact."
+    },
+    {
+      "id": "fr-answering-interview-questions",
+      "kind": "functions",
+      "theme": "daily_life",
+      "workingTitle": "Répondre en entretien",
+      "intent": "Répondre aux questions classiques d'un entretien sur son parcours, une qualité, un défaut et sa motivation : « Je suis quelqu'un de rigoureux », « Ce poste m'attire parce que… »."
+    },
+    {
+      "id": "fr-indirect-questions",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Pouvez-vous me dire où… ?",
+      "intent": "Poser une question indirecte avec si, ce que, ce qui, où ou quand : Pouvez-vous me dire où se trouve… ? Je voudrais savoir si le poste est toujours libre."
+    },
+    {
+      "id": "fr-reading-a-cover-letter",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Lire une lettre de motivation",
+      "intent": "Lire une lettre de motivation et retrouver ses parties : pourquoi cette entreprise, ce que la candidate apporte, la demande d'entretien et la formule finale."
+    },
+    {
+      "id": "fr-meetings-and-projects",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Réunions et projets",
+      "intent": "Parler d'un projet au travail avec une douzaine de mots : l'ordre du jour, le compte rendu, une échéance, un délai, un objectif, prendre une décision, reporter, faire le point."
+    },
+    {
+      "id": "fr-gerund",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Le gérondif",
+      "intent": "Former le gérondif (en marchant, en faisant) et l'employer pour deux actions simultanées ou pour dire comment : il travaille en écoutant de la musique, on apprend en pratiquant."
+    },
+    {
+      "id": "fr-work-email-phrases",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Suite à notre échange, ci-joint",
+      "intent": "Rédiger le corps d'un mail professionnel avec une dizaine de formules : je me permets de, suite à, vous trouverez ci-joint, je reste à votre disposition, je vous remercie par avance."
+    },
+    {
+      "id": "fr-speaking-up-in-a-meeting",
+      "kind": "functions",
+      "theme": "daily_life",
+      "workingTitle": "Prendre la parole en réunion",
+      "intent": "Prendre la parole en réunion pour donner son avis, proposer une idée ou résumer une décision : « Si je peux me permettre… », « Je propose de… », « Donc, on est d'accord pour… »."
+    },
+    {
+      "id": "fr-ne-que-restriction",
+      "kind": "grammar",
+      "topic": "negation",
+      "workingTitle": "Ne… que",
+      "intent": "Exprimer une restriction avec ne… que et la distinguer d'une négation : je n'ai que dix minutes, il ne mange que des légumes, ce n'est qu'un début."
+    },
+    {
+      "id": "fr-working-life-rights",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Télétravail, RTT, grève",
+      "intent": "Parler des conditions de travail avec une douzaine de mots : les congés payés, les RTT, le télétravail, la mutuelle, le syndicat, faire grève, la retraite, une prime."
+    },
+    {
+      "id": "fr-reading-a-company-memo",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Lire une note de service",
+      "intent": "Lire une note de service sur une nouvelle organisation (télétravail, horaires d'été) et dire ce qui change, pour qui et à partir de quand."
+    },
+    {
+      "id": "fr-bank-holidays-and-bridges",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Un jour férié, faire le pont",
+      "intent": "Parler des congés en France avec une dizaine d'expressions : un jour férié, faire le pont, les vacances scolaires, poser un jour, les grandes vacances, la rentrée, les ponts de mai."
+    },
+    {
+      "id": "fr-more-and-more",
+      "kind": "grammar",
+      "topic": "comparison_and_quantity",
+      "workingTitle": "De plus en plus, de moins en moins",
+      "intent": "Décrire une évolution avec de plus en plus, de moins en moins, toujours plus, de mieux en mieux : les gens travaillent de plus en plus à distance."
+    },
+    {
+      "id": "fr-career-change",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Chômage et reconversion",
+      "intent": "Parler d'un changement professionnel avec une douzaine de mots : être au chômage, France Travail, une formation, une reconversion, un bilan de compétences, se mettre à son compte."
+    },
+    {
+      "id": "fr-reading-testimonies-on-remote-work",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Lire des témoignages sur le télétravail",
+      "intent": "Lire trois témoignages de salariés sur le télétravail et dire qui est pour, qui est contre, et avec quels arguments (moins de trajets, l'isolement, la frontière avec la vie privée)."
+    },
+    {
+      "id": "fr-verbs-like-conduire",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Conduire, construire, traduire",
+      "intent": "Conjuguer conduire, construire, produire, traduire et réduire au présent, au passé composé et au futur : nous construisons, il a traduit, ils produiront."
+    },
+    {
+      "id": "fr-learning-a-language",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Apprendre une langue",
+      "intent": "Parler de son apprentissage avec une douzaine d'expressions : se débrouiller, parler couramment, avoir un accent, faire des progrès, retenir, sa langue maternelle, être bilingue."
+    },
+    {
+      "id": "fr-present-subjunctive-regular",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Le subjonctif présent",
+      "intent": "Former le subjonctif présent à partir de ils au présent (ils finissent, que je finisse) avec les terminaisons -e, -es, -e, -ions, -iez, -ent."
+    },
+    {
+      "id": "fr-il-faut-que",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Il faut que tu viennes",
+      "intent": "Dire ce que quelqu'un doit faire avec il faut que, il est important que, il est nécessaire que + subjonctif : il faut que tu révises, il est important qu'on parte tôt."
+    },
+    {
+      "id": "fr-irregular-subjunctive",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Que je sois, que j'aie, que j'aille",
+      "intent": "Retenir les subjonctifs irréguliers sois, aie, aille, fasse, puisse, sache, veuille, et les deux radicaux de venir, prendre, boire : que je prenne, que nous prenions."
+    },
+    {
+      "id": "fr-french-school-system",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Le brevet, le bac, l'orientation",
+      "intent": "Comprendre le système scolaire avec une douzaine de mots : le brevet, le bac, l'orientation, Parcoursup, une grande école, une prépa, le conseil de classe, le bulletin."
+    },
+    {
+      "id": "fr-reading-a-school-report",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Lire un bulletin scolaire",
+      "intent": "Lire un bulletin trimestriel et dire où l'élève progresse, où il a du mal et ce que conseillent les professeurs (bon trimestre, peut mieux faire, doit participer davantage)."
+    },
+    {
+      "id": "fr-three-ways-to-ask",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Tu viens ? Est-ce que tu viens ? Viens-tu ?",
+      "intent": "Choisir entre l'intonation, est-ce que et l'inversion selon la situation : Tu viens ? entre amis, Est-ce que vous venez ? au travail, Venez-vous ? à l'écrit."
+    },
+    {
+      "id": "fr-asking-for-clarification",
+      "kind": "functions",
+      "theme": "education",
+      "workingTitle": "Demander des précisions",
+      "intent": "Faire préciser une explication ou une consigne : « Qu'est-ce que vous entendez par… ? », « Vous pourriez donner un exemple ? », « Si je comprends bien… »."
+    },
+    {
+      "id": "fr-revising-and-exams",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Réviser et passer un examen",
+      "intent": "Parler d'examens avec une douzaine d'expressions : réviser, apprendre par cœur, passer un examen, être reçu, échouer, une mention, le rattrapage, une épreuve, tricher."
+    },
+    {
+      "id": "fr-subjunctive-wishes",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Je veux que, j'aimerais que",
+      "intent": "Exprimer ce qu'on veut d'une autre personne avec vouloir que, aimer que, préférer que, souhaiter que + subjonctif : je préfère que tu restes, j'aimerais qu'il comprenne."
+    },
+    {
+      "id": "fr-subjunctive-or-infinitive",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Que tu partes ou partir ?",
+      "intent": "Choisir l'infinitif quand le sujet ne change pas (je veux partir) et que + subjonctif quand il change (je veux que tu partes)."
+    },
+    {
+      "id": "fr-word-families",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Lire, lecture, lecteur",
+      "intent": "Trouver une douzaine de mots d'une même famille pour varier ses phrases : lire, la lecture, un lecteur ; nager, la nage, un nageur ; vendre, la vente ; décider, une décision."
+    },
+    {
+      "id": "fr-prefixes",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Refaire, défaire, impossible",
+      "intent": "Comprendre et former des mots avec une dizaine de préfixes : re- (refaire), dé- (défaire), in- et im- (inutile, impossible), mal- (malhonnête), pré- (prévoir), co- (colocataire)."
+    },
+    {
+      "id": "fr-reading-an-article-on-memory",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Lire un article sur la mémoire",
+      "intent": "Lire un article sur la façon dont on retient le vocabulaire et dégager les trois méthodes conseillées avec leurs arguments (réviser à intervalles, dormir, se tester)."
+    },
+    {
+      "id": "fr-student-life",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "La vie étudiante",
+      "intent": "Parler de la vie étudiante avec une douzaine de mots : un amphi, un TD, une bourse, le resto U, la cité universitaire, un partiel, un mémoire, Erasmus, le logement étudiant."
+    },
+    {
+      "id": "fr-adjectives-with-prepositions",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "Prêt à, capable de, fier de",
+      "intent": "Construire un adjectif avec à ou de suivi d'un nom ou d'un infinitif : prêt à partir, capable de réussir, fier de son fils, facile à dire, difficile à croire."
+    },
+    {
+      "id": "fr-explaining-step-by-step",
+      "kind": "functions",
+      "theme": "education",
+      "workingTitle": "Expliquer une démarche",
+      "intent": "Expliquer à quelqu'un comment faire quelque chose étape par étape et vérifier qu'il suit : « D'abord, il faut que… », « Une fois que c'est fait… », « Jusque-là, ça va ? »."
+    },
+    {
+      "id": "fr-science",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Les sciences",
+      "intent": "Parler de sciences avec une douzaine de mots : une expérience, une découverte, un chercheur, un laboratoire, une hypothèse, prouver, une étude, un résultat, un vaccin, l'espace."
+    },
+    {
+      "id": "fr-reading-an-online-course-page",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Lire la page d'une formation en ligne",
+      "intent": "Lire la page d'une formation en ligne et vérifier si elle convient : prérequis, durée, rythme, certificat, prix et conditions d'annulation."
+    },
+    {
+      "id": "fr-paperwork",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Les démarches administratives",
+      "intent": "Faire une démarche avec une douzaine de mots : un dossier, un formulaire, un justificatif, une pièce d'identité, un rendez-vous en préfecture, renouveler, valable, expiré."
+    },
+    {
+      "id": "fr-asking-an-administration",
+      "kind": "functions",
+      "theme": "services",
+      "workingTitle": "Se renseigner auprès d'une administration",
+      "intent": "Se renseigner sur une démarche, les pièces à fournir, les délais et ce qu'il faut faire si un document manque : « Quels justificatifs faut-il ? », « Et si je n'ai pas l'original ? »."
+    },
+    {
+      "id": "fr-reading-an-official-letter",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire un courrier administratif",
+      "intent": "Lire un courrier d'une administration et trouver ce qu'on vous demande, avant quelle date et ce qui arrive sans réponse (pièces justificatives, sous quinze jours, dossier clos)."
+    },
+    {
+      "id": "fr-passive-voice",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "La voix passive",
+      "intent": "Former le passif avec être + participe accordé (le dossier a été envoyé, les résultats seront publiés) et dire qui fait l'action avec par."
+    },
+    {
+      "id": "fr-taxes-and-benefits",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Impôts, aides, allocations",
+      "intent": "Comprendre une douzaine de mots de la vie administrative : les impôts, la déclaration de revenus, la CAF, les allocations, une aide au logement, la Sécu, être remboursé, le SMIC."
+    },
+    {
+      "id": "fr-banking-and-insurance",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Banque et assurance",
+      "intent": "Gérer ses papiers avec une douzaine de mots : un RIB, un virement, un découvert, un prêt, une assurance habitation, un sinistre, un constat, la franchise, faire opposition."
+    },
+    {
+      "id": "fr-reading-a-bank-help-page",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire la page d'aide d'une banque",
+      "intent": "Lire la page d'aide d'une banque en ligne et trouver comment faire opposition sur une carte perdue, en combien de temps et à quel prix (depuis l'appli, 24 h sur 24, gratuit)."
+    },
+    {
+      "id": "fr-negative-infinitive",
+      "kind": "grammar",
+      "topic": "negation",
+      "workingTitle": "Ne pas fumer, ne plus attendre",
+      "intent": "Mettre un infinitif à la forme négative avec ne pas, ne plus ou ne jamais devant le verbe : merci de ne pas fumer, j'ai décidé de ne plus prendre la voiture."
+    },
+    {
+      "id": "fr-buying-a-home",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Acheter un logement",
+      "intent": "Parler d'un achat immobilier avec une douzaine de mots : l'agence, un crédit, le notaire, la surface, un mètre carré, à rénover, en bon état, signer, visiter, faire une offre."
+    },
+    {
+      "id": "fr-describing-a-home-in-detail",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Lumineux, spacieux, mal isolé",
+      "intent": "Décrire les qualités et les défauts d'un logement avec une douzaine de mots : lumineux, spacieux, calme, sombre, humide, mal isolé, refait à neuf, avec vue, exposé plein sud."
+    },
+    {
+      "id": "fr-interrogative-lequel",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Lequel, laquelle ?",
+      "intent": "Demander de choisir entre plusieurs choses ou personnes avec lequel, laquelle, lesquels et lesquelles : J'ai visité deux appartements. Lequel tu préfères ?"
+    },
+    {
+      "id": "fr-diy-and-repairs",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Bricolage et travaux",
+      "intent": "Parler de travaux avec une douzaine de mots : bricoler, repeindre, poser, un marteau, une perceuse, un tournevis, un artisan, un devis, refaire la salle de bains."
+    },
+    {
+      "id": "fr-faire-and-laisser-infinitive",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Faire réparer, laisser entrer",
+      "intent": "Employer faire + infinitif pour confier une action à quelqu'un (je fais réparer ma voiture) et laisser + infinitif pour permettre : laisse-le dormir."
+    },
+    {
+      "id": "fr-energy-bills",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Les factures d'énergie",
+      "intent": "Comprendre une facture avec une douzaine de mots : l'électricité, le gaz, l'abonnement, la consommation, le compteur, le relevé, le prélèvement, la hausse des prix, économiser l'énergie."
+    },
+    {
+      "id": "fr-garden",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Le jardin et le potager",
+      "intent": "Parler de jardinage avec une douzaine de mots : planter, arroser, tondre la pelouse, cueillir, le potager, les graines, une haie, un arbre fruitier, les mauvaises herbes."
+    },
+    {
+      "id": "fr-sorting-out-a-neighbour-problem",
+      "kind": "functions",
+      "theme": "house_and_home",
+      "workingTitle": "Régler un problème de voisinage",
+      "intent": "Aborder poliment un voisin bruyant, expliquer la gêne et chercher une solution ensemble : « Je ne sais pas si vous vous en rendez compte… », « On pourrait peut-être… »."
+    },
+    {
+      "id": "fr-city-pros-and-cons",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Vivre en ville",
+      "intent": "Parler de la vie en ville avec une douzaine de mots : la pollution, les embouteillages, les espaces verts, le cadre de vie, les loyers, l'anonymat, les services, l'offre culturelle."
+    },
+    {
+      "id": "fr-the-more-the-more",
+      "kind": "grammar",
+      "topic": "comparison_and_quantity",
+      "workingTitle": "Plus on…, plus on…",
+      "intent": "Relier deux évolutions avec plus… plus, moins… moins, plus… moins : plus on habite loin, plus on passe de temps dans les transports."
+    },
+    {
+      "id": "fr-consumer-habits",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Consommer autrement",
+      "intent": "Parler de ses habitudes d'achat avec une douzaine de mots : faire les soldes, comparer les prix, d'occasion, le vrac, acheter local, une marque, le rapport qualité-prix."
+    },
+    {
+      "id": "fr-cause-grace-a-a-cause-de-puisque",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Grâce à, à cause de, puisque",
+      "intent": "Exprimer la cause avec grâce à pour un résultat positif, à cause de pour un résultat négatif, et puisque pour une cause évidente : puisque tu es là, aide-moi."
+    },
+    {
+      "id": "fr-defects-and-damage",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Abîmé, rayé, défectueux",
+      "intent": "Décrire un défaut avec une douzaine de mots : abîmé, rayé, déchiré, taché, cassé, défectueux, ne s'allume pas, il manque une pièce, sous garantie, le service après-vente."
+    },
+    {
+      "id": "fr-making-a-complaint",
+      "kind": "functions",
+      "theme": "shopping",
+      "workingTitle": "Faire une réclamation",
+      "intent": "Faire une réclamation au téléphone ou au guichet, rappeler les faits et dire ce qu'on attend : « J'ai commandé le 3 mai et je n'ai rien reçu », « Je souhaiterais être remboursé »."
+    },
+    {
+      "id": "fr-reading-return-conditions",
+      "kind": "reading",
+      "theme": "shopping",
+      "workingTitle": "Lire des conditions de retour",
+      "intent": "Lire les conditions de retour d'un site marchand et dire dans quel délai, à quelles conditions et à quels frais renvoyer un article (sous 30 jours, non porté, retour gratuit)."
+    },
+    {
+      "id": "fr-consequence-donc-si-bien-que",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Donc, c'est pourquoi, si bien que",
+      "intent": "Exprimer la conséquence avec donc, c'est pourquoi, du coup à l'oral et si bien que : le train était en retard, si bien que j'ai raté mon rendez-vous."
+    },
+    {
+      "id": "fr-advertising",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "La publicité",
+      "intent": "Parler de publicité avec une douzaine de mots : une pub, un slogan, une affiche, un spot, cibler, influencer, un influenceur, un placement de produit, une campagne, mensonger."
+    },
+    {
+      "id": "fr-reading-customer-reviews",
+      "kind": "reading",
+      "theme": "shopping",
+      "workingTitle": "Lire des avis de clients",
+      "intent": "Lire une dizaine d'avis sur un produit, séparer les points positifs et négatifs (facile à monter, bruyant, fragile) et décider si l'achat en vaut la peine."
+    },
+    {
+      "id": "fr-opposition-pourtant-alors-que",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Pourtant, par contre, alors que",
+      "intent": "Opposer deux faits avec pourtant, par contre, en revanche et alors que : il est riche, pourtant il vit simplement ; moi j'adore, alors que lui déteste."
+    },
+    {
+      "id": "fr-haggling",
+      "kind": "functions",
+      "theme": "shopping",
+      "workingTitle": "Négocier un prix",
+      "intent": "Négocier un prix dans une brocante ou avec un particulier : « Vous me le faites à combien ? », « C'est un peu cher », « Je vous en donne trente euros », « Marché conclu ! »."
+    },
+    {
+      "id": "fr-money-idioms",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Coûter les yeux de la tête",
+      "intent": "Comprendre une douzaine d'expressions familières sur l'argent : coûter les yeux de la tête, un prix fou, être radin, les fins de mois difficiles, jeter l'argent par les fenêtres."
+    },
+    {
+      "id": "fr-colour-adjective-agreement",
+      "kind": "grammar",
+      "topic": "agreement",
+      "workingTitle": "Des yeux marron, des robes bleu clair",
+      "intent": "Accorder ou non les adjectifs de couleur : des robes bleues, mais des yeux marron, des pulls orange, des chemises bleu clair, des chaussures vert foncé."
+    },
+    {
+      "id": "fr-fashion-and-style",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Branché, ringard, bien habillé",
+      "intent": "Parler de style avec une douzaine de mots : être bien habillé, branché, ringard, chic, décontracté, une tenue de soirée, être à la mode, démodé, s'habiller en noir."
+    },
+    {
+      "id": "fr-reading-a-consumer-article",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Lire un article sur le budget des familles",
+      "intent": "Lire un article sur le coût des courses pour une famille, repérer les chiffres importants (une hausse de 8 %, 600 euros par mois) et les conseils pour dépenser moins."
+    },
+    {
+      "id": "fr-food-labels",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Les étiquettes alimentaires",
+      "intent": "Lire une étiquette avec une douzaine de mots : les ingrédients, la date limite, à consommer de préférence avant, bio, sans additifs, le Nutri-Score, les calories, l'origine."
+    },
+    {
+      "id": "fr-nouns-without-articles",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Avec ou sans article ?",
+      "intent": "Ne pas mettre d'article après sans et en, après avec pour une manière, ni dans les noms de matière ou d'usage : avec patience, sans sucre, en voiture, une table en bois, une tasse à café."
+    },
+    {
+      "id": "fr-inside-the-body",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Le cœur, les poumons, l'estomac",
+      "intent": "Dire précisément où on a mal avec une douzaine de mots : le cœur, les poumons, l'estomac, le foie, les reins, les muscles, les os, la peau, une articulation, le dos."
+    },
+    {
+      "id": "fr-at-the-doctors",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "La consultation",
+      "intent": "Comprendre une consultation avec une douzaine de mots : ausculter, prendre la tension, une prise de sang, une radio, un traitement, les résultats, un arrêt de travail, guérir."
+    },
+    {
+      "id": "fr-describing-symptoms-to-a-doctor",
+      "kind": "functions",
+      "theme": "health",
+      "workingTitle": "Décrire ses symptômes au médecin",
+      "intent": "Expliquer au médecin ce qu'on ressent, depuis quand et ce qu'on a déjà pris, puis poser ses questions : « Ça me lance la nuit », « J'ai pris du paracétamol », « C'est grave ? »."
+    },
+    {
+      "id": "fr-subjunctive-after-feelings",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Je suis content que tu viennes",
+      "intent": "Dire ce qu'on ressent face à l'action d'un autre avec être content que, avoir peur que, regretter que + subjonctif : je suis contente que tu sois là, j'ai peur qu'il se perde."
+    },
+    {
+      "id": "fr-reading-a-medicine-leaflet",
+      "kind": "reading",
+      "theme": "health",
+      "workingTitle": "Lire une notice de médicament",
+      "intent": "Lire une notice complète, trouver la posologie, les contre-indications et les effets indésirables (somnolence, nausées) et dire si on peut prendre le médicament dans un cas donné."
+    },
+    {
+      "id": "fr-stress-and-exhaustion",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Épuisé, débordé, à bout",
+      "intent": "Parler de fatigue et de stress avec une douzaine d'expressions : épuisé, crevé, débordé, à bout, le surmenage, un burn-out, décompresser, une nuit blanche, dormir comme un loir."
+    },
+    {
+      "id": "fr-devoir-for-probability",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Il a dû oublier",
+      "intent": "Faire une supposition avec devoir : il doit être malade, elle a dû rater son train, ils devaient être fatigués, et la distinguer de l'obligation."
+    },
+    {
+      "id": "fr-eating-well",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Bien manger",
+      "intent": "Parler d'alimentation avec une douzaine de mots : les protéines, les féculents, les produits laitiers, équilibré, grignoter, sauter un repas, un régime, prendre ou perdre du poids."
+    },
+    {
+      "id": "fr-reading-about-screens-and-sleep",
+      "kind": "reading",
+      "theme": "health",
+      "workingTitle": "Lire un article sur les écrans et le sommeil",
+      "intent": "Lire un article de vulgarisation sur les écrans et le sommeil et distinguer les faits établis, les hypothèses et les conseils (selon une étude, il se pourrait que, évitez de)."
+    },
+    {
+      "id": "fr-purpose-pour-que-afin-de",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Pour que, afin de",
+      "intent": "Exprimer le but avec pour ou afin de + infinitif, et pour que ou afin que + subjonctif quand le sujet change : je parle lentement pour que tu comprennes."
+    },
+    {
+      "id": "fr-worrying-and-reassuring",
+      "kind": "functions",
+      "theme": "health",
+      "workingTitle": "S'inquiéter et rassurer",
+      "intent": "Dire qu'on s'inquiète pour quelqu'un et le rassurer : « Je me fais du souci pour toi », « Tu m'inquiètes », « Ne t'en fais pas », « Ça va aller », « Rien de grave »."
+    },
+    {
+      "id": "fr-getting-fit",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Se mettre au sport",
+      "intent": "Parler de sa pratique sportive avec une douzaine d'expressions : se mettre au sport, la salle de sport, l'échauffement, s'étirer, une courbature, la course à pied, se dépasser, un coach."
+    },
+    {
+      "id": "fr-reflexive-verbs-with-new-meanings",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Se rendre compte, s'en aller, se tromper",
+      "intent": "Employer des verbes pronominaux au sens particulier : se rendre compte de, s'en aller, se tromper, se passer de, s'attendre à, se mettre à, s'occuper de."
+    },
+    {
+      "id": "fr-reading-a-training-plan",
+      "kind": "reading",
+      "theme": "health",
+      "workingTitle": "Lire un programme d'entraînement",
+      "intent": "Lire un programme de course à pied sur huit semaines pour débutants, dire ce qu'il faut faire chaque semaine (alterner marche et course, trois sorties) et quelles erreurs éviter."
+    },
+    {
+      "id": "fr-emergencies",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Les urgences",
+      "intent": "Réagir en cas d'urgence avec une douzaine de mots : le SAMU, le 15, le 112, les pompiers, une ambulance, perdre connaissance, saigner, les premiers secours, un massage cardiaque."
+    },
+    {
+      "id": "fr-talking-about-a-film",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Ça parle de quoi ?",
+      "intent": "Raconter un film avec une douzaine de mots : le scénario, l'intrigue, le personnage principal, la fin, le rythme, une adaptation, ça se passe à…, ça parle de…, le dénouement."
+    },
+    {
+      "id": "fr-recommending-a-film-or-book",
+      "kind": "functions",
+      "theme": "free_time",
+      "workingTitle": "Recommander un film ou un livre",
+      "intent": "Raconter l'histoire d'un film ou d'un livre sans dévoiler la fin, dire ce qu'on en a pensé et pourquoi l'autre devrait le voir : « Ça vaut le coup », « Je te le conseille »."
+    },
+    {
+      "id": "fr-reading-a-press-film-review",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire une critique de presse",
+      "intent": "Lire une critique de film dans un journal, séparer le résumé de l'intrigue de l'avis du critique et relever ses arguments pour et contre (un scénario habile, une fin bâclée)."
+    },
+    {
+      "id": "fr-nuanced-likes-and-dislikes",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Ce n'est pas trop mon truc",
+      "intent": "Dire ses goûts avec nuance grâce à une douzaine d'expressions : ce n'est pas mon truc, je ne suis pas fan, ça me plaît bien, ça me laisse indifférent, j'ai horreur de, je raffole de."
+    },
+    {
+      "id": "fr-museums-and-exhibitions",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Musées et expositions",
+      "intent": "Visiter une exposition avec une douzaine de mots : un tableau, une sculpture, un peintre, une œuvre, un portrait, un paysage, un chef-d'œuvre, le vernissage, contemporain, abstrait."
+    },
+    {
+      "id": "fr-reported-speech-present",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Il dit que, il demande si",
+      "intent": "Rapporter ce que quelqu'un dit ou demande avec dire que, demander si, demander ce que et demander de + infinitif : il dit qu'il est malade, elle me demande si je viens."
+    },
+    {
+      "id": "fr-book-genres",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Polar, essai, roman graphique",
+      "intent": "Parler de livres avec une douzaine de mots : un polar, la science-fiction, une biographie, un essai, la poésie, un recueil, un roman graphique, un best-seller, un éditeur, un tome."
+    },
+    {
+      "id": "fr-reading-back-covers",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire des quatrièmes de couverture",
+      "intent": "Lire plusieurs quatrièmes de couverture, dire de quel genre est chaque livre (un polar haletant, une saga familiale) et lequel conviendrait à un ami selon ses goûts."
+    },
+    {
+      "id": "fr-verbs-like-peindre",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Peindre, éteindre, craindre",
+      "intent": "Conjuguer les verbes en -indre au présent, au passé composé et au futur : je peins, nous peignons, il a éteint, elles craignent, tu rejoindras."
+    },
+    {
+      "id": "fr-live-shows",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Théâtre et spectacles",
+      "intent": "Parler d'un spectacle avec une douzaine de mots : une pièce, un one-man-show, la scène, les coulisses, un comédien, une représentation, applaudir, une tournée, jouer à guichets fermés."
+    },
+    {
+      "id": "fr-perception-verbs-infinitive",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Je l'entends chanter",
+      "intent": "Construire voir, regarder, entendre et écouter + infinitif : j'entends les enfants jouer, je l'ai vu partir, on a regardé le soleil se coucher."
+    },
+    {
+      "id": "fr-television",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "La télévision",
+      "intent": "Parler de télé avec une douzaine de mots : une émission, le présentateur, en direct, en replay, un jeu télévisé, la télé-réalité, un documentaire, la pub, zapper, le JT."
+    },
+    {
+      "id": "fr-reading-an-exhibition-text",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire les panneaux d'une exposition",
+      "intent": "Lire les panneaux d'une exposition sur un peintre, situer les grandes périodes de son œuvre (les années parisiennes, la période bleue) et dire ce qui change de l'une à l'autre."
+    },
+    {
+      "id": "fr-neither-nor",
+      "kind": "grammar",
+      "topic": "negation",
+      "workingTitle": "Ni… ni…",
+      "intent": "Nier deux éléments à la fois avec ne… ni… ni… : je n'aime ni le jazz ni le rap, il ne boit ni café ni thé, et répondre ni l'un ni l'autre."
+    },
+    {
+      "id": "fr-board-and-video-games",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Jeux de société et jeux vidéo",
+      "intent": "Parler de jeux avec une douzaine de mots : un jeu de société, un plateau, les dés, un pion, une partie, tricher, c'est ton tour, un niveau, une console, jouer en ligne."
+    },
+    {
+      "id": "fr-big-sporting-events",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Le Tour de France, les JO",
+      "intent": "Suivre une grande compétition avec une douzaine de mots : les Jeux olympiques, une médaille, un record, battre, éliminer, la finale, le maillot jaune, un supporter, le podium."
+    },
+    {
+      "id": "fr-same-similar-different",
+      "kind": "grammar",
+      "topic": "comparison_and_quantity",
+      "workingTitle": "Le même, pareil, différent de",
+      "intent": "Comparer avec le même que, pareil, semblable à, différent de, comme et ressembler à : il a le même vélo que moi, c'est pareil, elle ne ressemble pas à sa sœur."
+    },
+    {
+      "id": "fr-heritage",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Le patrimoine",
+      "intent": "Parler de patrimoine avec une douzaine de mots : un monument historique, un château fort, une abbaye, restaurer, classé, un site, l'architecture, une époque, les Journées du patrimoine."
+    },
+    {
+      "id": "fr-ways-of-travelling",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Façons de voyager",
+      "intent": "Parler de sa façon de voyager avec une douzaine d'expressions : partir à l'aventure, un voyage organisé, sac au dos, un circuit, une escale, le dépaysement, voyager léger, un séjour linguistique."
+    },
+    {
+      "id": "fr-delays-and-cancellations",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Retards et annulations",
+      "intent": "Parler d'un voyage qui tourne mal avec une douzaine de mots : un vol annulé, une correspondance ratée, le surbooking, une indemnisation, être bloqué, un bagage égaré."
+    },
+    {
+      "id": "fr-after-a-cancellation",
+      "kind": "functions",
+      "theme": "travel",
+      "workingTitle": "Après une annulation",
+      "intent": "Après un vol ou un train annulé, exposer sa situation et demander les options : « Quelles solutions vous me proposez ? », « L'hôtel est pris en charge ? », « Vous pouvez me l'écrire ? »."
+    },
+    {
+      "id": "fr-reading-passenger-rights",
+      "kind": "reading",
+      "theme": "travel",
+      "workingTitle": "Lire ses droits de passager",
+      "intent": "Lire une page sur les droits des passagers aériens et dire quelle indemnisation obtenir selon le retard et la distance (plus de trois heures, 250 euros, moins de 1 500 km)."
+    },
+    {
+      "id": "fr-reported-speech-past",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Il a dit qu'il viendrait",
+      "intent": "Rapporter des paroles au passé en changeant les temps : « Je suis fatigué » devient il a dit qu'il était fatigué ; « Je viendrai » devient il a dit qu'il viendrait."
+    },
+    {
+      "id": "fr-landscapes-and-geography",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Côtes, vallées et massifs",
+      "intent": "Décrire une région avec une douzaine de mots : la côte, une falaise, une baie, un massif, une vallée, une plaine, le littoral, un fleuve, une île, sauvage, préservé."
+    },
+    {
+      "id": "fr-regions-of-france",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "La Bretagne, l'Alsace, la Provence",
+      "intent": "Situer une douzaine de régions françaises et parler de leurs spécialités et de leurs paysages : la Bretagne, l'Alsace, la Provence, la Normandie, le Pays basque, la Corse."
+    },
+    {
+      "id": "fr-past-infinitive",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Après avoir mangé, après être parti",
+      "intent": "Enchaîner deux actions avec après + infinitif passé quand le sujet est le même : après avoir dîné, on est sortis ; après être rentrée, elle s'est couchée."
+    },
+    {
+      "id": "fr-reading-a-travel-narrative",
+      "kind": "reading",
+      "theme": "travel",
+      "workingTitle": "Lire un récit de voyage",
+      "intent": "Lire un extrait de récit de voyage, suivre l'itinéraire et relever comment l'auteur décrit les lieux et les gens qu'il rencontre (un village perché, un berger bavard)."
+    },
+    {
+      "id": "fr-hiking-and-camping",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Randonnée et bivouac",
+      "intent": "Préparer une randonnée avec une douzaine de mots : un sentier, le balisage, un refuge, une tente, un sac de couchage, une gourde, le dénivelé, une étape, se perdre."
+    },
+    {
+      "id": "fr-at-the-seaside",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "À la plage",
+      "intent": "Passer une journée à la mer avec une douzaine de mots : la marée haute, basse, les vagues, la crème solaire, un coup de soleil, plonger, le maître-nageur, un transat, se baigner."
+    },
+    {
+      "id": "fr-winter-sports",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Aux sports d'hiver",
+      "intent": "Partir à la montagne en hiver avec une douzaine de mots : la station, la piste, le télésiège, le forfait, les chaussures de ski, la luge, une piste noire, le chalet, la poudreuse."
+    },
+    {
+      "id": "fr-en-or-dans-with-durations",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "En deux heures ou dans deux heures ?",
+      "intent": "Distinguer en + durée (le temps nécessaire : j'ai fait le trajet en deux heures) et dans + durée (le moment où ça arrivera : je pars dans deux heures)."
+    },
+    {
+      "id": "fr-moving-around",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Traverser, longer, faire demi-tour",
+      "intent": "Décrire un trajet avec une douzaine de verbes précis : traverser, longer, contourner, monter, descendre, se diriger vers, rejoindre, faire demi-tour, s'arrêter, dépasser."
+    },
+    {
+      "id": "fr-reading-a-guidebook",
+      "kind": "reading",
+      "theme": "travel",
+      "workingTitle": "Lire un guide touristique",
+      "intent": "Lire la page d'un guide sur une ville, trouver les incontournables et les conseils pratiques et dire ce que l'auteur déconseille (à ne pas manquer, à éviter en août, bon plan)."
+    },
+    {
+      "id": "fr-selon-malgre-sauf-parmi",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "Selon, malgré, sauf, parmi",
+      "intent": "Employer des prépositions courantes de l'écrit et de l'oral : selon la météo, malgré la pluie, tous sauf lui, parmi les invités, vers midi, d'après mon frère."
+    },
+    {
+      "id": "fr-road-safety",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Le code de la route",
+      "intent": "Parler de conduite avec une douzaine de mots : un excès de vitesse, un radar, une amende, retirer des points, un rond-point, la priorité, un constat, un accident, la ceinture."
+    },
+    {
+      "id": "fr-green-transport",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Vélo, covoiturage, trottinette",
+      "intent": "Parler des transports doux avec une douzaine de mots : une piste cyclable, un vélo électrique, la trottinette, le covoiturage, l'autopartage, un piéton, une zone piétonne."
+    },
+    {
+      "id": "fr-indefinite-chacun-certains",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Chacun, certains, n'importe qui",
+      "intent": "Employer chacun, certains, d'autres, n'importe qui, n'importe quoi et n'importe où : chacun paie sa part, certains sont partis, viens n'importe quand."
+    },
+    {
+      "id": "fr-the-media",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "La presse et les médias",
+      "intent": "Parler des médias avec une douzaine de mots : la presse, un quotidien, un hebdomadaire, un journaliste, un article, la une, une rubrique, une chaîne d'info, un podcast."
+    },
+    {
+      "id": "fr-reading-front-page-headlines",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire les titres de la une",
+      "intent": "Lire les titres et les chapeaux de la une d'un journal, dire de quoi parle chaque article et dans quelle rubrique il se trouve (Société, Économie, International, Sports)."
+    },
+    {
+      "id": "fr-common-acronyms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "SNCF, HLM, CDI : les sigles",
+      "intent": "Comprendre une douzaine de sigles très courants : la SNCF, le RER, un HLM, un CDI, le PDG, la TVA, un SMS, le SAMU, la RATP, un BTS, l'ONU, la CAF."
+    },
+    {
+      "id": "fr-se-faire-infinitive",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Il s'est fait voler son vélo",
+      "intent": "Dire qu'on a subi une action avec se faire + infinitif : il s'est fait voler son portable, elle s'est fait renverser par une voiture, je me suis fait avoir."
+    },
+    {
+      "id": "fr-crime-and-justice",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Délits et justice",
+      "intent": "Comprendre un fait divers avec une douzaine de mots : un vol, un cambriolage, une agression, un témoin, porter plainte, le suspect, arrêter, un procès, une amende."
+    },
+    {
+      "id": "fr-passing-on-a-conversation",
+      "kind": "functions",
+      "theme": "services",
+      "workingTitle": "Rapporter une conversation",
+      "intent": "Raconter une conversation qu'on a eue : « Il m'a dit que… », « Elle m'a demandé si… », « Je lui ai répondu que… », « Apparemment… », « Il paraît que… »."
+    },
+    {
+      "id": "fr-reading-a-news-article",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire un article d'actualité",
+      "intent": "Lire un article d'actualité, répondre aux questions qui, quoi, où, quand, comment et pourquoi, et distinguer les faits des déclarations (selon le maire, a-t-il affirmé)."
+    },
+    {
+      "id": "fr-impersonal-expressions",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Il paraît que, il s'agit de",
+      "intent": "Employer les tournures impersonnelles courantes : il paraît qu'il va neiger, il s'agit d'une erreur, il suffit de demander, il reste du pain, il se trouve que je le connais."
+    },
+    {
+      "id": "fr-politics-basics",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "La vie politique",
+      "intent": "Comprendre l'actualité politique avec une douzaine de mots : le gouvernement, un ministre, le maire, les élections, voter, un parti, la gauche, la droite, une loi, manifester."
+    },
+    {
+      "id": "fr-reading-a-poll",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Lire un sondage",
+      "intent": "Lire un sondage sur les Français et les vacances, interpréter les pourcentages (un sur deux, 38 % des sondés, en baisse) et résumer les tendances principales."
+    },
+    {
+      "id": "fr-proportions",
+      "kind": "grammar",
+      "topic": "comparison_and_quantity",
+      "workingTitle": "La majorité, un sur trois",
+      "intent": "Exprimer des proportions avec la majorité de, la plupart des, un sur trois, près de la moitié, deux fois plus, et accorder le verbe : la plupart des gens partent en août."
+    },
+    {
+      "id": "fr-social-networks",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Les réseaux sociaux",
+      "intent": "Parler des réseaux sociaux avec une douzaine de mots : publier, partager, commenter, s'abonner, un abonné, une story, une fausse information, devenir viral, le harcèlement."
+    },
+    {
+      "id": "fr-subjunctive-doubt",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Je ne pense pas qu'il vienne",
+      "intent": "Employer le subjonctif après le doute et la possibilité (je doute que, il est possible que, je ne pense pas que) et l'indicatif après la certitude : je suis sûr qu'il vient."
+    },
+    {
+      "id": "fr-saying-how-sure-you-are",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Dire si on est sûr",
+      "intent": "Dire si on est sûr ou non d'une information : « J'en suis certain », « Ça m'étonnerait », « Il est possible que… », « Je n'en suis pas sûr », « Sans doute »."
+    },
+    {
+      "id": "fr-reading-two-versions-of-a-story",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Repérer une fausse information",
+      "intent": "Lire deux articles sur le même événement, repérer les indices qui rendent l'un douteux (source, titre, chiffres) et dire lequel est fiable."
+    },
+    {
+      "id": "fr-reporting-verbs",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Affirmer, annoncer, prétendre",
+      "intent": "Rapporter des paroles avec une douzaine de verbes plus précis que dire : affirmer, annoncer, expliquer, ajouter, répondre, reconnaître, prétendre, promettre, se plaindre."
+    },
+    {
+      "id": "fr-neutral-le",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Je le sais, je l'espère",
+      "intent": "Reprendre toute une idée avec le pronom neutre le : Il est parti ? Je le sais. Tu viendras ? Je l'espère. Elle est contente, et elle le dit."
+    },
+    {
+      "id": "fr-relatives-after-prepositions",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Avec qui, pour lequel, auquel",
+      "intent": "Employer une préposition devant le pronom relatif : la collègue avec qui je travaille, le projet pour lequel je suis venu, le concours auquel j'ai participé."
+    },
+    {
+      "id": "fr-environment",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "L'environnement",
+      "intent": "Parler d'environnement avec une douzaine de mots : le réchauffement climatique, la pollution, les énergies renouvelables, gaspiller, protéger, l'empreinte carbone, la biodiversité."
+    },
+    {
+      "id": "fr-opinion-words",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Un point de vue, un argument",
+      "intent": "Parler d'opinions avec une douzaine de mots : un point de vue, un argument, un avantage, un inconvénient, convaincre, défendre une idée, être pour, être contre, avoir tort."
+    },
+    {
+      "id": "fr-justifying-your-opinion",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Justifier son opinion",
+      "intent": "Donner son opinion et la soutenir par un argument et un exemple : « Je suis convaincu que… parce que… », « Prenons l'exemple de… », « C'est pour ça que… »."
+    },
+    {
+      "id": "fr-reading-an-opinion-piece",
+      "kind": "reading",
+      "theme": "weather",
+      "workingTitle": "Lire une tribune",
+      "intent": "Lire une courte tribune contre les voitures en centre-ville et trouver la position de l'auteur, ses arguments et l'exemple qu'il donne (la pollution, le bruit, la ville de Pontevedra)."
+    },
+    {
+      "id": "fr-extreme-weather",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "Canicule, sécheresse, inondation",
+      "intent": "Parler d'événements climatiques avec une douzaine de mots : une canicule, une sécheresse, une inondation, une tempête, un incendie, la grêle, une alerte, les dégâts."
+    },
+    {
+      "id": "fr-reading-a-weather-warning",
+      "kind": "reading",
+      "theme": "weather",
+      "workingTitle": "Lire une alerte météo",
+      "intent": "Lire un bulletin de vigilance orange et dire quels départements sont concernés, quels risques sont annoncés et ce qu'on demande aux habitants (limitez vos déplacements)."
+    },
+    {
+      "id": "fr-concession-meme-si-quand-meme",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Même si, quand même",
+      "intent": "Admettre un fait sans changer sa conclusion avec même si + indicatif et quand même : même s'il pleut, on sort ; il pleut, mais on sort quand même."
+    },
+    {
+      "id": "fr-linking-arguments",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "D'une part, d'autre part",
+      "intent": "Organiser ses arguments avec une dizaine de connecteurs : d'abord, ensuite, de plus, d'une part, d'autre part, par exemple, enfin, bref, pour conclure."
+    },
+    {
+      "id": "fr-partial-agreement",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Pas tout à fait d'accord",
+      "intent": "Exprimer un accord ou un désaccord partiel : « Je suis d'accord sur un point… », « Oui, mais… », « Pas tout à fait », « Je vois ce que tu veux dire, mais… »."
+    },
+    {
+      "id": "fr-reading-an-infographic",
+      "kind": "reading",
+      "theme": "weather",
+      "workingTitle": "Lire une infographie sur les transports",
+      "intent": "Lire une infographie sur les émissions de CO2 des transports et comparer les chiffres (grammes par kilomètre, l'avion, le TGV, la voiture) pour choisir le trajet le moins polluant."
+    },
+    {
+      "id": "fr-weather-idioms",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "Il pleut des cordes",
+      "intent": "Parler du temps de façon familière avec une dizaine d'expressions : il pleut des cordes, un temps de chien, il fait un froid de canard, on crève de chaud, ça caille, un ciel gris."
+    },
+    {
+      "id": "fr-wildlife-and-plants",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "La faune et la flore",
+      "intent": "Parler de la nature avec une douzaine de mots : la faune, la flore, une espèce menacée, le loup, l'ours, le renard, le sanglier, une abeille, un parc naturel, disparaître."
+    },
+    {
+      "id": "fr-society-and-generations",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Société et générations",
+      "intent": "Parler de la société avec une douzaine de mots : les jeunes, les seniors, une génération, le pouvoir d'achat, les inégalités, la solidarité, le vivre-ensemble, le fossé."
+    },
+    {
+      "id": "fr-subject-and-object-questions",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Qu'est-ce qui, qui est-ce que",
+      "intent": "Choisir entre qui est-ce qui, qui est-ce que, qu'est-ce qui et qu'est-ce que selon qu'on interroge sur le sujet ou le complément : Qu'est-ce qui se passe ?"
+    },
+    {
+      "id": "fr-identity-and-immigration",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "S'intégrer, la double nationalité",
+      "intent": "Parler d'identité et d'immigration avec une douzaine de mots : immigrer, s'intégrer, un titre de séjour, être naturalisé, la double nationalité, les origines, un réfugié."
+    },
+    {
+      "id": "fr-volunteering",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Bénévolat et solidarité",
+      "intent": "Parler d'engagement avec une douzaine de mots : être bénévole, une association, une collecte, faire un don, les Restos du cœur, s'engager, un sans-abri, une maraude."
+    },
+    {
+      "id": "fr-reading-a-call-for-volunteers",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Lire un appel aux bénévoles",
+      "intent": "Lire l'appel d'une association qui cherche des bénévoles et dire quelles missions elle propose, quel engagement elle demande (deux heures par semaine) et comment s'inscrire."
+    },
+    {
+      "id": "fr-combined-negations",
+      "kind": "grammar",
+      "topic": "negation",
+      "workingTitle": "Plus jamais, plus rien, jamais personne",
+      "intent": "Combiner les négations (je ne fais plus jamais ça, il n'y a plus rien, on ne voit jamais personne) et employer nulle part et aucun."
+    },
+    {
+      "id": "fr-hypothesis-si-imperfect",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Si j'avais le temps…",
+      "intent": "Imaginer une situation irréelle avec si + imparfait et le conditionnel : si j'avais plus de temps, j'apprendrais le piano ; si j'étais toi, je partirais."
+    },
+    {
+      "id": "fr-dreams-and-ambitions",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Rêves et ambitions",
+      "intent": "Parler de ses rêves avec une douzaine d'expressions : rêver de, faire le tour du monde, réaliser son rêve, un objectif, tenter sa chance, se fixer un but, viser, y arriver."
+    },
+    {
+      "id": "fr-imagining-another-life",
+      "kind": "functions",
+      "theme": "personal_identification",
+      "workingTitle": "Imaginer une autre vie",
+      "intent": "Répondre à une question comme « Que ferais-tu si tu gagnais au loto ? » et développer sa réponse en enchaînant deux ou trois hypothèses."
+    },
+    {
+      "id": "fr-conditional-wishes-and-politeness",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "J'aimerais tant, ça me ferait plaisir",
+      "intent": "Exprimer un souhait, une envie ou une demande délicate au conditionnel : j'aimerais tant partir, ça me ferait plaisir, ce serait génial, tu aurais une minute ?"
+    },
+    {
+      "id": "fr-life-choices",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Les choix de vie",
+      "intent": "Parler de choix de vie avec une douzaine d'expressions : s'installer à la campagne, fonder une famille, changer de carrière, prendre une année sabbatique, partir vivre à l'étranger."
+    },
+    {
+      "id": "fr-reading-an-expat-blog",
+      "kind": "reading",
+      "theme": "personal_identification",
+      "workingTitle": "Lire le blog d'un expatrié",
+      "intent": "Lire le blog d'un Français installé au Québec et relever ce qui l'a surpris (l'hiver, le tutoiement), ce qui lui manque et les conseils qu'il donne à ceux qui veulent partir."
+    },
+    {
+      "id": "fr-quand-with-future",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Quand tu arriveras, appelle-moi",
+      "intent": "Employer le futur après quand, lorsque, dès que et aussitôt que pour une action à venir : quand tu arriveras, appelle-moi ; dès qu'il saura, il te le dira."
+    },
+    {
+      "id": "fr-future-perfect",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Quand j'aurai fini",
+      "intent": "Former le futur antérieur (j'aurai fini, elle sera partie) pour une action terminée avant une autre dans l'avenir : quand j'aurai fini, je t'appellerai."
+    },
+    {
+      "id": "fr-hopes-and-fears",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Espérer, avoir hâte, redouter",
+      "intent": "Parler de ses attentes avec une dizaine d'expressions : espérer, compter sur, avoir hâte de, s'impatienter, se réjouir de, craindre, redouter, appréhender, angoisser à l'idée de."
+    },
+    {
+      "id": "fr-regrets-jaurais-du",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "J'aurais dû, j'aurais aimé",
+      "intent": "Exprimer un regret ou un reproche avec le conditionnel passé de devoir, pouvoir et aimer : j'aurais dû partir plus tôt, tu aurais pu me prévenir, j'aurais aimé venir."
+    },
+    {
+      "id": "fr-reading-a-letter-to-oneself",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Lire une lettre à soi-même",
+      "intent": "Lire la lettre qu'une adolescente écrit à elle-même pour dans dix ans et relever ses espoirs, ses peurs et ses conseils (j'espère que tu auras osé, n'oublie pas de rire)."
+    },
+    {
+      "id": "fr-avant-que-jusqua-ce-que",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Avant que, jusqu'à ce que",
+      "intent": "Situer une action par rapport à une autre qui n'a pas encore eu lieu avec avant que, jusqu'à ce que et en attendant que + subjonctif : pars avant qu'il pleuve."
+    },
+    {
+      "id": "fr-computer-problems",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Ça a planté !",
+      "intent": "Expliquer un problème informatique avec une douzaine de mots : planter, bugger, redémarrer, une mise à jour, un virus, sauvegarder, réinitialiser, l'écran figé, le mot de passe oublié."
+    },
+    {
+      "id": "fr-connected-life",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "La vie connectée",
+      "intent": "Parler de ses usages numériques avec une douzaine de mots : être accro, se déconnecter, le temps d'écran, une notification, la vie privée, les données personnelles, un objet connecté."
+    },
+    {
+      "id": "fr-ca-cela-ce",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Ça, cela, ce",
+      "intent": "Reprendre une idée avec ça à l'oral, cela à l'écrit et ce devant être : ça ne marche pas, cela m'étonne, c'est vrai, ce n'est pas grave, ça dépend."
+    },
+    {
+      "id": "fr-reading-about-digital-detox",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Lire un article sur la déconnexion",
+      "intent": "Lire un article sur une semaine sans smartphone et résumer le problème de départ, ce que l'auteur a vécu (le manque, l'ennui, puis le calme) et ce qu'il en retient."
+    },
+    {
+      "id": "fr-anglicisms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Mail ou courriel ?",
+      "intent": "Reconnaître une douzaine d'anglicismes courants et leur équivalent français : un mail ou un courriel, le week-end, le parking, liker ou aimer, le streaming, un podcast, faire du shopping."
+    },
+    {
+      "id": "fr-manquer",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Tu me manques",
+      "intent": "Employer manquer dans ses trois sens sans inverser les personnes : il manque deux chaises, j'ai manqué le train, tu me manques, mes amis me manquent."
+    },
+    {
+      "id": "fr-reading-an-appliance-manual",
+      "kind": "reading",
+      "theme": "house_and_home",
+      "workingTitle": "Lire le mode d'emploi d'un appareil",
+      "intent": "Lire le mode d'emploi d'un appareil ménager, trouver comment le mettre en marche, l'entretenir et que faire en cas de panne (appuyer trois secondes, détartrer, voyant rouge)."
+    },
+    {
+      "id": "fr-informal-everyday-french",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Bosser, un truc, la bouffe",
+      "intent": "Comprendre une douzaine de mots familiers de tous les jours et leur équivalent courant : bosser, le boulot, un truc, un pote, la bouffe, avoir la flemme, chouette, galère, se planter."
+    },
+    {
+      "id": "fr-degree-adverbs",
+      "kind": "grammar",
+      "topic": "adverbs",
+      "workingTitle": "Plutôt, assez, tout à fait",
+      "intent": "Nuancer un adjectif ou un verbe avec plutôt, assez, tout à fait, vraiment, à peine et pas du tout : c'est plutôt bien, je suis tout à fait d'accord, il a à peine mangé."
+    },
+    {
+      "id": "fr-gastronomy",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "La gastronomie",
+      "intent": "Parler de gastronomie avec une douzaine de mots : un chef étoilé, une spécialité régionale, un produit du terroir, un accord mets-vins, la dégustation, savoureux, raffiné."
+    },
+    {
+      "id": "fr-kitchen-utensils",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Une poêle, un fouet, un moule",
+      "intent": "Cuisiner avec une douzaine d'ustensiles : une poêle, un fouet, un moule, une râpe, une passoire, un saladier, une planche à découper, un rouleau à pâtisserie, le four."
+    },
+    {
+      "id": "fr-recipe-quantities",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Une pincée de sel, une gousse d'ail",
+      "intent": "Doser les ingrédients avec une douzaine d'expressions : une pincée de sel, une gousse d'ail, une cuillère à soupe, un filet d'huile, une noix de beurre, un zeste, une branche de thym."
+    },
+    {
+      "id": "fr-reading-a-restaurant-review",
+      "kind": "reading",
+      "theme": "food_and_drink",
+      "workingTitle": "Lire une critique de restaurant",
+      "intent": "Lire la critique d'un restaurant et trouver ce que le critique a aimé ou non (cuisine, service, cadre, prix) et la note finale qu'il donne."
+    },
+    {
+      "id": "fr-food-idioms",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Avoir la pêche, raconter des salades",
+      "intent": "Comprendre une douzaine d'expressions imagées avec la nourriture : avoir la pêche, raconter des salades, c'est du gâteau, en faire tout un fromage, tomber dans les pommes."
+    },
+    {
+      "id": "fr-reading-the-story-of-a-dish",
+      "kind": "reading",
+      "theme": "food_and_drink",
+      "workingTitle": "Lire l'histoire d'un plat",
+      "intent": "Lire un article sur l'origine du croissant, séparer la légende de ce qui est attesté (selon la légende, en réalité, les historiens pensent que) et retenir les étapes de son histoire."
+    },
+    {
+      "id": "fr-more-precise-words",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Plus précis que faire et dire",
+      "intent": "Remplacer une douzaine d'emplois de mots vagues par des mots précis : faire un gâteau devient préparer, dire devient expliquer, une chose devient un objet, un sujet, un problème."
+    }
+  ]
+}
