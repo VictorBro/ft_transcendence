@@ -11,6 +11,12 @@ import {
 
 import { Cell } from '../question-batch';
 
+// This file only builds text: the "system" and "user" messages sent to the LLM to
+// write one batch of questions. Nothing here calls the LLM or the database.
+
+// The big shared part of the system message: what each CEFR level (A1 to C2) looks
+// like, how to judge difficulty, how to write wrong options, and what to avoid.
+// It is a template string (between backticks), so it can span many lines.
 // Same text for every language and level: the examples are English illustrations the model adapts, never copies.
 const CEFR_LEVEL_REFERENCE = `CEFR LEVEL REFERENCE: USE THIS AS THE PRIMARY DIFFICULTY CALIBRATION
 The CEFR describes a learner's overall ability to use a language. For these test questions, translate that ability into observable linguistic difficulty: which words, structures, sentence patterns and inferences a candidate must handle to answer correctly.
@@ -102,6 +108,17 @@ ANTI-PATTERNS. DO NOT:
 - confuse topic difficulty with linguistic difficulty.
 The goal is to measure language proficiency, not general knowledge.`;
 
+/**
+ * The parts of the prompt that change with the category. For each one it returns:
+ * - count: how many questions to write (grammar: one per topic, 13;
+ *   vocabulary: VOCABULARY_BATCH_SIZE; reading: READING_BATCH_SIZE).
+ * - rules: extra rules for this category, added to the RULES list.
+ * - calibration: how to judge difficulty for this category, added after the CEFR text.
+ * - user: the short request sent as the "user" message.
+ * The numbers here must match generatedBatchSchema in @ft/shared, which checks the reply:
+ * both read the same constants, so they cannot disagree.
+ * The parameter "{ lang, level, category }: Cell" opens the cell into three variables.
+ */
 function categoryBrief({ lang, level, category }: Cell) {
   switch (category) {
     case 'grammar':
@@ -113,6 +130,7 @@ function categoryBrief({ lang, level, category }: Cell) {
 Each topic must be tested at the depth appropriate to ${level}, not at its most advanced form. For example, "subordinate_clauses" at A1/A2 means a simple "because" or "when" clause, while at C1/C2 it can mean multiple embedding or marked structures. The blank must target the linguistic point of the topic; the rest of the sentence must stay within ${level}.`,
         user: `Write ${TOPICS.length} ${level} grammar questions in "${lang}", one per topic.`,
       };
+
     case 'vocabulary':
       return {
         count: VOCABULARY_BATCH_SIZE,
@@ -124,6 +142,7 @@ Each topic must be tested at the depth appropriate to ${level}, not at its most 
 The tested word or phrase must match the Vocabulary line of ${level} above in frequency, abstraction, collocation and register. The rest of the sentence stays within ${level} and gives enough context for exactly one option to fit.`,
         user: `Write ${VOCABULARY_BATCH_SIZE} ${level} vocabulary questions in "${lang}".`,
       };
+
     case 'reading':
       return {
         count: READING_BATCH_SIZE,
@@ -142,13 +161,27 @@ Calibrate the passage and the question separately.
   }
 }
 
-/** The format comes from the response schema, so the prompt only carries the content rules. */
+/**
+ * Builds the two messages for one batch: "system" (all the rules) and "user" (the request).
+ * QuestionStockService spreads them into the LLM request with "...buildQuestionBatchPrompt(cell)".
+ *
+ * The format comes from the response schema, so the prompt only carries the content rules.
+ * (The JSON shape is sent to Gemini separately, as responseJsonSchema.)
+ *
+ * The system message is, in order: the task, RULES, the CEFR reference, the category
+ * calibration, and a check list the model must run silently before each question.
+ */
 export function buildQuestionBatchPrompt(cell: Cell): { system: string; user: string } {
   const { lang, level, category } = cell;
   const { count, rules, calibration, user } = categoryBrief(cell);
+  // The levels just below and just above, to tell the model "harder than A2, easier than B2".
+  // LEVELS[-1] (below A1) and LEVELS[6] (above C2) give undefined, hence "Level | undefined".
   const index = LEVELS.indexOf(level);
   const lower: Level | undefined = LEVELS[index - 1];
   const upper: Level | undefined = LEVELS[index + 1];
+
+  // "${lower ? `...` : ''}" adds the sentence only when that level exists:
+  // no "harder than ..." for A1, no "nothing above ..." for C2.
 
   const system = `You are an expert CEFR language exam designer.
 Write ${count} multiple-choice placement questions for category "${category}", in language "${lang}", at CEFR level ${level}.
