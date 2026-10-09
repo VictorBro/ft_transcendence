@@ -9,7 +9,7 @@ import {
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
-import { ZodValidationPipe } from 'nestjs-zod';
+import { CodeValidationPipe } from '../validation.pipe';
 import { LanguageSchema, LEARNABLE_LANGUAGES } from '@ft/shared';
 import type { Language, SessionUser } from '@ft/shared';
 
@@ -18,7 +18,7 @@ import { CurrentUser } from '../auth/auth.decorators';
 import { StartCourseDto, SetGoalDto, SetLevelDto, CourseDto, CoursesDto } from './courses.dto';
 
 // We get the language from the URL, so we must check that it matches our language definition
-const LangParam = new ZodValidationPipe(LanguageSchema);
+const LangParam = new CodeValidationPipe(LanguageSchema);
 
 @ApiTags('courses')
 @Controller('courses')

@@ -24,7 +24,7 @@ export class CoursesService {
       },
     });
     if (!user) {
-      throw new UnauthorizedException();
+      throw new UnauthorizedException('auth.sessionRequired');
     }
     return { courses: user.userLevels, activeLang: user.activeLang };
   }

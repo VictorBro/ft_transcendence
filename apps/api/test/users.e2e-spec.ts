@@ -178,10 +178,8 @@ describe('users (e2e)', () => {
         .send({ timeZone: 'Mars/Olympus' })
         .expect(400);
 
-      // A Zod failure carries its codes in `errors`; `message` is nestjs-zod's own.
-      expect(response.body.errors.map((e: { message: string }) => e.message)).toEqual([
-        'profile.invalidTimeZone',
-      ]);
+      // CodeValidationPipe puts the Zod issues' codes in `message`, where readCode looks.
+      expect(response.body.message).toEqual(['profile.invalidTimeZone']);
     });
   });
 });

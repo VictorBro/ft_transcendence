@@ -12,5 +12,5 @@ import { z } from 'zod';
  */
 export const LEARNABLE_LANGUAGES = ['en', 'fr', 'de'] as const;
 
-export const LanguageSchema = z.enum(LEARNABLE_LANGUAGES);
+export const LanguageSchema = z.enum(LEARNABLE_LANGUAGES, 'course.unknownLanguage');
 export type Language = z.infer<typeof LanguageSchema>;

@@ -29,7 +29,7 @@ export class AuthGuard implements CanActivate {
     const request = context.switchToHttp().getRequest<Request & { user?: SessionUser }>();
     const userId = request.session?.userId;
     if (userId === undefined) {
-      throw new UnauthorizedException();
+      throw new UnauthorizedException('auth.sessionRequired');
     }
 
     // Re-read the user rather than trusting a copy in the session: a deleted or
@@ -37,7 +37,7 @@ export class AuthGuard implements CanActivate {
     const user = await this.auth.findById(userId);
     if (user === null) {
       request.session.destroy(() => undefined);
-      throw new UnauthorizedException();
+      throw new UnauthorizedException('auth.sessionRequired');
     }
 
     request.user = user;

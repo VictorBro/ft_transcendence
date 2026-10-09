@@ -178,14 +178,16 @@
       "incorrectPassword": "Incorrect password",
       "identityTaken": "That email or display name is already taken",
       "displayNameTaken": "That display name is already taken",
-      "passwordFirst": "Sign in with your password first"
+      "passwordFirst": "Sign in with your password first",
+      "sessionRequired": "Please sign in to continue"
     },
     "avatar": {
       "invalidFile": "That file could not be used as an avatar. Try a PNG, JPEG or WebP."
     },
     "profile": {
       "noChanges": "Change at least one field",
-      "invalidTimeZone": "That time zone is not recognised"
+      "invalidTimeZone": "That time zone is not recognised",
+      "invalidLocale": "That interface language is not supported"
     },
     "twoFactor": {
       "codeFormat": "Enter the six digit code from your authenticator app",
@@ -197,7 +199,10 @@
     "course": {
       "alreadyStarted": "You have already started a course in that language",
       "notFound": "You have no course in that language yet",
-      "notPlaced": "Choose your level first to start this course"
+      "notPlaced": "Choose your level first to start this course",
+      "unknownLanguage": "That language is not offered",
+      "invalidGoal": "Choose a daily goal of 10, 30 or 60 minutes",
+      "invalidLevel": "That level does not exist"
     },
     "lesson": {
       "notFound": "That lesson does not exist",
@@ -213,11 +218,16 @@
       "expired": "That placement test has expired. Start a new one.",
       "poolExhausted": "There are not enough questions left for that test. Try again later."
     },
+    "request": {
+      "invalid": "The request could not be read",
+      "tooLarge": "The request is too large"
+    },
     "network": {
       "unreachable": "Could not reach the server"
     },
     "server": {
-      "unexpected": "The server answered HTTP {status}"
+      "unexpected": "The server answered HTTP {status}",
+      "rateLimited": "Too many attempts. Try again in a minute"
     },
     "unknown": "Something went wrong. Please try again."
   },

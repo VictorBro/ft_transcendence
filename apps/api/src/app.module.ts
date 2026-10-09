@@ -18,7 +18,10 @@ import { PlacementModule } from './placement/placement.module';
     // One ceiling for everyone. What IdentityThrottlerGuard changes is not the
     // number but who it is counted against: each account on its own key, each
     // anonymous visitor on their own address.
-    ThrottlerModule.forRoot({ throttlers: [{ ttl: 60_000, limit: 100 }] }),
+    ThrottlerModule.forRoot({
+      throttlers: [{ ttl: 60_000, limit: 100 }],
+      errorMessage: 'server.rateLimited',
+    }),
     PrismaModule,
     RedisModule,
     AuthModule,
