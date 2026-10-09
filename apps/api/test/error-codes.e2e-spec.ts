@@ -1,8 +1,8 @@
-import { INestApplication } from '@nestjs/common';
+import { Controller, Get, INestApplication, Logger } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import request from 'supertest';
 import type TestAgent from 'supertest/lib/agent';
-import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
 import { isErrorCode } from '@ft/shared';
 
 import { AppModule } from '../src/app.module';
@@ -14,8 +14,19 @@ import { PrismaService } from '../src/prisma/prisma.service';
  * API sends there must be an ERROR_CODES entry. One case per source that once
  * sent English text instead (#108): the validation pipe, the `:lang` pipe, the
  * session guard and the throttler, then what ErrorCodeFilter catches before or
- * around them: an unreadable or oversized body and an unknown route.
+ * around them: an unreadable or oversized body, an unknown route and an
+ * unhandled error.
  */
+
+/** Crashes on purpose: what a bug in a handler looks like to the filter. */
+@Controller('test-crash')
+class CrashController {
+  @Get()
+  crash(): never {
+    throw new Error('boom');
+  }
+}
+
 describe('error codes (e2e)', () => {
   let app: INestApplication;
   let prisma: PrismaService;
@@ -49,7 +60,10 @@ describe('error codes (e2e)', () => {
   };
 
   beforeAll(async () => {
-    const moduleRef = await Test.createTestingModule({ imports: [AppModule] }).compile();
+    const moduleRef = await Test.createTestingModule({
+      imports: [AppModule],
+      controllers: [CrashController],
+    }).compile();
     app = moduleRef.createNestApplication();
     configureApp(app);
     await app.init();
@@ -129,6 +143,20 @@ describe('error codes (e2e)', () => {
     const response = await agent.get('/api/no-such-route').expect(404);
 
     expect(response.body.message).toBe('server.unexpected');
+  });
+
+  it('sends server.unexpected for an unhandled error, and logs it', async () => {
+    // Silenced: the stack would clutter the test output.
+    const logged = vi.spyOn(Logger.prototype, 'error').mockImplementation(() => {});
+    try {
+      // The agent has a session: without one, AuthGuard answers 401 first.
+      const response = await agent.get('/api/test-crash').expect(500);
+
+      expect(response.body.message).toBe('server.unexpected');
+      expect(logged).toHaveBeenCalledWith(expect.objectContaining({ message: 'boom' }));
+    } finally {
+      logged.mockRestore();
+    }
   });
 
   it('sends server.rateLimited on the sixth login in a minute from one address', async () => {

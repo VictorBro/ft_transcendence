@@ -18,7 +18,8 @@
     "db:migrate": "prisma migrate dev",
     "db:deploy": "prisma migrate deploy",
     "db:seed": "tsx prisma/seed.ts",
-    "generation:try": "tsx --env-file-if-exists=../../.env scripts/try-generation.ts"
+    "generation:try": "tsx --env-file-if-exists=../../.env scripts/try-generation.ts",
+    "outlines:check": "tsx scripts/check-outlines.ts"
   },
   "dependencies": {
     "@ft/shared": "workspace:*",

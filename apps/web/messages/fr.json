@@ -17,11 +17,11 @@
   },
   "Footer": {
     "legalNav": "Informations légales",
-    "legalSentence": "Un projet académique. Pas un service commercial. Consultez notre <privacy>politique de confidentialité</privacy> et nos <terms>conditions d'utilisation</terms>."
+    "legalSentence": "Un projet académique. Pas un service commercial. Consulte notre <privacy>politique de confidentialité</privacy> et nos <terms>conditions d'utilisation</terms>."
   },
   "HomePage": {
-    "headline": "Apprenez une langue avec un tuteur qui s'adapte à vous !",
-    "intro": "ft_transcendence génère des leçons, corrige vos réponses, suit le niveau qu'il en déduit, et vous associe à un autre apprenant pour une pratique en direct. Cette page est le squelette : tout ce qui suit est de la plomberie, pas du produit.",
+    "headline": "Apprends une langue avec un tuteur qui s'adapte à toi !",
+    "intro": "ft_transcendence génère des leçons, corrige tes réponses, suit le niveau qu'il en déduit, et t'associe à un autre apprenant pour une pratique en direct. Cette page est le squelette : tout ce qui suit est de la plomberie, pas du produit.",
     "startNow": "Commencer",
     "continueLearning": "Continuer à apprendre",
     "logoAlt": "Logo ft_transcendence"
@@ -48,19 +48,19 @@
     "dailyGoal": "Objectif quotidien",
     "minutesPerDay": "{minutes} min",
     "takePlacement": "Passer le test de positionnement",
-    "roadmapSoon": "Votre parcours apparaîtra ici",
+    "roadmapSoon": "Ton parcours apparaîtra ici",
     "practice": "Exercices",
     "thisCourse": "Ce cours"
   },
   "Onboarding": {
     "title": "Commencer",
-    "chooseCourseHeading": "Que voulez-vous apprendre ?",
-    "chooseCourseIntro": "Choisissez une langue et le temps que vous voulez y consacrer chaque jour. Vous pourrez changer de rythme plus tard.",
+    "chooseCourseHeading": "Que veux-tu apprendre ?",
+    "chooseCourseIntro": "Choisis une langue et le temps que tu veux y consacrer chaque jour. Tu pourras changer de rythme plus tard.",
     "languageLegend": "Langue à apprendre",
     "goalLegend": "Objectif quotidien",
     "goalMinutes": "{minutes} min",
     "next": "Suivant",
-    "chooseLevelIntro": "Passez le test de positionnement, ou indiquez votre niveau si vous le connaissez déjà.",
+    "chooseLevelIntro": "Passe le test de positionnement, ou indique ton niveau si tu le connais déjà.",
     "takeTest": "Passer le test de positionnement",
     "setLevelMyself": "Je connais déjà mon niveau",
     "confirmLevel": "Commencer à apprendre",
@@ -70,7 +70,7 @@
       "de": "Deutsch"
     },
     "dailyGoalSummary": "Objectif quotidien : {minutes} min",
-    "noNewLanguage": "Vous apprenez déjà toutes les langues proposées.",
+    "noNewLanguage": "Tu apprends déjà toutes les langues proposées.",
     "backToCourse": "Revenir à mon cours en {language}",
     "languageInSentence": {
       "en": "anglais",
@@ -80,63 +80,63 @@
     "back": "Retour"
   },
   "Level": {
-    "legend": "Votre niveau",
-    "ladderYou": "Vous",
+    "legend": "Ton niveau",
+    "ladderYou": "Toi",
     "ladderGoal": "Objectif",
     "description": {
-      "A0": "Vous partez de zéro.",
-      "A1": "Vous vous débrouillez avec des phrases simples.",
-      "A2": "Vous gérez les échanges du quotidien.",
-      "B1": "Vous tenez une conversation sur des sujets familiers.",
-      "B2": "Vous vous exprimez avec aisance sur des sujets variés.",
-      "C1": "Vous vous exprimez couramment, y compris sur des sujets complexes.",
-      "C2": "Vous maîtrisez la langue."
+      "A0": "Tu pars de zéro.",
+      "A1": "Tu te débrouilles avec des phrases simples.",
+      "A2": "Tu gères les échanges du quotidien.",
+      "B1": "Tu tiens une conversation sur des sujets familiers.",
+      "B2": "Tu t'exprimes avec aisance sur des sujets variés.",
+      "C1": "Tu t'exprimes couramment, y compris sur des sujets complexes.",
+      "C2": "Tu maîtrises la langue."
     },
-    "lessonsAt": "Vos leçons seront de niveau {level}.",
-    "lessonsAtTop": "Vos leçons entretiendront et affineront ce niveau.",
+    "lessonsAt": "Tes leçons seront de niveau {level}.",
+    "lessonsAtTop": "Tes leçons entretiendront et affineront ce niveau.",
     "save": "Enregistrer",
     "cancel": "Annuler"
   },
   "ComingSoon": {
-    "stillInDevelopment": "Ce mode est encore en développement. Revenez bientôt."
+    "stillInDevelopment": "Ce mode est encore en développement. Reviens bientôt."
   },
   "ModeLayout": {
     "backToCourse": "Retour au cours"
   },
   "ChatPage": {
     "title": "Conversation",
-    "heading": "Discuter avec votre tuteur",
+    "heading": "Discuter avec ton tuteur",
     "tutor": "Tuteur",
     "messageLabel": "Message",
-    "messagePlaceholder": "Votre message…",
+    "messagePlaceholder": "Ton message…",
     "sendMessage": "Envoyer le message",
-    "feedbackHeading": "Recevez un retour sur vos messages",
-    "feedbackIntro": "L'IA analysera vos messages et vous donnera un retour personnalisé."
+    "feedbackHeading": "Reçois un retour sur tes messages",
+    "feedbackIntro": "L'IA analysera tes messages et te donnera un retour personnalisé."
   },
   "ErrorPage": {
     "heading": "Une erreur est survenue",
-    "intro": "Nous n'avons pas pu joindre le service. Vous êtes toujours connecté, et cela ne dure généralement qu'un instant.",
+    "intro": "Nous n'avons pas pu joindre le service. Tu es toujours connecté, et cela ne dure généralement qu'un instant.",
     "tryAgain": "Réessayer",
     "goHome": "Retour à l'accueil"
   },
   "NotFoundPage": {
     "title": "Page introuvable",
     "heading": "Page introuvable",
-    "intro": "Cette adresse n'existe pas. Elle a peut-être changé, ou le lien qui vous a amené ici n'est plus à jour.",
+    "intro": "Cette adresse n'existe pas. Elle a peut-être changé, ou le lien qui t'a amené ici n'est plus à jour.",
     "goHome": "Retour à l'accueil"
   },
   "LoginPage": {
     "heading": "Se connecter"
   },
   "LoginForm": {
-    "twoFactorPrompt": "Saisissez le code à six chiffres de votre application d'authentification, ou l'un de vos codes de récupération.",
+    "twoFactorPrompt": "Saisis le code à six chiffres de ton application d'authentification, ou l'un de tes codes de récupération.",
     "authenticationCode": "Code d'authentification",
     "verify": "Vérifier",
     "email": "E-mail",
     "password": "Mot de passe",
     "signIn": "Se connecter",
     "noAccountYet": "Pas encore de compte ?",
-    "createOne": "Créez-en un"
+    "createOne": "Crées-en un"
   },
   "SignUpPage": {
     "heading": "Créer un compte"
@@ -149,7 +149,7 @@
     "passwordHint": "Au moins 12 caractères, avec une majuscule, une minuscule et un chiffre.",
     "confirmPassword": "Confirmer le mot de passe",
     "createAccount": "Créer un compte",
-    "alreadyHaveAccount": "Vous avez déjà un compte ?",
+    "alreadyHaveAccount": "Tu as déjà un compte ?",
     "signIn": "Se connecter"
   },
   "Form": {
@@ -167,39 +167,39 @@
       "needsLowercase": "Le mot de passe doit contenir une minuscule",
       "needsUppercase": "Le mot de passe doit contenir une majuscule",
       "needsDigit": "Le mot de passe doit contenir un chiffre",
-      "required": "Saisissez votre mot de passe",
+      "required": "Saisis ton mot de passe",
       "mismatch": "Les deux mots de passe ne correspondent pas"
     },
     "email": {
-      "invalid": "Saisissez une adresse e-mail valide"
+      "invalid": "Saisis une adresse e-mail valide"
     },
     "auth": {
       "invalidCredentials": "Adresse e-mail ou mot de passe incorrect",
       "incorrectPassword": "Mot de passe incorrect",
       "identityTaken": "Cette adresse e-mail ou ce nom d'affichage est déjà utilisé",
       "displayNameTaken": "Ce nom d'affichage est déjà utilisé",
-      "passwordFirst": "Connectez-vous d'abord avec votre mot de passe",
+      "passwordFirst": "Connecte-toi d'abord avec ton mot de passe",
       "sessionRequired": "Connexion requise pour continuer"
     },
     "avatar": {
-      "invalidFile": "Ce fichier ne peut pas être utilisé comme avatar. Essayez un PNG, JPEG ou WebP."
+      "invalidFile": "Ce fichier ne peut pas être utilisé comme avatar. Essaie un PNG, JPEG ou WebP."
     },
     "profile": {
-      "noChanges": "Modifiez au moins un champ",
+      "noChanges": "Modifie au moins un champ",
       "invalidTimeZone": "Ce fuseau horaire n'est pas reconnu",
       "invalidLocale": "Cette langue d'interface n'est pas prise en charge"
     },
     "twoFactor": {
-      "codeFormat": "Saisissez le code à six chiffres de votre application d'authentification",
+      "codeFormat": "Saisis le code à six chiffres de ton application d'authentification",
       "recoveryCodeFormat": "Cela ne ressemble pas à un code de récupération",
-      "secondFactorFormat": "Saisissez un code à six chiffres de votre application, ou l'un de vos codes de récupération",
-      "setupFirst": "Commencez d'abord la configuration à deux facteurs",
+      "secondFactorFormat": "Saisis un code à six chiffres de ton application, ou l'un de tes codes de récupération",
+      "setupFirst": "Commence d'abord la configuration à deux facteurs",
       "invalidCode": "Ce code n'est pas valide"
     },
     "course": {
-      "alreadyStarted": "Vous avez déjà commencé un cours dans cette langue",
-      "notFound": "Vous n'avez pas encore de cours dans cette langue",
-      "notPlaced": "Choisissez d'abord votre niveau pour commencer ce cours",
+      "alreadyStarted": "Tu as déjà commencé un cours dans cette langue",
+      "notFound": "Tu n'as pas encore de cours dans cette langue",
+      "notPlaced": "Choisis d'abord ton niveau pour commencer ce cours",
       "unknownLanguage": "Cette langue n'est pas proposée",
       "invalidGoal": "Objectif quotidien possible : 10, 30 ou 60 minutes",
       "invalidLevel": "Ce niveau n'existe pas"
@@ -209,14 +209,14 @@
       "invalidScore": "Le score doit être un nombre entier de 0 à 100"
     },
     "placement": {
-      "inProgress": "Un test de positionnement est déjà en cours. Terminez-le d'abord.",
+      "inProgress": "Un test de positionnement est déjà en cours. Termine-le d'abord.",
       "invalidChoice": "Choix de réponse invalide pour cette question.",
-      "invalidSession": "Ce test de positionnement n'est pas valide. Lancez-en un nouveau.",
+      "invalidSession": "Ce test de positionnement n'est pas valide. Lances-en un nouveau.",
       "notFound": "Aucun test de positionnement n'est en cours",
-      "onboardingIncomplete": "Complétez l'intégration avant de passer le test de positionnement.",
-      "questionMismatch": "Cette question n'est plus active. Actualisez le test de positionnement et réessayez.",
-      "expired": "Ce test de positionnement a expiré. Lancez-en un nouveau.",
-      "poolExhausted": "Il ne reste pas assez de questions pour ce test. Réessayez plus tard."
+      "onboardingIncomplete": "Complète l'intégration avant de passer le test de positionnement.",
+      "questionMismatch": "Cette question n'est plus active. Actualise le test de positionnement et réessaie.",
+      "expired": "Ce test de positionnement a expiré. Lances-en un nouveau.",
+      "poolExhausted": "Il ne reste pas assez de questions pour ce test. Réessaie plus tard."
     },
     "request": {
       "invalid": "La requête est illisible",
@@ -229,7 +229,7 @@
       "unexpected": "Le serveur a répondu HTTP {status}",
       "rateLimited": "Trop de tentatives. Nouvel essai possible dans une minute"
     },
-    "unknown": "Une erreur est survenue. Réessayez."
+    "unknown": "Une erreur est survenue. Réessaie."
   },
   "LogOutButton": {
     "signingOut": "Déconnexion…",
@@ -243,7 +243,7 @@
     "joined": "Inscrit le {date}",
     "editProfile": "Modifier le profil",
     "security": "Sécurité",
-    "twoFactorPrompt": "Ajoutez un second facteur pour qu'un mot de passe volé ne suffise pas à se connecter.",
+    "twoFactorPrompt": "Ajoute un second facteur pour qu'un mot de passe volé ne suffise pas à se connecter.",
     "twoFactorAuthentication": "Authentification à deux facteurs",
     "backToProfile": "Retour au profil"
   },
@@ -262,16 +262,16 @@
     "intro": "Une application d'authentification génère un code qui change toutes les 30 secondes. Une fois activée, un mot de passe volé seul ne suffit pas pour se connecter."
   },
   "TwoFactorPanel": {
-    "saveRecoveryCodesHeading": "Enregistrez vos codes de récupération",
-    "recoveryCodesIntro": "Chaque code fonctionne une seule fois, en cas de perte de votre authentificateur. C'est la seule fois où ils sont affichés.",
+    "saveRecoveryCodesHeading": "Enregistre tes codes de récupération",
+    "recoveryCodesIntro": "Chaque code fonctionne une seule fois, en cas de perte de ton authentificateur. C'est la seule fois où ils sont affichés.",
     "savedThem": "Je les ai enregistrés",
-    "scanHeading": "Scannez ce code",
-    "qrAlt": "Code QR pour votre application d'authentification",
-    "cannotScan": "Impossible de scanner ? Saisissez cette clé manuellement :",
-    "codeFromApp": "Code depuis votre application",
+    "scanHeading": "Scanne ce code",
+    "qrAlt": "Code QR pour ton application d'authentification",
+    "cannotScan": "Impossible de scanner ? Saisis cette clé manuellement :",
+    "codeFromApp": "Code depuis ton application",
     "turnOn": "Activer",
     "enabledStatus": "L'authentification à deux facteurs est activée. {count} codes de récupération restants.",
-    "confirmPasswordToTurnOff": "Confirmez votre mot de passe pour la désactiver",
+    "confirmPasswordToTurnOff": "Confirme ton mot de passe pour la désactiver",
     "turnOff": "Désactiver",
     "disabledStatus": "L'authentification à deux facteurs est désactivée.",
     "working": "En cours…",
@@ -279,30 +279,30 @@
   },
   "Placement": {
     "title": "Test de positionnement",
-    "startHeading": "Trouvez votre niveau",
-    "startDescription": "Des questions de vocabulaire, de grammaire et de compréhension écrite en {language}. Le test s'adapte à vos réponses et s'arrête dès qu'il connaît votre niveau. Chaque question est chronométrée.",
-    "startCurrent": "Vos leçons sont actuellement de niveau {level}. Le test fixera un nouveau niveau, que vous pourrez encore modifier ensuite.",
+    "startHeading": "Trouve ton niveau",
+    "startDescription": "Des questions de vocabulaire, de grammaire et de compréhension écrite en {language}. Le test s'adapte à tes réponses et s'arrête dès qu'il connaît ton niveau. Chaque question est chronométrée.",
+    "startCurrent": "Tes leçons sont actuellement de niveau {level}. Le test fixera un nouveau niveau, que tu pourras encore modifier ensuite.",
     "startButton": "Commencer le test",
     "back": "Retour",
     "optionLabel": "Réponses possibles",
     "timeLeft": "Secondes restantes",
     "quitButton": "Quitter le test",
-    "quitConfirm": "Quitter maintenant ? Vos réponses jusqu'ici seront perdues.",
+    "quitConfirm": "Quitter maintenant ? Tes réponses jusqu'ici seront perdues.",
     "quitConfirmYes": "Quitter",
     "quitConfirmNo": "Continuer le test",
-    "resultHeading": "Votre résultat",
+    "resultHeading": "Ton résultat",
     "score": "{correct, plural, one {# bonne réponse} other {# bonnes réponses}} sur {total}",
-    "allTimedOut": "Le temps s'est écoulé à chaque question : votre cours reste au niveau {level}.",
-    "allTimedOutNoLevel": "Le temps s'est écoulé à chaque question : aucun niveau n'a été fixé. Repassez le test ou choisissez votre niveau vous-même.",
+    "allTimedOut": "Le temps s'est écoulé à chaque question : ton cours reste au niveau {level}.",
+    "allTimedOutNoLevel": "Le temps s'est écoulé à chaque question : aucun niveau n'a été fixé. Repasse le test ou choisis ton niveau toi-même.",
     "continueButton": "Continuer",
     "backToCourse": "Retour au cours",
-    "chooseLevel": "Choisir votre niveau",
-    "overrideButton": "Ce n'est pas votre niveau ?",
+    "chooseLevel": "Choisir ton niveau",
+    "overrideButton": "Ce n'est pas ton niveau ?",
     "retakeButton": "Repasser le test",
-    "answersHeading": "Votre dernier résultat d'examen",
-    "answersHeadingLevel": "Votre dernier résultat d'examen – {level}",
+    "answersHeading": "Ton dernier résultat d'examen",
+    "answersHeadingLevel": "Ton dernier résultat d'examen – {level}",
     "showText": "Afficher le texte",
-    "yourAnswer": "Votre réponse",
+    "yourAnswer": "Ta réponse",
     "correctAnswer": "Bonne réponse",
     "noAnswer": "Temps écoulé",
     "correct": "Correct",

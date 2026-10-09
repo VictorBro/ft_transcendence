@@ -1,0 +1,1756 @@
+{
+  "lang": "de",
+  "level": "B2",
+  "entries": [
+    {
+      "id": "de-shades-of-character",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Charakterzüge",
+      "intent": "Menschen mit etwa zwölf Charakteradjektiven genauer beschreiben: selbstbewusst, schüchtern, großzügig, geizig, hilfsbereit, rücksichtslos, ehrgeizig, gelassen."
+    },
+    {
+      "id": "de-middle-field-complements-adverbials",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Ergänzungen und Angaben im Mittelfeld",
+      "intent": "Ein volles Mittelfeld ordnen: Pronomen zuerst, Angaben meist vor dem Akkusativnomen, Richtungs- und Präpositionalergänzungen zuletzt (Sie hat ihm gestern den Brief in die Hand gedrückt)."
+    },
+    {
+      "id": "de-compound-adjectives-for-people",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Zusammengesetzte Adjektive für Menschen",
+      "intent": "Menschen mit etwa zwölf Adjektiven auf -freudig, -bewusst, -lieb und -bereit beschreiben: kontaktfreudig, risikofreudig, pflichtbewusst, umweltbewusst, kinderlieb, kompromissbereit."
+    },
+    {
+      "id": "de-attitudes",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Einstellungen und Überzeugungen",
+      "intent": "Haltungen zum Leben und zu anderen mit etwa zwölf Wörtern beschreiben: die Einstellung, die Überzeugung, aufgeschlossen, engstirnig, skeptisch, optimistisch, pessimistisch, tolerant."
+    },
+    {
+      "id": "de-saying-what-matters-to-you",
+      "kind": "functions",
+      "theme": "personal_identification",
+      "workingTitle": "Sagen, was einem wichtig ist",
+      "intent": "Über Werte und Prioritäten sprechen und sie gewichten: Für mich steht die Familie an erster Stelle. Darauf lege ich großen Wert. Geld spielt dabei eher eine untergeordnete Rolle."
+    },
+    {
+      "id": "de-body-language",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Körpersprache",
+      "intent": "Gestik und Mimik mit etwa zwölf Wörtern benennen und deuten: die Geste, die Mimik, der Blickkontakt, die Körperhaltung, nicken, den Kopf schütteln, mit den Schultern zucken, die Stirn runzeln."
+    },
+    {
+      "id": "de-mood-idioms",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Gute und schlechte Laune in Wendungen",
+      "intent": "Etwa zwölf umgangssprachliche Wendungen für Stimmungen verstehen und verwenden: gut drauf sein, die Nase voll haben, aus der Haut fahren, auf Wolke sieben schweben, auf hundertachtzig sein."
+    },
+    {
+      "id": "de-causal-prepositions-aus-vor",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "Aus Angst, vor Freude: Gründe mit Präposition",
+      "intent": "Gründe ohne Artikel mit aus für bewusstes Handeln und mit vor für unwillkürliche Reaktionen angeben: aus Neugier fragen, aus Liebe heiraten, vor Kälte zittern, vor Freude weinen."
+    },
+    {
+      "id": "de-reading-a-profile-of-someone-with-an-unusual-job",
+      "kind": "reading",
+      "theme": "personal_identification",
+      "workingTitle": "Das Porträt einer Person mit ungewöhnlichem Beruf lesen",
+      "intent": "Das Porträt einer Person mit ungewöhnlichem Beruf lesen (Glockengießerin, Schornsteinfeger) und Fakten, ihre Haltung zur Arbeit und den Blickwinkel der Autorin erkennen."
+    },
+    {
+      "id": "de-roots-and-identity",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Herkunft und Identität",
+      "intent": "Über die eigene Herkunft mit etwa zwölf Wörtern sprechen: die Herkunft, die Heimat, die Wurzeln (Pl.), aufwachsen, die Identität, zweisprachig, geprägt sein von, sich heimisch fühlen."
+    },
+    {
+      "id": "de-migration-and-integration",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Migration und Integration",
+      "intent": "Über Einwanderung und Zusammenleben mit etwa zwölf Wörtern sprechen: die Einwanderung, der Einwanderer / die Einwanderin, die Flucht, der / die Geflüchtete, das Asyl, die Abschiebung, die Vielfalt."
+    },
+    {
+      "id": "de-strengthening-negation",
+      "kind": "grammar",
+      "topic": "negation",
+      "workingTitle": "Verstärkte Verneinung: gar nicht, überhaupt kein",
+      "intent": "Eine Verneinung mit gar, überhaupt und nicht einmal verstärken und mit geschweige denn steigern, jeweils an der richtigen Stelle: Ich habe gar keine Zeit. Er kann kaum gehen, geschweige denn laufen."
+    },
+    {
+      "id": "de-clearing-up-a-cultural-misunderstanding",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Ein kulturelles Missverständnis aufklären",
+      "intent": "Erklären, wie ein Verhalten gemeint war, wenn Gewohnheiten aufeinandertreffen: Ich glaube, da liegt ein Missverständnis vor. Bei uns ist das ganz normal. Ich wollte auf keinen Fall unhöflich sein."
+    },
+    {
+      "id": "de-regions-of-dach",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Regionen in D-A-CH",
+      "intent": "Etwa zwölf Regionen im deutschsprachigen Raum nennen und verorten, meist mit Artikel: das Allgäu, das Ruhrgebiet, der Schwarzwald, die Nordsee, die Ostsee, die Alpen (Pl.), die Wachau, Graubünden."
+    },
+    {
+      "id": "de-reading-about-german-dialects",
+      "kind": "reading",
+      "theme": "language",
+      "workingTitle": "Einen Artikel über Dialekte lesen",
+      "intent": "Einen Artikel über Dialekte im deutschen Sprachraum lesen und die großen Dialektgebiete (Niederdeutsch, Mitteldeutsch, Oberdeutsch) und die Einstellungen der Sprecher finden."
+    },
+    {
+      "id": "de-synonyms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Synonyme statt Wiederholung",
+      "intent": "Statt sagen, machen und groß etwa zwölf genauere Wörter wählen: äußern, erwähnen, betonen, durchführen, herstellen, erstellen, riesig, beträchtlich, gewaltig."
+    },
+    {
+      "id": "de-impersonal-es",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Festes es: Hier handelt es sich um ...",
+      "intent": "Wendungen mit festem es wie es handelt sich um, es kommt auf ... an und es fehlt an verwenden und wissen, dass dieses es nie wegfällt: Hier handelt es sich um einen Irrtum."
+    },
+    {
+      "id": "de-formal-and-informal",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Stilebenen: gehoben, neutral, umgangssprachlich",
+      "intent": "Zu etwa sechs neutralen Wörtern die gehobene und die umgangssprachliche Variante kennen und wählen: erhalten, bekommen, kriegen; speisen, essen, futtern; die Mittel (Pl.), das Geld, die Knete."
+    },
+    {
+      "id": "de-everyday-idioms",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Redewendungen im Alltag",
+      "intent": "Etwa zwölf häufige Redewendungen verstehen und im Gespräch verwenden: die Daumen drücken, Schwein haben, ins Fettnäpfchen treten, auf dem Schlauch stehen, um den heißen Brei herumreden."
+    },
+    {
+      "id": "de-reading-about-anglicisms-and-youth-language",
+      "kind": "reading",
+      "theme": "language",
+      "workingTitle": "Einen Artikel über Anglizismen und Jugendsprache lesen",
+      "intent": "Einen Artikel über Anglizismen und Jugendsprache lesen, Beispiele und ihre Herkunft finden (cringe, chillen, das Meeting) und die Positionen in der Sprachdebatte unterscheiden."
+    },
+    {
+      "id": "de-gender-changes-meaning",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Gleiches Wort, anderer Artikel",
+      "intent": "Etwa zehn Nomen unterscheiden, deren Bedeutung vom Artikel abhängt: der See und die See, der Leiter und die Leiter, das Steuer und die Steuer, der Kiefer und die Kiefer, das Band und der Band."
+    },
+    {
+      "id": "de-causal-zumal-naemlich",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Zumal, nämlich, schließlich: ergänzende Gründe",
+      "intent": "Einen Grund ergänzen oder nachträglich nennen: zumal im Nebensatz, nämlich nur im Mittelfeld, schließlich im Hauptsatz (Ich nehme das Rad, das Auto ist nämlich in der Werkstatt)."
+    },
+    {
+      "id": "de-adapting-your-tone-in-writing",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Den richtigen Ton in E-Mails und Chats treffen",
+      "intent": "Dieselbe Nachricht für den Teamchat, eine Kollegin und einen Kunden passend formulieren: Hi zusammen, kurzes Update! Liebe Frau Peters, kurz zur Info. Sehr geehrter Herr Kaya, gern informiere ich Sie."
+    },
+    {
+      "id": "de-persuading-and-negotiating",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Verhandlungen und Argumente",
+      "intent": "Etwa zwölf Wörter fürs Überzeugen und Verhandeln verwenden: das Argument, überzeugen, der Standpunkt, verhandeln, die Bedingung, das Zugeständnis, einlenken, der Kompromiss, sich einigen auf."
+    },
+    {
+      "id": "de-strengths-and-skills",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Stärken und Kompetenzen",
+      "intent": "Im Vorstellungsgespräch eigene Stärken und Schwächen mit etwa zwölf Nomen benennen: die Teamfähigkeit, die Belastbarkeit, die Kritikfähigkeit, das Organisationstalent, die Eigeninitiative."
+    },
+    {
+      "id": "de-achievement",
+      "kind": "vocabulary",
+      "theme": "personal_identification",
+      "workingTitle": "Leistung und Erfolg",
+      "intent": "Etwa zwölf Wörter für Leistung, Erfolg und Scheitern verwenden: die Leistung, die Begabung, begabt, die Auszeichnung, sich durchsetzen, der Misserfolg, scheitern, der Rückschlag."
+    },
+    {
+      "id": "de-consequence-folglich-derart",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Folglich, infolgedessen, derart ..., dass",
+      "intent": "Folgen in Texten mit folglich und infolgedessen im Hauptsatz und mit derart oder dermaßen ..., dass ausdrücken: Der Zug fiel aus, folglich kamen wir zu spät."
+    },
+    {
+      "id": "de-hiring-and-leaving",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Einstellung und Entlassung",
+      "intent": "Über Beginn und Ende eines Arbeitsverhältnisses mit etwa zwölf Wörtern sprechen: einstellen, befristet, unbefristet, entlassen, die Entlassung, die Abfindung, das Arbeitszeugnis, in Rente gehen."
+    },
+    {
+      "id": "de-reading-a-job-reference-section-by-section",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Ein Arbeitszeugnis Abschnitt für Abschnitt lesen",
+      "intent": "Ein qualifiziertes Arbeitszeugnis lesen und seine Teile erkennen: Angaben zur Person, Aufgaben, Leistung, Verhalten und Schlussformel (Wir wünschen ihr für die Zukunft alles Gute)."
+    },
+    {
+      "id": "de-writing-a-cover-letter",
+      "kind": "functions",
+      "theme": "daily_life",
+      "workingTitle": "Ein Bewerbungsanschreiben verfassen",
+      "intent": "Ein Anschreiben für eine Stelle aufbauen, die eigene Eignung belegen und um ein Gespräch bitten: Mit großem Interesse habe ich Ihre Anzeige gelesen. Über eine Einladung zum Gespräch freue ich mich."
+    },
+    {
+      "id": "de-running-a-business",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Unternehmen und Branchen",
+      "intent": "Über Firmen und ihre Zahlen mit etwa zwölf Wörtern sprechen: das Unternehmen, gründen, die Gründung, die Branche, der Umsatz, der Gewinn, der Verlust, die Konkurrenz."
+    },
+    {
+      "id": "de-statal-passive",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Zustandspassiv: Die Tür ist geschlossen",
+      "intent": "Mit sein und Partizip II ein Ergebnis beschreiben und es vom Vorgang mit werden unterscheiden, auch im Präteritum: Die Tür wird geschlossen. Die Tür ist (war) geschlossen."
+    },
+    {
+      "id": "de-roles-in-a-company",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Positionen im Betrieb",
+      "intent": "Etwa zwölf Positionen und Abteilungen nennen, Personen mit weiblicher Form: der Geschäftsführer / die Geschäftsführerin, der / die Vorgesetzte, die Führungskraft, die Personalabteilung."
+    },
+    {
+      "id": "de-work-collocations",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Arbeitswelt: feste Verbindungen",
+      "intent": "Etwa zwölf feste Verbindungen aus dem Berufsalltag verwenden: eine Frist einhalten, eine Besprechung leiten, einen Vertrag abschließen, Überstunden abbauen, neue Kollegen einarbeiten."
+    },
+    {
+      "id": "de-reading-business-emails",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Geschäftliche E-Mails lesen",
+      "intent": "Geschäftliche E-Mails lesen (Angebot, Rückfrage, Auftragsbestätigung) und Bitten, Zusagen, Fristen und offene Fragen finden (wie besprochen, anbei, wir bitten um Rückmeldung bis)."
+    },
+    {
+      "id": "de-present-participle-adjective",
+      "kind": "grammar",
+      "topic": "adjectives",
+      "workingTitle": "Partizip I: der lachende Junge",
+      "intent": "Das Partizip I bilden, als Adjektiv deklinieren und vom Partizip II unterscheiden: das schlafende Kind (es schläft gerade), das gelesene Buch (es wurde gelesen)."
+    },
+    {
+      "id": "de-work-models",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Arbeitsmodelle",
+      "intent": "Etwa zwölf Begriffe für flexible Arbeitsformen verstehen und vergleichen: das Homeoffice, das mobile Arbeiten, die Gleitzeit, die Kernarbeitszeit, die Viertagewoche, das Sabbatical, die Zeiterfassung."
+    },
+    {
+      "id": "de-assigning-tasks-in-a-meeting",
+      "kind": "functions",
+      "theme": "daily_life",
+      "workingTitle": "In einer Besprechung Aufgaben verteilen",
+      "intent": "Am Ende einer Besprechung Aufgaben verteilen, Fristen vereinbaren und Ergebnisse festhalten: Wer übernimmt das? Bis wann können wir damit rechnen? Ich nehme das ins Protokoll auf."
+    },
+    {
+      "id": "de-commuting",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Pendler und Arbeitsweg",
+      "intent": "Über den täglichen Weg zur Arbeit mit etwa zwölf Wörtern sprechen: pendeln, der Pendler / die Pendlerin, der Arbeitsweg, der Berufsverkehr, die Fahrgemeinschaft, das Jobticket, die Pendlerpauschale."
+    },
+    {
+      "id": "de-reading-opinions-on-digital-nomads",
+      "kind": "reading",
+      "theme": "daily_life",
+      "workingTitle": "Meinungen zum Leben als digitale Nomaden lesen",
+      "intent": "Kurze Aussagen mehrerer Personen zum Leben als digitale Nomaden lesen und Behauptungen der richtigen Person zuordnen, auch wenn die Meinung nur angedeutet wird (Freiheit hat ihren Preis)."
+    },
+    {
+      "id": "de-reference-words-in-texts",
+      "kind": "grammar",
+      "topic": "information_structure_and_pragmatics",
+      "workingTitle": "Verweiswörter im Text: dies, dabei, darauf",
+      "intent": "Mit dies, dabei, dadurch, darauf und ähnlichen Wörtern auf einen vorherigen Satz verweisen und so einen Text verbinden: Er hat gekündigt. Dies hat alle überrascht."
+    },
+    {
+      "id": "de-time-precision",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Wörter für Dauer und Häufigkeit",
+      "intent": "Mit etwa zwölf Wörtern genau sagen, wie lange und wie oft etwas geschieht: vorübergehend, dauerhaft, vorläufig, kurzfristig, langfristig, gelegentlich, ständig, neuerdings, seither."
+    },
+    {
+      "id": "de-prefix-verbs-be-ver-er",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Verben mit be-, ver- und er-",
+      "intent": "Die Bedeutung von be-, ver- und er- an etwa zwölf Verben erkennen: antworten und beantworten, bearbeiten, verbessern, vergrößern, verkleinern, erleichtern, ermöglichen, erneuern."
+    },
+    {
+      "id": "de-dass-clause-or-infinitive",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Dass-Satz oder Infinitiv mit zu?",
+      "intent": "Entscheiden, wann ein dass-Satz zum Infinitiv mit zu wird, auch nach ohne und anstatt: bei gleichem Subjekt oder wenn das Objekt handelt (Ich bitte dich zu kommen. Er ging, ohne dass ich es merkte)."
+    },
+    {
+      "id": "de-suggesting-a-solution-to-your-manager",
+      "kind": "functions",
+      "theme": "daily_life",
+      "workingTitle": "Der Chefin ein Problem schildern und eine Lösung vorschlagen",
+      "intent": "Der Vorgesetzten schriftlich ein Problem im Arbeitsalltag schildern und eine Lösung vorschlagen: Ich wende mich an Sie, weil der Schichtplan oft spät kommt. Mein Vorschlag: ein Plan für vier Wochen."
+    },
+    {
+      "id": "de-technology-in-daily-life",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Technik im Alltag",
+      "intent": "Über digitale Technik im Alltag mit etwa zwölf Wörtern sprechen: die Digitalisierung, die künstliche Intelligenz, der Chatbot, der Sprachassistent, das Smart Home, die Smartwatch, vernetzt."
+    },
+    {
+      "id": "de-online-safety",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Sicherheit im Netz",
+      "intent": "Etwa zwölf Wörter für Gefahren im Netz und den Schutz davor verwenden: die Phishing-Mail, der Trojaner, hacken, der Fake-Shop, die Abofalle, der Identitätsdiebstahl, die Zwei-Faktor-Authentifizierung."
+    },
+    {
+      "id": "de-reading-a-phishing-email",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Eine verdächtige E-Mail lesen",
+      "intent": "Eine angebliche E-Mail von Bank oder Paketdienst lesen und Merkmale von Phishing erkennen (Zeitdruck, falsche Absenderadresse, Link zur Eingabe von Passwort oder PIN)."
+    },
+    {
+      "id": "de-too-and-enough-with-infinitive",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Zu müde, um zu fahren: zu und genug mit Infinitiv",
+      "intent": "Mit zu und genug plus um ... zu ausdrücken, dass ein Grad etwas verhindert oder möglich macht: Er ist zu müde, um weiterzufahren. Sie ist alt genug, um allein zu reisen."
+    },
+    {
+      "id": "de-software-and-hardware",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Software und Hardware",
+      "intent": "Etwa zwölf Wörter für Computer und Programme verwenden: die Software, die Hardware, das Betriebssystem, die Festplatte, der Arbeitsspeicher, der Prozessor, die Cloud, abstürzen, neu starten."
+    },
+    {
+      "id": "de-reading-an-article-with-missing-sentences",
+      "kind": "reading",
+      "theme": "language",
+      "workingTitle": "Einen Artikel mit fehlenden Sätzen lesen",
+      "intent": "Einen Artikel lesen, aus dem Sätze entfernt wurden, und sie mithilfe von Pronomen, Konnektoren und dem roten Faden an die richtige Stelle setzen (dieser, deshalb, trotzdem, ein weiterer Grund)."
+    },
+    {
+      "id": "de-temporal-ehe-sooft-kaum-dass",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Ehe, sooft, kaum dass: weitere Zeitsätze",
+      "intent": "Zeitverhältnisse mit ehe (bevor), sooft (immer wenn) und kaum dass oder kaum ..., als ausdrücken: Kaum war ich zu Hause, als das Telefon klingelte."
+    },
+    {
+      "id": "de-coping-with-a-hotline",
+      "kind": "functions",
+      "theme": "services",
+      "workingTitle": "Mit einer Hotline zurechtkommen",
+      "intent": "Bei einer Hotline das Anliegen knapp schildern, eine Vorgangsnummer bekommen und Zusagen festhalten: Ich wurde schon dreimal weiterverbunden. Wie lautet die Vorgangsnummer? Wann ruft man mich zurück?"
+    },
+    {
+      "id": "de-ways-of-living",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Wohnformen",
+      "intent": "Etwa zwölf Wohnformen mit Artikel nennen und vergleichen: das Eigenheim, das Reihenhaus, die Doppelhaushälfte, der Altbau, der Neubau, das Mehrgenerationenhaus, das Wohnheim, das Tiny House."
+    },
+    {
+      "id": "de-housing-market",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Der Wohnungsmarkt",
+      "intent": "Über die Lage auf dem Wohnungsmarkt mit etwa zwölf Wörtern sprechen: die Wohnungsnot, der Makler / die Maklerin, die Provision, die Eigentumswohnung, die Sozialwohnung, die Mietpreisbremse, bezahlbar."
+    },
+    {
+      "id": "de-double-infinitive",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Ersatzinfinitiv: hat kommen können",
+      "intent": "Das Perfekt von Modalverben und von lassen, sehen und hören mit zwei Infinitiven bilden und im Nebensatz das Hilfsverb vor die Infinitive stellen: Ich weiß, dass er nicht hat kommen können."
+    },
+    {
+      "id": "de-home-features",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Ausstattung einer Wohnung",
+      "intent": "Etwa zwölf Ausstattungsmerkmale einer Wohnung oder eines Hauses nennen: die Einbauküche, die Fußbodenheizung, der Dachboden, die Terrasse, der Wintergarten, die Tiefgarage, barrierefrei."
+    },
+    {
+      "id": "de-location-phrases",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Lage und Umgebung",
+      "intent": "Die Lage eines Ortes mit etwa zwölf festen Ausdrücken beschreiben: am Stadtrand, im Umland, in unmittelbarer Nähe, etwas außerhalb, zentral gelegen, verkehrsgünstig, in ruhiger Lage, in Laufweite."
+    },
+    {
+      "id": "de-reading-an-estate-agents-expose",
+      "kind": "reading",
+      "theme": "house_and_home",
+      "workingTitle": "Ein Exposé vom Makler lesen",
+      "intent": "Das Exposé einer Maklerin lesen, die Fakten finden (Energieausweis, Provision, Baujahr) und schönfärberische Formulierungen durchschauen (verkehrsgünstig gelegen, gemütlich, mit Potenzial)."
+    },
+    {
+      "id": "de-neighbour-disputes",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Ärger mit Nachbarn",
+      "intent": "Etwa zwölf Wörter für Streit unter Nachbarn verwenden: die Lärmbelästigung, die Ruhestörung, sich gestört fühlen, der Nachbarschaftsstreit, der Hausfrieden, die Abmahnung, das Ordnungsamt."
+    },
+    {
+      "id": "de-future-perfect",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Futur II: wird geschafft haben",
+      "intent": "Mit dem Futur II sagen, was bis zu einem Zeitpunkt abgeschlossen sein wird, und Vergangenes vermuten: Bis Freitag werde ich es geschafft haben. Er wird den Bus verpasst haben."
+    },
+    {
+      "id": "de-reading-a-tenants-association-guide",
+      "kind": "reading",
+      "theme": "house_and_home",
+      "workingTitle": "Einen Ratgeber des Mietervereins lesen",
+      "intent": "Einen Ratgeber des Mietervereins zu Mängeln in der Wohnung lesen und Rechte und Schritte der Mieter finden (Mangel schriftlich anzeigen, Frist setzen, Mietminderung)."
+    },
+    {
+      "id": "de-negotiating-with-the-landlord",
+      "kind": "functions",
+      "theme": "house_and_home",
+      "workingTitle": "Mit dem Vermieter verhandeln",
+      "intent": "Mit dem Vermieter über einen Mangel verhandeln: Im Mietvertrag steht, dass das Ihre Aufgabe ist. Bis zur Reparatur möchte ich die Miete mindern. Sonst wende ich mich an den Mieterverein."
+    },
+    {
+      "id": "de-renovating",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Renovierung und Sanierung",
+      "intent": "Über Arbeiten an Wohnung und Haus mit etwa zwölf Wörtern sprechen: renovieren, sanieren, die Sanierung, tapezieren, die Tapete, die Fliese, der Fußboden, dämmen, die Dämmung."
+    },
+    {
+      "id": "de-gardening",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Gartenarbeit",
+      "intent": "Etwa zwölf Wörter für die Arbeit im Garten verwenden: der Spaten, die Gießkanne, das Beet, säen, ernten, das Unkraut, jäten, der Kompost, der Schrebergarten."
+    },
+    {
+      "id": "de-relative-clauses-wer",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Wer ..., der: verallgemeinernde Relativsätze",
+      "intent": "Relativsätze ohne Bezugswort mit wer und was bilden und der, den oder dem ergänzen, wenn der Kasus wechselt: Wem das nicht passt, der kann gehen. Was du sagst, stimmt."
+    },
+    {
+      "id": "de-city-problems",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Probleme der Großstadt",
+      "intent": "Etwa zwölf Wörter für Schattenseiten der Großstadt verwenden: die Anonymität, die Hektik, überfüllt, die Vermüllung, der Brennpunkt, die Kriminalitätsrate, der Verkehrskollaps, die Reizüberflutung."
+    },
+    {
+      "id": "de-rural-change",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Strukturwandel auf dem Land",
+      "intent": "Über Veränderungen auf dem Land mit etwa zwölf Wörtern sprechen: die Landflucht, die Abwanderung, überaltert, die Infrastruktur, die Busanbindung, der Dorfladen, die Dorfgemeinschaft."
+    },
+    {
+      "id": "de-reading-readers-letters-on-a-car-free-centre",
+      "kind": "reading",
+      "theme": "places",
+      "workingTitle": "Leserbriefe zur autofreien Innenstadt lesen",
+      "intent": "Mehrere Leserbriefe zu einer autofreien Innenstadt lesen, die Argumente vergleichen und herausfinden, worin die Schreibenden trotz allem übereinstimmen (endlich ruhiger, die Läden leiden)."
+    },
+    {
+      "id": "de-noun-verb-collocations",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Nomen-Verb-Verbindungen und ihre Verneinung",
+      "intent": "Nomen-Verb-Verbindungen als Einheit erkennen, in der das Nomen die Bedeutung trägt, und sie richtig verneinen: keine Hilfe leisten, nicht zum Einsatz kommen."
+    },
+    {
+      "id": "de-weighing-up-arguments",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Argumente abwägen",
+      "intent": "In einer Diskussion Vor- und Nachteile abwägen und zu einem Urteil kommen: Dafür spricht, dass es Zeit spart. Dagegen spricht vor allem der Preis. Alles in allem bin ich eher dafür."
+    },
+    {
+      "id": "de-common-noun-verb-phrases",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Häufige Nomen-Verb-Verbindungen",
+      "intent": "Etwa zwölf häufige Nomen-Verb-Verbindungen verwenden, wo möglich mit einfachem Verb: eine Entscheidung treffen (entscheiden), zum Ausdruck bringen (ausdrücken), infrage kommen, in Kauf nehmen."
+    },
+    {
+      "id": "de-art-movements",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Kunstrichtungen",
+      "intent": "Über Malerei mit etwa zwölf Wörtern sprechen: der Impressionismus, der Expressionismus, abstrakt, realistisch, das Porträt, die Landschaftsmalerei, das Stillleben, die Leinwand."
+    },
+    {
+      "id": "de-reading-a-romantic-poem",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Ein Gedicht der Romantik lesen",
+      "intent": "Ein kurzes Gedicht der Romantik wie Eichendorffs Mondnacht lesen und seine Bilder, Stimmung und Sehnsucht beschreiben (Nacht, Mondlicht, Himmel und Erde, die fliegende Seele)."
+    },
+    {
+      "id": "de-customs-of-dach",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Bräuche in D-A-CH",
+      "intent": "Etwa zwölf Feste und Bräuche im deutschsprachigen Raum erklären: das Schützenfest, der Maibaum, die Kirmes (auch die Kirchweih), der Polterabend, der Krampus (österr.), das Sechseläuten (schweiz.)."
+    },
+    {
+      "id": "de-subjunctive-ii-strong-verbs",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Käme, ginge, wüsste: Konjunktiv II ohne würde",
+      "intent": "Häufige einfache Konjunktiv-II-Formen wie käme, ginge, gäbe, wüsste, fände und ließe bilden und wissen, wann würde mit Infinitiv natürlicher klingt: Wenn sie doch käme!"
+    },
+    {
+      "id": "de-periods-of-history",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Epochen der Geschichte",
+      "intent": "Etwa zwölf Epochen mit Artikel nennen: die Antike, das Mittelalter, die Reformation, die Industrialisierung, die Weimarer Republik, der Nationalsozialismus, die DDR, die Wiedervereinigung."
+    },
+    {
+      "id": "de-heritage",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Kulturerbe",
+      "intent": "Über historische Bauwerke und ihren Schutz mit etwa zwölf Wörtern sprechen: das Weltkulturerbe, das Bauwerk, das Wahrzeichen, die Kathedrale, der Palast, historisch, restaurieren, der Denkmalschutz."
+    },
+    {
+      "id": "de-reading-a-city-portrait-in-a-guidebook",
+      "kind": "reading",
+      "theme": "places",
+      "workingTitle": "Ein Stadtporträt im Reiseführer lesen",
+      "intent": "Ein Stadtporträt über Leipzig im Reiseführer lesen, Geschichte und Charakter der Stadt erfassen (Messestadt, Montagsdemonstrationen, Baumwollspinnerei) und Besuchsziele wählen."
+    },
+    {
+      "id": "de-showing-visitors-around-your-town",
+      "kind": "functions",
+      "theme": "places",
+      "workingTitle": "Gäste durch die eigene Stadt führen",
+      "intent": "Eine Gruppe durch die eigene Stadt führen, Sehenswürdigkeiten zeigen und Hintergründe erzählen: Wir stehen vor dem alten Rathaus, das im 16. Jahrhundert gebaut wurde. Wenn Sie mir bitte folgen würden."
+    },
+    {
+      "id": "de-past-subjunctive-modal-verbs",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Du hättest anrufen sollen: Konjunktiv II mit Modalverb",
+      "intent": "Mit hätte und zwei Infinitiven nachträglich Vorwürfe machen und verpasste Chancen nennen, auch im Nebensatz: Du hättest anrufen sollen. Ich glaube, dass er es hätte schaffen können."
+    },
+    {
+      "id": "de-religions-and-festivals",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Religionen und religiöse Feste",
+      "intent": "Etwa zwölf Wörter zu Religionen und ihren Festen mit Artikel nennen: das Christentum, der Islam, das Judentum, gläubig, der Gottesdienst, die Moschee, die Synagoge, der Ramadan, das Zuckerfest."
+    },
+    {
+      "id": "de-reading-memories-of-the-fall-of-the-wall",
+      "kind": "reading",
+      "theme": "personal_identification",
+      "workingTitle": "Erinnerungen an den Mauerfall lesen",
+      "intent": "Den Bericht einer Zeitzeugin über den 9. November 1989 lesen und Ereignisse, damalige Gefühle und heutige Sicht unterscheiden (Grenzübergang Bornholmer Straße, Begrüßungsgeld)."
+    },
+    {
+      "id": "de-relationship-crises",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Beziehungskrisen",
+      "intent": "Über Probleme in einer Partnerschaft mit etwa zwölf Wörtern sprechen: die Krise, die Eifersucht, eifersüchtig, betrügen, die Untreue, sich auseinanderleben, sich aussprechen, die Paartherapie."
+    },
+    {
+      "id": "de-family-forms",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Familienformen",
+      "intent": "Etwa zwölf Familienformen und Familienrollen mit Artikel nennen: die Kleinfamilie, die Großfamilie, die Patchworkfamilie, der Stiefvater, das Pflegekind, die Adoption, die Lebensgemeinschaft."
+    },
+    {
+      "id": "de-mixed-unreal-conditions",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Gemischte irreale Bedingungen: damals und heute",
+      "intent": "Irreale Bedingungen bilden, in denen sich Vergangenheit und Gegenwart mischen: Wenn ich damals Medizin studiert hätte, wäre ich heute Ärztin."
+    },
+    {
+      "id": "de-generations",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Generationen",
+      "intent": "Über das Verhältnis der Generationen mit etwa zwölf Wörtern sprechen: die Generation, der Generationenkonflikt, die Senioren (Pl.), die Lebenserwartung, das Pflegeheim, pflegebedürftig."
+    },
+    {
+      "id": "de-reading-a-group-chat",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Einen Gruppenchat mit Umgangssprache lesen",
+      "intent": "Einen Gruppenchat unter Freunden lesen, umgangssprachliche Kurzformen entschlüsseln (LG, vllt, kp, grad, ne) und herausfinden, was am Ende verabredet ist und wer wie dazu steht."
+    },
+    {
+      "id": "de-gender-roles",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Rollenbilder und Gleichberechtigung",
+      "intent": "Über Rollenbilder von Frauen und Männern mit etwa zwölf Wörtern sprechen: die Gleichberechtigung, das Rollenbild, die Rollenverteilung, das Klischee, der Hausmann, die Doppelbelastung."
+    },
+    {
+      "id": "de-verb-first-conditions-wishes",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Verberststellung statt wenn: Bedingungen und Wünsche",
+      "intent": "Bedingungen und Wünsche ohne wenn mit dem Verb am Satzanfang formulieren, oft mit sollte, dann oder doch: Sollte es regnen, bleiben wir hier. Hätte ich das doch nur gewusst!"
+    },
+    {
+      "id": "de-conflict-and-making-up",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Streit und Versöhnung",
+      "intent": "Etwa zwölf Wörter für Streit und Versöhnung verwenden: der Konflikt, der Streitpunkt, der Vorwurf, jemandem etwas vorwerfen, beleidigt sein, nachgeben, Frieden schließen, verzeihen, die Versöhnung."
+    },
+    {
+      "id": "de-clarifying-what-you-meant",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Klarstellen, was man gemeint hat",
+      "intent": "Richtigstellen, wenn man falsch verstanden wurde, und das Gemeinte anders sagen: So habe ich das nicht gemeint. Worauf ich hinauswollte: Wir brauchen mehr Zeit. Wir reden wohl aneinander vorbei."
+    },
+    {
+      "id": "de-journalism",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Journalismus",
+      "intent": "Etwa zwölf Wörter aus Zeitung und Redaktion verwenden: die Redaktion, der Redakteur / die Redakteurin, recherchieren, die Reportage, der Leitartikel, die Pressefreiheit, die Quelle."
+    },
+    {
+      "id": "de-reading-news-headlines-and-teasers",
+      "kind": "reading",
+      "theme": "language",
+      "workingTitle": "Schlagzeilen und Teaser lesen",
+      "intent": "Schlagzeilen und Teaser einer Nachrichtenseite lesen, den knappen Stil verstehen (Bahnstreik: Pendler sauer, Regierung vor Einigung?) und entscheiden, welche Artikel man ganz liest."
+    },
+    {
+      "id": "de-podcasts-and-audiobooks",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Podcasts und Hörbücher",
+      "intent": "Über Hörmedien mit etwa zwölf Wörtern sprechen: der Podcast, die Episode, abonnieren, das Hörbuch, das Hörspiel, der Sprecher / die Sprecherin, der Moderator / die Moderatorin."
+    },
+    {
+      "id": "de-unreal-comparisons-als-ob",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Als ob nichts passiert wäre: irreale Vergleiche",
+      "intent": "Irreale Vergleiche mit als ob oder als wenn und mit als plus Verb im Konjunktiv II bilden: Er tut, als ob er nichts wüsste. Sie sah aus, als hätte sie geweint."
+    },
+    {
+      "id": "de-film-reviews",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Filmkritik",
+      "intent": "Einen Film mit etwa zwölf Wörtern beschreiben und bewerten: die Besetzung, die Kameraführung, die Spezialeffekte (Pl.), die Fortsetzung, mitreißend, langatmig, vorhersehbar, überzeugend."
+    },
+    {
+      "id": "de-literary-genres",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Literarische Gattungen",
+      "intent": "Etwa zwölf literarische Gattungen und Buchformen mit Artikel nennen: die Erzählung, die Novelle, die Kurzgeschichte, das Gedicht, das Drama, die Tragödie, die Fabel, die Biografie, das Sachbuch."
+    },
+    {
+      "id": "de-music-scene",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Musikszene",
+      "intent": "Über Bands, Auftritte und Hits mit etwa zwölf Wörtern sprechen: das Festival, der Auftritt, auftreten, die Tournee, das Album, die Charts (Pl.), der Hit, der Liedermacher / die Liedermacherin."
+    },
+    {
+      "id": "de-reporting-on-a-book-film-or-trip",
+      "kind": "functions",
+      "theme": "free_time",
+      "workingTitle": "Von einem Buch, Film oder einer Reise berichten",
+      "intent": "Ausführlich von einem Buch, Film oder einer Reise berichten, Eindrücke schildern und eine Empfehlung begründen: Am meisten beeindruckt hat mich das Ende. Ich kann den Film nur empfehlen."
+    },
+    {
+      "id": "de-passive-modal-verbs-past",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Passiv mit Modalverb in der Vergangenheit: musste repariert werden",
+      "intent": "Das Passiv mit Modalverb im Präteritum und im Perfekt bilden, auch im Nebensatz, und das übliche Präteritum vorziehen: Das Dach musste repariert werden. Es hat repariert werden müssen."
+    },
+    {
+      "id": "de-reading-two-reviews-of-one-novel",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Zwei Rezensionen eines Romans lesen",
+      "intent": "Zwei Zeitungsrezensionen desselben Romans lesen und vergleichen, nach welchen Kriterien die Kritiker urteilen (Sprache, Figuren, Aufbau) und wo und warum ihre Urteile auseinandergehen."
+    },
+    {
+      "id": "de-photography",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Fotografie",
+      "intent": "Etwa zwölf Wörter rund ums Fotografieren verwenden: das Objektiv, die Blende, die Belichtungszeit, scharf stellen, unscharf, der Bildausschnitt, der Vordergrund, das Stativ, die Auflösung."
+    },
+    {
+      "id": "de-noun-suffixes-schaft-nis-tum",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Nomen auf -schaft, -nis und -tum",
+      "intent": "Etwa zwölf Nomen auf -schaft, -nis und -tum mit Bedeutung und Artikel lernen: die Gesellschaft, die Bereitschaft, das Hindernis, die Erlaubnis, das Bedürfnis, das Eigentum, der Irrtum, der Reichtum."
+    },
+    {
+      "id": "de-passive-dative-prepositional-verbs",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Mir wurde geholfen: Passiv ohne Subjekt",
+      "intent": "Verben ohne Akkusativobjekt ins Passiv setzen: Ein Dativ- oder Präpositionalobjekt behält seinen Kasus, das Verb steht im Singular, es nur auf Position 1 (Hier wird getanzt. Mir wurde geholfen)."
+    },
+    {
+      "id": "de-reading-post-war-short-fiction",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Eine Kurzgeschichte der Nachkriegszeit lesen",
+      "intent": "Eine Kurzgeschichte der Trümmerliteratur in der Art von Wolfgang Borchert lesen und erkennen, was zwischen den Figuren ungesagt bleibt und was die knappe Sprache ausdrückt."
+    },
+    {
+      "id": "de-ways-of-learning",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Lernformen",
+      "intent": "Etwa zwölf Wörter für Formen des Lernens verwenden: das Selbststudium, das E-Learning, der Präsenzunterricht, der Fernkurs, die Lernplattform, die Lerngruppe, das lebenslange Lernen, autodidaktisch."
+    },
+    {
+      "id": "de-academic-writing-basics",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Aufbau einer Hausarbeit",
+      "intent": "Etwa zwölf Wörter für Aufbau und Form einer schriftlichen Arbeit verwenden: die Gliederung, die Einleitung, der Hauptteil, der Schluss, die These, das Inhaltsverzeichnis, die Fußnote, das Plagiat."
+    },
+    {
+      "id": "de-giving-constructive-feedback",
+      "kind": "functions",
+      "theme": "education",
+      "workingTitle": "Konstruktive Kritik äußern",
+      "intent": "Ehrliche, aber ermutigende Rückmeldung zu einer Arbeit geben: Mir ist aufgefallen, dass der Schluss etwas kurz ist. Vielleicht könntest du ein Beispiel ergänzen. Insgesamt ist die Arbeit gelungen."
+    },
+    {
+      "id": "de-degrees-and-fees",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Hochschulabschlüsse und Studienfinanzierung",
+      "intent": "Über Studienabschlüsse und ihre Finanzierung mit etwa zwölf Wörtern sprechen: der Bachelor, der Master, die Promotion, der Studiengang, die Studiengebühren (Pl.), das BAföG, das Stipendium."
+    },
+    {
+      "id": "de-passive-alternative-sein-zu",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Sein mit zu: Das ist bis Freitag abzugeben",
+      "intent": "Mit sein und zu plus Infinitiv ausdrücken, was gemacht werden muss oder kann, besonders in Regeln und Formularen: Der Antrag ist bis Freitag abzugeben. Der Lärm war kaum zu ertragen."
+    },
+    {
+      "id": "de-school-debates",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Schule in der Diskussion",
+      "intent": "Über Streitfragen rund um die Schule mit etwa zwölf Wörtern sprechen: die Chancengleichheit, die Ganztagsschule, das Sitzenbleiben, die Inklusion, der Leistungsdruck, die Schulpflicht."
+    },
+    {
+      "id": "de-reading-university-study-regulations",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Eine Studien- und Prüfungsordnung lesen",
+      "intent": "Auszüge aus der Studien- und Prüfungsordnung einer Hochschule lesen und den Paragrafen finden, der eine Frage beantwortet (Wiederholung von Prüfungen, Regelstudienzeit, Leistungspunkte)."
+    },
+    {
+      "id": "de-passive-alternative-sich-lassen",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Das lässt sich lösen: sich lassen und -bar",
+      "intent": "Eine Möglichkeit ohne werden ausdrücken, mit sich lassen plus Infinitiv oder mit einem Adjektiv auf -bar: Das Problem lässt sich lösen. Es ist lösbar. Der Fehler war nicht erkennbar."
+    },
+    {
+      "id": "de-structuring-a-talk",
+      "kind": "functions",
+      "theme": "education",
+      "workingTitle": "Einen Vortrag gliedern",
+      "intent": "Einen längeren Vortrag klar gliedern und das Publikum durch die Teile führen: Mein Vortrag hat drei Teile. Damit komme ich zum zweiten Punkt. Hier sehen Sie die Zahlen. Zum Schluss fasse ich zusammen."
+    },
+    {
+      "id": "de-cooking-methods",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Garmethoden",
+      "intent": "Etwa zwölf Garmethoden unterscheiden und in Rezepten verstehen: dünsten, dämpfen, rösten, frittieren, schmoren, köcheln, überbacken, garen, pochieren."
+    },
+    {
+      "id": "de-reading-a-detailed-sourdough-recipe",
+      "kind": "reading",
+      "theme": "food_and_drink",
+      "workingTitle": "Ein ausführliches Rezept für Sauerteigbrot lesen",
+      "intent": "Ein ausführliches Rezept für Sauerteigbrot lesen und Arbeitsschritte, Fachbegriffe und Zeiten verstehen (Anstellgut füttern, Teig dehnen und falten, über Nacht gehen lassen)."
+    },
+    {
+      "id": "de-processed-food",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Fertigprodukte und Zusatzstoffe",
+      "intent": "Über verarbeitete Lebensmittel mit etwa zwölf Wörtern sprechen: das Fertiggericht, verarbeitet, der Zusatzstoff, der Konservierungsstoff, der Geschmacksverstärker, der Zuckergehalt, der Fettgehalt."
+    },
+    {
+      "id": "de-active-passive-or-man",
+      "kind": "grammar",
+      "topic": "information_structure_and_pragmatics",
+      "workingTitle": "Aktiv, Passiv oder man: die Perspektive wählen",
+      "intent": "In einem Text zwischen Aktiv, Passiv und man wählen, je nachdem, ob die handelnde Person wichtig, unbekannt oder unwichtig ist: Man renovierte das Haus. Das Haus wurde renoviert."
+    },
+    {
+      "id": "de-food-production",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Lebensmittelproduktion",
+      "intent": "Über Herstellung und Herkunft von Lebensmitteln mit etwa zwölf Wörtern sprechen: der Anbau, anbauen, der Erzeuger, die Massentierhaltung, ökologisch, das Bio-Siegel, regional, saisonal, der Hofladen."
+    },
+    {
+      "id": "de-food-waste",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Lebensmittelverschwendung",
+      "intent": "Über das Wegwerfen und Retten von Lebensmitteln mit etwa zwölf Wörtern sprechen: wegwerfen, verschwenden, die Verschwendung, der Überschuss, retten, das Foodsharing, die Resteverwertung, containern."
+    },
+    {
+      "id": "de-reading-about-the-nutri-score",
+      "kind": "reading",
+      "theme": "food_and_drink",
+      "workingTitle": "Einen Artikel über den Nutri-Score lesen",
+      "intent": "Einen Artikel über den Nutri-Score lesen und der Debatte folgen: wie die Note von A bis E entsteht, was Befürworter und Kritiker sagen und welche Schwächen genannt werden."
+    },
+    {
+      "id": "de-indefinite-pronouns-cases",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Man, einem, einen: Indefinitpronomen im Kasus",
+      "intent": "Man im Dativ und Akkusativ durch einem und einen ersetzen und jemand, niemand und einer dekliniert verwenden: Das kann einem passieren. Ich habe niemanden gesehen."
+    },
+    {
+      "id": "de-restaurant-reviews",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Restaurantkritik",
+      "intent": "Ein Restaurant mit etwa zwölf Wörtern beschreiben und bewerten: das Ambiente, die Atmosphäre, der Service, zuvorkommend, die Portion, überteuert, das Preis-Leistungs-Verhältnis, empfehlenswert."
+    },
+    {
+      "id": "de-food-phrases",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Essen: feste Verbindungen",
+      "intent": "Etwa zwölf feste Verbindungen rund ums Essen verwenden: den Hunger stillen, den Durst löschen, einen Happen essen, Appetit auf etwas haben, sich den Bauch vollschlagen (ugs.), zum Mitnehmen, Mahlzeit!"
+    },
+    {
+      "id": "de-generalising-and-qualifying",
+      "kind": "functions",
+      "theme": "food_and_drink",
+      "workingTitle": "Verallgemeinern und einschränken",
+      "intent": "Über Essgewohnheiten im eigenen Land verallgemeinern und einschränken: In der Regel isst man bei uns abends warm. Das kann man aber nicht pauschal sagen. Zumindest in meiner Familie war das so."
+    },
+    {
+      "id": "de-drinking-culture",
+      "kind": "vocabulary",
+      "theme": "food_and_drink",
+      "workingTitle": "Trinkkultur",
+      "intent": "Über Trinkgewohnheiten mit etwa zwölf Wörtern sprechen und regionale Wörter erkennen: anstoßen, Prost, nüchtern, beschwipst, betrunken, der Kater, die Schorle, das Radler, der Heurige (österr.)."
+    },
+    {
+      "id": "de-amateurs-and-enthusiasts",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Laien und Profis",
+      "intent": "Über Hobbys und Können mit etwa zwölf Wörtern sprechen: der Laie, der Amateur, der Profi, der Anfänger, der / die Fortgeschrittene, der Liebhaber, das Steckenpferd, der Hobbykoch, der Bastler."
+    },
+    {
+      "id": "de-rules-of-sport",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Regeln im Sport",
+      "intent": "Etwa zwölf Begriffe für Regeln und Regelverstöße im Sport verwenden: das Foul, der Elfmeter, die Gelbe Karte, das Abseits, die Verlängerung, der Videobeweis, disqualifizieren, das Doping."
+    },
+    {
+      "id": "de-reading-a-theatre-season-programme",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Einen Spielplan mit Stückbeschreibungen lesen",
+      "intent": "Den Spielplan eines Theaters mit kurzen Stückbeschreibungen lesen, Genre und Ton erkennen (Komödie, Uraufführung, frei nach Schiller, ab 16 Jahren) und für bestimmte Personen ein Stück wählen."
+    },
+    {
+      "id": "de-subjunctive-i-forms",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Konjunktiv I: er habe, sie sei",
+      "intent": "Die Formen des Konjunktivs I bilden, vor allem in der dritten Person, und wissen, wann Konjunktiv II oder würde einspringt: er komme, sie habe, sie hätten statt sie haben."
+    },
+    {
+      "id": "de-sport-collocations",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Sport: feste Verbindungen",
+      "intent": "Etwa zwölf feste Verbindungen aus der Sportberichterstattung verwenden: einen Rekord aufstellen, einen Sieg erringen, eine Niederlage einstecken, den Ausgleich erzielen, einen Titel verteidigen."
+    },
+    {
+      "id": "de-interviewing-someone-for-a-blog",
+      "kind": "functions",
+      "theme": "free_time",
+      "workingTitle": "Ein Interview für einen Blog führen",
+      "intent": "Für einen Blog oder die Vereinszeitung ein Interview führen und mit Nachfragen in die Tiefe gehen: Wie sind Sie zu diesem Beruf gekommen? Können Sie das genauer erklären? Was raten Sie jungen Leuten?"
+    },
+    {
+      "id": "de-extreme-sports",
+      "kind": "vocabulary",
+      "theme": "free_time",
+      "workingTitle": "Extremsport",
+      "intent": "Über riskante Sportarten mit etwa zwölf Wörtern sprechen: das Fallschirmspringen, das Paragliding, das Bergsteigen, der Nervenkitzel, der Adrenalinkick, riskant, das Risiko, die Ausrüstung."
+    },
+    {
+      "id": "de-offences",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Straftaten",
+      "intent": "Über Straftaten und Beteiligte mit etwa zwölf Wörtern sprechen: der Betrug, die Körperverletzung, der Raub, der Mord, der Täter / die Täterin, das Opfer, der Verdacht, verdächtigen."
+    },
+    {
+      "id": "de-police-investigations",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Polizeiliche Ermittlungen",
+      "intent": "Über die Arbeit der Kriminalpolizei mit etwa zwölf Wörtern sprechen: ermitteln, die Ermittlung, der Tatort, die Spur, das Beweismittel, die Aussage, verhören, die Fahndung."
+    },
+    {
+      "id": "de-reported-speech-present",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Indirekte Rede: Er sagt, er sei krank",
+      "intent": "Aussagen anderer im Konjunktiv I wiedergeben und Pronomen sowie Orts- und Zeitangaben anpassen: Ich komme morgen. Sie sagte, sie komme am nächsten Tag."
+    },
+    {
+      "id": "de-reading-a-regional-crime-novel-extract",
+      "kind": "reading",
+      "theme": "free_time",
+      "workingTitle": "Einen Auszug aus einem Regionalkrimi lesen",
+      "intent": "Einen Auszug aus einem Regionalkrimi lesen, Spannung und Hinweise verfolgen und eine Vermutung über den Täter begründen (ein wackliges Alibi, ein übersehenes Detail)."
+    },
+    {
+      "id": "de-courts-and-sentences",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Gericht und Strafe",
+      "intent": "Etwa zwölf Wörter für einen Strafprozess verwenden: das Gericht, der Richter / die Richterin, der / die Angeklagte, der Prozess, das Urteil, verurteilen, die Geldstrafe, die Bewährung."
+    },
+    {
+      "id": "de-responding-to-arguments",
+      "kind": "functions",
+      "theme": "relations",
+      "workingTitle": "Auf Argumente eingehen und widersprechen",
+      "intent": "Das Argument des Gegenübers aufgreifen und begründet widersprechen: Das ist ein guter Punkt, aber man darf die Kosten nicht vergessen. Da muss ich Ihnen widersprechen. Ich sehe das eher umgekehrt."
+    },
+    {
+      "id": "de-reported-speech-past-future",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Indirekte Rede: Vergangenheit und Zukunft",
+      "intent": "Vergangenes in der indirekten Rede mit habe oder sei und Partizip II wiedergeben und Zukünftiges mit werde: Er sagte, er sei am Vortag angekommen und werde bald abreisen."
+    },
+    {
+      "id": "de-reading-a-court-report",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Einen Gerichtsbericht lesen",
+      "intent": "Einen Gerichtsbericht in der Lokalzeitung lesen und Fall, Vorwurf, Argumente und Urteil finden (angeklagt wegen, Bewährungsstrafe, Geldstrafe, Freispruch, in Berufung gehen)."
+    },
+    {
+      "id": "de-trip-journey-tour",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Reise, Fahrt, Tour",
+      "intent": "Die Reise, die Fahrt, die Tour und den Trip unterscheiden und etwa zwölf Zusammensetzungen verwenden: die Hinfahrt, die Rückreise, die Dienstreise, die Radtour, die Spritztour, der Kurztrip."
+    },
+    {
+      "id": "de-board-and-season",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Verpflegung und Saison",
+      "intent": "Hotel- und Ferienangebote mit etwa zwölf Wörtern verstehen: die Vollpension, die Halbpension, der Frühbucherrabatt, der Aufpreis, die Kurtaxe, die Stornogebühr, die Hauptsaison, die Nebensaison."
+    },
+    {
+      "id": "de-reading-travel-cancellation-insurance-terms",
+      "kind": "reading",
+      "theme": "travel",
+      "workingTitle": "Die Bedingungen einer Reiserücktrittsversicherung lesen",
+      "intent": "Die Kurzfassung der Bedingungen einer Reiserücktrittsversicherung lesen und Versichertes von Ausgeschlossenem trennen (unerwartete schwere Erkrankung, Selbstbeteiligung, Vorerkrankungen)."
+    },
+    {
+      "id": "de-subjective-sollen",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Er soll sehr reich sein: sollen für Gerüchte",
+      "intent": "Mit sollen wiedergeben, was andere behaupten, ohne es selbst zu bestätigen, und diese Bedeutung vom Auftrag unterscheiden: Der neue Film soll sehr gut sein."
+    },
+    {
+      "id": "de-tourism",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Tourismus",
+      "intent": "Über Tourismus als Branche mit etwa zwölf Wörtern sprechen: der Massentourismus, der Reiseveranstalter, die Tourismusbranche, das Reiseziel, der Tagestourist, touristisch, die Bettensteuer."
+    },
+    {
+      "id": "de-backpacking",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Abenteuerreisen",
+      "intent": "Über Reisen auf eigene Faust mit etwa zwölf Wörtern sprechen: das Abenteuer, trampen, per Anhalter fahren, auf eigene Faust, der Backpacker, das Hostel, die Wildnis, das Work and Travel."
+    },
+    {
+      "id": "de-finding-a-compromise",
+      "kind": "functions",
+      "theme": "daily_life",
+      "workingTitle": "Einen Kompromiss finden",
+      "intent": "Bei der Urlaubsplanung im Team einen Kompromiss aushandeln: Was halten Sie davon, wenn jeder zwei Wochen im August bekommt? Können wir uns darauf einigen? Damit kann ich leben."
+    },
+    {
+      "id": "de-reading-about-overtourism-in-hallstatt",
+      "kind": "reading",
+      "theme": "travel",
+      "workingTitle": "Einen Artikel über Massentourismus lesen",
+      "intent": "Einen Artikel über Massentourismus in Hallstatt lesen, die Sicht von Bewohnern, Geschäftsleuten und Gemeinde vergleichen und erkennen, wohin die Autorin tendiert."
+    },
+    {
+      "id": "de-borders-and-visas",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Grenzen und Visa",
+      "intent": "Etwa zwölf Wörter für Ein- und Ausreise verwenden: die Einreise, die Ausreise, das Visum (Pl. die Visa), die Passkontrolle, der Grenzübergang, der Schengenraum, die Aufenthaltsdauer, verweigern."
+    },
+    {
+      "id": "de-verbal-nouns-genitive",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Die Ankunft des Zuges: Genitiv nach Verbalnomen",
+      "intent": "Aus einem Satz eine Nominalgruppe machen, in der Subjekt oder Objekt zum Genitiv wird, ohne Artikel mit von: Der Zug kommt an, die Ankunft des Zuges; der Bau von Wohnungen."
+    },
+    {
+      "id": "de-transit-network",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Öffentlicher Nahverkehr",
+      "intent": "Über Bus- und Bahnnetze in der Stadt mit etwa zwölf Wörtern sprechen: der ÖPNV, das Liniennetz, der Takt, der Verkehrsverbund, die Verkehrswende, der Knotenpunkt, der Nachtbus, die Mobilität."
+    },
+    {
+      "id": "de-traffic-jargon",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Verkehrsjargon",
+      "intent": "Etwa zwölf Begriffe aus Verkehrsfunk und Straßenverkehr verstehen: die Rettungsgasse, das Reißverschlussverfahren, der Standstreifen, der Geisterfahrer, das Autobahnkreuz, die Umweltzone."
+    },
+    {
+      "id": "de-reading-about-rail-passenger-rights",
+      "kind": "reading",
+      "theme": "travel",
+      "workingTitle": "Informationen zu Fahrgastrechten lesen",
+      "intent": "Informationen zu Fahrgastrechten bei Verspätung und Zugausfall lesen und herausfinden, was einem zusteht und wie man es beantragt (ab 60 Minuten 25 Prozent, Fahrgastrechteformular)."
+    },
+    {
+      "id": "de-claiming-compensation-for-a-delay",
+      "kind": "functions",
+      "theme": "travel",
+      "workingTitle": "Eine Entschädigung einfordern",
+      "intent": "Nach einer langen Zugverspätung am Schalter eine Entschädigung einfordern und auf seinem Recht bestehen: Ich hatte zwei Stunden Verspätung. Hier sind meine Belege. Ein Gutschein reicht mir nicht."
+    },
+    {
+      "id": "de-conditional-sofern-vorausgesetzt",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Bedingungssätze mit sofern und vorausgesetzt, dass",
+      "intent": "Bedingungen in Briefen und Texten mit sofern, vorausgesetzt, dass, angenommen, dass und im Falle, dass ausdrücken: Sofern nichts dazwischenkommt, sind wir um acht da."
+    },
+    {
+      "id": "de-road-accidents",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Verkehrsunfälle",
+      "intent": "Einen Verkehrsunfall mit etwa zwölf Wörtern beschreiben: der Zusammenstoß, zusammenstoßen, der Auffahrunfall, der Unfallort, der Sachschaden, die Unfallflucht, schuld sein, den Unfall aufnehmen."
+    },
+    {
+      "id": "de-ships-and-ferries",
+      "kind": "vocabulary",
+      "theme": "travel",
+      "workingTitle": "Schiff und Fähre",
+      "intent": "Etwa zwölf Wörter für Reisen mit Schiff und Fähre verwenden: die Fähre, die Überfahrt, an Bord gehen, anlegen, ablegen, das Deck, die Kabine, seekrank, die Rettungsweste."
+    },
+    {
+      "id": "de-concessive-obgleich-selbst-wenn",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Selbst wenn, obgleich, dennoch",
+      "intent": "Gegengründe mit obgleich, wenngleich, auch wenn und selbst wenn im Nebensatz und mit dennoch und nichtsdestotrotz im Hauptsatz ausdrücken: Selbst wenn es regnet, gehen wir los."
+    },
+    {
+      "id": "de-reading-an-article-on-the-history-of-travel",
+      "kind": "reading",
+      "theme": "travel",
+      "workingTitle": "Einen Artikel zur Geschichte des Reisens lesen",
+      "intent": "Einen längeren Zeitschriftenartikel über die Geschichte des Reisens lesen und Hauptgedanken und wichtige Details erfassen (Grand Tour, Sommerfrische, erste Pauschalreisen, Billigflüge)."
+    },
+    {
+      "id": "de-relaying-an-article",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Den Inhalt eines Artikels wiedergeben",
+      "intent": "Den Inhalt eines Zeitungsartikels für andere knapp wiedergeben: In dem Artikel geht es um steigende Mieten. Die Autorin meint, die Städte müssten mehr bauen. Als Beleg nennt sie eine Studie."
+    },
+    {
+      "id": "de-local-council",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Kommunalpolitik",
+      "intent": "Etwa zwölf Wörter für die Politik in Stadt und Gemeinde verwenden: die Kommune, die Stadtverwaltung, der Gemeinderat, der Stadtrat, die Kommunalwahl, die Bürgerversammlung, die Bürgerbeteiligung."
+    },
+    {
+      "id": "de-elections-and-government",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Wahlen und Regierung",
+      "intent": "Über Wahlen und Parlament mit etwa zwölf Wörtern sprechen: die Bundestagswahl, der Wahlkampf, die Stimme abgeben, das Wahlrecht, der / die Abgeordnete, die Koalition, die Opposition, der Bundestag."
+    },
+    {
+      "id": "de-einerseits-andererseits",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Einerseits ..., andererseits; zum einen ..., zum anderen",
+      "intent": "Zwei Seiten einer Sache mit einerseits ... andererseits und zum einen ... zum anderen gegenüberstellen: Einerseits ist die Wohnung billig, andererseits liegt sie weit draußen."
+    },
+    {
+      "id": "de-federalism",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Föderalismus in D-A-CH",
+      "intent": "Den Staatsaufbau in D-A-CH mit etwa zwölf Wörtern beschreiben: der Föderalismus, der Landtag, der Bundesrat, das Grundgesetz, der Nationalrat (österr., schweiz.), die Volksabstimmung."
+    },
+    {
+      "id": "de-reading-federal-political-news",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Eine Nachricht aus der Bundespolitik lesen",
+      "intent": "Eine Meldung aus der Bundespolitik lesen und finden, wer was beschlossen hat und wie es weitergeht (Bundestag, Bundesrat, Zustimmung der Länder, das Gesetz tritt in Kraft)."
+    },
+    {
+      "id": "de-social-problems",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Soziale Probleme",
+      "intent": "Über soziale Probleme mit etwa zwölf Wörtern sprechen: die Armut, die Arbeitslosigkeit, die Obdachlosigkeit, obdachlos, die Ungleichheit, die Ausgrenzung, die Grundsicherung, der soziale Abstieg."
+    },
+    {
+      "id": "de-bringing-others-into-a-discussion",
+      "kind": "functions",
+      "theme": "education",
+      "workingTitle": "Andere ins Gespräch einbeziehen",
+      "intent": "Eine Gruppendiskussion in Gang halten und Zurückhaltende oder Unterbrochene einbeziehen: Was meinen Sie dazu? Du hast noch gar nichts gesagt, wie siehst du das? Sie wollten vorhin etwas sagen?"
+    },
+    {
+      "id": "de-reading-a-newspaper-commentary",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Einen Kommentar in der Tageszeitung lesen",
+      "intent": "Einen Kommentar in einer Tageszeitung lesen, der Argumentation folgen und erkennen, ob die Autorin einen Punkt positiv oder skeptisch bewertet (zu begrüßen ist, fraglich bleibt, allerdings)."
+    },
+    {
+      "id": "de-charity",
+      "kind": "vocabulary",
+      "theme": "relations",
+      "workingTitle": "Spenden und Hilfe",
+      "intent": "Etwa zwölf Wörter für Spenden und Hilfsprojekte verwenden: spenden, die Spende, die Hilfsorganisation, das Hilfsprojekt, die Solidarität, unterstützen, die Tafel, die Kleiderspende, der Spendenlauf."
+    },
+    {
+      "id": "de-additive-linking-adverbs",
+      "kind": "grammar",
+      "topic": "syntax_and_sentence_structure",
+      "workingTitle": "Zudem, ferner, darüber hinaus: Zusätze im Text",
+      "intent": "In Texten mit zudem, ferner, überdies und darüber hinaus weitere Punkte anschließen, auf Position 1 oder im Mittelfeld: Die Lage ist gut. Zudem ist die Miete niedrig."
+    },
+    {
+      "id": "de-reading-portraits-of-volunteer-groups",
+      "kind": "reading",
+      "theme": "relations",
+      "workingTitle": "Kurzporträts von Vereinen und Initiativen lesen",
+      "intent": "Kurzporträts von Vereinen und Initiativen lesen (Tafel, Lesepaten, Nachbarschaftshilfe) und Menschen mit bestimmten Interessen und wenig Zeit das passende Ehrenamt zuordnen."
+    },
+    {
+      "id": "de-sleep",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Schlaf",
+      "intent": "Über Schlaf und Schlafprobleme mit etwa zwölf Wörtern sprechen: durchschlafen, wach liegen, die Schlafstörung, schlaflos, der Albtraum, schnarchen, ausgeschlafen, das Nickerchen, der Schlafrhythmus."
+    },
+    {
+      "id": "de-stress-and-wellbeing",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Stress und Wohlbefinden",
+      "intent": "Über Belastung und Erholung mit etwa zwölf Wörtern sprechen: das Wohlbefinden, erschöpft, ausgebrannt, der Burn-out, die Überlastung, abschalten, die Achtsamkeit, die Auszeit, zur Ruhe kommen."
+    },
+    {
+      "id": "de-modal-clauses-indem",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Indem und dadurch, dass: das Mittel angeben",
+      "intent": "Mit indem oder mit dadurch im Hauptsatz und dass im Nebensatz sagen, wie oder wodurch man etwas erreicht: Er lernt Wörter, indem er sie laut liest. Man spart Geld dadurch, dass man selbst kocht."
+    },
+    {
+      "id": "de-reading-a-popular-science-article-on-sleep",
+      "kind": "reading",
+      "theme": "health",
+      "workingTitle": "Einen populärwissenschaftlichen Artikel über Schlaf lesen",
+      "intent": "Einen populärwissenschaftlichen Artikel über Schlaf und Gedächtnis lesen und die Hauptergebnisse mit den Details finden, die sie stützen (Tiefschlafphase, Versuchspersonen, Kontrollgruppe)."
+    },
+    {
+      "id": "de-treatments",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Behandlung und Therapie",
+      "intent": "Über Behandlungen und Medikamente mit etwa zwölf Wörtern sprechen: die Behandlung, die Physiotherapie, die Reha, die Kur, verschreiben, die Dosis, wirken, die Wirkung, die Nebenwirkung."
+    },
+    {
+      "id": "de-discussing-treatment-options",
+      "kind": "functions",
+      "theme": "health",
+      "workingTitle": "Mit der Ärztin über Behandlungen sprechen",
+      "intent": "Mit der Ärztin Behandlungsmöglichkeiten, Risiken und Alternativen besprechen: Welche Alternativen gibt es? Mit welchen Nebenwirkungen muss ich rechnen? Ich möchte noch eine zweite Meinung einholen."
+    },
+    {
+      "id": "de-chronic-illness",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Chronische Krankheiten",
+      "intent": "Etwa zwölf chronische Krankheiten mit Artikel nennen und über das Leben damit sprechen: chronisch, der Diabetes, das Asthma, der Bluthochdruck, die Migräne, das Rheuma, die Vorerkrankung."
+    },
+    {
+      "id": "de-illness-collocations",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Krankheit: feste Verbindungen",
+      "intent": "Etwa zwölf feste Verbindungen rund ums Kranksein und Gesundwerden verwenden: sich eine Erkältung holen, sich anstecken, das Bett hüten, sich schonen, wieder auf den Beinen sein."
+    },
+    {
+      "id": "de-adversative-waehrend-wohingegen",
+      "kind": "grammar",
+      "topic": "subordinate_clauses",
+      "workingTitle": "Während, wohingegen, hingegen: Gegensätze",
+      "intent": "Gegensätze mit während und wohingegen im Nebensatz und mit hingegen und dagegen im Hauptsatz ausdrücken und adversatives von zeitlichem während unterscheiden: Er liest gern, während sie lieber läuft."
+    },
+    {
+      "id": "de-reading-a-health-portal-page-on-back-pain",
+      "kind": "reading",
+      "theme": "health",
+      "workingTitle": "Eine Gesundheitsseite über Rückenschmerzen lesen",
+      "intent": "Den Text eines Gesundheitsportals über Rückenschmerzen lesen und Symptome, Behandlungen und Warnzeichen für den Arztbesuch finden (Taubheitsgefühl, Schmerzen länger als sechs Wochen)."
+    },
+    {
+      "id": "de-training",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Training und Kondition",
+      "intent": "Über Training und Fitness mit etwa zwölf Wörtern sprechen: die Kondition, der Puls, die Muskulatur, der Muskelkater, sich aufwärmen, sich überanstrengen, die Regeneration, die Leistungsfähigkeit."
+    },
+    {
+      "id": "de-health-system",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Das Gesundheitssystem",
+      "intent": "Sich im Gesundheitssystem mit etwa zwölf Wörtern zurechtfinden: das Gesundheitswesen, die Kassenleistung, die Privatleistung, die Notfallpraxis, der ärztliche Bereitschaftsdienst, das E-Rezept."
+    },
+    {
+      "id": "de-modal-particles-requests",
+      "kind": "grammar",
+      "topic": "information_structure_and_pragmatics",
+      "workingTitle": "Komm ruhig rein: Partikeln in Aufforderungen",
+      "intent": "Aufforderungen mit ruhig ermutigen, mit bloß und nur warnen und mit schon und einfach drängen oder entlasten: Setz dich ruhig hin! Fass das bloß nicht an! Nun komm schon!"
+    },
+    {
+      "id": "de-reading-an-emergency-room-reportage",
+      "kind": "reading",
+      "theme": "health",
+      "workingTitle": "Eine Reportage aus der Notaufnahme lesen",
+      "intent": "Eine Reportage über eine Nachtschicht in der Notaufnahme lesen und Szenen, Personen und Fakten auseinanderhalten (Ersteinschätzung, Wartezeit, Personalmangel)."
+    },
+    {
+      "id": "de-hygiene-and-infection",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Hygiene und Infektionen",
+      "intent": "Über Ansteckung und Schutz mit etwa zwölf Wörtern sprechen: die Hygiene, die Infektion, der Erreger, die Bakterien (Pl.), desinfizieren, die Maske, die Pandemie, die Inkubationszeit."
+    },
+    {
+      "id": "de-addiction",
+      "kind": "vocabulary",
+      "theme": "health",
+      "workingTitle": "Sucht",
+      "intent": "Über Sucht und Abhängigkeit mit etwa zwölf Wörtern sprechen: die Sucht, süchtig, abhängig, die Droge, der Entzug, rückfällig, der Alkoholismus, die Spielsucht, die Suchtberatung."
+    },
+    {
+      "id": "de-taking-and-holding-the-floor",
+      "kind": "functions",
+      "theme": "language",
+      "workingTitle": "Das Wort ergreifen und behalten",
+      "intent": "In einer lebhaften Diskussion zu Wort kommen, Unterbrechungen abwehren und den Gedanken zu Ende führen: Darf ich kurz etwas dazu sagen? Lassen Sie mich bitte ausreden. Ich bin gleich fertig."
+    },
+    {
+      "id": "de-product-qualities",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Produkteigenschaften",
+      "intent": "Produkte mit etwa zwölf Adjektiven beschreiben und vergleichen: langlebig, robust, handlich, hochwertig, minderwertig, wasserdicht, pflegeleicht, preiswert, umweltfreundlich."
+    },
+    {
+      "id": "de-extended-participle-attributes",
+      "kind": "grammar",
+      "topic": "adjectives",
+      "workingTitle": "Der seit Jahren hier lebende Autor: erweiterte Partizipien",
+      "intent": "Erweiterte Partizipialattribute lesen, indem man Artikel und Nomen sucht, und sie in einen Relativsatz umschreiben: die 2020 gegründete Firma, die Firma, die 2020 gegründet wurde."
+    },
+    {
+      "id": "de-reading-a-consumer-product-test",
+      "kind": "reading",
+      "theme": "shopping",
+      "workingTitle": "Einen Produkttest mit Tabelle lesen",
+      "intent": "Einen Produkttest mit Tabelle lesen, die Prüfkriterien und ihre Gewichtung verstehen (Handhabung 30 Prozent, Testurteil gut 1,9) und prüfen, ob der Testsieger zum eigenen Bedarf passt."
+    },
+    {
+      "id": "de-shopping-phrases",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Wendungen rund ums Einkaufen",
+      "intent": "Etwa zwölf Wendungen rund ums Kaufen und Verkaufen verstehen: die Katze im Sack kaufen, über den Ladentisch gehen, zuschlagen, ein gutes Geschäft machen, auf Lager, vergriffen, ausverkauft."
+    },
+    {
+      "id": "de-consumer-rights",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Verbraucherrechte",
+      "intent": "Etwa zwölf Wörter für Rechte beim Kauf verwenden: der Verbraucherschutz, die Verbraucherzentrale, das Widerrufsrecht, die Widerrufsfrist, die Gewährleistung, die Rückerstattung, das Kleingedruckte."
+    },
+    {
+      "id": "de-reading-a-complaint-and-the-companys-reply",
+      "kind": "reading",
+      "theme": "shopping",
+      "workingTitle": "Eine Beschwerde und die Antwort darauf lesen",
+      "intent": "Die Beschwerde einer Kundin und die Antwort des Unternehmens lesen und prüfen, welche Forderungen erfüllt werden und welche nicht (Ersatzlieferung, Gutschein, Erstattung des Kaufpreises)."
+    },
+    {
+      "id": "de-writing-a-letter-of-complaint",
+      "kind": "functions",
+      "theme": "shopping",
+      "workingTitle": "Eine schriftliche Beschwerde verfassen",
+      "intent": "Sich schriftlich über eine mangelhafte Lieferung beschweren und eine Lösung fordern: Hiermit beschwere ich mich über Ihre Lieferung vom 3. Mai. Ich erwarte eine Erstattung bis zum 30. Juni."
+    },
+    {
+      "id": "de-passive-past-perfect-future",
+      "kind": "grammar",
+      "topic": "verbs_morphology",
+      "workingTitle": "Passiv im Plusquamperfekt und Futur: war gebaut worden",
+      "intent": "Vorgänge vor einem vergangenen Zeitpunkt im Passiv mit war und worden beschreiben, auch im Nebensatz, und das Passiv Futur erkennen: Die Straße war gesperrt worden. Sie wird bald freigegeben werden."
+    },
+    {
+      "id": "de-fashion-industry",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Modebranche",
+      "intent": "Über die Modeindustrie mit etwa zwölf Wörtern sprechen: die Kollektion, der Designer / die Designerin, das Label, die Modenschau, der Laufsteg, das Model, die Fast Fashion, die Textilindustrie."
+    },
+    {
+      "id": "de-advertising",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Werbung",
+      "intent": "Etwa zwölf Wörter aus der Werbung verwenden: werben, der Werbespot, die Kampagne, die Zielgruppe, der Slogan, das Plakat, der Influencer / die Influencerin, die Reklame."
+    },
+    {
+      "id": "de-reading-green-claims-in-ads",
+      "kind": "reading",
+      "theme": "shopping",
+      "workingTitle": "Werbung mit Umweltversprechen lesen",
+      "intent": "Werbung mit Umweltversprechen lesen und belegte Angaben (geprüftes Siegel, genaue Zahl mit Bezugsgröße) von vagen Formulierungen unterscheiden (verantwortungsvoll produziert, mit Liebe zur Natur)."
+    },
+    {
+      "id": "de-consumer-society",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Konsumgesellschaft",
+      "intent": "Über Konsum und Verzicht mit etwa zwölf Wörtern sprechen: der Konsum, konsumieren, der Verbraucher / die Verbraucherin, die Wegwerfgesellschaft, der Überfluss, der Kaufrausch, verzichten."
+    },
+    {
+      "id": "de-genitive-prepositions-aufgrund-anhand",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "Aufgrund, infolge, anhand: Präpositionen mit Genitiv",
+      "intent": "Häufige Präpositionen mit Genitiv wie aufgrund, infolge, anhand, mithilfe und anstelle verwenden, ohne Artikel mit von: aufgrund des Wetters, anhand eines Beispiels, mithilfe von Freunden."
+    },
+    {
+      "id": "de-prices-and-costs",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Preise und Lebenshaltungskosten",
+      "intent": "Über steigende Preise mit etwa zwölf Wörtern sprechen: die Lebenshaltungskosten (Pl.), die Inflation, die Preiserhöhung, der Preisanstieg, sich verteuern, die Kaufkraft, erschwinglich, unbezahlbar."
+    },
+    {
+      "id": "de-reading-a-forum-on-minimalism",
+      "kind": "reading",
+      "theme": "shopping",
+      "workingTitle": "Forumsbeiträge zum Minimalismus lesen",
+      "intent": "Forumsbeiträge über Minimalismus lesen und Position und Gründe jeder Person finden, auch wenn sie ironisch oder vorsichtig formuliert sind (na ja, schön und gut, aber; ich weiß nicht recht)."
+    },
+    {
+      "id": "de-writing-a-forum-post",
+      "kind": "functions",
+      "theme": "free_time",
+      "workingTitle": "Einen Forumsbeitrag mit eigener Meinung schreiben",
+      "intent": "In einem Onlineforum zu einer Streitfrage Stellung nehmen, die Meinung mit Beispielen stützen und auf andere eingehen: Ich persönlich halte das für übertrieben. Anders als Mia sehe ich keine Gefahr."
+    },
+    {
+      "id": "de-money-phrases",
+      "kind": "vocabulary",
+      "theme": "daily_life",
+      "workingTitle": "Wendungen rund ums Geld",
+      "intent": "Etwa zwölf Wendungen rund ums Geld verstehen und verwenden: über die Runden kommen, knapp bei Kasse sein, sich etwas gönnen, auf großem Fuß leben, jeden Cent umdrehen, Geld auf die hohe Kante legen."
+    },
+    {
+      "id": "de-trade",
+      "kind": "vocabulary",
+      "theme": "shopping",
+      "workingTitle": "Handel",
+      "intent": "Etwa zwölf Wörter für Handel und Warenwege verwenden: der Einzelhandel, der Großhandel, der Händler / die Händlerin, die Ware, der Import, der Export, die Lieferkette, der Zwischenhändler."
+    },
+    {
+      "id": "de-relative-pronouns-genitive",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Relativsätze mit dessen und deren",
+      "intent": "Besitz im Relativsatz mit dessen und deren ausdrücken, auch nach Präpositionen und vor Adjektiven: der Autor, dessen Buch ich lese; die Firma, in deren neuem Büro ich arbeite."
+    },
+    {
+      "id": "de-prefix-verbs-ent-zer-miss",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Verben mit ent-, zer- und miss-",
+      "intent": "Die Bedeutung von ent-, zer- und miss- an etwa zwölf Verben erkennen: entfernen, entlasten, entkommen, zerbrechen, zerstören, zerreißen, missverstehen, misslingen, misstrauen."
+    },
+    {
+      "id": "de-regular-payments",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Regelmäßige Zahlungen",
+      "intent": "Etwa zwölf Wörter für laufende Zahlungen und Abrechnungen verstehen: der Rundfunkbeitrag, die Kfz-Steuer, die Grundsteuer, die Abschlagszahlung, die Nachzahlung, die Gutschrift, abbuchen, fällig."
+    },
+    {
+      "id": "de-taxes",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Steuern",
+      "intent": "Über Steuern und die Steuererklärung mit etwa zwölf Wörtern sprechen: das Finanzamt, die Steuererklärung, die Lohnsteuer, die Steuerklasse, die Mehrwertsteuer, absetzen, der Steuerberater."
+    },
+    {
+      "id": "de-reading-a-payslip",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Eine Gehaltsabrechnung lesen",
+      "intent": "Eine Gehaltsabrechnung lesen und nachvollziehen, wie man vom Brutto zum Netto kommt (Steuerklasse, Lohnsteuer, Kranken-, Renten-, Pflege- und Arbeitslosenversicherung)."
+    },
+    {
+      "id": "de-requesting-information-in-writing",
+      "kind": "functions",
+      "theme": "services",
+      "workingTitle": "Schriftlich um Auskunft bitten",
+      "intent": "Formell um Informationen zu einem Angebot bitten: Ich interessiere mich für Ihren Abendkurs. Könnten Sie mir mitteilen, ob es noch freie Plätze gibt? Für eine baldige Antwort wäre ich Ihnen dankbar."
+    },
+    {
+      "id": "de-mixed-declension-name",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Der Name, des Namens: gemischte Deklination",
+      "intent": "Nomen wie der Name, der Gedanke, der Glaube, der Buchstabe und das Herz deklinieren: im Genitiv -ns, sonst meist -n (des Namens, dem Gedanken, des Herzens)."
+    },
+    {
+      "id": "de-insurance-claims",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Schadensmeldung",
+      "intent": "Einen Versicherungsfall mit etwa zwölf Wörtern melden: der Schadensfall, die Schadensmeldung, der Wasserschaden, der Totalschaden, der Gutachter / die Gutachterin, die Deckung, den Schaden ersetzen."
+    },
+    {
+      "id": "de-parcel-delivery",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Paketdienst",
+      "intent": "Etwa zwölf Wörter rund um die Paketzustellung verwenden: der Paketbote / die Paketbotin, zustellen, die Zustellung, die Sendungsverfolgung, der Paketshop, der Abholschein, die Abstellgenehmigung."
+    },
+    {
+      "id": "de-legal-advice",
+      "kind": "vocabulary",
+      "theme": "services",
+      "workingTitle": "Rechtsberatung",
+      "intent": "Etwa zwölf Wörter für die Suche nach rechtlichem Rat verwenden: der Rechtsanwalt / die Rechtsanwältin, die Kanzlei, die Rechtsberatung, klagen, die Klage, die Rechtsschutzversicherung, das Mandat."
+    },
+    {
+      "id": "de-reading-information-on-how-to-appeal",
+      "kind": "reading",
+      "theme": "services",
+      "workingTitle": "Eine Rechtsbehelfsbelehrung lesen",
+      "intent": "Die Rechtsbehelfsbelehrung am Ende eines Bescheids lesen und herausfinden, wie, wo und in welcher Frist man Widerspruch einlegen kann (innerhalb eines Monats nach Bekanntgabe, schriftlich)."
+    },
+    {
+      "id": "de-clarifying-your-rights-at-an-advice-centre",
+      "kind": "functions",
+      "theme": "services",
+      "workingTitle": "Im Beratungsgespräch die eigenen Rechte klären",
+      "intent": "In einer Beratungsstelle die eigene Lage schildern und klären, welche Ansprüche man hat: Welche Möglichkeiten habe ich? Habe ich Anspruch auf Wohngeld? Was muss ich dafür nachweisen?"
+    },
+    {
+      "id": "de-research",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Forschung und Studien",
+      "intent": "Über wissenschaftliche Studien mit etwa zwölf Wörtern sprechen: die Studie, die Untersuchung, die Hypothese, die Methode, das Labor, der Forscher / die Forscherin, belegen, nachweisen."
+    },
+    {
+      "id": "de-compound-linking-elements",
+      "kind": "grammar",
+      "topic": "nouns_and_determiners",
+      "workingTitle": "Fugenelemente: Zeitungsartikel, Sonnenschein, Kinderbuch",
+      "intent": "Fugenelemente in Komposita richtig setzen: -s- nach -ung, -heit, -keit, -ion, -tät und -schaft, oft -n- nach -e (Sonnenschein), -er- wie in Kinderbuch, Wegfall des -e wie in Schulbuch."
+    },
+    {
+      "id": "de-reading-an-interview-with-a-researcher",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Ein Interview mit einer Forscherin lesen",
+      "intent": "Ein Zeitschrifteninterview mit einer Bildungsforscherin lesen und gesicherte Ergebnisse, Vermutungen und persönliche Ansichten unterscheiden (Studien zeigen, ich vermute, persönlich finde ich)."
+    },
+    {
+      "id": "de-charts-and-statistics",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Grafiken und Statistik",
+      "intent": "Etwa zwölf Wörter für Diagramme und Zahlen verwenden: das Säulendiagramm, das Kreisdiagramm, das Liniendiagramm, die Achse, die Legende, der Anteil, der Prozentpunkt, der Durchschnitt."
+    },
+    {
+      "id": "de-fractions-and-multiples",
+      "kind": "grammar",
+      "topic": "comparison_and_quantity",
+      "workingTitle": "Ein Drittel, doppelt so viel: Bruchzahlen und Vielfache",
+      "intent": "Bruchzahlen auf -tel und -stel als neutrale Nomen, halb als Adjektiv und Vielfache mit -fach und -mal verwenden: ein Drittel der Befragten, die halbe Strecke, viermal so teuer, das Dreifache."
+    },
+    {
+      "id": "de-maths",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Mathematik",
+      "intent": "Etwa zwölf Wörter zum Rechnen und zur Geometrie verwenden: addieren, subtrahieren, multiplizieren, dividieren, die Summe, die Differenz, die Gleichung, das Dreieck, der Winkel, der Durchmesser."
+    },
+    {
+      "id": "de-reading-an-infographic-with-text",
+      "kind": "reading",
+      "theme": "education",
+      "workingTitle": "Eine Infografik mit Begleittext lesen",
+      "intent": "Eine Infografik zur Mediennutzung mit Begleittext lesen, Zahlen und Text verbinden und prüfen, ob der Text die Grafik richtig wiedergibt (etwa ein Drittel, deutlich gestiegen)."
+    },
+    {
+      "id": "de-cause-and-effect",
+      "kind": "vocabulary",
+      "theme": "language",
+      "workingTitle": "Ursache und Wirkung",
+      "intent": "Ursachen und Folgen mit etwa zwölf Nomen und Verben benennen: die Ursache, die Auswirkung, die Konsequenz, verursachen, auslösen, bewirken, sich auswirken auf, führen zu, zur Folge haben."
+    },
+    {
+      "id": "de-explaining-a-chart",
+      "kind": "functions",
+      "theme": "education",
+      "workingTitle": "Eine Grafik erklären",
+      "intent": "Eine Grafik erläutern und Auffälliges hervorheben: Die Grafik zeigt, wie Jugendliche ihre Freizeit verbringen. Der Anteil ist von 20 auf 35 Prozent gestiegen. Auffällig ist der Rückgang beim Lesen."
+    },
+    {
+      "id": "de-technical-progress",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Technischer Fortschritt",
+      "intent": "Über Erfindungen und Neuerungen mit etwa zwölf Wörtern sprechen: der Fortschritt, die Innovation, die Neuerung, der Prototyp, das Patent, veraltet, revolutionär, bahnbrechend."
+    },
+    {
+      "id": "de-reciprocal-einander",
+      "kind": "grammar",
+      "topic": "pronouns",
+      "workingTitle": "Einander, miteinander, voneinander",
+      "intent": "Gegenseitigkeit mit einander und mit Präposition plus einander ausdrücken und sich durch einander ersetzen, wo es zweideutig ist: Sie helfen einander. Wir lernen viel voneinander."
+    },
+    {
+      "id": "de-space",
+      "kind": "vocabulary",
+      "theme": "education",
+      "workingTitle": "Weltraum",
+      "intent": "Etwa zwölf Wörter für Weltall und Raumfahrt mit Artikel nennen: das Weltall, das Sonnensystem, der Planet, die Galaxie, die Milchstraße, der Komet, der Satellit, die Raumstation, die Umlaufbahn."
+    },
+    {
+      "id": "de-pollution",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Umweltverschmutzung",
+      "intent": "Über die Verschmutzung von Luft, Wasser und Boden mit etwa zwölf Wörtern sprechen: die Abgase (Pl.), der Feinstaub, das Mikroplastik, das Abwasser, verschmutzen, die Belastung, giftig."
+    },
+    {
+      "id": "de-genitive-prepositions-of-place",
+      "kind": "grammar",
+      "topic": "prepositions_and_case",
+      "workingTitle": "Oberhalb, jenseits, entlang: Ortsangaben mit Genitiv",
+      "intent": "Lagen mit oberhalb, unterhalb, jenseits, diesseits und inmitten angeben und entlang vorangestellt mit Genitiv, nachgestellt mit Akkusativ verwenden: oberhalb des Dorfes, entlang des Flusses."
+    },
+    {
+      "id": "de-energy-sources",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Energiequellen",
+      "intent": "Energiequellen mit etwa zwölf Wörtern nennen und vergleichen: die Solarenergie, die Photovoltaik, die Windkraft, das Windrad, die Atomkraft, die Kohle, das Kraftwerk, die Energiewende."
+    },
+    {
+      "id": "de-reading-about-heat-pumps-and-solar-panels",
+      "kind": "reading",
+      "theme": "house_and_home",
+      "workingTitle": "Einen Artikel zur Energiewende im Eigenheim lesen",
+      "intent": "Einen Artikel über Wärmepumpen und Solaranlagen im eigenen Haus lesen und Kosten, Nutzen und Zweifel der Befragten abwägen (staatliche Förderung, rechnet sich erst nach 15 Jahren, Altbau)."
+    },
+    {
+      "id": "de-nature-protection",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Naturschutz",
+      "intent": "Über den Schutz von Tieren und Pflanzen mit etwa zwölf Wörtern sprechen: das Naturschutzgebiet, der Nationalpark, die Art, die Artenvielfalt, bedroht, aussterben, die Rote Liste, die Wiederansiedlung."
+    },
+    {
+      "id": "de-answering-questions-after-a-talk",
+      "kind": "functions",
+      "theme": "education",
+      "workingTitle": "Fragen nach einem Vortrag beantworten",
+      "intent": "Nach einem Vortrag auf Fragen eingehen, Zeit gewinnen und offen mit Wissenslücken umgehen: Das ist eine berechtigte Frage. Darauf komme ich gleich zurück. Das prüfe ich und reiche es nach."
+    },
+    {
+      "id": "de-natural-features",
+      "kind": "vocabulary",
+      "theme": "places",
+      "workingTitle": "Landschaftsformen",
+      "intent": "Etwa zwölf Landschaftsformen mit Artikel nennen: die Ebene, die Hochebene, die Heide, das Moor, die Schlucht, der Gipfel, der Gletscher, die Bucht, die Halbinsel."
+    },
+    {
+      "id": "de-animal-behaviour",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Tierwelt und Tierverhalten",
+      "intent": "Mit etwa zwölf Wörtern Tierklassen nennen und beschreiben, wie Tiere leben: das Säugetier, das Reptil, jagen, die Beute, das Revier, der Instinkt, der Winterschlaf, brüten, der Zugvogel, nachtaktiv."
+    },
+    {
+      "id": "de-sentence-adverbs-weise",
+      "kind": "grammar",
+      "topic": "adverbs",
+      "workingTitle": "Glücklicherweise: Satzadverbien mit -weise",
+      "intent": "Mit Satzadverbien wie glücklicherweise, möglicherweise und leider die ganze Aussage bewerten und sie vom Adjektiv unterscheiden: Er lächelt glücklich. Glücklicherweise hat er gewonnen."
+    },
+    {
+      "id": "de-farming",
+      "kind": "vocabulary",
+      "theme": "house_and_home",
+      "workingTitle": "Landwirtschaft",
+      "intent": "Über Arbeit und Betriebe in der Landwirtschaft mit etwa zwölf Wörtern sprechen: der Landwirt / die Landwirtin, der Traktor, der Stall, das Getreide, der Weizen, der Mais, die Viehzucht, melken."
+    },
+    {
+      "id": "de-forecast-language",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "Sprache des Wetterberichts",
+      "intent": "Einen ausführlichen Wetterbericht mit etwa zwölf Fachwörtern verstehen: das Tief, das Hoch, die Niederschläge (Pl.), die Böe, auffrischen, abflauen, vereinzelt, örtlich, landesweit, der Tiefstwert."
+    },
+    {
+      "id": "de-reading-a-meteorologists-heatwave-blog",
+      "kind": "reading",
+      "theme": "weather",
+      "workingTitle": "Einen Wetterblog über eine Hitzewelle lesen",
+      "intent": "Den Blogbeitrag einer Meteorologin über eine Hitzewelle lesen und die Erklärung Schritt für Schritt nachvollziehen (Hochdruckgebiet, heiße Luft aus Südwesten, Tropennacht)."
+    },
+    {
+      "id": "de-weather-collocations",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "Wetter: feste Verbindungen",
+      "intent": "Etwa zwölf feste Verbindungen für das Wetter verwenden: strömender Regen, klirrende Kälte, brütende Hitze, dichter Nebel, es gießt in Strömen, das Kaiserwetter, das Sauwetter (ugs.)."
+    },
+    {
+      "id": "de-natural-disasters",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "Naturkatastrophen",
+      "intent": "Etwa zwölf Naturkatastrophen und ihre Folgen benennen: das Erdbeben, der Vulkanausbruch, der Tsunami, die Lawine, der Erdrutsch, der Wirbelsturm, die Verwüstung, die Evakuierung."
+    },
+    {
+      "id": "de-speculating-about-causes-and-effects",
+      "kind": "functions",
+      "theme": "weather",
+      "workingTitle": "Über Ursachen und Folgen spekulieren",
+      "intent": "Über Ursachen und Folgen eines Unwetters oder einer Dürre spekulieren: Das liegt vermutlich am warmen Winter. Wenn es früher geregnet hätte, wäre die Ernte besser gewesen."
+    },
+    {
+      "id": "de-effects-of-climate-change",
+      "kind": "vocabulary",
+      "theme": "weather",
+      "workingTitle": "Folgen des Klimawandels",
+      "intent": "Über die Folgen der Erderwärmung mit etwa zwölf Wörtern sprechen: der Meeresspiegel, die Gletscherschmelze, die Hitzewelle, der Waldbrand, die Wasserknappheit, das Extremwetter, die Klimaflucht."
+    },
+    {
+      "id": "de-functions-of-werden",
+      "kind": "grammar",
+      "topic": "verb_usage",
+      "workingTitle": "Die Funktionen von werden",
+      "intent": "Werden als Vollverb, im Futur, im Passiv, im Konjunktiv II und für Vermutungen erkennen und unterscheiden: Er wird Arzt. Es wird gebaut. Er wird wohl im Stau stehen."
+    },
+    {
+      "id": "de-reading-about-melting-glaciers",
+      "kind": "reading",
+      "theme": "weather",
+      "workingTitle": "Einen Artikel über die Gletscherschmelze lesen",
+      "intent": "Einen Sachartikel über das Schmelzen der Alpengletscher lesen und Ursachen und Folgen verknüpfen (steigende Temperaturen, weniger Schnee, Felsstürze, Wasser im Sommer)."
+    }
+  ]
+}
