@@ -66,11 +66,11 @@
       "intent": "Choisir le verbe du vol selon la gravité et le registre avec une dizaine de verbes : voler, dérober, subtiliser, chaparder, piquer, détourner, escroquer, spolier, piller, faucher."
     },
     {
-      "id": "fr-hyperbolic-comparisons",
+      "id": "fr-elevated-comparisons",
       "kind": "grammar",
       "topic": "comparison_and_quantity",
       "workingTitle": "Plus bête que méchant, tant s'en faut",
-      "intent": "Manier les comparaisons de la langue soutenue et familière : il est plus bête que méchant, rien de moins que, tant s'en faut, ni plus ni moins, on ne peut plus clair."
+      "intent": "Manier les comparaisons de la langue soutenue : il est plus bête que méchant, rien de moins que, tant s'en faut, ni plus ni moins, on ne peut plus clair."
     },
     {
       "id": "fr-buzzwords",
@@ -665,7 +665,7 @@
       "kind": "grammar",
       "topic": "verbs_morphology",
       "workingTitle": "S'il eût su, j'eusse aimé",
-      "intent": "Reconnaître le conditionnel passé deuxième forme (il eût fallu, j'eusse aimé, s'il eût su) dans la langue littéraire et le transposer en français courant."
+      "intent": "Reconnaître le conditionnel passé deuxième forme (il eût fallu, j'eusse aimé) et le plus-que-parfait du subjonctif après si (s'il eût su) dans la langue littéraire, et les transposer en français courant."
     },
     {
       "id": "fr-feasting-words",
@@ -1238,8 +1238,8 @@
       "id": "fr-craft-idioms",
       "kind": "vocabulary",
       "theme": "language",
-      "workingTitle": "Un travail d'orfèvre, tailler une bavette",
-      "intent": "Comprendre une dizaine d'expressions venues des métiers : un travail d'orfèvre, cousu main, mettre la dernière main, tailler une bavette, être du bâtiment, remettre sur le métier."
+      "workingTitle": "Un travail d'orfèvre, battre le fer",
+      "intent": "Comprendre une dizaine d'expressions venues des métiers : un travail d'orfèvre, cousu main, mettre la dernière main, battre le fer pendant qu'il est chaud, être du bâtiment, remettre sur le métier."
     },
     {
       "id": "fr-reading-an-old-recipe",
@@ -1547,7 +1547,7 @@
       "kind": "grammar",
       "topic": "syntax_and_sentence_structure",
       "workingTitle": "Pierre viendra-t-il ?",
-      "intent": "Employer l'interrogation à inversion complexe de l'écrit soutenu (Pierre viendra-t-il ? Le ministre a-t-il menti ?) et l'inversion dans les subordonnées : que vienne le printemps."
+      "intent": "Employer l'interrogation à inversion complexe de l'écrit soutenu (Pierre viendra-t-il ? Le ministre a-t-il menti ?) et l'inversion dans les subordonnées : la maison qu'habitait mon père, quand sonna minuit."
     },
     {
       "id": "fr-rare-adverbs",
@@ -1631,7 +1631,7 @@
       "kind": "vocabulary",
       "theme": "language",
       "workingTitle": "La charrue avant les bœufs",
-      "intent": "Comprendre une dizaine d'expressions venues de la vie rurale : mettre la charrue avant les bœufs, ménager la chèvre et le chou, revenir à ses moutons, tirer les marrons du feu, faire ses choux gras."
+      "intent": "Comprendre une dizaine d'expressions venues de la vie rurale : mettre la charrue avant les bœufs, ménager la chèvre et le chou, revenir à ses moutons, se faire tondre la laine sur le dos, faire ses choux gras."
     },
     {
       "id": "fr-reading-a-court-ruling",
@@ -1659,7 +1659,7 @@
       "kind": "vocabulary",
       "theme": "language",
       "workingTitle": "Battre en retraite, être sur le qui-vive",
-      "intent": "Comprendre une dizaine d'expressions venues de la guerre : battre en retraite, être sur le qui-vive, baisser la garde, sonner le glas, monter au créneau, essuyer les plâtres, à brûle-pourpoint."
+      "intent": "Comprendre une dizaine d'expressions venues de la guerre : battre en retraite, être sur le qui-vive, baisser la garde, battre en brèche, monter au créneau, serrer les rangs, à brûle-pourpoint."
     },
     {
       "id": "fr-old-slang",
@@ -2009,7 +2009,7 @@
       "kind": "vocabulary",
       "theme": "language",
       "workingTitle": "S'enfarger, c'est plate, avoir de la misère",
-      "intent": "Comprendre une douzaine d'expressions québécoises : s'enfarger, c'est plate, avoir de la misère à, être tanné, une job, magasiner, bienvenue pour de rien, la fin de semaine."
+      "intent": "Comprendre une douzaine d'expressions québécoises : s'enfarger, c'est plate, avoir de la misère à, être tanné, une job, magasiner, bienvenue (pour répondre à merci), la fin de semaine."
     },
     {
       "id": "fr-reading-quebec-joual",
@@ -2030,7 +2030,7 @@
       "kind": "vocabulary",
       "theme": "language",
       "workingTitle": "Algèbre, toubib, banque",
-      "intent": "Retrouver l'origine d'une dizaine de mots empruntés à l'arabe, à l'italien, à l'anglais ou au néerlandais : algèbre, toubib, banque, balcon, redingote, matelot, bizarre, kiosque."
+      "intent": "Retrouver l'origine d'une dizaine de mots empruntés à l'arabe, à l'italien, à l'anglais ou au néerlandais : algèbre, toubib, alcool, banque, balcon, redingote, matelot, bizarre."
     },
     {
       "id": "fr-reading-creole-inflected-prose",
@@ -2044,7 +2044,7 @@
       "kind": "vocabulary",
       "theme": "language",
       "workingTitle": "Une poubelle, une silhouette, la béchamel",
-      "intent": "Découvrir une dizaine de noms communs nés de noms de personnes : une poubelle, une silhouette, la béchamel, un mécène, une mansarde, le sadisme, un lambda, un harpagon."
+      "intent": "Découvrir une dizaine de noms communs nés de noms de personnes : une poubelle, une silhouette, la béchamel, un mécène, une mansarde, le sadisme, la nicotine, un harpagon."
     },
     {
       "id": "fr-brand-names-as-common-nouns",
@@ -2065,7 +2065,7 @@
       "kind": "vocabulary",
       "theme": "language",
       "workingTitle": "Naguère, céans, d'antan",
-      "intent": "Comprendre une dizaine d'archaïsmes encore employés, souvent avec ironie : naguère, céans, d'antan, ouïr, moult, icelui, occire, quérir, oncques, de belle lurette."
+      "intent": "Comprendre une dizaine d'archaïsmes encore employés, souvent avec ironie : naguère, céans, d'antan, ouïr, moult, icelui, occire, quérir, oncques, il y a belle lurette."
     },
     {
       "id": "fr-reading-a-rewrite-of-a-classic",

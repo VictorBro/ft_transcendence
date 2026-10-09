@@ -945,7 +945,7 @@
       "kind": "grammar",
       "topic": "negation",
       "workingTitle": "Ne… guère, ne… point, nullement",
-      "intent": "Reconnaître les négations littéraires ou soutenues et leur nuance : ne… guère, ne… point, nullement, aucunement, nul ne, sans nul doute."
+      "intent": "Reconnaître les négations littéraires ou soutenues et leur nuance : ne… guère, ne… point, nullement, aucunement, nul ne, pas le moins du monde."
     },
     {
       "id": "fr-taxation",
@@ -1743,7 +1743,7 @@
       "kind": "grammar",
       "topic": "agreement",
       "workingTitle": "Tout émue, demi-heure, nu-pieds",
-      "intent": "Accorder les mots variables ou non : tout émue mais toute heureuse, une demi-heure mais une heure et demie, nu-pieds mais pieds nus, les meilleurs résultats possible."
+      "intent": "Accorder les mots variables ou non : tout heureuse mais toute honteuse, une demi-heure mais une heure et demie, nu-pieds mais pieds nus, les meilleurs résultats possible."
     },
     {
       "id": "fr-words-that-changed-meaning",

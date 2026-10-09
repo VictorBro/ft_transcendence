@@ -798,7 +798,7 @@
       "kind": "grammar",
       "topic": "nouns_and_determiners",
       "workingTitle": "Avec ou sans article ?",
-      "intent": "Ne pas mettre d'article après avec, sans et en, ni dans les noms qui disent la matière ou l'usage : avec patience, sans sucre, en voiture, une table en bois, une tasse à café."
+      "intent": "Ne pas mettre d'article après sans et en, après avec pour dire une manière, ni dans les noms qui disent la matière ou l'usage : avec patience, sans sucre, en voiture, une table en bois, une tasse à café."
     },
     {
       "id": "fr-inside-the-body",

@@ -616,7 +616,7 @@
       "kind": "grammar",
       "topic": "pronouns",
       "workingTitle": "Lui et leur",
-      "intent": "Remplacer un complément introduit par à par lui ou leur : Tu as appelé ta mère ? Oui, je lui ai téléphoné. Je leur écris demain."
+      "intent": "Remplacer un complément introduit par à par lui ou leur : Tu as téléphoné à ta mère ? Oui, je lui ai téléphoné hier. Je leur écris demain."
     },
     {
       "id": "fr-reading-a-course-brochure",
