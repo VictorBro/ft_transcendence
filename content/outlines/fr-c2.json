@@ -665,7 +665,7 @@
       "kind": "grammar",
       "topic": "verbs_morphology",
       "workingTitle": "S'il eût su, j'eusse aimé",
-      "intent": "Reconnaître le conditionnel passé deuxième forme (il eût fallu, j'eusse aimé) et le plus-que-parfait du subjonctif après si (s'il eût su) dans la langue littéraire, et les transposer en français courant."
+      "intent": "Reconnaître le conditionnel passé deuxième forme (il eût fallu, j'eusse aimé) et le plus-que-parfait du subjonctif après si (s'il eût su) à l'écrit, et les transposer en français courant."
     },
     {
       "id": "fr-feasting-words",
@@ -1547,7 +1547,7 @@
       "kind": "grammar",
       "topic": "syntax_and_sentence_structure",
       "workingTitle": "Pierre viendra-t-il ?",
-      "intent": "Employer l'interrogation à inversion complexe de l'écrit soutenu (Pierre viendra-t-il ? Le ministre a-t-il menti ?) et l'inversion dans les subordonnées : la maison qu'habitait mon père, quand sonna minuit."
+      "intent": "Employer l'inversion complexe de l'écrit soutenu (Pierre viendra-t-il ? Le ministre a-t-il menti ?) et l'inversion dans les subordonnées : la maison qu'habitait mon père, quand sonna minuit."
     },
     {
       "id": "fr-rare-adverbs",
@@ -1631,7 +1631,7 @@
       "kind": "vocabulary",
       "theme": "language",
       "workingTitle": "La charrue avant les bœufs",
-      "intent": "Comprendre une dizaine d'expressions venues de la vie rurale : mettre la charrue avant les bœufs, ménager la chèvre et le chou, revenir à ses moutons, se faire tondre la laine sur le dos, faire ses choux gras."
+      "intent": "Comprendre une dizaine d'expressions venues de la vie rurale : mettre la charrue avant les bœufs, ménager la chèvre et le chou, revenir à ses moutons, une brebis galeuse, faire ses choux gras."
     },
     {
       "id": "fr-reading-a-court-ruling",
