@@ -115,7 +115,8 @@ function ascending(a: number | string, b: number | string): number {
 const GROUPS: Record<LessonQuery['group'], Compare> = {
   none: () => 0,
   status: (a, b) => STATUS_ORDER[a.status] - STATUS_ORDER[b.status],
-  day: (a, b) => nullsLast(a.day, b.day, (x, y) => ascending(x, y)),
+  // y before x: the newest day first.
+  day: (a, b) => nullsLast(a.day, b.day, (x, y) => ascending(y, x)),
   kind: (a, b) => LESSON_KINDS.indexOf(a.kind) - LESSON_KINDS.indexOf(b.kind),
 };
 
