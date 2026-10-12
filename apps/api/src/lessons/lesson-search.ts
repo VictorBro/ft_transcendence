@@ -42,9 +42,13 @@ export function searchLessons(
   lang: Language,
 ): LessonSearchResult {
   // Step 1 and 2: keep, then sort.
-  const needles = queryVariants(query.q, lang);
+  // "Coeur  testeur" → ["coeur", "testeur"]. Split on any run of spaces, and
+  // the filter drops the empty word a leading space would leave.
+  const words = foldText(query.q)
+    .split(/\s+/)
+    .filter((word) => word !== '');
   const matches = cards
-    .filter((card) => matchesFilters(card, query) && matchesText(card, needles))
+    .filter((card) => matchesFilters(card, query) && matchesText(card, words, lang))
     .sort(compareFor(query));
 
   // Step 3: cut. 45 lessons / 20 = 2.25, rounded up to 3 pages.
@@ -83,43 +87,49 @@ function matchesFilters(card: LessonCard, query: LessonQuery): boolean {
 }
 
 /**
- * Turns what the user typed into the words to look for.
- *
- * First, foldText makes it lowercase and removes the accents:
- * "Éléphant" → "elephant". The lessons get the same treatment in
- * matchesText, so "elephant" finds "Éléphant".
- *
  * German only: people often type "ae", "oe", "ue" when they have no
  * ä, ö, ü on their keyboard. But foldText turns "Mädchen" into "madchen",
- * so "maedchen" would never find it. So in German we also look for the
- * word with "ae" → "a", "oe" → "o", "ue" → "u":
- *   "maedchen" → look for "maedchen" and "madchen"
+ * so "maedchen" would never find it. bareVowels removes the e:
+ *   "maedchen" → "madchen"
+ *
+ * It must be done on both sides, the text typed and the lesson. German has
+ * real "ue" too: "neue" stays "neue" after foldText. Done on the typed text
+ * only, "neue maedchen" would become "neu madchen", and "Neue Mädchen"
+ * (folded "neue madchen") would not contain it. On both sides, both become
+ * "neu madchen" and match.
  *
  * Not in French: there "coeur" would become "cour", another word.
  */
-export function queryVariants(q: string, lang: Language) {
-  const folded = foldText(q);
-  if (lang !== 'de') return [folded];
-
-  const bare = folded.replace(/([aou])e/g, '$1');
-  // No "ae", "oe" or "ue" in the word: nothing changed, so one word is enough.
-  return bare === folded ? [folded] : [folded, bare];
+export function bareVowels(text: string): string {
+  return text.replace(/([aou])e/g, '$1');
 }
 
 /**
  * Does the lesson contain what the user typed?
  *
- * Like looking for a needle in a haystack: the needles are the words from
- * queryVariants, the haystacks are the lesson's title and summary. The
- * lesson matches if any needle is in any haystack. A part of a word is
- * enough: "boiss" finds "boisson".
+ * Like looking for needles in a haystack: the needles are the words the user
+ * typed, the haystacks are the lesson's title and summary. foldText makes
+ * both lowercase and removes the accents, so "elephant" finds "Éléphant".
+ * A part of a word is enough: "boiss" finds "boisson".
+ *
+ * Every word must be found, in any order, each in the title or the summary:
+ * "coeur testeur" finds "Le cœur du testeur", and "cour" never finds it.
+ *
+ * In German, bareVowels is tried too. The plain match is still tried first:
+ * bareVowels on a part of a word can lose it, "e" is in "ae" but not in "a".
  */
-function matchesText(card: LessonCard, needles: string[]): boolean {
+function matchesText(card: LessonCard, words: string[], lang: Language): boolean {
   // The user typed nothing: every lesson matches.
-  if (needles[0] === '') return true;
+  if (words.length === 0) return true;
 
   const haystacks = [foldText(card.title), foldText(card.summary)];
-  return needles.some((needle) => haystacks.some((haystack) => haystack.includes(needle)));
+  return words.every((word) =>
+    haystacks.some(
+      (haystack) =>
+        haystack.includes(word) ||
+        (lang === 'de' && bareVowels(haystack).includes(bareVowels(word))),
+    ),
+  );
 }
 
 /*

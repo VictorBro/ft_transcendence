@@ -398,20 +398,27 @@ export const SORT_DIRECTIONS = ['asc', 'desc'] as const;
 export const LESSON_GROUPS = ['none', 'status', 'day', 'kind'] as const;
 export const LESSON_QUERY_MAX = 100;
 
-/** `a,b,c`: unknown values are dropped, never rejected. */
+/**
+ * `a,b,c`, or the key repeated (`?k=a&k=b,c`, what a form of checkboxes
+ * sends): unknown values are dropped, never rejected.
+ */
 function commaList<const T extends readonly [string, ...string[]]>(values: T) {
   const allowed = new Set<string>(values);
-  return z
-    .string()
-    .transform((list) => [
-      ...new Set(
-        list
-          .split(',')
-          .map((value) => value.trim())
-          .filter((value): value is T[number] => allowed.has(value)),
-      ),
-    ])
-    .catch([]);
+  return (
+    z
+      .union([z.string(), z.array(z.string())])
+      // A repeated key comes as an array: joined, it reads like one comma list.
+      .transform((list) => (Array.isArray(list) ? list.join(',') : list))
+      .transform((list) => [
+        ...new Set(
+          list
+            .split(',')
+            .map((value) => value.trim())
+            .filter((value): value is T[number] => allowed.has(value)),
+        ),
+      ])
+      .catch([])
+  );
 }
 
 /**

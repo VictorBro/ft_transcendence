@@ -7,7 +7,7 @@ import {
 } from '@ft/shared';
 import { describe, expect, it } from 'vitest';
 
-import { queryVariants, searchLessons } from './lesson-search';
+import { bareVowels, searchLessons } from './lesson-search';
 
 /** A todo grammar card; a score also sets day, finishedAt and the status that follows it. */
 const card = (position: number, overrides: Partial<LessonCard> = {}): LessonCard => ({
@@ -59,26 +59,15 @@ const query = (overrides: Partial<LessonQuery> = {}): LessonQuery => ({
 const positions = (cards: LessonCard[], q: Partial<LessonQuery> = {}, lang: Language = 'fr') =>
   searchLessons(cards, query(q), lang).items.map((c) => c.position);
 
-describe('queryVariants', () => {
-  it('folds case and accents', () => {
-    expect(queryVariants('Éléphant', 'fr')).toEqual(['elephant']);
+describe('bareVowels', () => {
+  it('drops the e after a, o and u', () => {
+    expect(bareVowels('maedchen')).toBe('madchen');
+    expect(bareVowels('schoen gruen')).toBe('schon grun');
   });
 
-  it('keeps oe in French, so coeur never becomes cour', () => {
-    expect(queryVariants('coeur', 'fr')).toEqual(['coeur']);
-  });
-
-  it('adds the bare vowel spelling in German', () => {
-    expect(queryVariants('Maedchen', 'de')).toEqual(['maedchen', 'madchen']);
-    expect(queryVariants('schoen grueN', 'de')).toEqual(['schoen gruen', 'schon grun']);
-  });
-
-  it('adds nothing in German when there is no ae, oe or ue', () => {
-    expect(queryVariants('Hund', 'de')).toEqual(['hund']);
-  });
-
-  it('is the empty string for an empty query', () => {
-    expect(queryVariants('', 'de')).toEqual(['']);
+  it('changes nothing without ae, oe or ue', () => {
+    expect(bareVowels('hund')).toBe('hund');
+    expect(bareVowels('')).toBe('');
   });
 });
 
@@ -87,10 +76,13 @@ describe('searchLessons, text', () => {
     card(1, { title: 'Le, la, les', summary: 'Les articles définis.' }),
     card(2, { title: 'Au café', summary: 'Commander une boisson.' }),
     card(3, { title: 'Das Mädchen', summary: 'Ein Nomen.' }),
+    card(4, { title: 'Neue Wörter', summary: 'Die Steuererklärung.' }),
+    card(5, { title: 'Le cœur', summary: 'Un organe.' }),
+    card(6, { title: 'La cour', summary: 'Un lieu.' }),
   ];
 
   it('keeps every card for an empty query', () => {
-    expect(positions(cards)).toEqual([1, 2, 3]);
+    expect(positions(cards)).toEqual([1, 2, 3, 4, 5, 6]);
   });
 
   it('matches the title or the summary, ignoring case and accents', () => {
@@ -105,6 +97,30 @@ describe('searchLessons, text', () => {
   it('finds Mädchen from maedchen in German only', () => {
     expect(positions(cards, { q: 'maedchen' }, 'de')).toEqual([3]);
     expect(positions(cards, { q: 'maedchen' })).toEqual([]);
+  });
+
+  it('finds a German word with a real ue next to a typed ae or oe', () => {
+    expect(positions(cards, { q: 'neue woerter' }, 'de')).toEqual([4]);
+    expect(positions(cards, { q: 'steuererklaerung' }, 'de')).toEqual([4]);
+  });
+
+  it('still finds part of a word on ae, oe or ue in German', () => {
+    expect(positions(cards, { q: 'neue' }, 'de')).toEqual([4]);
+    expect(positions(cards, { q: 'e' }, 'de')).toEqual([1, 2, 3, 4, 5, 6]);
+  });
+
+  it('keeps oe in French, so coeur finds cœur and never cour', () => {
+    expect(positions(cards, { q: 'coeur' })).toEqual([5]);
+  });
+
+  it('needs every word, in any order', () => {
+    expect(positions(cards, { q: 'cœur le' })).toEqual([5]);
+    expect(positions(cards, { q: 'coeur cour' })).toEqual([]);
+  });
+
+  it('finds one word in the title and another in the summary', () => {
+    expect(positions(cards, { q: 'café boisson' })).toEqual([2]);
+    expect(positions(cards, { q: 'woerter steuererklaerung' }, 'de')).toEqual([4]);
   });
 
   it('finds nothing when nothing matches', () => {
@@ -247,9 +263,9 @@ describe('searchLessons, pages', () => {
   });
 
   it('counts the total after the filters, not before', () => {
-    const result = searchLessons(many, query({ q: 'lesson 4' }), 'fr');
-    // Lesson 4 and 40 to 45.
-    expect(result.total).toBe(7);
+    const result = searchLessons(many, query({ q: '4' }), 'fr');
+    // Lesson 4, 14, 24, 34, and 40 to 45.
+    expect(result.total).toBe(10);
   });
 
   it('is page 1 with no matches', () => {

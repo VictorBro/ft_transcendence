@@ -8,17 +8,13 @@ import {
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
-import { LanguageSchema, LEARNABLE_LANGUAGES } from '@ft/shared';
+import { LEARNABLE_LANGUAGES } from '@ft/shared';
 import type { Language, SessionUser } from '@ft/shared';
 
 import { LessonsService } from './lessons.service';
 import { LessonCardDto, LessonPageDto, LessonQueryDto, TodayDto } from './lessons.dto';
 import { CurrentUser } from '../auth/auth.decorators';
-import { CodeValidationPipe } from '../validation.pipe';
-
-// We get the language from the URL, so we must check that it matches our language definition.
-// /courses/xx/today then gives a 400 instead of sending 'xx' to the service.
-const LangParam = new CodeValidationPipe(LanguageSchema);
+import { LangParam } from '../validation.pipe';
 
 /*
  * The controller is the waiter: it takes the order (the HTTP request), passes
@@ -36,10 +32,12 @@ const LangParam = new CodeValidationPipe(LanguageSchema);
  * `new Date()` is made here, once per request, and not in the service: the
  * service gets the time as a parameter, so a test can give it any date.
  *
- * @ApiParam on every route: `Language` is a type only, so Swagger cannot see
- * it and would drop the lang parameter without it.
+ * @ApiParam once, on the class: it counts for every route. `Language` is a
+ * type only, so Swagger cannot see it and would drop the lang parameter
+ * without it.
  */
 @ApiTags('lessons')
+@ApiParam({ name: 'lang', enum: [...LEARNABLE_LANGUAGES] })
 // Every route of this class starts with /courses/:lang, where :lang is a hole
 // in the URL: /courses/fr/today gives lang = 'fr'.
 @Controller('courses/:lang')
@@ -50,7 +48,6 @@ export class LessonsController {
   /** GET /courses/:lang/today: 404 without a course, 409 before placement. */
   @Get('today')
   @ApiOperation({ summary: "Today's lessons, streak and progress" })
-  @ApiParam({ name: 'lang', enum: [...LEARNABLE_LANGUAGES] })
   @ApiOkResponse({ type: TodayDto })
   @ApiUnauthorizedResponse({ description: 'No valid session' })
   @ApiNotFoundResponse({ description: 'No course in that language' })
@@ -66,7 +63,6 @@ export class LessonsController {
    */
   @Get('lessons')
   @ApiOperation({ summary: "Search the level's lessons: filters, text, sort, groups and pages" })
-  @ApiParam({ name: 'lang', enum: [...LEARNABLE_LANGUAGES] })
   @ApiOkResponse({ type: LessonPageDto })
   @ApiUnauthorizedResponse({ description: 'No valid session' })
   @ApiNotFoundResponse({ description: 'No course in that language' })
@@ -85,7 +81,6 @@ export class LessonsController {
    */
   @Get('lessons/:id')
   @ApiOperation({ summary: 'One lesson card, also before placement' })
-  @ApiParam({ name: 'lang', enum: [...LEARNABLE_LANGUAGES] })
   @ApiOkResponse({ type: LessonCardDto })
   @ApiUnauthorizedResponse({ description: 'No valid session' })
   @ApiNotFoundResponse({ description: 'No course in that language, or no such lesson in it' })

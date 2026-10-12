@@ -8,6 +8,7 @@ import {
   LessonCard,
   LessonCardSchema,
   LessonId,
+  LessonIdSchema,
   LessonPageSchema,
   LessonQuery,
   LESSONS_PAGE_SIZE,
@@ -136,39 +137,39 @@ function toCard(lesson: LessonRow, result?: RuleResult): LessonCard {
 }
 
 /**
+ * A phone book of results: give a lesson id, get the user's result on it.
+ * A lesson never started has none: get gives undefined, and toCard makes it
+ * a 'todo' card.
+ */
+function resultsById(results: RuleResult[]): Map<LessonId, RuleResult> {
+  return new Map(results.map((result) => [result.lessonId, result]));
+}
+
+/**
  * A phone book of cards: give a lesson id, get its card back.
  *
  * plan() only gives lesson ids, and the front wants cards, so today looks
- * each id up here. The ids come from 2 places, so the cards do too:
- *   rows    → the lessons of the results, even from an older level: after a
- *             level change at noon, a lesson done this morning is still in done
- *   lessons → the lessons of the current level, done or not
- *
- * A lesson in both is set twice under the same id. It is the same card, so
- * the second set just replaces the first.
+ * each id up here. A lesson given twice (a lesson of the level that has a
+ * result) is set twice under the same id. It is the same card, so the second
+ * set just replaces the first.
  */
-function cardsById(lessons: LessonRow[], rows: ResultRow[]): Map<LessonId, LessonCard> {
-  // First a phone book of results, so each lesson finds its own result.
-  const results = new Map<LessonId, RuleResult>();
-  for (const row of rows) {
-    results.set(row.lessonId, toRuleResult(row));
-  }
-
-  const cards = new Map<LessonId, LessonCard>();
-
-  for (const row of rows) {
-    cards.set(row.lessonId, toCard(row.lesson, results.get(row.lessonId)));
-  }
-
-  // A lesson never started has no result: get gives undefined, and toCard
-  // makes it a 'todo' card.
-  for (const lesson of lessons) {
-    cards.set(lesson.id, toCard(lesson, results.get(lesson.id)));
-  }
-
-  return cards;
+function cardsById(
+  lessons: LessonRow[],
+  results: Map<LessonId, RuleResult>,
+): Map<LessonId, LessonCard> {
+  return new Map(lessons.map((lesson) => [lesson.id, toCard(lesson, results.get(lesson.id))]));
 }
 
+/*
+ * Every answer is parsed with its shared schema before it leaves
+ * (LessonCardSchema, LessonPageSchema, TodaySchema). One bad card fails the
+ * whole reply with a 500, and that is on purpose:
+ *   - the seed already checks every lesson with the same rules, and the
+ *     finish route checks every score, so a card that fails here is corrupt
+ *     data, a bug to see in the log, not something to hide;
+ *   - dropping the bad card quietly would make `total` lie about `items`;
+ *   - the strict card schema is what makes sure a `brief` never leaves.
+ */
 @Injectable()
 export class LessonsService {
   constructor(private readonly prisma: PrismaService) {}
@@ -246,9 +247,9 @@ export class LessonsService {
    * cards are taken in the order of `lessons`, so older levels never show up.
    */
   async lessons(userId: string, lang: Language, timeZone: string, now: Date, query: LessonQuery) {
-    const { lessons, results, day } = await this.load(userId, lang, timeZone, now);
-    const cards = cardsById(lessons, results);
-    const levelCards = lessons.map((lesson) => cards.get(lesson.id)!);
+    const { lessons, results: rows, day } = await this.load(userId, lang, timeZone, now);
+    const results = resultsById(rows.map(toRuleResult));
+    const levelCards = lessons.map((lesson) => toCard(lesson, results.get(lesson.id)));
     const search = searchLessons(levelCards, query, lang);
 
     return LessonPageSchema.parse({
@@ -266,18 +267,29 @@ export class LessonsService {
    * another language gives a 404.
    */
   async lesson(userId: string, lang: Language, id: string) {
-    const course = await this.course(userId, lang);
-    const lesson = await this.prisma.lesson.findFirst({
-      where: { id, lang },
-      select: LESSON_SELECT,
-    });
+    // A malformed id names no lesson: the same 404 as a missing one, without
+    // looking for it. 404, not 400: the front shows a 404 as "not there", a
+    // 400 as an error. After course(), so a missing course still comes first.
+    if (!LessonIdSchema.safeParse(id).success) {
+      await this.course(userId, lang);
+      throw new NotFoundException('lesson.notFound');
+    }
+
+    // The 3 queries do not need each other, so they run at the same time. The
+    // result is found by userId and lang, not by course.id, so it does not
+    // wait for the course. Only course() can throw: findFirst gives null
+    // instead, so without a course the answer is still course.notFound.
+    const [, lesson, row] = await Promise.all([
+      this.course(userId, lang),
+      this.prisma.lesson.findFirst({ where: { id, lang }, select: LESSON_SELECT }),
+      this.prisma.lessonResult.findFirst({
+        where: { lessonId: id, userLevel: { userId, lang } },
+        select: RESULT_SELECT,
+      }),
+    ]);
     if (!lesson) {
       throw new NotFoundException('lesson.notFound');
     }
-    const row = await this.prisma.lessonResult.findUnique({
-      where: { userLevelId_lessonId: { userLevelId: course.id, lessonId: id } },
-      select: RESULT_SELECT,
-    });
 
     return LessonCardSchema.parse(toCard(lesson, row ? toRuleResult(row) : undefined));
   }
@@ -287,8 +299,8 @@ export class LessonsService {
    * and extra (plan gives ids, cardsById turns them into cards), the daily
    * target, the streak of days, and the progress in the level.
    *
-   * `results: rows`: load gives Prisma rows. cardsById needs the rows, the
-   * rules need RuleResults, so the name `results` is kept for those.
+   * `results: rows`: load gives Prisma rows. The rules need RuleResults, so
+   * the name `results` is kept for those. Each row is turned into one once.
    */
   async today(userId: string, lang: Language, timeZone: string, now: Date) {
     const {
@@ -301,7 +313,10 @@ export class LessonsService {
 
     const goal = DailyGoalSchema.parse(course.dailyGoal);
     const results = rows.map(toRuleResult);
-    const cards = cardsById(lessons, rows);
+    // The lessons of the results first, even from an older level: after a
+    // level change at noon, a lesson done this morning is still in done.
+    // Then the lessons of the current level, done or not.
+    const cards = cardsById([...rows.map((row) => row.lesson), ...lessons], resultsById(results));
     const toCards = (ids: LessonId[]) => ids.map((id) => cards.get(id)!);
     const { done, proposed, extra } = plan(lessons, results, day, goal);
 

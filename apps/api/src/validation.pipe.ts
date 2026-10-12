@@ -1,5 +1,5 @@
 import { BadRequestException } from '@nestjs/common';
-import { isErrorCode } from '@ft/shared';
+import { isErrorCode, LanguageSchema } from '@ft/shared';
 import { createZodValidationPipe } from 'nestjs-zod';
 import { ZodError } from 'zod';
 
@@ -18,7 +18,7 @@ import { ZodError } from 'zod';
  * ERROR_CODES entry as its message (see packages/shared/src/schemas/errors.ts).
  *
  * Used for every body (the global pipe in app.setup.ts) and for the `:lang`
- * route parameter (LangParam in courses.controller.ts). Anything that never
+ * route parameter (LangParam, at the end of this file). Anything that never
  * reaches a pipe, such as a body that is not JSON, is ErrorCodeFilter's job.
  *
  * createZodValidationPipe returns a class, not an instance: create it with
@@ -47,3 +47,10 @@ export const CodeValidationPipe = createZodValidationPipe({
           'request.invalid',
     ),
 });
+
+/**
+ * The `:lang` of a URL, checked against the learnable languages: /courses/xx/…
+ * gives a 400 `course.unknownLanguage` instead of sending 'xx' to a service.
+ * One instance, shared by every controller with a `:lang` in its routes.
+ */
+export const LangParam = new CodeValidationPipe(LanguageSchema);

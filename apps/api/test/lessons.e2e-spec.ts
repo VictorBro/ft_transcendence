@@ -2,7 +2,7 @@ import { INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import request from 'supertest';
 import type TestAgent from 'supertest/lib/agent';
-import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
 
 import { LESSONS_PAGE_SIZE, type LessonCard } from '@ft/shared';
 
@@ -18,9 +18,13 @@ import { PrismaService } from '../src/prisma/prisma.service';
  * The cases run in order and the state builds up: first a course with no
  * level, then A1 with two results, then a switch to A2.
  *
- * The clock is not frozen: the controller reads the real one. So the results
- * are written on the real today and yesterday instead, in UTC, the time zone
- * of a fresh account.
+ * The clock is frozen at noon UTC on the real day, for the test and the app
+ * alike, since they run in the same process. Without that, a run that
+ * crosses midnight UTC would compute `today` on one day and ask the API on the
+ * next. UTC is the time zone of a fresh account. Only Date is faked:
+ * setTimeout and the rest stay real, so Postgres, Redis and supertest are
+ * untouched. shouldAdvanceTime lets the frozen clock tick on from noon, so
+ * two `new Date()` never give the same instant.
  */
 describe('lessons (e2e)', () => {
   let app: INestApplication;
@@ -34,6 +38,7 @@ describe('lessons (e2e)', () => {
 
   const today = localDay(new Date(), 'UTC');
   const yesterday = previousDay(today);
+  const NOON = new Date(`${today}T12:00:00.000Z`);
 
   // In every field of every brief: if it shows up in a response, the brief leaked.
   const MARKER = 'brief-secret-marker';
@@ -124,6 +129,9 @@ describe('lessons (e2e)', () => {
     prisma.userLevel.findFirstOrThrow({ where: { user: { email }, lang: 'fr' } });
 
   beforeAll(async () => {
+    vi.useFakeTimers({ toFake: ['Date'], shouldAdvanceTime: true });
+    vi.setSystemTime(NOON);
+
     const moduleRef = await Test.createTestingModule({ imports: [AppModule] }).compile();
     app = moduleRef.createNestApplication();
     configureApp(app);
@@ -148,6 +156,7 @@ describe('lessons (e2e)', () => {
     await prisma.user.deleteMany({ where: { email: { in: [email, otherEmail] } } });
     await prisma.lesson.deleteMany({ where: { id: { in: FIXTURE_IDS } } });
     await app.close();
+    vi.useRealTimers();
   });
 
   const server = () => app.getHttpServer();
@@ -170,7 +179,7 @@ describe('lessons (e2e)', () => {
   });
 
   describe('before placement', () => {
-    it.each(['today', 'lessons', 'lessons/de-test-alpha'])(
+    it.each(['today', 'lessons', 'lessons/de-test-alpha', 'lessons/NOT_AN_ID'])(
       'answers 404 course.notFound on %s without a German course',
       async (path) => {
         const response = await agent.get(`/api/courses/de/${path}`).expect(404);
@@ -346,14 +355,14 @@ describe('lessons (e2e)', () => {
       });
 
       it("reads the day in the user's time zone", async () => {
-        // UTC+14: always a day ahead of UTC, or the same day late in the evening.
+        // UTC+14: at noon UTC it is already 2 in the morning of the next day.
         const zone = 'Pacific/Kiritimati';
         await prisma.user.update({ where: { email }, data: { timeZone: zone } });
 
         const response = await agent.get('/api/courses/fr/today').expect(200);
 
-        expect([localDay(new Date(), zone), today]).toContain(response.body.day);
-        expect(response.body.day >= today).toBe(true);
+        expect(response.body.day).toBe(localDay(new Date(), zone));
+        expect(response.body.day > today).toBe(true);
 
         await prisma.user.update({ where: { email }, data: { timeZone: 'UTC' } });
       });
@@ -422,6 +431,14 @@ describe('lessons (e2e)', () => {
       it('keeps any of the listed statuses', async () => {
         const response = await agent
           .get('/api/courses/fr/lessons?q=testeur&status=failed,done')
+          .expect(200);
+
+        expect(ids(response.body.items)).toEqual(['fr-test-alpha', 'fr-test-beta']);
+      });
+
+      it('reads a repeated status key like a comma list', async () => {
+        const response = await agent
+          .get('/api/courses/fr/lessons?q=testeur&status=failed&status=done')
           .expect(200);
 
         expect(ids(response.body.items)).toEqual(['fr-test-alpha', 'fr-test-beta']);
@@ -535,6 +552,15 @@ describe('lessons (e2e)', () => {
 
         expect(response.body.message).toBe('lesson.notFound');
       });
+
+      it.each(['NOT_AN_ID', 'fr-test-1', `fr-${'a'.repeat(100)}`])(
+        'answers 404 lesson.notFound for the malformed id %s',
+        async (id) => {
+          const response = await agent.get(`/api/courses/fr/lessons/${id}`).expect(404);
+
+          expect(response.body.message).toBe('lesson.notFound');
+        },
+      );
     });
 
     describe('other people', () => {

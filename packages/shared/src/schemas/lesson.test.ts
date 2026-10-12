@@ -508,6 +508,14 @@ describe('LessonQuerySchema', () => {
     });
   });
 
+  it('reads a repeated key like one comma list', () => {
+    const status = (value: unknown) => LessonQuerySchema.parse({ status: value }).status;
+    expect(status(['done', 'failed'])).toEqual(['done', 'failed']);
+    expect(status(['done,failed', 'todo'])).toEqual(['done', 'failed', 'todo']);
+    expect(status(['done', 'foo', 'done'])).toEqual(['done']);
+    expect(status('done,failed')).toEqual(['done', 'failed']);
+  });
+
   it('cuts q to 100 characters instead of rejecting it', () => {
     expect(LessonQuerySchema.parse({ q: 'a'.repeat(150) }).q).toHaveLength(100);
   });
