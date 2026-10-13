@@ -118,7 +118,8 @@ export function bareVowels(text: string): string {
  * "coeur testeur" finds "Le cœur du testeur", and "cour" never finds it.
  *
  * In German, bareVowels is tried too. The plain match is still tried first:
- * bareVowels on a part of a word can lose it, "e" is in "ae" but not in "a".
+ * bareVowels on a part of a word can lose it. "erfeuer" is in "dauerfeuer",
+ * but bareVowels gives "erfeur", in neither "dauerfeuer" nor "daurfeur".
  */
 function matchesText(card: LessonCard, words: string[], lang: Language): boolean {
   // The user typed nothing: every lesson matches.

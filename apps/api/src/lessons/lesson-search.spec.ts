@@ -69,6 +69,10 @@ describe('bareVowels', () => {
     expect(bareVowels('hund')).toBe('hund');
     expect(bareVowels('')).toBe('');
   });
+
+  it('leaves every other pair alone, like ee or ie', () => {
+    expect(bareVowels('die see')).toBe('die see');
+  });
 });
 
 describe('searchLessons, text', () => {
@@ -94,6 +98,15 @@ describe('searchLessons, text', () => {
     expect(positions(cards, { q: 'boiss' })).toEqual([2]);
   });
 
+  it('folds ä and ß, so prateritum finds Präteritum and strasse finds Straße', () => {
+    const folded = [
+      card(1, { title: 'Das Präteritum', summary: 'Die Vergangenheit.' }),
+      card(2, { title: 'Auf der Straße', summary: 'Der Weg.' }),
+    ];
+    expect(positions(folded, { q: 'prateritum' }, 'de')).toEqual([1]);
+    expect(positions(folded, { q: 'strasse' }, 'de')).toEqual([2]);
+  });
+
   it('finds Mädchen from maedchen in German only', () => {
     expect(positions(cards, { q: 'maedchen' }, 'de')).toEqual([3]);
     expect(positions(cards, { q: 'maedchen' })).toEqual([]);
@@ -109,9 +122,11 @@ describe('searchLessons, text', () => {
     expect(positions(storm, { q: 'sturmboeen' }, 'de')).toEqual([1]);
   });
 
-  it('still finds part of a word on ae, oe or ue in German', () => {
-    expect(positions(cards, { q: 'neue' }, 'de')).toEqual([4]);
-    expect(positions(cards, { q: 'e' }, 'de')).toEqual([1, 2, 3, 4, 5, 6]);
+  it('still tries the word as typed in German, where bareVowels loses it', () => {
+    // "erfeuer" is in "dauerfeuer". bareVowels gives "erfeur", in neither
+    // "dauerfeuer" nor "daurfeur": only the plain match finds it.
+    const fire = [card(1, { title: 'Das Dauerfeuer', summary: 'Ein Wort.' })];
+    expect(positions(fire, { q: 'erfeuer' }, 'de')).toEqual([1]);
   });
 
   it('keeps oe in French, so coeur finds cœur and never cour', () => {
@@ -174,12 +189,13 @@ describe('searchLessons, filters', () => {
 });
 
 describe('searchLessons, sort', () => {
+  // Never started 5 before 1: the position must order them, not the input.
   const cards = [
     scored(3, 40, '2026-10-11'),
-    card(1),
+    card(5),
     scored(4, 90, '2026-10-12'),
     scored(2, 70, '2026-10-10'),
-    card(5),
+    card(1),
   ];
 
   it('sorts by position by default', () => {
@@ -198,6 +214,24 @@ describe('searchLessons, sort', () => {
   it('sorts by finishedAt, never started last in both directions', () => {
     expect(positions(cards, { sort: 'finishedAt' })).toEqual([2, 3, 4, 1, 5]);
     expect(positions(cards, { sort: 'finishedAt', dir: 'desc' })).toEqual([4, 3, 2, 1, 5]);
+  });
+
+  it('sorts by finishedAt to the minute, not by day', () => {
+    // Same day: 1 finished in the afternoon, 2 in the morning.
+    const sameDay = [
+      scored(1, 70, '2026-10-12', { finishedAt: '2026-10-12T15:00:00.000Z' }),
+      scored(2, 70, '2026-10-12', { finishedAt: '2026-10-12T08:00:00.000Z' }),
+    ];
+    expect(positions(sameDay, { sort: 'finishedAt' })).toEqual([2, 1]);
+    expect(positions(sameDay, { sort: 'finishedAt', dir: 'desc' })).toEqual([1, 2]);
+  });
+
+  it('keeps lessons never started in position order, in both directions', () => {
+    const neverStarted = [card(3), card(1), card(2)];
+    for (const sort of ['score', 'finishedAt'] as const) {
+      expect(positions(neverStarted, { sort })).toEqual([1, 2, 3]);
+      expect(positions(neverStarted, { sort, dir: 'desc' })).toEqual([1, 2, 3]);
+    }
   });
 
   it('breaks ties by position ascending, whatever the dir', () => {

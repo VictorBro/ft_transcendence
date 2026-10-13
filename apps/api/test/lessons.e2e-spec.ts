@@ -2,9 +2,9 @@ import { INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
 import request from 'supertest';
 import type TestAgent from 'supertest/lib/agent';
-import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
+import { afterAll, beforeAll, describe, expect, it, onTestFinished, vi } from 'vitest';
 
-import { LESSONS_PAGE_SIZE, type LessonCard } from '@ft/shared';
+import { EXTRA_COUNT, LESSONS_PAGE_SIZE, type LessonCard } from '@ft/shared';
 
 import { AppModule } from '../src/app.module';
 import { configureApp } from '../src/app.setup';
@@ -38,6 +38,7 @@ describe('lessons (e2e)', () => {
 
   const today = localDay(new Date(), 'UTC');
   const yesterday = previousDay(today);
+  const tomorrow = new Date(Date.parse(today) + 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
   const NOON = new Date(`${today}T12:00:00.000Z`);
 
   // In every field of every brief: if it shows up in a response, the brief leaked.
@@ -123,6 +124,19 @@ describe('lessons (e2e)', () => {
 
   const ids = (cards: LessonCard[]) => cards.map((card) => card.id);
   const card = (cards: LessonCard[], id: string) => cards.find((c) => c.id === id);
+
+  /**
+   * The ids of a French level, by position: the real lessons and the fixtures.
+   * What plan() offers is read off this, so the tests hold whatever is seeded.
+   */
+  const levelIds = async (level: 'A1' | 'A2') => {
+    const lessons = await prisma.lesson.findMany({
+      where: { lang: 'fr', level },
+      orderBy: { position: 'asc' },
+      select: { id: true },
+    });
+    return lessons.map((lesson) => lesson.id);
+  };
 
   /** The user's French course, for the rows the API has no route to write. */
   const frenchCourse = () =>
@@ -272,12 +286,17 @@ describe('lessons (e2e)', () => {
         });
       });
 
-      it('never proposes again a lesson done today', async () => {
+      it('proposes the queue of plan(), never a lesson done today', async () => {
         const response = await agent.get('/api/courses/fr/today').expect(200);
-        const offered = [...ids(response.body.proposed), ...ids(response.body.extra)];
+        // The queue: the lessons not passed by position, without alpha done
+        // today, then beta, passed yesterday. A target of 3, minus alpha: 2 proposed.
+        const queue = [
+          ...(await levelIds('A1')).filter((id) => id !== 'fr-test-alpha' && id !== 'fr-test-beta'),
+          'fr-test-beta',
+        ];
 
-        expect(offered).not.toContain('fr-test-alpha');
-        expect(response.body.proposed.length).toBeLessThanOrEqual(3 - response.body.done.length);
+        expect(ids(response.body.proposed)).toEqual(queue.slice(0, 2));
+        expect(ids(response.body.extra)).toEqual(queue.slice(2, 2 + EXTRA_COUNT));
       });
 
       it('counts the progress on the level from its results', async () => {
@@ -335,36 +354,64 @@ describe('lessons (e2e)', () => {
         expect(response.body.streak).toEqual({ current: 0, best: 7, today: false });
       });
 
-      it('never goes back before a day already recorded', async () => {
-        // A day ahead of the local one, as after flying west.
+      // A day ahead of the local one, as after flying west: the day stays on it.
+      it('never goes back before the last goal day', async () => {
         const course = await frenchCourse();
-        const tomorrow = new Date(Date.parse(today) + 24 * 60 * 60 * 1000);
         await prisma.userLevel.update({
           where: { id: course.id },
-          data: { lastGoalDay: tomorrow },
+          data: { lastGoalDay: new Date(tomorrow) },
+        });
+        // Even when an expect fails: the next tests need today back.
+        onTestFinished(async () => {
+          await prisma.userLevel.update({
+            where: { id: course.id },
+            data: { streak: 0, bestStreak: 0, lastGoalDay: null },
+          });
         });
 
-        const response = await agent.get('/api/courses/fr/today').expect(200);
+        const plan = await agent.get('/api/courses/fr/today').expect(200);
+        const page = await agent.get('/api/courses/fr/lessons').expect(200);
 
-        expect(response.body.day).toBe(tomorrow.toISOString().slice(0, 10));
+        expect(plan.body.day).toBe(tomorrow);
+        expect(page.body.day).toBe(tomorrow);
+      });
 
-        await prisma.userLevel.update({
-          where: { id: course.id },
-          data: { streak: 0, bestStreak: 0, lastGoalDay: null },
+      it("never goes back before the newest result's day", async () => {
+        const course = await frenchCourse();
+        await prisma.lessonResult.create({
+          data: {
+            userLevelId: course.id,
+            lessonId: 'fr-test-gamma',
+            score: 90,
+            day: new Date(tomorrow),
+            finishedAt: new Date(),
+          },
         });
+        onTestFinished(async () => {
+          await prisma.lessonResult.deleteMany({
+            where: { userLevelId: course.id, lessonId: 'fr-test-gamma' },
+          });
+        });
+
+        const plan = await agent.get('/api/courses/fr/today').expect(200);
+        const page = await agent.get('/api/courses/fr/lessons').expect(200);
+
+        expect(plan.body.day).toBe(tomorrow);
+        expect(page.body.day).toBe(tomorrow);
       });
 
       it("reads the day in the user's time zone", async () => {
         // UTC+14: at noon UTC it is already 2 in the morning of the next day.
         const zone = 'Pacific/Kiritimati';
         await prisma.user.update({ where: { email }, data: { timeZone: zone } });
+        onTestFinished(async () => {
+          await prisma.user.update({ where: { email }, data: { timeZone: 'UTC' } });
+        });
 
         const response = await agent.get('/api/courses/fr/today').expect(200);
 
         expect(response.body.day).toBe(localDay(new Date(), zone));
         expect(response.body.day > today).toBe(true);
-
-        await prisma.user.update({ where: { email }, data: { timeZone: 'UTC' } });
       });
     });
 
@@ -423,7 +470,8 @@ describe('lessons (e2e)', () => {
       });
 
       it('searches the summary too', async () => {
-        const response = await agent.get('/api/courses/fr/lessons?q=jardinier').expect(200);
+        // testeur too: jardinier is a real French word, a real lesson may use it.
+        const response = await agent.get('/api/courses/fr/lessons?q=jardinier testeur').expect(200);
 
         expect(ids(response.body.items)).toEqual(['fr-test-gamma']);
       });
@@ -575,6 +623,15 @@ describe('lessons (e2e)', () => {
         expect(plan.body.done).toEqual([]);
         expect(plan.body.target).toBe(1);
       });
+
+      it('proposes the first lesson of the level, then the next ones as extra', async () => {
+        // A 10 minute goal and no result: target 1, the queue is the level by position.
+        const plan = await other.get('/api/courses/fr/today').expect(200);
+        const level = await levelIds('A1');
+
+        expect(ids(plan.body.proposed)).toEqual(level.slice(0, 1));
+        expect(ids(plan.body.extra)).toEqual(level.slice(1, 1 + EXTRA_COUNT));
+      });
     });
 
     // There is no locale parameter: what the learner reads is always the course language.
@@ -618,11 +675,17 @@ describe('lessons (e2e)', () => {
 
     it('proposes from A2 only, and counts the progress on A2 only', async () => {
       const response = await agent.get('/api/courses/fr/today').expect(200);
-      const total = await prisma.lesson.count({ where: { lang: 'fr', level: 'A2' } });
-      const offered = [...response.body.proposed, ...response.body.extra] as LessonCard[];
+      const level = await levelIds('A2');
 
-      expect(offered.every((lesson) => lesson.level === 'A2')).toBe(true);
-      expect(response.body.progress).toMatchObject({ total, attempted: 0, passed: 0 });
+      // No A2 result yet: the queue is A2 by position. A target of 3, minus
+      // the A1 lesson done today: 2 proposed.
+      expect(ids(response.body.proposed)).toEqual(level.slice(0, 2));
+      expect(ids(response.body.extra)).toEqual(level.slice(2, 2 + EXTRA_COUNT));
+      expect(response.body.progress).toMatchObject({
+        total: level.length,
+        attempted: 0,
+        passed: 0,
+      });
       expect(response.body.levelAfter).toBe('B1');
     });
 
