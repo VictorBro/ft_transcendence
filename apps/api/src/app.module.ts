@@ -11,6 +11,7 @@ import { IdentityThrottlerGuard } from './throttler/identity-throttler.guard';
 import { UsersModule } from './users/users.module';
 import { CoursesModule } from './courses/courses.module';
 import { PlacementModule } from './placement/placement.module';
+import { LessonsModule } from './lessons/lessons.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { PlacementModule } from './placement/placement.module';
     HealthModule,
     CoursesModule,
     PlacementModule,
+    LessonsModule,
   ],
   providers: [{ provide: APP_GUARD, useClass: IdentityThrottlerGuard }],
 })
