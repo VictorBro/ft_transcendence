@@ -104,6 +104,11 @@ describe('searchLessons, text', () => {
     expect(positions(cards, { q: 'steuererklaerung' }, 'de')).toEqual([4]);
   });
 
+  it('finds a typed oe next to an e the lesson already has', () => {
+    const storm = [card(1, { title: 'Sturmböen', summary: 'Das Wetter.' })];
+    expect(positions(storm, { q: 'sturmboeen' }, 'de')).toEqual([1]);
+  });
+
   it('still finds part of a word on ae, oe or ue in German', () => {
     expect(positions(cards, { q: 'neue' }, 'de')).toEqual([4]);
     expect(positions(cards, { q: 'e' }, 'de')).toEqual([1, 2, 3, 4, 5, 6]);

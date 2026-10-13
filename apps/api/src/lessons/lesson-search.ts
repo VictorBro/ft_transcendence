@@ -92,11 +92,13 @@ function matchesFilters(card: LessonCard, query: LessonQuery): boolean {
  * so "maedchen" would never find it. bareVowels removes the e:
  *   "maedchen" → "madchen"
  *
- * It must be done on both sides, the text typed and the lesson. German has
- * real "ue" too: "neue" stays "neue" after foldText. Done on the typed text
- * only, "neue maedchen" would become "neu madchen", and "Neue Mädchen"
- * (folded "neue madchen") would not contain it. On both sides, both become
- * "neu madchen" and match.
+ * matchesText tries it two ways, on each typed word:
+ * - On the word only: "sturmboeen" → "sturmboen", found in "Sturmböen"
+ *   (folded "sturmboen"). Done on both sides, the lesson would become
+ *   "sturmbon", which does not contain "sturmboen".
+ * - On both sides: German has real "ue" too, and one word can hold a real
+ *   one and a typed one. "steuererklaerung" → "steurerklarung" is not in
+ *   "steuererklarung", but on both sides both become "steurerklarung".
  *
  * Not in French: there "coeur" would become "cour", another word.
  */
@@ -123,13 +125,14 @@ function matchesText(card: LessonCard, words: string[], lang: Language): boolean
   if (words.length === 0) return true;
 
   const haystacks = [foldText(card.title), foldText(card.summary)];
-  return words.every((word) =>
-    haystacks.some(
+  return words.every((word) => {
+    const bareWord = bareVowels(word);
+    return haystacks.some(
       (haystack) =>
         haystack.includes(word) ||
-        (lang === 'de' && bareVowels(haystack).includes(bareVowels(word))),
-    ),
-  );
+        (lang === 'de' && (haystack.includes(bareWord) || bareVowels(haystack).includes(bareWord))),
+    );
+  });
 }
 
 /*
