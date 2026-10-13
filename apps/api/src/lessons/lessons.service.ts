@@ -254,14 +254,13 @@ export class LessonsService {
     // course the answer must be course.notFound, not lesson.notFound.
     const course = checkCourse(await this.findCourse(userId, lang));
 
-    // The lesson and its result do not need each other, so they run at the same time.
-    const [lesson, row] = await Promise.all([
-      findLesson(this.prisma, lang, id),
-      this.prisma.lessonResult.findFirst({
-        where: { lessonId: id, userLevelId: course.id },
-        select: RESULT_SELECT,
-      }),
-    ]);
+    // The lesson before its result: a malformed or missing id stops here, so
+    // the result is only looked for on a lesson that exists.
+    const lesson = await findLesson(this.prisma, lang, id);
+    const row = await this.prisma.lessonResult.findFirst({
+      where: { lessonId: lesson.id, userLevelId: course.id },
+      select: RESULT_SELECT,
+    });
 
     return LessonCardSchema.parse(toCard(lesson, row ? toRuleResult(row) : undefined));
   }

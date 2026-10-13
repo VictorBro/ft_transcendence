@@ -7,8 +7,8 @@ import type { Prisma } from '../generated/prisma/client';
  * them: today, lessons and lesson here, finish in #82, achievements in #95.
  * So the same case always gives the same error, whoever asks.
  *
- * Plain functions, not a service: #82 calls them inside a transaction, from
- * lessons/goal.ts, which is not a Nest provider.
+ * Plain functions, not a service: #82's finish calls them from its transaction,
+ * with its `tx`, and plain files like lessons/goal.ts can import them too.
  */
 
 /**

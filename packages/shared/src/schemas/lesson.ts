@@ -423,7 +423,8 @@ function commaList<const T extends readonly [string, ...string[]]>(values: T) {
 
 /**
  * The all lessons page's search params. Lists are comma separated, because
- * apiGet sets each key once (apps/web/lib/api.ts). Every field falls back to its
+ * apiGet sets each key once (apps/web/lib/api.ts), and a repeated key (what a
+ * form of checkboxes sends) is read the same way. Every field falls back to its
  * default, so the API and the page read a hand-edited URL the same way and
  * neither ever fails on one.
  */
