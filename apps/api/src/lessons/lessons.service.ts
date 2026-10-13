@@ -1,4 +1,4 @@
-import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import type { Prisma } from '../generated/prisma/client';
 import {
@@ -8,7 +8,6 @@ import {
   LessonCard,
   LessonCardSchema,
   LessonId,
-  LessonIdSchema,
   LessonPageSchema,
   LessonQuery,
   LESSONS_PAGE_SIZE,
@@ -26,6 +25,7 @@ import {
   statusOf,
   target,
 } from './roadmap.rules';
+import { checkCourse, findLesson, LESSON_SELECT, LessonRow } from './course-lookup';
 import { searchLessons } from './lesson-search';
 
 /*
@@ -34,23 +34,12 @@ import { searchLessons } from './lesson-search';
  * Lesson has a `brief` column (the whole lesson content) that these routes
  * must never send. A column we never ask for cannot leak by mistake.
  *
- * Written once here, so every query in this service asks for the same fields.
+ * Written once, so every query asks for the same fields. LESSON_SELECT lives
+ * in course-lookup.ts, because #82 reads lessons with it too.
  *
  * `as const` tells TypeScript the values are exactly `true`, not any boolean.
- * That is how Prisma knows exactly which fields come back (see LessonRow below).
+ * That is how Prisma knows exactly which fields come back (see ResultRow below).
  */
-
-/** What a lesson card needs from Lesson: no `brief`, and no `lang`, a card has none. */
-const LESSON_SELECT = {
-  id: true,
-  level: true,
-  position: true,
-  kind: true,
-  topic: true,
-  theme: true,
-  title: true,
-  summary: true,
-} as const;
 
 /**
  * A user's course in one language (UserLevel):
@@ -85,10 +74,10 @@ const RESULT_SELECT = {
 /**
  * To write toRuleResult(row), TypeScript must know what `row` is.
  * Prisma can work out the exact type of a row from the select.
- * In plain words: "the type of what Prisma gives back when I read Lesson with LESSON_SELECT".
+ * In plain words: "the type of what Prisma gives back when I read LessonResult with RESULT_SELECT".
  * This is where the `as const` above helps: without it, Prisma would not know the exact fields.
+ * LessonRow, the same for Lesson, is in course-lookup.ts with LESSON_SELECT.
  */
-type LessonRow = Prisma.LessonGetPayload<{ select: typeof LESSON_SELECT }>;
 type ResultRow = Prisma.LessonResultGetPayload<{ select: typeof RESULT_SELECT }>;
 
 /**
@@ -175,22 +164,18 @@ export class LessonsService {
   constructor(private readonly prisma: PrismaService) {}
 
   /**
-   * Finds the user's course in one language, or a 404 if they never started it.
+   * Reads the user's course in one language, or null if they never started it.
    * A user has one course per language, so userId and lang together point to
    * exactly one row: that is the `userId_lang` key.
    *
-   * No 409 here when the course has no level yet: opening a single lesson
-   * must still work before placement. The 409 is in load instead.
+   * It throws nothing: checkCourse (course-lookup.ts) decides the error, the
+   * same way for every route of a course, #82 included.
    */
-  private async course(userId: string, lang: Language) {
-    const course = await this.prisma.userLevel.findUnique({
+  private findCourse(userId: string, lang: Language) {
+    return this.prisma.userLevel.findUnique({
       where: { userId_lang: { userId, lang } },
       select: COURSE_SELECT,
     });
-    if (!course) {
-      throw new NotFoundException('course.notFound');
-    }
-    return course;
   }
 
   /**
@@ -198,13 +183,11 @@ export class LessonsService {
    * level, the lessons of that level, all the course's results, and today's day.
    */
   private async load(userId: string, lang: Language, timeZone: string, now: Date) {
-    // No level yet means no placement: we cannot know which lessons to show, so 409.
-    // Kept in its own variable: after the `if`, TypeScript knows it is not null.
-    const course = await this.course(userId, lang);
+    // No level yet means no placement: we cannot know which lessons to show,
+    // so `placed` asks checkCourse for the 409. After it, TypeScript knows the
+    // level is not null.
+    const course = checkCourse(await this.findCourse(userId, lang), { placed: true });
     const level = course.level;
-    if (level === null) {
-      throw new ConflictException('course.notPlaced');
-    }
 
     // The 2 queries do not need each other, so they run at the same time.
     // The results are NOT filtered by level: after a level change at noon,
@@ -262,34 +245,23 @@ export class LessonsService {
 
   /**
    * GET /courses/:lang/lessons/:id: the card of one lesson.
-   * course, not load: no 409, so a course without a level can still open a lesson.
-   * The lesson is searched in this language only, so the id of a lesson in
-   * another language gives a 404.
+   * checkCourse without `placed`: no 409, so a course without a level can still
+   * open a lesson. findLesson searches this language only, so the id of a
+   * lesson in another language gives a 404, like a missing or malformed one.
    */
   async lesson(userId: string, lang: Language, id: string) {
-    // A malformed id names no lesson: the same 404 as a missing one, without
-    // looking for it. 404, not 400: the front shows a 404 as "not there", a
-    // 400 as an error. After course(), so a missing course still comes first.
-    if (!LessonIdSchema.safeParse(id).success) {
-      await this.course(userId, lang);
-      throw new NotFoundException('lesson.notFound');
-    }
+    // The course first, on its own: findLesson throws too, and without a
+    // course the answer must be course.notFound, not lesson.notFound.
+    const course = checkCourse(await this.findCourse(userId, lang));
 
-    // The 3 queries do not need each other, so they run at the same time. The
-    // result is found by userId and lang, not by course.id, so it does not
-    // wait for the course. Only course() can throw: findFirst gives null
-    // instead, so without a course the answer is still course.notFound.
-    const [, lesson, row] = await Promise.all([
-      this.course(userId, lang),
-      this.prisma.lesson.findFirst({ where: { id, lang }, select: LESSON_SELECT }),
+    // The lesson and its result do not need each other, so they run at the same time.
+    const [lesson, row] = await Promise.all([
+      findLesson(this.prisma, lang, id),
       this.prisma.lessonResult.findFirst({
-        where: { lessonId: id, userLevel: { userId, lang } },
+        where: { lessonId: id, userLevelId: course.id },
         select: RESULT_SELECT,
       }),
     ]);
-    if (!lesson) {
-      throw new NotFoundException('lesson.notFound');
-    }
 
     return LessonCardSchema.parse(toCard(lesson, row ? toRuleResult(row) : undefined));
   }
