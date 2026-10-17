@@ -93,6 +93,16 @@ export class PlacementSessionService {
   }
 
   /**
+   * The language of the run being answered, or null when there is none, by the
+   * same rule as hasLiveSession. Not loadExamSession: quitting must work on a
+   * run too broken to load.
+   */
+  async liveSessionLang(userId: string): Promise<string | null> {
+    if (!(await this.hasLiveSession(userId))) return null;
+    return this.redis.client.hGet(this.evalKey(userId), 'lang');
+  }
+
+  /**
    * Serializes and persists the exam session fields into a Redis hash and resets its TTL.
    */
   async saveExamSession(userId: string, session: ExamSession): Promise<void> {

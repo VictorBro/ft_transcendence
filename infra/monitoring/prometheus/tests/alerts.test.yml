@@ -1,0 +1,239 @@
+# Unit tests for ../rules/alerts.yml, run by scripts/check-monitoring-config.sh:
+#
+#   promtool test rules tests/alerts.test.yml
+#
+# promtool compares labels and annotations exactly, so each expected alert
+# repeats its rule's annotations word for word. Every critical rule has a
+# firing test: it is the one that posts to Discord every hour.
+
+rule_files:
+  - ../rules/alerts.yml
+
+evaluation_interval: 30s
+
+tests:
+  - name: ApiDown fires after a minute without a scrape, not before
+    interval: 30s
+    input_series:
+      - series: 'up{job="api", instance="api:9464"}'
+        values: "1 1 0 0 0 0"
+    alert_rule_test:
+      - eval_time: 1m30s
+        alertname: ApiDown
+        exp_alerts: []
+      - eval_time: 2m30s
+        alertname: ApiDown
+        exp_alerts:
+          - exp_labels:
+              severity: critical
+              job: api
+              instance: api:9464
+            exp_annotations:
+              summary: "The API has not answered a scrape for a minute"
+              description: "Sign-in and every page that needs data fail. Check the api container's
+                state and logs."
+
+  - name: Restock failures from the fixture provider stay quiet
+    interval: 30s
+    input_series:
+      - series: 'ft_question_restock_failures_total{category="grammar", reason="llm_disabled"}'
+        values: "0+5x60"
+    alert_rule_test:
+      - eval_time: 25m
+        alertname: QuestionRestocksFailing
+        exp_alerts: []
+
+  - name: Real restock failures fire
+    interval: 30s
+    input_series:
+      - series: 'ft_question_restock_failures_total{category="grammar", reason="llm"}'
+        values: "0+1x60"
+    alert_rule_test:
+      - eval_time: 25m
+        alertname: QuestionRestocksFailing
+        exp_alerts:
+          - exp_labels:
+              severity: warning
+            exp_annotations:
+              summary: "Question restocks keep failing"
+              description: "Learners may run out of fresh questions. The Learning dashboard
+                shows the reason; the api logs show the error."
+
+  # The api starts every lang and level at 0, so the first exhaustion counts.
+  - name: Placement pool exhaustion fires once seen
+    interval: 30s
+    input_series:
+      - series: 'ft_placement_pool_exhausted_total{job="api", lang="fr", level="B2"}'
+        values: "0 0 0 1 1 1"
+    alert_rule_test:
+      - eval_time: 2m
+        alertname: PlacementPoolExhausted
+        exp_alerts:
+          - exp_labels:
+              severity: warning
+              lang: fr
+              level: B2
+            exp_annotations:
+              summary: "A learner ran out of fr B2 questions"
+              description: "A placement exam found no question left to ask at that level. Add or
+                generate questions for it."
+
+  # 2 requests a minute, all failing: below the 0.05 req/s floor.
+  - name: The API error rate needs traffic to fire
+    interval: 30s
+    input_series:
+      - series: 'http_request_duration_seconds_count{job="api", route="/api/me", status_code="500"}'
+        values: "0+1x30"
+    alert_rule_test:
+      - eval_time: 10m
+        alertname: ApiErrorRateHigh
+        exp_alerts: []
+
+  # 2 requests a second, 10% failing.
+  - name: The API error rate fires on real traffic
+    interval: 30s
+    input_series:
+      - series: 'http_request_duration_seconds_count{job="api", route="/api/me", status_code="200"}'
+        values: "0+54x30"
+      - series: 'http_request_duration_seconds_count{job="api", route="/api/me", status_code="500"}'
+        values: "0+6x30"
+    alert_rule_test:
+      - eval_time: 10m
+        alertname: ApiErrorRateHigh
+        exp_alerts:
+          - exp_labels:
+              severity: critical
+            exp_annotations:
+              summary: "More than 5% of API requests fail with a server error"
+              description: "The API dashboard splits responses by route and status. Check the api
+                logs for that route."
+
+  - name: An almost full root disk fires
+    interval: 30s
+    input_series:
+      - series: 'node_filesystem_avail_bytes{instance="node-exporter:9100", mountpoint="/"}'
+        values: "10x40"
+      - series: 'node_filesystem_size_bytes{instance="node-exporter:9100", mountpoint="/"}'
+        values: "100x40"
+    alert_rule_test:
+      - eval_time: 15m
+        alertname: HostDiskAlmostFull
+        exp_alerts:
+          - exp_labels:
+              severity: warning
+              instance: node-exporter:9100
+              mountpoint: /
+            exp_annotations:
+              summary: "Less than 15% of the root disk is free"
+              description: "Postgres, Redis and Prometheus all write here. docker system df shows
+                what to prune, old images first."
+
+  # The server is expected to sit near its RAM with a swapfile behind it.
+  - name: Low RAM with free swap stays quiet
+    interval: 30s
+    input_series:
+      - series: 'node_memory_MemAvailable_bytes{job="node", instance="node-exporter:9100"}'
+        values: "50x30"
+      - series: 'node_memory_MemTotal_bytes{job="node", instance="node-exporter:9100"}'
+        values: "1000x30"
+      - series: 'node_memory_SwapFree_bytes{job="node", instance="node-exporter:9100"}'
+        values: "1500x30"
+      - series: 'node_memory_SwapTotal_bytes{job="node", instance="node-exporter:9100"}'
+        values: "2000x30"
+    alert_rule_test:
+      - eval_time: 10m
+        alertname: HostMemoryLow
+        exp_alerts: []
+
+  - name: RAM and swap both running out fires
+    interval: 30s
+    input_series:
+      - series: 'node_memory_MemAvailable_bytes{job="node", instance="node-exporter:9100"}'
+        values: "50x30"
+      - series: 'node_memory_MemTotal_bytes{job="node", instance="node-exporter:9100"}'
+        values: "1000x30"
+      - series: 'node_memory_SwapFree_bytes{job="node", instance="node-exporter:9100"}'
+        values: "100x30"
+      - series: 'node_memory_SwapTotal_bytes{job="node", instance="node-exporter:9100"}'
+        values: "2000x30"
+    alert_rule_test:
+      - eval_time: 10m
+        alertname: HostMemoryLow
+        exp_alerts:
+          - exp_labels:
+              severity: critical
+              job: node
+              instance: node-exporter:9100
+            exp_annotations:
+              summary: "Less than 10% of memory and swap is available: the OOM killer is next"
+              description: "docker stats shows the largest container. docs/DEPLOYMENT.md covers
+                memory and swap on the server."
+
+  - name: The other critical rules fire after their minute, not before
+    interval: 30s
+    input_series:
+      - series: 'probe_success{job="blackbox", instance="http://web:3000/healthz"}'
+        values: "1 1 0 0 0 0"
+      - series: 'pg_up{job="postgres", instance="postgres-exporter:9187"}'
+        values: "1 1 0 0 0 0"
+      - series: 'redis_up{job="redis", instance="redis-exporter:9121"}'
+        values: "1 1 0 0 0 0"
+      - series: 'redis_aof_last_write_status{job="redis", instance="redis-exporter:9121"}'
+        values: "1 1 0 0 0 0"
+    alert_rule_test:
+      - eval_time: 1m30s
+        alertname: WebDown
+        exp_alerts: []
+      - eval_time: 1m30s
+        alertname: PostgresDown
+        exp_alerts: []
+      - eval_time: 1m30s
+        alertname: RedisDown
+        exp_alerts: []
+      - eval_time: 1m30s
+        alertname: RedisAofWriteFailing
+        exp_alerts: []
+      - eval_time: 2m30s
+        alertname: WebDown
+        exp_alerts:
+          - exp_labels:
+              severity: critical
+              job: blackbox
+              instance: http://web:3000/healthz
+            exp_annotations:
+              summary: "The web app is not answering /healthz"
+              description: "Learners get an error from Caddy instead of a page. Check the web
+                container's state and logs."
+      - eval_time: 2m30s
+        alertname: PostgresDown
+        exp_alerts:
+          - exp_labels:
+              severity: critical
+              job: postgres
+              instance: postgres-exporter:9187
+            exp_annotations:
+              summary: "Postgres is not accepting connections"
+              description: "Sign-in and every lesson fail. Check the db container's logs, then disk
+                space on the host."
+      - eval_time: 2m30s
+        alertname: RedisDown
+        exp_alerts:
+          - exp_labels:
+              severity: critical
+              job: redis
+              instance: redis-exporter:9121
+            exp_annotations:
+              summary: "Redis is down: sessions and placement runs are unavailable"
+              description: "Nobody can sign in or stay signed in. Check the redis container's logs
+                and memory."
+      - eval_time: 2m30s
+        alertname: RedisAofWriteFailing
+        exp_alerts:
+          - exp_labels:
+              severity: critical
+              job: redis
+              instance: redis-exporter:9121
+            exp_annotations:
+              summary: "Redis cannot write its AOF: sessions are not being persisted"
+              description: "A Redis restart now would sign everyone out. Check disk space on the
+                host and the redis logs."

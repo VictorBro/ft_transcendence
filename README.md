@@ -67,6 +67,9 @@ make                    # checks, build, run, browser tests
 
 The app is served at <https://localhost>. `make` prints how to trust the local
 TLS certificate. API documentation is at <https://localhost/api/docs>.
+Grafana, with the monitoring dashboards and alerts, is at
+<https://localhost/grafana>: user `admin`, and the password `make` generated is in
+`.env` (`grep GRAFANA_ADMIN_PASSWORD .env`).
 
 For day-to-day development use `make dev`, which starts the same stack with hot
 reload. `make help` lists every target.
@@ -110,7 +113,19 @@ TODO
      justification for each, how it was implemented and by whom. The planned
      set is in docs/PRODUCT_ARCHITECTURE.md section 2. -->
 
-TODO
+### Monitoring system with Prometheus and Grafana (Major, 2 points)
+
+Prometheus collects metrics every 30 seconds: from the API and Caddy directly,
+from the host, Postgres and Redis through exporters, and from a blackbox exporter
+that probes the web app and Grafana. Grafana shows them on four dashboards
+provisioned from the repo (Overview, API, Learning, Infrastructure), at `/grafana`
+behind its own login, with sign-up and anonymous access off. 25 alert rules,
+unit-tested with promtool, go through Alertmanager to a Discord channel. Only Caddy
+publishes a port: Prometheus, Alertmanager, the exporters and the API's metrics
+port stay on the internal network. Details in
+[docs/MONITORING.md](docs/MONITORING.md).
+
+TODO: the other modules.
 
 ## Individual Contributions
 

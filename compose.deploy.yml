@@ -157,12 +157,127 @@ services:
       - ft
     restart: unless-stopped
 
+  # The monitoring stack, see docs/MONITORING.md and the comments in
+  # compose.yml. Always on here. None of these publishes a port: Grafana is
+  # reached through caddy at /grafana. The configs are baked into the three
+  # images images.yml publishes, so this host still needs only three files. The
+  # exporter pins are copied from compose.yml by hand, like caddy's:
+  # scripts/check-monitoring-config.sh fails when the two drift.
+  prometheus:
+    image: ghcr.io/victorbro/ft_transcendence/prometheus:${IMAGE_TAG:-latest}
+    volumes:
+      - prometheus-data:/prometheus
+    networks:
+      - ft
+    mem_limit: 256m
+    # A quarter of the default CPU weight: on a shared core, compaction and
+    # Grafana's first-boot migration yield to the app. Weight only, never a cap
+    # (`cpus` is a hard error on rootless hosts without cpu delegation), and only
+    # here, where the daemon is rootful.
+    cpu_shares: 256
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1:9090/-/ready"]
+      interval: 30s
+      timeout: 5s
+      start_period: 30s
+      retries: 3
+
+  alertmanager:
+    image: ghcr.io/victorbro/ft_transcendence/alertmanager:${IMAGE_TAG:-latest}
+    environment:
+      # Optional on purpose: an interpolation error here would stop the whole
+      # deploy, app included (deploy.sh runs under set -e). Empty only means
+      # alerts are not sent; the container logs say so at start.
+      DISCORD_WEBHOOK_URL: ${DISCORD_WEBHOOK_URL:-}
+      GRAFANA_URL: https://${SITE_DOMAIN:?set the public hostname, e.g. ft.example.com}/grafana
+    tmpfs:
+      - /run/alertmanager
+    volumes:
+      - alertmanager-data:/alertmanager
+    networks:
+      - ft
+    mem_limit: 64m
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1:9093/-/ready"]
+      interval: 30s
+      timeout: 5s
+      start_period: 10s
+      retries: 3
+
+  grafana:
+    image: ghcr.io/victorbro/ft_transcendence/grafana:${IMAGE_TAG:-latest}
+    environment:
+      GF_SERVER_ROOT_URL: https://${SITE_DOMAIN:?set the public hostname, e.g. ft.example.com}/grafana/
+      # No fallback: a default would be a password published in this repo.
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:?set GRAFANA_ADMIN_PASSWORD, see infra/deploy/.env.example}
+      GF_SECURITY_SECRET_KEY: ${GRAFANA_SECRET_KEY:?set GRAFANA_SECRET_KEY, see infra/deploy/.env.example}
+      GOMEMLIMIT: 256MiB
+    volumes:
+      - grafana-data:/var/lib/grafana
+    networks:
+      - ft
+    mem_limit: 320m
+    # Same reason as prometheus.
+    cpu_shares: 256
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1:3000/grafana/api/health"]
+      interval: 30s
+      timeout: 5s
+      start_period: 60s
+      retries: 3
+
+  node-exporter:
+    image: ghcr.io/prometheus/node-exporter:v1.12.1
+    command:
+      - --path.rootfs=/rootfs
+      - --collector.filesystem.mount-points-exclude=^/(dev|proc|sys|run|etc|var/lib/(docker|containers|containerd)/.+)($$|/)
+    volumes:
+      - /:/rootfs:ro
+    networks:
+      - ft
+    mem_limit: 48m
+    restart: unless-stopped
+
+  postgres-exporter:
+    image: ghcr.io/prometheus-community/postgres-exporter:v0.20.1
+    environment:
+      DATA_SOURCE_URI: db:5432/${POSTGRES_DB:-ft_transcendence}?sslmode=disable
+      DATA_SOURCE_USER: ${POSTGRES_USER:-ft}
+      DATA_SOURCE_PASS: ${POSTGRES_PASSWORD:?set a real database password}
+    networks:
+      - ft
+    mem_limit: 48m
+    restart: unless-stopped
+
+  redis-exporter:
+    image: ghcr.io/oliver006/redis_exporter:v1.93.0
+    environment:
+      REDIS_ADDR: redis://redis:6379
+      REDIS_EXPORTER_COUNT_KEYS: db0=sess:*
+    networks:
+      - ft
+    mem_limit: 32m
+    restart: unless-stopped
+
+  blackbox-exporter:
+    image: ghcr.io/prometheus/blackbox-exporter:v0.29.0
+    networks:
+      - ft
+    mem_limit: 32m
+    restart: unless-stopped
+
 volumes:
   pg-data:
   redis-data:
   caddy-data:
   caddy-config:
   avatars-data:
+  prometheus-data:
+  alertmanager-data:
+  grafana-data:
 
 networks:
   ft:

@@ -1,0 +1,13 @@
+{{/* The default message lists every label and links to Prometheus, which
+     nobody outside the network can open. This links to Grafana instead. */}}
+{{ define "ft.discord.title" -}}
+[{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ .CommonLabels.alertname }}
+{{- end }}
+
+{{ define "ft.discord.message" -}}
+{{ range .Alerts -}}
+**{{ .Labels.severity | toUpper }}** {{ .Annotations.summary }}
+{{ .Annotations.description }}
+{{ end -}}
+Grafana: {{ .ExternalURL }}
+{{- end }}

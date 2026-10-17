@@ -36,6 +36,7 @@ Ce que chaque fichier utilise :
 ```
 question-stock.service.ts
    ├── llm/llm.provider.ts            (LLM_PROVIDER, LlmProvider, LlmError)
+   ├── metrics/metrics.ts             (les compteurs des restocks, voir 6.7)
    ├── prisma/prisma.service.ts       (la base de données)
    ├── @ft/shared                     (generatedBatchSchema, GeneratedItem)
    ├── prompts/question-batch.prompt.ts
@@ -489,8 +490,10 @@ async restock(cell: Cell, unseen: number): Promise<RestockOutcome> {
   if (unseen > RESTOCK_AT) return { status: 'stocked', inserted: 0 };
 
   const key = `${cell.lang}:${cell.level}:${cell.category}`;
-  if (this.inFlight.has(key)) return { status: 'busy', inserted: 0 };
-  if (Date.now() < (this.coolingUntil.get(key) ?? 0)) return { status: 'cooling', inserted: 0 };
+  if (this.inFlight.has(key)) return counted(cell, { status: 'busy', inserted: 0 });
+  if (Date.now() < (this.coolingUntil.get(key) ?? 0)) {
+    return counted(cell, { status: 'cooling', inserted: 0 });
+  }
 
   const job = this.fill(cell, key).finally(() => this.inFlight.delete(key));
   this.inFlight.set(key, job);
@@ -505,6 +508,8 @@ Trois vérifications, dans cet ordre. Chacune peut arrêter ici :
 1. **Assez de questions ?** Plus de 3 → `stocked`. C'est le cas le plus fréquent, et il ne coûte rien : pas de clé à calculer, pas de `Map` à lire.
 2. **Déjà en cours ?** → `busy`. Sans ça, 10 apprenants sur la même cellule lanceraient 10 appels au LLM.
 3. **En pause ?** → `cooling`. `this.coolingUntil.get(key) ?? 0` : une cellule qui n'a jamais échoué n'a pas d'entrée, donc `get` renvoie `undefined`, remplacé par `0` (le 1er janvier 1970). `Date.now()` est toujours plus grand, donc pas de pause.
+
+`busy` et `cooling` passent par `counted(...)`, qui les compte pour les métriques puis renvoie le même résultat (voir 6.7). `stocked` n'y passe pas : il arrive à chaque question piochée, ce n'est pas un restock.
 
 Sinon, on lance le travail :
 
@@ -521,6 +526,7 @@ Sinon, on lance le travail :
 
 ```ts
 private async fill(cell: Cell, key: string): Promise<RestockOutcome> {
+  const stop = questionRestockDuration.startTimer({ category: cell.category });
   try {
     const items = await this.generate(cell, key);
     const stored = await this.prisma.questionBank.findMany({
@@ -532,11 +538,16 @@ private async fill(cell: Cell, key: string): Promise<RestockOutcome> {
     });
     this.logger.log(`restocked ${key}: ${count} of ${items.length} questions were new`);
     if (count === 0) this.coolingUntil.set(key, Date.now() + COOLDOWN_MS);
-    return { status: 'filled', inserted: count };
+    const { lang, level, category } = cell;
+    questionRestockInserted.inc({ lang, level, category }, count);
+    return counted(cell, { status: 'filled', inserted: count });
   } catch (error) {
     this.logger.warn(`restock ${key} failed: ${String(error)}`);
     this.coolingUntil.set(key, Date.now() + COOLDOWN_MS);
-    return { status: 'failed', inserted: 0 };
+    questionRestockFailures.inc({ category: cell.category, reason: failureReason(error) });
+    return counted(cell, { status: 'failed', inserted: 0 });
+  } finally {
+    stop();
   }
 }
 ```
@@ -554,6 +565,13 @@ private async fill(cell: Cell, key: string): Promise<RestockOutcome> {
 `String(error)` : `error` dans un `catch` est de type `unknown` (ça peut être n'importe quoi). `String(...)` le transforme en texte sans risque.
 
 **Pourquoi une pause après un échec ?** Sans elle, un LLM en panne, ou le `FixtureProvider` qui échoue toujours, serait rappelé **à chaque question piochée** par chaque apprenant. Avec, c'est au plus une tentative par cellule toutes les 10 minutes.
+
+**Les métriques** (détail en 6.7) :
+
+- `startTimer` au début et `stop()` dans le `finally` : la durée de tout le restock, deuxième essai compris, succès ou échec.
+- `questionRestockInserted.inc(..., count)` : le nombre de questions ajoutées à la banque.
+- `questionRestockFailures.inc(...)` : un échec de plus, avec sa raison, donnée par `failureReason(error)`.
+- `counted(...)` autour de chaque résultat, comme dans `restock`.
 
 ### 6.6 `generate` : l'appel au LLM, avec un éventuel deuxième essai
 
@@ -593,6 +611,33 @@ private async generate(cell: Cell, key: string): Promise<GeneratedItem[]> {
 Après le `if`, TypeScript sait que `error` est une `LlmError` (narrowing), d'où l'accès à `error.message` sans cast.
 
 Au maximum **deux** appels au LLM par restock.
+
+### 6.7 `counted` et `failureReason` : pour les métriques
+
+```ts
+function counted(cell: Cell, outcome: RestockOutcome & { status: RestockStatus }): RestockOutcome {
+  const status: RestockStatus =
+    outcome.status === "filled" && outcome.inserted === 0 ? "empty" : outcome.status;
+  const { lang, level, category } = cell;
+  questionRestocks.inc({ lang, level, category, status });
+  return outcome;
+}
+
+function failureReason(error: unknown): RestockFailureReason {
+  if (!(error instanceof LlmError)) return "other";
+  return error.reason === "disabled" ? "llm_disabled" : "llm";
+}
+```
+
+Deux fonctions du fichier, hors de la classe, non exportées.
+
+- `counted` ajoute 1 au compteur des restocks de la cellule, avec son statut, puis **renvoie le même résultat** : on l'écrit autour d'un `return` sans rien changer à ce que reçoit l'appelant.
+  - Un `filled` qui n'a rien ajouté (`inserted === 0`) est compté `empty` : le tableau de bord distingue ainsi un vrai remplissage d'un appel au LLM qui n'a rien apporté. Le résultat renvoyé, lui, reste `filled`.
+  - `stocked` n'est jamais compté : il arrive à chaque question piochée. Le type du paramètre le dit : `RestockOutcome & { status: RestockStatus }` n'accepte que les statuts de `RESTOCK_STATUSES` (dans `src/metrics/metrics.ts`), où `stocked` n'est pas.
+- `failureReason` dit pourquoi un restock a échoué :
+  - `llm_disabled` : la `LlmError` du `FixtureProvider` (raison `disabled`), qui échoue à chaque restock **exprès**. L'alerte sur les échecs de restock l'ignore, sinon elle sonnerait sans arrêt partout où tourne la fixture, le défaut, chez les évaluateurs aussi.
+  - `llm` : toute autre `LlmError`, une vraie panne du LLM.
+  - `other` : une erreur qui n'est pas une `LlmError` (la base de données, un bug).
 
 ---
 
@@ -675,7 +720,7 @@ Situation : Léa passe le placement en français, elle est au niveau B1. Il ne l
 
 Variantes :
 
-- Sans clé API (`LLM_PROVIDER=fixture`) : à l'étape 4, `FixtureProvider` lance une `LlmError` **non** retryable → pas de 2e essai → `fill` attrape → `failed` + pause 10 min. Léa et Tom continuent avec les questions existantes, puis avec les plus anciennes déjà vues.
+- Sans clé API (`LLM_PROVIDER=fixture`) : à l'étape 4, `FixtureProvider` lance une `LlmError` **non** retryable, de raison `disabled` → pas de 2e essai → `fill` attrape → `failed` + pause 10 min, compté dans les métriques avec la raison `llm_disabled` (6.7). Léa et Tom continuent avec les questions existantes, puis avec les plus anciennes déjà vues.
 - Gemini renvoie `429` deux fois : retryable, 2e essai, nouvel échec → `failed` + pause 10 min.
 - Les 13 questions sont toutes des doublons : `count = 0` → `filled` avec `inserted: 0` + pause 10 min.
 
@@ -690,7 +735,7 @@ Variantes :
 | Dossier `questions-generation/` (avec un **s**)                       | `question-generation/`                                         |
 | `questions-generation.module.ts`                                      | `question-generation.module.ts`                                |
 | `questions-generation.service.ts` : 260 lignes qui faisaient **tout** | `question-stock.service.ts` : seulement le réapprovisionnement |
-| —                                                                     | `question-batch.ts` : fonctions pures (nouveau)                |
+| (aucun)                                                               | `question-batch.ts` : fonctions pures (nouveau)                |
 | `prompts/generate-questions.prompt.ts`                                | `prompts/question-batch.prompt.ts`, beaucoup plus détaillé     |
 
 ### 9.2 La répartition des rôles

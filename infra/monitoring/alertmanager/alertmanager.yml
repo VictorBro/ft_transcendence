@@ -1,0 +1,40 @@
+# Used when DISCORD_WEBHOOK_URL is set (see entrypoint.sh); silent.yml otherwise.
+# The webhook is a file because Alertmanager never expands env variables.
+
+templates:
+  - /etc/alertmanager/templates/*.tmpl
+
+route:
+  receiver: discord
+  group_by: [alertname]
+  group_wait: 30s
+  # 1m, not the usual 5m: a resolved alert is only sent at the next tick, and a
+  # short outage should say it is over within a minute or two. One instance of
+  # everything: a group rarely changes faster than that.
+  group_interval: 1m
+  repeat_interval: 4h
+  routes:
+    # An outage repeats hourly until it is fixed or silenced in Grafana.
+    - matchers: ['severity="critical"']
+      receiver: discord
+      repeat_interval: 1h
+
+receivers:
+  - name: discord
+    discord_configs:
+      - webhook_url_file: /run/alertmanager/discord_webhook
+        send_resolved: true
+        title: '{{ template "ft.discord.title" . }}'
+        message: '{{ template "ft.discord.message" . }}'
+
+# One cause, one message: the symptoms of a down API or database are muted
+# while it lasts.
+inhibit_rules:
+  - source_matchers:
+      - 'alertname="ApiDown"'
+    target_matchers:
+      - 'alertname=~"WebCannotReachApi|ApiErrorRateHigh|ApiLatencyHigh|ApiRestarting|ApiEventLoopBlocked"'
+  - source_matchers:
+      - 'alertname=~"PostgresDown|RedisDown"'
+    target_matchers:
+      - 'alertname=~"ApiErrorRateHigh|ApiLatencyHigh|QuestionRestocksFailing"'

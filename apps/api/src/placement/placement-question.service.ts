@@ -11,6 +11,7 @@ import {
 import { ExamSession } from './placement.schema';
 
 import { QuestionBank } from '../generated/prisma/client';
+import { DrawSource, placementDraws, placementPoolExhausted } from '../metrics/metrics';
 import { PrismaService } from '../prisma/prisma.service';
 import { QuestionStockService } from '../question-generation/question-stock.service';
 
@@ -83,7 +84,9 @@ export class PlacementQuestionService {
       const randomCategoryIndex = Math.floor(Math.random() * availableCategoryQuestions.length);
       const chosenCategoryQuestions = availableCategoryQuestions[randomCategoryIndex];
       const randomQuestionIndex = Math.floor(Math.random() * chosenCategoryQuestions.length);
-      return [availableByCategory, chosenCategoryQuestions[randomQuestionIndex]];
+      const question = chosenCategoryQuestions[randomQuestionIndex];
+      countDraw(question, question.sourceId !== null ? 'written' : 'generated');
+      return [availableByCategory, question];
     }
 
     const excludeQuestionIds = session.answers.map((answer) => answer.questionId);
@@ -113,9 +116,12 @@ export class PlacementQuestionService {
     });
 
     if (oldest === null) {
+      placementPoolExhausted.inc({ lang: session.lang, level });
       throw new NotFoundException('placement.poolExhausted');
     }
 
+    // A learner running dry: the restocks are not keeping up with them.
+    countDraw(oldest.questionBank, 'seen_fallback');
     return [availableByCategory, oldest.questionBank];
   }
 
@@ -225,4 +231,8 @@ export class PlacementQuestionService {
     });
     return this.createPlacementQuestion(question, examSession);
   }
+}
+
+function countDraw({ lang, level, category }: QuestionBank, source: DrawSource): void {
+  placementDraws.inc({ lang, level, category, source });
 }

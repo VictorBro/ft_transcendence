@@ -34,6 +34,10 @@ jobs:
       # compose.prod.yml requires this rather than inheriting the dev fallback,
       # so a real deploy cannot sign cookies with a secret published in this repo.
       SESSION_SECRET: ci-only-session-secret-at-least-32-characters-long
+      # compose.prod.yml requires these like SESSION_SECRET. make writes them
+      # into .env locally; CI has no .env. The suite logs in with the password.
+      GRAFANA_ADMIN_PASSWORD: ci-only-grafana-admin-password
+      GRAFANA_SECRET_KEY: ci-only-grafana-secret-key
 
     steps:
       - uses: actions/checkout@v7.0.1
@@ -46,8 +50,9 @@ jobs:
         run: pnpm --filter @ft/e2e exec playwright install --with-deps chromium
 
       # No .env file. Every value in compose.yml is ${VAR:-default} except
-      # SESSION_SECRET, supplied above, so the stack comes up with the committed
-      # defaults, which is what an evaluator gets on a fresh clone via `make`.
+      # SESSION_SECRET and the Grafana keys, supplied above, so the stack comes
+      # up with the committed defaults, which is what an evaluator gets on a
+      # fresh clone via `make`.
       - name: Start the production stack
         run: $COMPOSE up -d --build --wait --wait-timeout 300
 
@@ -72,6 +77,12 @@ jobs:
       # throwaway container built off the api build stage, exactly as `make` does.
       - name: Apply migrations
         run: make db-ready
+
+      # --wait proves the containers run. This proves Prometheus scrapes every
+      # target, evaluates every rule and has found Alertmanager. After the
+      # migrations, so the API's bank gauge has seeded rows to count.
+      - name: Check the monitoring stack
+        run: ./scripts/check-monitoring.sh
 
       - name: Run the suite
         run: pnpm --filter @ft/e2e run test:e2e

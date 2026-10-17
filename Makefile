@@ -95,7 +95,7 @@ endif
 
 .PHONY: all run dev up build down logs ps shell test test-e2e playwright lint format typecheck report \
         migrate migrate-new seed db-ready studio redis-ui reset-db ci stores-up clean certs tooling-image doctor help \
-				check-devcontainer
+				check-devcontainer env-file monitoring-up monitoring-check
 
 # Building on the host uses the wrong Node, the wrong pnpm store and a bind
 # mount, so most targets refuse to run there. FT_DEVCONTAINER is set on the
@@ -138,6 +138,7 @@ db-ready: .EXTRA_PREREQS :=
 all:
 	@$(MAKE) --no-print-directory ci
 	@$(MAKE) --no-print-directory run
+	@$(MAKE) --no-print-directory monitoring-check
 	@$(MAKE) --no-print-directory playwright
 	@printf '\n  ALL GREEN: checks, build, e2e (console gate included) all passed.\n'
 	@printf '  What you commit now will pass CI.\n'
@@ -156,14 +157,17 @@ run:
 	@$(MAKE) --no-print-directory certs
 	@printf '\n  ft_transcendence is running:  https://localhost\n'
 	@printf '  API docs:                     https://localhost/api/docs\n'
+	@printf '  Grafana:                      https://localhost/grafana  (admin, password: grep GRAFANA_ADMIN_PASSWORD .env)\n'
 	@printf '  Logs:                         make logs\n\n'
 
-build: ## Build the production images
+# env-file: compose.prod.yml requires both Grafana keys, see the monitoring
+# section below.
+build: env-file ## Build the production images
 	$(COMPOSE_PROD) build
 
 # --build, always: `up` against a stale image quietly runs last week's code,
 # and with warm BuildKit caches a no-change rebuild costs seconds.
-up: ## Build and start the production stack, wait until healthy
+up: env-file ## Build and start the production stack, wait until healthy
 	$(COMPOSE_PROD) up -d --build --wait --wait-timeout $(WAIT_TIMEOUT)
 
 # --- development -------------------------------------------------------------
@@ -184,6 +188,10 @@ dev: ## Start the development stack: bind-mounted source, hot reload
 	@for d in $(DEV_MASKED_DIRS); do rmdir "$$d" 2>/dev/null || true; done
 	mkdir -p $(DEV_MASKED_DIRS)
 	$(COMPOSE_DEV) up -d --build --wait --wait-timeout $(WAIT_TIMEOUT)
+	@# `make` leaves the monitoring containers running, restart: unless-stopped
+	@# included, and `up` never touches a service behind an inactive profile.
+	@# Removed unless monitoring-up asked for them; their volumes stay.
+	@$(if $(findstring --profile monitoring,$(COMPOSE_DEV)),:,$(COMPOSE_DEV) --profile monitoring rm -sf $(MONITORING_SERVICES) >/dev/null 2>&1)
 	@# Both are idempotent, and both are the reason a fresh clone used to come
 	@# up healthy with every login returning 500: the api dev container runs
 	@# `prisma generate`, which emits a client and creates zero tables, and
@@ -200,21 +208,70 @@ down: ## Stop the stack, keep the volumes
 	@# The workspace service is behind a profile, so it is invisible to compose
 	@# unless the profile is named. Doing that from inside the devcontainer would
 	@# stop the container running this command, so only the host activates it.
+	@# The monitoring profile always: without it the stack `make` started
+	@# keeps running and the network cannot be removed.
 	@if [ -f /.dockerenv ]; then \
-	  $(COMPOSE_DEV) down --remove-orphans; \
+	  $(COMPOSE_DEV) --profile monitoring down --remove-orphans; \
 	  echo "  workspace container left running: you are in it"; \
 	else \
-	  $(COMPOSE_DEV) --profile devcontainer down --remove-orphans; \
+	  $(COMPOSE_DEV) --profile devcontainer --profile monitoring down --remove-orphans; \
 	fi
 
 logs: ## Follow logs, all services or SERVICES="api web"
-	$(COMPOSE_DEV) logs -f --tail=200 $(SERVICES)
+	$(COMPOSE_DEV) --profile monitoring logs -f --tail=200 $(SERVICES)
 
 ps: ## Show container status
 	$(COMPOSE_DEV) ps
 
 shell: ## Shell into a running service: make shell SERVICE=web
 	$(COMPOSE_DEV) exec $(SERVICE) sh
+
+# --- monitoring --------------------------------------------------------------
+
+# Grafana skips an empty GF_ variable and keeps admin/admin, and a value in
+# .env.example would be a password published in this repo. So make writes
+# random ones into .env, once, before anything starts Grafana. A fresh clone
+# gets .env from the template first, which is the README's first step anyway.
+# Not exported to the shell on purpose: compose prefers the shell over .env, so
+# an exported empty value would win over the real one.
+GENERATED_SECRETS := GRAFANA_ADMIN_PASSWORD GRAFANA_SECRET_KEY
+# Optional and empty by default, but check-env-example.sh wants every key in
+# .env, and a teammate's existing .env predates it.
+OPTIONAL_KEYS := DISCORD_WEBHOOK_URL
+# The services behind the monitoring profile in compose.override.yml.
+MONITORING_SERVICES := prometheus alertmanager grafana node-exporter postgres-exporter \
+                       redis-exporter blackbox-exporter
+
+env-file: ## Create .env if missing, generate the Grafana secrets, add new keys
+	@if [ ! -f .env ]; then cp .env.example .env; printf 'env-file: created .env from .env.example\n'; fi
+	@# A last line with no newline would swallow the first key appended below.
+	@[ -z "$$(tail -c1 .env)" ] || echo >> .env
+	@for key in $(GENERATED_SECRETS); do \
+	  grep -qE "^$$key=.+" .env && continue; \
+	  value=$$(od -An -N24 -tx1 /dev/urandom | tr -d ' \n'); \
+	  if grep -q "^$$key=" .env; then \
+	    sed -i.bak "s/^$$key=.*/$$key=$$value/" .env && rm -f .env.bak; \
+	  else \
+	    printf '%s=%s\n' "$$key" "$$value" >> .env; \
+	  fi; \
+	  printf 'env-file: generated %s in .env\n' "$$key"; \
+	done
+	@for key in $(OPTIONAL_KEYS); do \
+	  grep -q "^$$key=" .env && continue; \
+	  printf '%s=\n' "$$key" >> .env; \
+	  printf 'env-file: added an empty %s to .env\n' "$$key"; \
+	done
+
+# Through `dev`, not a second `up`: that is what creates the masked dirs before
+# Docker can plant them root-owned in the repo, migrates and seeds (the
+# Learning dashboard reads the bank), and exports the CA.
+monitoring-up: env-file ## Dev stack plus Prometheus, Grafana, Alertmanager: https://localhost/grafana
+	@$(MAKE) --no-print-directory dev COMPOSE_DEV='$(COMPOSE_DEV) --profile monitoring'
+	@printf '\n  Grafana: https://localhost/grafana  (user admin, password: grep GRAFANA_ADMIN_PASSWORD .env)\n\n'
+
+# The dev file list works on the prod stack too (see down), so `all` uses it.
+monitoring-check: ## Every scrape target up, every rule healthy, Alertmanager found
+	COMPOSE="$(COMPOSE_DEV) --profile monitoring" ./scripts/check-monitoring.sh
 
 # --- checks ------------------------------------------------------------------
 
@@ -235,7 +292,13 @@ playwright:
 	@# stdin from /dev/null so Playwright skips its "To open last HTML report"
 	@# hint, which it gates on isTTY. The command it prints only works from e2e/;
 	@# `make report` works anywhere.
+	@# The Grafana password is the one the container got, not a second parse of
+	@# .env: compose strips dotenv quotes and make would not. A shell value still
+	@# wins, as it does for compose. Through the environment, never argv, which
+	@# `ps` shows every local user.
 	@set +e; \
+	GRAFANA_ADMIN_PASSWORD="$${GRAFANA_ADMIN_PASSWORD:-$$($(COMPOSE_DEV) exec -T grafana printenv GF_SECURITY_ADMIN_PASSWORD 2>/dev/null)}"; \
+	export GRAFANA_ADMIN_PASSWORD; \
 	E2E_BASE_URL=$(E2E_BASE_URL) pnpm --filter @ft/e2e run test:e2e < /dev/null; \
 	status=$$?; \
 	$(COMPOSE_DEV) exec -T db psql -U ft -d ft_transcendence \
@@ -273,9 +336,12 @@ doctor: ## Check this machine can build, test and push: run it first on a new cl
 stores-up:
 	@$(COMPOSE_DEV) up -d --wait db redis >/dev/null
 
-ci: stores-up ## Everything the ci workflow runs, natively
+# env-file first: check-env-example.sh fails on a .env that predates a key, and
+# `make` runs this before `up` would have added it.
+ci: env-file stores-up ## Everything the ci workflow runs, natively
 	./scripts/assert-ts-version.sh
 	./scripts/check-env-example.sh
+	./scripts/check-monitoring-config.sh
 	./scripts/check-app-boundaries.sh
 	./scripts/check-prisma-format.sh
 	./scripts/check-prisma-drift.sh
@@ -380,7 +446,7 @@ certs: ## Export Caddy's local root CA to ./certs
 # --- housekeeping ------------------------------------------------------------
 
 clean: ## Remove containers, volumes and local build output
-	$(COMPOSE_DEV) down -v --remove-orphans
+	$(COMPOSE_DEV) --profile monitoring down -v --remove-orphans
 	rm -rf \
 	  apps/*/dist apps/*/.next apps/*/coverage apps/*/.turbo \
 	  packages/*/dist packages/*/coverage packages/*/.turbo \
@@ -394,5 +460,5 @@ help: ## List every target
 	@printf '  make run        launch only (build, up, migrate, seed, certs), no checks\n\n'
 	@grep -hE '^[a-zA-Z0-9_-]+:.*?## ' $(MAKEFILE_LIST) \
 	  | sort \
-	  | awk 'BEGIN {FS = ":.*?## "}; {printf "  %-12s %s\n", $$1, $$2}'
+	  | awk 'BEGIN {FS = ":.*?## "}; {printf "  %-17s %s\n", $$1, $$2}'
 	@printf '\n'

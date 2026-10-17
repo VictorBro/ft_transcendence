@@ -5,6 +5,7 @@ import { ThrottlerModule } from '@nestjs/throttler';
 
 import { AuthModule } from './auth/auth.module';
 import { HealthModule } from './health/health.module';
+import { MetricsModule } from './metrics/metrics.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { RedisModule } from './redis/redis.module';
 import { IdentityThrottlerGuard } from './throttler/identity-throttler.guard';
@@ -31,6 +32,7 @@ import { LessonsModule } from './lessons/lessons.module';
     CoursesModule,
     PlacementModule,
     LessonsModule,
+    MetricsModule,
   ],
   providers: [{ provide: APP_GUARD, useClass: IdentityThrottlerGuard }],
 })
