@@ -1,15 +1,21 @@
 # Single TLS entry point. web and api are served from one origin, which is what
 # removes CORS from the project and lets the session cookie stay first-party.
 #
-#   https://localhost/api/*  -> api:3001   (NestJS, global prefix "api")
-#   https://localhost/ws/*   -> api:3001   (socket.io)
-#   https://localhost/*      -> web:3000   (Next.js)
+#   https://localhost/api/*      -> api:3001      (NestJS, global prefix "api")
+#   https://localhost/ws/*       -> api:3001      (socket.io)
+#   https://localhost/grafana/*  -> grafana:3000  (monitoring, own login)
+#   https://localhost/*          -> web:3000      (Next.js)
 {
 	# Caddy's own CA instead of ACME: there is no public domain to validate, and
 	# the subject still requires HTTPS. The root is stored in /data, which is a
 	# named volume, so the browser only has to be told to trust it once.
 	# Trust it on the host with: docker compose cp caddy:/data/caddy/pki/authorities/local/root.crt ./certs/
 	local_certs
+
+	# Request metrics for Prometheus, served by the :2020 site below. The admin
+	# API on :2019 serves them too, but it can rewrite the config, so it stays
+	# on loopback where the healthcheck uses it.
+	metrics
 }
 
 # Site addresses:
@@ -60,8 +66,35 @@ localhost, 127.0.0.1, caddy, {$CADDY_EXTRA_HOSTNAME:ft-transcendence.test} {
 		reverse_proxy api:3001
 	}
 
+	# Grafana's own metrics are off (grafana.ini) and unauthenticated when on.
+	# Refused here too, so a config slip cannot publish them. Before @grafana:
+	# handle blocks with named matchers keep the order they are written in.
+	@grafana_metrics path /grafana/metrics /grafana/metrics/*
+	handle @grafana_metrics {
+		respond 404
+	}
+
+	# Grafana serves itself under /grafana (serve_from_sub_path), so the prefix
+	# is forwarded intact, like /api above. Without the monitoring profile
+	# (make dev) the upstream does not resolve and this answers 502.
+	@grafana path /grafana /grafana/*
+	handle @grafana {
+		reverse_proxy grafana:3000 {
+			# Grafana reads X-Real-IP before the socket address, and Caddy
+			# passes a client-sent one through. Overwrite it, or the login
+			# lockout per IP can be dodged with a fake header.
+			header_up X-Real-IP {remote_host}
+		}
+	}
+
 	# Everything else, including /healthz, /privacy and /terms.
 	handle {
 		reverse_proxy web:3000
 	}
+}
+
+# Prometheus scrapes this over the compose network. It is not in compose's
+# ports list, so nothing outside the network can reach it.
+http://:2020 {
+	metrics
 }

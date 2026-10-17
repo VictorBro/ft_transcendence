@@ -129,6 +129,16 @@ describe('PlacementSessionService', () => {
       await expect(service.hasLiveSession('u-1')).resolves.toBe(false);
     });
 
+    it('gives the language of a live run only', async () => {
+      await expect(service.liveSessionLang('u-1')).resolves.toBeNull();
+
+      await service.saveExamSession('u-1', examSession({ lang: 'fr' }));
+      await expect(service.liveSessionLang('u-1')).resolves.toBe('fr');
+
+      await service.saveExamSession('u-1', examSession({ lang: 'fr', ended: true }));
+      await expect(service.liveSessionLang('u-1')).resolves.toBeNull();
+    });
+
     // A run saved before the field existed must keep loading, not turn into a 409.
     it('saved before currentOptions existed loads with currentOptions null', async () => {
       const session = examSession({

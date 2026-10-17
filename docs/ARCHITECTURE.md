@@ -23,7 +23,8 @@ be a one-sentence answer, and this is it.
 ## 2. Production (`make`, `make run`, `make up`)
 
 Files: `compose.yml` + `compose.prod.yml`. Images are built at the `prod` stage,
-nothing is bind-mounted, and every service carries `restart: unless-stopped`.
+no source is bind-mounted, and every service carries `restart: unless-stopped`.
+The monitoring stack is always on here ([MONITORING.md](MONITORING.md)).
 
 ```mermaid
 flowchart LR
@@ -36,6 +37,13 @@ flowchart LR
             api["api<br/><small>NestJS 11 :3001<br/>global prefix /api</small>"]
             db[("db<br/><small>Postgres 18<br/>+ pgvector :5432</small>")]
             redis[("redis<br/><small>sessions, throttler<br/>:6379</small>")]
+
+            subgraph mon["monitoring (profile in dev, always on with make)"]
+                prometheus["prometheus<br/><small>:9090, 15 d / 1 GB</small>"]
+                alertmanager["alertmanager<br/><small>:9093</small>"]
+                grafana["grafana<br/><small>:3000, served at /grafana</small>"]
+                exporters["node, postgres, redis,<br/>blackbox exporters"]
+            end
         end
     end
 
@@ -43,24 +51,48 @@ flowchart LR
 
     caddy -->|"/api/*"| api
     caddy -->|"/ws/*"| api
+    caddy -->|"/grafana/*"| grafana
     caddy -->|"everything else"| web
 
     web -->|"SSR fetch<br/>http://api:3001"| api
     api --> db
     api --> redis
 
+    grafana --> prometheus
+    grafana --> alertmanager
+    prometheus -.->|"scrape :9464"| api
+    prometheus -.->|"scrape :2020"| caddy
+    prometheus -.-> exporters
+    prometheus --> alertmanager
+    alertmanager -->|"HTTPS, outbound only"| discord["Discord webhook"]
+
     classDef published stroke-width:3px
     class caddy published
 ```
 
-**Only caddy publishes a port.** `web`, `api`, `db` and `redis` are unreachable
-from outside the network, which is what the subject permits for internal traffic
-while still requiring HTTPS at the edge.
+**Only caddy publishes a port.** `web`, `api`, `db`, `redis` and the monitoring
+services are unreachable from outside the network, which is what the subject
+permits for internal traffic while still requiring HTTPS at the edge.
 
 | Published | Service | Purpose |
 |---|---|---|
 | `:80` | caddy | Redirects to HTTPS |
 | `:443` tcp + udp | caddy | The only way in. udp is HTTP/3 |
+
+Monitoring adds listeners on the network only. None of them is in a `ports:` list,
+and `scripts/check-monitoring-config.sh` fails if one ever is:
+
+| Internal only | What | Reached by |
+|---|---|---|
+| `api:9464` | the api's metrics listener, outside Nest | Prometheus |
+| `caddy:2020` | Caddy's request metrics, a site of its own | Prometheus |
+| `prometheus:9090` | Prometheus | Grafana |
+| `alertmanager:9093` | Alertmanager | Prometheus, Grafana |
+| `grafana:3000` | Grafana | caddy at `/grafana`, the blackbox probe |
+| `node-exporter:9100` | host metrics | Prometheus |
+| `blackbox-exporter:9115` | HTTP probes of web and Grafana | Prometheus |
+| `redis-exporter:9121` | Redis metrics | Prometheus |
+| `postgres-exporter:9187` | Postgres metrics | Prometheus |
 
 ### Why one origin matters
 
@@ -72,7 +104,12 @@ happens in `infra/caddy/Caddyfile`:
 |---|---|---|
 | `/api`, `/api/*` | `api:3001` | Prefix forwarded intact; `handle_path` would strip it and every route would 404 |
 | `/ws`, `/ws/*` | `api:3001` | socket.io. Caddy detects the Upgrade handshake inside `reverse_proxy` |
+| `/grafana/metrics`, `/grafana/metrics/*` | nothing, 404 | Grafana's metrics are off, and would be unauthenticated if on. Caddy refuses them too, and this matcher must stay above the next one |
+| `/grafana`, `/grafana/*` | `grafana:3000` | Prefix forwarded intact, like `/api`: Grafana serves itself under `/grafana` |
 | everything else | `web:3000` | Next.js |
+
+`/api/metrics` is not a route. The api serves its metrics on `:9464`, which Caddy
+never proxies, so that path reaches Nest and answers 404.
 
 ---
 
@@ -143,12 +180,14 @@ flowchart LR
             db[("db")]
             redis[("redis")]
             ws["workspace<br/><small>devcontainer shell<br/>profile: devcontainer</small>"]
+            mon["prometheus, alertmanager,<br/>grafana, exporters<br/><small>profile: monitoring</small>"]
         end
     end
 
     browser -->|":443"| caddy
     caddy --> web
     caddy --> api
+    caddy -.->|"/grafana/*"| mon
     web --> api
     api --> db
     api --> redis
@@ -197,6 +236,16 @@ the editor window closes.
 > inside it, reach the stack by service name, `https://caddy/api/health` rather than
 > `https://localhost`. From your browser on the host, `https://localhost` is right.
 
+### The monitoring profile
+
+The seven monitoring services are defined in `compose.yml` with no profile, and
+`compose.override.yml` puts each one behind `profiles: [monitoring]`. So `make dev`
+and the devcontainer stay as light as before, `make monitoring-up` opts in, and the
+prod overlay, which never loads the override, always runs them. Without the profile
+`/grafana` answers 502. `make down`, `make clean` and `make logs` pass the profile,
+so they reach the monitoring containers too. Day to day:
+[DEVELOPMENT.md](DEVELOPMENT.md).
+
 ---
 
 ## 5. Tools that are not services
@@ -242,10 +291,11 @@ flowchart TB
 
     subgraph ci["ci.yml"]
         c1["format · lint · typecheck<br/>TS version assert"] --> c2["unit tests + coverage"] --> c3["Supertest against<br/>real Postgres + Redis"]
+        c4["monitoring config<br/>promtool · amtool · caddy validate"]
     end
 
     subgraph e2e["e2e.yml"]
-        e1["build prod images<br/>compose up"] --> e2["Playwright"] --> e3["console gate<br/>legal pages"]
+        e1["build prod images<br/>compose up"] --> em["monitoring check<br/>every target up"] --> e2["Playwright"] --> e3["console gate<br/>legal pages"]
     end
 
     subgraph hygiene["hygiene.yml"]
@@ -265,7 +315,7 @@ against production images rather than a dev server:
 - **legal pages**: `/privacy` and `/terms` answer 200 with real content.
 
 `make ci` runs the same checks natively, and `make` runs all of it plus the
-production stack and Playwright.
+production stack, the live monitoring check and Playwright.
 
 ---
 

@@ -56,6 +56,18 @@ export interface LlmProvider {
 }
 
 /**
+ * Why a call failed, as a fixed list of words: the metrics count failures by
+ * it (src/metrics/metrics.ts), so it must never be free text like the message.
+ * - unreachable: no HTTP answer at all (network, DNS, timeout).
+ * - rate_limited: HTTP 429. http_error: any other status outside 2xx.
+ * - blocked: the prompt was refused. incomplete: the reply was cut short.
+ * - invalid: the reply is not JSON, or fails the schema.
+ * - disabled: no real LLM behind the provider (the fixture).
+ */
+export type LlmFailure =
+  'unreachable' | 'rate_limited' | 'http_error' | 'blocked' | 'incomplete' | 'invalid' | 'disabled';
+
+/**
  * The error a provider throws when a call fails.
  * It is a real class (it exists at runtime), so we can test it with
  * "error instanceof LlmError". It extends Error, so it has a message and a
@@ -70,6 +82,8 @@ export class LlmError extends Error {
     message: string,
     /** Whether sending the same request again may succeed. */
     readonly retryable: boolean,
+    /** Why it failed, for the metrics. The message says it to a person. */
+    readonly reason: LlmFailure,
   ) {
     super(message);
     this.name = 'LlmError';

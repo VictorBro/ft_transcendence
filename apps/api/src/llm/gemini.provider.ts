@@ -1,13 +1,28 @@
 import { Logger } from '@nestjs/common';
+import { QUESTION_CATEGORIES } from '@ft/shared';
 import { z } from 'zod';
 
-import { LlmError, LlmProvider, StructuredRequest } from './llm.provider';
+import { llmRequestDuration, llmRequests, llmTokens } from '../metrics/metrics';
+import { LlmError, LlmFailure, LlmProvider, StructuredRequest } from './llm.provider';
 
 // The base address of the Gemini API. The model name and ":generateContent" are added per call.
 const API = 'https://generativelanguage.googleapis.com/v1beta/models';
 // How long we wait for Gemini before giving up: 60 seconds. "60_000" is just 60000,
 // the "_" only makes the number easier to read.
 const TIMEOUT_MS = 60_000;
+// How a call can end, as the metrics count it: "ok", or the reason of its LlmError.
+// Exclude<...> takes 'disabled' out of the reasons: only the fixture uses it.
+const OUTCOMES: ('ok' | Exclude<LlmFailure, 'disabled'>)[] = [
+  'ok',
+  'unreachable',
+  'rate_limited',
+  'http_error',
+  'blocked',
+  'incomplete',
+  'invalid',
+];
+// The token counts Gemini reports, as the metrics name them.
+const TOKEN_TYPES = ['prompt', 'output', 'total'] as const;
 
 /**
  * The parts of Gemini's JSON answer that we read. Gemini sends more fields; we ignore them.
@@ -42,7 +57,7 @@ interface GeminiReply {
  * "new GeminiProvider({ apiKey, model })" itself, after checking the settings.
  *
  * Every failure is thrown as an LlmError, with "retryable" saying if a second try
- * could work.
+ * could work, and "reason" saying what went wrong, for the metrics.
  */
 export class GeminiProvider implements LlmProvider {
   // Nest's logger. Passing the class name puts "[GeminiProvider]" in front of each line.
@@ -50,19 +65,54 @@ export class GeminiProvider implements LlmProvider {
 
   // "private readonly options" in the parameter list declares a field and fills it,
   // in one step. The factory gives the key and the model; this class never reads the .env.
-  constructor(private readonly options: { apiKey: string; model: string }) {}
+  constructor(private readonly options: { apiKey: string; model: string }) {
+    // Every purpose, outcome and token type starts at 0. A counter that appears at 1
+    // hides its first call from Prometheus' rate(), so the first failures would not
+    // count, nor the first call's tokens.
+    for (const category of QUESTION_CATEGORIES) {
+      const purpose = `question-batch:${category}`;
+      for (const outcome of OUTCOMES) {
+        llmRequests.inc({ provider: 'gemini', model: options.model, purpose, outcome }, 0);
+      }
+      for (const type of TOKEN_TYPES) {
+        llmTokens.inc({ provider: 'gemini', model: options.model, purpose, type }, 0);
+      }
+    }
+  }
 
   /**
    * Sends one request to Gemini and returns the reply, checked by request.schema.
-   * Steps:
-   * 1. Send the HTTP request (fetch). No answer, or the connection drops: retryable error.
-   * 2. Read the body as text. A status that is not 2xx: error, retryable or not by status.
-   * 3. Parse Gemini's JSON and log the token usage and the time it took.
-   * 4. Get the answer text out of it (replyText), then parse and check it (parseReply).
+   * This part only measures the call for the metrics (src/metrics/metrics.ts):
+   * how long it took and how it ended. send() does the work.
    */
   async generateStructured<S extends z.ZodType>(
     request: StructuredRequest<S>,
   ): Promise<z.output<S>> {
+    const labels = { provider: 'gemini', model: this.options.model, purpose: request.purpose };
+    // startTimer starts a clock; calling stop() records the time since then.
+    const stop = llmRequestDuration.startTimer(labels);
+    try {
+      const reply = await this.send(request);
+      llmRequests.inc({ ...labels, outcome: 'ok' });
+      return reply;
+    } catch (error) {
+      // send() only throws LlmErrors, each with its reason.
+      if (error instanceof LlmError) llmRequests.inc({ ...labels, outcome: error.reason });
+      throw error;
+    } finally {
+      // "finally" runs either way, so failures are timed too.
+      stop();
+    }
+  }
+
+  /**
+   * The call itself. Steps:
+   * 1. Send the HTTP request (fetch). No answer, or the connection drops: retryable error.
+   * 2. Read the body as text. A status that is not 2xx: error, retryable or not by status.
+   * 3. Parse Gemini's JSON, log the token usage and the time it took, count the tokens.
+   * 4. Get the answer text out of it (replyText), then parse and check it (parseReply).
+   */
+  private async send<S extends z.ZodType>(request: StructuredRequest<S>): Promise<z.output<S>> {
     const { apiKey, model } = this.options;
     // Start time, to log how many milliseconds the call took.
     const started = Date.now();
@@ -84,7 +134,11 @@ export class GeminiProvider implements LlmProvider {
     // response.ok is true for a status from 200 to 299. Anything else is an error,
     // and isRetryable decides from the status if a second try makes sense.
     if (!response.ok) {
-      throw new LlmError(`Gemini ${response.status}: ${body}`, isRetryable(response.status));
+      throw new LlmError(
+        `Gemini ${response.status}: ${body}`,
+        isRetryable(response.status),
+        response.status === 429 ? 'rate_limited' : 'http_error',
+      );
     }
 
     // parseJson returns "unknown" (we do not know the shape yet).
@@ -99,6 +153,18 @@ export class GeminiProvider implements LlmProvider {
         `${usage?.candidatesTokenCount ?? '?'} out, ${usage?.totalTokenCount ?? '?'} total tokens, ` +
         `${Date.now() - started} ms`,
     );
+    // Counted before the reply is checked: one that fails the check was still billed.
+    // A number Gemini left out is skipped, not counted as 0.
+    const tokens = {
+      prompt: usage?.promptTokenCount,
+      output: usage?.candidatesTokenCount,
+      total: usage?.totalTokenCount,
+    };
+    for (const [type, count] of Object.entries(tokens)) {
+      if (count !== undefined) {
+        llmTokens.inc({ provider: 'gemini', model, purpose: request.purpose, type }, count);
+      }
+    }
     return parseReply(request.schema, replyText(reply));
   }
 }
@@ -142,7 +208,7 @@ function requestBody({ system, user, schema }: StructuredRequest<z.ZodType>) {
  * still has the type Response: the catch can never produce another value.
  */
 function unreachable(error: Error): never {
-  throw new LlmError(`Gemini unreachable: ${error.message}`, true);
+  throw new LlmError(`Gemini unreachable: ${error.message}`, true, 'unreachable');
 }
 
 /**
@@ -164,7 +230,7 @@ function isRetryable(status: number): boolean {
 function replyText(reply: GeminiReply): string {
   // Gemini refused to answer our prompt at all (safety filters).
   const blocked = reply.promptFeedback?.blockReason;
-  if (blocked) throw new LlmError(`Gemini blocked the prompt: ${blocked}`, false);
+  if (blocked) throw new LlmError(`Gemini blocked the prompt: ${blocked}`, false, 'blocked');
 
   // We ask for one answer, so we read the first candidate. "?.[0]" gives undefined
   // if the list is missing.
@@ -174,7 +240,7 @@ function replyText(reply: GeminiReply): string {
   // because undefined is not "STOP".
   if (candidate?.finishReason !== 'STOP') {
     const reason = candidate ? (candidate.finishReason ?? 'no finish reason') : 'no candidate';
-    throw new LlmError(`Gemini stopped early: ${reason}`, false);
+    throw new LlmError(`Gemini stopped early: ${reason}`, false, 'incomplete');
   }
   // Here TypeScript knows candidate is defined: if it were undefined, we would have thrown.
   // The answer can come in several parts: drop the reasoning parts ("thought"),
@@ -196,7 +262,7 @@ function replyText(reply: GeminiReply): string {
  */
 function parseReply<S extends z.ZodType>(schema: S, text: string): z.output<S> {
   const result = schema.safeParse(parseJson(text, 'reply'));
-  if (!result.success) throw new LlmError(z.prettifyError(result.error), true);
+  if (!result.success) throw new LlmError(z.prettifyError(result.error), true, 'invalid');
   return result.data;
 }
 
@@ -214,6 +280,6 @@ function parseJson(text: string, what: 'response' | 'reply'): unknown {
   try {
     return JSON.parse(text);
   } catch {
-    throw new LlmError(`Gemini ${what} is not JSON: ${text.slice(0, 200)}`, true);
+    throw new LlmError(`Gemini ${what} is not JSON: ${text.slice(0, 200)}`, true, 'invalid');
   }
 }

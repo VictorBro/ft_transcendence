@@ -1,3 +1,4 @@
+import { llmProviderInfo } from '../metrics/metrics';
 import { FixtureProvider } from './fixture.provider';
 import { GeminiProvider } from './gemini.provider';
 import { LlmProvider } from './llm.provider';
@@ -36,13 +37,28 @@ export function createLlmProvider({
 }: LlmEnv): LlmProvider {
   switch (LLM_PROVIDER) {
     case 'fixture':
+      showProvider('fixture', 'none');
       return new FixtureProvider();
-    case 'gemini':
+    case 'gemini': {
       if (!LLM_API_KEY) throw new Error('LLM_PROVIDER=gemini needs LLM_API_KEY. See .env.example.');
-      return new GeminiProvider({ apiKey: LLM_API_KEY, model: LLM_MODEL || DEFAULT_GEMINI_MODEL });
+      // The braces after "case" give this "model" its own scope inside the switch.
+      const model = LLM_MODEL || DEFAULT_GEMINI_MODEL;
+      showProvider('gemini', model);
+      return new GeminiProvider({ apiKey: LLM_API_KEY, model });
+    }
     default:
       throw new Error(
         `LLM_PROVIDER must be "fixture" or "gemini", got "${LLM_PROVIDER}". See .env.example.`,
       );
   }
+}
+
+/**
+ * Tells the metrics which provider runs, as ft_llm_provider_info{provider, model} = 1.
+ * reset() first, so a second call (a test, another app in the same process) leaves
+ * one provider, not two.
+ */
+function showProvider(provider: string, model: string): void {
+  llmProviderInfo.reset();
+  llmProviderInfo.set({ provider, model }, 1);
 }

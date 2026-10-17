@@ -19,9 +19,10 @@ export class FixtureProvider implements LlmProvider {
    * contract, because "never" fits any type.
    *
    * retryable is false: asking again would fail the same way, so the caller
-   * should not try a second time.
+   * should not try a second time. The reason, disabled, keeps these failures
+   * out of the restock alert: on a stack without a key they are expected.
    */
   async generateStructured(): Promise<never> {
-    throw new LlmError('LLM_PROVIDER=fixture writes no questions', false);
+    throw new LlmError('LLM_PROVIDER=fixture writes no questions', false, 'disabled');
   }
 }

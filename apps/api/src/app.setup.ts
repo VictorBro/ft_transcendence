@@ -6,6 +6,7 @@ import session from 'express-session';
 import { cleanupOpenApiDoc } from 'nestjs-zod';
 
 import { ErrorCodeFilter } from './error-code.filter';
+import { httpMetrics } from './metrics/http-metrics.middleware';
 import { RedisService } from './redis/redis.service';
 import { CodeValidationPipe } from './validation.pipe';
 
@@ -30,6 +31,9 @@ export const AVATAR_ROUTE = `/${API_PREFIX}/uploads/avatars`;
 
 export const SESSION_COOKIE = 'ft.sid';
 
+/** Repeated in REDIS_EXPORTER_COUNT_KEYS (compose files): redis-exporter counts sessions by it. */
+export const SESSION_KEY_PREFIX = 'sess:';
+
 /** Idle timeout. `rolling` below re-arms it on every request. */
 export const SESSION_TTL_MS = 7 * 24 * 60 * 60 * 1000;
 
@@ -46,6 +50,9 @@ function requireSessionSecret(): string {
  * pipeline. Anything global belongs here, not in bootstrap().
  */
 export function configureApp(app: INestApplication): void {
+  // First, so it also times the avatars, the session load and every rejection.
+  app.use(httpMetrics);
+
   app.setGlobalPrefix(API_PREFIX);
 
   // Here rather than in bootstrap() so the Supertest suite can reach it.
@@ -72,7 +79,7 @@ export function configureApp(app: INestApplication): void {
     session({
       name: SESSION_COOKIE,
       secret: requireSessionSecret(),
-      store: new RedisStore({ client: app.get(RedisService).client, prefix: 'sess:' }),
+      store: new RedisStore({ client: app.get(RedisService).client, prefix: SESSION_KEY_PREFIX }),
       // The cookie is an opaque id, so there is nothing to write back unless the
       // session itself changed, and an anonymous visitor gets no session at all.
       resave: false,

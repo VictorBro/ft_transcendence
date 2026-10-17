@@ -1,6 +1,7 @@
 # Pinned Versions
 
 Verified against the npm registry, GitHub releases API, and Docker Hub on **2026-08-01**.
+Monitoring rows verified on **2026-10-13**.
 Pin exactly (no caret unless noted) and re-verify before the first commit.
 
 ## Runtime and toolchain
@@ -42,6 +43,7 @@ Pin exactly (no caret unless noted) and re-verify before the first commit.
 | qrcode-generator | 2.0.4 | Zero dependencies. `qrcode` pulls `yargs` 15 into the runtime image for its CLI. |
 | Prisma / `@prisma/client` | 7.9.1 | Rust-free client is the v7 default. See trap 2. |
 | `@prisma/adapter-pg` | 7.9.1 | Mandatory with the Rust-free client, see trap 2. Track the `prisma` version exactly. |
+| `@prometheus-io/client` | 0.16.1 | The maintained successor of `prom-client`, which npm marks deprecated. CommonJS, its own typings, Node ^22 or ^24. Chosen over `@willsoto/nestjs-prometheus`, which serves metrics from a controller on the public port (`/api/metrics`). Its dependency `@opentelemetry/api` 1.9.1 now also fills the optional peer of redis, next and vitest in the lockfile: a no-op without an SDK. |
 
 ## Infrastructure
 
@@ -51,6 +53,13 @@ Pin exactly (no caret unless noted) and re-verify before the first commit.
 | Caddy | 2.11.4 |
 | Redis | 8.10.1 (`redis:8.10.1-alpine`) |
 | RedisInsight | 3.8.0 (`redis/redisinsight:3.8.0`), dev only: `make redis-ui` |
+| Prometheus | `ghcr.io/prometheus/prometheus:v3.13.4` (LTS line, fixes until 2027-07-31; latest is 3.15.0). Base of `infra/monitoring/prometheus` |
+| Alertmanager | `ghcr.io/prometheus/alertmanager:v0.34.1`. Base of `infra/monitoring/alertmanager`. `webhook_url_file` for Discord needs >= 0.28 |
+| Grafana OSS | `grafana/grafana:13.2.4` (security release of 2026-10-13). Base of `infra/monitoring/grafana`. Not `grafana/grafana-oss`, frozen at 13.0.2 |
+| node_exporter | `ghcr.io/prometheus/node-exporter:v1.12.1` |
+| postgres_exporter | `ghcr.io/prometheus-community/postgres-exporter:v0.20.1` (0.20.0 renamed some metrics; older community dashboards do not match) |
+| redis_exporter | `ghcr.io/oliver006/redis_exporter:v1.93.0` (scratch image: no shell, no healthcheck) |
+| blackbox_exporter | `ghcr.io/prometheus/blackbox-exporter:v0.29.0` |
 
 pgvector must be >= 0.8.2: CVE-2026-3172, buffer overflow in parallel HNSW index builds.
 The plain `postgres` image does **not** include pgvector; use the image above.
@@ -58,6 +67,12 @@ The plain `postgres` image does **not** include pgvector; use the image above.
 `CREATE EXTENSION IF NOT EXISTS vector;` belongs in the first migration that needs it. The CI
 shadow database replays migrations and nothing else, so an extension created anywhere else leaves
 `migrate diff` failing with `42704 type "vector" does not exist`.
+
+The Prometheus-family images come from ghcr.io, which serves the same digests as Docker Hub
+without the anonymous limit of 100 pulls per 6 hours that a school NAT shares. Every one is
+multi-arch, amd64 and arm64: check with `docker buildx imagetools inspect <ref>`. The exporter
+pins are written twice, in `compose.yml` and `compose.deploy.yml`, and
+`scripts/check-monitoring-config.sh` fails when they differ.
 
 ## Testing
 
@@ -183,3 +198,39 @@ compiles it with everything else, and anything above `rootDir` cannot be emitted
 
 Stay on 24. Treat the upgrade as a deliberate decision, not a drive-by bump.
 Note for then: Node 25+ no longer bundles corepack; pnpm install path changes.
+
+## 4. Grafana skips an empty `GF_` variable
+
+Grafana only applies a `GF_` variable that has a value. An empty `GRAFANA_ADMIN_PASSWORD`
+therefore gives a Grafana that keeps its built-in `admin`/`admin`, and creates the admin with it
+on first boot. Fix: the image's entrypoint (`infra/monitoring/grafana/entrypoint.sh`) refuses to
+start with an empty password, `admin`, or an empty secret key, and `make` generates both values
+into `.env`.
+
+## 5. Grafana applies the admin password once
+
+The password is used only when the `grafana-data` volume is first created. Changing `.env` after
+that does nothing, and the login keeps the old one. Fix: reset it with
+`grafana cli admin reset-admin-password` inside the container, or recreate `grafana-data`. The
+exact command is in [MONITORING.md](MONITORING.md) section 2.
+
+## 6. Alertmanager does not expand environment variables
+
+Alertmanager reads `${DISCORD_WEBHOOK_URL}` in `alertmanager.yml` as literal text, never as the
+variable (upstream issue #504). Fix: the entrypoint writes the variable to a file on a tmpfs, and
+the config reads it with `webhook_url_file`.
+
+## 7. node_exporter's documented compose snippet fails on Docker Desktop
+
+The upstream recipe mounts `/:/host:ro,rslave`, and `rslave` errors with "not a shared or slave
+mount" on Docker Desktop. It also wants `pid: host` and host networking, which are not a given
+on rootless school machines. Here: no `/proc` or `/sys` bind at all (the container's own are
+host-wide for CPU, memory, load and disk I/O), and one plain `/:/rootfs:ro` for the root
+filesystem.
+
+## 8. Caddy 2.11 labels request metrics by route, not by handler
+
+A query filtered on `handler="reverse_proxy"` returns nothing: there is no such series. Caddy
+2.11.4 counts each request once per route, under the route's first handler, which on a
+host-matched site is `handler="subroute"`. Fix: every query filters on `subroute`, and
+`scripts/check-monitoring.sh` fails if that series disappears after a Caddy upgrade.

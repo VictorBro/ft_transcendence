@@ -28,13 +28,14 @@ export interface PageRoute {
  * and both are surfaces an evaluator actually opens: /api/docs is printed by
  * `make` and is third-party Swagger UI whose console output is not ours, and the
  * 404 page is rendered by Next but was previously only checked over HTTP, so
- * nothing watched its console.
+ * nothing watched its console. /grafana/login is the /api/docs case again:
+ * `make` prints it, and its console output is Grafana's.
  */
 // Pinned to /en: the suite exercises one known language deterministically
 // rather than relying on Accept-Language negotiation picking the same default
-// locale on every runner. /api/docs and the not-found probe stay unprefixed for
-// two different reasons: the former never reaches Next at all, Caddy routes it
-// straight to NestJS; the latter is left bare on purpose, so that walking it
+// locale on every runner. /api/docs, /grafana/login and the not-found probe
+// stay unprefixed for two different reasons: Caddy routes the first two past
+// Next entirely; the probe is left bare on purpose, so that walking it
 // also proves the middleware prefixes an unknown URL before [locale]/[...rest]
 // answers 404.
 export const PAGE_ROUTES: PageRoute[] = [
@@ -42,6 +43,7 @@ export const PAGE_ROUTES: PageRoute[] = [
   { path: '/en/privacy', name: 'privacy policy' },
   { path: '/en/terms', name: 'terms of service' },
   { path: '/api/docs', name: 'api docs' },
+  { path: '/grafana/login', name: 'grafana login' },
   { path: '/this-route-does-not-exist', name: 'not found', expectedStatus: 404 },
   { path: `/en/learn/${ONBOARDED_COURSE.lang}`, name: 'course home', onboarded: true },
   // The start control, since the fixture account has no run open. The countdown
