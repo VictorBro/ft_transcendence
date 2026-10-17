@@ -70,9 +70,6 @@ ENV_FILE := $(wildcard .env)
 env_get = $(strip $(if $(ENV_FILE),$(shell sed -n 's/^[[:space:]]*$(1)=//p' $(ENV_FILE) | tail -1)))
 POSTGRES_HOST_PORT ?= $(or $(call env_get,POSTGRES_HOST_PORT),5432)
 REDIS_HOST_PORT    ?= $(or $(call env_get,REDIS_HOST_PORT),6379)
-# The one Grafana got, for the Playwright suite to log in with. Same precedence
-# as compose. Exported to the playwright target only, the one that needs it.
-GRAFANA_ADMIN_PASSWORD ?= $(call env_get,GRAFANA_ADMIN_PASSWORD)
 
 # Standard ports on the compose network, published ports from a host shell. A
 # wrong port here connects to another database instead of failing.
@@ -287,9 +284,6 @@ test-e2e: ## Playwright against the production stack (starts it if needed)
 
 # The suite alone, for a caller that has just brought the stack up: `all` gets
 # it from `run`, and a second `up` is one more build and health wait.
-# The Grafana password through the environment: in the recipe text it would sit
-# in bash's argv, which `ps` shows every local user.
-playwright: export GRAFANA_ADMIN_PASSWORD := $(GRAFANA_ADMIN_PASSWORD)
 playwright:
 	pnpm --filter @ft/e2e exec playwright install chromium
 	@# The accounts the browser suite signs up are real rows. Removing them keeps
@@ -298,7 +292,13 @@ playwright:
 	@# stdin from /dev/null so Playwright skips its "To open last HTML report"
 	@# hint, which it gates on isTTY. The command it prints only works from e2e/;
 	@# `make report` works anywhere.
+	@# The Grafana password is the one the container got, not a second parse of
+	@# .env: compose strips dotenv quotes and make would not. A shell value still
+	@# wins, as it does for compose. Through the environment, never argv, which
+	@# `ps` shows every local user.
 	@set +e; \
+	GRAFANA_ADMIN_PASSWORD="$${GRAFANA_ADMIN_PASSWORD:-$$($(COMPOSE_DEV) exec -T grafana printenv GF_SECURITY_ADMIN_PASSWORD 2>/dev/null)}"; \
+	export GRAFANA_ADMIN_PASSWORD; \
 	E2E_BASE_URL=$(E2E_BASE_URL) pnpm --filter @ft/e2e run test:e2e < /dev/null; \
 	status=$$?; \
 	$(COMPOSE_DEV) exec -T db psql -U ft -d ft_transcendence \

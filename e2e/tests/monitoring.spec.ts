@@ -76,7 +76,7 @@ test.describe.serial('monitoring, as the Grafana admin', () => {
     const password = process.env.GRAFANA_ADMIN_PASSWORD;
     if (!password) {
       throw new Error(
-        'GRAFANA_ADMIN_PASSWORD is not set. `make` passes the one in .env; in CI it comes from e2e.yml.',
+        'GRAFANA_ADMIN_PASSWORD is not set. `make` reads it from the running grafana container; in CI it comes from e2e.yml.',
       );
     }
     authorization = `Basic ${Buffer.from(`admin:${password}`).toString('base64')}`;
