@@ -2,6 +2,14 @@ import { Inject, Injectable, Logger } from '@nestjs/common';
 import { GeneratedItem, generatedBatchSchema } from '@ft/shared';
 
 import { LLM_PROVIDER, LlmError, LlmProvider } from '../llm/llm.provider';
+import {
+  questionRestockDuration,
+  questionRestockFailures,
+  questionRestockInserted,
+  questionRestocks,
+  RestockFailureReason,
+  RestockStatus,
+} from '../metrics/metrics';
 import { PrismaService } from '../prisma/prisma.service';
 import { buildQuestionBatchPrompt } from './prompts/question-batch.prompt';
 import { Cell, freshItems, toRows } from './question-batch';
@@ -19,6 +27,7 @@ const COOLDOWN_MS = 10 * 60_000;
  * - filled: we asked the LLM and saved the new questions ("inserted" says how many).
  * - failed: the LLM or the database failed. Logged, then the cell cools down.
  * Placement ignores this value; it is there for the tests and for reading the code.
+ * The metrics count it too (see counted at the end of this file).
  */
 export type RestockOutcome = {
   status: 'stocked' | 'busy' | 'cooling' | 'filled' | 'failed';
@@ -72,9 +81,11 @@ export class QuestionStockService {
     if (unseen > RESTOCK_AT) return { status: 'stocked', inserted: 0 };
 
     const key = `${cell.lang}:${cell.level}:${cell.category}`;
-    if (this.inFlight.has(key)) return { status: 'busy', inserted: 0 };
+    if (this.inFlight.has(key)) return counted(cell, { status: 'busy', inserted: 0 });
     // "?? 0": a cell that never failed has no entry, so it counts as "cooling until 1970".
-    if (Date.now() < (this.coolingUntil.get(key) ?? 0)) return { status: 'cooling', inserted: 0 };
+    if (Date.now() < (this.coolingUntil.get(key) ?? 0)) {
+      return counted(cell, { status: 'cooling', inserted: 0 });
+    }
 
     // No "await" on fill(): we keep its promise. ".finally" runs when it ends, success or
     // not, and frees the cell. Without it, the cell would stay "busy" forever.
@@ -90,6 +101,8 @@ export class QuestionStockService {
    * waiting for it ("unhandled rejection") can crash the Node process.
    */
   private async fill(cell: Cell, key: string): Promise<RestockOutcome> {
+    // Times the whole restock, retry included, for the metrics.
+    const stop = questionRestockDuration.startTimer({ category: cell.category });
     try {
       // 1. Ask the LLM (with one retry when it makes sense, see generate).
       const items = await this.generate(cell, key);
@@ -108,13 +121,18 @@ export class QuestionStockService {
       // Nothing new: the model keeps writing questions we already have.
       // Asking again right away would cost money for nothing, so the cell cools down.
       if (count === 0) this.coolingUntil.set(key, Date.now() + COOLDOWN_MS);
-      return { status: 'filled', inserted: count };
+      const { lang, level, category } = cell;
+      questionRestockInserted.inc({ lang, level, category }, count);
+      return counted(cell, { status: 'filled', inserted: count });
     } catch (error) {
       // Any failure (LLM or database): log it, and do not try this cell again for
       // 10 minutes. Otherwise a broken LLM would be called on every single draw.
       this.logger.warn(`restock ${key} failed: ${String(error)}`);
       this.coolingUntil.set(key, Date.now() + COOLDOWN_MS);
-      return { status: 'failed', inserted: 0 };
+      questionRestockFailures.inc({ category: cell.category, reason: failureReason(error) });
+      return counted(cell, { status: 'failed', inserted: 0 });
+    } finally {
+      stop();
     }
   }
 
@@ -143,4 +161,27 @@ export class QuestionStockService {
       return (await this.llm.generateStructured(request)).items;
     }
   }
+}
+
+/**
+ * Counts a restock that did something, then hands its outcome back.
+ * "stocked" never reaches here: it is every draw, not a restock. A fill that
+ * added nothing is counted as "empty", so the dashboard tells it from a real one.
+ */
+function counted(cell: Cell, outcome: RestockOutcome & { status: RestockStatus }): RestockOutcome {
+  const status: RestockStatus =
+    outcome.status === 'filled' && outcome.inserted === 0 ? 'empty' : outcome.status;
+  const { lang, level, category } = cell;
+  questionRestocks.inc({ lang, level, category, status });
+  return outcome;
+}
+
+/**
+ * Why a restock failed, for the metrics. The fixture fails every restock on
+ * purpose, so its failures get their own reason that the alert leaves out.
+ * Anything that is not an LlmError (the database, a bug) is "other".
+ */
+function failureReason(error: unknown): RestockFailureReason {
+  if (!(error instanceof LlmError)) return 'other';
+  return error.reason === 'disabled' ? 'llm_disabled' : 'llm';
 }

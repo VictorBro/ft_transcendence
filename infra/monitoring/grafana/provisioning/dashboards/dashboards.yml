@@ -1,0 +1,14 @@
+# The four dashboards in ../../dashboards, baked into the image.
+apiVersion: 1
+providers:
+  - name: ft_transcendence
+    orgId: 1
+    folder: ft_transcendence
+    folderUid: ft
+    type: file
+    disableDeletion: true
+    # The repo is the source of truth: edit the JSON, not the instance.
+    allowUiUpdates: false
+    updateIntervalSeconds: 60
+    options:
+      path: /etc/grafana/dashboards

@@ -3,6 +3,7 @@ import { randomUUID } from 'node:crypto';
 import { afterEach, beforeEach, describe, expect, it, type Mock, vi } from 'vitest';
 import type { Level, PlacementQuestion, PlacementResult, SubmitAnswerInput } from '@ft/shared';
 
+import { seriesValue } from '../../test/metrics.fixtures';
 import {
   bankPrisma,
   examSession,
@@ -11,6 +12,7 @@ import {
   wrongChoice,
 } from '../../test/placement.fixtures';
 import type { CoursesService } from '../courses/courses.service';
+import { placementExams, registry } from '../metrics/metrics';
 import type { PrismaService } from '../prisma/prisma.service';
 import type { QuestionStockService } from '../question-generation/question-stock.service';
 import type { RedisService } from '../redis/redis.service';
@@ -60,6 +62,7 @@ describe('PlacementService', () => {
 
   beforeEach(() => {
     vi.useFakeTimers();
+    registry.resetMetrics();
     redis = fakeRedis();
     const prisma = bankPrisma(bank) as unknown as PrismaService;
     sessions = new PlacementSessionService(redis as unknown as RedisService);
@@ -316,6 +319,50 @@ describe('PlacementService', () => {
 
       await expect(service.quitPlacement(USER)).rejects.toThrow('redis down');
       expect(redis.data.has(LOCK)).toBe(false);
+    });
+
+    it('deletes a stored run too broken to load', async () => {
+      await redis.client.hSet(RUN, { ended: 'false', lang: 'fr', lo: 'nope' });
+
+      await service.quitPlacement(USER);
+
+      expect(redis.data.has(RUN)).toBe(false);
+    });
+  });
+
+  describe('metrics', () => {
+    const exams = (event: string, lang = 'fr') => seriesValue(placementExams, { lang, event });
+
+    it('counts a run once it is saved, not one that could not start', async () => {
+      await start();
+      await service.quitPlacement(USER);
+      vi.spyOn(PlacementQuestionService.prototype, 'getNewQuestion').mockRejectedValue(
+        poolExhausted,
+      );
+      await expect(start('en')).rejects.toThrow(poolExhausted);
+
+      expect(await exams('started')).toBe(1);
+      expect(await exams('started', 'en')).toBeUndefined();
+    });
+
+    // Every later read of the result goes through getResult too.
+    it('counts a run completed once, on the answer that ends it', async () => {
+      await finish();
+      await service.getPlacement(USER);
+      await service.submitAnswer(USER, { questionId: randomUUID(), choice: null });
+
+      expect(await exams('completed')).toBe(1);
+    });
+
+    // The delete is idempotent, and a finished run was completed, not quit.
+    it('counts a quit only for a run that was being answered', async () => {
+      await start();
+      await service.quitPlacement(USER);
+      await service.quitPlacement(USER);
+      await finish();
+      await service.quitPlacement(USER);
+
+      expect(await exams('quit')).toBe(1);
     });
   });
 

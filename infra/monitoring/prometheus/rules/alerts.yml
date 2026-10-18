@@ -1,0 +1,291 @@
+# Alerting rules, evaluated every 30s. Alertmanager routes them
+# (infra/monitoring/alertmanager), Grafana shows them. Unit tests live in
+# ../tests/alerts.test.yml: change a rule there too.
+#
+# critical: learners see an outage. warning: degraded, or about to be.
+# summary is one line because it is the Discord message.
+
+groups:
+  - name: availability
+    rules:
+      - alert: ApiDown
+        expr: up{job="api"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "The API has not answered a scrape for a minute"
+          description: "Sign-in and every page that needs data fail. Check the api container's
+            state and logs."
+
+      - alert: WebDown
+        expr: probe_success{instance="http://web:3000/healthz"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "The web app is not answering /healthz"
+          description: "Learners get an error from Caddy instead of a page. Check the web
+            container's state and logs."
+
+      - alert: WebCannotReachApi
+        expr: probe_success{instance="http://web:3000/healthz/upstream"} == 0
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "The web server cannot reach the API over the internal network"
+          description: "Pages fold this into the signed-out view, so nothing errors visibly. Check
+            API_INTERNAL_URL on web, then the api."
+
+      - alert: PostgresDown
+        expr: pg_up == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Postgres is not accepting connections"
+          description: "Sign-in and every lesson fail. Check the db container's logs, then disk
+            space on the host."
+
+      - alert: RedisDown
+        expr: redis_up == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Redis is down: sessions and placement runs are unavailable"
+          description: "Nobody can sign in or stay signed in. Check the redis container's logs and
+            memory."
+
+      - alert: GrafanaDown
+        expr: probe_success{instance="http://grafana:3000/grafana/api/health"} == 0
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Grafana is not answering its health check"
+          description: "Dashboards are unavailable; alerts still reach Discord. Check the grafana
+            container's logs."
+
+      # The api has its own rule, ApiDown, which pages sooner.
+      - alert: TargetDown
+        expr: up{job!="api"} == 0
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "{{ $labels.job }} at {{ $labels.instance }} cannot be scraped"
+          description: "Panels and rules that read it have no data meanwhile. Check that
+            container's logs; the Infrastructure dashboard lists every target."
+
+  - name: api
+    rules:
+      # The second half keeps a quiet night from paging on one failed request.
+      - alert: ApiErrorRateHigh
+        expr: >-
+          (sum(rate(http_request_duration_seconds_count{job="api",status_code=~"5.."}[5m]))
+          / sum(rate(http_request_duration_seconds_count{job="api"}[5m]))) > 0.05
+          and sum(rate(http_request_duration_seconds_count{job="api"}[5m])) > 0.05
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "More than 5% of API requests fail with a server error"
+          description: "The API dashboard splits responses by route and status. Check the api logs
+            for that route."
+
+      # Health checks are frequent and fast, and would pull the percentile down.
+      - alert: ApiLatencyHigh
+        expr: >-
+          histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket{job="api",route!~"static|unmatched|/api/health"}[5m])))
+          > 1
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "API p95 latency is above one second"
+          description: "The API dashboard shows which routes are slow. Check host CPU and the
+            database first."
+
+      - alert: ApiRestarting
+        expr: changes(process_start_time_seconds{job="api"}[15m]) >= 2
+        for: 0m
+        labels:
+          severity: warning
+        annotations:
+          summary: "The API restarted at least twice in 15 minutes"
+          description: "It is crash looping or being killed for memory. Check its logs, and
+            OOMKilled in docker inspect."
+
+      - alert: ApiEventLoopBlocked
+        expr: nodejs_eventloop_lag_p99_seconds{job="api"} > 0.5
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "The API's event loop is lagging by more than 500 ms"
+          description: "Something synchronous holds the loop, so every request waits. Check the
+            api's CPU and what changed last."
+
+      - alert: SignInFailuresSpike
+        expr: >-
+          sum(rate(http_request_duration_seconds_count{job="api",route=~"/api/auth/login|/api/auth/2fa/verify",status_code=~"401|429"}[5m]))
+          * 60 > 20
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "More than 20 failed or throttled sign-ins a minute: possible brute force"
+          description: "The throttler already slows it down. The Auth row of the API dashboard
+            shows the trend; the api logs show the source."
+
+  - name: learning
+    rules:
+      # llm_disabled is the fixture provider failing on purpose: it is the
+      # default wherever evaluators run.
+      - alert: QuestionRestocksFailing
+        expr: sum(increase(ft_question_restock_failures_total{reason!="llm_disabled"}[15m])) > 3
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Question restocks keep failing"
+          description: "Learners may run out of fresh questions. The Learning dashboard shows the
+            reason; the api logs show the error."
+
+      # Under the fixture provider this has no series and never fires.
+      - alert: LlmErrorRateHigh
+        expr: >-
+          sum(rate(ft_llm_requests_total{outcome!="ok"}[15m]))
+          / sum(rate(ft_llm_requests_total[15m])) > 0.5
+        for: 15m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Most LLM calls fail ({{ $value | humanizePercentage }})"
+          description: "Restocks stall until it recovers. The LLM row of the Learning dashboard
+            splits calls by outcome: rate_limited is the quota, http_error often the key."
+
+      - alert: PlacementPoolExhausted
+        expr: sum by (lang, level) (increase(ft_placement_pool_exhausted_total[30m])) > 0
+        for: 0m
+        labels:
+          severity: warning
+        annotations:
+          summary: "A learner ran out of {{ $labels.lang }} {{ $labels.level }} questions"
+          description: "A placement exam found no question left to ask at that level. Add or
+            generate questions for it."
+
+  - name: stores
+    rules:
+      - alert: PostgresConnectionsHigh
+        expr: sum(pg_stat_database_numbackends) / max(pg_settings_max_connections) > 0.8
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Postgres is above 80% of max_connections"
+          description: "New connections will soon be refused. The Infrastructure dashboard shows
+            connections by state."
+
+      - alert: PostgresDeadlocks
+        expr: sum(increase(pg_stat_database_deadlocks[10m])) > 0
+        for: 0m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Postgres detected a deadlock"
+          description: "Two transactions blocked each other and one was rolled back. The db logs
+            name the statements."
+
+      - alert: RedisAofWriteFailing
+        expr: redis_aof_last_write_status == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Redis cannot write its AOF: sessions are not being persisted"
+          description: "A Redis restart now would sign everyone out. Check disk space on the host
+            and the redis logs."
+
+  - name: host
+    rules:
+      # Counts swap: the OOM killer only acts once both are gone, and the
+      # server is expected to run near its RAM with a swapfile behind it.
+      - alert: HostMemoryLow
+        expr: >-
+          (node_memory_MemAvailable_bytes + node_memory_SwapFree_bytes)
+          / (node_memory_MemTotal_bytes + node_memory_SwapTotal_bytes) < 0.10
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Less than 10% of memory and swap is available: the OOM killer is next"
+          description: "docker stats shows the largest container. docs/DEPLOYMENT.md covers memory
+            and swap on the server."
+
+      - alert: HostDiskAlmostFull
+        expr: >-
+          node_filesystem_avail_bytes{mountpoint="/"}
+          / node_filesystem_size_bytes{mountpoint="/"} < 0.15
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Less than 15% of the root disk is free"
+          description: "Postgres, Redis and Prometheus all write here. docker system df shows what
+            to prune, old images first."
+
+      - alert: HostDiskFullSoon
+        expr: predict_linear(node_filesystem_avail_bytes{mountpoint="/"}[6h], 24 * 3600) < 0
+        for: 30m
+        labels:
+          severity: warning
+        annotations:
+          summary: "At this rate the root disk fills within a day"
+          description: "Predicted from the last 6 hours. docker system df shows what grew."
+
+      # iowait and steal are time the CPU was not ours to use.
+      - alert: HostCpuSaturated
+        expr: >-
+          sum by (instance) (rate(node_cpu_seconds_total{mode!~"idle|iowait|steal"}[5m]))
+          / count by (instance) (node_cpu_seconds_total{mode="idle"}) > 0.9
+        for: 15m
+        labels:
+          severity: warning
+        annotations:
+          summary: "CPU has been above 90% for 15 minutes"
+          description: "Requests queue behind it. docker stats shows the busiest container."
+
+  - name: monitoring
+    rules:
+      - alert: AlertNotificationsFailing
+        expr: sum by (integration) (increase(alertmanager_notifications_failed_total[15m])) > 0
+        for: 0m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Alertmanager failed to deliver to {{ $labels.integration }}"
+          description: "Alerts only show in Grafana until it is fixed. Check DISCORD_WEBHOOK_URL in
+            .env and the alertmanager logs."
+
+      - alert: AlertmanagerUnreachable
+        expr: prometheus_notifications_alertmanagers_discovered < 1
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Prometheus has no Alertmanager: alerts are only visible in Grafana"
+          description: "Nothing reaches Discord meanwhile. Check the alertmanager container's state
+            and logs."
+
+      - alert: RuleEvaluationFailing
+        expr: sum(increase(prometheus_rule_evaluation_failures_total[10m])) > 0
+        for: 0m
+        labels:
+          severity: warning
+        annotations:
+          summary: "A Prometheus rule fails to evaluate"
+          description: "Some alerts may never fire meanwhile. Grafana's Alerting, Alert rules page
+            shows the rule and its error."

@@ -1,13 +1,15 @@
 import { ConflictException, NotFoundException } from '@nestjs/common';
 import { randomUUID } from 'node:crypto';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import type { QuestionCategory } from '@ft/shared';
+import { LEVELS, type QuestionCategory } from '@ft/shared';
 
 import type { ExamSession } from './placement.schema';
 
+import { seriesValue } from '../../test/metrics.fixtures';
 import { examSession, questionRow } from '../../test/placement.fixtures';
 import type { QuestionBank } from '../generated/prisma/client';
 import type { LlmProvider } from '../llm/llm.provider';
+import { placementDraws, placementPoolExhausted, registry } from '../metrics/metrics';
 import type { PrismaService } from '../prisma/prisma.service';
 import { QuestionStockService } from '../question-generation/question-stock.service';
 import {
@@ -43,7 +45,10 @@ function serviceWith(unseen: Partial<Record<QuestionCategory, QuestionBank[]>> =
 }
 
 describe('PlacementQuestionService', () => {
-  beforeEach(() => vi.useFakeTimers());
+  beforeEach(() => {
+    vi.useFakeTimers();
+    registry.resetMetrics();
+  });
   afterEach(() => {
     vi.restoreAllMocks();
     vi.useRealTimers();
@@ -220,6 +225,45 @@ describe('PlacementQuestionService', () => {
       await expect(serviceWith().service.getNewQuestion('u-1', examSession(state))).rejects.toThrow(
         new ConflictException('placement.expired'),
       );
+    });
+
+    describe('metrics', () => {
+      const draws = (source: string, category = 'grammar') =>
+        seriesValue(placementDraws, { lang: 'de', level: 'B1', category, source });
+      const onlyGrammar = examSession({
+        askedPerCategory: { grammar: 0, vocabulary: 2, reading: 2 },
+      });
+
+      it.each([
+        ['written', questionRow({ sourceId: 'de-gram-0001' })],
+        ['generated', questionRow()],
+      ])('counts the draw of a %s row', async (source, drawn) => {
+        await serviceWith({ grammar: [drawn] }).service.getNewQuestion('u-1', onlyGrammar);
+
+        expect(await draws(source)).toBe(1);
+      });
+
+      // Learners running dry: the restocks are not keeping up.
+      it('counts a fallback to a seen row apart from the fresh draws', async () => {
+        const { service, prisma } = serviceWith();
+        prisma.userSeenQuestion.findFirst.mockResolvedValue({ questionBank: vocabulary[0] });
+
+        await service.getNewQuestion('u-1', examSession());
+
+        expect(await draws('seen_fallback', 'vocabulary')).toBe(1);
+        expect(await draws('generated', 'vocabulary')).toBeUndefined();
+      });
+
+      it('counts a level with nothing left to serve, by language and level', async () => {
+        const session = examSession({ lang: 'fr', level: LEVELS.indexOf('C1') });
+
+        await expect(serviceWith().service.getNewQuestion('u-1', session)).rejects.toThrow(
+          new NotFoundException('placement.poolExhausted'),
+        );
+
+        expect(await seriesValue(placementPoolExhausted, { lang: 'fr', level: 'C1' })).toBe(1);
+        expect((await placementDraws.get()).values).toEqual([]);
+      });
     });
   });
 

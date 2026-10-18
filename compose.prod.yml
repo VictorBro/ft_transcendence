@@ -42,3 +42,31 @@ services:
 
   redis:
     restart: unless-stopped
+
+  # Monitoring is part of what an evaluator runs (the Prometheus and Grafana
+  # module): same restart policy as the app.
+  prometheus:
+    restart: unless-stopped
+
+  alertmanager:
+    restart: unless-stopped
+
+  grafana:
+    environment:
+      # No fallback, like SESSION_SECRET. `make` writes both into .env on the
+      # first run; CI sets its own in e2e.yml.
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:?run make, which writes one into .env, or set GRAFANA_ADMIN_PASSWORD}
+      GF_SECURITY_SECRET_KEY: ${GRAFANA_SECRET_KEY:?run make, which writes one into .env, or set GRAFANA_SECRET_KEY}
+    restart: unless-stopped
+
+  node-exporter:
+    restart: unless-stopped
+
+  postgres-exporter:
+    restart: unless-stopped
+
+  redis-exporter:
+    restart: unless-stopped
+
+  blackbox-exporter:
+    restart: unless-stopped

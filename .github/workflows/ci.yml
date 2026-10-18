@@ -79,6 +79,15 @@ jobs:
       - uses: ./.github/actions/setup
       - run: ./scripts/check-app-boundaries.sh
 
+  # Prometheus, Alertmanager, Grafana and Caddy only read their configs at
+  # container start, so without this a typo surfaces as a crash in e2e.
+  monitoring-config:
+    name: monitoring config
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - run: ./scripts/check-monitoring-config.sh
+
   # Coverage thresholds live in each vitest config (60% lines, 60% functions)
   # and are a merge blocker: the test command exits non-zero below them, so
   # there is nothing to assert here.

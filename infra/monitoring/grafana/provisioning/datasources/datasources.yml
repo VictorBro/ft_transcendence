@@ -1,0 +1,31 @@
+# Fixed uids: the dashboard JSON references them, and exported dashboards
+# would otherwise carry ${DS_...} placeholders that file provisioning cannot fill.
+apiVersion: 1
+prune: true
+datasources:
+  - name: Prometheus
+    uid: prometheus
+    type: prometheus
+    access: proxy
+    url: http://prometheus:9090
+    isDefault: true
+    editable: false
+    jsonData:
+      httpMethod: POST
+      prometheusType: Prometheus
+      prometheusVersion: 3.13.4
+      # Matches scrape_interval, so $__rate_interval never spans a single sample.
+      timeInterval: 30s
+      # Lists Prometheus' rules, with their state, under Grafana's Alerting.
+      manageAlerts: true
+      alertmanagerUid: alertmanager
+  # Alertmanager is never exposed: this is how its alerts and silences are seen.
+  - name: Alertmanager
+    uid: alertmanager
+    type: alertmanager
+    access: proxy
+    url: http://alertmanager:9093
+    editable: false
+    jsonData:
+      implementation: prometheus
+      handleGrafanaManagedAlerts: false
