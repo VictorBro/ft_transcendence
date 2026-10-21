@@ -30,7 +30,7 @@ The totals:
 | Done, plus what is in progress | 17 |
 | Needed for 125 | 19 |
 
-The full list is in [docs/MODULES_STATUS.md](MODULES_STATUS.md), first written in French and then translated to English.
+The full list was written in `docs/MODULES_STATUS.md`, first in French and then in English. It is not part of this PR.
 
 ## 2. Reading the subject PDF itself
 
@@ -108,7 +108,7 @@ The lesson prototype lives in another repository, worked on in another Claude Co
 
 Its verdict: **ready, with changes.** It ran the prototype's 699 unit tests (all green) and validated its 33 lessons. It also found that the fr/de/en A1 outlines are identical in both repos.
 
-- **#117:** the data model is final for all four kinds (vocabulary, grammar, functions, reading), each with a schema, a validator and a working player. #117 can close once the product owner confirms D55 (reading is hand-authored) and decides P4-06 (how function lessons are produced), and once `schemaVersion: 2` is frozen.
+- **#117:** the data model is final for all four kinds (vocabulary, grammar, functions, reading), each with a schema, a validator and a working player. #117 can close once the product owner confirms D55 (reading is hand-authored) and decides P4-06 (how function lessons are produced), and once `schemaVersion: 2` is frozen. Both were decided later the same day, the other way for D55: no lesson is written by hand (see [§10](#10-later-passes)).
 - **What to port:**
   - `src/schemas/*`, `src/validation/*`, the pure helpers in `src/domain` and `answers.ts`, about 2,600 lines with no React;
   - not `manifest.ts` or `src/catalog/scan.ts`;
@@ -156,8 +156,8 @@ That scope brought two changes:
 
 | # | Title | Needs |
 |---|---|---|
-| **#134** | feat(api): seed placeholder lessons from the outlines | #79 |
-| **#135** | feat(shared): port the prototype's lesson schemas, validators and answer classifier | #117, #134 |
+| **#134** | feat(api): seed the lessons from the outlines | #79 |
+| **#135** | feat(shared): port the prototype's lesson schemas and validators | #117, #134 |
 | **#136** | feat(shared): make the lesson validators work for German and English | #135 |
 | **#137** | docs: replan Milestone 2 (tracking issue) | — |
 
@@ -166,12 +166,12 @@ That scope brought two changes:
 | Issue | Change |
 |---|---|
 | #117 | New Done when: D55 and P4-06 decided, `schemaVersion: 2` frozen |
-| #83 | Rewritten: **lesson authoring kit for Claude Code**, with a guide per kind, the ported author scripts, and a `lessons:author` runner on top of `claude -p` |
-| #84 | French A1: import the 33 prototype lessons, author the other 87 |
+| #83 | Rewritten: **lesson authoring kit for Claude Code**, written from scratch in this repo on the format and validators of #135: a guide per kind, a complete step, and a `lessons:author` runner on top of `claude -p` |
+| #84 | French A1: import the 33 prototype lessons (#135), author the other 87 |
 | #91, #92 | German and English, A1 to C2, authored with the kit. Also need #136 |
 | #93 | French A2 to C2, authored with the kit |
 | #76 | Decision 2 and `docs/LESSONS.md` describe per-lesson files and the authoring kit |
-| #86, #87, #96 | Need #134 (placeholder lessons) instead of #84 |
+| #86, #87, #96 | Need #134 (the lessons seeded from the outlines) instead of #84 |
 
 The old texts of these issues are kept in [docs/old-issues/](old-issues/).
 
@@ -179,26 +179,47 @@ The old texts of these issues are kept in [docs/old-issues/](old-issues/).
 
 ![Milestone 2 roadmap after the replan](milestone2-roadmap.png)
 
-Green is done, yellow is open, blue is new in the replan, and a struck-through number is a closed issue. The source is [milestone2-roadmap.mmd](milestone2-roadmap.mmd) (Mermaid). The same graph as text:
+Green is done, yellow is open, blue is new in the replan, and a struck-through number is a closed issue. The source is [milestone2-roadmap.mmd](milestone2-roadmap.mmd) (Mermaid).
+
+Every dependency is also a "blocked by" link on GitHub. The full list (struck through: closed):
+
+| Issue | Blocked by |
+|---|---|
+| #76 docs | nothing |
+| #82 finish, goal, streak | ~~#78~~, ~~#79~~, ~~#80~~ |
+| #134 seed from outlines | ~~#79~~ |
+| #85 demo learners | ~~#78~~, ~~#79~~, #82, #134 |
+| #86 daily goal page | ~~#81~~, #82, #85, #134 |
+| #87 all lessons page | ~~#81~~, #85, #134 |
+| #96 stub page and e2e | #82, #86, #87, #134 |
+| #94 gamification rules | ~~#77~~, ~~#80~~ |
+| #95 gamification awards | ~~#79~~, ~~#81~~, #82, #85, #94 |
+| #97 gamification pages | #86, #95, #96 |
+| #117 prototype | ~~#115~~, ~~#116~~ |
+| #135 port | #117, #134 |
+| #136 de/en validators | #135 |
+| #83 authoring kit | #76, #135 (its German and English runs also wait for #136) |
+| #84 French A1 | #83 |
+| #91 German | #83, #84, ~~#88~~, #136 |
+| #92 English | #83, #84, ~~#89~~, #136 |
+| #93 French A2–C2 | #83, #84, ~~#90~~ |
+
+The main chains, simplified:
 
 ```
-#79 ─► #134 placeholders ─┬─► #86 ─┐
-                          ├─► #87 ─┼─► #96 ─► #97
-                          │        │
-#82 ─► #85 ───────────────┴────────┘
+#79 ─► #134 ─► #85 ─► #86, #87 ─► #96 ─► #97
+#82 ─► #85, #86, #96, #95
 #94 ─► #95 ─► #97
 
-#117 ─► #135 port ─┬─► #136 de/en ──────────────┐
-                   └─► #83 authoring kit ─┬─► #84 fr A1 ─► #93 fr A2–C2
-                                          ├─► #91 de ◄────┤
-                                          └─► #92 en ◄────┘
+#117, #134 ─► #135 ─► #136 ─► #91, #92
+#76, #135 ─► #83 ─► #84 ─► #91, #92, #93
 ```
 
 Order of the authoring runs: **fr A1 → de A1 → en A1**, then A2 to C2.
 
 ### What to start now
 
-- **#134** can start today: it only needs #79, which is merged. It unblocks #86, #87 and #96, and through them the advanced search and gamification modules.
+- **#134** can start today: it only needs #79, which is merged. It unblocks #85, #86, #87, #96 and #135, and through them the advanced search and gamification modules.
 - **#82, #85, #94 and #95** never depended on lessons.
 - **The modules that have nothing to do with lessons** (WebSockets, the LLM interface, Firefox/WebKit, friends) go on in parallel. They are the points we need for 125.
 
@@ -210,6 +231,45 @@ Order of the authoring runs: **fr A1 → de A1 → en A1**, then A2 to C2.
 
 ### Files written during this session
 
-- [docs/MODULES_STATUS.md](MODULES_STATUS.md): module status and points.
+- `docs/MODULES_STATUS.md`: module status and points (not in this PR).
 - [docs/old-issues/](old-issues/): the issue texts before the replan.
 - This page.
+
+## 10. Later passes
+
+The same day, three more passes over the issues.
+
+**Second pass**, after #134 was simplified: no `available` column, and no deletion of removed outline entries. Every level now has its lessons in the database, so "Lessons for B2 are not ready yet" can no longer happen.
+
+| Issue | Change |
+|---|---|
+| #117 | D55 and P4-06 decided: no lesson is written by hand. Claude Code writes every file, for all four kinds (#83) |
+| #134 | Rewritten: the seed reads the outlines. No migration, no API change |
+| #135 | The seed fills the rows #134 wrote. No `available` |
+| #76 | Decision 2: no `available` field, no "listed as unavailable" |
+| #85 | Needs #134. No "level with no lessons" |
+| #86, #87 | The "not ready yet" state is removed |
+| #94 | A level with no lessons only happens in specs |
+| #97 | No "Not ready yet" achievement |
+| #96 | `apiFind` is already on main; the French A1 fixture reason is updated |
+
+**Third pass**, after an audit of every Milestone 2 issue:
+
+| What | Change |
+|---|---|
+| "blocked by" links | They now match the Needs lines (table in §9). Old blockers removed: #54, #77 and #117 on #83; #79, #105 and #117 on #84; #79 and #117 on #91, #92, #93; #84 on #86, #87, #96; #117 on #76 |
+| #134 | Unblocks also lists #85 |
+| #84 | Unblocks also lists #91 and #92 (they use the guides it tunes) |
+| Milestone 2 | Description rewritten on the replanned groups |
+
+**Fourth pass**: we build everything in this repo. Nothing is imported from the prototype but the schemas and the validators, and Milestone 3 (the lesson page) is designed later. Milestone 2 stays as simple as possible.
+
+| Issue | Change |
+|---|---|
+| #135 | Ports only the zod schemas, the validators, the domain helpers they import and their tests. No lesson import, no input hashes, no answer classifier (Milestone 3). New title |
+| #84 | Writes all 120 French A1 lessons: 48 vocabulary, 48 grammar, 14 functions, 10 reading |
+| #83 | Writes the four model lessons of its guides itself, and computes its own input hashes |
+| #136 | Its 8 test lessons are written with Claude Code outside the kit; it checks the French tests ported by #135 instead of the 33 prototype lessons |
+| #76 | No input hash in the rule for moving a lesson |
+
+So the "import the 33 prototype lessons" of §8 and §9 no longer holds.
