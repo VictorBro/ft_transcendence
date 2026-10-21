@@ -6,13 +6,15 @@
 set -euo pipefail
 
 cd "$(dirname "$0")"
-COMPOSE=compose.deploy.yml
+# The overlay next to this script means another proxy owns 80 and 443 here.
+COMPOSE=(-f compose.deploy.yml)
+[ ! -f compose.deploy.proxy.yml ] || COMPOSE+=(-f compose.deploy.proxy.yml)
 # What was last deployed *successfully*. Comparing against the pre-pull state
 # instead would mark a failed deploy as done and never retry it.
 STATE=.deployed
 OURS='ghcr.io/victorbro/ft_transcendence/'
 
-dc() { docker compose -f "$COMPOSE" --profile migrate "$@"; }
+dc() { docker compose "${COMPOSE[@]}" --profile migrate "$@"; }
 
 # Local id of every image the stack references, profiled ones included.
 resolve() {
@@ -54,7 +56,7 @@ echo "deploying $revisions"
 dc run --rm migrate
 
 # No --profile here, or compose would start the one-shot migrate as a service.
-docker compose -f "$COMPOSE" up -d
+docker compose "${COMPOSE[@]}" up -d
 
 # Only now is this state known good.
 echo "$current" >"$STATE"

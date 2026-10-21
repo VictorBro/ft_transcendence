@@ -79,6 +79,15 @@ jobs:
       - uses: ./.github/actions/setup
       - run: ./scripts/check-app-boundaries.sh
 
+  # Prometheus, Alertmanager, Grafana and Caddy only read their configs at
+  # container start, so without this a typo surfaces as a crash in e2e.
+  monitoring-config:
+    name: monitoring config
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - run: ./scripts/check-monitoring-config.sh
+
   # Coverage thresholds live in each vitest config (60% lines, 60% functions)
   # and are a merge blocker: the test command exits non-zero below them, so
   # there is nothing to assert here.
@@ -154,6 +163,7 @@ jobs:
             -e DATABASE_URL="postgresql://ft:ft_local_dev@127.0.0.1:5432/ft_transcendence?schema=public" \
             -e REDIS_URL="redis://127.0.0.1:6379" \
             -e SESSION_SECRET="ci-only-session-secret-at-least-32-characters-long" \
+            -e LESSON_STUB=true \
             -v "$PWD/coverage:/coverage" \
             ft/${{ matrix.app }}:ci \
             sh -c "${{ matrix.command }} && cp -a /app/apps/${{ matrix.app }}/coverage/. /coverage/"

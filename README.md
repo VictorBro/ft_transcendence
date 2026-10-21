@@ -6,18 +6,19 @@ _This project has been created as part of the 42 curriculum by \<login1\>, \<log
 # ft_transcendence
 
 An AI-driven platform for learning a foreign language. Learners are placed at a
-CEFR level by a short adaptive test, get a roadmap of topics for that level, and
-work through each one with an AI tutor that explains, drills, and corrects every
-answer with the mistakes named.
+CEFR level by a short adaptive test, get the daily lessons of a seeded syllabus
+for that level, and work through lessons of four kinds (grammar, vocabulary,
+functions and reading), each with exercises, an exam and a score.
 
 ## Key features
 
 <!-- TODO: keep this in step with what actually ships. -->
 
 - Adaptive placement test that finds a learner's CEFR level and can be retaken
-- A per-learner roadmap of topics, sized to a daily goal
-- AI tutor: grounded explanations, generated exercises, corrections that name
-  the mistake type
+- The daily lessons of a seeded syllabus per level, sized to a daily goal
+- About 4,000 lessons, written with Claude Code from a reviewed syllabus and
+  checked by validators
+- A streak, XP, a daily challenge and achievements
 - Live practice and chat with other learners
 - Progress tracking and analytics
 
@@ -67,6 +68,9 @@ make                    # checks, build, run, browser tests
 
 The app is served at <https://localhost>. `make` prints how to trust the local
 TLS certificate. API documentation is at <https://localhost/api/docs>.
+Grafana, with the monitoring dashboards and alerts, is at
+<https://localhost/grafana>: user `admin`, and the password `make` generated is in
+`.env` (`grep GRAFANA_ADMIN_PASSWORD .env`).
 
 For day-to-day development use `make dev`, which starts the same stack with hot
 reload. `make help` lists every target.
@@ -110,7 +114,19 @@ TODO
      justification for each, how it was implemented and by whom. The planned
      set is in docs/PRODUCT_ARCHITECTURE.md section 2. -->
 
-TODO
+### Monitoring system with Prometheus and Grafana (Major, 2 points)
+
+Prometheus collects metrics every 30 seconds: from the API and Caddy directly,
+from the host, Postgres and Redis through exporters, and from a blackbox exporter
+that probes the web app and Grafana. Grafana shows them on four dashboards
+provisioned from the repo (Overview, API, Learning, Infrastructure), at `/grafana`
+behind its own login, with sign-up and anonymous access off. 25 alert rules,
+unit-tested with promtool, go through Alertmanager to a Discord channel. Only Caddy
+publishes a port: Prometheus, Alertmanager, the exporters and the API's metrics
+port stay on the internal network. Details in
+[docs/MONITORING.md](docs/MONITORING.md).
+
+TODO: the other modules.
 
 ## Individual Contributions
 

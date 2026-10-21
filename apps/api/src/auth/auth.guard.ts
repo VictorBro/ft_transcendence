@@ -3,6 +3,7 @@ import { Reflector } from '@nestjs/core';
 import type { SessionUser } from '@ft/shared';
 import type { Request } from 'express';
 
+import { touchActiveUser } from '../metrics/metrics';
 import { AuthService } from './auth.service';
 import { IS_PUBLIC } from './auth.decorators';
 
@@ -41,6 +42,7 @@ export class AuthGuard implements CanActivate {
     }
 
     request.user = user;
+    touchActiveUser(user.id);
     return true;
   }
 }

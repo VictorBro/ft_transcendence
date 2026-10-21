@@ -1,10 +1,11 @@
 # Development overlay. Compose loads this automatically on top of compose.yml,
 # so `docker compose up` is the dev stack and nothing else has to be passed.
 #
-# The two things this file exists for:
+# The three things this file exists for:
 #   1. build the `dev` stage instead of the default last stage;
 #   2. bind-mount the repo for hot reload WITHOUT letting the host's
-#      node_modules reach the container.
+#      node_modules reach the container;
+#   3. keep the monitoring stack opt-in.
 #
 # On (2): the bind mount at /app hides everything the image installed under it,
 # including node_modules built for linux by the image. Every node_modules path
@@ -109,6 +110,24 @@ services:
     # Loopback only and host-overridable, same as the database above.
     ports:
       - "127.0.0.1:${REDIS_HOST_PORT:-6379}:6379"
+
+  # The monitoring stack in compose.yml is opt-in for development:
+  # `make monitoring-up` names the profile. The prod overlay never loads this
+  # file, which is what keeps it always on there.
+  prometheus:
+    profiles: [monitoring]
+  alertmanager:
+    profiles: [monitoring]
+  grafana:
+    profiles: [monitoring]
+  node-exporter:
+    profiles: [monitoring]
+  postgres-exporter:
+    profiles: [monitoring]
+  redis-exporter:
+    profiles: [monitoring]
+  blackbox-exporter:
+    profiles: [monitoring]
 
   # Devcontainer shell. Behind a profile, so `docker compose up` ignores it;
   # VS Code names the service explicitly, which activates the profile.

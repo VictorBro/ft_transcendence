@@ -19,31 +19,33 @@ Prérequis : avoir compris `llm.provider.ts` (le contrat `LlmProvider`, `Structu
 QuestionStockService
    │  llm.generateStructured({ purpose, system, user, schema })
    ▼
-GeminiProvider.generateStructured
+GeminiProvider.generateStructured  → chronomètre l'appel et compte son issue (métriques)
    │
-   ├─ requestBody(request)        → construit le JSON envoyé à Google
-   ├─ fetch(...)                  → envoie la requête HTTP
-   │     └─ pas de réponse du tout ? → unreachable → LlmError (retryable)
-   ├─ response.text()             → lit le corps de la réponse
-   │     └─ coupure pendant la lecture ? → unreachable → LlmError (retryable)
-   ├─ !response.ok ?              → LlmError (retryable selon isRetryable(status))
-   ├─ parseJson(body, 'response') → le corps HTTP en objet
-   │     └─ pas du JSON ? → LlmError (retryable)
-   ├─ logger.log(...)             → tokens utilisés + durée
-   ├─ replyText(reply)            → extrait le texte écrit par le modèle
-   │     ├─ prompt bloqué ? → LlmError (pas retryable)
-   │     └─ réponse incomplète ? → LlmError (pas retryable)
-   └─ parseReply(schema, text)    → JSON.parse + validation Zod
-         ├─ pas du JSON ? → LlmError (retryable)
-         └─ ne respecte pas le schéma ? → LlmError (retryable)
+   └─ send(request)                 → fait le travail :
+        ├─ requestBody(request)        → construit le JSON envoyé à Google
+        ├─ fetch(...)                  → envoie la requête HTTP
+        │     └─ pas de réponse du tout ? → unreachable → LlmError (retryable)
+        ├─ response.text()             → lit le corps de la réponse
+        │     └─ coupure pendant la lecture ? → unreachable → LlmError (retryable)
+        ├─ !response.ok ?              → LlmError (retryable selon isRetryable(status))
+        ├─ parseJson(body, 'response') → le corps HTTP en objet
+        │     └─ pas du JSON ? → LlmError (retryable)
+        ├─ logger.log(...)             → tokens utilisés + durée
+        ├─ llmTokens.inc(...)          → tokens comptés pour les métriques
+        ├─ replyText(reply)            → extrait le texte écrit par le modèle
+        │     ├─ prompt bloqué ? → LlmError (pas retryable)
+        │     └─ réponse incomplète ? → LlmError (pas retryable)
+        └─ parseReply(schema, text)    → JSON.parse + validation Zod
+              ├─ pas du JSON ? → LlmError (retryable)
+              └─ ne respecte pas le schéma ? → LlmError (retryable)
    ▼
 renvoie les données validées, du type z.output<S>
 ```
 
 Le fichier est organisé ainsi :
 
-- **en haut**, deux constantes et une interface (`GeminiReply`) ;
-- **au milieu**, la classe, avec une seule méthode publique ;
+- **en haut**, quatre constantes et une interface (`GeminiReply`) ;
+- **au milieu**, la classe, avec une méthode publique (`generateStructured`) et une privée (`send`) ;
 - **en bas**, six petites fonctions privées au fichier, non exportées.
 
 ---
@@ -52,13 +54,18 @@ Le fichier est organisé ainsi :
 
 ```ts
 import { Logger } from "@nestjs/common";
+import { QUESTION_CATEGORIES } from "@ft/shared";
 import { z } from "zod";
-import { LlmError, LlmProvider, StructuredRequest } from "./llm.provider";
+
+import { llmRequestDuration, llmRequests, llmTokens } from "../metrics/metrics";
+import { LlmError, LlmFailure, LlmProvider, StructuredRequest } from "./llm.provider";
 ```
 
 - `Logger` : le logger de NestJS. Il écrit des lignes dans le terminal avec un préfixe (ici `[GeminiProvider]`).
+- `QUESTION_CATEGORIES` : la liste des catégories (`vocabulary`, `grammar`, `reading`). Le constructeur s'en sert pour connaître tous les `purpose` possibles (section 5).
 - `z` : Zod. Cette fois c'est un **vrai import**, pas `import type`, car on appelle des fonctions de Zod à l'exécution : `z.toJSONSchema` et `z.prettifyError`. Dans `llm.provider.ts`, c'était `import type` parce que Zod n'y servait qu'aux types.
-- `LlmError` (une classe, utilisée avec `new`), `LlmProvider` (l'interface qu'on implémente), `StructuredRequest` (le type de la requête).
+- `llmRequestDuration`, `llmRequests`, `llmTokens` : trois métriques Prometheus, déclarées dans `src/metrics/metrics.ts`. Un histogramme pour la durée des appels, un compteur d'appels par issue, un compteur de tokens. Prometheus les lit, Grafana les affiche (voir `docs/MONITORING.md`, section 5).
+- `LlmError` (une classe, utilisée avec `new`), `LlmFailure` (le type des raisons d'échec, section 12), `LlmProvider` (l'interface qu'on implémente), `StructuredRequest` (le type de la requête).
 
 ---
 
@@ -73,6 +80,24 @@ const TIMEOUT_MS = 60_000;
   `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent`
   `generateContent` est le nom de l'opération de Google : « génère une réponse ».
 - `TIMEOUT_MS` : on attend au maximum 60 secondes. `60_000` vaut exactement `60000` ; le `_` n'a aucun effet, il sépare seulement les milliers pour la lecture (comme `1'000'000` en C++14).
+
+```ts
+const OUTCOMES: ("ok" | Exclude<LlmFailure, "disabled">)[] = [
+  "ok",
+  "unreachable",
+  "rate_limited",
+  "http_error",
+  "blocked",
+  "incomplete",
+  "invalid",
+];
+const TOKEN_TYPES = ["prompt", "output", "total"] as const;
+```
+
+- `OUTCOMES` : toutes les issues possibles d'un appel, telles que les métriques les comptent : `ok`, ou la raison d'une `LlmError`. `Exclude<LlmFailure, 'disabled'>` est le type `LlmFailure` **sans** `'disabled'` : seul le provider de test (la fixture) utilise cette raison, Gemini jamais.
+- `TOKEN_TYPES` : les trois nombres de tokens que Google renvoie, sous les noms qu'utilisent les métriques. `as const` fige le tableau : TypeScript connaît les trois textes exacts, pas seulement « des `string` ».
+
+Les deux listes servent au constructeur (section 5).
 
 ---
 
@@ -143,7 +168,17 @@ Exemple de réponse réussie, simplifiée :
 export class GeminiProvider implements LlmProvider {
   private readonly logger = new Logger(GeminiProvider.name);
 
-  constructor(private readonly options: { apiKey: string; model: string }) {}
+  constructor(private readonly options: { apiKey: string; model: string }) {
+    for (const category of QUESTION_CATEGORIES) {
+      const purpose = `question-batch:${category}`;
+      for (const outcome of OUTCOMES) {
+        llmRequests.inc({ provider: "gemini", model: options.model, purpose, outcome }, 0);
+      }
+      for (const type of TOKEN_TYPES) {
+        llmTokens.inc({ provider: "gemini", model: options.model, purpose, type }, 0);
+      }
+    }
+  }
 ```
 
 ### `implements LlmProvider`
@@ -169,21 +204,56 @@ constructor(options: { apiKey: string; model: string }) {
 }
 ```
 
-Le corps du constructeur `{}` est vide parce qu'il n'y a rien d'autre à faire.
-
 `{ apiKey: string; model: string }` est un **type écrit sur place** (sans lui donner de nom). La classe ne lit jamais le `.env` elle-même : elle reçoit tout de l'extérieur. C'est ce qui la rend facile à tester (`new GeminiProvider({ apiKey: 'test', model: 'x' })`).
+
+### Le corps du constructeur : tous les compteurs à 0
+
+Pour chaque `purpose` (un par catégorie), le constructeur crée chaque série de `llmRequests` (une par issue de `OUTCOMES`) et de `llmTokens` (une par type de `TOKEN_TYPES`), avec la valeur 0 : `inc(labels, 0)` ajoute 0, ce qui crée la série sans rien compter.
+
+Pourquoi ? Prometheus calcule un débit (`rate()`, `increase()`) à partir de la **différence** entre deux lectures. Un compteur qui n'existe pas encore et apparaît directement à 1 n'a pas de lecture « avant » : ce premier appel est invisible. Sans ce zéro, le premier échec après un démarrage de l'API ne compterait pas, ni les tokens du premier appel.
 
 ---
 
-## 6. La méthode `generateStructured`, ligne par ligne
+## 6. Les méthodes `generateStructured` et `send`, ligne par ligne
+
+`generateStructured` est la méthode publique, celle du contrat. Elle ne fait que **mesurer** l'appel pour les métriques. Le travail lui-même est dans `send`, une méthode privée.
+
+### 6.0 `generateStructured` : mesurer l'appel
 
 ```ts
 async generateStructured<S extends z.ZodType>(
   request: StructuredRequest<S>,
 ): Promise<z.output<S>> {
+  const labels = { provider: "gemini", model: this.options.model, purpose: request.purpose };
+  const stop = llmRequestDuration.startTimer(labels);
+  try {
+    const reply = await this.send(request);
+    llmRequests.inc({ ...labels, outcome: "ok" });
+    return reply;
+  } catch (error) {
+    if (error instanceof LlmError) llmRequests.inc({ ...labels, outcome: error.reason });
+    throw error;
+  } finally {
+    stop();
+  }
+}
 ```
 
 Même signature que dans le contrat (voir `llm.provider.ts`). `S` est le type du schéma passé dans `request.schema` ; le retour est le type des données validées par ce schéma.
+
+- `labels` : les étiquettes de la mesure (quel fournisseur, quel modèle, pour quoi). Chaque combinaison différente est une série à part dans Prometheus, d'où des valeurs toujours prises dans une liste fixe, jamais du texte libre.
+- `startTimer(labels)` démarre un chronomètre et renvoie une fonction, `stop`. Appeler `stop()` enregistre le temps écoulé dans l'histogramme des durées.
+- Succès : `llmRequests.inc(...)` ajoute 1 au compteur, avec l'issue `'ok'`. `{ ...labels, outcome: 'ok' }` copie les étiquettes et en ajoute une.
+- Échec : `send` ne lance que des `LlmError`, chacune avec sa raison (`error.reason`, section 12), qui devient l'issue comptée. Puis `throw error` relance la même erreur : l'appelant la reçoit exactement comme avant, les métriques ne changent rien au comportement.
+- `finally` s'exécute dans les deux cas, donc les échecs sont chronométrés aussi.
+
+### `send` : l'appel lui-même
+
+```ts
+private async send<S extends z.ZodType>(request: StructuredRequest<S>): Promise<z.output<S>> {
+```
+
+`private` : seule la classe peut l'appeler. Même signature générique que `generateStructured`, qui lui passe la requête telle quelle. Les sections 6.1 à 6.7 sont son corps.
 
 ### 6.1 Préparation
 
@@ -239,11 +309,15 @@ Une réponse HTTP arrive en deux temps : d'abord le statut et les en-têtes (c'e
 
 ```ts
 if (!response.ok) {
-  throw new LlmError(`Gemini ${response.status}: ${body}`, isRetryable(response.status));
+  throw new LlmError(
+    `Gemini ${response.status}: ${body}`,
+    isRetryable(response.status),
+    response.status === 429 ? "rate_limited" : "http_error",
+  );
 }
 ```
 
-`response.ok` vaut `true` si le statut est entre 200 et 299. Sinon on lance une `LlmError` avec le statut et le corps (Google y explique l'erreur). `isRetryable` décide si ça vaut le coup de réessayer (voir section 8).
+`response.ok` vaut `true` si le statut est entre 200 et 299. Sinon on lance une `LlmError` avec le statut et le corps (Google y explique l'erreur). `isRetryable` décide si ça vaut le coup de réessayer (voir section 8). Le troisième argument est la raison, pour les métriques : `rate_limited` pour un 429 (quota dépassé), `http_error` pour tout autre statut.
 
 ### 6.5 Le JSON de Google et le log
 
@@ -273,7 +347,27 @@ C'est utile pour voir ce que coûte chaque restock et combien de temps il prend.
 
 **Remarque :** le log est écrit **avant** de vérifier la réponse du modèle. Même un appel qui échoue ensuite (réponse coupée, schéma pas respecté) apparaît dans les logs avec ses tokens, et ces tokens ont bien été facturés.
 
-### 6.6 Le résultat
+### 6.6 Les tokens, comptés pour les métriques
+
+```ts
+const tokens = {
+  prompt: usage?.promptTokenCount,
+  output: usage?.candidatesTokenCount,
+  total: usage?.totalTokenCount,
+};
+for (const [type, count] of Object.entries(tokens)) {
+  if (count !== undefined) {
+    llmTokens.inc({ provider: "gemini", model, purpose: request.purpose, type }, count);
+  }
+}
+```
+
+- Les trois mêmes nombres que dans le log, ajoutés au compteur `llmTokens`, un par type.
+- `Object.entries(tokens)` donne les paires `[clé, valeur]` de l'objet : `['prompt', 5200]`, `['output', 1800]`, `['total', 7000]`.
+- Un nombre que Google n'a pas donné (`undefined`) est **sauté**, pas compté comme 0.
+- Comme le log, c'est fait **avant** de vérifier la réponse : une réponse refusée ensuite a quand même été facturée.
+
+### 6.7 Le résultat
 
 ```ts
 return parseReply(request.schema, replyText(reply));
@@ -364,7 +458,7 @@ Gemini ne voit jamais ces règles via le schéma. C'est le **prompt** qui les lu
 
 ```ts
 function unreachable(error: Error): never {
-  throw new LlmError(`Gemini unreachable: ${error.message}`, true);
+  throw new LlmError(`Gemini unreachable: ${error.message}`, true, "unreachable");
 }
 ```
 
@@ -395,12 +489,12 @@ Le commentaire d'origine résume : _« Rate limits, timeouts and server faults p
 ```ts
 function replyText(reply: GeminiReply): string {
   const blocked = reply.promptFeedback?.blockReason;
-  if (blocked) throw new LlmError(`Gemini blocked the prompt: ${blocked}`, false);
+  if (blocked) throw new LlmError(`Gemini blocked the prompt: ${blocked}`, false, "blocked");
 
   const candidate = reply.candidates?.[0];
   if (candidate?.finishReason !== "STOP") {
     const reason = candidate ? (candidate.finishReason ?? "no finish reason") : "no candidate";
-    throw new LlmError(`Gemini stopped early: ${reason}`, false);
+    throw new LlmError(`Gemini stopped early: ${reason}`, false, "incomplete");
   }
   return (candidate.content?.parts ?? [])
     .filter((part) => !part.thought)
@@ -447,7 +541,7 @@ Puis une chaîne de méthodes de tableau :
 ```ts
 function parseReply<S extends z.ZodType>(schema: S, text: string): z.output<S> {
   const result = schema.safeParse(parseJson(text, "reply"));
-  if (!result.success) throw new LlmError(z.prettifyError(result.error), true);
+  if (!result.success) throw new LlmError(z.prettifyError(result.error), true, "invalid");
   return result.data;
 }
 ```
@@ -476,7 +570,7 @@ function parseJson(text: string, what: "response" | "reply"): unknown {
   try {
     return JSON.parse(text);
   } catch {
-    throw new LlmError(`Gemini ${what} is not JSON: ${text.slice(0, 200)}`, true);
+    throw new LlmError(`Gemini ${what} is not JSON: ${text.slice(0, 200)}`, true, "invalid");
   }
 }
 ```
@@ -494,16 +588,21 @@ function parseJson(text: string, what: "response" | "reply"): unknown {
 
 ## 12. Tableau récapitulatif de toutes les erreurs
 
-| Situation                                     | Où                                   | Message                            | Retryable |
-| --------------------------------------------- | ------------------------------------ | ---------------------------------- | --------- |
-| Pas de réseau, DNS, timeout, connexion coupée | `unreachable`                        | `Gemini unreachable: ...`          | **oui**   |
-| Statut 408, 429, 5xx                          | `generateStructured` + `isRetryable` | `Gemini 503: ...`                  | **oui**   |
-| Autre statut non 2xx (400, 401, 403, 404...)  | `generateStructured` + `isRetryable` | `Gemini 400: ...`                  | non       |
-| Corps HTTP qui n'est pas du JSON              | `parseJson(..., 'response')`         | `Gemini response is not JSON: ...` | **oui**   |
-| Prompt bloqué                                 | `replyText`                          | `Gemini blocked the prompt: ...`   | non       |
-| Pas de candidat, ou arrêt autre que `STOP`    | `replyText`                          | `Gemini stopped early: ...`        | non       |
-| Texte du modèle qui n'est pas du JSON         | `parseJson(..., 'reply')`            | `Gemini reply is not JSON: ...`    | **oui**   |
-| JSON qui ne respecte pas le schéma            | `parseReply`                         | message de `z.prettifyError`       | **oui**   |
+| Situation                                     | Où                           | Message                            | Retryable | Raison (`reason`) |
+| --------------------------------------------- | ---------------------------- | ---------------------------------- | --------- | ----------------- |
+| Pas de réseau, DNS, timeout, connexion coupée | `unreachable`                | `Gemini unreachable: ...`          | **oui**   | `unreachable`     |
+| Statut 429                                    | `send` + `isRetryable`       | `Gemini 429: ...`                  | **oui**   | `rate_limited`    |
+| Statut 408, 5xx                               | `send` + `isRetryable`       | `Gemini 503: ...`                  | **oui**   | `http_error`      |
+| Autre statut non 2xx (400, 401, 403, 404...)  | `send` + `isRetryable`       | `Gemini 400: ...`                  | non       | `http_error`      |
+| Corps HTTP qui n'est pas du JSON              | `parseJson(..., 'response')` | `Gemini response is not JSON: ...` | **oui**   | `invalid`         |
+| Prompt bloqué                                 | `replyText`                  | `Gemini blocked the prompt: ...`   | non       | `blocked`         |
+| Pas de candidat, ou arrêt autre que `STOP`    | `replyText`                  | `Gemini stopped early: ...`        | non       | `incomplete`      |
+| Texte du modèle qui n'est pas du JSON         | `parseJson(..., 'reply')`    | `Gemini reply is not JSON: ...`    | **oui**   | `invalid`         |
+| JSON qui ne respecte pas le schéma            | `parseReply`                 | message de `z.prettifyError`       | **oui**   | `invalid`         |
+
+### `LlmFailure` : la raison d'un échec
+
+Chaque `LlmError` porte, en plus du message et de `retryable`, une raison : le troisième argument du constructeur, lu ensuite dans `error.reason`. Son type, `LlmFailure` (dans `llm.provider.ts`), est une liste fixe de mots : `unreachable`, `rate_limited`, `http_error`, `blocked`, `incomplete`, `invalid`, et `disabled`, que seule la fixture utilise. Le message est écrit pour un humain et change à chaque erreur ; la raison, elle, ne prend que ces valeurs, parce que les métriques comptent les échecs par raison (section 6.0) et qu'un texte libre créerait une série par message.
 
 Ce que fait ensuite `QuestionStockService` :
 
@@ -529,6 +628,7 @@ Ce que fait ensuite `QuestionStockService` :
 | Erreurs                        | Des `Error` simples ; le service réessayait **tout** une fois             | Des `LlmError` avec `retryable` ; le service ne réessaie que ce qui peut marcher          |
 | Validation                     | Faite par le service (`safeParse` dans `questions-generation.service.ts`) | Faite par le provider (`parseReply`)                                                      |
 | Logs                           | Aucun dans le provider                                                    | Tokens entrée / sortie / total et durée, avec le `purpose`                                |
+| Métriques                      | Aucune                                                                    | Appels par issue, durée et tokens, pour Prometheus (#129)                                 |
 | `system`                       | Optionnel                                                                 | Obligatoire                                                                               |
 
 L'idée générale : **le provider est devenu une boîte noire fiable**. Il reçoit une requête et un schéma, et il renvoie soit des données valides et typées, soit une `LlmError` qui dit si on peut réessayer. Le code qui l'utilise n'a plus besoin de connaître Gemini, HTTP, ni la forme de la réponse de Google.

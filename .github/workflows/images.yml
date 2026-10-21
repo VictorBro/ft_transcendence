@@ -43,11 +43,31 @@ jobs:
       fail-fast: false
       matrix:
         image:
-          - { name: api, app: api, target: prod }
-          - { name: web, app: web, target: prod }
+          - { name: api, context: ., file: apps/api/Dockerfile, target: prod }
+          - { name: web, context: ., file: apps/web/Dockerfile, target: prod }
           # The build stage. prod deliberately carries no Prisma CLI and no
           # migrations, so deployments run `prisma migrate deploy` from this.
-          - { name: tooling, app: api, target: build }
+          - { name: tooling, context: ., file: apps/api/Dockerfile, target: build }
+          # Upstream images with this repo's config baked in: the server has no
+          # checkout to bind-mount it from. Tiny contexts, no app code.
+          - {
+              name: prometheus,
+              context: infra/monitoring/prometheus,
+              file: infra/monitoring/prometheus/Dockerfile,
+              target: prod,
+            }
+          - {
+              name: alertmanager,
+              context: infra/monitoring/alertmanager,
+              file: infra/monitoring/alertmanager/Dockerfile,
+              target: prod,
+            }
+          - {
+              name: grafana,
+              context: infra/monitoring/grafana,
+              file: infra/monitoring/grafana/Dockerfile,
+              target: prod,
+            }
         platform:
           - { arch: amd64, name: linux/amd64, runner: ubuntu-24.04 }
           - { arch: arm64, name: linux/arm64, runner: ubuntu-24.04-arm }
@@ -80,8 +100,8 @@ jobs:
         if: matrix.image.target == 'prod'
         uses: docker/build-push-action@v7.3.0
         with:
-          context: .
-          file: apps/${{ matrix.image.app }}/Dockerfile
+          context: ${{ matrix.image.context }}
+          file: ${{ matrix.image.file }}
           target: ${{ matrix.image.target }}
           platforms: ${{ matrix.platform.name }}
           load: true
@@ -142,7 +162,7 @@ jobs:
         uses: github/codeql-action/upload-sarif@v4.37.6
         with:
           sarif_file: trivy-results.sarif
-          # Without a distinct category the four matrix jobs overwrite each
+          # Without a distinct category the matrix jobs overwrite each
           # other and only the last one to finish is visible.
           category: trivy-${{ matrix.image.name }}-${{ matrix.platform.arch }}
 
@@ -161,8 +181,8 @@ jobs:
         if: env.PUSH == 'true'
         uses: docker/build-push-action@v7.3.0
         with:
-          context: .
-          file: apps/${{ matrix.image.app }}/Dockerfile
+          context: ${{ matrix.image.context }}
+          file: ${{ matrix.image.file }}
           target: ${{ matrix.image.target }}
           platforms: ${{ matrix.platform.name }}
           labels: ${{ steps.meta.outputs.labels }}
@@ -199,6 +219,9 @@ jobs:
           - { name: api }
           - { name: web }
           - { name: tooling }
+          - { name: prometheus }
+          - { name: alertmanager }
+          - { name: grafana }
 
     steps:
       - uses: actions/checkout@v7.0.1

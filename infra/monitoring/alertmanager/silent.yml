@@ -1,0 +1,7 @@
+# Used when DISCORD_WEBHOOK_URL is empty (CI, a fresh clone): alerts are kept
+# and shown in Grafana, and sent nowhere. No inhibit rules: inhibition only
+# mutes notifications, and there are none here.
+route:
+  receiver: none
+receivers:
+  - name: none
