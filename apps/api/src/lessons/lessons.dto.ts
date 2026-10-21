@@ -1,5 +1,12 @@
 import { createZodDto } from 'nestjs-zod';
-import { LessonCardSchema, LessonPageSchema, LessonQuerySchema, TodaySchema } from '@ft/shared';
+import {
+  FinishLessonSchema,
+  FinishResultSchema,
+  LessonCardSchema,
+  LessonPageSchema,
+  LessonQuerySchema,
+  TodaySchema,
+} from '@ft/shared';
 
 /*
  * A DTO (Data Transfer Object) describes the shape of the data that comes
@@ -14,8 +21,13 @@ import { LessonCardSchema, LessonPageSchema, LessonQuerySchema, TodaySchema } fr
 export class TodayDto extends createZodDto(TodaySchema) {}
 export class LessonPageDto extends createZodDto(LessonPageSchema) {}
 export class LessonCardDto extends createZodDto(LessonCardSchema) {}
+export class FinishResultDto extends createZodDto(FinishResultSchema) {}
 
 // What comes in: the search params (?q=…&sort=…&page=…). Nest checks them
 // against the schema before the controller gets them, so page=0 becomes 1
 // and sort=foo becomes position, never a 400.
 export class LessonQueryDto extends createZodDto(LessonQuerySchema) {}
+
+// The body of a finish: { score }, a whole number from 0 to 100, or a 400
+// lesson.invalidScore.
+export class FinishLessonDto extends createZodDto(FinishLessonSchema) {}

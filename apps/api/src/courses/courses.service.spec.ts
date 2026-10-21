@@ -1,6 +1,8 @@
 import { ConflictException, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { describe, expect, it, vi } from 'vitest';
 
+import type { SessionUser } from '@ft/shared';
+
 import type { PrismaService } from '../prisma/prisma.service';
 import { CoursesService } from './courses.service';
 
@@ -106,7 +108,118 @@ describe('CoursesService createCourse', () => {
   });
 });
 
-describe('CoursesService setGoal and setLevel', () => {
+describe('CoursesService setGoal', () => {
+  /** The whole UserLevel row, as lockCourse reads it after the lock. */
+  const LOCKED = {
+    id: 'course-1',
+    userId: 'user-1',
+    lang: 'fr',
+    level: 'B1',
+    dailyGoal: 60,
+    streak: 0,
+    bestStreak: 0,
+    lastGoalDay: null,
+    createdAt: new Date('2026-10-01T00:00:00.000Z'),
+    updatedAt: new Date('2026-10-01T00:00:00.000Z'),
+  };
+  const USER = { id: 'user-1', timeZone: 'UTC' } as SessionUser;
+  const NOW = new Date('2026-10-12T12:00:00.000Z');
+
+  /**
+   * An interactive `$transaction` runs the callback with `tx`: here, mocks
+   * for what setGoal and the goal.ts functions use. `doneCount` is how many
+   * lessons were finished on the course day.
+   */
+  function goalService(locked: typeof LOCKED | null, doneCount = 0) {
+    const tx = {
+      $queryRaw: vi.fn().mockResolvedValue(locked === null ? [] : [{ id: locked.id }]),
+      userLevel: {
+        findUnique: vi.fn().mockResolvedValue(locked),
+        update: vi.fn((args: { data: object }) => Promise.resolve({ ...locked, ...args.data })),
+      },
+      user: { update: vi.fn() },
+      lessonResult: {
+        findFirst: vi.fn().mockResolvedValue(null),
+        count: vi.fn().mockResolvedValue(doneCount),
+      },
+    };
+    const prisma = { $transaction: vi.fn((run: (client: typeof tx) => unknown) => run(tx)) };
+    return { service: serviceWith(prisma), tx };
+  }
+
+  it('locks the course, then writes the goal alone on it', async () => {
+    const { service, tx } = goalService(LOCKED);
+
+    await service.setGoal(USER, 'fr', { dailyGoal: 10 }, NOW);
+
+    expect(tx.userLevel.update).toHaveBeenCalledWith({
+      where: { id: 'course-1' },
+      data: { dailyGoal: 10 },
+    });
+    expect(tx.$queryRaw.mock.invocationCallOrder[0]).toBeLessThan(
+      tx.userLevel.update.mock.invocationCallOrder[0],
+    );
+  });
+
+  it('moves the active language onto the course it just wrote', async () => {
+    const { service, tx } = goalService(LOCKED);
+
+    await service.setGoal(USER, 'fr', { dailyGoal: 30 }, NOW);
+
+    expect(tx.user.update).toHaveBeenCalledWith({
+      where: { id: 'user-1' },
+      data: { activeLang: 'fr' },
+    });
+  });
+
+  it('returns the course alone, never the streak or the ids', async () => {
+    const { service } = goalService(LOCKED);
+
+    await expect(service.setGoal(USER, 'fr', { dailyGoal: 30 }, NOW)).resolves.toEqual({
+      ...FRENCH,
+      dailyGoal: 30,
+    });
+  });
+
+  // 60 to 30 minutes with three lessons done: the target drops from 6 to 3.
+  it('meets the day when the lower goal is already reached', async () => {
+    const { service, tx } = goalService(LOCKED, 3);
+
+    await service.setGoal(USER, 'fr', { dailyGoal: 30 }, NOW);
+
+    expect(tx.userLevel.update).toHaveBeenLastCalledWith({
+      where: { id: 'course-1' },
+      data: { streak: 1, bestStreak: 1, lastGoalDay: new Date('2026-10-12') },
+    });
+  });
+
+  it('writes no streak while the goal is not reached', async () => {
+    const { service, tx } = goalService(LOCKED, 2);
+
+    await service.setGoal(USER, 'fr', { dailyGoal: 30 }, NOW);
+
+    expect(tx.userLevel.update).toHaveBeenCalledTimes(1);
+  });
+
+  it('turns a missing course into a not-found rather than creating one', async () => {
+    const { service, tx } = goalService(null);
+
+    const attempt = service.setGoal(USER, 'de', { dailyGoal: 30 }, NOW);
+
+    await expect(attempt).rejects.toBeInstanceOf(NotFoundException);
+    await expect(attempt).rejects.toMatchObject({ message: 'course.notFound' });
+    expect(tx.userLevel.update).not.toHaveBeenCalled();
+  });
+
+  it('lets a database failure through', async () => {
+    const { service, tx } = goalService(LOCKED);
+    tx.$queryRaw.mockRejectedValue(prismaError('P1001'));
+
+    await expect(service.setGoal(USER, 'fr', { dailyGoal: 30 }, NOW)).rejects.toThrow('P1001');
+  });
+});
+
+describe('CoursesService setLevel', () => {
   /** `$transaction` resolves a tuple, one entry per operation, in order. */
   function writingService(course: unknown) {
     const prisma = {
@@ -116,16 +229,6 @@ describe('CoursesService setGoal and setLevel', () => {
     };
     return { service: serviceWith(prisma), prisma };
   }
-
-  it('writes the goal alone, leaving the level out of the update entirely', async () => {
-    const { service, prisma } = writingService({ ...FRENCH, dailyGoal: 10 });
-
-    await service.setGoal('user-1', 'fr', { dailyGoal: 10 });
-
-    expect(prisma.userLevel.update).toHaveBeenCalledWith(
-      expect.objectContaining({ data: { dailyGoal: 10 } }),
-    );
-  });
 
   it('writes the level alone, leaving the goal out of the update entirely', async () => {
     const { service, prisma } = writingService({ ...FRENCH, level: 'C1' });
@@ -140,7 +243,7 @@ describe('CoursesService setGoal and setLevel', () => {
   it('addresses the course by the composite key, never by a primary key', async () => {
     const { service, prisma } = writingService(FRENCH);
 
-    await service.setGoal('user-1', 'fr', { dailyGoal: 30 });
+    await service.setLevel('user-1', 'fr', { level: 'B1' });
 
     expect(prisma.userLevel.update).toHaveBeenCalledWith(
       expect.objectContaining({ where: { userId_lang: { userId: 'user-1', lang: 'fr' } } }),
@@ -152,7 +255,7 @@ describe('CoursesService setGoal and setLevel', () => {
   it('moves the active language onto the course it just wrote', async () => {
     const { service, prisma } = writingService(FRENCH);
 
-    await service.setGoal('user-1', 'fr', { dailyGoal: 30 });
+    await service.setLevel('user-1', 'fr', { level: 'B1' });
 
     expect(prisma.user.update).toHaveBeenCalledWith({
       where: { id: 'user-1' },
@@ -164,7 +267,7 @@ describe('CoursesService setGoal and setLevel', () => {
   it('returns the course alone, never the user the transaction also updated', async () => {
     const { service } = writingService(FRENCH);
 
-    await expect(service.setGoal('user-1', 'fr', { dailyGoal: 30 })).resolves.toEqual(FRENCH);
+    await expect(service.setLevel('user-1', 'fr', { level: 'B1' })).resolves.toEqual(FRENCH);
   });
 
   it('turns a missing course into a not-found rather than creating one', async () => {
@@ -174,13 +277,10 @@ describe('CoursesService setGoal and setLevel', () => {
       $transaction: vi.fn().mockRejectedValue(prismaError('P2025')),
     });
 
-    for (const attempt of [
-      service.setGoal('user-1', 'de', { dailyGoal: 30 }),
-      service.setLevel('user-1', 'de', { level: 'A2' }),
-    ]) {
-      await expect(attempt).rejects.toBeInstanceOf(NotFoundException);
-      await expect(attempt).rejects.toMatchObject({ message: 'course.notFound' });
-    }
+    const attempt = service.setLevel('user-1', 'de', { level: 'A2' });
+
+    await expect(attempt).rejects.toBeInstanceOf(NotFoundException);
+    await expect(attempt).rejects.toMatchObject({ message: 'course.notFound' });
   });
 
   it('lets an unrelated database failure through instead of reporting a missing course', async () => {
@@ -190,6 +290,6 @@ describe('CoursesService setGoal and setLevel', () => {
       $transaction: vi.fn().mockRejectedValue(prismaError('P1001')),
     });
 
-    await expect(service.setGoal('user-1', 'fr', { dailyGoal: 30 })).rejects.toThrow('P1001');
+    await expect(service.setLevel('user-1', 'fr', { level: 'B1' })).rejects.toThrow('P1001');
   });
 });
