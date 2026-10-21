@@ -1,0 +1,48 @@
+---
+title: "Milestone 2 · Course Roadmap and Lessons · replan #137 · green = done · yellow = open · blue = new · struck-through = closed issue"
+---
+flowchart LR
+  G1["<b>G1 · Docs, contracts,<br/>user time zone</b><br/>#76 · <s>#77</s> · <s>#78</s>"]
+  G2a["<b>G2a · Lesson tables,<br/>roadmap rules</b><br/><s>#79</s> · <s>#80</s>"]
+  G2b["<b>G2b · Outlines DE, EN, FR<br/>A1 – C2</b><br/><s>#88</s> · <s>#89</s> · <s>#90</s> · <s>#105</s>"]
+  P["<b>P · Lesson prototype,<br/>final lesson model</b><br/><s>#115</s> · <s>#116</s> · #117"]
+  G3a["<b>G3a · Roadmap API,<br/>finish a lesson</b><br/><s>#81</s> · #82"]
+  G3b["<b>G3b · Placeholder lessons<br/>from the outlines</b><br/>#134"]
+  G4a["<b>G4a · Demo users,<br/>daily goal page,<br/>search page</b><br/>#85 · #86 · #87"]
+  G4b["<b>G4b · Port the prototype<br/>schemas + validators</b><br/>#135"]
+  G5a["<b>G5a · Gamification logic,<br/>lesson stub page,<br/>e2e tests</b><br/>#94 · #95 · #96"]
+  G5b["<b>G5b · Lesson authoring<br/>kit (Claude Code)</b><br/>#83"]
+  G5c["<b>G5c · German and English<br/>validators</b><br/>#136"]
+  G6["<b>G6 · French A1<br/>lessons (120)</b><br/>#84"]
+  SUM["<b>G7a · Gamification<br/>pages</b><br/>#97<br/><i>SUMMIT</i>"]
+  SINK["<b>G7b · Lessons DE, EN, FR<br/>A1 – C2 (~4,000)</b><br/>#91 · #92 · #93<br/><i>SINK</i>"]
+
+  G1 -- "#77 → #79, #80" --> G2a
+  G1 -- "#76, #77 → #88, #89, #90, #105" --> G2b
+  G2a -- "#79, #80 → #81, #82" --> G3a
+  G2a -- "#79 → #134" --> G3b
+  G2a -- "#80 → #94" --> G5a
+  G3a -- "#81, #82 → #85, #86, #87" --> G4a
+  G3b -- "#134 → #86, #87" --> G4a
+  G3b -- "#134 → #135" --> G4b
+  P -- "#117 → #135" --> G4b
+  G4a -- "#85 → #95<br/>#86, #87 → #96" --> G5a
+  G4b -- "#135 → #83" --> G5b
+  G4b -- "#135 → #136" --> G5c
+  G5a -- "#95, #96 → #97" --> SUM
+  G5b -- "#83 → #84" --> G6
+  G6 -- "#84 → #91, #92, #93" --> SINK
+  G5c -- "#136 → #91, #92" --> SINK
+  G2b -- "#88, #89, #90 → #91, #92, #93" --> SINK
+
+
+  classDef done fill:#e8f5e9,stroke:#2e7d32,stroke-width:1.5px,color:#1b1b1b
+  classDef open fill:#fffde7,stroke:#f9a825,stroke-width:1.5px,color:#1b1b1b
+  classDef new fill:#e3f2fd,stroke:#1e88e5,stroke-width:1.5px,color:#1b1b1b
+  classDef summit fill:#fff3e0,stroke:#ef6c00,stroke-width:3px,color:#1b1b1b
+  classDef sink fill:#ede7f6,stroke:#5e35b1,stroke-width:2px,stroke-dasharray:5 4,color:#1b1b1b
+  class G2a,G2b done
+  class G1,P,G3a,G4a,G5a,G6 open
+  class G3b,G4b,G5b,G5c new
+  class SUM summit
+  class SINK sink

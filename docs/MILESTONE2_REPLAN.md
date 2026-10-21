@@ -177,6 +177,10 @@ The old texts of these issues are kept in [docs/old-issues/](old-issues/).
 
 ### Dependencies
 
+![Milestone 2 roadmap after the replan](milestone2-roadmap.png)
+
+Green is done, yellow is open, blue is new in the replan, and a struck-through number is a closed issue. The source is [milestone2-roadmap.mmd](milestone2-roadmap.mmd) (Mermaid). The same graph as text:
+
 ```
 #79 ─► #134 placeholders ─┬─► #86 ─┐
                           ├─► #87 ─┼─► #96 ─► #97
