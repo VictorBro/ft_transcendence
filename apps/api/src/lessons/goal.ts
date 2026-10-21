@@ -45,18 +45,21 @@ export function latestDay(dates: (Date | null | undefined)[]): CourseDay | null 
  * both meet it and move the streak twice.
  *
  * Null without a course: checkCourse (course-lookup.ts) decides the error.
- * Raw SQL because Prisma has no FOR UPDATE.
+ *
+ * Raw SQL only for the lock, because Prisma has no FOR UPDATE. The row is
+ * then read by Prisma, so its columns keep their names and types whatever
+ * UserLevel gains later.
  */
 export async function lockCourse(
   tx: Prisma.TransactionClient,
   userId: string,
   lang: Language,
 ): Promise<UserLevel | null> {
-  const [course] = await tx.$queryRaw<UserLevel[]>`
-    SELECT * FROM "UserLevel"
+  await tx.$queryRaw`
+    SELECT id FROM "UserLevel"
     WHERE "userId" = ${userId}::uuid AND "lang" = ${lang}::"Language"
     FOR UPDATE`;
-  return course ?? null;
+  return tx.userLevel.findUnique({ where: { userId_lang: { userId, lang } } });
 }
 
 /**
@@ -101,10 +104,14 @@ export async function meetGoal(
     lastGoalDay: course.lastGoalDay === null ? null : dayOf(course.lastGoalDay),
   };
 
+  // metOn moves lastGoalDay only onto a new day: never for a day already met,
+  // nor for a day before it, so lastGoalDay can never go back.
+  const met = metOn(streak, day);
   const justMet =
-    isMet(doneCount, DailyGoalSchema.parse(course.dailyGoal)) && streak.lastGoalDay !== day;
+    isMet(doneCount, DailyGoalSchema.parse(course.dailyGoal)) &&
+    met.lastGoalDay !== streak.lastGoalDay;
   if (justMet) {
-    streak = metOn(streak, day);
+    streak = met;
     await tx.userLevel.update({
       where: { id: course.id },
       data: { ...streak, lastGoalDay: new Date(day) },

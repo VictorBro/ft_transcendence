@@ -81,8 +81,7 @@ REDIS_PORT := $(if $(IN_CONTAINER),6379,$(REDIS_HOST_PORT))
 DATABASE_URL ?= postgresql://ft:ft_local_dev@$(DB_HOST):$(DB_PORT)/ft_transcendence?schema=public
 REDIS_URL    ?= redis://$(REDIS_HOST):$(REDIS_PORT)
 SESSION_SECRET ?= dev-only-session-secret-change-me-at-least-32-chars
-LESSON_STUB    ?= true
-export DATABASE_URL REDIS_URL SESSION_SECRET LESSON_STUB
+export DATABASE_URL REDIS_URL SESSION_SECRET
 
 # DATABASE_URL for the tooling container, which runs ON the compose network and
 # therefore always uses the service name. A local .env wins; without one the

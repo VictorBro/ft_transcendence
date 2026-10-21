@@ -109,7 +109,7 @@ describe('CoursesService createCourse', () => {
 });
 
 describe('CoursesService setGoal', () => {
-  /** The whole UserLevel row, as lockCourse reads it with SELECT *. */
+  /** The whole UserLevel row, as lockCourse reads it after the lock. */
   const LOCKED = {
     id: 'course-1',
     userId: 'user-1',
@@ -132,8 +132,9 @@ describe('CoursesService setGoal', () => {
    */
   function goalService(locked: typeof LOCKED | null, doneCount = 0) {
     const tx = {
-      $queryRaw: vi.fn().mockResolvedValue(locked === null ? [] : [locked]),
+      $queryRaw: vi.fn().mockResolvedValue(locked === null ? [] : [{ id: locked.id }]),
       userLevel: {
+        findUnique: vi.fn().mockResolvedValue(locked),
         update: vi.fn((args: { data: object }) => Promise.resolve({ ...locked, ...args.data })),
       },
       user: { update: vi.fn() },

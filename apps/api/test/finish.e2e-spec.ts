@@ -82,13 +82,23 @@ describe('finish a lesson (e2e)', () => {
   const course = (email: string, lang: Language = 'fr') =>
     prisma.userLevel.findFirstOrThrow({ where: { user: { email }, lang } });
 
-  /** Waits until `count` queries of this database are blocked on a row lock. */
-  const waitForLockWaiters = (count: number) =>
+  /**
+   * Waits until `count` sessions wait behind the session `blocker`. Only
+   * those: a lock taken by another run on the same database does not count.
+   * Two sessions waiting for one row queue up: the second waits behind the
+   * first, not behind `blocker`, so the query follows the queue.
+   */
+  const waitForBlocked = (blocker: number, count: number) =>
     vi.waitFor(
       async () => {
         const [{ waiting }] = await prisma.$queryRaw<{ waiting: number }[]>`
-          SELECT count(*)::int AS waiting FROM pg_stat_activity
-          WHERE datname = current_database() AND wait_event_type = 'Lock'`;
+          WITH RECURSIVE behind(pid) AS (
+            SELECT pid FROM pg_stat_activity WHERE ${blocker}::int = ANY(pg_blocking_pids(pid))
+            UNION
+            SELECT activity.pid FROM pg_stat_activity activity
+            JOIN behind ON behind.pid = ANY(pg_blocking_pids(activity.pid))
+          )
+          SELECT count(*)::int AS waiting FROM behind`;
         expect(waiting).toBe(count);
       },
       { timeout: 4_000, interval: 20 },
@@ -279,12 +289,13 @@ describe('finish a lesson (e2e)', () => {
     let sent!: Promise<Awaited<ReturnType<typeof finish>>[]>;
     await prisma.$transaction(async (tx) => {
       await tx.$queryRaw`SELECT id FROM "UserLevel" WHERE id = ${id}::uuid FOR UPDATE`;
+      const [{ pid }] = await tx.$queryRaw<{ pid: number }[]>`SELECT pg_backend_pid() AS pid`;
       // Promise.all calls then() on each request, which is what sends it.
       sent = Promise.all([
         finish(agent, 'fr-test-fin-five').expect(200),
         finish(agent, 'fr-test-fin-six').expect(200),
       ]);
-      await waitForLockWaiters(2);
+      await waitForBlocked(pid, 2);
       // The transaction commits when this callback returns: that frees the row.
     });
     const both = await sent;
