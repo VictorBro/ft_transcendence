@@ -195,8 +195,8 @@ Every dependency is also a "blocked by" link on GitHub. The full list (struck th
 | #94 gamification rules | ~~#77~~, ~~#80~~ |
 | #95 gamification awards | ~~#79~~, ~~#81~~, #82, #85, #94 |
 | #97 gamification pages | #86, #95, #96 |
-| #117 prototype | ~~#115~~, ~~#116~~ |
-| #135 port | #117, #134 |
+| ~~#117~~ prototype | ~~#115~~, ~~#116~~ |
+| #135 port schemas and validators | ~~#117~~, #134 |
 | #136 de/en validators | #135 |
 | #83 authoring kit | #76, #135 (its German and English runs also wait for #136) |
 | #84 French A1 | #83 |
@@ -237,7 +237,7 @@ Order of the authoring runs: **fr A1 → de A1 → en A1**, then A2 to C2.
 
 ## 10. Later passes
 
-The same day, three more passes over the issues.
+The same day, four more passes over the issues.
 
 **Second pass**, after #134 was simplified: no `available` column, and no deletion of removed outline entries. Every level now has its lessons in the database, so "Lessons for B2 are not ready yet" can no longer happen.
 
@@ -273,3 +273,13 @@ The same day, three more passes over the issues.
 | #76 | No input hash in the rule for moving a lesson |
 
 So the "import the 33 prototype lessons" of §8 and §9 no longer holds.
+
+**Fifth pass**, after a port report written by a Claude Code session in the prototype repository. Quality bar: a lesson that passes the validators and has no gross error is good enough; nobody reviews every lesson.
+
+| Issue | Change |
+|---|---|
+| #117 | Closed: `schemaVersion: 2` frozen on `lesson_prototype@928484d` (`P5-reading-integration`; `main` has no reading yet). No open prototype work changes a ported schema |
+| #135 | The exact 14 files and tests to copy (about 2,400 lines, zod only; zod 4.4.3 checked). `common.ts` and `outline.ts` are not copied: 18 of their names already exist in `@ft/shared`. One `validateLesson` that also runs the grammar length rules and our 80/200 character limits. 5 prototype lessons are copied as test fixtures only |
+| #83 | Claude writes only the authored part. The complete step builds the structure and every duration with the prototype's formulas, which the validators check to the second. 4 attempts per lesson; one PR per kind is fine; no full review |
+| #136 | Six concrete fixes (gender, articles per language, the English "you", person board exemptions, lowercase, copy). Unit tests per rule instead of 8 hand-written lessons |
+| #84, #91, #92, #93 | Quality bar: valid and no gross error |
