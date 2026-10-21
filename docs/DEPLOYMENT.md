@@ -353,3 +353,71 @@ monitoring fails the pull while the new compose file is in place.
 
 Until step 4, and after step 6, the server runs the old compose file with the new api image. That
 is harmless: the api's metrics port listens on the network and nothing scrapes it.
+
+---
+
+## Behind another reverse proxy
+
+For a host where another reverse proxy already owns 80 and 443, like the shared Infomaniak VPS:
+there `caddy-docker-proxy` serves several projects and routes by Docker labels on containers
+that join its `web` network. Our stack runs live at **https://trans.vyantares.ch** that way,
+next to the Oracle deployment above.
+
+`compose.deploy.proxy.yml` makes the difference. Our Caddy publishes no port, joins the front
+proxy's network, and carries the two labels that route `SITE_DOMAIN` to it. It serves plain
+HTTP on that hop, since the front proxy holds the certificate, and keeps all its own routing
+(`/api`, `/grafana`, the metrics site). It also trusts the front proxy's forwarded address, so
+the API's rate limits and Grafana's login lockout still see each visitor, not the proxy.
+
+| On the host | From the repo |
+| --- | --- |
+| `compose.deploy.yml` | `compose.deploy.yml` |
+| `compose.deploy.proxy.yml` | `compose.deploy.proxy.yml` |
+| `Caddyfile` | `infra/caddy/Caddyfile.prod` |
+| `.env` | `infra/deploy/.env.example`, filled in |
+| `deploy.sh` | `infra/deploy/deploy.sh`: uses the overlay when it is present |
+
+**DNS.** An A record for the name to the host's address. On Cloudflare, make it **DNS only**
+(grey cloud): proxied, the front proxy sees Cloudflare's addresses, does not trust them, and
+every visitor behind one Cloudflare edge would share a rate limit and a lockout.
+
+**Files**, in their own directory, since the home directory holds other projects:
+
+```bash
+ssh AntaresVps mkdir -p ft_transcendence
+scp compose.deploy.yml compose.deploy.proxy.yml infra/deploy/deploy.sh \
+  infra/deploy/ft-deploy.{service,timer} AntaresVps:ft_transcendence/
+scp infra/caddy/Caddyfile.prod AntaresVps:ft_transcendence/Caddyfile
+scp infra/deploy/.env.example AntaresVps:ft_transcendence/.env
+```
+
+**`.env`**: as in [Deploying](#5-deploying), with `SITE_DOMAIN` the new name. `ACME_EMAIL` is
+still required but unused: the front proxy requests the certificate. Set `PROXY_NETWORK` if the
+front proxy's network is not called `web`. On a host where someone has run a checkout of this
+repo, set `COMPOSE_PROJECT_NAME=ft_transcendence_prod`: compose would otherwise take the
+checkout's project name, and its volumes with it, database included. The shared VPS has one.
+
+**Deploy** with the script, which adds the overlay itself:
+
+```bash
+cd ~/ft_transcendence && chmod +x deploy.sh && ./deploy.sh
+```
+
+**Automatic deploys**: the units name the Oracle user and paths, so rewrite them before
+installing:
+
+```bash
+cd ~/ft_transcendence
+sed -i "s|^User=.*|User=$USER|; s|/home/ubuntu|$HOME/ft_transcendence|g" ft-deploy.service
+sudo mv ft-deploy.service ft-deploy.timer /etc/systemd/system/
+sudo systemctl daemon-reload && sudo systemctl enable --now ft-deploy.timer
+```
+
+**Check**: the front proxy picks the labels up on its own and requests the certificate within a
+minute of the first request.
+
+```bash
+curl -sS https://trans.vyantares.ch/api/health
+curl -sS https://trans.vyantares.ch/grafana/api/health
+docker logs caddy 2>&1 | grep trans.vyantares.ch    # the front proxy, if the certificate fails
+```

@@ -99,6 +99,12 @@ for file in Caddyfile Caddyfile.prod; do
     -v "$host_root/infra/caddy/$file:/etc/caddy/Caddyfile:ro" \
     "$caddy_image" caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile
 done
+# The values compose.deploy.proxy.yml gives it.
+check "infra/caddy/Caddyfile.prod behind a front proxy" run \
+  -e SITE_DOMAIN=http://example.com -e ACME_EMAIL=ops@example.com \
+  -e CADDY_TRUSTED_PROXIES=private_ranges \
+  -v "$host_root/infra/caddy/Caddyfile.prod:/etc/caddy/Caddyfile:ro" \
+  "$caddy_image" caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile
 
 # --- 6. Dashboards -----------------------------------------------------------
 # File provisioning cannot fill the ${DS_...} inputs of a dashboard exported
@@ -167,11 +173,13 @@ deploy_compose() {
 }
 
 # Never printed, on success or failure: see the header.
-prod_json='' deploy_json='' dev_json=''
+prod_json='' deploy_json='' proxy_json='' dev_json=''
 prod_json="$(prod_compose config --format json)" ||
   fail "compose.yml + compose.prod.yml do not resolve"
 deploy_json="$(deploy_compose config --format json)" ||
   fail "compose.deploy.yml does not resolve"
+proxy_json="$(deploy_compose -f compose.deploy.proxy.yml config --format json)" ||
+  fail "compose.deploy.yml + compose.deploy.proxy.yml do not resolve"
 dev_json="$(docker compose --profile monitoring config --format json)" ||
   fail "compose.yml + compose.override.yml do not resolve with the monitoring profile"
 
@@ -204,6 +212,22 @@ expect_publishers() {
 
 expect_publishers "prod overlay" "$prod_json" "caddy"
 expect_publishers "deploy" "$deploy_json" "caddy"
+
+# Behind a front proxy nothing publishes: caddy is reached over its network.
+if [ -n "$proxy_json" ]; then
+  got="$(publishers "$proxy_json")"
+  if [ -z "$got" ]; then
+    pass "deploy behind a proxy: no service publishes a port"
+  else
+    fail "deploy behind a proxy: services publishing ports are [$got], expected none"
+  fi
+  if jq -e '.services.caddy | .labels.caddy == "example.com" and (.networks | has("proxy"))' \
+    <<<"$proxy_json" >/dev/null; then
+    pass "deploy behind a proxy: caddy joins the proxy network with its site label"
+  else
+    fail "deploy behind a proxy: caddy lacks the proxy network or the caddy label"
+  fi
+fi
 # The stores keep their loopback ports in dev (compose.override.yml).
 expect_publishers "dev" "$dev_json" "caddy db redis"
 
@@ -230,6 +254,7 @@ always_on() {
 
 always_on "prod overlay" "$prod_json"
 always_on "deploy" "$deploy_json"
+always_on "deploy behind a proxy" "$proxy_json"
 
 if [ -n "$dev_json" ]; then
   missing="$(failing_services "$dev_json" '.profiles == ["monitoring"]')"

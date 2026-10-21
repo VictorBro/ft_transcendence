@@ -1,7 +1,8 @@
-# Production entry point. Same routing as infra/caddy/Caddyfile, three
+# Production entry point. Same routing as infra/caddy/Caddyfile, four
 # differences: a real domain instead of localhost, a certificate from Let's
-# Encrypt instead of Caddy's internal CA, and HSTS, which is only safe once the
-# name is ours.
+# Encrypt instead of Caddy's internal CA, HSTS, which is only safe once the
+# name is ours, and the visitor's address resolved through a front proxy when
+# compose.deploy.proxy.yml puts one in front.
 #
 # Copy this next to compose.deploy.yml as `Caddyfile`; that is the path the
 # caddy service bind-mounts.
@@ -12,6 +13,21 @@
 	# API on :2019 serves them too, but it can rewrite the config, so it stays
 	# on loopback where the healthcheck uses it.
 	metrics
+
+	# Whose X-Forwarded-For to believe when resolving {client_ip}. By default
+	# nobody outside this container: Caddy is the edge, and a client-sent header
+	# must not pick the address the rate limits and Grafana's lockout key on.
+	# compose.deploy.proxy.yml sets the front proxy's ranges.
+	servers {
+		trusted_proxies static {$CADDY_TRUSTED_PROXIES:127.0.0.1/32}
+	}
+}
+
+# The API and web both take the right-most X-Forwarded-For entry as the visitor
+# (`trust proxy` 1), so it must be the visitor even with a proxy in front of
+# this one. Without trusted proxies {client_ip} is the peer, as before.
+(visitor) {
+	header_up X-Forwarded-For {client_ip}
 }
 
 {$SITE_DOMAIN} {
@@ -35,13 +51,17 @@
 	# handle_path would strip it and every route would answer 404.
 	@api path /api /api/*
 	handle @api {
-		reverse_proxy api:3001
+		reverse_proxy api:3001 {
+			import visitor
+		}
 	}
 
 	# socket.io. Caddy 2 detects the Upgrade handshake inside reverse_proxy.
 	@ws path /ws /ws/*
 	handle @ws {
-		reverse_proxy api:3001
+		reverse_proxy api:3001 {
+			import visitor
+		}
 	}
 
 	# Grafana's own metrics are off (grafana.ini) and unauthenticated when on.
@@ -58,13 +78,17 @@
 		reverse_proxy grafana:3000 {
 			# Grafana reads X-Real-IP before the socket address, and Caddy
 			# passes a client-sent one through. Overwrite it, or the login
-			# lockout per IP can be dodged with a fake header.
-			header_up X-Real-IP {remote_host}
+			# lockout per IP can be dodged with a fake header. {client_ip},
+			# not {remote_host}: behind a front proxy that is the proxy, and
+			# one visitor's failed logins would lock out everyone.
+			header_up X-Real-IP {client_ip}
 		}
 	}
 
 	handle {
-		reverse_proxy web:3000
+		reverse_proxy web:3000 {
+			import visitor
+		}
 	}
 }
 
