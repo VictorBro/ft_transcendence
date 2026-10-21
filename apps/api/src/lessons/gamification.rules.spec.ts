@@ -138,9 +138,9 @@ describe('challengeFor', () => {
     expect(share).toBeLessThan(0.6);
   });
 
-  // Not a property but two exact outputs. The code is derived and never
-  // stored, so a different hash silently rewrites which challenge every
-  // learner had on every past day. Red here means that choice is deliberate.
+  // Not a property but two exact outputs. Nothing stores the code, so a
+  // different hash only changes which challenge today's card shows, but it
+  // changes it for every learner at once. Red here means that is deliberate.
   // Two days, because a single one can agree with another hash by chance.
   it('pins the hash, so changing it cannot be an accident', () => {
     expect(challengeFor('fixed-course-id', '2026-01-01')).toBe('score90');
@@ -173,8 +173,9 @@ describe('challengeMet', () => {
     expect(challengeMet('score90', finish({ score: 90 }))).toBe(true);
   });
 
-  it('a redo at 50 of a lesson whose best is 95 does not meet score90', () => {
-    // The finish carries this attempt's score; the stored best never reaches here.
+  it('judges score90 on this attempt alone, so a redo at 50 does not meet it', () => {
+    // challengeMet takes no best score: the signature is what keeps a stored
+    // 95 from meeting score90 on a redo. This pins the Done-when item.
     expect(challengeMet('score90', finish({ score: 50 }))).toBe(false);
   });
 
@@ -269,7 +270,7 @@ describe('progress', () => {
     });
   });
 
-  it('gives a level the learner has not started no bar', () => {
+  it('gives no bar for a level that was not computed', () => {
     expect(progress('levelC2', NO_STATS)).toEqual({ current: 0, target: 0 });
   });
 });

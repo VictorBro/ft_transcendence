@@ -23,7 +23,15 @@ import {
  * and both appear on the same page.
  */
 
-/** What a finish is worth: the day's first finish of that lesson, plus the points it gains. */
+/**
+ * What a finish is worth: the day's first finish of that lesson, plus the
+ * points it gains.
+ *
+ * The score is the client's (#82), so XP and achievements are only as honest
+ * as the learner: a finish at 0 still earns LESSON_XP. Harmless while they
+ * only measure the learner against themself; a leaderboard would first need
+ * the score computed on the server.
+ */
 export function xpForFinish(countedToday: boolean, oldBest: number | null, score: number): number {
   return (countedToday ? LESSON_XP : 0) + Math.max(0, score - (oldBest ?? 0));
 }
@@ -97,12 +105,6 @@ export function challengeFor(userLevelId: string, day: CourseDay): ChallengeCode
  * never the stored best: a redo at 50 of a lesson already at 95 does not do
  * score90. `doneCount` is the day's count after the finish, so beyondGoal
  * wants one more than the target, not the target itself.
- *
- * The four kinds are spelled out and there is no `default`. A `default` would
- * compare a seventh challenge code against a lesson kind, find it met by
- * nothing, and TypeScript would not object: the two unions still overlap. With
- * the switch exhaustive instead, a seventh code leaves this function without an
- * ending return and fails to compile.
  */
 export function challengeMet(
   code: ChallengeCode,
@@ -118,13 +120,18 @@ export function challengeMet(
     case 'functions':
     case 'reading':
       return finish.kind === code;
+    default: {
+      const unreachable: never = code;
+      return unreachable;
+    }
   }
 }
 
 /**
  * What `earned` and `progress` read. One number per stat an achievement
  * names, so a new stat in ACHIEVEMENTS does not compile until it is loaded
- * here, and one levelProgress (#80) per level the learner has started.
+ * here, and one levelProgress (#80) per level the page shows. A level left
+ * out reads as not computed: the same empty bar as a level with no lessons.
  */
 export type AchievementStats = Record<AchievementStat, number> & {
   levels: Partial<Record<Level, Today['progress']>>;
@@ -151,10 +158,10 @@ export function progress(
       return { current: 0, target: 0 };
     }
     return {
-      // Both halves of #80's "complete", so the bar fills only when the level
-      // is. The second cap earns its keep: passed regularly exceeds needed. The
-      // first only holds RuleResult's "one row per lesson" to its word, which
-      // the service guarantees and the type does not.
+      // Both halves of #80's "complete", so the bar fills only when the level is.
+      // The second min earns its keep: passed can exceed needed. The first is a
+      // guard on RuleResult's "one row per lesson" contract, which only the
+      // caller enforces.
       current: Math.min(level.attempted, level.total) + Math.min(level.passed, level.needed),
       target: level.total + level.needed,
     };
@@ -170,6 +177,11 @@ export function progress(
  * Every achievement the stats reach, in ACHIEVEMENTS order. A level code asks
  * levelProgress whether it is complete rather than comparing its bar: an
  * empty level has a target of 0, which `current >= target` would award.
+ *
+ * `complete` is trusted as is: a level is seeded whole, because
+ * lesson-files.spec.ts fails a lesson file missing any entry of its outline.
+ * Relax that check and a level achievement can be earned, for good, on part
+ * of a level.
  */
 export function earned(stats: AchievementStats): AchievementCode[] {
   return ACHIEVEMENTS.filter((achievement) =>

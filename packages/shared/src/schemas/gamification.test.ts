@@ -114,6 +114,18 @@ describe('the schemas', () => {
     });
   });
 
+  it('rejects a total below its rank', () => {
+    expect(
+      XpSchema.safeParse({ total: 250, rank: 3, rankStart: 300, nextRankAt: 600 }).success,
+    ).toBe(false);
+  });
+
+  it('rejects a total that has reached the next rank', () => {
+    expect(
+      XpSchema.safeParse({ total: 600, rank: 3, rankStart: 300, nextRankAt: 600 }).success,
+    ).toBe(false);
+  });
+
   it('rejects rank 0: the first rank is 1', () => {
     expect(XpSchema.safeParse({ total: 0, rank: 0, rankStart: 0, nextRankAt: 100 }).success).toBe(
       false,

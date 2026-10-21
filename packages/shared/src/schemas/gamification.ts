@@ -50,6 +50,9 @@ export type ChallengeCode = z.infer<typeof ChallengeCodeSchema>;
  * Written out rather than derived from LEVELS: the order is part of the
  * contract, `as const` gives AchievementCode its exact sixteen members, and a
  * code stays greppable.
+ *
+ * A code is stored in UserAchievement (#95), so it never changes or goes away
+ * once shipped.
  */
 export const ACHIEVEMENTS = [
   { code: 'firstLesson', stat: 'finished', target: 1 },
@@ -90,13 +93,21 @@ const countSchema = z.number().int().min(0);
  * Rank, not level: "level" is the CEFR level (A1 to C2) everywhere else in
  * this codebase. rankStart and nextRankAt are the bounds of the bar, so the
  * page draws it without recomputing a threshold.
+ *
+ * rankOf gives the bounds, #95 adds the total: the refine holds the two to
+ * the same XP, so a bar never starts past its end.
  */
-export const XpSchema = z.object({
-  total: countSchema,
-  rank: z.number().int().positive(),
-  rankStart: countSchema,
-  nextRankAt: z.number().int().positive(),
-});
+export const XpSchema = z
+  .object({
+    total: countSchema,
+    rank: z.number().int().positive(),
+    rankStart: countSchema,
+    nextRankAt: z.number().int().positive(),
+  })
+  .refine((xp) => xp.rankStart <= xp.total && xp.total < xp.nextRankAt, {
+    message: 'total must sit inside its rank',
+    path: ['total'],
+  });
 export type Xp = z.infer<typeof XpSchema>;
 
 /** The day's challenge for one course. Derived from a hash, so nothing stores the code. */
