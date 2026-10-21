@@ -107,8 +107,9 @@ model UserSeenQuestion {
   @@unique([userId, questionId])
 }
 
-// Seeded from content/lessons/*.json. The id is the authored key the seed
-// matches on, so a shipped lesson is edited or moved, never deleted.
+// Seeded from content/outlines/*.json: title and summary from the entry, brief
+// left empty until #135. The id is the authored key the seed matches on, so a
+// shipped lesson is edited or moved, never deleted.
 model Lesson {
   id        String     @id
   lang      Language
