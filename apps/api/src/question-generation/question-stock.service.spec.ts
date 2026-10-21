@@ -9,8 +9,16 @@ import {
 import { afterEach, beforeEach, describe, expect, it, type MockInstance, vi } from 'vitest';
 import { z } from 'zod';
 
+import { seriesValue } from '../../test/metrics.fixtures';
 import { FixtureProvider } from '../llm/fixture.provider';
 import { LlmError, type LlmProvider } from '../llm/llm.provider';
+import {
+  questionRestockDuration,
+  questionRestockFailures,
+  questionRestockInserted,
+  questionRestocks,
+  registry,
+} from '../metrics/metrics';
 import type { PrismaService } from '../prisma/prisma.service';
 import { buildQuestionBatchPrompt } from './prompts/question-batch.prompt';
 import type { Cell } from './question-batch';
@@ -54,6 +62,7 @@ describe('QuestionStockService', () => {
 
   beforeEach(() => {
     vi.useFakeTimers();
+    registry.resetMetrics();
     log = vi.spyOn(Logger.prototype, 'log').mockImplementation(() => undefined);
     warn = vi.spyOn(Logger.prototype, 'warn').mockImplementation(() => undefined);
   });
@@ -137,7 +146,9 @@ describe('QuestionStockService', () => {
 
   it('leaves a cell alone for 10 minutes after a failure', async () => {
     const { service, llm } = setup();
-    llm.generateStructured.mockRejectedValueOnce(new LlmError('Gemini 403: denied', false));
+    llm.generateStructured.mockRejectedValueOnce(
+      new LlmError('Gemini 403: denied', false, 'http_error'),
+    );
 
     await expect(service.restock(cell, 0)).resolves.toEqual({ status: 'failed', inserted: 0 });
     expect(warn).toHaveBeenCalledWith(
@@ -171,14 +182,27 @@ describe('QuestionStockService', () => {
   });
 
   it.each([
-    ['retries a retryable LlmError once', [new LlmError('Gemini 429', true)], 2, 'filled'],
+    [
+      'retries a retryable LlmError once',
+      [new LlmError('Gemini 429', true, 'rate_limited')],
+      2,
+      'filled',
+    ],
     [
       'fails on a second retryable LlmError',
-      [new LlmError('Gemini 503', true), new LlmError('Gemini 503', true)],
+      [
+        new LlmError('Gemini 503', true, 'http_error'),
+        new LlmError('Gemini 503', true, 'http_error'),
+      ],
       2,
       'failed',
     ],
-    ['does not retry any other LlmError', [new LlmError('Gemini 400', false)], 1, 'failed'],
+    [
+      'does not retry any other LlmError',
+      [new LlmError('Gemini 400', false, 'http_error')],
+      1,
+      'failed',
+    ],
     ['does not retry an error of its own', [new TypeError('bug')], 1, 'failed'],
   ])('%s', async (_, errors, calls, status) => {
     const { service, llm } = setup();
@@ -190,7 +214,9 @@ describe('QuestionStockService', () => {
 
   it('retries with the same request, and logs why', async () => {
     const { service, llm } = setup();
-    llm.generateStructured.mockRejectedValueOnce(new LlmError('Gemini 429: quota', true));
+    llm.generateStructured.mockRejectedValueOnce(
+      new LlmError('Gemini 429: quota', true, 'rate_limited'),
+    );
 
     await service.restock(cell, 0);
 
@@ -218,5 +244,80 @@ describe('QuestionStockService', () => {
     await expect(service.restock(cell, 0)).resolves.toEqual({ status: 'failed', inserted: 0 });
     await expect(service.restock(cell, 0)).resolves.toMatchObject({ status: 'cooling' });
     expect(prisma.questionBank.createMany).not.toHaveBeenCalled();
+  });
+
+  describe('metrics', () => {
+    const labels = { lang: 'fr', level: 'B1', category: 'vocabulary' };
+    const restocks = (status: string) => seriesValue(questionRestocks, { ...labels, status });
+
+    it('counts every restock by status, and no draw that needed none', async () => {
+      const { service, llm } = setup();
+      let answer!: (reply: GeneratedBatch) => void;
+      llm.generateStructured.mockReturnValueOnce(new Promise((resolve) => (answer = resolve)));
+
+      await service.restock(cell, 4);
+      await expect(
+        registry.getSingleMetricAsString('ft_question_restocks_total'),
+      ).resolves.not.toContain('status=');
+
+      const first = service.restock(cell, 0);
+      await service.restock(cell, 0);
+      answer(batch);
+      await first;
+      llm.generateStructured.mockRejectedValueOnce(new LlmError('Gemini 400', false, 'http_error'));
+      await service.restock({ ...cell, level: 'B2' }, 0);
+      await service.restock({ ...cell, level: 'B2' }, 0);
+
+      expect(await restocks('busy')).toBe(1);
+      expect(await restocks('filled')).toBe(1);
+      expect(await seriesValue(questionRestockInserted, labels)).toBe(2);
+      expect(
+        await seriesValue(questionRestocks, { ...labels, level: 'B2', status: 'failed' }),
+      ).toBe(1);
+      expect(
+        await seriesValue(questionRestocks, { ...labels, level: 'B2', status: 'cooling' }),
+      ).toBe(1);
+    });
+
+    // A model writing what the bank has: a cost with nothing to show for it.
+    it('counts a batch with nothing new as empty, not filled', async () => {
+      const { service } = setup(batch.items.map(({ question }) => ({ question, readText: null })));
+
+      await service.restock(cell, 0);
+
+      expect(await restocks('empty')).toBe(1);
+      expect(await restocks('filled')).toBeUndefined();
+      expect(await seriesValue(questionRestockInserted, labels)).toBe(0);
+    });
+
+    // The fixture fails every restock on purpose: its own reason keeps it out of the alert.
+    it.each([
+      ['llm_disabled', 'the fixture declines', new LlmError('fixture', false, 'disabled')],
+      ['llm', 'Gemini fails', new LlmError('Gemini 400', false, 'http_error')],
+      ['other', 'anything else fails', new TypeError('bug')],
+    ])('counts a failure as %s when %s, and times it', async (reason, _, error) => {
+      const { service, llm } = setup();
+      llm.generateStructured.mockRejectedValueOnce(error);
+
+      await service.restock(cell, 0);
+
+      expect(await seriesValue(questionRestockFailures, { category: 'vocabulary', reason })).toBe(
+        1,
+      );
+      expect(await seriesValue(questionRestockDuration, { category: 'vocabulary' }, '_count')).toBe(
+        1,
+      );
+    });
+
+    it('counts a database failure as other', async () => {
+      const { service, prisma } = setup();
+      prisma.questionBank.createMany.mockRejectedValueOnce(new Error('connection lost'));
+
+      await service.restock(cell, 0);
+
+      expect(
+        await seriesValue(questionRestockFailures, { category: 'vocabulary', reason: 'other' }),
+      ).toBe(1);
+    });
   });
 });

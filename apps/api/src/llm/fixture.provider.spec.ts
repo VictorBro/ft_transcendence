@@ -5,6 +5,7 @@ import { LlmError } from './llm.provider';
 
 describe('FixtureProvider', () => {
   // Not retryable, so a restock gives up at once and cools down instead of asking twice.
+  // Disabled, so the restock alert leaves these expected failures out.
   it('declines every request as a failure nothing can retry', async () => {
     const reply = new FixtureProvider().generateStructured();
 
@@ -12,6 +13,7 @@ describe('FixtureProvider', () => {
     await expect(reply).rejects.toMatchObject({
       message: 'LLM_PROVIDER=fixture writes no questions',
       retryable: false,
+      reason: 'disabled',
     });
   });
 });

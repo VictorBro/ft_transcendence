@@ -244,6 +244,9 @@ cross-language conversation with inline correction is substantial, and easy to j
 14 required, bonus capped at +5, so **19 is the maximum that can count**. Anything beyond that
 is insurance against a module failing on the day.
 
+The team tracks each module's current status and points on the wiki:
+[status and points](https://github.com/VictorBro/ft_transcendence/wiki/status-points-on--4-October-2026).
+
 ### Core, build these, in this order
 
 | Module | Type | Pts | Status |
@@ -276,7 +279,7 @@ is insurance against a module failing on the day.
 Core 16 + four cheap minors ≈ **20 claimable**, one point of slack above the 19 ceiling and six
 above the 14 floor. That is the target.
 
-**Explicitly out**: OAuth, RTL, every gaming module, WAF/Vault, ELK, Prometheus, microservices,
+**Explicitly out**: OAuth, RTL, every gaming module, WAF/Vault, ELK, microservices,
 blockchain, file upload, PWA, WCAG AA, voice, image recognition.
 
 ---

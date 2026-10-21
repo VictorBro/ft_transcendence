@@ -2,6 +2,8 @@ import { Logger } from '@nestjs/common';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { z } from 'zod';
 
+import { seriesValue } from '../../test/metrics.fixtures';
+import { llmRequestDuration, llmRequests, llmTokens, registry } from '../metrics/metrics';
 import { GeminiProvider } from './gemini.provider';
 import { LlmError } from './llm.provider';
 
@@ -12,6 +14,7 @@ const request = {
   user: 'Write one.',
   schema,
 } as const;
+const labels = { provider: 'gemini', model: 'gemini-test', purpose: 'question-batch:grammar' };
 
 const json = (body: object, status = 200) => new Response(JSON.stringify(body), { status });
 
@@ -29,6 +32,7 @@ describe('GeminiProvider', () => {
 
   beforeEach(() => {
     vi.stubGlobal('fetch', fetchMock);
+    registry.resetMetrics();
     log = vi.spyOn(Logger.prototype, 'log').mockImplementation(() => undefined);
   });
   afterEach(() => {
@@ -222,5 +226,97 @@ describe('GeminiProvider', () => {
 
     expect(error.retryable).toBe(true);
     expect(error.message).toMatch(/expected string.*\n.*at answer/);
+  });
+
+  describe('metrics', () => {
+    // Undoes the reset above for `provider`: its outcomes are back at 0, as at its start.
+    beforeEach(() => {
+      new GeminiProvider({ apiKey: 'test-key', model: 'gemini-test' });
+    });
+
+    // rate() cannot see a counter's first increment when the series is born at 1.
+    it('starts every purpose and outcome of its model at 0', async () => {
+      new GeminiProvider({ apiKey: 'test-key', model: 'gemini-other' });
+
+      const { values } = await llmRequests.get();
+      const other = values.filter(
+        ({ labels }) => 'model' in labels && labels.model === 'gemini-other',
+      );
+      expect(other).toHaveLength(3 * 7);
+      expect(other.every(({ value }) => value === 0)).toBe(true);
+      await expect(
+        seriesValue(llmRequests, {
+          provider: 'gemini',
+          model: 'gemini-other',
+          purpose: 'question-batch:reading',
+          outcome: 'invalid',
+        }),
+      ).resolves.toBe(0);
+    });
+
+    // Otherwise the first call's tokens never reach "Tokens per hour".
+    it('starts every purpose and token type of its model at 0', async () => {
+      new GeminiProvider({ apiKey: 'test-key', model: 'gemini-other' });
+
+      const { values } = await llmTokens.get();
+      const other = values.filter(
+        ({ labels }) => 'model' in labels && labels.model === 'gemini-other',
+      );
+      expect(other).toHaveLength(3 * 3);
+      expect(other.every(({ value }) => value === 0)).toBe(true);
+    });
+
+    it('counts a call that worked, times it, and counts the tokens it used', async () => {
+      fetchMock.mockResolvedValueOnce(reply([{ text: '{"answer":"ist"}' }]));
+
+      await provider.generateStructured(request);
+
+      expect(await seriesValue(llmRequests, { ...labels, outcome: 'ok' })).toBe(1);
+      expect(await seriesValue(llmRequestDuration, labels, '_count')).toBe(1);
+      expect(await seriesValue(llmTokens, { ...labels, type: 'prompt' })).toBe(1200);
+      expect(await seriesValue(llmTokens, { ...labels, type: 'output' })).toBe(300);
+      expect(await seriesValue(llmTokens, { ...labels, type: 'total' })).toBe(1650);
+    });
+
+    // Gemini bills a reply whether or not it passes the schema.
+    it('counts the tokens of a reply that fails the schema', async () => {
+      await failure(reply([{ text: '{"answer":3}' }]));
+
+      expect(await seriesValue(llmTokens, { ...labels, type: 'total' })).toBe(1650);
+    });
+
+    it('skips the token counts a reply leaves out', async () => {
+      fetchMock.mockResolvedValueOnce(
+        json({
+          candidates: [
+            { finishReason: 'STOP', content: { parts: [{ text: '{"answer":"ist"}' }] } },
+          ],
+        }),
+      );
+
+      await provider.generateStructured(request);
+
+      const { values } = await llmTokens.get();
+      expect(values.every(({ value }) => value === 0)).toBe(true);
+    });
+
+    it.each([
+      ['rate_limited', 'a 429', () => new Response('quota exceeded', { status: 429 })],
+      ['http_error', 'a 500', () => new Response('oops', { status: 500 })],
+      ['http_error', 'a 403', () => new Response('denied', { status: 403 })],
+      ['unreachable', 'no answer', () => new TypeError('fetch failed')],
+      ['invalid', 'a body that is not JSON', () => new Response('<html>Bad gateway</html>')],
+      ['blocked', 'a blocked prompt', () => json({ promptFeedback: { blockReason: 'SAFETY' } })],
+      ['incomplete', 'a reply cut short', () => reply([{ text: '{"answer":' }], 'MAX_TOKENS')],
+      ['invalid', 'a reply that is not JSON', () => reply([{ text: 'Here you go' }])],
+      ['invalid', 'a reply that fails the schema', () => reply([{ text: '{"answer":3}' }])],
+    ])('counts the call as %s after %s, and times it', async (outcome, _, response) => {
+      const error = await failure(response());
+
+      expect(error.reason).toBe(outcome);
+      expect(await seriesValue(llmRequests, { ...labels, outcome })).toBe(1);
+      expect(await seriesValue(llmRequests, { ...labels, outcome: 'ok' })).toBe(0);
+      expect(await seriesValue(llmRequestDuration, labels, '_count')).toBe(1);
+    });
   });
 });

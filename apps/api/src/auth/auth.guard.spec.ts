@@ -2,6 +2,7 @@ import { ExecutionContext, UnauthorizedException } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { countActiveUsers } from '../metrics/metrics';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
 
@@ -25,6 +26,8 @@ describe('AuthGuard', () => {
 
   beforeEach(() => {
     vi.resetAllMocks();
+    // Infinitely late: every user seen so far is past the window.
+    countActiveUsers(Infinity);
     guard = new AuthGuard(reflector, auth);
   });
 
@@ -33,6 +36,7 @@ describe('AuthGuard', () => {
 
     await expect(guard.canActivate(contextFor({}))).resolves.toBe(true);
     expect(auth.findById).not.toHaveBeenCalled();
+    expect(countActiveUsers()).toBe(0);
   });
 
   // The whole point of registering it globally: forget the decorator and the
@@ -45,13 +49,14 @@ describe('AuthGuard', () => {
     ).rejects.toBeInstanceOf(UnauthorizedException);
   });
 
-  it('attaches the user when the session resolves', async () => {
+  it('attaches the user when the session resolves, and counts them as active', async () => {
     vi.mocked(reflector.getAllAndOverride).mockReturnValue(false);
     vi.mocked(auth.findById).mockResolvedValue({ id: 'u1' } as never);
     const request: FakeRequest = { session: { userId: 'u1', destroy: (cb) => cb() } };
 
     await expect(guard.canActivate(contextFor(request))).resolves.toBe(true);
     expect(request.user).toEqual({ id: 'u1' });
+    expect(countActiveUsers()).toBe(1);
   });
 
   // A session outliving its user is what makes "delete the account" incomplete.
@@ -64,5 +69,6 @@ describe('AuthGuard', () => {
       guard.canActivate(contextFor({ session: { userId: 'deleted', destroy } })),
     ).rejects.toBeInstanceOf(UnauthorizedException);
     expect(destroy).toHaveBeenCalled();
+    expect(countActiveUsers()).toBe(0);
   });
 });

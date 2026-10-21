@@ -1,0 +1,34 @@
+# Overlay for a host where another reverse proxy already owns 80 and 443 and
+# routes by Docker labels (caddy-docker-proxy, as on the shared Infomaniak VPS).
+# That proxy terminates TLS for SITE_DOMAIN and forwards over its network to
+# this stack's Caddy, which keeps the routing: /api, /grafana, the metrics site.
+#
+#   docker compose -f compose.deploy.yml -f compose.deploy.proxy.yml up -d
+#
+# deploy.sh adds it on its own when this file sits next to compose.deploy.yml.
+
+services:
+  caddy:
+    # The front proxy owns them.
+    ports: !reset []
+    environment:
+      # Plain HTTP on the hop from the front proxy: an https site here would
+      # redirect that hop to https and loop.
+      SITE_DOMAIN: http://${SITE_DOMAIN:?set the public hostname, e.g. ft.example.com}
+      # The front proxy reaches this Caddy from a private address, so trusting
+      # the private ranges makes {client_ip} the visitor. Safe only because this
+      # Caddy publishes no port: everything it receives came through the front
+      # proxy or from inside this stack.
+      CADDY_TRUSTED_PROXIES: private_ranges
+    labels:
+      caddy: ${SITE_DOMAIN:?set the public hostname, e.g. ft.example.com}
+      caddy.reverse_proxy: "{{upstreams 80}}"
+    networks:
+      - ft
+      - proxy
+
+networks:
+  proxy:
+    # The front proxy's network, created by its own stack.
+    name: ${PROXY_NETWORK:-web}
+    external: true

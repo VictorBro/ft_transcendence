@@ -12,6 +12,7 @@ import { ExamSession } from './placement.schema';
 
 import { QuestionBank } from '../generated/prisma/client';
 import { CoursesService } from '../courses/courses.service';
+import { placementExams } from '../metrics/metrics';
 import { PlacementSessionService } from './placement-session.service';
 import { PlacementQuestionService } from './placement-question.service';
 import { PlacementProgressService } from './placement-progress.service';
@@ -61,6 +62,8 @@ export class PlacementService {
         await this.coursesService.setLevel(userId, session.lang, { level: result.targetLevel });
       }
       await this.sessionService.saveExamSession(userId, session);
+      // Here, not wherever a result is read: this answer is the one that ended the run.
+      placementExams.inc({ lang: session.lang, event: 'completed' });
       return result;
     }
 
@@ -142,6 +145,7 @@ export class PlacementService {
       const newQuestion = await this.questionService.getNewPlacementQuestion(userId, examSession);
       // A retake overwrites the finished run only now, so one that cannot draw keeps its report.
       await this.sessionService.saveExamSession(userId, examSession);
+      placementExams.inc({ lang: dto.lang, event: 'started' });
       return newQuestion;
     } finally {
       await this.sessionService.releaseLock(userId, lockToken);
@@ -225,7 +229,11 @@ export class PlacementService {
     }
 
     try {
+      // Read first: the delete is idempotent, and a run already gone or finished
+      // was not quit.
+      const lang = await this.sessionService.liveSessionLang(userId);
       await this.sessionService.deleteSession(userId);
+      if (lang !== null) placementExams.inc({ lang, event: 'quit' });
     } finally {
       await this.sessionService.releaseLock(userId, lockToken);
     }

@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
+import { llmProviderInfo } from '../metrics/metrics';
 import { FixtureProvider } from './fixture.provider';
 import { GeminiProvider } from './gemini.provider';
 import { createLlmProvider } from './llm.factory';
@@ -29,6 +30,24 @@ describe('createLlmProvider', () => {
     expect(() => createLlmProvider({ LLM_PROVIDER: 'gemini', LLM_API_KEY: key })).toThrow(
       'LLM_PROVIDER=gemini needs LLM_API_KEY',
     );
+  });
+
+  it.each([
+    [{}, { provider: 'fixture', model: 'none' }],
+    [
+      { LLM_PROVIDER: 'gemini', LLM_API_KEY: 'k' },
+      { provider: 'gemini', model: 'gemini-3.6-flash' },
+    ],
+    [
+      { LLM_PROVIDER: 'gemini', LLM_API_KEY: 'k', LLM_MODEL: 'gemini-x' },
+      { provider: 'gemini', model: 'gemini-x' },
+    ],
+  ])('shows %j in the metrics as %j, and nothing it built before', async (env, labels) => {
+    createLlmProvider({ LLM_PROVIDER: 'gemini', LLM_API_KEY: 'k', LLM_MODEL: 'gemini-old' });
+    createLlmProvider(env);
+
+    const { values } = await llmProviderInfo.get();
+    expect(values).toEqual([expect.objectContaining({ value: 1, labels })]);
   });
 
   it.each(['real', 'gemni', ''])('refuses LLM_PROVIDER=%j', (name) => {
