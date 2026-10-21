@@ -4,6 +4,8 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { afterAll, afterEach, beforeAll, describe, expect, it } from 'vitest';
 
+import { LEARNABLE_LANGUAGES, LESSONS_PER_LEVEL, LEVELS, type Level } from '@ft/shared';
+
 import { findContentDir, seedLessons, seedQuestionBank } from '../prisma/seed';
 import { PrismaService } from '../src/prisma/prisma.service';
 
@@ -199,30 +201,24 @@ describe('seedQuestionBank (e2e)', () => {
   });
 });
 
-const lessonDraft = (id: string, title: string) => ({
+const outlineEntry = (id: string, workingTitle: string) => ({
   id,
   kind: 'grammar' as const,
   topic: 'nouns_and_determiners' as const,
-  title,
-  summary: 'A fixture lesson.',
-  brief: {
-    objective: 'Pick the right article.',
-    points: ['One point.', 'Another point.'],
-    examples: ['The cat.', 'A dog.', 'An apple.'],
-    pitfalls: ['Mixing them up.'],
-  },
+  workingTitle,
+  intent: 'A fixture lesson.',
 });
 
-const lessonFile = (drafts: unknown[]) => ({
+const outlineFile = (entries: unknown[]) => ({
   lang: 'en',
   level: 'A1',
-  drafts,
+  entries,
 });
 
 /**
  * Fixture lessons use `en-test-` ids, which the seed's unknown-id check skips,
  * so one left behind by an interrupted run never blocks a later seed. Every
- * directory also carries the real lesson files: without them, an authored
+ * directory also carries the real outline files: without them, an outlined
  * lesson already in the database would count as deleted.
  */
 describe('seedLessons (e2e)', () => {
@@ -232,10 +228,10 @@ describe('seedLessons (e2e)', () => {
   let dir: string;
   let userId: string | undefined;
 
-  async function writeLessonDir(files: Record<string, unknown>): Promise<string> {
+  async function writeOutlineDir(files: Record<string, unknown>): Promise<string> {
     await rm(dir, { recursive: true, force: true });
     await mkdir(dir);
-    const realDir = findContentDir('lessons');
+    const realDir = findContentDir('outlines');
     for (const name of (await readdir(realDir)).filter((n) => n.endsWith('.json'))) {
       await copyFile(join(realDir, name), join(dir, name));
     }
@@ -275,7 +271,10 @@ describe('seedLessons (e2e)', () => {
 
   beforeAll(async () => {
     prisma = new PrismaService();
-    dir = join(await mkdtemp(join(tmpdir(), 'seed-lessons-')), 'lessons');
+    dir = join(await mkdtemp(join(tmpdir(), 'seed-lessons-')), 'outlines');
+    // make ci migrates but does not seed: without this, the first test would
+    // also count every outlined lesson as written.
+    await seedLessons(findContentDir('outlines'), prisma);
   });
 
   afterEach(async () => {
@@ -294,11 +293,11 @@ describe('seedLessons (e2e)', () => {
     await prisma?.$disconnect();
   });
 
-  it('maps every column and takes lang, level and position from the file', async () => {
-    await writeLessonDir({
-      'en-test.json': lessonFile([
-        lessonDraft('en-test-first', 'First'),
-        lessonDraft('en-test-second', 'Second'),
+  it('maps an outline entry to a lesson, with lang, level and position from the file', async () => {
+    await writeOutlineDir({
+      'en-test.json': outlineFile([
+        outlineEntry('en-test-first', 'First'),
+        outlineEntry('en-test-second', 'Second'),
       ]),
     });
 
@@ -314,13 +313,14 @@ describe('seedLessons (e2e)', () => {
       theme: null,
       title: 'Second',
       summary: 'A fixture lesson.',
-      brief: lessonDraft('x', 'x').brief,
     });
+    // Not in toMatchObject: there, {} matches any object.
+    expect(row.brief).toEqual({});
   });
 
   it('writes nothing on a second run, so updatedAt stays the same', async () => {
-    await writeLessonDir({
-      'en-test.json': lessonFile([lessonDraft('en-test-first', 'First')]),
+    await writeOutlineDir({
+      'en-test.json': outlineFile([outlineEntry('en-test-first', 'First')]),
     });
     await seedLessons(dir, prisma);
     const before = await prisma.lesson.findUniqueOrThrow({ where: { id: 'en-test-first' } });
@@ -332,19 +332,19 @@ describe('seedLessons (e2e)', () => {
   });
 
   it('keeps the id and the results through a retitle and a reorder', async () => {
-    await writeLessonDir({
-      'en-test.json': lessonFile([
-        lessonDraft('en-test-first', 'First'),
-        lessonDraft('en-test-second', 'Second'),
+    await writeOutlineDir({
+      'en-test.json': outlineFile([
+        outlineEntry('en-test-first', 'First'),
+        outlineEntry('en-test-second', 'Second'),
       ]),
     });
     await seedLessons(dir, prisma);
     const userLevelId = await courseWithResult('en-test-first');
 
-    await writeLessonDir({
-      'en-test.json': lessonFile([
-        lessonDraft('en-test-second', 'Second'),
-        lessonDraft('en-test-first', 'First, retitled'),
+    await writeOutlineDir({
+      'en-test.json': outlineFile([
+        outlineEntry('en-test-second', 'Second'),
+        outlineEntry('en-test-first', 'First, retitled'),
       ]),
     });
     expect(await seedLessons(dir, prisma)).toBe(2);
@@ -358,8 +358,8 @@ describe('seedLessons (e2e)', () => {
   });
 
   it('refuses to delete a lesson that has a result (Restrict)', async () => {
-    await writeLessonDir({
-      'en-test.json': lessonFile([lessonDraft('en-test-first', 'First')]),
+    await writeOutlineDir({
+      'en-test.json': outlineFile([outlineEntry('en-test-first', 'First')]),
     });
     await seedLessons(dir, prisma);
     await courseWithResult('en-test-first');
@@ -368,20 +368,20 @@ describe('seedLessons (e2e)', () => {
     expect(await prisma.lesson.findUnique({ where: { id: 'en-test-first' } })).not.toBeNull();
   });
 
-  it('fails on an id missing from the files, names it, and writes nothing', async () => {
+  it('fails on an entry removed from the outlines, names it, and writes nothing', async () => {
     // Not a test- id, since the check skips those: removed in the finally,
     // so only a crash inside this test can leave it behind.
     const orphan = 'en-seed-orphan';
-    await writeLessonDir({
-      'en-test.json': lessonFile([lessonDraft('en-test-first', 'First')]),
+    await writeOutlineDir({
+      'en-test.json': outlineFile([
+        outlineEntry('en-test-first', 'First'),
+        outlineEntry(orphan, 'Orphan'),
+      ]),
     });
     await seedLessons(dir, prisma);
-    await prisma.lesson.create({
-      data: { ...lessonDraft(orphan, 'Orphan'), lang: 'en', level: 'A1', position: 99 },
-    });
     try {
-      await writeLessonDir({
-        'en-test.json': lessonFile([lessonDraft('en-test-first', 'First, edited')]),
+      await writeOutlineDir({
+        'en-test.json': outlineFile([outlineEntry('en-test-first', 'First, edited')]),
       });
 
       await expect(seedLessons(dir, prisma)).rejects.toThrow(orphan);
@@ -394,29 +394,31 @@ describe('seedLessons (e2e)', () => {
   });
 
   it('ignores a leftover test- lesson that no file has', async () => {
-    await writeLessonDir({
-      'en-test.json': lessonFile([lessonDraft('en-test-leftover', 'Leftover')]),
+    await writeOutlineDir({
+      'en-test.json': outlineFile([outlineEntry('en-test-leftover', 'Leftover')]),
     });
     await seedLessons(dir, prisma);
 
-    await writeLessonDir({});
+    await writeOutlineDir({});
     await expect(seedLessons(dir, prisma)).resolves.toBeTypeOf('number');
   });
 
-  it('fails naming the file on a malformed lesson file', async () => {
-    await writeLessonDir({
-      'en-test.json': lessonFile([{ ...lessonDraft('en-test-first', 'First'), topic: undefined }]),
+  it('fails naming the file on a malformed outline file', async () => {
+    await writeOutlineDir({
+      'en-test.json': outlineFile([
+        { ...outlineEntry('en-test-first', 'First'), topic: undefined },
+      ]),
     });
     await expect(seedLessons(dir, prisma)).rejects.toThrow(/en-test\.json/);
 
-    await writeLessonDir({ 'en-test.json': '{ not json' });
+    await writeOutlineDir({ 'en-test.json': '{ not json' });
     await expect(seedLessons(dir, prisma)).rejects.toThrow(/en-test\.json/);
   });
 
   it('fails naming both files when two share an id', async () => {
-    await writeLessonDir({
-      'en-test-a.json': lessonFile([lessonDraft('en-test-twice', 'Twice')]),
-      'en-test-b.json': lessonFile([lessonDraft('en-test-twice', 'Twice')]),
+    await writeOutlineDir({
+      'en-test-a.json': outlineFile([outlineEntry('en-test-twice', 'Twice')]),
+      'en-test-b.json': outlineFile([outlineEntry('en-test-twice', 'Twice')]),
     });
 
     const attempt = seedLessons(dir, prisma);
@@ -425,10 +427,8 @@ describe('seedLessons (e2e)', () => {
     expect(await prisma.lesson.findUnique({ where: { id: 'en-test-twice' } })).toBeNull();
   });
 
-  // Today content/lessons holds only .gitkeep, so this is also the empty-
-  // directory case. Once lessons land, it checks their positions.
-  it('seeds the real content directory with positions 1..N per lang and level', async () => {
-    await expect(seedLessons(findContentDir('lessons'), prisma)).resolves.toBeTypeOf('number');
+  it('seeds every outline entry, with positions 1..N per lang and level', async () => {
+    await expect(seedLessons(findContentDir('outlines'), prisma)).resolves.toBe(0);
 
     const rows = await prisma.lesson.findMany({
       select: { id: true, lang: true, level: true, position: true },
@@ -439,7 +439,10 @@ describe('seedLessons (e2e)', () => {
       const key = `${row.lang}-${row.level}`;
       byCell.set(key, [...(byCell.get(key) ?? []), row]);
     }
-    for (const cell of byCell.values()) {
+    expect(byCell.size).toBe(LEARNABLE_LANGUAGES.length * LEVELS.length);
+    for (const [key, cell] of byCell) {
+      const level = key.slice(key.indexOf('-') + 1) as Level;
+      expect(cell).toHaveLength(LESSONS_PER_LEVEL[level]);
       expect(cell.map((row) => row.position)).toEqual(cell.map((_, index) => index + 1));
     }
   });

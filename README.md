@@ -6,18 +6,19 @@ _This project has been created as part of the 42 curriculum by \<login1\>, \<log
 # ft_transcendence
 
 An AI-driven platform for learning a foreign language. Learners are placed at a
-CEFR level by a short adaptive test, get a roadmap of topics for that level, and
-work through each one with an AI tutor that explains, drills, and corrects every
-answer with the mistakes named.
+CEFR level by a short adaptive test, get the daily lessons of a seeded syllabus
+for that level, and work through lessons of four kinds (grammar, vocabulary,
+functions and reading), each with exercises, an exam and a score.
 
 ## Key features
 
 <!-- TODO: keep this in step with what actually ships. -->
 
 - Adaptive placement test that finds a learner's CEFR level and can be retaken
-- A per-learner roadmap of topics, sized to a daily goal
-- AI tutor: grounded explanations, generated exercises, corrections that name
-  the mistake type
+- The daily lessons of a seeded syllabus per level, sized to a daily goal
+- About 4,000 lessons, written with Claude Code from a reviewed syllabus and
+  checked by validators
+- A streak, XP, a daily challenge and achievements
 - Live practice and chat with other learners
 - Progress tracking and analytics
 

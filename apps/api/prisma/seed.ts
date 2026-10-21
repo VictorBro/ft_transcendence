@@ -4,7 +4,7 @@ import { resolve, join } from 'node:path';
 import { isDeepStrictEqual } from 'node:util';
 import { Prisma, PrismaClient } from '../src/generated/prisma/client';
 import { PrismaPg } from '@prisma/adapter-pg';
-import { ItemFileSchema, LessonDraftFileSchema } from '@ft/shared';
+import { ItemFileSchema, LessonOutlineFileSchema } from '@ft/shared';
 
 // Same guard as PrismaService: left undefined, node-postgres falls back to its
 // own PG* defaults and fails with a misleading localhost connection error.
@@ -16,7 +16,7 @@ function requireDatabaseUrl(): string {
   return url;
 }
 
-export function findContentDir(kind: 'items' | 'lessons'): string {
+export function findContentDir(kind: 'items' | 'lessons' | 'outlines'): string {
   const candidateFromRoot = resolve(process.cwd(), 'content', kind);
   if (existsSync(candidateFromRoot)) {
     return candidateFromRoot;
@@ -114,30 +114,30 @@ export async function seedLessons(dir: string, prisma: PrismaClient): Promise<nu
       throw new Error(`Invalid JSON in ${fileName}`, { cause: err });
     }
 
-    const result = LessonDraftFileSchema.safeParse(parsed);
+    const result = LessonOutlineFileSchema.safeParse(parsed);
     if (!result.success) {
-      throw new Error(`Invalid lesson file ${fileName}: ${result.error.message}`);
+      throw new Error(`Invalid outline file ${fileName}: ${result.error.message}`);
     }
 
     const file = result.data;
-    file.drafts.forEach((draft, index) => {
-      const previousFile = fileOfId.get(draft.id);
+    file.entries.forEach((entry, index) => {
+      const previousFile = fileOfId.get(entry.id);
       if (previousFile !== undefined) {
-        throw new Error(`Duplicate lesson id "${draft.id}" in ${previousFile} and ${fileName}`);
+        throw new Error(`Duplicate lesson id "${entry.id}" in ${previousFile} and ${fileName}`);
       }
-      fileOfId.set(draft.id, fileName);
+      fileOfId.set(entry.id, fileName);
 
-      rows.set(draft.id, {
-        id: draft.id,
+      rows.set(entry.id, {
+        id: entry.id,
         lang: file.lang,
         level: file.level,
         position: index + 1,
-        kind: draft.kind,
-        topic: draft.topic ?? null,
-        theme: draft.theme ?? null,
-        title: draft.title,
-        summary: draft.summary,
-        brief: draft.brief,
+        kind: entry.kind,
+        topic: entry.topic ?? null,
+        theme: entry.theme ?? null,
+        title: entry.workingTitle,
+        summary: entry.intent,
+        brief: {},
       });
     });
   }
@@ -182,8 +182,8 @@ if (require.main === module) {
 
   seedQuestionBank(findContentDir('items'), prisma)
     .then((count) => console.log(`seeded ${count} questions from ${findContentDir('items')}`))
-    .then(() => seedLessons(findContentDir('lessons'), prisma))
-    .then((count) => console.log(`seeded ${count} lessons from ${findContentDir('lessons')}`))
+    .then(() => seedLessons(findContentDir('outlines'), prisma))
+    .then((count) => console.log(`seeded ${count} lessons from ${findContentDir('outlines')}`))
     .catch((err) => {
       console.error(err);
       process.exit(1);
