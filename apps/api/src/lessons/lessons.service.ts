@@ -2,8 +2,9 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import type { Prisma } from '../generated/prisma/client';
 import {
-  CourseDay,
   DailyGoalSchema,
+  FinishResult,
+  FinishResultSchema,
   Language,
   LessonCard,
   LessonCardSchema,
@@ -11,6 +12,7 @@ import {
   LessonPageSchema,
   LessonQuery,
   LESSONS_PAGE_SIZE,
+  SessionUser,
   TodaySchema,
 } from '@ft/shared';
 import {
@@ -20,12 +22,14 @@ import {
   isMet,
   levelAfter,
   levelProgress,
+  merge,
   plan,
   RuleResult,
   statusOf,
   target,
 } from './roadmap.rules';
 import { checkCourse, findLesson, LESSON_SELECT, LessonRow } from './course-lookup';
+import { currentDay, dayOf, latestDay, lockCourse, meetGoal } from './goal';
 import { searchLessons } from './lesson-search';
 
 /*
@@ -79,15 +83,6 @@ const RESULT_SELECT = {
  * LessonRow, the same for Lesson, is in course-lookup.ts with LESSON_SELECT.
  */
 type ResultRow = Prisma.LessonResultGetPayload<{ select: typeof RESULT_SELECT }>;
-
-/**
- * The day and lastGoalDay columns are @db.Date: Prisma gives them back as a Date at
- * midnight UTC. toISOString() gives "2026-10-12T00:00:00.000Z", but we only want the
- * day. That is the first 10 characters.
- */
-function dayOf(date: Date): CourseDay {
-  return date.toISOString().slice(0, 10);
-}
 
 /**
  * Turns a result row from Prisma into what the rules (roadmap.rules.ts) expect.
@@ -204,22 +199,13 @@ export class LessonsService {
       }),
     ]);
 
-    // latestDay: the newest day we know of, from the results and lastGoalDay,
-    // or null when there is none. Days are "2026-10-12" texts, so `>` finds the newest.
-    const days = results.map((result) => dayOf(result.day));
-    if (course.lastGoalDay !== null) {
-      days.push(dayOf(course.lastGoalDay));
-    }
-    let latestDay: CourseDay | null = null;
-    for (const day of days) {
-      if (latestDay === null || day > latestDay) {
-        latestDay = day;
-      }
-    }
-
-    // Today in the user's time zone, but never before latestDay: flying west
-    // could otherwise send the user back to a day already done.
-    const day = courseDay(now, timeZone, latestDay);
+    // Today in the user's time zone, but never before the newest day we know
+    // of: flying west could otherwise send the user back to a day already done.
+    const day = courseDay(
+      now,
+      timeZone,
+      latestDay([...results.map((result) => result.day), course.lastGoalDay]),
+    );
 
     return { course, level, lessons, results, day };
   }
@@ -311,6 +297,52 @@ export class LessonsService {
       },
       progress: levelProgress(lessons, results),
       levelAfter: levelAfter(level),
+    });
+  }
+
+  /**
+   * PUT /courses/:lang/lessons/:id/result: records a finished lesson. One
+   * transaction under the course lock, so two finishes at once count the
+   * day's goal once:
+   *   1. the course, locked: 404 without one, 409 before placement
+   *   2. the lesson: 404 if it is missing or from another language
+   *   3. the result: the best score stays, the day and time move to this finish
+   *   4. the goal: meetGoal meets the day if this finish reached it
+   */
+  finish(
+    user: SessionUser,
+    lang: Language,
+    id: LessonId,
+    score: number,
+    now: Date,
+  ): Promise<FinishResult> {
+    return this.prisma.$transaction(async (tx) => {
+      const course = checkCourse(await lockCourse(tx, user.id, lang), { placed: true });
+      const lesson = await findLesson(tx, lang, id);
+
+      const day = await currentDay(tx, course, user.timeZone, now);
+      const key = { userLevelId: course.id, lessonId: lesson.id };
+      const old = await tx.lessonResult.findUnique({
+        where: { userLevelId_lessonId: key },
+        select: RESULT_SELECT,
+      });
+
+      const result = merge(old ? toRuleResult(old) : undefined, lesson, score, day, now);
+      const data = { score: result.score, day: new Date(day), finishedAt: now };
+      await tx.lessonResult.upsert({
+        where: { userLevelId_lessonId: key },
+        create: { ...key, ...data },
+        update: data,
+      });
+
+      const goal = await meetGoal(tx, course, day);
+      return FinishResultSchema.parse({
+        // A lesson finished twice in a day counts once: the first time.
+        countedToday: old === null || dayOf(old.day) !== day,
+        doneCount: goal.doneCount,
+        target: target(DailyGoalSchema.parse(course.dailyGoal)),
+        goalJustMet: goal.justMet,
+      });
     });
   }
 }
