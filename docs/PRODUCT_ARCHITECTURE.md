@@ -59,6 +59,8 @@ middle of it. The first probe is therefore always B1.
 - **Level failed:** everything below it is, so `hi = level - 1`.
 - **`lo > hi`:** the search is over. The result is `lo`, the level to learn: one above the highest
   level passed, capped at C2, or A1 if none was passed.
+- **C1 passed:** the search is over too, at C2. C2 is not probed: passed or failed, the result
+  would be C2.
 
 Three probes settle six levels, so a run is at most three levels deep.
 
@@ -148,7 +150,7 @@ flowchart TD
     second -- "yes" --> failed["Level failed<br/><small>hi = level - 1</small>"]
     six -- "not yet" --> draw
     six -- "yes" --> passed["Level passed<br/><small>lo = level + 1</small>"]
-    passed --> over{"lo > hi?"}
+    passed --> over{"lo > hi,<br/>or C1 passed?"}
     failed --> over
     over -- "no" --> probe
     over -- "yes" --> result["One above the highest level passed<br/><small>capped at C2, written to UserLevel.level</small>"]
@@ -164,6 +166,13 @@ page. A lesson is written to take about ten minutes, so **the goal counts lesson
 lesson finished that day, 30 means three, 60 means six. That is why those three values and not
 others; ten divides all of them evenly. A finish counts pass or fail, from any list, and a lesson
 finished twice in a day counts once. Nothing tracks minutes, and `DailyStat` is not built.
+
+> **Open, for the team: how long a lesson takes.** The lessons of the prototype model are planned
+> at 10 to 15 minutes, more for some vocabulary lessons: `fr-subject-pronouns` has
+> `estimatedMinutes: 15`. Six of them can then take well over the 60-minute goal. Either the goal
+> keeps counting 1, 3 or 6 lessons and the minutes are a rough label, or the authoring kit
+> ([#83](https://github.com/VictorBro/ft_transcendence/issues/83)) keeps every lesson near ten
+> minutes. Until the team decides, this section assumes about ten.
 
 The goal does two things:
 
@@ -311,6 +320,14 @@ The team tracks each module's current status and points on the wiki:
 | User interaction: chat, profiles, friends | Major | 2 | not started |
 | | | **16** | |
 
+> **Open, for the team: the tutor inside a lesson.** Lessons now ship with their exercises, answer
+> keys and exam (§1.4, [LESSONS.md](LESSONS.md)), so a lesson no longer needs an LLM to be played.
+> The LLM still restocks the placement bank (§1.2) and corrects and translates the chat (§1.5).
+> But **Complete RAG system** relies on the tutor alone: the grounded explanation and "ask the
+> tutor" of §1.4. The lesson page milestone decides whether that tutor is built. If it is not, RAG
+> needs another use, or its 2 points are at risk. Until then, §1.4, the caches of §4 and §5, and
+> `Exercise` in §7 describe the earlier tutor plan.
+
 ### Buffer, pick from these once the core is green
 
 | Module | Type | Pts | Why it fits |
@@ -372,7 +389,9 @@ lesson, never the lesson.
 counts the lesson toward today's goal. It stays reachable only behind `LESSON_STUB` until the
 lesson page ships: the flag is on in development and CI and never set on the public server, and
 the stub lesson page posts a typed score to it. The lesson page then finishes through the same
-service, with the score from its exercises.
+service, with the score from its exercises. The route and the flag come with
+[#82](https://github.com/VictorBro/ft_transcendence/issues/82), the stub page with
+[#96](https://github.com/VictorBro/ft_transcendence/issues/96).
 
 The REST half is also what the **Public API** module documents, if you take it. That is a
 reason to keep the domain reachable over HTTP even where a socket would do.
@@ -683,12 +702,13 @@ That last row is the one that gets missed. Write it when the gateway is written,
 
 ## 7. Data model
 
-**Thirteen tables beside `User` and `RecoveryCode`, three of which are already migrated**
-(`UserLevel`, `QuestionBank`, `UserSeenQuestion`). The course roadmap adds `Lesson`,
-`LessonResult` and `UserAchievement`; the lesson page adds `Exercise` and `Mistake`; social,
-content and operations add `Friendship`, `Message`, `Document`, `DocumentChunk` and `LlmCall`.
-Every one is load-bearing for a module we claim. The rule applied throughout: a table earns its
-place by being read at runtime, and a 1:1 relationship is a column, not a table.
+**Thirteen tables beside `User` and `RecoveryCode`, five of which are already migrated**
+(`UserLevel`, `QuestionBank`, `UserSeenQuestion`, `Lesson`, `LessonResult`). The course roadmap
+adds `Lesson` and `LessonResult` (both migrated) and `UserAchievement`; the lesson page adds
+`Exercise` and `Mistake`; social, content and operations add `Friendship`, `Message`, `Document`,
+`DocumentChunk` and `LlmCall`. Every one is load-bearing for a module we claim. The rule applied
+throughout: a table earns its place by being read at runtime, and a 1:1 relationship is a column,
+not a table.
 
 Everything is UUID-keyed, with three exceptions. `LessonResult` and `UserAchievement` are keyed by
 their pair (`(userLevelId, lessonId)` and `(userLevelId, code)`), because the pair is what makes
@@ -752,7 +772,7 @@ erDiagram
 | `UserLevel` | userId, lang, level?, dailyGoal, streak, bestStreak, lastGoalDay?, xp, lastChallengeDay?, challengesDone | Unique `(userId, lang)`, so a user may learn two languages. Onboarding writes it with `level` null; placement fills it in, or a learner who skips sets it directly. The goal sizes today's plan and defines the streak, it never locks content. `streak`, `bestStreak` and `lastGoalDay` are the whole streak (§1.3); `xp`, `lastChallengeDay` and `challengesDone` are the gamification counters. All of them are per course, and finishing and goal changes take a row lock on this row (§9) |
 | `QuestionBank` | id, sourceId?, lang, level, topic, category, readText?, question, options, answer, timeLimitS | The reusable pool, seeded from `content/items/*.json` and grown at runtime when a learner runs low in a cell. `sourceId` is the authored id the seed matches on, and its absence marks a question the LLM wrote. Full spec in [ITEM_BANK.md](ITEM_BANK.md) |
 | `UserSeenQuestion` | userId, questionId | Unique `(userId, questionId)`. **The exposure record**, and the whole reason placement never repeats a question: the draw is a `NOT EXISTS` over these rows. It is per user and not per run, so a retake cannot serve an old question either |
-| `Lesson` | id, lang, level, position, kind, topic?, theme?, title, summary, brief, content? | **The seeded catalogue, never written at runtime.** One row is one outline entry: `db:seed` writes every entry of `content/outlines/` (title = working title, summary = intent, empty brief), then fills the rows whose lesson files exist (`content/briefs/<id>.json`, `content/lessons/<id>.json`): title from the file, summary = the objective in the course language, brief and content = the files. `id` is the authored key: the language and a few English words, no level, so a lesson can move level and keep its results. It is permanent once on `main`. `kind` is grammar, vocabulary, functions or reading; `topic` (the `Topic` enum) is set exactly on grammar lessons, `theme` exactly on the others. Title and summary are in the course language; the lesson body also carries help text in en, fr and de. The lesson cards never send the brief or the content. Index on `(lang, level, position)`. Full guide in [LESSONS.md](LESSONS.md) |
+| `Lesson` | id, lang, level, position, kind, topic?, theme?, title, summary, brief, content? | **The seeded catalogue, never written at runtime.** One row is one outline entry: `db:seed` writes every entry of `content/outlines/` (title = working title, summary = intent, empty brief), then fills the rows whose lesson files exist (`content/briefs/<id>.json`, `content/lessons/<id>.json`): title from the file, summary = the objective in the course language, brief and content = the files ([#135](https://github.com/VictorBro/ft_transcendence/issues/135), which also adds the `content` column). `id` is the authored key: the language and a few English words, no level, so a lesson can move level and keep its results. It is permanent once on `main`. `kind` is grammar, vocabulary, functions or reading; `topic` (the `Topic` enum) is set exactly on grammar lessons, `theme` exactly on the others. Title and summary are in the course language; the lesson body also carries help text in en, fr and de. The lesson cards never send the brief or the content. Index on `(lang, level, position)`. Full guide in [LESSONS.md](LESSONS.md) |
 | `LessonResult` | userLevelId, lessonId, score, day, finishedAt | Primary key `(userLevelId, lessonId)`: **one row per course and lesson, with no history.** Every finish upserts it: `score` keeps the best, `day` is the learner's day of the latest finish, `finishedAt` its moment. No row means not started, a best of 70 or more means done, anything else failed. Today's count is the rows whose `day` is today |
 | `UserAchievement` | userLevelId, code, day, earnedAt | Primary key `(userLevelId, code)`, so an achievement is earned once and never lost. `day` is the course day it was earned. The 16 codes are strings fixed in code |
 | `Exercise` | userLevelId, lessonId, ordinal, type, prompt, options, expectedAnswer, learnerAnswer, correct, correctedText, feedback, answeredAt | The question, the answer and the correction in one row, because there is exactly one of each. Three tables here would be normalising a 1:1:1. Attaches to the course's `LessonResult` for that lesson, and a redo replaces the previous rows. The lesson page milestone decides the rest of its shape |

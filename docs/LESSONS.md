@@ -13,9 +13,11 @@ Audience: whoever writes an outline, runs the authoring tool or checks a level.
 
 A lesson is one row of a **seeded catalogue**. Its plan is an outline entry, its body is one or
 two JSON files, both committed to the repo and loaded by `db:seed`. Nothing writes a lesson at
-runtime, and no AI is called when a learner uses the app.
+runtime: no AI writes or changes a lesson while a learner uses the app.
 
 The daily goal counts lessons: 10, 30 or 60 minutes means 1, 3 or 6 lessons finished that day.
+How long a lesson really takes is still open for the team
+([PRODUCT_ARCHITECTURE.md](PRODUCT_ARCHITECTURE.md) §1.3).
 
 | Kind | What it teaches | Classified by |
 |---|---|---|
@@ -51,8 +53,8 @@ language                   weather
 **The lesson model** is the one of the lesson prototype
 ([lesson_prototype](https://github.com/bastian-schnitzler/lesson_prototype), `schemaVersion: 2`,
 frozen at commit `928484d`). A lesson is complete and playable: what to teach, the exercises, their
-answer keys, an exam and how it is scored. Its schemas and validators live in `@ft/shared`
-([#135](https://github.com/VictorBro/ft_transcendence/issues/135)).
+answer keys, an exam and how it is scored. Its schemas and validators move to `@ft/shared` with
+[#135](https://github.com/VictorBro/ft_transcendence/issues/135).
 
 - **The brief** (`content/briefs/<id>.json`, every kind) holds the plan of the lesson: the title,
   the objective, the words, rules, expressions or documents, and the exam.
@@ -191,6 +193,15 @@ kind and the readers, and leaves the reading in §8 to people. The language must
 `LEARNABLE_LANGUAGES` and `KIND_COUNTS`. The instructions are in
 `.claude/skills/outline-language/SKILL.md`, the steps in `.claude/workflows/outline-language.js`.
 
+**Reading a whole outline.** The JSON is hard to read in order, so print one line per entry:
+position, kind, topic or theme, working title. Read it top to bottom as the course a learner
+follows, and check the counts per kind against §2:
+
+```bash
+jq -r '.entries | to_entries[] | "\(.key + 1)\t\(.value.kind)\t\(.value.topic // .value.theme)\t\(.value.workingTitle)"' content/outlines/fr-a1.json
+jq -r '.entries | group_by(.kind)[] | "\(.[0].kind)\t\(length)"' content/outlines/fr-a1.json
+```
+
 ---
 
 ## 4. The lesson files
@@ -222,7 +233,7 @@ The brief of `fr-subject-pronouns`, shortened:
     "fr": "Employer les pronoms sujets je, tu, il, elle, on, nous, vous, ils et elles.",
     "de": "Die französischen Subjektpronomen je, tu, il, elle, on, nous, vous, ils und elles verwenden."
   },
-  "estimatedMinutes": 12,
+  "estimatedMinutes": 15,
   "provenance": { "generator": "…", "model": "…", "promptVersion": "…", "generatedAt": "…", "inputHashes": { "outline": "…" } },
   "topic": "pronouns",
   "rules": ["…"],
@@ -243,7 +254,7 @@ of `docs/authoring/` (#83).
 |---|---|
 | `<lang>-<English words>`: `de-separable-verbs`, not `de-trennbare-verben` | Anyone on the team can read any language's ids |
 | No level in it | A lesson can move level and keep its id |
-| Lowercase ASCII and hyphens, at most 64 characters | It goes in URLs: `/learn/de/lessons/de-separable-verbs` |
+| Lowercase letters `a` to `z` and single hyphens, no digits, at most 64 characters | It goes in URLs: `/learn/de/lessons/de-separable-verbs` |
 | Unique across the language's six outlines | It is `Lesson`'s primary key, and the name of its files |
 | **Permanent once on `main`** | Learners' results attach to it |
 
@@ -309,7 +320,7 @@ readers: the key order, no level in an id, and no dashes, quotation marks or dou
 | Counts | Exactly `LESSONS_PER_LEVEL[level]` entries, and each kind exactly its `KIND_COUNTS` |
 | Topic and theme | `topic` exactly on grammar, `theme` exactly on the others |
 | Ids | Start with the file's language, unique across the language's six files. None starts with `<lang>-test-`, a prefix kept for spec fixtures |
-| Lesson files | Pass the prototype's validators: the shape of each kind, the lesson rules (length, counts, references between parts, articles), and the durations, to the second ([#135](https://github.com/VictorBro/ft_transcendence/issues/135)) |
+| Lesson files | Pass the prototype's validators: the shape of each kind, the lesson rules (length, counts, references between parts, articles), and the durations, to the second, once [#135](https://github.com/VictorBro/ft_transcendence/issues/135) ports them. Until then, `lesson-files.spec.ts` checks the earlier per-level files |
 | Complete languages | A language in `COMPLETE_LANGUAGES` has the files of every outline entry |
 
 After seeding, positions are exactly 1 to N for every language and level.
