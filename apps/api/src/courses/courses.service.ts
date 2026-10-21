@@ -5,8 +5,10 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { StartCourseDto, SetGoalDto, SetLevelDto } from './courses.dto';
-import { CourseSchema, DailyGoal, Language, Level } from '@ft/shared';
+import { CourseSchema, DailyGoal, Language, Level, SessionUser } from '@ft/shared';
 import { PrismaService } from '../prisma/prisma.service';
+import { checkCourse } from '../lessons/course-lookup';
+import { currentDay, lockCourse, meetGoal } from '../lessons/goal';
 
 const COURSE_SELECT = { lang: true, dailyGoal: true, level: true } as const;
 type CourseWrite = { dailyGoal: DailyGoal; level?: never } | { level: Level; dailyGoal?: never };
@@ -49,8 +51,23 @@ export class CoursesService {
     }
   }
 
-  setGoal(userId: string, lang: Language, dto: SetGoalDto) {
-    return this.write(userId, lang, { dailyGoal: dto.dailyGoal });
+  /**
+   * Under the course lock, like a finish (lessons/goal.ts): a lower goal can
+   * meet today with the lessons already done, and a finish at the same moment
+   * must not meet it a second time. A higher goal never unmeets a day.
+   */
+  setGoal(user: SessionUser, lang: Language, dto: SetGoalDto, now: Date) {
+    return this.prisma.$transaction(async (tx) => {
+      const locked = checkCourse(await lockCourse(tx, user.id, lang));
+      const course = await tx.userLevel.update({
+        where: { id: locked.id },
+        data: { dailyGoal: dto.dailyGoal },
+      });
+      await tx.user.update({ where: { id: user.id }, data: { activeLang: lang } });
+
+      await meetGoal(tx, course, await currentDay(tx, course, user.timeZone, now));
+      return CourseSchema.parse(course);
+    });
   }
 
   setLevel(userId: string, lang: Language, dto: SetLevelDto) {

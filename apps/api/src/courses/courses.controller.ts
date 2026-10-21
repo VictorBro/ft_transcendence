@@ -52,7 +52,7 @@ export class CoursesController {
     @Body() body: SetGoalDto,
     @Param('lang', LangParam) lang: Language,
   ) {
-    return this.courses.setGoal(user.id, lang, body);
+    return this.courses.setGoal(user, lang, body, new Date());
   }
 
   @Patch(':lang/level')
