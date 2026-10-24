@@ -40,13 +40,13 @@ export function grammarBriefLengthIssues(b: GrammarBrief): Issue[] {
     issues.check(
       block.exercises.length >= L.exercisesPerBlock[0],
       `blocks.${i}.exercises`,
-      `a teaching block has ${L.exercisesPerBlock[0]}–${L.exercisesPerBlock[1]} exercises (P3-07)`,
+      `a teaching block has ${L.exercisesPerBlock[0]}–${L.exercisesPerBlock[1]} exercises (GRAMMAR_LENGTH)`,
     ),
   );
   issues.check(
     b.exam.pages.length >= L.examPages[0] && b.exam.pages.length <= L.examPages[1],
     'exam.pages',
-    `the exam has ${L.examPages[0]}–${L.examPages[1]} pages (P3-07)`,
+    `the exam has ${L.examPages[0]}–${L.examPages[1]} pages (GRAMMAR_LENGTH)`,
   );
 
   const planned = (p: { type: string; itemCount: number }) =>
@@ -56,12 +56,12 @@ export function grammarBriefLengthIssues(b: GrammarBrief): Issue[] {
   issues.check(
     practice >= L.minPracticeUnits,
     'blocks',
-    `the exercises plan about ${practice} scored units; at least ${L.minPracticeUnits} (P3-07)`,
+    `the exercises plan about ${practice} scored units; at least ${L.minPracticeUnits} (GRAMMAR_LENGTH)`,
   );
   issues.check(
     exam >= L.minExamUnits,
     'exam.pages',
-    `the exam plans about ${exam} scored units; at least ${L.minExamUnits} (P3-07)`,
+    `the exam plans about ${exam} scored units; at least ${L.minExamUnits} (GRAMMAR_LENGTH)`,
   );
   return issues.list;
 }
@@ -83,12 +83,12 @@ export function grammarContentLengthIssues(c: GrammarContent): Issue[] {
   issues.check(
     practice >= L.minPracticeUnits,
     'steps',
-    `practice has ${practice} scored units; at least ${L.minPracticeUnits} (P3-07)`,
+    `practice has ${practice} scored units; at least ${L.minPracticeUnits} (GRAMMAR_LENGTH)`,
   );
   issues.check(
     exam >= L.minExamUnits,
     'steps',
-    `the exam has ${exam} scored units; at least ${L.minExamUnits} (P3-07)`,
+    `the exam has ${exam} scored units; at least ${L.minExamUnits} (GRAMMAR_LENGTH)`,
   );
 
   c.steps.forEach((step, si) =>
@@ -108,7 +108,7 @@ export function grammarContentLengthIssues(c: GrammarContent): Issue[] {
         issues.check(
           per >= min && per <= max,
           path,
-          `${Math.round(per)} s per scored unit; keep ${min}–${max} s (P3-07)`,
+          `${Math.round(per)} s per scored unit; keep ${min}–${max} s (GRAMMAR_LENGTH)`,
         );
       }
     }),

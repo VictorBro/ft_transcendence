@@ -424,7 +424,7 @@ function checkPageTimes(c: ReadingContent, issues: Issues) {
     issues.check(
       page.estimatedDurationS === estimate,
       `steps.${si}.pages.0.estimatedDurationS`,
-      `must be ${estimate} s by the page rules (section 9)`,
+      `must be ${estimate} s by READING_PAGE_RULES`,
     );
     const limit = exam ? readingTimeLimit(estimate) : null;
     issues.check(

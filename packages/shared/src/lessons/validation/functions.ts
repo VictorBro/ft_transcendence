@@ -117,9 +117,9 @@ export function checkFunctionsBrief(b: FunctionsBrief, ctx: OutlineContext, issu
         issues.check(
           FR_INDEFINITE.test(w.teachingForm),
           `${p}.teachingForm`,
-          `"${w.teachingForm}" must include the indefinite article un/une/des (D39)`,
+          `"${w.teachingForm}" must include the indefinite article un/une/des`,
         );
-    } else issues.check(w.genders.length === 0, `${p}.genders`, 'only nouns have a gender (D8)');
+    } else issues.check(w.genders.length === 0, `${p}.genders`, 'only nouns have a gender');
     if (fr)
       issues.check(
         !FR_ARTICLE_START.test(w.term),
@@ -241,7 +241,7 @@ function checkStages(c: FunctionsContent, { nounIds, issues }: Lesson): boolean 
     issues.check(
       s.stage === stages[i],
       `steps.${i}.stage`,
-      `expected the ${stages[i]} step here (section 8)`,
+      `expected the ${stages[i]} step here (FUNCTIONS_STAGES)`,
     );
     issues.check(
       s.role === stageRole(s.stage),
@@ -262,7 +262,7 @@ function checkPageTimes(c: FunctionsContent, issues: Issues) {
       issues.check(
         pg.estimatedDurationS === estimate,
         `${pp}.estimatedDurationS`,
-        `must be ${estimate} s by the page rules (section 8)`,
+        `must be ${estimate} s by FUNCTIONS_PAGE_RULES`,
       );
       const limit = exam ? functionsTimeLimit(estimate) : null;
       issues.check(

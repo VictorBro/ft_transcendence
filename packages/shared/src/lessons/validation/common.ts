@@ -71,7 +71,7 @@ export function checkRichText(text: Record<string, string>, path: string, issues
     ...parseRichText(value),
   }));
   for (const v of versions)
-    for (const e of v.errors) issues.add(`${path}.${v.locale}`, `${e} (restricted Markdown, D46)`);
+    for (const e of v.errors) issues.add(`${path}.${v.locale}`, `${e} (restricted Markdown)`);
 
   const [first, ...rest] = versions;
   if (!first) return;

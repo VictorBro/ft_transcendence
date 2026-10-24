@@ -1,8 +1,4 @@
-import {
-  FUNCTIONS_PAGE_RULES as R,
-  type FunctionsBrief,
-  type FunctionsItem,
-} from '../schemas/functions';
+import { FUNCTIONS_PAGE_RULES as R, type FunctionsItem } from '../schemas/functions';
 
 /**
  * The duration calculations of a functions lesson.
@@ -65,45 +61,3 @@ export function functionsPageEstimate(items: FunctionsItem[], exam: boolean): nu
 
 /** The countdown of an exam page: 1.5 × its duration, rounded to the second (100 s → 150 s). */
 export const functionsTimeLimit = (estimateS: number) => Math.round(estimateS * R.timeLimitFactor);
-
-/**
- * How an expression is shown: "Je voudrais …" when it is the start of a
- * sentence (openEnd). Used only by the prototype's lesson player; #135
- * removes it.
- */
-export const expressionDisplay = (e: { text: string; openEnd: boolean }) =>
-  e.openEnd ? `${e.text} …` : e.text;
-
-/**
- * Every expression and word of a brief by id, with the text to show.
- * Used only by the prototype's lesson player; #135 removes it.
- */
-export function functionsTerms(brief: FunctionsBrief) {
-  return new Map<
-    string,
-    {
-      display: string;
-      translations: Partial<Record<string, string[]>>;
-      kind: 'expression' | 'word';
-    }
-  >([
-    ...brief.expressions.map(
-      (e) =>
-        [
-          e.id,
-          {
-            display: expressionDisplay(e),
-            translations: e.translations,
-            kind: 'expression' as const,
-          },
-        ] as const,
-    ),
-    ...brief.words.map(
-      (w) =>
-        [
-          w.id,
-          { display: w.teachingForm, translations: w.translations, kind: 'word' as const },
-        ] as const,
-    ),
-  ]);
-}

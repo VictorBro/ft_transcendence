@@ -78,7 +78,7 @@ export function checkVocabularyBrief(b: VocabularyBrief, ctx: OutlineContext, is
 function frArticleIssue(t: VocabularyTarget, form: string): string | undefined {
   const article = /^(un|une|des) /u.exec(form)?.[1];
   if (!article)
-    return `"${form}" must include the indefinite article un/une/des (D39) or the target must declare an articleException`;
+    return `"${form}" must include the indefinite article un/une/des, or the target must declare an articleException`;
   const allowed =
     t.number === 'plural' ? ['des'] : t.genders.map((g) => (g === 'feminine' ? 'une' : 'un'));
   if (!allowed.includes(article))
@@ -108,7 +108,7 @@ function checkForms(t: VocabularyTarget, p: string, lang: string, issues: Issues
         issues.check(
           FR_INDEFINITE.test(v),
           `${p}.genderVariants`,
-          `"${v}" must include the indefinite article un/une/des (D39)`,
+          `"${v}" must include the indefinite article un/une/des`,
         );
     }
     if (fr && t.articleException !== null)
@@ -124,7 +124,7 @@ function checkForms(t: VocabularyTarget, p: string, lang: string, issues: Issues
         `"${t.term}" must be the base term without article`,
       );
   } else {
-    issues.check(t.genders.length === 0, `${p}.genders`, 'only nouns have a gender (D8)');
+    issues.check(t.genders.length === 0, `${p}.genders`, 'only nouns have a gender');
     issues.check(t.number === null, `${p}.number`, 'only nouns have a grammatical number here');
     issues.check(
       t.articleException === null,
@@ -136,7 +136,7 @@ function checkForms(t: VocabularyTarget, p: string, lang: string, issues: Issues
   issues.check(
     t.examForms.includes(t.teachingForm) || t.teachingForm === t.examForms.join(', '),
     `${p}.teachingForm`,
-    `"${t.teachingForm}" must be one of the exam forms (D39)`,
+    `"${t.teachingForm}" must be one of the exam forms: the form taught is the form examined`,
   );
 }
 

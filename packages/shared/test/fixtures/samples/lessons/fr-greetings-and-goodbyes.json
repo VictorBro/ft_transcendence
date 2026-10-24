@@ -1,0 +1,1310 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-greetings-and-goodbyes",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Saluer et dire au revoir",
+  "objective": {
+    "en": "Greet someone at any time of day, ask how they are, answer, and say goodbye.",
+    "fr": "Saluer quelqu’un à tout moment de la journée, demander comment il va, répondre et dire au revoir.",
+    "de": "Jemanden zu jeder Tageszeit begrüßen, fragen, wie es ihm geht, antworten und sich verabschieden."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "claude-code-direct-authoring",
+    "model": "claude-opus-5-5",
+    "promptVersion": "functions-v1",
+    "generatedAt": "2026-10-15T18:58:53.792Z",
+    "inputHashes": {
+      "outline": "f1cf3bd5f3576695f7d488bf31426ea858fb5591979dadab6f74241a3e4bde2e",
+      "brief": "ee95a79a1e834764e3229df5aeda0795455d3a9eb73073d7488ca89c386e8a11"
+    }
+  },
+  "kind": "functions",
+  "theme": "relations",
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "presentation",
+      "label": {
+        "en": "Flashcards",
+        "fr": "Cartes mémoire",
+        "de": "Karteikarten"
+      },
+      "pages": [
+        {
+          "pageId": "cards-words",
+          "estimatedDurationS": 40,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Recall each word, then turn the card to check it.",
+            "fr": "Rappelez-vous chaque mot, puis retournez la carte pour vérifier.",
+            "de": "Erinnere dich an jedes Wort und dreh dann die Karte um."
+          },
+          "items": [
+            {
+              "type": "function_flashcards",
+              "itemId": "cards-words",
+              "side": "words",
+              "ids": ["matin", "soir", "tres-bien", "pas-mal"]
+            }
+          ]
+        },
+        {
+          "pageId": "cards-expressions",
+          "estimatedDurationS": 48,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Recall each expression, then turn the card to check it.",
+            "fr": "Rappelez-vous chaque expression, puis retournez la carte pour vérifier.",
+            "de": "Erinnere dich an jeden Ausdruck und dreh dann die Karte um."
+          },
+          "items": [
+            {
+              "type": "function_flashcards",
+              "itemId": "cards-expressions",
+              "side": "expressions",
+              "ids": ["bonjour", "ca-va", "ca-va-bien", "au-revoir"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue",
+      "stage": "dialogue",
+      "role": "presentation",
+      "label": {
+        "en": "Dialogue",
+        "fr": "Dialogue",
+        "de": "Dialog"
+      },
+      "pages": [
+        {
+          "pageId": "dialogue",
+          "estimatedDurationS": 140,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read and listen. Turn a line to see its translation and a note.",
+            "fr": "Lisez et écoutez. Retournez une réplique pour voir sa traduction et une remarque.",
+            "de": "Lies und hör zu. Dreh eine Zeile um, um Übersetzung und Hinweis zu sehen."
+          },
+          "items": [
+            {
+              "type": "function_dialogue",
+              "itemId": "dialogue",
+              "lines": [
+                {
+                  "lineId": "line-1",
+                  "roleId": "lea",
+                  "text": "Bonjour, Hugo !",
+                  "translation": {
+                    "en": "Hello, Hugo!",
+                    "de": "Guten Morgen, Hugo!"
+                  },
+                  "note": {
+                    "en": "In the morning Léa greets Hugo with bonjour.",
+                    "fr": "Le matin, Léa salue Hugo avec bonjour.",
+                    "de": "Am Morgen grüßt Léa Hugo mit bonjour."
+                  },
+                  "expressionIds": ["bonjour"]
+                },
+                {
+                  "lineId": "line-2",
+                  "roleId": "hugo",
+                  "text": "Salut, Léa ! Ça va ?",
+                  "translation": {
+                    "en": "Hi, Léa! How are you?",
+                    "de": "Hallo, Léa! Wie geht’s?"
+                  },
+                  "note": {
+                    "en": "Friends often say salut; Ça va ? asks how she is.",
+                    "fr": "Entre amis, on dit souvent salut ; Ça va ? demande comment elle va.",
+                    "de": "Freunde sagen oft salut; Ça va ? fragt, wie es ihr geht."
+                  },
+                  "expressionIds": ["ca-va"]
+                },
+                {
+                  "lineId": "line-3",
+                  "roleId": "lea",
+                  "text": "Ça va bien, merci. Et toi ?",
+                  "translation": {
+                    "en": "I’m fine, thanks. And you?",
+                    "de": "Mir geht’s gut, danke. Und dir?"
+                  },
+                  "note": {
+                    "en": "She answers, then asks back with Et toi ?",
+                    "fr": "Elle répond, puis retourne la question avec Et toi ?",
+                    "de": "Sie antwortet und fragt mit Et toi ? zurück."
+                  },
+                  "expressionIds": ["ca-va", "ca-va-bien"]
+                },
+                {
+                  "lineId": "line-4",
+                  "roleId": "hugo",
+                  "text": "Pas mal, merci.",
+                  "translation": {
+                    "en": "Not bad, thanks.",
+                    "de": "Nicht schlecht, danke."
+                  },
+                  "note": {
+                    "en": "Pas mal is a relaxed positive answer.",
+                    "fr": "Pas mal est une réponse positive et décontractée.",
+                    "de": "Pas mal ist eine lockere, positive Antwort."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-5",
+                  "roleId": "lea",
+                  "text": "Tu vas au travail ?",
+                  "translation": {
+                    "en": "Are you going to work?",
+                    "de": "Gehst du zur Arbeit?"
+                  },
+                  "note": {
+                    "en": "A little small talk after the greeting.",
+                    "fr": "Un peu de conversation après la salutation.",
+                    "de": "Ein bisschen Smalltalk nach dem Gruß."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-6",
+                  "roleId": "hugo",
+                  "text": "Oui. Bonne journée, Léa !",
+                  "translation": {
+                    "en": "Yes. Have a nice day, Léa!",
+                    "de": "Ja. Einen schönen Tag, Léa!"
+                  },
+                  "note": {
+                    "en": "Bonne journée is a friendly wish when you leave during the day.",
+                    "fr": "Bonne journée est un souhait amical quand on part pendant la journée.",
+                    "de": "Bonne journée ist ein freundlicher Wunsch beim Abschied tagsüber."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-7",
+                  "roleId": "lea",
+                  "text": "Merci ! À bientôt !",
+                  "translation": {
+                    "en": "Thanks! See you soon!",
+                    "de": "Danke! Bis bald!"
+                  },
+                  "note": {
+                    "en": "À bientôt: they will see each other again soon.",
+                    "fr": "À bientôt : ils vont bientôt se revoir.",
+                    "de": "À bientôt: Sie sehen sich bald wieder."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-8",
+                  "roleId": "hugo",
+                  "text": "Au revoir !",
+                  "translation": {
+                    "en": "Goodbye!",
+                    "de": "Tschüss!"
+                  },
+                  "note": {
+                    "en": "Au revoir works with everyone.",
+                    "fr": "Au revoir convient avec tout le monde.",
+                    "de": "Au revoir passt bei allen."
+                  },
+                  "expressionIds": ["au-revoir"]
+                },
+                {
+                  "lineId": "line-9",
+                  "roleId": "lea",
+                  "text": "Bonsoir, Hugo ! Tu rentres ?",
+                  "translation": {
+                    "en": "Good evening, Hugo! Are you going home?",
+                    "de": "Guten Abend, Hugo! Gehst du nach Hause?"
+                  },
+                  "note": {
+                    "en": "The same day, in the evening: now Léa says bonsoir.",
+                    "fr": "Le même jour, le soir : maintenant Léa dit bonsoir.",
+                    "de": "Am selben Tag, am Abend: Jetzt sagt Léa bonsoir."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-10",
+                  "roleId": "hugo",
+                  "text": "Oui. Bonne soirée !",
+                  "translation": {
+                    "en": "Yes. Have a nice evening!",
+                    "de": "Ja. Einen schönen Abend!"
+                  },
+                  "note": {
+                    "en": "Bonne soirée is the evening version of bonne journée.",
+                    "fr": "Bonne soirée est la version du soir de bonne journée.",
+                    "de": "Bonne soirée ist die Abendform von bonne journée."
+                  },
+                  "expressionIds": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": {
+        "en": "Matching",
+        "fr": "Association",
+        "de": "Zuordnen"
+      },
+      "pages": [
+        {
+          "pageId": "match-expressions-1",
+          "estimatedDurationS": 48,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each expression with its translation.",
+            "fr": "Associez chaque expression à sa traduction.",
+            "de": "Ordne jedem Ausdruck seine Übersetzung zu."
+          },
+          "items": [
+            {
+              "type": "function_matching",
+              "itemId": "match-expressions-1",
+              "side": "expressions",
+              "pairs": [
+                {
+                  "id": "bonjour",
+                  "answerExplanation": {
+                    "en": "The usual greeting during the day, for everyone.",
+                    "fr": "La salutation habituelle pendant la journée, pour tout le monde.",
+                    "de": "Der übliche Gruß tagsüber, für alle."
+                  }
+                },
+                {
+                  "id": "ca-va",
+                  "answerExplanation": {
+                    "en": "Asks how someone is; informal and very common.",
+                    "fr": "Demande comment va quelqu’un ; familier et très courant.",
+                    "de": "Fragt, wie es jemandem geht; locker und sehr häufig."
+                  }
+                },
+                {
+                  "id": "ca-va-bien",
+                  "answerExplanation": {
+                    "en": "The usual answer to Ça va ?",
+                    "fr": "La réponse habituelle à Ça va ?",
+                    "de": "Die übliche Antwort auf Ça va ?"
+                  }
+                },
+                {
+                  "id": "au-revoir",
+                  "answerExplanation": {
+                    "en": "The usual way to say goodbye, for everyone.",
+                    "fr": "La façon habituelle de dire au revoir, pour tout le monde.",
+                    "de": "Die übliche Verabschiedung, für alle."
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "pageId": "match-words-1",
+          "estimatedDurationS": 40,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each word with its translation.",
+            "fr": "Associez chaque mot à sa traduction.",
+            "de": "Ordne jedem Wort seine Übersetzung zu."
+          },
+          "items": [
+            {
+              "type": "function_matching",
+              "itemId": "match-words-1",
+              "side": "words",
+              "pairs": [
+                {
+                  "id": "matin",
+                  "answerExplanation": {
+                    "en": "Masculine noun: un matin. Le matin means in the morning.",
+                    "fr": "Nom masculin : un matin. Le matin veut dire pendant la matinée.",
+                    "de": "Maskulines Nomen: un matin. Le matin heißt am Morgen."
+                  }
+                },
+                {
+                  "id": "soir",
+                  "answerExplanation": {
+                    "en": "Masculine noun: un soir. Le soir means in the evening.",
+                    "fr": "Nom masculin : un soir. Le soir veut dire pendant la soirée.",
+                    "de": "Maskulines Nomen: un soir. Le soir heißt am Abend."
+                  }
+                },
+                {
+                  "id": "tres-bien",
+                  "answerExplanation": {
+                    "en": "A strong positive answer: très (very) + bien (well).",
+                    "fr": "Une réponse très positive : très + bien.",
+                    "de": "Eine sehr positive Antwort: très (sehr) + bien (gut)."
+                  }
+                },
+                {
+                  "id": "pas-mal",
+                  "answerExplanation": {
+                    "en": "Means fairly good.",
+                    "fr": "Veut dire assez bien.",
+                    "de": "Bedeutet ziemlich gut."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gender",
+      "stage": "gender",
+      "role": "exercise",
+      "label": {
+        "en": "Gender",
+        "fr": "Genre",
+        "de": "Genus"
+      },
+      "pages": [
+        {
+          "pageId": "gender",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the gender of each noun.",
+            "fr": "Choisissez le genre de chaque nom.",
+            "de": "Wähle das Genus jedes Nomens."
+          },
+          "items": [
+            {
+              "type": "function_gender_select",
+              "itemId": "gender",
+              "ids": ["matin", "soir"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-gaps",
+      "stage": "dialogue_gaps",
+      "role": "exercise",
+      "label": {
+        "en": "Dialogue gaps",
+        "fr": "Dialogue à trous",
+        "de": "Dialoglücken"
+      },
+      "pages": [
+        {
+          "pageId": "gap-1",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-1",
+              "expressionId": "bonjour",
+              "context": {
+                "roleId": "hugo",
+                "text": "Bonjour, Léa !"
+              },
+              "roleId": "lea",
+              "before": "",
+              "after": "Ça va, Hugo ?",
+              "choiceExpressionIds": ["bonjour", "ca-va", "ca-va-bien", "au-revoir"],
+              "answerExplanation": {
+                "en": "Hugo greets her with bonjour, so she greets him back the same way.",
+                "fr": "Hugo la salue avec bonjour, elle répond de la même façon.",
+                "de": "Hugo grüßt mit bonjour, also grüßt sie genauso zurück."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-2",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-2",
+              "expressionId": "ca-va",
+              "context": {
+                "roleId": "lea",
+                "text": "Salut, Hugo !"
+              },
+              "roleId": "hugo",
+              "before": "Salut, Léa !",
+              "after": "",
+              "choiceExpressionIds": ["ca-va", "bonjour", "ca-va-bien", "au-revoir"],
+              "answerExplanation": {
+                "en": "After the greeting he asks how she is: Ça va ?",
+                "fr": "Après la salutation, il demande comment elle va : Ça va ?",
+                "de": "Nach dem Gruß fragt er, wie es ihr geht: Ça va ?"
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-3",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-3",
+              "expressionId": "ca-va-bien",
+              "context": {
+                "roleId": "hugo",
+                "text": "Ça va, Léa ?"
+              },
+              "roleId": "lea",
+              "before": "",
+              "after": "Et toi, Hugo ?",
+              "choiceExpressionIds": ["ca-va-bien", "bonjour", "ca-va", "au-revoir"],
+              "answerExplanation": {
+                "en": "She answers the question Ça va ?",
+                "fr": "Elle répond à la question Ça va ?",
+                "de": "Sie beantwortet die Frage Ça va ?"
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-4",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-4",
+              "expressionId": "au-revoir",
+              "context": {
+                "roleId": "lea",
+                "text": "Au revoir, Hugo !"
+              },
+              "roleId": "hugo",
+              "before": "",
+              "after": "Bonne journée !",
+              "choiceExpressionIds": ["au-revoir", "bonjour", "ca-va", "ca-va-bien"],
+              "answerExplanation": {
+                "en": "Léa says goodbye, so Hugo says goodbye too.",
+                "fr": "Léa dit au revoir, donc Hugo dit aussi au revoir.",
+                "de": "Léa verabschiedet sich, also verabschiedet sich auch Hugo."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "word-order",
+      "stage": "word_order",
+      "role": "exercise",
+      "label": {
+        "en": "Word order",
+        "fr": "Ordre des mots",
+        "de": "Wortstellung"
+      },
+      "pages": [
+        {
+          "pageId": "order-1",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-1",
+              "expressionId": "bonjour",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                {
+                  "tokenId": "t1",
+                  "text": "Bonjour,"
+                },
+                {
+                  "tokenId": "t2",
+                  "text": "monsieur"
+                },
+                {
+                  "tokenId": "t3",
+                  "text": "Martin"
+                },
+                {
+                  "tokenId": "t4",
+                  "text": "!"
+                }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4"]],
+              "answerExplanation": {
+                "en": "The greeting comes first, then the person.",
+                "fr": "La salutation vient d’abord, puis la personne.",
+                "de": "Zuerst der Gruß, dann die Person."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-2",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-2",
+              "expressionId": "ca-va",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                {
+                  "tokenId": "t1",
+                  "text": "Salut,"
+                },
+                {
+                  "tokenId": "t2",
+                  "text": "Paul."
+                },
+                {
+                  "tokenId": "t3",
+                  "text": "Ça va"
+                },
+                {
+                  "tokenId": "t4",
+                  "text": "?"
+                }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4"]],
+              "answerExplanation": {
+                "en": "First the greeting, then the question Ça va ?",
+                "fr": "D’abord la salutation, puis la question Ça va ?",
+                "de": "Erst der Gruß, dann die Frage Ça va ?"
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-3",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-3",
+              "expressionId": "ca-va-bien",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                {
+                  "tokenId": "t1",
+                  "text": "Oui,"
+                },
+                {
+                  "tokenId": "t2",
+                  "text": "ça va bien,"
+                },
+                {
+                  "tokenId": "t3",
+                  "text": "merci"
+                }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3"]],
+              "answerExplanation": {
+                "en": "Oui, then the usual answer ça va bien, merci.",
+                "fr": "Oui, puis la réponse habituelle ça va bien, merci.",
+                "de": "Oui, dann die übliche Antwort ça va bien, merci."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-4",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-4",
+              "expressionId": "au-revoir",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                {
+                  "tokenId": "t1",
+                  "text": "Au revoir"
+                },
+                {
+                  "tokenId": "t2",
+                  "text": "et"
+                },
+                {
+                  "tokenId": "t3",
+                  "text": "merci"
+                },
+                {
+                  "tokenId": "t4",
+                  "text": "!"
+                }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4"]],
+              "answerExplanation": {
+                "en": "Au revoir and merci are joined by et.",
+                "fr": "Au revoir et merci sont reliés par et.",
+                "de": "Au revoir und merci werden mit et verbunden."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "listening",
+      "stage": "listening",
+      "role": "exercise",
+      "label": {
+        "en": "Listening",
+        "fr": "Écoute",
+        "de": "Hören"
+      },
+      "pages": [
+        {
+          "pageId": "listening-1",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-1",
+              "expressionId": "bonjour",
+              "context": {
+                "roleId": "hugo",
+                "text": "Bonjour, Léa !"
+              },
+              "roleId": "lea",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "Bonjour, Hugo !"
+                },
+                {
+                  "optionId": "o2",
+                  "text": "Au revoir, Hugo !"
+                },
+                {
+                  "optionId": "o3",
+                  "text": "À bientôt, Hugo !"
+                },
+                {
+                  "optionId": "o4",
+                  "text": "Et toi ?"
+                }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "Hugo greets her: she greets him back with bonjour.",
+                "fr": "Hugo la salue : elle répond avec bonjour.",
+                "de": "Hugo grüßt sie: Sie grüßt mit bonjour zurück."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-2",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-2",
+              "expressionId": "ca-va",
+              "context": {
+                "roleId": "lea",
+                "text": "Bonjour, Hugo !"
+              },
+              "roleId": "hugo",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "Salut, Léa ! Ça va ?"
+                },
+                {
+                  "optionId": "o2",
+                  "text": "Au revoir, Léa !"
+                },
+                {
+                  "optionId": "o3",
+                  "text": "Ça va bien, merci."
+                },
+                {
+                  "optionId": "o4",
+                  "text": "Et toi ?"
+                }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "He greets her and asks how she is.",
+                "fr": "Il la salue et demande comment elle va.",
+                "de": "Er grüßt sie und fragt, wie es ihr geht."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-3",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-3",
+              "expressionId": "ca-va-bien",
+              "context": {
+                "roleId": "hugo",
+                "text": "Ça va, Léa ?"
+              },
+              "roleId": "lea",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "Oui, ça va bien, merci."
+                },
+                {
+                  "optionId": "o2",
+                  "text": "Bonsoir, Hugo !"
+                },
+                {
+                  "optionId": "o3",
+                  "text": "À bientôt !"
+                },
+                {
+                  "optionId": "o4",
+                  "text": "Et toi ?"
+                }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "She answers the question Ça va ?",
+                "fr": "Elle répond à la question Ça va ?",
+                "de": "Sie beantwortet die Frage Ça va ?"
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-4",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-4",
+              "expressionId": "au-revoir",
+              "context": {
+                "roleId": "hugo",
+                "text": "Bon, je vais au travail. Au revoir !"
+              },
+              "roleId": "lea",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "Au revoir, Hugo ! Bonne journée !"
+                },
+                {
+                  "optionId": "o2",
+                  "text": "Bonjour, Hugo !"
+                },
+                {
+                  "optionId": "o3",
+                  "text": "Ça va ?"
+                },
+                {
+                  "optionId": "o4",
+                  "text": "Et toi ?"
+                }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "Hugo leaves, so she says goodbye too.",
+                "fr": "Hugo part, donc elle dit aussi au revoir.",
+                "de": "Hugo geht, also verabschiedet sie sich auch."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": {
+        "en": "Final exam",
+        "fr": "Examen final",
+        "de": "Abschlussprüfung"
+      },
+      "pages": [
+        {
+          "pageId": "exam-words",
+          "estimatedDurationS": 60,
+          "timeLimitS": 90,
+          "instructions": {
+            "en": "Translate each word into French, with its article for nouns.",
+            "fr": "Traduisez chaque mot en français, avec l’article pour les noms.",
+            "de": "Übersetze jedes Wort ins Französische, bei Nomen mit Artikel."
+          },
+          "items": [
+            {
+              "type": "function_translation_exam",
+              "itemId": "word-matin",
+              "wordId": "matin",
+              "prompt": {
+                "en": "morning",
+                "de": "Morgen"
+              },
+              "accepted": {
+                "answers": ["un matin"]
+              },
+              "answerExplanation": {
+                "en": "Masculine noun: un matin. Le matin means in the morning.",
+                "fr": "Nom masculin : un matin. Le matin veut dire pendant la matinée.",
+                "de": "Maskulines Nomen: un matin. Le matin heißt am Morgen."
+              }
+            },
+            {
+              "type": "function_translation_exam",
+              "itemId": "word-soir",
+              "wordId": "soir",
+              "prompt": {
+                "en": "evening",
+                "de": "Abend"
+              },
+              "accepted": {
+                "answers": ["un soir"]
+              },
+              "answerExplanation": {
+                "en": "Masculine noun: un soir. Le soir means in the evening.",
+                "fr": "Nom masculin : un soir. Le soir veut dire pendant la soirée.",
+                "de": "Maskulines Nomen: un soir. Le soir heißt am Abend."
+              }
+            },
+            {
+              "type": "function_translation_exam",
+              "itemId": "word-tres-bien",
+              "wordId": "tres-bien",
+              "prompt": {
+                "en": "very well",
+                "de": "sehr gut"
+              },
+              "accepted": {
+                "answers": ["très bien"]
+              },
+              "answerExplanation": {
+                "en": "A strong positive answer: très (very) + bien (well).",
+                "fr": "Une réponse très positive : très + bien.",
+                "de": "Eine sehr positive Antwort: très (sehr) + bien (gut)."
+              }
+            },
+            {
+              "type": "function_translation_exam",
+              "itemId": "word-pas-mal",
+              "wordId": "pas-mal",
+              "prompt": {
+                "en": "not bad",
+                "de": "nicht schlecht"
+              },
+              "accepted": {
+                "answers": ["pas mal"]
+              },
+              "answerExplanation": {
+                "en": "Means fairly good.",
+                "fr": "Veut dire assez bien.",
+                "de": "Bedeutet ziemlich gut."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-replies-1",
+          "estimatedDurationS": 120,
+          "timeLimitS": 180,
+          "instructions": {
+            "en": "Build the answer. Not every word fits.",
+            "fr": "Construisez la réponse. Tous les mots ne servent pas.",
+            "de": "Bilde die Antwort. Nicht jedes Wort passt."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "reply-1",
+              "expressionId": "bonjour",
+              "context": {
+                "roleId": "hugo",
+                "text": "Bonjour, Léa !"
+              },
+              "roleId": "lea",
+              "tokens": [
+                {
+                  "tokenId": "t1",
+                  "text": "Ah,"
+                },
+                {
+                  "tokenId": "t2",
+                  "text": "bonjour,"
+                },
+                {
+                  "tokenId": "t3",
+                  "text": "Hugo"
+                },
+                {
+                  "tokenId": "t4",
+                  "text": "!"
+                },
+                {
+                  "tokenId": "t5",
+                  "text": "jour"
+                }
+              ],
+              "distractorTokenIds": ["t5"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4"]],
+              "answerExplanation": {
+                "en": "Bonjour is one word.",
+                "fr": "Bonjour s’écrit en un mot.",
+                "de": "Bonjour schreibt man in einem Wort."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-2",
+              "expressionId": "ca-va",
+              "context": {
+                "roleId": "lea",
+                "text": "Bonjour, Hugo !"
+              },
+              "roleId": "hugo",
+              "tokens": [
+                {
+                  "tokenId": "t1",
+                  "text": "Bonjour,"
+                },
+                {
+                  "tokenId": "t2",
+                  "text": "Léa,"
+                },
+                {
+                  "tokenId": "t3",
+                  "text": "ça va"
+                },
+                {
+                  "tokenId": "t4",
+                  "text": "?"
+                },
+                {
+                  "tokenId": "t5",
+                  "text": "sa"
+                }
+              ],
+              "distractorTokenIds": ["t5"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4"]],
+              "answerExplanation": {
+                "en": "Ça is written with a cédille on c, not sa.",
+                "fr": "Ça s’écrit avec une cédille sur le c, pas sa.",
+                "de": "Ça schreibt man mit cédille am c, nicht sa."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-3",
+              "expressionId": "ca-va-bien",
+              "context": {
+                "roleId": "hugo",
+                "text": "Ça va, Léa ?"
+              },
+              "roleId": "lea",
+              "tokens": [
+                {
+                  "tokenId": "t1",
+                  "text": "Ça va bien,"
+                },
+                {
+                  "tokenId": "t2",
+                  "text": "merci,"
+                },
+                {
+                  "tokenId": "t3",
+                  "text": "Hugo"
+                },
+                {
+                  "tokenId": "t4",
+                  "text": "bon"
+                }
+              ],
+              "distractorTokenIds": ["t4"],
+              "acceptedOrders": [["t1", "t2", "t3"]],
+              "answerExplanation": {
+                "en": "Ça va bien: bien, not bon.",
+                "fr": "Ça va bien : bien, pas bon.",
+                "de": "Ça va bien: bien, nicht bon."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-4",
+              "expressionId": "au-revoir",
+              "context": {
+                "roleId": "hugo",
+                "text": "Bon, je vais au travail."
+              },
+              "roleId": "lea",
+              "tokens": [
+                {
+                  "tokenId": "t1",
+                  "text": "Au revoir,"
+                },
+                {
+                  "tokenId": "t2",
+                  "text": "Hugo,"
+                },
+                {
+                  "tokenId": "t3",
+                  "text": "et"
+                },
+                {
+                  "tokenId": "t4",
+                  "text": "bonne journée"
+                },
+                {
+                  "tokenId": "t5",
+                  "text": "!"
+                },
+                {
+                  "tokenId": "t6",
+                  "text": "bon"
+                }
+              ],
+              "distractorTokenIds": ["t6"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]],
+              "answerExplanation": {
+                "en": "Au revoir, then et and the wish bonne journée.",
+                "fr": "Au revoir, puis et et le souhait bonne journée.",
+                "de": "Au revoir, dann et und der Wunsch bonne journée."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-dialogue",
+          "estimatedDurationS": 124,
+          "timeLimitS": 186,
+          "instructions": {
+            "en": "Fill each gap with an expression from this lesson.",
+            "fr": "Complétez chaque trou avec une expression de la leçon.",
+            "de": "Fülle jede Lücke mit einem Ausdruck aus dieser Lektion."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_typing",
+              "itemId": "exam-dialogue",
+              "lines": [
+                {
+                  "lineId": "exam-line-1",
+                  "roleId": "hugo",
+                  "before": "Il est tard ! Bonsoir, Léa !",
+                  "translation": {
+                    "en": "It’s late! Good evening, Léa!",
+                    "de": "Es ist spät! Guten Abend, Léa!"
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-2",
+                  "roleId": "lea",
+                  "before": "Salut, Hugo !",
+                  "translation": {
+                    "en": "Hi, Hugo!",
+                    "de": "Hallo, Hugo!"
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-3",
+                  "roleId": "hugo",
+                  "before": "Tu es au café ?",
+                  "translation": {
+                    "en": "Are you at the café? How are you?",
+                    "de": "Bist du im Café? Wie geht’s?"
+                  },
+                  "gap": {
+                    "gapId": "gap-3",
+                    "expressionId": "ca-va",
+                    "accepted": {
+                      "answers": ["Ça va"]
+                    },
+                    "answerExplanation": {
+                      "en": "He asks how she is: Ça va ?",
+                      "fr": "Il demande comment elle va : Ça va ?",
+                      "de": "Er fragt, wie es ihr geht: Ça va ?"
+                    }
+                  },
+                  "after": "?"
+                },
+                {
+                  "lineId": "exam-line-4",
+                  "roleId": "lea",
+                  "before": "Oui, ça va bien, merci. Et toi ?",
+                  "translation": {
+                    "en": "Yes, I’m fine, thanks. And you?",
+                    "de": "Ja, mir geht’s gut, danke. Und dir?"
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-5",
+                  "roleId": "hugo",
+                  "before": "",
+                  "translation": {
+                    "en": "I’m fine, thanks. I’m a bit tired.",
+                    "de": "Mir geht’s gut, danke. Ich bin ein bisschen müde."
+                  },
+                  "gap": {
+                    "gapId": "gap-5",
+                    "expressionId": "ca-va-bien",
+                    "accepted": {
+                      "answers": ["Ça va bien, merci", "Pas mal, merci"]
+                    },
+                    "answerExplanation": {
+                      "en": "He answers Et toi ?: Ça va bien, merci.",
+                      "fr": "Il répond à Et toi ? : Ça va bien, merci.",
+                      "de": "Er antwortet auf Et toi ?: Ça va bien, merci."
+                    }
+                  },
+                  "after": ". Je suis un peu fatigué."
+                },
+                {
+                  "lineId": "exam-line-6",
+                  "roleId": "lea",
+                  "before": "Moi aussi. Bon, je rentre.",
+                  "translation": {
+                    "en": "Me too. Well, I’m going home.",
+                    "de": "Ich auch. Also, ich gehe nach Hause."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-7",
+                  "roleId": "hugo",
+                  "before": "D’accord.",
+                  "translation": {
+                    "en": "Okay. Goodbye, Léa!",
+                    "de": "Okay. Auf Wiedersehen, Léa!"
+                  },
+                  "gap": {
+                    "gapId": "gap-7",
+                    "expressionId": "au-revoir",
+                    "accepted": {
+                      "answers": ["Au revoir", "Salut"]
+                    },
+                    "answerExplanation": {
+                      "en": "He says goodbye: au revoir (or salut between friends).",
+                      "fr": "Il dit au revoir : au revoir (ou salut entre amis).",
+                      "de": "Er verabschiedet sich: au revoir (oder salut unter Freunden)."
+                    }
+                  },
+                  "after": ", Léa !"
+                },
+                {
+                  "lineId": "exam-line-8",
+                  "roleId": "lea",
+                  "before": "À bientôt, Hugo !",
+                  "translation": {
+                    "en": "See you soon, Hugo!",
+                    "de": "Bis bald, Hugo!"
+                  },
+                  "gap": null,
+                  "after": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

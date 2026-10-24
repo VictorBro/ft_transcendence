@@ -8,6 +8,8 @@ import {
   type Brief,
   type LessonContent,
 } from '../schemas/artifacts';
+import type { Level } from '../../schemas/item';
+import type { Language } from '../../schemas/language';
 import type { LessonOutlineEntry } from '../../schemas/lesson';
 import { checkMinutes, sum } from './common';
 import { checkFunctionsBrief, checkFunctionsContent } from './functions';
@@ -60,8 +62,8 @@ export interface ValidationResult<T> {
 /** Where the file belongs: its entry in the outline, and the course. */
 export interface OutlineContext {
   entry: LessonOutlineEntry;
-  lang: string;
-  level: string;
+  lang: Language;
+  level: Level;
   /** The entry's current hash, to detect a stale file; leave it out to skip that check. */
   outlineHash?: string;
 }
@@ -151,7 +153,7 @@ export function validateContent(
     return invalid([
       {
         path: '',
-        message: 'vocabulary lessons have no content file: the brief is the whole lesson (P2-04)',
+        message: 'vocabulary lessons have no content file: the brief is the whole lesson',
       },
     ]);
   const parsed = contentSchema(kind, ctx.lang).safeParse(data);

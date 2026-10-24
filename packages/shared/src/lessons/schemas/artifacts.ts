@@ -62,21 +62,6 @@ export function isSupportedKind(kind: LessonKind): kind is SupportedKind {
 }
 
 /**
- * The kinds the prototype's lesson generator wrote. We have no generator
- * (lessons are written with Claude Code, #137), and #135 removes this
- * constant and isGeneratedKind.
- */
-export const GENERATED_KINDS = [
-  'vocabulary',
-  'grammar',
-] as const satisfies readonly SupportedKind[];
-export type GeneratedKind = (typeof GENERATED_KINDS)[number];
-
-export function isGeneratedKind(kind: LessonKind): kind is GeneratedKind {
-  return (GENERATED_KINDS as readonly string[]).includes(kind);
-}
-
-/**
  * A brief of any kind. Each kind has its own `kind` value ("vocabulary",
  * "grammar"…), so after `if (brief.kind === 'grammar')` TypeScript knows
  * it is a GrammarBrief.

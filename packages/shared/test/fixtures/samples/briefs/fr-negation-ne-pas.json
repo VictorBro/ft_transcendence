@@ -1,0 +1,223 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-negation-ne-pas",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "La négation ne… pas",
+  "objective": {
+    "en": "Learn how to form standard negative sentences in French using ne...pas and n'...pas.",
+    "fr": "Apprendre à former des phrases négatives simples en français avec ne...pas et n'...pas.",
+    "de": "Lernen, wie man einfache Verneinungssätze im Französischen mit ne...pas und n'...pas bildet."
+  },
+  "estimatedMinutes": 15,
+  "provenance": {
+    "generator": "claude-code-direct-authoring",
+    "model": "claude-opus-5-5",
+    "promptVersion": "brief-v7",
+    "generatedAt": "2026-10-16T17:56:30.556Z",
+    "inputHashes": {
+      "outline": "078446959aa285cbf75f09d67558dd26db4d3f7725b45d2e27e09f93693ea261"
+    }
+  },
+  "kind": "grammar",
+  "topic": "negation",
+  "scopeBoundaries": {
+    "en": "Covers present tense negation with single verbs. Excludes complex negation like ne...jamais or ne...rien.",
+    "fr": "Couvre la négation au présent avec des verbes simples. Exclut les négations complexes comme ne...jamais ou ne...rien.",
+    "de": "Deckt die Verneinung im Präsens mit einfachen Verben ab. Schließt komplexe Verneinungen wie ne...jamais oder ne...rien aus."
+  },
+  "prerequisites": [
+    {
+      "en": "Basic understanding of French subject pronouns and simple present tense verbs.",
+      "fr": "Compréhension de base des pronoms sujets et des verbes au présent en français.",
+      "de": "Grundlegendes Verständnis französischer Subjektpronomen und Verben im Präsens."
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-ne-pas-structure",
+      "summary": {
+        "en": "Place 'ne' before the verb and 'pas' after the verb when it starts with a consonant.",
+        "fr": "Placer 'ne' devant le verbe et 'pas' après le verbe quand il commence par une consonne.",
+        "de": "'ne' vor das Verb und 'pas' nach das Verb setzen, wenn es mit einem Konsonanten beginnt."
+      }
+    },
+    {
+      "id": "rule-n-elision",
+      "summary": {
+        "en": "Use 'n'' instead of 'ne' before a verb starting with a vowel or mute 'h'.",
+        "fr": "Utiliser 'n'' au lieu de 'ne' devant un verbe commençant par une voyelle ou un 'h' muet.",
+        "de": "Verwenden Sie 'n'' anstelle von 'ne' vor einem Verb, das mit einem Vokal oder stummen 'h' beginnt."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-ne-pas-basic",
+      "title": {
+        "en": "Basic Negation with ne...pas",
+        "fr": "La négation de base avec ne...pas",
+        "de": "Grundlegende Verneinung mit ne...pas"
+      },
+      "ruleIds": ["rule-ne-pas-structure"],
+      "explanationPlan": {
+        "en": "Explain how ne and pas wrap around a conjugated verb that begins with a consonant.",
+        "fr": "Expliquer comment ne et pas encadrent un verbe conjugué commençant par une consonne.",
+        "de": "Erklären, wie ne und pas ein konjugiertes Verb umrahmen, das mit einem Konsonanten beginnt."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Je ne parle pas anglais.",
+          "translation": {
+            "en": "I do not speak English.",
+            "de": "Ich spreche kein Englisch."
+          }
+        },
+        {
+          "text": "Il ne mange pas de viande.",
+          "translation": {
+            "en": "He does not eat meat.",
+            "de": "Er isst kein Fleisch."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Forgetting to include 'pas' after the verb.",
+          "fr": "Oublier de mettre 'pas' après le verbe.",
+          "de": "Vergessen, 'pas' nach dem Verb einzufügen."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-basic-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 3,
+          "ruleIds": ["rule-ne-pas-structure"],
+          "estimatedDurationS": 30
+        },
+        {
+          "id": "ex-basic-word-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-ne-pas-structure"],
+          "estimatedDurationS": 75
+        },
+        {
+          "id": "ex-basic-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 3,
+          "ruleIds": ["rule-ne-pas-structure"],
+          "estimatedDurationS": 45
+        },
+        {
+          "id": "ex-basic-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 4,
+          "ruleIds": ["rule-ne-pas-structure"],
+          "estimatedDurationS": 100
+        }
+      ]
+    },
+    {
+      "id": "block-n-elision",
+      "title": {
+        "en": "Elision with n'...pas",
+        "fr": "L'élision avec n'...pas",
+        "de": "Elision mit n'...pas"
+      },
+      "ruleIds": ["rule-n-elision"],
+      "explanationPlan": {
+        "en": "Demonstrate how ne becomes n' when the verb starts with a vowel or mute h.",
+        "fr": "Montrer comment ne devient n' quand le verbe commence par une voyelle ou un h muet.",
+        "de": "Zeigen, wie ne zu n' wird, wenn das Verb mit einem Vokal oder stummen h beginnt."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Je n'habite pas à Paris.",
+          "translation": {
+            "en": "I do not live in Paris.",
+            "de": "Ich wohne nicht in Paris."
+          }
+        },
+        {
+          "text": "Elle n'aime pas le café.",
+          "translation": {
+            "en": "She does not like coffee.",
+            "de": "Sie mag keinen Kaffee."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Writing 'ne' instead of 'n'' before a vowel sound.",
+          "fr": "Écrire 'ne' au lieu de 'n'' devant un son voyelle.",
+          "de": "'ne' statt 'n'' vor einem Vokallaut schreiben."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-elision-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-n-elision"],
+          "estimatedDurationS": 40
+        },
+        {
+          "id": "ex-elision-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-n-elision"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-elision-order",
+          "type": "grammar_word_order",
+          "itemCount": 4,
+          "ruleIds": ["rule-n-elision"],
+          "estimatedDurationS": 100
+        }
+      ]
+    }
+  ],
+  "feedbackPlaceholder": {
+    "estimatedDurationS": 30
+  },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-ne-pas-structure", "rule-n-elision"],
+        "estimatedDurationS": 75,
+        "timeLimitS": 120
+      },
+      {
+        "pageId": "exam-ne-pas",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["rule-ne-pas-structure"],
+        "estimatedDurationS": 45,
+        "timeLimitS": 70
+      },
+      {
+        "pageId": "exam-elision",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-n-elision"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 90
+      }
+    ]
+  },
+  "scoring": {
+    "practiceWeight": 35,
+    "examWeight": 65,
+    "orthographyCredit": 0.5
+  },
+  "newVerbs": []
+}
