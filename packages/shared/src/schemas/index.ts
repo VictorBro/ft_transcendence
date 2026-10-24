@@ -1,5 +1,6 @@
 export * from './course';
 export * from './errors';
+export * from './gamification';
 export * from './health';
 export * from './item';
 export * from './language';
