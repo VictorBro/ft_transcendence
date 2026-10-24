@@ -7,6 +7,7 @@ import {
   type ReadingBrief,
   type ReadingContent,
   type ReadingItem,
+  type ReadingStage,
 } from '../schemas/reading';
 import {
   documentWords,
@@ -14,18 +15,36 @@ import {
   readingPageEstimate,
   readingTimeLimit,
 } from '../domain/readingLesson';
-import type { Issues } from './artifacts';
+import { sameSet } from './common';
+import type { Issues } from './issues';
 
 /**
- * Reading checks beyond the schemas (SPEC section 9, "Validation"): key words, word counts per level,
- * highlights, the six steps with their document views, the planned questions, options, piece orders,
- * the exam page and the page rules. A failure makes the file invalid.
+ * The checks of a reading lesson beyond its schemas.
+ *
+ * The brief: unique key words with distinct translations (they become
+ * matching labels), and planned documents of the right length for the
+ * level.
+ *
+ * The content follows the brief and the page rules:
+ * - the documents: one main and one exam document, of the right length,
+ *   every key word highlighted in the main one;
+ * - the steps: the six stages in order, one page each, the document
+ *   first on its page in the view of its stage;
+ * - the pages: flashcards and matching cover every key word, the skim
+ *   and detail questions are the planned ones, the structure task uses
+ *   every piece;
+ * - the exam: five questions of the planned types about a new document,
+ *   none of them asked before;
+ * - the times: page durations and the exam countdown follow the page
+ *   rules (../domain/readingLesson.ts computes them).
  */
 
-/** Same members with the same multiplicity, in any order. */
-const sameSet = (a: string[], b: string[]) =>
-  a.length === b.length && [...a].sort().join('\u0000') === [...b].sort().join('\u0000');
+/* =================================================================== brief */
 
+/**
+ * A document's word count is within the range of the level
+ * (READING_WORDS): 40 to 80 words for an A1 main document.
+ */
 function checkWords(
   words: number,
   [min, max]: readonly [number, number],
@@ -58,15 +77,16 @@ export function checkReadingBrief(b: ReadingBrief, issues: Issues) {
       'keywords',
       `${locale} matching label (first translation)`,
     );
+  const { main, exam } = b.documents;
   checkWords(
-    b.documents.main.targetWords,
+    main.targetWords,
     range.main,
     'documents.main.targetWords',
     'the main document',
     issues,
   );
   checkWords(
-    b.documents.exam.targetWords,
+    exam.targetWords,
     range.exam,
     'documents.exam.targetWords',
     'the exam document',
@@ -80,10 +100,13 @@ export function checkReadingBrief(b: ReadingBrief, issues: Issues) {
   issues.unique(b.exam.types, 'exam.types', 'question type');
 }
 
+/* ================================================================= content */
+
 type Question = Extract<ReadingItem, { type: 'reading_choice' | 'reading_true_false' }>;
 const isQuestion = (item: ReadingItem): item is Question =>
   item.type === 'reading_choice' || item.type === 'reading_true_false';
 
+/** A question's choices: unique ids and texts, and the answer is one of them. */
 function checkOptions(
   item: { options: { optionId: string; text: string }[]; answerOptionId: string },
   path: string,
@@ -106,12 +129,14 @@ function checkOptions(
   );
 }
 
-/** Document view of each step: the main document open after the skim, the exam document on the exam page. */
+/**
+ * The document each stage shows, and how: the main document in the skim
+ * view (a few seconds, then hidden), then open for the detail and
+ * structure questions; the exam document on the exam page. The flashcards
+ * and matching pages show no document.
+ */
 const VIEWS: Partial<
-  Record<
-    (typeof READING_STAGES)[number],
-    { documentId: 'main' | 'exam'; view: 'skim' | 'open' | 'exam' }
-  >
+  Record<ReadingStage, { documentId: 'main' | 'exam'; view: 'skim' | 'open' | 'exam' }>
 > = {
   skim: { documentId: 'main', view: 'skim' },
   detail: { documentId: 'main', view: 'open' },
@@ -119,14 +144,41 @@ const VIEWS: Partial<
   exam: { documentId: 'exam', view: 'exam' },
 };
 
-/** The lesson follows its brief and the page rules (section 9). */
-export function checkReadingContent(c: ReadingContent, b: ReadingBrief, issues: Issues) {
-  const level = c.level as Level;
-  const range = READING_WORDS[level];
-  const keywordIds = b.keywords.map((k) => k.id);
-  const documents = new Map(c.documents.map((d) => [d.documentId, d]));
+/** The items of a stage's page (each stage has one page). */
+const stageItems = (c: ReadingContent, stage: ReadingStage) =>
+  c.steps[READING_STAGES.indexOf(stage)].pages[0].items;
+/** The path of a stage's page: steps.3.pages.0 for detail. */
+const stagePath = (stage: ReadingStage) => `steps.${READING_STAGES.indexOf(stage)}.pages.0`;
 
-  // Documents: one of each, the brief's genre, word counts in range, highlights in the main document only.
+export function checkReadingContent(c: ReadingContent, b: ReadingBrief, issues: Issues) {
+  checkDocuments(c, b, issues);
+  checkSteps(c, issues);
+  // The pages can only be read once the documents and steps are right (and nothing else is wrong).
+  if (issues.list.length) return;
+
+  const keywordIds = b.keywords.map((k) => k.id);
+  checkKeywordPages(c, keywordIds, issues);
+  checkSkim(c, b, issues);
+  checkDetail(c, b, issues);
+  checkStructure(c, issues);
+  checkExam(c, b, issues);
+  checkPageTimes(c, issues);
+  issues.check(
+    b.estimatedMinutes === c.estimatedMinutes,
+    'estimatedMinutes',
+    `must equal the brief's ${b.estimatedMinutes} minutes`,
+  );
+}
+
+/**
+ * The documents: one main and one exam document, of the brief's genre,
+ * with a word count in range. Highlights mark the key words in the main
+ * document: each one is a key word found as a whole word, and every key
+ * word is highlighted. The exam document has none.
+ */
+function checkDocuments(c: ReadingContent, b: ReadingBrief, issues: Issues) {
+  const range = READING_WORDS[c.level as Level];
+  const keywordIds = b.keywords.map((k) => k.id);
   issues.check(c.genre === b.genre, 'genre', `must equal the brief genre ${b.genre}`);
   issues.check(
     sameSet(
@@ -171,8 +223,14 @@ export function checkReadingContent(c: ReadingContent, b: ReadingBrief, issues: 
           `key word ${id} is never highlighted`,
         );
   });
+}
 
-  // Steps in order, each one page; the document first on its page, in the view of its stage.
+/**
+ * The six stages in order, each with its role. A stage that shows a
+ * document (VIEWS) has it first on its page, in the right view; only the
+ * skim view has skimSeconds. The others show no document.
+ */
+function checkSteps(c: ReadingContent, issues: Issues) {
   READING_STAGES.forEach((stage, si) => {
     const step = c.steps[si];
     if (
@@ -196,122 +254,135 @@ export function checkReadingContent(c: ReadingContent, b: ReadingBrief, issues: 
     }
     const doc = page.items[0];
     if (
-      issues.check(
+      !issues.check(
         docs.length === 1 && doc.type === 'reading_document',
         path,
         `the ${stage} page shows one document, first on the page`,
-      ) &&
-      doc.type === 'reading_document'
-    ) {
-      issues.check(
-        doc.documentId === want.documentId && doc.view === want.view,
-        `${path}.items.0`,
-        `the ${stage} page shows the ${want.documentId} document in the ${want.view} view`,
-      );
-      issues.check(
-        (doc.view === 'skim') === (doc.skimSeconds !== null),
-        `${path}.items.0.skimSeconds`,
-        'only the skim view has skimSeconds',
-      );
-    }
+      ) ||
+      doc.type !== 'reading_document'
+    )
+      return;
+    issues.check(
+      doc.documentId === want.documentId && doc.view === want.view,
+      `${path}.items.0`,
+      `the ${stage} page shows the ${want.documentId} document in the ${want.view} view`,
+    );
+    issues.check(
+      (doc.view === 'skim') === (doc.skimSeconds !== null),
+      `${path}.items.0.skimSeconds`,
+      'only the skim view has skimSeconds',
+    );
   });
-  if (issues.list.length) return;
+}
 
-  const items = (stage: (typeof READING_STAGES)[number]) =>
-    c.steps[READING_STAGES.indexOf(stage)].pages[0].items;
-  const path = (stage: (typeof READING_STAGES)[number]) =>
-    `steps.${READING_STAGES.indexOf(stage)}.pages.0`;
+/* =================================================================== pages */
 
-  // Flashcards and matching cover every key word.
-  const [cards, ...moreCards] = items('flashcards');
+/** Flashcards and matching: one item each, with every key word once. */
+function checkKeywordPages(c: ReadingContent, keywordIds: string[], issues: Issues) {
+  const [cards, ...moreCards] = stageItems(c, 'flashcards');
   issues.check(
     cards.type === 'reading_flashcards' &&
       !moreCards.length &&
       sameSet(cards.keywordIds, keywordIds),
-    path('flashcards'),
+    stagePath('flashcards'),
     'one reading_flashcards item with every key word once',
   );
-  const [matching, ...moreMatching] = items('matching');
+  const [matching, ...moreMatching] = stageItems(c, 'matching');
   issues.check(
     matching.type === 'reading_keyword_matching' &&
       !moreMatching.length &&
       sameSet(matching.keywordIds, keywordIds),
-    path('matching'),
+    stagePath('matching'),
     'one reading_keyword_matching item with every key word once',
   );
+}
 
-  // Skim: the document, then one question with the brief's focus.
-  const skim = items('skim').slice(1);
-  const question = skim[0];
+/** Skim: after the document, one question about the brief's focus (genre, author or purpose). */
+function checkSkim(c: ReadingContent, b: ReadingBrief, issues: Issues) {
+  const path = stagePath('skim');
+  const questions = stageItems(c, 'skim').slice(1);
+  const question = questions[0];
   if (
-    issues.check(
-      skim.length === 1 && question.type === 'reading_skim_choice',
-      path('skim'),
+    !issues.check(
+      questions.length === 1 && question.type === 'reading_skim_choice',
+      path,
       'the skim page holds the document and one reading_skim_choice',
-    ) &&
-    question.type === 'reading_skim_choice'
-  ) {
-    issues.check(
-      question.focus === b.skim.focus,
-      path('skim'),
-      `the skim question asks about ${b.skim.focus}`,
-    );
-    checkOptions(question, `${path('skim')}.items.1`, issues);
-  }
+    ) ||
+    question.type !== 'reading_skim_choice'
+  )
+    return;
+  issues.check(
+    question.focus === b.skim.focus,
+    path,
+    `the skim question asks about ${b.skim.focus}`,
+  );
+  checkOptions(question, `${path}.items.1`, issues);
+}
 
-  // Detail: the planned questions in order, with their IDs and types.
-  const detail = items('detail').slice(1);
+/** Detail: after the document, the brief's questions in order, with their ids and types. */
+function checkDetail(c: ReadingContent, b: ReadingBrief, issues: Issues) {
+  const path = stagePath('detail');
+  const questions = stageItems(c, 'detail').slice(1);
   const planned = b.detailQuestions;
   issues.check(
-    detail.length === planned.length &&
-      detail.every((q, i) => q.itemId === planned[i].id && q.type === planned[i].type),
-    path('detail'),
+    questions.length === planned.length &&
+      questions.every((q, i) => q.itemId === planned[i].id && q.type === planned[i].type),
+    path,
     `expected the brief's questions in order: ${planned.map((q) => `${q.id} (${q.type})`).join(', ')}`,
   );
-  detail.forEach(
-    (q, i) =>
-      q.type === 'reading_choice' && checkOptions(q, `${path('detail')}.items.${i + 1}`, issues),
+  questions.forEach(
+    (q, i) => q.type === 'reading_choice' && checkOptions(q, `${path}.items.${i + 1}`, issues),
   );
+}
 
-  // Structure: one ordering task whose accepted orders use every piece once.
-  const structure = items('structure').slice(1);
-  const task = structure[0];
+/** Structure: after the document, one task to put pieces in order; each accepted order uses every piece once. */
+function checkStructure(c: ReadingContent, issues: Issues) {
+  const path = stagePath('structure');
+  const tasks = stageItems(c, 'structure').slice(1);
+  const task = tasks[0];
   if (
-    issues.check(
-      structure.length === 1 && task.type === 'reading_order',
-      path('structure'),
+    !issues.check(
+      tasks.length === 1 && task.type === 'reading_order',
+      path,
       'the structure page holds the document and one reading_order',
-    ) &&
-    task.type === 'reading_order'
-  ) {
-    const pieceIds = task.pieces.map((p) => p.pieceId);
-    issues.unique(pieceIds, path('structure'), 'piece ID');
-    issues.unique(
-      task.pieces.map((p) => p.text),
-      path('structure'),
-      'piece text',
+    ) ||
+    task.type !== 'reading_order'
+  )
+    return;
+  const pieceIds = task.pieces.map((p) => p.pieceId);
+  issues.unique(pieceIds, path, 'piece ID');
+  issues.unique(
+    task.pieces.map((p) => p.text),
+    path,
+    'piece text',
+  );
+  for (const order of task.acceptedOrders)
+    issues.check(
+      sameSet(order, pieceIds),
+      path,
+      'each accepted order uses every piece exactly once',
     );
-    for (const order of task.acceptedOrders)
-      issues.check(
-        sameSet(order, pieceIds),
-        path('structure'),
-        'each accepted order uses every piece exactly once',
-      );
-  }
+}
 
-  // Exam: five questions of the planned types.
-  const exam = items('exam').slice(1);
+/**
+ * The exam: after the exam document, five questions of the planned
+ * types. It tests a new document: no question of the skim or detail page
+ * again (ignoring case and punctuation), and no paragraph of the main
+ * document in the exam one.
+ */
+function checkExam(c: ReadingContent, b: ReadingBrief, issues: Issues) {
+  const path = stagePath('exam');
+  const questions = stageItems(c, 'exam').slice(1);
   issues.check(
-    exam.length === READING_LIMITS.examQuestions &&
-      exam.every((q) => isQuestion(q) && b.exam.types.includes(q.type)),
-    path('exam'),
+    questions.length === READING_LIMITS.examQuestions &&
+      questions.every((q) => isQuestion(q) && b.exam.types.includes(q.type)),
+    path,
     `the exam page holds the document and ${READING_LIMITS.examQuestions} questions of type ${b.exam.types.join(' / ')}`,
   );
-  exam.forEach(
-    (q, i) =>
-      q.type === 'reading_choice' && checkOptions(q, `${path('exam')}.items.${i + 1}`, issues),
+  questions.forEach(
+    (q, i) => q.type === 'reading_choice' && checkOptions(q, `${path}.items.${i + 1}`, issues),
   );
-  // The exam tests a second document (P5-05): no question of the skim or detail page again, no paragraph of the main document.
+
   const asked = (q: ReadingItem) =>
     q.type === 'reading_true_false' ? q.statement : 'question' in q ? q.question : undefined;
   const key = (text: string) =>
@@ -320,36 +391,42 @@ export function checkReadingContent(c: ReadingContent, b: ReadingBrief, issues: 
       .replace(/[\s.?!…]+/gu, ' ')
       .trim();
   const practice = new Set(
-    [...skim, ...detail]
+    [...stageItems(c, 'skim').slice(1), ...stageItems(c, 'detail').slice(1)]
       .map(asked)
       .filter((t) => t !== undefined)
       .map(key),
   );
-  exam.forEach((q, i) => {
+  questions.forEach((q, i) => {
     const text = asked(q);
     issues.check(
       text === undefined || !practice.has(key(text)),
-      `${path('exam')}.items.${i + 1}`,
+      `${path}.items.${i + 1}`,
       'repeats a skim or detail question',
     );
   });
+
+  const documents = new Map(c.documents.map((d) => [d.documentId, d]));
   const main = documents.get('main')?.paragraphs ?? [];
   issues.check(
     !(documents.get('exam')?.paragraphs ?? []).some((p) => main.includes(p)),
     'documents',
     'the exam document repeats a paragraph of the main document',
   );
+}
 
-  // Page estimates and the exam limit follow the page rules; only the exam page has a countdown.
+/** Page durations follow the page rules; only the exam page has a countdown, 1.5 × its duration. */
+function checkPageTimes(c: ReadingContent, issues: Issues) {
+  const documents = new Map(c.documents.map((d) => [d.documentId, d]));
   c.steps.forEach((step, si) => {
     const page = step.pages[0];
-    const estimate = readingPageEstimate(page.items, documents, level, step.stage === 'exam');
+    const exam = step.stage === 'exam';
+    const estimate = readingPageEstimate(page.items, documents, c.level as Level, exam);
     issues.check(
       page.estimatedDurationS === estimate,
       `steps.${si}.pages.0.estimatedDurationS`,
       `must be ${estimate} s by the page rules (section 9)`,
     );
-    const limit = step.stage === 'exam' ? readingTimeLimit(estimate) : null;
+    const limit = exam ? readingTimeLimit(estimate) : null;
     issues.check(
       page.timeLimitS === limit,
       `steps.${si}.pages.0.timeLimitS`,
@@ -358,9 +435,4 @@ export function checkReadingContent(c: ReadingContent, b: ReadingBrief, issues: 
         : `must be ${limit} s (1.5 × estimate, rounded up to 5 s)`,
     );
   });
-  issues.check(
-    b.estimatedMinutes === c.estimatedMinutes,
-    'estimatedMinutes',
-    `must equal the brief's ${b.estimatedMinutes} minutes`,
-  );
 }
