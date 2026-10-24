@@ -1,0 +1,202 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-verb-etre-present",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Le verbe être au présent",
+  "objective": {
+    "en": "Use the present tense of être with every subject pronoun.",
+    "fr": "Employer être au présent avec tous les pronoms sujets.",
+    "de": "Être im Präsens mit allen Subjektpronomen verwenden."
+  },
+  "estimatedMinutes": 10,
+  "provenance": {
+    "generator": "fixture",
+    "model": "none",
+    "promptVersion": "fixture-1",
+    "generatedAt": "2026-10-06T00:00:00Z",
+    "inputHashes": {
+      "outline": "5c2392d3863624855b6f75ffe68c23d6dd290c31c1f2f6004022fb2b42d34e34"
+    }
+  },
+  "kind": "grammar",
+  "topic": "verbs_morphology",
+  "scopeBoundaries": {
+    "en": "Present tense only; no negation.",
+    "fr": "Présent uniquement ; sans négation.",
+    "de": "Nur Präsens; keine Verneinung."
+  },
+  "prerequisites": [
+    {
+      "en": "Subject pronouns",
+      "fr": "Les pronoms sujets",
+      "de": "Subjektpronomen"
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-singular",
+      "summary": {
+        "en": "je suis, tu es, il/elle est",
+        "fr": "je suis, tu es, il/elle est",
+        "de": "je suis, tu es, il/elle est"
+      }
+    },
+    {
+      "id": "r-plural",
+      "summary": {
+        "en": "nous sommes, vous êtes, ils/elles sont",
+        "fr": "nous sommes, vous êtes, ils/elles sont",
+        "de": "nous sommes, vous êtes, ils/elles sont"
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "b-singular",
+      "title": {
+        "en": "Singular forms",
+        "fr": "Formes du singulier",
+        "de": "Singularformen"
+      },
+      "ruleIds": ["r-singular"],
+      "explanationPlan": {
+        "en": "Show the three singular forms with one example each.",
+        "fr": "Présenter les trois formes du singulier avec un exemple chacune.",
+        "de": "Die drei Singularformen mit je einem Beispiel zeigen."
+      },
+      "explanationDurationS": 60,
+      "examples": [
+        {
+          "text": "Je suis étudiant.",
+          "translation": {
+            "en": "I am a student.",
+            "de": "Ich bin Student."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Es and est sound alike but have different subjects.",
+          "fr": "Es et est se prononcent pareil mais n’ont pas le même sujet.",
+          "de": "Es und est klingen gleich, haben aber verschiedene Subjekte."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-sg-match",
+          "type": "grammar_pronoun_form_match",
+          "itemCount": 1,
+          "ruleIds": ["r-singular"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-sg-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 2,
+          "ruleIds": ["r-singular"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-sg-persons",
+          "type": "grammar_person_matching",
+          "itemCount": 1,
+          "ruleIds": ["r-singular"],
+          "estimatedDurationS": 40
+        }
+      ]
+    },
+    {
+      "id": "b-plural",
+      "title": {
+        "en": "Plural forms",
+        "fr": "Formes du pluriel",
+        "de": "Pluralformen"
+      },
+      "ruleIds": ["r-plural"],
+      "explanationPlan": {
+        "en": "Show the plural forms; stress the accent circonflexe in êtes.",
+        "fr": "Présenter les formes du pluriel ; insister sur l’accent circonflexe de êtes.",
+        "de": "Die Pluralformen zeigen; den Accent circonflexe in êtes betonen."
+      },
+      "explanationDurationS": 60,
+      "examples": [
+        {
+          "text": "Vous êtes prêts.",
+          "translation": {
+            "en": "You are ready.",
+            "de": "Ihr seid bereit."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Êtes needs an accent circonflexe on the first e.",
+          "fr": "Êtes prend un accent circonflexe sur le premier e.",
+          "de": "Êtes braucht einen Accent circonflexe auf dem ersten e."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-pl-typing",
+          "type": "grammar_pronoun_form_typing",
+          "itemCount": 1,
+          "ruleIds": ["r-plural"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-pl-gap",
+          "type": "grammar_gap_typing",
+          "itemCount": 2,
+          "ruleIds": ["r-plural"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-pl-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 1,
+          "ruleIds": ["r-plural"],
+          "estimatedDurationS": 45
+        }
+      ]
+    }
+  ],
+  "newVerbs": [
+    {
+      "infinitive": "être",
+      "translations": {
+        "en": "to be",
+        "de": "sein"
+      }
+    }
+  ],
+  "feedbackPlaceholder": {
+    "estimatedDurationS": 20
+  },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-gaps",
+        "type": "grammar_gap_typing",
+        "itemCount": 2,
+        "ruleIds": ["r-singular", "r-plural"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 90
+      },
+      {
+        "pageId": "exam-forms",
+        "type": "grammar_pronoun_form_typing",
+        "itemCount": 1,
+        "ruleIds": ["r-plural"],
+        "estimatedDurationS": 45,
+        "timeLimitS": 60
+      }
+    ]
+  },
+  "scoring": {
+    "practiceWeight": 35,
+    "examWeight": 65,
+    "orthographyCredit": 0.5
+  }
+}

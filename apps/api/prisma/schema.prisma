@@ -107,9 +107,12 @@ model UserSeenQuestion {
   @@unique([userId, questionId])
 }
 
-// Seeded from content/outlines/*.json: title and summary from the entry, brief
-// left empty until #135. The id is the authored key the seed matches on, so a
-// shipped lesson is edited or moved, never deleted.
+// Seeded from content/outlines/*.json, one row per entry. A lesson whose files
+// are written (content/briefs/<id>.json, and content/lessons/<id>.json for
+// every kind but vocabulary) takes its title, summary, brief and content from
+// them; until then, title and summary come from the entry, brief is {} and
+// content null. The id is the authored key the seed matches on, so a shipped
+// lesson is edited or moved, never deleted.
 model Lesson {
   id        String     @id
   lang      Language
@@ -121,6 +124,8 @@ model Lesson {
   title     String
   summary   String
   brief     Json
+  // Null for a vocabulary lesson, whose lesson is built from its brief.
+  content   Json?
   updatedAt DateTime   @updatedAt
 
   results LessonResult[]

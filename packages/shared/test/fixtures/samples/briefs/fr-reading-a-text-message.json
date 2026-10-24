@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-reading-a-text-message",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Lire un SMS",
+  "objective": {
+    "en": "Read a short text message from a friend and find the day, the time and the place of the meeting, and what happens first.",
+    "fr": "Lire un court SMS d’un ami et retrouver le jour, l’heure et le lieu du rendez-vous, et ce qui se passe en premier.",
+    "de": "Eine kurze SMS von einer Freundin lesen und Tag, Uhrzeit und Ort des Treffens finden, und was zuerst passiert."
+  },
+  "estimatedMinutes": 8,
+  "provenance": {
+    "generator": "claude-code-direct-authoring",
+    "model": "claude-opus-5-5",
+    "promptVersion": "reading-v1",
+    "generatedAt": "2026-10-15T19:22:04.373Z",
+    "inputHashes": {
+      "outline": "df6ffbb00814c73909dedee1f8242eda4ca05dd3d5728644b2c92cc37f8f81df"
+    }
+  },
+  "kind": "reading",
+  "theme": "daily_life",
+  "genre": "text_message",
+  "situation": {
+    "en": "Léa sends her friend Tom a text message on Thursday evening to plan Saturday.",
+    "fr": "Jeudi soir, Léa envoie un SMS à son ami Tom pour organiser samedi.",
+    "de": "Léa schickt ihrem Freund Tom am Donnerstagabend eine SMS, um den Samstag zu planen."
+  },
+  "readerTask": {
+    "en": "Find the day, the time and the place of the meeting, and put Saturday’s plans in order.",
+    "fr": "Retrouver le jour, l’heure et le lieu du rendez-vous, et remettre le programme de samedi dans l’ordre.",
+    "de": "Tag, Uhrzeit und Ort des Treffens finden und das Programm für Samstag ordnen."
+  },
+  "keywords": [
+    {
+      "id": "samedi",
+      "term": "samedi",
+      "translations": {
+        "en": ["Saturday"],
+        "de": ["Samstag"]
+      },
+      "explanation": {
+        "en": "A day of the week. Days take no capital letter in French.",
+        "fr": "Un jour de la semaine. Les jours s’écrivent sans majuscule.",
+        "de": "Ein Wochentag. Wochentage schreibt man im Französischen klein."
+      }
+    },
+    {
+      "id": "on-se-voit",
+      "term": "on se voit",
+      "translations": {
+        "en": ["we meet", "shall we meet"],
+        "de": ["wir treffen uns", "sehen wir uns"]
+      },
+      "explanation": {
+        "en": "Friendly way to suggest meeting: on means nous in everyday French.",
+        "fr": "Façon amicale de proposer de se retrouver : on veut dire nous à l’oral.",
+        "de": "Freundliche Art, ein Treffen vorzuschlagen: on bedeutet im Alltag nous (wir)."
+      }
+    },
+    {
+      "id": "la-gare",
+      "term": "la gare",
+      "translations": {
+        "en": ["the train station"],
+        "de": ["der Bahnhof"]
+      },
+      "explanation": {
+        "en": "Where trains stop. Le café de la gare is the café at the station.",
+        "fr": "Là où les trains s’arrêtent. Le café de la gare est le café près de la gare.",
+        "de": "Wo die Züge halten. Le café de la gare ist das Café am Bahnhof."
+      }
+    },
+    {
+      "id": "avant",
+      "term": "avant",
+      "translations": {
+        "en": ["before"],
+        "de": ["vorher", "vor"]
+      },
+      "explanation": {
+        "en": "Earlier in time. Watch it: it tells you what comes first.",
+        "fr": "Plus tôt dans le temps. Attention : il dit ce qui vient en premier.",
+        "de": "Früher. Achtung: Es zeigt, was zuerst kommt."
+      }
+    },
+    {
+      "id": "apres",
+      "term": "après",
+      "translations": {
+        "en": ["after", "afterwards"],
+        "de": ["danach", "nach"]
+      },
+      "explanation": {
+        "en": "Later in time, the opposite of avant.",
+        "fr": "Plus tard dans le temps, le contraire de avant.",
+        "de": "Später, das Gegenteil von avant."
+      }
+    }
+  ],
+  "documents": {
+    "main": {
+      "targetWords": 55,
+      "contents": {
+        "en": "Three bubbles from Léa: hello and are you free on Saturday afternoon; the plan (dinner at hers in the evening, but first the station café at 15 h, then the cinema at 17 h); answer before Friday.",
+        "fr": "Trois bulles de Léa : salut, tu es libre samedi après-midi ; le programme (dîner chez elle le soir, mais avant le café de la gare à 15 h, puis cinéma à 17 h) ; réponds avant vendredi.",
+        "de": "Drei Blasen von Léa: Hallo, hast du Samstagnachmittag Zeit; der Plan (abends Essen bei ihr, aber vorher 15 h Bahnhofscafé, dann 17 h Kino); Antwort bis Freitag."
+      }
+    },
+    "exam": {
+      "targetWords": 31,
+      "contents": {
+        "en": "Paul suggests football in the park on Sunday at 10 h at the entrance, then a picnic; Tom brings water.",
+        "fr": "Paul propose du foot au parc dimanche à 10 h devant l’entrée, puis un pique-nique ; Tom apporte de l’eau.",
+        "de": "Paul schlägt Sonntag um 10 h Fußball im Park vor, Treffpunkt am Eingang, danach Picknick; Tom bringt Wasser mit."
+      }
+    }
+  },
+  "skim": {
+    "focus": "purpose"
+  },
+  "detailQuestions": [
+    {
+      "id": "q-day",
+      "type": "reading_choice",
+      "focus": {
+        "en": "The day of the meeting",
+        "fr": "Le jour du rendez-vous",
+        "de": "Der Tag des Treffens"
+      }
+    },
+    {
+      "id": "q-time",
+      "type": "reading_choice",
+      "focus": {
+        "en": "The time of the meeting",
+        "fr": "L’heure du rendez-vous",
+        "de": "Die Uhrzeit des Treffens"
+      }
+    },
+    {
+      "id": "q-place",
+      "type": "reading_choice",
+      "focus": {
+        "en": "The meeting place",
+        "fr": "Le lieu du rendez-vous",
+        "de": "Der Treffpunkt"
+      }
+    },
+    {
+      "id": "q-dinner",
+      "type": "reading_true_false",
+      "focus": {
+        "en": "Where they eat in the evening",
+        "fr": "Où ils mangent le soir",
+        "de": "Wo sie abends essen"
+      }
+    }
+  ],
+  "exam": {
+    "types": ["reading_choice", "reading_true_false"]
+  },
+  "scoring": {
+    "practiceWeight": 35,
+    "examWeight": 65,
+    "orthographyCredit": 0.5
+  }
+}

@@ -4,6 +4,7 @@
   "compilerOptions": {
     "incremental": true,
     "tsBuildInfoFile": "./dist/.tsbuildinfo",
+    "types": [],
   },
   "exclude": ["node_modules", "dist", "src/**/*.test.ts"],
 }

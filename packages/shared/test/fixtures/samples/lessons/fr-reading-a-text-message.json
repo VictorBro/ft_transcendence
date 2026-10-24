@@ -1,0 +1,534 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-reading-a-text-message",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Lire un SMS",
+  "objective": {
+    "en": "Read a short text message from a friend and find the day, the time and the place of the meeting, and what happens first.",
+    "fr": "Lire un court SMS d’un ami et retrouver le jour, l’heure et le lieu du rendez-vous, et ce qui se passe en premier.",
+    "de": "Eine kurze SMS von einer Freundin lesen und Tag, Uhrzeit und Ort des Treffens finden, und was zuerst passiert."
+  },
+  "estimatedMinutes": 8,
+  "provenance": {
+    "generator": "claude-code-direct-authoring",
+    "model": "claude-opus-5-5",
+    "promptVersion": "reading-v1",
+    "generatedAt": "2026-10-15T19:22:04.373Z",
+    "inputHashes": {
+      "outline": "df6ffbb00814c73909dedee1f8242eda4ca05dd3d5728644b2c92cc37f8f81df",
+      "brief": "ba5e27183630f7a4b213f2c5a602d9037fbdbf3402cb43a2a9ac6dc1b4255f71"
+    }
+  },
+  "kind": "reading",
+  "theme": "daily_life",
+  "genre": "text_message",
+  "documents": [
+    {
+      "documentId": "main",
+      "title": null,
+      "meta": ["Léa", "Jeudi 18:42"],
+      "paragraphs": [
+        "Salut Tom ! Tu es libre samedi après-midi ?",
+        "Samedi soir, on mange chez moi avec Paul. On fait des crêpes ! Mais avant, on se voit à 15 h au café de la gare ? Après le café, on va au cinéma à 17 h.",
+        "Si tu ne peux pas, dis-le-moi avant vendredi. Bisous, Léa"
+      ],
+      "highlights": [
+        {
+          "keywordId": "samedi",
+          "text": "samedi"
+        },
+        {
+          "keywordId": "on-se-voit",
+          "text": "on se voit"
+        },
+        {
+          "keywordId": "la-gare",
+          "text": "la gare"
+        },
+        {
+          "keywordId": "avant",
+          "text": "avant"
+        },
+        {
+          "keywordId": "apres",
+          "text": "Après"
+        }
+      ]
+    },
+    {
+      "documentId": "exam",
+      "title": null,
+      "meta": ["Paul", "Vendredi 9:15"],
+      "paragraphs": [
+        "Salut Tom ! Dimanche matin, on joue au foot au parc Monceau ? Rendez-vous à 10 h devant l’entrée.",
+        "Après le match, pique-nique ! Apporte de l’eau, j’ai les sandwichs. Paul"
+      ],
+      "highlights": []
+    }
+  ],
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "exercise",
+      "label": {
+        "en": "Flashcards",
+        "fr": "Cartes mémoire",
+        "de": "Karteikarten"
+      },
+      "pages": [
+        {
+          "pageId": "flashcards",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Turn each card to learn the key words of the text.",
+            "fr": "Retournez chaque carte pour découvrir les mots clés du texte.",
+            "de": "Dreh jede Karte um und lerne die Schlüsselwörter des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_flashcards",
+              "itemId": "cards",
+              "keywordIds": ["samedi", "on-se-voit", "la-gare", "avant", "apres"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": {
+        "en": "Matching",
+        "fr": "Association",
+        "de": "Zuordnen"
+      },
+      "pages": [
+        {
+          "pageId": "matching",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each key word with its meaning.",
+            "fr": "Associez chaque mot clé à son sens.",
+            "de": "Ordne jedem Schlüsselwort seine Bedeutung zu."
+          },
+          "items": [
+            {
+              "type": "reading_keyword_matching",
+              "itemId": "matching",
+              "keywordIds": ["samedi", "on-se-voit", "la-gare", "avant", "apres"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skim",
+      "stage": "skim",
+      "role": "exercise",
+      "label": {
+        "en": "Skim",
+        "fr": "Survol",
+        "de": "Überfliegen"
+      },
+      "pages": [
+        {
+          "pageId": "skim",
+          "estimatedDurationS": 65,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Look over the document quickly. When the time is up it is put away; then answer the question.",
+            "fr": "Parcourez rapidement le document. À la fin du temps, il disparaît ; répondez ensuite à la question.",
+            "de": "Überfliege das Dokument. Wenn die Zeit um ist, verschwindet es; beantworte dann die Frage."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "skim-document",
+              "documentId": "main",
+              "view": "skim",
+              "skimSeconds": 45
+            },
+            {
+              "type": "reading_skim_choice",
+              "itemId": "skim-question",
+              "focus": "purpose",
+              "question": "Pourquoi Léa écrit-elle à Tom ?",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "Pour annuler un rendez-vous"
+                },
+                {
+                  "optionId": "o2",
+                  "text": "Pour dire merci pour un cadeau"
+                },
+                {
+                  "optionId": "o3",
+                  "text": "Pour demander l’heure du train"
+                },
+                {
+                  "optionId": "o4",
+                  "text": "Pour proposer de se voir samedi"
+                }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "Tu es libre samedi ? and on se voit… ? are invitations: Léa suggests meeting.",
+                "fr": "Tu es libre samedi ? et on se voit… ? sont des propositions : Léa propose de se voir.",
+                "de": "Tu es libre samedi ? und on se voit… ? sind Vorschläge: Léa möchte sich treffen."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detail",
+      "stage": "detail",
+      "role": "exercise",
+      "label": {
+        "en": "Detail",
+        "fr": "Détails",
+        "de": "Details"
+      },
+      "pages": [
+        {
+          "pageId": "detail",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the document carefully and answer the questions.",
+            "fr": "Lisez le document attentivement et répondez aux questions.",
+            "de": "Lies das Dokument genau und beantworte die Fragen."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "detail-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-day",
+              "question": "Quel jour Léa propose-t-elle de se voir ?",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "dimanche"
+                },
+                {
+                  "optionId": "o2",
+                  "text": "vendredi"
+                },
+                {
+                  "optionId": "o3",
+                  "text": "jeudi"
+                },
+                {
+                  "optionId": "o4",
+                  "text": "samedi"
+                }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "Léa asks: Tu es libre samedi après-midi ? Jeudi is the day she writes, vendredi the day to answer by.",
+                "fr": "Léa demande : Tu es libre samedi après-midi ? Jeudi est le jour du message, vendredi le jour limite pour répondre.",
+                "de": "Léa fragt: Tu es libre samedi après-midi ? Jeudi ist der Tag der SMS, vendredi der Tag für die Antwort."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-time",
+              "question": "À quelle heure est le rendez-vous au café ?",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "15 h"
+                },
+                {
+                  "optionId": "o2",
+                  "text": "17 h"
+                },
+                {
+                  "optionId": "o3",
+                  "text": "12 h"
+                },
+                {
+                  "optionId": "o4",
+                  "text": "18 h 42"
+                }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "On se voit à 15 h au café de la gare. 17 h is the cinema.",
+                "fr": "On se voit à 15 h au café de la gare. 17 h, c’est le cinéma.",
+                "de": "On se voit à 15 h au café de la gare. 17 h ist das Kino."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-place",
+              "question": "Où Tom et Léa se retrouvent-ils à 15 h ?",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "Au café de la gare"
+                },
+                {
+                  "optionId": "o2",
+                  "text": "Au cinéma"
+                },
+                {
+                  "optionId": "o3",
+                  "text": "Chez Paul"
+                },
+                {
+                  "optionId": "o4",
+                  "text": "Chez Léa"
+                }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "The meeting point is au café de la gare. They eat at Léa’s (chez moi) in the evening.",
+                "fr": "Le lieu du rendez-vous est au café de la gare. Ils mangent chez Léa (chez moi) le soir.",
+                "de": "Treffpunkt ist au café de la gare. Abends essen sie bei Léa (chez moi)."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "q-dinner",
+              "statement": "Samedi soir, Tom, Léa et Paul mangent au restaurant.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: on mange chez moi means at Léa’s home, not in a restaurant.",
+                "fr": "Faux : on mange chez moi veut dire chez Léa, pas au restaurant.",
+                "de": "Falsch: on mange chez moi heißt bei Léa zu Hause, nicht im Restaurant."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "structure",
+      "stage": "structure",
+      "role": "exercise",
+      "label": {
+        "en": "Structure",
+        "fr": "Structure",
+        "de": "Aufbau"
+      },
+      "pages": [
+        {
+          "pageId": "structure",
+          "estimatedDurationS": 45,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "What happens on Saturday? Put it in order, from first to last.",
+            "fr": "Que se passe-t-il samedi ? Remettez dans l’ordre, du premier au dernier.",
+            "de": "Was passiert am Samstag? Bring es in die Reihenfolge, vom Ersten bis zum Letzten."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "structure-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_order",
+              "itemId": "order",
+              "pieces": [
+                {
+                  "pieceId": "p2",
+                  "text": "Ils vont au cinéma."
+                },
+                {
+                  "pieceId": "p3",
+                  "text": "Ils mangent des crêpes chez Léa avec Paul."
+                },
+                {
+                  "pieceId": "p1",
+                  "text": "Tom et Léa se voient au café de la gare."
+                }
+              ],
+              "acceptedOrders": [["p1", "p2", "p3"]],
+              "answerExplanation": {
+                "en": "Café at 15 h (Mais avant…), then cinema at 17 h (Après le café…), then dinner in the evening (Samedi soir). The message gives the evening first.",
+                "fr": "Café à 15 h (Mais avant…), puis cinéma à 17 h (Après le café…), puis dîner le soir (Samedi soir). Le message parle du soir en premier.",
+                "de": "Café um 15 h (Mais avant…), dann Kino um 17 h (Après le café…), dann abends Essen (Samedi soir). Die SMS nennt den Abend zuerst."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": {
+        "en": "Final exam",
+        "fr": "Examen final",
+        "de": "Abschlussprüfung"
+      },
+      "pages": [
+        {
+          "pageId": "exam",
+          "estimatedDurationS": 125,
+          "timeLimitS": 190,
+          "instructions": {
+            "en": "Read the new document and answer the questions. No help this time.",
+            "fr": "Lisez le nouveau document et répondez aux questions. Cette fois, sans aide.",
+            "de": "Lies das neue Dokument und beantworte die Fragen. Diesmal ohne Hilfe."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "exam-document",
+              "documentId": "exam",
+              "view": "exam",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-day",
+              "question": "Quel jour est le match ?",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "lundi"
+                },
+                {
+                  "optionId": "o2",
+                  "text": "samedi"
+                },
+                {
+                  "optionId": "o3",
+                  "text": "vendredi"
+                },
+                {
+                  "optionId": "o4",
+                  "text": "dimanche"
+                }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "Dimanche matin, on joue au foot. Vendredi is the day Paul writes.",
+                "fr": "Dimanche matin, on joue au foot. Vendredi est le jour du message.",
+                "de": "Dimanche matin, on joue au foot. Vendredi ist der Tag der SMS."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-time",
+              "question": "À quelle heure est le rendez-vous ?",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "12 h"
+                },
+                {
+                  "optionId": "o2",
+                  "text": "10 h"
+                },
+                {
+                  "optionId": "o3",
+                  "text": "15 h"
+                },
+                {
+                  "optionId": "o4",
+                  "text": "9 h 15"
+                }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "Rendez-vous à 10 h devant l’entrée.",
+                "fr": "Rendez-vous à 10 h devant l’entrée.",
+                "de": "Rendez-vous à 10 h devant l’entrée."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-place",
+              "question": "Où est le rendez-vous ?",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "Chez Paul"
+                },
+                {
+                  "optionId": "o2",
+                  "text": "Au café de la gare"
+                },
+                {
+                  "optionId": "o3",
+                  "text": "Devant l’entrée du parc"
+                },
+                {
+                  "optionId": "o4",
+                  "text": "Devant le cinéma"
+                }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "They play au parc Monceau and meet devant l’entrée, in front of the entrance.",
+                "fr": "Ils jouent au parc Monceau et se retrouvent devant l’entrée.",
+                "de": "Sie spielen au parc Monceau und treffen sich devant l’entrée, vor dem Eingang."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-bring",
+              "statement": "Tom apporte les sandwichs.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: Tom brings water (de l’eau); Paul has the sandwiches (j’ai les sandwichs).",
+                "fr": "Faux : Tom apporte de l’eau ; Paul a les sandwichs (j’ai les sandwichs).",
+                "de": "Falsch: Tom bringt Wasser (de l’eau); Paul hat die Sandwiches (j’ai les sandwichs)."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-after",
+              "question": "Qu’est-ce qu’ils font après le match ?",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "Un café à la gare"
+                },
+                {
+                  "optionId": "o2",
+                  "text": "Du cinéma"
+                },
+                {
+                  "optionId": "o3",
+                  "text": "Des crêpes chez Léa"
+                },
+                {
+                  "optionId": "o4",
+                  "text": "Un pique-nique"
+                }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "Après le match, pique-nique !",
+                "fr": "Après le match, pique-nique !",
+                "de": "Après le match, pique-nique !"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
