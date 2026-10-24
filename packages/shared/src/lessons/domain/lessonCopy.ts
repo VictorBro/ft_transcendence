@@ -1,8 +1,26 @@
 import type { LocalizedText } from '../schemas/artifactCommon';
 
+/**
+ * The fixed texts of the lessons, in en, fr and de: the name of each step
+ * ("Flashcards") and the instruction at the top of its pages ("Match each
+ * word with its translation."). They are the same in every lesson of a
+ * kind, so nobody writes them per lesson: the code puts them in.
+ *
+ * Most entries are a pair [step label, page instruction]:
+ *
+ *   COPY.matching[0] → { en: 'Matching', fr: 'Association', de: 'Zuordnen' }
+ *   COPY.matching[1] → { en: 'Match each word with its translation.', … }
+ *
+ * Only COPY is read here, by vocabularyLesson.ts. The others are for the
+ * authoring kit (#83), which builds the steps of grammar, functions and
+ * reading lessons. Some texts say "French": #136 makes them name the
+ * course language.
+ */
+
+/** A shortcut to write { en, fr, de } on one line. */
 const L = (en: string, fr: string, de: string): LocalizedText => ({ en, fr, de });
 
-/** Step labels and page instructions are application copy, not generated text. */
+/** Vocabulary lessons, plus the explanation, feedback and exam steps of grammar lessons. */
 export const COPY = {
   introduction: [
     L('Introduction', 'Introduction', 'Einführung'),
@@ -90,6 +108,7 @@ export const COPY = {
   ],
 } as const;
 
+/** The page instruction of each grammar exercise type (one text, no step label). */
 export const EXERCISE_INSTRUCTIONS = {
   grammar_person_matching: L(
     'Connect each pronoun with its partner.',
@@ -128,7 +147,11 @@ export const EXERCISE_INSTRUCTIONS = {
   ),
 } as const;
 
-/** Step labels and page instructions of function lessons (SPEC section 8); application copy, not generated text. */
+/**
+ * Functions lessons. The entries that are a single text (wordCards,
+ * wordMatching, examWords, examDialogue) are page instructions for the
+ * pages about words, or for the exam's other pages.
+ */
 export const FUNCTIONS_COPY = {
   flashcards: [
     L('Flashcards', 'Cartes mémoire', 'Karteikarten'),
@@ -216,7 +239,7 @@ export const FUNCTIONS_COPY = {
   ),
 } as const;
 
-/** Step labels and page instructions of reading lessons (SPEC section 9); application copy, not generated text. */
+/** Reading lessons: one pair per step of READING_STAGES. */
 export const READING_COPY = {
   flashcards: [
     L('Flashcards', 'Cartes mémoire', 'Karteikarten'),

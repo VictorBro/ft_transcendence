@@ -5,11 +5,26 @@ import {
 } from '../schemas/functions';
 
 /**
- * Page rules of function lessons (SPEC section 8, "Page rules"). The lesson content stores page
- * estimates and exam limits; validation and the authoring tool compute them with these rules.
+ * The duration calculations of a functions lesson.
+ *
+ * A functions lesson has a content file, and each page of it states its
+ * estimatedDurationS (and, in the exam, its timeLimitS). Nobody picks
+ * these numbers: they follow FUNCTIONS_PAGE_RULES
+ * (../schemas/functions.ts). The validator recomputes them here and
+ * compares, to the second; the authoring kit (#83) will compute them
+ * here when it writes a lesson.
  */
 
-/** Estimated seconds of a page from its items; exam pages are built from the exam item types. */
+/**
+ * The duration of a page, in seconds: the sum of its items' durations.
+ * Each item type has its own rule, for example:
+ *
+ *   flashcards of 4 expressions = 4 × 12 s = 48 s
+ *   a dialogue of 10 lines      = 20 s + 10 × 12 s = 140 s
+ *
+ * `exam` is true for an exam page: a word order there is a reply to build
+ * (replyS), not a practice exercise (wordOrderS).
+ */
 export function functionsPageEstimate(items: FunctionsItem[], exam: boolean): number {
   let seconds = 0;
   for (const it of items) {
@@ -38,6 +53,7 @@ export function functionsPageEstimate(items: FunctionsItem[], exam: boolean): nu
       case 'function_translation_exam':
         seconds += R.translationS;
         break;
+      // Every line of the exam dialogue, plus extra time for each line with a gap.
       case 'function_dialogue_gap_typing':
         seconds +=
           it.lines.length * R.examLineS + it.lines.filter((l) => l.gap).length * R.examGapS;
@@ -47,14 +63,21 @@ export function functionsPageEstimate(items: FunctionsItem[], exam: boolean): nu
   return seconds;
 }
 
-/** Countdown of an exam page: 1.5 times its estimate, rounded to seconds. */
+/** The countdown of an exam page: 1.5 × its duration, rounded to the second (100 s → 150 s). */
 export const functionsTimeLimit = (estimateS: number) => Math.round(estimateS * R.timeLimitFactor);
 
-/** Display text of an expression: sentence starts get a trailing " …". */
+/**
+ * How an expression is shown: "Je voudrais …" when it is the start of a
+ * sentence (openEnd). Used only by the prototype's lesson player; #135
+ * removes it.
+ */
 export const expressionDisplay = (e: { text: string; openEnd: boolean }) =>
   e.openEnd ? `${e.text} …` : e.text;
 
-/** Expressions and words of a brief by ID, with their French display text. */
+/**
+ * Every expression and word of a brief by id, with the text to show.
+ * Used only by the prototype's lesson player; #135 removes it.
+ */
 export function functionsTerms(brief: FunctionsBrief) {
   return new Map<
     string,

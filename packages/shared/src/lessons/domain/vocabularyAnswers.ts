@@ -3,9 +3,25 @@ import type { Locale } from '../../schemas/locale';
 import type { VocabularyTarget } from '../schemas/vocabulary';
 
 /**
- * The single rule for fully correct vocabulary exam answers: the target's exam forms, plus its
- * gender/number variants when a translation prompt does not say which one is meant. Every other
- * answer is graded by the shared classifier (accents or capitals only: 50 %, D25/D40).
+ * The answers fully accepted for a word in a vocabulary exam: its
+ * examForms, plus its genderVariants when the question does not say
+ * which gender or number it wants.
+ *
+ * Example: examForms ["un serveur"], genderVariants ["une serveuse"],
+ * first translation "waiter".
+ * - asked "waiter": the question does not say which gender, so
+ *   "un serveur" and "une serveuse" are both accepted;
+ * - asked "waiter (masculine singular form)" (its examPrompt): only
+ *   "un serveur".
+ *
+ * How it decides: the question is "hinted" when, in every language the
+ * course translates into, it differs from the word's first translation.
+ * No `prompt` (the dictation, which has no question to read) also
+ * counts as hinted: only the examForms.
+ *
+ * new Set removes duplicates. An answer that is almost right (a missing
+ * accent, a capital) is not handled here: grading belongs to the lesson
+ * player (Milestone 3).
  */
 export function vocabularyExamAnswers(
   target: VocabularyTarget,
