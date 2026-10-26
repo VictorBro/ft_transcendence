@@ -1,0 +1,469 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-classroom-instructions",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Les consignes de la classe",
+  "objective": {
+    "en": "Understand ten classroom instructions, written and spoken: écoutez, lisez, écrivez, répétez, ouvrez le livre…",
+    "fr": "Comprendre dix consignes de classe à l’écrit et à l’oral : écoutez, lisez, écrivez, répétez, ouvrez le livre…",
+    "de": "Zehn Anweisungen im Unterricht schriftlich und mündlich verstehen: écoutez, lisez, écrivez, répétez, ouvrez le livre…"
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-1",
+    "generatedAt": "2026-10-26T22:54:30.493Z",
+    "inputHashes": { "outline": "e59ae0fa961d6955e3408b36a8db08eb4d0a98bbca4e292eca36f60a4b3c75bd" }
+  },
+  "kind": "vocabulary",
+  "theme": "education",
+  "coverageNotes": {
+    "en": "Ten imperative verbs in the vous form that a teacher says or writes in class. They are all verbs, so the lesson has no gender exercise. The tu form is also accepted in the exam.",
+    "fr": "Dix verbes à l’impératif, à la forme vous, que l’enseignant dit ou écrit en classe. Ce sont tous des verbes, donc la leçon n’a pas d’exercice sur le genre. La forme tu est aussi acceptée à l’examen.",
+    "de": "Zehn Verben im Imperativ (Form vous), die Lehrkräfte im Unterricht sagen oder schreiben. Es sind alles Verben, daher gibt es keine Genusübung. Die tu-Form wird in der Prüfung auch akzeptiert."
+  },
+  "targetCount": 10,
+  "countRationale": {
+    "en": "Ten instructions match the intent: enough for a full class routine, few enough for an A1 beginner.",
+    "fr": "Dix consignes correspondent à l’objectif : assez pour suivre un cours, peu pour un débutant A1.",
+    "de": "Zehn Anweisungen entsprechen dem Ziel: genug für eine Unterrichtsstunde, wenig genug für A1."
+  },
+  "difficultyBalance": {
+    "en": "All words are core classroom verbs; the forms are short and regular.",
+    "fr": "Tous les mots sont des verbes de classe courants ; les formes sont courtes et régulières.",
+    "de": "Alle Wörter sind gängige Unterrichtsverben; die Formen sind kurz und regelmäßig."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "ecouter-lire",
+      "label": {
+        "en": "Listen, look, read, open, close",
+        "fr": "Écouter, regarder, lire, ouvrir, fermer",
+        "de": "Hören, schauen, lesen, öffnen, schließen"
+      },
+      "targetIds": ["ecoutez", "regardez", "lisez", "ouvrez", "fermez"],
+      "introduction": {
+        "en": "In class, the teacher says **vous** instructions. You hear them and you read them in your book:\n\n- `écoutez`\n- `regardez`\n- `lisez`\n- `ouvrez`\n- `fermez`",
+        "fr": "En classe, l’enseignant donne des consignes avec **vous**. Vous les entendez et vous les lisez dans votre livre :\n\n- `écoutez`\n- `regardez`\n- `lisez`\n- `ouvrez`\n- `fermez`",
+        "de": "Im Unterricht gibt die Lehrkraft Anweisungen mit **vous**. Du hörst sie und liest sie in deinem Buch:\n\n- `écoutez`\n- `regardez`\n- `lisez`\n- `ouvrez`\n- `fermez`"
+      }
+    },
+    {
+      "id": "ecrire-repondre",
+      "label": {
+        "en": "Write, repeat, complete, tick, answer",
+        "fr": "Écrire, répéter, compléter, cocher, répondre",
+        "de": "Schreiben, wiederholen, ergänzen, ankreuzen, antworten"
+      },
+      "targetIds": ["ecrivez", "repetez", "completez", "cochez", "repondez"],
+      "introduction": {
+        "en": "These instructions ask you to **do** something with your pencil or your voice:\n\n- `écrivez`\n- `répétez`\n- `complétez`\n- `cochez`\n- `répondez`",
+        "fr": "Ces consignes vous demandent de **faire** quelque chose avec votre crayon ou votre voix :\n\n- `écrivez`\n- `répétez`\n- `complétez`\n- `cochez`\n- `répondez`",
+        "de": "Diese Anweisungen verlangen, dass du mit Stift oder Stimme etwas **tust**:\n\n- `écrivez`\n- `répétez`\n- `complétez`\n- `cochez`\n- `répondez`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "ecoutez",
+      "term": "écoutez",
+      "translations": { "en": ["listen"], "de": ["hören Sie zu"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "écoutez",
+      "examForms": ["écoutez", "écoute"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ekute/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Écoutez le dialogue.",
+        "translation": { "en": "Listen to the dialogue.", "de": "Hören Sie den Dialog." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Écoutez means “listen”: you must pay attention to a sound.",
+        "fr": "Écoutez signifie qu’il faut prêter attention à un son.",
+        "de": "Écoutez bedeutet „hören Sie zu“: Du sollst auf ein Geräusch achten."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "",
+        "after": " la musique, s’il vous plaît.",
+        "accepted": { "answers": ["écoutez"] },
+        "referenceTargetIds": ["ecoutez", "ouvrez", "cochez", "fermez"],
+        "explanation": {
+          "en": "You listen to music, so écoutez fits.",
+          "fr": "On écoute de la musique : écoutez convient.",
+          "de": "Musik hört man: écoutez passt."
+        }
+      },
+      "listeningOptionTargetIds": ["ecoutez", "ecrivez", "repetez", "completez"]
+    },
+    {
+      "id": "regardez",
+      "term": "regardez",
+      "translations": { "en": ["look"], "de": ["schauen Sie"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "regardez",
+      "examForms": ["regardez", "regarde"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʁəɡaʁde/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Regardez le tableau.",
+        "translation": { "en": "Look at the board.", "de": "Schauen Sie auf die Tafel." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Regardez means “look”: you must use your eyes.",
+        "fr": "Regardez signifie qu’il faut utiliser ses yeux.",
+        "de": "Regardez bedeutet „schauen Sie“: Du sollst mit den Augen hinsehen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "",
+        "after": " le tableau, s’il vous plaît.",
+        "accepted": { "answers": ["regardez"] },
+        "referenceTargetIds": ["regardez", "fermez", "cochez", "repetez"],
+        "explanation": {
+          "en": "You look at the board, so regardez fits.",
+          "fr": "On regarde le tableau : regardez convient.",
+          "de": "Man schaut auf die Tafel: regardez passt."
+        }
+      },
+      "listeningOptionTargetIds": ["regardez", "repondez", "repetez", "ecoutez"]
+    },
+    {
+      "id": "lisez",
+      "term": "lisez",
+      "translations": { "en": ["read"], "de": ["lesen Sie"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "lisez",
+      "examForms": ["lisez", "lis"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/lize/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Lisez le texte.",
+        "translation": { "en": "Read the text.", "de": "Lesen Sie den Text." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Lisez means “read”: you look at written words and understand them.",
+        "fr": "Lisez signifie qu’il faut regarder des mots écrits et les comprendre.",
+        "de": "Lisez bedeutet „lesen Sie“: Du sollst geschriebene Wörter lesen und verstehen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "",
+        "after": " le texte en silence.",
+        "accepted": { "answers": ["lisez"] },
+        "referenceTargetIds": ["lisez", "ouvrez", "cochez", "fermez"],
+        "explanation": {
+          "en": "You read a text, so lisez fits.",
+          "fr": "On lit un texte : lisez convient.",
+          "de": "Einen Text liest man: lisez passt."
+        }
+      },
+      "listeningOptionTargetIds": ["lisez", "fermez", "ouvrez", "regardez"]
+    },
+    {
+      "id": "ouvrez",
+      "term": "ouvrez",
+      "translations": { "en": ["open"], "de": ["öffnen Sie"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ouvrez",
+      "examForms": ["ouvrez", "ouvre"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/uvʁe/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ouvrez le livre à la page dix.",
+        "translation": {
+          "en": "Open the book at page ten.",
+          "de": "Öffnen Sie das Buch auf Seite zehn."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Ouvrez means “open”: the opposite of fermez.",
+        "fr": "Ouvrez signifie le contraire de fermez.",
+        "de": "Ouvrez bedeutet „öffnen Sie“: das Gegenteil von fermez."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "",
+        "after": " votre livre à la page dix.",
+        "accepted": { "answers": ["ouvrez"] },
+        "referenceTargetIds": ["ouvrez", "ecoutez", "repetez", "cochez"],
+        "explanation": {
+          "en": "You open a book at a page, so ouvrez fits.",
+          "fr": "On ouvre un livre à une page : ouvrez convient.",
+          "de": "Ein Buch schlägt man auf einer Seite auf: ouvrez passt."
+        }
+      },
+      "listeningOptionTargetIds": ["ouvrez", "fermez", "ecoutez", "lisez"]
+    },
+    {
+      "id": "fermez",
+      "term": "fermez",
+      "translations": { "en": ["close"], "de": ["schließen Sie"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "fermez",
+      "examForms": ["fermez", "ferme"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fɛʁme/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Fermez la porte.",
+        "translation": { "en": "Close the door.", "de": "Schließen Sie die Tür." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Fermez means “close”: the opposite of ouvrez.",
+        "fr": "Fermez signifie le contraire de ouvrez.",
+        "de": "Fermez bedeutet „schließen Sie“: das Gegenteil von ouvrez."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "",
+        "after": " la porte, s’il vous plaît.",
+        "accepted": { "answers": ["fermez"] },
+        "referenceTargetIds": ["fermez", "ecoutez", "lisez", "repetez"],
+        "explanation": {
+          "en": "You close a door, so fermez fits.",
+          "fr": "On ferme une porte : fermez convient.",
+          "de": "Eine Tür schließt man: fermez passt."
+        }
+      },
+      "listeningOptionTargetIds": ["fermez", "ouvrez", "regardez", "repondez"]
+    },
+    {
+      "id": "ecrivez",
+      "term": "écrivez",
+      "translations": { "en": ["write"], "de": ["schreiben Sie"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "écrivez",
+      "examForms": ["écrivez", "écris"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ekʁive/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Écrivez votre nom.",
+        "translation": { "en": "Write your name.", "de": "Schreiben Sie Ihren Namen." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Écrivez means “write”: you put words on paper with a pen.",
+        "fr": "Écrivez signifie qu’il faut mettre des mots sur le papier avec un stylo.",
+        "de": "Écrivez bedeutet „schreiben Sie“: Du schreibst Wörter mit einem Stift auf Papier."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "",
+        "after": " votre nom sur la feuille.",
+        "accepted": { "answers": ["écrivez"] },
+        "referenceTargetIds": ["ecrivez", "ecoutez", "fermez", "ouvrez"],
+        "explanation": {
+          "en": "You write your name on a sheet, so écrivez fits.",
+          "fr": "On écrit son nom sur une feuille : écrivez convient.",
+          "de": "Den Namen schreibt man auf ein Blatt: écrivez passt."
+        }
+      },
+      "listeningOptionTargetIds": ["ecrivez", "ecoutez", "completez", "repetez"]
+    },
+    {
+      "id": "repetez",
+      "term": "répétez",
+      "translations": { "en": ["repeat"], "de": ["wiederholen Sie"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "répétez",
+      "examForms": ["répétez", "répète"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʁepete/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Répétez après moi.",
+        "translation": { "en": "Repeat after me.", "de": "Wiederholen Sie nach mir." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Répétez means “repeat”: you say the same words again.",
+        "fr": "Répétez signifie qu’il faut redire les mêmes mots.",
+        "de": "Répétez bedeutet „wiederholen Sie“: Du sagst dieselben Wörter noch einmal."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "",
+        "after": " la phrase après moi.",
+        "accepted": { "answers": ["répétez"] },
+        "referenceTargetIds": ["repetez", "cochez", "ouvrez", "fermez"],
+        "explanation": {
+          "en": "You repeat a sentence after the teacher, so répétez fits.",
+          "fr": "On répète une phrase après l’enseignant : répétez convient.",
+          "de": "Einen Satz wiederholt man nach der Lehrkraft: répétez passt."
+        }
+      },
+      "listeningOptionTargetIds": ["repetez", "completez", "ecrivez", "repondez"]
+    },
+    {
+      "id": "completez",
+      "term": "complétez",
+      "translations": { "en": ["complete"], "de": ["ergänzen Sie"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "complétez",
+      "examForms": ["complétez", "complète"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kɔ̃plete/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Complétez les phrases.",
+        "translation": { "en": "Complete the sentences.", "de": "Ergänzen Sie die Sätze." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Complétez means “complete”: you fill in the missing words.",
+        "fr": "Complétez signifie qu’il faut ajouter les mots qui manquent.",
+        "de": "Complétez bedeutet „ergänzen Sie“: Du setzt die fehlenden Wörter ein."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "",
+        "after": " les phrases avec les mots manquants.",
+        "accepted": { "answers": ["complétez"] },
+        "referenceTargetIds": ["completez", "ouvrez", "fermez", "cochez"],
+        "explanation": {
+          "en": "You fill in missing words, so complétez fits.",
+          "fr": "On ajoute les mots qui manquent : complétez convient.",
+          "de": "Man setzt fehlende Wörter ein: complétez passt."
+        }
+      },
+      "listeningOptionTargetIds": ["completez", "repetez", "ecoutez", "cochez"]
+    },
+    {
+      "id": "cochez",
+      "term": "cochez",
+      "translations": { "en": ["tick", "check"], "de": ["kreuzen Sie an"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "cochez",
+      "examForms": ["cochez", "coche"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kɔʃe/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Cochez la bonne réponse.",
+        "translation": {
+          "en": "Tick the right answer.",
+          "de": "Kreuzen Sie die richtige Antwort an."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Cochez means “tick”: you put a mark in a box.",
+        "fr": "Cochez signifie qu’il faut mettre une croix ou une marque dans une case.",
+        "de": "Cochez bedeutet „kreuzen Sie an“: Du machst ein Zeichen in ein Kästchen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "",
+        "after": " la case avec une croix.",
+        "accepted": { "answers": ["cochez"] },
+        "referenceTargetIds": ["cochez", "fermez", "ouvrez", "ecoutez"],
+        "explanation": {
+          "en": "You tick a box with a cross, so cochez fits.",
+          "fr": "On coche une case avec une croix : cochez convient.",
+          "de": "Ein Kästchen kreuzt man an: cochez passt."
+        }
+      },
+      "listeningOptionTargetIds": ["cochez", "completez", "ecoutez", "regardez"]
+    },
+    {
+      "id": "repondez",
+      "term": "répondez",
+      "translations": { "en": ["answer"], "de": ["antworten Sie"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "répondez",
+      "examForms": ["répondez", "réponds"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʁepɔ̃de/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Répondez à la question.",
+        "translation": { "en": "Answer the question.", "de": "Beantworten Sie die Frage." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Répondez means “answer”: you reply to a question.",
+        "fr": "Répondez signifie qu’il faut donner une réponse à une question.",
+        "de": "Répondez bedeutet „antworten Sie“: Du gibst eine Antwort auf eine Frage."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "",
+        "after": " à la question du professeur.",
+        "accepted": { "answers": ["répondez"] },
+        "referenceTargetIds": ["repondez", "fermez", "ouvrez", "cochez"],
+        "explanation": {
+          "en": "You answer a question, so répondez fits.",
+          "fr": "On répond à une question : répondez convient.",
+          "de": "Auf eine Frage antwortet man: répondez passt."
+        }
+      },
+      "listeningOptionTargetIds": ["repondez", "repetez", "ecrivez", "fermez"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

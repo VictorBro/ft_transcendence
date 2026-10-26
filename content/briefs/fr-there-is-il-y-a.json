@@ -1,0 +1,228 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-there-is-il-y-a",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Il y a : dire ce qu'il y a dans un lieu",
+  "objective": {
+    "en": "Say what is in a place with il y a and ask “Qu'est-ce qu'il y a dans la classe ?”.",
+    "fr": "Dire ce qui se trouve dans un lieu avec il y a et demander « Qu'est-ce qu'il y a dans la classe ? ».",
+    "de": "Mit il y a sagen, was es an einem Ort gibt, und fragen: „Qu'est-ce qu'il y a dans la classe ?“."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-1",
+    "generatedAt": "2026-10-26T22:58:00.775Z",
+    "inputHashes": { "outline": "219266308629aeca5152d8b2024f6f80bbcfb33d0b60203fe22a91e1e3a1b51e" }
+  },
+  "kind": "grammar",
+  "topic": "syntax_and_sentence_structure",
+  "scopeBoundaries": {
+    "en": "Covers il y a with un, une, des and the question Qu'est-ce qu'il y a dans … ?. Excludes the negative il n'y a pas, numbers and detailed prepositions of place.",
+    "fr": "Couvre il y a avec un, une, des et la question Qu'est-ce qu'il y a dans … ?. Exclut la forme négative il n'y a pas, les nombres et les prépositions de lieu détaillées.",
+    "de": "Behandelt il y a mit un, une, des und die Frage Qu'est-ce qu'il y a dans … ?. Ausgeschlossen sind die Verneinung il n'y a pas, Zahlen und ausführliche Ortspräpositionen."
+  },
+  "prerequisites": [
+    {
+      "en": "Classroom objects and the articles un, une, des",
+      "fr": "Les objets de la classe et les articles un, une, des",
+      "de": "Gegenstände im Klassenzimmer und die Artikel un, une, des"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-il-y-a-statement",
+      "summary": {
+        "en": "Il y a says what exists or can be found in a place; the expression never changes.",
+        "fr": "Il y a dit ce qui existe ou ce qu'on trouve dans un lieu ; l'expression ne change jamais.",
+        "de": "Il y a sagt, was es an einem Ort gibt; der Ausdruck ändert sich nie."
+      }
+    },
+    {
+      "id": "rule-articles",
+      "summary": {
+        "en": "After il y a, use un, une or des (not le, la, les); join several things with et.",
+        "fr": "Après il y a, on emploie un, une ou des (pas le, la, les) ; on relie plusieurs choses avec et.",
+        "de": "Nach il y a stehen un, une oder des (nicht le, la, les); mehrere Dinge verbindet man mit et."
+      }
+    },
+    {
+      "id": "rule-question",
+      "summary": {
+        "en": "Ask what a place contains with Qu'est-ce qu'il y a dans … ? and answer with Il y a ….",
+        "fr": "Demander ce qu'un lieu contient avec Qu'est-ce qu'il y a dans … ? et répondre avec Il y a ….",
+        "de": "Was ein Ort enthält, fragt man mit Qu'est-ce qu'il y a dans … ? und antwortet mit Il y a …."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-statement",
+      "title": {
+        "en": "Saying what is there: il y a + un, une, des",
+        "fr": "Dire ce qu'il y a : il y a + un, une, des",
+        "de": "Sagen, was es gibt: il y a + un, une, des"
+      },
+      "ruleIds": ["rule-il-y-a-statement", "rule-articles"],
+      "explanationPlan": {
+        "en": "Introduce il y a as a fixed expression meaning there is / there are. Show that it takes un, une or des, never le, la, les, and that things are joined with et.",
+        "fr": "Présenter il y a comme une expression fixe (there is / there are). Montrer qu'elle se construit avec un, une ou des, jamais le, la, les, et qu'on relie les choses avec et.",
+        "de": "Il y a als feste Wendung einführen (es gibt). Zeigen, dass es mit un, une oder des steht, nie mit le, la, les, und dass Dinge mit et verbunden werden."
+      },
+      "explanationDurationS": 110,
+      "examples": [
+        {
+          "text": "Dans la classe, il y a un tableau.",
+          "translation": {
+            "en": "In the classroom, there is a board.",
+            "de": "Im Klassenzimmer gibt es eine Tafel."
+          }
+        },
+        {
+          "text": "Il y a une table dans la cuisine.",
+          "translation": {
+            "en": "There is a table in the kitchen.",
+            "de": "In der Küche gibt es einen Tisch."
+          }
+        },
+        {
+          "text": "Il y a des chaises dans le salon.",
+          "translation": {
+            "en": "There are chairs in the living room.",
+            "de": "Im Wohnzimmer gibt es Stühle."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not say “il y a le tableau”: after il y a, use un, une or des.",
+          "fr": "Ne dites pas « il y a le tableau » : après il y a, on emploie un, une ou des.",
+          "de": "Sag nicht „il y a le tableau“: nach il y a stehen un, une oder des."
+        },
+        {
+          "en": "Il y a does not change in the plural: there is no “ils y ont”.",
+          "fr": "Il y a ne change pas au pluriel : on ne dit pas « ils y ont ».",
+          "de": "Il y a ändert sich im Plural nicht: es heißt nie „ils y ont“."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-st-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 5,
+          "ruleIds": ["rule-articles"],
+          "estimatedDurationS": 75
+        },
+        {
+          "id": "ex-st-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 5,
+          "ruleIds": ["rule-il-y-a-statement", "rule-articles"],
+          "estimatedDurationS": 110
+        },
+        {
+          "id": "ex-st-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 4,
+          "ruleIds": ["rule-il-y-a-statement", "rule-articles"],
+          "estimatedDurationS": 100
+        }
+      ]
+    },
+    {
+      "id": "block-question",
+      "title": {
+        "en": "Asking: Qu'est-ce qu'il y a ?",
+        "fr": "Demander : Qu'est-ce qu'il y a ?",
+        "de": "Fragen: Qu'est-ce qu'il y a ?"
+      },
+      "ruleIds": ["rule-question"],
+      "explanationPlan": {
+        "en": "Teach the question Qu'est-ce qu'il y a dans + place ? and the answer Il y a + un, une, des. Stress that the question is the same for one thing or many things.",
+        "fr": "Enseigner la question Qu'est-ce qu'il y a dans + lieu ? et la réponse Il y a + un, une, des. Insister sur le fait que la question est la même pour une chose ou plusieurs.",
+        "de": "Die Frage Qu'est-ce qu'il y a dans + Ort ? und die Antwort Il y a + un, une, des vermitteln. Betonen, dass die Frage für eine oder mehrere Sachen gleich bleibt."
+      },
+      "explanationDurationS": 100,
+      "examples": [
+        {
+          "text": "Qu'est-ce qu'il y a dans la classe ?",
+          "translation": {
+            "en": "What is there in the classroom?",
+            "de": "Was gibt es im Klassenzimmer?"
+          }
+        },
+        {
+          "text": "Il y a un tableau et des chaises.",
+          "translation": {
+            "en": "There is a board and there are chairs.",
+            "de": "Es gibt eine Tafel und Stühle."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "The question does not change for singular or plural: the answer shows whether there is one thing or many.",
+          "fr": "La question ne change pas au singulier ou au pluriel : c'est la réponse qui montre s'il y a une chose ou plusieurs.",
+          "de": "Die Frage ändert sich nicht im Singular oder Plural: die Antwort zeigt, ob es eine oder mehrere Sachen gibt."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-q-order",
+          "type": "grammar_word_order",
+          "itemCount": 4,
+          "ruleIds": ["rule-question"],
+          "estimatedDurationS": 120
+        },
+        {
+          "id": "ex-q-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 3,
+          "ruleIds": ["rule-question"],
+          "estimatedDurationS": 45
+        },
+        {
+          "id": "ex-q-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-question"],
+          "estimatedDurationS": 80
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-statement",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-il-y-a-statement", "rule-articles"],
+        "estimatedDurationS": 80,
+        "timeLimitS": 120
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-question", "rule-il-y-a-statement"],
+        "estimatedDurationS": 75,
+        "timeLimitS": 130
+      },
+      {
+        "pageId": "exam-question",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["rule-question"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

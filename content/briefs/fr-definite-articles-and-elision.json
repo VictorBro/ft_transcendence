@@ -1,0 +1,229 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-definite-articles-and-elision",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Les articles le, la, l', les",
+  "objective": {
+    "en": "Use le, la, l' and les, with elision before a vowel or a mute h (l'ami, l'hôtel), and after aimer, adorer or détester: j'aime le café.",
+    "fr": "Employer le, la, l' et les, avec l'élision devant une voyelle ou un h muet, et après aimer, adorer ou détester : j'aime le café.",
+    "de": "le, la, l' und les verwenden, mit Elision vor Vokal oder stummem h (l'ami, l'hôtel) und nach aimer, adorer, détester: j'aime le café."
+  },
+  "estimatedMinutes": 15,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-1",
+    "generatedAt": "2026-10-26T22:57:04.217Z",
+    "inputHashes": { "outline": "54d6c8d3101f255f7b601ed8abe3d28ddde9f81411327c0f77e77dc1368e62c9" }
+  },
+  "kind": "grammar",
+  "topic": "nouns_and_determiners",
+  "scopeBoundaries": {
+    "en": "Covers the definite articles le, la, l' and les, elision before a vowel or mute h, and the article after aimer, adorer and détester. Excludes indefinite and partitive articles, contractions (au, du) and the aspirated h.",
+    "fr": "Couvre les articles définis le, la, l' et les, l'élision devant une voyelle ou un h muet, et l'article après aimer, adorer et détester. Exclut les articles indéfinis et partitifs, les contractions (au, du) et le h aspiré.",
+    "de": "Behandelt die bestimmten Artikel le, la, l' und les, die Elision vor Vokal oder stummem h und den Artikel nach aimer, adorer und détester. Ausgeschlossen sind unbestimmte und Teilungsartikel, Verschmelzungen (au, du) und das h aspiré."
+  },
+  "prerequisites": [],
+  "rules": [
+    {
+      "id": "rule-article-forms",
+      "summary": {
+        "en": "Use le with a masculine singular noun, la with a feminine singular noun and les with a plural noun.",
+        "fr": "Employer le devant un nom masculin singulier, la devant un nom féminin singulier et les devant un nom pluriel.",
+        "de": "le steht vor einem maskulinen Singular, la vor einem femininen Singular und les vor einem Plural."
+      }
+    },
+    {
+      "id": "rule-elision",
+      "summary": {
+        "en": "Before a vowel or a mute h, le and la become l' (l'ami, l'école, l'hôtel); les does not change.",
+        "fr": "Devant une voyelle ou un h muet, le et la deviennent l' (l'ami, l'école, l'hôtel) ; les ne change pas.",
+        "de": "Vor Vokal oder stummem h werden le und la zu l' (l'ami, l'école, l'hôtel); les bleibt unverändert."
+      }
+    },
+    {
+      "id": "rule-like-verbs",
+      "summary": {
+        "en": "After aimer, adorer and détester, keep the definite article to speak in general: j'aime le café.",
+        "fr": "Après aimer, adorer et détester, garder l'article défini pour parler en général : j'aime le café.",
+        "de": "Nach aimer, adorer und détester bleibt der bestimmte Artikel stehen, wenn man allgemein spricht: j'aime le café."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-forms",
+      "title": { "en": "Le, la, les", "fr": "Le, la, les", "de": "Le, la, les" },
+      "ruleIds": ["rule-article-forms"],
+      "explanationPlan": {
+        "en": "Present the definite article: le for masculine, la for feminine, les for plural. Show that les is the same for both genders and that each noun should be learned with its article.",
+        "fr": "Présenter l'article défini : le au masculin, la au féminin, les au pluriel. Montrer que les est identique aux deux genres et qu'il faut apprendre chaque nom avec son article.",
+        "de": "Den bestimmten Artikel vorstellen: le maskulin, la feminin, les im Plural. Zeigen, dass les für beide Genera gleich ist und dass man jedes Nomen mit Artikel lernt."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Le stylo est noir.",
+          "translation": { "en": "The pen is black.", "de": "Der Stift ist schwarz." }
+        },
+        {
+          "text": "La porte est ouverte.",
+          "translation": { "en": "The door is open.", "de": "Die Tür ist offen." }
+        },
+        {
+          "text": "Les cahiers sont verts.",
+          "translation": { "en": "The notebooks are green.", "de": "Die Hefte sind grün." }
+        },
+        {
+          "text": "La fenêtre est grande.",
+          "translation": { "en": "The window is big.", "de": "Das Fenster ist groß." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Les is the same for masculine and feminine nouns.",
+          "fr": "Les est identique pour les noms masculins et féminins.",
+          "de": "Les ist für maskuline und feminine Nomen gleich."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-forms-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-article-forms"],
+          "estimatedDurationS": 40
+        },
+        {
+          "id": "ex-forms-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-article-forms"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-forms-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-article-forms"],
+          "estimatedDurationS": 60
+        }
+      ]
+    },
+    {
+      "id": "block-elision",
+      "title": {
+        "en": "L' and the verbs of preference",
+        "fr": "L' et les verbes de préférence",
+        "de": "L' und die Verben der Vorliebe"
+      },
+      "ruleIds": ["rule-elision", "rule-like-verbs"],
+      "explanationPlan": {
+        "en": "Explain elision: le and la become l' before a vowel or mute h, les never changes. Then show that aimer, adorer and détester keep the definite article: j'aime le café.",
+        "fr": "Expliquer l'élision : le et la deviennent l' devant une voyelle ou un h muet, les ne change jamais. Montrer ensuite qu'après aimer, adorer et détester on garde l'article défini : j'aime le café.",
+        "de": "Die Elision erklären: le und la werden vor Vokal oder stummem h zu l', les ändert sich nie. Dann zeigen, dass nach aimer, adorer und détester der bestimmte Artikel bleibt: j'aime le café."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "Voici l'ami de Marie.",
+          "translation": { "en": "Here is Marie's friend.", "de": "Hier ist Maries Freund." }
+        },
+        {
+          "text": "L'hôtel est grand.",
+          "translation": { "en": "The hotel is big.", "de": "Das Hotel ist groß." }
+        },
+        {
+          "text": "J'aime le café.",
+          "translation": { "en": "I like coffee.", "de": "Ich mag Kaffee." }
+        },
+        {
+          "text": "Nous adorons la musique.",
+          "translation": { "en": "We love music.", "de": "Wir lieben Musik." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Les stays les before a vowel: les amis, not l'amis.",
+          "fr": "Les reste les devant une voyelle : les amis, et non l'amis.",
+          "de": "Les bleibt vor einem Vokal les: les amis, nicht l'amis."
+        },
+        {
+          "en": "Do not drop the article after aimer, adorer or détester.",
+          "fr": "Ne supprimez pas l'article après aimer, adorer ou détester.",
+          "de": "Lass den Artikel nach aimer, adorer oder détester nicht weg."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-el-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-elision"],
+          "estimatedDurationS": 40
+        },
+        {
+          "id": "ex-el-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-elision", "rule-like-verbs"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-el-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["rule-elision", "rule-like-verbs"],
+          "estimatedDurationS": 75
+        },
+        {
+          "id": "ex-el-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-elision", "rule-like-verbs"],
+          "estimatedDurationS": 60
+        }
+      ]
+    }
+  ],
+  "newVerbs": [
+    { "infinitive": "aimer", "translations": { "en": "to like, to love", "de": "mögen, lieben" } },
+    {
+      "infinitive": "adorer",
+      "translations": { "en": "to love, to adore", "de": "lieben, verehren" }
+    },
+    { "infinitive": "détester", "translations": { "en": "to hate", "de": "hassen" } }
+  ],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-articles",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-article-forms"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      },
+      {
+        "pageId": "exam-elision",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-elision", "rule-like-verbs"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-article-forms", "rule-elision"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

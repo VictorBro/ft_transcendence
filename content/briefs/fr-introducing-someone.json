@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-introducing-someone",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Présenter quelqu’un",
+  "objective": {
+    "en": "Introduce a friend or a family member and react when someone is introduced to you.",
+    "fr": "Présenter un ami ou un membre de sa famille et réagir quand on vous présente quelqu’un.",
+    "de": "Einen Freund oder ein Familienmitglied vorstellen und reagieren, wenn man selbst vorgestellt wird."
+  },
+  "estimatedMinutes": 15,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-1",
+    "generatedAt": "2026-10-26T22:58:39.091Z",
+    "inputHashes": { "outline": "e632537857696ed9ad2750da1cde34d7d561c14164a0dfae60ad36ad452150a8" }
+  },
+  "kind": "functions",
+  "theme": "relations",
+  "situation": {
+    "en": "At a party, Karim introduces friends and family to Sophie, then introduces Sophie to a neighbour.",
+    "fr": "À une fête, Karim présente des amis et sa famille à Sophie, puis présente Sophie à une voisine.",
+    "de": "Auf einer Party stellt Karim Sophie Freunde und Familie vor und dann Sophie einer Nachbarin."
+  },
+  "coverageNotes": {
+    "en": "Introducing someone informally (Je te présente, Voici) and formally (Je vous présente), reacting to an introduction (Enchanté, Enchantée) and answering with Moi aussi.",
+    "fr": "Présenter quelqu’un de façon informelle (Je te présente, Voici) et formelle (Je vous présente), réagir à une présentation (Enchanté, Enchantée) et répondre avec Moi aussi.",
+    "de": "Jemanden informell (Je te présente, Voici) und formell (Je vous présente) vorstellen, auf eine Vorstellung reagieren (Enchanté, Enchantée) und mit Moi aussi antworten."
+  },
+  "prerequisites": [],
+  "roles": [
+    { "id": "karim", "label": "Karim", "translation": { "en": "Karim", "de": "Karim" } },
+    { "id": "sophie", "label": "Sophie", "translation": { "en": "Sophie", "de": "Sophie" } }
+  ],
+  "expressions": [
+    {
+      "id": "je-te-presente",
+      "text": "Je te présente",
+      "openEnd": true,
+      "translations": {
+        "en": ["Let me introduce you to (informal)"],
+        "de": ["Darf ich dir vorstellen:"]
+      },
+      "explanation": {
+        "en": "Introduces someone to a friend, family member or peer (tu): Je te présente + name.",
+        "fr": "Pour présenter quelqu’un à un ami, à un proche ou à quelqu’un de son âge (tu) : Je te présente + prénom.",
+        "de": "Damit stellst du jemanden einem Freund, einem Verwandten oder Gleichaltrigen vor (tu): Je te présente + Name."
+      },
+      "example": {
+        "text": "Sophie, je te présente Marc.",
+        "translation": {
+          "en": "Sophie, let me introduce you to Marc.",
+          "de": "Sophie, darf ich dir Marc vorstellen?"
+        }
+      }
+    },
+    {
+      "id": "je-vous-presente",
+      "text": "Je vous présente",
+      "openEnd": true,
+      "translations": {
+        "en": ["Let me introduce you to (formal)"],
+        "de": ["Darf ich Ihnen vorstellen:"]
+      },
+      "explanation": {
+        "en": "The polite form (vous), for an older person or someone you do not know well.",
+        "fr": "La forme polie (vous), pour une personne plus âgée ou que l’on connaît peu.",
+        "de": "Die höfliche Form (vous), für ältere oder wenig bekannte Personen."
+      },
+      "example": {
+        "text": "Madame Roux, je vous présente Marc.",
+        "translation": {
+          "en": "Mrs Roux, let me introduce Marc to you.",
+          "de": "Frau Roux, darf ich Ihnen Marc vorstellen?"
+        }
+      }
+    },
+    {
+      "id": "voici",
+      "text": "Voici",
+      "openEnd": true,
+      "translations": { "en": ["This is"], "de": ["Das ist"] },
+      "explanation": {
+        "en": "Shows a person who is here: Voici + person.",
+        "fr": "Pour montrer une personne qui est là : Voici + personne.",
+        "de": "Damit zeigst du eine Person, die da ist: Voici + Person."
+      },
+      "example": {
+        "text": "Voici ma sœur, Julie.",
+        "translation": { "en": "This is my sister, Julie.", "de": "Das ist meine Schwester Julie." }
+      }
+    },
+    {
+      "id": "enchante",
+      "text": "Enchanté",
+      "openEnd": false,
+      "translations": { "en": ["Nice to meet you"], "de": ["Freut mich"] },
+      "explanation": {
+        "en": "Said when you meet someone. A man says Enchanté, a woman says Enchantée; it sounds the same.",
+        "fr": "On le dit quand on rencontre quelqu’un. Un homme dit Enchanté, une femme dit Enchantée ; cela se prononce pareil.",
+        "de": "Das sagt man beim Kennenlernen. Ein Mann sagt Enchanté, eine Frau Enchantée; man spricht beides gleich."
+      },
+      "example": {
+        "text": "Enchanté, Marc !",
+        "translation": { "en": "Nice to meet you, Marc!", "de": "Freut mich, Marc!" }
+      }
+    },
+    {
+      "id": "moi-aussi",
+      "text": "Moi aussi",
+      "openEnd": false,
+      "translations": { "en": ["Me too"], "de": ["Ich auch"] },
+      "explanation": {
+        "en": "A short answer when the other person says something nice and you feel the same.",
+        "fr": "Une réponse courte quand l’autre dit quelque chose d’agréable et que vous ressentez la même chose.",
+        "de": "Eine kurze Antwort, wenn der andere etwas Nettes sagt und es dir genauso geht."
+      },
+      "example": {
+        "text": "Enchantée ! — Moi aussi !",
+        "translation": { "en": "Nice to meet you! — Me too!", "de": "Freut mich! — Mich auch!" }
+      }
+    }
+  ],
+  "words": [],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

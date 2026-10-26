@@ -1,0 +1,611 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-family-members",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "La famille",
+  "objective": {
+    "en": "Name twelve family members with their article: le père, la mère, le frère, la sœur, les grands-parents, le cousin…",
+    "fr": "Nommer douze membres de la famille avec leur article : un père, une mère, un frère, une sœur, des grands-parents, un cousin…",
+    "de": "Zwölf Familienmitglieder mit Artikel benennen: un père, une mère, un frère, une sœur, des grands-parents, un cousin…"
+  },
+  "estimatedMinutes": 21,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-1",
+    "generatedAt": "2026-10-26T22:55:06.492Z",
+    "inputHashes": { "outline": "f8cc866f40b14d622bb256822a1e1952ddbe2530b844f4bb87364bbcd1cd1822" }
+  },
+  "kind": "vocabulary",
+  "theme": "relations",
+  "coverageNotes": {
+    "en": "Twelve family members in two groups: the close family (parents, siblings, children) and the extended family (grandparents, uncle, aunt, cousin). Nouns are taught with their indefinite article.",
+    "fr": "Douze membres de la famille en deux groupes : la famille proche (parents, frères et sœurs, enfants) et la famille élargie (grands-parents, oncle, tante, cousin). Les noms sont enseignés avec l’article indéfini.",
+    "de": "Zwölf Familienmitglieder in zwei Gruppen: die enge Familie (Eltern, Geschwister, Kinder) und die erweiterte Familie (Großeltern, Onkel, Tante, Cousin). Die Nomen werden mit dem unbestimmten Artikel gelernt."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words fit an A1 vocabulary lesson and give two pages of six words for matching and the exam.",
+    "fr": "Douze mots conviennent à une leçon de vocabulaire A1 et donnent deux pages de six mots pour l’association et l’examen.",
+    "de": "Zwölf Wörter passen zu einer A1-Wortschatzlektion und ergeben zwei Seiten mit je sechs Wörtern für Zuordnung und Prüfung."
+  },
+  "difficultyBalance": {
+    "en": "Ten core words; the plural grands-parents and the silent-s word fils are more demanding.",
+    "fr": "Dix mots de base ; le pluriel grands-parents et le mot fils, dont le s se prononce, sont plus difficiles.",
+    "de": "Zehn Grundwörter; der Plural grands-parents und das Wort fils, dessen s gesprochen wird, sind anspruchsvoller."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "famille-proche",
+      "label": { "en": "Close family", "fr": "La famille proche", "de": "Die enge Familie" },
+      "targetIds": ["pere", "mere", "frere", "soeur", "fils", "fille"],
+      "introduction": {
+        "en": "Learn **six close family members**. Nouns have a gender, so learn each one with its article:\n\n- `un père`\n- `une mère`\n- `un frère`\n- `une sœur`\n- `un fils`\n- `une fille`",
+        "fr": "Apprenez **six membres de la famille proche**. Les noms ont un genre : apprenez chacun avec son article :\n\n- `un père`\n- `une mère`\n- `un frère`\n- `une sœur`\n- `un fils`\n- `une fille`",
+        "de": "Lerne **sechs nahe Familienmitglieder**. Nomen haben ein Genus, lerne daher jedes mit seinem Artikel:\n\n- `un père`\n- `une mère`\n- `un frère`\n- `une sœur`\n- `un fils`\n- `une fille`"
+      }
+    },
+    {
+      "id": "famille-elargie",
+      "label": {
+        "en": "Extended family",
+        "fr": "La famille élargie",
+        "de": "Die erweiterte Familie"
+      },
+      "targetIds": ["grand-pere", "grand-mere", "grands-parents", "oncle", "tante", "cousin"],
+      "introduction": {
+        "en": "Here are **six more family members**:\n\n- `un grand-père`\n- `une grand-mère`\n- `des grands-parents`\n- `un oncle`\n- `une tante`\n- `un cousin`\n\nCareful: `des grands-parents` is always plural. For a girl, say `une cousine`.",
+        "fr": "Voici **six autres membres de la famille** :\n\n- `un grand-père`\n- `une grand-mère`\n- `des grands-parents`\n- `un oncle`\n- `une tante`\n- `un cousin`\n\nAttention : `des grands-parents` est toujours au pluriel. Pour une fille, on dit `une cousine`.",
+        "de": "Hier sind **sechs weitere Familienmitglieder**:\n\n- `un grand-père`\n- `une grand-mère`\n- `des grands-parents`\n- `un oncle`\n- `une tante`\n- `un cousin`\n\nAchtung: `des grands-parents` steht immer im Plural. Für ein Mädchen sagt man `une cousine`."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "pere",
+      "term": "père",
+      "translations": { "en": ["father"], "de": ["Vater"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un père",
+      "examForms": ["un père"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/œ̃ pɛʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mon père travaille à Lyon.",
+        "translation": { "en": "My father works in Lyon.", "de": "Mein Vater arbeitet in Lyon." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Père means father. It is masculine: un père.",
+        "fr": "Père désigne le papa. Il est masculin : un père.",
+        "de": "Père bedeutet Vater. Das Wort ist maskulin: un père."
+      },
+      "genderExplanation": {
+        "en": "Père is masculine, so its indefinite article is un.",
+        "fr": "Père est masculin : on dit un père.",
+        "de": "Père ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ma mère et mon ",
+        "after": " travaillent à Lyon.",
+        "accepted": { "answers": ["père"] },
+        "referenceTargetIds": ["pere", "mere", "soeur", "tante"],
+        "explanation": {
+          "en": "Only père fits: mon is masculine, so it cannot go with mère, sœur or tante.",
+          "fr": "Seul « père » convient : mon est masculin, donc impossible avec mère, sœur ou tante.",
+          "de": "Nur „père“ passt: mon ist maskulin und passt daher nicht zu mère, sœur oder tante."
+        }
+      },
+      "listeningOptionTargetIds": ["pere", "mere", "frere", "soeur"]
+    },
+    {
+      "id": "mere",
+      "term": "mère",
+      "translations": { "en": ["mother"], "de": ["Mutter"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une mère",
+      "examForms": ["une mère"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/yn mɛʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ma mère parle français.",
+        "translation": {
+          "en": "My mother speaks French.",
+          "de": "Meine Mutter spricht Französisch."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Mère means mother. It is feminine: une mère.",
+        "fr": "Mère désigne la maman. Il est féminin : une mère.",
+        "de": "Mère bedeutet Mutter. Das Wort ist feminin: une mère."
+      },
+      "genderExplanation": {
+        "en": "Mère is feminine, so its indefinite article is une.",
+        "fr": "Mère est féminin : on dit une mère.",
+        "de": "Mère ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Mon père et ma ",
+        "after": " parlent français.",
+        "accepted": { "answers": ["mère"] },
+        "referenceTargetIds": ["mere", "pere", "frere", "oncle"],
+        "explanation": {
+          "en": "Only mère fits: ma is feminine, so it cannot go with père, frère or oncle.",
+          "fr": "Seul « mère » convient : ma est féminin, donc impossible avec père, frère ou oncle.",
+          "de": "Nur „mère“ passt: ma ist feminin und passt daher nicht zu père, frère oder oncle."
+        }
+      },
+      "listeningOptionTargetIds": ["mere", "pere", "frere", "soeur"]
+    },
+    {
+      "id": "frere",
+      "term": "frère",
+      "translations": { "en": ["brother"], "de": ["Bruder"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un frère",
+      "examForms": ["un frère"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/œ̃ fʁɛʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mon frère a douze ans.",
+        "translation": {
+          "en": "My brother is twelve years old.",
+          "de": "Mein Bruder ist zwölf Jahre alt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Frère means brother. It is masculine: un frère.",
+        "fr": "Frère désigne un garçon qui a les mêmes parents que vous. Il est masculin : un frère.",
+        "de": "Frère bedeutet Bruder. Das Wort ist maskulin: un frère."
+      },
+      "genderExplanation": {
+        "en": "Frère is masculine, so its indefinite article is un.",
+        "fr": "Frère est masculin : on dit un frère.",
+        "de": "Frère ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Paul est mon ",
+        "after": " : nous avons les mêmes parents.",
+        "accepted": { "answers": ["frère"] },
+        "referenceTargetIds": ["frere", "soeur", "cousin", "oncle"],
+        "explanation": {
+          "en": "Only frère fits: a brother has the same parents as you; a cousin or an uncle does not.",
+          "fr": "Seul « frère » convient : un frère a les mêmes parents que vous, pas un cousin ni un oncle.",
+          "de": "Nur „frère“ passt: Ein Bruder hat dieselben Eltern wie du, ein Cousin oder Onkel nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["frere", "pere", "mere", "soeur"]
+    },
+    {
+      "id": "soeur",
+      "term": "sœur",
+      "translations": { "en": ["sister"], "de": ["Schwester"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une sœur",
+      "examForms": ["une sœur"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/yn sœʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ma sœur s’appelle Léa.",
+        "translation": { "en": "My sister is called Léa.", "de": "Meine Schwester heißt Léa." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Sœur means sister. It is feminine: une sœur.",
+        "fr": "Sœur désigne une fille qui a les mêmes parents que vous. Il est féminin : une sœur.",
+        "de": "Sœur bedeutet Schwester. Das Wort ist feminin: une sœur."
+      },
+      "genderExplanation": {
+        "en": "Sœur is feminine, so its indefinite article is une.",
+        "fr": "Sœur est féminin : on dit une sœur.",
+        "de": "Sœur ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Léa est ma ",
+        "after": " : nous avons les mêmes parents.",
+        "accepted": { "answers": ["sœur"] },
+        "referenceTargetIds": ["soeur", "mere", "tante", "fille"],
+        "explanation": {
+          "en": "Only sœur fits: a sister has the same parents as you; a mother, an aunt or a daughter does not.",
+          "fr": "Seul « sœur » convient : une sœur a les mêmes parents que vous, pas une mère, une tante ni une fille.",
+          "de": "Nur „sœur“ passt: Eine Schwester hat dieselben Eltern wie du, eine Mutter, Tante oder Tochter nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["soeur", "mere", "frere", "tante"]
+    },
+    {
+      "id": "fils",
+      "term": "fils",
+      "translations": { "en": ["son"], "de": ["Sohn"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un fils",
+      "examForms": ["un fils"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/œ̃ fis/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Madame Martin a un fils.",
+        "translation": { "en": "Mrs Martin has a son.", "de": "Frau Martin hat einen Sohn." }
+      },
+      "ambiguityNote": {
+        "en": "The s of fils is pronounced, and the word does not change in the plural.",
+        "fr": "Le s de fils se prononce, et le mot ne change pas au pluriel.",
+        "de": "Das s von fils wird gesprochen, und das Wort verändert sich im Plural nicht."
+      },
+      "explanation": {
+        "en": "Fils means son. It is masculine: un fils.",
+        "fr": "Fils désigne l’enfant garçon d’un père ou d’une mère. Il est masculin : un fils.",
+        "de": "Fils bedeutet Sohn. Das Wort ist maskulin: un fils."
+      },
+      "genderExplanation": {
+        "en": "Fils is masculine, so its indefinite article is un.",
+        "fr": "Fils est masculin : on dit un fils.",
+        "de": "Fils ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Madame Martin est la mère de Lucas. Lucas est son ",
+        "after": ".",
+        "accepted": { "answers": ["fils"] },
+        "referenceTargetIds": ["fils", "fille", "pere", "frere"],
+        "explanation": {
+          "en": "Only fils fits: Lucas is the boy child of Madame Martin, his mother.",
+          "fr": "Seul « fils » convient : Lucas est l’enfant garçon de Madame Martin, sa mère.",
+          "de": "Nur „fils“ passt: Lucas ist der Junge von Madame Martin, seiner Mutter."
+        }
+      },
+      "listeningOptionTargetIds": ["fils", "fille", "oncle", "frere"]
+    },
+    {
+      "id": "fille",
+      "term": "fille",
+      "translations": { "en": ["daughter"], "de": ["Tochter"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une fille",
+      "examForms": ["une fille"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/yn fij/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Paul a une fille.",
+        "translation": { "en": "Paul has a daughter.", "de": "Paul hat eine Tochter." }
+      },
+      "ambiguityNote": {
+        "en": "Fille also means girl. In a family context it means daughter.",
+        "fr": "Fille signifie aussi petite fille. Dans une famille, ce mot veut dire « enfant fille ».",
+        "de": "Fille bedeutet auch Mädchen. In der Familie bedeutet es Tochter."
+      },
+      "explanation": {
+        "en": "Fille means daughter. It is feminine: une fille.",
+        "fr": "Fille désigne l’enfant féminin d’un père ou d’une mère. Il est féminin : une fille.",
+        "de": "Fille bedeutet Tochter. Das Wort ist feminin: une fille."
+      },
+      "genderExplanation": {
+        "en": "Fille is feminine, so its indefinite article is une.",
+        "fr": "Fille est féminin : on dit une fille.",
+        "de": "Fille ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Madame Martin est la mère de Léa. Léa est sa ",
+        "after": ".",
+        "accepted": { "answers": ["fille"] },
+        "referenceTargetIds": ["fille", "fils", "soeur", "tante"],
+        "explanation": {
+          "en": "Only fille fits: Léa is the girl child of Madame Martin, her mother.",
+          "fr": "Seul « fille » convient : Léa est l’enfant fille de Madame Martin, sa mère.",
+          "de": "Nur „fille“ passt: Léa ist das Mädchen von Madame Martin, ihrer Mutter."
+        }
+      },
+      "listeningOptionTargetIds": ["fille", "fils", "tante", "cousin"]
+    },
+    {
+      "id": "grand-pere",
+      "term": "grand-père",
+      "translations": { "en": ["grandfather"], "de": ["Großvater", "Opa"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un grand-père",
+      "examForms": ["un grand-père"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/œ̃ ɡʁɑ̃pɛʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mon grand-père habite à Paris.",
+        "translation": {
+          "en": "My grandfather lives in Paris.",
+          "de": "Mein Großvater wohnt in Paris."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Grand-père means grandfather, the father of your father or mother. It is masculine: un grand-père.",
+        "fr": "Grand-père désigne le père de votre père ou de votre mère. Il est masculin : un grand-père.",
+        "de": "Grand-père bedeutet Großvater, der Vater deines Vaters oder deiner Mutter. Das Wort ist maskulin: un grand-père."
+      },
+      "genderExplanation": {
+        "en": "Grand-père is masculine, so its indefinite article is un.",
+        "fr": "Grand-père est masculin : on dit un grand-père.",
+        "de": "Grand-père ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le père de mon père est mon ",
+        "after": ".",
+        "accepted": { "answers": ["grand-père"] },
+        "referenceTargetIds": ["grand-pere", "grand-mere", "oncle", "pere"],
+        "explanation": {
+          "en": "Only grand-père fits: the father of your father is your grandfather.",
+          "fr": "Seul « grand-père » convient : le père de votre père est votre grand-père.",
+          "de": "Nur „grand-père“ passt: Der Vater deines Vaters ist dein Großvater."
+        }
+      },
+      "listeningOptionTargetIds": ["grand-pere", "grand-mere", "grands-parents", "pere"]
+    },
+    {
+      "id": "grand-mere",
+      "term": "grand-mère",
+      "translations": { "en": ["grandmother"], "de": ["Großmutter", "Oma"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une grand-mère",
+      "examForms": ["une grand-mère"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/yn ɡʁɑ̃mɛʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ma grand-mère est très gentille.",
+        "translation": {
+          "en": "My grandmother is very kind.",
+          "de": "Meine Großmutter ist sehr nett."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Grand-mère means grandmother, the mother of your father or mother. It is feminine: une grand-mère.",
+        "fr": "Grand-mère désigne la mère de votre père ou de votre mère. Il est féminin : une grand-mère.",
+        "de": "Grand-mère bedeutet Großmutter, die Mutter deines Vaters oder deiner Mutter. Das Wort ist feminin: une grand-mère."
+      },
+      "genderExplanation": {
+        "en": "Grand-mère is feminine, so its indefinite article is une.",
+        "fr": "Grand-mère est féminin : on dit une grand-mère.",
+        "de": "Grand-mère ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "La mère de ma mère est ma ",
+        "after": ".",
+        "accepted": { "answers": ["grand-mère"] },
+        "referenceTargetIds": ["grand-mere", "tante", "soeur", "mere"],
+        "explanation": {
+          "en": "Only grand-mère fits: the mother of your mother is your grandmother.",
+          "fr": "Seul « grand-mère » convient : la mère de votre mère est votre grand-mère.",
+          "de": "Nur „grand-mère“ passt: Die Mutter deiner Mutter ist deine Großmutter."
+        }
+      },
+      "listeningOptionTargetIds": ["grand-mere", "grand-pere", "grands-parents", "mere"]
+    },
+    {
+      "id": "grands-parents",
+      "term": "grands-parents",
+      "translations": { "en": ["grandparents"], "de": ["Großeltern"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "plural",
+      "teachingForm": "des grands-parents",
+      "examForms": ["des grands-parents"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/de ɡʁɑ̃paʁɑ̃/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Mes grands-parents habitent à Nice.",
+        "translation": {
+          "en": "My grandparents live in Nice.",
+          "de": "Meine Großeltern wohnen in Nizza."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Grands-parents means grandparents: a grandfather and a grandmother together. It is plural: des grands-parents.",
+        "fr": "Grands-parents désigne le grand-père et la grand-mère ensemble. Il est au pluriel : des grands-parents.",
+        "de": "Grands-parents bedeutet Großeltern: Großvater und Großmutter zusammen. Das Wort steht im Plural: des grands-parents."
+      },
+      "genderExplanation": {
+        "en": "Grands-parents is plural, so its indefinite article is des.",
+        "fr": "Grands-parents est au pluriel : on dit des grands-parents.",
+        "de": "Grands-parents steht im Plural, daher lautet der unbestimmte Artikel des."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Mon grand-père et ma grand-mère sont mes ",
+        "after": ".",
+        "accepted": { "answers": ["grands-parents"] },
+        "referenceTargetIds": ["grands-parents", "cousin", "oncle", "tante"],
+        "explanation": {
+          "en": "Only grands-parents fits: mes is plural, and a grandfather and a grandmother are your grandparents.",
+          "fr": "Seul « grands-parents » convient : mes est pluriel, et un grand-père et une grand-mère sont vos grands-parents.",
+          "de": "Nur „grands-parents“ passt: mes ist Plural, und Großvater und Großmutter sind deine Großeltern."
+        }
+      },
+      "listeningOptionTargetIds": ["grands-parents", "grand-pere", "grand-mere", "cousin"]
+    },
+    {
+      "id": "oncle",
+      "term": "oncle",
+      "translations": { "en": ["uncle"], "de": ["Onkel"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un oncle",
+      "examForms": ["un oncle"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/œ̃n‿ɔ̃kl/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mon oncle habite à Lille.",
+        "translation": { "en": "My uncle lives in Lille.", "de": "Mein Onkel wohnt in Lille." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Oncle means uncle, the brother of your father or mother. It is masculine: un oncle.",
+        "fr": "Oncle désigne le frère de votre père ou de votre mère. Il est masculin : un oncle.",
+        "de": "Oncle bedeutet Onkel, der Bruder deines Vaters oder deiner Mutter. Das Wort ist maskulin: un oncle."
+      },
+      "genderExplanation": {
+        "en": "Oncle is masculine, so its indefinite article is un.",
+        "fr": "Oncle est masculin : on dit un oncle.",
+        "de": "Oncle ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le frère de ma mère est mon ",
+        "after": ".",
+        "accepted": { "answers": ["oncle"] },
+        "referenceTargetIds": ["oncle", "cousin", "pere", "frere"],
+        "explanation": {
+          "en": "Only oncle fits: the brother of your mother is your uncle.",
+          "fr": "Seul « oncle » convient : le frère de votre mère est votre oncle.",
+          "de": "Nur „oncle“ passt: Der Bruder deiner Mutter ist dein Onkel."
+        }
+      },
+      "listeningOptionTargetIds": ["oncle", "tante", "cousin", "fils"]
+    },
+    {
+      "id": "tante",
+      "term": "tante",
+      "translations": { "en": ["aunt"], "de": ["Tante"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une tante",
+      "examForms": ["une tante"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/yn tɑ̃t/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ma tante s’appelle Anne.",
+        "translation": { "en": "My aunt is called Anne.", "de": "Meine Tante heißt Anne." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Tante means aunt, the sister of your father or mother. It is feminine: une tante.",
+        "fr": "Tante désigne la sœur de votre père ou de votre mère. Il est féminin : une tante.",
+        "de": "Tante bedeutet Tante, die Schwester deines Vaters oder deiner Mutter. Das Wort ist feminin: une tante."
+      },
+      "genderExplanation": {
+        "en": "Tante is feminine, so its indefinite article is une.",
+        "fr": "Tante est féminin : on dit une tante.",
+        "de": "Tante ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "La sœur de mon père est ma ",
+        "after": ".",
+        "accepted": { "answers": ["tante"] },
+        "referenceTargetIds": ["tante", "soeur", "mere", "fille"],
+        "explanation": {
+          "en": "Only tante fits: the sister of your father is your aunt, not your sister.",
+          "fr": "Seul « tante » convient : la sœur de votre père est votre tante, pas votre sœur.",
+          "de": "Nur „tante“ passt: Die Schwester deines Vaters ist deine Tante, nicht deine Schwester."
+        }
+      },
+      "listeningOptionTargetIds": ["tante", "oncle", "cousin", "fille"]
+    },
+    {
+      "id": "cousin",
+      "term": "cousin",
+      "translations": { "en": ["cousin"], "de": ["Cousin", "Vetter"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un cousin",
+      "examForms": ["un cousin"],
+      "articleException": null,
+      "genderVariants": ["une cousine"],
+      "pronunciation": "/œ̃ kuzɛ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mon cousin a quinze ans.",
+        "translation": {
+          "en": "My cousin is fifteen years old.",
+          "de": "Mein Cousin ist fünfzehn Jahre alt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Cousin means male cousin, the son of your uncle or aunt. It is masculine: un cousin. The feminine is une cousine.",
+        "fr": "Cousin désigne le fils de votre oncle ou de votre tante. Il est masculin : un cousin. Le féminin est une cousine.",
+        "de": "Cousin bedeutet männlicher Cousin, der Sohn deines Onkels oder deiner Tante. Das Wort ist maskulin: un cousin. Die weibliche Form ist une cousine."
+      },
+      "genderExplanation": {
+        "en": "Cousin is masculine, so its indefinite article is un. For a girl, say une cousine.",
+        "fr": "Cousin est masculin : on dit un cousin. Pour une fille, on dit une cousine.",
+        "de": "Cousin ist maskulin, daher lautet der unbestimmte Artikel un. Für ein Mädchen sagt man une cousine."
+      },
+      "matchingLabel": null,
+      "examPrompt": { "en": "male cousin", "de": "Cousin (männlich)" },
+      "gap": {
+        "before": "Le fils de mon oncle est mon ",
+        "after": ".",
+        "accepted": { "answers": ["cousin"] },
+        "referenceTargetIds": ["cousin", "frere", "fils", "oncle"],
+        "explanation": {
+          "en": "Only cousin fits: the son of your uncle is your cousin, not your brother.",
+          "fr": "Seul « cousin » convient : le fils de votre oncle est votre cousin, pas votre frère.",
+          "de": "Nur „cousin“ passt: Der Sohn deines Onkels ist dein Cousin, nicht dein Bruder."
+        }
+      },
+      "listeningOptionTargetIds": ["cousin", "oncle", "tante", "fils"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

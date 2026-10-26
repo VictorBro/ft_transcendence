@@ -1,0 +1,644 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-numbers-twenty-one-to-one-hundred",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Les nombres de 21 à 100",
+  "objective": {
+    "en": "Count from 21 to 100, including 70, 80 and 90, and understand a price in euros.",
+    "fr": "Compter de 21 à 100, avec 70, 80 et 90, et comprendre un prix en euros.",
+    "de": "Von 21 bis 100 zählen, auch 70, 80 und 90, und einen Preis in Euro verstehen."
+  },
+  "estimatedMinutes": 21,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-1",
+    "generatedAt": "2026-10-26T22:54:58.976Z",
+    "inputHashes": { "outline": "5d5ff64270578ef66cbd7c21ff3c2f6c33fa608915bc92128178a1877b69de42" }
+  },
+  "kind": "vocabulary",
+  "theme": "shopping",
+  "coverageNotes": {
+    "en": "Eleven numbers from 21 to 100, including the difficult forms soixante-dix, quatre-vingts and quatre-vingt-dix, plus euro and prix to read a price in a shop.",
+    "fr": "Onze nombres de 21 à 100, avec les formes difficiles soixante-dix, quatre-vingts et quatre-vingt-dix, plus euro et prix pour lire un prix dans un magasin.",
+    "de": "Elf Zahlen von 21 bis 100, mit den schwierigen Formen soixante-dix, quatre-vingts und quatre-vingt-dix, dazu euro und prix, um einen Preis im Geschäft zu verstehen."
+  },
+  "targetCount": 13,
+  "countRationale": {
+    "en": "Thirteen words: the key tens, the special forms and two price words fit an A1 lesson.",
+    "fr": "Treize mots : les dizaines clés, les formes spéciales et deux mots de prix conviennent à une leçon A1.",
+    "de": "Dreizehn Wörter: die wichtigen Zehner, die Sonderformen und zwei Preiswörter passen zu einer A1-Lektion."
+  },
+  "difficultyBalance": {
+    "en": "Seven core words and six demanding ones: the numbers with et and the French forms for 70, 80 and 90.",
+    "fr": "Sept mots de base et six mots difficiles : les nombres avec et et les formes françaises de 70, 80 et 90.",
+    "de": "Sieben Grundwörter und sechs anspruchsvolle: die Zahlen mit et und die französischen Formen für 70, 80 und 90."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "numbers",
+      "label": {
+        "en": "Numbers from 21 to 100",
+        "fr": "Les nombres de 21 à 100",
+        "de": "Die Zahlen von 21 bis 100"
+      },
+      "targetIds": [
+        "vingt-et-un",
+        "vingt-deux",
+        "trente",
+        "quarante",
+        "cinquante",
+        "soixante",
+        "soixante-dix",
+        "soixante-et-onze",
+        "quatre-vingts",
+        "quatre-vingt-dix",
+        "cent"
+      ],
+      "introduction": {
+        "en": "Count from 21 to 100. The tens are `trente`, `quarante`, `cinquante` and `soixante`. Then French counts in a special way:\n\n- `soixante-dix`: 60 + 10\n- `quatre-vingts`: 4 × 20\n- `quatre-vingt-dix`: 4 × 20 + 10\n\nFrom 21 to 71, numbers ending in 1 take **et**: `vingt et un`, `soixante et onze`. The other numbers take a hyphen: `vingt-deux`.",
+        "fr": "Comptez de 21 à 100. Les dizaines sont `trente`, `quarante`, `cinquante` et `soixante`. Ensuite, le français compte de façon particulière :\n\n- `soixante-dix` : 60 + 10\n- `quatre-vingts` : 4 × 20\n- `quatre-vingt-dix` : 4 × 20 + 10\n\nJusqu’à 71, les nombres en 1 prennent **et** : `vingt et un`, `soixante et onze`. Les autres nombres prennent un trait d’union : `vingt-deux`.",
+        "de": "Zähle von 21 bis 100. Die Zehner heißen `trente`, `quarante`, `cinquante` und `soixante`. Danach zählt das Französische auf besondere Weise:\n\n- `soixante-dix`: 60 + 10\n- `quatre-vingts`: 4 × 20\n- `quatre-vingt-dix`: 4 × 20 + 10\n\nVon 21 bis 71 steht bei Zahlen auf 1 das Wort **et**: `vingt et un`, `soixante et onze`. Die anderen Zahlen haben einen Bindestrich: `vingt-deux`."
+      }
+    },
+    {
+      "id": "prices",
+      "label": { "en": "Prices in euros", "fr": "Les prix en euros", "de": "Preise in Euro" },
+      "targetIds": ["euro", "prix"],
+      "introduction": {
+        "en": "Prices are in **euros**. Say the number, then the word:\n\n- `un euro`: 1 €\n- `trente euros`: 30 €\n\nAsk the price with `Quel est le prix ?`",
+        "fr": "Les prix sont en **euros**. On dit le nombre, puis le mot :\n\n- `un euro` : 1 €\n- `trente euros` : 30 €\n\nPour demander le prix, on dit `Quel est le prix ?`",
+        "de": "Preise werden in **Euro** angegeben. Man sagt die Zahl, dann das Wort:\n\n- `un euro`: 1 €\n- `trente euros`: 30 €\n\nNach dem Preis fragt man mit `Quel est le prix ?`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "vingt-et-un",
+      "term": "vingt et un",
+      "translations": { "en": ["twenty-one (21)"], "de": ["einundzwanzig (21)"] },
+      "wordClass": "numeral",
+      "genders": [],
+      "number": null,
+      "teachingForm": "vingt et un",
+      "examForms": ["vingt et un", "vingt-et-un"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/vɛ̃t e œ̃/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Ce sac coûte vingt et un euros.",
+        "translation": {
+          "en": "This bag costs twenty-one euros.",
+          "de": "Diese Tasche kostet einundzwanzig Euro."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Do not write a hyphen in the old spelling: vingt et un has et, while vingt-deux has a hyphen.",
+        "fr": "Attention : vingt et un s’écrit avec et, alors que vingt-deux s’écrit avec un trait d’union.",
+        "de": "Achtung: vingt et un wird mit et geschrieben, vingt-deux dagegen mit Bindestrich."
+      },
+      "explanation": {
+        "en": "21 is vingt et un: the word et links vingt and un.",
+        "fr": "21 se dit vingt et un : le mot et relie vingt et un.",
+        "de": "21 heißt vingt et un: das Wort et verbindet vingt und un."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Vingt, ",
+        "after": ", vingt-deux, vingt-trois.",
+        "accepted": { "answers": ["vingt et un", "vingt-et-un"] },
+        "referenceTargetIds": ["vingt-et-un", "vingt-deux", "trente", "quarante"],
+        "explanation": {
+          "en": "After 20 comes 21: vingt et un.",
+          "fr": "Après 20 vient 21 : vingt et un.",
+          "de": "Nach 20 kommt 21: vingt et un."
+        }
+      },
+      "listeningOptionTargetIds": ["vingt-et-un", "vingt-deux", "soixante-et-onze", "quarante"]
+    },
+    {
+      "id": "vingt-deux",
+      "term": "vingt-deux",
+      "translations": { "en": ["twenty-two (22)"], "de": ["zweiundzwanzig (22)"] },
+      "wordClass": "numeral",
+      "genders": [],
+      "number": null,
+      "teachingForm": "vingt-deux",
+      "examForms": ["vingt-deux"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/vɛ̃t dø/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Il y a vingt-deux élèves.",
+        "translation": {
+          "en": "There are twenty-two students.",
+          "de": "Es gibt zweiundzwanzig Schüler."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "22 is vingt-deux: a hyphen links the two parts.",
+        "fr": "22 se dit vingt-deux : un trait d’union relie les deux parties.",
+        "de": "22 heißt vingt-deux: ein Bindestrich verbindet die beiden Teile."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Vingt et un, ",
+        "after": ", vingt-trois.",
+        "accepted": { "answers": ["vingt-deux"] },
+        "referenceTargetIds": ["vingt-et-un", "vingt-deux", "trente", "cent"],
+        "explanation": {
+          "en": "After 21 comes 22: vingt-deux.",
+          "fr": "Après 21 vient 22 : vingt-deux.",
+          "de": "Nach 21 kommt 22: vingt-deux."
+        }
+      },
+      "listeningOptionTargetIds": ["vingt-deux", "vingt-et-un", "trente", "cent"]
+    },
+    {
+      "id": "trente",
+      "term": "trente",
+      "translations": { "en": ["thirty (30)"], "de": ["dreißig (30)"] },
+      "wordClass": "numeral",
+      "genders": [],
+      "number": null,
+      "teachingForm": "trente",
+      "examForms": ["trente"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/tʁɑ̃t/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ce livre coûte trente euros.",
+        "translation": {
+          "en": "This book costs thirty euros.",
+          "de": "Dieses Buch kostet dreißig Euro."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Trente means 30.",
+        "fr": "Trente veut dire 30.",
+        "de": "Trente bedeutet 30."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Dix, vingt, ",
+        "after": ", quarante.",
+        "accepted": { "answers": ["trente"] },
+        "referenceTargetIds": ["trente", "quarante", "cinquante", "soixante"],
+        "explanation": {
+          "en": "After 20 and before 40 comes 30: trente.",
+          "fr": "Après 20 et avant 40 vient 30 : trente.",
+          "de": "Nach 20 und vor 40 kommt 30: trente."
+        }
+      },
+      "listeningOptionTargetIds": ["trente", "quarante", "cinquante", "soixante"]
+    },
+    {
+      "id": "quarante",
+      "term": "quarante",
+      "translations": { "en": ["forty (40)"], "de": ["vierzig (40)"] },
+      "wordClass": "numeral",
+      "genders": [],
+      "number": null,
+      "teachingForm": "quarante",
+      "examForms": ["quarante"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kaʁɑ̃t/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Le pull coûte quarante euros.",
+        "translation": {
+          "en": "The sweater costs forty euros.",
+          "de": "Der Pullover kostet vierzig Euro."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Quarante means 40.",
+        "fr": "Quarante veut dire 40.",
+        "de": "Quarante bedeutet 40."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Trente, ",
+        "after": ", cinquante, soixante.",
+        "accepted": { "answers": ["quarante"] },
+        "referenceTargetIds": ["quarante", "cinquante", "soixante", "cent"],
+        "explanation": {
+          "en": "After 30 comes 40: quarante.",
+          "fr": "Après 30 vient 40 : quarante.",
+          "de": "Nach 30 kommt 40: quarante."
+        }
+      },
+      "listeningOptionTargetIds": ["quarante", "cinquante", "trente", "soixante"]
+    },
+    {
+      "id": "cinquante",
+      "term": "cinquante",
+      "translations": { "en": ["fifty (50)"], "de": ["fünfzig (50)"] },
+      "wordClass": "numeral",
+      "genders": [],
+      "number": null,
+      "teachingForm": "cinquante",
+      "examForms": ["cinquante"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/sɛ̃kɑ̃t/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "J’ai cinquante centimes.",
+        "translation": { "en": "I have fifty cents.", "de": "Ich habe fünfzig Cent." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Cinquante means 50.",
+        "fr": "Cinquante veut dire 50.",
+        "de": "Cinquante bedeutet 50."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Quarante, ",
+        "after": ", soixante.",
+        "accepted": { "answers": ["cinquante"] },
+        "referenceTargetIds": ["cinquante", "quarante", "soixante", "cent"],
+        "explanation": {
+          "en": "Between 40 and 60 comes 50: cinquante.",
+          "fr": "Entre 40 et 60 vient 50 : cinquante.",
+          "de": "Zwischen 40 und 60 kommt 50: cinquante."
+        }
+      },
+      "listeningOptionTargetIds": ["cinquante", "quarante", "soixante", "cent"]
+    },
+    {
+      "id": "soixante",
+      "term": "soixante",
+      "translations": { "en": ["sixty (60)"], "de": ["sechzig (60)"] },
+      "wordClass": "numeral",
+      "genders": [],
+      "number": null,
+      "teachingForm": "soixante",
+      "examForms": ["soixante"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/swasɑ̃t/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mon grand-père a soixante ans.",
+        "translation": {
+          "en": "My grandfather is sixty years old.",
+          "de": "Mein Großvater ist sechzig Jahre alt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Soixante means 60.",
+        "fr": "Soixante veut dire 60.",
+        "de": "Soixante bedeutet 60."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Cinquante, ",
+        "after": ", soixante-dix.",
+        "accepted": { "answers": ["soixante"] },
+        "referenceTargetIds": ["soixante", "cinquante", "quarante", "soixante-dix"],
+        "explanation": {
+          "en": "Between 50 and 70 comes 60: soixante.",
+          "fr": "Entre 50 et 70 vient 60 : soixante.",
+          "de": "Zwischen 50 und 70 kommt 60: soixante."
+        }
+      },
+      "listeningOptionTargetIds": ["soixante", "soixante-dix", "cinquante", "quatre-vingts"]
+    },
+    {
+      "id": "soixante-dix",
+      "term": "soixante-dix",
+      "translations": { "en": ["seventy (70)"], "de": ["siebzig (70)"] },
+      "wordClass": "numeral",
+      "genders": [],
+      "number": null,
+      "teachingForm": "soixante-dix",
+      "examForms": ["soixante-dix"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/swasɑ̃t dis/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "La veste coûte soixante-dix euros.",
+        "translation": {
+          "en": "The jacket costs seventy euros.",
+          "de": "Die Jacke kostet siebzig Euro."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "French has no separate word for 70: soixante-dix is 60 + 10.",
+        "fr": "Le français n’a pas de mot propre pour 70 : soixante-dix, c’est 60 + 10.",
+        "de": "Das Französische hat kein eigenes Wort für 70: soixante-dix ist 60 + 10."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Soixante, ",
+        "after": ", quatre-vingts.",
+        "accepted": { "answers": ["soixante-dix"] },
+        "referenceTargetIds": ["soixante-dix", "soixante", "quatre-vingts", "cent"],
+        "explanation": {
+          "en": "Between 60 and 80 comes 70: soixante-dix.",
+          "fr": "Entre 60 et 80 vient 70 : soixante-dix.",
+          "de": "Zwischen 60 und 80 kommt 70: soixante-dix."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "soixante-dix",
+        "soixante",
+        "soixante-et-onze",
+        "quatre-vingt-dix"
+      ]
+    },
+    {
+      "id": "soixante-et-onze",
+      "term": "soixante et onze",
+      "translations": { "en": ["seventy-one (71)"], "de": ["einundsiebzig (71)"] },
+      "wordClass": "numeral",
+      "genders": [],
+      "number": null,
+      "teachingForm": "soixante et onze",
+      "examForms": ["soixante et onze", "soixante-et-onze"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/swasɑ̃t e ɔ̃z/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Elle a soixante et onze ans.",
+        "translation": {
+          "en": "She is seventy-one years old.",
+          "de": "Sie ist einundsiebzig Jahre alt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "71 is soixante et onze: 60 + 11, with et.",
+        "fr": "71 se dit soixante et onze : 60 + 11, avec et.",
+        "de": "71 heißt soixante et onze: 60 + 11, mit et."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Soixante-dix, ",
+        "after": ", soixante-douze.",
+        "accepted": { "answers": ["soixante et onze", "soixante-et-onze"] },
+        "referenceTargetIds": [
+          "soixante-et-onze",
+          "soixante-dix",
+          "quatre-vingts",
+          "quatre-vingt-dix"
+        ],
+        "explanation": {
+          "en": "After 70 comes 71: soixante et onze.",
+          "fr": "Après 70 vient 71 : soixante et onze.",
+          "de": "Nach 70 kommt 71: soixante et onze."
+        }
+      },
+      "listeningOptionTargetIds": ["soixante-et-onze", "soixante-dix", "vingt-et-un", "soixante"]
+    },
+    {
+      "id": "quatre-vingts",
+      "term": "quatre-vingts",
+      "translations": { "en": ["eighty (80)"], "de": ["achtzig (80)"] },
+      "wordClass": "numeral",
+      "genders": [],
+      "number": null,
+      "teachingForm": "quatre-vingts",
+      "examForms": ["quatre-vingts"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/katʁə vɛ̃/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Le manteau coûte quatre-vingts euros.",
+        "translation": {
+          "en": "The coat costs eighty euros.",
+          "de": "Der Mantel kostet achtzig Euro."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Quatre-vingts takes an s when it stands alone, but not before another number: quatre-vingt-dix.",
+        "fr": "Quatre-vingts prend un s quand il est seul, mais pas devant un autre nombre : quatre-vingt-dix.",
+        "de": "Quatre-vingts hat ein s, wenn es allein steht, aber nicht vor einer anderen Zahl: quatre-vingt-dix."
+      },
+      "explanation": {
+        "en": "80 is quatre-vingts: literally four twenties.",
+        "fr": "80 se dit quatre-vingts : littéralement quatre fois vingt.",
+        "de": "80 heißt quatre-vingts: wörtlich viermal zwanzig."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Soixante-dix, ",
+        "after": ", quatre-vingt-dix.",
+        "accepted": { "answers": ["quatre-vingts"] },
+        "referenceTargetIds": ["quatre-vingts", "soixante-dix", "quatre-vingt-dix", "cent"],
+        "explanation": {
+          "en": "Between 70 and 90 comes 80: quatre-vingts.",
+          "fr": "Entre 70 et 90 vient 80 : quatre-vingts.",
+          "de": "Zwischen 70 und 90 kommt 80: quatre-vingts."
+        }
+      },
+      "listeningOptionTargetIds": ["quatre-vingts", "quatre-vingt-dix", "soixante-dix", "cent"]
+    },
+    {
+      "id": "quatre-vingt-dix",
+      "term": "quatre-vingt-dix",
+      "translations": { "en": ["ninety (90)"], "de": ["neunzig (90)"] },
+      "wordClass": "numeral",
+      "genders": [],
+      "number": null,
+      "teachingForm": "quatre-vingt-dix",
+      "examForms": ["quatre-vingt-dix"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/katʁə vɛ̃ dis/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Le sac coûte quatre-vingt-dix euros.",
+        "translation": {
+          "en": "The bag costs ninety euros.",
+          "de": "Die Tasche kostet neunzig Euro."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "90 is quatre-vingt-dix: 4 × 20 + 10, without an s.",
+        "fr": "90 se dit quatre-vingt-dix : 4 × 20 + 10, sans s.",
+        "de": "90 heißt quatre-vingt-dix: 4 × 20 + 10, ohne s."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Quatre-vingts, ",
+        "after": ", cent.",
+        "accepted": { "answers": ["quatre-vingt-dix"] },
+        "referenceTargetIds": ["quatre-vingt-dix", "quatre-vingts", "cent", "soixante-dix"],
+        "explanation": {
+          "en": "Between 80 and 100 comes 90: quatre-vingt-dix.",
+          "fr": "Entre 80 et 100 vient 90 : quatre-vingt-dix.",
+          "de": "Zwischen 80 und 100 kommt 90: quatre-vingt-dix."
+        }
+      },
+      "listeningOptionTargetIds": ["quatre-vingt-dix", "quatre-vingts", "soixante-dix", "cent"]
+    },
+    {
+      "id": "cent",
+      "term": "cent",
+      "translations": { "en": ["one hundred (100)"], "de": ["hundert (100)"] },
+      "wordClass": "numeral",
+      "genders": [],
+      "number": null,
+      "teachingForm": "cent",
+      "examForms": ["cent"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/sɑ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "La robe coûte cent euros.",
+        "translation": {
+          "en": "The dress costs one hundred euros.",
+          "de": "Das Kleid kostet hundert Euro."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Cent means 100. Do not add un before it.",
+        "fr": "Cent veut dire 100. On n’ajoute pas un devant.",
+        "de": "Cent bedeutet 100. Davor steht kein un."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Dix fois dix font ",
+        "after": ".",
+        "accepted": { "answers": ["cent"] },
+        "referenceTargetIds": ["cent", "quatre-vingts", "quatre-vingt-dix", "cinquante"],
+        "explanation": {
+          "en": "10 × 10 = 100: cent.",
+          "fr": "10 × 10 = 100 : cent.",
+          "de": "10 × 10 = 100: cent."
+        }
+      },
+      "listeningOptionTargetIds": ["cent", "cinquante", "quatre-vingts", "trente"]
+    },
+    {
+      "id": "euro",
+      "term": "euro",
+      "translations": { "en": ["euro"], "de": ["Euro"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un euro",
+      "examForms": ["un euro"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/œ̃ øʁo/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Le café coûte un euro.",
+        "translation": { "en": "The coffee costs one euro.", "de": "Der Kaffee kostet einen Euro." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Euro is the currency of France. After a number above one, it takes an s: deux euros.",
+        "fr": "L’euro est la monnaie de la France. Après un nombre supérieur à un, il prend un s : deux euros.",
+        "de": "Der Euro ist die Währung Frankreichs. Nach einer Zahl über eins steht ein s: deux euros."
+      },
+      "genderExplanation": {
+        "en": "Euro is masculine, so its indefinite article is un.",
+        "fr": "Euro est masculin : on dit un euro.",
+        "de": "Euro ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": { "en": "a euro", "de": "ein Euro" },
+      "gap": {
+        "before": "Le café coûte deux ",
+        "after": "s.",
+        "accepted": { "answers": ["euro"] },
+        "referenceTargetIds": ["euro", "prix", "cent", "trente"],
+        "explanation": {
+          "en": "Only euro fits: deux euros.",
+          "fr": "Seul « euro » convient : deux euros.",
+          "de": "Nur „euro“ passt: deux euros."
+        }
+      },
+      "listeningOptionTargetIds": ["euro", "prix", "cent", "trente"]
+    },
+    {
+      "id": "prix",
+      "term": "prix",
+      "translations": { "en": ["price"], "de": ["Preis"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un prix",
+      "examForms": ["un prix"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/œ̃ pʁi/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Quel est le prix du pain ?",
+        "translation": { "en": "What is the price of the bread?", "de": "Was kostet das Brot?" }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Prix means price. It is written the same in the singular and the plural.",
+        "fr": "Prix veut dire price. Il s’écrit de la même façon au singulier et au pluriel.",
+        "de": "Prix bedeutet Preis. Es wird im Singular und im Plural gleich geschrieben."
+      },
+      "genderExplanation": {
+        "en": "Prix is masculine, so its indefinite article is un.",
+        "fr": "Prix est masculin : on dit un prix.",
+        "de": "Prix ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": { "en": "a price", "de": "ein Preis" },
+      "gap": {
+        "before": "Quel est le ",
+        "after": " de ce livre ?",
+        "accepted": { "answers": ["prix"] },
+        "referenceTargetIds": ["prix", "euro", "cent", "trente"],
+        "explanation": {
+          "en": "Only prix fits: Quel est le prix ?",
+          "fr": "Seul « prix » convient : Quel est le prix ?",
+          "de": "Nur „prix“ passt: Quel est le prix ?"
+        }
+      },
+      "listeningOptionTargetIds": ["prix", "euro", "cent", "soixante"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

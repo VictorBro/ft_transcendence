@@ -1,0 +1,614 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-jobs-and-professions",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Les métiers",
+  "objective": {
+    "en": "Name common jobs and say your profession without an article: je suis étudiant.",
+    "fr": "Nommer des métiers courants et dire sa profession sans article : je suis étudiant.",
+    "de": "Gängige Berufe benennen und den eigenen Beruf ohne Artikel nennen: je suis étudiant."
+  },
+  "estimatedMinutes": 21,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-1",
+    "generatedAt": "2026-10-26T22:54:45.132Z",
+    "inputHashes": { "outline": "81d4271653a9d257711d12eabf9a098017262a3b52bbd88bbeaeddd824a3dd58" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Twelve common jobs in three groups: health and office, restaurant and shops, school and public services. Each group shows the rule of saying a profession without an article.",
+    "fr": "Douze métiers courants en trois groupes : santé et bureau, restaurant et commerces, école et services publics. Chaque groupe rappelle la règle : on dit sa profession sans article.",
+    "de": "Zwölf gängige Berufe in drei Gruppen: Gesundheit und Büro, Restaurant und Geschäfte, Schule und öffentliche Dienste. Jede Gruppe zeigt die Regel: Den Beruf nennt man ohne Artikel."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words match the outline's 'about a dozen' and fit three groups of four.",
+    "fr": "Douze mots correspondent à « une douzaine » dans le plan et forment trois groupes de quatre.",
+    "de": "Zwölf Wörter entsprechen „etwa einem Dutzend“ in der Gliederung und bilden drei Vierergruppen."
+  },
+  "difficultyBalance": {
+    "en": "Mostly transparent core words; nouns that are the same for both genders (médecin, dentiste, secrétaire) and the feminine forms are the harder part.",
+    "fr": "Surtout des mots de base transparents ; les noms identiques au masculin et au féminin (médecin, dentiste, secrétaire) et les formes féminines sont plus difficiles.",
+    "de": "Überwiegend leicht erkennbare Grundwörter; Nomen mit gleicher Form für beide Geschlechter (médecin, dentiste, secrétaire) und die weiblichen Formen sind schwieriger."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "sante-bureau",
+      "label": { "en": "Health and office", "fr": "Santé et bureau", "de": "Gesundheit und Büro" },
+      "targetIds": ["medecin", "infirmiere", "dentiste", "secretaire"],
+      "introduction": {
+        "en": "These jobs are found in **hospitals** and offices:\n\n- `un médecin`\n- `une infirmière`\n- `un dentiste`\n- `une secrétaire`\n\nTo say your job, use **no article**: `Je suis médecin.`",
+        "fr": "Ces métiers se trouvent à l’**hôpital** et au bureau :\n\n- `un médecin`\n- `une infirmière`\n- `un dentiste`\n- `une secrétaire`\n\nPour dire son métier, on n’utilise **pas d’article** : `Je suis médecin.`",
+        "de": "Diese Berufe findest du im **Krankenhaus** und im Büro:\n\n- `un médecin`\n- `une infirmière`\n- `un dentiste`\n- `une secrétaire`\n\nUm deinen Beruf zu nennen, brauchst du **keinen Artikel**: `Je suis médecin.`"
+      }
+    },
+    {
+      "id": "restaurant-magasin",
+      "label": {
+        "en": "Restaurant and shops",
+        "fr": "Restaurant et commerces",
+        "de": "Restaurant und Geschäfte"
+      },
+      "targetIds": ["serveur", "vendeuse", "cuisinier", "boulanger"],
+      "introduction": {
+        "en": "These people work in **restaurants** and shops:\n\n- `un serveur`\n- `une vendeuse`\n- `un cuisinier`\n- `un boulanger`\n\nAgain, say your job **without an article**: `Elle est vendeuse.`",
+        "fr": "Ces personnes travaillent au **restaurant** et dans les commerces :\n\n- `un serveur`\n- `une vendeuse`\n- `un cuisinier`\n- `un boulanger`\n\nLà aussi, on dit son métier **sans article** : `Elle est vendeuse.`",
+        "de": "Diese Personen arbeiten im **Restaurant** und in Geschäften:\n\n- `un serveur`\n- `une vendeuse`\n- `un cuisinier`\n- `un boulanger`\n\nAuch hier nennst du den Beruf **ohne Artikel**: `Elle est vendeuse.`"
+      }
+    },
+    {
+      "id": "ecole-services",
+      "label": {
+        "en": "School and public services",
+        "fr": "École et services publics",
+        "de": "Schule und öffentliche Dienste"
+      },
+      "targetIds": ["professeur", "etudiant", "avocat", "policier"],
+      "introduction": {
+        "en": "These jobs and roles are linked to **school**, justice and the street:\n\n- `un professeur`\n- `un étudiant`\n- `un avocat`\n- `un policier`\n\nSay it **without an article**: `Je suis étudiant.`",
+        "fr": "Ces métiers et ces rôles sont liés à l’**école**, à la justice et à la rue :\n\n- `un professeur`\n- `un étudiant`\n- `un avocat`\n- `un policier`\n\nOn le dit **sans article** : `Je suis étudiant.`",
+        "de": "Diese Berufe und Rollen gehören zur **Schule**, zur Justiz und zur Straße:\n\n- `un professeur`\n- `un étudiant`\n- `un avocat`\n- `un policier`\n\nSag es **ohne Artikel**: `Je suis étudiant.`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "medecin",
+      "term": "médecin",
+      "translations": { "en": ["doctor"], "de": ["Arzt", "Ärztin"] },
+      "wordClass": "noun",
+      "genders": ["masculine", "feminine"],
+      "number": "singular",
+      "teachingForm": "un médecin",
+      "examForms": ["un médecin", "une médecin"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/medsɛ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mon père est médecin.",
+        "translation": { "en": "My father is a doctor.", "de": "Mein Vater ist Arzt." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Médecin means doctor. The word is the same for a man and a woman: un médecin or une médecin.",
+        "fr": "Médecin désigne un docteur. Le mot est le même pour un homme et une femme : un médecin ou une médecin.",
+        "de": "Médecin bedeutet Arzt. Das Wort ist für Mann und Frau gleich: un médecin oder une médecin."
+      },
+      "genderExplanation": {
+        "en": "Médecin is used for men and women, so both un médecin and une médecin are correct.",
+        "fr": "Médecin s’emploie pour les hommes et les femmes : un médecin et une médecin sont corrects.",
+        "de": "Médecin gilt für Männer und Frauen, deshalb sind un médecin und une médecin richtig."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "J’ai de la fièvre. Je vois le ",
+        "after": ".",
+        "accepted": { "answers": ["médecin"] },
+        "referenceTargetIds": ["medecin", "infirmiere", "dentiste", "secretaire"],
+        "explanation": {
+          "en": "With a fever, you see the doctor: le médecin.",
+          "fr": "Quand on a de la fièvre, on voit le médecin.",
+          "de": "Bei Fieber geht man zum Arzt: le médecin."
+        }
+      },
+      "listeningOptionTargetIds": ["medecin", "infirmiere", "dentiste", "secretaire"]
+    },
+    {
+      "id": "infirmiere",
+      "term": "infirmière",
+      "translations": { "en": ["nurse"], "de": ["Krankenschwester"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une infirmière",
+      "examForms": ["une infirmière"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɛ̃fiʁmjɛʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ma sœur est infirmière.",
+        "translation": {
+          "en": "My sister is a nurse.",
+          "de": "Meine Schwester ist Krankenschwester."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Infirmière is a female nurse. It is feminine: une infirmière. Note the grave accent on the è.",
+        "fr": "Infirmière désigne une femme qui soigne les malades. Le mot est féminin : une infirmière. Notez l’accent grave sur le è.",
+        "de": "Infirmière ist eine Krankenschwester. Das Wort ist feminin: une infirmière. Beachte den accent grave auf dem è."
+      },
+      "genderExplanation": {
+        "en": "Infirmière ends in -ière and refers to a woman, so it is feminine: une infirmière.",
+        "fr": "Infirmière finit en -ière et désigne une femme : le mot est féminin, une infirmière.",
+        "de": "Infirmière endet auf -ière und bezeichnet eine Frau, also feminin: une infirmière."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Elle fait les piqûres à l’hôpital : c’est une ",
+        "after": ".",
+        "accepted": { "answers": ["infirmière"] },
+        "referenceTargetIds": ["medecin", "infirmiere", "dentiste", "secretaire"],
+        "explanation": {
+          "en": "Giving injections in a hospital is a nurse’s work: une infirmière.",
+          "fr": "Faire des piqûres à l’hôpital, c’est le travail d’une infirmière.",
+          "de": "Spritzen im Krankenhaus zu geben ist die Arbeit einer Krankenschwester: une infirmière."
+        }
+      },
+      "listeningOptionTargetIds": ["infirmiere", "medecin", "dentiste", "secretaire"]
+    },
+    {
+      "id": "dentiste",
+      "term": "dentiste",
+      "translations": { "en": ["dentist"], "de": ["Zahnarzt", "Zahnärztin"] },
+      "wordClass": "noun",
+      "genders": ["masculine", "feminine"],
+      "number": "singular",
+      "teachingForm": "un dentiste",
+      "examForms": ["un dentiste", "une dentiste"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/dɑ̃tist/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Elle est dentiste.",
+        "translation": { "en": "She is a dentist.", "de": "Sie ist Zahnärztin." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Dentiste means dentist. The word does not change: un dentiste or une dentiste.",
+        "fr": "Dentiste désigne la personne qui soigne les dents. Le mot ne change pas : un dentiste ou une dentiste.",
+        "de": "Dentiste bedeutet Zahnarzt. Das Wort ändert sich nicht: un dentiste oder une dentiste."
+      },
+      "genderExplanation": {
+        "en": "Dentiste ends in -iste and is the same for both genders: un dentiste or une dentiste.",
+        "fr": "Dentiste finit en -iste et reste identique aux deux genres : un dentiste ou une dentiste.",
+        "de": "Dentiste endet auf -iste und ist für beide Geschlechter gleich: un dentiste oder une dentiste."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "J’ai mal aux dents. Je vais chez le ",
+        "after": ".",
+        "accepted": { "answers": ["dentiste"] },
+        "referenceTargetIds": ["medecin", "infirmiere", "dentiste", "secretaire"],
+        "explanation": {
+          "en": "For a toothache, you go to the dentist: le dentiste.",
+          "fr": "Quand on a mal aux dents, on va chez le dentiste.",
+          "de": "Bei Zahnschmerzen geht man zum Zahnarzt: le dentiste."
+        }
+      },
+      "listeningOptionTargetIds": ["dentiste", "medecin", "infirmiere", "secretaire"]
+    },
+    {
+      "id": "secretaire",
+      "term": "secrétaire",
+      "translations": { "en": ["secretary"], "de": ["Sekretärin", "Sekretär"] },
+      "wordClass": "noun",
+      "genders": ["masculine", "feminine"],
+      "number": "singular",
+      "teachingForm": "une secrétaire",
+      "examForms": ["une secrétaire", "un secrétaire"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/səkʁetɛʁ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "La secrétaire répond au téléphone.",
+        "translation": {
+          "en": "The secretary answers the phone.",
+          "de": "Die Sekretärin geht ans Telefon."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Secrétaire means secretary. It is the same for a man and a woman; most often you hear une secrétaire. Note the acute accent on the first é.",
+        "fr": "Secrétaire désigne la personne qui travaille au bureau et répond au téléphone. Le mot est le même pour un homme et une femme ; on entend surtout une secrétaire. Notez l’accent aigu sur le premier é.",
+        "de": "Secrétaire bedeutet Sekretär(in). Das Wort ist für Mann und Frau gleich; meist hört man une secrétaire. Beachte den accent aigu auf dem ersten é."
+      },
+      "genderExplanation": {
+        "en": "Secrétaire is the same for both genders, but une secrétaire is the most common form.",
+        "fr": "Secrétaire est identique aux deux genres, mais une secrétaire est la forme la plus courante.",
+        "de": "Secrétaire ist für beide Geschlechter gleich, aber une secrétaire ist die häufigste Form."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Elle répond au téléphone au bureau : c’est la ",
+        "after": ".",
+        "accepted": { "answers": ["secrétaire"] },
+        "referenceTargetIds": ["medecin", "infirmiere", "dentiste", "secretaire"],
+        "explanation": {
+          "en": "Answering the phone in an office is a secretary’s job: la secrétaire.",
+          "fr": "Répondre au téléphone au bureau, c’est le travail de la secrétaire.",
+          "de": "Im Büro ans Telefon zu gehen ist die Arbeit der Sekretärin: la secrétaire."
+        }
+      },
+      "listeningOptionTargetIds": ["secretaire", "medecin", "infirmiere", "dentiste"]
+    },
+    {
+      "id": "serveur",
+      "term": "serveur",
+      "translations": { "en": ["waiter"], "de": ["Kellner"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un serveur",
+      "examForms": ["un serveur"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/sɛʁvœʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mon cousin est serveur.",
+        "translation": { "en": "My cousin is a waiter.", "de": "Mein Cousin ist Kellner." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Serveur means waiter. It is masculine: un serveur.",
+        "fr": "Serveur désigne celui qui sert les clients au restaurant. Le mot est masculin : un serveur.",
+        "de": "Serveur bedeutet Kellner. Das Wort ist maskulin: un serveur."
+      },
+      "genderExplanation": {
+        "en": "Serveur refers to a man here, so it is masculine: un serveur.",
+        "fr": "Serveur désigne ici un homme : le mot est masculin, un serveur.",
+        "de": "Serveur bezeichnet hier einen Mann, also maskulin: un serveur."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Au restaurant, le ",
+        "after": " apporte les plats.",
+        "accepted": { "answers": ["serveur"] },
+        "referenceTargetIds": ["serveur", "vendeuse", "cuisinier", "boulanger"],
+        "explanation": {
+          "en": "The person who brings the dishes is the waiter: le serveur.",
+          "fr": "Celui qui apporte les plats, c’est le serveur.",
+          "de": "Wer die Gerichte bringt, ist der Kellner: le serveur."
+        }
+      },
+      "listeningOptionTargetIds": ["serveur", "vendeuse", "cuisinier", "boulanger"]
+    },
+    {
+      "id": "vendeuse",
+      "term": "vendeuse",
+      "translations": { "en": ["saleswoman"], "de": ["Verkäuferin"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une vendeuse",
+      "examForms": ["une vendeuse"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/vɑ̃døz/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Elle est vendeuse dans un magasin.",
+        "translation": {
+          "en": "She is a saleswoman in a shop.",
+          "de": "Sie ist Verkäuferin in einem Geschäft."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Vendeuse is a woman who sells things in a shop. It is feminine: une vendeuse.",
+        "fr": "Vendeuse désigne une femme qui vend des produits dans un magasin. Le mot est féminin : une vendeuse.",
+        "de": "Vendeuse ist eine Frau, die im Geschäft verkauft. Das Wort ist feminin: une vendeuse."
+      },
+      "genderExplanation": {
+        "en": "Vendeuse ends in -euse and refers to a woman, so it is feminine: une vendeuse.",
+        "fr": "Vendeuse finit en -euse et désigne une femme : le mot est féminin, une vendeuse.",
+        "de": "Vendeuse endet auf -euse und bezeichnet eine Frau, also feminin: une vendeuse."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Dans le magasin, la ",
+        "after": " vend des vêtements.",
+        "accepted": { "answers": ["vendeuse"] },
+        "referenceTargetIds": ["serveur", "vendeuse", "cuisinier", "boulanger"],
+        "explanation": {
+          "en": "In a clothes shop, the person who sells is the saleswoman: la vendeuse.",
+          "fr": "Dans un magasin de vêtements, celle qui vend, c’est la vendeuse.",
+          "de": "In einem Bekleidungsgeschäft verkauft die Verkäuferin: la vendeuse."
+        }
+      },
+      "listeningOptionTargetIds": ["vendeuse", "serveur", "cuisinier", "boulanger"]
+    },
+    {
+      "id": "cuisinier",
+      "term": "cuisinier",
+      "translations": { "en": ["cook"], "de": ["Koch"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un cuisinier",
+      "examForms": ["un cuisinier"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kɥizinje/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Il est cuisinier dans un grand restaurant.",
+        "translation": {
+          "en": "He is a cook in a big restaurant.",
+          "de": "Er ist Koch in einem großen Restaurant."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Cuisinier means cook. It is masculine: un cuisinier.",
+        "fr": "Cuisinier désigne celui qui prépare les repas. Le mot est masculin : un cuisinier.",
+        "de": "Cuisinier bedeutet Koch. Das Wort ist maskulin: un cuisinier."
+      },
+      "genderExplanation": {
+        "en": "Cuisinier refers to a man here, so it is masculine: un cuisinier.",
+        "fr": "Cuisinier désigne ici un homme : le mot est masculin, un cuisinier.",
+        "de": "Cuisinier bezeichnet hier einen Mann, also maskulin: un cuisinier."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Au restaurant, le ",
+        "after": " prépare les repas.",
+        "accepted": { "answers": ["cuisinier"] },
+        "referenceTargetIds": ["serveur", "vendeuse", "cuisinier", "boulanger"],
+        "explanation": {
+          "en": "The person who prepares the meals is the cook: le cuisinier.",
+          "fr": "Celui qui prépare les repas, c’est le cuisinier.",
+          "de": "Wer die Mahlzeiten zubereitet, ist der Koch: le cuisinier."
+        }
+      },
+      "listeningOptionTargetIds": ["cuisinier", "serveur", "vendeuse", "boulanger"]
+    },
+    {
+      "id": "boulanger",
+      "term": "boulanger",
+      "translations": { "en": ["baker"], "de": ["Bäcker"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un boulanger",
+      "examForms": ["un boulanger"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/bulɑ̃ʒe/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Le boulanger fait du pain.",
+        "translation": { "en": "The baker makes bread.", "de": "Der Bäcker backt Brot." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Boulanger means baker, the person who makes bread. It is masculine: un boulanger.",
+        "fr": "Boulanger désigne celui qui fait le pain. Le mot est masculin : un boulanger.",
+        "de": "Boulanger bedeutet Bäcker, also wer Brot backt. Das Wort ist maskulin: un boulanger."
+      },
+      "genderExplanation": {
+        "en": "Boulanger refers to a man here, so it is masculine: un boulanger.",
+        "fr": "Boulanger désigne ici un homme : le mot est masculin, un boulanger.",
+        "de": "Boulanger bezeichnet hier einen Mann, also maskulin: un boulanger."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le matin, j’achète du pain chez le ",
+        "after": ".",
+        "accepted": { "answers": ["boulanger"] },
+        "referenceTargetIds": ["serveur", "vendeuse", "cuisinier", "boulanger"],
+        "explanation": {
+          "en": "You buy bread at the baker’s: chez le boulanger.",
+          "fr": "On achète le pain chez le boulanger.",
+          "de": "Brot kauft man beim Bäcker: chez le boulanger."
+        }
+      },
+      "listeningOptionTargetIds": ["boulanger", "cuisinier", "serveur", "vendeuse"]
+    },
+    {
+      "id": "professeur",
+      "term": "professeur",
+      "translations": { "en": ["teacher"], "de": ["Lehrer"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un professeur",
+      "examForms": ["un professeur"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/pʁɔfesœʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mon voisin est professeur.",
+        "translation": { "en": "My neighbour is a teacher.", "de": "Mein Nachbar ist Lehrer." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Professeur means teacher. It is masculine: un professeur.",
+        "fr": "Professeur désigne celui qui enseigne à l’école. Le mot est masculin : un professeur.",
+        "de": "Professeur bedeutet Lehrer. Das Wort ist maskulin: un professeur."
+      },
+      "genderExplanation": {
+        "en": "Professeur refers to a man here, so it is masculine: un professeur.",
+        "fr": "Professeur désigne ici un homme : le mot est masculin, un professeur.",
+        "de": "Professeur bezeichnet hier einen Mann, also maskulin: un professeur."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "À l’école, le ",
+        "after": " explique la leçon.",
+        "accepted": { "answers": ["professeur"] },
+        "referenceTargetIds": ["professeur", "etudiant", "avocat", "policier"],
+        "explanation": {
+          "en": "The person who explains the lesson at school is the teacher: le professeur.",
+          "fr": "À l’école, celui qui explique la leçon, c’est le professeur.",
+          "de": "Wer in der Schule die Lektion erklärt, ist der Lehrer: le professeur."
+        }
+      },
+      "listeningOptionTargetIds": ["professeur", "etudiant", "avocat", "policier"]
+    },
+    {
+      "id": "etudiant",
+      "term": "étudiant",
+      "translations": { "en": ["student"], "de": ["Student"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un étudiant",
+      "examForms": ["un étudiant"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/etydjɑ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Je suis étudiant.",
+        "translation": { "en": "I am a student.", "de": "Ich bin Student." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Étudiant means student at a university. It is masculine: un étudiant. Note the acute accent on the first é.",
+        "fr": "Étudiant désigne celui qui étudie à l’université. Le mot est masculin : un étudiant. Notez l’accent aigu sur le premier é.",
+        "de": "Étudiant bedeutet Student an der Universität. Das Wort ist maskulin: un étudiant. Beachte den accent aigu auf dem ersten é."
+      },
+      "genderExplanation": {
+        "en": "Étudiant refers to a man here, so it is masculine: un étudiant.",
+        "fr": "Étudiant désigne ici un homme : le mot est masculin, un étudiant.",
+        "de": "Étudiant bezeichnet hier einen Mann, also maskulin: un étudiant."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il va à l’université : il est ",
+        "after": ".",
+        "accepted": { "answers": ["étudiant"] },
+        "referenceTargetIds": ["professeur", "etudiant", "avocat", "policier"],
+        "explanation": {
+          "en": "Someone who goes to university is a student: il est étudiant, with no article.",
+          "fr": "Celui qui va à l’université est étudiant : il est étudiant, sans article.",
+          "de": "Wer zur Universität geht, ist Student: il est étudiant, ohne Artikel."
+        }
+      },
+      "listeningOptionTargetIds": ["etudiant", "professeur", "avocat", "policier"]
+    },
+    {
+      "id": "avocat",
+      "term": "avocat",
+      "translations": { "en": ["lawyer"], "de": ["Anwalt"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un avocat",
+      "examForms": ["un avocat"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/avɔka/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Mon oncle est avocat.",
+        "translation": { "en": "My uncle is a lawyer.", "de": "Mein Onkel ist Anwalt." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Avocat means lawyer. It is masculine: un avocat.",
+        "fr": "Avocat désigne celui qui défend les gens au tribunal. Le mot est masculin : un avocat.",
+        "de": "Avocat bedeutet Anwalt. Das Wort ist maskulin: un avocat."
+      },
+      "genderExplanation": {
+        "en": "Avocat refers to a man here, so it is masculine: un avocat.",
+        "fr": "Avocat désigne ici un homme : le mot est masculin, un avocat.",
+        "de": "Avocat bezeichnet hier einen Mann, also maskulin: un avocat."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Au tribunal, l’",
+        "after": " défend un client.",
+        "accepted": { "answers": ["avocat"] },
+        "referenceTargetIds": ["professeur", "etudiant", "avocat", "policier"],
+        "explanation": {
+          "en": "In court, the lawyer defends a client: l’avocat.",
+          "fr": "Au tribunal, c’est l’avocat qui défend un client.",
+          "de": "Vor Gericht verteidigt der Anwalt einen Mandanten: l’avocat."
+        }
+      },
+      "listeningOptionTargetIds": ["avocat", "professeur", "etudiant", "policier"]
+    },
+    {
+      "id": "policier",
+      "term": "policier",
+      "translations": { "en": ["police officer"], "de": ["Polizist"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un policier",
+      "examForms": ["un policier"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/pɔlisje/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Le policier est dans la rue.",
+        "translation": {
+          "en": "The police officer is in the street.",
+          "de": "Der Polizist ist auf der Straße."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Policier means police officer. It is masculine: un policier.",
+        "fr": "Policier désigne celui qui travaille dans la police. Le mot est masculin : un policier.",
+        "de": "Policier bedeutet Polizist. Das Wort ist maskulin: un policier."
+      },
+      "genderExplanation": {
+        "en": "Policier refers to a man here, so it is masculine: un policier.",
+        "fr": "Policier désigne ici un homme : le mot est masculin, un policier.",
+        "de": "Policier bezeichnet hier einen Mann, also maskulin: un policier."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Dans la rue, le ",
+        "after": " arrête une voiture.",
+        "accepted": { "answers": ["policier"] },
+        "referenceTargetIds": ["professeur", "etudiant", "avocat", "policier"],
+        "explanation": {
+          "en": "The person who stops cars in the street is the police officer: le policier.",
+          "fr": "Celui qui arrête les voitures dans la rue, c’est le policier.",
+          "de": "Wer auf der Straße Autos anhält, ist der Polizist: le policier."
+        }
+      },
+      "listeningOptionTargetIds": ["policier", "professeur", "etudiant", "avocat"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

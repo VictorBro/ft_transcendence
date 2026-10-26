@@ -1,0 +1,1232 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-thanking-and-apologising",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "S’il vous plaît, merci, pardon",
+  "objective": {
+    "en": "Ask politely with s’il te plaît or s’il vous plaît, say thank you, apologise, and answer: merci beaucoup, de rien, pardon, excusez-moi, ce n’est pas grave.",
+    "fr": "Demander poliment avec s’il te plaît ou s’il vous plaît, remercier, s’excuser et répondre : merci beaucoup, de rien, pardon, excusez-moi, ce n’est pas grave.",
+    "de": "Höflich bitten mit s’il te plaît oder s’il vous plaît, danken, sich entschuldigen und antworten: merci beaucoup, de rien, pardon, excusez-moi, ce n’est pas grave."
+  },
+  "estimatedMinutes": 17,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-1",
+    "generatedAt": "2026-10-26T22:56:38.338Z",
+    "inputHashes": {
+      "outline": "ec905b67ae8ef12d888c5306bee8dcbcb77540833368206378e825dbabbd4d7e",
+      "brief": "1effe816d7ac0cae73e6ac7415e6912b2e7cc6e3ed281d3c845df20040f081d1"
+    }
+  },
+  "kind": "functions",
+  "theme": "relations",
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "presentation",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "cards-expressions",
+          "estimatedDurationS": 84,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Recall each expression, then turn the card to check it.",
+            "fr": "Rappelez-vous chaque expression, puis retournez la carte pour vérifier.",
+            "de": "Erinnere dich an jeden Ausdruck und dreh dann die Karte um."
+          },
+          "items": [
+            {
+              "type": "function_flashcards",
+              "itemId": "cards-expressions",
+              "side": "expressions",
+              "ids": [
+                "sil-vous-plait",
+                "sil-te-plait",
+                "merci-beaucoup",
+                "de-rien",
+                "pardon",
+                "excusez-moi",
+                "pas-grave"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue",
+      "stage": "dialogue",
+      "role": "presentation",
+      "label": { "en": "Dialogue", "fr": "Dialogue", "de": "Dialog" },
+      "pages": [
+        {
+          "pageId": "dialogue",
+          "estimatedDurationS": 140,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read and listen. Turn a line to see its translation and a note.",
+            "fr": "Lisez et écoutez. Retournez une réplique pour voir sa traduction et une remarque.",
+            "de": "Lies und hör zu. Dreh eine Zeile um, um Übersetzung und Hinweis zu sehen."
+          },
+          "items": [
+            {
+              "type": "function_dialogue",
+              "itemId": "dialogue",
+              "lines": [
+                {
+                  "lineId": "line-1",
+                  "roleId": "eleve",
+                  "text": "Pardon, madame ! Je suis en retard.",
+                  "translation": {
+                    "en": "Sorry, madam! I am late.",
+                    "de": "Verzeihung! Ich bin zu spät."
+                  },
+                  "note": {
+                    "en": "Pardon is said at once, to apologise.",
+                    "fr": "On dit pardon tout de suite, pour s’excuser.",
+                    "de": "Pardon sagt man sofort, um sich zu entschuldigen."
+                  },
+                  "expressionIds": ["pardon"]
+                },
+                {
+                  "lineId": "line-2",
+                  "roleId": "professeure",
+                  "text": "Ce n’est pas grave. Entre, s’il te plaît.",
+                  "translation": {
+                    "en": "It’s not a problem. Come in, please.",
+                    "de": "Das macht nichts. Komm bitte herein."
+                  },
+                  "note": {
+                    "en": "The teacher says tu to a pupil, so she says s’il te plaît.",
+                    "fr": "La professeure tutoie l’élève, donc elle dit s’il te plaît.",
+                    "de": "Die Lehrerin duzt die Schülerin, deshalb sagt sie s’il te plaît."
+                  },
+                  "expressionIds": ["pas-grave", "sil-te-plait"]
+                },
+                {
+                  "lineId": "line-3",
+                  "roleId": "eleve",
+                  "text": "Merci beaucoup, madame.",
+                  "translation": {
+                    "en": "Thank you very much, madam.",
+                    "de": "Vielen Dank, Frau Lehrerin."
+                  },
+                  "note": {
+                    "en": "Merci beaucoup is warmer than merci.",
+                    "fr": "Merci beaucoup est plus chaleureux que merci.",
+                    "de": "Merci beaucoup ist herzlicher als merci."
+                  },
+                  "expressionIds": ["merci-beaucoup"]
+                },
+                {
+                  "lineId": "line-4",
+                  "roleId": "professeure",
+                  "text": "De rien. Voilà un livre pour toi.",
+                  "translation": {
+                    "en": "You’re welcome. Here is a book for you.",
+                    "de": "Gern geschehen. Hier ist ein Buch für dich."
+                  },
+                  "note": {
+                    "en": "De rien answers merci.",
+                    "fr": "De rien répond à merci.",
+                    "de": "De rien antwortet auf merci."
+                  },
+                  "expressionIds": ["de-rien"]
+                },
+                {
+                  "lineId": "line-5",
+                  "roleId": "eleve",
+                  "text": "Excusez-moi, madame. Quelle page ?",
+                  "translation": {
+                    "en": "Excuse me, madam. Which page?",
+                    "de": "Entschuldigen Sie, Frau Lehrerin. Welche Seite?"
+                  },
+                  "note": {
+                    "en": "The pupil says vous to the teacher, so she says excusez-moi.",
+                    "fr": "L’élève vouvoie la professeure, donc elle dit excusez-moi.",
+                    "de": "Die Schülerin siezt die Lehrerin, deshalb sagt sie excusez-moi."
+                  },
+                  "expressionIds": ["excusez-moi"]
+                },
+                {
+                  "lineId": "line-6",
+                  "roleId": "professeure",
+                  "text": "Page vingt.",
+                  "translation": { "en": "Page twenty.", "de": "Seite zwanzig." },
+                  "note": {
+                    "en": "Numbers from zero to twenty again.",
+                    "fr": "Les nombres de zéro à vingt, encore une fois.",
+                    "de": "Wieder die Zahlen von null bis zwanzig."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-7",
+                  "roleId": "eleve",
+                  "text": "Encore une fois, s’il vous plaît ?",
+                  "translation": { "en": "One more time, please?", "de": "Noch einmal, bitte?" },
+                  "note": {
+                    "en": "To the teacher, the pupil says s’il vous plaît.",
+                    "fr": "À la professeure, l’élève dit s’il vous plaît.",
+                    "de": "Zur Lehrerin sagt die Schülerin s’il vous plaît."
+                  },
+                  "expressionIds": ["sil-vous-plait"]
+                },
+                {
+                  "lineId": "line-8",
+                  "roleId": "professeure",
+                  "text": "Bien sûr. Page vingt, Léa.",
+                  "translation": {
+                    "en": "Of course. Page twenty, Léa.",
+                    "de": "Natürlich. Seite zwanzig, Léa."
+                  },
+                  "note": {
+                    "en": "Bien sûr means of course.",
+                    "fr": "Bien sûr veut dire « évidemment ».",
+                    "de": "Bien sûr heißt „natürlich“."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-9",
+                  "roleId": "eleve",
+                  "text": "Merci, madame.",
+                  "translation": { "en": "Thank you, madam.", "de": "Danke, Frau Lehrerin." },
+                  "note": {
+                    "en": "A short thank you.",
+                    "fr": "Un merci court.",
+                    "de": "Ein kurzes Danke."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-10",
+                  "roleId": "professeure",
+                  "text": "De rien, Léa.",
+                  "translation": { "en": "You’re welcome, Léa.", "de": "Gern geschehen, Léa." },
+                  "note": {
+                    "en": "The teacher answers merci again.",
+                    "fr": "La professeure répond encore à merci.",
+                    "de": "Die Lehrerin antwortet wieder auf merci."
+                  },
+                  "expressionIds": ["de-rien"]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "match-1",
+          "estimatedDurationS": 48,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each expression with its translation.",
+            "fr": "Associez chaque expression à sa traduction.",
+            "de": "Ordne jedem Ausdruck seine Übersetzung zu."
+          },
+          "items": [
+            {
+              "type": "function_matching",
+              "itemId": "match-1",
+              "side": "expressions",
+              "pairs": [
+                {
+                  "id": "sil-vous-plait",
+                  "answerExplanation": {
+                    "en": "The polite “please” for someone you address as vous.",
+                    "fr": "Le « s’il vous plaît » poli pour une personne qu’on vouvoie.",
+                    "de": "Das höfliche „bitte“ für jemanden, den man siezt."
+                  }
+                },
+                {
+                  "id": "sil-te-plait",
+                  "answerExplanation": {
+                    "en": "“Please” for a friend or a classmate: someone you call tu.",
+                    "fr": "« S’il te plaît » pour un ami ou un camarade : une personne qu’on tutoie.",
+                    "de": "„Bitte“ für Freunde oder Mitschüler: Personen, die man duzt."
+                  }
+                },
+                {
+                  "id": "merci-beaucoup",
+                  "answerExplanation": {
+                    "en": "A warmer thank you than merci alone.",
+                    "fr": "Un remerciement plus chaleureux que merci seul.",
+                    "de": "Ein herzlicherer Dank als merci allein."
+                  }
+                },
+                {
+                  "id": "de-rien",
+                  "answerExplanation": {
+                    "en": "The usual answer when someone says merci.",
+                    "fr": "La réponse habituelle quand quelqu’un dit merci.",
+                    "de": "Die übliche Antwort, wenn jemand merci sagt."
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "pageId": "match-2",
+          "estimatedDurationS": 36,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each expression with its translation.",
+            "fr": "Associez chaque expression à sa traduction.",
+            "de": "Ordne jedem Ausdruck seine Übersetzung zu."
+          },
+          "items": [
+            {
+              "type": "function_matching",
+              "itemId": "match-2",
+              "side": "expressions",
+              "pairs": [
+                {
+                  "id": "pardon",
+                  "answerExplanation": {
+                    "en": "Said at once when you bump into someone or make a small mistake.",
+                    "fr": "On le dit tout de suite quand on bouscule quelqu’un ou qu’on fait une petite erreur.",
+                    "de": "Man sagt es sofort, wenn man jemanden anstößt oder einen kleinen Fehler macht."
+                  }
+                },
+                {
+                  "id": "excusez-moi",
+                  "answerExplanation": {
+                    "en": "Polite (vous) way to get someone’s attention or to apologise.",
+                    "fr": "Façon polie (vous) d’attirer l’attention de quelqu’un ou de s’excuser.",
+                    "de": "Höfliche Art (Sie), jemanden anzusprechen oder sich zu entschuldigen."
+                  }
+                },
+                {
+                  "id": "pas-grave",
+                  "answerExplanation": {
+                    "en": "The answer to an apology: it does not matter.",
+                    "fr": "La réponse à des excuses : ce n’est pas important.",
+                    "de": "Die Antwort auf eine Entschuldigung: Es ist nicht wichtig."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-gaps",
+      "stage": "dialogue_gaps",
+      "role": "exercise",
+      "label": { "en": "Dialogue gaps", "fr": "Dialogue à trous", "de": "Dialoglücken" },
+      "pages": [
+        {
+          "pageId": "gap-1",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-1",
+              "expressionId": "sil-vous-plait",
+              "context": { "roleId": "professeure", "text": "Tu as une question ?" },
+              "roleId": "eleve",
+              "before": "Oui, madame. Encore une fois,",
+              "after": "?",
+              "choiceExpressionIds": ["sil-te-plait", "sil-vous-plait", "pardon", "de-rien"],
+              "answerExplanation": {
+                "en": "The pupil says vous to the teacher: s’il vous plaît.",
+                "fr": "L’élève vouvoie la professeure : s’il vous plaît.",
+                "de": "Die Schülerin siezt die Lehrerin: s’il vous plaît."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-2",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-2",
+              "expressionId": "sil-te-plait",
+              "context": { "roleId": "eleve", "text": "Bonjour, madame." },
+              "roleId": "professeure",
+              "before": "Bonjour. Ferme la porte,",
+              "after": ".",
+              "choiceExpressionIds": [
+                "sil-vous-plait",
+                "merci-beaucoup",
+                "sil-te-plait",
+                "de-rien"
+              ],
+              "answerExplanation": {
+                "en": "The teacher says tu to the pupil: s’il te plaît.",
+                "fr": "La professeure tutoie l’élève : s’il te plaît.",
+                "de": "Die Lehrerin duzt die Schülerin: s’il te plaît."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-3",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-3",
+              "expressionId": "merci-beaucoup",
+              "context": { "roleId": "professeure", "text": "Voilà ton cahier." },
+              "roleId": "eleve",
+              "before": "",
+              "after": "pour le cahier, madame.",
+              "choiceExpressionIds": ["de-rien", "pardon", "merci-beaucoup", "excusez-moi"],
+              "answerExplanation": {
+                "en": "She receives something and thanks the teacher.",
+                "fr": "Elle reçoit quelque chose et remercie la professeure.",
+                "de": "Sie bekommt etwas und bedankt sich bei der Lehrerin."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-4",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-4",
+              "expressionId": "de-rien",
+              "context": { "roleId": "eleve", "text": "Merci beaucoup, madame." },
+              "roleId": "professeure",
+              "before": "",
+              "after": "! Ça va ?",
+              "choiceExpressionIds": ["pardon", "merci-beaucoup", "excusez-moi", "de-rien"],
+              "answerExplanation": {
+                "en": "The teacher answers a thank you with de rien.",
+                "fr": "La professeure répond à un merci par de rien.",
+                "de": "Die Lehrerin antwortet auf einen Dank mit de rien."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-5",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-5",
+              "expressionId": "pardon",
+              "context": { "roleId": "professeure", "text": "Aïe ! Mon pied." },
+              "roleId": "eleve",
+              "before": "",
+              "after": "!",
+              "choiceExpressionIds": ["de-rien", "merci-beaucoup", "pardon", "sil-vous-plait"],
+              "answerExplanation": {
+                "en": "She has just bumped into the teacher, so she says pardon at once.",
+                "fr": "Elle vient de bousculer la professeure, donc elle dit pardon tout de suite.",
+                "de": "Sie hat die Lehrerin gerade angestoßen, deshalb sagt sie sofort pardon."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-6",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-6",
+              "expressionId": "excusez-moi",
+              "context": { "roleId": "professeure", "text": "Oui ?" },
+              "roleId": "eleve",
+              "before": "",
+              "after": "! Quelle page ?",
+              "choiceExpressionIds": ["pas-grave", "de-rien", "excusez-moi", "merci-beaucoup"],
+              "answerExplanation": {
+                "en": "To get the teacher’s attention before a question: excusez-moi.",
+                "fr": "Pour attirer l’attention de la professeure avant une question : excusez-moi.",
+                "de": "Um die Aufmerksamkeit der Lehrerin vor einer Frage zu bekommen: excusez-moi."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-7",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-7",
+              "expressionId": "pas-grave",
+              "context": { "roleId": "eleve", "text": "Pardon, madame ! Je n’ai pas mon livre." },
+              "roleId": "professeure",
+              "before": "",
+              "after": ". Voilà le livre.",
+              "choiceExpressionIds": ["sil-te-plait", "de-rien", "pas-grave", "merci-beaucoup"],
+              "answerExplanation": {
+                "en": "After an apology, the teacher says it is not a problem.",
+                "fr": "Après des excuses, la professeure dit que ce n’est pas un problème.",
+                "de": "Nach einer Entschuldigung sagt die Lehrerin, dass es kein Problem ist."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "word-order",
+      "stage": "word_order",
+      "role": "exercise",
+      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
+      "pages": [
+        {
+          "pageId": "order-1",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-1",
+              "expressionId": "sil-vous-plait",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Un" },
+                { "tokenId": "t2", "text": "thé," },
+                { "tokenId": "t3", "text": "s’il" },
+                { "tokenId": "t4", "text": "vous" },
+                { "tokenId": "t5", "text": "plaît." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]],
+              "answerExplanation": {
+                "en": "You name what you want, then add s’il vous plaît.",
+                "fr": "On dit ce qu’on veut, puis on ajoute s’il vous plaît.",
+                "de": "Man nennt, was man möchte, und fügt s’il vous plaît an."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-2",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-2",
+              "expressionId": "sil-te-plait",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Tu" },
+                { "tokenId": "t2", "text": "viens" },
+                { "tokenId": "t3", "text": "ici," },
+                { "tokenId": "t4", "text": "s’il" },
+                { "tokenId": "t5", "text": "te" },
+                { "tokenId": "t6", "text": "plaît ?" }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "answerExplanation": {
+                "en": "With tu, the polite word is s’il te plaît, at the end.",
+                "fr": "Avec tu, le mot poli est s’il te plaît, à la fin.",
+                "de": "Mit tu lautet das höfliche Wort s’il te plaît, am Ende."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-3",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-3",
+              "expressionId": "merci-beaucoup",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Merci" },
+                { "tokenId": "t2", "text": "beaucoup" },
+                { "tokenId": "t3", "text": "pour" },
+                { "tokenId": "t4", "text": "le" },
+                { "tokenId": "t5", "text": "livre !" }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]],
+              "answerExplanation": {
+                "en": "Merci beaucoup, then pour + what you thank for.",
+                "fr": "Merci beaucoup, puis pour + la chose pour laquelle on remercie.",
+                "de": "Merci beaucoup, dann pour + wofür man dankt."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-4",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-4",
+              "expressionId": "de-rien",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "De" },
+                { "tokenId": "t2", "text": "rien," },
+                { "tokenId": "t3", "text": "Paul." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3"]],
+              "answerExplanation": {
+                "en": "De rien comes first, then the name.",
+                "fr": "De rien vient d’abord, puis le prénom.",
+                "de": "Zuerst de rien, dann der Vorname."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-5",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-5",
+              "expressionId": "pardon",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Oh," },
+                { "tokenId": "t2", "text": "pardon," },
+                { "tokenId": "t3", "text": "madame !" }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3"]],
+              "answerExplanation": {
+                "en": "Pardon comes right after the surprise, then the person you address.",
+                "fr": "Pardon vient juste après la surprise, puis la personne à qui l’on parle.",
+                "de": "Pardon steht gleich nach dem Schreck, dann die angesprochene Person."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-6",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-6",
+              "expressionId": "excusez-moi",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Excusez-moi," },
+                { "tokenId": "t2", "text": "je" },
+                { "tokenId": "t3", "text": "suis" },
+                { "tokenId": "t4", "text": "en" },
+                { "tokenId": "t5", "text": "retard." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]],
+              "answerExplanation": {
+                "en": "Excusez-moi opens the sentence, then the reason.",
+                "fr": "Excusez-moi ouvre la phrase, puis vient la raison.",
+                "de": "Excusez-moi eröffnet den Satz, dann folgt der Grund."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-7",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-7",
+              "expressionId": "pas-grave",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Ce" },
+                { "tokenId": "t2", "text": "n’est" },
+                { "tokenId": "t3", "text": "pas" },
+                { "tokenId": "t4", "text": "grave," },
+                { "tokenId": "t5", "text": "Léa." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]],
+              "answerExplanation": {
+                "en": "Ce n’est pas grave stays together, then the name.",
+                "fr": "Ce n’est pas grave reste groupé, puis le prénom.",
+                "de": "Ce n’est pas grave bleibt zusammen, dann der Vorname."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "listening",
+      "stage": "listening",
+      "role": "exercise",
+      "label": { "en": "Listening", "fr": "Écoute", "de": "Hören" },
+      "pages": [
+        {
+          "pageId": "listening-1",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-1",
+              "expressionId": "sil-vous-plait",
+              "context": { "roleId": "professeure", "text": "Tu veux de l’eau ?" },
+              "roleId": "eleve",
+              "options": [
+                { "optionId": "o1", "text": "De rien, madame." },
+                { "optionId": "o2", "text": "Oui, de l’eau, s’il vous plaît." },
+                { "optionId": "o3", "text": "Ce n’est pas grave." },
+                { "optionId": "o4", "text": "Pardon, madame !" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "She accepts politely, with s’il vous plaît.",
+                "fr": "Elle accepte poliment, avec s’il vous plaît.",
+                "de": "Sie nimmt höflich an, mit s’il vous plaît."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-2",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-2",
+              "expressionId": "sil-te-plait",
+              "context": { "roleId": "eleve", "text": "Madame ?" },
+              "roleId": "professeure",
+              "options": [
+                { "optionId": "o1", "text": "Merci beaucoup, madame." },
+                { "optionId": "o2", "text": "Excusez-moi, madame." },
+                { "optionId": "o3", "text": "Écoute, s’il te plaît." },
+                { "optionId": "o4", "text": "S’il vous plaît, madame." }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "The teacher asks the pupil politely, with tu.",
+                "fr": "La professeure demande poliment à l’élève, avec tu.",
+                "de": "Die Lehrerin bittet die Schülerin höflich, mit tu."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-3",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-3",
+              "expressionId": "merci-beaucoup",
+              "context": { "roleId": "professeure", "text": "Voilà ton stylo." },
+              "roleId": "eleve",
+              "options": [
+                { "optionId": "o1", "text": "Merci beaucoup, madame." },
+                { "optionId": "o2", "text": "De rien, madame." },
+                { "optionId": "o3", "text": "Ce n’est pas grave." },
+                { "optionId": "o4", "text": "Pardon, madame." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "She receives a pen and thanks the teacher.",
+                "fr": "Elle reçoit un stylo et remercie la professeure.",
+                "de": "Sie bekommt einen Stift und bedankt sich bei der Lehrerin."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-4",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-4",
+              "expressionId": "de-rien",
+              "context": { "roleId": "eleve", "text": "Merci pour le stylo, madame." },
+              "roleId": "professeure",
+              "options": [
+                { "optionId": "o1", "text": "Pardon, Léa." },
+                { "optionId": "o2", "text": "S’il te plaît, Léa." },
+                { "optionId": "o3", "text": "Excusez-moi, Léa." },
+                { "optionId": "o4", "text": "De rien, Léa." }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "The teacher answers a thank you with de rien.",
+                "fr": "La professeure répond à un merci par de rien.",
+                "de": "Die Lehrerin antwortet auf einen Dank mit de rien."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-5",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-5",
+              "expressionId": "pardon",
+              "context": { "roleId": "professeure", "text": "Aïe ! Mon sac !" },
+              "roleId": "eleve",
+              "options": [
+                { "optionId": "o1", "text": "De rien, madame." },
+                { "optionId": "o2", "text": "Pardon, madame !" },
+                { "optionId": "o3", "text": "Merci beaucoup." },
+                { "optionId": "o4", "text": "S’il vous plaît, madame." }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "She bumped into the bag, so she says sorry.",
+                "fr": "Elle a heurté le sac, donc elle s’excuse.",
+                "de": "Sie hat die Tasche angestoßen, deshalb entschuldigt sie sich."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-6",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-6",
+              "expressionId": "excusez-moi",
+              "context": { "roleId": "professeure", "text": "Qui a une question ?" },
+              "roleId": "eleve",
+              "options": [
+                { "optionId": "o1", "text": "De rien, madame." },
+                { "optionId": "o2", "text": "Ce n’est pas grave, madame." },
+                { "optionId": "o3", "text": "Excusez-moi, madame. Page quinze ?" },
+                { "optionId": "o4", "text": "Merci beaucoup, madame." }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "She raises a question politely with excusez-moi.",
+                "fr": "Elle pose une question poliment avec excusez-moi.",
+                "de": "Sie stellt höflich eine Frage mit excusez-moi."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-7",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-7",
+              "expressionId": "pas-grave",
+              "context": { "roleId": "eleve", "text": "Oh, pardon, madame !" },
+              "roleId": "professeure",
+              "options": [
+                { "optionId": "o1", "text": "Ce n’est pas grave du tout." },
+                { "optionId": "o2", "text": "De rien, Léa." },
+                { "optionId": "o3", "text": "Excusez-moi, Léa." },
+                { "optionId": "o4", "text": "S’il te plaît, Léa." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "The teacher answers an apology: it is not a problem.",
+                "fr": "La professeure répond à des excuses : ce n’est pas un problème.",
+                "de": "Die Lehrerin antwortet auf eine Entschuldigung: Es ist kein Problem."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam-replies-1",
+          "estimatedDurationS": 120,
+          "timeLimitS": 180,
+          "instructions": {
+            "en": "Build the answer. Not every word fits.",
+            "fr": "Construisez la réponse. Tous les mots ne servent pas.",
+            "de": "Bilde die Antwort. Nicht jedes Wort passt."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "reply-1",
+              "expressionId": "sil-te-plait",
+              "context": { "roleId": "eleve", "text": "Madame, il fait chaud." },
+              "roleId": "professeure",
+              "tokens": [
+                { "tokenId": "t1", "text": "Ouvre" },
+                { "tokenId": "t2", "text": "la" },
+                { "tokenId": "t3", "text": "fenêtre," },
+                { "tokenId": "t4", "text": "s’il" },
+                { "tokenId": "t5", "text": "te" },
+                { "tokenId": "t6", "text": "plaît." },
+                { "tokenId": "t7", "text": "merci" },
+                { "tokenId": "t8", "text": "rien" }
+              ],
+              "distractorTokenIds": ["t7", "t8"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "answerExplanation": {
+                "en": "A request to a pupil (tu): the order, then s’il te plaît.",
+                "fr": "Une demande à une élève (tu) : l’ordre, puis s’il te plaît.",
+                "de": "Eine Bitte an eine Schülerin (tu): zuerst die Aufforderung, dann s’il te plaît."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-2",
+              "expressionId": "merci-beaucoup",
+              "context": { "roleId": "professeure", "text": "Tiens, Léa, ton stylo." },
+              "roleId": "eleve",
+              "tokens": [
+                { "tokenId": "t1", "text": "Merci" },
+                { "tokenId": "t2", "text": "beaucoup" },
+                { "tokenId": "t3", "text": "pour" },
+                { "tokenId": "t4", "text": "le" },
+                { "tokenId": "t5", "text": "stylo !" },
+                { "tokenId": "t6", "text": "rien" },
+                { "tokenId": "t7", "text": "la" }
+              ],
+              "distractorTokenIds": ["t6", "t7"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]],
+              "answerExplanation": {
+                "en": "Merci beaucoup, then pour + what you thank for. Stylo is masculine: le.",
+                "fr": "Merci beaucoup, puis pour + la chose. Stylo est masculin : le.",
+                "de": "Merci beaucoup, dann pour + wofür man dankt. Stylo ist maskulin: le."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-3",
+              "expressionId": "pardon",
+              "context": { "roleId": "professeure", "text": "Léa, tu es en retard." },
+              "roleId": "eleve",
+              "tokens": [
+                { "tokenId": "t1", "text": "Pardon," },
+                { "tokenId": "t2", "text": "madame," },
+                { "tokenId": "t3", "text": "j’arrive" },
+                { "tokenId": "t4", "text": "tout" },
+                { "tokenId": "t5", "text": "de" },
+                { "tokenId": "t6", "text": "suite." },
+                { "tokenId": "t7", "text": "merci" },
+                { "tokenId": "t8", "text": "rien" }
+              ],
+              "distractorTokenIds": ["t7", "t8"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "answerExplanation": {
+                "en": "She apologises first with pardon, then says she is coming.",
+                "fr": "Elle s’excuse d’abord avec pardon, puis dit qu’elle arrive.",
+                "de": "Sie entschuldigt sich zuerst mit pardon und sagt dann, dass sie gleich kommt."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-4",
+              "expressionId": "pas-grave",
+              "context": {
+                "roleId": "eleve",
+                "text": "Excusez-moi, madame, je n’ai pas mon cahier."
+              },
+              "roleId": "professeure",
+              "tokens": [
+                { "tokenId": "t1", "text": "Ce" },
+                { "tokenId": "t2", "text": "n’est" },
+                { "tokenId": "t3", "text": "pas" },
+                { "tokenId": "t4", "text": "grave" },
+                { "tokenId": "t5", "text": "aujourd’hui." },
+                { "tokenId": "t6", "text": "oui" },
+                { "tokenId": "t7", "text": "merci" }
+              ],
+              "distractorTokenIds": ["t6", "t7"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]],
+              "answerExplanation": {
+                "en": "The teacher answers the apology: ce n’est pas grave.",
+                "fr": "La professeure répond aux excuses : ce n’est pas grave.",
+                "de": "Die Lehrerin antwortet auf die Entschuldigung: ce n’est pas grave."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-dialogue",
+          "estimatedDurationS": 124,
+          "timeLimitS": 186,
+          "instructions": {
+            "en": "Fill each gap with an expression from this lesson.",
+            "fr": "Complétez chaque trou avec une expression de la leçon.",
+            "de": "Fülle jede Lücke mit einem Ausdruck aus dieser Lektion."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_typing",
+              "itemId": "exam-dialogue",
+              "lines": [
+                {
+                  "lineId": "exam-line-1",
+                  "roleId": "professeure",
+                  "before": "Bonjour, Léa. Tu veux un livre ?",
+                  "translation": {
+                    "en": "Hello, Léa. Do you want a book?",
+                    "de": "Guten Tag, Léa. Möchtest du ein Buch?"
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-2",
+                  "roleId": "eleve",
+                  "before": "Oui, madame.",
+                  "translation": { "en": "Yes, madam. Please.", "de": "Ja, Frau Lehrerin. Bitte." },
+                  "gap": {
+                    "gapId": "gap-1",
+                    "expressionId": "sil-vous-plait",
+                    "accepted": { "answers": ["S’il vous plaît"] },
+                    "answerExplanation": {
+                      "en": "To the teacher, the pupil says s’il vous plaît.",
+                      "fr": "À la professeure, l’élève dit s’il vous plaît.",
+                      "de": "Zur Lehrerin sagt die Schülerin s’il vous plaît."
+                    }
+                  },
+                  "after": "."
+                },
+                {
+                  "lineId": "exam-line-3",
+                  "roleId": "professeure",
+                  "before": "Voilà ton livre.",
+                  "translation": { "en": "Here is your book.", "de": "Hier ist dein Buch." },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-4",
+                  "roleId": "eleve",
+                  "before": "",
+                  "translation": {
+                    "en": "Excuse me! Which page is it?",
+                    "de": "Entschuldigen Sie! Welche Seite ist es?"
+                  },
+                  "gap": {
+                    "gapId": "gap-2",
+                    "expressionId": "excusez-moi",
+                    "accepted": { "answers": ["Excusez-moi"] },
+                    "answerExplanation": {
+                      "en": "To get the teacher’s attention before a question: excusez-moi.",
+                      "fr": "Pour attirer l’attention de la professeure avant une question : excusez-moi.",
+                      "de": "Um die Aufmerksamkeit der Lehrerin vor einer Frage zu bekommen: excusez-moi."
+                    }
+                  },
+                  "after": "! C’est quelle page ?"
+                },
+                {
+                  "lineId": "exam-line-5",
+                  "roleId": "professeure",
+                  "before": "Page douze.",
+                  "translation": { "en": "Page twelve.", "de": "Seite zwölf." },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-6",
+                  "roleId": "eleve",
+                  "before": "Merci beaucoup pour le livre, madame.",
+                  "translation": {
+                    "en": "Thank you very much for the book, madam.",
+                    "de": "Vielen Dank für das Buch, Frau Lehrerin."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-7",
+                  "roleId": "professeure",
+                  "before": "",
+                  "translation": {
+                    "en": "You’re welcome! See you tomorrow, Léa.",
+                    "de": "Gern geschehen! Bis morgen, Léa."
+                  },
+                  "gap": {
+                    "gapId": "gap-3",
+                    "expressionId": "de-rien",
+                    "accepted": { "answers": ["De rien"] },
+                    "answerExplanation": {
+                      "en": "The teacher answers the thank you with de rien.",
+                      "fr": "La professeure répond au merci par de rien.",
+                      "de": "Die Lehrerin antwortet auf den Dank mit de rien."
+                    }
+                  },
+                  "after": "! À demain, Léa."
+                },
+                {
+                  "lineId": "exam-line-8",
+                  "roleId": "eleve",
+                  "before": "À demain, madame. Au revoir !",
+                  "translation": {
+                    "en": "See you tomorrow, madam. Goodbye!",
+                    "de": "Bis morgen, Frau Lehrerin. Auf Wiedersehen!"
+                  },
+                  "gap": null,
+                  "after": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

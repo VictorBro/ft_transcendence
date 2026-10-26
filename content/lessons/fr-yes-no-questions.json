@@ -1,0 +1,996 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-yes-no-questions",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Les questions avec oui ou non",
+  "objective": {
+    "en": "Ask a yes/no question with intonation or with est-ce que, and answer it with oui or non.",
+    "fr": "Poser une question fermée avec l'intonation ou avec est-ce que, et répondre par oui ou non.",
+    "de": "Eine Ja-Nein-Frage mit Intonation oder mit est-ce que stellen und mit oui oder non antworten."
+  },
+  "estimatedMinutes": 13,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-1",
+    "generatedAt": "2026-10-26T22:55:59.436Z",
+    "inputHashes": {
+      "outline": "3c12786bc37e360e4fe392d664b19a6b0785f2775510b6f39fdc04fb475a22ec",
+      "brief": "22a01496a29bba9836e172f125dfff2e61ef78aa49619d4ac12654c7961e8ed9"
+    }
+  },
+  "kind": "grammar",
+  "topic": "syntax_and_sentence_structure",
+  "steps": [
+    {
+      "id": "block-intonation-explanation",
+      "role": "explanation",
+      "blockId": "block-intonation",
+      "label": {
+        "en": "The question with intonation, and the answer",
+        "fr": "La question par l'intonation et la réponse",
+        "de": "Die Frage mit Intonation und die Antwort"
+      },
+      "pages": [
+        {
+          "pageId": "block-intonation-explanation",
+          "estimatedDurationS": 90,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the explanation and the examples.",
+            "fr": "Lisez l’explication et les exemples.",
+            "de": "Lies die Erklärung und die Beispiele."
+          },
+          "items": [
+            {
+              "type": "grammar_explanation",
+              "itemId": "block-intonation-explanation",
+              "ruleIds": ["r-intonation", "r-answer"],
+              "heading": {
+                "en": "The question with your voice",
+                "fr": "La question avec la voix",
+                "de": "Die Frage mit der Stimme"
+              },
+              "text": {
+                "en": "In French, you can ask a yes/no question with your **voice**: keep the word order of a statement and raise your voice at the end. In writing, add `?`.\n\n`Tu parles anglais ?` is a question, `Tu parles anglais.` is a statement.\n\nAnswer with `oui` or `non`, then a short sentence:\n\n- `Oui, je parle anglais.`\n- `Non, je parle espagnol.`",
+                "fr": "En français, on peut poser une question fermée avec la **voix** : on garde l'ordre d'une phrase affirmative et on monte la voix à la fin. À l'écrit, on ajoute `?`.\n\n`Tu parles anglais ?` est une question, `Tu parles anglais.` est une affirmation.\n\nOn répond par `oui` ou `non`, puis par une phrase courte :\n\n- `Oui, je parle anglais.`\n- `Non, je parle espagnol.`",
+                "de": "Im Französischen kannst du eine Ja-Nein-Frage mit der **Stimme** stellen: Die Wortstellung bleibt wie im Aussagesatz, und du hebst am Ende die Stimme. Schriftlich setzt du `?`.\n\n`Tu parles anglais ?` ist eine Frage, `Tu parles anglais.` ist eine Aussage.\n\nAntworte mit `oui` oder `non` und einem kurzen Satz:\n\n- `Oui, je parle anglais.`\n- `Non, je parle espagnol.`"
+              },
+              "formTable": [],
+              "examples": [
+                {
+                  "text": "Tu parles anglais ?",
+                  "translation": { "en": "Do you speak English?", "de": "Sprichst du Englisch?" }
+                },
+                {
+                  "text": "Vous habitez à Paris ?",
+                  "translation": { "en": "Do you live in Paris?", "de": "Wohnen Sie in Paris?" }
+                },
+                {
+                  "text": "Oui, je parle anglais.",
+                  "translation": {
+                    "en": "Yes, I speak English.",
+                    "de": "Ja, ich spreche Englisch."
+                  }
+                },
+                {
+                  "text": "Non, je parle espagnol.",
+                  "translation": {
+                    "en": "No, I speak Spanish.",
+                    "de": "Nein, ich spreche Spanisch."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-i-choice",
+      "role": "exercise",
+      "blockId": "block-intonation",
+      "label": {
+        "en": "Answer with oui or non",
+        "fr": "Répondre par oui ou non",
+        "de": "Mit oui oder non antworten"
+      },
+      "pages": [
+        {
+          "pageId": "ex-i-choice-1",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-i-choice-1",
+              "before": "— Tu parles italien ? —",
+              "after": ", je parle italien.",
+              "choices": [
+                { "choiceId": "c-1", "text": "Oui" },
+                { "choiceId": "c-2", "text": "Non" },
+                { "choiceId": "c-3", "text": "Merci" },
+                { "choiceId": "c-4", "text": "Bonjour" }
+              ],
+              "answerChoiceId": "c-1",
+              "hint": {
+                "en": "a positive answer",
+                "fr": "une réponse positive",
+                "de": "eine positive Antwort"
+              },
+              "ruleIds": ["r-answer"],
+              "answerExplanation": {
+                "en": "The answer is yes, so you say oui.",
+                "fr": "La réponse est affirmative : on dit oui.",
+                "de": "Die Antwort ist positiv, also sagt man oui."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-i-choice-2",
+              "before": "— Vous habitez à Lyon ? —",
+              "after": ", j'habite à Nice.",
+              "choices": [
+                { "choiceId": "c-1", "text": "Merci" },
+                { "choiceId": "c-2", "text": "Oui" },
+                { "choiceId": "c-3", "text": "Bonjour" },
+                { "choiceId": "c-4", "text": "Non" }
+              ],
+              "answerChoiceId": "c-4",
+              "hint": {
+                "en": "a negative answer",
+                "fr": "une réponse négative",
+                "de": "eine negative Antwort"
+              },
+              "ruleIds": ["r-answer"],
+              "answerExplanation": {
+                "en": "The answer is no, so you say non.",
+                "fr": "La réponse est négative : on dit non.",
+                "de": "Die Antwort ist negativ, also sagt man non."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-i-choice-3",
+              "before": "— Elle parle allemand ? —",
+              "after": ", elle parle allemand.",
+              "choices": [
+                { "choiceId": "c-1", "text": "Non" },
+                { "choiceId": "c-2", "text": "Bonjour" },
+                { "choiceId": "c-3", "text": "Oui" },
+                { "choiceId": "c-4", "text": "Merci" }
+              ],
+              "answerChoiceId": "c-3",
+              "hint": {
+                "en": "a positive answer",
+                "fr": "une réponse positive",
+                "de": "eine positive Antwort"
+              },
+              "ruleIds": ["r-answer"],
+              "answerExplanation": {
+                "en": "The answer is yes, so you say oui.",
+                "fr": "La réponse est affirmative : on dit oui.",
+                "de": "Die Antwort ist positiv, also sagt man oui."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-i-choice-4",
+              "before": "— Tu travailles ici ? —",
+              "after": ", je travaille à Lille.",
+              "choices": [
+                { "choiceId": "c-1", "text": "Oui" },
+                { "choiceId": "c-2", "text": "Merci" },
+                { "choiceId": "c-3", "text": "Bonjour" },
+                { "choiceId": "c-4", "text": "Non" }
+              ],
+              "answerChoiceId": "c-4",
+              "hint": {
+                "en": "a negative answer",
+                "fr": "une réponse négative",
+                "de": "eine negative Antwort"
+              },
+              "ruleIds": ["r-answer"],
+              "answerExplanation": {
+                "en": "The answer is no, so you say non.",
+                "fr": "La réponse est négative : on dit non.",
+                "de": "Die Antwort ist negativ, also sagt man non."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-i-typing",
+      "role": "exercise",
+      "blockId": "block-intonation",
+      "label": {
+        "en": "Type oui or non",
+        "fr": "Écrire oui ou non",
+        "de": "Oui oder non schreiben"
+      },
+      "pages": [
+        {
+          "pageId": "ex-i-typing-1",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-i-typing-1",
+              "before": "— Vous parlez russe ? —",
+              "after": ", je parle chinois.",
+              "accepted": { "answers": ["Non"] },
+              "hint": {
+                "en": "a negative answer",
+                "fr": "une réponse négative",
+                "de": "eine negative Antwort"
+              },
+              "ruleIds": ["r-answer"],
+              "answerExplanation": {
+                "en": "The answer is no, so you say non.",
+                "fr": "La réponse est négative : on dit non.",
+                "de": "Die Antwort ist negativ, also sagt man non."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-i-typing-2",
+              "before": "— Tu habites ici ? —",
+              "after": ", j'habite ici.",
+              "accepted": { "answers": ["Oui"] },
+              "hint": {
+                "en": "a positive answer",
+                "fr": "une réponse positive",
+                "de": "eine positive Antwort"
+              },
+              "ruleIds": ["r-answer"],
+              "answerExplanation": {
+                "en": "The answer is yes, so you say oui.",
+                "fr": "La réponse est affirmative : on dit oui.",
+                "de": "Die Antwort ist positiv, also sagt man oui."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-i-typing-3",
+              "before": "— Elle travaille à Lyon ? —",
+              "after": ", elle travaille à Lyon.",
+              "accepted": { "answers": ["Oui"] },
+              "hint": {
+                "en": "a positive answer",
+                "fr": "une réponse positive",
+                "de": "eine positive Antwort"
+              },
+              "ruleIds": ["r-answer"],
+              "answerExplanation": {
+                "en": "The answer is yes, so you say oui.",
+                "fr": "La réponse est affirmative : on dit oui.",
+                "de": "Die Antwort ist positiv, also sagt man oui."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-i-typing-4",
+              "before": "— Ils habitent à Rome ? —",
+              "after": ", ils habitent à Milan.",
+              "accepted": { "answers": ["Non"] },
+              "hint": {
+                "en": "a negative answer",
+                "fr": "une réponse négative",
+                "de": "eine negative Antwort"
+              },
+              "ruleIds": ["r-answer"],
+              "answerExplanation": {
+                "en": "The answer is no, so you say non.",
+                "fr": "La réponse est négative : on dit non.",
+                "de": "Die Antwort ist negativ, also sagt man non."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-i-order",
+      "role": "exercise",
+      "blockId": "block-intonation",
+      "label": {
+        "en": "Build the question",
+        "fr": "Construire la question",
+        "de": "Die Frage bilden"
+      },
+      "pages": [
+        {
+          "pageId": "ex-i-order-1",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-i-order-1",
+              "tokens": [
+                { "tokenId": "t-1", "text": "Paris" },
+                { "tokenId": "t-2", "text": "Tu" },
+                { "tokenId": "t-3", "text": "?" },
+                { "tokenId": "t-4", "text": "à" },
+                { "tokenId": "t-5", "text": "habites" }
+              ],
+              "acceptedOrders": [["t-2", "t-5", "t-4", "t-1", "t-3"]],
+              "ruleIds": ["r-intonation"],
+              "answerExplanation": {
+                "en": "The word order is the same as in a statement; the question mark and your voice make it a question.",
+                "fr": "L’ordre est celui d’une phrase affirmative ; le point d’interrogation et la voix font la question.",
+                "de": "Die Wortstellung ist wie im Aussagesatz; Fragezeichen und Stimme machen die Frage."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-i-order-2",
+              "tokens": [
+                { "tokenId": "t-1", "text": "?" },
+                { "tokenId": "t-2", "text": "français" },
+                { "tokenId": "t-3", "text": "parle" },
+                { "tokenId": "t-4", "text": "Elle" }
+              ],
+              "acceptedOrders": [["t-4", "t-3", "t-2", "t-1"]],
+              "ruleIds": ["r-intonation"],
+              "answerExplanation": {
+                "en": "The word order is the same as in a statement; the question mark and your voice make it a question.",
+                "fr": "L’ordre est celui d’une phrase affirmative ; le point d’interrogation et la voix font la question.",
+                "de": "Die Wortstellung ist wie im Aussagesatz; Fragezeichen und Stimme machen die Frage."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-i-order-3",
+              "tokens": [
+                { "tokenId": "t-1", "text": "ici" },
+                { "tokenId": "t-2", "text": "travaillez" },
+                { "tokenId": "t-3", "text": "?" },
+                { "tokenId": "t-4", "text": "Vous" }
+              ],
+              "acceptedOrders": [["t-4", "t-2", "t-1", "t-3"]],
+              "ruleIds": ["r-intonation"],
+              "answerExplanation": {
+                "en": "The word order is the same as in a statement; the question mark and your voice make it a question.",
+                "fr": "L’ordre est celui d’une phrase affirmative ; le point d’interrogation et la voix font la question.",
+                "de": "Die Wortstellung ist wie im Aussagesatz; Fragezeichen und Stimme machen die Frage."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-i-order-4",
+              "tokens": [
+                { "tokenId": "t-1", "text": "Nice" },
+                { "tokenId": "t-2", "text": "Il" },
+                { "tokenId": "t-3", "text": "à" },
+                { "tokenId": "t-4", "text": "?" },
+                { "tokenId": "t-5", "text": "habite" }
+              ],
+              "acceptedOrders": [["t-2", "t-5", "t-3", "t-1", "t-4"]],
+              "ruleIds": ["r-intonation"],
+              "answerExplanation": {
+                "en": "The word order is the same as in a statement; the question mark and your voice make it a question.",
+                "fr": "L’ordre est celui d’une phrase affirmative ; le point d’interrogation et la voix font la question.",
+                "de": "Die Wortstellung ist wie im Aussagesatz; Fragezeichen und Stimme machen die Frage."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "block-estce-explanation",
+      "role": "explanation",
+      "blockId": "block-estce",
+      "label": {
+        "en": "The question with est-ce que",
+        "fr": "La question avec est-ce que",
+        "de": "Die Frage mit est-ce que"
+      },
+      "pages": [
+        {
+          "pageId": "block-estce-explanation",
+          "estimatedDurationS": 100,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the explanation and the examples.",
+            "fr": "Lisez l’explication et les exemples.",
+            "de": "Lies die Erklärung und die Beispiele."
+          },
+          "items": [
+            {
+              "type": "grammar_explanation",
+              "itemId": "block-estce-explanation",
+              "ruleIds": ["r-estce", "r-answer"],
+              "heading": {
+                "en": "est-ce que before a statement",
+                "fr": "est-ce que devant une phrase",
+                "de": "est-ce que vor einem Aussagesatz"
+              },
+              "text": {
+                "en": "Another way is **est-ce que**: put it before a statement. The word order does not change: `Est-ce que tu parles anglais ?`\n\nBefore a vowel or a mute h, `que` becomes `qu'`: `Est-ce qu'il habite ici ?`\n\nThe answer is the same: `oui` or `non`.\n\n- `Est-ce que vous aimez Paris ?` – `Oui, j'aime Paris.`\n- `Est-ce qu'elle parle français ?` – `Non, elle parle italien.`",
+                "fr": "Une autre façon est **est-ce que** : on le place devant une phrase affirmative. L'ordre des mots ne change pas : `Est-ce que tu parles anglais ?`\n\nDevant une voyelle ou un h muet, `que` devient `qu'` : `Est-ce qu'il habite ici ?`\n\nLa réponse est la même : `oui` ou `non`.\n\n- `Est-ce que vous aimez Paris ?` – `Oui, j'aime Paris.`\n- `Est-ce qu'elle parle français ?` – `Non, elle parle italien.`",
+                "de": "Eine andere Möglichkeit ist **est-ce que**: Du setzt es vor einen Aussagesatz. Die Wortstellung ändert sich nicht: `Est-ce que tu parles anglais ?`\n\nVor einem Vokal oder stummen h wird `que` zu `qu'`: `Est-ce qu'il habite ici ?`\n\nDie Antwort ist dieselbe: `oui` oder `non`.\n\n- `Est-ce que vous aimez Paris ?` – `Oui, j'aime Paris.`\n- `Est-ce qu'elle parle français ?` – `Non, elle parle italien.`"
+              },
+              "formTable": [],
+              "examples": [
+                {
+                  "text": "Est-ce que tu parles anglais ?",
+                  "translation": { "en": "Do you speak English?", "de": "Sprichst du Englisch?" }
+                },
+                {
+                  "text": "Est-ce qu'il habite ici ?",
+                  "translation": { "en": "Does he live here?", "de": "Wohnt er hier?" }
+                },
+                {
+                  "text": "Est-ce que vous aimez Paris ?",
+                  "translation": { "en": "Do you like Paris?", "de": "Mögen Sie Paris?" }
+                },
+                {
+                  "text": "Est-ce qu'elle parle français ?",
+                  "translation": {
+                    "en": "Does she speak French?",
+                    "de": "Spricht sie Französisch?"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-e-choice",
+      "role": "exercise",
+      "blockId": "block-estce",
+      "label": {
+        "en": "Choose the start of the question",
+        "fr": "Choisir le début de la question",
+        "de": "Den Fragebeginn wählen"
+      },
+      "pages": [
+        {
+          "pageId": "ex-e-choice-1",
+          "estimatedDurationS": 40,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-e-choice-1",
+              "before": "",
+              "after": "tu parles chinois ?",
+              "choices": [
+                { "choiceId": "c-1", "text": "Est-ce que" },
+                { "choiceId": "c-2", "text": "Est-ce qu'" },
+                { "choiceId": "c-3", "text": "Est-ce" },
+                { "choiceId": "c-4", "text": "Que" }
+              ],
+              "answerChoiceId": "c-1",
+              "hint": null,
+              "ruleIds": ["r-estce"],
+              "answerExplanation": {
+                "en": "Before a consonant sound (tu, vous), you say est-ce que.",
+                "fr": "Devant un son consonne (tu, vous), on dit est-ce que.",
+                "de": "Vor einem Konsonantenlaut (tu, vous) sagt man est-ce que."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-e-choice-2",
+              "before": "",
+              "after": "il travaille ici ?",
+              "choices": [
+                { "choiceId": "c-1", "text": "Est-ce que" },
+                { "choiceId": "c-2", "text": "Est-ce" },
+                { "choiceId": "c-3", "text": "Que" },
+                { "choiceId": "c-4", "text": "Est-ce qu'" }
+              ],
+              "answerChoiceId": "c-4",
+              "hint": null,
+              "ruleIds": ["r-estce"],
+              "answerExplanation": {
+                "en": "Before a vowel (il, elle, ils), que becomes qu': est-ce qu'.",
+                "fr": "Devant une voyelle (il, elle, ils), que devient qu' : est-ce qu'.",
+                "de": "Vor einem Vokal (il, elle, ils) wird que zu qu': est-ce qu'."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-e-choice-3",
+              "before": "",
+              "after": "vous habitez à Berlin ?",
+              "choices": [
+                { "choiceId": "c-1", "text": "Est-ce qu'" },
+                { "choiceId": "c-2", "text": "Est-ce que" },
+                { "choiceId": "c-3", "text": "Que" },
+                { "choiceId": "c-4", "text": "Est-ce" }
+              ],
+              "answerChoiceId": "c-2",
+              "hint": null,
+              "ruleIds": ["r-estce"],
+              "answerExplanation": {
+                "en": "Before a consonant sound (tu, vous), you say est-ce que.",
+                "fr": "Devant un son consonne (tu, vous), on dit est-ce que.",
+                "de": "Vor einem Konsonantenlaut (tu, vous) sagt man est-ce que."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-e-choice-4",
+              "before": "",
+              "after": "elle habite à Rome ?",
+              "choices": [
+                { "choiceId": "c-1", "text": "Que" },
+                { "choiceId": "c-2", "text": "Est-ce" },
+                { "choiceId": "c-3", "text": "Est-ce qu'" },
+                { "choiceId": "c-4", "text": "Est-ce que" }
+              ],
+              "answerChoiceId": "c-3",
+              "hint": null,
+              "ruleIds": ["r-estce"],
+              "answerExplanation": {
+                "en": "Before a vowel (il, elle, ils), que becomes qu': est-ce qu'.",
+                "fr": "Devant une voyelle (il, elle, ils), que devient qu' : est-ce qu'.",
+                "de": "Vor einem Vokal (il, elle, ils) wird que zu qu': est-ce qu'."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-e-typing",
+      "role": "exercise",
+      "blockId": "block-estce",
+      "label": { "en": "Type est-ce que", "fr": "Écrire est-ce que", "de": "Est-ce que schreiben" },
+      "pages": [
+        {
+          "pageId": "ex-e-typing-1",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-e-typing-1",
+              "before": "",
+              "after": "vous habitez ici ?",
+              "accepted": { "answers": ["Est-ce que"] },
+              "hint": {
+                "en": "start of the question",
+                "fr": "début de la question",
+                "de": "Anfang der Frage"
+              },
+              "ruleIds": ["r-estce"],
+              "answerExplanation": {
+                "en": "Before a consonant sound (tu, vous), you say est-ce que.",
+                "fr": "Devant un son consonne (tu, vous), on dit est-ce que.",
+                "de": "Vor einem Konsonantenlaut (tu, vous) sagt man est-ce que."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-e-typing-2",
+              "before": "",
+              "after": "il parle italien ?",
+              "accepted": { "answers": ["Est-ce qu'"] },
+              "hint": {
+                "en": "start of the question",
+                "fr": "début de la question",
+                "de": "Anfang der Frage"
+              },
+              "ruleIds": ["r-estce"],
+              "answerExplanation": {
+                "en": "Before a vowel (il, elle, ils), que becomes qu': est-ce qu'.",
+                "fr": "Devant une voyelle (il, elle, ils), que devient qu' : est-ce qu'.",
+                "de": "Vor einem Vokal (il, elle, ils) wird que zu qu': est-ce qu'."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-e-typing-3",
+              "before": "",
+              "after": "tu travailles à Paris ?",
+              "accepted": { "answers": ["Est-ce que"] },
+              "hint": {
+                "en": "start of the question",
+                "fr": "début de la question",
+                "de": "Anfang der Frage"
+              },
+              "ruleIds": ["r-estce"],
+              "answerExplanation": {
+                "en": "Before a consonant sound (tu, vous), you say est-ce que.",
+                "fr": "Devant un son consonne (tu, vous), on dit est-ce que.",
+                "de": "Vor einem Konsonantenlaut (tu, vous) sagt man est-ce que."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-e-typing-4",
+              "before": "",
+              "after": "elle habite à Nice ?",
+              "accepted": { "answers": ["Est-ce qu'"] },
+              "hint": {
+                "en": "start of the question",
+                "fr": "début de la question",
+                "de": "Anfang der Frage"
+              },
+              "ruleIds": ["r-estce"],
+              "answerExplanation": {
+                "en": "Before a vowel (il, elle, ils), que becomes qu': est-ce qu'.",
+                "fr": "Devant une voyelle (il, elle, ils), que devient qu' : est-ce qu'.",
+                "de": "Vor einem Vokal (il, elle, ils) wird que zu qu': est-ce qu'."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-e-order",
+      "role": "exercise",
+      "blockId": "block-estce",
+      "label": {
+        "en": "Build the question",
+        "fr": "Construire la question",
+        "de": "Die Frage bilden"
+      },
+      "pages": [
+        {
+          "pageId": "ex-e-order-1",
+          "estimatedDurationS": 80,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-e-order-1",
+              "tokens": [
+                { "tokenId": "t-1", "text": "Lyon" },
+                { "tokenId": "t-2", "text": "tu" },
+                { "tokenId": "t-3", "text": "?" },
+                { "tokenId": "t-4", "text": "Est-ce" },
+                { "tokenId": "t-5", "text": "à" },
+                { "tokenId": "t-6", "text": "habites" },
+                { "tokenId": "t-7", "text": "que" }
+              ],
+              "acceptedOrders": [["t-4", "t-7", "t-2", "t-6", "t-5", "t-1", "t-3"]],
+              "ruleIds": ["r-estce"],
+              "answerExplanation": {
+                "en": "Est-ce que + a statement: the order of the words does not change.",
+                "fr": "Est-ce que + phrase affirmative : l’ordre des mots ne change pas.",
+                "de": "Est-ce que + Aussagesatz: Die Wortstellung bleibt gleich."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-e-order-2",
+              "tokens": [
+                { "tokenId": "t-1", "text": "parle" },
+                { "tokenId": "t-2", "text": "?" },
+                { "tokenId": "t-3", "text": "il" },
+                { "tokenId": "t-4", "text": "russe" },
+                { "tokenId": "t-5", "text": "Est-ce" },
+                { "tokenId": "t-6", "text": "qu'" }
+              ],
+              "acceptedOrders": [["t-5", "t-6", "t-3", "t-1", "t-4", "t-2"]],
+              "ruleIds": ["r-estce"],
+              "answerExplanation": {
+                "en": "Est-ce que + a statement: the order of the words does not change.",
+                "fr": "Est-ce que + phrase affirmative : l’ordre des mots ne change pas.",
+                "de": "Est-ce que + Aussagesatz: Die Wortstellung bleibt gleich."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-e-order-3",
+              "tokens": [
+                { "tokenId": "t-1", "text": "espagnol" },
+                { "tokenId": "t-2", "text": "que" },
+                { "tokenId": "t-3", "text": "Est-ce" },
+                { "tokenId": "t-4", "text": "?" },
+                { "tokenId": "t-5", "text": "vous" },
+                { "tokenId": "t-6", "text": "parlez" }
+              ],
+              "acceptedOrders": [["t-3", "t-2", "t-5", "t-6", "t-1", "t-4"]],
+              "ruleIds": ["r-estce"],
+              "answerExplanation": {
+                "en": "Est-ce que + a statement: the order of the words does not change.",
+                "fr": "Est-ce que + phrase affirmative : l’ordre des mots ne change pas.",
+                "de": "Est-ce que + Aussagesatz: Die Wortstellung bleibt gleich."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-e-order-4",
+              "tokens": [
+                { "tokenId": "t-1", "text": "travaille" },
+                { "tokenId": "t-2", "text": "Est-ce" },
+                { "tokenId": "t-3", "text": "?" },
+                { "tokenId": "t-4", "text": "elle" },
+                { "tokenId": "t-5", "text": "ici" },
+                { "tokenId": "t-6", "text": "qu'" }
+              ],
+              "acceptedOrders": [["t-2", "t-6", "t-4", "t-1", "t-5", "t-3"]],
+              "ruleIds": ["r-estce"],
+              "answerExplanation": {
+                "en": "Est-ce que + a statement: the order of the words does not change.",
+                "fr": "Est-ce que + phrase affirmative : l’ordre des mots ne change pas.",
+                "de": "Est-ce que + Aussagesatz: Die Wortstellung bleibt gleich."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "feedback",
+      "role": "feedback",
+      "blockId": null,
+      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "pages": [
+        {
+          "pageId": "feedback",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Continue to the final exam.",
+            "fr": "Passez à l’examen final.",
+            "de": "Weiter zur Abschlussprüfung."
+          },
+          "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "role": "exam",
+      "blockId": null,
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam-order",
+          "estimatedDurationS": 80,
+          "timeLimitS": 150,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "exam-order-1",
+              "tokens": [
+                { "tokenId": "t-1", "text": "portugais" },
+                { "tokenId": "t-2", "text": "?" },
+                { "tokenId": "t-3", "text": "parlez" },
+                { "tokenId": "t-4", "text": "Vous" }
+              ],
+              "acceptedOrders": [["t-4", "t-3", "t-1", "t-2"]],
+              "ruleIds": ["r-intonation"],
+              "answerExplanation": {
+                "en": "The word order is the same as in a statement; the question mark and your voice make it a question.",
+                "fr": "L’ordre est celui d’une phrase affirmative ; le point d’interrogation et la voix font la question.",
+                "de": "Die Wortstellung ist wie im Aussagesatz; Fragezeichen und Stimme machen die Frage."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "exam-order-2",
+              "tokens": [
+                { "tokenId": "t-1", "text": "à" },
+                { "tokenId": "t-2", "text": "Tu" },
+                { "tokenId": "t-3", "text": "Berlin" },
+                { "tokenId": "t-4", "text": "?" },
+                { "tokenId": "t-5", "text": "travailles" }
+              ],
+              "acceptedOrders": [["t-2", "t-5", "t-1", "t-3", "t-4"]],
+              "ruleIds": ["r-intonation"],
+              "answerExplanation": {
+                "en": "The word order is the same as in a statement; the question mark and your voice make it a question.",
+                "fr": "L’ordre est celui d’une phrase affirmative ; le point d’interrogation et la voix font la question.",
+                "de": "Die Wortstellung ist wie im Aussagesatz; Fragezeichen und Stimme machen die Frage."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "exam-order-3",
+              "tokens": [
+                { "tokenId": "t-1", "text": "habitez" },
+                { "tokenId": "t-2", "text": "Madrid" },
+                { "tokenId": "t-3", "text": "que" },
+                { "tokenId": "t-4", "text": "?" },
+                { "tokenId": "t-5", "text": "vous" },
+                { "tokenId": "t-6", "text": "à" },
+                { "tokenId": "t-7", "text": "Est-ce" }
+              ],
+              "acceptedOrders": [["t-7", "t-3", "t-5", "t-1", "t-6", "t-2", "t-4"]],
+              "ruleIds": ["r-estce"],
+              "answerExplanation": {
+                "en": "Est-ce que + a statement: the order of the words does not change.",
+                "fr": "Est-ce que + phrase affirmative : l’ordre des mots ne change pas.",
+                "de": "Est-ce que + Aussagesatz: Die Wortstellung bleibt gleich."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "exam-order-4",
+              "tokens": [
+                { "tokenId": "t-1", "text": "Berlin" },
+                { "tokenId": "t-2", "text": "qu'" },
+                { "tokenId": "t-3", "text": "?" },
+                { "tokenId": "t-4", "text": "habite" },
+                { "tokenId": "t-5", "text": "Est-ce" },
+                { "tokenId": "t-6", "text": "à" },
+                { "tokenId": "t-7", "text": "il" }
+              ],
+              "acceptedOrders": [["t-5", "t-2", "t-7", "t-4", "t-6", "t-1", "t-3"]],
+              "ruleIds": ["r-estce"],
+              "answerExplanation": {
+                "en": "Est-ce que + a statement: the order of the words does not change.",
+                "fr": "Est-ce que + phrase affirmative : l’ordre des mots ne change pas.",
+                "de": "Est-ce que + Aussagesatz: Die Wortstellung bleibt gleich."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-estce",
+          "estimatedDurationS": 60,
+          "timeLimitS": 120,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-estce-1",
+              "before": "",
+              "after": "tu habites à Genève ?",
+              "accepted": { "answers": ["Est-ce que"] },
+              "hint": null,
+              "ruleIds": ["r-estce"],
+              "answerExplanation": {
+                "en": "Before a consonant sound (tu, vous), you say est-ce que.",
+                "fr": "Devant un son consonne (tu, vous), on dit est-ce que.",
+                "de": "Vor einem Konsonantenlaut (tu, vous) sagt man est-ce que."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-estce-2",
+              "before": "",
+              "after": "elle parle portugais ?",
+              "accepted": { "answers": ["Est-ce qu'"] },
+              "hint": null,
+              "ruleIds": ["r-estce"],
+              "answerExplanation": {
+                "en": "Before a vowel (il, elle, ils), que becomes qu': est-ce qu'.",
+                "fr": "Devant une voyelle (il, elle, ils), que devient qu' : est-ce qu'.",
+                "de": "Vor einem Vokal (il, elle, ils) wird que zu qu': est-ce qu'."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-estce-3",
+              "before": "",
+              "after": "vous travaillez à Lille ?",
+              "accepted": { "answers": ["Est-ce que"] },
+              "hint": null,
+              "ruleIds": ["r-estce"],
+              "answerExplanation": {
+                "en": "Before a consonant sound (tu, vous), you say est-ce que.",
+                "fr": "Devant un son consonne (tu, vous), on dit est-ce que.",
+                "de": "Vor einem Konsonantenlaut (tu, vous) sagt man est-ce que."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-estce-4",
+              "before": "",
+              "after": "ils habitent à Madrid ?",
+              "accepted": { "answers": ["Est-ce qu'"] },
+              "hint": null,
+              "ruleIds": ["r-estce"],
+              "answerExplanation": {
+                "en": "Before a vowel (il, elle, ils), que becomes qu': est-ce qu'.",
+                "fr": "Devant une voyelle (il, elle, ils), que devient qu' : est-ce qu'.",
+                "de": "Vor einem Vokal (il, elle, ils) wird que zu qu': est-ce qu'."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-answer",
+          "estimatedDurationS": 45,
+          "timeLimitS": 90,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-answer-1",
+              "before": "— Tu parles polonais ? —",
+              "after": ", je parle anglais.",
+              "accepted": { "answers": ["Non"] },
+              "hint": null,
+              "ruleIds": ["r-answer"],
+              "answerExplanation": {
+                "en": "The answer is no, so you say non.",
+                "fr": "La réponse est négative : on dit non.",
+                "de": "Die Antwort ist negativ, also sagt man non."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-answer-2",
+              "before": "— Vous aimez Rome ? —",
+              "after": ", j'aime Rome.",
+              "accepted": { "answers": ["Oui"] },
+              "hint": null,
+              "ruleIds": ["r-answer"],
+              "answerExplanation": {
+                "en": "The answer is yes, so you say oui.",
+                "fr": "La réponse est affirmative : on dit oui.",
+                "de": "Die Antwort ist positiv, also sagt man oui."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-answer-3",
+              "before": "— Il habite à Genève ? —",
+              "after": ", il habite à Genève.",
+              "accepted": { "answers": ["Oui"] },
+              "hint": null,
+              "ruleIds": ["r-answer"],
+              "answerExplanation": {
+                "en": "The answer is yes, so you say oui.",
+                "fr": "La réponse est affirmative : on dit oui.",
+                "de": "Die Antwort ist positiv, also sagt man oui."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

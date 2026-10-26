@@ -1,0 +1,1159 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-asking-to-repeat-and-spell",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Demander de répéter ou d’épeler",
+  "objective": {
+    "en": "Say you do not understand, ask someone to repeat, to spell a word or to speak slowly: Pardon ? Ça s’écrit comment ?",
+    "fr": "Dire qu’on ne comprend pas, faire répéter, faire épeler et demander de parler lentement : « Pardon ? »",
+    "de": "Sagen, dass man etwas nicht versteht, um Wiederholung, Buchstabieren oder langsames Sprechen bitten."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-1",
+    "generatedAt": "2026-10-26T22:56:41.256Z",
+    "inputHashes": {
+      "outline": "26cdf222a7403a64cbd13b49dc532026b5c34f18c3314cdf8ca6f28ec13d7f6a",
+      "brief": "c8ab7c2866a5d99b5a5086be8f01ce2b0c9e6bbc546f7ddd50cf5ae2dadcbdc7"
+    }
+  },
+  "kind": "functions",
+  "theme": "language",
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "presentation",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "cards-expressions",
+          "estimatedDurationS": 72,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Recall each expression, then turn the card to check it.",
+            "fr": "Rappelez-vous chaque expression, puis retournez la carte pour vérifier.",
+            "de": "Erinnere dich an jeden Ausdruck und dreh dann die Karte um."
+          },
+          "items": [
+            {
+              "type": "function_flashcards",
+              "itemId": "cards-expressions",
+              "side": "expressions",
+              "ids": ["pardon", "comprends", "repetez", "epelez", "ca-secrit", "lentement"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue",
+      "stage": "dialogue",
+      "role": "presentation",
+      "label": { "en": "Dialogue", "fr": "Dialogue", "de": "Dialog" },
+      "pages": [
+        {
+          "pageId": "dialogue",
+          "estimatedDurationS": 164,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read and listen. Turn a line to see its translation and a note.",
+            "fr": "Lisez et écoutez. Retournez une réplique pour voir sa traduction et une remarque.",
+            "de": "Lies und hör zu. Dreh eine Zeile um, um Übersetzung und Hinweis zu sehen."
+          },
+          "items": [
+            {
+              "type": "function_dialogue",
+              "itemId": "dialogue",
+              "lines": [
+                {
+                  "lineId": "line-1",
+                  "roleId": "professeur",
+                  "text": "Bonjour ! Votre nom, s’il vous plaît ?",
+                  "translation": {
+                    "en": "Hello! Your name, please?",
+                    "de": "Guten Tag! Ihr Name, bitte?"
+                  },
+                  "note": {
+                    "en": "The teacher asks for her name.",
+                    "fr": "Le professeur demande son nom.",
+                    "de": "Der Lehrer fragt nach ihrem Namen."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-2",
+                  "roleId": "etudiante",
+                  "text": "Pardon ?",
+                  "translation": { "en": "Sorry?", "de": "Wie bitte?" },
+                  "note": {
+                    "en": "She did not understand the question.",
+                    "fr": "Elle n’a pas compris la question.",
+                    "de": "Sie hat die Frage nicht verstanden."
+                  },
+                  "expressionIds": ["pardon"]
+                },
+                {
+                  "lineId": "line-3",
+                  "roleId": "professeur",
+                  "text": "Comment vous vous appelez ?",
+                  "translation": { "en": "What is your name?", "de": "Wie heißen Sie?" },
+                  "note": {
+                    "en": "He asks again, in other words.",
+                    "fr": "Il redemande, avec d’autres mots.",
+                    "de": "Er fragt noch einmal mit anderen Worten."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-4",
+                  "roleId": "etudiante",
+                  "text": "Je ne comprends pas. Parlez lentement, s’il vous plaît.",
+                  "translation": {
+                    "en": "I don’t understand. Please speak slowly.",
+                    "de": "Ich verstehe nicht. Bitte sprechen Sie langsam."
+                  },
+                  "note": {
+                    "en": "Two useful phrases together.",
+                    "fr": "Deux phrases utiles ensemble.",
+                    "de": "Zwei nützliche Sätze zusammen."
+                  },
+                  "expressionIds": ["comprends", "lentement"]
+                },
+                {
+                  "lineId": "line-5",
+                  "roleId": "professeur",
+                  "text": "D’accord. Comment… vous… vous appelez ?",
+                  "translation": {
+                    "en": "All right. What… is… your… name?",
+                    "de": "In Ordnung. Wie… heißen… Sie?"
+                  },
+                  "note": {
+                    "en": "The teacher now speaks slowly.",
+                    "fr": "Le professeur parle maintenant lentement.",
+                    "de": "Der Lehrer spricht jetzt langsam."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-6",
+                  "roleId": "etudiante",
+                  "text": "Je m’appelle Maëlle Quéré.",
+                  "translation": {
+                    "en": "My name is Maëlle Quéré.",
+                    "de": "Ich heiße Maëlle Quéré."
+                  },
+                  "note": {
+                    "en": "She understands and answers.",
+                    "fr": "Elle comprend et répond.",
+                    "de": "Sie versteht und antwortet."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-7",
+                  "roleId": "professeur",
+                  "text": "Maëlle ? Épelez, s’il vous plaît.",
+                  "translation": {
+                    "en": "Maëlle? Please spell it.",
+                    "de": "Maëlle? Bitte buchstabieren Sie."
+                  },
+                  "note": {
+                    "en": "Épelez asks for the letters one by one.",
+                    "fr": "Épelez demande les lettres une par une.",
+                    "de": "Épelez verlangt die Buchstaben einzeln."
+                  },
+                  "expressionIds": ["epelez"]
+                },
+                {
+                  "lineId": "line-8",
+                  "roleId": "etudiante",
+                  "text": "M, A, Ë, L, L, E.",
+                  "translation": { "en": "M, A, Ë, L, L, E.", "de": "M, A, Ë, L, L, E." },
+                  "note": {
+                    "en": "She says each letter.",
+                    "fr": "Elle dit chaque lettre.",
+                    "de": "Sie sagt jeden Buchstaben."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-9",
+                  "roleId": "professeur",
+                  "text": "Merci. Et Quéré, ça s’écrit comment ?",
+                  "translation": {
+                    "en": "Thank you. And Quéré, how do you spell it?",
+                    "de": "Danke. Und Quéré, wie schreibt man das?"
+                  },
+                  "note": {
+                    "en": "Ça s’écrit comment ? asks about the spelling.",
+                    "fr": "Ça s’écrit comment ? interroge sur l’écriture.",
+                    "de": "Ça s’écrit comment ? fragt nach der Schreibweise."
+                  },
+                  "expressionIds": ["ca-secrit"]
+                },
+                {
+                  "lineId": "line-10",
+                  "roleId": "etudiante",
+                  "text": "Q, U, É, R, É.",
+                  "translation": { "en": "Q, U, É, R, É.", "de": "Q, U, É, R, É." },
+                  "note": {
+                    "en": "É is said like the letter e with an accent aigu.",
+                    "fr": "É se dit comme la lettre e avec un accent aigu.",
+                    "de": "É spricht man wie den Buchstaben e mit Akut."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-11",
+                  "roleId": "professeur",
+                  "text": "Votre salle, c’est la douze.",
+                  "translation": {
+                    "en": "Your room is number twelve.",
+                    "de": "Ihr Raum ist die Zwölf."
+                  },
+                  "note": {
+                    "en": "A number is hard to catch.",
+                    "fr": "Un numéro est difficile à saisir.",
+                    "de": "Eine Zahl ist schwer zu verstehen."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-12",
+                  "roleId": "etudiante",
+                  "text": "Répétez, s’il vous plaît.",
+                  "translation": { "en": "Please repeat.", "de": "Bitte wiederholen Sie." },
+                  "note": {
+                    "en": "She asks him to say it again.",
+                    "fr": "Elle lui demande de redire.",
+                    "de": "Sie bittet ihn, es noch einmal zu sagen."
+                  },
+                  "expressionIds": ["repetez"]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "match-expressions-1",
+          "estimatedDurationS": 72,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each expression with its translation.",
+            "fr": "Associez chaque expression à sa traduction.",
+            "de": "Ordne jedem Ausdruck seine Übersetzung zu."
+          },
+          "items": [
+            {
+              "type": "function_matching",
+              "itemId": "match-expressions-1",
+              "side": "expressions",
+              "pairs": [
+                {
+                  "id": "pardon",
+                  "answerExplanation": {
+                    "en": "Said when you did not hear or understand.",
+                    "fr": "On le dit quand on n’a pas entendu ou compris.",
+                    "de": "Man sagt es, wenn man nicht gehört oder verstanden hat."
+                  }
+                },
+                {
+                  "id": "comprends",
+                  "answerExplanation": {
+                    "en": "Tells the other person that you do not understand.",
+                    "fr": "Dit à l’autre qu’on ne comprend pas.",
+                    "de": "Sagt der anderen Person, dass man nicht versteht."
+                  }
+                },
+                {
+                  "id": "repetez",
+                  "answerExplanation": {
+                    "en": "Politely asks someone to say it again.",
+                    "fr": "Demande poliment de redire.",
+                    "de": "Bittet höflich um Wiederholung."
+                  }
+                },
+                {
+                  "id": "epelez",
+                  "answerExplanation": {
+                    "en": "Asks for the letters one by one.",
+                    "fr": "Demande les lettres une par une.",
+                    "de": "Verlangt die Buchstaben einzeln."
+                  }
+                },
+                {
+                  "id": "ca-secrit",
+                  "answerExplanation": {
+                    "en": "Asks how a word is written.",
+                    "fr": "Demande comment un mot s’écrit.",
+                    "de": "Fragt, wie ein Wort geschrieben wird."
+                  }
+                },
+                {
+                  "id": "lentement",
+                  "answerExplanation": {
+                    "en": "Politely asks someone to slow down.",
+                    "fr": "Demande poliment de ralentir.",
+                    "de": "Bittet höflich darum, langsamer zu sprechen."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-gaps",
+      "stage": "dialogue_gaps",
+      "role": "exercise",
+      "label": { "en": "Dialogue gaps", "fr": "Dialogue à trous", "de": "Dialoglücken" },
+      "pages": [
+        {
+          "pageId": "gap-1",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-1",
+              "expressionId": "pardon",
+              "context": { "roleId": "professeur", "text": "Le cours commence à neuf heures." },
+              "roleId": "etudiante",
+              "before": "",
+              "after": "",
+              "choiceExpressionIds": ["pardon", "comprends", "repetez", "ca-secrit"],
+              "answerExplanation": {
+                "en": "She did not hear well and reacts with Pardon ?",
+                "fr": "Elle a mal entendu et réagit avec Pardon ?",
+                "de": "Sie hat schlecht gehört und reagiert mit Pardon ?"
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-2",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-2",
+              "expressionId": "comprends",
+              "context": { "roleId": "professeur", "text": "Alors, on utilise le subjonctif ici." },
+              "roleId": "etudiante",
+              "before": "Désolée !",
+              "after": "",
+              "choiceExpressionIds": ["comprends", "pardon", "lentement", "epelez"],
+              "answerExplanation": {
+                "en": "She says she does not understand.",
+                "fr": "Elle dit qu’elle ne comprend pas.",
+                "de": "Sie sagt, dass sie nicht versteht."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-3",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-3",
+              "expressionId": "repetez",
+              "context": { "roleId": "professeur", "text": "Votre salle, c’est la quatorze." },
+              "roleId": "etudiante",
+              "before": "Excusez-moi !",
+              "after": "",
+              "choiceExpressionIds": ["repetez", "epelez", "ca-secrit", "lentement"],
+              "answerExplanation": {
+                "en": "She wants to hear the number again.",
+                "fr": "Elle veut réentendre le numéro.",
+                "de": "Sie möchte die Nummer noch einmal hören."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-4",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-4",
+              "expressionId": "epelez",
+              "context": { "roleId": "etudiante", "text": "Mon nom de famille est Dupuis." },
+              "roleId": "professeur",
+              "before": "Dupuis ?",
+              "after": "",
+              "choiceExpressionIds": ["epelez", "pardon", "comprends", "repetez"],
+              "answerExplanation": {
+                "en": "The teacher asks for the letters one by one.",
+                "fr": "Le professeur demande les lettres une par une.",
+                "de": "Der Lehrer fragt nach den Buchstaben einzeln."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-5",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-5",
+              "expressionId": "ca-secrit",
+              "context": { "roleId": "professeur", "text": "Voici le nom : Madame Roussel." },
+              "roleId": "etudiante",
+              "before": "Roussel ?",
+              "after": "",
+              "choiceExpressionIds": ["ca-secrit", "epelez", "lentement", "pardon"],
+              "answerExplanation": {
+                "en": "She asks how the name is written.",
+                "fr": "Elle demande comment le nom s’écrit.",
+                "de": "Sie fragt, wie der Name geschrieben wird."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-6",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-6",
+              "expressionId": "lentement",
+              "context": { "roleId": "professeur", "text": "Alors, on commence la leçon." },
+              "roleId": "etudiante",
+              "before": "Madame, vous parlez vite !",
+              "after": "",
+              "choiceExpressionIds": ["lentement", "repetez", "comprends", "ca-secrit"],
+              "answerExplanation": {
+                "en": "The teacher speaks fast, so she asks him to slow down.",
+                "fr": "Le professeur parle vite, alors elle lui demande de ralentir.",
+                "de": "Der Lehrer spricht schnell, deshalb bittet sie ihn, langsamer zu sprechen."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "word-order",
+      "stage": "word_order",
+      "role": "exercise",
+      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
+      "pages": [
+        {
+          "pageId": "order-1",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-1",
+              "expressionId": "pardon",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Pardon," },
+                { "tokenId": "t2", "text": "monsieur" },
+                { "tokenId": "t3", "text": "?" }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3"]],
+              "answerExplanation": {
+                "en": "Pardon comes first, then the person you speak to.",
+                "fr": "Pardon vient d’abord, puis la personne à qui on parle.",
+                "de": "Zuerst Pardon, dann die angesprochene Person."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-2",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-2",
+              "expressionId": "comprends",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Désolé," },
+                { "tokenId": "t2", "text": "je" },
+                { "tokenId": "t3", "text": "ne" },
+                { "tokenId": "t4", "text": "comprends" },
+                { "tokenId": "t5", "text": "pas" },
+                { "tokenId": "t6", "text": "." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "answerExplanation": {
+                "en": "Ne goes before the verb and pas after it.",
+                "fr": "Ne se place avant le verbe et pas après.",
+                "de": "Ne steht vor dem Verb und pas danach."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-3",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-3",
+              "expressionId": "repetez",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Madame," },
+                { "tokenId": "t2", "text": "répétez," },
+                { "tokenId": "t3", "text": "s’il" },
+                { "tokenId": "t4", "text": "vous" },
+                { "tokenId": "t5", "text": "plaît" },
+                { "tokenId": "t6", "text": "." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "answerExplanation": {
+                "en": "Name the person, then the request, then s’il vous plaît.",
+                "fr": "On nomme la personne, puis la demande, puis s’il vous plaît.",
+                "de": "Erst die Person, dann die Bitte, dann s’il vous plaît."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-4",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-4",
+              "expressionId": "epelez",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Merci." },
+                { "tokenId": "t2", "text": "Épelez," },
+                { "tokenId": "t3", "text": "s’il" },
+                { "tokenId": "t4", "text": "vous" },
+                { "tokenId": "t5", "text": "plaît" },
+                { "tokenId": "t6", "text": "." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "answerExplanation": {
+                "en": "Thank the person first, then ask politely.",
+                "fr": "On remercie d’abord, puis on demande poliment.",
+                "de": "Erst danken, dann höflich bitten."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-5",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-5",
+              "expressionId": "ca-secrit",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Et" },
+                { "tokenId": "t2", "text": "votre" },
+                { "tokenId": "t3", "text": "nom," },
+                { "tokenId": "t4", "text": "ça" },
+                { "tokenId": "t5", "text": "s’écrit" },
+                { "tokenId": "t6", "text": "comment" },
+                { "tokenId": "t7", "text": "?" }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
+              "answerExplanation": {
+                "en": "Name the word first, then ask ça s’écrit comment ?",
+                "fr": "On nomme le mot d’abord, puis on demande ça s’écrit comment ?",
+                "de": "Erst das Wort nennen, dann ça s’écrit comment ? fragen."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-6",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-6",
+              "expressionId": "lentement",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Parlez" },
+                { "tokenId": "t2", "text": "lentement," },
+                { "tokenId": "t3", "text": "s’il" },
+                { "tokenId": "t4", "text": "vous" },
+                { "tokenId": "t5", "text": "plaît" },
+                { "tokenId": "t6", "text": "." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "answerExplanation": {
+                "en": "The verb comes first, then the adverb lentement.",
+                "fr": "Le verbe vient d’abord, puis l’adverbe lentement.",
+                "de": "Zuerst das Verb, dann das Adverb lentement."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "listening",
+      "stage": "listening",
+      "role": "exercise",
+      "label": { "en": "Listening", "fr": "Écoute", "de": "Hören" },
+      "pages": [
+        {
+          "pageId": "listening-1",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-1",
+              "expressionId": "pardon",
+              "context": {
+                "roleId": "professeur",
+                "text": "Aujourd’hui, nous commençons à neuf heures."
+              },
+              "roleId": "etudiante",
+              "options": [
+                { "optionId": "o1", "text": "Pardon ?" },
+                { "optionId": "o2", "text": "Bonne nuit !" },
+                { "optionId": "o3", "text": "Je m’appelle Léa." },
+                { "optionId": "o4", "text": "Oui, merci." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "She did not hear well, so she says Pardon ?",
+                "fr": "Elle a mal entendu, alors elle dit Pardon ?",
+                "de": "Sie hat schlecht gehört und sagt deshalb Pardon ?"
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-2",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-2",
+              "expressionId": "comprends",
+              "context": { "roleId": "professeur", "text": "Vous avez compris la question ?" },
+              "roleId": "etudiante",
+              "options": [
+                { "optionId": "o1", "text": "Non, je ne comprends pas." },
+                { "optionId": "o2", "text": "Oui, voici le stylo." },
+                { "optionId": "o3", "text": "Il est dix heures." },
+                { "optionId": "o4", "text": "Au revoir, madame." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "She answers no with Je ne comprends pas.",
+                "fr": "Elle répond non avec Je ne comprends pas.",
+                "de": "Sie antwortet mit Nein: Je ne comprends pas."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-3",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-3",
+              "expressionId": "repetez",
+              "context": { "roleId": "professeur", "text": "Le cours est dans la salle quatorze." },
+              "roleId": "etudiante",
+              "options": [
+                { "optionId": "o1", "text": "Madame, répétez, s’il vous plaît." },
+                { "optionId": "o2", "text": "Je m’appelle Maëlle." },
+                { "optionId": "o3", "text": "Bonne journée, monsieur." },
+                { "optionId": "o4", "text": "Oui, très bien." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "She did not catch the number and asks him to repeat.",
+                "fr": "Elle n’a pas saisi le numéro et lui demande de répéter.",
+                "de": "Sie hat die Nummer nicht verstanden und bittet um Wiederholung."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-4",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-4",
+              "expressionId": "epelez",
+              "context": { "roleId": "etudiante", "text": "Mon prénom est Maëlle." },
+              "roleId": "professeur",
+              "options": [
+                { "optionId": "o1", "text": "Merci. Épelez, s’il vous plaît." },
+                { "optionId": "o2", "text": "Il est midi." },
+                { "optionId": "o3", "text": "Voici le cahier." },
+                { "optionId": "o4", "text": "Bonjour, madame !" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "The teacher asks her to spell the first name.",
+                "fr": "Le professeur lui demande d’épeler le prénom.",
+                "de": "Der Lehrer bittet sie, den Vornamen zu buchstabieren."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-5",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-5",
+              "expressionId": "ca-secrit",
+              "context": { "roleId": "professeur", "text": "Mon nom est Monsieur Martineau." },
+              "roleId": "etudiante",
+              "options": [
+                { "optionId": "o1", "text": "Martineau ? Ça s’écrit comment ?" },
+                { "optionId": "o2", "text": "Il est dix heures." },
+                { "optionId": "o3", "text": "Je suis étudiante." },
+                { "optionId": "o4", "text": "Merci, au revoir !" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "She asks how the name is spelled.",
+                "fr": "Elle demande comment le nom s’écrit.",
+                "de": "Sie fragt, wie der Name geschrieben wird."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-6",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-6",
+              "expressionId": "lentement",
+              "context": {
+                "roleId": "professeur",
+                "text": "Bon, ouvrez le livre, page douze, exercice trois."
+              },
+              "roleId": "etudiante",
+              "options": [
+                { "optionId": "o1", "text": "Parlez lentement, s’il vous plaît." },
+                { "optionId": "o2", "text": "Oui, bonne idée." },
+                { "optionId": "o3", "text": "Merci, madame." },
+                { "optionId": "o4", "text": "Il est une heure." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "The teacher goes too fast, so she asks him to slow down.",
+                "fr": "Le professeur va trop vite, alors elle lui demande de ralentir.",
+                "de": "Der Lehrer ist zu schnell, deshalb bittet sie ihn, langsamer zu sprechen."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam-replies-1",
+          "estimatedDurationS": 120,
+          "timeLimitS": 180,
+          "instructions": {
+            "en": "Build the answer. Not every word fits.",
+            "fr": "Construisez la réponse. Tous les mots ne servent pas.",
+            "de": "Bilde die Antwort. Nicht jedes Wort passt."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "reply-1",
+              "expressionId": "comprends",
+              "context": {
+                "roleId": "professeur",
+                "text": "Voici la phrase de la page six. Vous comprenez ?"
+              },
+              "roleId": "etudiante",
+              "tokens": [
+                { "tokenId": "t1", "text": "Non," },
+                { "tokenId": "t2", "text": "monsieur," },
+                { "tokenId": "t3", "text": "je" },
+                { "tokenId": "t4", "text": "ne" },
+                { "tokenId": "t5", "text": "comprends" },
+                { "tokenId": "t6", "text": "pas" },
+                { "tokenId": "t7", "text": "." },
+                { "tokenId": "t8", "text": "comprenez" }
+              ],
+              "distractorTokenIds": ["t8"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
+              "answerExplanation": {
+                "en": "With je the verb is comprends, and ne goes before it.",
+                "fr": "Avec je, le verbe est comprends, et ne se place avant.",
+                "de": "Mit je lautet das Verb comprends, und ne steht davor."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-2",
+              "expressionId": "pardon",
+              "context": { "roleId": "professeur", "text": "Le cours est à quinze heures." },
+              "roleId": "etudiante",
+              "tokens": [
+                { "tokenId": "t1", "text": "Pardon," },
+                { "tokenId": "t2", "text": "à" },
+                { "tokenId": "t3", "text": "quelle" },
+                { "tokenId": "t4", "text": "heure" },
+                { "tokenId": "t5", "text": "?" },
+                { "tokenId": "t6", "text": "quel" }
+              ],
+              "distractorTokenIds": ["t6"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]],
+              "answerExplanation": {
+                "en": "Heure is feminine, so the word is quelle.",
+                "fr": "Heure est féminin, donc on écrit quelle.",
+                "de": "Heure ist feminin, deshalb steht quelle."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-3",
+              "expressionId": "epelez",
+              "context": { "roleId": "etudiante", "text": "Mon nom de famille est Fontaine." },
+              "roleId": "professeur",
+              "tokens": [
+                { "tokenId": "t1", "text": "Fontaine," },
+                { "tokenId": "t2", "text": "épelez," },
+                { "tokenId": "t3", "text": "s’il" },
+                { "tokenId": "t4", "text": "vous" },
+                { "tokenId": "t5", "text": "plaît" },
+                { "tokenId": "t6", "text": "." },
+                { "tokenId": "t7", "text": "épeler" }
+              ],
+              "distractorTokenIds": ["t7"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "answerExplanation": {
+                "en": "To give an order to vous, the verb ends in -ez.",
+                "fr": "Pour s’adresser à vous, le verbe finit en -ez.",
+                "de": "Bei vous endet das Verb auf -ez."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-4",
+              "expressionId": "lentement",
+              "context": {
+                "roleId": "professeur",
+                "text": "Aujourd’hui, nous lisons un texte sur la ville."
+              },
+              "roleId": "etudiante",
+              "tokens": [
+                { "tokenId": "t1", "text": "Monsieur," },
+                { "tokenId": "t2", "text": "parlez" },
+                { "tokenId": "t3", "text": "lentement," },
+                { "tokenId": "t4", "text": "s’il" },
+                { "tokenId": "t5", "text": "vous" },
+                { "tokenId": "t6", "text": "plaît" },
+                { "tokenId": "t7", "text": "." },
+                { "tokenId": "t8", "text": "vite" }
+              ],
+              "distractorTokenIds": ["t8"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
+              "answerExplanation": {
+                "en": "Lentement means slowly; vite means fast.",
+                "fr": "Lentement veut dire doucement ; vite veut dire rapidement.",
+                "de": "Lentement bedeutet langsam; vite bedeutet schnell."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-dialogue",
+          "estimatedDurationS": 124,
+          "timeLimitS": 186,
+          "instructions": {
+            "en": "Fill each gap with an expression from this lesson.",
+            "fr": "Complétez chaque trou avec une expression de la leçon.",
+            "de": "Fülle jede Lücke mit einem Ausdruck aus dieser Lektion."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_typing",
+              "itemId": "exam-dialogue",
+              "lines": [
+                {
+                  "lineId": "exam-line-1",
+                  "roleId": "professeur",
+                  "before": "Bonjour ! Je m’appelle Monsieur Delacroix.",
+                  "translation": {
+                    "en": "Hello! My name is Mr Delacroix.",
+                    "de": "Guten Tag! Ich heiße Herr Delacroix."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-2",
+                  "roleId": "etudiante",
+                  "before": "Delacroix,",
+                  "translation": {
+                    "en": "Delacroix, how do you spell it?",
+                    "de": "Delacroix, wie schreibt man das?"
+                  },
+                  "gap": {
+                    "gapId": "gap-1",
+                    "expressionId": "ca-secrit",
+                    "accepted": { "answers": ["ça s’écrit comment", "Ça s’écrit comment"] },
+                    "answerExplanation": {
+                      "en": "She asks how the name is written: ça s’écrit comment ?",
+                      "fr": "Elle demande comment le nom s’écrit : ça s’écrit comment ?",
+                      "de": "Sie fragt, wie der Name geschrieben wird: ça s’écrit comment ?"
+                    }
+                  },
+                  "after": "?"
+                },
+                {
+                  "lineId": "exam-line-3",
+                  "roleId": "professeur",
+                  "before": "D, E, L, A, C, R, O, I, X. Aujourd’hui, nous lisons le texte de la page quatre.",
+                  "translation": {
+                    "en": "D, E, L, A, C, R, O, I, X. Today we read the text on page four.",
+                    "de": "D, E, L, A, C, R, O, I, X. Heute lesen wir den Text auf Seite vier."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-4",
+                  "roleId": "etudiante",
+                  "before": "Monsieur, c’est trop vite !",
+                  "translation": {
+                    "en": "Sir, that is too fast! Please speak slowly.",
+                    "de": "Herr Lehrer, das ist zu schnell! Bitte sprechen Sie langsam."
+                  },
+                  "gap": {
+                    "gapId": "gap-2",
+                    "expressionId": "lentement",
+                    "accepted": {
+                      "answers": [
+                        "Parlez lentement, s’il vous plaît",
+                        "parlez lentement, s’il vous plaît"
+                      ]
+                    },
+                    "answerExplanation": {
+                      "en": "She asks him to slow down: Parlez lentement, s’il vous plaît.",
+                      "fr": "Elle lui demande de ralentir : Parlez lentement, s’il vous plaît.",
+                      "de": "Sie bittet ihn, langsamer zu sprechen: Parlez lentement, s’il vous plaît."
+                    }
+                  },
+                  "after": "."
+                },
+                {
+                  "lineId": "exam-line-5",
+                  "roleId": "professeur",
+                  "before": "D’accord. Nous lisons le texte de la page quatre, doucement.",
+                  "translation": {
+                    "en": "All right. We read the text on page four, gently.",
+                    "de": "In Ordnung. Wir lesen den Text auf Seite vier, ganz ruhig."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-6",
+                  "roleId": "etudiante",
+                  "before": "Page quatre ?",
+                  "translation": {
+                    "en": "Page four? Please repeat.",
+                    "de": "Seite vier? Bitte wiederholen Sie."
+                  },
+                  "gap": {
+                    "gapId": "gap-3",
+                    "expressionId": "repetez",
+                    "accepted": {
+                      "answers": ["Répétez, s’il vous plaît", "répétez, s’il vous plaît"]
+                    },
+                    "answerExplanation": {
+                      "en": "She asks him to say it again: Répétez, s’il vous plaît.",
+                      "fr": "Elle lui demande de redire : Répétez, s’il vous plaît.",
+                      "de": "Sie bittet ihn, es noch einmal zu sagen: Répétez, s’il vous plaît."
+                    }
+                  },
+                  "after": "."
+                },
+                {
+                  "lineId": "exam-line-7",
+                  "roleId": "professeur",
+                  "before": "Page quatre. Le texte est court.",
+                  "translation": {
+                    "en": "Page four. The text is short.",
+                    "de": "Seite vier. Der Text ist kurz."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-8",
+                  "roleId": "etudiante",
+                  "before": "Merci, monsieur. Au revoir !",
+                  "translation": {
+                    "en": "Thank you, sir. Goodbye!",
+                    "de": "Danke, Herr Lehrer. Auf Wiedersehen!"
+                  },
+                  "gap": null,
+                  "after": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1022 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-connectors-and-parce-que",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Et, ou, mais, alors, parce que",
+  "objective": {
+    "en": "Link two ideas with et, ou, mais and alors, and answer why with parce que.",
+    "fr": "Relier deux idées avec et, ou, mais et alors, et répondre à pourquoi avec parce que.",
+    "de": "Zwei Ideen mit et, ou, mais und alors verbinden und mit parce que auf pourquoi antworten."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-1",
+    "generatedAt": "2026-10-26T23:00:03.215Z",
+    "inputHashes": {
+      "outline": "8ea2af35f70ca66e022ea41603b954cd0b239be415ced99873f178dc87fdfacc",
+      "brief": "560c4b9db0f1746825792d82e12944c987bd5218551ea627e67adeaf4f458d6f"
+    }
+  },
+  "kind": "grammar",
+  "topic": "syntax_and_sentence_structure",
+  "steps": [
+    {
+      "id": "block-add-choose-contrast-explanation",
+      "role": "explanation",
+      "blockId": "block-add-choose-contrast",
+      "label": {
+        "en": "Adding, choosing, contrasting: et, ou, mais",
+        "fr": "Ajouter, choisir, opposer : et, ou, mais",
+        "de": "Hinzufügen, wählen, gegenüberstellen: et, ou, mais"
+      },
+      "pages": [
+        {
+          "pageId": "block-add-choose-contrast-explanation",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the explanation and the examples.",
+            "fr": "Lisez l’explication et les exemples.",
+            "de": "Lies die Erklärung und die Beispiele."
+          },
+          "items": [
+            {
+              "type": "grammar_explanation",
+              "itemId": "block-add-choose-contrast-explanation",
+              "ruleIds": ["rule-et-ou", "rule-mais"],
+              "heading": {
+                "en": "Linking ideas: et, ou, mais",
+                "fr": "Relier des idées : et, ou, mais",
+                "de": "Ideen verbinden: et, ou, mais"
+              },
+              "text": {
+                "en": "Use `et` to **add** two ideas and `ou` to **choose** between two things. Use `mais` to show a **contrast**.\n\n- `J'aime le thé et le café.` (both)\n- `Tu veux du riz ou des pâtes ?` (one or the other)\n- `Il est petit, mais il est fort.` (contrast)\n\nThe connector goes between the two parts. Put a comma before `mais`.",
+                "fr": "Utilisez `et` pour **ajouter** deux idées et `ou` pour **choisir** entre deux choses. Utilisez `mais` pour montrer un **contraste**.\n\n- `J'aime le thé et le café.` (les deux)\n- `Tu veux du riz ou des pâtes ?` (l'un ou l'autre)\n- `Il est petit, mais il est fort.` (contraste)\n\nLe mot de liaison se place entre les deux parties. On met une virgule avant `mais`.",
+                "de": "Mit `et` **verbindest** du zwei Ideen, mit `ou` **wählst** du zwischen zwei Dingen. Mit `mais` zeigst du einen **Gegensatz**.\n\n- `J'aime le thé et le café.` (beides)\n- `Tu veux du riz ou des pâtes ?` (das eine oder das andere)\n- `Il est petit, mais il est fort.` (Gegensatz)\n\nDas Bindewort steht zwischen den beiden Teilen. Vor `mais` steht ein Komma."
+              },
+              "formTable": [
+                { "subject": "et", "form": "ajouter", "example": "J'aime le thé et le café." },
+                { "subject": "ou", "form": "choisir", "example": "Tu veux du riz ou des pâtes ?" },
+                {
+                  "subject": "mais",
+                  "form": "opposer",
+                  "example": "Il est petit, mais il est fort."
+                }
+              ],
+              "examples": [
+                {
+                  "text": "J'aime le thé et le café.",
+                  "translation": { "en": "I like tea and coffee.", "de": "Ich mag Tee und Kaffee." }
+                },
+                {
+                  "text": "Tu veux du riz ou des pâtes ?",
+                  "translation": {
+                    "en": "Do you want rice or pasta?",
+                    "de": "Möchtest du Reis oder Nudeln?"
+                  }
+                },
+                {
+                  "text": "Il est petit, mais il est fort.",
+                  "translation": {
+                    "en": "He is small, but he is strong.",
+                    "de": "Er ist klein, aber er ist stark."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-a-choice",
+      "role": "exercise",
+      "blockId": "block-add-choose-contrast",
+      "label": {
+        "en": "Multiple-choice gaps 1",
+        "fr": "Phrases à trous à choix multiple 1",
+        "de": "Lücken mit Auswahl 1"
+      },
+      "pages": [
+        {
+          "pageId": "ex-a-choice-p1",
+          "estimatedDurationS": 48,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-a-choice-1",
+              "before": "J'aime le thé",
+              "after": "le café.",
+              "choices": [
+                { "choiceId": "c-1", "text": "mais" },
+                { "choiceId": "c-2", "text": "et" },
+                { "choiceId": "c-3", "text": "alors" },
+                { "choiceId": "c-4", "text": "parce que" }
+              ],
+              "answerChoiceId": "c-2",
+              "hint": null,
+              "ruleIds": ["rule-et-ou"],
+              "answerExplanation": {
+                "en": "Et adds one thing to another: le thé et le café.",
+                "fr": "Et ajoute une chose à une autre : le thé et le café.",
+                "de": "Et fügt eine Sache zur anderen hinzu: le thé et le café."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-a-choice-2",
+              "before": "Tu veux du riz",
+              "after": "des pâtes ?",
+              "choices": [
+                { "choiceId": "c-1", "text": "ou" },
+                { "choiceId": "c-2", "text": "mais" },
+                { "choiceId": "c-3", "text": "alors" },
+                { "choiceId": "c-4", "text": "parce que" }
+              ],
+              "answerChoiceId": "c-1",
+              "hint": null,
+              "ruleIds": ["rule-et-ou"],
+              "answerExplanation": {
+                "en": "Ou offers a choice between two things.",
+                "fr": "Ou propose un choix entre deux choses.",
+                "de": "Ou bietet eine Wahl zwischen zwei Dingen."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-a-choice-3",
+              "before": "Il est petit,",
+              "after": "il est fort.",
+              "choices": [
+                { "choiceId": "c-1", "text": "alors" },
+                { "choiceId": "c-2", "text": "parce que" },
+                { "choiceId": "c-3", "text": "mais" },
+                { "choiceId": "c-4", "text": "ou" }
+              ],
+              "answerChoiceId": "c-3",
+              "hint": null,
+              "ruleIds": ["rule-mais"],
+              "answerExplanation": {
+                "en": "Small and strong are a contrast, so you use mais.",
+                "fr": "Petit et fort s'opposent, donc on utilise mais.",
+                "de": "Klein und stark sind ein Gegensatz, also benutzt man mais."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-a-choice-4",
+              "before": "Je voudrais un café,",
+              "after": "je n'ai pas d'argent.",
+              "choices": [
+                { "choiceId": "c-1", "text": "ou" },
+                { "choiceId": "c-2", "text": "alors" },
+                { "choiceId": "c-3", "text": "parce que" },
+                { "choiceId": "c-4", "text": "mais" }
+              ],
+              "answerChoiceId": "c-4",
+              "hint": null,
+              "ruleIds": ["rule-mais"],
+              "answerExplanation": {
+                "en": "Wanting a coffee and having no money contrast, so you use mais.",
+                "fr": "Vouloir un café et ne pas avoir d'argent s'opposent : on utilise mais.",
+                "de": "Einen Kaffee wollen und kein Geld haben sind ein Gegensatz: man benutzt mais."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-a-typing",
+      "role": "exercise",
+      "blockId": "block-add-choose-contrast",
+      "label": {
+        "en": "Typed gaps 1",
+        "fr": "Phrases à trous à écrire 1",
+        "de": "Lücken zum Schreiben 1"
+      },
+      "pages": [
+        {
+          "pageId": "ex-a-typing-p1",
+          "estimatedDurationS": 80,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-a-typing-1",
+              "before": "Marie parle français",
+              "after": "anglais.",
+              "accepted": { "answers": ["et"] },
+              "hint": { "en": "to add: and", "fr": "pour ajouter", "de": "hinzufügen: und" },
+              "ruleIds": ["rule-et-ou"],
+              "answerExplanation": {
+                "en": "Et adds a second language to the first.",
+                "fr": "Et ajoute une deuxième langue à la première.",
+                "de": "Et fügt der ersten Sprache eine zweite hinzu."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-a-typing-2",
+              "before": "Tu préfères la plage",
+              "after": "la montagne ?",
+              "accepted": { "answers": ["ou"] },
+              "hint": { "en": "to choose: or", "fr": "pour choisir", "de": "wählen: oder" },
+              "ruleIds": ["rule-et-ou"],
+              "answerExplanation": {
+                "en": "Ou offers a choice between the beach and the mountains.",
+                "fr": "Ou propose un choix entre la plage et la montagne.",
+                "de": "Ou bietet eine Wahl zwischen Strand und Berg."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-a-typing-3",
+              "before": "Je suis fatigué,",
+              "after": "je travaille encore.",
+              "accepted": { "answers": ["mais"] },
+              "hint": { "en": "contrast: but", "fr": "pour opposer", "de": "Gegensatz: aber" },
+              "ruleIds": ["rule-mais"],
+              "answerExplanation": {
+                "en": "Being tired and still working contrast, so you use mais.",
+                "fr": "Être fatigué et travailler encore s'opposent : on utilise mais.",
+                "de": "Müde sein und trotzdem arbeiten ist ein Gegensatz: man benutzt mais."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-a-typing-4",
+              "before": "J'aime le chocolat,",
+              "after": "je n'aime pas le café.",
+              "accepted": { "answers": ["mais"] },
+              "hint": { "en": "contrast: but", "fr": "pour opposer", "de": "Gegensatz: aber" },
+              "ruleIds": ["rule-mais"],
+              "answerExplanation": {
+                "en": "Liking one thing and not another is a contrast: mais.",
+                "fr": "Aimer une chose et ne pas en aimer une autre s'opposent : mais.",
+                "de": "Das eine mögen und das andere nicht ist ein Gegensatz: mais."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-a-order",
+      "role": "exercise",
+      "blockId": "block-add-choose-contrast",
+      "label": { "en": "Word order 1", "fr": "Ordre des mots 1", "de": "Wortstellung 1" },
+      "pages": [
+        {
+          "pageId": "ex-a-order-p1",
+          "estimatedDurationS": 75,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-a-order-1",
+              "tokens": [
+                { "tokenId": "t-1", "text": "anglais" },
+                { "tokenId": "t-2", "text": "et" },
+                { "tokenId": "t-3", "text": "." },
+                { "tokenId": "t-4", "text": "Anna" },
+                { "tokenId": "t-5", "text": "français" },
+                { "tokenId": "t-6", "text": "parle" }
+              ],
+              "acceptedOrders": [["t-4", "t-6", "t-5", "t-2", "t-1", "t-3"]],
+              "ruleIds": ["rule-et-ou"],
+              "answerExplanation": {
+                "en": "Et goes between the two languages: français et anglais.",
+                "fr": "Et se place entre les deux langues : français et anglais.",
+                "de": "Et steht zwischen den beiden Sprachen: français et anglais."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-a-order-2",
+              "tokens": [
+                { "tokenId": "t-1", "text": "?" },
+                { "tokenId": "t-2", "text": "des" },
+                { "tokenId": "t-3", "text": "Tu" },
+                { "tokenId": "t-4", "text": "ou" },
+                { "tokenId": "t-5", "text": "fruits" },
+                { "tokenId": "t-6", "text": "du" },
+                { "tokenId": "t-7", "text": "veux" },
+                { "tokenId": "t-8", "text": "thé" }
+              ],
+              "acceptedOrders": [["t-3", "t-7", "t-6", "t-8", "t-4", "t-2", "t-5", "t-1"]],
+              "ruleIds": ["rule-et-ou"],
+              "answerExplanation": {
+                "en": "Ou goes between the two choices: du thé ou des fruits.",
+                "fr": "Ou se place entre les deux choix : du thé ou des fruits.",
+                "de": "Ou steht zwischen den beiden Möglichkeiten: du thé ou des fruits."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-a-order-3",
+              "tokens": [
+                { "tokenId": "t-1", "text": "heureux" },
+                { "tokenId": "t-2", "text": "," },
+                { "tokenId": "t-3", "text": "Je" },
+                { "tokenId": "t-4", "text": "." },
+                { "tokenId": "t-5", "text": "mais" },
+                { "tokenId": "t-6", "text": "fatigué" },
+                { "tokenId": "t-7", "text": "suis" }
+              ],
+              "acceptedOrders": [["t-3", "t-7", "t-6", "t-2", "t-5", "t-1", "t-4"]],
+              "ruleIds": ["rule-mais"],
+              "answerExplanation": {
+                "en": "Mais comes after a comma and introduces the contrast.",
+                "fr": "Mais vient après une virgule et introduit le contraste.",
+                "de": "Mais steht nach einem Komma und leitet den Gegensatz ein."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "block-result-reason-explanation",
+      "role": "explanation",
+      "blockId": "block-result-reason",
+      "label": {
+        "en": "Result and reason: alors, parce que",
+        "fr": "Conséquence et raison : alors, parce que",
+        "de": "Folge und Grund: alors, parce que"
+      },
+      "pages": [
+        {
+          "pageId": "block-result-reason-explanation",
+          "estimatedDurationS": 130,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the explanation and the examples.",
+            "fr": "Lisez l’explication et les exemples.",
+            "de": "Lies die Erklärung und die Beispiele."
+          },
+          "items": [
+            {
+              "type": "grammar_explanation",
+              "itemId": "block-result-reason-explanation",
+              "ruleIds": ["rule-alors", "rule-parce-que"],
+              "heading": {
+                "en": "Result and reason: alors, parce que",
+                "fr": "Conséquence et raison : alors, parce que",
+                "de": "Folge und Grund: alors, parce que"
+              },
+              "text": {
+                "en": "Use `alors` to give a **result**: first the cause, then what follows. Use `parce que` to give a **reason**. It answers the question `Pourquoi ?`\n\n- `Il pleut, alors je regarde un film.` (cause, then result)\n- `Pourquoi tu restes ici ? Parce que je suis fatigué.` (question, then reason)\n- `J'aime Paris parce que c'est beau.` (idea, then reason)\n\nWatch the order: `alors` comes after the cause, `parce que` comes before the reason.",
+                "fr": "Utilisez `alors` pour donner une **conséquence** : d'abord la cause, ensuite ce qui suit. Utilisez `parce que` pour donner une **raison**. C'est la réponse à la question `Pourquoi ?`\n\n- `Il pleut, alors je regarde un film.` (cause, puis conséquence)\n- `Pourquoi tu restes ici ? Parce que je suis fatigué.` (question, puis raison)\n- `J'aime Paris parce que c'est beau.` (idée, puis raison)\n\nAttention à l'ordre : `alors` vient après la cause, `parce que` vient avant la raison.",
+                "de": "Mit `alors` nennst du eine **Folge**: erst die Ursache, dann das, was daraus folgt. Mit `parce que` nennst du einen **Grund**. Es beantwortet die Frage `Pourquoi ?`\n\n- `Il pleut, alors je regarde un film.` (Ursache, dann Folge)\n- `Pourquoi tu restes ici ? Parce que je suis fatigué.` (Frage, dann Grund)\n- `J'aime Paris parce que c'est beau.` (Idee, dann Grund)\n\nAchte auf die Reihenfolge: `alors` steht nach der Ursache, `parce que` steht vor dem Grund."
+              },
+              "formTable": [
+                {
+                  "subject": "alors",
+                  "form": "conséquence",
+                  "example": "Il pleut, alors je regarde un film."
+                },
+                {
+                  "subject": "parce que",
+                  "form": "raison",
+                  "example": "J'aime Paris parce que c'est beau."
+                }
+              ],
+              "examples": [
+                {
+                  "text": "Il pleut, alors je regarde un film.",
+                  "translation": {
+                    "en": "It is raining, so I am watching a film.",
+                    "de": "Es regnet, also sehe ich einen Film."
+                  }
+                },
+                {
+                  "text": "J'aime Paris parce que c'est beau.",
+                  "translation": {
+                    "en": "I like Paris because it is beautiful.",
+                    "de": "Ich mag Paris, weil es schön ist."
+                  }
+                },
+                {
+                  "text": "J'ai faim, alors je mange une pomme.",
+                  "translation": {
+                    "en": "I am hungry, so I am eating an apple.",
+                    "de": "Ich habe Hunger, also esse ich einen Apfel."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-b-choice",
+      "role": "exercise",
+      "blockId": "block-result-reason",
+      "label": {
+        "en": "Multiple-choice gaps 2",
+        "fr": "Phrases à trous à choix multiple 2",
+        "de": "Lücken mit Auswahl 2"
+      },
+      "pages": [
+        {
+          "pageId": "ex-b-choice-p1",
+          "estimatedDurationS": 48,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-b-choice-1",
+              "before": "Il fait froid,",
+              "after": "je mets un manteau.",
+              "choices": [
+                { "choiceId": "c-1", "text": "alors" },
+                { "choiceId": "c-2", "text": "ou" },
+                { "choiceId": "c-3", "text": "mais" },
+                { "choiceId": "c-4", "text": "parce que" }
+              ],
+              "answerChoiceId": "c-1",
+              "hint": null,
+              "ruleIds": ["rule-alors"],
+              "answerExplanation": {
+                "en": "The cold is the cause and the coat is the result: alors.",
+                "fr": "Le froid est la cause et le manteau la conséquence : alors.",
+                "de": "Die Kälte ist die Ursache, der Mantel die Folge: alors."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-b-choice-2",
+              "before": "J'ai faim,",
+              "after": "je mange une pomme.",
+              "choices": [
+                { "choiceId": "c-1", "text": "ou" },
+                { "choiceId": "c-2", "text": "mais" },
+                { "choiceId": "c-3", "text": "parce que" },
+                { "choiceId": "c-4", "text": "alors" }
+              ],
+              "answerChoiceId": "c-4",
+              "hint": null,
+              "ruleIds": ["rule-alors"],
+              "answerExplanation": {
+                "en": "Being hungry is the cause and eating is the result: alors.",
+                "fr": "Avoir faim est la cause et manger la conséquence : alors.",
+                "de": "Hunger haben ist die Ursache, essen die Folge: alors."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-b-choice-3",
+              "before": "Je reste à la maison",
+              "after": "je suis malade.",
+              "choices": [
+                { "choiceId": "c-1", "text": "alors" },
+                { "choiceId": "c-2", "text": "ou" },
+                { "choiceId": "c-3", "text": "parce que" },
+                { "choiceId": "c-4", "text": "mais" }
+              ],
+              "answerChoiceId": "c-3",
+              "hint": null,
+              "ruleIds": ["rule-parce-que"],
+              "answerExplanation": {
+                "en": "Being ill is the reason, so you use parce que before it.",
+                "fr": "Être malade est la raison : on met parce que devant.",
+                "de": "Krank sein ist der Grund, also steht parce que davor."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-b-choice-4",
+              "before": "Marc est content",
+              "after": "c'est son anniversaire.",
+              "choices": [
+                { "choiceId": "c-1", "text": "parce que" },
+                { "choiceId": "c-2", "text": "alors" },
+                { "choiceId": "c-3", "text": "ou" },
+                { "choiceId": "c-4", "text": "mais" }
+              ],
+              "answerChoiceId": "c-1",
+              "hint": null,
+              "ruleIds": ["rule-parce-que"],
+              "answerExplanation": {
+                "en": "The birthday is the reason Marc is happy: parce que.",
+                "fr": "L'anniversaire est la raison de la joie de Marc : parce que.",
+                "de": "Der Geburtstag ist der Grund für Marcs Freude: parce que."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-b-typing",
+      "role": "exercise",
+      "blockId": "block-result-reason",
+      "label": {
+        "en": "Typed gaps 2",
+        "fr": "Phrases à trous à écrire 2",
+        "de": "Lücken zum Schreiben 2"
+      },
+      "pages": [
+        {
+          "pageId": "ex-b-typing-p1",
+          "estimatedDurationS": 80,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-b-typing-1",
+              "before": "Je suis très fatigué,",
+              "after": "je vais au lit.",
+              "accepted": { "answers": ["alors"] },
+              "hint": { "en": "result: so", "fr": "pour la conséquence", "de": "Folge: also" },
+              "ruleIds": ["rule-alors"],
+              "answerExplanation": {
+                "en": "Being tired is the cause, going to bed is the result: alors.",
+                "fr": "Être fatigué est la cause, aller au lit la conséquence : alors.",
+                "de": "Müde sein ist die Ursache, ins Bett gehen die Folge: alors."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-b-typing-2",
+              "before": "Nous restons ici",
+              "after": "le musée est fermé.",
+              "accepted": { "answers": ["parce que"] },
+              "hint": {
+                "en": "reason: because (two words)",
+                "fr": "pour la raison (deux mots)",
+                "de": "Grund: weil (zwei Wörter)"
+              },
+              "ruleIds": ["rule-parce-que"],
+              "answerExplanation": {
+                "en": "The closed museum is the reason: parce que, in two words.",
+                "fr": "Le musée fermé est la raison : parce que, en deux mots.",
+                "de": "Das geschlossene Museum ist der Grund: parce que, in zwei Wörtern."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-b-typing-3",
+              "before": "Je mange",
+              "after": "j'ai faim.",
+              "accepted": { "answers": ["parce que"] },
+              "hint": {
+                "en": "reason: because (two words)",
+                "fr": "pour la raison (deux mots)",
+                "de": "Grund: weil (zwei Wörter)"
+              },
+              "ruleIds": ["rule-parce-que"],
+              "answerExplanation": {
+                "en": "Hunger is the reason I eat: parce que.",
+                "fr": "La faim est la raison pour laquelle je mange : parce que.",
+                "de": "Hunger ist der Grund, warum ich esse: parce que."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-b-typing-4",
+              "before": "Il fait beau,",
+              "after": "nous allons au parc.",
+              "accepted": { "answers": ["alors"] },
+              "hint": { "en": "result: so", "fr": "pour la conséquence", "de": "Folge: also" },
+              "ruleIds": ["rule-alors"],
+              "answerExplanation": {
+                "en": "Nice weather is the cause, going to the park the result: alors.",
+                "fr": "Le beau temps est la cause, aller au parc la conséquence : alors.",
+                "de": "Schönes Wetter ist die Ursache, in den Park gehen die Folge: alors."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-b-spot",
+      "role": "exercise",
+      "blockId": "block-result-reason",
+      "label": { "en": "Error spotting", "fr": "Repérer l’erreur", "de": "Fehler finden" },
+      "pages": [
+        {
+          "pageId": "ex-b-spot-p1",
+          "estimatedDurationS": 75,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Find the wrong word and correct it.",
+            "fr": "Trouvez le mot faux et corrigez-le.",
+            "de": "Finde das falsche Wort und korrigiere es."
+          },
+          "items": [
+            {
+              "type": "grammar_error_spotter",
+              "itemId": "ex-b-spot-1",
+              "tokens": [
+                { "tokenId": "t-1", "text": "Il" },
+                { "tokenId": "t-2", "text": "pleut" },
+                { "tokenId": "t-3", "text": "," },
+                { "tokenId": "t-4", "text": "parce que" },
+                { "tokenId": "t-5", "text": "je" },
+                { "tokenId": "t-6", "text": "regarde" },
+                { "tokenId": "t-7", "text": "un" },
+                { "tokenId": "t-8", "text": "film" },
+                { "tokenId": "t-9", "text": "." }
+              ],
+              "faultyTokenId": "t-4",
+              "correction": { "mode": "type", "accepted": { "answers": ["alors"] }, "choices": [] },
+              "ruleIds": ["rule-alors"],
+              "answerExplanation": {
+                "en": "The rain is the cause and watching a film the result, so you need alors.",
+                "fr": "La pluie est la cause et regarder un film la conséquence : il faut alors.",
+                "de": "Der Regen ist die Ursache, der Film die Folge: hier braucht man alors."
+              }
+            },
+            {
+              "type": "grammar_error_spotter",
+              "itemId": "ex-b-spot-2",
+              "tokens": [
+                { "tokenId": "t-1", "text": "Tom" },
+                { "tokenId": "t-2", "text": "est" },
+                { "tokenId": "t-3", "text": "triste" },
+                { "tokenId": "t-4", "text": "alors" },
+                { "tokenId": "t-5", "text": "son" },
+                { "tokenId": "t-6", "text": "chat" },
+                { "tokenId": "t-7", "text": "est" },
+                { "tokenId": "t-8", "text": "malade" }
+              ],
+              "faultyTokenId": "t-4",
+              "correction": {
+                "mode": "select",
+                "accepted": { "answers": ["parce que"] },
+                "choices": ["parce que", "ou", "mais"]
+              },
+              "ruleIds": ["rule-parce-que"],
+              "answerExplanation": {
+                "en": "The sick cat is the reason Tom is sad, so you need parce que.",
+                "fr": "Le chat malade est la raison de la tristesse de Tom : il faut parce que.",
+                "de": "Die kranke Katze ist der Grund für Toms Traurigkeit: hier braucht man parce que."
+              }
+            },
+            {
+              "type": "grammar_error_spotter",
+              "itemId": "ex-b-spot-3",
+              "tokens": [
+                { "tokenId": "t-1", "text": "Nous" },
+                { "tokenId": "t-2", "text": "mangeons" },
+                { "tokenId": "t-3", "text": "alors" },
+                { "tokenId": "t-4", "text": "nous" },
+                { "tokenId": "t-5", "text": "avons" },
+                { "tokenId": "t-6", "text": "faim" },
+                { "tokenId": "t-7", "text": "." }
+              ],
+              "faultyTokenId": "t-3",
+              "correction": {
+                "mode": "type",
+                "accepted": { "answers": ["parce que"] },
+                "choices": []
+              },
+              "ruleIds": ["rule-parce-que"],
+              "answerExplanation": {
+                "en": "Hunger is the reason we eat, so you need parce que.",
+                "fr": "La faim est la raison pour laquelle nous mangeons : il faut parce que.",
+                "de": "Hunger ist der Grund, warum wir essen: hier braucht man parce que."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-b-order",
+      "role": "exercise",
+      "blockId": "block-result-reason",
+      "label": { "en": "Word order 2", "fr": "Ordre des mots 2", "de": "Wortstellung 2" },
+      "pages": [
+        {
+          "pageId": "ex-b-order-p1",
+          "estimatedDurationS": 75,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-b-order-1",
+              "tokens": [
+                { "tokenId": "t-1", "text": "je" },
+                { "tokenId": "t-2", "text": "pleut" },
+                { "tokenId": "t-3", "text": "." },
+                { "tokenId": "t-4", "text": "Il" },
+                { "tokenId": "t-5", "text": "alors" },
+                { "tokenId": "t-6", "text": "ici" },
+                { "tokenId": "t-7", "text": "," },
+                { "tokenId": "t-8", "text": "reste" }
+              ],
+              "acceptedOrders": [["t-4", "t-2", "t-7", "t-5", "t-1", "t-8", "t-6", "t-3"]],
+              "ruleIds": ["rule-alors"],
+              "answerExplanation": {
+                "en": "First the cause (Il pleut), then alors, then the result.",
+                "fr": "D'abord la cause (Il pleut), puis alors, puis la conséquence.",
+                "de": "Erst die Ursache (Il pleut), dann alors, dann die Folge."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-b-order-2",
+              "tokens": [
+                { "tokenId": "t-1", "text": "calme" },
+                { "tokenId": "t-2", "text": "Nous" },
+                { "tokenId": "t-3", "text": "c'est" },
+                { "tokenId": "t-4", "text": "ici" },
+                { "tokenId": "t-5", "text": "parce que" },
+                { "tokenId": "t-6", "text": "." },
+                { "tokenId": "t-7", "text": "restons" }
+              ],
+              "acceptedOrders": [["t-2", "t-7", "t-4", "t-5", "t-3", "t-1", "t-6"]],
+              "ruleIds": ["rule-parce-que"],
+              "answerExplanation": {
+                "en": "The main idea comes first, then parce que and the reason.",
+                "fr": "L'idée principale vient d'abord, puis parce que et la raison.",
+                "de": "Zuerst kommt die Hauptidee, dann parce que und der Grund."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-b-order-3",
+              "tokens": [
+                { "tokenId": "t-1", "text": "dort" },
+                { "tokenId": "t-2", "text": "alors" },
+                { "tokenId": "t-3", "text": "est" },
+                { "tokenId": "t-4", "text": "," },
+                { "tokenId": "t-5", "text": "Anna" },
+                { "tokenId": "t-6", "text": "." },
+                { "tokenId": "t-7", "text": "elle" },
+                { "tokenId": "t-8", "text": "malade" }
+              ],
+              "acceptedOrders": [["t-5", "t-3", "t-8", "t-4", "t-2", "t-7", "t-1", "t-6"]],
+              "ruleIds": ["rule-alors"],
+              "answerExplanation": {
+                "en": "The cause (Anna est malade) comes first, then alors and the result.",
+                "fr": "La cause (Anna est malade) vient d'abord, puis alors et la conséquence.",
+                "de": "Die Ursache (Anna est malade) kommt zuerst, dann alors und die Folge."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "feedback",
+      "role": "feedback",
+      "blockId": null,
+      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "pages": [
+        {
+          "pageId": "feedback",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Continue to the final exam.",
+            "fr": "Passez à l’examen final.",
+            "de": "Weiter zur Abschlussprüfung."
+          },
+          "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "role": "exam",
+      "blockId": null,
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam-gaps",
+          "estimatedDurationS": 90,
+          "timeLimitS": 180,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-gaps-1",
+              "before": "Ma mère est médecin,",
+              "after": "mon père est professeur.",
+              "accepted": { "answers": ["et"] },
+              "hint": null,
+              "ruleIds": ["rule-et-ou"],
+              "answerExplanation": {
+                "en": "Et adds the father's job to the mother's.",
+                "fr": "Et ajoute le métier du père à celui de la mère.",
+                "de": "Et fügt den Beruf des Vaters dem der Mutter hinzu."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-gaps-2",
+              "before": "Tu préfères le bus",
+              "after": "le train ?",
+              "accepted": { "answers": ["ou"] },
+              "hint": null,
+              "ruleIds": ["rule-et-ou"],
+              "answerExplanation": {
+                "en": "Préférer means choosing one of two, so you use ou.",
+                "fr": "Préférer, c'est choisir l'un des deux : on utilise ou.",
+                "de": "Préférer heißt, eines von zwei zu wählen: man benutzt ou."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-gaps-3",
+              "before": "Je voudrais sortir,",
+              "after": "il pleut.",
+              "accepted": { "answers": ["mais"] },
+              "hint": null,
+              "ruleIds": ["rule-mais"],
+              "answerExplanation": {
+                "en": "Wanting to go out and the rain contrast: mais.",
+                "fr": "Vouloir sortir et la pluie s'opposent : mais.",
+                "de": "Ausgehen wollen und der Regen sind ein Gegensatz: mais."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-gaps-4",
+              "before": "Il est tard,",
+              "after": "je vais au lit.",
+              "accepted": { "answers": ["alors"] },
+              "hint": null,
+              "ruleIds": ["rule-alors"],
+              "answerExplanation": {
+                "en": "The late hour is the cause and bed the result: alors.",
+                "fr": "L'heure tardive est la cause et le lit la conséquence : alors.",
+                "de": "Die späte Stunde ist die Ursache, das Bett die Folge: alors."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-gaps-5",
+              "before": "Je prends un manteau",
+              "after": "j'ai froid.",
+              "accepted": { "answers": ["parce que"] },
+              "hint": null,
+              "ruleIds": ["rule-parce-que"],
+              "answerExplanation": {
+                "en": "Feeling cold is the reason for taking a coat: parce que.",
+                "fr": "Avoir froid est la raison de prendre un manteau : parce que.",
+                "de": "Frieren ist der Grund, einen Mantel zu nehmen: parce que."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-gaps-6",
+              "before": "Les enfants sont contents",
+              "after": "c'est samedi.",
+              "accepted": { "answers": ["parce que"] },
+              "hint": null,
+              "ruleIds": ["rule-parce-que"],
+              "answerExplanation": {
+                "en": "Saturday is the reason the children are happy: parce que.",
+                "fr": "Le samedi est la raison de la joie des enfants : parce que.",
+                "de": "Der Samstag ist der Grund für die Freude der Kinder: parce que."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-order",
+          "estimatedDurationS": 100,
+          "timeLimitS": 200,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "exam-order-1",
+              "tokens": [
+                { "tokenId": "t-1", "text": "la" },
+                { "tokenId": "t-2", "text": "Karim" },
+                { "tokenId": "t-3", "text": "sport" },
+                { "tokenId": "t-4", "text": "et" },
+                { "tokenId": "t-5", "text": "aime" },
+                { "tokenId": "t-6", "text": "." },
+                { "tokenId": "t-7", "text": "musique" },
+                { "tokenId": "t-8", "text": "le" }
+              ],
+              "acceptedOrders": [["t-2", "t-5", "t-8", "t-3", "t-4", "t-1", "t-7", "t-6"]],
+              "ruleIds": ["rule-et-ou"],
+              "answerExplanation": {
+                "en": "Et goes between the two things Karim likes.",
+                "fr": "Et se place entre les deux choses que Karim aime.",
+                "de": "Et steht zwischen den beiden Dingen, die Karim mag."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "exam-order-2",
+              "tokens": [
+                { "tokenId": "t-1", "text": "mais" },
+                { "tokenId": "t-2", "text": "." },
+                { "tokenId": "t-3", "text": "petite" },
+                { "tokenId": "t-4", "text": "Elle" },
+                { "tokenId": "t-5", "text": "," },
+                { "tokenId": "t-6", "text": "rapide" },
+                { "tokenId": "t-7", "text": "est" }
+              ],
+              "acceptedOrders": [["t-4", "t-7", "t-3", "t-5", "t-1", "t-6", "t-2"]],
+              "ruleIds": ["rule-mais"],
+              "answerExplanation": {
+                "en": "Mais comes after a comma and introduces the contrast.",
+                "fr": "Mais vient après une virgule et introduit le contraste.",
+                "de": "Mais steht nach einem Komma und leitet den Gegensatz ein."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "exam-order-3",
+              "tokens": [
+                { "tokenId": "t-1", "text": "maison" },
+                { "tokenId": "t-2", "text": "nous" },
+                { "tokenId": "t-3", "text": "Il" },
+                { "tokenId": "t-4", "text": "alors" },
+                { "tokenId": "t-5", "text": "." },
+                { "tokenId": "t-6", "text": "restons" },
+                { "tokenId": "t-7", "text": "à" },
+                { "tokenId": "t-8", "text": "neige" },
+                { "tokenId": "t-9", "text": "," },
+                { "tokenId": "t-10", "text": "la" }
+              ],
+              "acceptedOrders": [
+                ["t-3", "t-8", "t-9", "t-4", "t-2", "t-6", "t-7", "t-10", "t-1", "t-5"]
+              ],
+              "ruleIds": ["rule-alors"],
+              "answerExplanation": {
+                "en": "First the cause (Il neige), then alors, then the result.",
+                "fr": "D'abord la cause (Il neige), puis alors, puis la conséquence.",
+                "de": "Erst die Ursache (Il neige), dann alors, dann die Folge."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "exam-order-4",
+              "tokens": [
+                { "tokenId": "t-1", "text": "vendredi" },
+                { "tokenId": "t-2", "text": "parce que" },
+                { "tokenId": "t-3", "text": "." },
+                { "tokenId": "t-4", "text": "Julie" },
+                { "tokenId": "t-5", "text": "c'est" },
+                { "tokenId": "t-6", "text": "sourit" }
+              ],
+              "acceptedOrders": [["t-4", "t-6", "t-2", "t-5", "t-1", "t-3"]],
+              "ruleIds": ["rule-parce-que"],
+              "answerExplanation": {
+                "en": "The main idea comes first, then parce que and the reason.",
+                "fr": "L'idée principale vient d'abord, puis parce que et la raison.",
+                "de": "Zuerst kommt die Hauptidee, dann parce que und der Grund."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

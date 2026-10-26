@@ -1,0 +1,219 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-verb-avoir-present",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Le verbe avoir au présent",
+  "objective": {
+    "en": "Conjugate avoir in the present tense with all subject pronouns, give your age (j'ai vingt ans) and say what you have.",
+    "fr": "Conjuguer avoir au présent avec tous les pronoms, dire son âge (j'ai vingt ans) et dire ce qu'on possède.",
+    "de": "Avoir im Präsens mit allen Pronomen konjugieren, das Alter nennen (j'ai vingt ans) und sagen, was man hat."
+  },
+  "estimatedMinutes": 14,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-1",
+    "generatedAt": "2026-10-26T22:55:49.277Z",
+    "inputHashes": { "outline": "6330aa315b82f91f79b5f684caf8264ae01a4b0148b010ab9324c3b67e0028be" }
+  },
+  "kind": "grammar",
+  "topic": "verbs_morphology",
+  "scopeBoundaries": {
+    "en": "Covers present forms of avoir, age with ans, and simple possession with un/une. Excludes avoir in the passé composé, expressions like avoir faim, and negation.",
+    "fr": "Couvre les formes d'avoir au présent, l'âge avec ans et la possession simple avec un/une. Exclut avoir au passé composé, les expressions comme avoir faim et la négation.",
+    "de": "Behandelt die Präsensformen von avoir, das Alter mit ans und einfachen Besitz mit un/une. Ausgeschlossen sind avoir im passé composé, Wendungen wie avoir faim und die Verneinung."
+  },
+  "prerequisites": [
+    {
+      "en": "Subject pronouns: je, tu, il, elle, on, nous, vous, ils, elles",
+      "fr": "Les pronoms sujets : je, tu, il, elle, on, nous, vous, ils, elles",
+      "de": "Subjektpronomen: je, tu, il, elle, on, nous, vous, ils, elles"
+    },
+    { "en": "Numbers from 1 to 20", "fr": "Les nombres de 1 à 20", "de": "Die Zahlen von 1 bis 20" }
+  ],
+  "rules": [
+    {
+      "id": "rule-singular-forms",
+      "summary": {
+        "en": "Singular forms of avoir: j'ai, tu as, il/elle/on a.",
+        "fr": "Formes du singulier d'avoir : j'ai, tu as, il/elle/on a.",
+        "de": "Singularformen von avoir: j'ai, tu as, il/elle/on a."
+      }
+    },
+    {
+      "id": "rule-plural-forms",
+      "summary": {
+        "en": "Plural forms of avoir: nous avons, vous avez, ils/elles ont.",
+        "fr": "Formes du pluriel d'avoir : nous avons, vous avez, ils/elles ont.",
+        "de": "Pluralformen von avoir: nous avons, vous avez, ils/elles ont."
+      }
+    },
+    {
+      "id": "rule-age-possession",
+      "summary": {
+        "en": "Give your age with avoir + ans, and say what you have with avoir + noun.",
+        "fr": "Dire l'âge avec avoir + ans, et ce qu'on possède avec avoir + nom.",
+        "de": "Das Alter mit avoir + ans nennen und Besitz mit avoir + Nomen ausdrücken."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-forms",
+      "title": {
+        "en": "The forms of avoir",
+        "fr": "Les formes d'avoir",
+        "de": "Die Formen von avoir"
+      },
+      "ruleIds": ["rule-singular-forms", "rule-plural-forms"],
+      "explanationPlan": {
+        "en": "Present avoir as irregular. Give the six forms with their pronouns, the elision j'ai, and the contrast ils ont / ils sont.",
+        "fr": "Présenter avoir comme un verbe irrégulier. Donner les six formes avec leurs pronoms, l'élision j'ai et le contraste ils ont / ils sont.",
+        "de": "avoir als unregelmäßiges Verb vorstellen. Die sechs Formen mit Pronomen, die Elision j'ai und den Kontrast ils ont / ils sont zeigen."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        { "text": "J'ai faim.", "translation": { "en": "I am hungry.", "de": "Ich habe Hunger." } },
+        {
+          "text": "Tu as un stylo ?",
+          "translation": { "en": "Do you have a pen?", "de": "Hast du einen Stift?" }
+        },
+        {
+          "text": "Elle a une sœur.",
+          "translation": { "en": "She has a sister.", "de": "Sie hat eine Schwester." }
+        },
+        {
+          "text": "Ils ont deux enfants.",
+          "translation": { "en": "They have two children.", "de": "Sie haben zwei Kinder." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not write je ai: before a vowel je becomes j'.",
+          "fr": "N'écrivez pas je ai : devant une voyelle, je devient j'.",
+          "de": "Schreibe nicht je ai: vor einem Vokal wird je zu j'."
+        },
+        {
+          "en": "Do not confuse ils ont (avoir) with ils sont (être).",
+          "fr": "Ne confondez pas ils ont (avoir) et ils sont (être).",
+          "de": "Verwechsle nicht ils ont (avoir) mit ils sont (être)."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-forms-persons",
+          "type": "grammar_person_matching",
+          "itemCount": 1,
+          "ruleIds": ["rule-singular-forms", "rule-plural-forms"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-forms-typing",
+          "type": "grammar_pronoun_form_typing",
+          "itemCount": 2,
+          "ruleIds": ["rule-singular-forms", "rule-plural-forms"],
+          "estimatedDurationS": 90
+        },
+        {
+          "id": "ex-forms-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-singular-forms", "rule-plural-forms"],
+          "estimatedDurationS": 40
+        }
+      ]
+    },
+    {
+      "id": "block-use",
+      "title": {
+        "en": "Age and possessions",
+        "fr": "L'âge et la possession",
+        "de": "Alter und Besitz"
+      },
+      "ruleIds": ["rule-age-possession"],
+      "explanationPlan": {
+        "en": "Explain that French uses avoir, not être, for age: j'ai vingt ans. Show how to ask the age. Then avoir + noun with un/une to say what you have.",
+        "fr": "Expliquer qu'on utilise avoir, et non être, pour l'âge : j'ai vingt ans. Montrer comment demander l'âge. Puis avoir + nom avec un/une pour dire ce qu'on possède.",
+        "de": "Erklären, dass man im Französischen avoir und nicht être für das Alter benutzt: j'ai vingt ans. Zeigen, wie man nach dem Alter fragt. Dann avoir + Nomen mit un/une für Besitz."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "J'ai vingt ans.",
+          "translation": { "en": "I am twenty years old.", "de": "Ich bin zwanzig Jahre alt." }
+        },
+        {
+          "text": "Elle a trente ans.",
+          "translation": { "en": "She is thirty years old.", "de": "Sie ist dreißig Jahre alt." }
+        },
+        {
+          "text": "Nous avons un chat.",
+          "translation": { "en": "We have a cat.", "de": "Wir haben eine Katze." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not say je suis vingt ans: age uses avoir.",
+          "fr": "Ne dites pas je suis vingt ans : l'âge se dit avec avoir.",
+          "de": "Sage nicht je suis vingt ans: das Alter wird mit avoir ausgedrückt."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-use-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 3,
+          "ruleIds": ["rule-age-possession"],
+          "estimatedDurationS": 30
+        },
+        {
+          "id": "ex-use-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-age-possession"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-use-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-age-possession"],
+          "estimatedDurationS": 60
+        }
+      ]
+    }
+  ],
+  "newVerbs": [{ "infinitive": "avoir", "translations": { "en": "to have", "de": "haben" } }],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-forms",
+        "type": "grammar_pronoun_form_typing",
+        "itemCount": 2,
+        "ruleIds": ["rule-singular-forms", "rule-plural-forms"],
+        "estimatedDurationS": 90,
+        "timeLimitS": 140
+      },
+      {
+        "pageId": "exam-age",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["rule-age-possession"],
+        "estimatedDurationS": 45,
+        "timeLimitS": 70
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-age-possession"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

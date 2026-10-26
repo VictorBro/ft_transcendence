@@ -1,0 +1,218 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-indefinite-articles-and-noun-gender",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Les articles un, une, des",
+  "objective": {
+    "en": "Use un, une and des before nouns and remember that every French noun is masculine or feminine: un livre, une table, des stylos.",
+    "fr": "Employer un, une et des devant les noms et retenir que chaque nom français est masculin ou féminin : un livre, une table, des stylos.",
+    "de": "un, une und des vor Nomen verwenden und wissen, dass jedes französische Nomen maskulin oder feminin ist: un livre, une table, des stylos."
+  },
+  "estimatedMinutes": 14,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-1",
+    "generatedAt": "2026-10-26T22:57:39.090Z",
+    "inputHashes": { "outline": "21cea9aeeacae2d7d0c58cde432c039e81a485c45fc20fb3991afbe89e01be25" }
+  },
+  "kind": "grammar",
+  "topic": "nouns_and_determiners",
+  "scopeBoundaries": {
+    "en": "Covers the indefinite articles un, une, des and the masculine/feminine gender of nouns, with regular plurals in -s. Excludes definite articles, irregular plurals and partitive articles.",
+    "fr": "Couvre les articles indéfinis un, une, des et le genre masculin ou féminin des noms, avec le pluriel régulier en -s. Exclut les articles définis, les pluriels irréguliers et les articles partitifs.",
+    "de": "Behandelt die unbestimmten Artikel un, une, des und das Genus der Nomen, mit regelmäßigem Plural auf -s. Ausgeschlossen sind bestimmte Artikel, unregelmäßige Plurale und Teilungsartikel."
+  },
+  "prerequisites": [],
+  "rules": [
+    {
+      "id": "rule-gender",
+      "summary": {
+        "en": "Every noun is masculine or feminine; learn each noun with its article.",
+        "fr": "Chaque nom est masculin ou féminin ; on apprend chaque nom avec son article.",
+        "de": "Jedes Nomen ist maskulin oder feminin; man lernt jedes Nomen mit seinem Artikel."
+      }
+    },
+    {
+      "id": "rule-un-une",
+      "summary": {
+        "en": "In the singular, un goes with a masculine noun and une with a feminine noun.",
+        "fr": "Au singulier, un s'emploie devant un nom masculin et une devant un nom féminin.",
+        "de": "Im Singular steht un vor einem maskulinen und une vor einem femininen Nomen."
+      }
+    },
+    {
+      "id": "rule-des",
+      "summary": {
+        "en": "Des goes with plural nouns, masculine or feminine; the noun usually takes -s.",
+        "fr": "Des s'emploie devant les noms pluriels, masculins ou féminins ; le nom prend le plus souvent un -s.",
+        "de": "des steht vor Pluralnomen, maskulin oder feminin; das Nomen bekommt meist ein -s."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-un-une",
+      "title": {
+        "en": "un, une: the gender of nouns",
+        "fr": "un, une : le genre des noms",
+        "de": "un, une: das Genus der Nomen"
+      },
+      "ruleIds": ["rule-gender", "rule-un-une"],
+      "explanationPlan": {
+        "en": "Explain that every French noun is masculine or feminine and must be learned with its article. Show un with masculine nouns and une with feminine nouns, with the pronunciation of un and une.",
+        "fr": "Expliquer que tout nom français est masculin ou féminin et s'apprend avec son article. Montrer un devant les noms masculins et une devant les noms féminins, avec la prononciation de un et une.",
+        "de": "Erklären, dass jedes französische Nomen maskulin oder feminin ist und mit Artikel gelernt wird. un bei maskulinen und une bei femininen Nomen zeigen, mit der Aussprache von un und une."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Voici un livre.",
+          "translation": { "en": "Here is a book.", "de": "Hier ist ein Buch." }
+        },
+        {
+          "text": "Voici une table.",
+          "translation": { "en": "Here is a table.", "de": "Hier ist ein Tisch." }
+        },
+        {
+          "text": "C'est une maison.",
+          "translation": { "en": "It is a house.", "de": "Das ist ein Haus." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not guess the gender from the meaning: learn un or une with each new noun.",
+          "fr": "Ne devinez pas le genre d'après le sens : apprenez un ou une avec chaque nouveau nom.",
+          "de": "Rate das Genus nicht nach der Bedeutung: lerne un oder une mit jedem neuen Nomen."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-article-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-un-une"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-gender-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 3,
+          "ruleIds": ["rule-gender"],
+          "estimatedDurationS": 36
+        },
+        {
+          "id": "ex-article-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-gender", "rule-un-une"],
+          "estimatedDurationS": 60
+        }
+      ]
+    },
+    {
+      "id": "block-des",
+      "title": {
+        "en": "des: more than one",
+        "fr": "des : plusieurs choses",
+        "de": "des: mehrere Dinge"
+      },
+      "ruleIds": ["rule-des"],
+      "explanationPlan": {
+        "en": "Teach des as the plural of un and une, the same for both genders. Show the written -s of the noun, which is silent, and the difference in sound between un and des.",
+        "fr": "Enseigner des comme pluriel de un et une, identique pour les deux genres. Montrer le -s écrit du nom, qui ne se prononce pas, et la différence de son entre un et des.",
+        "de": "des als Plural von un und une vermitteln, gleich für beide Genera. Das geschriebene -s des Nomens zeigen, das man nicht spricht, und den Klangunterschied zwischen un und des."
+      },
+      "explanationDurationS": 90,
+      "examples": [
+        {
+          "text": "Voici des livres.",
+          "translation": { "en": "Here are some books.", "de": "Hier sind einige Bücher." }
+        },
+        {
+          "text": "Voici des tables.",
+          "translation": { "en": "Here are some tables.", "de": "Hier sind einige Tische." }
+        },
+        {
+          "text": "Voici des amis.",
+          "translation": { "en": "Here are some friends.", "de": "Hier sind Freunde." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not forget the -s on the plural noun, even though you do not hear it.",
+          "fr": "N'oubliez pas le -s du nom pluriel, même si on ne l'entend pas.",
+          "de": "Vergiss das -s am Pluralnomen nicht, auch wenn man es nicht hört."
+        },
+        {
+          "en": "Do not use un or une with a plural noun.",
+          "fr": "N'employez pas un ou une avec un nom pluriel.",
+          "de": "Verwende un oder une nicht mit einem Pluralnomen."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-des-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-des"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-des-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-des"],
+          "estimatedDurationS": 90
+        },
+        {
+          "id": "ex-des-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-des"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-des-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["rule-des"],
+          "estimatedDurationS": 75
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-singular",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-gender", "rule-un-une"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      },
+      {
+        "pageId": "exam-plural",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["rule-des"],
+        "estimatedDurationS": 45,
+        "timeLimitS": 80
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-un-une", "rule-des"],
+        "estimatedDurationS": 75,
+        "timeLimitS": 120
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

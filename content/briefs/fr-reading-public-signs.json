@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-reading-public-signs",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Lire les panneaux",
+  "objective": {
+    "en": "Understand short signs in a public place (entrance, exit, closed, no smoking, push, pull) to know where to go and what is forbidden.",
+    "fr": "Comprendre des panneaux courts dans un lieu public pour savoir où aller et ce qui est interdit.",
+    "de": "Kurze Schilder an öffentlichen Orten verstehen (Eingang, Ausgang, geschlossen, Rauchen verboten, drücken, ziehen), um zu wissen, wohin man geht und was verboten ist."
+  },
+  "estimatedMinutes": 8,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-1",
+    "generatedAt": "2026-10-26T22:58:28.401Z",
+    "inputHashes": { "outline": "c06b1abb08df70887303fcc41f414089016c6634030d3bd38d03802aa5b68a8c" }
+  },
+  "kind": "reading",
+  "theme": "places",
+  "genre": "sign",
+  "situation": {
+    "en": "Signs put up inside a public library, then at a swimming pool, for visitors.",
+    "fr": "Des panneaux affichés pour les visiteurs dans une bibliothèque, puis dans une piscine.",
+    "de": "Schilder für Besucher in einer Bibliothek und danach in einem Schwimmbad."
+  },
+  "readerTask": {
+    "en": "Find how to enter and leave, which day it is closed, and what is forbidden.",
+    "fr": "Trouver comment entrer et sortir, quel jour c’est fermé, et ce qui est interdit.",
+    "de": "Herausfinden, wie man hinein- und hinausgeht, an welchem Tag geschlossen ist und was verboten ist."
+  },
+  "keywords": [
+    {
+      "id": "entree",
+      "term": "entrée",
+      "translations": { "en": ["entrance"], "de": ["Eingang"] },
+      "explanation": {
+        "en": "The way in. The opposite of sortie.",
+        "fr": "Le chemin pour entrer. Le contraire de sortie.",
+        "de": "Der Weg hinein. Das Gegenteil von sortie."
+      }
+    },
+    {
+      "id": "sortie",
+      "term": "sortie",
+      "translations": { "en": ["exit"], "de": ["Ausgang"] },
+      "explanation": {
+        "en": "The way out. The opposite of entrée.",
+        "fr": "Le chemin pour sortir. Le contraire de entrée.",
+        "de": "Der Weg hinaus. Das Gegenteil von entrée."
+      }
+    },
+    {
+      "id": "ferme",
+      "term": "fermé",
+      "translations": { "en": ["closed"], "de": ["geschlossen"] },
+      "explanation": {
+        "en": "You cannot go in. The opposite of ouvert (open).",
+        "fr": "On ne peut pas entrer. Le contraire de ouvert.",
+        "de": "Man kann nicht hinein. Das Gegenteil von ouvert (offen)."
+      }
+    },
+    {
+      "id": "defense-de-fumer",
+      "term": "défense de fumer",
+      "translations": {
+        "en": ["no smoking", "smoking forbidden"],
+        "de": ["Rauchen verboten", "nicht rauchen"]
+      },
+      "explanation": {
+        "en": "Défense de means it is forbidden to. You must not smoke here.",
+        "fr": "Défense de veut dire qu’il est interdit de. Ici, on ne fume pas.",
+        "de": "Défense de bedeutet: Es ist verboten, zu. Hier darf man nicht rauchen."
+      }
+    },
+    {
+      "id": "poussez",
+      "term": "poussez",
+      "translations": { "en": ["push"], "de": ["drücken"] },
+      "explanation": {
+        "en": "An order for vous: push the door away from you.",
+        "fr": "Un ordre avec vous : on pousse la porte devant soi.",
+        "de": "Eine Aufforderung mit vous: Man drückt die Tür von sich weg."
+      }
+    },
+    {
+      "id": "tirez",
+      "term": "tirez",
+      "translations": { "en": ["pull"], "de": ["ziehen"] },
+      "explanation": {
+        "en": "An order for vous: pull the door towards you. The opposite of poussez.",
+        "fr": "Un ordre avec vous : on tire la porte vers soi. Le contraire de poussez.",
+        "de": "Eine Aufforderung mit vous: Man zieht die Tür zu sich. Das Gegenteil von poussez."
+      }
+    }
+  ],
+  "documents": {
+    "main": {
+      "targetWords": 46,
+      "contents": {
+        "en": "Signs in a library: entrance (push the door), exit (pull the door), no smoking, closed on Monday and opening hours, toilets on the first floor, and a request for silence.",
+        "fr": "Des panneaux dans une bibliothèque : entrée (poussez la porte), sortie (tirez la porte), défense de fumer, fermé le lundi avec les heures d’ouverture, toilettes au premier étage, et le silence demandé.",
+        "de": "Schilder in einer Bibliothek: Eingang (Tür drücken), Ausgang (Tür ziehen), Rauchen verboten, montags geschlossen mit Öffnungszeiten, Toiletten im ersten Stock und die Bitte um Ruhe."
+      }
+    },
+    "exam": {
+      "targetWords": 26,
+      "contents": {
+        "en": "Signs at a swimming pool: children’s entrance (pull), no eating, closed on Sunday with opening hours, public exit (push).",
+        "fr": "Des panneaux à la piscine : entrée des enfants (tirez), défense de manger, fermé le dimanche avec les heures d’ouverture, sortie du public (poussez).",
+        "de": "Schilder im Schwimmbad: Kindereingang (ziehen), Essen verboten, sonntags geschlossen mit Öffnungszeiten, Ausgang für Besucher (drücken)."
+      }
+    }
+  },
+  "skim": { "focus": "genre" },
+  "detailQuestions": [
+    {
+      "id": "q-enter",
+      "type": "reading_choice",
+      "focus": {
+        "en": "What to do at the entrance",
+        "fr": "Que faire à l’entrée",
+        "de": "Was man am Eingang tun muss"
+      }
+    },
+    {
+      "id": "q-exit",
+      "type": "reading_choice",
+      "focus": {
+        "en": "What to do at the exit",
+        "fr": "Que faire à la sortie",
+        "de": "Was man am Ausgang tun muss"
+      }
+    },
+    {
+      "id": "q-closed",
+      "type": "reading_choice",
+      "focus": {
+        "en": "The day the library is closed",
+        "fr": "Le jour de fermeture",
+        "de": "Der Schließtag"
+      }
+    },
+    {
+      "id": "q-smoke",
+      "type": "reading_true_false",
+      "focus": {
+        "en": "Whether smoking is allowed",
+        "fr": "Si on peut fumer",
+        "de": "Ob Rauchen erlaubt ist"
+      }
+    }
+  ],
+  "exam": { "types": ["reading_choice", "reading_true_false"] },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

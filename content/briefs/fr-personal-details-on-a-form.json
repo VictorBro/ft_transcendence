@@ -1,0 +1,510 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-personal-details-on-a-form",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Remplir un formulaire",
+  "objective": {
+    "en": "Understand ten key words on a form: name, address, date of birth, single, married, signature…",
+    "fr": "Comprendre dix mots clés d’un formulaire : nom, adresse, date de naissance, célibataire, marié, signature…",
+    "de": "Zehn wichtige Wörter eines Formulars verstehen: Name, Adresse, Geburtsdatum, ledig, verheiratet, Unterschrift …"
+  },
+  "estimatedMinutes": 17,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-1",
+    "generatedAt": "2026-10-26T22:54:32.575Z",
+    "inputHashes": { "outline": "4ae829bf24bae08d9a146632298e7f1fcd7676f64f1ef8a2940d950403848108" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Ten words found on a simple form: identity details, birth, marital status and signature. Family words, numbers and the verb avoir are left to other lessons.",
+    "fr": "Dix mots d’un formulaire simple : identité, naissance, situation familiale et signature. Les mots de la famille, les nombres et le verbe avoir sont traités dans d’autres leçons.",
+    "de": "Zehn Wörter eines einfachen Formulars: Angaben zur Person, Geburt, Familienstand und Unterschrift. Familienwörter, Zahlen und das Verb avoir folgen in anderen Lektionen."
+  },
+  "targetCount": 10,
+  "countRationale": {
+    "en": "Ten words is the right size for an A1 lesson on one situation, and matches the intent of the outline.",
+    "fr": "Dix mots, c’est la bonne taille pour une leçon A1 sur une seule situation, conformément au plan.",
+    "de": "Zehn Wörter sind das passende Maß für eine A1-Lektion zu einer Situation und entsprechen der Gliederung."
+  },
+  "difficultyBalance": {
+    "en": "Mostly core nouns; the compound nouns and the adjectives célibataire and marié are a bit harder.",
+    "fr": "Surtout des noms de base ; les noms composés et les adjectifs célibataire et marié sont un peu plus difficiles.",
+    "de": "Überwiegend einfache Nomen; die zusammengesetzten Nomen und die Adjektive célibataire und marié sind etwas schwieriger."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "identite",
+      "label": { "en": "Your identity", "fr": "Votre identité", "de": "Angaben zur Person" },
+      "targetIds": ["nom", "prenom", "adresse", "telephone", "nationalite"],
+      "introduction": {
+        "en": "On a form, you first give your **identity**:\n\n- `un nom`\n- `un prénom`\n- `une adresse`\n- `un numéro de téléphone`\n- `une nationalité`",
+        "fr": "Sur un formulaire, vous donnez d’abord votre **identité** :\n\n- `un nom`\n- `un prénom`\n- `une adresse`\n- `un numéro de téléphone`\n- `une nationalité`",
+        "de": "In einem Formular machst du zuerst Angaben zu deiner **Person**:\n\n- `un nom`\n- `un prénom`\n- `une adresse`\n- `un numéro de téléphone`\n- `une nationalité`"
+      }
+    },
+    {
+      "id": "naissance",
+      "label": {
+        "en": "Birth, status and signature",
+        "fr": "Naissance, situation et signature",
+        "de": "Geburt, Familienstand und Unterschrift"
+      },
+      "targetIds": ["naissance-date", "naissance-lieu", "celibataire", "marie", "signature"],
+      "introduction": {
+        "en": "These words talk about **birth**, family status and the signature:\n\n- `une date de naissance`\n- `un lieu de naissance`\n- `célibataire`\n- `marié, mariée`\n- `une signature`",
+        "fr": "Ces mots parlent de la **naissance**, de la situation familiale et de la signature :\n\n- `une date de naissance`\n- `un lieu de naissance`\n- `célibataire`\n- `marié, mariée`\n- `une signature`",
+        "de": "Diese Wörter betreffen die **Geburt**, den Familienstand und die Unterschrift:\n\n- `une date de naissance`\n- `un lieu de naissance`\n- `célibataire`\n- `marié, mariée`\n- `une signature`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "nom",
+      "term": "nom",
+      "translations": { "en": ["last name", "surname"], "de": ["Nachname", "Familienname"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un nom",
+      "examForms": ["un nom"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/nɔ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mon nom est Martin.",
+        "translation": { "en": "My last name is Martin.", "de": "Mein Nachname ist Martin." }
+      },
+      "ambiguityNote": {
+        "en": "On a form, nom means the family name. Your first name is the prénom.",
+        "fr": "Sur un formulaire, nom désigne le nom de famille. Votre prénom est le prénom.",
+        "de": "In einem Formular meint nom den Familiennamen. Der Vorname heißt prénom."
+      },
+      "explanation": {
+        "en": "Nom is the family name on a form, for example Martin.",
+        "fr": "Le nom est le nom de famille sur un formulaire, par exemple Martin.",
+        "de": "Nom ist der Familienname im Formular, zum Beispiel Martin."
+      },
+      "genderExplanation": {
+        "en": "Nom is masculine, so its indefinite article is un.",
+        "fr": "Nom est masculin : on dit un nom.",
+        "de": "Nom ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Mon ",
+        "after": " de famille est Martin.",
+        "accepted": { "answers": ["nom"] },
+        "referenceTargetIds": ["nom", "prenom", "adresse", "signature"],
+        "explanation": {
+          "en": "The family name is the nom.",
+          "fr": "Le nom de famille, c’est le nom.",
+          "de": "Der Familienname ist der nom."
+        }
+      },
+      "listeningOptionTargetIds": ["nom", "prenom", "signature", "nationalite"]
+    },
+    {
+      "id": "prenom",
+      "term": "prénom",
+      "translations": { "en": ["first name"], "de": ["Vorname"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un prénom",
+      "examForms": ["un prénom"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/pʁe.nɔ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mon prénom est Julie.",
+        "translation": { "en": "My first name is Julie.", "de": "Mein Vorname ist Julie." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Prénom is the first name, for example Julie. It has an accent aigu on the e.",
+        "fr": "Le prénom est le nom personnel, par exemple Julie. Il s’écrit avec un accent aigu sur le e.",
+        "de": "Prénom ist der Vorname, zum Beispiel Julie. Es hat einen accent aigu auf dem e."
+      },
+      "genderExplanation": {
+        "en": "Prénom is masculine, so its indefinite article is un.",
+        "fr": "Prénom est masculin : on dit un prénom.",
+        "de": "Prénom ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Mon ",
+        "after": " est Julie, et mon nom est Dupont.",
+        "accepted": { "answers": ["prénom"] },
+        "referenceTargetIds": ["prenom", "nom", "adresse", "nationalite"],
+        "explanation": {
+          "en": "Julie is a first name, so the answer is prénom.",
+          "fr": "Julie est un prénom : la réponse est prénom.",
+          "de": "Julie ist ein Vorname, die Antwort ist also prénom."
+        }
+      },
+      "listeningOptionTargetIds": ["prenom", "nom", "nationalite", "adresse"]
+    },
+    {
+      "id": "adresse",
+      "term": "adresse",
+      "translations": { "en": ["address"], "de": ["Adresse", "Anschrift"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une adresse",
+      "examForms": ["une adresse"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/a.dʁɛs/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mon adresse est 12 rue Victor Hugo.",
+        "translation": {
+          "en": "My address is 12 Victor Hugo Street.",
+          "de": "Meine Adresse ist 12 rue Victor Hugo."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Adresse is the place where you live: street, number, city.",
+        "fr": "L’adresse est le lieu où l’on habite : rue, numéro, ville.",
+        "de": "Adresse ist der Ort, an dem du wohnst: Straße, Nummer, Stadt."
+      },
+      "genderExplanation": {
+        "en": "Adresse is feminine, so its indefinite article is une.",
+        "fr": "Adresse est féminin : on dit une adresse.",
+        "de": "Adresse ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Mon ",
+        "after": " est 12 rue Victor Hugo.",
+        "accepted": { "answers": ["adresse"] },
+        "referenceTargetIds": ["adresse", "nom", "telephone", "signature"],
+        "explanation": {
+          "en": "A street and a number make an adresse.",
+          "fr": "Une rue et un numéro forment une adresse.",
+          "de": "Eine Straße und eine Nummer ergeben eine adresse."
+        }
+      },
+      "listeningOptionTargetIds": ["adresse", "nom", "signature", "nationalite"]
+    },
+    {
+      "id": "telephone",
+      "term": "numéro de téléphone",
+      "translations": { "en": ["phone number", "telephone number"], "de": ["Telefonnummer"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un numéro de téléphone",
+      "examForms": ["un numéro de téléphone"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ny.me.ʁo də te.le.fɔn/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Mon numéro de téléphone est le 06 12 34 56 78.",
+        "translation": {
+          "en": "My phone number is 06 12 34 56 78.",
+          "de": "Meine Telefonnummer ist 06 12 34 56 78."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Numéro de téléphone is the number you give to be called.",
+        "fr": "Le numéro de téléphone est le numéro qu’on donne pour être appelé.",
+        "de": "Numéro de téléphone ist die Nummer, unter der man dich anrufen kann."
+      },
+      "genderExplanation": {
+        "en": "Numéro is masculine, so the whole expression takes un.",
+        "fr": "Numéro est masculin : on dit un numéro de téléphone.",
+        "de": "Numéro ist maskulin, daher steht der ganze Ausdruck mit un."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Mon ",
+        "after": " est le 06 12 34 56 78.",
+        "accepted": { "answers": ["numéro de téléphone"] },
+        "referenceTargetIds": ["telephone", "adresse", "nom", "nationalite"],
+        "explanation": {
+          "en": "A series of digits is a numéro de téléphone.",
+          "fr": "Une suite de chiffres, c’est un numéro de téléphone.",
+          "de": "Eine Zahlenreihe ist ein numéro de téléphone."
+        }
+      },
+      "listeningOptionTargetIds": ["telephone", "adresse", "nationalite", "signature"]
+    },
+    {
+      "id": "nationalite",
+      "term": "nationalité",
+      "translations": { "en": ["nationality"], "de": ["Staatsangehörigkeit", "Nationalität"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une nationalité",
+      "examForms": ["une nationalité"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/na.sjɔ.na.li.te/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ma nationalité est française.",
+        "translation": {
+          "en": "My nationality is French.",
+          "de": "Meine Staatsangehörigkeit ist französisch."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Nationalité is the country you are a citizen of, for example française.",
+        "fr": "La nationalité est le pays dont on est citoyen, par exemple française.",
+        "de": "Nationalité ist das Land, dessen Staatsbürger du bist, zum Beispiel française."
+      },
+      "genderExplanation": {
+        "en": "Nationalité is feminine, so its indefinite article is une.",
+        "fr": "Nationalité est féminin : on dit une nationalité.",
+        "de": "Nationalité ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ma ",
+        "after": " est française.",
+        "accepted": { "answers": ["nationalité"] },
+        "referenceTargetIds": ["nationalite", "adresse", "signature", "prenom"],
+        "explanation": {
+          "en": "Française is a nationality.",
+          "fr": "Française est une nationalité.",
+          "de": "Française ist eine Staatsangehörigkeit."
+        }
+      },
+      "listeningOptionTargetIds": ["nationalite", "signature", "adresse", "naissance-date"]
+    },
+    {
+      "id": "naissance-date",
+      "term": "date de naissance",
+      "translations": { "en": ["date of birth", "birth date"], "de": ["Geburtsdatum"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une date de naissance",
+      "examForms": ["une date de naissance"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/dat də nɛ.sɑ̃s/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Ma date de naissance est le 5 mai 1998.",
+        "translation": {
+          "en": "My date of birth is 5 May 1998.",
+          "de": "Mein Geburtsdatum ist der 5. Mai 1998."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Date de naissance is the day, month and year you were born.",
+        "fr": "La date de naissance, c’est le jour, le mois et l’année où l’on est né.",
+        "de": "Date de naissance sind Tag, Monat und Jahr deiner Geburt."
+      },
+      "genderExplanation": {
+        "en": "Date is feminine, so the whole expression takes une.",
+        "fr": "Date est féminin : on dit une date de naissance.",
+        "de": "Date ist feminin, daher steht der ganze Ausdruck mit une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ma ",
+        "after": " est le 5 mai 1998.",
+        "accepted": { "answers": ["date de naissance"] },
+        "referenceTargetIds": ["naissance-date", "naissance-lieu", "signature", "adresse"],
+        "explanation": {
+          "en": "A day, a month and a year form the date de naissance. Ma shows it is feminine.",
+          "fr": "Un jour, un mois et une année forment la date de naissance. Ma indique le féminin.",
+          "de": "Tag, Monat und Jahr ergeben die date de naissance. Ma zeigt das Femininum."
+        }
+      },
+      "listeningOptionTargetIds": ["naissance-date", "naissance-lieu", "nationalite", "adresse"]
+    },
+    {
+      "id": "naissance-lieu",
+      "term": "lieu de naissance",
+      "translations": { "en": ["place of birth", "birthplace"], "de": ["Geburtsort"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un lieu de naissance",
+      "examForms": ["un lieu de naissance"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ljø də nɛ.sɑ̃s/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Mon lieu de naissance est Lyon.",
+        "translation": { "en": "My place of birth is Lyon.", "de": "Mein Geburtsort ist Lyon." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Lieu de naissance is the town or country where you were born.",
+        "fr": "Le lieu de naissance est la ville ou le pays où l’on est né.",
+        "de": "Lieu de naissance ist die Stadt oder das Land, wo du geboren wurdest."
+      },
+      "genderExplanation": {
+        "en": "Lieu is masculine, so the whole expression takes un.",
+        "fr": "Lieu est masculin : on dit un lieu de naissance.",
+        "de": "Lieu ist maskulin, daher steht der ganze Ausdruck mit un."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Mon ",
+        "after": " est Lyon.",
+        "accepted": { "answers": ["lieu de naissance"] },
+        "referenceTargetIds": ["naissance-lieu", "naissance-date", "nom", "adresse"],
+        "explanation": {
+          "en": "Lyon is a town, so it is the lieu de naissance. Mon shows it is masculine.",
+          "fr": "Lyon est une ville : c’est le lieu de naissance. Mon indique le masculin.",
+          "de": "Lyon ist eine Stadt, also der lieu de naissance. Mon zeigt das Maskulinum."
+        }
+      },
+      "listeningOptionTargetIds": ["naissance-lieu", "naissance-date", "nationalite", "signature"]
+    },
+    {
+      "id": "celibataire",
+      "term": "célibataire",
+      "translations": { "en": ["single"], "de": ["ledig", "alleinstehend"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "célibataire",
+      "examForms": ["célibataire"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/se.li.ba.tɛʁ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Paul est célibataire.",
+        "translation": { "en": "Paul is single.", "de": "Paul ist ledig." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Célibataire means not married. The word is the same for a man and a woman.",
+        "fr": "Célibataire veut dire non marié. Le mot est le même pour un homme et une femme.",
+        "de": "Célibataire bedeutet nicht verheiratet. Das Wort ist für Mann und Frau gleich."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Paul est ",
+        "after": " : il vit seul.",
+        "accepted": { "answers": ["célibataire"] },
+        "referenceTargetIds": ["celibataire", "marie", "nom", "signature"],
+        "explanation": {
+          "en": "He lives alone, so he is célibataire.",
+          "fr": "Il vit seul : il est célibataire.",
+          "de": "Er lebt allein, er ist also célibataire."
+        }
+      },
+      "listeningOptionTargetIds": ["celibataire", "marie", "signature", "nationalite"]
+    },
+    {
+      "id": "marie",
+      "term": "marié",
+      "translations": { "en": ["married"], "de": ["verheiratet"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "marié, mariée",
+      "examForms": ["marié", "mariée"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ma.ʁje/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Pierre est marié.",
+        "translation": { "en": "Pierre is married.", "de": "Pierre ist verheiratet." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Marié is for a man, mariée for a woman. Both mean married.",
+        "fr": "Marié s’emploie pour un homme, mariée pour une femme. Les deux veulent dire qui a un mari ou une femme.",
+        "de": "Marié sagt man für einen Mann, mariée für eine Frau. Beides bedeutet verheiratet."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Pierre est ",
+        "after": " : sa femme s’appelle Claire.",
+        "accepted": { "answers": ["marié"] },
+        "referenceTargetIds": ["marie", "celibataire", "adresse", "prenom"],
+        "explanation": {
+          "en": "He has a wife, so he is marié.",
+          "fr": "Il a une femme : il est marié.",
+          "de": "Er hat eine Frau, er ist also marié."
+        }
+      },
+      "listeningOptionTargetIds": ["marie", "celibataire", "signature", "naissance-date"]
+    },
+    {
+      "id": "signature",
+      "term": "signature",
+      "translations": { "en": ["signature"], "de": ["Unterschrift"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une signature",
+      "examForms": ["une signature"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/si.ɲa.tyʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ma signature est en bas du formulaire.",
+        "translation": {
+          "en": "My signature is at the bottom of the form.",
+          "de": "Meine Unterschrift steht unten auf dem Formular."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Signature is your name written by hand at the end of a form.",
+        "fr": "La signature est votre nom écrit à la main à la fin d’un formulaire.",
+        "de": "Signature ist dein von Hand geschriebener Name am Ende eines Formulars."
+      },
+      "genderExplanation": {
+        "en": "Signature is feminine, so its indefinite article is une.",
+        "fr": "Signature est féminin : on dit une signature.",
+        "de": "Signature ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "En bas du formulaire, j’écris ma ",
+        "after": ".",
+        "accepted": { "answers": ["signature"] },
+        "referenceTargetIds": ["signature", "adresse", "nom", "naissance-date"],
+        "explanation": {
+          "en": "At the bottom of a form you write your signature.",
+          "fr": "En bas d’un formulaire, on écrit sa signature.",
+          "de": "Unten im Formular schreibst du deine signature."
+        }
+      },
+      "listeningOptionTargetIds": ["signature", "nationalite", "adresse", "naissance-date"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-prepositions-with-cities-and-countries",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "À Lyon, en Italie, au Canada",
+  "objective": {
+    "en": "Say where you live or work with à + city, en + feminine country, au + masculine country and aux + plural country.",
+    "fr": "Dire où on habite avec à + ville, en + pays féminin, au + pays masculin et aux + pays pluriel.",
+    "de": "Sagen, wo man wohnt oder arbeitet: à + Stadt, en + weibliches Land, au + männliches Land, aux + Land im Plural."
+  },
+  "estimatedMinutes": 17,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-1",
+    "generatedAt": "2026-10-26T22:58:13.348Z",
+    "inputHashes": { "outline": "f55dd50ee19eec033d0f59f512c971f7c835b7d438730e9ecf3d045b24395dfe" }
+  },
+  "kind": "grammar",
+  "topic": "prepositions_and_case",
+  "scopeBoundaries": {
+    "en": "Covers à, en, au and aux with cities and common countries. Excludes countries with a vowel start taking en when masculine, regions, islands and the preposition de.",
+    "fr": "Couvre à, en, au et aux avec les villes et les pays courants. Exclut les pays masculins à initiale vocalique, les régions, les îles et la préposition de.",
+    "de": "Behandelt à, en, au und aux mit Städten und gängigen Ländern. Ausgeschlossen sind männliche Länder mit Vokal am Anfang, Regionen, Inseln und die Präposition de."
+  },
+  "prerequisites": [
+    {
+      "en": "Country names and nationalities",
+      "fr": "Les noms de pays et les nationalités",
+      "de": "Ländernamen und Nationalitäten"
+    },
+    {
+      "en": "Present tense of être and basic regular verbs",
+      "fr": "Le présent d’être et de verbes réguliers simples",
+      "de": "Präsens von être und einfachen regelmäßigen Verben"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-a-ville",
+      "summary": {
+        "en": "Use à before a city: à Lyon, à Paris.",
+        "fr": "On emploie à devant une ville : à Lyon, à Paris.",
+        "de": "Vor einer Stadt steht à: à Lyon, à Paris."
+      }
+    },
+    {
+      "id": "rule-en-feminin",
+      "summary": {
+        "en": "Use en before a feminine country: en France, en Italie.",
+        "fr": "On emploie en devant un pays féminin : en France, en Italie.",
+        "de": "Vor einem weiblichen Land steht en: en France, en Italie."
+      }
+    },
+    {
+      "id": "rule-au-aux",
+      "summary": {
+        "en": "Use au before a masculine country and aux before a plural country: au Canada, aux États-Unis.",
+        "fr": "On emploie au devant un pays masculin et aux devant un pays pluriel : au Canada, aux États-Unis.",
+        "de": "Vor einem männlichen Land steht au, vor einem Land im Plural aux: au Canada, aux États-Unis."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-ville-feminin",
+      "title": {
+        "en": "À + city, en + feminine country",
+        "fr": "À + ville, en + pays féminin",
+        "de": "À + Stadt, en + weibliches Land"
+      },
+      "ruleIds": ["rule-a-ville", "rule-en-feminin"],
+      "explanationPlan": {
+        "en": "Explain that a preposition is needed before a place. Present à with cities and en with feminine countries (most countries ending in -e), with no article after them.",
+        "fr": "Expliquer qu’il faut une préposition devant un lieu. Présenter à avec les villes et en avec les pays féminins (la plupart de ceux qui finissent par -e), sans article après.",
+        "de": "Erklären, dass vor einem Ort eine Präposition nötig ist. à mit Städten und en mit weiblichen Ländern (meist auf -e) vorstellen, ohne Artikel danach."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Elle habite à Lyon.",
+          "translation": { "en": "She lives in Lyon.", "de": "Sie wohnt in Lyon." }
+        },
+        {
+          "text": "Nous travaillons en Italie.",
+          "translation": { "en": "We work in Italy.", "de": "Wir arbeiten in Italien." }
+        },
+        {
+          "text": "Je suis à Paris.",
+          "translation": { "en": "I am in Paris.", "de": "Ich bin in Paris." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not use à with a country: say en France, not à France.",
+          "fr": "N’employez pas à avec un pays : on dit en France, pas à France.",
+          "de": "Benutze à nicht mit einem Land: Man sagt en France, nicht à France."
+        },
+        {
+          "en": "Do not add an article after à or en: à Lyon, en Italie.",
+          "fr": "N’ajoutez pas d’article après à ou en : à Lyon, en Italie.",
+          "de": "Setze keinen Artikel nach à oder en: à Lyon, en Italie."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-b1-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-a-ville", "rule-en-feminin"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-b1-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-a-ville", "rule-en-feminin"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-b1-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-a-ville", "rule-en-feminin"],
+          "estimatedDurationS": 75
+        }
+      ]
+    },
+    {
+      "id": "block-masculin-pluriel",
+      "title": {
+        "en": "Au + masculine country, aux + plural country",
+        "fr": "Au + pays masculin, aux + pays pluriel",
+        "de": "Au + männliches Land, aux + Land im Plural"
+      },
+      "ruleIds": ["rule-au-aux"],
+      "explanationPlan": {
+        "en": "Present au (à + le) with masculine countries and aux (à + les) with plural countries. Finish with a summary of the four prepositions: à, en, au, aux.",
+        "fr": "Présenter au (à + le) avec les pays masculins et aux (à + les) avec les pays pluriels. Terminer par un résumé des quatre prépositions : à, en, au, aux.",
+        "de": "au (à + le) mit männlichen Ländern und aux (à + les) mit Ländern im Plural vorstellen. Mit einer Zusammenfassung der vier Präpositionen à, en, au, aux abschließen."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Il habite au Canada.",
+          "translation": { "en": "He lives in Canada.", "de": "Er wohnt in Kanada." }
+        },
+        {
+          "text": "Elles travaillent aux États-Unis.",
+          "translation": {
+            "en": "They work in the United States.",
+            "de": "Sie arbeiten in den USA."
+          }
+        },
+        {
+          "text": "Nous sommes au Japon.",
+          "translation": { "en": "We are in Japan.", "de": "Wir sind in Japan." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not say en Canada: masculine countries take au.",
+          "fr": "Ne dites pas en Canada : les pays masculins prennent au.",
+          "de": "Sag nicht en Canada: männliche Länder haben au."
+        },
+        {
+          "en": "Le Mexique ends in -e but is masculine: au Mexique.",
+          "fr": "Le Mexique finit par -e mais est masculin : au Mexique.",
+          "de": "Le Mexique endet auf -e, ist aber männlich: au Mexique."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-b2-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-au-aux"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-b2-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-au-aux"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-b2-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["rule-au-aux"],
+          "estimatedDurationS": 90
+        },
+        {
+          "id": "ex-b2-order",
+          "type": "grammar_word_order",
+          "itemCount": 2,
+          "ruleIds": ["rule-au-aux"],
+          "estimatedDurationS": 50
+        }
+      ]
+    }
+  ],
+  "newVerbs": [
+    { "infinitive": "habiter", "translations": { "en": "to live", "de": "wohnen" } },
+    { "infinitive": "travailler", "translations": { "en": "to work", "de": "arbeiten" } }
+  ],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-gaps",
+        "type": "grammar_gap_typing",
+        "itemCount": 6,
+        "ruleIds": ["rule-a-ville", "rule-en-feminin", "rule-au-aux"],
+        "estimatedDurationS": 150,
+        "timeLimitS": 240
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 4,
+        "ruleIds": ["rule-a-ville", "rule-en-feminin", "rule-au-aux"],
+        "estimatedDurationS": 100,
+        "timeLimitS": 150
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

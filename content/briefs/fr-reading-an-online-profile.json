@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-reading-an-online-profile",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Lire un profil en ligne",
+  "objective": {
+    "en": "Read a short profile on a language exchange site and find the person's name, age, city, job and languages.",
+    "fr": "Lire le profil court d’une personne sur un site d’échange linguistique et retrouver son nom, son âge, sa ville, sa profession et ses langues.",
+    "de": "Das kurze Profil einer Person auf einer Sprachaustausch-Seite lesen und Name, Alter, Stadt, Beruf und Sprachen finden."
+  },
+  "estimatedMinutes": 8,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-1",
+    "generatedAt": "2026-10-26T22:55:29.125Z",
+    "inputHashes": { "outline": "8b41567363f7ea5955cfea724de2b66b11b64030cdbefef36d253d3af7182a2a" }
+  },
+  "kind": "reading",
+  "theme": "personal_identification",
+  "genre": "profile",
+  "situation": {
+    "en": "Ana writes her profile on a language exchange site to find a friend to practise French with.",
+    "fr": "Ana écrit son profil sur un site d’échange linguistique pour trouver un ami avec qui parler français.",
+    "de": "Ana schreibt ihr Profil auf einer Sprachaustausch-Seite, um einen Freund zum Französischsprechen zu finden."
+  },
+  "readerTask": {
+    "en": "Find Ana's name, age, city, job and languages, and put what she says in order.",
+    "fr": "Retrouver le nom, l’âge, la ville, la profession et les langues d’Ana, et remettre ce qu’elle dit dans l’ordre.",
+    "de": "Anas Namen, Alter, Stadt, Beruf und Sprachen finden und ordnen, was sie sagt."
+  },
+  "keywords": [
+    {
+      "id": "je-mappelle",
+      "term": "je m’appelle",
+      "translations": { "en": ["my name is", "I am called"], "de": ["ich heiße"] },
+      "explanation": {
+        "en": "Used to say your name. Literally: I call myself.",
+        "fr": "Pour dire son nom. Mot à mot : je m’appelle = je me nomme.",
+        "de": "Damit sagt man seinen Namen. Wörtlich: ich nenne mich."
+      }
+    },
+    {
+      "id": "ans",
+      "term": "ans",
+      "translations": { "en": ["years"], "de": ["Jahre"] },
+      "explanation": {
+        "en": "Used with j’ai to give your age: j’ai 25 ans. The s is silent.",
+        "fr": "Avec j’ai, pour dire son âge : j’ai 25 ans. Le s ne se prononce pas.",
+        "de": "Mit j’ai nennt man das Alter: j’ai 25 ans. Das s spricht man nicht."
+      }
+    },
+    {
+      "id": "jhabite",
+      "term": "j’habite",
+      "translations": { "en": ["I live"], "de": ["ich wohne"] },
+      "explanation": {
+        "en": "Used with à and a city to say where you live: j’habite à Lyon.",
+        "fr": "Avec à et une ville, pour dire où l’on vit : j’habite à Lyon.",
+        "de": "Mit à und einer Stadt sagt man, wo man wohnt: j’habite à Lyon."
+      }
+    },
+    {
+      "id": "infirmiere",
+      "term": "infirmière",
+      "translations": { "en": ["nurse"], "de": ["Krankenschwester"] },
+      "explanation": {
+        "en": "A job. Je suis infirmière: a woman says it; a man says infirmier.",
+        "fr": "Une profession. Je suis infirmière : une femme. Un homme dit infirmier.",
+        "de": "Ein Beruf. Je suis infirmière sagt eine Frau; ein Mann sagt infirmier."
+      }
+    },
+    {
+      "id": "je-parle",
+      "term": "je parle",
+      "translations": { "en": ["I speak"], "de": ["ich spreche"] },
+      "explanation": {
+        "en": "Used with a language: je parle espagnol.",
+        "fr": "Avec une langue : je parle espagnol.",
+        "de": "Mit einer Sprache: je parle espagnol."
+      }
+    }
+  ],
+  "documents": {
+    "main": {
+      "targetWords": 42,
+      "contents": {
+        "en": "Ana's profile: hello, her name, her age (25), her city (Lyon) and nationality; her job (nurse at the hospital); her languages (Spanish and English, learning French); she looks for a friend to speak French with.",
+        "fr": "Le profil d’Ana : bonjour, son nom, son âge (25 ans), sa ville (Lyon) et sa nationalité ; sa profession (infirmière à l’hôpital) ; ses langues (espagnol et anglais, elle apprend le français) ; elle cherche un ami pour parler français.",
+        "de": "Anas Profil: Hallo, ihr Name, ihr Alter (25), ihre Stadt (Lyon) und Nationalität; ihr Beruf (Krankenschwester im Krankenhaus); ihre Sprachen (Spanisch und Englisch, sie lernt Französisch); sie sucht einen Freund zum Französischsprechen."
+      }
+    },
+    "exam": {
+      "targetWords": 28,
+      "contents": {
+        "en": "Karim's profile: name, age (30), city (Marseille), job (cook), languages (Arabic and French), looking for a friend to speak English with.",
+        "fr": "Le profil de Karim : nom, âge (30 ans), ville (Marseille), profession (cuisinier), langues (arabe et français), il cherche un ami pour parler anglais.",
+        "de": "Karims Profil: Name, Alter (30), Stadt (Marseille), Beruf (Koch), Sprachen (Arabisch und Französisch), er sucht einen Freund zum Englischsprechen."
+      }
+    }
+  },
+  "skim": { "focus": "genre" },
+  "detailQuestions": [
+    {
+      "id": "q-age",
+      "type": "reading_choice",
+      "focus": { "en": "Ana's age", "fr": "L’âge d’Ana", "de": "Anas Alter" }
+    },
+    {
+      "id": "q-city",
+      "type": "reading_choice",
+      "focus": {
+        "en": "The city where Ana lives",
+        "fr": "La ville où habite Ana",
+        "de": "Die Stadt, in der Ana wohnt"
+      }
+    },
+    {
+      "id": "q-job",
+      "type": "reading_choice",
+      "focus": { "en": "Ana's job", "fr": "La profession d’Ana", "de": "Anas Beruf" }
+    },
+    {
+      "id": "q-languages",
+      "type": "reading_true_false",
+      "focus": {
+        "en": "The languages Ana speaks",
+        "fr": "Les langues qu’Ana parle",
+        "de": "Die Sprachen, die Ana spricht"
+      }
+    }
+  ],
+  "exam": { "types": ["reading_choice", "reading_true_false"] },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

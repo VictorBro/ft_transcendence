@@ -1,0 +1,224 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-subject-pronouns",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Les pronoms sujets : je, tu, il, elle…",
+  "objective": {
+    "en": "Use the subject pronouns je, tu, il, elle, on, nous, vous, ils and elles: choose tu or vous, ils or elles, and use on for nous in everyday speech.",
+    "fr": "Employer les pronoms sujets je, tu, il, elle, on, nous, vous, ils et elles : choisir tu ou vous, ils ou elles, et on pour dire nous à l'oral.",
+    "de": "Die Subjektpronomen je, tu, il, elle, on, nous, vous, ils und elles verwenden: tu oder vous, ils oder elles wählen und on für nous in der Alltagssprache benutzen."
+  },
+  "estimatedMinutes": 15,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-1",
+    "generatedAt": "2026-10-26T22:49:00.916Z",
+    "inputHashes": { "outline": "0367546f1045976bcb4939d146c3b21f6c14226474b17a8ca564d616f4ff3afe" }
+  },
+  "kind": "grammar",
+  "topic": "pronouns",
+  "scopeBoundaries": {
+    "en": "Covers the nine subject pronouns and how to choose between them. Excludes verb conjugation, object pronouns and stressed pronouns.",
+    "fr": "Couvre les neuf pronoms sujets et le choix entre eux. Exclut la conjugaison des verbes, les pronoms compléments et les pronoms toniques.",
+    "de": "Behandelt die neun Subjektpronomen und die Wahl zwischen ihnen. Ausgeschlossen sind Verbkonjugation, Objektpronomen und betonte Pronomen."
+  },
+  "prerequisites": [],
+  "rules": [
+    {
+      "id": "rule-singular",
+      "summary": {
+        "en": "Use je, tu, il and elle for one person; je becomes j' before a vowel.",
+        "fr": "Employer je, tu, il et elle pour une personne ; je devient j' devant une voyelle.",
+        "de": "je, tu, il und elle für eine Person verwenden; je wird vor einem Vokal zu j'."
+      }
+    },
+    {
+      "id": "rule-tu-vous",
+      "summary": {
+        "en": "Choose tu for a friend or a child, vous for a stranger or for several people.",
+        "fr": "Choisir tu pour un ami ou un enfant, vous pour un inconnu ou plusieurs personnes.",
+        "de": "tu für Freunde oder Kinder wählen, vous für Fremde oder mehrere Personen."
+      }
+    },
+    {
+      "id": "rule-plural",
+      "summary": {
+        "en": "Use nous, vous, ils and elles; ils for men or a mixed group, elles for women only.",
+        "fr": "Employer nous, vous, ils et elles ; ils pour des hommes ou un groupe mixte, elles pour des femmes seulement.",
+        "de": "nous, vous, ils und elles verwenden; ils für Männer oder gemischte Gruppen, elles nur für Frauen."
+      }
+    },
+    {
+      "id": "rule-on",
+      "summary": {
+        "en": "In everyday speech on replaces nous and is used like il and elle.",
+        "fr": "À l'oral, on remplace nous et s'emploie comme il et elle.",
+        "de": "In der Alltagssprache ersetzt on das nous und wird wie il und elle verwendet."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-singular",
+      "title": {
+        "en": "Pronouns for one person",
+        "fr": "Les pronoms pour une personne",
+        "de": "Pronomen für eine Person"
+      },
+      "ruleIds": ["rule-singular", "rule-tu-vous"],
+      "explanationPlan": {
+        "en": "Explain what a subject pronoun is. Present je (and j' before a vowel), tu, il and elle. Contrast tu (informal) and vous (polite or plural) and give the rule: when in doubt, use vous.",
+        "fr": "Expliquer ce qu'est un pronom sujet. Présenter je (et j' devant une voyelle), tu, il et elle. Opposer tu (familier) et vous (poli ou pluriel) et donner la règle : en cas de doute, vouvoyer.",
+        "de": "Erklären, was ein Subjektpronomen ist. je (und j' vor Vokal), tu, il und elle vorstellen. tu (vertraut) und vous (höflich oder Plural) gegenüberstellen: im Zweifel vous."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Je m'appelle Anna.",
+          "translation": { "en": "My name is Anna.", "de": "Ich heiße Anna." }
+        },
+        {
+          "text": "Tu habites ici ?",
+          "translation": { "en": "Do you live here?", "de": "Wohnst du hier?" }
+        },
+        {
+          "text": "Vous parlez français, madame ?",
+          "translation": {
+            "en": "Do you speak French, madam?",
+            "de": "Sprechen Sie Französisch, Madame?"
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not use tu with a stranger or a teacher: use vous.",
+          "fr": "N'employez pas tu avec un inconnu ou un professeur : employez vous.",
+          "de": "Benutze tu nicht für Fremde oder Lehrer: benutze vous."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-b1-match",
+          "type": "grammar_person_matching",
+          "itemCount": 1,
+          "ruleIds": ["rule-singular"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-b1-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-singular", "rule-tu-vous"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-b1-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-singular", "rule-tu-vous"],
+          "estimatedDurationS": 60
+        }
+      ]
+    },
+    {
+      "id": "block-plural",
+      "title": {
+        "en": "Groups of people and on",
+        "fr": "Les groupes de personnes et on",
+        "de": "Gruppen von Personen und on"
+      },
+      "ruleIds": ["rule-plural", "rule-on"],
+      "explanationPlan": {
+        "en": "Present nous, vous, ils and elles. Explain that ils is used for men and for mixed groups and elles for women only. Then show that in everyday speech on replaces nous and is used like il and elle.",
+        "fr": "Présenter nous, vous, ils et elles. Expliquer que ils s'emploie pour des hommes et pour un groupe mixte, elles pour des femmes seulement. Montrer ensuite qu'à l'oral on remplace nous et s'emploie comme il et elle.",
+        "de": "nous, vous, ils und elles vorstellen. Erklären, dass ils für Männer und gemischte Gruppen gilt, elles nur für Frauen. Dann zeigen, dass on im Alltag nous ersetzt und wie il und elle verwendet wird."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Nous habitons à Lyon.",
+          "translation": { "en": "We live in Lyon.", "de": "Wir wohnen in Lyon." }
+        },
+        {
+          "text": "Ils jouent au football.",
+          "translation": { "en": "They play football.", "de": "Sie spielen Fußball." }
+        },
+        {
+          "text": "On mange ensemble.",
+          "translation": { "en": "We eat together.", "de": "Wir essen zusammen." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "A group with one man and many women is still ils.",
+          "fr": "Un groupe avec un homme et plusieurs femmes reste ils.",
+          "de": "Eine Gruppe mit einem Mann und vielen Frauen ist trotzdem ils."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-b2-match",
+          "type": "grammar_person_matching",
+          "itemCount": 1,
+          "ruleIds": ["rule-plural"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-b2-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-plural", "rule-on"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-b2-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["rule-plural"],
+          "estimatedDurationS": 75
+        },
+        {
+          "id": "ex-b2-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-plural", "rule-on"],
+          "estimatedDurationS": 60
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-singular",
+        "type": "grammar_gap_typing",
+        "itemCount": 5,
+        "ruleIds": ["rule-singular", "rule-tu-vous"],
+        "estimatedDurationS": 75,
+        "timeLimitS": 150
+      },
+      {
+        "pageId": "exam-plural",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-plural", "rule-on"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 120
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-tu-vous", "rule-plural", "rule-on"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 120
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

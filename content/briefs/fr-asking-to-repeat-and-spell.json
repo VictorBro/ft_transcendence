@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-asking-to-repeat-and-spell",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Demander de répéter ou d’épeler",
+  "objective": {
+    "en": "Say you do not understand, ask someone to repeat, to spell a word or to speak slowly: Pardon ? Ça s’écrit comment ?",
+    "fr": "Dire qu’on ne comprend pas, faire répéter, faire épeler et demander de parler lentement : « Pardon ? »",
+    "de": "Sagen, dass man etwas nicht versteht, um Wiederholung, Buchstabieren oder langsames Sprechen bitten."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-1",
+    "generatedAt": "2026-10-26T22:56:41.256Z",
+    "inputHashes": { "outline": "26cdf222a7403a64cbd13b49dc532026b5c34f18c3314cdf8ca6f28ec13d7f6a" }
+  },
+  "kind": "functions",
+  "theme": "language",
+  "situation": {
+    "en": "A student meets her teacher on the first day and asks him to repeat, spell and speak slowly.",
+    "fr": "Une étudiante rencontre son professeur le premier jour et lui demande de répéter, d’épeler et de parler lentement.",
+    "de": "Eine Studentin trifft am ersten Tag ihren Lehrer und bittet ihn, zu wiederholen, zu buchstabieren und langsam zu sprechen."
+  },
+  "coverageNotes": {
+    "en": "Six fixed expressions: Pardon ? to react, Je ne comprends pas to say you do not understand, Répétez to ask for repetition, Épelez and Ça s’écrit comment ? to ask for spelling, Parlez lentement to slow down. All are polite (vous).",
+    "fr": "Six expressions figées : Pardon ? pour réagir, Je ne comprends pas pour dire qu’on ne comprend pas, Répétez pour faire répéter, Épelez et Ça s’écrit comment ? pour faire épeler, Parlez lentement pour ralentir. Tout est poli (vous).",
+    "de": "Sechs feste Ausdrücke: Pardon ? als Reaktion, Je ne comprends pas für Nichtverstehen, Répétez für Wiederholung, Épelez und Ça s’écrit comment ? für das Buchstabieren, Parlez lentement zum Verlangsamen. Alles höflich (vous)."
+  },
+  "prerequisites": [],
+  "roles": [
+    {
+      "id": "professeur",
+      "label": "le professeur",
+      "translation": { "en": "the teacher", "de": "der Lehrer" }
+    },
+    {
+      "id": "etudiante",
+      "label": "l’étudiante",
+      "translation": { "en": "the student", "de": "die Studentin" }
+    }
+  ],
+  "expressions": [
+    {
+      "id": "pardon",
+      "text": "Pardon ?",
+      "openEnd": false,
+      "translations": { "en": ["Sorry?"], "de": ["Wie bitte?"] },
+      "explanation": {
+        "en": "Said with rising intonation when you did not hear or understand.",
+        "fr": "Dit avec une intonation montante quand on n’a pas entendu ou compris.",
+        "de": "Mit steigender Intonation gesagt, wenn man etwas nicht gehört oder verstanden hat."
+      },
+      "example": {
+        "text": "Pardon ? Votre nom ?",
+        "translation": { "en": "Sorry? Your name?", "de": "Wie bitte? Ihr Name?" }
+      }
+    },
+    {
+      "id": "comprends",
+      "text": "Je ne comprends pas.",
+      "openEnd": false,
+      "translations": { "en": ["I don’t understand."], "de": ["Ich verstehe nicht."] },
+      "explanation": {
+        "en": "Tells the other person that you do not understand.",
+        "fr": "Dit à l’autre personne qu’on ne comprend pas.",
+        "de": "Sagt der anderen Person, dass man nicht versteht."
+      },
+      "example": {
+        "text": "Désolé, je ne comprends pas.",
+        "translation": {
+          "en": "Sorry, I don’t understand.",
+          "de": "Entschuldigung, ich verstehe nicht."
+        }
+      }
+    },
+    {
+      "id": "repetez",
+      "text": "Répétez, s’il vous plaît.",
+      "openEnd": false,
+      "translations": { "en": ["Please repeat."], "de": ["Bitte wiederholen Sie."] },
+      "explanation": {
+        "en": "Politely asks someone to say it again (vous).",
+        "fr": "Demande poliment de redire (vous).",
+        "de": "Bittet höflich darum, es noch einmal zu sagen (vous)."
+      },
+      "example": {
+        "text": "Encore une fois, répétez, s’il vous plaît.",
+        "translation": {
+          "en": "Once more, please repeat.",
+          "de": "Noch einmal, bitte wiederholen Sie."
+        }
+      }
+    },
+    {
+      "id": "epelez",
+      "text": "Épelez, s’il vous plaît.",
+      "openEnd": false,
+      "translations": { "en": ["Please spell it."], "de": ["Bitte buchstabieren Sie."] },
+      "explanation": {
+        "en": "Politely asks someone to say a word letter by letter (vous).",
+        "fr": "Demande poliment de dire un mot lettre par lettre (vous).",
+        "de": "Bittet höflich darum, ein Wort Buchstabe für Buchstabe zu sagen (vous)."
+      },
+      "example": {
+        "text": "Votre nom de famille ? Épelez, s’il vous plaît.",
+        "translation": {
+          "en": "Your surname? Please spell it.",
+          "de": "Ihr Nachname? Bitte buchstabieren Sie."
+        }
+      }
+    },
+    {
+      "id": "ca-secrit",
+      "text": "Ça s’écrit comment ?",
+      "openEnd": false,
+      "translations": { "en": ["How do you spell it?"], "de": ["Wie schreibt man das?"] },
+      "explanation": {
+        "en": "Asks how a word is written. Works with tu and vous.",
+        "fr": "Demande comment un mot s’écrit. Marche avec tu et avec vous.",
+        "de": "Fragt, wie ein Wort geschrieben wird. Passt zu tu und vous."
+      },
+      "example": {
+        "text": "Votre nom, ça s’écrit comment ?",
+        "translation": {
+          "en": "Your name, how do you spell it?",
+          "de": "Ihr Name, wie schreibt man das?"
+        }
+      }
+    },
+    {
+      "id": "lentement",
+      "text": "Parlez lentement, s’il vous plaît.",
+      "openEnd": false,
+      "translations": { "en": ["Please speak slowly."], "de": ["Bitte sprechen Sie langsam."] },
+      "explanation": {
+        "en": "Politely asks someone to slow down (vous).",
+        "fr": "Demande poliment de ralentir (vous).",
+        "de": "Bittet höflich darum, langsamer zu sprechen (vous)."
+      },
+      "example": {
+        "text": "Je suis débutant. Parlez lentement, s’il vous plaît.",
+        "translation": {
+          "en": "I am a beginner. Please speak slowly.",
+          "de": "Ich bin Anfänger. Bitte sprechen Sie langsam."
+        }
+      }
+    }
+  ],
+  "words": [],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

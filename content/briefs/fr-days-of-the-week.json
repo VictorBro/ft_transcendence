@@ -1,0 +1,568 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-days-of-the-week",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Les jours et les moments de la journée",
+  "objective": {
+    "en": "Name the seven days of the week and the parts of the day, and say what day it is.",
+    "fr": "Nommer les sept jours de la semaine et les moments de la journée, et dire quel jour on est.",
+    "de": "Die sieben Wochentage und die Tageszeiten benennen und sagen, welcher Tag heute ist."
+  },
+  "estimatedMinutes": 17,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-1",
+    "generatedAt": "2026-10-26T22:55:54.962Z",
+    "inputHashes": { "outline": "3362d69b287b2161b52c9f6642eceecbb384e87bde959a1c6f3694cbaaf0785a" }
+  },
+  "kind": "vocabulary",
+  "theme": "daily_life",
+  "coverageNotes": {
+    "en": "The seven days of the week plus the morning, the afternoon and the evening, with the question Quel jour sommes-nous ? from the outline intent.",
+    "fr": "Les sept jours de la semaine, plus le matin, l’après-midi et le soir, avec la question Quel jour sommes-nous ? de l’intention du plan.",
+    "de": "Die sieben Wochentage sowie Morgen, Nachmittag und Abend, mit der Frage Quel jour sommes-nous ? aus der Absicht der Gliederung."
+  },
+  "targetCount": 10,
+  "countRationale": {
+    "en": "Ten words: seven days and three parts of the day, a closed set that fits an A1 lesson.",
+    "fr": "Dix mots : sept jours et trois moments de la journée, un ensemble fermé adapté à une leçon A1.",
+    "de": "Zehn Wörter: sieben Tage und drei Tageszeiten, ein geschlossener Wortschatz für eine A1-Lektion."
+  },
+  "difficultyBalance": {
+    "en": "Most words are core. Mercredi, vendredi and l’après-midi are harder to spell and pronounce.",
+    "fr": "La plupart des mots sont de base. Mercredi, vendredi et l’après-midi sont plus difficiles à écrire et à prononcer.",
+    "de": "Die meisten Wörter sind Grundwortschatz. Mercredi, vendredi und l’après-midi sind schwieriger zu schreiben und auszusprechen."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "days",
+      "label": {
+        "en": "The days of the week",
+        "fr": "Les jours de la semaine",
+        "de": "Die Wochentage"
+      },
+      "targetIds": ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"],
+      "introduction": {
+        "en": "The week has **seven days** and they are all masculine. You use them without an article: `lundi` means “on Monday”.\n\n- `lundi`\n- `mardi`\n- `mercredi`\n- `jeudi`\n- `vendredi`\n- `samedi`\n- `dimanche`\n\nTo ask the day, say `Quel jour sommes-nous ?` and answer `Nous sommes lundi.`",
+        "fr": "La semaine a **sept jours** et ils sont tous masculins. On les emploie sans article : `lundi` signifie « ce lundi ».\n\n- `lundi`\n- `mardi`\n- `mercredi`\n- `jeudi`\n- `vendredi`\n- `samedi`\n- `dimanche`\n\nPour demander le jour, on dit `Quel jour sommes-nous ?` et on répond `Nous sommes lundi.`",
+        "de": "Die Woche hat **sieben Tage** und alle sind maskulin. Man verwendet sie ohne Artikel: `lundi` bedeutet „am Montag“.\n\n- `lundi`\n- `mardi`\n- `mercredi`\n- `jeudi`\n- `vendredi`\n- `samedi`\n- `dimanche`\n\nUm nach dem Tag zu fragen, sagt man `Quel jour sommes-nous ?` und antwortet `Nous sommes lundi.`"
+      }
+    },
+    {
+      "id": "day-parts",
+      "label": {
+        "en": "The parts of the day",
+        "fr": "Les moments de la journée",
+        "de": "Die Tageszeiten"
+      },
+      "targetIds": ["matin", "apres-midi", "soir"],
+      "introduction": {
+        "en": "The day has **three parts**. You use them with the article **le** or **l’**:\n\n- `le matin`\n- `l’après-midi`\n- `le soir`\n\nYou can add a day before them: `lundi matin`, `samedi soir`.",
+        "fr": "La journée a **trois moments**. On les emploie avec l’article **le** ou **l’** :\n\n- `le matin`\n- `l’après-midi`\n- `le soir`\n\nOn peut ajouter un jour devant : `lundi matin`, `samedi soir`.",
+        "de": "Der Tag hat **drei Teile**. Man verwendet sie mit dem Artikel **le** oder **l’**:\n\n- `le matin`\n- `l’après-midi`\n- `le soir`\n\nDavor kann man einen Tag setzen: `lundi matin`, `samedi soir`."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "lundi",
+      "term": "lundi",
+      "translations": { "en": ["Monday"], "de": ["Montag"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "lundi",
+      "examForms": ["lundi"],
+      "articleException": {
+        "en": "Days of the week are taught without an article: lundi alone means “on Monday”.",
+        "fr": "Les jours de la semaine s’apprennent sans article : lundi seul signifie « ce lundi ».",
+        "de": "Wochentage lernt man ohne Artikel: lundi allein bedeutet „am Montag“."
+      },
+      "genderVariants": [],
+      "pronunciation": "/lœ̃di/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Lundi, j’ai cours.",
+        "translation": { "en": "On Monday, I have class.", "de": "Am Montag habe ich Unterricht." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Lundi is the first day of the week, right after dimanche.",
+        "fr": "Lundi est le premier jour de la semaine, juste après dimanche.",
+        "de": "Lundi ist der erste Tag der Woche, direkt nach dimanche."
+      },
+      "genderExplanation": {
+        "en": "Lundi is masculine: all the days of the week are masculine.",
+        "fr": "Lundi est masculin : tous les jours de la semaine sont masculins.",
+        "de": "Lundi ist maskulin: Alle Wochentage sind maskulin."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Après dimanche, c’est ",
+        "after": ".",
+        "accepted": { "answers": ["lundi"] },
+        "referenceTargetIds": ["lundi", "mardi", "jeudi", "samedi"],
+        "explanation": {
+          "en": "Only lundi comes right after dimanche.",
+          "fr": "Seul lundi vient juste après dimanche.",
+          "de": "Nur lundi kommt direkt nach dimanche."
+        }
+      },
+      "listeningOptionTargetIds": ["lundi", "mardi", "jeudi", "samedi"]
+    },
+    {
+      "id": "mardi",
+      "term": "mardi",
+      "translations": { "en": ["Tuesday"], "de": ["Dienstag"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "mardi",
+      "examForms": ["mardi"],
+      "articleException": {
+        "en": "Days of the week are taught without an article: mardi alone means “on Tuesday”.",
+        "fr": "Les jours de la semaine s’apprennent sans article : mardi seul signifie « ce mardi ».",
+        "de": "Wochentage lernt man ohne Artikel: mardi allein bedeutet „am Dienstag“."
+      },
+      "genderVariants": [],
+      "pronunciation": "/maʁdi/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mardi, je suis à la maison.",
+        "translation": { "en": "On Tuesday, I am at home.", "de": "Am Dienstag bin ich zu Hause." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Mardi is the second day of the week, after lundi.",
+        "fr": "Mardi est le deuxième jour de la semaine, après lundi.",
+        "de": "Mardi ist der zweite Tag der Woche, nach lundi."
+      },
+      "genderExplanation": {
+        "en": "Mardi is masculine: all the days of the week are masculine.",
+        "fr": "Mardi est masculin : tous les jours de la semaine sont masculins.",
+        "de": "Mardi ist maskulin: Alle Wochentage sind maskulin."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Après lundi, c’est ",
+        "after": ".",
+        "accepted": { "answers": ["mardi"] },
+        "referenceTargetIds": ["mardi", "mercredi", "vendredi", "dimanche"],
+        "explanation": {
+          "en": "Only mardi comes right after lundi.",
+          "fr": "Seul mardi vient juste après lundi.",
+          "de": "Nur mardi kommt direkt nach lundi."
+        }
+      },
+      "listeningOptionTargetIds": ["mardi", "mercredi", "lundi", "jeudi"]
+    },
+    {
+      "id": "mercredi",
+      "term": "mercredi",
+      "translations": { "en": ["Wednesday"], "de": ["Mittwoch"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "mercredi",
+      "examForms": ["mercredi"],
+      "articleException": {
+        "en": "Days of the week are taught without an article: mercredi alone means “on Wednesday”.",
+        "fr": "Les jours de la semaine s’apprennent sans article : mercredi seul signifie « ce mercredi ».",
+        "de": "Wochentage lernt man ohne Artikel: mercredi allein bedeutet „am Mittwoch“."
+      },
+      "genderVariants": [],
+      "pronunciation": "/mɛʁkʁədi/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Mercredi, je parle français.",
+        "translation": {
+          "en": "On Wednesday, I speak French.",
+          "de": "Am Mittwoch spreche ich Französisch."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Mercredi is the middle of the week, between mardi and jeudi.",
+        "fr": "Mercredi est le milieu de la semaine, entre mardi et jeudi.",
+        "de": "Mercredi ist die Mitte der Woche, zwischen mardi und jeudi."
+      },
+      "genderExplanation": {
+        "en": "Mercredi is masculine: all the days of the week are masculine.",
+        "fr": "Mercredi est masculin : tous les jours de la semaine sont masculins.",
+        "de": "Mercredi ist maskulin: Alle Wochentage sind maskulin."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Après mardi, c’est ",
+        "after": ".",
+        "accepted": { "answers": ["mercredi"] },
+        "referenceTargetIds": ["mercredi", "lundi", "jeudi", "samedi"],
+        "explanation": {
+          "en": "Only mercredi comes right after mardi.",
+          "fr": "Seul mercredi vient juste après mardi.",
+          "de": "Nur mercredi kommt direkt nach mardi."
+        }
+      },
+      "listeningOptionTargetIds": ["mercredi", "mardi", "vendredi", "dimanche"]
+    },
+    {
+      "id": "jeudi",
+      "term": "jeudi",
+      "translations": { "en": ["Thursday"], "de": ["Donnerstag"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "jeudi",
+      "examForms": ["jeudi"],
+      "articleException": {
+        "en": "Days of the week are taught without an article: jeudi alone means “on Thursday”.",
+        "fr": "Les jours de la semaine s’apprennent sans article : jeudi seul signifie « ce jeudi ».",
+        "de": "Wochentage lernt man ohne Artikel: jeudi allein bedeutet „am Donnerstag“."
+      },
+      "genderVariants": [],
+      "pronunciation": "/ʒødi/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Jeudi, j’ai un rendez-vous.",
+        "translation": {
+          "en": "On Thursday, I have an appointment.",
+          "de": "Am Donnerstag habe ich einen Termin."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Jeudi comes after mercredi and before vendredi.",
+        "fr": "Jeudi vient après mercredi et avant vendredi.",
+        "de": "Jeudi kommt nach mercredi und vor vendredi."
+      },
+      "genderExplanation": {
+        "en": "Jeudi is masculine: all the days of the week are masculine.",
+        "fr": "Jeudi est masculin : tous les jours de la semaine sont masculins.",
+        "de": "Jeudi ist maskulin: Alle Wochentage sind maskulin."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Après mercredi, c’est ",
+        "after": ".",
+        "accepted": { "answers": ["jeudi"] },
+        "referenceTargetIds": ["jeudi", "lundi", "vendredi", "dimanche"],
+        "explanation": {
+          "en": "Only jeudi comes right after mercredi.",
+          "fr": "Seul jeudi vient juste après mercredi.",
+          "de": "Nur jeudi kommt direkt nach mercredi."
+        }
+      },
+      "listeningOptionTargetIds": ["jeudi", "lundi", "mardi", "samedi"]
+    },
+    {
+      "id": "vendredi",
+      "term": "vendredi",
+      "translations": { "en": ["Friday"], "de": ["Freitag"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "vendredi",
+      "examForms": ["vendredi"],
+      "articleException": {
+        "en": "Days of the week are taught without an article: vendredi alone means “on Friday”.",
+        "fr": "Les jours de la semaine s’apprennent sans article : vendredi seul signifie « ce vendredi ».",
+        "de": "Wochentage lernt man ohne Artikel: vendredi allein bedeutet „am Freitag“."
+      },
+      "genderVariants": [],
+      "pronunciation": "/vɑ̃dʁədi/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Vendredi, je mange au restaurant.",
+        "translation": {
+          "en": "On Friday, I eat at a restaurant.",
+          "de": "Am Freitag esse ich im Restaurant."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Vendredi is the day before samedi, the last working day.",
+        "fr": "Vendredi est le jour avant samedi, le dernier jour de travail.",
+        "de": "Vendredi ist der Tag vor samedi, der letzte Arbeitstag."
+      },
+      "genderExplanation": {
+        "en": "Vendredi is masculine: all the days of the week are masculine.",
+        "fr": "Vendredi est masculin : tous les jours de la semaine sont masculins.",
+        "de": "Vendredi ist maskulin: Alle Wochentage sind maskulin."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Après jeudi, c’est ",
+        "after": ".",
+        "accepted": { "answers": ["vendredi"] },
+        "referenceTargetIds": ["vendredi", "mardi", "samedi", "mercredi"],
+        "explanation": {
+          "en": "Only vendredi comes right after jeudi.",
+          "fr": "Seul vendredi vient juste après jeudi.",
+          "de": "Nur vendredi kommt direkt nach jeudi."
+        }
+      },
+      "listeningOptionTargetIds": ["vendredi", "mercredi", "samedi", "dimanche"]
+    },
+    {
+      "id": "samedi",
+      "term": "samedi",
+      "translations": { "en": ["Saturday"], "de": ["Samstag"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "samedi",
+      "examForms": ["samedi"],
+      "articleException": {
+        "en": "Days of the week are taught without an article: samedi alone means “on Saturday”.",
+        "fr": "Les jours de la semaine s’apprennent sans article : samedi seul signifie « ce samedi ».",
+        "de": "Wochentage lernt man ohne Artikel: samedi allein bedeutet „am Samstag“."
+      },
+      "genderVariants": [],
+      "pronunciation": "/samdi/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Samedi, je vais au marché.",
+        "translation": {
+          "en": "On Saturday, I go to the market.",
+          "de": "Am Samstag gehe ich auf den Markt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Samedi is the first day of the weekend, after vendredi.",
+        "fr": "Samedi est le premier jour du week-end, après vendredi.",
+        "de": "Samedi ist der erste Tag des Wochenendes, nach vendredi."
+      },
+      "genderExplanation": {
+        "en": "Samedi is masculine: all the days of the week are masculine.",
+        "fr": "Samedi est masculin : tous les jours de la semaine sont masculins.",
+        "de": "Samedi ist maskulin: Alle Wochentage sind maskulin."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Après vendredi, c’est ",
+        "after": ".",
+        "accepted": { "answers": ["samedi"] },
+        "referenceTargetIds": ["samedi", "lundi", "jeudi", "dimanche"],
+        "explanation": {
+          "en": "Only samedi comes right after vendredi.",
+          "fr": "Seul samedi vient juste après vendredi.",
+          "de": "Nur samedi kommt direkt nach vendredi."
+        }
+      },
+      "listeningOptionTargetIds": ["samedi", "dimanche", "jeudi", "lundi"]
+    },
+    {
+      "id": "dimanche",
+      "term": "dimanche",
+      "translations": { "en": ["Sunday"], "de": ["Sonntag"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "dimanche",
+      "examForms": ["dimanche"],
+      "articleException": {
+        "en": "Days of the week are taught without an article: dimanche alone means “on Sunday”.",
+        "fr": "Les jours de la semaine s’apprennent sans article : dimanche seul signifie « ce dimanche ».",
+        "de": "Wochentage lernt man ohne Artikel: dimanche allein bedeutet „am Sonntag“."
+      },
+      "genderVariants": [],
+      "pronunciation": "/dimɑ̃ʃ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Dimanche, je suis chez moi.",
+        "translation": { "en": "On Sunday, I am at home.", "de": "Am Sonntag bin ich zu Hause." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Dimanche is the last day of the week, after samedi.",
+        "fr": "Dimanche est le dernier jour de la semaine, après samedi.",
+        "de": "Dimanche ist der letzte Tag der Woche, nach samedi."
+      },
+      "genderExplanation": {
+        "en": "Dimanche is masculine: all the days of the week are masculine.",
+        "fr": "Dimanche est masculin : tous les jours de la semaine sont masculins.",
+        "de": "Dimanche ist maskulin: Alle Wochentage sind maskulin."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Après samedi, c’est ",
+        "after": ".",
+        "accepted": { "answers": ["dimanche"] },
+        "referenceTargetIds": ["dimanche", "mardi", "mercredi", "vendredi"],
+        "explanation": {
+          "en": "Only dimanche comes right after samedi.",
+          "fr": "Seul dimanche vient juste après samedi.",
+          "de": "Nur dimanche kommt direkt nach samedi."
+        }
+      },
+      "listeningOptionTargetIds": ["dimanche", "samedi", "lundi", "mardi"]
+    },
+    {
+      "id": "matin",
+      "term": "matin",
+      "translations": { "en": ["morning"], "de": ["Morgen"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "le matin",
+      "examForms": ["le matin"],
+      "articleException": {
+        "en": "Parts of the day are taught with le or l’, not un: le matin means “in the morning”.",
+        "fr": "Les moments de la journée s’apprennent avec le ou l’, pas un : le matin signifie « tous les matins ».",
+        "de": "Tageszeiten lernt man mit le oder l’, nicht mit un: le matin bedeutet „morgens“."
+      },
+      "genderVariants": [],
+      "pronunciation": "/matɛ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Le matin, je bois un café.",
+        "translation": {
+          "en": "In the morning, I drink a coffee.",
+          "de": "Morgens trinke ich einen Kaffee."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Le matin is the beginning of the day, before midday.",
+        "fr": "Le matin est le début de la journée, avant midi.",
+        "de": "Le matin ist der Beginn des Tages, vor Mittag."
+      },
+      "genderExplanation": {
+        "en": "Matin is masculine: we say le matin.",
+        "fr": "Matin est masculin : on dit le matin.",
+        "de": "Matin ist maskulin: Man sagt le matin."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il est 7 heures : c’est le ",
+        "after": ".",
+        "accepted": { "answers": ["matin"] },
+        "referenceTargetIds": ["matin", "apres-midi", "soir", "dimanche"],
+        "explanation": {
+          "en": "At 7 o’clock it is the morning: le matin.",
+          "fr": "À 7 heures, c’est le matin.",
+          "de": "Um 7 Uhr ist es Morgen: le matin."
+        }
+      },
+      "listeningOptionTargetIds": ["matin", "soir", "apres-midi", "samedi"]
+    },
+    {
+      "id": "apres-midi",
+      "term": "après-midi",
+      "translations": { "en": ["afternoon"], "de": ["Nachmittag"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "l’après-midi",
+      "examForms": ["l’après-midi", "l'après-midi"],
+      "articleException": {
+        "en": "Parts of the day are taught with le or l’, not un: l’après-midi means “in the afternoon”.",
+        "fr": "Les moments de la journée s’apprennent avec le ou l’, pas un : l’après-midi signifie « tous les après-midi ».",
+        "de": "Tageszeiten lernt man mit le oder l’, nicht mit un: l’après-midi bedeutet „nachmittags“."
+      },
+      "genderVariants": [],
+      "pronunciation": "/apʁɛmidi/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "L’après-midi, j’ai cours.",
+        "translation": {
+          "en": "In the afternoon, I have class.",
+          "de": "Nachmittags habe ich Unterricht."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Après-midi can be masculine or feminine; in this course we say l’après-midi.",
+        "fr": "Après-midi peut être masculin ou féminin ; dans ce cours, on dit l’après-midi.",
+        "de": "Après-midi kann maskulin oder feminin sein; in diesem Kurs sagen wir l’après-midi."
+      },
+      "explanation": {
+        "en": "L’après-midi is the part of the day after midday.",
+        "fr": "L’après-midi est le moment de la journée après midi.",
+        "de": "L’après-midi ist der Teil des Tages nach Mittag."
+      },
+      "genderExplanation": {
+        "en": "Après-midi is taught as masculine: we say l’après-midi.",
+        "fr": "Après-midi s’apprend au masculin : on dit l’après-midi.",
+        "de": "Après-midi lernt man als Maskulinum: Man sagt l’après-midi."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il est 15 heures : c’est l’",
+        "after": ".",
+        "accepted": { "answers": ["après-midi"] },
+        "referenceTargetIds": ["apres-midi", "matin", "soir", "lundi"],
+        "explanation": {
+          "en": "At 3 p.m. it is the afternoon: l’après-midi.",
+          "fr": "À 15 heures, c’est l’après-midi.",
+          "de": "Um 15 Uhr ist es Nachmittag: l’après-midi."
+        }
+      },
+      "listeningOptionTargetIds": ["apres-midi", "matin", "soir", "mercredi"]
+    },
+    {
+      "id": "soir",
+      "term": "soir",
+      "translations": { "en": ["evening"], "de": ["Abend"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "le soir",
+      "examForms": ["le soir"],
+      "articleException": {
+        "en": "Parts of the day are taught with le or l’, not un: le soir means “in the evening”.",
+        "fr": "Les moments de la journée s’apprennent avec le ou l’, pas un : le soir signifie « tous les soirs ».",
+        "de": "Tageszeiten lernt man mit le oder l’, nicht mit un: le soir bedeutet „abends“."
+      },
+      "genderVariants": [],
+      "pronunciation": "/swaʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Le soir, je mange à huit heures.",
+        "translation": {
+          "en": "In the evening, I eat at eight o’clock.",
+          "de": "Abends esse ich um acht Uhr."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Le soir is the end of the day, after the afternoon.",
+        "fr": "Le soir est la fin de la journée, après l’après-midi.",
+        "de": "Le soir ist das Ende des Tages, nach dem Nachmittag."
+      },
+      "genderExplanation": {
+        "en": "Soir is masculine: we say le soir.",
+        "fr": "Soir est masculin : on dit le soir.",
+        "de": "Soir ist maskulin: Man sagt le soir."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il est 20 heures : c’est le ",
+        "after": ".",
+        "accepted": { "answers": ["soir"] },
+        "referenceTargetIds": ["soir", "matin", "apres-midi", "vendredi"],
+        "explanation": {
+          "en": "At 8 p.m. it is the evening: le soir.",
+          "fr": "À 20 heures, c’est le soir.",
+          "de": "Um 20 Uhr ist es Abend: le soir."
+        }
+      },
+      "listeningOptionTargetIds": ["soir", "matin", "apres-midi", "jeudi"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

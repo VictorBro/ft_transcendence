@@ -1,0 +1,208 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-presenting-people-and-things",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "C'est, ce sont, voici, voilà",
+  "objective": {
+    "en": "Introduce people and things with c'est, ce sont, voici and voilà, and tell c'est un médecin from il est médecin.",
+    "fr": "Présenter une personne ou une chose avec c'est, ce sont, voici et voilà, et distinguer c'est un médecin de il est médecin.",
+    "de": "Personen und Dinge mit c'est, ce sont, voici und voilà vorstellen und c'est un médecin von il est médecin unterscheiden."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-1",
+    "generatedAt": "2026-10-26T22:57:57.446Z",
+    "inputHashes": { "outline": "c163376d95973a4f4cb1d1cedc9137bdcea762ea56582741466c4fd27065042c" }
+  },
+  "kind": "grammar",
+  "topic": "information_structure_and_pragmatics",
+  "scopeBoundaries": {
+    "en": "Covers c'est and ce sont, voici and voilà, and il est or elle est with a job. Excludes the negative, questions (Qui est-ce ?) and adjective agreement.",
+    "fr": "Couvre c'est et ce sont, voici et voilà, et il est ou elle est avec un métier. Exclut la négation, les questions (Qui est-ce ?) et l'accord des adjectifs.",
+    "de": "Behandelt c'est und ce sont, voici und voilà sowie il est oder elle est mit einem Beruf. Ausgeschlossen sind Verneinung, Fragen (Qui est-ce ?) und die Angleichung der Adjektive."
+  },
+  "prerequisites": [
+    {
+      "en": "The subject pronouns il and elle, and the verb être (je suis, il est)",
+      "fr": "Les pronoms sujets il et elle, et le verbe être (je suis, il est)",
+      "de": "Die Subjektpronomen il und elle sowie das Verb être (je suis, il est)"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-cest-ce-sont",
+      "summary": {
+        "en": "Use c'est for one person or thing and ce sont for several.",
+        "fr": "On emploie c'est pour une personne ou une chose et ce sont pour plusieurs.",
+        "de": "Man verwendet c'est für eine Person oder Sache und ce sont für mehrere."
+      }
+    },
+    {
+      "id": "rule-voici-voila",
+      "summary": {
+        "en": "Voici shows what is close; voilà shows what is farther away or just seen.",
+        "fr": "Voici montre ce qui est proche ; voilà montre ce qui est plus loin ou qu'on vient de voir.",
+        "de": "Voici zeigt etwas Nahes; voilà zeigt etwas Entfernteres oder gerade Gesehenes."
+      }
+    },
+    {
+      "id": "rule-cest-vs-il-est",
+      "summary": {
+        "en": "A job without an article takes il est or elle est; with an article, use c'est.",
+        "fr": "Un métier sans article se dit avec il est ou elle est ; avec un article, on emploie c'est.",
+        "de": "Ein Beruf ohne Artikel steht mit il est oder elle est; mit Artikel verwendet man c'est."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-cest",
+      "title": { "en": "C'est and ce sont", "fr": "C'est et ce sont", "de": "C'est und ce sont" },
+      "ruleIds": ["rule-cest-ce-sont"],
+      "explanationPlan": {
+        "en": "Show c'est for one person or thing and ce sont for several, with names and nouns with articles. Say that c'est does not change with gender.",
+        "fr": "Montrer c'est pour une personne ou une chose et ce sont pour plusieurs, avec des prénoms et des noms avec article. Dire que c'est ne change pas selon le genre.",
+        "de": "c'est für eine Person oder Sache und ce sont für mehrere zeigen, mit Namen und Nomen mit Artikel. Sagen, dass c'est sich nicht nach dem Genus ändert."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        { "text": "C'est Paul.", "translation": { "en": "It's Paul.", "de": "Das ist Paul." } },
+        {
+          "text": "Ce sont des amis.",
+          "translation": { "en": "They are friends.", "de": "Das sind Freunde." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not say c'est with a plural: use ce sont.",
+          "fr": "Ne dites pas c'est avec un pluriel : employez ce sont.",
+          "de": "Sage nicht c'est mit einem Plural: verwende ce sont."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-ce-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-cest-ce-sont"],
+          "estimatedDurationS": 50
+        },
+        {
+          "id": "ex-ce-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-cest-ce-sont"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-ce-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-cest-ce-sont"],
+          "estimatedDurationS": 75
+        }
+      ]
+    },
+    {
+      "id": "block-voici",
+      "title": {
+        "en": "Voici, voilà and c'est or il est",
+        "fr": "Voici, voilà et c'est ou il est",
+        "de": "Voici, voilà und c'est oder il est"
+      },
+      "ruleIds": ["rule-voici-voila", "rule-cest-vs-il-est"],
+      "explanationPlan": {
+        "en": "Explain voici (close) and voilà (farther or just seen). Then contrast il est médecin (no article) with c'est un médecin (with an article).",
+        "fr": "Expliquer voici (proche) et voilà (plus loin ou qu'on vient de voir). Puis opposer il est médecin (sans article) à c'est un médecin (avec un article).",
+        "de": "voici (nah) und voilà (weiter weg oder gerade gesehen) erklären. Dann il est médecin (ohne Artikel) und c'est un médecin (mit Artikel) gegenüberstellen."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "Voici ma sœur.",
+          "translation": { "en": "Here is my sister.", "de": "Hier ist meine Schwester." }
+        },
+        {
+          "text": "Il est médecin.",
+          "translation": { "en": "He is a doctor.", "de": "Er ist Arzt." }
+        },
+        {
+          "text": "C'est un médecin.",
+          "translation": { "en": "He is a doctor.", "de": "Das ist ein Arzt." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not say il est un médecin: with an article, use c'est.",
+          "fr": "Ne dites pas il est un médecin : avec un article, employez c'est.",
+          "de": "Sage nicht il est un médecin: mit Artikel verwende c'est."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-vo-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 3,
+          "ruleIds": ["rule-voici-voila"],
+          "estimatedDurationS": 36
+        },
+        {
+          "id": "ex-ci-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-cest-vs-il-est"],
+          "estimatedDurationS": 52
+        },
+        {
+          "id": "ex-ci-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["rule-cest-vs-il-est"],
+          "estimatedDurationS": 75
+        },
+        {
+          "id": "ex-vo-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-voici-voila", "rule-cest-vs-il-est"],
+          "estimatedDurationS": 80
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-gaps",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-cest-ce-sont", "rule-voici-voila"],
+        "estimatedDurationS": 80,
+        "timeLimitS": 130
+      },
+      {
+        "pageId": "exam-ilest",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["rule-cest-vs-il-est"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-cest-ce-sont", "rule-voici-voila", "rule-cest-vs-il-est"],
+        "estimatedDurationS": 75,
+        "timeLimitS": 120
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

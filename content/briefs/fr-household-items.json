@@ -1,0 +1,609 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-household-items",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Les objets de la cuisine",
+  "objective": {
+    "en": "Name kitchen and table objects with their article.",
+    "fr": "Nommer les objets de la cuisine et de la table avec leur article.",
+    "de": "Gegenstände in Küche und auf dem Tisch mit Artikel benennen."
+  },
+  "estimatedMinutes": 21,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-1",
+    "generatedAt": "2026-10-26T22:57:36.837Z",
+    "inputHashes": { "outline": "7e7aaeb1ba1d212b4ec2c9f16a11eabe783dcd2a9f92ec2e748351c0c47685d0" }
+  },
+  "kind": "vocabulary",
+  "theme": "house_and_home",
+  "coverageNotes": {
+    "en": "Twelve everyday objects of the table and the kitchen, taught with un or une. Furniture and appliances belong to another lesson.",
+    "fr": "Douze objets courants de la table et de la cuisine, appris avec un ou une. Les meubles et les appareils sont dans une autre leçon.",
+    "de": "Zwölf alltägliche Gegenstände von Tisch und Küche, gelernt mit un oder une. Möbel und Geräte gehören zu einer anderen Lektion."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words, as the outline says, in two small groups: the table and the kitchen.",
+    "fr": "Douze mots, comme le prévoit le plan, en deux petits groupes : la table et la cuisine.",
+    "de": "Zwölf Wörter, wie in der Gliederung vorgesehen, in zwei kleinen Gruppen: Tisch und Küche."
+  },
+  "difficultyBalance": {
+    "en": "Eight core words and four more demanding ones (spoon, saucepan, frying pan, tea towel).",
+    "fr": "Huit mots de base et quatre plus difficiles (cuillère, casserole, poêle, torchon).",
+    "de": "Acht Grundwörter und vier anspruchsvollere (cuillère, casserole, poêle, torchon)."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "table",
+      "label": { "en": "On the table", "fr": "Sur la table", "de": "Auf dem Tisch" },
+      "targetIds": [
+        "assiette",
+        "verre",
+        "tasse",
+        "bol",
+        "couteau",
+        "fourchette",
+        "cuillere",
+        "serviette"
+      ],
+      "introduction": {
+        "en": "These are the objects you use **at the table** to eat and drink. Learn each word with its article: **un** or **une**.\n\n- `une assiette`\n- `un verre`\n- `une tasse`\n- `un bol`\n- `un couteau`\n- `une fourchette`\n- `une cuillère`\n- `une serviette`",
+        "fr": "Voici les objets que l’on utilise **à table** pour manger et boire. Apprenez chaque mot avec son article : **un** ou **une**.\n\n- `une assiette`\n- `un verre`\n- `une tasse`\n- `un bol`\n- `un couteau`\n- `une fourchette`\n- `une cuillère`\n- `une serviette`",
+        "de": "Das sind die Gegenstände, die du **am Tisch** zum Essen und Trinken benutzt. Lerne jedes Wort mit seinem Artikel: **un** oder **une**.\n\n- `une assiette`\n- `un verre`\n- `une tasse`\n- `un bol`\n- `un couteau`\n- `une fourchette`\n- `une cuillère`\n- `une serviette`"
+      }
+    },
+    {
+      "id": "cuisine",
+      "label": { "en": "In the kitchen", "fr": "Dans la cuisine", "de": "In der Küche" },
+      "targetIds": ["casserole", "poele", "bouteille", "torchon"],
+      "introduction": {
+        "en": "These objects are used **in the kitchen** to cook, to keep water and to dry dishes. Remember the article for each one.\n\n- `une casserole`\n- `une poêle`\n- `une bouteille`\n- `un torchon`",
+        "fr": "Ces objets servent **dans la cuisine** pour cuire, garder l’eau et sécher la vaisselle. Retenez l’article de chacun.\n\n- `une casserole`\n- `une poêle`\n- `une bouteille`\n- `un torchon`",
+        "de": "Diese Gegenstände benutzt du **in der Küche**, um zu kochen, Wasser aufzubewahren und Geschirr abzutrocknen. Merke dir den Artikel jedes Wortes.\n\n- `une casserole`\n- `une poêle`\n- `une bouteille`\n- `un torchon`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "assiette",
+      "term": "assiette",
+      "translations": { "en": ["plate"], "de": ["Teller"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une assiette",
+      "examForms": ["une assiette"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/yn asjɛt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "L’assiette est blanche.",
+        "translation": { "en": "The plate is white.", "de": "Der Teller ist weiß." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Une assiette is a plate: you eat from it.",
+        "fr": "Une assiette sert à manger.",
+        "de": "Eine „assiette“ ist ein Teller: Du isst davon."
+      },
+      "genderExplanation": {
+        "en": "Assiette is feminine, so its indefinite article is une.",
+        "fr": "Assiette est féminin : on dit une assiette.",
+        "de": "Assiette ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il y a du riz dans l’",
+        "after": ".",
+        "accepted": { "answers": ["assiette"] },
+        "referenceTargetIds": ["assiette", "verre", "fourchette", "serviette"],
+        "explanation": {
+          "en": "Rice is put on a plate: assiette.",
+          "fr": "On met le riz dans une assiette.",
+          "de": "Reis kommt auf einen Teller: assiette."
+        }
+      },
+      "listeningOptionTargetIds": ["assiette", "serviette", "fourchette", "bouteille"]
+    },
+    {
+      "id": "verre",
+      "term": "verre",
+      "translations": { "en": ["glass"], "de": ["Glas"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un verre",
+      "examForms": ["un verre"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/œ̃ vɛʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Je veux un verre d’eau.",
+        "translation": { "en": "I want a glass of water.", "de": "Ich möchte ein Glas Wasser." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Un verre is a glass: you drink from it.",
+        "fr": "Un verre sert à boire.",
+        "de": "Ein „verre“ ist ein Glas: Du trinkst daraus."
+      },
+      "genderExplanation": {
+        "en": "Verre is masculine, so its indefinite article is un.",
+        "fr": "Verre est masculin : on dit un verre.",
+        "de": "Verre ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Je bois de l’eau dans un ",
+        "after": ".",
+        "accepted": { "answers": ["verre"] },
+        "referenceTargetIds": ["verre", "couteau", "casserole", "serviette"],
+        "explanation": {
+          "en": "You drink water from a glass: verre.",
+          "fr": "On boit de l’eau dans un verre.",
+          "de": "Wasser trinkt man aus einem Glas: verre."
+        }
+      },
+      "listeningOptionTargetIds": ["verre", "tasse", "bol", "poele"]
+    },
+    {
+      "id": "tasse",
+      "term": "tasse",
+      "translations": { "en": ["cup"], "de": ["Tasse"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une tasse",
+      "examForms": ["une tasse"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/yn tas/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Elle prend une tasse de thé.",
+        "translation": { "en": "She has a cup of tea.", "de": "Sie nimmt eine Tasse Tee." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Une tasse is a cup for coffee or tea.",
+        "fr": "Une tasse sert à boire le café ou le thé.",
+        "de": "Eine „tasse“ ist eine Tasse für Kaffee oder Tee."
+      },
+      "genderExplanation": {
+        "en": "Tasse is feminine, so its indefinite article is une.",
+        "fr": "Tasse est féminin : on dit une tasse.",
+        "de": "Tasse ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le matin, je bois un café dans une ",
+        "after": ".",
+        "accepted": { "answers": ["tasse"] },
+        "referenceTargetIds": ["tasse", "fourchette", "poele", "serviette"],
+        "explanation": {
+          "en": "Coffee is drunk from a cup: tasse.",
+          "fr": "On boit le café dans une tasse.",
+          "de": "Kaffee trinkt man aus einer Tasse: tasse."
+        }
+      },
+      "listeningOptionTargetIds": ["verre", "tasse", "bol", "poele"]
+    },
+    {
+      "id": "bol",
+      "term": "bol",
+      "translations": { "en": ["bowl"], "de": ["Schüssel", "Schale"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un bol",
+      "examForms": ["un bol"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/œ̃ bɔl/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Il mange un bol de céréales.",
+        "translation": { "en": "He eats a bowl of cereal.", "de": "Er isst eine Schale Müsli." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Un bol is a round bowl for cereal or soup.",
+        "fr": "Un bol est un récipient rond pour les céréales ou la soupe.",
+        "de": "Ein „bol“ ist eine runde Schale für Müsli oder Suppe."
+      },
+      "genderExplanation": {
+        "en": "Bol is masculine, so its indefinite article is un.",
+        "fr": "Bol est masculin : on dit un bol.",
+        "de": "Bol ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Je mange mes céréales dans un ",
+        "after": ".",
+        "accepted": { "answers": ["bol"] },
+        "referenceTargetIds": ["bol", "couteau", "bouteille", "serviette"],
+        "explanation": {
+          "en": "Cereal is eaten from a bowl: bol.",
+          "fr": "On mange les céréales dans un bol.",
+          "de": "Müsli isst man aus einer Schale: bol."
+        }
+      },
+      "listeningOptionTargetIds": ["verre", "tasse", "bol", "poele"]
+    },
+    {
+      "id": "couteau",
+      "term": "couteau",
+      "translations": { "en": ["knife"], "de": ["Messer"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un couteau",
+      "examForms": ["un couteau"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/œ̃ kuto/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Le couteau est sur la table.",
+        "translation": {
+          "en": "The knife is on the table.",
+          "de": "Das Messer liegt auf dem Tisch."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Un couteau is a knife: you cut with it.",
+        "fr": "Un couteau sert à couper.",
+        "de": "Ein „couteau“ ist ein Messer: Damit schneidet man."
+      },
+      "genderExplanation": {
+        "en": "Couteau is masculine, so its indefinite article is un.",
+        "fr": "Couteau est masculin : on dit un couteau.",
+        "de": "Couteau ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Je coupe le pain avec un ",
+        "after": ".",
+        "accepted": { "answers": ["couteau"] },
+        "referenceTargetIds": ["couteau", "verre", "tasse", "bouteille"],
+        "explanation": {
+          "en": "You cut bread with a knife: couteau.",
+          "fr": "On coupe le pain avec un couteau.",
+          "de": "Brot schneidet man mit einem Messer: couteau."
+        }
+      },
+      "listeningOptionTargetIds": ["couteau", "torchon", "cuillere", "casserole"]
+    },
+    {
+      "id": "fourchette",
+      "term": "fourchette",
+      "translations": { "en": ["fork"], "de": ["Gabel"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une fourchette",
+      "examForms": ["une fourchette"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/yn fuʁʃɛt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "La fourchette est à gauche.",
+        "translation": { "en": "The fork is on the left.", "de": "Die Gabel liegt links." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Une fourchette is a fork: you eat pasta with it.",
+        "fr": "Une fourchette sert à manger, par exemple les pâtes.",
+        "de": "Eine „fourchette“ ist eine Gabel: Damit isst man zum Beispiel Nudeln."
+      },
+      "genderExplanation": {
+        "en": "Fourchette is feminine, so its indefinite article is une.",
+        "fr": "Fourchette est féminin : on dit une fourchette.",
+        "de": "Fourchette ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Je mange les pâtes avec une ",
+        "after": ".",
+        "accepted": { "answers": ["fourchette"] },
+        "referenceTargetIds": ["fourchette", "tasse", "poele", "serviette"],
+        "explanation": {
+          "en": "You eat pasta with a fork: fourchette.",
+          "fr": "On mange les pâtes avec une fourchette.",
+          "de": "Nudeln isst man mit einer Gabel: fourchette."
+        }
+      },
+      "listeningOptionTargetIds": ["assiette", "serviette", "fourchette", "bouteille"]
+    },
+    {
+      "id": "cuillere",
+      "term": "cuillère",
+      "translations": { "en": ["spoon"], "de": ["Löffel"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une cuillère",
+      "examForms": ["une cuillère"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/yn kɥijɛʁ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Il prend une cuillère pour le dessert.",
+        "translation": {
+          "en": "He takes a spoon for dessert.",
+          "de": "Er nimmt einen Löffel für den Nachtisch."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Une cuillère is a spoon: you eat soup with it.",
+        "fr": "Une cuillère sert à manger la soupe ou le dessert.",
+        "de": "Eine „cuillère“ ist ein Löffel: Damit isst man Suppe."
+      },
+      "genderExplanation": {
+        "en": "Cuillère is feminine, so its indefinite article is une. It is written with a grave accent (accent grave) on the last e.",
+        "fr": "Cuillère est féminin : on dit une cuillère, avec un accent grave sur le dernier e.",
+        "de": "Cuillère ist feminin, daher lautet der unbestimmte Artikel une. Es hat einen Accent grave auf dem letzten e."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Je mange la soupe avec une ",
+        "after": ".",
+        "accepted": { "answers": ["cuillère"] },
+        "referenceTargetIds": ["cuillere", "assiette", "bouteille", "torchon"],
+        "explanation": {
+          "en": "You eat soup with a spoon: cuillère.",
+          "fr": "On mange la soupe avec une cuillère.",
+          "de": "Suppe isst man mit einem Löffel: cuillère."
+        }
+      },
+      "listeningOptionTargetIds": ["couteau", "torchon", "cuillere", "casserole"]
+    },
+    {
+      "id": "serviette",
+      "term": "serviette",
+      "translations": { "en": ["napkin"], "de": ["Serviette"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une serviette",
+      "examForms": ["une serviette"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/yn sɛʁvjɛt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "La serviette est sur la chaise.",
+        "translation": {
+          "en": "The napkin is on the chair.",
+          "de": "Die Serviette liegt auf dem Stuhl."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Une serviette is a napkin, used at the table.",
+        "fr": "Une serviette de table sert à s’essuyer pendant le repas.",
+        "de": "Eine „serviette“ ist eine Serviette, die man bei Tisch benutzt."
+      },
+      "genderExplanation": {
+        "en": "Serviette is feminine, so its indefinite article is une.",
+        "fr": "Serviette est féminin : on dit une serviette.",
+        "de": "Serviette ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Je prends une ",
+        "after": " en papier.",
+        "accepted": { "answers": ["serviette"] },
+        "referenceTargetIds": ["serviette", "casserole", "poele", "fourchette"],
+        "explanation": {
+          "en": "A paper napkin is a serviette en papier.",
+          "fr": "On dit une serviette en papier.",
+          "de": "Eine Papierserviette heißt serviette en papier."
+        }
+      },
+      "listeningOptionTargetIds": ["assiette", "serviette", "fourchette", "bouteille"]
+    },
+    {
+      "id": "casserole",
+      "term": "casserole",
+      "translations": { "en": ["saucepan"], "de": ["Kochtopf", "Topf"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une casserole",
+      "examForms": ["une casserole"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/yn kasʁɔl/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "La casserole est sur le feu.",
+        "translation": {
+          "en": "The saucepan is on the stove.",
+          "de": "Der Topf steht auf dem Herd."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Une casserole is a saucepan for cooking pasta or soup.",
+        "fr": "Une casserole sert à faire cuire les pâtes ou la soupe.",
+        "de": "Eine „casserole“ ist ein Kochtopf für Nudeln oder Suppe."
+      },
+      "genderExplanation": {
+        "en": "Casserole is feminine, so its indefinite article is une.",
+        "fr": "Casserole est féminin : on dit une casserole.",
+        "de": "Casserole ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Je fais cuire les pâtes dans une ",
+        "after": ".",
+        "accepted": { "answers": ["casserole"] },
+        "referenceTargetIds": ["casserole", "verre", "couteau", "serviette"],
+        "explanation": {
+          "en": "Pasta is cooked in a saucepan: casserole.",
+          "fr": "On fait cuire les pâtes dans une casserole.",
+          "de": "Nudeln kocht man in einem Topf: casserole."
+        }
+      },
+      "listeningOptionTargetIds": ["couteau", "torchon", "cuillere", "casserole"]
+    },
+    {
+      "id": "poele",
+      "term": "poêle",
+      "translations": { "en": ["frying pan"], "de": ["Pfanne"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une poêle",
+      "examForms": ["une poêle"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/yn pwal/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "La poêle est chaude.",
+        "translation": { "en": "The frying pan is hot.", "de": "Die Pfanne ist heiß." }
+      },
+      "ambiguityNote": {
+        "en": "Careful: un poêle (masculine) is a stove. In this lesson, une poêle is the frying pan.",
+        "fr": "Attention : un poêle (masculin) est un appareil de chauffage. Ici, une poêle est l’ustensile pour faire cuire.",
+        "de": "Achtung: un poêle (maskulin) ist ein Ofen. Hier ist une poêle die Pfanne."
+      },
+      "explanation": {
+        "en": "Une poêle is a frying pan: you fry an egg in it.",
+        "fr": "Une poêle sert à faire cuire un œuf ou de la viande.",
+        "de": "Eine „poêle“ ist eine Pfanne: Darin brät man ein Ei."
+      },
+      "genderExplanation": {
+        "en": "Poêle (frying pan) is feminine, so its indefinite article is une. It is written with a circumflex accent (accent circonflexe) on the e.",
+        "fr": "Poêle (l’ustensile) est féminin : on dit une poêle, avec un accent circonflexe sur le e.",
+        "de": "Poêle (Pfanne) ist feminin, daher lautet der unbestimmte Artikel une. Es hat einen Accent circonflexe auf dem e."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Je fais cuire un œuf dans une ",
+        "after": ".",
+        "accepted": { "answers": ["poêle"] },
+        "referenceTargetIds": ["poele", "tasse", "serviette", "bol"],
+        "explanation": {
+          "en": "An egg is fried in a frying pan: poêle.",
+          "fr": "On fait cuire un œuf dans une poêle.",
+          "de": "Ein Ei brät man in einer Pfanne: poêle."
+        }
+      },
+      "listeningOptionTargetIds": ["verre", "tasse", "bol", "poele"]
+    },
+    {
+      "id": "bouteille",
+      "term": "bouteille",
+      "translations": { "en": ["bottle"], "de": ["Flasche"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une bouteille",
+      "examForms": ["une bouteille"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/yn butɛj/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Une bouteille d’eau, s’il vous plaît.",
+        "translation": { "en": "A bottle of water, please.", "de": "Eine Flasche Wasser, bitte." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Une bouteille holds water, milk or juice.",
+        "fr": "Une bouteille contient de l’eau, du lait ou du jus.",
+        "de": "In einer „bouteille“ ist Wasser, Milch oder Saft."
+      },
+      "genderExplanation": {
+        "en": "Bouteille is feminine, so its indefinite article is une.",
+        "fr": "Bouteille est féminin : on dit une bouteille.",
+        "de": "Bouteille ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il y a de l’eau dans la ",
+        "after": " sur la table.",
+        "accepted": { "answers": ["bouteille"] },
+        "referenceTargetIds": ["bouteille", "couteau", "fourchette", "assiette"],
+        "explanation": {
+          "en": "Water is in a bottle: bouteille.",
+          "fr": "L’eau est dans la bouteille.",
+          "de": "Das Wasser ist in der Flasche: bouteille."
+        }
+      },
+      "listeningOptionTargetIds": ["assiette", "serviette", "fourchette", "bouteille"]
+    },
+    {
+      "id": "torchon",
+      "term": "torchon",
+      "translations": { "en": ["tea towel"], "de": ["Geschirrtuch"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un torchon",
+      "examForms": ["un torchon"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/œ̃ tɔʁʃɔ̃/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Le torchon est dans la cuisine.",
+        "translation": {
+          "en": "The tea towel is in the kitchen.",
+          "de": "Das Geschirrtuch ist in der Küche."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Un torchon is a tea towel used to dry dishes.",
+        "fr": "Un torchon sert à sécher la vaisselle.",
+        "de": "Ein „torchon“ ist ein Geschirrtuch zum Abtrocknen."
+      },
+      "genderExplanation": {
+        "en": "Torchon is masculine, so its indefinite article is un.",
+        "fr": "Torchon est masculin : on dit un torchon.",
+        "de": "Torchon ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Je sèche l’assiette avec un ",
+        "after": ".",
+        "accepted": { "answers": ["torchon"] },
+        "referenceTargetIds": ["torchon", "verre", "bol", "couteau"],
+        "explanation": {
+          "en": "You dry a plate with a tea towel: torchon.",
+          "fr": "On sèche une assiette avec un torchon.",
+          "de": "Einen Teller trocknet man mit einem Geschirrtuch ab: torchon."
+        }
+      },
+      "listeningOptionTargetIds": ["couteau", "torchon", "cuillere", "casserole"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

@@ -1,0 +1,249 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-connectors-and-parce-que",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Et, ou, mais, alors, parce que",
+  "objective": {
+    "en": "Link two ideas with et, ou, mais and alors, and answer why with parce que.",
+    "fr": "Relier deux idées avec et, ou, mais et alors, et répondre à pourquoi avec parce que.",
+    "de": "Zwei Ideen mit et, ou, mais und alors verbinden und mit parce que auf pourquoi antworten."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-1",
+    "generatedAt": "2026-10-26T23:00:03.215Z",
+    "inputHashes": { "outline": "8ea2af35f70ca66e022ea41603b954cd0b239be415ced99873f178dc87fdfacc" }
+  },
+  "kind": "grammar",
+  "topic": "syntax_and_sentence_structure",
+  "scopeBoundaries": {
+    "en": "Covers the connectors et, ou, mais, alors and parce que in short, simple sentences. Excludes parce qu'il/elle contractions, donc, car and subordinate clauses with que.",
+    "fr": "Couvre les mots de liaison et, ou, mais, alors et parce que dans des phrases courtes et simples. Exclut parce qu'il/elle, donc, car et les subordonnées avec que.",
+    "de": "Behandelt die Bindewörter et, ou, mais, alors und parce que in kurzen, einfachen Sätzen. Ausgeschlossen sind parce qu'il/elle, donc, car und Nebensätze mit que."
+  },
+  "prerequisites": [
+    {
+      "en": "Simple present sentences with être, avoir and verbs in -er",
+      "fr": "Phrases simples au présent avec être, avoir et les verbes en -er",
+      "de": "Einfache Sätze im Präsens mit être, avoir und Verben auf -er"
+    },
+    {
+      "en": "The question word pourquoi",
+      "fr": "Le mot interrogatif pourquoi",
+      "de": "Das Fragewort pourquoi"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-et-ou",
+      "summary": {
+        "en": "Et adds two things; ou offers a choice between two things.",
+        "fr": "Et ajoute deux choses ; ou propose un choix entre deux choses.",
+        "de": "Et fügt zwei Dinge hinzu; ou bietet eine Wahl zwischen zwei Dingen."
+      }
+    },
+    {
+      "id": "rule-mais",
+      "summary": {
+        "en": "Mais links two ideas that contrast, with a comma before it.",
+        "fr": "Mais relie deux idées qui s'opposent, avec une virgule avant.",
+        "de": "Mais verbindet zwei gegensätzliche Ideen, mit einem Komma davor."
+      }
+    },
+    {
+      "id": "rule-alors",
+      "summary": {
+        "en": "Alors gives the result, after the cause: Il pleut, alors je reste ici.",
+        "fr": "Alors donne la conséquence, après la cause : Il pleut, alors je reste ici.",
+        "de": "Alors nennt die Folge, nach der Ursache: Il pleut, alors je reste ici."
+      }
+    },
+    {
+      "id": "rule-parce-que",
+      "summary": {
+        "en": "Parce que gives the reason and answers pourquoi: J'aime Paris parce que c'est beau.",
+        "fr": "Parce que donne la raison et répond à pourquoi : J'aime Paris parce que c'est beau.",
+        "de": "Parce que nennt den Grund und antwortet auf pourquoi: J'aime Paris parce que c'est beau."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-add-choose-contrast",
+      "title": {
+        "en": "Adding, choosing, contrasting: et, ou, mais",
+        "fr": "Ajouter, choisir, opposer : et, ou, mais",
+        "de": "Hinzufügen, wählen, gegenüberstellen: et, ou, mais"
+      },
+      "ruleIds": ["rule-et-ou", "rule-mais"],
+      "explanationPlan": {
+        "en": "Explain et (adding), ou (choosing) and mais (contrast, with a comma before it) with short examples and a small table.",
+        "fr": "Expliquer et (ajouter), ou (choisir) et mais (opposer, avec une virgule avant) avec des exemples courts et un petit tableau.",
+        "de": "et (hinzufügen), ou (wählen) und mais (Gegensatz, mit Komma davor) mit kurzen Beispielen und einer kleinen Tabelle erklären."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "J'aime le thé et le café.",
+          "translation": { "en": "I like tea and coffee.", "de": "Ich mag Tee und Kaffee." }
+        },
+        {
+          "text": "Tu veux du riz ou des pâtes ?",
+          "translation": {
+            "en": "Do you want rice or pasta?",
+            "de": "Möchtest du Reis oder Nudeln?"
+          }
+        },
+        {
+          "text": "Il est petit, mais il est fort.",
+          "translation": {
+            "en": "He is small, but he is strong.",
+            "de": "Er ist klein, aber er ist stark."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not use ou when you mean both things: use et.",
+          "fr": "N'utilisez pas ou pour dire les deux choses : utilisez et.",
+          "de": "Benutze nicht ou, wenn du beides meinst: benutze et."
+        },
+        {
+          "en": "Mais is not the same as mes (my, plural).",
+          "fr": "Mais n'est pas mes (pluriel de mon).",
+          "de": "Mais ist nicht dasselbe wie mes (meine, Plural)."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-a-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-et-ou", "rule-mais"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-a-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-et-ou", "rule-mais"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-a-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-et-ou", "rule-mais"],
+          "estimatedDurationS": 75
+        }
+      ]
+    },
+    {
+      "id": "block-result-reason",
+      "title": {
+        "en": "Result and reason: alors, parce que",
+        "fr": "Conséquence et raison : alors, parce que",
+        "de": "Folge und Grund: alors, parce que"
+      },
+      "ruleIds": ["rule-alors", "rule-parce-que"],
+      "explanationPlan": {
+        "en": "Explain alors (result, after the cause) and parce que (reason, answers pourquoi). Show the order: cause, alors, result; idea, parce que, reason.",
+        "fr": "Expliquer alors (conséquence, après la cause) et parce que (raison, répond à pourquoi). Montrer l'ordre : cause, alors, conséquence ; idée, parce que, raison.",
+        "de": "alors (Folge, nach der Ursache) und parce que (Grund, antwortet auf pourquoi) erklären. Die Reihenfolge zeigen: Ursache, alors, Folge; Idee, parce que, Grund."
+      },
+      "explanationDurationS": 130,
+      "examples": [
+        {
+          "text": "Il pleut, alors je regarde un film.",
+          "translation": {
+            "en": "It is raining, so I am watching a film.",
+            "de": "Es regnet, also sehe ich einen Film."
+          }
+        },
+        {
+          "text": "J'aime Paris parce que c'est beau.",
+          "translation": {
+            "en": "I like Paris because it is beautiful.",
+            "de": "Ich mag Paris, weil es schön ist."
+          }
+        },
+        {
+          "text": "J'ai faim, alors je mange une pomme.",
+          "translation": {
+            "en": "I am hungry, so I am eating an apple.",
+            "de": "Ich habe Hunger, also esse ich einen Apfel."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not swap the order: alors comes after the cause, parce que before the reason.",
+          "fr": "Ne changez pas l'ordre : alors vient après la cause, parce que avant la raison.",
+          "de": "Vertausche die Reihenfolge nicht: alors steht nach der Ursache, parce que vor dem Grund."
+        },
+        {
+          "en": "Parce que is written as two words.",
+          "fr": "Parce que s'écrit en deux mots.",
+          "de": "Parce que wird in zwei Wörtern geschrieben."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-b-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-alors", "rule-parce-que"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-b-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-alors", "rule-parce-que"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-b-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["rule-alors", "rule-parce-que"],
+          "estimatedDurationS": 75
+        },
+        {
+          "id": "ex-b-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-alors", "rule-parce-que"],
+          "estimatedDurationS": 75
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-gaps",
+        "type": "grammar_gap_typing",
+        "itemCount": 6,
+        "ruleIds": ["rule-et-ou", "rule-mais", "rule-alors", "rule-parce-que"],
+        "estimatedDurationS": 90,
+        "timeLimitS": 180
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 4,
+        "ruleIds": ["rule-et-ou", "rule-mais", "rule-alors", "rule-parce-que"],
+        "estimatedDurationS": 100,
+        "timeLimitS": 200
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}
