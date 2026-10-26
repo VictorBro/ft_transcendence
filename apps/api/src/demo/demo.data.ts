@@ -9,12 +9,20 @@ import type { DailyGoal, Language, Level } from '@ft/shared';
  *   anna   streak 3, today met
  *   ben    streak 12, "Reach today's goal to keep it", 1 of 3 today; his A1
  *          results survive a switch to A2 and back
- *   chloe  streak 0, best 21; today 2 of 3, one failed
+ *   chloe  streak 0, best 12; today 2 of 3, one failed
  *   david  streak 6 still alive, 0 today
  *   eva    French A1 complete, "Start A2"
  *   felix  no French; his English course has no level, so opening it lands
  *          on onboarding step 2 (#52)
+ *
+ * A level is complete once every lesson is attempted and 80% pass, and a
+ * failed lesson is offered again first, so a learner who finishes more
+ * lessons than the level holds ends up completing it. Every French profile
+ * but eva's therefore finishes fewer than SMALLEST_LEVEL.
  */
+
+/** The fewest lessons a level holds: 12 of each of the 4 kinds. */
+export const SMALLEST_LEVEL = 48;
 
 /**
  * The finishes on the days before today, yesterday first: [3, 0, 3] is 3
@@ -102,14 +110,15 @@ export const DEMO_PROFILES: DemoProfile[] = [
       {
         lang: 'fr',
         level: 'A1',
+        // Mid-streak, so A1 results come before and after the switch.
         switches: [
-          { daysAgo: 20, level: 'A2' },
-          { daysAgo: 20, level: 'A1' },
+          { daysAgo: 6, level: 'A2' },
+          { daysAgo: 6, level: 'A1' },
         ],
         goal: 30,
         passRate: 0.8,
-        // 12 met days up to yesterday, a missed day, then 20 met days before it.
-        days: [...repeat(12, 3), 0, ...repeat(20, 3)],
+        // 12 met days up to yesterday: 37 finishes with today's.
+        days: repeat(12, 3),
         todayScores: [75],
       },
     ],
@@ -133,8 +142,9 @@ export const DEMO_PROFILES: DemoProfile[] = [
         switches: [],
         goal: 30,
         passRate: 0.8,
-        // Nothing yesterday, 1 a day for 3 days, then 21 met days ending 5 days ago.
-        days: [0, 1, 1, 1, ...repeat(21, 3)],
+        // Nothing yesterday, 1 a day for 3 days, then 12 met days ending 5 days
+        // ago: 41 finishes with today's.
+        days: [0, 1, 1, 1, ...repeat(12, 3)],
         todayScores: [85, 40],
       },
     ],

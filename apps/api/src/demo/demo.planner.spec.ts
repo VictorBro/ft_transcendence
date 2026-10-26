@@ -7,6 +7,7 @@ import { atLocalTime, daysBefore, pastScore, randomFrom, seedOf } from './demo.c
 import {
   DEMO_EMAIL_FILTER,
   DEMO_PROFILES,
+  SMALLEST_LEVEL,
   type DemoCourse,
   demoDisplayName,
   demoEmail,
@@ -249,6 +250,18 @@ describe('the demo profiles', () => {
   ])('never match a %s- e2e user', (prefix) => {
     expect(matches(`${prefix}-123@example.com`)).toBe(false);
   });
+
+  // More finishes than lessons and the level ends up complete: only eva's may be.
+  it.each(['anna', 'ben', 'chloe', 'david'])(
+    "finish fewer lessons than the smallest level: %s's French A1 is never complete",
+    (name) => {
+      const profile = DEMO_PROFILES.find((p) => p.name === name)!;
+      const french = profile.courses.find((c) => c.lang === 'fr')!;
+      const days = planCourse(demoEmail(name), profile.timeZone, french, new Date(), []);
+      const finishes = days.reduce((sum, day) => sum + day.finishes.length, 0);
+      expect(finishes).toBeLessThan(SMALLEST_LEVEL);
+    },
+  );
 
   it('end on French, the course the learner lands on, except felix', () => {
     for (const profile of DEMO_PROFILES.filter((profile) => profile.name !== 'felix')) {

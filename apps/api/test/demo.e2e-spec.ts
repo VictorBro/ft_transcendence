@@ -5,9 +5,8 @@ import type { Today } from '@ft/shared';
 import { AuthService } from '../src/auth/auth.service';
 import { CoursesService } from '../src/courses/courses.service';
 import { atLocalTime } from '../src/demo/demo.clock';
-import { DEMO_PROFILES, type DemoProfile } from '../src/demo/demo.data';
+import { DEMO_PROFILES, type DemoProfile, SMALLEST_LEVEL } from '../src/demo/demo.data';
 import { type DemoServices, replayLearner } from '../src/demo/demo';
-import { planCourse } from '../src/demo/demo.planner';
 import type { Prisma } from '../src/generated/prisma/client';
 import { dayOf } from '../src/lessons/goal';
 import { LessonsService } from '../src/lessons/lessons.service';
@@ -38,13 +37,6 @@ describe('demo learners replay (e2e)', () => {
 
   /** The profile's French course. */
   const french = (name: string) => profile(name).courses.find((course) => course.lang === 'fr')!;
-
-  /** How many finishes a profile's French course replays, today's included. */
-  const finishCount = (name: string) =>
-    planCourse('x@example.com', 'UTC', french(name), RUN_NOW, []).reduce(
-      (sum, day) => sum + day.finishes.length,
-      0,
-    );
 
   /** Letters only in lesson ids: an index as base-26 letters, aa, ab… */
   const letters = (index: number) =>
@@ -100,11 +92,12 @@ describe('demo learners replay (e2e)', () => {
     });
     await prisma.lesson.deleteMany({ where: { id: { startsWith: 'fr-test-demo-' } } });
 
-    // CI seeds no lesson. A level with fewer lessons than the profiles finish
-    // would make them redo lessons, which is not the story they tell.
+    // CI seeds no lesson: fill French A1 up to the smallest real level, the
+    // size the profiles are written for (see demo.data.ts).
     const held = await prisma.lesson.count({ where: { lang: 'fr', level: 'A1' } });
-    const needed = Math.max(finishCount('ben'), finishCount('chloe'));
-    const fixtures = Array.from({ length: Math.max(0, needed - held) }, (_, i) => fixture(i));
+    const fixtures = Array.from({ length: Math.max(0, SMALLEST_LEVEL - held) }, (_, i) =>
+      fixture(i),
+    );
     fixtureIds = fixtures.map((row) => row.id);
     await prisma.lesson.createMany({ data: fixtures });
   });
@@ -121,7 +114,7 @@ describe('demo learners replay (e2e)', () => {
     const page = await today(userId, 'America/New_York');
     const held = await prisma.lesson.count({ where: { lang: 'fr', level: 'A1' } });
 
-    expect(page.streak).toEqual({ current: 12, best: 20, today: false });
+    expect(page.streak).toEqual({ current: 12, best: 12, today: false });
     expect(page.done).toHaveLength(1);
     expect(page.done[0].score).toBe(75);
     expect(page.target).toBe(3);
@@ -138,12 +131,12 @@ describe('demo learners replay (e2e)', () => {
     expect(course._count.lessonResults).toBe(page.progress.attempted);
   });
 
-  it('replays chloe: streak lost, best 21, today 2 of 3 with one failed', async () => {
+  it('replays chloe: streak lost, best 12, today 2 of 3 with one failed', async () => {
     const userId = await replay('chloe');
     const page = await today(userId, 'Asia/Tokyo');
 
     expect(page.day).toBe(DAY);
-    expect(page.streak).toEqual({ current: 0, best: 21, today: false });
+    expect(page.streak).toEqual({ current: 0, best: 12, today: false });
     expect(page.done.map((card) => card.score)).toEqual([85, 40]);
     expect(page.done.map((card) => card.status)).toEqual(['done', 'failed']);
   });
