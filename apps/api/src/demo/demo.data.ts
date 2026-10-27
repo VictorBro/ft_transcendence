@@ -54,8 +54,9 @@ export type DemoProfile = {
   name: string;
   timeZone: string;
   /**
-   * Replayed in this order. setLevel and setGoal make a course the active
-   * one, so the course the learner should land on comes last.
+   * Replayed in this order. setLevel makes a course the active one, so the
+   * course the learner should land on comes last, among the courses with a
+   * level.
    */
   courses: DemoCourse[];
 };
