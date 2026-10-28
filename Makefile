@@ -285,7 +285,7 @@ test-e2e: ## Playwright against the production stack (starts it if needed)
 # The suite alone, for a caller that has just brought the stack up: `all` gets
 # it from `run`, and a second `up` is one more build and health wait.
 playwright:
-	pnpm --filter @ft/e2e exec playwright install chromium
+	pnpm --filter @ft/e2e exec playwright install chromium firefox webkit
 	@# The accounts the browser suite signs up are real rows. Removing them keeps
 	@# repeated runs from filling the database an evaluator is going to look at.
 	@# The prefix is set by identity() in e2e/support/session.ts. RecoveryCode cascades.

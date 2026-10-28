@@ -23,10 +23,13 @@ export interface ConsoleViolation {
 const ALLOWED_MESSAGES: RegExp[] = [];
 
 /**
- * A navigation cancels in-flight prefetches, and Chromium reports each one as a
- * failed request. That is the browser working correctly, not the app breaking.
+ * A navigation cancels in-flight prefetches, and every engine reports each one
+ * as a failed request, in its own words: Chromium `net::ERR_ABORTED`, Firefox
+ * `NS_BINDING_ABORTED`, WebKit `cancelled` (or `Load request cancelled`). That
+ * is the browser working correctly, not the app breaking.
  */
-const IGNORED_REQUEST_FAILURES = /net::ERR_ABORTED/;
+const IGNORED_REQUEST_FAILURES =
+  /^(net::ERR_ABORTED|NS_BINDING_ABORTED|cancelled|Load request cancelled)$/;
 
 function isAllowed(text: string): boolean {
   return ALLOWED_MESSAGES.some((pattern) => pattern.test(text));

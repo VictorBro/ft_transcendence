@@ -91,36 +91,94 @@ RUN install -m 0755 -d /etc/apt/keyrings \
 RUN docker completion zsh > /usr/share/zsh/vendor-completions/_docker \
     && gh completion -s zsh > /usr/share/zsh/vendor-completions/_gh
 
-# Chromium's shared-library dependencies, so the e2e step of `make all` runs
-# inside this container without `playwright install --with-deps` (which needs
-# root and would put the package set outside this file). The browser BINARY is
-# not baked in: playwright downloads the exact build its version pins into
-# ~/.cache/ms-playwright, which compose.override.yml backs with a named volume,
-# so it survives rebuilds and stays in the lockfile's control.
+# Shared-library dependencies of the three browsers the suite runs on
+# (Chromium, Firefox, WebKit), so the e2e step of `make all` runs inside this
+# container without `playwright install --with-deps` (which needs root and
+# would put the package set outside this file). The list is Playwright's own
+# for debian12, from playwright-core's nativeDeps: when the Playwright pin
+# moves, compare it again. The browser BINARIES are not baked in: playwright
+# downloads the exact builds its version pins into ~/.cache/ms-playwright,
+# which compose.override.yml backs with a named volume, so they survive
+# rebuilds and stay in the lockfile's control.
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         fonts-liberation \
+        gstreamer1.0-libav \
+        gstreamer1.0-plugins-bad \
+        gstreamer1.0-plugins-base \
+        gstreamer1.0-plugins-good \
         libasound2 \
         libatk-bridge2.0-0 \
         libatk1.0-0 \
+        libatomic1 \
         libatspi2.0-0 \
+        libavcodec59 \
+        libavif15 \
+        libcairo-gobject2 \
         libcairo2 \
         libcups2 \
         libdbus-1-3 \
+        libdbus-glib-1-2 \
         libdrm2 \
+        libegl1 \
+        libenchant-2-2 \
+        libepoxy0 \
+        libevdev2 \
+        libevent-2.1-7 \
+        libfontconfig1 \
+        libfreetype6 \
         libgbm1 \
+        libgdk-pixbuf-2.0-0 \
+        libgles2 \
         libglib2.0-0 \
+        libglx0 \
+        libgstreamer-gl1.0-0 \
+        libgstreamer-plugins-base1.0-0 \
+        libgstreamer1.0-0 \
+        libgtk-3-0 \
+        libgtk-4-1 \
+        libgudev-1.0-0 \
+        libharfbuzz-icu0 \
+        libharfbuzz0b \
+        libhyphen0 \
+        libicu72 \
+        libjpeg62-turbo \
+        liblcms2-2 \
+        libmanette-0.2-0 \
+        libnotify4 \
         libnspr4 \
         libnss3 \
+        libopengl0 \
+        libopenjp2-7 \
+        libopus0 \
         libpango-1.0-0 \
+        libpangocairo-1.0-0 \
+        libpng16-16 \
+        libproxy1v5 \
+        libsecret-1-0 \
+        libsoup-3.0-0 \
+        libwayland-client0 \
+        libwayland-egl1 \
+        libwayland-server0 \
+        libwebp7 \
+        libwebpdemux2 \
+        libwoff1 \
         libx11-6 \
+        libx11-xcb1 \
+        libxcb-shm0 \
         libxcb1 \
         libxcomposite1 \
+        libxcursor1 \
         libxdamage1 \
         libxext6 \
         libxfixes3 \
+        libxi6 \
         libxkbcommon0 \
+        libxml2 \
         libxrandr2 \
+        libxrender1 \
+        libxslt1.1 \
+        libxtst6 \
     && rm -rf /var/lib/apt/lists/*
 
 # Socket bridge for docker-outside-of-docker, run as the workspace service's
