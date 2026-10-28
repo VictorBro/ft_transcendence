@@ -1,0 +1,408 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-reading-a-travel-blog",
+  "lang": "fr",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Trois jours à Marseille",
+  "objective": {
+    "en": "Read a travel blog post about three days in Marseille and find the order of the visits, the small problem on the second day and the best moment.",
+    "fr": "Lire un billet de blog sur trois jours à Marseille et retrouver l’ordre des visites, le petit problème du deuxième jour et le meilleur moment.",
+    "de": "Einen Reiseblog-Beitrag über drei Tage in Marseille lesen und die Reihenfolge der Besuche, das kleine Problem am zweiten Tag und den schönsten Moment finden."
+  },
+  "estimatedMinutes": 10,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "deepseek-chat",
+    "promptVersion": "author-1",
+    "generatedAt": "2026-10-26T23:34:46.757Z",
+    "inputHashes": {
+      "outline": "9be1383d037fc7c64d01aa016b01e7aa3f5ef772e7f2ed65351c9e5cc28a10f6",
+      "brief": "4135fedf7d0b27d3a132d5124c7c96875b5e4ff7ef7c57db36c24229f4ec4641"
+    }
+  },
+  "kind": "reading",
+  "theme": "travel",
+  "genre": "article",
+  "documents": [
+    {
+      "documentId": "main",
+      "title": "Trois jours à Marseille",
+      "meta": ["Le blog de Camille", "Publié le 12 août"],
+      "paragraphs": [
+        "Jour 1 : nous sommes arrivées le matin. D’abord, nous avons bu un café sur le Vieux-Port. Ensuite, nous avons marché dans le Panier, le plus vieux quartier de Marseille. Le soir, on a mangé une pizza près du port.",
+        "Jour 2 : le matin, on a fait une randonnée dans les calanques. C’était magnifique ! Après la marche, on s’est baignées dans une eau très claire. Mais tout à coup, un orage est arrivé. Nous sommes rentrées vite à l’hôtel et nous avons raté le bus.",
+        "Jour 3 : nous avons visité le musée et acheté des savons. À la fin, nous sommes montées à Notre-Dame de la Garde. Le coucher de soleil était génial : c’était le meilleur moment du séjour.",
+        "Bref, c’était super. Je recommande les calanques, mais prenez un bus plus tôt que nous !"
+      ],
+      "highlights": [
+        { "keywordId": "le-vieux-port", "text": "Vieux-Port" },
+        { "keywordId": "le-panier", "text": "Panier" },
+        { "keywordId": "une-randonnee", "text": "randonnée" },
+        { "keywordId": "les-calanques", "text": "calanques" },
+        { "keywordId": "se-baigner", "text": "baignées" },
+        { "keywordId": "tout-a-coup", "text": "tout à coup" }
+      ]
+    },
+    {
+      "documentId": "exam",
+      "title": "Une journée à Aix",
+      "meta": ["Le blog de Hugo", "Publié le 3 mai"],
+      "paragraphs": [
+        "Samedi matin, je suis allé au marché d’Aix-en-Provence. Il y avait beaucoup de fruits et de fleurs. J’ai acheté des tomates et du fromage.",
+        "Ensuite, j’ai voulu visiter le musée, mais il était fermé : le musée est fermé le mardi, et ce jour-là, c’était un mardi !",
+        "Le soir, je me suis reposé près de la fontaine du cours Mirabeau. C’était mon meilleur moment."
+      ],
+      "highlights": []
+    }
+  ],
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "exercise",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "flashcards",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Turn each card to learn the key words of the text.",
+            "fr": "Retournez chaque carte pour découvrir les mots clés du texte.",
+            "de": "Dreh jede Karte um und lerne die Schlüsselwörter des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_flashcards",
+              "itemId": "cards",
+              "keywordIds": [
+                "le-vieux-port",
+                "les-calanques",
+                "le-panier",
+                "une-randonnee",
+                "se-baigner",
+                "tout-a-coup"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "matching",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each key word with its meaning.",
+            "fr": "Associez chaque mot clé à son sens.",
+            "de": "Ordne jedem Schlüsselwort seine Bedeutung zu."
+          },
+          "items": [
+            {
+              "type": "reading_keyword_matching",
+              "itemId": "matching",
+              "keywordIds": [
+                "le-vieux-port",
+                "les-calanques",
+                "le-panier",
+                "une-randonnee",
+                "se-baigner",
+                "tout-a-coup"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skim",
+      "stage": "skim",
+      "role": "exercise",
+      "label": { "en": "Skim", "fr": "Survol", "de": "Überfliegen" },
+      "pages": [
+        {
+          "pageId": "skim",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Look over the document quickly. When the time is up it is put away; then answer the question.",
+            "fr": "Parcourez rapidement le document. À la fin du temps, il disparaît ; répondez ensuite à la question.",
+            "de": "Überfliege das Dokument. Wenn die Zeit um ist, verschwindet es; beantworte dann die Frage."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "skim-document",
+              "documentId": "main",
+              "view": "skim",
+              "skimSeconds": 100
+            },
+            {
+              "type": "reading_skim_choice",
+              "itemId": "skim-question",
+              "focus": "purpose",
+              "question": "Pourquoi Camille écrit-elle ce billet ?",
+              "options": [
+                { "optionId": "o1", "text": "Pour vendre un appartement à Marseille" },
+                { "optionId": "o2", "text": "Pour raconter son séjour et donner des conseils" },
+                { "optionId": "o3", "text": "Pour chercher un hôtel pour l’été" },
+                { "optionId": "o4", "text": "Pour expliquer la météo à Marseille" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "She tells her three days and ends with a recommendation: Je recommande les calanques…",
+                "fr": "Elle raconte ses trois jours et finit par un conseil : Je recommande les calanques…",
+                "de": "Sie erzählt von ihren drei Tagen und gibt am Ende einen Tipp: Je recommande les calanques…"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detail",
+      "stage": "detail",
+      "role": "exercise",
+      "label": { "en": "Detail", "fr": "Détails", "de": "Details" },
+      "pages": [
+        {
+          "pageId": "detail",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the document carefully and answer the questions.",
+            "fr": "Lisez le document attentivement et répondez aux questions.",
+            "de": "Lies das Dokument genau und beantworte die Fragen."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "detail-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-order",
+              "question": "Qu’est-ce qu’elles ont fait en premier, le jour 1 ?",
+              "options": [
+                { "optionId": "o1", "text": "Elles ont mangé une pizza" },
+                { "optionId": "o2", "text": "Elles ont marché dans le Panier" },
+                { "optionId": "o3", "text": "Elles ont bu un café sur le Vieux-Port" },
+                { "optionId": "o4", "text": "Elles ont visité le musée" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "D’abord, nous avons bu un café sur le Vieux-Port. The Panier comes ensuite, the pizza le soir.",
+                "fr": "D’abord, nous avons bu un café sur le Vieux-Port. Le Panier vient ensuite, la pizza le soir.",
+                "de": "D’abord, nous avons bu un café sur le Vieux-Port. Das Panier kommt ensuite, die Pizza le soir."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-problem",
+              "question": "Quel petit problème ont-elles eu le jour 2 ?",
+              "options": [
+                { "optionId": "o1", "text": "Elles ont perdu leur sac" },
+                { "optionId": "o2", "text": "Il y a eu un orage et elles ont raté le bus" },
+                { "optionId": "o3", "text": "L’hôtel était fermé" },
+                { "optionId": "o4", "text": "Elles n’ont pas trouvé les calanques" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "Tout à coup, un orage est arrivé… et nous avons raté le bus.",
+                "fr": "Tout à coup, un orage est arrivé… et nous avons raté le bus.",
+                "de": "Tout à coup, un orage est arrivé… und nous avons raté le bus."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "q-best",
+              "statement": "Le meilleur moment du séjour, c’est la baignade dans les calanques.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: the best moment is the sunset at Notre-Dame de la Garde (le coucher de soleil… c’était le meilleur moment).",
+                "fr": "Faux : le meilleur moment, c’est le coucher de soleil à Notre-Dame de la Garde.",
+                "de": "Falsch: der schönste Moment ist der Sonnenuntergang bei Notre-Dame de la Garde."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-day2",
+              "question": "Qu’est-ce qu’elles ont fait le matin du jour 2 ?",
+              "options": [
+                { "optionId": "o1", "text": "Une randonnée dans les calanques" },
+                { "optionId": "o2", "text": "Du shopping dans le Panier" },
+                { "optionId": "o3", "text": "Une visite du musée" },
+                { "optionId": "o4", "text": "Un tour en bateau sur le Vieux-Port" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "Le matin, on a fait une randonnée dans les calanques. The museum is on day 3.",
+                "fr": "Le matin, on a fait une randonnée dans les calanques. Le musée, c’est le jour 3.",
+                "de": "Le matin, on a fait une randonnée dans les calanques. Das Museum ist am Tag 3."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "structure",
+      "stage": "structure",
+      "role": "exercise",
+      "label": { "en": "Structure", "fr": "Structure", "de": "Aufbau" },
+      "pages": [
+        {
+          "pageId": "structure",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the visits in the order of the text.",
+            "fr": "Remettez les visites dans l’ordre du texte.",
+            "de": "Bring die Besuche in die Reihenfolge des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "structure-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_order",
+              "itemId": "order",
+              "pieces": [
+                { "pieceId": "p1", "text": "Elles ont bu un café sur le Vieux-Port." },
+                { "pieceId": "p2", "text": "Elles ont fait une randonnée dans les calanques." },
+                { "pieceId": "p3", "text": "Elles ont visité le musée et acheté des savons." },
+                { "pieceId": "p4", "text": "Elles sont montées à Notre-Dame de la Garde." }
+              ],
+              "acceptedOrders": [["p1", "p2", "p3", "p4"]],
+              "answerExplanation": {
+                "en": "Day 1: the Vieux-Port; day 2: the calanques; day 3: the museum, then Notre-Dame de la Garde (à la fin).",
+                "fr": "Jour 1 : le Vieux-Port ; jour 2 : les calanques ; jour 3 : le musée, puis Notre-Dame de la Garde (à la fin).",
+                "de": "Tag 1: der Alte Hafen; Tag 2: die Calanques; Tag 3: das Museum, dann Notre-Dame de la Garde (à la fin)."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam",
+          "estimatedDurationS": 150,
+          "timeLimitS": 225,
+          "instructions": {
+            "en": "Read the new document and answer the questions. No help this time.",
+            "fr": "Lisez le nouveau document et répondez aux questions. Cette fois, sans aide.",
+            "de": "Lies das neue Dokument und beantworte die Fragen. Diesmal ohne Hilfe."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "exam-document",
+              "documentId": "exam",
+              "view": "exam",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-where",
+              "question": "Où Hugo est-il allé samedi matin ?",
+              "options": [
+                { "optionId": "o1", "text": "Au musée" },
+                { "optionId": "o2", "text": "Au marché d’Aix-en-Provence" },
+                { "optionId": "o3", "text": "À la fontaine du cours Mirabeau" },
+                { "optionId": "o4", "text": "À la gare" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "Samedi matin, je suis allé au marché d’Aix-en-Provence.",
+                "fr": "Samedi matin, je suis allé au marché d’Aix-en-Provence.",
+                "de": "Samedi matin, je suis allé au marché d’Aix-en-Provence."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-bought",
+              "question": "Qu’est-ce qu’il a acheté au marché ?",
+              "options": [
+                { "optionId": "o1", "text": "Des savons et un livre" },
+                { "optionId": "o2", "text": "Des fleurs et du pain" },
+                { "optionId": "o3", "text": "Des tomates et du fromage" },
+                { "optionId": "o4", "text": "Des fruits et du café" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "J’ai acheté des tomates et du fromage. There were fruits and flowers, but he did not buy them.",
+                "fr": "J’ai acheté des tomates et du fromage. Il y avait des fruits et des fleurs, mais il ne les a pas achetés.",
+                "de": "J’ai acheté des tomates et du fromage. Es gab Obst und Blumen, aber er hat sie nicht gekauft."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-museum",
+              "statement": "Hugo a visité le musée.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: il était fermé. The museum is closed on Tuesdays, and that day was a Tuesday.",
+                "fr": "Faux : il était fermé. Le musée est fermé le mardi, et ce jour-là, c’était un mardi.",
+                "de": "Falsch: il était fermé. Das Museum ist dienstags geschlossen, und dieser Tag war ein Dienstag."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-best",
+              "question": "Quel est le meilleur moment de Hugo ?",
+              "options": [
+                { "optionId": "o1", "text": "Le marché le matin" },
+                { "optionId": "o2", "text": "Le musée" },
+                { "optionId": "o3", "text": "Le soir près de la fontaine" },
+                { "optionId": "o4", "text": "Le déjeuner au restaurant" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "Le soir, je me suis reposé près de la fontaine… C’était mon meilleur moment.",
+                "fr": "Le soir, je me suis reposé près de la fontaine… C’était mon meilleur moment.",
+                "de": "Le soir, je me suis reposé près de la fontaine… C’était mon meilleur moment."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-problem",
+              "question": "Quel jour le musée est-il fermé ?",
+              "options": [
+                { "optionId": "o1", "text": "Le samedi" },
+                { "optionId": "o2", "text": "Le mardi" },
+                { "optionId": "o3", "text": "Le dimanche" },
+                { "optionId": "o4", "text": "Le soir" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "Le musée est fermé le mardi. Hugo went on a Tuesday, so he could not visit it.",
+                "fr": "Le musée est fermé le mardi. Hugo y est allé un mardi, il n’a donc pas pu le visiter.",
+                "de": "Le musée est fermé le mardi. Hugo war an einem Dienstag dort und konnte es nicht besuchen."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -153,5 +153,5 @@ export function issuesPrompt(
   return `The lesson does not pass yet. ${issues.length} issue${issues.length === 1 ? '' : 's'}:
 ${lines.join('\n')}${problems}
 
-Fix every issue. Answer with the whole lesson again or with {"edits":[…]}, as one minified JSON object.`;
+Fix every issue. Prefer answering with {"edits":[{"file":"brief"|"content","path":"...","value":...}]} so you only send the changed fields instead of rewriting the whole lesson. If you rewrite, include both "brief" and "content" (when applicable), as one minified JSON object.`;
 }

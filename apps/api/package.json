@@ -20,7 +20,7 @@
     "db:seed": "tsx prisma/seed.ts",
     "generation:try": "tsx --env-file-if-exists=../../.env scripts/try-generation.ts",
     "outlines:check": "tsx scripts/check-outlines.ts",
-    "lessons:author": "pnpm --filter @ft/shared run build && tsx scripts/lessons/author.ts"
+    "lessons:author": "pnpm --filter @ft/shared run build && tsx --env-file-if-exists=../../.env scripts/lessons/author.ts"
   },
   "dependencies": {
     "@ft/shared": "workspace:*",

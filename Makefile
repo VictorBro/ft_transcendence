@@ -237,7 +237,7 @@ shell: ## Shell into a running service: make shell SERVICE=web
 GENERATED_SECRETS := GRAFANA_ADMIN_PASSWORD GRAFANA_SECRET_KEY
 # Optional and empty by default, but check-env-example.sh wants every key in
 # .env, and a teammate's existing .env predates it.
-OPTIONAL_KEYS := DISCORD_WEBHOOK_URL
+OPTIONAL_KEYS := DISCORD_WEBHOOK_URL DEEPSEEK_API_KEY
 # The services behind the monitoring profile in compose.override.yml.
 MONITORING_SERVICES := prometheus alertmanager grafana node-exporter postgres-exporter \
                        redis-exporter blackbox-exporter

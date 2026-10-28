@@ -101,6 +101,7 @@ services:
       LLM_PROVIDER: ${LLM_PROVIDER:-fixture}
       LLM_API_KEY: ${LLM_API_KEY:-}
       LLM_MODEL: ${LLM_MODEL:-}
+      DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY:-}
       LESSON_STUB: ${LESSON_STUB:-true}
       # Matches the mount below. Not from .env: the target is fixed, so another
       # value would only send uploads off the volume.

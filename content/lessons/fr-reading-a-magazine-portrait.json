@@ -1,0 +1,423 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-reading-a-magazine-portrait",
+  "lang": "fr",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Lire un portrait dans un magazine",
+  "objective": {
+    "en": "Read a magazine portrait of a woman who became a baker at forty, and explain why she changed, how she did it and what she thinks of it now.",
+    "fr": "Lire le portrait d’une femme devenue boulangère à quarante ans et expliquer pourquoi elle a changé, comment elle s’y est prise et ce qu’elle en pense.",
+    "de": "Ein Magazinporträt einer Frau lesen, die mit vierzig Bäckerin wurde, und erklären, warum sie ihr Leben änderte, wie sie es anging und was sie heute darüber denkt."
+  },
+  "estimatedMinutes": 10,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "deepseek-chat",
+    "promptVersion": "author-1",
+    "generatedAt": "2026-10-26T23:41:08.726Z",
+    "inputHashes": {
+      "outline": "3a0126ec2e7379ff7319462d5b657d9fffbaa592570e11ffb13e0656a5fa963a",
+      "brief": "9b2998800f3c46162170b4bf132c3ec6ee24e41c551196d564f3b6d5ffad8ad3"
+    }
+  },
+  "kind": "reading",
+  "theme": "personal_identification",
+  "genre": "article",
+  "documents": [
+    {
+      "documentId": "main",
+      "title": "Nadia, boulangère à quarante ans",
+      "meta": ["Portraits du mois", "Propos recueillis par Claire Martin"],
+      "paragraphs": [
+        "À quatre heures du matin, la boulangerie de Nadia est déjà allumée. Elle a quarante-sept ans et, il y a sept ans, elle était encore comptable dans une grande entreprise. « Je gagnais bien ma vie, mais je m’ennuyais. »",
+        "Le tournant est arrivé un mardi, presque par hasard. En allant déjeuner, elle passait chaque jour devant une petite boulangerie de quartier. Un matin, elle est entrée pour acheter un croissant et elle est restée une heure à regarder le boulanger travailler. « J’ai compris que c’était ça que je voulais faire. » La même année, sa fille est partie étudier à Lyon : la maison est devenue trop grande et trop calme.",
+        "Elle s’est lancée sans tout quitter tout de suite. D’abord, elle a suivi une formation de six mois, le soir et le week-end, pour apprendre le métier. Ensuite, elle a demandé un prêt à sa banque pour acheter un four et louer un local. « Le plus difficile, ça a été l’année des doutes. Je me demandais si je n’étais pas folle de repartir de zéro à quarante ans. »",
+        "Aujourd’hui, elle se lève avant tout le monde et travaille plus qu’avant. « Je suis fatiguée, c’est vrai, mais je me sens épanouie. Je connais le nom de mes clients, je vois les enfants grandir. » Elle ne regrette rien, sauf peut-être les vacances. « Avant, je partais trois semaines en août. Maintenant, je pars trois jours. »"
+      ],
+      "highlights": [
+        { "keywordId": "un-tournant", "text": "Le tournant" },
+        { "keywordId": "se-lancer", "text": "s’est lancée" },
+        { "keywordId": "une-formation", "text": "une formation" },
+        { "keywordId": "un-pret", "text": "un prêt" },
+        { "keywordId": "repartir-de-zero", "text": "repartir de zéro" },
+        { "keywordId": "epanouie", "text": "épanouie" }
+      ]
+    },
+    {
+      "documentId": "exam",
+      "title": "Karim a changé de métier",
+      "meta": ["Portraits du mois"],
+      "paragraphs": [
+        "Karim a cinquante-deux ans. Pendant vingt ans, il a été chauffeur de taxi à Lille. Il aimait conduire, mais il en a eu assez de passer ses journées dans les embouteillages et de ne jamais voir ses enfants le soir.",
+        "Un jour, il a décidé de changer de vie. Il a suivi une formation de libraire pendant un an, puis son frère lui a prêté de l’argent pour ouvrir une petite librairie dans son quartier.",
+        "« Je gagne moins qu’avant, dit-il en souriant, mais je lis beaucoup plus, et je rentre chez moi avant la nuit. »"
+      ],
+      "highlights": []
+    }
+  ],
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "exercise",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "flashcards",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Turn each card to learn the key words of the portrait.",
+            "fr": "Retournez chaque carte pour découvrir les mots clés du portrait.",
+            "de": "Dreh jede Karte um und lerne die Schlüsselwörter des Porträts."
+          },
+          "items": [
+            {
+              "type": "reading_flashcards",
+              "itemId": "cards",
+              "keywordIds": [
+                "un-tournant",
+                "se-lancer",
+                "une-formation",
+                "un-pret",
+                "repartir-de-zero",
+                "epanouie"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "matching",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each key word with its meaning.",
+            "fr": "Associez chaque mot clé à son sens.",
+            "de": "Ordne jedem Schlüsselwort seine Bedeutung zu."
+          },
+          "items": [
+            {
+              "type": "reading_keyword_matching",
+              "itemId": "matching",
+              "keywordIds": [
+                "un-tournant",
+                "se-lancer",
+                "une-formation",
+                "un-pret",
+                "repartir-de-zero",
+                "epanouie"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skim",
+      "stage": "skim",
+      "role": "exercise",
+      "label": { "en": "Skim", "fr": "Survol", "de": "Überfliegen" },
+      "pages": [
+        {
+          "pageId": "skim",
+          "estimatedDurationS": 155,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Look over the document quickly. When the time is up it is put away; then answer the question.",
+            "fr": "Parcourez rapidement le document. À la fin du temps, il disparaît ; répondez ensuite à la question.",
+            "de": "Überfliege das Dokument. Wenn die Zeit um ist, verschwindet es; beantworte dann die Frage."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "skim-document",
+              "documentId": "main",
+              "view": "skim",
+              "skimSeconds": 135
+            },
+            {
+              "type": "reading_skim_choice",
+              "itemId": "skim-question",
+              "focus": "purpose",
+              "question": "Pourquoi cet article a-t-il été écrit ?",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "Pour donner des conseils pour ouvrir une boulangerie"
+                },
+                { "optionId": "o2", "text": "Pour présenter une femme qui a changé de métier" },
+                { "optionId": "o3", "text": "Pour expliquer comment faire du pain" },
+                { "optionId": "o4", "text": "Pour critiquer le travail dans les bureaux" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "It is a portrait: the magazine tells the story of Nadia, who left accounting to become a baker.",
+                "fr": "C’est un portrait : le magazine raconte l’histoire de Nadia, qui a quitté la comptabilité pour devenir boulangère.",
+                "de": "Es ist ein Porträt: Das Magazin erzählt die Geschichte von Nadia, die die Buchhaltung verließ, um Bäckerin zu werden."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detail",
+      "stage": "detail",
+      "role": "exercise",
+      "label": { "en": "Detail", "fr": "Détails", "de": "Details" },
+      "pages": [
+        {
+          "pageId": "detail",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the document carefully and answer the questions.",
+            "fr": "Lisez le document attentivement et répondez aux questions.",
+            "de": "Lies das Dokument genau und beantworte die Fragen."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "detail-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-why",
+              "question": "Pourquoi Nadia voulait-elle changer de métier ?",
+              "options": [
+                { "optionId": "o1", "text": "Parce qu’elle gagnait trop peu" },
+                { "optionId": "o2", "text": "Parce qu’elle s’ennuyait dans son travail" },
+                { "optionId": "o3", "text": "Parce qu’elle était malade" },
+                { "optionId": "o4", "text": "Parce que sa boulangerie fermait" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "She says: je gagnais bien ma vie, mais je m’ennuyais. Money was not the problem.",
+                "fr": "Elle dit : je gagnais bien ma vie, mais je m’ennuyais. L’argent n’était pas le problème.",
+                "de": "Sie sagt: je gagnais bien ma vie, mais je m’ennuyais. Das Geld war nicht das Problem."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-training",
+              "question": "Quelle formation Nadia a-t-elle suivie ?",
+              "options": [
+                { "optionId": "o1", "text": "Une formation de comptable" },
+                { "optionId": "o2", "text": "Une formation de vendeuse" },
+                {
+                  "optionId": "o3",
+                  "text": "Une formation de six mois pour apprendre le métier de boulangère"
+                },
+                { "optionId": "o4", "text": "Aucune formation" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "Elle a suivi une formation de six mois, le soir et le week-end, pour apprendre le métier.",
+                "fr": "Elle a suivi une formation de six mois, le soir et le week-end, pour apprendre le métier.",
+                "de": "Elle a suivi une formation de six mois, le soir et le week-end, pour apprendre le métier."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-money",
+              "question": "Comment Nadia a-t-elle financé sa boulangerie ?",
+              "options": [
+                { "optionId": "o1", "text": "Avec un prêt de sa banque" },
+                { "optionId": "o2", "text": "Avec l’argent de son ancienne entreprise" },
+                { "optionId": "o3", "text": "Avec l’aide de sa fille" },
+                { "optionId": "o4", "text": "En vendant sa maison" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "Elle a demandé un prêt à sa banque pour acheter un four et louer un local.",
+                "fr": "Elle a demandé un prêt à sa banque pour acheter un four et louer un local.",
+                "de": "Elle a demandé un prêt à sa banque pour acheter un four et louer un local."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "q-feelings",
+              "statement": "Aujourd’hui, Nadia regrette d’avoir changé de métier.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: elle ne regrette rien, sauf peut-être les vacances. She feels épanouie.",
+                "fr": "Faux : elle ne regrette rien, sauf peut-être les vacances. Elle se sent épanouie.",
+                "de": "Falsch: elle ne regrette rien, sauf peut-être les vacances. Sie fühlt sich erfüllt."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "structure",
+      "stage": "structure",
+      "role": "exercise",
+      "label": { "en": "Structure", "fr": "Structure", "de": "Aufbau" },
+      "pages": [
+        {
+          "pageId": "structure",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the story of Nadia in the order the article tells it.",
+            "fr": "Remettez l’histoire de Nadia dans l’ordre de l’article.",
+            "de": "Bring die Geschichte von Nadia in die Reihenfolge des Artikels."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "structure-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_order",
+              "itemId": "order",
+              "pieces": [
+                {
+                  "pieceId": "p1",
+                  "text": "Elle passait chaque jour devant une petite boulangerie de quartier."
+                },
+                {
+                  "pieceId": "p2",
+                  "text": "Elle a suivi une formation de six mois, le soir et le week-end."
+                },
+                { "pieceId": "p3", "text": "Elle a demandé un prêt à sa banque." },
+                {
+                  "pieceId": "p4",
+                  "text": "Aujourd’hui, elle se lève à quatre heures et se sent épanouie."
+                }
+              ],
+              "acceptedOrders": [["p1", "p2", "p3", "p4"]],
+              "answerExplanation": {
+                "en": "First the bakery she walked past (the turning point), then the training course, then the loan, and finally her life today.",
+                "fr": "D’abord la boulangerie devant laquelle elle passait (le tournant), puis la formation, puis le prêt, et enfin sa vie aujourd’hui.",
+                "de": "Zuerst die Bäckerei, an der sie vorbeiging (die Wende), dann die Ausbildung, dann der Kredit und schließlich ihr Leben heute."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam",
+          "estimatedDurationS": 156,
+          "timeLimitS": 235,
+          "instructions": {
+            "en": "Read the new document and answer the questions. No help this time.",
+            "fr": "Lisez le nouveau document et répondez aux questions. Cette fois, sans aide.",
+            "de": "Lies das neue Dokument und beantworte die Fragen. Diesmal ohne Hilfe."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "exam-document",
+              "documentId": "exam",
+              "view": "exam",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-job",
+              "question": "Quel métier Karim faisait-il avant ?",
+              "options": [
+                { "optionId": "o1", "text": "Libraire" },
+                { "optionId": "o2", "text": "Boulanger" },
+                { "optionId": "o3", "text": "Chauffeur de taxi" },
+                { "optionId": "o4", "text": "Professeur" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "Pendant vingt ans, il a été chauffeur de taxi à Lille.",
+                "fr": "Pendant vingt ans, il a été chauffeur de taxi à Lille.",
+                "de": "Pendant vingt ans, il a été chauffeur de taxi à Lille."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-why",
+              "question": "Pourquoi Karim a-t-il changé de métier ?",
+              "options": [
+                { "optionId": "o1", "text": "Il en avait assez des embouteillages" },
+                { "optionId": "o2", "text": "Il ne trouvait plus de clients" },
+                { "optionId": "o3", "text": "Il voulait gagner plus d’argent" },
+                { "optionId": "o4", "text": "Son frère lui a demandé de partir" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "Un jour, il en a eu assez de passer ses journées dans les embouteillages.",
+                "fr": "Un jour, il en a eu assez de passer ses journées dans les embouteillages.",
+                "de": "Un jour, il en a eu assez de passer ses journées dans les embouteillages."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-money",
+              "question": "Qui a aidé Karim à financer sa librairie ?",
+              "options": [
+                { "optionId": "o1", "text": "Sa banque" },
+                { "optionId": "o2", "text": "Son frère" },
+                { "optionId": "o3", "text": "La mairie de Lille" },
+                { "optionId": "o4", "text": "Son ancien patron" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "Son frère lui a prêté de l’argent pour ouvrir une petite librairie.",
+                "fr": "Son frère lui a prêté de l’argent pour ouvrir une petite librairie.",
+                "de": "Son frère lui a prêté de l’argent pour ouvrir une petite librairie."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-money2",
+              "statement": "Aujourd’hui, Karim gagne plus qu’avant.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: je gagne moins qu’avant, dit-il, mais je lis beaucoup plus.",
+                "fr": "Faux : je gagne moins qu’avant, dit-il, mais je lis beaucoup plus.",
+                "de": "Falsch: je gagne moins qu’avant, dit-il, mais je lis beaucoup plus."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-place",
+              "question": "Où se trouve la librairie de Karim ?",
+              "options": [
+                { "optionId": "o1", "text": "Dans son quartier" },
+                { "optionId": "o2", "text": "À Paris" },
+                { "optionId": "o3", "text": "Dans une gare" },
+                { "optionId": "o4", "text": "Près de son ancien taxi" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "Il a ouvert une petite librairie dans son quartier.",
+                "fr": "Il a ouvert une petite librairie dans son quartier.",
+                "de": "Il a ouvert une petite librairie dans son quartier."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -136,10 +136,42 @@ export function askClaude(prompt: string, o: ClaudeOptions): Promise<ClaudeReply
   });
 }
 
-/** The JSON object of a reply, even when Claude wrapped it in a fence or a sentence. */
+/** The JSON object of a reply, even when wrapped in a fence or followed by a duplicate object. */
 export function parseReply(text: string): unknown {
   const start = text.indexOf('{');
   const end = text.lastIndexOf('}');
   if (start === -1 || end <= start) throw new Error('no JSON object in the reply');
-  return JSON.parse(text.slice(start, end + 1));
+  try {
+    return JSON.parse(text.slice(start, end + 1));
+  } catch (firstErr) {
+    // If the model emitted two JSON objects back-to-back or trailing text with braces,
+    // find the end of the first balanced top-level JSON object.
+    let depth = 0;
+    let inString = false;
+    let escaped = false;
+    for (let i = start; i <= end; i++) {
+      const ch = text[i];
+      if (escaped) {
+        escaped = false;
+        continue;
+      }
+      if (ch === '\\' && inString) {
+        escaped = true;
+        continue;
+      }
+      if (ch === '"') {
+        inString = !inString;
+        continue;
+      }
+      if (inString) continue;
+      if (ch === '{') depth++;
+      else if (ch === '}') {
+        depth--;
+        if (depth === 0) {
+          return JSON.parse(text.slice(start, i + 1));
+        }
+      }
+    }
+    throw firstErr;
+  }
 }

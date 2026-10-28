@@ -50,10 +50,11 @@ import {
   type ClaudeReply,
 } from './claude';
 import { applyEdits, complete, type Draft, type Edit, type Json } from './complete';
+import { askDeepSeek, type ChatMessage } from './deepseek';
 import { issuesPrompt, lessonPrompt, PROMPT_VERSION, systemPrompt } from './prompt';
 
 const USAGE =
-  'Usage: lessons:author <fr|de|en> <a1|a2|b1|b2|c1|c2> [--kind <kind>] [--only <id,…>] [--max <n>] ' +
+  'Usage: lessons:author <fr|de|en> <a1|a2|b1|b2|c1|c2> [--provider <claude|deepseek>] [--kind <kind>] [--only <id,…>] [--max <n>] ' +
   '[--concurrency <n>] [--model <model>] [--effort <level>] [--attempts <n>] [--timeout <minutes>]';
 
 function option(name: string): string | undefined {
@@ -109,7 +110,20 @@ async function main() {
   const concurrency = positive('--concurrency', 2);
   const attempts = positive('--attempts', 4);
   const timeoutMs = positive('--timeout', 15) * 60_000;
-  const model = option('--model') ?? 'sonnet';
+  const deepseekKey = process.env.DEEPSEEK_API_KEY?.trim() || process.env.LLM_API_KEY?.trim();
+  const providerOpt =
+    option('--provider') ??
+    (process.env.LLM_PROVIDER === 'deepseek' || process.env.DEEPSEEK_API_KEY?.trim()
+      ? 'deepseek'
+      : 'claude');
+  if (providerOpt !== 'claude' && providerOpt !== 'deepseek') {
+    console.error(`--provider must be "claude" or "deepseek", got "${providerOpt}"`);
+    process.exitCode = 1;
+    return;
+  }
+  const defaultModel =
+    providerOpt === 'deepseek' ? process.env.DEEPSEEK_MODEL?.trim() || 'deepseek-chat' : 'sonnet';
+  const model = option('--model') ?? defaultModel;
   const effort = option('--effort');
   const only = option('--only')
     ?.split(',')
@@ -157,17 +171,28 @@ async function main() {
     return;
   }
 
-  const bin = findClaude();
-  const promptFiles = new Map(LESSON_KINDS.map((k) => [k, writeSystemPrompt(k, systemPrompt(k))]));
+  if (providerOpt === 'deepseek' && !deepseekKey) {
+    throw new Error(
+      'DeepSeek API key missing: set DEEPSEEK_API_KEY in .env (or LLM_API_KEY with LLM_PROVIDER=deepseek).',
+    );
+  }
+  const bin = providerOpt === 'claude' ? findClaude() : '';
+  const systemPrompts = new Map(LESSON_KINDS.map((k) => [k, systemPrompt(k)]));
+  const promptFiles =
+    providerOpt === 'claude'
+      ? new Map(LESSON_KINDS.map((k) => [k, writeSystemPrompt(k, systemPrompts.get(k)!)]))
+      : new Map<string, string>();
   const prettier = await resolveConfig(join(briefsDir, 'x.json'));
   const failedDir = join(WORK_DIR, 'failed');
   mkdirSync(failedDir, { recursive: true });
   const index = new Map(outline.entries.map((e, i) => [e.id, i]));
 
   console.log(
-    `Writing ${todo.length} ${lang.data} ${level.data} lesson${todo.length === 1 ? '' : 's'} with ${model}` +
+    `Writing ${todo.length} ${lang.data} ${level.data} lesson${todo.length === 1 ? '' : 's'} with ${model} (${providerOpt})` +
       `${effort ? ` (effort ${effort})` : ''}, ${concurrency} at a time, ${attempts} attempts each.\n` +
-      `claude: ${bin}\n`,
+      (providerOpt === 'claude'
+        ? `claude: ${bin}\n`
+        : `api: https://api.deepseek.com/chat/completions\n`),
   );
 
   let stop: string | undefined;
@@ -203,13 +228,26 @@ async function main() {
 
     let draft: Draft = { brief: {} };
     let session: string | undefined;
+    const messages: ChatMessage[] = [{ role: 'system', content: systemPrompts.get(entry.kind)! }];
     let prompt = lessonPrompt({ ...ctx, neighbours, usedTitles: [...usedTitles.values()] });
     let issues: { path: string; message: string }[] = [];
     try {
       while (run.attempts < attempts && !stop) {
         run.attempts++;
-        const reply: ClaudeReply = await askClaude(prompt, { ...claude, resume: session });
-        session = reply.sessionId;
+        let reply: ClaudeReply;
+        if (providerOpt === 'deepseek') {
+          messages.push({ role: 'user', content: prompt });
+          reply = await askDeepSeek({
+            apiKey: deepseekKey!,
+            model,
+            messages,
+            timeoutMs,
+          });
+          messages.push({ role: 'assistant', content: reply.text });
+        } else {
+          reply = await askClaude(prompt, { ...claude, resume: session });
+          session = reply.sessionId;
+        }
         run.outputTokens += reply.outputTokens;
         run.inputTokens += reply.inputTokens;
         run.cachedTokens += reply.cachedTokens;
@@ -227,7 +265,11 @@ async function main() {
           continue;
         }
         if (Array.isArray(parsed?.edits)) editProblems = applyEdits(draft, parsed.edits as Edit[]);
-        else draft = { brief: parsed?.brief, content: parsed?.content };
+        else {
+          if (parsed?.brief && typeof parsed.brief === 'object') draft.brief = parsed.brief;
+          else if (!parsed?.content && parsed && typeof parsed === 'object') draft.brief = parsed;
+          if (parsed?.content && typeof parsed.content === 'object') draft.content = parsed.content;
+        }
 
         draft = complete(draft, { ...ctx, model, promptVersion: PROMPT_VERSION });
         const result = lessons.validateLesson(draft.brief, draft.content, ctx);

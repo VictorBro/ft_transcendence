@@ -1,0 +1,423 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-sequencing-words-for-a-story",
+  "lang": "fr",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "D'abord, ensuite, enfin",
+  "objective": {
+    "en": "Tell actions in order with linking words: d'abord, puis, ensuite, après, à la fin, enfin, finalement, tout à coup.",
+    "fr": "Raconter des actions dans l'ordre avec des mots de liaison : d'abord, puis, ensuite, après, à la fin, enfin, finalement, tout à coup.",
+    "de": "Handlungen mit Verbindungswörtern der Reihe nach erzählen: d'abord, puis, ensuite, après, à la fin, enfin, finalement, tout à coup."
+  },
+  "estimatedMinutes": 13,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "deepseek-chat",
+    "promptVersion": "author-1",
+    "generatedAt": "2026-10-26T23:27:14.990Z",
+    "inputHashes": { "outline": "fc1b737cb72116b085966e1d16c13bc52d5c6b13f1aa28d07c5b21cb5debec49" }
+  },
+  "kind": "vocabulary",
+  "theme": "language",
+  "coverageNotes": {
+    "en": "Eight sequencing words from the outline, each with its place in a story and its nuance: puis and ensuite are close synonyms, enfin closes a list while finalement marks an unexpected outcome, tout à coup introduces a sudden event.",
+    "fr": "Huit mots de liaison du plan, chacun avec sa place dans un récit et sa nuance : puis et ensuite sont proches, enfin ferme une énumération tandis que finalement marque un dénouement inattendu, tout à coup introduit un événement soudain.",
+    "de": "Acht Verbindungswörter aus der Gliederung, jedes mit seinem Platz in einer Erzählung und seiner Nuance: puis und ensuite sind nah beieinander, enfin schließt eine Aufzählung, finalement markiert einen unerwarteten Ausgang, tout à coup leitet ein plötzliches Ereignis ein."
+  },
+  "targetCount": 8,
+  "countRationale": {
+    "en": "Eight words: enough to chain a short story, few enough to master in one lesson.",
+    "fr": "Huit mots : assez pour enchaîner un court récit, assez peu pour être maîtrisés en une leçon.",
+    "de": "Acht Wörter: genug, um eine kurze Erzählung zu verketten, wenige genug für eine Lektion."
+  },
+  "difficultyBalance": {
+    "en": "Five core connectors (d'abord, puis, ensuite, après, à la fin) and three demanding ones (enfin, finalement, tout à coup) whose nuance is easy to confuse.",
+    "fr": "Cinq connecteurs de base (d'abord, puis, ensuite, après, à la fin) et trois plus délicats (enfin, finalement, tout à coup) dont la nuance se confond facilement.",
+    "de": "Fünf grundlegende Konnektoren (d'abord, puis, ensuite, après, à la fin) und drei anspruchsvollere (enfin, finalement, tout à coup), deren Nuance leicht zu verwechseln ist."
+  },
+  "prerequisites": [
+    {
+      "en": "The passé composé, to tell what happened.",
+      "fr": "Le passé composé, pour raconter ce qui s'est passé.",
+      "de": "Das passé composé, um zu erzählen, was passiert ist."
+    }
+  ],
+  "groups": [
+    {
+      "id": "starting-and-continuing",
+      "label": {
+        "en": "Starting and continuing",
+        "fr": "Commencer et continuer",
+        "de": "Beginnen und fortfahren"
+      },
+      "targetIds": ["d-abord", "puis", "ensuite", "apres"],
+      "introduction": {
+        "en": "These words put the steps of a story in order:\n\n- `d'abord` opens the story: **first**;\n- `puis` and `ensuite` add the next step: **then**;\n- `après` links two moments: **afterwards**.\n\n`D'abord` goes at the start of a sentence; `puis` and `ensuite` can follow a comma.",
+        "fr": "Ces mots mettent les étapes d'un récit dans l'ordre :\n\n- `d'abord` ouvre le récit : **première étape** ;\n- `puis` et `ensuite` ajoutent l'étape suivante : **ensuite** ;\n- `après` relie deux moments : **plus tard**.\n\n`D'abord` se place en tête de phrase ; `puis` et `ensuite` peuvent suivre une virgule.",
+        "de": "Diese Wörter bringen die Schritte einer Erzählung in Reihenfolge:\n\n- `d'abord` eröffnet die Erzählung: **zuerst**;\n- `puis` und `ensuite` fügen den nächsten Schritt hinzu: **dann**;\n- `après` verbindet zwei Momente: **danach**.\n\n`D'abord` steht am Satzanfang; `puis` und `ensuite` können nach einem Komma stehen."
+      }
+    },
+    {
+      "id": "ending-and-surprise",
+      "label": {
+        "en": "Ending and surprise",
+        "fr": "Finir et surprise",
+        "de": "Ende und Überraschung"
+      },
+      "targetIds": ["a-la-fin", "enfin", "finalement", "tout-a-coup"],
+      "introduction": {
+        "en": "These words close a story or turn it around:\n\n- `à la fin` marks the last moment: **at the end**;\n- `enfin` closes a list: **finally, last of all**;\n- `finalement` gives the real outcome, often unexpected: **in the end**;\n- `tout à coup` brings a sudden event: **suddenly**.",
+        "fr": "Ces mots ferment un récit ou le font basculer :\n\n- `à la fin` marque le dernier moment : **au terme de l'histoire** ;\n- `enfin` ferme une énumération : **pour terminer** ;\n- `finalement` donne le vrai dénouement, souvent inattendu : **en fin de compte** ;\n- `tout à coup` amène un événement soudain : **brusquement**.",
+        "de": "Diese Wörter schließen eine Erzählung oder wenden sie:\n\n- `à la fin` markiert den letzten Moment: **am Ende**;\n- `enfin` schließt eine Aufzählung: **schließlich, zuletzt**;\n- `finalement` nennt den wahren Ausgang, oft unerwartet: **letztendlich**;\n- `tout à coup` bringt ein plötzliches Ereignis: **plötzlich**."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "d-abord",
+      "term": "d'abord",
+      "translations": { "en": ["first", "first of all"], "de": ["zuerst", "erst einmal"] },
+      "wordClass": "adverb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "d'abord",
+      "examForms": ["d'abord"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "dabord",
+      "difficulty": "core",
+      "context": {
+        "sentence": "D'abord, je me suis levé, puis j'ai pris mon petit-déjeuner.",
+        "translation": {
+          "en": "First I got up, then I had breakfast.",
+          "de": "Zuerst bin ich aufgestanden, dann habe ich gefrühstückt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "D'abord opens the story: it announces the first step, before puis and ensuite.",
+        "fr": "D'abord ouvre le récit : il annonce la première étape, avant puis et ensuite.",
+        "de": "D'abord eröffnet die Erzählung: Es kündigt den ersten Schritt an, vor puis und ensuite."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "",
+        "after": ", je me suis levé, puis j'ai pris mon petit-déjeuner.",
+        "accepted": { "answers": ["d'abord", "D'abord"] },
+        "referenceTargetIds": ["d-abord", "puis", "ensuite", "apres"],
+        "explanation": {
+          "en": "Only d'abord announces the first step of the story.",
+          "fr": "Seul « d'abord » annonce la première étape du récit.",
+          "de": "Nur „d'abord“ kündigt den ersten Schritt der Erzählung an."
+        }
+      },
+      "listeningOptionTargetIds": ["d-abord", "puis", "ensuite", "apres"]
+    },
+    {
+      "id": "puis",
+      "term": "puis",
+      "translations": { "en": ["then", "next"], "de": ["dann", "danach"] },
+      "wordClass": "adverb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "puis",
+      "examForms": ["puis"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "pɥi",
+      "difficulty": "core",
+      "context": {
+        "sentence": "J'ai fini mes devoirs, puis je suis sorti.",
+        "translation": {
+          "en": "I finished my homework, then I went out.",
+          "de": "Ich habe meine Hausaufgaben beendet, dann bin ich ausgegangen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Puis adds the next step after a comma; it is close to ensuite.",
+        "fr": "Puis ajoute l'étape suivante après une virgule ; il est proche de « ensuite ».",
+        "de": "Puis fügt den nächsten Schritt nach einem Komma hinzu; es ist nah an ensuite."
+      },
+      "genderExplanation": null,
+      "matchingLabel": { "en": "then (after that)", "de": "dann (danach)" },
+      "examPrompt": null,
+      "gap": {
+        "before": "J'ai fini mes devoirs, ",
+        "after": " je suis sorti.",
+        "accepted": { "answers": ["puis"] },
+        "referenceTargetIds": ["d-abord", "puis", "ensuite", "apres"],
+        "explanation": {
+          "en": "Puis links the second action to the first one, after the comma.",
+          "fr": "« Puis » relie la deuxième action à la première, après la virgule.",
+          "de": "Puis verbindet die zweite Handlung mit der ersten, nach dem Komma."
+        }
+      },
+      "listeningOptionTargetIds": ["d-abord", "puis", "ensuite", "apres"]
+    },
+    {
+      "id": "ensuite",
+      "term": "ensuite",
+      "translations": { "en": ["then", "afterwards"], "de": ["dann", "anschließend"] },
+      "wordClass": "adverb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ensuite",
+      "examForms": ["ensuite"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "ɑ̃sɥit",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ensuite, nous avons visité le musée.",
+        "translation": {
+          "en": "Then we visited the museum.",
+          "de": "Dann haben wir das Museum besucht."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Ensuite moves the story on to the following step, like puis.",
+        "fr": "Ensuite fait avancer le récit vers l'étape suivante, comme « puis ».",
+        "de": "Ensuite bringt die Erzählung zum nächsten Schritt, wie puis."
+      },
+      "genderExplanation": null,
+      "matchingLabel": { "en": "then (next step)", "de": "dann (nächster Schritt)" },
+      "examPrompt": null,
+      "gap": {
+        "before": "",
+        "after": ", nous avons visité le musée.",
+        "accepted": { "answers": ["ensuite", "Ensuite"] },
+        "referenceTargetIds": ["d-abord", "puis", "ensuite", "apres"],
+        "explanation": {
+          "en": "Ensuite announces the following step, after the first one.",
+          "fr": "« Ensuite » annonce l'étape suivante, après la première.",
+          "de": "Ensuite kündigt den folgenden Schritt an, nach dem ersten."
+        }
+      },
+      "listeningOptionTargetIds": ["d-abord", "puis", "ensuite", "apres"]
+    },
+    {
+      "id": "apres",
+      "term": "après",
+      "translations": { "en": ["afterwards", "after"], "de": ["danach", "nachher"] },
+      "wordClass": "adverb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "après",
+      "examForms": ["après"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "apʁɛ",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Nous avons mangé, et après, nous sommes rentrés.",
+        "translation": {
+          "en": "We ate, and afterwards we went home.",
+          "de": "Wir haben gegessen, und danach sind wir nach Hause gegangen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Après links two moments: it says what comes later, without numbering the steps.",
+        "fr": "« Après » relie deux moments : il indique ce qui vient plus tard, sans numéroter les étapes.",
+        "de": "Après verbindet zwei Momente: Es sagt, was später kommt, ohne die Schritte zu nummerieren."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nous avons mangé, et ",
+        "after": ", nous sommes rentrés.",
+        "accepted": { "answers": ["après"] },
+        "referenceTargetIds": ["d-abord", "puis", "ensuite", "apres"],
+        "explanation": {
+          "en": "Après says what happened later, after the meal.",
+          "fr": "« Après » indique ce qui s'est passé plus tard, après le repas.",
+          "de": "Après sagt, was später passiert ist, nach dem Essen."
+        }
+      },
+      "listeningOptionTargetIds": ["d-abord", "puis", "ensuite", "apres"]
+    },
+    {
+      "id": "a-la-fin",
+      "term": "à la fin",
+      "translations": { "en": ["at the end", "in the end"], "de": ["am Ende", "zum Schluss"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "à la fin",
+      "examForms": ["à la fin"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "a la fɛ̃",
+      "difficulty": "core",
+      "context": {
+        "sentence": "À la fin, tout le monde était fatigué.",
+        "translation": { "en": "At the end, everyone was tired.", "de": "Am Ende waren alle müde." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "À la fin marks the last moment of the story, after all the steps.",
+        "fr": "« À la fin » marque le dernier moment du récit, après toutes les étapes.",
+        "de": "À la fin markiert den letzten Moment der Erzählung, nach allen Schritten."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "",
+        "after": ", tout le monde était fatigué.",
+        "accepted": { "answers": ["à la fin", "À la fin"] },
+        "referenceTargetIds": ["a-la-fin", "enfin", "finalement", "tout-a-coup"],
+        "explanation": {
+          "en": "Only à la fin marks the last moment of the story.",
+          "fr": "Seul « à la fin » marque le dernier moment du récit.",
+          "de": "Nur à la fin markiert den letzten Moment der Erzählung."
+        }
+      },
+      "listeningOptionTargetIds": ["a-la-fin", "enfin", "finalement", "tout-a-coup"]
+    },
+    {
+      "id": "enfin",
+      "term": "enfin",
+      "translations": { "en": ["finally", "last of all"], "de": ["schließlich", "zuletzt"] },
+      "wordClass": "adverb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "enfin",
+      "examForms": ["enfin"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "ɑ̃fɛ̃",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Il a pris le train, puis le bus, et enfin un taxi.",
+        "translation": {
+          "en": "He took the train, then the bus, and finally a taxi.",
+          "de": "Er nahm den Zug, dann den Bus und schließlich ein Taxi."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Enfin closes a list; finalement gives the outcome of the story.",
+        "fr": "« Enfin » ferme une énumération ; « finalement » donne le dénouement du récit.",
+        "de": "Enfin schließt eine Aufzählung; finalement nennt den Ausgang der Erzählung."
+      },
+      "explanation": {
+        "en": "Enfin closes a list of steps: it is the last item, not a surprise.",
+        "fr": "« Enfin » ferme une énumération : c'est le dernier élément, sans surprise.",
+        "de": "Enfin schließt eine Aufzählung: Es ist das letzte Element, keine Überraschung."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il a pris le train, puis le bus, et ",
+        "after": " un taxi.",
+        "accepted": { "answers": ["enfin"] },
+        "referenceTargetIds": ["a-la-fin", "enfin", "finalement", "tout-a-coup"],
+        "explanation": {
+          "en": "Enfin closes the list of means of transport.",
+          "fr": "« Enfin » ferme la liste des moyens de transport.",
+          "de": "Enfin schließt die Liste der Verkehrsmittel."
+        }
+      },
+      "listeningOptionTargetIds": ["a-la-fin", "enfin", "finalement", "tout-a-coup"]
+    },
+    {
+      "id": "finalement",
+      "term": "finalement",
+      "translations": {
+        "en": ["in the end", "eventually"],
+        "de": ["letztendlich", "am Ende doch"]
+      },
+      "wordClass": "adverb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "finalement",
+      "examForms": ["finalement"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "finalmɑ̃",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Il pleuvait, alors finalement nous sommes restés à la maison.",
+        "translation": {
+          "en": "It was raining, so in the end we stayed at home.",
+          "de": "Es regnete, also sind wir letztendlich zu Hause geblieben."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Finalement gives the real outcome, often different from the plan; enfin closes a list.",
+        "fr": "« Finalement » donne le vrai dénouement, souvent différent du projet ; « enfin » ferme une liste.",
+        "de": "Finalement nennt den wahren Ausgang, oft anders als geplant; enfin schließt eine Liste."
+      },
+      "explanation": {
+        "en": "Finalement gives the outcome of the story, often unexpected.",
+        "fr": "« Finalement » donne le dénouement du récit, souvent inattendu.",
+        "de": "Finalement nennt den Ausgang der Erzählung, oft unerwartet."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il pleuvait, alors ",
+        "after": " nous sommes restés à la maison.",
+        "accepted": { "answers": ["finalement"] },
+        "referenceTargetIds": ["a-la-fin", "enfin", "finalement", "tout-a-coup"],
+        "explanation": {
+          "en": "Finalement gives the real outcome: the rain changed the plan.",
+          "fr": "« Finalement » donne le dénouement : la pluie a changé le projet.",
+          "de": "Finalement nennt den Ausgang: Der Regen hat den Plan geändert."
+        }
+      },
+      "listeningOptionTargetIds": ["a-la-fin", "enfin", "finalement", "tout-a-coup"]
+    },
+    {
+      "id": "tout-a-coup",
+      "term": "tout à coup",
+      "translations": { "en": ["suddenly", "all of a sudden"], "de": ["plötzlich", "auf einmal"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "tout à coup",
+      "examForms": ["tout à coup"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "tu ta ku",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Nous marchions tranquillement quand, tout à coup, il a commencé à pleuvoir.",
+        "translation": {
+          "en": "We were walking quietly when, suddenly, it started to rain.",
+          "de": "Wir gingen ruhig spazieren, als es plötzlich zu regnen begann."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Tout à coup introduces a sudden event that interrupts the story.",
+        "fr": "« Tout à coup » introduit un événement soudain qui interrompt le récit.",
+        "de": "Tout à coup leitet ein plötzliches Ereignis ein, das die Erzählung unterbricht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nous marchions tranquillement quand, ",
+        "after": ", il a commencé à pleuvoir.",
+        "accepted": { "answers": ["tout à coup", "tout a coup"] },
+        "referenceTargetIds": ["a-la-fin", "enfin", "finalement", "tout-a-coup"],
+        "explanation": {
+          "en": "Tout à coup marks the sudden event: the rain.",
+          "fr": "« Tout à coup » marque l'événement soudain : la pluie.",
+          "de": "Tout à coup markiert das plötzliche Ereignis: den Regen."
+        }
+      },
+      "listeningOptionTargetIds": ["a-la-fin", "enfin", "finalement", "tout-a-coup"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

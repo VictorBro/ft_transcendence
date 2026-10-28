@@ -1,0 +1,400 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-reading-a-short-biography",
+  "lang": "fr",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Lire une courte biographie",
+  "objective": {
+    "en": "Read a short biography of a French singer and put the stages of her life in order with their dates.",
+    "fr": "Lire la courte biographie d’une chanteuse française et remettre dans l’ordre les étapes de sa vie avec leur date.",
+    "de": "Eine kurze Biografie einer französischen Sängerin lesen und die Etappen ihres Lebens mit Datum ordnen."
+  },
+  "estimatedMinutes": 9,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "deepseek-chat",
+    "promptVersion": "author-1",
+    "generatedAt": "2026-10-26T23:34:41.490Z",
+    "inputHashes": {
+      "outline": "59f51c930e174f56d552ec941ad619a6fc1cc8cb7f735a90e45f0a09fec49724",
+      "brief": "df4b7b1a04df0f5790bd6359869e8c1d69709fe08172cc81b8814543dcf4e630"
+    }
+  },
+  "kind": "reading",
+  "theme": "personal_identification",
+  "genre": "article",
+  "documents": [
+    {
+      "documentId": "main",
+      "title": "Camille Rousseau, une voix du Nord",
+      "meta": ["Le Petit Journal du collège", "Rubrique « Portraits »"],
+      "paragraphs": [
+        "Camille Rousseau est une chanteuse française très connue. Elle est née en 1975 à Roubaix, dans le nord de la France.",
+        "Elle a grandi à Lille avec ses parents et ses deux frères. À l’école, elle chantait déjà dans la chorale.",
+        "À partir de 1994, elle a fait ses études de musique à Paris. Elle a travaillé dans un petit café le soir pour payer son appartement.",
+        "Son premier album est sorti en 2001. Il a eu beaucoup de succès et elle a fait une grande tournée en France.",
+        "En 2005, elle a déménagé à Lyon. Trois ans plus tard, elle s’est mariée et elle a eu une fille, Lila.",
+        "Aujourd’hui, Camille Rousseau a 50 ans et elle chante encore. Elle donne des concerts dans toute l’Europe."
+      ],
+      "highlights": [
+        { "keywordId": "naitre", "text": "née" },
+        { "keywordId": "grandir", "text": "grandi" },
+        { "keywordId": "faire-ses-etudes", "text": "fait ses études" },
+        { "keywordId": "un-album", "text": "album" },
+        { "keywordId": "demenager", "text": "déménagé" }
+      ]
+    },
+    {
+      "documentId": "exam",
+      "title": "Malik Benali, guitariste",
+      "meta": ["Programme du concert de Lyon"],
+      "paragraphs": [
+        "Malik Benali est guitariste. Il est né en 1982 à Marseille, mais il a grandi à Nice.",
+        "Il a appris la guitare à 12 ans, tout seul, avec un vieux livre.",
+        "En 2003, il a déménagé à Paris pour jouer dans des groupes. Son premier concert a eu lieu en 2006.",
+        "Depuis 2010, il joue avec Camille Rousseau."
+      ],
+      "highlights": []
+    }
+  ],
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "exercise",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "flashcards",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Turn each card to learn the key words of the text.",
+            "fr": "Retournez chaque carte pour découvrir les mots clés du texte.",
+            "de": "Dreh jede Karte um und lerne die Schlüsselwörter des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_flashcards",
+              "itemId": "cards",
+              "keywordIds": ["naitre", "grandir", "faire-ses-etudes", "un-album", "demenager"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "matching",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each key word with its meaning.",
+            "fr": "Associez chaque mot clé à son sens.",
+            "de": "Ordne jedem Schlüsselwort seine Bedeutung zu."
+          },
+          "items": [
+            {
+              "type": "reading_keyword_matching",
+              "itemId": "matching",
+              "keywordIds": ["naitre", "grandir", "faire-ses-etudes", "un-album", "demenager"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skim",
+      "stage": "skim",
+      "role": "exercise",
+      "label": { "en": "Skim", "fr": "Survol", "de": "Überfliegen" },
+      "pages": [
+        {
+          "pageId": "skim",
+          "estimatedDurationS": 115,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Look over the document quickly. When the time is up it is put away; then answer the question.",
+            "fr": "Parcourez rapidement le document. À la fin du temps, il disparaît ; répondez ensuite à la question.",
+            "de": "Überfliege das Dokument. Wenn die Zeit um ist, verschwindet es; beantworte dann die Frage."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "skim-document",
+              "documentId": "main",
+              "view": "skim",
+              "skimSeconds": 95
+            },
+            {
+              "type": "reading_skim_choice",
+              "itemId": "skim-question",
+              "focus": "genre",
+              "question": "Quel est ce document ?",
+              "options": [
+                { "optionId": "o1", "text": "Une lettre personnelle" },
+                { "optionId": "o2", "text": "Un article de magazine" },
+                { "optionId": "o3", "text": "Un menu de restaurant" },
+                { "optionId": "o4", "text": "Une petite annonce" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "It is a portrait in a school magazine: Le Petit Journal du collège, rubrique « Portraits ».",
+                "fr": "C’est un portrait dans un magazine scolaire : Le Petit Journal du collège, rubrique « Portraits ».",
+                "de": "Es ist ein Porträt in einer Schülerzeitschrift: Le Petit Journal du collège, rubrique « Portraits »."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detail",
+      "stage": "detail",
+      "role": "exercise",
+      "label": { "en": "Detail", "fr": "Détails", "de": "Details" },
+      "pages": [
+        {
+          "pageId": "detail",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the document carefully and answer the questions.",
+            "fr": "Lisez le document attentivement et répondez aux questions.",
+            "de": "Lies das Dokument genau und beantworte die Fragen."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "detail-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-born",
+              "question": "Où Camille Rousseau est-elle née ?",
+              "options": [
+                { "optionId": "o1", "text": "À Lille" },
+                { "optionId": "o2", "text": "À Paris" },
+                { "optionId": "o3", "text": "À Roubaix" },
+                { "optionId": "o4", "text": "À Lyon" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "Elle est née en 1975 à Roubaix. Lille is where she grew up, Paris where she studied.",
+                "fr": "Elle est née en 1975 à Roubaix. Lille, c’est la ville où elle a grandi ; Paris, celle où elle a fait ses études.",
+                "de": "Elle est née en 1975 à Roubaix. In Lille ist sie aufgewachsen, in Paris hat sie studiert."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-grew-up",
+              "question": "Où a-t-elle grandi ?",
+              "options": [
+                { "optionId": "o1", "text": "À Lille" },
+                { "optionId": "o2", "text": "À Roubaix" },
+                { "optionId": "o3", "text": "À Lyon" },
+                { "optionId": "o4", "text": "À Marseille" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "Elle a grandi à Lille avec ses parents et ses deux frères.",
+                "fr": "Elle a grandi à Lille avec ses parents et ses deux frères.",
+                "de": "Elle a grandi à Lille avec ses parents et ses deux frères."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-first-album",
+              "question": "Quand est sorti son premier album ?",
+              "options": [
+                { "optionId": "o1", "text": "En 1994" },
+                { "optionId": "o2", "text": "En 2001" },
+                { "optionId": "o3", "text": "En 2005" },
+                { "optionId": "o4", "text": "En 2008" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "Son premier album est sorti en 2001. 1994 is the start of her studies, 2005 the year she moved to Lyon.",
+                "fr": "Son premier album est sorti en 2001. 1994, c’est le début de ses études ; 2005, l’année de son déménagement à Lyon.",
+                "de": "Son premier album est sorti en 2001. 1994 beginnt ihr Studium, 2005 zieht sie nach Lyon."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "q-family",
+              "statement": "Camille Rousseau a un fils.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: elle a eu une fille, Lila. She has a daughter, not a son.",
+                "fr": "Faux : elle a eu une fille, Lila. Elle a une fille, pas un fils.",
+                "de": "Falsch: elle a eu une fille, Lila. Sie hat eine Tochter, keinen Sohn."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "structure",
+      "stage": "structure",
+      "role": "exercise",
+      "label": { "en": "Structure", "fr": "Structure", "de": "Aufbau" },
+      "pages": [
+        {
+          "pageId": "structure",
+          "estimatedDurationS": 75,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the stages of Camille’s life in order, from first to last.",
+            "fr": "Remettez les étapes de la vie de Camille dans l’ordre, de la première à la dernière.",
+            "de": "Bring die Etappen von Camilles Leben in die richtige Reihenfolge, von der ersten bis zur letzten."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "structure-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_order",
+              "itemId": "order",
+              "pieces": [
+                { "pieceId": "p1", "text": "Elle est née à Roubaix (1975)." },
+                {
+                  "pieceId": "p2",
+                  "text": "Elle a fait ses études de musique à Paris (à partir de 1994)."
+                },
+                { "pieceId": "p3", "text": "Son premier album est sorti (2001)." },
+                { "pieceId": "p4", "text": "Elle a déménagé à Lyon (2005)." },
+                { "pieceId": "p5", "text": "Elle s’est mariée et elle a eu une fille (2008)." }
+              ],
+              "acceptedOrders": [["p1", "p2", "p3", "p4", "p5"]],
+              "answerExplanation": {
+                "en": "The text follows the years: 1975, 1994, 2001, 2005, 2008. The dates help you find the order.",
+                "fr": "Le texte suit les années : 1975, 1994, 2001, 2005, 2008. Les dates aident à trouver l’ordre.",
+                "de": "Der Text folgt den Jahren: 1975, 1994, 2001, 2005, 2008. Die Daten helfen bei der Reihenfolge."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam",
+          "estimatedDurationS": 144,
+          "timeLimitS": 220,
+          "instructions": {
+            "en": "Read the new document and answer the questions. No help this time.",
+            "fr": "Lisez le nouveau document et répondez aux questions. Cette fois, sans aide.",
+            "de": "Lies das neue Dokument und beantworte die Fragen. Diesmal ohne Hilfe."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "exam-document",
+              "documentId": "exam",
+              "view": "exam",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-born",
+              "question": "Où Malik Benali est-il né ?",
+              "options": [
+                { "optionId": "o1", "text": "À Nice" },
+                { "optionId": "o2", "text": "À Paris" },
+                { "optionId": "o3", "text": "À Marseille" },
+                { "optionId": "o4", "text": "À Lyon" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "Il est né en 1982 à Marseille, mais il a grandi à Nice.",
+                "fr": "Il est né en 1982 à Marseille, mais il a grandi à Nice.",
+                "de": "Il est né en 1982 à Marseille, mais il a grandi à Nice."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-guitar",
+              "question": "À quel âge a-t-il appris la guitare ?",
+              "options": [
+                { "optionId": "o1", "text": "À 10 ans" },
+                { "optionId": "o2", "text": "À 12 ans" },
+                { "optionId": "o3", "text": "À 20 ans" },
+                { "optionId": "o4", "text": "À 6 ans" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "Il a appris la guitare à 12 ans, tout seul.",
+                "fr": "Il a appris la guitare à 12 ans, tout seul.",
+                "de": "Il a appris la guitare à 12 ans, tout seul."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-paris",
+              "question": "Pourquoi a-t-il déménagé à Paris en 2003 ?",
+              "options": [
+                { "optionId": "o1", "text": "Pour faire ses études" },
+                { "optionId": "o2", "text": "Pour jouer dans des groupes" },
+                { "optionId": "o3", "text": "Pour travailler dans un café" },
+                { "optionId": "o4", "text": "Pour donner des cours de guitare" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "En 2003, il a déménagé à Paris pour jouer dans des groupes.",
+                "fr": "En 2003, il a déménagé à Paris pour jouer dans des groupes.",
+                "de": "En 2003, il a déménagé à Paris pour jouer dans des groupes."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-concert",
+              "statement": "Son premier concert a eu lieu en 2006.",
+              "answer": "true",
+              "answerExplanation": {
+                "en": "True: Son premier concert a eu lieu en 2006.",
+                "fr": "Vrai : Son premier concert a eu lieu en 2006.",
+                "de": "Richtig: Son premier concert a eu lieu en 2006."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-camille",
+              "question": "Avec qui joue-t-il depuis 2010 ?",
+              "options": [
+                { "optionId": "o1", "text": "Avec son père" },
+                { "optionId": "o2", "text": "Avec un groupe de Nice" },
+                { "optionId": "o3", "text": "Avec Camille Rousseau" },
+                { "optionId": "o4", "text": "Avec Lila Rousseau" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "Depuis 2010, il joue avec Camille Rousseau.",
+                "fr": "Depuis 2010, il joue avec Camille Rousseau.",
+                "de": "Depuis 2010, il joue avec Camille Rousseau."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

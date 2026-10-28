@@ -1,0 +1,756 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-strengths-and-flaws",
+  "lang": "fr",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Qualités et défauts",
+  "objective": {
+    "en": "Describe your strengths and flaws with about fifteen words and expressions.",
+    "fr": "Parler de ses qualités et de ses défauts avec une quinzaine de mots et d’expressions.",
+    "de": "Mit etwa fünfzehn Wörtern und Ausdrücken über eigene Stärken und Schwächen sprechen."
+  },
+  "estimatedMinutes": 25,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "deepseek-chat",
+    "promptVersion": "author-1",
+    "generatedAt": "2026-10-26T23:41:15.320Z",
+    "inputHashes": { "outline": "7a7eba750d08ec4db39178ddf1329de470da2ca6ac811f728011a26c05e1ba4b" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Fifteen items from the outline: eight adjectives (patient, têtu, ambitieux, rancunier, débrouillard, susceptible, honnête, maladroit), the nouns la patience, la franchise, l'orgueil, and the expressions avoir du caractère, avoir bon cœur, être de bonne humeur, manquer de confiance en soi.",
+    "fr": "Quinze entrées du plan : huit adjectifs (patient, têtu, ambitieux, rancunier, débrouillard, susceptible, honnête, maladroit), les noms la patience, la franchise, l’orgueil, et les expressions avoir du caractère, avoir bon cœur, être de bonne humeur, manquer de confiance en soi.",
+    "de": "Fünfzehn Einträge aus der Gliederung: acht Adjektive (patient, têtu, ambitieux, rancunier, débrouillard, susceptible, honnête, maladroit), die Nomen la patience, la franchise, l’orgueil und die Ausdrücke avoir du caractère, avoir bon cœur, être de bonne humeur, manquer de confiance en soi."
+  },
+  "targetCount": 15,
+  "countRationale": {
+    "en": "Fifteen items: enough to describe a personality in a portrait, few enough to practise each one in every exercise.",
+    "fr": "Quinze entrées : assez pour brosser un portrait, assez peu pour travailler chaque mot dans tous les exercices.",
+    "de": "Fünfzehn Einträge: genug für ein Porträt, wenige genug, um jedes Wort in allen Übungen zu üben."
+  },
+  "difficultyBalance": {
+    "en": "Nine core words for everyday portraits, six demanding ones (rancunier, susceptible, débrouillard, l'orgueil, manquer de confiance en soi, avoir du caractère).",
+    "fr": "Neuf mots de base pour les portraits courants, six plus exigeants (rancunier, susceptible, débrouillard, l’orgueil, manquer de confiance en soi, avoir du caractère).",
+    "de": "Neun Grundwörter für alltägliche Porträts, sechs anspruchsvollere (rancunier, susceptible, débrouillard, l’orgueil, manquer de confiance en soi, avoir du caractère)."
+  },
+  "prerequisites": [
+    {
+      "en": "Adjective agreement in gender and number (grand, grande, grands, grandes).",
+      "fr": "L’accord des adjectifs en genre et en nombre (grand, grande, grands, grandes).",
+      "de": "Die Angleichung der Adjektive in Genus und Numerus (grand, grande, grands, grandes)."
+    },
+    {
+      "en": "The verb être in the present.",
+      "fr": "Le verbe être au présent.",
+      "de": "Das Verb être im Präsens."
+    }
+  ],
+  "groups": [
+    {
+      "id": "qualites",
+      "label": { "en": "Strengths", "fr": "Les qualités", "de": "Stärken" },
+      "targetIds": ["patient", "debrouillard", "honnete", "franchise", "bon-coeur"],
+      "introduction": {
+        "en": "These words describe what people do well:\n\n- `patient` : who waits without getting angry\n- `débrouillard` : who finds a solution to every problem\n- `honnête` : who tells the truth\n- `la franchise` : the habit of saying what one thinks\n- `avoir bon cœur` : to be generous and kind",
+        "fr": "Ces mots décrivent ce que les gens font bien :\n\n- `patient` : qui attend sans se fâcher\n- `débrouillard` : qui trouve une solution à chaque problème\n- `honnête` : qui dit la vérité\n- `la franchise` : l’habitude de dire ce qu’on pense\n- `avoir bon cœur` : être généreux et gentil",
+        "de": "Diese Wörter beschreiben, was Menschen gut können:\n\n- `patient` : der wartet, ohne wütend zu werden\n- `débrouillard` : der für jedes Problem eine Lösung findet\n- `honnête` : der die Wahrheit sagt\n- `la franchise` : die Gewohnheit, zu sagen, was man denkt\n- `avoir bon cœur` : großzügig und freundlich sein"
+      }
+    },
+    {
+      "id": "defauts",
+      "label": { "en": "Flaws", "fr": "Les défauts", "de": "Schwächen" },
+      "targetIds": ["tetu", "rancunier", "susceptible", "maladroit", "orgueil"],
+      "introduction": {
+        "en": "These words describe what is difficult in people:\n\n- `têtu` : who never changes their mind\n- `rancunier` : who cannot forget an insult\n- `susceptible` : who is hurt by the smallest remark\n- `maladroit` : who drops things and says the wrong thing\n- `l’orgueil` : too high an opinion of oneself",
+        "fr": "Ces mots décrivent ce qui est difficile chez les gens :\n\n- `têtu` : qui ne change jamais d’avis\n- `rancunier` : qui n’oublie pas une offense\n- `susceptible` : que la moindre remarque blesse\n- `maladroit` : qui fait tomber les objets et dit ce qu’il ne faut pas\n- `l’orgueil` : une trop haute idée de soi-même",
+        "de": "Diese Wörter beschreiben, was an Menschen schwierig ist:\n\n- `têtu` : der seine Meinung nie ändert\n- `rancunier` : der eine Kränkung nicht vergisst\n- `susceptible` : den die kleinste Bemerkung verletzt\n- `maladroit` : der Dinge fallen lässt und das Falsche sagt\n- `l’orgueil` : eine zu hohe Meinung von sich selbst"
+      }
+    },
+    {
+      "id": "nuances",
+      "label": {
+        "en": "Character and mood",
+        "fr": "Caractère et humeur",
+        "de": "Charakter und Stimmung"
+      },
+      "targetIds": ["ambitieux", "patience", "caractere", "bonne-humeur", "confiance"],
+      "introduction": {
+        "en": "Five more ways to talk about character:\n\n- `ambitieux` : who wants to succeed and works for it\n- `la patience` : the quality of a patient person\n- `avoir du caractère` : to know what one wants and to say it\n- `être de bonne humeur` : to be cheerful today\n- `manquer de confiance en soi` : to doubt oneself",
+        "fr": "Cinq façons de plus de parler du caractère :\n\n- `ambitieux` : qui veut réussir et travaille pour cela\n- `la patience` : la qualité d’une personne patiente\n- `avoir du caractère` : savoir ce qu’on veut et le dire\n- `être de bonne humeur` : être joyeux aujourd’hui\n- `manquer de confiance en soi` : douter de soi-même",
+        "de": "Fünf weitere Arten, über den Charakter zu sprechen:\n\n- `ambitieux` : der Erfolg will und dafür arbeitet\n- `la patience` : die Eigenschaft einer geduldigen Person\n- `avoir du caractère` : wissen, was man will, und es sagen\n- `être de bonne humeur` : heute fröhlich sein\n- `manquer de confiance en soi` : an sich selbst zweifeln"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "patient",
+      "term": "patient",
+      "translations": { "en": ["patient"], "de": ["geduldig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "patient, patiente",
+      "examForms": ["patient, patiente"],
+      "articleException": null,
+      "genderVariants": ["patient", "patiente"],
+      "pronunciation": "patient",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Elle est très patiente avec ses élèves.",
+        "translation": {
+          "en": "She is very patient with her pupils.",
+          "de": "Sie ist sehr geduldig mit ihren Schülern."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Patient is an adjective: patiente in the feminine, patients in the plural.",
+        "fr": "Patient est un adjectif : patiente au féminin, patients au pluriel.",
+        "de": "Patient ist ein Adjektiv: patiente in der weiblichen Form, patients im Plural."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "patient (masculine and feminine forms)",
+        "de": "geduldig (männliche und weibliche Form)"
+      },
+      "gap": {
+        "before": "Il faut être ",
+        "after": " avec les enfants.",
+        "accepted": { "answers": ["patient", "patiente"] },
+        "referenceTargetIds": ["patient", "tetu", "maladroit", "ambitieux"],
+        "explanation": {
+          "en": "Only patient describes someone who waits calmly.",
+          "fr": "Seul « patient » décrit quelqu’un qui attend calmement.",
+          "de": "Nur patient beschreibt jemanden, der ruhig wartet."
+        }
+      },
+      "listeningOptionTargetIds": ["patient", "tetu", "maladroit", "ambitieux"]
+    },
+    {
+      "id": "debrouillard",
+      "term": "débrouillard",
+      "translations": { "en": ["resourceful"], "de": ["findig", "geschickt"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "débrouillard, débrouillarde",
+      "examForms": ["débrouillard, débrouillarde"],
+      "articleException": null,
+      "genderVariants": ["débrouillard", "débrouillarde"],
+      "pronunciation": "débrouillard",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Mon frère est très débrouillard : il répare tout.",
+        "translation": {
+          "en": "My brother is very resourceful: he repairs everything.",
+          "de": "Mein Bruder ist sehr findig: er repariert alles."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Débrouillard comes from se débrouiller, to manage on one's own.",
+        "fr": "Débrouillard vient de se débrouiller : trouver seul une solution.",
+        "de": "Débrouillard kommt von se débrouiller, sich allein zu helfen wissen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "resourceful (masculine and feminine forms)",
+        "de": "findig (männliche und weibliche Form)"
+      },
+      "gap": {
+        "before": "Elle se débrouille toujours : elle est très ",
+        "after": ".",
+        "accepted": { "answers": ["débrouillarde", "débrouillard"] },
+        "referenceTargetIds": ["debrouillard", "maladroit", "susceptible", "patient"],
+        "explanation": {
+          "en": "Only débrouillard means able to find a solution alone.",
+          "fr": "Seul « débrouillard » signifie capable de trouver une solution seul.",
+          "de": "Nur débrouillard bedeutet, allein eine Lösung zu finden."
+        }
+      },
+      "listeningOptionTargetIds": ["debrouillard", "maladroit", "susceptible", "patient"]
+    },
+    {
+      "id": "honnete",
+      "term": "honnête",
+      "translations": { "en": ["honest"], "de": ["ehrlich"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "honnête",
+      "examForms": ["honnête"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "honnête",
+      "difficulty": "core",
+      "context": {
+        "sentence": "C’est un homme honnête : il ne ment jamais.",
+        "translation": {
+          "en": "He is an honest man: he never lies.",
+          "de": "Er ist ein ehrlicher Mann: er lügt nie."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Honnête has the same form in the masculine and the feminine.",
+        "fr": "Honnête a la même forme au masculin et au féminin.",
+        "de": "Honnête hat im Männlichen und im Weiblichen dieselbe Form."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il dit toujours la vérité : il est ",
+        "after": ".",
+        "accepted": { "answers": ["honnête"] },
+        "referenceTargetIds": ["honnete", "rancunier", "tetu", "susceptible"],
+        "explanation": {
+          "en": "Only honnête means telling the truth.",
+          "fr": "Seul « honnête » signifie dire la vérité.",
+          "de": "Nur honnête bedeutet, die Wahrheit zu sagen."
+        }
+      },
+      "listeningOptionTargetIds": ["honnete", "rancunier", "tetu", "susceptible"]
+    },
+    {
+      "id": "franchise",
+      "term": "franchise",
+      "translations": { "en": ["frankness", "honesty"], "de": ["Offenheit", "Freimütigkeit"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une franchise",
+      "examForms": ["une franchise"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "la franchise",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Sa franchise plaît à tout le monde.",
+        "translation": {
+          "en": "Everyone likes her frankness.",
+          "de": "Ihre Offenheit gefällt allen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Franchise is a feminine noun: la franchise, from the adjective franc.",
+        "fr": "Franchise est un nom féminin : la franchise, de l’adjectif franc.",
+        "de": "Franchise ist ein weibliches Nomen: la franchise, vom Adjektiv franc."
+      },
+      "genderExplanation": {
+        "en": "Franchise is feminine: la franchise, une franchise.",
+        "fr": "Franchise est féminin : la franchise, une franchise.",
+        "de": "Franchise ist weiblich: la franchise, une franchise."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Elle dit ce qu’elle pense : j’aime sa ",
+        "after": ".",
+        "accepted": { "answers": ["franchise"] },
+        "referenceTargetIds": ["franchise", "orgueil", "patience", "confiance"],
+        "explanation": {
+          "en": "Only franchise means saying what one thinks.",
+          "fr": "Seul « franchise » signifie dire ce qu’on pense.",
+          "de": "Nur franchise bedeutet, zu sagen, was man denkt."
+        }
+      },
+      "listeningOptionTargetIds": ["franchise", "orgueil", "patience", "confiance"]
+    },
+    {
+      "id": "bon-coeur",
+      "term": "avoir bon cœur",
+      "translations": { "en": ["to be kind-hearted"], "de": ["ein gutes Herz haben"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "avoir bon cœur",
+      "examForms": ["avoir bon cœur"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "avoir bon cœur",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Elle a bon cœur : elle aide toujours les autres.",
+        "translation": {
+          "en": "She is kind-hearted: she always helps others.",
+          "de": "Sie hat ein gutes Herz: sie hilft immer anderen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Avoir bon cœur is a set phrase: bon cœur has no article.",
+        "fr": "Avoir bon cœur est une expression figée : bon cœur s’emploie sans article.",
+        "de": "Avoir bon cœur ist eine feste Wendung: bon cœur steht ohne Artikel."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il aide toujours les autres : il a ",
+        "after": ".",
+        "accepted": { "answers": ["bon cœur", "bon coeur"] },
+        "referenceTargetIds": ["bon-coeur", "caractere", "confiance", "bonne-humeur"],
+        "explanation": {
+          "en": "Only avoir bon cœur means being generous.",
+          "fr": "Seul « avoir bon cœur » signifie être généreux.",
+          "de": "Nur avoir bon cœur bedeutet, großzügig zu sein."
+        }
+      },
+      "listeningOptionTargetIds": ["bon-coeur", "caractere", "confiance", "bonne-humeur"]
+    },
+    {
+      "id": "tetu",
+      "term": "têtu",
+      "translations": { "en": ["stubborn"], "de": ["stur", "eigensinnig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "têtu, têtue",
+      "examForms": ["têtu, têtue"],
+      "articleException": null,
+      "genderVariants": ["têtu", "têtue"],
+      "pronunciation": "têtu",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Il est trop têtu pour changer d’avis.",
+        "translation": {
+          "en": "He is too stubborn to change his mind.",
+          "de": "Er ist zu stur, um seine Meinung zu ändern."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Têtu takes a circumflex on the u: têtu, têtue.",
+        "fr": "Têtu prend un accent circonflexe sur le u : têtu, têtue.",
+        "de": "Têtu trägt einen Zirkumflex auf dem u: têtu, têtue."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "stubborn (masculine and feminine forms)",
+        "de": "stur (männliche und weibliche Form)"
+      },
+      "gap": {
+        "before": "Elle ne change jamais d’avis : elle est ",
+        "after": ".",
+        "accepted": { "answers": ["têtue", "têtu"] },
+        "referenceTargetIds": ["tetu", "patient", "honnete", "debrouillard"],
+        "explanation": {
+          "en": "Only têtu means refusing to change one's mind.",
+          "fr": "Seul « têtu » signifie refuser de changer d’avis.",
+          "de": "Nur têtu bedeutet, die Meinung nicht ändern zu wollen."
+        }
+      },
+      "listeningOptionTargetIds": ["tetu", "patient", "honnete", "debrouillard"]
+    },
+    {
+      "id": "rancunier",
+      "term": "rancunier",
+      "translations": { "en": ["resentful", "spiteful"], "de": ["nachtragend"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "rancunier, rancunière",
+      "examForms": ["rancunier, rancunière"],
+      "articleException": null,
+      "genderVariants": ["rancunier", "rancunière"],
+      "pronunciation": "rancunier",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Il est rancunier : il n’a jamais pardonné cette remarque.",
+        "translation": {
+          "en": "He is resentful: he never forgave that remark.",
+          "de": "Er ist nachtragend: diese Bemerkung hat er nie verziehen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Rancunier comes from la rancune, a grudge; the feminine adds an accent: rancunière.",
+        "fr": "Rancunier vient de la rancune ; le féminin prend un accent : rancunière.",
+        "de": "Rancunier kommt von la rancune, der Groll; die weibliche Form hat einen Akzent: rancunière."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "resentful (masculine and feminine forms)",
+        "de": "nachtragend (männliche und weibliche Form)"
+      },
+      "gap": {
+        "before": "Il n’oublie jamais une offense : il est ",
+        "after": ".",
+        "accepted": { "answers": ["rancunier", "rancunière"] },
+        "referenceTargetIds": ["rancunier", "susceptible", "patient", "honnete"],
+        "explanation": {
+          "en": "Only rancunier means keeping a grudge.",
+          "fr": "Seul « rancunier » signifie garder de la rancune.",
+          "de": "Nur rancunier bedeutet, Groll zu bewahren."
+        }
+      },
+      "listeningOptionTargetIds": ["rancunier", "susceptible", "patient", "honnete"]
+    },
+    {
+      "id": "susceptible",
+      "term": "susceptible",
+      "translations": {
+        "en": ["touchy", "oversensitive"],
+        "de": ["empfindlich", "leicht gekränkt"]
+      },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "susceptible",
+      "examForms": ["susceptible"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "susceptible",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Ne lui fais pas de remarque : il est susceptible.",
+        "translation": {
+          "en": "Don't criticise him: he is touchy.",
+          "de": "Kritisiere ihn nicht: er ist empfindlich."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Susceptible has the same form in the masculine and the feminine.",
+        "fr": "Susceptible a la même forme au masculin et au féminin.",
+        "de": "Susceptible hat im Männlichen und im Weiblichen dieselbe Form."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "La moindre remarque le blesse : il est ",
+        "after": ".",
+        "accepted": { "answers": ["susceptible"] },
+        "referenceTargetIds": ["susceptible", "tetu", "maladroit", "rancunier"],
+        "explanation": {
+          "en": "Only susceptible means easily hurt by a remark.",
+          "fr": "Seul « susceptible » signifie facilement blessé par une remarque.",
+          "de": "Nur susceptible bedeutet, leicht durch eine Bemerkung verletzt."
+        }
+      },
+      "listeningOptionTargetIds": ["susceptible", "tetu", "maladroit", "rancunier"]
+    },
+    {
+      "id": "maladroit",
+      "term": "maladroit",
+      "translations": { "en": ["clumsy"], "de": ["ungeschickt"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "maladroit, maladroite",
+      "examForms": ["maladroit, maladroite"],
+      "articleException": null,
+      "genderVariants": ["maladroit", "maladroite"],
+      "pronunciation": "maladroit",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Il est maladroit : il a encore cassé un verre.",
+        "translation": {
+          "en": "He is clumsy: he has broken another glass.",
+          "de": "Er ist ungeschickt: er hat schon wieder ein Glas zerbrochen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Maladroit is the opposite of adroit; the feminine is maladroite.",
+        "fr": "Maladroit est le contraire d’adroit ; le féminin est maladroite.",
+        "de": "Maladroit ist das Gegenteil von adroit; die weibliche Form ist maladroite."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "clumsy (masculine and feminine forms)",
+        "de": "ungeschickt (männliche und weibliche Form)"
+      },
+      "gap": {
+        "before": "Elle fait tomber tout ce qu’elle touche : elle est ",
+        "after": ".",
+        "accepted": { "answers": ["maladroite", "maladroit"] },
+        "referenceTargetIds": ["maladroit", "debrouillard", "patient", "susceptible"],
+        "explanation": {
+          "en": "Only maladroit means dropping things.",
+          "fr": "Seul « maladroit » signifie faire tomber les objets.",
+          "de": "Nur maladroit bedeutet, Dinge fallen zu lassen."
+        }
+      },
+      "listeningOptionTargetIds": ["maladroit", "debrouillard", "patient", "susceptible"]
+    },
+    {
+      "id": "orgueil",
+      "term": "orgueil",
+      "translations": { "en": ["pride", "arrogance"], "de": ["Stolz", "Hochmut"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un orgueil",
+      "examForms": ["un orgueil"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "l’orgueil",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Son orgueil l’empêche de s’excuser.",
+        "translation": {
+          "en": "His pride stops him from apologising.",
+          "de": "Sein Stolz hindert ihn daran, sich zu entschuldigen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Orgueil is masculine and starts with a vowel: l’orgueil, un orgueil.",
+        "fr": "Orgueil est masculin et commence par une voyelle : l’orgueil, un orgueil.",
+        "de": "Orgueil ist männlich und beginnt mit einem Vokal: l’orgueil, un orgueil."
+      },
+      "genderExplanation": {
+        "en": "Orgueil is masculine: l’orgueil, un orgueil.",
+        "fr": "Orgueil est masculin : l’orgueil, un orgueil.",
+        "de": "Orgueil ist männlich: l’orgueil, un orgueil."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il ne s’excuse jamais par ",
+        "after": ".",
+        "accepted": { "answers": ["orgueil"] },
+        "referenceTargetIds": ["orgueil", "franchise", "patience", "confiance"],
+        "explanation": {
+          "en": "Only orgueil means too high an opinion of oneself.",
+          "fr": "Seul « orgueil » signifie une trop haute idée de soi-même.",
+          "de": "Nur orgueil bedeutet eine zu hohe Meinung von sich selbst."
+        }
+      },
+      "listeningOptionTargetIds": ["orgueil", "franchise", "patience", "confiance"]
+    },
+    {
+      "id": "ambitieux",
+      "term": "ambitieux",
+      "translations": { "en": ["ambitious"], "de": ["ehrgeizig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ambitieux, ambitieuse",
+      "examForms": ["ambitieux, ambitieuse"],
+      "articleException": null,
+      "genderVariants": ["ambitieux", "ambitieuse"],
+      "pronunciation": "ambitieux",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Elle est ambitieuse : elle veut devenir directrice.",
+        "translation": {
+          "en": "She is ambitious: she wants to become a director.",
+          "de": "Sie ist ehrgeizig: sie will Direktorin werden."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Ambitieux ends in -eux: ambitieuse in the feminine.",
+        "fr": "Ambitieux se termine en -eux : ambitieuse au féminin.",
+        "de": "Ambitieux endet auf -eux: ambitieuse in der weiblichen Form."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "ambitious (masculine and feminine forms)",
+        "de": "ehrgeizig (männliche und weibliche Form)"
+      },
+      "gap": {
+        "before": "Il veut réussir à tout prix : il est très ",
+        "after": ".",
+        "accepted": { "answers": ["ambitieux", "ambitieuse"] },
+        "referenceTargetIds": ["ambitieux", "patient", "tetu", "honnete"],
+        "explanation": {
+          "en": "Only ambitieux means wanting to succeed.",
+          "fr": "Seul « ambitieux » signifie vouloir réussir.",
+          "de": "Nur ambitieux bedeutet, Erfolg haben zu wollen."
+        }
+      },
+      "listeningOptionTargetIds": ["ambitieux", "patient", "tetu", "honnete"]
+    },
+    {
+      "id": "patience",
+      "term": "patience",
+      "translations": { "en": ["patience"], "de": ["Geduld"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une patience",
+      "examForms": ["une patience"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "la patience",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Il faut de la patience pour apprendre le français.",
+        "translation": {
+          "en": "You need patience to learn French.",
+          "de": "Man braucht Geduld, um Französisch zu lernen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Patience is the noun built on the adjective patient: la patience.",
+        "fr": "Patience est le nom formé sur l’adjectif patient : la patience.",
+        "de": "Patience ist das Nomen zum Adjektiv patient: la patience."
+      },
+      "genderExplanation": {
+        "en": "Patience is feminine: la patience, une patience.",
+        "fr": "Patience est féminin : la patience, une patience.",
+        "de": "Patience ist weiblich: la patience, une patience."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il attend sans se fâcher : il a de la ",
+        "after": ".",
+        "accepted": { "answers": ["patience"] },
+        "referenceTargetIds": ["patience", "franchise", "orgueil", "confiance"],
+        "explanation": {
+          "en": "Only patience means waiting without getting angry.",
+          "fr": "Seul « patience » signifie attendre sans se fâcher.",
+          "de": "Nur patience bedeutet, ohne Wut zu warten."
+        }
+      },
+      "listeningOptionTargetIds": ["patience", "franchise", "orgueil", "confiance"]
+    },
+    {
+      "id": "caractere",
+      "term": "avoir du caractère",
+      "translations": { "en": ["to have a strong character"], "de": ["Charakter haben"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "avoir du caractère",
+      "examForms": ["avoir du caractère"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "avoir du caractère",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Elle a du caractère : elle défend ses idées.",
+        "translation": {
+          "en": "She has a strong character: she defends her ideas.",
+          "de": "Sie hat Charakter: sie verteidigt ihre Ideen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Avoir du caractère is a set phrase with the partitive du: du caractère.",
+        "fr": "Avoir du caractère est une expression figée avec le partitif du : du caractère.",
+        "de": "Avoir du caractère ist eine feste Wendung mit dem Teilungsartikel du: du caractère."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Elle sait ce qu’elle veut et le dit : elle a du ",
+        "after": ".",
+        "accepted": { "answers": ["caractère", "caractere"] },
+        "referenceTargetIds": ["caractere", "bon-coeur", "confiance", "bonne-humeur"],
+        "explanation": {
+          "en": "Only avoir du caractère means knowing what one wants.",
+          "fr": "Seul « avoir du caractère » signifie savoir ce qu’on veut.",
+          "de": "Nur avoir du caractère bedeutet, zu wissen, was man will."
+        }
+      },
+      "listeningOptionTargetIds": ["caractere", "bon-coeur", "confiance", "bonne-humeur"]
+    },
+    {
+      "id": "bonne-humeur",
+      "term": "être de bonne humeur",
+      "translations": { "en": ["to be in a good mood"], "de": ["gut gelaunt sein"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "être de bonne humeur",
+      "examForms": ["être de bonne humeur"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "être de bonne humeur",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ce matin, elle est de bonne humeur.",
+        "translation": {
+          "en": "This morning she is in a good mood.",
+          "de": "Heute Morgen ist sie gut gelaunt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Être de bonne humeur describes the mood of the day, not the character.",
+        "fr": "Être de bonne humeur décrit l’humeur du jour, pas le caractère.",
+        "de": "Être de bonne humeur beschreibt die Stimmung des Tages, nicht den Charakter."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Aujourd’hui, elle rit et plaisante : elle est de bonne ",
+        "after": ".",
+        "accepted": { "answers": ["humeur"] },
+        "referenceTargetIds": ["bonne-humeur", "caractere", "bon-coeur", "confiance"],
+        "explanation": {
+          "en": "Only bonne humeur describes a cheerful mood.",
+          "fr": "Seul « bonne humeur » décrit une humeur joyeuse.",
+          "de": "Nur bonne humeur beschreibt eine fröhliche Stimmung."
+        }
+      },
+      "listeningOptionTargetIds": ["bonne-humeur", "caractere", "bon-coeur", "confiance"]
+    },
+    {
+      "id": "confiance",
+      "term": "manquer de confiance en soi",
+      "translations": {
+        "en": ["to lack self-confidence"],
+        "de": ["es an Selbstvertrauen fehlen lassen"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "manquer de confiance en soi",
+      "examForms": ["manquer de confiance en soi"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "manquer de confiance en soi",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Elle n’ose pas parler en public : elle manque de confiance en soi.",
+        "translation": {
+          "en": "She doesn't dare speak in public: she lacks self-confidence.",
+          "de": "Sie traut sich nicht, öffentlich zu sprechen: ihr fehlt es an Selbstvertrauen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Manquer de takes no article: manquer de confiance. Soi means oneself.",
+        "fr": "Manquer de s’emploie sans article : manquer de confiance. Soi renvoie à soi-même.",
+        "de": "Manquer de steht ohne Artikel: manquer de confiance. Soi bedeutet sich selbst."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il n’ose jamais prendre la parole : il manque de ",
+        "after": " en soi.",
+        "accepted": { "answers": ["confiance"] },
+        "referenceTargetIds": ["confiance", "orgueil", "patience", "franchise"],
+        "explanation": {
+          "en": "Only confiance means believing in oneself.",
+          "fr": "Seul « confiance » signifie croire en soi.",
+          "de": "Nur confiance bedeutet, an sich zu glauben."
+        }
+      },
+      "listeningOptionTargetIds": ["confiance", "orgueil", "patience", "franchise"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

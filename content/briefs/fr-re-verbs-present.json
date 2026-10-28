@@ -1,0 +1,235 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-re-verbs-present",
+  "lang": "fr",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Attendre, vendre, répondre",
+  "objective": {
+    "en": "Conjugate attendre, vendre, répondre, entendre and perdre in the present tense, and form their past participles in -u: attendu, vendu.",
+    "fr": "Conjuguer au présent attendre, vendre, répondre, entendre et perdre, et former leur participe passé en -u : attendu, vendu.",
+    "de": "attendre, vendre, répondre, entendre und perdre im Präsens konjugieren und ihr Partizip Perfekt auf -u bilden: attendu, vendu."
+  },
+  "estimatedMinutes": 14,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "deepseek-chat",
+    "promptVersion": "author-1",
+    "generatedAt": "2026-10-26T23:35:33.216Z",
+    "inputHashes": { "outline": "ea1e49ea77d27e9bf7a4213fd9f4289e6b81f0a2e9127d759903330e1b8828bd" }
+  },
+  "kind": "grammar",
+  "topic": "verbs_morphology",
+  "scopeBoundaries": {
+    "en": "Covers the present tense and the -u past participle of regular -dre verbs (attendre, vendre, répondre, entendre, perdre). Excludes irregular -dre verbs such as prendre, mettre and connaître, and the passé composé itself.",
+    "fr": "Couvre le présent et le participe passé en -u des verbes réguliers en -dre (attendre, vendre, répondre, entendre, perdre). Exclut les verbes en -dre irréguliers comme prendre, mettre et connaître, ainsi que le passé composé.",
+    "de": "Behandelt Präsens und Partizip Perfekt auf -u der regelmäßigen Verben auf -dre (attendre, vendre, répondre, entendre, perdre). Ausgeschlossen sind unregelmäßige -dre-Verben wie prendre, mettre und connaître sowie das passé composé."
+  },
+  "prerequisites": [
+    {
+      "en": "The present tense of -er verbs (parler, regarder).",
+      "fr": "Le présent des verbes en -er (parler, regarder).",
+      "de": "Das Präsens der Verben auf -er (parler, regarder)."
+    },
+    {
+      "en": "Subject pronouns: je, tu, il, elle, on, nous, vous, ils, elles.",
+      "fr": "Les pronoms sujets : je, tu, il, elle, on, nous, vous, ils, elles.",
+      "de": "Die Subjektpronomen: je, tu, il, elle, on, nous, vous, ils, elles."
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-singular-forms",
+      "summary": {
+        "en": "Singular forms drop the -d of the stem: j'attends, tu attends, il attend.",
+        "fr": "Les formes du singulier perdent le -d du radical : j'attends, tu attends, il attend.",
+        "de": "Die Singularformen verlieren das -d des Stamms: j'attends, tu attends, il attend."
+      }
+    },
+    {
+      "id": "rule-plural-forms",
+      "summary": {
+        "en": "Plural forms keep the -d: nous attendons, vous attendez, ils attendent.",
+        "fr": "Les formes du pluriel gardent le -d : nous attendons, vous attendez, ils attendent.",
+        "de": "Die Pluralformen behalten das -d: nous attendons, vous attendez, ils attendent."
+      }
+    },
+    {
+      "id": "rule-past-participle",
+      "summary": {
+        "en": "The past participle ends in -u: attendu, vendu, répondu, entendu, perdu.",
+        "fr": "Le participe passé se termine en -u : attendu, vendu, répondu, entendu, perdu.",
+        "de": "Das Partizip Perfekt endet auf -u: attendu, vendu, répondu, entendu, perdu."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-singular",
+      "title": {
+        "en": "Singular: j'attends, tu attends, il attend",
+        "fr": "Le singulier : j'attends, tu attends, il attend",
+        "de": "Singular: j'attends, tu attends, il attend"
+      },
+      "ruleIds": ["rule-singular-forms"],
+      "explanationPlan": {
+        "en": "Show that attendre, vendre, répondre, entendre and perdre all lose the -d of the stem in the three singular forms, and take -s, -s, nothing.",
+        "fr": "Montrer qu'attendre, vendre, répondre, entendre et perdre perdent le -d du radical aux trois personnes du singulier, et prennent -s, -s, rien.",
+        "de": "Zeigen, dass attendre, vendre, répondre, entendre und perdre in den drei Singularformen das -d des Stamms verlieren und -s, -s, nichts anhängen."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "J'attends le bus.",
+          "translation": { "en": "I am waiting for the bus.", "de": "Ich warte auf den Bus." }
+        },
+        {
+          "text": "Tu entends la musique ?",
+          "translation": { "en": "Do you hear the music?", "de": "Hörst du die Musik?" }
+        },
+        {
+          "text": "Elle répond à la question.",
+          "translation": { "en": "She answers the question.", "de": "Sie antwortet auf die Frage." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not write 'j'attende' or 'il attendt': the singular forms have no -d.",
+          "fr": "N'écrivez pas « j'attende » ni « il attendt » : les formes du singulier n'ont pas de -d.",
+          "de": "Schreibe nicht „j'attende“ oder „il attendt“: Die Singularformen haben kein -d."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-sg-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 3,
+          "ruleIds": ["rule-singular-forms"],
+          "estimatedDurationS": 30
+        },
+        {
+          "id": "ex-sg-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 3,
+          "ruleIds": ["rule-singular-forms"],
+          "estimatedDurationS": 45
+        },
+        {
+          "id": "ex-sg-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["rule-singular-forms"],
+          "estimatedDurationS": 75
+        }
+      ]
+    },
+    {
+      "id": "block-plural",
+      "title": {
+        "en": "Plural and past participle: nous attendons, attendu",
+        "fr": "Le pluriel et le participe passé : nous attendons, attendu",
+        "de": "Plural und Partizip Perfekt: nous attendons, attendu"
+      },
+      "ruleIds": ["rule-plural-forms", "rule-past-participle"],
+      "explanationPlan": {
+        "en": "Show that the plural keeps the -d (nous attendons, vous vendez, ils répondent) and that the past participle ends in -u (attendu, vendu, répondu, entendu, perdu).",
+        "fr": "Montrer que le pluriel garde le -d (nous attendons, vous vendez, ils répondent) et que le participe passé se termine en -u (attendu, vendu, répondu, entendu, perdu).",
+        "de": "Zeigen, dass der Plural das -d behält (nous attendons, vous vendez, ils répondent) und das Partizip Perfekt auf -u endet (attendu, vendu, répondu, entendu, perdu)."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "Nous attendons le train.",
+          "translation": { "en": "We are waiting for the train.", "de": "Wir warten auf den Zug." }
+        },
+        {
+          "text": "Vous vendez des fleurs.",
+          "translation": { "en": "You sell flowers.", "de": "Ihr verkauft Blumen." }
+        },
+        {
+          "text": "Ils perdent leurs clés.",
+          "translation": { "en": "They lose their keys.", "de": "Sie verlieren ihre Schlüssel." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "The participle is not 'attenddu': the stem's -d disappears before -u.",
+          "fr": "Le participe n'est pas « attenddu » : le -d du radical disparaît devant -u.",
+          "de": "Das Partizip heißt nicht „attenddu“: Das -d des Stamms verschwindet vor -u."
+        },
+        {
+          "en": "Do not forget the -d in the plural: 'nous attendez' is wrong, it is 'nous attendons'.",
+          "fr": "N'oubliez pas le -d au pluriel : « nous attendez » est faux, on écrit « nous attendons ».",
+          "de": "Vergiss das -d im Plural nicht: „nous attendez“ ist falsch, richtig ist „nous attendons“."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-pl-persons",
+          "type": "grammar_person_matching",
+          "itemCount": 1,
+          "ruleIds": ["rule-singular-forms", "rule-plural-forms"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-pl-typing",
+          "type": "grammar_pronoun_form_typing",
+          "itemCount": 2,
+          "ruleIds": ["rule-plural-forms"],
+          "estimatedDurationS": 90
+        },
+        {
+          "id": "ex-pl-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-plural-forms", "rule-past-participle"],
+          "estimatedDurationS": 40
+        },
+        {
+          "id": "ex-pl-gap",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-plural-forms", "rule-past-participle"],
+          "estimatedDurationS": 60
+        }
+      ]
+    }
+  ],
+  "newVerbs": [
+    { "infinitive": "attendre", "translations": { "en": "to wait for", "de": "warten auf" } },
+    { "infinitive": "vendre", "translations": { "en": "to sell", "de": "verkaufen" } },
+    { "infinitive": "répondre", "translations": { "en": "to answer", "de": "antworten" } },
+    { "infinitive": "entendre", "translations": { "en": "to hear", "de": "hören" } },
+    { "infinitive": "perdre", "translations": { "en": "to lose", "de": "verlieren" } }
+  ],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-forms",
+        "type": "grammar_pronoun_form_typing",
+        "itemCount": 2,
+        "ruleIds": ["rule-singular-forms", "rule-plural-forms"],
+        "estimatedDurationS": 90,
+        "timeLimitS": 140
+      },
+      {
+        "pageId": "exam-singular",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["rule-singular-forms"],
+        "estimatedDurationS": 45,
+        "timeLimitS": 70
+      },
+      {
+        "pageId": "exam-plural",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["rule-plural-forms", "rule-past-participle"],
+        "estimatedDurationS": 45,
+        "timeLimitS": 70
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

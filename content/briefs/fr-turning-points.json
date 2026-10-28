@@ -1,0 +1,663 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-turning-points",
+  "lang": "fr",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Un tournant dans la vie",
+  "objective": {
+    "en": "Talk about the turning points of a life with twelve expressions: un tournant, changer de vie, s'installer, se lancer, repartir de zéro, réaliser un rêve, tourner la page.",
+    "fr": "Raconter les moments clés d’une vie avec une douzaine d’expressions : un tournant, changer de vie, s’installer, se lancer, repartir de zéro, réaliser un rêve, tourner la page.",
+    "de": "Die Wendepunkte eines Lebens mit zwölf Ausdrücken erzählen: un tournant, changer de vie, s’installer, se lancer, repartir de zéro, réaliser un rêve, tourner la page."
+  },
+  "estimatedMinutes": 20,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "deepseek-chat",
+    "promptVersion": "author-1",
+    "generatedAt": "2026-10-26T23:41:32.078Z",
+    "inputHashes": { "outline": "b016407dd9451c838e1a1387503555af48e52883ada93e61cda45a4a3ac9f310" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Twelve expressions in three groups: the turning point itself (un tournant, changer de vie, tourner la page, repartir de zéro), the move (s'installer, déménager, se lancer, tout plaquer) and the outcome (réaliser un rêve, prendre une décision, saisir l'occasion, se remettre).",
+    "fr": "Douze expressions en trois groupes : le tournant lui-même (un tournant, changer de vie, tourner la page, repartir de zéro), le passage à l’action (s’installer, déménager, se lancer, tout plaquer) et le résultat (réaliser un rêve, prendre une décision, saisir l’occasion, se remettre).",
+    "de": "Zwölf Ausdrücke in drei Gruppen: der Wendepunkt selbst (un tournant, changer de vie, tourner la page, repartir de zéro), der Schritt zur Tat (s’installer, déménager, se lancer, tout plaquer) und das Ergebnis (réaliser un rêve, prendre une décision, saisir l’occasion, se remettre)."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve expressions: enough to tell a whole turning point, few enough for one B1 lesson.",
+    "fr": "Douze expressions : assez pour raconter tout un tournant, assez peu pour une seule leçon de niveau B1.",
+    "de": "Zwölf Ausdrücke: genug, um einen ganzen Wendepunkt zu erzählen, wenige genug für eine B1-Lektion."
+  },
+  "difficultyBalance": {
+    "en": "Seven core expressions used every day, five demanding ones (tout plaquer, saisir l'occasion, se remettre, repartir de zéro, tourner la page).",
+    "fr": "Sept expressions courantes et cinq plus exigeantes (tout plaquer, saisir l’occasion, se remettre, repartir de zéro, tourner la page).",
+    "de": "Sieben alltägliche und fünf anspruchsvollere Ausdrücke (tout plaquer, saisir l’occasion, se remettre, repartir de zéro, tourner la page)."
+  },
+  "prerequisites": [
+    {
+      "en": "The passé composé and the imparfait, to put these expressions in a story.",
+      "fr": "Le passé composé et l’imparfait, pour employer ces expressions dans un récit.",
+      "de": "Passé composé und Imparfait, um diese Ausdrücke in einer Erzählung zu verwenden."
+    }
+  ],
+  "groups": [
+    {
+      "id": "le-tournant",
+      "label": { "en": "The turning point", "fr": "Le tournant", "de": "Der Wendepunkt" },
+      "targetIds": ["tournant", "changer-de-vie", "tourner-la-page", "repartir-de-zero"],
+      "introduction": {
+        "en": "A **turning point** is the moment when a life changes direction:\n\n- `un tournant`\n- `changer de vie`\n- `tourner la page`\n- `repartir de zéro`",
+        "fr": "Un **tournant**, c’est le moment où une vie change de direction :\n\n- `un tournant`\n- `changer de vie`\n- `tourner la page`\n- `repartir de zéro`",
+        "de": "Ein **Wendepunkt** ist der Moment, in dem ein Leben die Richtung ändert:\n\n- `un tournant`\n- `changer de vie`\n- `tourner la page`\n- `repartir de zéro`"
+      }
+    },
+    {
+      "id": "passer-a-l-action",
+      "label": { "en": "Taking the step", "fr": "Passer à l’action", "de": "Zur Tat schreiten" },
+      "targetIds": ["s-installer", "demenager", "se-lancer", "tout-plaquer"],
+      "introduction": {
+        "en": "Then comes the moment to act: to move, to settle somewhere, to start out.\n\n- `s’installer`\n- `déménager`\n- `se lancer`\n- `tout plaquer`",
+        "fr": "Vient ensuite le moment d’agir : partir, s’installer quelque part, se lancer.\n\n- `s’installer`\n- `déménager`\n- `se lancer`\n- `tout plaquer`",
+        "de": "Dann kommt der Moment zu handeln: umziehen, sich irgendwo niederlassen, den Anfang wagen.\n\n- `s’installer`\n- `déménager`\n- `se lancer`\n- `tout plaquer`"
+      }
+    },
+    {
+      "id": "le-resultat",
+      "label": { "en": "The outcome", "fr": "Le résultat", "de": "Das Ergebnis" },
+      "targetIds": ["realiser-un-reve", "prendre-une-decision", "saisir-l-occasion", "se-remettre"],
+      "introduction": {
+        "en": "Every turning point has a result, happy or difficult:\n\n- `réaliser un rêve`\n- `prendre une décision`\n- `saisir l’occasion`\n- `se remettre`",
+        "fr": "Chaque tournant a un résultat, heureux ou difficile :\n\n- `réaliser un rêve`\n- `prendre une décision`\n- `saisir l’occasion`\n- `se remettre`",
+        "de": "Jeder Wendepunkt hat ein Ergebnis, ob glücklich oder schwierig:\n\n- `réaliser un rêve`\n- `prendre une décision`\n- `saisir l’occasion`\n- `se remettre`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "tournant",
+      "term": "tournant",
+      "translations": { "en": ["turning point"], "de": ["Wendepunkt"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un tournant",
+      "examForms": ["un tournant"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "un tournant",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Son départ à l’étranger a été un vrai tournant dans sa vie.",
+        "translation": {
+          "en": "Her move abroad was a real turning point in her life.",
+          "de": "Ihr Umzug ins Ausland war ein echter Wendepunkt in ihrem Leben."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Un tournant is the moment when a situation changes direction for good.",
+        "fr": "Un tournant, c’est le moment où une situation change durablement de direction.",
+        "de": "Un tournant ist der Moment, in dem sich eine Situation dauerhaft ändert."
+      },
+      "genderExplanation": {
+        "en": "Tournant is masculine, so its indefinite article is un.",
+        "fr": "Tournant est masculin : on dit un tournant.",
+        "de": "Tournant ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": { "en": "a turning point", "de": "ein Wendepunkt" },
+      "gap": {
+        "before": "Ce déménagement a été un ",
+        "after": " dans sa vie.",
+        "accepted": { "answers": ["tournant"] },
+        "referenceTargetIds": ["tournant", "demenager", "se-lancer", "se-remettre"],
+        "explanation": {
+          "en": "Only tournant names the moment when a life changes direction.",
+          "fr": "Seul « tournant » désigne le moment où une vie change de direction.",
+          "de": "Nur tournant bezeichnet den Moment, in dem ein Leben die Richtung ändert."
+        }
+      },
+      "listeningOptionTargetIds": ["tournant", "demenager", "se-lancer", "se-remettre"]
+    },
+    {
+      "id": "changer-de-vie",
+      "term": "changer de vie",
+      "translations": {
+        "en": ["to change one's life", "to start a new life"],
+        "de": ["sein Leben ändern", "ein neues Leben beginnen"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "changer de vie",
+      "examForms": ["changer de vie"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "changer de vie",
+      "difficulty": "core",
+      "context": {
+        "sentence": "À quarante ans, elle a décidé de changer de vie.",
+        "translation": {
+          "en": "At forty, she decided to change her life.",
+          "de": "Mit vierzig beschloss sie, ihr Leben zu ändern."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Changer de vie means to change your whole way of living, not just one habit.",
+        "fr": "Changer de vie, c’est transformer toute sa façon de vivre, pas seulement une habitude.",
+        "de": "Changer de vie heißt, seine ganze Lebensweise zu ändern, nicht nur eine Gewohnheit."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": { "en": "to change one's life", "de": "sein Leben ändern" },
+      "gap": {
+        "before": "Après vingt ans de bureau, il a voulu ",
+        "after": " et devenir boulanger.",
+        "accepted": { "answers": ["changer de vie"] },
+        "referenceTargetIds": ["changer-de-vie", "demenager", "se-lancer", "tout-plaquer"],
+        "explanation": {
+          "en": "Only changer de vie expresses changing a whole way of living.",
+          "fr": "Seul « changer de vie » exprime le fait de transformer toute sa façon de vivre.",
+          "de": "Nur changer de vie drückt die Änderung der ganzen Lebensweise aus."
+        }
+      },
+      "listeningOptionTargetIds": ["changer-de-vie", "demenager", "se-lancer", "tout-plaquer"]
+    },
+    {
+      "id": "tourner-la-page",
+      "term": "tourner la page",
+      "translations": {
+        "en": ["to turn the page", "to move on"],
+        "de": ["ein neues Kapitel aufschlagen", "damit abschließen"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "tourner la page",
+      "examForms": ["tourner la page"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "tourner la page",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Après son divorce, il a fallu du temps pour tourner la page.",
+        "translation": {
+          "en": "After his divorce, it took time to move on.",
+          "de": "Nach seiner Scheidung brauchte er Zeit, um damit abzuschließen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Tourner la page means to leave a difficult period behind and look forward.",
+        "fr": "Tourner la page, c’est laisser derrière soi une période difficile et regarder devant.",
+        "de": "Tourner la page heißt, eine schwierige Zeit hinter sich zu lassen und nach vorn zu schauen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": { "en": "to move on", "de": "damit abschließen" },
+      "gap": {
+        "before": "Il a fallu deux ans pour ",
+        "after": " après cette épreuve.",
+        "accepted": { "answers": ["tourner la page"] },
+        "referenceTargetIds": ["tourner-la-page", "se-remettre", "repartir-de-zero", "se-lancer"],
+        "explanation": {
+          "en": "Only tourner la page means to leave a hard period behind.",
+          "fr": "Seul « tourner la page » signifie laisser derrière soi une période difficile.",
+          "de": "Nur tourner la page bedeutet, eine schwierige Zeit hinter sich zu lassen."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "tourner-la-page",
+        "se-remettre",
+        "repartir-de-zero",
+        "se-lancer"
+      ]
+    },
+    {
+      "id": "repartir-de-zero",
+      "term": "repartir de zéro",
+      "translations": {
+        "en": ["to start from scratch", "to start over"],
+        "de": ["bei null anfangen", "von vorn beginnen"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "repartir de zéro",
+      "examForms": ["repartir de zéro"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "repartir de zéro",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Après la faillite, ils ont dû repartir de zéro.",
+        "translation": {
+          "en": "After the bankruptcy, they had to start from scratch.",
+          "de": "Nach dem Konkurs mussten sie bei null anfangen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Repartir de zéro means to begin again with nothing, as if nothing had been done before.",
+        "fr": "Repartir de zéro, c’est recommencer sans rien, comme si rien n’avait été fait avant.",
+        "de": "Repartir de zéro heißt, mit nichts von vorn zu beginnen, als wäre vorher nichts geschehen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": { "en": "to start from scratch", "de": "bei null anfangen" },
+      "gap": {
+        "before": "Ils ont perdu leur maison et ont dû ",
+        "after": " dans une autre ville.",
+        "accepted": { "answers": ["repartir de zéro"] },
+        "referenceTargetIds": ["repartir-de-zero", "tourner-la-page", "demenager", "s-installer"],
+        "explanation": {
+          "en": "Only repartir de zéro means to begin again with nothing.",
+          "fr": "Seul « repartir de zéro » signifie recommencer sans rien.",
+          "de": "Nur repartir de zéro bedeutet, mit nichts von vorn zu beginnen."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "repartir-de-zero",
+        "tourner-la-page",
+        "demenager",
+        "s-installer"
+      ]
+    },
+    {
+      "id": "s-installer",
+      "term": "s’installer",
+      "translations": { "en": ["to settle", "to set up"], "de": ["sich niederlassen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "s’installer",
+      "examForms": ["s’installer"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "s’installer",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ils se sont installés à Bordeaux il y a trois ans.",
+        "translation": {
+          "en": "They settled in Bordeaux three years ago.",
+          "de": "Sie haben sich vor drei Jahren in Bordeaux niedergelassen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "S’installer means to settle somewhere for good, or to set yourself up in a job.",
+        "fr": "S’installer, c’est s’établir durablement quelque part, ou s’établir dans un métier.",
+        "de": "S’installer heißt, sich dauerhaft irgendwo niederzulassen oder sich beruflich zu etablieren."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": { "en": "to settle", "de": "sich niederlassen" },
+      "gap": {
+        "before": "Après le mariage, ils se sont ",
+        "after": " dans un petit village.",
+        "accepted": { "answers": ["installés", "installées"] },
+        "referenceTargetIds": ["s-installer", "demenager", "se-lancer", "tout-plaquer"],
+        "explanation": {
+          "en": "Only s’installer means to settle somewhere for good.",
+          "fr": "Seul « s’installer » signifie s’établir durablement quelque part.",
+          "de": "Nur s’installer bedeutet, sich dauerhaft irgendwo niederzulassen."
+        }
+      },
+      "listeningOptionTargetIds": ["s-installer", "demenager", "se-lancer", "tout-plaquer"]
+    },
+    {
+      "id": "demenager",
+      "term": "déménager",
+      "translations": { "en": ["to move house", "to move"], "de": ["umziehen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "déménager",
+      "examForms": ["déménager"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "déménager",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Nous avons déménagé à Lyon en septembre.",
+        "translation": {
+          "en": "We moved to Lyon in September.",
+          "de": "Wir sind im September nach Lyon gezogen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Déménager means to leave one home for another; it is about the move, not settling in.",
+        "fr": "Déménager, c’est quitter un logement pour un autre ; c’est le déménagement, pas l’installation.",
+        "de": "Déménager heißt, eine Wohnung gegen eine andere zu tauschen; es geht um den Umzug, nicht ums Ankommen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": { "en": "to move house", "de": "umziehen" },
+      "gap": {
+        "before": "Ils ont ",
+        "after": " trois fois en cinq ans.",
+        "accepted": { "answers": ["déménagé"] },
+        "referenceTargetIds": ["demenager", "s-installer", "se-lancer", "se-remettre"],
+        "explanation": {
+          "en": "Only déménager means to change homes.",
+          "fr": "Seul « déménager » signifie changer de logement.",
+          "de": "Nur déménager bedeutet, die Wohnung zu wechseln."
+        }
+      },
+      "listeningOptionTargetIds": ["demenager", "s-installer", "se-lancer", "se-remettre"]
+    },
+    {
+      "id": "se-lancer",
+      "term": "se lancer",
+      "translations": {
+        "en": ["to take the plunge", "to start out"],
+        "de": ["den Schritt wagen", "sich wagen"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "se lancer",
+      "examForms": ["se lancer"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "se lancer",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Elle s’est lancée dans la création d’une petite entreprise.",
+        "translation": {
+          "en": "She took the plunge and started a small business.",
+          "de": "Sie wagte den Schritt und gründete ein kleines Unternehmen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Se lancer means to dare to begin something new, often with some risk.",
+        "fr": "Se lancer, c’est oser commencer quelque chose de nouveau, souvent avec un peu de risque.",
+        "de": "Se lancer heißt, zu wagen, etwas Neues zu beginnen, oft mit einem gewissen Risiko."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": { "en": "to take the plunge", "de": "den Schritt wagen" },
+      "gap": {
+        "before": "À trente ans, elle s’est ",
+        "after": " dans la photographie.",
+        "accepted": { "answers": ["lancée"] },
+        "referenceTargetIds": ["se-lancer", "s-installer", "tout-plaquer", "prendre-une-decision"],
+        "explanation": {
+          "en": "Only se lancer means to dare to begin something new.",
+          "fr": "Seul « se lancer » signifie oser commencer quelque chose de nouveau.",
+          "de": "Nur se lancer bedeutet, zu wagen, etwas Neues zu beginnen."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "se-lancer",
+        "s-installer",
+        "tout-plaquer",
+        "prendre-une-decision"
+      ]
+    },
+    {
+      "id": "tout-plaquer",
+      "term": "tout plaquer",
+      "translations": {
+        "en": ["to drop everything", "to walk away from it all"],
+        "de": ["alles hinschmeißen"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "tout plaquer",
+      "examForms": ["tout plaquer"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "tout plaquer",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Il a tout plaqué pour faire le tour du monde.",
+        "translation": {
+          "en": "He dropped everything to travel around the world.",
+          "de": "Er hat alles hingeschmissen, um die Welt zu bereisen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Tout plaquer is informal: to leave your job and your habits suddenly, without planning.",
+        "fr": "Tout plaquer est familier : quitter brusquement son travail et ses habitudes, sans rien prévoir.",
+        "de": "Tout plaquer ist umgangssprachlich: plötzlich Job und Gewohnheiten aufgeben, ohne Plan."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": { "en": "to drop everything", "de": "alles hinschmeißen" },
+      "gap": {
+        "before": "Fatigué de la ville, il a ",
+        "after": " pour vivre à la campagne.",
+        "accepted": { "answers": ["tout plaqué"] },
+        "referenceTargetIds": ["tout-plaquer", "demenager", "se-lancer", "changer-de-vie"],
+        "explanation": {
+          "en": "Only tout plaquer means to leave everything suddenly.",
+          "fr": "Seul « tout plaquer » signifie tout quitter brusquement.",
+          "de": "Nur tout plaquer bedeutet, alles plötzlich aufzugeben."
+        }
+      },
+      "listeningOptionTargetIds": ["tout-plaquer", "demenager", "se-lancer", "changer-de-vie"]
+    },
+    {
+      "id": "realiser-un-reve",
+      "term": "réaliser un rêve",
+      "translations": {
+        "en": ["to make a dream come true", "to fulfil a dream"],
+        "de": ["einen Traum verwirklichen"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "réaliser un rêve",
+      "examForms": ["réaliser un rêve"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "réaliser un rêve",
+      "difficulty": "core",
+      "context": {
+        "sentence": "En ouvrant sa librairie, elle a réalisé un rêve.",
+        "translation": {
+          "en": "By opening her bookshop, she made a dream come true.",
+          "de": "Mit der Eröffnung ihrer Buchhandlung verwirklichte sie einen Traum."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Réaliser un rêve means to make a long-held dream actually happen.",
+        "fr": "Réaliser un rêve, c’est faire devenir réel un rêve gardé longtemps.",
+        "de": "Réaliser un rêve heißt, einen lange gehegten Traum Wirklichkeit werden zu lassen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": { "en": "to make a dream come true", "de": "einen Traum verwirklichen" },
+      "gap": {
+        "before": "Elle a enfin ",
+        "after": " en ouvrant son restaurant.",
+        "accepted": { "answers": ["réalisé un rêve"] },
+        "referenceTargetIds": [
+          "realiser-un-reve",
+          "prendre-une-decision",
+          "saisir-l-occasion",
+          "se-lancer"
+        ],
+        "explanation": {
+          "en": "Only réaliser un rêve means to make a dream come true.",
+          "fr": "Seul « réaliser un rêve » signifie faire devenir réel un rêve.",
+          "de": "Nur réaliser un rêve bedeutet, einen Traum Wirklichkeit werden zu lassen."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "realiser-un-reve",
+        "prendre-une-decision",
+        "saisir-l-occasion",
+        "se-lancer"
+      ]
+    },
+    {
+      "id": "prendre-une-decision",
+      "term": "prendre une décision",
+      "translations": { "en": ["to make a decision"], "de": ["eine Entscheidung treffen"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "prendre une décision",
+      "examForms": ["prendre une décision"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "prendre une décision",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Après des mois d’hésitation, il a pris une décision.",
+        "translation": {
+          "en": "After months of hesitation, he made a decision.",
+          "de": "Nach Monaten des Zögerns traf er eine Entscheidung."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Prendre une décision means to choose after thinking; the verb is prendre, not faire.",
+        "fr": "Prendre une décision, c’est choisir après réflexion ; le verbe est prendre, pas faire.",
+        "de": "Prendre une décision heißt, nach Überlegung zu wählen; das Verb ist prendre, nicht faire."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": { "en": "to make a decision", "de": "eine Entscheidung treffen" },
+      "gap": {
+        "before": "Il a ",
+        "after": " difficile : quitter son poste.",
+        "accepted": { "answers": ["pris une décision"] },
+        "referenceTargetIds": [
+          "prendre-une-decision",
+          "saisir-l-occasion",
+          "se-lancer",
+          "realiser-un-reve"
+        ],
+        "explanation": {
+          "en": "Only prendre une décision means to choose after thinking.",
+          "fr": "Seul « prendre une décision » signifie choisir après réflexion.",
+          "de": "Nur prendre une décision bedeutet, nach Überlegung zu wählen."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "prendre-une-decision",
+        "saisir-l-occasion",
+        "se-lancer",
+        "realiser-un-reve"
+      ]
+    },
+    {
+      "id": "saisir-l-occasion",
+      "term": "saisir l’occasion",
+      "translations": {
+        "en": ["to seize the opportunity", "to take the chance"],
+        "de": ["die Gelegenheit ergreifen"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "saisir l’occasion",
+      "examForms": ["saisir l’occasion"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "saisir l’occasion",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "On lui a proposé un poste à Berlin et elle a saisi l’occasion.",
+        "translation": {
+          "en": "She was offered a job in Berlin and she seized the opportunity.",
+          "de": "Man bot ihr eine Stelle in Berlin an, und sie ergriff die Gelegenheit."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Saisir l’occasion means to act quickly when a chance appears.",
+        "fr": "Saisir l’occasion, c’est agir vite quand une chance se présente.",
+        "de": "Saisir l’occasion heißt, schnell zu handeln, wenn sich eine Chance bietet."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": { "en": "to seize the opportunity", "de": "die Gelegenheit ergreifen" },
+      "gap": {
+        "before": "Quand on lui a offert ce stage, elle a ",
+        "after": " tout de suite.",
+        "accepted": { "answers": ["saisi l’occasion", "saisi l'occasion"] },
+        "referenceTargetIds": [
+          "saisir-l-occasion",
+          "prendre-une-decision",
+          "se-lancer",
+          "se-remettre"
+        ],
+        "explanation": {
+          "en": "Only saisir l’occasion means to act quickly when a chance appears.",
+          "fr": "Seul « saisir l’occasion » signifie agir vite quand une chance se présente.",
+          "de": "Nur saisir l’occasion bedeutet, schnell zu handeln, wenn sich eine Chance bietet."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "saisir-l-occasion",
+        "prendre-une-decision",
+        "se-lancer",
+        "se-remettre"
+      ]
+    },
+    {
+      "id": "se-remettre",
+      "term": "se remettre",
+      "translations": {
+        "en": ["to recover", "to get over something"],
+        "de": ["sich erholen", "darüber hinwegkommen"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "se remettre",
+      "examForms": ["se remettre"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "se remettre",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Il lui a fallu un an pour se remettre de cette perte.",
+        "translation": {
+          "en": "It took him a year to get over that loss.",
+          "de": "Er brauchte ein Jahr, um über diesen Verlust hinwegzukommen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Se remettre de quelque chose means to recover from an illness or a hard event.",
+        "fr": "Se remettre de quelque chose, c’est guérir d’une maladie ou surmonter un événement difficile.",
+        "de": "Se remettre de quelque chose heißt, sich von einer Krankheit oder einem schweren Ereignis zu erholen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": { "en": "to recover", "de": "sich erholen" },
+      "gap": {
+        "before": "Après son accident, elle a mis longtemps à se ",
+        "after": " .",
+        "accepted": { "answers": ["remettre"] },
+        "referenceTargetIds": ["se-remettre", "tourner-la-page", "repartir-de-zero", "s-installer"],
+        "explanation": {
+          "en": "Only se remettre means to recover from an illness or a hard event.",
+          "fr": "Seul « se remettre » signifie guérir ou surmonter un événement difficile.",
+          "de": "Nur se remettre bedeutet, sich von einer Krankheit oder einem schweren Ereignis zu erholen."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "se-remettre",
+        "tourner-la-page",
+        "repartir-de-zero",
+        "s-installer"
+      ]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}
