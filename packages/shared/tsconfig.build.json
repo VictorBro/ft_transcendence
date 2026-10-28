@@ -6,5 +6,5 @@
     "tsBuildInfoFile": "./dist/.tsbuildinfo",
     "types": [],
   },
-  "exclude": ["node_modules", "dist", "src/**/*.test.ts"],
+  "exclude": ["node_modules", "dist", "src/**/*.test.ts", "src/**/*.testing.ts"],
 }
