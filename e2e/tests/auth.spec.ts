@@ -27,6 +27,16 @@ test.describe('authentication in the browser', () => {
       .fill(fields.confirmPassword ?? fields.password);
   };
 
+  /**
+   * Waits for the redirect home before returning. Without it, the next goto
+   * races the sign-out navigation: Chromium usually lets the goto win, Firefox
+   * aborts it (NS_BINDING_ABORTED) and WebKit reports it interrupted.
+   */
+  const signOut = async (page: Page) => {
+    await page.getByRole('button', { name: 'Sign out' }).click();
+    await expect(page).toHaveURL(/\/en$/);
+  };
+
   const logIn = async (page: Page, email: string) => {
     await page.goto('/en/login');
     await page.getByLabel('Email', { exact: true }).fill(email);
@@ -84,8 +94,7 @@ test.describe('authentication in the browser', () => {
     await signUp(page);
     await page.goto('/en/onboarding');
 
-    await page.getByRole('button', { name: 'Sign out' }).click();
-    await expect(page).toHaveURL(/\/en$/);
+    await signOut(page);
 
     await page.goto('/en/profile');
     await expect(page).toHaveURL(/\/login$/);
@@ -103,7 +112,7 @@ test.describe('authentication in the browser', () => {
 
     await signUp(page, fields);
     await page.goto('/en/onboarding');
-    await page.getByRole('button', { name: 'Sign out' }).click();
+    await signOut(page);
 
     await logIn(page, fields.email);
 
@@ -119,7 +128,7 @@ test.describe('authentication in the browser', () => {
     await signUp(page, fields);
     await placeCourse(page, { lang: 'fr', level: 'A2', dailyGoal: 10 });
     await page.goto('/en/learn');
-    await page.getByRole('button', { name: 'Sign out' }).click();
+    await signOut(page);
 
     await logIn(page, fields.email);
 
@@ -188,7 +197,7 @@ test.describe('authentication in the browser', () => {
     await page.getByRole('button', { name: 'Turn on' }).click();
     await expect(page.getByRole('heading', { name: 'Save your recovery codes' })).toBeVisible();
 
-    await page.getByRole('button', { name: 'Sign out' }).click();
+    await signOut(page);
 
     await logIn(page, email);
 

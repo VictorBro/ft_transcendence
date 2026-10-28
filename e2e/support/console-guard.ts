@@ -16,11 +16,20 @@ export interface ConsoleViolation {
 }
 
 /**
- * Deliberately empty. Every entry added here is a permanent hole in a
- * rejection-criterion gate, so it needs a comment naming the upstream bug and
- * the condition for removing it again. Prefer fixing the page.
+ * Every entry added here is a permanent hole in a rejection-criterion gate, so
+ * it needs a comment naming the upstream bug and the condition for removing it
+ * again. Prefer fixing the page.
  */
-const ALLOWED_MESSAGES: RegExp[] = [];
+const ALLOWED_MESSAGES: RegExp[] = [
+  // Firefox announcing its own fingerprinting protection when a script reads
+  // screen.availWidth. Only Grafana's bundle does (/grafana/login); our pages
+  // never read it. Remove if Firefox stops logging the notice as a warning.
+  /^\[JavaScript Warning: "Fingerprinting Protection is altering screen\.availWidth/,
+  // Firefox on a runner with no GPU, when Grafana's bundle probes for WebGL
+  // (FEATURE_FAILURE_WEBGL_EXHAUSTED_DRIVERS). The machine, not the page: a
+  // desktop Firefox creates the context. Remove if the CI runner gets a GPU.
+  /^\[JavaScript Warning: "Failed to create WebGL context: WebGL creation failed:/,
+];
 
 /**
  * A navigation cancels in-flight prefetches, and every engine reports each one

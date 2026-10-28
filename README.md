@@ -85,8 +85,7 @@ Known limits:
 
 - **No speech voice, no Listen.** Listen buttons read text aloud through the
   browser's speech synthesis. A browser or system that offers no voice for the
-  language (common on Linux, and in headless browsers) gets no Listen buttons
-  rather than buttons that do nothing.
+  language gets no Listen buttons rather than buttons that do nothing.
 - **The functions listening reply** shows its text under **Show the text**
   instead, so the exercise can still be done without a voice.
 - Mobile browsers are not tested.
