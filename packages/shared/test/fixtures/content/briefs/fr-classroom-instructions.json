@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-classroom-instructions",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Les consignes de classe",
+  "objective": {
+    "en": "Understand classroom instructions in writing and when spoken.",
+    "fr": "Comprendre les consignes de classe à l’écrit et à l’oral.",
+    "de": "Arbeitsanweisungen im Unterricht schriftlich und mündlich verstehen."
+  },
+  "estimatedMinutes": 7,
+  "provenance": {
+    "generator": "fixture",
+    "model": "none",
+    "promptVersion": "fixture-1",
+    "generatedAt": "2026-10-06T00:00:00Z",
+    "inputHashes": {
+      "outline": "e59ae0fa961d6955e3408b36a8db08eb4d0a98bbca4e292eca36f60a4b3c75bd"
+    }
+  },
+  "kind": "vocabulary",
+  "theme": "education",
+  "coverageNotes": {
+    "en": "Four imperative instructions; heard and read.",
+    "fr": "Quatre consignes à l’impératif, entendues et lues.",
+    "de": "Vier Anweisungen im Imperativ, gehört und gelesen."
+  },
+  "targetCount": 4,
+  "countRationale": {
+    "en": "A short fixture inventory.",
+    "fr": "Un inventaire court pour les tests.",
+    "de": "Ein kurzes Test-Inventar."
+  },
+  "difficultyBalance": {
+    "en": "Two easy and two accented forms.",
+    "fr": "Deux formes simples et deux formes accentuées.",
+    "de": "Zwei einfache und zwei Formen mit Akzent."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "all",
+      "label": {
+        "en": "Instructions",
+        "fr": "Consignes",
+        "de": "Anweisungen"
+      },
+      "targetIds": ["ecoutez", "lisez", "ecrivez", "repetez"],
+      "introduction": {
+        "en": "Teachers use these instructions every day.",
+        "fr": "Les professeurs utilisent ces consignes chaque jour.",
+        "de": "Lehrkräfte benutzen diese Anweisungen jeden Tag."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "ecoutez",
+      "term": "écoutez",
+      "translations": {
+        "en": ["listen"],
+        "de": ["hört zu", "hören Sie zu"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "écoutez",
+      "examForms": ["écoutez"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "écoutez",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Écoutez, s’il vous plaît.",
+        "translation": {
+          "en": "Listen, please.",
+          "de": "Hören sie zu bitte."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Écoutez is written with an acute accent on e.",
+        "fr": "Écoutez prend un accent aigu sur le e.",
+        "de": "Écoutez schreibt sich mit Akut auf dem e."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "Listen! (to the class)",
+        "de": "Hört zu!"
+      },
+      "gap": {
+        "before": "S’il vous plaît, ",
+        "after": " le dialogue.",
+        "accepted": {
+          "answers": ["écoutez"]
+        },
+        "referenceTargetIds": ["ecoutez", "lisez", "ecrivez", "repetez"],
+        "explanation": {
+          "en": "Écoutez is written with an acute accent on e.",
+          "fr": "Écoutez prend un accent aigu sur le e.",
+          "de": "Écoutez schreibt sich mit Akut auf dem e."
+        }
+      },
+      "listeningOptionTargetIds": ["ecoutez", "lisez", "ecrivez", "repetez"]
+    },
+    {
+      "id": "lisez",
+      "term": "lisez",
+      "translations": {
+        "en": ["read"],
+        "de": ["lest", "lesen Sie"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "lisez",
+      "examForms": ["lisez"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "lisez",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Lisez, s’il vous plaît.",
+        "translation": {
+          "en": "Read, please.",
+          "de": "Lesen sie bitte."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Lisez is the instruction “read”.",
+        "fr": "« lisez » est la consigne « lire ».",
+        "de": "„lisez“ ist die Anweisung „lesen“."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "Read! (to the class)",
+        "de": "Lest!"
+      },
+      "gap": {
+        "before": "Ouvrez le livre et ",
+        "after": " le texte.",
+        "accepted": {
+          "answers": ["lisez"]
+        },
+        "referenceTargetIds": ["ecoutez", "lisez", "ecrivez", "repetez"],
+        "explanation": {
+          "en": "Lisez is the instruction “read”.",
+          "fr": "« lisez » est la consigne « lire ».",
+          "de": "„lisez“ ist die Anweisung „lesen“."
+        }
+      },
+      "listeningOptionTargetIds": ["ecoutez", "lisez", "ecrivez", "repetez"]
+    },
+    {
+      "id": "ecrivez",
+      "term": "écrivez",
+      "translations": {
+        "en": ["write"],
+        "de": ["schreibt", "schreiben Sie"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "écrivez",
+      "examForms": ["écrivez"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "écrivez",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Écrivez, s’il vous plaît.",
+        "translation": {
+          "en": "Write, please.",
+          "de": "Schreiben sie bitte."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Écrivez is written with an acute accent on e.",
+        "fr": "Écrivez prend un accent aigu sur le e.",
+        "de": "Écrivez schreibt sich mit Akut auf dem e."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "Write! (to the class)",
+        "de": "Schreibt!"
+      },
+      "gap": {
+        "before": "Prenez un stylo et ",
+        "after": " votre nom.",
+        "accepted": {
+          "answers": ["écrivez"]
+        },
+        "referenceTargetIds": ["ecoutez", "lisez", "ecrivez", "repetez"],
+        "explanation": {
+          "en": "Écrivez is written with an accent aigu on e.",
+          "fr": "Écrivez prend un accent aigu sur le e.",
+          "de": "Écrivez schreibt sich mit Akut auf dem e."
+        }
+      },
+      "listeningOptionTargetIds": ["ecoutez", "lisez", "ecrivez", "repetez"]
+    },
+    {
+      "id": "repetez",
+      "term": "répétez",
+      "translations": {
+        "en": ["repeat"],
+        "de": ["wiederholt", "wiederholen Sie"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "répétez",
+      "examForms": ["répétez"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "répétez",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Répétez, s’il vous plaît.",
+        "translation": {
+          "en": "Repeat, please.",
+          "de": "Wiederholen sie bitte."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Répétez has an acute accent on both first e’s.",
+        "fr": "Répétez prend un accent aigu sur les deux premiers e.",
+        "de": "Répétez hat auf den ersten beiden e einen Akut."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "Repeat! (to the class)",
+        "de": "Wiederholt!"
+      },
+      "gap": {
+        "before": "Écoutez et ",
+        "after": " après moi.",
+        "accepted": {
+          "answers": ["répétez"]
+        },
+        "referenceTargetIds": ["ecoutez", "lisez", "ecrivez", "repetez"],
+        "explanation": {
+          "en": "Répétez is written with two accents aigus.",
+          "fr": "Répétez prend deux accents aigus.",
+          "de": "Répétez schreibt sich mit zwei Akuten."
+        }
+      },
+      "listeningOptionTargetIds": ["ecoutez", "lisez", "ecrivez", "repetez"]
+    }
+  ],
+  "scoring": {
+    "practiceWeight": 35,
+    "examWeight": 65,
+    "orthographyCredit": 0.5
+  }
+}

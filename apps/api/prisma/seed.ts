@@ -1,9 +1,9 @@
 import { existsSync } from 'node:fs';
 import { readdir, readFile } from 'node:fs/promises';
-import { resolve, join } from 'node:path';
+import { dirname, join, resolve } from 'node:path';
 import { isDeepStrictEqual } from 'node:util';
 import { Prisma, PrismaClient } from '../src/generated/prisma/client';
-import { ItemFileSchema, LessonOutlineFileSchema, PasswordSchema } from '@ft/shared';
+import { ItemFileSchema, LessonOutlineFileSchema, lessons, PasswordSchema } from '@ft/shared';
 import { PrismaService } from '../src/prisma/prisma.service';
 
 export function findContentDir(kind: 'items' | 'lessons' | 'outlines'): string {
@@ -83,28 +83,59 @@ export async function seedQuestionBank(dir: string, prisma: PrismaClient): Promi
   return operations.length;
 }
 
+async function readJson(path: string, name: string): Promise<unknown> {
+  try {
+    return JSON.parse(await readFile(path, 'utf-8'));
+  } catch (err) {
+    throw new Error(`Invalid JSON in ${name}`, { cause: err });
+  }
+}
+
+/** The `.json` files of a folder, without the extension: `fr-greetings.json` → `fr-greetings`. */
+async function jsonIds(dir: string): Promise<string[]> {
+  if (!existsSync(dir)) return [];
+  return (await readdir(dir))
+    .filter((name) => name.endsWith('.json'))
+    .map((name) => name.slice(0, -'.json'.length));
+}
+
 /**
+ * A lesson row as compared with the database: content is null here, and
+ * becomes Prisma.DbNull only when written, or every run would see a change.
+ */
+type LessonRow = Omit<Prisma.LessonCreateInput, 'content'> & {
+  content: Prisma.InputJsonValue | null;
+};
+
+/**
+ * Seeds one Lesson row per outline entry, from a content folder:
+ *
+ *   outlines/<lang>-<level>.json   the entries: id, kind, place, working title
+ *   briefs/<id>.json               the lesson's brief, once written
+ *   lessons/<id>.json              its content, for every kind but vocabulary
+ *
+ * An entry without files gets its working title and intent, an empty brief
+ * and no content. An entry with files must pass validateLesson, and then
+ * takes its title, summary, brief and content from them. A file that no entry
+ * plans, or an invalid lesson, stops the seed before anything is written.
+ *
  * Returns how many lessons were written: new or changed rows only, so a second
  * run returns 0 and leaves every updatedAt as it was.
  */
-export async function seedLessons(dir: string, prisma: PrismaClient): Promise<number> {
-  const allEntries = await readdir(dir);
-  const jsonFiles = allEntries.filter((name) => name.endsWith('.json'));
+export async function seedLessons(contentDir: string, prisma: PrismaClient): Promise<number> {
+  const outlinesDir = join(contentDir, 'outlines');
+  const briefsDir = join(contentDir, 'briefs');
+  const lessonsDir = join(contentDir, 'lessons');
+  const outlineFiles = (await readdir(outlinesDir)).filter((name) => name.endsWith('.json'));
 
-  const rows = new Map<string, Prisma.LessonCreateInput>();
+  const rows = new Map<string, LessonRow>();
+  const contexts = new Map<string, lessons.OutlineContext>();
   const fileOfId = new Map<string, string>();
 
-  for (const fileName of jsonFiles) {
-    const content = await readFile(join(dir, fileName), 'utf-8');
-
-    let parsed: unknown;
-    try {
-      parsed = JSON.parse(content);
-    } catch (err) {
-      throw new Error(`Invalid JSON in ${fileName}`, { cause: err });
-    }
-
-    const result = LessonOutlineFileSchema.safeParse(parsed);
+  for (const fileName of outlineFiles) {
+    const result = LessonOutlineFileSchema.safeParse(
+      await readJson(join(outlinesDir, fileName), fileName),
+    );
     if (!result.success) {
       throw new Error(`Invalid outline file ${fileName}: ${result.error.message}`);
     }
@@ -116,6 +147,7 @@ export async function seedLessons(dir: string, prisma: PrismaClient): Promise<nu
         throw new Error(`Duplicate lesson id "${entry.id}" in ${previousFile} and ${fileName}`);
       }
       fileOfId.set(entry.id, fileName);
+      contexts.set(entry.id, { entry, lang: file.lang, level: file.level });
 
       rows.set(entry.id, {
         id: entry.id,
@@ -128,7 +160,40 @@ export async function seedLessons(dir: string, prisma: PrismaClient): Promise<nu
         title: entry.workingTitle,
         summary: entry.intent,
         brief: {},
+        content: null,
       });
+    });
+  }
+
+  // Every lesson file belongs to an outline entry, and a content file to a brief.
+  const briefIds = await jsonIds(briefsDir);
+  const contentIds = new Set(await jsonIds(lessonsDir));
+  const strays = [
+    ...briefIds.filter((id) => !rows.has(id)).map((id) => `briefs/${id}.json`),
+    ...[...contentIds].filter((id) => !rows.has(id)).map((id) => `lessons/${id}.json`),
+    ...[...contentIds]
+      .filter((id) => rows.has(id) && !briefIds.includes(id))
+      .map((id) => `lessons/${id}.json (it has no brief)`),
+  ];
+  if (strays.length > 0) {
+    throw new Error(`Lesson files that no outline entry plans: ${strays.join(', ')}`);
+  }
+
+  for (const id of briefIds) {
+    const brief = await readJson(join(briefsDir, `${id}.json`), `briefs/${id}.json`);
+    const content = contentIds.has(id)
+      ? await readJson(join(lessonsDir, `${id}.json`), `lessons/${id}.json`)
+      : undefined;
+    const result = lessons.validateLesson(brief, content, contexts.get(id)!);
+    if (!result.ok) {
+      const issues = result.issues.map(({ path, message }) => `  ${path}: ${message}`);
+      throw new Error(`Invalid lesson ${id}:\n${issues.join('\n')}`);
+    }
+    Object.assign(rows.get(id)!, {
+      title: result.title,
+      summary: result.summary,
+      brief: result.brief,
+      content: result.content,
     });
   }
 
@@ -158,7 +223,10 @@ export async function seedLessons(dir: string, prisma: PrismaClient): Promise<nu
   });
 
   await prisma.$transaction(
-    writes.map((row) => prisma.lesson.upsert({ where: { id: row.id }, create: row, update: row })),
+    writes.map(({ content, ...fields }) => {
+      const row = { ...fields, content: content ?? Prisma.DbNull };
+      return prisma.lesson.upsert({ where: { id: row.id }, create: row, update: row });
+    }),
   );
   return writes.length;
 }
@@ -201,8 +269,10 @@ if (require.main === module) {
 
   seedQuestionBank(findContentDir('items'), prisma)
     .then((count) => console.log(`seeded ${count} questions from ${findContentDir('items')}`))
-    .then(() => seedLessons(findContentDir('outlines'), prisma))
-    .then((count) => console.log(`seeded ${count} lessons from ${findContentDir('outlines')}`))
+    .then(() => seedLessons(dirname(findContentDir('outlines')), prisma))
+    .then((count) =>
+      console.log(`seeded ${count} lessons from ${dirname(findContentDir('outlines'))}`),
+    )
     .then(async () => {
       if (password === null) {
         console.log(`demo learners skipped: ${skip}`);

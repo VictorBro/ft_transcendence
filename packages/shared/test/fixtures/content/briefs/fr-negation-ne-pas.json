@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-negation-ne-pas",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "La négation ne … pas",
+  "objective": {
+    "en": "Make a sentence negative with ne … pas.",
+    "fr": "Mettre une phrase à la forme négative avec ne … pas.",
+    "de": "Einen Satz mit ne … pas verneinen."
+  },
+  "estimatedMinutes": 5,
+  "provenance": {
+    "generator": "fixture",
+    "model": "none",
+    "promptVersion": "fixture-1",
+    "generatedAt": "2026-10-06T00:00:00Z",
+    "inputHashes": {
+      "outline": "7d241eb94e9886f6043fd830c6fa44d3d155afddbf76e4a102308067825b0145"
+    }
+  },
+  "kind": "grammar",
+  "topic": "negation",
+  "scopeBoundaries": {
+    "en": "Simple present only; no ne … plus or ne … jamais.",
+    "fr": "Présent simple uniquement ; sans ne … plus ni ne … jamais.",
+    "de": "Nur Präsens; ohne ne … plus oder ne … jamais."
+  },
+  "prerequisites": [],
+  "rules": [
+    {
+      "id": "r-ne-pas",
+      "summary": {
+        "en": "Ne goes before the verb and pas after it.",
+        "fr": "Ne se place avant le verbe et pas après.",
+        "de": "Ne steht vor dem Verb, pas danach."
+      }
+    },
+    {
+      "id": "r-elision",
+      "summary": {
+        "en": "Ne becomes n’ before a vowel.",
+        "fr": "Ne devient n’ devant une voyelle.",
+        "de": "Ne wird vor Vokal zu n’."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "b-basic",
+      "title": {
+        "en": "Ne … pas around the verb",
+        "fr": "Ne … pas autour du verbe",
+        "de": "Ne … pas um das Verb"
+      },
+      "ruleIds": ["r-ne-pas"],
+      "explanationPlan": {
+        "en": "Show ne before and pas after the conjugated verb.",
+        "fr": "Montrer ne avant et pas après le verbe conjugué.",
+        "de": "Ne vor und pas nach dem konjugierten Verb zeigen."
+      },
+      "explanationDurationS": 50,
+      "examples": [
+        {
+          "text": "Je ne parle pas anglais.",
+          "translation": {
+            "en": "I don’t speak English.",
+            "de": "Ich spreche kein Englisch."
+          }
+        }
+      ],
+      "pitfalls": [],
+      "exercises": [
+        {
+          "id": "ex-order",
+          "type": "grammar_word_order",
+          "itemCount": 2,
+          "ruleIds": ["r-ne-pas"],
+          "estimatedDurationS": 60
+        }
+      ]
+    },
+    {
+      "id": "b-elision",
+      "title": {
+        "en": "N’ before a vowel",
+        "fr": "N’ devant une voyelle",
+        "de": "N’ vor Vokal"
+      },
+      "ruleIds": ["r-elision"],
+      "explanationPlan": {
+        "en": "Show the elision n’ before vowels.",
+        "fr": "Montrer l’élision n’ devant une voyelle.",
+        "de": "Die Elision n’ vor Vokalen zeigen."
+      },
+      "explanationDurationS": 50,
+      "examples": [
+        {
+          "text": "Elle n’habite pas à Paris.",
+          "translation": {
+            "en": "She doesn’t live in Paris.",
+            "de": "Sie wohnt nicht in Paris."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not write ne before a vowel.",
+          "fr": "N’écrivez pas ne devant une voyelle.",
+          "de": "Schreib vor Vokal nicht ne."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 1,
+          "ruleIds": ["r-elision"],
+          "estimatedDurationS": 30
+        },
+        {
+          "id": "ex-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 1,
+          "ruleIds": ["r-elision"],
+          "estimatedDurationS": 40
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": {
+    "estimatedDurationS": 20
+  },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 1,
+        "ruleIds": ["r-ne-pas"],
+        "estimatedDurationS": 40,
+        "timeLimitS": 60
+      },
+      {
+        "pageId": "exam-gap",
+        "type": "grammar_gap_typing",
+        "itemCount": 1,
+        "ruleIds": ["r-elision"],
+        "estimatedDurationS": 30,
+        "timeLimitS": 45
+      }
+    ]
+  },
+  "scoring": {
+    "practiceWeight": 35,
+    "examWeight": 65,
+    "orthographyCredit": 0.5
+  }
+}

@@ -12,3 +12,4 @@
  */
 export * from './events';
 export * from './schemas';
+export * as lessons from './lessons';
