@@ -387,7 +387,7 @@ function checkExam(c: ReadingContent, b: ReadingBrief, issues: Issues) {
     q.type === 'reading_true_false' ? q.statement : 'question' in q ? q.question : undefined;
   const key = (text: string) =>
     text
-      .toLocaleLowerCase('fr')
+      .toLocaleLowerCase(b.lang)
       .replace(/[\s.?!…]+/gu, ' ')
       .trim();
   const practice = new Set(

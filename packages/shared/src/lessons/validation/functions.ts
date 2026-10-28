@@ -9,13 +9,13 @@ import {
 } from '../schemas/functions';
 import { chunk } from '../domain/vocabularyLesson';
 import { functionsPageEstimate, functionsTimeLimit } from '../domain/functionsLesson';
+import { CHARACTER_ONLY, checkExplanations, sameSet } from './common';
 import {
-  CHARACTER_ONLY,
-  checkExplanations,
-  FR_ARTICLE_START,
-  FR_INDEFINITE,
-  sameSet,
-} from './common';
+  hasGender,
+  startsWithArticle,
+  TEACHING_ARTICLES,
+  teachingArticle,
+} from '../domain/articles';
 import type { OutlineContext } from './artifacts';
 import type { Issues } from './issues';
 
@@ -23,14 +23,14 @@ import type { Issues } from './issues';
  * The checks of a functions lesson beyond its schemas.
  *
  * The brief: ids and texts unique, every expression and word used in its
- * example sentence, French nouns taught with un/une/des, and translations
- * that differ (they become the labels of a matching page).
+ * example sentence, nouns taught with their article (un thé, der Tee), and
+ * translations that differ (they become the labels of a matching page).
  *
  * The content: one step per stage, in the order of FUNCTIONS_STAGES (the
- * gender step only when the lesson has nouns). Then, stage by stage, the
- * pages hold what the page rules say: every expression and word where it
- * belongs, roles that alternate in a dialogue, answers that contain their
- * expression, an exam with sentences the learner has not seen yet, and
+ * gender step only when the lesson has nouns with a gender). Then, stage by
+ * stage, the pages hold what the page rules say: every expression and word
+ * where it belongs, roles that alternate in a dialogue, answers that contain
+ * their expression, an exam with sentences the learner has not seen yet, and
  * page durations that follow FUNCTIONS_PAGE_RULES.
  */
 
@@ -38,6 +38,8 @@ type Stage = (typeof FUNCTIONS_STAGES)[number];
 type Page = FunctionsContent['steps'][number]['pages'][number];
 type Item<T extends FunctionsItem['type']> = Extract<FunctionsItem, { type: T }>;
 type Expression = FunctionsBrief['expressions'][number];
+
+const LANGUAGE_NAMES = { fr: 'French', de: 'German', en: 'English' } as const;
 
 /**
  * A sentence in a form that compares: case, apostrophes, spaces and the
@@ -62,7 +64,7 @@ const ofType = <T extends FunctionsItem['type']>(list: FunctionsItem[], ...types
 /* =================================================================== brief */
 
 export function checkFunctionsBrief(b: FunctionsBrief, ctx: OutlineContext, issues: Issues) {
-  const fr = ctx.lang === 'fr';
+  const rule = TEACHING_ARTICLES[ctx.lang];
   issues.unique(
     [...b.expressions.map((e) => e.id), ...b.words.map((w) => w.id), ...b.roles.map((r) => r.id)],
     'expressions',
@@ -108,24 +110,25 @@ export function checkFunctionsBrief(b: FunctionsBrief, ctx: OutlineContext, issu
   b.words.forEach((w, i) => {
     const p = `words.${i}`;
     if (w.wordClass === 'noun') {
-      issues.check(
-        w.genders.length > 0,
-        `${p}.genders`,
-        'a noun needs at least one accepted gender',
-      );
-      if (fr)
+      if (hasGender(ctx.lang))
         issues.check(
-          FR_INDEFINITE.test(w.teachingForm),
+          w.genders.length > 0,
+          `${p}.genders`,
+          'a noun needs at least one accepted gender',
+        );
+      else issues.check(w.genders.length === 0, `${p}.genders`, `${ctx.lang} nouns have no gender`);
+      if (rule)
+        issues.check(
+          teachingArticle(ctx.lang, w.teachingForm) !== undefined,
           `${p}.teachingForm`,
-          `"${w.teachingForm}" must include the indefinite article un/une/des`,
+          `"${w.teachingForm}" must include the ${rule.label}`,
         );
     } else issues.check(w.genders.length === 0, `${p}.genders`, 'only nouns have a gender');
-    if (fr)
-      issues.check(
-        !FR_ARTICLE_START.test(w.term),
-        `${p}.term`,
-        `"${w.term}" must be the base term without article`,
-      );
+    issues.check(
+      !startsWithArticle(ctx.lang, w.term),
+      `${p}.term`,
+      `"${w.term}" must be the base term without article`,
+    );
     issues.check(
       contains(w.example.text, w.term),
       `${p}.example`,
@@ -186,7 +189,7 @@ export function checkFunctionsContent(c: FunctionsContent, b: FunctionsBrief, is
     issues,
     expressionIds: b.expressions.map((e) => e.id),
     wordIds: b.words.map((w) => w.id),
-    nounIds: b.words.filter((w) => w.wordClass === 'noun').map((w) => w.id),
+    nounIds: b.words.filter((w) => w.wordClass === 'noun' && w.genders.length > 0).map((w) => w.id),
     expressions,
     pages,
     items,
@@ -227,7 +230,7 @@ const stageRole = (stage: Stage) =>
 
 /**
  * One step per stage, in order, each with its role; the gender step only
- * when the lesson has nouns. Returns true when all of that holds.
+ * when the lesson has nouns with a gender. Returns true when all of that holds.
  */
 function checkStages(c: FunctionsContent, { nounIds, issues }: Lesson): boolean {
   const before = issues.list.length;
@@ -700,7 +703,7 @@ function checkExamDialogue(
     issues.check(
       Object.values(line.translation).every((tr) => !contains(tr, answer)),
       lp,
-      'the translation must not contain the French answer',
+      `the translation must not contain the ${LANGUAGE_NAMES[l.b.lang]} answer`,
     );
     issues.check(
       !seen.has(plain(`${line.before} ${answer} ${line.after}`)),
