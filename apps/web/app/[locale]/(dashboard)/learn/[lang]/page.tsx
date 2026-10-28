@@ -18,9 +18,10 @@ export async function generateMetadata({
   params: Promise<{ locale: string; lang: string }>;
 }): Promise<Metadata> {
   const { locale, lang } = await params;
+  // No notFound() here: it could race the page's /login redirect. The page 404s.
   const parsed = LanguageSchema.safeParse(lang);
   if (!parsed.success) {
-    notFound();
+    return {};
   }
 
   const t = await getTranslations({ locale, namespace: 'Course' });
