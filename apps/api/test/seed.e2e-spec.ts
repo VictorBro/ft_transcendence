@@ -651,16 +651,24 @@ describe('seedLessons (e2e)', () => {
     }
   });
 
-  it('makes exactly French A1 positions 1 to 12 ready, the lessons that have files', async () => {
-    await seedLessons(dirname(findContentDir('outlines')), prisma);
+  // Today French A1 positions 1 to 12. Read off the files rather than
+  // hard-coded, so a content PR does not have to edit this test.
+  it('makes ready exactly the lessons that have files, and no other', async () => {
+    const contentDir = dirname(findContentDir('outlines'));
+    await seedLessons(contentDir, prisma);
 
+    const withFiles = (await readdir(join(contentDir, 'briefs')))
+      .filter((name) => name.endsWith('.json'))
+      .map((name) => name.slice(0, -'.json'.length))
+      .sort();
     const ready = await prisma.lesson.findMany({
-      where: { ready: true, NOT: FIXTURE_IDS },
-      select: { lang: true, level: true, position: true },
-      orderBy: { position: 'asc' },
+      where: { ready: true },
+      select: { id: true, lang: true },
+      orderBy: { id: 'asc' },
     });
-    expect(ready).toEqual(
-      Array.from({ length: 12 }, (_, index) => ({ lang: 'fr', level: 'A1', position: index + 1 })),
-    );
+    // Any language's `-test-` fixture, as the seed skips them: one left by an
+    // interrupted lessons or finish spec is ready too.
+    const real = ready.filter((row) => !row.id.startsWith(`${row.lang}-test-`));
+    expect(real.map((row) => row.id)).toEqual(withFiles);
   });
 });

@@ -57,6 +57,8 @@ for (const name of readdirSync(OUTLINES_DIR).filter((n) => n.endsWith('.json')))
 
 const briefIds = idsIn(BRIEFS_DIR);
 const contentIds = idsIn(LESSONS_DIR);
+const briefSet = new Set(briefIds);
+const contentSet = new Set(contentIds);
 
 const results = new Map(
   briefIds
@@ -113,8 +115,8 @@ describe('content/briefs and content/lessons', () => {
     (_, entries) => {
       const hasFiles = entries.map(
         (entry) =>
-          briefIds.includes(entry.id) &&
-          (!lessons.hasContentFile(entry.kind) || contentIds.includes(entry.id)),
+          briefSet.has(entry.id) &&
+          (!lessons.hasContentFile(entry.kind) || contentSet.has(entry.id)),
       );
       const written = hasFiles.filter(Boolean).length;
       const gaps = entries
