@@ -1,0 +1,724 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-verb-etre-present",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Le verbe être au présent",
+  "objective": {
+    "en": "Use the present tense of être with every subject pronoun.",
+    "fr": "Employer être au présent avec tous les pronoms sujets.",
+    "de": "Être im Präsens mit allen Subjektpronomen verwenden."
+  },
+  "estimatedMinutes": 10,
+  "provenance": {
+    "generator": "fixture",
+    "model": "none",
+    "promptVersion": "fixture-1",
+    "generatedAt": "2026-10-06T00:00:00Z",
+    "inputHashes": {
+      "outline": "5c2392d3863624855b6f75ffe68c23d6dd290c31c1f2f6004022fb2b42d34e34",
+      "brief": "1958aba1a2f297ed617fb3544f27a4bde43630a690fbc2a1fa5dd784d263d322"
+    }
+  },
+  "kind": "grammar",
+  "topic": "verbs_morphology",
+  "steps": [
+    {
+      "id": "s-expl-sg",
+      "role": "explanation",
+      "blockId": "b-singular",
+      "label": {
+        "en": "Singular forms",
+        "fr": "Formes du singulier",
+        "de": "Singularformen"
+      },
+      "pages": [
+        {
+          "pageId": "expl-sg",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the forms and listen to the examples.",
+            "fr": "Lisez les formes et écoutez les exemples.",
+            "de": "Lies die Formen und hör dir die Beispiele an."
+          },
+          "items": [
+            {
+              "type": "grammar_explanation",
+              "itemId": "expl-sg",
+              "ruleIds": ["r-singular"],
+              "heading": {
+                "en": "Use the form that matches the subject",
+                "fr": "Choisissez la forme qui correspond au sujet",
+                "de": "Wähle die Form, die zum Subjekt passt"
+              },
+              "text": {
+                "en": "Être changes with the subject: je suis, tu es, il/elle est.",
+                "fr": "Être change selon le sujet : je suis, tu es, il/elle est.",
+                "de": "Être ändert sich mit dem Subjekt: je suis, tu es, il/elle est."
+              },
+              "formTable": [
+                {
+                  "subject": "je",
+                  "form": "suis",
+                  "example": "Je suis étudiant."
+                },
+                {
+                  "subject": "tu",
+                  "form": "es",
+                  "example": "Tu es étudiant."
+                },
+                {
+                  "subject": "il / elle",
+                  "form": "est",
+                  "example": "Elle est étudiante."
+                }
+              ],
+              "examples": [
+                {
+                  "text": "Je suis étudiant.",
+                  "translation": {
+                    "en": "I am a student.",
+                    "de": "Ich bin Student."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s-sg-match",
+      "role": "exercise",
+      "blockId": "b-singular",
+      "label": {
+        "en": "Match forms to pronouns",
+        "fr": "Associer formes et pronoms",
+        "de": "Formen den Pronomen zuordnen"
+      },
+      "pages": [
+        {
+          "pageId": "sg-match",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Drag a form into each row.",
+            "fr": "Placez une forme dans chaque ligne.",
+            "de": "Zieh eine Form in jede Zeile."
+          },
+          "items": [
+            {
+              "type": "grammar_pronoun_form_match",
+              "itemId": "sg-match",
+              "ruleIds": ["r-singular"],
+              "tokens": [
+                {
+                  "tokenId": "t-suis",
+                  "text": "suis"
+                },
+                {
+                  "tokenId": "t-es",
+                  "text": "es"
+                },
+                {
+                  "tokenId": "t-est",
+                  "text": "est"
+                }
+              ],
+              "rows": [
+                {
+                  "rowId": "je",
+                  "pronoun": "je",
+                  "validForms": ["suis"],
+                  "answerExplanation": {
+                    "en": "Je takes suis.",
+                    "fr": "Avec je, on dit suis.",
+                    "de": "Zu je gehört suis."
+                  }
+                },
+                {
+                  "rowId": "tu",
+                  "pronoun": "tu",
+                  "validForms": ["es"],
+                  "answerExplanation": {
+                    "en": "Tu takes es; est is the form for il or elle.",
+                    "fr": "Avec tu, on écrit es ; est va avec il ou elle.",
+                    "de": "Zu tu gehört es; est gehört zu il oder elle."
+                  }
+                },
+                {
+                  "rowId": "il-elle",
+                  "pronoun": "il / elle",
+                  "validForms": ["est"],
+                  "answerExplanation": {
+                    "en": "Il and elle take est.",
+                    "fr": "Avec il et elle, on dit est.",
+                    "de": "Zu il und elle gehört est."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s-sg-choice",
+      "role": "exercise",
+      "blockId": "b-singular",
+      "label": {
+        "en": "Choose the missing form",
+        "fr": "Choisir la forme manquante",
+        "de": "Fehlende Form wählen"
+      },
+      "pages": [
+        {
+          "pageId": "sg-choice-1",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the missing form.",
+            "fr": "Choisissez la forme manquante.",
+            "de": "Wähle die fehlende Form."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "sg-choice-1",
+              "before": "Tu ",
+              "after": " étudiant.",
+              "choices": [
+                {
+                  "choiceId": "c-suis",
+                  "text": "suis"
+                },
+                {
+                  "choiceId": "c-es",
+                  "text": "es"
+                },
+                {
+                  "choiceId": "c-est",
+                  "text": "est"
+                },
+                {
+                  "choiceId": "c-sommes",
+                  "text": "sommes"
+                }
+              ],
+              "answerChoiceId": "c-es",
+              "hint": null,
+              "ruleIds": ["r-singular"],
+              "answerExplanation": {
+                "en": "Tu takes es; est is the form for il or elle.",
+                "fr": "Avec tu, on écrit es ; est va avec il ou elle.",
+                "de": "Zu tu gehört es; est gehört zu il oder elle."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "sg-choice-2",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the missing form.",
+            "fr": "Choisissez la forme manquante.",
+            "de": "Wähle die fehlende Form."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "sg-choice-2",
+              "before": "Je ",
+              "after": " content.",
+              "choices": [
+                {
+                  "choiceId": "c-suis",
+                  "text": "suis"
+                },
+                {
+                  "choiceId": "c-es",
+                  "text": "es"
+                },
+                {
+                  "choiceId": "c-est",
+                  "text": "est"
+                },
+                {
+                  "choiceId": "c-sont",
+                  "text": "sont"
+                }
+              ],
+              "answerChoiceId": "c-suis",
+              "hint": null,
+              "ruleIds": ["r-singular"],
+              "answerExplanation": {
+                "en": "Je takes suis.",
+                "fr": "Avec je, on dit suis.",
+                "de": "Zu je gehört suis."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-sg-persons",
+      "role": "exercise",
+      "blockId": "b-singular",
+      "label": {
+        "en": "Singular forms",
+        "fr": "Formes du singulier",
+        "de": "Singularformen"
+      },
+      "pages": [
+        {
+          "pageId": "ex-sg-persons-1",
+          "estimatedDurationS": 40,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Connect each pronoun with its partner.",
+            "fr": "Reliez chaque pronom à son partenaire.",
+            "de": "Verbinde jedes Pronomen mit seinem Partner."
+          },
+          "items": [
+            {
+              "type": "grammar_person_matching",
+              "itemId": "ex-sg-persons-1",
+              "ruleIds": ["r-singular"],
+              "mode": "forms",
+              "rows": [
+                {
+                  "person": "1sg",
+                  "pronoun": "je",
+                  "native": null,
+                  "answer": "suis",
+                  "answerExplanation": {
+                    "en": "Je takes suis.",
+                    "fr": "Avec je, on dit suis.",
+                    "de": "Zu je gehört suis."
+                  }
+                },
+                {
+                  "person": "2sg",
+                  "pronoun": "tu",
+                  "native": null,
+                  "answer": "es",
+                  "answerExplanation": {
+                    "en": "Tu takes es.",
+                    "fr": "Avec tu, on dit es.",
+                    "de": "Zu tu gehört es."
+                  }
+                },
+                {
+                  "person": "3sg",
+                  "pronoun": "il / elle",
+                  "native": null,
+                  "answer": "est",
+                  "answerExplanation": {
+                    "en": "Il and elle take est.",
+                    "fr": "Avec il et elle, on dit est.",
+                    "de": "Zu il und elle gehört est."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s-expl-pl",
+      "role": "explanation",
+      "blockId": "b-plural",
+      "label": {
+        "en": "Plural forms",
+        "fr": "Formes du pluriel",
+        "de": "Pluralformen"
+      },
+      "pages": [
+        {
+          "pageId": "expl-pl",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the plural forms.",
+            "fr": "Lisez les formes du pluriel.",
+            "de": "Lies die Pluralformen."
+          },
+          "items": [
+            {
+              "type": "grammar_explanation",
+              "itemId": "expl-pl",
+              "ruleIds": ["r-plural"],
+              "heading": {
+                "en": "Plural subjects",
+                "fr": "Sujets au pluriel",
+                "de": "Subjekte im Plural"
+              },
+              "text": {
+                "en": "Nous sommes, vous êtes, ils/elles sont. Êtes has an accent circonflexe.",
+                "fr": "Nous sommes, vous êtes, ils/elles sont. Êtes prend un accent circonflexe.",
+                "de": "Nous sommes, vous êtes, ils/elles sont. Êtes hat einen Accent circonflexe."
+              },
+              "formTable": [
+                {
+                  "subject": "nous",
+                  "form": "sommes",
+                  "example": null
+                },
+                {
+                  "subject": "vous",
+                  "form": "êtes",
+                  "example": "Vous êtes prêts."
+                },
+                {
+                  "subject": "ils / elles",
+                  "form": "sont",
+                  "example": null
+                }
+              ],
+              "examples": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s-pl-typing",
+      "role": "exercise",
+      "blockId": "b-plural",
+      "label": {
+        "en": "Write forms for pronouns",
+        "fr": "Écrire les formes",
+        "de": "Formen schreiben"
+      },
+      "pages": [
+        {
+          "pageId": "pl-typing",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the form of être for each subject.",
+            "fr": "Tapez la forme de être pour chaque sujet.",
+            "de": "Tippe die Form von être für jedes Subjekt."
+          },
+          "items": [
+            {
+              "type": "grammar_pronoun_form_typing",
+              "itemId": "pl-typing",
+              "ruleIds": ["r-plural"],
+              "rows": [
+                {
+                  "rowId": "nous",
+                  "pronoun": "nous",
+                  "accepted": {
+                    "answers": ["sommes"]
+                  },
+                  "answerExplanation": {
+                    "en": "Nous takes sommes.",
+                    "fr": "Avec nous, on dit sommes.",
+                    "de": "Zu nous gehört sommes."
+                  }
+                },
+                {
+                  "rowId": "vous",
+                  "pronoun": "vous",
+                  "accepted": {
+                    "answers": ["êtes"]
+                  },
+                  "answerExplanation": {
+                    "en": "Vous takes êtes, with an accent circonflexe on e.",
+                    "fr": "Avec vous, on écrit êtes, avec un accent circonflexe sur le e.",
+                    "de": "Zu vous gehört êtes, mit Accent circonflexe auf dem e."
+                  }
+                },
+                {
+                  "rowId": "ils-elles",
+                  "pronoun": "ils / elles",
+                  "accepted": {
+                    "answers": ["sont"]
+                  },
+                  "answerExplanation": {
+                    "en": "Ils and elles take sont.",
+                    "fr": "Avec ils et elles, on dit sont.",
+                    "de": "Zu ils und elles gehört sont."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s-pl-gap",
+      "role": "exercise",
+      "blockId": "b-plural",
+      "label": {
+        "en": "Type the missing form",
+        "fr": "Taper la forme manquante",
+        "de": "Fehlende Form tippen"
+      },
+      "pages": [
+        {
+          "pageId": "pl-gap-1",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing form.",
+            "fr": "Tapez la forme manquante.",
+            "de": "Tippe die fehlende Form."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "pl-gap-1",
+              "before": "Vous ",
+              "after": " prêts.",
+              "accepted": {
+                "answers": ["êtes"]
+              },
+              "hint": {
+                "en": "Form of être",
+                "fr": "Forme de être",
+                "de": "Form von être"
+              },
+              "ruleIds": ["r-plural"],
+              "answerExplanation": {
+                "en": "Vous takes êtes, with an accent circonflexe on e.",
+                "fr": "Avec vous, on écrit êtes, avec un accent circonflexe sur le e.",
+                "de": "Zu vous gehört êtes, mit Accent circonflexe auf dem e."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "pl-gap-2",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing form.",
+            "fr": "Tapez la forme manquante.",
+            "de": "Tippe die fehlende Form."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "pl-gap-2",
+              "before": "Elles ",
+              "after": " contentes.",
+              "accepted": {
+                "answers": ["sont"]
+              },
+              "hint": null,
+              "ruleIds": ["r-plural"],
+              "answerExplanation": {
+                "en": "Ils and elles take sont.",
+                "fr": "Avec ils et elles, on dit sont.",
+                "de": "Zu ils und elles gehört sont."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s-pl-spot",
+      "role": "exercise",
+      "blockId": "b-plural",
+      "label": {
+        "en": "Find the grammar mistake",
+        "fr": "Trouver l’erreur",
+        "de": "Den Fehler finden"
+      },
+      "pages": [
+        {
+          "pageId": "pl-spot",
+          "estimatedDurationS": 45,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Select the wrong word and type its correction.",
+            "fr": "Sélectionnez le mot faux et tapez sa correction.",
+            "de": "Wähle das falsche Wort und tippe die Korrektur."
+          },
+          "items": [
+            {
+              "type": "grammar_error_spotter",
+              "itemId": "pl-spot",
+              "tokens": [
+                {
+                  "tokenId": "w1",
+                  "text": "Vous"
+                },
+                {
+                  "tokenId": "w2",
+                  "text": "est"
+                },
+                {
+                  "tokenId": "w3",
+                  "text": "prêts."
+                }
+              ],
+              "faultyTokenId": "w2",
+              "correction": {
+                "mode": "type",
+                "accepted": {
+                  "answers": ["êtes"]
+                },
+                "choices": []
+              },
+              "ruleIds": ["r-plural"],
+              "answerExplanation": {
+                "en": "Vous takes êtes, with an accent circonflexe on e.",
+                "fr": "Avec vous, on écrit êtes, avec un accent circonflexe sur le e.",
+                "de": "Zu vous gehört êtes, mit Accent circonflexe auf dem e."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s-feedback",
+      "role": "feedback",
+      "blockId": null,
+      "label": {
+        "en": "Before your final exam",
+        "fr": "Avant l’examen final",
+        "de": "Vor dem Abschlusstest"
+      },
+      "pages": [
+        {
+          "pageId": "feedback",
+          "estimatedDurationS": 20,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read, then continue to the exam.",
+            "fr": "Lisez, puis passez à l’examen.",
+            "de": "Lies und gehe dann zum Test."
+          },
+          "items": [
+            {
+              "type": "production_feedback_placeholder",
+              "itemId": "feedback"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s-exam",
+      "role": "exam",
+      "blockId": null,
+      "label": {
+        "en": "Final exam",
+        "fr": "Examen final",
+        "de": "Abschlusstest"
+      },
+      "pages": [
+        {
+          "pageId": "exam-gaps",
+          "estimatedDurationS": 60,
+          "timeLimitS": 90,
+          "instructions": {
+            "en": "Type the missing forms.",
+            "fr": "Tapez les formes manquantes.",
+            "de": "Tippe die fehlenden Formen."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "x-gap-1",
+              "before": "Tu ",
+              "after": " fatigué ?",
+              "accepted": {
+                "answers": ["es"]
+              },
+              "hint": null,
+              "ruleIds": ["r-singular"],
+              "answerExplanation": {
+                "en": "Tu takes es; est is the form for il or elle.",
+                "fr": "Avec tu, on écrit es ; est va avec il ou elle.",
+                "de": "Zu tu gehört es; est gehört zu il oder elle."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "x-gap-2",
+              "before": "Nous ",
+              "after": " français.",
+              "accepted": {
+                "answers": ["sommes"]
+              },
+              "hint": null,
+              "ruleIds": ["r-plural"],
+              "answerExplanation": {
+                "en": "Nous takes sommes.",
+                "fr": "Avec nous, on dit sommes.",
+                "de": "Zu nous gehört sommes."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-forms",
+          "estimatedDurationS": 45,
+          "timeLimitS": 60,
+          "instructions": {
+            "en": "Type the forms of être.",
+            "fr": "Tapez les formes de être.",
+            "de": "Tippe die Formen von être."
+          },
+          "items": [
+            {
+              "type": "grammar_pronoun_form_typing",
+              "itemId": "x-forms",
+              "ruleIds": ["r-plural"],
+              "rows": [
+                {
+                  "rowId": "nous",
+                  "pronoun": "nous",
+                  "accepted": {
+                    "answers": ["sommes"]
+                  },
+                  "answerExplanation": {
+                    "en": "Nous takes sommes.",
+                    "fr": "Avec nous, on dit sommes.",
+                    "de": "Zu nous gehört sommes."
+                  }
+                },
+                {
+                  "rowId": "vous",
+                  "pronoun": "vous",
+                  "accepted": {
+                    "answers": ["êtes"]
+                  },
+                  "answerExplanation": {
+                    "en": "Vous takes êtes, with an accent circonflexe on e.",
+                    "fr": "Avec vous, on écrit êtes, avec un accent circonflexe sur le e.",
+                    "de": "Zu vous gehört êtes, mit Accent circonflexe auf dem e."
+                  }
+                },
+                {
+                  "rowId": "ils-elles",
+                  "pronoun": "ils / elles",
+                  "accepted": {
+                    "answers": ["sont"]
+                  },
+                  "answerExplanation": {
+                    "en": "Ils and elles take sont.",
+                    "fr": "Avec ils et elles, on dit sont.",
+                    "de": "Zu ils und elles gehört sont."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

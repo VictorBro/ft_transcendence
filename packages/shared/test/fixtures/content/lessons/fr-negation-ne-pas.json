@@ -1,0 +1,489 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-negation-ne-pas",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "La négation ne … pas",
+  "objective": {
+    "en": "Make a sentence negative with ne … pas.",
+    "fr": "Mettre une phrase à la forme négative avec ne … pas.",
+    "de": "Einen Satz mit ne … pas verneinen."
+  },
+  "estimatedMinutes": 5,
+  "provenance": {
+    "generator": "fixture",
+    "model": "none",
+    "promptVersion": "fixture-1",
+    "generatedAt": "2026-10-06T00:00:00Z",
+    "inputHashes": {
+      "outline": "7d241eb94e9886f6043fd830c6fa44d3d155afddbf76e4a102308067825b0145",
+      "brief": "e5ce381bac8ac2fe024e39304867e91722fb32939b893078f1ea54ce02a7e7da"
+    }
+  },
+  "kind": "grammar",
+  "topic": "negation",
+  "steps": [
+    {
+      "id": "s-expl-basic",
+      "role": "explanation",
+      "blockId": "b-basic",
+      "label": {
+        "en": "Ne … pas",
+        "fr": "Ne … pas",
+        "de": "Ne … pas"
+      },
+      "pages": [
+        {
+          "pageId": "expl-basic",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the rule and the example.",
+            "fr": "Lisez la règle et l’exemple.",
+            "de": "Lies die Regel und das Beispiel."
+          },
+          "items": [
+            {
+              "type": "grammar_explanation",
+              "itemId": "expl-basic",
+              "ruleIds": ["r-ne-pas"],
+              "heading": {
+                "en": "Two words around the verb",
+                "fr": "Deux mots autour du verbe",
+                "de": "Zwei Wörter um das Verb"
+              },
+              "text": {
+                "en": "Put ne before the verb and pas after it.",
+                "fr": "Placez ne avant le verbe et pas après.",
+                "de": "Setze ne vor das Verb und pas danach."
+              },
+              "formTable": [],
+              "examples": [
+                {
+                  "text": "Je ne parle pas anglais.",
+                  "translation": {
+                    "en": "I don’t speak English.",
+                    "de": "Ich spreche kein Englisch."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s-order",
+      "role": "exercise",
+      "blockId": "b-basic",
+      "label": {
+        "en": "Put the words in order",
+        "fr": "Remettre les mots dans l’ordre",
+        "de": "Wörter ordnen"
+      },
+      "pages": [
+        {
+          "pageId": "order-1",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Build a negative sentence.",
+            "fr": "Construisez une phrase négative.",
+            "de": "Bilde einen verneinten Satz."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "order-1",
+              "tokens": [
+                {
+                  "tokenId": "w1",
+                  "text": "Je"
+                },
+                {
+                  "tokenId": "w2",
+                  "text": "ne"
+                },
+                {
+                  "tokenId": "w3",
+                  "text": "parle"
+                },
+                {
+                  "tokenId": "w4",
+                  "text": "pas"
+                },
+                {
+                  "tokenId": "w5",
+                  "text": "anglais"
+                },
+                {
+                  "tokenId": "w6",
+                  "text": "."
+                }
+              ],
+              "acceptedOrders": [["w1", "w2", "w3", "w4", "w5", "w6"]],
+              "ruleIds": ["r-ne-pas"],
+              "answerExplanation": {
+                "en": "Ne comes before the verb and pas after it.",
+                "fr": "Ne se place avant le verbe et pas juste après.",
+                "de": "Ne steht vor dem Verb, pas direkt danach."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-2",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Build a negative sentence.",
+            "fr": "Construisez une phrase négative.",
+            "de": "Bilde einen verneinten Satz."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "order-2",
+              "tokens": [
+                {
+                  "tokenId": "w1",
+                  "text": "Il"
+                },
+                {
+                  "tokenId": "w2",
+                  "text": "ne"
+                },
+                {
+                  "tokenId": "w3",
+                  "text": "travaille"
+                },
+                {
+                  "tokenId": "w4",
+                  "text": "pas"
+                },
+                {
+                  "tokenId": "w5",
+                  "text": "le"
+                },
+                {
+                  "tokenId": "w6",
+                  "text": "samedi"
+                },
+                {
+                  "tokenId": "w7",
+                  "text": "."
+                }
+              ],
+              "acceptedOrders": [["w1", "w2", "w3", "w4", "w5", "w6", "w7"]],
+              "ruleIds": ["r-ne-pas"],
+              "answerExplanation": {
+                "en": "Ne comes before the verb and pas after it.",
+                "fr": "Ne se place avant le verbe et pas juste après.",
+                "de": "Ne steht vor dem Verb, pas direkt danach."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s-expl-elision",
+      "role": "explanation",
+      "blockId": "b-elision",
+      "label": {
+        "en": "N’ before a vowel",
+        "fr": "N’ devant une voyelle",
+        "de": "N’ vor Vokal"
+      },
+      "pages": [
+        {
+          "pageId": "expl-elision",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the rule and the example.",
+            "fr": "Lisez la règle et l’exemple.",
+            "de": "Lies die Regel und das Beispiel."
+          },
+          "items": [
+            {
+              "type": "grammar_explanation",
+              "itemId": "expl-elision",
+              "ruleIds": ["r-elision"],
+              "heading": {
+                "en": "Elision",
+                "fr": "L’élision",
+                "de": "Elision"
+              },
+              "text": {
+                "en": "Before a vowel or mute h, ne becomes n’.",
+                "fr": "Devant une voyelle ou un h muet, ne devient n’.",
+                "de": "Vor Vokal oder stummem h wird ne zu n’."
+              },
+              "formTable": [],
+              "examples": [
+                {
+                  "text": "Elle n’habite pas à Paris.",
+                  "translation": {
+                    "en": "She doesn’t live in Paris.",
+                    "de": "Sie wohnt nicht in Paris."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s-choice",
+      "role": "exercise",
+      "blockId": "b-elision",
+      "label": {
+        "en": "Choose the missing word",
+        "fr": "Choisir le mot manquant",
+        "de": "Fehlendes Wort wählen"
+      },
+      "pages": [
+        {
+          "pageId": "choice-1",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the missing word.",
+            "fr": "Choisissez le mot manquant.",
+            "de": "Wähle das fehlende Wort."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "choice-1",
+              "before": "Elle ",
+              "after": "habite pas à Paris.",
+              "choices": [
+                {
+                  "choiceId": "c-n",
+                  "text": "n’"
+                },
+                {
+                  "choiceId": "c-ne",
+                  "text": "ne"
+                },
+                {
+                  "choiceId": "c-pas",
+                  "text": "pas"
+                },
+                {
+                  "choiceId": "c-non",
+                  "text": "non"
+                }
+              ],
+              "answerChoiceId": "c-n",
+              "hint": null,
+              "ruleIds": ["r-elision"],
+              "answerExplanation": {
+                "en": "Before a vowel, ne becomes n’.",
+                "fr": "Devant une voyelle, ne devient n’.",
+                "de": "Vor Vokal wird ne zu n’."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s-spot",
+      "role": "exercise",
+      "blockId": "b-elision",
+      "label": {
+        "en": "Find the mistake",
+        "fr": "Trouver l’erreur",
+        "de": "Den Fehler finden"
+      },
+      "pages": [
+        {
+          "pageId": "spot-1",
+          "estimatedDurationS": 40,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Select the wrong word and choose its correction.",
+            "fr": "Sélectionnez le mot faux et choisissez sa correction.",
+            "de": "Wähle das falsche Wort und seine Korrektur."
+          },
+          "items": [
+            {
+              "type": "grammar_error_spotter",
+              "itemId": "spot-1",
+              "tokens": [
+                {
+                  "tokenId": "w1",
+                  "text": "Je"
+                },
+                {
+                  "tokenId": "w2",
+                  "text": "ne"
+                },
+                {
+                  "tokenId": "w3",
+                  "text": "aime"
+                },
+                {
+                  "tokenId": "w4",
+                  "text": "pas"
+                },
+                {
+                  "tokenId": "w5",
+                  "text": "le"
+                },
+                {
+                  "tokenId": "w6",
+                  "text": "café"
+                },
+                {
+                  "tokenId": "w7",
+                  "text": "."
+                }
+              ],
+              "faultyTokenId": "w2",
+              "correction": {
+                "mode": "select",
+                "accepted": {
+                  "answers": ["n’"]
+                },
+                "choices": ["n’", "pas", "non"]
+              },
+              "ruleIds": ["r-elision"],
+              "answerExplanation": {
+                "en": "Before a vowel, ne becomes n’.",
+                "fr": "Devant une voyelle, ne devient n’.",
+                "de": "Vor Vokal wird ne zu n’."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s-feedback",
+      "role": "feedback",
+      "blockId": null,
+      "label": {
+        "en": "Before your final exam",
+        "fr": "Avant l’examen final",
+        "de": "Vor dem Abschlusstest"
+      },
+      "pages": [
+        {
+          "pageId": "feedback",
+          "estimatedDurationS": 20,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read, then continue to the exam.",
+            "fr": "Lisez, puis passez à l’examen.",
+            "de": "Lies und gehe dann zum Test."
+          },
+          "items": [
+            {
+              "type": "production_feedback_placeholder",
+              "itemId": "feedback"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s-exam",
+      "role": "exam",
+      "blockId": null,
+      "label": {
+        "en": "Final exam",
+        "fr": "Examen final",
+        "de": "Abschlusstest"
+      },
+      "pages": [
+        {
+          "pageId": "exam-order",
+          "estimatedDurationS": 40,
+          "timeLimitS": 60,
+          "instructions": {
+            "en": "Build the negative sentence.",
+            "fr": "Construisez la phrase négative.",
+            "de": "Bilde den verneinten Satz."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "x-order",
+              "tokens": [
+                {
+                  "tokenId": "w1",
+                  "text": "Nous"
+                },
+                {
+                  "tokenId": "w2",
+                  "text": "ne"
+                },
+                {
+                  "tokenId": "w3",
+                  "text": "mangeons"
+                },
+                {
+                  "tokenId": "w4",
+                  "text": "pas"
+                },
+                {
+                  "tokenId": "w5",
+                  "text": "de"
+                },
+                {
+                  "tokenId": "w6",
+                  "text": "viande"
+                },
+                {
+                  "tokenId": "w7",
+                  "text": "."
+                }
+              ],
+              "acceptedOrders": [["w1", "w2", "w3", "w4", "w5", "w6", "w7"]],
+              "ruleIds": ["r-ne-pas"],
+              "answerExplanation": {
+                "en": "Ne comes before the verb and pas after it.",
+                "fr": "Ne se place avant le verbe et pas juste après.",
+                "de": "Ne steht vor dem Verb, pas direkt danach."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-gap",
+          "estimatedDurationS": 30,
+          "timeLimitS": 45,
+          "instructions": {
+            "en": "Type the missing word.",
+            "fr": "Tapez le mot manquant.",
+            "de": "Tippe das fehlende Wort."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "x-gap",
+              "before": "Nous ",
+              "after": "avons pas de voiture.",
+              "accepted": {
+                "answers": ["n’"]
+              },
+              "hint": null,
+              "ruleIds": ["r-elision"],
+              "answerExplanation": {
+                "en": "Before a vowel, ne becomes n’.",
+                "fr": "Devant une voyelle, ne devient n’.",
+                "de": "Vor Vokal wird ne zu n’."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

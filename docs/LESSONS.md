@@ -212,10 +212,11 @@ jq -r '.entries | group_by(.kind)[] | "\(.[0].kind)\t\(length)"' content/outline
 | `content/lessons/<id>.json` | grammar, functions, reading | The envelope and the lesson as played: steps, pages, items |
 
 The `id`, `kind`, `lang`, `level` and `topic` or `theme` of both files must match the outline
-entry. Once the files exist, the seed sets the row's `title` to the envelope's title, its
-`summary` to the objective in the course language, and its `brief` and `content` to the files
+entry, and the content file repeats the brief's `title` and `objective` word for word. Once the
+files exist, the seed sets the row's `title` to the envelope's title, its `summary` to the
+objective in the course language, and its `brief` and `content` to the files
 ([#135](https://github.com/VictorBro/ft_transcendence/issues/135)). An invalid file stops the
-seed, naming the id and the errors.
+seed, naming the id and the errors, and so does a file that no outline entry plans.
 
 The brief of `fr-subject-pronouns`, shortened:
 
@@ -320,7 +321,7 @@ readers: the key order, no level in an id, and no dashes, quotation marks or dou
 | Counts | Exactly `LESSONS_PER_LEVEL[level]` entries, and each kind exactly its `KIND_COUNTS` |
 | Topic and theme | `topic` exactly on grammar, `theme` exactly on the others |
 | Ids | Start with the file's language, unique across the language's six files. None starts with `<lang>-test-`, a prefix kept for spec fixtures |
-| Lesson files | Pass the prototype's validators: the shape of each kind, the lesson rules (length, counts, references between parts, articles), and the durations, to the second, once [#135](https://github.com/VictorBro/ft_transcendence/issues/135) ports them. Until then, `lesson-files.spec.ts` checks the earlier per-level files |
+| Lesson files | Pass `validateLesson`, the check the seed runs: the shape of each kind, the lesson rules (length, counts, references between parts, articles), the durations to the second, a title of at most 80 characters and an objective in the course language of at most 200. Every file has an outline entry, and every content file a brief |
 | Complete languages | A language in `COMPLETE_LANGUAGES` has the files of every outline entry |
 
 After seeding, positions are exactly 1 to N for every language and level.

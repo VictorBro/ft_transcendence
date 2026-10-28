@@ -1,0 +1,239 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-ordering-at-a-cafe",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Commander au café",
+  "objective": {
+    "en": "Order a drink and a snack at a café, ask for the price and the bill, and answer the waiter.",
+    "fr": "Commander une boisson et un en-cas au café, demander le prix et l’addition, et répondre au serveur.",
+    "de": "Im Café ein Getränk und einen Snack bestellen, nach Preis und Rechnung fragen und dem Kellner antworten."
+  },
+  "estimatedMinutes": 17,
+  "provenance": {
+    "generator": "claude-code-direct-authoring",
+    "model": "claude-opus-5-5",
+    "promptVersion": "functions-v1",
+    "generatedAt": "2026-10-15T18:58:54.143Z",
+    "inputHashes": {
+      "outline": "3d44c42aa9721069c041b103732801561e34e993b5fde9e51f14c06cb8768c78"
+    }
+  },
+  "kind": "functions",
+  "theme": "food_and_drink",
+  "situation": {
+    "en": "A customer orders at a café counter; the waiter serves her.",
+    "fr": "Une cliente commande au comptoir d’un café ; le serveur la sert.",
+    "de": "Eine Kundin bestellt an der Theke eines Cafés; der Kellner bedient sie."
+  },
+  "coverageNotes": {
+    "en": "Ordering (Je voudrais, Je prends), the waiter’s questions (Vous désirez ?, Et avec ceci ?, Sur place ou à emporter ?), finishing the order, asking the price and the bill.",
+    "fr": "Commander (Je voudrais, Je prends), les questions du serveur (Vous désirez ?, Et avec ceci ?, Sur place ou à emporter ?), terminer la commande, demander le prix et l’addition.",
+    "de": "Bestellen (Je voudrais, Je prends), die Fragen des Kellners (Vous désirez ?, Et avec ceci ?, Sur place ou à emporter ?), die Bestellung abschließen, nach Preis und Rechnung fragen."
+  },
+  "prerequisites": [],
+  "roles": [
+    {
+      "id": "serveur",
+      "label": "le serveur",
+      "translation": {
+        "en": "the waiter",
+        "de": "der Kellner"
+      }
+    },
+    {
+      "id": "cliente",
+      "label": "la cliente",
+      "translation": {
+        "en": "the customer",
+        "de": "die Kundin"
+      }
+    }
+  ],
+  "expressions": [
+    {
+      "id": "vous-desirez",
+      "text": "Vous désirez ?",
+      "openEnd": false,
+      "translations": {
+        "en": ["What would you like?"],
+        "de": ["Was darf es sein?"]
+      },
+      "explanation": {
+        "en": "The waiter’s polite question to take your order (vous).",
+        "fr": "La question polie du serveur pour prendre la commande (vous).",
+        "de": "Die höfliche Frage des Kellners nach Ihrer Bestellung (vous)."
+      },
+      "example": {
+        "text": "Bonjour, monsieur. Vous désirez ?",
+        "translation": {
+          "en": "Hello, sir. What would you like?",
+          "de": "Guten Tag. Was darf es sein?"
+        }
+      }
+    },
+    {
+      "id": "je-voudrais",
+      "text": "Je voudrais",
+      "openEnd": true,
+      "translations": {
+        "en": ["I would like"],
+        "de": ["Ich hätte gern"]
+      },
+      "explanation": {
+        "en": "The polite way to order: Je voudrais + what you want.",
+        "fr": "La façon polie de commander : Je voudrais + ce que vous voulez.",
+        "de": "Die höfliche Art zu bestellen: Je voudrais + was Sie möchten."
+      },
+      "example": {
+        "text": "Je voudrais un café, s’il vous plaît.",
+        "translation": {
+          "en": "I would like a coffee, please.",
+          "de": "Ich hätte gern einen Kaffee, bitte."
+        }
+      }
+    },
+    {
+      "id": "cest-combien",
+      "text": "C’est combien ?",
+      "openEnd": false,
+      "translations": {
+        "en": ["How much is it?"],
+        "de": ["Wie viel kostet das?"]
+      },
+      "explanation": {
+        "en": "Asks for the price.",
+        "fr": "Pour demander le prix.",
+        "de": "Fragt nach dem Preis."
+      },
+      "example": {
+        "text": "Le jus d’orange, c’est combien ?",
+        "translation": {
+          "en": "How much is the orange juice?",
+          "de": "Wie viel kostet der Orangensaft?"
+        }
+      }
+    },
+    {
+      "id": "laddition",
+      "text": "L’addition, s’il vous plaît.",
+      "openEnd": false,
+      "translations": {
+        "en": ["The bill, please."],
+        "de": ["Die Rechnung, bitte."]
+      },
+      "explanation": {
+        "en": "Asks for the bill at the end, politely (vous).",
+        "fr": "Pour demander l’addition à la fin, poliment (vous).",
+        "de": "Bittet am Ende höflich um die Rechnung (vous)."
+      },
+      "example": {
+        "text": "Excusez-moi ! L’addition, s’il vous plaît.",
+        "translation": {
+          "en": "Excuse me! The bill, please.",
+          "de": "Entschuldigung! Die Rechnung, bitte."
+        }
+      }
+    }
+  ],
+  "words": [
+    {
+      "id": "cafe",
+      "term": "café",
+      "teachingForm": "un café",
+      "translations": {
+        "en": ["coffee"],
+        "de": ["Kaffee"]
+      },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "explanation": {
+        "en": "Masculine noun: un café.",
+        "fr": "Nom masculin : un café.",
+        "de": "Maskulines Nomen: un café."
+      },
+      "example": {
+        "text": "Un café, s’il vous plaît.",
+        "translation": {
+          "en": "A coffee, please.",
+          "de": "Einen Kaffee, bitte."
+        }
+      }
+    },
+    {
+      "id": "the",
+      "term": "thé",
+      "teachingForm": "un thé",
+      "translations": {
+        "en": ["tea"],
+        "de": ["Tee"]
+      },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "explanation": {
+        "en": "Masculine noun: un thé.",
+        "fr": "Nom masculin : un thé.",
+        "de": "Maskulines Nomen: un thé."
+      },
+      "example": {
+        "text": "Le thé est chaud.",
+        "translation": {
+          "en": "The tea is hot.",
+          "de": "Der Tee ist heiß."
+        }
+      }
+    },
+    {
+      "id": "croissant",
+      "term": "croissant",
+      "teachingForm": "un croissant",
+      "translations": {
+        "en": ["croissant"],
+        "de": ["Croissant"]
+      },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "explanation": {
+        "en": "Masculine noun: un croissant.",
+        "fr": "Nom masculin : un croissant.",
+        "de": "Maskulines Nomen: un croissant."
+      },
+      "example": {
+        "text": "Le croissant est très bon.",
+        "translation": {
+          "en": "The croissant is very good.",
+          "de": "Das Croissant ist sehr gut."
+        }
+      }
+    },
+    {
+      "id": "jus-dorange",
+      "term": "jus d’orange",
+      "teachingForm": "un jus d’orange",
+      "translations": {
+        "en": ["orange juice"],
+        "de": ["Orangensaft"]
+      },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "explanation": {
+        "en": "Masculine noun: un jus d’orange.",
+        "fr": "Nom masculin : un jus d’orange.",
+        "de": "Maskulines Nomen: un jus d’orange."
+      },
+      "example": {
+        "text": "Un jus d’orange pour moi.",
+        "translation": {
+          "en": "An orange juice for me.",
+          "de": "Einen Orangensaft für mich."
+        }
+      }
+    }
+  ],
+  "scoring": {
+    "practiceWeight": 35,
+    "examWeight": 65,
+    "orthographyCredit": 0.5
+  }
+}
