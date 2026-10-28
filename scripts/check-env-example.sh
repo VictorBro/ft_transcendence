@@ -46,6 +46,8 @@ RUNTIME_INJECTED=(
   CLAUDE_BIN
   DEEPSEEK_API_KEY
   DEEPSEEK_MODEL
+  # The shell's own PATH, where lessons:author looks for the claude binary.
+  PATH
 )
 
 failures=0
