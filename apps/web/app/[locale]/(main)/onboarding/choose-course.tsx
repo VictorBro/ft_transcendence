@@ -134,7 +134,10 @@ export function ChooseCourse({
             href={`/learn/${activeLang}`}
             className="self-center text-sm underline underline-offset-4"
           >
-            {t('backToCourse', { language: t(`languageInSentence.${activeLang}`) })}
+            {t('backToCourse', {
+              language: t(`languageInSentence.${activeLang}`),
+              lang: activeLang,
+            })}
           </Link>
         ) : null}
       </div>
