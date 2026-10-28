@@ -93,15 +93,3 @@ export function checkRichText(text: Record<string, string>, path: string, issues
     );
   }
 }
-
-/* ========================================================= French articles */
-
-/** A French noun with its indefinite article: "un livre", "une table", "des ciseaux". */
-export const FR_INDEFINITE = /^(un|une|des) \S/u;
-
-/**
- * A French text that starts with an article, definite or indefinite:
- * "le livre", "l'école", "un", "des ciseaux". A word's base term and a
- * typed answer must not.
- */
-export const FR_ARTICLE_START = /^(un|une|des|le|la|les|l')(\s|$)|^l'/iu;

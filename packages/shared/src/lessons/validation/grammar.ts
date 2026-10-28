@@ -92,8 +92,8 @@ export function checkGrammarBrief(b: GrammarBrief, issues: Issues) {
   });
   for (const r of rules) issues.check(taught.has(r), 'blocks', `rule ${r} is never taught`);
   if (
-    (PERSON_MATCHING_TOPICS as readonly string[]).includes(b.topic) &&
-    !(PERSON_MATCHING_EXEMPT as readonly string[]).includes(b.id)
+    PERSON_MATCHING_TOPICS[b.lang].includes(b.topic) &&
+    !PERSON_MATCHING_EXEMPT[b.lang].includes(b.id)
   )
     issues.check(
       b.blocks.some((x) => x.exercises.some((e) => e.type === 'grammar_person_matching')),
@@ -408,7 +408,8 @@ function checkGrammarItem(
  * A person matching board: its rows follow the persons in order, the
  * three singular ones, the three plural ones, or all six. In translation
  * mode a row shows a sentence in the mother tongue ("I am"); in forms
- * mode it shows a pronoun ("je"). Two rows never show the same prompt.
+ * mode it shows a pronoun ("je"). Two rows never show the same prompt,
+ * unless they share the answer: English "you" is both 2sg and 2pl (you are).
  */
 function checkPersonMatching(
   item: Extract<GrammarItem, { type: 'grammar_person_matching' }>,
@@ -442,12 +443,17 @@ function checkPersonMatching(
         path,
         `${locale} prompt`,
       );
-  } else
-    issues.unique(
-      item.rows.map((r) => r.pronoun ?? ''),
-      path,
-      'pronoun',
-    );
+  } else {
+    // English "you" is both 2sg and 2pl: a pronoun may repeat with the same form only.
+    const formOf = new Map<string, string>();
+    for (const r of item.rows) {
+      const pronoun = r.pronoun ?? '';
+      const form = formOf.get(pronoun);
+      if (form !== undefined && form !== r.answer)
+        issues.add(path, `duplicate pronoun ${pronoun} with another form`);
+      formOf.set(pronoun, r.answer);
+    }
+  }
   checkExplanations(item.rows, path, issues);
 }
 

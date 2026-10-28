@@ -14,6 +14,7 @@ import {
   TimeLimitSecondsSchema,
 } from './artifactCommon';
 import { TopicSchema } from '../../schemas/item';
+import type { Language } from '../../schemas/language';
 
 /**
  * The schemas of a grammar lesson: one point of grammar, such as
@@ -70,15 +71,26 @@ export const PRONOUN_FORM_TYPES: readonly GrammarExerciseType[] = [
   'grammar_pronoun_form_typing',
 ];
 export const PRONOUN_FORM_TOPICS = ['pronouns', 'verbs_morphology', 'verb_usage'] as const;
-/** A lesson on one of these topics must have a grammar_person_matching exercise… */
-export const PERSON_MATCHING_TOPICS = ['pronouns', 'verbs_morphology'] as const;
 /**
- * …except these lessons. The French imperative has only three persons
- * (tu, nous, vous), too few for a person matching board. Holds outline
- * ids, so a lesson with the same problem in another course must be added
- * here.
+ * A lesson on one of these topics must have a grammar_person_matching
+ * exercise. Not in English verbs_morphology: the English verb barely
+ * changes with the person (I am, you are… I play, you play).
  */
-export const PERSON_MATCHING_EXEMPT = ['fr-imperative-mood'] as const;
+export const PERSON_MATCHING_TOPICS: Record<Language, readonly string[]> = {
+  fr: ['pronouns', 'verbs_morphology'],
+  de: ['pronouns', 'verbs_morphology'],
+  en: ['pronouns'],
+};
+/**
+ * …except these lessons, too few persons for a board: the French
+ * imperative (tu, nous, vous), the German one (du, ihr; Sie). German Sie
+ * needs no person of its own: it uses the 3pl form. Holds outline ids.
+ */
+export const PERSON_MATCHING_EXEMPT: Record<Language, readonly string[]> = {
+  fr: ['fr-imperative-mood'],
+  de: ['de-imperative-du-ihr', 'de-imperative-sie'],
+  en: [],
+};
 
 /**
  * The six grammatical persons, in the order they are shown: singular
