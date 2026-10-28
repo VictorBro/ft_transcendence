@@ -23,10 +23,11 @@ import { join } from 'node:path';
 const SIGNUPS_PER_WINDOW = 10;
 
 /**
- * The throttler's window plus slack for the time between booking a slot and
- * the request reaching the API, which is what the server actually counts.
+ * The throttler's 60s window plus slack. A slot is booked when the signup is
+ * due, but the server counts it when it arrives, and on a loaded runner that
+ * can be a few seconds later. Five seconds costs a run about ten.
  */
-const WINDOW_MS = 61_000;
+const WINDOW_MS = 65_000;
 
 const LOG = join(tmpdir(), 'ft-e2e-signups.json');
 const LOCK = `${LOG}.lock`;
