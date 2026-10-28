@@ -218,6 +218,12 @@ objective in the course language, and its `brief` and `content` to the files
 ([#135](https://github.com/VictorBro/ft_transcendence/issues/135)). An invalid file stops the
 seed, naming the id and the errors, and so does a file that no outline entry plans.
 
+Every outline entry is a row, written or not. The seed sets the row's `ready` flag on every run:
+true when its files exist and pass `validateLesson`, false otherwise. A lesson becomes ready by
+adding its files and reseeding, with no migration and no row deleted. The daily proposal and the
+level progress count ready lessons only, so a level of 12 ready lessons needs 10 passed; the
+lesson list still shows every row ([#84](https://github.com/VictorBro/ft_transcendence/issues/84)).
+
 The brief of `fr-subject-pronouns`, shortened:
 
 ```json
@@ -322,7 +328,7 @@ readers: the key order, no level in an id, and no dashes, quotation marks or dou
 | Topic and theme | `topic` exactly on grammar, `theme` exactly on the others |
 | Ids | Start with the file's language, unique across the language's six files. None starts with `<lang>-test-`, a prefix kept for spec fixtures |
 | Lesson files | Pass `validateLesson`, the check the seed runs: the shape of each kind, the lesson rules (length, counts, references between parts, articles), the durations to the second, a title of at most 80 characters and an objective in the course language of at most 200. Every file has an outline entry, and every content file a brief |
-| Complete languages | A language in `COMPLETE_LANGUAGES` has the files of every outline entry |
+| Ready lessons | In each level, the lessons with files (the ready ones) are its first entries by position, with no gap |
 
 After seeding, positions are exactly 1 to N for every language and level.
 

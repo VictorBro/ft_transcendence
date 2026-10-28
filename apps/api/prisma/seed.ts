@@ -124,10 +124,15 @@ type LessonRow = Omit<Prisma.LessonCreateInput, 'content'> & {
  *   briefs/<id>.json               the lesson's brief, once written
  *   lessons/<id>.json              its content, for every kind but vocabulary
  *
- * An entry without files gets its working title and intent, an empty brief
- * and no content. An entry with files must pass validateLesson, and then
- * takes its title, summary, brief and content from them. A file that no entry
- * plans, or an invalid lesson, stops the seed before anything is written.
+ * An entry without files gets its working title and intent, an empty brief,
+ * no content, and ready false. An entry with files must pass validateLesson,
+ * and then takes its title, summary, brief and content from them, and ready
+ * true. A file that no entry plans, or an invalid lesson, stops the seed
+ * before anything is written.
+ *
+ * ready is set on every run, from the files alone: a lesson becomes ready by
+ * adding its files and reseeding, and stops being ready when they are
+ * removed. No migration, and no row deleted.
  *
  * Returns how many lessons were written: new or changed rows only, so a second
  * run returns 0 and leaves every updatedAt as it was.
@@ -171,6 +176,7 @@ export async function seedLessons(contentDir: string, prisma: PrismaClient): Pro
         summary: entry.intent,
         brief: {},
         content: null,
+        ready: false,
       });
     });
   }
@@ -204,6 +210,7 @@ export async function seedLessons(contentDir: string, prisma: PrismaClient): Pro
       summary: result.summary,
       brief: result.brief,
       content: result.content,
+      ready: true,
     });
   }
 

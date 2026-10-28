@@ -256,8 +256,10 @@ async function lessonFiles(): Promise<LessonFiles[]> {
 /**
  * Fixture lessons use `<lang>-test-` ids, which the seed's unknown-id check
  * skips, so one left behind by an interrupted run never blocks a later seed.
- * Every content folder also carries the real outline files: without them, an
- * outlined lesson already in the database would count as deleted.
+ * Every content folder also carries the real outline and lesson files:
+ * without the outlines, an outlined lesson already in the database would
+ * count as deleted, and without the lesson files, a ready one would be
+ * reseeded as not ready.
  */
 describe('seedLessons (e2e)', () => {
   const FIXTURE_IDS = {
@@ -268,7 +270,7 @@ describe('seedLessons (e2e)', () => {
   let dir: string;
   let userId: string | undefined;
 
-  /** Writes a content folder: the real outlines plus `outlines`, `briefs` and `lessons`, by file name. */
+  /** Writes a content folder: the real files plus `outlines`, `briefs` and `lessons`, by file name. */
   async function writeContentDir(files: {
     outlines?: Record<string, unknown>;
     briefs?: Record<string, unknown>;
@@ -278,9 +280,13 @@ describe('seedLessons (e2e)', () => {
     for (const folder of ['outlines', 'briefs', 'lessons'] as const) {
       await mkdir(join(dir, folder), { recursive: true });
     }
-    const realDir = findContentDir('outlines');
-    for (const name of (await readdir(realDir)).filter((n) => n.endsWith('.json'))) {
-      await copyFile(join(realDir, name), join(dir, 'outlines', name));
+    const realDir = dirname(findContentDir('outlines'));
+    for (const folder of ['outlines', 'briefs', 'lessons'] as const) {
+      for (const name of (await readdir(join(realDir, folder))).filter((n) =>
+        n.endsWith('.json'),
+      )) {
+        await copyFile(join(realDir, folder, name), join(dir, folder, name));
+      }
     }
     for (const folder of ['outlines', 'briefs', 'lessons'] as const) {
       for (const [name, content] of Object.entries(files[folder] ?? {})) {
@@ -384,6 +390,7 @@ describe('seedLessons (e2e)', () => {
       title: 'Second',
       summary: 'A fixture lesson.',
       content: null,
+      ready: false,
     });
     // Not in toMatchObject: there, {} matches any object.
     expect(row.brief).toEqual({});
@@ -523,6 +530,7 @@ describe('seedLessons (e2e)', () => {
         kind: lesson.entry.kind,
         title: lesson.brief.title,
         summary: lesson.brief.objective.fr,
+        ready: true,
       });
       // The fixtures are already trimmed, so the parsed files equal the raw ones.
       expect(row.brief, lesson.id).toEqual(lesson.brief);
@@ -535,6 +543,33 @@ describe('seedLessons (e2e)', () => {
     await seedLessons(dir, prisma);
 
     expect(await seedLessons(dir, prisma)).toBe(0);
+  });
+
+  it('makes a lesson not ready when its files are removed, and ready again when they are back', async () => {
+    const lessons = await writeLessons();
+    await seedLessons(dir, prisma);
+    const grammar = lessons.find((lesson) => lesson.entry.kind === 'grammar')!;
+    const readyOf = async (id: string) =>
+      (await prisma.lesson.findUniqueOrThrow({ where: { id } })).ready;
+
+    await rm(join(dir, 'briefs', `${grammar.id}.json`));
+    await rm(join(dir, 'lessons', `${grammar.id}.json`));
+    expect(await seedLessons(dir, prisma)).toBe(1);
+
+    const removed = await prisma.lesson.findUniqueOrThrow({ where: { id: grammar.id } });
+    expect(removed).toMatchObject({
+      ready: false,
+      title: grammar.entry.workingTitle,
+      content: null,
+    });
+    expect(removed.brief).toEqual({});
+    for (const other of lessons.filter((lesson) => lesson !== grammar)) {
+      expect(await readyOf(other.id), other.id).toBe(true);
+    }
+
+    await writeLessons();
+    expect(await seedLessons(dir, prisma)).toBe(1);
+    expect(await readyOf(grammar.id)).toBe(true);
   });
 
   it('stores the parsed files: the texts trimmed', async () => {
@@ -614,5 +649,18 @@ describe('seedLessons (e2e)', () => {
       expect(cell).toHaveLength(LESSONS_PER_LEVEL[level]);
       expect(cell.map((row) => row.position)).toEqual(cell.map((_, index) => index + 1));
     }
+  });
+
+  it('makes exactly French A1 positions 1 to 12 ready, the lessons that have files', async () => {
+    await seedLessons(dirname(findContentDir('outlines')), prisma);
+
+    const ready = await prisma.lesson.findMany({
+      where: { ready: true, NOT: FIXTURE_IDS },
+      select: { lang: true, level: true, position: true },
+      orderBy: { position: 'asc' },
+    });
+    expect(ready).toEqual(
+      Array.from({ length: 12 }, (_, index) => ({ lang: 'fr', level: 'A1', position: index + 1 })),
+    );
   });
 });

@@ -48,6 +48,7 @@ describe('finish a lesson (e2e)', () => {
     title: 'Une leçon du testeur',
     summary: 'Une leçon de test.',
     brief: { objective: 'test', points: [], examples: [], pitfalls: [], vocabulary: [] },
+    ready: true,
   });
   const FIXTURES = [
     ...['one', 'two', 'three', 'four', 'five', 'six'].map((id, index) => lesson(id, 9101 + index)),
@@ -104,10 +105,10 @@ describe('finish a lesson (e2e)', () => {
       { timeout: 4_000, interval: 20 },
     );
 
-  /** The ids of a French level, by position: the real lessons and the fixtures. */
+  /** The ids of a French level's ready lessons, by position: the real ones and the fixtures. */
   const levelIds = async (level: 'A2') => {
     const lessons = await prisma.lesson.findMany({
-      where: { lang: 'fr', level },
+      where: { lang: 'fr', level, ready: true },
       orderBy: { position: 'asc' },
       select: { id: true },
     });
