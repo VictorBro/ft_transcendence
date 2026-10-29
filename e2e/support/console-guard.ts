@@ -57,12 +57,39 @@ function describeLocation(message: ConsoleMessage): string | undefined {
   return `${location.url}:${location.lineNumber}:${location.columnNumber}`;
 }
 
+/** What settle() waits on: the requests still open, and when the last one moved. */
+interface RequestTracker {
+  inFlight: Set<Request>;
+  lastActivity: number;
+}
+
+const trackers = new WeakMap<Page, RequestTracker>();
+
+function trackRequests(page: Page): void {
+  if (trackers.has(page)) {
+    return;
+  }
+  const tracker: RequestTracker = { inFlight: new Set(), lastActivity: Date.now() };
+  const done = (request: Request) => {
+    tracker.inFlight.delete(request);
+    tracker.lastActivity = Date.now();
+  };
+  page.on('request', (request) => {
+    tracker.inFlight.add(request);
+    tracker.lastActivity = Date.now();
+  });
+  page.on('requestfinished', done);
+  page.on('requestfailed', done);
+  trackers.set(page, tracker);
+}
+
 /**
  * Attach before the first navigation: listeners registered after `goto` miss
  * everything the page logged while loading.
  */
 export function watchConsole(page: Page): ConsoleViolation[] {
   const violations: ConsoleViolation[] = [];
+  trackRequests(page);
 
   page.on('console', (message: ConsoleMessage) => {
     const type = message.type();
@@ -143,9 +170,36 @@ export function isExpectedDocumentFailure(
  * so asserting straight after `goto` reads an empty array and passes a page
  * that throws half a second later.
  *
- * `networkidle` is discouraged for general waiting and is exactly right here:
- * the gate needs the point at which nothing else will be logged.
+ * The gate needs the point at which nothing else will be logged, which is what
+ * `networkidle` means. Each engine misses it in its own way, so this takes
+ * whichever of two counts gets there first:
+ * - the engine's own `networkidle`. Firefox sometimes never reports it, on a
+ *   page whose every request has finished (/api/docs, a few loads in ten with
+ *   four workers);
+ * - the load event, then QUIET_MS with no request open, counted from the
+ *   request events. Chromium sometimes never reports a Next.js `_rsc` fetch as
+ *   finished or failed, so this count alone can wait forever there.
  */
+const QUIET_MS = 500;
+
 export async function settle(page: Page): Promise<void> {
-  await page.waitForLoadState('networkidle');
+  const tracker = trackers.get(page);
+  if (!tracker) {
+    throw new Error('settle() counts requests from watchConsole(page): call that first');
+  }
+  let settled = false;
+  const quiet = (async () => {
+    await page.waitForLoadState('load');
+    while (
+      !settled &&
+      (tracker.inFlight.size > 0 || Date.now() - tracker.lastActivity < QUIET_MS)
+    ) {
+      await new Promise((resolve) => setTimeout(resolve, 50));
+    }
+  })();
+  try {
+    await Promise.race([page.waitForLoadState('networkidle'), quiet]);
+  } finally {
+    settled = true;
+  }
 }
