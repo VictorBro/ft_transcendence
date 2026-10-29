@@ -77,5 +77,15 @@ export const answers = (skipFeedbackWhenRight: boolean) => ({
   skipFeedbackWhenRight,
 });
 
+/**
+ * A part of the lesson an item names by id. A missing one throws instead
+ * of falling back to the id, which would reach the browser as text (the
+ * validators already reject such a lesson).
+ */
+export function known<T>(value: T | undefined, what: string): T {
+  if (value === undefined) throw new Error(`${what} is not in the lesson`);
+  return value;
+}
+
 /** No units: a presentation item. */
 export const NO_UNITS: PlanUnit[] = [];

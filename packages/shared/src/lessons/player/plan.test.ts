@@ -1,8 +1,9 @@
 import { describe, expect, it } from 'vitest';
 
 import { articleHint, startsWithArticle } from './articleHint';
+import { PLAYER_COPY } from './copy';
 import { BY_KIND, FIXTURE_LESSONS, fixtureLesson } from './fixtures.testing';
-import { requiredReveals, skipsFeedbackWhenRight } from './kinds';
+import { kindModule, requiredReveals, skipsFeedbackWhenRight } from './kinds';
 import { motherTongue } from './motherTongue';
 import { buildPlan, isScored, type LessonPlan, type PlanPage } from './plan';
 
@@ -44,6 +45,24 @@ describe('buildPlan', () => {
       'cards-g2',
       'match-1',
     ]);
+  });
+
+  it('keeps every other page in its place when it interleaves', () => {
+    const p = plan(BY_KIND.vocabulary);
+    const [intro, cards, other] = p.pages;
+    const shuffled = [{ ...intro, pageId: 'i1' }, other, { ...intro, pageId: 'i2' }, cards];
+    const arranged = kindModule('vocabulary').arrange(shuffled);
+    expect(arranged.map((x) => x.pageId)).toEqual(['i1', other.pageId, 'cards-all', 'i2']);
+  });
+
+  it('throws for an item that names a word the brief does not have', () => {
+    const lesson = fixtureLesson(BY_KIND.vocabulary);
+    if (lesson.brief.kind !== 'vocabulary') throw new Error('not vocabulary');
+    const [first, ...rest] = lesson.brief.targets;
+    const brief = { ...lesson.brief, targets: rest };
+    const units = kindModule('vocabulary').units(brief, plan(BY_KIND.vocabulary).content, 'en');
+    const item = { type: 'vocabulary_typed_gap', itemId: 'x', targetId: first.id } as never;
+    expect(() => units(item, () => 'x')).toThrow(`Word ${first.id} is not in the lesson`);
   });
 
   it('holds no vocabulary listening item in any lesson', () => {
@@ -92,7 +111,13 @@ describe('buildPlan', () => {
       ['exam-singular', expect.any(Number)],
       ['exam-plural', expect.any(Number)],
     ]);
-    expect(page(p, 'exam-intro')).toMatchObject({ role: 'examIntro', timeLimitS: null, units: [] });
+    expect(page(p, 'exam-intro')).toMatchObject({
+      role: 'examIntro',
+      timeLimitS: null,
+      units: [],
+      stepLabel: exam[0].stepLabel,
+      instructions: PLAYER_COPY.examIntro,
+    });
   });
 
   it('plans the units of every kind with the attempt’s mother tongue', () => {

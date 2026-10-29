@@ -1,7 +1,7 @@
 import { functionsTerms } from '../../domain/functionsLesson';
 import type { FunctionsBrief, FunctionsContent, FunctionsItem } from '../../schemas/functions';
 import { genderOptions, inMotherTongue, wordOrder } from '../plan';
-import { answers, type ExamPart, type KindModule, NO_UNITS } from './kind';
+import { answers, type ExamPart, type KindModule, known, NO_UNITS } from './kind';
 import { contentFile } from './contentFile';
 
 /**
@@ -14,11 +14,21 @@ export const functions: KindModule<FunctionsBrief, FunctionsContent, FunctionsIt
 
   units: (brief, content, motherTongue) => {
     const terms = functionsTerms(brief);
-    const termText = (id: string) => terms.get(id)?.display ?? id;
-    const termNative = (id: string) => terms.get(id)?.translations[motherTongue]?.[0] ?? id;
-    const roleLabel = (id: string) => brief.roles.find((r) => r.id === id)?.label ?? id;
+    const term = (id: string) => known(terms.get(id), `Expression or word ${id}`);
+    const termText = (id: string) => term(id).display;
+    const termNative = (id: string) =>
+      known(term(id).translations[motherTongue]?.[0], `The ${motherTongue} translation of ${id}`);
+    const roleLabel = (id: string) =>
+      known(
+        brief.roles.find((r) => r.id === id),
+        `Role ${id}`,
+      ).label;
     // A gap takes the expression itself, without the " …" of a sentence start.
-    const expressionText = (id: string) => brief.expressions.find((e) => e.id === id)?.text ?? id;
+    const expressionText = (id: string) =>
+      known(
+        brief.expressions.find((e) => e.id === id),
+        `Expression ${id}`,
+      ).text;
     const line = (context: { roleId: string; text: string }) =>
       `${roleLabel(context.roleId)}: ${context.text}`;
 

@@ -2,7 +2,7 @@ import { vocabularyLesson } from '../../domain/vocabularyLesson';
 import type { VocabularyBrief, VocabularyContent, VocabularyItem } from '../../schemas/vocabulary';
 import { PLAYER_COPY } from '../copy';
 import { genderOptions, inMotherTongue, type PlanPage } from '../plan';
-import { answers, type KindModule, NO_UNITS } from './kind';
+import { answers, type KindModule, known, NO_UNITS } from './kind';
 
 /**
  * Vocabulary lessons in the player.
@@ -36,19 +36,22 @@ function withoutListening(content: VocabularyContent): VocabularyContent {
 const isIntro = (p: PlanPage) => p.items.some((it) => it.type === 'vocabulary_introduction');
 const isCards = (p: PlanPage) => p.items.some((it) => it.type === 'vocabulary_flashcards');
 
-/** Reorders the pages: intro 1, cards 1, intro 2, cards 2… (paired in group order). */
+/**
+ * Reorders the pages: intro 1, cards 1, intro 2, cards 2… (paired in group
+ * order). Only the places of those pages are refilled: every other page
+ * keeps its place.
+ */
 function interleave(pages: PlanPage[]): PlanPage[] {
   const intros = pages.filter(isIntro);
   const cards = pages.filter(isCards);
-  const start = pages.findIndex((p) => isIntro(p) || isCards(p));
-  if (start < 0) return pages;
   const merged = Array.from({ length: Math.max(intros.length, cards.length) }, (_, n) => [
     intros[n],
     cards[n],
   ])
     .flat()
     .filter((p): p is PlanPage => !!p);
-  return [...pages.slice(0, start), ...merged, ...pages.slice(start + merged.length)];
+  let next = 0;
+  return pages.map((p) => (isIntro(p) || isCards(p) ? merged[next++] : p));
 }
 
 export const vocabulary: KindModule<VocabularyBrief, VocabularyContent, VocabularyItem> = {
@@ -56,8 +59,10 @@ export const vocabulary: KindModule<VocabularyBrief, VocabularyContent, Vocabula
 
   units: (brief, content, motherTongue) => {
     const targets = new Map(brief.targets.map((t) => [t.id, t]));
-    const translation = (id: string) => targets.get(id)?.translations[motherTongue]?.[0] ?? id;
-    const form = (id: string) => targets.get(id)?.teachingForm ?? id;
+    const target = (id: string) => known(targets.get(id), `Word ${id}`);
+    const translation = (id: string) =>
+      known(target(id).translations[motherTongue]?.[0], `The ${motherTongue} translation of ${id}`);
+    const form = (id: string) => target(id).teachingForm;
     return (item, id) => {
       switch (item.type) {
         case 'vocabulary_matching': {
@@ -83,17 +88,17 @@ export const vocabulary: KindModule<VocabularyBrief, VocabularyContent, Vocabula
         case 'vocabulary_gender_select': {
           const options = genderOptions(content.lang);
           return item.rows.map((r) => {
-            const t = targets.get(r.targetId);
+            const t = target(r.targetId);
             return {
               kind: 'choice',
               id: id(`/${r.targetId}`),
               itemId: item.itemId,
               itemType: item.type,
-              prompt: { learning: t?.term ?? r.targetId },
+              prompt: { learning: t.term },
               options,
-              correct: [...(t?.genders ?? [])],
+              correct: [...t.genders],
               explanation: r.answerExplanation,
-              answer: t?.genders[0] ?? 'masculine',
+              answer: t.genders[0] ?? 'masculine',
               answerLang: 'ui',
               form: form(r.targetId),
               translation: translation(r.targetId),

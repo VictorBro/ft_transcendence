@@ -5,6 +5,7 @@ import {
   type ReadingContent,
   type ReadingItem,
 } from '../schemas/reading';
+import { known } from './kinds/kind';
 import type { Option, PlanUnit } from './plan';
 
 /**
@@ -29,8 +30,9 @@ export function readingUnits(
   const learning = (options: { optionId: string; text: string }[]): Option[] =>
     options.map((o) => ({ id: o.optionId, text: o.text, lang: 'learning' }));
   // The first meaning in the mother tongue.
-  const meaning = (keywordId: string) =>
-    keywords.get(keywordId)?.translations[motherTongue]?.[0] ?? keywordId;
+  const keyword = (id: string) => known(keywords.get(id), `Key word ${id}`);
+  const meaning = (id: string) =>
+    known(keyword(id).translations[motherTongue]?.[0], `The ${motherTongue} translation of ${id}`);
 
   return (item, id) => {
     const base = { itemId: item.itemId, itemType: item.type };
@@ -46,10 +48,10 @@ export function readingUnits(
           ...base,
           kind: 'choice',
           id: id(`/${k}`),
-          prompt: { learning: keywords.get(k)?.term ?? k },
+          prompt: { learning: keyword(k).term },
           options,
           correct: [k],
-          explanation: keywords.get(k)!.explanation,
+          explanation: keyword(k).explanation,
           answer: meaning(k),
           answerLang: 'native',
         }));

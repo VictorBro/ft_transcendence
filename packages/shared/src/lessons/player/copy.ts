@@ -18,6 +18,8 @@ export const PLAYER_COPY = {
       'Sprich vor der Prüfung über das, was du gerade gelernt hast.',
     ),
   ],
+  /** The heading of the exam info page, as the prototype's. */
+  examIntro: L('Your final exam', 'Votre examen final', 'Deine Abschlussprüfung'),
   /** Outline sections. */
   exercises: L('Exercises', 'Exercices', 'Übungen'),
   keywords: L('Key words', 'Mots clés', 'Schlüsselwörter'),

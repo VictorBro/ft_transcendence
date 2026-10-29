@@ -255,7 +255,8 @@ function withDiscussion(pages: PlanPage[]): PlanPage[] {
 /**
  * Adds the exam info page right before the first exam page. It lists the
  * exam pages with their questions and countdowns (the outline has them),
- * so it holds nothing itself.
+ * so it holds nothing itself. Its step label is the exam's, for the
+ * outline; its heading is the player's own.
  */
 function withExamIntro(pages: PlanPage[]): PlanPage[] {
   const first = pages.findIndex((p) => p.role === 'exam');
@@ -266,7 +267,7 @@ function withExamIntro(pages: PlanPage[]): PlanPage[] {
     'exam-intro',
     exam.stepId,
     exam.stepLabel,
-    exam.stepLabel,
+    PLAYER_COPY.examIntro,
     EXAM_INTRO_SECONDS,
   );
   return [...pages.slice(0, first), page, ...pages.slice(first)];
