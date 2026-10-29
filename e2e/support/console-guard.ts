@@ -29,6 +29,11 @@ const ALLOWED_MESSAGES: RegExp[] = [
   // (FEATURE_FAILURE_WEBGL_EXHAUSTED_DRIVERS). The machine, not the page: a
   // desktop Firefox creates the context. Remove if the CI runner gets a GPU.
   /^\[JavaScript Warning: "Failed to create WebGL context: WebGL creation failed:/,
+  // The same probe on a machine with a GPU: the context is created, and
+  // Grafana's bundle then reads the GPU name through WEBGL_debug_renderer_info,
+  // which Firefox deprecates in favour of RENDERER. Our pages never use WebGL.
+  // Remove once Grafana stops reading the extension or Firefox drops the warning.
+  /^\[JavaScript Warning: "WEBGL_debug_renderer_info is deprecated in Firefox/,
 ];
 
 /**
