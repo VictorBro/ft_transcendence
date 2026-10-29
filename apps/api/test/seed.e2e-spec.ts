@@ -6,7 +6,13 @@ import { afterAll, afterEach, beforeAll, describe, expect, it } from 'vitest';
 
 import { LEARNABLE_LANGUAGES, LESSONS_PER_LEVEL, LEVELS, type Level } from '@ft/shared';
 
-import { findContentDir, seedLessons, seedQuestionBank } from '../prisma/seed';
+import {
+  demoPassword,
+  demoSkipReason,
+  findContentDir,
+  seedLessons,
+  seedQuestionBank,
+} from '../prisma/seed';
 import { PrismaService } from '../src/prisma/prisma.service';
 
 const itemFile = (question: string) => ({
@@ -615,4 +621,58 @@ describe('seedLessons (e2e)', () => {
       expect(cell.map((row) => row.position)).toEqual(cell.map((_, index) => index + 1));
     }
   });
+});
+
+/**
+ * The gate of the demo learners (#85). Pure, so no database: each case is a
+ * hand-made env, and process.env is never touched.
+ */
+describe('demoSkipReason', () => {
+  const PASSWORD = 'Correct-Horse-9';
+
+  it('seeds them on development with a password', () => {
+    expect(demoSkipReason({ NODE_ENV: 'development', DEMO_PASSWORD: PASSWORD })).toBeNull();
+  });
+
+  // An allowlist: the deploy's migrate service seeds with only DATABASE_URL.
+  it('skips them when NODE_ENV is unset, like on the public server', () => {
+    expect(demoSkipReason({ DATABASE_URL: 'postgresql://x', DEMO_PASSWORD: PASSWORD })).toBe(
+      'NODE_ENV is unset, not development',
+    );
+  });
+
+  it.each(['production', 'test', 'Development', ''])('skips them when NODE_ENV is "%s"', (env) => {
+    expect(demoSkipReason({ NODE_ENV: env, DEMO_PASSWORD: PASSWORD })).toMatch(/not development$/);
+  });
+
+  // Every .env has the key, empty by default: empty is a skip, never a failure.
+  it.each([undefined, '', '   '])('skips them when DEMO_PASSWORD is %j', (password) => {
+    expect(demoSkipReason({ NODE_ENV: 'development', DEMO_PASSWORD: password })).toBe(
+      'DEMO_PASSWORD is empty',
+    );
+  });
+});
+
+describe('demoPassword', () => {
+  it('returns a password that passes the signup rules, unchanged', () => {
+    expect(demoPassword({ DEMO_PASSWORD: 'Correct-Horse-9' })).toBe('Correct-Horse-9');
+  });
+
+  it.each([
+    ['too short', 'Short-9', 'password.tooShort'],
+    ['no uppercase', 'correct-horse-9', 'password.needsUppercase'],
+    ['no digit', 'Correct-Horse-Battery', 'password.needsDigit'],
+  ])(
+    'fails the seed on a password with %s, naming the rule but never the value',
+    (_, password, code) => {
+      let message = '';
+      try {
+        demoPassword({ DEMO_PASSWORD: password });
+      } catch (err) {
+        message = (err as Error).message;
+      }
+      expect(message).toContain(code);
+      expect(message).not.toContain(password);
+    },
+  );
 });
