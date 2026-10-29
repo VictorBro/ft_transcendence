@@ -65,6 +65,17 @@ describe('buildPlan', () => {
     expect(() => units(item, () => 'x')).toThrow(`Word ${first.id} is not in the lesson`);
   });
 
+  it('labels the exam step the same in every lesson, whatever its file says', () => {
+    const lesson = fixtureLesson(BY_KIND.grammar);
+    if (!lesson.content) throw new Error('no content');
+    const steps = lesson.content.steps.map((s) =>
+      s.role === 'exam' ? { ...s, label: { en: 'Test', fr: 'Test', de: 'Test' } } : s,
+    );
+    const p = buildPlan({ ...lesson, content: { ...lesson.content, steps } as never }, 'en');
+    for (const x of p.pages.filter((y) => y.role === 'exam' || y.role === 'examIntro'))
+      expect(x.stepLabel).toEqual(PLAYER_COPY.exam);
+  });
+
   it('holds no vocabulary listening item in any lesson', () => {
     for (const id of FIXTURE_LESSONS) {
       const types = plan(id).pages.flatMap((p) => p.items.map((it) => it.type));
@@ -115,7 +126,7 @@ describe('buildPlan', () => {
       role: 'examIntro',
       timeLimitS: null,
       units: [],
-      stepLabel: exam[0].stepLabel,
+      stepLabel: PLAYER_COPY.exam,
       instructions: PLAYER_COPY.examIntro,
     });
   });

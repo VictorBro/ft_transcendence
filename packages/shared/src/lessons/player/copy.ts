@@ -1,3 +1,4 @@
+import { COPY } from '../domain/lessonCopy';
 import type { LocalizedText } from '../schemas/artifactCommon';
 
 /**
@@ -18,6 +19,8 @@ export const PLAYER_COPY = {
       'Sprich vor der Prüfung über das, was du gerade gelernt hast.',
     ),
   ],
+  /** The label of the exam step in every lesson, whatever its file says: Final exam. */
+  exam: COPY.exam[0],
   /** The heading of the exam info page, as the prototype's. */
   examIntro: L('Your final exam', 'Votre examen final', 'Deine Abschlussprüfung'),
   /** Outline sections. */

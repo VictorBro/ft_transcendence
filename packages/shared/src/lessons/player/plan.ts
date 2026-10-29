@@ -162,6 +162,9 @@ export const isScored = (page: Pick<PlanPage, 'role'>) =>
  * 3. the discussion page is added before the exam, unless the kind already
  *    placed one (grammar turns its feedback placeholder into it);
  * 4. the exam info page goes right before the first exam page.
+ *
+ * The exam step takes the player's own label (PLAYER_COPY.exam) in every
+ * lesson.
  */
 export function buildPlan(lesson: LessonSource, motherTongue: Locale): LessonPlan {
   const kind = kindModule(lesson.brief.kind);
@@ -181,7 +184,8 @@ export function buildPlan(lesson: LessonSource, motherTongue: Locale): LessonPla
         index: pages.length,
         pageId: page.pageId,
         stepId: step.id,
-        stepLabel: step.label,
+        // The exam is named the same in every lesson.
+        stepLabel: step.role === 'exam' ? PLAYER_COPY.exam : step.label,
         role: step.role === 'exam' ? 'exam' : units.length ? 'practice' : 'presentation',
         estimatedDurationS: page.estimatedDurationS,
         timeLimitS: page.timeLimitS,
