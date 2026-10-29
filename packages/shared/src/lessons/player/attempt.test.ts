@@ -158,6 +158,15 @@ describe('submit', () => {
     }
     // An exam page has no feedback.
     expect(onTime.feedback).toBeNull();
+
+    // A late page locks Out of time even with an answer it cannot read; on time, that is refused.
+    const unreadable = { [ref('nothing')]: { text: 'x' } };
+    expect(submit(plan, exam, exam.page, unreadable, exam.deadline! - 1, ref)).toEqual({
+      ok: false,
+      error: 'invalidAnswer',
+    });
+    const lateUnreadable = next(plan, exam, exam.deadline! + GRACE_MS + 1, unreadable);
+    for (const u of page.units) expect(lateUnreadable.state.answers[u.id].timedOut).toBe(true);
   });
 
   it('gives the next exam page its own deadline, from when the cursor reaches it', () => {

@@ -165,14 +165,15 @@ export function submit(
 ): SubmitResult {
   if (state.completedAt !== null || index !== state.page) return { ok: false, error: 'stale' };
   const page = plan.pages[index];
-  const responses = readAnswers(page, answers, ref);
+  // A late exam page locks blank whatever it holds, so its answers are not even read.
+  const late = page.role === 'exam' && state.deadline !== null && now > state.deadline + GRACE_MS;
+  const responses = late ? {} : readAnswers(page, answers, ref);
   if (!responses) return { ok: false, error: 'invalidAnswer' };
 
-  const late = page.role === 'exam' && state.deadline !== null && now > state.deadline + GRACE_MS;
   const locked = { ...state.answers };
   for (const unit of page.units) {
     if (locked[unit.id]) continue;
-    const response = late ? null : (responses[unit.id] ?? null);
+    const response = responses[unit.id] ?? null;
     locked[unit.id] = { response, ...scoreUnit(unit, response), timedOut: late };
   }
   const feedback =

@@ -153,6 +153,20 @@ describe('pageView', () => {
     expect(item.units[0].article).toBe('indefinite');
   });
 
+  it('throws for an item that names a part its brief does not have', () => {
+    const plan = buildPlan(fixtureLesson(BY_KIND.vocabulary), 'en');
+    const cards = plan.pages.findIndex((p) =>
+      p.items.some((i) => i.type === 'vocabulary_flashcards'),
+    );
+    const brief = plan.brief;
+    if (brief.kind !== 'vocabulary') throw new Error('not vocabulary');
+    const [first, ...rest] = brief.targets;
+    const broken = { ...plan, brief: { ...brief, targets: rest } };
+    expect(() => pageView(broken, cards, refOf('s'))).toThrow(
+      `Word ${first.id} is not in the lesson`,
+    );
+  });
+
   it('throws for a page that does not exist', () => {
     const plan = buildPlan(fixtureLesson(BY_KIND.vocabulary), 'en');
     expect(() => pageView(plan, plan.pages.length, refOf('s'))).toThrow(/no page/);

@@ -3,6 +3,7 @@ import type { FunctionsBrief } from '../schemas/functions';
 import type { ReadingBrief, ReadingContent } from '../schemas/reading';
 import type { VocabularyBrief } from '../schemas/vocabulary';
 import { articleHint } from './articleHint';
+import { known } from './kinds/kind';
 import {
   inMotherTongue,
   isScored,
@@ -92,61 +93,62 @@ function itemView(plan: LessonPlan, page: PlanPage, item: Item, ref: RefOf): Ite
     return rows === 'shuffle' ? byRef(list) : list;
   };
   const card = (id: string) => ref(paths.card(page, item.itemId, id));
+  // A lesson that passed validation names only parts its brief has: a missing one throws.
+  const target = (id: string) =>
+    known(
+      (plan.brief as VocabularyBrief).targets.find((t) => t.id === id),
+      `Word ${id}`,
+    );
+  const role = (id: string) =>
+    known(
+      (plan.brief as FunctionsBrief).roles.find((r) => r.id === id),
+      `Role ${id}`,
+    );
 
   switch (item.type) {
     /* vocabulary */
-    case 'vocabulary_introduction': {
-      const targets = new Map((plan.brief as VocabularyBrief).targets.map((t) => [t.id, t]));
+    case 'vocabulary_introduction':
       return {
         type: item.type,
         text: item.text,
         words: item.targetIds.map((id) => ({
-          text: targets.get(id)?.teachingForm ?? '',
-          translations: targets.get(id)?.translations[tongue] ?? [],
+          text: target(id).teachingForm,
+          translations: target(id).translations[tongue] ?? [],
         })),
       };
-    }
-    case 'vocabulary_flashcards': {
-      const targets = new Map((plan.brief as VocabularyBrief).targets.map((t) => [t.id, t]));
+    case 'vocabulary_flashcards':
       return {
         type: item.type,
-        cards: item.targetIds.flatMap((id) => {
-          const t = targets.get(id);
-          return t
-            ? [
-                {
-                  ref: card(id),
-                  text: t.teachingForm,
-                  translations: t.translations[tongue] ?? [],
-                  pronunciation: t.pronunciation,
-                  example: {
-                    text: t.context.sentence,
-                    translation: inMotherTongue(t.context.translation, tongue),
-                  },
-                },
-              ]
-            : [];
+        cards: item.targetIds.map((id) => {
+          const t = target(id);
+          return {
+            ref: card(id),
+            text: t.teachingForm,
+            translations: t.translations[tongue] ?? [],
+            pronunciation: t.pronunciation,
+            example: {
+              text: t.context.sentence,
+              translation: inMotherTongue(t.context.translation, tongue),
+            },
+          };
         }),
       };
-    }
     case 'vocabulary_matching':
       return { type: item.type, units: units('choice', 'shuffle', 'shuffle') };
     case 'vocabulary_gender_select':
       return { type: item.type, units: units('choice', 'keep') };
-    case 'vocabulary_typed_gap': {
-      const targets = new Map((plan.brief as VocabularyBrief).targets.map((t) => [t.id, t]));
+    case 'vocabulary_typed_gap':
       return {
         type: item.type,
         references: byRef(
           item.referenceTargetIds.map((id) => ({
             ref: card(id),
-            text: targets.get(id)?.term ?? '',
-            genders: [...(targets.get(id)?.genders ?? [])],
+            text: target(id).term,
+            genders: [...target(id).genders],
           })),
         ),
         units: units('text'),
       };
-    }
     case 'vocabulary_translation_exam':
       return { type: item.type, units: units('text') };
     // The player leaves the vocabulary listening out (kinds/vocabulary.ts).
@@ -192,45 +194,40 @@ function itemView(plan: LessonPlan, page: PlanPage, item: Item, ref: RefOf): Ite
       return {
         type: item.type,
         side: item.side,
-        cards: item.ids.flatMap((id) => {
+        cards: item.ids.map((id) => {
           const expression = brief.expressions.find((e) => e.id === id);
           const word = brief.words.find((w) => w.id === id);
-          const term = terms.get(id);
-          const example = (expression ?? word)?.example;
-          if (!term || !example) return [];
-          return [
-            {
-              ref: card(id),
-              text: term.display,
-              translations: term.translations[tongue] ?? [],
-              ...(expression ? { explanation: expression.explanation } : {}),
-              ...(word ? { genders: [...word.genders] } : {}),
-              example: {
-                text: example.text,
-                translation: inMotherTongue(example.translation, tongue),
-              },
+          const term = known(terms.get(id), `Expression or word ${id}`);
+          const { example } = known(expression ?? word, `Expression or word ${id}`);
+          return {
+            ref: card(id),
+            text: term.display,
+            translations: term.translations[tongue] ?? [],
+            ...(expression ? { explanation: expression.explanation } : {}),
+            ...(word ? { genders: [...word.genders] } : {}),
+            example: {
+              text: example.text,
+              translation: inMotherTongue(example.translation, tongue),
             },
-          ];
+          };
         }),
       };
     }
-    case 'function_dialogue': {
-      const roles = (plan.brief as FunctionsBrief).roles;
+    case 'function_dialogue':
       return {
         type: item.type,
         lines: item.lines.map((l) => {
-          const role = roles.find((r) => r.id === l.roleId);
+          const r = role(l.roleId);
           return {
             ref: card(l.lineId),
-            role: role?.label ?? '',
-            roleTranslation: inMotherTongue(role?.translation, tongue),
+            role: r.label,
+            roleTranslation: inMotherTongue(r.translation, tongue),
             text: l.text,
             translation: inMotherTongue(l.translation, tongue),
             note: l.note,
           };
         }),
       };
-    }
     case 'function_gender_select':
       return { type: item.type, units: units('choice', 'keep') };
     case 'function_matching':
@@ -243,7 +240,6 @@ function itemView(plan: LessonPlan, page: PlanPage, item: Item, ref: RefOf): Ite
     case 'function_translation_exam':
       return { type: item.type, units: units('text') };
     case 'function_dialogue_gap_typing': {
-      const roles = (plan.brief as FunctionsBrief).roles;
       const gaps = new Map(unitsOf.map((u) => [u.id, u]));
       return {
         type: item.type,
@@ -252,7 +248,7 @@ function itemView(plan: LessonPlan, page: PlanPage, item: Item, ref: RefOf): Ite
             ? gaps.get(`${paths.item(page, item.itemId)}/${l.gap.gapId}`)
             : undefined;
           return {
-            role: roles.find((r) => r.id === l.roleId)?.label ?? '',
+            role: role(l.roleId).label,
             before: l.before,
             after: l.after,
             translation: inMotherTongue(l.translation, tongue),
@@ -268,21 +264,22 @@ function itemView(plan: LessonPlan, page: PlanPage, item: Item, ref: RefOf): Ite
       const keywords = (plan.brief as ReadingBrief).keywords;
       return {
         type: item.type,
-        cards: item.keywordIds.flatMap((id) => {
-          const k = keywords.find((x) => x.id === id);
-          return k
-            ? [{ ref: card(id), text: k.term, translations: k.translations[tongue] ?? [] }]
-            : [];
+        cards: item.keywordIds.map((id) => {
+          const k = known(
+            keywords.find((x) => x.id === id),
+            `Key word ${id}`,
+          );
+          return { ref: card(id), text: k.term, translations: k.translations[tongue] ?? [] };
         }),
       };
     }
     case 'reading_keyword_matching':
       return { type: item.type, units: units('choice', 'shuffle', 'shuffle') };
     case 'reading_document': {
-      const doc = (plan.content as ReadingContent).documents.find(
-        (d) => d.documentId === item.documentId,
+      const doc = known(
+        (plan.content as ReadingContent).documents.find((d) => d.documentId === item.documentId),
+        `The ${item.documentId} document`,
       );
-      if (!doc) throw new Error(`Lesson ${plan.lessonId} has no ${item.documentId} document`);
       return {
         type: item.type,
         view: item.view,
