@@ -312,7 +312,7 @@ export class LessonsService {
    * transaction under the course lock, so two finishes at once count the
    * day's goal once:
    *   1. the course, locked: 404 without one, 409 before placement
-   *   2. the lesson: 404 if it is missing or from another language
+   *   2. the lesson: 404 if it is missing, from another language or not ready
    *   3. the result: the best score stays, the day and time move to this finish
    *   4. the goal: meetGoal meets the day if this finish reached it
    */
@@ -325,7 +325,7 @@ export class LessonsService {
   ): Promise<FinishResult> {
     return this.prisma.$transaction(async (tx) => {
       const course = checkCourse(await lockCourse(tx, user.id, lang), { placed: true });
-      const lesson = await findLesson(tx, lang, id);
+      const lesson = await findLesson(tx, lang, id, { readyOnly: true });
 
       const day = await currentDay(tx, course, user.timeZone, now);
       const key = { userLevelId: course.id, lessonId: lesson.id };

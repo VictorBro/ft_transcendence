@@ -56,6 +56,8 @@ describe('finish a lesson (e2e)', () => {
     lesson('atwo-next', 9102, 'A2'),
     lesson('bone', 9101, 'B1'),
     lesson('alpha', 9101, 'A1', 'de'),
+    // Has no files, so it cannot be finished.
+    { ...lesson('draft', 9200), ready: false },
   ];
   const FIXTURE_IDS = FIXTURES.map((fixture) => fixture.id);
 
@@ -174,6 +176,14 @@ describe('finish a lesson (e2e)', () => {
         const response = await finish(agent, 'de-test-fin-alpha').expect(404);
 
         expect(response.body.message).toBe('lesson.notFound');
+      });
+
+      it('answers 404 lesson.notFound for a lesson that is not ready, and saves nothing', async () => {
+        const response = await finish(agent, 'fr-test-fin-draft').expect(404);
+
+        expect(response.body.message).toBe('lesson.notFound');
+        const saved = await prisma.lessonResult.count({ where: { lessonId: 'fr-test-fin-draft' } });
+        expect(saved).toBe(0);
       });
 
       it.each([101, -1, 70.5])('answers 400 lesson.invalidScore for %s', async (score) => {

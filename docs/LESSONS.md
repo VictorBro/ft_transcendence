@@ -174,7 +174,7 @@ Entry 2 of `content/outlines/fr-a1.json`, so position 2 of French A1:
 
 **Before its files exist**, its `Lesson` row has `title` = the working title, `summary` = the
 intent, and an empty brief ([#134](https://github.com/VictorBro/ft_transcendence/issues/134)). So
-every level is listed, searchable and finishable through the stub page from day one.
+every level is listed and searchable from day one. Only a ready lesson (§4) can be finished.
 
 **Writing an outline:**
 
@@ -221,8 +221,9 @@ seed, naming the id and the errors, and so does a file that no outline entry pla
 Every outline entry is a row, written or not. The seed sets the row's `ready` flag on every run:
 true when its files exist and pass `validateLesson`, false otherwise. A lesson becomes ready by
 adding its files and reseeding, with no migration and no row deleted. The daily proposal and the
-level progress count ready lessons only, so a level of 12 ready lessons needs 10 passed; the
-lesson list still shows every row ([#84](https://github.com/VictorBro/ft_transcendence/issues/84)).
+level progress count ready lessons only, so a level of 12 ready lessons needs 10 passed, and
+finishing a lesson that is not ready is a 404. The lesson list still shows every row
+([#84](https://github.com/VictorBro/ft_transcendence/issues/84)).
 
 The brief of `fr-subject-pronouns`, shortened:
 
