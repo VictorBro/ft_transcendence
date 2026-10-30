@@ -1,6 +1,6 @@
 import type { LocalizedText } from '../schemas/artifactCommon';
 import type { VocabularyBrief, VocabularyContent } from '../schemas/vocabulary';
-import { COPY } from './lessonCopy';
+import { COPY, dictationInstruction, examInstruction } from './lessonCopy';
 import { vocabularyExamAnswers } from './vocabularyAnswers';
 
 /**
@@ -14,7 +14,8 @@ import { vocabularyExamAnswers } from './vocabularyAnswers';
  *   introduction  one per group                  groups[].introduction
  *   flashcards    one per group                  groups[].targetIds
  *   matching      the words, 6 at most per page  matchingLabel, explanation
- *   overview      one page, every noun           genderExplanation (no nouns: no step)
+ *   overview      one page, every noun with a    genderExplanation (none: no step)
+ *                 gender
  *   practice      one gap per word               targets[].gap
  *   listening     one choice per word            listeningOptionTargetIds
  *   exam          translation, then dictation,   examPrompt, examForms
@@ -102,7 +103,7 @@ export function vocabularyLesson(brief: VocabularyBrief): VocabularyContent {
   const T = VOCABULARY_TIMING;
   // Every word by its id, to find one quickly: targets.get('un-livre').
   const targets = new Map(brief.targets.map((t) => [t.id, t]));
-  const nouns = brief.targets.filter((t) => t.wordClass === 'noun');
+  const nouns = brief.targets.filter((t) => t.wordClass === 'noun' && t.genders.length > 0);
   // Small helpers that build one page and one step; a page has no countdown unless given one.
   const page = (
     pageId: string,
@@ -184,8 +185,8 @@ export function vocabularyLesson(brief: VocabularyBrief): VocabularyContent {
         ]),
       ),
     ),
-    // The gender step: nouns only. A lesson without nouns has no gender step
-    // (`...(cond ? [step] : [])` adds the step or nothing).
+    // The gender step: nouns with a gender only. A lesson without them has no
+    // gender step (`...(cond ? [step] : [])` adds the step or nothing).
     ...(nouns.length
       ? [
           step('overview', 'overview', COPY.gender[0], [
@@ -244,7 +245,7 @@ export function vocabularyLesson(brief: VocabularyBrief): VocabularyContent {
         page(
           `exam-${key}`,
           T.translationPerWord * ids.length,
-          COPY.exam[1],
+          examInstruction(brief.lang),
           ids.map((id) => ({
             type: 'vocabulary_translation_exam' as const,
             itemId: `exam-${id}`,
@@ -260,7 +261,7 @@ export function vocabularyLesson(brief: VocabularyBrief): VocabularyContent {
         page(
           `dictation-${key}`,
           T.dictationPerWord * ids.length,
-          COPY.dictation[1],
+          dictationInstruction(brief.lang),
           ids.map((id) => ({
             type: 'vocabulary_listening_dictation' as const,
             itemId: `dictation-${id}`,

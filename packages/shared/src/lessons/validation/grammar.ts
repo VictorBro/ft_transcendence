@@ -8,6 +8,7 @@ import {
   type GrammarContent,
   type GrammarItem,
 } from '../schemas/grammar';
+import type { Language } from '../../schemas/language';
 import { checkExplanations, checkMinutes, checkRichText, sameSet, sum } from './common';
 import type { Issues } from './issues';
 
@@ -92,8 +93,8 @@ export function checkGrammarBrief(b: GrammarBrief, issues: Issues) {
   });
   for (const r of rules) issues.check(taught.has(r), 'blocks', `rule ${r} is never taught`);
   if (
-    (PERSON_MATCHING_TOPICS as readonly string[]).includes(b.topic) &&
-    !(PERSON_MATCHING_EXEMPT as readonly string[]).includes(b.id)
+    PERSON_MATCHING_TOPICS[b.lang].includes(b.topic) &&
+    !PERSON_MATCHING_EXEMPT[b.lang].includes(b.id)
   )
     issues.check(
       b.blocks.some((x) => x.exercises.some((e) => e.type === 'grammar_person_matching')),
@@ -181,7 +182,7 @@ export function checkGrammarContent(c: GrammarContent, b: GrammarBrief, issues: 
           'only exam pages have a countdown',
         );
       page.items.forEach((item, ii) =>
-        checkGrammarItem(item, `${pp}.items.${ii}`, rules, want.role === 'exam', issues),
+        checkGrammarItem(item, `${pp}.items.${ii}`, rules, want.role === 'exam', b.lang, issues),
       );
     });
   });
@@ -321,6 +322,7 @@ function checkGrammarItem(
   path: string,
   rules: Set<string>,
   exam: boolean,
+  lang: Language,
   issues: Issues,
 ) {
   if ('ruleIds' in item)
@@ -377,7 +379,7 @@ function checkGrammarItem(
       checkExplanations(item.rows, path, issues);
       break;
     case 'grammar_person_matching':
-      checkPersonMatching(item, path, issues);
+      checkPersonMatching(item, path, lang, issues);
       break;
     case 'grammar_pronoun_form_typing':
       issues.unique(
@@ -408,11 +410,13 @@ function checkGrammarItem(
  * A person matching board: its rows follow the persons in order, the
  * three singular ones, the three plural ones, or all six. In translation
  * mode a row shows a sentence in the mother tongue ("I am"); in forms
- * mode it shows a pronoun ("je"). Two rows never show the same prompt.
+ * mode it shows a pronoun ("je"). Two rows never show the same prompt,
+ * except English 2sg and 2pl, which are both "you are".
  */
 function checkPersonMatching(
   item: Extract<GrammarItem, { type: 'grammar_person_matching' }>,
   path: string,
+  lang: Language,
   issues: Issues,
 ) {
   const persons = item.rows.map((r) => r.person).join(',');
@@ -442,12 +446,21 @@ function checkPersonMatching(
         path,
         `${locale} prompt`,
       );
-  } else
+  } else {
+    // English "you" is both 2sg and 2pl: the 2pl row may repeat the 2sg row, pronoun and form.
+    const sg = item.rows.find((r) => r.person === '2sg');
+    const you = (r: (typeof item.rows)[number]) =>
+      lang === 'en' &&
+      r.person === '2pl' &&
+      sg !== undefined &&
+      r.pronoun === sg.pronoun &&
+      r.answer === sg.answer;
     issues.unique(
-      item.rows.map((r) => r.pronoun ?? ''),
+      item.rows.filter((r) => !you(r)).map((r) => r.pronoun ?? ''),
       path,
       'pronoun',
     );
+  }
   checkExplanations(item.rows, path, issues);
 }
 
