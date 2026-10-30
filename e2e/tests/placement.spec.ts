@@ -40,7 +40,7 @@ const secondsLeft = async (page: Page): Promise<number> =>
 const options = (page: Page) => page.getByRole('group', { name: 'Answer options' });
 const result = (page: Page) => page.getByRole('heading', { name: 'Your result' });
 const answers = (page: Page) =>
-  page.getByRole('region', { name: /^Your latest exam result/ }).getByRole('listitem');
+  page.getByRole('region', { name: /^Your latest test result/ }).getByRole('listitem');
 
 /** One answer of a finished run, as GET /api/placement reports it. */
 interface ReportEntry {
@@ -410,13 +410,13 @@ test.describe('placement exam', () => {
 
     // The exam's own verdict titles the answers it was drawn from.
     const answersHeading = onboarded.getByRole('heading', {
-      name: `Your latest exam result – ${targetLevel}`,
+      name: `Your latest test result (${targetLevel})`,
     });
     await expect(answersHeading).toBeVisible();
 
-    await onboarded.getByRole('button', { name: 'Not your level?' }).click();
+    await onboarded.getByRole('button', { name: 'Choose another level' }).click();
     // A modal over the page, not a picker pushed into it.
-    const dialog = onboarded.getByRole('dialog', { name: 'Not your level?' });
+    const dialog = onboarded.getByRole('dialog', { name: 'Choose another level' });
     await expect(dialog).toBeVisible();
     const save = dialog.getByRole('button', { name: 'Save' });
     await expect(save).toBeDisabled();
@@ -463,10 +463,10 @@ test.describe('placement exam', () => {
     ).toBeVisible();
     // The sentence under the level card, which names the course it would teach.
     await expect(onboarded.getByText(/Your lessons will be at/)).toBeHidden();
-    await expect(onboarded.getByRole('button', { name: 'Not your level?' })).toBeHidden();
+    await expect(onboarded.getByRole('button', { name: 'Choose another level' })).toBeHidden();
     // Nothing measured, so no level titles the answers.
     await expect(
-      onboarded.getByRole('heading', { name: 'Your latest exam result', exact: true }),
+      onboarded.getByRole('heading', { name: 'Your latest test result', exact: true }),
     ).toBeVisible();
     await expect(answers(onboarded)).toHaveCount(report.length);
     await expect(onboarded.getByRole('button', { name: 'Retake the test' })).toBeVisible();
