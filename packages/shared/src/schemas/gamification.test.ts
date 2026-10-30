@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import {
   ACHIEVEMENTS,
+  AchievementListSchema,
   AchievementSchema,
   CHALLENGE_XP,
   CHALLENGES,
@@ -219,5 +220,28 @@ describe('the schemas', () => {
   it('accepts a challenge', () => {
     expect(ChallengeSchema.safeParse({ code: 'score90', done: true }).success).toBe(true);
     expect(ChallengeSchema.safeParse({ code: 'nope', done: true }).success).toBe(false);
+  });
+
+  it('lists all sixteen achievements, never fewer', () => {
+    const items = ACHIEVEMENTS.map((achievement) =>
+      'level' in achievement
+        ? {
+            code: achievement.code,
+            day: null,
+            current: 0,
+            target: 0,
+            level: { total: 0, attempted: 0, passed: 0, needed: 0 },
+          }
+        : {
+            code: achievement.code,
+            day: null,
+            current: 0,
+            target: achievement.target,
+            level: null,
+          },
+    );
+
+    expect(AchievementListSchema.safeParse({ items }).success).toBe(true);
+    expect(AchievementListSchema.safeParse({ items: items.slice(1) }).success).toBe(false);
   });
 });

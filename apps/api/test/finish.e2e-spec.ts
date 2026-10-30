@@ -18,7 +18,9 @@ import { PrismaService } from '../src/prisma/prisma.service';
  * change that can meet the day too.
  *
  * One learner per story, so a streak written by one never shows up in
- * another. The clock is frozen at noon UTC, as in lessons.e2e-spec.ts.
+ * another. The XP of a finish is checked in gamification.e2e-spec.ts, where
+ * every spec knows the day's challenge: here it depends on the course id.
+ * The clock is frozen at noon UTC, as in lessons.e2e-spec.ts.
  */
 describe('finish a lesson (e2e)', () => {
   let app: INestApplication;
@@ -218,7 +220,7 @@ describe('finish a lesson (e2e)', () => {
     it('counts a first finish for today', async () => {
       const response = await finish(agent, 'fr-test-fin-one', 62).expect(200);
 
-      expect(response.body).toEqual({
+      expect(response.body).toMatchObject({
         countedToday: true,
         doneCount: 1,
         target: 3,
@@ -242,7 +244,7 @@ describe('finish a lesson (e2e)', () => {
       const response = await finish(agent, 'fr-test-fin-three').expect(200);
       const row = await course(email);
 
-      expect(response.body).toEqual({
+      expect(response.body).toMatchObject({
         countedToday: true,
         doneCount: 3,
         target: 3,
@@ -258,7 +260,7 @@ describe('finish a lesson (e2e)', () => {
         where: { userLevelId: row.id, lessonId: 'fr-test-fin-three' },
       });
 
-      expect(response.body).toEqual({
+      expect(response.body).toMatchObject({
         countedToday: false,
         doneCount: 3,
         target: 3,
