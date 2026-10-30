@@ -34,7 +34,8 @@ test.describe('time zone sync', () => {
     const violations = watchConsole(page);
 
     let patches = 0;
-    page.on('request', (request) => {
+    // On the context, so the second tab below is counted too.
+    page.context().on('request', (request) => {
       if (isProfilePatch(request)) patches += 1;
     });
 
@@ -51,11 +52,22 @@ test.describe('time zone sync', () => {
     const me = await page.request.get('/api/auth/me');
     expect((await me.json()).timeZone).toBe('Pacific/Honolulu');
 
-    await page.goto(home);
-    await page.waitForLoadState('networkidle');
+    // The next visit, in a second tab rather than by navigating this one away.
+    // Navigating cuts off whatever the refresh left in flight (its own stream,
+    // the prefetches it restarts), and Firefox and WebKit then log those from
+    // the page being left, after the new one has committed, where the gate
+    // cannot tell them from the new page's own output (#176). A visitor never
+    // sees them: the console is cleared on navigation.
+    const next = await page.context().newPage();
+    const nextViolations = watchConsole(next);
+    await next.goto(home);
+    await next.waitForLoadState('networkidle');
     expect(patches).toBe(1);
 
     expect(violations, `the sync logged:\n${formatViolations(violations)}\n`).toEqual([]);
+    expect(nextViolations, `the next visit logged:\n${formatViolations(nextViolations)}\n`).toEqual(
+      [],
+    );
   });
 
   test('retries on the next page when the PATCH fails', async ({ freshLearner: page }) => {

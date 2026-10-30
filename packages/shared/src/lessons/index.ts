@@ -13,6 +13,7 @@
  * The lesson player is its own namespace inside, `lessons.player`.
  */
 export { validateLesson, type LessonValidation } from './validateLesson';
+export { hasGender } from './domain/articles';
 export type { Issue, OutlineContext } from './validation/artifacts';
 export {
   briefSchema,
