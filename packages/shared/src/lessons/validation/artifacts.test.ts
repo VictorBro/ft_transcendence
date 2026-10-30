@@ -5,6 +5,7 @@ import { describe, expect, it } from 'vitest';
 import { z } from 'zod';
 
 import { LessonOutlineFileSchema } from '../../schemas/lesson';
+import { examInstruction } from '../domain/lessonCopy';
 import { vocabularyLesson } from '../domain/vocabularyLesson';
 import { briefSchema, contentSchema, type Brief } from '../schemas/artifacts';
 import {
@@ -73,6 +74,31 @@ const messages = (r: { issues: { path: string; message: string }[] }) =>
   r.issues.map((i) => `${i.path}: ${i.message}`).join('\n');
 
 const VOCABULARY = new Set<FixtureId>(['fr-classroom-objects', 'fr-classroom-instructions']);
+
+/**
+ * A French fixture as a German or English one: the course language
+ * changes, so the native translations { en, de } become { en, fr } (de)
+ * or { fr, de } (en). The texts stay French: only the rules change.
+ */
+function asCourse(data: Json, lang: 'de' | 'en'): Json {
+  const walk = (v: Json): Json => {
+    if (Array.isArray(v)) return v.map(walk);
+    if (v === null || typeof v !== 'object') return v;
+    const keys = Object.keys(v).sort().join();
+    if (keys === 'de,en')
+      return lang === 'de'
+        ? { en: walk(v.en), fr: walk(v.de) }
+        : { fr: walk(v.en), de: walk(v.de) };
+    return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, walk(x)]));
+  };
+  return { ...walk(data), lang };
+}
+
+function checkBriefAs(lang: 'de' | 'en', id: FixtureId, mutate?: (b: Json) => void) {
+  const brief = asCourse(load(id, 'brief'), lang);
+  mutate?.(brief);
+  return validateBrief(brief, { ...ctx(id), lang });
+}
 
 describe('fixture artifacts', () => {
   it.each(FIXTURE_IDS)('%s brief (and grammar content) are valid', (id) => {
@@ -393,6 +419,103 @@ describe('brief validation', () => {
   });
 });
 
+describe('German and English courses', () => {
+  const noun = (b: Json) => b.targets[0]; // un livre, masculine singular
+  const genderless = (b: Json) => {
+    for (const t of b.targets)
+      if (t.wordClass === 'noun') {
+        t.genders = [];
+        t.genderExplanation = null;
+      }
+  };
+
+  it('needs no gender for an English noun, and rejects one', () => {
+    expect(messages(checkBriefAs('en', 'fr-classroom-objects', genderless))).not.toMatch(
+      /genders|genderExplanation/,
+    );
+    expect(messages(checkBriefAs('en', 'fr-classroom-objects'))).toMatch(
+      /targets\.0\.genders: en nouns have no gender/,
+    );
+  });
+
+  it('teaches a German noun with der/die/das', () => {
+    const tisch = (form: string) => (b: Json) =>
+      Object.assign(noun(b), {
+        term: 'Tisch',
+        teachingForm: form,
+        examForms: [form],
+        genderVariants: [],
+      });
+    expect(messages(checkBriefAs('de', 'fr-classroom-objects', tisch('Tisch')))).toMatch(
+      /teachingForm: "Tisch" must include the definite article der\/die\/das/,
+    );
+    expect(messages(checkBriefAs('de', 'fr-classroom-objects', tisch('die Tisch')))).toMatch(
+      /"die Tisch" uses "die" but a singular masculine noun takes der/,
+    );
+    expect(messages(checkBriefAs('de', 'fr-classroom-objects', tisch('der Tisch')))).not.toMatch(
+      /targets\.0\.(teachingForm|examForms|term)/,
+    );
+  });
+
+  it('refuses a German typed gap answer with a case form of the article', () => {
+    for (const answer of ['den Tisch', 'dem Kind', 'des Tisches'])
+      expect(
+        messages(
+          checkBriefAs(
+            'de',
+            'fr-classroom-objects',
+            (b) => (noun(b).gap.accepted.answers = [answer]),
+          ),
+        ),
+      ).toMatch(`typed-gap answer "${answer}" must be article-free`);
+  });
+
+  it('accepts only masculine and feminine French nouns', () => {
+    const m = messages(checkBrief('fr-classroom-objects', (b) => (noun(b).genders = ['neuter'])));
+    expect(m).toMatch(/targets\.0\.genders: fr nouns are masculine or feminine/);
+    expect(m).not.toMatch(/noun takes/);
+  });
+
+  it('refuses an articleException on an English noun', () => {
+    expect(
+      messages(
+        checkBriefAs('en', 'fr-classroom-objects', (b) => {
+          genderless(b);
+          noun(b).articleException = { en: 'set phrase', fr: 'set phrase', de: 'set phrase' };
+        }),
+      ),
+    ).toMatch(
+      /targets\.0\.articleException: en nouns are taught without an article; articleException must be null/,
+    );
+  });
+
+  it('has no gender step in an English lesson', () => {
+    const brief = asCourse(load('fr-classroom-objects', 'brief'), 'en');
+    genderless(brief);
+    expect(vocabularyLesson(brief).steps.map((s) => s.id)).not.toContain('overview');
+  });
+
+  it('names the course language in the exam, with the article clause only where nouns have a gender', () => {
+    expect(examInstruction('de').en).toBe(
+      'Translate each word into German, with its article for nouns.',
+    );
+    expect(examInstruction('en').en).toBe('Translate each word into English.');
+    expect(examInstruction('en').de).toBe('Übersetze jedes Wort ins Englische.');
+  });
+
+  it('does not require a person board in English verb lessons', () => {
+    const r = validateBrief(
+      (() => {
+        const b = asCourse(load('fr-verb-etre-present', 'brief'), 'en');
+        b.blocks[0].exercises.splice(2, 1);
+        return b;
+      })(),
+      { ...ctx('fr-verb-etre-present'), lang: 'en' },
+    );
+    expect(messages(r)).not.toMatch(/grammar_person_matching/);
+  });
+});
+
 describe('vocabulary exercise texts in the brief', () => {
   it('checks typed gaps: four distinct references including the word, article-free answers, one fitting reference', () => {
     expect(
@@ -627,6 +750,36 @@ describe('grammar content validation', () => {
         ),
       ),
     ).toMatch(/each person matching board has a page of its own/);
+  });
+
+  it('lets only English 2sg and 2pl share a pronoun and its form (you are)', () => {
+    // A six-row board: 2sg and 2pl are both "you are".
+    const sixRows = (c: Json, plural2: { pronoun: string; answer: string }) => {
+      const rows = c.steps[3].pages[0].items[0].rows;
+      Object.assign(rows[1], { pronoun: 'you', answer: 'are' });
+      rows.push(
+        { ...rows[0], person: '1pl', pronoun: 'we', answer: 'are' },
+        { ...rows[1], person: '2pl', ...plural2 },
+        { ...rows[2], person: '3pl', pronoun: 'they', answer: 'are' },
+      );
+    };
+    const check = (lang: 'fr' | 'en', plural2: { pronoun: string; answer: string }) => {
+      const brief = load('fr-verb-etre-present', 'brief');
+      const content = load('fr-verb-etre-present', 'content');
+      sixRows(content, plural2);
+      return messages(
+        lang === 'fr'
+          ? validateContent(content, { ...ctx('fr-verb-etre-present'), brief })
+          : validateContent(asCourse(content, 'en'), {
+              ...ctx('fr-verb-etre-present'),
+              lang: 'en',
+              brief: asCourse(brief, 'en'),
+            }),
+      );
+    };
+    expect(check('en', { pronoun: 'you', answer: 'are' })).not.toMatch(/duplicate pronoun/);
+    expect(check('en', { pronoun: 'you', answer: 'is' })).toMatch(/duplicate pronoun you/);
+    expect(check('fr', { pronoun: 'you', answer: 'are' })).toMatch(/duplicate pronoun you/);
   });
 
   it('keeps the production feedback step a fixed placeholder', () => {
