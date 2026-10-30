@@ -78,6 +78,16 @@ describe('function artifacts', () => {
       /indefinite article/,
     ],
     [
+      'a neuter French noun',
+      (b: Json) => (b.words[0].genders = ['neuter']),
+      /words\.0\.genders: fr nouns are masculine or feminine/,
+    ],
+    [
+      'an article alone as the term',
+      (b: Json) => (b.words[0].term = 'un'),
+      /"un" must be the base term without article/,
+    ],
+    [
       'equal translations',
       (b: Json) => (b.expressions[0].translations.en = ['I would like']),
       /en translation/,
