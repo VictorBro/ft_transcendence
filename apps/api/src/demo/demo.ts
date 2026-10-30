@@ -41,15 +41,18 @@ export type DemoServices = {
 /** Who the replay signs up: the demo learners in the seed, replay-<stamp> in the e2e spec. */
 export type DemoIdentity = { email: string; displayName: string; password: string };
 
-/** The level's lessons as the rules see them, in order. */
+/**
+ * The level's ready lessons as the rules see them, in order: the plan offers
+ * no other (#84), so "every lesson attempted" means every ready one.
+ */
 function levelLessons(prisma: PrismaService, course: DemoCourse): Promise<RuleLesson[]> {
   if (course.level === null) {
     return Promise.resolve([]);
   }
   return prisma.lesson.findMany({
-    where: { lang: course.lang, level: course.level },
+    where: { lang: course.lang, level: course.level, ready: true },
     orderBy: { position: 'asc' },
-    select: { id: true, level: true, position: true },
+    select: { id: true, level: true, position: true, ready: true },
   });
 }
 
@@ -86,15 +89,12 @@ async function replayCourse(
       continue;
     }
 
+    // Only ready lessons are offered (#84), and until #91 to #93 only French
+    // A1 has any: an extra course on another level finishes what its level
+    // offers, often nothing, rather than failing the seed.
     const today = await lessons.today(user.id, lang, user.timeZone, day.finishes[0].at);
     const offered = [...today.proposed, ...today.extra];
-    if (offered.length < day.finishes.length) {
-      throw new Error(
-        `${lang} ${course.level} offers ${offered.length} lessons on ${day.day}, ` +
-          `the profile finishes ${day.finishes.length}`,
-      );
-    }
-    for (const [i, finish] of day.finishes.entries()) {
+    for (const [i, finish] of day.finishes.slice(0, offered.length).entries()) {
       await lessons.finish(user, lang, offered[i].id, finish.score, finish.at);
     }
   }
