@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { BY_KIND, FIXTURE_LESSONS, fixtureLesson, refOf } from './fixtures.testing';
 import { lessonOutline } from './outline';
 import { buildPlan, type LessonPlan } from './plan';
-import { pageView } from './redact';
+import { pageView, paths } from './redact';
 import { LessonOutlineSchema, PageViewSchema, type PageView } from './view';
 
 /**
@@ -87,6 +87,63 @@ describe.each(FIXTURE_LESSONS)('the page views of %s', (id) => {
     expect(
       strings(LessonOutlineSchema.parse(lessonOutline(plan))).some((v) => explanations.has(v)),
     ).toBe(false);
+  });
+
+  it('sort every shuffled list by its refs, each on its own', () => {
+    // The authored order is often the answer (a token bank in the order of its sentence, a
+    // matching row's option at the row's own index), so each list is checked by itself.
+    const ROWS_SHUFFLED = new Set([
+      'vocabulary_matching',
+      'function_matching',
+      'reading_keyword_matching',
+      'grammar_person_matching',
+    ]);
+    const OPTIONS_KEPT = new Set([
+      'vocabulary_gender_select',
+      'function_gender_select',
+      'reading_true_false',
+      'grammar_person_matching',
+    ]);
+    const sorted = (refs: string[], what: string) => expect(refs, what).toEqual(refs.toSorted());
+    const plan = buildPlan(lesson, 'en');
+    const ref = refOf('secret');
+    let checked = 0;
+    for (const [n, page] of plan.pages.entries())
+      for (const item of pageView(plan, n, ref).items) {
+        const what = `${page.pageId} ${item.type}`;
+        if ('references' in item)
+          sorted(
+            item.references.map((r) => r.ref),
+            `${what} references`,
+          );
+        if (!('units' in item)) continue;
+        if (ROWS_SHUFFLED.has(item.type))
+          sorted(
+            item.units.map((u) => u.ref),
+            `${what} rows`,
+          );
+        for (const unit of item.units) {
+          if (unit.kind === 'choice' && !OPTIONS_KEPT.has(item.type))
+            sorted(
+              unit.options.map((o) => o.ref),
+              `${what} options`,
+            );
+          if (unit.kind === 'order')
+            sorted(
+              unit.tokens.map((t) => t.ref),
+              `${what} tokens`,
+            );
+          if (unit.kind === 'spot') {
+            const planned = page.units.find((u) => ref(paths.unit(u)) === unit.ref)!;
+            sorted(
+              unit.correction.choices.map((c) => ref(`${paths.unit(planned)}#s:${c}`)),
+              `${what} correction choices`,
+            );
+          }
+          checked++;
+        }
+      }
+    expect(checked).toBeGreaterThan(0);
   });
 
   it('give other refs and another order with another secret', () => {
