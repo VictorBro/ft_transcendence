@@ -66,6 +66,11 @@ cp .env.example .env    # then edit the secrets, see the comments in that file
 make                    # checks, build, run, browser tests
 ```
 
+To get the six demo learners (streaks, results, a finished level), set
+`DEMO_PASSWORD` in `.env` before `make`, then sign in as
+`demo-anna@example.com` to `demo-felix@example.com` with that password. Every
+seed rebuilds them, on development stacks only.
+
 The app is served at <https://localhost>. `make` prints how to trust the local
 TLS certificate. API documentation is at <https://localhost/api/docs>.
 Grafana, with the monitoring dashboards and alerts, is at

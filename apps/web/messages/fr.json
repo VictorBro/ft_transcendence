@@ -13,7 +13,7 @@
   },
   "Layout": {
     "productName": "ft_transcendence",
-    "description": "Une plateforme d'apprentissage des langues pilotée par IA : leçons générées, évaluation automatique du niveau et pratique en direct avec un autre apprenant."
+    "description": "Une plateforme d'apprentissage des langues pilotée par IA : leçons, correction des réponses et évaluation automatique du niveau."
   },
   "Footer": {
     "legalNav": "Informations légales",
@@ -21,7 +21,7 @@
   },
   "HomePage": {
     "headline": "Apprends une langue avec un tuteur qui s'adapte à toi !",
-    "intro": "ft_transcendence génère des leçons, corrige tes réponses, suit le niveau qu'il en déduit, et t'associe à un autre apprenant pour une pratique en direct. Cette page est le squelette : tout ce qui suit est de la plomberie, pas du produit.",
+    "intro": "ft_transcendence t'enseigne à travers des leçons, corrige tes réponses et suit le niveau qu'il en déduit.",
     "startNow": "Commencer",
     "continueLearning": "Continuer à apprendre",
     "logoAlt": "Logo ft_transcendence"
@@ -41,9 +41,9 @@
     "addLanguage": "Ajouter une langue…"
   },
   "Course": {
-    "title": "Cours",
+    "title": "{lang, select, en {Cours d'anglais} fr {Cours de français} de {Cours d'allemand} other {Cours}}",
     "heading": "{language}",
-    "level": "Niveau du cours",
+    "level": "Niveau",
     "changeLevel": "Modifier le niveau",
     "dailyGoal": "Objectif quotidien",
     "minutesPerDay": "{minutes} min",
@@ -71,7 +71,7 @@
     },
     "dailyGoalSummary": "Objectif quotidien : {minutes} min",
     "noNewLanguage": "Tu apprends déjà toutes les langues proposées.",
-    "backToCourse": "Revenir à mon cours en {language}",
+    "backToCourse": "{lang, select, en {Revenir à mon cours d'anglais} fr {Revenir à mon cours de français} de {Revenir à mon cours d'allemand} other {Revenir à mon cours}}",
     "languageInSentence": {
       "en": "anglais",
       "fr": "français",
@@ -297,10 +297,10 @@
     "continueButton": "Continuer",
     "backToCourse": "Retour au cours",
     "chooseLevel": "Choisir ton niveau",
-    "overrideButton": "Ce n'est pas ton niveau ?",
+    "overrideButton": "Choisir un autre niveau",
     "retakeButton": "Repasser le test",
-    "answersHeading": "Ton dernier résultat d'examen",
-    "answersHeadingLevel": "Ton dernier résultat d'examen – {level}",
+    "answersHeading": "Ton dernier résultat au test",
+    "answersHeadingLevel": "Ton dernier résultat au test ({level})",
     "showText": "Afficher le texte",
     "yourAnswer": "Ta réponse",
     "correctAnswer": "Bonne réponse",

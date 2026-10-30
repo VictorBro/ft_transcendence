@@ -12,6 +12,7 @@
  * Only what the API needs is exported; add a name here when an app needs it.
  */
 export { validateLesson, type LessonValidation } from './validateLesson';
+export { hasGender } from './domain/articles';
 export type { Issue, OutlineContext } from './validation/artifacts';
 export {
   briefSchema,
