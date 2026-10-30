@@ -13,7 +13,7 @@
   },
   "Layout": {
     "productName": "ft_transcendence",
-    "description": "An AI-driven platform for learning a foreign language: generated lessons, automatic levelling, and live practice with another learner."
+    "description": "An AI-driven platform for learning a foreign language: lessons, graded answers, and automatic levelling."
   },
   "Footer": {
     "legalNav": "Legal",
@@ -21,7 +21,7 @@
   },
   "HomePage": {
     "headline": "Learn a language with a tutor that adapts to you!",
-    "intro": "ft_transcendence generates lessons, grades your answers, tracks the level it infers from them, and pairs you with another learner for live practice. This page is the skeleton: everything below is wiring, not product.",
+    "intro": "ft_transcendence teaches you through lessons, grades your answers, and tracks the level it infers from them.",
     "startNow": "Start now",
     "continueLearning": "Continue learning",
     "logoAlt": "ft_transcendence logo"
@@ -41,9 +41,9 @@
     "addLanguage": "Add a language…"
   },
   "Course": {
-    "title": "Course",
+    "title": "{language} course",
     "heading": "{language}",
-    "level": "Course level",
+    "level": "Level",
     "changeLevel": "Change level",
     "dailyGoal": "Daily goal",
     "minutesPerDay": "{minutes} min",
@@ -297,10 +297,10 @@
     "continueButton": "Continue",
     "backToCourse": "Back to course",
     "chooseLevel": "Choose your level",
-    "overrideButton": "Not your level?",
+    "overrideButton": "Choose another level",
     "retakeButton": "Retake the test",
-    "answersHeading": "Your latest exam result",
-    "answersHeadingLevel": "Your latest exam result – {level}",
+    "answersHeading": "Your latest test result",
+    "answersHeadingLevel": "Your latest test result ({level})",
     "showText": "Show the text",
     "yourAnswer": "Your answer",
     "correctAnswer": "Correct answer",

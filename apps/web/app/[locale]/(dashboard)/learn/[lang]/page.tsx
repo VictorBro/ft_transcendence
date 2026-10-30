@@ -15,12 +15,20 @@ export const dynamic = 'force-dynamic';
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: string; lang: string }>;
 }): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'Course' });
+  const { locale, lang } = await params;
+  // No notFound() here: it could race the page's /login redirect. The page 404s.
+  const parsed = LanguageSchema.safeParse(lang);
+  if (!parsed.success) {
+    return {};
+  }
 
-  return { title: t('title') };
+  const t = await getTranslations({ locale, namespace: 'Course' });
+  const languageName = await getTranslations({ locale, namespace: 'Languages' });
+
+  // en reads the name, fr and de pick a whole phrase by code: "Cours d'anglais".
+  return { title: t('title', { language: languageName(parsed.data), lang: parsed.data }) };
 }
 
 export default async function CoursePage({ params }: { params: Promise<{ lang: string }> }) {
