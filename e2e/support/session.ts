@@ -6,7 +6,7 @@ import {
   type Page,
 } from '@playwright/test';
 
-import { signUpSlot, WORKER_SIGNUP_TIMEOUT_MS } from './signup-budget';
+import { signUpSlot, type SlotOptions, WORKER_SIGNUP_TIMEOUT_MS } from './signup-budget';
 
 /**
  * Signing in, for the specs that need an account but are not testing signup.
@@ -50,8 +50,12 @@ export const identity = (): Identity => {
  * context. The form has its own tests in auth.spec.ts; everywhere else it is
  * setup, and a slow machine pays seconds per account for it.
  */
-export const signUp = async (page: Page, fields: Identity = identity()): Promise<void> => {
-  await signUpSlot();
+export const signUp = async (
+  page: Page,
+  fields: Identity = identity(),
+  slot?: SlotOptions,
+): Promise<void> => {
+  await signUpSlot(slot);
   const created = await page.request.post('/api/auth/signup', {
     data: { ...fields, password: PASSWORD },
   });
@@ -131,7 +135,8 @@ const newAccount = async (
   const context = await browser.newContext();
   const page = await context.newPage();
 
-  await signUp(page, fields);
+  // Only ever called from a worker fixture, which has a timeout of its own.
+  await signUp(page, fields, { extendTestTimeout: false });
   await setUp(page);
   const storageState = await context.storageState();
   await context.close();

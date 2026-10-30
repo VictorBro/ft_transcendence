@@ -95,28 +95,36 @@ const book = (): Promise<number> =>
     return slot;
   });
 
+export interface SlotOptions {
+  /**
+   * Off for worker fixtures. test.info() answers inside them too, but with the
+   * test's timeout, and setTimeout() would replace the fixture's own budget
+   * (WORKER_SIGNUP_TIMEOUT_MS) with that plus the wait.
+   */
+  extendTestTimeout?: boolean;
+}
+
 /**
  * Resolves when one more signup may be sent. Call it right before whatever
  * sends POST /auth/signup, whether that is a request or a click on the form.
  *
- * The wait is added to the running test's timeout, so a test that queued
- * behind other workers is not failed for it. Worker fixtures have no running
- * test; they set a timeout of their own that covers the longest wait.
+ * In a test or a test fixture the wait is added to the test's timeout, so a
+ * test that queued behind other workers is not failed for it. A worker fixture
+ * passes extendTestTimeout: false and sets WORKER_SIGNUP_TIMEOUT_MS instead,
+ * which covers the longest wait.
  */
-export const signUpSlot = async (): Promise<void> => {
+export const signUpSlot = async ({ extendTestTimeout = true }: SlotOptions = {}): Promise<void> => {
   const wait = (await book()) - Date.now();
   if (wait <= 0) {
     return;
   }
 
-  try {
+  if (extendTestTimeout) {
     const info = test.info();
     // 0 means no timeout, which nothing needs extending.
     if (info.timeout > 0) {
       info.setTimeout(info.timeout + wait);
     }
-  } catch {
-    // Not inside a test: a worker fixture, covered by its own timeout.
   }
   await sleep(wait);
 };
