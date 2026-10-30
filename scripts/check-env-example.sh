@@ -10,7 +10,8 @@
 #   1. .env is neither tracked nor staged.
 #   2. .env, when present, declares exactly the keys .env.example declares.
 #   3. Every ${VAR} a compose file interpolates is documented in .env.example,
-#      and every key in .env.example is interpolated by a compose file.
+#      and every key in .env.example is interpolated by a compose file, except
+#      the TOOLING_ONLY keys, which no compose file may read.
 #   4. Every process.env.X read in source is either documented in .env.example
 #      or injected directly by compose (see RUNTIME_INJECTED below).
 #
@@ -42,6 +43,14 @@ RUNTIME_INJECTED=(
   # Set by the prisma drift job in .github/workflows/hygiene.yml, which brings up
   # its own throwaway database. Never points at a database anyone keeps.
   SHADOW_DATABASE_URL
+)
+
+# In .env.example but read by no compose file: a make target hands them to a
+# one-off tooling container through `--env-file .env`. A compose file reading
+# one would give it to a long-running service, so check 3 fails on that too.
+TOOLING_ONLY=(
+  # The demo learners' password, read by the seed on dev stacks only (#85).
+  DEMO_PASSWORD
 )
 
 failures=0
@@ -166,9 +175,12 @@ fi
 # --- 3. .env.example against the compose files -------------------------------
 before=$failures
 interpolated="$(compose_keys)"
+tooling_only="$(printf '%s\n' "${TOOLING_ONLY[@]}" | sort -u)"
 
 undocumented="$(comm -23 <(print_set "$interpolated") <(print_set "$example_keys"))"
-unused="$(comm -13 <(print_set "$interpolated") <(print_set "$example_keys"))"
+unused="$(comm -13 <(print_set "$interpolated") <(print_set "$example_keys") |
+  comm -23 - <(print_set "$tooling_only"))"
+leaked="$(comm -12 <(print_set "$interpolated") <(print_set "$tooling_only"))"
 
 while IFS= read -r key; do
   [ -n "$key" ] || continue
@@ -179,6 +191,11 @@ while IFS= read -r key; do
   [ -n "$key" ] || continue
   fail "$EXAMPLE_FILE documents $key but no compose file reads it"
 done <<<"$unused"
+
+while IFS= read -r key; do
+  [ -n "$key" ] || continue
+  fail "compose interpolates \${$key}, which is TOOLING_ONLY: no service may hold it"
+done <<<"$leaked"
 
 [ "$failures" -eq "$before" ] && pass "compose interpolations and $EXAMPLE_FILE agree"
 
