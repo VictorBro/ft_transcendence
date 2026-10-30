@@ -155,3 +155,9 @@ export const AchievementSchema = z
     path: ['level'],
   });
 export type Achievement = z.infer<typeof AchievementSchema>;
+
+/** GET /courses/:lang/achievements: all sixteen, in ACHIEVEMENTS order. */
+export const AchievementListSchema = z.object({
+  items: z.array(AchievementSchema).length(ACHIEVEMENTS.length),
+});
+export type AchievementList = z.infer<typeof AchievementListSchema>;
