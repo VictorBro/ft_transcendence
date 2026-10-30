@@ -3,18 +3,8 @@ import { readdir, readFile } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { isDeepStrictEqual } from 'node:util';
 import { Prisma, PrismaClient } from '../src/generated/prisma/client';
-import { PrismaPg } from '@prisma/adapter-pg';
-import { ItemFileSchema, LessonOutlineFileSchema, lessons } from '@ft/shared';
-
-// Same guard as PrismaService: left undefined, node-postgres falls back to its
-// own PG* defaults and fails with a misleading localhost connection error.
-function requireDatabaseUrl(): string {
-  const url = process.env.DATABASE_URL;
-  if (url === undefined || url.trim() === '') {
-    throw new Error('DATABASE_URL is unset: the seed script cannot run. See .env.example.');
-  }
-  return url;
-}
+import { ItemFileSchema, LessonOutlineFileSchema, lessons, PasswordSchema } from '@ft/shared';
+import { PrismaService } from '../src/prisma/prisma.service';
 
 export function findContentDir(kind: 'items' | 'lessons' | 'outlines'): string {
   const candidateFromRoot = resolve(process.cwd(), 'content', kind);
@@ -241,12 +231,41 @@ export async function seedLessons(contentDir: string, prisma: PrismaClient): Pro
   return writes.length;
 }
 
+/** Null when the demo learners should be seeded, else why not. */
+export function demoSkipReason(env: NodeJS.ProcessEnv): string | null {
+  // An allowlist: the public server seeds with only DATABASE_URL, NODE_ENV unset.
+  if (env.NODE_ENV !== 'development') {
+    return `NODE_ENV is ${env.NODE_ENV ?? 'unset'}, not development`;
+  }
+  // Every .env has the key (make env-file adds it empty), so empty means skip.
+  if ((env.DEMO_PASSWORD ?? '').trim() === '') {
+    return 'DEMO_PASSWORD is empty';
+  }
+  return null;
+}
+
+/** The demo learners' password, checked with the signup rules. Never prints it. */
+export function demoPassword(env: NodeJS.ProcessEnv): string {
+  const password = env.DEMO_PASSWORD ?? '';
+  const result = PasswordSchema.safeParse(password);
+  if (!result.success) {
+    const codes = result.error.issues.map((issue) => issue.message).join(', ');
+    throw new Error(`DEMO_PASSWORD fails the signup rules: ${codes}`);
+  }
+  return password;
+}
+
 // Runs only when this file is the entry point, so a test importing
 // seedQuestionBank does not seed the real database.
 if (require.main === module) {
-  const prisma = new PrismaClient({
-    adapter: new PrismaPg({ connectionString: requireDatabaseUrl() }),
-  });
+  // Before anything is written: a bad password fails the seed at once.
+  const skip = demoSkipReason(process.env);
+  const password = skip === null ? demoPassword(process.env) : null;
+
+  // PrismaService, not a bare PrismaClient: the demo learners build the api
+  // services on it, outside Nest. Its constructor checks DATABASE_URL, and
+  // without Nest nothing calls onModuleInit: Prisma connects on the first query.
+  const prisma = new PrismaService();
 
   seedQuestionBank(findContentDir('items'), prisma)
     .then((count) => console.log(`seeded ${count} questions from ${findContentDir('items')}`))
@@ -254,6 +273,15 @@ if (require.main === module) {
     .then((count) =>
       console.log(`seeded ${count} lessons from ${dirname(findContentDir('outlines'))}`),
     )
+    .then(async () => {
+      if (password === null) {
+        console.log(`demo learners skipped: ${skip}`);
+        return;
+      }
+      // Loaded here only, so the public server never even reads the demo code.
+      const { seedDemo } = await import('../src/demo/demo');
+      await seedDemo(prisma, { runNow: new Date(), password });
+    })
     .catch((err) => {
       console.error(err);
       process.exit(1);
