@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Social data model · ft_transcendence</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+<style>
+:root{
+  --m1-bg:#E8E7E1;
+  --surface-0:#FAFAF8;--surface-1:#F5F4EF;--surface-2:#FFFFFF;
+  --border:rgba(31,30,29,.15);--text-primary:#1F1E1D;--text-secondary:#5E5D59;--text-muted:#8A8983;--text-accent:#185FA5;
+  --font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --font-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+}
+.k-f{--gb:#FAEEDA;--gd:#EF9F27;--gt:#633806}.k-c{--gb:#EEEDFE;--gd:#AFA9EC;--gt:#3C3489}.k-q{--gb:#E1F5EE;--gd:#5DCAA5;--gt:#085041}.k-d{--gb:#EAF3DE;--gd:#97C459;--gt:#27500A}.k-a{--gb:#FAECE7;--gd:#F0997B;--gt:#712B13}.gr{--cb:#F1EFE8}.k-e{--gb:#E6F1FB;--gd:#85B7EB;--gt:#0C447C}.k-n{--gb:#FBF3DB;--gd:#E0B84A;--gt:#5C4405}.k-s{--gb:#FBEAF0;--gd:#ED93B1;--gt:#72243E}.k-h{--gb:#F1EFE8;--gd:#B4B2A9;--gt:#444441}.k-p{--gb:#E4F4F8;--gd:#5BB8CF;--gt:#0B4A5A}
+@media (prefers-color-scheme:dark){
+  :root{--m1-bg:#3A3A37;--surface-0:#1F1E1D;--surface-1:#262624;--surface-2:#30302E;--border:rgba(222,220,209,.15);--text-primary:#F5F4EF;--text-secondary:#C2C0B6;--text-muted:#9C9A92;--text-accent:#85B7EB}
+  .k-f{--gb:#412402;--gd:#BA7517;--gt:#FAC775}.k-c{--gb:#26215C;--gd:#7F77DD;--gt:#CECBF6}.k-q{--gb:#04342C;--gd:#1D9E75;--gt:#9FE1CB}.k-d{--gb:#173404;--gd:#639922;--gt:#C0DD97}.k-a{--gb:#4A1B0C;--gd:#D85A30;--gt:#F5C4B3}.gr{--cb:#444441}.k-e{--gb:#042C53;--gd:#378ADD;--gt:#B5D4F4}.k-n{--gb:#3A2E06;--gd:#B08A1E;--gt:#F2DB94}.k-s{--gb:#4B1528;--gd:#D4537E;--gt:#F4C0D1}.k-h{--gb:#2C2C2A;--gd:#5F5E5A;--gt:#D3D1C7}.k-p{--gb:#08323C;--gd:#2A93AD;--gt:#A9E0EE}
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--font-sans)}
+main{max-width:1100px;margin:0 auto;padding:calc(24px + env(safe-area-inset-top,0px)) 20px calc(40px + env(safe-area-inset-bottom,0px))}
+h1{font-size:22px;font-weight:500;margin:0 0 6px}
+.intro{font-size:14px;line-height:1.6;color:var(--text-secondary);margin:0 0 18px;max-width:75ch}
+.g{background:var(--gb);border:0.5px solid var(--gd);border-radius:12px;padding:14px;margin:0 0 14px}
+.gh{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500;margin:0 0 4px;color:var(--gt);flex-wrap:wrap}
+.gd{font-size:13px;line-height:1.5;color:var(--gt);opacity:.85;margin:0 0 10px}
+.def{font-size:11px;padding:2px 8px;border-radius:999px;border:0.5px solid var(--gd);background:var(--surface-2);color:var(--text-secondary);font-weight:400}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.cards.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.c{background:var(--cb,var(--surface-2));border:0.5px solid var(--border);border-radius:8px;padding:10px 12px;display:flex;flex-direction:column}
+.ct{font-family:var(--font-mono);font-size:13px;font-weight:500;color:var(--text-primary);margin:0 0 2px}
+.cp{font-size:11px;color:var(--text-muted);margin:0 0 6px;font-family:var(--font-mono)}
+.f{font-family:var(--font-mono);font-size:12px;line-height:1.6;color:var(--text-secondary);flex:1}
+.en{list-style:none;margin:0;padding:0;counter-reset:en}
+.en li{counter-increment:en;display:flex;align-items:center;gap:7px;padding:1px 0}
+.en li::before{content:counter(en);flex-shrink:0;width:17px;height:17px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-sans);font-size:9.5px;font-weight:500;line-height:1;color:var(--gt);background:var(--gb);border:0.5px solid var(--gd)}
+.en li span{min-width:0;overflow-wrap:anywhere}
+.en-x{margin-top:6px;padding-top:5px;border-top:0.5px dashed var(--border)}
+.c.m1{background:var(--m1-bg)}
+.m1t{float:right;font-family:var(--font-sans);font-size:10px;font-weight:500;color:var(--text-secondary);background:var(--surface-2);border:0.5px solid var(--border);border-radius:999px;padding:1px 7px;text-decoration:none;margin-left:6px}
+.m1t:hover,.m1t:focus-visible{text-decoration:underline}
+.m1note{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-secondary);margin:-4px 0 14px}
+.m1note i{width:14px;height:14px;border-radius:3px;background:var(--m1-bg);border:0.5px solid var(--border)}
+.f b{font-weight:500;color:var(--text-primary)}
+.ref{margin-top:8px;padding-top:6px;border-top:0.5px solid var(--border);font-size:11px;color:var(--text-muted);display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.ref span{font-family:var(--font-mono);background:var(--surface-2);border:0.5px solid var(--border);border-radius:4px;padding:0 5px;color:var(--text-secondary)}
+a.il{color:var(--text-accent);text-decoration:none}a.il:hover,a.il:focus-visible{text-decoration:underline}
+.relwrap{overflow-x:auto}
+.rel{display:grid;grid-template-columns:minmax(140px,1fr) 20px minmax(140px,1fr) 2fr;gap:6px 10px;align-items:center;font-size:12px;min-width:640px}
+.m{font-family:var(--font-mono);background:var(--gb);border:0.5px solid var(--gd);color:var(--gt);border-radius:6px;padding:4px 8px}
+.rel .d{color:var(--text-secondary);line-height:1.5}
+.rel i{color:var(--text-muted);text-align:center}
+.leg{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px;font-size:12px}
+.leg .m{font-family:var(--font-sans)}
+.c.wide{grid-column:1/-1}
+.pt{float:right;font-family:var(--font-sans);font-size:10px;font-weight:500;color:var(--st-work);background:var(--surface-2);border:0.5px solid var(--st-work);border-radius:999px;padding:1px 7px;margin-left:6px}
+.c{scroll-margin-top:calc(12px + env(safe-area-inset-top,0px))}
+.c:target{outline:2px solid var(--text-accent);outline-offset:2px}
+.tw{overflow-x:auto}
+table.t{border-collapse:collapse;font-family:var(--font-mono);font-size:12px;width:100%;min-width:420px}
+table.t th,table.t td{text-align:right;padding:4px 10px;border-bottom:0.5px solid var(--border);color:var(--text-secondary)}
+table.t .pc{color:var(--text-muted)}
+table.t caption{caption-side:top;text-align:left;font-family:var(--font-sans);font-size:12px;font-weight:500;color:var(--text-primary);padding:10px 0 4px}
+table.t caption span{font-weight:400;color:var(--text-muted);margin-left:6px}
+.tw+.tw{margin-top:6px}
+table.t td.dif{color:var(--text-primary);font-weight:600}
+:root{--st-open:#3B6D11;--st-work:#BA7517;--st-closed:#534AB7}
+@media (prefers-color-scheme:dark){:root{--st-open:#97C459;--st-work:#EF9F27;--st-closed:#AFA9EC}}
+a.il.st-open,a.il.st-work,a.il.st-closed{white-space:nowrap}
+a.il.ready{border-radius:4px;padding:0 3px;box-shadow:0 0 0 1.5px var(--ready)}
+.ref span.ready{border-color:var(--ready);box-shadow:0 0 0 1px var(--ready)}
+.ref span.ready a.il.ready{box-shadow:none;padding:0}
+.stleg i.ready{width:12px;height:10px;border-radius:3px;background:none;box-shadow:0 0 0 1.5px var(--ready)}
+:root{--ready:#2B8A3E}@media (prefers-color-scheme:dark){:root{--ready:#7CC94A}}
+a.il.st-open::before,a.il.st-work::before,a.il.st-closed::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;margin:0 3px 1px 0;vertical-align:middle;background:var(--sc)}
+a.il.st-open{--sc:var(--st-open)}a.il.st-work{--sc:var(--st-work)}a.il.st-closed{--sc:var(--st-closed);text-decoration:line-through;text-decoration-thickness:1px}
+a.il.st-closed:hover{text-decoration:underline}
+.stleg{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;font-size:12px;color:var(--text-secondary);margin:-4px 0 14px}
+.stleg b{font-weight:500;color:var(--text-primary)}
+.stleg i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;vertical-align:middle}
+table.t th{font-weight:500;color:var(--text-primary)}
+table.t th:first-child,table.t td:first-child{text-align:left;color:var(--text-primary);font-weight:500}
+.ct .n{font-weight:400;color:var(--text-muted);margin-left:4px}
+.jump{cursor:pointer}.jump:hover{filter:brightness(.96)}.jump:focus-visible{outline:2px solid var(--text-accent);outline-offset:2px}
+section.g{scroll-margin-top:calc(12px + env(safe-area-inset-top,0px))}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media (max-width:560px){.cards.two{grid-template-columns:1fr}}
+.topnav{display:flex;flex-wrap:wrap;gap:4px;margin:0 0 18px;padding:4px;border:0.5px solid var(--border);border-radius:10px;background:var(--surface-2);width:fit-content;max-width:100%}
+.topnav a{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-secondary);text-decoration:none;padding:5px 10px;border-radius:7px}
+.topnav a:hover{color:var(--text-primary);background:var(--surface-1)}
+.topnav a:focus-visible{outline:2px solid var(--text-accent);outline-offset:1px}
+.topnav a[aria-current="page"]{color:var(--surface-0);background:var(--text-primary);font-weight:500}
+.navrow{display:flex;flex-wrap:wrap;align-items:stretch;gap:12px;margin:0 0 18px}
+.navrow .topnav{margin:0}
+.prod{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--text-primary);text-decoration:none;padding:9px 14px;border:0.5px solid var(--border);border-radius:10px;background:var(--surface-2)}
+.prod:hover{background:var(--surface-1)}
+.prod:focus-visible{outline:2px solid var(--text-accent);outline-offset:1px}
+.prod .ti-arrow-up-right{color:var(--text-muted)}
+.topnav.repo .repo-l{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--text-primary);padding:5px 8px 5px 10px;border-right:0.5px solid var(--border);margin-right:2px}
+.f .md{font-family:var(--font-sans);color:var(--text-primary)}
+.c{position:relative}
+.ct span[id]:empty{position:absolute;top:0;left:0;width:1px;height:1px;scroll-margin-top:calc(12px + env(safe-area-inset-top,0px))}
+.c:has(.ct span[id]:target){outline:2px solid var(--text-accent);outline-offset:2px}
+</style>
+</head>
+<body>
+<main>
+<div class="navrow"><nav class="topnav" aria-label="Project docs"><a href="index.html"><i class="ti ti-layout-dashboard" aria-hidden="true"></i>Overview</a><a href="milestone1-data-model.html"><i class="ti ti-git-compare" aria-hidden="true"></i>Data model · M1</a><a href="milestone2-data-model.html"><i class="ti ti-database" aria-hidden="true"></i>Data model · M2</a><a href="milestone3-data-model.html" aria-current="page"><i class="ti ti-plug-connected" aria-hidden="true"></i>Data model · M3</a></nav><a class="prod" href="https://trans.vyantares.ch" title="The deployed app: trans.vyantares.ch"><i class="ti ti-rocket" aria-hidden="true"></i>production<i class="ti ti-arrow-up-right" aria-hidden="true"></i></a><a class="prod" href="https://transcendence.dpdns.org" title="The first deployment, on the VPS: transcendence.dpdns.org"><i class="ti ti-history" aria-hidden="true"></i>production (old)<i class="ti ti-arrow-up-right" aria-hidden="true"></i></a><a class="prod" href="https://bastian-schnitzler.github.io/lesson_prototype/" title="The lesson prototype: bastian-schnitzler.github.io/lesson_prototype"><i class="ti ti-flask" aria-hidden="true"></i>prototype<i class="ti ti-arrow-up-right" aria-hidden="true"></i></a><nav class="topnav repo" aria-label="ft_transcendence on GitHub"><span class="repo-l"><i class="ti ti-brand-github" aria-hidden="true"></i>ft_transcendence</span><a href="https://github.com/VictorBro/ft_transcendence"><i class="ti ti-code" aria-hidden="true"></i>code</a><a href="https://github.com/VictorBro/ft_transcendence/pulls"><i class="ti ti-git-pull-request" aria-hidden="true"></i>PRs</a><a href="https://github.com/users/VictorBro/projects/1"><i class="ti ti-layout-kanban" aria-hidden="true"></i>Kanban</a><a href="https://github.com/VictorBro/ft_transcendence/milestones"><i class="ti ti-flag" aria-hidden="true"></i>milestones</a><a href="https://github.com/VictorBro/ft_transcendence/issues"><i class="ti ti-circle-dot" aria-hidden="true"></i>issues</a></nav></div>
+<h1>Social and real-time data model</h1>
+<p class="intro">Every format of the Real-time, social and defence milestone, grouped by layer: the enums and constants, the socket contract in packages/shared, the Prisma models, the presence state in Redis, the REST schemas, the web pieces that hold the connection, what the evaluation checks, and the modules. Each card lists the issues that reference it, and has an anchor named after its type, so issues can link to it. References cover #34 and #154 to #161. Almost everything here is planned: cards marked "existing" are on main and reused or changed, cards marked "to check" name a shape the issues describe without fixing its name or fields, so confirm them before implementing. One WebSocket connection per browser tab, in a user:&lt;id&gt; room; the lesson discussion of Milestone 2 streams over SSE, not over the socket.</p>
+
+<div class="leg">
+<span class="m k-e jump" data-target="enums" role="link" tabindex="0">Enums + constants</span><span class="m k-c jump" data-target="socket" role="link" tabindex="0">Socket contract · #154</span><span class="m k-d jump" data-target="database" role="link" tabindex="0">Database · #155 / #158</span><span class="m k-q jump" data-target="redis" role="link" tabindex="0">Redis · #157</span><span class="m k-a jump" data-target="api" role="link" tabindex="0">REST schemas · #155 / #156 / #158</span><span class="m k-p jump" data-target="web" role="link" tabindex="0">Web · #154 to #158</span><span class="m k-h jump" data-target="evaluation" role="link" tabindex="0">Evaluation · #159 to #161</span>
+<span class="m k-n jump" data-target="modules" role="link" tabindex="0">NestJS modules</span></div>
+<p class="stleg" id="stleg"><b>Issue status</b><span><i style="background:var(--st-open)"></i>open</span><span><i style="background:var(--st-work)"></i>in work (assigned or a PR linked)</span><span><i style="background:var(--st-closed)"></i>closed</span><span><i class="ready"></i>green frame: ready, open and not blocked, nobody on it yet</span><span id="live">Snapshot of 28 October 2026, refreshed from GitHub on load.</span></p>
+<p class="m1note"><i aria-hidden="true"></i>Grey cards tagged "existing" are on main and reused or changed, not reimplemented.</p>
+
+<section class="g k-e" id="enums"><div class="gh"><i class="ti ti-list-details" aria-hidden="true"></i>Enums and constants<span class="def">packages/shared/src/events/socket.ts</span><span class="def">friendship in #155</span></div>
+<div class="gd">The fixed value sets and numbers the socket, the tables and the pages rely on.</div>
+<div class="cards">
+<div class="c m1" id="PresenceStatus"><div class="ct">PresenceStatus<span class="n">(2)</span><a class="m1t" href="https://github.com/VictorBro/ft_transcendence/blob/main/packages/shared/src/events/socket.ts" title="Existing enum on main, changed by #157">existing</a></div><div class="cp">PresenceStatusSchema</div><div class="f"><ol class="en"><li><span>online</span></li><li><span>offline</span></li></ol><div class="en-x">away is dropped (#157)<br>online on the first socket, offline 10 s after the last one closes</div></div><div class="ref">Referenced in <span>#156</span><span>#157</span><span>#158</span><span>#161</span></div></div>
+<div class="c" id="FriendshipStatus"><div class="ct">FriendshipStatus<span class="n">(2)</span><span class="pt" title="Planned in #155, not on main yet">planned</span></div><div class="cp">Prisma enum and zod schema · names to check</div><div class="f"><ol class="en"><li><span>pending</span></li><li><span>accepted</span></li></ol><div class="en-x">decline, cancel and remove delete the row<br>no blocked state: blocking is not built</div></div><div class="ref">Referenced in <span>#155</span></div></div>
+<div class="c m1" id="SocketErrorCode"><div class="ct">SocketErrorCode<span class="n">(6)</span><a class="m1t" href="https://github.com/VictorBro/ft_transcendence/blob/main/packages/shared/src/events/socket.ts" title="Existing enum on main">existing</a></div><div class="cp">SocketErrorCodeSchema · on app:error</div><div class="f"><ol class="en"><li><span>UNAUTHORIZED</span></li><li><span>FORBIDDEN</span></li><li><span>NOT_FOUND</span></li><li><span>RATE_LIMITED</span></li><li><span>VALIDATION_FAILED</span></li><li><span>INTERNAL</span></li></ol><div class="en-x">a bad event gets app:error, never a crash (#154)</div></div><div class="ref">Referenced in <span>#34</span><span>#154</span><span>#161</span></div></div>
+<div class="c" id="Limits"><div class="ct">Limits and timings</div><div class="cp">constants · names to check</div><div class="f"><b>message text</b>: 1–1,000 characters (#158)<br><b>offline grace</b>: 10 s after the last socket closes (#157)<br><b>reconnect</b>: with backoff, a "Reconnecting" badge (#154)<br><b>signup</b>: @ThrottleByIp(10) per minute again (#34)<br>CHAT_SEND_MAX_LENGTH = 500 goes with chat:* (#154)</div><div class="ref">Referenced in <span>#34</span><span>#154</span><span>#157</span><span>#158</span></div></div>
+<div class="c" id="Metrics"><div class="ct">Metrics</div><div class="cp">Prometheus · docs/MONITORING.md</div><div class="f"><b>ft_ws_connections</b>: open sockets<br><b>ft_ws_events_total</b>: events handled</div><div class="ref">Referenced in <span>#154</span></div></div>
+</div></section>
+
+<section class="g k-c" id="socket"><div class="gh"><i class="ti ti-plug-connected" aria-hidden="true"></i>Socket contract<span class="def">packages/shared/src/events/socket.ts</span><span class="def">existing, changed by #154</span><span class="def">#155, #157 and #158 add their events</span></div>
+<div class="gd">Event names, payload schemas and the typed pairs socket.io is built with. Every client event is parsed with its zod schema before a handler touches it, and every emit goes to one user's room. #154 removes the session:* and chat:* events, which belong to no plan.</div>
+<div class="cards">
+<div class="c" id="Events"><div class="ct">Event names<span class="pt" title="Planned changes in #154, #155, #157, #158">changed</span></div><div class="cp">CLIENT_EVENTS · SERVER_EVENTS</div><div class="f"><b>client → server</b>: dm:send with an ack, dm:read (#158)<br><b>server → client</b>: course:updated (#154); friend:request, friend:accepted, friend:removed (#155); presence:update (#157); dm:message (#158); app:error<br><b>− removed</b>: session:join, session:leave, chat:send, session:state, session:peer-joined, session:peer-left, chat:message (#154)</div><div class="ref">Referenced in <span>#154</span><span>#155</span><span>#157</span><span>#158</span></div></div>
+<div class="c m1" id="Rooms"><div class="ct">Rooms<a class="m1t" href="https://github.com/VictorBro/ft_transcendence/blob/main/packages/shared/src/events/socket.ts" title="Existing helper on main">existing</a></div><div class="cp">userRoom(userId) → user:&lt;id&gt;</div><div class="f">each socket joins user:&lt;id&gt; at the handshake<br>emits go to a user room only, never to everyone<br>a user's other tabs are in the same room<br>sessionRoom goes with session:* (to check)</div><div class="ref">Referenced in <span>#154</span><span>#155</span><span>#158</span></div></div>
+<div class="c m1" id="SocketData"><div class="ct">SocketData<a class="m1t" href="https://github.com/VictorBro/ft_transcendence/blob/main/packages/shared/src/events/socket.ts" title="Existing interface on main">existing</a></div><div class="cp">attached by the gateway once the handshake is verified</div><div class="f"><b>userId</b>, <b>locale</b><br>from the session cookie; anything else is rejected<br>the user's sockets close on logout, expiry and a 2FA change</div><div class="ref">Referenced in <span>#154</span></div></div>
+<div class="c m1" id="SocketAck"><div class="ct">SocketAck · SocketError<span id="SocketError"></span><a class="m1t" href="https://github.com/VictorBro/ft_transcendence/blob/main/packages/shared/src/events/socket.ts" title="Existing types on main">existing</a></div><div class="cp">socket.ts</div><div class="f"><b>SocketAck&lt;T&gt;</b>: { status: 'ok', data: T } | { status: 'error', error: SocketError }<br><b>SocketError</b>: { code: SocketErrorCode, message }<br>dm:send answers with an ack</div><div class="ref">Referenced in <span>#154</span><span>#158</span></div></div>
+<div class="c m1" id="PresenceUpdate"><div class="ct">PresenceUpdate<a class="m1t" href="https://github.com/VictorBro/ft_transcendence/blob/main/packages/shared/src/events/socket.ts" title="Existing schema on main">existing</a></div><div class="cp">PresenceUpdateSchema · presence:update</div><div class="f"><b>userId</b>: uuid<br><b>status</b>: PresenceStatus, online or offline<br><b>at</b>: ISO datetime<br>to the user's friends only; on connect, the state of each friend</div><div class="ref">Referenced in <span>#157</span></div></div>
+<div class="c" id="CourseUpdated"><div class="ct">CourseUpdated<span class="pt" title="Derived from the issue text, not yet in an issue or in code: check before implementing">to check</span></div><div class="cp">course:updated · payload not fixed by the issue</div><div class="f">sent to user:&lt;id&gt; when the goal or the level changes, and when a lesson finishes (#145's close)<br>the course page in the user's other tabs refreshes<br>proposal: { lang }, the page reads the course again</div><div class="ref">Referenced in <span>#154</span></div></div>
+<div class="c" id="FriendEvent"><div class="ct">FriendEvent<span class="pt" title="Derived from the issue text, not yet in an issue or in code: check before implementing">to check</span></div><div class="cp">friend:request · friend:accepted · friend:removed</div><div class="f">sent to the other user's room<br>proposal: { user: PublicUser } for request and accepted, { userId } for removed<br>the lists of both users update live</div><div class="ref">Referenced in <span>#155</span></div></div>
+<div class="c" id="DmEvents"><div class="ct">DmSend · DmMessage · DmRead<span id="DmMessage"></span><span id="DmRead"></span><span class="pt" title="Derived from the issue text, not yet in an issue or in code: check before implementing">to check</span></div><div class="cp">dm:send · dm:message · dm:read</div><div class="f"><b>dm:send</b>: { to or conversationId, text 1–1,000 }, ack with the stored message<br><b>dm:message</b>: the message, to user:&lt;other&gt; and the sender's other tabs<br><b>dm:read</b>: clears the unread count of a conversation<br>after a reconnect, the client fetches what it missed over REST</div><div class="ref">Referenced in <span>#158</span></div></div>
+<div class="c m1" id="TypedPairs"><div class="ct">ServerToClientEvents · ClientToServerEvents<span id="ClientToServerEvents"></span><a class="m1t" href="https://github.com/VictorBro/ft_transcendence/blob/main/packages/shared/src/events/socket.ts" title="Existing interfaces on main, changed">existing</a></div><div class="cp">socket.ts · CLIENT_EVENT_SCHEMAS</div><div class="f">one entry per event, typed with its payload<br><b>CLIENT_EVENT_SCHEMAS</b>: the zod schema of each client event, parsed before the handler<br><b>InterServerEvents</b>: empty, no Redis adapter (one API instance)</div><div class="ref">Referenced in <span>#154</span><span>#155</span></div></div>
+</div></section>
+
+<section class="g k-d" id="database"><div class="gh"><i class="ti ti-database" aria-hidden="true"></i>Database (Prisma)<span class="def">friendship in #155</span><span class="def">messages in #158</span></div>
+<div class="gd">The social state that outlives a connection. Every relation to User cascades, so deleting an account removes its friendships and conversations. Online status is not stored here: it lives in Redis.</div>
+<div class="cards">
+<div class="c" id="Friendship"><div class="ct">Friendship<span class="pt" title="Planned in #155, not on main yet">planned</span></div><div class="cp">one row per pair · migration add_friendships (name to check)</div><div class="f"><b>requesterId</b> → User, cascade<br><b>addresseeId</b> → User, cascade<br><b>status</b>: FriendshipStatus<br>timestamps to check<br>edge cases: yourself, a duplicate, already friends, two requests that cross</div><div class="ref">Referenced in <span>#155</span></div></div>
+<div class="c" id="Conversation"><div class="ct">Conversation<span class="pt" title="Planned in #158, not on main yet">planned</span></div><div class="cp">two users, one row per pair</div><div class="f">the two users, with relations to User<br>a pair key so each pair has one conversation (to check: ordered user ids)<br>only friends can message each other</div><div class="ref">Referenced in <span>#158</span></div></div>
+<div class="c" id="Message"><div class="ct">Message<span class="pt" title="Planned in #158, not on main yet">planned</span></div><div class="cp">belongs to a Conversation</div><div class="f"><b>senderId</b> → User<br><b>text</b>: 1 to 1,000 characters<br><b>createdAt</b><br><b>readAt</b>: null until the other user reads it<br>history read with cursor paging</div><div class="ref">Referenced in <span>#158</span></div></div>
+<div class="c m1" id="User"><div class="ct">User<a class="m1t" href="milestone2-data-model.html#User" title="Existing model, gains relations">existing</a></div><div class="cp">existing, gains relations only</div><div class="f">… existing fields, no new column<br><b>+</b> friendships sent and received<br><b>+</b> conversations and messages<br>email, 2FA and time zone never leave through a public route</div><div class="ref">Referenced in <span>#155</span><span>#156</span><span>#160</span></div></div>
+</div></section>
+
+<section class="g k-q" id="redis"><div class="gh"><i class="ti ti-bolt" aria-hidden="true"></i>Redis<span class="def">presence in #157</span><span class="def">RedisModule is global, on main</span></div>
+<div class="gd">Short-lived state that must survive a page reload but not a restart: who is online. One API instance, so no socket.io adapter.</div>
+<div class="cards">
+<div class="c" id="PresenceCount"><div class="ct">Presence count<span class="pt" title="Derived from the issue text, not yet in an issue or in code: check before implementing">to check</span></div><div class="cp">a connection count per user · key name to check</div><div class="f">+1 on connect, −1 on disconnect<br>online on the first socket<br>offline 10 s after the last one closes, so a reload does not flicker<br>proposal key: presence:&lt;userId&gt;</div><div class="ref">Referenced in <span>#154</span><span>#157</span></div></div>
+<div class="c" id="isOnline"><div class="ct">isOnline(ids)<span class="pt" title="Planned in #157, not on main yet">planned</span></div><div class="cp">for the REST routes</div><div class="f">ids → which of them are online<br>the friends list, the profile (#156) and messages (#158) show the dot</div><div class="ref">Referenced in <span>#157</span></div></div>
+</div></section>
+
+<section class="g k-a" id="api"><div class="gh"><i class="ti ti-world" aria-hidden="true"></i>REST schemas<span class="def">shared zod schemas</span><span class="def">behind the existing auth</span></div>
+<div class="gd">Request and response shapes between API and web. Paths and schema names are not fixed by the issues yet; the cards name what each route must do.</div>
+<div class="cards">
+<div class="c m1" id="PublicUser"><div class="ct">PublicUser<a class="m1t" href="https://github.com/VictorBro/ft_transcendence/blob/main/packages/shared/src/schemas/user.ts" title="Existing schema on main">existing</a></div><div class="cp">PublicUserSchema = UserSchema.pick(…) · user.ts</div><div class="f"><b>id, displayName, avatarUrl, locale</b><br>what search results, lists and events show of another user</div><div class="ref">Referenced in <span>#155</span><span>#156</span></div></div>
+<div class="c" id="Friends-routes"><div class="ct">Friends routes<span class="pt" title="Derived from the issue text, not yet in an issue or in code: check before implementing">to check</span></div><div class="cp">#155 · paths to check</div><div class="f">search users by display name<br>send, accept, decline, cancel, remove<br>list friends, list pending requests (incoming and outgoing)<br>remove asks first in the page</div><div class="ref">Referenced in <span>#155</span></div></div>
+<div class="c" id="PublicProfile"><div class="ct">PublicProfile<span class="pt" title="Planned in #156, not on main yet">planned</span></div><div class="cp">GET /api/users/:id · 404 for an unknown id</div><div class="f">public fields only: <b>avatar, display name</b><br><b>courses and levels</b>, <b>streak</b><br><b>rank and XP</b> once #95 has landed<br><b>number of achievements</b><br>never email, 2FA or time zone (checked by the API e2e)</div><div class="ref">Referenced in <span>#156</span></div></div>
+<div class="c" id="Conversations-routes"><div class="ct">Conversations routes<span class="pt" title="Derived from the issue text, not yet in an issue or in code: check before implementing">to check</span></div><div class="cp">#158 · paths to check</div><div class="f"><b>list</b>: the conversations with unread counts and the other user<br><b>history</b>: the messages of one conversation, cursor paging<br>a non-friend cannot send</div><div class="ref">Referenced in <span>#158</span></div></div>
+</div></section>
+
+<section class="g k-p" id="web"><div class="gh"><i class="ti ti-browser" aria-hidden="true"></i>Web<span class="def">apps/web</span><span class="def">strings in en, fr and de</span></div>
+<div class="gd">The pieces of the web app that hold the connection and show the social pages. Each new page replaces a placeholder that ships today, adds its route to e2e/support/routes.ts and passes the phone layout.</div>
+<div class="cards">
+<div class="c" id="SocketProvider"><div class="ct">SocketProvider<span class="pt" title="Planned in #154, not on main yet">planned</span></div><div class="cp">one per signed-in tab</div><div class="f">one connection whatever page the tab shows<br>reconnect with backoff, a "Reconnecting" badge<br>no console error while the API is down<br>wss:// on the deployed site, path /ws through Caddy</div><div class="ref">Referenced in <span>#154</span></div></div>
+<div class="c" id="Pages"><div class="ct">Pages</div><div class="cp">app/[locale]</div><div class="f"><b>/friends</b>: Friends (Amis, Freunde): search, requests, the list (#155)<br><b>/users/[id]</b>: a profile by id, with Add or Remove friend and the online dot (#156)<br><b>/chat</b>: Messages (Messages, Nachrichten): conversations, thread, input; replaces the tutor shell (#158)<br>Friends and Messages links in the account menu, session-nav.tsx</div><div class="ref">Referenced in <span>#155</span><span>#156</span><span>#158</span></div></div>
+<div class="c" id="Privacy"><div class="ct">Privacy and terms</div><div class="cp">/privacy · /terms</div><div class="f">friends lists (#155)<br>who can see your online status (#157)<br>messages are stored (#158)</div><div class="ref">Referenced in <span>#155</span><span>#157</span><span>#158</span></div></div>
+</div></section>
+
+<section class="g k-h" id="evaluation"><div class="gh"><i class="ti ti-checklist" aria-hidden="true"></i>Evaluation<span class="def">#159 to #161, #34</span></div>
+<div class="gd">What the evaluation checks beyond features: the browsers, the README and the defence. The README claims 22 points, of which 19 count.</div>
+<div class="cards">
+<div class="c" id="Browsers"><div class="ct">Playwright projects<span class="pt" title="In work in #159, PR #165">planned</span></div><div class="cp">e2e/playwright.config.ts</div><div class="f"><b>chromium</b>, <b>firefox</b>, <b>webkit</b><br>every suite on all three in CI (nightly if CI time hurts)<br>known limits in the README: without a speech voice, Listen buttons hide and the functions listening reply shows its text</div><div class="ref">Referenced in <span>#159</span></div></div>
+<div class="c wide" id="Modules-table"><div class="ct">README modules</div><div class="cp">#160 checks the table · #152 writes the Milestone 2 and custom modules</div><div class="tw"><table class="t"><caption>Modules <span>22 points, 19 count</span></caption>
+<tr><th>Module</th><th>Type</th><th>Points</th></tr>
+<tr><td>Frameworks, front and back (Next.js, NestJS)</td><td>Major</td><td>2</td></tr>
+<tr><td>Monitoring (Prometheus, Grafana)</td><td>Major</td><td>2</td></tr>
+<tr><td>Custom: CI/CD</td><td>Major</td><td>2</td></tr>
+<tr><td>Standard user management</td><td>Major</td><td class="dif">2</td></tr>
+<tr><td>Real-time features with WebSockets</td><td>Major</td><td class="dif">2</td></tr>
+<tr><td>User interaction</td><td>Major</td><td class="dif">2</td></tr>
+<tr><td>LLM interface</td><td>Major</td><td>2</td></tr>
+<tr><td>ORM (Prisma)</td><td>Minor</td><td>1</td></tr>
+<tr><td>Server-side rendering</td><td>Minor</td><td>1</td></tr>
+<tr><td>3 languages</td><td>Minor</td><td>1</td></tr>
+<tr><td>2FA</td><td>Minor</td><td>1</td></tr>
+<tr><td>Advanced search</td><td>Minor</td><td>1</td></tr>
+<tr><td>Gamification</td><td>Minor</td><td>1</td></tr>
+<tr><td>Additional browsers</td><td>Minor</td><td class="dif">1</td></tr>
+<tr><td>Custom: cloud deployment with DNS and Let's Encrypt</td><td>Minor</td><td>1</td></tr>
+</table></div><div class="f" style="margin-top:6px">bold = earned in this milestone (7 points)</div><div class="ref">Referenced in <span>#160</span></div></div>
+<div class="c" id="Defence"><div class="ct">docs/DEFENCE.md<span class="pt" title="Planned in #161, not on main yet">planned</span></div><div class="cp">the runbook · #161</div><div class="f">one section per module of the README table: what to show, which account, which command, who shows it<br>the mandatory checks, the LLM error triggers, two browsers side by side<br>a full rehearsal, its time noted</div><div class="ref">Referenced in <span>#161</span></div></div>
+<div class="c m1" id="Signup-throttle"><div class="ct">Signup throttle<a class="m1t" href="https://github.com/VictorBro/ft_transcendence/blob/main/apps/api/src/auth/auth.controller.ts" title="Existing decorator on main">existing</a></div><div class="cp">auth.controller.ts · #34</div><div class="f">@ThrottleByIp(30) back to <b>@ThrottleByIp(10)</b><br>fix the test traffic, not the limit: one account per worker<br>make all green without raising it</div><div class="ref">Referenced in <span>#34</span></div></div>
+</div></section>
+
+<section class="g" style="--gb:transparent;--gd:var(--border);--gt:var(--text-primary)"><div class="gh"><i class="ti ti-arrows-exchange" aria-hidden="true"></i>Relations between formats</div>
+<div class="gd">How one shape turns into another as data moves through the layers. Block color = the group it belongs to.</div>
+<div class="leg"><span class="m k-e">Enums + constants</span><span class="m k-c">Socket contract</span><span class="m k-d">Database</span><span class="m k-q">Redis</span><span class="m k-a">REST</span><span class="m k-p">Web</span></div>
+<div class="relwrap"><div class="rel">
+<span class="m k-p">session cookie</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-c">SocketData</span><span class="d">Verified at the handshake; the socket joins user:&lt;id&gt;. No session, no socket (#154).</span>
+<span class="m k-a">goal, level, finished lesson</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-c">course:updated</span><span class="d">Emitted to the user's room; the course page in the other tabs refreshes (#154).</span>
+<span class="m k-a">Friends routes</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-d">Friendship</span><span class="d">Send writes a pending row, accept sets it accepted, decline, cancel and remove delete it (#155).</span>
+<span class="m k-d">Friendship</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-c">friend:*</span><span class="d">Each change is pushed to the other user's room, so both lists update live (#155).</span>
+<span class="m k-c">connect, disconnect</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-q">Presence count</span><span class="d">The count per user decides online and offline, with a 10 s grace (#157).</span>
+<span class="m k-q">Presence count</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-c">PresenceUpdate</span><span class="d">Sent to accepted friends only; isOnline(ids) answers the REST routes.</span>
+<span class="m k-c">dm:send</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-d">Message</span><span class="d">Stored first, only between friends; the ack carries the stored message (#158).</span>
+<span class="m k-d">Message</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-c">dm:message</span><span class="d">To user:&lt;other&gt; and the sender's other tabs; dm:read sets readAt and clears the unread count.</span>
+<span class="m k-d">User, UserLevel</span><i class="ti ti-arrow-right" aria-hidden="true"></i><span class="m k-a">PublicProfile</span><span class="d">Public fields only, with courses, streak, rank and achievements; never email, 2FA or time zone (#156).</span>
+</div></div></section>
+
+<section class="g k-n" id="modules"><div class="gh"><i class="ti ti-box-model-2" aria-hidden="true"></i>NestJS modules<span class="def">apps/api/src</span><span class="def">PrismaModule and RedisModule are global, so no module imports them.</span></div>
+<div class="gd">The modules this milestone adds or changes in the API, with the issues that touch them. "planned" is not on main yet, "changed" exists and gains code here. Module names are proposals where the issues give none.</div>
+<div class="cards two">
+<div class="c" id="EventsModule"><div class="ct">Gateway module<span class="pt" title="Planned in #154, name to check">planned</span></div><div class="cp">@nestjs/websockets, @nestjs/platform-socket.io · path '/ws'</div><div class="f"><span class="md">The authenticated socket: handshake, rooms, per-socket rate limit, events parsed with their schemas, and the emit helpers the other modules call.</span><br><b>#154</b>: the gateway, course:updated, ft_ws_connections, ft_ws_events_total<br><b>#157</b>: the presence count and presence:update<br><b>Versions</b>: as in docs/VERSIONS.md</div><div class="ref">Referenced in <span>#154</span></div></div>
+<div class="c" id="FriendsModule"><div class="ct">FriendsModule<span class="pt" title="Planned in #155, name to check">planned</span></div><div class="cp">apps/api/src/friends · name to check</div><div class="f"><span class="md">Friend requests and the friends list, with live pushes through the gateway.</span><br><b>#155</b>: the routes, Friendship, friend:* events<br><b>Used by</b>: #156 (the friend button), #157 (who sees whom), #158 (only friends message)</div><div class="ref">Referenced in <span>#155</span><span>#156</span><span>#157</span><span>#158</span></div></div>
+<div class="c" id="MessagesModule"><div class="ct">MessagesModule<span class="pt" title="Planned in #158, name to check">planned</span></div><div class="cp">apps/api/src/messages · name to check</div><div class="f"><span class="md">Direct messages between friends: stored, then delivered live.</span><br><b>#158</b>: Conversation, Message, the list and history routes, dm:send, dm:read, dm:message</div><div class="ref">Referenced in <span>#158</span></div></div>
+<div class="c m1" id="UsersModule"><div class="ct">UsersModule<span class="pt" title="Existing module, changed in milestone 3">changed</span></div><div class="cp">apps/api/src/users · existing</div><div class="f"><span class="md">Gains the public profile.</span><br><b>#156</b>: GET /api/users/:id with public fields only</div><div class="ref">Referenced in <span>#156</span></div></div>
+<div class="c m1" id="AuthModule"><div class="ct">AuthModule<span class="pt" title="Existing module, changed in milestone 3">changed</span></div><div class="cp">apps/api/src/auth · existing</div><div class="f"><span class="md">Ends the user's sockets with the session, and restores the signup limit.</span><br><b>#154</b>: close the user's sockets on logout, expiry and a 2FA change<br><b>#34</b>: @ThrottleByIp(10) on signup</div><div class="ref">Referenced in <span>#34</span><span>#154</span></div></div>
+<div class="c m1" id="CoursesModule-m3"><div class="ct">CoursesModule · LessonsModule<span class="pt" title="Existing modules, changed in milestone 3">changed</span></div><div class="cp">apps/api/src/courses · apps/api/src/lessons · existing</div><div class="f"><span class="md">Tell the user's other tabs that the course changed.</span><br><b>#154</b>: a goal or level change emits course:updated; so does a finished lesson, added by whichever of #154 and #145 merges second</div><div class="ref">Referenced in <span>#154</span></div></div>
+</div></section>
+
+</main>
+<script src="gh-status.js"></script>
+<script>
+const base='https://github.com/VictorBro/ft_transcendence/issues/';
+/* Title, state, assignees and linked PR of each issue, as of 28 October 2026.
+   Replaced by the live state from GitHub (gh-status.js) when the page loads. */
+const ISSUES={34:{t:"Restore the signup rate limit to 10 per minute",s:"open",a:["bastian-schnitzler"],b:0,pr:null},
+154:{t:"feat: the WebSocket gateway",s:"open",a:["VictorBro"],b:0,pr:null},
+155:{t:"feat: friends",s:"open",a:[],b:1,pr:null},
+156:{t:"feat: public profiles",s:"open",a:[],b:1,pr:null},
+157:{t:"feat: online status",s:"open",a:[],b:2,pr:null},
+158:{t:"feat: direct messages between friends",s:"open",a:[],b:2,pr:null},
+159:{t:"test(e2e): Firefox and WebKit",s:"open",a:["bastian-schnitzler"],b:0,pr:[165, "bastian-schnitzler", "open"]},
+160:{t:"docs: the README for the evaluation",s:"open",a:[],b:1,pr:null},
+161:{t:"docs: defence runbook and rehearsal",s:"open",a:[],b:2,pr:null}};
+const STATUS_TEXT={open:'open',work:'in work',closed:'closed'};
+/* Closed, else in work when it has a PR or an assignee, else open. */
+const statusOf=i=>i.s==='closed'?'closed':((i.pr||i.a.length)?'work':'open');
+/* Ready to work on: open, none of its blocking issues open, nobody on it yet. */
+const isReady=i=>!!i&&statusOf(i)==='open'&&i.b===0;
+const blockText=i=>!i||i.s==='closed'||i.b==null?'':(i.b?', blocked by '+i.b+' open issue'+(i.b>1?'s':''):', not blocked');
+const hoverText=n=>{const i=ISSUES[n];if(!i)return '#'+n;return '#'+n+': '+i.t+', '+STATUS_TEXT[statusOf(i)]+blockText(i)+(i.pr?' (PR #'+i.pr[0]+' '+i.pr[2]+')':'');};
+const attr=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+document.querySelectorAll('.intro, .def, .ref span, .leg .m, .rel .d, .f, .gd').forEach(el=>{
+  el.innerHTML=el.innerHTML.replace(/(^|[^\w&])#(\d+)\b/g,(m,p,n)=>p+'<a class="il" data-n="'+n+'" href="'+base+n+'">#'+n+'</a>');
+});
+/* Colour every issue link by its state; PR numbers are left plain. */
+function paintIssues(){
+  document.querySelectorAll('a.il[data-n]').forEach(a=>{
+    const i=ISSUES[a.dataset.n];
+    a.classList.remove('st-open','st-work','st-closed');
+    a.classList.toggle('ready',isReady(i));
+    if(a.parentElement.matches('.ref span'))a.parentElement.classList.toggle('ready',isReady(i));
+    if(!i){a.title='#'+a.dataset.n;return;}
+    a.classList.add('st-'+statusOf(i));
+    a.title=hoverText(a.dataset.n);
+  });
+}
+paintIssues();
+(window.ghStatus||Promise.reject(new Error('gh-status.js not loaded'))).then(live=>{
+  Object.keys(live).forEach(n=>{const g=live[n];ISSUES[n]={t:g.t,s:g.s,a:g.a,b:g.b,pr:g.pr};});
+  paintIssues();
+  document.getElementById('live').textContent='Live from GitHub.';
+}).catch(()=>{document.getElementById('live').textContent='GitHub could not be reached: snapshot of 28 October 2026.';});
+document.querySelectorAll('.jump').forEach(el=>{
+  const go=()=>document.getElementById(el.dataset.target).scrollIntoView({block:'start'});
+  el.addEventListener('click',e=>{if(e.target.closest('a'))return;go();});
+  el.addEventListener('keydown',e=>{if(e.target!==el)return;if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});
+});
+</script>
+</body>
+</html>
