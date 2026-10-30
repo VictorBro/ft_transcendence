@@ -5,6 +5,7 @@ import { matchingPages, vocabularyLesson } from '../domain/vocabularyLesson';
 import {
   hasGender,
   isArticle,
+  nounGenders,
   startsWithArticle,
   TEACHING_ARTICLES,
   teachingArticle,
@@ -85,7 +86,8 @@ function articleIssue(t: VocabularyTarget, form: string, lang: Language): string
     return `"${form}" must include the ${rule.label}, or the target must declare an articleException`;
   const allowed =
     t.number === 'plural' ? [rule.plural] : t.genders.flatMap((g) => rule.singular[g] ?? []);
-  if (!allowed.includes(article))
+  // No gender of the language (a French neuter): checkForms reports it.
+  if (allowed.length && !allowed.includes(article))
     return `"${form}" uses "${article}" but a ${t.number} ${t.genders.join('/')} noun takes ${allowed.join(' or ')}`;
   return undefined;
 }
@@ -100,13 +102,18 @@ function articleIssue(t: VocabularyTarget, form: string, lang: Language): string
 function checkForms(t: VocabularyTarget, p: string, lang: Language, issues: Issues) {
   const rule = TEACHING_ARTICLES[lang];
   if (t.wordClass === 'noun') {
-    if (hasGender(lang))
+    if (hasGender(lang)) {
       issues.check(
         t.genders.length > 0,
         `${p}.genders`,
         'a noun needs at least one accepted gender',
       );
-    else issues.check(t.genders.length === 0, `${p}.genders`, `${lang} nouns have no gender`);
+      issues.check(
+        t.genders.every((g) => nounGenders(lang).includes(g)),
+        `${p}.genders`,
+        `${lang} nouns are ${nounGenders(lang).join(' or ')}`,
+      );
+    } else issues.check(t.genders.length === 0, `${p}.genders`, `${lang} nouns have no gender`);
     issues.check(t.number !== null, `${p}.number`, 'a noun needs a grammatical number');
     if (rule && t.articleException === null) {
       for (const f of t.examForms) {
@@ -127,6 +134,12 @@ function checkForms(t: VocabularyTarget, p: string, lang: Language, issues: Issu
         !t.examForms.some((f) => teachingArticle(lang, f)),
         `${p}.articleException`,
         `remove the articleException: the exam forms use ${lang === 'fr' ? 'an indefinite article' : 'an article'}`,
+      );
+    if (!rule)
+      issues.check(
+        t.articleException === null,
+        `${p}.articleException`,
+        `${lang} nouns are taught without an article; articleException must be null`,
       );
     issues.check(
       !startsWithArticle(lang, t.term),

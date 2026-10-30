@@ -12,6 +12,8 @@ import { functionsPageEstimate, functionsTimeLimit } from '../domain/functionsLe
 import { CHARACTER_ONLY, checkExplanations, sameSet } from './common';
 import {
   hasGender,
+  isArticle,
+  nounGenders,
   startsWithArticle,
   TEACHING_ARTICLES,
   teachingArticle,
@@ -110,13 +112,19 @@ export function checkFunctionsBrief(b: FunctionsBrief, ctx: OutlineContext, issu
   b.words.forEach((w, i) => {
     const p = `words.${i}`;
     if (w.wordClass === 'noun') {
-      if (hasGender(ctx.lang))
+      if (hasGender(ctx.lang)) {
         issues.check(
           w.genders.length > 0,
           `${p}.genders`,
           'a noun needs at least one accepted gender',
         );
-      else issues.check(w.genders.length === 0, `${p}.genders`, `${ctx.lang} nouns have no gender`);
+        issues.check(
+          w.genders.every((g) => nounGenders(ctx.lang).includes(g)),
+          `${p}.genders`,
+          `${ctx.lang} nouns are ${nounGenders(ctx.lang).join(' or ')}`,
+        );
+      } else
+        issues.check(w.genders.length === 0, `${p}.genders`, `${ctx.lang} nouns have no gender`);
       if (rule)
         issues.check(
           teachingArticle(ctx.lang, w.teachingForm) !== undefined,
@@ -125,7 +133,7 @@ export function checkFunctionsBrief(b: FunctionsBrief, ctx: OutlineContext, issu
         );
     } else issues.check(w.genders.length === 0, `${p}.genders`, 'only nouns have a gender');
     issues.check(
-      !startsWithArticle(ctx.lang, w.term),
+      !startsWithArticle(ctx.lang, w.term) && !isArticle(ctx.lang, w.term),
       `${p}.term`,
       `"${w.term}" must be the base term without article`,
     );

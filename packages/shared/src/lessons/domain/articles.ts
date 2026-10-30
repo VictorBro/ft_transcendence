@@ -6,12 +6,17 @@ import type { Gender } from '../schemas/vocabulary';
  *
  *   lang  a noun is taught and examined as      a term or a typed gap never starts with
  *   fr    un / une / des livre (D39)            le, la, l', les, un, une, des
- *   de    der / die / das Tisch, die (plural)   der, die, das, ein, eine, einen, einem, einer, eines
+ *   de    der / die / das Tisch, die (plural)   der, die, das, den, dem, des,
+ *                                               ein, eine, einen, einem, einer, eines
  *   en    book: no article                      a, an, the
  */
 
 /** true when the course language's nouns have a gender: fr and de, not en. */
 export const hasGender = (lang: Language) => lang === 'fr' || lang === 'de';
+
+/** The genders a noun of the course language can have: fr masculine or feminine, de also neuter. */
+export const nounGenders = (lang: Language) =>
+  Object.keys(TEACHING_ARTICLES[lang]?.singular ?? {}) as Gender[];
 
 interface TeachingArticles {
   /** How the messages name it: "indefinite article un/une/des". */
@@ -40,7 +45,7 @@ export const TEACHING_ARTICLES: Record<Language, TeachingArticles | null> = {
 /** The articles a term or a typed gap answer must not start with. */
 export const STRIPPED_ARTICLES: Record<Language, readonly string[]> = {
   fr: ['le', 'la', "l'", 'les', 'un', 'une', 'des'],
-  de: ['der', 'die', 'das', 'ein', 'eine', 'einen', 'einem', 'einer', 'eines'],
+  de: ['der', 'die', 'das', 'den', 'dem', 'des', 'ein', 'eine', 'einen', 'einem', 'einer', 'eines'],
   en: ['a', 'an', 'the'],
 };
 
