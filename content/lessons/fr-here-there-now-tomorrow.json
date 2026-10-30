@@ -1013,21 +1013,21 @@
                 },
                 {
                   "tokenId": "t-4",
-                  "text": "demain"
+                  "text": "hier"
                 }
               ],
               "faultyTokenId": "t-4",
               "correction": {
                 "mode": "type",
                 "accepted": {
-                  "answers": ["maintenant"]
+                  "answers": ["maintenant", "aujourd’hui", "demain"]
                 },
                 "choices": []
               },
               "answerExplanation": {
-                "en": "Maintenant means \"now\", at this moment.",
-                "fr": "Maintenant veut dire « en ce moment ».",
-                "de": "Maintenant heißt „jetzt“, in diesem Moment."
+                "en": "Hier means \"yesterday\" and does not go with the present suis. Maintenant, aujourd’hui or demain fit.",
+                "fr": "Hier, c’est le jour d’avant : il ne va pas avec le présent suis. Maintenant, aujourd’hui ou demain conviennent.",
+                "de": "Hier heißt „gestern“ und passt nicht zum Präsens suis. Maintenant, aujourd’hui oder demain passen."
               },
               "itemId": "ex-time-spot-2"
             }
@@ -1400,10 +1400,10 @@
     "generator": "claude-code-direct-authoring",
     "model": "claude-opus-5-5",
     "promptVersion": "content-v4",
-    "generatedAt": "2026-10-16T17:56:30.105Z",
+    "generatedAt": "2026-10-30T12:34:58.222Z",
     "inputHashes": {
       "outline": "0c4fac30a03f1b75a15894cc0ab8190bcf7cc3661c04d68c6a668d5eb2ae7a55",
-      "brief": "42fe09ba66b636f058b419e0ee73dc4377f7c9521d255d6e7a206c095b996c66"
+      "brief": "2a74f1dffb44cb69a2d644eab387fb3c998a2f028c0bf31814c424b829e5b6df"
     }
   }
 }
