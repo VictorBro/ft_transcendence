@@ -1,14 +1,16 @@
+import type { Language } from '../../schemas/language';
 import { nativeLocales } from '../schemas/artifactCommon';
 import type { VocabularyBrief, VocabularyTarget } from '../schemas/vocabulary';
 import { matchingPages, vocabularyLesson } from '../domain/vocabularyLesson';
 import {
-  checkMarkNamed,
-  checkMinutes,
-  checkRichText,
-  FR_ARTICLE_START,
-  FR_INDEFINITE,
-  sameSet,
-} from './common';
+  hasGender,
+  isArticle,
+  nounGenders,
+  startsWithArticle,
+  TEACHING_ARTICLES,
+  teachingArticle,
+} from '../domain/articles';
+import { checkMarkNamed, checkMinutes, checkRichText, sameSet } from './common';
 import type { OutlineContext } from './artifacts';
 import type { Issues } from './issues';
 
@@ -22,7 +24,7 @@ import type { Issues } from './issues';
  * - the lists: every target id unique, every target in exactly one group,
  *   targetCount right;
  * - each word's forms: only nouns have a gender and a number, and a
- *   French noun is taught and examined with un/une/des ("un livre");
+ *   French or German noun is taught and examined with its article ("un livre");
  * - each word's exercise texts: the gap, the listening options, the
  *   explanations and the matching labels must give exactly one right
  *   answer.
@@ -67,62 +69,83 @@ export function checkVocabularyBrief(b: VocabularyBrief, ctx: OutlineContext, is
 /* =================================================================== forms */
 
 /**
- * The French article rule: a noun is taught and examined with its
- * indefinite article, and the article agrees with the noun.
+ * The article rule: in French and German a noun is taught and examined
+ * with its article, and the article agrees with the noun.
  *
- *   singular masculine → un livre          plural → des ciseaux
- *   singular feminine  → une table         both genders → un élève, une élève
+ *   fr  un livre, une table, des ciseaux, un élève / une élève
+ *   de  der Tisch, die Lampe, das Buch, die Bücher
+ *   en  no rule
  *
  * Returns what is wrong with `form`, or undefined when it is right.
  */
-function frArticleIssue(t: VocabularyTarget, form: string): string | undefined {
-  const article = /^(un|une|des) /u.exec(form)?.[1];
+function articleIssue(t: VocabularyTarget, form: string, lang: Language): string | undefined {
+  const rule = TEACHING_ARTICLES[lang];
+  if (!rule) return undefined;
+  const article = teachingArticle(lang, form);
   if (!article)
-    return `"${form}" must include the indefinite article un/une/des, or the target must declare an articleException`;
+    return `"${form}" must include the ${rule.label}, or the target must declare an articleException`;
   const allowed =
-    t.number === 'plural' ? ['des'] : t.genders.map((g) => (g === 'feminine' ? 'une' : 'un'));
-  if (!allowed.includes(article))
+    t.number === 'plural' ? [rule.plural] : t.genders.flatMap((g) => rule.singular[g] ?? []);
+  // No gender of the language (a French neuter): checkForms reports it.
+  if (allowed.length && !allowed.includes(article))
     return `"${form}" uses "${article}" but a ${t.number} ${t.genders.join('/')} noun takes ${allowed.join(' or ')}`;
   return undefined;
 }
 
 /**
  * The forms of one word. Only a noun has genders, a number and an
- * article; a French noun's forms carry the right article, unless the word
- * has an articleException (a country, a set phrase). The term, shown
- * alone in the gender exercise, never has one: that would give the answer.
+ * article; a French or German noun's forms carry the right article, unless
+ * the word has an articleException (a country, a set phrase). The term,
+ * shown alone in the gender exercise, never has one: that would give the
+ * answer.
  */
-function checkForms(t: VocabularyTarget, p: string, lang: string, issues: Issues) {
-  const fr = lang === 'fr';
+function checkForms(t: VocabularyTarget, p: string, lang: Language, issues: Issues) {
+  const rule = TEACHING_ARTICLES[lang];
   if (t.wordClass === 'noun') {
-    issues.check(t.genders.length > 0, `${p}.genders`, 'a noun needs at least one accepted gender');
+    if (hasGender(lang)) {
+      issues.check(
+        t.genders.length > 0,
+        `${p}.genders`,
+        'a noun needs at least one accepted gender',
+      );
+      issues.check(
+        t.genders.every((g) => nounGenders(lang).includes(g)),
+        `${p}.genders`,
+        `${lang} nouns are ${nounGenders(lang).join(' or ')}`,
+      );
+    } else issues.check(t.genders.length === 0, `${p}.genders`, `${lang} nouns have no gender`);
     issues.check(t.number !== null, `${p}.number`, 'a noun needs a grammatical number');
-    if (fr && t.articleException === null) {
+    if (rule && t.articleException === null) {
       for (const f of t.examForms) {
-        const m = frArticleIssue(t, f);
+        const m = articleIssue(t, f, lang);
         issues.check(!m, `${p}.examForms`, m ?? '');
       }
-      const m = frArticleIssue(t, t.teachingForm);
+      const m = articleIssue(t, t.teachingForm, lang);
       issues.check(!m, `${p}.teachingForm`, m ?? '');
       for (const v of t.genderVariants)
         issues.check(
-          FR_INDEFINITE.test(v),
+          teachingArticle(lang, v) !== undefined,
           `${p}.genderVariants`,
-          `"${v}" must include the indefinite article un/une/des`,
+          `"${v}" must include the ${rule.label}`,
         );
     }
-    if (fr && t.articleException !== null)
+    if (rule && t.articleException !== null)
       issues.check(
-        !t.examForms.some((f) => FR_INDEFINITE.test(f)),
+        !t.examForms.some((f) => teachingArticle(lang, f)),
         `${p}.articleException`,
-        'remove the articleException: the exam forms use an indefinite article',
+        `remove the articleException: the exam forms use ${lang === 'fr' ? 'an indefinite article' : 'an article'}`,
       );
-    if (fr)
+    if (!rule)
       issues.check(
-        !/^(le|la|les|un|une|des) |^l'/iu.test(t.term),
-        `${p}.term`,
-        `"${t.term}" must be the base term without article`,
+        t.articleException === null,
+        `${p}.articleException`,
+        `${lang} nouns are taught without an article; articleException must be null`,
       );
+    issues.check(
+      !startsWithArticle(lang, t.term),
+      `${p}.term`,
+      `"${t.term}" must be the base term without article`,
+    );
   } else {
     issues.check(t.genders.length === 0, `${p}.genders`, 'only nouns have a gender');
     issues.check(t.number === null, `${p}.number`, 'only nouns have a grammatical number here');
@@ -148,7 +171,7 @@ function checkForms(t: VocabularyTarget, p: string, lang: string, issues: Issues
  *
  * - gap: a sentence with the word missing, and four reference words to
  *   choose from (the word and three others of the lesson). Only the word
- *   may fit, and in French the typed answer has no article;
+ *   may fit, and the typed answer has no article;
  * - listening: four words of the lesson to choose from, the word included;
  * - explanations: name the accent, not only the letter;
  * - examPrompt: when the word has gender variants (espagnol, espagnole),
@@ -158,7 +181,7 @@ function checkExerciseTexts(
   t: VocabularyTarget,
   p: string,
   b: VocabularyBrief,
-  lang: string,
+  lang: Language,
   issues: Issues,
 ) {
   const known = (id: string, path: string) =>
@@ -168,10 +191,15 @@ function checkExerciseTexts(
       `unknown target ${id}`,
     );
   const noun = t.wordClass === 'noun';
+  const gendered = noun && t.genders.length > 0;
   issues.check(
-    (t.genderExplanation !== null) === noun,
+    (t.genderExplanation !== null) === gendered,
     `${p}.genderExplanation`,
-    noun ? 'required for a noun' : 'only nouns have a gender explanation',
+    gendered
+      ? 'required for a noun'
+      : noun
+        ? 'a noun without gender has no gender explanation'
+        : 'only nouns have a gender explanation',
   );
 
   const refs = t.gap.referenceTargetIds;
@@ -181,13 +209,12 @@ function checkExerciseTexts(
     'four distinct reference targets including the word',
   );
   refs.forEach((id) => known(id, `${p}.gap.referenceTargetIds`));
-  if (lang === 'fr')
-    for (const a of t.gap.accepted.answers)
-      issues.check(
-        (a === 'un' && t.wordClass === 'numeral') || !FR_ARTICLE_START.test(a),
-        `${p}.gap.accepted`,
-        `typed-gap answer "${a}" must be article-free`,
-      );
+  for (const a of t.gap.accepted.answers)
+    issues.check(
+      !startsWithArticle(lang, a) && (!isArticle(lang, a) || t.wordClass === 'numeral'),
+      `${p}.gap.accepted`,
+      `typed-gap answer "${a}" must be article-free`,
+    );
   const otherTerms = refs
     .filter((id) => id !== t.id)
     .map((id) => b.targets.find((x) => x.id === id)?.term.toLowerCase());
@@ -224,7 +251,7 @@ function checkExerciseTexts(
  * translation, or matchingLabel when set). Checked page by page, in every
  * mother tongue, with the pages the lesson will have.
  */
-function checkMatchingLabels(b: VocabularyBrief, lang: string, issues: Issues) {
+function checkMatchingLabels(b: VocabularyBrief, lang: Language, issues: Issues) {
   matchingPages(b).forEach((ids, n) => {
     const page = ids.map((id) => b.targets.find((t) => t.id === id)).filter((t) => t !== undefined);
     for (const locale of nativeLocales(lang))

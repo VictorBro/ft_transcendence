@@ -1,4 +1,6 @@
+import type { Language } from '../../schemas/language';
 import type { LocalizedText } from '../schemas/artifactCommon';
+import { hasGender } from './articles';
 
 /**
  * The fixed texts of the lessons, in en, fr and de: the name of each step
@@ -13,8 +15,8 @@ import type { LocalizedText } from '../schemas/artifactCommon';
  *
  * Only COPY is read here, by vocabularyLesson.ts. The others are for the
  * authoring kit (#83), which builds the steps of grammar, functions and
- * reading lessons. Some texts say "French": #136 makes them name the
- * course language.
+ * reading lessons. The exam instruction comes from examInstruction(lang),
+ * which names the course language.
  */
 
 /** A shortcut to write { en, fr, de } on one line. */
@@ -70,14 +72,7 @@ export const COPY = {
       'Hör zu und wähle das Wort, das du hörst.',
     ),
   ],
-  exam: [
-    L('Final exam', 'Examen final', 'Abschlussprüfung'),
-    L(
-      'Translate each word into French, with its article for nouns.',
-      'Traduisez chaque mot en français, avec l’article pour les noms.',
-      'Übersetze jedes Wort ins Französische, bei Nomen mit Artikel.',
-    ),
-  ],
+  exam: [L('Final exam', 'Examen final', 'Abschlussprüfung')],
   dictation: [
     L('Dictation', 'Dictée', 'Diktat'),
     L(
@@ -149,7 +144,7 @@ export const EXERCISE_INSTRUCTIONS = {
 
 /**
  * Functions lessons. The entries that are a single text (wordCards,
- * wordMatching, examWords, examDialogue) are page instructions for the
+ * wordMatching, examDialogue) are page instructions for the
  * pages about words, or for the exam's other pages.
  */
 export const FUNCTIONS_COPY = {
@@ -227,11 +222,6 @@ export const FUNCTIONS_COPY = {
       'Hör zu und wähle dann die passende Antwort.',
     ),
   ],
-  examWords: L(
-    'Translate each word into French, with its article for nouns.',
-    'Traduisez chaque mot en français, avec l’article pour les noms.',
-    'Übersetze jedes Wort ins Französische, bei Nomen mit Artikel.',
-  ),
   examDialogue: L(
     'Fill each gap with an expression from this lesson.',
     'Complétez chaque trou avec une expression de la leçon.',
@@ -290,3 +280,38 @@ export const READING_COPY = {
     ),
   ],
 } as const;
+
+/** "into German", in each interface language. */
+const INTO: Record<Language, LocalizedText> = {
+  fr: L('into French', 'en français', 'ins Französische'),
+  de: L('into German', 'en allemand', 'ins Deutsche'),
+  en: L('into English', 'en anglais', 'ins Englische'),
+};
+
+/**
+ * The instruction of a vocabulary or functions exam: it names the
+ * course language, and asks for the article only where nouns have one.
+ *   de → "Translate each word into German, with its article for nouns."
+ *   en → "Translate each word into English."
+ */
+export function examInstruction(lang: Language): LocalizedText {
+  const into = INTO[lang];
+  return hasGender(lang)
+    ? L(
+        `Translate each word ${into.en}, with its article for nouns.`,
+        `Traduisez chaque mot ${into.fr}, avec l’article pour les noms.`,
+        `Übersetze jedes Wort ${into.de}, bei Nomen mit Artikel.`,
+      )
+    : L(
+        `Translate each word ${into.en}.`,
+        `Traduisez chaque mot ${into.fr}.`,
+        `Übersetze jedes Wort ${into.de}.`,
+      );
+}
+
+/** The dictation's instruction: the article only where nouns have one. */
+export function dictationInstruction(lang: Language): LocalizedText {
+  return hasGender(lang)
+    ? COPY.dictation[1]
+    : L('Listen and write the word.', 'Écoutez et écrivez le mot.', 'Hör zu und schreib das Wort.');
+}
