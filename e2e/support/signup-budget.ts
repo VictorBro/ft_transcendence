@@ -98,24 +98,24 @@ const book = (): Promise<number> =>
  * Resolves when one more signup may be sent. Call it right before whatever
  * sends POST /auth/signup, whether that is a request or a click on the form.
  *
- * The wait is added to the running test's timeout, so a test that queued
- * behind other workers is not failed for it. Worker fixtures have no running
- * test; they set a timeout of their own that covers the longest wait.
+ * By default the wait is added to the running test's timeout, so a test that
+ * queued behind other workers is not failed for it. A worker fixture passes
+ * `extendTestTimeout: false`: test.info() there is the test that triggered the
+ * fixture, and setTimeout() would replace the fixture's own
+ * WORKER_SIGNUP_TIMEOUT_MS with that test's 30 s plus the wait.
  */
-export const signUpSlot = async (): Promise<void> => {
+export const signUpSlot = async ({ extendTestTimeout = true } = {}): Promise<void> => {
   const wait = (await book()) - Date.now();
   if (wait <= 0) {
     return;
   }
 
-  try {
+  if (extendTestTimeout) {
     const info = test.info();
     // 0 means no timeout, which nothing needs extending.
     if (info.timeout > 0) {
       info.setTimeout(info.timeout + wait);
     }
-  } catch {
-    // Not inside a test: a worker fixture, covered by its own timeout.
   }
   await sleep(wait);
 };

@@ -45,8 +45,16 @@ const ALLOWED_MESSAGES: RegExp[] = [
 const IGNORED_REQUEST_FAILURES =
   /^(net::ERR_ABORTED|NS_BINDING_ABORTED|cancelled|Load request cancelled)$/;
 
-function isAllowed(text: string): boolean {
-  return ALLOWED_MESSAGES.some((pattern) => pattern.test(text));
+/**
+ * Every entry in ALLOWED_MESSAGES is justified by Grafana's bundle, so the
+ * allowance holds on Grafana's pages only. The same warning on one of ours
+ * still fails the gate.
+ */
+function isAllowed(text: string, page: Page): boolean {
+  return (
+    new URL(page.url()).pathname.startsWith('/grafana/') &&
+    ALLOWED_MESSAGES.some((pattern) => pattern.test(text))
+  );
 }
 
 function describeLocation(message: ConsoleMessage): string | undefined {
@@ -98,7 +106,7 @@ export function watchConsole(page: Page): ConsoleViolation[] {
     }
 
     const text = message.text();
-    if (isAllowed(text)) {
+    if (isAllowed(text, page)) {
       return;
     }
 
@@ -110,7 +118,7 @@ export function watchConsole(page: Page): ConsoleViolation[] {
   });
 
   page.on('pageerror', (error: Error) => {
-    if (isAllowed(error.message)) {
+    if (isAllowed(error.message, page)) {
       return;
     }
     violations.push({
@@ -122,7 +130,7 @@ export function watchConsole(page: Page): ConsoleViolation[] {
 
   page.on('requestfailed', (request: Request) => {
     const reason = request.failure()?.errorText ?? 'unknown failure';
-    if (IGNORED_REQUEST_FAILURES.test(reason) || isAllowed(reason)) {
+    if (IGNORED_REQUEST_FAILURES.test(reason) || isAllowed(reason, page)) {
       return;
     }
     violations.push({

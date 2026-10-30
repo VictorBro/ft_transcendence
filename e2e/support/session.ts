@@ -50,8 +50,12 @@ export const identity = (): Identity => {
  * context. The form has its own tests in auth.spec.ts; everywhere else it is
  * setup, and a slow machine pays seconds per account for it.
  */
-export const signUp = async (page: Page, fields: Identity = identity()): Promise<void> => {
-  await signUpSlot();
+export const signUp = async (
+  page: Page,
+  fields: Identity = identity(),
+  { inWorkerFixture = false } = {},
+): Promise<void> => {
+  await signUpSlot({ extendTestTimeout: !inWorkerFixture });
   const created = await page.request.post('/api/auth/signup', {
     data: { ...fields, password: PASSWORD },
   });
@@ -122,7 +126,11 @@ export interface Account {
 const longestDisplayName = (): string =>
   `browser${crypto.randomUUID().replace(/-/g, '').slice(0, 25)}`;
 
-/** Signs up in a throwaway context, runs `setUp` as that user, keeps the cookies. */
+/**
+ * Signs up in a throwaway context, runs `setUp` as that user, keeps the cookies.
+ * Only the worker fixtures below call it, so the signup wait counts against
+ * their WORKER_SIGNUP_TIMEOUT_MS rather than a test's timeout.
+ */
 const newAccount = async (
   browser: Browser,
   setUp: (page: Page) => Promise<void> = async () => {},
@@ -131,7 +139,7 @@ const newAccount = async (
   const context = await browser.newContext();
   const page = await context.newPage();
 
-  await signUp(page, fields);
+  await signUp(page, fields, { inWorkerFixture: true });
   await setUp(page);
   const storageState = await context.storageState();
   await context.close();
