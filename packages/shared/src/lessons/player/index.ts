@@ -37,6 +37,7 @@ export {
   normalizeAnswer,
   percent,
   roundScore,
+  storedScore,
   scoreUnit,
   type AnswerMark,
   type AnswerOutcome,

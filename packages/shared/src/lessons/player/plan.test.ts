@@ -5,7 +5,8 @@ import { PLAYER_COPY } from './copy';
 import { BY_KIND, FIXTURE_LESSONS, fixtureLesson } from './fixtures.testing';
 import { kindModule, requiredReveals, skipsFeedbackWhenRight } from './kinds';
 import { motherTongue } from './motherTongue';
-import { buildPlan, isScored, type LessonPlan, type PlanPage } from './plan';
+import { buildPlan, isScored, wordOrder, type LessonPlan, type PlanPage } from './plan';
+import { scoreUnit } from './score';
 
 const plan = (id: (typeof FIXTURE_LESSONS)[number], tongue: 'en' | 'de' = 'en') =>
   buildPlan(fixtureLesson(id), tongue);
@@ -166,12 +167,91 @@ describe('buildPlan', () => {
     expect(functions.form).toMatch(/^(un|une|des|le|la|l') /u);
   });
 
-  it('leaves the full stop out of a word order', () => {
-    const units = plan('fr-negation-ne-pas').pages.flatMap((x) => x.units);
-    const order = units.find((u) => u.kind === 'order')!;
-    if (order.kind !== 'order') throw new Error('not an order');
-    expect(order.tokens.map((t) => t.text)).not.toContain('.');
-    for (const o of order.acceptedOrders) expect(o).toHaveLength(order.tokens.length);
+  it('leaves the full stop that ends every accepted order out of a word order', () => {
+    const tokens = [
+      { tokenId: 'je', text: 'Je' },
+      { tokenId: 'suis', text: 'suis' },
+      { tokenId: 'la', text: 'là' },
+      { tokenId: 'stop', text: '.' },
+    ];
+    const order = wordOrder({
+      tokens,
+      acceptedOrders: [
+        ['je', 'suis', 'la', 'stop'],
+        ['la', 'je', 'suis', 'stop'],
+      ],
+    });
+    expect(order.tokens.map((t) => t.id)).toEqual(['je', 'suis', 'la']);
+    expect(order.acceptedOrders).toEqual([
+      ['je', 'suis', 'la'],
+      ['la', 'je', 'suis'],
+    ]);
+    expect(order.answer).toBe('Je suis là');
+    // A full stop that does not end every order, or a "?", stays a token.
+    const kept = wordOrder({ tokens, acceptedOrders: [['je', 'suis', 'stop', 'la']] });
+    expect(kept.tokens.map((t) => t.id)).toContain('stop');
+    const question = wordOrder({
+      tokens: [...tokens.slice(0, 3), { tokenId: 'q', text: '?' }],
+      acceptedOrders: [['je', 'suis', 'la', 'q']],
+    });
+    expect(question.tokens.map((t) => t.id)).toContain('q');
+  });
+
+  it('marks a noun taught in the plural as a plurale tantum, in vocabulary and functions', () => {
+    // Vocabulary: a target with number "plural".
+    const vocabulary = fixtureLesson(BY_KIND.vocabulary);
+    if (vocabulary.brief.kind !== 'vocabulary') throw new Error('not vocabulary');
+    const [livre, ...others] = vocabulary.brief.targets;
+    const ciseaux = {
+      ...livre,
+      term: 'ciseaux',
+      number: 'plural' as const,
+      teachingForm: 'des ciseaux',
+      examForms: ['des ciseaux'],
+    };
+    const v = buildPlan(
+      { ...vocabulary, brief: { ...vocabulary.brief, targets: [ciseaux, ...others] } },
+      'en',
+    );
+    const vUnit = v.pages.flatMap((x) => x.units).find((u) => u.id.endsWith(`/exam-${livre.id}`))!;
+    // Functions: a word whose teaching form starts with "des".
+    const functions = fixtureLesson(BY_KIND.functions);
+    if (functions.brief.kind !== 'functions' || !functions.content)
+      throw new Error('not functions');
+    const words = functions.brief.words.map((w) =>
+      w.id === 'cafe' ? { ...w, teachingForm: 'des cafés' } : w,
+    );
+    const steps = functions.content.steps.map((s) => ({
+      ...s,
+      pages: s.pages.map((pg) => ({
+        ...pg,
+        items: pg.items.map((it) =>
+          it.type === 'function_translation_exam' && it.wordId === 'cafe'
+            ? { ...it, accepted: { answers: ['des cafés'] } }
+            : it,
+        ),
+      })),
+    }));
+    const f = buildPlan(
+      {
+        brief: { ...functions.brief, words },
+        content: { ...functions.content, steps } as typeof functions.content,
+      },
+      'en',
+    );
+    const fUnit = f.pages.flatMap((x) => x.units).find((u) => u.id === 'exam-words/word-cafe')!;
+
+    for (const [unit, answer] of [
+      [vUnit, 'des ciseaux'],
+      [fUnit, 'des cafés'],
+    ] as const) {
+      if (unit.kind !== 'text') throw new Error('not a text unit');
+      expect(unit.noun?.pluraleTantum).toBe(true);
+      // "des …" counts only with a right gender.
+      expect(scoreUnit(unit, { text: answer }).points).toBe(0);
+      expect(scoreUnit(unit, { text: answer, gender: 'feminine' }).points).toBe(0);
+      expect(scoreUnit(unit, { text: answer, gender: 'masculine' }).points).toBe(1);
+    }
   });
 
   it('keeps the distractors of a functions exam reply', () => {

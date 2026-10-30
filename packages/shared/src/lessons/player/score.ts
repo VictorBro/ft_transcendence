@@ -60,7 +60,7 @@ const stripMarks = (s: string) => s.normalize('NFD').replace(/\p{M}/gu, '').norm
 /** Case and accents removed. */
 const foldAccents = (s: string) => stripMarks(s.toLowerCase());
 
-/** Also spells ligatures and umlauts as two letters: sœur ~ soeur, Mädchen ~ Maedchen. */
+/** Also spells ligatures, umlauts and ß as two letters: sœur ~ soeur, Mädchen ~ Maedchen, Straße ~ Strasse. */
 const foldDigraphs = (s: string) =>
   stripMarks(
     s
@@ -69,7 +69,8 @@ const foldDigraphs = (s: string) =>
       .replace(/æ/g, 'ae')
       .replace(/ä/g, 'ae')
       .replace(/ö/g, 'oe')
-      .replace(/ü/g, 'ue'),
+      .replace(/ü/g, 'ue')
+      .replace(/ß/g, 'ss'),
   );
 
 export interface Classification {
@@ -327,5 +328,14 @@ export function lessonResults(plan: LessonPlan, locked: LockedPoints): LessonRes
   return { practice, exam, total, steps };
 }
 
-/** The score as the results show it, with one decimal: 78.25 → 78.3. LessonResult stores Math.round. */
-export const roundScore = (total: number) => Math.round((total + Number.EPSILON) * 10) / 10;
+/**
+ * A score cut to 6 decimals first, so a half that floating point stores
+ * just below itself (63.75 as 63.74999999999999) still rounds up.
+ */
+const exact = (x: number) => Number(x.toFixed(6));
+
+/** The score as the results show it, with one decimal, halves up: 63.75 → 63.8. */
+export const roundScore = (total: number) => Math.round(exact(total * 10)) / 10;
+
+/** The score LessonResult stores, a whole number, halves up: 69.5 → 70. */
+export const storedScore = (total: number) => Math.round(exact(total));

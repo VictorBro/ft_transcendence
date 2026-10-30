@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { BY_KIND, fixtureLesson } from './fixtures.testing';
+import { BY_KIND, FIXTURE_LESSONS, fixtureLesson } from './fixtures.testing';
 import { buildPlan, type PlanUnit } from './plan';
 import {
   answerMarks,
@@ -11,6 +11,7 @@ import {
   normalizeAnswer,
   roundScore,
   scoreUnit,
+  storedScore,
   type UnitResponse,
 } from './score';
 
@@ -72,6 +73,7 @@ describe('classifyAnswer', () => {
       ['das Madchen', 'das Mädchen'],
       ['schoen', 'schön'],
       ['fur', 'für'],
+      ['die Strasse', 'die Straße'],
     ])
       expect(classifyAnswer(given, accepted([answer])).outcome).toBe('orthography_only');
   });
@@ -273,6 +275,38 @@ describe('lessonResults', () => {
   it('shows one decimal: 78.25 is 78.3', () => {
     expect(roundScore(78.25)).toBe(78.3);
     expect(roundScore(67)).toBe(67);
+  });
+
+  it('rounds halves up, also where floating point lands just below them', () => {
+    /** Locks `earned` points (halves allowed) on each role's units, in order. */
+    const total = (id: (typeof FIXTURE_LESSONS)[number], practice: number, exam: number) => {
+      const p = buildPlan(fixtureLesson(id), 'en');
+      const points = (role: 'practice' | 'exam', earned: number) =>
+        p.pages
+          .filter((x) => x.role === role)
+          .flatMap((x) => x.units)
+          .map((u, n) => [u.id, { points: Math.min(1, Math.max(0, earned - n)) }] as const);
+      const results = lessonResults(
+        p,
+        Object.fromEntries([...points('practice', practice), ...points('exam', exam)]),
+      );
+      return { results, total: results.total };
+    };
+    // 1/24 and 11.5/12: exactly 63.75, computed as 63.74999999999999.
+    const cafe = total('fr-ordering-at-a-cafe', 1, 11.5);
+    expect([cafe.results.practice, cafe.results.exam]).toEqual([
+      { earned: 1, possible: 24 },
+      { earned: 11.5, possible: 12 },
+    ]);
+    expect(roundScore(cafe.total)).toBe(63.8);
+    expect(storedScore(cafe.total)).toBe(64);
+    // 0.5/30 and 10/12: 54.75. 14/30 and 10/12: 70.5, a pass once stored.
+    expect(roundScore(total('fr-verb-etre-present', 0.5, 10).total)).toBe(54.8);
+    const pass = total('fr-verb-etre-present', 14, 10);
+    expect(roundScore(pass.total)).toBe(70.5);
+    expect(storedScore(pass.total)).toBe(71);
+    expect(storedScore(69.49999999999999)).toBe(70);
+    expect(storedScore(69.4)).toBe(69);
   });
 
   it('counts a unit that is not locked as 0, and lists every scored step once', () => {
