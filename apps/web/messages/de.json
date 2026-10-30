@@ -13,7 +13,7 @@
   },
   "Layout": {
     "productName": "ft_transcendence",
-    "description": "Eine KI-gestützte Plattform zum Erlernen einer Fremdsprache: generierte Lektionen, automatische Niveaubestimmung und Live-Übungen mit anderen Lernenden."
+    "description": "Eine KI-gestützte Plattform zum Erlernen einer Fremdsprache: Lektionen, bewertete Antworten und automatische Niveaubestimmung."
   },
   "Footer": {
     "legalNav": "Rechtliches",
@@ -21,7 +21,7 @@
   },
   "HomePage": {
     "headline": "Lerne eine Sprache mit einem Tutor, der sich dir anpasst!",
-    "intro": "ft_transcendence erstellt Lektionen, bewertet deine Antworten, verfolgt das daraus abgeleitete Niveau und verbindet dich mit einem anderen Lernenden für Live-Übungen. Diese Seite ist das Gerüst: alles darunter ist Verdrahtung, kein Produkt.",
+    "intro": "ft_transcendence unterrichtet dich mit Lektionen, bewertet deine Antworten und verfolgt das daraus abgeleitete Niveau.",
     "startNow": "Jetzt starten",
     "continueLearning": "Weiterlernen",
     "logoAlt": "ft_transcendence-Logo"
@@ -41,9 +41,9 @@
     "addLanguage": "Sprache hinzufügen…"
   },
   "Course": {
-    "title": "Kurs",
+    "title": "{lang, select, en {Englischkurs} fr {Französischkurs} de {Deutschkurs} other {Kurs}}",
     "heading": "{language}",
-    "level": "Kursniveau",
+    "level": "Niveau",
     "changeLevel": "Niveau ändern",
     "dailyGoal": "Tagesziel",
     "minutesPerDay": "{minutes} Min.",
@@ -71,7 +71,7 @@
     },
     "dailyGoalSummary": "Tagesziel: {minutes} Min.",
     "noNewLanguage": "Du lernst bereits alle verfügbaren Sprachen.",
-    "backToCourse": "Zurück zu meinem {language}-Kurs",
+    "backToCourse": "{lang, select, en {Zurück zu meinem Englischkurs} fr {Zurück zu meinem Französischkurs} de {Zurück zu meinem Deutschkurs} other {Zurück zu meinem Kurs}}",
     "languageInSentence": {
       "en": "Englisch",
       "fr": "Französisch",
@@ -297,10 +297,10 @@
     "continueButton": "Weiter",
     "backToCourse": "Zurück zum Kurs",
     "chooseLevel": "Niveau wählen",
-    "overrideButton": "Nicht dein Niveau?",
+    "overrideButton": "Anderes Niveau wählen",
     "retakeButton": "Test wiederholen",
-    "answersHeading": "Dein letztes Prüfungsergebnis",
-    "answersHeadingLevel": "Dein letztes Prüfungsergebnis – {level}",
+    "answersHeading": "Dein letztes Testergebnis",
+    "answersHeadingLevel": "Dein letztes Testergebnis ({level})",
     "showText": "Text anzeigen",
     "yourAnswer": "Deine Antwort",
     "correctAnswer": "Richtige Antwort",
