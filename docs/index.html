@@ -15,12 +15,12 @@
   --open:#3B6D11;--open-bg:#EAF3DE;--closed:#534AB7;--closed-bg:#EEEDFE;
   --ready:#2B8A3E;--st-open:#3B6D11;--st-open-bg:#F1F7EA;--st-work:#BA7517;--st-work-bg:#FDF4E4;--st-closed:#534AB7;--st-closed-bg:#F3F2FD;
 }
-.k-1{--gb:#E6F1FB;--gd:#85B7EB;--gt:#0C447C}.k-2{--gb:#FAEEDA;--gd:#EF9F27;--gt:#633806}
+.k-1{--gb:#E6F1FB;--gd:#85B7EB;--gt:#0C447C}.k-2{--gb:#FAEEDA;--gd:#EF9F27;--gt:#633806}.k-3{--gb:#E1F5EE;--gd:#5DCAA5;--gt:#085041}
 @media (prefers-color-scheme:dark){
   :root{--surface-0:#1F1E1D;--surface-1:#262624;--surface-2:#30302E;--border:rgba(222,220,209,.15);--text-primary:#F5F4EF;--text-secondary:#C2C0B6;--text-muted:#9C9A92;--text-accent:#85B7EB;
     --open:#97C459;--open-bg:#173404;--closed:#AFA9EC;--closed-bg:#26215C;
     --ready:#7CC94A;--st-open:#97C459;--st-open-bg:#1E2B13;--st-work:#EF9F27;--st-work-bg:#33240C;--st-closed:#AFA9EC;--st-closed-bg:#24213F}
-  .k-1{--gb:#042C53;--gd:#378ADD;--gt:#B5D4F4}.k-2{--gb:#412402;--gd:#BA7517;--gt:#FAC775}
+  .k-1{--gb:#042C53;--gd:#378ADD;--gt:#B5D4F4}.k-2{--gb:#412402;--gd:#BA7517;--gt:#FAC775}.k-3{--gb:#04342C;--gd:#1D9E75;--gt:#9FE1CB}
 }
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:var(--font-sans)}
@@ -45,9 +45,6 @@ h1{font-size:26px;font-weight:500;margin:0 0 8px}
 .ms-body{padding:16px 18px 18px}
 h3{font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin:18px 0 10px}
 h3:first-child{margin-top:0}
-figure{margin:0}
-figure a{display:block;border:0.5px solid var(--border);border-radius:10px;overflow:hidden;background:var(--surface-1)}
-figure img{display:block;width:100%;height:auto}
 figcaption{font-size:12px;color:var(--text-muted);margin-top:6px;line-height:1.5}
 .flow{display:flex;gap:6px;align-items:stretch;overflow-x:auto;padding-bottom:4px}
 .stage{flex:1 0 170px;display:flex;flex-direction:column;gap:6px}
@@ -80,12 +77,14 @@ a.iss{text-decoration:none}
 .dm span{font-size:13px;color:var(--gt);opacity:.85;line-height:1.45}
 .legend{display:flex;gap:10px;font-size:12px;color:var(--text-secondary);align-items:center;margin:0 0 8px;flex-wrap:wrap}
 footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
-/* milestone 2 dependency graph */
+/* dependency graphs of milestones 2 and 3 */
 :root{--n-base-bg:#e7f5e9;--n-base-bd:#2b8a3e;--n-sink-bg:#ede9fe;--n-sink-bd:#4c1d95;--n-sum-bg:#fff4d6;--n-sum-bd:#d97706;--edge:#8A8983;--edge-crit:#2b8a3e;--lbl-bg:#FFFFFF}
 @media (prefers-color-scheme:dark){:root{--n-base-bg:#173404;--n-base-bd:#639922;--n-sink-bg:#26215C;--n-sink-bd:#7F77DD;--n-sum-bg:#412402;--n-sum-bd:#EF9F27;--edge:#9C9A92;--edge-crit:#97C459;--lbl-bg:#30302E}}
 .gwrap{overflow-x:auto;border:0.5px solid var(--border);border-radius:10px;background:var(--surface-1);padding:16px}
 .gwrap:focus-visible{outline:2px solid var(--text-accent);outline-offset:2px}
-.graph{position:relative;display:grid;grid-template-columns:150px 160px 150px 136px 150px 112px 150px 112px 150px 112px 150px;grid-template-rows:auto auto auto;row-gap:34px;width:max-content;align-items:center}
+.graph{position:relative;display:grid;grid-template-rows:auto auto auto;row-gap:34px;width:max-content;align-items:center}
+#g2{grid-template-columns:150px 150px 150px 150px 150px 140px 150px 120px 150px 120px 150px}
+#g3{grid-template-columns:150px 150px 150px 150px 150px}
 .edges{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
 .edges>path{fill:none;stroke:var(--edge);stroke-width:1.5}
 .edges>path.crit{stroke:var(--edge-crit);stroke-width:3}
@@ -129,7 +128,7 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 </head>
 <body>
 <main>
-<div class="navrow"><nav class="topnav" aria-label="Project docs"><a href="index.html" aria-current="page"><i class="ti ti-layout-dashboard" aria-hidden="true"></i>Overview</a><a href="milestone1-data-model.html"><i class="ti ti-git-compare" aria-hidden="true"></i>Data model · M1</a><a href="milestone2-data-model.html"><i class="ti ti-database" aria-hidden="true"></i>Data model · M2</a></nav><a class="prod" href="https://transcendence.dpdns.org" title="The deployed app on the VPS: transcendence.dpdns.org"><i class="ti ti-rocket" aria-hidden="true"></i>production<i class="ti ti-arrow-up-right" aria-hidden="true"></i></a><a class="prod" href="https://bastian-schnitzler.github.io/lesson_prototype/" title="The lesson prototype: bastian-schnitzler.github.io/lesson_prototype"><i class="ti ti-flask" aria-hidden="true"></i>prototype<i class="ti ti-arrow-up-right" aria-hidden="true"></i></a><nav class="topnav repo" aria-label="ft_transcendence on GitHub"><span class="repo-l"><i class="ti ti-brand-github" aria-hidden="true"></i>ft_transcendence</span><a href="https://github.com/VictorBro/ft_transcendence"><i class="ti ti-code" aria-hidden="true"></i>code</a><a href="https://github.com/VictorBro/ft_transcendence/pulls"><i class="ti ti-git-pull-request" aria-hidden="true"></i>PRs</a><a href="https://github.com/users/VictorBro/projects/1"><i class="ti ti-layout-kanban" aria-hidden="true"></i>Kanban</a><a href="https://github.com/VictorBro/ft_transcendence/milestones"><i class="ti ti-flag" aria-hidden="true"></i>milestones</a><a href="https://github.com/VictorBro/ft_transcendence/issues"><i class="ti ti-circle-dot" aria-hidden="true"></i>issues</a></nav></div>
+<div class="navrow"><nav class="topnav" aria-label="Project docs"><a href="index.html" aria-current="page"><i class="ti ti-layout-dashboard" aria-hidden="true"></i>Overview</a><a href="milestone1-data-model.html"><i class="ti ti-git-compare" aria-hidden="true"></i>Data model · M1</a><a href="milestone2-data-model.html"><i class="ti ti-database" aria-hidden="true"></i>Data model · M2</a><a href="milestone3-data-model.html"><i class="ti ti-plug-connected" aria-hidden="true"></i>Data model · M3</a></nav><a class="prod" href="https://trans.vyantares.ch" title="The deployed app: trans.vyantares.ch"><i class="ti ti-rocket" aria-hidden="true"></i>production<i class="ti ti-arrow-up-right" aria-hidden="true"></i></a><a class="prod" href="https://transcendence.dpdns.org" title="The first deployment, on the VPS: transcendence.dpdns.org"><i class="ti ti-history" aria-hidden="true"></i>production (old)<i class="ti ti-arrow-up-right" aria-hidden="true"></i></a><a class="prod" href="https://bastian-schnitzler.github.io/lesson_prototype/" title="The lesson prototype: bastian-schnitzler.github.io/lesson_prototype"><i class="ti ti-flask" aria-hidden="true"></i>prototype<i class="ti ti-arrow-up-right" aria-hidden="true"></i></a><nav class="topnav repo" aria-label="ft_transcendence on GitHub"><span class="repo-l"><i class="ti ti-brand-github" aria-hidden="true"></i>ft_transcendence</span><a href="https://github.com/VictorBro/ft_transcendence"><i class="ti ti-code" aria-hidden="true"></i>code</a><a href="https://github.com/VictorBro/ft_transcendence/pulls"><i class="ti ti-git-pull-request" aria-hidden="true"></i>PRs</a><a href="https://github.com/users/VictorBro/projects/1"><i class="ti ti-layout-kanban" aria-hidden="true"></i>Kanban</a><a href="https://github.com/VictorBro/ft_transcendence/milestones"><i class="ti ti-flag" aria-hidden="true"></i>milestones</a><a href="https://github.com/VictorBro/ft_transcendence/issues"><i class="ti ti-circle-dot" aria-hidden="true"></i>issues</a></nav></div>
 <p class="eyebrow">ft_transcendence · project docs</p>
 <h1>Milestones</h1>
 <p class="intro">ft_transcendence is an AI-driven platform for learning a foreign language. A short adaptive test places each learner at a CEFR level, and a roadmap then gives them lessons sized to their daily goal. This page summarises the milestones in progress: what each one delivers, how its issues depend on each other, and the data model behind it.</p>
@@ -137,6 +136,7 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 <nav class="toc" aria-label="Milestones">
 <a class="k-1" href="#m1"><i class="ti ti-target-arrow" aria-hidden="true"></i>1 · Onboarding and Evaluation</a>
 <a class="k-2" href="#m2"><i class="ti ti-route" aria-hidden="true"></i>2 · Course Roadmap and Lessons</a>
+<a class="k-3" href="#m3"><i class="ti ti-users" aria-hidden="true"></i>3 · Real-time, social and defence</a>
 </nav>
 
 <!-- MILESTONE 1 -->
@@ -149,10 +149,6 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 <a class="ms-link" href="https://github.com/VictorBro/ft_transcendence/milestone/1"><i class="ti ti-brand-github" aria-hidden="true"></i>Open milestone 1 on GitHub<i class="ti ti-arrow-up-right" aria-hidden="true"></i></a>
 </div>
 <div class="ms-body">
-<h3>Map</h3>
-<figure><a href="https://github.com/user-attachments/assets/6c795292-8002-4741-bdd1-bb01e64a4921" title="Open the full-size map"><img src="https://github.com/user-attachments/assets/6c795292-8002-4741-bdd1-bb01e64a4921" width="1942" height="809" loading="lazy" alt="Illustrated quest map of milestone 1. Paths connect the issues from 'Seed question bank' (#43) and 'Course + placement contracts' (#46) through 'Generic API client' (#45), 'Courses + unified level write path' (#47), 'Onboarding' (#49) and 'Placement exam API' (#48), to 'Dashboard + switcher' (#51), 'Post-auth landing + onboarding guards' (#52), 'Placement page + result' (#50), 'Generate question when pool runs dry' (#54) and 'E2E fixture + guard fallout' (#53)."></a></figure>
-<figcaption>From the milestone on GitHub. Select it to open it at full size.</figcaption>
-
 <h3>Dependency flow</h3>
 <div class="legend"><span class="sw open">open, blocked</span><span class="sw ready">ready: open, not blocked and nobody on it yet</span><span class="sw work">in work</span><span class="sw closed">closed</span><span>Top right: who is responsible (author of the linked PR, else the assignee). Bottom right: the linked PR.</span></div>
 <p class="legend">Each column depends on the ones before it, as stated in the issues.</p>
@@ -193,10 +189,10 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 <!-- MILESTONE 2 -->
 <section class="ms k-2" id="m2" data-milestone="2">
 <div class="ms-head">
-<div class="num">Milestone 2</div>
+<div class="num">Milestone 2 · due 1 December 2026</div>
 <h2>Course Roadmap and Lessons</h2>
-<p>The course page: a daily goal page and an all lessons page over a seeded syllabus of A1 to C2 lesson drafts per language, with results, the streak and level completion. The lesson page itself is the next milestone. On main: the lesson contracts and content checks (#77), the French A1 outline (#105, PR #107), the rename to lesson drafts (PR #114), the learner's time zone (#78, PR #109) and the English outlines (#89, PR #119). In review: the lesson docs (#76, PR #98). New in G1a: designing reading lessons and function levels and a lesson prototype (#115 to #117); #76 now waits for the final lesson brief of #117.</p>
-<div class="prog"><div class="bar" role="progressbar" aria-label="Milestone 2 issues closed" aria-valuemin="0" aria-valuemax="28" aria-valuenow="4"><span style="width:14.3%"></span></div><span class="prog-t">4 of 28 issues closed</span></div>
+<p>The course page and the lessons: the daily goal page, the all lessons page with search, the four lesson pages (grammar, vocabulary, functions, reading), a discussion with the LLM tutor before each exam, results, the streak, level completion and gamification. Replanned in #137: a lesson follows the prototype's model and is written offline with Claude Code. Every outline row is seeded (3,990); a lesson is ready when its files exist, the first 12 of each language and level, 216 in all, and the others show as "Coming soon". The server keeps each attempt, checks every answer and owns the exam timer. On main: the roadmap API (#79 to #82), gamification rules (#94), the seed from the outlines (#134) and the lesson schemas and validators of the prototype (#135, PR #142). In review: demo learners (#85, PR #143), the German and English validators (#136, PR #162) and the wording fixes (#153, PR #164).</p>
+<div class="prog"><div class="bar" role="progressbar" aria-label="Milestone 2 issues closed" aria-valuemin="0" aria-valuemax="43" aria-valuenow="21"><span style="width:48.8%"></span></div><span class="prog-t">21 of 43 issues closed</span></div>
 <a class="ms-link" href="https://github.com/VictorBro/ft_transcendence/milestone/2"><i class="ti ti-brand-github" aria-hidden="true"></i>Open milestone 2 on GitHub<i class="ti ti-arrow-up-right" aria-hidden="true"></i></a>
 </div>
 <div class="ms-body">
@@ -204,48 +200,47 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 <div class="gwrap" tabindex="0" role="group" aria-label="Milestone 2 dependency graph. Scrolls sideways on narrow screens.">
 <div class="graph" id="g2">
 <svg class="edges" aria-hidden="true"><defs>
-<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--edge)"/></marker>
-<marker id="ahc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--edge-crit)"/></marker>
+<marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--edge)"/></marker>
+<marker id="ahc2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--edge-crit)"/></marker>
 </defs></svg>
-<div class="gn base" id="G1a" style="grid-column:1;grid-row:1"><b>G1a</b><span>Lesson design: reading, functions, prototype</span><p>#115 #116 #117</p></div>
-<div class="gn base" id="G1b" style="grid-column:1;grid-row:2"><b>G1b</b><span>Doc, Contracts, User Timezone</span><p>#76 #77 #78</p></div>
-<div class="gn base" id="G2a" style="grid-column:3;grid-row:1"><b>G2a</b><span>Lesson Profile (DB), Roadmap Logic, Lesson draft generator</span><p>#79 #80 #83</p></div>
-<div class="gn base" id="G2b" style="grid-column:3;grid-row:3"><b>G2b</b><span>outline DE, EN, FR:<br>A1 - C2</span><p>#105 #88 #89 #90</p></div>
-<div class="gn base" id="G3a" style="grid-column:5;grid-row:1"><b>G3a</b><span>Roadmap API, Roadmap Write API</span><p>#81 #82</p></div>
-<div class="gn base" id="G3b" style="grid-column:5;grid-row:3"><b>G3b</b><span>generate French A1 lesson drafts</span><p>#84</p></div>
-<div class="gn base" id="G4" style="grid-column:7;grid-row:2"><b>G4</b><span>demo users, daily goal page, search page</span><p>#85 #86 #87</p></div>
-<div class="gn base" id="G5" style="grid-column:9;grid-row:2"><b>G5</b><span>gamification logic, lesson stub page and e2e tests</span><p>#94 #95 #96</p></div>
-<div class="gn summit" id="G6a" style="grid-column:11;grid-row:1"><b>G6a</b><span>gamification pages</span><p>#97</p><i>SUMMIT</i></div>
-<div class="gn sink" id="G6b" style="grid-column:11;grid-row:3"><b>G6b</b><span>generate lesson drafts DE, EN, FR:<br>A1 - C2</span><p>#91 #92 #93</p><i>SINK</i></div>
+<div class="gn base" id="G1a" style="grid-column:1;grid-row:1"><b>G1a</b><span>Lesson model: designs, prototype, schemas and validators</span><p>#115 #116 #117 #135</p></div>
+<div class="gn base" id="G1b" style="grid-column:1;grid-row:2"><b>G1b</b><span>Roadmap API, gamification rules, seed, outlines A1 - C2</span><p>#76 #77 #78 #79 #80 #81 #82 #94 #134 #105 #88 #89 #90</p></div>
+<div class="gn base" id="G2a" style="grid-column:3;grid-row:1"><b>G2a</b><span>French A1 lessons and the ready flag, player domain</span><p>#84 #144</p></div>
+<div class="gn base" id="G2b" style="grid-column:3;grid-row:3"><b>G2b</b><span>German and English validators</span><p>#136</p></div>
+<div class="gn base" id="G3a" style="grid-column:5;grid-row:1"><b>G3a</b><span>Lesson attempts on the server</span><p>#145</p></div>
+<div class="gn base" id="G3b" style="grid-column:5;grid-row:3"><b>G3b</b><span>Lesson authoring kit</span><p>#83</p></div>
+<div class="gn base" id="G4a" style="grid-column:7;grid-row:1"><b>G4a</b><span>Lesson page and grammar, discussion stream</span><p>#146 #150</p></div>
+<div class="gn base" id="G4b" style="grid-column:7;grid-row:2"><b>G4b</b><span>Demo learners, course pages, gamification awards</span><p>#85 #86 #87 #95</p></div>
+<div class="gn base" id="G4c" style="grid-column:7;grid-row:3"><b>G4c</b><span>Lessons DE, EN A1 - C2, FR A2 - C2</span><p>#91 #92 #93</p></div>
+<div class="gn base" id="G5a" style="grid-column:9;grid-row:1"><b>G5a</b><span>Vocabulary and functions lessons, discussion window</span><p>#147 #149 #151</p></div>
+<div class="gn base" id="G5b" style="grid-column:9;grid-row:2"><b>G5b</b><span>Lesson loop e2e, gamification pages</span><p>#96 #97</p></div>
+<div class="gn summit" id="G6" style="grid-column:11;grid-row:1"><b>G6</b><span>Reading lesson, Milestone 2 docs</span><p>#148 #152</p><i>SUMMIT</i></div>
 </div>
 </div>
-<div class="glegend"><span><svg width="34" height="10" aria-hidden="true"><line x1="0" y1="5" x2="34" y2="5" stroke="var(--edge-crit)" stroke-width="3"/></svg>critical path</span><span><svg width="34" height="10" aria-hidden="true"><line x1="0" y1="5" x2="34" y2="5" stroke="var(--edge)" stroke-width="1.5"/></svg>content branch</span><span class="swatch summit">summit</span><span class="swatch sink">sink</span><span>Issue numbers are coloured by status and link to GitHub. A green frame marks a ready issue: open, all its blocking issues closed, and nobody on it yet.</span></div>
-<figcaption>Edges carry the issue-level dependencies they stand for. Edges already implied by an intermediate group are left out. G1a sits above G1b: #76 waits for #117, and inside G1a the prototype #117 waits for the designs #115 and #116. The final lesson brief of #117 also gates the lesson drafts: #84 and #91 to #93 wait for it. Those edges are not drawn, because G1a → G1b → G2a → G3b → G6b already implies them. Inside G2b, the French outline #90 builds on the French A1 outline #105. #79 also waits for #48 and #83 for #54, both from milestone 1 and closed. The fixes #106 and #108 have no dependencies and are listed under the groups.</figcaption>
+<div class="glegend"><span><svg width="34" height="10" aria-hidden="true"><line x1="0" y1="5" x2="34" y2="5" stroke="var(--edge-crit)" stroke-width="3"/></svg>critical path</span><span><svg width="34" height="10" aria-hidden="true"><line x1="0" y1="5" x2="34" y2="5" stroke="var(--edge)" stroke-width="1.5"/></svg>other dependency</span><span class="swatch summit">summit</span><span>Issue numbers are coloured by status and link to GitHub. A green frame marks a ready issue: open, all its blocking issues closed, and nobody on it yet.</span></div>
+<figcaption>Edges carry the GitHub "blocked by" links they stand for. Edges already implied by an intermediate group are left out. Not drawn: #84 also gates #91 to #93, and so do the outlines #88, #89 and #90 (G1b); #76 (G1b) gates #83. Inside G5a, #149 waits for #147. #152 unblocks the README of Milestone 3 (#160). The wording fixes #153 have no dependencies and are listed under the groups.</figcaption>
 
 <h3>Groups</h3>
 <div class="legend"><span class="sw open">open, blocked</span><span class="sw ready">ready: open, not blocked and nobody on it yet</span><span class="sw work">in work</span><span class="sw closed">closed</span><span>Top right: who is responsible (author of the linked PR, else the assignee). Bottom right: the linked PR.</span></div>
-<p class="legend">Groups with the same number (a, b) can run in parallel. One exception: #76 in G1b waits for #117 in G1a. Inside G1a, #117 waits for #115 and #116.</p>
+<p class="legend">Groups with the same number (a, b, c) can run in parallel. Each column waits for the ones before it.</p>
 <div class="flow">
 <div class="stage">
-<div class="grp"><div class="grp-h">G1a · lesson design</div>
+<div class="grp"><div class="grp-h">G1a · lesson model</div>
 <a class="iss" data-n="115" href="#"><span class="no">#115</span><span class="t">Design reading lessons</span></a>
-<a class="iss" data-n="116" href="#"><span class="no">#116</span><span class="t">Design function levels</span></a>
-<a class="iss" data-n="117" href="#"><span class="no">#117</span><span class="t">Lesson prototype and final lesson brief</span></a>
+<a class="iss" data-n="116" href="#"><span class="no">#116</span><span class="t">Design function lessons</span></a>
+<a class="iss" data-n="117" href="#"><span class="no">#117</span><span class="t">Lesson prototype and final lesson model</span></a>
+<a class="iss" data-n="135" href="#"><span class="no">#135</span><span class="t">Port the prototype's schemas and validators</span></a>
 </div>
-<div class="grp"><div class="grp-h">G1b</div>
+<div class="grp"><div class="grp-h">G1b · roadmap API and outlines</div>
 <a class="iss" data-n="76" href="#"><span class="no">#76</span><span class="t">Doc: lesson, goal and streak decisions</span></a>
 <a class="iss" data-n="77" href="#"><span class="no">#77</span><span class="t">Lesson contracts and content checks</span></a>
 <a class="iss" data-n="78" href="#"><span class="no">#78</span><span class="t">Learner's time zone</span></a>
-</div>
-</div>
-<div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
-<div class="stage">
-<div class="grp"><div class="grp-h">G2a</div>
 <a class="iss" data-n="79" href="#"><span class="no">#79</span><span class="t">Lesson tables and seed</span></a>
 <a class="iss" data-n="80" href="#"><span class="no">#80</span><span class="t">Roadmap rules</span></a>
-<a class="iss" data-n="83" href="#"><span class="no">#83</span><span class="t">Offline lesson draft generator</span></a>
-</div>
-<div class="grp"><div class="grp-h">G2b · outlines A1–C2</div>
+<a class="iss" data-n="81" href="#"><span class="no">#81</span><span class="t">Today and all-lessons reads</span></a>
+<a class="iss" data-n="82" href="#"><span class="no">#82</span><span class="t">Finish a lesson, keep the streak</span></a>
+<a class="iss" data-n="94" href="#"><span class="no">#94</span><span class="t">Gamification rules</span></a>
+<a class="iss" data-n="134" href="#"><span class="no">#134</span><span class="t">Seed the lessons from the outlines</span></a>
 <a class="iss" data-n="105" href="#"><span class="no">#105</span><span class="t">French A1 outline</span></a>
 <a class="iss" data-n="88" href="#"><span class="no">#88</span><span class="t">German outline</span></a>
 <a class="iss" data-n="89" href="#"><span class="no">#89</span><span class="t">English outline</span></a>
@@ -254,51 +249,146 @@ footer{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
 </div>
 <div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
 <div class="stage">
-<div class="grp"><div class="grp-h">G3a</div>
-<a class="iss" data-n="81" href="#"><span class="no">#81</span><span class="t">Today and all-lessons reads</span></a>
-<a class="iss" data-n="82" href="#"><span class="no">#82</span><span class="t">Finish a lesson, keep the streak</span></a>
+<div class="grp"><div class="grp-h">G2a · lesson data</div>
+<a class="iss" data-n="84" href="#"><span class="no">#84</span><span class="t">French A1 lessons and the ready flag</span></a>
+<a class="iss" data-n="144" href="#"><span class="no">#144</span><span class="t">The lesson player domain</span></a>
 </div>
-<div class="grp"><div class="grp-h">G3b · generate lesson drafts</div>
-<a class="iss" data-n="84" href="#"><span class="no">#84</span><span class="t">French A1 lesson drafts</span></a>
+<div class="grp"><div class="grp-h">G2b</div>
+<a class="iss" data-n="136" href="#"><span class="no">#136</span><span class="t">Validators for German and English</span></a>
 </div>
-</div>
-<div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
-<div class="stage"><div class="stage-h">G4</div>
-<a class="iss" data-n="85" href="#"><span class="no">#85</span><span class="t">Demo learners</span></a>
-<a class="iss" data-n="86" href="#"><span class="no">#86</span><span class="t">Daily goal page</span></a>
-<a class="iss" data-n="87" href="#"><span class="no">#87</span><span class="t">All lessons page with search</span></a>
-</div>
-<div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
-<div class="stage"><div class="stage-h">G5</div>
-<a class="iss" data-n="94" href="#"><span class="no">#94</span><span class="t">Gamification rules</span></a>
-<a class="iss" data-n="95" href="#"><span class="no">#95</span><span class="t">XP, challenge and achievements API</span></a>
-<a class="iss" data-n="96" href="#"><span class="no">#96</span><span class="t">Lesson stub page and roadmap e2e</span></a>
 </div>
 <div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
 <div class="stage">
-<div class="grp"><div class="grp-h">G6a · summit</div>
+<div class="grp"><div class="grp-h">G3a</div>
+<a class="iss" data-n="145" href="#"><span class="no">#145</span><span class="t">Lesson attempts on the server</span></a>
+</div>
+<div class="grp"><div class="grp-h">G3b</div>
+<a class="iss" data-n="83" href="#"><span class="no">#83</span><span class="t">Lesson authoring kit for Claude Code</span></a>
+</div>
+</div>
+<div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
+<div class="stage">
+<div class="grp"><div class="grp-h">G4a · lesson page, LLM</div>
+<a class="iss" data-n="146" href="#"><span class="no">#146</span><span class="t">Lesson page, player and grammar lesson</span></a>
+<a class="iss" data-n="150" href="#"><span class="no">#150</span><span class="t">Stream the lesson discussion</span></a>
+</div>
+<div class="grp"><div class="grp-h">G4b · course pages, gamification</div>
+<a class="iss" data-n="85" href="#"><span class="no">#85</span><span class="t">Demo learners</span></a>
+<a class="iss" data-n="86" href="#"><span class="no">#86</span><span class="t">Daily goal page</span></a>
+<a class="iss" data-n="87" href="#"><span class="no">#87</span><span class="t">All lessons page with search</span></a>
+<a class="iss" data-n="95" href="#"><span class="no">#95</span><span class="t">XP, challenge and achievements API</span></a>
+</div>
+<div class="grp"><div class="grp-h">G4c · content</div>
+<a class="iss" data-n="91" href="#"><span class="no">#91</span><span class="t">German lessons, A1–C2</span></a>
+<a class="iss" data-n="92" href="#"><span class="no">#92</span><span class="t">English lessons, A1–C2</span></a>
+<a class="iss" data-n="93" href="#"><span class="no">#93</span><span class="t">French lessons, A2–C2</span></a>
+</div>
+</div>
+<div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
+<div class="stage">
+<div class="grp"><div class="grp-h">G5a · lesson kinds, tutor</div>
+<a class="iss" data-n="147" href="#"><span class="no">#147</span><span class="t">The vocabulary lesson</span></a>
+<a class="iss" data-n="149" href="#"><span class="no">#149</span><span class="t">The functions lesson</span></a>
+<a class="iss" data-n="151" href="#"><span class="no">#151</span><span class="t">Discussion window before the exam</span></a>
+</div>
+<div class="grp"><div class="grp-h">G5b</div>
+<a class="iss" data-n="96" href="#"><span class="no">#96</span><span class="t">Roadmap and lesson loop e2e</span></a>
 <a class="iss" data-n="97" href="#"><span class="no">#97</span><span class="t">Rank, challenge and achievements pages</span></a>
 </div>
-<div class="grp"><div class="grp-h">G6b · generate lesson drafts A1–C2</div>
-<a class="iss" data-n="91" href="#"><span class="no">#91</span><span class="t">German lesson drafts</span></a>
-<a class="iss" data-n="92" href="#"><span class="no">#92</span><span class="t">English lesson drafts</span></a>
-<a class="iss" data-n="93" href="#"><span class="no">#93</span><span class="t">French lesson drafts, A2–C2</span></a>
+</div>
+<div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
+<div class="stage">
+<div class="grp"><div class="grp-h">G6 · summit</div>
+<a class="iss" data-n="148" href="#"><span class="no">#148</span><span class="t">The reading lesson</span></a>
+<a class="iss" data-n="152" href="#"><span class="no">#152</span><span class="t">Milestone 2 docs pass</span></a>
+</div>
+</div>
+</div>
+
+<p class="legend">Fixes and planning in the milestone, outside the graph:</p>
+<div class="flow"><div class="stage" style="max-width:340px"><div class="grp"><div class="grp-h">Fixes and planning</div>
+<a class="iss" data-n="153" href="#"><span class="no">#153</span><span class="t">Wording on shipped pages</span></a>
+<a class="iss" data-n="106" href="#"><span class="no">#106</span><span class="t">Address French learners with tu</span></a>
+<a class="iss" data-n="108" href="#"><span class="no">#108</span><span class="t">An error code in every error message</span></a>
+<a class="iss" data-n="113" href="#"><span class="no">#113</span><span class="t">Seeded randomness in question serving</span></a>
+<a class="iss" data-n="137" href="#"><span class="no">#137</span><span class="t">Replan: lessons from the prototype model</span></a>
+</div></div></div>
+
+<h3>Data model</h3>
+<a class="dm" href="milestone2-data-model.html"><i class="ti ti-database" aria-hidden="true"></i><div><b>Lessons data model</b><span>Every lesson format, from the prototype's lesson files through the seed, the Prisma models and the player views to the attempt, discussion and gamification APIs, with the issues that reference each one.</span></div></a>
+</div>
+</section>
+
+<!-- MILESTONE 3 -->
+<section class="ms k-3" id="m3" data-milestone="3">
+<div class="ms-head">
+<div class="num">Milestone 3 · due 1 December 2026</div>
+<h2>Real-time, social and defence</h2>
+<p>The social half of the app and the defence. Friends, public profiles, online status and direct messages, live over WebSockets: the real-time major, the user interaction major and the missing half of standard user management, 6 of the 19 points. Then what the evaluation checks beyond features: two more browsers, the README and a rehearsed defence. It runs in parallel with Milestone 2. One WebSocket connection per tab, in a <code>user:&lt;id&gt;</code> room; the lesson discussion streams over SSE (Milestone 2), not over the socket. Not built: notifications. In work: the gateway (#154), Firefox and WebKit (#159, PR #165) and the signup rate limit (#34).</p>
+<div class="prog"><div class="bar" role="progressbar" aria-label="Milestone 3 issues closed" aria-valuemin="0" aria-valuemax="9" aria-valuenow="0"><span style="width:0%"></span></div><span class="prog-t">0 of 9 issues closed</span></div>
+<a class="ms-link" href="https://github.com/VictorBro/ft_transcendence/milestone/3"><i class="ti ti-brand-github" aria-hidden="true"></i>Open milestone 3 on GitHub<i class="ti ti-arrow-up-right" aria-hidden="true"></i></a>
+</div>
+<div class="ms-body">
+<h3>Dependency graph</h3>
+<div class="gwrap" tabindex="0" role="group" aria-label="Milestone 3 dependency graph. Scrolls sideways on narrow screens.">
+<div class="graph" id="g3">
+<svg class="edges" aria-hidden="true"><defs>
+<marker id="ah3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--edge)"/></marker>
+<marker id="ahc3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--edge-crit)"/></marker>
+</defs></svg>
+<div class="gn base" id="S1" style="grid-column:1;grid-row:1"><b>S1</b><span>WebSocket gateway</span><p>#154</p></div>
+<div class="gn base" id="S2" style="grid-column:3;grid-row:2"><b>S2</b><span>Friends</span><p>#155</p></div>
+<div class="gn summit" id="S3" style="grid-column:5;grid-row:1"><b>S3</b><span>Public profiles, online status, direct messages</span><p>#156 #157 #158</p><i>SUMMIT</i></div>
+<div class="gn base" id="D1" style="grid-column:1;grid-row:3"><b>D1</b><span>Firefox and WebKit, README for the evaluation</span><p>#159 #160</p></div>
+<div class="gn summit" id="D2" style="grid-column:5;grid-row:3"><b>D2</b><span>Defence runbook and rehearsal</span><p>#161</p><i>LAST</i></div>
+</div>
+</div>
+<div class="glegend"><span><svg width="34" height="10" aria-hidden="true"><line x1="0" y1="5" x2="34" y2="5" stroke="var(--edge-crit)" stroke-width="3"/></svg>critical path</span><span><svg width="34" height="10" aria-hidden="true"><line x1="0" y1="5" x2="34" y2="5" stroke="var(--edge)" stroke-width="1.5"/></svg>other dependency</span><span class="swatch summit">summit</span><span>Issue numbers are coloured by status and link to GitHub. A green frame marks a ready issue.</span></div>
+<figcaption>Edges carry the GitHub "blocked by" links they stand for. Inside S3, #156 waits only for #155 (the REST part of friends can start before the gateway). #160 waits for #152, the Milestone 2 docs pass. #159's run turns green once the lesson pages (#146 to #151) and S1 to S3 have landed, and #161 runs last, once every feature it shows is on main. The signup rate limit #34 has no dependencies.</figcaption>
+
+<h3>Groups</h3>
+<div class="legend"><span class="sw open">open, blocked</span><span class="sw ready">ready: open, not blocked and nobody on it yet</span><span class="sw work">in work</span><span class="sw closed">closed</span><span>Top right: who is responsible (author of the linked PR, else the assignee). Bottom right: the linked PR.</span></div>
+<p class="legend">S is the real-time and social chain, D the defence chain. They run in parallel.</p>
+<div class="flow">
+<div class="stage">
+<div class="grp"><div class="grp-h">S1 · real-time</div>
+<a class="iss" data-n="154" href="#"><span class="no">#154</span><span class="t">The WebSocket gateway</span></a>
+</div>
+<div class="grp"><div class="grp-h">D1 · evaluation</div>
+<a class="iss" data-n="159" href="#"><span class="no">#159</span><span class="t">E2e on Firefox and WebKit</span></a>
+<a class="iss" data-n="160" href="#"><span class="no">#160</span><span class="t">The README for the evaluation</span></a>
+</div>
+</div>
+<div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
+<div class="stage">
+<div class="grp"><div class="grp-h">S2</div>
+<a class="iss" data-n="155" href="#"><span class="no">#155</span><span class="t">Friends</span></a>
+</div>
+</div>
+<div class="arrow" aria-hidden="true"><i class="ti ti-chevron-right"></i></div>
+<div class="stage">
+<div class="grp"><div class="grp-h">S3 · summit</div>
+<a class="iss" data-n="156" href="#"><span class="no">#156</span><span class="t">Public profiles</span></a>
+<a class="iss" data-n="157" href="#"><span class="no">#157</span><span class="t">Online status</span></a>
+<a class="iss" data-n="158" href="#"><span class="no">#158</span><span class="t">Direct messages between friends</span></a>
+</div>
+<div class="grp"><div class="grp-h">D2 · last</div>
+<a class="iss" data-n="161" href="#"><span class="no">#161</span><span class="t">Defence runbook and rehearsal</span></a>
 </div>
 </div>
 </div>
 
 <p class="legend">Fixes in the milestone with no dependencies, outside the graph:</p>
 <div class="flow"><div class="stage" style="max-width:340px"><div class="grp"><div class="grp-h">Fixes</div>
-<a class="iss" data-n="106" href="#"><span class="no">#106</span><span class="t">Address French learners with tu</span></a>
-<a class="iss" data-n="108" href="#"><span class="no">#108</span><span class="t">An error code in every error message</span></a>
+<a class="iss" data-n="34" href="#"><span class="no">#34</span><span class="t">Signup rate limit back to 10 per minute</span></a>
 </div></div></div>
 
 <h3>Data model</h3>
-<a class="dm" href="milestone2-data-model.html"><i class="ti ti-database" aria-hidden="true"></i><div><b>Lessons data model</b><span>Every lesson format, from enums and content files through the seed and Prisma models to the API schemas, with the issues that reference each one.</span></div></a>
+<a class="dm" href="milestone3-data-model.html"><i class="ti ti-plug-connected" aria-hidden="true"></i><div><b>Social and real-time data model</b><span>The socket events and rooms, the friendship and message tables, presence in Redis, the REST schemas and the modules, with the issues that reference each one.</span></div></a>
 </div>
 </section>
 
-<footer>Issue states, assignees and linked PRs as of 6 October 2026, the last merge on main being PR #109. All three refresh from the GitHub API when the page loads (cached for five minutes); a linked PR is one whose description says "closes #N". <span id="live"></span> Source: <a href="https://github.com/VictorBro/ft_transcendence">VictorBro/ft_transcendence</a> · <a href="https://github.com/VictorBro/ft_transcendence/milestones">all milestones</a>.</footer>
+<footer>Issue states, assignees and linked PRs as of 28 October 2026, the last merge on main being PR #142. All three refresh from the GitHub API when the page loads (cached for five minutes); a linked PR is one whose description says "closes #N". <span id="live"></span> Source: <a href="https://github.com/VictorBro/ft_transcendence">VictorBro/ft_transcendence</a> · <a href="https://github.com/VictorBro/ft_transcendence/milestones">all milestones</a>.</footer>
 </main>
 <script src="gh-status.js"></script>
 <script>
@@ -319,34 +409,58 @@ const ISSUES={43:{s:"closed",a:["VYAntares"],pr:[58,"VYAntares","merged"]},
 52:{s:"closed",a:["VictorBro"],pr:[99,"VictorBro","merged"]},
 53:{s:"closed",a:["luca-mattei"],pr:null},
 54:{s:"closed",a:["VYAntares"],pr:[69,"VYAntares","merged"]},
-76:{s:"open",a:["VictorBro"],b:1,pr:[98, "VictorBro", "open"]},
+76:{s:"closed",a:["VictorBro"],b:0,pr:[139, "VYAntares", "merged"]},
 77:{s:"closed",a:["bastian-schnitzler"],b:0,pr:[103, "bastian-schnitzler", "merged"]},
 78:{s:"closed",a:["luca-mattei"],b:0,pr:[109, "luca-mattei", "merged"]},
-79:{s:"open",a:["luca-mattei"],b:0,pr:null},
-80:{s:"open",a:["avarrett"],b:0,pr:[120, "avarrett", "open"]},
-81:{s:"open",a:[],b:2,pr:null},
-82:{s:"open",a:[],b:2,pr:null},
-83:{s:"open",a:[],b:1,pr:null},
-84:{s:"open",a:[],b:2,pr:null},
-85:{s:"open",a:[],b:2,pr:null},
-86:{s:"open",a:[],b:4,pr:null},
-87:{s:"open",a:[],b:3,pr:null},
-88:{s:"open",a:["VictorBro"],b:0,pr:null},
+79:{s:"closed",a:["luca-mattei"],b:0,pr:[123, "luca-mattei", "merged"]},
+80:{s:"closed",a:["avarrett"],b:0,pr:[120, "avarrett", "merged"]},
+81:{s:"closed",a:["VYAntares"],b:0,pr:[128, "VYAntares", "merged"]},
+82:{s:"closed",a:["luca-mattei"],b:0,pr:[141, "luca-mattei", "merged"]},
+83:{s:"open",a:["VYAntares"],b:1,pr:null},
+84:{s:"open",a:["bastian-schnitzler"],b:0,pr:null},
+85:{s:"open",a:["VYAntares"],b:1,pr:[143, "VYAntares", "open"]},
+86:{s:"open",a:[],b:1,pr:null},
+87:{s:"open",a:[],b:1,pr:null},
+88:{s:"closed",a:["VictorBro"],b:0,pr:[122, "VictorBro", "merged"]},
 89:{s:"closed",a:["VictorBro"],b:0,pr:[119, "VictorBro", "merged"]},
-90:{s:"open",a:["VYAntares"],b:0,pr:null},
-91:{s:"open",a:[],b:4,pr:null},
+90:{s:"closed",a:["VYAntares"],b:0,pr:[121, "VYAntares", "merged"]},
+91:{s:"open",a:[],b:3,pr:null},
 92:{s:"open",a:[],b:3,pr:null},
-93:{s:"open",a:[],b:4,pr:null},
-94:{s:"open",a:[],b:1,pr:null},
-95:{s:"open",a:[],b:5,pr:null},
+93:{s:"open",a:[],b:2,pr:null},
+94:{s:"closed",a:["avarrett"],b:0,pr:[132, "avarrett", "merged"]},
+95:{s:"open",a:["avarrett"],b:1,pr:null},
 96:{s:"open",a:[],b:4,pr:null},
 97:{s:"open",a:[],b:3,pr:null},
 105:{s:"closed",a:["bastian-schnitzler"],b:0,pr:[107, "bastian-schnitzler", "merged"]},
-106:{s:"open",a:[],b:0,pr:null},
-108:{s:"open",a:[],b:0,pr:null},
-115:{s:"open",a:[],b:0,pr:null},
-116:{s:"open",a:[],b:0,pr:null},
-117:{s:"open",a:["bastian-schnitzler"],b:0,pr:null}};
+106:{s:"closed",a:["VYAntares"],b:0,pr:[125, "VYAntares", "merged"]},
+108:{s:"closed",a:["VYAntares"],b:0,pr:[126, "VYAntares", "merged"]},
+113:{s:"closed",a:[],b:0,pr:null},
+115:{s:"closed",a:["luca-mattei", "avarrett", "VYAntares"],b:0,pr:null},
+116:{s:"closed",a:["bastian-schnitzler"],b:0,pr:null},
+117:{s:"closed",a:["bastian-schnitzler"],b:0,pr:null},
+134:{s:"closed",a:[],b:0,pr:[140, "VYAntares", "merged"]},
+135:{s:"closed",a:["VYAntares"],b:0,pr:[142, "VYAntares", "merged"]},
+136:{s:"open",a:["VYAntares"],b:0,pr:[162, "VYAntares", "open"]},
+137:{s:"closed",a:[],b:0,pr:[138, "VYAntares", "closed"]},
+144:{s:"open",a:[],b:0,pr:null},
+145:{s:"open",a:[],b:2,pr:null},
+146:{s:"open",a:[],b:3,pr:null},
+147:{s:"open",a:[],b:2,pr:null},
+148:{s:"open",a:[],b:3,pr:null},
+149:{s:"open",a:[],b:2,pr:null},
+150:{s:"open",a:[],b:2,pr:null},
+151:{s:"open",a:[],b:2,pr:null},
+152:{s:"open",a:[],b:3,pr:null},
+153:{s:"open",a:["bastian-schnitzler"],b:0,pr:[164, "bastian-schnitzler", "open"]},
+34:{s:"open",a:["bastian-schnitzler"],b:0,pr:null},
+154:{s:"open",a:["VictorBro"],b:0,pr:null},
+155:{s:"open",a:[],b:1,pr:null},
+156:{s:"open",a:[],b:1,pr:null},
+157:{s:"open",a:[],b:2,pr:null},
+158:{s:"open",a:[],b:2,pr:null},
+159:{s:"open",a:["bastian-schnitzler"],b:0,pr:[165, "bastian-schnitzler", "open"]},
+160:{s:"open",a:[],b:1,pr:null},
+161:{s:"open",a:[],b:2,pr:null}};
 const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 /* Responsible: whoever opened the linked PR, else the first assignee. */
 const responsible=i=>(i.pr&&i.pr[1])||i.a[0]||null;
@@ -369,44 +483,56 @@ function renderIssues(){
     el.replaceWith(div);
   });
 }
-/* Issue titles for the hover text on the graph's issue links, as of 6 October 2026; replaced by the live titles. */
-const GRAPH_TITLES={"76": "docs: record the lesson, daily goal and streak decisions", "77": "feat(shared): lesson contracts and the content checks", "78": "feat: store the learner's time zone", "79": "feat(api): lesson tables, and seed the lessons on every stack", "80": "feat(api): roadmap rules as pure functions", "81": "feat(api): today and all lessons reads, with the lesson search", "82": "feat(api): finish a lesson, meet the goal, keep the streak", "83": "feat(api): an offline lesson generator", "84": "feat(content): generate and review the French A1 lesson drafts", "85": "feat(api): seed demo learners on development stacks", "86": "feat(web): the daily goal page", "87": "feat(web): the all lessons page, with advanced search", "88": "feat(content): outline the German lessons, A1 to C2", "89": "feat(content): outline the English lessons, A1 to C2", "90": "feat(content): outline the French lessons, A2 to C2", "91": "feat(content): generate and review the German lesson drafts", "92": "feat(content): generate and review the English lesson drafts", "93": "feat(content): generate and review the French lesson drafts, A2 to C2", "94": "feat: gamification rules, XP, challenges and achievements", "95": "feat(api): award XP, the daily challenge and achievements", "96": "feat(web): lesson stub page and the roadmap e2e", "97": "feat(web): rank, challenge and achievements pages", "105": "feat(content): outline the French A1 lessons", "106": "fix(web): address French learners with tu, as the German messages do with du", "108": "fix(api): send an error code in every error message", "115": "req: design reading lessons", "116": "req: design function levels", "117": "feat: lesson prototype and final lesson brief"};
+/* Issue titles for the hover text on the graph's issue links, as of 28 October 2026; replaced by the live titles. */
+const GRAPH_TITLES={"76": "docs: record the lesson, daily goal and streak decisions", "77": "feat(shared): lesson contracts and the content checks", "78": "feat: store the learner's time zone", "79": "feat(api): lesson tables, and seed the lessons on every stack", "80": "feat(api): roadmap rules as pure functions", "81": "feat(api): today and all lessons reads, with the lesson search", "82": "feat(api): finish a lesson, meet the goal, keep the streak", "83": "feat(content): lesson authoring kit for Claude Code", "84": "feat(content): French A1 lessons and the ready flag", "85": "feat(api): seed demo learners on development stacks", "86": "feat(web): the daily goal page", "87": "feat(web): the all lessons page, with advanced search", "88": "feat(content): outline the German lessons, A1 to C2", "89": "feat(content): outline the English lessons, A1 to C2", "90": "feat(content): outline the French lessons, A2 to C2", "91": "feat(content): German lessons, A1 to C2", "92": "feat(content): English lessons, A1 to C2", "93": "feat(content): French lessons, A2 to C2", "94": "feat: gamification rules, XP, challenges and achievements", "95": "feat(api): award XP, the daily challenge and achievements", "96": "test(e2e): the roadmap and lesson loop on real lessons", "97": "feat(web): rank, challenge and achievements pages", "105": "feat(content): outline the French A1 lessons", "106": "fix(web): address French learners with tu, as the German messages do with du", "108": "fix(api): send an error code in every error message", "113": "fix: check if randomization in question serving needs seed", "115": "req: design reading lessons", "116": "req: design function lessons", "117": "feat: lesson prototype and final lesson model", "134": "feat(api): seed the lessons from the outlines", "135": "feat(shared): port the prototype's lesson schemas and validators", "136": "feat(shared): make the lesson validators work for German and English", "137": "docs: replan Milestone 2, lessons are authored with Claude Code from the prototype model", "144": "feat(shared): the lesson player domain", "145": "feat(api): lesson attempts on the server", "146": "feat(web): the lesson page, the player and the grammar lesson", "147": "feat(web): the vocabulary lesson", "148": "feat(web): the reading lesson", "149": "feat(web): the functions lesson", "150": "feat(api): stream the lesson discussion, with error handling and rate limits", "151": "feat(web): the discussion window before the exam", "152": "docs: Milestone 2 docs pass", "153": "fix(web): wording on shipped pages", "34": "Restore the signup rate limit to 10 per minute", "154": "feat: the WebSocket gateway", "155": "feat: friends", "156": "feat: public profiles", "157": "feat: online status", "158": "feat: direct messages between friends", "159": "test(e2e): Firefox and WebKit", "160": "docs: the README for the evaluation", "161": "docs: defence runbook and rehearsal"};
 const graphTitle=n=>'#'+n+': '+(GRAPH_TITLES[n]||'');
 const attr=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const linkify=s=>s.replace(/#(\d+)/g,(m,n)=>'<a href="'+issueUrl(n)+'" title="'+attr(graphTitle(n))+'">#'+n+'</a>');
 
-/* Milestone 2 graph, from milestone2_groups.mermaid. Layout pins and removed edges are left out. */
-const EDGES=[
-  ['G1a','G1b',true,['#117 → #76']],
-  ['G1b','G2a',true,['#77 → #79, #80','#76, #77 → #83']],
-  ['G2a','G3a',true,['#79, #80 → #81, #82']],
-  ['G3a','G4',true,['#82 → #85','#81, #82 → #86','#81 → #87']],
-  ['G4','G5',true,['#85 → #95','#86, #87 → #96']],
-  ['G5','G6a',true,['#95, #96 → #97']],
-  ['G1b','G2b',false,['#77 → #88, #89, #90, #105']],
-  ['G2a','G3b',false,['#79, #83 → #84']],
-  ['G2b','G3b',false,['#105 → #84']],
-  ['G3b','G4',false,['#84 → #86, #87']],
-  ['G3b','G6b',false,['#84 → #91, #92, #93']],
+/* The dependency graphs: [from, to, critical path, the issue-level links the edge stands for]. */
+const GRAPHS=[
+  {id:'g2',m:'2',edges:[
+    ['G1a','G2a',true,['#135 → #84, #144']],
+    ['G2a','G3a',true,['#84, #144 → #145']],
+    ['G3a','G4a',true,['#145 → #146, #150']],
+    ['G4a','G5a',true,['#146 → #147, #149','#146, #150 → #151']],
+    ['G5a','G6',true,['#147 → #148']],
+    ['G1a','G2b',false,['#135 → #136']],
+    ['G2b','G3b',false,['#136 → #83']],
+    ['G3b','G4c',false,['#83 → #91, #92, #93']],
+    ['G4c','G6',false,['#93 → #148']],
+    ['G2a','G4b',false,['#84 → #85, #86, #87']],
+    ['G1b','G4b',false,['#81, #82, #134 → #85, #86, #87','#79, #81, #82, #94 → #95']],
+    ['G3a','G4b',false,['#145 → #95']],
+    ['G4b','G5b',false,['#86, #87 → #96','#86, #95 → #97']],
+    ['G4a','G5b',false,['#146 → #96, #97']],
+  ]},
+  {id:'g3',m:'3',edges:[
+    ['S1','S2',true,['#154 → #155']],
+    ['S2','S3',true,['#155 → #156, #157, #158']],
+    ['S1','S3',false,['#154 → #157, #158']],
+    ['D1','D2',false,['#159, #160 → #161']],
+  ]},
 ];
-const graph=document.getElementById('g2');
-const svg=graph.querySelector('svg.edges');
-/* Issue numbers in the nodes become chips coloured by the state shown in the groups list below. */
-graph.querySelectorAll('.gn p').forEach(p=>{
-  p.innerHTML=p.textContent.trim().split(/\s+/).map(t=>{const n=t.slice(1);return '<a class="inum" data-n="'+n+'" href="'+issueUrl(n)+'" title="'+attr(graphTitle(n))+'">#'+n+'</a>';}).join('');
+GRAPHS.forEach(G=>{
+  G.el=document.getElementById(G.id);G.svg=G.el.querySelector('svg.edges');
+  /* Issue numbers in the nodes become chips coloured by the state shown in the groups list below. */
+  G.el.querySelectorAll('.gn p').forEach(p=>{
+    p.innerHTML=p.textContent.trim().split(/\s+/).map(t=>{const n=t.slice(1);return '<a class="inum" data-n="'+n+'" href="'+issueUrl(n)+'" title="'+attr(graphTitle(n))+'">#'+n+'</a>';}).join('');
+  });
+  G.labels=G.edges.map(e=>{const d=document.createElement('div');d.className='elbl';d.innerHTML=e[3].map(linkify).join('<br>');G.el.appendChild(d);return d;});
 });
 function syncGraphStates(){
-  graph.querySelectorAll('a.inum').forEach(a=>{
+  document.querySelectorAll('.graph a.inum').forEach(a=>{
     const i=ISSUES[a.dataset.n],st=i?statusOf(i):'open';
     a.classList.toggle('closed',st==='closed');a.classList.toggle('work',st==='work');a.classList.toggle('ready',st==='ready');
   });
 }
-const labels=EDGES.map(e=>{const d=document.createElement('div');d.className='elbl';d.innerHTML=e[3].map(linkify).join('<br>');graph.appendChild(d);return d;});
-function drawGraph(){
-  const g=graph.getBoundingClientRect();
+function drawGraph(G){
+  const g=G.el.getBoundingClientRect();
   const box=id=>{const r=document.getElementById(id).getBoundingClientRect();return{l:r.left-g.left,r:r.right-g.left,t:r.top-g.top,b:r.bottom-g.top,cy:(r.top+r.bottom)/2-g.top};};
-  svg.querySelectorAll(':scope>path').forEach(p=>p.remove());
-  EDGES.forEach(([a,b,crit],i)=>{
+  G.svg.querySelectorAll(':scope>path').forEach(p=>p.remove());
+  G.edges.forEach(([a,b,crit],i)=>{
     const s=box(a),t=box(b);
     const p=document.createElementNS('http://www.w3.org/2000/svg','path');
     let x1,y1,x2,y2;
@@ -419,18 +545,19 @@ function drawGraph(){
       p.setAttribute('d','M'+x1+','+y1+' C'+(x1+dx)+','+y1+' '+(x2-dx)+','+y2+' '+x2+','+y2);
     }
     if(crit)p.setAttribute('class','crit');
-    p.setAttribute('marker-end',crit?'url(#ahc)':'url(#ah)');
-    svg.appendChild(p);
+    p.setAttribute('marker-end',crit?'url(#ahc'+G.m+')':'url(#ah'+G.m+')');
+    G.svg.appendChild(p);
     /* label at the curve's midpoint (t = 0.5 of a symmetric cubic) */
-    labels[i].style.left=((x1+x2)/2)+'px';
-    labels[i].style.top=((y1+y2)/2)+'px';
+    G.labels[i].style.left=((x1+x2)/2)+'px';
+    G.labels[i].style.top=((y1+y2)/2)+'px';
   });
 }
+const drawGraphs=()=>GRAPHS.forEach(drawGraph);
 renderIssues();
-drawGraph();syncGraphStates();
-if('ResizeObserver' in window)new ResizeObserver(drawGraph).observe(graph);
-addEventListener('load',drawGraph);
-if(document.fonts&&document.fonts.ready)document.fonts.ready.then(drawGraph);
+drawGraphs();syncGraphStates();
+if('ResizeObserver' in window){const ro=new ResizeObserver(drawGraphs);GRAPHS.forEach(G=>ro.observe(G.el));}
+addEventListener('load',drawGraphs);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(drawGraphs);
 
 function setProgress(section){
   const chips=[...section.querySelectorAll('.iss')];
@@ -454,7 +581,7 @@ document.querySelectorAll('section.ms').forEach(setProgress);
   renderIssues();
   document.querySelectorAll('section.ms').forEach(setProgress);
   syncGraphStates();
-  graph.querySelectorAll('a.inum').forEach(a=>a.title=graphTitle(a.dataset.n));
+  document.querySelectorAll('.graph a.inum').forEach(a=>a.title=graphTitle(a.dataset.n));
   document.getElementById('live').textContent='Now showing the live state from GitHub.';
 }).catch(()=>{document.getElementById('live').textContent='GitHub could not be reached, so this is the snapshot.';});
 </script>
