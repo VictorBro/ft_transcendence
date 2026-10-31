@@ -1,6 +1,6 @@
 /**
- * Writes the lessons of one level unattended (#83). For each outline entry
- * that has no files yet:
+ * Writes the lessons of one level unattended (#83), with Claude Code on the
+ * member's own subscription. For each outline entry that has no files yet:
  *
  *   the model writes the lesson ─→ complete + validateLesson (check-draft.ts) ─→ ok: write the files
  *          ▲                                                    │
@@ -14,7 +14,6 @@
  *   pnpm --filter @ft/api lessons:author fr a1
  *   pnpm --filter @ft/api lessons:author fr a1 --kind grammar --max 3
  *   pnpm --filter @ft/api lessons:author fr a1 --only fr-subject-pronouns --model opus
- *   pnpm --filter @ft/api lessons:author fr a1 --provider deepseek   (needs DEEPSEEK_API_KEY)
  */
 import { parseArgs } from 'node:util';
 
@@ -40,7 +39,6 @@ import {
 import { issuesPrompt, lessonPrompt, PROMPT_VERSION } from './prompt';
 import { QuotaError, type Provider } from './providers/chat';
 import { claudeProvider } from './providers/claude';
-import { deepseekProvider } from './providers/deepseek';
 import { applyReply } from './reply';
 import {
   addUsage,
@@ -52,16 +50,15 @@ import {
 } from './report';
 
 const USAGE = `Usage: lessons:author <fr|de|en> <a1|a2|b1|b2|c1|c2> [options]
-  --provider <claude|deepseek>  claude (default): Claude Code on your subscription; deepseek: paid, DEEPSEEK_API_KEY
-  --kind <kind>                 only this kind
-  --only <id,id…>               only these lessons
-  --max <n>                     stop after n lessons (to spread a quota over several days)
-  --concurrency <n>             lessons written at the same time (default 2)
-  --model <model>               claude: sonnet (default), opus, haiku or an id; deepseek: deepseek-chat (default)
-  --effort <level>              claude only: low, medium, high, xhigh or max
-  --attempts <n>                replies per lesson, the first included (default 4)
-  --timeout <minutes>           per reply (default 15)
-  --claude-bin <path>           the claude binary, when it is not found on its own`;
+  --kind <kind>          only this kind
+  --only <id,id…>        only these lessons
+  --max <n>              stop after n lessons (to spread a quota over several days)
+  --concurrency <n>      lessons written at the same time (default 2)
+  --model <model>        sonnet (default), opus, haiku or a full model id
+  --effort <level>       low, medium, high, xhigh or max (default: the model's)
+  --attempts <n>         replies per lesson, the first included (default 4)
+  --timeout <minutes>    per reply (default 15)
+  --claude-bin <path>    the claude binary, when it is not found on its own`;
 
 /** The command line, checked: an unknown option or a missing value is an error, not ignored. */
 function readOptions() {
@@ -70,7 +67,7 @@ function readOptions() {
     strict: true,
     // Every option takes a value: the ones USAGE lists.
     options: Object.fromEntries(
-      'provider kind only max concurrency model effort attempts timeout claude-bin'
+      'kind only max concurrency model effort attempts timeout claude-bin'
         .split(' ')
         .map((name) => [name, { type: 'string' as const }]),
     ),
@@ -78,13 +75,8 @@ function readOptions() {
   const lang = LanguageSchema.safeParse(positionals[0]);
   const level = LevelSchema.safeParse(positionals[1]?.toUpperCase());
   const kind = v.kind === undefined ? undefined : LessonKindSchema.safeParse(v.kind);
-  const provider = v.provider ?? 'claude';
   if (!lang.success || !level.success || kind?.success === false || positionals.length !== 2)
     throw new Error(USAGE);
-  if (provider !== 'claude' && provider !== 'deepseek')
-    throw new Error(`--provider must be claude or deepseek, not ${provider}`);
-  if (provider === 'deepseek' && v.effort)
-    throw new Error('--effort works with --provider claude only');
 
   /** A whole number above 0, or `fallback` when the option is not given. */
   const whole = (name: string, fallback: number) => {
@@ -97,12 +89,11 @@ function readOptions() {
   return {
     lang: lang.data,
     level: level.data,
-    provider,
     kind: kind?.data,
     only: v.only?.split(',').map((s) => s.trim()),
     max: v.max === undefined ? Infinity : whole('max', 1),
     concurrency: whole('concurrency', 2),
-    model: v.model ?? (provider === 'deepseek' ? 'deepseek-chat' : 'sonnet'),
+    model: v.model ?? 'sonnet',
     effort: v.effort,
     attempts: whole('attempts', 4),
     timeoutMs: whole('timeout', 15) * 60_000,
@@ -110,21 +101,6 @@ function readOptions() {
   };
 }
 type Options = ReturnType<typeof readOptions>;
-
-/** The provider the options name. DeepSeek is used only when asked for, and needs its own key. */
-function makeProvider(o: Options): Provider {
-  if (o.provider === 'claude')
-    return claudeProvider({
-      model: o.model,
-      effort: o.effort,
-      bin: o.claudeBin,
-      timeoutMs: o.timeoutMs,
-    });
-  const apiKey = process.env.DEEPSEEK_API_KEY?.trim();
-  if (!apiKey)
-    throw new Error('--provider deepseek needs DEEPSEEK_API_KEY in .env (see .env.example)');
-  return deepseekProvider({ apiKey, model: o.model, timeoutMs: o.timeoutMs });
-}
 
 /** The entries to write: no files yet, and matching --kind, --only and --max. Warns about the rest. */
 function pickLessons(outline: LessonOutlineFile, o: Options): LessonOutlineEntry[] {
@@ -234,14 +210,19 @@ async function main() {
     return console.log('Nothing to write: every selected lesson already has its files.');
 
   const s: RunState = {
-    provider: makeProvider(o),
+    provider: claudeProvider({
+      model: o.model,
+      effort: o.effort,
+      bin: o.claudeBin,
+      timeoutMs: o.timeoutMs,
+    }),
     outline,
     attempts: o.attempts,
     usedTitles: readUsedTitles(o.lang),
   };
   const label = `${o.lang} ${o.level}`;
   console.log(
-    `Writing ${todo.length} ${label} lesson${todo.length === 1 ? '' : 's'} with ${o.model} (${o.provider})` +
+    `Writing ${todo.length} ${label} lesson${todo.length === 1 ? '' : 's'} with ${o.model}` +
       `${o.effort ? `, effort ${o.effort}` : ''}, ${o.concurrency} at a time, ${o.attempts} attempts each.\n` +
       `${s.provider.where}\n`,
   );

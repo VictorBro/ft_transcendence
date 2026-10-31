@@ -1,13 +1,19 @@
 import { describe, expect, it } from 'vitest';
 
 import { applyEdits } from '../../scripts/lessons/edits';
+import {
+  QuotaError,
+  RateLimitError,
+  refusal,
+  retryRateLimits,
+} from '../../scripts/lessons/providers/chat';
 import { applyReply, parseReply } from '../../scripts/lessons/reply';
 
 /**
  * How the authoring kit (#83) reads a model's reply: the JSON object in
  * it (scripts/lessons/reply.ts), and the edits it asks for
  * (scripts/lessons/edits.ts), whose paths all refer to the draft as the
- * model saw it.
+ * model saw it, and how a refusal from the model is handled (providers/chat.ts).
  */
 
 describe('applyEdits', () => {
@@ -101,5 +107,46 @@ describe('applyReply', () => {
     expect(applyReply(draft, 'sorry')).toEqual({
       error: 'your reply is not one JSON object: no JSON object in the reply',
     });
+  });
+});
+
+describe('refusal', () => {
+  it('stops the run on the usage limit, retries a rate limit, and ignores any other error', () => {
+    expect(refusal(undefined, "You've hit your usage limit")).toBeInstanceOf(QuotaError);
+    expect(refusal(429, 'slow down')).toBeInstanceOf(RateLimitError);
+    expect(refusal(undefined, 'Rate limit exceeded')).toBeInstanceOf(RateLimitError);
+    expect(refusal(500, 'heap limit exceeded')).toBeUndefined();
+  });
+});
+
+describe('retryRateLimits', () => {
+  it('retries a call while it is rate limited, and returns its answer', async () => {
+    let calls = 0;
+    const call = async () => {
+      if (++calls < 3) throw new RateLimitError('rate limit');
+      return 'ok';
+    };
+    await expect(retryRateLimits(call, [0, 0, 0])).resolves.toBe('ok');
+    expect(calls).toBe(3);
+  });
+
+  it('turns a rate limit that outlasts the retries into a QuotaError', async () => {
+    let calls = 0;
+    const call = async () => {
+      calls++;
+      throw new RateLimitError('rate limit');
+    };
+    await expect(retryRateLimits(call, [0, 0])).rejects.toBeInstanceOf(QuotaError);
+    expect(calls).toBe(3);
+  });
+
+  it('does not retry any other error', async () => {
+    let calls = 0;
+    const call = async () => {
+      calls++;
+      throw new Error('crash');
+    };
+    await expect(retryRateLimits(call, [0, 0])).rejects.toThrow('crash');
+    expect(calls).toBe(1);
   });
 });

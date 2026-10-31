@@ -112,7 +112,7 @@ export function printSummary(s: Summary): void {
  Time: ${clock(s.wallSeconds)}, so ${clock(Math.round(perLesson))} per written lesson with ${s.concurrency} at a time
 ${byKind.join('\n')}
  Tokens: ${kTokens(total(s.runs, (r) => r.outputTokens))} out, ${kTokens(total(s.runs, (r) => r.inputTokens))} in, ${kTokens(total(s.runs, (r) => r.cachedTokens))} read from cache
- ${s.provider.billed ? `Cost: $${cost}, billed to the ${s.provider.name} account` : `API equivalent: $${cost} (not billed on a subscription: a measure of the quota used)`}
+ API equivalent: $${cost} (not billed on a subscription: a measure of the quota used)
  ${plural(s.remaining, 'lesson')} of ${s.label} still without files${perLesson ? `: about ${clock(Math.round(s.remaining * perLesson))} more at this pace` : ''}
 ──────────────────────────────────────────────────────────────`);
   if (s.stop) console.log(`Stopped early, ${s.provider.name} refused: ${s.stop.slice(0, 300)}`);

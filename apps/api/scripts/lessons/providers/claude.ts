@@ -17,7 +17,7 @@ import { LESSON_KINDS, type LessonKind } from '@ft/shared';
 import { WORK_DIR, writeWork } from '../files';
 import type { Json } from '../json';
 import { systemPrompt } from '../prompt';
-import { QUOTA_MESSAGE, QuotaError, type Chat, type Provider, type Reply } from './chat';
+import { refusal, retryRateLimits, type Chat, type Provider, type Reply } from './chat';
 
 /** How long a killed claude gets to exit before SIGKILL. */
 const KILL_GRACE_MS = 5_000;
@@ -53,8 +53,9 @@ export function findClaude(): string {
 
 /**
  * Runs claude once with `prompt` on stdin and returns its JSON output.
- * Rejects with QuotaError on a usage refusal, with Error on anything else
- * (a crash, a timeout, an error reply).
+ * Rejects with QuotaError on the usage limit, RateLimitError on a short
+ * rate limit (see refusal()), Error on anything else (a crash, a timeout,
+ * an error reply).
  */
 function runClaude(bin: string, args: string[], prompt: string, timeoutMs: number): Promise<Json> {
   return new Promise((resolve, reject) => {
@@ -87,17 +88,12 @@ function runClaude(bin: string, args: string[], prompt: string, timeoutMs: numbe
           out = JSON.parse(stdout);
         } catch {
           const text = `${stdout}\n${stderr}`.trim().slice(0, 500);
-          reject(
-            QUOTA_MESSAGE.test(text)
-              ? new QuotaError(text)
-              : new Error(`claude exited ${code}: ${text}`),
-          );
+          reject(refusal(undefined, text) ?? new Error(`claude exited ${code}: ${text}`));
           return;
         }
         if (!out.is_error) return resolve(out);
         const text = String(out.result ?? out.subtype ?? 'error');
-        const quota = out.api_error_status === 429 || QUOTA_MESSAGE.test(text);
-        reject(quota ? new QuotaError(text) : new Error(`claude: ${text.slice(0, 500)}`));
+        reject(refusal(out.api_error_status, text) ?? new Error(`claude: ${text.slice(0, 500)}`));
       }),
     );
     child.stdin.end(prompt);
@@ -131,7 +127,6 @@ export function claudeProvider(o: ClaudeOptions): Provider {
   return {
     name: 'claude',
     model: o.model,
-    billed: false,
     where: `claude: ${bin}`,
     startChat(kind: LessonKind): Chat {
       let session: string | undefined;
@@ -142,7 +137,8 @@ export function claudeProvider(o: ClaudeOptions): Provider {
             ...['--system-prompt-file', promptFiles.get(kind)!],
             ...(session ? ['--resume', session] : []),
           ];
-          const out = await runClaude(bin, args, prompt, o.timeoutMs);
+          // A retry resends the same prompt to the same session: nothing was added to it.
+          const out = await retryRateLimits(() => runClaude(bin, args, prompt, o.timeoutMs));
           session = out.session_id;
           return toReply(out);
         },

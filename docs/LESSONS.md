@@ -318,9 +318,9 @@ Two ways, the same checks. Both skip a lesson that already has files.
 | Fails | listed in the hand-over | last draft and issues in `$TMPDIR/ft-lessons-author/failed/` |
 
 `lessons:author` writes each lesson as soon as it passes, so an interrupted run loses only the
-lessons in progress. When the subscription's usage limit is reached it stops, and the next run
-picks up where it stopped. `--provider deepseek` uses the DeepSeek API instead, paid per token
-from `DEEPSEEK_API_KEY` (`.env.example`); it is never chosen on its own.
+lessons in progress. A short rate limit is retried after 30 s, 1 min and 2 min. When the
+subscription's usage limit is reached, or the rate limit outlasts the retries, it stops, and the
+next run picks up where it stopped.
 
 Checking one lesson, by hand or with any other model:
 

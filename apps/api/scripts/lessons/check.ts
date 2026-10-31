@@ -10,8 +10,15 @@
  *
  * A draft with a brief only is checked as a brief: the missing content file
  * is not an issue yet. Exit code 1 when anything is left to fix.
+ *
+ * --draft is read from the folder the command was typed in (INIT_CWD, set
+ * by pnpm), not from apps/api where pnpm runs the script.
+ *
+ * On committed files, complete runs before validateLesson as on a draft, so
+ * it recomputes every duration: a committed file with wrong durations passes
+ * here. lesson-files.spec.ts checks the files as they are, and catches it.
  */
-import { join } from 'node:path';
+import { join, resolve } from 'node:path';
 import { parseArgs } from 'node:util';
 
 import { lessons } from '@ft/shared';
@@ -37,7 +44,8 @@ const USAGE =
 /** The lesson to check: the draft file, else the files already in content/. */
 function readDraft(id: string, draftPath: string | undefined): Draft {
   if (draftPath) {
-    const draft = readJson(draftPath);
+    // pnpm runs the script from apps/api; INIT_CWD is where the member typed the command.
+    const draft = readJson(resolve(process.env.INIT_CWD ?? process.cwd(), draftPath));
     if (!isObject(draft) || !isObject(draft.brief))
       throw new Error(`${draftPath}: expected {"brief":{…},"content":{…}}`);
     return { brief: draft.brief, content: draft.content };

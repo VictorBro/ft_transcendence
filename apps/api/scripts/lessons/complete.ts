@@ -25,7 +25,7 @@ export interface CompleteContext {
   entry: LessonOutlineEntry;
   lang: Language;
   level: Level;
-  /** The model that wrote the draft: sonnet, deepseek-chat, claude-code (the skill)… */
+  /** The model that wrote the draft: sonnet, opus, claude-code (the skill)… */
   model: string;
   /** PROMPT_VERSION for lessons:author, the skill's version for lessons:check. */
   promptVersion: string;
