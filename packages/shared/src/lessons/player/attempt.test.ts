@@ -231,6 +231,29 @@ describe('results', () => {
     expect(sheet.score).toBe(35);
   });
 
+  it('counts a spotted word with no correction as wrong, and shows the word alone', () => {
+    // The Check button needs a correction, but submit takes whatever the page sends.
+    const plan = buildPlan(fixtureLesson(BY_KIND.grammar), 'en');
+    let state = start(plan, 0);
+    while (!plan.pages[state.page].units.some((u) => u.kind === 'spot'))
+      state = next(plan, state, 0).state;
+    const page = plan.pages[state.page];
+    const unit = page.units.find((u) => u.kind === 'spot');
+    if (unit?.kind !== 'spot') throw new Error('no spot unit');
+    const answers = pageAnswers(page, ref);
+    answers[ref(paths.unit(unit))] = {
+      token: ref(paths.token(page, unit.itemId, unit.faultyTokenId)),
+      text: ' ',
+    };
+    state = next(plan, state, 0, answers).state;
+    expect(state.answers[unit.id]).toMatchObject({ outcome: 'incorrect', points: 0 });
+    const word = unit.tokens.find((t) => t.id === unit.faultyTokenId)!.text;
+    const row = results(plan, state).rows.find(
+      (r) => r.answer === unit.answer && JSON.stringify(r.prompt) === JSON.stringify(unit.prompt),
+    );
+    expect(row).toMatchObject({ yours: word, outcome: 'incorrect', points: 0 });
+  });
+
   it('names the parts of a split exam', () => {
     const plan = buildPlan(fixtureLesson(BY_KIND.functions), 'en');
     const sheet = results(

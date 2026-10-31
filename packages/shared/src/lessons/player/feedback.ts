@@ -34,8 +34,12 @@ export function answerText(unit: PlanUnit, response: UnitResponse | null): strin
   if (unit.kind === 'choice' && 'option' in response) return text(response.option, unit.options);
   if (unit.kind === 'order' && 'tokens' in response)
     return response.tokens.map((id) => text(id, unit.tokens)).join(' ') || null;
-  if (unit.kind === 'spot' && 'token' in response)
-    return `${text(response.token, unit.tokens)} → ${response.text.trim()}`;
+  if (unit.kind === 'spot' && 'token' in response) {
+    const word = text(response.token, unit.tokens);
+    const fix = response.text.trim();
+    // A word spotted with no correction shows the word alone.
+    return fix ? `${word} → ${fix}` : word;
+  }
   return null;
 }
 
