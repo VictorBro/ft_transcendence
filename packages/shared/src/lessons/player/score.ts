@@ -208,7 +208,11 @@ export function scoreUnit(
   unit: PlanUnit,
   response: UnitResponse | null | undefined,
 ): { outcome: AnswerOutcome; points: 0 | 0.5 | 1 } {
-  if (!response || !isAnswered(unit, response)) return { outcome: 'unanswered', points: 0 };
+  if (!response || !isAnswered(unit, response))
+    // A word spotted with no correction is wrong, not blank: finding the word was half the task.
+    return unit.kind === 'spot' && response && 'token' in response && response.token
+      ? INCORRECT
+      : { outcome: 'unanswered', points: 0 };
   const right = (ok: boolean) =>
     ok ? { outcome: 'fully_correct' as const, points: 1 as const } : INCORRECT;
   switch (unit.kind) {
