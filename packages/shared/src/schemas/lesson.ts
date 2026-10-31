@@ -85,13 +85,6 @@ export const KIND_COUNTS: Record<Language, Record<Level, Record<LessonKind, numb
 };
 
 /**
- * Languages whose lessons are all written. The lesson file check fails
- * when an outline entry of one of these has no files; any other language
- * may be part-way through authoring.
- */
-export const COMPLETE_LANGUAGES: readonly Language[] = [];
-
-/**
  * `<lang>-<english words>`, e.g. `de-separable-verbs`. No level in it, so a
  * lesson can move level with a simple edit. It is Lesson's primary key, so it
  * never changes once shipped.

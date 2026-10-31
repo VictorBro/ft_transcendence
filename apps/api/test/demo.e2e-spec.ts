@@ -54,6 +54,7 @@ describe('demo learners replay (e2e)', () => {
     title: 'Une leçon du testeur',
     summary: 'Une leçon de test.',
     brief: { objective: 'test', points: [], examples: [], pitfalls: [], vocabulary: [] },
+    ready: true,
   });
 
   /**
@@ -92,9 +93,9 @@ describe('demo learners replay (e2e)', () => {
     });
     await prisma.lesson.deleteMany({ where: { id: { startsWith: 'fr-test-demo-' } } });
 
-    // CI seeds no lesson: fill French A1 up to the smallest real level, the
-    // size the profiles are written for (see demo.data.ts).
-    const held = await prisma.lesson.count({ where: { lang: 'fr', level: 'A1' } });
+    // CI seeds no lesson: fill French A1's ready lessons up to the smallest
+    // real level, the size the profiles are written for (see demo.data.ts).
+    const held = await prisma.lesson.count({ where: { lang: 'fr', level: 'A1', ready: true } });
     const fixtures = Array.from({ length: Math.max(0, SMALLEST_LEVEL - held) }, (_, i) =>
       fixture(i),
     );
@@ -112,13 +113,13 @@ describe('demo learners replay (e2e)', () => {
   it('replays ben: a 12-day streak to keep, 1 of 3 today, A1 kept through a level switch', async () => {
     const userId = await replay('ben');
     const page = await today(userId, 'America/New_York');
-    const held = await prisma.lesson.count({ where: { lang: 'fr', level: 'A1' } });
+    const held = await prisma.lesson.count({ where: { lang: 'fr', level: 'A1', ready: true } });
 
     expect(page.streak).toEqual({ current: 12, best: 12, today: false });
     expect(page.done).toHaveLength(1);
     expect(page.done[0].score).toBe(75);
     expect(page.target).toBe(3);
-    // Progress over what the level holds, real lessons and fixtures alike.
+    // Progress over the level's ready lessons, real lessons and fixtures alike.
     expect(page.progress.total).toBe(held);
     expect(page.progress.attempted).toBeGreaterThan(0);
 

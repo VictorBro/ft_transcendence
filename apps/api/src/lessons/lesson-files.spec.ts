@@ -2,7 +2,7 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
-import { COMPLETE_LANGUAGES, foldText, LessonOutlineFileSchema, lessons } from '@ft/shared';
+import { foldText, LessonOutlineFileSchema, lessons } from '@ft/shared';
 
 /**
  * Validates the written lessons against their outline entries:
@@ -14,8 +14,10 @@ import { COMPLETE_LANGUAGES, foldText, LessonOutlineFileSchema, lessons } from '
  * lesson that passes here also seeds. Built like
  * apps/api/src/items/item-files.spec.ts, and for the same reasons.
  *
- * Passes with no file at all: a language is written lesson by lesson, and
- * only one in COMPLETE_LANGUAGES must have every lesson of its outlines.
+ * A level is written lesson by lesson, from its first entry: the lessons
+ * with files, the ready ones, are always its first entries by position, with
+ * no gap. So the proposal and the level progress, which read ready lessons
+ * only, never skip one that is still to be written.
  */
 
 // vitest runs with the package as cwd.
@@ -43,15 +45,20 @@ const idsIn = (dir: string) =>
 
 // The outlines are checked by outline-files.spec.ts; an invalid one is skipped here.
 const contexts = new Map<string, lessons.OutlineContext>();
+/** Each outline file's entries in position order, by file name. */
+const levels = new Map<string, lessons.OutlineContext['entry'][]>();
 for (const name of readdirSync(OUTLINES_DIR).filter((n) => n.endsWith('.json'))) {
   const outline = LessonOutlineFileSchema.safeParse(read(OUTLINES_DIR, name));
   if (!outline.success) continue;
+  levels.set(name, outline.data.entries);
   for (const entry of outline.data.entries)
     contexts.set(entry.id, { entry, lang: outline.data.lang, level: outline.data.level });
 }
 
 const briefIds = idsIn(BRIEFS_DIR);
 const contentIds = idsIn(LESSONS_DIR);
+const briefSet = new Set(briefIds);
+const contentSet = new Set(contentIds);
 
 const results = new Map(
   briefIds
@@ -102,15 +109,21 @@ describe('content/briefs and content/lessons', () => {
     expect(clashes).toEqual([]);
   });
 
-  it('has every lesson of every complete language', () => {
-    const missing = [...contexts.values()]
-      .filter(({ lang }) => COMPLETE_LANGUAGES.includes(lang))
-      .flatMap(({ entry }) => [
-        ...(briefIds.includes(entry.id) ? [] : [`briefs/${entry.id}.json`]),
-        ...(lessons.hasContentFile(entry.kind) && !contentIds.includes(entry.id)
-          ? [`lessons/${entry.id}.json`]
-          : []),
-      ]);
-    expect(missing).toEqual([]);
-  });
+  // The seed's rule: a brief, plus a content file for every kind but vocabulary.
+  it.each([...levels])(
+    '%s: the lessons with files are its first entries, with no gap',
+    (_, entries) => {
+      const hasFiles = entries.map(
+        (entry) =>
+          briefSet.has(entry.id) &&
+          (!lessons.hasContentFile(entry.kind) || contentSet.has(entry.id)),
+      );
+      const written = hasFiles.filter(Boolean).length;
+      const gaps = entries
+        .slice(0, written)
+        .filter((_, index) => !hasFiles[index])
+        .map((entry) => entry.id);
+      expect(gaps, `no files, though a later entry has them: ${gaps.join(', ')}`).toEqual([]);
+    },
+  );
 });

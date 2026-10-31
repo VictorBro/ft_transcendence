@@ -94,9 +94,12 @@ export class AuthController {
 
   @Public()
   @Post('signup')
-  // Thirty per minute per IP. Signup writes a row and runs argon2, so it is
-  // both the most expensive unauthenticated endpoint and the one worth flooding.
-  @ThrottleByIp(30)
+  // Ten per minute per IP. Signup writes a row and runs argon2, so it is both
+  // the most expensive unauthenticated endpoint and the one worth flooding.
+  // The browser suite needs more accounts than this in a run and queues its
+  // signups to fit (e2e/support/signup-budget.ts): it is the test traffic that
+  // bends to this number, never the other way round.
+  @ThrottleByIp(10)
   @ApiOperation({ summary: 'Create an account and sign in', security: [] })
   @ApiCreatedResponse({ type: SessionUserDto })
   @ApiConflictResponse({ description: 'Email or display name already taken' })
