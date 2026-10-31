@@ -43,6 +43,11 @@ RUNTIME_INJECTED=(
   # Set by the prisma drift job in .github/workflows/hygiene.yml, which brings up
   # its own throwaway database. Never points at a database anyone keeps.
   SHADOW_DATABASE_URL
+  # Optional overrides for the local lessons:author script (#83).
+  CLAUDE_BIN
+  DEEPSEEK_MODEL
+  # The shell's own PATH, where lessons:author looks for the claude binary.
+  PATH
 )
 
 # In .env.example but read by no compose file: a make target hands them to a
@@ -51,6 +56,8 @@ RUNTIME_INJECTED=(
 TOOLING_ONLY=(
   # The demo learners' password, read by the seed on dev stacks only (#85).
   DEMO_PASSWORD
+  # Read by the local lessons:author script through `--env-file-if-exists` (#83).
+  DEEPSEEK_API_KEY
 )
 
 failures=0
