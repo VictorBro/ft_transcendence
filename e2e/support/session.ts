@@ -6,7 +6,7 @@ import {
   type Page,
 } from '@playwright/test';
 
-import { signUpSlot, type SlotOptions, WORKER_SIGNUP_TIMEOUT_MS } from './signup-budget';
+import { logInSlot, signUpSlot, type SlotOptions, WORKER_SIGNUP_TIMEOUT_MS } from './signup-budget';
 
 /**
  * Signing in, for the specs that need an account but are not testing signup.
@@ -228,4 +228,4 @@ export const test = base.extend<
   },
 });
 
-export { expect, signUpSlot };
+export { expect, logInSlot, signUpSlot };
