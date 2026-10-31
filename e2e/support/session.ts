@@ -6,14 +6,17 @@ import {
   type Page,
 } from '@playwright/test';
 
+import { logInSlot, signUpSlot, type SlotOptions, WORKER_SIGNUP_TIMEOUT_MS } from './signup-budget';
+
 /**
  * Signing in, for the specs that need an account but are not testing signup.
  *
  * One account per worker, not per test and not per file: each signup writes a
- * row and runs argon2, and POST /auth/signup is limited to 30 a minute per
+ * row and runs argon2, and POST /auth/signup is limited to 10 a minute per
  * address. Every browser in the run shares that address, so the whole run
- * shares one budget: a clean run spends about 24, two of them per worker, so
- * one more worker or a few more signups per run starts failing on a 429.
+ * shares one budget, and a run needs more accounts than that. signUpSlot()
+ * queues each signup until the budget has room, so every signup the suite does
+ * not need is time the run spends waiting rather than a 429.
  *
  * Exposed as fixtures rather than helpers so teardown is Playwright's problem.
  * A context closed by hand at the end of a test leaks whenever an assertion
@@ -47,7 +50,12 @@ export const identity = (): Identity => {
  * context. The form has its own tests in auth.spec.ts; everywhere else it is
  * setup, and a slow machine pays seconds per account for it.
  */
-export const signUp = async (page: Page, fields: Identity = identity()): Promise<void> => {
+export const signUp = async (
+  page: Page,
+  fields: Identity = identity(),
+  slot?: SlotOptions,
+): Promise<void> => {
+  await signUpSlot(slot);
   const created = await page.request.post('/api/auth/signup', {
     data: { ...fields, password: PASSWORD },
   });
@@ -96,11 +104,18 @@ export const courseLevel = async (page: Page, lang: string): Promise<string | nu
   return courses.find((course: { lang: string }) => course.lang === lang).level;
 };
 
-/** What every onboarded account studies. routes.ts opens its course home. */
-export const ONBOARDED_COURSE = { lang: 'de', level: 'B1', dailyGoal: 30 } as const;
+/**
+ * What every onboarded account studies: French A1, the demo level, whose first
+ * lessons are ready. routes.ts opens its course home.
+ */
+export const ONBOARDED_COURSE = { lang: 'fr', level: 'A1', dailyGoal: 30 } as const;
 
-/** The one course tests may add to the onboarded account, shared so no spec drifts. */
-export const SECOND_COURSE = { lang: 'fr', level: 'A2', dailyGoal: 10 } as const;
+/**
+ * The one course tests may add to the onboarded account, shared so no spec
+ * drifts. German A1 has no ready lesson yet (#91), so it is the level with
+ * nothing to play.
+ */
+export const SECOND_COURSE = { lang: 'de', level: 'A1', dailyGoal: 10 } as const;
 
 type StorageState = Awaited<ReturnType<BrowserContext['storageState']>>;
 
@@ -127,7 +142,8 @@ const newAccount = async (
   const context = await browser.newContext();
   const page = await context.newPage();
 
-  await signUp(page, fields);
+  // Only ever called from a worker fixture, which has a timeout of its own.
+  await signUp(page, fields, { extendTestTimeout: false });
   await setUp(page);
   const storageState = await context.storageState();
   await context.close();
@@ -162,7 +178,7 @@ const pageFor = async (
  * everything behind it render. Tests add at most SECOND_COURSE, always placed:
  * specs rely on it having no unplaced course and no English one. It also has
  * the longest display name allowed, so layout.spec.ts can gate phone widths on
- * it rather than pay one more signup per worker against the 30 a minute.
+ * it rather than pay one more signup per worker against the 10 a minute.
  */
 export const test = base.extend<
   { signedIn: Page; onboarded: Page; freshLearner: Page },
@@ -172,7 +188,7 @@ export const test = base.extend<
     async ({ browser }, use) => {
       await use(await newAccount(browser));
     },
-    { scope: 'worker' },
+    { scope: 'worker', timeout: WORKER_SIGNUP_TIMEOUT_MS },
   ],
 
   onboardedAccount: [
@@ -184,7 +200,7 @@ export const test = base.extend<
         }),
       );
     },
-    { scope: 'worker' },
+    { scope: 'worker', timeout: WORKER_SIGNUP_TIMEOUT_MS },
   ],
 
   signedIn: async ({ browser, account }, use) => {
@@ -212,4 +228,4 @@ export const test = base.extend<
   },
 });
 
-export { expect };
+export { expect, logInSlot, signUpSlot };

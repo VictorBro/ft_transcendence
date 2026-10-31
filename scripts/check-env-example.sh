@@ -43,6 +43,9 @@ RUNTIME_INJECTED=(
   # Set by the prisma drift job in .github/workflows/hygiene.yml, which brings up
   # its own throwaway database. Never points at a database anyone keeps.
   SHADOW_DATABASE_URL
+  # Set by pnpm to the folder a command was typed in; lessons:check resolves
+  # --draft against it (#83).
+  INIT_CWD
 )
 
 # In .env.example but read by no compose file: a make target hands them to a

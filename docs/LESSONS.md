@@ -174,7 +174,7 @@ Entry 2 of `content/outlines/fr-a1.json`, so position 2 of French A1:
 
 **Before its files exist**, its `Lesson` row has `title` = the working title, `summary` = the
 intent, and an empty brief ([#134](https://github.com/VictorBro/ft_transcendence/issues/134)). So
-every level is listed, searchable and finishable through the stub page from day one.
+every level is listed and searchable from day one. Only a ready lesson (§4) can be finished.
 
 **Writing an outline:**
 
@@ -217,6 +217,13 @@ files exist, the seed sets the row's `title` to the envelope's title, its `summa
 objective in the course language, and its `brief` and `content` to the files
 ([#135](https://github.com/VictorBro/ft_transcendence/issues/135)). An invalid file stops the
 seed, naming the id and the errors, and so does a file that no outline entry plans.
+
+Every outline entry is a row, written or not. The seed sets the row's `ready` flag on every run:
+true when its files exist and pass `validateLesson`, false otherwise. A lesson becomes ready by
+adding its files and reseeding, with no migration and no row deleted. The daily proposal and the
+level progress count ready lessons only, so a level of 12 ready lessons needs 10 passed, and
+finishing a lesson that is not ready is a 404. The lesson list still shows every row
+([#84](https://github.com/VictorBro/ft_transcendence/issues/84)).
 
 The brief of `fr-subject-pronouns`, shortened:
 
@@ -280,10 +287,11 @@ The seed updates `level` and `position`, and results stay attached to the id.
 
 ## 7. Writing the lessons
 
-Every lesson is written with **Claude Code**, on each member's own subscription: no API key, no
-cost per lesson. Claude writes the lesson's text; the authoring tool builds the rest (the envelope,
-the structure, every duration and time limit), checks the result with the validators and sends the
-errors back until the lesson is valid.
+Lessons are written with **Claude Code**, on each member's own subscription: no API key, no cost
+per lesson. The model writes the lesson's text; the authoring kit (`apps/api/scripts/lessons/`)
+writes the rest (the envelope, provenance, every duration and time limit), checks the result with
+`validateLesson` and sends the issues back until the lesson is valid. Nothing is generated at
+runtime or at deploy: the files are written once and committed.
 
 **Quality bar: a lesson that passes the validators and has no gross error is good enough.** Nobody
 reviews every lesson by hand.
@@ -291,9 +299,53 @@ reviews every lesson by hand.
 **Order of the runs:** French A1 first (the demo level, which every e2e test uses), then German
 A1 and English A1, then A2 to C2.
 
-[#83](https://github.com/VictorBro/ft_transcendence/issues/83) writes the rest of this section:
-installing and logging in to Claude Code, running a level, redoing a lesson, splitting a level
-between members.
+### Setup
+
+1. Install Claude Code and log in once (`claude`, then `/login`). In the dev container the VS Code
+   extension's binary is enough: the kit finds it.
+2. `make doctor` passes, and `pnpm install` has run.
+
+### Running a level
+
+Two ways, the same checks. Both skip a lesson that already has files.
+
+| | In a Claude Code session | Unattended |
+|---|---|---|
+| Command | `/author-lessons de c1` | `pnpm --filter @ft/api lessons:author de c1` |
+| Lessons | positions 1 to 12, or the ids given | every lesson without files, or `--kind`, `--only`, `--max` |
+| Who writes | the session, checking each draft with `lessons:check` | `claude -p`, cut off from the repo; issues sent back up to `--attempts` times |
+| Gross errors | the session reads each lesson once | not read: read a few per kind before the PR |
+| Fails | listed in the hand-over | last draft and issues in `$TMPDIR/ft-lessons-author/failed/` |
+
+`lessons:author` writes each lesson as soon as it passes, so an interrupted run loses only the
+lessons in progress. A short rate limit is retried after 30 s, 1 min and 2 min. When the
+subscription's usage limit is reached, or the rate limit outlasts the retries, it stops, and the
+next run picks up where it stopped.
+
+Checking one lesson, by hand or with any other model:
+
+```bash
+pnpm --filter @ft/api lessons:check <id> --rules                    # the rules and the outline entry, to give the model
+pnpm --filter @ft/api lessons:check <id> --draft draft.json         # complete + validateLesson, every issue printed
+pnpm --filter @ft/api lessons:check <id> --draft draft.json --write # and write content/ when it passes
+```
+
+A draft is `{"brief":{…},"content":{…}}`, with the content left out for vocabulary or while only
+the brief is written.
+
+### Redoing a lesson
+
+Delete `content/briefs/<id>.json` and `content/lessons/<id>.json`, then run either way with that
+id (`/author-lessons <lang> <level> <id>`, or `lessons:author <lang> <level> --only <id>`). The
+kit never overwrites a file.
+
+### Time per lesson
+
+Measured on real runs; `lessons:author` prints these figures at the end of each run.
+
+| Level | Way | Model | Vocabulary | Grammar | Functions | Reading |
+|---|---|---|---|---|---|---|
+| de C1 | TODO | | | | | |
 
 ---
 
@@ -308,6 +360,7 @@ from CI:
 pnpm --filter @ft/api test src/lessons/outline-files.spec.ts   # the outlines
 pnpm --filter @ft/api test src/lessons/lesson-files.spec.ts    # the lesson files
 pnpm --filter @ft/api outlines:check <lang>                    # one language's outlines, while writing
+pnpm --filter @ft/api lessons:check <id>                       # one lesson, while writing (section 7)
 make                                                           # everything, before the PR
 ```
 
@@ -322,7 +375,7 @@ readers: the key order, no level in an id, and no dashes, quotation marks or dou
 | Topic and theme | `topic` exactly on grammar, `theme` exactly on the others |
 | Ids | Start with the file's language, unique across the language's six files. None starts with `<lang>-test-`, a prefix kept for spec fixtures |
 | Lesson files | Pass `validateLesson`, the check the seed runs: the shape of each kind, the lesson rules (length, counts, references between parts, articles), the durations to the second, a title of at most 80 characters and an objective in the course language of at most 200. Every file has an outline entry, and every content file a brief |
-| Complete languages | A language in `COMPLETE_LANGUAGES` has the files of every outline entry |
+| Ready lessons | In each level, the lessons with files (the ready ones) are its first entries by position, with no gap |
 
 After seeding, positions are exactly 1 to N for every language and level.
 

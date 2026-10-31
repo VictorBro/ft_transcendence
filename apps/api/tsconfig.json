@@ -11,9 +11,10 @@
     // noEmit run's state into the emitting run's.
     "tsBuildInfoFile": "./dist/tsconfig.tsbuildinfo",
   },
-  // Tests are typechecked here and excluded from the build (tsconfig.build.json).
+  // Tests and the tsx scripts (scripts/) are typechecked here and excluded from
+  // the build (tsconfig.build.json).
   // src/generated is in: the Prisma client is TypeScript that has to compile
   // into dist, and excluding it would only hide errors until runtime.
-  "include": ["src/**/*.ts", "test/**/*.ts"],
+  "include": ["src/**/*.ts", "test/**/*.ts", "scripts/**/*.ts"],
   "exclude": ["node_modules", "dist", "coverage"],
 }

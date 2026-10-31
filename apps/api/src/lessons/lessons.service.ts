@@ -187,11 +187,12 @@ export class LessonsService {
     // The 2 queries do not need each other, so they run at the same time.
     // The results are NOT filtered by level: after a level change at noon,
     // the lessons of the old level finished this morning must stay in today's done.
-    const [lessons, results] = await Promise.all([
+    // Every lesson of the level, ready or not: the list shows them all.
+    const [rows, results] = await Promise.all([
       this.prisma.lesson.findMany({
         where: { lang, level },
         orderBy: { position: 'asc' },
-        select: LESSON_SELECT,
+        select: { ...LESSON_SELECT, ready: true },
       }),
       this.prisma.lessonResult.findMany({
         where: { userLevelId: course.id },
@@ -207,7 +208,11 @@ export class LessonsService {
       latestDay([...results.map((result) => result.day), course.lastGoalDay]),
     );
 
-    return { course, level, lessons, results, day };
+    // `ready` is for the rules only (plan and levelProgress skip a lesson that
+    // is not): the strict card schema has no such field, so the cards get
+    // the rows without it.
+    const lessons = rows.map(({ ready: _ready, ...lesson }) => lesson);
+    return { course, level, lessons, ruleLessons: rows, results, day };
   }
 
   /**
@@ -254,7 +259,8 @@ export class LessonsService {
   /**
    * GET /courses/:lang/today: what to do today. The lessons done, proposed
    * and extra (plan gives ids, cardsById turns them into cards), the daily
-   * target, the streak of days, and the progress in the level.
+   * target, the streak of days, and the progress in the level. Proposed,
+   * extra and progress read the level's ready lessons only.
    *
    * `results: rows`: load gives Prisma rows. The rules need RuleResults, so
    * the name `results` is kept for those. Each row is turned into one once.
@@ -264,6 +270,7 @@ export class LessonsService {
       course,
       level,
       lessons,
+      ruleLessons,
       results: rows,
       day,
     } = await this.load(userId, lang, timeZone, now);
@@ -275,7 +282,7 @@ export class LessonsService {
     // Then the lessons of the current level, done or not.
     const cards = cardsById([...rows.map((row) => row.lesson), ...lessons], resultsById(results));
     const toCards = (ids: LessonId[]) => ids.map((id) => cards.get(id)!);
-    const { done, proposed, extra } = plan(lessons, results, day, goal);
+    const { done, proposed, extra } = plan(ruleLessons, results, day, goal);
 
     const streak: CourseStreak = {
       streak: course.streak,
@@ -295,7 +302,7 @@ export class LessonsService {
         best: course.bestStreak,
         today: streak.lastGoalDay === day,
       },
-      progress: levelProgress(lessons, results),
+      progress: levelProgress(ruleLessons, results),
       levelAfter: levelAfter(level),
     });
   }
@@ -305,7 +312,7 @@ export class LessonsService {
    * transaction under the course lock, so two finishes at once count the
    * day's goal once:
    *   1. the course, locked: 404 without one, 409 before placement
-   *   2. the lesson: 404 if it is missing or from another language
+   *   2. the lesson: 404 if it is missing, from another language or not ready
    *   3. the result: the best score stays, the day and time move to this finish
    *   4. the goal: meetGoal meets the day if this finish reached it
    */
@@ -318,7 +325,7 @@ export class LessonsService {
   ): Promise<FinishResult> {
     return this.prisma.$transaction(async (tx) => {
       const course = checkCourse(await lockCourse(tx, user.id, lang), { placed: true });
-      const lesson = await findLesson(tx, lang, id);
+      const lesson = await findLesson(tx, lang, id, { readyOnly: true });
 
       const day = await currentDay(tx, course, user.timeZone, now);
       const key = { userLevelId: course.id, lessonId: lesson.id };

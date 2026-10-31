@@ -83,6 +83,9 @@ export function checkCourse(
  * A malformed id names no lesson: the same 404, without asking the database.
  * 404, not 400: the front shows a 404 as "not there", a 400 as an error.
  *
+ * `readyOnly` gives the same 404 for a lesson that is not ready (#84): it has
+ * no files, so it cannot be played or finished.
+ *
  * Call it after checkCourse, never at the same time: without a course, the
  * answer must be course.notFound, not lesson.notFound.
  */
@@ -90,9 +93,11 @@ export async function findLesson(
   db: Prisma.TransactionClient,
   lang: Language,
   id: string,
+  { readyOnly = false } = {},
 ): Promise<LessonRow> {
+  const where = readyOnly ? { id, lang, ready: true } : { id, lang };
   const lesson = LessonIdSchema.safeParse(id).success
-    ? await db.lesson.findFirst({ where: { id, lang }, select: LESSON_SELECT })
+    ? await db.lesson.findFirst({ where, select: LESSON_SELECT })
     : null;
   if (!lesson) {
     throw new NotFoundException('lesson.notFound');

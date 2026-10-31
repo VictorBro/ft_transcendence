@@ -10,6 +10,7 @@
  *   const result = lessons.validateLesson(brief, content, { entry, lang, level });
  *
  * Only what the API needs is exported; add a name here when an app needs it.
+ * The lesson player is its own namespace inside, `lessons.player`.
  */
 export { validateLesson, type LessonValidation } from './validateLesson';
 export { hasGender } from './domain/articles';
@@ -21,3 +22,15 @@ export {
   type Brief,
   type LessonContent,
 } from './schemas/artifacts';
+export * as player from './player';
+export { ARTIFACT_SCHEMA_VERSION } from './schemas/artifactCommon';
+
+// The authoring kit (#83) computes what the validators check to the second.
+export { vocabularyLesson, vocabularyMinutes } from './domain/vocabularyLesson';
+export { functionsPageEstimate, functionsTimeLimit } from './domain/functionsLesson';
+export {
+  readingMinutes,
+  readingPageEstimate,
+  readingSkimSeconds,
+  readingTimeLimit,
+} from './domain/readingLesson';

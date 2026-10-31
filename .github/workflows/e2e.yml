@@ -9,6 +9,10 @@ name: e2e
 #                 every route, including client-side navigation.
 #   legal pages   e2e/tests/legal.spec.ts    /privacy and /terms answer 200 and
 #                 render real content, measured against a character floor.
+#
+# Every spec runs on Chromium, Firefox and WebKit (the additional browsers
+# minor), against one stack: bringing it up dominates the job, so three jobs
+# would triple the build for a suite that takes a fraction of it.
 # See ci.yml: once per PR, once when the squash merge lands on main.
 on:
   push:
@@ -46,8 +50,8 @@ jobs:
 
       # Before the stack comes up: this step is cache-friendly and slow, and
       # there is no reason to have containers idling while it runs.
-      - name: Install the Chromium build Playwright pins
-        run: pnpm --filter @ft/e2e exec playwright install --with-deps chromium
+      - name: Install the browser builds Playwright pins
+        run: pnpm --filter @ft/e2e exec playwright install --with-deps chromium firefox webkit
 
       # No .env file. Every value in compose.yml is ${VAR:-default} except
       # SESSION_SECRET and the Grafana keys, supplied above, so the stack comes

@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-thanking-and-apologising",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "S’il vous plaît, merci, pardon",
+  "objective": {
+    "en": "Ask politely, thank someone, apologise, and answer when someone thanks you or apologises.",
+    "fr": "Demander poliment, remercier, s’excuser et répondre quand quelqu’un vous remercie ou s’excuse.",
+    "de": "Höflich bitten, sich bedanken, sich entschuldigen und antworten, wenn sich jemand bedankt oder entschuldigt."
+  },
+  "estimatedMinutes": 18,
+  "provenance": {
+    "generator": "claude-code-direct-authoring",
+    "model": "claude-opus-5-5",
+    "promptVersion": "functions-v1",
+    "generatedAt": "2026-10-28T17:48:59.336Z",
+    "inputHashes": {
+      "outline": "ec905b67ae8ef12d888c5306bee8dcbcb77540833368206378e825dbabbd4d7e"
+    }
+  },
+  "kind": "functions",
+  "theme": "relations",
+  "situation": {
+    "en": "On a train, Chloé looks for her seat and talks with a man sitting next to it.",
+    "fr": "Dans un train, Chloé cherche sa place et parle avec un monsieur assis à côté.",
+    "de": "Im Zug sucht Chloé ihren Platz und spricht mit einem Herrn, der daneben sitzt."
+  },
+  "coverageNotes": {
+    "en": "Asking politely (s’il vous plaît, and s’il te plaît with friends), thanking (merci beaucoup) and answering (de rien), apologising (excusez-moi, pardon) and answering (ce n’est pas grave).",
+    "fr": "Demander poliment (s’il vous plaît, et s’il te plaît entre amis), remercier (merci beaucoup) et répondre (de rien), s’excuser (excusez-moi, pardon) et répondre (ce n’est pas grave).",
+    "de": "Höflich bitten (s’il vous plaît, und s’il te plaît unter Freunden), sich bedanken (merci beaucoup) und antworten (de rien), sich entschuldigen (excusez-moi, pardon) und antworten (ce n’est pas grave)."
+  },
+  "prerequisites": [],
+  "roles": [
+    {
+      "id": "chloe",
+      "label": "Chloé",
+      "translation": {
+        "en": "Chloé",
+        "de": "Chloé"
+      }
+    },
+    {
+      "id": "monsieur",
+      "label": "le monsieur",
+      "translation": {
+        "en": "the man",
+        "de": "der Herr"
+      }
+    }
+  ],
+  "expressions": [
+    {
+      "id": "sil-vous-plait",
+      "text": "S’il vous plaît.",
+      "openEnd": false,
+      "translations": {
+        "en": ["Please."],
+        "de": ["Bitte."]
+      },
+      "explanation": {
+        "en": "Makes a request polite, with vous: to a stranger or to several people.",
+        "fr": "Rend une demande polie, avec vous : à un inconnu ou à plusieurs personnes.",
+        "de": "Macht eine Bitte höflich, mit vous: zu Fremden oder zu mehreren Personen."
+      },
+      "example": {
+        "text": "Un thé, s’il vous plaît.",
+        "translation": {
+          "en": "A tea, please.",
+          "de": "Einen Tee, bitte."
+        }
+      }
+    },
+    {
+      "id": "merci-beaucoup",
+      "text": "Merci beaucoup !",
+      "openEnd": false,
+      "translations": {
+        "en": ["Thank you very much!"],
+        "de": ["Vielen Dank!"]
+      },
+      "explanation": {
+        "en": "A warm thank you: merci + beaucoup (a lot).",
+        "fr": "Un remerciement chaleureux : merci + beaucoup.",
+        "de": "Ein herzlicher Dank: merci + beaucoup (sehr)."
+      },
+      "example": {
+        "text": "Merci beaucoup, madame !",
+        "translation": {
+          "en": "Thank you very much, madam!",
+          "de": "Vielen Dank!"
+        }
+      }
+    },
+    {
+      "id": "de-rien",
+      "text": "De rien.",
+      "openEnd": false,
+      "translations": {
+        "en": ["You’re welcome."],
+        "de": ["Gern geschehen."]
+      },
+      "explanation": {
+        "en": "The usual answer when someone says merci.",
+        "fr": "La réponse habituelle quand quelqu’un dit merci.",
+        "de": "Die übliche Antwort, wenn jemand merci sagt."
+      },
+      "example": {
+        "text": "De rien, bonne journée !",
+        "translation": {
+          "en": "You’re welcome, have a nice day!",
+          "de": "Gern geschehen, einen schönen Tag!"
+        }
+      }
+    },
+    {
+      "id": "excusez-moi",
+      "text": "Excusez-moi.",
+      "openEnd": false,
+      "translations": {
+        "en": ["Excuse me."],
+        "de": ["Entschuldigung."]
+      },
+      "explanation": {
+        "en": "To get a stranger’s attention politely, or to say sorry (vous).",
+        "fr": "Pour attirer poliment l’attention d’un inconnu, ou pour s’excuser (vous).",
+        "de": "Um höflich die Aufmerksamkeit eines Fremden zu bekommen oder sich zu entschuldigen (vous)."
+      },
+      "example": {
+        "text": "Excusez-moi, où est la gare ?",
+        "translation": {
+          "en": "Excuse me, where is the station?",
+          "de": "Entschuldigung, wo ist der Bahnhof?"
+        }
+      }
+    },
+    {
+      "id": "ce-nest-pas-grave",
+      "text": "Ce n’est pas grave.",
+      "openEnd": false,
+      "translations": {
+        "en": ["It doesn’t matter."],
+        "de": ["Das macht nichts."]
+      },
+      "explanation": {
+        "en": "The answer when someone says sorry: no problem.",
+        "fr": "La réponse quand quelqu’un s’excuse : pas de problème.",
+        "de": "Die Antwort, wenn sich jemand entschuldigt: kein Problem."
+      },
+      "example": {
+        "text": "Le café ? Ce n’est pas grave.",
+        "translation": {
+          "en": "The coffee? It doesn’t matter.",
+          "de": "Der Kaffee? Das macht nichts."
+        }
+      }
+    }
+  ],
+  "words": [
+    {
+      "id": "sil-te-plait",
+      "term": "s’il te plaît",
+      "teachingForm": "s’il te plaît",
+      "translations": {
+        "en": ["please (to a friend)"],
+        "de": ["bitte (zu Freunden)"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "explanation": {
+        "en": "Please with tu: to a friend, a child or family.",
+        "fr": "S’il vous plaît avec tu : à un ami, un enfant ou en famille.",
+        "de": "Bitte mit tu: zu Freunden, Kindern oder in der Familie."
+      },
+      "example": {
+        "text": "Tom, un stylo, s’il te plaît.",
+        "translation": {
+          "en": "Tom, a pen, please.",
+          "de": "Tom, einen Stift, bitte."
+        }
+      }
+    },
+    {
+      "id": "pardon",
+      "term": "pardon",
+      "teachingForm": "pardon",
+      "translations": {
+        "en": ["sorry"],
+        "de": ["Verzeihung"]
+      },
+      "wordClass": "interjection",
+      "genders": [],
+      "explanation": {
+        "en": "A short sorry, for example when you bump into someone.",
+        "fr": "Un court mot d’excuse, par exemple quand on bouscule quelqu’un.",
+        "de": "Eine kurze Entschuldigung, zum Beispiel wenn man jemanden anstößt."
+      },
+      "example": {
+        "text": "Oh, pardon, madame !",
+        "translation": {
+          "en": "Oh, sorry, madam!",
+          "de": "Oh, Verzeihung!"
+        }
+      }
+    },
+    {
+      "id": "place",
+      "term": "place",
+      "teachingForm": "une place",
+      "translations": {
+        "en": ["seat"],
+        "de": ["Sitzplatz"]
+      },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "explanation": {
+        "en": "Feminine noun: une place, a seat on a train or in a cinema.",
+        "fr": "Nom féminin : une place, dans un train ou au cinéma.",
+        "de": "Feminines Nomen: une place, ein Platz im Zug oder im Kino."
+      },
+      "example": {
+        "text": "C’est ma place.",
+        "translation": {
+          "en": "It’s my seat.",
+          "de": "Das ist mein Platz."
+        }
+      }
+    },
+    {
+      "id": "sac",
+      "term": "sac",
+      "teachingForm": "un sac",
+      "translations": {
+        "en": ["bag"],
+        "de": ["Tasche"]
+      },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "explanation": {
+        "en": "Masculine noun: un sac.",
+        "fr": "Nom masculin : un sac.",
+        "de": "Maskulines Nomen: un sac."
+      },
+      "example": {
+        "text": "Mon sac est grand.",
+        "translation": {
+          "en": "My bag is big.",
+          "de": "Meine Tasche ist groß."
+        }
+      }
+    }
+  ],
+  "scoring": {
+    "practiceWeight": 35,
+    "examWeight": 65,
+    "orthographyCredit": 0.5
+  }
+}

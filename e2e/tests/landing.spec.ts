@@ -28,8 +28,8 @@ test.describe('post-auth landing', () => {
     ).toBeVisible();
   });
 
-  // French is written last, so activeLang says French: only the cookie can
-  // send the learner to German.
+  // German is written last, so activeLang says German: only the cookie can
+  // send the learner to French.
   test('with two courses, the one this browser last opened wins', async ({ onboarded }) => {
     await placeCourse(onboarded, SECOND_COURSE);
     await onboarded.goto(`/en/learn/${ONBOARDED_COURSE.lang}`);
@@ -39,13 +39,13 @@ test.describe('post-auth landing', () => {
     await expect(onboarded).toHaveURL(new RegExp(`/en/learn/${ONBOARDED_COURSE.lang}$`));
   });
 
-  // A fresh context has no cookie, as on a second device. German is the first
-  // course, so landing on French proves activeLang decided rather than order.
+  // A fresh context has no cookie, as on a second device. French is the first
+  // course, so landing on German proves activeLang decided rather than order.
   test('with two courses and no cookie, the course last written to wins', async ({ onboarded }) => {
     await placeCourse(onboarded, SECOND_COURSE);
 
     await onboarded.goto('/en/learn');
-    await expect(onboarded).toHaveURL(/\/en\/learn\/fr$/);
+    await expect(onboarded).toHaveURL(new RegExp(`/en/learn/${SECOND_COURSE.lang}$`));
   });
 
   // The course home would only redirect again, so /learn goes straight there.
