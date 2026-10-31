@@ -317,7 +317,7 @@ export const TodaySchema = z.object({
   xp: XpSchema,
   /** The course day's challenge, done once lastChallengeDay is that day. */
   challenge: ChallengeSchema,
-  /** The achievements earned on the course day, in the order they were earned. */
+  /** The achievements earned on the course day, in the catalogue order. */
   earnedToday: z.array(AchievementCodeSchema),
 });
 export type Today = z.infer<typeof TodaySchema>;
