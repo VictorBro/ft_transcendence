@@ -126,6 +126,9 @@ model Lesson {
   brief     Json
   // Null for a vocabulary lesson, whose lesson is built from its brief.
   content   Json?
+  // Set by the seed on every run: true when the lesson's files exist and pass
+  // validateLesson. Only ready lessons are proposed and count toward a level.
+  ready     Boolean    @default(false)
   updatedAt DateTime   @updatedAt
 
   results LessonResult[]

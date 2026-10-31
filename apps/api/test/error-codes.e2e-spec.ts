@@ -34,6 +34,8 @@ describe('error codes (e2e)', () => {
 
   const email = `codes-${Date.now()}@example.com`;
   const displayName = `codes${Date.now()}`;
+  /** Every account the signup limit case creates starts with this. */
+  const signupPrefix = `codes-signup-${Date.now()}-`;
 
   const server = () => app.getHttpServer();
 
@@ -77,7 +79,9 @@ describe('error codes (e2e)', () => {
   });
 
   afterAll(async () => {
-    await prisma?.user.deleteMany({ where: { email } });
+    await prisma?.user.deleteMany({
+      where: { OR: [{ email }, { email: { startsWith: signupPrefix } }] },
+    });
     await app?.close();
   });
 
@@ -171,6 +175,31 @@ describe('error codes (e2e)', () => {
       await login().expect(401);
     }
     const response = await login().expect(429);
+
+    expect(response.body.message).toBe('server.rateLimited');
+    expectOnlyCodes(response.body);
+  });
+
+  /**
+   * Pins the number, not just the mechanism. Nothing else fails when the
+   * decorator changes, which is how #31 once raised it to 30 unnoticed (#34).
+   */
+  it('sends server.rateLimited on the eleventh signup in a minute from one address', async () => {
+    const address = fromNewAddress();
+    const signUp = (n: number) =>
+      request(server())
+        .post('/api/auth/signup')
+        .set('X-Forwarded-For', address)
+        .send({
+          email: `${signupPrefix}${n}@example.com`,
+          displayName: `codes${n}x${Date.now() % 1_000_000}`,
+          password: 'Correct-Horse-9',
+        });
+
+    for (let attempt = 1; attempt <= 10; attempt++) {
+      await signUp(attempt).expect(201);
+    }
+    const response = await signUp(11).expect(429);
 
     expect(response.body.message).toBe('server.rateLimited');
     expectOnlyCodes(response.body);

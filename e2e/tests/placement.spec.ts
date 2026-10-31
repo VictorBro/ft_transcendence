@@ -197,10 +197,10 @@ test.describe('placement exam', () => {
     await onboarded.goto(PLACEMENT);
 
     await expect(onboarded.getByRole('heading', { name: 'Find your level' })).toBeVisible();
-    await expect(onboarded.getByText(/reading in German\./)).toBeVisible();
+    await expect(onboarded.getByText(/reading in French\./)).toBeVisible();
     // A placed learner hears that finishing replaces the level they have.
     await expect(
-      onboarded.getByText('Your lessons are at B1 now.', { exact: false }),
+      onboarded.getByText(`Your lessons are at ${ONBOARDED_COURSE.level} now.`, { exact: false }),
     ).toBeVisible();
     await expect(onboarded.getByRole('button', { name: 'Start the test' })).toBeVisible();
     await expect(onboarded.getByRole('link', { name: 'Back' })).toHaveAttribute(

@@ -178,10 +178,11 @@ export function progress(
  * levelProgress whether it is complete rather than comparing its bar: an
  * empty level has a target of 0, which `current >= target` would award.
  *
- * `complete` is trusted as is: a level is seeded whole, because the seed
- * reads content/outlines and outline-files.spec.ts holds every outline to
- * LESSONS_PER_LEVEL entries. Relax that check and a level achievement can
- * be earned, for good, on part of a level.
+ * `complete` is trusted as is, and it reads the level's ready lessons only:
+ * a level is complete when every lesson that can be played is, as decided
+ * ("every available A1 lesson"). So while a level has only some of its
+ * lessons written, its achievement is earned, for good, on those: a lesson
+ * made ready later does not take it back.
  */
 export function earned(stats: AchievementStats): AchievementCode[] {
   return ACHIEVEMENTS.filter((achievement) =>

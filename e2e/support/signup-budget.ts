@@ -20,13 +20,14 @@ import { join } from 'node:path';
  * directory rather than test-results/, which Playwright empties on every start.
  */
 
-const SIGNUPS_PER_WINDOW = 30;
+const SIGNUPS_PER_WINDOW = 10;
 
 /**
- * The throttler's window plus slack for the time between booking a slot and
- * the request reaching the API, which is what the server actually counts.
+ * The throttler's 60s window plus slack. A slot is booked when the signup is
+ * due, but the server counts it when it arrives, and on a loaded runner that
+ * can be a few seconds later. Five seconds costs a run about ten.
  */
-const WINDOW_MS = 61_000;
+const WINDOW_MS = 65_000;
 
 const LOG = join(tmpdir(), 'ft-e2e-signups.json');
 const LOCK = `${LOG}.lock`;
@@ -94,17 +95,25 @@ const book = (): Promise<number> =>
     return slot;
   });
 
+export interface SlotOptions {
+  /**
+   * Off for worker fixtures. test.info() answers inside them too, but with the
+   * test's timeout, and setTimeout() would replace the fixture's own budget
+   * (WORKER_SIGNUP_TIMEOUT_MS) with that plus the wait.
+   */
+  extendTestTimeout?: boolean;
+}
+
 /**
  * Resolves when one more signup may be sent. Call it right before whatever
  * sends POST /auth/signup, whether that is a request or a click on the form.
  *
- * By default the wait is added to the running test's timeout, so a test that
- * queued behind other workers is not failed for it. A worker fixture passes
- * `extendTestTimeout: false`: test.info() there is the test that triggered the
- * fixture, and setTimeout() would replace the fixture's own
- * WORKER_SIGNUP_TIMEOUT_MS with that test's 30 s plus the wait.
+ * In a test or a test fixture the wait is added to the test's timeout, so a
+ * test that queued behind other workers is not failed for it. A worker fixture
+ * passes extendTestTimeout: false and sets WORKER_SIGNUP_TIMEOUT_MS instead,
+ * which covers the longest wait.
  */
-export const signUpSlot = async ({ extendTestTimeout = true } = {}): Promise<void> => {
+export const signUpSlot = async ({ extendTestTimeout = true }: SlotOptions = {}): Promise<void> => {
   const wait = (await book()) - Date.now();
   if (wait <= 0) {
     return;

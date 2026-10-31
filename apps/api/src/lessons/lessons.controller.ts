@@ -114,7 +114,9 @@ export class LessonsController {
   @ApiOkResponse({ type: FinishResultDto })
   @ApiBadRequestResponse({ description: 'The score is not a whole number from 0 to 100' })
   @ApiUnauthorizedResponse({ description: 'No valid session' })
-  @ApiNotFoundResponse({ description: 'No course in that language, or no such lesson in it' })
+  @ApiNotFoundResponse({
+    description: 'No course in that language, or no such lesson in it, or it is not ready',
+  })
   @ApiConflictResponse({ description: 'The course has no level yet (no placement)' })
   finish(
     @CurrentUser() user: SessionUser,

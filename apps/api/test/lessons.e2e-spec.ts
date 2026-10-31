@@ -111,7 +111,20 @@ describe('lessons (e2e)', () => {
       summary: 'Eine Testlektion.',
     },
   ] as const;
-  const FIXTURE_IDS = FIXTURES.map((lesson) => lesson.id);
+  // Not ready, before the fixtures above: the lesson list shows it, but today
+  // never proposes it nor counts it. No "testeur" in it, so `q=testeur` skips it.
+  const DRAFT = {
+    id: 'fr-test-draft',
+    lang: 'fr',
+    level: 'A1',
+    position: 9000,
+    kind: 'grammar',
+    topic: 'pronouns',
+    theme: null,
+    title: 'Le brouillon du rédacteur',
+    summary: 'Une leçon sans fichiers.',
+  } as const;
+  const FIXTURE_IDS = [...FIXTURES.map((lesson) => lesson.id), DRAFT.id];
 
   const signUp = async (address: string, name: string) => {
     const fresh = request.agent(app.getHttpServer());
@@ -126,12 +139,13 @@ describe('lessons (e2e)', () => {
   const card = (cards: LessonCard[], id: string) => cards.find((c) => c.id === id);
 
   /**
-   * The ids of a French level, by position: the real lessons and the fixtures.
-   * What plan() offers is read off this, so the tests hold whatever is seeded.
+   * The ids of a French level's ready lessons, by position: the real ones and
+   * the fixtures. What plan() offers is read off this, so the tests hold
+   * whatever is seeded.
    */
   const levelIds = async (level: 'A1' | 'A2') => {
     const lessons = await prisma.lesson.findMany({
-      where: { lang: 'fr', level },
+      where: { lang: 'fr', level, ready: true },
       orderBy: { position: 'asc' },
       select: { id: true },
     });
@@ -156,7 +170,10 @@ describe('lessons (e2e)', () => {
     await prisma.lessonResult.deleteMany({ where: { lessonId: { in: FIXTURE_IDS } } });
     await prisma.lesson.deleteMany({ where: { id: { in: FIXTURE_IDS } } });
     await prisma.lesson.createMany({
-      data: FIXTURES.map((lesson) => ({ ...lesson, brief })),
+      data: [
+        ...FIXTURES.map((lesson) => ({ ...lesson, brief, ready: true })),
+        { ...DRAFT, brief: {}, ready: false },
+      ],
     });
 
     agent = await signUp(email, `lessons${stamp}`);
@@ -299,9 +316,21 @@ describe('lessons (e2e)', () => {
         expect(ids(response.body.extra)).toEqual(queue.slice(2, 2 + EXTRA_COUNT));
       });
 
-      it('counts the progress on the level from its results', async () => {
+      it('never proposes a lesson that is not ready', async () => {
         const response = await agent.get('/api/courses/fr/today').expect(200);
-        const total = await prisma.lesson.count({ where: { lang: 'fr', level: 'A1' } });
+        const ready = new Set(await levelIds('A1'));
+        const offered = [...ids(response.body.proposed), ...ids(response.body.extra)];
+
+        expect(offered.length).toBeGreaterThan(0);
+        expect(offered.filter((id) => !ready.has(id))).toEqual([]);
+        expect(offered).not.toContain(DRAFT.id);
+      });
+
+      it('counts the progress on the level from its results, over its ready lessons', async () => {
+        const response = await agent.get('/api/courses/fr/today').expect(200);
+        const total = await prisma.lesson.count({
+          where: { lang: 'fr', level: 'A1', ready: true },
+        });
 
         expect(response.body.progress).toMatchObject({
           total,
@@ -416,10 +445,12 @@ describe('lessons (e2e)', () => {
     });
 
     describe('lessons', () => {
-      it('gives the day, the size of the level and the page size', async () => {
+      it('gives the day, the size of the level and the page size, ready or not', async () => {
         const response = await agent.get('/api/courses/fr/lessons').expect(200);
         const levelTotal = await prisma.lesson.count({ where: { lang: 'fr', level: 'A1' } });
 
+        // Every row of the level, not only the ready ones that today counts.
+        expect(levelTotal).toBeGreaterThan((await levelIds('A1')).length);
         expect(response.body).toMatchObject({
           day: today,
           levelTotal,

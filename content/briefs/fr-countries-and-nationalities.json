@@ -1,0 +1,597 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-countries-and-nationalities",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Les pays et les nationalités",
+  "objective": {
+    "en": "Learn seven country names and their corresponding masculine and feminine nationality adjectives in French.",
+    "fr": "Apprendre sept noms de pays et leurs adjectifs de nationalité correspondants au masculin et au féminin.",
+    "de": "Lerne sieben Ländernamen und die dazugehörigen männlichen und weiblichen Nationalitätsadjektive auf Französisch."
+  },
+  "estimatedMinutes": 14,
+  "provenance": {
+    "generator": "lesson-prototype",
+    "model": "gemini-3.6-flash",
+    "promptVersion": "brief-v2",
+    "generatedAt": "2026-10-06T14:34:36.949Z",
+    "inputHashes": {
+      "outline": "4bf17f4e2b096c50de82ca8f715c42f5826e58849c6093eccfc4fc8dd81c4df2"
+    }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Covers 4 major countries and their masculine/feminine nationality forms at A1 level.",
+    "fr": "Couvre 4 pays majeurs et leurs formes de nationalité masculin/féminin au niveau A1.",
+    "de": "Deckt 4 wichtige Länder und ihre männlichen/weiblichen Nationalitätsformen auf A1-Niveau ab."
+  },
+  "targetCount": 8,
+  "countRationale": {
+    "en": "8 targets, four countries and their nationality adjectives, keep the lesson within 15 minutes.",
+    "fr": "8 cibles, quatre pays et leurs adjectifs de nationalité, gardent la leçon sous 15 minutes.",
+    "de": "8 Ziele, vier Länder und ihre Nationalitätsadjektive, halten die Lektion unter 15 Minuten."
+  },
+  "difficultyBalance": {
+    "en": "Mostly core European countries; italien, italienne adds the -ien/-ienne pattern.",
+    "fr": "Surtout des pays européens courants ; italien, italienne ajoute l'alternance -ien/-ienne.",
+    "de": "Vor allem geläufige europäische Länder; italien, italienne bringt den Wechsel -ien/-ienne."
+  },
+  "prerequisites": [
+    {
+      "en": "Basic familiarity with French subject pronouns (il, elle).",
+      "fr": "Connaissance de base des pronoms sujets français (il, elle).",
+      "de": "Grundkenntnisse der französischen Subjektpronomen (il, elle)."
+    }
+  ],
+  "groups": [
+    {
+      "id": "group-countries",
+      "label": {
+        "en": "Countries",
+        "fr": "Les pays",
+        "de": "Länder"
+      },
+      "targetIds": ["target-espagne", "target-france", "target-allemagne", "target-italie"],
+      "introduction": {
+        "en": "Country names usually keep their **definite article**: `la France`, `l'Espagne`, `l'Allemagne`, `l'Italie`.\n\nTo say \"in\": use **en** with feminine countries and **au** with masculine ones – en France, en Allemagne, au Canada, au Japon.\n\n- In the exam, country answers keep their article.\n- In practice gaps, write the country name without its article.",
+        "fr": "Les noms de pays gardent généralement leur **article défini** : `la France`, `l'Espagne`, `l'Allemagne`, `l'Italie`.\n\nPour dire « dans » : utilisez **en** avec les pays féminins et **au** avec les pays masculins – en France, en Allemagne, au Canada, au Japon.\n\n- À l'examen, les pays gardent leur article.\n- Dans les exercices à trous, écrivez le pays sans son article.",
+        "de": "Ländernamen behalten meist ihren **bestimmten Artikel**: `la France`, `l'Espagne`, `l'Allemagne`, `l'Italie`.\n\nFür „in“: **en** bei weiblichen, **au** bei männlichen Ländern – en France, en Allemagne, au Canada, au Japon.\n\n- In der Prüfung behalten Länderantworten ihren Artikel.\n- In Übungslücken schreibst du das Land ohne Artikel."
+      }
+    },
+    {
+      "id": "group-nationalities",
+      "label": {
+        "en": "Nationalities",
+        "fr": "Les nationalités",
+        "de": "Nationalitäten"
+      },
+      "targetIds": ["target-espagnol", "target-francais", "target-allemand", "target-italien"],
+      "introduction": {
+        "en": "**Nationality adjectives** start with a lowercase letter, take no article, and agree with the person: Il est espagnol. Elle est espagnole.\n\n- `espagnol` / `espagnole` – Spanish\n- `français` / `française` – French\n- `allemand` / `allemande` – German\n- `italien` / `italienne` – Italian\n\nSay each pair aloud: the feminine form often makes the final consonant audible.",
+        "fr": "Les **adjectifs de nationalité** commencent par une minuscule, n'ont pas d'article et s'accordent : Il est espagnol. Elle est espagnole.\n\n- `espagnol` / `espagnole`\n- `français` / `française`\n- `allemand` / `allemande`\n- `italien` / `italienne`\n\nDites chaque paire à voix haute : le féminin fait souvent entendre la consonne finale.",
+        "de": "**Nationalitätsadjektive** beginnen klein, stehen ohne Artikel und passen sich der Person an: Il est espagnol. Elle est espagnole.\n\n- `espagnol` / `espagnole` – spanisch\n- `français` / `française` – französisch\n- `allemand` / `allemande` – deutsch\n- `italien` / `italienne` – italienisch\n\nSprich jedes Paar laut: In der weiblichen Form hört man oft den Endkonsonanten."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "target-espagne",
+      "term": "Espagne",
+      "translations": {
+        "en": ["Spain"],
+        "de": ["Spanien"]
+      },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "l'Espagne",
+      "examForms": ["l'Espagne"],
+      "articleException": {
+        "en": "Country names take definite articles in standard usage.",
+        "fr": "Les noms de pays s'utilisent avec l'article défini.",
+        "de": "Ländernamen werden mit dem bestimmten Artikel verwendet."
+      },
+      "genderVariants": [],
+      "pronunciation": "/lɛs.paɲ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "J'habite en Espagne.",
+        "translation": {
+          "en": "I live in Spain.",
+          "de": "Ich wohne in Spanien."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "l'Espagne means Spain. Country names take definite articles in standard usage.",
+        "fr": "La forme à retenir est « l'Espagne ». Les noms de pays s'utilisent avec l'article défini.",
+        "de": "l'Espagne bedeutet Spanien. Ländernamen werden mit dem bestimmten Artikel verwendet."
+      },
+      "genderExplanation": {
+        "en": "l'Espagne: feminine. Learn the noun together with its article.",
+        "fr": "« l'Espagne » : féminin. Apprenez le nom avec son article.",
+        "de": "l'Espagne: weiblich. Lerne das Nomen mit seinem Artikel."
+      },
+      "matchingLabel": {
+        "en": "Spain",
+        "de": "Spanien"
+      },
+      "examPrompt": null,
+      "gap": {
+        "before": "Madrid est en ",
+        "after": ".",
+        "accepted": {
+          "answers": ["Espagne"]
+        },
+        "referenceTargetIds": [
+          "target-espagne",
+          "target-allemagne",
+          "target-france",
+          "target-italie"
+        ],
+        "explanation": {
+          "en": "l'Espagne means Spain. Country names take definite articles in standard usage.",
+          "fr": "La forme à retenir est « l'Espagne ». Les noms de pays s'utilisent avec l'article défini.",
+          "de": "l'Espagne bedeutet Spanien. Ländernamen werden mit dem bestimmten Artikel verwendet."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "target-espagne",
+        "target-allemagne",
+        "target-france",
+        "target-italie"
+      ]
+    },
+    {
+      "id": "target-france",
+      "term": "France",
+      "translations": {
+        "en": ["France"],
+        "de": ["Frankreich"]
+      },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "la France",
+      "examForms": ["la France"],
+      "articleException": {
+        "en": "Country names take definite articles in standard usage.",
+        "fr": "Les noms de pays s'utilisent avec l'article défini.",
+        "de": "Ländernamen werden mit dem bestimmten Artikel verwendet."
+      },
+      "genderVariants": [],
+      "pronunciation": "/la fʁɑ̃s/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "La France est un beau pays.",
+        "translation": {
+          "en": "France is a beautiful country.",
+          "de": "Frankreich ist ein schönes Land."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "la France means France. Country names take definite articles in standard usage.",
+        "fr": "La forme à retenir est « la France ». Les noms de pays s'utilisent avec l'article défini.",
+        "de": "la France bedeutet Frankreich. Ländernamen werden mit dem bestimmten Artikel verwendet."
+      },
+      "genderExplanation": {
+        "en": "la France: feminine. Learn the noun together with its article.",
+        "fr": "« la France » : féminin. Apprenez le nom avec son article.",
+        "de": "la France: weiblich. Lerne das Nomen mit seinem Artikel."
+      },
+      "matchingLabel": {
+        "en": "France",
+        "de": "Frankreich"
+      },
+      "examPrompt": null,
+      "gap": {
+        "before": "Paris est en ",
+        "after": ".",
+        "accepted": {
+          "answers": ["France"]
+        },
+        "referenceTargetIds": [
+          "target-allemagne",
+          "target-france",
+          "target-italie",
+          "target-espagne"
+        ],
+        "explanation": {
+          "en": "la France means France. Country names take definite articles in standard usage.",
+          "fr": "La forme à retenir est « la France ». Les noms de pays s'utilisent avec l'article défini.",
+          "de": "la France bedeutet Frankreich. Ländernamen werden mit dem bestimmten Artikel verwendet."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "target-allemagne",
+        "target-france",
+        "target-italie",
+        "target-espagne"
+      ]
+    },
+    {
+      "id": "target-allemagne",
+      "term": "Allemagne",
+      "translations": {
+        "en": ["Germany"],
+        "de": ["Deutschland"]
+      },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "l'Allemagne",
+      "examForms": ["l'Allemagne"],
+      "articleException": {
+        "en": "Country names take definite articles in standard usage.",
+        "fr": "Les noms de pays s'utilisent avec l'article défini.",
+        "de": "Ländernamen werden mit dem bestimmten Artikel verwendet."
+      },
+      "genderVariants": [],
+      "pronunciation": "/lal.maɲ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Elle vient d'Allemagne.",
+        "translation": {
+          "en": "She comes from Germany.",
+          "de": "Sie kommt aus Deutschland."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "l'Allemagne means Germany. Country names take definite articles in standard usage.",
+        "fr": "La forme à retenir est « l'Allemagne ». Les noms de pays s'utilisent avec l'article défini.",
+        "de": "l'Allemagne bedeutet Deutschland. Ländernamen werden mit dem bestimmten Artikel verwendet."
+      },
+      "genderExplanation": {
+        "en": "l'Allemagne: feminine. Learn the noun together with its article.",
+        "fr": "« l'Allemagne » : féminin. Apprenez le nom avec son article.",
+        "de": "l'Allemagne: weiblich. Lerne das Nomen mit seinem Artikel."
+      },
+      "matchingLabel": {
+        "en": "Germany",
+        "de": "Deutschland"
+      },
+      "examPrompt": null,
+      "gap": {
+        "before": "Berlin est en ",
+        "after": ".",
+        "accepted": {
+          "answers": ["Allemagne"]
+        },
+        "referenceTargetIds": [
+          "target-allemagne",
+          "target-italie",
+          "target-espagne",
+          "target-france"
+        ],
+        "explanation": {
+          "en": "l'Allemagne means Germany. Country names take definite articles in standard usage.",
+          "fr": "La forme à retenir est « l'Allemagne ». Les noms de pays s'utilisent avec l'article défini.",
+          "de": "l'Allemagne bedeutet Deutschland. Ländernamen werden mit dem bestimmten Artikel verwendet."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "target-allemagne",
+        "target-italie",
+        "target-espagne",
+        "target-france"
+      ]
+    },
+    {
+      "id": "target-italie",
+      "term": "Italie",
+      "translations": {
+        "en": ["Italy"],
+        "de": ["Italien"]
+      },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "l'Italie",
+      "examForms": ["l'Italie"],
+      "articleException": {
+        "en": "Country names take definite articles in standard usage.",
+        "fr": "Les noms de pays s'utilisent avec l'article défini.",
+        "de": "Ländernamen werden mit dem bestimmten Artikel verwendet."
+      },
+      "genderVariants": [],
+      "pronunciation": "/li.ta.li/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Nous allons en Italie.",
+        "translation": {
+          "en": "We are going to Italy.",
+          "de": "Wir fahren nach Italien."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "l'Italie means Italy. Country names take definite articles in standard usage.",
+        "fr": "La forme à retenir est « l'Italie ». Les noms de pays s'utilisent avec l'article défini.",
+        "de": "l'Italie bedeutet Italien. Ländernamen werden mit dem bestimmten Artikel verwendet."
+      },
+      "genderExplanation": {
+        "en": "l'Italie: feminine. Learn the noun together with its article.",
+        "fr": "« l'Italie » : féminin. Apprenez le nom avec son article.",
+        "de": "l'Italie: weiblich. Lerne das Nomen mit seinem Artikel."
+      },
+      "matchingLabel": {
+        "en": "Italy",
+        "de": "Italien"
+      },
+      "examPrompt": null,
+      "gap": {
+        "before": "Rome est en ",
+        "after": ".",
+        "accepted": {
+          "answers": ["Italie"]
+        },
+        "referenceTargetIds": [
+          "target-italie",
+          "target-espagnol",
+          "target-espagne",
+          "target-france"
+        ],
+        "explanation": {
+          "en": "l'Italie means Italy. Country names take definite articles in standard usage.",
+          "fr": "La forme à retenir est « l'Italie ». Les noms de pays s'utilisent avec l'article défini.",
+          "de": "l'Italie bedeutet Italien. Ländernamen werden mit dem bestimmten Artikel verwendet."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "target-italie",
+        "target-espagnol",
+        "target-espagne",
+        "target-france"
+      ]
+    },
+    {
+      "id": "target-espagnol",
+      "term": "espagnol",
+      "translations": {
+        "en": ["Spanish"],
+        "de": ["spanisch"]
+      },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "espagnol, espagnole",
+      "examForms": ["espagnol", "espagnole"],
+      "articleException": null,
+      "genderVariants": ["espagnole"],
+      "pronunciation": "/ɛs.pa.ɲɔl/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Il est espagnol et elle est espagnole.",
+        "translation": {
+          "en": "He is Spanish and she is Spanish.",
+          "de": "Er ist spanisch und sie ist spanisch."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "espagnol, espagnole means Spanish. ",
+        "fr": "La forme à retenir est « espagnol, espagnole ». ",
+        "de": "espagnol, espagnole bedeutet spanisch. "
+      },
+      "genderExplanation": null,
+      "matchingLabel": {
+        "en": "Spanish",
+        "de": "spanisch"
+      },
+      "examPrompt": null,
+      "gap": {
+        "before": "Paul vient d’Espagne : il est ",
+        "after": ".",
+        "accepted": {
+          "answers": ["espagnol"]
+        },
+        "referenceTargetIds": [
+          "target-espagnol",
+          "target-allemand",
+          "target-francais",
+          "target-italien"
+        ],
+        "explanation": {
+          "en": "espagnol, espagnole means Spanish. ",
+          "fr": "La forme à retenir est « espagnol, espagnole ». ",
+          "de": "espagnol, espagnole bedeutet spanisch. "
+        }
+      },
+      "listeningOptionTargetIds": [
+        "target-espagnol",
+        "target-allemand",
+        "target-francais",
+        "target-italien"
+      ]
+    },
+    {
+      "id": "target-francais",
+      "term": "français",
+      "translations": {
+        "en": ["French"],
+        "de": ["französisch"]
+      },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "français, française",
+      "examForms": ["français", "française"],
+      "articleException": null,
+      "genderVariants": ["française"],
+      "pronunciation": "/fʁɑ̃.sɛ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Elle parle avec un accent français.",
+        "translation": {
+          "en": "She speaks with a French accent.",
+          "de": "Sie spricht mit einem französischen Akzent."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "français, française means French.  Français has a cédille under ç; its feminine form is française.",
+        "fr": "La forme à retenir est « français, française ».  Français prend une cédille sous le ç ; son féminin est française.",
+        "de": "français, française bedeutet französisch.  Français hat eine cédille unter ç; die weibliche Form ist française."
+      },
+      "genderExplanation": null,
+      "matchingLabel": {
+        "en": "French",
+        "de": "französisch"
+      },
+      "examPrompt": null,
+      "gap": {
+        "before": "Paul vient de France : il est ",
+        "after": ".",
+        "accepted": {
+          "answers": ["français"]
+        },
+        "referenceTargetIds": [
+          "target-allemand",
+          "target-francais",
+          "target-italien",
+          "target-espagnol"
+        ],
+        "explanation": {
+          "en": "français, française means French.  Français has a cédille under ç; its feminine form is française.",
+          "fr": "La forme à retenir est « français, française ».  Français prend une cédille sous le ç ; son féminin est française.",
+          "de": "français, française bedeutet französisch.  Français hat eine cédille unter ç; die weibliche Form ist française."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "target-allemand",
+        "target-francais",
+        "target-italien",
+        "target-espagnol"
+      ]
+    },
+    {
+      "id": "target-allemand",
+      "term": "allemand",
+      "translations": {
+        "en": ["German"],
+        "de": ["deutsch"]
+      },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "allemand, allemande",
+      "examForms": ["allemand", "allemande"],
+      "articleException": null,
+      "genderVariants": ["allemande"],
+      "pronunciation": "/al.mɑ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mon ami est allemand.",
+        "translation": {
+          "en": "My friend is German.",
+          "de": "Mein Freund ist deutsch."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "allemand, allemande means German. ",
+        "fr": "La forme à retenir est « allemand, allemande ». ",
+        "de": "allemand, allemande bedeutet deutsch. "
+      },
+      "genderExplanation": null,
+      "matchingLabel": {
+        "en": "German",
+        "de": "deutsch"
+      },
+      "examPrompt": null,
+      "gap": {
+        "before": "Paul vient d’Allemagne : il est ",
+        "after": ".",
+        "accepted": {
+          "answers": ["allemand"]
+        },
+        "referenceTargetIds": [
+          "target-allemand",
+          "target-italien",
+          "target-espagnol",
+          "target-francais"
+        ],
+        "explanation": {
+          "en": "allemand, allemande means German. ",
+          "fr": "La forme à retenir est « allemand, allemande ». ",
+          "de": "allemand, allemande bedeutet deutsch. "
+        }
+      },
+      "listeningOptionTargetIds": [
+        "target-allemand",
+        "target-italien",
+        "target-espagnol",
+        "target-francais"
+      ]
+    },
+    {
+      "id": "target-italien",
+      "term": "italien",
+      "translations": {
+        "en": ["Italian"],
+        "de": ["italienisch"]
+      },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "italien, italienne",
+      "examForms": ["italien", "italienne"],
+      "articleException": null,
+      "genderVariants": ["italienne"],
+      "pronunciation": "/i.ta.ljɛ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "La cuisine italienne est délicieuse.",
+        "translation": {
+          "en": "Italian cuisine is delicious.",
+          "de": "Die italienische Küche ist köstlich."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "italien, italienne means Italian. ",
+        "fr": "La forme à retenir est « italien, italienne ». ",
+        "de": "italien, italienne bedeutet italienisch. "
+      },
+      "genderExplanation": null,
+      "matchingLabel": {
+        "en": "Italian",
+        "de": "italienisch"
+      },
+      "examPrompt": null,
+      "gap": {
+        "before": "Paul vient d’Italie : il est ",
+        "after": ".",
+        "accepted": {
+          "answers": ["italien"]
+        },
+        "referenceTargetIds": [
+          "target-italien",
+          "target-espagne",
+          "target-espagnol",
+          "target-francais"
+        ],
+        "explanation": {
+          "en": "italien, italienne means Italian. ",
+          "fr": "La forme à retenir est « italien, italienne ». ",
+          "de": "italien, italienne bedeutet italienisch. "
+        }
+      },
+      "listeningOptionTargetIds": [
+        "target-italien",
+        "target-espagne",
+        "target-espagnol",
+        "target-francais"
+      ]
+    }
+  ],
+  "scoring": {
+    "practiceWeight": 35,
+    "examWeight": 65,
+    "orthographyCredit": 0.5
+  }
+}
