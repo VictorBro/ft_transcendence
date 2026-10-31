@@ -35,6 +35,7 @@ export const reading: KindModule<ReadingBrief, ReadingContent, ReadingItem> = {
       ? { key: 'keywords', title: PLAYER_COPY.keywords }
       : { key: 'document', title: PLAYER_COPY.document },
   pointTitle: (page) => page.stepLabel,
-  start: (brief) => ({ situation: brief.situation }),
+  // Nothing but the sections: the situation names the genre and answers the skim question.
+  start: () => ({}),
   examPart: () => undefined,
 };

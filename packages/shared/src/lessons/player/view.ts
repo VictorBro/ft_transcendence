@@ -83,7 +83,7 @@ export const LessonOutlineSchema = z.strictObject({
   words: z.number().int().positive().optional(),
   /** Grammar: the verbs the lesson introduces. */
   newVerbs: z.array(z.strictObject({ infinitive: z.string(), translation: Native })).optional(),
-  /** Functions and reading. */
+  /** Functions only: a reading lesson's situation would answer its skim question. */
   situation: Localized.optional(),
   /** Functions: the two roles of the dialogue. */
   roles: z.array(z.string()).optional(),

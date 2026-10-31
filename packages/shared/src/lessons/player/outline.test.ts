@@ -58,10 +58,15 @@ describe('lessonOutline', () => {
     expect(o.situation?.en).toMatch(/café/);
   });
 
-  it('gives reading the key words and the document, and never the genre', () => {
+  it('gives reading the key words and the document, and neither the genre nor the situation', () => {
     const o = outline(BY_KIND.reading);
     expect(o.sections.map((s) => s.title.en)).toEqual(['Key words', 'The document', 'Final exam']);
     expect(JSON.stringify(o)).not.toMatch(/text_message/);
+    // The situation names the genre and answers the skim question.
+    const lesson = fixtureLesson(BY_KIND.reading);
+    if (lesson.brief.kind !== 'reading') throw new Error('not reading');
+    expect(o.situation).toBeUndefined();
+    expect(JSON.stringify(o)).not.toContain(lesson.brief.situation.en);
   });
 
   it('counts the minutes from the page durations, every section at least one', () => {
