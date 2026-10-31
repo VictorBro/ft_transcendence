@@ -400,7 +400,7 @@ export class LessonsService {
     const [lessons, rows, stored] = await Promise.all([
       this.prisma.lesson.findMany({
         where: { lang },
-        select: { id: true, level: true, position: true },
+        select: { id: true, level: true, position: true, ready: true },
       }),
       this.prisma.lessonResult.findMany({
         where: { userLevelId: course.id },

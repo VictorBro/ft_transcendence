@@ -103,7 +103,7 @@ async function statsAfter(
     const level = event.lesson.level;
     const lessons = await tx.lesson.findMany({
       where: { lang: course.lang, level },
-      select: { id: true, level: true, position: true },
+      select: { id: true, level: true, position: true, ready: true },
     });
     const results = await tx.lessonResult.findMany({
       where: { userLevelId: course.id, lesson: { level } },
@@ -136,6 +136,11 @@ export async function award(
   day: CourseDay,
   event: AwardEvent,
 ): Promise<Award> {
+  // A goal change that does not meet the day gains nothing and moves no stat.
+  if (event.type === 'goal' && !event.goal.justMet) {
+    return { xpGained: 0, challengeJustDone: false, newAchievements: [] };
+  }
+
   const challenge = event.type === 'finish' && challengeJustDone(course, day, event);
   const xpGained =
     (event.type === 'finish' ? xpForFinish(event.countedToday, event.oldBest, event.score) : 0) +
