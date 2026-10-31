@@ -104,11 +104,18 @@ export const courseLevel = async (page: Page, lang: string): Promise<string | nu
   return courses.find((course: { lang: string }) => course.lang === lang).level;
 };
 
-/** What every onboarded account studies. routes.ts opens its course home. */
-export const ONBOARDED_COURSE = { lang: 'de', level: 'B1', dailyGoal: 30 } as const;
+/**
+ * What every onboarded account studies: French A1, the demo level, whose first
+ * lessons are ready. routes.ts opens its course home.
+ */
+export const ONBOARDED_COURSE = { lang: 'fr', level: 'A1', dailyGoal: 30 } as const;
 
-/** The one course tests may add to the onboarded account, shared so no spec drifts. */
-export const SECOND_COURSE = { lang: 'fr', level: 'A2', dailyGoal: 10 } as const;
+/**
+ * The one course tests may add to the onboarded account, shared so no spec
+ * drifts. German A1 has no ready lesson yet (#91), so it is the level with
+ * nothing to play.
+ */
+export const SECOND_COURSE = { lang: 'de', level: 'A1', dailyGoal: 10 } as const;
 
 type StorageState = Awaited<ReturnType<BrowserContext['storageState']>>;
 

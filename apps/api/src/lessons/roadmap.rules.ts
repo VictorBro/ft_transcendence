@@ -23,8 +23,12 @@ import {
  * and the service is what decides when a rule actually fires.
  */
 
-/** A level's lesson, as the service maps it from a Lesson row. */
-export type RuleLesson = { id: LessonId; level: Level; position: number };
+/**
+ * A level's lesson, as the service maps it from a Lesson row. `ready` is the
+ * seed's flag: the lesson has files and can be played. plan and levelProgress
+ * skip a lesson that is not.
+ */
+export type RuleLesson = { id: LessonId; level: Level; position: number; ready: boolean };
 
 /** A learner's current state on one lesson, as the service maps it from a LessonResult row. */
 export type RuleResult = {
@@ -61,7 +65,7 @@ export function statusOf(result?: RuleResult): LessonStatus {
  */
 export function merge(
   old: RuleResult | undefined,
-  lesson: RuleLesson,
+  lesson: Pick<RuleLesson, 'id' | 'level'>,
   score: number,
   day: CourseDay,
   now: Date,
@@ -126,7 +130,8 @@ export function queue(lessons: RuleLesson[], results: RuleResult[], day: CourseD
  * has since left behind: it is read off `results` directly, not off
  * `lessons`, so a level switch mid-day does not erase what was already
  * finished. `proposed` and `extra` only ever come from `lessons`, the current
- * level's.
+ * level's, and only from its ready ones: a lesson that cannot be played is
+ * never offered.
  */
 export function plan(
   lessons: RuleLesson[],
@@ -135,7 +140,8 @@ export function plan(
   goal: DailyGoal,
 ): { done: LessonId[]; proposed: LessonId[]; extra: LessonId[] } {
   const done = doneOn(results, day).map((result) => result.lessonId);
-  const upNext = queue(lessons, results, day);
+  const ready = lessons.filter((lesson) => lesson.ready);
+  const upNext = queue(ready, results, day);
   const proposedCount = Math.max(0, target(goal) - done.length);
 
   return {
@@ -146,15 +152,18 @@ export function plan(
 }
 
 /**
- * A level's completion. Only results for `lessons` count, so a result from
- * another level never counts toward this one. `needed` rounds up: 80% of an
- * odd total is never met by a fraction of a lesson.
+ * A level's completion, over its ready lessons only: a level of 12 ready
+ * lessons needs 10 passed, whatever its outline plans beyond them. Only
+ * results for those lessons count, so a result from another level never
+ * counts toward this one. `needed` rounds up: 80% of an odd total is never
+ * met by a fraction of a lesson.
  */
 export function levelProgress(lessons: RuleLesson[], results: RuleResult[]): Today['progress'] {
-  const ids = new Set(lessons.map((lesson) => lesson.id));
+  const ready = lessons.filter((lesson) => lesson.ready);
+  const ids = new Set(ready.map((lesson) => lesson.id));
   const relevant = results.filter((result) => ids.has(result.lessonId));
 
-  const total = lessons.length;
+  const total = ready.length;
   const attempted = relevant.length;
   const passed = relevant.filter((result) => statusOf(result) === 'done').length;
   const needed = Math.ceil(LEVEL_PASS_SHARE * total);

@@ -48,6 +48,7 @@ describe('finish a lesson (e2e)', () => {
     title: 'Une leçon du testeur',
     summary: 'Une leçon de test.',
     brief: { objective: 'test', points: [], examples: [], pitfalls: [], vocabulary: [] },
+    ready: true,
   });
   const FIXTURES = [
     ...['one', 'two', 'three', 'four', 'five', 'six'].map((id, index) => lesson(id, 9101 + index)),
@@ -55,6 +56,8 @@ describe('finish a lesson (e2e)', () => {
     lesson('atwo-next', 9102, 'A2'),
     lesson('bone', 9101, 'B1'),
     lesson('alpha', 9101, 'A1', 'de'),
+    // Has no files, so it cannot be finished.
+    { ...lesson('draft', 9200), ready: false },
   ];
   const FIXTURE_IDS = FIXTURES.map((fixture) => fixture.id);
 
@@ -104,10 +107,10 @@ describe('finish a lesson (e2e)', () => {
       { timeout: 4_000, interval: 20 },
     );
 
-  /** The ids of a French level, by position: the real lessons and the fixtures. */
+  /** The ids of a French level's ready lessons, by position: the real ones and the fixtures. */
   const levelIds = async (level: 'A2') => {
     const lessons = await prisma.lesson.findMany({
-      where: { lang: 'fr', level },
+      where: { lang: 'fr', level, ready: true },
       orderBy: { position: 'asc' },
       select: { id: true },
     });
@@ -173,6 +176,14 @@ describe('finish a lesson (e2e)', () => {
         const response = await finish(agent, 'de-test-fin-alpha').expect(404);
 
         expect(response.body.message).toBe('lesson.notFound');
+      });
+
+      it('answers 404 lesson.notFound for a lesson that is not ready, and saves nothing', async () => {
+        const response = await finish(agent, 'fr-test-fin-draft').expect(404);
+
+        expect(response.body.message).toBe('lesson.notFound');
+        const saved = await prisma.lessonResult.count({ where: { lessonId: 'fr-test-fin-draft' } });
+        expect(saved).toBe(0);
       });
 
       it.each([101, -1, 70.5])('answers 400 lesson.invalidScore for %s', async (score) => {

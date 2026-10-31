@@ -52,7 +52,7 @@ test.describe('course home', () => {
   }) => {
     await onboarded.goto(`/en/learn/${ONBOARDED_COURSE.lang}`);
 
-    await expect(onboarded.getByRole('heading', { name: 'German' })).toBeVisible();
+    await expect(onboarded.getByRole('heading', { name: 'French' })).toBeVisible();
     await expect(onboarded.getByText(ONBOARDED_COURSE.level, { exact: true })).toBeVisible();
     await expect(onboarded.getByRole('link', { name: 'Take the placement test' })).toBeVisible();
 
@@ -67,7 +67,7 @@ test.describe('course home', () => {
   // Surviving a reload is what separates a PATCH from a select that just moved.
   test('changing the daily goal persists', async ({ onboarded }) => {
     await placeCourse(onboarded, SECOND_COURSE);
-    await onboarded.goto('/en/learn/fr');
+    await onboarded.goto(`/en/learn/${SECOND_COURSE.lang}`);
 
     await onboarded.getByRole('combobox', { name: 'Daily goal' }).selectOption('60');
     await expect(onboarded.getByRole('combobox', { name: 'Daily goal' })).toHaveValue('60');
@@ -78,8 +78,9 @@ test.describe('course home', () => {
 
   /**
    * No exam needed. The picker asks what the learner has mastered, as onboarding
-   * does, and opens on what the current level stands for, so saving it untouched
-   * is not offered. SECOND_COURSE, since every test that uses it places it anew.
+   * does, and opens on what the current level stands for (A0, nothing yet, for
+   * an A1 course), so saving it untouched is not offered. SECOND_COURSE, since
+   * every test that uses it places it anew.
    */
   test('the level can be changed from the course page', async ({ onboarded }) => {
     await placeCourse(onboarded, SECOND_COURSE);
@@ -87,7 +88,7 @@ test.describe('course home', () => {
 
     await onboarded.getByRole('button', { name: 'Change level' }).click();
     const levels = onboarded.getByRole('group', { name: 'Your level' });
-    await expect(levels.getByRole('radio', { name: 'A1' })).toBeChecked();
+    await expect(levels.getByRole('radio', { name: 'A0' })).toBeChecked();
     const save = onboarded.getByRole('button', { name: 'Save' });
     await expect(save).toBeDisabled();
     await expectPinned(onboarded, `/en/learn/${SECOND_COURSE.lang}`);
@@ -121,7 +122,7 @@ test.describe('course home', () => {
     await expect(toggle).toBeFocused();
     expect(await courseLevel(onboarded, SECOND_COURSE.lang)).toBe(SECOND_COURSE.level);
     await toggle.click();
-    await expect(levels.getByRole('radio', { name: 'A1' })).toBeChecked();
+    await expect(levels.getByRole('radio', { name: 'A0' })).toBeChecked();
 
     await levels.getByText('B1', { exact: true }).click();
     await onboarded.keyboard.press('Escape');
@@ -129,7 +130,7 @@ test.describe('course home', () => {
     await expect(toggle).toBeFocused();
     expect(await courseLevel(onboarded, SECOND_COURSE.lang)).toBe(SECOND_COURSE.level);
     await toggle.click();
-    await expect(levels.getByRole('radio', { name: 'A1' })).toBeChecked();
+    await expect(levels.getByRole('radio', { name: 'A0' })).toBeChecked();
   });
 
   /** Faked, since no pick a learner can make gets refused. The pick stays, to retry. */
@@ -162,20 +163,20 @@ test.describe('course home', () => {
     const cookie = async () =>
       (await onboarded.context().cookies()).find((c) => c.name === 'ft.lang');
 
-    await onboarded.goto('/en/learn/de');
-    expect((await cookie())?.value).toBe('de');
-
     await onboarded.goto('/en/learn/fr');
     expect((await cookie())?.value).toBe('fr');
 
+    await onboarded.goto('/en/learn/de');
+    expect((await cookie())?.value).toBe('de');
+
     // Next prefetches the links on a course page. Those sit under /learn/<lang>
     // too, and a link the learner only saw must not count as opening it.
-    await onboarded.request.get('/en/learn/de/placement');
-    expect((await cookie())?.value).toBe('fr');
+    await onboarded.request.get('/en/learn/fr/placement');
+    expect((await cookie())?.value).toBe('de');
 
     // Not a course page, so it must leave the last one alone rather than clear it.
     await onboarded.goto('/en/profile');
-    expect((await cookie())?.value).toBe('fr');
+    expect((await cookie())?.value).toBe('de');
     // Only the server reads it.
     expect((await cookie())?.httpOnly).toBe(true);
   });
@@ -187,16 +188,16 @@ test.describe('course home', () => {
 
     const second = await onboarded.context().newPage();
     try {
-      await onboarded.goto('/en/learn/de');
-      await second.goto('/en/learn/fr');
+      await onboarded.goto('/en/learn/fr');
+      await second.goto('/en/learn/de');
 
-      await expect(second.getByRole('heading', { name: 'French' })).toBeVisible();
-      await expect(second.getByRole('combobox', { name: 'Course' })).toHaveValue('fr');
+      await expect(second.getByRole('heading', { name: 'German' })).toBeVisible();
+      await expect(second.getByRole('combobox', { name: 'Course' })).toHaveValue('de');
 
       // The first tab is untouched by the second opening a different course.
       await onboarded.reload();
-      await expect(onboarded.getByRole('heading', { name: 'German' })).toBeVisible();
-      await expect(onboarded.getByRole('combobox', { name: 'Course' })).toHaveValue('de');
+      await expect(onboarded.getByRole('heading', { name: 'French' })).toBeVisible();
+      await expect(onboarded.getByRole('combobox', { name: 'Course' })).toHaveValue('fr');
     } finally {
       await second.close();
     }
@@ -204,11 +205,11 @@ test.describe('course home', () => {
 
   test('the switcher moves between courses', async ({ onboarded }) => {
     await placeCourse(onboarded, SECOND_COURSE);
-    await onboarded.goto('/en/learn/de');
+    await onboarded.goto('/en/learn/fr');
 
-    await onboarded.getByRole('combobox', { name: 'Course' }).selectOption('fr');
+    await onboarded.getByRole('combobox', { name: 'Course' }).selectOption('de');
 
-    await expect(onboarded).toHaveURL(/\/learn\/fr$/);
-    await expect(onboarded.getByRole('heading', { name: 'French' })).toBeVisible();
+    await expect(onboarded).toHaveURL(/\/learn\/de$/);
+    await expect(onboarded.getByRole('heading', { name: 'German' })).toBeVisible();
   });
 });

@@ -20,11 +20,12 @@ import {
   target,
 } from './roadmap.rules';
 
-const lesson = (id: string, position: number, level: RuleLesson['level'] = 'A1'): RuleLesson => ({
-  id,
-  position,
-  level,
-});
+const lesson = (
+  id: string,
+  position: number,
+  level: RuleLesson['level'] = 'A1',
+  ready = true,
+): RuleLesson => ({ id, position, level, ready });
 
 const result = (
   lessonId: string,
@@ -204,6 +205,28 @@ describe('plan', () => {
     });
   });
 
+  it('never proposes or offers as extra a lesson that is not ready', () => {
+    // l2, l4 and l6 have no files yet: the rest move up in their place.
+    const partly = lessons.map((l) => ({ ...l, ready: !['l2', 'l4', 'l6'].includes(l.id) }));
+
+    expect(plan(partly, [], '2026-01-02', 60)).toEqual({
+      done: [],
+      proposed: ['l1', 'l3', 'l5', 'l7', 'l8', 'l9'],
+      extra: ['l10'],
+    });
+  });
+
+  it('still shows as done a lesson finished today that is no longer ready', () => {
+    const partly = lessons.map((l) => ({ ...l, ready: l.id !== 'l1' }));
+    const results = [result('l1', 85, '2026-01-02', '2026-01-02T10:00:00Z')];
+
+    expect(plan(partly, results, '2026-01-02', 30)).toEqual({
+      done: ['l1'],
+      proposed: ['l2', 'l3'],
+      extra: ['l4', 'l5', 'l6'],
+    });
+  });
+
   it('after a finish from the extra list, the last proposed lesson moves to the head of extra', () => {
     const results = [
       result('l1', 85, '2026-01-02', '2026-01-02T10:00:00Z'),
@@ -352,6 +375,35 @@ describe('levelProgress', () => {
       attempted: 240,
       passed: 200,
       needed: 200,
+      complete: false,
+    });
+  });
+
+  it('counts the ready lessons only: 12 of 120 ready need 10 passed', () => {
+    const lessons = Array.from({ length: 120 }, (_, i) => lesson(`l${i}`, i + 1, 'A1', i < 12));
+    // A result on a lesson that is no longer ready counts for nothing.
+    const results = Array.from({ length: 13 }, (_, i) =>
+      result(`l${i}`, i < 10 ? 85 : 40, '2026-01-01', '2026-01-01T10:00:00Z'),
+    );
+
+    expect(levelProgress(lessons, results)).toEqual({
+      total: 12,
+      attempted: 12,
+      passed: 10,
+      needed: 10,
+      complete: true,
+    });
+  });
+
+  it('no ready lesson: not complete, even with results', () => {
+    const lessons = [lesson('l1', 1, 'A1', false), lesson('l2', 2, 'A1', false)];
+    const results = [result('l1', 85, '2026-01-01', '2026-01-01T10:00:00Z')];
+
+    expect(levelProgress(lessons, results)).toEqual({
+      total: 0,
+      attempted: 0,
+      passed: 0,
+      needed: 0,
       complete: false,
     });
   });

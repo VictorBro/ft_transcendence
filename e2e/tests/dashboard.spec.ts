@@ -20,7 +20,7 @@ test.describe('dashboard and mode pages', () => {
     ).toBeVisible();
   });
 
-  // Placing French makes it activeLang, so only the cookie can pick German.
+  // Placing German makes it activeLang, so only the cookie can pick French.
   test('/dashboard sends an onboarded learner to the course they last opened', async ({
     onboarded,
   }) => {
@@ -52,8 +52,8 @@ test.describe('dashboard and mode pages', () => {
 
   // The (mode) layout wraps every mode page with a back link and the same
   // account nav as the rest of the app. One page (/chat) stands in for all of
-  // them: the layout is shared, so this is not per-page behaviour. French is
-  // placed last but German opened, so the link has to find its way back to German.
+  // them: the layout is shared, so this is not per-page behaviour. German is
+  // placed last but French opened, so the link has to find its way back to French.
   test('the back link on a mode page returns to the course', async ({ onboarded }) => {
     await placeCourse(onboarded, SECOND_COURSE);
     await onboarded.goto(home);

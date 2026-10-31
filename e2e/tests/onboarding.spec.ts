@@ -170,15 +170,15 @@ test.describe('onboarding', () => {
     await expect(freshLearner.getByRole('heading', { name: 'Deutsch' })).toBeVisible();
   });
 
-  // The onboarded account studies German, placed, and never English.
+  // The onboarded account studies French, placed, and never English.
   test('the switcher can add a language', async ({ onboarded }) => {
-    await onboarded.goto('/en/learn/de');
+    await onboarded.goto('/en/learn/fr');
 
     await onboarded.getByRole('combobox', { name: 'Course' }).selectOption('__add');
 
     await expect(onboarded).toHaveURL(/\/onboarding$/);
     const languages = onboarded.getByRole('group', { name: 'Language to learn' });
-    await expect(languages.getByRole('radio', { name: 'Deutsch' })).toBeDisabled();
+    await expect(languages.getByRole('radio', { name: 'Français' })).toBeDisabled();
   });
 
   /** The case a boolean "has onboarded" flag on the user would get wrong. */
@@ -186,7 +186,7 @@ test.describe('onboarding', () => {
     await onboarded.goto('/en/onboarding');
 
     const languages = onboarded.getByRole('group', { name: 'Language to learn' });
-    await expect(languages.getByRole('radio', { name: 'Deutsch' })).toBeDisabled();
+    await expect(languages.getByRole('radio', { name: 'Français' })).toBeDisabled();
     await expect(languages.getByRole('radio', { name: 'English' })).toBeEnabled();
   });
 
