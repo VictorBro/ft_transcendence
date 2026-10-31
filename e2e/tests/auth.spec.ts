@@ -4,6 +4,7 @@ import { Secret, TOTP } from 'otpauth';
 import {
   expect,
   identity,
+  logInSlot,
   PASSWORD,
   placeCourse,
   signUp,
@@ -43,12 +44,16 @@ test.describe('authentication in the browser', () => {
   const signOut = async (page: Page) => {
     await page.getByRole('button', { name: 'Sign out' }).click();
     await expect(page).toHaveURL(/\/en$/);
+    // The button redirects home whatever logOut() answered, so the URL alone
+    // does not prove the session is gone.
+    expect((await page.request.get('/api/auth/me')).status()).toBe(401);
   };
 
   const logIn = async (page: Page, email: string) => {
     await page.goto('/en/login');
     await page.getByLabel('Email', { exact: true }).fill(email);
     await page.getByLabel('Password', { exact: true }).fill(PASSWORD);
+    await logInSlot();
     await page.getByRole('button', { name: 'Sign in' }).click();
   };
 

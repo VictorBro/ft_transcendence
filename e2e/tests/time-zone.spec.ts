@@ -1,6 +1,6 @@
 import type { Page, Request } from '@playwright/test';
 
-import { formatViolations, watchConsole } from '../support/console-guard';
+import { formatViolations, settle, watchConsole } from '../support/console-guard';
 import { expect, ONBOARDED_COURSE, placeCourse, SECOND_COURSE, test } from '../support/session';
 
 const home = `/en/learn/${ONBOARDED_COURSE.lang}`;
@@ -61,7 +61,7 @@ test.describe('time zone sync', () => {
     const next = await page.context().newPage();
     const nextViolations = watchConsole(next);
     await next.goto(home);
-    await next.waitForLoadState('networkidle');
+    await settle(next);
     expect(patches).toBe(1);
 
     expect(violations, `the sync logged:\n${formatViolations(violations)}\n`).toEqual([]);
