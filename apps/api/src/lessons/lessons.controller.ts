@@ -14,6 +14,7 @@ import type { Language, SessionUser } from '@ft/shared';
 
 import { LessonsService } from './lessons.service';
 import {
+  AchievementListDto,
   FinishLessonDto,
   FinishResultDto,
   LessonCardDto,
@@ -104,13 +105,29 @@ export class LessonsController {
   }
 
   /**
+   * GET /courses/:lang/achievements: the sixteen achievements with their bars.
+   * Same course checks as today: 404 without a course, 409 before placement.
+   */
+  @Get('achievements')
+  @ApiOperation({ summary: 'All sixteen achievements: progress, and the day each was earned' })
+  @ApiOkResponse({ type: AchievementListDto })
+  @ApiUnauthorizedResponse({ description: 'No valid session' })
+  @ApiNotFoundResponse({ description: 'No course in that language' })
+  @ApiConflictResponse({ description: 'The course has no level yet (no placement)' })
+  achievements(@CurrentUser() user: SessionUser, @Param('lang', LangParam) lang: Language) {
+    return this.lessons.achievements(user.id, lang);
+  }
+
+  /**
    * PUT /courses/:lang/lessons/:id/result { score }: PUT, because a lesson has
    * one result and this sets it, never lower. Behind LessonStubGuard until the
    * lesson page of the next milestone calls it.
    */
   @Put('lessons/:id/result')
   @UseGuards(LessonStubGuard)
-  @ApiOperation({ summary: 'Finish a lesson: keep the best score, count it for the daily goal' })
+  @ApiOperation({
+    summary: 'Finish a lesson: keep the best score, count it for the daily goal, award XP',
+  })
   @ApiOkResponse({ type: FinishResultDto })
   @ApiBadRequestResponse({ description: 'The score is not a whole number from 0 to 100' })
   @ApiUnauthorizedResponse({ description: 'No valid session' })
