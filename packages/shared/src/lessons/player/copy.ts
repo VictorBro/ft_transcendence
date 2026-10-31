@@ -27,6 +27,12 @@ export const PLAYER_COPY = {
   exercises: L('Exercises', 'Exercices', 'Übungen'),
   keywords: L('Key words', 'Mots clés', 'Schlüsselwörter'),
   document: L('The document', 'Le document', 'Das Dokument'),
+  /** The parts of a split exam in the results (kinds/functions.ts). */
+  parts: {
+    translation: L('Translation', 'Traduction', 'Übersetzung'),
+    replies: L('Replies', 'Réponses', 'Antworten'),
+    dialogue: L('Dialogue', 'Dialogue', 'Dialog'),
+  },
 } as const;
 
 /**
