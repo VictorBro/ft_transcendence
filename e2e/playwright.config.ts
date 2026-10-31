@@ -52,10 +52,21 @@ export default defineConfig({
     video: 'off',
   },
 
+  // The additional browsers minor: every spec runs on all three engines. A spec
+  // that cannot hold on one of them says so with a test.skip naming the engine
+  // and the reason, never by dropping the project. Run one with --project.
   projects: [
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
+    },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] },
     },
   ],
 });

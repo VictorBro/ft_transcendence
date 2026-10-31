@@ -167,7 +167,7 @@ services:
       # more than one account. ssh requires mode 0700 on this directory.
       - ssh-config:/home/node/.ssh
       # Playwright browser downloads (~/.cache/ms-playwright). Keeps `make all`
-      # from re-downloading Chromium (~170 MB) after every container rebuild.
+      # from re-downloading the three browsers (~500 MB) after every rebuild.
       - node-cache:/home/node/.cache
       # docker-outside-of-docker: the CLI in this image drives the host daemon.
       # Mounted at docker-HOST.sock, not docker.sock: the host socket is owned
