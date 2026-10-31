@@ -63,6 +63,7 @@ describe('XP, challenge and achievements (e2e)', () => {
       title: 'Une leçon du testeur',
       summary: 'Une leçon de test.',
       brief: { objective: 'test', points: [], examples: [], pitfalls: [], vocabulary: [] },
+      ready: true,
     })),
   );
   const FIXTURE_IDS = FIXTURES.map((fixture) => fixture.id);

@@ -232,6 +232,7 @@ describe('CoursesService setGoal', () => {
     await service.setGoal(USER, 'fr', { dailyGoal: 30 }, NOW);
 
     expect(tx.userLevel.update).toHaveBeenCalledTimes(1);
+    expect(tx.userAchievement.findMany).not.toHaveBeenCalled();
   });
 
   it('turns a missing course into a not-found rather than creating one', async () => {

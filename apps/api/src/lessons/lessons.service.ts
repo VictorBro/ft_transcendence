@@ -347,7 +347,7 @@ export class LessonsService {
     const [lessons, rows, stored] = await Promise.all([
       this.prisma.lesson.findMany({
         where: { lang },
-        select: { id: true, level: true, position: true },
+        select: { id: true, level: true, position: true, ready: true },
       }),
       this.prisma.lessonResult.findMany({
         where: { userLevelId: course.id },
@@ -438,7 +438,7 @@ export class LessonsService {
       const goal = await meetGoal(tx, course, day);
       // A lesson finished twice in a day counts once: the first time.
       const countedToday = old === null || dayOf(old.day) !== day;
-      const earned = await award(tx, course, day, {
+      const rewards = await award(tx, course, day, {
         type: 'finish',
         goal,
         lesson,
@@ -452,7 +452,7 @@ export class LessonsService {
         doneCount: goal.doneCount,
         target: target(DailyGoalSchema.parse(course.dailyGoal)),
         goalJustMet: goal.justMet,
-        ...earned,
+        ...rewards,
       });
     });
   }
