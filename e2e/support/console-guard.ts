@@ -190,6 +190,12 @@ export function isExpectedDocumentFailure(
  */
 const QUIET_MS = 500;
 
+/**
+ * Well inside the test timeout, so a page that never settles fails here with
+ * the requests still open rather than with a bare "test timeout".
+ */
+const SETTLE_TIMEOUT_MS = 20_000;
+
 export async function settle(page: Page): Promise<void> {
   const tracker = trackers.get(page);
   if (!tracker) {
@@ -205,9 +211,22 @@ export async function settle(page: Page): Promise<void> {
       await new Promise((resolve) => setTimeout(resolve, 50));
     }
   })();
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const timeout = new Promise<never>((_, reject) => {
+    timer = setTimeout(() => {
+      const open = [...tracker.inFlight].map((request) => request.url());
+      reject(
+        new Error(
+          `settle(): ${page.url()} not settled after ${SETTLE_TIMEOUT_MS} ms; ` +
+            `requests still open: ${open.length > 0 ? open.join(', ') : 'none'}`,
+        ),
+      );
+    }, SETTLE_TIMEOUT_MS);
+  });
   try {
-    await Promise.race([page.waitForLoadState('networkidle'), quiet]);
+    await Promise.race([page.waitForLoadState('networkidle'), quiet, timeout]);
   } finally {
     settled = true;
+    clearTimeout(timer);
   }
 }
