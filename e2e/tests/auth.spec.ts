@@ -1,7 +1,15 @@
 import type { Page } from '@playwright/test';
 import { Secret, TOTP } from 'otpauth';
 
-import { expect, identity, PASSWORD, placeCourse, signUp, test } from '../support/session';
+import {
+  expect,
+  identity,
+  PASSWORD,
+  placeCourse,
+  signUp,
+  signUpSlot,
+  test,
+} from '../support/session';
 
 /**
  * The browser half of authentication. Supertest already proves the API, so what
@@ -39,6 +47,9 @@ test.describe('authentication in the browser', () => {
     const { email, displayName } = identity();
 
     await fillSignUp(page, { email, displayName, password: PASSWORD });
+    // The only test whose signup is the form's own request, so it books its
+    // slot here rather than through signUp().
+    await signUpSlot();
     await page.getByRole('button', { name: 'Create account' }).click();
     await expect(page).toHaveURL(/\/en\/onboarding$/);
     await expect(
