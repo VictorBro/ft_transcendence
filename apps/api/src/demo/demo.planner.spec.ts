@@ -42,6 +42,7 @@ const lessons = (count: number): RuleLesson[] =>
     id: `fr-test-${String.fromCharCode(97 + Math.floor(i / 26))}${String.fromCharCode(97 + (i % 26))}`,
     level: 'A1',
     position: i + 1,
+    ready: true,
   }));
 
 describe('atLocalTime', () => {

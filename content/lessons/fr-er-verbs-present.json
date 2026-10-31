@@ -1,0 +1,1538 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-er-verbs-present",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Les verbes en -er au présent",
+  "objective": {
+    "en": "Conjugate regular -er verbs (parler, habiter, aimer) in the present tense with all pronouns and pronounce silent endings correctly.",
+    "fr": "Conjuguer les verbes en -er (parler, habiter, aimer) au présent avec tous les pronoms et prononcer les terminaisons muettes.",
+    "de": "Konjugieren Sie regelmäßige Verben auf -er (parler, habiter, aimer) im Präsens mit allen Pronomen und sprechen Sie stumme Endungen korrekt aus."
+  },
+  "estimatedMinutes": 15,
+  "kind": "grammar",
+  "topic": "verbs_morphology",
+  "steps": [
+    {
+      "id": "block-singular-forms-explanation",
+      "role": "explanation",
+      "blockId": "block-singular-forms",
+      "label": {
+        "en": "Singular Forms and Silent Endings",
+        "fr": "Formes du singulier et terminaisons muettes",
+        "de": "Singularformen und stumme Endungen"
+      },
+      "pages": [
+        {
+          "pageId": "block-singular-forms-explanation",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the explanation and the examples.",
+            "fr": "Lisez l’explication et les exemples.",
+            "de": "Lies die Erklärung und die Beispiele."
+          },
+          "items": [
+            {
+              "type": "grammar_explanation",
+              "itemId": "block-singular-forms-explanation",
+              "ruleIds": ["rule-er-singular", "rule-silent-endings"],
+              "heading": {
+                "en": "Singular Forms and Silent Endings",
+                "fr": "Formes du singulier et terminaisons muettes",
+                "de": "Singularformen und stumme Endungen"
+              },
+              "text": {
+                "en": "Remove **-er** from the infinitive and add the singular endings:\n\n- `je` + -e: `je parle`\n- `tu` + -es: `tu habites`\n- `il/elle/on` + -e: `elle aime`\n\nAll three endings are **silent**: `je parle`, `tu parles` and `il parle` sound the same.",
+                "fr": "Retirez **-er** de l'infinitif et ajoutez les terminaisons du singulier :\n\n- `je` + -e : `je parle`\n- `tu` + -es : `tu habites`\n- `il/elle/on` + -e : `elle aime`\n\nLes trois terminaisons sont **muettes** : `je parle`, `tu parles` et `il parle` se prononcent pareil.",
+                "de": "Entferne **-er** vom Infinitiv und hänge die Singularendungen an:\n\n- `je` + -e: `je parle`\n- `tu` + -es: `tu habites`\n- `il/elle/on` + -e: `elle aime`\n\nAlle drei Endungen sind **stumm**: `je parle`, `tu parles` und `il parle` klingen gleich."
+              },
+              "formTable": [
+                {
+                  "subject": "je",
+                  "form": "parle",
+                  "example": null
+                },
+                {
+                  "subject": "tu",
+                  "form": "parles",
+                  "example": null
+                },
+                {
+                  "subject": "il / elle / on",
+                  "form": "parle",
+                  "example": null
+                }
+              ],
+              "examples": [
+                {
+                  "text": "Je parle français.",
+                  "translation": {
+                    "en": "I speak French.",
+                    "de": "Ich spreche Französisch."
+                  }
+                },
+                {
+                  "text": "Tu habites à Paris.",
+                  "translation": {
+                    "en": "You live in Paris.",
+                    "de": "Du wohnst in Paris."
+                  }
+                },
+                {
+                  "text": "Elle aime la musique.",
+                  "translation": {
+                    "en": "She likes music.",
+                    "de": "Sie mag Musik."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-singular-persons",
+      "role": "exercise",
+      "blockId": "block-singular-forms",
+      "label": {
+        "en": "Person matching 1",
+        "fr": "Relier les personnes 1",
+        "de": "Personen verbinden 1"
+      },
+      "pages": [
+        {
+          "pageId": "ex-singular-persons-1",
+          "estimatedDurationS": 24,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Connect each pronoun with its partner.",
+            "fr": "Reliez chaque pronom à son partenaire.",
+            "de": "Verbinde jedes Pronomen mit seinem Partner."
+          },
+          "items": [
+            {
+              "type": "grammar_person_matching",
+              "ruleIds": ["rule-er-singular"],
+              "mode": "forms",
+              "rows": [
+                {
+                  "person": "1sg",
+                  "pronoun": "je",
+                  "native": null,
+                  "answer": "parle",
+                  "answerExplanation": {
+                    "en": "parler: drop -er and add -e for je: parle.",
+                    "fr": "parler : on enlève -er et on ajoute -e pour je : parle.",
+                    "de": "parler: -er weg, für je die Endung -e: parle."
+                  }
+                },
+                {
+                  "person": "2sg",
+                  "pronoun": "tu",
+                  "native": null,
+                  "answer": "parles",
+                  "answerExplanation": {
+                    "en": "parler: drop -er and add -es for tu: parles.",
+                    "fr": "parler : on enlève -er et on ajoute -es pour tu : parles.",
+                    "de": "parler: -er weg, für tu die Endung -es: parles."
+                  }
+                },
+                {
+                  "person": "3sg",
+                  "pronoun": "il / elle / on",
+                  "native": null,
+                  "answer": "parle",
+                  "answerExplanation": {
+                    "en": "parler: drop -er and add -e for il, elle, on: parle.",
+                    "fr": "parler : on enlève -er et on ajoute -e pour il, elle, on : parle.",
+                    "de": "parler: -er weg, für il, elle, on die Endung -e: parle."
+                  }
+                }
+              ],
+              "itemId": "ex-singular-persons-1"
+            }
+          ]
+        },
+        {
+          "pageId": "ex-singular-persons-2",
+          "estimatedDurationS": 24,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Connect each pronoun with its partner.",
+            "fr": "Reliez chaque pronom à son partenaire.",
+            "de": "Verbinde jedes Pronomen mit seinem Partner."
+          },
+          "items": [
+            {
+              "type": "grammar_person_matching",
+              "ruleIds": ["rule-er-singular"],
+              "mode": "forms",
+              "rows": [
+                {
+                  "person": "1sg",
+                  "pronoun": "j’",
+                  "native": null,
+                  "answer": "habite",
+                  "answerExplanation": {
+                    "en": "habiter: drop -er and add -e for je: habite. Je becomes j’ before a vowel or a silent h.",
+                    "fr": "habiter : on enlève -er et on ajoute -e pour je : habite. Je devient j’ devant une voyelle ou un h muet.",
+                    "de": "habiter: -er weg, für je die Endung -e: habite. Vor Vokal oder stummem h wird je zu j’."
+                  }
+                },
+                {
+                  "person": "2sg",
+                  "pronoun": "tu",
+                  "native": null,
+                  "answer": "habites",
+                  "answerExplanation": {
+                    "en": "habiter: drop -er and add -es for tu: habites.",
+                    "fr": "habiter : on enlève -er et on ajoute -es pour tu : habites.",
+                    "de": "habiter: -er weg, für tu die Endung -es: habites."
+                  }
+                },
+                {
+                  "person": "3sg",
+                  "pronoun": "il / elle / on",
+                  "native": null,
+                  "answer": "habite",
+                  "answerExplanation": {
+                    "en": "habiter: drop -er and add -e for il, elle, on: habite.",
+                    "fr": "habiter : on enlève -er et on ajoute -e pour il, elle, on : habite.",
+                    "de": "habiter: -er weg, für il, elle, on die Endung -e: habite."
+                  }
+                }
+              ],
+              "itemId": "ex-singular-persons-2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-singular-choice",
+      "role": "exercise",
+      "blockId": "block-singular-forms",
+      "label": {
+        "en": "Multiple-choice gaps 1",
+        "fr": "Phrases à trous à choix multiple 1",
+        "de": "Lücken mit Auswahl 1"
+      },
+      "pages": [
+        {
+          "pageId": "ex-singular-choice-1",
+          "estimatedDurationS": 10,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "ruleIds": ["rule-er-singular"],
+              "before": "Je",
+              "after": "la télé.",
+              "choices": [
+                {
+                  "choiceId": "c-1",
+                  "text": "regardes"
+                },
+                {
+                  "choiceId": "c-2",
+                  "text": "regardez"
+                },
+                {
+                  "choiceId": "c-3",
+                  "text": "regardons"
+                },
+                {
+                  "choiceId": "c-4",
+                  "text": "regarde"
+                }
+              ],
+              "answerChoiceId": "c-4",
+              "hint": {
+                "en": "Verb: regarder",
+                "fr": "Verbe : regarder",
+                "de": "Verb: regarder"
+              },
+              "answerExplanation": {
+                "en": "regarder: drop -er and add -e for je: regarde.",
+                "fr": "regarder : on enlève -er et on ajoute -e pour je : regarde.",
+                "de": "regarder: -er weg, für je die Endung -e: regarde."
+              },
+              "itemId": "ex-singular-choice-1"
+            }
+          ]
+        },
+        {
+          "pageId": "ex-singular-choice-2",
+          "estimatedDurationS": 10,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "ruleIds": ["rule-silent-endings"],
+              "before": "Tu",
+              "after": "bien.",
+              "choices": [
+                {
+                  "choiceId": "c-1",
+                  "text": "chantons"
+                },
+                {
+                  "choiceId": "c-2",
+                  "text": "chante"
+                },
+                {
+                  "choiceId": "c-3",
+                  "text": "chantez"
+                },
+                {
+                  "choiceId": "c-4",
+                  "text": "chantes"
+                }
+              ],
+              "answerChoiceId": "c-4",
+              "hint": {
+                "en": "Verb: chanter",
+                "fr": "Verbe : chanter",
+                "de": "Verb: chanter"
+              },
+              "answerExplanation": {
+                "en": "tu chantes: the ending -es is silent, but it must be written for tu.",
+                "fr": "tu chantes : la terminaison -es ne se prononce pas, mais on l’écrit avec tu.",
+                "de": "tu chantes: Die Endung -es ist stumm, wird aber bei tu geschrieben."
+              },
+              "itemId": "ex-singular-choice-2"
+            }
+          ]
+        },
+        {
+          "pageId": "ex-singular-choice-3",
+          "estimatedDurationS": 10,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "ruleIds": ["rule-er-singular"],
+              "before": "Elle",
+              "after": "dans une banque.",
+              "choices": [
+                {
+                  "choiceId": "c-1",
+                  "text": "travaillez"
+                },
+                {
+                  "choiceId": "c-2",
+                  "text": "travailles"
+                },
+                {
+                  "choiceId": "c-3",
+                  "text": "travaillons"
+                },
+                {
+                  "choiceId": "c-4",
+                  "text": "travaille"
+                }
+              ],
+              "answerChoiceId": "c-4",
+              "hint": {
+                "en": "Verb: travailler",
+                "fr": "Verbe : travailler",
+                "de": "Verb: travailler"
+              },
+              "answerExplanation": {
+                "en": "travailler: drop -er and add -e for Elle (like il): travaille.",
+                "fr": "travailler : on enlève -er et on ajoute -e pour Elle (comme il) : travaille.",
+                "de": "travailler: -er weg, für Elle (wie il) die Endung -e: travaille."
+              },
+              "itemId": "ex-singular-choice-3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-singular-typing",
+      "role": "exercise",
+      "blockId": "block-singular-forms",
+      "label": {
+        "en": "Typed gaps 1",
+        "fr": "Phrases à trous à écrire 1",
+        "de": "Lücken zum Schreiben 1"
+      },
+      "pages": [
+        {
+          "pageId": "ex-singular-typing-1",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "ruleIds": ["rule-er-singular"],
+              "before": "Je",
+              "after": "français et anglais.",
+              "accepted": {
+                "answers": ["parle"]
+              },
+              "hint": {
+                "en": "Verb: parler",
+                "fr": "Verbe : parler",
+                "de": "Verb: parler"
+              },
+              "answerExplanation": {
+                "en": "parler: drop -er and add -e for je: parle.",
+                "fr": "parler : on enlève -er et on ajoute -e pour je : parle.",
+                "de": "parler: -er weg, für je die Endung -e: parle."
+              },
+              "itemId": "ex-singular-typing-1"
+            }
+          ]
+        },
+        {
+          "pageId": "ex-singular-typing-2",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "ruleIds": ["rule-er-singular"],
+              "before": "Tu",
+              "after": "à Lyon ?",
+              "accepted": {
+                "answers": ["habites"]
+              },
+              "hint": {
+                "en": "Verb: habiter",
+                "fr": "Verbe : habiter",
+                "de": "Verb: habiter"
+              },
+              "answerExplanation": {
+                "en": "habiter: drop -er and add -es for tu: habites.",
+                "fr": "habiter : on enlève -er et on ajoute -es pour tu : habites.",
+                "de": "habiter: -er weg, für tu die Endung -es: habites."
+              },
+              "itemId": "ex-singular-typing-2"
+            }
+          ]
+        },
+        {
+          "pageId": "ex-singular-typing-3",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "ruleIds": ["rule-er-singular"],
+              "before": "Il",
+              "after": "un film.",
+              "accepted": {
+                "answers": ["regarde"]
+              },
+              "hint": {
+                "en": "Verb: regarder",
+                "fr": "Verbe : regarder",
+                "de": "Verb: regarder"
+              },
+              "answerExplanation": {
+                "en": "regarder: drop -er and add -e for il, elle, on: regarde.",
+                "fr": "regarder : on enlève -er et on ajoute -e pour il, elle, on : regarde.",
+                "de": "regarder: -er weg, für il, elle, on die Endung -e: regarde."
+              },
+              "itemId": "ex-singular-typing-3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-singular-spot",
+      "role": "exercise",
+      "blockId": "block-singular-forms",
+      "label": {
+        "en": "Error spotting",
+        "fr": "Repérer l’erreur",
+        "de": "Fehler finden"
+      },
+      "pages": [
+        {
+          "pageId": "ex-singular-spot-1",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Find the wrong word and correct it.",
+            "fr": "Trouvez le mot faux et corrigez-le.",
+            "de": "Finde das falsche Wort und korrigiere es."
+          },
+          "items": [
+            {
+              "type": "grammar_error_spotter",
+              "ruleIds": ["rule-silent-endings"],
+              "tokens": [
+                {
+                  "tokenId": "t-1",
+                  "text": "Tu"
+                },
+                {
+                  "tokenId": "t-2",
+                  "text": "parle"
+                },
+                {
+                  "tokenId": "t-3",
+                  "text": "vite"
+                }
+              ],
+              "faultyTokenId": "t-2",
+              "correction": {
+                "mode": "type",
+                "accepted": {
+                  "answers": ["parles"]
+                },
+                "choices": []
+              },
+              "answerExplanation": {
+                "en": "tu parles: the ending -es is silent, but it must be written for tu.",
+                "fr": "tu parles : la terminaison -es ne se prononce pas, mais on l’écrit avec tu.",
+                "de": "tu parles: Die Endung -es ist stumm, wird aber bei tu geschrieben."
+              },
+              "itemId": "ex-singular-spot-1"
+            }
+          ]
+        },
+        {
+          "pageId": "ex-singular-spot-2",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Find the wrong word and correct it.",
+            "fr": "Trouvez le mot faux et corrigez-le.",
+            "de": "Finde das falsche Wort und korrigiere es."
+          },
+          "items": [
+            {
+              "type": "grammar_error_spotter",
+              "ruleIds": ["rule-er-singular"],
+              "tokens": [
+                {
+                  "tokenId": "t-1",
+                  "text": "Je"
+                },
+                {
+                  "tokenId": "t-2",
+                  "text": "travailles"
+                },
+                {
+                  "tokenId": "t-3",
+                  "text": "ici"
+                }
+              ],
+              "faultyTokenId": "t-2",
+              "correction": {
+                "mode": "type",
+                "accepted": {
+                  "answers": ["travaille"]
+                },
+                "choices": []
+              },
+              "answerExplanation": {
+                "en": "travailler: drop -er and add -e for je: travaille.",
+                "fr": "travailler : on enlève -er et on ajoute -e pour je : travaille.",
+                "de": "travailler: -er weg, für je die Endung -e: travaille."
+              },
+              "itemId": "ex-singular-spot-2"
+            }
+          ]
+        },
+        {
+          "pageId": "ex-singular-spot-3",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Find the wrong word and correct it.",
+            "fr": "Trouvez le mot faux et corrigez-le.",
+            "de": "Finde das falsche Wort und korrigiere es."
+          },
+          "items": [
+            {
+              "type": "grammar_error_spotter",
+              "ruleIds": ["rule-er-singular"],
+              "tokens": [
+                {
+                  "tokenId": "t-1",
+                  "text": "Il"
+                },
+                {
+                  "tokenId": "t-2",
+                  "text": "habites"
+                },
+                {
+                  "tokenId": "t-3",
+                  "text": "à"
+                },
+                {
+                  "tokenId": "t-4",
+                  "text": "Nice"
+                }
+              ],
+              "faultyTokenId": "t-2",
+              "correction": {
+                "mode": "select",
+                "accepted": {
+                  "answers": ["habite"]
+                },
+                "choices": ["habite", "habites", "habitez"]
+              },
+              "answerExplanation": {
+                "en": "habiter: drop -er and add -e for il, elle, on: habite.",
+                "fr": "habiter : on enlève -er et on ajoute -e pour il, elle, on : habite.",
+                "de": "habiter: -er weg, für il, elle, on die Endung -e: habite."
+              },
+              "itemId": "ex-singular-spot-3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "block-plural-forms-explanation",
+      "role": "explanation",
+      "blockId": "block-plural-forms",
+      "label": {
+        "en": "Plural Forms (-ons, -ez, -ent)",
+        "fr": "Formes du pluriel (-ons, -ez, -ent)",
+        "de": "Pluralformen (-ons, -ez, -ent)"
+      },
+      "pages": [
+        {
+          "pageId": "block-plural-forms-explanation",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the explanation and the examples.",
+            "fr": "Lisez l’explication et les exemples.",
+            "de": "Lies die Erklärung und die Beispiele."
+          },
+          "items": [
+            {
+              "type": "grammar_explanation",
+              "itemId": "block-plural-forms-explanation",
+              "ruleIds": ["rule-er-plural"],
+              "heading": {
+                "en": "Plural Forms (-ons, -ez, -ent)",
+                "fr": "Formes du pluriel (-ons, -ez, -ent)",
+                "de": "Pluralformen (-ons, -ez, -ent)"
+              },
+              "text": {
+                "en": "Add the plural endings to the stem:\n\n- `nous` + -ons: `nous parlons`\n- `vous` + -ez: `vous habitez`\n- `ils/elles` + -ent: `ils aiment`\n\nThe ending -ent is **silent**: `ils aiment` sounds like `il aime`.",
+                "fr": "Ajoutez les terminaisons du pluriel au radical :\n\n- `nous` + -ons : `nous parlons`\n- `vous` + -ez : `vous habitez`\n- `ils/elles` + -ent : `ils aiment`\n\nLa terminaison -ent est **muette** : `ils aiment` se prononce comme `il aime`.",
+                "de": "Hänge die Pluralendungen an den Stamm:\n\n- `nous` + -ons: `nous parlons`\n- `vous` + -ez: `vous habitez`\n- `ils/elles` + -ent: `ils aiment`\n\nDie Endung -ent ist **stumm**: `ils aiment` klingt wie `il aime`."
+              },
+              "formTable": [
+                {
+                  "subject": "nous",
+                  "form": "parlons",
+                  "example": null
+                },
+                {
+                  "subject": "vous",
+                  "form": "parlez",
+                  "example": null
+                },
+                {
+                  "subject": "ils / elles",
+                  "form": "parlent",
+                  "example": null
+                }
+              ],
+              "examples": [
+                {
+                  "text": "Nous parlons italien.",
+                  "translation": {
+                    "en": "We speak Italian.",
+                    "de": "Wir sprechen Italienisch."
+                  }
+                },
+                {
+                  "text": "Vous habitez ici.",
+                  "translation": {
+                    "en": "You live here.",
+                    "de": "Sie wohnen hier."
+                  }
+                },
+                {
+                  "text": "Ils aiment le chocolat.",
+                  "translation": {
+                    "en": "They like chocolate.",
+                    "de": "Sie mögen Schokolade."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-persons",
+      "role": "exercise",
+      "blockId": "block-plural-forms",
+      "label": {
+        "en": "Person matching 2",
+        "fr": "Relier les personnes 2",
+        "de": "Personen verbinden 2"
+      },
+      "pages": [
+        {
+          "pageId": "ex-persons-1",
+          "estimatedDurationS": 48,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Connect each pronoun with its partner.",
+            "fr": "Reliez chaque pronom à son partenaire.",
+            "de": "Verbinde jedes Pronomen mit seinem Partner."
+          },
+          "items": [
+            {
+              "type": "grammar_person_matching",
+              "ruleIds": ["rule-er-singular", "rule-er-plural"],
+              "mode": "forms",
+              "rows": [
+                {
+                  "person": "1sg",
+                  "pronoun": "j’",
+                  "native": null,
+                  "answer": "aime",
+                  "answerExplanation": {
+                    "en": "aimer: drop -er and add -e for je: aime. Je becomes j’ before a vowel or a silent h.",
+                    "fr": "aimer : on enlève -er et on ajoute -e pour je : aime. Je devient j’ devant une voyelle ou un h muet.",
+                    "de": "aimer: -er weg, für je die Endung -e: aime. Vor Vokal oder stummem h wird je zu j’."
+                  }
+                },
+                {
+                  "person": "2sg",
+                  "pronoun": "tu",
+                  "native": null,
+                  "answer": "aimes",
+                  "answerExplanation": {
+                    "en": "aimer: drop -er and add -es for tu: aimes.",
+                    "fr": "aimer : on enlève -er et on ajoute -es pour tu : aimes.",
+                    "de": "aimer: -er weg, für tu die Endung -es: aimes."
+                  }
+                },
+                {
+                  "person": "3sg",
+                  "pronoun": "il / elle / on",
+                  "native": null,
+                  "answer": "aime",
+                  "answerExplanation": {
+                    "en": "aimer: drop -er and add -e for il, elle, on: aime.",
+                    "fr": "aimer : on enlève -er et on ajoute -e pour il, elle, on : aime.",
+                    "de": "aimer: -er weg, für il, elle, on die Endung -e: aime."
+                  }
+                },
+                {
+                  "person": "1pl",
+                  "pronoun": "nous",
+                  "native": null,
+                  "answer": "aimons",
+                  "answerExplanation": {
+                    "en": "aimer: drop -er and add -ons for nous: aimons.",
+                    "fr": "aimer : on enlève -er et on ajoute -ons pour nous : aimons.",
+                    "de": "aimer: -er weg, für nous die Endung -ons: aimons."
+                  }
+                },
+                {
+                  "person": "2pl",
+                  "pronoun": "vous",
+                  "native": null,
+                  "answer": "aimez",
+                  "answerExplanation": {
+                    "en": "aimer: drop -er and add -ez for vous: aimez.",
+                    "fr": "aimer : on enlève -er et on ajoute -ez pour vous : aimez.",
+                    "de": "aimer: -er weg, für vous die Endung -ez: aimez."
+                  }
+                },
+                {
+                  "person": "3pl",
+                  "pronoun": "ils / elles",
+                  "native": null,
+                  "answer": "aiment",
+                  "answerExplanation": {
+                    "en": "aimer: drop -er and add -ent for ils, elles: aiment.",
+                    "fr": "aimer : on enlève -er et on ajoute -ent pour ils, elles : aiment.",
+                    "de": "aimer: -er weg, für ils, elles die Endung -ent: aiment."
+                  }
+                }
+              ],
+              "itemId": "ex-persons-1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-plural-forms",
+      "role": "exercise",
+      "blockId": "block-plural-forms",
+      "label": {
+        "en": "Pronoun–form typing",
+        "fr": "Écrire la forme pour chaque pronom",
+        "de": "Form zum Pronomen schreiben"
+      },
+      "pages": [
+        {
+          "pageId": "ex-plural-forms-1",
+          "estimatedDurationS": 45,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the form for each pronoun.",
+            "fr": "Écrivez la forme pour chaque pronom.",
+            "de": "Schreib die Form zu jedem Pronomen."
+          },
+          "items": [
+            {
+              "type": "grammar_pronoun_form_typing",
+              "ruleIds": ["rule-er-plural"],
+              "rows": [
+                {
+                  "rowId": "r-1",
+                  "pronoun": "nous (travailler)",
+                  "accepted": {
+                    "answers": ["travaillons"]
+                  },
+                  "answerExplanation": {
+                    "en": "travailler: drop -er and add -ons for nous: travaillons.",
+                    "fr": "travailler : on enlève -er et on ajoute -ons pour nous : travaillons.",
+                    "de": "travailler: -er weg, für nous die Endung -ons: travaillons."
+                  }
+                },
+                {
+                  "rowId": "r-2",
+                  "pronoun": "vous (travailler)",
+                  "accepted": {
+                    "answers": ["travaillez"]
+                  },
+                  "answerExplanation": {
+                    "en": "travailler: drop -er and add -ez for vous: travaillez.",
+                    "fr": "travailler : on enlève -er et on ajoute -ez pour vous : travaillez.",
+                    "de": "travailler: -er weg, für vous die Endung -ez: travaillez."
+                  }
+                },
+                {
+                  "rowId": "r-3",
+                  "pronoun": "ils (travailler)",
+                  "accepted": {
+                    "answers": ["travaillent"]
+                  },
+                  "answerExplanation": {
+                    "en": "travailler: drop -er and add -ent for ils, elles: travaillent.",
+                    "fr": "travailler : on enlève -er et on ajoute -ent pour ils, elles : travaillent.",
+                    "de": "travailler: -er weg, für ils, elles die Endung -ent: travaillent."
+                  }
+                }
+              ],
+              "itemId": "ex-plural-forms-1"
+            }
+          ]
+        },
+        {
+          "pageId": "ex-plural-forms-2",
+          "estimatedDurationS": 45,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the form for each pronoun.",
+            "fr": "Écrivez la forme pour chaque pronom.",
+            "de": "Schreib die Form zu jedem Pronomen."
+          },
+          "items": [
+            {
+              "type": "grammar_pronoun_form_typing",
+              "ruleIds": ["rule-er-plural"],
+              "rows": [
+                {
+                  "rowId": "r-1",
+                  "pronoun": "nous (chanter)",
+                  "accepted": {
+                    "answers": ["chantons"]
+                  },
+                  "answerExplanation": {
+                    "en": "chanter: drop -er and add -ons for nous: chantons.",
+                    "fr": "chanter : on enlève -er et on ajoute -ons pour nous : chantons.",
+                    "de": "chanter: -er weg, für nous die Endung -ons: chantons."
+                  }
+                },
+                {
+                  "rowId": "r-2",
+                  "pronoun": "vous (regarder)",
+                  "accepted": {
+                    "answers": ["regardez"]
+                  },
+                  "answerExplanation": {
+                    "en": "regarder: drop -er and add -ez for vous: regardez.",
+                    "fr": "regarder : on enlève -er et on ajoute -ez pour vous : regardez.",
+                    "de": "regarder: -er weg, für vous die Endung -ez: regardez."
+                  }
+                },
+                {
+                  "rowId": "r-3",
+                  "pronoun": "elles (habiter)",
+                  "accepted": {
+                    "answers": ["habitent"]
+                  },
+                  "answerExplanation": {
+                    "en": "habiter: drop -er and add -ent for Elles (like ils): habitent.",
+                    "fr": "habiter : on enlève -er et on ajoute -ent pour Elles (comme ils) : habitent.",
+                    "de": "habiter: -er weg, für Elles (wie ils) die Endung -ent: habitent."
+                  }
+                }
+              ],
+              "itemId": "ex-plural-forms-2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-plural-choice",
+      "role": "exercise",
+      "blockId": "block-plural-forms",
+      "label": {
+        "en": "Multiple-choice gaps 2",
+        "fr": "Phrases à trous à choix multiple 2",
+        "de": "Lücken mit Auswahl 2"
+      },
+      "pages": [
+        {
+          "pageId": "ex-plural-choice-1",
+          "estimatedDurationS": 10,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "ruleIds": ["rule-er-plural"],
+              "before": "Nous",
+              "after": "italien.",
+              "choices": [
+                {
+                  "choiceId": "c-1",
+                  "text": "parlez"
+                },
+                {
+                  "choiceId": "c-2",
+                  "text": "parlons"
+                },
+                {
+                  "choiceId": "c-3",
+                  "text": "parlent"
+                },
+                {
+                  "choiceId": "c-4",
+                  "text": "parle"
+                }
+              ],
+              "answerChoiceId": "c-2",
+              "hint": {
+                "en": "Verb: parler",
+                "fr": "Verbe : parler",
+                "de": "Verb: parler"
+              },
+              "answerExplanation": {
+                "en": "parler: drop -er and add -ons for nous: parlons.",
+                "fr": "parler : on enlève -er et on ajoute -ons pour nous : parlons.",
+                "de": "parler: -er weg, für nous die Endung -ons: parlons."
+              },
+              "itemId": "ex-plural-choice-1"
+            }
+          ]
+        },
+        {
+          "pageId": "ex-plural-choice-2",
+          "estimatedDurationS": 10,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "ruleIds": ["rule-er-plural"],
+              "before": "Vous",
+              "after": "à Genève ?",
+              "choices": [
+                {
+                  "choiceId": "c-1",
+                  "text": "habitons"
+                },
+                {
+                  "choiceId": "c-2",
+                  "text": "habites"
+                },
+                {
+                  "choiceId": "c-3",
+                  "text": "habitent"
+                },
+                {
+                  "choiceId": "c-4",
+                  "text": "habitez"
+                }
+              ],
+              "answerChoiceId": "c-4",
+              "hint": {
+                "en": "Verb: habiter",
+                "fr": "Verbe : habiter",
+                "de": "Verb: habiter"
+              },
+              "answerExplanation": {
+                "en": "habiter: drop -er and add -ez for vous: habitez.",
+                "fr": "habiter : on enlève -er et on ajoute -ez pour vous : habitez.",
+                "de": "habiter: -er weg, für vous die Endung -ez: habitez."
+              },
+              "itemId": "ex-plural-choice-2"
+            }
+          ]
+        },
+        {
+          "pageId": "ex-plural-choice-3",
+          "estimatedDurationS": 10,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "ruleIds": ["rule-er-plural"],
+              "before": "Ils",
+              "after": "le dimanche.",
+              "choices": [
+                {
+                  "choiceId": "c-1",
+                  "text": "travailles"
+                },
+                {
+                  "choiceId": "c-2",
+                  "text": "travaillent"
+                },
+                {
+                  "choiceId": "c-3",
+                  "text": "travaillez"
+                },
+                {
+                  "choiceId": "c-4",
+                  "text": "travaillons"
+                }
+              ],
+              "answerChoiceId": "c-2",
+              "hint": {
+                "en": "Verb: travailler",
+                "fr": "Verbe : travailler",
+                "de": "Verb: travailler"
+              },
+              "answerExplanation": {
+                "en": "travailler: drop -er and add -ent for ils, elles: travaillent.",
+                "fr": "travailler : on enlève -er et on ajoute -ent pour ils, elles : travaillent.",
+                "de": "travailler: -er weg, für ils, elles die Endung -ent: travaillent."
+              },
+              "itemId": "ex-plural-choice-3"
+            }
+          ]
+        },
+        {
+          "pageId": "ex-plural-choice-4",
+          "estimatedDurationS": 10,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "ruleIds": ["rule-er-plural"],
+              "before": "Mes parents",
+              "after": "les infos.",
+              "choices": [
+                {
+                  "choiceId": "c-1",
+                  "text": "regardent"
+                },
+                {
+                  "choiceId": "c-2",
+                  "text": "regardez"
+                },
+                {
+                  "choiceId": "c-3",
+                  "text": "regarde"
+                },
+                {
+                  "choiceId": "c-4",
+                  "text": "regardons"
+                }
+              ],
+              "answerChoiceId": "c-1",
+              "hint": {
+                "en": "Verb: regarder",
+                "fr": "Verbe : regarder",
+                "de": "Verb: regarder"
+              },
+              "answerExplanation": {
+                "en": "regarder: drop -er and add -ent for Mes parents (like ils): regardent.",
+                "fr": "regarder : on enlève -er et on ajoute -ent pour Mes parents (comme ils) : regardent.",
+                "de": "regarder: -er weg, für Mes parents (wie ils) die Endung -ent: regardent."
+              },
+              "itemId": "ex-plural-choice-4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-plural-typing",
+      "role": "exercise",
+      "blockId": "block-plural-forms",
+      "label": {
+        "en": "Typed gaps 2",
+        "fr": "Phrases à trous à écrire 2",
+        "de": "Lücken zum Schreiben 2"
+      },
+      "pages": [
+        {
+          "pageId": "ex-plural-typing-1",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "ruleIds": ["rule-er-plural"],
+              "before": "Nous",
+              "after": "près de la gare.",
+              "accepted": {
+                "answers": ["habitons"]
+              },
+              "hint": {
+                "en": "Verb: habiter",
+                "fr": "Verbe : habiter",
+                "de": "Verb: habiter"
+              },
+              "answerExplanation": {
+                "en": "habiter: drop -er and add -ons for nous: habitons.",
+                "fr": "habiter : on enlève -er et on ajoute -ons pour nous : habitons.",
+                "de": "habiter: -er weg, für nous die Endung -ons: habitons."
+              },
+              "itemId": "ex-plural-typing-1"
+            }
+          ]
+        },
+        {
+          "pageId": "ex-plural-typing-2",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "ruleIds": ["rule-er-plural"],
+              "before": "Vous",
+              "after": "espagnol ?",
+              "accepted": {
+                "answers": ["parlez"]
+              },
+              "hint": {
+                "en": "Verb: parler",
+                "fr": "Verbe : parler",
+                "de": "Verb: parler"
+              },
+              "answerExplanation": {
+                "en": "parler: drop -er and add -ez for vous: parlez.",
+                "fr": "parler : on enlève -er et on ajoute -ez pour vous : parlez.",
+                "de": "parler: -er weg, für vous die Endung -ez: parlez."
+              },
+              "itemId": "ex-plural-typing-2"
+            }
+          ]
+        },
+        {
+          "pageId": "ex-plural-typing-3",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "ruleIds": ["rule-er-plural"],
+              "before": "Ils",
+              "after": "le sport.",
+              "accepted": {
+                "answers": ["aiment"]
+              },
+              "hint": {
+                "en": "Verb: aimer",
+                "fr": "Verbe : aimer",
+                "de": "Verb: aimer"
+              },
+              "answerExplanation": {
+                "en": "aimer: drop -er and add -ent for ils, elles: aiment.",
+                "fr": "aimer : on enlève -er et on ajoute -ent pour ils, elles : aiment.",
+                "de": "aimer: -er weg, für ils, elles die Endung -ent: aiment."
+              },
+              "itemId": "ex-plural-typing-3"
+            }
+          ]
+        },
+        {
+          "pageId": "ex-plural-typing-4",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "ruleIds": ["rule-er-plural"],
+              "before": "Les enfants",
+              "after": "dans le jardin.",
+              "accepted": {
+                "answers": ["jouent"]
+              },
+              "hint": {
+                "en": "Verb: jouer",
+                "fr": "Verbe : jouer",
+                "de": "Verb: jouer"
+              },
+              "answerExplanation": {
+                "en": "jouer: drop -er and add -ent for Les enfants (like ils): jouent.",
+                "fr": "jouer : on enlève -er et on ajoute -ent pour Les enfants (comme ils) : jouent.",
+                "de": "jouer: -er weg, für Les enfants (wie ils) die Endung -ent: jouent."
+              },
+              "itemId": "ex-plural-typing-4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "feedback",
+      "role": "feedback",
+      "blockId": null,
+      "label": {
+        "en": "Your feedback",
+        "fr": "Votre retour",
+        "de": "Dein Feedback"
+      },
+      "pages": [
+        {
+          "pageId": "feedback",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Continue to the final exam.",
+            "fr": "Passez à l’examen final.",
+            "de": "Weiter zur Abschlussprüfung."
+          },
+          "items": [
+            {
+              "type": "production_feedback_placeholder",
+              "itemId": "feedback"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "role": "exam",
+      "blockId": null,
+      "label": {
+        "en": "Final exam",
+        "fr": "Examen final",
+        "de": "Abschlussprüfung"
+      },
+      "pages": [
+        {
+          "pageId": "exam-forms",
+          "estimatedDurationS": 90,
+          "timeLimitS": 140,
+          "instructions": {
+            "en": "Type the form for each pronoun.",
+            "fr": "Écrivez la forme pour chaque pronom.",
+            "de": "Schreib die Form zu jedem Pronomen."
+          },
+          "items": [
+            {
+              "type": "grammar_pronoun_form_typing",
+              "ruleIds": ["rule-er-singular", "rule-silent-endings"],
+              "rows": [
+                {
+                  "rowId": "r-1",
+                  "pronoun": "je (chanter)",
+                  "accepted": {
+                    "answers": ["chante"]
+                  },
+                  "answerExplanation": {
+                    "en": "chanter: drop -er and add -e for je: chante.",
+                    "fr": "chanter : on enlève -er et on ajoute -e pour je : chante.",
+                    "de": "chanter: -er weg, für je die Endung -e: chante."
+                  }
+                },
+                {
+                  "rowId": "r-2",
+                  "pronoun": "tu (chanter)",
+                  "accepted": {
+                    "answers": ["chantes"]
+                  },
+                  "answerExplanation": {
+                    "en": "tu chantes: the ending -es is silent, but it must be written for tu.",
+                    "fr": "tu chantes : la terminaison -es ne se prononce pas, mais on l’écrit avec tu.",
+                    "de": "tu chantes: Die Endung -es ist stumm, wird aber bei tu geschrieben."
+                  }
+                },
+                {
+                  "rowId": "r-3",
+                  "pronoun": "il (chanter)",
+                  "accepted": {
+                    "answers": ["chante"]
+                  },
+                  "answerExplanation": {
+                    "en": "chanter: drop -er and add -e for il, elle, on: chante.",
+                    "fr": "chanter : on enlève -er et on ajoute -e pour il, elle, on : chante.",
+                    "de": "chanter: -er weg, für il, elle, on die Endung -e: chante."
+                  }
+                }
+              ],
+              "itemId": "exam-forms-1"
+            },
+            {
+              "type": "grammar_pronoun_form_typing",
+              "ruleIds": ["rule-er-plural"],
+              "rows": [
+                {
+                  "rowId": "r-1",
+                  "pronoun": "nous (jouer)",
+                  "accepted": {
+                    "answers": ["jouons"]
+                  },
+                  "answerExplanation": {
+                    "en": "jouer: drop -er and add -ons for nous: jouons.",
+                    "fr": "jouer : on enlève -er et on ajoute -ons pour nous : jouons.",
+                    "de": "jouer: -er weg, für nous die Endung -ons: jouons."
+                  }
+                },
+                {
+                  "rowId": "r-2",
+                  "pronoun": "vous (jouer)",
+                  "accepted": {
+                    "answers": ["jouez"]
+                  },
+                  "answerExplanation": {
+                    "en": "jouer: drop -er and add -ez for vous: jouez.",
+                    "fr": "jouer : on enlève -er et on ajoute -ez pour vous : jouez.",
+                    "de": "jouer: -er weg, für vous die Endung -ez: jouez."
+                  }
+                },
+                {
+                  "rowId": "r-3",
+                  "pronoun": "elles (jouer)",
+                  "accepted": {
+                    "answers": ["jouent"]
+                  },
+                  "answerExplanation": {
+                    "en": "jouer: drop -er and add -ent for Elles (like ils): jouent.",
+                    "fr": "jouer : on enlève -er et on ajoute -ent pour Elles (comme ils) : jouent.",
+                    "de": "jouer: -er weg, für Elles (wie ils) die Endung -ent: jouent."
+                  }
+                }
+              ],
+              "itemId": "exam-forms-2"
+            }
+          ]
+        },
+        {
+          "pageId": "exam-singular",
+          "estimatedDurationS": 45,
+          "timeLimitS": 70,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "ruleIds": ["rule-er-singular"],
+              "before": "travailler → Je",
+              "after": "à la poste.",
+              "accepted": {
+                "answers": ["travaille"]
+              },
+              "hint": null,
+              "answerExplanation": {
+                "en": "travailler: drop -er and add -e for je: travaille.",
+                "fr": "travailler : on enlève -er et on ajoute -e pour je : travaille.",
+                "de": "travailler: -er weg, für je die Endung -e: travaille."
+              },
+              "itemId": "exam-singular-1"
+            },
+            {
+              "type": "grammar_gap_typing",
+              "ruleIds": ["rule-silent-endings"],
+              "before": "regarder → Tu",
+              "after": "la carte ?",
+              "accepted": {
+                "answers": ["regardes"]
+              },
+              "hint": null,
+              "answerExplanation": {
+                "en": "tu regardes: the ending -es is silent, but it must be written for tu.",
+                "fr": "tu regardes : la terminaison -es ne se prononce pas, mais on l’écrit avec tu.",
+                "de": "tu regardes: Die Endung -es ist stumm, wird aber bei tu geschrieben."
+              },
+              "itemId": "exam-singular-2"
+            },
+            {
+              "type": "grammar_gap_typing",
+              "ruleIds": ["rule-er-singular"],
+              "before": "habiter → Elle",
+              "after": "à Montréal.",
+              "accepted": {
+                "answers": ["habite"]
+              },
+              "hint": null,
+              "answerExplanation": {
+                "en": "habiter: drop -er and add -e for Elle (like il): habite.",
+                "fr": "habiter : on enlève -er et on ajoute -e pour Elle (comme il) : habite.",
+                "de": "habiter: -er weg, für Elle (wie il) die Endung -e: habite."
+              },
+              "itemId": "exam-singular-3"
+            }
+          ]
+        },
+        {
+          "pageId": "exam-plural",
+          "estimatedDurationS": 45,
+          "timeLimitS": 70,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "ruleIds": ["rule-er-plural"],
+              "before": "travailler → Nous",
+              "after": "ensemble.",
+              "accepted": {
+                "answers": ["travaillons"]
+              },
+              "hint": null,
+              "answerExplanation": {
+                "en": "travailler: drop -er and add -ons for nous: travaillons.",
+                "fr": "travailler : on enlève -er et on ajoute -ons pour nous : travaillons.",
+                "de": "travailler: -er weg, für nous die Endung -ons: travaillons."
+              },
+              "itemId": "exam-plural-1"
+            },
+            {
+              "type": "grammar_gap_typing",
+              "ruleIds": ["rule-er-plural"],
+              "before": "aimer → Vous",
+              "after": "le café ?",
+              "accepted": {
+                "answers": ["aimez"]
+              },
+              "hint": null,
+              "answerExplanation": {
+                "en": "aimer: drop -er and add -ez for vous: aimez.",
+                "fr": "aimer : on enlève -er et on ajoute -ez pour vous : aimez.",
+                "de": "aimer: -er weg, für vous die Endung -ez: aimez."
+              },
+              "itemId": "exam-plural-2"
+            },
+            {
+              "type": "grammar_gap_typing",
+              "ruleIds": ["rule-er-plural"],
+              "before": "parler → Ils",
+              "after": "chinois.",
+              "accepted": {
+                "answers": ["parlent"]
+              },
+              "hint": null,
+              "answerExplanation": {
+                "en": "parler: drop -er and add -ent for ils, elles: parlent.",
+                "fr": "parler : on enlève -er et on ajoute -ent pour ils, elles : parlent.",
+                "de": "parler: -er weg, für ils, elles die Endung -ent: parlent."
+              },
+              "itemId": "exam-plural-3"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "generator": "claude-code-direct-authoring",
+    "model": "claude-opus-5-5",
+    "promptVersion": "content-v4",
+    "generatedAt": "2026-10-16T17:56:28.761Z",
+    "inputHashes": {
+      "outline": "4bae78ce67d7f31114d89dc0592f67d49937b48f4040d52ddbd1eed5560181b1",
+      "brief": "0cd1aa32091aafad96bc29a0aa02115b6755f031e2c8fd2ba3303836a1f8a397"
+    }
+  }
+}
