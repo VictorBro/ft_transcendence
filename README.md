@@ -80,6 +80,22 @@ Grafana, with the monitoring dashboards and alerts, is at
 For day-to-day development use `make dev`, which starts the same stack with hot
 reload. `make help` lists every target.
 
+### Browser support
+
+The app is tested on desktop Chromium, Firefox and WebKit (the engine behind
+Safari): every Playwright suite runs on all three, in CI and in `make`. Run one
+engine with `pnpm --filter @ft/e2e run test:e2e --project=firefox`.
+
+Known limits, once the lessons land (#146 to #151):
+
+- **No speech voice, no Listen.** Listen buttons will read text aloud through
+  the browser's speech synthesis. A browser or system that offers no voice for
+  the language gets no Listen buttons rather than buttons that do nothing.
+- **The listening reply in Functions lessons** will show its text under
+  **Show the text** instead, so the exercise can still be done without a voice.
+
+- Mobile browsers are not tested.
+
 ---
 
 ## Technical Stack
