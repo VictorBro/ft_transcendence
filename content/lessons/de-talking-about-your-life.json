@@ -1,0 +1,1058 @@
+{
+  "schemaVersion": 2,
+  "id": "de-talking-about-your-life",
+  "lang": "de",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Vom eigenen Leben erzählen",
+  "objective": {
+    "en": "Tell others about key moments of your life and ask back: where you grew up, how long you have lived somewhere, what you used to be.",
+    "fr": "Raconter les étapes importantes de sa vie et poser la question en retour : où l’on a grandi, depuis quand on habite quelque part, ce qu’on était avant.",
+    "de": "Von wichtigen Stationen deines Lebens erzählen und nachfragen: wo du aufgewachsen bist, wie lange du wohnst, was du früher warst."
+  },
+  "estimatedMinutes": 15,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T20:22:22.779Z",
+    "inputHashes": {
+      "outline": "d61c14b09b5c367e878f362bbefa4f8bbb722395bc7795023c1352a5b059dcd1",
+      "brief": "d0b8bd3f68afc5a5bcf7f8e043626c07d5b41b400600633614f8a14d39a729b4"
+    }
+  },
+  "kind": "functions",
+  "theme": "personal_identification",
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "presentation",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "cards-expressions",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Recall each expression, then turn the card to check it.",
+            "fr": "Rappelez-vous chaque expression, puis retournez la carte pour vérifier.",
+            "de": "Erinnere dich an jeden Ausdruck und dreh dann die Karte um."
+          },
+          "items": [
+            {
+              "type": "function_flashcards",
+              "itemId": "cards-expressions",
+              "side": "expressions",
+              "ids": ["wo-aufgewachsen", "aufgewachsen", "wohne-seit", "frueher", "und-du"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue",
+      "stage": "dialogue",
+      "role": "presentation",
+      "label": { "en": "Dialogue", "fr": "Dialogue", "de": "Dialog" },
+      "pages": [
+        {
+          "pageId": "dialogue",
+          "estimatedDurationS": 140,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read and listen. Turn a line to see its translation and a note.",
+            "fr": "Lisez et écoutez. Retournez une réplique pour voir sa traduction et une remarque.",
+            "de": "Lies und hör zu. Dreh eine Zeile um, um Übersetzung und Hinweis zu sehen."
+          },
+          "items": [
+            {
+              "type": "function_dialogue",
+              "itemId": "dialogue",
+              "lines": [
+                {
+                  "lineId": "line-1",
+                  "roleId": "jonas",
+                  "text": "Hallo Ayşe! Wo bist du aufgewachsen?",
+                  "translation": {
+                    "en": "Hello Ayşe! Where did you grow up?",
+                    "fr": "Salut Ayşe ! Où as-tu grandi ?"
+                  },
+                  "note": {
+                    "en": "Jonas asks about her childhood, using du.",
+                    "fr": "Jonas demande où elle a passé son enfance, avec du.",
+                    "de": "Jonas fragt nach ihrer Kindheit, mit du."
+                  },
+                  "expressionIds": ["wo-aufgewachsen"]
+                },
+                {
+                  "lineId": "line-2",
+                  "roleId": "ayse",
+                  "text": "Ich bin in Izmir aufgewachsen.",
+                  "translation": { "en": "I grew up in Izmir.", "fr": "J’ai grandi à Izmir." },
+                  "note": {
+                    "en": "Aufwachsen uses sein in the perfect: ich bin aufgewachsen.",
+                    "fr": "Aufwachsen utilise sein au parfait : ich bin aufgewachsen.",
+                    "de": "Aufwachsen bildet das Perfekt mit sein: ich bin aufgewachsen."
+                  },
+                  "expressionIds": ["aufgewachsen"]
+                },
+                {
+                  "lineId": "line-3",
+                  "roleId": "jonas",
+                  "text": "Ach, in der Türkei! Und wo wohnst du jetzt?",
+                  "translation": {
+                    "en": "Oh, in Turkey! And where do you live now?",
+                    "fr": "Ah, en Turquie ! Et où habites-tu maintenant ?"
+                  },
+                  "note": {
+                    "en": "Jonas reacts and asks a follow-up question.",
+                    "fr": "Jonas réagit et pose une question de suite.",
+                    "de": "Jonas reagiert und stellt eine Anschlussfrage."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-4",
+                  "roleId": "ayse",
+                  "text": "Ich wohne seit zwei Jahren in Kassel.",
+                  "translation": {
+                    "en": "I have been living in Kassel for two years.",
+                    "fr": "J’habite à Kassel depuis deux ans."
+                  },
+                  "note": {
+                    "en": "Seit + dative with the present tense: the situation still continues.",
+                    "fr": "Seit + datif avec le présent : la situation continue encore.",
+                    "de": "Seit + Dativ mit Präsens: Die Situation dauert noch an."
+                  },
+                  "expressionIds": ["wohne-seit"]
+                },
+                {
+                  "lineId": "line-5",
+                  "roleId": "jonas",
+                  "text": "Und was machst du beruflich?",
+                  "translation": {
+                    "en": "And what do you do for a living?",
+                    "fr": "Et que fais-tu comme métier ?"
+                  },
+                  "note": {
+                    "en": "A common question when getting to know someone.",
+                    "fr": "Une question fréquente quand on fait connaissance.",
+                    "de": "Eine häufige Frage beim Kennenlernen."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-6",
+                  "roleId": "ayse",
+                  "text": "Ich arbeite bei einer Bank. Früher war ich Lehrerin.",
+                  "translation": {
+                    "en": "I work at a bank. I used to be a teacher.",
+                    "fr": "Je travaille dans une banque. Avant, j’étais enseignante."
+                  },
+                  "note": {
+                    "en": "Früher war ich … tells what you were before.",
+                    "fr": "Früher war ich … dit ce qu’on était avant.",
+                    "de": "Früher war ich … sagt, was du vorher warst."
+                  },
+                  "expressionIds": ["frueher"]
+                },
+                {
+                  "lineId": "line-7",
+                  "roleId": "jonas",
+                  "text": "Wirklich? Das ist interessant!",
+                  "translation": {
+                    "en": "Really? That is interesting!",
+                    "fr": "Vraiment ? C’est intéressant !"
+                  },
+                  "note": {
+                    "en": "A friendly reaction shows interest.",
+                    "fr": "Une réaction aimable montre de l’intérêt.",
+                    "de": "Eine freundliche Reaktion zeigt Interesse."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-8",
+                  "roleId": "ayse",
+                  "text": "Ja, das stimmt. Und du? Bist du von hier?",
+                  "translation": {
+                    "en": "Yes, that’s right. And you? Are you from here?",
+                    "fr": "Oui, c’est vrai. Et toi ? Tu es d’ici ?"
+                  },
+                  "note": {
+                    "en": "Und du? hands the question back.",
+                    "fr": "Und du ? renvoie la question.",
+                    "de": "Und du? gibt die Frage zurück."
+                  },
+                  "expressionIds": ["und-du"]
+                },
+                {
+                  "lineId": "line-9",
+                  "roleId": "jonas",
+                  "text": "Ich bin hier geboren und aufgewachsen.",
+                  "translation": {
+                    "en": "I was born and grew up here.",
+                    "fr": "Je suis né et j’ai grandi ici."
+                  },
+                  "note": {
+                    "en": "Both participles use sein in the perfect.",
+                    "fr": "Les deux participes utilisent sein au parfait.",
+                    "de": "Beide Partizipien bilden das Perfekt mit sein."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-10",
+                  "roleId": "ayse",
+                  "text": "Dann kennst du Kassel sicher gut!",
+                  "translation": {
+                    "en": "Then you surely know Kassel well!",
+                    "fr": "Alors tu connais sûrement bien Kassel !"
+                  },
+                  "note": {
+                    "en": "Dann draws a conclusion from what was said.",
+                    "fr": "Dann tire une conclusion de ce qui a été dit.",
+                    "de": "Dann zieht eine Folgerung aus dem Gesagten."
+                  },
+                  "expressionIds": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "match-expressions-1",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each expression with its translation.",
+            "fr": "Associez chaque expression à sa traduction.",
+            "de": "Ordne jedem Ausdruck seine Übersetzung zu."
+          },
+          "items": [
+            {
+              "type": "function_matching",
+              "itemId": "match-expressions-1",
+              "side": "expressions",
+              "pairs": [
+                {
+                  "id": "wo-aufgewachsen",
+                  "answerExplanation": {
+                    "en": "Asks where someone spent their childhood (du).",
+                    "fr": "Demande où quelqu’un a passé son enfance (du).",
+                    "de": "Fragt, wo jemand seine Kindheit verbracht hat (du)."
+                  }
+                },
+                {
+                  "id": "aufgewachsen",
+                  "answerExplanation": {
+                    "en": "Tells where you grew up.",
+                    "fr": "Dit où l’on a grandi.",
+                    "de": "Sagt, wo du aufgewachsen bist."
+                  }
+                },
+                {
+                  "id": "wohne-seit",
+                  "answerExplanation": {
+                    "en": "Seit with the present: how long you have lived somewhere.",
+                    "fr": "Seit avec le présent : depuis quand on habite quelque part.",
+                    "de": "Seit mit Präsens: seit wann du irgendwo wohnst."
+                  }
+                },
+                {
+                  "id": "frueher",
+                  "answerExplanation": {
+                    "en": "Introduces what you were in the past.",
+                    "fr": "Introduit ce que l’on était avant.",
+                    "de": "Leitet ein, was du früher warst."
+                  }
+                },
+                {
+                  "id": "und-du",
+                  "answerExplanation": {
+                    "en": "Hands the question back to the other person.",
+                    "fr": "Renvoie la question à l’autre personne.",
+                    "de": "Gibt die Frage an die andere Person zurück."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-gaps",
+      "stage": "dialogue_gaps",
+      "role": "exercise",
+      "label": { "en": "Dialogue gaps", "fr": "Dialogue à trous", "de": "Dialoglücken" },
+      "pages": [
+        {
+          "pageId": "gap-1",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-1",
+              "expressionId": "wo-aufgewachsen",
+              "context": { "roleId": "ayse", "text": "Hallo Jonas!" },
+              "roleId": "jonas",
+              "before": "Hallo Ayşe! Sag mal:",
+              "after": "",
+              "choiceExpressionIds": ["wo-aufgewachsen", "aufgewachsen", "frueher", "und-du"],
+              "answerExplanation": {
+                "en": "Jonas wants to know about her childhood, so he asks where she grew up.",
+                "fr": "Jonas veut connaître son enfance, il demande donc où elle a grandi.",
+                "de": "Jonas will etwas über ihre Kindheit wissen und fragt, wo sie aufgewachsen ist."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-2",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-2",
+              "expressionId": "aufgewachsen",
+              "context": { "roleId": "jonas", "text": "Woher kommst du ursprünglich?" },
+              "roleId": "ayse",
+              "before": "",
+              "after": "und wohne jetzt hier.",
+              "choiceExpressionIds": ["wo-aufgewachsen", "aufgewachsen", "wohne-seit", "und-du"],
+              "answerExplanation": {
+                "en": "She answers with a statement about her childhood.",
+                "fr": "Elle répond par une phrase sur son enfance.",
+                "de": "Sie antwortet mit einer Aussage über ihre Kindheit."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-3",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-3",
+              "expressionId": "wohne-seit",
+              "context": { "roleId": "jonas", "text": "Wie lange wohnst du schon in Kassel?" },
+              "roleId": "ayse",
+              "before": "",
+              "after": "einem Jahr hier.",
+              "choiceExpressionIds": ["frueher", "wohne-seit", "wo-aufgewachsen", "aufgewachsen"],
+              "answerExplanation": {
+                "en": "The question asks how long, so she answers with seit and the present tense.",
+                "fr": "La question demande depuis combien de temps, elle répond donc avec seit et le présent.",
+                "de": "Die Frage lautet, wie lange, also antwortet sie mit seit und Präsens."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-4",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-4",
+              "expressionId": "frueher",
+              "context": { "roleId": "jonas", "text": "Arbeitest du schon lange bei der Bank?" },
+              "roleId": "ayse",
+              "before": "Nein.",
+              "after": "Verkäuferin.",
+              "choiceExpressionIds": ["und-du", "wohne-seit", "aufgewachsen", "frueher"],
+              "answerExplanation": {
+                "en": "She says no and tells what she was before.",
+                "fr": "Elle dit non et explique ce qu’elle était avant.",
+                "de": "Sie sagt nein und erzählt, was sie vorher war."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-5",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-5",
+              "expressionId": "und-du",
+              "context": { "roleId": "jonas", "text": "Wo wohnst du?" },
+              "roleId": "ayse",
+              "before": "Ich wohne in Kassel.",
+              "after": "",
+              "choiceExpressionIds": ["wohne-seit", "wo-aufgewachsen", "und-du", "frueher"],
+              "answerExplanation": {
+                "en": "After answering, she hands the question back.",
+                "fr": "Après avoir répondu, elle renvoie la question.",
+                "de": "Nach ihrer Antwort gibt sie die Frage zurück."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "word-order",
+      "stage": "word_order",
+      "role": "exercise",
+      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
+      "pages": [
+        {
+          "pageId": "order-1",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-1",
+              "expressionId": "wo-aufgewachsen",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Wo" },
+                { "tokenId": "t2", "text": "bist" },
+                { "tokenId": "t3", "text": "du" },
+                { "tokenId": "t4", "text": "aufgewachsen" },
+                { "tokenId": "t5", "text": "?" }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]],
+              "answerExplanation": {
+                "en": "The question word comes first, then the verb bist, then du, and the participle at the end.",
+                "fr": "Le mot interrogatif vient d’abord, puis le verbe bist, puis du, et le participe à la fin.",
+                "de": "Zuerst das Fragewort, dann das Verb bist, dann du und am Ende das Partizip."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-2",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-2",
+              "expressionId": "aufgewachsen",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Ich" },
+                { "tokenId": "t2", "text": "bin" },
+                { "tokenId": "t3", "text": "in" },
+                { "tokenId": "t4", "text": "Izmir" },
+                { "tokenId": "t5", "text": "aufgewachsen" },
+                { "tokenId": "t6", "text": "." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "answerExplanation": {
+                "en": "In the perfect, the participle aufgewachsen stands at the end.",
+                "fr": "Au parfait, le participe aufgewachsen se place à la fin.",
+                "de": "Im Perfekt steht das Partizip aufgewachsen am Ende."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-3",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-3",
+              "expressionId": "wohne-seit",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Ich" },
+                { "tokenId": "t2", "text": "wohne" },
+                { "tokenId": "t3", "text": "seit" },
+                { "tokenId": "t4", "text": "drei" },
+                { "tokenId": "t5", "text": "Jahren" },
+                { "tokenId": "t6", "text": "in" },
+                { "tokenId": "t7", "text": "Kassel" },
+                { "tokenId": "t8", "text": "." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8"]],
+              "answerExplanation": {
+                "en": "The duration with seit comes before the place.",
+                "fr": "La durée avec seit vient avant le lieu.",
+                "de": "Die Zeitangabe mit seit steht vor dem Ort."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-4",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-4",
+              "expressionId": "frueher",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Früher" },
+                { "tokenId": "t2", "text": "war" },
+                { "tokenId": "t3", "text": "ich" },
+                { "tokenId": "t4", "text": "Köchin" },
+                { "tokenId": "t5", "text": "." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]],
+              "answerExplanation": {
+                "en": "Früher is in first position, so the verb war comes second and the subject ich third.",
+                "fr": "Früher est en première position, donc le verbe war vient en deuxième et le sujet ich en troisième.",
+                "de": "Früher steht auf Position 1, also kommt das Verb war an zweite Stelle und das Subjekt ich danach."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-5",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-5",
+              "expressionId": "und-du",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Ich" },
+                { "tokenId": "t2", "text": "bin" },
+                { "tokenId": "t3", "text": "müde" },
+                { "tokenId": "t4", "text": "." },
+                { "tokenId": "t5", "text": "Und" },
+                { "tokenId": "t6", "text": "du" },
+                { "tokenId": "t7", "text": "?" }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
+              "answerExplanation": {
+                "en": "First you answer, then you hand the question back with Und du?",
+                "fr": "On répond d’abord, puis on renvoie la question avec Und du ?",
+                "de": "Erst antwortest du, dann gibst du die Frage mit Und du? zurück."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "listening",
+      "stage": "listening",
+      "role": "exercise",
+      "label": { "en": "Listening", "fr": "Écoute", "de": "Hören" },
+      "pages": [
+        {
+          "pageId": "listening-1",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-1",
+              "expressionId": "wo-aufgewachsen",
+              "context": { "roleId": "ayse", "text": "Ich komme ursprünglich aus der Türkei." },
+              "roleId": "jonas",
+              "options": [
+                { "optionId": "o1", "text": "Das Wetter ist schön." },
+                { "optionId": "o2", "text": "Interessant! Wo bist du aufgewachsen?" },
+                { "optionId": "o3", "text": "Ich habe einen Bruder." },
+                { "optionId": "o4", "text": "Danke, gut." }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "Jonas shows interest and asks where she grew up.",
+                "fr": "Jonas montre de l’intérêt et demande où elle a grandi.",
+                "de": "Jonas zeigt Interesse und fragt, wo sie aufgewachsen ist."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-2",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-2",
+              "expressionId": "aufgewachsen",
+              "context": { "roleId": "jonas", "text": "Wo bist du aufgewachsen, Ayşe?" },
+              "roleId": "ayse",
+              "options": [
+                { "optionId": "o1", "text": "Ich bin Lehrerin." },
+                { "optionId": "o2", "text": "Ich war gestern im Kino." },
+                { "optionId": "o3", "text": "Nächste Woche fahre ich nach Berlin." },
+                { "optionId": "o4", "text": "Ich bin in Izmir aufgewachsen, am Meer." }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "The question is about her childhood, so she names the place where she grew up.",
+                "fr": "La question porte sur son enfance, elle nomme donc le lieu où elle a grandi.",
+                "de": "Die Frage betrifft ihre Kindheit, also nennt sie den Ort, an dem sie aufgewachsen ist."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-3",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-3",
+              "expressionId": "wohne-seit",
+              "context": { "roleId": "jonas", "text": "Wie lange wohnst du schon in Kassel?" },
+              "roleId": "ayse",
+              "options": [
+                { "optionId": "o1", "text": "Ich komme aus der Türkei." },
+                { "optionId": "o2", "text": "Ich wohne seit zwei Jahren in der Nähe vom Bahnhof." },
+                { "optionId": "o3", "text": "Gestern war es kalt." },
+                { "optionId": "o4", "text": "Früher war ich Lehrerin." }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "The question asks how long, so the answer uses seit.",
+                "fr": "La question demande depuis combien de temps, la réponse utilise donc seit.",
+                "de": "Die Frage lautet, wie lange, also enthält die Antwort seit."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-4",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-4",
+              "expressionId": "frueher",
+              "context": { "roleId": "jonas", "text": "Arbeitest du schon immer bei der Bank?" },
+              "roleId": "ayse",
+              "options": [
+                { "optionId": "o1", "text": "Ja, ich wohne in Kassel." },
+                { "optionId": "o2", "text": "Ich bin in Izmir aufgewachsen." },
+                { "optionId": "o3", "text": "Nein, früher war ich Lehrerin." },
+                { "optionId": "o4", "text": "Heute ist Montag." }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "She says no and tells what she was before.",
+                "fr": "Elle dit non et explique ce qu’elle était avant.",
+                "de": "Sie sagt nein und erzählt, was sie vorher war."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-5",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-5",
+              "expressionId": "und-du",
+              "context": { "roleId": "jonas", "text": "Hallo! Wie geht’s?" },
+              "roleId": "ayse",
+              "options": [
+                { "optionId": "o1", "text": "Auf Wiedersehen!" },
+                { "optionId": "o2", "text": "Ich bin in Izmir aufgewachsen." },
+                { "optionId": "o3", "text": "Gut, danke. Und du?" },
+                { "optionId": "o4", "text": "Ich habe Hunger." }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "She answers the greeting and hands the question back.",
+                "fr": "Elle répond à la salutation et renvoie la question.",
+                "de": "Sie antwortet auf die Begrüßung und gibt die Frage zurück."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam-replies-1",
+          "estimatedDurationS": 120,
+          "timeLimitS": 180,
+          "instructions": {
+            "en": "Build the answer. Not every word fits.",
+            "fr": "Construisez la réponse. Tous les mots ne servent pas.",
+            "de": "Bilde die Antwort. Nicht jedes Wort passt."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "reply-1",
+              "expressionId": "aufgewachsen",
+              "context": { "roleId": "jonas", "text": "Woher kommst du ursprünglich, Ayşe?" },
+              "roleId": "ayse",
+              "tokens": [
+                { "tokenId": "t1", "text": "Ich" },
+                { "tokenId": "t2", "text": "bin" },
+                { "tokenId": "t3", "text": "in" },
+                { "tokenId": "t4", "text": "Izmir" },
+                { "tokenId": "t5", "text": "aufgewachsen" },
+                { "tokenId": "t6", "text": "und" },
+                { "tokenId": "t7", "text": "zur" },
+                { "tokenId": "t8", "text": "Schule" },
+                { "tokenId": "t9", "text": "gegangen" },
+                { "tokenId": "t10", "text": "." },
+                { "tokenId": "t11", "text": "bist" },
+                { "tokenId": "t12", "text": "geboren" }
+              ],
+              "distractorTokenIds": ["t11", "t12"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9", "t10"]],
+              "answerExplanation": {
+                "en": "Ich bin … aufgewachsen: with ich the verb is bin, and the participle stands at the end of the first part.",
+                "fr": "Ich bin … aufgewachsen : avec ich le verbe est bin, et le participe est en fin de première partie.",
+                "de": "Ich bin … aufgewachsen: Mit ich heißt das Verb bin, und das Partizip steht am Ende des ersten Teils."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-2",
+              "expressionId": "wohne-seit",
+              "context": { "roleId": "jonas", "text": "Wohnst du schon lange in Deutschland?" },
+              "roleId": "ayse",
+              "tokens": [
+                { "tokenId": "t1", "text": "Ich" },
+                { "tokenId": "t2", "text": "wohne" },
+                { "tokenId": "t3", "text": "seit" },
+                { "tokenId": "t4", "text": "fünf" },
+                { "tokenId": "t5", "text": "Jahren" },
+                { "tokenId": "t6", "text": "in" },
+                { "tokenId": "t7", "text": "Deutschland" },
+                { "tokenId": "t8", "text": "." },
+                { "tokenId": "t9", "text": "wohnt" },
+                { "tokenId": "t10", "text": "vor" }
+              ],
+              "distractorTokenIds": ["t9", "t10"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8"]],
+              "answerExplanation": {
+                "en": "Seit with the present tells how long: seit fünf Jahren. Vor would mean ago.",
+                "fr": "Seit avec le présent dit depuis combien de temps : seit fünf Jahren. Vor voudrait dire il y a.",
+                "de": "Seit mit Präsens sagt, wie lange: seit fünf Jahren. Vor würde bedeuten, wann etwas war."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-3",
+              "expressionId": "frueher",
+              "context": { "roleId": "ayse", "text": "Was hast du früher gemacht, Jonas?" },
+              "roleId": "jonas",
+              "tokens": [
+                { "tokenId": "t1", "text": "Früher" },
+                { "tokenId": "t2", "text": "war" },
+                { "tokenId": "t3", "text": "ich" },
+                { "tokenId": "t4", "text": "Busfahrer" },
+                { "tokenId": "t5", "text": "." },
+                { "tokenId": "t6", "text": "bin" }
+              ],
+              "distractorTokenIds": ["t6"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]],
+              "answerExplanation": {
+                "en": "Talking about the past, you use war, not bin.",
+                "fr": "Pour parler du passé, on utilise war et non bin.",
+                "de": "Über die Vergangenheit sprichst du mit war, nicht mit bin."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-4",
+              "expressionId": "wo-aufgewachsen",
+              "context": { "roleId": "ayse", "text": "Ich habe lange in der Türkei gelebt." },
+              "roleId": "jonas",
+              "tokens": [
+                { "tokenId": "t1", "text": "Wirklich?" },
+                { "tokenId": "t2", "text": "Wo" },
+                { "tokenId": "t3", "text": "bist" },
+                { "tokenId": "t4", "text": "du" },
+                { "tokenId": "t5", "text": "aufgewachsen" },
+                { "tokenId": "t6", "text": "?" },
+                { "tokenId": "t7", "text": "wohnst" }
+              ],
+              "distractorTokenIds": ["t7"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "answerExplanation": {
+                "en": "Wo bist du aufgewachsen? asks about childhood; wohnst would ask where she lives now.",
+                "fr": "Wo bist du aufgewachsen ? porte sur l’enfance ; wohnst demanderait où elle habite maintenant.",
+                "de": "Wo bist du aufgewachsen? fragt nach der Kindheit; wohnst würde nach dem heutigen Wohnort fragen."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-dialogue",
+          "estimatedDurationS": 160,
+          "timeLimitS": 240,
+          "instructions": {
+            "en": "Fill each gap with an expression from this lesson.",
+            "fr": "Complétez chaque trou avec une expression de la leçon.",
+            "de": "Fülle jede Lücke mit einem Ausdruck aus dieser Lektion."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_typing",
+              "itemId": "exam-dialogue",
+              "lines": [
+                {
+                  "lineId": "exam-line-1",
+                  "roleId": "jonas",
+                  "before": "Hallo Ayşe, schön, dass du da bist!",
+                  "translation": {
+                    "en": "Hello Ayşe, nice that you are here!",
+                    "fr": "Salut Ayşe, content que tu sois là !"
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-2",
+                  "roleId": "ayse",
+                  "before": "Danke! Sag mal:",
+                  "translation": {
+                    "en": "Thanks! Tell me, where did you grow up?",
+                    "fr": "Merci ! Dis-moi, où as-tu grandi ?"
+                  },
+                  "gap": {
+                    "gapId": "gap-1",
+                    "expressionId": "wo-aufgewachsen",
+                    "accepted": {
+                      "answers": ["Wo bist du aufgewachsen", "Wo bist du denn aufgewachsen"]
+                    },
+                    "answerExplanation": {
+                      "en": "She asks about his childhood: Wo bist du aufgewachsen?",
+                      "fr": "Elle demande où il a passé son enfance : Wo bist du aufgewachsen ?",
+                      "de": "Sie fragt nach seiner Kindheit: Wo bist du aufgewachsen?"
+                    }
+                  },
+                  "after": "?"
+                },
+                {
+                  "lineId": "exam-line-3",
+                  "roleId": "jonas",
+                  "before": "Ich bin in Bonn groß geworden.",
+                  "translation": { "en": "I grew up in Bonn.", "fr": "J’ai grandi à Bonn." },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-4",
+                  "roleId": "ayse",
+                  "before": "Und wie lange wohnst du schon in Kassel?",
+                  "translation": {
+                    "en": "And how long have you been living in Kassel?",
+                    "fr": "Et depuis combien de temps habites-tu à Kassel ?"
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-5",
+                  "roleId": "jonas",
+                  "before": "",
+                  "translation": {
+                    "en": "I have been living here for four years.",
+                    "fr": "J’habite ici depuis quatre ans."
+                  },
+                  "gap": {
+                    "gapId": "gap-2",
+                    "expressionId": "wohne-seit",
+                    "accepted": { "answers": ["Ich wohne seit"] },
+                    "answerExplanation": {
+                      "en": "Seit with the present tells how long: Ich wohne seit vier Jahren hier.",
+                      "fr": "Seit avec le présent dit depuis combien de temps : Ich wohne seit vier Jahren hier.",
+                      "de": "Seit mit Präsens sagt, wie lange: Ich wohne seit vier Jahren hier."
+                    }
+                  },
+                  "after": "vier Jahren hier."
+                },
+                {
+                  "lineId": "exam-line-6",
+                  "roleId": "ayse",
+                  "before": "Oh, schon vier Jahre! Ich bin erst zwei Jahre hier.",
+                  "translation": {
+                    "en": "Oh, already four years! I have only been here for two years.",
+                    "fr": "Oh, déjà quatre ans ! Moi, je suis ici depuis deux ans seulement."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-7",
+                  "roleId": "jonas",
+                  "before": "Was hast du in der Türkei gemacht?",
+                  "translation": {
+                    "en": "What did you do in Turkey?",
+                    "fr": "Qu’est-ce que tu as fait en Turquie ?"
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-8",
+                  "roleId": "ayse",
+                  "before": "",
+                  "translation": {
+                    "en": "I used to be a teacher in Izmir.",
+                    "fr": "Avant, j’étais enseignante à Izmir."
+                  },
+                  "gap": {
+                    "gapId": "gap-3",
+                    "expressionId": "frueher",
+                    "accepted": { "answers": ["Früher war ich"] },
+                    "answerExplanation": {
+                      "en": "She tells what she was before: Früher war ich Lehrerin.",
+                      "fr": "Elle dit ce qu’elle était avant : Früher war ich Lehrerin.",
+                      "de": "Sie erzählt, was sie vorher war: Früher war ich Lehrerin."
+                    }
+                  },
+                  "after": "Lehrerin in Izmir."
+                },
+                {
+                  "lineId": "exam-line-9",
+                  "roleId": "jonas",
+                  "before": "Das ist spannend!",
+                  "translation": { "en": "That is exciting!", "fr": "C’est passionnant !" },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-10",
+                  "roleId": "ayse",
+                  "before": "Ich arbeite jetzt bei einer Bank.",
+                  "translation": {
+                    "en": "I work at a bank now. And you?",
+                    "fr": "Je travaille maintenant dans une banque. Et toi ?"
+                  },
+                  "gap": {
+                    "gapId": "gap-4",
+                    "expressionId": "und-du",
+                    "accepted": { "answers": ["Und du"] },
+                    "answerExplanation": {
+                      "en": "She hands the question back: Und du?",
+                      "fr": "Elle renvoie la question : Und du ?",
+                      "de": "Sie gibt die Frage zurück: Und du?"
+                    }
+                  },
+                  "after": "?"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

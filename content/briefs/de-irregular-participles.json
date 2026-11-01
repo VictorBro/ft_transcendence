@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 2,
+  "id": "de-irregular-participles",
+  "lang": "de",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Unregelmäßige Partizipien",
+  "objective": {
+    "en": "Learn irregular participles in groups with the same vowel change and recognise mixed verbs: getrunken, geschrieben, geflogen, gebracht, gedacht, gewusst.",
+    "fr": "Apprendre les participes irréguliers par groupes de même changement de voyelle et reconnaître les verbes mixtes : getrunken, geschrieben, geflogen, gebracht, gedacht, gewusst.",
+    "de": "Unregelmäßige Partizipien in Gruppen mit gleichem Vokalwechsel lernen und gemischte Verben erkennen: getrunken, geschrieben, geflogen, gebracht, gedacht, gewusst."
+  },
+  "estimatedMinutes": 15,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T20:21:56.642Z",
+    "inputHashes": { "outline": "9b842641e3907850fef9e6e524a92d5dd699fb3e3188c31180eda1b23aaf989a" }
+  },
+  "kind": "grammar",
+  "topic": "verbs_morphology",
+  "scopeBoundaries": {
+    "en": "Covers participle II of strong and mixed verbs, used after haben or sein. Excludes the choice between haben and sein, separable and inseparable verbs, and the Präteritum.",
+    "fr": "Couvre le participe II des verbes forts et mixtes, après haben ou sein. Exclut le choix entre haben et sein, les verbes séparables et inséparables et le prétérit.",
+    "de": "Behandelt das Partizip II starker und gemischter Verben nach haben oder sein. Ausgeschlossen sind die Wahl von haben oder sein, trennbare und untrennbare Verben und das Präteritum."
+  },
+  "prerequisites": [
+    {
+      "en": "Regular verbs in the present tense",
+      "fr": "Les verbes réguliers au présent",
+      "de": "Regelmäßige Verben im Präsens"
+    },
+    {
+      "en": "The forms of haben and sein in the present tense",
+      "fr": "Les formes de haben et sein au présent",
+      "de": "Die Präsensformen von haben und sein"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-ei-ie",
+      "summary": {
+        "en": "Strong verbs with ei in the infinitive have ie in the participle: schreiben – geschrieben, leihen – geliehen.",
+        "fr": "Les verbes forts avec ei à l'infinitif ont ie au participe : schreiben – geschrieben, leihen – geliehen.",
+        "de": "Starke Verben mit ei im Infinitiv haben ie im Partizip: schreiben – geschrieben, leihen – geliehen."
+      }
+    },
+    {
+      "id": "rule-i-u",
+      "summary": {
+        "en": "Strong verbs with i in the infinitive have u in the participle: trinken – getrunken, singen – gesungen, finden – gefunden.",
+        "fr": "Les verbes forts avec i à l'infinitif ont u au participe : trinken – getrunken, singen – gesungen, finden – gefunden.",
+        "de": "Starke Verben mit i im Infinitiv haben u im Partizip: trinken – getrunken, singen – gesungen, finden – gefunden."
+      }
+    },
+    {
+      "id": "rule-o",
+      "summary": {
+        "en": "Some strong verbs have o in the participle: fliegen – geflogen, sprechen – gesprochen, nehmen – genommen.",
+        "fr": "Certains verbes forts ont o au participe : fliegen – geflogen, sprechen – gesprochen, nehmen – genommen.",
+        "de": "Einige starke Verben haben o im Partizip: fliegen – geflogen, sprechen – gesprochen, nehmen – genommen."
+      }
+    },
+    {
+      "id": "rule-mixed",
+      "summary": {
+        "en": "Mixed verbs change the vowel and end in -t: bringen – gebracht, denken – gedacht, wissen – gewusst, kennen – gekannt, nennen – genannt.",
+        "fr": "Les verbes mixtes changent de voyelle et se terminent par -t : bringen – gebracht, denken – gedacht, wissen – gewusst, kennen – gekannt, nennen – genannt.",
+        "de": "Gemischte Verben wechseln den Vokal und enden auf -t: bringen – gebracht, denken – gedacht, wissen – gewusst, kennen – gekannt, nennen – genannt."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-strong",
+      "title": {
+        "en": "Strong verbs: vowel groups",
+        "fr": "Verbes forts : groupes de voyelles",
+        "de": "Starke Verben: Vokalgruppen"
+      },
+      "ruleIds": ["rule-ei-ie", "rule-i-u", "rule-o"],
+      "explanationPlan": {
+        "en": "Explain that strong verbs form the participle with ge- and -en and change the stem vowel. Present three groups: ei to ie, i to u, and o. Add a table of forms and stress that the participle must be learned with the verb.",
+        "fr": "Expliquer que les verbes forts forment le participe avec ge- et -en et changent la voyelle du radical. Présenter trois groupes : ei vers ie, i vers u et o. Ajouter un tableau de formes et insister : le participe s'apprend avec le verbe.",
+        "de": "Erklären, dass starke Verben das Partizip mit ge- und -en bilden und den Stammvokal ändern. Drei Gruppen zeigen: ei zu ie, i zu u und o. Formentabelle ergänzen und betonen, dass man das Partizip mit dem Verb lernt."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "Ich habe einen Brief geschrieben.",
+          "translation": { "en": "I wrote a letter.", "fr": "J'ai écrit une lettre." }
+        },
+        {
+          "text": "Wir haben Tee getrunken.",
+          "translation": { "en": "We drank tea.", "fr": "Nous avons bu du thé." }
+        },
+        {
+          "text": "Sie hat gestern ein Lied gesungen.",
+          "translation": {
+            "en": "She sang a song yesterday.",
+            "fr": "Elle a chanté une chanson hier."
+          }
+        },
+        {
+          "text": "Wir sind nach Wien geflogen.",
+          "translation": {
+            "en": "We flew to Vienna.",
+            "fr": "Nous avons pris l'avion pour Vienne."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not add the regular ending -t to strong verbs: getrunken, not getrinkt.",
+          "fr": "N'ajoutez pas la terminaison régulière -t aux verbes forts : getrunken, pas getrinkt.",
+          "de": "Hänge die regelmäßige Endung -t nicht an starke Verben: getrunken, nicht getrinkt."
+        },
+        {
+          "en": "The vowel of the participle is not always the vowel of the infinitive: schreiben has ie, not ei.",
+          "fr": "La voyelle du participe n'est pas toujours celle de l'infinitif : schreiben a ie, pas ei.",
+          "de": "Der Vokal des Partizips ist nicht immer der des Infinitivs: schreiben hat ie, nicht ei."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-s-persons",
+          "type": "grammar_person_matching",
+          "itemCount": 1,
+          "ruleIds": ["rule-i-u"],
+          "estimatedDurationS": 45
+        },
+        {
+          "id": "ex-s-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 5,
+          "ruleIds": ["rule-ei-ie", "rule-i-u", "rule-o"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-s-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 5,
+          "ruleIds": ["rule-ei-ie", "rule-i-u", "rule-o"],
+          "estimatedDurationS": 75
+        },
+        {
+          "id": "ex-s-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 4,
+          "ruleIds": ["rule-ei-ie", "rule-i-u", "rule-o"],
+          "estimatedDurationS": 80
+        }
+      ]
+    },
+    {
+      "id": "block-mixed",
+      "title": {
+        "en": "Mixed verbs: new vowel, ending -t",
+        "fr": "Verbes mixtes : nouvelle voyelle, terminaison -t",
+        "de": "Gemischte Verben: neuer Vokal, Endung -t"
+      },
+      "ruleIds": ["rule-mixed"],
+      "explanationPlan": {
+        "en": "Show that mixed verbs change the vowel like strong verbs but end in -t like regular verbs. List bringen, denken, wissen, kennen, nennen. Teach how to recognise them: -en means strong, -t with a changed vowel means mixed, and regular verbs keep their vowel.",
+        "fr": "Montrer que les verbes mixtes changent de voyelle comme les verbes forts mais se terminent par -t comme les verbes réguliers. Lister bringen, denken, wissen, kennen, nennen. Apprendre à les reconnaître : -en = fort, -t avec voyelle changée = mixte, les verbes réguliers gardent leur voyelle.",
+        "de": "Zeigen, dass gemischte Verben den Vokal wie starke Verben ändern, aber wie regelmäßige Verben auf -t enden. bringen, denken, wissen, kennen, nennen auflisten. Erkennen lernen: -en heißt stark, -t mit Vokalwechsel heißt gemischt, regelmäßige Verben behalten ihren Vokal."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Er hat mir ein Buch gebracht.",
+          "translation": { "en": "He brought me a book.", "fr": "Il m'a apporté un livre." }
+        },
+        {
+          "text": "Ich habe an dich gedacht.",
+          "translation": { "en": "I thought of you.", "fr": "J'ai pensé à toi." }
+        },
+        {
+          "text": "Das habe ich nicht gewusst.",
+          "translation": { "en": "I did not know that.", "fr": "Je ne le savais pas." }
+        },
+        {
+          "text": "Wir haben den Mann nicht gekannt.",
+          "translation": {
+            "en": "We did not know the man.",
+            "fr": "Nous ne connaissions pas l'homme."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Mixed verbs do not end in -en: gebracht, not gebrungen.",
+          "fr": "Les verbes mixtes ne se terminent pas par -en : gebracht, pas gebrungen.",
+          "de": "Gemischte Verben enden nicht auf -en: gebracht, nicht gebrungen."
+        },
+        {
+          "en": "Do not forget the vowel change: gedacht, not gedenkt.",
+          "fr": "N'oubliez pas le changement de voyelle : gedacht, pas gedenkt.",
+          "de": "Vergiss den Vokalwechsel nicht: gedacht, nicht gedenkt."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-m-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-mixed"],
+          "estimatedDurationS": 50
+        },
+        {
+          "id": "ex-m-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-mixed"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-m-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-mixed"],
+          "estimatedDurationS": 60
+        }
+      ]
+    }
+  ],
+  "newVerbs": [
+    {
+      "infinitive": "leihen",
+      "translations": { "en": "to lend, to borrow", "fr": "prêter, emprunter" }
+    },
+    { "infinitive": "singen", "translations": { "en": "to sing", "fr": "chanter" } },
+    { "infinitive": "fliegen", "translations": { "en": "to fly", "fr": "voler, prendre l'avion" } },
+    { "infinitive": "nennen", "translations": { "en": "to name, to call", "fr": "nommer" } }
+  ],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-strong",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-ei-ie", "rule-i-u", "rule-o"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      },
+      {
+        "pageId": "exam-mixed",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["rule-mixed"],
+        "estimatedDurationS": 45,
+        "timeLimitS": 75
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-ei-ie", "rule-i-u", "rule-mixed"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

@@ -1,0 +1,230 @@
+{
+  "schemaVersion": 2,
+  "id": "de-w-questions",
+  "lang": "de",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "W-Fragen: wer, was, wo, woher, wie",
+  "objective": {
+    "en": "Form questions with wer, was, wo, woher and wie and put the verb on position 2 in both question and answer.",
+    "fr": "Former des questions avec wer, was, wo, woher et wie et placer le verbe en position 2 dans la question et la réponse.",
+    "de": "Fragen mit wer, was, wo, woher und wie bilden und das Verb in Frage und Antwort auf Position 2 stellen."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T20:17:42.343Z",
+    "inputHashes": { "outline": "372344dcdc29bbd95cdacb1743a622bd44099603a04cdda585c6117fa0f49fa9" }
+  },
+  "kind": "grammar",
+  "topic": "syntax_and_sentence_structure",
+  "scopeBoundaries": {
+    "en": "Covers the five question words wer, was, wo, woher, wie and the verb on position 2 in W-questions and statement answers. Excludes yes/no questions, wann, warum and separable verbs.",
+    "fr": "Couvre les cinq mots interrogatifs wer, was, wo, woher, wie et le verbe en position 2 dans les questions en W et les réponses. Exclut les questions fermées, wann, warum et les verbes séparables.",
+    "de": "Behandelt die fünf Fragewörter wer, was, wo, woher, wie und das Verb auf Position 2 in W-Fragen und Aussagesätzen. Ausgeschlossen sind Ja-Nein-Fragen, wann, warum und trennbare Verben."
+  },
+  "prerequisites": [
+    {
+      "en": "The verb sein and the pronouns ich, du, er, sie, wir",
+      "fr": "Le verbe sein et les pronoms ich, du, er, sie, wir",
+      "de": "Das Verb sein und die Pronomen ich, du, er, sie, wir"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-words",
+      "summary": {
+        "en": "Choose the right question word: wer (person), was (thing), wo (place), woher (origin), wie (manner, name).",
+        "fr": "Choisir le bon mot interrogatif : wer (personne), was (chose), wo (lieu), woher (origine), wie (manière, nom).",
+        "de": "Das richtige Fragewort wählen: wer (Person), was (Sache), wo (Ort), woher (Herkunft), wie (Art, Name)."
+      }
+    },
+    {
+      "id": "rule-verb-q",
+      "summary": {
+        "en": "In a W-question the question word is on position 1 and the verb on position 2.",
+        "fr": "Dans une question en W, le mot interrogatif est en position 1 et le verbe en position 2.",
+        "de": "In der W-Frage steht das Fragewort auf Position 1 und das Verb auf Position 2."
+      }
+    },
+    {
+      "id": "rule-verb-a",
+      "summary": {
+        "en": "In the statement answer the verb is also on position 2.",
+        "fr": "Dans la phrase de réponse, le verbe est aussi en position 2.",
+        "de": "Auch im Antwortsatz steht das Verb auf Position 2."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-words",
+      "title": {
+        "en": "The question words",
+        "fr": "Les mots interrogatifs",
+        "de": "Die Fragewörter"
+      },
+      "ruleIds": ["rule-words"],
+      "explanationPlan": {
+        "en": "Present wer, was, wo, woher and wie with one question each. Contrast wo (place) and woher (origin) and show that wie asks for the name in Wie heißt du?",
+        "fr": "Présenter wer, was, wo, woher et wie avec une question chacun. Opposer wo (lieu) et woher (origine) et montrer que wie demande le nom dans Wie heißt du ?",
+        "de": "wer, was, wo, woher und wie mit je einer Frage einführen. wo (Ort) und woher (Herkunft) gegenüberstellen und zeigen, dass wie in Wie heißt du? nach dem Namen fragt."
+      },
+      "explanationDurationS": 100,
+      "examples": [
+        { "text": "Wer ist das?", "translation": { "en": "Who is that?", "fr": "Qui est-ce ?" } },
+        {
+          "text": "Was machst du?",
+          "translation": { "en": "What are you doing?", "fr": "Que fais-tu ?" }
+        },
+        {
+          "text": "Wo wohnst du?",
+          "translation": { "en": "Where do you live?", "fr": "Où habites-tu ?" }
+        },
+        {
+          "text": "Woher kommst du?",
+          "translation": { "en": "Where are you from?", "fr": "D'où viens-tu ?" }
+        },
+        {
+          "text": "Wie heißt du?",
+          "translation": { "en": "What is your name?", "fr": "Comment t'appelles-tu ?" }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not mix up wo (where) and woher (where from).",
+          "fr": "Ne confondez pas wo (où) et woher (d'où).",
+          "de": "Verwechsle nicht wo (an welchem Ort) und woher (aus welchem Ort)."
+        },
+        {
+          "en": "To ask for a name, use wie, not was: Wie heißt du?",
+          "fr": "Pour demander le nom, utilisez wie et non was : Wie heißt du ?",
+          "de": "Nach dem Namen fragst du mit wie, nicht mit was: Wie heißt du?"
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-w-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 6,
+          "ruleIds": ["rule-words"],
+          "estimatedDurationS": 72
+        },
+        {
+          "id": "ex-w-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 5,
+          "ruleIds": ["rule-words"],
+          "estimatedDurationS": 100
+        }
+      ]
+    },
+    {
+      "id": "block-position",
+      "title": {
+        "en": "The verb on position 2",
+        "fr": "Le verbe en position 2",
+        "de": "Das Verb auf Position 2"
+      },
+      "ruleIds": ["rule-verb-q", "rule-verb-a"],
+      "explanationPlan": {
+        "en": "Show that in a W-question the question word comes first and the verb second. Show that the answer also has the verb on position 2, with the subject first.",
+        "fr": "Montrer que dans une question en W le mot interrogatif vient en premier et le verbe en second. Montrer que la réponse a aussi le verbe en position 2, avec le sujet en premier.",
+        "de": "Zeigen, dass in der W-Frage das Fragewort zuerst und das Verb an zweiter Stelle steht. Zeigen, dass auch die Antwort das Verb auf Position 2 hat, mit dem Subjekt zuerst."
+      },
+      "explanationDurationS": 110,
+      "examples": [
+        {
+          "text": "Woher kommst du?",
+          "translation": { "en": "Where are you from?", "fr": "D'où viens-tu ?" }
+        },
+        {
+          "text": "Ich komme aus Polen.",
+          "translation": { "en": "I come from Poland.", "fr": "Je viens de Pologne." }
+        },
+        {
+          "text": "Wo wohnt Anna?",
+          "translation": { "en": "Where does Anna live?", "fr": "Où habite Anna ?" }
+        },
+        {
+          "text": "Anna wohnt in Wien.",
+          "translation": { "en": "Anna lives in Vienna.", "fr": "Anna habite à Vienne." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not put the subject before the verb in a question: not Woher du kommst?",
+          "fr": "Ne placez pas le sujet avant le verbe dans la question : pas Woher du kommst ?",
+          "de": "Stelle in der Frage nicht das Subjekt vor das Verb: nicht Woher du kommst?"
+        },
+        {
+          "en": "The verb ending must match the subject: ich komme, du kommst.",
+          "fr": "La terminaison du verbe doit correspondre au sujet : ich komme, du kommst.",
+          "de": "Die Verbendung muss zum Subjekt passen: ich komme, du kommst."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-v-order",
+          "type": "grammar_word_order",
+          "itemCount": 6,
+          "ruleIds": ["rule-verb-q", "rule-verb-a"],
+          "estimatedDurationS": 120
+        },
+        {
+          "id": "ex-v-gap",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-verb-q", "rule-verb-a"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-v-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 4,
+          "ruleIds": ["rule-verb-q", "rule-verb-a"],
+          "estimatedDurationS": 100
+        }
+      ]
+    }
+  ],
+  "newVerbs": [
+    { "infinitive": "kommen", "translations": { "en": "to come", "fr": "venir" } },
+    { "infinitive": "wohnen", "translations": { "en": "to live", "fr": "habiter" } },
+    { "infinitive": "heißen", "translations": { "en": "to be called", "fr": "s'appeler" } },
+    { "infinitive": "lernen", "translations": { "en": "to learn", "fr": "apprendre" } },
+    { "infinitive": "machen", "translations": { "en": "to do", "fr": "faire" } }
+  ],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-wh",
+        "type": "grammar_gap_typing",
+        "itemCount": 5,
+        "ruleIds": ["rule-words"],
+        "estimatedDurationS": 100,
+        "timeLimitS": 150
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 4,
+        "ruleIds": ["rule-verb-q", "rule-verb-a"],
+        "estimatedDurationS": 100,
+        "timeLimitS": 150
+      },
+      {
+        "pageId": "exam-answer",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["rule-verb-q", "rule-verb-a"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

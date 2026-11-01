@@ -1,0 +1,396 @@
+{
+  "schemaVersion": 2,
+  "id": "de-reading-an-email-from-a-friend",
+  "lang": "de",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Eine E-Mail von einer Freundin lesen",
+  "objective": {
+    "en": "Read a personal email about a move and a new job, follow the news and recognise what the friend asks for (Kannst du mich im Mai besuchen?).",
+    "fr": "Lire un e-mail personnel sur un déménagement et un nouveau travail, suivre les nouvelles et reconnaître ce que l’amie demande (Kannst du mich im Mai besuchen?).",
+    "de": "Eine persönliche E-Mail über einen Umzug und eine neue Arbeit lesen und erkennen, worum die Freundin bittet."
+  },
+  "estimatedMinutes": 8,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T20:20:01.555Z",
+    "inputHashes": {
+      "outline": "c9c46caa944d1466f219535830a5134529da3d5d3c7d64407e1040e37d456009",
+      "brief": "13472e9d328a6c28485de2c0c9f94915ae474a0e4d1a07c9f7f0bac4e73c3f92"
+    }
+  },
+  "kind": "reading",
+  "theme": "relations",
+  "genre": "email",
+  "documents": [
+    {
+      "documentId": "main",
+      "title": null,
+      "meta": ["Von: Mia", "An: Lena", "Betreff: Neuigkeiten aus Leipzig"],
+      "paragraphs": [
+        "Liebe Lena,",
+        "wie geht es dir? Ich habe viele Neuigkeiten! Ich bin letzte Woche nach Leipzig umgezogen. Die neue Wohnung ist klein, aber sehr hell. Sie hat auch einen Balkon.",
+        "Ich habe auch eine neue Stelle. Ich arbeite jetzt in einer Buchhandlung. Die Kollegen sind nett, und die Arbeit gefällt mir sehr. Am Anfang war es nicht leicht, aber jetzt geht es gut.",
+        "Ich vermisse dich und die Abende mit dir! Kannst du mich im Mai besuchen? Du kannst eine Woche bei mir schlafen. Am Wochenende zeige ich dir die Stadt.",
+        "Schreib mir bald! Deine Mia"
+      ],
+      "highlights": [
+        { "keywordId": "umgezogen", "text": "umgezogen" },
+        { "keywordId": "die-stelle", "text": "Stelle" },
+        { "keywordId": "neuigkeiten", "text": "Neuigkeiten" },
+        { "keywordId": "vermissen", "text": "vermisse" },
+        { "keywordId": "besuchen", "text": "besuchen" }
+      ]
+    },
+    {
+      "documentId": "exam",
+      "title": null,
+      "meta": ["Von: Jonas", "Betreff: Samstag"],
+      "paragraphs": [
+        "Hallo Lena,",
+        "ich ziehe am Samstag um! Meine neue Wohnung ist in der Nähe vom Park. Kannst du mir helfen? Meine Freunde kommen um zehn Uhr. Wir tragen die Möbel und trinken danach Kaffee. Ich kaufe Pizza für alle.",
+        "Bis Samstag! Jonas"
+      ],
+      "highlights": []
+    }
+  ],
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "exercise",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "flashcards",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Turn each card to learn the key words of the text.",
+            "fr": "Retournez chaque carte pour découvrir les mots clés du texte.",
+            "de": "Dreh jede Karte um und lerne die Schlüsselwörter des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_flashcards",
+              "itemId": "cards",
+              "keywordIds": ["umgezogen", "die-stelle", "neuigkeiten", "vermissen", "besuchen"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "matching",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each key word with its meaning.",
+            "fr": "Associez chaque mot clé à son sens.",
+            "de": "Ordne jedem Schlüsselwort seine Bedeutung zu."
+          },
+          "items": [
+            {
+              "type": "reading_keyword_matching",
+              "itemId": "matching",
+              "keywordIds": ["umgezogen", "die-stelle", "neuigkeiten", "vermissen", "besuchen"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skim",
+      "stage": "skim",
+      "role": "exercise",
+      "label": { "en": "Skim", "fr": "Survol", "de": "Überfliegen" },
+      "pages": [
+        {
+          "pageId": "skim",
+          "estimatedDurationS": 90,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Look over the document quickly. When the time is up it is put away; then answer the question.",
+            "fr": "Parcourez rapidement le document. À la fin du temps, il disparaît ; répondez ensuite à la question.",
+            "de": "Überfliege das Dokument. Wenn die Zeit um ist, verschwindet es; beantworte dann die Frage."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "skim-document",
+              "documentId": "main",
+              "view": "skim",
+              "skimSeconds": 70
+            },
+            {
+              "type": "reading_skim_choice",
+              "itemId": "skim-question",
+              "focus": "purpose",
+              "question": "Warum schreibt Mia an Lena?",
+              "options": [
+                { "optionId": "o1", "text": "Sie möchte eine Wohnung mieten." },
+                {
+                  "optionId": "o2",
+                  "text": "Sie erzählt von ihrem Leben und bittet um einen Besuch."
+                },
+                { "optionId": "o3", "text": "Sie sagt eine Party ab." },
+                { "optionId": "o4", "text": "Sie sucht eine neue Arbeit." }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "Mia tells her news (Umzug, Stelle) and asks: Kannst du mich im Mai besuchen? She already has a flat and a job.",
+                "fr": "Mia raconte ses nouvelles (Umzug, Stelle) et demande : Kannst du mich im Mai besuchen ? Elle a déjà un appartement et un travail.",
+                "de": "Mia erzählt Neuigkeiten (Umzug, Stelle) und fragt: Kannst du mich im Mai besuchen? Wohnung und Arbeit hat sie schon."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detail",
+      "stage": "detail",
+      "role": "exercise",
+      "label": { "en": "Detail", "fr": "Détails", "de": "Details" },
+      "pages": [
+        {
+          "pageId": "detail",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the document carefully and answer the questions.",
+            "fr": "Lisez le document attentivement et répondez aux questions.",
+            "de": "Lies das Dokument genau und beantworte die Fragen."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "detail-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-move",
+              "question": "Wann ist Mia nach Leipzig umgezogen?",
+              "options": [
+                { "optionId": "o1", "text": "Im Mai" },
+                { "optionId": "o2", "text": "Letzte Woche" },
+                { "optionId": "o3", "text": "Vor einem Jahr" },
+                { "optionId": "o4", "text": "Am Wochenende" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "Ich bin letzte Woche nach Leipzig umgezogen. May is when Lena should visit.",
+                "fr": "Ich bin letzte Woche nach Leipzig umgezogen. Mai est le mois de la visite de Lena.",
+                "de": "Ich bin letzte Woche nach Leipzig umgezogen. Im Mai soll Lena kommen."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-job",
+              "question": "Wo arbeitet Mia jetzt?",
+              "options": [
+                { "optionId": "o1", "text": "In einem Café" },
+                { "optionId": "o2", "text": "In einer Schule" },
+                { "optionId": "o3", "text": "In einer Buchhandlung" },
+                { "optionId": "o4", "text": "In einem Hotel" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "Ich arbeite jetzt in einer Buchhandlung: she works in a bookshop.",
+                "fr": "Ich arbeite jetzt in einer Buchhandlung : elle travaille dans une librairie.",
+                "de": "Ich arbeite jetzt in einer Buchhandlung."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "q-flat",
+              "statement": "Die neue Wohnung ist groß.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: the flat is klein, aber sehr hell (small, but very bright).",
+                "fr": "Faux : l’appartement est klein, aber sehr hell (petit, mais très lumineux).",
+                "de": "Falsch: Die Wohnung ist klein, aber sehr hell."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-request",
+              "question": "Worum bittet Mia?",
+              "options": [
+                { "optionId": "o1", "text": "Lena soll Geld schicken." },
+                { "optionId": "o2", "text": "Lena soll auch umziehen." },
+                { "optionId": "o3", "text": "Lena soll bald anrufen." },
+                { "optionId": "o4", "text": "Lena soll im Mai nach Leipzig kommen." }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "Kannst du mich im Mai besuchen? is the request. Schreib mir bald! only asks for a reply.",
+                "fr": "Kannst du mich im Mai besuchen? est la demande. Schreib mir bald! demande seulement une réponse.",
+                "de": "Kannst du mich im Mai besuchen? ist die Bitte. Schreib mir bald! bittet nur um eine Antwort."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "structure",
+      "stage": "structure",
+      "role": "exercise",
+      "label": { "en": "Structure", "fr": "Structure", "de": "Aufbau" },
+      "pages": [
+        {
+          "pageId": "structure",
+          "estimatedDurationS": 45,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the information in the order the text gives it.",
+            "fr": "Remettez les informations dans l’ordre du texte.",
+            "de": "Bring die Informationen in die Reihenfolge des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "structure-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_order",
+              "itemId": "order",
+              "pieces": [
+                { "pieceId": "p3", "text": "Mia lädt Lena nach Leipzig ein." },
+                { "pieceId": "p1", "text": "Mia ist nach Leipzig umgezogen." },
+                { "pieceId": "p2", "text": "Mia hat eine neue Stelle." }
+              ],
+              "acceptedOrders": [["p1", "p2", "p3"]],
+              "answerExplanation": {
+                "en": "First the move (Ich bin … umgezogen), then the job (eine neue Stelle), at the end the invitation (Kannst du mich im Mai besuchen?).",
+                "fr": "D’abord le déménagement (Ich bin … umgezogen), puis le travail (eine neue Stelle), à la fin l’invitation (Kannst du mich im Mai besuchen ?).",
+                "de": "Zuerst der Umzug (Ich bin … umgezogen), dann die Arbeit (eine neue Stelle), am Ende die Einladung (Kannst du mich im Mai besuchen?)."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam",
+          "estimatedDurationS": 131,
+          "timeLimitS": 200,
+          "instructions": {
+            "en": "Read the new document and answer the questions. No help this time.",
+            "fr": "Lisez le nouveau document et répondez aux questions. Cette fois, sans aide.",
+            "de": "Lies das neue Dokument und beantworte die Fragen. Diesmal ohne Hilfe."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "exam-document",
+              "documentId": "exam",
+              "view": "exam",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-request",
+              "question": "Was möchte Jonas von Lena?",
+              "options": [
+                { "optionId": "o1", "text": "Sie soll ihn besuchen." },
+                { "optionId": "o2", "text": "Sie soll ihm beim Umzug helfen." },
+                { "optionId": "o3", "text": "Sie soll Pizza kaufen." },
+                { "optionId": "o4", "text": "Sie soll eine Wohnung suchen." }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "Kannst du mir helfen? Jonas is moving and needs help.",
+                "fr": "Kannst du mir helfen ? Jonas déménage et a besoin d’aide.",
+                "de": "Kannst du mir helfen? Jonas zieht um und braucht Hilfe."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-day",
+              "question": "An welchem Tag ist der Umzug?",
+              "options": [
+                { "optionId": "o1", "text": "Am Freitag" },
+                { "optionId": "o2", "text": "Am Sonntag" },
+                { "optionId": "o3", "text": "Am Samstag" },
+                { "optionId": "o4", "text": "Am Montag" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "Ich ziehe am Samstag um! The subject line says Samstag too.",
+                "fr": "Ich ziehe am Samstag um ! L’objet du message dit aussi Samstag.",
+                "de": "Ich ziehe am Samstag um! Auch im Betreff steht Samstag."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-time",
+              "question": "Um wie viel Uhr kommen die Freunde?",
+              "options": [
+                { "optionId": "o1", "text": "Um neun Uhr" },
+                { "optionId": "o2", "text": "Um zehn Uhr" },
+                { "optionId": "o3", "text": "Um zwölf Uhr" },
+                { "optionId": "o4", "text": "Um zwei Uhr" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "Meine Freunde kommen um zehn Uhr.",
+                "fr": "Meine Freunde kommen um zehn Uhr.",
+                "de": "Meine Freunde kommen um zehn Uhr."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-where",
+              "question": "Wo ist die neue Wohnung?",
+              "options": [
+                { "optionId": "o1", "text": "Neben der Schule" },
+                { "optionId": "o2", "text": "Am Bahnhof" },
+                { "optionId": "o3", "text": "In der Nähe vom Park" },
+                { "optionId": "o4", "text": "Im Zentrum von Leipzig" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "In der Nähe vom Park means near the park.",
+                "fr": "In der Nähe vom Park veut dire près du parc.",
+                "de": "In der Nähe vom Park heißt: nicht weit vom Park."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-pizza",
+              "statement": "Jonas kauft Pizza für alle.",
+              "answer": "true",
+              "answerExplanation": {
+                "en": "True: Ich kaufe Pizza für alle.",
+                "fr": "Vrai : Ich kaufe Pizza für alle.",
+                "de": "Richtig: Ich kaufe Pizza für alle."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

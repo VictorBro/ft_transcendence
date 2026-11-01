@@ -1,0 +1,590 @@
+{
+  "schemaVersion": 2,
+  "id": "de-stages-of-life",
+  "lang": "de",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Lebensphasen",
+  "objective": {
+    "en": "Name the stages of a life with their article: birth, childhood, youth, old age.",
+    "fr": "Nommer les étapes de la vie avec leur article : naissance, enfance, jeunesse, vieillesse.",
+    "de": "Die Abschnitte des Lebens mit Artikel nennen: Geburt, Kindheit, Jugend, Alter."
+  },
+  "estimatedMinutes": 20,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T20:20:10.754Z",
+    "inputHashes": { "outline": "fdef5aec6436747f59b47d5b63ff10420ad30d9281e1065d969b65231c777c89" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Twelve words for the stages of a life, from birth to retirement, as listed in the outline entry plus 'das Kind' and 'das Leben'.",
+    "fr": "Douze mots pour les étapes de la vie, de la naissance à la retraite, ceux du plan plus « das Kind » et « das Leben ».",
+    "de": "Zwölf Wörter für die Abschnitte des Lebens von der Geburt bis zur Rente, die aus der Gliederung plus „das Kind“ und „das Leben“."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words fit two groups of six and suit an A2 learner.",
+    "fr": "Douze mots forment deux groupes de six, adaptés à un apprenant A2.",
+    "de": "Zwölf Wörter ergeben zwei Gruppen zu sechs und passen zu A2."
+  },
+  "difficultyBalance": {
+    "en": "Mostly core words; the adjectives and the two retiree words need more care.",
+    "fr": "Surtout des mots de base ; les adjectifs et les deux mots pour retraité demandent plus d'attention.",
+    "de": "Überwiegend Grundwörter; die Adjektive und die beiden Wörter für Rentner brauchen mehr Aufmerksamkeit."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "beginning",
+      "label": {
+        "en": "The beginning of life",
+        "fr": "Le début de la vie",
+        "de": "Der Anfang des Lebens"
+      },
+      "targetIds": ["geburt", "geboren", "baby", "kind", "kindheit", "jugend"],
+      "introduction": {
+        "en": "These words describe the **first years** of a life:\n\n- `die Geburt`\n- `geboren`\n- `das Baby`\n- `das Kind`\n- `die Kindheit`\n- `die Jugend`",
+        "fr": "Ces mots décrivent les **premières années** de la vie :\n\n- `die Geburt`\n- `geboren`\n- `das Baby`\n- `das Kind`\n- `die Kindheit`\n- `die Jugend`",
+        "de": "Diese Wörter beschreiben die **ersten Jahre** eines Lebens:\n\n- `die Geburt`\n- `geboren`\n- `das Baby`\n- `das Kind`\n- `die Kindheit`\n- `die Jugend`"
+      }
+    },
+    {
+      "id": "later",
+      "label": { "en": "Later in life", "fr": "Plus tard dans la vie", "de": "Später im Leben" },
+      "targetIds": ["erwachsen", "alter", "rente", "rentner", "rentnerin", "leben"],
+      "introduction": {
+        "en": "These words belong to the **later stages** of a life:\n\n- `erwachsen`\n- `das Alter`\n- `die Rente`\n- `der Rentner`\n- `die Rentnerin`\n- `das Leben`",
+        "fr": "Ces mots appartiennent aux **étapes suivantes** de la vie :\n\n- `erwachsen`\n- `das Alter`\n- `die Rente`\n- `der Rentner`\n- `die Rentnerin`\n- `das Leben`",
+        "de": "Diese Wörter gehören zu den **späteren Abschnitten** des Lebens:\n\n- `erwachsen`\n- `das Alter`\n- `die Rente`\n- `der Rentner`\n- `die Rentnerin`\n- `das Leben`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "geburt",
+      "term": "Geburt",
+      "translations": { "en": ["birth"], "fr": ["naissance"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Geburt",
+      "examForms": ["die Geburt"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡəˈbʊʁt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Die Geburt war im Mai.",
+        "translation": { "en": "The birth was in May.", "fr": "La naissance a eu lieu en mai." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Geburt is the moment a person is born.",
+        "fr": "Die Geburt est le moment où une personne naît.",
+        "de": "Die Geburt ist der Moment, in dem ein Mensch zur Welt kommt."
+      },
+      "genderExplanation": {
+        "en": "Geburt is feminine, so the article is die.",
+        "fr": "Geburt est féminin : on dit die Geburt.",
+        "de": "Geburt ist feminin, daher lautet der Artikel die."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Die ",
+        "after": " ihres Sohnes war im Mai.",
+        "accepted": { "answers": ["Geburt"] },
+        "referenceTargetIds": ["geburt", "baby", "alter", "rente"],
+        "explanation": {
+          "en": "Only Geburt fits: it is the moment of being born.",
+          "fr": "Seul « Geburt » convient : c'est le moment de la naissance.",
+          "de": "Nur „Geburt“ passt: Es ist der Moment des Geborenwerdens."
+        }
+      },
+      "listeningOptionTargetIds": ["geburt", "geboren", "baby", "jugend"]
+    },
+    {
+      "id": "geboren",
+      "term": "geboren",
+      "translations": { "en": ["born"], "fr": ["né"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "geboren",
+      "examForms": ["geboren"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡəˈboːʁən/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Ich bin in Wien geboren.",
+        "translation": { "en": "I was born in Vienna.", "fr": "Je suis né à Vienne." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Geboren means born and is used with sein: Ich bin geboren.",
+        "fr": "Geboren signifie né et s'emploie avec sein : Ich bin geboren.",
+        "de": "Geboren bedeutet „born“ und steht mit sein: Ich bin geboren."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ich bin 1998 in Wien ",
+        "after": ".",
+        "accepted": { "answers": ["geboren"] },
+        "referenceTargetIds": ["geboren", "geburt", "baby", "kind"],
+        "explanation": {
+          "en": "Only geboren fits after 'Ich bin ... in Wien'.",
+          "fr": "Seul « geboren » convient après « Ich bin ... in Wien ».",
+          "de": "Nur „geboren“ passt nach „Ich bin ... in Wien“."
+        }
+      },
+      "listeningOptionTargetIds": ["geboren", "geburt", "erwachsen", "leben"]
+    },
+    {
+      "id": "baby",
+      "term": "Baby",
+      "translations": { "en": ["baby"], "fr": ["bébé"] },
+      "wordClass": "noun",
+      "genders": ["neuter"],
+      "number": "singular",
+      "teachingForm": "das Baby",
+      "examForms": ["das Baby"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈbeːbi/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Das Baby schläft.",
+        "translation": { "en": "The baby is sleeping.", "fr": "Le bébé dort." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Das Baby is a very young child.",
+        "fr": "Das Baby est un tout jeune enfant.",
+        "de": "Das Baby ist ein ganz kleines Kind."
+      },
+      "genderExplanation": {
+        "en": "Baby is neuter, so the article is das.",
+        "fr": "Baby est neutre : on dit das Baby.",
+        "de": "Baby ist neutral, daher lautet der Artikel das."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Das ",
+        "after": " schläft viel und trinkt Milch.",
+        "accepted": { "answers": ["Baby"] },
+        "referenceTargetIds": ["baby", "rente", "alter", "jugend"],
+        "explanation": {
+          "en": "Only Baby sleeps a lot and drinks milk.",
+          "fr": "Seul « Baby » dort beaucoup et boit du lait.",
+          "de": "Nur ein Baby schläft viel und trinkt Milch."
+        }
+      },
+      "listeningOptionTargetIds": ["baby", "kind", "geburt", "alter"]
+    },
+    {
+      "id": "kind",
+      "term": "Kind",
+      "translations": { "en": ["child"], "fr": ["enfant"] },
+      "wordClass": "noun",
+      "genders": ["neuter"],
+      "number": "singular",
+      "teachingForm": "das Kind",
+      "examForms": ["das Kind"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kɪnt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Das Kind spielt im Garten.",
+        "translation": {
+          "en": "The child is playing in the garden.",
+          "fr": "L'enfant joue dans le jardin."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Das Kind is a young person who is not yet grown up.",
+        "fr": "Das Kind est une jeune personne qui n'est pas encore adulte.",
+        "de": "Das Kind ist ein junger Mensch, der noch nicht erwachsen ist."
+      },
+      "genderExplanation": {
+        "en": "Kind is neuter, so the article is das.",
+        "fr": "Kind est neutre : on dit das Kind.",
+        "de": "Kind ist neutral, daher lautet der Artikel das."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Mein ",
+        "after": " geht schon in die Schule.",
+        "accepted": { "answers": ["Kind"] },
+        "referenceTargetIds": ["kind", "rente", "alter", "geburt"],
+        "explanation": {
+          "en": "Only Kind goes to school.",
+          "fr": "Seul « Kind » va à l'école.",
+          "de": "Nur ein Kind geht in die Schule."
+        }
+      },
+      "listeningOptionTargetIds": ["kind", "kindheit", "baby", "rente"]
+    },
+    {
+      "id": "kindheit",
+      "term": "Kindheit",
+      "translations": { "en": ["childhood"], "fr": ["enfance"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Kindheit",
+      "examForms": ["die Kindheit"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈkɪntˌhaɪt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Meine Kindheit war schön.",
+        "translation": { "en": "My childhood was happy.", "fr": "Mon enfance a été belle." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Kindheit is the time when you are a child.",
+        "fr": "Die Kindheit est le temps où l'on est enfant.",
+        "de": "Die Kindheit ist die Zeit, in der man Kind ist."
+      },
+      "genderExplanation": {
+        "en": "Kindheit is feminine, so the article is die.",
+        "fr": "Kindheit est féminin : on dit die Kindheit.",
+        "de": "Kindheit ist feminin, daher lautet der Artikel die."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "In meiner ",
+        "after": " habe ich viel gespielt.",
+        "accepted": { "answers": ["Kindheit"] },
+        "referenceTargetIds": ["kindheit", "rentner", "alter", "erwachsen"],
+        "explanation": {
+          "en": "Only Kindheit fits 'In meiner ...' and playing a lot.",
+          "fr": "Seul « Kindheit » convient avec « In meiner ... » et jouer beaucoup.",
+          "de": "Nur „Kindheit“ passt zu „In meiner ...“ und zum vielen Spielen."
+        }
+      },
+      "listeningOptionTargetIds": ["kindheit", "kind", "jugend", "geburt"]
+    },
+    {
+      "id": "jugend",
+      "term": "Jugend",
+      "translations": { "en": ["youth"], "fr": ["jeunesse"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Jugend",
+      "examForms": ["die Jugend"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈjuːɡn̩t/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "In meiner Jugend habe ich viel Sport gemacht.",
+        "translation": {
+          "en": "In my youth I did a lot of sport.",
+          "fr": "Dans ma jeunesse, j'ai fait beaucoup de sport."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Jugend is the time between childhood and adulthood.",
+        "fr": "Die Jugend est la période entre l'enfance et l'âge adulte.",
+        "de": "Die Jugend ist die Zeit zwischen Kindheit und Erwachsensein."
+      },
+      "genderExplanation": {
+        "en": "Jugend is feminine, so the article is die.",
+        "fr": "Jugend est féminin : on dit die Jugend.",
+        "de": "Jugend ist feminin, daher lautet der Artikel die."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "In der ",
+        "after": " gehen viele junge Leute abends mit Freunden aus.",
+        "accepted": { "answers": ["Jugend"] },
+        "referenceTargetIds": ["jugend", "rente", "rentnerin", "geboren"],
+        "explanation": {
+          "en": "Only Jugend fits: young people go out with friends.",
+          "fr": "Seul « Jugend » convient : les jeunes sortent avec leurs amis.",
+          "de": "Nur „Jugend“ passt: Junge Leute gehen mit Freunden aus."
+        }
+      },
+      "listeningOptionTargetIds": ["jugend", "kindheit", "alter", "leben"]
+    },
+    {
+      "id": "erwachsen",
+      "term": "erwachsen",
+      "translations": { "en": ["adult", "grown-up"], "fr": ["adulte"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "erwachsen",
+      "examForms": ["erwachsen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɛɐ̯ˈvaksn̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Mein Bruder ist erwachsen.",
+        "translation": { "en": "My brother is an adult.", "fr": "Mon frère est adulte." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Erwachsen describes a person who is no longer a child.",
+        "fr": "Erwachsen décrit une personne qui n'est plus un enfant.",
+        "de": "Erwachsen beschreibt einen Menschen, der kein Kind mehr ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Mein Sohn ist 25 Jahre alt. Er ist schon ",
+        "after": ".",
+        "accepted": { "answers": ["erwachsen"] },
+        "referenceTargetIds": ["erwachsen", "baby", "kind", "geburt"],
+        "explanation": {
+          "en": "Only erwachsen describes a 25-year-old.",
+          "fr": "Seul « erwachsen » décrit une personne de 25 ans.",
+          "de": "Nur „erwachsen“ beschreibt einen 25-Jährigen."
+        }
+      },
+      "listeningOptionTargetIds": ["erwachsen", "geboren", "alter", "jugend"]
+    },
+    {
+      "id": "alter",
+      "term": "Alter",
+      "translations": { "en": ["old age", "age"], "fr": ["vieillesse", "âge"] },
+      "wordClass": "noun",
+      "genders": ["neuter"],
+      "number": "singular",
+      "teachingForm": "das Alter",
+      "examForms": ["das Alter"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈaltɐ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Im Alter hat man mehr Zeit.",
+        "translation": {
+          "en": "In old age you have more time.",
+          "fr": "Quand on est âgé, on a plus de temps."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Das Alter can mean old age or simply a person's age.",
+        "fr": "Das Alter peut signifier la vieillesse ou simplement l'âge d'une personne.",
+        "de": "Das Alter kann „old age“ oder einfach das Lebensalter eines Menschen bedeuten."
+      },
+      "explanation": {
+        "en": "Das Alter is the last stage of life, when people are old.",
+        "fr": "Das Alter est la dernière période de la vie, quand on est âgé.",
+        "de": "Das Alter ist der letzte Abschnitt des Lebens, wenn man alt ist."
+      },
+      "genderExplanation": {
+        "en": "Alter is neuter, so the article is das.",
+        "fr": "Alter est neutre : on dit das Alter.",
+        "de": "Alter ist neutral, daher lautet der Artikel das."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Meine Oma ist 90. Im ",
+        "after": " braucht man oft Hilfe.",
+        "accepted": { "answers": ["Alter"] },
+        "referenceTargetIds": ["alter", "geburt", "baby", "erwachsen"],
+        "explanation": {
+          "en": "Only 'Im Alter' fits for a 90-year-old.",
+          "fr": "Seul « Im Alter » convient pour une personne de 90 ans.",
+          "de": "Nur „Im Alter“ passt zu einer 90-Jährigen."
+        }
+      },
+      "listeningOptionTargetIds": ["alter", "erwachsen", "rente", "leben"]
+    },
+    {
+      "id": "rente",
+      "term": "Rente",
+      "translations": { "en": ["pension"], "fr": ["retraite"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Rente",
+      "examForms": ["die Rente"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʁɛntə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Er bekommt eine kleine Rente.",
+        "translation": { "en": "He gets a small pension.", "fr": "Il touche une petite retraite." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Rente is the money you receive after your working life.",
+        "fr": "Die Rente est l'argent que l'on reçoit après la vie active.",
+        "de": "Die Rente ist das Geld, das man nach dem Arbeitsleben bekommt."
+      },
+      "genderExplanation": {
+        "en": "Rente is feminine, so the article is die.",
+        "fr": "Rente est féminin : on dit die Rente.",
+        "de": "Rente ist feminin, daher lautet der Artikel die."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Mein Vater ist 67. Er bekommt jetzt eine ",
+        "after": " von 1.500 Euro im Monat.",
+        "accepted": { "answers": ["Rente"] },
+        "referenceTargetIds": ["rente", "jugend", "kindheit", "rentner"],
+        "explanation": {
+          "en": "Only Rente is money paid every month after work.",
+          "fr": "Seul « Rente » est de l'argent versé chaque mois après le travail.",
+          "de": "Nur die Rente wird nach der Arbeit jeden Monat gezahlt."
+        }
+      },
+      "listeningOptionTargetIds": ["rente", "rentner", "rentnerin", "alter"]
+    },
+    {
+      "id": "rentner",
+      "term": "Rentner",
+      "translations": { "en": ["retiree (man)", "pensioner"], "fr": ["retraité"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Rentner",
+      "examForms": ["der Rentner"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʁɛntnɐ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mein Opa ist Rentner.",
+        "translation": { "en": "My grandpa is a retiree.", "fr": "Mon grand-père est retraité." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Der Rentner is a man who no longer works and gets a pension.",
+        "fr": "Der Rentner est un homme qui ne travaille plus et touche une retraite.",
+        "de": "Der Rentner ist ein Mann, der nicht mehr arbeitet und eine Rente bekommt."
+      },
+      "genderExplanation": {
+        "en": "Rentner is masculine, so the article is der.",
+        "fr": "Rentner est masculin : on dit der Rentner.",
+        "de": "Rentner ist maskulin, daher lautet der Artikel der."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Herr Braun ist 70 und arbeitet nicht mehr. Er ist ein ",
+        "after": ".",
+        "accepted": { "answers": ["Rentner"] },
+        "referenceTargetIds": ["rentner", "rentnerin", "geburt", "jugend"],
+        "explanation": {
+          "en": "Only Rentner is masculine and fits after 'ein'.",
+          "fr": "Seul « Rentner » est masculin et va après « ein ».",
+          "de": "Nur „Rentner“ ist maskulin und passt nach „ein“."
+        }
+      },
+      "listeningOptionTargetIds": ["rentner", "rentnerin", "rente", "kind"]
+    },
+    {
+      "id": "rentnerin",
+      "term": "Rentnerin",
+      "translations": { "en": ["retiree (woman)"], "fr": ["retraitée"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Rentnerin",
+      "examForms": ["die Rentnerin"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʁɛntnəʁɪn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Meine Oma ist Rentnerin.",
+        "translation": { "en": "My grandma is a retiree.", "fr": "Ma grand-mère est retraitée." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Rentnerin is the feminine form of Rentner: a woman who no longer works.",
+        "fr": "Die Rentnerin est le féminin de Rentner : une femme qui ne travaille plus.",
+        "de": "Die Rentnerin ist die weibliche Form von Rentner: eine Frau, die nicht mehr arbeitet."
+      },
+      "genderExplanation": {
+        "en": "Rentnerin is feminine, so the article is die.",
+        "fr": "Rentnerin est féminin : on dit die Rentnerin.",
+        "de": "Rentnerin ist feminin, daher lautet der Artikel die."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Frau Weber ist 68 und arbeitet nicht mehr. Sie ist eine ",
+        "after": ".",
+        "accepted": { "answers": ["Rentnerin"] },
+        "referenceTargetIds": ["rentnerin", "rentner", "baby", "kindheit"],
+        "explanation": {
+          "en": "Only Rentnerin is feminine and fits after 'eine'.",
+          "fr": "Seul « Rentnerin » est féminin et va après « eine ».",
+          "de": "Nur „Rentnerin“ ist feminin und passt nach „eine“."
+        }
+      },
+      "listeningOptionTargetIds": ["rentnerin", "rentner", "rente", "baby"]
+    },
+    {
+      "id": "leben",
+      "term": "Leben",
+      "translations": { "en": ["life"], "fr": ["vie"] },
+      "wordClass": "noun",
+      "genders": ["neuter"],
+      "number": "singular",
+      "teachingForm": "das Leben",
+      "examForms": ["das Leben"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈleːbn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Das Leben hat viele Phasen.",
+        "translation": { "en": "Life has many stages.", "fr": "La vie a de nombreuses étapes." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Das Leben is the whole time from birth to the end.",
+        "fr": "Das Leben est tout le temps de la naissance à la fin.",
+        "de": "Das Leben ist die ganze Zeit von der Geburt bis zum Ende."
+      },
+      "genderExplanation": {
+        "en": "Leben is neuter, so the article is das.",
+        "fr": "Leben est neutre : on dit das Leben.",
+        "de": "Leben ist neutral, daher lautet der Artikel das."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Mein ganzes ",
+        "after": " habe ich in Berlin gewohnt.",
+        "accepted": { "answers": ["Leben"] },
+        "referenceTargetIds": ["leben", "rente", "geburt", "geboren"],
+        "explanation": {
+          "en": "Only 'Mein ganzes Leben' fits: it means the whole life.",
+          "fr": "Seul « Mein ganzes Leben » convient : toute la vie.",
+          "de": "Nur „Mein ganzes Leben“ passt: das ganze Leben."
+        }
+      },
+      "listeningOptionTargetIds": ["leben", "geburt", "alter", "jugend"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

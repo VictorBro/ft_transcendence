@@ -1,0 +1,248 @@
+{
+  "schemaVersion": 2,
+  "id": "de-time-prepositions-seit-vor-in",
+  "lang": "de",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Zeitangaben mit seit, vor und in",
+  "objective": {
+    "en": "Use seit with the present for how long something has lasted, vor for the past and in for the future: seit zwei Jahren, vor einem Monat, in drei Tagen.",
+    "fr": "Dire depuis combien de temps avec seit et le présent, quand c'était avec vor, et quand ce sera avec in : seit zwei Jahren, vor einem Monat, in drei Tagen.",
+    "de": "Mit seit, vor und in Zeiträume und Zeitpunkte angeben: seit zwei Jahren, vor einem Monat, in drei Tagen."
+  },
+  "estimatedMinutes": 17,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T20:22:19.394Z",
+    "inputHashes": { "outline": "50feb1ee8e4f91a06fee86b84a61f369cfab44a7607e4ef5406dc40100ea2ad7" }
+  },
+  "kind": "grammar",
+  "topic": "prepositions_and_case",
+  "scopeBoundaries": {
+    "en": "Covers seit, vor and in with a period of time in the dative. Excludes seit with a point in time (seit Montag), vor and in with places, and the full forms of the perfect and preterite.",
+    "fr": "Couvre seit, vor et in avec une durée au datif. Exclut seit avec une date (seit Montag), vor et in avec des lieux, et les formes complètes du parfait et du prétérit.",
+    "de": "Behandelt seit, vor und in mit einem Zeitraum im Dativ. Nicht behandelt: seit mit Zeitpunkt (seit Montag), vor und in bei Orten sowie die vollständigen Formen von Perfekt und Präteritum."
+  },
+  "prerequisites": [
+    {
+      "en": "Present tense of regular verbs; time nouns such as das Jahr, der Monat, die Woche, der Tag.",
+      "fr": "Présent des verbes réguliers ; noms de temps comme das Jahr, der Monat, die Woche, der Tag.",
+      "de": "Präsens regelmäßiger Verben; Zeitnomen wie das Jahr, der Monat, die Woche, der Tag."
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-seit",
+      "summary": {
+        "en": "seit + dative + present: how long something has been going on (seit zwei Jahren).",
+        "fr": "seit + datif + présent : depuis combien de temps quelque chose dure (seit zwei Jahren).",
+        "de": "seit + Dativ + Präsens: wie lange etwas schon dauert (seit zwei Jahren)."
+      }
+    },
+    {
+      "id": "rule-vor",
+      "summary": {
+        "en": "vor + dative: how long ago something happened (vor einem Monat).",
+        "fr": "vor + datif : il y a combien de temps quelque chose s'est passé (vor einem Monat).",
+        "de": "vor + Dativ: wie lange etwas zurückliegt (vor einem Monat)."
+      }
+    },
+    {
+      "id": "rule-in",
+      "summary": {
+        "en": "in + dative: when something will happen, counted from now (in drei Tagen).",
+        "fr": "in + datif : quand quelque chose aura lieu, à partir de maintenant (in drei Tagen).",
+        "de": "in + Dativ: wann etwas geschehen wird, von jetzt an gerechnet (in drei Tagen)."
+      }
+    },
+    {
+      "id": "rule-dative-endings",
+      "summary": {
+        "en": "Dative in time phrases: einem (masculine, neuter), einer (feminine), -n on plural nouns (seit drei Tagen).",
+        "fr": "Datif dans les expressions de temps : einem (masculin, neutre), einer (féminin), -n au pluriel (seit drei Tagen).",
+        "de": "Dativ in Zeitangaben: einem (Maskulinum, Neutrum), einer (Femininum), -n beim Plural (seit drei Tagen)."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-seit",
+      "title": {
+        "en": "seit: how long it has lasted",
+        "fr": "seit : depuis combien de temps",
+        "de": "seit: wie lange schon"
+      },
+      "ruleIds": ["rule-seit", "rule-dative-endings"],
+      "explanationPlan": {
+        "en": "Explain seit + dative + present for something that began in the past and still goes on. Show the dative endings of time nouns (einem, einer, plural -n) and the questions Seit wann and Wie lange schon.",
+        "fr": "Expliquer seit + datif + présent pour ce qui a commencé dans le passé et continue. Montrer les terminaisons du datif (einem, einer, pluriel -n) et les questions Seit wann et Wie lange schon.",
+        "de": "seit + Dativ + Präsens erklären für etwas, das in der Vergangenheit begann und noch andauert. Dativendungen der Zeitnomen (einem, einer, Plural -n) und die Fragen Seit wann und Wie lange schon zeigen."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Ich lerne seit zwei Jahren Deutsch.",
+          "translation": {
+            "en": "I have been learning German for two years.",
+            "fr": "J'apprends l'allemand depuis deux ans."
+          }
+        },
+        {
+          "text": "Wir wohnen seit einem Monat in Kassel.",
+          "translation": {
+            "en": "We have lived in Kassel for a month.",
+            "fr": "Nous habitons à Kassel depuis un mois."
+          }
+        },
+        {
+          "text": "Sie arbeitet seit einer Woche bei einer Bank.",
+          "translation": {
+            "en": "She has been working at a bank for a week.",
+            "fr": "Elle travaille dans une banque depuis une semaine."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Use the present with seit, not the perfect: Ich wohne seit einem Jahr hier.",
+          "fr": "Avec seit, utilisez le présent et non le parfait : Ich wohne seit einem Jahr hier.",
+          "de": "Mit seit steht das Präsens, nicht das Perfekt: Ich wohne seit einem Jahr hier."
+        },
+        {
+          "en": "Do not forget the -n on plural nouns: seit zwei Jahren, seit drei Tagen.",
+          "fr": "N'oubliez pas le -n au pluriel : seit zwei Jahren, seit drei Tagen.",
+          "de": "Das -n beim Plural nicht vergessen: seit zwei Jahren, seit drei Tagen."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-seit-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-seit", "rule-dative-endings"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-seit-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-seit", "rule-dative-endings"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-seit-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["rule-seit", "rule-dative-endings"],
+          "estimatedDurationS": 90
+        }
+      ]
+    },
+    {
+      "id": "block-vor-in",
+      "title": {
+        "en": "vor and in: past and future",
+        "fr": "vor et in : passé et futur",
+        "de": "vor und in: Vergangenheit und Zukunft"
+      },
+      "ruleIds": ["rule-vor", "rule-in", "rule-dative-endings"],
+      "explanationPlan": {
+        "en": "Explain vor + dative as ago (past) and in + dative as from now (future, with the present tense). Contrast vor, in and seit with one time span and repeat the dative endings.",
+        "fr": "Expliquer vor + datif comme « il y a » (passé) et in + datif comme « dans » (futur, avec le présent). Comparer vor, in et seit avec une même durée et rappeler les terminaisons du datif.",
+        "de": "vor + Dativ als Rückblick (Vergangenheit) und in + Dativ als Blick nach vorn (Zukunft, mit Präsens) erklären. vor, in und seit mit demselben Zeitraum vergleichen und die Dativendungen wiederholen."
+      },
+      "explanationDurationS": 130,
+      "examples": [
+        {
+          "text": "Vor einem Monat war ich in Wien.",
+          "translation": {
+            "en": "A month ago I was in Vienna.",
+            "fr": "Il y a un mois, j'étais à Vienne."
+          }
+        },
+        {
+          "text": "In drei Tagen beginnt der Kurs.",
+          "translation": {
+            "en": "The course starts in three days.",
+            "fr": "Le cours commence dans trois jours."
+          }
+        },
+        {
+          "text": "Sie hat vor einem Jahr geheiratet.",
+          "translation": {
+            "en": "She got married a year ago.",
+            "fr": "Elle s'est mariée il y a un an."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "vor is not seit: vor means ago and the event is over, seit means it still goes on.",
+          "fr": "vor n'est pas seit : vor signifie « il y a » et c'est fini, seit signifie que cela continue.",
+          "de": "vor ist nicht seit: vor sagt, dass etwas vorbei ist, seit sagt, dass es noch andauert."
+        },
+        {
+          "en": "For the future use in + present, and keep the dative: in einer Stunde, in zwei Tagen.",
+          "fr": "Pour le futur, utilisez in + présent et gardez le datif : in einer Stunde, in zwei Tagen.",
+          "de": "Für die Zukunft gilt in + Präsens mit Dativ: in einer Stunde, in zwei Tagen."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-vi-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-vor", "rule-in", "rule-dative-endings"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-vi-order",
+          "type": "grammar_word_order",
+          "itemCount": 4,
+          "ruleIds": ["rule-vor", "rule-in", "rule-dative-endings"],
+          "estimatedDurationS": 100
+        },
+        {
+          "id": "ex-vi-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 5,
+          "ruleIds": ["rule-vor", "rule-in", "rule-dative-endings"],
+          "estimatedDurationS": 100
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-seit",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-seit", "rule-dative-endings"],
+        "estimatedDurationS": 90,
+        "timeLimitS": 140
+      },
+      {
+        "pageId": "exam-past-future",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-vor", "rule-in", "rule-dative-endings"],
+        "estimatedDurationS": 90,
+        "timeLimitS": 140
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-seit", "rule-vor", "rule-in", "rule-dative-endings"],
+        "estimatedDurationS": 90,
+        "timeLimitS": 150
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

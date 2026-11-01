@@ -1,0 +1,628 @@
+{
+  "schemaVersion": 2,
+  "id": "de-countries-and-languages",
+  "lang": "de",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Länder, Nationalitäten und Sprachen",
+  "objective": {
+    "en": "Name about twelve countries, nationalities and languages, most countries without an article.",
+    "fr": "Nommer une douzaine de pays, nationalités et langues, la plupart des pays sans article.",
+    "de": "Etwa zwölf Länder, Nationalitäten und Sprachen nennen, die meisten Länder ohne Artikel."
+  },
+  "estimatedMinutes": 21,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T20:15:56.151Z",
+    "inputHashes": { "outline": "ac1e7d3239d9e2011f6bd2a837d2f39d4ca3a52bd0ca51250b2a603fe0bc24bd" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Five countries (three without article, two with die), three nationalities with their masculine and feminine forms, and four languages.",
+    "fr": "Cinq pays (trois sans article, deux avec die), trois nationalités avec leurs formes masculine et féminine, et quatre langues.",
+    "de": "Fünf Länder (drei ohne Artikel, zwei mit die), drei Nationalitäten mit männlicher und weiblicher Form und vier Sprachen."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words fit the intent and stay manageable at A1.",
+    "fr": "Douze mots correspondent à l'objectif et restent réalisables en A1.",
+    "de": "Zwölf Wörter passen zum Ziel und sind auf A1 gut zu schaffen."
+  },
+  "difficultyBalance": {
+    "en": "Country names without article and the gendered nationalities are the demanding words; the rest is core.",
+    "fr": "Les noms de pays sans article et les nationalités genrées sont les mots plus difficiles ; le reste est de base.",
+    "de": "Ländernamen ohne Artikel und Nationalitäten mit Genus sind die anspruchsvollen Wörter, der Rest ist Grundwortschatz."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "countries",
+      "label": { "en": "Countries", "fr": "Pays", "de": "Länder" },
+      "targetIds": ["deutschland", "oesterreich", "spanien", "schweiz", "tuerkei"],
+      "introduction": {
+        "en": "Most countries have **no article**: `Deutschland`, `Österreich`, `Spanien`. A few need one: `die Schweiz`, `die Türkei`.",
+        "fr": "La plupart des pays n'ont **pas d'article** : `Deutschland`, `Österreich`, `Spanien`. Quelques-uns en ont un : `die Schweiz`, `die Türkei`.",
+        "de": "Die meisten Länder haben **keinen Artikel**: `Deutschland`, `Österreich`, `Spanien`. Nur wenige brauchen einen: `die Schweiz`, `die Türkei`."
+      }
+    },
+    {
+      "id": "people",
+      "label": { "en": "Nationalities", "fr": "Nationalités", "de": "Nationalitäten" },
+      "targetIds": ["deutsche", "spanierin", "oesterreicher"],
+      "introduction": {
+        "en": "Nationalities have a masculine and a feminine form:\n\n- `der Deutsche` / `die Deutsche`\n- `die Spanierin`\n- `der Österreicher`",
+        "fr": "Les nationalités ont une forme masculine et une forme féminine :\n\n- `der Deutsche` / `die Deutsche`\n- `die Spanierin`\n- `der Österreicher`",
+        "de": "Nationalitäten haben eine männliche und eine weibliche Form:\n\n- `der Deutsche` / `die Deutsche`\n- `die Spanierin`\n- `der Österreicher`"
+      }
+    },
+    {
+      "id": "languages",
+      "label": { "en": "Languages", "fr": "Langues", "de": "Sprachen" },
+      "targetIds": ["deutsch", "spanisch", "englisch", "franzoesisch"],
+      "introduction": {
+        "en": "Languages start with a capital letter and are used **without an article**:\n\n- `Deutsch`\n- `Spanisch`\n- `Englisch`\n- `Französisch`",
+        "fr": "Les langues commencent par une majuscule et s'emploient **sans article** :\n\n- `Deutsch`\n- `Spanisch`\n- `Englisch`\n- `Französisch`",
+        "de": "Sprachen werden großgeschrieben und **ohne Artikel** verwendet:\n\n- `Deutsch`\n- `Spanisch`\n- `Englisch`\n- `Französisch`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "deutschland",
+      "term": "Deutschland",
+      "translations": { "en": ["Germany"], "fr": ["Allemagne"] },
+      "wordClass": "noun",
+      "genders": ["neuter"],
+      "number": "singular",
+      "teachingForm": "Deutschland",
+      "examForms": ["Deutschland"],
+      "articleException": {
+        "en": "Most country names are used without an article.",
+        "fr": "La plupart des noms de pays s'emploient sans article.",
+        "de": "Die meisten Ländernamen stehen ohne Artikel."
+      },
+      "genderVariants": [],
+      "pronunciation": "/ˈdɔʏtʃlant/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ich komme aus Deutschland.",
+        "translation": { "en": "I come from Germany.", "fr": "Je viens d'Allemagne." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Deutschland is a country and is used without an article.",
+        "fr": "Deutschland est un pays et s'emploie sans article.",
+        "de": "Deutschland ist ein Land und steht ohne Artikel."
+      },
+      "genderExplanation": {
+        "en": "Deutschland is neuter (das), but it is used without an article.",
+        "fr": "Deutschland est neutre (das), mais s'emploie sans article.",
+        "de": "Deutschland ist sächlich (das), steht aber ohne Artikel."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Berlin liegt in ",
+        "after": ".",
+        "accepted": { "answers": ["Deutschland"] },
+        "referenceTargetIds": ["deutschland", "oesterreich", "schweiz", "tuerkei"],
+        "explanation": {
+          "en": "Berlin is in Germany.",
+          "fr": "Berlin est en Allemagne.",
+          "de": "Berlin liegt in Deutschland."
+        }
+      },
+      "listeningOptionTargetIds": ["deutschland", "deutsch", "deutsche", "oesterreich"]
+    },
+    {
+      "id": "oesterreich",
+      "term": "Österreich",
+      "translations": { "en": ["Austria"], "fr": ["Autriche"] },
+      "wordClass": "noun",
+      "genders": ["neuter"],
+      "number": "singular",
+      "teachingForm": "Österreich",
+      "examForms": ["Österreich"],
+      "articleException": {
+        "en": "Most country names are used without an article.",
+        "fr": "La plupart des noms de pays s'emploient sans article.",
+        "de": "Die meisten Ländernamen stehen ohne Artikel."
+      },
+      "genderVariants": [],
+      "pronunciation": "/ˈøːstɐʁaɪç/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Wien ist die Hauptstadt von Österreich.",
+        "translation": {
+          "en": "Vienna is the capital of Austria.",
+          "fr": "Vienne est la capitale de l'Autriche."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Österreich is a country and is used without an article.",
+        "fr": "Österreich est un pays et s'emploie sans article.",
+        "de": "Österreich ist ein Land und steht ohne Artikel."
+      },
+      "genderExplanation": {
+        "en": "Österreich is neuter (das), but it is used without an article.",
+        "fr": "Österreich est neutre (das), mais s'emploie sans article.",
+        "de": "Österreich ist sächlich (das), steht aber ohne Artikel."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Wien ist in ",
+        "after": ".",
+        "accepted": { "answers": ["Österreich"] },
+        "referenceTargetIds": ["oesterreich", "deutschland", "schweiz", "tuerkei"],
+        "explanation": {
+          "en": "Vienna is in Austria.",
+          "fr": "Vienne est en Autriche.",
+          "de": "Wien liegt in Österreich."
+        }
+      },
+      "listeningOptionTargetIds": ["oesterreich", "oesterreicher", "deutschland", "schweiz"]
+    },
+    {
+      "id": "spanien",
+      "term": "Spanien",
+      "translations": { "en": ["Spain"], "fr": ["Espagne"] },
+      "wordClass": "noun",
+      "genders": ["neuter"],
+      "number": "singular",
+      "teachingForm": "Spanien",
+      "examForms": ["Spanien"],
+      "articleException": {
+        "en": "Most country names are used without an article.",
+        "fr": "La plupart des noms de pays s'emploient sans article.",
+        "de": "Die meisten Ländernamen stehen ohne Artikel."
+      },
+      "genderVariants": [],
+      "pronunciation": "/ˈʃpaːniən/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Carmen wohnt in Spanien.",
+        "translation": { "en": "Carmen lives in Spain.", "fr": "Carmen habite en Espagne." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Spanien is a country and is used without an article.",
+        "fr": "Spanien est un pays et s'emploie sans article.",
+        "de": "Spanien ist ein Land und steht ohne Artikel."
+      },
+      "genderExplanation": {
+        "en": "Spanien is neuter (das), but it is used without an article.",
+        "fr": "Spanien est neutre (das), mais s'emploie sans article.",
+        "de": "Spanien ist sächlich (das), steht aber ohne Artikel."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Madrid liegt in ",
+        "after": ".",
+        "accepted": { "answers": ["Spanien"] },
+        "referenceTargetIds": ["spanien", "deutschland", "schweiz", "tuerkei"],
+        "explanation": {
+          "en": "Madrid is in Spain.",
+          "fr": "Madrid est en Espagne.",
+          "de": "Madrid liegt in Spanien."
+        }
+      },
+      "listeningOptionTargetIds": ["spanien", "spanisch", "spanierin", "schweiz"]
+    },
+    {
+      "id": "schweiz",
+      "term": "Schweiz",
+      "translations": { "en": ["Switzerland"], "fr": ["Suisse"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Schweiz",
+      "examForms": ["die Schweiz"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/diː ʃvaɪts/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Bern ist die Hauptstadt der Schweiz.",
+        "translation": {
+          "en": "Bern is the capital of Switzerland.",
+          "fr": "Berne est la capitale de la Suisse."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Schweiz is one of the few countries with an article: die.",
+        "fr": "Die Schweiz fait partie des rares pays avec un article : die.",
+        "de": "Die Schweiz gehört zu den wenigen Ländern mit Artikel: die."
+      },
+      "genderExplanation": {
+        "en": "Schweiz is feminine, so the article is die.",
+        "fr": "Schweiz est féminin : on dit die Schweiz.",
+        "de": "Schweiz ist feminin, daher lautet der Artikel die."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Bern ist in der ",
+        "after": ".",
+        "accepted": { "answers": ["Schweiz"] },
+        "referenceTargetIds": ["schweiz", "deutschland", "oesterreich", "tuerkei"],
+        "explanation": {
+          "en": "Bern is in Switzerland.",
+          "fr": "Berne est en Suisse.",
+          "de": "Bern liegt in der Schweiz."
+        }
+      },
+      "listeningOptionTargetIds": ["schweiz", "tuerkei", "spanien", "oesterreich"]
+    },
+    {
+      "id": "tuerkei",
+      "term": "Türkei",
+      "translations": { "en": ["Turkey"], "fr": ["Turquie"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Türkei",
+      "examForms": ["die Türkei"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/diː tʏʁˈkaɪ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Istanbul ist eine Stadt in der Türkei.",
+        "translation": {
+          "en": "Istanbul is a city in Turkey.",
+          "fr": "Istanbul est une ville de Turquie."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Türkei is one of the few countries with an article: die.",
+        "fr": "Die Türkei fait partie des rares pays avec un article : die.",
+        "de": "Die Türkei gehört zu den wenigen Ländern mit Artikel: die."
+      },
+      "genderExplanation": {
+        "en": "Türkei is feminine, so the article is die.",
+        "fr": "Türkei est féminin : on dit die Türkei.",
+        "de": "Türkei ist feminin, daher lautet der Artikel die."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Istanbul liegt in der ",
+        "after": ".",
+        "accepted": { "answers": ["Türkei"] },
+        "referenceTargetIds": ["tuerkei", "deutschland", "oesterreich", "schweiz"],
+        "explanation": {
+          "en": "Istanbul is in Turkey.",
+          "fr": "Istanbul est en Turquie.",
+          "de": "Istanbul liegt in der Türkei."
+        }
+      },
+      "listeningOptionTargetIds": ["tuerkei", "schweiz", "spanien", "deutschland"]
+    },
+    {
+      "id": "deutsche",
+      "term": "Deutsche",
+      "translations": { "en": ["German (person)"], "fr": ["Allemand ou Allemande"] },
+      "wordClass": "noun",
+      "genders": ["masculine", "feminine"],
+      "number": "singular",
+      "teachingForm": "der Deutsche",
+      "examForms": ["der Deutsche", "die Deutsche"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/deːɐ̯ ˈdɔʏtʃə/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Lena ist Deutsche.",
+        "translation": { "en": "Lena is German.", "fr": "Lena est allemande." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A German man is der Deutsche, a German woman is die Deutsche.",
+        "fr": "Un Allemand se dit der Deutsche, une Allemande die Deutsche.",
+        "de": "Ein Mann heißt der Deutsche, eine Frau die Deutsche."
+      },
+      "genderExplanation": {
+        "en": "Both genders are possible: der Deutsche (man) and die Deutsche (woman).",
+        "fr": "Les deux genres existent : der Deutsche (homme) et die Deutsche (femme).",
+        "de": "Beide Genera sind möglich: der Deutsche (Mann) und die Deutsche (Frau)."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Lena kommt aus Berlin. Sie ist ",
+        "after": ".",
+        "accepted": { "answers": ["Deutsche"] },
+        "referenceTargetIds": ["deutsche", "spanierin", "oesterreicher", "spanien"],
+        "explanation": {
+          "en": "Lena comes from Berlin, so she is German.",
+          "fr": "Lena vient de Berlin, donc elle est allemande.",
+          "de": "Lena kommt aus Berlin, also ist sie Deutsche."
+        }
+      },
+      "listeningOptionTargetIds": ["deutsche", "deutsch", "deutschland", "spanierin"]
+    },
+    {
+      "id": "spanierin",
+      "term": "Spanierin",
+      "translations": { "en": ["Spanish woman"], "fr": ["Espagnole"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Spanierin",
+      "examForms": ["die Spanierin"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/diː ˈʃpaːniəʁɪn/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Carmen ist Spanierin.",
+        "translation": { "en": "Carmen is Spanish.", "fr": "Carmen est espagnole." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Spanierin is a woman from Spain; the ending -in marks the feminine.",
+        "fr": "Die Spanierin est une femme d'Espagne ; la terminaison -in marque le féminin.",
+        "de": "Die Spanierin ist eine Frau aus Spanien; die Endung -in zeigt das Femininum."
+      },
+      "genderExplanation": {
+        "en": "Spanierin ends in -in, so it is feminine: die Spanierin.",
+        "fr": "Spanierin se termine par -in, donc féminin : die Spanierin.",
+        "de": "Spanierin endet auf -in, ist also feminin: die Spanierin."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Carmen kommt aus Madrid. Sie ist ",
+        "after": ".",
+        "accepted": { "answers": ["Spanierin"] },
+        "referenceTargetIds": ["spanierin", "deutsche", "oesterreicher", "spanisch"],
+        "explanation": {
+          "en": "Carmen is a woman from Madrid, so she is Spanish.",
+          "fr": "Carmen est une femme de Madrid, donc elle est espagnole.",
+          "de": "Carmen kommt aus Madrid, also ist sie Spanierin."
+        }
+      },
+      "listeningOptionTargetIds": ["spanierin", "spanien", "spanisch", "deutsche"]
+    },
+    {
+      "id": "oesterreicher",
+      "term": "Österreicher",
+      "translations": { "en": ["Austrian man"], "fr": ["Autrichien"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Österreicher",
+      "examForms": ["der Österreicher"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/deːɐ̯ ˈøːstɐʁaɪçɐ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Herr Huber ist Österreicher.",
+        "translation": { "en": "Mr Huber is Austrian.", "fr": "M. Huber est autrichien." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Der Österreicher is a man from Austria.",
+        "fr": "Der Österreicher est un homme d'Autriche.",
+        "de": "Der Österreicher ist ein Mann aus Österreich."
+      },
+      "genderExplanation": {
+        "en": "Österreicher is masculine, so the article is der.",
+        "fr": "Österreicher est masculin : on dit der Österreicher.",
+        "de": "Österreicher ist maskulin, daher lautet der Artikel der."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Herr Huber kommt aus Wien. Er ist ",
+        "after": ".",
+        "accepted": { "answers": ["Österreicher"] },
+        "referenceTargetIds": ["oesterreicher", "deutsche", "spanierin", "oesterreich"],
+        "explanation": {
+          "en": "Mr Huber comes from Vienna, so he is Austrian.",
+          "fr": "M. Huber vient de Vienne, donc il est autrichien.",
+          "de": "Herr Huber kommt aus Wien, also ist er Österreicher."
+        }
+      },
+      "listeningOptionTargetIds": ["oesterreicher", "oesterreich", "deutsche", "spanierin"]
+    },
+    {
+      "id": "deutsch",
+      "term": "Deutsch",
+      "translations": { "en": ["German (language)"], "fr": ["l'allemand"] },
+      "wordClass": "noun",
+      "genders": ["neuter"],
+      "number": "singular",
+      "teachingForm": "Deutsch",
+      "examForms": ["Deutsch"],
+      "articleException": {
+        "en": "Language names are used without an article.",
+        "fr": "Les noms de langues s'emploient sans article.",
+        "de": "Sprachnamen stehen ohne Artikel."
+      },
+      "genderVariants": [],
+      "pronunciation": "/dɔʏtʃ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ich lerne Deutsch.",
+        "translation": { "en": "I am learning German.", "fr": "J'apprends l'allemand." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Deutsch is the language of Germany; it has no article.",
+        "fr": "Deutsch est la langue de l'Allemagne ; elle n'a pas d'article.",
+        "de": "Deutsch ist die Sprache Deutschlands; sie steht ohne Artikel."
+      },
+      "genderExplanation": {
+        "en": "Deutsch is neuter (das), but it is used without an article.",
+        "fr": "Deutsch est neutre (das), mais s'emploie sans article.",
+        "de": "Deutsch ist sächlich (das), steht aber ohne Artikel."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "In Berlin spricht man ",
+        "after": ".",
+        "accepted": { "answers": ["Deutsch"] },
+        "referenceTargetIds": ["deutsch", "spanisch", "englisch", "franzoesisch"],
+        "explanation": {
+          "en": "In Berlin people speak German.",
+          "fr": "À Berlin, on parle allemand.",
+          "de": "In Berlin spricht man Deutsch."
+        }
+      },
+      "listeningOptionTargetIds": ["deutsch", "deutsche", "deutschland", "englisch"]
+    },
+    {
+      "id": "spanisch",
+      "term": "Spanisch",
+      "translations": { "en": ["Spanish (language)"], "fr": ["l'espagnol"] },
+      "wordClass": "noun",
+      "genders": ["neuter"],
+      "number": "singular",
+      "teachingForm": "Spanisch",
+      "examForms": ["Spanisch"],
+      "articleException": {
+        "en": "Language names are used without an article.",
+        "fr": "Les noms de langues s'emploient sans article.",
+        "de": "Sprachnamen stehen ohne Artikel."
+      },
+      "genderVariants": [],
+      "pronunciation": "/ˈʃpaːnɪʃ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Carmen spricht Spanisch.",
+        "translation": { "en": "Carmen speaks Spanish.", "fr": "Carmen parle espagnol." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Spanisch is the language of Spain; it has no article.",
+        "fr": "Spanisch est la langue de l'Espagne ; elle n'a pas d'article.",
+        "de": "Spanisch ist die Sprache Spaniens; sie steht ohne Artikel."
+      },
+      "genderExplanation": {
+        "en": "Spanisch is neuter (das), but it is used without an article.",
+        "fr": "Spanisch est neutre (das), mais s'emploie sans article.",
+        "de": "Spanisch ist sächlich (das), steht aber ohne Artikel."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "In Madrid spricht man ",
+        "after": ".",
+        "accepted": { "answers": ["Spanisch"] },
+        "referenceTargetIds": ["spanisch", "deutsch", "englisch", "franzoesisch"],
+        "explanation": {
+          "en": "In Madrid people speak Spanish.",
+          "fr": "À Madrid, on parle espagnol.",
+          "de": "In Madrid spricht man Spanisch."
+        }
+      },
+      "listeningOptionTargetIds": ["spanisch", "spanien", "spanierin", "englisch"]
+    },
+    {
+      "id": "englisch",
+      "term": "Englisch",
+      "translations": { "en": ["English (language)"], "fr": ["l'anglais"] },
+      "wordClass": "noun",
+      "genders": ["neuter"],
+      "number": "singular",
+      "teachingForm": "Englisch",
+      "examForms": ["Englisch"],
+      "articleException": {
+        "en": "Language names are used without an article.",
+        "fr": "Les noms de langues s'emploient sans article.",
+        "de": "Sprachnamen stehen ohne Artikel."
+      },
+      "genderVariants": [],
+      "pronunciation": "/ˈɛŋlɪʃ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ich spreche ein bisschen Englisch.",
+        "translation": { "en": "I speak a little English.", "fr": "Je parle un peu anglais." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Englisch is the language of England; it has no article.",
+        "fr": "Englisch est la langue de l'Angleterre ; elle n'a pas d'article.",
+        "de": "Englisch ist die Sprache Englands; sie steht ohne Artikel."
+      },
+      "genderExplanation": {
+        "en": "Englisch is neuter (das), but it is used without an article.",
+        "fr": "Englisch est neutre (das), mais s'emploie sans article.",
+        "de": "Englisch ist sächlich (das), steht aber ohne Artikel."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "In London spricht man ",
+        "after": ".",
+        "accepted": { "answers": ["Englisch"] },
+        "referenceTargetIds": ["englisch", "deutsch", "spanisch", "franzoesisch"],
+        "explanation": {
+          "en": "In London people speak English.",
+          "fr": "À Londres, on parle anglais.",
+          "de": "In London spricht man Englisch."
+        }
+      },
+      "listeningOptionTargetIds": ["englisch", "franzoesisch", "deutsch", "spanisch"]
+    },
+    {
+      "id": "franzoesisch",
+      "term": "Französisch",
+      "translations": { "en": ["French (language)"], "fr": ["le français"] },
+      "wordClass": "noun",
+      "genders": ["neuter"],
+      "number": "singular",
+      "teachingForm": "Französisch",
+      "examForms": ["Französisch"],
+      "articleException": {
+        "en": "Language names are used without an article.",
+        "fr": "Les noms de langues s'emploient sans article.",
+        "de": "Sprachnamen stehen ohne Artikel."
+      },
+      "genderVariants": [],
+      "pronunciation": "/fʁanˈtsøːzɪʃ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Wir lernen Französisch.",
+        "translation": { "en": "We are learning French.", "fr": "Nous apprenons le français." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Französisch is the language of France; it has no article.",
+        "fr": "Französisch est la langue de la France ; elle n'a pas d'article.",
+        "de": "Französisch ist die Sprache Frankreichs; sie steht ohne Artikel."
+      },
+      "genderExplanation": {
+        "en": "Französisch is neuter (das), but it is used without an article.",
+        "fr": "Französisch est neutre (das), mais s'emploie sans article.",
+        "de": "Französisch ist sächlich (das), steht aber ohne Artikel."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "In Paris spricht man ",
+        "after": ".",
+        "accepted": { "answers": ["Französisch"] },
+        "referenceTargetIds": ["franzoesisch", "deutsch", "spanisch", "englisch"],
+        "explanation": {
+          "en": "In Paris people speak French.",
+          "fr": "À Paris, on parle français.",
+          "de": "In Paris spricht man Französisch."
+        }
+      },
+      "listeningOptionTargetIds": ["franzoesisch", "englisch", "spanisch", "deutsch"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

@@ -1,0 +1,1187 @@
+{
+  "schemaVersion": 2,
+  "id": "de-asking-how-someone-is",
+  "lang": "de",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Fragen, wie es jemandem geht",
+  "objective": {
+    "en": "Ask with du or Sie how someone is, and answer politely: Wie geht es Ihnen? Wie geht’s dir? Danke, gut. Es geht. Und Ihnen?",
+    "fr": "Demander avec du ou Sie comment va quelqu’un et répondre poliment : Wie geht es Ihnen ? Wie geht’s dir ? Danke, gut. Es geht. Und Ihnen ?",
+    "de": "Mit du oder Sie fragen, wie es jemandem geht, und passend antworten: Wie geht es Ihnen? Wie geht’s dir? Danke, gut. Es geht. Und Ihnen?"
+  },
+  "estimatedMinutes": 17,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T20:18:29.066Z",
+    "inputHashes": {
+      "outline": "a5bc37ee4e4fef04c08396d6b00044317355ecfde7ed9c7c612538a6628ad458",
+      "brief": "e9e96c0ce853555736aa6ce1fac6f71cbfc09fd72637446cdd268facfacc02e7"
+    }
+  },
+  "kind": "functions",
+  "theme": "relations",
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "presentation",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "cards-expressions",
+          "estimatedDurationS": 72,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Recall each expression, then turn the card to check it.",
+            "fr": "Rappelez-vous chaque expression, puis retournez la carte pour vérifier.",
+            "de": "Erinnere dich an jeden Ausdruck und dreh dann die Karte um."
+          },
+          "items": [
+            {
+              "type": "function_flashcards",
+              "itemId": "cards-expressions",
+              "side": "expressions",
+              "ids": [
+                "wie-geht-es-ihnen",
+                "wie-gehts-dir",
+                "danke-gut",
+                "es-geht",
+                "und-ihnen",
+                "und-dir"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue",
+      "stage": "dialogue",
+      "role": "presentation",
+      "label": { "en": "Dialogue", "fr": "Dialogue", "de": "Dialog" },
+      "pages": [
+        {
+          "pageId": "dialogue",
+          "estimatedDurationS": 140,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read and listen. Turn a line to see its translation and a note.",
+            "fr": "Lisez et écoutez. Retournez une réplique pour voir sa traduction et une remarque.",
+            "de": "Lies und hör zu. Dreh eine Zeile um, um Übersetzung und Hinweis zu sehen."
+          },
+          "items": [
+            {
+              "type": "function_dialogue",
+              "itemId": "dialogue",
+              "lines": [
+                {
+                  "lineId": "line-1",
+                  "roleId": "lehrer",
+                  "text": "Guten Morgen, Mia. Wie geht’s dir?",
+                  "translation": {
+                    "en": "Good morning, Mia. How are you?",
+                    "fr": "Bonjour, Mia. Comment vas-tu ?"
+                  },
+                  "note": {
+                    "en": "The teacher says du to the student.",
+                    "fr": "Le professeur tutoie l’élève.",
+                    "de": "Der Lehrer duzt die Schülerin."
+                  },
+                  "expressionIds": ["wie-gehts-dir"]
+                },
+                {
+                  "lineId": "line-2",
+                  "roleId": "schuelerin",
+                  "text": "Guten Morgen, Herr Weber. Danke, gut. Und Ihnen?",
+                  "translation": {
+                    "en": "Good morning, Mr Weber. Fine, thanks. And you?",
+                    "fr": "Bonjour, Monsieur Weber. Bien, merci. Et vous ?"
+                  },
+                  "note": {
+                    "en": "Mia answers, then asks back with Sie: Und Ihnen?",
+                    "fr": "Mia répond, puis retourne la question avec Sie : Und Ihnen ?",
+                    "de": "Mia antwortet und fragt dann mit Sie zurück: Und Ihnen?"
+                  },
+                  "expressionIds": ["danke-gut", "und-ihnen"]
+                },
+                {
+                  "lineId": "line-3",
+                  "roleId": "lehrer",
+                  "text": "Es geht. Ich habe heute viel Arbeit.",
+                  "translation": {
+                    "en": "So-so. I have a lot of work today.",
+                    "fr": "Comme ci, comme ça. J’ai beaucoup de travail aujourd’hui."
+                  },
+                  "note": {
+                    "en": "Es geht. means the day is not easy.",
+                    "fr": "Es geht. veut dire que la journée n’est pas facile.",
+                    "de": "Es geht. heißt: Der Tag ist nicht leicht."
+                  },
+                  "expressionIds": ["es-geht"]
+                },
+                {
+                  "lineId": "line-4",
+                  "roleId": "schuelerin",
+                  "text": "Oh, schade. Bis später, Herr Weber!",
+                  "translation": {
+                    "en": "Oh, too bad. See you later, Mr Weber!",
+                    "fr": "Oh, dommage. À tout à l’heure, Monsieur Weber !"
+                  },
+                  "note": {
+                    "en": "Bis später! means see you later.",
+                    "fr": "Bis später ! veut dire à tout à l’heure.",
+                    "de": "Bis später! sagt man zum baldigen Wiedersehen."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-5",
+                  "roleId": "lehrer",
+                  "text": "Bis später, Mia.",
+                  "translation": { "en": "See you later, Mia.", "fr": "À tout à l’heure, Mia." },
+                  "note": {
+                    "en": "The teacher repeats the farewell.",
+                    "fr": "Le professeur répète l’au revoir.",
+                    "de": "Der Lehrer wiederholt den Abschied."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-6",
+                  "roleId": "schuelerin",
+                  "text": "Hallo, Herr Weber. Wie geht es Ihnen jetzt?",
+                  "translation": {
+                    "en": "Hello, Mr Weber. How are you now?",
+                    "fr": "Bonjour, Monsieur Weber. Comment allez-vous maintenant ?"
+                  },
+                  "note": {
+                    "en": "Later, Mia asks politely with Sie.",
+                    "fr": "Plus tard, Mia demande poliment avec Sie.",
+                    "de": "Später fragt Mia höflich mit Sie."
+                  },
+                  "expressionIds": ["wie-geht-es-ihnen"]
+                },
+                {
+                  "lineId": "line-7",
+                  "roleId": "lehrer",
+                  "text": "Danke, besser. Und dir?",
+                  "translation": {
+                    "en": "Thanks, better. And you?",
+                    "fr": "Merci, mieux. Et toi ?"
+                  },
+                  "note": {
+                    "en": "The teacher asks back with du: Und dir?",
+                    "fr": "Le professeur retourne la question avec du : Und dir ?",
+                    "de": "Der Lehrer fragt mit du zurück: Und dir?"
+                  },
+                  "expressionIds": ["und-dir"]
+                },
+                {
+                  "lineId": "line-8",
+                  "roleId": "schuelerin",
+                  "text": "Mir geht es gut. Bis morgen!",
+                  "translation": {
+                    "en": "I’m fine. See you tomorrow!",
+                    "fr": "Je vais bien. À demain !"
+                  },
+                  "note": {
+                    "en": "Mir geht es gut. is another way to say you are fine.",
+                    "fr": "Mir geht es gut. est une autre façon de dire que l’on va bien.",
+                    "de": "Mir geht es gut. ist eine andere Art zu sagen, dass es einem gut geht."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-9",
+                  "roleId": "lehrer",
+                  "text": "Bis morgen, Mia.",
+                  "translation": { "en": "See you tomorrow, Mia.", "fr": "À demain, Mia." },
+                  "note": {
+                    "en": "The teacher answers with the same farewell.",
+                    "fr": "Le professeur répond avec le même au revoir.",
+                    "de": "Der Lehrer antwortet mit demselben Abschied."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-10",
+                  "roleId": "schuelerin",
+                  "text": "Auf Wiedersehen, Herr Weber!",
+                  "translation": {
+                    "en": "Goodbye, Mr Weber!",
+                    "fr": "Au revoir, Monsieur Weber !"
+                  },
+                  "note": {
+                    "en": "Auf Wiedersehen is the polite goodbye.",
+                    "fr": "Auf Wiedersehen est l’au revoir poli.",
+                    "de": "Auf Wiedersehen ist der höfliche Abschied."
+                  },
+                  "expressionIds": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "match-expressions-1",
+          "estimatedDurationS": 72,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each expression with its translation.",
+            "fr": "Associez chaque expression à sa traduction.",
+            "de": "Ordne jedem Ausdruck seine Übersetzung zu."
+          },
+          "items": [
+            {
+              "type": "function_matching",
+              "itemId": "match-expressions-1",
+              "side": "expressions",
+              "pairs": [
+                {
+                  "id": "wie-geht-es-ihnen",
+                  "answerExplanation": {
+                    "en": "Wie geht es Ihnen? is the formal question (Sie).",
+                    "fr": "Wie geht es Ihnen ? est la question de politesse (Sie).",
+                    "de": "Wie geht es Ihnen? ist die höfliche Frage (Sie)."
+                  }
+                },
+                {
+                  "id": "wie-gehts-dir",
+                  "answerExplanation": {
+                    "en": "Wie geht’s dir? is the informal question (du).",
+                    "fr": "Wie geht’s dir ? est la question familière (du).",
+                    "de": "Wie geht’s dir? ist die lockere Frage (du)."
+                  }
+                },
+                {
+                  "id": "danke-gut",
+                  "answerExplanation": {
+                    "en": "Danke, gut. is the usual positive answer.",
+                    "fr": "Danke, gut. est la réponse positive habituelle.",
+                    "de": "Danke, gut. ist die übliche positive Antwort."
+                  }
+                },
+                {
+                  "id": "es-geht",
+                  "answerExplanation": {
+                    "en": "Es geht. means so-so.",
+                    "fr": "Es geht. veut dire comme ci, comme ça.",
+                    "de": "Es geht. heißt „so là là“."
+                  }
+                },
+                {
+                  "id": "und-ihnen",
+                  "answerExplanation": {
+                    "en": "Und Ihnen? asks back politely (Sie).",
+                    "fr": "Und Ihnen ? retourne la question poliment (Sie).",
+                    "de": "Und Ihnen? fragt höflich zurück (Sie)."
+                  }
+                },
+                {
+                  "id": "und-dir",
+                  "answerExplanation": {
+                    "en": "Und dir? asks back informally (du).",
+                    "fr": "Und dir ? retourne la question familièrement (du).",
+                    "de": "Und dir? fragt locker zurück (du)."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-gaps",
+      "stage": "dialogue_gaps",
+      "role": "exercise",
+      "label": { "en": "Dialogue gaps", "fr": "Dialogue à trous", "de": "Dialoglücken" },
+      "pages": [
+        {
+          "pageId": "gap-1",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-1",
+              "expressionId": "wie-geht-es-ihnen",
+              "context": { "roleId": "lehrer", "text": "Guten Tag, Mia." },
+              "roleId": "schuelerin",
+              "before": "Guten Tag, Herr Weber.",
+              "after": "",
+              "choiceExpressionIds": ["wie-geht-es-ihnen", "wie-gehts-dir", "es-geht", "und-dir"],
+              "answerExplanation": {
+                "en": "Mia says Sie to her teacher: Wie geht es Ihnen?",
+                "fr": "Mia vouvoie son professeur : Wie geht es Ihnen ?",
+                "de": "Mia siezt ihren Lehrer: Wie geht es Ihnen?"
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-2",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-2",
+              "expressionId": "wie-gehts-dir",
+              "context": { "roleId": "schuelerin", "text": "Guten Morgen, Herr Weber!" },
+              "roleId": "lehrer",
+              "before": "Guten Morgen, Mia.",
+              "after": "",
+              "choiceExpressionIds": [
+                "wie-gehts-dir",
+                "wie-geht-es-ihnen",
+                "und-ihnen",
+                "danke-gut"
+              ],
+              "answerExplanation": {
+                "en": "The teacher says du to a student: Wie geht’s dir?",
+                "fr": "Le professeur tutoie l’élève : Wie geht’s dir ?",
+                "de": "Der Lehrer duzt die Schülerin: Wie geht’s dir?"
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-3",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-3",
+              "expressionId": "danke-gut",
+              "context": { "roleId": "lehrer", "text": "Mia, wie geht’s dir?" },
+              "roleId": "schuelerin",
+              "before": "",
+              "after": "Und Ihnen?",
+              "choiceExpressionIds": ["danke-gut", "wie-gehts-dir", "wie-geht-es-ihnen", "und-dir"],
+              "answerExplanation": {
+                "en": "Mia answers first, then asks back: Danke, gut.",
+                "fr": "Mia répond d’abord, puis retourne la question : Danke, gut.",
+                "de": "Mia antwortet zuerst und fragt dann zurück: Danke, gut."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-4",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-4",
+              "expressionId": "es-geht",
+              "context": {
+                "roleId": "schuelerin",
+                "text": "Und, wie geht es Ihnen heute, Herr Weber?"
+              },
+              "roleId": "lehrer",
+              "before": "",
+              "after": "Ich habe viel Arbeit.",
+              "choiceExpressionIds": ["es-geht", "danke-gut", "und-dir", "wie-gehts-dir"],
+              "answerExplanation": {
+                "en": "With a lot of work, the answer is Es geht.",
+                "fr": "Avec beaucoup de travail, la réponse est Es geht.",
+                "de": "Bei viel Arbeit passt die Antwort Es geht."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-5",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-5",
+              "expressionId": "und-ihnen",
+              "context": { "roleId": "lehrer", "text": "Wie geht’s dir, Mia?" },
+              "roleId": "schuelerin",
+              "before": "Gut, danke.",
+              "after": "",
+              "choiceExpressionIds": ["und-ihnen", "und-dir", "wie-gehts-dir", "es-geht"],
+              "answerExplanation": {
+                "en": "Mia says Sie to her teacher, so she asks: Und Ihnen?",
+                "fr": "Mia vouvoie son professeur, elle demande donc : Und Ihnen ?",
+                "de": "Mia siezt ihren Lehrer, also fragt sie: Und Ihnen?"
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-6",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-6",
+              "expressionId": "und-dir",
+              "context": {
+                "roleId": "schuelerin",
+                "text": "Guten Morgen, Herr Weber. Wie geht es Ihnen?"
+              },
+              "roleId": "lehrer",
+              "before": "Danke, gut.",
+              "after": "",
+              "choiceExpressionIds": ["und-dir", "und-ihnen", "es-geht", "wie-geht-es-ihnen"],
+              "answerExplanation": {
+                "en": "The teacher says du to the student, so he asks: Und dir?",
+                "fr": "Le professeur tutoie l’élève, il demande donc : Und dir ?",
+                "de": "Der Lehrer duzt die Schülerin, also fragt er: Und dir?"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "word-order",
+      "stage": "word_order",
+      "role": "exercise",
+      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
+      "pages": [
+        {
+          "pageId": "order-1",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-1",
+              "expressionId": "wie-geht-es-ihnen",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Guten" },
+                { "tokenId": "t2", "text": "Abend," },
+                { "tokenId": "t3", "text": "Herr" },
+                { "tokenId": "t4", "text": "Weber." },
+                { "tokenId": "t5", "text": "Wie" },
+                { "tokenId": "t6", "text": "geht" },
+                { "tokenId": "t7", "text": "es" },
+                { "tokenId": "t8", "text": "Ihnen?" }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8"]],
+              "answerExplanation": {
+                "en": "Greeting first, then the formal question Wie geht es Ihnen?",
+                "fr": "D’abord la salutation, puis la question polie Wie geht es Ihnen ?",
+                "de": "Erst der Gruß, dann die höfliche Frage Wie geht es Ihnen?"
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-2",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-2",
+              "expressionId": "wie-gehts-dir",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Hallo," },
+                { "tokenId": "t2", "text": "Lena!" },
+                { "tokenId": "t3", "text": "Wie" },
+                { "tokenId": "t4", "text": "geht’s" },
+                { "tokenId": "t5", "text": "dir?" }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]],
+              "answerExplanation": {
+                "en": "Greeting and name first, then the informal question.",
+                "fr": "D’abord la salutation et le prénom, puis la question familière.",
+                "de": "Erst Gruß und Name, dann die lockere Frage."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-3",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-3",
+              "expressionId": "danke-gut",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Danke," },
+                { "tokenId": "t2", "text": "gut." },
+                { "tokenId": "t3", "text": "Und" },
+                { "tokenId": "t4", "text": "Ihnen?" }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4"]],
+              "answerExplanation": {
+                "en": "First your answer, then the question back.",
+                "fr": "D’abord votre réponse, puis la question en retour.",
+                "de": "Erst deine Antwort, dann die Rückfrage."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-4",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-4",
+              "expressionId": "es-geht",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Na" },
+                { "tokenId": "t2", "text": "ja," },
+                { "tokenId": "t3", "text": "es" },
+                { "tokenId": "t4", "text": "geht." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4"]],
+              "answerExplanation": {
+                "en": "Na ja, is a hesitation, then Es geht.",
+                "fr": "Na ja, marque l’hésitation, puis Es geht.",
+                "de": "Na ja, zeigt Zögern, dann folgt Es geht."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-5",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-5",
+              "expressionId": "und-ihnen",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Gut," },
+                { "tokenId": "t2", "text": "danke." },
+                { "tokenId": "t3", "text": "Und" },
+                { "tokenId": "t4", "text": "Ihnen?" }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4"]],
+              "answerExplanation": {
+                "en": "Answer first, then ask back with Und Ihnen?",
+                "fr": "On répond d’abord, puis on demande Und Ihnen ?",
+                "de": "Erst antworten, dann mit Und Ihnen? zurückfragen."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-6",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-6",
+              "expressionId": "und-dir",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Mir" },
+                { "tokenId": "t2", "text": "geht" },
+                { "tokenId": "t3", "text": "es" },
+                { "tokenId": "t4", "text": "gut." },
+                { "tokenId": "t5", "text": "Und" },
+                { "tokenId": "t6", "text": "dir?" }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "answerExplanation": {
+                "en": "Say how you are, then ask back with Und dir?",
+                "fr": "On dit comment on va, puis on demande Und dir ?",
+                "de": "Sag, wie es dir geht, und frag dann mit Und dir? zurück."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "listening",
+      "stage": "listening",
+      "role": "exercise",
+      "label": { "en": "Listening", "fr": "Écoute", "de": "Hören" },
+      "pages": [
+        {
+          "pageId": "listening-1",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-1",
+              "expressionId": "wie-geht-es-ihnen",
+              "context": { "roleId": "lehrer", "text": "Guten Morgen, Mia." },
+              "roleId": "schuelerin",
+              "options": [
+                { "optionId": "o1", "text": "Guten Morgen, Herr Weber. Wie geht es Ihnen?" },
+                { "optionId": "o2", "text": "Auf Wiedersehen, Mia." },
+                { "optionId": "o3", "text": "Ich heiße Mia." },
+                { "optionId": "o4", "text": "Bis morgen!" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "She greets back and asks politely with Sie.",
+                "fr": "Elle répond à la salutation et demande poliment avec Sie.",
+                "de": "Sie grüßt zurück und fragt höflich mit Sie."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-2",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-2",
+              "expressionId": "wie-gehts-dir",
+              "context": { "roleId": "schuelerin", "text": "Guten Tag, Herr Weber." },
+              "roleId": "lehrer",
+              "options": [
+                { "optionId": "o1", "text": "Guten Tag, Mia. Wie geht’s dir?" },
+                { "optionId": "o2", "text": "Guten Tag, Herr Weber. Wie geht es Ihnen?" },
+                { "optionId": "o3", "text": "Danke, gut. Und Ihnen?" },
+                { "optionId": "o4", "text": "Bis später, Herr Weber!" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "The teacher says du to the student.",
+                "fr": "Le professeur tutoie l’élève.",
+                "de": "Der Lehrer duzt die Schülerin."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-3",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-3",
+              "expressionId": "danke-gut",
+              "context": { "roleId": "lehrer", "text": "Mia, wie geht’s dir?" },
+              "roleId": "schuelerin",
+              "options": [
+                { "optionId": "o1", "text": "Danke, gut. Und Ihnen?" },
+                { "optionId": "o2", "text": "Guten Morgen, Herr Weber." },
+                { "optionId": "o3", "text": "Wie geht’s dir?" },
+                { "optionId": "o4", "text": "Ich komme aus Berlin." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "She answers the question and asks back.",
+                "fr": "Elle répond à la question et la retourne.",
+                "de": "Sie beantwortet die Frage und fragt zurück."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-4",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-4",
+              "expressionId": "es-geht",
+              "context": { "roleId": "schuelerin", "text": "Herr Weber, wie geht es Ihnen?" },
+              "roleId": "lehrer",
+              "options": [
+                { "optionId": "o1", "text": "Es geht. Ich bin ein bisschen müde." },
+                { "optionId": "o2", "text": "Guten Morgen, Mia." },
+                { "optionId": "o3", "text": "Wie geht es Ihnen?" },
+                { "optionId": "o4", "text": "Ich heiße Weber." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "Es geht. is a so-so answer to the question.",
+                "fr": "Es geht. est une réponse mitigée à la question.",
+                "de": "Es geht. ist eine mittelmäßige Antwort auf die Frage."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-5",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-5",
+              "expressionId": "und-ihnen",
+              "context": { "roleId": "lehrer", "text": "Wie geht’s dir, Mia?" },
+              "roleId": "schuelerin",
+              "options": [
+                { "optionId": "o1", "text": "Gut, danke. Und Ihnen?" },
+                { "optionId": "o2", "text": "Gut, danke. Und dir?" },
+                { "optionId": "o3", "text": "Guten Tag, Herr Weber." },
+                { "optionId": "o4", "text": "Auf Wiedersehen!" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "Mia says Sie to her teacher, so she asks Und Ihnen?",
+                "fr": "Mia vouvoie son professeur, elle demande donc Und Ihnen ?",
+                "de": "Mia siezt ihren Lehrer, also fragt sie Und Ihnen?"
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-6",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-6",
+              "expressionId": "und-dir",
+              "context": {
+                "roleId": "schuelerin",
+                "text": "Guten Morgen. Wie geht es Ihnen, Herr Weber?"
+              },
+              "roleId": "lehrer",
+              "options": [
+                { "optionId": "o1", "text": "Gut, danke. Und dir?" },
+                { "optionId": "o2", "text": "Gut, danke. Und Ihnen?" },
+                { "optionId": "o3", "text": "Bis morgen, Mia!" },
+                { "optionId": "o4", "text": "Entschuldigung, wie bitte?" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "The teacher answers and asks back with du.",
+                "fr": "Le professeur répond et retourne la question avec du.",
+                "de": "Der Lehrer antwortet und fragt mit du zurück."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam-replies-1",
+          "estimatedDurationS": 90,
+          "timeLimitS": 135,
+          "instructions": {
+            "en": "Build the answer. Not every word fits.",
+            "fr": "Construisez la réponse. Tous les mots ne servent pas.",
+            "de": "Bilde die Antwort. Nicht jedes Wort passt."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "reply-1",
+              "expressionId": "wie-geht-es-ihnen",
+              "context": { "roleId": "lehrer", "text": "Guten Nachmittag, Mia." },
+              "roleId": "schuelerin",
+              "tokens": [
+                { "tokenId": "t1", "text": "Guten" },
+                { "tokenId": "t2", "text": "Nachmittag," },
+                { "tokenId": "t3", "text": "Herr" },
+                { "tokenId": "t4", "text": "Weber." },
+                { "tokenId": "t5", "text": "Wie" },
+                { "tokenId": "t6", "text": "geht" },
+                { "tokenId": "t7", "text": "es" },
+                { "tokenId": "t8", "text": "Ihnen?" },
+                { "tokenId": "t9", "text": "dir?" },
+                { "tokenId": "t10", "text": "geht’s" }
+              ],
+              "distractorTokenIds": ["t9", "t10"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8"]],
+              "answerExplanation": {
+                "en": "To a teacher you say Sie: Wie geht es Ihnen?",
+                "fr": "À un professeur, on dit Sie : Wie geht es Ihnen ?",
+                "de": "Zu einem Lehrer sagt man Sie: Wie geht es Ihnen?"
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-2",
+              "expressionId": "wie-gehts-dir",
+              "context": { "roleId": "schuelerin", "text": "Hallo, Herr Weber!" },
+              "roleId": "lehrer",
+              "tokens": [
+                { "tokenId": "t1", "text": "Hallo," },
+                { "tokenId": "t2", "text": "Mia!" },
+                { "tokenId": "t3", "text": "Wie" },
+                { "tokenId": "t4", "text": "geht’s" },
+                { "tokenId": "t5", "text": "dir?" },
+                { "tokenId": "t6", "text": "Ihnen?" },
+                { "tokenId": "t7", "text": "es" }
+              ],
+              "distractorTokenIds": ["t6", "t7"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]],
+              "answerExplanation": {
+                "en": "To a student you say du: Wie geht’s dir?",
+                "fr": "À une élève, on dit du : Wie geht’s dir ?",
+                "de": "Zu einer Schülerin sagt man du: Wie geht’s dir?"
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-3",
+              "expressionId": "danke-gut",
+              "context": { "roleId": "lehrer", "text": "Mia, wie geht’s dir?" },
+              "roleId": "schuelerin",
+              "tokens": [
+                { "tokenId": "t1", "text": "Hallo," },
+                { "tokenId": "t2", "text": "Herr" },
+                { "tokenId": "t3", "text": "Weber." },
+                { "tokenId": "t4", "text": "Danke," },
+                { "tokenId": "t5", "text": "gut." },
+                { "tokenId": "t6", "text": "schlecht." }
+              ],
+              "distractorTokenIds": ["t6"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]],
+              "answerExplanation": {
+                "en": "Danke, gut. is the positive answer.",
+                "fr": "Danke, gut. est la réponse positive.",
+                "de": "Danke, gut. ist die positive Antwort."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-replies-2",
+          "estimatedDurationS": 90,
+          "timeLimitS": 135,
+          "instructions": {
+            "en": "Build the answer. Not every word fits.",
+            "fr": "Construisez la réponse. Tous les mots ne servent pas.",
+            "de": "Bilde die Antwort. Nicht jedes Wort passt."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "reply-4",
+              "expressionId": "es-geht",
+              "context": { "roleId": "schuelerin", "text": "Wie geht es Ihnen, Herr Weber?" },
+              "roleId": "lehrer",
+              "tokens": [
+                { "tokenId": "t1", "text": "Ach," },
+                { "tokenId": "t2", "text": "es" },
+                { "tokenId": "t3", "text": "geht." },
+                { "tokenId": "t4", "text": "Ich" },
+                { "tokenId": "t5", "text": "habe" },
+                { "tokenId": "t6", "text": "viel" },
+                { "tokenId": "t7", "text": "Arbeit." },
+                { "tokenId": "t8", "text": "gut." }
+              ],
+              "distractorTokenIds": ["t8"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
+              "answerExplanation": {
+                "en": "Es geht. says that things are so-so.",
+                "fr": "Es geht. dit que ça va moyennement.",
+                "de": "Es geht. sagt, dass es so là là geht."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-5",
+              "expressionId": "und-ihnen",
+              "context": { "roleId": "lehrer", "text": "Mia, wie geht’s dir heute?" },
+              "roleId": "schuelerin",
+              "tokens": [
+                { "tokenId": "t1", "text": "Mir" },
+                { "tokenId": "t2", "text": "geht" },
+                { "tokenId": "t3", "text": "es" },
+                { "tokenId": "t4", "text": "gut." },
+                { "tokenId": "t5", "text": "Und" },
+                { "tokenId": "t6", "text": "Ihnen?" },
+                { "tokenId": "t7", "text": "dir?" }
+              ],
+              "distractorTokenIds": ["t7"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "answerExplanation": {
+                "en": "Mia asks her teacher back with Sie: Und Ihnen?",
+                "fr": "Mia retourne la question à son professeur avec Sie : Und Ihnen ?",
+                "de": "Mia fragt ihren Lehrer mit Sie zurück: Und Ihnen?"
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-6",
+              "expressionId": "und-dir",
+              "context": { "roleId": "schuelerin", "text": "Wie geht es Ihnen, Herr Weber?" },
+              "roleId": "lehrer",
+              "tokens": [
+                { "tokenId": "t1", "text": "Auch" },
+                { "tokenId": "t2", "text": "gut," },
+                { "tokenId": "t3", "text": "danke." },
+                { "tokenId": "t4", "text": "Und" },
+                { "tokenId": "t5", "text": "dir?" },
+                { "tokenId": "t6", "text": "Ihnen?" }
+              ],
+              "distractorTokenIds": ["t6"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]],
+              "answerExplanation": {
+                "en": "The teacher asks the student back with du: Und dir?",
+                "fr": "Le professeur retourne la question à l’élève avec du : Und dir ?",
+                "de": "Der Lehrer fragt die Schülerin mit du zurück: Und dir?"
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-dialogue",
+          "estimatedDurationS": 124,
+          "timeLimitS": 186,
+          "instructions": {
+            "en": "Fill each gap with an expression from this lesson.",
+            "fr": "Complétez chaque trou avec une expression de la leçon.",
+            "de": "Fülle jede Lücke mit einem Ausdruck aus dieser Lektion."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_typing",
+              "itemId": "exam-dialogue",
+              "lines": [
+                {
+                  "lineId": "exam-line-1",
+                  "roleId": "schuelerin",
+                  "before": "Guten Tag, Herr Weber!",
+                  "translation": { "en": "Good day, Mr Weber!", "fr": "Bonjour, Monsieur Weber !" },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-2",
+                  "roleId": "lehrer",
+                  "before": "Hallo, Mia. Schon Freitag!",
+                  "translation": {
+                    "en": "Hello, Mia. Friday already! How are you?",
+                    "fr": "Bonjour, Mia. Déjà vendredi ! Comment vas-tu ?"
+                  },
+                  "gap": {
+                    "gapId": "gap-a",
+                    "expressionId": "wie-gehts-dir",
+                    "accepted": { "answers": ["Wie geht’s dir", "Wie geht es dir"] },
+                    "answerExplanation": {
+                      "en": "The teacher says du to the student: Wie geht’s dir?",
+                      "fr": "Le professeur tutoie l’élève : Wie geht’s dir ?",
+                      "de": "Der Lehrer duzt die Schülerin: Wie geht’s dir?"
+                    }
+                  },
+                  "after": "?"
+                },
+                {
+                  "lineId": "exam-line-3",
+                  "roleId": "schuelerin",
+                  "before": "Mir geht es gut, danke.",
+                  "translation": {
+                    "en": "I’m fine, thanks. And you?",
+                    "fr": "Je vais bien, merci. Et vous ?"
+                  },
+                  "gap": {
+                    "gapId": "gap-b",
+                    "expressionId": "und-ihnen",
+                    "accepted": { "answers": ["Und Ihnen"] },
+                    "answerExplanation": {
+                      "en": "She asks her teacher back with Sie: Und Ihnen?",
+                      "fr": "Elle retourne la question à son professeur avec Sie : Und Ihnen ?",
+                      "de": "Sie fragt ihren Lehrer mit Sie zurück: Und Ihnen?"
+                    }
+                  },
+                  "after": "?"
+                },
+                {
+                  "lineId": "exam-line-4",
+                  "roleId": "lehrer",
+                  "before": "",
+                  "translation": {
+                    "en": "So-so. I have a lot to do today.",
+                    "fr": "Comme ci, comme ça. J’ai beaucoup à faire aujourd’hui."
+                  },
+                  "gap": {
+                    "gapId": "gap-c",
+                    "expressionId": "es-geht",
+                    "accepted": { "answers": ["Es geht"] },
+                    "answerExplanation": {
+                      "en": "With a lot to do, the answer is Es geht.",
+                      "fr": "Quand on a beaucoup à faire, on répond Es geht.",
+                      "de": "Bei viel Arbeit antwortet man Es geht."
+                    }
+                  },
+                  "after": ". Heute habe ich viel zu tun."
+                },
+                {
+                  "lineId": "exam-line-5",
+                  "roleId": "schuelerin",
+                  "before": "Oh, schade. Viel Glück!",
+                  "translation": {
+                    "en": "Oh, too bad. Good luck!",
+                    "fr": "Oh, dommage. Bonne chance !"
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-6",
+                  "roleId": "lehrer",
+                  "before": "Danke, Mia.",
+                  "translation": { "en": "Thank you, Mia.", "fr": "Merci, Mia." },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-7",
+                  "roleId": "schuelerin",
+                  "before": "Bis später, Herr Weber!",
+                  "translation": {
+                    "en": "See you later, Mr Weber!",
+                    "fr": "À tout à l’heure, Monsieur Weber !"
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-8",
+                  "roleId": "lehrer",
+                  "before": "Bis später, Mia!",
+                  "translation": { "en": "See you later, Mia!", "fr": "À tout à l’heure, Mia !" },
+                  "gap": null,
+                  "after": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

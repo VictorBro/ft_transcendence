@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 2,
+  "id": "de-asking-how-someone-is",
+  "lang": "de",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Fragen, wie es jemandem geht",
+  "objective": {
+    "en": "Ask with du or Sie how someone is, and answer politely: Wie geht es Ihnen? Wie geht’s dir? Danke, gut. Es geht. Und Ihnen?",
+    "fr": "Demander avec du ou Sie comment va quelqu’un et répondre poliment : Wie geht es Ihnen ? Wie geht’s dir ? Danke, gut. Es geht. Und Ihnen ?",
+    "de": "Mit du oder Sie fragen, wie es jemandem geht, und passend antworten: Wie geht es Ihnen? Wie geht’s dir? Danke, gut. Es geht. Und Ihnen?"
+  },
+  "estimatedMinutes": 17,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T20:18:29.066Z",
+    "inputHashes": { "outline": "a5bc37ee4e4fef04c08396d6b00044317355ecfde7ed9c7c612538a6628ad458" }
+  },
+  "kind": "functions",
+  "theme": "relations",
+  "situation": {
+    "en": "A student meets her teacher at school; she says Sie to him, he says du to her.",
+    "fr": "Une élève rencontre son professeur à l’école ; elle le vouvoie, il la tutoie.",
+    "de": "Eine Schülerin trifft ihren Lehrer in der Schule; sie siezt ihn, er duzt sie."
+  },
+  "coverageNotes": {
+    "en": "Asking how someone is with Sie (Wie geht es Ihnen?) and with du (Wie geht’s dir?), answering (Danke, gut. Es geht.) and asking back (Und Ihnen? Und dir?).",
+    "fr": "Demander comment va quelqu’un avec Sie (Wie geht es Ihnen ?) et avec du (Wie geht’s dir ?), répondre (Danke, gut. Es geht.) et retourner la question (Und Ihnen ? Und dir ?).",
+    "de": "Nach dem Befinden fragen mit Sie (Wie geht es Ihnen?) und mit du (Wie geht’s dir?), antworten (Danke, gut. Es geht.) und zurückfragen (Und Ihnen? Und dir?)."
+  },
+  "prerequisites": [],
+  "roles": [
+    {
+      "id": "lehrer",
+      "label": "der Lehrer",
+      "translation": { "en": "the teacher", "fr": "le professeur" }
+    },
+    {
+      "id": "schuelerin",
+      "label": "die Schülerin",
+      "translation": { "en": "the student", "fr": "l’élève" }
+    }
+  ],
+  "expressions": [
+    {
+      "id": "wie-geht-es-ihnen",
+      "text": "Wie geht es Ihnen?",
+      "openEnd": false,
+      "translations": { "en": ["How are you? (formal)"], "fr": ["Comment allez-vous ?"] },
+      "explanation": {
+        "en": "Asks politely how someone is. Use it with Sie: adults you do not know well, teachers.",
+        "fr": "Demande poliment comment va quelqu’un. À utiliser avec Sie : adultes peu connus, professeurs.",
+        "de": "Fragt höflich, wie es jemandem geht. Man sagt es mit Sie: zu Erwachsenen, die man nicht gut kennt, und zu Lehrern."
+      },
+      "example": {
+        "text": "Guten Tag, Frau Keller. Wie geht es Ihnen?",
+        "translation": {
+          "en": "Hello, Mrs Keller. How are you?",
+          "fr": "Bonjour, Madame Keller. Comment allez-vous ?"
+        }
+      }
+    },
+    {
+      "id": "wie-gehts-dir",
+      "text": "Wie geht’s dir?",
+      "openEnd": false,
+      "translations": { "en": ["How are you? (informal)"], "fr": ["Comment vas-tu ?"] },
+      "explanation": {
+        "en": "Asks how someone is, informally. Use it with du: friends, family, children.",
+        "fr": "Demande familièrement comment va quelqu’un. À utiliser avec du : amis, famille, enfants.",
+        "de": "Fragt locker, wie es jemandem geht. Man sagt es mit du: zu Freunden, zur Familie und zu Kindern."
+      },
+      "example": {
+        "text": "Hallo, Tim! Wie geht’s dir?",
+        "translation": { "en": "Hi, Tim! How are you?", "fr": "Salut, Tim ! Comment vas-tu ?" }
+      }
+    },
+    {
+      "id": "danke-gut",
+      "text": "Danke, gut.",
+      "openEnd": false,
+      "translations": { "en": ["Fine, thanks."], "fr": ["Bien, merci."] },
+      "explanation": {
+        "en": "The usual positive answer. It works with du and with Sie.",
+        "fr": "La réponse positive habituelle. Elle convient avec du et avec Sie.",
+        "de": "Die übliche positive Antwort. Sie passt bei du und bei Sie."
+      },
+      "example": {
+        "text": "Wie geht’s? – Danke, gut.",
+        "translation": { "en": "How are you? – Fine, thanks.", "fr": "Ça va ? – Bien, merci." }
+      }
+    },
+    {
+      "id": "es-geht",
+      "text": "Es geht.",
+      "openEnd": false,
+      "translations": { "en": ["So-so."], "fr": ["Comme ci, comme ça."] },
+      "explanation": {
+        "en": "Means “not great, not bad”. It works with du and with Sie.",
+        "fr": "Signifie « ni très bien, ni mal ». Elle convient avec du et avec Sie.",
+        "de": "Heißt „nicht besonders, aber nicht schlecht“. Es passt bei du und bei Sie."
+      },
+      "example": {
+        "text": "Und dir? – Es geht.",
+        "translation": { "en": "And you? – So-so.", "fr": "Et toi ? – Comme ci, comme ça." }
+      }
+    },
+    {
+      "id": "und-ihnen",
+      "text": "Und Ihnen?",
+      "openEnd": false,
+      "translations": { "en": ["And you? (formal)"], "fr": ["Et vous ?"] },
+      "explanation": {
+        "en": "Asks the same question back, politely. Use it with Sie.",
+        "fr": "Retourne la question, poliment. À utiliser avec Sie.",
+        "de": "Gibt die Frage höflich zurück. Man sagt es mit Sie."
+      },
+      "example": {
+        "text": "Danke, gut. Und Ihnen, Frau Keller?",
+        "translation": {
+          "en": "Fine, thanks. And you, Mrs Keller?",
+          "fr": "Bien, merci. Et vous, Madame Keller ?"
+        }
+      }
+    },
+    {
+      "id": "und-dir",
+      "text": "Und dir?",
+      "openEnd": false,
+      "translations": { "en": ["And you? (informal)"], "fr": ["Et toi ?"] },
+      "explanation": {
+        "en": "Asks the same question back, informally. Use it with du.",
+        "fr": "Retourne la question, familièrement. À utiliser avec du.",
+        "de": "Gibt die Frage locker zurück. Man sagt es mit du."
+      },
+      "example": {
+        "text": "Mir geht es gut. Und dir, Tim?",
+        "translation": { "en": "I’m fine. And you, Tim?", "fr": "Je vais bien. Et toi, Tim ?" }
+      }
+    }
+  ],
+  "words": [],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}
