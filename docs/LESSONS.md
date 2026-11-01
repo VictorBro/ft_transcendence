@@ -312,7 +312,7 @@ Two ways, the same checks. Both skip a lesson that already has files.
 | | In a Claude Code session | Unattended |
 |---|---|---|
 | Command | `/author-lessons de c1` | `pnpm --filter @ft/api lessons:author de c1` |
-| Lessons | positions 1 to 12, or the ids given | every lesson without files, or `--kind`, `--only`, `--max` |
+| Lessons | the next 12 entries without files, or the ids given | the next 12 entries without files (`--max`), or `--only` |
 | Who writes | the session, checking each draft with `lessons:check` | `claude -p`, cut off from the repo; issues sent back up to `--attempts` times |
 | Gross errors | the session reads each lesson once | not read: read a few per kind before the PR |
 | Fails | listed in the hand-over | last draft and issues in `$TMPDIR/ft-lessons-author/failed/` |

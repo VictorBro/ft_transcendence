@@ -116,6 +116,7 @@ describe('refusal', () => {
     expect(refusal(429, 'slow down')).toBeInstanceOf(RateLimitError);
     expect(refusal(undefined, 'Rate limit exceeded')).toBeInstanceOf(RateLimitError);
     expect(refusal(429, 'API Error: Rate limit reached')).toBeInstanceOf(RateLimitError);
+    expect(refusal(undefined, '5-hour limit reached ∙ resets 3pm')).toBeInstanceOf(QuotaError);
     expect(refusal(500, 'heap limit exceeded')).toBeUndefined();
   });
 });

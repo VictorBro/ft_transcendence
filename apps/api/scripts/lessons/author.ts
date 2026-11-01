@@ -1,6 +1,7 @@
 /**
  * Writes the lessons of one level unattended (#83), with Claude Code on the
- * member's own subscription. For each outline entry that has no files yet:
+ * member's own subscription, 12 lessons per run by default: the next outline
+ * entries with no files, in position order. For each of them:
  *
  *   the model writes the lesson ─→ complete + validateLesson (check-draft.ts) ─→ ok: write the files
  *          ▲                                                    │
@@ -12,7 +13,7 @@
  * Claude Code session, with lessons:check; see docs/LESSONS.md section 7.
  *
  *   pnpm --filter @ft/api lessons:author fr a1
- *   pnpm --filter @ft/api lessons:author fr a1 --kind grammar --max 3
+ *   pnpm --filter @ft/api lessons:author fr a1 --max 3
  *   pnpm --filter @ft/api lessons:author fr a1 --only fr-subject-pronouns --model opus
  */
 import { parseArgs } from 'node:util';
@@ -20,7 +21,6 @@ import { parseArgs } from 'node:util';
 import {
   foldText,
   LanguageSchema,
-  LessonKindSchema,
   LevelSchema,
   type LessonOutlineEntry,
   type LessonOutlineFile,
@@ -50,9 +50,8 @@ import {
 } from './report';
 
 const USAGE = `Usage: lessons:author <fr|de|en> <a1|a2|b1|b2|c1|c2> [options]
-  --kind <kind>          only this kind
   --only <id,id…>        only these lessons
-  --max <n>              stop after n lessons (to spread a quota over several days)
+  --max <n>              lessons per run (default 12)
   --concurrency <n>      lessons written at the same time (default 2)
   --model <model>        sonnet (default), opus, haiku or a full model id
   --effort <level>       low, medium, high, xhigh or max (default: the model's)
@@ -67,16 +66,14 @@ function readOptions() {
     strict: true,
     // Every option takes a value: the ones USAGE lists.
     options: Object.fromEntries(
-      'kind only max concurrency model effort attempts timeout claude-bin'
+      'only max concurrency model effort attempts timeout claude-bin'
         .split(' ')
         .map((name) => [name, { type: 'string' as const }]),
     ),
   });
   const lang = LanguageSchema.safeParse(positionals[0]);
   const level = LevelSchema.safeParse(positionals[1]?.toUpperCase());
-  const kind = v.kind === undefined ? undefined : LessonKindSchema.safeParse(v.kind);
-  if (!lang.success || !level.success || kind?.success === false || positionals.length !== 2)
-    throw new Error(USAGE);
+  if (!lang.success || !level.success || positionals.length !== 2) throw new Error(USAGE);
 
   /** A whole number above 0, or `fallback` when the option is not given. */
   const whole = (name: string, fallback: number) => {
@@ -89,9 +86,8 @@ function readOptions() {
   return {
     lang: lang.data,
     level: level.data,
-    kind: kind?.data,
     only: v.only?.split(',').map((s) => s.trim()),
-    max: v.max === undefined ? Infinity : whole('max', 1),
+    max: whole('max', 12),
     concurrency: whole('concurrency', 2),
     model: v.model ?? 'sonnet',
     effort: v.effort,
@@ -102,14 +98,13 @@ function readOptions() {
 }
 type Options = ReturnType<typeof readOptions>;
 
-/** The entries to write: no files yet, and matching --kind, --only and --max. Warns about the rest. */
+/** The entries to write: no files yet, in position order, matching --only and --max. Warns about the rest. */
 function pickLessons(outline: LessonOutlineFile, o: Options): LessonOutlineEntry[] {
   for (const e of outline.entries)
     if (filesOf(e) === 'partial')
       console.warn(`! ${e.id}: only one of its files exists, left as it is`);
   const todo = outline.entries
     .filter((e) => filesOf(e) === 'none')
-    .filter((e) => !o.kind || e.kind === o.kind)
     .filter((e) => !o.only || o.only.includes(e.id))
     .slice(0, o.max);
   // The lessons with files are the level's first entries (#84): a selection must not leave a gap.

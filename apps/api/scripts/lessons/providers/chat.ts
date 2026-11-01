@@ -48,18 +48,21 @@ export class RateLimitError extends Error {}
  * Narrow on purpose: a crash that only says "limit" somewhere (a memory
  * limit, a line limit) fails one lesson, not the run.
  */
-export const QUOTA_MESSAGE = /usage limit|quota/i;
+export const QUOTA_MESSAGE = /usage limit|limit reached|quota/i;
 
 /** The words of a short refusal, which a pause fixes. */
 export const RATE_LIMIT_MESSAGE = /rate limit|too many requests/i;
 
 /**
- * The error for a refusal: QuotaError when it lasts, RateLimitError for a
- * 429 or a rate limit message, undefined for any other failure.
+ * The error for a refusal: RateLimitError for a rate limit message (it
+ * also says "limit reached", a usage limit never says "rate limit"),
+ * QuotaError when it lasts, RateLimitError for any other 429, undefined
+ * for any other failure.
  */
 export function refusal(status: number | undefined, message: string): Error | undefined {
+  if (RATE_LIMIT_MESSAGE.test(message)) return new RateLimitError(message);
   if (QUOTA_MESSAGE.test(message)) return new QuotaError(message);
-  if (status === 429 || RATE_LIMIT_MESSAGE.test(message)) return new RateLimitError(message);
+  if (status === 429) return new RateLimitError(message);
   return undefined;
 }
 

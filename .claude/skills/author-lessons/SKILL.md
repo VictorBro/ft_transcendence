@@ -15,7 +15,8 @@ has no gross error is good enough.
 
 `/author-lessons <lang> <level> [id…]`
 
-- Without ids: positions 1 to 12 of `content/outlines/<lang>-<level>.json`.
+- Without ids: the next 12 entries of `content/outlines/<lang>-<level>.json` without files, in
+  position order (positions 1 to 12 on a new level).
 - With ids: those lessons only.
 - Skip a lesson whose files already exist (`content/briefs/<id>.json`). To redo one, the user
   deletes its files first; never overwrite.
