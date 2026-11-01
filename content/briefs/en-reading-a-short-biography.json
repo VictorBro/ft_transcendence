@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 2,
+  "id": "en-reading-a-short-biography",
+  "lang": "en",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Reading a short biography",
+  "objective": {
+    "en": "Read a short life story and put the main events in order: was born, grew up, moved to, won, died. Say what the person is known for.",
+    "fr": "Lire une courte biographie, remettre les événements dans l’ordre (naître, grandir, déménager, gagner, mourir) et dire pourquoi la personne est connue.",
+    "de": "Eine kurze Biografie lesen, die wichtigsten Ereignisse ordnen (geboren, aufgewachsen, umgezogen, gewonnen, gestorben) und sagen, wofür die Person bekannt ist."
+  },
+  "estimatedMinutes": 9,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:09.462Z",
+    "inputHashes": { "outline": "581180ed2edbde32369113149297a1eb68421ce9fa56496ee3341ec2c01529b6" }
+  },
+  "kind": "reading",
+  "theme": "personal_identification",
+  "genre": "article",
+  "situation": {
+    "en": "A short biography of Marie Curie, written for learners of English, with her main life events in order.",
+    "fr": "Une courte biographie de Marie Curie, écrite pour les apprenants d’anglais, avec les grands événements de sa vie dans l’ordre.",
+    "de": "Eine kurze Biografie von Marie Curie für Englischlernende, mit den wichtigsten Lebensereignissen in der richtigen Reihenfolge."
+  },
+  "readerTask": {
+    "en": "Find where and when she was born, when she moved, what she won, and what she is known for; then put the main events in order.",
+    "fr": "Retrouver où et quand elle est née, quand elle a déménagé, ce qu’elle a gagné et pourquoi elle est connue ; puis remettre les événements dans l’ordre.",
+    "de": "Herausfinden, wo und wann sie geboren wurde, wann sie umzog, was sie gewann und wofür sie bekannt ist; dann die Ereignisse ordnen."
+  },
+  "keywords": [
+    {
+      "id": "was-born",
+      "term": "was born",
+      "translations": { "fr": ["est né", "est née"], "de": ["wurde geboren"] },
+      "explanation": {
+        "en": "Used for the start of a life: She was born in 1867. We say was born, not is born, for the past.",
+        "fr": "Pour le début d’une vie : She was born in 1867. On dit was born pour le passé.",
+        "de": "Für den Beginn eines Lebens: She was born in 1867. In der Vergangenheit sagt man was born."
+      }
+    },
+    {
+      "id": "grew-up",
+      "term": "grew up",
+      "translations": { "fr": ["a grandi"], "de": ["wuchs auf"] },
+      "explanation": {
+        "en": "Past of grow up: to become an adult. She grew up in Poland means she spent her childhood there.",
+        "fr": "Passé de grow up : devenir adulte. She grew up in Poland : elle a passé son enfance en Pologne.",
+        "de": "Vergangenheit von grow up: erwachsen werden. She grew up in Poland heißt, sie verbrachte dort ihre Kindheit."
+      }
+    },
+    {
+      "id": "moved-to",
+      "term": "moved to",
+      "translations": {
+        "fr": ["a déménagé à", "s’est installé à"],
+        "de": ["zog nach", "ist umgezogen nach"]
+      },
+      "explanation": {
+        "en": "To go and live in a new place: He moved to Paris. Use to before the place.",
+        "fr": "Aller vivre dans un nouvel endroit : He moved to Paris. On utilise to devant le lieu.",
+        "de": "An einen neuen Ort ziehen: He moved to Paris. Vor dem Ort steht to."
+      }
+    },
+    {
+      "id": "won",
+      "term": "won",
+      "translations": { "fr": ["a gagné"], "de": ["gewann", "hat gewonnen"] },
+      "explanation": {
+        "en": "Past of win. You can win a prize, a game or a race: She won the Nobel Prize.",
+        "fr": "Passé de win. On peut gagner un prix, un match ou une course : She won the Nobel Prize.",
+        "de": "Vergangenheit von win. Man kann einen Preis, ein Spiel oder ein Rennen gewinnen: She won the Nobel Prize."
+      }
+    },
+    {
+      "id": "known-for",
+      "term": "known for",
+      "translations": { "fr": ["connu pour"], "de": ["bekannt für"] },
+      "explanation": {
+        "en": "Says why a person is famous: She is known for her work on radioactivity.",
+        "fr": "Dit pourquoi une personne est célèbre : She is known for her work on radioactivity.",
+        "de": "Sagt, warum eine Person berühmt ist: She is known for her work on radioactivity."
+      }
+    },
+    {
+      "id": "died",
+      "term": "died",
+      "translations": { "fr": ["est mort", "est morte"], "de": ["starb", "ist gestorben"] },
+      "explanation": {
+        "en": "Past of die: the end of a life. She died in 1934. Use in with a year or a place.",
+        "fr": "Passé de die : la fin d’une vie. She died in 1934. On utilise in avec une année ou un lieu.",
+        "de": "Vergangenheit von die: das Ende eines Lebens. She died in 1934. Mit Jahr oder Ort steht in."
+      }
+    }
+  ],
+  "documents": {
+    "main": {
+      "targetWords": 115,
+      "contents": {
+        "en": "A short biography of Marie Curie: born in Warsaw in 1867 and grew up in a family of teachers; moved to Paris in 1891 and married Pierre Curie in 1895; found two new elements and won the Nobel Prize in Physics (1903) and in Chemistry (1911); known for radioactivity; died in France in 1934.",
+        "fr": "Une courte biographie de Marie Curie : née à Varsovie en 1867, elle grandit dans une famille d’enseignants ; elle s’installe à Paris en 1891 et épouse Pierre Curie en 1895 ; elle trouve deux éléments nouveaux et gagne le prix Nobel de physique (1903) et de chimie (1911) ; connue pour la radioactivité ; morte en France en 1934.",
+        "de": "Eine kurze Biografie von Marie Curie: 1867 in Warschau geboren, wächst in einer Lehrerfamilie auf; zieht 1891 nach Paris und heiratet 1895 Pierre Curie; findet zwei neue Elemente und gewinnt den Nobelpreis für Physik (1903) und für Chemie (1911); bekannt für die Radioaktivität; stirbt 1934 in Frankreich."
+      }
+    },
+    "exam": {
+      "targetWords": 61,
+      "contents": {
+        "en": "A short biography of Roald Dahl: born in Cardiff in 1916, loved sweets and stories, moved to Africa in 1934, later became a pilot, then wrote children’s books such as Charlie and the Chocolate Factory and Matilda; died in 1990.",
+        "fr": "Une courte biographie de Roald Dahl : né à Cardiff en 1916, il aime les bonbons et les histoires, s’installe en Afrique en 1934, devient pilote, puis écrit des livres pour enfants comme Charlie et la Chocolaterie et Matilda ; mort en 1990.",
+        "de": "Eine kurze Biografie von Roald Dahl: 1916 in Cardiff geboren, liebt Süßigkeiten und Geschichten, zieht 1934 nach Afrika, wird später Pilot und schreibt dann Kinderbücher wie Charlie und die Schokoladenfabrik und Matilda; stirbt 1990."
+      }
+    }
+  },
+  "skim": { "focus": "genre" },
+  "detailQuestions": [
+    {
+      "id": "q-born",
+      "type": "reading_choice",
+      "focus": { "en": "Where she was born", "fr": "Où elle est née", "de": "Wo sie geboren wurde" }
+    },
+    {
+      "id": "q-moved",
+      "type": "reading_choice",
+      "focus": {
+        "en": "The year she moved to Paris",
+        "fr": "L’année où elle s’est installée à Paris",
+        "de": "Das Jahr, in dem sie nach Paris zog"
+      }
+    },
+    {
+      "id": "q-prizes",
+      "type": "reading_true_false",
+      "focus": {
+        "en": "How many Nobel Prizes she won",
+        "fr": "Combien de prix Nobel elle a gagnés",
+        "de": "Wie viele Nobelpreise sie gewann"
+      }
+    },
+    {
+      "id": "q-known",
+      "type": "reading_choice",
+      "focus": {
+        "en": "What she is known for",
+        "fr": "Pourquoi elle est connue",
+        "de": "Wofür sie bekannt ist"
+      }
+    }
+  ],
+  "exam": { "types": ["reading_choice", "reading_true_false"] },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

@@ -1,0 +1,596 @@
+{
+  "schemaVersion": 2,
+  "id": "en-precise-physical-description",
+  "lang": "en",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Precise words for how people look",
+  "objective": {
+    "en": "Describe people's build, grooming and complexion with precise adjectives such as stocky, lanky, scruffy and weather-beaten.",
+    "fr": "Décrire avec précision la corpulence, la tenue et le teint des gens avec des adjectifs comme stocky, lanky, scruffy et weather-beaten.",
+    "de": "Körperbau, Pflegezustand und Teint von Menschen mit präzisen Adjektiven wie stocky, lanky, scruffy und weather-beaten beschreiben."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:48:34.203Z",
+    "inputHashes": { "outline": "f79d27f0de661c8432569d54736bd61e2dc0514346a33a30863d18df2ccc8464" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Twelve precise adjectives for physical appearance: six for build and size, six for grooming, skin and facial hair. Basic hair, face and build words are taught in earlier lessons.",
+    "fr": "Douze adjectifs précis pour l'apparence physique : six pour la corpulence et la taille, six pour la tenue, la peau et la pilosité. Les mots de base sur les cheveux, le visage et la silhouette ont été vus dans des leçons précédentes.",
+    "de": "Zwölf präzise Adjektive für das Aussehen: sechs für Körperbau und Größe, sechs für Pflege, Haut und Gesichtsbehaarung. Grundwörter zu Haaren, Gesicht und Figur stammen aus früheren Lektionen."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words fit the outline's intent and make two balanced groups of six.",
+    "fr": "Douze mots correspondent à l'objectif du plan et forment deux groupes équilibrés de six.",
+    "de": "Zwölf Wörter entsprechen dem Ziel der Gliederung und ergeben zwei ausgewogene Gruppen zu je sechs."
+  },
+  "difficultyBalance": {
+    "en": "Most words are core C1 vocabulary; the finer distinctions (gaunt, dishevelled, weather-beaten) are demanding.",
+    "fr": "La plupart des mots sont du vocabulaire C1 de base ; les nuances plus fines (gaunt, dishevelled, weather-beaten) sont exigeantes.",
+    "de": "Die meisten Wörter sind zentraler C1-Wortschatz; die feineren Unterschiede (gaunt, dishevelled, weather-beaten) sind anspruchsvoll."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "build",
+      "label": {
+        "en": "Build and size",
+        "fr": "Corpulence et taille",
+        "de": "Körperbau und Größe"
+      },
+      "targetIds": ["stocky", "lanky", "petite", "slender", "burly", "gaunt"],
+      "introduction": {
+        "en": "These adjectives describe a person's **build and size** more precisely than tall, short, fat or thin:\n\n- `stocky`\n- `lanky`\n- `petite`\n- `slender`\n- `burly`\n- `gaunt`",
+        "fr": "Ces adjectifs décrivent la **corpulence et la taille** d'une personne plus précisément que tall, short, fat ou thin :\n\n- `stocky`\n- `lanky`\n- `petite`\n- `slender`\n- `burly`\n- `gaunt`",
+        "de": "Diese Adjektive beschreiben **Körperbau und Größe** einer Person genauer als tall, short, fat oder thin:\n\n- `stocky`\n- `lanky`\n- `petite`\n- `slender`\n- `burly`\n- `gaunt`"
+      }
+    },
+    {
+      "id": "grooming",
+      "label": {
+        "en": "Grooming, skin and face",
+        "fr": "Tenue, peau et visage",
+        "de": "Pflege, Haut und Gesicht"
+      },
+      "targetIds": [
+        "scruffy",
+        "dishevelled",
+        "immaculate",
+        "weather-beaten",
+        "clean-shaven",
+        "ruddy"
+      ],
+      "introduction": {
+        "en": "These adjectives describe **how neat someone looks**, and the condition of their skin and face:\n\n- `scruffy`\n- `dishevelled`\n- `immaculate`\n- `weather-beaten`\n- `clean-shaven`\n- `ruddy`",
+        "fr": "Ces adjectifs décrivent **le soin apporté à la tenue**, ainsi que l'état de la peau et du visage :\n\n- `scruffy`\n- `dishevelled`\n- `immaculate`\n- `weather-beaten`\n- `clean-shaven`\n- `ruddy`",
+        "de": "Diese Adjektive beschreiben **wie gepflegt jemand aussieht** sowie den Zustand von Haut und Gesicht:\n\n- `scruffy`\n- `dishevelled`\n- `immaculate`\n- `weather-beaten`\n- `clean-shaven`\n- `ruddy`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "stocky",
+      "term": "stocky",
+      "translations": { "fr": ["trapu"], "de": ["stämmig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "stocky",
+      "examForms": ["stocky"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈstɒki/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He was a short, stocky man with powerful shoulders.",
+        "translation": {
+          "fr": "C'était un homme petit et trapu aux épaules puissantes.",
+          "de": "Er war ein kleiner, stämmiger Mann mit kräftigen Schultern."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Stocky describes a short, solid, broad body.",
+        "fr": "Stocky décrit un corps court, solide et large.",
+        "de": "Stocky beschreibt einen kurzen, kräftigen, breiten Körper."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The wrestler was short and ",
+        "after": ", with wide shoulders and thick legs.",
+        "accepted": { "answers": ["stocky"] },
+        "referenceTargetIds": ["stocky", "lanky", "petite", "gaunt"],
+        "explanation": {
+          "en": "Short, wide and thick-legged means stocky.",
+          "fr": "Court, large et aux jambes épaisses : stocky.",
+          "de": "Kurz, breit und dickbeinig bedeutet stocky."
+        }
+      },
+      "listeningOptionTargetIds": ["stocky", "lanky", "scruffy", "ruddy"]
+    },
+    {
+      "id": "lanky",
+      "term": "lanky",
+      "translations": { "fr": ["dégingandé"], "de": ["schlaksig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "lanky",
+      "examForms": ["lanky"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈlæŋki/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "A lanky teenager unfolded himself from the tiny car.",
+        "translation": {
+          "fr": "Un adolescent dégingandé s'est extirpé de la minuscule voiture.",
+          "de": "Ein schlaksiger Teenager faltete sich aus dem winzigen Auto."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Lanky means tall, thin and a little awkward, with long arms and legs.",
+        "fr": "Lanky signifie grand, maigre et un peu gauche, avec de longs bras et de longues jambes.",
+        "de": "Lanky bedeutet groß, dünn und etwas unbeholfen, mit langen Armen und Beinen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The teenager was tall and ",
+        "after": ", all arms and legs.",
+        "accepted": { "answers": ["lanky"] },
+        "referenceTargetIds": ["lanky", "stocky", "petite", "immaculate"],
+        "explanation": {
+          "en": "Tall, thin and awkward is lanky.",
+          "fr": "Grand, mince et gauche : lanky.",
+          "de": "Groß, dünn und unbeholfen ist lanky."
+        }
+      },
+      "listeningOptionTargetIds": ["lanky", "stocky", "slender", "burly"]
+    },
+    {
+      "id": "petite",
+      "term": "petite",
+      "translations": { "fr": ["menue"], "de": ["zierlich"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "petite",
+      "examForms": ["petite"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/pəˈtiːt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She is petite, barely five feet tall.",
+        "translation": {
+          "fr": "Elle est menue, d'à peine un mètre cinquante.",
+          "de": "Sie ist zierlich und kaum eins fünfzig groß."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Petite is used almost only for women and is a compliment: it means small and slim, not just short.",
+        "fr": "Petite s'emploie presque uniquement pour les femmes et c'est un compliment : petit et mince, pas seulement de petite taille.",
+        "de": "Petite wird fast nur für Frauen verwendet und ist ein Kompliment: klein und schlank, nicht nur kurz gewachsen."
+      },
+      "explanation": {
+        "en": "Petite describes a small, slim, delicate woman.",
+        "fr": "Petite décrit une femme petite, mince et délicate.",
+        "de": "Petite beschreibt eine kleine, schlanke, zarte Frau."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She is so ",
+        "after": " that she buys her clothes in the children's department.",
+        "accepted": { "answers": ["petite"] },
+        "referenceTargetIds": ["petite", "burly", "lanky", "ruddy"],
+        "explanation": {
+          "en": "Someone who fits children's clothes is petite.",
+          "fr": "Quelqu'un qui rentre dans des vêtements d'enfant est petite.",
+          "de": "Wer in Kinderkleidung passt, ist petite."
+        }
+      },
+      "listeningOptionTargetIds": ["petite", "stocky", "gaunt", "ruddy"]
+    },
+    {
+      "id": "slender",
+      "term": "slender",
+      "translations": { "fr": ["svelte"], "de": ["schlank"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "slender",
+      "examForms": ["slender"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈslendə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "The dancer had a slender figure and long, graceful hands.",
+        "translation": {
+          "fr": "La danseuse avait une silhouette svelte et de longues mains gracieuses.",
+          "de": "Die Tänzerin hatte eine schlanke Figur und lange, anmutige Hände."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Slender means pleasantly thin and graceful, a positive word.",
+        "fr": "Slender signifie mince de façon agréable et gracieuse : un mot positif.",
+        "de": "Slender bedeutet angenehm schlank und anmutig, ein positives Wort."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The dancer had a ",
+        "after": " figure and long, graceful fingers.",
+        "accepted": { "answers": ["slender"] },
+        "referenceTargetIds": ["slender", "stocky", "scruffy", "weather-beaten"],
+        "explanation": {
+          "en": "A graceful, thin dancer's figure is slender.",
+          "fr": "La silhouette fine et gracieuse d'une danseuse est slender.",
+          "de": "Die schlanke, anmutige Figur einer Tänzerin ist slender."
+        }
+      },
+      "listeningOptionTargetIds": ["slender", "stocky", "lanky", "scruffy"]
+    },
+    {
+      "id": "burly",
+      "term": "burly",
+      "translations": { "fr": ["costaud"], "de": ["bullig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "burly",
+      "examForms": ["burly"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈbɜːli/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Two burly guards stood at the gate.",
+        "translation": {
+          "fr": "Deux gardes costauds se tenaient à la grille.",
+          "de": "Zwei bullige Wachen standen am Tor."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Burly describes a large, strong, heavily built man.",
+        "fr": "Burly décrit un homme grand, fort et massif.",
+        "de": "Burly beschreibt einen großen, starken, kräftig gebauten Mann."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The ",
+        "after": " doorman, broad and muscular, blocked the entrance.",
+        "accepted": { "answers": ["burly"] },
+        "referenceTargetIds": ["burly", "petite", "gaunt", "slender"],
+        "explanation": {
+          "en": "A broad, muscular doorman is burly.",
+          "fr": "Un portier large et musclé est burly.",
+          "de": "Ein breiter, muskulöser Türsteher ist burly."
+        }
+      },
+      "listeningOptionTargetIds": ["burly", "ruddy", "gaunt", "lanky"]
+    },
+    {
+      "id": "gaunt",
+      "term": "gaunt",
+      "translations": { "fr": ["émacié"], "de": ["hager"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "gaunt",
+      "examForms": ["gaunt"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡɔːnt/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "He looked gaunt after months of illness.",
+        "translation": {
+          "fr": "Il avait l'air émacié après des mois de maladie.",
+          "de": "Er sah nach monatelanger Krankheit hager aus."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Gaunt is negative: it suggests illness, hunger or worry, unlike slender.",
+        "fr": "Gaunt est négatif : il évoque la maladie, la faim ou l'inquiétude, contrairement à slender.",
+        "de": "Gaunt ist negativ: Es deutet auf Krankheit, Hunger oder Sorgen hin, anders als slender."
+      },
+      "explanation": {
+        "en": "Gaunt means very thin, with hollow cheeks, usually from illness or hunger.",
+        "fr": "Gaunt signifie très maigre, aux joues creuses, en général à cause de la maladie ou de la faim.",
+        "de": "Gaunt bedeutet sehr mager mit eingefallenen Wangen, meist durch Krankheit oder Hunger."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "After weeks of illness his face looked ",
+        "after": ", with hollow cheeks.",
+        "accepted": { "answers": ["gaunt"] },
+        "referenceTargetIds": ["gaunt", "ruddy", "immaculate", "stocky"],
+        "explanation": {
+          "en": "Hollow cheeks after illness point to gaunt.",
+          "fr": "Des joues creuses après une maladie : gaunt.",
+          "de": "Eingefallene Wangen nach einer Krankheit deuten auf gaunt."
+        }
+      },
+      "listeningOptionTargetIds": ["gaunt", "burly", "petite", "slender"]
+    },
+    {
+      "id": "scruffy",
+      "term": "scruffy",
+      "translations": { "fr": ["négligé"], "de": ["ungepflegt"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "scruffy",
+      "examForms": ["scruffy"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈskrʌfi/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He turned up in scruffy jeans and an old sweatshirt.",
+        "translation": {
+          "fr": "Il est arrivé dans un jean négligé et un vieux sweat.",
+          "de": "Er erschien in ungepflegten Jeans und einem alten Sweatshirt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Scruffy means untidy and a bit worn or dirty in appearance.",
+        "fr": "Scruffy signifie peu soigné, avec un aspect un peu usé ou sale.",
+        "de": "Scruffy bedeutet ungepflegt und etwas abgetragen oder schmutzig im Aussehen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He turned up to the interview in ",
+        "after": " jeans and an unwashed shirt.",
+        "accepted": { "answers": ["scruffy"] },
+        "referenceTargetIds": ["scruffy", "immaculate", "slender", "clean-shaven"],
+        "explanation": {
+          "en": "Worn jeans and an unwashed shirt are scruffy.",
+          "fr": "Un jean usé et une chemise sale : scruffy.",
+          "de": "Abgetragene Jeans und ein ungewaschenes Hemd sind scruffy."
+        }
+      },
+      "listeningOptionTargetIds": ["scruffy", "stocky", "slender", "dishevelled"]
+    },
+    {
+      "id": "dishevelled",
+      "term": "dishevelled",
+      "translations": { "fr": ["ébouriffé"], "de": ["zerzaust"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "dishevelled",
+      "examForms": ["dishevelled"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/dɪˈʃevəld/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "She arrived dishevelled, her hair tangled by the wind.",
+        "translation": {
+          "fr": "Elle est arrivée ébouriffée, les cheveux emmêlés par le vent.",
+          "de": "Sie kam zerzaust an, die Haare vom Wind verwirrt."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Dishevelled is about hair and clothes in a mess, often temporarily; scruffy suggests a general lack of care.",
+        "fr": "Dishevelled concerne des cheveux et des vêtements en désordre, souvent passagèrement ; scruffy évoque un manque de soin général.",
+        "de": "Dishevelled meint durcheinandere Haare und Kleidung, oft nur vorübergehend; scruffy deutet auf generelle Nachlässigkeit hin."
+      },
+      "explanation": {
+        "en": "Dishevelled means messy in hair and clothes, as after a rush or a struggle.",
+        "fr": "Dishevelled signifie en désordre côté cheveux et vêtements, comme après une course ou une bagarre.",
+        "de": "Dishevelled bedeutet mit unordentlichen Haaren und Kleidern, etwa nach Hetze oder Gerangel."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She arrived ",
+        "after": ", her hair tangled and her blouse half untucked after running for the bus.",
+        "accepted": { "answers": ["dishevelled"] },
+        "referenceTargetIds": ["dishevelled", "immaculate", "petite", "clean-shaven"],
+        "explanation": {
+          "en": "Tangled hair and a half-untucked blouse after running mean dishevelled.",
+          "fr": "Cheveux emmêlés et chemisier sorti après une course : dishevelled.",
+          "de": "Verwirrte Haare und eine halb herausgerutschte Bluse nach dem Rennen bedeuten dishevelled."
+        }
+      },
+      "listeningOptionTargetIds": ["dishevelled", "scruffy", "immaculate", "weather-beaten"]
+    },
+    {
+      "id": "immaculate",
+      "term": "immaculate",
+      "translations": { "fr": ["impeccable"], "de": ["makellos"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "immaculate",
+      "examForms": ["immaculate"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɪˈmækjʊlət/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "The manager was always immaculate in a pressed grey suit.",
+        "translation": {
+          "fr": "Le directeur était toujours impeccable dans un costume gris repassé.",
+          "de": "Der Manager war stets makellos in einem gebügelten grauen Anzug."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Immaculate means perfectly clean and neat, without any fault.",
+        "fr": "Immaculate signifie parfaitement propre et soigné, sans le moindre défaut.",
+        "de": "Immaculate bedeutet vollkommen sauber und ordentlich, ohne jeden Makel."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The waiter's white uniform was ",
+        "after": ", without a single crease.",
+        "accepted": { "answers": ["immaculate"] },
+        "referenceTargetIds": ["immaculate", "scruffy", "gaunt", "ruddy"],
+        "explanation": {
+          "en": "A uniform without one crease is immaculate.",
+          "fr": "Un uniforme sans un seul pli est immaculate.",
+          "de": "Eine Uniform ohne eine einzige Falte ist immaculate."
+        }
+      },
+      "listeningOptionTargetIds": ["immaculate", "dishevelled", "scruffy", "clean-shaven"]
+    },
+    {
+      "id": "weather-beaten",
+      "term": "weather-beaten",
+      "translations": { "fr": ["buriné"], "de": ["wettergegerbt"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "weather-beaten",
+      "examForms": ["weather-beaten"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈweðə ˌbiːtn/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "The old shepherd had a weather-beaten face.",
+        "translation": {
+          "fr": "Le vieux berger avait le visage buriné.",
+          "de": "Der alte Schäfer hatte ein wettergegerbtes Gesicht."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Weather-beaten describes skin made rough and lined by years outdoors.",
+        "fr": "Weather-beaten décrit une peau rendue rugueuse et marquée par des années passées dehors.",
+        "de": "Weather-beaten beschreibt Haut, die durch Jahre im Freien rau und faltig geworden ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The fisherman's ",
+        "after": " face was lined by years of sun and wind.",
+        "accepted": { "answers": ["weather-beaten"] },
+        "referenceTargetIds": ["weather-beaten", "slender", "petite", "immaculate"],
+        "explanation": {
+          "en": "A face lined by sun and wind is weather-beaten.",
+          "fr": "Un visage marqué par le soleil et le vent est weather-beaten.",
+          "de": "Ein von Sonne und Wind gezeichnetes Gesicht ist weather-beaten."
+        }
+      },
+      "listeningOptionTargetIds": ["weather-beaten", "clean-shaven", "dishevelled", "ruddy"]
+    },
+    {
+      "id": "clean-shaven",
+      "term": "clean-shaven",
+      "translations": { "fr": ["rasé de près"], "de": ["glatt rasiert"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "clean-shaven",
+      "examForms": ["clean-shaven"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌkliːn ˈʃeɪvn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He used to have a beard, but now he is clean-shaven.",
+        "translation": {
+          "fr": "Il portait une barbe, mais il est maintenant rasé de près.",
+          "de": "Früher trug er einen Bart, aber jetzt ist er glatt rasiert."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Clean-shaven means with no beard or moustache.",
+        "fr": "Clean-shaven signifie sans barbe ni moustache.",
+        "de": "Clean-shaven bedeutet ohne Bart und Schnurrbart."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He used to have a beard, but now he is ",
+        "after": " and looks younger.",
+        "accepted": { "answers": ["clean-shaven"] },
+        "referenceTargetIds": ["clean-shaven", "stocky", "lanky", "gaunt"],
+        "explanation": {
+          "en": "No beard any more means clean-shaven.",
+          "fr": "Plus de barbe : clean-shaven.",
+          "de": "Kein Bart mehr bedeutet clean-shaven."
+        }
+      },
+      "listeningOptionTargetIds": ["clean-shaven", "immaculate", "weather-beaten", "scruffy"]
+    },
+    {
+      "id": "ruddy",
+      "term": "ruddy",
+      "translations": { "fr": ["rougeaud"], "de": ["rotwangig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ruddy",
+      "examForms": ["ruddy"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈrʌdi/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "His ruddy cheeks glowed in the cold air.",
+        "translation": {
+          "fr": "Ses joues rouges rayonnaient dans l'air froid.",
+          "de": "Seine roten Wangen glühten in der kalten Luft."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Ruddy describes a healthy, reddish complexion.",
+        "fr": "Ruddy décrit un teint rougeaud et en bonne santé.",
+        "de": "Ruddy beschreibt einen gesunden, rötlichen Teint."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Hiking in the cold left his cheeks ",
+        "after": " and glowing.",
+        "accepted": { "answers": ["ruddy"] },
+        "referenceTargetIds": ["ruddy", "gaunt", "immaculate", "petite"],
+        "explanation": {
+          "en": "Red, glowing cheeks from the cold are ruddy.",
+          "fr": "Des joues rouges et éclatantes à cause du froid : ruddy.",
+          "de": "Rote, glühende Wangen von der Kälte sind ruddy."
+        }
+      },
+      "listeningOptionTargetIds": ["ruddy", "burly", "lanky", "gaunt"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

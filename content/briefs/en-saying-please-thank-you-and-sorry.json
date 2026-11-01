@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 2,
+  "id": "en-saying-please-thank-you-and-sorry",
+  "lang": "en",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Saying please, thank you and sorry",
+  "objective": {
+    "en": "Ask politely, thank people and apologise, and give the usual replies: Please, Thank you very much, You’re welcome, Sorry, Excuse me, That’s OK.",
+    "fr": "Demander poliment, remercier et s’excuser, et donner les réponses habituelles : Please, Thank you very much, You’re welcome, Sorry, Excuse me, That’s OK.",
+    "de": "Höflich bitten, sich bedanken und sich entschuldigen und die üblichen Antworten geben: Please, Thank you very much, You’re welcome, Sorry, Excuse me, That’s OK."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:09.462Z",
+    "inputHashes": { "outline": "1b7fceae2ba6509bf637dab31fead129516884eb40868a73bb24626c485633ee" }
+  },
+  "kind": "functions",
+  "theme": "relations",
+  "situation": {
+    "en": "A customer buys a few things in a shop and talks politely to the shop assistant.",
+    "fr": "Un client achète quelques articles dans un magasin et parle poliment au vendeur.",
+    "de": "Ein Kunde kauft in einem Geschäft ein paar Dinge und spricht höflich mit dem Verkäufer."
+  },
+  "coverageNotes": {
+    "en": "Getting attention (Excuse me), asking politely (Please), thanking (Thank you very much) and answering (You’re welcome), apologising (Sorry) and accepting an apology (That’s OK).",
+    "fr": "Attirer l’attention (Excuse me), demander poliment (Please), remercier (Thank you very much) et répondre (You’re welcome), s’excuser (Sorry) et accepter des excuses (That’s OK).",
+    "de": "Aufmerksamkeit erregen (Excuse me), höflich bitten (Please), sich bedanken (Thank you very much) und antworten (You’re welcome), sich entschuldigen (Sorry) und eine Entschuldigung annehmen (That’s OK)."
+  },
+  "prerequisites": [],
+  "roles": [
+    {
+      "id": "customer",
+      "label": "the customer",
+      "translation": { "fr": "le client", "de": "der Kunde" }
+    },
+    {
+      "id": "assistant",
+      "label": "the shop assistant",
+      "translation": { "fr": "le vendeur", "de": "der Verkäufer" }
+    }
+  ],
+  "expressions": [
+    {
+      "id": "please",
+      "text": "Please",
+      "openEnd": false,
+      "translations": { "fr": ["S’il vous plaît"], "de": ["Bitte"] },
+      "explanation": {
+        "en": "Add it to a request to be polite. You can say it at the start or the end.",
+        "fr": "On l’ajoute à une demande pour être poli. On peut le dire au début ou à la fin.",
+        "de": "Man fügt es einer Bitte hinzu, um höflich zu sein. Man kann es am Anfang oder am Ende sagen."
+      },
+      "example": {
+        "text": "Water, please.",
+        "translation": { "fr": "De l’eau, s’il vous plaît.", "de": "Wasser, bitte." }
+      }
+    },
+    {
+      "id": "thank-you",
+      "text": "Thank you very much",
+      "openEnd": false,
+      "translations": { "fr": ["Merci beaucoup"], "de": ["Vielen Dank"] },
+      "explanation": {
+        "en": "A strong, polite way to thank someone.",
+        "fr": "Une façon polie et forte de remercier quelqu’un.",
+        "de": "Eine höfliche, deutliche Art, sich zu bedanken."
+      },
+      "example": {
+        "text": "Thank you very much for the coffee.",
+        "translation": { "fr": "Merci beaucoup pour le café.", "de": "Vielen Dank für den Kaffee." }
+      }
+    },
+    {
+      "id": "youre-welcome",
+      "text": "You’re welcome",
+      "openEnd": false,
+      "translations": { "fr": ["De rien"], "de": ["Gern geschehen"] },
+      "explanation": {
+        "en": "The usual reply when someone thanks you.",
+        "fr": "La réponse habituelle quand quelqu’un vous remercie.",
+        "de": "Die übliche Antwort, wenn sich jemand bei Ihnen bedankt."
+      },
+      "example": {
+        "text": "You’re welcome, Anna.",
+        "translation": { "fr": "De rien, Anna.", "de": "Gern geschehen, Anna." }
+      }
+    },
+    {
+      "id": "sorry",
+      "text": "Sorry",
+      "openEnd": false,
+      "translations": { "fr": ["Désolé"], "de": ["Tut mir leid"] },
+      "explanation": {
+        "en": "Say it to apologise for a mistake or a problem.",
+        "fr": "On le dit pour s’excuser d’une erreur ou d’un problème.",
+        "de": "Man sagt es, um sich für einen Fehler oder ein Problem zu entschuldigen."
+      },
+      "example": {
+        "text": "Sorry, I’m late.",
+        "translation": {
+          "fr": "Désolé, je suis en retard.",
+          "de": "Tut mir leid, ich bin zu spät."
+        }
+      }
+    },
+    {
+      "id": "excuse-me",
+      "text": "Excuse me",
+      "openEnd": false,
+      "translations": { "fr": ["Excusez-moi"], "de": ["Entschuldigung"] },
+      "explanation": {
+        "en": "Use it to get someone’s attention or to ask politely to pass.",
+        "fr": "On l’utilise pour attirer l’attention de quelqu’un ou pour demander poliment de passer.",
+        "de": "Man benutzt es, um die Aufmerksamkeit von jemandem zu bekommen oder höflich um Durchlass zu bitten."
+      },
+      "example": {
+        "text": "Excuse me, is this seat free?",
+        "translation": {
+          "fr": "Excusez-moi, cette place est libre ?",
+          "de": "Entschuldigung, ist dieser Platz frei?"
+        }
+      }
+    },
+    {
+      "id": "thats-ok",
+      "text": "That’s OK",
+      "openEnd": false,
+      "translations": { "fr": ["Ce n’est pas grave"], "de": ["Das ist in Ordnung"] },
+      "explanation": {
+        "en": "The usual reply to Sorry: it is not a problem.",
+        "fr": "La réponse habituelle à Sorry : ce n’est pas un problème.",
+        "de": "Die übliche Antwort auf Sorry: Es ist kein Problem."
+      },
+      "example": {
+        "text": "That’s OK, no problem.",
+        "translation": {
+          "fr": "Ce n’est pas grave, pas de problème.",
+          "de": "Das ist in Ordnung, kein Problem."
+        }
+      }
+    }
+  ],
+  "words": [],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

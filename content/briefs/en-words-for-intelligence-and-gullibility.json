@@ -1,0 +1,585 @@
+{
+  "schemaVersion": 2,
+  "id": "en-words-for-intelligence-and-gullibility",
+  "lang": "en",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Words for intelligence and gullibility",
+  "objective": {
+    "en": "Describe how sharp or easily fooled someone is, using twelve precise adjectives such as astute, obtuse and gullible.",
+    "fr": "Décrire la vivacité d’esprit ou la crédulité de quelqu’un avec douze adjectifs précis, comme astute, obtuse et gullible.",
+    "de": "Beschreiben, wie scharfsinnig oder leicht zu täuschen jemand ist, mit zwölf präzisen Adjektiven wie astute, obtuse und gullible."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:52:23.584Z",
+    "inputHashes": { "outline": "e75338030c84bac54263dcffe428641611dcd5f37b20193925a0591a8a91c265" }
+  },
+  "kind": "vocabulary",
+  "theme": "education",
+  "coverageNotes": {
+    "en": "Twelve adjectives in two groups: six for a sharp, learned or quick mind, and six for slowness of mind, gullibility and innocence about the world.",
+    "fr": "Douze adjectifs en deux groupes : six pour un esprit vif, savant ou rapide, et six pour la lenteur d’esprit, la crédulité et la naïveté face au monde.",
+    "de": "Zwölf Adjektive in zwei Gruppen: sechs für einen scharfen, gelehrten oder schnellen Geist und sechs für Begriffsstutzigkeit, Leichtgläubigkeit und Weltfremdheit."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words fit the outline and give two balanced groups of six, which suits the matching and exam pages.",
+    "fr": "Douze mots correspondent au plan et donnent deux groupes équilibrés de six, adaptés aux pages d’association et d’examen.",
+    "de": "Zwölf Wörter entsprechen der Gliederung und ergeben zwei ausgewogene Gruppen zu sechs, passend für Zuordnungs- und Prüfungsseiten."
+  },
+  "difficultyBalance": {
+    "en": "Most words are core C2 vocabulary; the finer shades (shrewd, credulous, guileless, unworldly) are marked demanding.",
+    "fr": "La plupart des mots sont du vocabulaire C2 de base ; les nuances plus fines (shrewd, credulous, guileless, unworldly) sont jugées exigeantes.",
+    "de": "Die meisten Wörter gehören zum C2-Kernwortschatz; die feineren Nuancen (shrewd, credulous, guileless, unworldly) gelten als anspruchsvoll."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "sharp",
+      "label": { "en": "A sharp mind", "fr": "Un esprit vif", "de": "Ein scharfer Geist" },
+      "targetIds": ["erudite", "astute", "shrewd", "perceptive", "quick-witted", "savvy"],
+      "introduction": {
+        "en": "These six adjectives praise a **sharp mind**, each in a different way:\n\n- `erudite`: deeply learned, from books and study\n- `astute`: quick to see how to gain an advantage\n- `shrewd`: practical and cunning in judgement\n- `perceptive`: quick to notice what others miss\n- `quick-witted`: fast at thinking and replying\n- `savvy`: well informed and practical, in an informal way",
+        "fr": "Ces six adjectifs louent un **esprit vif**, chacun à sa façon :\n\n- `erudite` : très savant, grâce aux livres et à l’étude\n- `astute` : prompt à voir comment tirer un avantage\n- `shrewd` : pratique et rusé dans son jugement\n- `perceptive` : prompt à remarquer ce que les autres manquent\n- `quick-witted` : rapide à réfléchir et à répondre\n- `savvy` : bien informé et avisé, de façon familière",
+        "de": "Diese sechs Adjektive loben einen **scharfen Geist**, jedes auf eigene Weise:\n\n- `erudite`: sehr gelehrt, durch Bücher und Studium\n- `astute`: schnell darin, einen Vorteil zu erkennen\n- `shrewd`: praktisch und gerissen im Urteil\n- `perceptive`: bemerkt schnell, was andere übersehen\n- `quick-witted`: schnell im Denken und Antworten\n- `savvy`: gut informiert und praktisch, umgangssprachlich"
+      }
+    },
+    {
+      "id": "slow",
+      "label": {
+        "en": "Slow or easily fooled",
+        "fr": "Lent ou facile à tromper",
+        "de": "Begriffsstutzig oder leicht zu täuschen"
+      },
+      "targetIds": ["obtuse", "dim-witted", "gullible", "credulous", "guileless", "unworldly"],
+      "introduction": {
+        "en": "These six adjectives describe people who are **slow to understand** or **easy to fool**:\n\n- `obtuse`: slow to understand, sometimes on purpose\n- `dim-witted`: not clever, a blunt and informal insult\n- `gullible`: too ready to be fooled\n- `credulous`: too ready to believe what they are told\n- `guileless`: honest, with no trace of cunning\n- `unworldly`: unaware of how practical life works",
+        "fr": "Ces six adjectifs décrivent des personnes **lentes à comprendre** ou **faciles à tromper** :\n\n- `obtuse` : lent à comprendre, parfois exprès\n- `dim-witted` : peu intelligent, une insulte directe et familière\n- `gullible` : trop prêt à se laisser duper\n- `credulous` : trop prêt à croire ce qu’on lui dit\n- `guileless` : honnête, sans trace de ruse\n- `unworldly` : étranger aux réalités pratiques de la vie",
+        "de": "Diese sechs Adjektive beschreiben Menschen, die **langsam verstehen** oder **leicht zu täuschen** sind:\n\n- `obtuse`: begreift langsam, manchmal absichtlich\n- `dim-witted`: nicht klug, eine derbe, umgangssprachliche Beleidigung\n- `gullible`: allzu leicht hereinzulegen\n- `credulous`: glaubt allzu bereitwillig, was man ihm sagt\n- `guileless`: ehrlich, ohne jede List\n- `unworldly`: unkundig in praktischen Dingen des Lebens"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "erudite",
+      "term": "erudite",
+      "translations": { "fr": ["érudit"], "de": ["gelehrt"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "erudite",
+      "examForms": ["erudite"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɛrʊdaɪt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Her erudite lectures drew on medieval history, philosophy and law.",
+        "translation": {
+          "fr": "Ses cours érudits puisaient dans l’histoire médiévale, la philosophie et le droit.",
+          "de": "Ihre gelehrten Vorlesungen schöpften aus mittelalterlicher Geschichte, Philosophie und Recht."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Erudite describes someone with deep knowledge gained from reading and study.",
+        "fr": "Erudite décrit quelqu’un dont le savoir profond vient de la lecture et de l’étude.",
+        "de": "Erudite beschreibt jemanden mit tiefem Wissen aus Lektüre und Studium."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The professor was so ",
+        "after": " that she could quote Dante and Virgil from memory.",
+        "accepted": { "answers": ["erudite"] },
+        "referenceTargetIds": ["erudite", "obtuse", "gullible", "guileless"],
+        "explanation": {
+          "en": "Quoting classic poets from memory shows deep learning, so only erudite fits.",
+          "fr": "Citer de mémoire des poètes classiques montre un grand savoir : seul « erudite » convient.",
+          "de": "Klassische Dichter auswendig zu zitieren zeigt tiefe Gelehrsamkeit, daher passt nur „erudite“."
+        }
+      },
+      "listeningOptionTargetIds": ["erudite", "astute", "shrewd", "perceptive"]
+    },
+    {
+      "id": "astute",
+      "term": "astute",
+      "translations": { "fr": ["astucieux"], "de": ["scharfsinnig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "astute",
+      "examForms": ["astute"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/əˈstjuːt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He is an astute negotiator who never gives anything away.",
+        "translation": {
+          "fr": "C’est un négociateur astucieux qui ne laisse jamais rien paraître.",
+          "de": "Er ist ein scharfsinniger Verhandler, der nie etwas preisgibt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Astute describes someone who sees quickly how a situation can be used to their advantage.",
+        "fr": "Astute décrit quelqu’un qui voit vite comment tirer parti d’une situation.",
+        "de": "Astute beschreibt jemanden, der schnell erkennt, wie sich eine Situation zum eigenen Vorteil nutzen lässt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "An ",
+        "after": " observer, she noticed at once that the figures did not add up.",
+        "accepted": { "answers": ["astute"] },
+        "referenceTargetIds": ["astute", "dim-witted", "credulous", "unworldly"],
+        "explanation": {
+          "en": "Noticing the error at once shows sharpness, so only astute fits.",
+          "fr": "Remarquer l’erreur aussitôt montre de la finesse : seul « astute » convient.",
+          "de": "Den Fehler sofort zu bemerken zeigt Scharfsinn, daher passt nur „astute“."
+        }
+      },
+      "listeningOptionTargetIds": ["astute", "shrewd", "perceptive", "quick-witted"]
+    },
+    {
+      "id": "shrewd",
+      "term": "shrewd",
+      "translations": { "fr": ["avisé"], "de": ["gerissen"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "shrewd",
+      "examForms": ["shrewd"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʃruːd/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "She made a shrewd investment just before prices doubled.",
+        "translation": {
+          "fr": "Elle a fait un placement avisé juste avant que les prix ne doublent.",
+          "de": "Sie tätigte eine kluge Investition, kurz bevor sich die Preise verdoppelten."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Shrewd stresses practical cunning in dealing with people or money; astute stresses quickly seeing an opportunity.",
+        "fr": "Shrewd insiste sur la ruse pratique avec les gens ou l’argent ; astute insiste sur la rapidité à saisir une occasion.",
+        "de": "Shrewd betont praktische Gerissenheit im Umgang mit Menschen oder Geld; astute betont das schnelle Erkennen einer Gelegenheit."
+      },
+      "explanation": {
+        "en": "Shrewd describes sound, slightly cunning practical judgement, especially about money or people.",
+        "fr": "Shrewd décrit un jugement pratique sûr et un peu rusé, surtout pour l’argent ou les gens.",
+        "de": "Shrewd beschreibt ein sicheres, leicht gerissenes praktisches Urteil, besonders bei Geld oder Menschen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "It was a ",
+        "after": " move: he bought the land just before the railway was announced.",
+        "accepted": { "answers": ["shrewd"] },
+        "referenceTargetIds": ["shrewd", "obtuse", "guileless", "erudite"],
+        "explanation": {
+          "en": "Profiting from timing is practical cunning, so only shrewd fits.",
+          "fr": "Profiter du bon moment est une ruse pratique : seul « shrewd » convient.",
+          "de": "Vom richtigen Zeitpunkt zu profitieren ist praktische Gerissenheit, daher passt nur „shrewd“."
+        }
+      },
+      "listeningOptionTargetIds": ["shrewd", "perceptive", "quick-witted", "savvy"]
+    },
+    {
+      "id": "perceptive",
+      "term": "perceptive",
+      "translations": { "fr": ["perspicace"], "de": ["feinsinnig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "perceptive",
+      "examForms": ["perceptive"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/pəˈsɛptɪv/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "It was a perceptive comment that changed the whole discussion.",
+        "translation": {
+          "fr": "C’était une remarque perspicace qui a changé toute la discussion.",
+          "de": "Es war eine feinsinnige Bemerkung, die die ganze Diskussion veränderte."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Perceptive describes someone who notices subtle things, such as feelings or hidden meanings, that others miss.",
+        "fr": "Perceptive décrit quelqu’un qui remarque des détails subtils, comme les sentiments ou les sens cachés, que les autres manquent.",
+        "de": "Perceptive beschreibt jemanden, der Feinheiten wie Gefühle oder versteckte Bedeutungen bemerkt, die andere übersehen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Her ",
+        "after": " remarks about the characters’ hidden motives showed she had read between the lines.",
+        "accepted": { "answers": ["perceptive"] },
+        "referenceTargetIds": ["perceptive", "gullible", "dim-witted", "unworldly"],
+        "explanation": {
+          "en": "Reading between the lines means noticing what is not said, so only perceptive fits.",
+          "fr": "Lire entre les lignes, c’est remarquer ce qui n’est pas dit : seul « perceptive » convient.",
+          "de": "Zwischen den Zeilen zu lesen heißt zu bemerken, was nicht gesagt wird, daher passt nur „perceptive“."
+        }
+      },
+      "listeningOptionTargetIds": ["perceptive", "quick-witted", "savvy", "obtuse"]
+    },
+    {
+      "id": "quick-witted",
+      "term": "quick-witted",
+      "translations": { "fr": ["vif d’esprit"], "de": ["schlagfertig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "quick-witted",
+      "examForms": ["quick-witted"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌkwɪkˈwɪtɪd/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "A quick-witted waiter saved the evening with a joke.",
+        "translation": {
+          "fr": "Un serveur vif d’esprit a sauvé la soirée avec une plaisanterie.",
+          "de": "Ein schlagfertiger Kellner rettete den Abend mit einem Witz."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Quick-witted describes someone who thinks and answers fast, often with humour.",
+        "fr": "Quick-witted décrit quelqu’un qui réfléchit et répond vite, souvent avec humour.",
+        "de": "Quick-witted beschreibt jemanden, der schnell denkt und antwortet, oft mit Humor."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He was so ",
+        "after": " that he had a perfect reply to every heckler.",
+        "accepted": { "answers": ["quick-witted"] },
+        "referenceTargetIds": ["quick-witted", "obtuse", "credulous", "guileless"],
+        "explanation": {
+          "en": "Having an instant reply to every heckler shows fast thinking, so only quick-witted fits.",
+          "fr": "Avoir une réplique immédiate à chaque chahuteur montre une pensée rapide : seul « quick-witted » convient.",
+          "de": "Auf jeden Zwischenrufer sofort eine Antwort zu haben zeigt schnelles Denken, daher passt nur „quick-witted“."
+        }
+      },
+      "listeningOptionTargetIds": ["quick-witted", "savvy", "obtuse", "dim-witted"]
+    },
+    {
+      "id": "savvy",
+      "term": "savvy",
+      "translations": { "fr": ["averti"], "de": ["versiert"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "savvy",
+      "examForms": ["savvy"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈsævi/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She is a savvy campaigner who knows how the media works.",
+        "translation": {
+          "fr": "C’est une militante avertie qui sait comment les médias fonctionnent.",
+          "de": "Sie ist eine versierte Kampagnenführerin, die weiß, wie die Medien arbeiten."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Savvy is an informal word for someone well informed and practically clever in a particular area.",
+        "fr": "Savvy est un mot familier pour quelqu’un de bien informé et pratiquement habile dans un domaine.",
+        "de": "Savvy ist ein umgangssprachliches Wort für jemanden, der in einem Bereich gut informiert und praktisch geschickt ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Politically ",
+        "after": ", she knew exactly which journalists to brief before the announcement.",
+        "accepted": { "answers": ["savvy"] },
+        "referenceTargetIds": ["savvy", "gullible", "guileless", "obtuse"],
+        "explanation": {
+          "en": "Knowing whom to brief shows practical know-how, so only savvy fits.",
+          "fr": "Savoir qui informer montre un savoir-faire pratique : seul « savvy » convient.",
+          "de": "Zu wissen, wen man informiert, zeigt praktisches Können, daher passt nur „savvy“."
+        }
+      },
+      "listeningOptionTargetIds": ["savvy", "obtuse", "dim-witted", "gullible"]
+    },
+    {
+      "id": "obtuse",
+      "term": "obtuse",
+      "translations": { "fr": ["obtus"], "de": ["begriffsstutzig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "obtuse",
+      "examForms": ["obtuse"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/əbˈtjuːs/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Don’t be so obtuse; you know exactly what I mean.",
+        "translation": {
+          "fr": "Ne sois pas si obtus ; tu sais très bien ce que je veux dire.",
+          "de": "Stell dich nicht so begriffsstutzig an; du weißt genau, was ich meine."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Obtuse is often used as a polite criticism of someone who seems unwilling to understand, not just unable.",
+        "fr": "Obtuse sert souvent de critique polie envers quelqu’un qui semble refuser de comprendre, pas seulement incapable.",
+        "de": "Obtuse ist oft eine höfliche Kritik an jemandem, der nicht verstehen zu wollen scheint, nicht nur nicht kann."
+      },
+      "explanation": {
+        "en": "Obtuse describes someone slow or unwilling to understand something obvious.",
+        "fr": "Obtuse décrit quelqu’un de lent ou réticent à comprendre une évidence.",
+        "de": "Obtuse beschreibt jemanden, der Offensichtliches langsam oder ungern versteht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Are you being deliberately ",
+        "after": ", or can you really not see why they are upset?",
+        "accepted": { "answers": ["obtuse"] },
+        "referenceTargetIds": ["obtuse", "astute", "perceptive", "shrewd"],
+        "explanation": {
+          "en": "Failing to see something obvious is the opposite of the other three, so only obtuse fits.",
+          "fr": "Ne pas voir une évidence est l’inverse des trois autres : seul « obtuse » convient.",
+          "de": "Etwas Offensichtliches nicht zu sehen ist das Gegenteil der anderen drei, daher passt nur „obtuse“."
+        }
+      },
+      "listeningOptionTargetIds": ["obtuse", "dim-witted", "gullible", "credulous"]
+    },
+    {
+      "id": "dim-witted",
+      "term": "dim-witted",
+      "translations": { "fr": ["lent d’esprit"], "de": ["dümmlich"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "dim-witted",
+      "examForms": ["dim-witted"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌdɪmˈwɪtɪd/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "The film’s villain is a dim-witted henchman who keeps losing the map.",
+        "translation": {
+          "fr": "Le méchant du film a un sbire lent d’esprit qui perd sans cesse la carte.",
+          "de": "Der Bösewicht des Films hat einen dümmlichen Handlanger, der ständig die Karte verliert."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Dim-witted is an informal, rather rude word for someone who is not clever.",
+        "fr": "Dim-witted est un mot familier, plutôt impoli, pour quelqu’un de peu intelligent.",
+        "de": "Dim-witted ist ein umgangssprachliches, eher unhöfliches Wort für jemanden, der nicht klug ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The film’s villain has a ",
+        "after": " henchman who forgets his own password every morning.",
+        "accepted": { "answers": ["dim-witted"] },
+        "referenceTargetIds": ["dim-witted", "erudite", "savvy", "quick-witted"],
+        "explanation": {
+          "en": "Forgetting a password every day shows a lack of intelligence, so only dim-witted fits.",
+          "fr": "Oublier son mot de passe chaque jour montre un manque d’intelligence : seul « dim-witted » convient.",
+          "de": "Jeden Tag sein Passwort zu vergessen zeigt mangelnde Intelligenz, daher passt nur „dim-witted“."
+        }
+      },
+      "listeningOptionTargetIds": ["dim-witted", "gullible", "credulous", "guileless"]
+    },
+    {
+      "id": "gullible",
+      "term": "gullible",
+      "translations": { "fr": ["facile à duper"], "de": ["leichtgläubig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "gullible",
+      "examForms": ["gullible"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɡʌlɪbəl/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He is so gullible that he sent money to a total stranger.",
+        "translation": {
+          "fr": "Il est si facile à duper qu’il a envoyé de l’argent à un parfait inconnu.",
+          "de": "Er ist so leichtgläubig, dass er einem völlig Fremden Geld schickte."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Gullible stresses being easily tricked; credulous stresses being too ready to believe.",
+        "fr": "Gullible insiste sur le fait d’être facilement trompé ; credulous sur la disposition à trop croire.",
+        "de": "Gullible betont, leicht getäuscht zu werden; credulous, allzu bereitwillig zu glauben."
+      },
+      "explanation": {
+        "en": "Gullible describes someone who is easily tricked into believing or doing something foolish.",
+        "fr": "Gullible décrit quelqu’un qu’on piège facilement pour lui faire croire ou faire une bêtise.",
+        "de": "Gullible beschreibt jemanden, der sich leicht zu einem törichten Glauben oder Tun verleiten lässt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Only a ",
+        "after": " person would believe an email promising a million pounds for nothing.",
+        "accepted": { "answers": ["gullible"] },
+        "referenceTargetIds": ["gullible", "shrewd", "astute", "perceptive"],
+        "explanation": {
+          "en": "Believing an obvious scam means being easily fooled, so only gullible fits.",
+          "fr": "Croire une arnaque évidente, c’est se laisser facilement tromper : seul « gullible » convient.",
+          "de": "Einen offensichtlichen Betrug zu glauben heißt, sich leicht täuschen zu lassen, daher passt nur „gullible“."
+        }
+      },
+      "listeningOptionTargetIds": ["gullible", "credulous", "guileless", "unworldly"]
+    },
+    {
+      "id": "credulous",
+      "term": "credulous",
+      "translations": { "fr": ["crédule"], "de": ["gutgläubig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "credulous",
+      "examForms": ["credulous"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈkrɛdjʊləs/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "The credulous audience accepted every claim without question.",
+        "translation": {
+          "fr": "Le public crédule a accepté chaque affirmation sans poser de question.",
+          "de": "Das gutgläubige Publikum nahm jede Behauptung ohne Nachfrage hin."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Credulous describes someone too ready to believe things without good evidence.",
+        "fr": "Credulous décrit quelqu’un trop prêt à croire sans preuve solide.",
+        "de": "Credulous beschreibt jemanden, der zu bereitwillig ohne gute Belege glaubt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The ",
+        "after": " crowd accepted every claim the preacher made, without asking for a shred of evidence.",
+        "accepted": { "answers": ["credulous"] },
+        "referenceTargetIds": ["credulous", "perceptive", "savvy", "erudite"],
+        "explanation": {
+          "en": "Accepting claims without evidence means believing too readily, so only credulous fits.",
+          "fr": "Accepter des affirmations sans preuve, c’est croire trop vite : seul « credulous » convient.",
+          "de": "Behauptungen ohne Beweis zu akzeptieren heißt, zu schnell zu glauben, daher passt nur „credulous“."
+        }
+      },
+      "listeningOptionTargetIds": ["credulous", "guileless", "unworldly", "erudite"]
+    },
+    {
+      "id": "guileless",
+      "term": "guileless",
+      "translations": { "fr": ["sans malice"], "de": ["arglos"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "guileless",
+      "examForms": ["guileless"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɡaɪlləs/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Her guileless honesty disarmed even the toughest critics.",
+        "translation": {
+          "fr": "Son honnêteté sans malice a désarmé même les critiques les plus durs.",
+          "de": "Ihre arglose Ehrlichkeit entwaffnete selbst die härtesten Kritiker."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Guileless describes someone honest and open, with no wish to deceive; it is often gentle praise.",
+        "fr": "Guileless décrit quelqu’un d’honnête et d’ouvert, sans désir de tromper ; c’est souvent un éloge doux.",
+        "de": "Guileless beschreibt jemanden, der ehrlich und offen ist und nicht täuschen will; oft ein sanftes Lob."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Her ",
+        "after": " smile and open manner made it impossible to imagine she was hiding anything.",
+        "accepted": { "answers": ["guileless"] },
+        "referenceTargetIds": ["guileless", "shrewd", "obtuse", "dim-witted"],
+        "explanation": {
+          "en": "An open manner with nothing hidden is the mark of someone without cunning, so only guileless fits.",
+          "fr": "Un air ouvert sans rien cacher est le signe de quelqu’un sans ruse : seul « guileless » convient.",
+          "de": "Eine offene Art ohne Verstecktes ist das Zeichen eines Menschen ohne List, daher passt nur „guileless“."
+        }
+      },
+      "listeningOptionTargetIds": ["guileless", "unworldly", "erudite", "astute"]
+    },
+    {
+      "id": "unworldly",
+      "term": "unworldly",
+      "translations": { "fr": ["ingénu"], "de": ["weltfremd"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "unworldly",
+      "examForms": ["unworldly"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʌnˈwɜːldli/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "The unworldly young monk had never handled money.",
+        "translation": {
+          "fr": "Le jeune moine ingénu n’avait jamais manié d’argent.",
+          "de": "Der weltfremde junge Mönch hatte nie mit Geld zu tun gehabt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Unworldly describes someone who knows little about practical matters such as money and city life.",
+        "fr": "Unworldly décrit quelqu’un qui connaît mal les réalités pratiques, comme l’argent et la vie urbaine.",
+        "de": "Unworldly beschreibt jemanden, der wenig über praktische Dinge wie Geld und Stadtleben weiß."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Brought up in a remote monastery, he was charmingly ",
+        "after": " about money and city life.",
+        "accepted": { "answers": ["unworldly"] },
+        "referenceTargetIds": ["unworldly", "quick-witted", "astute", "erudite"],
+        "explanation": {
+          "en": "Growing up cut off from ordinary life explains a lack of practical knowledge, so only unworldly fits.",
+          "fr": "Grandir coupé de la vie ordinaire explique le manque de sens pratique : seul « unworldly » convient.",
+          "de": "Abgeschieden vom normalen Leben aufzuwachsen erklärt mangelndes praktisches Wissen, daher passt nur „unworldly“."
+        }
+      },
+      "listeningOptionTargetIds": ["unworldly", "erudite", "astute", "shrewd"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

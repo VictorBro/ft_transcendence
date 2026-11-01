@@ -1,0 +1,1155 @@
+{
+  "schemaVersion": 2,
+  "id": "en-giving-your-opinion",
+  "lang": "en",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Giving your opinion",
+  "objective": {
+    "en": "Ask a friend what they thought of a film, a meal or a place, give your opinion, and agree or disagree.",
+    "fr": "Demander à un ami ce qu’il a pensé d’un film, d’un repas ou d’un lieu, donner son avis, et être d’accord ou non.",
+    "de": "Einen Freund fragen, wie er einen Film, ein Essen oder einen Ort fand, die eigene Meinung sagen und zustimmen oder widersprechen."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "claude-code",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:46:45.150Z",
+    "inputHashes": {
+      "outline": "cdfc269cecf0c3db7faf285789bd859cd1d310be67155497b6a0cdfce673579b",
+      "brief": "6f02b455c50d2cb50f410fa6393a8b9cd3c389406067cf06c3553b8a7dc71329"
+    }
+  },
+  "kind": "functions",
+  "theme": "free_time",
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "presentation",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "cards-expressions",
+          "estimatedDurationS": 72,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Recall each expression, then turn the card to check it.",
+            "fr": "Rappelez-vous chaque expression, puis retournez la carte pour vérifier.",
+            "de": "Erinnere dich an jeden Ausdruck und dreh dann die Karte um."
+          },
+          "items": [
+            {
+              "type": "function_flashcards",
+              "itemId": "cards-expressions",
+              "side": "expressions",
+              "ids": [
+                "what-did-you-think",
+                "i-thought-it-was",
+                "i-found-it",
+                "i-agree",
+                "really",
+                "i-dont-agree"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue",
+      "stage": "dialogue",
+      "role": "presentation",
+      "label": { "en": "Dialogue", "fr": "Dialogue", "de": "Dialog" },
+      "pages": [
+        {
+          "pageId": "dialogue",
+          "estimatedDurationS": 140,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read and listen. Turn a line to see its translation and a note.",
+            "fr": "Lisez et écoutez. Retournez une réplique pour voir sa traduction et une remarque.",
+            "de": "Lies und hör zu. Dreh eine Zeile um, um Übersetzung und Hinweis zu sehen."
+          },
+          "items": [
+            {
+              "type": "function_dialogue",
+              "itemId": "dialogue",
+              "lines": [
+                {
+                  "lineId": "line-1",
+                  "roleId": "lily",
+                  "text": "Hi Sam! You went to the cinema last night, didn't you?",
+                  "translation": {
+                    "fr": "Salut Sam ! Tu es allé au cinéma hier soir, non ?",
+                    "de": "Hallo Sam! Du warst gestern Abend im Kino, oder?"
+                  },
+                  "note": {
+                    "en": "Lily starts the conversation with a question about last night.",
+                    "fr": "Lily commence la conversation par une question sur la veille au soir.",
+                    "de": "Lily beginnt das Gespräch mit einer Frage über gestern Abend."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-2",
+                  "roleId": "sam",
+                  "text": "Yes, I saw the new space film.",
+                  "translation": {
+                    "fr": "Oui, j’ai vu le nouveau film sur l’espace.",
+                    "de": "Ja, ich habe den neuen Weltraumfilm gesehen."
+                  },
+                  "note": {
+                    "en": "Saw is the past of see.",
+                    "fr": "Saw est le passé de see.",
+                    "de": "Saw ist die Vergangenheit von see."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-3",
+                  "roleId": "lily",
+                  "text": "What did you think of it?",
+                  "translation": {
+                    "fr": "Qu’est-ce que tu en as pensé ?",
+                    "de": "Wie fandest du ihn?"
+                  },
+                  "note": {
+                    "en": "Lily asks for Sam's opinion. It is the film.",
+                    "fr": "Lily demande l’avis de Sam. It, c’est le film.",
+                    "de": "Lily fragt nach Sams Meinung. It ist der Film."
+                  },
+                  "expressionIds": ["what-did-you-think"]
+                },
+                {
+                  "lineId": "line-4",
+                  "roleId": "sam",
+                  "text": "I thought it was brilliant. The music was amazing.",
+                  "translation": {
+                    "fr": "J’ai trouvé qu’il était génial. La musique était incroyable.",
+                    "de": "Ich fand, er war großartig. Die Musik war fantastisch."
+                  },
+                  "note": {
+                    "en": "I thought it was + an adjective gives his opinion.",
+                    "fr": "I thought it was + un adjectif donne son avis.",
+                    "de": "I thought it was + ein Adjektiv gibt seine Meinung."
+                  },
+                  "expressionIds": ["i-thought-it-was"]
+                },
+                {
+                  "lineId": "line-5",
+                  "roleId": "lily",
+                  "text": "Really? I saw it last week. I found it really boring.",
+                  "translation": {
+                    "fr": "Vraiment ? Je l’ai vu la semaine dernière. Je l’ai trouvé vraiment ennuyeux.",
+                    "de": "Wirklich? Ich habe ihn letzte Woche gesehen. Ich fand ihn echt langweilig."
+                  },
+                  "note": {
+                    "en": "Really? shows surprise; then she gives a different opinion with I found it.",
+                    "fr": "Really? montre la surprise ; puis elle donne un autre avis avec I found it.",
+                    "de": "Really? zeigt Überraschung; dann sagt sie mit I found it eine andere Meinung."
+                  },
+                  "expressionIds": ["really", "i-found-it"]
+                },
+                {
+                  "lineId": "line-6",
+                  "roleId": "sam",
+                  "text": "Boring? I don't agree. It was so exciting!",
+                  "translation": {
+                    "fr": "Ennuyeux ? Je ne suis pas d’accord. C’était tellement passionnant !",
+                    "de": "Langweilig? Das finde ich nicht. Er war so spannend!"
+                  },
+                  "note": {
+                    "en": "Sam disagrees, then gives his reason.",
+                    "fr": "Sam n’est pas d’accord, puis donne sa raison.",
+                    "de": "Sam widerspricht und nennt dann seinen Grund."
+                  },
+                  "expressionIds": ["i-dont-agree"]
+                },
+                {
+                  "lineId": "line-7",
+                  "roleId": "lily",
+                  "text": "OK, the music was fantastic. I agree with you there.",
+                  "translation": {
+                    "fr": "D’accord, la musique était fantastique. Là, je suis d’accord avec toi.",
+                    "de": "OK, die Musik war fantastisch. Da stimme ich dir zu."
+                  },
+                  "note": {
+                    "en": "I agree with you: Lily has the same opinion about the music.",
+                    "fr": "I agree with you : Lily a le même avis sur la musique.",
+                    "de": "I agree with you: Lily hat dieselbe Meinung über die Musik."
+                  },
+                  "expressionIds": ["i-agree"]
+                },
+                {
+                  "lineId": "line-8",
+                  "roleId": "sam",
+                  "text": "And what did you think of the Italian restaurant next to the cinema?",
+                  "translation": {
+                    "fr": "Et qu’as-tu pensé du restaurant italien à côté du cinéma ?",
+                    "de": "Und wie fandest du das italienische Restaurant neben dem Kino?"
+                  },
+                  "note": {
+                    "en": "Now Sam asks for her opinion of a place.",
+                    "fr": "Maintenant, Sam lui demande son avis sur un lieu.",
+                    "de": "Jetzt fragt Sam nach ihrer Meinung zu einem Ort."
+                  },
+                  "expressionIds": ["what-did-you-think"]
+                },
+                {
+                  "lineId": "line-9",
+                  "roleId": "lily",
+                  "text": "I thought it was lovely, but a bit expensive.",
+                  "translation": {
+                    "fr": "J’ai trouvé qu’il était très bien, mais un peu cher.",
+                    "de": "Ich fand, es war sehr schön, aber ein bisschen teuer."
+                  },
+                  "note": {
+                    "en": "A good point and a bad point, joined with but.",
+                    "fr": "Un point positif et un point négatif, reliés par but.",
+                    "de": "Ein guter und ein schlechter Punkt, verbunden mit but."
+                  },
+                  "expressionIds": ["i-thought-it-was"]
+                },
+                {
+                  "lineId": "line-10",
+                  "roleId": "sam",
+                  "text": "I agree. Let's go there again on Friday!",
+                  "translation": {
+                    "fr": "Je suis d’accord. Retournons-y vendredi !",
+                    "de": "Da hast du recht. Lass uns am Freitag wieder hingehen!"
+                  },
+                  "note": {
+                    "en": "Sam agrees and makes a plan.",
+                    "fr": "Sam est d’accord et propose un projet.",
+                    "de": "Sam stimmt zu und macht einen Plan."
+                  },
+                  "expressionIds": ["i-agree"]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "match-expressions-1",
+          "estimatedDurationS": 72,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each expression with its translation.",
+            "fr": "Associez chaque expression à sa traduction.",
+            "de": "Ordne jedem Ausdruck seine Übersetzung zu."
+          },
+          "items": [
+            {
+              "type": "function_matching",
+              "itemId": "match-expressions-1",
+              "side": "expressions",
+              "pairs": [
+                {
+                  "id": "what-did-you-think",
+                  "answerExplanation": {
+                    "en": "Asks for an opinion.",
+                    "fr": "Demande un avis.",
+                    "de": "Fragt nach einer Meinung."
+                  }
+                },
+                {
+                  "id": "i-thought-it-was",
+                  "answerExplanation": {
+                    "en": "Gives an opinion, with was.",
+                    "fr": "Donne un avis, avec was.",
+                    "de": "Gibt eine Meinung, mit was."
+                  }
+                },
+                {
+                  "id": "i-found-it",
+                  "answerExplanation": {
+                    "en": "Gives an opinion, without was.",
+                    "fr": "Donne un avis, sans was.",
+                    "de": "Gibt eine Meinung, ohne was."
+                  }
+                },
+                {
+                  "id": "i-agree",
+                  "answerExplanation": {
+                    "en": "The same opinion.",
+                    "fr": "Le même avis.",
+                    "de": "Dieselbe Meinung."
+                  }
+                },
+                {
+                  "id": "really",
+                  "answerExplanation": {
+                    "en": "Shows surprise.",
+                    "fr": "Montre la surprise.",
+                    "de": "Zeigt Überraschung."
+                  }
+                },
+                {
+                  "id": "i-dont-agree",
+                  "answerExplanation": {
+                    "en": "A different opinion.",
+                    "fr": "Un autre avis.",
+                    "de": "Eine andere Meinung."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-gaps",
+      "stage": "dialogue_gaps",
+      "role": "exercise",
+      "label": { "en": "Dialogue gaps", "fr": "Dialogue à trous", "de": "Dialoglücken" },
+      "pages": [
+        {
+          "pageId": "gap-1",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-1",
+              "expressionId": "what-did-you-think",
+              "context": { "roleId": "sam", "text": "I went to the new pizza place on Saturday." },
+              "roleId": "lily",
+              "before": "Oh, nice!",
+              "after": "it?",
+              "choiceExpressionIds": ["what-did-you-think", "i-agree", "really", "i-found-it"],
+              "answerExplanation": {
+                "en": "Lily asks for Sam's opinion of the pizza place.",
+                "fr": "Lily demande l’avis de Sam sur la pizzeria.",
+                "de": "Lily fragt nach Sams Meinung zur Pizzeria."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-2",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-2",
+              "expressionId": "i-thought-it-was",
+              "context": { "roleId": "lily", "text": "What did you think of the museum?" },
+              "roleId": "sam",
+              "before": "",
+              "after": "really interesting.",
+              "choiceExpressionIds": [
+                "i-thought-it-was",
+                "what-did-you-think",
+                "i-dont-agree",
+                "really"
+              ],
+              "answerExplanation": {
+                "en": "Sam answers the question with his opinion: I thought it was + adjective.",
+                "fr": "Sam répond à la question par son avis : I thought it was + adjectif.",
+                "de": "Sam beantwortet die Frage mit seiner Meinung: I thought it was + Adjektiv."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-3",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-3",
+              "expressionId": "i-found-it",
+              "context": { "roleId": "sam", "text": "The book was fantastic, wasn't it?" },
+              "roleId": "lily",
+              "before": "Not for me.",
+              "after": "a bit strange.",
+              "choiceExpressionIds": ["i-found-it", "i-agree", "what-did-you-think", "really"],
+              "answerExplanation": {
+                "en": "I found it + adjective gives Lily's opinion of the book.",
+                "fr": "I found it + adjectif donne l’avis de Lily sur le livre.",
+                "de": "I found it + Adjektiv gibt Lilys Meinung über das Buch."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-4",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-4",
+              "expressionId": "i-agree",
+              "context": { "roleId": "lily", "text": "The beach was beautiful." },
+              "roleId": "sam",
+              "before": "Yes,",
+              "after": "It was lovely.",
+              "choiceExpressionIds": [
+                "i-agree",
+                "i-thought-it-was",
+                "what-did-you-think",
+                "i-found-it"
+              ],
+              "answerExplanation": {
+                "en": "Yes and lovely: Sam has the same opinion.",
+                "fr": "Yes et lovely : Sam a le même avis.",
+                "de": "Yes und lovely: Sam hat dieselbe Meinung."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-5",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-5",
+              "expressionId": "really",
+              "context": { "roleId": "sam", "text": "I thought the concert was awful." },
+              "roleId": "lily",
+              "before": "",
+              "after": "I loved it!",
+              "choiceExpressionIds": ["really", "i-agree", "i-thought-it-was", "i-found-it"],
+              "answerExplanation": {
+                "en": "Lily is surprised: her opinion is very different.",
+                "fr": "Lily est surprise : son avis est très différent.",
+                "de": "Lily ist überrascht: Ihre Meinung ist ganz anders."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-6",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-6",
+              "expressionId": "i-dont-agree",
+              "context": { "roleId": "lily", "text": "That hotel was terrible." },
+              "roleId": "sam",
+              "before": "",
+              "after": "The rooms were really nice.",
+              "choiceExpressionIds": [
+                "i-dont-agree",
+                "i-agree",
+                "i-found-it",
+                "what-did-you-think"
+              ],
+              "answerExplanation": {
+                "en": "Sam liked the rooms, so he disagrees with Lily.",
+                "fr": "Sam a aimé les chambres, donc il n’est pas d’accord avec Lily.",
+                "de": "Sam mochte die Zimmer, also widerspricht er Lily."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "word-order",
+      "stage": "word_order",
+      "role": "exercise",
+      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
+      "pages": [
+        {
+          "pageId": "order-1",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-1",
+              "expressionId": "what-did-you-think",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "What" },
+                { "tokenId": "t2", "text": "did" },
+                { "tokenId": "t3", "text": "you" },
+                { "tokenId": "t4", "text": "think" },
+                { "tokenId": "t5", "text": "of" },
+                { "tokenId": "t6", "text": "the" },
+                { "tokenId": "t7", "text": "match?" }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
+              "answerExplanation": {
+                "en": "A past question: What did you think of + the thing?",
+                "fr": "Une question au passé : What did you think of + la chose ?",
+                "de": "Eine Frage in der Vergangenheit: What did you think of + die Sache?"
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-2",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-2",
+              "expressionId": "i-thought-it-was",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "I" },
+                { "tokenId": "t2", "text": "thought" },
+                { "tokenId": "t3", "text": "it" },
+                { "tokenId": "t4", "text": "was" },
+                { "tokenId": "t5", "text": "awful." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]],
+              "answerExplanation": {
+                "en": "I thought it was, then the adjective.",
+                "fr": "I thought it was, puis l’adjectif.",
+                "de": "I thought it was, dann das Adjektiv."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-3",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-3",
+              "expressionId": "i-found-it",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "I" },
+                { "tokenId": "t2", "text": "found" },
+                { "tokenId": "t3", "text": "it" },
+                { "tokenId": "t4", "text": "really" },
+                { "tokenId": "t5", "text": "funny." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]],
+              "answerExplanation": {
+                "en": "I found it, then really + the adjective.",
+                "fr": "I found it, puis really + l’adjectif.",
+                "de": "I found it, dann really + das Adjektiv."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-4",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-4",
+              "expressionId": "i-agree",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "I" },
+                { "tokenId": "t2", "text": "agree" },
+                { "tokenId": "t3", "text": "with" },
+                { "tokenId": "t4", "text": "you." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4"]],
+              "answerExplanation": {
+                "en": "I agree with you: agree is a verb, with no am.",
+                "fr": "I agree with you : agree est un verbe, sans am.",
+                "de": "I agree with you: agree ist ein Verb, ohne am."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-5",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-5",
+              "expressionId": "really",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Really?" },
+                { "tokenId": "t2", "text": "You" },
+                { "tokenId": "t3", "text": "didn't" },
+                { "tokenId": "t4", "text": "like" },
+                { "tokenId": "t5", "text": "it?" }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]],
+              "answerExplanation": {
+                "en": "Really? comes first, to show surprise.",
+                "fr": "Really? vient en premier, pour montrer la surprise.",
+                "de": "Really? steht zuerst, um Überraschung zu zeigen."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-6",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-6",
+              "expressionId": "i-dont-agree",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Sorry," },
+                { "tokenId": "t2", "text": "but" },
+                { "tokenId": "t3", "text": "I" },
+                { "tokenId": "t4", "text": "don't" },
+                { "tokenId": "t5", "text": "agree." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]],
+              "answerExplanation": {
+                "en": "Sorry, but makes I don't agree sound polite.",
+                "fr": "Sorry, but rend I don't agree plus poli.",
+                "de": "Sorry, but macht I don't agree höflicher."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "listening",
+      "stage": "listening",
+      "role": "exercise",
+      "label": { "en": "Listening", "fr": "Écoute", "de": "Hören" },
+      "pages": [
+        {
+          "pageId": "listening-1",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-1",
+              "expressionId": "what-did-you-think",
+              "context": { "roleId": "sam", "text": "I saw a play at the theatre last night." },
+              "roleId": "lily",
+              "options": [
+                { "optionId": "o1", "text": "Oh! What did you think of it?" },
+                { "optionId": "o2", "text": "Yes, I agree." },
+                { "optionId": "o3", "text": "No, I don't agree." },
+                { "optionId": "o4", "text": "See you later." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "Lily did not see the play, so she asks for Sam's opinion.",
+                "fr": "Lily n’a pas vu la pièce, donc elle demande l’avis de Sam.",
+                "de": "Lily hat das Stück nicht gesehen, also fragt sie nach Sams Meinung."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-2",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-2",
+              "expressionId": "i-thought-it-was",
+              "context": { "roleId": "lily", "text": "What did you think of the restaurant?" },
+              "roleId": "sam",
+              "options": [
+                { "optionId": "o1", "text": "I thought it was fantastic." },
+                { "optionId": "o2", "text": "What did you think of it?" },
+                { "optionId": "o3", "text": "Nice to meet you." },
+                { "optionId": "o4", "text": "I agree." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "Lily asks for his opinion, so Sam gives it.",
+                "fr": "Lily demande son avis, donc Sam le donne.",
+                "de": "Lily fragt nach seiner Meinung, also sagt Sam sie."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-3",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-3",
+              "expressionId": "i-found-it",
+              "context": { "roleId": "sam", "text": "Did you like the football match?" },
+              "roleId": "lily",
+              "options": [
+                { "optionId": "o1", "text": "Not really. I found it boring." },
+                { "optionId": "o2", "text": "What did you think of it?" },
+                { "optionId": "o3", "text": "Yes, please." },
+                { "optionId": "o4", "text": "I'm fine, thanks." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "Lily answers with her opinion: she didn't like it.",
+                "fr": "Lily répond par son avis : elle n’a pas aimé.",
+                "de": "Lily antwortet mit ihrer Meinung: Es hat ihr nicht gefallen."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-4",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-4",
+              "expressionId": "i-agree",
+              "context": { "roleId": "lily", "text": "The new park is lovely, isn't it?" },
+              "roleId": "sam",
+              "options": [
+                { "optionId": "o1", "text": "Yes, I agree. It's beautiful." },
+                { "optionId": "o2", "text": "Thank you very much." },
+                { "optionId": "o3", "text": "It's twenty past five." },
+                { "optionId": "o4", "text": "Hello, how are you?" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "Sam has the same opinion as Lily.",
+                "fr": "Sam a le même avis que Lily.",
+                "de": "Sam hat dieselbe Meinung wie Lily."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-5",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-5",
+              "expressionId": "really",
+              "context": { "roleId": "sam", "text": "I thought the museum was boring." },
+              "roleId": "lily",
+              "options": [
+                { "optionId": "o1", "text": "Really? I thought it was great." },
+                { "optionId": "o2", "text": "Yes, please." },
+                { "optionId": "o3", "text": "Good morning." },
+                { "optionId": "o4", "text": "My name is Lily." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "Lily is surprised and gives a different opinion.",
+                "fr": "Lily est surprise et donne un autre avis.",
+                "de": "Lily ist überrascht und sagt eine andere Meinung."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-6",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-6",
+              "expressionId": "i-dont-agree",
+              "context": { "roleId": "lily", "text": "That film was terrible!" },
+              "roleId": "sam",
+              "options": [
+                { "optionId": "o1", "text": "I don't agree. It was great." },
+                { "optionId": "o2", "text": "Nice to meet you." },
+                { "optionId": "o3", "text": "What time is it?" },
+                { "optionId": "o4", "text": "See you tomorrow." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "Sam liked the film, so he disagrees.",
+                "fr": "Sam a aimé le film, donc il n’est pas d’accord.",
+                "de": "Sam mochte den Film, also widerspricht er."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam-replies-1",
+          "estimatedDurationS": 120,
+          "timeLimitS": 180,
+          "instructions": {
+            "en": "Build the answer. Not every word fits.",
+            "fr": "Construisez la réponse. Tous les mots ne servent pas.",
+            "de": "Bilde die Antwort. Nicht jedes Wort passt."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "reply-1",
+              "expressionId": "what-did-you-think",
+              "context": { "roleId": "sam", "text": "We had dinner at the new Thai restaurant." },
+              "roleId": "lily",
+              "tokens": [
+                { "tokenId": "t1", "text": "Cool!" },
+                { "tokenId": "t2", "text": "What" },
+                { "tokenId": "t3", "text": "did" },
+                { "tokenId": "t4", "text": "you" },
+                { "tokenId": "t5", "text": "think" },
+                { "tokenId": "t6", "text": "of" },
+                { "tokenId": "t7", "text": "the" },
+                { "tokenId": "t8", "text": "food?" },
+                { "tokenId": "t9", "text": "thinked" }
+              ],
+              "distractorTokenIds": ["t9"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8"]],
+              "answerExplanation": {
+                "en": "After did, the verb stays think; thinked is not a word.",
+                "fr": "Après did, le verbe reste think ; thinked n’existe pas.",
+                "de": "Nach did bleibt das Verb think; thinked gibt es nicht."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-2",
+              "expressionId": "i-found-it",
+              "context": { "roleId": "lily", "text": "Did you enjoy the museum?" },
+              "roleId": "sam",
+              "tokens": [
+                { "tokenId": "t1", "text": "No," },
+                { "tokenId": "t2", "text": "I" },
+                { "tokenId": "t3", "text": "found" },
+                { "tokenId": "t4", "text": "it" },
+                { "tokenId": "t5", "text": "a" },
+                { "tokenId": "t6", "text": "bit" },
+                { "tokenId": "t7", "text": "boring." },
+                { "tokenId": "t8", "text": "finded" }
+              ],
+              "distractorTokenIds": ["t8"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
+              "answerExplanation": {
+                "en": "The past of find is found, not finded.",
+                "fr": "Le passé de find est found, pas finded.",
+                "de": "Die Vergangenheit von find ist found, nicht finded."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-3",
+              "expressionId": "i-agree",
+              "context": { "roleId": "sam", "text": "The beach was really beautiful." },
+              "roleId": "lily",
+              "tokens": [
+                { "tokenId": "t1", "text": "Yes," },
+                { "tokenId": "t2", "text": "I" },
+                { "tokenId": "t3", "text": "agree." },
+                { "tokenId": "t4", "text": "It" },
+                { "tokenId": "t5", "text": "was" },
+                { "tokenId": "t6", "text": "amazing." },
+                { "tokenId": "t7", "text": "am" }
+              ],
+              "distractorTokenIds": ["t7"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "answerExplanation": {
+                "en": "Agree is a verb: I agree, never I am agree.",
+                "fr": "Agree est un verbe : I agree, jamais I am agree.",
+                "de": "Agree ist ein Verb: I agree, nie I am agree."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-4",
+              "expressionId": "i-dont-agree",
+              "context": { "roleId": "lily", "text": "The concert was so boring." },
+              "roleId": "sam",
+              "tokens": [
+                { "tokenId": "t1", "text": "I" },
+                { "tokenId": "t2", "text": "don't" },
+                { "tokenId": "t3", "text": "agree." },
+                { "tokenId": "t4", "text": "It" },
+                { "tokenId": "t5", "text": "was" },
+                { "tokenId": "t6", "text": "brilliant." },
+                { "tokenId": "t7", "text": "not" }
+              ],
+              "distractorTokenIds": ["t7"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "answerExplanation": {
+                "en": "The negative is I don't agree, not I not agree.",
+                "fr": "La négation est I don't agree, pas I not agree.",
+                "de": "Die Verneinung ist I don't agree, nicht I not agree."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-dialogue",
+          "estimatedDurationS": 144,
+          "timeLimitS": 216,
+          "instructions": {
+            "en": "Fill each gap with an expression from this lesson.",
+            "fr": "Complétez chaque trou avec une expression de la leçon.",
+            "de": "Fülle jede Lücke mit einem Ausdruck aus dieser Lektion."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_typing",
+              "itemId": "exam-dialogue",
+              "lines": [
+                {
+                  "lineId": "exam-line-1",
+                  "roleId": "lily",
+                  "before": "Hi Sam! I went to the new art gallery on Sunday.",
+                  "translation": {
+                    "fr": "Salut Sam ! Je suis allée à la nouvelle galerie d’art dimanche.",
+                    "de": "Hallo Sam! Ich war am Sonntag in der neuen Kunstgalerie."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-2",
+                  "roleId": "sam",
+                  "before": "Oh, I went there too!",
+                  "translation": {
+                    "fr": "Oh, j’y suis allé aussi ! Qu’est-ce que tu en as pensé ?",
+                    "de": "Oh, da war ich auch! Wie fandest du sie?"
+                  },
+                  "gap": {
+                    "gapId": "gap-2",
+                    "expressionId": "what-did-you-think",
+                    "accepted": { "answers": ["What did you think of"] },
+                    "answerExplanation": {
+                      "en": "Sam asks for Lily's opinion: What did you think of it?",
+                      "fr": "Sam demande l’avis de Lily : What did you think of it?",
+                      "de": "Sam fragt nach Lilys Meinung: What did you think of it?"
+                    }
+                  },
+                  "after": "it?"
+                },
+                {
+                  "lineId": "exam-line-3",
+                  "roleId": "lily",
+                  "before": "",
+                  "translation": {
+                    "fr": "J’ai trouvé qu’elle était magnifique. Les tableaux étaient incroyables.",
+                    "de": "Ich fand, sie war wunderbar. Die Bilder waren fantastisch."
+                  },
+                  "gap": {
+                    "gapId": "gap-3",
+                    "expressionId": "i-thought-it-was",
+                    "accepted": { "answers": ["I thought it was"] },
+                    "answerExplanation": {
+                      "en": "Lily gives her opinion: I thought it was + adjective.",
+                      "fr": "Lily donne son avis : I thought it was + adjectif.",
+                      "de": "Lily sagt ihre Meinung: I thought it was + Adjektiv."
+                    }
+                  },
+                  "after": "wonderful. The paintings were amazing."
+                },
+                {
+                  "lineId": "exam-line-4",
+                  "roleId": "sam",
+                  "before": "",
+                  "translation": {
+                    "fr": "Vraiment ? Je l’ai trouvée un peu ennuyeuse.",
+                    "de": "Wirklich? Ich fand sie ein bisschen langweilig."
+                  },
+                  "gap": {
+                    "gapId": "gap-4",
+                    "expressionId": "really",
+                    "accepted": { "answers": ["Really?", "Really"] },
+                    "answerExplanation": {
+                      "en": "Sam is surprised, because his opinion is different.",
+                      "fr": "Sam est surpris, parce que son avis est différent.",
+                      "de": "Sam ist überrascht, weil seine Meinung anders ist."
+                    }
+                  },
+                  "after": "I found it a bit boring."
+                },
+                {
+                  "lineId": "exam-line-5",
+                  "roleId": "lily",
+                  "before": "Boring? Not for me! But the café there was very nice.",
+                  "translation": {
+                    "fr": "Ennuyeuse ? Pas pour moi ! Mais le café là-bas était très sympa.",
+                    "de": "Langweilig? Für mich nicht! Aber das Café dort war sehr nett."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-6",
+                  "roleId": "sam",
+                  "before": "",
+                  "translation": {
+                    "fr": "Je suis d’accord avec toi pour le café. Il était super.",
+                    "de": "Beim Café stimme ich dir zu. Es war toll."
+                  },
+                  "gap": {
+                    "gapId": "gap-6",
+                    "expressionId": "i-agree",
+                    "accepted": { "answers": ["I agree"] },
+                    "answerExplanation": {
+                      "en": "Sam has the same opinion about the café: I agree with you.",
+                      "fr": "Sam a le même avis sur le café : I agree with you.",
+                      "de": "Sam hat dieselbe Meinung über das Café: I agree with you."
+                    }
+                  },
+                  "after": "with you about the café. It was great."
+                },
+                {
+                  "lineId": "exam-line-7",
+                  "roleId": "lily",
+                  "before": "Let's go there together next weekend.",
+                  "translation": {
+                    "fr": "Allons-y ensemble le week-end prochain.",
+                    "de": "Lass uns nächstes Wochenende zusammen hingehen."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-8",
+                  "roleId": "sam",
+                  "before": "Good idea! See you on Saturday.",
+                  "translation": {
+                    "fr": "Bonne idée ! À samedi.",
+                    "de": "Gute Idee! Bis Samstag."
+                  },
+                  "gap": null,
+                  "after": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

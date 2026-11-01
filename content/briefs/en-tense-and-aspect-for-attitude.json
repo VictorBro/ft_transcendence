@@ -1,0 +1,298 @@
+{
+  "schemaVersion": 2,
+  "id": "en-tense-and-aspect-for-attitude",
+  "lang": "en",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Tense and aspect for politeness and attitude",
+  "objective": {
+    "en": "Use past forms to sound tentative, continuous forms with always to sound irritated, and will have to make confident assumptions about the present.",
+    "fr": "Utiliser le passé pour paraître hésitant, le continu avec always pour montrer l'agacement, et will have pour faire des suppositions sur le présent.",
+    "de": "Vergangenheitsformen für zurückhaltende Bitten, Continuous-Formen mit always für Ärger und will have für Vermutungen über die Gegenwart verwenden."
+  },
+  "estimatedMinutes": 21,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:54:40.952Z",
+    "inputHashes": { "outline": "27023d2a63824841ff50568a98ed3a8b8ec6f3ff768faa4a96f7098dbc0dcfe3" }
+  },
+  "kind": "grammar",
+  "topic": "verb_usage",
+  "scopeBoundaries": {
+    "en": "Covers tentative past forms in requests, always/constantly/forever with continuous forms for irritation, and will have (been) for assumptions. Excludes plain will for habits and guesses, and conditionals.",
+    "fr": "Couvre les formes du passé pour les demandes hésitantes, always/constantly/forever avec le continu pour l'agacement, et will have (been) pour les suppositions. Exclut will simple pour habitudes et déductions, et les conditionnels.",
+    "de": "Behandelt Vergangenheitsformen für zurückhaltende Bitten, always/constantly/forever mit Continuous-Formen für Ärger und will have (been) für Vermutungen. Ausgeschlossen: einfaches will für Gewohnheiten und Vermutungen sowie Konditionalsätze."
+  },
+  "prerequisites": [
+    {
+      "en": "Past simple, past continuous, present continuous and present perfect forms",
+      "fr": "Les formes du prétérit, du past continuous, du présent continu et du present perfect",
+      "de": "Formen von Simple Past, Past Continuous, Present Continuous und Present Perfect"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-tentative-past",
+      "summary": {
+        "en": "Past forms such as was hoping, was wondering and wanted to make a request about now sound tentative and polite.",
+        "fr": "Les formes du passé comme was hoping, was wondering et wanted rendent une demande actuelle hésitante et polie.",
+        "de": "Vergangenheitsformen wie was hoping, was wondering und wanted lassen eine Bitte über die Gegenwart zurückhaltend und höflich klingen."
+      }
+    },
+    {
+      "id": "rule-irritation-continuous",
+      "summary": {
+        "en": "Always, constantly or forever with a continuous form shows irritation at a repeated habit, now or in the past.",
+        "fr": "Always, constantly ou forever avec un temps continu montre l'agacement devant une habitude répétée, présente ou passée.",
+        "de": "Always, constantly oder forever mit einer Continuous-Form zeigt Ärger über eine wiederholte Gewohnheit, jetzt oder früher."
+      }
+    },
+    {
+      "id": "rule-assumption-future-perfect",
+      "summary": {
+        "en": "Will have + past participle, or will have been + -ing, expresses an assumption about what is probably true or already done.",
+        "fr": "Will have + participe passé, ou will have been + -ing, exprime une supposition sur ce qui est probablement vrai ou déjà fait.",
+        "de": "Will have + Partizip Perfekt oder will have been + -ing drückt eine Vermutung aus über das, was wahrscheinlich stimmt oder schon geschehen ist."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-tentative",
+      "title": {
+        "en": "Sounding tentative with past forms",
+        "fr": "Paraître hésitant avec le passé",
+        "de": "Zurückhaltend klingen mit der Vergangenheit"
+      },
+      "ruleIds": ["rule-tentative-past"],
+      "explanationPlan": {
+        "en": "Explain that the past tense adds distance rather than past time. Show hope becoming was hoping, want becoming wanted, and the past continuous as the softest option, followed by could or would.",
+        "fr": "Expliquer que le passé ajoute de la distance et non du temps passé. Montrer hope devenant was hoping, want devenant wanted, et le past continuous comme option la plus douce, suivi de could ou would.",
+        "de": "Erklären, dass die Vergangenheit Abstand und keine Vergangenheitszeit ausdrückt. Zeigen, wie aus hope was hoping wird, aus want wanted, und das Past Continuous als weichste Option, gefolgt von could oder would."
+      },
+      "explanationDurationS": 100,
+      "examples": [
+        {
+          "text": "I was hoping you could give me a hand.",
+          "translation": {
+            "fr": "J'espérais que tu pourrais me donner un coup de main.",
+            "de": "Ich hatte gehofft, du könntest mir helfen."
+          }
+        },
+        {
+          "text": "We were wondering whether you'd like to join us.",
+          "translation": {
+            "fr": "Nous nous demandions si vous aimeriez nous rejoindre.",
+            "de": "Wir haben uns gefragt, ob du Lust hättest, dich uns anzuschließen."
+          }
+        },
+        {
+          "text": "I wanted to ask you a favour.",
+          "translation": {
+            "fr": "Je voulais vous demander un service.",
+            "de": "Ich wollte dich um einen Gefallen bitten."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "The past forms refer to now or the future, not to the past: do not translate them as finished actions.",
+          "fr": "Ces formes du passé renvoient au présent ou au futur, pas au passé : ne les traduisez pas comme des actions terminées.",
+          "de": "Diese Vergangenheitsformen beziehen sich auf jetzt oder die Zukunft, nicht auf die Vergangenheit."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-tent-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 3,
+          "ruleIds": ["rule-tentative-past"],
+          "estimatedDurationS": 45
+        },
+        {
+          "id": "ex-tent-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 3,
+          "ruleIds": ["rule-tentative-past"],
+          "estimatedDurationS": 75
+        },
+        {
+          "id": "ex-tent-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-tentative-past"],
+          "estimatedDurationS": 90
+        }
+      ]
+    },
+    {
+      "id": "block-irritation",
+      "title": {
+        "en": "Showing irritation with always and the continuous",
+        "fr": "Montrer son agacement avec always et le continu",
+        "de": "Ärger zeigen mit always und Continuous"
+      },
+      "ruleIds": ["rule-irritation-continuous"],
+      "explanationPlan": {
+        "en": "Show the present continuous with always, constantly and forever to complain about repeated habits, and the past continuous for habits that used to annoy. Contrast with the neutral simple present.",
+        "fr": "Montrer le présent continu avec always, constantly et forever pour se plaindre d'habitudes répétées, et le past continuous pour les habitudes passées agaçantes. Comparer avec le présent simple neutre.",
+        "de": "Das Present Continuous mit always, constantly und forever für Beschwerden über wiederholte Gewohnheiten zeigen, das Past Continuous für früher störende Gewohnheiten. Mit dem neutralen Simple Present vergleichen."
+      },
+      "explanationDurationS": 90,
+      "examples": [
+        {
+          "text": "She's constantly losing her keys.",
+          "translation": {
+            "fr": "Elle perd sans arrêt ses clés.",
+            "de": "Sie verliert ständig ihre Schlüssel."
+          }
+        },
+        {
+          "text": "He's always leaving the lights on.",
+          "translation": {
+            "fr": "Il laisse toujours les lumières allumées.",
+            "de": "Er lässt immer das Licht an."
+          }
+        },
+        {
+          "text": "You were forever interrupting me.",
+          "translation": {
+            "fr": "Tu n'arrêtais pas de m'interrompre.",
+            "de": "Du hast mich ständig unterbrochen."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "The simple present with always is neutral; it is the continuous that carries the complaint.",
+          "fr": "Le présent simple avec always est neutre ; c'est le continu qui porte le reproche.",
+          "de": "Das Simple Present mit always ist neutral; erst das Continuous trägt die Beschwerde."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-irr-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 3,
+          "ruleIds": ["rule-irritation-continuous"],
+          "estimatedDurationS": 45
+        },
+        {
+          "id": "ex-irr-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 3,
+          "ruleIds": ["rule-irritation-continuous"],
+          "estimatedDurationS": 75
+        },
+        {
+          "id": "ex-irr-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-irritation-continuous"],
+          "estimatedDurationS": 90
+        }
+      ]
+    },
+    {
+      "id": "block-assumption",
+      "title": {
+        "en": "Making assumptions with will have",
+        "fr": "Faire des suppositions avec will have",
+        "de": "Vermutungen äußern mit will have"
+      },
+      "ruleIds": ["rule-assumption-future-perfect"],
+      "explanationPlan": {
+        "en": "Show will have + past participle and will have been + -ing as guesses about the present or what has probably happened already, not predictions about the future.",
+        "fr": "Montrer will have + participe passé et will have been + -ing comme des suppositions sur le présent ou sur ce qui s'est probablement déjà passé, et non comme des prévisions.",
+        "de": "Will have + Partizip Perfekt und will have been + -ing als Vermutungen über die Gegenwart oder bereits Geschehenes zeigen, nicht als Zukunftsvorhersagen."
+      },
+      "explanationDurationS": 100,
+      "examples": [
+        {
+          "text": "You'll have been travelling all day.",
+          "translation": {
+            "fr": "Vous avez dû voyager toute la journée.",
+            "de": "Du bist sicher den ganzen Tag unterwegs gewesen."
+          }
+        },
+        {
+          "text": "She'll have heard the news by now.",
+          "translation": {
+            "fr": "Elle aura sûrement appris la nouvelle maintenant.",
+            "de": "Sie wird die Neuigkeit inzwischen sicher gehört haben."
+          }
+        },
+        {
+          "text": "You'll have had a long journey.",
+          "translation": {
+            "fr": "Vous avez dû faire un long voyage.",
+            "de": "Du hattest sicher eine lange Reise."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not use will have for real future plans; it guesses about now or the past.",
+          "fr": "N'utilisez pas will have pour de vrais projets futurs ; il sert à deviner le présent ou le passé.",
+          "de": "Verwende will have nicht für echte Zukunftspläne; es vermutet über Gegenwart oder Vergangenheit."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-ass-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 3,
+          "ruleIds": ["rule-assumption-future-perfect"],
+          "estimatedDurationS": 45
+        },
+        {
+          "id": "ex-ass-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 3,
+          "ruleIds": ["rule-assumption-future-perfect"],
+          "estimatedDurationS": 75
+        },
+        {
+          "id": "ex-ass-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-assumption-future-perfect"],
+          "estimatedDurationS": 90
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-tentative",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-tentative-past"],
+        "estimatedDurationS": 100,
+        "timeLimitS": 150
+      },
+      {
+        "pageId": "exam-irritation",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-irritation-continuous"],
+        "estimatedDurationS": 100,
+        "timeLimitS": 150
+      },
+      {
+        "pageId": "exam-assumption",
+        "type": "grammar_word_order",
+        "itemCount": 4,
+        "ruleIds": ["rule-assumption-future-perfect"],
+        "estimatedDurationS": 120,
+        "timeLimitS": 200
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

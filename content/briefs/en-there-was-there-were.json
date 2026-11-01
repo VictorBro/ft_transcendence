@@ -1,0 +1,252 @@
+{
+  "schemaVersion": 2,
+  "id": "en-there-was-there-were",
+  "lang": "en",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "There was and there were",
+  "objective": {
+    "en": "Describe a place or an event in the past with there was and there were, in statements, negatives and questions.",
+    "fr": "Décrire un lieu ou un événement passé avec there was et there were, à la forme affirmative, négative et interrogative.",
+    "de": "Einen Ort oder ein Ereignis in der Vergangenheit mit there was und there were beschreiben, in Aussagen, Verneinungen und Fragen."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:09.509Z",
+    "inputHashes": { "outline": "eda91471c1e1c31e660413aaf969a1373e14547a53ecbfd96460d857db7ff816" }
+  },
+  "kind": "grammar",
+  "topic": "syntax_and_sentence_structure",
+  "scopeBoundaries": {
+    "en": "Covers there was and there were in statements, negatives with any, and yes/no questions with short answers. Excludes there is and there are, there will be and wh- questions.",
+    "fr": "Couvre there was et there were à la forme affirmative, négative avec any et en questions fermées avec réponses courtes. Exclut there is, there are, there will be et les questions en wh-.",
+    "de": "Behandelt there was und there were in Aussagen, Verneinungen mit any und Ja/Nein-Fragen mit Kurzantworten. Ausgeschlossen sind there is, there are, there will be und Fragen mit Fragewörtern."
+  },
+  "prerequisites": [
+    {
+      "en": "The past simple of be: was and were",
+      "fr": "Le prétérit de be : was et were",
+      "de": "Das Simple Past von be: was und were"
+    },
+    {
+      "en": "Countable and uncountable nouns at A1 level",
+      "fr": "Les noms dénombrables et indénombrables (niveau A1)",
+      "de": "Zählbare und nicht zählbare Nomen auf A1-Niveau"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-affirmative",
+      "summary": {
+        "en": "Use there was with one thing or an uncountable noun, and there were with plural nouns.",
+        "fr": "Utiliser there was avec un seul élément ou un nom indénombrable, et there were avec un pluriel.",
+        "de": "There was steht bei einer Sache oder einem nicht zählbaren Nomen, there were bei Plural."
+      }
+    },
+    {
+      "id": "rule-negative",
+      "summary": {
+        "en": "Make the negative with wasn't and weren't, followed by a or any: There weren't any taxis.",
+        "fr": "La négation se fait avec wasn't et weren't, suivis de a ou any : There weren't any taxis.",
+        "de": "Die Verneinung mit wasn't und weren't, gefolgt von a oder any: There weren't any taxis."
+      }
+    },
+    {
+      "id": "rule-question",
+      "summary": {
+        "en": "Make questions with Was there or Were there, and answer Yes, there was or No, there weren't.",
+        "fr": "Poser les questions avec Was there ou Were there, et répondre Yes, there was ou No, there weren't.",
+        "de": "Fragen mit Was there oder Were there bilden und mit Yes, there was oder No, there weren't antworten."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-affirmative",
+      "title": {
+        "en": "There was and there were",
+        "fr": "There was et there were",
+        "de": "There was und there were"
+      },
+      "ruleIds": ["rule-affirmative"],
+      "explanationPlan": {
+        "en": "Explain that there was and there were say what existed in the past. There was goes with one thing or an uncountable noun, there were with plurals. Link to there is and there are.",
+        "fr": "Expliquer que there was et there were disent ce qui existait dans le passé. There was va avec un seul élément ou un nom indénombrable, there were avec un pluriel. Faire le lien avec there is et there are.",
+        "de": "Erklären, dass there was und there were sagen, was in der Vergangenheit da war. There was steht bei einer Sache oder einem nicht zählbaren Nomen, there were bei Plural. Bezug zu there is und there are herstellen."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "There was a party last night.",
+          "translation": {
+            "fr": "Il y avait une fête hier soir.",
+            "de": "Gestern Abend gab es eine Party."
+          }
+        },
+        {
+          "text": "There was some music in the park.",
+          "translation": {
+            "fr": "Il y avait de la musique dans le parc.",
+            "de": "Im Park gab es Musik."
+          }
+        },
+        {
+          "text": "There were two beds in the room.",
+          "translation": {
+            "fr": "Il y avait deux lits dans la chambre.",
+            "de": "Im Zimmer gab es zwei Betten."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not use there was with a plural noun: say There were two cats, not There was two cats.",
+          "fr": "N'utilisez pas there was avec un pluriel : dites There were two cats, pas There was two cats.",
+          "de": "Benutze there was nicht mit einem Plural: There were two cats, nicht There was two cats."
+        },
+        {
+          "en": "After a lot of, look at the noun: a lot of snow takes was, a lot of people takes were.",
+          "fr": "Après a lot of, regardez le nom : a lot of snow prend was, a lot of people prend were.",
+          "de": "Achte nach a lot of auf das Nomen: a lot of snow steht mit was, a lot of people mit were."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-aff-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-affirmative"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-aff-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-affirmative"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-aff-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["rule-affirmative"],
+          "estimatedDurationS": 75
+        }
+      ]
+    },
+    {
+      "id": "block-negative-questions",
+      "title": {
+        "en": "Negatives and questions",
+        "fr": "Négations et questions",
+        "de": "Verneinung und Fragen"
+      },
+      "ruleIds": ["rule-negative", "rule-question"],
+      "explanationPlan": {
+        "en": "Teach there wasn't and there weren't with a and any. Then teach questions with Was there and Were there, and short answers such as Yes, there was and No, there weren't.",
+        "fr": "Enseigner there wasn't et there weren't avec a et any. Puis enseigner les questions avec Was there et Were there, et les réponses courtes comme Yes, there was et No, there weren't.",
+        "de": "There wasn't und there weren't mit a und any vermitteln. Dann Fragen mit Was there und Were there und Kurzantworten wie Yes, there was und No, there weren't lehren."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "There wasn't a lift in the hotel.",
+          "translation": {
+            "fr": "Il n'y avait pas d'ascenseur dans l'hôtel.",
+            "de": "Im Hotel gab es keinen Aufzug."
+          }
+        },
+        {
+          "text": "There weren't any seats on the train.",
+          "translation": {
+            "fr": "Il n'y avait pas de places dans le train.",
+            "de": "Im Zug gab es keine Sitzplätze."
+          }
+        },
+        {
+          "text": "Was there a doctor in the village?",
+          "translation": {
+            "fr": "Y avait-il un médecin dans le village ?",
+            "de": "Gab es im Dorf einen Arzt?"
+          }
+        },
+        {
+          "text": "Were there any shops near the hotel?",
+          "translation": {
+            "fr": "Y avait-il des magasins près de l'hôtel ?",
+            "de": "Gab es Geschäfte in der Nähe des Hotels?"
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not add did in questions: say Was there a lift?, not Did there was a lift?",
+          "fr": "N'ajoutez pas did dans les questions : dites Was there a lift ?, pas Did there was a lift ?",
+          "de": "Füge in Fragen kein did hinzu: Was there a lift?, nicht Did there was a lift?"
+        },
+        {
+          "en": "Use any, not a, with plural and uncountable nouns after a negative: There weren't any taxis.",
+          "fr": "Utilisez any, pas a, avec un pluriel ou un nom indénombrable après une négation : There weren't any taxis.",
+          "de": "Benutze nach einer Verneinung any, nicht a, bei Plural und nicht zählbaren Nomen: There weren't any taxis."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-neg-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-negative", "rule-question"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-neg-order",
+          "type": "grammar_word_order",
+          "itemCount": 4,
+          "ruleIds": ["rule-negative", "rule-question"],
+          "estimatedDurationS": 100
+        },
+        {
+          "id": "ex-neg-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-negative", "rule-question"],
+          "estimatedDurationS": 80
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-gaps-1",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-affirmative", "rule-negative"],
+        "estimatedDurationS": 80,
+        "timeLimitS": 120
+      },
+      {
+        "pageId": "exam-gaps-2",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["rule-question"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 90
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-negative", "rule-question"],
+        "estimatedDurationS": 75,
+        "timeLimitS": 110
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

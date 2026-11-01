@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 2,
+  "id": "en-talking-about-your-weekend",
+  "lang": "en",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Talking about your weekend",
+  "objective": {
+    "en": "Ask a friend about their weekend and tell them about yours in order: where you went, what you saw and what you did.",
+    "fr": "Demander à un ami comment s’est passé son week-end et raconter le vôtre dans l’ordre : où vous êtes allé, ce que vous avez vu et fait.",
+    "de": "Einen Freund nach seinem Wochenende fragen und von dem eigenen der Reihe nach erzählen: wohin man ging, was man sah und tat."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:09.495Z",
+    "inputHashes": { "outline": "4aa2d82a9a6ab083fd04440024e87c6a9c886cf07c4c75613c52b4e21587807a" }
+  },
+  "kind": "functions",
+  "theme": "free_time",
+  "situation": {
+    "en": "Two friends, Ben and Mia, meet on Monday and talk about their weekend.",
+    "fr": "Deux amis, Ben et Mia, se retrouvent lundi et parlent de leur week-end.",
+    "de": "Zwei Freunde, Ben und Mia, treffen sich am Montag und sprechen über ihr Wochenende."
+  },
+  "coverageNotes": {
+    "en": "Asking about the weekend (How was your weekend?, What did you do?), telling it in order (We went to the seaside, There was a market, Then we had lunch) and giving a general opinion (It was great).",
+    "fr": "Demander le week-end (How was your weekend?, What did you do?), le raconter dans l’ordre (We went to the seaside, There was a market, Then we had lunch) et donner un avis général (It was great).",
+    "de": "Nach dem Wochenende fragen (How was your weekend?, What did you do?), der Reihe nach erzählen (We went to the seaside, There was a market, Then we had lunch) und eine allgemeine Meinung geben (It was great)."
+  },
+  "prerequisites": [],
+  "roles": [
+    { "id": "ben", "label": "Ben", "translation": { "fr": "Ben", "de": "Ben" } },
+    { "id": "mia", "label": "Mia", "translation": { "fr": "Mia", "de": "Mia" } }
+  ],
+  "expressions": [
+    {
+      "id": "how-was",
+      "text": "How was your weekend?",
+      "openEnd": false,
+      "translations": {
+        "fr": ["Comment s’est passé ton week-end ?"],
+        "de": ["Wie war dein Wochenende?"]
+      },
+      "explanation": {
+        "en": "A friendly question to start the conversation on Monday.",
+        "fr": "Une question amicale pour commencer la conversation le lundi.",
+        "de": "Eine freundliche Frage, um am Montag ein Gespräch zu beginnen."
+      },
+      "example": {
+        "text": "Hi Ben! How was your weekend?",
+        "translation": {
+          "fr": "Salut Ben ! Comment s’est passé ton week-end ?",
+          "de": "Hallo Ben! Wie war dein Wochenende?"
+        }
+      }
+    },
+    {
+      "id": "what-did-you-do",
+      "text": "What did you do?",
+      "openEnd": false,
+      "translations": { "fr": ["Qu’as-tu fait ?"], "de": ["Was hast du gemacht?"] },
+      "explanation": {
+        "en": "Asks for details about the past. Use did + you + do.",
+        "fr": "Demande des détails sur le passé. On utilise did + you + do.",
+        "de": "Fragt nach Einzelheiten in der Vergangenheit. Man nutzt did + you + do."
+      },
+      "example": {
+        "text": "Oh, nice. What did you do?",
+        "translation": {
+          "fr": "Oh, super. Qu’as-tu fait ?",
+          "de": "Oh, schön. Was hast du gemacht?"
+        }
+      }
+    },
+    {
+      "id": "we-went",
+      "text": "We went to the seaside",
+      "openEnd": false,
+      "translations": {
+        "fr": ["Nous sommes allés à la mer"],
+        "de": ["Wir sind ans Meer gefahren"]
+      },
+      "explanation": {
+        "en": "Tells where you went. Went is the past of go.",
+        "fr": "Dit où vous êtes allé. Went est le passé de go.",
+        "de": "Sagt, wohin ihr gegangen seid. Went ist die Vergangenheit von go."
+      },
+      "example": {
+        "text": "On Saturday we went to the seaside.",
+        "translation": {
+          "fr": "Samedi, nous sommes allés à la mer.",
+          "de": "Am Samstag sind wir ans Meer gefahren."
+        }
+      }
+    },
+    {
+      "id": "there-was",
+      "text": "There was a market",
+      "openEnd": false,
+      "translations": { "fr": ["Il y avait un marché"], "de": ["Es gab einen Markt"] },
+      "explanation": {
+        "en": "Describes what was in a place. Use there was with one thing.",
+        "fr": "Décrit ce qu’il y avait dans un lieu. On utilise there was pour une seule chose.",
+        "de": "Beschreibt, was an einem Ort war. Man nutzt there was bei einer einzelnen Sache."
+      },
+      "example": {
+        "text": "In the town there was a market.",
+        "translation": {
+          "fr": "Dans la ville, il y avait un marché.",
+          "de": "In der Stadt gab es einen Markt."
+        }
+      }
+    },
+    {
+      "id": "then-we-had-lunch",
+      "text": "Then we had lunch",
+      "openEnd": false,
+      "translations": {
+        "fr": ["Ensuite, nous avons déjeuné"],
+        "de": ["Dann haben wir zu Mittag gegessen"]
+      },
+      "explanation": {
+        "en": "Then puts the next event in order. Had is the past of have.",
+        "fr": "Then place l’événement suivant dans l’ordre. Had est le passé de have.",
+        "de": "Then ordnet das nächste Ereignis ein. Had ist die Vergangenheit von have."
+      },
+      "example": {
+        "text": "We walked by the sea. Then we had lunch.",
+        "translation": {
+          "fr": "Nous nous sommes promenés au bord de la mer. Ensuite, nous avons déjeuné.",
+          "de": "Wir sind am Meer spazieren gegangen. Dann haben wir zu Mittag gegessen."
+        }
+      }
+    },
+    {
+      "id": "it-was-great",
+      "text": "It was great",
+      "openEnd": false,
+      "translations": { "fr": ["C’était super"], "de": ["Es war toll"] },
+      "explanation": {
+        "en": "Gives your general opinion of the weekend or a trip.",
+        "fr": "Donne votre avis général sur le week-end ou une sortie.",
+        "de": "Gibt deine allgemeine Meinung zum Wochenende oder zu einem Ausflug."
+      },
+      "example": {
+        "text": "How was the concert? It was great!",
+        "translation": {
+          "fr": "Comment était le concert ? C’était super !",
+          "de": "Wie war das Konzert? Es war toll!"
+        }
+      }
+    }
+  ],
+  "words": [],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

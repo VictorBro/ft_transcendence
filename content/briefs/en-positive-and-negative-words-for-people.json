@@ -1,0 +1,616 @@
+{
+  "schemaVersion": 2,
+  "id": "en-positive-and-negative-words-for-people",
+  "lang": "en",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Praise or criticism: two words for one trait",
+  "objective": {
+    "en": "Choose between positive and negative words for the same trait, such as thrifty or tight-fisted.",
+    "fr": "Choisir entre un mot élogieux et un mot critique pour un même trait, comme thrifty ou tight-fisted.",
+    "de": "Zwischen positiven und negativen Wörtern für dieselbe Eigenschaft wählen, etwa thrifty oder tight-fisted."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:49:11.191Z",
+    "inputHashes": { "outline": "88f648d53132d81775eb5f978b8d3fa4ba6cd6c1b79de497416e8928ea04eeba" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Twelve adjectives in six pairs. Each pair describes one trait, once with approval and once with criticism: sensitive/touchy, thrifty/tight-fisted, inquisitive/nosy, self-assured/cocky, persistent/pushy, frank/tactless. Earlier lessons cover neutral character adjectives and idioms.",
+    "fr": "Douze adjectifs en six paires. Chaque paire décrit un même trait, une fois avec approbation et une fois avec critique : sensitive/touchy, thrifty/tight-fisted, inquisitive/nosy, self-assured/cocky, persistent/pushy, frank/tactless. Les autres leçons couvrent les adjectifs neutres de caractère et les expressions idiomatiques.",
+    "de": "Zwölf Adjektive in sechs Paaren. Jedes Paar beschreibt dieselbe Eigenschaft, einmal anerkennend und einmal kritisch: sensitive/touchy, thrifty/tight-fisted, inquisitive/nosy, self-assured/cocky, persistent/pushy, frank/tactless. Neutrale Charakteradjektive und Redewendungen werden in anderen Lektionen behandelt."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words make six clear pairs, enough to practise contrasts without overload at C1.",
+    "fr": "Douze mots forment six paires claires, assez pour travailler les contrastes sans surcharge au niveau C1.",
+    "de": "Zwölf Wörter ergeben sechs klare Paare, genug zum Üben der Gegensätze ohne Überlastung auf C1."
+  },
+  "difficultyBalance": {
+    "en": "Most words are core C1 vocabulary; the pairs where the negative word is close in meaning are marked demanding.",
+    "fr": "La plupart des mots sont du vocabulaire C1 de base ; les paires où le mot négatif est proche par le sens sont marquées difficiles.",
+    "de": "Die meisten Wörter gehören zum C1-Grundwortschatz; Paare mit sehr ähnlicher Bedeutung sind als anspruchsvoll markiert."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "feelings-money-curiosity",
+      "label": {
+        "en": "Sensitivity, money and curiosity",
+        "fr": "Sensibilité, argent et curiosité",
+        "de": "Feingefühl, Geld und Neugier"
+      },
+      "targetIds": ["sensitive", "touchy", "thrifty", "tight-fisted", "inquisitive", "nosy"],
+      "introduction": {
+        "en": "The same trait can earn **praise** or **criticism**. Compare each pair:\n\n- `sensitive` shows approval; `touchy` is a criticism.\n- `thrifty` shows approval; `tight-fisted` is a criticism.\n- `inquisitive` shows approval; `nosy` is a criticism.",
+        "fr": "Un même trait peut valoir un **éloge** ou une **critique**. Comparez chaque paire :\n\n- `sensitive` est élogieux ; `touchy` est une critique.\n- `thrifty` est élogieux ; `tight-fisted` est une critique.\n- `inquisitive` est élogieux ; `nosy` est une critique.",
+        "de": "Dieselbe Eigenschaft kann **Lob** oder **Kritik** bedeuten. Vergleiche jedes Paar:\n\n- `sensitive` ist anerkennend; `touchy` ist Kritik.\n- `thrifty` ist anerkennend; `tight-fisted` ist Kritik.\n- `inquisitive` ist anerkennend; `nosy` ist Kritik."
+      }
+    },
+    {
+      "id": "confidence-effort-honesty",
+      "label": {
+        "en": "Confidence, effort and honesty",
+        "fr": "Confiance, effort et franchise",
+        "de": "Selbstvertrauen, Einsatz und Ehrlichkeit"
+      },
+      "targetIds": ["self-assured", "cocky", "persistent", "pushy", "frank", "tactless"],
+      "introduction": {
+        "en": "Choosing the right word shows whether you **admire** or **disapprove**. Compare these pairs:\n\n- `self-assured` shows approval; `cocky` is a criticism.\n- `persistent` shows approval; `pushy` is a criticism.\n- `frank` shows approval; `tactless` is a criticism.",
+        "fr": "Le choix du mot montre si vous **admirez** ou **désapprouvez**. Comparez ces paires :\n\n- `self-assured` est élogieux ; `cocky` est une critique.\n- `persistent` est élogieux ; `pushy` est une critique.\n- `frank` est élogieux ; `tactless` est une critique.",
+        "de": "Die Wortwahl zeigt, ob du **bewunderst** oder **missbilligst**. Vergleiche diese Paare:\n\n- `self-assured` ist anerkennend; `cocky` ist Kritik.\n- `persistent` ist anerkennend; `pushy` ist Kritik.\n- `frank` ist anerkennend; `tactless` ist Kritik."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "sensitive",
+      "term": "sensitive",
+      "translations": { "fr": ["sensible"], "de": ["sensibel", "einfühlsam"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "sensitive",
+      "examForms": ["sensitive"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈsensətɪv/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He is a sensitive man who notices how others feel.",
+        "translation": {
+          "fr": "C’est un homme sensible qui remarque ce que les autres ressentent.",
+          "de": "Er ist ein einfühlsamer Mann, der merkt, wie sich andere fühlen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Sensitive is approving: it describes someone who understands and respects other people’s feelings.",
+        "fr": "Sensitive est élogieux : il décrit une personne qui comprend et respecte les sentiments des autres.",
+        "de": "Sensitive ist anerkennend: Es beschreibt jemanden, der die Gefühle anderer versteht und respektiert."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "sensible (éloge : attentif aux autres)",
+        "de": "sensibel (Lob: achtsam gegenüber anderen)"
+      },
+      "gap": {
+        "before": "She is very ",
+        "after": " and always notices when a colleague is upset, so people trust her.",
+        "accepted": { "answers": ["sensitive"] },
+        "referenceTargetIds": ["sensitive", "touchy", "thrifty", "nosy"],
+        "explanation": {
+          "en": "Sensitive is the approving word for someone who notices others’ feelings; touchy would be a criticism and does not fit this praise.",
+          "fr": "Sensitive est le mot élogieux pour quelqu’un qui remarque les sentiments des autres ; touchy serait une critique.",
+          "de": "Sensitive ist das anerkennende Wort für jemanden, der die Gefühle anderer bemerkt; touchy wäre Kritik."
+        }
+      },
+      "listeningOptionTargetIds": ["sensitive", "inquisitive", "persistent", "self-assured"]
+    },
+    {
+      "id": "touchy",
+      "term": "touchy",
+      "translations": { "fr": ["susceptible"], "de": ["empfindlich", "reizbar"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "touchy",
+      "examForms": ["touchy"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈtʌtʃi/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "She gets touchy whenever anyone mentions her age.",
+        "translation": {
+          "fr": "Elle se vexe dès qu’on parle de son âge.",
+          "de": "Sie ist gleich beleidigt, sobald jemand ihr Alter erwähnt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Touchy is critical: it describes someone who is easily offended or annoyed, often over small things.",
+        "fr": "Touchy est une critique : il décrit quelqu’un qui se vexe ou s’énerve facilement, souvent pour peu de chose.",
+        "de": "Touchy ist kritisch: Es beschreibt jemanden, der sich leicht gekränkt oder genervt fühlt, oft wegen Kleinigkeiten."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "susceptible (critique : se vexe vite)",
+        "de": "empfindlich (Kritik: schnell gekränkt)"
+      },
+      "gap": {
+        "before": "Don’t joke about his accent; he is so ",
+        "after": " that he will sulk for days over the slightest remark.",
+        "accepted": { "answers": ["touchy"] },
+        "referenceTargetIds": ["touchy", "sensitive", "frank", "cocky"],
+        "explanation": {
+          "en": "Touchy fits because he is easily offended and sulks; sensitive would be praise and does not describe this over-reaction.",
+          "fr": "Touchy convient car il se vexe facilement et boude ; sensitive serait un éloge.",
+          "de": "Touchy passt, weil er schnell beleidigt ist und schmollt; sensitive wäre Lob."
+        }
+      },
+      "listeningOptionTargetIds": ["touchy", "tactless", "tight-fisted", "thrifty"]
+    },
+    {
+      "id": "thrifty",
+      "term": "thrifty",
+      "translations": { "fr": ["économe"], "de": ["sparsam"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "thrifty",
+      "examForms": ["thrifty"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈθrɪfti/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "A thrifty shopper always compares prices.",
+        "translation": {
+          "fr": "Une personne économe compare toujours les prix.",
+          "de": "Ein sparsamer Käufer vergleicht immer die Preise."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Thrifty is approving: it describes someone who spends money carefully and avoids waste.",
+        "fr": "Thrifty est élogieux : il décrit quelqu’un qui dépense avec soin et évite le gaspillage.",
+        "de": "Thrifty ist anerkennend: Es beschreibt jemanden, der sorgfältig mit Geld umgeht und Verschwendung vermeidet."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "économe (éloge : gère bien son argent)",
+        "de": "sparsam (Lob: geht klug mit Geld um)"
+      },
+      "gap": {
+        "before": "My grandmother was ",
+        "after": ": she mended her clothes and saved every penny, and we admire her for it.",
+        "accepted": { "answers": ["thrifty"] },
+        "referenceTargetIds": ["thrifty", "tight-fisted", "pushy", "frank"],
+        "explanation": {
+          "en": "Thrifty fits because the speaker admires her; tight-fisted would be a criticism.",
+          "fr": "Thrifty convient car le locuteur l’admire ; tight-fisted serait une critique.",
+          "de": "Thrifty passt, weil der Sprecher sie bewundert; tight-fisted wäre Kritik."
+        }
+      },
+      "listeningOptionTargetIds": ["thrifty", "touchy", "tight-fisted", "tactless"]
+    },
+    {
+      "id": "tight-fisted",
+      "term": "tight-fisted",
+      "translations": { "fr": ["radin", "pingre"], "de": ["geizig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "tight-fisted",
+      "examForms": ["tight-fisted", "tightfisted"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌtaɪt ˈfɪstɪd/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Our tight-fisted boss refused to pay for lunch.",
+        "translation": {
+          "fr": "Notre patron radin a refusé de payer le déjeuner.",
+          "de": "Unser geiziger Chef weigerte sich, das Mittagessen zu bezahlen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Tight-fisted is critical: it describes someone who hates spending or sharing money, even when generosity is expected.",
+        "fr": "Tight-fisted est une critique : il décrit quelqu’un qui déteste dépenser ou partager son argent, même quand on attend de la générosité.",
+        "de": "Tight-fisted ist kritisch: Es beschreibt jemanden, der es hasst, Geld auszugeben oder zu teilen, selbst wenn Großzügigkeit erwartet wird."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "radin (critique : refuse de dépenser)",
+        "de": "geizig (Kritik: gibt ungern Geld aus)"
+      },
+      "gap": {
+        "before": "He is so ",
+        "after": " that he never offers to pay for a coffee, even though he earns a fortune.",
+        "accepted": { "answers": ["tight-fisted", "tightfisted"] },
+        "referenceTargetIds": ["tight-fisted", "thrifty", "tactless", "persistent"],
+        "explanation": {
+          "en": "Tight-fisted fits because he refuses to pay although he is rich, which is a criticism; thrifty would be praise.",
+          "fr": "Tight-fisted convient car il refuse de payer alors qu’il est riche, ce qui est une critique ; thrifty serait un éloge.",
+          "de": "Tight-fisted passt, weil er trotz Reichtum nie zahlt, was Kritik ist; thrifty wäre Lob."
+        }
+      },
+      "listeningOptionTargetIds": ["tight-fisted", "touchy", "tactless", "thrifty"]
+    },
+    {
+      "id": "inquisitive",
+      "term": "inquisitive",
+      "translations": { "fr": ["curieux"], "de": ["wissbegierig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "inquisitive",
+      "examForms": ["inquisitive"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɪnˈkwɪzətɪv/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "An inquisitive student asked how the engine worked.",
+        "translation": {
+          "fr": "Un étudiant curieux a demandé comment fonctionnait le moteur.",
+          "de": "Ein wissbegieriger Student fragte, wie der Motor funktioniert."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Inquisitive is approving: it describes someone who is eager to learn and asks good questions.",
+        "fr": "Inquisitive est élogieux : il décrit quelqu’un qui a envie d’apprendre et pose de bonnes questions.",
+        "de": "Inquisitive ist anerkennend: Es beschreibt jemanden, der lernbegierig ist und gute Fragen stellt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "curieux (éloge : avide d’apprendre)",
+        "de": "wissbegierig (Lob: lernbegierig)"
+      },
+      "gap": {
+        "before": "Children are naturally ",
+        "after": " about the world, and a good teacher encourages their questions.",
+        "accepted": { "answers": ["inquisitive"] },
+        "referenceTargetIds": ["inquisitive", "nosy", "sensitive", "cocky"],
+        "explanation": {
+          "en": "Inquisitive fits because the curiosity is welcomed; nosy would suggest interfering in private matters.",
+          "fr": "Inquisitive convient car la curiosité est bien vue ; nosy suggérerait qu’on se mêle de la vie privée.",
+          "de": "Inquisitive passt, weil die Neugier willkommen ist; nosy würde bedeuten, dass man sich in Privates einmischt."
+        }
+      },
+      "listeningOptionTargetIds": ["sensitive", "inquisitive", "persistent", "self-assured"]
+    },
+    {
+      "id": "nosy",
+      "term": "nosy",
+      "translations": { "fr": ["fouineur", "indiscret"], "de": ["neugierig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "nosy",
+      "examForms": ["nosy", "nosey"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈnəʊzi/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Don’t be so nosy; it’s none of your business.",
+        "translation": {
+          "fr": "Ne sois pas si fouineur ; ça ne te regarde pas.",
+          "de": "Sei nicht so neugierig; das geht dich nichts an."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Nosy is critical: it describes someone who is too curious about other people’s private affairs.",
+        "fr": "Nosy est une critique : il décrit quelqu’un de trop curieux de la vie privée des autres.",
+        "de": "Nosy ist kritisch: Es beschreibt jemanden, der zu neugierig auf das Privatleben anderer ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "fouineur, indiscret (critique : curieux de la vie privée)",
+        "de": "neugierig (Kritik: schnüffelt im Privatleben anderer)"
+      },
+      "gap": {
+        "before": "Our ",
+        "after": " neighbour keeps peering through the curtains; I wish she would mind her own business.",
+        "accepted": { "answers": ["nosy", "nosey"] },
+        "referenceTargetIds": ["nosy", "inquisitive", "thrifty", "self-assured"],
+        "explanation": {
+          "en": "Nosy fits because she spies on private matters and the speaker is annoyed; inquisitive would be too positive.",
+          "fr": "Nosy convient car elle épie la vie privée et le locuteur est agacé ; inquisitive serait trop positif.",
+          "de": "Nosy passt, weil sie das Privatleben ausspäht und der Sprecher genervt ist; inquisitive wäre zu positiv."
+        }
+      },
+      "listeningOptionTargetIds": ["nosy", "cocky", "pushy", "frank"]
+    },
+    {
+      "id": "self-assured",
+      "term": "self-assured",
+      "translations": { "fr": ["sûr de soi"], "de": ["selbstsicher"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "self-assured",
+      "examForms": ["self-assured"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌself əˈʃʊəd/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "The young lawyer was calm and self-assured in court.",
+        "translation": {
+          "fr": "La jeune avocate était calme et sûre d’elle au tribunal.",
+          "de": "Die junge Anwältin war vor Gericht ruhig und selbstsicher."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Self-assured is approving: it describes calm, justified confidence in yourself.",
+        "fr": "Self-assured est élogieux : il décrit une confiance en soi calme et justifiée.",
+        "de": "Self-assured ist anerkennend: Es beschreibt ruhiges, berechtigtes Selbstvertrauen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "sûr de soi (éloge : confiance calme)",
+        "de": "selbstsicher (Lob: ruhiges Selbstvertrauen)"
+      },
+      "gap": {
+        "before": "She gave a calm, ",
+        "after": " presentation, and the board was impressed by her poise.",
+        "accepted": { "answers": ["self-assured"] },
+        "referenceTargetIds": ["self-assured", "cocky", "tactless", "touchy"],
+        "explanation": {
+          "en": "Self-assured fits because the confidence impresses people; cocky would show disapproval.",
+          "fr": "Self-assured convient car la confiance impressionne ; cocky montrerait de la désapprobation.",
+          "de": "Self-assured passt, weil das Selbstvertrauen beeindruckt; cocky würde Missbilligung zeigen."
+        }
+      },
+      "listeningOptionTargetIds": ["sensitive", "inquisitive", "persistent", "self-assured"]
+    },
+    {
+      "id": "cocky",
+      "term": "cocky",
+      "translations": {
+        "fr": ["prétentieux", "trop sûr de soi"],
+        "de": ["großspurig", "überheblich"]
+      },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "cocky",
+      "examForms": ["cocky"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈkɒki/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "He’s been a bit cocky since he got promoted.",
+        "translation": {
+          "fr": "Il est un peu prétentieux depuis sa promotion.",
+          "de": "Seit seiner Beförderung ist er ziemlich großspurig."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Cocky is critical and informal: it describes overconfidence that is annoying or arrogant.",
+        "fr": "Cocky est une critique familière : il décrit une confiance excessive, agaçante ou arrogante.",
+        "de": "Cocky ist kritisch und umgangssprachlich: Es beschreibt übertriebenes Selbstvertrauen, das nervt oder arrogant wirkt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "prétentieux (critique : trop sûr de soi)",
+        "de": "großspurig (Kritik: übertrieben selbstsicher)"
+      },
+      "gap": {
+        "before": "After one lucky win he became ",
+        "after": " and told everyone he was unbeatable.",
+        "accepted": { "answers": ["cocky"] },
+        "referenceTargetIds": ["cocky", "self-assured", "frank", "persistent"],
+        "explanation": {
+          "en": "Cocky fits because he boasts after a lucky win; self-assured would be praise for justified confidence.",
+          "fr": "Cocky convient car il se vante après un coup de chance ; self-assured serait un éloge.",
+          "de": "Cocky passt, weil er nach einem Glückssieg prahlt; self-assured wäre Lob für berechtigtes Selbstvertrauen."
+        }
+      },
+      "listeningOptionTargetIds": ["nosy", "cocky", "pushy", "frank"]
+    },
+    {
+      "id": "persistent",
+      "term": "persistent",
+      "translations": { "fr": ["persévérant", "tenace"], "de": ["hartnäckig", "beharrlich"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "persistent",
+      "examForms": ["persistent"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/pəˈsɪstənt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "A persistent applicant will keep trying until he gets an answer.",
+        "translation": {
+          "fr": "Un candidat persévérant continue d’essayer jusqu’à obtenir une réponse.",
+          "de": "Ein beharrlicher Bewerber versucht es weiter, bis er eine Antwort bekommt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Persistent is approving: it describes someone who keeps going despite difficulties.",
+        "fr": "Persistent est élogieux : il décrit quelqu’un qui continue malgré les difficultés.",
+        "de": "Persistent ist anerkennend: Es beschreibt jemanden, der trotz Schwierigkeiten weitermacht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "persévérant, tenace (éloge : ne lâche pas)",
+        "de": "hartnäckig, beharrlich (Lob: gibt nicht auf)"
+      },
+      "gap": {
+        "before": "Thanks to his ",
+        "after": " efforts, he finally got the permit after six months of calls and letters.",
+        "accepted": { "answers": ["persistent"] },
+        "referenceTargetIds": ["persistent", "pushy", "nosy", "thrifty"],
+        "explanation": {
+          "en": "Persistent fits because his determination is rewarded; pushy would suggest annoying pressure on others.",
+          "fr": "Persistent convient car sa détermination est récompensée ; pushy suggérerait une pression agaçante sur les autres.",
+          "de": "Persistent passt, weil seine Entschlossenheit belohnt wird; pushy würde lästigen Druck auf andere andeuten."
+        }
+      },
+      "listeningOptionTargetIds": ["sensitive", "inquisitive", "persistent", "self-assured"]
+    },
+    {
+      "id": "pushy",
+      "term": "pushy",
+      "translations": { "fr": ["insistant", "envahissant"], "de": ["aufdringlich"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "pushy",
+      "examForms": ["pushy"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈpʊʃi/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "I don’t like pushy parents at sports matches.",
+        "translation": {
+          "fr": "Je n’aime pas les parents envahissants aux matchs de sport.",
+          "de": "Ich mag aufdringliche Eltern bei Sportspielen nicht."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Pushy is critical: it describes someone who pressures others to do or accept something.",
+        "fr": "Pushy est une critique : il décrit quelqu’un qui met la pression sur les autres pour qu’ils fassent ou acceptent quelque chose.",
+        "de": "Pushy ist kritisch: Es beschreibt jemanden, der andere unter Druck setzt, etwas zu tun oder anzunehmen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "insistant, envahissant (critique : met la pression)",
+        "de": "aufdringlich (Kritik: setzt andere unter Druck)"
+      },
+      "gap": {
+        "before": "The salesman was so ",
+        "after": " that I felt pressured, and I left without buying anything.",
+        "accepted": { "answers": ["pushy"] },
+        "referenceTargetIds": ["pushy", "persistent", "sensitive", "tactless"],
+        "explanation": {
+          "en": "Pushy fits because the pressure made the speaker uncomfortable; persistent would be approving.",
+          "fr": "Pushy convient car la pression a mis le locuteur mal à l’aise ; persistent serait élogieux.",
+          "de": "Pushy passt, weil der Druck dem Sprecher unangenehm war; persistent wäre anerkennend."
+        }
+      },
+      "listeningOptionTargetIds": ["nosy", "cocky", "pushy", "frank"]
+    },
+    {
+      "id": "frank",
+      "term": "frank",
+      "translations": { "fr": ["franc"], "de": ["offen", "ehrlich"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "frank",
+      "examForms": ["frank"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fræŋk/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "To be frank, I didn’t enjoy the film.",
+        "translation": {
+          "fr": "Pour être franc, je n’ai pas aimé le film.",
+          "de": "Ehrlich gesagt, hat mir der Film nicht gefallen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Frank is approving: it describes someone who is honest and open, usually with some respect for others’ feelings.",
+        "fr": "Frank est élogieux : il décrit quelqu’un d’honnête et d’ouvert, généralement avec du respect pour les sentiments des autres.",
+        "de": "Frank ist anerkennend: Es beschreibt jemanden, der ehrlich und offen ist, meist mit Rücksicht auf die Gefühle anderer."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "franc (éloge : honnête et ouvert)",
+        "de": "offen, ehrlich (Lob: aufrichtig)"
+      },
+      "gap": {
+        "before": "I appreciate that she is ",
+        "after": " with me: she tells me honestly, and kindly, what she thinks.",
+        "accepted": { "answers": ["frank"] },
+        "referenceTargetIds": ["frank", "tactless", "cocky", "thrifty"],
+        "explanation": {
+          "en": "Frank fits because her honesty is kind and appreciated; tactless would mean she hurts people carelessly.",
+          "fr": "Frank convient car son honnêteté est bienveillante et appréciée ; tactless signifierait qu’elle blesse sans y penser.",
+          "de": "Frank passt, weil ihre Ehrlichkeit freundlich und geschätzt ist; tactless würde bedeuten, dass sie unbedacht verletzt."
+        }
+      },
+      "listeningOptionTargetIds": ["nosy", "cocky", "pushy", "frank"]
+    },
+    {
+      "id": "tactless",
+      "term": "tactless",
+      "translations": { "fr": ["sans tact", "indélicat"], "de": ["taktlos"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "tactless",
+      "examForms": ["tactless"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈtæktləs/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "His tactless remark upset everyone.",
+        "translation": {
+          "fr": "Sa remarque sans tact a contrarié tout le monde.",
+          "de": "Seine taktlose Bemerkung verärgerte alle."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Tactless is critical: it describes honesty without care, which hurts or embarrasses people.",
+        "fr": "Tactless est une critique : il décrit une franchise sans égards, qui blesse ou gêne les gens.",
+        "de": "Tactless ist kritisch: Es beschreibt Ehrlichkeit ohne Rücksicht, die andere verletzt oder beschämt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "sans tact (critique : blesse sans réfléchir)",
+        "de": "taktlos (Kritik: verletzt unbedacht)"
+      },
+      "gap": {
+        "before": "It was ",
+        "after": " of him to ask about her weight in front of everyone.",
+        "accepted": { "answers": ["tactless"] },
+        "referenceTargetIds": ["tactless", "frank", "nosy", "tight-fisted"],
+        "explanation": {
+          "en": "Tactless fits because the question was embarrassing; frank would praise honesty and does not suit this rude question.",
+          "fr": "Tactless convient car la question était gênante ; frank louerait l’honnêteté, ce qui ne convient pas ici.",
+          "de": "Tactless passt, weil die Frage peinlich war; frank würde Ehrlichkeit loben, was hier nicht passt."
+        }
+      },
+      "listeningOptionTargetIds": ["touchy", "tactless", "tight-fisted", "thrifty"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

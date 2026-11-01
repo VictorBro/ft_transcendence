@@ -1,0 +1,428 @@
+{
+  "schemaVersion": 2,
+  "id": "en-reading-an-obituary-of-a-controversial-figure",
+  "lang": "en",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "An obituary that weighs praise and blame",
+  "objective": {
+    "en": "Read the obituary of a divisive politician and work out how it balances praise and blame, and what euphemisms such as “did not suffer fools gladly” really imply.",
+    "fr": "Lire la nécrologie d’un politicien clivant et comprendre comment elle équilibre éloge et blâme, et ce que ses euphémismes impliquent vraiment.",
+    "de": "Den Nachruf auf einen polarisierenden Politiker lesen und erkennen, wie er Lob und Tadel abwägt und was seine Euphemismen tatsächlich andeuten."
+  },
+  "estimatedMinutes": 12,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:53:00.345Z",
+    "inputHashes": {
+      "outline": "aea6d20cd91a0f09d3bb4b11870d4599fee7a6812ba015510a1e0f6ec623c2d3",
+      "brief": "289aaa00776181dc4d2427fa4346b9e30284f793f059ab3c57dfc2be7a12f3a7"
+    }
+  },
+  "kind": "reading",
+  "theme": "personal_identification",
+  "genre": "article",
+  "documents": [
+    {
+      "documentId": "main",
+      "title": "Sir Gerald Maddox, politician",
+      "meta": ["Obituary", "Died 19 October, aged 90"],
+      "paragraphs": [
+        "Sir Gerald Maddox, who died on Monday at the age of 90, was one of the most divisive figures in postwar British politics, a man whom colleagues revered, voters feared and cartoonists adored in roughly equal measure.",
+        "The son of a Doncaster signalman, he won a scholarship to grammar school and then to Oxford, where he made his name as a debater before he had made any friends. He entered Parliament in 1964 and, within a decade, had risen to the Treasury, where his reforms of the tax system were hailed by admirers as visionary and denounced by detractors as reckless.",
+        "Few disputed his intellect. Fewer still would have described him as patient. Maddox did not suffer fools gladly, and in his book the category was generous: it took in most of the Cabinet, the entire press gallery and, on one memorable occasion, a visiting head of state. Civil servants recall being sent back to rewrite memoranda three times, in green ink, with the single word “again” in the margin.",
+        "His private life was no less eventful. Thrice married, he was, as one friend put it, a man of generous appetites, and he enjoyed a colourful private life that the tabloids pursued with a zeal he affected to find tiresome. He never confirmed any of the stories, and never denied them either, an omission that said more than a denial might have done.",
+        "The 1981 election marked the summit of his influence and the beginning of his decline. His plan to close fourteen coal mines, which he defended as economic realism, left whole communities without work, and the bitterness lingers in the north to this day. Maddox, who was no stranger to controversy, made little attempt to soothe it. Asked years later whether he regretted the closures, he replied that regret was a luxury for people who had never had to balance a budget.",
+        "He left office in 1990 under a cloud, having been criticised by a select committee for what its report called a lapse of judgement in the handling of a donation from a property developer. Maddox called the inquiry a farce and the report a piece of fiction. He was unrepentant to the last, and in his memoirs, which ran to nine hundred pages, the word “sorry” does not appear.",
+        "Yet the same man gave away much of his income to a charity for retired miners, a fact he forbade his staff to mention, and sat for twenty years on the board of a hospice in his Doncaster constituency. Those who worked for him speak of a loyalty that was fierce and, to outsiders, wholly unexpected. “He was impossible,” said a former aide, “and I would have followed him anywhere.”",
+        "Assessments of his legacy will differ sharply. His supporters point to a leaner, more competitive economy; his critics, to the shuttered pits and the culture of impatience he made respectable in public life. Perhaps the fairest verdict was offered by a former rival, who said that Maddox was right about the problems, wrong about the people, and never once in doubt.",
+        "In retirement he wrote a weekly column, which he used chiefly to settle old scores, and kept bees. He is survived by his third wife, Eleanor, two children from his first marriage and, he once joked, by a great many enemies, most of whom he was reportedly fond of."
+      ],
+      "highlights": [
+        { "keywordId": "divisive", "text": "divisive" },
+        { "keywordId": "detractors", "text": "detractors" },
+        { "keywordId": "suffer-fools", "text": "did not suffer fools gladly" },
+        { "keywordId": "colourful-life", "text": "a colourful private life" },
+        { "keywordId": "unrepentant", "text": "unrepentant" }
+      ]
+    },
+    {
+      "documentId": "exam",
+      "title": "Dame Ruth Calloway, trade union leader",
+      "meta": ["Obituary", "Died 2 September, aged 78"],
+      "paragraphs": [
+        "Dame Ruth Calloway, who has died aged 78, led the Textile and Allied Workers’ Union for nineteen years and was, depending on whom one asked, either the conscience of the labour movement or its most obstinate obstacle.",
+        "Born in a Leicester mill town, she left school at fourteen and was running her first strike by twenty-two. She had a gift for the memorable phrase and a habit of using it at the least convenient moment, as when she told a minister, on live television, that his proposals were “a bonfire of other people’s livelihoods”. The minister never forgave her; the studio audience applauded for a full minute.",
+        "Her negotiating style was robust. Employers learned to expect long silences, sudden walkouts and, when all else failed, a baleful stare across the table. She had little time for compromise, which she regarded as a polite word for surrender, and several of her own executive members complained that she consulted them mainly to inform them of decisions already taken.",
+        "Yet the results spoke for her. Under her leadership the union won the first paid maternity leave in the industry, closed the pay gap between its male and female members to under five per cent, and survived the collapse of the mills by retraining nearly four thousand workers. Critics noted, fairly, that she had also called three strikes that achieved nothing except bitterness, and that she never conceded any of them had been a mistake.",
+        "She was formidable, rather than warm, and her friends were few. One of them, a retired docker, remembered her as “the only person I ever knew who could be kind and furious in the same sentence”. She never married, saying that she had a union to look after, and spent her last years growing roses and writing letters of complaint to the council."
+      ],
+      "highlights": []
+    }
+  ],
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "exercise",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "flashcards",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Turn each card to learn the key words of the text.",
+            "fr": "Retournez chaque carte pour découvrir les mots clés du texte.",
+            "de": "Dreh jede Karte um und lerne die Schlüsselwörter des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_flashcards",
+              "itemId": "cards",
+              "keywordIds": [
+                "divisive",
+                "detractors",
+                "suffer-fools",
+                "colourful-life",
+                "unrepentant"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "matching",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each key word with its meaning.",
+            "fr": "Associez chaque mot clé à son sens.",
+            "de": "Ordne jedem Schlüsselwort seine Bedeutung zu."
+          },
+          "items": [
+            {
+              "type": "reading_keyword_matching",
+              "itemId": "matching",
+              "keywordIds": [
+                "divisive",
+                "detractors",
+                "suffer-fools",
+                "colourful-life",
+                "unrepentant"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skim",
+      "stage": "skim",
+      "role": "exercise",
+      "label": { "en": "Skim", "fr": "Survol", "de": "Überfliegen" },
+      "pages": [
+        {
+          "pageId": "skim",
+          "estimatedDurationS": 225,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Look over the document quickly. When the time is up it is put away; then answer the question.",
+            "fr": "Parcourez rapidement le document. À la fin du temps, il disparaît ; répondez ensuite à la question.",
+            "de": "Überfliege das Dokument. Wenn die Zeit um ist, verschwindet es; beantworte dann die Frage."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "skim-document",
+              "documentId": "main",
+              "view": "skim",
+              "skimSeconds": 205
+            },
+            {
+              "type": "reading_skim_choice",
+              "itemId": "skim-question",
+              "focus": "purpose",
+              "question": "What is the main purpose of the obituary?",
+              "options": [
+                { "optionId": "o1", "text": "To argue that Maddox should have been prosecuted" },
+                { "optionId": "o2", "text": "To give a balanced account of a controversial life" },
+                { "optionId": "o3", "text": "To announce the funeral arrangements" },
+                { "optionId": "o4", "text": "To defend the closure of the coal mines" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "The piece sets praise (intellect, private generosity) against blame (impatience, the closures, the committee report) and ends with a measured verdict.",
+                "fr": "Le texte oppose éloges (intelligence, générosité discrète) et reproches (impatience, fermetures, rapport) et se termine par un verdict mesuré.",
+                "de": "Der Text stellt Lob (Intellekt, stille Großzügigkeit) gegen Tadel (Ungeduld, Schließungen, Ausschussbericht) und endet mit einem abgewogenen Urteil."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detail",
+      "stage": "detail",
+      "role": "exercise",
+      "label": { "en": "Detail", "fr": "Détails", "de": "Details" },
+      "pages": [
+        {
+          "pageId": "detail",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the document carefully and answer the questions.",
+            "fr": "Lisez le document attentivement et répondez aux questions.",
+            "de": "Lies das Dokument genau und beantworte die Fragen."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "detail-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-fools",
+              "question": "What does “did not suffer fools gladly” suggest about Maddox?",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "He was generous towards people less clever than himself"
+                },
+                { "optionId": "o2", "text": "He cheerfully tolerated other people’s mistakes" },
+                {
+                  "optionId": "o3",
+                  "text": "He had little patience with people he considered incompetent"
+                },
+                { "optionId": "o4", "text": "He enjoyed appointing foolish colleagues" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "The euphemism softens the truth: he was impatient and often rude, as the examples (the Cabinet, the head of state, the green ink) show.",
+                "fr": "L’euphémisme adoucit la vérité : il était impatient et souvent désagréable, comme le montrent les exemples (Cabinet, chef d’État, encre verte).",
+                "de": "Der Euphemismus mildert die Wahrheit: Er war ungeduldig und oft unhöflich, wie die Beispiele (Kabinett, Staatsoberhaupt, grüne Tinte) zeigen."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-colourful",
+              "question": "What does the obituary imply by “a colourful private life”?",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "That his personal relationships were a source of scandal"
+                },
+                { "optionId": "o2", "text": "That he decorated his homes lavishly" },
+                { "optionId": "o3", "text": "That he painted in his spare time" },
+                { "optionId": "o4", "text": "That he travelled widely for pleasure" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "With “generous appetites”, three marriages and tabloid stories he never denied, the phrase hints at affairs without naming them.",
+                "fr": "Avec « grands appétits », trois mariages et des rumeurs jamais démenties, l’expression laisse entendre des liaisons sans les nommer.",
+                "de": "Mit „generous appetites“, drei Ehen und nie dementierten Boulevardgeschichten deutet die Wendung Affären an, ohne sie zu nennen."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-verdict",
+              "question": "How does the former rival’s verdict balance praise and blame?",
+              "options": [
+                { "optionId": "o1", "text": "It condemns Maddox entirely" },
+                {
+                  "optionId": "o2",
+                  "text": "It praises his analysis of problems but blames his handling of people"
+                },
+                { "optionId": "o3", "text": "It praises him entirely" },
+                {
+                  "optionId": "o4",
+                  "text": "It blames his analysis but praises his handling of people"
+                }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "“Right about the problems, wrong about the people” credits his diagnosis and faults his treatment of those affected; “never once in doubt” adds a quiet criticism.",
+                "fr": "« Avait raison sur les problèmes, tort sur les gens » reconnaît son diagnostic et lui reproche sa façon de traiter les gens ; « jamais en doute » ajoute une critique discrète.",
+                "de": "„Right about the problems, wrong about the people“ würdigt seine Diagnose und tadelt den Umgang mit den Betroffenen; „never once in doubt“ fügt leise Kritik hinzu."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "q-committee",
+              "statement": "Maddox accepted the select committee’s criticism of his judgement.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: he called the inquiry a farce and the report a piece of fiction, and was unrepentant to the last.",
+                "fr": "Faux : il a qualifié l’enquête de farce et le rapport de fiction, et est resté impénitent jusqu’au bout.",
+                "de": "Falsch: Er nannte die Untersuchung eine Farce und den Bericht Fiktion und blieb bis zuletzt uneinsichtig."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "structure",
+      "stage": "structure",
+      "role": "exercise",
+      "label": { "en": "Structure", "fr": "Structure", "de": "Aufbau" },
+      "pages": [
+        {
+          "pageId": "structure",
+          "estimatedDurationS": 75,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the information in the order the text gives it.",
+            "fr": "Remettez les informations dans l’ordre du texte.",
+            "de": "Bring die Informationen in die Reihenfolge des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "structure-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_order",
+              "itemId": "order",
+              "pieces": [
+                { "pieceId": "p4", "text": "His loyal staff and private charity are mentioned." },
+                { "pieceId": "p2", "text": "Plans to close coal mines damage his standing." },
+                { "pieceId": "p5", "text": "He writes a column and keeps bees in retirement." },
+                { "pieceId": "p1", "text": "He rises quickly to the Treasury." },
+                { "pieceId": "p3", "text": "He leaves office after criticism over a donation." }
+              ],
+              "acceptedOrders": [["p1", "p2", "p3", "p4", "p5"]],
+              "answerExplanation": {
+                "en": "The obituary follows his career in time: his rise, the mine closures, his exit in 1990, the surprising generosity, then retirement.",
+                "fr": "La nécrologie suit sa carrière dans le temps : ascension, fermetures de mines, départ en 1990, générosité surprenante, puis retraite.",
+                "de": "Der Nachruf folgt seiner Laufbahn zeitlich: Aufstieg, Zechenschließungen, Abgang 1990, überraschende Großzügigkeit, dann Ruhestand."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam",
+          "estimatedDurationS": 212,
+          "timeLimitS": 320,
+          "instructions": {
+            "en": "Read the new document and answer the questions. No help this time.",
+            "fr": "Lisez le nouveau document et répondez aux questions. Cette fois, sans aide.",
+            "de": "Lies das neue Dokument und beantworte die Fragen. Diesmal ohne Hilfe."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "exam-document",
+              "documentId": "exam",
+              "view": "exam",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-reputation",
+              "question": "How does the opening paragraph present Calloway’s reputation?",
+              "options": [
+                { "optionId": "o1", "text": "As universally admired" },
+                {
+                  "optionId": "o2",
+                  "text": "As deeply divided: a conscience to some, an obstacle to others"
+                },
+                { "optionId": "o3", "text": "As largely forgotten" },
+                { "optionId": "o4", "text": "As admired only by employers" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "“Depending on whom one asked” signals opposed views of her: conscience of the movement or its most obstinate obstacle.",
+                "fr": "« Selon la personne interrogée » annonce des avis opposés : conscience du mouvement ou son obstacle le plus obstiné.",
+                "de": "„Depending on whom one asked“ kündigt gegensätzliche Urteile an: Gewissen der Bewegung oder deren hartnäckigstes Hindernis."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-consulted",
+              "question": "What is implied by saying she consulted her executive “mainly to inform them of decisions already taken”?",
+              "options": [
+                { "optionId": "o1", "text": "She trusted her executive completely" },
+                { "optionId": "o2", "text": "She often changed her mind after discussion" },
+                { "optionId": "o3", "text": "She disliked taking decisions" },
+                {
+                  "optionId": "o4",
+                  "text": "She made decisions without really seeking their views"
+                }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "“Consulted” is a euphemism here: the consultation was a formality, because the decisions were already made.",
+                "fr": "« Consulté » est ici un euphémisme : la consultation était une formalité, les décisions étant déjà prises.",
+                "de": "„Consulted“ ist hier ein Euphemismus: Die Beratung war eine Formsache, die Entscheidungen waren bereits getroffen."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-strikes",
+              "statement": "The obituary claims that every strike she called was a success.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: critics noted that three strikes achieved nothing except bitterness.",
+                "fr": "Faux : les critiques notent que trois grèves n’ont rien produit d’autre que de l’amertume.",
+                "de": "Falsch: Kritiker merkten an, dass drei Streiks nichts als Bitterkeit brachten."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-achievement",
+              "question": "Which achievement is credited to the union under her leadership?",
+              "options": [
+                { "optionId": "o1", "text": "The first paid maternity leave in the industry" },
+                { "optionId": "o2", "text": "A ban on all strikes" },
+                { "optionId": "o3", "text": "Free housing for mill workers" },
+                { "optionId": "o4", "text": "A national minimum wage" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "The fourth paragraph lists the first paid maternity leave, a narrower pay gap and retraining of nearly four thousand workers.",
+                "fr": "Le quatrième paragraphe cite le premier congé maternité payé, un écart salarial réduit et la reconversion de près de quatre mille travailleurs.",
+                "de": "Der vierte Absatz nennt den ersten bezahlten Mutterschaftsurlaub, eine kleinere Lohnlücke und die Umschulung von fast viertausend Beschäftigten."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-friend",
+              "statement": "Her friend’s remark suggests that she could show kindness and anger at the same moment.",
+              "answer": "true",
+              "answerExplanation": {
+                "en": "True: “kind and furious in the same sentence” affectionately captures her mix of warmth and ferocity.",
+                "fr": "Vrai : « gentille et furieuse dans la même phrase » résume avec affection son mélange de chaleur et de férocité.",
+                "de": "Richtig: „kind and furious in the same sentence“ fasst liebevoll ihre Mischung aus Wärme und Schärfe zusammen."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

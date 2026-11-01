@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 2,
+  "id": "en-keeping-a-conversation-going",
+  "lang": "en",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Keeping a conversation going",
+  "objective": {
+    "en": "Start a conversation with someone new, keep it going with follow-up questions and end it politely.",
+    "fr": "Engager la conversation avec quelqu’un de nouveau, la faire vivre avec des questions de relance et y mettre fin poliment.",
+    "de": "Ein Gespräch mit jemand Neuem beginnen, mit Nachfragen am Laufen halten und höflich beenden."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:08.327Z",
+    "inputHashes": { "outline": "6fbc3d063b31f1b78397328c7a053d15ccae1a98b8eebda72f4497b429c28674" }
+  },
+  "kind": "functions",
+  "theme": "relations",
+  "situation": {
+    "en": "Two people meet at a friend’s party: they start talking, keep the conversation going and say goodbye.",
+    "fr": "Deux personnes se rencontrent à la fête d’un ami : elles engagent la conversation, la font vivre et se disent au revoir.",
+    "de": "Zwei Menschen treffen sich auf der Party eines Freundes: Sie kommen ins Gespräch, halten es am Laufen und verabschieden sich."
+  },
+  "coverageNotes": {
+    "en": "Starting (What brings you here?, How do you know …), keeping it going (What was that like?, Tell me more about …) and ending politely (Anyway, I should get going; It was nice talking to you).",
+    "fr": "Commencer (What brings you here ?, How do you know …), relancer (What was that like ?, Tell me more about …) et terminer poliment (Anyway, I should get going ; It was nice talking to you).",
+    "de": "Beginnen (What brings you here?, How do you know …), am Laufen halten (What was that like?, Tell me more about …) und höflich beenden (Anyway, I should get going; It was nice talking to you)."
+  },
+  "prerequisites": [],
+  "roles": [
+    { "id": "sam", "label": "Sam", "translation": { "fr": "Sam", "de": "Sam" } },
+    { "id": "maya", "label": "Maya", "translation": { "fr": "Maya", "de": "Maya" } }
+  ],
+  "expressions": [
+    {
+      "id": "what-brings-you-here",
+      "text": "What brings you here?",
+      "openEnd": false,
+      "translations": {
+        "fr": ["Qu’est-ce qui vous amène ici ?"],
+        "de": ["Was führt Sie hierher?"]
+      },
+      "explanation": {
+        "en": "A friendly way to start talking to someone new: ask why they are at the event.",
+        "fr": "Une façon aimable d’entamer la conversation avec quelqu’un de nouveau : demander pourquoi la personne est là.",
+        "de": "Eine freundliche Art, ein Gespräch mit jemand Neuem zu beginnen: Frag, warum die Person hier ist."
+      },
+      "example": {
+        "text": "Hi, I’m Sam. What brings you here?",
+        "translation": {
+          "fr": "Salut, moi c’est Sam. Qu’est-ce qui vous amène ici ?",
+          "de": "Hallo, ich bin Sam. Was führt dich hierher?"
+        }
+      }
+    },
+    {
+      "id": "how-do-you-know",
+      "text": "How do you know",
+      "openEnd": true,
+      "translations": { "fr": ["Comment connais-tu"], "de": ["Woher kennst du"] },
+      "explanation": {
+        "en": "Asks how someone knows a mutual friend; add a name (How do you know Ana?).",
+        "fr": "Pour demander comment quelqu’un connaît une connaissance commune ; ajoutez un nom (How do you know Ana ?).",
+        "de": "Fragt, woher jemand einen gemeinsamen Bekannten kennt; ergänze einen Namen (How do you know Ana?)."
+      },
+      "example": {
+        "text": "How do you know Ana?",
+        "translation": { "fr": "Comment connais-tu Ana ?", "de": "Woher kennst du Ana?" }
+      }
+    },
+    {
+      "id": "what-was-that-like",
+      "text": "What was that like?",
+      "openEnd": false,
+      "translations": { "fr": ["Comment c’était ?"], "de": ["Wie war das?"] },
+      "explanation": {
+        "en": "A follow-up question that asks for the other person’s experience and feelings.",
+        "fr": "Une question de relance qui demande l’expérience et le ressenti de l’autre.",
+        "de": "Eine Nachfrage nach der Erfahrung und den Eindrücken des anderen."
+      },
+      "example": {
+        "text": "You lived in Berlin? What was that like?",
+        "translation": {
+          "fr": "Tu as vécu à Berlin ? Comment c’était ?",
+          "de": "Du hast in Berlin gewohnt? Wie war das?"
+        }
+      }
+    },
+    {
+      "id": "tell-me-more",
+      "text": "Tell me more about",
+      "openEnd": true,
+      "translations": { "fr": ["Parle-moi davantage de"], "de": ["Erzähl mir mehr über"] },
+      "explanation": {
+        "en": "Shows interest and invites the other person to say more; add about + a topic.",
+        "fr": "Montre de l’intérêt et invite l’autre à en dire plus ; ajoutez about + un sujet.",
+        "de": "Zeigt Interesse und lädt zum Weiterreden ein; ergänze about + ein Thema."
+      },
+      "example": {
+        "text": "Tell me more about your job.",
+        "translation": {
+          "fr": "Parle-moi davantage de ton travail.",
+          "de": "Erzähl mir mehr über deinen Job."
+        }
+      }
+    },
+    {
+      "id": "anyway-get-going",
+      "text": "Anyway, I should get going",
+      "openEnd": false,
+      "translations": {
+        "fr": ["Bref, je ferais mieux d’y aller"],
+        "de": ["Jedenfalls sollte ich langsam los"]
+      },
+      "explanation": {
+        "en": "A polite way to start closing the conversation when you need to leave.",
+        "fr": "Une façon polie de commencer à conclure la conversation quand vous devez partir.",
+        "de": "Eine höfliche Art, das Gespräch zu beenden, wenn du gehen musst."
+      },
+      "example": {
+        "text": "Anyway, I should get going. I have an early start.",
+        "translation": {
+          "fr": "Bref, je ferais mieux d’y aller. Je commence tôt demain.",
+          "de": "Jedenfalls sollte ich langsam los. Ich muss morgen früh raus."
+        }
+      }
+    },
+    {
+      "id": "nice-talking",
+      "text": "It was nice talking to you",
+      "openEnd": false,
+      "translations": {
+        "fr": ["C’était sympa de discuter avec toi"],
+        "de": ["Es war schön, mit dir zu reden"]
+      },
+      "explanation": {
+        "en": "A warm way to say goodbye after a pleasant conversation.",
+        "fr": "Une façon chaleureuse de dire au revoir après une conversation agréable.",
+        "de": "Eine herzliche Art, sich nach einem netten Gespräch zu verabschieden."
+      },
+      "example": {
+        "text": "It was nice talking to you. See you soon!",
+        "translation": {
+          "fr": "C’était sympa de discuter avec toi. À bientôt !",
+          "de": "Es war schön, mit dir zu reden. Bis bald!"
+        }
+      }
+    }
+  ],
+  "words": [],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

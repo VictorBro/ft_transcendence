@@ -1,0 +1,590 @@
+{
+  "schemaVersion": 2,
+  "id": "en-life-events",
+  "lang": "en",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Life events",
+  "objective": {
+    "en": "Name the big moments in a person's life, from being born to retiring.",
+    "fr": "Nommer les grands moments de la vie d’une personne, de la naissance à la retraite.",
+    "de": "Die großen Momente im Leben eines Menschen benennen, von der Geburt bis zur Rente."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:19.255Z",
+    "inputHashes": { "outline": "0f3d12603325cae483f9208392f2d5fe734874f3f892ab81ff992217bc0e794d" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Twelve life events in time order: childhood and school, then work, love, family and retirement.",
+    "fr": "Douze événements de la vie dans l’ordre du temps : enfance et école, puis travail, amour, famille et retraite.",
+    "de": "Zwölf Lebensereignisse in zeitlicher Reihenfolge: Kindheit und Schule, dann Arbeit, Liebe, Familie und Ruhestand."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve phrases cover the main stages of a life without overloading an A2 learner.",
+    "fr": "Douze expressions couvrent les grandes étapes de la vie sans surcharger un apprenant A2.",
+    "de": "Zwölf Ausdrücke decken die wichtigsten Lebensphasen ab, ohne A2-Lernende zu überfordern."
+  },
+  "difficultyBalance": {
+    "en": "Most phrases are core and have a clear meaning; a few, like get divorced and retire, are more demanding.",
+    "fr": "La plupart des expressions sont de base et claires ; quelques-unes, comme get divorced et retire, sont plus difficiles.",
+    "de": "Die meisten Ausdrücke sind Grundwortschatz mit klarer Bedeutung; einige, wie get divorced und retire, sind anspruchsvoller."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "early-life",
+      "label": {
+        "en": "Childhood, school and work",
+        "fr": "Enfance, école et travail",
+        "de": "Kindheit, Schule und Arbeit"
+      },
+      "targetIds": ["born", "grow-up", "start-school", "leave-school", "university", "get-job"],
+      "introduction": {
+        "en": "These phrases describe **early life**. Learn each one with its verb:\n\n- `be born`\n- `grow up`\n- `start school`\n- `leave school`\n- `go to university`\n- `get a job`",
+        "fr": "Ces expressions décrivent **le début de la vie**. Apprenez chacune avec son verbe :\n\n- `be born`\n- `grow up`\n- `start school`\n- `leave school`\n- `go to university`\n- `get a job`",
+        "de": "Diese Ausdrücke beschreiben **den Lebensanfang**. Lerne jeden mit seinem Verb:\n\n- `be born`\n- `grow up`\n- `start school`\n- `leave school`\n- `go to university`\n- `get a job`"
+      }
+    },
+    {
+      "id": "adult-life",
+      "label": {
+        "en": "Love, family and retirement",
+        "fr": "Amour, famille et retraite",
+        "de": "Liebe, Familie und Ruhestand"
+      },
+      "targetIds": [
+        "fall-in-love",
+        "move-house",
+        "get-married",
+        "have-baby",
+        "get-divorced",
+        "retire"
+      ],
+      "introduction": {
+        "en": "These phrases describe **adult life**. Many use `get` or `have` with a word:\n\n- `fall in love`\n- `move house`\n- `get married`\n- `have a baby`\n- `get divorced`\n- `retire`",
+        "fr": "Ces expressions décrivent **la vie adulte**. Beaucoup utilisent `get` ou `have` avec un mot :\n\n- `fall in love`\n- `move house`\n- `get married`\n- `have a baby`\n- `get divorced`\n- `retire`",
+        "de": "Diese Ausdrücke beschreiben **das Erwachsenenleben**. Viele benutzen `get` oder `have` mit einem Wort:\n\n- `fall in love`\n- `move house`\n- `get married`\n- `have a baby`\n- `get divorced`\n- `retire`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "born",
+      "term": "be born",
+      "translations": { "fr": ["naître", "être né"], "de": ["geboren werden"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "be born",
+      "examForms": ["be born"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/biː ˈbɔːn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "I was born in 1998.",
+        "translation": { "fr": "Je suis né en 1998.", "de": "Ich bin 1998 geboren." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Be born means to come into the world. We usually say was born or were born.",
+        "fr": "Be born veut dire venir au monde. On dit surtout was born ou were born.",
+        "de": "Be born bedeutet, auf die Welt zu kommen. Man sagt meist was born oder were born."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "My cousin’s baby is going to ",
+        "after": " in May.",
+        "accepted": { "answers": ["be born"] },
+        "referenceTargetIds": ["born", "grow-up", "start-school", "retire"],
+        "explanation": {
+          "en": "A baby is born; the other phrases do not fit a baby.",
+          "fr": "Un bébé naît ; les autres expressions ne conviennent pas à un bébé.",
+          "de": "Ein Baby wird geboren; die anderen Ausdrücke passen nicht zu einem Baby."
+        }
+      },
+      "listeningOptionTargetIds": ["born", "grow-up", "retire", "move-house"]
+    },
+    {
+      "id": "grow-up",
+      "term": "grow up",
+      "translations": { "fr": ["grandir"], "de": ["aufwachsen"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "grow up",
+      "examForms": ["grow up"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡrəʊ ˈʌp/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She grew up in a small town.",
+        "translation": {
+          "fr": "Elle a grandi dans une petite ville.",
+          "de": "Sie ist in einer Kleinstadt aufgewachsen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Grow up means to change from a child into an adult.",
+        "fr": "Grow up veut dire passer de l’enfance à l’âge adulte.",
+        "de": "Grow up bedeutet, vom Kind zum Erwachsenen zu werden."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Children need food and sleep to ",
+        "after": " healthy and strong.",
+        "accepted": { "answers": ["grow up"] },
+        "referenceTargetIds": ["grow-up", "get-job", "retire", "get-married"],
+        "explanation": {
+          "en": "Children grow up healthy and strong; the other phrases do not fit.",
+          "fr": "Les enfants grandissent en bonne santé ; les autres expressions ne conviennent pas.",
+          "de": "Kinder wachsen gesund und stark auf; die anderen Ausdrücke passen nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["born", "grow-up", "retire", "move-house"]
+    },
+    {
+      "id": "start-school",
+      "term": "start school",
+      "translations": {
+        "fr": ["commencer l’école", "entrer à l’école"],
+        "de": ["eingeschult werden", "in die Schule kommen"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "start school",
+      "examForms": ["start school"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/stɑːt ˈskuːl/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Children start school at five.",
+        "translation": {
+          "fr": "Les enfants commencent l’école à cinq ans.",
+          "de": "Kinder kommen mit fünf in die Schule."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Start school means to go to school for the first time.",
+        "fr": "Start school veut dire aller à l’école pour la première fois.",
+        "de": "Start school bedeutet, zum ersten Mal zur Schule zu gehen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Children usually ",
+        "after": " when they are five or six years old.",
+        "accepted": { "answers": ["start school"] },
+        "referenceTargetIds": ["start-school", "leave-school", "retire", "have-baby"],
+        "explanation": {
+          "en": "Children start school at five or six; they do not leave school or retire then.",
+          "fr": "Les enfants commencent l’école à cinq ou six ans ; ils ne la quittent pas et ne prennent pas leur retraite.",
+          "de": "Kinder kommen mit fünf oder sechs in die Schule; sie verlassen sie dann nicht und gehen nicht in Rente."
+        }
+      },
+      "listeningOptionTargetIds": ["start-school", "leave-school", "university", "get-job"]
+    },
+    {
+      "id": "leave-school",
+      "term": "leave school",
+      "translations": {
+        "fr": ["quitter l’école", "terminer sa scolarité"],
+        "de": ["die Schule verlassen", "von der Schule abgehen"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "leave school",
+      "examForms": ["leave school"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/liːv ˈskuːl/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He left school at sixteen.",
+        "translation": {
+          "fr": "Il a quitté l’école à seize ans.",
+          "de": "Er hat die Schule mit sechzehn verlassen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Leave school means to finish your time at school.",
+        "fr": "Leave school veut dire finir sa scolarité.",
+        "de": "Leave school bedeutet, die Schulzeit zu beenden."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He wants to ",
+        "after": " at sixteen and look for work.",
+        "accepted": { "answers": ["leave school"] },
+        "referenceTargetIds": ["leave-school", "start-school", "university", "retire"],
+        "explanation": {
+          "en": "You leave school and then look for work; the other phrases do not fit.",
+          "fr": "On quitte l’école puis on cherche du travail ; les autres expressions ne conviennent pas.",
+          "de": "Man verlässt die Schule und sucht dann Arbeit; die anderen Ausdrücke passen nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["start-school", "leave-school", "university", "get-job"]
+    },
+    {
+      "id": "university",
+      "term": "go to university",
+      "translations": {
+        "fr": ["aller à l’université", "faire des études"],
+        "de": ["studieren", "an die Universität gehen"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "go to university",
+      "examForms": ["go to university"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡəʊ tə ˌjuːnɪˈvɜːsəti/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "My brother went to university in Leeds.",
+        "translation": {
+          "fr": "Mon frère est allé à l’université à Leeds.",
+          "de": "Mein Bruder hat in Leeds studiert."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Go to university means to study at a university after school. In British English there is no article.",
+        "fr": "Go to university veut dire faire des études supérieures après l’école. En anglais britannique, il n’y a pas d’article.",
+        "de": "Go to university bedeutet, nach der Schule an einer Universität zu studieren. Im britischen Englisch steht kein Artikel."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "After school, she wants to ",
+        "after": " in Manchester to study medicine.",
+        "accepted": { "answers": ["go to university"] },
+        "referenceTargetIds": ["university", "leave-school", "get-job", "retire"],
+        "explanation": {
+          "en": "You study medicine at university; the other phrases do not fit.",
+          "fr": "On étudie la médecine à l’université ; les autres expressions ne conviennent pas.",
+          "de": "Medizin studiert man an der Universität; die anderen Ausdrücke passen nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["start-school", "leave-school", "university", "get-job"]
+    },
+    {
+      "id": "get-job",
+      "term": "get a job",
+      "translations": {
+        "fr": ["trouver un emploi", "avoir un travail"],
+        "de": ["eine Stelle finden", "einen Job bekommen"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "get a job",
+      "examForms": ["get a job"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡet ə ˈdʒɒb/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She got a job in a bank.",
+        "translation": {
+          "fr": "Elle a trouvé un emploi dans une banque.",
+          "de": "Sie hat eine Stelle in einer Bank bekommen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Get a job means to find work and start it.",
+        "fr": "Get a job veut dire trouver du travail et le commencer.",
+        "de": "Get a job bedeutet, Arbeit zu finden und anzufangen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "I need to ",
+        "after": " because I want to earn some money.",
+        "accepted": { "answers": ["get a job"] },
+        "referenceTargetIds": ["get-job", "university", "retire", "fall-in-love"],
+        "explanation": {
+          "en": "You get a job to earn money; the other phrases do not fit.",
+          "fr": "On trouve un emploi pour gagner de l’argent ; les autres expressions ne conviennent pas.",
+          "de": "Man bekommt einen Job, um Geld zu verdienen; die anderen Ausdrücke passen nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["start-school", "leave-school", "university", "get-job"]
+    },
+    {
+      "id": "fall-in-love",
+      "term": "fall in love",
+      "translations": { "fr": ["tomber amoureux"], "de": ["sich verlieben"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "fall in love",
+      "examForms": ["fall in love"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fɔːl ɪn ˈlʌv/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "They fell in love at university.",
+        "translation": {
+          "fr": "Ils sont tombés amoureux à l’université.",
+          "de": "Sie haben sich an der Uni verliebt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Fall in love means to start to love someone. The past tense of fall is fell.",
+        "fr": "Fall in love veut dire commencer à aimer quelqu’un. Le passé de fall est fell.",
+        "de": "Fall in love bedeutet, sich in jemanden zu verlieben. Die Vergangenheit von fall ist fell."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "They met at a party and began to ",
+        "after": " very quickly.",
+        "accepted": { "answers": ["fall in love"] },
+        "referenceTargetIds": ["fall-in-love", "get-married", "have-baby", "retire"],
+        "explanation": {
+          "en": "Love begins when two people meet; the other phrases do not fit after began to.",
+          "fr": "L’amour naît quand deux personnes se rencontrent ; les autres expressions ne conviennent pas.",
+          "de": "Liebe beginnt, wenn sich zwei Menschen treffen; die anderen Ausdrücke passen nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["fall-in-love", "get-married", "get-divorced", "have-baby"]
+    },
+    {
+      "id": "move-house",
+      "term": "move house",
+      "translations": { "fr": ["déménager"], "de": ["umziehen"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "move house",
+      "examForms": ["move house"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/muːv ˈhaʊs/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "We moved house in June.",
+        "translation": { "fr": "Nous avons déménagé en juin.", "de": "Wir sind im Juni umgezogen." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Move house means to go and live in a different house or flat.",
+        "fr": "Move house veut dire aller habiter dans une autre maison ou un autre appartement.",
+        "de": "Move house bedeutet, in ein anderes Haus oder eine andere Wohnung zu ziehen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Our flat is too small, so we want to ",
+        "after": " and find a bigger one.",
+        "accepted": { "answers": ["move house"] },
+        "referenceTargetIds": ["move-house", "get-job", "retire", "start-school"],
+        "explanation": {
+          "en": "You move house to find a bigger flat; the other phrases do not fit.",
+          "fr": "On déménage pour trouver un plus grand appartement ; les autres expressions ne conviennent pas.",
+          "de": "Man zieht um, um eine größere Wohnung zu finden; die anderen Ausdrücke passen nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["born", "grow-up", "retire", "move-house"]
+    },
+    {
+      "id": "get-married",
+      "term": "get married",
+      "translations": { "fr": ["se marier"], "de": ["heiraten"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "get married",
+      "examForms": ["get married"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡet ˈmærid/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "They got married last summer.",
+        "translation": {
+          "fr": "Ils se sont mariés l’été dernier.",
+          "de": "Sie haben letzten Sommer geheiratet."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Get married means to become husband and wife at a wedding.",
+        "fr": "Get married veut dire devenir mari et femme lors d’un mariage.",
+        "de": "Get married bedeutet, bei einer Hochzeit Ehemann und Ehefrau zu werden."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "They are going to ",
+        "after": " in June, and all their family will come to the wedding.",
+        "accepted": { "answers": ["get married"] },
+        "referenceTargetIds": ["get-married", "get-divorced", "have-baby", "fall-in-love"],
+        "explanation": {
+          "en": "The word wedding shows that they get married; the other phrases do not fit.",
+          "fr": "Le mot wedding montre qu’ils se marient ; les autres expressions ne conviennent pas.",
+          "de": "Das Wort wedding zeigt, dass sie heiraten; die anderen Ausdrücke passen nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["fall-in-love", "get-married", "get-divorced", "have-baby"]
+    },
+    {
+      "id": "have-baby",
+      "term": "have a baby",
+      "translations": { "fr": ["avoir un bébé"], "de": ["ein Baby bekommen"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "have a baby",
+      "examForms": ["have a baby"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/hæv ə ˈbeɪbi/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "My sister had a baby in March.",
+        "translation": {
+          "fr": "Ma sœur a eu un bébé en mars.",
+          "de": "Meine Schwester hat im März ein Baby bekommen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Have a baby means to give birth to a child. The past tense of have is had.",
+        "fr": "Have a baby veut dire donner naissance à un enfant. Le passé de have est had.",
+        "de": "Have a baby bedeutet, ein Kind zur Welt zu bringen. Die Vergangenheit von have ist had."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "My sister is going to ",
+        "after": " in March, so I will be an aunt.",
+        "accepted": { "answers": ["have a baby"] },
+        "referenceTargetIds": ["have-baby", "get-married", "born", "retire"],
+        "explanation": {
+          "en": "You become an aunt when your sister has a baby; the other phrases do not fit.",
+          "fr": "On devient tante quand sa sœur a un bébé ; les autres expressions ne conviennent pas.",
+          "de": "Man wird Tante, wenn die Schwester ein Baby bekommt; die anderen Ausdrücke passen nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["fall-in-love", "get-married", "get-divorced", "have-baby"]
+    },
+    {
+      "id": "get-divorced",
+      "term": "get divorced",
+      "translations": { "fr": ["divorcer"], "de": ["sich scheiden lassen"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "get divorced",
+      "examForms": ["get divorced"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡet dɪˈvɔːst/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "My parents got divorced when I was ten.",
+        "translation": {
+          "fr": "Mes parents ont divorcé quand j’avais dix ans.",
+          "de": "Meine Eltern haben sich scheiden lassen, als ich zehn war."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Get divorced means to end a marriage.",
+        "fr": "Get divorced veut dire mettre fin à un mariage.",
+        "de": "Get divorced bedeutet, eine Ehe zu beenden."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "They were not happy together, so they decided to ",
+        "after": ".",
+        "accepted": { "answers": ["get divorced"] },
+        "referenceTargetIds": ["get-divorced", "get-married", "fall-in-love", "have-baby"],
+        "explanation": {
+          "en": "Unhappy people end a marriage; the other phrases do not fit.",
+          "fr": "Des gens malheureux mettent fin à leur mariage ; les autres expressions ne conviennent pas.",
+          "de": "Unglückliche Menschen beenden ihre Ehe; die anderen Ausdrücke passen nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["fall-in-love", "get-married", "get-divorced", "have-baby"]
+    },
+    {
+      "id": "retire",
+      "term": "retire",
+      "translations": { "fr": ["prendre sa retraite"], "de": ["in Rente gehen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "retire",
+      "examForms": ["retire"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/rɪˈtaɪə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "My grandfather retired at sixty-five.",
+        "translation": {
+          "fr": "Mon grand-père a pris sa retraite à soixante-cinq ans.",
+          "de": "Mein Großvater ist mit fünfundsechzig in Rente gegangen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Retire means to stop working because you are old.",
+        "fr": "Retire veut dire arrêter de travailler à cause de l’âge.",
+        "de": "Retire bedeutet, wegen des Alters mit der Arbeit aufzuhören."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "My grandfather is 65, so he is going to ",
+        "after": " next month and stay at home.",
+        "accepted": { "answers": ["retire"] },
+        "referenceTargetIds": ["retire", "get-job", "university", "leave-school"],
+        "explanation": {
+          "en": "At 65 people stop working; the other phrases do not fit.",
+          "fr": "À 65 ans, on arrête de travailler ; les autres expressions ne conviennent pas.",
+          "de": "Mit 65 hört man auf zu arbeiten; die anderen Ausdrücke passen nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["born", "grow-up", "retire", "move-house"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

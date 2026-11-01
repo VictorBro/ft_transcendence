@@ -1,0 +1,586 @@
+{
+  "schemaVersion": 2,
+  "id": "en-schedules-and-time-management",
+  "lang": "en",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Busy lives and schedules",
+  "objective": {
+    "en": "Talk about how you organise your time using twelve useful words and phrases.",
+    "fr": "Parler de l’organisation de son temps avec douze mots et expressions utiles.",
+    "de": "Über die eigene Zeitplanung sprechen, mit zwölf nützlichen Wörtern und Wendungen."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:09.461Z",
+    "inputHashes": { "outline": "4f6d7f5d783cacb14b20d4c0ad8475972e5b166f2cde0c2c197a5346f5f496c0" }
+  },
+  "kind": "vocabulary",
+  "theme": "daily_life",
+  "coverageNotes": {
+    "en": "Twelve words for planning, deadlines, punctuality and pressure, covering the intent: schedule, rush, punctual, spare time, to-do list, be running late, behind schedule.",
+    "fr": "Douze mots pour la planification, les échéances, la ponctualité et la pression, couvrant l’intention : schedule, rush, punctual, spare time, to-do list, be running late, behind schedule.",
+    "de": "Zwölf Wörter für Planung, Fristen, Pünktlichkeit und Zeitdruck, passend zum Ziel: schedule, rush, punctual, spare time, to-do list, be running late, behind schedule."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve items match the outline's 'about twelve words' and split into two groups of six.",
+    "fr": "Douze éléments correspondent à « environ douze mots » et forment deux groupes de six.",
+    "de": "Zwölf Einträge entsprechen „etwa zwölf Wörtern“ und bilden zwei Sechsergruppen."
+  },
+  "difficultyBalance": {
+    "en": "Mostly core B1 words; postpone, prioritise and hectic are more demanding.",
+    "fr": "Surtout des mots de base du B1 ; postpone, prioritise et hectic sont plus exigeants.",
+    "de": "Meist B1-Grundwörter; postpone, prioritise und hectic sind anspruchsvoller."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "planning",
+      "label": { "en": "Planning your time", "fr": "Organiser son temps", "de": "Die Zeit planen" },
+      "targetIds": [
+        "schedule",
+        "appointment",
+        "deadline",
+        "to-do-list",
+        "spare-time",
+        "prioritise"
+      ],
+      "introduction": {
+        "en": "These words help you **plan** your days:\n\n- `schedule`\n- `appointment`\n- `deadline`\n- `to-do list`\n- `spare time`\n- `prioritise`\n\nIn British English you can also write `prioritize`.",
+        "fr": "Ces mots vous aident à **planifier** vos journées :\n\n- `schedule`\n- `appointment`\n- `deadline`\n- `to-do list`\n- `spare time`\n- `prioritise`\n\nEn anglais britannique, on peut aussi écrire `prioritize`.",
+        "de": "Diese Wörter helfen dir, deine Tage zu **planen**:\n\n- `schedule`\n- `appointment`\n- `deadline`\n- `to-do list`\n- `spare time`\n- `prioritise`\n\nIm britischen Englisch kann man auch `prioritize` schreiben."
+      }
+    },
+    {
+      "id": "pressure",
+      "label": {
+        "en": "Punctuality and pressure",
+        "fr": "Ponctualité et pression",
+        "de": "Pünktlichkeit und Zeitdruck"
+      },
+      "targetIds": ["punctual", "be-running-late", "behind-schedule", "hectic", "rush", "postpone"],
+      "introduction": {
+        "en": "These words describe being **on time**, late or very busy:\n\n- `punctual`\n- `be running late`\n- `behind schedule`\n- `hectic`\n- `rush`\n- `postpone`\n\nUse `be running late` for a person and `behind schedule` for a plan or project.",
+        "fr": "Ces mots décrivent le fait d’être **à l’heure**, en retard ou très occupé :\n\n- `punctual`\n- `be running late`\n- `behind schedule`\n- `hectic`\n- `rush`\n- `postpone`\n\nUtilisez `be running late` pour une personne et `behind schedule` pour un plan ou un projet.",
+        "de": "Diese Wörter beschreiben, **pünktlich**, spät oder sehr beschäftigt zu sein:\n\n- `punctual`\n- `be running late`\n- `behind schedule`\n- `hectic`\n- `rush`\n- `postpone`\n\nBenutze `be running late` für eine Person und `behind schedule` für einen Plan oder ein Projekt."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "schedule",
+      "term": "schedule",
+      "translations": { "fr": ["emploi du temps", "planning"], "de": ["Zeitplan", "Terminplan"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "schedule",
+      "examForms": ["schedule"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃedjuːl/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "My schedule is very full this week.",
+        "translation": {
+          "fr": "Mon emploi du temps est très chargé cette semaine.",
+          "de": "Mein Zeitplan ist diese Woche sehr voll."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A schedule is a plan that shows when things will happen.",
+        "fr": "Un schedule est un plan qui indique quand les choses auront lieu.",
+        "de": "Ein schedule ist ein Plan, der zeigt, wann etwas stattfindet."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "My ",
+        "after": " is full this week: I have meetings every day.",
+        "accepted": { "answers": ["schedule"] },
+        "referenceTargetIds": ["schedule", "rush", "punctual", "hectic"],
+        "explanation": {
+          "en": "A full schedule means many planned activities.",
+          "fr": "Un « schedule » chargé signifie beaucoup d’activités prévues.",
+          "de": "Ein voller „schedule“ bedeutet viele geplante Termine."
+        }
+      },
+      "listeningOptionTargetIds": ["schedule", "deadline", "appointment", "postpone"]
+    },
+    {
+      "id": "appointment",
+      "term": "appointment",
+      "translations": { "fr": ["rendez-vous"], "de": ["Termin"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "appointment",
+      "examForms": ["appointment"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/əˈpɔɪntmənt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "I have a doctor’s appointment at ten.",
+        "translation": {
+          "fr": "J’ai rendez-vous chez le médecin à dix heures.",
+          "de": "Ich habe um zehn Uhr einen Arzttermin."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "An appointment is an arranged time to see someone, often a doctor or dentist.",
+        "fr": "Un appointment est un moment convenu pour voir quelqu’un, souvent un médecin.",
+        "de": "Ein appointment ist ein vereinbarter Termin, oft beim Arzt oder Zahnarzt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "I have a dentist ",
+        "after": " at 3 p.m. tomorrow.",
+        "accepted": { "answers": ["appointment"] },
+        "referenceTargetIds": ["appointment", "deadline", "schedule", "to-do-list"],
+        "explanation": {
+          "en": "You make an appointment to see a dentist.",
+          "fr": "On prend un « appointment » chez le dentiste.",
+          "de": "Beim Zahnarzt vereinbart man einen „appointment“."
+        }
+      },
+      "listeningOptionTargetIds": ["appointment", "postpone", "punctual", "prioritise"]
+    },
+    {
+      "id": "deadline",
+      "term": "deadline",
+      "translations": { "fr": ["date limite", "échéance"], "de": ["Frist", "Abgabetermin"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "deadline",
+      "examForms": ["deadline"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈdedlaɪn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "The deadline for the report is Friday.",
+        "translation": {
+          "fr": "La date limite du rapport est vendredi.",
+          "de": "Die Frist für den Bericht ist Freitag."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A deadline is the last moment by which something must be finished.",
+        "fr": "Un deadline est le dernier moment avant lequel il faut finir quelque chose.",
+        "de": "Ein deadline ist der letzte Zeitpunkt, bis zu dem etwas fertig sein muss."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The ",
+        "after": " for the report is Friday at noon.",
+        "accepted": { "answers": ["deadline"] },
+        "referenceTargetIds": ["deadline", "spare-time", "postpone", "punctual"],
+        "explanation": {
+          "en": "A report has a deadline for handing it in.",
+          "fr": "Un rapport a un « deadline » pour le rendre.",
+          "de": "Für einen Bericht gibt es einen „deadline“ zur Abgabe."
+        }
+      },
+      "listeningOptionTargetIds": ["deadline", "hectic", "schedule", "appointment"]
+    },
+    {
+      "id": "to-do-list",
+      "term": "to-do list",
+      "translations": {
+        "fr": ["liste de choses à faire", "liste de tâches"],
+        "de": ["To-do-Liste", "Aufgabenliste"]
+      },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "to-do list",
+      "examForms": ["to-do list"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/tə ˈduː lɪst/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "I check my to-do list every morning.",
+        "translation": {
+          "fr": "Je consulte ma liste de choses à faire chaque matin.",
+          "de": "Ich sehe jeden Morgen meine To-do-Liste durch."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A to-do list is a written list of tasks you need to do.",
+        "fr": "Une to-do list est une liste écrite des tâches à accomplir.",
+        "de": "Eine to-do list ist eine schriftliche Liste mit Aufgaben, die du erledigen musst."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "I wrote every task on my ",
+        "after": " and crossed them off one by one.",
+        "accepted": { "answers": ["to-do list"] },
+        "referenceTargetIds": ["to-do-list", "appointment", "deadline", "prioritise"],
+        "explanation": {
+          "en": "You cross tasks off a to-do list.",
+          "fr": "On barre les tâches d’une « to-do list ».",
+          "de": "Auf einer „to-do list“ streicht man Aufgaben durch."
+        }
+      },
+      "listeningOptionTargetIds": ["to-do-list", "spare-time", "schedule", "be-running-late"]
+    },
+    {
+      "id": "spare-time",
+      "term": "spare time",
+      "translations": { "fr": ["temps libre"], "de": ["Freizeit"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "spare time",
+      "examForms": ["spare time"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/speə taɪm/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "In my spare time, I play the guitar.",
+        "translation": {
+          "fr": "Pendant mon temps libre, je joue de la guitare.",
+          "de": "In meiner Freizeit spiele ich Gitarre."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Spare time is time when you are free from work or duties.",
+        "fr": "Le spare time est le temps où l’on n’a ni travail ni obligations.",
+        "de": "Spare time ist Zeit, in der du keine Arbeit oder Pflichten hast."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "What do you do in your ",
+        "after": "? I read and go running.",
+        "accepted": { "answers": ["spare time"] },
+        "referenceTargetIds": ["spare-time", "hectic", "postpone", "punctual"],
+        "explanation": {
+          "en": "We say 'in your spare time' for free time.",
+          "fr": "On dit « in your spare time » pour le temps libre.",
+          "de": "Man sagt „in your spare time“ für die Freizeit."
+        }
+      },
+      "listeningOptionTargetIds": ["spare-time", "to-do-list", "schedule", "rush"]
+    },
+    {
+      "id": "prioritise",
+      "term": "prioritise",
+      "translations": {
+        "fr": ["donner la priorité à", "hiérarchiser"],
+        "de": ["Prioritäten setzen", "priorisieren"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "prioritise",
+      "examForms": ["prioritise", "prioritize"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/praɪˈɒrɪtaɪz/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "You need to prioritise your tasks.",
+        "translation": {
+          "fr": "Vous devez hiérarchiser vos tâches.",
+          "de": "Du musst deine Aufgaben priorisieren."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To prioritise is to decide which things are most important and do them first.",
+        "fr": "Prioritise signifie décider ce qui est le plus important et le faire en premier.",
+        "de": "Prioritise bedeutet entscheiden, was am wichtigsten ist, und es zuerst zu tun."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "When everything is urgent, you must ",
+        "after": " your tasks.",
+        "accepted": { "answers": ["prioritise", "prioritize"] },
+        "referenceTargetIds": ["prioritise", "punctual", "hectic", "spare-time"],
+        "explanation": {
+          "en": "You prioritise tasks to decide the order.",
+          "fr": "On « prioritise » les tâches pour décider de l’ordre.",
+          "de": "Man „prioritise“ Aufgaben, um die Reihenfolge festzulegen."
+        }
+      },
+      "listeningOptionTargetIds": ["prioritise", "postpone", "punctual", "appointment"]
+    },
+    {
+      "id": "punctual",
+      "term": "punctual",
+      "translations": { "fr": ["ponctuel"], "de": ["pünktlich"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "punctual",
+      "examForms": ["punctual"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈpʌŋktʃuəl/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She is always punctual for meetings.",
+        "translation": {
+          "fr": "Elle est toujours ponctuelle aux réunions.",
+          "de": "Sie ist bei Besprechungen immer pünktlich."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Punctual describes a person who arrives at the agreed time.",
+        "fr": "Punctual décrit une personne qui arrive à l’heure convenue.",
+        "de": "Punctual beschreibt jemanden, der zur vereinbarten Zeit ankommt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She is always ",
+        "after": "; she never arrives late.",
+        "accepted": { "answers": ["punctual"] },
+        "referenceTargetIds": ["punctual", "hectic", "rush", "appointment"],
+        "explanation": {
+          "en": "Someone who never arrives late is punctual.",
+          "fr": "Quelqu’un qui n’arrive jamais en retard est « punctual ».",
+          "de": "Wer nie zu spät kommt, ist „punctual“."
+        }
+      },
+      "listeningOptionTargetIds": ["punctual", "postpone", "prioritise", "hectic"]
+    },
+    {
+      "id": "be-running-late",
+      "term": "be running late",
+      "translations": { "fr": ["être en retard"], "de": ["zu spät dran sein"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "be running late",
+      "examForms": ["be running late"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/biː ˈrʌnɪŋ leɪt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Sorry, I’m running late. Start without me.",
+        "translation": {
+          "fr": "Désolé, je suis en retard. Commencez sans moi.",
+          "de": "Tut mir leid, ich bin spät dran. Fangt ohne mich an."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Be running late means you will arrive later than planned.",
+        "fr": "Be running late signifie que vous arriverez plus tard que prévu.",
+        "de": "Be running late bedeutet, dass du später ankommst als geplant."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Sorry, I’m ",
+        "after": ". The train is delayed.",
+        "accepted": { "answers": ["running late"] },
+        "referenceTargetIds": ["be-running-late", "punctual", "hectic", "spare-time"],
+        "explanation": {
+          "en": "I’m running late means I will arrive after the planned time.",
+          "fr": "« I’m running late » signifie que j’arriverai après l’heure prévue.",
+          "de": "„I’m running late“ heißt, dass ich nach der geplanten Zeit ankomme."
+        }
+      },
+      "listeningOptionTargetIds": ["be-running-late", "behind-schedule", "punctual", "rush"]
+    },
+    {
+      "id": "behind-schedule",
+      "term": "behind schedule",
+      "translations": { "fr": ["en retard sur le planning"], "de": ["im Zeitverzug"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "behind schedule",
+      "examForms": ["behind schedule"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/bɪˌhaɪnd ˈʃedjuːl/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "The building work is two weeks behind schedule.",
+        "translation": {
+          "fr": "Les travaux ont deux semaines de retard sur le planning.",
+          "de": "Die Bauarbeiten sind zwei Wochen im Zeitverzug."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Behind schedule means later than the plan said, usually for a project.",
+        "fr": "Behind schedule signifie plus tard que prévu dans le plan, surtout pour un projet.",
+        "de": "Behind schedule bedeutet später als im Plan vorgesehen, meist bei einem Projekt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The project is ",
+        "after": ", so we need extra help.",
+        "accepted": { "answers": ["behind schedule"] },
+        "referenceTargetIds": ["behind-schedule", "punctual", "spare-time", "to-do-list"],
+        "explanation": {
+          "en": "A project that is late is behind schedule.",
+          "fr": "Un projet en retard est « behind schedule ».",
+          "de": "Ein verspätetes Projekt ist „behind schedule“."
+        }
+      },
+      "listeningOptionTargetIds": ["behind-schedule", "be-running-late", "schedule", "deadline"]
+    },
+    {
+      "id": "hectic",
+      "term": "hectic",
+      "translations": { "fr": ["mouvementé", "agité"], "de": ["hektisch", "turbulent"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "hectic",
+      "examForms": ["hectic"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈhektɪk/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "I’ve had a hectic week at work.",
+        "translation": {
+          "fr": "J’ai eu une semaine mouvementée au travail.",
+          "de": "Ich hatte eine hektische Woche bei der Arbeit."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Hectic describes a time that is very busy and full of activity.",
+        "fr": "Hectic décrit une période très occupée et pleine d’activité.",
+        "de": "Hectic beschreibt eine Zeit, die sehr geschäftig und voller Aktivität ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Mondays are always ",
+        "after": ": I have no time to sit down.",
+        "accepted": { "answers": ["hectic"] },
+        "referenceTargetIds": ["hectic", "punctual", "deadline", "spare-time"],
+        "explanation": {
+          "en": "A day with no time to sit down is hectic.",
+          "fr": "Une journée sans temps pour s’asseoir est « hectic ».",
+          "de": "Ein Tag ohne Zeit zum Sitzen ist „hectic“."
+        }
+      },
+      "listeningOptionTargetIds": ["hectic", "schedule", "punctual", "rush"]
+    },
+    {
+      "id": "rush",
+      "term": "rush",
+      "translations": { "fr": ["se dépêcher", "se précipiter"], "de": ["sich beeilen", "hetzen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "rush",
+      "examForms": ["rush"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/rʌʃ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Don’t rush; we have plenty of time.",
+        "translation": {
+          "fr": "Ne vous précipitez pas ; nous avons largement le temps.",
+          "de": "Beeil dich nicht; wir haben viel Zeit."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To rush is to do something very quickly, often too quickly.",
+        "fr": "Rush signifie faire quelque chose très vite, souvent trop vite.",
+        "de": "Rush bedeutet, etwas sehr schnell zu tun, oft zu schnell."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Don’t ",
+        "after": " – we have plenty of time.",
+        "accepted": { "answers": ["rush"] },
+        "referenceTargetIds": ["rush", "schedule", "hectic", "appointment"],
+        "explanation": {
+          "en": "Don’t rush means do not hurry.",
+          "fr": "« Don’t rush » signifie ne vous pressez pas.",
+          "de": "„Don’t rush“ heißt: Beeil dich nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["rush", "punctual", "spare-time", "hectic"]
+    },
+    {
+      "id": "postpone",
+      "term": "postpone",
+      "translations": { "fr": ["reporter"], "de": ["verschieben"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "postpone",
+      "examForms": ["postpone"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/pəˈspəʊn/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "We had to postpone the meeting until Monday.",
+        "translation": {
+          "fr": "Nous avons dû reporter la réunion à lundi.",
+          "de": "Wir mussten die Besprechung auf Montag verschieben."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To postpone is to move an event to a later time.",
+        "fr": "Postpone signifie remettre un événement à plus tard.",
+        "de": "Postpone bedeutet, einen Termin auf später zu verschieben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "We had to ",
+        "after": " the meeting until next week because the manager was ill.",
+        "accepted": { "answers": ["postpone"] },
+        "referenceTargetIds": ["postpone", "prioritise", "punctual", "appointment"],
+        "explanation": {
+          "en": "You postpone a meeting by moving it to a later date.",
+          "fr": "On « postpone » une réunion en la repoussant à une date ultérieure.",
+          "de": "Man „postpone“ eine Besprechung, indem man sie auf später legt."
+        }
+      },
+      "listeningOptionTargetIds": ["postpone", "prioritise", "appointment", "punctual"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

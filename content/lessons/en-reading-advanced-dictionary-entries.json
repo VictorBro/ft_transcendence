@@ -1,0 +1,401 @@
+{
+  "schemaVersion": 2,
+  "id": "en-reading-advanced-dictionary-entries",
+  "lang": "en",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Reading dictionary usage notes on near synonyms",
+  "objective": {
+    "en": "Use register labels, collocations and usage notes in dictionary entries to choose between near synonyms such as error, mistake, slip and oversight, and explain why one fits.",
+    "fr": "Utiliser les niveaux de langue, les collocations et les notes d’usage d’un dictionnaire pour choisir entre quasi-synonymes (error, mistake, slip, oversight) et justifier ce choix.",
+    "de": "Sprachebenen, Kollokationen und Gebrauchshinweise in Wörterbucheinträgen nutzen, um zwischen Beinahe-Synonymen wie error, mistake, slip und oversight zu wählen und die Wahl zu begründen."
+  },
+  "estimatedMinutes": 12,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:49:27.856Z",
+    "inputHashes": {
+      "outline": "412a542738473f27d56e3f2cf4150145f13c56e32c712243d23305df75240c54",
+      "brief": "d4c5ee763f81edb4a1dfa2a67348404482719add5fefb87b171f00bb3c1540fa"
+    }
+  },
+  "kind": "reading",
+  "theme": "language",
+  "genre": "dictionary_entry",
+  "documents": [
+    {
+      "documentId": "main",
+      "title": "Usage notes: error, mistake, slip, oversight",
+      "meta": ["Advanced learner’s dictionary"],
+      "paragraphs": [
+        "error noun [countable, uncountable] FORMAL\nA wrong belief, calculation or action caused by lack of knowledge or poor judgement: a clerical error; an error of judgement; The report contained several factual errors.\nCOLLOCATIONS: make / commit / correct an error; human error; a margin of error; in error (= by mistake)",
+        "USAGE NOTE: Error is the normal word in technical, legal and official writing. It suggests something that can be measured or checked, such as a rounding error or a printing error, and it carries little personal blame. In casual conversation it can sound stiff: people say I made a mistake, not I committed an error.",
+        "mistake noun [countable] NEUTRAL\nAn action, decision or opinion that is wrong or unwise, often one you later regret: a costly mistake; It was a mistake to trust him; I took your coat by mistake.\nCOLLOCATIONS: make / learn from / admit a mistake; a big / fatal / silly / easy mistake; a spelling mistake; no mistake about it",
+        "USAGE NOTE: Mistake is the all-purpose choice and fits almost any register. Unlike error, it often points to a person’s responsibility, and it can describe choices with serious consequences: Resigning was the biggest mistake of her career. Use it when you want to sound natural rather than official.",
+        "slip noun [countable] INFORMAL\nA small mistake, usually caused by carelessness or a moment’s lack of attention, which is easy to put right: a slip of the tongue; a slip of the pen; a Freudian slip.\nCOLLOCATIONS: a minor / careless / embarrassing slip; a slip in concentration; make a slip.",
+        "USAGE NOTE: A slip is trivial and forgivable. Calling something a slip downplays it, so the word is often chosen by the person who made it, or by a kind observer: Sorry, that was just a slip. A journalist who describes a minister’s blunder as a slip is being generous; one who calls it an error or a mistake is being less so.",
+        "oversight noun [countable, uncountable] FORMAL\n1 A failure to notice or do something that should have been noticed or done: Leaving his name off the list was an unfortunate oversight. 2 The responsibility of supervising an activity: parliamentary oversight of the security services.\nCOLLOCATIONS: through / due to an oversight; an unfortunate / regrettable / administrative oversight; apologise for an oversight",
+        "USAGE NOTE: An oversight is a mistake of omission: nothing wrong was done, but something was left out or missed. It is polite and slightly formal, which makes it useful in apologies and complaints, because it suggests no bad intention. Compare: We apologise for the error (something wrong was stated) and We apologise for the oversight (something was forgotten).",
+        "COMPARE: A teacher might correct a spelling mistake in an essay, a bank would investigate an error on a statement, a speaker would laugh off a slip of the tongue, and a manager might admit that a missing signature was an oversight. The words also differ in connotation: oversight and slip soften the blame, mistake keeps it neutral, and error sounds impersonal. When you choose between them, check the register label first, then the typical collocations, and finally the usage note."
+      ],
+      "highlights": [
+        { "keywordId": "register", "text": "register" },
+        { "keywordId": "collocations", "text": "collocations" },
+        { "keywordId": "connotation", "text": "connotation" },
+        { "keywordId": "oversight", "text": "oversight" },
+        { "keywordId": "slip", "text": "slip" }
+      ]
+    },
+    {
+      "documentId": "exam",
+      "title": "Usage notes: blunder, gaffe, lapse",
+      "meta": ["Advanced learner’s dictionary"],
+      "paragraphs": [
+        "blunder noun [countable] NEUTRAL\nA stupid or careless mistake, often with embarrassing or costly results: a diplomatic blunder; a tactical blunder.\nCOLLOCATIONS: make / commit a blunder; a political / financial blunder; a serious blunder",
+        "USAGE NOTE: A blunder is a mistake that other people notice and judge. It suggests clumsiness or poor judgement rather than a lack of attention, and it is common in newspapers, where a minister’s decision may be called a blunder. It is stronger than slip and much less polite than oversight.",
+        "gaffe noun [countable] INFORMAL\nA remark or action that is socially awkward or embarrassing: He made an unforgivable gaffe at the dinner by asking her age.\nCOLLOCATIONS: make / commit a gaffe; a social / diplomatic gaffe; a public gaffe",
+        "USAGE NOTE: A gaffe concerns what you say or do in company, not facts or figures, so you cannot make a gaffe in a calculation. The word is typical of journalism and gossip, and it implies embarrassment rather than serious harm.",
+        "lapse noun [countable] FORMAL\nA temporary failure of concentration, memory or good behaviour: a lapse of memory; a lapse in judgement; a security lapse.\nCOLLOCATIONS: a momentary / serious lapse; a lapse of concentration; a lapse in standards",
+        "USAGE NOTE: A lapse is a short break in an otherwise good standard, so it is often used for professional or moral failures. A single lapse does not mean the person is usually careless, which is why organisations like the word when they apologise."
+      ],
+      "highlights": []
+    }
+  ],
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "exercise",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "flashcards",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Turn each card to learn the key words of the text.",
+            "fr": "Retournez chaque carte pour découvrir les mots clés du texte.",
+            "de": "Dreh jede Karte um und lerne die Schlüsselwörter des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_flashcards",
+              "itemId": "cards",
+              "keywordIds": ["register", "collocations", "connotation", "oversight", "slip"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "matching",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each key word with its meaning.",
+            "fr": "Associez chaque mot clé à son sens.",
+            "de": "Ordne jedem Schlüsselwort seine Bedeutung zu."
+          },
+          "items": [
+            {
+              "type": "reading_keyword_matching",
+              "itemId": "matching",
+              "keywordIds": ["register", "collocations", "connotation", "oversight", "slip"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skim",
+      "stage": "skim",
+      "role": "exercise",
+      "label": { "en": "Skim", "fr": "Survol", "de": "Überfliegen" },
+      "pages": [
+        {
+          "pageId": "skim",
+          "estimatedDurationS": 230,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Look over the document quickly. When the time is up it is put away; then answer the question.",
+            "fr": "Parcourez rapidement le document. À la fin du temps, il disparaît ; répondez ensuite à la question.",
+            "de": "Überfliege das Dokument. Wenn die Zeit um ist, verschwindet es; beantworte dann die Frage."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "skim-document",
+              "documentId": "main",
+              "view": "skim",
+              "skimSeconds": 210
+            },
+            {
+              "type": "reading_skim_choice",
+              "itemId": "skim-question",
+              "focus": "genre",
+              "question": "What kind of text is this?",
+              "options": [
+                { "optionId": "o1", "text": "A newspaper article about a minister" },
+                { "optionId": "o2", "text": "A letter of apology" },
+                { "optionId": "o3", "text": "A set of dictionary entries with usage notes" },
+                { "optionId": "o4", "text": "A grammar exercise" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "Each part gives a headword, a part of speech, a register label, collocations and a usage note: these are dictionary entries.",
+                "fr": "Chaque partie donne un mot-vedette, une catégorie grammaticale, une étiquette de registre, des collocations et une note d’usage : ce sont des entrées de dictionnaire.",
+                "de": "Jeder Teil nennt ein Stichwort, die Wortart, eine Registermarkierung, Kollokationen und einen Gebrauchshinweis: Das sind Wörterbucheinträge."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detail",
+      "stage": "detail",
+      "role": "exercise",
+      "label": { "en": "Detail", "fr": "Détails", "de": "Details" },
+      "pages": [
+        {
+          "pageId": "detail",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the document carefully and answer the questions.",
+            "fr": "Lisez le document attentivement et répondez aux questions.",
+            "de": "Lies das Dokument genau und beantworte die Fragen."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "detail-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-register",
+              "question": "According to the entries, which noun is labelled INFORMAL?",
+              "options": [
+                { "optionId": "o1", "text": "error" },
+                { "optionId": "o2", "text": "mistake" },
+                { "optionId": "o3", "text": "oversight" },
+                { "optionId": "o4", "text": "slip" }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "Slip is labelled INFORMAL. Error and oversight are FORMAL, and mistake is NEUTRAL.",
+                "fr": "Slip porte l’étiquette INFORMAL. Error et oversight sont FORMAL, et mistake est NEUTRAL.",
+                "de": "Slip ist als INFORMAL markiert. Error und oversight sind FORMAL, mistake ist NEUTRAL."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-collocation",
+              "question": "Which collocation is listed in the entry for error?",
+              "options": [
+                { "optionId": "o1", "text": "a margin of error" },
+                { "optionId": "o2", "text": "a margin of mistake" },
+                { "optionId": "o3", "text": "a silly error" },
+                { "optionId": "o4", "text": "learn from an error" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "A margin of error appears under error. A silly mistake and learn from a mistake belong to the entry for mistake.",
+                "fr": "A margin of error figure sous error. A silly mistake et learn from a mistake appartiennent à l’entrée mistake.",
+                "de": "A margin of error steht unter error. A silly mistake und learn from a mistake gehören zum Eintrag mistake."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "q-slip",
+              "statement": "Calling a minister’s blunder a slip makes it sound more serious than calling it an error.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: calling something a slip downplays it, so it sounds less serious and more generous.",
+                "fr": "Faux : appeler quelque chose a slip l’atténue, donc cela paraît moins grave et plus indulgent.",
+                "de": "Falsch: Wer etwas slip nennt, spielt es herunter; es klingt weniger ernst und wohlwollender."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-oversight",
+              "question": "Why is oversight useful in an apology?",
+              "options": [
+                { "optionId": "o1", "text": "It is the most informal word of the four" },
+                { "optionId": "o2", "text": "It suggests that nothing bad was intended" },
+                { "optionId": "o3", "text": "It means the same as a spelling mistake" },
+                { "optionId": "o4", "text": "It puts the blame on the other person" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "The usage note says an oversight is polite and slightly formal and suggests no bad intention.",
+                "fr": "La note d’usage dit qu’un oversight est poli, légèrement soutenu et n’implique aucune mauvaise intention.",
+                "de": "Der Gebrauchshinweis sagt, ein oversight sei höflich, leicht formell und unterstelle keine böse Absicht."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "structure",
+      "stage": "structure",
+      "role": "exercise",
+      "label": { "en": "Structure", "fr": "Structure", "de": "Aufbau" },
+      "pages": [
+        {
+          "pageId": "structure",
+          "estimatedDurationS": 75,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the parts of the page in the order the text gives them.",
+            "fr": "Remettez les parties de la page dans l’ordre du texte.",
+            "de": "Bring die Teile der Seite in die Reihenfolge des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "structure-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_order",
+              "itemId": "order",
+              "pieces": [
+                { "pieceId": "p3", "text": "The entry for slip, a small careless mistake" },
+                { "pieceId": "p5", "text": "A comparison showing each word in a situation" },
+                { "pieceId": "p1", "text": "The entry for error, with its formal label" },
+                { "pieceId": "p4", "text": "The entry for oversight, a mistake of omission" },
+                { "pieceId": "p2", "text": "The entry for mistake, the all-purpose word" }
+              ],
+              "acceptedOrders": [["p1", "p2", "p3", "p4", "p5"]],
+              "answerExplanation": {
+                "en": "The page follows this order: error, mistake, slip, oversight, then the comparison paragraph.",
+                "fr": "La page suit cet ordre : error, mistake, slip, oversight, puis le paragraphe de comparaison.",
+                "de": "Die Seite folgt dieser Reihenfolge: error, mistake, slip, oversight, danach der Vergleichsabsatz."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam",
+          "estimatedDurationS": 201,
+          "timeLimitS": 305,
+          "instructions": {
+            "en": "Read the new document and answer the questions. No help this time.",
+            "fr": "Lisez le nouveau document et répondez aux questions. Cette fois, sans aide.",
+            "de": "Lies das neue Dokument und beantworte die Fragen. Diesmal ohne Hilfe."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "exam-document",
+              "documentId": "exam",
+              "view": "exam",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-newspaper",
+              "question": "Which word best describes a minister’s poor decision reported in a newspaper?",
+              "options": [
+                { "optionId": "o1", "text": "gaffe" },
+                { "optionId": "o2", "text": "lapse" },
+                { "optionId": "o3", "text": "blunder" },
+                { "optionId": "o4", "text": "slip" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "A blunder is a mistake others notice and judge, and it is common in newspapers for decisions.",
+                "fr": "Un blunder est une erreur que les autres remarquent et jugent, fréquent dans la presse pour des décisions.",
+                "de": "Ein blunder ist ein Fehler, den andere bemerken und beurteilen; in Zeitungen ist das Wort für Entscheidungen üblich."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-calculation",
+              "statement": "You can make a gaffe in a calculation.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: a gaffe concerns what you say or do in company, not facts or figures.",
+                "fr": "Faux : un gaffe concerne ce que l’on dit ou fait en société, pas des faits ou des chiffres.",
+                "de": "Falsch: Eine gaffe betrifft, was man in Gesellschaft sagt oder tut, nicht Fakten oder Zahlen."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-formal",
+              "question": "Which of the three words is labelled FORMAL?",
+              "options": [
+                { "optionId": "o1", "text": "blunder" },
+                { "optionId": "o2", "text": "gaffe" },
+                { "optionId": "o3", "text": "lapse" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "Lapse is FORMAL; blunder is NEUTRAL and gaffe is INFORMAL.",
+                "fr": "Lapse est FORMAL ; blunder est NEUTRAL et gaffe est INFORMAL.",
+                "de": "Lapse ist FORMAL; blunder ist NEUTRAL und gaffe ist INFORMAL."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-apology",
+              "question": "Why do organisations like the word lapse when they apologise?",
+              "options": [
+                { "optionId": "o1", "text": "It is friendly and informal" },
+                { "optionId": "o2", "text": "It is a technical term for calculation errors" },
+                { "optionId": "o3", "text": "It means a crime was committed" },
+                { "optionId": "o4", "text": "It suggests one failure in an otherwise good record" }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "A single lapse does not mean the person is usually careless, so the word limits the blame.",
+                "fr": "Un seul lapse ne signifie pas que la personne est habituellement négligente : le mot limite le blâme.",
+                "de": "Ein einzelner lapse heißt nicht, dass die Person sonst nachlässig ist; das Wort begrenzt die Schuld."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-collocation",
+              "question": "Which collocation appears in the entry for lapse?",
+              "options": [
+                { "optionId": "o1", "text": "a lapse of concentration" },
+                { "optionId": "o2", "text": "a lapse of calculation" },
+                { "optionId": "o3", "text": "commit a lapse" },
+                { "optionId": "o4", "text": "a margin of lapse" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "A lapse of concentration is listed. Commit goes with blunder and gaffe in the entries.",
+                "fr": "A lapse of concentration est indiqué. Commit s’emploie avec blunder et gaffe dans les entrées.",
+                "de": "A lapse of concentration ist aufgeführt. Commit steht in den Einträgen bei blunder und gaffe."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

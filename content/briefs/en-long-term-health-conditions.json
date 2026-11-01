@@ -1,0 +1,583 @@
+{
+  "schemaVersion": 2,
+  "id": "en-long-term-health-conditions",
+  "lang": "en",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Long-term health conditions",
+  "objective": {
+    "en": "Name common long-term conditions and talk about living with them, from asthma to heart disease.",
+    "fr": "Nommer des maladies chroniques courantes et parler de la vie avec elles, de l’asthme aux maladies cardiaques.",
+    "de": "Häufige chronische Erkrankungen benennen und über das Leben mit ihnen sprechen, von Asthma bis Herzerkrankung."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:48:35.180Z",
+    "inputHashes": { "outline": "bfa902a2c982d520bbe81217569cf1c5b7e7d86b8fd03830b5dd4a2e9c0a4f4d" }
+  },
+  "kind": "vocabulary",
+  "theme": "health",
+  "coverageNotes": {
+    "en": "Eight common long-term conditions from the outline, plus four words for talking about life with them: chronic, flare-up, manage and medication.",
+    "fr": "Huit maladies chroniques courantes du plan, plus quatre mots pour parler de la vie avec elles : chronic, flare-up, manage et medication.",
+    "de": "Acht häufige chronische Erkrankungen aus der Gliederung, dazu vier Wörter, um über das Leben damit zu sprechen: chronic, flare-up, manage und medication."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words match the outline: eight conditions and four words to describe living with them.",
+    "fr": "Douze mots correspondent au plan : huit maladies et quatre mots pour décrire la vie avec elles.",
+    "de": "Zwölf Wörter entsprechen der Gliederung: acht Erkrankungen und vier Wörter, um das Leben damit zu beschreiben."
+  },
+  "difficultyBalance": {
+    "en": "Most condition names are core B2 health vocabulary; heart disease, flare-up and manage are more demanding.",
+    "fr": "La plupart des noms de maladies sont du vocabulaire de santé B2 courant ; heart disease, flare-up et manage sont plus exigeants.",
+    "de": "Die meisten Krankheitsnamen gehören zum B2-Grundwortschatz Gesundheit; heart disease, flare-up und manage sind anspruchsvoller."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "conditions",
+      "label": {
+        "en": "Long-term conditions",
+        "fr": "Maladies chroniques",
+        "de": "Chronische Erkrankungen"
+      },
+      "targetIds": [
+        "asthma",
+        "diabetes",
+        "arthritis",
+        "eczema",
+        "hay-fever",
+        "migraine",
+        "high-blood-pressure",
+        "heart-disease"
+      ],
+      "introduction": {
+        "en": "Learn the names of eight common **long-term conditions**:\n\n- `asthma`\n- `diabetes`\n- `arthritis`\n- `eczema`\n- `hay fever`\n- `migraine`\n- `high blood pressure`\n- `heart disease`",
+        "fr": "Apprenez les noms de huit **maladies chroniques** courantes :\n\n- `asthma`\n- `diabetes`\n- `arthritis`\n- `eczema`\n- `hay fever`\n- `migraine`\n- `high blood pressure`\n- `heart disease`",
+        "de": "Lerne die Namen von acht häufigen **chronischen Erkrankungen**:\n\n- `asthma`\n- `diabetes`\n- `arthritis`\n- `eczema`\n- `hay fever`\n- `migraine`\n- `high blood pressure`\n- `heart disease`"
+      }
+    },
+    {
+      "id": "living-with",
+      "label": {
+        "en": "Living with a condition",
+        "fr": "Vivre avec une maladie",
+        "de": "Leben mit einer Erkrankung"
+      },
+      "targetIds": ["chronic", "flare-up", "manage", "medication"],
+      "introduction": {
+        "en": "Use these four words to talk about **living with** a condition:\n\n- `chronic`\n- `flare-up`\n- `manage`\n- `medication`",
+        "fr": "Utilisez ces quatre mots pour parler de la **vie avec** une maladie :\n\n- `chronic`\n- `flare-up`\n- `manage`\n- `medication`",
+        "de": "Mit diesen vier Wörtern sprichst du über das **Leben mit** einer Erkrankung:\n\n- `chronic`\n- `flare-up`\n- `manage`\n- `medication`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "asthma",
+      "term": "asthma",
+      "translations": { "fr": ["asthme"], "de": ["Asthma"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "asthma",
+      "examForms": ["asthma"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈæs.mə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "My brother has asthma.",
+        "translation": { "fr": "Mon frère est asthmatique.", "de": "Mein Bruder hat Asthma." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Asthma is a long-term condition that makes breathing difficult.",
+        "fr": "L’asthma (asthme) est une maladie chronique qui rend la respiration difficile.",
+        "de": "Asthma ist eine chronische Erkrankung, bei der das Atmen schwerfällt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He uses an inhaler because he has ",
+        "after": ", which makes breathing hard.",
+        "accepted": { "answers": ["asthma"] },
+        "referenceTargetIds": ["asthma", "chronic", "manage", "medication"],
+        "explanation": {
+          "en": "Only asthma fits: an inhaler helps with breathing problems.",
+          "fr": "Seul « asthma » convient : un inhalateur aide en cas de problèmes respiratoires.",
+          "de": "Nur „asthma“ passt: Ein Inhalator hilft bei Atemproblemen."
+        }
+      },
+      "listeningOptionTargetIds": ["asthma", "arthritis", "eczema", "migraine"]
+    },
+    {
+      "id": "diabetes",
+      "term": "diabetes",
+      "translations": { "fr": ["diabète"], "de": ["Diabetes"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "diabetes",
+      "examForms": ["diabetes"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌdaɪ.əˈbiː.tiːz/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She was diagnosed with diabetes last year.",
+        "translation": {
+          "fr": "On lui a diagnostiqué un diabète l’an dernier.",
+          "de": "Bei ihr wurde letztes Jahr Diabetes diagnostiziert."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Diabetes is a condition in which the body cannot control blood sugar.",
+        "fr": "Le diabetes (diabète) est une maladie où le corps ne contrôle pas le taux de sucre dans le sang.",
+        "de": "Diabetes ist eine Erkrankung, bei der der Körper den Blutzucker nicht regulieren kann."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "People with ",
+        "after": " have to check their blood sugar.",
+        "accepted": { "answers": ["diabetes"] },
+        "referenceTargetIds": ["diabetes", "chronic", "manage", "flare-up"],
+        "explanation": {
+          "en": "Only diabetes fits: it is the condition linked to blood sugar.",
+          "fr": "Seul « diabetes » convient : c’est la maladie liée au taux de sucre.",
+          "de": "Nur „diabetes“ passt: Es ist die Erkrankung, die mit dem Blutzucker zusammenhängt."
+        }
+      },
+      "listeningOptionTargetIds": ["diabetes", "asthma", "arthritis", "eczema"]
+    },
+    {
+      "id": "arthritis",
+      "term": "arthritis",
+      "translations": { "fr": ["arthrite"], "de": ["Arthritis"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "arthritis",
+      "examForms": ["arthritis"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɑːˈθraɪ.tɪs/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "My grandmother has arthritis in her hands.",
+        "translation": {
+          "fr": "Ma grand-mère a de l’arthrite aux mains.",
+          "de": "Meine Großmutter hat Arthritis in den Händen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Arthritis makes the joints painful, swollen and stiff.",
+        "fr": "L’arthritis (arthrite) rend les articulations douloureuses, gonflées et raides.",
+        "de": "Arthritis macht die Gelenke schmerzhaft, geschwollen und steif."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Her finger joints are swollen and stiff because she has ",
+        "after": ".",
+        "accepted": { "answers": ["arthritis"] },
+        "referenceTargetIds": ["arthritis", "manage", "medication", "chronic"],
+        "explanation": {
+          "en": "Only arthritis fits: it affects the joints.",
+          "fr": "Seul « arthritis » convient : elle touche les articulations.",
+          "de": "Nur „arthritis“ passt: Sie betrifft die Gelenke."
+        }
+      },
+      "listeningOptionTargetIds": ["arthritis", "asthma", "diabetes", "migraine"]
+    },
+    {
+      "id": "eczema",
+      "term": "eczema",
+      "translations": { "fr": ["eczéma"], "de": ["Ekzem"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "eczema",
+      "examForms": ["eczema"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈek.sɪ.mə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He has had eczema since he was a baby.",
+        "translation": {
+          "fr": "Il a de l’eczéma depuis qu’il est bébé.",
+          "de": "Er hat Ekzeme, seit er ein Baby war."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Eczema is a skin condition that makes the skin red, dry and itchy.",
+        "fr": "L’eczema (eczéma) est une maladie de peau qui rend la peau rouge, sèche et qui démange.",
+        "de": "Ekzem (eczema) ist eine Hauterkrankung, bei der die Haut rot, trocken und juckend ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Her skin is red and itchy because she has ",
+        "after": ", so she uses a special cream.",
+        "accepted": { "answers": ["eczema"] },
+        "referenceTargetIds": ["eczema", "flare-up", "manage", "chronic"],
+        "explanation": {
+          "en": "Only eczema fits: it is a skin condition treated with cream.",
+          "fr": "Seul « eczema » convient : c’est une maladie de peau qu’on soigne avec une crème.",
+          "de": "Nur „eczema“ passt: Es ist eine Hauterkrankung, die man mit Creme behandelt."
+        }
+      },
+      "listeningOptionTargetIds": ["eczema", "asthma", "arthritis", "diabetes"]
+    },
+    {
+      "id": "hay-fever",
+      "term": "hay fever",
+      "translations": { "fr": ["rhume des foins"], "de": ["Heuschnupfen"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "hay fever",
+      "examForms": ["hay fever"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈheɪ ˌfiː.vər/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "I get hay fever every June.",
+        "translation": {
+          "fr": "J’ai le rhume des foins tous les mois de juin.",
+          "de": "Jeden Juni habe ich Heuschnupfen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Hay fever is an allergy to pollen that causes sneezing and itchy eyes.",
+        "fr": "Le hay fever (rhume des foins) est une allergie au pollen qui provoque des éternuements et des yeux qui piquent.",
+        "de": "Heuschnupfen (hay fever) ist eine Pollenallergie mit Niesen und juckenden Augen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Every spring, when the pollen count is high, I get ",
+        "after": " and sneeze all day.",
+        "accepted": { "answers": ["hay fever"] },
+        "referenceTargetIds": ["hay-fever", "chronic", "manage", "medication"],
+        "explanation": {
+          "en": "Only hay fever fits: pollen and sneezing are its signs.",
+          "fr": "Seul « hay fever » convient : le pollen et les éternuements en sont les signes.",
+          "de": "Nur „hay fever“ passt: Pollen und Niesen sind die Anzeichen."
+        }
+      },
+      "listeningOptionTargetIds": ["hay-fever", "heart-disease", "high-blood-pressure", "migraine"]
+    },
+    {
+      "id": "migraine",
+      "term": "migraine",
+      "translations": { "fr": ["migraine"], "de": ["Migräne"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "migraine",
+      "examForms": ["migraine"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈmiː.ɡreɪn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "A migraine kept her in bed all day.",
+        "translation": {
+          "fr": "Une migraine l’a clouée au lit toute la journée.",
+          "de": "Eine Migräne hielt sie den ganzen Tag im Bett."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A migraine is a very strong headache, often with sensitivity to light.",
+        "fr": "Une migraine est un mal de tête très fort, souvent avec une sensibilité à la lumière.",
+        "de": "Eine Migräne ist ein sehr starker Kopfschmerz, oft mit Lichtempfindlichkeit."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She lay in a dark room with a terrible ",
+        "after": ", a severe headache that lasted six hours.",
+        "accepted": { "answers": ["migraine"] },
+        "referenceTargetIds": ["migraine", "chronic", "manage", "heart-disease"],
+        "explanation": {
+          "en": "Only migraine fits: it is a severe headache.",
+          "fr": "Seul « migraine » convient : c’est un mal de tête sévère.",
+          "de": "Nur „migraine“ passt: Es ist ein schwerer Kopfschmerz."
+        }
+      },
+      "listeningOptionTargetIds": ["migraine", "manage", "medication", "arthritis"]
+    },
+    {
+      "id": "high-blood-pressure",
+      "term": "high blood pressure",
+      "translations": { "fr": ["hypertension"], "de": ["Bluthochdruck"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "high blood pressure",
+      "examForms": ["high blood pressure"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌhaɪ blʌd ˈpreʃ.ər/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He takes pills for high blood pressure.",
+        "translation": {
+          "fr": "Il prend des comprimés contre l’hypertension.",
+          "de": "Er nimmt Tabletten gegen Bluthochdruck."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "High blood pressure means the blood pushes too hard against the walls of the arteries.",
+        "fr": "High blood pressure (hypertension) signifie que le sang exerce une pression trop forte sur les parois des artères.",
+        "de": "Bluthochdruck (high blood pressure) bedeutet, dass das Blut zu stark gegen die Arterienwände drückt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "His doctor warned him that he has ",
+        "after": ", so he should eat less salt.",
+        "accepted": { "answers": ["high blood pressure"] },
+        "referenceTargetIds": ["high-blood-pressure", "asthma", "manage", "chronic"],
+        "explanation": {
+          "en": "Only high blood pressure fits: eating less salt helps to lower it.",
+          "fr": "Seul « high blood pressure » convient : manger moins de sel aide à la faire baisser.",
+          "de": "Nur „high blood pressure“ passt: Weniger Salz zu essen hilft, ihn zu senken."
+        }
+      },
+      "listeningOptionTargetIds": ["high-blood-pressure", "hay-fever", "heart-disease", "chronic"]
+    },
+    {
+      "id": "heart-disease",
+      "term": "heart disease",
+      "translations": { "fr": ["maladie cardiaque"], "de": ["Herzerkrankung"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "heart disease",
+      "examForms": ["heart disease"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈhɑːt dɪˌziːz/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Heart disease runs in my family.",
+        "translation": {
+          "fr": "Les maladies cardiaques sont courantes dans ma famille.",
+          "de": "Herzerkrankungen liegen bei uns in der Familie."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Heart disease is a general name for illnesses that affect the heart.",
+        "fr": "Heart disease (maladie cardiaque) est le nom général des maladies qui touchent le cœur.",
+        "de": "Herzerkrankung (heart disease) ist der Oberbegriff für Krankheiten, die das Herz betreffen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "His father died of ",
+        "after": ", and the doctors had warned him about his heart.",
+        "accepted": { "answers": ["heart disease"] },
+        "referenceTargetIds": ["heart-disease", "eczema", "manage", "chronic"],
+        "explanation": {
+          "en": "Only heart disease fits: the sentence mentions the heart.",
+          "fr": "Seul « heart disease » convient : la phrase parle du cœur.",
+          "de": "Nur „heart disease“ passt: Der Satz spricht vom Herzen."
+        }
+      },
+      "listeningOptionTargetIds": ["heart-disease", "hay-fever", "high-blood-pressure", "asthma"]
+    },
+    {
+      "id": "chronic",
+      "term": "chronic",
+      "translations": { "fr": ["chronique"], "de": ["chronisch"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "chronic",
+      "examForms": ["chronic"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈkrɒn.ɪk/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She has a chronic back problem.",
+        "translation": {
+          "fr": "Elle a un problème de dos chronique.",
+          "de": "Sie hat ein chronisches Rückenleiden."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Chronic describes an illness that lasts a very long time or keeps coming back.",
+        "fr": "Chronic (chronique) décrit une maladie qui dure très longtemps ou revient sans cesse.",
+        "de": "Chronic (chronisch) beschreibt eine Krankheit, die sehr lange dauert oder immer wiederkommt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Diabetes is a ",
+        "after": " condition: it lasts for many years.",
+        "accepted": { "answers": ["chronic"] },
+        "referenceTargetIds": ["chronic", "flare-up", "manage", "medication"],
+        "explanation": {
+          "en": "Only chronic fits: it is the adjective for a condition that lasts for years.",
+          "fr": "Seul « chronic » convient : c’est l’adjectif pour une maladie qui dure des années.",
+          "de": "Nur „chronic“ passt: Es ist das Adjektiv für eine Krankheit, die jahrelang dauert."
+        }
+      },
+      "listeningOptionTargetIds": ["chronic", "eczema", "migraine", "manage"]
+    },
+    {
+      "id": "flare-up",
+      "term": "flare-up",
+      "translations": { "fr": ["poussée"], "de": ["Schub"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "flare-up",
+      "examForms": ["flare-up"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈfleər.ʌp/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Stress can cause a flare-up.",
+        "translation": {
+          "fr": "Le stress peut provoquer une poussée.",
+          "de": "Stress kann einen Schub auslösen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A flare-up is a short period when the symptoms of a long-term condition suddenly get worse.",
+        "fr": "Un flare-up (poussée) est une courte période où les symptômes d’une maladie chronique s’aggravent soudainement.",
+        "de": "Ein Flare-up (Schub) ist eine kurze Phase, in der sich die Symptome einer chronischen Erkrankung plötzlich verschlimmern."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": { "fr": "poussée (d’une maladie)", "de": "Schub (einer Krankheit)" },
+      "gap": {
+        "before": "She had been fine for months, but last week she had a ",
+        "after": " of her arthritis.",
+        "accepted": { "answers": ["flare-up"] },
+        "referenceTargetIds": ["flare-up", "chronic", "manage", "migraine"],
+        "explanation": {
+          "en": "Only flare-up fits: it is a sudden worsening after a calm period.",
+          "fr": "Seul « flare-up » convient : c’est une aggravation soudaine après une période calme.",
+          "de": "Nur „flare-up“ passt: Es ist eine plötzliche Verschlechterung nach einer ruhigen Phase."
+        }
+      },
+      "listeningOptionTargetIds": ["flare-up", "manage", "medication", "chronic"]
+    },
+    {
+      "id": "manage",
+      "term": "manage",
+      "translations": { "fr": ["gérer"], "de": ["bewältigen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "manage",
+      "examForms": ["manage"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈmæn.ɪdʒ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "He manages his diabetes very well.",
+        "translation": {
+          "fr": "Il gère très bien son diabète.",
+          "de": "Er bewältigt seinen Diabetes sehr gut."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To manage a condition means to keep it under control in daily life.",
+        "fr": "Manage (gérer) une maladie, c’est la maîtriser au quotidien.",
+        "de": "Manage (bewältigen) bedeutet, eine Erkrankung im Alltag unter Kontrolle zu halten."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": { "fr": "gérer (une maladie)", "de": "bewältigen (eine Krankheit)" },
+      "gap": {
+        "before": "She has learned how to ",
+        "after": " her asthma with an inhaler and regular check-ups.",
+        "accepted": { "answers": ["manage"] },
+        "referenceTargetIds": ["manage", "chronic", "flare-up", "medication"],
+        "explanation": {
+          "en": "Only manage fits: the gap needs a verb that goes before the condition.",
+          "fr": "Seul « manage » convient : il faut un verbe avant le nom de la maladie.",
+          "de": "Nur „manage“ passt: Vor der Erkrankung braucht der Satz ein Verb."
+        }
+      },
+      "listeningOptionTargetIds": ["manage", "medication", "migraine", "chronic"]
+    },
+    {
+      "id": "medication",
+      "term": "medication",
+      "translations": { "fr": ["médicament"], "de": ["Medikament"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "medication",
+      "examForms": ["medication"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌmed.ɪˈkeɪ.ʃən/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She has to take medication every day.",
+        "translation": {
+          "fr": "Elle doit prendre des médicaments tous les jours.",
+          "de": "Sie muss jeden Tag Medikamente nehmen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Medication is the medicine you take to treat or control a condition; it is not used in the plural.",
+        "fr": "Medication (médicament) désigne les médicaments pris pour soigner ou contrôler une maladie ; le mot ne s’emploie pas au pluriel.",
+        "de": "Medication (Medikament) bezeichnet die Arznei, die man zur Behandlung oder Kontrolle einer Erkrankung nimmt; das Wort hat keinen Plural."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": { "fr": "médicament (en général)", "de": "Medikament (allgemein)" },
+      "gap": {
+        "before": "He takes daily ",
+        "after": " to keep his blood pressure under control.",
+        "accepted": { "answers": ["medication"] },
+        "referenceTargetIds": ["medication", "chronic", "flare-up", "manage"],
+        "explanation": {
+          "en": "Only medication fits: it is the noun for what you take every day.",
+          "fr": "Seul « medication » convient : c’est le nom de ce qu’on prend chaque jour.",
+          "de": "Nur „medication“ passt: Es ist das Nomen für das, was man täglich einnimmt."
+        }
+      },
+      "listeningOptionTargetIds": ["medication", "manage", "migraine", "chronic"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

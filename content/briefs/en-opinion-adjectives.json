@@ -1,0 +1,549 @@
+{
+  "schemaVersion": 2,
+  "id": "en-opinion-adjectives",
+  "lang": "en",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Opinion adjectives",
+  "objective": {
+    "en": "Say what you think of a place, a film or a meal with twelve opinion adjectives.",
+    "fr": "Dire ce que vous pensez d'un lieu, d'un film ou d'un repas avec douze adjectifs d'opinion.",
+    "de": "Mit zwölf Adjektiven sagen, was du von einem Ort, einem Film oder einem Essen hältst."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:20.203Z",
+    "inputHashes": { "outline": "2e1ab3c87f2c6af6d175acc1b963db18b1e5d7b6bd1845f66524804dd1524870" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Twelve opinion adjectives for places, films and meals: six positive ones and six negative or surprising ones.",
+    "fr": "Douze adjectifs d'opinion pour les lieux, les films et les repas : six positifs et six négatifs ou surprenants.",
+    "de": "Zwölf Meinungsadjektive für Orte, Filme und Essen: sechs positive und sechs negative oder überraschende."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "About twelve adjectives, as the outline asks, in two groups of six.",
+    "fr": "Environ douze adjectifs, comme le demande le plan, en deux groupes de six.",
+    "de": "Etwa zwölf Adjektive, wie in der Gliederung verlangt, in zwei Gruppen zu sechs."
+  },
+  "difficultyBalance": {
+    "en": "Most words are common A2 adjectives; disgusting and delicious are a little harder.",
+    "fr": "La plupart des mots sont des adjectifs courants de niveau A2 ; disgusting et delicious sont un peu plus difficiles.",
+    "de": "Die meisten Wörter sind häufige A2-Adjektive; disgusting und delicious sind etwas schwerer."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "positive",
+      "label": { "en": "Good opinions", "fr": "Opinions positives", "de": "Positive Meinungen" },
+      "targetIds": ["amazing", "brilliant", "fantastic", "lovely", "wonderful", "delicious"],
+      "introduction": {
+        "en": "Use these adjectives when you **like** something:\n\n- `amazing`\n- `brilliant`\n- `fantastic`\n- `lovely`\n- `wonderful`\n- `delicious`\n\nYou can say a place is `lovely` or a film is `fantastic`. Use `delicious` for food.",
+        "fr": "Utilisez ces adjectifs quand vous **aimez** quelque chose :\n\n- `amazing`\n- `brilliant`\n- `fantastic`\n- `lovely`\n- `wonderful`\n- `delicious`\n\nOn peut dire qu'un lieu est `lovely` ou qu'un film est `fantastic`. Employez `delicious` pour la nourriture.",
+        "de": "Benutze diese Adjektive, wenn dir etwas **gefällt**:\n\n- `amazing`\n- `brilliant`\n- `fantastic`\n- `lovely`\n- `wonderful`\n- `delicious`\n\nDu kannst sagen, ein Ort ist `lovely` oder ein Film ist `fantastic`. Für Essen benutzt du `delicious`."
+      }
+    },
+    {
+      "id": "negative",
+      "label": {
+        "en": "Bad or strange opinions",
+        "fr": "Opinions négatives ou étonnantes",
+        "de": "Negative oder seltsame Meinungen"
+      },
+      "targetIds": ["awful", "terrible", "horrible", "disgusting", "strange", "boring"],
+      "introduction": {
+        "en": "Use these adjectives when you **do not like** something, or when it is odd:\n\n- `awful`\n- `terrible`\n- `horrible`\n- `disgusting`\n- `strange`\n- `boring`\n\n`Awful`, `terrible` and `horrible` are all very bad. `Disgusting` is for food or smells. `Strange` means unusual.",
+        "fr": "Utilisez ces adjectifs quand vous **n'aimez pas** quelque chose, ou quand c'est bizarre :\n\n- `awful`\n- `terrible`\n- `horrible`\n- `disgusting`\n- `strange`\n- `boring`\n\n`Awful`, `terrible` et `horrible` veulent tous dire très mauvais. `Disgusting` s'emploie pour la nourriture ou les odeurs. `Strange` veut dire inhabituel.",
+        "de": "Benutze diese Adjektive, wenn dir etwas **nicht gefällt** oder wenn es komisch ist:\n\n- `awful`\n- `terrible`\n- `horrible`\n- `disgusting`\n- `strange`\n- `boring`\n\n`Awful`, `terrible` und `horrible` bedeuten alle sehr schlecht. `Disgusting` sagst du bei Essen oder Gerüchen. `Strange` bedeutet ungewöhnlich."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "amazing",
+      "term": "amazing",
+      "translations": { "fr": ["incroyable", "étonnant"], "de": ["erstaunlich", "unglaublich"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "amazing",
+      "examForms": ["amazing"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/əˈmeɪzɪŋ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "The view is amazing.",
+        "translation": { "fr": "La vue est incroyable.", "de": "Die Aussicht ist unglaublich." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Amazing means very good and surprising: an amazing view.",
+        "fr": "Amazing veut dire très bien et surprenant : une vue incroyable.",
+        "de": "Amazing bedeutet sehr gut und überraschend: eine unglaubliche Aussicht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The view from the mountain was ",
+        "after": "! I took fifty photos.",
+        "accepted": { "answers": ["amazing"] },
+        "referenceTargetIds": ["amazing", "boring", "horrible", "terrible"],
+        "explanation": {
+          "en": "Only amazing fits this sentence.",
+          "fr": "Seul « amazing » convient dans cette phrase.",
+          "de": "Nur „amazing“ passt in diesen Satz."
+        }
+      },
+      "listeningOptionTargetIds": ["amazing", "fantastic", "wonderful", "brilliant"]
+    },
+    {
+      "id": "brilliant",
+      "term": "brilliant",
+      "translations": { "fr": ["génial", "brillant"], "de": ["genial", "brillant"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "brilliant",
+      "examForms": ["brilliant"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈbrɪljənt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "That is a brilliant idea.",
+        "translation": { "fr": "C'est une idée géniale.", "de": "Das ist eine geniale Idee." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Brilliant means excellent. British people use it a lot: a brilliant idea.",
+        "fr": "Brilliant veut dire excellent. Les Britanniques l'emploient beaucoup : une idée géniale.",
+        "de": "Brilliant bedeutet ausgezeichnet. Briten benutzen es oft: eine geniale Idee."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "What a ",
+        "after": " idea! It solves the whole problem.",
+        "accepted": { "answers": ["brilliant"] },
+        "referenceTargetIds": ["brilliant", "awful", "boring", "disgusting"],
+        "explanation": {
+          "en": "Only brilliant fits this sentence.",
+          "fr": "Seul « brilliant » convient dans cette phrase.",
+          "de": "Nur „brilliant“ passt in diesen Satz."
+        }
+      },
+      "listeningOptionTargetIds": ["amazing", "fantastic", "wonderful", "brilliant"]
+    },
+    {
+      "id": "fantastic",
+      "term": "fantastic",
+      "translations": { "fr": ["fantastique"], "de": ["fantastisch"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "fantastic",
+      "examForms": ["fantastic"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fænˈtæstɪk/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "The film was fantastic.",
+        "translation": { "fr": "Le film était fantastique.", "de": "Der Film war fantastisch." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Fantastic means extremely good: a fantastic film.",
+        "fr": "Fantastic veut dire extrêmement bien : un film fantastique.",
+        "de": "Fantastic bedeutet extrem gut: ein fantastischer Film."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "We won the match five to nil. It was a ",
+        "after": " game!",
+        "accepted": { "answers": ["fantastic"] },
+        "referenceTargetIds": ["fantastic", "terrible", "awful", "strange"],
+        "explanation": {
+          "en": "Only fantastic fits this sentence.",
+          "fr": "Seul « fantastic » convient dans cette phrase.",
+          "de": "Nur „fantastic“ passt in diesen Satz."
+        }
+      },
+      "listeningOptionTargetIds": ["amazing", "fantastic", "wonderful", "brilliant"]
+    },
+    {
+      "id": "lovely",
+      "term": "lovely",
+      "translations": { "fr": ["adorable", "charmant"], "de": ["schön", "lieb"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "lovely",
+      "examForms": ["lovely"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈlʌvli/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "What a lovely garden!",
+        "translation": { "fr": "Quel joli jardin !", "de": "Was für ein schöner Garten!" }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Lovely means very nice and pleasant: a lovely garden.",
+        "fr": "Lovely veut dire très agréable et joli : un joli jardin.",
+        "de": "Lovely bedeutet sehr nett und angenehm: ein schöner Garten."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "It was a ",
+        "after": " sunny day, so we had a picnic in the park.",
+        "accepted": { "answers": ["lovely"] },
+        "referenceTargetIds": ["lovely", "awful", "horrible", "boring"],
+        "explanation": {
+          "en": "Only lovely fits this sentence.",
+          "fr": "Seul « lovely » convient dans cette phrase.",
+          "de": "Nur „lovely“ passt in diesen Satz."
+        }
+      },
+      "listeningOptionTargetIds": ["lovely", "delicious", "brilliant", "amazing"]
+    },
+    {
+      "id": "wonderful",
+      "term": "wonderful",
+      "translations": { "fr": ["merveilleux"], "de": ["wunderbar"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "wonderful",
+      "examForms": ["wonderful"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈwʌndəfəl/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "We had a wonderful holiday.",
+        "translation": {
+          "fr": "Nous avons passé des vacances merveilleuses.",
+          "de": "Wir hatten einen wunderbaren Urlaub."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Wonderful means very, very good: a wonderful holiday.",
+        "fr": "Wonderful veut dire vraiment très bien : des vacances merveilleuses.",
+        "de": "Wonderful bedeutet ganz besonders gut: ein wunderbarer Urlaub."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The concert was ",
+        "after": ". The singer's voice was perfect and everyone cried with joy.",
+        "accepted": { "answers": ["wonderful"] },
+        "referenceTargetIds": ["wonderful", "terrible", "disgusting", "strange"],
+        "explanation": {
+          "en": "Only wonderful fits this sentence.",
+          "fr": "Seul « wonderful » convient dans cette phrase.",
+          "de": "Nur „wonderful“ passt in diesen Satz."
+        }
+      },
+      "listeningOptionTargetIds": ["amazing", "fantastic", "wonderful", "brilliant"]
+    },
+    {
+      "id": "delicious",
+      "term": "delicious",
+      "translations": { "fr": ["délicieux"], "de": ["lecker"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "delicious",
+      "examForms": ["delicious"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/dɪˈlɪʃəs/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "This cake is delicious.",
+        "translation": { "fr": "Ce gâteau est délicieux.", "de": "Dieser Kuchen ist lecker." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Delicious means that food tastes very good: a delicious cake.",
+        "fr": "Delicious veut dire que la nourriture a très bon goût : un gâteau délicieux.",
+        "de": "Delicious bedeutet, dass Essen sehr gut schmeckt: ein leckerer Kuchen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The soup was ",
+        "after": ". I ate it all.",
+        "accepted": { "answers": ["delicious"] },
+        "referenceTargetIds": ["delicious", "awful", "strange", "boring"],
+        "explanation": {
+          "en": "Only delicious fits this sentence.",
+          "fr": "Seul « delicious » convient dans cette phrase.",
+          "de": "Nur „delicious“ passt in diesen Satz."
+        }
+      },
+      "listeningOptionTargetIds": ["delicious", "lovely", "disgusting", "wonderful"]
+    },
+    {
+      "id": "awful",
+      "term": "awful",
+      "translations": { "fr": ["affreux"], "de": ["furchtbar"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "awful",
+      "examForms": ["awful"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɔːfəl/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "The food was awful.",
+        "translation": { "fr": "La nourriture était affreuse.", "de": "Das Essen war furchtbar." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Awful means very bad: awful food.",
+        "fr": "Awful veut dire très mauvais : une nourriture affreuse.",
+        "de": "Awful bedeutet sehr schlecht: furchtbares Essen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "I felt ",
+        "after": " all day because I was ill.",
+        "accepted": { "answers": ["awful"] },
+        "referenceTargetIds": ["awful", "delicious", "lovely", "brilliant"],
+        "explanation": {
+          "en": "Only awful fits this sentence.",
+          "fr": "Seul « awful » convient dans cette phrase.",
+          "de": "Nur „awful“ passt in diesen Satz."
+        }
+      },
+      "listeningOptionTargetIds": ["awful", "terrible", "horrible", "disgusting"]
+    },
+    {
+      "id": "terrible",
+      "term": "terrible",
+      "translations": { "fr": ["terrible"], "de": ["schrecklich"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "terrible",
+      "examForms": ["terrible"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈterəbəl/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "I had a terrible day.",
+        "translation": {
+          "fr": "J'ai passé une journée terrible.",
+          "de": "Ich hatte einen schrecklichen Tag."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Terrible means very bad: a terrible day.",
+        "fr": "Terrible veut dire très mauvais : une journée terrible.",
+        "de": "Terrible bedeutet sehr schlecht: ein schrecklicher Tag."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The weather was ",
+        "after": ": it rained all day and the wind broke my umbrella.",
+        "accepted": { "answers": ["terrible"] },
+        "referenceTargetIds": ["terrible", "lovely", "amazing", "wonderful"],
+        "explanation": {
+          "en": "Only terrible fits this sentence.",
+          "fr": "Seul « terrible » convient dans cette phrase.",
+          "de": "Nur „terrible“ passt in diesen Satz."
+        }
+      },
+      "listeningOptionTargetIds": ["awful", "terrible", "horrible", "disgusting"]
+    },
+    {
+      "id": "horrible",
+      "term": "horrible",
+      "translations": { "fr": ["horrible"], "de": ["scheußlich"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "horrible",
+      "examForms": ["horrible"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈhɒrəbəl/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "The hotel room was horrible.",
+        "translation": {
+          "fr": "La chambre d'hôtel était horrible.",
+          "de": "Das Hotelzimmer war scheußlich."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Horrible means very unpleasant: a horrible room.",
+        "fr": "Horrible veut dire très désagréable : une chambre horrible.",
+        "de": "Horrible bedeutet sehr unangenehm: ein scheußliches Zimmer."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "There was a ",
+        "after": " smell in the kitchen, so I opened the window.",
+        "accepted": { "answers": ["horrible"] },
+        "referenceTargetIds": ["horrible", "delicious", "fantastic", "lovely"],
+        "explanation": {
+          "en": "Only horrible fits this sentence.",
+          "fr": "Seul « horrible » convient dans cette phrase.",
+          "de": "Nur „horrible“ passt in diesen Satz."
+        }
+      },
+      "listeningOptionTargetIds": ["awful", "terrible", "horrible", "disgusting"]
+    },
+    {
+      "id": "disgusting",
+      "term": "disgusting",
+      "translations": { "fr": ["dégoûtant"], "de": ["ekelhaft"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "disgusting",
+      "examForms": ["disgusting"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/dɪsˈɡʌstɪŋ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "The toilets were disgusting.",
+        "translation": {
+          "fr": "Les toilettes étaient dégoûtantes.",
+          "de": "Die Toiletten waren ekelhaft."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Disgusting means so bad that it makes you feel sick: disgusting food.",
+        "fr": "Disgusting veut dire si mauvais que cela donne envie de vomir : une nourriture dégoûtante.",
+        "de": "Disgusting bedeutet so schlecht, dass einem übel wird: ekelhaftes Essen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The milk was old and the taste was ",
+        "after": ".",
+        "accepted": { "answers": ["disgusting"] },
+        "referenceTargetIds": ["disgusting", "delicious", "lovely", "wonderful"],
+        "explanation": {
+          "en": "Only disgusting fits this sentence.",
+          "fr": "Seul « disgusting » convient dans cette phrase.",
+          "de": "Nur „disgusting“ passt in diesen Satz."
+        }
+      },
+      "listeningOptionTargetIds": ["awful", "terrible", "horrible", "disgusting"]
+    },
+    {
+      "id": "strange",
+      "term": "strange",
+      "translations": { "fr": ["bizarre", "étrange"], "de": ["seltsam", "komisch"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "strange",
+      "examForms": ["strange"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/streɪndʒ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "It is a strange place.",
+        "translation": { "fr": "C'est un endroit bizarre.", "de": "Das ist ein seltsamer Ort." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Strange means unusual and a bit odd: a strange place.",
+        "fr": "Strange veut dire inhabituel et un peu bizarre : un endroit bizarre.",
+        "de": "Strange bedeutet ungewöhnlich und etwas komisch: ein seltsamer Ort."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "I heard a ",
+        "after": " noise in the garden, but I could not see anything.",
+        "accepted": { "answers": ["strange"] },
+        "referenceTargetIds": ["strange", "brilliant", "delicious", "wonderful"],
+        "explanation": {
+          "en": "Only strange fits this sentence.",
+          "fr": "Seul « strange » convient dans cette phrase.",
+          "de": "Nur „strange“ passt in diesen Satz."
+        }
+      },
+      "listeningOptionTargetIds": ["strange", "boring", "awful", "lovely"]
+    },
+    {
+      "id": "boring",
+      "term": "boring",
+      "translations": { "fr": ["ennuyeux"], "de": ["langweilig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "boring",
+      "examForms": ["boring"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈbɔːrɪŋ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "The museum was boring.",
+        "translation": { "fr": "Le musée était ennuyeux.", "de": "Das Museum war langweilig." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Boring means not interesting at all: a boring museum.",
+        "fr": "Boring veut dire pas du tout intéressant : un musée ennuyeux.",
+        "de": "Boring bedeutet überhaupt nicht interessant: ein langweiliges Museum."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The film was so ",
+        "after": " that I almost fell asleep.",
+        "accepted": { "answers": ["boring"] },
+        "referenceTargetIds": ["boring", "amazing", "brilliant", "fantastic"],
+        "explanation": {
+          "en": "Only boring fits this sentence.",
+          "fr": "Seul « boring » convient dans cette phrase.",
+          "de": "Nur „boring“ passt in diesen Satz."
+        }
+      },
+      "listeningOptionTargetIds": ["boring", "strange", "terrible", "amazing"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

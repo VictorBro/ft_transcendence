@@ -1,0 +1,387 @@
+{
+  "schemaVersion": 2,
+  "id": "en-reading-a-short-biography",
+  "lang": "en",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Reading a short biography",
+  "objective": {
+    "en": "Read a short life story and put the main events in order: was born, grew up, moved to, won, died. Say what the person is known for.",
+    "fr": "Lire une courte biographie, remettre les événements dans l’ordre (naître, grandir, déménager, gagner, mourir) et dire pourquoi la personne est connue.",
+    "de": "Eine kurze Biografie lesen, die wichtigsten Ereignisse ordnen (geboren, aufgewachsen, umgezogen, gewonnen, gestorben) und sagen, wofür die Person bekannt ist."
+  },
+  "estimatedMinutes": 9,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:09.462Z",
+    "inputHashes": {
+      "outline": "581180ed2edbde32369113149297a1eb68421ce9fa56496ee3341ec2c01529b6",
+      "brief": "1eea64d576b1d4b18a140e3c521dcf1c845353f0e24f421bbcc0a27250181395"
+    }
+  },
+  "kind": "reading",
+  "theme": "personal_identification",
+  "genre": "article",
+  "documents": [
+    {
+      "documentId": "main",
+      "title": "Marie Curie",
+      "meta": ["A short biography"],
+      "paragraphs": [
+        "Marie Curie was born in Warsaw, Poland, in 1867. She grew up in a family of teachers and she loved science as a child.",
+        "In 1891 she moved to Paris to study at university. There she met a scientist called Pierre Curie, and they got married in 1895.",
+        "Marie and Pierre worked together and found two new elements. In 1903 she won the Nobel Prize in Physics. In 1911 she won a second Nobel Prize, this time in Chemistry. She was the first person to win two.",
+        "Marie Curie is known for her work on radioactivity. She died in France in 1934. Today many schools and hospitals have her name."
+      ],
+      "highlights": [
+        { "keywordId": "was-born", "text": "was born" },
+        { "keywordId": "grew-up", "text": "grew up" },
+        { "keywordId": "moved-to", "text": "moved to" },
+        { "keywordId": "won", "text": "won" },
+        { "keywordId": "known-for", "text": "known for" },
+        { "keywordId": "died", "text": "died" }
+      ]
+    },
+    {
+      "documentId": "exam",
+      "title": "Roald Dahl",
+      "meta": ["A short biography"],
+      "paragraphs": [
+        "Roald Dahl was born in Cardiff, Wales, in 1916. As a boy, he loved sweets and stories. In 1934 he moved to Africa for his job.",
+        "Later he became a pilot. After the war he started to write books for children. He is known for Charlie and the Chocolate Factory and Matilda. He died in 1990."
+      ],
+      "highlights": []
+    }
+  ],
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "exercise",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "flashcards",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Turn each card to learn the key words of the text.",
+            "fr": "Retournez chaque carte pour découvrir les mots clés du texte.",
+            "de": "Dreh jede Karte um und lerne die Schlüsselwörter des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_flashcards",
+              "itemId": "cards",
+              "keywordIds": ["was-born", "grew-up", "moved-to", "won", "known-for", "died"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "matching",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each key word with its meaning.",
+            "fr": "Associez chaque mot clé à son sens.",
+            "de": "Ordne jedem Schlüsselwort seine Bedeutung zu."
+          },
+          "items": [
+            {
+              "type": "reading_keyword_matching",
+              "itemId": "matching",
+              "keywordIds": ["was-born", "grew-up", "moved-to", "won", "known-for", "died"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skim",
+      "stage": "skim",
+      "role": "exercise",
+      "label": { "en": "Skim", "fr": "Survol", "de": "Überfliegen" },
+      "pages": [
+        {
+          "pageId": "skim",
+          "estimatedDurationS": 100,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Look over the document quickly. When the time is up it is put away; then answer the question.",
+            "fr": "Parcourez rapidement le document. À la fin du temps, il disparaît ; répondez ensuite à la question.",
+            "de": "Überfliege das Dokument. Wenn die Zeit um ist, verschwindet es; beantworte dann die Frage."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "skim-document",
+              "documentId": "main",
+              "view": "skim",
+              "skimSeconds": 80
+            },
+            {
+              "type": "reading_skim_choice",
+              "itemId": "skim-question",
+              "focus": "genre",
+              "question": "What kind of text is this?",
+              "options": [
+                { "optionId": "o1", "text": "A weather report" },
+                { "optionId": "o2", "text": "A cooking recipe" },
+                { "optionId": "o3", "text": "A short biography" },
+                { "optionId": "o4", "text": "A shop advert" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "The text tells the life of one person, with years and events: it is a biography.",
+                "fr": "Le texte raconte la vie d’une personne, avec des années et des événements : c’est une biographie.",
+                "de": "Der Text erzählt das Leben einer Person mit Jahren und Ereignissen: Es ist eine Biografie."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detail",
+      "stage": "detail",
+      "role": "exercise",
+      "label": { "en": "Detail", "fr": "Détails", "de": "Details" },
+      "pages": [
+        {
+          "pageId": "detail",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the document carefully and answer the questions.",
+            "fr": "Lisez le document attentivement et répondez aux questions.",
+            "de": "Lies das Dokument genau und beantworte die Fragen."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "detail-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-born",
+              "question": "Where was Marie Curie born?",
+              "options": [
+                { "optionId": "o1", "text": "In Paris" },
+                { "optionId": "o2", "text": "In Warsaw" },
+                { "optionId": "o3", "text": "In London" },
+                { "optionId": "o4", "text": "In Berlin" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "The first sentence says: Marie Curie was born in Warsaw, Poland. She moved to Paris later.",
+                "fr": "La première phrase dit : Marie Curie was born in Warsaw, Poland. Elle a déménagé à Paris plus tard.",
+                "de": "Der erste Satz sagt: Marie Curie was born in Warsaw, Poland. Nach Paris zog sie erst später."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-moved",
+              "question": "When did she move to Paris?",
+              "options": [
+                { "optionId": "o1", "text": "In 1867" },
+                { "optionId": "o2", "text": "In 1903" },
+                { "optionId": "o3", "text": "In 1891" },
+                { "optionId": "o4", "text": "In 1934" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "In 1891 she moved to Paris to study. 1867 is the year she was born.",
+                "fr": "In 1891 she moved to Paris to study. 1867 est son année de naissance.",
+                "de": "In 1891 she moved to Paris to study. 1867 ist ihr Geburtsjahr."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "q-prizes",
+              "statement": "Marie Curie won the Nobel Prize only once.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: she won a Nobel Prize in 1903 and a second one in 1911.",
+                "fr": "Faux : elle a gagné un prix Nobel en 1903 et un deuxième en 1911.",
+                "de": "Falsch: Sie gewann 1903 einen Nobelpreis und 1911 einen zweiten."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-known",
+              "question": "What is Marie Curie known for?",
+              "options": [
+                { "optionId": "o1", "text": "Her work on radioactivity" },
+                { "optionId": "o2", "text": "Her books for children" },
+                { "optionId": "o3", "text": "Her cooking" },
+                { "optionId": "o4", "text": "Her work as a teacher" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "The text says: Marie Curie is known for her work on radioactivity.",
+                "fr": "Le texte dit : Marie Curie is known for her work on radioactivity.",
+                "de": "Der Text sagt: Marie Curie is known for her work on radioactivity."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "structure",
+      "stage": "structure",
+      "role": "exercise",
+      "label": { "en": "Structure", "fr": "Structure", "de": "Aufbau" },
+      "pages": [
+        {
+          "pageId": "structure",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the main events of her life in order, from first to last.",
+            "fr": "Remettez les grands événements de sa vie dans l’ordre, du premier au dernier.",
+            "de": "Bring die wichtigsten Ereignisse ihres Lebens in die Reihenfolge, vom ersten bis zum letzten."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "structure-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_order",
+              "itemId": "order",
+              "pieces": [
+                { "pieceId": "p3", "text": "She won her first Nobel Prize." },
+                { "pieceId": "p1", "text": "She was born in Warsaw." },
+                { "pieceId": "p4", "text": "She died in France." },
+                { "pieceId": "p2", "text": "She moved to Paris." }
+              ],
+              "acceptedOrders": [["p1", "p2", "p3", "p4"]],
+              "answerExplanation": {
+                "en": "Born in 1867, moved to Paris in 1891, first Nobel Prize in 1903, died in 1934.",
+                "fr": "Née en 1867, installée à Paris en 1891, premier prix Nobel en 1903, morte en 1934.",
+                "de": "1867 geboren, 1891 nach Paris gezogen, 1903 erster Nobelpreis, 1934 gestorben."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam",
+          "estimatedDurationS": 141,
+          "timeLimitS": 215,
+          "instructions": {
+            "en": "Read the new document and answer the questions. No help this time.",
+            "fr": "Lisez le nouveau document et répondez aux questions. Cette fois, sans aide.",
+            "de": "Lies das neue Dokument und beantworte die Fragen. Diesmal ohne Hilfe."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "exam-document",
+              "documentId": "exam",
+              "view": "exam",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-born",
+              "question": "Where was Roald Dahl born?",
+              "options": [
+                { "optionId": "o1", "text": "In London" },
+                { "optionId": "o2", "text": "In Dublin" },
+                { "optionId": "o3", "text": "In Oslo" },
+                { "optionId": "o4", "text": "In Cardiff" }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "The text says: Roald Dahl was born in Cardiff, Wales, in 1916.",
+                "fr": "Le texte dit : Roald Dahl was born in Cardiff, Wales, in 1916.",
+                "de": "Der Text sagt: Roald Dahl was born in Cardiff, Wales, in 1916."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-africa",
+              "statement": "Roald Dahl moved to Africa in 1934.",
+              "answer": "true",
+              "answerExplanation": {
+                "en": "True: In 1934 he moved to Africa for his job.",
+                "fr": "Vrai : In 1934 he moved to Africa for his job.",
+                "de": "Richtig: In 1934 he moved to Africa for his job."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-pilot",
+              "question": "What did Roald Dahl become later?",
+              "options": [
+                { "optionId": "o1", "text": "A doctor" },
+                { "optionId": "o2", "text": "A pilot" },
+                { "optionId": "o3", "text": "A singer" },
+                { "optionId": "o4", "text": "A teacher" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "Later he became a pilot.",
+                "fr": "Later he became a pilot : il est devenu pilote.",
+                "de": "Later he became a pilot: Er wurde Pilot."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-adults",
+              "statement": "After the war, Roald Dahl started to write books for adults.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: after the war he started to write books for children.",
+                "fr": "Faux : après la guerre, il a commencé à écrire des livres pour enfants.",
+                "de": "Falsch: Nach dem Krieg fing er an, Kinderbücher zu schreiben."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-known",
+              "question": "Why is Roald Dahl famous?",
+              "options": [
+                { "optionId": "o1", "text": "For his children’s books" },
+                { "optionId": "o2", "text": "For his music" },
+                { "optionId": "o3", "text": "For his paintings" },
+                { "optionId": "o4", "text": "For his football" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "He is known for Charlie and the Chocolate Factory and Matilda, two books for children.",
+                "fr": "Il est connu pour Charlie and the Chocolate Factory et Matilda, deux livres pour enfants.",
+                "de": "Er ist bekannt für Charlie and the Chocolate Factory und Matilda, zwei Kinderbücher."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

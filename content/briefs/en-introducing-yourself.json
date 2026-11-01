@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 2,
+  "id": "en-introducing-yourself",
+  "lang": "en",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Introducing yourself",
+  "objective": {
+    "en": "Say your name and where you are from, and ask someone new the same: Hi, I'm Ana. I'm from Brazil. What's your name?",
+    "fr": "Dire son nom et d'où l'on vient, et poser les mêmes questions à une personne nouvelle.",
+    "de": "Den eigenen Namen und die Herkunft sagen und eine neue Person danach fragen."
+  },
+  "estimatedMinutes": 14,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:09.775Z",
+    "inputHashes": { "outline": "bfd1abab7094fa83673080f4a6605fe463d3754200ce902591addf7ea2bc6d80" }
+  },
+  "kind": "functions",
+  "theme": "personal_identification",
+  "situation": {
+    "en": "Two new students, Tom and Ana, meet for the first time and introduce themselves.",
+    "fr": "Deux nouveaux étudiants, Tom et Ana, se rencontrent pour la première fois et se présentent.",
+    "de": "Zwei neue Studierende, Tom und Ana, lernen sich kennen und stellen sich vor."
+  },
+  "coverageNotes": {
+    "en": "Saying your name (Hi, I'm), saying where you are from (I'm from), asking the name (What's your name?), asking the origin (Where are you from?) and the polite phrase Nice to meet you.",
+    "fr": "Dire son nom (Hi, I'm), dire d'où l'on vient (I'm from), demander le nom (What's your name?), demander l'origine (Where are you from?) et la formule polie Nice to meet you.",
+    "de": "Den Namen sagen (Hi, I'm), die Herkunft sagen (I'm from), nach dem Namen fragen (What's your name?), nach der Herkunft fragen (Where are you from?) und die Höflichkeitsformel Nice to meet you."
+  },
+  "prerequisites": [],
+  "roles": [
+    { "id": "tom", "label": "Tom", "translation": { "fr": "Tom", "de": "Tom" } },
+    { "id": "ana", "label": "Ana", "translation": { "fr": "Ana", "de": "Ana" } }
+  ],
+  "expressions": [
+    {
+      "id": "hi-im",
+      "text": "Hi, I'm",
+      "openEnd": true,
+      "translations": { "fr": ["Salut, je suis"], "de": ["Hallo, ich bin"] },
+      "explanation": {
+        "en": "A friendly way to say your name: Hi, I'm + your name.",
+        "fr": "Une façon amicale de dire son prénom : Hi, I'm + votre prénom.",
+        "de": "Eine freundliche Art, den eigenen Namen zu sagen: Hi, I'm + Name."
+      },
+      "example": {
+        "text": "Hi, I'm Ana.",
+        "translation": { "fr": "Salut, je suis Ana.", "de": "Hallo, ich bin Ana." }
+      }
+    },
+    {
+      "id": "im-from",
+      "text": "I'm from",
+      "openEnd": true,
+      "translations": { "fr": ["Je viens de"], "de": ["Ich komme aus"] },
+      "explanation": {
+        "en": "Says your country or city: I'm from + place.",
+        "fr": "Pour dire son pays ou sa ville : I'm from + lieu.",
+        "de": "Nennt Ihr Land oder Ihre Stadt: I'm from + Ort."
+      },
+      "example": {
+        "text": "I'm from Brazil.",
+        "translation": { "fr": "Je viens du Brésil.", "de": "Ich komme aus Brasilien." }
+      }
+    },
+    {
+      "id": "whats-your-name",
+      "text": "What's your name?",
+      "openEnd": false,
+      "translations": { "fr": ["Comment tu t'appelles ?"], "de": ["Wie heißt du?"] },
+      "explanation": {
+        "en": "Asks for someone's name.",
+        "fr": "Pour demander le nom de quelqu'un.",
+        "de": "Fragt nach dem Namen einer Person."
+      },
+      "example": {
+        "text": "Hi! What's your name?",
+        "translation": { "fr": "Salut ! Comment tu t'appelles ?", "de": "Hallo! Wie heißt du?" }
+      }
+    },
+    {
+      "id": "where-are-you-from",
+      "text": "Where are you from?",
+      "openEnd": false,
+      "translations": { "fr": ["Tu viens d'où ?"], "de": ["Woher kommst du?"] },
+      "explanation": {
+        "en": "Asks for someone's country or city.",
+        "fr": "Pour demander le pays ou la ville de quelqu'un.",
+        "de": "Fragt nach dem Land oder der Stadt einer Person."
+      },
+      "example": {
+        "text": "Where are you from, Tom?",
+        "translation": { "fr": "Tu viens d'où, Tom ?", "de": "Woher kommst du, Tom?" }
+      }
+    },
+    {
+      "id": "nice-to-meet-you",
+      "text": "Nice to meet you.",
+      "openEnd": false,
+      "translations": { "fr": ["Enchanté."], "de": ["Freut mich."] },
+      "explanation": {
+        "en": "Said when you meet someone for the first time.",
+        "fr": "On le dit quand on rencontre quelqu'un pour la première fois.",
+        "de": "Sagt man, wenn man jemanden zum ersten Mal trifft."
+      },
+      "example": {
+        "text": "Nice to meet you, Tom.",
+        "translation": { "fr": "Enchanté, Tom.", "de": "Freut mich, Tom." }
+      }
+    }
+  ],
+  "words": [],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

@@ -1,0 +1,402 @@
+{
+  "schemaVersion": 2,
+  "id": "en-reading-a-profile-of-someone-with-an-unusual-job",
+  "lang": "en",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Reading a profile of someone with an unusual job",
+  "objective": {
+    "en": "Read a magazine profile of someone with an unusual job and find the facts, her attitude to the work and the writer’s purpose in telling her story.",
+    "fr": "Lire le portrait d’une personne au métier insolite et trouver les faits, son attitude face au travail et l’intention de l’auteur.",
+    "de": "Ein Magazinporträt über einen ungewöhnlichen Beruf lesen und Fakten, die Haltung zur Arbeit und die Absicht des Autors erkennen."
+  },
+  "estimatedMinutes": 11,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:48:47.864Z",
+    "inputHashes": {
+      "outline": "b962bea3a7839ba16aa361687eac3f2b9303e47c9f410646a1d7fcd05e6da27b",
+      "brief": "8f55033804e8e9b119bb6471c1c55a0e64fb3b0b6878761eac5a27b2dc31899a"
+    }
+  },
+  "kind": "reading",
+  "theme": "personal_identification",
+  "genre": "profile",
+  "documents": [
+    {
+      "documentId": "main",
+      "title": "The Woman Who Keeps Time",
+      "meta": ["Profile by Dan Whitcombe", "Weekend Magazine, 14 March"],
+      "paragraphs": [
+        "Every Monday at seven in the morning, Ruth Calder climbs 212 steps to the top of the cathedral tower in Wexbridge. Nobody tells her to hurry. She has a heavy brass key in her pocket, a torch in her hand and, above her head, a clock that has been ticking since 1887.",
+        "Ruth is one of the last clock keepers in the country. Her job is to wind the mechanism by hand, oil every wheel and make sure the clock is never more than a few seconds wrong. It is slow, painstaking work, and she has done it for twenty-six years.",
+        "She did not plan this life. Ruth trained as an accountant and spent her twenties staring at spreadsheets. Then, on a walk, she heard the cathedral bells and asked the vicar if she could see the machinery. Within a year she had given up her office job. ‘It was never a career,’ she says. ‘It was a vocation. I simply could not walk away.’",
+        "The work is not glamorous. The tower is cold in winter and unbearably hot in summer, and the pay is modest. Her trade is also dwindling, because most towns now use electric clocks that need no care at all. Yet Ruth never complains. She has a knack for hearing when something is wrong: a tiny change in the rhythm tells her a bearing is dry long before it fails.",
+        "Visitors sometimes ask whether she is lonely up there. Ruth laughs. ‘I have the best view in town, and a clock for company,’ she says. ‘Most days I feel I am the only person who notices the time passing. Everyone else looks at their phones.’",
+        "Ruth’s story matters because it reminds us how much skilled work goes unnoticed. Next time you glance at a town clock, remember that somebody climbed those steps to keep it honest. Her successor, a nervous teenager called Sam, starts training in April. Ruth is already teaching him to listen."
+      ],
+      "highlights": [
+        { "keywordId": "painstaking", "text": "painstaking" },
+        { "keywordId": "vocation", "text": "vocation" },
+        { "keywordId": "dwindling", "text": "dwindling" },
+        { "keywordId": "knack", "text": "knack" },
+        { "keywordId": "glamorous", "text": "glamorous" }
+      ]
+    },
+    {
+      "documentId": "exam",
+      "title": "Naming the Colours",
+      "meta": ["By Hannah Price", "Weekend Magazine, 21 March"],
+      "paragraphs": [
+        "Last year, Tomás Ibarra gave names to 340 shades of paint. ‘Dusty Biscuit’ is his. So is ‘Tuesday Rain’. He works from a tiny studio above a bakery, where he spends his days staring at small squares of colour and waiting for a phrase to arrive.",
+        "Friends find the job hilarious, and Tomás does not mind. He studied literature and wrote poetry for a decade before a paint company advertised the post. ‘A good name should make you feel something before you have even opened the tin,’ he says. ‘Grey is just grey. But Morning Fog makes you want to stay in bed.’",
+        "Not everything is poetic, though. Tomás must check that no name is already taken, and that none sounds rude in another language. Last month a colour he loved, ‘Sunday Mud’, was rejected because another company already used it. He shrugged and moved on to the next square."
+      ],
+      "highlights": []
+    }
+  ],
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "exercise",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "flashcards",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Turn each card to learn the key words of the text.",
+            "fr": "Retournez chaque carte pour découvrir les mots clés du texte.",
+            "de": "Dreh jede Karte um und lerne die Schlüsselwörter des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_flashcards",
+              "itemId": "cards",
+              "keywordIds": ["painstaking", "vocation", "dwindling", "knack", "glamorous"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "matching",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each key word with its meaning.",
+            "fr": "Associez chaque mot clé à son sens.",
+            "de": "Ordne jedem Schlüsselwort seine Bedeutung zu."
+          },
+          "items": [
+            {
+              "type": "reading_keyword_matching",
+              "itemId": "matching",
+              "keywordIds": ["painstaking", "vocation", "dwindling", "knack", "glamorous"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skim",
+      "stage": "skim",
+      "role": "exercise",
+      "label": { "en": "Skim", "fr": "Survol", "de": "Überfliegen" },
+      "pages": [
+        {
+          "pageId": "skim",
+          "estimatedDurationS": 180,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Look over the document quickly. When the time is up it is put away; then answer the question.",
+            "fr": "Parcourez rapidement le document. À la fin du temps, il disparaît ; répondez ensuite à la question.",
+            "de": "Überfliege das Dokument. Wenn die Zeit um ist, verschwindet es; beantworte dann die Frage."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "skim-document",
+              "documentId": "main",
+              "view": "skim",
+              "skimSeconds": 160
+            },
+            {
+              "type": "reading_skim_choice",
+              "itemId": "skim-question",
+              "focus": "purpose",
+              "question": "Why has the writer chosen to write about Ruth Calder?",
+              "options": [
+                { "optionId": "o1", "text": "To encourage readers to train as clock keepers" },
+                { "optionId": "o2", "text": "To argue that electric clocks should be banned" },
+                { "optionId": "o3", "text": "To show how much skilled work people fail to notice" },
+                { "optionId": "o4", "text": "To warn that the cathedral tower is unsafe" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "The final paragraph states the point: her story reminds us how much skilled work goes unnoticed.",
+                "fr": "Le dernier paragraphe donne l’idée : son histoire nous rappelle combien de travail qualifié passe inaperçu.",
+                "de": "Der letzte Absatz nennt die Absicht: Ihre Geschichte erinnert uns daran, wie viel qualifizierte Arbeit unbemerkt bleibt."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detail",
+      "stage": "detail",
+      "role": "exercise",
+      "label": { "en": "Detail", "fr": "Détails", "de": "Details" },
+      "pages": [
+        {
+          "pageId": "detail",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the document carefully and answer the questions.",
+            "fr": "Lisez le document attentivement et répondez aux questions.",
+            "de": "Lies das Dokument genau und beantworte die Fragen."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "detail-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-job",
+              "question": "What is Ruth’s main task?",
+              "options": [
+                { "optionId": "o1", "text": "Ringing the cathedral bells every morning" },
+                { "optionId": "o2", "text": "Winding and looking after the clock by hand" },
+                { "optionId": "o3", "text": "Repairing electric clocks around the town" },
+                { "optionId": "o4", "text": "Showing visitors round the tower" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "Her job is to wind the mechanism by hand, oil every wheel and keep the clock accurate.",
+                "fr": "Son travail consiste à remonter le mécanisme à la main, huiler chaque rouage et garder l’horloge à l’heure.",
+                "de": "Sie zieht das Uhrwerk von Hand auf, ölt jedes Rad und hält die Uhr genau."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-change",
+              "question": "What made Ruth leave her office job?",
+              "options": [
+                { "optionId": "o1", "text": "The vicar offered her a higher salary" },
+                { "optionId": "o2", "text": "Her company closed down" },
+                {
+                  "optionId": "o3",
+                  "text": "She became curious about the machinery after hearing the bells"
+                },
+                { "optionId": "o4", "text": "She wanted to travel after her twenties" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "On a walk she heard the bells, asked to see the machinery, and within a year had left her job.",
+                "fr": "En se promenant, elle a entendu les cloches, a demandé à voir le mécanisme et, un an plus tard, a quitté son emploi.",
+                "de": "Auf einem Spaziergang hörte sie die Glocken, wollte das Uhrwerk sehen und hatte binnen eines Jahres gekündigt."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-attitude",
+              "question": "How does Ruth feel about the difficulties of her job?",
+              "options": [
+                { "optionId": "o1", "text": "She regrets leaving accountancy" },
+                { "optionId": "o2", "text": "She hopes to find an easier job" },
+                { "optionId": "o3", "text": "She blames the cathedral for the low pay" },
+                { "optionId": "o4", "text": "She accepts them without complaining" }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "The writer says ‘Yet Ruth never complains’ despite the cold, the heat and the modest pay.",
+                "fr": "L’auteur écrit « Yet Ruth never complains » malgré le froid, la chaleur et le salaire modeste.",
+                "de": "Der Autor schreibt „Yet Ruth never complains“ trotz Kälte, Hitze und bescheidener Bezahlung."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "q-lonely",
+              "statement": "Ruth finds the tower a lonely place to work.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: she laughs at the question and says she has the best view in town and a clock for company.",
+                "fr": "Faux : elle rit à cette question et dit avoir la plus belle vue de la ville et une horloge pour compagnie.",
+                "de": "Falsch: Sie lacht über die Frage und sagt, sie habe die beste Aussicht der Stadt und eine Uhr als Gesellschaft."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "structure",
+      "stage": "structure",
+      "role": "exercise",
+      "label": { "en": "Structure", "fr": "Structure", "de": "Aufbau" },
+      "pages": [
+        {
+          "pageId": "structure",
+          "estimatedDurationS": 75,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the stages of Ruth’s story in the order the text gives them.",
+            "fr": "Remettez les étapes de l’histoire de Ruth dans l’ordre du texte.",
+            "de": "Bring die Stationen von Ruths Geschichte in die Reihenfolge des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "structure-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_order",
+              "itemId": "order",
+              "pieces": [
+                { "pieceId": "p4", "text": "Ruth explains why she stayed in the job" },
+                { "pieceId": "p1", "text": "A Monday morning climb up the tower" },
+                { "pieceId": "p5", "text": "The writer says why her story matters" },
+                { "pieceId": "p3", "text": "The difficulties of the job" },
+                { "pieceId": "p2", "text": "How Ruth changed career" }
+              ],
+              "acceptedOrders": [["p1", "p2", "p3", "p4", "p5"]],
+              "answerExplanation": {
+                "en": "The text opens with the Monday climb, tells how she changed career, describes the hard side, then her view of the tower, and ends with the writer’s point.",
+                "fr": "Le texte s’ouvre sur la montée du lundi, raconte sa reconversion, décrit les difficultés, puis son regard sur la tour, et finit par l’idée de l’auteur.",
+                "de": "Der Text beginnt mit dem Aufstieg am Montag, erzählt den Berufswechsel, beschreibt die Schwierigkeiten, dann ihre Sicht auf den Turm und endet mit der Aussage des Autors."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam",
+          "estimatedDurationS": 174,
+          "timeLimitS": 265,
+          "instructions": {
+            "en": "Read the new document and answer the questions. No help this time.",
+            "fr": "Lisez le nouveau document et répondez aux questions. Cette fois, sans aide.",
+            "de": "Lies das neue Dokument und beantworte die Fragen. Diesmal ohne Hilfe."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "exam-document",
+              "documentId": "exam",
+              "view": "exam",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-background",
+              "question": "What did Tomás do before he became a colour namer?",
+              "options": [
+                { "optionId": "o1", "text": "He worked as a house painter" },
+                { "optionId": "o2", "text": "He studied literature and wrote poetry" },
+                { "optionId": "o3", "text": "He baked bread downstairs" },
+                { "optionId": "o4", "text": "He trained as a lawyer" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "He studied literature and wrote poetry for a decade before the paint company advertised the post.",
+                "fr": "Il a étudié la littérature et écrit de la poésie pendant dix ans avant l’annonce de l’entreprise de peinture.",
+                "de": "Er studierte Literatur und schrieb zehn Jahre Gedichte, bevor die Farbfirma die Stelle ausschrieb."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-friends",
+              "statement": "Tomás’s friends take his job very seriously.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: his friends find the job hilarious, though Tomás does not mind.",
+                "fr": "Faux : ses amis trouvent ce métier hilarant, mais Tomás n’y voit pas de problème.",
+                "de": "Falsch: Seine Freunde finden den Job zum Lachen, aber Tomás stört das nicht."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-belief",
+              "question": "According to Tomás, what should a good colour name do?",
+              "options": [
+                { "optionId": "o1", "text": "Describe the paint exactly" },
+                { "optionId": "o2", "text": "Sound the same in every language" },
+                { "optionId": "o3", "text": "Make people feel something before they open the tin" },
+                { "optionId": "o4", "text": "Be as short as possible" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "He says a good name should make you feel something before you have even opened the tin.",
+                "fr": "Il dit qu’un bon nom doit faire ressentir quelque chose avant même d’ouvrir le pot.",
+                "de": "Er sagt, ein guter Name solle etwas fühlen lassen, noch bevor man die Dose öffnet."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-reaction",
+              "question": "How does Tomás react when the lawyers reject a name?",
+              "options": [
+                { "optionId": "o1", "text": "He argues with them" },
+                { "optionId": "o2", "text": "He thinks about leaving the job" },
+                { "optionId": "o3", "text": "He blames the paint company" },
+                { "optionId": "o4", "text": "He accepts it calmly and carries on" }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "He shrugged and moved on to the next square.",
+                "fr": "Il a haussé les épaules et est passé à la couleur suivante.",
+                "de": "Er zuckte mit den Schultern und widmete sich dem nächsten Farbfeld."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-purpose",
+              "question": "What is the writer’s main aim in this profile?",
+              "options": [
+                { "optionId": "o1", "text": "To persuade readers to repaint their homes" },
+                {
+                  "optionId": "o2",
+                  "text": "To show that an unusual job mixes creativity with practical limits"
+                },
+                { "optionId": "o3", "text": "To criticise companies that invent colour names" },
+                { "optionId": "o4", "text": "To explain how paint is made" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "The profile shows his poetic side (‘Morning Fog’) and the practical limits: names already taken or sounding rude in another language.",
+                "fr": "Le portrait montre son côté poétique (« Morning Fog ») et les limites pratiques : noms déjà pris ou grossiers dans une autre langue.",
+                "de": "Das Porträt zeigt seine poetische Seite („Morning Fog“) und die praktischen Grenzen: bereits vergebene oder in anderen Sprachen unpassende Namen."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

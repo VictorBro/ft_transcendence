@@ -1,0 +1,577 @@
+{
+  "schemaVersion": 2,
+  "id": "en-verbs-of-looking",
+  "lang": "en",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Verbs of looking",
+  "objective": {
+    "en": "Tell apart twelve verbs for ways of looking, such as glance, gaze, gawp, leer and scrutinise, and use them precisely.",
+    "fr": "Distinguer douze verbes pour différentes façons de regarder, comme glance, gaze, gawp, leer et scrutinise, et les employer avec précision.",
+    "de": "Zwölf Verben für Arten des Schauens wie glance, gaze, gawp, leer und scrutinise unterscheiden und genau verwenden."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:52:31.417Z",
+    "inputHashes": { "outline": "e4408c35f25238ac507ac01bd4c5bbcf5de8b9b0ac7402b40eebb02d6d8fdbf9" }
+  },
+  "kind": "vocabulary",
+  "theme": "language",
+  "coverageNotes": {
+    "en": "Twelve verbs of looking, split into quick or searching looks and long, intense or rude looks. The focus is on the small differences in speed, intention, attitude and politeness.",
+    "fr": "Douze verbes du regard, répartis entre regards brefs ou de recherche et regards longs, intenses ou impolis. L’accent est mis sur les nuances de rapidité, d’intention, d’attitude et de politesse.",
+    "de": "Zwölf Verben des Schauens, gegliedert in kurze oder suchende Blicke und lange, intensive oder unhöfliche Blicke. Im Mittelpunkt stehen feine Unterschiede in Tempo, Absicht, Haltung und Höflichkeit."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve verbs are enough to build real contrasts without overloading a C2 learner in one sitting.",
+    "fr": "Douze verbes suffisent pour construire de vrais contrastes sans surcharger un apprenant de niveau C2 en une seule séance.",
+    "de": "Zwölf Verben genügen, um echte Kontraste aufzubauen, ohne Lernende auf C2-Niveau in einer Sitzung zu überfordern."
+  },
+  "difficultyBalance": {
+    "en": "Six core verbs and six demanding ones, such as gawp, leer, ogle and scrutinise, whose attitude is hard to judge.",
+    "fr": "Six verbes de base et six verbes plus exigeants, comme gawp, leer, ogle et scrutinise, dont la nuance d’attitude est difficile à saisir.",
+    "de": "Sechs Grundverben und sechs anspruchsvollere wie gawp, leer, ogle und scrutinise, deren Haltung schwer einzuschätzen ist."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "quick-looks",
+      "label": {
+        "en": "Quick and searching looks",
+        "fr": "Regards brefs et de recherche",
+        "de": "Kurze und suchende Blicke"
+      },
+      "targetIds": ["glance", "glimpse", "peep", "scan", "peer"],
+      "introduction": {
+        "en": "These verbs describe **short or searching** looks:\n\n- `glance`: look quickly, then look away\n- `glimpse`: see for a moment, often by chance\n- `peep`: look secretly through a small gap\n- `scan`: run your eyes over something to find what you need\n- `peer`: look closely because it is hard to see\n\nRemember: you `glance` at something on purpose, but you `glimpse` it by chance.",
+        "fr": "Ces verbes décrivent des regards **brefs ou de recherche** :\n\n- `glance` : regarder rapidement, puis détourner les yeux\n- `glimpse` : apercevoir un instant, souvent par hasard\n- `peep` : regarder en cachette par une petite ouverture\n- `scan` : parcourir des yeux pour trouver ce qu’on cherche\n- `peer` : regarder de près parce qu’on voit mal\n\nÀ retenir : on `glance` volontairement, mais on `glimpse` par hasard.",
+        "de": "Diese Verben beschreiben **kurze oder suchende** Blicke:\n\n- `glance`: kurz hinsehen und gleich wegschauen\n- `glimpse`: etwas für einen Moment sehen, oft zufällig\n- `peep`: heimlich durch eine kleine Öffnung schauen\n- `scan`: mit den Augen absuchen, um etwas Bestimmtes zu finden\n- `peer`: genau hinsehen, weil man schlecht sieht\n\nMerke: Man wirft absichtlich einen Blick (`glance`), erhascht aber zufällig etwas (`glimpse`)."
+      }
+    },
+    {
+      "id": "long-looks",
+      "label": {
+        "en": "Long, intense or rude looks",
+        "fr": "Regards longs, intenses ou impolis",
+        "de": "Lange, intensive oder unhöfliche Blicke"
+      },
+      "targetIds": ["gaze", "stare", "gawp", "glare", "leer", "ogle", "scrutinise"],
+      "introduction": {
+        "en": "These verbs describe **longer or more intense** looks, and many show an attitude:\n\n- `gaze`: look for a long time, calmly or dreamily\n- `stare`: look fixedly, without blinking much\n- `gawp`: stare stupidly, often with the mouth open\n- `glare`: look angrily\n- `leer`: look in an unpleasant, suggestive way\n- `ogle`: look openly and rudely at someone attractive\n- `scrutinise`: examine something very carefully\n\nBe careful with `stare`, `leer` and `ogle`: they can sound rude or threatening.",
+        "fr": "Ces verbes décrivent des regards **plus longs ou plus intenses**, et beaucoup expriment une attitude :\n\n- `gaze` : regarder longtemps, avec calme ou rêverie\n- `stare` : regarder fixement, sans presque cligner des yeux\n- `gawp` : regarder bêtement, souvent la bouche ouverte\n- `glare` : regarder avec colère\n- `leer` : regarder de façon désagréable et suggestive\n- `ogle` : regarder ouvertement et grossièrement quelqu’un d’attirant\n- `scrutinise` : examiner très attentivement\n\nAttention à `stare`, `leer` et `ogle` : ils peuvent paraître impolis ou menaçants.",
+        "de": "Diese Verben beschreiben **längere oder intensivere** Blicke, und viele drücken eine Haltung aus:\n\n- `gaze`: lange schauen, ruhig oder verträumt\n- `stare`: starr hinsehen, ohne viel zu blinzeln\n- `gawp`: dumm glotzen, oft mit offenem Mund\n- `glare`: wütend ansehen\n- `leer`: unangenehm und anzüglich blicken\n- `ogle`: jemand Attraktiven offen und aufdringlich anschauen\n- `scrutinise`: etwas sehr genau untersuchen\n\nVorsicht bei `stare`, `leer` und `ogle`: Sie können unhöflich oder bedrohlich wirken."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "glance",
+      "term": "glance",
+      "translations": { "fr": ["jeter un coup d’œil"], "de": ["einen kurzen Blick werfen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "glance",
+      "examForms": ["glance"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/glɑːns/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She glanced at her phone and frowned.",
+        "translation": {
+          "fr": "Elle a jeté un coup d’œil à son téléphone et a froncé les sourcils.",
+          "de": "Sie warf einen Blick auf ihr Handy und runzelte die Stirn."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To glance is to look quickly and briefly, then look away.",
+        "fr": "Glance signifie regarder rapidement et brièvement, puis détourner les yeux.",
+        "de": "Glance bedeutet, kurz und schnell hinzusehen und dann wegzuschauen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He ",
+        "after": " briefly at the clock and carried on working.",
+        "accepted": { "answers": ["glanced"] },
+        "referenceTargetIds": ["glance", "gaze", "stare", "glimpse"],
+        "explanation": {
+          "en": "Only glanced fits: a brief look at the clock, then back to work.",
+          "fr": "Seul « glanced » convient : un bref regard à l’horloge, puis retour au travail.",
+          "de": "Nur „glanced“ passt: ein kurzer Blick auf die Uhr, dann zurück an die Arbeit."
+        }
+      },
+      "listeningOptionTargetIds": ["glance", "glimpse", "glare", "gaze"]
+    },
+    {
+      "id": "glimpse",
+      "term": "glimpse",
+      "translations": { "fr": ["apercevoir"], "de": ["flüchtig erblicken"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "glimpse",
+      "examForms": ["glimpse"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/glɪmps/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "I glimpsed her red coat in the crowd.",
+        "translation": {
+          "fr": "J’ai aperçu son manteau rouge dans la foule.",
+          "de": "Ich erhaschte in der Menge einen Blick auf ihren roten Mantel."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To glimpse is to see something for a moment, often by chance and without a full view.",
+        "fr": "Glimpse signifie apercevoir quelque chose un instant, souvent par hasard et sans vue complète.",
+        "de": "Glimpse bedeutet, etwas einen Moment lang zu sehen, oft zufällig und ohne vollständigen Blick."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Through the crowd I just ",
+        "after": " her red coat before she vanished.",
+        "accepted": { "answers": ["glimpsed"] },
+        "referenceTargetIds": ["glimpse", "glance", "peep", "scan"],
+        "explanation": {
+          "en": "Only glimpsed fits: you catch sight of her coat for a moment. Glance and peep need a preposition or a gap.",
+          "fr": "Seul « glimpsed » convient : on aperçoit son manteau un instant. Glance et peep ne s’emploient pas ainsi.",
+          "de": "Nur „glimpsed“ passt: Man erhascht kurz ihren Mantel. Glance und peep passen hier grammatisch nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["glimpse", "glance", "glare", "gawp"]
+    },
+    {
+      "id": "peep",
+      "term": "peep",
+      "translations": { "fr": ["regarder furtivement"], "de": ["verstohlen gucken"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "peep",
+      "examForms": ["peep"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/piːp/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "The children peeped round the door.",
+        "translation": {
+          "fr": "Les enfants ont jeté un regard furtif derrière la porte.",
+          "de": "Die Kinder lugten um die Tür."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To peep is to look quickly and secretly, often through a small opening or round something.",
+        "fr": "Peep signifie regarder vite et en cachette, souvent par une petite ouverture ou derrière quelque chose.",
+        "de": "Peep bedeutet, schnell und heimlich zu schauen, oft durch eine kleine Öffnung oder um eine Ecke."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Afraid of being seen, she ",
+        "after": " round the door to check that he was asleep.",
+        "accepted": { "answers": ["peeped"] },
+        "referenceTargetIds": ["peep", "scan", "glare", "ogle"],
+        "explanation": {
+          "en": "Only peeped fits: a secret look round the door.",
+          "fr": "Seul « peeped » convient : un regard en cachette derrière la porte.",
+          "de": "Nur „peeped“ passt: ein heimlicher Blick um die Tür."
+        }
+      },
+      "listeningOptionTargetIds": ["peep", "peer", "glimpse", "leer"]
+    },
+    {
+      "id": "scan",
+      "term": "scan",
+      "translations": { "fr": ["balayer du regard"], "de": ["absuchen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "scan",
+      "examForms": ["scan"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/skæn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He scanned the station for his brother.",
+        "translation": {
+          "fr": "Il a parcouru la gare du regard à la recherche de son frère.",
+          "de": "Er suchte den Bahnhof nach seinem Bruder ab."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To scan is to run your eyes over a place or a text, looking for something particular.",
+        "fr": "Scan signifie parcourir un lieu ou un texte des yeux pour y chercher quelque chose de précis.",
+        "de": "Scan bedeutet, einen Ort oder Text mit den Augen nach etwas Bestimmtem abzusuchen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She ",
+        "after": " the crowd at the station, looking for her brother’s face.",
+        "accepted": { "answers": ["scanned"] },
+        "referenceTargetIds": ["scan", "gaze", "leer", "gawp"],
+        "explanation": {
+          "en": "Only scanned fits: she searches the crowd with her eyes. Gaze, leer and gawp need at.",
+          "fr": "Seul « scanned » convient : elle cherche des yeux dans la foule. Gaze, leer et gawp demandent « at ».",
+          "de": "Nur „scanned“ passt: Sie sucht die Menge mit den Augen ab. Gaze, leer und gawp brauchen „at“."
+        }
+      },
+      "listeningOptionTargetIds": ["scan", "glance", "stare", "scrutinise"]
+    },
+    {
+      "id": "peer",
+      "term": "peer",
+      "translations": { "fr": ["regarder avec effort"], "de": ["spähen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "peer",
+      "examForms": ["peer"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/pɪə/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "He peered through the fog but saw nothing.",
+        "translation": {
+          "fr": "Il a scruté le brouillard sans rien voir.",
+          "de": "Er spähte durch den Nebel, sah aber nichts."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To peer is to look hard at something, often with narrowed eyes, because it is dark, far away or unclear.",
+        "fr": "Peer signifie regarder avec effort, souvent en plissant les yeux, parce qu’il fait sombre, que c’est loin ou peu net.",
+        "de": "Peer bedeutet, angestrengt hinzusehen, oft mit zusammengekniffenen Augen, weil es dunkel, weit weg oder undeutlich ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The room was so dark that he had to ",
+        "after": " at the label to read it.",
+        "accepted": { "answers": ["peer"] },
+        "referenceTargetIds": ["peer", "glimpse", "glare", "leer"],
+        "explanation": {
+          "en": "Only peer fits: he must look hard because it is dark.",
+          "fr": "Seul « peer » convient : il doit regarder avec effort car il fait sombre.",
+          "de": "Nur „peer“ passt: Er muss angestrengt hinsehen, weil es dunkel ist."
+        }
+      },
+      "listeningOptionTargetIds": ["peer", "leer", "peep", "stare"]
+    },
+    {
+      "id": "gaze",
+      "term": "gaze",
+      "translations": { "fr": ["contempler"], "de": ["versonnen blicken"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "gaze",
+      "examForms": ["gaze"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡeɪz/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "They gazed at the sea for hours.",
+        "translation": {
+          "fr": "Ils ont contemplé la mer pendant des heures.",
+          "de": "Sie blickten stundenlang aufs Meer."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To gaze is to look steadily for a long time, usually with admiration, wonder or deep thought.",
+        "fr": "Gaze signifie regarder longuement et sans bouger, le plus souvent avec admiration, émerveillement ou rêverie.",
+        "de": "Gaze bedeutet, lange und ruhig zu schauen, meist voller Bewunderung, Staunen oder Gedanken."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "They sat for hours, ",
+        "after": " dreamily at the sea.",
+        "accepted": { "answers": ["gazing"] },
+        "referenceTargetIds": ["gaze", "glance", "glimpse", "glare"],
+        "explanation": {
+          "en": "Only gazing fits: a long, dreamy look. Glancing would be too brief and glaring too angry.",
+          "fr": "Seul « gazing » convient : un long regard rêveur. Glancing serait trop bref, glaring trop colérique.",
+          "de": "Nur „gazing“ passt: ein langer, verträumter Blick. Glancing wäre zu kurz, glaring zu wütend."
+        }
+      },
+      "listeningOptionTargetIds": ["gaze", "gawp", "glare", "glance"]
+    },
+    {
+      "id": "stare",
+      "term": "stare",
+      "translations": { "fr": ["fixer du regard"], "de": ["anstarren"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "stare",
+      "examForms": ["stare"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/steə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Don’t stare at people when they are eating.",
+        "translation": {
+          "fr": "Ne fixe pas les gens quand ils mangent.",
+          "de": "Starr die Leute nicht an, wenn sie essen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To stare is to look at someone or something fixedly for a long time, often rudely or in shock.",
+        "fr": "Stare signifie regarder fixement quelqu’un ou quelque chose longtemps, souvent de façon impolie ou sous le choc.",
+        "de": "Stare bedeutet, jemanden oder etwas lange starr anzusehen, oft unhöflich oder vor Schreck."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "It is rude to ",
+        "after": " at strangers for minutes on end.",
+        "accepted": { "answers": ["stare"] },
+        "referenceTargetIds": ["stare", "glance", "glimpse", "peep"],
+        "explanation": {
+          "en": "Only stare fits: a long, fixed look is what makes it rude.",
+          "fr": "Seul « stare » convient : c’est le regard long et fixe qui est impoli.",
+          "de": "Nur „stare“ passt: Der lange, starre Blick ist das Unhöfliche."
+        }
+      },
+      "listeningOptionTargetIds": ["stare", "glare", "peer", "scan"]
+    },
+    {
+      "id": "gawp",
+      "term": "gawp",
+      "translations": { "fr": ["regarder bouche bée"], "de": ["gaffen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "gawp",
+      "examForms": ["gawp"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡɔːp/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Passers-by stopped to gawp at the wreckage.",
+        "translation": {
+          "fr": "Les passants se sont arrêtés pour regarder bouche bée les débris.",
+          "de": "Passanten blieben stehen und gafften die Trümmer an."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To gawp is to stare stupidly, often open-mouthed, at something shocking or odd. It is informal and British.",
+        "fr": "Gawp signifie regarder bêtement, souvent la bouche ouverte, quelque chose de choquant ou d’étrange. C’est familier et britannique.",
+        "de": "Gawp bedeutet, dumm und oft mit offenem Mund auf etwas Schockierendes oder Seltsames zu starren. Es ist umgangssprachlich und britisch."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "A crowd gathered to ",
+        "after": " open-mouthed at the wrecked car.",
+        "accepted": { "answers": ["gawp"] },
+        "referenceTargetIds": ["gawp", "glimpse", "peer", "scrutinise"],
+        "explanation": {
+          "en": "Only gawp fits: open-mouthed staring at a shocking sight.",
+          "fr": "Seul « gawp » convient : regarder bouche bée un spectacle choquant.",
+          "de": "Nur „gawp“ passt: mit offenem Mund auf einen schockierenden Anblick starren."
+        }
+      },
+      "listeningOptionTargetIds": ["gawp", "gaze", "glare", "ogle"]
+    },
+    {
+      "id": "glare",
+      "term": "glare",
+      "translations": { "fr": ["lancer un regard noir"], "de": ["böse anfunkeln"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "glare",
+      "examForms": ["glare"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡleə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She glared at him across the room.",
+        "translation": {
+          "fr": "Elle lui a lancé un regard noir à travers la pièce.",
+          "de": "Sie funkelte ihn quer durch den Raum böse an."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To glare is to look at someone angrily and fiercely.",
+        "fr": "Glare signifie regarder quelqu’un avec colère et dureté.",
+        "de": "Glare bedeutet, jemanden wütend und scharf anzusehen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She ",
+        "after": " at him furiously, but said nothing.",
+        "accepted": { "answers": ["glared"] },
+        "referenceTargetIds": ["glare", "glance", "gaze", "peep"],
+        "explanation": {
+          "en": "Only glared fits: the look is furious.",
+          "fr": "Seul « glared » convient : le regard est furieux.",
+          "de": "Nur „glared“ passt: Der Blick ist zornig."
+        }
+      },
+      "listeningOptionTargetIds": ["glare", "stare", "peer", "leer"]
+    },
+    {
+      "id": "leer",
+      "term": "leer",
+      "translations": { "fr": ["regarder d’un air lubrique"], "de": ["lüstern blicken"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "leer",
+      "examForms": ["leer"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/lɪə/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "A man at the bar leered at her.",
+        "translation": {
+          "fr": "Un homme au bar l’a regardée d’un air lubrique.",
+          "de": "Ein Mann an der Bar sah sie lüstern an."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To leer is to look at someone with an unpleasant, suggestive or malicious expression, usually with a grin.",
+        "fr": "Leer signifie regarder quelqu’un d’un air déplaisant, suggestif ou malveillant, souvent avec un sourire.",
+        "de": "Leer bedeutet, jemanden mit unangenehmem, anzüglichem oder boshaftem Ausdruck anzusehen, meist mit einem Grinsen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The man at the bar ",
+        "after": " at her with a nasty, suggestive grin.",
+        "accepted": { "answers": ["leered"] },
+        "referenceTargetIds": ["leer", "glimpse", "peer", "glance"],
+        "explanation": {
+          "en": "Only leered fits: a suggestive, unpleasant look with a grin.",
+          "fr": "Seul « leered » convient : un regard suggestif et déplaisant avec un sourire.",
+          "de": "Nur „leered“ passt: ein anzüglicher, unangenehmer Blick mit einem Grinsen."
+        }
+      },
+      "listeningOptionTargetIds": ["leer", "peer", "peep", "glare"]
+    },
+    {
+      "id": "ogle",
+      "term": "ogle",
+      "translations": { "fr": ["reluquer"], "de": ["begehrlich mustern"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ogle",
+      "examForms": ["ogle"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈəʊɡl̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Some men on the beach openly ogled the women.",
+        "translation": {
+          "fr": "Certains hommes sur la plage reluquaient ouvertement les femmes.",
+          "de": "Einige Männer am Strand musterten die Frauen ganz offen begehrlich."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To ogle is to look at someone openly and rudely because you find them attractive. Unlike leer, it takes a direct object.",
+        "fr": "Ogle signifie regarder quelqu’un ouvertement et grossièrement parce qu’on le trouve attirant. Contrairement à leer, il prend un complément direct.",
+        "de": "Ogle bedeutet, jemanden offen und aufdringlich anzusehen, weil man ihn attraktiv findet. Anders als leer steht es mit direktem Objekt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Some men on the beach openly ",
+        "after": " the women walking past, which annoyed them.",
+        "accepted": { "answers": ["ogled"] },
+        "referenceTargetIds": ["ogle", "gaze", "glimpse", "scrutinise"],
+        "explanation": {
+          "en": "Only ogled fits: open, rude looking at attractive women, with a direct object.",
+          "fr": "Seul « ogled » convient : regarder ouvertement et grossièrement des femmes attirantes, avec complément direct.",
+          "de": "Nur „ogled“ passt: offenes, aufdringliches Mustern attraktiver Frauen, mit direktem Objekt."
+        }
+      },
+      "listeningOptionTargetIds": ["ogle", "gawp", "gaze", "leer"]
+    },
+    {
+      "id": "scrutinise",
+      "term": "scrutinise",
+      "translations": { "fr": ["examiner minutieusement"], "de": ["genau prüfen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "scrutinise",
+      "examForms": ["scrutinise", "scrutinize"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈskruːtɪnaɪz/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "The inspector scrutinised every page of the contract.",
+        "translation": {
+          "fr": "L’inspecteur a examiné minutieusement chaque page du contrat.",
+          "de": "Der Prüfer untersuchte jede Seite des Vertrags genau."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To scrutinise is to examine something very closely and carefully, looking for details or faults. It is formal.",
+        "fr": "Scrutinise signifie examiner quelque chose de très près et avec soin, en cherchant des détails ou des défauts. C’est un mot soutenu.",
+        "de": "Scrutinise bedeutet, etwas sehr genau und sorgfältig zu untersuchen und nach Details oder Fehlern zu suchen. Es ist formell."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The inspector ",
+        "after": " the signature under a magnifying glass, checking every stroke.",
+        "accepted": { "answers": ["scrutinised", "scrutinized"] },
+        "referenceTargetIds": ["scrutinise", "glance", "glimpse", "peep"],
+        "explanation": {
+          "en": "Only scrutinised fits: a close, careful examination of every detail.",
+          "fr": "Seul « scrutinised » convient : un examen minutieux de chaque détail.",
+          "de": "Nur „scrutinised“ passt: eine genaue, sorgfältige Prüfung jedes Details."
+        }
+      },
+      "listeningOptionTargetIds": ["scrutinise", "scan", "stare", "glimpse"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

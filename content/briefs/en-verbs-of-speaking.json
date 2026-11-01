@@ -1,0 +1,619 @@
+{
+  "schemaVersion": 2,
+  "id": "en-verbs-of-speaking",
+  "lang": "en",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Verbs of speaking",
+  "objective": {
+    "en": "Tell apart twelve verbs for ways of speaking, such as mutter, mumble, murmur, stammer, blurt out, retort and drawl.",
+    "fr": "Distinguer douze verbes qui décrivent des façons de parler, comme mutter, mumble, murmur, stammer, blurt out, retort et drawl.",
+    "de": "Zwölf Verben für Arten des Sprechens unterscheiden, etwa mutter, mumble, murmur, stammer, blurt out, retort und drawl."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:53:36.985Z",
+    "inputHashes": { "outline": "9a131c25f0ff1b5eecc0627f65e74618d0c532df3a8aed0fe2339fdc2da0075f" }
+  },
+  "kind": "vocabulary",
+  "theme": "language",
+  "coverageNotes": {
+    "en": "Twelve verbs of speaking grouped by manner: quiet, unclear or halting speech, and sudden, sharp or loud speech. Verbs for walking, looking and gossip are left to neighbouring lessons.",
+    "fr": "Douze verbes de parole regroupés selon la manière : parole basse, indistincte ou hésitante, puis parole soudaine, sèche ou forte. Les verbes de marche, de regard et de ragots sont traités dans d’autres leçons.",
+    "de": "Zwölf Verben des Sprechens, nach der Art geordnet: leises, undeutliches oder stockendes Sprechen sowie plötzliches, scharfes oder lautes Sprechen. Verben des Gehens, Schauens und Klatschens folgen in anderen Lektionen."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve verbs fit two groups of six and cover the main contrasts without overloading the learner.",
+    "fr": "Douze verbes forment deux groupes de six et couvrent les principaux contrastes sans surcharger l’apprenant.",
+    "de": "Zwölf Verben ergeben zwei Gruppen zu sechs und decken die wichtigsten Unterschiede ab, ohne zu überfordern."
+  },
+  "difficultyBalance": {
+    "en": "Near synonyms such as mutter, mumble and murmur are demanding; sharper contrasts such as bellow or exclaim are core.",
+    "fr": "Les quasi-synonymes comme mutter, mumble et murmur sont exigeants ; les contrastes plus nets comme bellow ou exclaim sont de base.",
+    "de": "Beinahe-Synonyme wie mutter, mumble und murmur sind anspruchsvoll; klarere Gegensätze wie bellow oder exclaim sind Grundwortschatz."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "quiet-halting",
+      "label": {
+        "en": "Quiet, unclear or halting speech",
+        "fr": "Parole basse, indistincte ou hésitante",
+        "de": "Leises, undeutliches oder stockendes Sprechen"
+      },
+      "targetIds": ["mutter", "mumble", "murmur", "whisper", "stammer", "drawl"],
+      "introduction": {
+        "en": "These verbs describe **how** a voice sounds, not only what is said. Compare them carefully:\n\n- `mutter`: speak low and half aloud, often in complaint\n- `mumble`: speak unclearly, barely opening your mouth\n- `murmur`: speak softly and steadily, often soothingly\n- `whisper`: speak with breath only, so as not to be heard\n- `stammer`: speak with halting repetition, from nerves or a speech difficulty\n- `drawl`: speak slowly, stretching the vowels",
+        "fr": "Ces verbes décrivent **comment** sonne une voix, et pas seulement ce qui est dit. Comparez-les avec soin :\n\n- `mutter` : parler bas et à demi-voix, souvent pour se plaindre\n- `mumble` : parler de façon indistincte, en ouvrant à peine la bouche\n- `murmur` : parler doucement et régulièrement, souvent pour apaiser\n- `whisper` : parler avec le seul souffle, pour ne pas être entendu\n- `stammer` : parler en butant sur les mots, par nervosité ou à cause d’un trouble de la parole\n- `drawl` : parler lentement en traînant les voyelles",
+        "de": "Diese Verben beschreiben, **wie** eine Stimme klingt, nicht nur, was gesagt wird. Vergleiche sie genau:\n\n- `mutter`: leise und halblaut sprechen, oft aus Unmut\n- `mumble`: undeutlich sprechen, kaum den Mund öffnen\n- `murmur`: sanft und gleichmäßig sprechen, oft beruhigend\n- `whisper`: nur mit Atem sprechen, um nicht gehört zu werden\n- `stammer`: stockend sprechen, aus Nervosität oder wegen einer Sprechstörung\n- `drawl`: langsam sprechen und die Vokale dehnen"
+      }
+    },
+    {
+      "id": "sudden-sharp-loud",
+      "label": {
+        "en": "Sudden, sharp or loud speech",
+        "fr": "Parole soudaine, sèche ou forte",
+        "de": "Plötzliches, scharfes oder lautes Sprechen"
+      },
+      "targetIds": ["blurt-out", "exclaim", "retort", "snap", "bellow", "gabble"],
+      "introduction": {
+        "en": "These verbs describe speech that is sudden, sharp, loud or too fast:\n\n- `blurt out`: say something suddenly, without thinking\n- `exclaim`: say something suddenly and with strong feeling\n- `retort`: answer back quickly, sharply or wittily\n- `snap`: speak sharply, in irritation\n- `bellow`: shout in a deep, powerful voice\n- `gabble`: speak so fast that it is hard to follow",
+        "fr": "Ces verbes décrivent une parole soudaine, sèche, forte ou trop rapide :\n\n- `blurt out` : dire quelque chose brusquement, sans réfléchir\n- `exclaim` : dire quelque chose brusquement, avec une forte émotion\n- `retort` : répondre du tac au tac, avec vivacité ou esprit\n- `snap` : parler sèchement, par irritation\n- `bellow` : crier d’une voix grave et puissante\n- `gabble` : parler si vite qu’on a du mal à suivre",
+        "de": "Diese Verben beschreiben Sprechen, das plötzlich, scharf, laut oder zu schnell ist:\n\n- `blurt out`: etwas plötzlich und unüberlegt sagen\n- `exclaim`: etwas plötzlich und voller Gefühl sagen\n- `retort`: schnell, scharf oder witzig kontern\n- `snap`: gereizt und scharf sprechen\n- `bellow`: mit tiefer, kräftiger Stimme brüllen\n- `gabble`: so schnell sprechen, dass man kaum folgen kann"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "mutter",
+      "term": "mutter",
+      "translations": {
+        "fr": ["grommeler", "marmonner entre ses dents"],
+        "de": ["brummeln", "vor sich hin murmeln"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "mutter",
+      "examForms": ["mutter"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈmʌtə/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "He muttered something rude as he walked out.",
+        "translation": {
+          "fr": "Il a grommelé une grossièreté en sortant.",
+          "de": "Er brummelte etwas Unhöfliches vor sich hin, als er hinausging."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Mutter is low and half aloud, usually in annoyance; mumble is unclear because of poor articulation.",
+        "fr": "Mutter est dit bas et à demi-voix, d’ordinaire par agacement ; mumble est indistinct à cause d’une mauvaise articulation.",
+        "de": "Mutter ist leise und halblaut, meist aus Ärger; mumble ist undeutlich wegen schlechter Artikulation."
+      },
+      "explanation": {
+        "en": "To mutter is to speak low and half aloud, usually grumbling or complaining.",
+        "fr": "Mutter, c’est parler bas et à demi-voix, en général pour grogner ou se plaindre.",
+        "de": "Mutter heißt, leise und halblaut zu sprechen, meist um zu murren oder sich zu beschweren."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "grommeler (parler bas, en se plaignant)",
+        "de": "brummeln (leise, unmutig sprechen)"
+      },
+      "gap": {
+        "before": "Don't ",
+        "after": " your complaints under your breath; say them to my face.",
+        "accepted": { "answers": ["mutter"] },
+        "referenceTargetIds": ["mutter", "bellow", "exclaim", "stammer"],
+        "explanation": {
+          "en": "Only mutter means complaining quietly under your breath.",
+          "fr": "Seul « mutter » signifie se plaindre à mi-voix.",
+          "de": "Nur „mutter“ bedeutet, sich leise vor sich hin zu beschweren."
+        }
+      },
+      "listeningOptionTargetIds": ["mutter", "mumble", "murmur", "stammer"]
+    },
+    {
+      "id": "mumble",
+      "term": "mumble",
+      "translations": { "fr": ["marmonner", "parler de façon indistincte"], "de": ["nuscheln"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "mumble",
+      "examForms": ["mumble"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈmʌmbl̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "She mumbled an answer, and nobody caught it.",
+        "translation": {
+          "fr": "Elle a marmonné une réponse que personne n’a saisie.",
+          "de": "Sie nuschelte eine Antwort, die niemand verstand."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Mumble is about unclear sound; mutter is about low, grumbling speech.",
+        "fr": "Mumble concerne un son indistinct ; mutter, une parole basse et grognon.",
+        "de": "Mumble betrifft den undeutlichen Klang; mutter das leise, murrende Sprechen."
+      },
+      "explanation": {
+        "en": "To mumble is to speak unclearly, barely opening your mouth, so that others cannot understand.",
+        "fr": "Mumble, c’est parler de façon indistincte, en ouvrant à peine la bouche, si bien qu’on n’est pas compris.",
+        "de": "Mumble heißt, undeutlich zu sprechen und kaum den Mund zu öffnen, sodass andere nichts verstehen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "marmonner (parler sans articuler)",
+        "de": "nuscheln (undeutlich sprechen)"
+      },
+      "gap": {
+        "before": "If you ",
+        "after": ", nobody at the back of the hall will understand a word.",
+        "accepted": { "answers": ["mumble"] },
+        "referenceTargetIds": ["mumble", "exclaim", "retort", "bellow"],
+        "explanation": {
+          "en": "Only mumble explains why nobody can understand you.",
+          "fr": "Seul « mumble » explique pourquoi personne ne comprend.",
+          "de": "Nur „mumble“ erklärt, warum niemand etwas versteht."
+        }
+      },
+      "listeningOptionTargetIds": ["mumble", "mutter", "murmur", "stammer"]
+    },
+    {
+      "id": "murmur",
+      "term": "murmur",
+      "translations": { "fr": ["murmurer"], "de": ["murmeln", "raunen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "murmur",
+      "examForms": ["murmur"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈmɜːmə/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "She murmured a few kind words to the child.",
+        "translation": {
+          "fr": "Elle a murmuré quelques mots gentils à l’enfant.",
+          "de": "Sie murmelte dem Kind ein paar freundliche Worte zu."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To murmur is to speak softly and steadily, often in a gentle or soothing way.",
+        "fr": "Murmur, c’est parler doucement et régulièrement, souvent avec tendresse ou pour apaiser.",
+        "de": "Murmur heißt, sanft und gleichmäßig zu sprechen, oft zärtlich oder beruhigend."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "murmurer (parler doucement, avec douceur)",
+        "de": "murmeln (sanft und gleichmäßig sprechen)"
+      },
+      "gap": {
+        "before": "She leaned over to ",
+        "after": " a few kind words in the child's ear.",
+        "accepted": { "answers": ["murmur"] },
+        "referenceTargetIds": ["murmur", "snap", "bellow", "blurt-out"],
+        "explanation": {
+          "en": "Only murmur suits kind words said softly to a child.",
+          "fr": "Seul « murmur » convient à des mots doux dits tout bas à un enfant.",
+          "de": "Nur „murmur“ passt zu freundlichen Worten, die man einem Kind leise sagt."
+        }
+      },
+      "listeningOptionTargetIds": ["murmur", "mutter", "mumble", "whisper"]
+    },
+    {
+      "id": "whisper",
+      "term": "whisper",
+      "translations": { "fr": ["chuchoter"], "de": ["flüstern"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "whisper",
+      "examForms": ["whisper"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈwɪspə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He whispered the answer so the teacher would not hear.",
+        "translation": {
+          "fr": "Il a chuchoté la réponse pour que le professeur n’entende pas.",
+          "de": "Er flüsterte die Antwort, damit der Lehrer es nicht hörte."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To whisper is to speak using breath rather than voice, so that only a person close by can hear.",
+        "fr": "Whisper, c’est parler avec le souffle plutôt qu’avec la voix, pour que seule une personne proche entende.",
+        "de": "Whisper heißt, mit Atem statt mit Stimme zu sprechen, sodass nur jemand in der Nähe es hört."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Please ",
+        "after": " in the library, because people are trying to study.",
+        "accepted": { "answers": ["whisper"] },
+        "referenceTargetIds": ["whisper", "bellow", "retort", "exclaim"],
+        "explanation": {
+          "en": "In a library you whisper; bellowing would be rude.",
+          "fr": "Dans une bibliothèque on chuchote ; hurler serait grossier.",
+          "de": "In einer Bibliothek flüstert man; zu brüllen wäre unhöflich."
+        }
+      },
+      "listeningOptionTargetIds": ["whisper", "murmur", "mutter", "mumble"]
+    },
+    {
+      "id": "stammer",
+      "term": "stammer",
+      "translations": { "fr": ["bégayer", "bredouiller"], "de": ["stammeln", "stottern"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "stammer",
+      "examForms": ["stammer"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈstæmə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He stammered an apology and turned bright red.",
+        "translation": {
+          "fr": "Il a bredouillé des excuses en devenant écarlate.",
+          "de": "Er stammelte eine Entschuldigung und wurde knallrot."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To stammer is to speak with pauses and repeated sounds, usually from nerves or a speech difficulty.",
+        "fr": "Stammer, c’est parler avec des pauses et des sons répétés, en général par nervosité ou à cause d’un trouble de la parole.",
+        "de": "Stammer heißt, mit Pausen und wiederholten Lauten zu sprechen, meist aus Nervosität oder wegen einer Sprechstörung."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "bégayer (parler en butant sur les mots)",
+        "de": "stammeln (stockend sprechen)"
+      },
+      "gap": {
+        "before": "He began to ",
+        "after": " with nerves and could hardly finish the sentence.",
+        "accepted": { "answers": ["stammer"] },
+        "referenceTargetIds": ["stammer", "drawl", "snap", "exclaim"],
+        "explanation": {
+          "en": "Only stammer fits someone halting through nerves.",
+          "fr": "Seul « stammer » convient à quelqu’un qui bute sur les mots par nervosité.",
+          "de": "Nur „stammer“ passt zu jemandem, der vor Nervosität stockt."
+        }
+      },
+      "listeningOptionTargetIds": ["stammer", "mutter", "mumble", "murmur"]
+    },
+    {
+      "id": "drawl",
+      "term": "drawl",
+      "translations": { "fr": ["parler d’une voix traînante"], "de": ["gedehnt sprechen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "drawl",
+      "examForms": ["drawl"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/drɔːl/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "“Well, I suppose so,” he drawled.",
+        "translation": {
+          "fr": "« Eh bien, je suppose », dit-il d’une voix traînante.",
+          "de": "„Na ja, ich nehme es an“, sagte er gedehnt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To drawl is to speak slowly, stretching the vowels, often to sound relaxed or bored.",
+        "fr": "Drawl, c’est parler lentement en traînant les voyelles, souvent pour paraître détendu ou blasé.",
+        "de": "Drawl heißt, langsam zu sprechen und die Vokale zu dehnen, oft um entspannt oder gelangweilt zu wirken."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He would ",
+        "after": " lazily, stretching every vowel as if he had all the time in the world.",
+        "accepted": { "answers": ["drawl"] },
+        "referenceTargetIds": ["drawl", "stammer", "snap", "bellow"],
+        "explanation": {
+          "en": "Only drawl means stretching vowels in a slow, lazy voice.",
+          "fr": "Seul « drawl » signifie traîner les voyelles d’une voix lente et nonchalante.",
+          "de": "Nur „drawl“ bedeutet, die Vokale mit langsamer, träger Stimme zu dehnen."
+        }
+      },
+      "listeningOptionTargetIds": ["drawl", "bellow", "snap", "gabble"]
+    },
+    {
+      "id": "blurt-out",
+      "term": "blurt out",
+      "translations": {
+        "fr": ["lâcher sans réfléchir", "laisser échapper"],
+        "de": ["herausplatzen mit", "unüberlegt herausrufen"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "blurt out",
+      "examForms": ["blurt out"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/blɜːt aʊt/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "She blurted out the secret before she could stop herself.",
+        "translation": {
+          "fr": "Elle a laissé échapper le secret avant de pouvoir se retenir.",
+          "de": "Sie platzte mit dem Geheimnis heraus, bevor sie sich bremsen konnte."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To blurt something out is to say it suddenly and without thinking, often what you meant to keep quiet.",
+        "fr": "Blurt out, c’est dire quelque chose brusquement et sans réfléchir, souvent ce qu’on voulait taire.",
+        "de": "Blurt out heißt, etwas plötzlich und unüberlegt zu sagen, oft das, was man verschweigen wollte."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "lâcher sans réfléchir (dire d’un coup ce qu’on voulait taire)",
+        "de": "herausplatzen mit (unüberlegt aussprechen)"
+      },
+      "gap": {
+        "before": "I did not mean to ",
+        "after": " the surprise; it just slipped out before I could stop myself.",
+        "accepted": { "answers": ["blurt out"] },
+        "referenceTargetIds": ["blurt-out", "drawl", "stammer", "murmur"],
+        "explanation": {
+          "en": "Only blurt out fits something that slips out without thought.",
+          "fr": "Seul « blurt out » convient à ce qui échappe sans réfléchir.",
+          "de": "Nur „blurt out“ passt zu etwas, das unüberlegt herausrutscht."
+        }
+      },
+      "listeningOptionTargetIds": ["blurt-out", "bellow", "snap", "gabble"]
+    },
+    {
+      "id": "exclaim",
+      "term": "exclaim",
+      "translations": { "fr": ["s’exclamer"], "de": ["ausrufen", "rufen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "exclaim",
+      "examForms": ["exclaim"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɪkˈskleɪm/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "“What a view!” she exclaimed.",
+        "translation": {
+          "fr": "« Quelle vue ! » s’exclama-t-elle.",
+          "de": "„Was für eine Aussicht!“, rief sie aus."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To exclaim is to say something suddenly and with strong feeling, such as surprise or delight.",
+        "fr": "Exclaim, c’est dire quelque chose brusquement et avec émotion, par exemple de la surprise ou de la joie.",
+        "de": "Exclaim heißt, etwas plötzlich und voller Gefühl zu sagen, etwa aus Überraschung oder Freude."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Children often ",
+        "after": " with delight when they see the sea for the first time.",
+        "accepted": { "answers": ["exclaim"] },
+        "referenceTargetIds": ["exclaim", "mutter", "drawl", "stammer"],
+        "explanation": {
+          "en": "Only exclaim suits a sudden cry of delight.",
+          "fr": "Seul « exclaim » convient à un cri soudain de joie.",
+          "de": "Nur „exclaim“ passt zu einem plötzlichen Freudenruf."
+        }
+      },
+      "listeningOptionTargetIds": ["exclaim", "retort", "drawl", "bellow"]
+    },
+    {
+      "id": "retort",
+      "term": "retort",
+      "translations": { "fr": ["rétorquer", "répliquer"], "de": ["entgegnen", "kontern"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "retort",
+      "examForms": ["retort"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/rɪˈtɔːt/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "“You're hardly one to talk,” she retorted.",
+        "translation": {
+          "fr": "« Tu es mal placé pour parler », rétorqua-t-elle.",
+          "de": "„Du bist der Letzte, der reden sollte“, entgegnete sie."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Retort answers an accusation or insult quickly and sharply; snap is just irritable speech.",
+        "fr": "Retort répond vite et sèchement à une accusation ou une insulte ; snap désigne seulement une parole irritée.",
+        "de": "Retort antwortet schnell und scharf auf einen Vorwurf; snap bezeichnet nur gereiztes Sprechen."
+      },
+      "explanation": {
+        "en": "To retort is to answer back quickly, sharply or wittily, usually to a criticism.",
+        "fr": "Retort, c’est répondre du tac au tac, avec vivacité ou esprit, en général à une critique.",
+        "de": "Retort heißt, schnell, scharf oder witzig zu antworten, meist auf Kritik."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "rétorquer (répondre vivement à une critique)",
+        "de": "entgegnen (schlagfertig antworten)"
+      },
+      "gap": {
+        "before": "When he called her lazy, she was quick to ",
+        "after": " that he had never done a day's work himself.",
+        "accepted": { "answers": ["retort"] },
+        "referenceTargetIds": ["retort", "whisper", "stammer", "gabble"],
+        "explanation": {
+          "en": "Only retort fits a quick, sharp answer to an insult.",
+          "fr": "Seul « retort » convient à une réponse vive à une insulte.",
+          "de": "Nur „retort“ passt zu einer schnellen, scharfen Antwort auf eine Beleidigung."
+        }
+      },
+      "listeningOptionTargetIds": ["retort", "exclaim", "blurt-out", "snap"]
+    },
+    {
+      "id": "snap",
+      "term": "snap",
+      "translations": { "fr": ["répliquer sèchement"], "de": ["fauchen", "anfahren"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "snap",
+      "examForms": ["snap"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/snæp/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "“Leave me alone!” he snapped.",
+        "translation": {
+          "fr": "« Laisse-moi tranquille ! » lança-t-il sèchement.",
+          "de": "„Lass mich in Ruhe!“, fuhr er sie an."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To snap is to speak sharply and abruptly, usually because you are irritated or tired.",
+        "fr": "Snap, c’est parler sèchement et brusquement, en général par irritation ou fatigue.",
+        "de": "Snap heißt, scharf und abrupt zu sprechen, meist aus Gereiztheit oder Müdigkeit."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "répliquer sèchement (parler avec irritation)",
+        "de": "fauchen (gereizt und scharf sprechen)"
+      },
+      "gap": {
+        "before": "I hate to ",
+        "after": " at you, but I have had a very long day.",
+        "accepted": { "answers": ["snap"] },
+        "referenceTargetIds": ["snap", "murmur", "drawl", "mumble"],
+        "explanation": {
+          "en": "Only snap at someone means speaking sharply to them out of irritation.",
+          "fr": "Seul « snap at » signifie s’adresser sèchement à quelqu’un par irritation.",
+          "de": "Nur „snap at“ bedeutet, jemanden gereizt scharf anzusprechen."
+        }
+      },
+      "listeningOptionTargetIds": ["snap", "gabble", "blurt-out", "bellow"]
+    },
+    {
+      "id": "bellow",
+      "term": "bellow",
+      "translations": { "fr": ["hurler", "beugler"], "de": ["brüllen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "bellow",
+      "examForms": ["bellow"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈbeləʊ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "The sergeant bellowed an order across the yard.",
+        "translation": {
+          "fr": "Le sergent a hurlé un ordre à travers la cour.",
+          "de": "Der Feldwebel brüllte einen Befehl über den Hof."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To bellow is to shout in a deep, powerful voice, often in anger or to be heard far away.",
+        "fr": "Bellow, c’est crier d’une voix grave et puissante, souvent par colère ou pour être entendu de loin.",
+        "de": "Bellow heißt, mit tiefer, kräftiger Stimme zu brüllen, oft aus Wut oder um weit gehört zu werden."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The coach had to ",
+        "after": " across the pitch to be heard over the crowd.",
+        "accepted": { "answers": ["bellow"] },
+        "referenceTargetIds": ["bellow", "mumble", "murmur", "stammer"],
+        "explanation": {
+          "en": "Only bellow fits shouting loudly over a crowd.",
+          "fr": "Seul « bellow » convient pour crier fort au-dessus d’une foule.",
+          "de": "Nur „bellow“ passt zu lautem Rufen über eine Menge hinweg."
+        }
+      },
+      "listeningOptionTargetIds": ["bellow", "blurt-out", "drawl", "gabble"]
+    },
+    {
+      "id": "gabble",
+      "term": "gabble",
+      "translations": { "fr": ["débiter à toute vitesse"], "de": ["herunterrattern"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "gabble",
+      "examForms": ["gabble"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɡæbl̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "He gabbled the instructions so fast that nobody understood.",
+        "translation": {
+          "fr": "Il a débité les consignes si vite que personne n’a compris.",
+          "de": "Er ratterte die Anweisungen so schnell herunter, dass niemand sie verstand."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To gabble is to speak so fast, and often so unclearly, that it is hard to follow.",
+        "fr": "Gabble, c’est parler si vite, et souvent si confusément, qu’il est difficile de suivre.",
+        "de": "Gabble heißt, so schnell und oft so undeutlich zu sprechen, dass man kaum folgen kann."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "débiter à toute vitesse (parler trop vite)",
+        "de": "herunterrattern (viel zu schnell sprechen)"
+      },
+      "gap": {
+        "before": "If you ",
+        "after": " through the instructions at that speed, nobody will follow them.",
+        "accepted": { "answers": ["gabble"] },
+        "referenceTargetIds": ["gabble", "whisper", "drawl", "retort"],
+        "explanation": {
+          "en": "Only gabble means speaking too fast to be followed.",
+          "fr": "Seul « gabble » signifie parler trop vite pour être suivi.",
+          "de": "Nur „gabble“ bedeutet, zu schnell zum Folgen zu sprechen."
+        }
+      },
+      "listeningOptionTargetIds": ["gabble", "snap", "drawl", "bellow"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

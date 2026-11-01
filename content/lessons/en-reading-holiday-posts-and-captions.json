@@ -1,0 +1,385 @@
+{
+  "schemaVersion": 2,
+  "id": "en-reading-holiday-posts-and-captions",
+  "lang": "en",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Reading holiday posts and captions",
+  "objective": {
+    "en": "Read a holiday post and photo captions and find where the writer went, what they did each day and what it was like.",
+    "fr": "Lire un post de vacances et des légendes de photos et trouver où l’auteur est allé, ce qu’il a fait chaque jour et comment c’était.",
+    "de": "Einen Urlaubspost und Fotounterschriften lesen und herausfinden, wohin der Autor gereist ist, was er jeden Tag gemacht hat und wie es war."
+  },
+  "estimatedMinutes": 9,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:08.795Z",
+    "inputHashes": {
+      "outline": "63a43ade0efde3d9b619f4260e2239047a7999196eac9ca1bb79bc5cd009dd3b",
+      "brief": "b1c39ab1e441d840afc6ee394d5b11087b380dd3bfd4e75019434fe323156932"
+    }
+  },
+  "kind": "reading",
+  "theme": "travel",
+  "genre": "other",
+  "documents": [
+    {
+      "documentId": "main",
+      "title": "Our week in Lisbon",
+      "meta": ["Mia Clark", "Posted Sunday 9 June"],
+      "paragraphs": [
+        "Day 1: We arrived in Lisbon on Monday. The hotel is small, but the view from our room is amazing!",
+        "Day 2: We took the old yellow tram up to the castle. It was really crowded, so we stood for twenty minutes. The photos were worth it!",
+        "Day 3: We went to the beach at Cascais by train. The sea was freezing, so we only swam for five minutes. Then we ate fish and chips.",
+        "Last night: dinner by the river. The food was delicious and the people were friendly. We want to come back!"
+      ],
+      "highlights": [
+        { "keywordId": "arrived", "text": "arrived" },
+        { "keywordId": "view", "text": "view" },
+        { "keywordId": "amazing", "text": "amazing" },
+        { "keywordId": "crowded", "text": "crowded" },
+        { "keywordId": "freezing", "text": "freezing" }
+      ]
+    },
+    {
+      "documentId": "exam",
+      "title": null,
+      "meta": ["Ben Ortiz", "Posted Sunday evening"],
+      "paragraphs": [
+        "Hi everyone! We are in Edinburgh for the weekend. On Saturday we walked up to the castle. The view of the city was beautiful, but it was very cold and windy.",
+        "Sunday: We visited a museum in the morning. It was free and really interesting! In the afternoon we took a bus to the sea. Tomorrow we go home."
+      ],
+      "highlights": []
+    }
+  ],
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "exercise",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "flashcards",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Turn each card to learn the key words of the text.",
+            "fr": "Retournez chaque carte pour découvrir les mots clés du texte.",
+            "de": "Dreh jede Karte um und lerne die Schlüsselwörter des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_flashcards",
+              "itemId": "cards",
+              "keywordIds": ["arrived", "view", "amazing", "crowded", "freezing"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "matching",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each key word with its meaning.",
+            "fr": "Associez chaque mot clé à son sens.",
+            "de": "Ordne jedem Schlüsselwort seine Bedeutung zu."
+          },
+          "items": [
+            {
+              "type": "reading_keyword_matching",
+              "itemId": "matching",
+              "keywordIds": ["arrived", "view", "amazing", "crowded", "freezing"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skim",
+      "stage": "skim",
+      "role": "exercise",
+      "label": { "en": "Skim", "fr": "Survol", "de": "Überfliegen" },
+      "pages": [
+        {
+          "pageId": "skim",
+          "estimatedDurationS": 90,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Look over the document quickly. When the time is up it is put away; then answer the question.",
+            "fr": "Parcourez rapidement le document. À la fin du temps, il disparaît ; répondez ensuite à la question.",
+            "de": "Überfliege das Dokument. Wenn die Zeit um ist, verschwindet es; beantworte dann die Frage."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "skim-document",
+              "documentId": "main",
+              "view": "skim",
+              "skimSeconds": 70
+            },
+            {
+              "type": "reading_skim_choice",
+              "itemId": "skim-question",
+              "focus": "purpose",
+              "question": "Why does Mia write this post?",
+              "options": [
+                { "optionId": "o1", "text": "To sell a hotel room" },
+                { "optionId": "o2", "text": "To ask for directions" },
+                { "optionId": "o3", "text": "To show her friends her holiday in Lisbon" },
+                { "optionId": "o4", "text": "To say sorry for a mistake" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "Mia tells what she did each day and shares photos, so her friends can see her holiday.",
+                "fr": "Mia raconte ce qu’elle a fait chaque jour et partage des photos pour que ses amis voient ses vacances.",
+                "de": "Mia erzählt, was sie jeden Tag gemacht hat, und teilt Fotos, damit ihre Freunde ihren Urlaub sehen."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detail",
+      "stage": "detail",
+      "role": "exercise",
+      "label": { "en": "Detail", "fr": "Détails", "de": "Details" },
+      "pages": [
+        {
+          "pageId": "detail",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the document carefully and answer the questions.",
+            "fr": "Lisez le document attentivement et répondez aux questions.",
+            "de": "Lies das Dokument genau und beantworte die Fragen."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "detail-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-where",
+              "question": "Which city did Mia visit?",
+              "options": [
+                { "optionId": "o1", "text": "Madrid" },
+                { "optionId": "o2", "text": "Lisbon" },
+                { "optionId": "o3", "text": "Cascais" },
+                { "optionId": "o4", "text": "Edinburgh" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "The title says Our week in Lisbon. Cascais is a beach near the city.",
+                "fr": "Le titre dit Our week in Lisbon. Cascais est une plage près de la ville.",
+                "de": "Der Titel lautet Our week in Lisbon. Cascais ist ein Strand in der Nähe der Stadt."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-tram",
+              "question": "How did they get to the castle?",
+              "options": [
+                { "optionId": "o1", "text": "By taxi" },
+                { "optionId": "o2", "text": "On foot" },
+                { "optionId": "o3", "text": "By train" },
+                { "optionId": "o4", "text": "By tram" }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "They took the old yellow tram up to the castle. They went to the beach by train.",
+                "fr": "Ils ont pris le vieux tram jaune jusqu’au château. Ils sont allés à la plage en train.",
+                "de": "Sie nahmen die alte gelbe Straßenbahn zum Schloss. Zum Strand fuhren sie mit dem Zug."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "q-sea",
+              "statement": "The sea at Cascais was warm.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: the sea was freezing, so they only swam for five minutes.",
+                "fr": "Faux : the sea was freezing, alors ils n’ont nagé que cinq minutes.",
+                "de": "Falsch: the sea was freezing, deshalb sind sie nur fünf Minuten geschwommen."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-dinner",
+              "question": "What does Mia say about the people at dinner?",
+              "options": [
+                { "optionId": "o1", "text": "They were friendly." },
+                { "optionId": "o2", "text": "They were angry." },
+                { "optionId": "o3", "text": "They were late." },
+                { "optionId": "o4", "text": "They were noisy." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "She writes: the food was delicious and the people were friendly.",
+                "fr": "Elle écrit : the food was delicious and the people were friendly.",
+                "de": "Sie schreibt: the food was delicious and the people were friendly."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "structure",
+      "stage": "structure",
+      "role": "exercise",
+      "label": { "en": "Structure", "fr": "Structure", "de": "Aufbau" },
+      "pages": [
+        {
+          "pageId": "structure",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the information in the order the text gives it.",
+            "fr": "Remettez les informations dans l’ordre du texte.",
+            "de": "Bring die Informationen in die Reihenfolge des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "structure-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_order",
+              "itemId": "order",
+              "pieces": [
+                { "pieceId": "p3", "text": "They swim in the cold sea." },
+                { "pieceId": "p1", "text": "They arrive at the hotel." },
+                { "pieceId": "p4", "text": "They have dinner by the river." },
+                { "pieceId": "p2", "text": "They take the tram to the castle." }
+              ],
+              "acceptedOrders": [["p1", "p2", "p3", "p4"]],
+              "answerExplanation": {
+                "en": "Day 1 is the arrival, day 2 the tram to the castle, day 3 the beach, and the last night is the dinner.",
+                "fr": "Jour 1 : l’arrivée, jour 2 : le tram jusqu’au château, jour 3 : la plage, et la dernière soirée : le dîner.",
+                "de": "Tag 1 ist die Ankunft, Tag 2 die Straßenbahn zum Schloss, Tag 3 der Strand und der letzte Abend das Abendessen."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam",
+          "estimatedDurationS": 143,
+          "timeLimitS": 215,
+          "instructions": {
+            "en": "Read the new document and answer the questions. No help this time.",
+            "fr": "Lisez le nouveau document et répondez aux questions. Cette fois, sans aide.",
+            "de": "Lies das neue Dokument und beantworte die Fragen. Diesmal ohne Hilfe."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "exam-document",
+              "documentId": "exam",
+              "view": "exam",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-where",
+              "question": "Where is Ben this weekend?",
+              "options": [
+                { "optionId": "o1", "text": "In London" },
+                { "optionId": "o2", "text": "In Lisbon" },
+                { "optionId": "o3", "text": "In Edinburgh" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "He writes: We are in Edinburgh for the weekend.",
+                "fr": "Il écrit : We are in Edinburgh for the weekend.",
+                "de": "Er schreibt: We are in Edinburgh for the weekend."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-weather",
+              "statement": "The weather on Saturday was warm.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: it was very cold and windy.",
+                "fr": "Faux : it was very cold and windy.",
+                "de": "Falsch: it was very cold and windy."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-museum",
+              "question": "What did Ben do on Sunday morning?",
+              "options": [
+                { "optionId": "o1", "text": "He played football." },
+                { "optionId": "o2", "text": "He walked up to the castle." },
+                { "optionId": "o3", "text": "He went to the sea." },
+                { "optionId": "o4", "text": "He visited a museum." }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "On Sunday morning they visited a museum. They went to the sea in the afternoon.",
+                "fr": "Dimanche matin, ils ont visité un musée. Ils sont allés à la mer l’après-midi.",
+                "de": "Am Sonntagvormittag besuchten sie ein Museum. Am Nachmittag fuhren sie ans Meer."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-free",
+              "statement": "The museum was free.",
+              "answer": "true",
+              "answerExplanation": {
+                "en": "True: Ben says it was free and really interesting.",
+                "fr": "Vrai : Ben dit que c’était gratuit et très intéressant.",
+                "de": "Richtig: Ben sagt, es war kostenlos und sehr interessant."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-home",
+              "question": "When do they go home?",
+              "options": [
+                { "optionId": "o1", "text": "Tomorrow" },
+                { "optionId": "o2", "text": "On Saturday" },
+                { "optionId": "o3", "text": "On Friday" },
+                { "optionId": "o4", "text": "Next week" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "The last sentence says: Tomorrow we go home.",
+                "fr": "La dernière phrase dit : Tomorrow we go home.",
+                "de": "Der letzte Satz lautet: Tomorrow we go home."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

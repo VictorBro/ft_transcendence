@@ -1,0 +1,993 @@
+{
+  "schemaVersion": 2,
+  "id": "en-introducing-yourself",
+  "lang": "en",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Introducing yourself",
+  "objective": {
+    "en": "Say your name and where you are from, and ask someone new the same: Hi, I'm Ana. I'm from Brazil. What's your name?",
+    "fr": "Dire son nom et d'où l'on vient, et poser les mêmes questions à une personne nouvelle.",
+    "de": "Den eigenen Namen und die Herkunft sagen und eine neue Person danach fragen."
+  },
+  "estimatedMinutes": 14,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:09.775Z",
+    "inputHashes": {
+      "outline": "bfd1abab7094fa83673080f4a6605fe463d3754200ce902591addf7ea2bc6d80",
+      "brief": "b7e0e80e5ca538d076b751601ae18a2e9f77efc2bb9f573143627e1ad34bb2b3"
+    }
+  },
+  "kind": "functions",
+  "theme": "personal_identification",
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "presentation",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "cards-expressions",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Recall each expression, then turn the card to check it.",
+            "fr": "Rappelez-vous chaque expression, puis retournez la carte pour vérifier.",
+            "de": "Erinnere dich an jeden Ausdruck und dreh dann die Karte um."
+          },
+          "items": [
+            {
+              "type": "function_flashcards",
+              "itemId": "cards-expressions",
+              "side": "expressions",
+              "ids": [
+                "hi-im",
+                "im-from",
+                "whats-your-name",
+                "where-are-you-from",
+                "nice-to-meet-you"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue",
+      "stage": "dialogue",
+      "role": "presentation",
+      "label": { "en": "Dialogue", "fr": "Dialogue", "de": "Dialog" },
+      "pages": [
+        {
+          "pageId": "dialogue",
+          "estimatedDurationS": 116,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read and listen. Turn a line to see its translation and a note.",
+            "fr": "Lisez et écoutez. Retournez une réplique pour voir sa traduction et une remarque.",
+            "de": "Lies und hör zu. Dreh eine Zeile um, um Übersetzung und Hinweis zu sehen."
+          },
+          "items": [
+            {
+              "type": "function_dialogue",
+              "itemId": "dialogue",
+              "lines": [
+                {
+                  "lineId": "line-1",
+                  "roleId": "tom",
+                  "text": "Hi, I'm Tom. What's your name?",
+                  "translation": {
+                    "fr": "Salut, je suis Tom. Comment tu t'appelles ?",
+                    "de": "Hallo, ich bin Tom. Wie heißt du?"
+                  },
+                  "note": {
+                    "en": "Tom says his name, then asks for hers.",
+                    "fr": "Tom dit son prénom, puis demande le sien.",
+                    "de": "Tom sagt seinen Namen und fragt dann nach ihrem."
+                  },
+                  "expressionIds": ["hi-im", "whats-your-name"]
+                },
+                {
+                  "lineId": "line-2",
+                  "roleId": "ana",
+                  "text": "Hi, I'm Ana. Nice to meet you.",
+                  "translation": {
+                    "fr": "Salut, je suis Ana. Enchantée.",
+                    "de": "Hallo, ich bin Ana. Freut mich."
+                  },
+                  "note": {
+                    "en": "Ana answers with her name and a polite phrase.",
+                    "fr": "Ana répond avec son prénom et une formule polie.",
+                    "de": "Ana antwortet mit ihrem Namen und einer höflichen Formel."
+                  },
+                  "expressionIds": ["hi-im", "nice-to-meet-you"]
+                },
+                {
+                  "lineId": "line-3",
+                  "roleId": "tom",
+                  "text": "Nice to meet you, Ana. Where are you from?",
+                  "translation": {
+                    "fr": "Enchanté, Ana. Tu viens d'où ?",
+                    "de": "Freut mich, Ana. Woher kommst du?"
+                  },
+                  "note": {
+                    "en": "Tom repeats the polite phrase and asks about her country.",
+                    "fr": "Tom répète la formule polie et demande son pays.",
+                    "de": "Tom wiederholt die höfliche Formel und fragt nach ihrem Land."
+                  },
+                  "expressionIds": ["nice-to-meet-you", "where-are-you-from"]
+                },
+                {
+                  "lineId": "line-4",
+                  "roleId": "ana",
+                  "text": "I'm from Brazil.",
+                  "translation": { "fr": "Je viens du Brésil.", "de": "Ich komme aus Brasilien." },
+                  "note": {
+                    "en": "I'm from + country.",
+                    "fr": "I'm from + pays.",
+                    "de": "I'm from + Land."
+                  },
+                  "expressionIds": ["im-from"]
+                },
+                {
+                  "lineId": "line-5",
+                  "roleId": "tom",
+                  "text": "I'm from Canada.",
+                  "translation": { "fr": "Je viens du Canada.", "de": "Ich komme aus Kanada." },
+                  "note": {
+                    "en": "Tom uses the same pattern.",
+                    "fr": "Tom utilise la même construction.",
+                    "de": "Tom benutzt dasselbe Muster."
+                  },
+                  "expressionIds": ["im-from"]
+                },
+                {
+                  "lineId": "line-6",
+                  "roleId": "ana",
+                  "text": "Canada is nice! I'm a new student.",
+                  "translation": {
+                    "fr": "Le Canada, c'est bien ! Je suis une nouvelle étudiante.",
+                    "de": "Kanada ist schön! Ich bin neue Studentin."
+                  },
+                  "note": {
+                    "en": "Ana comments and adds a little more about herself.",
+                    "fr": "Ana fait un commentaire et ajoute une information sur elle.",
+                    "de": "Ana kommentiert und erzählt etwas mehr über sich."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-7",
+                  "roleId": "tom",
+                  "text": "Me too! See you in class, Ana.",
+                  "translation": {
+                    "fr": "Moi aussi ! À bientôt en cours, Ana.",
+                    "de": "Ich auch! Bis später im Kurs, Ana."
+                  },
+                  "note": {
+                    "en": "Me too! means the same is true for you.",
+                    "fr": "Me too! veut dire que c'est pareil pour vous.",
+                    "de": "Me too! heißt, dass es bei dir genauso ist."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-8",
+                  "roleId": "ana",
+                  "text": "See you, Tom. Bye!",
+                  "translation": {
+                    "fr": "À bientôt, Tom. Salut !",
+                    "de": "Bis bald, Tom. Tschüss!"
+                  },
+                  "note": {
+                    "en": "They say goodbye.",
+                    "fr": "Ils se disent au revoir.",
+                    "de": "Sie verabschieden sich."
+                  },
+                  "expressionIds": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "match-expressions-1",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each expression with its translation.",
+            "fr": "Associez chaque expression à sa traduction.",
+            "de": "Ordne jedem Ausdruck seine Übersetzung zu."
+          },
+          "items": [
+            {
+              "type": "function_matching",
+              "itemId": "match-expressions-1",
+              "side": "expressions",
+              "pairs": [
+                {
+                  "id": "hi-im",
+                  "answerExplanation": {
+                    "en": "A friendly way to say your name: Hi, I'm + your name.",
+                    "fr": "Une façon amicale de dire son prénom : Hi, I'm + votre prénom.",
+                    "de": "Eine freundliche Art, den eigenen Namen zu sagen: Hi, I'm + Name."
+                  }
+                },
+                {
+                  "id": "im-from",
+                  "answerExplanation": {
+                    "en": "Says your country or city: I'm from + place.",
+                    "fr": "Pour dire son pays ou sa ville : I'm from + lieu.",
+                    "de": "Nennt Ihr Land oder Ihre Stadt: I'm from + Ort."
+                  }
+                },
+                {
+                  "id": "whats-your-name",
+                  "answerExplanation": {
+                    "en": "Asks for someone's name.",
+                    "fr": "Pour demander le nom de quelqu'un.",
+                    "de": "Fragt nach dem Namen einer Person."
+                  }
+                },
+                {
+                  "id": "where-are-you-from",
+                  "answerExplanation": {
+                    "en": "Asks for someone's country or city.",
+                    "fr": "Pour demander le pays ou la ville de quelqu'un.",
+                    "de": "Fragt nach dem Land oder der Stadt einer Person."
+                  }
+                },
+                {
+                  "id": "nice-to-meet-you",
+                  "answerExplanation": {
+                    "en": "Said when you meet someone for the first time.",
+                    "fr": "On le dit quand on rencontre quelqu'un pour la première fois.",
+                    "de": "Sagt man, wenn man jemanden zum ersten Mal trifft."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-gaps",
+      "stage": "dialogue_gaps",
+      "role": "exercise",
+      "label": { "en": "Dialogue gaps", "fr": "Dialogue à trous", "de": "Dialoglücken" },
+      "pages": [
+        {
+          "pageId": "gap-1",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l'expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-1",
+              "expressionId": "hi-im",
+              "context": { "roleId": "tom", "text": "Hello!" },
+              "roleId": "ana",
+              "before": "",
+              "after": "Maria.",
+              "choiceExpressionIds": ["hi-im", "im-from", "where-are-you-from", "nice-to-meet-you"],
+              "answerExplanation": {
+                "en": "She says her name: Hi, I'm + name.",
+                "fr": "Elle dit son prénom : Hi, I'm + prénom.",
+                "de": "Sie sagt ihren Namen: Hi, I'm + Name."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-2",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l'expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-2",
+              "expressionId": "im-from",
+              "context": { "roleId": "tom", "text": "Where are you from?" },
+              "roleId": "ana",
+              "before": "",
+              "after": "Italy.",
+              "choiceExpressionIds": ["im-from", "hi-im", "nice-to-meet-you", "whats-your-name"],
+              "answerExplanation": {
+                "en": "She answers with her country: I'm from + country.",
+                "fr": "Elle répond avec son pays : I'm from + pays.",
+                "de": "Sie antwortet mit ihrem Land: I'm from + Land."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-3",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l'expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-3",
+              "expressionId": "whats-your-name",
+              "context": { "roleId": "ana", "text": "Hello." },
+              "roleId": "tom",
+              "before": "Hello. I'm Tom.",
+              "after": "",
+              "choiceExpressionIds": ["whats-your-name", "im-from", "hi-im", "nice-to-meet-you"],
+              "answerExplanation": {
+                "en": "After saying his name, Tom asks for hers.",
+                "fr": "Après avoir dit son prénom, Tom demande le sien.",
+                "de": "Nachdem Tom seinen Namen gesagt hat, fragt er nach ihrem."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-4",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l'expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-4",
+              "expressionId": "where-are-you-from",
+              "context": { "roleId": "ana", "text": "I'm Ana." },
+              "roleId": "tom",
+              "before": "Hello, Ana.",
+              "after": "",
+              "choiceExpressionIds": ["where-are-you-from", "hi-im", "im-from", "whats-your-name"],
+              "answerExplanation": {
+                "en": "He already knows her name, so he asks where she is from.",
+                "fr": "Il connaît déjà son prénom, donc il demande d'où elle vient.",
+                "de": "Er kennt ihren Namen schon, also fragt er, woher sie kommt."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-5",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l'expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-5",
+              "expressionId": "nice-to-meet-you",
+              "context": { "roleId": "tom", "text": "Hi, I'm Tom." },
+              "roleId": "ana",
+              "before": "Hi, Tom. I'm Ana.",
+              "after": "",
+              "choiceExpressionIds": ["nice-to-meet-you", "where-are-you-from", "im-from", "hi-im"],
+              "answerExplanation": {
+                "en": "They have just met, so she says Nice to meet you.",
+                "fr": "Ils viennent de se rencontrer, donc elle dit Nice to meet you.",
+                "de": "Sie haben sich gerade kennengelernt, also sagt sie Nice to meet you."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "word-order",
+      "stage": "word_order",
+      "role": "exercise",
+      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
+      "pages": [
+        {
+          "pageId": "order-1",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l'ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-1",
+              "expressionId": "hi-im",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Hi," },
+                { "tokenId": "t2", "text": "I'm" },
+                { "tokenId": "t3", "text": "Tom." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3"]],
+              "answerExplanation": {
+                "en": "Hi, I'm comes first, then your name.",
+                "fr": "Hi, I'm vient d'abord, puis votre prénom.",
+                "de": "Zuerst Hi, I'm, dann dein Name."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-2",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l'ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-2",
+              "expressionId": "im-from",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "I'm" },
+                { "tokenId": "t2", "text": "from" },
+                { "tokenId": "t3", "text": "Spain." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3"]],
+              "answerExplanation": {
+                "en": "I'm from comes first, then the country.",
+                "fr": "I'm from vient d'abord, puis le pays.",
+                "de": "Zuerst I'm from, dann das Land."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-3",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l'ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-3",
+              "expressionId": "whats-your-name",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Excuse" },
+                { "tokenId": "t2", "text": "me," },
+                { "tokenId": "t3", "text": "what's" },
+                { "tokenId": "t4", "text": "your" },
+                { "tokenId": "t5", "text": "name?" }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]],
+              "answerExplanation": {
+                "en": "Get attention first, then ask What's your name?",
+                "fr": "On attire d'abord l'attention, puis on demande What's your name ?",
+                "de": "Erst Aufmerksamkeit holen, dann What's your name? fragen."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-4",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l'ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-4",
+              "expressionId": "where-are-you-from",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Ana," },
+                { "tokenId": "t2", "text": "where" },
+                { "tokenId": "t3", "text": "are" },
+                { "tokenId": "t4", "text": "you" },
+                { "tokenId": "t5", "text": "from?" }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]],
+              "answerExplanation": {
+                "en": "The name comes first, then Where are you from?",
+                "fr": "Le prénom vient d'abord, puis Where are you from ?",
+                "de": "Zuerst der Name, dann Where are you from?"
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-5",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l'ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-5",
+              "expressionId": "nice-to-meet-you",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Nice" },
+                { "tokenId": "t2", "text": "to" },
+                { "tokenId": "t3", "text": "meet" },
+                { "tokenId": "t4", "text": "you," },
+                { "tokenId": "t5", "text": "Ana." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]],
+              "answerExplanation": {
+                "en": "Nice to meet you comes first, then the name.",
+                "fr": "Nice to meet you vient d'abord, puis le prénom.",
+                "de": "Zuerst Nice to meet you, dann der Name."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "listening",
+      "stage": "listening",
+      "role": "exercise",
+      "label": { "en": "Listening", "fr": "Écoute", "de": "Hören" },
+      "pages": [
+        {
+          "pageId": "listening-1",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-1",
+              "expressionId": "hi-im",
+              "context": { "roleId": "tom", "text": "Hello!" },
+              "roleId": "ana",
+              "options": [
+                { "optionId": "o1", "text": "Hi, I'm Ana." },
+                { "optionId": "o2", "text": "See you later." },
+                { "optionId": "o3", "text": "Fine, thanks." },
+                { "optionId": "o4", "text": "Goodbye." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "She greets him and says her name.",
+                "fr": "Elle le salue et dit son prénom.",
+                "de": "Sie grüßt ihn und sagt ihren Namen."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-2",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-2",
+              "expressionId": "im-from",
+              "context": { "roleId": "tom", "text": "Where are you from?" },
+              "roleId": "ana",
+              "options": [
+                { "optionId": "o1", "text": "I'm from Brazil." },
+                { "optionId": "o2", "text": "Nice to meet you." },
+                { "optionId": "o3", "text": "Fine, thanks." },
+                { "optionId": "o4", "text": "See you later." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "The question is about her country, so she answers with I'm from.",
+                "fr": "La question porte sur son pays, donc elle répond avec I'm from.",
+                "de": "Die Frage betrifft ihr Land, also antwortet sie mit I'm from."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-3",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-3",
+              "expressionId": "whats-your-name",
+              "context": { "roleId": "ana", "text": "Hello!" },
+              "roleId": "tom",
+              "options": [
+                { "optionId": "o1", "text": "Hello! What's your name?" },
+                { "optionId": "o2", "text": "I'm from Spain." },
+                { "optionId": "o3", "text": "Goodbye!" },
+                { "optionId": "o4", "text": "I'm fine, thanks." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "He greets her and asks for her name.",
+                "fr": "Il la salue et demande son prénom.",
+                "de": "Er grüßt sie und fragt nach ihrem Namen."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-4",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-4",
+              "expressionId": "where-are-you-from",
+              "context": { "roleId": "ana", "text": "Hi, I'm Ana." },
+              "roleId": "tom",
+              "options": [
+                { "optionId": "o1", "text": "Hello, Ana. Where are you from?" },
+                { "optionId": "o2", "text": "I'm from Spain." },
+                { "optionId": "o3", "text": "See you later." },
+                { "optionId": "o4", "text": "Fine, thanks." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "He greets her by name and asks where she is from.",
+                "fr": "Il la salue par son prénom et demande d'où elle vient.",
+                "de": "Er begrüßt sie mit Namen und fragt, woher sie kommt."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-5",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-5",
+              "expressionId": "nice-to-meet-you",
+              "context": { "roleId": "tom", "text": "Hi, I'm Tom." },
+              "roleId": "ana",
+              "options": [
+                { "optionId": "o1", "text": "Hi, Tom. Nice to meet you." },
+                { "optionId": "o2", "text": "Goodbye, Tom." },
+                { "optionId": "o3", "text": "I'm fine, thanks." },
+                { "optionId": "o4", "text": "Yes, please." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "They have just met, so she says Nice to meet you.",
+                "fr": "Ils viennent de se rencontrer, donc elle dit Nice to meet you.",
+                "de": "Sie haben sich gerade kennengelernt, also sagt sie Nice to meet you."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam-replies-1",
+          "estimatedDurationS": 120,
+          "timeLimitS": 180,
+          "instructions": {
+            "en": "Build the answer. Not every word fits.",
+            "fr": "Construisez la réponse. Tous les mots ne servent pas.",
+            "de": "Bilde die Antwort. Nicht jedes Wort passt."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "reply-1",
+              "expressionId": "whats-your-name",
+              "context": { "roleId": "ana", "text": "Hi! I'm new here." },
+              "roleId": "tom",
+              "tokens": [
+                { "tokenId": "t1", "text": "Hello!" },
+                { "tokenId": "t2", "text": "I'm" },
+                { "tokenId": "t3", "text": "Tom." },
+                { "tokenId": "t4", "text": "What's" },
+                { "tokenId": "t5", "text": "your" },
+                { "tokenId": "t6", "text": "name?" },
+                { "tokenId": "t7", "text": "my" },
+                { "tokenId": "t8", "text": "are" }
+              ],
+              "distractorTokenIds": ["t7", "t8"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "answerExplanation": {
+                "en": "He says his name, then asks What's your name?",
+                "fr": "Il dit son prénom, puis demande What's your name ?",
+                "de": "Er sagt seinen Namen und fragt dann What's your name?"
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-2",
+              "expressionId": "where-are-you-from",
+              "context": { "roleId": "ana", "text": "I'm Ana. Nice to meet you." },
+              "roleId": "tom",
+              "tokens": [
+                { "tokenId": "t1", "text": "Nice" },
+                { "tokenId": "t2", "text": "to" },
+                { "tokenId": "t3", "text": "meet" },
+                { "tokenId": "t4", "text": "you" },
+                { "tokenId": "t5", "text": "too." },
+                { "tokenId": "t6", "text": "Where" },
+                { "tokenId": "t7", "text": "are" },
+                { "tokenId": "t8", "text": "you" },
+                { "tokenId": "t9", "text": "from?" },
+                { "tokenId": "t10", "text": "is" }
+              ],
+              "distractorTokenIds": ["t10"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9"]],
+              "answerExplanation": {
+                "en": "With you, the verb is are: Where are you from?",
+                "fr": "Avec you, le verbe est are : Where are you from ?",
+                "de": "Mit you steht das Verb are: Where are you from?"
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-3",
+              "expressionId": "im-from",
+              "context": { "roleId": "tom", "text": "Where are you from, Ana?" },
+              "roleId": "ana",
+              "tokens": [
+                { "tokenId": "t1", "text": "I'm" },
+                { "tokenId": "t2", "text": "from" },
+                { "tokenId": "t3", "text": "Japan," },
+                { "tokenId": "t4", "text": "Tom." },
+                { "tokenId": "t5", "text": "am" },
+                { "tokenId": "t6", "text": "in" }
+              ],
+              "distractorTokenIds": ["t5", "t6"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4"]],
+              "answerExplanation": {
+                "en": "I'm from + country answers the question.",
+                "fr": "I'm from + pays répond à la question.",
+                "de": "I'm from + Land beantwortet die Frage."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-4",
+              "expressionId": "nice-to-meet-you",
+              "context": { "roleId": "ana", "text": "Hello, I'm Ana." },
+              "roleId": "tom",
+              "tokens": [
+                { "tokenId": "t1", "text": "Hello," },
+                { "tokenId": "t2", "text": "Ana." },
+                { "tokenId": "t3", "text": "Nice" },
+                { "tokenId": "t4", "text": "to" },
+                { "tokenId": "t5", "text": "meet" },
+                { "tokenId": "t6", "text": "you." },
+                { "tokenId": "t7", "text": "see" }
+              ],
+              "distractorTokenIds": ["t7"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "answerExplanation": {
+                "en": "Meet, not see: Nice to meet you.",
+                "fr": "On dit meet, pas see : Nice to meet you.",
+                "de": "Es heißt meet, nicht see: Nice to meet you."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-dialogue",
+          "estimatedDurationS": 144,
+          "timeLimitS": 216,
+          "instructions": {
+            "en": "Fill each gap with an expression from this lesson.",
+            "fr": "Complétez chaque trou avec une expression de la leçon.",
+            "de": "Fülle jede Lücke mit einem Ausdruck aus dieser Lektion."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_typing",
+              "itemId": "exam-dialogue",
+              "lines": [
+                {
+                  "lineId": "exam-line-1",
+                  "roleId": "ana",
+                  "before": "",
+                  "translation": {
+                    "fr": "Salut, je suis Ana. Je suis nouvelle ici.",
+                    "de": "Hallo, ich bin Ana. Ich bin neu hier."
+                  },
+                  "gap": {
+                    "gapId": "gap-1",
+                    "expressionId": "hi-im",
+                    "accepted": { "answers": ["Hi, I'm", "Hello, I'm"] },
+                    "answerExplanation": {
+                      "en": "She says her name: Hi, I'm + name.",
+                      "fr": "Elle dit son prénom : Hi, I'm + prénom.",
+                      "de": "Sie sagt ihren Namen: Hi, I'm + Name."
+                    }
+                  },
+                  "after": "Ana. I'm new here."
+                },
+                {
+                  "lineId": "exam-line-2",
+                  "roleId": "tom",
+                  "before": "Welcome! Nice to meet you.",
+                  "translation": { "fr": "Bienvenue ! Enchanté.", "de": "Willkommen! Freut mich." },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-3",
+                  "roleId": "ana",
+                  "before": "Thanks.",
+                  "translation": {
+                    "fr": "Merci. Comment tu t'appelles ?",
+                    "de": "Danke. Wie heißt du?"
+                  },
+                  "gap": {
+                    "gapId": "gap-3",
+                    "expressionId": "whats-your-name",
+                    "accepted": { "answers": ["What's your name?"] },
+                    "answerExplanation": {
+                      "en": "She asks for his name: What's your name?",
+                      "fr": "Elle demande son prénom : What's your name ?",
+                      "de": "Sie fragt nach seinem Namen: What's your name?"
+                    }
+                  },
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-4",
+                  "roleId": "tom",
+                  "before": "My name's Tom.",
+                  "translation": {
+                    "fr": "Je m'appelle Tom. Tu viens d'où ?",
+                    "de": "Ich heiße Tom. Woher kommst du?"
+                  },
+                  "gap": {
+                    "gapId": "gap-4",
+                    "expressionId": "where-are-you-from",
+                    "accepted": { "answers": ["Where are you from?"] },
+                    "answerExplanation": {
+                      "en": "He asks about her country: Where are you from?",
+                      "fr": "Il demande son pays : Where are you from ?",
+                      "de": "Er fragt nach ihrem Land: Where are you from?"
+                    }
+                  },
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-5",
+                  "roleId": "ana",
+                  "before": "",
+                  "translation": {
+                    "fr": "Je viens du Mexique. Et toi ?",
+                    "de": "Ich komme aus Mexiko. Und du?"
+                  },
+                  "gap": {
+                    "gapId": "gap-5",
+                    "expressionId": "im-from",
+                    "accepted": { "answers": ["I'm from"] },
+                    "answerExplanation": {
+                      "en": "She names her country: I'm from + country.",
+                      "fr": "Elle nomme son pays : I'm from + pays.",
+                      "de": "Sie nennt ihr Land: I'm from + Land."
+                    }
+                  },
+                  "after": "Mexico. And you?"
+                },
+                {
+                  "lineId": "exam-line-6",
+                  "roleId": "tom",
+                  "before": "I'm from Canada.",
+                  "translation": { "fr": "Je viens du Canada.", "de": "Ich komme aus Kanada." },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-7",
+                  "roleId": "ana",
+                  "before": "Canada is far! See you in class, Tom.",
+                  "translation": {
+                    "fr": "Le Canada, c'est loin ! À bientôt en cours, Tom.",
+                    "de": "Kanada ist weit weg! Bis später im Kurs, Tom."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-8",
+                  "roleId": "tom",
+                  "before": "See you, Ana. Goodbye!",
+                  "translation": {
+                    "fr": "À bientôt, Ana. Au revoir !",
+                    "de": "Bis bald, Ana. Auf Wiedersehen!"
+                  },
+                  "gap": null,
+                  "after": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

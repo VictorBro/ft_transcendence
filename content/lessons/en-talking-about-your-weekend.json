@@ -1,0 +1,1162 @@
+{
+  "schemaVersion": 2,
+  "id": "en-talking-about-your-weekend",
+  "lang": "en",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Talking about your weekend",
+  "objective": {
+    "en": "Ask a friend about their weekend and tell them about yours in order: where you went, what you saw and what you did.",
+    "fr": "Demander à un ami comment s’est passé son week-end et raconter le vôtre dans l’ordre : où vous êtes allé, ce que vous avez vu et fait.",
+    "de": "Einen Freund nach seinem Wochenende fragen und von dem eigenen der Reihe nach erzählen: wohin man ging, was man sah und tat."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:09.495Z",
+    "inputHashes": {
+      "outline": "4aa2d82a9a6ab083fd04440024e87c6a9c886cf07c4c75613c52b4e21587807a",
+      "brief": "aa29a264a57c8cd0f4fbcf2065b22d2af8dbda5909c7978f219994053d47add3"
+    }
+  },
+  "kind": "functions",
+  "theme": "free_time",
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "presentation",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "cards-expressions",
+          "estimatedDurationS": 72,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Recall each expression, then turn the card to check it.",
+            "fr": "Rappelez-vous chaque expression, puis retournez la carte pour vérifier.",
+            "de": "Erinnere dich an jeden Ausdruck und dreh dann die Karte um."
+          },
+          "items": [
+            {
+              "type": "function_flashcards",
+              "itemId": "cards-expressions",
+              "side": "expressions",
+              "ids": [
+                "how-was",
+                "what-did-you-do",
+                "we-went",
+                "there-was",
+                "then-we-had-lunch",
+                "it-was-great"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue",
+      "stage": "dialogue",
+      "role": "presentation",
+      "label": { "en": "Dialogue", "fr": "Dialogue", "de": "Dialog" },
+      "pages": [
+        {
+          "pageId": "dialogue",
+          "estimatedDurationS": 140,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read and listen. Turn a line to see its translation and a note.",
+            "fr": "Lisez et écoutez. Retournez une réplique pour voir sa traduction et une remarque.",
+            "de": "Lies und hör zu. Dreh eine Zeile um, um Übersetzung und Hinweis zu sehen."
+          },
+          "items": [
+            {
+              "type": "function_dialogue",
+              "itemId": "dialogue",
+              "lines": [
+                {
+                  "lineId": "line-1",
+                  "roleId": "ben",
+                  "text": "Hi Mia! How was your weekend?",
+                  "translation": {
+                    "fr": "Salut Mia ! Comment s’est passé ton week-end ?",
+                    "de": "Hallo Mia! Wie war dein Wochenende?"
+                  },
+                  "note": {
+                    "en": "Ben starts the conversation with a friendly question.",
+                    "fr": "Ben commence la conversation par une question amicale.",
+                    "de": "Ben beginnt das Gespräch mit einer freundlichen Frage."
+                  },
+                  "expressionIds": ["how-was"]
+                },
+                {
+                  "lineId": "line-2",
+                  "roleId": "mia",
+                  "text": "It was great, thanks!",
+                  "translation": { "fr": "C’était super, merci !", "de": "Es war toll, danke!" },
+                  "note": {
+                    "en": "A short general answer first.",
+                    "fr": "D’abord une courte réponse générale.",
+                    "de": "Zuerst eine kurze, allgemeine Antwort."
+                  },
+                  "expressionIds": ["it-was-great"]
+                },
+                {
+                  "lineId": "line-3",
+                  "roleId": "ben",
+                  "text": "Nice! What did you do?",
+                  "translation": {
+                    "fr": "Super ! Qu’as-tu fait ?",
+                    "de": "Schön! Was hast du gemacht?"
+                  },
+                  "note": {
+                    "en": "Ben asks for details with did + you + do.",
+                    "fr": "Ben demande des détails avec did + you + do.",
+                    "de": "Ben fragt mit did + you + do nach Einzelheiten."
+                  },
+                  "expressionIds": ["what-did-you-do"]
+                },
+                {
+                  "lineId": "line-4",
+                  "roleId": "mia",
+                  "text": "We went to the seaside on Saturday.",
+                  "translation": {
+                    "fr": "Nous sommes allés à la mer samedi.",
+                    "de": "Wir sind am Samstag ans Meer gefahren."
+                  },
+                  "note": {
+                    "en": "Went is the past of go.",
+                    "fr": "Went est le passé de go.",
+                    "de": "Went ist die Vergangenheit von go."
+                  },
+                  "expressionIds": ["we-went"]
+                },
+                {
+                  "lineId": "line-5",
+                  "roleId": "ben",
+                  "text": "Lovely. Was the weather good?",
+                  "translation": {
+                    "fr": "Génial. Il faisait beau ?",
+                    "de": "Schön. War das Wetter gut?"
+                  },
+                  "note": {
+                    "en": "Was the weather good? is a question with was.",
+                    "fr": "Was the weather good? est une question avec was.",
+                    "de": "Was the weather good? ist eine Frage mit was."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-6",
+                  "roleId": "mia",
+                  "text": "Yes, it was sunny. There was a market near the beach.",
+                  "translation": {
+                    "fr": "Oui, il faisait soleil. Il y avait un marché près de la plage.",
+                    "de": "Ja, es war sonnig. Es gab einen Markt in der Nähe des Strandes."
+                  },
+                  "note": {
+                    "en": "There was + one thing.",
+                    "fr": "There was + une seule chose.",
+                    "de": "There was + eine einzelne Sache."
+                  },
+                  "expressionIds": ["there-was"]
+                },
+                {
+                  "lineId": "line-7",
+                  "roleId": "ben",
+                  "text": "Did you buy anything?",
+                  "translation": {
+                    "fr": "Tu as acheté quelque chose ?",
+                    "de": "Hast du etwas gekauft?"
+                  },
+                  "note": {
+                    "en": "Did + you + base form asks about the past.",
+                    "fr": "Did + you + base verbale pose une question sur le passé.",
+                    "de": "Did + you + Grundform fragt nach der Vergangenheit."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-8",
+                  "roleId": "mia",
+                  "text": "Yes, I bought a hat. Then we had lunch by the sea.",
+                  "translation": {
+                    "fr": "Oui, j’ai acheté un chapeau. Ensuite, nous avons déjeuné au bord de la mer.",
+                    "de": "Ja, ich habe einen Hut gekauft. Dann haben wir am Meer zu Mittag gegessen."
+                  },
+                  "note": {
+                    "en": "Then puts the events in order.",
+                    "fr": "Then met les événements dans l’ordre.",
+                    "de": "Then bringt die Ereignisse in eine Reihenfolge."
+                  },
+                  "expressionIds": ["then-we-had-lunch"]
+                },
+                {
+                  "lineId": "line-9",
+                  "roleId": "ben",
+                  "text": "That sounds perfect. I stayed at home and watched films.",
+                  "translation": {
+                    "fr": "Ça a l’air parfait. Je suis resté à la maison et j’ai regardé des films.",
+                    "de": "Das klingt perfekt. Ich bin zu Hause geblieben und habe Filme geschaut."
+                  },
+                  "note": {
+                    "en": "Ben tells about his weekend too.",
+                    "fr": "Ben raconte aussi son week-end.",
+                    "de": "Ben erzählt auch von seinem Wochenende."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-10",
+                  "roleId": "mia",
+                  "text": "That’s nice too. See you on Monday!",
+                  "translation": {
+                    "fr": "C’est bien aussi. À lundi !",
+                    "de": "Das ist auch schön. Bis Montag!"
+                  },
+                  "note": {
+                    "en": "A friendly way to end.",
+                    "fr": "Une façon amicale de terminer.",
+                    "de": "Ein freundlicher Abschluss."
+                  },
+                  "expressionIds": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "match-expressions-1",
+          "estimatedDurationS": 72,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each expression with its translation.",
+            "fr": "Associez chaque expression à sa traduction.",
+            "de": "Ordne jedem Ausdruck seine Übersetzung zu."
+          },
+          "items": [
+            {
+              "type": "function_matching",
+              "itemId": "match-expressions-1",
+              "side": "expressions",
+              "pairs": [
+                {
+                  "id": "how-was",
+                  "answerExplanation": {
+                    "en": "A friendly question about the weekend.",
+                    "fr": "Une question amicale sur le week-end.",
+                    "de": "Eine freundliche Frage zum Wochenende."
+                  }
+                },
+                {
+                  "id": "what-did-you-do",
+                  "answerExplanation": {
+                    "en": "Asks for details about the past.",
+                    "fr": "Demande des détails sur le passé.",
+                    "de": "Fragt nach Einzelheiten in der Vergangenheit."
+                  }
+                },
+                {
+                  "id": "we-went",
+                  "answerExplanation": {
+                    "en": "Went is the past of go.",
+                    "fr": "Went est le passé de go.",
+                    "de": "Went ist die Vergangenheit von go."
+                  }
+                },
+                {
+                  "id": "there-was",
+                  "answerExplanation": {
+                    "en": "There was describes one thing in a place.",
+                    "fr": "There was décrit une chose dans un lieu.",
+                    "de": "There was beschreibt eine Sache an einem Ort."
+                  }
+                },
+                {
+                  "id": "then-we-had-lunch",
+                  "answerExplanation": {
+                    "en": "Then puts the next event in order.",
+                    "fr": "Then place l’événement suivant dans l’ordre.",
+                    "de": "Then ordnet das nächste Ereignis ein."
+                  }
+                },
+                {
+                  "id": "it-was-great",
+                  "answerExplanation": {
+                    "en": "Gives a general opinion.",
+                    "fr": "Donne un avis général.",
+                    "de": "Gibt eine allgemeine Meinung."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-gaps",
+      "stage": "dialogue_gaps",
+      "role": "exercise",
+      "label": { "en": "Dialogue gaps", "fr": "Dialogue à trous", "de": "Dialoglücken" },
+      "pages": [
+        {
+          "pageId": "gap-1",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-1",
+              "expressionId": "how-was",
+              "context": { "roleId": "mia", "text": "Hi Ben!" },
+              "roleId": "ben",
+              "before": "Hi Mia!",
+              "after": "",
+              "choiceExpressionIds": ["how-was", "we-went", "there-was", "it-was-great"],
+              "answerExplanation": {
+                "en": "Ben greets Mia and asks about her weekend.",
+                "fr": "Ben salue Mia et lui demande son week-end.",
+                "de": "Ben begrüßt Mia und fragt nach ihrem Wochenende."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-2",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-2",
+              "expressionId": "what-did-you-do",
+              "context": { "roleId": "mia", "text": "I was away last weekend." },
+              "roleId": "ben",
+              "before": "Oh, nice!",
+              "after": "",
+              "choiceExpressionIds": [
+                "what-did-you-do",
+                "how-was",
+                "then-we-had-lunch",
+                "it-was-great"
+              ],
+              "answerExplanation": {
+                "en": "Ben asks what she did.",
+                "fr": "Ben demande ce qu’elle a fait.",
+                "de": "Ben fragt, was sie gemacht hat."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-3",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-3",
+              "expressionId": "we-went",
+              "context": { "roleId": "ben", "text": "What did you do on Saturday?" },
+              "roleId": "mia",
+              "before": "",
+              "after": "with my family.",
+              "choiceExpressionIds": ["we-went", "how-was", "what-did-you-do", "it-was-great"],
+              "answerExplanation": {
+                "en": "She says where they went.",
+                "fr": "Elle dit où ils sont allés.",
+                "de": "Sie sagt, wohin sie gegangen sind."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-4",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-4",
+              "expressionId": "there-was",
+              "context": { "roleId": "ben", "text": "Was the town busy?" },
+              "roleId": "mia",
+              "before": "Yes!",
+              "after": "in the main square.",
+              "choiceExpressionIds": [
+                "there-was",
+                "what-did-you-do",
+                "then-we-had-lunch",
+                "how-was"
+              ],
+              "answerExplanation": {
+                "en": "She describes what was in the square.",
+                "fr": "Elle décrit ce qu’il y avait sur la place.",
+                "de": "Sie beschreibt, was auf dem Platz war."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-5",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-5",
+              "expressionId": "then-we-had-lunch",
+              "context": { "roleId": "ben", "text": "And after the beach?" },
+              "roleId": "mia",
+              "before": "",
+              "after": "in a small café.",
+              "choiceExpressionIds": [
+                "then-we-had-lunch",
+                "we-went",
+                "there-was",
+                "what-did-you-do"
+              ],
+              "answerExplanation": {
+                "en": "Then shows the next event in the story.",
+                "fr": "Then montre l’événement suivant de l’histoire.",
+                "de": "Then zeigt das nächste Ereignis der Geschichte."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-6",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-6",
+              "expressionId": "it-was-great",
+              "context": { "roleId": "ben", "text": "Did you like the trip?" },
+              "roleId": "mia",
+              "before": "Yes!",
+              "after": "",
+              "choiceExpressionIds": ["it-was-great", "how-was", "we-went", "then-we-had-lunch"],
+              "answerExplanation": {
+                "en": "She gives her general opinion.",
+                "fr": "Elle donne son avis général.",
+                "de": "Sie gibt ihre allgemeine Meinung."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "word-order",
+      "stage": "word_order",
+      "role": "exercise",
+      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
+      "pages": [
+        {
+          "pageId": "order-1",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-1",
+              "expressionId": "how-was",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Hi," },
+                { "tokenId": "t2", "text": "Ben." },
+                { "tokenId": "t3", "text": "How" },
+                { "tokenId": "t4", "text": "was" },
+                { "tokenId": "t5", "text": "your" },
+                { "tokenId": "t6", "text": "weekend?" }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "answerExplanation": {
+                "en": "Greet first, then ask How was your weekend?",
+                "fr": "On salue d’abord, puis on demande How was your weekend?",
+                "de": "Erst grüßen, dann How was your weekend? fragen."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-2",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-2",
+              "expressionId": "what-did-you-do",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "And" },
+                { "tokenId": "t2", "text": "what" },
+                { "tokenId": "t3", "text": "did" },
+                { "tokenId": "t4", "text": "you" },
+                { "tokenId": "t5", "text": "do" },
+                { "tokenId": "t6", "text": "on" },
+                { "tokenId": "t7", "text": "Sunday?" }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
+              "answerExplanation": {
+                "en": "Question word + did + subject + base form.",
+                "fr": "Mot interrogatif + did + sujet + base verbale.",
+                "de": "Fragewort + did + Subjekt + Grundform."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-3",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-3",
+              "expressionId": "we-went",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "On" },
+                { "tokenId": "t2", "text": "Saturday" },
+                { "tokenId": "t3", "text": "we" },
+                { "tokenId": "t4", "text": "went" },
+                { "tokenId": "t5", "text": "to" },
+                { "tokenId": "t6", "text": "the" },
+                { "tokenId": "t7", "text": "seaside." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
+              "answerExplanation": {
+                "en": "The time comes first, then we went to the seaside.",
+                "fr": "Le moment vient d’abord, puis we went to the seaside.",
+                "de": "Zuerst die Zeit, dann we went to the seaside."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-4",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-4",
+              "expressionId": "there-was",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "In" },
+                { "tokenId": "t2", "text": "the" },
+                { "tokenId": "t3", "text": "square" },
+                { "tokenId": "t4", "text": "there" },
+                { "tokenId": "t5", "text": "was" },
+                { "tokenId": "t6", "text": "a" },
+                { "tokenId": "t7", "text": "market." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
+              "answerExplanation": {
+                "en": "The place comes first, then there was a market.",
+                "fr": "Le lieu vient d’abord, puis there was a market.",
+                "de": "Zuerst der Ort, dann there was a market."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-5",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-5",
+              "expressionId": "then-we-had-lunch",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Then" },
+                { "tokenId": "t2", "text": "we" },
+                { "tokenId": "t3", "text": "had" },
+                { "tokenId": "t4", "text": "lunch" },
+                { "tokenId": "t5", "text": "in" },
+                { "tokenId": "t6", "text": "a" },
+                { "tokenId": "t7", "text": "café." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
+              "answerExplanation": {
+                "en": "Then comes first and shows the next event.",
+                "fr": "Then vient en premier et montre l’événement suivant.",
+                "de": "Then steht vorn und zeigt das nächste Ereignis."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-6",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-6",
+              "expressionId": "it-was-great",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Honestly," },
+                { "tokenId": "t2", "text": "it" },
+                { "tokenId": "t3", "text": "was" },
+                { "tokenId": "t4", "text": "great!" }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4"]],
+              "answerExplanation": {
+                "en": "It was + adjective gives your opinion.",
+                "fr": "It was + adjectif donne votre avis.",
+                "de": "It was + Adjektiv gibt deine Meinung."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "listening",
+      "stage": "listening",
+      "role": "exercise",
+      "label": { "en": "Listening", "fr": "Écoute", "de": "Hören" },
+      "pages": [
+        {
+          "pageId": "listening-1",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-1",
+              "expressionId": "how-was",
+              "context": { "roleId": "mia", "text": "Hi Ben! Good to see you." },
+              "roleId": "ben",
+              "options": [
+                { "optionId": "o1", "text": "Hi Mia! How was your weekend?" },
+                { "optionId": "o2", "text": "Where is the station?" },
+                { "optionId": "o3", "text": "Can I have the bill?" },
+                { "optionId": "o4", "text": "I work on Monday." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "After the greeting, Ben asks about her weekend.",
+                "fr": "Après la salutation, Ben demande son week-end.",
+                "de": "Nach dem Gruß fragt Ben nach ihrem Wochenende."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-2",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-2",
+              "expressionId": "what-did-you-do",
+              "context": { "roleId": "mia", "text": "I was in London on Saturday." },
+              "roleId": "ben",
+              "options": [
+                { "optionId": "o1", "text": "Is it far?" },
+                { "optionId": "o2", "text": "Nice! What did you do?" },
+                { "optionId": "o3", "text": "Who is your teacher?" },
+                { "optionId": "o4", "text": "See you at six." }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "Ben asks what she did in London.",
+                "fr": "Ben demande ce qu’elle a fait à Londres.",
+                "de": "Ben fragt, was sie in London gemacht hat."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-3",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-3",
+              "expressionId": "we-went",
+              "context": { "roleId": "ben", "text": "What did you do on Saturday?" },
+              "roleId": "mia",
+              "options": [
+                { "optionId": "o1", "text": "I am sorry, I do not know." },
+                { "optionId": "o2", "text": "She is in a meeting." },
+                { "optionId": "o3", "text": "We went to the seaside with my cousins." },
+                { "optionId": "o4", "text": "It is half past two." }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "She says where she went on Saturday.",
+                "fr": "Elle dit où elle est allée samedi.",
+                "de": "Sie sagt, wohin sie am Samstag gegangen ist."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-4",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-4",
+              "expressionId": "there-was",
+              "context": { "roleId": "ben", "text": "Was it busy in town?" },
+              "roleId": "mia",
+              "options": [
+                { "optionId": "o1", "text": "No, I am not hungry." },
+                { "optionId": "o2", "text": "Yes, I can help." },
+                { "optionId": "o3", "text": "It was a long train." },
+                { "optionId": "o4", "text": "Yes, there was a market in the square." }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "She explains why it was busy: there was a market.",
+                "fr": "Elle explique pourquoi il y avait du monde : il y avait un marché.",
+                "de": "Sie erklärt, warum viel los war: Es gab einen Markt."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-5",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-5",
+              "expressionId": "then-we-had-lunch",
+              "context": { "roleId": "ben", "text": "And after the beach?" },
+              "roleId": "mia",
+              "options": [
+                { "optionId": "o1", "text": "I walked home alone." },
+                { "optionId": "o2", "text": "Two cups of tea, please." },
+                { "optionId": "o3", "text": "Then we had lunch in a café." },
+                { "optionId": "o4", "text": "The beach is very big." }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "She tells the next event in order.",
+                "fr": "Elle raconte l’événement suivant dans l’ordre.",
+                "de": "Sie erzählt das nächste Ereignis der Reihe nach."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-6",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-6",
+              "expressionId": "it-was-great",
+              "context": { "roleId": "ben", "text": "Did you like the weekend?" },
+              "roleId": "mia",
+              "options": [
+                { "optionId": "o1", "text": "No, I can’t find it." },
+                { "optionId": "o2", "text": "Yes, it was great, thanks!" },
+                { "optionId": "o3", "text": "She was ill." },
+                { "optionId": "o4", "text": "It is half past nine." }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "She gives a positive opinion.",
+                "fr": "Elle donne un avis positif.",
+                "de": "Sie gibt eine positive Meinung."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam-replies-1",
+          "estimatedDurationS": 120,
+          "timeLimitS": 180,
+          "instructions": {
+            "en": "Build the answer. Not every word fits.",
+            "fr": "Construisez la réponse. Tous les mots ne servent pas.",
+            "de": "Bilde die Antwort. Nicht jedes Wort passt."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "reply-1",
+              "expressionId": "we-went",
+              "context": { "roleId": "ben", "text": "Hi Mia! What did you do on Saturday?" },
+              "roleId": "mia",
+              "tokens": [
+                { "tokenId": "t1", "text": "We" },
+                { "tokenId": "t2", "text": "went" },
+                { "tokenId": "t3", "text": "to" },
+                { "tokenId": "t4", "text": "the" },
+                { "tokenId": "t5", "text": "seaside" },
+                { "tokenId": "t6", "text": "by" },
+                { "tokenId": "t7", "text": "train." },
+                { "tokenId": "t8", "text": "go" },
+                { "tokenId": "t9", "text": "goed" }
+              ],
+              "distractorTokenIds": ["t8", "t9"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
+              "answerExplanation": {
+                "en": "Went is the past of go; goed does not exist.",
+                "fr": "Went est le passé de go ; goed n’existe pas.",
+                "de": "Went ist die Vergangenheit von go; goed gibt es nicht."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-2",
+              "expressionId": "there-was",
+              "context": { "roleId": "ben", "text": "Was there anything to see in town?" },
+              "roleId": "mia",
+              "tokens": [
+                { "tokenId": "t1", "text": "Yes," },
+                { "tokenId": "t2", "text": "there" },
+                { "tokenId": "t3", "text": "was" },
+                { "tokenId": "t4", "text": "a" },
+                { "tokenId": "t5", "text": "market" },
+                { "tokenId": "t6", "text": "by" },
+                { "tokenId": "t7", "text": "the" },
+                { "tokenId": "t8", "text": "river." },
+                { "tokenId": "t9", "text": "were" },
+                { "tokenId": "t10", "text": "an" }
+              ],
+              "distractorTokenIds": ["t9", "t10"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8"]],
+              "answerExplanation": {
+                "en": "One market: there was a market (not were, not an).",
+                "fr": "Un seul marché : there was a market (pas were, pas an).",
+                "de": "Ein Markt: there was a market (nicht were, nicht an)."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-3",
+              "expressionId": "then-we-had-lunch",
+              "context": { "roleId": "ben", "text": "What did you do after the museum?" },
+              "roleId": "mia",
+              "tokens": [
+                { "tokenId": "t1", "text": "Then" },
+                { "tokenId": "t2", "text": "we" },
+                { "tokenId": "t3", "text": "had" },
+                { "tokenId": "t4", "text": "lunch" },
+                { "tokenId": "t5", "text": "in" },
+                { "tokenId": "t6", "text": "the" },
+                { "tokenId": "t7", "text": "park." },
+                { "tokenId": "t8", "text": "has" }
+              ],
+              "distractorTokenIds": ["t8"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
+              "answerExplanation": {
+                "en": "Had is the past of have; has is the present.",
+                "fr": "Had est le passé de have ; has est le présent.",
+                "de": "Had ist die Vergangenheit von have; has ist die Gegenwart."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-4",
+              "expressionId": "it-was-great",
+              "context": { "roleId": "ben", "text": "Did you enjoy the concert, Mia?" },
+              "roleId": "mia",
+              "tokens": [
+                { "tokenId": "t1", "text": "Yes," },
+                { "tokenId": "t2", "text": "it" },
+                { "tokenId": "t3", "text": "was" },
+                { "tokenId": "t4", "text": "great," },
+                { "tokenId": "t5", "text": "thank" },
+                { "tokenId": "t6", "text": "you." },
+                { "tokenId": "t7", "text": "is" }
+              ],
+              "distractorTokenIds": ["t7"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "answerExplanation": {
+                "en": "It was is the past; it is would be the present.",
+                "fr": "It was est le passé ; it is serait le présent.",
+                "de": "It was ist die Vergangenheit; it is wäre die Gegenwart."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-dialogue",
+          "estimatedDurationS": 144,
+          "timeLimitS": 216,
+          "instructions": {
+            "en": "Fill each gap with an expression from this lesson.",
+            "fr": "Complétez chaque trou avec une expression de la leçon.",
+            "de": "Fülle jede Lücke mit einem Ausdruck aus dieser Lektion."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_typing",
+              "itemId": "exam-dialogue",
+              "lines": [
+                {
+                  "lineId": "exam-line-1",
+                  "roleId": "mia",
+                  "before": "Hi Ben! Nice to see you.",
+                  "translation": {
+                    "fr": "Salut Ben ! Content de te voir.",
+                    "de": "Hallo Ben! Schön, dich zu sehen."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-2",
+                  "roleId": "ben",
+                  "before": "You look happy.",
+                  "translation": {
+                    "fr": "Tu as l’air content. Comment s’est passé ton week-end ?",
+                    "de": "Du siehst glücklich aus. Wie war dein Wochenende?"
+                  },
+                  "gap": {
+                    "gapId": "gap-1",
+                    "expressionId": "how-was",
+                    "accepted": { "answers": ["How was your weekend?", "How was your weekend"] },
+                    "answerExplanation": {
+                      "en": "Ben asks about her weekend: How was your weekend?",
+                      "fr": "Ben demande son week-end : How was your weekend?",
+                      "de": "Ben fragt nach ihrem Wochenende: How was your weekend?"
+                    }
+                  },
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-3",
+                  "roleId": "mia",
+                  "before": "Really good. I was in Brighton with my sister.",
+                  "translation": {
+                    "fr": "Vraiment bien. J’étais à Brighton avec ma sœur.",
+                    "de": "Wirklich gut. Ich war mit meiner Schwester in Brighton."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-4",
+                  "roleId": "ben",
+                  "before": "Lucky you!",
+                  "translation": {
+                    "fr": "Quelle chance ! Qu’as-tu fait ?",
+                    "de": "Du Glückliche! Was hast du gemacht?"
+                  },
+                  "gap": {
+                    "gapId": "gap-2",
+                    "expressionId": "what-did-you-do",
+                    "accepted": { "answers": ["What did you do?", "What did you do"] },
+                    "answerExplanation": {
+                      "en": "He asks for details: What did you do?",
+                      "fr": "Il demande des détails : What did you do?",
+                      "de": "Er fragt nach Einzelheiten: What did you do?"
+                    }
+                  },
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-5",
+                  "roleId": "mia",
+                  "before": "We walked on the beach.",
+                  "translation": {
+                    "fr": "Nous nous sommes promenés sur la plage. Ensuite, nous avons déjeuné dans un restaurant de poisson.",
+                    "de": "Wir sind am Strand spazieren gegangen. Dann haben wir in einem Fischrestaurant zu Mittag gegessen."
+                  },
+                  "gap": {
+                    "gapId": "gap-3",
+                    "expressionId": "then-we-had-lunch",
+                    "accepted": { "answers": ["Then we had lunch"] },
+                    "answerExplanation": {
+                      "en": "Then shows the next event: Then we had lunch.",
+                      "fr": "Then montre l’événement suivant : Then we had lunch.",
+                      "de": "Then zeigt das nächste Ereignis: Then we had lunch."
+                    }
+                  },
+                  "after": "at a fish restaurant."
+                },
+                {
+                  "lineId": "exam-line-6",
+                  "roleId": "ben",
+                  "before": "Sounds perfect. Did you have good weather?",
+                  "translation": {
+                    "fr": "Ça a l’air parfait. Vous avez eu beau temps ?",
+                    "de": "Klingt perfekt. Hattet ihr gutes Wetter?"
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-7",
+                  "roleId": "mia",
+                  "before": "Yes, thanks.",
+                  "translation": {
+                    "fr": "Oui, merci. C’était super et je veux y retourner.",
+                    "de": "Ja, danke. Es war toll und ich möchte wieder hin."
+                  },
+                  "gap": {
+                    "gapId": "gap-4",
+                    "expressionId": "it-was-great",
+                    "accepted": { "answers": ["It was great"] },
+                    "answerExplanation": {
+                      "en": "She gives her opinion: It was great.",
+                      "fr": "Elle donne son avis : It was great.",
+                      "de": "Sie gibt ihre Meinung: It was great."
+                    }
+                  },
+                  "after": "and I want to go again."
+                },
+                {
+                  "lineId": "exam-line-8",
+                  "roleId": "ben",
+                  "before": "I am happy for you. See you on Monday!",
+                  "translation": {
+                    "fr": "Je suis content pour toi. À lundi !",
+                    "de": "Ich freue mich für dich. Bis Montag!"
+                  },
+                  "gap": null,
+                  "after": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

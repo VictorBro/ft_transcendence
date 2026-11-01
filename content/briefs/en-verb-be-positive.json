@@ -1,0 +1,217 @@
+{
+  "schemaVersion": 2,
+  "id": "en-verb-be-positive",
+  "lang": "en",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "The verb be: I'm, you're, he's",
+  "objective": {
+    "en": "Use am, is and are, and their short forms, with every pronoun to say who people are and where they are from.",
+    "fr": "Utiliser am, is et are, et leurs formes courtes, avec tous les pronoms pour dire qui sont les gens et d'où ils viennent.",
+    "de": "am, is und are sowie ihre Kurzformen mit allen Pronomen verwenden, um zu sagen, wer jemand ist und woher er kommt."
+  },
+  "estimatedMinutes": 15,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:09.479Z",
+    "inputHashes": { "outline": "9b8ff94f7354fb765d81ba7abbfbfa305b2b514a21c69d4502f8620af8ea4c2b" }
+  },
+  "kind": "grammar",
+  "topic": "verbs_morphology",
+  "scopeBoundaries": {
+    "en": "Covers the positive present forms of be with all subject pronouns, and the short forms I'm, he's, we're. Excludes negatives, questions, past tense and be with adjectives.",
+    "fr": "Couvre les formes affirmatives de be au présent avec tous les pronoms sujets, et les formes courtes I'm, he's, we're. Exclut la négation, les questions, le passé et be avec les adjectifs.",
+    "de": "Behandelt die bejahten Präsensformen von be mit allen Subjektpronomen und die Kurzformen I'm, he's, we're. Ausgeschlossen sind Verneinung, Fragen, Vergangenheit und be mit Adjektiven."
+  },
+  "prerequisites": [
+    {
+      "en": "Subject pronouns: I, you, he, she, it, we, they",
+      "fr": "Les pronoms sujets : I, you, he, she, it, we, they",
+      "de": "Subjektpronomen: I, you, he, she, it, we, they"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-singular-forms",
+      "summary": {
+        "en": "Use am with I, is with he, she, it, and are with you.",
+        "fr": "Utiliser am avec I, is avec he, she, it, et are avec you.",
+        "de": "am steht bei I, is bei he, she, it und are bei you."
+      }
+    },
+    {
+      "id": "rule-plural-forms",
+      "summary": {
+        "en": "Use are with we, you and they.",
+        "fr": "Utiliser are avec we, you et they.",
+        "de": "are steht bei we, you und they."
+      }
+    },
+    {
+      "id": "rule-short-forms",
+      "summary": {
+        "en": "In speech use the short forms I'm, you're, he's, she's, it's, we're, they're.",
+        "fr": "À l'oral, utiliser les formes courtes I'm, you're, he's, she's, it's, we're, they're.",
+        "de": "Beim Sprechen die Kurzformen I'm, you're, he's, she's, it's, we're, they're verwenden."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-singular",
+      "title": {
+        "en": "Be with I, you, he, she, it",
+        "fr": "Be avec I, you, he, she, it",
+        "de": "Be mit I, you, he, she, it"
+      },
+      "ruleIds": ["rule-singular-forms"],
+      "explanationPlan": {
+        "en": "Present the three forms am, is, are. Link am to I, is to he, she, it, and are to you. Use be to say who people are and where they are from.",
+        "fr": "Présenter les trois formes am, is, are. Associer am à I, is à he, she, it, et are à you. Employer be pour dire qui sont les gens et d'où ils viennent.",
+        "de": "Die drei Formen am, is, are vorstellen. am zu I, is zu he, she, it und are zu you stellen. Mit be sagen, wer jemand ist und woher er kommt."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        { "text": "I am Tom.", "translation": { "fr": "Je suis Tom.", "de": "Ich bin Tom." } },
+        {
+          "text": "You are from Japan.",
+          "translation": { "fr": "Tu es du Japon.", "de": "Du kommst aus Japan." }
+        },
+        {
+          "text": "She is from Spain.",
+          "translation": { "fr": "Elle est d'Espagne.", "de": "Sie kommt aus Spanien." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not say 'I is' or 'you is'. Each pronoun has its own form.",
+          "fr": "Ne dites pas 'I is' ni 'you is'. Chaque pronom a sa propre forme.",
+          "de": "Sag nicht 'I is' oder 'you is'. Jedes Pronomen hat seine eigene Form."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-sg-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-singular-forms"],
+          "estimatedDurationS": 40
+        },
+        {
+          "id": "ex-sg-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-singular-forms"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-sg-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["rule-singular-forms"],
+          "estimatedDurationS": 75
+        }
+      ]
+    },
+    {
+      "id": "block-plural",
+      "title": {
+        "en": "We, they and short forms",
+        "fr": "We, they et les formes courtes",
+        "de": "We, they und Kurzformen"
+      },
+      "ruleIds": ["rule-plural-forms", "rule-short-forms"],
+      "explanationPlan": {
+        "en": "Show that we, you and they all take are. Then teach the short forms with the apostrophe and use them to say where people are from.",
+        "fr": "Montrer que we, you et they prennent tous are. Enseigner ensuite les formes courtes avec l'apostrophe et les utiliser pour dire d'où viennent les gens.",
+        "de": "Zeigen, dass we, you und they alle are haben. Dann die Kurzformen mit Apostroph lehren und damit sagen, woher Leute kommen."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "We are from Spain.",
+          "translation": { "fr": "Nous sommes d'Espagne.", "de": "Wir kommen aus Spanien." }
+        },
+        {
+          "text": "They are from Japan.",
+          "translation": { "fr": "Ils sont du Japon.", "de": "Sie kommen aus Japan." }
+        },
+        { "text": "I'm Tom.", "translation": { "fr": "Je suis Tom.", "de": "Ich bin Tom." } },
+        {
+          "text": "She's Anna.",
+          "translation": { "fr": "Elle s'appelle Anna.", "de": "Sie ist Anna." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not forget the apostrophe in short forms: write I'm, not Im.",
+          "fr": "N'oubliez pas l'apostrophe dans les formes courtes : écrivez I'm, pas Im.",
+          "de": "Vergiss den Apostroph in Kurzformen nicht: schreib I'm, nicht Im."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-pl-forms",
+          "type": "grammar_pronoun_form_typing",
+          "itemCount": 2,
+          "ruleIds": ["rule-plural-forms", "rule-short-forms"],
+          "estimatedDurationS": 90
+        },
+        {
+          "id": "ex-pl-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 3,
+          "ruleIds": ["rule-plural-forms", "rule-short-forms"],
+          "estimatedDurationS": 30
+        },
+        {
+          "id": "ex-pl-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-plural-forms", "rule-short-forms"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-pl-gap",
+          "type": "grammar_gap_typing",
+          "itemCount": 3,
+          "ruleIds": ["rule-plural-forms", "rule-short-forms"],
+          "estimatedDurationS": 45
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-forms",
+        "type": "grammar_pronoun_form_typing",
+        "itemCount": 1,
+        "ruleIds": ["rule-singular-forms"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      },
+      {
+        "pageId": "exam-gaps",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-singular-forms", "rule-plural-forms", "rule-short-forms"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-singular-forms", "rule-plural-forms", "rule-short-forms"],
+        "estimatedDurationS": 75,
+        "timeLimitS": 120
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

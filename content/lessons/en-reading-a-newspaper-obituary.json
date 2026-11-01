@@ -1,0 +1,405 @@
+{
+  "schemaVersion": 2,
+  "id": "en-reading-a-newspaper-obituary",
+  "lang": "en",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Reading a newspaper obituary",
+  "objective": {
+    "en": "Read the obituary of a scientist, follow how it moves between work and family, and say what its tone suggests about the writer’s view of her.",
+    "fr": "Lire la nécrologie d’une scientifique, suivre ses allers-retours entre travail et famille, et dire ce que le ton révèle du regard de l’auteur.",
+    "de": "Den Nachruf auf eine Wissenschaftlerin lesen, dem Wechsel zwischen Beruf und Familie folgen und sagen, was der Ton über die Sicht des Autors verrät."
+  },
+  "estimatedMinutes": 12,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:49:28.097Z",
+    "inputHashes": {
+      "outline": "0a78254dff7532cf77087c4c6b98bba3a68917a38ee471e24cf55975c4e97f08",
+      "brief": "8a02d9592a2a86fad3fe1ec2b3e0bc31a20cd0943ce88d0d68cd9c894ea5fcfc"
+    }
+  },
+  "kind": "reading",
+  "theme": "personal_identification",
+  "genre": "article",
+  "documents": [
+    {
+      "documentId": "main",
+      "title": "Helen Marsh, glaciologist who read the history of the climate in ice, dies at 84",
+      "meta": ["Obituary", "By Rachel Okonkwo, Science Correspondent", "Saturday 14 March"],
+      "paragraphs": [
+        "Helen Marsh, the glaciologist whose pioneering work on Antarctic ice cores changed how scientists understand the climate of the past, died on Tuesday at her home in Cambridge. She was 84. The cause was heart failure, her family said.",
+        "She was born in 1941 in a mining town in the north of England, the second of four children. Her father worked underground; her mother took in sewing. Neither had studied beyond the age of fourteen, yet both insisted that their daughter would. A scholarship took her to Durham, where she was the only woman in her year to study physics.",
+        "It was in Antarctica, in the winter of 1974, that she made the discovery for which she is remembered. Drilling through two kilometres of ice, her team recovered a core that held tiny bubbles of air, each one a sample of the atmosphere as it had been many thousands of years earlier. Marsh was the first to see that these bubbles could be read like the pages of a book. Her tireless, almost stubborn insistence on checking every measurement twice turned a curiosity into a method.",
+        "Colleagues remember a scientist who could not be hurried and could not be flattered. Dr Samir Haddad, who worked beside her for thirty years, recalled that she once sent back a prize committee’s draft citation because it called her work “brilliant”. “She said the word was lazy,” he said. “She wanted them to say what the work had actually shown.”",
+        "Away from the laboratory, she was, by all accounts, a very different person: noisy, generous and hopeless at keeping a schedule. She married the geologist Peter Lindqvist in 1968, and their kitchen in Cambridge became an informal meeting place for students far from home. Her daughter, Anna, remembers dinners at which a discussion of carbon dioxide would give way, without warning, to an argument about football.",
+        "The two sides of her life were never as separate as she liked to pretend. When her husband fell ill in 1991, she turned down a chair at a university in California so that she could stay and look after him. She returned to full-time research only after his death, six years later, and often said that those years had taught her more about patience than any glacier.",
+        "Honours came late and she accepted them with visible discomfort. She was an unassuming woman who wore the same grey cardigan to a ceremony at the Royal Society as she wore to feed the birds, and she joked that the medal would “look better on someone with a better coat”. She never sought publicity, and gave most of her prize money to a fund for students from mining towns.",
+        "Marsh is survived by her daughter, Anna, and two grandchildren. In a tribute issued yesterday, the university said that her death marked the end of an era, but that the method she gave science would outlast it."
+      ],
+      "highlights": [
+        { "keywordId": "pioneering", "text": "pioneering" },
+        { "keywordId": "tireless", "text": "tireless" },
+        { "keywordId": "unassuming", "text": "unassuming" },
+        { "keywordId": "survived-by", "text": "survived by" },
+        { "keywordId": "tribute", "text": "tribute" }
+      ]
+    },
+    {
+      "documentId": "exam",
+      "title": "Arthur Penhallow, botanist who saved a thousand varieties of apple, dies at 91",
+      "meta": ["Obituary", "By Daniel Frost"],
+      "paragraphs": [
+        "Arthur Penhallow, who spent six decades collecting and cataloguing the old apple varieties of south-west England, died on Sunday in a nursing home in Truro. He was 91.",
+        "In the 1950s, when farmers were grubbing up their orchards to plant more profitable crops, Penhallow began visiting them on a bicycle, asking to take cuttings from trees that were about to be felled. Many of the varieties he rescued, with names such as Cornish Blush and Penrose Sweet, existed nowhere else. By 1980 his collection at Polwyn held more than a thousand.",
+        "He was not an easy man. Former assistants describe a scholar who corrected their spelling in front of visitors and who regarded the telephone as an intrusion. He fell out with the county council, two universities and, for a decade, his own brother, over a disagreement about the correct name of a single tree. Few of those who worked with him would have called him warm.",
+        "Yet the same people speak of him with a respect that is close to awe. Every autumn he posted a box of fruit to each of the farmers he had visited, and he kept up the habit long after most of them had died, sending the boxes to their grandchildren instead. He never married. His correspondence, now in the county archive, runs to some four thousand letters, almost all of them about apples."
+      ],
+      "highlights": []
+    }
+  ],
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "exercise",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "flashcards",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Turn each card to learn the key words of the text.",
+            "fr": "Retournez chaque carte pour découvrir les mots clés du texte.",
+            "de": "Dreh jede Karte um und lerne die Schlüsselwörter des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_flashcards",
+              "itemId": "cards",
+              "keywordIds": ["pioneering", "tireless", "unassuming", "survived-by", "tribute"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "matching",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each key word with its meaning.",
+            "fr": "Associez chaque mot clé à son sens.",
+            "de": "Ordne jedem Schlüsselwort seine Bedeutung zu."
+          },
+          "items": [
+            {
+              "type": "reading_keyword_matching",
+              "itemId": "matching",
+              "keywordIds": ["pioneering", "tireless", "unassuming", "survived-by", "tribute"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skim",
+      "stage": "skim",
+      "role": "exercise",
+      "label": { "en": "Skim", "fr": "Survol", "de": "Überfliegen" },
+      "pages": [
+        {
+          "pageId": "skim",
+          "estimatedDurationS": 225,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Look over the document quickly. When the time is up it is put away; then answer the question.",
+            "fr": "Parcourez rapidement le document. À la fin du temps, il disparaît ; répondez ensuite à la question.",
+            "de": "Überfliege das Dokument. Wenn die Zeit um ist, verschwindet es; beantworte dann die Frage."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "skim-document",
+              "documentId": "main",
+              "view": "skim",
+              "skimSeconds": 205
+            },
+            {
+              "type": "reading_skim_choice",
+              "itemId": "skim-question",
+              "focus": "purpose",
+              "question": "Why has this text been written?",
+              "options": [
+                { "optionId": "o1", "text": "To announce a new scientific discovery" },
+                { "optionId": "o2", "text": "To mark a death and honour a life" },
+                { "optionId": "o3", "text": "To advertise a university course" },
+                { "optionId": "o4", "text": "To explain how ice cores are drilled" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "It opens with her death at 84 and then tells the story of her life: that is what an obituary does. The discovery is part of the story, not its news.",
+                "fr": "Le texte s’ouvre sur sa mort à 84 ans puis raconte sa vie : c’est le rôle d’une nécrologie. La découverte fait partie du récit, ce n’en est pas la nouvelle.",
+                "de": "Der Text beginnt mit ihrem Tod mit 84 und erzählt dann ihr Leben: Das ist die Aufgabe eines Nachrufs. Die Entdeckung gehört zur Geschichte, sie ist nicht die Neuigkeit."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detail",
+      "stage": "detail",
+      "role": "exercise",
+      "label": { "en": "Detail", "fr": "Détails", "de": "Details" },
+      "pages": [
+        {
+          "pageId": "detail",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the document carefully and answer the questions.",
+            "fr": "Lisez le document attentivement et répondez aux questions.",
+            "de": "Lies das Dokument genau und beantworte die Fragen."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "detail-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-discovery",
+              "question": "What did Marsh’s team discover in Antarctica?",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "Air bubbles in ice preserve samples of the ancient atmosphere"
+                },
+                { "optionId": "o2", "text": "A glacier that was growing instead of shrinking" },
+                { "optionId": "o3", "text": "A way of forecasting next winter’s weather" },
+                { "optionId": "o4", "text": "A new route across the ice" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "The core held tiny bubbles, each a sample of the atmosphere from thousands of years earlier, which could be “read like the pages of a book”.",
+                "fr": "La carotte contenait de minuscules bulles, chacune un échantillon de l’atmosphère d’il y a des milliers d’années, qu’on pouvait « lire comme les pages d’un livre ».",
+                "de": "Der Kern enthielt winzige Bläschen, jedes eine Probe der Atmosphäre von vor Tausenden von Jahren, die man „wie die Seiten eines Buches lesen“ konnte."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-california",
+              "question": "Why did Marsh turn down the chair in California?",
+              "options": [
+                { "optionId": "o1", "text": "She disliked the climate there" },
+                { "optionId": "o2", "text": "She wanted to stay and look after her husband" },
+                { "optionId": "o3", "text": "The university offered her too little money" },
+                { "optionId": "o4", "text": "She had decided to stop doing research" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "“So that she could stay and look after him”: her husband was ill. She went back to full-time research only after his death.",
+                "fr": "« So that she could stay and look after him » : son mari était malade. Elle n’a repris la recherche à plein temps qu’après sa mort.",
+                "de": "„So that she could stay and look after him“: Ihr Mann war krank. Erst nach seinem Tod kehrte sie zur Vollzeitforschung zurück."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "q-brilliant",
+              "statement": "Marsh was delighted when a prize committee described her work as “brilliant”.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: she sent the draft back, saying the word was lazy and that she wanted them to say what the work had actually shown.",
+                "fr": "Faux : elle a renvoyé le texte en disant que le mot était paresseux et qu’elle voulait qu’on dise ce que le travail avait réellement montré.",
+                "de": "Falsch: Sie schickte den Entwurf zurück, weil das Wort faul sei und sie wollte, dass man sagt, was die Arbeit tatsächlich gezeigt hatte."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-tone",
+              "question": "What does the tone of the obituary suggest about the writer’s view of Marsh?",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "She admires and is fond of Marsh, and smiles at her little oddities"
+                },
+                {
+                  "optionId": "o2",
+                  "text": "She respects Marsh’s work but finds her cold and distant"
+                },
+                { "optionId": "o3", "text": "She is critical of Marsh for refusing praise" },
+                { "optionId": "o4", "text": "She has no opinion and simply lists the facts" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "Details such as “hopeless at keeping a schedule”, the grey cardigan and the joke about the coat are gently humorous. The writer clearly admires and likes her.",
+                "fr": "Des détails comme « hopeless at keeping a schedule », le gilet gris et la plaisanterie sur le manteau sont d’un humour doux. L’auteur l’admire et l’apprécie clairement.",
+                "de": "Details wie „hopeless at keeping a schedule“, die graue Strickjacke und der Witz über den Mantel sind sanft humorvoll. Die Autorin bewundert und mag sie offensichtlich."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "structure",
+      "stage": "structure",
+      "role": "exercise",
+      "label": { "en": "Structure", "fr": "Structure", "de": "Aufbau" },
+      "pages": [
+        {
+          "pageId": "structure",
+          "estimatedDurationS": 75,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the information in the order the text gives it.",
+            "fr": "Remettez les informations dans l’ordre du texte.",
+            "de": "Bring die Informationen in die Reihenfolge des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "structure-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_order",
+              "itemId": "order",
+              "pieces": [
+                { "pieceId": "p3", "text": "A colleague recalls how she handled praise" },
+                { "pieceId": "p1", "text": "Her childhood in a mining town" },
+                { "pieceId": "p5", "text": "She gives up a post to care for her husband" },
+                { "pieceId": "p2", "text": "Her discovery in Antarctica" },
+                { "pieceId": "p4", "text": "Her busy, noisy family kitchen" }
+              ],
+              "acceptedOrders": [["p1", "p2", "p3", "p4", "p5"]],
+              "answerExplanation": {
+                "en": "The obituary moves from childhood to the discovery, then to a colleague’s memory (work), then to the family kitchen and finally to the choice she made for her husband (family).",
+                "fr": "La nécrologie va de l’enfance à la découverte, puis au souvenir d’un collègue (travail), à la cuisine familiale et enfin au choix fait pour son mari (famille).",
+                "de": "Der Nachruf geht von der Kindheit zur Entdeckung, dann zur Erinnerung eines Kollegen (Arbeit), zur Familienküche und schließlich zur Entscheidung für ihren Mann (Familie)."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam",
+          "estimatedDurationS": 199,
+          "timeLimitS": 300,
+          "instructions": {
+            "en": "Read the new document and answer the questions. No help this time.",
+            "fr": "Lisez le nouveau document et répondez aux questions. Cette fois, sans aide.",
+            "de": "Lies das neue Dokument und beantworte die Fragen. Diesmal ohne Hilfe."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "exam-document",
+              "documentId": "exam",
+              "view": "exam",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-fifties",
+              "question": "What did Penhallow do in the 1950s?",
+              "options": [
+                { "optionId": "o1", "text": "He planted new orchards for local farmers" },
+                {
+                  "optionId": "o2",
+                  "text": "He took cuttings from trees that were about to be cut down"
+                },
+                { "optionId": "o3", "text": "He sold apples to shops in Truro" },
+                { "optionId": "o4", "text": "He taught botany at a university" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "He visited farmers by bicycle, asking for cuttings from trees about to be felled.",
+                "fr": "Il rendait visite aux fermiers à vélo et demandait des greffons d’arbres sur le point d’être abattus.",
+                "de": "Er besuchte Bauern mit dem Fahrrad und bat um Stecklinge von Bäumen, die gefällt werden sollten."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-warm",
+              "statement": "Most of the people who worked with Penhallow thought of him as a warm man.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: “Few of those who worked with him would have called him warm.”",
+                "fr": "Faux : « Few of those who worked with him would have called him warm. »",
+                "de": "Falsch: „Few of those who worked with him would have called him warm.“"
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-attitude",
+              "question": "Which phrase best describes the writer’s attitude to Penhallow?",
+              "options": [
+                { "optionId": "o1", "text": "Admiring, but honest about his faults" },
+                { "optionId": "o2", "text": "Openly hostile" },
+                { "optionId": "o3", "text": "Amused and mocking" },
+                { "optionId": "o4", "text": "Neutral, with no opinion" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "She lists his faults plainly, then writes of a respect “close to awe”. The balance is admiring but honest.",
+                "fr": "Elle énumère franchement ses défauts, puis évoque un respect « proche de l’admiration ». L’équilibre est admiratif mais honnête.",
+                "de": "Sie nennt seine Fehler offen und spricht dann von einem Respekt, der „close to awe“ ist. Das Bild ist bewundernd, aber ehrlich."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-boxes",
+              "question": "What does the detail of the boxes of fruit posted every autumn show?",
+              "options": [
+                { "optionId": "o1", "text": "That he was quietly generous and loyal" },
+                { "optionId": "o2", "text": "That he hoped to sell his collection" },
+                { "optionId": "o3", "text": "That he disliked the farmers’ families" },
+                { "optionId": "o4", "text": "That he wanted to become famous" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "He kept sending fruit for years, even to the grandchildren of farmers who had died. The writer uses it to show a kindness his manner hid.",
+                "fr": "Il a continué d’envoyer des fruits pendant des années, même aux petits-enfants de fermiers décédés. L’auteur s’en sert pour montrer une bonté que ses manières cachaient.",
+                "de": "Er schickte jahrelang Obst, sogar an die Enkel verstorbener Bauern. Die Autorin zeigt damit eine Güte, die sein Auftreten verbarg."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-brother",
+              "statement": "Penhallow’s quarrel with his brother lasted about ten years.",
+              "answer": "true",
+              "answerExplanation": {
+                "en": "True: he fell out with his own brother “for a decade” over the name of a single tree.",
+                "fr": "Vrai : il s’est brouillé avec son frère « for a decade », à propos du nom d’un seul arbre.",
+                "de": "Richtig: Er überwarf sich „for a decade“ mit seinem Bruder wegen des Namens eines einzigen Baums."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

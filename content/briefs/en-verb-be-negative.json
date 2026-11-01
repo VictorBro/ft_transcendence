@@ -1,0 +1,226 @@
+{
+  "schemaVersion": 2,
+  "id": "en-verb-be-negative",
+  "lang": "en",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Be in the negative: I'm not, isn't, aren't",
+  "objective": {
+    "en": "Make the verb be negative with not and its short forms: I'm not tired, He isn't here, We aren't hungry, You're not late.",
+    "fr": "Mettre le verbe be à la forme négative avec not et ses formes courtes : I'm not tired, He isn't here, We aren't hungry.",
+    "de": "Das Verb be mit not und seinen Kurzformen verneinen: I'm not tired, He isn't here, We aren't hungry."
+  },
+  "estimatedMinutes": 15,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:09.753Z",
+    "inputHashes": { "outline": "ce1834243b359095c91ad09200406a770da7deb30a60d9eb465a9e14bae2cb56" }
+  },
+  "kind": "grammar",
+  "topic": "negation",
+  "scopeBoundaries": {
+    "en": "Covers am not, is not and are not with their short forms. Excludes questions with be, do not and does not, and negatives of other verbs.",
+    "fr": "Couvre am not, is not et are not avec leurs formes courtes. Exclut les questions avec be, do not et does not, et la négation des autres verbes.",
+    "de": "Behandelt am not, is not und are not mit ihren Kurzformen. Ausgeschlossen sind Fragen mit be, do not und does not sowie die Verneinung anderer Verben."
+  },
+  "prerequisites": [
+    {
+      "en": "Positive forms of be: I am, he is, you are, they are",
+      "fr": "Les formes affirmatives de be : I am, he is, you are, they are",
+      "de": "Die bejahten Formen von be: I am, he is, you are, they are"
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-am-not",
+      "summary": {
+        "en": "With I, use am not or 'm not. There is no amn't.",
+        "fr": "Avec I, on dit am not ou 'm not. Amn't n'existe pas.",
+        "de": "Bei I sagt man am not oder 'm not. Amn't gibt es nicht."
+      }
+    },
+    {
+      "id": "r-is-not",
+      "summary": {
+        "en": "With he, she, it and one name, use is not, short isn't or 's not.",
+        "fr": "Avec he, she, it et un prénom, on dit is not, en court isn't ou 's not.",
+        "de": "Bei he, she, it und einem Namen sagt man is not, kurz isn't oder 's not."
+      }
+    },
+    {
+      "id": "r-are-not",
+      "summary": {
+        "en": "With you, we, they and plural nouns, use are not, short aren't or 're not.",
+        "fr": "Avec you, we, they et les noms pluriels, on dit are not, en court aren't ou 're not.",
+        "de": "Bei you, we, they und Pluralnomen sagt man are not, kurz aren't oder 're not."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-am-is",
+      "title": {
+        "en": "Negative with I, he, she, it",
+        "fr": "La négation avec I, he, she, it",
+        "de": "Verneinung mit I, he, she, it"
+      },
+      "ruleIds": ["r-am-not", "r-is-not"],
+      "explanationPlan": {
+        "en": "Show that not goes after am or is. Give I am not and I'm not, then is not, isn't and 's not for he, she, it and a name. Warn that amn't does not exist.",
+        "fr": "Montrer que not se place après am ou is. Donner I am not et I'm not, puis is not, isn't et 's not pour he, she, it et un prénom. Prévenir que amn't n'existe pas.",
+        "de": "Zeigen, dass not nach am oder is steht. I am not und I'm not geben, dann is not, isn't und 's not für he, she, it und einen Namen. Warnen, dass es amn't nicht gibt."
+      },
+      "explanationDurationS": 90,
+      "examples": [
+        {
+          "text": "I'm not tired.",
+          "translation": { "fr": "Je ne suis pas fatigué.", "de": "Ich bin nicht müde." }
+        },
+        {
+          "text": "He isn't here.",
+          "translation": { "fr": "Il n'est pas ici.", "de": "Er ist nicht hier." }
+        },
+        {
+          "text": "She's not hungry.",
+          "translation": { "fr": "Elle n'a pas faim.", "de": "Sie hat keinen Hunger." }
+        },
+        {
+          "text": "Tom isn't at home.",
+          "translation": { "fr": "Tom n'est pas à la maison.", "de": "Tom ist nicht zu Hause." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "There is no 'amn't': say I'm not or I am not.",
+          "fr": "Amn't n'existe pas : dites I'm not ou I am not.",
+          "de": "Amn't gibt es nicht: Sag I'm not oder I am not."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-b1-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["r-am-not", "r-is-not"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-b1-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["r-am-not", "r-is-not"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-b1-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["r-am-not", "r-is-not"],
+          "estimatedDurationS": 75
+        }
+      ]
+    },
+    {
+      "id": "block-are",
+      "title": {
+        "en": "Negative with you, we, they",
+        "fr": "La négation avec you, we, they",
+        "de": "Verneinung mit you, we, they"
+      },
+      "ruleIds": ["r-are-not", "r-is-not"],
+      "explanationPlan": {
+        "en": "Teach are not, aren't and 're not with you, we, they and plural nouns. Contrast isn't for one person or thing with aren't for more than one.",
+        "fr": "Enseigner are not, aren't et 're not avec you, we, they et les noms pluriels. Opposer isn't pour un seul à aren't pour plusieurs.",
+        "de": "are not, aren't und 're not mit you, we, they und Pluralnomen lehren. isn't für eine Person oder Sache und aren't für mehrere gegenüberstellen."
+      },
+      "explanationDurationS": 100,
+      "examples": [
+        {
+          "text": "You're not late.",
+          "translation": { "fr": "Tu n'es pas en retard.", "de": "Du bist nicht zu spät." }
+        },
+        {
+          "text": "We aren't hungry.",
+          "translation": { "fr": "Nous n'avons pas faim.", "de": "Wir haben keinen Hunger." }
+        },
+        {
+          "text": "They aren't at school.",
+          "translation": {
+            "fr": "Ils ne sont pas à l'école.",
+            "de": "Sie sind nicht in der Schule."
+          }
+        },
+        {
+          "text": "The children aren't here.",
+          "translation": {
+            "fr": "Les enfants ne sont pas ici.",
+            "de": "Die Kinder sind nicht hier."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Don't mix up isn't (one) and aren't (more than one).",
+          "fr": "Ne mélangez pas isn't (un seul) et aren't (plusieurs).",
+          "de": "Verwechsle isn't (einer) nicht mit aren't (mehrere)."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-b2-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["r-are-not", "r-is-not"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-b2-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["r-are-not", "r-is-not"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-b2-order",
+          "type": "grammar_word_order",
+          "itemCount": 4,
+          "ruleIds": ["r-are-not", "r-is-not"],
+          "estimatedDurationS": 120
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-gaps",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["r-am-not", "r-is-not", "r-are-not"],
+        "estimatedDurationS": 80,
+        "timeLimitS": 120
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["r-am-not", "r-is-not", "r-are-not"],
+        "estimatedDurationS": 90,
+        "timeLimitS": 150
+      },
+      {
+        "pageId": "exam-more",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["r-is-not", "r-are-not"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}
