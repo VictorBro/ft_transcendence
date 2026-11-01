@@ -670,12 +670,12 @@ describe('seedLessons (e2e)', () => {
     const ready = await prisma.lesson.findMany({
       where: { ready: true },
       select: { id: true, lang: true },
-      orderBy: { id: 'asc' },
     });
     // Any language's `-test-` fixture, as the seed skips them: one left by an
     // interrupted lessons or finish spec is ready too.
     const real = ready.filter((row) => !row.id.startsWith(`${row.lang}-test-`));
-    expect(real.map((row) => row.id)).toEqual(withFiles);
+    // Sorted here, like withFiles: the database's collation ignores the hyphens.
+    expect(real.map((row) => row.id).sort()).toEqual(withFiles);
   });
 });
 
