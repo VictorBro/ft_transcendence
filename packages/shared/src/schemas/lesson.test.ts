@@ -454,6 +454,9 @@ describe('TodaySchema', () => {
     streak: { current: 2, best: 2, today: false },
     progress: { total: 120, attempted: 4, passed: 2, needed: 96, complete: false },
     levelAfter: 'A2',
+    xp: { total: 150, rank: 2, rankStart: 100, nextRankAt: 300 },
+    challenge: { code: 'grammar', done: false },
+    earnedToday: ['firstLesson'],
   };
 
   it('accepts a day, and a last level with nothing after it', () => {
@@ -468,6 +471,13 @@ describe('TodaySchema', () => {
 
   it('rejects a card that carries its brief', () => {
     expect(TodaySchema.safeParse({ ...today, done: [{ ...card, brief }] }).success).toBe(false);
+  });
+
+  it('rejects an XP total outside its rank, and an unknown code', () => {
+    expect(TodaySchema.safeParse({ ...today, xp: { ...today.xp, total: 300 } }).success).toBe(
+      false,
+    );
+    expect(TodaySchema.safeParse({ ...today, earnedToday: ['streak4'] }).success).toBe(false);
   });
 });
 
@@ -495,7 +505,15 @@ describe('LessonPageSchema', () => {
 });
 
 describe('FinishResultSchema', () => {
-  const result = { countedToday: true, doneCount: 3, target: 3, goalJustMet: true };
+  const result = {
+    countedToday: true,
+    doneCount: 3,
+    target: 3,
+    goalJustMet: true,
+    xpGained: 110,
+    challengeJustDone: true,
+    newAchievements: ['firstLesson'],
+  };
 
   it('accepts the result of a finish', () => {
     expect(FinishResultSchema.safeParse(result).success).toBe(true);
@@ -505,5 +523,9 @@ describe('FinishResultSchema', () => {
     const { goalJustMet: _dropped, ...withoutGoal } = result;
     expect(FinishResultSchema.safeParse(withoutGoal).success).toBe(false);
     expect(FinishResultSchema.safeParse({ ...result, doneCount: -1 }).success).toBe(false);
+  });
+
+  it('rejects negative XP: the total never goes down', () => {
+    expect(FinishResultSchema.safeParse({ ...result, xpGained: -10 }).success).toBe(false);
   });
 });

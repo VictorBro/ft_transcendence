@@ -118,7 +118,10 @@ describe('CoursesService setGoal', () => {
     dailyGoal: 60,
     streak: 0,
     bestStreak: 0,
-    lastGoalDay: null,
+    lastGoalDay: null as Date | null,
+    xp: 0,
+    lastChallengeDay: null,
+    challengesDone: 0,
     createdAt: new Date('2026-10-01T00:00:00.000Z'),
     updatedAt: new Date('2026-10-01T00:00:00.000Z'),
   };
@@ -127,8 +130,9 @@ describe('CoursesService setGoal', () => {
 
   /**
    * An interactive `$transaction` runs the callback with `tx`: here, mocks
-   * for what setGoal and the goal.ts functions use. `doneCount` is how many
-   * lessons were finished on the course day.
+   * for what setGoal, the goal.ts functions and award (#95) use. `doneCount`
+   * is how many lessons were finished on the course day; every count answers
+   * it, so the finished and passed stats of award read it too.
    */
   function goalService(locked: typeof LOCKED | null, doneCount = 0) {
     const tx = {
@@ -141,6 +145,10 @@ describe('CoursesService setGoal', () => {
       lessonResult: {
         findFirst: vi.fn().mockResolvedValue(null),
         count: vi.fn().mockResolvedValue(doneCount),
+      },
+      userAchievement: {
+        findMany: vi.fn().mockResolvedValue([]),
+        createMany: vi.fn(),
       },
     };
     const prisma = { $transaction: vi.fn((run: (client: typeof tx) => unknown) => run(tx)) };
@@ -187,18 +195,44 @@ describe('CoursesService setGoal', () => {
 
     await service.setGoal(USER, 'fr', { dailyGoal: 30 }, NOW);
 
-    expect(tx.userLevel.update).toHaveBeenLastCalledWith({
+    expect(tx.userLevel.update).toHaveBeenCalledWith({
       where: { id: 'course-1' },
       data: { streak: 1, bestStreak: 1, lastGoalDay: new Date('2026-10-12') },
     });
   });
 
-  it('writes no streak while the goal is not reached', async () => {
+  // award only increments xp: the streak meetGoal just wrote stays as it is.
+  it('adds GOAL_XP, and nothing else, when the lower goal meets the day', async () => {
+    const { service, tx } = goalService(LOCKED, 3);
+
+    await service.setGoal(USER, 'fr', { dailyGoal: 30 }, NOW);
+
+    expect(tx.userLevel.update).toHaveBeenLastCalledWith({
+      where: { id: 'course-1' },
+      data: { xp: { increment: 20 } },
+    });
+  });
+
+  it('stores streak7 when the lower goal turns a streak of 6 into 7', async () => {
+    const yesterday = { ...LOCKED, streak: 6, bestStreak: 6, lastGoalDay: new Date('2026-10-11') };
+    const { service, tx } = goalService(yesterday, 3);
+    tx.userAchievement.findMany.mockResolvedValue([{ code: 'firstLesson' }, { code: 'streak3' }]);
+
+    await service.setGoal(USER, 'fr', { dailyGoal: 30 }, NOW);
+
+    expect(tx.userAchievement.createMany).toHaveBeenCalledWith({
+      data: [{ userLevelId: 'course-1', code: 'streak7', day: new Date('2026-10-12') }],
+      skipDuplicates: true,
+    });
+  });
+
+  it('writes no streak and no XP while the goal is not reached', async () => {
     const { service, tx } = goalService(LOCKED, 2);
 
     await service.setGoal(USER, 'fr', { dailyGoal: 30 }, NOW);
 
     expect(tx.userLevel.update).toHaveBeenCalledTimes(1);
+    expect(tx.userAchievement.findMany).not.toHaveBeenCalled();
   });
 
   it('turns a missing course into a not-found rather than creating one', async () => {

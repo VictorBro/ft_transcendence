@@ -13,6 +13,9 @@ const COURSE: UserLevel = {
   streak: 2,
   bestStreak: 5,
   lastGoalDay: new Date('2026-10-11'),
+  xp: 0,
+  lastChallengeDay: null,
+  challengesDone: 0,
   createdAt: new Date('2026-10-01T00:00:00.000Z'),
   updatedAt: new Date('2026-10-11T18:00:00.000Z'),
 };
