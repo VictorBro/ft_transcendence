@@ -1,0 +1,503 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-past-time-expressions",
+  "lang": "fr",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Hier, avant-hier, la semaine dernière",
+  "objective": {
+    "en": "Place a past event in time with ten expressions: hier soir, avant-hier, la semaine dernière, l'été dernier, ce matin, tout à l'heure…",
+    "fr": "Situer un événement passé dans le temps avec dix expressions : hier soir, avant-hier, la semaine dernière, l’été dernier, ce matin, tout à l’heure…",
+    "de": "Ein vergangenes Ereignis mit zehn Ausdrücken zeitlich einordnen: hier soir, avant-hier, la semaine dernière, ce matin, tout à l'heure…"
+  },
+  "estimatedMinutes": 17,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "claude-sonnet-5-5",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T00:22:16.967Z",
+    "inputHashes": { "outline": "b9204c4e12710e6d44c896979c63655a43e3ed55ef3dac7d8a0c1324ece21c09" }
+  },
+  "kind": "vocabulary",
+  "theme": "daily_life",
+  "coverageNotes": {
+    "en": "Ten time expressions for the past: yesterday and before, earlier today, and longer periods (last week, month, summer, year). They prepare the passé composé stories of the nearby lessons without teaching the tense itself.",
+    "fr": "Dix expressions de temps pour le passé : hier et avant, plus tôt aujourd’hui, et les périodes plus longues (semaine, mois, été, année dernière). Elles préparent les récits au passé composé des leçons voisines sans enseigner le temps lui-même.",
+    "de": "Zehn Zeitausdrücke für die Vergangenheit: gestern und früher, vorhin heute und längere Zeiträume (letzte Woche, letzten Monat, Sommer, Jahr). Sie bereiten die Erzählungen im passé composé der Nachbarlektionen vor, ohne die Zeitform selbst zu lehren."
+  },
+  "targetCount": 10,
+  "countRationale": {
+    "en": "Ten expressions cover the outline list and a few frequent additions, which suits A2.",
+    "fr": "Dix expressions couvrent la liste du plan et quelques ajouts fréquents, ce qui convient au niveau A2.",
+    "de": "Zehn Ausdrücke decken die Liste der Gliederung und einige häufige Ergänzungen ab, passend für A2."
+  },
+  "difficultyBalance": {
+    "en": "Seven core expressions; avant-hier, il y a deux jours and tout à l'heure are harder.",
+    "fr": "Sept expressions de base ; avant-hier, il y a deux jours et tout à l’heure sont plus difficiles.",
+    "de": "Sieben Grundausdrücke; avant-hier, il y a deux jours und tout à l'heure sind schwieriger."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "yesterday",
+      "label": { "en": "Yesterday and before", "fr": "Hier et avant", "de": "Gestern und früher" },
+      "targetIds": ["hier", "hier-soir", "avant-hier", "deux-jours"],
+      "introduction": {
+        "en": "These expressions place an event **before today**:\n\n- `hier`\n- `hier soir`\n- `avant-hier`\n- `il y a deux jours`\n\nYou use them with the **passé composé**.",
+        "fr": "Ces expressions situent un événement **avant aujourd’hui** :\n\n- `hier`\n- `hier soir`\n- `avant-hier`\n- `il y a deux jours`\n\nOn les emploie avec le **passé composé**.",
+        "de": "Diese Ausdrücke ordnen ein Ereignis **vor heute** ein:\n\n- `hier`\n- `hier soir`\n- `avant-hier`\n- `il y a deux jours`\n\nMan verwendet sie mit dem **passé composé**."
+      }
+    },
+    {
+      "id": "today",
+      "label": { "en": "Earlier today", "fr": "Plus tôt aujourd’hui", "de": "Heute, früher" },
+      "targetIds": ["ce-matin", "tout-a-l-heure"],
+      "introduction": {
+        "en": "Two expressions for **today**:\n\n- `ce matin`\n- `tout à l'heure`\n\nWith the passé composé, `tout à l'heure` means a little while ago.",
+        "fr": "Deux expressions pour **aujourd’hui** :\n\n- `ce matin`\n- `tout à l'heure`\n\nAu passé composé, `tout à l'heure` veut dire il y a peu de temps.",
+        "de": "Zwei Ausdrücke für **heute**:\n\n- `ce matin`\n- `tout à l'heure`\n\nIm passé composé bedeutet `tout à l'heure` vor kurzer Zeit."
+      }
+    },
+    {
+      "id": "longer",
+      "label": {
+        "en": "Weeks, months, seasons, years",
+        "fr": "Semaines, mois, saisons, années",
+        "de": "Wochen, Monate, Jahreszeiten, Jahre"
+      },
+      "targetIds": ["semaine", "mois", "ete", "annee"],
+      "introduction": {
+        "en": "These expressions look further back. They end in **dernier** or **dernière**:\n\n- `la semaine dernière`\n- `le mois dernier`\n- `l'été dernier`\n- `l'année dernière`\n\nThe ending agrees with the noun.",
+        "fr": "Ces expressions regardent plus loin en arrière. Elles se terminent par **dernier** ou **dernière** :\n\n- `la semaine dernière`\n- `le mois dernier`\n- `l'été dernier`\n- `l'année dernière`\n\nLa terminaison s’accorde avec le nom.",
+        "de": "Diese Ausdrücke blicken weiter zurück. Sie enden auf **dernier** oder **dernière**:\n\n- `la semaine dernière`\n- `le mois dernier`\n- `l'été dernier`\n- `l'année dernière`\n\nDie Endung richtet sich nach dem Nomen."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "hier",
+      "term": "hier",
+      "translations": { "en": ["yesterday"], "de": ["gestern"] },
+      "wordClass": "adverb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "hier",
+      "examForms": ["hier"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/jɛʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Hier, j’ai travaillé à la maison.",
+        "translation": {
+          "en": "Yesterday, I worked at home.",
+          "de": "Gestern habe ich zu Hause gearbeitet."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Hier means the day before today.",
+        "fr": "Hier désigne le jour avant aujourd’hui.",
+        "de": "Hier bezeichnet den Tag vor heute."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nous sommes mardi. Paul est parti ",
+        "after": ", lundi.",
+        "accepted": { "answers": ["hier"] },
+        "referenceTargetIds": ["hier", "ce-matin", "ete", "semaine"],
+        "explanation": {
+          "en": "Monday is the day before Tuesday, so hier fits.",
+          "fr": "Lundi est le jour avant mardi : on dit hier.",
+          "de": "Montag ist der Tag vor Dienstag, also passt hier."
+        }
+      },
+      "listeningOptionTargetIds": ["hier", "hier-soir", "avant-hier", "ce-matin"]
+    },
+    {
+      "id": "hier-soir",
+      "term": "hier soir",
+      "translations": { "en": ["yesterday evening", "last night"], "de": ["gestern Abend"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "hier soir",
+      "examForms": ["hier soir"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/jɛʁ swaʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Hier soir, nous avons mangé au restaurant.",
+        "translation": {
+          "en": "Last night, we ate at a restaurant.",
+          "de": "Gestern Abend haben wir im Restaurant gegessen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Hier soir means the evening of yesterday.",
+        "fr": "Hier soir désigne le soir d’hier.",
+        "de": "Hier soir bezeichnet den gestrigen Abend."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Je suis fatigué ce matin : ",
+        "after": ", je me suis couché très tard.",
+        "accepted": { "answers": ["hier soir"] },
+        "referenceTargetIds": ["hier-soir", "ete", "annee", "deux-jours"],
+        "explanation": {
+          "en": "The tiredness is from the evening before, so hier soir fits.",
+          "fr": "La fatigue vient de la soirée précédente : on dit hier soir.",
+          "de": "Die Müdigkeit kommt vom Abend davor, also passt hier soir."
+        }
+      },
+      "listeningOptionTargetIds": ["hier-soir", "hier", "ce-matin", "tout-a-l-heure"]
+    },
+    {
+      "id": "avant-hier",
+      "term": "avant-hier",
+      "translations": { "en": ["the day before yesterday"], "de": ["vorgestern"] },
+      "wordClass": "adverb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "avant-hier",
+      "examForms": ["avant-hier"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/a.vɑ̃.tjɛʁ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Avant-hier, j’ai vu mes cousins.",
+        "translation": {
+          "en": "The day before yesterday, I saw my cousins.",
+          "de": "Vorgestern habe ich meine Cousins gesehen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Avant-hier means two days before today: the day before yesterday.",
+        "fr": "Avant-hier désigne deux jours avant aujourd’hui.",
+        "de": "Avant-hier bezeichnet zwei Tage vor heute."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nous sommes jeudi. J’ai vu ce film ",
+        "after": ", mardi.",
+        "accepted": { "answers": ["avant-hier"] },
+        "referenceTargetIds": ["avant-hier", "ce-matin", "mois", "ete"],
+        "explanation": {
+          "en": "Tuesday is two days before Thursday, so avant-hier fits.",
+          "fr": "Mardi est deux jours avant jeudi : on dit avant-hier.",
+          "de": "Dienstag liegt zwei Tage vor Donnerstag, also passt avant-hier."
+        }
+      },
+      "listeningOptionTargetIds": ["avant-hier", "hier", "hier-soir", "deux-jours"]
+    },
+    {
+      "id": "deux-jours",
+      "term": "il y a deux jours",
+      "translations": { "en": ["two days ago"], "de": ["vor zwei Tagen"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "il y a deux jours",
+      "examForms": ["il y a deux jours"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/il j a dø ʒuʁ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Il y a deux jours, il a neigé.",
+        "translation": {
+          "en": "Two days ago, it snowed.",
+          "de": "Vor zwei Tagen hat es geschneit."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Il y a plus a length of time means that long ago.",
+        "fr": "Il y a suivi d’une durée indique le temps écoulé depuis.",
+        "de": "Il y a plus Zeitdauer gibt an, wie lange etwas her ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nous sommes samedi. Je l’ai vu ",
+        "after": ", jeudi.",
+        "accepted": { "answers": ["il y a deux jours"] },
+        "referenceTargetIds": ["deux-jours", "ce-matin", "annee", "tout-a-l-heure"],
+        "explanation": {
+          "en": "Thursday is two days before Saturday, so il y a deux jours fits.",
+          "fr": "Jeudi est deux jours avant samedi : on dit il y a deux jours.",
+          "de": "Donnerstag liegt zwei Tage vor Samstag, also passt il y a deux jours."
+        }
+      },
+      "listeningOptionTargetIds": ["deux-jours", "avant-hier", "hier", "hier-soir"]
+    },
+    {
+      "id": "ce-matin",
+      "term": "ce matin",
+      "translations": { "en": ["this morning"], "de": ["heute Morgen"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ce matin",
+      "examForms": ["ce matin"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/sə ma.tɛ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ce matin, j’ai pris le bus.",
+        "translation": {
+          "en": "This morning, I took the bus.",
+          "de": "Heute Morgen habe ich den Bus genommen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Ce matin means the morning of today.",
+        "fr": "Ce matin désigne le matin d’aujourd’hui.",
+        "de": "Ce matin bezeichnet den heutigen Morgen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "J’ai pris un café ",
+        "after": " à sept heures, et maintenant il est midi.",
+        "accepted": { "answers": ["ce matin"] },
+        "referenceTargetIds": ["ce-matin", "mois", "ete", "semaine"],
+        "explanation": {
+          "en": "Seven o'clock is earlier today, so ce matin fits.",
+          "fr": "Sept heures, c’est plus tôt aujourd’hui : on dit ce matin.",
+          "de": "Sieben Uhr war heute früher, also passt ce matin."
+        }
+      },
+      "listeningOptionTargetIds": ["ce-matin", "hier", "tout-a-l-heure", "hier-soir"]
+    },
+    {
+      "id": "tout-a-l-heure",
+      "term": "tout à l'heure",
+      "translations": { "en": ["earlier today", "in a moment"], "de": ["vorhin", "gleich"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "tout à l'heure",
+      "examForms": ["tout à l'heure", "tout à l’heure"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/tu ta lœʁ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Tout à l’heure, j’ai appelé ma mère.",
+        "translation": {
+          "en": "A little while ago, I called my mother.",
+          "de": "Vorhin habe ich meine Mutter angerufen."
+        }
+      },
+      "ambiguityNote": {
+        "en": "It can mean a little earlier or a little later. With the passé composé, it means earlier.",
+        "fr": "Il peut signifier un peu plus tôt ou un peu plus tard. Au passé composé, il signifie plus tôt.",
+        "de": "Es kann etwas früher oder etwas später bedeuten. Im passé composé bedeutet es früher."
+      },
+      "explanation": {
+        "en": "Tout à l'heure means a short time ago (or soon), within the same day.",
+        "fr": "Tout à l’heure indique un moment proche, dans la même journée.",
+        "de": "Tout à l'heure bezeichnet einen nahen Zeitpunkt am selben Tag."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Où est Marie ? Elle est partie ",
+        "after": ", il y a dix minutes.",
+        "accepted": { "answers": ["tout à l'heure", "tout à l’heure"] },
+        "referenceTargetIds": ["tout-a-l-heure", "ete", "mois", "annee"],
+        "explanation": {
+          "en": "Ten minutes ago is very recent, so tout à l'heure fits.",
+          "fr": "Il y a dix minutes, c’est très récent : on dit tout à l’heure.",
+          "de": "Vor zehn Minuten ist sehr kurz her, also passt tout à l'heure."
+        }
+      },
+      "listeningOptionTargetIds": ["tout-a-l-heure", "ce-matin", "hier", "hier-soir"]
+    },
+    {
+      "id": "semaine",
+      "term": "la semaine dernière",
+      "translations": { "en": ["last week"], "de": ["letzte Woche"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "la semaine dernière",
+      "examForms": ["la semaine dernière"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/la sə.mɛn dɛʁ.njɛʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "La semaine dernière, nous avons visité Lyon.",
+        "translation": {
+          "en": "Last week, we visited Lyon.",
+          "de": "Letzte Woche haben wir Lyon besichtigt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "La semaine dernière means the week before this one. Dernière is feminine like semaine.",
+        "fr": "La semaine dernière désigne la semaine avant celle-ci. Dernière est féminin comme semaine.",
+        "de": "La semaine dernière bezeichnet die Woche vor dieser. Dernière ist feminin wie semaine."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nous avons visité Lyon la ",
+        "after": " ; cette semaine, nous restons à Paris.",
+        "accepted": { "answers": ["semaine dernière"] },
+        "referenceTargetIds": ["semaine", "ce-matin", "hier-soir", "tout-a-l-heure"],
+        "explanation": {
+          "en": "The sentence contrasts with this week, so la semaine dernière fits.",
+          "fr": "La phrase s’oppose à cette semaine : on dit la semaine dernière.",
+          "de": "Der Satz steht im Gegensatz zu dieser Woche, also passt la semaine dernière."
+        }
+      },
+      "listeningOptionTargetIds": ["semaine", "mois", "ete", "annee"]
+    },
+    {
+      "id": "mois",
+      "term": "le mois dernier",
+      "translations": { "en": ["last month"], "de": ["letzten Monat"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "le mois dernier",
+      "examForms": ["le mois dernier"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/lə mwa dɛʁ.nje/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Le mois dernier, j’ai acheté un vélo.",
+        "translation": {
+          "en": "Last month, I bought a bike.",
+          "de": "Letzten Monat habe ich ein Fahrrad gekauft."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Le mois dernier means the month before this one. Dernier is masculine like mois.",
+        "fr": "Le mois dernier désigne le mois avant celui-ci. Dernier est masculin comme mois.",
+        "de": "Le mois dernier bezeichnet den Monat vor diesem. Dernier ist maskulin wie mois."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nous sommes en novembre. Il a déménagé le ",
+        "after": ", en octobre.",
+        "accepted": { "answers": ["mois dernier"] },
+        "referenceTargetIds": ["mois", "ce-matin", "hier-soir", "tout-a-l-heure"],
+        "explanation": {
+          "en": "October is the month before November, so le mois dernier fits.",
+          "fr": "Octobre est le mois avant novembre : on dit le mois dernier.",
+          "de": "Oktober ist der Monat vor November, also passt le mois dernier."
+        }
+      },
+      "listeningOptionTargetIds": ["mois", "semaine", "annee", "ete"]
+    },
+    {
+      "id": "ete",
+      "term": "l'été dernier",
+      "translations": { "en": ["last summer"], "de": ["letzten Sommer"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "l'été dernier",
+      "examForms": ["l'été dernier", "l’été dernier"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/le.te dɛʁ.nje/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "L’été dernier, nous sommes allés en Italie.",
+        "translation": {
+          "en": "Last summer, we went to Italy.",
+          "de": "Letzten Sommer sind wir nach Italien gefahren."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "L'été dernier means the most recent summer that has passed.",
+        "fr": "L’été dernier désigne le dernier été passé.",
+        "de": "L'été dernier bezeichnet den letzten vergangenen Sommer."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nous sommes allés à la mer l’",
+        "after": ", en juillet.",
+        "accepted": { "answers": ["été dernier"] },
+        "referenceTargetIds": ["ete", "ce-matin", "avant-hier", "tout-a-l-heure"],
+        "explanation": {
+          "en": "July is a summer month already past, so l'été dernier fits.",
+          "fr": "Juillet est un mois d’été déjà passé : on dit l’été dernier.",
+          "de": "Juli ist ein vergangener Sommermonat, also passt l'été dernier."
+        }
+      },
+      "listeningOptionTargetIds": ["ete", "annee", "mois", "semaine"]
+    },
+    {
+      "id": "annee",
+      "term": "l'année dernière",
+      "translations": { "en": ["last year"], "de": ["letztes Jahr"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "l'année dernière",
+      "examForms": ["l'année dernière", "l’année dernière"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/la.ne dɛʁ.njɛʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "L’année dernière, elle a changé de ville.",
+        "translation": {
+          "en": "Last year, she moved to another city.",
+          "de": "Letztes Jahr ist sie in eine andere Stadt gezogen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "L'année dernière means the year before this one. Dernière is feminine like année.",
+        "fr": "L’année dernière désigne l’année avant celle-ci. Dernière est féminin comme année.",
+        "de": "L'année dernière bezeichnet das Jahr vor diesem. Dernière ist feminin wie année."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nous sommes en 2026. Elle a eu son diplôme l’",
+        "after": ", en 2025.",
+        "accepted": { "answers": ["année dernière"] },
+        "referenceTargetIds": ["annee", "hier", "tout-a-l-heure", "ce-matin"],
+        "explanation": {
+          "en": "2025 is the year before 2026, so l'année dernière fits.",
+          "fr": "2025 est l’année avant 2026 : on dit l’année dernière.",
+          "de": "2025 ist das Jahr vor 2026, also passt l'année dernière."
+        }
+      },
+      "listeningOptionTargetIds": ["annee", "ete", "mois", "semaine"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

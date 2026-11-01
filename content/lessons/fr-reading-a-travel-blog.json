@@ -1,0 +1,396 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-reading-a-travel-blog",
+  "lang": "fr",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Lire un blog de voyage",
+  "objective": {
+    "en": "Read a blog post about three days in Marseille and find the order of the visits, the small problem on day two and the best moment.",
+    "fr": "Lire un billet de blog sur trois jours à Marseille et retrouver l’ordre des visites, le petit problème du deuxième jour et le meilleur moment.",
+    "de": "Einen Blogbeitrag über drei Tage in Marseille lesen und die Reihenfolge der Besuche, das kleine Problem am zweiten Tag und den schönsten Moment finden."
+  },
+  "estimatedMinutes": 8,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "claude-sonnet-5-5",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T00:01:51.769Z",
+    "inputHashes": {
+      "outline": "9be1383d037fc7c64d01aa016b01e7aa3f5ef772e7f2ed65351c9e5cc28a10f6",
+      "brief": "36a7aba133d902fb8ea371b709fa3a5ee9d5ff4b276f3c3998016a75d19f7ece"
+    }
+  },
+  "kind": "reading",
+  "theme": "travel",
+  "genre": "article",
+  "documents": [
+    {
+      "documentId": "main",
+      "title": "Trois jours à Marseille",
+      "meta": ["Par Camille", "Publié le 12 juillet"],
+      "paragraphs": [
+        "Jour 1 : Je suis arrivée à Marseille et j’ai visité le Vieux-Port. Le soir, j’ai mangé du poisson au restaurant. C’était délicieux !",
+        "Jour 2 : Nous sommes allés aux calanques avec Karim, un ami. Malheureusement, nous avons oublié l’eau et il a fait très chaud. Heureusement, une dame nous a donné une bouteille. Après, nous nous sommes baignés. C’était génial !",
+        "Jour 3 : Enfin, nous avons marché dans le Panier, un quartier avec des petites rues colorées. Le soir, nous avons regardé le coucher du soleil sur le port. Pour moi, c’est le meilleur moment du voyage !"
+      ],
+      "highlights": [
+        { "keywordId": "malheureusement", "text": "Malheureusement" },
+        { "keywordId": "heureusement", "text": "Heureusement" },
+        { "keywordId": "oublier", "text": "oublié" },
+        { "keywordId": "coucher-soleil", "text": "coucher du soleil" },
+        { "keywordId": "quartier", "text": "quartier" }
+      ]
+    },
+    {
+      "documentId": "exam",
+      "title": "Deux jours à Annecy",
+      "meta": ["Par Hugo", "Publié le 3 août"],
+      "paragraphs": [
+        "Samedi, je suis arrivé à Annecy en train avec ma sœur. D’abord, nous avons visité la vieille ville. Ensuite, nous avons mangé une glace près du lac.",
+        "Dimanche, il a plu. Malheureusement, nous avons perdu le plan de la ville ! Heureusement, un homme nous a montré le chemin. À la fin, nous avons bu un chocolat chaud. C’était parfait."
+      ],
+      "highlights": []
+    }
+  ],
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "exercise",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "flashcards",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Turn each card to learn the key words of the text.",
+            "fr": "Retournez chaque carte pour découvrir les mots clés du texte.",
+            "de": "Dreh jede Karte um und lerne die Schlüsselwörter des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_flashcards",
+              "itemId": "cards",
+              "keywordIds": [
+                "malheureusement",
+                "heureusement",
+                "oublier",
+                "coucher-soleil",
+                "quartier"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "matching",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each key word with its meaning.",
+            "fr": "Associez chaque mot clé à son sens.",
+            "de": "Ordne jedem Schlüsselwort seine Bedeutung zu."
+          },
+          "items": [
+            {
+              "type": "reading_keyword_matching",
+              "itemId": "matching",
+              "keywordIds": [
+                "malheureusement",
+                "heureusement",
+                "oublier",
+                "coucher-soleil",
+                "quartier"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skim",
+      "stage": "skim",
+      "role": "exercise",
+      "label": { "en": "Skim", "fr": "Survol", "de": "Überfliegen" },
+      "pages": [
+        {
+          "pageId": "skim",
+          "estimatedDurationS": 90,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Look over the document quickly. When the time is up it is put away; then answer the question.",
+            "fr": "Parcourez rapidement le document. À la fin du temps, il disparaît ; répondez ensuite à la question.",
+            "de": "Überfliege das Dokument. Wenn die Zeit um ist, verschwindet es; beantworte dann die Frage."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "skim-document",
+              "documentId": "main",
+              "view": "skim",
+              "skimSeconds": 70
+            },
+            {
+              "type": "reading_skim_choice",
+              "itemId": "skim-question",
+              "focus": "genre",
+              "question": "Quel type de texte est-ce ?",
+              "options": [
+                { "optionId": "o1", "text": "Un menu de restaurant" },
+                { "optionId": "o2", "text": "Un horaire de train" },
+                { "optionId": "o3", "text": "Un billet de blog de voyage" },
+                { "optionId": "o4", "text": "Une publicité pour un hôtel" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "Someone tells a trip day by day, with Jour 1, Jour 2, Jour 3 and je: it is a travel blog post.",
+                "fr": "Quelqu’un raconte un voyage jour par jour, avec Jour 1, Jour 2, Jour 3 et je : c’est un billet de blog de voyage.",
+                "de": "Jemand erzählt eine Reise Tag für Tag, mit Jour 1, Jour 2, Jour 3 und je: Es ist ein Reiseblog-Beitrag."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detail",
+      "stage": "detail",
+      "role": "exercise",
+      "label": { "en": "Detail", "fr": "Détails", "de": "Details" },
+      "pages": [
+        {
+          "pageId": "detail",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the document carefully and answer the questions.",
+            "fr": "Lisez le document attentivement et répondez aux questions.",
+            "de": "Lies das Dokument genau und beantworte die Fragen."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "detail-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-place2",
+              "question": "Où Camille et Karim vont-ils le deuxième jour ?",
+              "options": [
+                { "optionId": "o1", "text": "Au Vieux-Port" },
+                { "optionId": "o2", "text": "Aux calanques" },
+                { "optionId": "o3", "text": "Au Panier" },
+                { "optionId": "o4", "text": "À la gare" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "Jour 2: Nous sommes allés aux calanques avec Karim. The Vieux-Port is day 1 and the Panier day 3.",
+                "fr": "Jour 2 : Nous sommes allés aux calanques avec Karim. Le Vieux-Port, c’est le jour 1 et le Panier le jour 3.",
+                "de": "Jour 2: Nous sommes allés aux calanques avec Karim. Der Vieux-Port ist Tag 1 und Le Panier Tag 3."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-problem",
+              "question": "Quel est le petit problème du deuxième jour ?",
+              "options": [
+                { "optionId": "o1", "text": "Ils ont perdu leur train." },
+                { "optionId": "o2", "text": "Ils ont oublié l’eau." },
+                { "optionId": "o3", "text": "Il a plu toute la journée." },
+                { "optionId": "o4", "text": "Ils n’ont pas mangé." }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "Malheureusement, nous avons oublié l’eau et il a fait très chaud: they forgot the water and it was hot.",
+                "fr": "Malheureusement, nous avons oublié l’eau et il a fait très chaud : ils n’ont pas d’eau et il fait chaud.",
+                "de": "Malheureusement, nous avons oublié l’eau et il a fait très chaud: Sie haben das Wasser vergessen und es war heiß."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "q-help",
+              "statement": "Une dame a donné une bouteille à Camille et à Karim.",
+              "answer": "true",
+              "answerExplanation": {
+                "en": "True: Heureusement, une dame nous a donné une bouteille.",
+                "fr": "Vrai : Heureusement, une dame nous a donné une bouteille.",
+                "de": "Richtig: Heureusement, une dame nous a donné une bouteille."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-best",
+              "question": "Quel est le meilleur moment du voyage pour Camille ?",
+              "options": [
+                { "optionId": "o1", "text": "Le poisson au restaurant" },
+                { "optionId": "o2", "text": "La baignade aux calanques" },
+                { "optionId": "o3", "text": "La promenade au Panier" },
+                { "optionId": "o4", "text": "Le coucher du soleil sur le port" }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "Pour moi, c’est le meilleur moment du voyage comes right after the sunset over the port.",
+                "fr": "Pour moi, c’est le meilleur moment du voyage vient juste après le coucher du soleil sur le port.",
+                "de": "Pour moi, c’est le meilleur moment du voyage steht direkt nach dem Sonnenuntergang über dem Hafen."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "structure",
+      "stage": "structure",
+      "role": "exercise",
+      "label": { "en": "Structure", "fr": "Structure", "de": "Aufbau" },
+      "pages": [
+        {
+          "pageId": "structure",
+          "estimatedDurationS": 45,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the visits in the order the text gives them.",
+            "fr": "Remettez les visites dans l’ordre du texte.",
+            "de": "Bring die Besuche in die Reihenfolge des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "structure-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_order",
+              "itemId": "order",
+              "pieces": [
+                { "pieceId": "p2", "text": "Camille et Karim vont aux calanques." },
+                { "pieceId": "p3", "text": "Camille marche dans le Panier." },
+                { "pieceId": "p1", "text": "Camille visite le Vieux-Port." }
+              ],
+              "acceptedOrders": [["p1", "p2", "p3"]],
+              "answerExplanation": {
+                "en": "Day 1: the Vieux-Port. Day 2: the calanques. Day 3: the Panier.",
+                "fr": "Jour 1 : le Vieux-Port. Jour 2 : les calanques. Jour 3 : le Panier.",
+                "de": "Tag 1: der Vieux-Port. Tag 2: die Calanques. Tag 3: Le Panier."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam",
+          "estimatedDurationS": 146,
+          "timeLimitS": 220,
+          "instructions": {
+            "en": "Read the new document and answer the questions. No help this time.",
+            "fr": "Lisez le nouveau document et répondez aux questions. Cette fois, sans aide.",
+            "de": "Lies das neue Dokument und beantworte die Fragen. Diesmal ohne Hilfe."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "exam-document",
+              "documentId": "exam",
+              "view": "exam",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-when",
+              "question": "Quand Hugo arrive-t-il à Annecy ?",
+              "options": [
+                { "optionId": "o1", "text": "Vendredi" },
+                { "optionId": "o2", "text": "Dimanche" },
+                { "optionId": "o3", "text": "Samedi" },
+                { "optionId": "o4", "text": "Lundi" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "Samedi, je suis arrivé à Annecy en train.",
+                "fr": "Samedi, je suis arrivé à Annecy en train.",
+                "de": "Samedi, je suis arrivé à Annecy en train."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-who",
+              "question": "Avec qui Hugo voyage-t-il ?",
+              "options": [
+                { "optionId": "o1", "text": "Avec un ami" },
+                { "optionId": "o2", "text": "Avec ses parents" },
+                { "optionId": "o3", "text": "Avec sa sœur" },
+                { "optionId": "o4", "text": "Seul" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "He writes: avec ma sœur, with my sister.",
+                "fr": "Il écrit : avec ma sœur.",
+                "de": "Er schreibt: avec ma sœur, mit meiner Schwester."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-first",
+              "question": "Qu’est-ce qu’ils font d’abord ?",
+              "options": [
+                { "optionId": "o1", "text": "Ils mangent une glace." },
+                { "optionId": "o2", "text": "Ils visitent la vieille ville." },
+                { "optionId": "o3", "text": "Ils boivent un chocolat chaud." },
+                { "optionId": "o4", "text": "Ils perdent le plan." }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "D’abord, nous avons visité la vieille ville. The ice cream comes ensuite, afterwards.",
+                "fr": "D’abord, nous avons visité la vieille ville. La glace vient ensuite.",
+                "de": "D’abord, nous avons visité la vieille ville. Das Eis kommt ensuite, danach."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-problem",
+              "statement": "Dimanche, ils perdent le plan de la ville.",
+              "answer": "true",
+              "answerExplanation": {
+                "en": "True: Malheureusement, nous avons perdu le plan de la ville.",
+                "fr": "Vrai : Malheureusement, nous avons perdu le plan de la ville.",
+                "de": "Richtig: Malheureusement, nous avons perdu le plan de la ville."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-end",
+              "statement": "À la fin, ils boivent un café.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: À la fin, they drink un chocolat chaud, not a coffee.",
+                "fr": "Faux : À la fin, ils boivent un chocolat chaud, pas un café.",
+                "de": "Falsch: À la fin trinken sie un chocolat chaud, keinen Kaffee."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

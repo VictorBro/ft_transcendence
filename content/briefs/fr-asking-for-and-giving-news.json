@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-asking-for-and-giving-news",
+  "lang": "fr",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Prendre et donner des nouvelles",
+  "objective": {
+    "en": "Ask a friend you have not seen for a while how things are, and share your own news.",
+    "fr": "Demander des nouvelles à un ami qu’on n’a pas vu depuis longtemps et en donner.",
+    "de": "Einen lange nicht gesehenen Freund nach Neuigkeiten fragen und selbst Neuigkeiten erzählen."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "claude-sonnet-5-5",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T00:32:42.280Z",
+    "inputHashes": { "outline": "fe36546dbd2361d0518de7d4aa9a19fe7415db17788193a9341748cc86180425" }
+  },
+  "kind": "functions",
+  "theme": "relations",
+  "situation": {
+    "en": "Two friends meet by chance in the street after a long time and catch up.",
+    "fr": "Deux amis se retrouvent par hasard dans la rue après longtemps et se racontent leurs nouvelles.",
+    "de": "Zwei Freunde treffen sich nach langer Zeit zufällig auf der Straße und erzählen sich Neuigkeiten."
+  },
+  "coverageNotes": {
+    "en": "Greeting after a long time (Ça fait longtemps !), asking for news (Quoi de neuf ?, Et ta famille, ça va ?), giving news (Pas grand-chose, J’ai une bonne nouvelle) and asking to stay in touch (Donne-moi de tes nouvelles).",
+    "fr": "Saluer après longtemps (Ça fait longtemps !), demander des nouvelles (Quoi de neuf ?, Et ta famille, ça va ?), en donner (Pas grand-chose, J’ai une bonne nouvelle) et demander de rester en contact (Donne-moi de tes nouvelles).",
+    "de": "Begrüßung nach langer Zeit (Ça fait longtemps !), nach Neuigkeiten fragen (Quoi de neuf ?, Et ta famille, ça va ?), Neuigkeiten erzählen (Pas grand-chose, J’ai une bonne nouvelle) und bitten, in Kontakt zu bleiben (Donne-moi de tes nouvelles)."
+  },
+  "prerequisites": [],
+  "roles": [
+    { "id": "lea", "label": "Léa", "translation": { "en": "Léa", "de": "Léa" } },
+    { "id": "marc", "label": "Marc", "translation": { "en": "Marc", "de": "Marc" } }
+  ],
+  "expressions": [
+    {
+      "id": "ca-fait-longtemps",
+      "text": "Ça fait longtemps !",
+      "openEnd": false,
+      "translations": { "en": ["It’s been a long time!"], "de": ["Das ist lange her!"] },
+      "explanation": {
+        "en": "Said to a friend you have not seen for a long time (tu).",
+        "fr": "On le dit à un ami qu’on n’a pas vu depuis longtemps (tu).",
+        "de": "Sagt man zu einem Freund, den man lange nicht gesehen hat (tu)."
+      },
+      "example": {
+        "text": "Salut Paul ! Ça fait longtemps !",
+        "translation": {
+          "en": "Hi Paul! It’s been a long time!",
+          "de": "Hallo Paul! Das ist lange her!"
+        }
+      }
+    },
+    {
+      "id": "quoi-de-neuf",
+      "text": "Quoi de neuf ?",
+      "openEnd": false,
+      "translations": { "en": ["What’s new?"], "de": ["Was gibt’s Neues?"] },
+      "explanation": {
+        "en": "A casual question to ask a friend for news.",
+        "fr": "Une question familière pour demander des nouvelles à un ami.",
+        "de": "Eine lockere Frage, um einen Freund nach Neuigkeiten zu fragen."
+      },
+      "example": {
+        "text": "Salut ! Quoi de neuf ?",
+        "translation": { "en": "Hi! What’s new?", "de": "Hallo! Was gibt’s Neues?" }
+      }
+    },
+    {
+      "id": "et-ta-famille",
+      "text": "Et ta famille, ça va ?",
+      "openEnd": false,
+      "translations": {
+        "en": ["And your family, how are they?"],
+        "de": ["Und deiner Familie, geht’s gut?"]
+      },
+      "explanation": {
+        "en": "Asks about someone’s family (tu). With vous: Et votre famille, ça va ?",
+        "fr": "Pour demander des nouvelles de la famille de quelqu’un (tu). Avec vous : Et votre famille, ça va ?",
+        "de": "Fragt nach der Familie von jemandem (tu). Mit vous: Et votre famille, ça va ?"
+      },
+      "example": {
+        "text": "Et ta famille, ça va ? Tout le monde va bien ?",
+        "translation": {
+          "en": "And your family, how are they? Is everyone well?",
+          "de": "Und deiner Familie, geht’s gut? Geht es allen gut?"
+        }
+      }
+    },
+    {
+      "id": "pas-grand-chose",
+      "text": "Pas grand-chose",
+      "openEnd": false,
+      "translations": { "en": ["Not much."], "de": ["Nicht viel."] },
+      "explanation": {
+        "en": "A common answer to Quoi de neuf ? when nothing special has happened.",
+        "fr": "Une réponse courante à Quoi de neuf ? quand il ne s’est rien passé de spécial.",
+        "de": "Eine häufige Antwort auf Quoi de neuf ?, wenn nichts Besonderes passiert ist."
+      },
+      "example": {
+        "text": "Pas grand-chose, je travaille beaucoup.",
+        "translation": { "en": "Not much, I work a lot.", "de": "Nicht viel, ich arbeite viel." }
+      }
+    },
+    {
+      "id": "bonne-nouvelle",
+      "text": "J’ai une bonne nouvelle",
+      "openEnd": true,
+      "translations": { "en": ["I have good news."], "de": ["Ich habe gute Neuigkeiten."] },
+      "explanation": {
+        "en": "Introduces something nice you want to share. Add what happened after it.",
+        "fr": "Introduit quelque chose d’agréable qu’on veut partager. On ajoute ensuite ce qui s’est passé.",
+        "de": "Leitet etwas Schönes ein, das man erzählen möchte. Danach sagt man, was passiert ist."
+      },
+      "example": {
+        "text": "J’ai une bonne nouvelle : je déménage à Lyon !",
+        "translation": {
+          "en": "I have good news: I’m moving to Lyon!",
+          "de": "Ich habe gute Neuigkeiten: Ich ziehe nach Lyon!"
+        }
+      }
+    },
+    {
+      "id": "donne-moi-nouvelles",
+      "text": "Donne-moi de tes nouvelles",
+      "openEnd": false,
+      "translations": { "en": ["Keep me posted."], "de": ["Melde dich bei mir."] },
+      "explanation": {
+        "en": "Said when leaving, to ask a friend to stay in touch (tu).",
+        "fr": "On le dit en partant, pour demander à un ami de rester en contact (tu).",
+        "de": "Sagt man zum Abschied, um einen Freund zu bitten, in Kontakt zu bleiben (tu)."
+      },
+      "example": {
+        "text": "Donne-moi de tes nouvelles quand tu arrives.",
+        "translation": {
+          "en": "Keep me posted when you arrive.",
+          "de": "Melde dich bei mir, wenn du ankommst."
+        }
+      }
+    }
+  ],
+  "words": [],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

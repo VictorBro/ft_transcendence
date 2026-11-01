@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-reading-a-travel-blog",
+  "lang": "fr",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Lire un blog de voyage",
+  "objective": {
+    "en": "Read a blog post about three days in Marseille and find the order of the visits, the small problem on day two and the best moment.",
+    "fr": "Lire un billet de blog sur trois jours à Marseille et retrouver l’ordre des visites, le petit problème du deuxième jour et le meilleur moment.",
+    "de": "Einen Blogbeitrag über drei Tage in Marseille lesen und die Reihenfolge der Besuche, das kleine Problem am zweiten Tag und den schönsten Moment finden."
+  },
+  "estimatedMinutes": 8,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "claude-sonnet-5-5",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T00:01:51.769Z",
+    "inputHashes": { "outline": "9be1383d037fc7c64d01aa016b01e7aa3f5ef772e7f2ed65351c9e5cc28a10f6" }
+  },
+  "kind": "reading",
+  "theme": "travel",
+  "genre": "article",
+  "situation": {
+    "en": "Camille writes a travel blog post for her readers about her three days in Marseille with her friend Karim.",
+    "fr": "Camille écrit un billet de blog pour ses lecteurs sur ses trois jours à Marseille avec son ami Karim.",
+    "de": "Camille schreibt für ihre Leser einen Blogbeitrag über ihre drei Tage in Marseille mit ihrem Freund Karim."
+  },
+  "readerTask": {
+    "en": "Find the order of the visits, the small problem on the second day and the best moment of the trip.",
+    "fr": "Retrouver l’ordre des visites, le petit problème du deuxième jour et le meilleur moment du voyage.",
+    "de": "Die Reihenfolge der Besuche, das kleine Problem am zweiten Tag und den schönsten Moment der Reise finden."
+  },
+  "keywords": [
+    {
+      "id": "malheureusement",
+      "term": "malheureusement",
+      "translations": { "en": ["unfortunately"], "de": ["leider"] },
+      "explanation": {
+        "en": "Introduces bad news. It often announces a problem in a story.",
+        "fr": "Introduit une mauvaise nouvelle. Il annonce souvent un problème dans un récit.",
+        "de": "Leitet eine schlechte Nachricht ein. Es kündigt oft ein Problem in einer Erzählung an."
+      }
+    },
+    {
+      "id": "heureusement",
+      "term": "heureusement",
+      "translations": { "en": ["fortunately", "luckily"], "de": ["zum Glück", "glücklicherweise"] },
+      "explanation": {
+        "en": "Introduces good news after a problem. It is the opposite of malheureusement.",
+        "fr": "Introduit une bonne nouvelle après un problème. C’est le contraire de malheureusement.",
+        "de": "Leitet nach einem Problem eine gute Nachricht ein. Es ist das Gegenteil von malheureusement."
+      }
+    },
+    {
+      "id": "oublier",
+      "term": "oublier",
+      "translations": { "en": ["to forget"], "de": ["vergessen"] },
+      "explanation": {
+        "en": "Not to remember or not to take something. In the text: nous avons oublié l’eau.",
+        "fr": "Ne pas se souvenir ou ne pas prendre quelque chose. Dans le texte : nous avons oublié l’eau.",
+        "de": "Sich nicht erinnern oder etwas nicht mitnehmen. Im Text: nous avons oublié l’eau."
+      }
+    },
+    {
+      "id": "coucher-soleil",
+      "term": "le coucher du soleil",
+      "translations": { "en": ["the sunset"], "de": ["der Sonnenuntergang"] },
+      "explanation": {
+        "en": "The moment in the evening when the sun goes down.",
+        "fr": "Le moment, le soir, où le soleil descend.",
+        "de": "Der Moment am Abend, in dem die Sonne untergeht."
+      }
+    },
+    {
+      "id": "quartier",
+      "term": "le quartier",
+      "translations": {
+        "en": ["the neighbourhood", "the district"],
+        "de": ["das Viertel", "der Stadtteil"]
+      },
+      "explanation": {
+        "en": "A part of a city, for example le Panier in Marseille.",
+        "fr": "Une partie d’une ville, par exemple le Panier à Marseille.",
+        "de": "Ein Teil einer Stadt, zum Beispiel le Panier in Marseille."
+      }
+    }
+  ],
+  "documents": {
+    "main": {
+      "targetWords": 105,
+      "contents": {
+        "en": "A blog post in three parts. Day 1: arrival, the Vieux-Port, fish at a restaurant. Day 2: the calanques with Karim, they forgot the water and it was hot, a lady gave them a bottle, then a swim. Day 3: the Panier neighbourhood, then the sunset over the port, the best moment.",
+        "fr": "Un billet de blog en trois parties. Jour 1 : arrivée, le Vieux-Port, poisson au restaurant. Jour 2 : les calanques avec Karim, ils oublient l’eau et il fait chaud, une dame leur donne une bouteille, puis baignade. Jour 3 : le quartier du Panier, puis le coucher du soleil sur le port, le meilleur moment.",
+        "de": "Ein Blogbeitrag in drei Teilen. Tag 1: Ankunft, der Vieux-Port, Fisch im Restaurant. Tag 2: die Calanques mit Karim, sie vergessen das Wasser und es ist heiß, eine Dame gibt ihnen eine Flasche, dann Baden. Tag 3: das Viertel Le Panier, dann der Sonnenuntergang über dem Hafen, der schönste Moment."
+      }
+    },
+    "exam": {
+      "targetWords": 69,
+      "contents": {
+        "en": "A short blog post by Hugo about two days in Annecy with his sister: Saturday old town and ice cream by the lake, Sunday rain, a lost map, a man shows the way, hot chocolate.",
+        "fr": "Un court billet de blog de Hugo sur deux jours à Annecy avec sa sœur : samedi vieille ville et glace près du lac, dimanche pluie, plan perdu, un homme montre le chemin, chocolat chaud.",
+        "de": "Ein kurzer Blogbeitrag von Hugo über zwei Tage in Annecy mit seiner Schwester: Samstag Altstadt und Eis am See, Sonntag Regen, Stadtplan verloren, ein Mann zeigt den Weg, heiße Schokolade."
+      }
+    }
+  },
+  "skim": { "focus": "genre" },
+  "detailQuestions": [
+    {
+      "id": "q-place2",
+      "type": "reading_choice",
+      "focus": {
+        "en": "Where they go on the second day",
+        "fr": "Où ils vont le deuxième jour",
+        "de": "Wohin sie am zweiten Tag gehen"
+      }
+    },
+    {
+      "id": "q-problem",
+      "type": "reading_choice",
+      "focus": {
+        "en": "The small problem of the second day",
+        "fr": "Le petit problème du deuxième jour",
+        "de": "Das kleine Problem am zweiten Tag"
+      }
+    },
+    {
+      "id": "q-help",
+      "type": "reading_true_false",
+      "focus": {
+        "en": "Who helps them on the second day",
+        "fr": "Qui les aide le deuxième jour",
+        "de": "Wer ihnen am zweiten Tag hilft"
+      }
+    },
+    {
+      "id": "q-best",
+      "type": "reading_choice",
+      "focus": {
+        "en": "The best moment of the trip",
+        "fr": "Le meilleur moment du voyage",
+        "de": "Der schönste Moment der Reise"
+      }
+    }
+  ],
+  "exam": { "types": ["reading_choice", "reading_true_false"] },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

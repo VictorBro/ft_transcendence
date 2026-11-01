@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-congratulating-and-sympathising",
+  "lang": "fr",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Féliciter et consoler",
+  "objective": {
+    "en": "React to good or bad news: congratulate, say you are happy for someone, encourage and comfort a friend.",
+    "fr": "Réagir à une bonne ou à une mauvaise nouvelle : féliciter, dire qu’on est content pour quelqu’un, encourager et consoler.",
+    "de": "Auf gute oder schlechte Nachrichten reagieren: gratulieren, sich mit jemandem freuen, ermutigen und trösten."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "claude-sonnet-5-5",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T00:36:29.937Z",
+    "inputHashes": { "outline": "a6d8ca08b4754c88be2a6b2f4328080f3ac7746b0692cf491a03a93d95bc1c8b" }
+  },
+  "kind": "functions",
+  "theme": "relations",
+  "situation": {
+    "en": "Two friends, Julie and Marc, share good and bad news and react to it.",
+    "fr": "Deux amis, Julie et Marc, se racontent des bonnes et des mauvaises nouvelles et y réagissent.",
+    "de": "Zwei Freunde, Julie und Marc, erzählen sich gute und schlechte Nachrichten und reagieren darauf."
+  },
+  "coverageNotes": {
+    "en": "Good news: Félicitations !, Je suis content pour toi. Encouraging: Bon courage !, Ça va aller. Bad news: Je suis désolé, Pas de chance ! All in the informal tu register between friends.",
+    "fr": "Bonnes nouvelles : Félicitations !, Je suis content pour toi. Encourager : Bon courage !, Ça va aller. Mauvaises nouvelles : Je suis désolé, Pas de chance ! Le tout au registre familier du tu entre amis.",
+    "de": "Gute Nachrichten: Félicitations !, Je suis content pour toi. Ermutigen: Bon courage !, Ça va aller. Schlechte Nachrichten: Je suis désolé, Pas de chance ! Alles im vertrauten tu zwischen Freunden."
+  },
+  "prerequisites": [],
+  "roles": [
+    { "id": "julie", "label": "Julie", "translation": { "en": "Julie", "de": "Julie" } },
+    { "id": "marc", "label": "Marc", "translation": { "en": "Marc", "de": "Marc" } }
+  ],
+  "expressions": [
+    {
+      "id": "felicitations",
+      "text": "Félicitations !",
+      "openEnd": false,
+      "translations": {
+        "en": ["Congratulations!"],
+        "de": ["Herzlichen Glückwunsch!", "Glückwunsch!"]
+      },
+      "explanation": {
+        "en": "Said for good news: a success, a birth, a new job.",
+        "fr": "On la dit pour une bonne nouvelle : une réussite, une naissance, un nouveau travail.",
+        "de": "Man sagt es bei guten Nachrichten: ein Erfolg, eine Geburt, eine neue Stelle."
+      },
+      "example": {
+        "text": "Tu as réussi ton examen ? Félicitations !",
+        "translation": {
+          "en": "You passed your exam? Congratulations!",
+          "de": "Du hast deine Prüfung bestanden? Herzlichen Glückwunsch!"
+        }
+      }
+    },
+    {
+      "id": "content-pour-toi",
+      "text": "Je suis content pour toi",
+      "openEnd": false,
+      "translations": { "en": ["I’m happy for you"], "de": ["Ich freue mich für dich"] },
+      "explanation": {
+        "en": "Shows you share a friend’s joy (tu). A woman says: Je suis contente pour toi.",
+        "fr": "Pour partager la joie d’un ami (tu). Une femme dit : Je suis contente pour toi.",
+        "de": "Zeigt, dass du dich mit einem Freund freust (tu). Eine Frau sagt: Je suis contente pour toi."
+      },
+      "example": {
+        "text": "Tu as un nouveau travail ? Je suis content pour toi !",
+        "translation": {
+          "en": "You have a new job? I’m happy for you!",
+          "de": "Du hast eine neue Stelle? Ich freue mich für dich!"
+        }
+      }
+    },
+    {
+      "id": "bon-courage",
+      "text": "Bon courage !",
+      "openEnd": false,
+      "translations": {
+        "en": ["Good luck!", "Hang in there!"],
+        "de": ["Viel Kraft!", "Viel Erfolg!"]
+      },
+      "explanation": {
+        "en": "Encourages someone before or during something difficult.",
+        "fr": "Pour encourager quelqu’un avant ou pendant une épreuve difficile.",
+        "de": "Ermutigt jemanden vor oder während einer schwierigen Aufgabe."
+      },
+      "example": {
+        "text": "Tu as un examen demain ? Bon courage !",
+        "translation": {
+          "en": "You have an exam tomorrow? Good luck!",
+          "de": "Du hast morgen eine Prüfung? Viel Erfolg!"
+        }
+      }
+    },
+    {
+      "id": "je-suis-desole",
+      "text": "Je suis désolé",
+      "openEnd": false,
+      "translations": { "en": ["I’m sorry"], "de": ["Es tut mir leid"] },
+      "explanation": {
+        "en": "Expresses sympathy for bad news. A woman says: Je suis désolée.",
+        "fr": "Pour montrer sa compassion après une mauvaise nouvelle. Une femme dit : Je suis désolée.",
+        "de": "Drückt Mitgefühl bei schlechten Nachrichten aus. Eine Frau sagt: Je suis désolée."
+      },
+      "example": {
+        "text": "Ton chat est malade ? Je suis désolé.",
+        "translation": {
+          "en": "Your cat is sick? I’m sorry.",
+          "de": "Deine Katze ist krank? Das tut mir leid."
+        }
+      }
+    },
+    {
+      "id": "pas-de-chance",
+      "text": "Pas de chance !",
+      "openEnd": false,
+      "translations": { "en": ["Bad luck!"], "de": ["So ein Pech!"] },
+      "explanation": {
+        "en": "A light reaction to small bad luck, not to serious news.",
+        "fr": "Une réaction légère à un petit malheur, pas à une nouvelle grave.",
+        "de": "Eine leichte Reaktion auf kleines Pech, nicht auf ernste Nachrichten."
+      },
+      "example": {
+        "text": "Tu as raté le bus ? Pas de chance !",
+        "translation": {
+          "en": "You missed the bus? Bad luck!",
+          "de": "Du hast den Bus verpasst? So ein Pech!"
+        }
+      }
+    },
+    {
+      "id": "ca-va-aller",
+      "text": "Ça va aller",
+      "openEnd": false,
+      "translations": { "en": ["It’ll be fine"], "de": ["Das wird schon"] },
+      "explanation": {
+        "en": "Comforts a worried friend: things will be fine.",
+        "fr": "Pour consoler un ami inquiet : tout va s’arranger.",
+        "de": "Tröstet einen besorgten Freund: Es wird alles gut."
+      },
+      "example": {
+        "text": "Ne pleure pas, ça va aller.",
+        "translation": { "en": "Don’t cry, it’ll be fine.", "de": "Wein nicht, das wird schon." }
+      }
+    }
+  ],
+  "words": [],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

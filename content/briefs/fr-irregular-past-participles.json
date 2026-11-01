@@ -1,0 +1,248 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-irregular-past-participles",
+  "lang": "fr",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Les participes passés irréguliers",
+  "objective": {
+    "en": "Tell a story in the passé composé with the most frequent irregular participles: mis, dit, écrit, lu, ouvert, pu, voulu, dû, su, connu, reçu.",
+    "fr": "Raconter au passé composé avec les participes irréguliers fréquents : mis, dit, écrit, lu, ouvert, pu, voulu, dû, su, connu, reçu.",
+    "de": "Im passé composé erzählen und dabei die häufigsten unregelmäßigen Partizipien benutzen: mis, dit, écrit, lu, ouvert, pu, voulu, dû, su, connu, reçu."
+  },
+  "estimatedMinutes": 15,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "claude-sonnet-5-5",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T00:20:47.851Z",
+    "inputHashes": { "outline": "a830fbb6563661631e8a007f3de644aeb44e34fab607d9c305149544f6d4fd16" }
+  },
+  "kind": "grammar",
+  "topic": "verbs_morphology",
+  "scopeBoundaries": {
+    "en": "Covers eleven irregular past participles used with avoir. Excludes the negative passé composé, verbs with être and the agreement of the participle.",
+    "fr": "Couvre onze participes passés irréguliers employés avec avoir. Exclut le passé composé négatif, les verbes avec être et l'accord du participe.",
+    "de": "Behandelt elf unregelmäßige Partizipien mit avoir. Ausgeschlossen sind das verneinte passé composé, Verben mit être und die Angleichung des Partizips."
+  },
+  "prerequisites": [
+    {
+      "en": "The present of avoir and regular participles in -é, -i, -u",
+      "fr": "Le présent d'avoir et les participes réguliers en -é, -i, -u",
+      "de": "Das Präsens von avoir und regelmäßige Partizipien auf -é, -i, -u"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-mis-dit-ecrit",
+      "summary": {
+        "en": "Mettre, dire and écrire have the participles mis, dit and écrit.",
+        "fr": "Mettre, dire et écrire ont les participes mis, dit et écrit.",
+        "de": "Mettre, dire und écrire haben die Partizipien mis, dit und écrit."
+      }
+    },
+    {
+      "id": "rule-lu-ouvert",
+      "summary": {
+        "en": "Lire and ouvrir have the participles lu and ouvert.",
+        "fr": "Lire et ouvrir ont les participes lu et ouvert.",
+        "de": "Lire und ouvrir haben die Partizipien lu und ouvert."
+      }
+    },
+    {
+      "id": "rule-u-participles",
+      "summary": {
+        "en": "Pouvoir, vouloir, devoir, savoir, connaître and recevoir have the participles pu, voulu, dû, su, connu and reçu.",
+        "fr": "Pouvoir, vouloir, devoir, savoir, connaître et recevoir ont les participes pu, voulu, dû, su, connu et reçu.",
+        "de": "Pouvoir, vouloir, devoir, savoir, connaître und recevoir haben die Partizipien pu, voulu, dû, su, connu und reçu."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-a",
+      "title": {
+        "en": "mis, dit, écrit, lu, ouvert",
+        "fr": "mis, dit, écrit, lu, ouvert",
+        "de": "mis, dit, écrit, lu, ouvert"
+      },
+      "ruleIds": ["rule-mis-dit-ecrit", "rule-lu-ouvert"],
+      "explanationPlan": {
+        "en": "Show that some participles must be learned by heart. Present mettre, dire, écrire, lire and ouvrir with avoir, and note that the participle does not change.",
+        "fr": "Montrer que certains participes s'apprennent par cœur. Présenter mettre, dire, écrire, lire et ouvrir avec avoir, en précisant que le participe ne change pas.",
+        "de": "Zeigen, dass manche Partizipien auswendig gelernt werden müssen. Mettre, dire, écrire, lire und ouvrir mit avoir einführen und betonen, dass das Partizip gleich bleibt."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Hier, j'ai mis la table.",
+          "translation": {
+            "en": "Yesterday, I set the table.",
+            "de": "Gestern habe ich den Tisch gedeckt."
+          }
+        },
+        {
+          "text": "Il a dit bonjour.",
+          "translation": { "en": "He said hello.", "de": "Er hat Hallo gesagt." }
+        },
+        {
+          "text": "Nous avons écrit une carte postale.",
+          "translation": {
+            "en": "We wrote a postcard.",
+            "de": "Wir haben eine Postkarte geschrieben."
+          }
+        },
+        {
+          "text": "Elle a lu un roman.",
+          "translation": { "en": "She read a novel.", "de": "Sie hat einen Roman gelesen." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not add -é or -i to the infinitive: mettu, ouvri and disé do not exist.",
+          "fr": "N'ajoutez pas -é ou -i à l'infinitif : mettu, ouvri et disé n'existent pas.",
+          "de": "Hänge nicht -é oder -i an den Infinitiv: mettu, ouvri und disé gibt es nicht."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-a-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-mis-dit-ecrit", "rule-lu-ouvert"],
+          "estimatedDurationS": 40
+        },
+        {
+          "id": "ex-a-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-mis-dit-ecrit", "rule-lu-ouvert"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-a-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["rule-mis-dit-ecrit", "rule-lu-ouvert"],
+          "estimatedDurationS": 60
+        }
+      ]
+    },
+    {
+      "id": "block-b",
+      "title": {
+        "en": "pu, voulu, dû, su, connu, reçu",
+        "fr": "pu, voulu, dû, su, connu, reçu",
+        "de": "pu, voulu, dû, su, connu, reçu"
+      },
+      "ruleIds": ["rule-u-participles"],
+      "explanationPlan": {
+        "en": "Present six frequent verbs with a participle in -u. Point out the accent circonflexe of dû and the cédille of reçu. Practise each person with avoir.",
+        "fr": "Présenter six verbes fréquents dont le participe finit en -u. Signaler l'accent circonflexe de dû et la cédille de reçu. S'entraîner avec avoir à chaque personne.",
+        "de": "Sechs häufige Verben mit Partizip auf -u einführen. Auf den Zirkumflex von dû und die Cédille von reçu hinweisen. Jede Person mit avoir üben."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "J'ai pu venir hier.",
+          "translation": {
+            "en": "I was able to come yesterday.",
+            "de": "Ich konnte gestern kommen."
+          }
+        },
+        {
+          "text": "Tu as voulu partir ?",
+          "translation": { "en": "Did you want to leave?", "de": "Wolltest du gehen?" }
+        },
+        {
+          "text": "Nous avons reçu un colis.",
+          "translation": { "en": "We received a parcel.", "de": "Wir haben ein Paket bekommen." }
+        },
+        {
+          "text": "Il a dû travailler.",
+          "translation": { "en": "He had to work.", "de": "Er musste arbeiten." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not forget the accent circonflexe of dû and the cédille of reçu.",
+          "fr": "N'oubliez pas l'accent circonflexe de dû et la cédille de reçu.",
+          "de": "Vergiss nicht den Zirkumflex von dû und die Cédille von reçu."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-b-persons",
+          "type": "grammar_person_matching",
+          "itemCount": 1,
+          "ruleIds": ["rule-u-participles"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-b-typing",
+          "type": "grammar_pronoun_form_typing",
+          "itemCount": 2,
+          "ruleIds": ["rule-u-participles"],
+          "estimatedDurationS": 90
+        },
+        {
+          "id": "ex-b-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-u-participles"],
+          "estimatedDurationS": 40
+        },
+        {
+          "id": "ex-b-gap",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-u-participles"],
+          "estimatedDurationS": 60
+        }
+      ]
+    }
+  ],
+  "newVerbs": [
+    { "infinitive": "mettre", "translations": { "en": "to put", "de": "legen" } },
+    { "infinitive": "dire", "translations": { "en": "to say", "de": "sagen" } },
+    { "infinitive": "écrire", "translations": { "en": "to write", "de": "schreiben" } },
+    { "infinitive": "lire", "translations": { "en": "to read", "de": "lesen" } },
+    { "infinitive": "ouvrir", "translations": { "en": "to open", "de": "öffnen" } },
+    { "infinitive": "pouvoir", "translations": { "en": "to be able to", "de": "können" } },
+    { "infinitive": "vouloir", "translations": { "en": "to want", "de": "wollen" } },
+    { "infinitive": "devoir", "translations": { "en": "to have to", "de": "müssen" } },
+    { "infinitive": "savoir", "translations": { "en": "to know", "de": "wissen" } },
+    { "infinitive": "connaître", "translations": { "en": "to know (someone)", "de": "kennen" } },
+    { "infinitive": "recevoir", "translations": { "en": "to receive", "de": "bekommen" } }
+  ],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-forms",
+        "type": "grammar_pronoun_form_typing",
+        "itemCount": 1,
+        "ruleIds": ["rule-u-participles"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 120
+      },
+      {
+        "pageId": "exam-gaps",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-mis-dit-ecrit", "rule-lu-ouvert"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-mis-dit-ecrit", "rule-lu-ouvert", "rule-u-participles"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

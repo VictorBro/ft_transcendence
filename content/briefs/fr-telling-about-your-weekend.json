@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-telling-about-your-weekend",
+  "lang": "fr",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Raconter son week-end",
+  "objective": {
+    "en": "Tell about your weekend in four or five sentences in the passé composé, then ask the other person back: Et toi, tu as fait quoi ? C’était bien ?",
+    "fr": "Raconter son week-end en quatre ou cinq phrases au passé composé, puis relancer l’autre : « Et toi, tu as fait quoi ? », « C’était bien ? ».",
+    "de": "Das eigene Wochenende in vier bis fünf Sätzen im passé composé erzählen und dann nachfragen: Et toi, tu as fait quoi ? C’était bien ?"
+  },
+  "estimatedMinutes": 15,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "claude-sonnet-5-5",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T00:15:03.269Z",
+    "inputHashes": { "outline": "b40eac72ce388192d2c55b26d0e9d91d2f7898585438272f9316c5597f75f18c" }
+  },
+  "kind": "functions",
+  "theme": "free_time",
+  "situation": {
+    "en": "On Monday morning, two friends, Léa and Tom, talk about their weekends.",
+    "fr": "Lundi matin, deux amis, Léa et Tom, se racontent leur week-end.",
+    "de": "Am Montagmorgen erzählen sich zwei Freunde, Léa und Tom, von ihrem Wochenende."
+  },
+  "coverageNotes": {
+    "en": "Asking about the weekend (Tu as passé un bon week-end ?), starting a story (Ce week-end, j’ai…, Je suis allé…), asking back (Et toi, tu as fait quoi ?) and reacting (C’était bien ?). Past participles are regular or already known.",
+    "fr": "Demander le week-end (Tu as passé un bon week-end ?), commencer un récit (Ce week-end, j’ai…, Je suis allé…), relancer l’autre (Et toi, tu as fait quoi ?) et réagir (C’était bien ?). Les participes passés sont réguliers ou déjà connus.",
+    "de": "Nach dem Wochenende fragen (Tu as passé un bon week-end ?), eine Erzählung beginnen (Ce week-end, j’ai…, Je suis allé…), nachfragen (Et toi, tu as fait quoi ?) und reagieren (C’était bien ?). Die Partizipien sind regelmäßig oder schon bekannt."
+  },
+  "prerequisites": [],
+  "roles": [
+    { "id": "lea", "label": "Léa", "translation": { "en": "Léa", "de": "Léa" } },
+    { "id": "tom", "label": "Tom", "translation": { "en": "Tom", "de": "Tom" } }
+  ],
+  "expressions": [
+    {
+      "id": "bon-weekend",
+      "text": "Tu as passé un bon week-end ?",
+      "openEnd": false,
+      "translations": {
+        "en": ["Did you have a good weekend?"],
+        "de": ["Hattest du ein schönes Wochenende?"]
+      },
+      "explanation": {
+        "en": "Opens the conversation on Monday with a friend (tu).",
+        "fr": "Pour ouvrir la conversation le lundi avec un ami (tu).",
+        "de": "Eröffnet am Montag das Gespräch mit einem Freund (tu)."
+      },
+      "example": {
+        "text": "Salut Tom ! Tu as passé un bon week-end ?",
+        "translation": {
+          "en": "Hi Tom! Did you have a good weekend?",
+          "de": "Hallo Tom! Hattest du ein schönes Wochenende?"
+        }
+      }
+    },
+    {
+      "id": "ce-weekend-jai",
+      "text": "Ce week-end, j’ai",
+      "openEnd": true,
+      "translations": { "en": ["This weekend, I"], "de": ["Dieses Wochenende habe ich"] },
+      "explanation": {
+        "en": "Starts your story: j’ai + past participle (regular verbs: -é).",
+        "fr": "Pour commencer son récit : j’ai + participe passé (verbes réguliers : -é).",
+        "de": "Beginnt deine Erzählung: j’ai + Partizip (regelmäßige Verben: -é)."
+      },
+      "example": {
+        "text": "Ce week-end, j’ai regardé un film.",
+        "translation": {
+          "en": "This weekend, I watched a film.",
+          "de": "Dieses Wochenende habe ich einen Film gesehen."
+        }
+      }
+    },
+    {
+      "id": "je-suis-alle",
+      "text": "Je suis allé",
+      "openEnd": true,
+      "translations": { "en": ["I went"], "de": ["Ich bin gegangen"] },
+      "explanation": {
+        "en": "Aller uses être in the passé composé. A man says allé, a woman writes allée.",
+        "fr": "Aller se conjugue avec être au passé composé. Un homme dit allé, une femme écrit allée.",
+        "de": "Aller bildet das passé composé mit être. Ein Mann sagt allé, eine Frau schreibt allée."
+      },
+      "example": {
+        "text": "Dimanche, je suis allé au parc avec Sam.",
+        "translation": {
+          "en": "On Sunday, I went to the park with Sam.",
+          "de": "Am Sonntag bin ich mit Sam in den Park gegangen."
+        }
+      }
+    },
+    {
+      "id": "et-toi",
+      "text": "Et toi, tu as fait quoi ?",
+      "openEnd": false,
+      "translations": {
+        "en": ["And you, what did you do?"],
+        "de": ["Und du, was hast du gemacht?"]
+      },
+      "explanation": {
+        "en": "After your story, you ask the other person back (tu).",
+        "fr": "Après son récit, on relance l’autre personne (tu).",
+        "de": "Nach deiner Erzählung fragst du die andere Person zurück (tu)."
+      },
+      "example": {
+        "text": "J’ai vu des amis. Et toi, tu as fait quoi ?",
+        "translation": {
+          "en": "I saw some friends. And you, what did you do?",
+          "de": "Ich habe Freunde getroffen. Und du, was hast du gemacht?"
+        }
+      }
+    },
+    {
+      "id": "cetait-bien",
+      "text": "C’était bien ?",
+      "openEnd": false,
+      "translations": { "en": ["Was it good?"], "de": ["War es gut?"] },
+      "explanation": {
+        "en": "Reacts to a story: you ask if the event was good.",
+        "fr": "Pour réagir à un récit : on demande si c’était bien.",
+        "de": "Reaktion auf eine Erzählung: Man fragt, ob es gut war."
+      },
+      "example": {
+        "text": "Tu as vu le concert ? C’était bien ?",
+        "translation": {
+          "en": "Did you see the concert? Was it good?",
+          "de": "Hast du das Konzert gesehen? War es gut?"
+        }
+      }
+    }
+  ],
+  "words": [],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

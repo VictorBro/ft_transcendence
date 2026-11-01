@@ -1,0 +1,1035 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-telling-about-your-weekend",
+  "lang": "fr",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Raconter son week-end",
+  "objective": {
+    "en": "Tell about your weekend in four or five sentences in the passé composé, then ask the other person back: Et toi, tu as fait quoi ? C’était bien ?",
+    "fr": "Raconter son week-end en quatre ou cinq phrases au passé composé, puis relancer l’autre : « Et toi, tu as fait quoi ? », « C’était bien ? ».",
+    "de": "Das eigene Wochenende in vier bis fünf Sätzen im passé composé erzählen und dann nachfragen: Et toi, tu as fait quoi ? C’était bien ?"
+  },
+  "estimatedMinutes": 15,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "claude-sonnet-5-5",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T00:15:03.269Z",
+    "inputHashes": {
+      "outline": "b40eac72ce388192d2c55b26d0e9d91d2f7898585438272f9316c5597f75f18c",
+      "brief": "f7f6879033dedd894d71088f2b30ccf804cfdb51a0554314754b9c15285f31c1"
+    }
+  },
+  "kind": "functions",
+  "theme": "free_time",
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "presentation",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "cards-expressions",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Recall each expression, then turn the card to check it.",
+            "fr": "Rappelez-vous chaque expression, puis retournez la carte pour vérifier.",
+            "de": "Erinnere dich an jeden Ausdruck und dreh dann die Karte um."
+          },
+          "items": [
+            {
+              "type": "function_flashcards",
+              "itemId": "cards-expressions",
+              "side": "expressions",
+              "ids": ["bon-weekend", "ce-weekend-jai", "je-suis-alle", "et-toi", "cetait-bien"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue",
+      "stage": "dialogue",
+      "role": "presentation",
+      "label": { "en": "Dialogue", "fr": "Dialogue", "de": "Dialog" },
+      "pages": [
+        {
+          "pageId": "dialogue",
+          "estimatedDurationS": 140,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read and listen. Turn a line to see its translation and a note.",
+            "fr": "Lisez et écoutez. Retournez une réplique pour voir sa traduction et une remarque.",
+            "de": "Lies und hör zu. Dreh eine Zeile um, um Übersetzung und Hinweis zu sehen."
+          },
+          "items": [
+            {
+              "type": "function_dialogue",
+              "itemId": "dialogue",
+              "lines": [
+                {
+                  "lineId": "line-1",
+                  "roleId": "lea",
+                  "text": "Salut Tom ! Tu as passé un bon week-end ?",
+                  "translation": {
+                    "en": "Hi Tom! Did you have a good weekend?",
+                    "de": "Hallo Tom! Hattest du ein schönes Wochenende?"
+                  },
+                  "note": {
+                    "en": "Léa opens with a question in the passé composé: tu as passé.",
+                    "fr": "Léa ouvre avec une question au passé composé : tu as passé.",
+                    "de": "Léa beginnt mit einer Frage im passé composé: tu as passé."
+                  },
+                  "expressionIds": ["bon-weekend"]
+                },
+                {
+                  "lineId": "line-2",
+                  "roleId": "tom",
+                  "text": "Oui, merci ! Ce week-end, j’ai vu mes grands-parents.",
+                  "translation": {
+                    "en": "Yes, thanks! This weekend, I saw my grandparents.",
+                    "de": "Ja, danke! Dieses Wochenende habe ich meine Großeltern besucht."
+                  },
+                  "note": {
+                    "en": "Ce week-end, j’ai + participle starts the story.",
+                    "fr": "Ce week-end, j’ai + participe commence le récit.",
+                    "de": "Ce week-end, j’ai + Partizip beginnt die Erzählung."
+                  },
+                  "expressionIds": ["ce-weekend-jai"]
+                },
+                {
+                  "lineId": "line-3",
+                  "roleId": "lea",
+                  "text": "Ah, chouette ! Vous avez mangé ensemble ?",
+                  "translation": {
+                    "en": "Oh, nice! Did you eat together?",
+                    "de": "Ah, schön! Habt ihr zusammen gegessen?"
+                  },
+                  "note": {
+                    "en": "Vous avez mangé: avoir + mangé (-er verb, participle in -é).",
+                    "fr": "Vous avez mangé : avoir + mangé (verbe en -er, participe en -é).",
+                    "de": "Vous avez mangé: avoir + mangé (-er-Verb, Partizip auf -é)."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-4",
+                  "roleId": "tom",
+                  "text": "Oui, samedi, on a fait un grand repas. Dimanche, je suis allé au parc.",
+                  "translation": {
+                    "en": "Yes, on Saturday we had a big meal. On Sunday, I went to the park.",
+                    "de": "Ja, am Samstag haben wir groß gegessen. Am Sonntag bin ich in den Park gegangen."
+                  },
+                  "note": {
+                    "en": "Aller uses être: je suis allé, not j’ai allé.",
+                    "fr": "Aller se conjugue avec être : je suis allé, pas j’ai allé.",
+                    "de": "Aller bildet das passé composé mit être: je suis allé, nicht j’ai allé."
+                  },
+                  "expressionIds": ["je-suis-alle"]
+                },
+                {
+                  "lineId": "line-5",
+                  "roleId": "lea",
+                  "text": "Vous avez joué au foot ?",
+                  "translation": {
+                    "en": "Did you play football?",
+                    "de": "Habt ihr Fußball gespielt?"
+                  },
+                  "note": {
+                    "en": "Joué: the participle of jouer ends in -é.",
+                    "fr": "Joué : le participe de jouer finit en -é.",
+                    "de": "Joué: Das Partizip von jouer endet auf -é."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-6",
+                  "roleId": "tom",
+                  "text": "Oui, j’ai joué avec des amis. Et toi, tu as fait quoi ?",
+                  "translation": {
+                    "en": "Yes, I played with some friends. And you, what did you do?",
+                    "de": "Ja, ich habe mit Freunden gespielt. Und du, was hast du gemacht?"
+                  },
+                  "note": {
+                    "en": "Et toi ? sends the question back to your friend.",
+                    "fr": "Et toi ? renvoie la question à l’ami.",
+                    "de": "Et toi ? gibt die Frage an den Freund zurück."
+                  },
+                  "expressionIds": ["et-toi"]
+                },
+                {
+                  "lineId": "line-7",
+                  "roleId": "lea",
+                  "text": "Moi, j’ai regardé un film et j’ai écouté de la musique.",
+                  "translation": {
+                    "en": "Me, I watched a film and listened to some music.",
+                    "de": "Ich habe einen Film gesehen und Musik gehört."
+                  },
+                  "note": {
+                    "en": "Two actions, each with its own j’ai.",
+                    "fr": "Deux actions, chacune avec son j’ai.",
+                    "de": "Zwei Handlungen, jede mit eigenem j’ai."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-8",
+                  "roleId": "tom",
+                  "text": "Un film ? C’était bien ?",
+                  "translation": { "en": "A film? Was it good?", "de": "Ein Film? War es gut?" },
+                  "note": {
+                    "en": "C’était bien ? asks for an opinion about a past event.",
+                    "fr": "C’était bien ? demande un avis sur un événement passé.",
+                    "de": "C’était bien ? fragt nach der Meinung zu einem vergangenen Ereignis."
+                  },
+                  "expressionIds": ["cetait-bien"]
+                },
+                {
+                  "lineId": "line-9",
+                  "roleId": "lea",
+                  "text": "Oui, c’était très bien, merci.",
+                  "translation": {
+                    "en": "Yes, it was very good, thanks.",
+                    "de": "Ja, es war sehr gut, danke."
+                  },
+                  "note": {
+                    "en": "You answer with c’était + an adjective.",
+                    "fr": "On répond avec c’était + un adjectif.",
+                    "de": "Man antwortet mit c’était + Adjektiv."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-10",
+                  "roleId": "tom",
+                  "text": "Chouette ! À demain !",
+                  "translation": { "en": "Great! See you tomorrow!", "de": "Schön! Bis morgen!" },
+                  "note": {
+                    "en": "A friendly way to end the chat.",
+                    "fr": "Une façon amicale de finir la discussion.",
+                    "de": "Ein freundlicher Abschluss des Gesprächs."
+                  },
+                  "expressionIds": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "match-expressions-1",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each expression with its translation.",
+            "fr": "Associez chaque expression à sa traduction.",
+            "de": "Ordne jedem Ausdruck seine Übersetzung zu."
+          },
+          "items": [
+            {
+              "type": "function_matching",
+              "itemId": "match-expressions-1",
+              "side": "expressions",
+              "pairs": [
+                {
+                  "id": "bon-weekend",
+                  "answerExplanation": {
+                    "en": "Opens the conversation on Monday with a friend (tu).",
+                    "fr": "Pour ouvrir la conversation le lundi avec un ami (tu).",
+                    "de": "Eröffnet am Montag das Gespräch mit einem Freund (tu)."
+                  }
+                },
+                {
+                  "id": "ce-weekend-jai",
+                  "answerExplanation": {
+                    "en": "Starts your story: j’ai + past participle.",
+                    "fr": "Pour commencer son récit : j’ai + participe passé.",
+                    "de": "Beginnt deine Erzählung: j’ai + Partizip."
+                  }
+                },
+                {
+                  "id": "je-suis-alle",
+                  "answerExplanation": {
+                    "en": "Aller uses être in the passé composé.",
+                    "fr": "Aller se conjugue avec être au passé composé.",
+                    "de": "Aller bildet das passé composé mit être."
+                  }
+                },
+                {
+                  "id": "et-toi",
+                  "answerExplanation": {
+                    "en": "You ask the other person back (tu).",
+                    "fr": "On relance l’autre personne (tu).",
+                    "de": "Du fragst die andere Person zurück (tu)."
+                  }
+                },
+                {
+                  "id": "cetait-bien",
+                  "answerExplanation": {
+                    "en": "You ask if the event was good.",
+                    "fr": "On demande si c’était bien.",
+                    "de": "Man fragt, ob es gut war."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-gaps",
+      "stage": "dialogue_gaps",
+      "role": "exercise",
+      "label": { "en": "Dialogue gaps", "fr": "Dialogue à trous", "de": "Dialoglücken" },
+      "pages": [
+        {
+          "pageId": "gap-1",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-1",
+              "expressionId": "bon-weekend",
+              "context": { "roleId": "tom", "text": "Salut Léa !" },
+              "roleId": "lea",
+              "before": "Salut Tom !",
+              "after": "",
+              "choiceExpressionIds": ["bon-weekend", "et-toi", "cetait-bien", "je-suis-alle"],
+              "answerExplanation": {
+                "en": "On Monday, you ask about the weekend.",
+                "fr": "Le lundi, on demande comment était le week-end.",
+                "de": "Am Montag fragt man nach dem Wochenende."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-2",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-2",
+              "expressionId": "ce-weekend-jai",
+              "context": { "roleId": "lea", "text": "Alors, raconte !" },
+              "roleId": "tom",
+              "before": "",
+              "after": "mangé chez ma tante.",
+              "choiceExpressionIds": ["ce-weekend-jai", "et-toi", "cetait-bien", "bon-weekend"],
+              "answerExplanation": {
+                "en": "Ce week-end, j’ai + mangé starts the story.",
+                "fr": "Ce week-end, j’ai + mangé commence le récit.",
+                "de": "Ce week-end, j’ai + mangé beginnt die Erzählung."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-3",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-3",
+              "expressionId": "je-suis-alle",
+              "context": { "roleId": "lea", "text": "Et dimanche ?" },
+              "roleId": "tom",
+              "before": "Dimanche,",
+              "after": "à la piscine.",
+              "choiceExpressionIds": ["je-suis-alle", "ce-weekend-jai", "et-toi", "cetait-bien"],
+              "answerExplanation": {
+                "en": "Aller takes être: je suis allé.",
+                "fr": "Aller prend être : je suis allé.",
+                "de": "Aller steht mit être: je suis allé."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-4",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-4",
+              "expressionId": "et-toi",
+              "context": { "roleId": "tom", "text": "Alors, raconte ton week-end !" },
+              "roleId": "lea",
+              "before": "J’ai vu des amis samedi.",
+              "after": "",
+              "choiceExpressionIds": ["et-toi", "bon-weekend", "je-suis-alle", "cetait-bien"],
+              "answerExplanation": {
+                "en": "After telling your weekend, you ask the other person back.",
+                "fr": "Après avoir raconté son week-end, on relance l’autre.",
+                "de": "Nach deiner Erzählung fragst du die andere Person zurück."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-5",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-5",
+              "expressionId": "cetait-bien",
+              "context": { "roleId": "lea", "text": "Samedi, j’ai vu un film." },
+              "roleId": "tom",
+              "before": "Ah oui ?",
+              "after": "",
+              "choiceExpressionIds": ["cetait-bien", "et-toi", "ce-weekend-jai", "bon-weekend"],
+              "answerExplanation": {
+                "en": "You react by asking if the film was good.",
+                "fr": "On réagit en demandant si le film était bien.",
+                "de": "Man reagiert mit der Frage, ob der Film gut war."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "word-order",
+      "stage": "word_order",
+      "role": "exercise",
+      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
+      "pages": [
+        {
+          "pageId": "order-1",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-1",
+              "expressionId": "bon-weekend",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Bonjour" },
+                { "tokenId": "t2", "text": "Léa," },
+                { "tokenId": "t3", "text": "tu" },
+                { "tokenId": "t4", "text": "as" },
+                { "tokenId": "t5", "text": "passé" },
+                { "tokenId": "t6", "text": "un" },
+                { "tokenId": "t7", "text": "bon" },
+                { "tokenId": "t8", "text": "week-end" },
+                { "tokenId": "t9", "text": "?" }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9"]],
+              "answerExplanation": {
+                "en": "Greeting first, then the question: tu as passé un bon week-end ?",
+                "fr": "D’abord la salutation, puis la question : tu as passé un bon week-end ?",
+                "de": "Erst der Gruß, dann die Frage: tu as passé un bon week-end ?"
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-2",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-2",
+              "expressionId": "ce-weekend-jai",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Ce" },
+                { "tokenId": "t2", "text": "week-end," },
+                { "tokenId": "t3", "text": "j’ai" },
+                { "tokenId": "t4", "text": "mangé" },
+                { "tokenId": "t5", "text": "une" },
+                { "tokenId": "t6", "text": "pizza." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "answerExplanation": {
+                "en": "Time first, then j’ai + participle + what you ate.",
+                "fr": "Le moment d’abord, puis j’ai + participe + ce qu’on a mangé.",
+                "de": "Erst die Zeit, dann j’ai + Partizip + was du gegessen hast."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-3",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-3",
+              "expressionId": "je-suis-alle",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Dimanche," },
+                { "tokenId": "t2", "text": "je" },
+                { "tokenId": "t3", "text": "suis" },
+                { "tokenId": "t4", "text": "allé" },
+                { "tokenId": "t5", "text": "au" },
+                { "tokenId": "t6", "text": "marché." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "answerExplanation": {
+                "en": "Je suis allé: the auxiliary être comes before the participle.",
+                "fr": "Je suis allé : l’auxiliaire être vient avant le participe.",
+                "de": "Je suis allé: Das Hilfsverb être steht vor dem Partizip."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-4",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-4",
+              "expressionId": "et-toi",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "J’ai" },
+                { "tokenId": "t2", "text": "dormi." },
+                { "tokenId": "t3", "text": "Et" },
+                { "tokenId": "t4", "text": "toi," },
+                { "tokenId": "t5", "text": "tu" },
+                { "tokenId": "t6", "text": "as" },
+                { "tokenId": "t7", "text": "fait" },
+                { "tokenId": "t8", "text": "quoi" },
+                { "tokenId": "t9", "text": "?" }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9"]],
+              "answerExplanation": {
+                "en": "Your own story first, then Et toi, tu as fait quoi ?",
+                "fr": "D’abord son propre récit, puis Et toi, tu as fait quoi ?",
+                "de": "Erst deine eigene Erzählung, dann Et toi, tu as fait quoi ?"
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-5",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-5",
+              "expressionId": "cetait-bien",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Alors," },
+                { "tokenId": "t2", "text": "c’était" },
+                { "tokenId": "t3", "text": "bien" },
+                { "tokenId": "t4", "text": "?" }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4"]],
+              "answerExplanation": {
+                "en": "Alors, then c’était bien ? as a question.",
+                "fr": "Alors, puis c’était bien ? sous forme de question.",
+                "de": "Alors, dann c’était bien ? als Frage."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "listening",
+      "stage": "listening",
+      "role": "exercise",
+      "label": { "en": "Listening", "fr": "Écoute", "de": "Hören" },
+      "pages": [
+        {
+          "pageId": "listening-1",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-1",
+              "expressionId": "bon-weekend",
+              "context": { "roleId": "tom", "text": "Salut Léa ! Ça va ?" },
+              "roleId": "lea",
+              "options": [
+                { "optionId": "o1", "text": "Oui, merci. Tu as passé un bon week-end ?" },
+                { "optionId": "o2", "text": "Au revoir, à demain !" },
+                { "optionId": "o3", "text": "Je voudrais un café, s’il vous plaît." },
+                { "optionId": "o4", "text": "Elle est dans la cuisine." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "She answers, then asks about the weekend.",
+                "fr": "Elle répond, puis demande des nouvelles du week-end.",
+                "de": "Sie antwortet und fragt dann nach dem Wochenende."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-2",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-2",
+              "expressionId": "ce-weekend-jai",
+              "context": { "roleId": "lea", "text": "Alors, tu as fait quoi ?" },
+              "roleId": "tom",
+              "options": [
+                { "optionId": "o1", "text": "Ce week-end, j’ai visité un musée." },
+                { "optionId": "o2", "text": "Il fait beau aujourd’hui." },
+                { "optionId": "o3", "text": "C’est combien ?" },
+                { "optionId": "o4", "text": "Bonne nuit !" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "He tells his weekend with j’ai + participle.",
+                "fr": "Il raconte son week-end avec j’ai + participe.",
+                "de": "Er erzählt sein Wochenende mit j’ai + Partizip."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-3",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-3",
+              "expressionId": "je-suis-alle",
+              "context": { "roleId": "lea", "text": "Et dimanche, tu es resté chez toi ?" },
+              "roleId": "tom",
+              "options": [
+                { "optionId": "o1", "text": "Non, je suis allé chez mon frère." },
+                { "optionId": "o2", "text": "Il est huit heures." },
+                { "optionId": "o3", "text": "Bonne nuit, à demain !" },
+                { "optionId": "o4", "text": "Je m’appelle Tom." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "He says no and tells where he went.",
+                "fr": "Il dit non et explique où il est allé.",
+                "de": "Er sagt nein und erzählt, wohin er gegangen ist."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-4",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-4",
+              "expressionId": "et-toi",
+              "context": { "roleId": "tom", "text": "Alors, ton week-end ?" },
+              "roleId": "lea",
+              "options": [
+                { "optionId": "o1", "text": "J’ai vu ma sœur. Et toi, tu as fait quoi ?" },
+                { "optionId": "o2", "text": "Nous sommes en novembre." },
+                { "optionId": "o3", "text": "Un jus d’orange, s’il vous plaît." },
+                { "optionId": "o4", "text": "Elle a quinze ans." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "She tells one thing, then asks him back.",
+                "fr": "Elle raconte une chose, puis le relance.",
+                "de": "Sie erzählt eine Sache und fragt dann zurück."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-5",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-5",
+              "expressionId": "cetait-bien",
+              "context": { "roleId": "lea", "text": "Samedi, j’ai vu un film avec Marie." },
+              "roleId": "tom",
+              "options": [
+                { "optionId": "o1", "text": "Ah bon ? C’était bien ?" },
+                { "optionId": "o2", "text": "Il est sept heures." },
+                { "optionId": "o3", "text": "Elle habite à Lyon." },
+                { "optionId": "o4", "text": "Je voudrais un thé." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "He reacts and asks if the film was good.",
+                "fr": "Il réagit et demande si le film était bien.",
+                "de": "Er reagiert und fragt, ob der Film gut war."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam-replies-1",
+          "estimatedDurationS": 120,
+          "timeLimitS": 180,
+          "instructions": {
+            "en": "Build the answer. Not every word fits.",
+            "fr": "Construisez la réponse. Tous les mots ne servent pas.",
+            "de": "Bilde die Antwort. Nicht jedes Wort passt."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "reply-1",
+              "expressionId": "bon-weekend",
+              "context": { "roleId": "tom", "text": "Bonjour Léa !" },
+              "roleId": "lea",
+              "tokens": [
+                { "tokenId": "t1", "text": "Bonjour" },
+                { "tokenId": "t2", "text": "Tom," },
+                { "tokenId": "t3", "text": "tu" },
+                { "tokenId": "t4", "text": "as" },
+                { "tokenId": "t5", "text": "passé" },
+                { "tokenId": "t6", "text": "un" },
+                { "tokenId": "t7", "text": "bon" },
+                { "tokenId": "t8", "text": "week-end" },
+                { "tokenId": "t9", "text": "?" },
+                { "tokenId": "t10", "text": "ai" },
+                { "tokenId": "t11", "text": "passer" }
+              ],
+              "distractorTokenIds": ["t10", "t11"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9"]],
+              "answerExplanation": {
+                "en": "With tu the auxiliary is as: tu as passé.",
+                "fr": "Avec tu, l’auxiliaire est as : tu as passé.",
+                "de": "Mit tu lautet das Hilfsverb as: tu as passé."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-2",
+              "expressionId": "ce-weekend-jai",
+              "context": { "roleId": "lea", "text": "Alors, raconte !" },
+              "roleId": "tom",
+              "tokens": [
+                { "tokenId": "t1", "text": "Ce" },
+                { "tokenId": "t2", "text": "week-end," },
+                { "tokenId": "t3", "text": "j’ai" },
+                { "tokenId": "t4", "text": "rangé" },
+                { "tokenId": "t5", "text": "ma" },
+                { "tokenId": "t6", "text": "chambre." },
+                { "tokenId": "t7", "text": "suis" }
+              ],
+              "distractorTokenIds": ["t7"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "answerExplanation": {
+                "en": "Ranger takes avoir: j’ai rangé, not je suis rangé.",
+                "fr": "Ranger prend avoir : j’ai rangé, pas je suis rangé.",
+                "de": "Ranger steht mit avoir: j’ai rangé, nicht je suis rangé."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-3",
+              "expressionId": "je-suis-alle",
+              "context": { "roleId": "lea", "text": "Et dimanche, tu as fait quoi ?" },
+              "roleId": "tom",
+              "tokens": [
+                { "tokenId": "t1", "text": "Dimanche," },
+                { "tokenId": "t2", "text": "je" },
+                { "tokenId": "t3", "text": "suis" },
+                { "tokenId": "t4", "text": "allé" },
+                { "tokenId": "t5", "text": "chez" },
+                { "tokenId": "t6", "text": "ma" },
+                { "tokenId": "t7", "text": "tante." },
+                { "tokenId": "t8", "text": "ai" }
+              ],
+              "distractorTokenIds": ["t8"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
+              "answerExplanation": {
+                "en": "Aller takes être: je suis allé, not j’ai allé.",
+                "fr": "Aller prend être : je suis allé, pas j’ai allé.",
+                "de": "Aller steht mit être: je suis allé, nicht j’ai allé."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-4",
+              "expressionId": "cetait-bien",
+              "context": { "roleId": "tom", "text": "Samedi soir, j’ai dîné au restaurant." },
+              "roleId": "lea",
+              "tokens": [
+                { "tokenId": "t1", "text": "Ah," },
+                { "tokenId": "t2", "text": "super" },
+                { "tokenId": "t3", "text": "!" },
+                { "tokenId": "t4", "text": "C’était" },
+                { "tokenId": "t5", "text": "bien" },
+                { "tokenId": "t6", "text": "?" },
+                { "tokenId": "t7", "text": "est" }
+              ],
+              "distractorTokenIds": ["t7"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "answerExplanation": {
+                "en": "For a past event you say c’était, not c’est.",
+                "fr": "Pour un événement passé, on dit c’était, pas c’est.",
+                "de": "Für ein vergangenes Ereignis sagt man c’était, nicht c’est."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-dialogue",
+          "estimatedDurationS": 144,
+          "timeLimitS": 216,
+          "instructions": {
+            "en": "Fill each gap with an expression from this lesson.",
+            "fr": "Complétez chaque trou avec une expression de la leçon.",
+            "de": "Fülle jede Lücke mit einem Ausdruck aus dieser Lektion."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_typing",
+              "itemId": "exam-dialogue",
+              "lines": [
+                {
+                  "lineId": "exam-line-1",
+                  "roleId": "lea",
+                  "before": "Coucou Tom !",
+                  "translation": {
+                    "en": "Hi Tom! Did you have a good weekend?",
+                    "de": "Hallo Tom! Hattest du ein schönes Wochenende?"
+                  },
+                  "gap": {
+                    "gapId": "gap-1",
+                    "expressionId": "bon-weekend",
+                    "accepted": { "answers": ["Tu as passé un bon week-end"] },
+                    "answerExplanation": {
+                      "en": "She asks about the weekend: Tu as passé un bon week-end ?",
+                      "fr": "Elle demande des nouvelles du week-end : Tu as passé un bon week-end ?",
+                      "de": "Sie fragt nach dem Wochenende: Tu as passé un bon week-end ?"
+                    }
+                  },
+                  "after": "?"
+                },
+                {
+                  "lineId": "exam-line-2",
+                  "roleId": "tom",
+                  "before": "Oui, merci ! Samedi, j’ai fait des crêpes.",
+                  "translation": {
+                    "en": "Yes, thanks! On Saturday, I made pancakes. And you, what did you do?",
+                    "de": "Ja, danke! Am Samstag habe ich Crêpes gemacht. Und du, was hast du gemacht?"
+                  },
+                  "gap": {
+                    "gapId": "gap-2",
+                    "expressionId": "et-toi",
+                    "accepted": { "answers": ["Et toi, tu as fait quoi"] },
+                    "answerExplanation": {
+                      "en": "He asks her back: Et toi, tu as fait quoi ?",
+                      "fr": "Il la relance : Et toi, tu as fait quoi ?",
+                      "de": "Er fragt zurück: Et toi, tu as fait quoi ?"
+                    }
+                  },
+                  "after": "?"
+                },
+                {
+                  "lineId": "exam-line-3",
+                  "roleId": "lea",
+                  "before": "Des crêpes, miam ! Moi, j’ai nettoyé mon appartement.",
+                  "translation": {
+                    "en": "Pancakes, yum! Me, I cleaned my apartment.",
+                    "de": "Crêpes, lecker! Ich habe meine Wohnung geputzt."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-4",
+                  "roleId": "tom",
+                  "before": "Courage ! Moi, dimanche,",
+                  "translation": {
+                    "en": "Hang in there! Me, on Sunday, I went to the cinema.",
+                    "de": "Nur Mut! Ich bin am Sonntag ins Kino gegangen."
+                  },
+                  "gap": {
+                    "gapId": "gap-4",
+                    "expressionId": "je-suis-alle",
+                    "accepted": { "answers": ["je suis allé"] },
+                    "answerExplanation": {
+                      "en": "Aller takes être: je suis allé.",
+                      "fr": "Aller prend être : je suis allé.",
+                      "de": "Aller steht mit être: je suis allé."
+                    }
+                  },
+                  "after": "au cinéma."
+                },
+                {
+                  "lineId": "exam-line-5",
+                  "roleId": "lea",
+                  "before": "Un film ! Alors,",
+                  "translation": {
+                    "en": "A film! So, was it good?",
+                    "de": "Ein Film! Und, war es gut?"
+                  },
+                  "gap": {
+                    "gapId": "gap-5",
+                    "expressionId": "cetait-bien",
+                    "accepted": { "answers": ["c’était bien", "C’était bien"] },
+                    "answerExplanation": {
+                      "en": "She asks if the film was good: c’était bien ?",
+                      "fr": "Elle demande si le film était bien : c’était bien ?",
+                      "de": "Sie fragt, ob der Film gut war: c’était bien ?"
+                    }
+                  },
+                  "after": "?"
+                },
+                {
+                  "lineId": "exam-line-6",
+                  "roleId": "tom",
+                  "before": "Oui, très drôle. Bonne semaine, Léa !",
+                  "translation": {
+                    "en": "Yes, very funny. Have a good week, Léa!",
+                    "de": "Ja, sehr lustig. Eine schöne Woche, Léa!"
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-7",
+                  "roleId": "lea",
+                  "before": "Merci, à toi aussi ! À bientôt.",
+                  "translation": {
+                    "en": "Thanks, you too! See you soon.",
+                    "de": "Danke, dir auch! Bis bald."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-8",
+                  "roleId": "tom",
+                  "before": "À bientôt !",
+                  "translation": { "en": "See you soon!", "de": "Bis bald!" },
+                  "gap": null,
+                  "after": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

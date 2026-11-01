@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-reading-a-short-biography",
+  "lang": "fr",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Lire une courte biographie",
+  "objective": {
+    "en": "Read the short biography of a French singer and put the stages of her life in order, with their dates.",
+    "fr": "Lire la courte biographie d’une chanteuse française et remettre dans l’ordre les étapes de sa vie avec leur date.",
+    "de": "Die kurze Biografie einer französischen Sängerin lesen und die Lebensstationen mit ihren Daten ordnen."
+  },
+  "estimatedMinutes": 9,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "claude-sonnet-5-5",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T00:29:53.888Z",
+    "inputHashes": { "outline": "59f51c930e174f56d552ec941ad619a6fc1cc8cb7f735a90e45f0a09fec49724" }
+  },
+  "kind": "reading",
+  "theme": "personal_identification",
+  "genre": "profile",
+  "situation": {
+    "en": "A website about French music presents the life of the singer Élise Marchand in a short biography.",
+    "fr": "Un site sur la musique française présente la vie de la chanteuse Élise Marchand dans une courte biographie.",
+    "de": "Eine Website über französische Musik stellt das Leben der Sängerin Élise Marchand in einer kurzen Biografie vor."
+  },
+  "readerTask": {
+    "en": "Find where and when the singer was born, where she grew up and when her first album came out, then put the stages of her life in order.",
+    "fr": "Retrouver où et quand la chanteuse est née, où elle a grandi et quand son premier album est sorti, puis remettre les étapes de sa vie dans l’ordre.",
+    "de": "Finden, wo und wann die Sängerin geboren wurde, wo sie aufwuchs und wann ihr erstes Album erschien, und die Lebensstationen ordnen."
+  },
+  "keywords": [
+    {
+      "id": "est-nee",
+      "term": "est née",
+      "translations": { "en": ["was born"], "de": ["wurde geboren"] },
+      "explanation": {
+        "en": "Used for the birth of a woman: elle est née en 1975. For a man: il est né.",
+        "fr": "Pour la naissance d’une femme : elle est née en 1975. Pour un homme : il est né.",
+        "de": "Für die Geburt einer Frau: elle est née en 1975. Bei einem Mann: il est né."
+      }
+    },
+    {
+      "id": "a-grandi",
+      "term": "a grandi",
+      "translations": { "en": ["grew up"], "de": ["ist aufgewachsen"] },
+      "explanation": {
+        "en": "Tells where someone spent their childhood: elle a grandi à Lille.",
+        "fr": "Dit où quelqu’un a passé son enfance : elle a grandi à Lille.",
+        "de": "Sagt, wo jemand seine Kindheit verbracht hat: elle a grandi à Lille."
+      }
+    },
+    {
+      "id": "un-album",
+      "term": "un album",
+      "translations": { "en": ["an album"], "de": ["ein Album"] },
+      "explanation": {
+        "en": "A collection of songs. A singer sort un album when it comes out.",
+        "fr": "Un ensemble de chansons. Une chanteuse sort un album quand il paraît.",
+        "de": "Eine Sammlung von Liedern. Eine Sängerin sort un album, wenn es erscheint."
+      }
+    },
+    {
+      "id": "se-marier",
+      "term": "se marier",
+      "translations": { "en": ["to get married"], "de": ["heiraten"] },
+      "explanation": {
+        "en": "To become husband and wife: elle se marie en 2005.",
+        "fr": "Devenir mari et femme : elle se marie en 2005.",
+        "de": "Ehepartner werden: elle se marie en 2005."
+      }
+    },
+    {
+      "id": "demenager",
+      "term": "déménager",
+      "translations": { "en": ["to move house"], "de": ["umziehen"] },
+      "explanation": {
+        "en": "To go and live in another home or city: elle déménage à Lyon.",
+        "fr": "Aller habiter dans un autre logement ou une autre ville : elle déménage à Lyon.",
+        "de": "In eine andere Wohnung oder Stadt ziehen: elle déménage à Lyon."
+      }
+    }
+  ],
+  "documents": {
+    "main": {
+      "targetWords": 96,
+      "contents": {
+        "en": "A short biography of the singer Élise Marchand: born in 1975 in Roubaix, grew up in Lille, choir at school, music studies in Paris, meets a guitarist in 1999, first album in 2001, marries and moves to Lyon in 2005, new album being prepared.",
+        "fr": "Courte biographie de la chanteuse Élise Marchand : née en 1975 à Roubaix, a grandi à Lille, chorale à l’école, études de musique à Paris, rencontre un guitariste en 1999, premier album en 2001, se marie et déménage à Lyon en 2005, prépare un nouvel album.",
+        "de": "Kurze Biografie der Sängerin Élise Marchand: 1975 in Roubaix geboren, in Lille aufgewachsen, Schulchor, Musikstudium in Paris, 1999 trifft sie einen Gitarristen, 2001 erstes Album, 2005 Heirat und Umzug nach Lyon, ein neues Album ist in Arbeit."
+      }
+    },
+    "exam": {
+      "targetWords": 51,
+      "contents": {
+        "en": "A short biography of the cook Hugo Lambert: born in 1980 in Marseille, son of a baker, opens a restaurant in Nice in 2003, writes a cookbook ten years later, now works on television.",
+        "fr": "Courte biographie du cuisinier Hugo Lambert : né en 1980 à Marseille, fils d’un boulanger, ouvre un restaurant à Nice en 2003, écrit un livre de cuisine dix ans plus tard, travaille aujourd’hui à la télévision.",
+        "de": "Kurze Biografie des Kochs Hugo Lambert: 1980 in Marseille geboren, Sohn eines Bäckers, eröffnet 2003 ein Restaurant in Nizza, schreibt zehn Jahre später ein Kochbuch und arbeitet heute beim Fernsehen."
+      }
+    }
+  },
+  "skim": { "focus": "genre" },
+  "detailQuestions": [
+    {
+      "id": "q-grew",
+      "type": "reading_choice",
+      "focus": {
+        "en": "Where the singer grew up",
+        "fr": "Où la chanteuse a grandi",
+        "de": "Wo die Sängerin aufgewachsen ist"
+      }
+    },
+    {
+      "id": "q-album",
+      "type": "reading_choice",
+      "focus": {
+        "en": "The year of the first album",
+        "fr": "L’année du premier album",
+        "de": "Das Jahr des ersten Albums"
+      }
+    },
+    {
+      "id": "q-studies",
+      "type": "reading_true_false",
+      "focus": {
+        "en": "Where she studied music",
+        "fr": "Où elle a fait ses études de musique",
+        "de": "Wo sie Musik studiert hat"
+      }
+    },
+    {
+      "id": "q-2005",
+      "type": "reading_choice",
+      "focus": {
+        "en": "What happens in 2005",
+        "fr": "Ce qui se passe en 2005",
+        "de": "Was 2005 passiert"
+      }
+    }
+  ],
+  "exam": { "types": ["reading_choice", "reading_true_false"] },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}
