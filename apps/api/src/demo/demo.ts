@@ -2,6 +2,7 @@ import type { Language, SessionUser } from '@ft/shared';
 
 import { AuthService } from '../auth/auth.service';
 import { CoursesService } from '../courses/courses.service';
+import { SocketsService } from '../gateway/sockets.service';
 import { LessonsService } from '../lessons/lessons.service';
 import type { RuleLesson } from '../lessons/roadmap.rules';
 import { PrismaService } from '../prisma/prisma.service';
@@ -139,7 +140,8 @@ export async function seedDemo(
   const services: DemoServices = {
     prisma,
     auth: new AuthService(prisma),
-    courses: new CoursesService(prisma),
+    // Never attached outside Nest: the replay's level changes reach no socket.
+    courses: new CoursesService(prisma, new SocketsService()),
     lessons: new LessonsService(prisma),
   };
 

@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
-import { LanguageSchema } from '@ft/shared';
+import { LanguageSchema, SERVER_EVENTS } from '@ft/shared';
 
 import { Link } from '@/i18n/navigation';
 import { ChangeLevel } from '@/components/change-level';
 import { PracticeRow } from '@/components/practice-row';
+import { RefreshOn } from '@/components/refresh-on';
 import { findCourse, requireCourses } from '@/lib/courses';
 import { GoalPicker } from './goal-picker';
 
@@ -53,6 +54,8 @@ export default async function CoursePage({ params }: { params: Promise<{ lang: s
 
   return (
     <div className="flex h-full min-h-0 flex-col gap-6 lg:flex-row">
+      {/* Any course's change, not only this one's: the switcher lists them all. */}
+      <RefreshOn event={SERVER_EVENTS.COURSE_UPDATED} />
       <div className="relative -mx-3 -my-3 flex min-w-0 flex-1 flex-col gap-6 px-3 py-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:overflow-y-auto">
         <h1 className="text-3xl font-semibold">{languageName(course.lang)}</h1>
 

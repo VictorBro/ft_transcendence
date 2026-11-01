@@ -1,16 +1,13 @@
 import { describe, expect, it } from 'vitest';
 
 import {
-  CHAT_SEND_MAX_LENGTH,
+  AppErrorSchema,
   CLIENT_EVENTS,
   CLIENT_EVENT_SCHEMAS,
-  ChatMessageSchema,
-  ChatSendSchema,
+  CourseUpdatedSchema,
   PresenceUpdateSchema,
   SERVER_EVENTS,
-  SessionStateSchema,
-  SocketErrorSchema,
-  sessionRoom,
+  clientEventSchema,
   userRoom,
 } from './index';
 
@@ -23,14 +20,7 @@ const SOCKET_IO_RESERVED = [
   'removeListener',
 ];
 
-const publicUser = {
-  id: '3f0f9d1e-8a2c-4f3b-9c1d-6d2c5b8a7e41',
-  displayName: 'ada_lovelace',
-  avatarUrl: null,
-  locale: 'fr',
-};
-
-const sessionId = '8c1f4e2a-5b6d-4a7c-8e9f-0a1b2c3d4e5f';
+const userId = '3f0f9d1e-8a2c-4f3b-9c1d-6d2c5b8a7e41';
 
 describe('event names', () => {
   it('never collides with a socket.io reserved name', () => {
@@ -39,6 +29,12 @@ describe('event names', () => {
     for (const name of all) {
       expect(SOCKET_IO_RESERVED).not.toContain(name);
     }
+  });
+
+  // A client event named `error` would reach a server socket with no `error`
+  // listener, and an EventEmitter throws on that.
+  it('never names a client event `error`', () => {
+    expect(Object.values(CLIENT_EVENTS)).not.toContain('error');
   });
 
   it('keeps the client and server sets disjoint', () => {
@@ -54,63 +50,36 @@ describe('event names', () => {
   });
 });
 
-describe('ChatSendSchema', () => {
-  it('accepts a trimmed message', () => {
-    expect(ChatSendSchema.parse({ sessionId, body: '  bonjour  ' }).body).toBe('bonjour');
-  });
-
-  it('rejects an empty body, an oversized body and a bad session id', () => {
-    expect(ChatSendSchema.safeParse({ sessionId, body: '   ' }).success).toBe(false);
-    expect(
-      ChatSendSchema.safeParse({ sessionId, body: 'x'.repeat(CHAT_SEND_MAX_LENGTH + 1) }).success,
-    ).toBe(false);
-    expect(ChatSendSchema.safeParse({ sessionId: 'lobby', body: 'hi' }).success).toBe(false);
+describe('clientEventSchema', () => {
+  it.each(['nope', 'constructor', '__proto__', 'toString'])('finds nothing for %s', (name) => {
+    expect(clientEventSchema(name)).toBeUndefined();
   });
 });
 
 describe('server payloads', () => {
-  it('validates session state', () => {
-    const state = SessionStateSchema.parse({
-      sessionId,
-      locale: 'fr',
-      participants: [publicUser],
-    });
-
-    expect(state.participants).toHaveLength(1);
+  it('names a course, and only a course language', () => {
+    expect(CourseUpdatedSchema.parse({ lang: 'fr' })).toEqual({ lang: 'fr' });
+    expect(CourseUpdatedSchema.safeParse({ lang: 'xx' }).success).toBe(false);
   });
 
-  it('validates a chat message and a presence update', () => {
-    const message = ChatMessageSchema.parse({
-      id: '11111111-2222-4333-8444-555555555555',
-      sessionId,
-      author: publicUser,
-      body: 'bonjour',
-      sentAt: '2026-08-01T10:00:00.000Z',
-    });
-
-    expect(message.author.displayName).toBe('ada_lovelace');
-
+  it('validates a presence update', () => {
     expect(
-      PresenceUpdateSchema.parse({
-        userId: publicUser.id,
-        status: 'away',
-        at: '2026-08-01T10:00:00.000Z',
-      }).status,
-    ).toBe('away');
+      PresenceUpdateSchema.parse({ userId, status: 'online', at: '2026-08-01T10:00:00.000Z' })
+        .status,
+    ).toBe('online');
   });
 
-  it('rejects an unknown error code', () => {
-    expect(SocketErrorSchema.parse({ code: 'RATE_LIMITED', message: 'slow down' }).code).toBe(
-      'RATE_LIMITED',
+  it('carries an error code, never a sentence', () => {
+    expect(AppErrorSchema.parse({ code: 'request.invalid' }).code).toBe('request.invalid');
+    expect(AppErrorSchema.safeParse({ code: 'RATE_LIMITED' }).success).toBe(false);
+    expect(AppErrorSchema.safeParse({ code: 'server.rateLimited', message: 'x' }).success).toBe(
+      true,
     );
-    expect(SocketErrorSchema.safeParse({ code: 'TEAPOT', message: 'no' }).success).toBe(false);
   });
 });
 
 describe('rooms', () => {
-  it('namespaces sessions and users apart', () => {
-    expect(sessionRoom(sessionId)).toBe(`session:${sessionId}`);
-    expect(userRoom(publicUser.id)).toBe(`user:${publicUser.id}`);
-    expect(sessionRoom(sessionId)).not.toBe(userRoom(sessionId));
+  it('names a user room', () => {
+    expect(userRoom(userId)).toBe(`user:${userId}`);
   });
 });
