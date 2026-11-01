@@ -4,11 +4,11 @@
   "lang": "fr",
   "level": "C1",
   "locales": ["en", "fr", "de"],
-  "title": "Au-delà d’avoir, être, mettre",
+  "title": "Au-delà d’avoir, faire, être, mettre",
   "objective": {
-    "en": "Replace all-purpose verbs with precise ones: éprouver, commettre, effectuer, dresser, constituer.",
-    "fr": "Remplacer avoir, être et mettre par des verbes précis : éprouver, commettre, effectuer, dresser, constituer.",
-    "de": "Passe-partout-Verben durch präzise Verben ersetzen: éprouver, commettre, effectuer, dresser, constituer."
+    "en": "Replace avoir, faire, être and mettre with precise verbs: éprouver, commettre, effectuer, dresser, constituer.",
+    "fr": "Remplacer avoir, faire, être et mettre par des verbes précis : éprouver, commettre, effectuer, dresser, constituer.",
+    "de": "avoir, faire, être und mettre durch präzise Verben ersetzen: éprouver, commettre, effectuer, dresser, constituer."
   },
   "estimatedMinutes": 20,
   "provenance": {
@@ -21,9 +21,9 @@
   "kind": "vocabulary",
   "theme": "language",
   "coverageNotes": {
-    "en": "Twelve precise verbs that replace avoir, faire and mettre in formal French, each with its typical object (éprouver une crainte, constituer un risque, commettre une erreur, effectuer un virement, dresser un bilan). They are grouped by what they express: feeling or suffering, acting or carrying out, establishing or formulating.",
-    "fr": "Douze verbes précis qui remplacent avoir, faire et mettre dans un français soutenu, chacun avec son complément typique (éprouver une crainte, constituer un risque, commettre une erreur, effectuer un virement, dresser un bilan). Ils sont regroupés selon ce qu’ils expriment : ressentir ou subir, agir ou réaliser, établir ou formuler.",
-    "de": "Zwölf präzise Verben, die im gehobenen Französisch avoir, faire und mettre ersetzen, jeweils mit ihrem typischen Objekt (éprouver une crainte, constituer un risque, commettre une erreur, effectuer un virement, dresser un bilan). Sie sind nach ihrer Funktion gruppiert: empfinden oder erleiden, handeln oder ausführen, erstellen oder formulieren."
+    "en": "Twelve precise verbs that replace avoir, faire, être and mettre in formal French, each with its typical object (éprouver une crainte, constituer un risque, commettre une erreur, effectuer un virement, dresser un bilan). They are grouped by what they express: feeling or suffering, acting or carrying out, establishing or formulating.",
+    "fr": "Douze verbes précis qui remplacent avoir, faire, être et mettre dans un français soutenu, chacun avec son complément typique (éprouver une crainte, constituer un risque, commettre une erreur, effectuer un virement, dresser un bilan). Ils sont regroupés selon ce qu’ils expriment : ressentir ou subir, agir ou réaliser, établir ou formuler.",
+    "de": "Zwölf präzise Verben, die im gehobenen Französisch avoir, faire, être und mettre ersetzen, jeweils mit ihrem typischen Objekt (éprouver une crainte, constituer un risque, commettre une erreur, effectuer un virement, dresser un bilan). Sie sind nach ihrer Funktion gruppiert: empfinden oder erleiden, handeln oder ausführen, erstellen oder formulieren."
   },
   "targetCount": 12,
   "countRationale": {

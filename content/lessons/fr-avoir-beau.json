@@ -911,23 +911,23 @@
                 { "tokenId": "t-4", "text": "beau" },
                 { "tokenId": "t-5", "text": "travailler" },
                 { "tokenId": "t-6", "text": "," },
-                { "tokenId": "t-7", "text": "donc" },
-                { "tokenId": "t-8", "text": "il" },
-                { "tokenId": "t-9", "text": "a" },
+                { "tokenId": "t-7", "text": "il" },
+                { "tokenId": "t-8", "text": "a" },
+                { "tokenId": "t-9", "text": "donc" },
                 { "tokenId": "t-10", "text": "échoué" },
                 { "tokenId": "t-11", "text": "." }
               ],
-              "faultyTokenId": "t-7",
+              "faultyTokenId": "t-9",
               "correction": {
                 "mode": "select",
-                "accepted": { "answers": ["pourtant"] },
-                "choices": ["pourtant", "donc", "car"]
+                "accepted": { "answers": ["quand même"] },
+                "choices": ["quand même", "donc", "alors"]
               },
               "ruleIds": ["r-opposition"],
               "answerExplanation": {
-                "en": "After avoir beau, the result is a contrast, so donc (consequence) does not fit; pourtant does.",
-                "fr": "Après avoir beau, le résultat est un contraste : donc (conséquence) ne convient pas, pourtant oui.",
-                "de": "Nach avoir beau ist das Ergebnis ein Gegensatz: donc (Folge) passt nicht, pourtant schon."
+                "en": "Avoir beau already contains the contrast, so donc (consequence) does not fit. Quand même after the verb only stresses it: il a quand même échoué.",
+                "fr": "Avoir beau contient déjà l'opposition : donc (conséquence) ne convient pas. Quand même, après le verbe, ne fait que la souligner : il a quand même échoué.",
+                "de": "Avoir beau enthält den Gegensatz schon, daher passt donc (Folge) nicht. Quand même nach dem Verb verstärkt ihn nur: il a quand même échoué."
               }
             }
           ]

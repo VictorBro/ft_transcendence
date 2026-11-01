@@ -718,7 +718,7 @@
                 { "tokenId": "t-3", "text": "," },
                 { "tokenId": "t-4", "text": "on" },
                 { "tokenId": "t-5", "text": "est" },
-                { "tokenId": "t-6", "text": "parti" },
+                { "tokenId": "t-6", "text": "partis" },
                 { "tokenId": "t-7", "text": "ensemble" },
                 { "tokenId": "t-8", "text": "." }
               ],
@@ -730,9 +730,9 @@
               },
               "ruleIds": ["rule-agreement"],
               "answerExplanation": {
-                "en": "Here on means nous, all women: the participle is feminine plural, parties.",
-                "fr": "Ici on signifie nous, des femmes : le participe est au féminin pluriel, parties.",
-                "de": "Hier bedeutet on nous, lauter Frauen: Das Partizip steht im Femininum Plural, parties."
+                "en": "Here on means nous, all women. Once the participle agrees with them, it must be feminine plural: parties, not the masculine partis.",
+                "fr": "Ici on signifie nous, des femmes. Dès lors que le participe s'accorde avec elles, il se met au féminin pluriel : parties, et non le masculin partis.",
+                "de": "Hier bedeutet on nous, lauter Frauen. Wird das Partizip an sie angeglichen, steht es im Femininum Plural: parties, nicht das maskuline partis."
               }
             },
             {

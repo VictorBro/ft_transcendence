@@ -885,14 +885,14 @@
               "type": "grammar_gap_typing",
               "itemId": "exam-time-1",
               "before": "Le professeur n'est pas là. Il arrive",
-              "after": ", dans deux minutes.",
+              "after": ", dans une heure.",
               "accepted": { "answers": ["bientôt"] },
               "hint": null,
               "ruleIds": ["rule-time-future"],
               "answerExplanation": {
-                "en": "bientôt means soon, with an accent circonflexe on the o.",
-                "fr": "bientôt veut dire dans peu de temps, avec un accent circonflexe sur le o.",
-                "de": "bientôt heißt bald, mit Accent circonflexe auf dem o."
+                "en": "In an hour is soon, not right away: bientôt, with an accent circonflexe on the o.",
+                "fr": "Dans une heure, c'est dans peu de temps, pas sans attendre : bientôt, avec un accent circonflexe sur le o.",
+                "de": "In einer Stunde ist bald, nicht sofort: bientôt, mit Accent circonflexe auf dem o."
               }
             },
             {

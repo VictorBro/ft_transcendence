@@ -6,9 +6,9 @@
   "locales": ["en", "fr", "de"],
   "title": "L’alphabet et les accents",
   "objective": {
-    "en": "Spell your name with the letters of the alphabet and name the marks: acute, grave, circumflex, cedilla, diaeresis.",
-    "fr": "Épeler son nom et son prénom avec les lettres de l’alphabet et nommer les signes : accent aigu, grave, circonflexe, cédille, tréma.",
-    "de": "Namen und Vornamen mit den Buchstaben des Alphabets buchstabieren und die Zeichen benennen: Akut, Gravis, Zirkumflex, Cedille, Trema."
+    "en": "Use the words for spelling (alphabet, lettre, nom, prénom, épeler) and name the marks: acute, grave, circumflex, cedilla, diaeresis.",
+    "fr": "Employer les mots pour épeler (alphabet, lettre, nom, prénom, épeler) et nommer les signes : accent aigu, grave, circonflexe, cédille, tréma.",
+    "de": "Die Wörter zum Buchstabieren verwenden (alphabet, lettre, nom, prénom, épeler) und die Zeichen benennen: Akut, Gravis, Zirkumflex, Cedille, Trema."
   },
   "estimatedMinutes": 17,
   "provenance": {
@@ -27,9 +27,9 @@
   },
   "targetCount": 10,
   "countRationale": {
-    "en": "Ten words: enough to spell a name and name every French mark, not too many for a first lesson.",
-    "fr": "Dix mots : assez pour épeler un nom et nommer tous les signes du français, sans surcharger une première leçon.",
-    "de": "Zehn Wörter: genug, um einen Namen zu buchstabieren und alle französischen Zeichen zu benennen, ohne eine erste Lektion zu überladen."
+    "en": "Ten words: enough to talk about spelling a name and name every French mark, not too many for a first lesson.",
+    "fr": "Dix mots : assez pour parler de l’épellation d’un nom et nommer tous les signes du français, sans surcharger une première leçon.",
+    "de": "Zehn Wörter: genug, um über das Buchstabieren eines Namens zu sprechen und alle französischen Zeichen zu benennen, ohne eine erste Lektion zu überladen."
   },
   "difficultyBalance": {
     "en": "Spelling words are core; the names of the marks are harder to remember and to write.",

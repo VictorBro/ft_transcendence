@@ -409,14 +409,14 @@
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Elle sait ce qu’elle veut et ne cède pas facilement : elle ",
+        "before": "Elle a une forte personnalité et sait ce qu’elle veut : elle ",
         "after": ".",
         "accepted": { "answers": ["a du caractère"] },
-        "referenceTargetIds": ["caractere", "tetu", "susceptible", "sensible"],
+        "referenceTargetIds": ["caractere", "timide", "susceptible", "sensible"],
         "explanation": {
-          "en": "Knowing what you want and not giving in is what the expression describes.",
-          "fr": "Savoir ce que l’on veut et ne pas céder, c’est ce que décrit l’expression.",
-          "de": "Zu wissen, was man will, und nicht nachzugeben, beschreibt die Wendung."
+          "en": "A strong personality and knowing what you want is what the expression describes.",
+          "fr": "Une forte personnalité et savoir ce que l’on veut, c’est ce que décrit l’expression.",
+          "de": "Eine starke Persönlichkeit und zu wissen, was man will, beschreibt die Wendung."
         }
       },
       "listeningOptionTargetIds": ["caractere", "rancunier", "paresseux", "ambitieux"]

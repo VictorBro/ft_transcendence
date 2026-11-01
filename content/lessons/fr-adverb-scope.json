@@ -54,9 +54,9 @@
                 "de": "Den Satz kommentieren oder das Verb bestimmen"
               },
               "text": {
-                "en": "An adverb can comment on **the whole sentence** or describe **the verb alone**. Its place tells the reader which.\n\n- Comment on the whole sentence: `Heureusement, il a compris.` = it is lucky that he understood.\n- Manner, after the verb: `Il a répondu sagement.` = he answered in a wise way.\n- The same adverb at the start: `Sagement, il a répondu.` = it was wise of him to answer.\n\nWith `heureusement`, `malheureusement` or `franchement`, the place inside the verb group hardly changes the meaning: `Il a heureusement compris.` Be careful with manner adverbs such as `sagement`: `Il a sagement répondu` can be read both ways.",
-                "fr": "Un adverbe peut commenter **toute la phrase** ou préciser **le verbe seul**. Sa place indique lequel.\n\n- Commentaire sur toute la phrase : `Heureusement, il a compris.` = c’est une chance qu’il ait compris.\n- Manière, après le verbe : `Il a répondu sagement.` = il a répondu de façon sage.\n- Le même adverbe en tête : `Sagement, il a répondu.` = il a été sage de répondre.\n\nAvec `heureusement`, `malheureusement` ou `franchement`, la place dans le groupe verbal change peu le sens : `Il a heureusement compris.` Méfiez-vous des adverbes de manière comme `sagement` : `Il a sagement répondu` peut se lire des deux façons.",
-                "de": "Ein Adverb kann **den ganzen Satz** kommentieren oder **das Verb allein** näher bestimmen. Seine Stellung zeigt, was gemeint ist.\n\n- Kommentar zum ganzen Satz: `Heureusement, il a compris.` = zum Glück hat er verstanden.\n- Art und Weise, nach dem Verb: `Il a répondu sagement.` = er hat klug geantwortet.\n- Dasselbe Adverb am Satzanfang: `Sagement, il a répondu.` = es war klug von ihm zu antworten.\n\nBei `heureusement`, `malheureusement` oder `franchement` ändert die Stellung in der Verbgruppe kaum etwas: `Il a heureusement compris.` Vorsicht bei Adverbien der Art und Weise wie `sagement`: `Il a sagement répondu` kann beides bedeuten."
+                "en": "An adverb can comment on **the whole sentence** or describe **the verb alone**. Its place tells the reader which.\n\n- Comment on the whole sentence: `Heureusement, il a compris.` = it is lucky that he understood.\n- Manner, after the verb: `Il a répondu sagement.` = he answered in a wise way.\n- The same adverb at the start: `Sagement, il a répondu.` = it was wise of him to answer.\n\nWith `heureusement` or `malheureusement`, the place inside the verb group hardly changes the meaning: `Il a heureusement compris.` Be careful with manner adverbs such as `sagement`: `Il a sagement répondu` can be read both ways.",
+                "fr": "Un adverbe peut commenter **toute la phrase** ou préciser **le verbe seul**. Sa place indique lequel.\n\n- Commentaire sur toute la phrase : `Heureusement, il a compris.` = c’est une chance qu’il ait compris.\n- Manière, après le verbe : `Il a répondu sagement.` = il a répondu de façon sage.\n- Le même adverbe en tête : `Sagement, il a répondu.` = il a été sage de répondre.\n\nAvec `heureusement` ou `malheureusement`, la place dans le groupe verbal change peu le sens : `Il a heureusement compris.` Méfiez-vous des adverbes de manière comme `sagement` : `Il a sagement répondu` peut se lire des deux façons.",
+                "de": "Ein Adverb kann **den ganzen Satz** kommentieren oder **das Verb allein** näher bestimmen. Seine Stellung zeigt, was gemeint ist.\n\n- Kommentar zum ganzen Satz: `Heureusement, il a compris.` = zum Glück hat er verstanden.\n- Art und Weise, nach dem Verb: `Il a répondu sagement.` = er hat klug geantwortet.\n- Dasselbe Adverb am Satzanfang: `Sagement, il a répondu.` = es war klug von ihm zu antworten.\n\nBei `heureusement` oder `malheureusement` ändert die Stellung in der Verbgruppe kaum etwas: `Il a heureusement compris.` Vorsicht bei Adverbien der Art und Weise wie `sagement`: `Il a sagement répondu` kann beides bedeuten."
               },
               "formTable": [],
               "examples": [
@@ -324,7 +324,17 @@
               "itemId": "ex-s-typing-3",
               "before": "Le médecin m’a parlé",
               "after": ", avec des mots simples.",
-              "accepted": { "answers": ["calmement", "doucement", "gentiment", "patiemment"] },
+              "accepted": {
+                "answers": [
+                  "calmement",
+                  "clairement",
+                  "doucement",
+                  "gentiment",
+                  "lentement",
+                  "patiemment",
+                  "simplement"
+                ]
+              },
               "hint": {
                 "en": "manner, after the verb: how he spoke",
                 "fr": "manière, après le verbe : comment il a parlé",
@@ -994,9 +1004,9 @@
               "correction": { "mode": "type", "accepted": { "answers": ["que"] }, "choices": [] },
               "ruleIds": ["rule-ne-que"],
               "answerExplanation": {
-                "en": "ne… seulement does not exist: with ne, use que. Ils ne parlent que français à la maison.",
-                "fr": "« ne… seulement » n’existe pas : avec ne, on emploie que. Ils ne parlent que français à la maison.",
-                "de": "„ne… seulement“ gibt es nicht: Mit ne steht que. Ils ne parlent que français à la maison."
+                "en": "seulement cannot replace que after ne: with ne, use que (ne… pas seulement, not only, is correct). Ils ne parlent que français à la maison.",
+                "fr": "seulement ne remplace pas que après ne : avec ne, on emploie que (ne… pas seulement, au sens de non seulement, est correct). Ils ne parlent que français à la maison.",
+                "de": "seulement ersetzt nach ne nicht que: Mit ne steht que (ne… pas seulement, nicht nur, ist korrekt). Ils ne parlent que français à la maison."
               }
             }
           ]

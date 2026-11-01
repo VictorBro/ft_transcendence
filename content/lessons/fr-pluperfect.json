@@ -506,7 +506,7 @@
               "rows": [
                 {
                   "rowId": "r-1",
-                  "pronoun": "je",
+                  "pronoun": "je (partir)",
                   "accepted": { "answers": ["étais parti", "étais partie"] },
                   "answerExplanation": {
                     "en": "With je: étais + the participle parti (partie if a woman speaks).",
@@ -516,7 +516,7 @@
                 },
                 {
                   "rowId": "r-2",
-                  "pronoun": "il",
+                  "pronoun": "il (arriver)",
                   "accepted": { "answers": ["était arrivé"] },
                   "answerExplanation": {
                     "en": "With il: était + the participle arrivé.",
@@ -526,7 +526,7 @@
                 },
                 {
                   "rowId": "r-3",
-                  "pronoun": "nous",
+                  "pronoun": "nous (venir)",
                   "accepted": { "answers": ["étions venus", "étions venues"] },
                   "answerExplanation": {
                     "en": "With nous: étions + the participle venus, in the plural.",
@@ -555,7 +555,7 @@
               "rows": [
                 {
                   "rowId": "r-1",
-                  "pronoun": "tu",
+                  "pronoun": "tu (aller)",
                   "accepted": { "answers": ["étais allé", "étais allée"] },
                   "answerExplanation": {
                     "en": "With tu: étais + the participle allé (allée for a woman).",
@@ -565,7 +565,7 @@
                 },
                 {
                   "rowId": "r-2",
-                  "pronoun": "elle",
+                  "pronoun": "elle (partir)",
                   "accepted": { "answers": ["était partie"] },
                   "answerExplanation": {
                     "en": "With elle: était + the feminine participle partie.",
@@ -575,7 +575,7 @@
                 },
                 {
                   "rowId": "r-3",
-                  "pronoun": "ils",
+                  "pronoun": "ils (rester)",
                   "accepted": { "answers": ["étaient restés"] },
                   "answerExplanation": {
                     "en": "With ils: étaient + the masculine plural restés.",
@@ -1235,7 +1235,7 @@
               "type": "grammar_gap_typing",
               "itemId": "exam-avoir-1",
               "before": "À huit heures, les enfants",
-              "after": "leur petit-déjeuner.",
+              "after": "leur petit-déjeuner. (finir)",
               "accepted": { "answers": ["avaient fini"] },
               "hint": null,
               "ruleIds": ["rule-avoir-forms"],
@@ -1249,7 +1249,7 @@
               "type": "grammar_gap_typing",
               "itemId": "exam-avoir-2",
               "before": "Quand le professeur est entré, nous",
-              "after": "tous nos livres.",
+              "after": "tous nos livres. (ouvrir)",
               "accepted": { "answers": ["avions ouvert"] },
               "hint": null,
               "ruleIds": ["rule-avoir-forms"],
@@ -1263,7 +1263,7 @@
               "type": "grammar_gap_typing",
               "itemId": "exam-avoir-3",
               "before": "Madame, hier vous",
-              "after": "votre sac dans le train.",
+              "after": "votre sac dans le train. (laisser)",
               "accepted": { "answers": ["aviez laissé"] },
               "hint": null,
               "ruleIds": ["rule-avoir-forms"],
@@ -1276,15 +1276,15 @@
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-avoir-4",
-              "before": "Le jour du concert, j'",
-              "after": "mal dormi.",
+              "before": "J'ai mal chanté au concert parce que j'",
+              "after": "mal dormi la nuit d'avant.",
               "accepted": { "answers": ["avais"] },
               "hint": null,
               "ruleIds": ["rule-avoir-forms"],
               "answerExplanation": {
-                "en": "With j', the imperfect of avoir is avais.",
-                "fr": "Avec j', l'imparfait d'avoir est avais.",
-                "de": "Zu j' gehört avais (Imparfait von avoir)."
+                "en": "The bad night came before the concert: plus-que-parfait, and with j' the imperfect of avoir is avais.",
+                "fr": "La mauvaise nuit précède le concert : plus-que-parfait, et avec j' l'imparfait d'avoir est avais.",
+                "de": "Die schlechte Nacht lag vor dem Konzert: plus-que-parfait, und zu j' gehört avais (Imparfait von avoir)."
               }
             }
           ]
@@ -1306,7 +1306,7 @@
               "rows": [
                 {
                   "rowId": "r-1",
-                  "pronoun": "je",
+                  "pronoun": "je (rentrer)",
                   "accepted": { "answers": ["étais rentré", "étais rentrée"] },
                   "answerExplanation": {
                     "en": "With je: étais + the participle rentré (rentrée for a woman).",
@@ -1316,7 +1316,7 @@
                 },
                 {
                   "rowId": "r-2",
-                  "pronoun": "vous",
+                  "pronoun": "vous (arriver)",
                   "accepted": {
                     "answers": ["étiez arrivés", "étiez arrivées", "étiez arrivé", "étiez arrivée"]
                   },
@@ -1328,7 +1328,7 @@
                 },
                 {
                   "rowId": "r-3",
-                  "pronoun": "elles",
+                  "pronoun": "elles (sortir)",
                   "accepted": { "answers": ["étaient sorties"] },
                   "answerExplanation": {
                     "en": "With elles: étaient + the feminine plural sorties.",

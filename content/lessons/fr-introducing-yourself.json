@@ -162,7 +162,7 @@
                   },
                   "note": {
                     "en": "Je parle + language. Un peu means a little.",
-                    "fr": "Je parle + langue. Un peu veut dire a little.",
+                    "fr": "Je parle + langue. Un peu veut dire « pas beaucoup ».",
                     "de": "Je parle + Sprache. Un peu bedeutet ein bisschen."
                   },
                   "expressionIds": ["jhabite-a", "je-parle"]
@@ -1005,10 +1005,10 @@
                 {
                   "lineId": "exam-line-3",
                   "roleId": "sofia",
-                  "before": "Je m’appelle Clara. Enchantée !",
+                  "before": "Je m’appelle Sofia. Enchantée !",
                   "translation": {
-                    "en": "My name is Clara. Nice to meet you!",
-                    "de": "Ich heiße Clara. Freut mich!"
+                    "en": "My name is Sofia. Nice to meet you!",
+                    "de": "Ich heiße Sofia. Freut mich!"
                   },
                   "gap": null,
                   "after": ""
@@ -1016,10 +1016,10 @@
                 {
                   "lineId": "exam-line-4",
                   "roleId": "marc",
-                  "before": "Enchanté, Clara.",
+                  "before": "Enchanté, Sofia.",
                   "translation": {
-                    "en": "Nice to meet you, Clara. I am Belgian.",
-                    "de": "Freut mich, Clara. Ich bin Belgier."
+                    "en": "Nice to meet you, Sofia. I am Belgian.",
+                    "de": "Freut mich, Sofia. Ich bin Belgier."
                   },
                   "gap": {
                     "gapId": "gap-2",
@@ -1094,8 +1094,8 @@
                 {
                   "lineId": "exam-line-10",
                   "roleId": "marc",
-                  "before": "À bientôt, Clara !",
-                  "translation": { "en": "See you soon, Clara!", "de": "Bis bald, Clara!" },
+                  "before": "À bientôt, Sofia !",
+                  "translation": { "en": "See you soon, Sofia!", "de": "Bis bald, Sofia!" },
                   "gap": null,
                   "after": ""
                 }

@@ -121,7 +121,7 @@
               "type": "grammar_gap_choice",
               "itemId": "ex-un-choice-2",
               "before": "Voici",
-              "after": "trousse.",
+              "after": "gomme.",
               "choices": [
                 { "choiceId": "c-1", "text": "un" },
                 { "choiceId": "c-2", "text": "des" },
@@ -132,9 +132,9 @@
               "hint": null,
               "ruleIds": ["r-un-une"],
               "answerExplanation": {
-                "en": "Trousse is feminine, so you say une trousse.",
-                "fr": "Trousse est féminin : on dit une trousse.",
-                "de": "Trousse ist feminin, also sagt man une trousse."
+                "en": "Gomme is feminine, so you say une gomme.",
+                "fr": "Gomme est féminin : on dit une gomme.",
+                "de": "Gomme ist feminin, also sagt man une gomme."
               }
             },
             {
@@ -219,14 +219,14 @@
               "type": "grammar_gap_typing",
               "itemId": "ex-un-typing-2",
               "before": "Voici",
-              "after": "ordinateur.",
+              "after": "crayon.",
               "accepted": { "answers": ["un"] },
               "hint": { "en": "masculine noun", "fr": "nom masculin", "de": "maskulines Nomen" },
               "ruleIds": ["r-un-une"],
               "answerExplanation": {
-                "en": "Ordinateur is masculine, so you say un ordinateur.",
-                "fr": "Ordinateur est masculin : on dit un ordinateur.",
-                "de": "Ordinateur ist maskulin, also sagt man un ordinateur."
+                "en": "Crayon is masculine, so you say un crayon.",
+                "fr": "Crayon est masculin : on dit un crayon.",
+                "de": "Crayon ist maskulin, also sagt man un crayon."
               }
             },
             {
@@ -608,14 +608,14 @@
               "type": "grammar_gap_typing",
               "itemId": "ex-des-typing-1",
               "before": "Voici",
-              "after": "trousses.",
+              "after": "tables.",
               "accepted": { "answers": ["des"] },
               "hint": { "en": "plural", "fr": "pluriel", "de": "Plural" },
               "ruleIds": ["r-des"],
               "answerExplanation": {
-                "en": "Trousses is plural, so you use des.",
-                "fr": "Trousses est au pluriel : on emploie des.",
-                "de": "Trousses steht im Plural, also verwendet man des."
+                "en": "Tables is plural, so you use des.",
+                "fr": "Tables est au pluriel : on emploie des.",
+                "de": "Tables steht im Plural, also verwendet man des."
               }
             },
             {
@@ -711,56 +711,56 @@
               "type": "grammar_gap_typing",
               "itemId": "exam-un-une-1",
               "before": "Voici",
-              "after": "dictionnaire.",
+              "after": "cahier.",
               "accepted": { "answers": ["un"] },
               "hint": null,
               "ruleIds": ["r-un-une"],
               "answerExplanation": {
-                "en": "Dictionnaire is masculine, so you say un dictionnaire.",
-                "fr": "Dictionnaire est masculin : on dit un dictionnaire.",
-                "de": "Dictionnaire ist maskulin, also sagt man un dictionnaire."
+                "en": "Cahier is masculine, so you say un cahier.",
+                "fr": "Cahier est masculin : on dit un cahier.",
+                "de": "Cahier ist maskulin, also sagt man un cahier."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-un-une-2",
               "before": "C'est",
-              "after": "lampe.",
+              "after": "chaise.",
               "accepted": { "answers": ["une"] },
               "hint": null,
               "ruleIds": ["r-un-une"],
               "answerExplanation": {
-                "en": "Lampe is feminine, so you say une lampe.",
-                "fr": "Lampe est féminin : on dit une lampe.",
-                "de": "Lampe ist feminin, also sagt man une lampe."
+                "en": "Chaise is feminine, so you say une chaise.",
+                "fr": "Chaise est féminin : on dit une chaise.",
+                "de": "Chaise ist feminin, also sagt man une chaise."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-un-une-3",
               "before": "Il y a",
-              "after": "affiche sur le mur.",
+              "after": "table dans la classe.",
               "accepted": { "answers": ["une"] },
               "hint": null,
               "ruleIds": ["r-gender-learn"],
               "answerExplanation": {
-                "en": "Affiche is feminine. Learn it with its article: une affiche.",
-                "fr": "Affiche est féminin. Apprenez-le avec son article : une affiche.",
-                "de": "Affiche ist feminin. Lerne es mit seinem Artikel: une affiche."
+                "en": "Table is feminine. Learn it with its article: une table.",
+                "fr": "Table est féminin. Apprenez-le avec son article : une table.",
+                "de": "Table ist feminin. Lerne es mit seinem Artikel: une table."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-un-une-4",
               "before": "Tu as",
-              "after": "bureau ?",
+              "after": "stylo ?",
               "accepted": { "answers": ["un"] },
               "hint": null,
               "ruleIds": ["r-gender-learn"],
               "answerExplanation": {
-                "en": "Bureau is masculine. Learn it with its article: un bureau.",
-                "fr": "Bureau est masculin. Apprenez-le avec son article : un bureau.",
-                "de": "Bureau ist maskulin. Lerne es mit seinem Artikel: un bureau."
+                "en": "Stylo is masculine. Learn it with its article: un stylo.",
+                "fr": "Stylo est masculin. Apprenez-le avec son article : un stylo.",
+                "de": "Stylo ist maskulin. Lerne es mit seinem Artikel: un stylo."
               }
             }
           ]
@@ -793,28 +793,28 @@
               "type": "grammar_gap_typing",
               "itemId": "exam-des-2",
               "before": "Ce sont",
-              "after": "dictionnaires.",
+              "after": "livres.",
               "accepted": { "answers": ["des"] },
               "hint": null,
               "ruleIds": ["r-des"],
               "answerExplanation": {
-                "en": "Dictionnaires is plural, so you use des.",
-                "fr": "Dictionnaires est au pluriel : on emploie des.",
-                "de": "Dictionnaires steht im Plural, also verwendet man des."
+                "en": "Livres is plural, so you use des.",
+                "fr": "Livres est au pluriel : on emploie des.",
+                "de": "Livres steht im Plural, also verwendet man des."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-des-3",
               "before": "J'ai",
-              "after": "lampes.",
+              "after": "gommes.",
               "accepted": { "answers": ["des"] },
               "hint": null,
               "ruleIds": ["r-des"],
               "answerExplanation": {
-                "en": "Lampes is plural, so you use des.",
-                "fr": "Lampes est au pluriel : on emploie des.",
-                "de": "Lampes steht im Plural, also verwendet man des."
+                "en": "Gommes is plural, so you use des.",
+                "fr": "Gommes est au pluriel : on emploie des.",
+                "de": "Gommes steht im Plural, also verwendet man des."
               }
             }
           ]
@@ -850,32 +850,32 @@
               "type": "grammar_word_order",
               "itemId": "exam-order-2",
               "tokens": [
-                { "tokenId": "t-1", "text": "bureau" },
+                { "tokenId": "t-1", "text": "tableau" },
                 { "tokenId": "t-2", "text": "un" },
                 { "tokenId": "t-3", "text": "C'est" }
               ],
               "acceptedOrders": [["t-3", "t-2", "t-1"]],
               "ruleIds": ["r-un-une"],
               "answerExplanation": {
-                "en": "Bureau is masculine, so you say un bureau.",
-                "fr": "Bureau est masculin : on dit un bureau.",
-                "de": "Bureau ist maskulin, also sagt man un bureau."
+                "en": "Tableau is masculine, so you say un tableau.",
+                "fr": "Tableau est masculin : on dit un tableau.",
+                "de": "Tableau ist maskulin, also sagt man un tableau."
               }
             },
             {
               "type": "grammar_word_order",
               "itemId": "exam-order-3",
               "tokens": [
-                { "tokenId": "t-1", "text": "affiche" },
+                { "tokenId": "t-1", "text": "règle" },
                 { "tokenId": "t-2", "text": "Voici" },
                 { "tokenId": "t-3", "text": "une" }
               ],
               "acceptedOrders": [["t-2", "t-3", "t-1"]],
               "ruleIds": ["r-un-une"],
               "answerExplanation": {
-                "en": "Affiche is feminine, so you say une affiche.",
-                "fr": "Affiche est féminin : on dit une affiche.",
-                "de": "Affiche ist feminin, also sagt man une affiche."
+                "en": "Règle is feminine, so you say une règle.",
+                "fr": "Règle est féminin : on dit une règle.",
+                "de": "Règle ist feminin, also sagt man une règle."
               }
             }
           ]

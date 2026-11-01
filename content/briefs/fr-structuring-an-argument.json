@@ -47,9 +47,9 @@
       },
       "targetIds": ["tout-dabord", "premier-lieu", "second-lieu", "enfin"],
       "introduction": {
-        "en": "These connectors **open and order** your arguments. Use them in this sequence:\n\n- `tout d'abord`: to begin\n- `en premier lieu`: the first point\n- `en second lieu`: the second point\n- `enfin`: the last point",
-        "fr": "Ces connecteurs **ouvrent et ordonnent** vos arguments. Utilisez-les dans cet ordre :\n\n- `tout d'abord` : pour commencer\n- `en premier lieu` : le premier point\n- `en second lieu` : le deuxième point\n- `enfin` : le dernier point",
-        "de": "Diese Konnektoren **eröffnen und ordnen** deine Argumente. Verwende sie in dieser Reihenfolge:\n\n- `tout d'abord`: zu Beginn\n- `en premier lieu`: der erste Punkt\n- `en second lieu`: der zweite Punkt\n- `enfin`: der letzte Punkt"
+        "en": "These connectors **open and order** your arguments. Use them in this sequence:\n\n- `tout d'abord` or `en premier lieu`: the first point (one or the other, never both)\n- `en second lieu`: the second point\n- `enfin`: the last point",
+        "fr": "Ces connecteurs **ouvrent et ordonnent** vos arguments. Utilisez-les dans cet ordre :\n\n- `tout d'abord` ou `en premier lieu` : le premier point (l'un ou l'autre, jamais les deux)\n- `en second lieu` : le deuxième point\n- `enfin` : le dernier point",
+        "de": "Diese Konnektoren **eröffnen und ordnen** deine Argumente. Verwende sie in dieser Reihenfolge:\n\n- `tout d'abord` oder `en premier lieu`: der erste Punkt (das eine oder das andere, nie beide)\n- `en second lieu`: der zweite Punkt\n- `enfin`: der letzte Punkt"
       }
     },
     {

@@ -417,9 +417,9 @@
                 "de": "Was man hört und was man schreibt"
               },
               "text": {
-                "en": "When speaking, the endings `-e`, `-es` and `-ent` are silent: `je parle`, `tu parles`, `il parle` and `ils parlent` all sound the same. Only `nous parlons` and `vous parlez` sound different.\n\nBefore a vowel or a mute h, `je` becomes `j'`:\n\n- `j'habite`\n- `j'aime`\n\nIn writing, check the subject to choose the right ending: `Marie parle`, `Marie et Paul parlent`.",
-                "fr": "À l'oral, les terminaisons `-e`, `-es` et `-ent` ne se prononcent pas : `je parle`, `tu parles`, `il parle` et `ils parlent` ont le même son. Seuls `nous parlons` et `vous parlez` sonnent différemment.\n\nDevant une voyelle ou un h muet, `je` devient `j'` :\n\n- `j'habite`\n- `j'aime`\n\nÀ l'écrit, vérifiez le sujet pour choisir la bonne terminaison : `Marie parle`, `Marie et Paul parlent`.",
-                "de": "Gesprochen werden die Endungen `-e`, `-es` und `-ent` nicht: `je parle`, `tu parles`, `il parle` und `ils parlent` klingen gleich. Nur `nous parlons` und `vous parlez` klingen anders.\n\nVor einem Vokal oder stummen h wird `je` zu `j'`:\n\n- `j'habite`\n- `j'aime`\n\nSchriftlich prüfst du das Subjekt, um die richtige Endung zu wählen: `Marie parle`, `Marie et Paul parlent`."
+                "en": "When speaking, the endings `-e`, `-es` and `-ent` are silent: `je parle`, `tu parles`, `il parle` and `ils parlent` all sound the same. Only `nous parlons` and `vous parlez` sound different.\n\nBefore a vowel or a mute h, the s of `nous`, `vous`, `ils` and `elles` is pronounced z: `ils aiment`, `elles habitent`. So `ils aiment` does not sound like `il aime`.\n\nBefore a vowel or a mute h, `je` becomes `j'`:\n\n- `j'habite`\n- `j'aime`\n\nIn writing, check the subject to choose the right ending: `Marie parle`, `Marie et Paul parlent`.",
+                "fr": "À l'oral, les terminaisons `-e`, `-es` et `-ent` ne se prononcent pas : `je parle`, `tu parles`, `il parle` et `ils parlent` ont le même son. Seuls `nous parlons` et `vous parlez` sonnent différemment.\n\nDevant une voyelle ou un h muet, le s de `nous`, `vous`, `ils` et `elles` se prononce z : `ils aiment`, `elles habitent`. Donc `ils aiment` ne se prononce pas comme `il aime`.\n\nDevant une voyelle ou un h muet, `je` devient `j'` :\n\n- `j'habite`\n- `j'aime`\n\nÀ l'écrit, vérifiez le sujet pour choisir la bonne terminaison : `Marie parle`, `Marie et Paul parlent`.",
+                "de": "Gesprochen werden die Endungen `-e`, `-es` und `-ent` nicht: `je parle`, `tu parles`, `il parle` und `ils parlent` klingen gleich. Nur `nous parlons` und `vous parlez` klingen anders.\n\nVor einem Vokal oder stummen h wird das s von `nous`, `vous`, `ils` und `elles` als z gesprochen: `ils aiment`, `elles habitent`. Deshalb klingt `ils aiment` nicht wie `il aime`.\n\nVor einem Vokal oder stummen h wird `je` zu `j'`:\n\n- `j'habite`\n- `j'aime`\n\nSchriftlich prüfst du das Subjekt, um die richtige Endung zu wählen: `Marie parle`, `Marie et Paul parlent`."
               },
               "formTable": [
                 { "subject": "j'", "form": "habite", "example": null },
@@ -598,9 +598,9 @@
               "hint": null,
               "ruleIds": ["rule-silent-endings"],
               "answerExplanation": {
-                "en": "Elles aiment sounds like elle aime, but the plural is written with -ent.",
-                "fr": "Elles aiment se prononce comme elle aime, mais le pluriel s'écrit avec -ent.",
-                "de": "Elles aiment klingt wie elle aime, aber der Plural wird mit -ent geschrieben."
+                "en": "With elles, the ending is -ent: elles aiment. The -ent is silent but must be written, and you hear a z between elles and aiment.",
+                "fr": "Avec elles, la terminaison est -ent : elles aiment. Le -ent ne se prononce pas mais s'écrit, et on entend un z entre elles et aiment.",
+                "de": "Zu elles gehört die Endung -ent: elles aiment. Das -ent ist stumm, wird aber geschrieben, und zwischen elles und aiment hört man ein z."
               }
             },
             {

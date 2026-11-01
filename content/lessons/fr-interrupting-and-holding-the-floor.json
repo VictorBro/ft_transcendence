@@ -1090,6 +1090,7 @@
                     "accepted": {
                       "answers": [
                         "Puis-je ajouter quelque chose ?",
+                        "Puis-je ajouter quelque chose?",
                         "Puis-je ajouter quelque chose"
                       ]
                     },
@@ -1112,7 +1113,7 @@
                   "gap": {
                     "gapId": "gap-2",
                     "expressionId": "laissez-moi-finir",
-                    "accepted": { "answers": ["Laissez-moi finir"] },
+                    "accepted": { "answers": ["laissez-moi finir", "Laissez-moi finir"] },
                     "answerExplanation": {
                       "en": "He keeps the floor: Laissez-moi finir.",
                       "fr": "Il garde la parole : Laissez-moi finir.",

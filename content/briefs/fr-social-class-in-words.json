@@ -109,14 +109,14 @@
         "de": "ein Mittagessen (die Mittagsmahlzeit im Standardfranzösisch)"
       },
       "gap": {
-        "before": "Nous avons réservé une table pour le ",
-        "after": " de dimanche midi.",
+        "before": "Ma grand-mère, élevée à la campagne, appelait « dîner » le repas de midi ; à Paris, ce même repas s’appelle le ",
+        "after": ".",
         "accepted": { "answers": ["déjeuner"] },
-        "referenceTargetIds": ["dejeuner", "canape", "maman", "bagnole"],
+        "referenceTargetIds": ["dejeuner", "diner", "souper", "bagnole"],
         "explanation": {
-          "en": "Only déjeuner names the midday meal here.",
-          "fr": "Seul « déjeuner » désigne ici le repas de midi.",
-          "de": "Nur „déjeuner“ bezeichnet hier die Mittagsmahlzeit."
+          "en": "In standard Parisian French the midday meal is le déjeuner. Calling it dîner, as the grandmother does, marks a rural, regional or older usage.",
+          "fr": "En français standard, à Paris, le repas de midi est le déjeuner. L’appeler dîner, comme la grand-mère, trahit un usage rural, régional ou ancien.",
+          "de": "Im Pariser Standardfranzösisch heißt die Mittagsmahlzeit le déjeuner. Sie dîner zu nennen wie die Großmutter, verrät eine ländliche, regionale oder ältere Sprechweise."
         }
       },
       "listeningOptionTargetIds": ["dejeuner", "diner", "souper", "bouffer"]
@@ -162,14 +162,14 @@
         "de": "ein Abendessen (die Abendmahlzeit im Standardfranzösisch)"
       },
       "gap": {
-        "before": "Ce soir, nous organisons un ",
-        "after": " entre amis, avec huit invités à table.",
+        "before": "À Paris, quand on reçoit des amis à vingt heures, on les invite à un ",
+        "after": " ; mon cousin de Lausanne, lui, parlerait d’un souper.",
         "accepted": { "answers": ["dîner"] },
-        "referenceTargetIds": ["diner", "canape", "bagnole", "mere"],
+        "referenceTargetIds": ["diner", "souper", "dejeuner", "canape"],
         "explanation": {
-          "en": "Only dîner fits an evening meal organised for guests.",
-          "fr": "Seul « dîner » convient à un repas du soir organisé pour des invités.",
-          "de": "Nur „dîner“ passt zu einem Abendessen für Gäste."
+          "en": "In France the evening meal with guests is un dîner. Souper is the Swiss word the cousin would use, and déjeuner is the midday meal.",
+          "fr": "En France, le repas du soir entre invités est un dîner. Souper est le mot suisse du cousin, et déjeuner désigne le repas de midi.",
+          "de": "In Frankreich ist das Abendessen mit Gästen un dîner. Souper ist das Schweizer Wort des Cousins, und déjeuner ist die Mittagsmahlzeit."
         }
       },
       "listeningOptionTargetIds": ["diner", "dejeuner", "souper", "bouffer"]
@@ -214,11 +214,11 @@
         "before": "Chez ma tante, au Québec, on prend le ",
         "after": " vers dix-huit heures.",
         "accepted": { "answers": ["souper"] },
-        "referenceTargetIds": ["souper", "dejeuner", "sofa", "bouffer"],
+        "referenceTargetIds": ["souper", "dejeuner", "diner", "bouffer"],
         "explanation": {
-          "en": "In Quebec, souper is the evening meal, taken around six o’clock.",
-          "fr": "Au Québec, le souper est le repas du soir, pris vers dix-huit heures.",
-          "de": "In Québec ist le souper die Abendmahlzeit, die gegen sechs Uhr abends gegessen wird."
+          "en": "In Quebec, souper is the evening meal, taken around six o’clock. There, dîner is the midday meal and déjeuner is breakfast.",
+          "fr": "Au Québec, le souper est le repas du soir, pris vers dix-huit heures. Le dîner y est le repas de midi et le déjeuner celui du matin.",
+          "de": "In Québec ist le souper die Abendmahlzeit, die gegen sechs Uhr abends gegessen wird. Dort ist dîner das Mittagessen und déjeuner das Frühstück."
         }
       },
       "listeningOptionTargetIds": ["souper", "diner", "dejeuner", "sofa"]
@@ -265,13 +265,13 @@
       },
       "gap": {
         "before": "« Allô, ",
-        "after": " ? Tu peux venir me chercher ? » demande l’enfant.",
+        "after": " ? Tu peux venir me chercher à l’école ? » demande le petit Léo, six ans.",
         "accepted": { "answers": ["maman"] },
-        "referenceTargetIds": ["maman", "sofa", "bagnole", "souper"],
+        "referenceTargetIds": ["maman", "mere", "sofa", "bagnole"],
         "explanation": {
-          "en": "A child phoning a parent says maman, with no article.",
-          "fr": "Un enfant qui appelle son parent dit « maman », sans article.",
-          "de": "Ein Kind, das seine Mutter anruft, sagt „maman“, ohne Artikel."
+          "en": "A small child calling his mother says maman, with no article. Addressing her as mère would sound stiff and old-fashioned, the mark of a very traditional milieu.",
+          "fr": "Un petit enfant qui appelle sa mère dit « maman », sans article. L’appeler « mère » sonnerait guindé et vieilli, la marque d’un milieu très traditionnel.",
+          "de": "Ein kleines Kind, das seine Mutter anruft, sagt „maman“, ohne Artikel. Sie mit „mère“ anzureden, klänge steif und altmodisch, typisch für ein sehr traditionelles Milieu."
         }
       },
       "listeningOptionTargetIds": ["maman", "mere", "bagnole", "toilettes"]
@@ -310,14 +310,14 @@
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Mon père travaille à Lyon, et ma ",
-        "after": " est professeure de lettres.",
+        "before": "Lors de son entretien d’embauche, Paul évoque sobrement le métier de sa ",
+        "after": ", professeure de lettres.",
         "accepted": { "answers": ["mère"] },
-        "referenceTargetIds": ["mere", "canape", "dejeuner", "bagnole"],
+        "referenceTargetIds": ["mere", "maman", "dejeuner", "canape"],
         "explanation": {
-          "en": "Only mère fits after ma, as the neutral word for a mother.",
-          "fr": "Seul « mère » convient après ma, comme mot neutre pour désigner une mère.",
-          "de": "Nur „mère“ passt nach ma als neutrales Wort für eine Mutter."
+          "en": "In a formal setting, an adult speaking to a stranger says sa mère. Sa maman would sound childish or too familiar in a job interview.",
+          "fr": "Dans un cadre formel, un adulte qui parle à un inconnu dit « sa mère ». « Sa maman » sonnerait enfantin ou trop familier dans un entretien d’embauche.",
+          "de": "In einem förmlichen Rahmen sagt ein Erwachsener gegenüber Fremden „sa mère“. „Sa maman“ klänge in einem Vorstellungsgespräch kindlich oder zu vertraulich."
         }
       },
       "listeningOptionTargetIds": ["mere", "maman", "souper", "bouffer"]
@@ -359,14 +359,14 @@
         "de": "eine Couch (das übliche Alltagswort)"
       },
       "gap": {
-        "before": "Après le repas, nous nous sommes installés sur le ",
-        "after": " du salon pour regarder un film.",
+        "before": "Le soir, en rentrant du travail, on s’affale sur le ",
+        "after": " devant la télé.",
         "accepted": { "answers": ["canapé", "sofa"] },
         "referenceTargetIds": ["canape", "souper", "toilettes", "bouffer"],
         "explanation": {
-          "en": "Only canapé fits here; sofa would also be accepted.",
-          "fr": "Seul « canapé » convient ici ; « sofa » serait aussi accepté.",
-          "de": "Nur „canapé“ passt hier; „sofa“ würde ebenfalls akzeptiert."
+          "en": "Canapé or sofa fit here. In this relaxed everyday scene, canapé is the most natural word; sofa would sound a little refined.",
+          "fr": "« Canapé » ou « sofa » conviennent ici. Dans cette scène quotidienne et détendue, « canapé » est le plus naturel ; « sofa » sonnerait un peu recherché.",
+          "de": "„Canapé“ oder „sofa“ passen hier. In dieser entspannten Alltagsszene ist „canapé“ am natürlichsten; „sofa“ klänge etwas gehoben."
         }
       },
       "listeningOptionTargetIds": ["canape", "sofa", "toilettes", "bagnole"]
@@ -413,9 +413,9 @@
         "accepted": { "answers": ["sofa", "canapé"] },
         "referenceTargetIds": ["sofa", "souper", "toilettes", "maman"],
         "explanation": {
-          "en": "Sofa suits the antique dealer’s register; canapé would also be accepted.",
-          "fr": "« Sofa » convient au registre de l’antiquaire ; « canapé » serait aussi accepté.",
-          "de": "„Sofa“ passt zum Register des Antiquitätenhändlers; „canapé“ würde ebenfalls akzeptiert."
+          "en": "Sofa or canapé fit here. Sofa suits the refined register of the antique dealer’s shop.",
+          "fr": "« Sofa » ou « canapé » conviennent ici. « Sofa » s’accorde au registre recherché de la boutique d’antiquaire.",
+          "de": "„Sofa“ oder „canapé“ passen hier. „Sofa“ passt zum gehobenen Register des Antiquitätenladens."
         }
       },
       "listeningOptionTargetIds": ["sofa", "canape", "souper", "toilettes"]
@@ -458,14 +458,14 @@
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Excusez-moi, où sont les ",
-        "after": " ?",
+        "before": "À un dîner en ville, on évite les euphémismes comme « le petit coin » et l’on demande simplement où sont les ",
+        "after": ".",
         "accepted": { "answers": ["toilettes"] },
         "referenceTargetIds": ["toilettes", "canape", "dejeuner", "mere"],
         "explanation": {
-          "en": "Only toilettes fits the question, in the neutral plural form.",
-          "fr": "Seul « toilettes » convient à la question, au pluriel neutre.",
-          "de": "Nur „toilettes“ passt zur Frage, im neutralen Plural."
+          "en": "Les toilettes, in the plural, is the neutral, correct word. Euphemisms such as le petit coin sound affected, crude words sound popular.",
+          "fr": "« Les toilettes », au pluriel, est le mot neutre et correct. Les euphémismes comme « le petit coin » sonnent affectés, les mots crus populaires.",
+          "de": "„Les toilettes“ im Plural ist das neutrale, korrekte Wort. Euphemismen wie „le petit coin“ klingen geziert, derbe Wörter volkstümlich."
         }
       },
       "listeningOptionTargetIds": ["toilettes", "bagnole", "canape", "souper"]
@@ -507,14 +507,14 @@
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Mon oncle a gardé sa vieille ",
-        "after": " de 1985 et refuse de la vendre.",
+        "before": "« T’as vu ma vieille ",
+        "after": " ? Elle a quarante ans et elle roule encore ! » rigole mon oncle.",
         "accepted": { "answers": ["bagnole", "voiture"] },
         "referenceTargetIds": ["bagnole", "canape", "diner", "toilettes"],
         "explanation": {
-          "en": "Only bagnole fits here; the neutral voiture would also be accepted.",
-          "fr": "Seul « bagnole » convient ici ; le mot neutre « voiture » serait aussi accepté.",
-          "de": "Nur „bagnole“ passt hier; das neutrale „voiture“ würde ebenfalls akzeptiert."
+          "en": "Bagnole or voiture fit here. In this joking, familiar speech, bagnole is the most natural; the neutral voiture is also accepted.",
+          "fr": "« Bagnole » ou « voiture » conviennent ici. Dans ce propos familier et rieur, « bagnole » est le plus naturel ; le neutre « voiture » est aussi accepté.",
+          "de": "„Bagnole“ oder „voiture“ passen hier. In dieser scherzhaften, lockeren Rede ist „bagnole“ am natürlichsten; das neutrale „voiture“ wird ebenfalls akzeptiert."
         }
       },
       "listeningOptionTargetIds": ["bagnole", "toilettes", "bouffer", "maman"]
@@ -552,14 +552,14 @@
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Après le match, ils sont allés ",
-        "after": " une pizza ensemble.",
+        "before": "« J’ai la dalle ! On va ",
+        "after": " un truc après le match ? » lance Théo à ses potes.",
         "accepted": { "answers": ["bouffer", "manger"] },
         "referenceTargetIds": ["bouffer", "canape", "maman", "toilettes"],
         "explanation": {
-          "en": "Only the verb bouffer fits here; manger would also be accepted.",
-          "fr": "Seul le verbe « bouffer » convient ici ; « manger » serait aussi accepté.",
-          "de": "Nur das Verb „bouffer“ passt hier; „manger“ würde ebenfalls akzeptiert."
+          "en": "Bouffer or manger fit here. Among friends, with slang like avoir la dalle, bouffer is the most natural; the neutral manger is also accepted.",
+          "fr": "« Bouffer » ou « manger » conviennent ici. Entre potes, avec de l’argot comme « avoir la dalle », « bouffer » est le plus naturel ; le neutre « manger » est aussi accepté.",
+          "de": "„Bouffer“ oder „manger“ passen hier. Unter Kumpels, mit Slang wie „avoir la dalle“, ist „bouffer“ am natürlichsten; das neutrale „manger“ wird ebenfalls akzeptiert."
         }
       },
       "listeningOptionTargetIds": ["bouffer", "souper", "bagnole", "dejeuner"]

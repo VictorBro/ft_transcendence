@@ -467,7 +467,7 @@
               "roleId": "ines",
               "before": "Bonjour, madame.",
               "after": ", où est la bibliothèque ?",
-              "choiceExpressionIds": ["excusez-moi", "pardon", "merci-beaucoup", "de-rien"],
+              "choiceExpressionIds": ["excusez-moi", "pas-grave", "merci-beaucoup", "de-rien"],
               "answerExplanation": {
                 "en": "To get attention politely (vous), say excusez-moi.",
                 "fr": "Pour attirer l’attention poliment (vous), on dit excusez-moi.",

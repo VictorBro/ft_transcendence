@@ -29,9 +29,9 @@
       "role": "explanation",
       "blockId": "block-aux",
       "label": {
-        "en": "Nine verbs with être",
-        "fr": "Neuf verbes avec être",
-        "de": "Neun Verben mit être"
+        "en": "Nine more verbs with être",
+        "fr": "Neuf autres verbes avec être",
+        "de": "Neun weitere Verben mit être"
       },
       "pages": [
         {
@@ -54,9 +54,9 @@
                 "de": "Das passé composé mit être"
               },
               "text": {
-                "en": "Most verbs form the passé composé with `avoir`, but nine verbs use **être**: `monter`, `descendre`, `entrer`, `sortir`, `tomber`, `rentrer`, `retourner`, `devenir` and `mourir`.\n\nThe pattern is **être** in the present + the past participle: `je suis tombé`, `il est entré`.\n\n- Regular participles: `monté`, `descendu`, `entré`, `sorti`, `tombé`, `rentré`, `retourné`.\n- Two are irregular: `devenu` and `mort`.\n- These verbs mostly express a movement: going up, down, in or out.",
-                "fr": "La plupart des verbes forment le passé composé avec `avoir`, mais neuf verbes utilisent **être** : `monter`, `descendre`, `entrer`, `sortir`, `tomber`, `rentrer`, `retourner`, `devenir` et `mourir`.\n\nLe schéma est **être** au présent + le participe passé : `je suis tombé`, `il est entré`.\n\n- Participes réguliers : `monté`, `descendu`, `entré`, `sorti`, `tombé`, `rentré`, `retourné`.\n- Deux sont irréguliers : `devenu` et `mort`.\n- Ces verbes expriment surtout un mouvement : monter, descendre, entrer, sortir.",
-                "de": "Die meisten Verben bilden das passé composé mit `avoir`, aber neun Verben benutzen **être**: `monter`, `descendre`, `entrer`, `sortir`, `tomber`, `rentrer`, `retourner`, `devenir` und `mourir`.\n\nDas Schema ist **être** im Präsens + Partizip: `je suis tombé`, `il est entré`.\n\n- Regelmäßige Partizipien: `monté`, `descendu`, `entré`, `sorti`, `tombé`, `rentré`, `retourné`.\n- Zwei sind unregelmäßig: `devenu` und `mort`.\n- Diese Verben drücken meist eine Bewegung aus: hinauf, hinunter, hinein, hinaus."
+                "en": "Most verbs form the passé composé with `avoir`. You already know some verbs that use **être**, such as `aller`, `venir`, `partir`, `arriver` and `rester`. Nine more verbs complete the list: `monter`, `descendre`, `entrer`, `sortir`, `tomber`, `rentrer`, `retourner`, `devenir` and `mourir`.\n\nThe pattern is **être** in the present + the past participle: `je suis tombé`, `il est entré`.\n\n- Regular participles: `monté`, `descendu`, `entré`, `sorti`, `tombé`, `rentré`, `retourné`.\n- Two are irregular: `devenu` and `mort`.\n- These verbs mostly express a movement: going up, down, in or out.",
+                "fr": "La plupart des verbes forment le passé composé avec `avoir`. Vous connaissez déjà des verbes qui utilisent **être**, comme `aller`, `venir`, `partir`, `arriver` et `rester`. Neuf autres verbes complètent la liste : `monter`, `descendre`, `entrer`, `sortir`, `tomber`, `rentrer`, `retourner`, `devenir` et `mourir`.\n\nLe schéma est **être** au présent + le participe passé : `je suis tombé`, `il est entré`.\n\n- Participes réguliers : `monté`, `descendu`, `entré`, `sorti`, `tombé`, `rentré`, `retourné`.\n- Deux sont irréguliers : `devenu` et `mort`.\n- Ces verbes expriment surtout un mouvement : monter, descendre, entrer, sortir.",
+                "de": "Die meisten Verben bilden das passé composé mit `avoir`. Einige Verben mit **être** kennst du schon, zum Beispiel `aller`, `venir`, `partir`, `arriver` und `rester`. Neun weitere Verben vervollständigen die Liste: `monter`, `descendre`, `entrer`, `sortir`, `tomber`, `rentrer`, `retourner`, `devenir` und `mourir`.\n\nDas Schema ist **être** im Präsens + Partizip: `je suis tombé`, `il est entré`.\n\n- Regelmäßige Partizipien: `monté`, `descendu`, `entré`, `sorti`, `tombé`, `rentré`, `retourné`.\n- Zwei sind unregelmäßig: `devenu` und `mort`.\n- Diese Verben drücken meist eine Bewegung aus: hinauf, hinunter, hinein, hinaus."
               },
               "formTable": [
                 {
@@ -270,7 +270,7 @@
                   "native": null,
                   "answer": "suis",
                   "answerExplanation": {
-                    "en": "With je, être is suis: je suis parti is not on the list, but je suis monté is.",
+                    "en": "With je, être is suis: je suis monté.",
                     "fr": "Avec je, être devient suis : je suis monté.",
                     "de": "Zu je gehört suis: je suis monté."
                   }

@@ -930,29 +930,29 @@
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-gaps1-3",
-              "before": "Nous vous rembourserons,",
+              "before": "Nous vous rembourserons, mais seulement",
               "after": "le produit est en bon état.",
               "accepted": { "answers": ["dans la mesure où"] },
               "hint": null,
               "ruleIds": ["rule-limited-cause"],
               "answerExplanation": {
-                "en": "The refund depends on a condition being true: dans la mesure où.",
-                "fr": "Le remboursement dépend d'une condition vérifiée : dans la mesure où.",
-                "de": "Die Rückerstattung hängt von einer zutreffenden Bedingung ab: dans la mesure où."
+                "en": "Mais seulement limits the refund to a condition being true: only dans la mesure où fits after it.",
+                "fr": "Mais seulement limite le remboursement à une condition vérifiée : seul dans la mesure où convient après.",
+                "de": "Mais seulement begrenzt die Rückerstattung auf eine zutreffende Bedingung: Danach passt nur dans la mesure où."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-gaps1-4",
-              "before": "Ce plan est réaliste,",
+              "before": "Ce plan n'est réaliste que",
               "after": "les employés acceptent de le suivre.",
               "accepted": { "answers": ["dans la mesure où"] },
               "hint": null,
               "ruleIds": ["rule-limited-cause"],
               "answerExplanation": {
-                "en": "The plan is realistic only as far as the employees follow it: dans la mesure où.",
-                "fr": "Le plan n'est réaliste que si les employés le suivent : dans la mesure où.",
-                "de": "Der Plan ist nur realistisch, soweit die Mitarbeiter ihm folgen: dans la mesure où."
+                "en": "Ne… que sets a limit: the plan is realistic only as far as the employees follow it, so dans la mesure où.",
+                "fr": "Ne… que pose une limite : le plan n'est réaliste que si les employés le suivent, donc dans la mesure où.",
+                "de": "Ne… que setzt eine Grenze: Der Plan ist nur realistisch, soweit die Mitarbeiter ihm folgen, also dans la mesure où."
               }
             }
           ]

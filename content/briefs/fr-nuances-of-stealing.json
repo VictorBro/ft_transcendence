@@ -317,8 +317,8 @@
       "context": {
         "sentence": "On lui a fauché son portefeuille à la sortie du concert.",
         "translation": {
-          "en": "Someone swiped his wallet outside the concert.",
-          "de": "Man hat ihm vor dem Konzert die Brieftasche geklaut."
+          "en": "Someone swiped his wallet as he was leaving the concert.",
+          "de": "Man hat ihm nach dem Konzert, beim Hinausgehen, die Brieftasche geklaut."
         }
       },
       "ambiguityNote": {

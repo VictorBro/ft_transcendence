@@ -636,7 +636,7 @@
             {
               "type": "grammar_gap_choice",
               "itemId": "ex-b2-choice-1",
-              "before": "Ce n'est pas une simple erreur : c'est",
+              "before": "Ce n'est pas une simple erreur : ce n'est",
               "after": "qu'une faute grave.",
               "choices": [
                 { "choiceId": "c-1", "text": "rien de moins" },
@@ -929,7 +929,11 @@
               "before": "Je n'attends de lui",
               "after": "que des excuses publiques.",
               "accepted": { "answers": ["rien de moins"] },
-              "hint": null,
+              "hint": {
+                "en": "nothing less (rien …)",
+                "fr": "pas moins que cela (rien …)",
+                "de": "nichts Geringeres (rien …)"
+              },
               "ruleIds": ["r-rien-de-moins"],
               "answerExplanation": {
                 "en": "Rien de moins que: nothing less than public apologies.",
@@ -1213,13 +1217,13 @@
               "itemId": "exam-gaps-2-1",
               "before": "Ce qu'il m'offre, ce n'est",
               "after": "que la direction de l'entreprise.",
-              "accepted": { "answers": ["rien de moins"] },
+              "accepted": { "answers": ["rien de moins", "ni plus ni moins"] },
               "hint": null,
               "ruleIds": ["r-rien-de-moins"],
               "answerExplanation": {
-                "en": "Rien de moins que stresses the scale of the offer.",
-                "fr": "Rien de moins que souligne l'ampleur de l'offre.",
-                "de": "Rien de moins que betont das Ausmaß des Angebots."
+                "en": "Rien de moins que stresses the scale of the offer; ni plus ni moins que, which says it is exactly that, is also correct.",
+                "fr": "Rien de moins que souligne l'ampleur de l'offre ; ni plus ni moins que, qui dit que c'est exactement cela, est aussi correct.",
+                "de": "Rien de moins que betont das Ausmaß des Angebots; auch ni plus ni moins que, das sagt, dass es genau das ist, ist richtig."
               }
             },
             {

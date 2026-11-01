@@ -65,9 +65,9 @@
     {
       "id": "rule-ne-que",
       "summary": {
-        "en": "ne… que around the verb means only and targets the element right after que without any doubt; seulement cannot be used with ne.",
-        "fr": "ne… que autour du verbe signifie seulement et vise sans ambiguïté l’élément placé après que ; on n’emploie pas seulement avec ne.",
-        "de": "ne… que um das Verb bedeutet nur und bezieht sich eindeutig auf das Element nach que; seulement wird nicht mit ne verwendet."
+        "en": "ne… que around the verb means only and targets the element right after que without any doubt; do not use seulement in place of que after ne (ne… pas seulement = not only is correct).",
+        "fr": "ne… que autour du verbe signifie seulement et vise sans ambiguïté l’élément placé après que ; seulement ne remplace pas que après ne (ne… pas seulement = non seulement est correct).",
+        "de": "ne… que um das Verb bedeutet nur und bezieht sich eindeutig auf das Element nach que; seulement ersetzt nach ne nicht que (ne… pas seulement = nicht nur ist korrekt)."
       }
     }
   ],
@@ -179,9 +179,9 @@
       ],
       "pitfalls": [
         {
-          "en": "Never combine ne with seulement: say Il ne parle que français, not Il ne parle seulement français.",
-          "fr": "Ne combinez jamais ne avec seulement : on dit Il ne parle que français, pas Il ne parle seulement français.",
-          "de": "Kombiniere ne nie mit seulement: Es heißt Il ne parle que français, nicht Il ne parle seulement français."
+          "en": "Do not use seulement in place of que after ne: say Il ne parle que français, not Il ne parle seulement français. Ne… pas seulement (not only) is correct: Il ne parle pas seulement français.",
+          "fr": "N’employez pas seulement à la place de que après ne : on dit Il ne parle que français, pas Il ne parle seulement français. Ne… pas seulement (non seulement) est correct : Il ne parle pas seulement français.",
+          "de": "Verwende seulement nach ne nicht anstelle von que: Es heißt Il ne parle que français, nicht Il ne parle seulement français. Ne… pas seulement (nicht nur) ist korrekt: Il ne parle pas seulement français."
         },
         {
           "en": "Même before the subject and même after the auxiliary do not target the same thing.",

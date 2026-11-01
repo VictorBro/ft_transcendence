@@ -449,14 +449,14 @@
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "La randonnée était ",
+        "before": "Le trajet était ",
         "after": " : j’étais épuisé après.",
         "accepted": { "answers": ["fatigant"] },
         "referenceTargetIds": ["fatigant", "drole", "magnifique", "super"],
         "explanation": {
-          "en": "Being exhausted afterwards means the hike was tiring.",
-          "fr": "Être épuisé après veut dire que la randonnée était fatigante.",
-          "de": "Danach erschöpft zu sein bedeutet, dass die Wanderung anstrengend war."
+          "en": "Being exhausted afterwards means the journey was tiring.",
+          "fr": "Être épuisé après veut dire que le trajet était fatigant.",
+          "de": "Danach erschöpft zu sein bedeutet, dass die Fahrt anstrengend war."
         }
       },
       "listeningOptionTargetIds": ["fatigant", "passionnant", "ennuyeux", "genial"]

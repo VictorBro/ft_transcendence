@@ -188,11 +188,11 @@
         "before": "Permettez-moi de ",
         "after": " que nous avons déjà voté ce texte l’an dernier.",
         "accepted": { "answers": ["rappeler"] },
-        "referenceTargetIds": ["rappeler", "nuancer", "objecter", "feliciter"],
+        "referenceTargetIds": ["rappeler", "nuancer", "deplorer", "feliciter"],
         "explanation": {
-          "en": "Only rappeler fits: it is a fact already known.",
-          "fr": "Seul « rappeler » convient : le fait est déjà connu.",
-          "de": "Nur „rappeler“ passt: Die Tatsache ist schon bekannt."
+          "en": "Only rappeler fits: it is a fact already known. Déplorer que would need the subjunctive (ayons).",
+          "fr": "Seul « rappeler » convient : le fait est déjà connu. « Déplorer que » demanderait le subjonctif (ayons).",
+          "de": "Nur „rappeler“ passt: Die Tatsache ist schon bekannt. „Déplorer que“ verlangt den Subjonctif (ayons)."
         }
       },
       "listeningOptionTargetIds": ["rappeler", "relever", "souligner", "preciser"]

@@ -49,9 +49,9 @@
     {
       "id": "r-il-y-a-que",
       "summary": {
-        "en": "Il y a + duration + que + present has the same meaning; with a negation, the passé composé is used.",
-        "fr": "Il y a + durée + que + présent a le même sens ; avec une négation, on emploie le passé composé.",
-        "de": "Il y a + Zeitspanne + que + Präsens hat dieselbe Bedeutung; bei Verneinung steht das Passé composé."
+        "en": "Il y a + duration + que + present has the same meaning; with ne... pas, for something that has not happened, the passé composé is used (je ne l'ai pas vu); with ne... plus, the present stays (elle ne fume plus).",
+        "fr": "Il y a + durée + que + présent a le même sens ; avec ne... pas, pour ce qui ne s'est pas produit, on emploie le passé composé (je ne l'ai pas vu) ; avec ne... plus, le présent reste (elle ne fume plus).",
+        "de": "Il y a + Zeitspanne + que + Präsens hat dieselbe Bedeutung; mit ne... pas, für etwas, das nicht geschehen ist, steht das Passé composé (je ne l'ai pas vu); mit ne... plus bleibt das Präsens (elle ne fume plus)."
       }
     },
     {
@@ -81,9 +81,9 @@
       },
       "ruleIds": ["r-ca-fait-que", "r-il-y-a-que"],
       "explanationPlan": {
-        "en": "Explain ça fait / il y a + duration + que + present for a situation that continues, the negative with the passé composé, and that both structures mean the same.",
-        "fr": "Expliquer ça fait / il y a + durée + que + présent pour une situation qui continue, le négatif avec le passé composé, et le fait que les deux structures ont le même sens.",
-        "de": "Ça fait / il y a + Zeitspanne + que + Präsens für andauernde Situationen erklären, die Verneinung mit Passé composé und dass beide Strukturen dasselbe bedeuten."
+        "en": "Explain ça fait / il y a + duration + que + present for a situation that continues, ne... pas with the passé composé but ne... plus with the present, and that both structures mean the same.",
+        "fr": "Expliquer ça fait / il y a + durée + que + présent pour une situation qui continue, ne... pas avec le passé composé mais ne... plus avec le présent, et le fait que les deux structures ont le même sens.",
+        "de": "Ça fait / il y a + Zeitspanne + que + Präsens für andauernde Situationen erklären, ne... pas mit Passé composé, ne... plus aber mit Präsens, und dass beide Strukturen dasselbe bedeuten."
       },
       "explanationDurationS": 120,
       "examples": [

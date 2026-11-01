@@ -415,12 +415,15 @@
                 { "tokenId": "t-3", "text": "fassent" },
                 { "tokenId": "t-2", "text": "ils" }
               ],
-              "acceptedOrders": [["t-1", "t-2", "t-3", "t-4", "t-5", "t-6"]],
+              "acceptedOrders": [
+                ["t-1", "t-2", "t-3", "t-4", "t-5", "t-6"],
+                ["t-1", "t-2", "t-3", "t-5", "t-4", "t-6"]
+              ],
               "ruleIds": ["rule-ordre"],
               "answerExplanation": {
-                "en": "Order to a third person: Qu'ils fassent silence immédiatement !",
-                "fr": "Ordre à la 3e personne : Qu'ils fassent silence immédiatement !",
-                "de": "Befehl an die 3. Person: Qu'ils fassent silence immédiatement !"
+                "en": "Order to a third person: Qu'ils fassent silence immédiatement ! (or Qu'ils fassent immédiatement silence !)",
+                "fr": "Ordre à la 3e personne : Qu'ils fassent silence immédiatement ! (ou Qu'ils fassent immédiatement silence !)",
+                "de": "Befehl an die 3. Person: Qu'ils fassent silence immédiatement ! (oder Qu'ils fassent immédiatement silence !)"
               }
             }
           ]

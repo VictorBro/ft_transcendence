@@ -135,7 +135,10 @@
       },
       "genderExplanation": null,
       "matchingLabel": null,
-      "examPrompt": null,
+      "examPrompt": {
+        "en": "then (one short word, 4 letters)",
+        "de": "dann (ein kurzes Wort, 4 Buchstaben)"
+      },
       "gap": {
         "before": "Je me lève, ",
         "after": " je prends une douche.",
@@ -174,7 +177,10 @@
       },
       "genderExplanation": null,
       "matchingLabel": null,
-      "examPrompt": null,
+      "examPrompt": {
+        "en": "next (one word, 7 letters)",
+        "de": "danach (ein Wort, 7 Buchstaben)"
+      },
       "gap": {
         "before": "D’abord, je fais mes devoirs ; ",
         "after": ", je regarde un film.",
@@ -216,7 +222,10 @@
       },
       "genderExplanation": null,
       "matchingLabel": null,
-      "examPrompt": null,
+      "examPrompt": {
+        "en": "afterwards (the same word as the preposition after)",
+        "de": "nachher (dasselbe Wort wie die Präposition nach)"
+      },
       "gap": {
         "before": "Nous mangeons, et ",
         "after": " nous allons au parc.",
@@ -300,7 +309,10 @@
       },
       "genderExplanation": null,
       "matchingLabel": null,
-      "examPrompt": null,
+      "examPrompt": {
+        "en": "at the end (3 words)",
+        "de": "am Ende (3 Wörter)"
+      },
       "gap": {
         "before": "Le film était long, mais ",
         "after": ", tout le monde a applaudi.",
@@ -339,7 +351,10 @@
       },
       "genderExplanation": null,
       "matchingLabel": null,
-      "examPrompt": null,
+      "examPrompt": {
+        "en": "at last (relief, 5 letters)",
+        "de": "endlich (Erleichterung, 5 Buchstaben)"
+      },
       "gap": {
         "before": "Nous avons attendu une heure ; ",
         "after": ", le bus est arrivé !",
@@ -381,7 +396,10 @@
       },
       "genderExplanation": null,
       "matchingLabel": null,
-      "examPrompt": null,
+      "examPrompt": {
+        "en": "finally, in the end (an adverb in -ment)",
+        "de": "schließlich (ein Adverb auf -ment)"
+      },
       "gap": {
         "before": "Nous hésitions entre deux films ; ",
         "after": ", nous avons choisi la comédie.",
@@ -423,7 +441,10 @@
       },
       "genderExplanation": null,
       "matchingLabel": null,
-      "examPrompt": null,
+      "examPrompt": {
+        "en": "suddenly (3 words)",
+        "de": "plötzlich (3 Wörter)"
+      },
       "gap": {
         "before": "Je marchais tranquillement quand ",
         "after": " un chien a couru vers moi.",
@@ -465,7 +486,10 @@
       },
       "genderExplanation": null,
       "matchingLabel": null,
-      "examPrompt": null,
+      "examPrompt": {
+        "en": "suddenly (1 word)",
+        "de": "plötzlich (1 Wort)"
+      },
       "gap": {
         "before": "Il dormait ; ",
         "after": ", le téléphone a sonné.",

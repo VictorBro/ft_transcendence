@@ -345,7 +345,7 @@
       "gap": {
         "before": "Les langues romanes, ",
         "after": " l’espagnol ou l’italien, viennent du latin.",
-        "accepted": { "answers": ["telles que", "tel que", "tels que", "telle que"] },
+        "accepted": { "answers": ["telles que"] },
         "referenceTargetIds": ["tel-que", "prenons-le-cas-de", "comme-en-temoigne", "a-savoir"],
         "explanation": {
           "en": "Telles que fits: it agrees with the feminine plural langues and introduces two examples.",

@@ -170,7 +170,7 @@
             {
               "type": "grammar_gap_choice",
               "itemId": "e1c-2",
-              "before": "Un petit nombre de candidats",
+              "before": "Bon nombre de candidats",
               "after": "réussi l’épreuve.",
               "choices": [
                 { "choiceId": "c-1", "text": "ont" },
@@ -182,9 +182,9 @@
               "hint": null,
               "ruleIds": ["r-sens"],
               "answerExplanation": {
-                "en": "The sense is several candidates, so the verb is plural: ont.",
-                "fr": "Le sens est celui de plusieurs candidats : le verbe se met au pluriel (ont).",
-                "de": "Gemeint sind mehrere Kandidaten, also steht das Verb im Plural (ont)."
+                "en": "Bon nombre de, with no article, means many candidates: the verb is plural, ont.",
+                "fr": "Bon nombre de, sans article, désigne de nombreux candidats : le verbe se met au pluriel (ont).",
+                "de": "Bon nombre de ohne Artikel meint viele Kandidaten, also steht das Verb im Plural (ont)."
               }
             },
             {
@@ -916,14 +916,14 @@
               "type": "grammar_gap_typing",
               "itemId": "exam-sens-3",
               "before": "Elle est l’une des rares journalistes qui",
-              "after": "interviewer ce chef d’État.",
-              "accepted": { "answers": ["osent", "peuvent", "puissent"] },
+              "after": "(oser) interviewer ce chef d’État.",
+              "accepted": { "answers": ["osent"] },
               "hint": null,
               "ruleIds": ["r-relatif"],
               "answerExplanation": {
-                "en": "After l’une des + plural noun, qui stands for the group: the verb is plural.",
-                "fr": "Après l’une des + nom pluriel, qui représente le groupe : le verbe est au pluriel.",
-                "de": "Nach l’une des + Nomen im Plural steht qui für die Gruppe: Das Verb steht im Plural."
+                "en": "After l’une des + plural noun, qui stands for the group: the verb is plural, osent.",
+                "fr": "Après l’une des + nom pluriel, qui représente le groupe : le verbe est au pluriel, osent.",
+                "de": "Nach l’une des + Nomen im Plural steht qui für die Gruppe: Das Verb steht im Plural, osent."
               }
             },
             {

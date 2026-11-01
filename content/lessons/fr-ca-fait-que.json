@@ -50,9 +50,9 @@
                 "de": "Ça fait… que, il y a… que"
               },
               "text": {
-                "en": "To say how long a situation has lasted, use `ça fait` or `il y a` + a length of time + `que` + the **present**: `Ça fait deux ans que j'habite ici.`\n\nBoth have the same meaning. `Ça fait` is more common in conversation: `Il y a longtemps qu'on ne s'est pas vus.`\n\n- Time first, then `que`: `ça fait trois mois que`, `il y a une heure que`.\n- The verb stays in the present, because the situation is still going on: `Ça fait un an qu'elle apprend l'espagnol.`\n- In the negative, use the passé composé: `Il y a longtemps que je ne l'ai pas vu.`",
-                "fr": "Pour dire depuis combien de temps dure une situation, on emploie `ça fait` ou `il y a` + une durée + `que` + le **présent** : `Ça fait deux ans que j'habite ici.`\n\nLes deux ont le même sens. `Ça fait` est plus courant à l'oral : `Il y a longtemps qu'on ne s'est pas vus.`\n\n- La durée d'abord, puis `que` : `ça fait trois mois que`, `il y a une heure que`.\n- Le verbe reste au présent, car la situation continue : `Ça fait un an qu'elle apprend l'espagnol.`\n- Au négatif, on utilise le passé composé : `Il y a longtemps que je ne l'ai pas vu.`",
-                "de": "Um zu sagen, wie lange eine Situation schon andauert, verwendet man `ça fait` oder `il y a` + eine Zeitspanne + `que` + das **Präsens**: `Ça fait deux ans que j'habite ici.`\n\nBeide bedeuten dasselbe. `Ça fait` ist in der gesprochenen Sprache häufiger: `Il y a longtemps qu'on ne s'est pas vus.`\n\n- Erst die Zeitspanne, dann `que`: `ça fait trois mois que`, `il y a une heure que`.\n- Das Verb bleibt im Präsens, weil die Situation noch andauert: `Ça fait un an qu'elle apprend l'espagnol.`\n- In der Verneinung steht das Passé composé: `Il y a longtemps que je ne l'ai pas vu.`"
+                "en": "To say how long a situation has lasted, use `ça fait` or `il y a` + a length of time + `que` + the **present**: `Ça fait deux ans que j'habite ici.`\n\nBoth have the same meaning. `Ça fait` is more common in conversation: `Il y a longtemps qu'on ne s'est pas vus.`\n\n- Time first, then `que`: `ça fait trois mois que`, `il y a une heure que`.\n- The verb stays in the present, because the situation is still going on: `Ça fait un an qu'elle apprend l'espagnol.`\n- With `ne... pas`, for something that has not happened since then, use the passé composé: `Il y a longtemps que je ne l'ai pas vu.` With `ne... plus`, the present stays: `Ça fait un mois qu'elle ne fume plus.`",
+                "fr": "Pour dire depuis combien de temps dure une situation, on emploie `ça fait` ou `il y a` + une durée + `que` + le **présent** : `Ça fait deux ans que j'habite ici.`\n\nLes deux ont le même sens. `Ça fait` est plus courant à l'oral : `Il y a longtemps qu'on ne s'est pas vus.`\n\n- La durée d'abord, puis `que` : `ça fait trois mois que`, `il y a une heure que`.\n- Le verbe reste au présent, car la situation continue : `Ça fait un an qu'elle apprend l'espagnol.`\n- Avec `ne... pas`, pour quelque chose qui ne s'est pas produit depuis, on utilise le passé composé : `Il y a longtemps que je ne l'ai pas vu.` Avec `ne... plus`, le présent reste : `Ça fait un mois qu'elle ne fume plus.`",
+                "de": "Um zu sagen, wie lange eine Situation schon andauert, verwendet man `ça fait` oder `il y a` + eine Zeitspanne + `que` + das **Präsens**: `Ça fait deux ans que j'habite ici.`\n\nBeide bedeuten dasselbe. `Ça fait` ist in der gesprochenen Sprache häufiger: `Il y a longtemps qu'on ne s'est pas vus.`\n\n- Erst die Zeitspanne, dann `que`: `ça fait trois mois que`, `il y a une heure que`.\n- Das Verb bleibt im Präsens, weil die Situation noch andauert: `Ça fait un an qu'elle apprend l'espagnol.`\n- Mit `ne... pas`, für etwas, das seitdem nicht geschehen ist, steht das Passé composé: `Il y a longtemps que je ne l'ai pas vu.` Mit `ne... plus` bleibt das Präsens: `Ça fait un mois qu'elle ne fume plus.`"
               },
               "formTable": [
                 {
@@ -274,9 +274,9 @@
               },
               "ruleIds": ["r-il-y-a-que"],
               "answerExplanation": {
-                "en": "With a negation, the passé composé is used: on ne s'est pas vus.",
-                "fr": "Avec une négation, on emploie le passé composé : on ne s'est pas vus.",
-                "de": "Bei Verneinung steht das Passé composé: on ne s'est pas vus."
+                "en": "With ne... pas, for something that has not happened, the passé composé is used: on ne s'est pas vus.",
+                "fr": "Avec ne... pas, pour ce qui ne s'est pas produit, on emploie le passé composé : on ne s'est pas vus.",
+                "de": "Mit ne... pas, für etwas, das nicht geschehen ist, steht das Passé composé: on ne s'est pas vus."
               }
             },
             {
@@ -359,9 +359,9 @@
               ],
               "ruleIds": ["r-il-y-a-que"],
               "answerExplanation": {
-                "en": "With a negation, the passé composé follows que: je ne l'ai pas vu.",
-                "fr": "Avec une négation, le passé composé suit que : je ne l'ai pas vu.",
-                "de": "Bei Verneinung folgt das Passé composé auf que: je ne l'ai pas vu."
+                "en": "With ne... pas, for something that has not happened, the passé composé follows que: je ne l'ai pas vu.",
+                "fr": "Avec ne... pas, pour ce qui ne s'est pas produit, le passé composé suit que : je ne l'ai pas vu.",
+                "de": "Mit ne... pas, für etwas, das nicht geschehen ist, folgt das Passé composé auf que: je ne l'ai pas vu."
               }
             },
             {
@@ -436,9 +436,9 @@
                 "de": "Depuis, und nicht il y a"
               },
               "text": {
-                "en": "To say **since when** something has been going on, use `depuis` + a length of time or a starting point + the **present**: `J'habite ici depuis deux ans.` `Elle travaille ici depuis 2019.`\n\nTo ask the question: `Depuis quand habites-tu ici ?` or `Ça fait combien de temps que tu habites ici ?`\n\n- Do not mix up `depuis` and `il y a`. `Il y a` + a length of time says **when** something happened, with the passé composé: `Je suis arrivé il y a deux ans.`\n- `Depuis` + present: the situation continues. `Il y a` + passé composé: the action is over.\n- In the negative, `depuis` goes with the passé composé: `Je n'ai pas dormi depuis deux jours.`",
-                "fr": "Pour dire **depuis quand** quelque chose dure, on emploie `depuis` + une durée ou un point de départ + le **présent** : `J'habite ici depuis deux ans.` `Elle travaille ici depuis 2019.`\n\nPour poser la question : `Depuis quand habites-tu ici ?` ou `Ça fait combien de temps que tu habites ici ?`\n\n- Ne confondez pas `depuis` et `il y a`. `Il y a` + une durée dit **quand** quelque chose s'est passé, avec le passé composé : `Je suis arrivé il y a deux ans.`\n- `Depuis` + présent : la situation continue. `Il y a` + passé composé : l'action est terminée.\n- Au négatif, `depuis` s'emploie avec le passé composé : `Je n'ai pas dormi depuis deux jours.`",
-                "de": "Um zu sagen, **seit wann** etwas andauert, verwendet man `depuis` + eine Zeitspanne oder einen Anfangspunkt + das **Präsens**: `J'habite ici depuis deux ans.` `Elle travaille ici depuis 2019.`\n\nDie Frage lautet: `Depuis quand habites-tu ici ?` oder `Ça fait combien de temps que tu habites ici ?`\n\n- Verwechsle `depuis` nicht mit `il y a`. `Il y a` + Zeitspanne sagt, **wann** etwas geschah, mit dem Passé composé: `Je suis arrivé il y a deux ans.`\n- `Depuis` + Präsens: Die Situation dauert an. `Il y a` + Passé composé: Die Handlung ist abgeschlossen.\n- In der Verneinung steht `depuis` mit dem Passé composé: `Je n'ai pas dormi depuis deux jours.`"
+                "en": "To say **since when** something has been going on, use `depuis` + a length of time or a starting point + the **present**: `J'habite ici depuis deux ans.` `Elle travaille ici depuis 2019.`\n\nTo ask the question: `Depuis quand habites-tu ici ?` or `Ça fait combien de temps que tu habites ici ?`\n\n- Do not mix up `depuis` and `il y a`. `Il y a` + a length of time says **when** something happened, with the passé composé: `Je suis arrivé il y a deux ans.`\n- `Depuis` + present: the situation continues. `Il y a` + passé composé: the action is over.\n- With `ne... pas`, for something that has not happened, `depuis` goes with the passé composé: `Je n'ai pas dormi depuis deux jours.` With `ne... plus`, the present stays: `Il ne fume plus depuis un an.`",
+                "fr": "Pour dire **depuis quand** quelque chose dure, on emploie `depuis` + une durée ou un point de départ + le **présent** : `J'habite ici depuis deux ans.` `Elle travaille ici depuis 2019.`\n\nPour poser la question : `Depuis quand habites-tu ici ?` ou `Ça fait combien de temps que tu habites ici ?`\n\n- Ne confondez pas `depuis` et `il y a`. `Il y a` + une durée dit **quand** quelque chose s'est passé, avec le passé composé : `Je suis arrivé il y a deux ans.`\n- `Depuis` + présent : la situation continue. `Il y a` + passé composé : l'action est terminée.\n- Avec `ne... pas`, pour quelque chose qui ne s'est pas produit, `depuis` s'emploie avec le passé composé : `Je n'ai pas dormi depuis deux jours.` Avec `ne... plus`, le présent reste : `Il ne fume plus depuis un an.`",
+                "de": "Um zu sagen, **seit wann** etwas andauert, verwendet man `depuis` + eine Zeitspanne oder einen Anfangspunkt + das **Präsens**: `J'habite ici depuis deux ans.` `Elle travaille ici depuis 2019.`\n\nDie Frage lautet: `Depuis quand habites-tu ici ?` oder `Ça fait combien de temps que tu habites ici ?`\n\n- Verwechsle `depuis` nicht mit `il y a`. `Il y a` + Zeitspanne sagt, **wann** etwas geschah, mit dem Passé composé: `Je suis arrivé il y a deux ans.`\n- `Depuis` + Präsens: Die Situation dauert an. `Il y a` + Passé composé: Die Handlung ist abgeschlossen.\n- Mit `ne... pas`, für etwas, das nicht geschehen ist, steht `depuis` mit dem Passé composé: `Je n'ai pas dormi depuis deux jours.` Mit `ne... plus` bleibt das Präsens: `Il ne fume plus depuis un an.`"
               },
               "formTable": [
                 {
@@ -674,9 +674,9 @@
               },
               "ruleIds": ["r-depuis"],
               "answerExplanation": {
-                "en": "In the negative, depuis goes with the passé composé: je n'ai pas dormi.",
-                "fr": "Au négatif, depuis s'emploie avec le passé composé : je n'ai pas dormi.",
-                "de": "In der Verneinung steht depuis mit Passé composé: je n'ai pas dormi."
+                "en": "With ne... pas, for something that has not happened, depuis goes with the passé composé: je n'ai pas dormi.",
+                "fr": "Avec ne... pas, pour ce qui ne s'est pas produit, depuis s'emploie avec le passé composé : je n'ai pas dormi.",
+                "de": "Mit ne... pas, für etwas, das nicht geschehen ist, steht depuis mit Passé composé: je n'ai pas dormi."
               }
             }
           ]
@@ -887,9 +887,9 @@
               "hint": null,
               "ruleIds": ["r-il-y-a-que"],
               "answerExplanation": {
-                "en": "With a negation, the passé composé is used: il ne m'a pas appelé.",
-                "fr": "Avec une négation, on emploie le passé composé : il ne m'a pas appelé.",
-                "de": "Bei Verneinung steht das Passé composé: il ne m'a pas appelé."
+                "en": "With ne... pas, for something that has not happened, the passé composé is used: il ne m'a pas appelé.",
+                "fr": "Avec ne... pas, pour ce qui ne s'est pas produit, on emploie le passé composé : il ne m'a pas appelé.",
+                "de": "Mit ne... pas, für etwas, das nicht geschehen ist, steht das Passé composé: il ne m'a pas appelé."
               }
             }
           ]

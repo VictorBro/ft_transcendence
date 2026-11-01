@@ -213,7 +213,7 @@
                 {
                   "lineId": "line-10",
                   "roleId": "debatteuse",
-                  "text": "Je suis fermement convaincu que cette réforme profitera à tous les élèves.",
+                  "text": "Je suis fermement convaincue que cette réforme profitera à tous les élèves.",
                   "translation": {
                     "en": "I am firmly convinced that this reform will benefit all pupils.",
                     "de": "Ich bin fest davon überzeugt, dass diese Reform allen Schülern nützen wird."
@@ -279,9 +279,9 @@
                 {
                   "id": "fermement-convaincu",
                   "answerExplanation": {
-                    "en": "Concludes with strength: you are sure of your position. Say it last.",
-                    "fr": "Conclut avec force : vous êtes sûr de votre position. À dire en dernier.",
-                    "de": "Schließt nachdrücklich: Sie sind sich Ihrer Position sicher. Als Letztes sagen."
+                    "en": "Concludes with strength: you are sure of your position. Say it last. Convaincu agrees with the speaker: convaincue for a woman, convaincu for a man.",
+                    "fr": "Conclut avec force : vous êtes sûr de votre position. À dire en dernier. Convaincu s’accorde avec la personne qui parle : convaincue pour une femme, convaincu pour un homme.",
+                    "de": "Schließt nachdrücklich: Sie sind sich Ihrer Position sicher. Als Letztes sagen. Convaincu richtet sich nach der sprechenden Person: convaincue für eine Frau, convaincu für einen Mann."
                   }
                 }
               ]
@@ -429,9 +429,9 @@
                 "fermement-convaincu"
               ],
               "answerExplanation": {
-                "en": "To conclude, she states her certainty with Je suis fermement convaincu que.",
-                "fr": "Pour conclure, elle affirme sa certitude avec Je suis fermement convaincu que.",
-                "de": "Zum Schluss drückt sie ihre Gewissheit mit Je suis fermement convaincu que aus."
+                "en": "To conclude, she states her certainty with Je suis fermement convaincue que.",
+                "fr": "Pour conclure, elle affirme sa certitude avec Je suis fermement convaincue que.",
+                "de": "Zum Schluss drückt sie ihre Gewissheit mit Je suis fermement convaincue que aus."
               }
             }
           ]
@@ -570,7 +570,7 @@
                 { "tokenId": "t1", "text": "Je" },
                 { "tokenId": "t2", "text": "suis" },
                 { "tokenId": "t3", "text": "fermement" },
-                { "tokenId": "t4", "text": "convaincu" },
+                { "tokenId": "t4", "text": "convaincue" },
                 { "tokenId": "t5", "text": "que" },
                 { "tokenId": "t6", "text": "ce choix" },
                 { "tokenId": "t7", "text": "est le bon." }
@@ -578,9 +578,9 @@
               "distractorTokenIds": [],
               "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
               "answerExplanation": {
-                "en": "The conclusion ends the speech: Je suis fermement convaincu que.",
-                "fr": "La conclusion termine le discours : Je suis fermement convaincu que.",
-                "de": "Der Schluss beendet die Rede: Je suis fermement convaincu que."
+                "en": "The conclusion ends the speech: Je suis fermement convaincue que.",
+                "fr": "La conclusion termine le discours : Je suis fermement convaincue que.",
+                "de": "Der Schluss beendet die Rede: Je suis fermement convaincue que."
               }
             }
           ]
@@ -720,7 +720,7 @@
                 { "optionId": "o3", "text": "Quel est votre premier argument ?" },
                 {
                   "optionId": "o4",
-                  "text": "Je suis fermement convaincu que cette réforme est juste."
+                  "text": "Je suis fermement convaincue que cette réforme est juste."
                 }
               ],
               "answerOptionId": "o4",
@@ -840,7 +840,7 @@
                 { "tokenId": "t1", "text": "Je" },
                 { "tokenId": "t2", "text": "suis" },
                 { "tokenId": "t3", "text": "fermement" },
-                { "tokenId": "t4", "text": "convaincu" },
+                { "tokenId": "t4", "text": "convaincue" },
                 { "tokenId": "t5", "text": "que" },
                 { "tokenId": "t6", "text": "cette idée" },
                 { "tokenId": "t7", "text": "mérite un essai." },
@@ -850,9 +850,9 @@
               "distractorTokenIds": ["t8", "t9"],
               "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
               "answerExplanation": {
-                "en": "She concludes firmly: Je suis fermement convaincu que.",
-                "fr": "Elle conclut avec fermeté : Je suis fermement convaincu que.",
-                "de": "Sie schließt entschieden: Je suis fermement convaincu que."
+                "en": "She concludes firmly: Je suis fermement convaincue que.",
+                "fr": "Elle conclut avec fermeté : Je suis fermement convaincue que.",
+                "de": "Sie schließt entschieden: Je suis fermement convaincue que."
               }
             }
           ]
@@ -1005,11 +1005,11 @@
                   "gap": {
                     "gapId": "gap-4",
                     "expressionId": "fermement-convaincu",
-                    "accepted": { "answers": ["Je suis fermement convaincu que"] },
+                    "accepted": { "answers": ["Je suis fermement convaincue que"] },
                     "answerExplanation": {
-                      "en": "She concludes with strength: Je suis fermement convaincu que.",
-                      "fr": "Elle conclut avec force : Je suis fermement convaincu que.",
-                      "de": "Sie schließt nachdrücklich: Je suis fermement convaincu que."
+                      "en": "She concludes with strength: Je suis fermement convaincue que, with convaincue in the feminine because a woman is speaking.",
+                      "fr": "Elle conclut avec force : Je suis fermement convaincue que, avec convaincue au féminin, car c’est une femme qui parle.",
+                      "de": "Sie schließt nachdrücklich: Je suis fermement convaincue que, mit convaincue in der weiblichen Form, weil eine Frau spricht."
                     }
                   },
                   "after": "cette interdiction aidera tous les élèves."

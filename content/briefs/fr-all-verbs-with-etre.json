@@ -21,9 +21,9 @@
   "kind": "grammar",
   "topic": "verbs_morphology",
   "scopeBoundaries": {
-    "en": "Covers nine verbs conjugated with être in the passé composé and the agreement of the participle with the subject. Excludes reflexive verbs, the negative form and verbs that take avoir.",
-    "fr": "Couvre neuf verbes conjugués avec être au passé composé et l’accord du participe avec le sujet. Exclut les verbes pronominaux, la forme négative et les verbes avec avoir.",
-    "de": "Behandelt neun Verben mit être im passé composé und die Angleichung des Partizips an das Subjekt. Ausgeschlossen sind reflexive Verben, die Verneinung und Verben mit avoir."
+    "en": "Covers nine more verbs conjugated with être in the passé composé and the agreement of the participle with the subject. Excludes reflexive verbs, the negative form and verbs that take avoir.",
+    "fr": "Couvre neuf autres verbes conjugués avec être au passé composé et l’accord du participe avec le sujet. Exclut les verbes pronominaux, la forme négative et les verbes avec avoir.",
+    "de": "Behandelt neun weitere Verben mit être im passé composé und die Angleichung des Partizips an das Subjekt. Ausgeschlossen sind reflexive Verben, die Verneinung und Verben mit avoir."
   },
   "prerequisites": [
     {
@@ -41,9 +41,9 @@
     {
       "id": "rule-verbs-etre",
       "summary": {
-        "en": "Nine verbs use être as auxiliary in the passé composé: monter, descendre, entrer, sortir, tomber, rentrer, retourner, devenir, mourir.",
-        "fr": "Neuf verbes se conjuguent avec être au passé composé : monter, descendre, entrer, sortir, tomber, rentrer, retourner, devenir, mourir.",
-        "de": "Neun Verben bilden das passé composé mit être: monter, descendre, entrer, sortir, tomber, rentrer, retourner, devenir, mourir."
+        "en": "Besides aller, venir, partir, arriver and rester, nine more verbs use être as auxiliary in the passé composé: monter, descendre, entrer, sortir, tomber, rentrer, retourner, devenir, mourir.",
+        "fr": "Outre les verbes aller, venir, partir, arriver et rester, neuf autres verbes se conjuguent avec être au passé composé : monter, descendre, entrer, sortir, tomber, rentrer, retourner, devenir, mourir.",
+        "de": "Neben aller, venir, partir, arriver und rester bilden neun weitere Verben das passé composé mit être: monter, descendre, entrer, sortir, tomber, rentrer, retourner, devenir, mourir."
       }
     },
     {
@@ -67,15 +67,15 @@
     {
       "id": "block-aux",
       "title": {
-        "en": "Nine verbs with être",
-        "fr": "Neuf verbes avec être",
-        "de": "Neun Verben mit être"
+        "en": "Nine more verbs with être",
+        "fr": "Neuf autres verbes avec être",
+        "de": "Neun weitere Verben mit être"
       },
       "ruleIds": ["rule-verbs-etre", "rule-forms"],
       "explanationPlan": {
-        "en": "List the nine verbs and show the pattern être (present) + participle. Give the participles, including devenu and mort. Point out that these verbs mostly express movement or change.",
-        "fr": "Présenter les neuf verbes et le schéma être (présent) + participe. Donner les participes, dont devenu et mort. Souligner qu’ils expriment surtout un mouvement ou un changement.",
-        "de": "Die neun Verben und das Schema être (Präsens) + Partizip zeigen. Die Partizipien nennen, auch devenu und mort. Betonen, dass sie meist Bewegung oder Veränderung ausdrücken."
+        "en": "List the nine new verbs, as additions to aller, venir, partir, arriver and rester, and show the pattern être (present) + participle. Give the participles, including devenu and mort. Point out that these verbs mostly express movement or change.",
+        "fr": "Présenter les neuf nouveaux verbes, en complément des verbes aller, venir, partir, arriver et rester, et le schéma être (présent) + participe. Donner les participes, dont devenu et mort. Souligner qu’ils expriment surtout un mouvement ou un changement.",
+        "de": "Die neun neuen Verben als Ergänzung zu aller, venir, partir, arriver und rester und das Schema être (Präsens) + Partizip zeigen. Die Partizipien nennen, auch devenu und mort. Betonen, dass sie meist Bewegung oder Veränderung ausdrücken."
       },
       "explanationDurationS": 150,
       "examples": [

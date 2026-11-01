@@ -274,7 +274,7 @@
       "gap": {
         "before": "Avant la réunion, les chefs de service doivent ",
         "after": " sur la stratégie.",
-        "accepted": { "answers": ["être alignés", "être alignées", "être aligné", "être alignée"] },
+        "accepted": { "answers": ["être alignés", "être alignées"] },
         "referenceTargetIds": [
           "etre-aligne",
           "faire-remonter",
@@ -282,9 +282,9 @@
           "force-proposition"
         ],
         "explanation": {
-          "en": "Only “être aligné” fits: the managers must share the same view of the strategy.",
-          "fr": "Seul « être aligné » convient : les chefs de service doivent partager la même vision de la stratégie.",
-          "de": "Nur „être aligné“ passt: Die Abteilungsleiter müssen die Strategie gleich sehen."
+          "en": "Only “être aligné” fits: the managers must share the same view of the strategy. The subject is plural, so the adjective is too: être alignés (or alignées).",
+          "fr": "Seul « être aligné » convient : les chefs de service doivent partager la même vision de la stratégie. Le sujet est au pluriel, l’adjectif aussi : être alignés (ou alignées).",
+          "de": "Nur „être aligné“ passt: Die Abteilungsleiter müssen die Strategie gleich sehen. Das Subjekt steht im Plural, also auch das Adjektiv: être alignés (oder alignées)."
         }
       },
       "listeningOptionTargetIds": [

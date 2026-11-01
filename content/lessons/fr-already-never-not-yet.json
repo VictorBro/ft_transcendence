@@ -789,7 +789,11 @@
               "before": "Tu es déjà allé au Canada ? Non,",
               "after": ".",
               "accepted": { "answers": ["jamais"] },
-              "hint": null,
+              "hint": {
+                "en": "Never in your life.",
+                "fr": "Jamais dans la vie.",
+                "de": "Nie im Leben."
+              },
               "ruleIds": ["r-jamais"],
               "answerExplanation": {
                 "en": "Jamais can answer alone: Non, jamais.",
@@ -1120,42 +1124,42 @@
               "type": "grammar_gap_typing",
               "itemId": "exam-2-1",
               "before": "Nous n'avons",
-              "after": "visité l'Espagne.",
+              "after": "visité l'Espagne de notre vie.",
               "accepted": { "answers": ["jamais"] },
               "hint": null,
               "ruleIds": ["r-jamais"],
               "answerExplanation": {
-                "en": "Ne… jamais means never and goes around the auxiliary.",
-                "fr": "Ne… jamais veut dire « jamais » et entoure l’auxiliaire.",
-                "de": "Ne… jamais heißt „nie“ und steht um das Hilfsverb."
+                "en": "De notre vie (in our life) calls for never: ne… jamais goes around the auxiliary.",
+                "fr": "De notre vie demande « jamais » : ne… jamais entoure l’auxiliaire.",
+                "de": "De notre vie (in unserem Leben) verlangt „nie“: ne… jamais steht um das Hilfsverb."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-2-2",
               "before": "Paul n'est",
-              "after": "monté à cheval.",
+              "after": "monté à cheval de sa vie.",
               "accepted": { "answers": ["jamais"] },
               "hint": null,
               "ruleIds": ["r-jamais"],
               "answerExplanation": {
-                "en": "Ne… jamais means never and goes around the auxiliary.",
-                "fr": "Ne… jamais veut dire « jamais » et entoure l’auxiliaire.",
-                "de": "Ne… jamais heißt „nie“ und steht um das Hilfsverb."
+                "en": "De sa vie (in his life) calls for never: ne… jamais goes around the auxiliary.",
+                "fr": "De sa vie demande « jamais » : ne… jamais entoure l’auxiliaire.",
+                "de": "De sa vie (in seinem Leben) verlangt „nie“: ne… jamais steht um das Hilfsverb."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-2-3",
               "before": "Elle n'a",
-              "after": "mangé d'huîtres.",
+              "after": "mangé d'huîtres de sa vie.",
               "accepted": { "answers": ["jamais"] },
               "hint": null,
               "ruleIds": ["r-jamais"],
               "answerExplanation": {
-                "en": "Ne… jamais means never and goes around the auxiliary.",
-                "fr": "Ne… jamais veut dire « jamais » et entoure l’auxiliaire.",
-                "de": "Ne… jamais heißt „nie“ und steht um das Hilfsverb."
+                "en": "De sa vie (in her life) calls for never: ne… jamais goes around the auxiliary.",
+                "fr": "De sa vie demande « jamais » : ne… jamais entoure l’auxiliaire.",
+                "de": "De sa vie (in ihrem Leben) verlangt „nie“: ne… jamais steht um das Hilfsverb."
               }
             }
           ]
