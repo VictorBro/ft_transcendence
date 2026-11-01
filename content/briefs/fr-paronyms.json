@@ -1,0 +1,671 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-paronyms",
+  "lang": "fr",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Éminent ou imminent ?",
+  "objective": {
+    "en": "Tell apart twelve look-alike words such as éminent/imminent and conjecture/conjoncture, and use each in the right context.",
+    "fr": "Distinguer douze paronymes comme éminent/imminent ou conjecture/conjoncture et employer chacun dans le bon contexte.",
+    "de": "Zwölf ähnlich klingende Wörter wie éminent/imminent oder conjecture/conjoncture unterscheiden und richtig verwenden."
+  },
+  "estimatedMinutes": 21,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:57:52.173Z",
+    "inputHashes": { "outline": "6db10be7eefd523cbf30156bfafeeb5de1dc57a2cec5ff55bf11e448a9b2d34e" }
+  },
+  "kind": "vocabulary",
+  "theme": "language",
+  "coverageNotes": {
+    "en": "Twelve paronyms in three groups: people and events, analysis and economy, law and accidents. Each group pairs words that are easily confused: éminent/imminent, prodige/prodigue, conjecture/conjoncture, allusion/illusion, effraction/infraction, collision/collusion.",
+    "fr": "Douze paronymes en trois groupes : personnes et événements, analyse et économie, droit et accidents. Chaque groupe réunit des mots qu’on confond facilement : éminent/imminent, prodige/prodigue, conjecture/conjoncture, allusion/illusion, effraction/infraction, collision/collusion.",
+    "de": "Zwölf Paronyme in drei Gruppen: Personen und Ereignisse, Analyse und Wirtschaft, Recht und Unfälle. Jede Gruppe enthält leicht verwechselbare Wörter: éminent/imminent, prodige/prodigue, conjecture/conjoncture, allusion/illusion, effraction/infraction, collision/collusion."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words give six minimal pairs, enough to train discrimination without overloading a C1 learner.",
+    "fr": "Douze mots forment six paires minimales : assez pour entraîner la discrimination sans surcharger un apprenant C1.",
+    "de": "Zwölf Wörter ergeben sechs Minimalpaare: genug, um die Unterscheidung zu üben, ohne C1-Lernende zu überfordern."
+  },
+  "difficultyBalance": {
+    "en": "Most words are core vocabulary for a C1 reader; collusion, conjoncture and prodigue are the most demanding.",
+    "fr": "La plupart des mots sont du vocabulaire de base pour un lecteur C1 ; collusion, conjoncture et prodigue sont les plus exigeants.",
+    "de": "Die meisten Wörter gehören zum Grundwortschatz auf C1; collusion, conjoncture und prodigue sind am anspruchsvollsten."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "personnes",
+      "label": {
+        "en": "People and events",
+        "fr": "Personnes et événements",
+        "de": "Personen und Ereignisse"
+      },
+      "targetIds": ["eminent", "imminent", "prodige", "prodigue"],
+      "introduction": {
+        "en": "These words look alike but mean different things. Keep each pair apart:\n\n- `éminent` means distinguished, `imminent` means about to happen\n- `un prodige` is a marvel, `prodigue` means lavish with money or effort",
+        "fr": "Ces mots se ressemblent mais n’ont pas le même sens. Séparez bien chaque paire :\n\n- `éminent` signifie très distingué, `imminent` signifie sur le point d’arriver\n- `un prodige` est une merveille, `prodigue` signifie qui donne sans compter",
+        "de": "Diese Wörter sehen ähnlich aus, bedeuten aber Verschiedenes. Halte jedes Paar auseinander:\n\n- `éminent` heißt angesehen, `imminent` heißt unmittelbar bevorstehend\n- `un prodige` ist ein Wunder, `prodigue` heißt verschwenderisch oder freigebig"
+      }
+    },
+    {
+      "id": "analyse",
+      "label": {
+        "en": "Analysis and economy",
+        "fr": "Analyse et économie",
+        "de": "Analyse und Wirtschaft"
+      },
+      "targetIds": ["conjecture", "conjoncture", "allusion", "illusion"],
+      "introduction": {
+        "en": "Two pairs that are often mixed up in writing:\n\n- `une conjecture` is an unproven hypothesis, `une conjoncture` is an economic or general situation\n- `une allusion` is an indirect reference, `une illusion` is a false impression",
+        "fr": "Deux paires souvent confondues à l’écrit :\n\n- `une conjecture` est une hypothèse non prouvée, `une conjoncture` est une situation économique ou générale\n- `une allusion` est une référence indirecte, `une illusion` est une fausse impression",
+        "de": "Zwei Paare, die man im Schriftlichen oft verwechselt:\n\n- `une conjecture` ist eine unbewiesene Vermutung, `une conjoncture` ist eine wirtschaftliche oder allgemeine Lage\n- `une allusion` ist eine indirekte Anspielung, `une illusion` ist ein falscher Eindruck"
+      }
+    },
+    {
+      "id": "droit",
+      "label": { "en": "Law and accidents", "fr": "Droit et accidents", "de": "Recht und Unfälle" },
+      "targetIds": ["effraction", "infraction", "collision", "collusion"],
+      "introduction": {
+        "en": "Legal and news vocabulary where one letter changes everything:\n\n- `une effraction` is forcing a lock or entry, `une infraction` is breaking a rule or law\n- `une collision` is a physical crash, `une collusion` is a secret agreement to cheat others",
+        "fr": "Un vocabulaire juridique et journalistique où une lettre change tout :\n\n- `une effraction` est le fait de forcer une serrure ou un accès, `une infraction` est la violation d’une règle ou d’une loi\n- `une collision` est un choc physique, `une collusion` est une entente secrète pour tromper les autres",
+        "de": "Wortschatz aus Recht und Presse, in dem ein Buchstabe alles ändert:\n\n- `une effraction` ist das Aufbrechen eines Schlosses oder Zugangs, `une infraction` ist ein Verstoß gegen eine Regel oder ein Gesetz\n- `une collision` ist ein körperlicher Zusammenstoß, `une collusion` ist eine geheime Absprache, um andere zu täuschen"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "eminent",
+      "term": "éminent",
+      "translations": { "en": ["eminent"], "de": ["herausragend", "angesehen"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "éminent",
+      "examForms": ["éminent"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/eminɑ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Un éminent professeur a ouvert la conférence.",
+        "translation": {
+          "en": "An eminent professor opened the conference.",
+          "de": "Ein angesehener Professor eröffnete die Konferenz."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Do not confuse it with imminent, which means about to happen.",
+        "fr": "À ne pas confondre avec imminent, qui signifie sur le point d’arriver.",
+        "de": "Nicht mit imminent verwechseln, das „unmittelbar bevorstehend“ bedeutet."
+      },
+      "explanation": {
+        "en": "Éminent describes a person of high standing; it is not about time.",
+        "fr": "Éminent qualifie une personne de grande valeur ; il ne concerne pas le temps.",
+        "de": "Éminent beschreibt eine Person von hohem Rang; es hat nichts mit der Zeit zu tun."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le docteur Martin est un chercheur ",
+        "after": " dans son domaine.",
+        "accepted": { "answers": ["éminent"] },
+        "referenceTargetIds": ["eminent", "imminent", "collision", "illusion"],
+        "explanation": {
+          "en": "A researcher of high standing is éminent; imminent concerns events.",
+          "fr": "Un chercheur de grande valeur est éminent ; imminent concerne les événements.",
+          "de": "Ein Forscher von hohem Rang ist éminent; imminent betrifft Ereignisse."
+        }
+      },
+      "listeningOptionTargetIds": ["eminent", "imminent", "prodige", "prodigue"]
+    },
+    {
+      "id": "imminent",
+      "term": "imminent",
+      "translations": { "en": ["imminent"], "de": ["bevorstehend", "unmittelbar bevorstehend"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "imminent",
+      "examForms": ["imminent"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/iminɑ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Le départ du train est imminent.",
+        "translation": {
+          "en": "The train’s departure is imminent.",
+          "de": "Die Abfahrt des Zuges steht unmittelbar bevor."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Do not confuse it with éminent, which describes a distinguished person.",
+        "fr": "À ne pas confondre avec éminent, qui qualifie une personne distinguée.",
+        "de": "Nicht mit éminent verwechseln, das eine angesehene Person beschreibt."
+      },
+      "explanation": {
+        "en": "Imminent describes something about to happen very soon.",
+        "fr": "Imminent qualifie ce qui va se produire très bientôt.",
+        "de": "Imminent beschreibt etwas, das sehr bald geschehen wird."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Les météorologues annoncent un orage ",
+        "after": ".",
+        "accepted": { "answers": ["imminent"] },
+        "referenceTargetIds": ["eminent", "imminent", "prodigue", "allusion"],
+        "explanation": {
+          "en": "A storm that is about to break is imminent.",
+          "fr": "Un orage sur le point d’éclater est imminent.",
+          "de": "Ein Gewitter, das gleich losbricht, ist imminent."
+        }
+      },
+      "listeningOptionTargetIds": ["eminent", "imminent", "prodige", "prodigue"]
+    },
+    {
+      "id": "prodige",
+      "term": "prodige",
+      "translations": { "en": ["prodigy"], "de": ["Wunderkind", "Wunder"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un prodige",
+      "examForms": ["un prodige"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/pʁɔdiʒ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ce violoniste de neuf ans est un prodige.",
+        "translation": {
+          "en": "This nine-year-old violinist is a prodigy.",
+          "de": "Dieser neunjährige Geiger ist ein Wunderkind."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Do not confuse it with the adjective prodigue, which means lavish.",
+        "fr": "À ne pas confondre avec l’adjectif prodigue, qui signifie dépensier ou généreux.",
+        "de": "Nicht mit dem Adjektiv prodigue verwechseln, das „verschwenderisch“ bedeutet."
+      },
+      "explanation": {
+        "en": "Un prodige is an extraordinary person or thing; it ends in the sound of the letter j.",
+        "fr": "Un prodige est une personne ou une chose extraordinaire ; il se termine par le son j.",
+        "de": "Un prodige ist eine außergewöhnliche Person oder Sache; es endet auf den Laut j."
+      },
+      "genderExplanation": {
+        "en": "Prodige is masculine, so its indefinite article is un.",
+        "fr": "Prodige est masculin : on dit un prodige.",
+        "de": "Prodige ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ce pianiste de dix ans est un véritable ",
+        "after": ".",
+        "accepted": { "answers": ["prodige"] },
+        "referenceTargetIds": ["prodige", "prodigue", "conjoncture", "infraction"],
+        "explanation": {
+          "en": "A gifted child is a prodige; prodigue is an adjective about spending.",
+          "fr": "Un enfant surdoué est un prodige ; prodigue est un adjectif lié à la dépense.",
+          "de": "Ein hochbegabtes Kind ist ein prodige; prodigue ist ein Adjektiv zum Thema Ausgeben."
+        }
+      },
+      "listeningOptionTargetIds": ["eminent", "imminent", "prodige", "prodigue"]
+    },
+    {
+      "id": "prodigue",
+      "term": "prodigue",
+      "translations": { "en": ["lavish", "spendthrift"], "de": ["verschwenderisch", "freigebig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "prodigue",
+      "examForms": ["prodigue"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/pʁɔdig/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Il est prodigue de conseils.",
+        "translation": {
+          "en": "He is generous with advice.",
+          "de": "Er ist freigebig mit Ratschlägen."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Do not confuse it with the noun prodige, which means a prodigy.",
+        "fr": "À ne pas confondre avec le nom prodige, qui désigne un être ou un fait extraordinaire.",
+        "de": "Nicht mit dem Nomen prodige verwechseln, das ein Wunderkind oder Wunder bezeichnet."
+      },
+      "explanation": {
+        "en": "Prodigue means giving or spending without counting, often followed by de.",
+        "fr": "Prodigue signifie qui donne ou dépense sans compter, souvent suivi de de.",
+        "de": "Prodigue bedeutet: gibt oder verbraucht ohne zu zählen, oft mit de."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Grand-père est très ",
+        "after": " de son temps et de son argent.",
+        "accepted": { "answers": ["prodigue"] },
+        "referenceTargetIds": ["prodigue", "prodige", "eminent", "illusion"],
+        "explanation": {
+          "en": "Prodigue de takes a complement of what one gives freely.",
+          "fr": "Prodigue de se construit avec ce qu’on donne sans compter.",
+          "de": "Prodigue de steht mit dem, was man großzügig gibt."
+        }
+      },
+      "listeningOptionTargetIds": ["eminent", "imminent", "prodige", "prodigue"]
+    },
+    {
+      "id": "conjecture",
+      "term": "conjecture",
+      "translations": { "en": ["conjecture"], "de": ["Mutmaßung", "Vermutung"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une conjecture",
+      "examForms": ["une conjecture"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kɔ̃ʒɛktyʁ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Ce n’est qu’une conjecture, sans aucune preuve.",
+        "translation": {
+          "en": "That is only a conjecture, with no proof at all.",
+          "de": "Das ist nur eine Mutmaßung ohne jeden Beweis."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Do not confuse it with conjoncture, which is a situation.",
+        "fr": "À ne pas confondre avec conjoncture, qui désigne une situation.",
+        "de": "Nicht mit conjoncture verwechseln, das eine Lage bezeichnet."
+      },
+      "explanation": {
+        "en": "Une conjecture is an opinion based on clues, not on proof.",
+        "fr": "Une conjecture est une opinion fondée sur des indices, non sur des preuves.",
+        "de": "Une conjecture ist eine Meinung auf Grundlage von Hinweisen, nicht von Beweisen."
+      },
+      "genderExplanation": {
+        "en": "Conjecture is feminine, so its indefinite article is une.",
+        "fr": "Conjecture est féminin : on dit une conjecture.",
+        "de": "Conjecture ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Les historiens avancent une ",
+        "after": " sur l’origine de ce manuscrit, faute de preuves.",
+        "accepted": { "answers": ["conjecture"] },
+        "referenceTargetIds": ["conjecture", "conjoncture", "effraction", "collision"],
+        "explanation": {
+          "en": "Without proof, a hypothesis is a conjecture.",
+          "fr": "Sans preuve, une hypothèse est une conjecture.",
+          "de": "Ohne Beweis ist eine Hypothese eine conjecture."
+        }
+      },
+      "listeningOptionTargetIds": ["effraction", "infraction", "conjecture", "conjoncture"]
+    },
+    {
+      "id": "conjoncture",
+      "term": "conjoncture",
+      "translations": {
+        "en": ["economic climate", "economic situation"],
+        "de": ["Konjunktur", "Lage"]
+      },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une conjoncture",
+      "examForms": ["une conjoncture"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kɔ̃ʒɔ̃ktyʁ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "La conjoncture économique est incertaine.",
+        "translation": {
+          "en": "The economic climate is uncertain.",
+          "de": "Die Konjunktur ist ungewiss."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Do not confuse it with conjecture, which is a hypothesis.",
+        "fr": "À ne pas confondre avec conjecture, qui désigne une hypothèse.",
+        "de": "Nicht mit conjecture verwechseln, das eine Hypothese bezeichnet."
+      },
+      "explanation": {
+        "en": "Une conjoncture is the set of circumstances at a given moment, especially economic.",
+        "fr": "Une conjoncture est l’ensemble des circonstances à un moment donné, surtout économiques.",
+        "de": "Une conjoncture ist die Gesamtheit der Umstände zu einem Zeitpunkt, besonders wirtschaftlich."
+      },
+      "genderExplanation": {
+        "en": "Conjoncture is feminine, so its indefinite article is une.",
+        "fr": "Conjoncture est féminin : on dit une conjoncture.",
+        "de": "Conjoncture ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Dans une ",
+        "after": " économique difficile, les entreprises n’embauchent plus.",
+        "accepted": { "answers": ["conjoncture"] },
+        "referenceTargetIds": ["conjoncture", "conjecture", "infraction", "collusion"],
+        "explanation": {
+          "en": "The economic situation of the moment is the conjoncture.",
+          "fr": "La situation économique du moment est la conjoncture.",
+          "de": "Die wirtschaftliche Lage des Moments ist die conjoncture."
+        }
+      },
+      "listeningOptionTargetIds": ["effraction", "infraction", "conjecture", "conjoncture"]
+    },
+    {
+      "id": "allusion",
+      "term": "allusion",
+      "translations": { "en": ["allusion", "hint"], "de": ["Anspielung"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une allusion",
+      "examForms": ["une allusion"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/alyzjɔ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Elle a fait allusion à son départ.",
+        "translation": {
+          "en": "She hinted at her departure.",
+          "de": "Sie hat auf ihren Weggang angespielt."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Do not confuse it with illusion, which is a false impression.",
+        "fr": "À ne pas confondre avec illusion, qui désigne une fausse impression.",
+        "de": "Nicht mit illusion verwechseln, das einen falschen Eindruck bezeichnet."
+      },
+      "explanation": {
+        "en": "Une allusion refers to something without naming it; one makes allusion à.",
+        "fr": "Une allusion évoque une chose sans la nommer ; on fait allusion à.",
+        "de": "Une allusion verweist auf etwas, ohne es zu nennen; man sagt faire allusion à."
+      },
+      "genderExplanation": {
+        "en": "Allusion is feminine, so its indefinite article is une.",
+        "fr": "Allusion est féminin : on dit une allusion.",
+        "de": "Allusion ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il a fait ",
+        "after": " à mon retard sans le dire ouvertement.",
+        "accepted": { "answers": ["allusion"] },
+        "referenceTargetIds": ["allusion", "illusion", "conjecture", "collision"],
+        "explanation": {
+          "en": "Faire allusion à means to refer to something indirectly.",
+          "fr": "Faire allusion à signifie évoquer indirectement.",
+          "de": "Faire allusion à bedeutet, indirekt auf etwas anzuspielen."
+        }
+      },
+      "listeningOptionTargetIds": ["collision", "collusion", "allusion", "illusion"]
+    },
+    {
+      "id": "illusion",
+      "term": "illusion",
+      "translations": { "en": ["illusion"], "de": ["Illusion", "Täuschung"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une illusion",
+      "examForms": ["une illusion"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ilyzjɔ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ce n’est qu’une illusion d’optique.",
+        "translation": {
+          "en": "It is only an optical illusion.",
+          "de": "Das ist nur eine optische Täuschung."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Do not confuse it with allusion, which is an indirect reference.",
+        "fr": "À ne pas confondre avec allusion, qui désigne une référence indirecte.",
+        "de": "Nicht mit allusion verwechseln, das eine indirekte Anspielung bezeichnet."
+      },
+      "explanation": {
+        "en": "Une illusion is a false perception or a belief that does not match reality.",
+        "fr": "Une illusion est une perception fausse ou une croyance qui ne correspond pas à la réalité.",
+        "de": "Une illusion ist eine falsche Wahrnehmung oder ein Glaube, der nicht der Wirklichkeit entspricht."
+      },
+      "genderExplanation": {
+        "en": "Illusion is feminine, so its indefinite article is une.",
+        "fr": "Illusion est féminin : on dit une illusion.",
+        "de": "Illusion ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ce tour de magie crée une parfaite ",
+        "after": " d’optique.",
+        "accepted": { "answers": ["illusion"] },
+        "referenceTargetIds": ["illusion", "allusion", "conjoncture", "effraction"],
+        "explanation": {
+          "en": "An optical illusion is a false visual impression.",
+          "fr": "Une illusion d’optique est une fausse impression visuelle.",
+          "de": "Eine illusion d’optique ist ein falscher visueller Eindruck."
+        }
+      },
+      "listeningOptionTargetIds": ["collision", "collusion", "allusion", "illusion"]
+    },
+    {
+      "id": "effraction",
+      "term": "effraction",
+      "translations": { "en": ["break-in", "forced entry"], "de": ["Einbruch"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une effraction",
+      "examForms": ["une effraction"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/efʁaksjɔ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Le cambrioleur est entré par effraction.",
+        "translation": { "en": "The burglar broke in.", "de": "Der Einbrecher ist eingebrochen." }
+      },
+      "ambiguityNote": {
+        "en": "Do not confuse it with infraction, which means breaking a rule.",
+        "fr": "À ne pas confondre avec infraction, qui signifie violation d’une règle.",
+        "de": "Nicht mit infraction verwechseln, das einen Regelverstoß bezeichnet."
+      },
+      "explanation": {
+        "en": "Une effraction is the act of breaking a lock or a door to get in.",
+        "fr": "Une effraction est le fait de forcer une serrure ou une porte pour entrer.",
+        "de": "Une effraction ist das Aufbrechen eines Schlosses oder einer Tür, um einzudringen."
+      },
+      "genderExplanation": {
+        "en": "Effraction is feminine, so its indefinite article is une.",
+        "fr": "Effraction est féminin : on dit une effraction.",
+        "de": "Effraction ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le cambrioleur est entré dans la maison par ",
+        "after": ".",
+        "accepted": { "answers": ["effraction"] },
+        "referenceTargetIds": ["effraction", "infraction", "collision", "collusion"],
+        "explanation": {
+          "en": "Entering by force is entrer par effraction.",
+          "fr": "Entrer de force se dit entrer par effraction.",
+          "de": "Gewaltsam eindringen heißt entrer par effraction."
+        }
+      },
+      "listeningOptionTargetIds": ["effraction", "infraction", "conjecture", "conjoncture"]
+    },
+    {
+      "id": "infraction",
+      "term": "infraction",
+      "translations": { "en": ["offence", "violation"], "de": ["Verstoß", "Vergehen"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une infraction",
+      "examForms": ["une infraction"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɛ̃fʁaksjɔ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Il a commis une infraction au code de la route.",
+        "translation": {
+          "en": "He committed a traffic offence.",
+          "de": "Er hat einen Verstoß gegen die Straßenverkehrsordnung begangen."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Do not confuse it with effraction, which means breaking in.",
+        "fr": "À ne pas confondre avec effraction, qui désigne le fait de forcer un accès.",
+        "de": "Nicht mit effraction verwechseln, das das gewaltsame Eindringen bezeichnet."
+      },
+      "explanation": {
+        "en": "Une infraction is a breach of a law or rule, followed by à.",
+        "fr": "Une infraction est la violation d’une loi ou d’une règle, suivie de à.",
+        "de": "Une infraction ist ein Verstoß gegen ein Gesetz oder eine Regel, mit à."
+      },
+      "genderExplanation": {
+        "en": "Infraction is feminine, so its indefinite article is une.",
+        "fr": "Infraction est féminin : on dit une infraction.",
+        "de": "Infraction ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Rouler à 130 km/h en ville est une grave ",
+        "after": ", passible d’une amende.",
+        "accepted": { "answers": ["infraction"] },
+        "referenceTargetIds": ["infraction", "effraction", "collision", "collusion"],
+        "explanation": {
+          "en": "Breaking a traffic rule is an infraction.",
+          "fr": "Violer une règle de circulation est une infraction.",
+          "de": "Eine Verkehrsregel zu verletzen ist eine infraction."
+        }
+      },
+      "listeningOptionTargetIds": ["effraction", "infraction", "conjecture", "conjoncture"]
+    },
+    {
+      "id": "collision",
+      "term": "collision",
+      "translations": { "en": ["collision", "crash"], "de": ["Zusammenstoß"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une collision",
+      "examForms": ["une collision"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kɔlizjɔ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Une violente collision a eu lieu sur l’autoroute.",
+        "translation": {
+          "en": "A violent collision took place on the motorway.",
+          "de": "Auf der Autobahn kam es zu einem heftigen Zusammenstoß."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Do not confuse it with collusion, which is a secret deal.",
+        "fr": "À ne pas confondre avec collusion, qui désigne une entente secrète.",
+        "de": "Nicht mit collusion verwechseln, das eine geheime Absprache bezeichnet."
+      },
+      "explanation": {
+        "en": "Une collision is a physical impact between two moving objects.",
+        "fr": "Une collision est un choc physique entre deux objets en mouvement.",
+        "de": "Une collision ist ein körperlicher Aufprall zwischen zwei bewegten Objekten."
+      },
+      "genderExplanation": {
+        "en": "Collision is feminine, so its indefinite article is une.",
+        "fr": "Collision est féminin : on dit une collision.",
+        "de": "Collision ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Une violente ",
+        "after": " entre deux camions a bloqué l’autoroute.",
+        "accepted": { "answers": ["collision"] },
+        "referenceTargetIds": ["collision", "collusion", "infraction", "imminent"],
+        "explanation": {
+          "en": "Two trucks that crash cause a collision.",
+          "fr": "Deux camions qui se heurtent provoquent une collision.",
+          "de": "Zwei Lastwagen, die zusammenstoßen, verursachen eine collision."
+        }
+      },
+      "listeningOptionTargetIds": ["collision", "collusion", "allusion", "illusion"]
+    },
+    {
+      "id": "collusion",
+      "term": "collusion",
+      "translations": { "en": ["collusion"], "de": ["geheime Absprache", "Kollusion"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une collusion",
+      "examForms": ["une collusion"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kɔlyzjɔ̃/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Les juges ont dénoncé une collusion entre les deux sociétés.",
+        "translation": {
+          "en": "The judges condemned a collusion between the two companies.",
+          "de": "Die Richter prangerten eine geheime Absprache zwischen den beiden Firmen an."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Do not confuse it with collision, which is a physical crash.",
+        "fr": "À ne pas confondre avec collision, qui désigne un choc physique.",
+        "de": "Nicht mit collision verwechseln, das einen körperlichen Zusammenstoß bezeichnet."
+      },
+      "explanation": {
+        "en": "Une collusion is a secret agreement to deceive or harm others.",
+        "fr": "Une collusion est une entente secrète pour tromper ou léser autrui.",
+        "de": "Une collusion ist eine geheime Absprache, um andere zu täuschen oder zu schädigen."
+      },
+      "genderExplanation": {
+        "en": "Collusion is feminine, so its indefinite article is une.",
+        "fr": "Collusion est féminin : on dit une collusion.",
+        "de": "Collusion ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Les deux entreprises sont accusées de ",
+        "after": " pour fixer les prix en secret.",
+        "accepted": { "answers": ["collusion"] },
+        "referenceTargetIds": ["collusion", "collision", "infraction", "conjoncture"],
+        "explanation": {
+          "en": "A secret price-fixing deal is a collusion.",
+          "fr": "Une entente secrète sur les prix est une collusion.",
+          "de": "Eine geheime Preisabsprache ist eine collusion."
+        }
+      },
+      "listeningOptionTargetIds": ["collision", "collusion", "allusion", "illusion"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

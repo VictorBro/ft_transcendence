@@ -1,0 +1,728 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-strengths-and-flaws",
+  "lang": "fr",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Qualités et défauts",
+  "objective": {
+    "en": "Talk about your strengths and flaws with fifteen character words.",
+    "fr": "Parler de ses qualités et de ses défauts avec une quinzaine de mots.",
+    "de": "Über Stärken und Schwächen mit fünfzehn Charakterwörtern sprechen."
+  },
+  "estimatedMinutes": 24,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:47:32.878Z",
+    "inputHashes": { "outline": "7a7eba750d08ec4db39178ddf1329de470da2ca6ac811f728011a26c05e1ba4b" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Fifteen words for describing character: eight positive traits, including the expression avoir du caractère, and seven flaws or delicate traits. Several are false friends for English speakers (sensible, susceptible).",
+    "fr": "Quinze mots pour décrire le caractère : huit qualités, dont l’expression avoir du caractère, et sept défauts ou traits délicats. Plusieurs sont des faux amis pour les anglophones (sensible, susceptible).",
+    "de": "Fünfzehn Wörter zur Beschreibung des Charakters: acht positive Eigenschaften, darunter die Wendung avoir du caractère, und sieben Schwächen oder heikle Züge. Einige sind falsche Freunde (sensible, susceptible)."
+  },
+  "targetCount": 15,
+  "countRationale": {
+    "en": "Fifteen words match the outline's intent and fit two groups, enough for B1 learners to describe themselves and others.",
+    "fr": "Quinze mots correspondent à l’intention du plan et se répartissent en deux groupes, assez pour se décrire et décrire les autres au niveau B1.",
+    "de": "Fünfzehn Wörter entsprechen der Vorgabe und verteilen sich auf zwei Gruppen, genug für B1, um sich und andere zu beschreiben."
+  },
+  "difficultyBalance": {
+    "en": "Most words are common adjectives; débrouillard, rancunier, susceptible and avoir du caractère are more demanding.",
+    "fr": "La plupart des mots sont des adjectifs courants ; débrouillard, rancunier, susceptible et avoir du caractère sont plus exigeants.",
+    "de": "Die meisten Wörter sind häufige Adjektive; débrouillard, rancunier, susceptible und avoir du caractère sind anspruchsvoller."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "qualites",
+      "label": { "en": "Strengths", "fr": "Qualités", "de": "Stärken" },
+      "targetIds": [
+        "patient",
+        "ambitieux",
+        "debrouillard",
+        "honnete",
+        "genereux",
+        "courageux",
+        "curieux",
+        "caractere"
+      ],
+      "introduction": {
+        "en": "These words describe **positive traits**. Most adjectives also have a feminine form (`patiente`, `ambitieuse`):\n\n- `patient`\n- `ambitieux`\n- `débrouillard`\n- `honnête`\n- `généreux`\n- `courageux`\n- `curieux`\n- `avoir du caractère`",
+        "fr": "Ces mots décrivent des **qualités**. La plupart des adjectifs ont aussi une forme féminine (`patiente`, `ambitieuse`) :\n\n- `patient`\n- `ambitieux`\n- `débrouillard`\n- `honnête`\n- `généreux`\n- `courageux`\n- `curieux`\n- `avoir du caractère`",
+        "de": "Diese Wörter beschreiben **positive Eigenschaften**. Die meisten Adjektive haben auch eine weibliche Form (`patiente`, `ambitieuse`):\n\n- `patient`\n- `ambitieux`\n- `débrouillard`\n- `honnête`\n- `généreux`\n- `courageux`\n- `curieux`\n- `avoir du caractère`"
+      }
+    },
+    {
+      "id": "defauts",
+      "label": {
+        "en": "Flaws and delicate traits",
+        "fr": "Défauts et traits délicats",
+        "de": "Schwächen und heikle Züge"
+      },
+      "targetIds": [
+        "tetu",
+        "rancunier",
+        "susceptible",
+        "maladroit",
+        "paresseux",
+        "timide",
+        "sensible"
+      ],
+      "introduction": {
+        "en": "These words describe **flaws** or traits that can be a problem. Be careful with `sensible` and `susceptible`: they do not mean the same as in English:\n\n- `têtu`\n- `rancunier`\n- `susceptible`\n- `maladroit`\n- `paresseux`\n- `timide`\n- `sensible`",
+        "fr": "Ces mots décrivent des **défauts** ou des traits parfois gênants. Attention à `sensible` et à `susceptible` : ils ne veulent pas dire la même chose qu’en anglais :\n\n- `têtu`\n- `rancunier`\n- `susceptible`\n- `maladroit`\n- `paresseux`\n- `timide`\n- `sensible`",
+        "de": "Diese Wörter beschreiben **Schwächen** oder Züge, die manchmal stören. Vorsicht bei `sensible` und `susceptible`: Sie bedeuten nicht dasselbe wie im Englischen:\n\n- `têtu`\n- `rancunier`\n- `susceptible`\n- `maladroit`\n- `paresseux`\n- `timide`\n- `sensible`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "patient",
+      "term": "patient",
+      "translations": { "en": ["patient"], "de": ["geduldig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "patient",
+      "examForms": ["patient"],
+      "articleException": null,
+      "genderVariants": ["patiente"],
+      "pronunciation": "/pa.sjɑ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Elle est patiente avec les enfants.",
+        "translation": {
+          "en": "She is patient with children.",
+          "de": "Sie ist geduldig mit Kindern."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Patient describes someone who stays calm and can wait.",
+        "fr": "Patient décrit quelqu’un qui reste calme et sait attendre.",
+        "de": "Patient beschreibt jemanden, der ruhig bleibt und warten kann."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il attend son tour sans s’énerver : il est très ",
+        "after": ".",
+        "accepted": { "answers": ["patient"] },
+        "referenceTargetIds": ["patient", "ambitieux", "honnete", "caractere"],
+        "explanation": {
+          "en": "Waiting without getting angry shows patience.",
+          "fr": "Attendre sans s’énerver montre de la patience.",
+          "de": "Warten ohne sich aufzuregen zeigt Geduld."
+        }
+      },
+      "listeningOptionTargetIds": ["patient", "debrouillard", "courageux", "rancunier"]
+    },
+    {
+      "id": "ambitieux",
+      "term": "ambitieux",
+      "translations": { "en": ["ambitious"], "de": ["ehrgeizig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ambitieux",
+      "examForms": ["ambitieux"],
+      "articleException": null,
+      "genderVariants": ["ambitieuse"],
+      "pronunciation": "/ɑ̃.bi.sjø/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mon frère est ambitieux : il veut réussir.",
+        "translation": {
+          "en": "My brother is ambitious: he wants to succeed.",
+          "de": "Mein Bruder ist ehrgeizig: Er will Erfolg haben."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Ambitieux describes someone who wants to succeed and go far.",
+        "fr": "Ambitieux décrit quelqu’un qui veut réussir et aller loin.",
+        "de": "Ambitieux beschreibt jemanden, der Erfolg haben und weit kommen will."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il veut devenir directeur avant trente ans : il est ",
+        "after": ".",
+        "accepted": { "answers": ["ambitieux"] },
+        "referenceTargetIds": ["ambitieux", "debrouillard", "genereux", "tetu"],
+        "explanation": {
+          "en": "Wanting to become a director early shows ambition.",
+          "fr": "Vouloir devenir directeur très jeune montre de l’ambition.",
+          "de": "Früh Direktor werden zu wollen zeigt Ehrgeiz."
+        }
+      },
+      "listeningOptionTargetIds": ["ambitieux", "honnete", "curieux", "susceptible"]
+    },
+    {
+      "id": "debrouillard",
+      "term": "débrouillard",
+      "translations": { "en": ["resourceful"], "de": ["findig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "débrouillard",
+      "examForms": ["débrouillard"],
+      "articleException": null,
+      "genderVariants": ["débrouillarde"],
+      "pronunciation": "/de.bʁu.jaʁ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Elle est débrouillarde : elle trouve toujours une solution.",
+        "translation": {
+          "en": "She is resourceful: she always finds a solution.",
+          "de": "Sie ist findig: Sie findet immer eine Lösung."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Débrouillard describes someone who always manages to solve problems alone.",
+        "fr": "Débrouillard décrit quelqu’un qui sait toujours se tirer d’affaire seul.",
+        "de": "Débrouillard beschreibt jemanden, der Probleme immer allein lösen kann."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Sans carte ni téléphone, il a trouvé la gare : il est ",
+        "after": ".",
+        "accepted": { "answers": ["débrouillard"] },
+        "referenceTargetIds": ["debrouillard", "honnete", "courageux", "rancunier"],
+        "explanation": {
+          "en": "Finding the station without any help shows he can manage alone.",
+          "fr": "Trouver la gare sans aide montre qu’il sait se débrouiller.",
+          "de": "Den Bahnhof ohne Hilfe zu finden zeigt, dass er sich zu helfen weiß."
+        }
+      },
+      "listeningOptionTargetIds": ["debrouillard", "genereux", "caractere", "maladroit"]
+    },
+    {
+      "id": "honnete",
+      "term": "honnête",
+      "translations": { "en": ["honest"], "de": ["ehrlich"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "honnête",
+      "examForms": ["honnête"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɔ.nɛt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Il est honnête : il dit toujours la vérité.",
+        "translation": {
+          "en": "He is honest: he always tells the truth.",
+          "de": "Er ist ehrlich: Er sagt immer die Wahrheit."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Honnête describes someone who tells the truth and does not steal or cheat.",
+        "fr": "Honnête décrit quelqu’un qui dit la vérité et ne triche pas.",
+        "de": "Honnête beschreibt jemanden, der die Wahrheit sagt und nicht betrügt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il a rendu le portefeuille qu’il avait trouvé : il est ",
+        "after": ".",
+        "accepted": { "answers": ["honnête"] },
+        "referenceTargetIds": ["honnete", "genereux", "curieux", "susceptible"],
+        "explanation": {
+          "en": "Returning a found wallet is what an honest person does.",
+          "fr": "Rendre un portefeuille trouvé, c’est ce que fait une personne honnête.",
+          "de": "Eine gefundene Geldbörse zurückzugeben tut ein ehrlicher Mensch."
+        }
+      },
+      "listeningOptionTargetIds": ["honnete", "courageux", "tetu", "paresseux"]
+    },
+    {
+      "id": "genereux",
+      "term": "généreux",
+      "translations": { "en": ["generous"], "de": ["großzügig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "généreux",
+      "examForms": ["généreux"],
+      "articleException": null,
+      "genderVariants": ["généreuse"],
+      "pronunciation": "/ʒe.ne.ʁø/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ma grand-mère est généreuse avec tout le monde.",
+        "translation": {
+          "en": "My grandmother is generous with everyone.",
+          "de": "Meine Großmutter ist zu allen großzügig."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Généreux describes someone who gladly gives and shares.",
+        "fr": "Généreux décrit quelqu’un qui donne et partage volontiers.",
+        "de": "Généreux beschreibt jemanden, der gern gibt und teilt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il partage toujours son repas avec ses amis : il est ",
+        "after": ".",
+        "accepted": { "answers": ["généreux"] },
+        "referenceTargetIds": ["genereux", "courageux", "caractere", "maladroit"],
+        "explanation": {
+          "en": "Always sharing one’s meal is a sign of generosity.",
+          "fr": "Partager toujours son repas est un signe de générosité.",
+          "de": "Das Essen immer zu teilen ist ein Zeichen von Großzügigkeit."
+        }
+      },
+      "listeningOptionTargetIds": ["genereux", "curieux", "rancunier", "timide"]
+    },
+    {
+      "id": "courageux",
+      "term": "courageux",
+      "translations": { "en": ["brave"], "de": ["mutig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "courageux",
+      "examForms": ["courageux"],
+      "articleException": null,
+      "genderVariants": ["courageuse"],
+      "pronunciation": "/ku.ʁa.ʒø/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Les pompiers sont courageux.",
+        "translation": { "en": "Firefighters are brave.", "de": "Feuerwehrleute sind mutig." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Courageux describes someone who is not afraid to face danger or difficulty.",
+        "fr": "Courageux décrit quelqu’un qui n’a pas peur d’affronter un danger ou une difficulté.",
+        "de": "Courageux beschreibt jemanden, der sich vor Gefahr oder Schwierigkeiten nicht fürchtet."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il a sauté dans la rivière pour sauver un chien : il est ",
+        "after": ".",
+        "accepted": { "answers": ["courageux"] },
+        "referenceTargetIds": ["courageux", "curieux", "tetu", "paresseux"],
+        "explanation": {
+          "en": "Jumping into a river to save a dog takes courage.",
+          "fr": "Sauter dans une rivière pour sauver un chien demande du courage.",
+          "de": "In einen Fluss zu springen, um einen Hund zu retten, erfordert Mut."
+        }
+      },
+      "listeningOptionTargetIds": ["courageux", "caractere", "susceptible", "sensible"]
+    },
+    {
+      "id": "curieux",
+      "term": "curieux",
+      "translations": { "en": ["curious"], "de": ["neugierig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "curieux",
+      "examForms": ["curieux"],
+      "articleException": null,
+      "genderVariants": ["curieuse"],
+      "pronunciation": "/ky.ʁjø/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ma fille est très curieuse : elle pose mille questions.",
+        "translation": {
+          "en": "My daughter is very curious: she asks a thousand questions.",
+          "de": "Meine Tochter ist sehr neugierig: Sie stellt tausend Fragen."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Curieux can also mean “strange”, as in une histoire curieuse.",
+        "fr": "Curieux peut aussi vouloir dire « étrange », comme dans une histoire curieuse.",
+        "de": "Curieux kann auch „seltsam“ bedeuten, wie in une histoire curieuse."
+      },
+      "explanation": {
+        "en": "Curieux describes someone who wants to learn and discover things.",
+        "fr": "Curieux décrit quelqu’un qui veut apprendre et découvrir des choses.",
+        "de": "Curieux beschreibt jemanden, der Dinge lernen und entdecken will."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il lit tout et pose mille questions parce qu’il est ",
+        "after": ".",
+        "accepted": { "answers": ["curieux"] },
+        "referenceTargetIds": ["curieux", "caractere", "rancunier", "timide"],
+        "explanation": {
+          "en": "Reading everything and asking many questions shows curiosity.",
+          "fr": "Tout lire et poser beaucoup de questions montre de la curiosité.",
+          "de": "Alles zu lesen und viele Fragen zu stellen zeigt Neugier."
+        }
+      },
+      "listeningOptionTargetIds": ["curieux", "tetu", "maladroit", "patient"]
+    },
+    {
+      "id": "caractere",
+      "term": "avoir du caractère",
+      "translations": {
+        "en": ["to have strong character", "to have a strong personality"],
+        "de": ["Charakter haben"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "avoir du caractère",
+      "examForms": ["avoir du caractère"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/a.vwaʁ dy ka.ʁak.tɛʁ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Ma sœur a du caractère : elle sait dire non.",
+        "translation": {
+          "en": "My sister has a strong personality: she knows how to say no.",
+          "de": "Meine Schwester hat Charakter: Sie kann nein sagen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Avoir du caractère means having a strong personality and knowing what you want.",
+        "fr": "Avoir du caractère veut dire avoir une forte personnalité et savoir ce que l’on veut.",
+        "de": "Avoir du caractère bedeutet, eine starke Persönlichkeit zu haben und zu wissen, was man will."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Elle sait ce qu’elle veut et ne cède pas facilement : elle ",
+        "after": ".",
+        "accepted": { "answers": ["a du caractère"] },
+        "referenceTargetIds": ["caractere", "tetu", "susceptible", "sensible"],
+        "explanation": {
+          "en": "Knowing what you want and not giving in is what the expression describes.",
+          "fr": "Savoir ce que l’on veut et ne pas céder, c’est ce que décrit l’expression.",
+          "de": "Zu wissen, was man will, und nicht nachzugeben, beschreibt die Wendung."
+        }
+      },
+      "listeningOptionTargetIds": ["caractere", "rancunier", "paresseux", "ambitieux"]
+    },
+    {
+      "id": "tetu",
+      "term": "têtu",
+      "translations": { "en": ["stubborn"], "de": ["stur", "starrsinnig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "têtu",
+      "examForms": ["têtu"],
+      "articleException": null,
+      "genderVariants": ["têtue"],
+      "pronunciation": "/te.ty/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Il est têtu : il ne change jamais d’avis.",
+        "translation": {
+          "en": "He is stubborn: he never changes his mind.",
+          "de": "Er ist stur: Er ändert nie seine Meinung."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Têtu describes someone who refuses to change their mind.",
+        "fr": "Têtu décrit quelqu’un qui refuse de changer d’avis.",
+        "de": "Têtu beschreibt jemanden, der seine Meinung nicht ändern will."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il refuse d’écouter les autres et ne change jamais d’avis : il est ",
+        "after": ".",
+        "accepted": { "answers": ["têtu"] },
+        "referenceTargetIds": ["tetu", "rancunier", "maladroit", "patient"],
+        "explanation": {
+          "en": "Never changing one’s mind and refusing to listen is being stubborn.",
+          "fr": "Ne jamais changer d’avis et refuser d’écouter, c’est être têtu.",
+          "de": "Nie die Meinung zu ändern und nicht zuzuhören heißt stur sein."
+        }
+      },
+      "listeningOptionTargetIds": ["tetu", "susceptible", "timide", "debrouillard"]
+    },
+    {
+      "id": "rancunier",
+      "term": "rancunier",
+      "translations": { "en": ["resentful", "grudge-holding"], "de": ["nachtragend"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "rancunier",
+      "examForms": ["rancunier"],
+      "articleException": null,
+      "genderVariants": ["rancunière"],
+      "pronunciation": "/ʁɑ̃.ky.nje/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Elle est rancunière : elle n’oublie jamais une dispute.",
+        "translation": {
+          "en": "She holds grudges: she never forgets an argument.",
+          "de": "Sie ist nachtragend: Sie vergisst nie einen Streit."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Rancunier describes someone who does not forgive and keeps a grudge for a long time.",
+        "fr": "Rancunier décrit quelqu’un qui ne pardonne pas et garde longtemps de la rancune.",
+        "de": "Rancunier beschreibt jemanden, der nicht verzeiht und lange nachtragend ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Dix ans après, il n’a toujours pas pardonné la dispute : il est ",
+        "after": ".",
+        "accepted": { "answers": ["rancunier"] },
+        "referenceTargetIds": ["rancunier", "susceptible", "paresseux", "ambitieux"],
+        "explanation": {
+          "en": "Not forgiving a quarrel after ten years is being resentful.",
+          "fr": "Ne pas pardonner une dispute après dix ans, c’est être rancunier.",
+          "de": "Einen Streit nach zehn Jahren nicht zu verzeihen heißt nachtragend sein."
+        }
+      },
+      "listeningOptionTargetIds": ["rancunier", "maladroit", "sensible", "honnete"]
+    },
+    {
+      "id": "susceptible",
+      "term": "susceptible",
+      "translations": { "en": ["touchy"], "de": ["empfindlich", "leicht beleidigt"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "susceptible",
+      "examForms": ["susceptible"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/sy.sɛp.tibl/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Il est susceptible : une petite remarque le vexe.",
+        "translation": {
+          "en": "He is touchy: a small remark offends him.",
+          "de": "Er ist empfindlich: Eine kleine Bemerkung kränkt ihn."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Susceptible means “touchy” here, not “likely to” or “susceptible to”.",
+        "fr": "Ici, susceptible veut dire « qui se vexe facilement », pas « capable de » comme en anglais.",
+        "de": "Susceptible bedeutet hier „leicht gekränkt“, nicht „anfällig“ wie im Englischen."
+      },
+      "explanation": {
+        "en": "Susceptible describes someone who is easily offended.",
+        "fr": "Susceptible décrit quelqu’un qui se vexe facilement.",
+        "de": "Susceptible beschreibt jemanden, der sich leicht gekränkt fühlt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "On ne peut rien lui dire : il se vexe pour un rien, il est très ",
+        "after": ".",
+        "accepted": { "answers": ["susceptible"] },
+        "referenceTargetIds": ["susceptible", "maladroit", "timide", "debrouillard"],
+        "explanation": {
+          "en": "Being offended by anything is being touchy.",
+          "fr": "Se vexer pour un rien, c’est être susceptible.",
+          "de": "Sich wegen jeder Kleinigkeit zu kränken heißt empfindlich sein."
+        }
+      },
+      "listeningOptionTargetIds": ["susceptible", "paresseux", "patient", "genereux"]
+    },
+    {
+      "id": "maladroit",
+      "term": "maladroit",
+      "translations": { "en": ["clumsy"], "de": ["ungeschickt"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "maladroit",
+      "examForms": ["maladroit"],
+      "articleException": null,
+      "genderVariants": ["maladroite"],
+      "pronunciation": "/ma.la.dʁwa/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Il est maladroit : il casse toujours des verres.",
+        "translation": {
+          "en": "He is clumsy: he is always breaking glasses.",
+          "de": "Er ist ungeschickt: Er zerbricht ständig Gläser."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Maladroit describes someone who often makes awkward moves or breaks things.",
+        "fr": "Maladroit décrit quelqu’un qui fait souvent des gestes malheureux ou casse des objets.",
+        "de": "Maladroit beschreibt jemanden, der oft ungeschickte Bewegungen macht oder Dinge kaputt macht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il a encore renversé son café sur la table : il est vraiment ",
+        "after": ".",
+        "accepted": { "answers": ["maladroit"] },
+        "referenceTargetIds": ["maladroit", "paresseux", "sensible", "honnete"],
+        "explanation": {
+          "en": "Spilling coffee again is a sign of clumsiness.",
+          "fr": "Renverser encore son café est un signe de maladresse.",
+          "de": "Schon wieder den Kaffee zu verschütten ist ein Zeichen von Ungeschicklichkeit."
+        }
+      },
+      "listeningOptionTargetIds": ["maladroit", "timide", "ambitieux", "courageux"]
+    },
+    {
+      "id": "paresseux",
+      "term": "paresseux",
+      "translations": { "en": ["lazy"], "de": ["faul"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "paresseux",
+      "examForms": ["paresseux"],
+      "articleException": null,
+      "genderVariants": ["paresseuse"],
+      "pronunciation": "/pa.ʁɛ.sø/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mon voisin est paresseux : il ne range jamais rien.",
+        "translation": {
+          "en": "My neighbour is lazy: he never tidies anything.",
+          "de": "Mein Nachbar ist faul: Er räumt nie etwas auf."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Paresseux describes someone who does not like making an effort.",
+        "fr": "Paresseux décrit quelqu’un qui n’aime pas faire d’effort.",
+        "de": "Paresseux beschreibt jemanden, der sich nicht gern anstrengt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il reste au lit tout le week-end et ne fait aucun effort : il est ",
+        "after": ".",
+        "accepted": { "answers": ["paresseux"] },
+        "referenceTargetIds": ["paresseux", "timide", "patient", "genereux"],
+        "explanation": {
+          "en": "Staying in bed and making no effort is being lazy.",
+          "fr": "Rester au lit sans faire d’effort, c’est être paresseux.",
+          "de": "Im Bett zu bleiben und sich nicht anzustrengen heißt faul sein."
+        }
+      },
+      "listeningOptionTargetIds": ["paresseux", "sensible", "debrouillard", "curieux"]
+    },
+    {
+      "id": "timide",
+      "term": "timide",
+      "translations": { "en": ["shy"], "de": ["schüchtern"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "timide",
+      "examForms": ["timide"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ti.mid/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Elle est timide : elle rougit quand elle parle en public.",
+        "translation": {
+          "en": "She is shy: she blushes when she speaks in public.",
+          "de": "Sie ist schüchtern: Sie wird rot, wenn sie in der Öffentlichkeit spricht."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Timide describes someone who feels uncomfortable with other people.",
+        "fr": "Timide décrit quelqu’un qui est mal à l’aise avec les autres.",
+        "de": "Timide beschreibt jemanden, der sich unter anderen Menschen unwohl fühlt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il rougit quand il doit parler devant toute la classe : il est ",
+        "after": ".",
+        "accepted": { "answers": ["timide"] },
+        "referenceTargetIds": ["timide", "sensible", "ambitieux", "courageux"],
+        "explanation": {
+          "en": "Blushing when speaking in front of others is being shy.",
+          "fr": "Rougir en parlant devant les autres, c’est être timide.",
+          "de": "Rot zu werden, wenn man vor anderen spricht, heißt schüchtern sein."
+        }
+      },
+      "listeningOptionTargetIds": ["timide", "patient", "honnete", "caractere"]
+    },
+    {
+      "id": "sensible",
+      "term": "sensible",
+      "translations": { "en": ["sensitive"], "de": ["sensibel"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "sensible",
+      "examForms": ["sensible"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/sɑ̃.sibl/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Il est très sensible : un film triste le fait pleurer.",
+        "translation": {
+          "en": "He is very sensitive: a sad film makes him cry.",
+          "de": "Er ist sehr sensibel: Ein trauriger Film bringt ihn zum Weinen."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Sensible does not mean “sensible” (reasonable) in French; it means “sensitive”.",
+        "fr": "Sensible ne veut pas dire « raisonnable » comme l’anglais sensible ; il veut dire « qui ressent fortement les émotions ».",
+        "de": "Sensible heißt nicht „vernünftig“ wie das englische sensible, sondern „gefühlvoll“."
+      },
+      "explanation": {
+        "en": "Sensible describes someone who feels emotions strongly.",
+        "fr": "Sensible décrit quelqu’un qui ressent fortement les émotions.",
+        "de": "Sensible beschreibt jemanden, der Gefühle stark empfindet."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Un film triste le fait pleurer : il est très ",
+        "after": ".",
+        "accepted": { "answers": ["sensible"] },
+        "referenceTargetIds": ["sensible", "patient", "debrouillard", "curieux"],
+        "explanation": {
+          "en": "Crying at a sad film shows a person who feels things strongly.",
+          "fr": "Pleurer devant un film triste montre une personne qui ressent fortement les choses.",
+          "de": "Bei einem traurigen Film zu weinen zeigt einen Menschen, der stark empfindet."
+        }
+      },
+      "listeningOptionTargetIds": ["sensible", "ambitieux", "genereux", "tetu"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

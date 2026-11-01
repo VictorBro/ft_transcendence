@@ -1,0 +1,628 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-turning-points",
+  "lang": "fr",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Un tournant dans la vie",
+  "objective": {
+    "en": "Talk about the key moments of a life with expressions such as un tournant, changer de vie and tourner la page.",
+    "fr": "Raconter les moments clés d’une vie avec des expressions : un tournant, changer de vie, tourner la page.",
+    "de": "Die Schlüsselmomente eines Lebens mit Ausdrücken wie un tournant, changer de vie und tourner la page erzählen."
+  },
+  "estimatedMinutes": 20,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:42:02.792Z",
+    "inputHashes": { "outline": "b016407dd9451c838e1a1387503555af48e52883ada93e61cda45a4a3ac9f310" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Twelve expressions for talking about life changes: the trigger (un tournant, un déclic, un défi), leaving and moving (démissionner, déménager, s’installer), and starting over (se lancer, repartir de zéro, tourner la page, réaliser un rêve, se reconvertir). Time markers and appearance are taught in neighbouring lessons.",
+    "fr": "Douze expressions pour parler des changements de vie : le déclencheur (un tournant, un déclic, un défi), le départ et le déménagement (démissionner, déménager, s’installer), puis le nouveau départ (se lancer, repartir de zéro, tourner la page, réaliser un rêve, se reconvertir). Les marqueurs de temps et l’apparence sont traités dans d’autres leçons.",
+    "de": "Zwölf Ausdrücke für Lebensveränderungen: der Auslöser (un tournant, un déclic, un défi), Abschied und Umzug (démissionner, déménager, s’installer) und der Neuanfang (se lancer, repartir de zéro, tourner la page, réaliser un rêve, se reconvertir). Zeitangaben und Aussehen werden in anderen Lektionen behandelt."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "A dozen expressions, as the outline asks, in two groups of six that fit one matching page each.",
+    "fr": "Une douzaine d’expressions, comme le demande le plan, en deux groupes de six qui tiennent chacun sur une page d’association.",
+    "de": "Ein Dutzend Ausdrücke, wie in der Gliederung vorgesehen, in zwei Sechsergruppen, die jeweils auf eine Zuordnungsseite passen."
+  },
+  "difficultyBalance": {
+    "en": "Seven core expressions and five more demanding figurative ones (un déclic, se lancer, repartir de zéro, tourner la page, se reconvertir).",
+    "fr": "Sept expressions de base et cinq expressions imagées plus difficiles (un déclic, se lancer, repartir de zéro, tourner la page, se reconvertir).",
+    "de": "Sieben Grundausdrücke und fünf anspruchsvollere, bildhafte Ausdrücke (un déclic, se lancer, repartir de zéro, tourner la page, se reconvertir)."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "change",
+      "label": {
+        "en": "The moment of change",
+        "fr": "Le moment du changement",
+        "de": "Der Moment der Veränderung"
+      },
+      "targetIds": ["tournant", "declic", "defi", "changer-de-vie", "demissionner", "demenager"],
+      "introduction": {
+        "en": "These expressions describe the **moment** when a life changes:\n\n- `un tournant` : a turning point\n- `un déclic` : a sudden realisation\n- `un défi` : a challenge\n- `changer de vie` : to start a new life\n- `démissionner` : to resign\n- `déménager` : to move house",
+        "fr": "Ces expressions décrivent le **moment** où une vie change :\n\n- `un tournant` : un moment qui change la direction d’une vie\n- `un déclic` : une prise de conscience soudaine\n- `un défi` : une difficulté qu’on veut relever\n- `changer de vie` : vivre tout autrement\n- `démissionner` : quitter son travail\n- `déménager` : quitter son logement pour un autre",
+        "de": "Diese Ausdrücke beschreiben den **Moment**, in dem sich ein Leben ändert:\n\n- `un tournant` : ein Wendepunkt\n- `un déclic` : eine plötzliche Erkenntnis\n- `un défi` : eine Herausforderung\n- `changer de vie` : ein neues Leben beginnen\n- `démissionner` : kündigen\n- `déménager` : umziehen"
+      }
+    },
+    {
+      "id": "restart",
+      "label": { "en": "Starting again", "fr": "Se lancer et recommencer", "de": "Neu anfangen" },
+      "targetIds": [
+        "s-installer",
+        "se-lancer",
+        "repartir-de-zero",
+        "realiser-un-reve",
+        "tourner-la-page",
+        "se-reconvertir"
+      ],
+      "introduction": {
+        "en": "These expressions describe the **new start** after the change:\n\n- `s’installer` : to settle somewhere\n- `se lancer` : to take the plunge\n- `repartir de zéro` : to start again from scratch\n- `réaliser un rêve` : to fulfil a dream\n- `tourner la page` : to move on\n- `se reconvertir` : to change careers",
+        "fr": "Ces expressions décrivent le **nouveau départ** après le changement :\n\n- `s’installer` : se fixer quelque part\n- `se lancer` : oser commencer\n- `repartir de zéro` : tout recommencer depuis le début\n- `réaliser un rêve` : faire devenir réel ce dont on rêvait\n- `tourner la page` : laisser le passé derrière soi\n- `se reconvertir` : changer de métier",
+        "de": "Diese Ausdrücke beschreiben den **Neuanfang** nach der Veränderung:\n\n- `s’installer` : sich niederlassen\n- `se lancer` : den Sprung wagen\n- `repartir de zéro` : ganz von vorn anfangen\n- `réaliser un rêve` : einen Traum verwirklichen\n- `tourner la page` : mit der Vergangenheit abschließen\n- `se reconvertir` : den Beruf wechseln"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "tournant",
+      "term": "tournant",
+      "translations": { "en": ["turning point"], "de": ["Wendepunkt"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un tournant",
+      "examForms": ["un tournant"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/œ̃ tuʁnɑ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ce voyage a été un tournant dans ma vie.",
+        "translation": {
+          "en": "That trip was a turning point in my life.",
+          "de": "Diese Reise war ein Wendepunkt in meinem Leben."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Un tournant is the moment when a life takes a new direction.",
+        "fr": "Un tournant est le moment où une vie prend une nouvelle direction.",
+        "de": "Un tournant ist der Moment, in dem ein Leben eine neue Richtung nimmt."
+      },
+      "genderExplanation": {
+        "en": "Tournant is masculine, so its indefinite article is un.",
+        "fr": "Tournant est masculin : on dit un tournant.",
+        "de": "Tournant ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": { "en": "a turning point", "de": "ein Wendepunkt" },
+      "gap": {
+        "before": "Ce voyage a été un ",
+        "after": " dans ma vie.",
+        "accepted": { "answers": ["tournant"] },
+        "referenceTargetIds": ["tournant", "demenager", "se-lancer", "tourner-la-page"],
+        "explanation": {
+          "en": "Only tournant fits: un tournant dans la vie.",
+          "fr": "Seul « tournant » convient : un tournant dans la vie.",
+          "de": "Nur „tournant“ passt: un tournant dans la vie."
+        }
+      },
+      "listeningOptionTargetIds": ["tournant", "tourner-la-page", "declic", "defi"]
+    },
+    {
+      "id": "declic",
+      "term": "déclic",
+      "translations": { "en": ["lightbulb moment", "trigger"], "de": ["Auslöser", "Aha-Erlebnis"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un déclic",
+      "examForms": ["un déclic"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/œ̃ deklik/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Après cet accident, j’ai eu un déclic.",
+        "translation": {
+          "en": "After that accident, something clicked for me.",
+          "de": "Nach diesem Unfall hatte ich ein Aha-Erlebnis."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Un déclic is a sudden realisation that pushes you to act.",
+        "fr": "Un déclic est une prise de conscience soudaine qui pousse à agir.",
+        "de": "Un déclic ist eine plötzliche Erkenntnis, die zum Handeln bewegt."
+      },
+      "genderExplanation": {
+        "en": "Déclic is masculine, so its indefinite article is un.",
+        "fr": "Déclic est masculin : on dit un déclic.",
+        "de": "Déclic ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": { "en": "a lightbulb moment", "de": "ein Auslöser" },
+      "gap": {
+        "before": "Un jour, il y a eu un ",
+        "after": " : j’ai compris qu’il fallait agir.",
+        "accepted": { "answers": ["déclic"] },
+        "referenceTargetIds": ["declic", "s-installer", "demissionner", "repartir-de-zero"],
+        "explanation": {
+          "en": "Only déclic fits: un déclic is the sudden realisation.",
+          "fr": "Seul « déclic » convient : c’est la prise de conscience soudaine.",
+          "de": "Nur „déclic“ passt: Es ist die plötzliche Erkenntnis."
+        }
+      },
+      "listeningOptionTargetIds": ["declic", "defi", "demissionner", "demenager"]
+    },
+    {
+      "id": "defi",
+      "term": "défi",
+      "translations": { "en": ["challenge"], "de": ["Herausforderung"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un défi",
+      "examForms": ["un défi"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/œ̃ defi/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Apprendre une langue à cinquante ans est un défi.",
+        "translation": {
+          "en": "Learning a language at fifty is a challenge.",
+          "de": "Mit fünfzig eine Sprache zu lernen ist eine Herausforderung."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Un défi is a difficult goal that you want to take on.",
+        "fr": "Un défi est un objectif difficile qu’on veut relever.",
+        "de": "Un défi ist ein schwieriges Ziel, dem man sich stellen will."
+      },
+      "genderExplanation": {
+        "en": "Défi is masculine, so its indefinite article is un.",
+        "fr": "Défi est masculin : on dit un défi.",
+        "de": "Défi ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": { "en": "a challenge", "de": "eine Herausforderung" },
+      "gap": {
+        "before": "Ouvrir un restaurant à quarante ans, c’est un grand ",
+        "after": ".",
+        "accepted": { "answers": ["défi"] },
+        "referenceTargetIds": ["defi", "se-reconvertir", "demenager", "tourner-la-page"],
+        "explanation": {
+          "en": "Only défi fits: un grand défi.",
+          "fr": "Seul « défi » convient : un grand défi.",
+          "de": "Nur „défi“ passt: un grand défi."
+        }
+      },
+      "listeningOptionTargetIds": ["defi", "declic", "demenager", "demissionner"]
+    },
+    {
+      "id": "changer-de-vie",
+      "term": "changer de vie",
+      "translations": {
+        "en": ["to change one’s life", "to start a new life"],
+        "de": ["sein Leben ändern", "ein neues Leben beginnen"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "changer de vie",
+      "examForms": ["changer de vie"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʃɑ̃ʒe də vi/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "À trente ans, Paul a voulu changer de vie.",
+        "translation": {
+          "en": "At thirty, Paul wanted to change his life.",
+          "de": "Mit dreißig wollte Paul sein Leben ändern."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Changer de vie means to live in a completely different way.",
+        "fr": "Changer de vie, c’est vivre de façon complètement différente.",
+        "de": "Changer de vie bedeutet, ganz anders zu leben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Après sa maladie, elle a décidé de ",
+        "after": ".",
+        "accepted": { "answers": ["changer de vie"] },
+        "referenceTargetIds": ["changer-de-vie", "tournant", "declic", "defi"],
+        "explanation": {
+          "en": "Only changer de vie fits after « décider de ».",
+          "fr": "Seul « changer de vie » convient après « décider de ».",
+          "de": "Nur „changer de vie“ passt nach „décider de“."
+        }
+      },
+      "listeningOptionTargetIds": ["changer-de-vie", "se-lancer", "s-installer", "repartir-de-zero"]
+    },
+    {
+      "id": "demissionner",
+      "term": "démissionner",
+      "translations": {
+        "en": ["to resign", "to quit one’s job"],
+        "de": ["kündigen", "seinen Job aufgeben"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "démissionner",
+      "examForms": ["démissionner"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/demisjɔne/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Elle a démissionné pour voyager.",
+        "translation": {
+          "en": "She resigned in order to travel.",
+          "de": "Sie hat gekündigt, um zu reisen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Démissionner means to leave your job by your own decision.",
+        "fr": "Démissionner, c’est quitter son travail de sa propre décision.",
+        "de": "Démissionner bedeutet, die Arbeit aus eigenem Entschluss zu verlassen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il n’était plus heureux : il a décidé de ",
+        "after": " et de voyager.",
+        "accepted": { "answers": ["démissionner"] },
+        "referenceTargetIds": ["demissionner", "defi", "tournant", "declic"],
+        "explanation": {
+          "en": "Only démissionner fits: it means leaving a job.",
+          "fr": "Seul « démissionner » convient : c’est quitter un emploi.",
+          "de": "Nur „démissionner“ passt: Es heißt, eine Stelle zu verlassen."
+        }
+      },
+      "listeningOptionTargetIds": ["demissionner", "demenager", "declic", "defi"]
+    },
+    {
+      "id": "demenager",
+      "term": "déménager",
+      "translations": { "en": ["to move (house)"], "de": ["umziehen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "déménager",
+      "examForms": ["déménager"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/demenaʒe/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Nous avons déménagé à Lyon en 2019.",
+        "translation": {
+          "en": "We moved to Lyon in 2019.",
+          "de": "Wir sind 2019 nach Lyon umgezogen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Déménager means to leave one home for another.",
+        "fr": "Déménager, c’est quitter un logement pour un autre.",
+        "de": "Déménager bedeutet, eine Wohnung zu verlassen und in eine andere zu ziehen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Notre appartement est trop petit : nous allons ",
+        "after": " le mois prochain.",
+        "accepted": { "answers": ["déménager"] },
+        "referenceTargetIds": ["demenager", "tournant", "defi", "declic"],
+        "explanation": {
+          "en": "Only déménager fits: they are leaving a flat that is too small.",
+          "fr": "Seul « déménager » convient : on quitte un appartement trop petit.",
+          "de": "Nur „déménager“ passt: Man verlässt eine zu kleine Wohnung."
+        }
+      },
+      "listeningOptionTargetIds": ["demenager", "demissionner", "declic", "defi"]
+    },
+    {
+      "id": "s-installer",
+      "term": "s’installer",
+      "translations": {
+        "en": ["to settle (in a place)"],
+        "de": ["sich niederlassen", "sich einrichten"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "s’installer",
+      "examForms": ["s’installer", "s'installer"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/sɛ̃stale/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ils se sont installés au bord de la mer.",
+        "translation": {
+          "en": "They settled by the sea.",
+          "de": "Sie haben sich am Meer niedergelassen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "S’installer means to make a new home somewhere and stay there.",
+        "fr": "S’installer, c’est se fixer quelque part pour y vivre.",
+        "de": "S’installer bedeutet, sich an einem Ort ein neues Zuhause zu schaffen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Après dix ans à Paris, ils ont décidé de ",
+        "after": " à la campagne.",
+        "accepted": { "answers": ["s’installer", "s'installer"] },
+        "referenceTargetIds": ["s-installer", "defi", "declic", "tournant"],
+        "explanation": {
+          "en": "Only s’installer fits: they make a new home in the countryside.",
+          "fr": "Seul « s’installer » convient : ils se fixent à la campagne.",
+          "de": "Nur „s’installer“ passt: Sie lassen sich auf dem Land nieder."
+        }
+      },
+      "listeningOptionTargetIds": ["s-installer", "se-lancer", "se-reconvertir", "changer-de-vie"]
+    },
+    {
+      "id": "se-lancer",
+      "term": "se lancer",
+      "translations": {
+        "en": ["to take the plunge", "to launch into"],
+        "de": ["den Sprung wagen", "sich stürzen"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "se lancer",
+      "examForms": ["se lancer"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/sə lɑ̃se/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Il s’est lancé dans la photographie.",
+        "translation": {
+          "en": "He took the plunge into photography.",
+          "de": "Er hat sich in die Fotografie gestürzt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Se lancer means to dare to begin something new, often with « dans ».",
+        "fr": "Se lancer, c’est oser commencer quelque chose de nouveau, souvent avec « dans ».",
+        "de": "Se lancer bedeutet, etwas Neues zu wagen, oft mit „dans“."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Elle a enfin osé ",
+        "after": " dans la création d’entreprise.",
+        "accepted": { "answers": ["se lancer"] },
+        "referenceTargetIds": ["se-lancer", "tournant", "declic", "defi"],
+        "explanation": {
+          "en": "Only se lancer fits: « se lancer dans » means to start something new.",
+          "fr": "Seul « se lancer » convient : « se lancer dans » veut dire commencer quelque chose.",
+          "de": "Nur „se lancer“ passt: „se lancer dans“ heißt, etwas Neues zu beginnen."
+        }
+      },
+      "listeningOptionTargetIds": ["se-lancer", "s-installer", "se-reconvertir", "tourner-la-page"]
+    },
+    {
+      "id": "repartir-de-zero",
+      "term": "repartir de zéro",
+      "translations": {
+        "en": ["to start again from scratch"],
+        "de": ["bei null anfangen", "von vorn anfangen"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "repartir de zéro",
+      "examForms": ["repartir de zéro"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʁəpaʁtiʁ də zeʁo/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Après la faillite, elle a dû repartir de zéro.",
+        "translation": {
+          "en": "After the bankruptcy, she had to start again from scratch.",
+          "de": "Nach der Pleite musste sie bei null anfangen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Repartir de zéro means to start again with nothing from the past.",
+        "fr": "Repartir de zéro, c’est tout recommencer sans rien garder du passé.",
+        "de": "Repartir de zéro bedeutet, ganz neu anzufangen, ohne etwas aus der Vergangenheit."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Son entreprise a fait faillite : il a dû ",
+        "after": " à cinquante ans.",
+        "accepted": { "answers": ["repartir de zéro"] },
+        "referenceTargetIds": ["repartir-de-zero", "tournant", "declic", "defi"],
+        "explanation": {
+          "en": "Only repartir de zéro fits: after a bankruptcy he starts over.",
+          "fr": "Seul « repartir de zéro » convient : après une faillite, il recommence tout.",
+          "de": "Nur „repartir de zéro“ passt: Nach einer Pleite fängt er neu an."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "repartir-de-zero",
+        "realiser-un-reve",
+        "changer-de-vie",
+        "tourner-la-page"
+      ]
+    },
+    {
+      "id": "realiser-un-reve",
+      "term": "réaliser un rêve",
+      "translations": { "en": ["to fulfil a dream"], "de": ["einen Traum verwirklichen"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "réaliser un rêve",
+      "examForms": ["réaliser un rêve"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʁealize œ̃ ʁɛv/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Elle a réalisé un rêve en ouvrant sa librairie.",
+        "translation": {
+          "en": "She fulfilled a dream by opening her bookshop.",
+          "de": "Sie hat sich einen Traum erfüllt, indem sie ihre Buchhandlung eröffnet hat."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Réaliser un rêve means to make something you dreamed of come true.",
+        "fr": "Réaliser un rêve, c’est faire devenir réel ce dont on rêvait.",
+        "de": "Réaliser un rêve bedeutet, etwas Erträumtes wahr zu machen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Elle a économisé pendant dix ans pour ",
+        "after": " : ouvrir une librairie.",
+        "accepted": { "answers": ["réaliser un rêve"] },
+        "referenceTargetIds": ["realiser-un-reve", "tournant", "declic", "defi"],
+        "explanation": {
+          "en": "Only réaliser un rêve fits: opening a bookshop was her dream.",
+          "fr": "Seul « réaliser un rêve » convient : ouvrir une librairie était son rêve.",
+          "de": "Nur „réaliser un rêve“ passt: Eine Buchhandlung zu eröffnen war ihr Traum."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "realiser-un-reve",
+        "repartir-de-zero",
+        "tourner-la-page",
+        "tournant"
+      ]
+    },
+    {
+      "id": "tourner-la-page",
+      "term": "tourner la page",
+      "translations": {
+        "en": ["to turn the page", "to move on"],
+        "de": ["einen Schlussstrich ziehen", "ein neues Kapitel aufschlagen"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "tourner la page",
+      "examForms": ["tourner la page"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/tuʁne la paʒ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Il veut tourner la page après ces années difficiles.",
+        "translation": {
+          "en": "He wants to move on after those difficult years.",
+          "de": "Er will nach diesen schwierigen Jahren einen Schlussstrich ziehen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Tourner la page means to leave the past behind and look ahead.",
+        "fr": "Tourner la page, c’est laisser le passé derrière soi et regarder vers l’avenir.",
+        "de": "Tourner la page bedeutet, die Vergangenheit hinter sich zu lassen und nach vorn zu schauen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Après le divorce, il a voulu ",
+        "after": " et recommencer.",
+        "accepted": { "answers": ["tourner la page"] },
+        "referenceTargetIds": ["tourner-la-page", "tournant", "declic", "defi"],
+        "explanation": {
+          "en": "Only tourner la page fits: he leaves the divorce behind.",
+          "fr": "Seul « tourner la page » convient : il laisse le divorce derrière lui.",
+          "de": "Nur „tourner la page“ passt: Er lässt die Scheidung hinter sich."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "tourner-la-page",
+        "tournant",
+        "repartir-de-zero",
+        "realiser-un-reve"
+      ]
+    },
+    {
+      "id": "se-reconvertir",
+      "term": "se reconvertir",
+      "translations": {
+        "en": ["to retrain", "to change careers"],
+        "de": ["sich beruflich neu orientieren", "umschulen"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "se reconvertir",
+      "examForms": ["se reconvertir"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/sə ʁəkɔ̃vɛʁtiʁ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Il s’est reconverti dans l’enseignement.",
+        "translation": {
+          "en": "He changed careers and went into teaching.",
+          "de": "Er hat sich beruflich neu orientiert und ist in die Lehre gegangen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Se reconvertir means to change profession and learn a new trade.",
+        "fr": "Se reconvertir, c’est changer de métier et apprendre une nouvelle profession.",
+        "de": "Se reconvertir bedeutet, den Beruf zu wechseln und einen neuen zu erlernen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "À quarante ans, elle a décidé de ",
+        "after": " : de comptable, elle est devenue boulangère.",
+        "accepted": { "answers": ["se reconvertir"] },
+        "referenceTargetIds": ["se-reconvertir", "tournant", "declic", "defi"],
+        "explanation": {
+          "en": "Only se reconvertir fits: she moves from one profession to another.",
+          "fr": "Seul « se reconvertir » convient : elle passe d’un métier à un autre.",
+          "de": "Nur „se reconvertir“ passt: Sie wechselt von einem Beruf in einen anderen."
+        }
+      },
+      "listeningOptionTargetIds": ["se-reconvertir", "s-installer", "se-lancer", "changer-de-vie"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

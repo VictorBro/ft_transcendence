@@ -1,0 +1,257 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-all-verbs-with-etre",
+  "lang": "fr",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Le passé composé avec être",
+  "objective": {
+    "en": "Use être in the passé composé with monter, descendre, entrer, sortir, tomber, rentrer, retourner, devenir and mourir, and make the participle agree: elles sont rentrées.",
+    "fr": "Employer être au passé composé avec monter, descendre, entrer, sortir, tomber, rentrer, retourner, devenir et mourir, et accorder le participe : elles sont rentrées.",
+    "de": "Être im passé composé mit monter, descendre, entrer, sortir, tomber, rentrer, retourner, devenir und mourir verwenden und das Partizip angleichen: elles sont rentrées."
+  },
+  "estimatedMinutes": 18,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:36:05.404Z",
+    "inputHashes": { "outline": "a4b0701c9ce2ac1527a6309d8681d93e37254e7a3e70e321a67825754c84fb8d" }
+  },
+  "kind": "grammar",
+  "topic": "verbs_morphology",
+  "scopeBoundaries": {
+    "en": "Covers nine verbs conjugated with être in the passé composé and the agreement of the participle with the subject. Excludes reflexive verbs, the negative form and verbs that take avoir.",
+    "fr": "Couvre neuf verbes conjugués avec être au passé composé et l’accord du participe avec le sujet. Exclut les verbes pronominaux, la forme négative et les verbes avec avoir.",
+    "de": "Behandelt neun Verben mit être im passé composé und die Angleichung des Partizips an das Subjekt. Ausgeschlossen sind reflexive Verben, die Verneinung und Verben mit avoir."
+  },
+  "prerequisites": [
+    {
+      "en": "The present of être: je suis, tu es, il est, nous sommes, vous êtes, ils sont",
+      "fr": "Le présent d’être : je suis, tu es, il est, nous sommes, vous êtes, ils sont",
+      "de": "Das Präsens von être: je suis, tu es, il est, nous sommes, vous êtes, ils sont"
+    },
+    {
+      "en": "The passé composé with avoir and regular participles",
+      "fr": "Le passé composé avec avoir et les participes réguliers",
+      "de": "Das passé composé mit avoir und regelmäßige Partizipien"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-verbs-etre",
+      "summary": {
+        "en": "Nine verbs use être as auxiliary in the passé composé: monter, descendre, entrer, sortir, tomber, rentrer, retourner, devenir, mourir.",
+        "fr": "Neuf verbes se conjuguent avec être au passé composé : monter, descendre, entrer, sortir, tomber, rentrer, retourner, devenir, mourir.",
+        "de": "Neun Verben bilden das passé composé mit être: monter, descendre, entrer, sortir, tomber, rentrer, retourner, devenir, mourir."
+      }
+    },
+    {
+      "id": "rule-forms",
+      "summary": {
+        "en": "The passé composé is être in the present + the participle: je suis tombé. Devenir and mourir have irregular participles: devenu, mort.",
+        "fr": "Le passé composé = être au présent + le participe : je suis tombé. Devenir et mourir ont un participe irrégulier : devenu, mort.",
+        "de": "Das passé composé = être im Präsens + Partizip: je suis tombé. Devenir und mourir haben unregelmäßige Partizipien: devenu, mort."
+      }
+    },
+    {
+      "id": "rule-agreement",
+      "summary": {
+        "en": "The participle agrees with the subject: -e feminine, -s plural, -es feminine plural.",
+        "fr": "Le participe s’accorde avec le sujet : -e au féminin, -s au pluriel, -es au féminin pluriel.",
+        "de": "Das Partizip richtet sich nach dem Subjekt: -e feminin, -s Plural, -es feminin Plural."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-aux",
+      "title": {
+        "en": "Nine verbs with être",
+        "fr": "Neuf verbes avec être",
+        "de": "Neun Verben mit être"
+      },
+      "ruleIds": ["rule-verbs-etre", "rule-forms"],
+      "explanationPlan": {
+        "en": "List the nine verbs and show the pattern être (present) + participle. Give the participles, including devenu and mort. Point out that these verbs mostly express movement or change.",
+        "fr": "Présenter les neuf verbes et le schéma être (présent) + participe. Donner les participes, dont devenu et mort. Souligner qu’ils expriment surtout un mouvement ou un changement.",
+        "de": "Die neun Verben und das Schema être (Präsens) + Partizip zeigen. Die Partizipien nennen, auch devenu und mort. Betonen, dass sie meist Bewegung oder Veränderung ausdrücken."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "Je suis monté au deuxième étage.",
+          "translation": {
+            "en": "I went up to the second floor.",
+            "de": "Ich bin in den zweiten Stock hinaufgegangen."
+          }
+        },
+        {
+          "text": "Il est entré dans la boulangerie.",
+          "translation": {
+            "en": "He went into the bakery.",
+            "de": "Er ist in die Bäckerei hineingegangen."
+          }
+        },
+        {
+          "text": "Paul est devenu médecin.",
+          "translation": { "en": "Paul became a doctor.", "de": "Paul ist Arzt geworden." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not use avoir with these verbs: say je suis tombé, not j’ai tombé.",
+          "fr": "N’utilisez pas avoir avec ces verbes : on dit je suis tombé, pas j’ai tombé.",
+          "de": "Verwende avoir nicht mit diesen Verben: je suis tombé, nicht j’ai tombé."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-aux-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 5,
+          "ruleIds": ["rule-verbs-etre", "rule-forms"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-aux-persons",
+          "type": "grammar_person_matching",
+          "itemCount": 1,
+          "ruleIds": ["rule-forms"],
+          "estimatedDurationS": 72
+        },
+        {
+          "id": "ex-aux-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-verbs-etre", "rule-forms"],
+          "estimatedDurationS": 80
+        }
+      ]
+    },
+    {
+      "id": "block-agreement",
+      "title": {
+        "en": "Agreement of the participle",
+        "fr": "L’accord du participe",
+        "de": "Die Angleichung des Partizips"
+      },
+      "ruleIds": ["rule-agreement"],
+      "explanationPlan": {
+        "en": "Explain that the participle agrees with the subject like an adjective. Show il/elle/ils/elles, the mixed group, vous, and the agreement of mort and devenu.",
+        "fr": "Expliquer que le participe s’accorde avec le sujet comme un adjectif. Montrer il/elle/ils/elles, le groupe mixte, vous, et l’accord de mort et devenu.",
+        "de": "Erklären, dass sich das Partizip wie ein Adjektiv nach dem Subjekt richtet. il/elle/ils/elles, gemischte Gruppe, vous sowie die Angleichung von mort und devenu zeigen."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "Marie est descendue à la cave.",
+          "translation": {
+            "en": "Marie went down to the cellar.",
+            "de": "Marie ist in den Keller hinuntergegangen."
+          }
+        },
+        {
+          "text": "Les enfants sont retournés à l’école.",
+          "translation": {
+            "en": "The children went back to school.",
+            "de": "Die Kinder sind in die Schule zurückgegangen."
+          }
+        },
+        {
+          "text": "Mes amies sont tombées dans l’eau.",
+          "translation": {
+            "en": "My friends fell into the water.",
+            "de": "Meine Freundinnen sind ins Wasser gefallen."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not forget the agreement: elles sont sorties, not elles sont sorti.",
+          "fr": "N’oubliez pas l’accord : elles sont sorties, pas elles sont sorti.",
+          "de": "Vergiss die Angleichung nicht: elles sont sorties, nicht elles sont sorti."
+        },
+        {
+          "en": "A mixed group takes the masculine plural: Léa et Tom sont rentrés.",
+          "fr": "Un groupe mixte prend le masculin pluriel : Léa et Tom sont rentrés.",
+          "de": "Eine gemischte Gruppe steht im Maskulin Plural: Léa et Tom sont rentrés."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-agr-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-agreement"],
+          "estimatedDurationS": 50
+        },
+        {
+          "id": "ex-agr-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 4,
+          "ruleIds": ["rule-agreement"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-agr-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-agreement"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-agr-typing",
+          "type": "grammar_pronoun_form_typing",
+          "itemCount": 2,
+          "ruleIds": ["rule-agreement"],
+          "estimatedDurationS": 90
+        }
+      ]
+    }
+  ],
+  "newVerbs": [
+    { "infinitive": "monter", "translations": { "en": "to go up", "de": "hinaufgehen" } },
+    { "infinitive": "descendre", "translations": { "en": "to go down", "de": "hinuntergehen" } },
+    { "infinitive": "entrer", "translations": { "en": "to enter", "de": "eintreten" } },
+    { "infinitive": "sortir", "translations": { "en": "to go out", "de": "hinausgehen" } },
+    { "infinitive": "tomber", "translations": { "en": "to fall", "de": "fallen" } },
+    {
+      "infinitive": "rentrer",
+      "translations": { "en": "to come back", "de": "nach Hause kommen" }
+    },
+    { "infinitive": "retourner", "translations": { "en": "to go back", "de": "zurückgehen" } },
+    { "infinitive": "devenir", "translations": { "en": "to become", "de": "werden" } },
+    { "infinitive": "mourir", "translations": { "en": "to die", "de": "sterben" } }
+  ],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-forms",
+        "type": "grammar_pronoun_form_typing",
+        "itemCount": 1,
+        "ruleIds": ["rule-forms", "rule-agreement"],
+        "estimatedDurationS": 100,
+        "timeLimitS": 160
+      },
+      {
+        "pageId": "exam-gaps",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-verbs-etre", "rule-forms", "rule-agreement"],
+        "estimatedDurationS": 80,
+        "timeLimitS": 130
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-verbs-etre", "rule-agreement"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

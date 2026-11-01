@@ -1,0 +1,596 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-formal-verbs-of-saying",
+  "lang": "fr",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Souligner, préciser, objecter",
+  "objective": {
+    "en": "Introduce other people’s words with twelve verbs that name what the speaker is doing.",
+    "fr": "Introduire les propos d’autrui avec douze verbes qui en disent la fonction : souligner, préciser, objecter, concéder…",
+    "de": "Die Äußerungen anderer mit zwölf Verben einleiten, die die Funktion der Aussage benennen."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:57:43.858Z",
+    "inputHashes": { "outline": "4a3183784d28252ff4f7d992b715304e012844ea9c8d5c08f134ec6251ce1718" }
+  },
+  "kind": "vocabulary",
+  "theme": "language",
+  "coverageNotes": {
+    "en": "Twelve formal verbs of saying, grouped by function: highlighting and giving information, then qualifying, objecting and evaluating. Opinion verbs such as estimer or soutenir belong to the neighbouring lesson.",
+    "fr": "Douze verbes de parole soutenus, regroupés par fonction : mettre en avant et informer, puis nuancer, objecter et évaluer. Les verbes d’opinion comme estimer ou soutenir relèvent de la leçon voisine.",
+    "de": "Zwölf gehobene Verben des Sagens, nach Funktion gruppiert: hervorheben und informieren, dann relativieren, einwenden und bewerten. Meinungsverben wie estimer oder soutenir gehören in die Nachbarlektion."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve verbs fill two groups of six, which suits the matching and exam pages.",
+    "fr": "Douze verbes forment deux groupes de six, ce qui convient aux pages d’association et d’examen.",
+    "de": "Zwölf Verben ergeben zwei Gruppen zu sechs, passend für die Zuordnungs- und Prüfungsseiten."
+  },
+  "difficultyBalance": {
+    "en": "Verbs such as souligner or rappeler are familiar; insinuer, faire valoir and se féliciter de are demanding.",
+    "fr": "Des verbes comme souligner ou rappeler sont connus ; insinuer, faire valoir et se féliciter de sont plus exigeants.",
+    "de": "Verben wie souligner oder rappeler sind vertraut; insinuer, faire valoir und se féliciter de sind anspruchsvoller."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "mettre-en-avant",
+      "label": {
+        "en": "Highlighting and informing",
+        "fr": "Mettre en avant et informer",
+        "de": "Hervorheben und informieren"
+      },
+      "targetIds": ["souligner", "preciser", "rappeler", "relever", "faire-valoir", "avancer"],
+      "introduction": {
+        "en": "These verbs **introduce a statement** and show whether the speaker stresses, clarifies or reminds:\n\n- `souligner`\n- `préciser`\n- `rappeler`\n- `relever`\n- `faire valoir`\n- `avancer`",
+        "fr": "Ces verbes **introduisent une parole** et montrent si l’auteur insiste, clarifie ou rappelle :\n\n- `souligner`\n- `préciser`\n- `rappeler`\n- `relever`\n- `faire valoir`\n- `avancer`",
+        "de": "Diese Verben **leiten eine Aussage ein** und zeigen, ob jemand betont, klärt oder erinnert:\n\n- `souligner`\n- `préciser`\n- `rappeler`\n- `relever`\n- `faire valoir`\n- `avancer`"
+      }
+    },
+    {
+      "id": "nuancer-objecter",
+      "label": {
+        "en": "Qualifying, objecting, judging",
+        "fr": "Nuancer, objecter, juger",
+        "de": "Relativieren, einwenden, bewerten"
+      },
+      "targetIds": ["nuancer", "objecter", "conceder", "insinuer", "deplorer", "feliciter"],
+      "introduction": {
+        "en": "These verbs **show the attitude** of the speaker towards what is said: doubt, opposition, concession, regret or satisfaction:\n\n- `nuancer`\n- `objecter`\n- `concéder`\n- `insinuer`\n- `déplorer`\n- `se féliciter de`",
+        "fr": "Ces verbes **montrent l’attitude** de celui qui parle envers ce qui est dit : doute, opposition, concession, regret ou satisfaction :\n\n- `nuancer`\n- `objecter`\n- `concéder`\n- `insinuer`\n- `déplorer`\n- `se féliciter de`",
+        "de": "Diese Verben **zeigen die Haltung** des Sprechers zum Gesagten: Zweifel, Widerspruch, Zugeständnis, Bedauern oder Zufriedenheit:\n\n- `nuancer`\n- `objecter`\n- `concéder`\n- `insinuer`\n- `déplorer`\n- `se féliciter de`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "souligner",
+      "term": "souligner",
+      "translations": {
+        "en": ["emphasise", "stress", "underline"],
+        "de": ["betonen", "hervorheben", "unterstreichen"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "souligner",
+      "examForms": ["souligner"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/su.li.ɲe/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Le directeur a souligné l’importance de ce partenariat.",
+        "translation": {
+          "en": "The director emphasised the importance of this partnership.",
+          "de": "Der Direktor betonte die Bedeutung dieser Partnerschaft."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Souligner means to stress the importance of a point.",
+        "fr": "Souligner, c’est insister sur l’importance d’un point.",
+        "de": "Souligner bedeutet, die Wichtigkeit eines Punktes zu betonen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le rapporteur a voulu ",
+        "after": " l’importance capitale de cette découverte.",
+        "accepted": { "answers": ["souligner"] },
+        "referenceTargetIds": ["souligner", "objecter", "insinuer", "deplorer"],
+        "explanation": {
+          "en": "Only souligner fits: the speaker stresses an importance.",
+          "fr": "Seul « souligner » convient : on insiste sur une importance.",
+          "de": "Nur „souligner“ passt: Man betont eine Wichtigkeit."
+        }
+      },
+      "listeningOptionTargetIds": ["souligner", "relever", "rappeler", "avancer"]
+    },
+    {
+      "id": "preciser",
+      "term": "préciser",
+      "translations": { "en": ["clarify", "specify"], "de": ["präzisieren", "genauer angeben"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "préciser",
+      "examForms": ["préciser"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/pʁe.si.ze/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Elle a précisé que la réunion aurait lieu à dix heures.",
+        "translation": {
+          "en": "She specified that the meeting would take place at ten o’clock.",
+          "de": "Sie präzisierte, dass die Sitzung um zehn Uhr stattfinden würde."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Préciser means to add exact details to something already said.",
+        "fr": "Préciser, c’est apporter des détails exacts à ce qui a été dit.",
+        "de": "Préciser bedeutet, dem bereits Gesagten genaue Einzelheiten hinzuzufügen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Votre message reste vague : pouvez-vous ",
+        "after": " la date exacte de la réunion ?",
+        "accepted": { "answers": ["préciser"] },
+        "referenceTargetIds": ["preciser", "deplorer", "insinuer", "conceder"],
+        "explanation": {
+          "en": "Only préciser fits: you ask for an exact detail.",
+          "fr": "Seul « préciser » convient : on demande un détail exact.",
+          "de": "Nur „préciser“ passt: Man bittet um eine genaue Angabe."
+        }
+      },
+      "listeningOptionTargetIds": ["preciser", "conceder", "nuancer", "deplorer"]
+    },
+    {
+      "id": "rappeler",
+      "term": "rappeler",
+      "translations": { "en": ["remind", "recall"], "de": ["erinnern", "in Erinnerung rufen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "rappeler",
+      "examForms": ["rappeler"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʁa.p(ə).le/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Le président a rappelé que le budget était limité.",
+        "translation": {
+          "en": "The chairman reminded everyone that the budget was limited.",
+          "de": "Der Vorsitzende erinnerte daran, dass das Budget begrenzt war."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Rappeler means to bring back to mind a fact already known.",
+        "fr": "Rappeler, c’est remettre en mémoire un fait déjà connu.",
+        "de": "Rappeler bedeutet, eine bereits bekannte Tatsache in Erinnerung zu rufen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Permettez-moi de ",
+        "after": " que nous avons déjà voté ce texte l’an dernier.",
+        "accepted": { "answers": ["rappeler"] },
+        "referenceTargetIds": ["rappeler", "nuancer", "objecter", "feliciter"],
+        "explanation": {
+          "en": "Only rappeler fits: it is a fact already known.",
+          "fr": "Seul « rappeler » convient : le fait est déjà connu.",
+          "de": "Nur „rappeler“ passt: Die Tatsache ist schon bekannt."
+        }
+      },
+      "listeningOptionTargetIds": ["rappeler", "relever", "souligner", "preciser"]
+    },
+    {
+      "id": "relever",
+      "term": "relever",
+      "translations": { "en": ["remark on", "point out", "note"], "de": ["anmerken", "bemerken"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "relever",
+      "examForms": ["relever"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʁə.l(ə).ve/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Le journaliste a relevé une contradiction dans sa réponse.",
+        "translation": {
+          "en": "The journalist pointed out a contradiction in her answer.",
+          "de": "Der Journalist merkte einen Widerspruch in ihrer Antwort an."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Relever also means to raise or to pick up; here it means to notice and point out.",
+        "fr": "Relever signifie aussi lever ou ramasser ; ici, il signifie remarquer et signaler.",
+        "de": "Relever bedeutet auch anheben oder aufheben; hier heißt es bemerken und hervorheben."
+      },
+      "explanation": {
+        "en": "Relever means to point out a detail one has noticed, often an error.",
+        "fr": "Relever, c’est signaler un détail que l’on a remarqué, souvent une erreur.",
+        "de": "Relever bedeutet, auf ein bemerktes Detail, oft einen Fehler, hinzuweisen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "L’auditeur a pris soin de ",
+        "after": " plusieurs incohérences dans les comptes.",
+        "accepted": { "answers": ["relever"] },
+        "referenceTargetIds": ["relever", "conceder", "insinuer", "deplorer"],
+        "explanation": {
+          "en": "Only relever fits: the auditor notices and points out errors.",
+          "fr": "Seul « relever » convient : l’auditeur remarque et signale des erreurs.",
+          "de": "Nur „relever“ passt: Der Prüfer bemerkt Fehler und weist darauf hin."
+        }
+      },
+      "listeningOptionTargetIds": ["relever", "rappeler", "objecter", "avancer"]
+    },
+    {
+      "id": "faire-valoir",
+      "term": "faire valoir",
+      "translations": {
+        "en": ["argue in support", "stress as an argument"],
+        "de": ["geltend machen", "anführen"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "faire valoir",
+      "examForms": ["faire valoir"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fɛʁ va.lwaʁ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "L’avocat a fait valoir que son client était absent ce soir-là.",
+        "translation": {
+          "en": "The lawyer argued that his client was absent that evening.",
+          "de": "Der Anwalt machte geltend, dass sein Mandant an dem Abend abwesend war."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Faire valoir means to put forward a fact as an argument in one’s favour.",
+        "fr": "Faire valoir, c’est présenter un fait comme argument en sa faveur.",
+        "de": "Faire valoir bedeutet, eine Tatsache als Argument zu seinen Gunsten vorzubringen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Pour obtenir ce délai, l’avocat va ",
+        "after": " la bonne foi de son client.",
+        "accepted": { "answers": ["faire valoir"] },
+        "referenceTargetIds": ["faire-valoir", "feliciter", "objecter", "nuancer"],
+        "explanation": {
+          "en": "Only faire valoir fits: the lawyer uses a fact as an argument.",
+          "fr": "Seul « faire valoir » convient : l’avocat utilise un fait comme argument.",
+          "de": "Nur „faire valoir“ passt: Der Anwalt nutzt eine Tatsache als Argument."
+        }
+      },
+      "listeningOptionTargetIds": ["faire-valoir", "avancer", "souligner", "insinuer"]
+    },
+    {
+      "id": "avancer",
+      "term": "avancer",
+      "translations": {
+        "en": ["put forward", "suggest"],
+        "de": ["vorbringen", "in den Raum stellen"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "avancer",
+      "examForms": ["avancer"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/a.vɑ̃.se/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Un économiste a avancé l’hypothèse d’une reprise tardive.",
+        "translation": {
+          "en": "An economist put forward the hypothesis of a late recovery.",
+          "de": "Ein Ökonom brachte die Hypothese einer späten Erholung vor."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Avancer means to put forward an idea, a figure or a hypothesis, often cautiously.",
+        "fr": "Avancer, c’est mettre en avant une idée, un chiffre ou une hypothèse, souvent avec prudence.",
+        "de": "Avancer bedeutet, eine Idee, eine Zahl oder eine Hypothese oft vorsichtig vorzubringen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Les experts n’osent pas encore ",
+        "after": " un chiffre précis pour le coût du projet.",
+        "accepted": { "answers": ["avancer"] },
+        "referenceTargetIds": ["avancer", "deplorer", "rappeler", "conceder"],
+        "explanation": {
+          "en": "Only avancer fits: one puts forward a figure.",
+          "fr": "Seul « avancer » convient : on met un chiffre en avant.",
+          "de": "Nur „avancer“ passt: Man bringt eine Zahl vor."
+        }
+      },
+      "listeningOptionTargetIds": ["avancer", "nuancer", "insinuer", "faire-valoir"]
+    },
+    {
+      "id": "nuancer",
+      "term": "nuancer",
+      "translations": { "en": ["qualify", "temper"], "de": ["relativieren", "differenzieren"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "nuancer",
+      "examForms": ["nuancer"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/nɥɑ̃.se/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Elle a nuancé son propos en évoquant quelques exceptions.",
+        "translation": {
+          "en": "She qualified her statement by mentioning a few exceptions.",
+          "de": "Sie relativierte ihre Aussage, indem sie einige Ausnahmen erwähnte."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Nuancer means to make a statement less absolute by adding reservations.",
+        "fr": "Nuancer, c’est rendre une affirmation moins absolue en ajoutant des réserves.",
+        "de": "Nuancer bedeutet, eine Aussage durch Vorbehalte weniger absolut zu machen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ce constat est trop tranché : il faut le ",
+        "after": " en tenant compte des exceptions.",
+        "accepted": { "answers": ["nuancer"] },
+        "referenceTargetIds": ["nuancer", "souligner", "feliciter", "insinuer"],
+        "explanation": {
+          "en": "Only nuancer fits: the statement is too absolute and needs reservations.",
+          "fr": "Seul « nuancer » convient : le constat est trop absolu et demande des réserves.",
+          "de": "Nur „nuancer“ passt: Die Feststellung ist zu absolut und braucht Vorbehalte."
+        }
+      },
+      "listeningOptionTargetIds": ["nuancer", "avancer", "preciser", "conceder"]
+    },
+    {
+      "id": "objecter",
+      "term": "objecter",
+      "translations": {
+        "en": ["object", "raise as an objection"],
+        "de": ["einwenden", "entgegnen"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "objecter",
+      "examForms": ["objecter"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɔb.ʒɛk.te/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Il a objecté que ce calendrier était irréaliste.",
+        "translation": {
+          "en": "He objected that this schedule was unrealistic.",
+          "de": "Er wandte ein, dass dieser Zeitplan unrealistisch sei."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Objecter means to raise a counter-argument against what has been said.",
+        "fr": "Objecter, c’est opposer un contre-argument à ce qui a été dit.",
+        "de": "Objecter bedeutet, dem Gesagten ein Gegenargument entgegenzusetzen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Je n’ai rien à ",
+        "after": " à votre proposition.",
+        "accepted": { "answers": ["objecter"] },
+        "referenceTargetIds": ["objecter", "rappeler", "avancer", "preciser"],
+        "explanation": {
+          "en": "Only objecter fits: the structure is objecter quelque chose à.",
+          "fr": "Seul « objecter » convient : on dit objecter quelque chose à.",
+          "de": "Nur „objecter“ passt: Die Konstruktion ist objecter quelque chose à."
+        }
+      },
+      "listeningOptionTargetIds": ["objecter", "deplorer", "rappeler", "relever"]
+    },
+    {
+      "id": "conceder",
+      "term": "concéder",
+      "translations": { "en": ["concede", "grant"], "de": ["einräumen", "zugestehen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "concéder",
+      "examForms": ["concéder"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kɔ̃.se.de/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Le ministre a concédé que la mesure était impopulaire.",
+        "translation": {
+          "en": "The minister conceded that the measure was unpopular.",
+          "de": "Der Minister räumte ein, dass die Maßnahme unpopulär sei."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Concéder means to accept a point in favour of the other side.",
+        "fr": "Concéder, c’est accorder un point à la partie adverse.",
+        "de": "Concéder bedeutet, der Gegenseite einen Punkt zuzugestehen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il faut bien ",
+        "after": " que l’adversaire a marqué un point sur ce sujet.",
+        "accepted": { "answers": ["concéder"] },
+        "referenceTargetIds": ["conceder", "relever", "souligner", "deplorer"],
+        "explanation": {
+          "en": "Only concéder fits: one grants a point to the opponent.",
+          "fr": "Seul « concéder » convient : on accorde un point à l’adversaire.",
+          "de": "Nur „concéder“ passt: Man gesteht dem Gegner einen Punkt zu."
+        }
+      },
+      "listeningOptionTargetIds": ["conceder", "preciser", "deplorer", "nuancer"]
+    },
+    {
+      "id": "insinuer",
+      "term": "insinuer",
+      "translations": { "en": ["insinuate", "imply"], "de": ["andeuten", "unterstellen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "insinuer",
+      "examForms": ["insinuer"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɛ̃.si.nɥe/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Elle a insinué que son collègue avait menti.",
+        "translation": {
+          "en": "She insinuated that her colleague had lied.",
+          "de": "Sie deutete an, dass ihr Kollege gelogen habe."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Insinuer means to suggest something unpleasant without saying it openly.",
+        "fr": "Insinuer, c’est suggérer quelque chose de désagréable sans le dire ouvertement.",
+        "de": "Insinuer bedeutet, etwas Unangenehmes anzudeuten, ohne es offen zu sagen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Que cherchez-vous à ",
+        "after": " ? Que je vous ai menti ?",
+        "accepted": { "answers": ["insinuer"] },
+        "referenceTargetIds": ["insinuer", "preciser", "nuancer", "rappeler"],
+        "explanation": {
+          "en": "Only insinuer fits: the accusation is hinted at, not stated.",
+          "fr": "Seul « insinuer » convient : l’accusation est suggérée, non formulée.",
+          "de": "Nur „insinuer“ passt: Der Vorwurf wird angedeutet, nicht ausgesprochen."
+        }
+      },
+      "listeningOptionTargetIds": ["insinuer", "avancer", "nuancer", "souligner"]
+    },
+    {
+      "id": "deplorer",
+      "term": "déplorer",
+      "translations": { "en": ["deplore", "lament"], "de": ["bedauern", "beklagen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "déplorer",
+      "examForms": ["déplorer"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/de.plɔ.ʁe/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Les enseignants déplorent le manque de moyens.",
+        "translation": {
+          "en": "Teachers deplore the lack of resources.",
+          "de": "Die Lehrkräfte bedauern den Mangel an Mitteln."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Déplorer means to express strong regret about a situation.",
+        "fr": "Déplorer, c’est exprimer un vif regret au sujet d’une situation.",
+        "de": "Déplorer bedeutet, über eine Lage ein starkes Bedauern auszudrücken."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le syndicat ne cesse de ",
+        "after": " le manque de moyens dans les hôpitaux.",
+        "accepted": { "answers": ["déplorer"] },
+        "referenceTargetIds": ["deplorer", "faire-valoir", "avancer", "conceder"],
+        "explanation": {
+          "en": "Only déplorer fits: the union regrets a shortage.",
+          "fr": "Seul « déplorer » convient : le syndicat regrette un manque.",
+          "de": "Nur „déplorer“ passt: Die Gewerkschaft bedauert einen Mangel."
+        }
+      },
+      "listeningOptionTargetIds": ["deplorer", "conceder", "objecter", "preciser"]
+    },
+    {
+      "id": "feliciter",
+      "term": "se féliciter de",
+      "translations": {
+        "en": ["express satisfaction at", "welcome", "congratulate oneself on"],
+        "de": ["Zufriedenheit äußern über", "begrüßen", "sich freuen über"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "se féliciter de",
+      "examForms": ["se féliciter de"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/sə fe.li.si.te də/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "La maire s’est félicitée de la participation record.",
+        "translation": {
+          "en": "The mayor expressed satisfaction at the record turnout.",
+          "de": "Die Bürgermeisterin zeigte sich erfreut über die Rekordbeteiligung."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Se féliciter de means to say one is pleased with a result, and it takes de.",
+        "fr": "Se féliciter de, c’est dire sa satisfaction à propos d’un résultat ; le verbe se construit avec de.",
+        "de": "Se féliciter de bedeutet, seine Zufriedenheit über ein Ergebnis zu äußern; das Verb steht mit de."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le maire a tout lieu de ",
+        "after": " du succès de ce festival.",
+        "accepted": { "answers": ["se féliciter"] },
+        "referenceTargetIds": ["feliciter", "relever", "insinuer", "objecter"],
+        "explanation": {
+          "en": "Only se féliciter fits: the mayor is pleased with a success, and de follows.",
+          "fr": "Seul « se féliciter » convient : le maire se réjouit d’un succès, et de suit.",
+          "de": "Nur „se féliciter“ passt: Der Bürgermeister freut sich über einen Erfolg, und de folgt."
+        }
+      },
+      "listeningOptionTargetIds": ["feliciter", "deplorer", "faire-valoir", "relever"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

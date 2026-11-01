@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-reading-an-editorial",
+  "lang": "fr",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Lire un éditorial",
+  "objective": {
+    "en": "Read a newspaper editorial, state its thesis in one sentence and spot the devices meant to persuade: rhetorical questions, striking figures, il est temps que.",
+    "fr": "Lire l’éditorial d’un quotidien, formuler sa thèse en une phrase et repérer les procédés qui doivent convaincre.",
+    "de": "Den Leitartikel einer Tageszeitung lesen, seine These in einem Satz formulieren und die Überzeugungsmittel erkennen: rhetorische Fragen, Schockzahlen, il est temps que."
+  },
+  "estimatedMinutes": 10,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:53:18.984Z",
+    "inputHashes": { "outline": "a730c40e10217bda96a17b52811717c078f5f11dd3d6ccfbc915e85fe009bb8c" }
+  },
+  "kind": "reading",
+  "theme": "services",
+  "genre": "article",
+  "situation": {
+    "en": "The editorial writer of a daily newspaper denounces the disappearance of counters in public services and the exclusion caused by moving everything online.",
+    "fr": "L’éditorialiste d’un quotidien dénonce la disparition des guichets dans les services publics et l’exclusion que provoque le tout-numérique.",
+    "de": "Der Leitartikler einer Tageszeitung prangert das Verschwinden der Schalter in den öffentlichen Diensten und den Ausschluss durch die Digitalisierung an."
+  },
+  "readerTask": {
+    "en": "Find the thesis of the editorial, and identify how the author tries to convince: rhetorical questions, striking figures, repetition of il est temps que.",
+    "fr": "Retrouver la thèse de l’éditorial et repérer comment l’auteur cherche à convaincre : questions rhétoriques, chiffres choc, répétition de il est temps que.",
+    "de": "Die These des Leitartikels finden und erkennen, wie der Autor überzeugen will: rhetorische Fragen, Schockzahlen, Wiederholung von il est temps que."
+  },
+  "keywords": [
+    {
+      "id": "il-est-temps-que",
+      "term": "il est temps que",
+      "translations": { "en": ["it is time that"], "de": ["es ist an der Zeit, dass"] },
+      "explanation": {
+        "en": "Urgent call to act, followed by the subjunctive. Repeated, it hammers the message home.",
+        "fr": "Appel pressant à agir, suivi du subjonctif. Répété, il martèle le message.",
+        "de": "Dringender Aufruf zum Handeln, gefolgt vom Subjonctif. Wiederholt hämmert es die Botschaft ein."
+      }
+    },
+    {
+      "id": "sans-appel",
+      "term": "sans appel",
+      "translations": {
+        "en": ["indisputable", "beyond appeal"],
+        "de": ["unanfechtbar", "endgültig"]
+      },
+      "explanation": {
+        "en": "A decision or finding that cannot be challenged. Le constat est sans appel: the facts speak for themselves.",
+        "fr": "Se dit d’un jugement ou d’un constat qu’on ne peut pas contester. Le constat est sans appel : les faits parlent.",
+        "de": "Bezeichnet ein Urteil oder eine Feststellung, die man nicht anfechten kann. Le constat est sans appel: Die Fakten sprechen für sich."
+      }
+    },
+    {
+      "id": "a-quel-prix",
+      "term": "à quel prix",
+      "translations": { "en": ["at what cost"], "de": ["zu welchem Preis"] },
+      "explanation": {
+        "en": "A rhetorical question: the author does not expect an answer, he suggests that the cost is too high.",
+        "fr": "Question rhétorique : l’auteur n’attend pas de réponse, il suggère que le coût est trop élevé.",
+        "de": "Rhetorische Frage: Der Autor erwartet keine Antwort, er deutet an, dass der Preis zu hoch ist."
+      }
+    },
+    {
+      "id": "dematerialisation",
+      "term": "la dématérialisation",
+      "translations": {
+        "en": ["digitalisation of services"],
+        "de": ["die Digitalisierung der Dienste"]
+      },
+      "explanation": {
+        "en": "Replacing paper and counters with online procedures. A typical word of debates on public services.",
+        "fr": "Remplacement du papier et des guichets par des démarches en ligne. Mot typique des débats sur les services publics.",
+        "de": "Ersatz von Papier und Schaltern durch Online-Verfahren. Ein typisches Wort in Debatten über öffentliche Dienste."
+      }
+    },
+    {
+      "id": "renoncement",
+      "term": "un renoncement",
+      "translations": { "en": ["giving up"], "de": ["ein Verzicht"] },
+      "explanation": {
+        "en": "Giving up on something important. A strong word that the editorialist uses to condemn a policy.",
+        "fr": "Fait d’abandonner quelque chose d’important. Mot fort que l’éditorialiste utilise pour condamner une politique.",
+        "de": "Das Aufgeben von etwas Wichtigem. Ein starkes Wort, mit dem der Leitartikler eine Politik verurteilt."
+      }
+    }
+  ],
+  "documents": {
+    "main": {
+      "targetWords": 265,
+      "contents": {
+        "en": "Editorial in five paragraphs: a rhetorical question and shocking figures (one post office in five closed, nearly 13 million people uneasy online); examples of excluded citizens; the answer on savings (400 million euros) which hides a human cost; three times il est temps que, asking for a reception desk in every town hall; conclusion: progress must not leave anyone behind.",
+        "fr": "Éditorial en cinq paragraphes : question rhétorique et chiffres choc (un bureau de poste sur cinq fermé, près de treize millions de personnes mal à l’aise en ligne) ; exemples de citoyens exclus ; réponse sur les économies (400 millions d’euros) qui cache un coût humain ; trois fois il est temps que, pour réclamer un point d’accueil dans chaque mairie ; conclusion : le progrès ne doit oublier personne.",
+        "de": "Leitartikel in fünf Absätzen: rhetorische Frage und Schockzahlen (jedes fünfte Postamt geschlossen, fast 13 Millionen Menschen unsicher online); Beispiele ausgeschlossener Bürger; Antwort zu den Einsparungen (400 Millionen Euro), die menschliche Kosten verbirgt; dreimal il est temps que, um einen Anlaufpunkt in jedem Rathaus zu fordern; Schluss: Der Fortschritt darf niemanden vergessen."
+      }
+    },
+    "exam": {
+      "targetWords": 140,
+      "contents": {
+        "en": "Editorial against the closing of a regional train line: a rhetorical question, the figure of 1,200 daily passengers, the argument of profitability refuted by the cost of more cars and by students without a licence, and a call to the elected officials.",
+        "fr": "Éditorial contre la suppression d’une ligne de train régionale : question rhétorique, chiffre de 1 200 voyageurs quotidiens, argument de la rentabilité réfuté par le coût de voitures en plus et par les lycéens sans permis, appel aux élus.",
+        "de": "Leitartikel gegen die Stilllegung einer regionalen Bahnlinie: rhetorische Frage, die Zahl von 1 200 täglichen Fahrgästen, das Rentabilitätsargument widerlegt durch die Kosten zusätzlicher Autos und durch Schüler ohne Führerschein, Appell an die Gewählten."
+      }
+    }
+  },
+  "skim": { "focus": "purpose" },
+  "detailQuestions": [
+    {
+      "id": "q-chiffre",
+      "type": "reading_choice",
+      "focus": {
+        "en": "The figure that shows the scale of the problem",
+        "fr": "Le chiffre qui montre l’ampleur du problème",
+        "de": "Die Zahl, die das Ausmaß des Problems zeigt"
+      }
+    },
+    {
+      "id": "q-exemples",
+      "type": "reading_choice",
+      "focus": {
+        "en": "Why the author gives concrete examples of citizens",
+        "fr": "Pourquoi l’auteur donne des exemples concrets de citoyens",
+        "de": "Warum der Autor konkrete Beispiele von Bürgern gibt"
+      }
+    },
+    {
+      "id": "q-economies",
+      "type": "reading_true_false",
+      "focus": {
+        "en": "The author’s position on the savings made",
+        "fr": "La position de l’auteur sur les économies réalisées",
+        "de": "Die Position des Autors zu den erzielten Einsparungen"
+      }
+    },
+    {
+      "id": "q-demande",
+      "type": "reading_choice",
+      "focus": {
+        "en": "What the author asks the State to do",
+        "fr": "Ce que l’auteur demande à l’État",
+        "de": "Was der Autor vom Staat verlangt"
+      }
+    }
+  ],
+  "exam": { "types": ["reading_choice", "reading_true_false"] },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

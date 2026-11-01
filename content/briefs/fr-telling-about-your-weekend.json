@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-telling-about-your-weekend",
+  "lang": "fr",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Raconter son week-end",
+  "objective": {
+    "en": "Tell about your weekend in a few sentences in the passé composé, then ask the other person back: « Et toi, tu as fait quoi ? », « C’était bien ? ».",
+    "fr": "Raconter son week-end en quelques phrases au passé composé, puis relancer l’autre : « Et toi, tu as fait quoi ? », « C’était bien ? ».",
+    "de": "Das Wochenende in wenigen Sätzen im passé composé erzählen und dann nachfragen: « Et toi, tu as fait quoi ? », « C’était bien ? »."
+  },
+  "estimatedMinutes": 15,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:36:14.405Z",
+    "inputHashes": { "outline": "b40eac72ce388192d2c55b26d0e9d91d2f7898585438272f9316c5597f75f18c" }
+  },
+  "kind": "functions",
+  "theme": "free_time",
+  "situation": {
+    "en": "On Monday morning, two friends, Léa and Marc, talk about their weekend.",
+    "fr": "Le lundi matin, deux amis, Léa et Marc, parlent de leur week-end.",
+    "de": "Am Montagmorgen sprechen zwei Freunde, Léa und Marc, über ihr Wochenende."
+  },
+  "coverageNotes": {
+    "en": "Asking about the weekend (Tu as fait quoi ce week-end ?), telling what you did (Samedi, j’ai… / Je suis allée…), and asking back (Et toi, tu as fait quoi ? / C’était bien ?).",
+    "fr": "Demander le week-end de l’autre (Tu as fait quoi ce week-end ?), raconter ce qu’on a fait (Samedi, j’ai… / Je suis allée…) et relancer (Et toi, tu as fait quoi ? / C’était bien ?).",
+    "de": "Nach dem Wochenende fragen (Tu as fait quoi ce week-end ?), erzählen, was man gemacht hat (Samedi, j’ai… / Je suis allée…), und nachfragen (Et toi, tu as fait quoi ? / C’était bien ?)."
+  },
+  "prerequisites": [],
+  "roles": [
+    { "id": "lea", "label": "Léa", "translation": { "en": "Léa", "de": "Léa" } },
+    { "id": "marc", "label": "Marc", "translation": { "en": "Marc", "de": "Marc" } }
+  ],
+  "expressions": [
+    {
+      "id": "tu-as-fait-quoi",
+      "text": "Tu as fait quoi ce week-end ?",
+      "openEnd": false,
+      "translations": {
+        "en": ["What did you do this weekend?"],
+        "de": ["Was hast du dieses Wochenende gemacht?"]
+      },
+      "explanation": {
+        "en": "An informal question (tu) to ask a friend about the weekend that has just passed.",
+        "fr": "Une question familière (tu) pour demander à un ami comment s’est passé son week-end.",
+        "de": "Eine vertraute Frage (tu), um einen Freund nach dem vergangenen Wochenende zu fragen."
+      },
+      "example": {
+        "text": "Salut Léa ! Tu as fait quoi ce week-end ?",
+        "translation": {
+          "en": "Hi Léa! What did you do this weekend?",
+          "de": "Hallo Léa! Was hast du dieses Wochenende gemacht?"
+        }
+      }
+    },
+    {
+      "id": "samedi-jai",
+      "text": "Samedi, j’ai",
+      "openEnd": true,
+      "translations": { "en": ["On Saturday, I …"], "de": ["Am Samstag habe ich …"] },
+      "explanation": {
+        "en": "Starts a sentence about what you did: Samedi, j’ai + past participle (joué, regardé, mangé).",
+        "fr": "Pour commencer une phrase sur ce qu’on a fait : Samedi, j’ai + participe passé (joué, regardé, mangé).",
+        "de": "Beginnt einen Satz darüber, was du gemacht hast: Samedi, j’ai + Partizip (joué, regardé, mangé)."
+      },
+      "example": {
+        "text": "Samedi, j’ai regardé un film avec mon frère.",
+        "translation": {
+          "en": "On Saturday, I watched a film with my brother.",
+          "de": "Am Samstag habe ich mit meinem Bruder einen Film geschaut."
+        }
+      }
+    },
+    {
+      "id": "je-suis-allee",
+      "text": "Je suis allée",
+      "openEnd": true,
+      "translations": { "en": ["I went"], "de": ["Ich bin gegangen"] },
+      "explanation": {
+        "en": "Aller uses être in the passé composé: a woman says allée, a man says allé.",
+        "fr": "Aller se conjugue avec être au passé composé : une femme dit allée, un homme dit allé.",
+        "de": "Aller bildet das passé composé mit être: eine Frau sagt allée, ein Mann sagt allé."
+      },
+      "example": {
+        "text": "Dimanche, je suis allée au marché.",
+        "translation": {
+          "en": "On Sunday, I went to the market.",
+          "de": "Am Sonntag bin ich auf den Markt gegangen."
+        }
+      }
+    },
+    {
+      "id": "cetait-bien",
+      "text": "C’était bien ?",
+      "openEnd": false,
+      "translations": { "en": ["Was it good?"], "de": ["War es gut?"] },
+      "explanation": {
+        "en": "Asks whether an outing or an event was good. C’était is c’est in the past.",
+        "fr": "Pour demander si une sortie ou un événement s’est bien passé. C’était, c’est c’est au passé.",
+        "de": "Fragt, ob ein Ausflug oder ein Ereignis gut war. C’était ist c’est in der Vergangenheit."
+      },
+      "example": {
+        "text": "Tu es allé au cinéma ? C’était bien ?",
+        "translation": {
+          "en": "You went to the cinema? Was it good?",
+          "de": "Du warst im Kino? War es gut?"
+        }
+      }
+    },
+    {
+      "id": "et-toi",
+      "text": "Et toi, tu as fait quoi ?",
+      "openEnd": false,
+      "translations": {
+        "en": ["And you, what did you do?"],
+        "de": ["Und du, was hast du gemacht?"]
+      },
+      "explanation": {
+        "en": "After telling your weekend, you ask the other person the same question.",
+        "fr": "Après avoir raconté son week-end, on pose la même question à l’autre.",
+        "de": "Nach deinem Bericht stellst du dem anderen dieselbe Frage."
+      },
+      "example": {
+        "text": "Moi, j’ai dormi. Et toi, tu as fait quoi ?",
+        "translation": {
+          "en": "Me, I slept. And you, what did you do?",
+          "de": "Ich habe geschlafen. Und du, was hast du gemacht?"
+        }
+      }
+    }
+  ],
+  "words": [],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

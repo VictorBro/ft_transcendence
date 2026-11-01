@@ -1,0 +1,590 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-appearance-and-looks",
+  "lang": "fr",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Avoir l’air, ressembler à",
+  "objective": {
+    "en": "Describe someone’s appearance with about a dozen words: avoir l’air, ressembler à, ridé, bronzé, faire jeune.",
+    "fr": "Décrire l’apparence de quelqu’un avec une douzaine de mots : avoir l’air, ressembler à, ridé, faire jeune.",
+    "de": "Das Aussehen einer Person mit etwa zwölf Wörtern beschreiben: avoir l’air, ressembler à, ridé, faire jeune."
+  },
+  "estimatedMinutes": 20,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:47:20.239Z",
+    "inputHashes": { "outline": "20dbca4fe1ac38f5b8a837220ce3d15bf60c892941483c527f7b4c8f1ff27e3e" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Twelve words to describe appearance: expressions of impression, face and skin, hair and body.",
+    "fr": "Douze mots pour décrire l’apparence : expressions d’impression, visage et peau, cheveux et silhouette.",
+    "de": "Zwölf Wörter zur Beschreibung des Aussehens: Ausdrücke des Eindrucks, Gesicht und Haut, Haare und Figur."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words fit the intent and a B1 lesson without overloading it.",
+    "fr": "Douze mots correspondent à l’intention de la leçon et au niveau B1 sans la surcharger.",
+    "de": "Zwölf Wörter passen zum Ziel der Lektion und zum Niveau B1, ohne sie zu überladen."
+  },
+  "difficultyBalance": {
+    "en": "Concrete adjectives and nouns are core; the idiomatic expressions with faire and avoir l’air are more demanding.",
+    "fr": "Les adjectifs et noms concrets sont de base ; les expressions idiomatiques avec faire et avoir l’air sont plus difficiles.",
+    "de": "Konkrete Adjektive und Nomen sind Grundwortschatz; die idiomatischen Ausdrücke mit faire und avoir l’air sind anspruchsvoller."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "impressions",
+      "label": {
+        "en": "Expressions of impression",
+        "fr": "Expressions d’impression",
+        "de": "Ausdrücke des Eindrucks"
+      },
+      "targetIds": ["air", "ressembler", "jeune", "age"],
+      "introduction": {
+        "en": "Four expressions to say **what impression** someone gives:\n\n- `avoir l’air fatigué`\n- `ressembler à`\n- `faire jeune`\n- `faire son âge`\n\nAfter `avoir l’air`, the adjective often agrees with the person.",
+        "fr": "Quatre expressions pour dire **quelle impression** quelqu’un donne :\n\n- `avoir l’air fatigué`\n- `ressembler à`\n- `faire jeune`\n- `faire son âge`\n\nAprès `avoir l’air`, l’adjectif s’accorde souvent avec la personne.",
+        "de": "Vier Ausdrücke, um zu sagen, **welchen Eindruck** jemand macht:\n\n- `avoir l’air fatigué`\n- `ressembler à`\n- `faire jeune`\n- `faire son âge`\n\nNach `avoir l’air` richtet sich das Adjektiv oft nach der Person."
+      }
+    },
+    {
+      "id": "visage",
+      "label": { "en": "Face and skin", "fr": "Visage et peau", "de": "Gesicht und Haut" },
+      "targetIds": ["ride", "bronze", "pale", "taches", "cernes"],
+      "introduction": {
+        "en": "Words for **the face and the skin**:\n\n- `ridé`\n- `bronzé`\n- `pâle`\n- `des taches de rousseur`\n- `des cernes`",
+        "fr": "Des mots pour **le visage et la peau** :\n\n- `ridé`\n- `bronzé`\n- `pâle`\n- `des taches de rousseur`\n- `des cernes`",
+        "de": "Wörter für **Gesicht und Haut**:\n\n- `ridé`\n- `bronzé`\n- `pâle`\n- `des taches de rousseur`\n- `des cernes`"
+      }
+    },
+    {
+      "id": "cheveux",
+      "label": { "en": "Hair and body", "fr": "Cheveux et silhouette", "de": "Haare und Figur" },
+      "targetIds": ["barbe", "coupe", "mince"],
+      "introduction": {
+        "en": "Words for **hair and body**:\n\n- `une barbe`\n- `une coupe de cheveux`\n- `mince`",
+        "fr": "Des mots pour **les cheveux et la silhouette** :\n\n- `une barbe`\n- `une coupe de cheveux`\n- `mince`",
+        "de": "Wörter für **Haare und Figur**:\n\n- `une barbe`\n- `une coupe de cheveux`\n- `mince`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "air",
+      "term": "avoir l’air fatigué",
+      "translations": { "en": ["to look tired"], "de": ["müde aussehen"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "avoir l’air fatigué",
+      "examForms": ["avoir l’air fatigué", "avoir l'air fatigué"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/avwaʁ lɛʁ fa.ti.ɡe/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Tu as l’air fatigué ce matin.",
+        "translation": {
+          "en": "You look tired this morning.",
+          "de": "Du siehst heute Morgen müde aus."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Avoir l’air + adjective says what impression someone gives.",
+        "fr": "Avoir l’air + adjectif dit l’impression que donne quelqu’un.",
+        "de": "Avoir l’air + Adjektiv sagt, welchen Eindruck jemand macht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Tu ",
+        "after": " très fatigué ce matin.",
+        "accepted": { "answers": ["as l’air", "as l'air"] },
+        "referenceTargetIds": ["air", "ride", "coupe", "mince"],
+        "explanation": {
+          "en": "Tu as l’air fatigué means you look tired.",
+          "fr": "Tu as l’air fatigué signifie que tu sembles fatigué.",
+          "de": "Tu as l’air fatigué bedeutet, dass du müde aussiehst."
+        }
+      },
+      "listeningOptionTargetIds": ["air", "ressembler", "jeune", "age"]
+    },
+    {
+      "id": "ressembler",
+      "term": "ressembler à",
+      "translations": { "en": ["to look like", "to resemble"], "de": ["ähneln", "aussehen wie"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ressembler à",
+      "examForms": ["ressembler à"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʁə.sɑ̃.ble a/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Elle ressemble beaucoup à sa mère.",
+        "translation": {
+          "en": "She looks a lot like her mother.",
+          "de": "Sie sieht ihrer Mutter sehr ähnlich."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Ressembler is always followed by à before the person or thing.",
+        "fr": "Ressembler est toujours suivi de à devant la personne ou la chose.",
+        "de": "Ressembler wird immer mit à vor der Person oder Sache verwendet."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Elle ",
+        "after": " beaucoup à sa mère.",
+        "accepted": { "answers": ["ressemble"] },
+        "referenceTargetIds": ["ressembler", "barbe", "pale", "age"],
+        "explanation": {
+          "en": "Elle ressemble à sa mère: the verb takes à.",
+          "fr": "Elle ressemble à sa mère : le verbe se construit avec à.",
+          "de": "Elle ressemble à sa mère: Das Verb steht mit à."
+        }
+      },
+      "listeningOptionTargetIds": ["ressembler", "air", "ride", "bronze"]
+    },
+    {
+      "id": "ride",
+      "term": "ridé",
+      "translations": { "en": ["wrinkled"], "de": ["faltig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ridé",
+      "examForms": ["ridé"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʁi.de/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mon grand-père a le visage ridé.",
+        "translation": {
+          "en": "My grandfather has a wrinkled face.",
+          "de": "Mein Großvater hat ein faltiges Gesicht."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Ridé describes skin with wrinkles, often with age.",
+        "fr": "Ridé décrit une peau avec des rides, souvent à cause de l’âge.",
+        "de": "Ridé beschreibt Haut mit Falten, oft durch das Alter."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Mon grand-père a le visage très ",
+        "after": ".",
+        "accepted": { "answers": ["ridé"] },
+        "referenceTargetIds": ["ride", "air", "taches", "coupe"],
+        "explanation": {
+          "en": "Ridé fits a face that has many wrinkles.",
+          "fr": "Ridé convient à un visage qui a beaucoup de rides.",
+          "de": "Ridé passt zu einem Gesicht mit vielen Falten."
+        }
+      },
+      "listeningOptionTargetIds": ["ride", "bronze", "pale", "mince"]
+    },
+    {
+      "id": "bronze",
+      "term": "bronzé",
+      "translations": { "en": ["tanned"], "de": ["braun gebrannt", "gebräunt"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "bronzé",
+      "examForms": ["bronzé"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/bʁɔ̃.ze/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Tu es tout bronzé après tes vacances !",
+        "translation": {
+          "en": "You are all tanned after your holiday!",
+          "de": "Du bist nach deinem Urlaub ganz braun gebrannt!"
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Bronzé describes skin that has become brown in the sun.",
+        "fr": "Bronzé décrit une peau devenue brune au soleil.",
+        "de": "Bronzé beschreibt Haut, die in der Sonne braun geworden ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Tu es tout ",
+        "after": " après tes vacances à la mer !",
+        "accepted": { "answers": ["bronzé"] },
+        "referenceTargetIds": ["bronze", "cernes", "barbe", "ressembler"],
+        "explanation": {
+          "en": "After a holiday at the sea, you are tanned.",
+          "fr": "Après des vacances à la mer, on est bronzé.",
+          "de": "Nach einem Urlaub am Meer ist man bronzé."
+        }
+      },
+      "listeningOptionTargetIds": ["bronze", "ride", "barbe", "pale"]
+    },
+    {
+      "id": "pale",
+      "term": "pâle",
+      "translations": { "en": ["pale"], "de": ["blass"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "pâle",
+      "examForms": ["pâle"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/pɑl/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Il est pâle : il est peut-être malade.",
+        "translation": {
+          "en": "He is pale: he may be ill.",
+          "de": "Er ist blass: Vielleicht ist er krank."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Pâle describes a face with little colour, with the circumflex accent on the a.",
+        "fr": "Pâle décrit un visage sans beaucoup de couleurs ; l’accent circonflexe se met sur le a.",
+        "de": "Pâle beschreibt ein Gesicht mit wenig Farbe; der Zirkumflex steht auf dem a."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il est malade et très ",
+        "after": " : il n’a plus de couleurs.",
+        "accepted": { "answers": ["pâle"] },
+        "referenceTargetIds": ["pale", "jeune", "mince", "coupe"],
+        "explanation": {
+          "en": "A face with no colour is pâle.",
+          "fr": "Un visage sans couleurs est pâle.",
+          "de": "Ein Gesicht ohne Farbe ist pâle."
+        }
+      },
+      "listeningOptionTargetIds": ["pale", "ride", "mince", "bronze"]
+    },
+    {
+      "id": "taches",
+      "term": "taches de rousseur",
+      "translations": { "en": ["freckles"], "de": ["Sommersprossen"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "plural",
+      "teachingForm": "des taches de rousseur",
+      "examForms": ["des taches de rousseur"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/de taʃ də ʁu.sœʁ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Elle a des taches de rousseur sur le nez.",
+        "translation": {
+          "en": "She has freckles on her nose.",
+          "de": "Sie hat Sommersprossen auf der Nase."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Des taches de rousseur are the small brown spots on the skin, usually in the plural.",
+        "fr": "Des taches de rousseur sont les petits points bruns sur la peau, le plus souvent au pluriel.",
+        "de": "Des taches de rousseur sind die kleinen braunen Punkte auf der Haut, meist im Plural."
+      },
+      "genderExplanation": {
+        "en": "Tache is feminine; in the plural the article is des.",
+        "fr": "Tache est féminin ; au pluriel, l’article est des.",
+        "de": "Tache ist feminin; im Plural lautet der Artikel des."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Elle a des ",
+        "after": " sur le nez et sur les joues.",
+        "accepted": { "answers": ["taches de rousseur"] },
+        "referenceTargetIds": ["taches", "cernes", "barbe", "age"],
+        "explanation": {
+          "en": "Small spots on the nose and cheeks are taches de rousseur.",
+          "fr": "Les petits points sur le nez et les joues sont des taches de rousseur.",
+          "de": "Kleine Punkte auf Nase und Wangen sind taches de rousseur."
+        }
+      },
+      "listeningOptionTargetIds": ["taches", "cernes", "ride", "pale"]
+    },
+    {
+      "id": "cernes",
+      "term": "cernes",
+      "translations": { "en": ["dark circles"], "de": ["Augenringe"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "plural",
+      "teachingForm": "des cernes",
+      "examForms": ["des cernes"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/de sɛʁn/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Il a des cernes : il dort mal.",
+        "translation": {
+          "en": "He has dark circles under his eyes: he sleeps badly.",
+          "de": "Er hat Augenringe: Er schläft schlecht."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Des cernes are the dark marks under the eyes, a sign of tiredness.",
+        "fr": "Des cernes sont les marques sombres sous les yeux, signe de fatigue.",
+        "de": "Des cernes sind die dunklen Ringe unter den Augen, ein Zeichen von Müdigkeit."
+      },
+      "genderExplanation": {
+        "en": "Cerne is masculine; in the plural the article is des.",
+        "fr": "Cerne est masculin ; au pluriel, l’article est des.",
+        "de": "Cerne ist maskulin; im Plural lautet der Artikel des."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il a des ",
+        "after": " sous les yeux : il dort mal.",
+        "accepted": { "answers": ["cernes"] },
+        "referenceTargetIds": ["cernes", "bronze", "coupe", "ressembler"],
+        "explanation": {
+          "en": "Dark marks under the eyes are cernes.",
+          "fr": "Les marques sombres sous les yeux sont des cernes.",
+          "de": "Dunkle Ringe unter den Augen sind cernes."
+        }
+      },
+      "listeningOptionTargetIds": ["cernes", "taches", "ride", "pale"]
+    },
+    {
+      "id": "barbe",
+      "term": "barbe",
+      "translations": { "en": ["beard"], "de": ["Bart"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une barbe",
+      "examForms": ["une barbe"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/yn baʁb/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Il porte une barbe grise.",
+        "translation": { "en": "He wears a grey beard.", "de": "Er trägt einen grauen Bart." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Barbe is feminine in French, even though it is a man’s beard: une barbe.",
+        "fr": "Barbe est féminin en français, même pour un homme : une barbe.",
+        "de": "Barbe ist im Französischen feminin, auch beim Mann: une barbe."
+      },
+      "genderExplanation": {
+        "en": "Barbe is feminine, so its indefinite article is une.",
+        "fr": "Barbe est féminin : on dit une barbe.",
+        "de": "Barbe ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il ne s’est pas rasé : il a une ",
+        "after": " de trois jours.",
+        "accepted": { "answers": ["barbe"] },
+        "referenceTargetIds": ["barbe", "coupe", "cernes", "mince"],
+        "explanation": {
+          "en": "A man who has not shaved has a barbe.",
+          "fr": "Un homme qui ne s’est pas rasé a une barbe.",
+          "de": "Ein Mann, der sich nicht rasiert hat, hat eine barbe."
+        }
+      },
+      "listeningOptionTargetIds": ["barbe", "bronze", "coupe", "mince"]
+    },
+    {
+      "id": "coupe",
+      "term": "coupe de cheveux",
+      "translations": { "en": ["haircut"], "de": ["Haarschnitt"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une coupe de cheveux",
+      "examForms": ["une coupe de cheveux"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/yn kup də ʃə.vø/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Tu as une nouvelle coupe de cheveux !",
+        "translation": { "en": "You have a new haircut!", "de": "Du hast einen neuen Haarschnitt!" }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Une coupe de cheveux is the way your hair has been cut.",
+        "fr": "Une coupe de cheveux est la façon dont les cheveux sont coupés.",
+        "de": "Une coupe de cheveux ist die Art, wie die Haare geschnitten sind."
+      },
+      "genderExplanation": {
+        "en": "Coupe is feminine, so its indefinite article is une.",
+        "fr": "Coupe est féminin : on dit une coupe de cheveux.",
+        "de": "Coupe ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Tu as une nouvelle ",
+        "after": " : ça te va bien !",
+        "accepted": { "answers": ["coupe de cheveux"] },
+        "referenceTargetIds": ["coupe", "mince", "pale", "air"],
+        "explanation": {
+          "en": "A new look for your hair is a new coupe de cheveux.",
+          "fr": "Un nouveau style pour les cheveux, c’est une nouvelle coupe de cheveux.",
+          "de": "Ein neuer Look für die Haare ist eine neue coupe de cheveux."
+        }
+      },
+      "listeningOptionTargetIds": ["coupe", "barbe", "cernes", "mince"]
+    },
+    {
+      "id": "jeune",
+      "term": "faire jeune",
+      "translations": { "en": ["to look young"], "de": ["jung aussehen"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "faire jeune",
+      "examForms": ["faire jeune"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fɛʁ ʒœn/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Il a cinquante ans, mais il fait jeune.",
+        "translation": {
+          "en": "He is fifty, but he looks young.",
+          "de": "Er ist fünfzig, sieht aber jung aus."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Faire jeune means to look younger than one’s real age.",
+        "fr": "Faire jeune veut dire paraître plus jeune que son âge réel.",
+        "de": "Faire jeune bedeutet, jünger auszusehen, als man wirklich ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il a cinquante ans, mais il ",
+        "after": " !",
+        "accepted": { "answers": ["fait jeune"] },
+        "referenceTargetIds": ["jeune", "ride", "bronze", "ressembler"],
+        "explanation": {
+          "en": "Il fait jeune means he looks younger than he is.",
+          "fr": "Il fait jeune signifie qu’il paraît plus jeune qu’il n’est.",
+          "de": "Il fait jeune bedeutet, dass er jünger aussieht, als er ist."
+        }
+      },
+      "listeningOptionTargetIds": ["jeune", "air", "ressembler", "age"]
+    },
+    {
+      "id": "age",
+      "term": "faire son âge",
+      "translations": { "en": ["to look one’s age"], "de": ["so alt aussehen, wie man ist"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "faire son âge",
+      "examForms": ["faire son âge"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fɛʁ sɔ̃n‿ɑʒ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Elle a soixante ans et elle fait son âge.",
+        "translation": {
+          "en": "She is sixty and she looks her age.",
+          "de": "Sie ist sechzig und sieht auch so alt aus."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Faire son âge means to look exactly as old as one is; the circumflex accent is on the a of âge.",
+        "fr": "Faire son âge veut dire paraître exactement l’âge que l’on a ; l’accent circonflexe est sur le a de âge.",
+        "de": "Faire son âge bedeutet, genau so alt auszusehen, wie man ist; der Zirkumflex steht auf dem a von âge."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il a soixante ans et il ",
+        "after": " : ni plus, ni moins.",
+        "accepted": { "answers": ["fait son âge"] },
+        "referenceTargetIds": ["age", "pale", "barbe", "taches"],
+        "explanation": {
+          "en": "Il fait son âge means he looks as old as he is.",
+          "fr": "Il fait son âge signifie qu’il paraît l’âge qu’il a.",
+          "de": "Il fait son âge bedeutet, dass er so alt aussieht, wie er ist."
+        }
+      },
+      "listeningOptionTargetIds": ["age", "air", "jeune", "ressembler"]
+    },
+    {
+      "id": "mince",
+      "term": "mince",
+      "translations": { "en": ["slim"], "de": ["schlank"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "mince",
+      "examForms": ["mince"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/mɛ̃s/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Elle est grande et mince.",
+        "translation": { "en": "She is tall and slim.", "de": "Sie ist groß und schlank." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Mince describes a thin, slender body; the word is the same for a man and a woman.",
+        "fr": "Mince décrit un corps fin et élancé ; le mot est le même pour un homme et une femme.",
+        "de": "Mince beschreibt einen schlanken Körper; das Wort ist für Mann und Frau gleich."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Elle est grande et ",
+        "after": ", elle fait du sport tous les jours.",
+        "accepted": { "answers": ["mince"] },
+        "referenceTargetIds": ["mince", "ride", "taches", "air"],
+        "explanation": {
+          "en": "A tall person who does sport every day is slim.",
+          "fr": "Une personne grande qui fait du sport tous les jours est mince.",
+          "de": "Eine große Person, die täglich Sport treibt, ist mince."
+        }
+      },
+      "listeningOptionTargetIds": ["mince", "pale", "coupe", "barbe"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

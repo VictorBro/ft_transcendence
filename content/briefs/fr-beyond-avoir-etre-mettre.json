@@ -1,0 +1,634 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-beyond-avoir-etre-mettre",
+  "lang": "fr",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Au-delà d’avoir, être, mettre",
+  "objective": {
+    "en": "Replace all-purpose verbs with precise ones: éprouver, commettre, effectuer, dresser, constituer.",
+    "fr": "Remplacer avoir, être et mettre par des verbes précis : éprouver, commettre, effectuer, dresser, constituer.",
+    "de": "Passe-partout-Verben durch präzise Verben ersetzen: éprouver, commettre, effectuer, dresser, constituer."
+  },
+  "estimatedMinutes": 20,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:57:42.761Z",
+    "inputHashes": { "outline": "76889f7514025cfa9b2ec04e91eae546d7cfe8b7d8d987d5f8ee6bd82d5bfe3b" }
+  },
+  "kind": "vocabulary",
+  "theme": "language",
+  "coverageNotes": {
+    "en": "Twelve precise verbs that replace avoir, faire and mettre in formal French, each with its typical object (éprouver une crainte, constituer un risque, commettre une erreur, effectuer un virement, dresser un bilan). They are grouped by what they express: feeling or suffering, acting or carrying out, establishing or formulating.",
+    "fr": "Douze verbes précis qui remplacent avoir, faire et mettre dans un français soutenu, chacun avec son complément typique (éprouver une crainte, constituer un risque, commettre une erreur, effectuer un virement, dresser un bilan). Ils sont regroupés selon ce qu’ils expriment : ressentir ou subir, agir ou réaliser, établir ou formuler.",
+    "de": "Zwölf präzise Verben, die im gehobenen Französisch avoir, faire und mettre ersetzen, jeweils mit ihrem typischen Objekt (éprouver une crainte, constituer un risque, commettre une erreur, effectuer un virement, dresser un bilan). Sie sind nach ihrer Funktion gruppiert: empfinden oder erleiden, handeln oder ausführen, erstellen oder formulieren."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve verbs, as the outline intends: enough to cover the main contexts, few enough for one lesson at C1.",
+    "fr": "Douze verbes, comme le prévoit le plan : de quoi couvrir les contextes principaux sans surcharger une leçon de niveau C1.",
+    "de": "Zwölf Verben, wie in der Gliederung vorgesehen: genug für die wichtigsten Kontexte, nicht zu viele für eine C1-Lektion."
+  },
+  "difficultyBalance": {
+    "en": "Seven verbs are core at this level; five are demanding because their collocations are restricted (encourir, essuyer, nourrir, émettre, constituer).",
+    "fr": "Sept verbes sont de base à ce niveau ; cinq sont exigeants car leurs collocations sont restreintes (encourir, essuyer, nourrir, émettre, constituer).",
+    "de": "Sieben Verben sind auf diesem Niveau Grundwortschatz; fünf sind anspruchsvoll, da ihre Kollokationen eingeschränkt sind (encourir, essuyer, nourrir, émettre, constituer)."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "ressentir",
+      "label": {
+        "en": "Feeling and suffering",
+        "fr": "Ressentir et subir",
+        "de": "Empfinden und erleiden"
+      },
+      "targetIds": ["eprouver", "nourrir", "essuyer", "encourir"],
+      "introduction": {
+        "en": "These verbs say what a person **feels** or **undergoes**, instead of a flat avoir:\n\n- `éprouver une crainte`\n- `nourrir un espoir`\n- `essuyer un revers`\n- `encourir une peine`",
+        "fr": "Ces verbes disent ce qu’une personne **ressent** ou **subit**, au lieu d’un simple avoir :\n\n- `éprouver une crainte`\n- `nourrir un espoir`\n- `essuyer un revers`\n- `encourir une peine`",
+        "de": "Diese Verben sagen, was jemand **empfindet** oder **erleidet**, statt eines blassen avoir:\n\n- `éprouver une crainte`\n- `nourrir un espoir`\n- `essuyer un revers`\n- `encourir une peine`"
+      }
+    },
+    {
+      "id": "agir",
+      "label": {
+        "en": "Acting and carrying out",
+        "fr": "Agir et réaliser",
+        "de": "Handeln und ausführen"
+      },
+      "targetIds": ["commettre", "effectuer", "mener", "fournir"],
+      "introduction": {
+        "en": "Instead of faire, choose the verb that fits the **action** and its **object**:\n\n- `commettre une erreur`\n- `effectuer un virement`\n- `mener une enquête`\n- `fournir un effort`",
+        "fr": "À la place de faire, choisissez le verbe qui convient à l’**action** et à son **complément** :\n\n- `commettre une erreur`\n- `effectuer un virement`\n- `mener une enquête`\n- `fournir un effort`",
+        "de": "Wähle statt faire das Verb, das zur **Handlung** und zu ihrem **Objekt** passt:\n\n- `commettre une erreur`\n- `effectuer un virement`\n- `mener une enquête`\n- `fournir un effort`"
+      }
+    },
+    {
+      "id": "etablir",
+      "label": {
+        "en": "Establishing and formulating",
+        "fr": "Établir et formuler",
+        "de": "Erstellen und formulieren"
+      },
+      "targetIds": ["dresser", "constituer", "formuler", "emettre"],
+      "introduction": {
+        "en": "Replace mettre and être with verbs that **establish** or **express** something:\n\n- `dresser un bilan`\n- `constituer un risque`\n- `formuler une critique`\n- `émettre une réserve`",
+        "fr": "Remplacez mettre et être par des verbes qui **établissent** ou **expriment** quelque chose :\n\n- `dresser un bilan`\n- `constituer un risque`\n- `formuler une critique`\n- `émettre une réserve`",
+        "de": "Ersetze mettre und être durch Verben, die etwas **erstellen** oder **ausdrücken**:\n\n- `dresser un bilan`\n- `constituer un risque`\n- `formuler une critique`\n- `émettre une réserve`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "eprouver",
+      "term": "éprouver",
+      "translations": { "en": ["to feel", "to experience"], "de": ["empfinden", "verspüren"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "éprouver",
+      "examForms": ["éprouver"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/epʁuve/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Il éprouve une vive crainte avant l’examen.",
+        "translation": {
+          "en": "He feels a deep fear before the exam.",
+          "de": "Er empfindet vor der Prüfung große Angst."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Éprouver means to feel an emotion or a need: on éprouve une crainte, une joie, une difficulté.",
+        "fr": "Éprouver signifie ressentir une émotion ou un besoin : on éprouve une crainte, une joie, une difficulté.",
+        "de": "Éprouver heißt, eine Empfindung oder ein Bedürfnis zu spüren: on éprouve une crainte, une joie, une difficulté."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to feel (a fear, a feeling)",
+        "de": "empfinden (eine Furcht, ein Gefühl)"
+      },
+      "gap": {
+        "before": "Devant tant de misère, elle ne put s’empêcher d’",
+        "after": " de la compassion.",
+        "accepted": { "answers": ["éprouver"] },
+        "referenceTargetIds": ["eprouver", "encourir", "effectuer", "dresser"],
+        "explanation": {
+          "en": "Only éprouver fits: compassion is a feeling that one experiences.",
+          "fr": "Seul éprouver convient : la compassion est un sentiment que l’on ressent.",
+          "de": "Nur éprouver passt: Mitgefühl ist ein Gefühl, das man empfindet."
+        }
+      },
+      "listeningOptionTargetIds": ["eprouver", "essuyer", "effectuer", "emettre"]
+    },
+    {
+      "id": "nourrir",
+      "term": "nourrir",
+      "translations": { "en": ["to harbour", "to nurture"], "de": ["hegen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "nourrir",
+      "examForms": ["nourrir"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/nuʁiʁ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Elle nourrit l’espoir de réussir.",
+        "translation": {
+          "en": "She nurtures the hope of succeeding.",
+          "de": "Sie hegt die Hoffnung, Erfolg zu haben."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Nourrir also means to feed; with espoir, doute or ambition it means to keep alive a lasting feeling.",
+        "fr": "Nourrir signifie aussi donner à manger ; avec espoir, doute ou ambition, il veut dire entretenir un sentiment durable.",
+        "de": "Nourrir heißt auch ernähren; mit espoir, doute oder ambition bedeutet es, ein dauerhaftes Gefühl zu hegen."
+      },
+      "explanation": {
+        "en": "Nourrir an espoir, un doute or une ambition means to carry it inside oneself over time.",
+        "fr": "Nourrir un espoir, un doute ou une ambition, c’est l’entretenir en soi dans la durée.",
+        "de": "Nourrir un espoir, un doute oder une ambition heißt, es dauerhaft in sich zu tragen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to harbour (a hope, a doubt)",
+        "de": "hegen (eine Hoffnung, einen Zweifel)"
+      },
+      "gap": {
+        "before": "Depuis des années, elle ",
+        "after": " l’espoir de revoir son village natal.",
+        "accepted": { "answers": ["nourrit"] },
+        "referenceTargetIds": ["nourrir", "commettre", "effectuer", "encourir"],
+        "explanation": {
+          "en": "Only nourrir fits: one harbours a hope over a long time.",
+          "fr": "Seul nourrir convient : on entretient un espoir pendant longtemps.",
+          "de": "Nur nourrir passt: Eine Hoffnung hegt man über lange Zeit."
+        }
+      },
+      "listeningOptionTargetIds": ["nourrir", "fournir", "mener", "encourir"]
+    },
+    {
+      "id": "essuyer",
+      "term": "essuyer",
+      "translations": { "en": ["to suffer (a setback)", "to endure"], "de": ["erleiden"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "essuyer",
+      "examForms": ["essuyer"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/esɥije/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Le groupe a essuyé de lourdes pertes.",
+        "translation": {
+          "en": "The group suffered heavy losses.",
+          "de": "Der Konzern hat schwere Verluste erlitten."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Essuyer un échec, un revers or des pertes means to undergo a setback and go through it.",
+        "fr": "Essuyer un échec, un revers ou des pertes, c’est subir une épreuve et la traverser.",
+        "de": "Essuyer un échec, un revers oder des pertes heißt, einen Rückschlag zu erleiden und durchzustehen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to suffer (a setback, losses)",
+        "de": "erleiden (einen Rückschlag, Verluste)"
+      },
+      "gap": {
+        "before": "L’entreprise a ",
+        "after": " plusieurs revers successifs sur le marché asiatique.",
+        "accepted": { "answers": ["essuyé"] },
+        "referenceTargetIds": ["essuyer", "formuler", "dresser", "mener"],
+        "explanation": {
+          "en": "Only essuyer fits: a company undergoes setbacks.",
+          "fr": "Seul essuyer convient : une entreprise subit des revers.",
+          "de": "Nur essuyer passt: Ein Unternehmen erleidet Rückschläge."
+        }
+      },
+      "listeningOptionTargetIds": ["eprouver", "essuyer", "effectuer", "emettre"]
+    },
+    {
+      "id": "encourir",
+      "term": "encourir",
+      "translations": { "en": ["to incur", "to risk"], "de": ["sich zuziehen", "riskieren"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "encourir",
+      "examForms": ["encourir"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɑ̃kuʁiʁ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Il encourt une amende de mille euros.",
+        "translation": {
+          "en": "He faces a fine of a thousand euros.",
+          "de": "Ihm droht eine Geldstrafe von tausend Euro."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Encourir a penalty, a fine or a reproach means to expose oneself to it by one’s own act.",
+        "fr": "Encourir une peine, une amende ou un reproche, c’est s’y exposer par son propre acte.",
+        "de": "Encourir une peine, une amende oder un reproche heißt, sich durch das eigene Handeln dem auszusetzen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to incur (a penalty, a fine)",
+        "de": "sich zuziehen (eine Strafe, ein Bußgeld)"
+      },
+      "gap": {
+        "before": "Quiconque falsifie ces documents ",
+        "after": " une peine de trois ans de prison.",
+        "accepted": { "answers": ["encourt"] },
+        "referenceTargetIds": ["encourir", "nourrir", "formuler", "fournir"],
+        "explanation": {
+          "en": "Only encourir fits: the offender exposes himself to a penalty.",
+          "fr": "Seul encourir convient : l’auteur s’expose à une peine.",
+          "de": "Nur encourir passt: Der Täter setzt sich einer Strafe aus."
+        }
+      },
+      "listeningOptionTargetIds": ["nourrir", "fournir", "mener", "encourir"]
+    },
+    {
+      "id": "commettre",
+      "term": "commettre",
+      "translations": { "en": ["to commit", "to make (a mistake)"], "de": ["begehen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "commettre",
+      "examForms": ["commettre"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kɔmɛtʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Nous avons commis une erreur de calcul.",
+        "translation": {
+          "en": "We made a calculation error.",
+          "de": "Wir haben einen Rechenfehler begangen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Commettre goes with a fault: une erreur, une faute, un crime, une maladresse.",
+        "fr": "Commettre s’emploie avec une faute : une erreur, une faute, un crime, une maladresse.",
+        "de": "Commettre steht bei einem Fehlverhalten: une erreur, une faute, un crime, une maladresse."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to commit (an error, a crime)",
+        "de": "begehen (einen Fehler, ein Verbrechen)"
+      },
+      "gap": {
+        "before": "Il a ",
+        "after": " une grave erreur de jugement en signant ce contrat.",
+        "accepted": { "answers": ["commis"] },
+        "referenceTargetIds": ["commettre", "eprouver", "nourrir", "mener"],
+        "explanation": {
+          "en": "Only commettre fits: it is the verb for an error or a fault.",
+          "fr": "Seul commettre convient : c’est le verbe de l’erreur ou de la faute.",
+          "de": "Nur commettre passt: Es ist das Verb für Fehler und Vergehen."
+        }
+      },
+      "listeningOptionTargetIds": ["commettre", "emettre", "constituer", "formuler"]
+    },
+    {
+      "id": "effectuer",
+      "term": "effectuer",
+      "translations": { "en": ["to carry out", "to perform"], "de": ["durchführen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "effectuer",
+      "examForms": ["effectuer"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/efɛktɥe/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Elle a effectué le paiement en ligne.",
+        "translation": {
+          "en": "She made the payment online.",
+          "de": "Sie hat die Zahlung online durchgeführt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Effectuer replaces faire for a precise, often administrative operation: un virement, un paiement, un contrôle.",
+        "fr": "Effectuer remplace faire pour une opération précise, souvent administrative : un virement, un paiement, un contrôle.",
+        "de": "Effectuer ersetzt faire bei einem genauen, oft administrativen Vorgang: un virement, un paiement, un contrôle."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to carry out (a transfer, a check)",
+        "de": "durchführen (eine Überweisung, eine Kontrolle)"
+      },
+      "gap": {
+        "before": "Le client a ",
+        "after": " un virement de mille euros hier matin.",
+        "accepted": { "answers": ["effectué"] },
+        "referenceTargetIds": ["effectuer", "essuyer", "nourrir", "formuler"],
+        "explanation": {
+          "en": "Only effectuer fits: a transfer is an operation that one carries out.",
+          "fr": "Seul effectuer convient : un virement est une opération que l’on réalise.",
+          "de": "Nur effectuer passt: Eine Überweisung ist ein Vorgang, den man ausführt."
+        }
+      },
+      "listeningOptionTargetIds": ["eprouver", "essuyer", "effectuer", "emettre"]
+    },
+    {
+      "id": "mener",
+      "term": "mener",
+      "translations": { "en": ["to conduct", "to lead"], "de": ["führen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "mener",
+      "examForms": ["mener"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/məne/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Le journaliste mène une enquête sur ce scandale.",
+        "translation": {
+          "en": "The journalist is conducting an investigation into this scandal.",
+          "de": "Der Journalist führt eine Untersuchung zu diesem Skandal."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Mener goes with a long activity that has a direction: une enquête, une campagne, une réflexion, un combat.",
+        "fr": "Mener s’emploie avec une activité longue et dirigée : une enquête, une campagne, une réflexion, un combat.",
+        "de": "Mener steht bei einer längeren, gerichteten Tätigkeit: une enquête, une campagne, une réflexion, un combat."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to conduct (an investigation, a campaign)",
+        "de": "führen (eine Untersuchung, eine Kampagne)"
+      },
+      "gap": {
+        "before": "La police ",
+        "after": " depuis trois mois une enquête approfondie sur cette affaire.",
+        "accepted": { "answers": ["mène"] },
+        "referenceTargetIds": ["mener", "eprouver", "encourir", "dresser"],
+        "explanation": {
+          "en": "Only mener fits: an investigation is conducted over time.",
+          "fr": "Seul mener convient : une enquête se mène dans la durée.",
+          "de": "Nur mener passt: Eine Untersuchung wird über längere Zeit geführt."
+        }
+      },
+      "listeningOptionTargetIds": ["nourrir", "fournir", "mener", "encourir"]
+    },
+    {
+      "id": "fournir",
+      "term": "fournir",
+      "translations": {
+        "en": ["to provide", "to put in (an effort)"],
+        "de": ["erbringen", "liefern"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "fournir",
+      "examForms": ["fournir"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fuʁniʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Les équipes ont fourni un travail remarquable.",
+        "translation": {
+          "en": "The teams delivered remarkable work.",
+          "de": "Die Teams haben bemerkenswerte Arbeit geleistet."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Fournir un effort, un travail or une preuve means to supply it, to give what is expected.",
+        "fr": "Fournir un effort, un travail ou une preuve, c’est l’apporter, donner ce que l’on attend.",
+        "de": "Fournir un effort, un travail oder une preuve heißt, es zu erbringen, also das Erwartete zu liefern."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to provide (an effort, a proof)",
+        "de": "erbringen (eine Anstrengung, einen Beweis)"
+      },
+      "gap": {
+        "before": "Pour réussir ce projet, il faudra ",
+        "after": " un effort considérable pendant plusieurs mois.",
+        "accepted": { "answers": ["fournir"] },
+        "referenceTargetIds": ["fournir", "encourir", "dresser", "nourrir"],
+        "explanation": {
+          "en": "Only fournir fits: an effort is something one supplies.",
+          "fr": "Seul fournir convient : un effort est quelque chose que l’on apporte.",
+          "de": "Nur fournir passt: Eine Anstrengung bringt man auf."
+        }
+      },
+      "listeningOptionTargetIds": ["nourrir", "fournir", "mener", "encourir"]
+    },
+    {
+      "id": "dresser",
+      "term": "dresser",
+      "translations": { "en": ["to draw up"], "de": ["erstellen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "dresser",
+      "examForms": ["dresser"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/dʁese/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Il a dressé la liste des priorités.",
+        "translation": {
+          "en": "He drew up the list of priorities.",
+          "de": "Er hat die Liste der Prioritäten erstellt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Dresser un bilan, une liste or un constat means to draw it up carefully, point by point.",
+        "fr": "Dresser un bilan, une liste ou un constat, c’est l’établir avec soin, point par point.",
+        "de": "Dresser un bilan, une liste oder un constat heißt, es sorgfältig und Punkt für Punkt zu erstellen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to draw up (a report, a list)",
+        "de": "erstellen (eine Bilanz, eine Liste)"
+      },
+      "gap": {
+        "before": "À la fin de l’année, le directeur ",
+        "after": " un bilan détaillé des ventes.",
+        "accepted": { "answers": ["dresse"] },
+        "referenceTargetIds": ["dresser", "essuyer", "encourir", "eprouver"],
+        "explanation": {
+          "en": "Only dresser fits: a review is drawn up.",
+          "fr": "Seul dresser convient : un bilan se dresse.",
+          "de": "Nur dresser passt: Eine Bilanz wird erstellt."
+        }
+      },
+      "listeningOptionTargetIds": ["dresser", "essuyer", "constituer", "formuler"]
+    },
+    {
+      "id": "constituer",
+      "term": "constituer",
+      "translations": { "en": ["to constitute", "to pose"], "de": ["darstellen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "constituer",
+      "examForms": ["constituer"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kɔ̃stitɥe/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Ces retards constituent un obstacle majeur.",
+        "translation": {
+          "en": "These delays constitute a major obstacle.",
+          "de": "Diese Verspätungen stellen ein großes Hindernis dar."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Constituer replaces être when a thing is, by nature, a risk, a threat or an obstacle.",
+        "fr": "Constituer remplace être quand une chose représente, par nature, un risque, une menace ou un obstacle.",
+        "de": "Constituer ersetzt être, wenn etwas seiner Natur nach ein Risiko, eine Bedrohung oder ein Hindernis darstellt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to constitute (a risk, a threat)",
+        "de": "darstellen (ein Risiko, eine Bedrohung)"
+      },
+      "gap": {
+        "before": "Cette faille de sécurité ",
+        "after": " un risque majeur pour les données des clients.",
+        "accepted": { "answers": ["constitue"] },
+        "referenceTargetIds": ["constituer", "eprouver", "nourrir", "commettre"],
+        "explanation": {
+          "en": "Only constituer fits: the flaw is, in itself, a risk.",
+          "fr": "Seul constituer convient : la faille représente en soi un risque.",
+          "de": "Nur constituer passt: Die Sicherheitslücke stellt an sich ein Risiko dar."
+        }
+      },
+      "listeningOptionTargetIds": ["commettre", "emettre", "constituer", "formuler"]
+    },
+    {
+      "id": "formuler",
+      "term": "formuler",
+      "translations": { "en": ["to formulate"], "de": ["formulieren"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "formuler",
+      "examForms": ["formuler"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fɔʁmyle/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Elle a formulé une objection claire.",
+        "translation": {
+          "en": "She made a clear objection.",
+          "de": "Sie hat einen klaren Einwand formuliert."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Formuler une critique, une demande or une objection means to put it into precise words.",
+        "fr": "Formuler une critique, une demande ou une objection, c’est l’exprimer en termes précis.",
+        "de": "Formuler une critique, une demande oder une objection heißt, es in präzise Worte zu fassen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to formulate (a request, a criticism)",
+        "de": "formulieren (eine Bitte, eine Kritik)"
+      },
+      "gap": {
+        "before": "Le comité a ",
+        "after": " plusieurs recommandations précises à l’attention du ministre.",
+        "accepted": { "answers": ["formulé"] },
+        "referenceTargetIds": ["formuler", "essuyer", "encourir", "mener"],
+        "explanation": {
+          "en": "Only formuler fits: recommendations are put into precise words.",
+          "fr": "Seul formuler convient : des recommandations s’expriment en termes précis.",
+          "de": "Nur formuler passt: Empfehlungen werden in präzise Worte gefasst."
+        }
+      },
+      "listeningOptionTargetIds": ["commettre", "emettre", "constituer", "formuler"]
+    },
+    {
+      "id": "emettre",
+      "term": "émettre",
+      "translations": { "en": ["to express (a view)", "to issue"], "de": ["äußern", "abgeben"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "émettre",
+      "examForms": ["émettre"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/emɛtʁ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "La banque a émis un avis défavorable.",
+        "translation": {
+          "en": "The bank issued an unfavourable opinion.",
+          "de": "Die Bank hat ein ungünstiges Gutachten abgegeben."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Émettre une réserve, un avis or un doute means to put an official opinion into circulation.",
+        "fr": "Émettre une réserve, un avis ou un doute, c’est donner officiellement une opinion.",
+        "de": "Émettre une réserve, un avis oder un doute heißt, offiziell eine Meinung abzugeben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to express (a reservation, an opinion)",
+        "de": "äußern (einen Vorbehalt, eine Meinung)"
+      },
+      "gap": {
+        "before": "Le juge a ",
+        "after": " des réserves quant à la recevabilité de la demande.",
+        "accepted": { "answers": ["émis"] },
+        "referenceTargetIds": ["emettre", "encourir", "essuyer", "commettre"],
+        "explanation": {
+          "en": "Only émettre fits: reservations are expressed officially.",
+          "fr": "Seul émettre convient : des réserves s’expriment officiellement.",
+          "de": "Nur émettre passt: Vorbehalte werden offiziell geäußert."
+        }
+      },
+      "listeningOptionTargetIds": ["eprouver", "essuyer", "effectuer", "emettre"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

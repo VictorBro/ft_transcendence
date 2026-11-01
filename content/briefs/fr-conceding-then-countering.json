@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-conceding-then-countering",
+  "lang": "fr",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Concéder pour mieux contre-argumenter",
+  "objective": {
+    "en": "Acknowledge what is right in the opponent’s argument before putting forward your own, with « Je vous accorde que… », « C’est vrai, sauf que… » and « Admettons, mais… ».",
+    "fr": "Reconnaître ce qu’il y a de juste dans l’argument adverse avant d’opposer le sien, avec « Je vous accorde que… », « C’est vrai, sauf que… » et « Admettons, mais… ».",
+    "de": "Anerkennen, was am Argument des Gegenübers stimmt, bevor man das eigene vorbringt: « Je vous accorde que… », « C’est vrai, sauf que… », « Admettons, mais… »."
+  },
+  "estimatedMinutes": 15,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:54:45.308Z",
+    "inputHashes": { "outline": "0b7c44b4fcec107e0899a6c829dce519ef5bf4bb68004cd9445d85fa34011c4c" }
+  },
+  "kind": "functions",
+  "theme": "language",
+  "situation": {
+    "en": "Two people debate whether apps or classes are the better way to learn a language, and each concedes a point before replying.",
+    "fr": "Deux personnes débattent pour savoir si les applications ou les cours sont la meilleure façon d’apprendre une langue, et chacune concède un point avant de répondre.",
+    "de": "Zwei Personen debattieren, ob Apps oder Kurse besser zum Sprachenlernen sind, und jede räumt einen Punkt ein, bevor sie antwortet."
+  },
+  "coverageNotes": {
+    "en": "Three core concession formulas (Je vous accorde que, C’est vrai, sauf que, Admettons, mais) plus two ways to acknowledge a point (Vous n’avez pas tort, Sur ce point, vous avez raison). Each is followed by a counter-argument introduced with mais or sauf que.",
+    "fr": "Trois formules centrales de concession (Je vous accorde que, C’est vrai, sauf que, Admettons, mais) et deux façons de reconnaître un point (Vous n’avez pas tort, Sur ce point, vous avez raison). Chacune est suivie d’un contre-argument introduit par mais ou sauf que.",
+    "de": "Drei zentrale Konzessionsformeln (Je vous accorde que, C’est vrai, sauf que, Admettons, mais) und zwei Arten, einen Punkt anzuerkennen (Vous n’avez pas tort, Sur ce point, vous avez raison). Auf jede folgt ein Gegenargument mit mais oder sauf que."
+  },
+  "prerequisites": [],
+  "roles": [
+    {
+      "id": "lambert",
+      "label": "Mme Lambert",
+      "translation": { "en": "Mrs Lambert", "de": "Frau Lambert" }
+    },
+    {
+      "id": "girard",
+      "label": "M. Girard",
+      "translation": { "en": "Mr Girard", "de": "Herr Girard" }
+    }
+  ],
+  "expressions": [
+    {
+      "id": "je-vous-accorde",
+      "text": "Je vous accorde que",
+      "openEnd": true,
+      "translations": { "en": ["I grant you that"], "de": ["Ich gebe Ihnen recht, dass"] },
+      "explanation": {
+        "en": "Formal concession of a fact (vous), usually followed by mais and your own argument.",
+        "fr": "Concession formelle d’un fait (vous), généralement suivie de mais et de votre propre argument.",
+        "de": "Förmliches Zugeständnis einer Tatsache (vous), meist gefolgt von mais und dem eigenen Argument."
+      },
+      "example": {
+        "text": "Je vous accorde que les applications sont pratiques, mais elles ne remplacent pas un professeur.",
+        "translation": {
+          "en": "I grant you that apps are practical, but they do not replace a teacher.",
+          "de": "Ich gebe Ihnen recht, dass Apps praktisch sind, aber sie ersetzen keinen Lehrer."
+        }
+      }
+    },
+    {
+      "id": "cest-vrai-sauf-que",
+      "text": "C’est vrai, sauf que",
+      "openEnd": true,
+      "translations": { "en": ["That’s true, except that"], "de": ["Das stimmt, nur dass"] },
+      "explanation": {
+        "en": "Agrees, then immediately introduces the exception or limit with sauf que.",
+        "fr": "Approuve, puis introduit aussitôt l’exception ou la limite avec sauf que.",
+        "de": "Stimmt zu und nennt sofort mit sauf que die Ausnahme oder Grenze."
+      },
+      "example": {
+        "text": "C’est vrai, sauf que sans pratique orale, on ne progresse pas.",
+        "translation": {
+          "en": "That’s true, except that without speaking practice you do not make progress.",
+          "de": "Das stimmt, nur macht man ohne mündliche Praxis keine Fortschritte."
+        }
+      }
+    },
+    {
+      "id": "admettons-mais",
+      "text": "Admettons, mais",
+      "openEnd": true,
+      "translations": { "en": ["Let’s grant that, but"], "de": ["Nehmen wir an, aber"] },
+      "explanation": {
+        "en": "Accepts a point for the sake of argument, with some distance, before objecting.",
+        "fr": "Accepte un point pour la discussion, avec un peu de distance, avant de s’y opposer.",
+        "de": "Lässt einen Punkt für die Diskussion gelten, mit etwas Abstand, bevor man widerspricht."
+      },
+      "example": {
+        "text": "Admettons, mais ce n’est pas une raison pour abandonner les cours.",
+        "translation": {
+          "en": "Let’s grant that, but it is no reason to give up classes.",
+          "de": "Nehmen wir an, aber das ist kein Grund, den Unterricht aufzugeben."
+        }
+      }
+    },
+    {
+      "id": "vous-navez-pas-tort",
+      "text": "Vous n’avez pas tort",
+      "openEnd": false,
+      "translations": { "en": ["You’re not wrong"], "de": ["Sie haben nicht unrecht"] },
+      "explanation": {
+        "en": "A measured way to agree (litotes), softer than « vous avez raison », and often followed by mais.",
+        "fr": "Une façon mesurée d’approuver (litote), plus douce que « vous avez raison », souvent suivie de mais.",
+        "de": "Eine abgemilderte Zustimmung (Litotes), sanfter als « vous avez raison », oft von mais gefolgt."
+      },
+      "example": {
+        "text": "Vous n’avez pas tort, mais il faut aussi tenir compte du prix.",
+        "translation": {
+          "en": "You’re not wrong, but the price must also be taken into account.",
+          "de": "Sie haben nicht unrecht, aber man muss auch den Preis berücksichtigen."
+        }
+      }
+    },
+    {
+      "id": "sur-ce-point",
+      "text": "Sur ce point, vous avez raison",
+      "openEnd": false,
+      "translations": {
+        "en": ["On this point, you are right"],
+        "de": ["In diesem Punkt haben Sie recht"]
+      },
+      "explanation": {
+        "en": "Limits the agreement to one point, which leaves room to disagree on the rest.",
+        "fr": "Limite l’accord à un seul point, ce qui laisse la place au désaccord sur le reste.",
+        "de": "Beschränkt die Zustimmung auf einen Punkt und lässt so Raum für Widerspruch beim Rest."
+      },
+      "example": {
+        "text": "Sur ce point, vous avez raison : c’est moins cher.",
+        "translation": {
+          "en": "On this point you are right: it is cheaper.",
+          "de": "In diesem Punkt haben Sie recht: Es ist günstiger."
+        }
+      }
+    }
+  ],
+  "words": [],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

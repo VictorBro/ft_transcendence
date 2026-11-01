@@ -1,0 +1,235 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-avoir-beau",
+  "lang": "fr",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "J'ai beau chercher…",
+  "objective": {
+    "en": "Express a useless effort with avoir beau + infinitive in several tenses, and state the opposite result: j'ai beau chercher, je ne trouve pas.",
+    "fr": "Exprimer un effort inutile avec avoir beau + infinitif, à plusieurs temps, et en indiquer le résultat contraire : j'ai beau chercher, je ne trouve pas.",
+    "de": "Mit avoir beau + Infinitiv eine vergebliche Anstrengung in mehreren Zeiten ausdrücken und das gegenteilige Ergebnis nennen: j'ai beau chercher, je ne trouve pas."
+  },
+  "estimatedMinutes": 18,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:55:14.158Z",
+    "inputHashes": { "outline": "d0eb2af2926cbc73780c15b09242977ea1dd63612009e217e1fdfd06f6815084" }
+  },
+  "kind": "grammar",
+  "topic": "verb_usage",
+  "scopeBoundaries": {
+    "en": "Covers avoir beau + infinitive in the present, passé composé, imparfait and future, with the opposite result in the main clause. Excludes bien que, quoique and même si, taught in other lessons.",
+    "fr": "Couvre avoir beau + infinitif au présent, au passé composé, à l'imparfait et au futur, avec le résultat contraire dans la principale. Exclut bien que, quoique et même si, vus dans d'autres leçons.",
+    "de": "Behandelt avoir beau + Infinitiv im Präsens, Passé composé, Imparfait und Futur, mit dem gegenteiligen Ergebnis im Hauptsatz. Ausgeschlossen sind bien que, quoique und même si, die in anderen Lektionen behandelt werden."
+  },
+  "prerequisites": [
+    {
+      "en": "Conjugation of avoir in the present, passé composé, imparfait and futur simple",
+      "fr": "Conjugaison d'avoir au présent, au passé composé, à l'imparfait et au futur simple",
+      "de": "Konjugation von avoir im Präsens, Passé composé, Imparfait und Futur simple"
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-structure",
+      "summary": {
+        "en": "avoir beau + infinitive: avoir agrees with the subject, beau is invariable, the verb stays in the infinitive.",
+        "fr": "avoir beau + infinitif : avoir s'accorde avec le sujet, beau est invariable, le verbe reste à l'infinitif.",
+        "de": "avoir beau + Infinitiv: avoir richtet sich nach dem Subjekt, beau ist unveränderlich, das Verb bleibt im Infinitiv."
+      }
+    },
+    {
+      "id": "r-opposition",
+      "summary": {
+        "en": "The main clause states the opposite result, without donc or car; mais is not needed.",
+        "fr": "La principale exprime le résultat contraire, sans donc ni car ; mais n'est pas nécessaire.",
+        "de": "Der Hauptsatz nennt das gegenteilige Ergebnis, ohne donc oder car; mais ist nicht nötig."
+      }
+    },
+    {
+      "id": "r-tenses",
+      "summary": {
+        "en": "The tense is marked on avoir only: il a eu beau, elle avait beau, tu auras beau.",
+        "fr": "Le temps se marque sur avoir seulement : il a eu beau, elle avait beau, tu auras beau.",
+        "de": "Die Zeit wird nur an avoir markiert: il a eu beau, elle avait beau, tu auras beau."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-form",
+      "title": {
+        "en": "Form and meaning of avoir beau",
+        "fr": "Forme et sens de avoir beau",
+        "de": "Form und Bedeutung von avoir beau"
+      },
+      "ruleIds": ["r-structure", "r-opposition"],
+      "explanationPlan": {
+        "en": "Explain that avoir beau + infinitive expresses a useless effort. Show the present forms for all persons, the invariable beau, and the opposite result in the main clause without mais.",
+        "fr": "Expliquer qu'avoir beau + infinitif exprime un effort inutile. Montrer les formes du présent à toutes les personnes, beau invariable, et le résultat contraire dans la principale sans mais.",
+        "de": "Erklären, dass avoir beau + Infinitiv eine vergebliche Anstrengung ausdrückt. Die Präsensformen aller Personen, das unveränderliche beau und das gegenteilige Ergebnis im Hauptsatz ohne mais zeigen."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "J'ai beau chercher, je ne trouve pas.",
+          "translation": {
+            "en": "However much I search, I can't find it.",
+            "de": "Ich kann suchen, so viel ich will, ich finde es nicht."
+          }
+        },
+        {
+          "text": "Elle a beau être jeune, elle dirige très bien l'équipe.",
+          "translation": {
+            "en": "Young as she is, she leads the team very well.",
+            "de": "Sie mag jung sein, sie leitet das Team sehr gut."
+          }
+        },
+        {
+          "text": "Il a beau pleuvoir, nous partons en randonnée.",
+          "translation": {
+            "en": "It may rain as much as it likes, we are going hiking.",
+            "de": "Es kann regnen, so viel es will, wir gehen wandern."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not make beau agree: say elles ont beau, never elles ont belles.",
+          "fr": "N'accordez pas beau : on dit elles ont beau, jamais elles ont belles.",
+          "de": "Gleiche beau nicht an: Man sagt elles ont beau, nie elles ont belles."
+        },
+        {
+          "en": "Do not add donc or car between the two clauses: the second one contradicts the first.",
+          "fr": "N'ajoutez pas donc ni car entre les deux propositions : la seconde contredit la première.",
+          "de": "Setze kein donc oder car zwischen die beiden Sätze: Der zweite widerspricht dem ersten."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-f-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["r-structure", "r-opposition"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-f-typing",
+          "type": "grammar_pronoun_form_typing",
+          "itemCount": 2,
+          "ruleIds": ["r-structure"],
+          "estimatedDurationS": 120
+        },
+        {
+          "id": "ex-f-order",
+          "type": "grammar_word_order",
+          "itemCount": 4,
+          "ruleIds": ["r-structure", "r-opposition"],
+          "estimatedDurationS": 100
+        }
+      ]
+    },
+    {
+      "id": "block-tense",
+      "title": {
+        "en": "Avoir beau in different tenses",
+        "fr": "Avoir beau à différents temps",
+        "de": "Avoir beau in verschiedenen Zeiten"
+      },
+      "ruleIds": ["r-tenses", "r-opposition"],
+      "explanationPlan": {
+        "en": "Show that only avoir carries the tense: present, passé composé (a eu beau), imparfait (avait beau) and future (aura beau). Keep the same tense in both clauses and avoid donc and car.",
+        "fr": "Montrer que seul avoir porte le temps : présent, passé composé (a eu beau), imparfait (avait beau) et futur (aura beau). Garder le même temps dans les deux propositions et éviter donc et car.",
+        "de": "Zeigen, dass nur avoir die Zeit trägt: Präsens, Passé composé (a eu beau), Imparfait (avait beau) und Futur (aura beau). In beiden Sätzen dieselbe Zeit verwenden und donc und car vermeiden."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "Il a eu beau insister, elle a refusé.",
+          "translation": {
+            "en": "He insisted as much as he liked, she refused.",
+            "de": "Er konnte noch so sehr darauf bestehen, sie lehnte ab."
+          }
+        },
+        {
+          "text": "Elle avait beau protester, personne ne l'écoutait.",
+          "translation": {
+            "en": "However much she protested, nobody listened to her.",
+            "de": "Sie protestierte, so viel sie wollte, niemand hörte ihr zu."
+          }
+        },
+        {
+          "text": "Tu auras beau pleurer, tu ne l'obtiendras pas.",
+          "translation": {
+            "en": "You can cry all you like, you won't get it.",
+            "de": "Du kannst noch so viel weinen, du bekommst es nicht."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "In the passé composé, avoir takes the participle eu: il a eu beau, not il a beau eu.",
+          "fr": "Au passé composé, avoir prend le participe eu : il a eu beau, et non il a beau eu.",
+          "de": "Im Passé composé steht das Partizip eu: il a eu beau, nicht il a beau eu."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-t-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 3,
+          "ruleIds": ["r-tenses", "r-opposition"],
+          "estimatedDurationS": 45
+        },
+        {
+          "id": "ex-t-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["r-tenses", "r-opposition"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-t-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["r-tenses", "r-opposition"],
+          "estimatedDurationS": 75
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-forms",
+        "type": "grammar_pronoun_form_typing",
+        "itemCount": 1,
+        "ruleIds": ["r-structure"],
+        "estimatedDurationS": 75,
+        "timeLimitS": 120
+      },
+      {
+        "pageId": "exam-gap",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["r-tenses", "r-opposition"],
+        "estimatedDurationS": 80,
+        "timeLimitS": 140
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["r-structure", "r-opposition"],
+        "estimatedDurationS": 90,
+        "timeLimitS": 150
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

@@ -1,0 +1,233 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-independent-subjunctive",
+  "lang": "fr",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Le subjonctif en proposition indépendante",
+  "objective": {
+    "en": "Recognise and use the subjunctive on its own: wishes, third-person orders, hypotheses and frozen formulas such as Advienne que pourra.",
+    "fr": "Reconnaître et employer le subjonctif seul : souhait, ordre à la troisième personne, hypothèse et formules figées comme Advienne que pourra.",
+    "de": "Den Subjonctif allein erkennen und verwenden: Wunsch, Befehl in der dritten Person, Annahme und feste Formeln wie Advienne que pourra."
+  },
+  "estimatedMinutes": 17,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:59:50.913Z",
+    "inputHashes": { "outline": "bb0b982bd89d47fae3047951ddc8f8a66bb8d878fd0d7e142101c8c4d8172b53" }
+  },
+  "kind": "grammar",
+  "topic": "verb_usage",
+  "scopeBoundaries": {
+    "en": "Covers the subjunctive in independent clauses: wish, third-person order, hypothesis or alternative, frozen formulas. Excludes the subjunctive in subordinate clauses and the formation of every tense.",
+    "fr": "Couvre le subjonctif en proposition indépendante : souhait, ordre à la 3e personne, hypothèse ou alternative, formules figées. Exclut le subjonctif en subordonnée et la formation de tous les temps.",
+    "de": "Behandelt den Subjonctif im Hauptsatz: Wunsch, Befehl in der 3. Person, Annahme oder Alternative, feste Formeln. Ausgeschlossen sind der Subjonctif im Nebensatz und die Bildung aller Zeiten."
+  },
+  "prerequisites": [
+    {
+      "en": "The present subjunctive of common verbs (être, avoir, aller, faire, venir, vouloir, pouvoir) and the subjunctive after bien que.",
+      "fr": "Le subjonctif présent des verbes usuels (être, avoir, aller, faire, venir, vouloir, pouvoir) et le subjonctif après bien que.",
+      "de": "Der Subjonctif Présent häufiger Verben (être, avoir, aller, faire, venir, vouloir, pouvoir) und der Subjonctif nach bien que."
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-souhait",
+      "summary": {
+        "en": "The subjunctive alone expresses a wish: Vive la mariée ! Que Dieu vous garde ! Puissiez-vous réussir !",
+        "fr": "Le subjonctif seul exprime un souhait : Vive la mariée ! Que Dieu vous garde ! Puissiez-vous réussir !",
+        "de": "Der Subjonctif allein drückt einen Wunsch aus: Vive la mariée ! Que Dieu vous garde ! Puissiez-vous réussir !"
+      }
+    },
+    {
+      "id": "rule-ordre",
+      "summary": {
+        "en": "Que + subjunctive gives an order or permission to a third person, in place of the missing imperative: Qu'il entre !",
+        "fr": "Que + subjonctif exprime un ordre ou une permission à la 3e personne, à la place de l'impératif absent : Qu'il entre !",
+        "de": "Que + Subjonctif drückt Befehl oder Erlaubnis in der 3. Person aus und ersetzt den fehlenden Imperativ: Qu'il entre !"
+      }
+    },
+    {
+      "id": "rule-hypothese",
+      "summary": {
+        "en": "Soit introduces a given or hypothesis; que + subjunctive opens an alternative or concession: Soit un triangle ABC. Qu'il pleuve ou qu'il vente…",
+        "fr": "Soit introduit une donnée ou une hypothèse ; que + subjonctif ouvre une alternative ou une concession : Soit un triangle ABC. Qu'il pleuve ou qu'il vente…",
+        "de": "Soit leitet eine Vorgabe oder Annahme ein; que + Subjonctif eröffnet eine Alternative oder Einräumung: Soit un triangle ABC. Qu'il pleuve ou qu'il vente…"
+      }
+    },
+    {
+      "id": "rule-formules",
+      "summary": {
+        "en": "Frozen formulas keep the subjunctive: Advienne que pourra, Vaille que vaille, Grand bien vous fasse, Ainsi soit-il, Qu'à cela ne tienne, Fût-ce…",
+        "fr": "Les formules figées gardent le subjonctif : Advienne que pourra, Vaille que vaille, Grand bien vous fasse, Ainsi soit-il, Qu'à cela ne tienne, Fût-ce…",
+        "de": "Feste Formeln behalten den Subjonctif: Advienne que pourra, Vaille que vaille, Grand bien vous fasse, Ainsi soit-il, Qu'à cela ne tienne, Fût-ce…"
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-souhait-ordre",
+      "title": {
+        "en": "Wish and order: Vive… ! Qu'il… !",
+        "fr": "Souhait et ordre : Vive… ! Qu'il… !",
+        "de": "Wunsch und Befehl: Vive… ! Qu'il… !"
+      },
+      "ruleIds": ["rule-souhait", "rule-ordre"],
+      "explanationPlan": {
+        "en": "Show that the subjunctive can stand alone in an independent clause. Wish: Vive la mariée, Que Dieu vous garde, Puissiez-vous réussir (inversion). Order or permission in the 3rd person: Qu'il entre, Qu'ils fassent silence, replacing the missing imperative.",
+        "fr": "Montrer que le subjonctif peut être seul en proposition indépendante. Souhait : Vive la mariée, Que Dieu vous garde, Puissiez-vous réussir (inversion). Ordre ou permission à la 3e personne : Qu'il entre, Qu'ils fassent silence, à la place de l'impératif absent.",
+        "de": "Zeigen, dass der Subjonctif allein im Hauptsatz stehen kann. Wunsch: Vive la mariée, Que Dieu vous garde, Puissiez-vous réussir (Inversion). Befehl oder Erlaubnis in der 3. Person: Qu'il entre, Qu'ils fassent silence, als Ersatz für den fehlenden Imperativ."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "Vive la mariée !",
+          "translation": { "en": "Long live the bride!", "de": "Es lebe die Braut!" }
+        },
+        {
+          "text": "Que Dieu vous garde !",
+          "translation": { "en": "May God keep you!", "de": "Möge Gott Sie behüten!" }
+        },
+        {
+          "text": "Qu'il entre !",
+          "translation": { "en": "Let him come in!", "de": "Er soll hereinkommen!" }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not use the indicative after a wish or order with que: Qu'il entre, not Qu'il entrera.",
+          "fr": "N'employez pas l'indicatif après que dans un souhait ou un ordre : Qu'il entre, et non Qu'il entrera.",
+          "de": "Verwende nach que in Wunsch oder Befehl nicht den Indikativ: Qu'il entre, nicht Qu'il entrera."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-s-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-souhait", "rule-ordre"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-s-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-souhait", "rule-ordre"],
+          "estimatedDurationS": 72
+        },
+        {
+          "id": "ex-s-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-souhait", "rule-ordre"],
+          "estimatedDurationS": 75
+        },
+        {
+          "id": "ex-s-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["rule-souhait", "rule-ordre"],
+          "estimatedDurationS": 75
+        }
+      ]
+    },
+    {
+      "id": "block-hypothese",
+      "title": {
+        "en": "Hypothesis and frozen formulas: Soit… Advienne que pourra",
+        "fr": "Hypothèse et formules figées : Soit… Advienne que pourra",
+        "de": "Annahme und feste Formeln: Soit… Advienne que pourra"
+      },
+      "ruleIds": ["rule-hypothese", "rule-formules"],
+      "explanationPlan": {
+        "en": "Present soit for a given or hypothesis (Soit un triangle ABC), que + subjunctive for an alternative (Qu'il pleuve ou qu'il vente), and the frozen formulas: Advienne que pourra, Vaille que vaille, Grand bien vous fasse, Ainsi soit-il, Qu'à cela ne tienne, and literary Fût-ce. Learn them as blocks.",
+        "fr": "Présenter soit pour une donnée ou une hypothèse (Soit un triangle ABC), que + subjonctif pour une alternative (Qu'il pleuve ou qu'il vente), et les formules figées : Advienne que pourra, Vaille que vaille, Grand bien vous fasse, Ainsi soit-il, Qu'à cela ne tienne, et le littéraire Fût-ce. Les apprendre en bloc.",
+        "de": "Soit für Vorgabe oder Annahme (Soit un triangle ABC), que + Subjonctif für eine Alternative (Qu'il pleuve ou qu'il vente) und die festen Formeln: Advienne que pourra, Vaille que vaille, Grand bien vous fasse, Ainsi soit-il, Qu'à cela ne tienne und das literarische Fût-ce. Als Blöcke lernen."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "Soit un triangle ABC.",
+          "translation": {
+            "en": "Let there be a triangle ABC.",
+            "de": "Gegeben sei ein Dreieck ABC."
+          }
+        },
+        {
+          "text": "Qu'il pleuve ou qu'il vente, nous partirons.",
+          "translation": {
+            "en": "Rain or wind, we will leave.",
+            "de": "Ob es regnet oder stürmt, wir fahren los."
+          }
+        },
+        {
+          "text": "Advienne que pourra !",
+          "translation": { "en": "Come what may!", "de": "Komme, was wolle!" }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Frozen formulas are not rebuilt freely: say Vaille que vaille, not Vaudra que vaudra.",
+          "fr": "On ne reconstruit pas librement les formules figées : on dit Vaille que vaille, et non Vaudra que vaudra.",
+          "de": "Feste Formeln bildet man nicht frei neu: Es heißt Vaille que vaille, nicht Vaudra que vaudra."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-h-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-hypothese", "rule-formules"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-h-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-hypothese", "rule-formules"],
+          "estimatedDurationS": 72
+        },
+        {
+          "id": "ex-h-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-hypothese", "rule-formules"],
+          "estimatedDurationS": 75
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-souhait-ordre",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-souhait", "rule-ordre"],
+        "estimatedDurationS": 80,
+        "timeLimitS": 120
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-souhait", "rule-ordre"],
+        "estimatedDurationS": 90,
+        "timeLimitS": 150
+      },
+      {
+        "pageId": "exam-hypothese-formules",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-hypothese", "rule-formules"],
+        "estimatedDurationS": 80,
+        "timeLimitS": 120
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

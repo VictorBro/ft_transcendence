@@ -1,0 +1,1272 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-elevated-comparisons",
+  "lang": "fr",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Plus bête que méchant, tant s'en faut",
+  "objective": {
+    "en": "Handle the comparisons of formal French: plus bête que méchant, tant s'en faut, rien de moins que, ni plus ni moins, on ne peut plus.",
+    "fr": "Manier les comparaisons de la langue soutenue : plus bête que méchant, tant s'en faut, rien de moins que, ni plus ni moins, on ne peut plus.",
+    "de": "Die Vergleiche der gehobenen Sprache beherrschen: plus bête que méchant, tant s'en faut, rien de moins que, ni plus ni moins, on ne peut plus."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:00:36.558Z",
+    "inputHashes": {
+      "outline": "4fe11a91e45bdb204a2d8fce9826f1440624b6ea4f2ea86d4826712199f82c8c",
+      "brief": "741014be1bc76a7bf7533b9108cbc62ec7a57df43100b2150a3e22861483e353"
+    }
+  },
+  "kind": "grammar",
+  "topic": "comparison_and_quantity",
+  "steps": [
+    {
+      "id": "block-comparer-explanation",
+      "role": "explanation",
+      "blockId": "block-comparer",
+      "label": {
+        "en": "More this than that: plus … que, tant s'en faut",
+        "fr": "Plus l'un que l'autre : plus … que, tant s'en faut",
+        "de": "Mehr das eine als das andere: plus … que, tant s'en faut"
+      },
+      "pages": [
+        {
+          "pageId": "block-comparer-explanation",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the explanation and the examples.",
+            "fr": "Lisez l’explication et les exemples.",
+            "de": "Lies die Erklärung und die Beispiele."
+          },
+          "items": [
+            {
+              "type": "grammar_explanation",
+              "itemId": "block-comparer-explanation",
+              "ruleIds": ["r-plus-que", "r-tant-s-en-faut"],
+              "heading": {
+                "en": "Weighing two qualities, and far from it",
+                "fr": "Peser deux qualités, et bien au contraire",
+                "de": "Zwei Eigenschaften abwägen, und ganz im Gegenteil"
+              },
+              "text": {
+                "en": "When you hesitate between two qualities of the same person, you keep the more accurate one with `plus … que`: `Il est plus bête que méchant.` You are not comparing two people, you **correct** a judgment; the second term is introduced by que, never by `de`.\n\nWith `moins … que` the principle is the same: `Elle est moins timide que réservée.`\n\n- `tant s'en faut`: not at all, quite the opposite: `Le problème est résolu ? Tant s'en faut.`\n- `peu s'en faut`: almost: `Il a fini, ou peu s'en faut.`\n- `il s'en faut de beaucoup que` + subjunctive: we are very far from it: `Il s'en faut de beaucoup qu'elle soit satisfaite.`",
+                "fr": "Quand on hésite entre deux qualités d'une même personne, on garde la plus juste avec `plus … que` : `Il est plus bête que méchant.` On ne compare pas deux personnes, on **rectifie** un jugement ; le second terme est introduit par que, jamais par `de`.\n\nAvec `moins … que`, le principe est le même : `Elle est moins timide que réservée.`\n\n- `tant s'en faut` : pas du tout, bien au contraire : `Le problème est résolu ? Tant s'en faut.`\n- `peu s'en faut` : presque : `Il a fini, ou peu s'en faut.`\n- `il s'en faut de beaucoup que` + subjonctif : on est très loin du compte : `Il s'en faut de beaucoup qu'elle soit satisfaite.`",
+                "de": "Schwankst du zwischen zwei Eigenschaften derselben Person, behältst du mit `plus … que` die treffendere: `Il est plus bête que méchant.` Man vergleicht nicht zwei Personen, man **korrigiert** ein Urteil; der zweite Teil wird mit que eingeleitet, nie mit `de`.\n\nMit `moins … que` gilt dasselbe Prinzip: `Elle est moins timide que réservée.`\n\n- `tant s'en faut`: ganz und gar nicht, ganz im Gegenteil: `Le problème est résolu ? Tant s'en faut.`\n- `peu s'en faut`: beinahe: `Il a fini, ou peu s'en faut.`\n- `il s'en faut de beaucoup que` + Subjonctif: davon ist man weit entfernt: `Il s'en faut de beaucoup qu'elle soit satisfaite.`"
+              },
+              "formTable": [
+                {
+                  "subject": "plus … que",
+                  "form": "retient la qualité la plus juste",
+                  "example": "Il est plus bête que méchant."
+                },
+                {
+                  "subject": "tant s'en faut",
+                  "form": "bien au contraire",
+                  "example": "Le problème est résolu ? Tant s'en faut."
+                },
+                {
+                  "subject": "peu s'en faut",
+                  "form": "presque",
+                  "example": "Il a fini, ou peu s'en faut."
+                }
+              ],
+              "examples": [
+                {
+                  "text": "Il est plus bête que méchant.",
+                  "translation": {
+                    "en": "He is more stupid than malicious.",
+                    "de": "Er ist eher dumm als böse."
+                  }
+                },
+                {
+                  "text": "Elle est moins timide que réservée.",
+                  "translation": {
+                    "en": "She is less shy than reserved.",
+                    "de": "Sie ist weniger schüchtern als zurückhaltend."
+                  }
+                },
+                {
+                  "text": "Le problème est résolu ? Tant s'en faut.",
+                  "translation": {
+                    "en": "The problem is solved? Far from it.",
+                    "de": "Das Problem ist gelöst? Weit gefehlt."
+                  }
+                },
+                {
+                  "text": "Il a fini, ou peu s'en faut.",
+                  "translation": {
+                    "en": "He has finished, or very nearly.",
+                    "de": "Er ist fertig, oder es fehlt nicht viel."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-b1-choice",
+      "role": "exercise",
+      "blockId": "block-comparer",
+      "label": {
+        "en": "Multiple-choice gaps",
+        "fr": "Phrases à trous à choix multiple",
+        "de": "Lücken mit Auswahl"
+      },
+      "pages": [
+        {
+          "pageId": "ex-b1-choice-1",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-b1-choice-1",
+              "before": "Cet homme est plus maladroit",
+              "after": "malveillant.",
+              "choices": [
+                { "choiceId": "c-1", "text": "que" },
+                { "choiceId": "c-2", "text": "de" },
+                { "choiceId": "c-3", "text": "à" },
+                { "choiceId": "c-4", "text": "comme" }
+              ],
+              "answerChoiceId": "c-1",
+              "hint": null,
+              "ruleIds": ["r-plus-que"],
+              "answerExplanation": {
+                "en": "To weigh two qualities of one person, use plus … que, never de.",
+                "fr": "Pour peser deux qualités d'une même personne, on emploie plus … que, jamais de.",
+                "de": "Um zwei Eigenschaften derselben Person abzuwägen, braucht man plus … que, nie de."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-b1-choice-2",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-b1-choice-2",
+              "before": "Ce n'est pas de la haine : il est",
+              "after": "indifférent qu'hostile.",
+              "choices": [
+                { "choiceId": "c-1", "text": "plus" },
+                { "choiceId": "c-2", "text": "tant" },
+                { "choiceId": "c-3", "text": "si" },
+                { "choiceId": "c-4", "text": "très" }
+              ],
+              "answerChoiceId": "c-1",
+              "hint": null,
+              "ruleIds": ["r-plus-que"],
+              "answerExplanation": {
+                "en": "Plus … que corrects the judgment: indifferent rather than hostile.",
+                "fr": "Plus … que rectifie le jugement : indifférent plutôt qu'hostile.",
+                "de": "Plus … que korrigiert das Urteil: eher gleichgültig als feindselig."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-b1-choice-3",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-b1-choice-3",
+              "before": "Vous croyez la crise terminée ?",
+              "after": "s'en faut.",
+              "choices": [
+                { "choiceId": "c-1", "text": "Tant" },
+                { "choiceId": "c-2", "text": "Très" },
+                { "choiceId": "c-3", "text": "Trop" },
+                { "choiceId": "c-4", "text": "Tout" }
+              ],
+              "answerChoiceId": "c-1",
+              "hint": null,
+              "ruleIds": ["r-tant-s-en-faut"],
+              "answerExplanation": {
+                "en": "Tant s'en faut means far from it: the crisis is not over.",
+                "fr": "Tant s'en faut signifie bien au contraire : la crise n'est pas terminée.",
+                "de": "Tant s'en faut heißt ganz im Gegenteil: Die Krise ist nicht vorbei."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-b1-choice-4",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-b1-choice-4",
+              "before": "Il n'a pas encore fini son roman, mais",
+              "after": "s'en faut.",
+              "choices": [
+                { "choiceId": "c-1", "text": "peu" },
+                { "choiceId": "c-2", "text": "tant" },
+                { "choiceId": "c-3", "text": "très" },
+                { "choiceId": "c-4", "text": "rien" }
+              ],
+              "answerChoiceId": "c-1",
+              "hint": { "en": "almost", "fr": "presque", "de": "beinahe" },
+              "ruleIds": ["r-tant-s-en-faut"],
+              "answerExplanation": {
+                "en": "Peu s'en faut means almost: the novel is nearly finished.",
+                "fr": "Peu s'en faut signifie presque : le roman est presque fini.",
+                "de": "Peu s'en faut heißt beinahe: Der Roman ist fast fertig."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-b1-typing",
+      "role": "exercise",
+      "blockId": "block-comparer",
+      "label": {
+        "en": "Typed gaps",
+        "fr": "Phrases à trous à écrire",
+        "de": "Lücken zum Schreiben"
+      },
+      "pages": [
+        {
+          "pageId": "ex-b1-typing-1",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-b1-typing-1",
+              "before": "Elle est plus agacée",
+              "after": "furieuse.",
+              "accepted": { "answers": ["que"] },
+              "hint": {
+                "en": "two qualities of the same person",
+                "fr": "deux qualités d'une même personne",
+                "de": "zwei Eigenschaften derselben Person"
+              },
+              "ruleIds": ["r-plus-que"],
+              "answerExplanation": {
+                "en": "Plus agacée que furieuse: the second quality is introduced by que.",
+                "fr": "Plus agacée que furieuse : la seconde qualité est introduite par que.",
+                "de": "Plus agacée que furieuse: Die zweite Eigenschaft wird mit que eingeleitet."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-b1-typing-2",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-b1-typing-2",
+              "before": "A-t-il tout compris ? Hélas,",
+              "after": "s'en faut.",
+              "accepted": { "answers": ["tant"] },
+              "hint": { "en": "far from it", "fr": "bien au contraire", "de": "ganz im Gegenteil" },
+              "ruleIds": ["r-tant-s-en-faut"],
+              "answerExplanation": {
+                "en": "Tant s'en faut answers the question negatively: far from it.",
+                "fr": "Tant s'en faut répond négativement à la question : bien au contraire.",
+                "de": "Tant s'en faut beantwortet die Frage verneinend: ganz im Gegenteil."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-b1-typing-3",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-b1-typing-3",
+              "before": "Il a presque atteint la perfection ;",
+              "after": "s'en faut.",
+              "accepted": { "answers": ["peu"] },
+              "hint": { "en": "almost", "fr": "presque", "de": "beinahe" },
+              "ruleIds": ["r-tant-s-en-faut"],
+              "answerExplanation": {
+                "en": "Peu s'en faut means almost.",
+                "fr": "Peu s'en faut signifie presque.",
+                "de": "Peu s'en faut heißt beinahe."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-b1-typing-4",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-b1-typing-4",
+              "before": "Il s'en faut de",
+              "after": "que le travail soit terminé.",
+              "accepted": { "answers": ["beaucoup"] },
+              "hint": null,
+              "ruleIds": ["r-tant-s-en-faut"],
+              "answerExplanation": {
+                "en": "Il s'en faut de beaucoup que + subjunctive: we are very far from the goal.",
+                "fr": "Il s'en faut de beaucoup que + subjonctif : on est très loin du but.",
+                "de": "Il s'en faut de beaucoup que + Subjonctif: Man ist weit vom Ziel entfernt."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-b1-spot",
+      "role": "exercise",
+      "blockId": "block-comparer",
+      "label": { "en": "Error spotting", "fr": "Repérer l’erreur", "de": "Fehler finden" },
+      "pages": [
+        {
+          "pageId": "ex-b1-spot-1",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Find the wrong word and correct it.",
+            "fr": "Trouvez le mot faux et corrigez-le.",
+            "de": "Finde das falsche Wort und korrigiere es."
+          },
+          "items": [
+            {
+              "type": "grammar_error_spotter",
+              "itemId": "ex-b1-spot-1",
+              "tokens": [
+                { "tokenId": "t1", "text": "Ce" },
+                { "tokenId": "t2", "text": "garçon" },
+                { "tokenId": "t3", "text": "est" },
+                { "tokenId": "t4", "text": "plus" },
+                { "tokenId": "t5", "text": "étourdi" },
+                { "tokenId": "t6", "text": "de" },
+                { "tokenId": "t7", "text": "méchant" },
+                { "tokenId": "t8", "text": "." }
+              ],
+              "faultyTokenId": "t6",
+              "correction": {
+                "mode": "select",
+                "accepted": { "answers": ["que"] },
+                "choices": ["que", "qu'", "comme"]
+              },
+              "ruleIds": ["r-plus-que"],
+              "answerExplanation": {
+                "en": "Between two qualities you use que, not de.",
+                "fr": "Entre deux qualités, on emploie que et non de.",
+                "de": "Zwischen zwei Eigenschaften steht que, nicht de."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-b1-spot-2",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Find the wrong word and correct it.",
+            "fr": "Trouvez le mot faux et corrigez-le.",
+            "de": "Finde das falsche Wort und korrigiere es."
+          },
+          "items": [
+            {
+              "type": "grammar_error_spotter",
+              "itemId": "ex-b1-spot-2",
+              "tokens": [
+                { "tokenId": "t1", "text": "Le" },
+                { "tokenId": "t2", "text": "projet" },
+                { "tokenId": "t3", "text": "est" },
+                { "tokenId": "t4", "text": "achevé" },
+                { "tokenId": "t5", "text": "?" },
+                { "tokenId": "t6", "text": "Tant" },
+                { "tokenId": "t7", "text": "s'en" },
+                { "tokenId": "t8", "text": "fait" },
+                { "tokenId": "t9", "text": "." }
+              ],
+              "faultyTokenId": "t8",
+              "correction": { "mode": "type", "accepted": { "answers": ["faut"] }, "choices": [] },
+              "ruleIds": ["r-tant-s-en-faut"],
+              "answerExplanation": {
+                "en": "The expression comes from the verb falloir: tant s'en faut.",
+                "fr": "L'expression vient du verbe falloir : tant s'en faut.",
+                "de": "Der Ausdruck stammt vom Verb falloir: tant s'en faut."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-b1-spot-3",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Find the wrong word and correct it.",
+            "fr": "Trouvez le mot faux et corrigez-le.",
+            "de": "Finde das falsche Wort und korrigiere es."
+          },
+          "items": [
+            {
+              "type": "grammar_error_spotter",
+              "itemId": "ex-b1-spot-3",
+              "tokens": [
+                { "tokenId": "t1", "text": "Elles" },
+                { "tokenId": "t2", "text": "sont" },
+                { "tokenId": "t3", "text": "plus" },
+                { "tokenId": "t4", "text": "fatiguées" },
+                { "tokenId": "t5", "text": "que" },
+                { "tokenId": "t6", "text": "malade" },
+                { "tokenId": "t7", "text": "." }
+              ],
+              "faultyTokenId": "t6",
+              "correction": {
+                "mode": "type",
+                "accepted": { "answers": ["malades"] },
+                "choices": []
+              },
+              "ruleIds": ["r-plus-que"],
+              "answerExplanation": {
+                "en": "Both qualities agree with the plural subject: malades.",
+                "fr": "Les deux qualités s'accordent avec le sujet pluriel : malades.",
+                "de": "Beide Eigenschaften richten sich nach dem Plural-Subjekt: malades."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-b1-spot-4",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Find the wrong word and correct it.",
+            "fr": "Trouvez le mot faux et corrigez-le.",
+            "de": "Finde das falsche Wort und korrigiere es."
+          },
+          "items": [
+            {
+              "type": "grammar_error_spotter",
+              "itemId": "ex-b1-spot-4",
+              "tokens": [
+                { "tokenId": "t1", "text": "Il" },
+                { "tokenId": "t2", "text": "s'en" },
+                { "tokenId": "t3", "text": "faut" },
+                { "tokenId": "t4", "text": "de" },
+                { "tokenId": "t5", "text": "beaucoup" },
+                { "tokenId": "t6", "text": "qu'elle" },
+                { "tokenId": "t7", "text": "est" },
+                { "tokenId": "t8", "text": "satisfaite" },
+                { "tokenId": "t9", "text": "." }
+              ],
+              "faultyTokenId": "t7",
+              "correction": {
+                "mode": "select",
+                "accepted": { "answers": ["soit"] },
+                "choices": ["soit", "est", "sera"]
+              },
+              "ruleIds": ["r-tant-s-en-faut"],
+              "answerExplanation": {
+                "en": "After il s'en faut de beaucoup que, the verb is in the subjunctive: soit.",
+                "fr": "Après il s'en faut de beaucoup que, le verbe est au subjonctif : soit.",
+                "de": "Nach il s'en faut de beaucoup que steht der Subjonctif: soit."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "block-renforcer-explanation",
+      "role": "explanation",
+      "blockId": "block-renforcer",
+      "label": {
+        "en": "Emphasis: rien de moins que, ni plus ni moins, on ne peut plus",
+        "fr": "Renforcer : rien de moins que, ni plus ni moins, on ne peut plus",
+        "de": "Verstärken: rien de moins que, ni plus ni moins, on ne peut plus"
+      },
+      "pages": [
+        {
+          "pageId": "block-renforcer-explanation",
+          "estimatedDurationS": 140,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the explanation and the examples.",
+            "fr": "Lisez l’explication et les exemples.",
+            "de": "Lies die Erklärung und die Beispiele."
+          },
+          "items": [
+            {
+              "type": "grammar_explanation",
+              "itemId": "block-renforcer-explanation",
+              "ruleIds": ["r-rien-de-moins", "r-on-ne-peut-plus"],
+              "heading": {
+                "en": "Three ways to strengthen a statement",
+                "fr": "Trois manières de renforcer une affirmation",
+                "de": "Drei Arten, eine Aussage zu verstärken"
+              },
+              "text": {
+                "en": "Three formal expressions strengthen a statement, each in its own way.\n\n- `rien de moins que`: precisely that, and it is no small thing: `Il ne demande rien de moins que ma démission.`\n- `ni plus ni moins`: exactly, taking nothing away and adding nothing: `C'est de la jalousie, ni plus ni moins.`\n- `on ne peut plus` + adjective or adverb: to the highest degree: `Le contrat est on ne peut plus clair.`\n\nCareful: `on ne peut plus` negates nothing and takes no `pas`. The adjective that follows agrees with the subject.",
+                "fr": "Trois tournures de la langue soutenue renforcent une affirmation, chacune à sa manière.\n\n- `rien de moins que` : justement cela, et ce n'est pas peu : `Il ne demande rien de moins que ma démission.`\n- `ni plus ni moins` : exactement, sans rien retrancher ni ajouter : `C'est de la jalousie, ni plus ni moins.`\n- `on ne peut plus` + adjectif ou adverbe : au plus haut degré : `Le contrat est on ne peut plus clair.`\n\nAttention : `on ne peut plus` ne nie rien et ne prend pas de `pas`. L'adjectif qui suit s'accorde avec le sujet.",
+                "de": "Drei Wendungen der gehobenen Sprache verstärken eine Aussage, jede auf ihre Weise.\n\n- `rien de moins que`: genau das, und das ist nicht wenig: `Il ne demande rien de moins que ma démission.`\n- `ni plus ni moins`: genau so, ohne etwas wegzunehmen oder hinzuzufügen: `C'est de la jalousie, ni plus ni moins.`\n- `on ne peut plus` + Adjektiv oder Adverb: im höchsten Grad: `Le contrat est on ne peut plus clair.`\n\nAchtung: `on ne peut plus` verneint nichts und steht ohne `pas`. Das folgende Adjektiv richtet sich nach dem Subjekt."
+              },
+              "formTable": [
+                {
+                  "subject": "rien de moins que",
+                  "form": "justement cela, et ce n'est pas peu",
+                  "example": "Il ne demande rien de moins que ma démission."
+                },
+                {
+                  "subject": "ni plus ni moins",
+                  "form": "exactement",
+                  "example": "C'est de la jalousie, ni plus ni moins."
+                },
+                {
+                  "subject": "on ne peut plus",
+                  "form": "au plus haut degré",
+                  "example": "Le contrat est on ne peut plus clair."
+                }
+              ],
+              "examples": [
+                {
+                  "text": "Il ne demande rien de moins que ma démission.",
+                  "translation": {
+                    "en": "He is asking for nothing less than my resignation.",
+                    "de": "Er verlangt nichts Geringeres als meinen Rücktritt."
+                  }
+                },
+                {
+                  "text": "C'est de la jalousie, ni plus ni moins.",
+                  "translation": {
+                    "en": "It is jealousy, no more and no less.",
+                    "de": "Das ist Eifersucht, nicht mehr und nicht weniger."
+                  }
+                },
+                {
+                  "text": "Le contrat est on ne peut plus clair.",
+                  "translation": {
+                    "en": "The contract could not be clearer.",
+                    "de": "Der Vertrag könnte nicht klarer sein."
+                  }
+                },
+                {
+                  "text": "Elles ont été on ne peut plus aimables.",
+                  "translation": {
+                    "en": "They could not have been kinder.",
+                    "de": "Sie waren überaus freundlich."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-b2-choice",
+      "role": "exercise",
+      "blockId": "block-renforcer",
+      "label": {
+        "en": "Multiple-choice gaps",
+        "fr": "Phrases à trous à choix multiple",
+        "de": "Lücken mit Auswahl"
+      },
+      "pages": [
+        {
+          "pageId": "ex-b2-choice-1",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-b2-choice-1",
+              "before": "Ce n'est pas une simple erreur : c'est",
+              "after": "qu'une faute grave.",
+              "choices": [
+                { "choiceId": "c-1", "text": "rien de moins" },
+                { "choiceId": "c-2", "text": "rien de moindre" },
+                { "choiceId": "c-3", "text": "pas de moins" },
+                { "choiceId": "c-4", "text": "rien du moins" }
+              ],
+              "answerChoiceId": "c-1",
+              "hint": null,
+              "ruleIds": ["r-rien-de-moins"],
+              "answerExplanation": {
+                "en": "Rien de moins que stresses the scale: nothing less than a serious fault.",
+                "fr": "Rien de moins que insiste sur l'ampleur : pas moins qu'une faute grave.",
+                "de": "Rien de moins que betont das Ausmaß: nicht weniger als ein schwerer Fehler."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-b2-choice-2",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-b2-choice-2",
+              "before": "Il l'a traité de menteur,",
+              "after": ".",
+              "choices": [
+                { "choiceId": "c-1", "text": "ni plus ni moins" },
+                { "choiceId": "c-2", "text": "ni plus ni mieux" },
+                { "choiceId": "c-3", "text": "ni moins ni plus" },
+                { "choiceId": "c-4", "text": "non plus ni moins" }
+              ],
+              "answerChoiceId": "c-1",
+              "hint": null,
+              "ruleIds": ["r-rien-de-moins"],
+              "answerExplanation": {
+                "en": "Ni plus ni moins means exactly that, no more and no less.",
+                "fr": "Ni plus ni moins signifie exactement cela, rien de plus, rien de moins.",
+                "de": "Ni plus ni moins heißt genau das, nicht mehr und nicht weniger."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-b2-choice-3",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-b2-choice-3",
+              "before": "Son discours fut",
+              "after": "ennuyeux.",
+              "choices": [
+                { "choiceId": "c-1", "text": "on ne peut plus" },
+                { "choiceId": "c-2", "text": "on ne peut pas" },
+                { "choiceId": "c-3", "text": "on ne plus peut" },
+                { "choiceId": "c-4", "text": "on peut ne plus" }
+              ],
+              "answerChoiceId": "c-1",
+              "hint": null,
+              "ruleIds": ["r-on-ne-peut-plus"],
+              "answerExplanation": {
+                "en": "On ne peut plus + adjective expresses the highest degree, without pas.",
+                "fr": "On ne peut plus + adjectif exprime le plus haut degré, sans pas.",
+                "de": "On ne peut plus + Adjektiv drückt den höchsten Grad aus, ohne pas."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-b2-choice-4",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-b2-choice-4",
+              "before": "Les consignes me parurent",
+              "after": "précises.",
+              "choices": [
+                { "choiceId": "c-1", "text": "on ne peut plus" },
+                { "choiceId": "c-2", "text": "on ne peut pas plus" },
+                { "choiceId": "c-3", "text": "on ne peut jamais" },
+                { "choiceId": "c-4", "text": "on peut ne plus" }
+              ],
+              "answerChoiceId": "c-1",
+              "hint": null,
+              "ruleIds": ["r-on-ne-peut-plus"],
+              "answerExplanation": {
+                "en": "On ne peut plus comes before the adjective, which agrees with consignes.",
+                "fr": "On ne peut plus précède l'adjectif, qui s'accorde avec consignes.",
+                "de": "On ne peut plus steht vor dem Adjektiv, das sich nach consignes richtet."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-b2-order",
+      "role": "exercise",
+      "blockId": "block-renforcer",
+      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
+      "pages": [
+        {
+          "pageId": "ex-b2-order-1",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-b2-order-1",
+              "tokens": [
+                { "tokenId": "t3", "text": "était" },
+                { "tokenId": "t1", "text": "Le" },
+                { "tokenId": "t7", "text": "plus" },
+                { "tokenId": "t9", "text": "." },
+                { "tokenId": "t4", "text": "on" },
+                { "tokenId": "t2", "text": "plan" },
+                { "tokenId": "t8", "text": "raisonnable" },
+                { "tokenId": "t6", "text": "peut" },
+                { "tokenId": "t5", "text": "ne" }
+              ],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9"]],
+              "ruleIds": ["r-on-ne-peut-plus"],
+              "answerExplanation": {
+                "en": "On ne peut plus stays together and stands before the adjective.",
+                "fr": "On ne peut plus reste groupé et précède l'adjectif.",
+                "de": "On ne peut plus bleibt zusammen und steht vor dem Adjektiv."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-b2-order-2",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-b2-order-2",
+              "tokens": [
+                { "tokenId": "t4", "text": "rien" },
+                { "tokenId": "t9", "text": "présidence" },
+                { "tokenId": "t1", "text": "Il" },
+                { "tokenId": "t6", "text": "moins" },
+                { "tokenId": "t10", "text": "." },
+                { "tokenId": "t2", "text": "ne" },
+                { "tokenId": "t7", "text": "que" },
+                { "tokenId": "t3", "text": "souhaite" },
+                { "tokenId": "t5", "text": "de" },
+                { "tokenId": "t8", "text": "la" }
+              ],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9", "t10"]],
+              "ruleIds": ["r-rien-de-moins"],
+              "answerExplanation": {
+                "en": "Rien de moins que introduces what is claimed: nothing less than the presidency.",
+                "fr": "Rien de moins que introduit ce qui est visé : pas moins que la présidence.",
+                "de": "Rien de moins que leitet das Angestrebte ein: nichts Geringeres als das Präsidentenamt."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-b2-order-3",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-b2-order-3",
+              "tokens": [
+                { "tokenId": "t7", "text": "plus" },
+                { "tokenId": "t10", "text": "." },
+                { "tokenId": "t3", "text": "un" },
+                { "tokenId": "t8", "text": "ni" },
+                { "tokenId": "t1", "text": "Ce" },
+                { "tokenId": "t9", "text": "moins" },
+                { "tokenId": "t5", "text": "," },
+                { "tokenId": "t2", "text": "fut" },
+                { "tokenId": "t6", "text": "ni" },
+                { "tokenId": "t4", "text": "désastre" }
+              ],
+              "acceptedOrders": [
+                ["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9", "t10"],
+                ["t1", "t2", "t3", "t4", "t5", "t8", "t7", "t6", "t9", "t10"]
+              ],
+              "ruleIds": ["r-rien-de-moins"],
+              "answerExplanation": {
+                "en": "Ni plus ni moins closes the sentence after a comma: exactly a disaster.",
+                "fr": "Ni plus ni moins ferme la phrase après une virgule : exactement un désastre.",
+                "de": "Ni plus ni moins schließt den Satz nach einem Komma ab: genau ein Desaster."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-b2-order-4",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-b2-order-4",
+              "tokens": [
+                { "tokenId": "t6", "text": "ne" },
+                { "tokenId": "t3", "text": "sont" },
+                { "tokenId": "t9", "text": "courtois" },
+                { "tokenId": "t1", "text": "Ils" },
+                { "tokenId": "t8", "text": "plus" },
+                { "tokenId": "t4", "text": "montrés" },
+                { "tokenId": "t10", "text": "." },
+                { "tokenId": "t2", "text": "se" },
+                { "tokenId": "t5", "text": "on" },
+                { "tokenId": "t7", "text": "peut" }
+              ],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9", "t10"]],
+              "ruleIds": ["r-on-ne-peut-plus"],
+              "answerExplanation": {
+                "en": "The adjective courtois comes after on ne peut plus and agrees with ils.",
+                "fr": "L'adjectif courtois vient après on ne peut plus et s'accorde avec ils.",
+                "de": "Das Adjektiv courtois steht nach on ne peut plus und richtet sich nach ils."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-b2-typing",
+      "role": "exercise",
+      "blockId": "block-renforcer",
+      "label": {
+        "en": "Typed gaps",
+        "fr": "Phrases à trous à écrire",
+        "de": "Lücken zum Schreiben"
+      },
+      "pages": [
+        {
+          "pageId": "ex-b2-typing-1",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-b2-typing-1",
+              "before": "Je n'attends de lui",
+              "after": "que des excuses publiques.",
+              "accepted": { "answers": ["rien de moins"] },
+              "hint": null,
+              "ruleIds": ["r-rien-de-moins"],
+              "answerExplanation": {
+                "en": "Rien de moins que: nothing less than public apologies.",
+                "fr": "Rien de moins que : pas moins que des excuses publiques.",
+                "de": "Rien de moins que: nichts Geringeres als öffentliche Entschuldigungen."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-b2-typing-2",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-b2-typing-2",
+              "before": "Elle a trahi son ami,",
+              "after": ".",
+              "accepted": { "answers": ["ni plus ni moins"] },
+              "hint": null,
+              "ruleIds": ["r-rien-de-moins"],
+              "answerExplanation": {
+                "en": "Ni plus ni moins: she betrayed him, exactly that.",
+                "fr": "Ni plus ni moins : elle l'a trahi, exactement cela.",
+                "de": "Ni plus ni moins: Sie hat ihn verraten, genau das."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-b2-typing-3",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-b2-typing-3",
+              "before": "La salle était",
+              "after": "silencieuse.",
+              "accepted": { "answers": ["on ne peut plus"] },
+              "hint": {
+                "en": "to the highest degree",
+                "fr": "au plus haut degré",
+                "de": "im höchsten Grad"
+              },
+              "ruleIds": ["r-on-ne-peut-plus"],
+              "answerExplanation": {
+                "en": "On ne peut plus silencieuse: as silent as can be, with no pas.",
+                "fr": "On ne peut plus silencieuse : le plus silencieuse possible, sans pas.",
+                "de": "On ne peut plus silencieuse: so still wie nur möglich, ohne pas."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-b2-typing-4",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-b2-typing-4",
+              "before": "Ces voisins sont",
+              "after": "discrets.",
+              "accepted": { "answers": ["on ne peut plus"] },
+              "hint": null,
+              "ruleIds": ["r-on-ne-peut-plus"],
+              "answerExplanation": {
+                "en": "On ne peut plus discrets: as discreet as can be.",
+                "fr": "On ne peut plus discrets : aussi discrets que possible.",
+                "de": "On ne peut plus discrets: so diskret wie nur möglich."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "feedback",
+      "role": "feedback",
+      "blockId": null,
+      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "pages": [
+        {
+          "pageId": "feedback",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Continue to the final exam.",
+            "fr": "Passez à l’examen final.",
+            "de": "Weiter zur Abschlussprüfung."
+          },
+          "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "role": "exam",
+      "blockId": null,
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam-gaps-1",
+          "estimatedDurationS": 100,
+          "timeLimitS": 160,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-gaps-1-1",
+              "before": "Ce critique est plus pédant",
+              "after": "savant.",
+              "accepted": { "answers": ["que"] },
+              "hint": null,
+              "ruleIds": ["r-plus-que"],
+              "answerExplanation": {
+                "en": "Plus pédant que savant: the second quality is introduced by que.",
+                "fr": "Plus pédant que savant : la seconde qualité est introduite par que.",
+                "de": "Plus pédant que savant: Die zweite Eigenschaft wird mit que eingeleitet."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-gaps-1-2",
+              "before": "Ce n'est pas de la cupidité : elle est",
+              "after": "étourdie que cupide.",
+              "accepted": { "answers": ["plus"] },
+              "hint": null,
+              "ruleIds": ["r-plus-que"],
+              "answerExplanation": {
+                "en": "Plus … que corrects the judgment: absent-minded rather than greedy.",
+                "fr": "Plus … que rectifie le jugement : étourdie plutôt que cupide.",
+                "de": "Plus … que korrigiert das Urteil: eher zerstreut als geldgierig."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-gaps-1-3",
+              "before": "Se repent-il de son geste ? Oh,",
+              "after": "s'en faut : il en est fier.",
+              "accepted": { "answers": ["tant"] },
+              "hint": null,
+              "ruleIds": ["r-tant-s-en-faut"],
+              "answerExplanation": {
+                "en": "Tant s'en faut means far from it: he is proud, not sorry.",
+                "fr": "Tant s'en faut signifie bien au contraire : il est fier, pas repentant.",
+                "de": "Tant s'en faut heißt ganz im Gegenteil: Er ist stolz, nicht reuig."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-gaps-1-4",
+              "before": "Le candidat a presque obtenu la majorité ;",
+              "after": "s'en faut.",
+              "accepted": { "answers": ["peu"] },
+              "hint": null,
+              "ruleIds": ["r-tant-s-en-faut"],
+              "answerExplanation": {
+                "en": "Peu s'en faut means almost.",
+                "fr": "Peu s'en faut signifie presque.",
+                "de": "Peu s'en faut heißt beinahe."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-order",
+          "estimatedDurationS": 105,
+          "timeLimitS": 180,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "exam-order-1",
+              "tokens": [
+                { "tokenId": "t6", "text": "Tant" },
+                { "tokenId": "t2", "text": "colère" },
+                { "tokenId": "t9", "text": "." },
+                { "tokenId": "t4", "text": "apaisée" },
+                { "tokenId": "t1", "text": "Sa" },
+                { "tokenId": "t8", "text": "faut" },
+                { "tokenId": "t5", "text": "?" },
+                { "tokenId": "t3", "text": "est" },
+                { "tokenId": "t7", "text": "s'en" }
+              ],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9"]],
+              "ruleIds": ["r-tant-s-en-faut"],
+              "answerExplanation": {
+                "en": "Tant s'en faut answers the question: far from it.",
+                "fr": "Tant s'en faut répond à la question : bien au contraire.",
+                "de": "Tant s'en faut beantwortet die Frage: ganz im Gegenteil."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "exam-order-2",
+              "tokens": [
+                { "tokenId": "t7", "text": "que" },
+                { "tokenId": "t1", "text": "Elle" },
+                { "tokenId": "t9", "text": "vérité" },
+                { "tokenId": "t5", "text": "de" },
+                { "tokenId": "t3", "text": "réclame" },
+                { "tokenId": "t10", "text": "." },
+                { "tokenId": "t4", "text": "rien" },
+                { "tokenId": "t8", "text": "la" },
+                { "tokenId": "t2", "text": "ne" },
+                { "tokenId": "t6", "text": "moins" }
+              ],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9", "t10"]],
+              "ruleIds": ["r-rien-de-moins"],
+              "answerExplanation": {
+                "en": "Rien de moins que introduces what is demanded: nothing less than the truth.",
+                "fr": "Rien de moins que introduit ce qui est exigé : pas moins que la vérité.",
+                "de": "Rien de moins que leitet das Geforderte ein: nichts Geringeres als die Wahrheit."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "exam-order-3",
+              "tokens": [
+                { "tokenId": "t8", "text": "moins" },
+                { "tokenId": "t6", "text": "plus" },
+                { "tokenId": "t1", "text": "C'est" },
+                { "tokenId": "t7", "text": "ni" },
+                { "tokenId": "t9", "text": "." },
+                { "tokenId": "t3", "text": "trahison" },
+                { "tokenId": "t5", "text": "ni" },
+                { "tokenId": "t4", "text": "," },
+                { "tokenId": "t2", "text": "une" }
+              ],
+              "acceptedOrders": [
+                ["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9"],
+                ["t1", "t2", "t3", "t4", "t7", "t6", "t5", "t8", "t9"]
+              ],
+              "ruleIds": ["r-rien-de-moins"],
+              "answerExplanation": {
+                "en": "Ni plus ni moins closes the sentence after a comma: exactly a betrayal.",
+                "fr": "Ni plus ni moins ferme la phrase après une virgule : exactement une trahison.",
+                "de": "Ni plus ni moins schließt den Satz nach einem Komma ab: genau ein Verrat."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-gaps-2",
+          "estimatedDurationS": 100,
+          "timeLimitS": 160,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-gaps-2-1",
+              "before": "Ce qu'il m'offre, ce n'est",
+              "after": "que la direction de l'entreprise.",
+              "accepted": { "answers": ["rien de moins"] },
+              "hint": null,
+              "ruleIds": ["r-rien-de-moins"],
+              "answerExplanation": {
+                "en": "Rien de moins que stresses the scale of the offer.",
+                "fr": "Rien de moins que souligne l'ampleur de l'offre.",
+                "de": "Rien de moins que betont das Ausmaß des Angebots."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-gaps-2-2",
+              "before": "Il a menti,",
+              "after": ".",
+              "accepted": { "answers": ["ni plus ni moins"] },
+              "hint": null,
+              "ruleIds": ["r-rien-de-moins"],
+              "answerExplanation": {
+                "en": "Ni plus ni moins: he lied, exactly that.",
+                "fr": "Ni plus ni moins : il a menti, exactement cela.",
+                "de": "Ni plus ni moins: Er hat gelogen, genau das."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-gaps-2-3",
+              "before": "Cette explication est",
+              "after": "limpide.",
+              "accepted": { "answers": ["on ne peut plus"] },
+              "hint": null,
+              "ruleIds": ["r-on-ne-peut-plus"],
+              "answerExplanation": {
+                "en": "On ne peut plus limpide: as clear as can be, with no pas.",
+                "fr": "On ne peut plus limpide : aussi limpide que possible, sans pas.",
+                "de": "On ne peut plus limpide: so klar wie nur möglich, ohne pas."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-gaps-2-4",
+              "before": "Ils nous ont reçus",
+              "after": "chaleureusement.",
+              "accepted": { "answers": ["on ne peut plus"] },
+              "hint": null,
+              "ruleIds": ["r-on-ne-peut-plus"],
+              "answerExplanation": {
+                "en": "On ne peut plus also strengthens an adverb: as warmly as could be.",
+                "fr": "On ne peut plus renforce aussi un adverbe : le plus chaleureusement possible.",
+                "de": "On ne peut plus verstärkt auch ein Adverb: so herzlich wie nur möglich."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-interrupting-and-holding-the-floor",
+  "lang": "fr",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Interrompre et garder la parole",
+  "objective": {
+    "en": "Cut in politely during a lively discussion and keep the floor when someone interrupts you.",
+    "fr": "Couper la parole poliment dans une discussion animée et ne pas se laisser interrompre.",
+    "de": "In einer lebhaften Diskussion höflich ins Wort fallen und sich selbst nicht das Wort nehmen lassen."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:54:22.621Z",
+    "inputHashes": { "outline": "51ece53f1fa46fc5d67a114c1339cd0745f2431409b79205956ee0473211da5f" }
+  },
+  "kind": "functions",
+  "theme": "language",
+  "situation": {
+    "en": "Two colleagues, Marc and Léa, disagree in a team meeting and keep interrupting each other.",
+    "fr": "Deux collègues, Marc et Léa, ne sont pas d’accord en réunion et s’interrompent sans cesse.",
+    "de": "Zwei Kollegen, Marc und Léa, sind sich in einer Teamsitzung uneinig und unterbrechen sich ständig."
+  },
+  "coverageNotes": {
+    "en": "Cutting in politely (Excusez-moi, juste un mot; Puis-je ajouter quelque chose ?; Permettez-moi de…), keeping the floor (Je termine ma phrase; Laissez-moi finir) and resuming the thread (Revenons à ce que je disais).",
+    "fr": "Couper la parole poliment (Excusez-moi, juste un mot ; Puis-je ajouter quelque chose ? ; Permettez-moi de…), garder la parole (Je termine ma phrase ; Laissez-moi finir) et reprendre le fil (Revenons à ce que je disais).",
+    "de": "Höflich ins Wort fallen (Excusez-moi, juste un mot; Puis-je ajouter quelque chose ?; Permettez-moi de…), das Wort behalten (Je termine ma phrase; Laissez-moi finir) und den Faden wieder aufnehmen (Revenons à ce que je disais)."
+  },
+  "prerequisites": [],
+  "roles": [
+    { "id": "marc", "label": "Marc", "translation": { "en": "Marc", "de": "Marc" } },
+    { "id": "lea", "label": "Léa", "translation": { "en": "Léa", "de": "Léa" } }
+  ],
+  "expressions": [
+    {
+      "id": "excusez-moi",
+      "text": "Excusez-moi, juste un mot",
+      "openEnd": false,
+      "translations": { "en": ["Excuse me, just a word"], "de": ["Entschuldigung, nur ein Wort"] },
+      "explanation": {
+        "en": "Politely cuts in to place a short remark.",
+        "fr": "Pour couper la parole poliment et placer une courte remarque.",
+        "de": "Um höflich ins Wort zu fallen und kurz etwas einzuwerfen."
+      },
+      "example": {
+        "text": "Excusez-moi, juste un mot avant que vous concluiez.",
+        "translation": {
+          "en": "Excuse me, just a word before you conclude.",
+          "de": "Entschuldigung, nur ein Wort, bevor Sie schließen."
+        }
+      }
+    },
+    {
+      "id": "puis-je-ajouter",
+      "text": "Puis-je ajouter quelque chose ?",
+      "openEnd": false,
+      "translations": { "en": ["May I add something?"], "de": ["Darf ich etwas hinzufügen?"] },
+      "explanation": {
+        "en": "Asks permission before adding your point; more polite than interrupting.",
+        "fr": "Pour demander l’autorisation d’intervenir ; plus poli que d’interrompre.",
+        "de": "Um um Erlaubnis zu bitten, bevor man etwas ergänzt; höflicher als zu unterbrechen."
+      },
+      "example": {
+        "text": "Puis-je ajouter quelque chose sur ce point ?",
+        "translation": {
+          "en": "May I add something on this point?",
+          "de": "Darf ich dazu etwas hinzufügen?"
+        }
+      }
+    },
+    {
+      "id": "je-termine",
+      "text": "Je termine ma phrase",
+      "openEnd": false,
+      "translations": { "en": ["I’ll finish my sentence"], "de": ["Ich spreche den Satz zu Ende"] },
+      "explanation": {
+        "en": "Shows calmly that you are not finished and keeps the floor.",
+        "fr": "Pour montrer calmement qu’on n’a pas fini et garder la parole.",
+        "de": "Zeigt ruhig, dass man noch nicht fertig ist, und behält das Wort."
+      },
+      "example": {
+        "text": "Je termine ma phrase, et ensuite je vous écoute.",
+        "translation": {
+          "en": "I’ll finish my sentence, and then I’ll listen to you.",
+          "de": "Ich spreche den Satz zu Ende, dann höre ich Ihnen zu."
+        }
+      }
+    },
+    {
+      "id": "laissez-moi-finir",
+      "text": "Laissez-moi finir",
+      "openEnd": false,
+      "translations": { "en": ["Let me finish"], "de": ["Lassen Sie mich ausreden"] },
+      "explanation": {
+        "en": "Firmer: stops an interruption. Stays polite with s’il vous plaît or je vous en prie.",
+        "fr": "Plus ferme : arrête une interruption. Reste poli avec s’il vous plaît ou je vous en prie.",
+        "de": "Bestimmter: stoppt eine Unterbrechung. Bleibt höflich mit s’il vous plaît oder je vous en prie."
+      },
+      "example": {
+        "text": "Laissez-moi finir, je vous en prie.",
+        "translation": { "en": "Let me finish, please.", "de": "Lassen Sie mich bitte ausreden." }
+      }
+    },
+    {
+      "id": "permettez-moi",
+      "text": "Permettez-moi de",
+      "openEnd": true,
+      "translations": { "en": ["Allow me to"], "de": ["Erlauben Sie mir"] },
+      "explanation": {
+        "en": "Formal start of a sentence, followed by an infinitive (préciser, répondre…).",
+        "fr": "Début de phrase formel, suivi d’un infinitif (préciser, répondre…).",
+        "de": "Formeller Satzanfang, gefolgt von einem Infinitiv (préciser, répondre…)."
+      },
+      "example": {
+        "text": "Permettez-moi de revenir sur ce chiffre.",
+        "translation": {
+          "en": "Allow me to come back to this figure.",
+          "de": "Erlauben Sie mir, auf diese Zahl zurückzukommen."
+        }
+      }
+    },
+    {
+      "id": "revenons",
+      "text": "Revenons à ce que je disais",
+      "openEnd": false,
+      "translations": {
+        "en": ["Let’s get back to what I was saying"],
+        "de": ["Kommen wir zurück auf das, was ich sagte"]
+      },
+      "explanation": {
+        "en": "Takes back the thread after an interruption.",
+        "fr": "Pour reprendre le fil après une interruption.",
+        "de": "Um nach einer Unterbrechung den Faden wieder aufzunehmen."
+      },
+      "example": {
+        "text": "Revenons à ce que je disais : le délai est trop court.",
+        "translation": {
+          "en": "Let’s get back to what I was saying: the deadline is too short.",
+          "de": "Kommen wir zurück auf das, was ich sagte: Die Frist ist zu kurz."
+        }
+      }
+    }
+  ],
+  "words": [],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

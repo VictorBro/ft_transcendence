@@ -1,0 +1,234 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-already-never-not-yet",
+  "lang": "fr",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Déjà, jamais, pas encore",
+  "objective": {
+    "en": "Talk about your experiences in the passé composé with déjà, ne… jamais and pas encore: Tu es déjà allé à Paris ? Non, jamais.",
+    "fr": "Parler de ses expériences au passé composé avec déjà, ne… jamais et pas encore : Tu es déjà allé à Paris ? Non, jamais. Pas encore.",
+    "de": "Über eigene Erfahrungen im passé composé sprechen, mit déjà, ne… jamais und pas encore: Tu es déjà allé à Paris ? Non, jamais."
+  },
+  "estimatedMinutes": 13,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:36:14.748Z",
+    "inputHashes": { "outline": "f5793d99be4cb0e9abeaed1851d6ae0f8a7e4dd2d812d865e2d01d84663f949d" }
+  },
+  "kind": "grammar",
+  "topic": "adverbs",
+  "scopeBoundaries": {
+    "en": "Covers déjà, ne… jamais and ne… pas encore with the passé composé (avoir and être), in statements, questions and short answers. Excludes other adverbs and other tenses.",
+    "fr": "Couvre déjà, ne… jamais et ne… pas encore au passé composé (avoir et être), dans les phrases, les questions et les réponses courtes. Exclut les autres adverbes et les autres temps.",
+    "de": "Behandelt déjà, ne… jamais und ne… pas encore im passé composé (avoir und être) in Aussagen, Fragen und Kurzantworten. Ausgeschlossen sind andere Adverbien und andere Zeiten."
+  },
+  "prerequisites": [
+    {
+      "en": "The passé composé with avoir and être.",
+      "fr": "Le passé composé avec avoir et être.",
+      "de": "Das passé composé mit avoir und être."
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-deja",
+      "summary": {
+        "en": "Déjà goes between the auxiliary and the participle: J'ai déjà visité Paris.",
+        "fr": "Déjà se place entre l’auxiliaire et le participe : J'ai déjà visité Paris.",
+        "de": "Déjà steht zwischen Hilfsverb und Partizip: J'ai déjà visité Paris."
+      }
+    },
+    {
+      "id": "r-jamais",
+      "summary": {
+        "en": "Ne… jamais surrounds the auxiliary and means never: Je n'ai jamais vu la mer. Jamais can answer alone.",
+        "fr": "Ne… jamais entoure l’auxiliaire et veut dire « jamais » : Je n'ai jamais vu la mer. Jamais peut répondre seul.",
+        "de": "Ne… jamais steht um das Hilfsverb und heißt „nie“: Je n'ai jamais vu la mer. Jamais kann allein antworten."
+      }
+    },
+    {
+      "id": "r-pas-encore",
+      "summary": {
+        "en": "Ne… pas encore surrounds the auxiliary and means not yet: Je ne suis pas encore allé à Rome.",
+        "fr": "Ne… pas encore entoure l’auxiliaire et veut dire « pas encore » : Je ne suis pas encore allé à Rome.",
+        "de": "Ne… pas encore steht um das Hilfsverb und heißt „noch nicht“: Je ne suis pas encore allé à Rome."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "b1",
+      "title": {
+        "en": "Déjà and pas encore",
+        "fr": "Déjà et pas encore",
+        "de": "Déjà und pas encore"
+      },
+      "ruleIds": ["r-deja", "r-pas-encore"],
+      "explanationPlan": {
+        "en": "Explain that déjà goes between the auxiliary and the participle, in statements and in questions. Then show ne… pas encore around the auxiliary and the short answer Pas encore.",
+        "fr": "Expliquer que déjà se place entre l’auxiliaire et le participe, dans les phrases et les questions. Montrer ensuite ne… pas encore autour de l’auxiliaire et la réponse courte Pas encore.",
+        "de": "Erklären, dass déjà zwischen Hilfsverb und Partizip steht, in Aussagen und Fragen. Dann ne… pas encore um das Hilfsverb und die Kurzantwort Pas encore zeigen."
+      },
+      "explanationDurationS": 100,
+      "examples": [
+        {
+          "text": "J'ai déjà visité Paris.",
+          "translation": {
+            "en": "I have already visited Paris.",
+            "de": "Ich habe Paris schon besucht."
+          }
+        },
+        {
+          "text": "Tu es déjà allé à Paris ?",
+          "translation": {
+            "en": "Have you already been to Paris?",
+            "de": "Warst du schon in Paris?"
+          }
+        },
+        {
+          "text": "Je ne suis pas encore allé à Rome.",
+          "translation": {
+            "en": "I have not been to Rome yet.",
+            "de": "Ich war noch nicht in Rom."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not put déjà after the participle, and do not use déjà in a negative sentence with pas: use pas encore.",
+          "fr": "Ne placez pas déjà après le participe, et n’employez pas déjà avec pas : dites pas encore.",
+          "de": "Setze déjà nicht hinter das Partizip und benutze es nicht mit pas: sage pas encore."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "b1-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["r-deja", "r-pas-encore"],
+          "estimatedDurationS": 40
+        },
+        {
+          "id": "b1-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["r-deja", "r-pas-encore"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "b1-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["r-deja", "r-pas-encore"],
+          "estimatedDurationS": 60
+        }
+      ]
+    },
+    {
+      "id": "b2",
+      "title": {
+        "en": "Jamais, or pas encore?",
+        "fr": "Jamais ou pas encore ?",
+        "de": "Jamais oder pas encore?"
+      },
+      "ruleIds": ["r-jamais", "r-pas-encore"],
+      "explanationPlan": {
+        "en": "Teach ne… jamais around the auxiliary, and jamais as a short answer. Contrast it with pas encore: never in your life versus not yet, but maybe soon.",
+        "fr": "Enseigner ne… jamais autour de l’auxiliaire et jamais en réponse courte. Le comparer à pas encore : jamais dans la vie ou pas encore, mais peut-être bientôt.",
+        "de": "ne… jamais um das Hilfsverb und jamais als Kurzantwort vermitteln. Mit pas encore vergleichen: nie im Leben oder noch nicht, aber vielleicht bald."
+      },
+      "explanationDurationS": 100,
+      "examples": [
+        {
+          "text": "Je n'ai jamais vu la mer.",
+          "translation": {
+            "en": "I have never seen the sea.",
+            "de": "Ich habe noch nie das Meer gesehen."
+          }
+        },
+        {
+          "text": "Elle n'est jamais allée en Chine.",
+          "translation": {
+            "en": "She has never been to China.",
+            "de": "Sie war noch nie in China."
+          }
+        },
+        {
+          "text": "Je n'ai pas encore pris l'avion.",
+          "translation": { "en": "I have not flown yet.", "de": "Ich bin noch nicht geflogen." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not drop ne in writing, and do not combine pas with jamais.",
+          "fr": "N’oubliez pas ne à l’écrit et ne combinez pas pas avec jamais.",
+          "de": "Lass ne in der Schriftsprache nicht weg und kombiniere pas nicht mit jamais."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "b2-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["r-jamais", "r-pas-encore"],
+          "estimatedDurationS": 40
+        },
+        {
+          "id": "b2-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["r-jamais", "r-pas-encore"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "b2-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 2,
+          "ruleIds": ["r-jamais", "r-pas-encore"],
+          "estimatedDurationS": 50
+        },
+        {
+          "id": "b2-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["r-jamais", "r-pas-encore"],
+          "estimatedDurationS": 60
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-1",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["r-deja", "r-pas-encore"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      },
+      {
+        "pageId": "exam-2",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["r-jamais"],
+        "estimatedDurationS": 45,
+        "timeLimitS": 80
+      },
+      {
+        "pageId": "exam-3",
+        "type": "grammar_word_order",
+        "itemCount": 4,
+        "ruleIds": ["r-deja", "r-pas-encore", "r-jamais"],
+        "estimatedDurationS": 80,
+        "timeLimitS": 130
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}
