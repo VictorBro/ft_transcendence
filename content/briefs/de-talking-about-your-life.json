@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 2,
+  "id": "de-talking-about-your-life",
+  "lang": "de",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Vom eigenen Leben erzählen",
+  "objective": {
+    "en": "Tell others about key moments of your life and ask back: where you grew up, how long you have lived somewhere, what you used to be.",
+    "fr": "Raconter les étapes importantes de sa vie et poser la question en retour : où l’on a grandi, depuis quand on habite quelque part, ce qu’on était avant.",
+    "de": "Von wichtigen Stationen deines Lebens erzählen und nachfragen: wo du aufgewachsen bist, wie lange du wohnst, was du früher warst."
+  },
+  "estimatedMinutes": 15,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T20:22:22.779Z",
+    "inputHashes": { "outline": "d61c14b09b5c367e878f362bbefa4f8bbb722395bc7795023c1352a5b059dcd1" }
+  },
+  "kind": "functions",
+  "theme": "personal_identification",
+  "situation": {
+    "en": "Two colleagues, Jonas and Ayşe, get to know each other better at a work event.",
+    "fr": "Deux collègues, Jonas et Ayşe, font mieux connaissance lors d’un événement au travail.",
+    "de": "Zwei Kollegen, Jonas und Ayşe, lernen sich bei einer Firmenfeier besser kennen."
+  },
+  "coverageNotes": {
+    "en": "Asking and telling where one grew up (Wo bist du aufgewachsen? / Ich bin in Izmir aufgewachsen), saying how long one has lived somewhere (Ich wohne seit …), saying what one used to be (Früher war ich …) and handing the question back (Und du?).",
+    "fr": "Demander et dire où l’on a grandi (Wo bist du aufgewachsen? / Ich bin in Izmir aufgewachsen), dire depuis quand on habite quelque part (Ich wohne seit …), dire ce qu’on était avant (Früher war ich …) et renvoyer la question (Und du?).",
+    "de": "Fragen und sagen, wo man aufgewachsen ist (Wo bist du aufgewachsen? / Ich bin in Izmir aufgewachsen), sagen, seit wann man irgendwo wohnt (Ich wohne seit …), sagen, was man früher war (Früher war ich …), und die Frage zurückgeben (Und du?)."
+  },
+  "prerequisites": [],
+  "roles": [
+    { "id": "jonas", "label": "Jonas", "translation": { "en": "Jonas", "fr": "Jonas" } },
+    { "id": "ayse", "label": "Ayşe", "translation": { "en": "Ayşe", "fr": "Ayşe" } }
+  ],
+  "expressions": [
+    {
+      "id": "wo-aufgewachsen",
+      "text": "Wo bist du aufgewachsen?",
+      "openEnd": false,
+      "translations": { "en": ["Where did you grow up?"], "fr": ["Où as-tu grandi ?"] },
+      "explanation": {
+        "en": "Asks a friend where they spent their childhood (du). The verb is in the perfect: bist … aufgewachsen.",
+        "fr": "Demande à un ami où il a passé son enfance (du). Le verbe est au parfait : bist … aufgewachsen.",
+        "de": "Fragt Freunde, wo sie ihre Kindheit verbracht haben (du). Das Verb steht im Perfekt: bist … aufgewachsen."
+      },
+      "example": {
+        "text": "Hallo Tom! Wo bist du aufgewachsen?",
+        "translation": {
+          "en": "Hello Tom! Where did you grow up?",
+          "fr": "Salut Tom ! Où as-tu grandi ?"
+        }
+      }
+    },
+    {
+      "id": "aufgewachsen",
+      "text": "Ich bin in Izmir aufgewachsen",
+      "openEnd": false,
+      "translations": { "en": ["I grew up in Izmir."], "fr": ["J’ai grandi à Izmir."] },
+      "explanation": {
+        "en": "Tells where you spent your childhood. Aufwachsen forms the perfect with sein: ich bin aufgewachsen.",
+        "fr": "Dit où l’on a passé son enfance. Aufwachsen forme le parfait avec sein : ich bin aufgewachsen.",
+        "de": "Sagt, wo man seine Kindheit verbracht hat. Aufwachsen bildet das Perfekt mit sein: ich bin aufgewachsen."
+      },
+      "example": {
+        "text": "Ich bin in Izmir aufgewachsen, aber ich lebe jetzt in Kassel.",
+        "translation": {
+          "en": "I grew up in Izmir, but I now live in Kassel.",
+          "fr": "J’ai grandi à Izmir, mais je vis maintenant à Kassel."
+        }
+      }
+    },
+    {
+      "id": "wohne-seit",
+      "text": "Ich wohne seit",
+      "openEnd": true,
+      "translations": { "en": ["I have been living here for"], "fr": ["J’habite ici depuis"] },
+      "explanation": {
+        "en": "Seit with the present tense says how long something has lasted: Ich wohne seit zwei Jahren in Kassel.",
+        "fr": "Seit avec le présent dit depuis combien de temps quelque chose dure : Ich wohne seit zwei Jahren in Kassel.",
+        "de": "Seit mit dem Präsens sagt, wie lange etwas schon dauert: Ich wohne seit zwei Jahren in Kassel."
+      },
+      "example": {
+        "text": "Ich wohne seit zwei Jahren in Kassel.",
+        "translation": {
+          "en": "I have been living in Kassel for two years.",
+          "fr": "J’habite à Kassel depuis deux ans."
+        }
+      }
+    },
+    {
+      "id": "frueher",
+      "text": "Früher war ich",
+      "openEnd": true,
+      "translations": { "en": ["In the past I was"], "fr": ["Avant, j’étais"] },
+      "explanation": {
+        "en": "Früher introduces something that was true in the past but is not any more. War is the past of sein.",
+        "fr": "Früher introduit quelque chose qui était vrai avant mais ne l’est plus. War est le passé de sein.",
+        "de": "Früher leitet etwas ein, das in der Vergangenheit galt, aber nicht mehr gilt. War ist das Präteritum von sein."
+      },
+      "example": {
+        "text": "Früher war ich Lehrerin.",
+        "translation": { "en": "I used to be a teacher.", "fr": "Avant, j’étais enseignante." }
+      }
+    },
+    {
+      "id": "und-du",
+      "text": "Und du?",
+      "openEnd": false,
+      "translations": { "en": ["And you?"], "fr": ["Et toi ?"] },
+      "explanation": {
+        "en": "Hands the question back after you have answered. With adults you do not know, say Und Sie?",
+        "fr": "Renvoie la question après avoir répondu. Avec des adultes que l’on ne connaît pas, on dit Und Sie ?",
+        "de": "Gibt die Frage zurück, nachdem du geantwortet hast. Bei Erwachsenen, die du nicht kennst, sagst du Und Sie?"
+      },
+      "example": {
+        "text": "Ich wohne in Kassel. Und du?",
+        "translation": { "en": "I live in Kassel. And you?", "fr": "J’habite à Kassel. Et toi ?" }
+      }
+    }
+  ],
+  "words": [],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

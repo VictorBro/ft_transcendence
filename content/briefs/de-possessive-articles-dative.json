@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 2,
+  "id": "de-possessive-articles-dative",
+  "lang": "de",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Possessivartikel im Dativ",
+  "objective": {
+    "en": "Form possessive articles in the dative: mit meinem Bruder, bei unserer Oma, mit euren Kindern.",
+    "fr": "Former les adjectifs possessifs au datif : mit meinem Bruder, bei unserer Oma, mit euren Kindern.",
+    "de": "Possessivartikel im Dativ richtig bilden: mit meinem Bruder, bei unserer Oma, mit euren Kindern."
+  },
+  "estimatedMinutes": 17,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T20:22:35.403Z",
+    "inputHashes": { "outline": "8348670aae8efa875b2f18c4738826ec3d6d5eb59908efa21107153ac9b61943" }
+  },
+  "kind": "grammar",
+  "topic": "nouns_and_determiners",
+  "scopeBoundaries": {
+    "en": "Covers possessive articles in the dative singular and plural, the -n on plural nouns and eur- instead of euer-. Excludes the genitive, the accusative and adjective endings.",
+    "fr": "Couvre les adjectifs possessifs au datif singulier et pluriel, le -n du nom au pluriel et eur- au lieu de euer-. Exclut le génitif, l’accusatif et les terminaisons des adjectifs.",
+    "de": "Behandelt Possessivartikel im Dativ Singular und Plural, das -n am Nomen im Plural und eur- statt euer-. Ausgeschlossen sind Genitiv, Akkusativ und Adjektivendungen."
+  },
+  "prerequisites": [
+    {
+      "en": "Possessive articles in the nominative (mein, dein, sein, ihr, unser, euer)",
+      "fr": "Les adjectifs possessifs au nominatif (mein, dein, sein, ihr, unser, euer)",
+      "de": "Possessivartikel im Nominativ (mein, dein, sein, ihr, unser, euer)"
+    },
+    {
+      "en": "Prepositions with the dative: mit, bei, von, zu",
+      "fr": "Prépositions avec le datif : mit, bei, von, zu",
+      "de": "Präpositionen mit Dativ: mit, bei, von, zu"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-em",
+      "summary": {
+        "en": "Masculine and neuter nouns in the dative: -em (mit meinem Bruder, mit meinem Kind).",
+        "fr": "Masculin et neutre au datif : -em (mit meinem Bruder, mit meinem Kind).",
+        "de": "Maskuline und neutrale Nomen im Dativ: -em (mit meinem Bruder, mit meinem Kind)."
+      }
+    },
+    {
+      "id": "rule-er",
+      "summary": {
+        "en": "Feminine nouns in the dative: -er (bei unserer Oma).",
+        "fr": "Féminin au datif : -er (bei unserer Oma).",
+        "de": "Feminine Nomen im Dativ: -er (bei unserer Oma)."
+      }
+    },
+    {
+      "id": "rule-plural",
+      "summary": {
+        "en": "Dative plural: -en on the article and -n on the noun (mit meinen Freunden), unless the plural already ends in -n or -s.",
+        "fr": "Datif pluriel : -en sur l’article et -n sur le nom (mit meinen Freunden), sauf si le pluriel finit déjà par -n ou -s.",
+        "de": "Dativ Plural: -en am Artikel und -n am Nomen (mit meinen Freunden), außer der Plural endet schon auf -n oder -s."
+      }
+    },
+    {
+      "id": "rule-eur",
+      "summary": {
+        "en": "euer becomes eur- before an ending: eurem, eurer, euren.",
+        "fr": "euer devient eur- devant une terminaison : eurem, eurer, euren.",
+        "de": "euer wird vor einer Endung zu eur-: eurem, eurer, euren."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-singular",
+      "title": {
+        "en": "Singular: -em and -er",
+        "fr": "Singulier : -em et -er",
+        "de": "Singular: -em und -er"
+      },
+      "ruleIds": ["rule-em", "rule-er"],
+      "explanationPlan": {
+        "en": "Explain that mit, bei, von and zu take the dative. Show that the possessive article has the endings of ein: -em for masculine and neuter, -er for feminine. The stem depends on the owner.",
+        "fr": "Expliquer que mit, bei, von et zu demandent le datif. Montrer que l’adjectif possessif a les terminaisons de ein : -em au masculin et au neutre, -er au féminin. Le radical dépend du possesseur.",
+        "de": "Erklären, dass mit, bei, von und zu den Dativ verlangen. Zeigen, dass der Possessivartikel die Endungen von ein hat: -em bei maskulin und neutral, -er bei feminin. Der Stamm hängt vom Besitzer ab."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Ich fahre mit meinem Bruder.",
+          "translation": { "en": "I am going with my brother.", "fr": "Je vais avec mon frère." }
+        },
+        {
+          "text": "Du spielst mit deinem Kind.",
+          "translation": {
+            "en": "You are playing with your child.",
+            "fr": "Tu joues avec ton enfant."
+          }
+        },
+        {
+          "text": "Wir wohnen bei unserer Oma.",
+          "translation": {
+            "en": "We live with our grandma.",
+            "fr": "Nous habitons chez notre grand-mère."
+          }
+        },
+        {
+          "text": "Das ist ein Geschenk von meiner Mutter.",
+          "translation": {
+            "en": "That is a gift from my mother.",
+            "fr": "C’est un cadeau de ma mère."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not use the accusative form for masculine nouns: mit meinem Bruder, not mit meinen Bruder.",
+          "fr": "N’utilisez pas la forme de l’accusatif au masculin : mit meinem Bruder, pas mit meinen Bruder.",
+          "de": "Nimm bei maskulinen Nomen nicht die Akkusativform: mit meinem Bruder, nicht mit meinen Bruder."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-sg-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-em", "rule-er"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-sg-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-em", "rule-er"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-sg-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["rule-em", "rule-er"],
+          "estimatedDurationS": 75
+        }
+      ]
+    },
+    {
+      "id": "block-plural",
+      "title": {
+        "en": "Plural: -en, -n and eur-",
+        "fr": "Pluriel : -en, -n et eur-",
+        "de": "Plural: -en, -n und eur-"
+      },
+      "ruleIds": ["rule-plural", "rule-eur"],
+      "explanationPlan": {
+        "en": "Teach the dative plural: -en on every possessive article and -n on the noun, except after plurals in -n or -s. Then show that euer loses the e before the r: eurem, eurer, euren.",
+        "fr": "Enseigner le datif pluriel : -en sur chaque adjectif possessif et -n sur le nom, sauf après un pluriel en -n ou -s. Montrer ensuite que euer perd le e devant le r : eurem, eurer, euren.",
+        "de": "Den Dativ Plural vermitteln: -en an jedem Possessivartikel und -n am Nomen, außer bei Plural auf -n oder -s. Dann zeigen, dass euer das e vor dem r verliert: eurem, eurer, euren."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "Ich wohne bei meinen Eltern.",
+          "translation": { "en": "I live with my parents.", "fr": "J’habite chez mes parents." }
+        },
+        {
+          "text": "Wir spielen mit unseren Kindern.",
+          "translation": {
+            "en": "We are playing with our children.",
+            "fr": "Nous jouons avec nos enfants."
+          }
+        },
+        {
+          "text": "Wohnt ihr bei eurer Tante?",
+          "translation": {
+            "en": "Do you live with your aunt?",
+            "fr": "Vous habitez chez votre tante ?"
+          }
+        },
+        {
+          "text": "Wie geht es euren Eltern?",
+          "translation": { "en": "How are your parents?", "fr": "Comment vont vos parents ?" }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not forget the -n on the noun: mit meinen Freunden, not mit meinen Freunde.",
+          "fr": "N’oubliez pas le -n du nom : mit meinen Freunden, pas mit meinen Freunde.",
+          "de": "Vergiss das -n am Nomen nicht: mit meinen Freunden, nicht mit meinen Freunde."
+        },
+        {
+          "en": "euer keeps no second e before an ending: mit eurem Hund, not mit euerem Hund.",
+          "fr": "euer perd son deuxième e devant une terminaison : mit eurem Hund, pas mit euerem Hund.",
+          "de": "euer verliert vor einer Endung das e: mit eurem Hund, nicht mit euerem Hund."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-pl-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-plural", "rule-eur"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-pl-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-plural", "rule-eur"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-pl-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-plural", "rule-eur"],
+          "estimatedDurationS": 75
+        },
+        {
+          "id": "ex-pl-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 2,
+          "ruleIds": ["rule-plural", "rule-eur"],
+          "estimatedDurationS": 50
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-singular",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-em", "rule-er"],
+        "estimatedDurationS": 80,
+        "timeLimitS": 130
+      },
+      {
+        "pageId": "exam-plural",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-plural", "rule-eur"],
+        "estimatedDurationS": 80,
+        "timeLimitS": 130
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-em", "rule-er", "rule-plural"],
+        "estimatedDurationS": 75,
+        "timeLimitS": 120
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

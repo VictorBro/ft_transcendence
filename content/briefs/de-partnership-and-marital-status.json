@@ -1,0 +1,615 @@
+{
+  "schemaVersion": 2,
+  "id": "de-partnership-and-marital-status",
+  "lang": "de",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Partnerschaft und Familienstand",
+  "objective": {
+    "en": "Name partners, love, marriage and marital status with about twelve words and their articles.",
+    "fr": "Nommer partenaires, amour, mariage et état civil avec une douzaine de mots et leurs articles.",
+    "de": "Partnerschaft, Liebe, Heirat und Familienstand mit etwa zwölf Wörtern und ihren Artikeln benennen."
+  },
+  "estimatedMinutes": 20,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T20:20:28.387Z",
+    "inputHashes": { "outline": "d380f38e861b6c353ac4c400b184fa9f0787b840d18cccaa1531ba92fe59d9ca" }
+  },
+  "kind": "vocabulary",
+  "theme": "relations",
+  "coverageNotes": {
+    "en": "Twelve words about relationships: partner and love (partner, falling in love, wedding) and marriage and marital status (marriage, husband, wife, married, separated, divorced). Verheiratet is added to complete the set of statuses.",
+    "fr": "Douze mots sur la vie de couple : partenaire et amour (partenaire, tomber amoureux, mariage) et mariage et état civil (union, mari, épouse, marié, séparé, divorcé). Verheiratet complète la série des états civils.",
+    "de": "Zwölf Wörter zu Beziehungen: Partner und Liebe (Partner, sich verlieben, Hochzeit) sowie Ehe und Familienstand (Ehe, Ehemann, Ehefrau, verheiratet, getrennt, geschieden). Verheiratet ergänzt die Reihe der Familienstände."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words fit two groups of six and match the outline's intent of about twelve words.",
+    "fr": "Douze mots forment deux groupes de six et correspondent à l’intention du plan : environ douze mots.",
+    "de": "Zwölf Wörter ergeben zwei Gruppen zu je sechs und entsprechen dem Ziel der Gliederung von etwa zwölf Wörtern."
+  },
+  "difficultyBalance": {
+    "en": "Most words are core vocabulary at A2; the reflexive verb, Ehe and geschieden are more demanding.",
+    "fr": "La plupart des mots sont du vocabulaire de base A2 ; le verbe réfléchi, Ehe et geschieden sont plus exigeants.",
+    "de": "Die meisten Wörter sind A2-Grundwortschatz; das reflexive Verb, die Ehe und geschieden sind anspruchsvoller."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "liebe",
+      "label": {
+        "en": "Partner, love and wedding",
+        "fr": "Partenaire, amour et mariage",
+        "de": "Partner, Liebe und Hochzeit"
+      },
+      "targetIds": ["partner", "partnerin", "verlieben", "verliebt", "heiraten", "hochzeit"],
+      "introduction": {
+        "en": "These words are about **love and getting married**:\n\n- `der Partner` and `die Partnerin`: the person you live with\n- `sich verlieben`: to fall in love\n- `verliebt`: in love\n- `heiraten`: to get married\n- `die Hochzeit`: the wedding",
+        "fr": "Ces mots parlent de **l’amour et du mariage** :\n\n- `der Partner` et `die Partnerin` : la personne avec qui on vit\n- `sich verlieben` : tomber amoureux\n- `verliebt` : amoureux\n- `heiraten` : se marier\n- `die Hochzeit` : la cérémonie de mariage",
+        "de": "Diese Wörter handeln von **Liebe und Heirat**:\n\n- `der Partner` und `die Partnerin`: die Person, mit der man lebt\n- `sich verlieben`: Liebe beginnt\n- `verliebt`: man hat Gefühle für jemanden\n- `heiraten`: eine Ehe schließen\n- `die Hochzeit`: das Fest der Heirat"
+      }
+    },
+    {
+      "id": "ehe",
+      "label": {
+        "en": "Marriage and marital status",
+        "fr": "Mariage et état civil",
+        "de": "Ehe und Familienstand"
+      },
+      "targetIds": ["ehe", "ehemann", "ehefrau", "verheiratet", "getrennt", "geschieden"],
+      "introduction": {
+        "en": "These words describe **marriage and marital status**:\n\n- `die Ehe`: the marriage itself\n- `der Ehemann` and `die Ehefrau`: husband and wife\n- `verheiratet`: married\n- `getrennt`: living apart\n- `geschieden`: officially divorced",
+        "fr": "Ces mots décrivent **le mariage et l’état civil** :\n\n- `die Ehe` : le mariage comme union\n- `der Ehemann` et `die Ehefrau` : le mari et l’épouse\n- `verheiratet` : marié\n- `getrennt` : séparé\n- `geschieden` : officiellement divorcé",
+        "de": "Diese Wörter beschreiben **Ehe und Familienstand**:\n\n- `die Ehe`: die Verbindung von zwei Menschen\n- `der Ehemann` und `die Ehefrau`: Mann und Frau in der Ehe\n- `verheiratet`: mit Trauschein zusammen\n- `getrennt`: nicht mehr zusammen\n- `geschieden`: die Ehe ist offiziell beendet"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "partner",
+      "term": "Partner",
+      "translations": {
+        "en": ["male partner", "partner"],
+        "fr": ["partenaire (homme)", "partenaire"]
+      },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Partner",
+      "examForms": ["der Partner"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈpaʁtnɐ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mein Partner kocht heute Abend.",
+        "translation": {
+          "en": "My partner is cooking tonight.",
+          "fr": "Mon partenaire cuisine ce soir."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Partner is masculine: der Partner is a man you live with in a relationship.",
+        "fr": "Partner est masculin : der Partner est l’homme avec qui on vit en couple.",
+        "de": "Partner ist maskulin: der Partner ist der Mann, mit dem man in einer Beziehung lebt."
+      },
+      "genderExplanation": {
+        "en": "Partner is masculine, so its article is der.",
+        "fr": "Partner est masculin : on dit der Partner.",
+        "de": "Partner ist maskulin, daher lautet der Artikel der."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Mein ",
+        "after": " heißt Jonas und wir wohnen zusammen.",
+        "accepted": { "answers": ["Partner"] },
+        "referenceTargetIds": ["partner", "hochzeit", "verliebt", "getrennt"],
+        "explanation": {
+          "en": "Only Partner fits: it is a masculine person.",
+          "fr": "Seul « Partner » convient : c’est une personne masculine.",
+          "de": "Nur „Partner“ passt: Es ist eine männliche Person."
+        }
+      },
+      "listeningOptionTargetIds": ["partner", "partnerin", "ehemann", "ehe"]
+    },
+    {
+      "id": "partnerin",
+      "term": "Partnerin",
+      "translations": {
+        "en": ["female partner", "partner"],
+        "fr": ["partenaire (femme)", "partenaire"]
+      },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Partnerin",
+      "examForms": ["die Partnerin"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈpaʁtnəʁɪn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Meine Partnerin arbeitet in Berlin.",
+        "translation": {
+          "en": "My partner works in Berlin.",
+          "fr": "Ma partenaire travaille à Berlin."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Partnerin is feminine: the ending -in marks a woman, so die Partnerin.",
+        "fr": "Partnerin est féminin : la terminaison -in désigne une femme, donc die Partnerin.",
+        "de": "Partnerin ist feminin: Die Endung -in zeigt eine Frau an, also die Partnerin."
+      },
+      "genderExplanation": {
+        "en": "Partnerin is feminine, so its article is die.",
+        "fr": "Partnerin est féminin : on dit die Partnerin.",
+        "de": "Partnerin ist feminin, daher lautet der Artikel die."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Meine ",
+        "after": " heißt Lena und wir wohnen zusammen.",
+        "accepted": { "answers": ["Partnerin"] },
+        "referenceTargetIds": ["partnerin", "heiraten", "ehe", "geschieden"],
+        "explanation": {
+          "en": "Only Partnerin fits: it is a feminine person.",
+          "fr": "Seul « Partnerin » convient : c’est une personne féminine.",
+          "de": "Nur „Partnerin“ passt: Es ist eine weibliche Person."
+        }
+      },
+      "listeningOptionTargetIds": ["partnerin", "partner", "ehefrau", "ehe"]
+    },
+    {
+      "id": "verlieben",
+      "term": "sich verlieben",
+      "translations": { "en": ["to fall in love"], "fr": ["tomber amoureux"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "sich verlieben",
+      "examForms": ["sich verlieben"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/zɪç fɛɐ̯ˈliːbn̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Sie hat sich in Tom verliebt.",
+        "translation": {
+          "en": "She fell in love with Tom.",
+          "fr": "Elle est tombée amoureuse de Tom."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Sich verlieben is the moment love starts; verliebt is the state of being in love.",
+        "fr": "Sich verlieben est le moment où l’amour naît ; verliebt est l’état d’être amoureux.",
+        "de": "Sich verlieben ist der Moment, in dem die Liebe beginnt; verliebt ist der Zustand."
+      },
+      "explanation": {
+        "en": "Sich verlieben is a reflexive verb: it always comes with sich and means to start loving someone.",
+        "fr": "Sich verlieben est un verbe réfléchi : il s’emploie toujours avec sich et signifie commencer à aimer quelqu’un.",
+        "de": "Sich verlieben ist ein reflexives Verb: Es steht immer mit sich und bedeutet, anfangen jemanden zu lieben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Im Urlaub kann man sich leicht ",
+        "after": ".",
+        "accepted": { "answers": ["verlieben"] },
+        "referenceTargetIds": ["verlieben", "ehemann", "hochzeit", "verheiratet"],
+        "explanation": {
+          "en": "Only the verb verlieben fits after sich and kann man.",
+          "fr": "Seul le verbe « verlieben » convient après sich et kann man.",
+          "de": "Nur das Verb „verlieben“ passt nach sich und kann man."
+        }
+      },
+      "listeningOptionTargetIds": ["verlieben", "verliebt", "heiraten", "verheiratet"]
+    },
+    {
+      "id": "verliebt",
+      "term": "verliebt",
+      "translations": { "en": ["in love"], "fr": ["amoureux"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "verliebt",
+      "examForms": ["verliebt"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fɛɐ̯ˈliːpt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ich bin total in dich verliebt.",
+        "translation": {
+          "en": "I am totally in love with you.",
+          "fr": "Je suis complètement amoureux de toi."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Verliebt describes a person who has feelings of love; it goes with sein and in plus accusative.",
+        "fr": "Verliebt décrit une personne qui éprouve de l’amour ; il s’emploie avec sein et in + accusatif.",
+        "de": "Verliebt beschreibt eine Person mit Gefühlen der Liebe; es steht mit sein und in plus Akkusativ."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Tom ist sehr ",
+        "after": " in Mia.",
+        "accepted": { "answers": ["verliebt"] },
+        "referenceTargetIds": ["verliebt", "geschieden", "ehe", "partner"],
+        "explanation": {
+          "en": "Only verliebt goes with in Mia.",
+          "fr": "Seul « verliebt » va avec in Mia.",
+          "de": "Nur „verliebt“ passt zu in Mia."
+        }
+      },
+      "listeningOptionTargetIds": ["verliebt", "verlieben", "heiraten", "verheiratet"]
+    },
+    {
+      "id": "heiraten",
+      "term": "heiraten",
+      "translations": { "en": ["to marry", "to get married"], "fr": ["se marier", "épouser"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "heiraten",
+      "examForms": ["heiraten"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈhaɪ̯ʁaːtn̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Wir wollen im Mai heiraten.",
+        "translation": {
+          "en": "We want to get married in May.",
+          "fr": "Nous voulons nous marier en mai."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Heiraten means to start a marriage; unlike in English, no word for with is needed: Er heiratet sie.",
+        "fr": "Heiraten signifie conclure un mariage ; on n’ajoute pas de préposition : Er heiratet sie.",
+        "de": "Heiraten bedeutet, eine Ehe zu schließen; man braucht keine Präposition: Er heiratet sie."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Im Sommer wollen wir ",
+        "after": ".",
+        "accepted": { "answers": ["heiraten"] },
+        "referenceTargetIds": ["heiraten", "partner", "ehe", "getrennt"],
+        "explanation": {
+          "en": "Only the verb heiraten fits after wollen wir.",
+          "fr": "Seul le verbe « heiraten » convient après wollen wir.",
+          "de": "Nur das Verb „heiraten“ passt nach wollen wir."
+        }
+      },
+      "listeningOptionTargetIds": ["heiraten", "verheiratet", "verlieben", "hochzeit"]
+    },
+    {
+      "id": "hochzeit",
+      "term": "Hochzeit",
+      "translations": { "en": ["wedding"], "fr": ["mariage (cérémonie)", "noces"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Hochzeit",
+      "examForms": ["die Hochzeit"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈhɔxtsaɪ̯t/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Die Hochzeit ist am Samstag.",
+        "translation": { "en": "The wedding is on Saturday.", "fr": "Le mariage a lieu samedi." }
+      },
+      "ambiguityNote": {
+        "en": "Die Hochzeit is the celebration; die Ehe is the marriage as a state.",
+        "fr": "Die Hochzeit est la fête ; die Ehe est le mariage comme état.",
+        "de": "Die Hochzeit ist das Fest; die Ehe ist der Zustand des Verheiratetseins."
+      },
+      "explanation": {
+        "en": "Die Hochzeit is the wedding day and celebration. Words ending in -zeit are feminine.",
+        "fr": "Die Hochzeit est le jour et la fête du mariage. Les mots en -zeit sont féminins.",
+        "de": "Die Hochzeit ist der Tag und das Fest der Heirat. Wörter auf -zeit sind feminin."
+      },
+      "genderExplanation": {
+        "en": "Hochzeit is feminine (like most nouns ending in -zeit), so its article is die.",
+        "fr": "Hochzeit est féminin (comme la plupart des noms en -zeit) : on dit die Hochzeit.",
+        "de": "Hochzeit ist feminin (wie die meisten Nomen auf -zeit), daher lautet der Artikel die."
+      },
+      "matchingLabel": null,
+      "examPrompt": { "en": "wedding (the celebration)", "fr": "mariage (la cérémonie)" },
+      "gap": {
+        "before": "Auf der ",
+        "after": " tanzen alle Gäste.",
+        "accepted": { "answers": ["Hochzeit"] },
+        "referenceTargetIds": ["hochzeit", "partnerin", "heiraten", "getrennt"],
+        "explanation": {
+          "en": "Only Hochzeit fits: guests dance at a wedding.",
+          "fr": "Seul « Hochzeit » convient : les invités dansent à un mariage.",
+          "de": "Nur „Hochzeit“ passt: Auf einer Hochzeit tanzen die Gäste."
+        }
+      },
+      "listeningOptionTargetIds": ["hochzeit", "heiraten", "ehe", "ehemann"]
+    },
+    {
+      "id": "ehe",
+      "term": "Ehe",
+      "translations": { "en": ["marriage"], "fr": ["mariage (union)", "vie conjugale"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Ehe",
+      "examForms": ["die Ehe"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈeːə/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Ihre Ehe ist sehr glücklich.",
+        "translation": {
+          "en": "Their marriage is very happy.",
+          "fr": "Leur mariage est très heureux."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Die Ehe is the marriage as a state; die Hochzeit is the celebration.",
+        "fr": "Die Ehe est le mariage comme état ; die Hochzeit est la fête.",
+        "de": "Die Ehe ist der Zustand des Verheiratetseins; die Hochzeit ist das Fest."
+      },
+      "explanation": {
+        "en": "Die Ehe is the marriage as a lasting relationship between two people.",
+        "fr": "Die Ehe est le mariage comme relation durable entre deux personnes.",
+        "de": "Die Ehe ist die dauerhafte Verbindung zwischen zwei Menschen."
+      },
+      "genderExplanation": {
+        "en": "Ehe is feminine, so its article is die.",
+        "fr": "Ehe est féminin : on dit die Ehe.",
+        "de": "Ehe ist feminin, daher lautet der Artikel die."
+      },
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "marriage (the state of being married)",
+        "fr": "mariage (l’union, la vie de couple)"
+      },
+      "gap": {
+        "before": "Eine gute ",
+        "after": " braucht Vertrauen.",
+        "accepted": { "answers": ["Ehe"] },
+        "referenceTargetIds": ["ehe", "ehemann", "getrennt", "verliebt"],
+        "explanation": {
+          "en": "Only Ehe fits: eine gute Ehe is a good marriage.",
+          "fr": "Seul « Ehe » convient : eine gute Ehe est un bon mariage.",
+          "de": "Nur „Ehe“ passt: Eine gute Ehe braucht Vertrauen."
+        }
+      },
+      "listeningOptionTargetIds": ["ehe", "ehemann", "ehefrau", "hochzeit"]
+    },
+    {
+      "id": "ehemann",
+      "term": "Ehemann",
+      "translations": { "en": ["husband"], "fr": ["mari"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Ehemann",
+      "examForms": ["der Ehemann"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈeːəman/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ihr Ehemann arbeitet als Lehrer.",
+        "translation": {
+          "en": "Her husband works as a teacher.",
+          "fr": "Son mari travaille comme professeur."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Der Ehemann is the man in a marriage; Mann gives the masculine article der.",
+        "fr": "Der Ehemann est l’homme dans un mariage ; Mann donne l’article masculin der.",
+        "de": "Der Ehemann ist der Mann in einer Ehe; Mann bestimmt den maskulinen Artikel der."
+      },
+      "genderExplanation": {
+        "en": "Ehemann is masculine, so its article is der.",
+        "fr": "Ehemann est masculin : on dit der Ehemann.",
+        "de": "Ehemann ist maskulin, daher lautet der Artikel der."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ihr ",
+        "after": " arbeitet als Lehrer.",
+        "accepted": { "answers": ["Ehemann"] },
+        "referenceTargetIds": ["ehemann", "ehe", "hochzeit", "heiraten"],
+        "explanation": {
+          "en": "Only Ehemann fits: ihr is masculine here and the person works as a teacher.",
+          "fr": "Seul « Ehemann » convient : ihr est masculin ici et la personne travaille comme professeur.",
+          "de": "Nur „Ehemann“ passt: ihr steht hier maskulin und die Person arbeitet als Lehrer."
+        }
+      },
+      "listeningOptionTargetIds": ["ehemann", "ehefrau", "ehe", "partner"]
+    },
+    {
+      "id": "ehefrau",
+      "term": "Ehefrau",
+      "translations": { "en": ["wife"], "fr": ["épouse", "femme"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Ehefrau",
+      "examForms": ["die Ehefrau"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈeːəfʁaʊ̯/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Seine Ehefrau heißt Sofia.",
+        "translation": { "en": "His wife is called Sofia.", "fr": "Sa femme s’appelle Sofia." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Die Ehefrau is the woman in a marriage; Frau gives the feminine article die.",
+        "fr": "Die Ehefrau est la femme dans un mariage ; Frau donne l’article féminin die.",
+        "de": "Die Ehefrau ist die Frau in einer Ehe; Frau bestimmt den femininen Artikel die."
+      },
+      "genderExplanation": {
+        "en": "Ehefrau is feminine, so its article is die.",
+        "fr": "Ehefrau est féminin : on dit die Ehefrau.",
+        "de": "Ehefrau ist feminin, daher lautet der Artikel die."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Seine ",
+        "after": " heißt Sofia.",
+        "accepted": { "answers": ["Ehefrau"] },
+        "referenceTargetIds": ["ehefrau", "verheiratet", "heiraten", "geschieden"],
+        "explanation": {
+          "en": "Only Ehefrau fits: it is a noun for a person called Sofia.",
+          "fr": "Seul « Ehefrau » convient : c’est un nom désignant une personne qui s’appelle Sofia.",
+          "de": "Nur „Ehefrau“ passt: Es ist ein Nomen für eine Person namens Sofia."
+        }
+      },
+      "listeningOptionTargetIds": ["ehefrau", "ehemann", "ehe", "partnerin"]
+    },
+    {
+      "id": "verheiratet",
+      "term": "verheiratet",
+      "translations": { "en": ["married"], "fr": ["marié"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "verheiratet",
+      "examForms": ["verheiratet"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fɛɐ̯ˈhaɪ̯ʁaːtət/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Herr Weber ist verheiratet.",
+        "translation": { "en": "Mr Weber is married.", "fr": "Monsieur Weber est marié." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Verheiratet describes the marital status of someone who has a spouse; it comes from heiraten.",
+        "fr": "Verheiratet décrit l’état civil de quelqu’un qui a un conjoint ; il vient de heiraten.",
+        "de": "Verheiratet beschreibt den Familienstand einer Person mit Ehepartner; es kommt von heiraten."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Herr Weber hat eine Frau und zwei Kinder. Er ist ",
+        "after": ".",
+        "accepted": { "answers": ["verheiratet"] },
+        "referenceTargetIds": ["verheiratet", "ehe", "partnerin", "hochzeit"],
+        "explanation": {
+          "en": "Only verheiratet is an adjective that fits after Er ist.",
+          "fr": "Seul « verheiratet » est un adjectif qui convient après Er ist.",
+          "de": "Nur „verheiratet“ ist ein Adjektiv, das nach Er ist passt."
+        }
+      },
+      "listeningOptionTargetIds": ["verheiratet", "heiraten", "geschieden", "getrennt"]
+    },
+    {
+      "id": "getrennt",
+      "term": "getrennt",
+      "translations": { "en": ["separated"], "fr": ["séparé"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "getrennt",
+      "examForms": ["getrennt"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡəˈtʁɛnt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Anna und Ben sind getrennt.",
+        "translation": { "en": "Anna and Ben are separated.", "fr": "Anna et Ben sont séparés." }
+      },
+      "ambiguityNote": {
+        "en": "Getrennt means living apart; geschieden means the marriage is officially over.",
+        "fr": "Getrennt signifie vivre séparément ; geschieden signifie que le mariage est officiellement terminé.",
+        "de": "Getrennt heißt, man lebt nicht mehr zusammen; geschieden heißt, die Ehe ist offiziell beendet."
+      },
+      "explanation": {
+        "en": "Getrennt means that two people no longer live together as a couple.",
+        "fr": "Getrennt signifie que deux personnes ne vivent plus ensemble en couple.",
+        "de": "Getrennt bedeutet, dass zwei Menschen nicht mehr als Paar zusammenleben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Anna und Ben leben nicht mehr zusammen. Sie sind ",
+        "after": ".",
+        "accepted": { "answers": ["getrennt"] },
+        "referenceTargetIds": ["getrennt", "ehefrau", "heiraten", "partner"],
+        "explanation": {
+          "en": "Only getrennt fits: they no longer live together.",
+          "fr": "Seul « getrennt » convient : ils ne vivent plus ensemble.",
+          "de": "Nur „getrennt“ passt: Sie leben nicht mehr zusammen."
+        }
+      },
+      "listeningOptionTargetIds": ["getrennt", "geschieden", "verheiratet", "verliebt"]
+    },
+    {
+      "id": "geschieden",
+      "term": "geschieden",
+      "translations": { "en": ["divorced"], "fr": ["divorcé"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "geschieden",
+      "examForms": ["geschieden"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡəˈʃiːdn̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Meine Eltern sind geschieden.",
+        "translation": { "en": "My parents are divorced.", "fr": "Mes parents sont divorcés." }
+      },
+      "ambiguityNote": {
+        "en": "Geschieden means the marriage is officially ended; getrennt only means living apart.",
+        "fr": "Geschieden signifie que le mariage est officiellement terminé ; getrennt signifie seulement vivre séparément.",
+        "de": "Geschieden heißt, die Ehe ist offiziell beendet; getrennt heißt nur, man lebt nicht mehr zusammen."
+      },
+      "explanation": {
+        "en": "Geschieden describes a person whose marriage has been officially ended by a court.",
+        "fr": "Geschieden décrit une personne dont le mariage a été officiellement dissous par un tribunal.",
+        "de": "Geschieden beschreibt eine Person, deren Ehe offiziell vor Gericht beendet wurde."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Seine Ehe wurde vor Gericht beendet: Er ist offiziell ",
+        "after": ".",
+        "accepted": { "answers": ["geschieden"] },
+        "referenceTargetIds": ["geschieden", "hochzeit", "partnerin", "verliebt"],
+        "explanation": {
+          "en": "Only geschieden fits: a court ended the marriage.",
+          "fr": "Seul « geschieden » convient : un tribunal a mis fin au mariage.",
+          "de": "Nur „geschieden“ passt: Ein Gericht hat die Ehe beendet."
+        }
+      },
+      "listeningOptionTargetIds": ["geschieden", "getrennt", "verheiratet", "ehe"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

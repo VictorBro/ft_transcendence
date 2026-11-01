@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 2,
+  "id": "de-reading-an-email-from-a-friend",
+  "lang": "de",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Eine E-Mail von einer Freundin lesen",
+  "objective": {
+    "en": "Read a personal email about a move and a new job, follow the news and recognise what the friend asks for (Kannst du mich im Mai besuchen?).",
+    "fr": "Lire un e-mail personnel sur un déménagement et un nouveau travail, suivre les nouvelles et reconnaître ce que l’amie demande (Kannst du mich im Mai besuchen?).",
+    "de": "Eine persönliche E-Mail über einen Umzug und eine neue Arbeit lesen und erkennen, worum die Freundin bittet."
+  },
+  "estimatedMinutes": 8,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T20:20:01.555Z",
+    "inputHashes": { "outline": "c9c46caa944d1466f219535830a5134529da3d5d3c7d64407e1040e37d456009" }
+  },
+  "kind": "reading",
+  "theme": "relations",
+  "genre": "email",
+  "situation": {
+    "en": "Mia has moved to Leipzig and writes to her friend Lena about her new flat and her new job. She invites Lena to visit.",
+    "fr": "Mia a déménagé à Leipzig et écrit à son amie Lena à propos de son nouvel appartement et de son nouveau travail. Elle l’invite à lui rendre visite.",
+    "de": "Mia ist nach Leipzig umgezogen und schreibt ihrer Freundin Lena über ihre neue Wohnung und ihre neue Arbeit. Sie lädt Lena zu einem Besuch ein."
+  },
+  "readerTask": {
+    "en": "Follow the news (the move, the job) and find out what Mia asks Lena to do and when.",
+    "fr": "Suivre les nouvelles (le déménagement, le travail) et trouver ce que Mia demande à Lena et quand.",
+    "de": "Den Neuigkeiten folgen (Umzug, Arbeit) und herausfinden, worum Mia Lena bittet und wann."
+  },
+  "keywords": [
+    {
+      "id": "umgezogen",
+      "term": "umgezogen",
+      "translations": { "en": ["moved (house)"], "fr": ["déménagé"] },
+      "explanation": {
+        "en": "Past participle of umziehen: ich bin umgezogen = I have moved house. It uses sein.",
+        "fr": "Participe passé de umziehen : ich bin umgezogen = j’ai déménagé. Il se forme avec sein.",
+        "de": "Partizip von umziehen: Ich bin umgezogen. Es wird mit sein gebildet."
+      }
+    },
+    {
+      "id": "die-stelle",
+      "term": "die Stelle",
+      "translations": { "en": ["job", "position"], "fr": ["le poste", "l’emploi"] },
+      "explanation": {
+        "en": "A job you have or look for: eine neue Stelle = a new job.",
+        "fr": "Un emploi que l’on a ou que l’on cherche : eine neue Stelle = un nouveau poste.",
+        "de": "Eine Arbeit, die man hat oder sucht: eine neue Stelle."
+      }
+    },
+    {
+      "id": "neuigkeiten",
+      "term": "die Neuigkeiten",
+      "translations": { "en": ["news"], "fr": ["les nouvelles"] },
+      "explanation": {
+        "en": "Die Neuigkeiten is always plural: things that are new in your life.",
+        "fr": "Die Neuigkeiten est toujours au pluriel : ce qui est nouveau dans la vie de quelqu’un.",
+        "de": "Die Neuigkeiten steht im Plural: Das ist neu in deinem Leben."
+      }
+    },
+    {
+      "id": "vermissen",
+      "term": "vermissen",
+      "translations": { "en": ["to miss"], "fr": ["regretter l’absence de"] },
+      "explanation": {
+        "en": "You miss a person: ich vermisse dich = I miss you.",
+        "fr": "On regrette l’absence de quelqu’un : ich vermisse dich = tu me manques.",
+        "de": "Man vermisst eine Person: Ich vermisse dich."
+      }
+    },
+    {
+      "id": "besuchen",
+      "term": "besuchen",
+      "translations": { "en": ["to visit"], "fr": ["rendre visite à"] },
+      "explanation": {
+        "en": "Go to see someone: Kannst du mich besuchen? = Can you visit me?",
+        "fr": "Aller voir quelqu’un : Kannst du mich besuchen? = Peux-tu me rendre visite ?",
+        "de": "Zu jemandem gehen: Kannst du mich besuchen?"
+      }
+    }
+  ],
+  "documents": {
+    "main": {
+      "targetWords": 104,
+      "contents": {
+        "en": "Mia’s email to Lena: she has moved to Leipzig last week, the flat is small but bright with a balcony; she has a new job in a bookshop with nice colleagues; she misses Lena and asks her to visit in May for a week; she will show her the city; please write soon.",
+        "fr": "E-mail de Mia à Lena : elle a déménagé à Leipzig la semaine dernière, l’appartement est petit mais lumineux avec un balcon ; elle a un nouveau travail dans une librairie avec des collègues sympathiques ; Lena lui manque et elle lui demande de venir en mai pour une semaine ; elle lui montrera la ville ; qu’elle écrive vite.",
+        "de": "Mias E-Mail an Lena: Sie ist letzte Woche nach Leipzig umgezogen, die Wohnung ist klein, aber hell und hat einen Balkon; sie hat eine neue Stelle in einer Buchhandlung mit netten Kollegen; sie vermisst Lena und bittet sie, im Mai eine Woche zu Besuch zu kommen; sie zeigt ihr die Stadt; Lena soll bald schreiben."
+      }
+    },
+    "exam": {
+      "targetWords": 46,
+      "contents": {
+        "en": "Jonas writes to Lena: he is moving on Saturday to a flat near the park, asks her to help, friends come at ten o’clock, they carry the furniture, then coffee, he buys pizza for everyone.",
+        "fr": "Jonas écrit à Lena : il déménage samedi dans un appartement près du parc, lui demande de l’aide, les amis viennent à dix heures, on porte les meubles, puis café, il achète des pizzas pour tous.",
+        "de": "Jonas schreibt Lena: Er zieht am Samstag in eine Wohnung in der Nähe vom Park um, bittet sie um Hilfe, die Freunde kommen um zehn Uhr, sie tragen die Möbel, danach Kaffee, er kauft Pizza für alle."
+      }
+    }
+  },
+  "skim": { "focus": "purpose" },
+  "detailQuestions": [
+    {
+      "id": "q-move",
+      "type": "reading_choice",
+      "focus": {
+        "en": "When Mia moved to Leipzig",
+        "fr": "Quand Mia a déménagé à Leipzig",
+        "de": "Wann Mia nach Leipzig umgezogen ist"
+      }
+    },
+    {
+      "id": "q-job",
+      "type": "reading_choice",
+      "focus": {
+        "en": "Where Mia works now",
+        "fr": "Où Mia travaille maintenant",
+        "de": "Wo Mia jetzt arbeitet"
+      }
+    },
+    {
+      "id": "q-flat",
+      "type": "reading_true_false",
+      "focus": {
+        "en": "Size of the new flat",
+        "fr": "La taille du nouvel appartement",
+        "de": "Die Größe der neuen Wohnung"
+      }
+    },
+    {
+      "id": "q-request",
+      "type": "reading_choice",
+      "focus": {
+        "en": "What Mia asks Lena",
+        "fr": "Ce que Mia demande à Lena",
+        "de": "Worum Mia Lena bittet"
+      }
+    }
+  ],
+  "exam": { "types": ["reading_choice", "reading_true_false"] },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

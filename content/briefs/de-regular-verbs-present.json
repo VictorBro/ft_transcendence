@@ -1,0 +1,259 @@
+{
+  "schemaVersion": 2,
+  "id": "de-regular-verbs-present",
+  "lang": "de",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Regelmäßige Verben im Präsens",
+  "objective": {
+    "en": "Conjugate regular verbs in the present: -e, -st, -t, -en, plus -est and -et after -t and -d, and only -t after -s, -ß and -z.",
+    "fr": "Conjuguer les verbes réguliers au présent : -e, -st, -t, -en, puis -est et -et après -t et -d, et seulement -t après -s, -ß et -z.",
+    "de": "Regelmäßige Verben im Präsens konjugieren: -e, -st, -t, -en, dazu -est und -et nach -t und -d und nur -t nach -s, -ß und -z."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T20:17:51.214Z",
+    "inputHashes": { "outline": "8cceb639c384c32b03e07b4c9d2ad50f68d80764e7cf46653d96458e3c595c72" }
+  },
+  "kind": "grammar",
+  "topic": "verbs_morphology",
+  "scopeBoundaries": {
+    "en": "Covers present-tense endings of regular verbs for all persons, including the -est/-et and -s/-ß/-z cases. Excludes stem-changing verbs (fahren, sprechen), separable verbs and sein/haben.",
+    "fr": "Couvre les terminaisons du présent des verbes réguliers à toutes les personnes, avec les cas -est/-et et -s/-ß/-z. Exclut les verbes à changement de voyelle (fahren, sprechen), les verbes séparables et sein/haben.",
+    "de": "Behandelt die Präsensendungen regelmäßiger Verben in allen Personen, auch die Fälle -est/-et und -s/-ß/-z. Ausgeschlossen sind Verben mit Vokalwechsel (fahren, sprechen), trennbare Verben und sein/haben."
+  },
+  "prerequisites": [
+    {
+      "en": "The subject pronouns ich, du, er, sie, es, wir, ihr, sie, Sie",
+      "fr": "Les pronoms sujets ich, du, er, sie, es, wir, ihr, sie, Sie",
+      "de": "Die Personalpronomen ich, du, er, sie, es, wir, ihr, sie, Sie"
+    },
+    {
+      "en": "The verb sein in the present",
+      "fr": "Le verbe sein au présent",
+      "de": "Das Verb sein im Präsens"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-endings",
+      "summary": {
+        "en": "Regular verbs take the stem plus -e, -st, -t, -en, -t, -en: ich wohne, du wohnst, er wohnt, wir wohnen, ihr wohnt, sie wohnen.",
+        "fr": "Les verbes réguliers prennent le radical plus -e, -st, -t, -en, -t, -en : ich wohne, du wohnst, er wohnt, wir wohnen, ihr wohnt, sie wohnen.",
+        "de": "Regelmäßige Verben bilden Stamm plus -e, -st, -t, -en, -t, -en: ich wohne, du wohnst, er wohnt, wir wohnen, ihr wohnt, sie wohnen."
+      }
+    },
+    {
+      "id": "rule-et-ending",
+      "summary": {
+        "en": "After a stem ending in -t or -d, du and er/ihr take -est and -et: du arbeitest, er arbeitet, ihr arbeitet.",
+        "fr": "Après un radical en -t ou -d, du et er/ihr prennent -est et -et : du arbeitest, er arbeitet, ihr arbeitet.",
+        "de": "Nach einem Stamm auf -t oder -d bekommen du und er/ihr -est und -et: du arbeitest, er arbeitet, ihr arbeitet."
+      }
+    },
+    {
+      "id": "rule-s-sound",
+      "summary": {
+        "en": "After a stem ending in -s, -ß or -z, the du form takes only -t: du heißt, du tanzt, du reist.",
+        "fr": "Après un radical en -s, -ß ou -z, la forme en du prend seulement -t : du heißt, du tanzt, du reist.",
+        "de": "Nach einem Stamm auf -s, -ß oder -z bekommt die du-Form nur -t: du heißt, du tanzt, du reist."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-endings",
+      "title": {
+        "en": "Regular endings: -e, -st, -t, -en",
+        "fr": "Les terminaisons régulières : -e, -st, -t, -en",
+        "de": "Die regulären Endungen: -e, -st, -t, -en"
+      },
+      "ruleIds": ["rule-endings"],
+      "explanationPlan": {
+        "en": "Show how to find the stem (infinitive without -en) and add the six endings, with wohnen and lernen. Point out that wir and sie/Sie look like the infinitive.",
+        "fr": "Montrer comment trouver le radical (infinitif sans -en) et ajouter les six terminaisons, avec wohnen et lernen. Souligner que wir et sie/Sie ressemblent à l'infinitif.",
+        "de": "Zeigen, wie man den Stamm (Infinitiv ohne -en) findet und die sechs Endungen anhängt, mit wohnen und lernen. Betonen, dass wir und sie/Sie wie der Infinitiv aussehen."
+      },
+      "explanationDurationS": 90,
+      "examples": [
+        {
+          "text": "Ich lerne Deutsch.",
+          "translation": { "en": "I am learning German.", "fr": "J'apprends l'allemand." }
+        },
+        {
+          "text": "Du wohnst in Berlin.",
+          "translation": { "en": "You live in Berlin.", "fr": "Tu habites à Berlin." }
+        },
+        {
+          "text": "Er kommt aus Polen.",
+          "translation": { "en": "He comes from Poland.", "fr": "Il vient de Pologne." }
+        },
+        {
+          "text": "Wir spielen Tennis.",
+          "translation": { "en": "We play tennis.", "fr": "Nous jouons au tennis." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not use the infinitive for every person: ich wohne, not ich wohnen.",
+          "fr": "N'employez pas l'infinitif pour toutes les personnes : ich wohne, pas ich wohnen.",
+          "de": "Nicht für jede Person den Infinitiv verwenden: ich wohne, nicht ich wohnen."
+        },
+        {
+          "en": "ihr and er/sie/es share the ending -t: er wohnt, ihr wohnt.",
+          "fr": "ihr et er/sie/es ont la même terminaison -t : er wohnt, ihr wohnt.",
+          "de": "ihr und er/sie/es haben dieselbe Endung -t: er wohnt, ihr wohnt."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-b1-match",
+          "type": "grammar_person_matching",
+          "itemCount": 1,
+          "ruleIds": ["rule-endings"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-b1-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 5,
+          "ruleIds": ["rule-endings"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-b1-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 5,
+          "ruleIds": ["rule-endings"],
+          "estimatedDurationS": 75
+        }
+      ]
+    },
+    {
+      "id": "block-et-s",
+      "title": {
+        "en": "After -t, -d, -s, -ß, -z",
+        "fr": "Après -t, -d, -s, -ß, -z",
+        "de": "Nach -t, -d, -s, -ß, -z"
+      },
+      "ruleIds": ["rule-et-ending", "rule-s-sound"],
+      "explanationPlan": {
+        "en": "Explain the extra e in -est and -et after stems in -t or -d (arbeiten, warten, finden), and the dropped s in the du form after stems in -s, -ß, -z (heißen, tanzen, reisen). Other persons stay regular.",
+        "fr": "Expliquer le e supplémentaire de -est et -et après les radicaux en -t ou -d (arbeiten, warten, finden), et le s supprimé à la forme en du après les radicaux en -s, -ß, -z (heißen, tanzen, reisen). Les autres personnes restent régulières.",
+        "de": "Das zusätzliche e in -est und -et nach Stämmen auf -t oder -d erklären (arbeiten, warten, finden) und das weggefallene s in der du-Form nach Stämmen auf -s, -ß, -z (heißen, tanzen, reisen). Die anderen Personen bleiben regelmäßig."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "Du arbeitest in einem Café.",
+          "translation": { "en": "You work in a café.", "fr": "Tu travailles dans un café." }
+        },
+        {
+          "text": "Er wartet auf den Bus.",
+          "translation": { "en": "He is waiting for the bus.", "fr": "Il attend le bus." }
+        },
+        {
+          "text": "Ihr findet das Hotel.",
+          "translation": { "en": "You find the hotel.", "fr": "Vous trouvez l'hôtel." }
+        },
+        {
+          "text": "Du heißt Max.",
+          "translation": { "en": "Your name is Max.", "fr": "Tu t'appelles Max." }
+        },
+        {
+          "text": "Sie tanzt gern.",
+          "translation": { "en": "She likes dancing.", "fr": "Elle aime danser." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not write du arbeitst or du heißst.",
+          "fr": "N'écrivez pas du arbeitst ni du heißst.",
+          "de": "Nicht du arbeitst oder du heißst schreiben."
+        },
+        {
+          "en": "-est is only for du; er and ihr take -et.",
+          "fr": "-est est réservé à du ; er et ihr prennent -et.",
+          "de": "-est gibt es nur bei du; er und ihr bekommen -et."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-b2-forms",
+          "type": "grammar_pronoun_form_typing",
+          "itemCount": 2,
+          "ruleIds": ["rule-et-ending", "rule-s-sound"],
+          "estimatedDurationS": 90
+        },
+        {
+          "id": "ex-b2-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-et-ending", "rule-s-sound"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-b2-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["rule-et-ending", "rule-s-sound"],
+          "estimatedDurationS": 75
+        },
+        {
+          "id": "ex-b2-order",
+          "type": "grammar_word_order",
+          "itemCount": 4,
+          "ruleIds": ["rule-et-ending", "rule-s-sound"],
+          "estimatedDurationS": 80
+        }
+      ]
+    }
+  ],
+  "newVerbs": [
+    { "infinitive": "wohnen", "translations": { "en": "to live (somewhere)", "fr": "habiter" } },
+    { "infinitive": "lernen", "translations": { "en": "to learn", "fr": "apprendre" } },
+    { "infinitive": "arbeiten", "translations": { "en": "to work", "fr": "travailler" } },
+    { "infinitive": "kommen", "translations": { "en": "to come", "fr": "venir" } },
+    { "infinitive": "heißen", "translations": { "en": "to be called", "fr": "s'appeler" } },
+    { "infinitive": "tanzen", "translations": { "en": "to dance", "fr": "danser" } },
+    { "infinitive": "reisen", "translations": { "en": "to travel", "fr": "voyager" } },
+    { "infinitive": "warten", "translations": { "en": "to wait", "fr": "attendre" } },
+    { "infinitive": "finden", "translations": { "en": "to find", "fr": "trouver" } },
+    { "infinitive": "spielen", "translations": { "en": "to play", "fr": "jouer" } },
+    { "infinitive": "sitzen", "translations": { "en": "to sit", "fr": "être assis" } },
+    { "infinitive": "baden", "translations": { "en": "to bathe", "fr": "se baigner" } }
+  ],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-gaps",
+        "type": "grammar_gap_typing",
+        "itemCount": 5,
+        "ruleIds": ["rule-endings", "rule-et-ending", "rule-s-sound"],
+        "estimatedDurationS": 75,
+        "timeLimitS": 120
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-endings", "rule-et-ending", "rule-s-sound"],
+        "estimatedDurationS": 75,
+        "timeLimitS": 120
+      },
+      {
+        "pageId": "exam-forms",
+        "type": "grammar_pronoun_form_typing",
+        "itemCount": 1,
+        "ruleIds": ["rule-endings", "rule-et-ending", "rule-s-sound"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

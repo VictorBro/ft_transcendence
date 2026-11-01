@@ -1,0 +1,274 @@
+{
+  "schemaVersion": 2,
+  "id": "de-subject-pronouns",
+  "lang": "de",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Personalpronomen im Nominativ",
+  "objective": {
+    "en": "Use the German pronouns ich, du, er, sie, es, wir, ihr, sie and Sie, and choose du for friends and family or Sie for strangers and at work.",
+    "fr": "Employer les pronoms allemands ich, du, er, sie, es, wir, ihr, sie et Sie, et choisir du pour les amis et la famille ou Sie pour les inconnus et au travail.",
+    "de": "Die Personalpronomen ich, du, er, sie, es, wir, ihr, sie und Sie verwenden und du für Freunde und Familie, Sie für Fremde und im Beruf wählen."
+  },
+  "estimatedMinutes": 17,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T20:18:26.620Z",
+    "inputHashes": { "outline": "0e9b8abd6500de99cd12021d59da070c227e69ac3f32c1096528c2a67d8af0ca" }
+  },
+  "kind": "grammar",
+  "topic": "pronouns",
+  "scopeBoundaries": {
+    "en": "Covers the nominative subject pronouns and the choice between du and Sie. Excludes verb conjugation, which later lessons teach, and the other cases (accusative, dative).",
+    "fr": "Couvre les pronoms sujets au nominatif et le choix entre du et Sie. Exclut la conjugaison des verbes, enseignée dans d'autres leçons, et les autres cas (accusatif, datif).",
+    "de": "Behandelt die Personalpronomen im Nominativ und die Wahl zwischen du und Sie. Ausgeschlossen sind die Verbkonjugation, die spätere Lektionen behandeln, und die anderen Fälle (Akkusativ, Dativ)."
+  },
+  "prerequisites": [],
+  "rules": [
+    {
+      "id": "rule-singular",
+      "summary": {
+        "en": "Singular pronouns: ich, du, er, sie, es. Things are replaced by er, sie or es according to their gender.",
+        "fr": "Pronoms du singulier : ich, du, er, sie, es. Les choses sont remplacées par er, sie ou es selon leur genre.",
+        "de": "Pronomen im Singular: ich, du, er, sie, es. Dinge werden je nach Genus durch er, sie oder es ersetzt."
+      }
+    },
+    {
+      "id": "rule-plural",
+      "summary": {
+        "en": "Plural pronouns: wir, ihr, sie. The pronoun sie can mean she or they.",
+        "fr": "Pronoms du pluriel : wir, ihr, sie. Le pronom sie peut signifier elle ou ils.",
+        "de": "Pronomen im Plural: wir, ihr, sie. Das Pronomen sie kann sie (Singular) oder sie (Plural) bedeuten."
+      }
+    },
+    {
+      "id": "rule-formal",
+      "summary": {
+        "en": "Choose du for friends, family and children, and Sie (always with a capital letter) for strangers and at work.",
+        "fr": "Choisir du pour les amis, la famille et les enfants, et Sie (toujours avec une majuscule) pour les inconnus et au travail.",
+        "de": "du für Freunde, Familie und Kinder wählen, Sie (immer groß geschrieben) für Fremde und im Beruf."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-singular",
+      "title": {
+        "en": "One person or thing: ich, du, er, sie, es",
+        "fr": "Une personne ou une chose : ich, du, er, sie, es",
+        "de": "Eine Person oder Sache: ich, du, er, sie, es"
+      },
+      "ruleIds": ["rule-singular"],
+      "explanationPlan": {
+        "en": "Introduce ich, du, er, sie, es. Show that things get er, sie or es by gender, and that ich has a small letter inside a sentence.",
+        "fr": "Présenter ich, du, er, sie, es. Montrer que les choses prennent er, sie ou es selon leur genre et que ich s'écrit avec une minuscule dans la phrase.",
+        "de": "ich, du, er, sie, es einführen. Zeigen, dass Dinge je nach Genus er, sie oder es bekommen und dass ich mitten im Satz klein geschrieben wird."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Ich komme aus Berlin.",
+          "translation": { "en": "I come from Berlin.", "fr": "Je viens de Berlin." }
+        },
+        {
+          "text": "Er heißt Paul.",
+          "translation": { "en": "He is called Paul.", "fr": "Il s'appelle Paul." }
+        },
+        {
+          "text": "Sie wohnt in Hamburg.",
+          "translation": { "en": "She lives in Hamburg.", "fr": "Elle habite à Hambourg." }
+        },
+        {
+          "text": "Das Heft ist alt. Es ist blau.",
+          "translation": {
+            "en": "The notebook is old. It is blue.",
+            "fr": "Le cahier est vieux. Il est bleu."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not say er for every thing: das Buch is es, die Lampe is sie.",
+          "fr": "Ne dites pas er pour toutes les choses : das Buch devient es, die Lampe devient sie.",
+          "de": "Sag nicht er für jede Sache: das Buch wird zu es, die Lampe wird zu sie."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-sg-match",
+          "type": "grammar_person_matching",
+          "itemCount": 1,
+          "ruleIds": ["rule-singular"],
+          "estimatedDurationS": 45
+        },
+        {
+          "id": "ex-sg-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-singular"],
+          "estimatedDurationS": 40
+        },
+        {
+          "id": "ex-sg-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-singular"],
+          "estimatedDurationS": 60
+        }
+      ]
+    },
+    {
+      "id": "block-plural",
+      "title": {
+        "en": "Several people or things: wir, ihr, sie",
+        "fr": "Plusieurs personnes ou choses : wir, ihr, sie",
+        "de": "Mehrere Personen oder Sachen: wir, ihr, sie"
+      },
+      "ruleIds": ["rule-plural"],
+      "explanationPlan": {
+        "en": "Introduce wir, ihr, sie. Explain that sie means she or they and that the verb ending helps to tell them apart.",
+        "fr": "Présenter wir, ihr, sie. Expliquer que sie signifie elle ou ils et que la terminaison du verbe aide à les distinguer.",
+        "de": "wir, ihr, sie einführen. Erklären, dass sie eine Frau oder mehrere Personen meint und dass die Verbendung beim Unterscheiden hilft."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Wir lernen Deutsch.",
+          "translation": { "en": "We are learning German.", "fr": "Nous apprenons l'allemand." }
+        },
+        {
+          "text": "Ihr wohnt in Köln.",
+          "translation": { "en": "You (all) live in Cologne.", "fr": "Vous habitez à Cologne." }
+        },
+        {
+          "text": "Sie kommen aus Italien.",
+          "translation": { "en": "They come from Italy.", "fr": "Ils viennent d'Italie." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not confuse ihr (you, several friends) with sie (they).",
+          "fr": "Ne confondez pas ihr (vous, plusieurs amis) et sie (ils).",
+          "de": "Verwechsle nicht ihr (mehrere Freunde) mit sie (mehrere Personen, über die man spricht)."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-pl-match",
+          "type": "grammar_person_matching",
+          "itemCount": 1,
+          "ruleIds": ["rule-plural"],
+          "estimatedDurationS": 45
+        },
+        {
+          "id": "ex-pl-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-plural"],
+          "estimatedDurationS": 40
+        },
+        {
+          "id": "ex-pl-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-plural"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-pl-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-plural"],
+          "estimatedDurationS": 60
+        }
+      ]
+    },
+    {
+      "id": "block-formal",
+      "title": { "en": "du or Sie?", "fr": "du ou Sie ?", "de": "du oder Sie?" },
+      "ruleIds": ["rule-formal"],
+      "explanationPlan": {
+        "en": "Explain the polite Sie (capital letter, one or several people) and when to use du or Sie. When unsure, use Sie.",
+        "fr": "Expliquer le Sie de politesse (majuscule, une ou plusieurs personnes) et quand employer du ou Sie. En cas de doute, employer Sie.",
+        "de": "Das höfliche Sie erklären (Großschreibung, eine oder mehrere Personen) und wann man du oder Sie sagt. Im Zweifel Sie verwenden."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Lukas, hast du Hunger?",
+          "translation": { "en": "Lukas, are you hungry?", "fr": "Lukas, as-tu faim ?" }
+        },
+        {
+          "text": "Frau Berger, haben Sie Zeit?",
+          "translation": {
+            "en": "Mrs Berger, do you have time?",
+            "fr": "Madame Berger, avez-vous le temps ?"
+          }
+        },
+        {
+          "text": "Guten Tag, wie heißen Sie?",
+          "translation": {
+            "en": "Hello, what is your name?",
+            "fr": "Bonjour, comment vous appelez-vous ?"
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Sie (polite) always has a capital letter; sie (she, they) does not, except at the start of a sentence.",
+          "fr": "Sie (politesse) prend toujours une majuscule ; sie (elle, ils) non, sauf en début de phrase.",
+          "de": "Sie (höflich) schreibt man immer groß; sie (Frau, mehrere) nur am Satzanfang."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-fo-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-formal"],
+          "estimatedDurationS": 40
+        },
+        {
+          "id": "ex-fo-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["rule-formal"],
+          "estimatedDurationS": 75
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-pronouns",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-singular", "rule-plural"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      },
+      {
+        "pageId": "exam-formal",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["rule-formal"],
+        "estimatedDurationS": 45,
+        "timeLimitS": 70
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-plural", "rule-formal"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

@@ -1,0 +1,624 @@
+{
+  "schemaVersion": 2,
+  "id": "de-extended-family",
+  "lang": "de",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Die ganze Familie",
+  "objective": {
+    "en": "Name extended family members with their article and the feminine form.",
+    "fr": "Nommer les membres de la famille élargie avec leur article et la forme féminine.",
+    "de": "Weitere Verwandte mit Artikel und weiblicher Form nennen."
+  },
+  "estimatedMinutes": 21,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T20:20:39.216Z",
+    "inputHashes": { "outline": "c33e18f4c684f7a671d02d5a405d8e65d13c2ef9f3fa1fc4c19811d2bda6aa17" }
+  },
+  "kind": "vocabulary",
+  "theme": "relations",
+  "coverageNotes": {
+    "en": "Twelve relatives beyond parents and siblings: uncle and aunt, cousins, nephew and niece, grandchildren, in-laws and relatives in general.",
+    "fr": "Douze membres de la famille au-delà des parents et des frères et sœurs : oncle et tante, cousins, neveu et nièce, petits-enfants, belle-famille et parents en général.",
+    "de": "Zwölf Verwandte jenseits von Eltern und Geschwistern: Onkel und Tante, Cousins, Neffe und Nichte, Enkel, angeheiratete Verwandte und Verwandte allgemein."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words in three groups of four fit A2 and cover the male and female pairs.",
+    "fr": "Douze mots en trois groupes de quatre conviennent au niveau A2 et couvrent les paires masculin et féminin.",
+    "de": "Zwölf Wörter in drei Vierergruppen passen zu A2 und decken die Paare männlich und weiblich ab."
+  },
+  "difficultyBalance": {
+    "en": "Most words are core; the in-law words and the plurals are more demanding.",
+    "fr": "La plupart des mots sont de base ; les mots de la belle-famille et les pluriels sont plus difficiles.",
+    "de": "Die meisten Wörter sind Grundwortschatz; die angeheirateten Verwandten und die Pluralwörter sind anspruchsvoller."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "onkel-tante",
+      "label": {
+        "en": "Aunts, uncles and cousins",
+        "fr": "Oncles, tantes et cousins",
+        "de": "Onkel, Tanten und Cousins"
+      },
+      "targetIds": ["onkel", "tante", "cousin", "cousine"],
+      "introduction": {
+        "en": "These relatives belong to your parents' side of the family:\n\n- `der Onkel`\n- `die Tante`\n- `der Cousin`\n- `die Cousine`\n\nLearn each noun with its **article**: it shows the gender.",
+        "fr": "Ces proches font partie de la famille de vos parents :\n\n- `der Onkel`\n- `die Tante`\n- `der Cousin`\n- `die Cousine`\n\nApprenez chaque nom avec son **article** : il indique le genre.",
+        "de": "Diese Verwandten gehören zur Familie deiner Eltern:\n\n- `der Onkel`\n- `die Tante`\n- `der Cousin`\n- `die Cousine`\n\nLerne jedes Nomen mit seinem **Artikel**: Er zeigt das Genus."
+      }
+    },
+    {
+      "id": "neffe-enkel",
+      "label": {
+        "en": "Nephews, nieces and grandchildren",
+        "fr": "Neveux, nièces et petits-enfants",
+        "de": "Neffen, Nichten und Enkel"
+      },
+      "targetIds": ["neffe", "nichte", "enkel", "enkelin"],
+      "introduction": {
+        "en": "These are the children of your siblings and of your own children:\n\n- `der Neffe`\n- `die Nichte`\n- `der Enkel`\n- `die Enkelin`\n\nThe feminine form often ends in **-in**: `der Enkel` and `die Enkelin`.",
+        "fr": "Ce sont les enfants de vos frères et sœurs et de vos propres enfants :\n\n- `der Neffe`\n- `die Nichte`\n- `der Enkel`\n- `die Enkelin`\n\nLa forme féminine se termine souvent par **-in** : `der Enkel` et `die Enkelin`.",
+        "de": "Das sind die Kinder deiner Geschwister und deiner eigenen Kinder:\n\n- `der Neffe`\n- `die Nichte`\n- `der Enkel`\n- `die Enkelin`\n\nDie weibliche Form endet oft auf **-in**: `der Enkel` und `die Enkelin`."
+      }
+    },
+    {
+      "id": "angeheiratet",
+      "label": {
+        "en": "In-laws and relatives",
+        "fr": "Belle-famille et proches",
+        "de": "Angeheiratete und Verwandte"
+      },
+      "targetIds": ["schwager", "schwaegerin", "schwiegereltern", "verwandte"],
+      "introduction": {
+        "en": "These words name family by marriage and the family as a whole:\n\n- `der Schwager`\n- `die Schwägerin`\n- `die Schwiegereltern`\n- `die Verwandten`\n\nTwo words are **plural**. Their article is always `die`.",
+        "fr": "Ces mots désignent la famille par alliance et la famille en général :\n\n- `der Schwager`\n- `die Schwägerin`\n- `die Schwiegereltern`\n- `die Verwandten`\n\nDeux mots sont au **pluriel**. Leur article est toujours `die`.",
+        "de": "Diese Wörter nennen die angeheiratete Familie und die Familie insgesamt:\n\n- `der Schwager`\n- `die Schwägerin`\n- `die Schwiegereltern`\n- `die Verwandten`\n\nZwei Wörter stehen im **Plural**. Ihr Artikel ist immer `die`."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "onkel",
+      "term": "Onkel",
+      "translations": { "en": ["uncle"], "fr": ["oncle"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Onkel",
+      "examForms": ["der Onkel"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɔŋkl̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mein Onkel wohnt in Hamburg.",
+        "translation": { "en": "My uncle lives in Hamburg.", "fr": "Mon oncle habite à Hambourg." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Onkel is masculine, so its article is der.",
+        "fr": "Onkel est masculin : on dit der Onkel.",
+        "de": "Onkel ist maskulin, daher lautet der Artikel der."
+      },
+      "genderExplanation": {
+        "en": "Onkel is masculine, so its article is der.",
+        "fr": "Onkel est masculin : on dit der Onkel.",
+        "de": "Onkel ist maskulin, daher lautet der Artikel der."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Der Bruder meiner Mutter ist mein ",
+        "after": ".",
+        "accepted": { "answers": ["Onkel"] },
+        "referenceTargetIds": ["onkel", "tante", "nichte", "enkelin"],
+        "explanation": {
+          "en": "The brother of your mother is your uncle.",
+          "fr": "Le frère de votre mère est votre oncle.",
+          "de": "Der Bruder deiner Mutter ist dein Onkel."
+        }
+      },
+      "listeningOptionTargetIds": ["onkel", "enkel", "tante", "neffe"]
+    },
+    {
+      "id": "tante",
+      "term": "Tante",
+      "translations": { "en": ["aunt"], "fr": ["tante"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Tante",
+      "examForms": ["die Tante"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈtantə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Meine Tante ist Ärztin.",
+        "translation": { "en": "My aunt is a doctor.", "fr": "Ma tante est médecin." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Tante is feminine, so its article is die.",
+        "fr": "Tante est féminin : on dit die Tante.",
+        "de": "Tante ist feminin, daher lautet der Artikel die."
+      },
+      "genderExplanation": {
+        "en": "Tante is feminine, so its article is die.",
+        "fr": "Tante est féminin : on dit die Tante.",
+        "de": "Tante ist feminin, daher lautet der Artikel die."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Die Schwester meines Vaters ist meine ",
+        "after": ".",
+        "accepted": { "answers": ["Tante"] },
+        "referenceTargetIds": ["tante", "onkel", "neffe", "enkel"],
+        "explanation": {
+          "en": "The sister of your father is your aunt.",
+          "fr": "La sœur de votre père est votre tante.",
+          "de": "Die Schwester deines Vaters ist deine Tante."
+        }
+      },
+      "listeningOptionTargetIds": ["onkel", "enkel", "tante", "neffe"]
+    },
+    {
+      "id": "cousin",
+      "term": "Cousin",
+      "translations": { "en": ["male cousin", "cousin"], "fr": ["cousin"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Cousin",
+      "examForms": ["der Cousin"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kuˈzɛ̃ː/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mein Cousin spielt Fußball.",
+        "translation": { "en": "My cousin plays football.", "fr": "Mon cousin joue au football." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Cousin is masculine, so its article is der.",
+        "fr": "Cousin est masculin : on dit der Cousin.",
+        "de": "Cousin ist maskulin, daher lautet der Artikel der."
+      },
+      "genderExplanation": {
+        "en": "Cousin is masculine, so its article is der.",
+        "fr": "Cousin est masculin : on dit der Cousin.",
+        "de": "Cousin ist maskulin, daher lautet der Artikel der."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Der Sohn meiner Tante ist mein ",
+        "after": ".",
+        "accepted": { "answers": ["Cousin"] },
+        "referenceTargetIds": ["cousin", "cousine", "tante", "enkelin"],
+        "explanation": {
+          "en": "The son of your aunt is your male cousin.",
+          "fr": "Le fils de votre tante est votre cousin.",
+          "de": "Der Sohn deiner Tante ist dein Cousin."
+        }
+      },
+      "listeningOptionTargetIds": ["cousin", "cousine", "nichte", "enkelin"]
+    },
+    {
+      "id": "cousine",
+      "term": "Cousine",
+      "translations": { "en": ["female cousin"], "fr": ["cousine"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Cousine",
+      "examForms": ["die Cousine"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kuˈziːnə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Meine Cousine wohnt in Wien.",
+        "translation": { "en": "My cousin lives in Vienna.", "fr": "Ma cousine habite à Vienne." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Cousine is feminine, so its article is die.",
+        "fr": "Cousine est féminin : on dit die Cousine.",
+        "de": "Cousine ist feminin, daher lautet der Artikel die."
+      },
+      "genderExplanation": {
+        "en": "Cousine is feminine, so its article is die.",
+        "fr": "Cousine est féminin : on dit die Cousine.",
+        "de": "Cousine ist feminin, daher lautet der Artikel die."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Die Tochter meines Onkels ist meine ",
+        "after": ".",
+        "accepted": { "answers": ["Cousine"] },
+        "referenceTargetIds": ["cousine", "cousin", "neffe", "schwager"],
+        "explanation": {
+          "en": "The daughter of your uncle is your female cousin.",
+          "fr": "La fille de votre oncle est votre cousine.",
+          "de": "Die Tochter deines Onkels ist deine Cousine."
+        }
+      },
+      "listeningOptionTargetIds": ["cousin", "cousine", "nichte", "enkelin"]
+    },
+    {
+      "id": "neffe",
+      "term": "Neffe",
+      "translations": { "en": ["nephew"], "fr": ["neveu"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Neffe",
+      "examForms": ["der Neffe"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈnɛfə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mein Neffe ist fünf Jahre alt.",
+        "translation": { "en": "My nephew is five years old.", "fr": "Mon neveu a cinq ans." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Neffe is masculine, so its article is der.",
+        "fr": "Neffe est masculin : on dit der Neffe.",
+        "de": "Neffe ist maskulin, daher lautet der Artikel der."
+      },
+      "genderExplanation": {
+        "en": "Neffe is masculine, so its article is der.",
+        "fr": "Neffe est masculin : on dit der Neffe.",
+        "de": "Neffe ist maskulin, daher lautet der Artikel der."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Der Sohn meiner Schwester ist mein ",
+        "after": ".",
+        "accepted": { "answers": ["Neffe"] },
+        "referenceTargetIds": ["neffe", "onkel", "enkel", "schwager"],
+        "explanation": {
+          "en": "The son of your sister is your nephew.",
+          "fr": "Le fils de votre sœur est votre neveu.",
+          "de": "Der Sohn deiner Schwester ist dein Neffe."
+        }
+      },
+      "listeningOptionTargetIds": ["onkel", "enkel", "tante", "neffe"]
+    },
+    {
+      "id": "nichte",
+      "term": "Nichte",
+      "translations": { "en": ["niece"], "fr": ["nièce"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Nichte",
+      "examForms": ["die Nichte"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈnɪçtə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Meine Nichte malt gern Bilder.",
+        "translation": {
+          "en": "My niece likes painting pictures.",
+          "fr": "Ma nièce aime peindre des tableaux."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Nichte is feminine, so its article is die.",
+        "fr": "Nichte est féminin : on dit die Nichte.",
+        "de": "Nichte ist feminin, daher lautet der Artikel die."
+      },
+      "genderExplanation": {
+        "en": "Nichte is feminine, so its article is die.",
+        "fr": "Nichte est féminin : on dit die Nichte.",
+        "de": "Nichte ist feminin, daher lautet der Artikel die."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Die Tochter meines Bruders ist meine ",
+        "after": ".",
+        "accepted": { "answers": ["Nichte"] },
+        "referenceTargetIds": ["nichte", "tante", "enkelin", "cousine"],
+        "explanation": {
+          "en": "The daughter of your brother is your niece.",
+          "fr": "La fille de votre frère est votre nièce.",
+          "de": "Die Tochter deines Bruders ist deine Nichte."
+        }
+      },
+      "listeningOptionTargetIds": ["cousin", "cousine", "nichte", "enkelin"]
+    },
+    {
+      "id": "enkel",
+      "term": "Enkel",
+      "translations": { "en": ["grandson"], "fr": ["petit-fils"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Enkel",
+      "examForms": ["der Enkel"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɛŋkl̩/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Der Enkel besucht seine Oma.",
+        "translation": {
+          "en": "The grandson visits his grandma.",
+          "fr": "Le petit-fils rend visite à sa grand-mère."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Enkel is masculine, so its article is der.",
+        "fr": "Enkel est masculin : on dit der Enkel.",
+        "de": "Enkel ist maskulin, daher lautet der Artikel der."
+      },
+      "genderExplanation": {
+        "en": "Enkel is masculine, so its article is der.",
+        "fr": "Enkel est masculin : on dit der Enkel.",
+        "de": "Enkel ist maskulin, daher lautet der Artikel der."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Der Sohn meiner Tochter ist mein ",
+        "after": ".",
+        "accepted": { "answers": ["Enkel"] },
+        "referenceTargetIds": ["enkel", "neffe", "onkel", "cousin"],
+        "explanation": {
+          "en": "The son of your daughter is your grandson.",
+          "fr": "Le fils de votre fille est votre petit-fils.",
+          "de": "Der Sohn deiner Tochter ist dein Enkel."
+        }
+      },
+      "listeningOptionTargetIds": ["onkel", "enkel", "tante", "neffe"]
+    },
+    {
+      "id": "enkelin",
+      "term": "Enkelin",
+      "translations": { "en": ["granddaughter"], "fr": ["petite-fille"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Enkelin",
+      "examForms": ["die Enkelin"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɛŋkəlɪn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Die Enkelin spielt im Garten.",
+        "translation": {
+          "en": "The granddaughter is playing in the garden.",
+          "fr": "La petite-fille joue dans le jardin."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Enkelin is feminine, so its article is die.",
+        "fr": "Enkelin est féminin : on dit die Enkelin.",
+        "de": "Enkelin ist feminin, daher lautet der Artikel die."
+      },
+      "genderExplanation": {
+        "en": "Enkelin is feminine, so its article is die.",
+        "fr": "Enkelin est féminin : on dit die Enkelin.",
+        "de": "Enkelin ist feminin, daher lautet der Artikel die."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Die Tochter meines Sohnes ist meine ",
+        "after": ".",
+        "accepted": { "answers": ["Enkelin"] },
+        "referenceTargetIds": ["enkelin", "nichte", "tante", "cousine"],
+        "explanation": {
+          "en": "The daughter of your son is your granddaughter.",
+          "fr": "La fille de votre fils est votre petite-fille.",
+          "de": "Die Tochter deines Sohnes ist deine Enkelin."
+        }
+      },
+      "listeningOptionTargetIds": ["cousin", "cousine", "nichte", "enkelin"]
+    },
+    {
+      "id": "schwager",
+      "term": "Schwager",
+      "translations": { "en": ["brother-in-law"], "fr": ["beau-frère"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "der Schwager",
+      "examForms": ["der Schwager"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃvaːɡɐ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Mein Schwager arbeitet bei der Bank.",
+        "translation": {
+          "en": "My brother-in-law works at the bank.",
+          "fr": "Mon beau-frère travaille à la banque."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Schwager is masculine, so its article is der.",
+        "fr": "Schwager est masculin : on dit der Schwager.",
+        "de": "Schwager ist maskulin, daher lautet der Artikel der."
+      },
+      "genderExplanation": {
+        "en": "Schwager is masculine, so its article is der.",
+        "fr": "Schwager est masculin : on dit der Schwager.",
+        "de": "Schwager ist maskulin, daher lautet der Artikel der."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Der Mann meiner Schwester ist mein ",
+        "after": ".",
+        "accepted": { "answers": ["Schwager"] },
+        "referenceTargetIds": ["schwager", "neffe", "cousin", "enkel"],
+        "explanation": {
+          "en": "The husband of your sister is your brother-in-law.",
+          "fr": "Le mari de votre sœur est votre beau-frère.",
+          "de": "Der Mann deiner Schwester ist dein Schwager."
+        }
+      },
+      "listeningOptionTargetIds": ["schwager", "schwaegerin", "schwiegereltern", "verwandte"]
+    },
+    {
+      "id": "schwaegerin",
+      "term": "Schwägerin",
+      "translations": { "en": ["sister-in-law"], "fr": ["belle-sœur"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "die Schwägerin",
+      "examForms": ["die Schwägerin"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃvɛːɡəʁɪn/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Meine Schwägerin kocht sehr gut.",
+        "translation": {
+          "en": "My sister-in-law cooks very well.",
+          "fr": "Ma belle-sœur cuisine très bien."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Schwägerin is feminine, so its article is die.",
+        "fr": "Schwägerin est féminin : on dit die Schwägerin.",
+        "de": "Schwägerin ist feminin, daher lautet der Artikel die."
+      },
+      "genderExplanation": {
+        "en": "Schwägerin is feminine, so its article is die.",
+        "fr": "Schwägerin est féminin : on dit die Schwägerin.",
+        "de": "Schwägerin ist feminin, daher lautet der Artikel die."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Die Frau meines Bruders ist meine ",
+        "after": ".",
+        "accepted": { "answers": ["Schwägerin"] },
+        "referenceTargetIds": ["schwaegerin", "tante", "nichte", "cousine"],
+        "explanation": {
+          "en": "The wife of your brother is your sister-in-law.",
+          "fr": "La femme de votre frère est votre belle-sœur.",
+          "de": "Die Frau deines Bruders ist deine Schwägerin."
+        }
+      },
+      "listeningOptionTargetIds": ["schwager", "schwaegerin", "schwiegereltern", "verwandte"]
+    },
+    {
+      "id": "schwiegereltern",
+      "term": "Schwiegereltern",
+      "translations": { "en": ["parents-in-law"], "fr": ["beaux-parents"] },
+      "wordClass": "noun",
+      "genders": ["masculine", "feminine"],
+      "number": "plural",
+      "teachingForm": "die Schwiegereltern",
+      "examForms": ["die Schwiegereltern"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃviːɡɐˌʔɛltɐn/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Wir besuchen am Sonntag meine Schwiegereltern.",
+        "translation": {
+          "en": "On Sunday we are visiting my parents-in-law.",
+          "fr": "Dimanche, nous rendons visite à mes beaux-parents."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Schwiegereltern is a plural word, so its article is die.",
+        "fr": "Schwiegereltern est un mot pluriel : on dit die Schwiegereltern.",
+        "de": "Schwiegereltern ist ein Pluralwort, daher lautet der Artikel die."
+      },
+      "genderExplanation": {
+        "en": "Schwiegereltern is plural, so its article is die for every gender.",
+        "fr": "Schwiegereltern est pluriel : l’article est die pour tous les genres.",
+        "de": "Schwiegereltern steht im Plural, daher lautet der Artikel die für alle Genera."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Die Eltern meiner Frau sind meine ",
+        "after": ".",
+        "accepted": { "answers": ["Schwiegereltern"] },
+        "referenceTargetIds": ["schwiegereltern", "onkel", "tante", "cousine"],
+        "explanation": {
+          "en": "The parents of your wife are your parents-in-law.",
+          "fr": "Les parents de votre femme sont vos beaux-parents.",
+          "de": "Die Eltern deiner Frau sind deine Schwiegereltern."
+        }
+      },
+      "listeningOptionTargetIds": ["schwager", "schwaegerin", "schwiegereltern", "verwandte"]
+    },
+    {
+      "id": "verwandte",
+      "term": "Verwandten",
+      "translations": { "en": ["relatives"], "fr": ["les proches"] },
+      "wordClass": "noun",
+      "genders": ["masculine", "feminine"],
+      "number": "plural",
+      "teachingForm": "die Verwandten",
+      "examForms": ["die Verwandten"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fɛɐ̯ˈvantn̩/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Alle Verwandten kommen zur Hochzeit.",
+        "translation": {
+          "en": "All the relatives are coming to the wedding.",
+          "fr": "Tous les proches viennent au mariage."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Verwandten is a plural word, so its article is die.",
+        "fr": "Verwandten est un mot pluriel : on dit die Verwandten.",
+        "de": "Verwandten ist ein Pluralwort, daher lautet der Artikel die."
+      },
+      "genderExplanation": {
+        "en": "Verwandten is plural, so its article is die for every gender.",
+        "fr": "Verwandten est pluriel : l’article est die pour tous les genres.",
+        "de": "Verwandten steht im Plural, daher lautet der Artikel die für alle Genera."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Zu Weihnachten kommen alle unsere ",
+        "after": " zu uns.",
+        "accepted": { "answers": ["Verwandten"] },
+        "referenceTargetIds": ["verwandte", "schwager", "enkelin", "neffe"],
+        "explanation": {
+          "en": "Only Verwandten is plural and fits after alle unsere.",
+          "fr": "Seul « Verwandten » est au pluriel et convient après alle unsere.",
+          "de": "Nur „Verwandten“ steht im Plural und passt nach alle unsere."
+        }
+      },
+      "listeningOptionTargetIds": ["schwager", "schwaegerin", "schwiegereltern", "verwandte"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}
