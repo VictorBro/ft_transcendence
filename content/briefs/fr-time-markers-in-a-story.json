@@ -1,0 +1,678 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-time-markers-in-a-story",
+  "lang": "fr",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Ce jour-là, la veille, le lendemain",
+  "objective": {
+    "en": "Place the moments of a past story with time markers such as ce jour-là, la veille, le lendemain and soudain.",
+    "fr": "Situer les moments d’un récit au passé avec des repères comme ce jour-là, la veille, le lendemain et soudain.",
+    "de": "Zeitpunkte einer Erzählung in der Vergangenheit mit Ausdrücken wie ce jour-là, la veille, le lendemain und soudain einordnen."
+  },
+  "estimatedMinutes": 20,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:44:18.173Z",
+    "inputHashes": { "outline": "bab9c3cbe2cc080ab73047cbf1dfd95c722b0b7d353fb8bdeaabe18119206cd9" }
+  },
+  "kind": "vocabulary",
+  "theme": "language",
+  "coverageNotes": {
+    "en": "Twelve time markers for telling a past story: days before and after a reference day, instants and durations, and two words for sudden events.",
+    "fr": "Douze repères temporels pour raconter au passé : jours avant et après un jour de référence, instants et durées, et deux mots pour l’imprévu.",
+    "de": "Zwölf Zeitmarker für Erzählungen in der Vergangenheit: Tage vor und nach einem Bezugstag, Augenblicke und Zeitspannen sowie zwei Wörter für Unerwartetes."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve expressions give enough variety at B1 without mixing in the sequencing words taught elsewhere (d’abord, ensuite, enfin).",
+    "fr": "Douze expressions offrent assez de variété au niveau B1 sans empiéter sur les mots de succession vus ailleurs (d’abord, ensuite, enfin).",
+    "de": "Zwölf Ausdrücke bieten auf B1 genug Abwechslung, ohne die anderswo behandelten Reihenfolgewörter (d’abord, ensuite, enfin) zu wiederholen."
+  },
+  "difficultyBalance": {
+    "en": "Most expressions are core; the near-synonyms and the less common ones are marked demanding.",
+    "fr": "La plupart des expressions sont de base ; les quasi-synonymes et les moins courantes sont marquées comme exigeantes.",
+    "de": "Die meisten Ausdrücke sind Grundwortschatz; Beinahe-Synonyme und seltenere Ausdrücke gelten als anspruchsvoll."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "jours",
+      "label": {
+        "en": "Days before and after",
+        "fr": "Les jours avant et après",
+        "de": "Tage davor und danach"
+      },
+      "targetIds": [
+        "ce-jour-la",
+        "la-veille",
+        "le-lendemain",
+        "deux-jours-plus-tard",
+        "quelques-semaines-plus-tot"
+      ],
+      "introduction": {
+        "en": "To place a day in a **past story**, link it to a day already named:\n\n- `ce jour-là`\n- `la veille`\n- `le lendemain`\n- `deux jours plus tard`\n- `quelques semaines plus tôt`",
+        "fr": "Pour situer un jour dans un **récit au passé**, on le relie à un jour déjà nommé :\n\n- `ce jour-là`\n- `la veille`\n- `le lendemain`\n- `deux jours plus tard`\n- `quelques semaines plus tôt`",
+        "de": "Um einen Tag in einer **Erzählung in der Vergangenheit** einzuordnen, bezieht man ihn auf einen schon genannten Tag:\n\n- `ce jour-là`\n- `la veille`\n- `le lendemain`\n- `deux jours plus tard`\n- `quelques semaines plus tôt`"
+      }
+    },
+    {
+      "id": "moments",
+      "label": {
+        "en": "Moments and time spans",
+        "fr": "Moments et durées",
+        "de": "Augenblicke und Zeitspannen"
+      },
+      "targetIds": [
+        "a-ce-moment-la",
+        "pendant-ce-temps",
+        "au-bout-dun-moment",
+        "peu-apres",
+        "auparavant"
+      ],
+      "introduction": {
+        "en": "These expressions place **an instant or a stretch of time** in the story:\n\n- `à ce moment-là`\n- `pendant ce temps`\n- `au bout d’un moment`\n- `peu après`\n- `auparavant`",
+        "fr": "Ces expressions situent **un instant ou une durée** dans le récit :\n\n- `à ce moment-là`\n- `pendant ce temps`\n- `au bout d’un moment`\n- `peu après`\n- `auparavant`",
+        "de": "Diese Ausdrücke ordnen **einen Augenblick oder eine Zeitspanne** in der Erzählung ein:\n\n- `à ce moment-là`\n- `pendant ce temps`\n- `au bout d’un moment`\n- `peu après`\n- `auparavant`"
+      }
+    },
+    {
+      "id": "imprevu",
+      "label": { "en": "The unexpected", "fr": "L’imprévu", "de": "Das Unerwartete" },
+      "targetIds": ["soudain", "tout-a-coup"],
+      "introduction": {
+        "en": "Two expressions announce **something unexpected** in a story:\n\n- `soudain`\n- `tout à coup`",
+        "fr": "Deux expressions annoncent **un événement inattendu** dans un récit :\n\n- `soudain`\n- `tout à coup`",
+        "de": "Zwei Ausdrücke kündigen in einer Erzählung **etwas Unerwartetes** an:\n\n- `soudain`\n- `tout à coup`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "ce-jour-la",
+      "term": "ce jour-là",
+      "translations": { "en": ["that day"], "de": ["an diesem Tag"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ce jour-là",
+      "examForms": ["ce jour-là"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/sə ʒuʁ la/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ce jour-là, il a beaucoup neigé.",
+        "translation": {
+          "en": "That day, it snowed a lot.",
+          "de": "An diesem Tag hat es viel geschneit."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Ce jour-là points back to a day already named in the story.",
+        "fr": "« Ce jour-là » reprend un jour déjà nommé dans le récit.",
+        "de": "„Ce jour-là“ greift einen Tag auf, der in der Erzählung schon genannt wurde."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le 3 mai, il y a eu une grève : ",
+        "after": ", aucun train n’est parti.",
+        "accepted": { "answers": ["ce jour-là"] },
+        "referenceTargetIds": ["ce-jour-la", "la-veille", "soudain", "pendant-ce-temps"],
+        "explanation": {
+          "en": "Only ce jour-là fits: it refers back to the 3 May named before.",
+          "fr": "Seul « ce jour-là » convient : il reprend le 3 mai déjà nommé.",
+          "de": "Nur „ce jour-là“ passt: Es greift den schon genannten 3. Mai auf."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "ce-jour-la",
+        "a-ce-moment-la",
+        "deux-jours-plus-tard",
+        "la-veille"
+      ]
+    },
+    {
+      "id": "la-veille",
+      "term": "la veille",
+      "translations": { "en": ["the day before"], "de": ["am Vortag", "am Tag davor"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "la veille",
+      "examForms": ["la veille"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/la vɛj/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "La veille, nous avons préparé les valises.",
+        "translation": {
+          "en": "The day before, we packed the suitcases.",
+          "de": "Am Vortag haben wir die Koffer gepackt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "La veille is the day just before a day already mentioned in the story.",
+        "fr": "« La veille » est le jour juste avant un jour déjà mentionné dans le récit.",
+        "de": "„La veille“ ist der Tag unmittelbar vor einem in der Erzählung schon genannten Tag."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Mon examen était un jeudi ; je me suis couché tôt la ",
+        "after": ", mais je n’ai pas dormi.",
+        "accepted": { "answers": ["veille"] },
+        "referenceTargetIds": ["la-veille", "le-lendemain", "soudain", "auparavant"],
+        "explanation": {
+          "en": "After the article la, only veille fits: the day before the exam.",
+          "fr": "Après l’article « la », seul « veille » convient : le jour avant l’examen.",
+          "de": "Nach dem Artikel „la“ passt nur „veille“: der Tag vor der Prüfung."
+        }
+      },
+      "listeningOptionTargetIds": ["la-veille", "le-lendemain", "ce-jour-la", "peu-apres"]
+    },
+    {
+      "id": "le-lendemain",
+      "term": "le lendemain",
+      "translations": { "en": ["the next day"], "de": ["am nächsten Tag", "am Folgetag"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "le lendemain",
+      "examForms": ["le lendemain"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/lə lɑ̃dmɛ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Le lendemain, Julie est partie à l’aube.",
+        "translation": {
+          "en": "The next day, Julie left at dawn.",
+          "de": "Am nächsten Tag ist Julie im Morgengrauen abgereist."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Le lendemain is the day right after a day already mentioned in the story.",
+        "fr": "« Le lendemain » est le jour qui suit un jour déjà mentionné dans le récit.",
+        "de": "„Le lendemain“ ist der Tag nach einem in der Erzählung schon genannten Tag."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nous avons dîné chez Paul samedi soir. Le ",
+        "after": " matin, nous sommes rentrés à Lyon.",
+        "accepted": { "answers": ["lendemain"] },
+        "referenceTargetIds": ["le-lendemain", "la-veille", "tout-a-coup", "pendant-ce-temps"],
+        "explanation": {
+          "en": "After the article le, only lendemain fits: the morning after Saturday evening.",
+          "fr": "Après l’article « le », seul « lendemain » convient : le matin après le samedi soir.",
+          "de": "Nach dem Artikel „le“ passt nur „lendemain“: der Morgen nach dem Samstagabend."
+        }
+      },
+      "listeningOptionTargetIds": ["le-lendemain", "la-veille", "auparavant", "soudain"]
+    },
+    {
+      "id": "deux-jours-plus-tard",
+      "term": "deux jours plus tard",
+      "translations": { "en": ["two days later"], "de": ["zwei Tage später"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "deux jours plus tard",
+      "examForms": ["deux jours plus tard"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/dø ʒuʁ ply taʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Deux jours plus tard, la réponse est arrivée.",
+        "translation": {
+          "en": "Two days later, the answer arrived.",
+          "de": "Zwei Tage später kam die Antwort."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Plus tard after a length of time counts forward from a moment in the story.",
+        "fr": "« Plus tard » après une durée compte vers l’avant à partir d’un moment du récit.",
+        "de": "„Plus tard“ nach einer Zeitangabe zählt von einem Moment der Erzählung aus vorwärts."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Léa a envoyé sa lettre lundi ; ",
+        "after": ", on l’a appelée pour un entretien.",
+        "accepted": { "answers": ["deux jours plus tard"] },
+        "referenceTargetIds": [
+          "deux-jours-plus-tard",
+          "quelques-semaines-plus-tot",
+          "a-ce-moment-la",
+          "soudain"
+        ],
+        "explanation": {
+          "en": "Only deux jours plus tard fits: it counts forward from Monday.",
+          "fr": "Seul « deux jours plus tard » convient : il compte à partir de lundi.",
+          "de": "Nur „deux jours plus tard“ passt: Es zählt ab Montag vorwärts."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "deux-jours-plus-tard",
+        "quelques-semaines-plus-tot",
+        "ce-jour-la",
+        "peu-apres"
+      ]
+    },
+    {
+      "id": "quelques-semaines-plus-tot",
+      "term": "quelques semaines plus tôt",
+      "translations": { "en": ["a few weeks earlier"], "de": ["einige Wochen zuvor"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "quelques semaines plus tôt",
+      "examForms": ["quelques semaines plus tôt"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kɛlk səmɛn ply to/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Quelques semaines plus tôt, il ne savait rien.",
+        "translation": {
+          "en": "A few weeks earlier, he knew nothing.",
+          "de": "Einige Wochen zuvor wusste er nichts."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Plus tôt looks back in time, plus tard looks forward: do not mix them up.",
+        "fr": "« Plus tôt » regarde en arrière, « plus tard » regarde en avant : ne les confondez pas.",
+        "de": "„Plus tôt“ blickt zurück, „plus tard“ blickt nach vorn: nicht verwechseln."
+      },
+      "explanation": {
+        "en": "Plus tôt after a length of time counts backward from a moment in the story.",
+        "fr": "« Plus tôt » après une durée compte vers l’arrière à partir d’un moment du récit.",
+        "de": "„Plus tôt“ nach einer Zeitangabe zählt von einem Moment der Erzählung aus rückwärts."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le mariage a eu lieu le 12 juin. Les invitations, elles, sont parties ",
+        "after": ".",
+        "accepted": { "answers": ["quelques semaines plus tôt"] },
+        "referenceTargetIds": [
+          "quelques-semaines-plus-tot",
+          "le-lendemain",
+          "tout-a-coup",
+          "pendant-ce-temps"
+        ],
+        "explanation": {
+          "en": "Only quelques semaines plus tôt fits: invitations go out before the wedding.",
+          "fr": "Seul « quelques semaines plus tôt » convient : les invitations partent avant le mariage.",
+          "de": "Nur „quelques semaines plus tôt“ passt: Einladungen werden vor der Hochzeit verschickt."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "quelques-semaines-plus-tot",
+        "deux-jours-plus-tard",
+        "la-veille",
+        "tout-a-coup"
+      ]
+    },
+    {
+      "id": "a-ce-moment-la",
+      "term": "à ce moment-là",
+      "translations": { "en": ["at that moment"], "de": ["in diesem Moment"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "à ce moment-là",
+      "examForms": ["à ce moment-là"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/a sə mɔmɑ̃ la/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "À ce moment-là, le téléphone a sonné.",
+        "translation": {
+          "en": "At that moment, the phone rang.",
+          "de": "In diesem Moment klingelte das Telefon."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "À ce moment-là points to the exact instant just described.",
+        "fr": "« À ce moment-là » désigne l’instant précis qui vient d’être décrit.",
+        "de": "„À ce moment-là“ verweist auf den gerade beschriebenen genauen Augenblick."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il était vingt heures et le match commençait ; ",
+        "after": ", tous les voisins étaient devant la télé.",
+        "accepted": { "answers": ["à ce moment-là"] },
+        "referenceTargetIds": [
+          "a-ce-moment-la",
+          "auparavant",
+          "le-lendemain",
+          "deux-jours-plus-tard"
+        ],
+        "explanation": {
+          "en": "Only à ce moment-là fits: it is the same instant as the start of the match.",
+          "fr": "Seul « à ce moment-là » convient : c’est le même instant que le début du match.",
+          "de": "Nur „à ce moment-là“ passt: Es ist derselbe Augenblick wie der Spielbeginn."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "a-ce-moment-la",
+        "ce-jour-la",
+        "au-bout-dun-moment",
+        "pendant-ce-temps"
+      ]
+    },
+    {
+      "id": "pendant-ce-temps",
+      "term": "pendant ce temps",
+      "translations": { "en": ["meanwhile"], "de": ["währenddessen"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "pendant ce temps",
+      "examForms": ["pendant ce temps"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/pɑ̃dɑ̃ sə tɑ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Pendant ce temps, Hugo attendait dehors.",
+        "translation": {
+          "en": "Meanwhile, Hugo was waiting outside.",
+          "de": "Währenddessen wartete Hugo draußen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Pendant ce temps introduces a second action that goes on at the same time as the first.",
+        "fr": "« Pendant ce temps » introduit une deuxième action qui se déroule en même temps que la première.",
+        "de": "„Pendant ce temps“ führt eine zweite Handlung ein, die gleichzeitig mit der ersten abläuft."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Paul préparait le dîner dans la cuisine ; ",
+        "after": ", les enfants jouaient dans le jardin.",
+        "accepted": { "answers": ["pendant ce temps"] },
+        "referenceTargetIds": [
+          "pendant-ce-temps",
+          "le-lendemain",
+          "tout-a-coup",
+          "deux-jours-plus-tard"
+        ],
+        "explanation": {
+          "en": "Only pendant ce temps fits: two actions happen at the same time.",
+          "fr": "Seul « pendant ce temps » convient : deux actions ont lieu en même temps.",
+          "de": "Nur „pendant ce temps“ passt: Zwei Handlungen laufen gleichzeitig ab."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "pendant-ce-temps",
+        "a-ce-moment-la",
+        "au-bout-dun-moment",
+        "quelques-semaines-plus-tot"
+      ]
+    },
+    {
+      "id": "au-bout-dun-moment",
+      "term": "au bout d’un moment",
+      "translations": { "en": ["after a while"], "de": ["nach einer Weile"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "au bout d’un moment",
+      "examForms": ["au bout d’un moment"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/o bu dœ̃ mɔmɑ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Au bout d’un moment, il s’est levé.",
+        "translation": { "en": "After a while, he got up.", "de": "Nach einer Weile stand er auf." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Au bout d’un moment says that some time passed before the next event.",
+        "fr": "« Au bout d’un moment » indique qu’un certain temps a passé avant l’événement suivant.",
+        "de": "„Au bout d’un moment“ sagt, dass vor dem nächsten Ereignis einige Zeit verging."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nous avons attendu devant la porte. Au ",
+        "after": ", elle a enfin ouvert.",
+        "accepted": { "answers": ["bout d’un moment", "bout d'un moment"] },
+        "referenceTargetIds": ["au-bout-dun-moment", "soudain", "la-veille", "ce-jour-la"],
+        "explanation": {
+          "en": "After Au, only bout d’un moment fits: we waited, then she opened.",
+          "fr": "Après « Au », seul « bout d’un moment » convient : on a attendu, puis elle a ouvert.",
+          "de": "Nach „Au“ passt nur „bout d’un moment“: Man wartete, dann öffnete sie."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "au-bout-dun-moment",
+        "a-ce-moment-la",
+        "pendant-ce-temps",
+        "tout-a-coup"
+      ]
+    },
+    {
+      "id": "peu-apres",
+      "term": "peu après",
+      "translations": { "en": ["shortly afterwards"], "de": ["kurz danach"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "peu après",
+      "examForms": ["peu après"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/pø apʁɛ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Peu après, les invités sont partis.",
+        "translation": {
+          "en": "Shortly afterwards, the guests left.",
+          "de": "Kurz danach gingen die Gäste."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Peu après introduces an event that follows a short time after the previous one.",
+        "fr": "« Peu après » introduit un événement qui suit de peu le précédent.",
+        "de": "„Peu après“ führt ein Ereignis ein, das kurz auf das vorherige folgt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le film s’est terminé à vingt-deux heures ; ",
+        "after": ", nous étions tous au lit.",
+        "accepted": { "answers": ["peu après"] },
+        "referenceTargetIds": [
+          "peu-apres",
+          "auparavant",
+          "la-veille",
+          "quelques-semaines-plus-tot"
+        ],
+        "explanation": {
+          "en": "Only peu après fits: bedtime follows the end of the film closely.",
+          "fr": "Seul « peu après » convient : le coucher suit de près la fin du film.",
+          "de": "Nur „peu après“ passt: Das Zubettgehen folgt dem Filmende kurz darauf."
+        }
+      },
+      "listeningOptionTargetIds": ["peu-apres", "auparavant", "soudain", "pendant-ce-temps"]
+    },
+    {
+      "id": "auparavant",
+      "term": "auparavant",
+      "translations": { "en": ["previously", "beforehand"], "de": ["zuvor", "vorher"] },
+      "wordClass": "adverb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "auparavant",
+      "examForms": ["auparavant"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/opaʁavɑ̃/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Auparavant, elle vivait à la campagne.",
+        "translation": {
+          "en": "Previously, she lived in the countryside.",
+          "de": "Zuvor lebte sie auf dem Land."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Auparavant refers to a period before the moment of the story, without giving a length.",
+        "fr": "« Auparavant » renvoie à une période antérieure au moment du récit, sans en donner la durée.",
+        "de": "„Auparavant“ verweist auf eine Zeit vor dem Moment der Erzählung, ohne eine Dauer zu nennen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "En 2020, Samir a ouvert son restaurant ; ",
+        "after": ", il travaillait dans une banque.",
+        "accepted": { "answers": ["auparavant"] },
+        "referenceTargetIds": ["auparavant", "soudain", "le-lendemain", "peu-apres"],
+        "explanation": {
+          "en": "Only auparavant fits: it describes his life before the restaurant opened.",
+          "fr": "Seul « auparavant » convient : il décrit sa vie avant l’ouverture du restaurant.",
+          "de": "Nur „auparavant“ passt: Es beschreibt sein Leben vor der Eröffnung des Restaurants."
+        }
+      },
+      "listeningOptionTargetIds": ["auparavant", "peu-apres", "le-lendemain", "soudain"]
+    },
+    {
+      "id": "soudain",
+      "term": "soudain",
+      "translations": { "en": ["suddenly"], "de": ["plötzlich"] },
+      "wordClass": "adverb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "soudain",
+      "examForms": ["soudain", "tout à coup"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/sudɛ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Soudain, les lumières se sont éteintes.",
+        "translation": {
+          "en": "Suddenly, the lights went out.",
+          "de": "Plötzlich gingen die Lichter aus."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Soudain and tout à coup mean almost the same; both are accepted in the exam.",
+        "fr": "« Soudain » et « tout à coup » ont presque le même sens ; les deux sont acceptés à l’examen.",
+        "de": "„Soudain“ und „tout à coup“ bedeuten fast dasselbe; beide werden in der Prüfung akzeptiert."
+      },
+      "explanation": {
+        "en": "Soudain announces an event that happens without warning.",
+        "fr": "« Soudain » annonce un événement qui arrive sans prévenir.",
+        "de": "„Soudain“ kündigt ein Ereignis an, das ohne Vorwarnung eintritt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nous marchions tranquillement dans la forêt quand, ",
+        "after": ", un bruit étrange a retenti.",
+        "accepted": { "answers": ["soudain"] },
+        "referenceTargetIds": [
+          "soudain",
+          "auparavant",
+          "le-lendemain",
+          "quelques-semaines-plus-tot"
+        ],
+        "explanation": {
+          "en": "Only soudain fits: the noise comes without warning.",
+          "fr": "Seul « soudain » convient : le bruit arrive sans prévenir.",
+          "de": "Nur „soudain“ passt: Das Geräusch kommt ohne Vorwarnung."
+        }
+      },
+      "listeningOptionTargetIds": ["soudain", "tout-a-coup", "peu-apres", "auparavant"]
+    },
+    {
+      "id": "tout-a-coup",
+      "term": "tout à coup",
+      "translations": { "en": ["all of a sudden"], "de": ["auf einmal"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "tout à coup",
+      "examForms": ["tout à coup", "soudain"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/tu ta ku/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Tout à coup, un chien a aboyé.",
+        "translation": {
+          "en": "All of a sudden, a dog barked.",
+          "de": "Auf einmal bellte ein Hund."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Tout à coup and soudain mean almost the same; both are accepted in the exam.",
+        "fr": "« Tout à coup » et « soudain » ont presque le même sens ; les deux sont acceptés à l’examen.",
+        "de": "„Tout à coup“ und „soudain“ bedeuten fast dasselbe; beide werden in der Prüfung akzeptiert."
+      },
+      "explanation": {
+        "en": "Tout à coup also breaks a calm scene with an unexpected event.",
+        "fr": "« Tout à coup » vient aussi rompre une scène calme par un événement inattendu.",
+        "de": "„Tout à coup“ unterbricht ebenfalls eine ruhige Szene durch ein unerwartetes Ereignis."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "La mer était calme ; ",
+        "after": ", le vent s’est levé et les vagues sont arrivées.",
+        "accepted": { "answers": ["tout à coup"] },
+        "referenceTargetIds": [
+          "tout-a-coup",
+          "la-veille",
+          "auparavant",
+          "quelques-semaines-plus-tot"
+        ],
+        "explanation": {
+          "en": "Only tout à coup fits: a calm sea is suddenly broken by the wind.",
+          "fr": "Seul « tout à coup » convient : le calme de la mer est brusquement rompu par le vent.",
+          "de": "Nur „tout à coup“ passt: Das ruhige Meer wird plötzlich vom Wind aufgewühlt."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "tout-a-coup",
+        "soudain",
+        "au-bout-dun-moment",
+        "deux-jours-plus-tard"
+      ]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

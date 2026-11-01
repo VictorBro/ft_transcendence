@@ -1,0 +1,306 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-reflexive-verbs-past",
+  "lang": "fr",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Les verbes pronominaux au passé composé",
+  "objective": {
+    "en": "Tell your morning with pronominal verbs in the passé composé: always être, with agreement and negation (je me suis levé, elle s'est habillée).",
+    "fr": "Raconter sa matinée avec des verbes pronominaux au passé composé : toujours être, accord du participe et négation (je me suis levé, elle s'est habillée).",
+    "de": "Den Morgen mit reflexiven Verben im passé composé erzählen: immer être, mit Angleichung und Verneinung (je me suis levé, elle s'est habillée)."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:39:09.643Z",
+    "inputHashes": { "outline": "459a2d5a30550d2404686edaae0bdb2d9692232ceff2332cc7faf08f61f4d12d" }
+  },
+  "kind": "grammar",
+  "topic": "verbs_morphology",
+  "scopeBoundaries": {
+    "en": "Covers the passé composé of common pronominal verbs: auxiliary être, participle agreement with the subject, and the negative. Excludes reciprocal verbs, the rule of the direct object in detail, and other tenses.",
+    "fr": "Couvre le passé composé des verbes pronominaux courants : auxiliaire être, accord du participe avec le sujet et forme négative. Exclut les verbes réciproques, le détail de la règle du complément direct et les autres temps.",
+    "de": "Behandelt das passé composé gebräuchlicher reflexiver Verben: Hilfsverb être, Angleichung des Partizips an das Subjekt und Verneinung. Ausgeschlossen sind reziproke Verben, die Regel zum direkten Objekt im Detail und andere Zeiten."
+  },
+  "prerequisites": [
+    {
+      "en": "The present tense of être and the subject pronouns",
+      "fr": "Le présent du verbe être et les pronoms sujets",
+      "de": "Das Präsens von être und die Subjektpronomen"
+    },
+    {
+      "en": "The passé composé with avoir",
+      "fr": "Le passé composé avec avoir",
+      "de": "Das passé composé mit avoir"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-aux-etre",
+      "summary": {
+        "en": "Pronominal verbs use être in the passé composé, with the pronoun before it: je me suis levé, tu t'es lavé, il s'est réveillé.",
+        "fr": "Les verbes pronominaux se conjuguent avec être au passé composé, le pronom devant : je me suis levé, tu t'es lavé, il s'est réveillé.",
+        "de": "Reflexive Verben bilden das passé composé mit être, das Pronomen steht davor: je me suis levé, tu t'es lavé, il s'est réveillé."
+      }
+    },
+    {
+      "id": "rule-agreement",
+      "summary": {
+        "en": "The participle agrees with the subject: levé, levée, levés, levées.",
+        "fr": "Le participe passé s'accorde avec le sujet : levé, levée, levés, levées.",
+        "de": "Das Partizip richtet sich nach dem Subjekt: levé, levée, levés, levées."
+      }
+    },
+    {
+      "id": "rule-negation",
+      "summary": {
+        "en": "In the negative, ne and pas surround the pronoun and être: elle ne s'est pas habillée.",
+        "fr": "À la forme négative, ne et pas entourent le pronom et être : elle ne s'est pas habillée.",
+        "de": "In der Verneinung umschließen ne und pas das Pronomen und être: elle ne s'est pas habillée."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-forms",
+      "title": {
+        "en": "Forming the pronominal passé composé",
+        "fr": "Former le passé composé pronominal",
+        "de": "Das reflexive passé composé bilden"
+      },
+      "ruleIds": ["rule-aux-etre"],
+      "explanationPlan": {
+        "en": "Explain that pronominal verbs always take être. Show the six persons with the reflexive pronoun before the auxiliary, and the elisions t'es and s'est.",
+        "fr": "Expliquer que les verbes pronominaux se conjuguent toujours avec être. Montrer les six personnes avec le pronom réfléchi devant l'auxiliaire et les élisions t'es et s'est.",
+        "de": "Erklären, dass reflexive Verben immer mit être gebildet werden. Die sechs Personen mit dem Reflexivpronomen vor dem Hilfsverb zeigen, dazu die Elisionen t'es und s'est."
+      },
+      "explanationDurationS": 100,
+      "examples": [
+        {
+          "text": "Je me suis levé à sept heures.",
+          "translation": { "en": "I got up at seven.", "de": "Ich bin um sieben Uhr aufgestanden." }
+        },
+        {
+          "text": "Tu t'es lavé les mains ?",
+          "translation": {
+            "en": "Did you wash your hands?",
+            "de": "Hast du dir die Hände gewaschen?"
+          }
+        },
+        {
+          "text": "Il s'est réveillé tard.",
+          "translation": { "en": "He woke up late.", "de": "Er ist spät aufgewacht." }
+        },
+        {
+          "text": "Nous nous sommes couchés à minuit.",
+          "translation": {
+            "en": "We went to bed at midnight.",
+            "de": "Wir sind um Mitternacht ins Bett gegangen."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Never use avoir with these verbs: 'je m'ai levé' is wrong, say 'je me suis levé'.",
+          "fr": "N'utilisez jamais avoir avec ces verbes : 'je m'ai levé' est faux, on dit 'je me suis levé'.",
+          "de": "Verwende bei diesen Verben nie avoir: 'je m'ai levé' ist falsch, richtig ist 'je me suis levé'."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-f-persons",
+          "type": "grammar_person_matching",
+          "itemCount": 1,
+          "ruleIds": ["rule-aux-etre"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-f-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-aux-etre"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-f-gap",
+          "type": "grammar_gap_typing",
+          "itemCount": 3,
+          "ruleIds": ["rule-aux-etre"],
+          "estimatedDurationS": 45
+        }
+      ]
+    },
+    {
+      "id": "block-agreement",
+      "title": {
+        "en": "Agreeing the participle",
+        "fr": "Accorder le participe passé",
+        "de": "Das Partizip angleichen"
+      },
+      "ruleIds": ["rule-agreement"],
+      "explanationPlan": {
+        "en": "Show that the participle agrees with the subject like an adjective (-e, -s, -es). Mention on = nous, vous for several people, and no agreement before a body part.",
+        "fr": "Montrer que le participe s'accorde avec le sujet comme un adjectif (-e, -s, -es). Mentionner on = nous, vous pour plusieurs personnes, et l'absence d'accord devant une partie du corps.",
+        "de": "Zeigen, dass sich das Partizip wie ein Adjektiv nach dem Subjekt richtet (-e, -s, -es). on = nous, vous für mehrere Personen und keine Angleichung bei Körperteilen erwähnen."
+      },
+      "explanationDurationS": 110,
+      "examples": [
+        {
+          "text": "Elle s'est levée à six heures.",
+          "translation": { "en": "She got up at six.", "de": "Sie ist um sechs Uhr aufgestanden." }
+        },
+        {
+          "text": "Ils se sont habillés vite.",
+          "translation": {
+            "en": "They got dressed quickly.",
+            "de": "Sie haben sich schnell angezogen."
+          }
+        },
+        {
+          "text": "Elles se sont réveillées tôt.",
+          "translation": { "en": "They woke up early.", "de": "Sie sind früh aufgewacht." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "With a body part there is no agreement: 'elle s'est lavé les mains'.",
+          "fr": "Avec une partie du corps, pas d'accord : 'elle s'est lavé les mains'.",
+          "de": "Bei einem Körperteil gibt es keine Angleichung: 'elle s'est lavé les mains'."
+        },
+        {
+          "en": "'On' often means 'nous': the participle then takes -s.",
+          "fr": "'On' veut souvent dire 'nous' : le participe prend alors un -s.",
+          "de": "'On' bedeutet oft 'nous': das Partizip bekommt dann ein -s."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-a-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 3,
+          "ruleIds": ["rule-agreement"],
+          "estimatedDurationS": 36
+        },
+        {
+          "id": "ex-a-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-agreement"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-a-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["rule-agreement"],
+          "estimatedDurationS": 75
+        }
+      ]
+    },
+    {
+      "id": "block-negation",
+      "title": { "en": "The negative form", "fr": "La forme négative", "de": "Die Verneinung" },
+      "ruleIds": ["rule-negation"],
+      "explanationPlan": {
+        "en": "Show the order ne + pronoun + être + pas + participle, with three examples, and how to answer no to a question about the morning.",
+        "fr": "Montrer l'ordre ne + pronom + être + pas + participe avec trois exemples, et comment répondre non à une question sur la matinée.",
+        "de": "Die Reihenfolge ne + Pronomen + être + pas + Partizip mit drei Beispielen zeigen und wie man eine Frage zum Morgen verneint."
+      },
+      "explanationDurationS": 100,
+      "examples": [
+        {
+          "text": "Je ne me suis pas réveillé à sept heures.",
+          "translation": {
+            "en": "I did not wake up at seven.",
+            "de": "Ich bin nicht um sieben Uhr aufgewacht."
+          }
+        },
+        {
+          "text": "Vous ne vous êtes pas dépêchés.",
+          "translation": { "en": "You did not hurry.", "de": "Ihr habt euch nicht beeilt." }
+        },
+        {
+          "text": "On ne s'est pas couchés tôt.",
+          "translation": {
+            "en": "We did not go to bed early.",
+            "de": "Wir sind nicht früh ins Bett gegangen."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not put pas after the participle: 'je me suis levé pas' is wrong.",
+          "fr": "Ne placez pas pas après le participe : 'je me suis levé pas' est faux.",
+          "de": "Setze pas nicht hinter das Partizip: 'je me suis levé pas' ist falsch."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-n-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-negation"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-n-gap",
+          "type": "grammar_gap_typing",
+          "itemCount": 3,
+          "ruleIds": ["rule-negation"],
+          "estimatedDurationS": 45
+        }
+      ]
+    }
+  ],
+  "newVerbs": [
+    { "infinitive": "se lever", "translations": { "en": "to get up", "de": "aufstehen" } },
+    { "infinitive": "se réveiller", "translations": { "en": "to wake up", "de": "aufwachen" } },
+    {
+      "infinitive": "se laver",
+      "translations": { "en": "to wash (oneself)", "de": "sich waschen" }
+    },
+    {
+      "infinitive": "s'habiller",
+      "translations": { "en": "to get dressed", "de": "sich anziehen" }
+    },
+    {
+      "infinitive": "se coucher",
+      "translations": { "en": "to go to bed", "de": "ins Bett gehen" }
+    },
+    { "infinitive": "se doucher", "translations": { "en": "to take a shower", "de": "duschen" } },
+    { "infinitive": "se dépêcher", "translations": { "en": "to hurry", "de": "sich beeilen" } }
+  ],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-forms",
+        "type": "grammar_pronoun_form_typing",
+        "itemCount": 2,
+        "ruleIds": ["rule-aux-etre"],
+        "estimatedDurationS": 90,
+        "timeLimitS": 150
+      },
+      {
+        "pageId": "exam-agreement",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-agreement"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      },
+      {
+        "pageId": "exam-negation",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-negation"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

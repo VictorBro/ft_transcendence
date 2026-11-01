@@ -1,0 +1,536 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-nuances-of-stealing",
+  "lang": "fr",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Dérober, chaparder, détourner",
+  "objective": {
+    "en": "Choose the right verb of theft according to gravity and register: neutral, literary, familiar or legal.",
+    "fr": "Choisir le verbe du vol selon la gravité et le registre : neutre, soutenu, familier ou juridique.",
+    "de": "Das passende Verb für Diebstahl nach Schwere und Sprachebene wählen: neutral, gehoben, umgangssprachlich oder juristisch."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:58:00.573Z",
+    "inputHashes": { "outline": "50f42388ea0837c25ce0f55a871d8084e5983534c42ae14810f3f2528e856a9e" }
+  },
+  "kind": "vocabulary",
+  "theme": "language",
+  "coverageNotes": {
+    "en": "Ten verbs of theft, from the neutral voler to the literary dérober, the familiar piquer, chaparder and faucher, and the graver détourner, escroquer, spolier and piller.",
+    "fr": "Dix verbes du vol, du neutre voler au soutenu dérober, aux familiers piquer, chaparder et faucher, puis aux plus graves détourner, escroquer, spolier et piller.",
+    "de": "Zehn Verben des Stehlens: vom neutralen voler über das gehobene dérober und die umgangssprachlichen piquer, chaparder und faucher bis zu den schwereren détourner, escroquer, spolier und piller."
+  },
+  "targetCount": 10,
+  "countRationale": {
+    "en": "Ten verbs are enough to cover every register without blurring the contrasts.",
+    "fr": "Dix verbes suffisent pour couvrir tous les registres sans brouiller les contrastes.",
+    "de": "Zehn Verben genügen, um alle Sprachebenen abzudecken, ohne die Unterschiede zu verwischen."
+  },
+  "difficultyBalance": {
+    "en": "Five core verbs, five demanding ones whose construction or register is subtle.",
+    "fr": "Cinq verbes de base et cinq verbes exigeants dont la construction ou le registre est délicat.",
+    "de": "Fünf Grundverben und fünf anspruchsvolle, deren Konstruktion oder Sprachebene heikel ist."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "discret-familier",
+      "label": {
+        "en": "From discreet to familiar theft",
+        "fr": "Du vol discret au vol familier",
+        "de": "Vom diskreten zum umgangssprachlichen Diebstahl"
+      },
+      "targetIds": ["voler", "derober", "subtiliser", "chaparder", "piquer", "faucher"],
+      "introduction": {
+        "en": "These verbs differ by **register** and by the manner of the theft:\n\n- `voler`: the neutral verb, valid everywhere\n- `dérober`: literary, also used for a kiss or a secret\n- `subtiliser`: to take deftly, without being noticed\n- `chaparder`: to pinch small things, almost playfully\n- `piquer`: familiar, very common in speech\n- `faucher`: very familiar, quick and brazen",
+        "fr": "Ces verbes diffèrent par le **registre** et par la manière du vol :\n\n- `voler` : le verbe neutre, valable partout\n- `dérober` : soutenu, employé aussi pour un baiser ou un secret\n- `subtiliser` : prendre adroitement, sans se faire remarquer\n- `chaparder` : prendre de petites choses, presque en s’amusant\n- `piquer` : familier, très courant à l’oral\n- `faucher` : très familier, rapide et effronté",
+        "de": "Diese Verben unterscheiden sich in der **Sprachebene** und in der Art des Diebstahls:\n\n- `voler`: das neutrale Verb, überall gültig\n- `dérober`: gehoben, auch für einen Kuss oder ein Geheimnis gebraucht\n- `subtiliser`: geschickt wegnehmen, ohne bemerkt zu werden\n- `chaparder`: Kleinigkeiten mitgehen lassen, fast spielerisch\n- `piquer`: umgangssprachlich, in der Rede sehr häufig\n- `faucher`: sehr umgangssprachlich, schnell und dreist"
+      }
+    },
+    {
+      "id": "fraude-pillage",
+      "label": {
+        "en": "Fraud, embezzlement and plunder",
+        "fr": "Fraude, détournement et pillage",
+        "de": "Betrug, Veruntreuung und Plünderung"
+      },
+      "targetIds": ["detourner", "escroquer", "spolier", "piller"],
+      "introduction": {
+        "en": "Here theft is no longer a gesture but an **abuse**, often legal or collective:\n\n- `détourner`: to divert funds entrusted to one\n- `escroquer`: to obtain something by deception\n- `spolier`: to deprive someone of what is theirs by right\n- `piller`: to plunder, to ransack on a large scale",
+        "fr": "Ici le vol n’est plus un geste mais un **abus**, souvent juridique ou collectif :\n\n- `détourner` : faire servir à autre chose des fonds confiés\n- `escroquer` : obtenir quelque chose par la tromperie\n- `spolier` : priver quelqu’un de ce qui lui revient de droit\n- `piller` : ravager en emportant tout, à grande échelle",
+        "de": "Hier ist Diebstahl keine Geste mehr, sondern ein **Missbrauch**, oft juristisch oder kollektiv:\n\n- `détourner`: anvertraute Gelder zweckentfremden\n- `escroquer`: etwas durch Täuschung erlangen\n- `spolier`: jemanden dessen berauben, was ihm von Rechts wegen zusteht\n- `piller`: in großem Maßstab plündern und alles mitnehmen"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "voler",
+      "term": "voler",
+      "translations": { "en": ["to steal"], "de": ["stehlen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "voler",
+      "examForms": ["voler"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/vɔle/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Quelqu’un a volé mon sac dans le train.",
+        "translation": {
+          "en": "Someone stole my bag on the train.",
+          "de": "Jemand hat meine Tasche im Zug gestohlen."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Voler also means “to fly”: only the context tells them apart.",
+        "fr": "Voler signifie aussi se déplacer dans les airs : seul le contexte les distingue.",
+        "de": "Voler bedeutet auch „fliegen“: nur der Kontext unterscheidet beide."
+      },
+      "explanation": {
+        "en": "Voler is the neutral, all-purpose verb for theft, whatever the object or the gravity.",
+        "fr": "Voler est le verbe neutre et général du vol, quels que soient l’objet et la gravité.",
+        "de": "Voler ist das neutrale Allzweckverb für Diebstahl, gleich welcher Gegenstand und wie schwer die Tat."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to steal (the neutral, general verb)",
+        "de": "stehlen (das neutrale, allgemeine Verb)"
+      },
+      "gap": {
+        "before": "Elle a été interpellée alors qu’elle tentait de ",
+        "after": " un téléphone dans le métro.",
+        "accepted": { "answers": ["voler"] },
+        "referenceTargetIds": ["voler", "spolier", "piller", "escroquer"],
+        "explanation": {
+          "en": "Taking a phone is ordinary theft; spolier, piller and escroquer do not take such an object.",
+          "fr": "Prendre un téléphone est un vol ordinaire ; spolier, piller et escroquer ne s’emploient pas ainsi.",
+          "de": "Ein Telefon zu nehmen ist gewöhnlicher Diebstahl; spolier, piller und escroquer passen hier nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["voler", "piller", "derober", "piquer"]
+    },
+    {
+      "id": "derober",
+      "term": "dérober",
+      "translations": { "en": ["to purloin", "to steal"], "de": ["entwenden", "stehlen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "dérober",
+      "examForms": ["dérober"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/deʁɔbe/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Le cambrioleur a dérobé les bijoux de la comtesse.",
+        "translation": {
+          "en": "The burglar purloined the countess’s jewels.",
+          "de": "Der Einbrecher hat den Schmuck der Gräfin entwendet."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Dérober is a literary, formal verb: it suits written style and figurative uses such as a stolen kiss.",
+        "fr": "Dérober est un verbe soutenu et littéraire : il convient à l’écrit et aux emplois figurés comme un baiser dérobé.",
+        "de": "Dérober ist ein gehobenes, literarisches Verb: Es passt in die Schriftsprache und in übertragene Wendungen wie einen geraubten Kuss."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to purloin (literary, formal)",
+        "de": "entwenden (gehoben, literarisch)"
+      },
+      "gap": {
+        "before": "Profitant de la pénombre, il parvint à ",
+        "after": " un baiser à la jeune femme.",
+        "accepted": { "answers": ["dérober"] },
+        "referenceTargetIds": ["derober", "escroquer", "piller", "detourner"],
+        "explanation": {
+          "en": "Only dérober takes a kiss as its object; the other verbs do not.",
+          "fr": "Seul dérober admet un baiser pour complément ; les autres verbes n’y conviennent pas.",
+          "de": "Nur dérober verbindet sich mit einem Kuss; die anderen Verben passen nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["derober", "detourner", "subtiliser", "escroquer"]
+    },
+    {
+      "id": "subtiliser",
+      "term": "subtiliser",
+      "translations": {
+        "en": ["to pilfer", "to lift"],
+        "de": ["unbemerkt wegnehmen", "entwenden"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "subtiliser",
+      "examForms": ["subtiliser"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/syptilize/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Quelqu’un a subtilisé le dossier sur son bureau.",
+        "translation": {
+          "en": "Someone lifted the file from his desk.",
+          "de": "Jemand hat die Akte von seinem Schreibtisch unbemerkt entwendet."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Subtiliser stresses skill and discretion: the object disappears without the owner noticing.",
+        "fr": "Subtiliser insiste sur l’adresse et la discrétion : l’objet disparaît sans que le propriétaire s’en aperçoive.",
+        "de": "Subtiliser betont Geschick und Unauffälligkeit: Der Gegenstand verschwindet, ohne dass der Besitzer es merkt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to pilfer (deftly, unnoticed)",
+        "de": "unbemerkt wegnehmen (geschickt, unauffällig)"
+      },
+      "gap": {
+        "before": "Le prestidigitateur a réussi à ",
+        "after": " la montre du spectateur sans qu’il s’en aperçoive.",
+        "accepted": { "answers": ["subtiliser"] },
+        "referenceTargetIds": ["subtiliser", "piller", "spolier", "detourner"],
+        "explanation": {
+          "en": "A watch taken without being noticed calls for subtiliser, which stresses the deftness.",
+          "fr": "Une montre prise sans qu’on le remarque appelle subtiliser, qui souligne l’adresse.",
+          "de": "Eine unbemerkt entwendete Uhr verlangt subtiliser, das das Geschick betont."
+        }
+      },
+      "listeningOptionTargetIds": ["subtiliser", "spolier", "derober", "detourner"]
+    },
+    {
+      "id": "chaparder",
+      "term": "chaparder",
+      "translations": { "en": ["to pinch"], "de": ["stibitzen", "mopsen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "chaparder",
+      "examForms": ["chaparder"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʃapaʁde/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Les enfants chapardaient des bonbons au marché.",
+        "translation": {
+          "en": "The children pinched sweets at the market.",
+          "de": "Die Kinder stibitzten auf dem Markt Bonbons."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Chaparder is familiar and indulgent: it describes small thefts, of little value, almost harmless.",
+        "fr": "Chaparder est familier et indulgent : il décrit de menus larcins, de peu de valeur, presque anodins.",
+        "de": "Chaparder ist umgangssprachlich und nachsichtig: Es beschreibt kleine Diebstähle von geringem Wert, fast harmlos."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to pinch (small things, indulgently)",
+        "de": "stibitzen (Kleinigkeiten, nachsichtig)"
+      },
+      "gap": {
+        "before": "Gamin, il allait ",
+        "after": " des pommes dans le verger du voisin.",
+        "accepted": { "answers": ["chaparder"] },
+        "referenceTargetIds": ["chaparder", "escroquer", "spolier", "detourner"],
+        "explanation": {
+          "en": "A boy taking apples is a small, almost playful theft: chaparder.",
+          "fr": "Un gamin qui prend des pommes commet un larcin presque espiègle : chaparder.",
+          "de": "Ein Junge, der Äpfel mitnimmt, begeht einen kleinen, fast spielerischen Diebstahl: chaparder."
+        }
+      },
+      "listeningOptionTargetIds": ["chaparder", "piquer", "faucher", "voler"]
+    },
+    {
+      "id": "piquer",
+      "term": "piquer",
+      "translations": { "en": ["to nick"], "de": ["klauen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "piquer",
+      "examForms": ["piquer"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/pike/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Il m’a piqué mon stylo pendant le cours.",
+        "translation": {
+          "en": "He nicked my pen during the lesson.",
+          "de": "Er hat mir während des Unterrichts meinen Stift geklaut."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Piquer also means “to sting”; the stolen sense is familiar.",
+        "fr": "Piquer signifie aussi enfoncer une pointe ; le sens de voler est familier.",
+        "de": "Piquer bedeutet auch „stechen“; die Bedeutung „stehlen“ ist umgangssprachlich."
+      },
+      "explanation": {
+        "en": "Piquer is the familiar everyday word for steal; avoid it in formal writing.",
+        "fr": "Piquer est le mot familier et courant pour voler ; on l’évite à l’écrit soutenu.",
+        "de": "Piquer ist das alltägliche, umgangssprachliche Wort für stehlen; in formeller Schriftsprache meidet man es."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": { "en": "to nick (informal)", "de": "klauen (umgangssprachlich)" },
+      "gap": {
+        "before": "Ne laisse pas ton portable là : on va te le ",
+        "after": " !",
+        "accepted": { "answers": ["piquer"] },
+        "referenceTargetIds": ["piquer", "spolier", "escroquer", "piller"],
+        "explanation": {
+          "en": "The familiar tone and the object “le” point to piquer.",
+          "fr": "Le ton familier et le pronom « le » orientent vers piquer.",
+          "de": "Der umgangssprachliche Ton und das Pronomen „le“ weisen auf piquer."
+        }
+      },
+      "listeningOptionTargetIds": ["piquer", "piller", "chaparder", "faucher"]
+    },
+    {
+      "id": "faucher",
+      "term": "faucher",
+      "translations": { "en": ["to swipe"], "de": ["mopsen", "klauen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "faucher",
+      "examForms": ["faucher"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/foʃe/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "On lui a fauché son portefeuille à la sortie du concert.",
+        "translation": {
+          "en": "Someone swiped his wallet outside the concert.",
+          "de": "Man hat ihm vor dem Konzert die Brieftasche geklaut."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Faucher literally means “to mow”; the stolen sense is very familiar.",
+        "fr": "Faucher signifie d’abord couper à la faux ; le sens de voler est très familier.",
+        "de": "Faucher bedeutet eigentlich „mähen“; die Bedeutung „stehlen“ ist sehr umgangssprachlich."
+      },
+      "explanation": {
+        "en": "Faucher is very familiar and suggests a quick, brazen grab.",
+        "fr": "Faucher est très familier et suggère un geste rapide et effronté.",
+        "de": "Faucher ist sehr umgangssprachlich und deutet auf einen schnellen, dreisten Griff hin."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": { "en": "to swipe (very informal)", "de": "mopsen (salopp)" },
+      "gap": {
+        "before": "Quelqu’un a osé me ",
+        "after": " mon vélo, en plein jour !",
+        "accepted": { "answers": ["faucher"] },
+        "referenceTargetIds": ["faucher", "detourner", "escroquer", "spolier"],
+        "explanation": {
+          "en": "A bike snatched in broad daylight: the very familiar faucher fits.",
+          "fr": "Un vélo emporté en plein jour : le très familier faucher convient.",
+          "de": "Ein am helllichten Tag mitgenommenes Fahrrad: das sehr umgangssprachliche faucher passt."
+        }
+      },
+      "listeningOptionTargetIds": ["faucher", "piquer", "chaparder", "voler"]
+    },
+    {
+      "id": "detourner",
+      "term": "détourner",
+      "translations": { "en": ["to embezzle"], "de": ["veruntreuen", "unterschlagen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "détourner",
+      "examForms": ["détourner"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/detuʁne/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Le directeur a détourné des fonds publics pendant des années.",
+        "translation": {
+          "en": "The director embezzled public funds for years.",
+          "de": "Der Direktor hat jahrelang öffentliche Gelder veruntreut."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Détourner also means “to divert” (a plane, a look): context decides.",
+        "fr": "Détourner signifie aussi changer la direction (un avion, un regard) : le contexte tranche.",
+        "de": "Détourner bedeutet auch „umleiten“ (ein Flugzeug, einen Blick): der Kontext entscheidet."
+      },
+      "explanation": {
+        "en": "Détourner is the legal verb for diverting funds entrusted to someone to one’s own use.",
+        "fr": "Détourner est le verbe juridique pour s’approprier des fonds qu’on vous a confiés.",
+        "de": "Détourner ist das juristische Verb dafür, anvertraute Gelder für sich zu verwenden."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to embezzle (funds entrusted to one)",
+        "de": "veruntreuen (anvertraute Gelder)"
+      },
+      "gap": {
+        "before": "Le trésorier a été accusé de ",
+        "after": " plusieurs milliers d’euros de la caisse du club.",
+        "accepted": { "answers": ["détourner"] },
+        "referenceTargetIds": ["detourner", "chaparder", "spolier", "piller"],
+        "explanation": {
+          "en": "A treasurer who diverts money entrusted to him embezzles it: détourner.",
+          "fr": "Un trésorier qui s’approprie l’argent qu’on lui a confié le détourne.",
+          "de": "Ein Kassenwart, der ihm anvertrautes Geld für sich verwendet, veruntreut es: détourner."
+        }
+      },
+      "listeningOptionTargetIds": ["detourner", "derober", "subtiliser", "escroquer"]
+    },
+    {
+      "id": "escroquer",
+      "term": "escroquer",
+      "translations": { "en": ["to swindle"], "de": ["betrügen", "prellen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "escroquer",
+      "examForms": ["escroquer"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɛskʁɔke/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Il a escroqué plusieurs personnes âgées en se faisant passer pour un banquier.",
+        "translation": {
+          "en": "He swindled several elderly people by posing as a banker.",
+          "de": "Er hat mehrere ältere Menschen betrogen, indem er sich als Bankier ausgab."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Escroquer means obtaining money or goods by deception, not by taking them by force or stealth.",
+        "fr": "Escroquer, c’est obtenir de l’argent ou des biens par la tromperie, non par la force ou la ruse du geste.",
+        "de": "Escroquer heißt, Geld oder Güter durch Täuschung zu erlangen, nicht durch Gewalt oder heimliches Wegnehmen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to swindle (someone out of money)",
+        "de": "betrügen (jemanden um Geld)"
+      },
+      "gap": {
+        "before": "Le faux conseiller a fini par ",
+        "after": " les retraités de toutes leurs économies.",
+        "accepted": { "answers": ["escroquer"] },
+        "referenceTargetIds": ["escroquer", "piller", "chaparder", "detourner"],
+        "explanation": {
+          "en": "Obtaining savings from people by deceiving them is escroquer.",
+          "fr": "Obtenir les économies de personnes en les trompant, c’est les escroquer.",
+          "de": "Menschen durch Täuschung um ihre Ersparnisse zu bringen heißt escroquer."
+        }
+      },
+      "listeningOptionTargetIds": ["escroquer", "spolier", "subtiliser", "detourner"]
+    },
+    {
+      "id": "spolier",
+      "term": "spolier",
+      "translations": { "en": ["to dispossess"], "de": ["berauben"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "spolier",
+      "examForms": ["spolier"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/spɔlje/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Le notaire a spolié les héritiers de leur part.",
+        "translation": {
+          "en": "The notary dispossessed the heirs of their share.",
+          "de": "Der Notar hat die Erben um ihren Anteil gebracht."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Spolier is formal: it means depriving someone, often by abuse of law, of what is theirs by right.",
+        "fr": "Spolier est soutenu : il signifie priver quelqu’un, souvent par abus de droit, de ce qui lui revient.",
+        "de": "Spolier ist gehoben: Es heißt, jemanden, oft durch Rechtsmissbrauch, dessen zu berauben, was ihm zusteht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to dispossess (of a right or property)",
+        "de": "berauben (eines Rechts oder Besitzes)"
+      },
+      "gap": {
+        "before": "Ses frères ont cherché à le ",
+        "after": " de son héritage en falsifiant le testament.",
+        "accepted": { "answers": ["spolier"] },
+        "referenceTargetIds": ["spolier", "chaparder", "piller", "faucher"],
+        "explanation": {
+          "en": "Depriving someone of an inheritance by a legal trick is spolier.",
+          "fr": "Priver quelqu’un de son héritage par un artifice juridique, c’est le spolier.",
+          "de": "Jemanden durch einen juristischen Kniff um sein Erbe zu bringen heißt spolier."
+        }
+      },
+      "listeningOptionTargetIds": ["spolier", "piller", "escroquer", "subtiliser"]
+    },
+    {
+      "id": "piller",
+      "term": "piller",
+      "translations": { "en": ["to plunder"], "de": ["plündern"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "piller",
+      "examForms": ["piller"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/pije/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Les envahisseurs ont pillé la ville pendant trois jours.",
+        "translation": {
+          "en": "The invaders plundered the city for three days.",
+          "de": "Die Eindringlinge haben die Stadt drei Tage lang geplündert."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Piller means ransacking a place or a group on a large scale, often in war or riots.",
+        "fr": "Piller, c’est ravager un lieu ou un groupe en emportant tout, souvent en temps de guerre ou d’émeute.",
+        "de": "Piller heißt, einen Ort oder eine Gruppe in großem Maßstab auszuplündern, oft im Krieg oder bei Unruhen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to plunder (ransack on a large scale)",
+        "de": "plündern (in großem Maßstab)"
+      },
+      "gap": {
+        "before": "Des émeutiers ont fini par ",
+        "after": " les boutiques du quartier.",
+        "accepted": { "answers": ["piller"] },
+        "referenceTargetIds": ["piller", "escroquer", "subtiliser", "derober"],
+        "explanation": {
+          "en": "Shops emptied by a crowd are plundered: piller.",
+          "fr": "Des boutiques vidées par une foule sont pillées : piller.",
+          "de": "Von einer Menge leergeräumte Geschäfte werden geplündert: piller."
+        }
+      },
+      "listeningOptionTargetIds": ["piller", "piquer", "spolier", "voler"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

@@ -6,36 +6,36 @@
   "locales": ["en", "fr", "de"],
   "title": "Le passé composé à la forme négative",
   "objective": {
-    "en": "Form the negative passé composé with ne… pas around the auxiliary, and answer no to a question about the past.",
-    "fr": "Former le passé composé négatif avec ne… pas autour de l'auxiliaire et répondre non à une question sur le passé.",
-    "de": "Das passé composé verneinen, indem ne… pas das Hilfsverb umschließt, und eine Frage zur Vergangenheit mit nein beantworten."
+    "en": "Place ne… pas around the auxiliary in the passé composé and answer no to a question about the past.",
+    "fr": "Placer ne… pas autour de l'auxiliaire au passé composé et répondre non à une question sur le passé.",
+    "de": "Ne… pas um das Hilfsverb im passé composé setzen und eine Frage zur Vergangenheit mit Nein beantworten."
   },
   "estimatedMinutes": 16,
   "provenance": {
     "generator": "ft lessons:author",
-    "model": "claude-sonnet-5-5",
+    "model": "sonnet",
     "promptVersion": "author-2",
-    "generatedAt": "2026-11-01T00:26:04.564Z",
+    "generatedAt": "2026-11-01T18:35:35.518Z",
     "inputHashes": {
       "outline": "477a5e7c20ebabc6a306646ae65d449a36e870e6020d873e4a4044542f05e5fd",
-      "brief": "88445237900d5994e196e30df62ce2276db29e3f081d87958975139d4d39e1e8"
+      "brief": "c5d5738a4d44f82b0b7cc93c61d229917c3e4cc1603790fd19bbd9947dee9500"
     }
   },
   "kind": "grammar",
   "topic": "negation",
   "steps": [
     {
-      "id": "block-placement-explanation",
+      "id": "block-avoir-explanation",
       "role": "explanation",
-      "blockId": "block-placement",
+      "blockId": "block-avoir",
       "label": {
-        "en": "Placing ne… pas around the auxiliary",
-        "fr": "Placer ne… pas autour de l'auxiliaire",
-        "de": "ne… pas um das Hilfsverb setzen"
+        "en": "Negation with avoir",
+        "fr": "La négation avec avoir",
+        "de": "Die Verneinung mit avoir"
       },
       "pages": [
         {
-          "pageId": "block-placement-explanation",
+          "pageId": "block-avoir-explanation",
           "estimatedDurationS": 120,
           "timeLimitS": null,
           "instructions": {
@@ -46,24 +46,29 @@
           "items": [
             {
               "type": "grammar_explanation",
-              "itemId": "block-placement-explanation",
-              "ruleIds": ["rule-placement", "rule-elision"],
+              "itemId": "block-avoir-explanation",
+              "ruleIds": ["rule-avoir-negation"],
               "heading": {
-                "en": "ne… pas in the passé composé",
-                "fr": "ne… pas au passé composé",
-                "de": "ne… pas im passé composé"
+                "en": "Negation with avoir",
+                "fr": "La négation avec avoir",
+                "de": "Die Verneinung mit avoir"
               },
               "text": {
-                "en": "In the passé composé, **ne… pas** goes around the **auxiliary** (`avoir` or `être`), not around the participle: `Je n'ai pas compris.`\n\n- Before a vowel, `ne` becomes `n'`: `Il n'a pas mangé.` but `Je ne suis pas allé.`\n- With `être`, the participle still agrees: `Elle n'est pas venue.` `Ils ne sont pas partis.`\n\nPattern: subject + `ne` + auxiliary + `pas` + participle.",
-                "fr": "Au passé composé, **ne… pas** entoure l'**auxiliaire** (`avoir` ou `être`), pas le participe : `Je n'ai pas compris.`\n\n- Devant une voyelle, `ne` devient `n'` : `Il n'a pas mangé.` mais `Je ne suis pas allé.`\n- Avec `être`, le participe s'accorde toujours : `Elle n'est pas venue.` `Ils ne sont pas partis.`\n\nSchéma : sujet + `ne` + auxiliaire + `pas` + participe.",
-                "de": "Im passé composé umschließt **ne… pas** das **Hilfsverb** (`avoir` oder `être`), nicht das Partizip: `Je n'ai pas compris.`\n\n- Vor einem Vokal wird `ne` zu `n'`: `Il n'a pas mangé.` aber `Je ne suis pas allé.`\n- Bei `être` wird das Partizip weiterhin angeglichen: `Elle n'est pas venue.` `Ils ne sont pas partis.`\n\nSchema: Subjekt + `ne` + Hilfsverb + `pas` + Partizip."
+                "en": "In the passé composé, `ne… pas` goes **around the auxiliary**: `ne` before it, `pas` after it. The past participle comes last.\n\n- `J'ai compris.` → `Je n'ai pas compris.`\n- `Tu as mangé ?` → `Tu n'as pas mangé.`\n\nBefore a vowel, `ne` becomes `n'`: `Il n'a pas dormi.`",
+                "fr": "Au passé composé, `ne… pas` entoure **l'auxiliaire** : `ne` avant, `pas` après. Le participe passé vient en dernier.\n\n- `J'ai compris.` → `Je n'ai pas compris.`\n- `Tu as mangé ?` → `Tu n'as pas mangé.`\n\nDevant une voyelle, `ne` devient `n'` : `Il n'a pas dormi.`",
+                "de": "Im passé composé umschließt `ne… pas` **das Hilfsverb**: `ne` davor, `pas` danach. Das Partizip steht zuletzt.\n\n- `J'ai compris.` → `Je n'ai pas compris.`\n- `Tu as mangé ?` → `Tu n'as pas mangé.`\n\nVor einem Vokal wird `ne` zu `n'`: `Il n'a pas dormi.`"
               },
               "formTable": [
                 { "subject": "je", "form": "n'ai pas", "example": "Je n'ai pas compris." },
-                { "subject": "il / elle", "form": "n'a pas", "example": "Il n'a pas mangé." },
-                { "subject": "nous", "form": "n'avons pas", "example": "Nous n'avons pas mangé." },
-                { "subject": "elle", "form": "n'est pas", "example": "Elle n'est pas venue." },
-                { "subject": "ils", "form": "ne sont pas", "example": "Ils ne sont pas partis." }
+                { "subject": "tu", "form": "n'as pas", "example": "Tu n'as pas mangé." },
+                { "subject": "il / elle / on", "form": "n'a pas", "example": "Il n'a pas dormi." },
+                { "subject": "nous", "form": "n'avons pas", "example": "Nous n'avons pas fini." },
+                {
+                  "subject": "vous",
+                  "form": "n'avez pas",
+                  "example": "Vous n'avez pas téléphoné."
+                },
+                { "subject": "ils / elles", "form": "n'ont pas", "example": null }
               ],
               "examples": [
                 {
@@ -74,16 +79,19 @@
                   }
                 },
                 {
-                  "text": "Il n'a pas mangé.",
-                  "translation": { "en": "He didn't eat.", "de": "Er hat nicht gegessen." }
+                  "text": "Il n'a pas dormi.",
+                  "translation": { "en": "He didn't sleep.", "de": "Er hat nicht geschlafen." }
                 },
                 {
-                  "text": "Elle n'est pas venue.",
-                  "translation": { "en": "She didn't come.", "de": "Sie ist nicht gekommen." }
+                  "text": "Nous n'avons pas fini.",
+                  "translation": {
+                    "en": "We didn't finish.",
+                    "de": "Wir sind nicht fertig geworden."
+                  }
                 },
                 {
-                  "text": "Ils ne sont pas partis.",
-                  "translation": { "en": "They didn't leave.", "de": "Sie sind nicht gegangen." }
+                  "text": "Vous n'avez pas téléphoné.",
+                  "translation": { "en": "You didn't call.", "de": "Sie haben nicht angerufen." }
                 }
               ]
             }
@@ -92,17 +100,17 @@
       ]
     },
     {
-      "id": "ex-a-choice",
+      "id": "ex-avoir-choice",
       "role": "exercise",
-      "blockId": "block-placement",
+      "blockId": "block-avoir",
       "label": {
-        "en": "Multiple-choice gaps",
-        "fr": "Phrases à trous à choix multiple",
-        "de": "Lücken mit Auswahl"
+        "en": "Multiple-choice gaps 1",
+        "fr": "Phrases à trous à choix multiple 1",
+        "de": "Lücken mit Auswahl 1"
       },
       "pages": [
         {
-          "pageId": "ex-a-choice-page",
+          "pageId": "ex-avoir-choice-page",
           "estimatedDurationS": 48,
           "timeLimitS": null,
           "instructions": {
@@ -113,82 +121,82 @@
           "items": [
             {
               "type": "grammar_gap_choice",
-              "itemId": "ex-a-choice-1",
+              "itemId": "ex-avoir-choice-1",
               "before": "Je",
-              "after": "compris.",
+              "after": "compris la question.",
               "choices": [
-                { "choiceId": "c-1", "text": "n'ai pas" },
-                { "choiceId": "c-2", "text": "ai pas" },
-                { "choiceId": "c-3", "text": "ne ai pas" },
-                { "choiceId": "c-4", "text": "ne suis pas" }
+                { "choiceId": "c-1", "text": "ne ai pas" },
+                { "choiceId": "c-2", "text": "n'ai pas" },
+                { "choiceId": "c-3", "text": "ai pas" },
+                { "choiceId": "c-4", "text": "n'ai" }
               ],
-              "answerChoiceId": "c-1",
+              "answerChoiceId": "c-2",
               "hint": null,
-              "ruleIds": ["rule-placement", "rule-elision"],
+              "ruleIds": ["rule-avoir-negation"],
               "answerExplanation": {
-                "en": "Before ai, ne becomes n': je n'ai pas compris.",
-                "fr": "Devant ai, ne devient n' : je n'ai pas compris.",
-                "de": "Vor ai wird ne zu n': je n'ai pas compris."
+                "en": "Ne becomes n' before ai, and pas follows: je n'ai pas.",
+                "fr": "Ne devient n' devant ai, et pas suit : je n'ai pas.",
+                "de": "Ne wird vor ai zu n', und pas folgt: je n'ai pas."
               }
             },
             {
               "type": "grammar_gap_choice",
-              "itemId": "ex-a-choice-2",
+              "itemId": "ex-avoir-choice-2",
               "before": "Tu",
               "after": "mangé ce matin.",
               "choices": [
-                { "choiceId": "c-1", "text": "ne as pas" },
-                { "choiceId": "c-2", "text": "n'es pas" },
-                { "choiceId": "c-3", "text": "n'as pas" },
-                { "choiceId": "c-4", "text": "pas as" }
+                { "choiceId": "c-1", "text": "n'as pas" },
+                { "choiceId": "c-2", "text": "ne as pas" },
+                { "choiceId": "c-3", "text": "n'as" },
+                { "choiceId": "c-4", "text": "as pas" }
+              ],
+              "answerChoiceId": "c-1",
+              "hint": null,
+              "ruleIds": ["rule-avoir-negation"],
+              "answerExplanation": {
+                "en": "With tu, avoir is as: tu n'as pas.",
+                "fr": "Avec tu, avoir devient as : tu n'as pas.",
+                "de": "Zu tu gehört as: tu n'as pas."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-avoir-choice-3",
+              "before": "Nous",
+              "after": "fini le travail.",
+              "choices": [
+                { "choiceId": "c-1", "text": "n'avons" },
+                { "choiceId": "c-2", "text": "ne avons pas" },
+                { "choiceId": "c-3", "text": "avons pas" },
+                { "choiceId": "c-4", "text": "n'avons pas" }
+              ],
+              "answerChoiceId": "c-4",
+              "hint": null,
+              "ruleIds": ["rule-avoir-negation"],
+              "answerExplanation": {
+                "en": "Both parts of the negation are needed: n'avons pas.",
+                "fr": "Il faut les deux éléments de la négation : n'avons pas.",
+                "de": "Beide Teile der Verneinung sind nötig: n'avons pas."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-avoir-choice-4",
+              "before": "Ils",
+              "after": "répondu à l'e-mail.",
+              "choices": [
+                { "choiceId": "c-1", "text": "ont pas" },
+                { "choiceId": "c-2", "text": "n'ont" },
+                { "choiceId": "c-3", "text": "n'ont pas" },
+                { "choiceId": "c-4", "text": "ne ont pas" }
               ],
               "answerChoiceId": "c-3",
               "hint": null,
-              "ruleIds": ["rule-placement", "rule-elision"],
+              "ruleIds": ["rule-avoir-negation"],
               "answerExplanation": {
-                "en": "Tu takes as, and ne becomes n' before the vowel: tu n'as pas mangé.",
-                "fr": "Avec tu, on a as, et ne devient n' devant la voyelle : tu n'as pas mangé.",
-                "de": "Zu tu gehört as, und ne wird vor dem Vokal zu n': tu n'as pas mangé."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-a-choice-3",
-              "before": "Elle",
-              "after": "venue.",
-              "choices": [
-                { "choiceId": "c-1", "text": "ne pas est" },
-                { "choiceId": "c-2", "text": "n'est pas" },
-                { "choiceId": "c-3", "text": "n'a pas" },
-                { "choiceId": "c-4", "text": "est ne pas" }
-              ],
-              "answerChoiceId": "c-2",
-              "hint": null,
-              "ruleIds": ["rule-placement", "rule-elision"],
-              "answerExplanation": {
-                "en": "Venir takes être: ne becomes n' before est, then pas: elle n'est pas venue.",
-                "fr": "Venir se conjugue avec être : ne devient n' devant est, puis pas : elle n'est pas venue.",
-                "de": "Venir bildet das Perfekt mit être: ne wird vor est zu n', dann pas: elle n'est pas venue."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-a-choice-4",
-              "before": "Nous ne sommes",
-              "after": "partis.",
-              "choices": [
-                { "choiceId": "c-1", "text": "non" },
-                { "choiceId": "c-2", "text": "pas" },
-                { "choiceId": "c-3", "text": "ne" },
-                { "choiceId": "c-4", "text": "n'" }
-              ],
-              "answerChoiceId": "c-2",
-              "hint": null,
-              "ruleIds": ["rule-placement"],
-              "answerExplanation": {
-                "en": "Ne comes before sommes and pas after it: nous ne sommes pas partis.",
-                "fr": "Ne se place avant sommes et pas après : nous ne sommes pas partis.",
-                "de": "Ne steht vor sommes und pas danach: nous ne sommes pas partis."
+                "en": "With ils, avoir is ont, so the negation is n'ont pas.",
+                "fr": "Avec ils, avoir devient ont : la négation est n'ont pas.",
+                "de": "Zu ils gehört ont, die Verneinung heißt also n'ont pas."
               }
             }
           ]
@@ -196,17 +204,17 @@
       ]
     },
     {
-      "id": "ex-a-typing",
+      "id": "ex-avoir-typing",
       "role": "exercise",
-      "blockId": "block-placement",
+      "blockId": "block-avoir",
       "label": {
-        "en": "Typed gaps",
-        "fr": "Phrases à trous à écrire",
-        "de": "Lücken zum Schreiben"
+        "en": "Typed gaps 1",
+        "fr": "Phrases à trous à écrire 1",
+        "de": "Lücken zum Schreiben 1"
       },
       "pages": [
         {
-          "pageId": "ex-a-typing-page",
+          "pageId": "ex-avoir-typing-page",
           "estimatedDurationS": 80,
           "timeLimitS": null,
           "instructions": {
@@ -217,66 +225,74 @@
           "items": [
             {
               "type": "grammar_gap_typing",
-              "itemId": "ex-a-typing-1",
-              "before": "Il",
-              "after": "dormi.",
+              "itemId": "ex-avoir-typing-1",
+              "before": "Elle",
+              "after": "dormi cette nuit.",
               "accepted": { "answers": ["n'a pas", "n’a pas"] },
               "hint": {
                 "en": "avoir, negative",
                 "fr": "avoir, négation",
                 "de": "avoir, Verneinung"
               },
-              "ruleIds": ["rule-placement", "rule-elision"],
+              "ruleIds": ["rule-avoir-negation"],
               "answerExplanation": {
-                "en": "With il, avoir is a: il n'a pas dormi.",
-                "fr": "Avec il, avoir devient a : il n'a pas dormi.",
-                "de": "Zu il gehört a: il n'a pas dormi."
+                "en": "With elle, avoir is a: elle n'a pas.",
+                "fr": "Avec elle, avoir devient a : elle n'a pas.",
+                "de": "Zu elle gehört a: elle n'a pas."
               }
             },
             {
               "type": "grammar_gap_typing",
-              "itemId": "ex-a-typing-2",
+              "itemId": "ex-avoir-typing-2",
               "before": "Vous",
-              "after": "répondu.",
+              "after": "téléphoné à Paul.",
               "accepted": { "answers": ["n'avez pas", "n’avez pas"] },
               "hint": {
                 "en": "avoir, negative",
                 "fr": "avoir, négation",
                 "de": "avoir, Verneinung"
               },
-              "ruleIds": ["rule-placement", "rule-elision"],
+              "ruleIds": ["rule-avoir-negation"],
               "answerExplanation": {
-                "en": "With vous, avoir is avez, and ne becomes n' before the vowel.",
-                "fr": "Avec vous, avoir devient avez, et ne devient n' devant la voyelle.",
-                "de": "Zu vous gehört avez, und ne wird vor dem Vokal zu n'."
+                "en": "With vous, avoir is avez: vous n'avez pas.",
+                "fr": "Avec vous, avoir devient avez : vous n'avez pas.",
+                "de": "Zu vous gehört avez: vous n'avez pas."
               }
             },
             {
               "type": "grammar_gap_typing",
-              "itemId": "ex-a-typing-3",
-              "before": "Elles",
-              "after": "arrivées.",
-              "accepted": { "answers": ["ne sont pas"] },
-              "hint": { "en": "être, negative", "fr": "être, négation", "de": "être, Verneinung" },
-              "ruleIds": ["rule-placement"],
+              "itemId": "ex-avoir-typing-3",
+              "before": "On",
+              "after": "payé le café.",
+              "accepted": { "answers": ["n'a pas", "n’a pas"] },
+              "hint": {
+                "en": "avoir, negative",
+                "fr": "avoir, négation",
+                "de": "avoir, Verneinung"
+              },
+              "ruleIds": ["rule-avoir-negation"],
               "answerExplanation": {
-                "en": "Arriver takes être, so sont: ne sont pas, and the participle agrees (arrivées).",
-                "fr": "Arriver se conjugue avec être : ne sont pas, et le participe s'accorde (arrivées).",
-                "de": "Arriver bildet das Perfekt mit être: ne sont pas, und das Partizip wird angeglichen (arrivées)."
+                "en": "On takes the same form as il: on n'a pas.",
+                "fr": "On prend la même forme que il : on n'a pas.",
+                "de": "On hat dieselbe Form wie il: on n'a pas."
               }
             },
             {
               "type": "grammar_gap_typing",
-              "itemId": "ex-a-typing-4",
-              "before": "Je",
-              "after": "allé au cinéma.",
-              "accepted": { "answers": ["ne suis pas"] },
-              "hint": { "en": "être, negative", "fr": "être, négation", "de": "être, Verneinung" },
-              "ruleIds": ["rule-placement"],
+              "itemId": "ex-avoir-typing-4",
+              "before": "Les enfants",
+              "after": "écouté le professeur.",
+              "accepted": { "answers": ["n'ont pas", "n’ont pas"] },
+              "hint": {
+                "en": "avoir, negative",
+                "fr": "avoir, négation",
+                "de": "avoir, Verneinung"
+              },
+              "ruleIds": ["rule-avoir-negation"],
               "answerExplanation": {
-                "en": "Aller takes être: je ne suis pas allé. There is no elision before suis.",
-                "fr": "Aller se conjugue avec être : je ne suis pas allé. Pas d'élision devant suis.",
-                "de": "Aller bildet das Perfekt mit être: je ne suis pas allé. Vor suis gibt es keine Elision."
+                "en": "Les enfants is like ils, so avoir is ont: n'ont pas.",
+                "fr": "Les enfants correspond à ils : avoir devient ont, donc n'ont pas.",
+                "de": "Les enfants entspricht ils, also ist avoir ont: n'ont pas."
               }
             }
           ]
@@ -284,13 +300,257 @@
       ]
     },
     {
-      "id": "ex-a-spot",
+      "id": "ex-avoir-order",
       "role": "exercise",
-      "blockId": "block-placement",
+      "blockId": "block-avoir",
+      "label": { "en": "Word order 1", "fr": "Ordre des mots 1", "de": "Wortstellung 1" },
+      "pages": [
+        {
+          "pageId": "ex-avoir-order-page",
+          "estimatedDurationS": 75,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-avoir-order-1",
+              "tokens": [
+                { "tokenId": "t-1", "text": "pas" },
+                { "tokenId": "t-2", "text": "film" },
+                { "tokenId": "t-3", "text": "Je" },
+                { "tokenId": "t-4", "text": "vu" },
+                { "tokenId": "t-5", "text": "ce" },
+                { "tokenId": "t-6", "text": "n'ai" },
+                { "tokenId": "t-7", "text": "." }
+              ],
+              "acceptedOrders": [["t-3", "t-6", "t-1", "t-4", "t-5", "t-2", "t-7"]],
+              "ruleIds": ["rule-avoir-negation"],
+              "answerExplanation": {
+                "en": "Ne… pas surrounds the auxiliary: je n'ai pas vu.",
+                "fr": "Ne… pas entoure l'auxiliaire : je n'ai pas vu.",
+                "de": "Ne… pas umschließt das Hilfsverb: je n'ai pas vu."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-avoir-order-2",
+              "tokens": [
+                { "tokenId": "t-1", "text": "sac" },
+                { "tokenId": "t-2", "text": "Tu" },
+                { "tokenId": "t-3", "text": "pris" },
+                { "tokenId": "t-4", "text": "pas" },
+                { "tokenId": "t-5", "text": "ton" },
+                { "tokenId": "t-6", "text": "n'as" },
+                { "tokenId": "t-7", "text": "." }
+              ],
+              "acceptedOrders": [["t-2", "t-6", "t-4", "t-3", "t-5", "t-1", "t-7"]],
+              "ruleIds": ["rule-avoir-negation"],
+              "answerExplanation": {
+                "en": "The participle pris comes after pas: tu n'as pas pris.",
+                "fr": "Le participe pris vient après pas : tu n'as pas pris.",
+                "de": "Das Partizip pris steht nach pas: tu n'as pas pris."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-avoir-order-3",
+              "tokens": [
+                { "tokenId": "t-1", "text": "attendu" },
+                { "tokenId": "t-2", "text": "le" },
+                { "tokenId": "t-3", "text": "n'avons" },
+                { "tokenId": "t-4", "text": "Nous" },
+                { "tokenId": "t-5", "text": "pas" },
+                { "tokenId": "t-6", "text": "bus" },
+                { "tokenId": "t-7", "text": "." }
+              ],
+              "acceptedOrders": [["t-4", "t-3", "t-5", "t-1", "t-2", "t-6", "t-7"]],
+              "ruleIds": ["rule-avoir-negation"],
+              "answerExplanation": {
+                "en": "Ne… pas surrounds avons, and the participle attendu follows.",
+                "fr": "Ne… pas entoure avons, et le participe attendu suit.",
+                "de": "Ne… pas umschließt avons, und das Partizip attendu folgt."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "block-etre-explanation",
+      "role": "explanation",
+      "blockId": "block-etre",
+      "label": {
+        "en": "Negation with être and answering no",
+        "fr": "La négation avec être et répondre non",
+        "de": "Die Verneinung mit être und Nein antworten"
+      },
+      "pages": [
+        {
+          "pageId": "block-etre-explanation",
+          "estimatedDurationS": 150,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the explanation and the examples.",
+            "fr": "Lisez l’explication et les exemples.",
+            "de": "Lies die Erklärung und die Beispiele."
+          },
+          "items": [
+            {
+              "type": "grammar_explanation",
+              "itemId": "block-etre-explanation",
+              "ruleIds": ["rule-etre-negation", "rule-answer-no"],
+              "heading": {
+                "en": "Negation with être, and answering no",
+                "fr": "La négation avec être, et répondre non",
+                "de": "Die Verneinung mit être und Nein antworten"
+              },
+              "text": {
+                "en": "With verbs that use **être**, the rule is the same: `ne` before `être`, `pas` after it. The participle still agrees with the subject.\n\n- `Elle est venue.` → `Elle n'est pas venue.`\n- `Ils sont partis.` → `Ils ne sont pas partis.`\n\nTo answer no to a question about the past, repeat the auxiliary and the participle: `Tu as fini ? Non, je n'ai pas fini.`",
+                "fr": "Avec les verbes qui utilisent **être**, la règle est la même : `ne` avant `être`, `pas` après. Le participe s'accorde toujours avec le sujet.\n\n- `Elle est venue.` → `Elle n'est pas venue.`\n- `Ils sont partis.` → `Ils ne sont pas partis.`\n\nPour répondre non à une question au passé, on reprend l'auxiliaire et le participe : `Tu as fini ? Non, je n'ai pas fini.`",
+                "de": "Bei Verben mit **être** gilt dieselbe Regel: `ne` vor `être`, `pas` danach. Das Partizip richtet sich weiterhin nach dem Subjekt.\n\n- `Elle est venue.` → `Elle n'est pas venue.`\n- `Ils sont partis.` → `Ils ne sont pas partis.`\n\nUm eine Frage zur Vergangenheit mit Nein zu beantworten, wiederholt man Hilfsverb und Partizip: `Tu as fini ? Non, je n'ai pas fini.`"
+              },
+              "formTable": [
+                {
+                  "subject": "je",
+                  "form": "ne suis pas",
+                  "example": "Je ne suis pas allé au marché."
+                },
+                { "subject": "tu", "form": "n'es pas", "example": "Tu n'es pas venu." },
+                {
+                  "subject": "il / elle / on",
+                  "form": "n'est pas",
+                  "example": "Elle n'est pas venue."
+                },
+                {
+                  "subject": "nous",
+                  "form": "ne sommes pas",
+                  "example": "Nous ne sommes pas partis."
+                },
+                { "subject": "vous", "form": "n'êtes pas", "example": "Vous n'êtes pas arrivés." },
+                {
+                  "subject": "ils / elles",
+                  "form": "ne sont pas",
+                  "example": "Ils ne sont pas partis."
+                }
+              ],
+              "examples": [
+                {
+                  "text": "Elle n'est pas venue.",
+                  "translation": { "en": "She didn't come.", "de": "Sie ist nicht gekommen." }
+                },
+                {
+                  "text": "Ils ne sont pas partis.",
+                  "translation": { "en": "They didn't leave.", "de": "Sie sind nicht weggegangen." }
+                },
+                {
+                  "text": "Tu as fini ? Non, je n'ai pas fini.",
+                  "translation": {
+                    "en": "Did you finish? No, I didn't finish.",
+                    "de": "Hast du es beendet? Nein, ich habe es nicht beendet."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-etre-choice",
+      "role": "exercise",
+      "blockId": "block-etre",
+      "label": {
+        "en": "Multiple-choice gaps 2",
+        "fr": "Phrases à trous à choix multiple 2",
+        "de": "Lücken mit Auswahl 2"
+      },
+      "pages": [
+        {
+          "pageId": "ex-etre-choice-page",
+          "estimatedDurationS": 36,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-etre-choice-1",
+              "before": "Elle",
+              "after": "venue à la fête.",
+              "choices": [
+                { "choiceId": "c-1", "text": "n'a pas" },
+                { "choiceId": "c-2", "text": "n'est pas" },
+                { "choiceId": "c-3", "text": "ne est pas" },
+                { "choiceId": "c-4", "text": "n'est" }
+              ],
+              "answerChoiceId": "c-2",
+              "hint": null,
+              "ruleIds": ["rule-etre-negation"],
+              "answerExplanation": {
+                "en": "Venir uses être, so the negation is n'est pas.",
+                "fr": "Venir se conjugue avec être : la négation est n'est pas.",
+                "de": "Venir wird mit être gebildet, die Verneinung heißt also n'est pas."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-etre-choice-2",
+              "before": "Ils",
+              "after": "partis ce matin.",
+              "choices": [
+                { "choiceId": "c-1", "text": "n'ont pas" },
+                { "choiceId": "c-2", "text": "ne sont" },
+                { "choiceId": "c-3", "text": "ne sont pas" },
+                { "choiceId": "c-4", "text": "ne pas sont" }
+              ],
+              "answerChoiceId": "c-3",
+              "hint": null,
+              "ruleIds": ["rule-etre-negation"],
+              "answerExplanation": {
+                "en": "Partir uses être: ils ne sont pas partis.",
+                "fr": "Partir se conjugue avec être : ils ne sont pas partis.",
+                "de": "Partir wird mit être gebildet: ils ne sont pas partis."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-etre-choice-3",
+              "before": "Je",
+              "after": "allé au cinéma.",
+              "choices": [
+                { "choiceId": "c-1", "text": "n'ai pas" },
+                { "choiceId": "c-2", "text": "ne suis" },
+                { "choiceId": "c-3", "text": "suis pas" },
+                { "choiceId": "c-4", "text": "ne suis pas" }
+              ],
+              "answerChoiceId": "c-4",
+              "hint": null,
+              "ruleIds": ["rule-etre-negation"],
+              "answerExplanation": {
+                "en": "Aller uses être: je ne suis pas allé. Ne does not elide before suis.",
+                "fr": "Aller se conjugue avec être : je ne suis pas allé. Ne ne s'élide pas devant suis.",
+                "de": "Aller wird mit être gebildet: je ne suis pas allé. Ne wird vor suis nicht elidiert."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-etre-spot",
+      "role": "exercise",
+      "blockId": "block-etre",
       "label": { "en": "Error spotting", "fr": "Repérer l’erreur", "de": "Fehler finden" },
       "pages": [
         {
-          "pageId": "ex-a-spot-page",
+          "pageId": "ex-etre-spot-page",
           "estimatedDurationS": 100,
           "timeLimitS": null,
           "instructions": {
@@ -301,90 +561,99 @@
           "items": [
             {
               "type": "grammar_error_spotter",
-              "itemId": "ex-a-spot-1",
-              "tokens": [
-                { "tokenId": "t-1", "text": "Tu" },
-                { "tokenId": "t-2", "text": "n'es" },
-                { "tokenId": "t-3", "text": "pas" },
-                { "tokenId": "t-4", "text": "mangé" },
-                { "tokenId": "t-5", "text": "." }
-              ],
-              "faultyTokenId": "t-2",
-              "correction": {
-                "mode": "type",
-                "accepted": { "answers": ["n'as", "n’as"] },
-                "choices": []
-              },
-              "ruleIds": ["rule-placement", "rule-elision"],
-              "answerExplanation": {
-                "en": "Manger takes avoir: tu n'as pas mangé.",
-                "fr": "Manger se conjugue avec avoir : tu n'as pas mangé.",
-                "de": "Manger bildet das Perfekt mit avoir: tu n'as pas mangé."
-              }
-            },
-            {
-              "type": "grammar_error_spotter",
-              "itemId": "ex-a-spot-2",
+              "itemId": "ex-etre-spot-1",
               "tokens": [
                 { "tokenId": "t-1", "text": "Elle" },
-                { "tokenId": "t-2", "text": "n'est" },
+                { "tokenId": "t-2", "text": "n'a" },
                 { "tokenId": "t-3", "text": "pas" },
-                { "tokenId": "t-4", "text": "venu" },
-                { "tokenId": "t-5", "text": "." }
-              ],
-              "faultyTokenId": "t-4",
-              "correction": { "mode": "type", "accepted": { "answers": ["venue"] }, "choices": [] },
-              "ruleIds": ["rule-placement"],
-              "answerExplanation": {
-                "en": "With être the participle agrees with elle: venue.",
-                "fr": "Avec être, le participe s'accorde avec elle : venue.",
-                "de": "Bei être wird das Partizip an elle angeglichen: venue."
-              }
-            },
-            {
-              "type": "grammar_error_spotter",
-              "itemId": "ex-a-spot-3",
-              "tokens": [
-                { "tokenId": "t-1", "text": "Vous" },
-                { "tokenId": "t-2", "text": "n'êtes" },
-                { "tokenId": "t-3", "text": "pas" },
-                { "tokenId": "t-4", "text": "fini" },
-                { "tokenId": "t-5", "text": "." }
+                { "tokenId": "t-4", "text": "venue" },
+                { "tokenId": "t-5", "text": "à" },
+                { "tokenId": "t-6", "text": "Lyon" },
+                { "tokenId": "t-7", "text": "." }
               ],
               "faultyTokenId": "t-2",
               "correction": {
                 "mode": "type",
-                "accepted": { "answers": ["n'avez", "n’avez"] },
+                "accepted": { "answers": ["n'est", "n’est"] },
                 "choices": []
               },
-              "ruleIds": ["rule-placement", "rule-elision"],
+              "ruleIds": ["rule-etre-negation"],
               "answerExplanation": {
-                "en": "Finir takes avoir: vous n'avez pas fini.",
-                "fr": "Finir se conjugue avec avoir : vous n'avez pas fini.",
-                "de": "Finir bildet das Perfekt mit avoir: vous n'avez pas fini."
+                "en": "Venir uses être, not avoir: elle n'est pas venue.",
+                "fr": "Venir se conjugue avec être, pas avec avoir : elle n'est pas venue.",
+                "de": "Venir wird mit être gebildet, nicht mit avoir: elle n'est pas venue."
               }
             },
             {
               "type": "grammar_error_spotter",
-              "itemId": "ex-a-spot-4",
+              "itemId": "ex-etre-spot-2",
               "tokens": [
-                { "tokenId": "t-1", "text": "Marie" },
-                { "tokenId": "t-2", "text": "n'ai" },
+                { "tokenId": "t-1", "text": "Ils" },
+                { "tokenId": "t-2", "text": "ne" },
+                { "tokenId": "t-3", "text": "sont" },
+                { "tokenId": "t-4", "text": "pas" },
+                { "tokenId": "t-5", "text": "arrivé" },
+                { "tokenId": "t-6", "text": "à" },
+                { "tokenId": "t-7", "text": "l'heure" },
+                { "tokenId": "t-8", "text": "." }
+              ],
+              "faultyTokenId": "t-5",
+              "correction": {
+                "mode": "select",
+                "accepted": { "answers": ["arrivés"] },
+                "choices": ["arrivés", "arrivé", "arrivées"]
+              },
+              "ruleIds": ["rule-etre-negation"],
+              "answerExplanation": {
+                "en": "With être, the participle agrees with the subject: ils ne sont pas arrivés.",
+                "fr": "Avec être, le participe s'accorde avec le sujet : ils ne sont pas arrivés.",
+                "de": "Bei être richtet sich das Partizip nach dem Subjekt: ils ne sont pas arrivés."
+              }
+            },
+            {
+              "type": "grammar_error_spotter",
+              "itemId": "ex-etre-spot-3",
+              "tokens": [
+                { "tokenId": "t-1", "text": "Paul" },
+                { "tokenId": "t-2", "text": "n'est" },
                 { "tokenId": "t-3", "text": "pas" },
-                { "tokenId": "t-4", "text": "téléphoné" },
-                { "tokenId": "t-5", "text": "." }
+                { "tokenId": "t-4", "text": "venue" },
+                { "tokenId": "t-5", "text": "à" },
+                { "tokenId": "t-6", "text": "la" },
+                { "tokenId": "t-7", "text": "réunion" },
+                { "tokenId": "t-8", "text": "." }
+              ],
+              "faultyTokenId": "t-4",
+              "correction": { "mode": "type", "accepted": { "answers": ["venu"] }, "choices": [] },
+              "ruleIds": ["rule-etre-negation"],
+              "answerExplanation": {
+                "en": "Paul is masculine singular, so the participle is venu, without an extra e.",
+                "fr": "Paul est masculin singulier : le participe est venu, sans e final.",
+                "de": "Paul ist maskulin Singular, das Partizip heißt also venu, ohne zusätzliches e."
+              }
+            },
+            {
+              "type": "grammar_error_spotter",
+              "itemId": "ex-etre-spot-4",
+              "tokens": [
+                { "tokenId": "t-1", "text": "Nous" },
+                { "tokenId": "t-2", "text": "n'avons" },
+                { "tokenId": "t-3", "text": "pas" },
+                { "tokenId": "t-4", "text": "partis" },
+                { "tokenId": "t-5", "text": "hier" },
+                { "tokenId": "t-6", "text": "." }
               ],
               "faultyTokenId": "t-2",
               "correction": {
-                "mode": "select",
-                "accepted": { "answers": ["n'a"] },
-                "choices": ["n'a", "n'ai", "n'as"]
+                "mode": "type",
+                "accepted": { "answers": ["ne sommes"] },
+                "choices": []
               },
-              "ruleIds": ["rule-placement", "rule-elision"],
+              "ruleIds": ["rule-etre-negation"],
               "answerExplanation": {
-                "en": "Marie is 3rd person singular, so avoir is a: n'a.",
-                "fr": "Marie est à la 3e personne du singulier : avoir devient a, donc n'a.",
-                "de": "Marie ist 3. Person Singular: avoir wird zu a, also n'a."
+                "en": "Partir uses être: nous ne sommes pas partis.",
+                "fr": "Partir se conjugue avec être : nous ne sommes pas partis.",
+                "de": "Partir wird mit être gebildet: nous ne sommes pas partis."
               }
             }
           ]
@@ -392,193 +661,14 @@
       ]
     },
     {
-      "id": "block-answers-explanation",
-      "role": "explanation",
-      "blockId": "block-answers",
-      "label": {
-        "en": "Answering no about the past",
-        "fr": "Répondre non sur le passé",
-        "de": "Auf Fragen zur Vergangenheit mit nein antworten"
-      },
-      "pages": [
-        {
-          "pageId": "block-answers-explanation",
-          "estimatedDurationS": 120,
-          "timeLimitS": null,
-          "instructions": {
-            "en": "Read the explanation and the examples.",
-            "fr": "Lisez l’explication et les exemples.",
-            "de": "Lies die Erklärung und die Beispiele."
-          },
-          "items": [
-            {
-              "type": "grammar_explanation",
-              "itemId": "block-answers-explanation",
-              "ruleIds": ["rule-answer-no"],
-              "heading": { "en": "Answering no", "fr": "Répondre non", "de": "Mit nein antworten" },
-              "text": {
-                "en": "To answer **no** to a question about the past, repeat the same auxiliary and participle and add the negation: `Tu as fini ? Non, je n'ai pas fini.`\n\n1. Change the subject if needed: `Vous avez attendu ? Non, nous n'avons pas attendu.`\n2. Keep `ne… pas` around the auxiliary: `Il est arrivé ? Non, il n'est pas arrivé.`\n\nIn writing, do not drop `ne`: say `Je n'ai pas vu`, not `J'ai pas vu`.",
-                "fr": "Pour répondre **non** à une question sur le passé, reprenez le même auxiliaire et le même participe, avec la négation : `Tu as fini ? Non, je n'ai pas fini.`\n\n1. Changez le sujet si besoin : `Vous avez attendu ? Non, nous n'avons pas attendu.`\n2. Gardez `ne… pas` autour de l'auxiliaire : `Il est arrivé ? Non, il n'est pas arrivé.`\n\nÀ l'écrit, n'oubliez pas `ne` : on écrit `Je n'ai pas vu`, pas `J'ai pas vu`.",
-                "de": "Um eine Frage zur Vergangenheit mit **nein** zu beantworten, wiederhole dasselbe Hilfsverb und dasselbe Partizip mit der Verneinung: `Tu as fini ? Non, je n'ai pas fini.`\n\n1. Ändere bei Bedarf das Subjekt: `Vous avez attendu ? Non, nous n'avons pas attendu.`\n2. Lass `ne… pas` um das Hilfsverb stehen: `Il est arrivé ? Non, il n'est pas arrivé.`\n\nSchriftlich lässt man `ne` nicht weg: Man schreibt `Je n'ai pas vu`, nicht `J'ai pas vu`."
-              },
-              "formTable": [
-                { "subject": "Tu as fini ?", "form": "Non, je n'ai pas fini.", "example": null },
-                {
-                  "subject": "Vous avez attendu ?",
-                  "form": "Non, nous n'avons pas attendu.",
-                  "example": null
-                },
-                {
-                  "subject": "Il est arrivé ?",
-                  "form": "Non, il n'est pas arrivé.",
-                  "example": null
-                }
-              ],
-              "examples": [
-                {
-                  "text": "Tu as téléphoné à Paul ? Non, je n'ai pas téléphoné.",
-                  "translation": {
-                    "en": "Did you call Paul? No, I didn't call.",
-                    "de": "Hast du Paul angerufen? Nein, ich habe nicht angerufen."
-                  }
-                },
-                {
-                  "text": "Elle est arrivée ? Non, elle n'est pas arrivée.",
-                  "translation": {
-                    "en": "Has she arrived? No, she hasn't arrived.",
-                    "de": "Ist sie angekommen? Nein, sie ist nicht angekommen."
-                  }
-                },
-                {
-                  "text": "Vous avez dormi ? Non, nous n'avons pas dormi.",
-                  "translation": {
-                    "en": "Did you sleep? No, we didn't sleep.",
-                    "de": "Habt ihr geschlafen? Nein, wir haben nicht geschlafen."
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "ex-b-choice",
+      "id": "ex-answer-typing",
       "role": "exercise",
-      "blockId": "block-answers",
-      "label": {
-        "en": "Multiple-choice answers",
-        "fr": "Réponses à choix multiple",
-        "de": "Antworten mit Auswahl"
-      },
+      "blockId": "block-etre",
+      "label": { "en": "Answering no", "fr": "Répondre non", "de": "Mit Nein antworten" },
       "pages": [
         {
-          "pageId": "ex-b-choice-page",
-          "estimatedDurationS": 48,
-          "timeLimitS": null,
-          "instructions": {
-            "en": "Choose the word that completes the sentence.",
-            "fr": "Choisissez le mot qui complète la phrase.",
-            "de": "Wähle das Wort, das den Satz ergänzt."
-          },
-          "items": [
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-b-choice-1",
-              "before": "Tu as vu ce film ? Non, je",
-              "after": "vu ce film.",
-              "choices": [
-                { "choiceId": "c-1", "text": "ne suis pas" },
-                { "choiceId": "c-2", "text": "n'as pas" },
-                { "choiceId": "c-3", "text": "n'ai pas" },
-                { "choiceId": "c-4", "text": "ne ai pas" }
-              ],
-              "answerChoiceId": "c-3",
-              "hint": null,
-              "ruleIds": ["rule-answer-no"],
-              "answerExplanation": {
-                "en": "The answer to tu is je, and the auxiliary stays: je n'ai pas vu.",
-                "fr": "On répond à tu par je, et l'auxiliaire reste : je n'ai pas vu.",
-                "de": "Auf tu antwortet man mit je, und das Hilfsverb bleibt: je n'ai pas vu."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-b-choice-2",
-              "before": "Vous avez attendu longtemps ? Non, nous",
-              "after": "attendu longtemps.",
-              "choices": [
-                { "choiceId": "c-1", "text": "n'avez pas" },
-                { "choiceId": "c-2", "text": "n'avons pas" },
-                { "choiceId": "c-3", "text": "ne sommes pas" },
-                { "choiceId": "c-4", "text": "n'ont pas" }
-              ],
-              "answerChoiceId": "c-2",
-              "hint": null,
-              "ruleIds": ["rule-answer-no"],
-              "answerExplanation": {
-                "en": "Here the answer to vous is nous, and avoir becomes avons: nous n'avons pas.",
-                "fr": "Ici, on répond à vous par nous, et avoir devient avons : nous n'avons pas.",
-                "de": "Hier antwortet man auf vous mit nous, und avoir wird zu avons: nous n'avons pas."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-b-choice-3",
-              "before": "Marie est arrivée ? Non, elle",
-              "after": "arrivée.",
-              "choices": [
-                { "choiceId": "c-1", "text": "n'a pas" },
-                { "choiceId": "c-2", "text": "ne est pas" },
-                { "choiceId": "c-3", "text": "n'es pas" },
-                { "choiceId": "c-4", "text": "n'est pas" }
-              ],
-              "answerChoiceId": "c-4",
-              "hint": null,
-              "ruleIds": ["rule-answer-no"],
-              "answerExplanation": {
-                "en": "Arriver takes être: elle n'est pas arrivée.",
-                "fr": "Arriver se conjugue avec être : elle n'est pas arrivée.",
-                "de": "Arriver bildet das Perfekt mit être: elle n'est pas arrivée."
-              }
-            },
-            {
-              "type": "grammar_gap_choice",
-              "itemId": "ex-b-choice-4",
-              "before": "Ils ont gagné le match ? Non, ils",
-              "after": "gagné le match.",
-              "choices": [
-                { "choiceId": "c-1", "text": "ne sont pas" },
-                { "choiceId": "c-2", "text": "n'a pas" },
-                { "choiceId": "c-3", "text": "n'ont" },
-                { "choiceId": "c-4", "text": "n'ont pas" }
-              ],
-              "answerChoiceId": "c-4",
-              "hint": null,
-              "ruleIds": ["rule-answer-no"],
-              "answerExplanation": {
-                "en": "Gagner takes avoir: ils n'ont pas gagné.",
-                "fr": "Gagner se conjugue avec avoir : ils n'ont pas gagné.",
-                "de": "Gagner bildet das Perfekt mit avoir: ils n'ont pas gagné."
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "ex-b-typing",
-      "role": "exercise",
-      "blockId": "block-answers",
-      "label": {
-        "en": "Typed answers",
-        "fr": "Réponses à écrire",
-        "de": "Antworten zum Schreiben"
-      },
-      "pages": [
-        {
-          "pageId": "ex-b-typing-page",
-          "estimatedDurationS": 80,
+          "pageId": "ex-answer-typing-page",
+          "estimatedDurationS": 60,
           "timeLimitS": null,
           "instructions": {
             "en": "Type the missing words.",
@@ -588,58 +678,44 @@
           "items": [
             {
               "type": "grammar_gap_typing",
-              "itemId": "ex-b-typing-1",
-              "before": "Tu as aimé le film ? Non, je",
-              "after": "aimé le film.",
+              "itemId": "ex-answer-typing-1",
+              "before": "Tu as téléphoné à Marie ? Non, je",
+              "after": "téléphoné.",
               "accepted": { "answers": ["n'ai pas", "n’ai pas"] },
-              "hint": { "en": "avoir", "fr": "avoir", "de": "avoir" },
+              "hint": { "en": "answer no", "fr": "répondre non", "de": "mit Nein antworten" },
               "ruleIds": ["rule-answer-no"],
               "answerExplanation": {
-                "en": "The answer to tu is je: je n'ai pas aimé.",
-                "fr": "On répond à tu par je : je n'ai pas aimé.",
-                "de": "Auf tu antwortet man mit je: je n'ai pas aimé."
+                "en": "The question uses tu as, so the answer repeats the auxiliary: je n'ai pas téléphoné.",
+                "fr": "La question utilise tu as : la réponse reprend l'auxiliaire, je n'ai pas téléphoné.",
+                "de": "Die Frage verwendet tu as, die Antwort wiederholt das Hilfsverb: je n'ai pas téléphoné."
               }
             },
             {
               "type": "grammar_gap_typing",
-              "itemId": "ex-b-typing-2",
+              "itemId": "ex-answer-typing-2",
               "before": "Vous avez fini ? Non, nous",
               "after": "fini.",
               "accepted": { "answers": ["n'avons pas", "n’avons pas"] },
-              "hint": { "en": "avoir", "fr": "avoir", "de": "avoir" },
+              "hint": { "en": "answer no", "fr": "répondre non", "de": "mit Nein antworten" },
               "ruleIds": ["rule-answer-no"],
               "answerExplanation": {
-                "en": "The answer to vous is nous here: nous n'avons pas fini.",
-                "fr": "Ici, on répond à vous par nous : nous n'avons pas fini.",
-                "de": "Hier antwortet man auf vous mit nous: nous n'avons pas fini."
+                "en": "Vous asks, nous answers: nous n'avons pas fini.",
+                "fr": "Vous interroge, nous répond : nous n'avons pas fini.",
+                "de": "Vous fragt, nous antwortet: nous n'avons pas fini."
               }
             },
             {
               "type": "grammar_gap_typing",
-              "itemId": "ex-b-typing-3",
-              "before": "Il est allé chez le médecin ? Non, il",
-              "after": "allé chez le médecin.",
+              "itemId": "ex-answer-typing-3",
+              "before": "Julie est partie ? Non, elle",
+              "after": "partie.",
               "accepted": { "answers": ["n'est pas", "n’est pas"] },
-              "hint": { "en": "être", "fr": "être", "de": "être" },
+              "hint": { "en": "answer no", "fr": "répondre non", "de": "mit Nein antworten" },
               "ruleIds": ["rule-answer-no"],
               "answerExplanation": {
-                "en": "Aller takes être: il n'est pas allé.",
-                "fr": "Aller se conjugue avec être : il n'est pas allé.",
-                "de": "Aller bildet das Perfekt mit être: il n'est pas allé."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "ex-b-typing-4",
-              "before": "Elles ont dansé ? Non, elles",
-              "after": "dansé.",
-              "accepted": { "answers": ["n'ont pas", "n’ont pas"] },
-              "hint": { "en": "avoir", "fr": "avoir", "de": "avoir" },
-              "ruleIds": ["rule-answer-no"],
-              "answerExplanation": {
-                "en": "With elles, avoir is ont: elles n'ont pas dansé.",
-                "fr": "Avec elles, avoir devient ont : elles n'ont pas dansé.",
-                "de": "Zu elles gehört ont: elles n'ont pas dansé."
+                "en": "Partir uses être, so the answer is elle n'est pas partie.",
+                "fr": "Partir se conjugue avec être : elle n'est pas partie.",
+                "de": "Partir wird mit être gebildet: elle n'est pas partie."
               }
             }
           ]
@@ -647,14 +723,14 @@
       ]
     },
     {
-      "id": "ex-b-order",
+      "id": "ex-answer-order",
       "role": "exercise",
-      "blockId": "block-answers",
-      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
+      "blockId": "block-etre",
+      "label": { "en": "Word order 2", "fr": "Ordre des mots 2", "de": "Wortstellung 2" },
       "pages": [
         {
-          "pageId": "ex-b-order-page",
-          "estimatedDurationS": 100,
+          "pageId": "ex-answer-order-page",
+          "estimatedDurationS": 75,
           "timeLimitS": null,
           "instructions": {
             "en": "Put the words in the right order.",
@@ -664,83 +740,62 @@
           "items": [
             {
               "type": "grammar_word_order",
-              "itemId": "ex-b-order-1",
+              "itemId": "ex-answer-order-1",
               "tokens": [
-                { "tokenId": "t-5", "text": "pas" },
-                { "tokenId": "t-1", "text": "Non" },
-                { "tokenId": "t-6", "text": "entendu" },
-                { "tokenId": "t-3", "text": "je" },
-                { "tokenId": "t-7", "text": "." },
-                { "tokenId": "t-4", "text": "n'ai" },
-                { "tokenId": "t-2", "text": "," }
+                { "tokenId": "t-1", "text": "dormi" },
+                { "tokenId": "t-2", "text": "Non" },
+                { "tokenId": "t-3", "text": "pas" },
+                { "tokenId": "t-4", "text": "," },
+                { "tokenId": "t-5", "text": "je" },
+                { "tokenId": "t-6", "text": "n'ai" },
+                { "tokenId": "t-7", "text": "." }
               ],
-              "acceptedOrders": [["t-1", "t-2", "t-3", "t-4", "t-5", "t-6", "t-7"]],
+              "acceptedOrders": [["t-2", "t-4", "t-5", "t-6", "t-3", "t-1", "t-7"]],
               "ruleIds": ["rule-answer-no"],
               "answerExplanation": {
-                "en": "Answer non, then ne… pas surrounds the auxiliary: je n'ai pas entendu.",
-                "fr": "On répond non, puis ne… pas entoure l'auxiliaire : je n'ai pas entendu.",
-                "de": "Erst non, dann umschließt ne… pas das Hilfsverb: je n'ai pas entendu."
+                "en": "Answer no, then a negative sentence: non, je n'ai pas dormi.",
+                "fr": "On répond non, puis une phrase négative : non, je n'ai pas dormi.",
+                "de": "Erst Nein, dann ein verneinter Satz: non, je n'ai pas dormi."
               }
             },
             {
               "type": "grammar_word_order",
-              "itemId": "ex-b-order-2",
+              "itemId": "ex-answer-order-2",
               "tokens": [
-                { "tokenId": "t-4", "text": "n'est" },
-                { "tokenId": "t-7", "text": "." },
-                { "tokenId": "t-1", "text": "Non" },
-                { "tokenId": "t-6", "text": "venue" },
+                { "tokenId": "t-1", "text": "arrivée" },
+                { "tokenId": "t-2", "text": "n'est" },
                 { "tokenId": "t-3", "text": "elle" },
-                { "tokenId": "t-2", "text": "," },
-                { "tokenId": "t-5", "text": "pas" }
-              ],
-              "acceptedOrders": [["t-1", "t-2", "t-3", "t-4", "t-5", "t-6", "t-7"]],
-              "ruleIds": ["rule-answer-no"],
-              "answerExplanation": {
-                "en": "Answer non, then ne… pas surrounds the auxiliary: elle n'est pas venue.",
-                "fr": "On répond non, puis ne… pas entoure l'auxiliaire : elle n'est pas venue.",
-                "de": "Erst non, dann umschließt ne… pas das Hilfsverb: elle n'est pas venue."
-              }
-            },
-            {
-              "type": "grammar_word_order",
-              "itemId": "ex-b-order-3",
-              "tokens": [
-                { "tokenId": "t-6", "text": "répondu" },
-                { "tokenId": "t-3", "text": "nous" },
-                { "tokenId": "t-1", "text": "Non" },
-                { "tokenId": "t-5", "text": "pas" },
-                { "tokenId": "t-7", "text": "." },
-                { "tokenId": "t-2", "text": "," },
-                { "tokenId": "t-4", "text": "n'avons" }
-              ],
-              "acceptedOrders": [["t-1", "t-2", "t-3", "t-4", "t-5", "t-6", "t-7"]],
-              "ruleIds": ["rule-answer-no"],
-              "answerExplanation": {
-                "en": "Answer non, then ne… pas surrounds the auxiliary: nous n'avons pas répondu.",
-                "fr": "On répond non, puis ne… pas entoure l'auxiliaire : nous n'avons pas répondu.",
-                "de": "Erst non, dann umschließt ne… pas das Hilfsverb: nous n'avons pas répondu."
-              }
-            },
-            {
-              "type": "grammar_word_order",
-              "itemId": "ex-b-order-4",
-              "tokens": [
+                { "tokenId": "t-4", "text": "." },
+                { "tokenId": "t-5", "text": "Non" },
                 { "tokenId": "t-6", "text": "pas" },
-                { "tokenId": "t-3", "text": "ils" },
-                { "tokenId": "t-8", "text": "." },
-                { "tokenId": "t-1", "text": "Non" },
-                { "tokenId": "t-5", "text": "sont" },
-                { "tokenId": "t-7", "text": "partis" },
-                { "tokenId": "t-2", "text": "," },
-                { "tokenId": "t-4", "text": "ne" }
+                { "tokenId": "t-7", "text": "," }
               ],
-              "acceptedOrders": [["t-1", "t-2", "t-3", "t-4", "t-5", "t-6", "t-7", "t-8"]],
+              "acceptedOrders": [["t-5", "t-7", "t-3", "t-2", "t-6", "t-1", "t-4"]],
               "ruleIds": ["rule-answer-no"],
               "answerExplanation": {
-                "en": "Answer non, then ne… pas surrounds the auxiliary: ils ne sont pas partis.",
-                "fr": "On répond non, puis ne… pas entoure l'auxiliaire : ils ne sont pas partis.",
-                "de": "Erst non, dann umschließt ne… pas das Hilfsverb: ils ne sont pas partis."
+                "en": "Être surrounded by ne… pas, and the participle agrees: elle n'est pas arrivée.",
+                "fr": "Être est entouré par ne… pas, et le participe s'accorde : elle n'est pas arrivée.",
+                "de": "Être wird von ne… pas umschlossen, und das Partizip wird angeglichen: elle n'est pas arrivée."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-answer-order-3",
+              "tokens": [
+                { "tokenId": "t-1", "text": "gagné" },
+                { "tokenId": "t-2", "text": "nous" },
+                { "tokenId": "t-3", "text": "Non" },
+                { "tokenId": "t-4", "text": "n'avons" },
+                { "tokenId": "t-5", "text": "." },
+                { "tokenId": "t-6", "text": "pas" },
+                { "tokenId": "t-7", "text": "," }
+              ],
+              "acceptedOrders": [["t-3", "t-7", "t-2", "t-4", "t-6", "t-1", "t-5"]],
+              "ruleIds": ["rule-answer-no"],
+              "answerExplanation": {
+                "en": "The answer repeats the subject nous and the auxiliary: nous n'avons pas gagné.",
+                "fr": "La réponse reprend le sujet nous et l'auxiliaire : nous n'avons pas gagné.",
+                "de": "Die Antwort wiederholt das Subjekt nous und das Hilfsverb: nous n'avons pas gagné."
               }
             }
           ]
@@ -773,9 +828,9 @@
       "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
       "pages": [
         {
-          "pageId": "exam-gaps",
+          "pageId": "exam-typing",
           "estimatedDurationS": 80,
-          "timeLimitS": 130,
+          "timeLimitS": 140,
           "instructions": {
             "en": "Type the missing words.",
             "fr": "Écrivez les mots manquants.",
@@ -784,120 +839,66 @@
           "items": [
             {
               "type": "grammar_gap_typing",
-              "itemId": "exam-gaps-1",
+              "itemId": "exam-typing-1",
               "before": "Tu",
-              "after": "écouté la radio.",
+              "after": "entendu la sonnette ?",
               "accepted": { "answers": ["n'as pas", "n’as pas"] },
               "hint": null,
-              "ruleIds": ["rule-placement", "rule-elision"],
+              "ruleIds": ["rule-avoir-negation"],
               "answerExplanation": {
-                "en": "With tu, avoir is as, and ne becomes n': tu n'as pas écouté.",
-                "fr": "Avec tu, avoir devient as, et ne devient n' : tu n'as pas écouté.",
-                "de": "Zu tu gehört as, und ne wird zu n': tu n'as pas écouté."
+                "en": "With tu, avoir is as: tu n'as pas.",
+                "fr": "Avec tu, avoir devient as : tu n'as pas.",
+                "de": "Zu tu gehört as: tu n'as pas."
               }
             },
             {
               "type": "grammar_gap_typing",
-              "itemId": "exam-gaps-2",
-              "before": "Mes amis",
+              "itemId": "exam-typing-2",
+              "before": "Nous",
+              "after": "trouvé les clés.",
+              "accepted": { "answers": ["n'avons pas", "n’avons pas"] },
+              "hint": null,
+              "ruleIds": ["rule-avoir-negation"],
+              "answerExplanation": {
+                "en": "With nous, avoir is avons: nous n'avons pas.",
+                "fr": "Avec nous, avoir devient avons : nous n'avons pas.",
+                "de": "Zu nous gehört avons: nous n'avons pas."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-typing-3",
+              "before": "Mes parents",
               "after": "venus à la fête.",
               "accepted": { "answers": ["ne sont pas"] },
               "hint": null,
-              "ruleIds": ["rule-placement"],
+              "ruleIds": ["rule-etre-negation"],
               "answerExplanation": {
-                "en": "Mes amis is 3rd person plural (like ils), and venir takes être: ne sont pas.",
-                "fr": "Mes amis est à la 3e personne du pluriel (comme ils), et venir se conjugue avec être : ne sont pas.",
-                "de": "Mes amis ist 3. Person Plural (wie ils), und venir bildet das Perfekt mit être: ne sont pas."
+                "en": "Mes parents is like ils, and venir uses être: ne sont pas.",
+                "fr": "Mes parents correspond à ils, et venir se conjugue avec être : ne sont pas.",
+                "de": "Mes parents entspricht ils, und venir wird mit être gebildet: ne sont pas."
               }
             },
             {
               "type": "grammar_gap_typing",
-              "itemId": "exam-gaps-3",
-              "before": "Nous",
-              "after": "payé l'addition.",
-              "accepted": { "answers": ["n'avons pas", "n’avons pas"] },
-              "hint": null,
-              "ruleIds": ["rule-placement", "rule-elision"],
-              "answerExplanation": {
-                "en": "With nous, avoir is avons, and ne becomes n': nous n'avons pas payé.",
-                "fr": "Avec nous, avoir devient avons, et ne devient n' : nous n'avons pas payé.",
-                "de": "Zu nous gehört avons, und ne wird zu n': nous n'avons pas payé."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "exam-gaps-4",
-              "before": "Je",
-              "after": "arrivé en retard.",
-              "accepted": { "answers": ["ne suis pas"] },
-              "hint": null,
-              "ruleIds": ["rule-placement"],
-              "answerExplanation": {
-                "en": "Arriver takes être: je ne suis pas arrivé.",
-                "fr": "Arriver se conjugue avec être : je ne suis pas arrivé.",
-                "de": "Arriver bildet das Perfekt mit être: je ne suis pas arrivé."
-              }
-            }
-          ]
-        },
-        {
-          "pageId": "exam-answers",
-          "estimatedDurationS": 60,
-          "timeLimitS": 100,
-          "instructions": {
-            "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
-            "de": "Schreib die fehlenden Wörter."
-          },
-          "items": [
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "exam-answers-1",
-              "before": "Tu as acheté le journal ? Non, je",
-              "after": "acheté le journal.",
-              "accepted": { "answers": ["n'ai pas", "n’ai pas"] },
-              "hint": null,
-              "ruleIds": ["rule-answer-no"],
-              "answerExplanation": {
-                "en": "The answer to tu is je: je n'ai pas acheté.",
-                "fr": "On répond à tu par je : je n'ai pas acheté.",
-                "de": "Auf tu antwortet man mit je: je n'ai pas acheté."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "exam-answers-2",
-              "before": "Vous avez vu Marie ? Non, nous",
-              "after": "vu Marie.",
-              "accepted": { "answers": ["n'avons pas", "n’avons pas"] },
-              "hint": null,
-              "ruleIds": ["rule-answer-no"],
-              "answerExplanation": {
-                "en": "The answer to vous is nous here: nous n'avons pas vu.",
-                "fr": "Ici, on répond à vous par nous : nous n'avons pas vu.",
-                "de": "Hier antwortet man auf vous mit nous: nous n'avons pas vu."
-              }
-            },
-            {
-              "type": "grammar_gap_typing",
-              "itemId": "exam-answers-3",
-              "before": "Ton frère est venu ? Non, il",
-              "after": "venu.",
+              "itemId": "exam-typing-4",
+              "before": "Anna",
+              "after": "restée à Nice.",
               "accepted": { "answers": ["n'est pas", "n’est pas"] },
               "hint": null,
-              "ruleIds": ["rule-answer-no"],
+              "ruleIds": ["rule-etre-negation"],
               "answerExplanation": {
-                "en": "Venir takes être: il n'est pas venu.",
-                "fr": "Venir se conjugue avec être : il n'est pas venu.",
-                "de": "Venir bildet das Perfekt mit être: il n'est pas venu."
+                "en": "Anna is like elle, and rester uses être: n'est pas.",
+                "fr": "Anna correspond à elle, et rester se conjugue avec être : n'est pas.",
+                "de": "Anna entspricht elle, und rester wird mit être gebildet: n'est pas."
               }
             }
           ]
         },
         {
           "pageId": "exam-order",
-          "estimatedDurationS": 100,
-          "timeLimitS": 160,
+          "estimatedDurationS": 75,
+          "timeLimitS": 150,
           "instructions": {
             "en": "Put the words in the right order.",
             "fr": "Mettez les mots dans le bon ordre.",
@@ -908,81 +909,114 @@
               "type": "grammar_word_order",
               "itemId": "exam-order-1",
               "tokens": [
-                { "tokenId": "t-4", "text": "oublié" },
-                { "tokenId": "t-6", "text": "clés" },
-                { "tokenId": "t-1", "text": "Je" },
-                { "tokenId": "t-3", "text": "pas" },
-                { "tokenId": "t-7", "text": "." },
-                { "tokenId": "t-5", "text": "mes" },
-                { "tokenId": "t-2", "text": "n'ai" }
+                { "tokenId": "t-1", "text": "porte" },
+                { "tokenId": "t-2", "text": "Il" },
+                { "tokenId": "t-3", "text": "ouvert" },
+                { "tokenId": "t-4", "text": "la" },
+                { "tokenId": "t-5", "text": "pas" },
+                { "tokenId": "t-6", "text": "n'a" },
+                { "tokenId": "t-7", "text": "." }
               ],
-              "acceptedOrders": [["t-1", "t-2", "t-3", "t-4", "t-5", "t-6", "t-7"]],
-              "ruleIds": ["rule-placement", "rule-elision"],
+              "acceptedOrders": [["t-2", "t-6", "t-5", "t-3", "t-4", "t-1", "t-7"]],
+              "ruleIds": ["rule-avoir-negation"],
               "answerExplanation": {
-                "en": "Ne becomes n' before ai, and pas follows it: je n'ai pas oublié.",
-                "fr": "Ne devient n' devant ai, et pas le suit : je n'ai pas oublié.",
-                "de": "Ne wird vor ai zu n', und pas folgt danach: je n'ai pas oublié."
+                "en": "Ne… pas surrounds a: il n'a pas ouvert.",
+                "fr": "Ne… pas entoure a : il n'a pas ouvert.",
+                "de": "Ne… pas umschließt a: il n'a pas ouvert."
               }
             },
             {
               "type": "grammar_word_order",
               "itemId": "exam-order-2",
               "tokens": [
-                { "tokenId": "t-3", "text": "nous" },
-                { "tokenId": "t-6", "text": "déjeuné" },
-                { "tokenId": "t-1", "text": "Non" },
-                { "tokenId": "t-7", "text": "." },
-                { "tokenId": "t-4", "text": "n'avons" },
-                { "tokenId": "t-2", "text": "," },
-                { "tokenId": "t-5", "text": "pas" }
+                { "tokenId": "t-1", "text": "hier" },
+                { "tokenId": "t-2", "text": "pas" },
+                { "tokenId": "t-3", "text": "Elles" },
+                { "tokenId": "t-4", "text": "parties" },
+                { "tokenId": "t-5", "text": "ne" },
+                { "tokenId": "t-6", "text": "sont" },
+                { "tokenId": "t-7", "text": "." }
               ],
-              "acceptedOrders": [["t-1", "t-2", "t-3", "t-4", "t-5", "t-6", "t-7"]],
-              "ruleIds": ["rule-answer-no", "rule-elision"],
+              "acceptedOrders": [["t-3", "t-5", "t-6", "t-2", "t-4", "t-1", "t-7"]],
+              "ruleIds": ["rule-etre-negation"],
               "answerExplanation": {
-                "en": "Answer non, then ne becomes n' before avons: nous n'avons pas déjeuné.",
-                "fr": "On répond non, puis ne devient n' devant avons : nous n'avons pas déjeuné.",
-                "de": "Erst non, dann wird ne vor avons zu n': nous n'avons pas déjeuné."
+                "en": "Ne… pas surrounds sont, and the participle parties agrees with elles.",
+                "fr": "Ne… pas entoure sont, et le participe parties s'accorde avec elles.",
+                "de": "Ne… pas umschließt sont, und das Partizip parties richtet sich nach elles."
               }
             },
             {
               "type": "grammar_word_order",
               "itemId": "exam-order-3",
               "tokens": [
-                { "tokenId": "t-5", "text": "à" },
-                { "tokenId": "t-1", "text": "Léa" },
-                { "tokenId": "t-4", "text": "arrivée" },
-                { "tokenId": "t-7", "text": "." },
-                { "tokenId": "t-3", "text": "pas" },
-                { "tokenId": "t-6", "text": "midi" },
-                { "tokenId": "t-2", "text": "n'est" }
+                { "tokenId": "t-1", "text": "Paul" },
+                { "tokenId": "t-2", "text": "répondu" },
+                { "tokenId": "t-3", "text": "à" },
+                { "tokenId": "t-4", "text": "n'avez" },
+                { "tokenId": "t-5", "text": "Vous" },
+                { "tokenId": "t-6", "text": "pas" },
+                { "tokenId": "t-7", "text": "." }
               ],
-              "acceptedOrders": [["t-1", "t-2", "t-3", "t-4", "t-5", "t-6", "t-7"]],
-              "ruleIds": ["rule-placement", "rule-elision"],
+              "acceptedOrders": [["t-5", "t-4", "t-6", "t-2", "t-3", "t-1", "t-7"]],
+              "ruleIds": ["rule-avoir-negation"],
               "answerExplanation": {
-                "en": "Ne becomes n' before est, then pas, then the participle: Léa n'est pas arrivée.",
-                "fr": "Ne devient n' devant est, puis pas, puis le participe : Léa n'est pas arrivée.",
-                "de": "Ne wird vor est zu n', dann pas, dann das Partizip: Léa n'est pas arrivée."
+                "en": "Ne… pas surrounds avez: vous n'avez pas répondu.",
+                "fr": "Ne… pas entoure avez : vous n'avez pas répondu.",
+                "de": "Ne… pas umschließt avez: vous n'avez pas répondu."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-answer",
+          "estimatedDurationS": 60,
+          "timeLimitS": 120,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-answer-1",
+              "before": "Tu as réservé l'hôtel ? Non, je",
+              "after": "réservé l'hôtel.",
+              "accepted": { "answers": ["n'ai pas", "n’ai pas"] },
+              "hint": null,
+              "ruleIds": ["rule-answer-no"],
+              "answerExplanation": {
+                "en": "The question uses tu as, so the answer is je n'ai pas réservé.",
+                "fr": "La question utilise tu as : la réponse est je n'ai pas réservé.",
+                "de": "Die Frage verwendet tu as, die Antwort lautet je n'ai pas réservé."
               }
             },
             {
-              "type": "grammar_word_order",
-              "itemId": "exam-order-4",
-              "tokens": [
-                { "tokenId": "t-7", "text": "venus" },
-                { "tokenId": "t-1", "text": "Non" },
-                { "tokenId": "t-5", "text": "sont" },
-                { "tokenId": "t-8", "text": "." },
-                { "tokenId": "t-3", "text": "ils" },
-                { "tokenId": "t-6", "text": "pas" },
-                { "tokenId": "t-2", "text": "," },
-                { "tokenId": "t-4", "text": "ne" }
-              ],
-              "acceptedOrders": [["t-1", "t-2", "t-3", "t-4", "t-5", "t-6", "t-7", "t-8"]],
-              "ruleIds": ["rule-answer-no", "rule-placement"],
+              "type": "grammar_gap_typing",
+              "itemId": "exam-answer-2",
+              "before": "Elle est arrivée à midi ? Non, elle",
+              "after": "arrivée à midi.",
+              "accepted": { "answers": ["n'est pas", "n’est pas"] },
+              "hint": null,
+              "ruleIds": ["rule-answer-no"],
               "answerExplanation": {
-                "en": "Answer non, then ne… pas surrounds sont: ils ne sont pas venus.",
-                "fr": "On répond non, puis ne… pas entoure sont : ils ne sont pas venus.",
-                "de": "Erst non, dann umschließt ne… pas sont: ils ne sont pas venus."
+                "en": "Arriver uses être, so the answer is elle n'est pas arrivée.",
+                "fr": "Arriver se conjugue avec être : la réponse est elle n'est pas arrivée.",
+                "de": "Arriver wird mit être gebildet: die Antwort lautet elle n'est pas arrivée."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-answer-3",
+              "before": "Ils ont gagné le match ? Non, ils",
+              "after": "gagné le match.",
+              "accepted": { "answers": ["n'ont pas", "n’ont pas"] },
+              "hint": null,
+              "ruleIds": ["rule-answer-no"],
+              "answerExplanation": {
+                "en": "The question uses ils ont, so the answer is ils n'ont pas gagné.",
+                "fr": "La question utilise ils ont : la réponse est ils n'ont pas gagné.",
+                "de": "Die Frage verwendet ils ont, die Antwort lautet ils n'ont pas gagné."
               }
             }
           ]

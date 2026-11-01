@@ -6,76 +6,76 @@
   "locales": ["en", "fr", "de"],
   "title": "Le passé composé à la forme négative",
   "objective": {
-    "en": "Form the negative passé composé with ne… pas around the auxiliary, and answer no to a question about the past.",
-    "fr": "Former le passé composé négatif avec ne… pas autour de l'auxiliaire et répondre non à une question sur le passé.",
-    "de": "Das passé composé verneinen, indem ne… pas das Hilfsverb umschließt, und eine Frage zur Vergangenheit mit nein beantworten."
+    "en": "Place ne… pas around the auxiliary in the passé composé and answer no to a question about the past.",
+    "fr": "Placer ne… pas autour de l'auxiliaire au passé composé et répondre non à une question sur le passé.",
+    "de": "Ne… pas um das Hilfsverb im passé composé setzen und eine Frage zur Vergangenheit mit Nein beantworten."
   },
   "estimatedMinutes": 16,
   "provenance": {
     "generator": "ft lessons:author",
-    "model": "claude-sonnet-5-5",
+    "model": "sonnet",
     "promptVersion": "author-2",
-    "generatedAt": "2026-11-01T00:26:04.564Z",
+    "generatedAt": "2026-11-01T18:35:35.518Z",
     "inputHashes": { "outline": "477a5e7c20ebabc6a306646ae65d449a36e870e6020d873e4a4044542f05e5fd" }
   },
   "kind": "grammar",
   "topic": "negation",
   "scopeBoundaries": {
-    "en": "Covers ne… pas with avoir and être in the passé composé and short negative answers. Excludes ne… jamais, ne… rien, ne… plus, pas de and the negative imperative.",
-    "fr": "Couvre ne… pas avec avoir et être au passé composé et les réponses négatives courtes. Exclut ne… jamais, ne… rien, ne… plus, pas de et l'impératif négatif.",
-    "de": "Behandelt ne… pas mit avoir und être im passé composé sowie kurze verneinte Antworten. Ausgeschlossen sind ne… jamais, ne… rien, ne… plus, pas de und der verneinte Imperativ."
+    "en": "Covers ne… pas with avoir and être in the passé composé, and short negative answers to past questions. Excludes ne… jamais, ne… rien, pas de after negation, and reflexive verbs.",
+    "fr": "Couvre ne… pas avec avoir et être au passé composé, et les réponses négatives à une question au passé. Exclut ne… jamais, ne… rien, pas de et les verbes pronominaux.",
+    "de": "Behandelt ne… pas mit avoir und être im passé composé sowie kurze verneinende Antworten auf Fragen zur Vergangenheit. Ausgeschlossen sind ne… jamais, ne… rien, pas de und reflexive Verben."
   },
   "prerequisites": [
     {
-      "en": "The passé composé with avoir and être and regular participles",
-      "fr": "Le passé composé avec avoir et être et les participes réguliers",
+      "en": "The passé composé with avoir and être, and regular past participles",
+      "fr": "Le passé composé avec avoir et être, et les participes passés réguliers",
       "de": "Das passé composé mit avoir und être und regelmäßige Partizipien"
     },
     {
-      "en": "Simple negation in the present: je ne parle pas",
-      "fr": "La négation simple au présent : je ne parle pas",
-      "de": "Einfache Verneinung im Präsens: je ne parle pas"
+      "en": "The present tense of avoir and être, and ne… pas in the present",
+      "fr": "Le présent d'avoir et d'être, et ne… pas au présent",
+      "de": "Das Präsens von avoir und être und ne… pas im Präsens"
     }
   ],
   "rules": [
     {
-      "id": "rule-placement",
+      "id": "rule-avoir-negation",
       "summary": {
-        "en": "Ne… pas goes around the auxiliary (avoir or être), not around the participle; the participle with être still agrees.",
-        "fr": "Ne… pas entoure l'auxiliaire (avoir ou être), pas le participe ; avec être, le participe s'accorde toujours.",
-        "de": "Ne… pas umschließt das Hilfsverb (avoir oder être), nicht das Partizip; bei être wird das Partizip weiterhin angeglichen."
+        "en": "With avoir, ne goes before the auxiliary and pas after it: je n'ai pas compris. Ne becomes n' before a vowel.",
+        "fr": "Avec avoir, ne se place avant l'auxiliaire et pas après : je n'ai pas compris. Ne devient n' devant une voyelle.",
+        "de": "Bei avoir steht ne vor dem Hilfsverb und pas danach: je n'ai pas compris. Vor einem Vokal wird ne zu n'."
       }
     },
     {
-      "id": "rule-elision",
+      "id": "rule-etre-negation",
       "summary": {
-        "en": "Ne becomes n' before an auxiliary that starts with a vowel: n'ai, n'as, n'a, n'avons, n'est.",
-        "fr": "Ne devient n' devant un auxiliaire qui commence par une voyelle : n'ai, n'as, n'a, n'avons, n'est.",
-        "de": "Ne wird vor einem Hilfsverb mit Vokal am Anfang zu n': n'ai, n'as, n'a, n'avons, n'est."
+        "en": "With être, ne… pas surrounds être in the same way, and the participle still agrees: elle n'est pas venue.",
+        "fr": "Avec être, ne… pas entoure être de la même façon, et le participe s'accorde toujours : elle n'est pas venue.",
+        "de": "Bei être umschließt ne… pas das Hilfsverb ebenso, und das Partizip richtet sich weiter nach dem Subjekt: elle n'est pas venue."
       }
     },
     {
       "id": "rule-answer-no",
       "summary": {
-        "en": "To answer no about the past, repeat the auxiliary and participle with ne… pas and adapt the subject: Non, je n'ai pas fini.",
-        "fr": "Pour répondre non sur le passé, on reprend l'auxiliaire et le participe avec ne… pas en adaptant le sujet : Non, je n'ai pas fini.",
-        "de": "Um eine Frage zur Vergangenheit mit nein zu beantworten, wiederholt man Hilfsverb und Partizip mit ne… pas und passt das Subjekt an: Non, je n'ai pas fini."
+        "en": "To answer no to a question about the past, repeat the subject, the auxiliary and the participle in a negative sentence: Non, je n'ai pas fini.",
+        "fr": "Pour répondre non à une question au passé, on reprend le sujet, l'auxiliaire et le participe dans une phrase négative : Non, je n'ai pas fini.",
+        "de": "Um eine Frage zur Vergangenheit mit Nein zu beantworten, wiederholt man Subjekt, Hilfsverb und Partizip in einem verneinten Satz: Non, je n'ai pas fini."
       }
     }
   ],
   "blocks": [
     {
-      "id": "block-placement",
+      "id": "block-avoir",
       "title": {
-        "en": "Placing ne… pas around the auxiliary",
-        "fr": "Placer ne… pas autour de l'auxiliaire",
-        "de": "ne… pas um das Hilfsverb setzen"
+        "en": "Negation with avoir",
+        "fr": "La négation avec avoir",
+        "de": "Die Verneinung mit avoir"
       },
-      "ruleIds": ["rule-placement", "rule-elision"],
+      "ruleIds": ["rule-avoir-negation"],
       "explanationPlan": {
-        "en": "Show that ne… pas surrounds avoir or être in the passé composé, with the participle last. Explain ne becoming n' before a vowel and the agreement with être. Give a short table of forms.",
-        "fr": "Montrer que ne… pas entoure avoir ou être au passé composé, le participe venant en dernier. Expliquer ne devenant n' devant une voyelle et l'accord avec être. Donner un court tableau de formes.",
-        "de": "Zeigen, dass ne… pas im passé composé avoir oder être umschließt und das Partizip zuletzt steht. Erklären, dass ne vor Vokal zu n' wird, und die Angleichung bei être. Eine kurze Formentabelle geben."
+        "en": "Show that ne… pas surrounds the auxiliary avoir in the passé composé, with the participle last. Give the forms n'ai pas, n'as pas, n'a pas, n'avons pas, n'avez pas, n'ont pas. Explain the elision ne → n'.",
+        "fr": "Montrer que ne… pas entoure l'auxiliaire avoir au passé composé, le participe venant en dernier. Donner les formes n'ai pas, n'as pas, n'a pas, n'avons pas, n'avez pas, n'ont pas. Expliquer l'élision ne → n'.",
+        "de": "Zeigen, dass ne… pas das Hilfsverb avoir im passé composé umschließt und das Partizip zuletzt steht. Die Formen n'ai pas, n'as pas, n'a pas, n'avons pas, n'avez pas, n'ont pas geben. Die Elision ne → n' erklären."
       },
       "explanationDurationS": 120,
       "examples": [
@@ -84,124 +84,125 @@
           "translation": { "en": "I didn't understand.", "de": "Ich habe nicht verstanden." }
         },
         {
-          "text": "Il n'a pas mangé.",
-          "translation": { "en": "He didn't eat.", "de": "Er hat nicht gegessen." }
+          "text": "Il n'a pas dormi.",
+          "translation": { "en": "He didn't sleep.", "de": "Er hat nicht geschlafen." }
         },
+        {
+          "text": "Nous n'avons pas fini.",
+          "translation": { "en": "We didn't finish.", "de": "Wir sind nicht fertig geworden." }
+        },
+        {
+          "text": "Vous n'avez pas téléphoné.",
+          "translation": { "en": "You didn't call.", "de": "Sie haben nicht angerufen." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not put pas after the participle: say je n'ai pas compris, not je n'ai compris pas.",
+          "fr": "Ne placez pas pas après le participe : on dit je n'ai pas compris, pas je n'ai compris pas.",
+          "de": "Setze pas nicht hinter das Partizip: Es heißt je n'ai pas compris, nicht je n'ai compris pas."
+        },
+        {
+          "en": "Always write n' before a form of avoir: n'ai, n'as, n'a, n'avons, n'avez, n'ont.",
+          "fr": "Écrivez toujours n' devant une forme d'avoir : n'ai, n'as, n'a, n'avons, n'avez, n'ont.",
+          "de": "Schreibe vor einer Form von avoir immer n': n'ai, n'as, n'a, n'avons, n'avez, n'ont."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-avoir-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-avoir-negation"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-avoir-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-avoir-negation"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-avoir-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-avoir-negation"],
+          "estimatedDurationS": 75
+        }
+      ]
+    },
+    {
+      "id": "block-etre",
+      "title": {
+        "en": "Negation with être and answering no",
+        "fr": "La négation avec être et répondre non",
+        "de": "Die Verneinung mit être und Nein antworten"
+      },
+      "ruleIds": ["rule-etre-negation", "rule-answer-no"],
+      "explanationPlan": {
+        "en": "Show that ne… pas surrounds être exactly as it surrounds avoir, with the participle agreeing with the subject. Then show how to answer no to a past question by repeating the auxiliary and the participle: Tu as fini ? Non, je n'ai pas fini.",
+        "fr": "Montrer que ne… pas entoure être exactement comme avoir, avec le participe accordé au sujet. Puis montrer comment répondre non à une question au passé en reprenant l'auxiliaire et le participe : Tu as fini ? Non, je n'ai pas fini.",
+        "de": "Zeigen, dass ne… pas être genauso umschließt wie avoir, wobei das Partizip sich nach dem Subjekt richtet. Dann zeigen, wie man eine Frage zur Vergangenheit mit Nein beantwortet, indem man Hilfsverb und Partizip wiederholt: Tu as fini ? Non, je n'ai pas fini."
+      },
+      "explanationDurationS": 150,
+      "examples": [
         {
           "text": "Elle n'est pas venue.",
           "translation": { "en": "She didn't come.", "de": "Sie ist nicht gekommen." }
         },
         {
           "text": "Ils ne sont pas partis.",
-          "translation": { "en": "They didn't leave.", "de": "Sie sind nicht gegangen." }
+          "translation": { "en": "They didn't leave.", "de": "Sie sind nicht weggegangen." }
+        },
+        {
+          "text": "Tu as fini ? Non, je n'ai pas fini.",
+          "translation": {
+            "en": "Did you finish? No, I didn't finish.",
+            "de": "Hast du es beendet? Nein, ich habe es nicht beendet."
+          }
         }
       ],
       "pitfalls": [
         {
-          "en": "Do not put pas after the participle: say je n'ai pas compris, not je n'ai compris pas.",
-          "fr": "Ne mettez pas pas après le participe : on dit je n'ai pas compris, pas je n'ai compris pas.",
-          "de": "Setze pas nicht hinter das Partizip: Man sagt je n'ai pas compris, nicht je n'ai compris pas."
+          "en": "Do not forget the agreement with être: elle n'est pas venue, ils ne sont pas venus.",
+          "fr": "N'oubliez pas l'accord avec être : elle n'est pas venue, ils ne sont pas venus.",
+          "de": "Vergiss die Angleichung bei être nicht: elle n'est pas venue, ils ne sont pas venus."
         },
         {
-          "en": "With être, do not forget the agreement: elle n'est pas venue.",
-          "fr": "Avec être, n'oubliez pas l'accord : elle n'est pas venue.",
-          "de": "Vergiss bei être die Angleichung nicht: elle n'est pas venue."
+          "en": "In speech people often drop ne, but in writing you keep both ne and pas.",
+          "fr": "À l'oral, on supprime souvent ne, mais à l'écrit on garde ne et pas.",
+          "de": "Mündlich lässt man ne oft weg, aber schriftlich bleiben ne und pas beide stehen."
         }
       ],
       "exercises": [
         {
-          "id": "ex-a-choice",
+          "id": "ex-etre-choice",
           "type": "grammar_gap_choice",
-          "itemCount": 4,
-          "ruleIds": ["rule-placement", "rule-elision"],
-          "estimatedDurationS": 48
+          "itemCount": 3,
+          "ruleIds": ["rule-etre-negation"],
+          "estimatedDurationS": 36
         },
         {
-          "id": "ex-a-typing",
-          "type": "grammar_gap_typing",
-          "itemCount": 4,
-          "ruleIds": ["rule-placement", "rule-elision"],
-          "estimatedDurationS": 80
-        },
-        {
-          "id": "ex-a-spot",
+          "id": "ex-etre-spot",
           "type": "grammar_error_spotter",
           "itemCount": 4,
-          "ruleIds": ["rule-placement", "rule-elision"],
+          "ruleIds": ["rule-etre-negation"],
           "estimatedDurationS": 100
-        }
-      ]
-    },
-    {
-      "id": "block-answers",
-      "title": {
-        "en": "Answering no about the past",
-        "fr": "Répondre non sur le passé",
-        "de": "Auf Fragen zur Vergangenheit mit nein antworten"
-      },
-      "ruleIds": ["rule-answer-no"],
-      "explanationPlan": {
-        "en": "Show how to answer no to a question in the passé composé: repeat the auxiliary and participle with ne… pas, change the subject when needed, and keep ne in writing.",
-        "fr": "Montrer comment répondre non à une question au passé composé : reprendre l'auxiliaire et le participe avec ne… pas, changer le sujet si besoin et garder ne à l'écrit.",
-        "de": "Zeigen, wie man eine Frage im passé composé mit nein beantwortet: Hilfsverb und Partizip mit ne… pas wiederholen, das Subjekt bei Bedarf ändern und ne schriftlich beibehalten."
-      },
-      "explanationDurationS": 120,
-      "examples": [
-        {
-          "text": "Tu as téléphoné à Paul ? Non, je n'ai pas téléphoné.",
-          "translation": {
-            "en": "Did you call Paul? No, I didn't call.",
-            "de": "Hast du Paul angerufen? Nein, ich habe nicht angerufen."
-          }
         },
         {
-          "text": "Elle est arrivée ? Non, elle n'est pas arrivée.",
-          "translation": {
-            "en": "Has she arrived? No, she hasn't arrived.",
-            "de": "Ist sie angekommen? Nein, sie ist nicht angekommen."
-          }
-        },
-        {
-          "text": "Vous avez dormi ? Non, nous n'avons pas dormi.",
-          "translation": {
-            "en": "Did you sleep? No, we didn't sleep.",
-            "de": "Habt ihr geschlafen? Nein, wir haben nicht geschlafen."
-          }
-        }
-      ],
-      "pitfalls": [
-        {
-          "en": "Do not drop ne in writing: je n'ai pas vu, not j'ai pas vu.",
-          "fr": "N'oubliez pas ne à l'écrit : je n'ai pas vu, pas j'ai pas vu.",
-          "de": "Lass ne schriftlich nicht weg: je n'ai pas vu, nicht j'ai pas vu."
-        },
-        {
-          "en": "Keep the auxiliary of the question: il est arrivé ? gives il n'est pas arrivé.",
-          "fr": "Gardez l'auxiliaire de la question : il est arrivé ? donne il n'est pas arrivé.",
-          "de": "Behalte das Hilfsverb der Frage bei: il est arrivé ? ergibt il n'est pas arrivé."
-        }
-      ],
-      "exercises": [
-        {
-          "id": "ex-b-choice",
-          "type": "grammar_gap_choice",
-          "itemCount": 4,
-          "ruleIds": ["rule-answer-no"],
-          "estimatedDurationS": 48
-        },
-        {
-          "id": "ex-b-typing",
+          "id": "ex-answer-typing",
           "type": "grammar_gap_typing",
-          "itemCount": 4,
+          "itemCount": 3,
           "ruleIds": ["rule-answer-no"],
-          "estimatedDurationS": 80
+          "estimatedDurationS": 60
         },
         {
-          "id": "ex-b-order",
+          "id": "ex-answer-order",
           "type": "grammar_word_order",
-          "itemCount": 4,
+          "itemCount": 3,
           "ruleIds": ["rule-answer-no"],
-          "estimatedDurationS": 100
+          "estimatedDurationS": 75
         }
       ]
     }
@@ -211,28 +212,28 @@
   "exam": {
     "pages": [
       {
-        "pageId": "exam-gaps",
+        "pageId": "exam-typing",
         "type": "grammar_gap_typing",
         "itemCount": 4,
-        "ruleIds": ["rule-placement", "rule-elision"],
+        "ruleIds": ["rule-avoir-negation", "rule-etre-negation"],
         "estimatedDurationS": 80,
-        "timeLimitS": 130
-      },
-      {
-        "pageId": "exam-answers",
-        "type": "grammar_gap_typing",
-        "itemCount": 3,
-        "ruleIds": ["rule-answer-no"],
-        "estimatedDurationS": 60,
-        "timeLimitS": 100
+        "timeLimitS": 140
       },
       {
         "pageId": "exam-order",
         "type": "grammar_word_order",
-        "itemCount": 4,
-        "ruleIds": ["rule-placement", "rule-elision", "rule-answer-no"],
-        "estimatedDurationS": 100,
-        "timeLimitS": 160
+        "itemCount": 3,
+        "ruleIds": ["rule-avoir-negation", "rule-etre-negation"],
+        "estimatedDurationS": 75,
+        "timeLimitS": 150
+      },
+      {
+        "pageId": "exam-answer",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["rule-answer-no"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 120
       }
     ]
   },

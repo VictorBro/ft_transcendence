@@ -1,0 +1,569 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-social-class-in-words",
+  "lang": "fr",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Ce que nos mots disent de nous",
+  "objective": {
+    "en": "Spot about ten words that reveal a social background, and choose between a neutral, a refined and a familiar word.",
+    "fr": "Repérer une dizaine de mots qui trahissent un milieu social et choisir entre mot neutre, recherché ou familier.",
+    "de": "Etwa zehn Wörter erkennen, die das soziale Milieu verraten, und zwischen neutralem, gehobenem und umgangssprachlichem Wort wählen."
+  },
+  "estimatedMinutes": 17,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:59:17.721Z",
+    "inputHashes": { "outline": "0fe6f2ae3bb88d7c3654c9378907cd5dd165b6dee3f52e891653a6f108e1b589" }
+  },
+  "kind": "vocabulary",
+  "theme": "language",
+  "coverageNotes": {
+    "en": "Ten words in two groups. Meals and family: déjeuner, dîner, souper, maman, mère. Home and registers: canapé, sofa, toilettes, bagnole, bouffer. Each word shows how region, generation or milieu can be heard in a choice between near-synonyms. The claims are hedged: usage varies by region and context.",
+    "fr": "Dix mots en deux groupes. Repas et famille : déjeuner, dîner, souper, maman, mère. Maison et registres : canapé, sofa, toilettes, bagnole, bouffer. Chaque mot montre comment la région, la génération ou le milieu s’entendent dans le choix entre quasi-synonymes. Les affirmations restent nuancées : l’usage varie selon la région et le contexte.",
+    "de": "Zehn Wörter in zwei Gruppen. Mahlzeiten und Familie: déjeuner, dîner, souper, maman, mère. Wohnen und Sprachregister: canapé, sofa, toilettes, bagnole, bouffer. Jedes Wort zeigt, wie Region, Generation oder Milieu in der Wahl zwischen Beinahe-Synonymen hörbar werden. Die Aussagen sind vorsichtig: Der Gebrauch schwankt je nach Region und Kontext."
+  },
+  "targetCount": 10,
+  "countRationale": {
+    "en": "Ten words match the outline’s intent and give two groups of five, with matching pages of five pairs.",
+    "fr": "Dix mots correspondent à l’intention du plan et donnent deux groupes de cinq, avec des pages d’association de cinq paires.",
+    "de": "Zehn Wörter entsprechen der Absicht der Gliederung und ergeben zwei Fünfergruppen mit Zuordnungsseiten zu je fünf Paaren."
+  },
+  "difficultyBalance": {
+    "en": "Six core words with a clear register, four demanding ones whose social value depends on region or context.",
+    "fr": "Six mots de base au registre net, quatre mots exigeants dont la valeur sociale dépend de la région ou du contexte.",
+    "de": "Sechs Grundwörter mit klarem Register, vier anspruchsvolle Wörter, deren sozialer Wert von Region oder Kontext abhängt."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "repas-famille",
+      "label": {
+        "en": "Meals and family",
+        "fr": "Repas et famille",
+        "de": "Mahlzeiten und Familie"
+      },
+      "targetIds": ["dejeuner", "diner", "souper", "maman", "mere"],
+      "introduction": {
+        "en": "The names of meals mark **region, generation and milieu**, and so does the way adults name their mother:\n\n- `un déjeuner` (midday, in standard French)\n- `un dîner` (evening, in standard French)\n- `un souper` (regional or dated)\n- `maman`\n- `une mère`\n\nTo hear the difference, compare `ma mère` with `ma maman`.",
+        "fr": "Les noms des repas marquent la **région, la génération et le milieu**, tout comme la manière dont un adulte nomme sa mère :\n\n- `un déjeuner` (midi, en français standard)\n- `un dîner` (le soir, en français standard)\n- `un souper` (régional ou vieilli)\n- `maman`\n- `une mère`\n\nPour entendre la différence, comparez `ma mère` et `ma maman`.",
+        "de": "Die Namen der Mahlzeiten verraten **Region, Generation und Milieu**, ebenso wie die Art, wie Erwachsene ihre Mutter nennen:\n\n- `un déjeuner` (mittags, im Standardfranzösisch)\n- `un dîner` (abends, im Standardfranzösisch)\n- `un souper` (regional oder veraltet)\n- `maman`\n- `une mère`\n\nHör den Unterschied: vergleiche `ma mère` mit `ma maman`."
+      }
+    },
+    {
+      "id": "maison-registres",
+      "label": {
+        "en": "Home and registers",
+        "fr": "Maison et registres",
+        "de": "Wohnen und Sprachregister"
+      },
+      "targetIds": ["canape", "sofa", "toilettes", "bagnole", "bouffer"],
+      "introduction": {
+        "en": "Furniture, bathrooms, cars and eating each have a **neutral** word and a word that sounds **more refined or more common**:\n\n- `un canapé` and `un sofa`\n- `des toilettes`\n- `une bagnole` (informal; neutral: `une voiture`)\n- `bouffer` (informal; neutral: `manger`)\n\nChoosing one rather than the other places you socially.",
+        "fr": "Le mobilier, les sanitaires, la voiture et la façon de manger ont chacun un mot **neutre** et un mot qui sonne **plus recherché ou plus populaire** :\n\n- `un canapé` et `un sofa`\n- `des toilettes`\n- `une bagnole` (familier ; neutre : `une voiture`)\n- `bouffer` (familier ; neutre : `manger`)\n\nChoisir l’un plutôt que l’autre vous situe socialement.",
+        "de": "Möbel, Sanitärräume, Autos und Essen haben jeweils ein **neutrales** Wort und ein Wort, das **gehobener oder derber** klingt:\n\n- `un canapé` und `un sofa`\n- `des toilettes`\n- `une bagnole` (umgangssprachlich; neutral: `une voiture`)\n- `bouffer` (umgangssprachlich; neutral: `manger`)\n\nDie Wahl des einen statt des anderen verortet dich sozial."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "dejeuner",
+      "term": "déjeuner",
+      "translations": { "en": ["lunch"], "de": ["Mittagessen"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un déjeuner",
+      "examForms": ["un déjeuner"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/œ̃ deʒøne/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Nous nous retrouvons pour le déjeuner à une heure.",
+        "translation": {
+          "en": "We are meeting for lunch at one o’clock.",
+          "de": "Wir treffen uns um ein Uhr zum Mittagessen."
+        }
+      },
+      "ambiguityNote": {
+        "en": "In Belgium, Switzerland and Quebec, déjeuner is the breakfast meal.",
+        "fr": "En Belgique, en Suisse et au Québec, le déjeuner est le repas du matin.",
+        "de": "In Belgien, der Schweiz und Québec bezeichnet déjeuner das Frühstück."
+      },
+      "explanation": {
+        "en": "Standard French calls the midday meal le déjeuner. Saying dîner at midday points to a rural, regional or older usage.",
+        "fr": "Le français standard appelle le repas de midi le déjeuner. Dire dîner à midi renvoie à un usage rural, régional ou ancien.",
+        "de": "Das Standardfranzösisch nennt die Mittagsmahlzeit le déjeuner. Wer mittags dîner sagt, verrät eine ländliche, regionale oder ältere Sprechweise."
+      },
+      "genderExplanation": {
+        "en": "Déjeuner is masculine, so its indefinite article is un.",
+        "fr": "Déjeuner est masculin : on dit un déjeuner.",
+        "de": "Déjeuner ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "a lunch (the midday meal in standard French)",
+        "de": "ein Mittagessen (die Mittagsmahlzeit im Standardfranzösisch)"
+      },
+      "gap": {
+        "before": "Nous avons réservé une table pour le ",
+        "after": " de dimanche midi.",
+        "accepted": { "answers": ["déjeuner"] },
+        "referenceTargetIds": ["dejeuner", "canape", "maman", "bagnole"],
+        "explanation": {
+          "en": "Only déjeuner names the midday meal here.",
+          "fr": "Seul « déjeuner » désigne ici le repas de midi.",
+          "de": "Nur „déjeuner“ bezeichnet hier die Mittagsmahlzeit."
+        }
+      },
+      "listeningOptionTargetIds": ["dejeuner", "diner", "souper", "bouffer"]
+    },
+    {
+      "id": "diner",
+      "term": "dîner",
+      "translations": { "en": ["dinner"], "de": ["Abendessen"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un dîner",
+      "examForms": ["un dîner"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/œ̃ dine/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Nous sommes invités à un dîner chez les Moreau.",
+        "translation": {
+          "en": "We are invited to a dinner at the Moreaus’.",
+          "de": "Wir sind zu einem Abendessen bei den Moreaus eingeladen."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Some speakers use dîner for the midday meal: a regional or older habit.",
+        "fr": "Certains locuteurs emploient dîner pour le repas de midi : une habitude régionale ou ancienne.",
+        "de": "Manche Sprecher verwenden dîner für die Mittagsmahlzeit: eine regionale oder ältere Gewohnheit."
+      },
+      "explanation": {
+        "en": "Dîner is the evening meal in standard French. A speaker who uses it at midday signals a rural, regional or older usage.",
+        "fr": "Dîner est le repas du soir en français standard. L’employer à midi trahit un usage rural, régional ou ancien.",
+        "de": "Dîner ist im Standardfranzösisch die Abendmahlzeit. Wer es mittags sagt, verrät eine ländliche, regionale oder ältere Sprechweise."
+      },
+      "genderExplanation": {
+        "en": "Dîner is masculine, so its indefinite article is un.",
+        "fr": "Dîner est masculin : on dit un dîner.",
+        "de": "Dîner ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "a dinner (the evening meal in standard French)",
+        "de": "ein Abendessen (die Abendmahlzeit im Standardfranzösisch)"
+      },
+      "gap": {
+        "before": "Ce soir, nous organisons un ",
+        "after": " entre amis, avec huit invités à table.",
+        "accepted": { "answers": ["dîner"] },
+        "referenceTargetIds": ["diner", "canape", "bagnole", "mere"],
+        "explanation": {
+          "en": "Only dîner fits an evening meal organised for guests.",
+          "fr": "Seul « dîner » convient à un repas du soir organisé pour des invités.",
+          "de": "Nur „dîner“ passt zu einem Abendessen für Gäste."
+        }
+      },
+      "listeningOptionTargetIds": ["diner", "dejeuner", "souper", "bouffer"]
+    },
+    {
+      "id": "souper",
+      "term": "souper",
+      "translations": { "en": ["supper"], "de": ["Souper", "Nachtessen"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un souper",
+      "examForms": ["un souper"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/œ̃ supe/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "À la campagne, mes grands-parents prenaient le souper à sept heures.",
+        "translation": {
+          "en": "In the countryside, my grandparents had supper at seven.",
+          "de": "Auf dem Land aßen meine Großeltern um sieben Uhr zu Abend."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "In Belgium, Switzerland and Quebec, souper is the ordinary evening meal. In France it sounds regional or dated, or evokes a late meal after the theatre.",
+        "fr": "En Belgique, en Suisse et au Québec, souper est le repas du soir ordinaire. En France, le mot sonne régional ou vieilli, ou évoque un repas tardif après le spectacle.",
+        "de": "In Belgien, der Schweiz und Québec ist souper die gewöhnliche Abendmahlzeit. In Frankreich klingt das Wort regional oder veraltet oder erinnert an ein spätes Essen nach dem Theater."
+      },
+      "genderExplanation": {
+        "en": "Souper is masculine, so its indefinite article is un.",
+        "fr": "Souper est masculin : on dit un souper.",
+        "de": "Souper ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "a supper (evening meal, regional or dated usage)",
+        "de": "ein Nachtessen (regionaler oder veralteter Gebrauch)"
+      },
+      "gap": {
+        "before": "Chez ma tante, au Québec, on prend le ",
+        "after": " vers dix-huit heures.",
+        "accepted": { "answers": ["souper"] },
+        "referenceTargetIds": ["souper", "dejeuner", "sofa", "bouffer"],
+        "explanation": {
+          "en": "In Quebec, souper is the evening meal, taken around six o’clock.",
+          "fr": "Au Québec, le souper est le repas du soir, pris vers dix-huit heures.",
+          "de": "In Québec ist le souper die Abendmahlzeit, die gegen sechs Uhr abends gegessen wird."
+        }
+      },
+      "listeningOptionTargetIds": ["souper", "diner", "dejeuner", "sofa"]
+    },
+    {
+      "id": "maman",
+      "term": "maman",
+      "translations": { "en": ["mum", "mom"], "de": ["Mama"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "maman",
+      "examForms": ["maman"],
+      "articleException": {
+        "en": "Maman works like a first name: it is used without an article.",
+        "fr": "Maman s’emploie comme un prénom : sans article.",
+        "de": "Maman wird wie ein Vorname gebraucht: ohne Artikel."
+      },
+      "genderVariants": [],
+      "pronunciation": "/mamɑ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Maman m’a téléphoné ce matin.",
+        "translation": {
+          "en": "Mum phoned me this morning.",
+          "de": "Mama hat mich heute Morgen angerufen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Maman is a child’s word that many adults keep for their own mother. Ma maman can sound childish or too familiar; ma mère is more neutral and more distant.",
+        "fr": "Maman est un mot d’enfant que beaucoup d’adultes gardent pour leur mère. Ma maman peut sonner enfantin ou trop familier ; ma mère est plus neutre et plus distant.",
+        "de": "Maman ist ein Kinderwort, das viele Erwachsene für ihre Mutter behalten. Ma maman kann kindlich oder zu vertraulich klingen; ma mère ist neutraler und distanzierter."
+      },
+      "genderExplanation": {
+        "en": "Maman is feminine, and it is used without an article, like a first name.",
+        "fr": "Maman est féminin et s’emploie sans article, comme un prénom.",
+        "de": "Maman ist feminin und wird ohne Artikel gebraucht, wie ein Vorname."
+      },
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "mum (affectionate word, no article)",
+        "de": "Mama (Kosewort, ohne Artikel)"
+      },
+      "gap": {
+        "before": "« Allô, ",
+        "after": " ? Tu peux venir me chercher ? » demande l’enfant.",
+        "accepted": { "answers": ["maman"] },
+        "referenceTargetIds": ["maman", "sofa", "bagnole", "souper"],
+        "explanation": {
+          "en": "A child phoning a parent says maman, with no article.",
+          "fr": "Un enfant qui appelle son parent dit « maman », sans article.",
+          "de": "Ein Kind, das seine Mutter anruft, sagt „maman“, ohne Artikel."
+        }
+      },
+      "listeningOptionTargetIds": ["maman", "mere", "bagnole", "toilettes"]
+    },
+    {
+      "id": "mere",
+      "term": "mère",
+      "translations": { "en": ["mother"], "de": ["Mutter"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une mère",
+      "examForms": ["une mère"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/yn mɛʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ma mère enseigne le français depuis vingt ans.",
+        "translation": {
+          "en": "My mother has taught French for twenty years.",
+          "de": "Meine Mutter unterrichtet seit zwanzig Jahren Französisch."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Ma mère is the neutral, slightly distant phrase when an adult speaks of their mother to a third person. Maman keeps a tenderness that this phrase lacks.",
+        "fr": "Ma mère est la tournure neutre, un peu distante, quand un adulte parle de sa mère à un tiers. Maman garde une tendresse que cette tournure n’a pas.",
+        "de": "Ma mère ist die neutrale, etwas distanzierte Wendung, wenn ein Erwachsener zu Dritten von seiner Mutter spricht. Maman behält eine Zärtlichkeit, die dieser Ausdruck nicht hat."
+      },
+      "genderExplanation": {
+        "en": "Mère is feminine, so its indefinite article is une.",
+        "fr": "Mère est féminin : on dit une mère.",
+        "de": "Mère ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Mon père travaille à Lyon, et ma ",
+        "after": " est professeure de lettres.",
+        "accepted": { "answers": ["mère"] },
+        "referenceTargetIds": ["mere", "canape", "dejeuner", "bagnole"],
+        "explanation": {
+          "en": "Only mère fits after ma, as the neutral word for a mother.",
+          "fr": "Seul « mère » convient après ma, comme mot neutre pour désigner une mère.",
+          "de": "Nur „mère“ passt nach ma als neutrales Wort für eine Mutter."
+        }
+      },
+      "listeningOptionTargetIds": ["mere", "maman", "souper", "bouffer"]
+    },
+    {
+      "id": "canape",
+      "term": "canapé",
+      "translations": { "en": ["couch"], "de": ["Couch"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un canapé",
+      "examForms": ["un canapé"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/œ̃ kanape/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Nous avons acheté un canapé gris pour le salon.",
+        "translation": {
+          "en": "We bought a grey couch for the living room.",
+          "de": "Wir haben eine graue Couch für das Wohnzimmer gekauft."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Canapé is the neutral everyday word for a couch, heard in every milieu.",
+        "fr": "Canapé est le mot neutre et courant pour désigner ce meuble, entendu dans tous les milieux.",
+        "de": "Canapé ist das neutrale Alltagswort für dieses Möbelstück und in allen Milieus zu hören."
+      },
+      "genderExplanation": {
+        "en": "Canapé is masculine, so its indefinite article is un.",
+        "fr": "Canapé est masculin : on dit un canapé.",
+        "de": "Canapé ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "a couch (the usual everyday word)",
+        "de": "eine Couch (das übliche Alltagswort)"
+      },
+      "gap": {
+        "before": "Après le repas, nous nous sommes installés sur le ",
+        "after": " du salon pour regarder un film.",
+        "accepted": { "answers": ["canapé", "sofa"] },
+        "referenceTargetIds": ["canape", "souper", "toilettes", "bouffer"],
+        "explanation": {
+          "en": "Only canapé fits here; sofa would also be accepted.",
+          "fr": "Seul « canapé » convient ici ; « sofa » serait aussi accepté.",
+          "de": "Nur „canapé“ passt hier; „sofa“ würde ebenfalls akzeptiert."
+        }
+      },
+      "listeningOptionTargetIds": ["canape", "sofa", "toilettes", "bagnole"]
+    },
+    {
+      "id": "sofa",
+      "term": "sofa",
+      "translations": { "en": ["sofa"], "de": ["Sofa"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un sofa",
+      "examForms": ["un sofa"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/œ̃ sɔfa/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Le décorateur a choisi un sofa en velours pour le salon.",
+        "translation": {
+          "en": "The decorator chose a velvet sofa for the living room.",
+          "de": "Der Dekorateur hat ein Samtsofa für das Wohnzimmer ausgewählt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Sofa sounds more refined: it suits a decorator, a showroom or an antique dealer. In everyday talk, canapé is the safer choice.",
+        "fr": "Sofa sonne plus recherché : il convient à un décorateur, à une boutique ou à un antiquaire. Dans la conversation courante, canapé est plus sûr.",
+        "de": "Sofa klingt gehobener: Es passt zu Dekorateuren, Möbelgeschäften oder Antiquitätenhändlern. Im Alltag ist canapé die sicherere Wahl."
+      },
+      "genderExplanation": {
+        "en": "Sofa is masculine, so its indefinite article is un.",
+        "fr": "Sofa est masculin : on dit un sofa.",
+        "de": "Sofa ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "a sofa (the more refined word)",
+        "de": "ein Sofa (das gehobenere Wort)"
+      },
+      "gap": {
+        "before": "Chez l’antiquaire, nous admirons un ",
+        "after": " Louis XV recouvert de soie.",
+        "accepted": { "answers": ["sofa", "canapé"] },
+        "referenceTargetIds": ["sofa", "souper", "toilettes", "maman"],
+        "explanation": {
+          "en": "Sofa suits the antique dealer’s register; canapé would also be accepted.",
+          "fr": "« Sofa » convient au registre de l’antiquaire ; « canapé » serait aussi accepté.",
+          "de": "„Sofa“ passt zum Register des Antiquitätenhändlers; „canapé“ würde ebenfalls akzeptiert."
+        }
+      },
+      "listeningOptionTargetIds": ["sofa", "canape", "souper", "toilettes"]
+    },
+    {
+      "id": "toilettes",
+      "term": "toilettes",
+      "translations": { "en": ["toilet", "restroom"], "de": ["Toilette"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "plural",
+      "teachingForm": "des toilettes",
+      "examForms": ["des toilettes"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/de twalɛt/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Les toilettes sont au fond du couloir.",
+        "translation": {
+          "en": "The toilets are at the end of the corridor.",
+          "de": "Die Toiletten sind am Ende des Flurs."
+        }
+      },
+      "ambiguityNote": {
+        "en": "In the singular, la toilette usually means washing and dressing. For the room, the plural is the norm in France.",
+        "fr": "Au singulier, la toilette désigne plutôt l’action de se laver et de s’habiller. Pour la pièce, le pluriel est la norme en France.",
+        "de": "Im Singular bedeutet la toilette meist Körperpflege und Ankleiden. Für den Raum ist in Frankreich der Plural üblich."
+      },
+      "explanation": {
+        "en": "In France, les toilettes is the neutral, correct word. Euphemisms such as le petit coin, or crude words, place the speaker in a more affected or a more popular register.",
+        "fr": "En France, les toilettes est le mot neutre et correct. Les euphémismes comme le petit coin, ou les mots crus, situent le locuteur dans un registre plus affecté ou plus populaire.",
+        "de": "In Frankreich ist les toilettes das neutrale, korrekte Wort. Euphemismen wie le petit coin oder derbe Wörter verorten den Sprecher in einem geziertereren oder volkstümlicheren Register."
+      },
+      "genderExplanation": {
+        "en": "Toilettes is feminine plural, so its article is des.",
+        "fr": "Toilettes est féminin pluriel : on dit des toilettes.",
+        "de": "Toilettes ist feminin im Plural, daher lautet der Artikel des."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Excusez-moi, où sont les ",
+        "after": " ?",
+        "accepted": { "answers": ["toilettes"] },
+        "referenceTargetIds": ["toilettes", "canape", "dejeuner", "mere"],
+        "explanation": {
+          "en": "Only toilettes fits the question, in the neutral plural form.",
+          "fr": "Seul « toilettes » convient à la question, au pluriel neutre.",
+          "de": "Nur „toilettes“ passt zur Frage, im neutralen Plural."
+        }
+      },
+      "listeningOptionTargetIds": ["toilettes", "bagnole", "canape", "souper"]
+    },
+    {
+      "id": "bagnole",
+      "term": "bagnole",
+      "translations": {
+        "en": ["car (informal)", "jalopy"],
+        "de": ["Karre", "Auto (umgangssprachlich)"]
+      },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une bagnole",
+      "examForms": ["une bagnole"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/yn baɲɔl/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Il a changé de bagnole le mois dernier.",
+        "translation": {
+          "en": "He changed his car last month.",
+          "de": "Er hat letzten Monat sein Auto gewechselt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Bagnole is informal, even popular, and often affectionate or mocking. In a formal setting, a speaker would say voiture.",
+        "fr": "Bagnole est familier, voire populaire, et souvent affectueux ou moqueur. Dans un cadre formel, on dirait voiture.",
+        "de": "Bagnole ist umgangssprachlich, sogar volkstümlich, und oft liebevoll oder spöttisch. In einem förmlichen Rahmen würde man voiture sagen."
+      },
+      "genderExplanation": {
+        "en": "Bagnole is feminine, so its indefinite article is une.",
+        "fr": "Bagnole est féminin : on dit une bagnole.",
+        "de": "Bagnole ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Mon oncle a gardé sa vieille ",
+        "after": " de 1985 et refuse de la vendre.",
+        "accepted": { "answers": ["bagnole", "voiture"] },
+        "referenceTargetIds": ["bagnole", "canape", "diner", "toilettes"],
+        "explanation": {
+          "en": "Only bagnole fits here; the neutral voiture would also be accepted.",
+          "fr": "Seul « bagnole » convient ici ; le mot neutre « voiture » serait aussi accepté.",
+          "de": "Nur „bagnole“ passt hier; das neutrale „voiture“ würde ebenfalls akzeptiert."
+        }
+      },
+      "listeningOptionTargetIds": ["bagnole", "toilettes", "bouffer", "maman"]
+    },
+    {
+      "id": "bouffer",
+      "term": "bouffer",
+      "translations": {
+        "en": ["to eat (informal)", "to scoff"],
+        "de": ["futtern", "essen (umgangssprachlich)"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "bouffer",
+      "examForms": ["bouffer"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/bufe/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "On va bouffer ensemble après le match ?",
+        "translation": {
+          "en": "Shall we eat together after the match?",
+          "de": "Sollen wir nach dem Spiel zusammen essen?"
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Bouffer is a familiar, popular verb for eating. Manger is neutral; in a formal setting, bouffer would sound out of place.",
+        "fr": "Bouffer est un verbe familier, populaire, pour dire manger. Manger est neutre ; dans un cadre formel, bouffer serait déplacé.",
+        "de": "Bouffer ist ein umgangssprachliches, volkstümliches Verb für essen. Manger ist neutral; in einem förmlichen Rahmen wäre bouffer fehl am Platz."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Après le match, ils sont allés ",
+        "after": " une pizza ensemble.",
+        "accepted": { "answers": ["bouffer", "manger"] },
+        "referenceTargetIds": ["bouffer", "canape", "maman", "toilettes"],
+        "explanation": {
+          "en": "Only the verb bouffer fits here; manger would also be accepted.",
+          "fr": "Seul le verbe « bouffer » convient ici ; « manger » serait aussi accepté.",
+          "de": "Nur das Verb „bouffer“ passt hier; „manger“ würde ebenfalls akzeptiert."
+        }
+      },
+      "listeningOptionTargetIds": ["bouffer", "souper", "bagnole", "dejeuner"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

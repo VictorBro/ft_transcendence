@@ -1,0 +1,282 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-past-near-future-and-recent-past",
+  "lang": "fr",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "J'allais partir, je venais d'arriver",
+  "objective": {
+    "en": "Use aller and venir de at the imperfect in a story to say what was about to happen or had just happened: j'allais sortir quand il a appelé.",
+    "fr": "Employer aller et venir de à l'imparfait dans un récit pour dire ce qui allait arriver ou venait d'arriver : j'allais sortir quand il a appelé.",
+    "de": "Aller und venir de im Imparfait in einer Erzählung verwenden, um zu sagen, was gleich geschehen sollte oder gerade geschehen war: j'allais sortir quand il a appelé."
+  },
+  "estimatedMinutes": 17,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:48:02.459Z",
+    "inputHashes": { "outline": "f93678da56b45c284d0b1787969b0c029e358e4027d3b2fbec014ab4f5339642" }
+  },
+  "kind": "grammar",
+  "topic": "verb_usage",
+  "scopeBoundaries": {
+    "en": "Covers aller + infinitive and venir de + infinitive at the imperfect, with a passé composé event. Excludes the pluperfect and the full narrative tense mix.",
+    "fr": "Couvre aller + infinitif et venir de + infinitif à l'imparfait, avec un événement au passé composé. Exclut le plus-que-parfait et le mélange complet des temps du récit.",
+    "de": "Behandelt aller + Infinitiv und venir de + Infinitiv im Imparfait mit einem Ereignis im Passé composé. Ausgeschlossen sind das Plusquamperfekt und das vollständige Zusammenspiel der Erzählzeiten."
+  },
+  "prerequisites": [
+    {
+      "en": "Imperfect forms and the passé composé",
+      "fr": "Les formes de l'imparfait et le passé composé",
+      "de": "Formen des Imparfait und das Passé composé"
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-aller-imp",
+      "summary": {
+        "en": "Aller at the imperfect + infinitive: an action that was about to happen (j'allais sortir).",
+        "fr": "Aller à l'imparfait + infinitif : une action qui allait se produire (j'allais sortir).",
+        "de": "Aller im Imparfait + Infinitiv: eine Handlung, die gleich geschehen sollte (j'allais sortir)."
+      }
+    },
+    {
+      "id": "r-venir-de",
+      "summary": {
+        "en": "Venir de at the imperfect + infinitive: an action that had just happened (on venait d'arriver).",
+        "fr": "Venir de à l'imparfait + infinitif : une action qui venait d'avoir lieu (on venait d'arriver).",
+        "de": "Venir de im Imparfait + Infinitiv: eine Handlung, die gerade geschehen war (on venait d'arriver)."
+      }
+    },
+    {
+      "id": "r-contrast",
+      "summary": {
+        "en": "Choose between the two by meaning (not yet started vs just ended); the event follows in the passé composé.",
+        "fr": "Choisir entre les deux selon le sens (pas encore commencé ou tout juste terminé) ; l'événement suit au passé composé.",
+        "de": "Nach Bedeutung wählen (noch nicht begonnen oder gerade beendet); das Ereignis folgt im Passé composé."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "b1",
+      "title": {
+        "en": "Aller at the imperfect: about to",
+        "fr": "Aller à l'imparfait : sur le point de",
+        "de": "Aller im Imparfait: kurz davor"
+      },
+      "ruleIds": ["r-aller-imp"],
+      "explanationPlan": {
+        "en": "Show aller + infinitive at the imperfect for an action about to happen in the past, all six forms, and the interruption by a passé composé event. Contrast with je suis allé.",
+        "fr": "Montrer aller + infinitif à l'imparfait pour une action sur le point d'arriver dans le passé, les six formes, et l'interruption par un événement au passé composé. Opposer à je suis allé.",
+        "de": "aller + Infinitiv im Imparfait für eine bevorstehende Handlung in der Vergangenheit zeigen, alle sechs Formen, und die Unterbrechung durch ein Ereignis im Passé composé. Gegensatz zu je suis allé."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "J'allais sortir quand il a appelé.",
+          "translation": {
+            "en": "I was about to go out when he called.",
+            "de": "Ich wollte gerade ausgehen, als er anrief."
+          }
+        },
+        {
+          "text": "Nous allions partir quand la pluie a commencé.",
+          "translation": {
+            "en": "We were about to leave when the rain started.",
+            "de": "Wir wollten gerade losgehen, als der Regen anfing."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not use the passé composé of aller for an action that was only about to happen.",
+          "fr": "N'employez pas le passé composé d'aller pour une action seulement sur le point d'arriver.",
+          "de": "Verwende nicht das Passé composé von aller für eine Handlung, die nur bevorstand."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "b1-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 3,
+          "ruleIds": ["r-aller-imp"],
+          "estimatedDurationS": 36
+        },
+        {
+          "id": "b1-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 3,
+          "ruleIds": ["r-aller-imp"],
+          "estimatedDurationS": 45
+        },
+        {
+          "id": "b1-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["r-aller-imp"],
+          "estimatedDurationS": 60
+        }
+      ]
+    },
+    {
+      "id": "b2",
+      "title": {
+        "en": "Venir de at the imperfect: just done",
+        "fr": "Venir de à l'imparfait : tout juste fait",
+        "de": "Venir de im Imparfait: gerade getan"
+      },
+      "ruleIds": ["r-venir-de"],
+      "explanationPlan": {
+        "en": "Show venir de + infinitive at the imperfect for an action that had just happened before a past moment, all six forms, and the order of the two actions. Contrast with je viens de partir.",
+        "fr": "Montrer venir de + infinitif à l'imparfait pour une action qui venait d'avoir lieu avant un moment du passé, les six formes, et l'ordre des deux actions. Opposer à je viens de partir.",
+        "de": "venir de + Infinitiv im Imparfait für eine Handlung zeigen, die kurz vor einem Zeitpunkt in der Vergangenheit geschehen war, alle sechs Formen und die Reihenfolge der beiden Handlungen. Gegensatz zu je viens de partir."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Elle venait de partir quand je suis arrivé.",
+          "translation": {
+            "en": "She had just left when I arrived.",
+            "de": "Sie war gerade gegangen, als ich ankam."
+          }
+        },
+        {
+          "text": "Nous venions de nous asseoir quand le film a commencé.",
+          "translation": {
+            "en": "We had just sat down when the film started.",
+            "de": "Wir hatten uns gerade gesetzt, als der Film anfing."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not forget de after venir.",
+          "fr": "N'oubliez pas de après venir.",
+          "de": "Vergiss das de nach venir nicht."
+        },
+        {
+          "en": "Venir de at the present (je viens de) is about now, not about the story.",
+          "fr": "Venir de au présent (je viens de) parle de maintenant, pas du récit.",
+          "de": "Venir de im Präsens (je viens de) bezieht sich auf jetzt, nicht auf die Geschichte."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "b2-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 3,
+          "ruleIds": ["r-venir-de"],
+          "estimatedDurationS": 36
+        },
+        {
+          "id": "b2-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["r-venir-de"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "b2-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["r-venir-de"],
+          "estimatedDurationS": 60
+        }
+      ]
+    },
+    {
+      "id": "b3",
+      "title": {
+        "en": "Aller or venir de? Choosing in a story",
+        "fr": "Aller ou venir de ? Choisir dans un récit",
+        "de": "Aller oder venir de? Die Wahl in der Erzählung"
+      },
+      "ruleIds": ["r-contrast"],
+      "explanationPlan": {
+        "en": "Contrast j'allais partir (not yet done) and je venais d'arriver (just done), both followed by a passé composé event. Give a simple test and warn against present forms in a past story.",
+        "fr": "Opposer j'allais partir (pas encore fait) et je venais d'arriver (tout juste fait), tous deux suivis d'un événement au passé composé. Donner un test simple et mettre en garde contre le présent dans un récit au passé.",
+        "de": "j'allais partir (noch nicht getan) und je venais d'arriver (gerade getan) gegenüberstellen, beide gefolgt von einem Ereignis im Passé composé. Einen einfachen Test geben und vor Präsensformen in einer Vergangenheitserzählung warnen."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Il allait téléphoner quand son frère est entré.",
+          "translation": {
+            "en": "He was about to phone when his brother came in.",
+            "de": "Er wollte gerade telefonieren, als sein Bruder hereinkam."
+          }
+        },
+        {
+          "text": "Il venait de téléphoner quand son frère est entré.",
+          "translation": {
+            "en": "He had just phoned when his brother came in.",
+            "de": "Er hatte gerade telefoniert, als sein Bruder hereinkam."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not keep aller or venir de at the present in a story told in the past.",
+          "fr": "Ne laissez pas aller ou venir de au présent dans un récit au passé.",
+          "de": "Lass aller oder venir de in einer Erzählung in der Vergangenheit nicht im Präsens."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "b3-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 3,
+          "ruleIds": ["r-contrast"],
+          "estimatedDurationS": 45
+        },
+        {
+          "id": "b3-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["r-contrast"],
+          "estimatedDurationS": 75
+        },
+        {
+          "id": "b3-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["r-contrast"],
+          "estimatedDurationS": 60
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-aller",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["r-aller-imp"],
+        "estimatedDurationS": 45,
+        "timeLimitS": 90
+      },
+      {
+        "pageId": "exam-venir",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["r-venir-de"],
+        "estimatedDurationS": 45,
+        "timeLimitS": 90
+      },
+      {
+        "pageId": "exam-story",
+        "type": "grammar_word_order",
+        "itemCount": 4,
+        "ruleIds": ["r-contrast"],
+        "estimatedDurationS": 80,
+        "timeLimitS": 150
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

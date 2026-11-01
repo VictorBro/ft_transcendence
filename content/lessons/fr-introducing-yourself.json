@@ -4,21 +4,21 @@
   "lang": "fr",
   "level": "A1",
   "locales": ["en", "fr", "de"],
-  "title": "Se présenter",
+  "title": "Se présenter et poser des questions",
   "objective": {
-    "en": "Introduce yourself with your name, nationality, city and languages, and ask the other person the same questions.",
-    "fr": "Se présenter avec son nom, sa nationalité, sa ville et ses langues, et poser les mêmes questions à l’autre.",
-    "de": "Sich mit Namen, Nationalität, Wohnort und Sprachen vorstellen und dem anderen dieselben Fragen stellen."
+    "en": "Introduce yourself with your name, nationality, city and languages, then ask the other person the same questions.",
+    "fr": "Se présenter avec son nom, sa nationalité, sa ville et ses langues, puis poser les mêmes questions à l’autre.",
+    "de": "Sich mit Name, Nationalität, Wohnort und Sprachen vorstellen und der anderen Person dieselben Fragen stellen."
   },
-  "estimatedMinutes": 19,
+  "estimatedMinutes": 16,
   "provenance": {
-    "generator": "claude-code-direct-authoring",
-    "model": "claude-opus-5-5",
-    "promptVersion": "functions-v1",
-    "generatedAt": "2026-10-28T17:48:59.112Z",
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:28:34.529Z",
     "inputHashes": {
       "outline": "55c168005472eb261544672c9d49cb40636a8425bfeacee3e4348b182c795679",
-      "brief": "c631f07f64646f8999cbd38bfc40fba52fbe27f79dda91d15562c266726af386"
+      "brief": "dc9152443ff2be4c6cf50e4ad379cfb264d1527afb326efeca5a473eb3180bcd"
     }
   },
   "kind": "functions",
@@ -28,30 +28,8 @@
       "id": "flashcards",
       "stage": "flashcards",
       "role": "presentation",
-      "label": {
-        "en": "Flashcards",
-        "fr": "Cartes mémoire",
-        "de": "Karteikarten"
-      },
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
       "pages": [
-        {
-          "pageId": "cards-words",
-          "estimatedDurationS": 40,
-          "timeLimitS": null,
-          "instructions": {
-            "en": "Recall each word, then turn the card to check it.",
-            "fr": "Rappelez-vous chaque mot, puis retournez la carte pour vérifier.",
-            "de": "Erinnere dich an jedes Wort und dreh dann die Karte um."
-          },
-          "items": [
-            {
-              "type": "function_flashcards",
-              "itemId": "cards-words",
-              "side": "words",
-              "ids": ["prenom", "nom", "ville", "langue"]
-            }
-          ]
-        },
         {
           "pageId": "cards-expressions",
           "estimatedDurationS": 72,
@@ -83,15 +61,11 @@
       "id": "dialogue",
       "stage": "dialogue",
       "role": "presentation",
-      "label": {
-        "en": "Dialogue",
-        "fr": "Dialogue",
-        "de": "Dialog"
-      },
+      "label": { "en": "Dialogue", "fr": "Dialogue", "de": "Dialog" },
       "pages": [
         {
           "pageId": "dialogue",
-          "estimatedDurationS": 140,
+          "estimatedDurationS": 116,
           "timeLimitS": null,
           "instructions": {
             "en": "Read and listen. Turn a line to see its translation and a note.",
@@ -105,153 +79,123 @@
               "lines": [
                 {
                   "lineId": "line-1",
-                  "roleId": "lucas",
-                  "text": "Bonjour ! Je m’appelle Lucas. Et toi, tu t’appelles comment ?",
+                  "roleId": "marc",
+                  "text": "Salut ! Je m’appelle Marc. Tu t’appelles comment ?",
                   "translation": {
-                    "en": "Hello! My name is Lucas. And you, what’s your name?",
-                    "de": "Hallo! Ich heiße Lucas. Und du, wie heißt du?"
+                    "en": "Hi! My name is Marc. What’s your name?",
+                    "de": "Hallo! Ich heiße Marc. Wie heißt du?"
                   },
                   "note": {
-                    "en": "Lucas gives his name, then asks hers with tu.",
-                    "fr": "Lucas dit son nom, puis demande le sien avec tu.",
-                    "de": "Lucas nennt seinen Namen und fragt dann mit tu nach ihrem."
+                    "en": "Je m’appelle gives your name; Tu t’appelles comment ? asks for the other person’s.",
+                    "fr": "Je m’appelle donne votre nom ; Tu t’appelles comment ? demande celui de l’autre.",
+                    "de": "Je m’appelle nennt deinen Namen; Tu t’appelles comment ? fragt nach dem der anderen Person."
                   },
                   "expressionIds": ["je-mappelle", "tu-tappelles-comment"]
                 },
                 {
                   "lineId": "line-2",
-                  "roleId": "emma",
-                  "text": "Je m’appelle Emma. Enchantée, Lucas !",
+                  "roleId": "sofia",
+                  "text": "Je m’appelle Sofia. Enchantée !",
                   "translation": {
-                    "en": "My name is Emma. Nice to meet you, Lucas!",
-                    "de": "Ich heiße Emma. Freut mich, Lucas!"
+                    "en": "My name is Sofia. Nice to meet you!",
+                    "de": "Ich heiße Sofia. Freut mich!"
                   },
                   "note": {
-                    "en": "Enchantée: a woman writes it with a final e.",
-                    "fr": "Enchantée : une femme l’écrit avec un e final.",
-                    "de": "Enchantée: Eine Frau schreibt es mit einem e am Ende."
+                    "en": "A woman says enchantée, a man says enchanté.",
+                    "fr": "Une femme dit enchantée, un homme dit enchanté.",
+                    "de": "Eine Frau sagt enchantée, ein Mann sagt enchanté."
                   },
                   "expressionIds": ["je-mappelle"]
                 },
                 {
                   "lineId": "line-3",
-                  "roleId": "lucas",
-                  "text": "Enchanté ! Tu es française ?",
+                  "roleId": "marc",
+                  "text": "Enchanté, Sofia. Je suis français.",
                   "translation": {
-                    "en": "Nice to meet you! Are you French?",
-                    "de": "Freut mich! Bist du Französin?"
+                    "en": "Nice to meet you, Sofia. I am French.",
+                    "de": "Freut mich, Sofia. Ich bin Franzose."
                   },
                   "note": {
-                    "en": "A question with the voice going up at the end.",
-                    "fr": "Une question avec la voix qui monte à la fin.",
-                    "de": "Eine Frage, bei der die Stimme am Ende steigt."
-                  },
-                  "expressionIds": []
-                },
-                {
-                  "lineId": "line-4",
-                  "roleId": "emma",
-                  "text": "Non, je suis allemande. Je suis de Berlin.",
-                  "translation": {
-                    "en": "No, I am German. I am from Berlin.",
-                    "de": "Nein, ich bin Deutsche. Ich komme aus Berlin."
-                  },
-                  "note": {
-                    "en": "Je suis + nationality, then je suis de + city of origin.",
-                    "fr": "Je suis + nationalité, puis je suis de + ville d’origine.",
-                    "de": "Je suis + Nationalität, dann je suis de + Herkunftsstadt."
+                    "en": "Je suis + nationality tells where you are from.",
+                    "fr": "Je suis + nationalité dit d’où l’on vient.",
+                    "de": "Je suis + Nationalität sagt, woher du kommst."
                   },
                   "expressionIds": ["je-suis"]
                 },
                 {
-                  "lineId": "line-5",
-                  "roleId": "lucas",
-                  "text": "Ah, Berlin ! Et maintenant, tu habites où ?",
+                  "lineId": "line-4",
+                  "roleId": "sofia",
+                  "text": "Moi, je suis espagnole. Tu habites où ?",
                   "translation": {
-                    "en": "Oh, Berlin! And now, where do you live?",
-                    "de": "Ah, Berlin! Und jetzt, wo wohnst du?"
+                    "en": "I am Spanish. Where do you live?",
+                    "de": "Ich bin Spanierin. Wo wohnst du?"
                   },
                   "note": {
-                    "en": "Tu habites où ? asks where she lives now.",
-                    "fr": "Tu habites où ? demande où elle habite maintenant.",
-                    "de": "Tu habites où ? fragt, wo sie jetzt wohnt."
+                    "en": "Moi puts the focus on you. Tu habites où ? asks about the city.",
+                    "fr": "Moi met l’accent sur soi. Tu habites où ? demande la ville.",
+                    "de": "Moi stellt dich in den Mittelpunkt. Tu habites où ? fragt nach der Stadt."
                   },
-                  "expressionIds": ["tu-habites-ou"]
+                  "expressionIds": ["je-suis", "tu-habites-ou"]
                 },
                 {
-                  "lineId": "line-6",
-                  "roleId": "emma",
-                  "text": "J’habite à Lyon, près de l’université. Et toi ?",
+                  "lineId": "line-5",
+                  "roleId": "marc",
+                  "text": "J’habite à Paris. Et toi ?",
                   "translation": {
-                    "en": "I live in Lyon, near the university. And you?",
-                    "de": "Ich wohne in Lyon, in der Nähe der Uni. Und du?"
+                    "en": "I live in Paris. And you?",
+                    "de": "Ich wohne in Paris. Und du?"
                   },
                   "note": {
-                    "en": "J’habite à + city; Et toi ? asks the same question back.",
-                    "fr": "J’habite à + ville ; Et toi ? pose la même question en retour.",
-                    "de": "J’habite à + Stadt; Et toi ? stellt dieselbe Frage zurück."
+                    "en": "Et toi ? returns the question to the other person.",
+                    "fr": "Et toi ? renvoie la question à l’autre personne.",
+                    "de": "Et toi ? gibt die Frage an die andere Person zurück."
                   },
                   "expressionIds": ["jhabite-a"]
                 },
                 {
-                  "lineId": "line-7",
-                  "roleId": "lucas",
-                  "text": "Moi, je suis belge, mais j’habite ici, à Lyon.",
+                  "lineId": "line-6",
+                  "roleId": "sofia",
+                  "text": "J’habite à Lyon. Je parle espagnol et un peu français.",
                   "translation": {
-                    "en": "Me, I am Belgian, but I live here, in Lyon.",
-                    "de": "Ich bin Belgier, aber ich wohne hier, in Lyon."
+                    "en": "I live in Lyon. I speak Spanish and a little French.",
+                    "de": "Ich wohne in Lyon. Ich spreche Spanisch und ein bisschen Französisch."
                   },
                   "note": {
-                    "en": "Moi stresses that he now talks about himself.",
-                    "fr": "Moi souligne qu’il parle maintenant de lui.",
-                    "de": "Moi betont, dass er jetzt von sich spricht."
+                    "en": "Je parle + language. Un peu means a little.",
+                    "fr": "Je parle + langue. Un peu veut dire a little.",
+                    "de": "Je parle + Sprache. Un peu bedeutet ein bisschen."
                   },
-                  "expressionIds": ["je-suis"]
+                  "expressionIds": ["jhabite-a", "je-parle"]
+                },
+                {
+                  "lineId": "line-7",
+                  "roleId": "marc",
+                  "text": "Moi, je parle français et anglais.",
+                  "translation": {
+                    "en": "I speak French and English.",
+                    "de": "Ich spreche Französisch und Englisch."
+                  },
+                  "note": {
+                    "en": "Languages are written without a capital letter in French.",
+                    "fr": "Les langues s’écrivent sans majuscule en français.",
+                    "de": "Sprachen werden im Französischen kleingeschrieben."
+                  },
+                  "expressionIds": ["je-parle"]
                 },
                 {
                   "lineId": "line-8",
-                  "roleId": "emma",
-                  "text": "Tu parles allemand ?",
+                  "roleId": "sofia",
+                  "text": "Super ! À bientôt, Marc.",
                   "translation": {
-                    "en": "Do you speak German?",
-                    "de": "Sprichst du Deutsch?"
+                    "en": "Great! See you soon, Marc.",
+                    "de": "Toll! Bis bald, Marc."
                   },
                   "note": {
-                    "en": "Tu parles: with tu, the verb ends in -es.",
-                    "fr": "Tu parles : avec tu, le verbe finit en -es.",
-                    "de": "Tu parles: Mit tu endet das Verb auf -es."
+                    "en": "À bientôt closes the conversation.",
+                    "fr": "À bientôt termine la conversation.",
+                    "de": "À bientôt beendet das Gespräch."
                   },
                   "expressionIds": []
-                },
-                {
-                  "lineId": "line-9",
-                  "roleId": "lucas",
-                  "text": "Non, je parle français et anglais. Et toi ?",
-                  "translation": {
-                    "en": "No, I speak French and English. And you?",
-                    "de": "Nein, ich spreche Französisch und Englisch. Und du?"
-                  },
-                  "note": {
-                    "en": "Je parle + languages, without an article.",
-                    "fr": "Je parle + langues, sans article.",
-                    "de": "Je parle + Sprachen, ohne Artikel."
-                  },
-                  "expressionIds": ["je-parle"]
-                },
-                {
-                  "lineId": "line-10",
-                  "roleId": "emma",
-                  "text": "Je parle allemand, anglais et un peu français !",
-                  "translation": {
-                    "en": "I speak German, English and a little French!",
-                    "de": "Ich spreche Deutsch, Englisch und ein bisschen Französisch!"
-                  },
-                  "note": {
-                    "en": "Un peu: a little.",
-                    "fr": "Un peu : pas beaucoup.",
-                    "de": "Un peu: ein bisschen."
-                  },
-                  "expressionIds": ["je-parle"]
                 }
               ]
             }
@@ -263,11 +207,7 @@
       "id": "matching",
       "stage": "matching",
       "role": "exercise",
-      "label": {
-        "en": "Matching",
-        "fr": "Association",
-        "de": "Zuordnen"
-      },
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
       "pages": [
         {
           "pageId": "match-expressions-1",
@@ -287,132 +227,52 @@
                 {
                   "id": "je-mappelle",
                   "answerExplanation": {
-                    "en": "Je m’appelle + your first name, or your first name and surname.",
-                    "fr": "Je m’appelle + votre prénom, ou votre prénom et votre nom.",
-                    "de": "Je m’appelle + Ihr Vorname, oder Vor- und Nachname."
+                    "en": "Je m’appelle + first name gives your name.",
+                    "fr": "Je m’appelle + prénom donne votre nom.",
+                    "de": "Je m’appelle + Vorname nennt deinen Namen."
                   }
                 },
                 {
                   "id": "tu-tappelles-comment",
                   "answerExplanation": {
-                    "en": "Asks a friend or another young person their name (tu).",
-                    "fr": "Demande son nom à un ami ou à un autre jeune (tu).",
-                    "de": "Fragt einen Freund oder einen anderen jungen Menschen nach dem Namen (tu)."
+                    "en": "Informal question to ask someone’s name.",
+                    "fr": "Question familière pour demander le nom de quelqu’un.",
+                    "de": "Informelle Frage nach dem Namen."
                   }
                 },
                 {
                   "id": "je-suis",
                   "answerExplanation": {
-                    "en": "Je suis + your nationality. It agrees: je suis allemand (man), je suis allemande (woman).",
-                    "fr": "Je suis + votre nationalité. Elle s’accorde : je suis allemand (homme), je suis allemande (femme).",
-                    "de": "Je suis + Ihre Nationalität. Sie wird angeglichen: je suis allemand (Mann), je suis allemande (Frau)."
+                    "en": "Je suis + nationality.",
+                    "fr": "Je suis + nationalité.",
+                    "de": "Je suis + Nationalität."
                   }
                 },
                 {
                   "id": "jhabite-a",
                   "answerExplanation": {
-                    "en": "J’habite à + a city. Je becomes j’ before a vowel or a silent h.",
-                    "fr": "J’habite à + une ville. Je devient j’ devant une voyelle ou un h muet.",
-                    "de": "J’habite à + eine Stadt. Je wird vor Vokal oder stummem h zu j’."
+                    "en": "J’habite à + city says where you live.",
+                    "fr": "J’habite à + ville dit où l’on habite.",
+                    "de": "J’habite à + Stadt sagt, wo du wohnst."
                   }
                 },
                 {
                   "id": "tu-habites-ou",
                   "answerExplanation": {
-                    "en": "Asks a friend where they live; où (where) takes an accent grave.",
-                    "fr": "Demande à un ami où il habite ; où prend un accent grave.",
-                    "de": "Fragt einen Freund, wo er wohnt; où (wo) hat einen accent grave."
+                    "en": "Informal question to ask where someone lives.",
+                    "fr": "Question familière pour demander où quelqu’un habite.",
+                    "de": "Informelle Frage danach, wo jemand wohnt."
                   }
                 },
                 {
                   "id": "je-parle",
                   "answerExplanation": {
-                    "en": "Je parle + a language, without an article: je parle anglais.",
-                    "fr": "Je parle + une langue, sans article : je parle anglais.",
-                    "de": "Je parle + eine Sprache, ohne Artikel: je parle anglais."
+                    "en": "Je parle + language.",
+                    "fr": "Je parle + langue.",
+                    "de": "Je parle + Sprache."
                   }
                 }
               ]
-            }
-          ]
-        },
-        {
-          "pageId": "match-words-1",
-          "estimatedDurationS": 40,
-          "timeLimitS": null,
-          "instructions": {
-            "en": "Match each word with its translation.",
-            "fr": "Associez chaque mot à sa traduction.",
-            "de": "Ordne jedem Wort seine Übersetzung zu."
-          },
-          "items": [
-            {
-              "type": "function_matching",
-              "itemId": "match-words-1",
-              "side": "words",
-              "pairs": [
-                {
-                  "id": "prenom",
-                  "answerExplanation": {
-                    "en": "Masculine noun: un prénom, like Emma or Lucas.",
-                    "fr": "Nom masculin : un prénom, comme Emma ou Lucas.",
-                    "de": "Maskulines Nomen: un prénom, wie Emma oder Lucas."
-                  }
-                },
-                {
-                  "id": "nom",
-                  "answerExplanation": {
-                    "en": "Masculine noun: un nom, the family name, like Martin.",
-                    "fr": "Nom masculin : un nom, le nom de famille, comme Martin.",
-                    "de": "Maskulines Nomen: un nom, der Familienname, wie Martin."
-                  }
-                },
-                {
-                  "id": "ville",
-                  "answerExplanation": {
-                    "en": "Feminine noun: une ville.",
-                    "fr": "Nom féminin : une ville.",
-                    "de": "Feminines Nomen: une ville."
-                  }
-                },
-                {
-                  "id": "langue",
-                  "answerExplanation": {
-                    "en": "Feminine noun: une langue, like le français or l’anglais.",
-                    "fr": "Nom féminin : une langue, comme le français ou l’anglais.",
-                    "de": "Feminines Nomen: une langue, wie le français oder l’anglais."
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "gender",
-      "stage": "gender",
-      "role": "exercise",
-      "label": {
-        "en": "Gender",
-        "fr": "Genre",
-        "de": "Genus"
-      },
-      "pages": [
-        {
-          "pageId": "gender",
-          "estimatedDurationS": 40,
-          "timeLimitS": null,
-          "instructions": {
-            "en": "Choose the gender of each noun.",
-            "fr": "Choisissez le genre de chaque nom.",
-            "de": "Wähle das Genus jedes Nomens."
-          },
-          "items": [
-            {
-              "type": "function_gender_select",
-              "itemId": "gender",
-              "ids": ["prenom", "nom", "ville", "langue"]
             }
           ]
         }
@@ -422,11 +282,7 @@
       "id": "dialogue-gaps",
       "stage": "dialogue_gaps",
       "role": "exercise",
-      "label": {
-        "en": "Dialogue gaps",
-        "fr": "Dialogue à trous",
-        "de": "Dialoglücken"
-      },
+      "label": { "en": "Dialogue gaps", "fr": "Dialogue à trous", "de": "Dialoglücken" },
       "pages": [
         {
           "pageId": "gap-1",
@@ -442,23 +298,15 @@
               "type": "function_dialogue_gap_choice",
               "itemId": "gap-1",
               "expressionId": "je-mappelle",
-              "context": {
-                "roleId": "lucas",
-                "text": "Bonjour ! Tu t’appelles comment ?"
-              },
-              "roleId": "emma",
+              "context": { "roleId": "marc", "text": "Bonjour ! Tu t’appelles comment ?" },
+              "roleId": "sofia",
               "before": "",
-              "after": "Emma.",
-              "choiceExpressionIds": [
-                "je-mappelle",
-                "tu-tappelles-comment",
-                "jhabite-a",
-                "tu-habites-ou"
-              ],
+              "after": "Sofia.",
+              "choiceExpressionIds": ["je-mappelle", "je-suis", "jhabite-a", "je-parle"],
               "answerExplanation": {
-                "en": "Lucas asks her name, so she answers with je m’appelle.",
-                "fr": "Lucas demande son prénom, elle répond avec je m’appelle.",
-                "de": "Lucas fragt nach ihrem Namen, also antwortet sie mit je m’appelle."
+                "en": "He asks her name, so she answers with Je m’appelle.",
+                "fr": "Il demande son nom, elle répond donc avec Je m’appelle.",
+                "de": "Er fragt nach ihrem Namen, also antwortet sie mit Je m’appelle."
               }
             }
           ]
@@ -477,23 +325,20 @@
               "type": "function_dialogue_gap_choice",
               "itemId": "gap-2",
               "expressionId": "tu-tappelles-comment",
-              "context": {
-                "roleId": "emma",
-                "text": "Bonjour, je suis nouvelle ici."
-              },
-              "roleId": "lucas",
-              "before": "Bienvenue !",
+              "context": { "roleId": "sofia", "text": "Salut !" },
+              "roleId": "marc",
+              "before": "Salut ! Je m’appelle Marc.",
               "after": "",
               "choiceExpressionIds": [
+                "tu-habites-ou",
                 "tu-tappelles-comment",
-                "je-mappelle",
-                "jhabite-a",
-                "je-parle"
+                "je-suis",
+                "je-mappelle"
               ],
               "answerExplanation": {
-                "en": "She is new, so he asks her name.",
-                "fr": "Elle est nouvelle, alors il demande son prénom.",
-                "de": "Sie ist neu, also fragt er nach ihrem Namen."
+                "en": "After giving his name, he asks hers.",
+                "fr": "Après avoir donné son nom, il demande le sien.",
+                "de": "Nachdem er seinen Namen genannt hat, fragt er nach ihrem."
               }
             }
           ]
@@ -512,18 +357,15 @@
               "type": "function_dialogue_gap_choice",
               "itemId": "gap-3",
               "expressionId": "je-suis",
-              "context": {
-                "roleId": "lucas",
-                "text": "Tu es française ?"
-              },
-              "roleId": "emma",
-              "before": "Non.",
-              "after": "allemande.",
-              "choiceExpressionIds": ["je-suis", "je-mappelle", "jhabite-a", "je-parle"],
+              "context": { "roleId": "marc", "text": "Tu es française ?" },
+              "roleId": "sofia",
+              "before": "Non,",
+              "after": "espagnole.",
+              "choiceExpressionIds": ["je-parle", "jhabite-a", "je-suis", "je-mappelle"],
               "answerExplanation": {
-                "en": "A nationality follows je suis.",
-                "fr": "Une nationalité suit je suis.",
-                "de": "Nach je suis steht die Nationalität."
+                "en": "A nationality follows Je suis.",
+                "fr": "Une nationalité suit Je suis.",
+                "de": "Eine Nationalität folgt auf Je suis."
               }
             }
           ]
@@ -542,18 +384,15 @@
               "type": "function_dialogue_gap_choice",
               "itemId": "gap-4",
               "expressionId": "jhabite-a",
-              "context": {
-                "roleId": "lucas",
-                "text": "Tu habites où ?"
-              },
-              "roleId": "emma",
+              "context": { "roleId": "marc", "text": "Tu habites où ?" },
+              "roleId": "sofia",
               "before": "",
-              "after": "Lyon, près de la gare.",
-              "choiceExpressionIds": ["jhabite-a", "je-mappelle", "je-suis", "je-parle"],
+              "after": "Lyon.",
+              "choiceExpressionIds": ["je-suis", "je-parle", "je-mappelle", "jhabite-a"],
               "answerExplanation": {
-                "en": "He asks where she lives: j’habite à + city.",
-                "fr": "Il demande où elle habite : j’habite à + ville.",
-                "de": "Er fragt, wo sie wohnt: j’habite à + Stadt."
+                "en": "He asks where she lives, so she answers with J’habite à + city.",
+                "fr": "Il demande où elle habite, elle répond donc avec J’habite à + ville.",
+                "de": "Er fragt, wo sie wohnt, also antwortet sie mit J’habite à + Stadt."
               }
             }
           ]
@@ -572,18 +411,20 @@
               "type": "function_dialogue_gap_choice",
               "itemId": "gap-5",
               "expressionId": "tu-habites-ou",
-              "context": {
-                "roleId": "emma",
-                "text": "Je suis étudiante à Lyon."
-              },
-              "roleId": "lucas",
-              "before": "Moi aussi !",
-              "after": "Près de l’université ?",
-              "choiceExpressionIds": ["tu-habites-ou", "je-mappelle", "je-suis", "je-parle"],
+              "context": { "roleId": "sofia", "text": "Je suis espagnole." },
+              "roleId": "marc",
+              "before": "Ah, super ! Moi, j’habite à Paris.",
+              "after": "",
+              "choiceExpressionIds": [
+                "tu-tappelles-comment",
+                "tu-habites-ou",
+                "je-parle",
+                "jhabite-a"
+              ],
               "answerExplanation": {
-                "en": "He asks where she lives, then guesses: near the university?",
-                "fr": "Il demande où elle habite, puis devine : près de l’université ?",
-                "de": "Er fragt, wo sie wohnt, und rät dann: in der Nähe der Uni?"
+                "en": "He gives his city, then asks hers.",
+                "fr": "Il donne sa ville, puis demande la sienne.",
+                "de": "Er nennt seine Stadt und fragt dann nach ihrer."
               }
             }
           ]
@@ -602,18 +443,15 @@
               "type": "function_dialogue_gap_choice",
               "itemId": "gap-6",
               "expressionId": "je-parle",
-              "context": {
-                "roleId": "emma",
-                "text": "Tu parles anglais ?"
-              },
-              "roleId": "lucas",
-              "before": "Oui !",
-              "after": "anglais et français.",
-              "choiceExpressionIds": ["je-parle", "je-mappelle", "je-suis", "jhabite-a"],
+              "context": { "roleId": "marc", "text": "Tu parles français ?" },
+              "roleId": "sofia",
+              "before": "Oui,",
+              "after": "français et espagnol.",
+              "choiceExpressionIds": ["je-mappelle", "jhabite-a", "je-suis", "je-parle"],
               "answerExplanation": {
-                "en": "She asks about a language: je parle + language.",
-                "fr": "Elle demande une langue : je parle + langue.",
-                "de": "Sie fragt nach einer Sprache: je parle + Sprache."
+                "en": "Languages follow Je parle.",
+                "fr": "Les langues suivent Je parle.",
+                "de": "Sprachen folgen auf Je parle."
               }
             }
           ]
@@ -624,11 +462,7 @@
       "id": "word-order",
       "stage": "word_order",
       "role": "exercise",
-      "label": {
-        "en": "Word order",
-        "fr": "Ordre des mots",
-        "de": "Wortstellung"
-      },
+      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
       "pages": [
         {
           "pageId": "order-1",
@@ -647,25 +481,17 @@
               "context": null,
               "roleId": null,
               "tokens": [
-                {
-                  "tokenId": "t1",
-                  "text": "Bonjour,"
-                },
-                {
-                  "tokenId": "t2",
-                  "text": "je m’appelle"
-                },
-                {
-                  "tokenId": "t3",
-                  "text": "Paul"
-                }
+                { "tokenId": "t1", "text": "Bonjour," },
+                { "tokenId": "t2", "text": "je" },
+                { "tokenId": "t3", "text": "m’appelle" },
+                { "tokenId": "t4", "text": "Tom." }
               ],
               "distractorTokenIds": [],
-              "acceptedOrders": [["t1", "t2", "t3"]],
+              "acceptedOrders": [["t1", "t2", "t3", "t4"]],
               "answerExplanation": {
-                "en": "The greeting first, then je m’appelle and the name.",
-                "fr": "D’abord la salutation, puis je m’appelle et le prénom.",
-                "de": "Zuerst der Gruß, dann je m’appelle und der Name."
+                "en": "Greeting first, then Je m’appelle + name.",
+                "fr": "D’abord la salutation, puis Je m’appelle + prénom.",
+                "de": "Erst der Gruß, dann Je m’appelle + Vorname."
               }
             }
           ]
@@ -687,25 +513,19 @@
               "context": null,
               "roleId": null,
               "tokens": [
-                {
-                  "tokenId": "t1",
-                  "text": "Et"
-                },
-                {
-                  "tokenId": "t2",
-                  "text": "toi,"
-                },
-                {
-                  "tokenId": "t3",
-                  "text": "tu t’appelles comment ?"
-                }
+                { "tokenId": "t1", "text": "Salut" },
+                { "tokenId": "t2", "text": "!" },
+                { "tokenId": "t3", "text": "Tu" },
+                { "tokenId": "t4", "text": "t’appelles" },
+                { "tokenId": "t5", "text": "comment" },
+                { "tokenId": "t6", "text": "?" }
               ],
               "distractorTokenIds": [],
-              "acceptedOrders": [["t1", "t2", "t3"]],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
               "answerExplanation": {
-                "en": "Et toi first, then the question.",
-                "fr": "D’abord Et toi, puis la question.",
-                "de": "Zuerst Et toi, dann die Frage."
+                "en": "The question word comment comes at the end.",
+                "fr": "Le mot interrogatif comment vient à la fin.",
+                "de": "Das Fragewort comment steht am Ende."
               }
             }
           ]
@@ -727,25 +547,17 @@
               "context": null,
               "roleId": null,
               "tokens": [
-                {
-                  "tokenId": "t1",
-                  "text": "Non,"
-                },
-                {
-                  "tokenId": "t2",
-                  "text": "je suis"
-                },
-                {
-                  "tokenId": "t3",
-                  "text": "suisse"
-                }
+                { "tokenId": "t1", "text": "Moi," },
+                { "tokenId": "t2", "text": "je" },
+                { "tokenId": "t3", "text": "suis" },
+                { "tokenId": "t4", "text": "italienne." }
               ],
               "distractorTokenIds": [],
-              "acceptedOrders": [["t1", "t2", "t3"]],
+              "acceptedOrders": [["t1", "t2", "t3", "t4"]],
               "answerExplanation": {
-                "en": "Non, then je suis and the nationality.",
-                "fr": "Non, puis je suis et la nationalité.",
-                "de": "Non, dann je suis und die Nationalität."
+                "en": "Je suis comes before the nationality.",
+                "fr": "Je suis vient avant la nationalité.",
+                "de": "Je suis steht vor der Nationalität."
               }
             }
           ]
@@ -767,25 +579,16 @@
               "context": null,
               "roleId": null,
               "tokens": [
-                {
-                  "tokenId": "t1",
-                  "text": "Maintenant,"
-                },
-                {
-                  "tokenId": "t2",
-                  "text": "j’habite"
-                },
-                {
-                  "tokenId": "t3",
-                  "text": "à Nice"
-                }
+                { "tokenId": "t1", "text": "J’habite" },
+                { "tokenId": "t2", "text": "à" },
+                { "tokenId": "t3", "text": "Madrid." }
               ],
               "distractorTokenIds": [],
               "acceptedOrders": [["t1", "t2", "t3"]],
               "answerExplanation": {
-                "en": "J’habite comes before à and the city.",
-                "fr": "J’habite vient avant à et la ville.",
-                "de": "J’habite steht vor à und der Stadt."
+                "en": "J’habite à, then the city.",
+                "fr": "J’habite à, puis la ville.",
+                "de": "J’habite à, dann die Stadt."
               }
             }
           ]
@@ -807,25 +610,19 @@
               "context": null,
               "roleId": null,
               "tokens": [
-                {
-                  "tokenId": "t1",
-                  "text": "Salut,"
-                },
-                {
-                  "tokenId": "t2",
-                  "text": "Marc !"
-                },
-                {
-                  "tokenId": "t3",
-                  "text": "Tu habites où ?"
-                }
+                { "tokenId": "t1", "text": "Et" },
+                { "tokenId": "t2", "text": "toi," },
+                { "tokenId": "t3", "text": "tu" },
+                { "tokenId": "t4", "text": "habites" },
+                { "tokenId": "t5", "text": "où" },
+                { "tokenId": "t6", "text": "?" }
               ],
               "distractorTokenIds": [],
-              "acceptedOrders": [["t1", "t2", "t3"]],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
               "answerExplanation": {
-                "en": "The greeting and the name first, then the question.",
-                "fr": "D’abord la salutation et le prénom, puis la question.",
-                "de": "Zuerst Gruß und Name, dann die Frage."
+                "en": "Et toi, then the question Tu habites où ?",
+                "fr": "Et toi, puis la question Tu habites où ?",
+                "de": "Et toi, dann die Frage Tu habites où ?"
               }
             }
           ]
@@ -847,25 +644,18 @@
               "context": null,
               "roleId": null,
               "tokens": [
-                {
-                  "tokenId": "t1",
-                  "text": "Je parle"
-                },
-                {
-                  "tokenId": "t2",
-                  "text": "un peu"
-                },
-                {
-                  "tokenId": "t3",
-                  "text": "italien"
-                }
+                { "tokenId": "t1", "text": "Je" },
+                { "tokenId": "t2", "text": "parle" },
+                { "tokenId": "t3", "text": "français" },
+                { "tokenId": "t4", "text": "et" },
+                { "tokenId": "t5", "text": "anglais." }
               ],
               "distractorTokenIds": [],
-              "acceptedOrders": [["t1", "t2", "t3"]],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]],
               "answerExplanation": {
-                "en": "Un peu stands between the verb and the language.",
-                "fr": "Un peu se place entre le verbe et la langue.",
-                "de": "Un peu steht zwischen dem Verb und der Sprache."
+                "en": "Je parle, then the languages joined by et.",
+                "fr": "Je parle, puis les langues reliées par et.",
+                "de": "Je parle, dann die Sprachen, verbunden mit et."
               }
             }
           ]
@@ -876,11 +666,7 @@
       "id": "listening",
       "stage": "listening",
       "role": "exercise",
-      "label": {
-        "en": "Listening",
-        "fr": "Écoute",
-        "de": "Hören"
-      },
+      "label": { "en": "Listening", "fr": "Écoute", "de": "Hören" },
       "pages": [
         {
           "pageId": "listening-1",
@@ -896,34 +682,19 @@
               "type": "function_listening_choice",
               "itemId": "listening-1",
               "expressionId": "je-mappelle",
-              "context": {
-                "roleId": "lucas",
-                "text": "Salut ! Tu t’appelles comment ?"
-              },
-              "roleId": "emma",
+              "context": { "roleId": "marc", "text": "Bonjour ! Tu t’appelles comment ?" },
+              "roleId": "sofia",
               "options": [
-                {
-                  "optionId": "o1",
-                  "text": "Je m’appelle Emma."
-                },
-                {
-                  "optionId": "o2",
-                  "text": "J’habite à Lyon."
-                },
-                {
-                  "optionId": "o3",
-                  "text": "Je parle anglais."
-                },
-                {
-                  "optionId": "o4",
-                  "text": "Au revoir !"
-                }
+                { "optionId": "o1", "text": "Je m’appelle Sofia." },
+                { "optionId": "o2", "text": "J’habite à Lyon." },
+                { "optionId": "o3", "text": "Je parle espagnol." },
+                { "optionId": "o4", "text": "Au revoir !" }
               ],
               "answerOptionId": "o1",
               "answerExplanation": {
-                "en": "He asks her name: je m’appelle + name.",
-                "fr": "Il demande son prénom : je m’appelle + prénom.",
-                "de": "Er fragt nach ihrem Namen: je m’appelle + Name."
+                "en": "He asks her name; she answers with Je m’appelle.",
+                "fr": "Il demande son nom ; elle répond avec Je m’appelle.",
+                "de": "Er fragt nach ihrem Namen; sie antwortet mit Je m’appelle."
               }
             }
           ]
@@ -942,34 +713,19 @@
               "type": "function_listening_choice",
               "itemId": "listening-2",
               "expressionId": "tu-tappelles-comment",
-              "context": {
-                "roleId": "emma",
-                "text": "Bonjour, je suis nouvelle."
-              },
-              "roleId": "lucas",
+              "context": { "roleId": "sofia", "text": "Salut !" },
+              "roleId": "marc",
               "options": [
-                {
-                  "optionId": "o1",
-                  "text": "Bienvenue ! Tu t’appelles comment ?"
-                },
-                {
-                  "optionId": "o2",
-                  "text": "J’habite à Lyon."
-                },
-                {
-                  "optionId": "o3",
-                  "text": "Ça va bien, merci."
-                },
-                {
-                  "optionId": "o4",
-                  "text": "Je parle anglais."
-                }
+                { "optionId": "o1", "text": "Salut ! Tu t’appelles comment ?" },
+                { "optionId": "o2", "text": "Je suis français." },
+                { "optionId": "o3", "text": "J’habite à Paris." },
+                { "optionId": "o4", "text": "Je parle anglais." }
               ],
               "answerOptionId": "o1",
               "answerExplanation": {
-                "en": "She is new: he welcomes her and asks her name.",
-                "fr": "Elle est nouvelle : il l’accueille et demande son prénom.",
-                "de": "Sie ist neu: Er begrüßt sie und fragt nach ihrem Namen."
+                "en": "He greets her back and asks her name.",
+                "fr": "Il la salue et lui demande son nom.",
+                "de": "Er grüßt zurück und fragt nach ihrem Namen."
               }
             }
           ]
@@ -988,34 +744,19 @@
               "type": "function_listening_choice",
               "itemId": "listening-3",
               "expressionId": "je-suis",
-              "context": {
-                "roleId": "lucas",
-                "text": "Tu es française ?"
-              },
-              "roleId": "emma",
+              "context": { "roleId": "marc", "text": "Tu es française ?" },
+              "roleId": "sofia",
               "options": [
-                {
-                  "optionId": "o1",
-                  "text": "Non, je suis allemande."
-                },
-                {
-                  "optionId": "o2",
-                  "text": "Je m’appelle Emma."
-                },
-                {
-                  "optionId": "o3",
-                  "text": "J’habite à Lyon."
-                },
-                {
-                  "optionId": "o4",
-                  "text": "Tu habites où ?"
-                }
+                { "optionId": "o1", "text": "Non, je suis espagnole." },
+                { "optionId": "o2", "text": "Non, je m’appelle Sofia." },
+                { "optionId": "o3", "text": "Oui, j’habite à Lyon." },
+                { "optionId": "o4", "text": "Tu habites où ?" }
               ],
               "answerOptionId": "o1",
               "answerExplanation": {
-                "en": "He asks her nationality: je suis + nationality.",
-                "fr": "Il demande sa nationalité : je suis + nationalité.",
-                "de": "Er fragt nach ihrer Nationalität: je suis + Nationalität."
+                "en": "He asks about her nationality; she answers with Je suis.",
+                "fr": "Il demande sa nationalité ; elle répond avec Je suis.",
+                "de": "Er fragt nach ihrer Nationalität; sie antwortet mit Je suis."
               }
             }
           ]
@@ -1034,34 +775,19 @@
               "type": "function_listening_choice",
               "itemId": "listening-4",
               "expressionId": "jhabite-a",
-              "context": {
-                "roleId": "lucas",
-                "text": "Et tu habites où ?"
-              },
-              "roleId": "emma",
+              "context": { "roleId": "sofia", "text": "Tu habites où, Marc ?" },
+              "roleId": "marc",
               "options": [
-                {
-                  "optionId": "o1",
-                  "text": "J’habite à Lyon."
-                },
-                {
-                  "optionId": "o2",
-                  "text": "Je suis allemande."
-                },
-                {
-                  "optionId": "o3",
-                  "text": "Je m’appelle Emma."
-                },
-                {
-                  "optionId": "o4",
-                  "text": "Je parle anglais."
-                }
+                { "optionId": "o1", "text": "J’habite à Paris." },
+                { "optionId": "o2", "text": "Je m’appelle Marc." },
+                { "optionId": "o3", "text": "Je suis français." },
+                { "optionId": "o4", "text": "Je parle anglais." }
               ],
               "answerOptionId": "o1",
               "answerExplanation": {
-                "en": "He asks where she lives: j’habite à + city.",
-                "fr": "Il demande où elle habite : j’habite à + ville.",
-                "de": "Er fragt, wo sie wohnt: j’habite à + Stadt."
+                "en": "The question is about where he lives: J’habite à + city.",
+                "fr": "La question porte sur sa ville : J’habite à + ville.",
+                "de": "Die Frage betrifft seinen Wohnort: J’habite à + Stadt."
               }
             }
           ]
@@ -1080,34 +806,19 @@
               "type": "function_listening_choice",
               "itemId": "listening-5",
               "expressionId": "tu-habites-ou",
-              "context": {
-                "roleId": "emma",
-                "text": "Moi, c’est Emma. Je suis étudiante."
-              },
-              "roleId": "lucas",
+              "context": { "roleId": "sofia", "text": "Je suis espagnole." },
+              "roleId": "marc",
               "options": [
-                {
-                  "optionId": "o1",
-                  "text": "Enchanté ! Tu habites où ?"
-                },
-                {
-                  "optionId": "o2",
-                  "text": "Oui, ça va bien."
-                },
-                {
-                  "optionId": "o3",
-                  "text": "Au revoir, Emma !"
-                },
-                {
-                  "optionId": "o4",
-                  "text": "Je m’appelle Emma."
-                }
+                { "optionId": "o1", "text": "Ah, super ! Tu habites où ?" },
+                { "optionId": "o2", "text": "Au revoir, Sofia !" },
+                { "optionId": "o3", "text": "Je m’appelle Marc." },
+                { "optionId": "o4", "text": "Je parle français." }
               ],
               "answerOptionId": "o1",
               "answerExplanation": {
-                "en": "He has just met her and asks where she lives.",
-                "fr": "Il vient de la rencontrer et demande où elle habite.",
-                "de": "Er hat sie gerade kennengelernt und fragt, wo sie wohnt."
+                "en": "He reacts, then asks where she lives.",
+                "fr": "Il réagit, puis demande où elle habite.",
+                "de": "Er reagiert und fragt dann, wo sie wohnt."
               }
             }
           ]
@@ -1126,34 +837,19 @@
               "type": "function_listening_choice",
               "itemId": "listening-6",
               "expressionId": "je-parle",
-              "context": {
-                "roleId": "emma",
-                "text": "Tu parles anglais ?"
-              },
-              "roleId": "lucas",
+              "context": { "roleId": "marc", "text": "Tu parles anglais ?" },
+              "roleId": "sofia",
               "options": [
-                {
-                  "optionId": "o1",
-                  "text": "Oui, je parle anglais."
-                },
-                {
-                  "optionId": "o2",
-                  "text": "Oui, je suis anglais."
-                },
-                {
-                  "optionId": "o3",
-                  "text": "J’habite à Londres."
-                },
-                {
-                  "optionId": "o4",
-                  "text": "Je m’appelle Lucas."
-                }
+                { "optionId": "o1", "text": "Oui, je parle un peu anglais." },
+                { "optionId": "o2", "text": "Oui, j’habite à Lyon." },
+                { "optionId": "o3", "text": "Oui, je m’appelle Sofia." },
+                { "optionId": "o4", "text": "Oui, à bientôt !" }
               ],
               "answerOptionId": "o1",
               "answerExplanation": {
-                "en": "She asks about a language, not a nationality: je parle anglais.",
-                "fr": "Elle demande une langue, pas une nationalité : je parle anglais.",
-                "de": "Sie fragt nach einer Sprache, nicht nach der Nationalität: je parle anglais."
+                "en": "A question about languages gets the answer Je parle.",
+                "fr": "Une question sur les langues appelle la réponse Je parle.",
+                "de": "Auf eine Frage nach Sprachen antwortet man mit Je parle."
               }
             }
           ]
@@ -1164,92 +860,8 @@
       "id": "exam",
       "stage": "exam",
       "role": "exam",
-      "label": {
-        "en": "Final exam",
-        "fr": "Examen final",
-        "de": "Abschlussprüfung"
-      },
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
       "pages": [
-        {
-          "pageId": "exam-words",
-          "estimatedDurationS": 60,
-          "timeLimitS": 90,
-          "instructions": {
-            "en": "Translate each word into French, with its article for nouns.",
-            "fr": "Traduisez chaque mot en français, avec l’article pour les noms.",
-            "de": "Übersetze jedes Wort ins Französische, bei Nomen mit Artikel."
-          },
-          "items": [
-            {
-              "type": "function_translation_exam",
-              "itemId": "word-prenom",
-              "wordId": "prenom",
-              "prompt": {
-                "en": "first name",
-                "de": "Vorname"
-              },
-              "accepted": {
-                "answers": ["un prénom"]
-              },
-              "answerExplanation": {
-                "en": "Masculine noun: un prénom, like Emma or Lucas.",
-                "fr": "Nom masculin : un prénom, comme Emma ou Lucas.",
-                "de": "Maskulines Nomen: un prénom, wie Emma oder Lucas."
-              }
-            },
-            {
-              "type": "function_translation_exam",
-              "itemId": "word-nom",
-              "wordId": "nom",
-              "prompt": {
-                "en": "surname",
-                "de": "Nachname"
-              },
-              "accepted": {
-                "answers": ["un nom"]
-              },
-              "answerExplanation": {
-                "en": "Masculine noun: un nom, the family name, like Martin.",
-                "fr": "Nom masculin : un nom, le nom de famille, comme Martin.",
-                "de": "Maskulines Nomen: un nom, der Familienname, wie Martin."
-              }
-            },
-            {
-              "type": "function_translation_exam",
-              "itemId": "word-ville",
-              "wordId": "ville",
-              "prompt": {
-                "en": "city",
-                "de": "Stadt"
-              },
-              "accepted": {
-                "answers": ["une ville"]
-              },
-              "answerExplanation": {
-                "en": "Feminine noun: une ville.",
-                "fr": "Nom féminin : une ville.",
-                "de": "Feminines Nomen: une ville."
-              }
-            },
-            {
-              "type": "function_translation_exam",
-              "itemId": "word-langue",
-              "wordId": "langue",
-              "prompt": {
-                "en": "language",
-                "de": "Sprache"
-              },
-              "accepted": {
-                "answers": ["une langue"]
-              },
-              "answerExplanation": {
-                "en": "Feminine noun: une langue, like le français or l’anglais.",
-                "fr": "Nom féminin : une langue, comme le français ou l’anglais.",
-                "de": "Feminines Nomen: une langue, wie le français oder l’anglais."
-              }
-            }
-          ]
-        },
         {
           "pageId": "exam-replies-1",
           "estimatedDurationS": 120,
@@ -1264,160 +876,94 @@
               "type": "function_word_order",
               "itemId": "reply-1",
               "expressionId": "je-mappelle",
-              "context": {
-                "roleId": "lucas",
-                "text": "Bonjour, tu t’appelles comment ?"
-              },
-              "roleId": "emma",
+              "context": { "roleId": "marc", "text": "Salut ! Tu t’appelles comment ?" },
+              "roleId": "sofia",
               "tokens": [
-                {
-                  "tokenId": "t1",
-                  "text": "Bonjour,"
-                },
-                {
-                  "tokenId": "t2",
-                  "text": "je m’appelle"
-                },
-                {
-                  "tokenId": "t3",
-                  "text": "Sophie"
-                },
-                {
-                  "tokenId": "t4",
-                  "text": "je m’apelle"
-                }
+                { "tokenId": "t1", "text": "Je" },
+                { "tokenId": "t2", "text": "m’appelle" },
+                { "tokenId": "t3", "text": "Nina." },
+                { "tokenId": "t4", "text": "habite" },
+                { "tokenId": "t5", "text": "tu" }
               ],
-              "distractorTokenIds": ["t4"],
+              "distractorTokenIds": ["t4", "t5"],
               "acceptedOrders": [["t1", "t2", "t3"]],
               "answerExplanation": {
-                "en": "Appelle is written with pp and ll.",
-                "fr": "Appelle s’écrit avec pp et ll.",
-                "de": "Appelle schreibt man mit pp und ll."
+                "en": "To give your name, say Je m’appelle + name.",
+                "fr": "Pour donner son nom, on dit Je m’appelle + prénom.",
+                "de": "Um deinen Namen zu nennen, sagst du Je m’appelle + Vorname."
               }
             },
             {
               "type": "function_word_order",
               "itemId": "reply-2",
-              "expressionId": "tu-tappelles-comment",
-              "context": {
-                "roleId": "emma",
-                "text": "Salut ! Je suis la nouvelle étudiante."
-              },
-              "roleId": "lucas",
+              "expressionId": "jhabite-a",
+              "context": { "roleId": "sofia", "text": "Marc, tu habites où ?" },
+              "roleId": "marc",
               "tokens": [
-                {
-                  "tokenId": "t1",
-                  "text": "Salut !"
-                },
-                {
-                  "tokenId": "t2",
-                  "text": "Tu"
-                },
-                {
-                  "tokenId": "t3",
-                  "text": "t’appelles"
-                },
-                {
-                  "tokenId": "t4",
-                  "text": "comment ?"
-                },
-                {
-                  "tokenId": "t5",
-                  "text": "t’appelle"
-                }
+                { "tokenId": "t1", "text": "J’habite" },
+                { "tokenId": "t2", "text": "à" },
+                { "tokenId": "t3", "text": "Nice." },
+                { "tokenId": "t4", "text": "habites" },
+                { "tokenId": "t5", "text": "en" }
               ],
-              "distractorTokenIds": ["t5"],
-              "acceptedOrders": [["t1", "t2", "t3", "t4"]],
+              "distractorTokenIds": ["t4", "t5"],
+              "acceptedOrders": [["t1", "t2", "t3"]],
               "answerExplanation": {
-                "en": "With tu, the verb ends in -es: tu t’appelles.",
-                "fr": "Avec tu, le verbe finit en -es : tu t’appelles.",
-                "de": "Mit tu endet das Verb auf -es: tu t’appelles."
+                "en": "With j’ the verb is habite; before a city we use à.",
+                "fr": "Avec j’, le verbe est habite ; devant une ville, on emploie à.",
+                "de": "Mit j’ lautet das Verb habite; vor einer Stadt steht à."
               }
             },
             {
               "type": "function_word_order",
               "itemId": "reply-3",
-              "expressionId": "jhabite-a",
-              "context": {
-                "roleId": "lucas",
-                "text": "Et toi, Emma, tu habites où ?"
-              },
-              "roleId": "emma",
+              "expressionId": "je-suis",
+              "context": { "roleId": "marc", "text": "Tu es italienne ?" },
+              "roleId": "sofia",
               "tokens": [
-                {
-                  "tokenId": "t1",
-                  "text": "J’habite"
-                },
-                {
-                  "tokenId": "t2",
-                  "text": "à"
-                },
-                {
-                  "tokenId": "t3",
-                  "text": "Marseille,"
-                },
-                {
-                  "tokenId": "t4",
-                  "text": "près de la mer"
-                },
-                {
-                  "tokenId": "t5",
-                  "text": "au"
-                }
+                { "tokenId": "t1", "text": "Oui," },
+                { "tokenId": "t2", "text": "je" },
+                { "tokenId": "t3", "text": "suis" },
+                { "tokenId": "t4", "text": "italienne." },
+                { "tokenId": "t5", "text": "es" }
               ],
               "distractorTokenIds": ["t5"],
               "acceptedOrders": [["t1", "t2", "t3", "t4"]],
               "answerExplanation": {
-                "en": "Before a city, use à: j’habite à Marseille.",
-                "fr": "Devant une ville, on emploie à : j’habite à Marseille.",
-                "de": "Vor einer Stadt steht à: j’habite à Marseille."
+                "en": "With je the verb is suis; es goes with tu.",
+                "fr": "Avec je, le verbe est suis ; es va avec tu.",
+                "de": "Mit je heißt das Verb suis; es gehört zu tu."
               }
             },
             {
               "type": "function_word_order",
               "itemId": "reply-4",
               "expressionId": "je-parle",
-              "context": {
-                "roleId": "lucas",
-                "text": "Tu parles quelles langues ?"
-              },
-              "roleId": "emma",
+              "context": { "roleId": "sofia", "text": "Marc, tu parles anglais ?" },
+              "roleId": "marc",
               "tokens": [
-                {
-                  "tokenId": "t1",
-                  "text": "Je"
-                },
-                {
-                  "tokenId": "t2",
-                  "text": "parle"
-                },
-                {
-                  "tokenId": "t3",
-                  "text": "bien"
-                },
-                {
-                  "tokenId": "t4",
-                  "text": "allemand"
-                },
-                {
-                  "tokenId": "t5",
-                  "text": "parles"
-                }
+                { "tokenId": "t1", "text": "Oui," },
+                { "tokenId": "t2", "text": "je" },
+                { "tokenId": "t3", "text": "parle" },
+                { "tokenId": "t4", "text": "anglais" },
+                { "tokenId": "t5", "text": "et" },
+                { "tokenId": "t6", "text": "allemand." },
+                { "tokenId": "t7", "text": "parles" }
               ],
-              "distractorTokenIds": ["t5"],
-              "acceptedOrders": [["t1", "t2", "t3", "t4"]],
+              "distractorTokenIds": ["t7"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
               "answerExplanation": {
-                "en": "With je, parle has no s.",
-                "fr": "Avec je, parle n’a pas de s.",
-                "de": "Mit je hat parle kein s."
+                "en": "With je the verb is parle, without -s.",
+                "fr": "Avec je, le verbe est parle, sans -s.",
+                "de": "Mit je heißt das Verb parle, ohne -s."
               }
             }
           ]
         },
         {
           "pageId": "exam-dialogue",
-          "estimatedDurationS": 164,
-          "timeLimitS": 246,
+          "estimatedDurationS": 140,
+          "timeLimitS": 210,
           "instructions": {
             "en": "Fill each gap with an expression from this lesson.",
             "fr": "Complétez chaque trou avec une expression de la leçon.",
@@ -1430,144 +976,126 @@
               "lines": [
                 {
                   "lineId": "exam-line-1",
-                  "roleId": "lucas",
-                  "before": "Salut ! Moi, c’est Lucas.",
+                  "roleId": "sofia",
+                  "before": "Salut !",
+                  "translation": { "en": "Hi!", "de": "Hallo!" },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-2",
+                  "roleId": "marc",
+                  "before": "Bonjour ! Je m’appelle Marc.",
                   "translation": {
-                    "en": "Hi! I’m Lucas. What’s your name?",
-                    "de": "Hallo! Ich bin Lucas. Wie heißt du?"
+                    "en": "Hi! My name is Marc. What’s your name?",
+                    "de": "Hallo! Ich heiße Marc. Wie heißt du?"
                   },
                   "gap": {
                     "gapId": "gap-1",
                     "expressionId": "tu-tappelles-comment",
-                    "accepted": {
-                      "answers": ["Tu t’appelles comment"]
-                    },
+                    "accepted": { "answers": ["Tu t’appelles comment", "Tu t’appelles comment ?"] },
                     "answerExplanation": {
                       "en": "He asks her name: Tu t’appelles comment ?",
-                      "fr": "Il demande son prénom : Tu t’appelles comment ?",
+                      "fr": "Il demande son nom : Tu t’appelles comment ?",
                       "de": "Er fragt nach ihrem Namen: Tu t’appelles comment ?"
                     }
                   },
                   "after": "?"
                 },
                 {
-                  "lineId": "exam-line-2",
-                  "roleId": "emma",
-                  "before": "",
-                  "translation": {
-                    "en": "My name is Emma. Nice to meet you!",
-                    "de": "Ich heiße Emma. Freut mich!"
-                  },
-                  "gap": {
-                    "gapId": "gap-2",
-                    "expressionId": "je-mappelle",
-                    "accepted": {
-                      "answers": ["Je m’appelle"]
-                    },
-                    "answerExplanation": {
-                      "en": "She gives her name: je m’appelle.",
-                      "fr": "Elle donne son prénom : je m’appelle.",
-                      "de": "Sie nennt ihren Namen: je m’appelle."
-                    }
-                  },
-                  "after": "Emma. Enchantée !"
-                },
-                {
                   "lineId": "exam-line-3",
-                  "roleId": "lucas",
-                  "before": "Enchanté ! Tu es anglaise ?",
+                  "roleId": "sofia",
+                  "before": "Je m’appelle Clara. Enchantée !",
                   "translation": {
-                    "en": "Nice to meet you! Are you English?",
-                    "de": "Freut mich! Bist du Engländerin?"
+                    "en": "My name is Clara. Nice to meet you!",
+                    "de": "Ich heiße Clara. Freut mich!"
                   },
                   "gap": null,
                   "after": ""
                 },
                 {
                   "lineId": "exam-line-4",
-                  "roleId": "emma",
-                  "before": "Non,",
+                  "roleId": "marc",
+                  "before": "Enchanté, Clara.",
                   "translation": {
-                    "en": "No, I am German. And you?",
-                    "de": "Nein, ich bin Deutsche. Und du?"
+                    "en": "Nice to meet you, Clara. I am Belgian.",
+                    "de": "Freut mich, Clara. Ich bin Belgier."
                   },
                   "gap": {
-                    "gapId": "gap-4",
+                    "gapId": "gap-2",
                     "expressionId": "je-suis",
-                    "accepted": {
-                      "answers": ["je suis"]
-                    },
+                    "accepted": { "answers": ["Je suis"] },
                     "answerExplanation": {
-                      "en": "Her nationality follows je suis.",
-                      "fr": "Sa nationalité suit je suis.",
-                      "de": "Nach je suis folgt ihre Nationalität."
+                      "en": "He gives his nationality: Je suis + nationality.",
+                      "fr": "Il donne sa nationalité : Je suis + nationalité.",
+                      "de": "Er nennt seine Nationalität: Je suis + Nationalität."
                     }
                   },
-                  "after": "allemande. Et toi ?"
+                  "after": "belge."
                 },
                 {
                   "lineId": "exam-line-5",
-                  "roleId": "lucas",
-                  "before": "Moi, je suis belge, de Bruxelles.",
-                  "translation": {
-                    "en": "Me, I am Belgian, from Brussels.",
-                    "de": "Ich bin Belgier, aus Brüssel."
-                  },
+                  "roleId": "sofia",
+                  "before": "Moi, je suis suisse.",
+                  "translation": { "en": "I am Swiss.", "de": "Ich bin Schweizerin." },
                   "gap": null,
                   "after": ""
                 },
                 {
                   "lineId": "exam-line-6",
-                  "roleId": "emma",
-                  "before": "Et maintenant,",
-                  "translation": {
-                    "en": "And now, where do you live?",
-                    "de": "Und jetzt, wo wohnst du?"
-                  },
+                  "roleId": "marc",
+                  "before": "Génial !",
+                  "translation": { "en": "Great! Where do you live?", "de": "Toll! Wo wohnst du?" },
                   "gap": {
-                    "gapId": "gap-6",
+                    "gapId": "gap-3",
                     "expressionId": "tu-habites-ou",
-                    "accepted": {
-                      "answers": ["tu habites où"]
-                    },
+                    "accepted": { "answers": ["Tu habites où", "Tu habites où ?"] },
                     "answerExplanation": {
-                      "en": "She asks where he lives: Tu habites où ?",
-                      "fr": "Elle demande où il habite : Tu habites où ?",
-                      "de": "Sie fragt, wo er wohnt: Tu habites où ?"
+                      "en": "He asks where she lives: Tu habites où ?",
+                      "fr": "Il demande où elle habite : Tu habites où ?",
+                      "de": "Er fragt, wo sie wohnt: Tu habites où ?"
                     }
                   },
                   "after": "?"
                 },
                 {
                   "lineId": "exam-line-7",
-                  "roleId": "lucas",
-                  "before": "",
+                  "roleId": "sofia",
+                  "before": "J’habite à Genève. Et toi ?",
                   "translation": {
-                    "en": "I live in Lyon, with a friend.",
-                    "de": "Ich wohne in Lyon, mit einem Freund."
+                    "en": "I live in Geneva. And you?",
+                    "de": "Ich wohne in Genf. Und du?"
                   },
-                  "gap": {
-                    "gapId": "gap-7",
-                    "expressionId": "jhabite-a",
-                    "accepted": {
-                      "answers": ["J’habite à"]
-                    },
-                    "answerExplanation": {
-                      "en": "J’habite à + city.",
-                      "fr": "J’habite à + ville.",
-                      "de": "J’habite à + Stadt."
-                    }
-                  },
-                  "after": "Lyon, avec un ami."
+                  "gap": null,
+                  "after": ""
                 },
                 {
                   "lineId": "exam-line-8",
-                  "roleId": "emma",
-                  "before": "Moi aussi, j’habite à Lyon !",
+                  "roleId": "marc",
+                  "before": "J’habite à Bruxelles. Je parle français et néerlandais.",
                   "translation": {
-                    "en": "Me too, I live in Lyon!",
-                    "de": "Ich auch, ich wohne in Lyon!"
+                    "en": "I live in Brussels. I speak French and Dutch.",
+                    "de": "Ich wohne in Brüssel. Ich spreche Französisch und Niederländisch."
                   },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-9",
+                  "roleId": "sofia",
+                  "before": "Moi, je parle français et allemand.",
+                  "translation": {
+                    "en": "I speak French and German.",
+                    "de": "Ich spreche Französisch und Deutsch."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-10",
+                  "roleId": "marc",
+                  "before": "À bientôt, Clara !",
+                  "translation": { "en": "See you soon, Clara!", "de": "Bis bald, Clara!" },
                   "gap": null,
                   "after": ""
                 }

@@ -1,0 +1,248 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-narrative-tenses-together",
+  "lang": "fr",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Raconter avec trois temps",
+  "objective": {
+    "en": "Choose between imparfait, passé composé and plus-que-parfait to tell a story: the scene, the event and what came before.",
+    "fr": "Choisir entre imparfait, passé composé et plus-que-parfait pour raconter : le décor, l'événement et ce qui précède.",
+    "de": "Zwischen imparfait, passé composé und plus-que-parfait wählen, um zu erzählen: Hintergrund, Ereignis und das Vorherige."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:43:41.034Z",
+    "inputHashes": { "outline": "8ac37357d2a5a72f0bcff6dc85a9d0d258d6fff0a1dad6a2421a00375e97bc02" }
+  },
+  "kind": "grammar",
+  "topic": "verb_usage",
+  "scopeBoundaries": {
+    "en": "Covers the roles of imparfait, passé composé and plus-que-parfait in a short narrative. Excludes passé simple, aller/venir de in the imparfait and the subjunctive.",
+    "fr": "Couvre les rôles de l'imparfait, du passé composé et du plus-que-parfait dans un court récit. Exclut le passé simple, aller/venir de à l'imparfait et le subjonctif.",
+    "de": "Behandelt die Rollen von imparfait, passé composé und plus-que-parfait in einer kurzen Erzählung. Ausgeschlossen sind passé simple, aller/venir de im imparfait und der Konjunktiv."
+  },
+  "prerequisites": [
+    {
+      "en": "Forming the passé composé and the imparfait.",
+      "fr": "Former le passé composé et l'imparfait.",
+      "de": "Passé composé und imparfait bilden."
+    },
+    {
+      "en": "Forming the plus-que-parfait.",
+      "fr": "Former le plus-que-parfait.",
+      "de": "Das plus-que-parfait bilden."
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-scene",
+      "summary": {
+        "en": "The imparfait sets the scene: weather, time, states, actions in progress.",
+        "fr": "L'imparfait plante le décor : météo, heure, états, actions en cours.",
+        "de": "Das imparfait malt den Hintergrund: Wetter, Zeit, Zustände, laufende Handlungen."
+      }
+    },
+    {
+      "id": "r-event",
+      "summary": {
+        "en": "The passé composé gives the events that move the story forward.",
+        "fr": "Le passé composé donne les événements qui font avancer l'histoire.",
+        "de": "Das passé composé nennt die Ereignisse, die die Geschichte voranbringen."
+      }
+    },
+    {
+      "id": "r-before",
+      "summary": {
+        "en": "The plus-que-parfait expresses an action that happened before a past moment.",
+        "fr": "Le plus-que-parfait exprime une action antérieure à un moment passé.",
+        "de": "Das plus-que-parfait drückt eine Handlung aus, die vor einem vergangenen Zeitpunkt lag."
+      }
+    },
+    {
+      "id": "r-together",
+      "summary": {
+        "en": "The three tenses work together in one story, with quand and pendant que.",
+        "fr": "Les trois temps se combinent dans un même récit, avec quand et pendant que.",
+        "de": "Die drei Zeiten wirken in einer Geschichte zusammen, mit quand und pendant que."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-scene-event",
+      "title": {
+        "en": "Scene and event: imparfait and passé composé",
+        "fr": "Décor et événement : imparfait et passé composé",
+        "de": "Hintergrund und Ereignis: imparfait und passé composé"
+      },
+      "ruleIds": ["r-scene", "r-event"],
+      "explanationPlan": {
+        "en": "Present the two roles: imparfait for the scene, passé composé for the events. Show them meeting in one sentence with quand.",
+        "fr": "Présenter les deux rôles : imparfait pour le décor, passé composé pour les événements. Les montrer ensemble dans une phrase avec quand.",
+        "de": "Die zwei Rollen zeigen: imparfait für den Hintergrund, passé composé für die Ereignisse. Beide in einem Satz mit quand zeigen."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Il pleuvait quand je suis sorti.",
+          "translation": {
+            "en": "It was raining when I went out.",
+            "de": "Es regnete, als ich hinausging."
+          }
+        },
+        {
+          "text": "J'étais fatigué, alors j'ai pris un taxi.",
+          "translation": {
+            "en": "I was tired, so I took a taxi.",
+            "de": "Ich war müde, also nahm ich ein Taxi."
+          }
+        },
+        {
+          "text": "Il faisait nuit et la rue était vide.",
+          "translation": {
+            "en": "It was dark and the street was empty.",
+            "de": "Es war dunkel und die Straße war leer."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not put the imparfait on an event that moves the story forward: say 'le téléphone a sonné', not 'sonnait'.",
+          "fr": "Ne mettez pas l'imparfait pour un événement qui fait avancer l'histoire : on dit 'le téléphone a sonné', pas 'sonnait'.",
+          "de": "Setze kein imparfait für ein Ereignis, das die Geschichte voranbringt: 'le téléphone a sonné', nicht 'sonnait'."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-bg-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 5,
+          "ruleIds": ["r-scene", "r-event"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-bg-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["r-scene", "r-event"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-bg-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 4,
+          "ruleIds": ["r-scene", "r-event"],
+          "estimatedDurationS": 100
+        }
+      ]
+    },
+    {
+      "id": "block-before",
+      "title": {
+        "en": "What came before: the plus-que-parfait",
+        "fr": "Ce qui précède : le plus-que-parfait",
+        "de": "Das Vorherige: das plus-que-parfait"
+      },
+      "ruleIds": ["r-before", "r-together"],
+      "explanationPlan": {
+        "en": "Show how the plus-que-parfait goes back before a past moment. Then combine the three tenses in one story, with quand and pendant que.",
+        "fr": "Montrer comment le plus-que-parfait revient avant un moment passé. Puis combiner les trois temps dans un récit, avec quand et pendant que.",
+        "de": "Zeigen, wie das plus-que-parfait vor einen vergangenen Zeitpunkt zurückgeht. Dann die drei Zeiten in einer Geschichte mit quand und pendant que verbinden."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "J'avais oublié mon parapluie.",
+          "translation": {
+            "en": "I had forgotten my umbrella.",
+            "de": "Ich hatte meinen Regenschirm vergessen."
+          }
+        },
+        {
+          "text": "Elle était partie quand je suis arrivé.",
+          "translation": {
+            "en": "She had left when I arrived.",
+            "de": "Sie war schon gegangen, als ich ankam."
+          }
+        },
+        {
+          "text": "Il pleuvait quand je suis sorti, mais j'avais oublié mon parapluie.",
+          "translation": {
+            "en": "It was raining when I went out, but I had forgotten my umbrella.",
+            "de": "Es regnete, als ich hinausging, aber ich hatte meinen Regenschirm vergessen."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "The auxiliary goes in the imparfait: 'j'avais fini', not 'j'ai fini'.",
+          "fr": "L'auxiliaire se met à l'imparfait : 'j'avais fini', pas 'j'ai fini'.",
+          "de": "Das Hilfsverb steht im imparfait: 'j'avais fini', nicht 'j'ai fini'."
+        },
+        {
+          "en": "With être, the participle agrees: 'elle était partie'.",
+          "fr": "Avec être, le participe s'accorde : 'elle était partie'.",
+          "de": "Mit être wird das Partizip angeglichen: 'elle était partie'."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-pqp-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["r-before", "r-together"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-pqp-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["r-before", "r-together"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-pqp-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["r-before", "r-together"],
+          "estimatedDurationS": 90
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-scene-event",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["r-scene", "r-event"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 120
+      },
+      {
+        "pageId": "exam-before",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["r-before", "r-together"],
+        "estimatedDurationS": 45,
+        "timeLimitS": 90
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["r-event", "r-before", "r-together"],
+        "estimatedDurationS": 75,
+        "timeLimitS": 150
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

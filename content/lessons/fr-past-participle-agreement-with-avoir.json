@@ -1,0 +1,1047 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-past-participle-agreement-with-avoir",
+  "lang": "fr",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "L’accord du participe passé avec avoir",
+  "objective": {
+    "en": "Make the past participle agree with a direct object placed before avoir: la lettre que j'ai écrite, je les ai prises, quelles villes as-tu visitées ?",
+    "fr": "Accorder le participe passé avec le COD placé avant avoir : la lettre que j'ai écrite, ces photos, je les ai prises, quelles villes as-tu visitées ?",
+    "de": "Das Partizip mit einem vor avoir stehenden direkten Objekt angleichen: la lettre que j'ai écrite, je les ai prises, quelles villes as-tu visitées ?"
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:50:17.665Z",
+    "inputHashes": {
+      "outline": "5da05023c62754664d78188307fcb711c9ae6776c422fa8e056dd9dd98440b66",
+      "brief": "f30cce2258181d742d022862b152dc82d7b4c58980aafdf3446db32bd8a738b4"
+    }
+  },
+  "kind": "grammar",
+  "topic": "agreement",
+  "steps": [
+    {
+      "id": "block-pronoun-explanation",
+      "role": "explanation",
+      "blockId": "block-pronoun",
+      "label": {
+        "en": "Object pronoun before avoir",
+        "fr": "Le pronom COD avant avoir",
+        "de": "Objektpronomen vor avoir"
+      },
+      "pages": [
+        {
+          "pageId": "block-pronoun-explanation",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the explanation and the examples.",
+            "fr": "Lisez l’explication et les exemples.",
+            "de": "Lies die Erklärung und die Beispiele."
+          },
+          "items": [
+            {
+              "type": "grammar_explanation",
+              "itemId": "block-pronoun-explanation",
+              "ruleIds": ["rule-cod-before", "rule-no-agreement"],
+              "heading": {
+                "en": "The object comes first: the participle agrees",
+                "fr": "Le COD vient avant : le participe s’accorde",
+                "de": "Das Objekt steht davor: Das Partizip gleicht sich an"
+              },
+              "text": {
+                "en": "With `avoir`, the past participle usually **does not change**: `Elle a écrit une lettre.`\n\nBut when the direct object (COD) comes **before** the verb, the participle agrees with it in gender and number. This object is often a pronoun: `le`, `la`, `l'` or `les`.\n\n- `La lettre, je l'ai écrite.`: feminine singular, add -e.\n- `Ces photos, je les ai prises.`: feminine plural, add -es.\n- `Le film, nous l'avons vu.`: masculine singular, nothing to add.\n\nIf the object comes after the verb, or there is none, there is no agreement: `J'ai écrit une lettre.` `Ils ont dormi.`",
+                "fr": "Avec `avoir`, le participe passé **ne change pas** en général : `Elle a écrit une lettre.`\n\nMais si le complément d’objet direct (COD) est placé **avant** le verbe, le participe s’accorde avec lui en genre et en nombre. Ce COD est souvent un pronom : `le`, `la`, `l'` ou `les`.\n\n- `La lettre, je l'ai écrite.` : féminin singulier, on ajoute -e.\n- `Ces photos, je les ai prises.` : féminin pluriel, on ajoute -es.\n- `Le film, nous l'avons vu.` : masculin singulier, rien à ajouter.\n\nSi le COD est après le verbe, ou s’il n’y en a pas, il n’y a pas d’accord : `J'ai écrit une lettre.` `Ils ont dormi.`",
+                "de": "Mit `avoir` bleibt das Partizip meistens **unverändert**: `Elle a écrit une lettre.`\n\nSteht das direkte Objekt (COD) aber **vor** dem Verb, richtet sich das Partizip nach ihm in Genus und Numerus. Dieses Objekt ist oft ein Pronomen: `le`, `la`, `l'` oder `les`.\n\n- `La lettre, je l'ai écrite.`: feminin Singular, man hängt -e an.\n- `Ces photos, je les ai prises.`: feminin Plural, man hängt -es an.\n- `Le film, nous l'avons vu.`: maskulin Singular, nichts anzuhängen.\n\nSteht das Objekt nach dem Verb oder gibt es keines, bleibt das Partizip unverändert: `J'ai écrit une lettre.` `Ils ont dormi.`"
+              },
+              "formTable": [
+                {
+                  "subject": "l' (masculin singulier)",
+                  "form": "pris",
+                  "example": "Le livre, je l'ai pris."
+                },
+                {
+                  "subject": "l' (féminin singulier)",
+                  "form": "prise",
+                  "example": "La clé, je l'ai prise."
+                },
+                {
+                  "subject": "les (masculin pluriel)",
+                  "form": "pris",
+                  "example": "Les livres, je les ai pris."
+                },
+                {
+                  "subject": "les (féminin pluriel)",
+                  "form": "prises",
+                  "example": "Les clés, je les ai prises."
+                }
+              ],
+              "examples": [
+                {
+                  "text": "La lettre, je l'ai écrite.",
+                  "translation": {
+                    "en": "The letter, I wrote it.",
+                    "de": "Den Brief habe ich geschrieben."
+                  }
+                },
+                {
+                  "text": "Ces photos, je les ai prises.",
+                  "translation": {
+                    "en": "These photos, I took them.",
+                    "de": "Diese Fotos habe ich gemacht."
+                  }
+                },
+                {
+                  "text": "Le film, nous l'avons vu.",
+                  "translation": {
+                    "en": "The film, we saw it.",
+                    "de": "Den Film haben wir gesehen."
+                  }
+                },
+                {
+                  "text": "J'ai écrit une lettre.",
+                  "translation": {
+                    "en": "I wrote a letter.",
+                    "de": "Ich habe einen Brief geschrieben."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-pron-choice",
+      "role": "exercise",
+      "blockId": "block-pronoun",
+      "label": {
+        "en": "Choose the participle",
+        "fr": "Choisir le participe",
+        "de": "Partizip auswählen"
+      },
+      "pages": [
+        {
+          "pageId": "ex-pron-choice-page",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-pron-choice-1",
+              "before": "Ces fleurs, je les ai",
+              "after": "hier.",
+              "choices": [
+                { "choiceId": "c-1", "text": "acheté" },
+                { "choiceId": "c-2", "text": "achetée" },
+                { "choiceId": "c-3", "text": "achetés" },
+                { "choiceId": "c-4", "text": "achetées" }
+              ],
+              "answerChoiceId": "c-4",
+              "hint": null,
+              "ruleIds": ["rule-cod-before"],
+              "answerExplanation": {
+                "en": "Les stands for ces fleurs, a feminine plural object before avoir: achetées.",
+                "fr": "Les remplace ces fleurs, COD féminin pluriel placé avant avoir : achetées.",
+                "de": "Les steht für ces fleurs, ein feminines Objekt im Plural vor avoir: achetées."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-pron-choice-2",
+              "before": "Elle a",
+              "after": "une lettre à sa mère.",
+              "choices": [
+                { "choiceId": "c-1", "text": "écrit" },
+                { "choiceId": "c-2", "text": "écrite" },
+                { "choiceId": "c-3", "text": "écrits" },
+                { "choiceId": "c-4", "text": "écrites" }
+              ],
+              "answerChoiceId": "c-1",
+              "hint": null,
+              "ruleIds": ["rule-no-agreement"],
+              "answerExplanation": {
+                "en": "Une lettre comes after the verb: the participle does not change.",
+                "fr": "Une lettre est après le verbe : le participe ne change pas.",
+                "de": "Une lettre steht nach dem Verb: Das Partizip bleibt unverändert."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-pron-choice-3",
+              "before": "Mes clés ? Je ne les ai pas",
+              "after": ".",
+              "choices": [
+                { "choiceId": "c-1", "text": "trouvé" },
+                { "choiceId": "c-2", "text": "trouvée" },
+                { "choiceId": "c-3", "text": "trouvés" },
+                { "choiceId": "c-4", "text": "trouvées" }
+              ],
+              "answerChoiceId": "c-4",
+              "hint": {
+                "en": "The object is mes clés.",
+                "fr": "Le COD est mes clés.",
+                "de": "Das Objekt ist mes clés."
+              },
+              "ruleIds": ["rule-cod-before"],
+              "answerExplanation": {
+                "en": "Les replaces mes clés, feminine plural, before avoir: trouvées.",
+                "fr": "Les remplace mes clés, féminin pluriel, devant avoir : trouvées.",
+                "de": "Les steht für mes clés, feminin Plural, vor avoir: trouvées."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-pron-choice-4",
+              "before": "Les enfants ont",
+              "after": "toute la nuit.",
+              "choices": [
+                { "choiceId": "c-1", "text": "dormi" },
+                { "choiceId": "c-2", "text": "dormie" },
+                { "choiceId": "c-3", "text": "dormis" },
+                { "choiceId": "c-4", "text": "dormies" }
+              ],
+              "answerChoiceId": "c-1",
+              "hint": null,
+              "ruleIds": ["rule-no-agreement"],
+              "answerExplanation": {
+                "en": "Dormir has no direct object, and the subject never decides: dormi.",
+                "fr": "Dormir n’a pas de COD, et le sujet ne commande pas l’accord : dormi.",
+                "de": "Dormir hat kein direktes Objekt, und das Subjekt bestimmt die Angleichung nicht: dormi."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-pron-typing",
+      "role": "exercise",
+      "blockId": "block-pronoun",
+      "label": {
+        "en": "Type the participle",
+        "fr": "Écrire le participe",
+        "de": "Partizip schreiben"
+      },
+      "pages": [
+        {
+          "pageId": "ex-pron-typing-page",
+          "estimatedDurationS": 80,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-pron-typing-1",
+              "before": "La robe, elle l'a",
+              "after": "en soldes.",
+              "accepted": { "answers": ["achetée"] },
+              "hint": {
+                "en": "acheter, feminine singular",
+                "fr": "acheter, féminin singulier",
+                "de": "acheter, feminin Singular"
+              },
+              "ruleIds": ["rule-cod-before"],
+              "answerExplanation": {
+                "en": "L' stands for la robe, feminine singular, before avoir: achetée.",
+                "fr": "L’ remplace la robe, féminin singulier, placé avant avoir : achetée.",
+                "de": "L' steht für la robe, feminin Singular, vor avoir: achetée."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-pron-typing-2",
+              "before": "Mes amis ? Je les ai",
+              "after": "au café.",
+              "accepted": { "answers": ["rencontrés"] },
+              "hint": {
+                "en": "rencontrer, masculine plural",
+                "fr": "rencontrer, masculin pluriel",
+                "de": "rencontrer, maskulin Plural"
+              },
+              "ruleIds": ["rule-cod-before"],
+              "answerExplanation": {
+                "en": "Les stands for mes amis, masculine plural: rencontrés.",
+                "fr": "Les remplace mes amis, masculin pluriel : rencontrés.",
+                "de": "Les steht für mes amis, maskulin Plural: rencontrés."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-pron-typing-3",
+              "before": "Cette chanson, nous l'avons",
+              "after": "mille fois.",
+              "accepted": { "answers": ["écoutée"] },
+              "hint": {
+                "en": "écouter, feminine singular",
+                "fr": "écouter, féminin singulier",
+                "de": "écouter, feminin Singular"
+              },
+              "ruleIds": ["rule-cod-before"],
+              "answerExplanation": {
+                "en": "L' stands for cette chanson, feminine singular: écoutée.",
+                "fr": "L’ remplace cette chanson, féminin singulier : écoutée.",
+                "de": "L' steht für cette chanson, feminin Singular: écoutée."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-pron-typing-4",
+              "before": "Les devoirs, il les a",
+              "after": "ce matin.",
+              "accepted": { "answers": ["faits"] },
+              "hint": {
+                "en": "faire, masculine plural",
+                "fr": "faire, masculin pluriel",
+                "de": "faire, maskulin Plural"
+              },
+              "ruleIds": ["rule-cod-before"],
+              "answerExplanation": {
+                "en": "Les stands for les devoirs, masculine plural: faits.",
+                "fr": "Les remplace les devoirs, masculin pluriel : faits.",
+                "de": "Les steht für les devoirs, maskulin Plural: faits."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-pron-spot",
+      "role": "exercise",
+      "blockId": "block-pronoun",
+      "label": { "en": "Spot the error", "fr": "Repérer l’erreur", "de": "Fehler finden" },
+      "pages": [
+        {
+          "pageId": "ex-pron-spot-page",
+          "estimatedDurationS": 100,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Find the wrong word and correct it.",
+            "fr": "Trouvez le mot faux et corrigez-le.",
+            "de": "Finde das falsche Wort und korrigiere es."
+          },
+          "items": [
+            {
+              "type": "grammar_error_spotter",
+              "itemId": "ex-pron-spot-1",
+              "tokens": [
+                { "tokenId": "t-1", "text": "Ces" },
+                { "tokenId": "t-2", "text": "photos" },
+                { "tokenId": "t-3", "text": "," },
+                { "tokenId": "t-4", "text": "je" },
+                { "tokenId": "t-5", "text": "les" },
+                { "tokenId": "t-6", "text": "ai" },
+                { "tokenId": "t-7", "text": "pris" },
+                { "tokenId": "t-8", "text": "." }
+              ],
+              "faultyTokenId": "t-7",
+              "correction": {
+                "mode": "type",
+                "accepted": { "answers": ["prises"] },
+                "choices": []
+              },
+              "ruleIds": ["rule-cod-before"],
+              "answerExplanation": {
+                "en": "Les stands for ces photos, feminine plural, before avoir: prises.",
+                "fr": "Les remplace ces photos, féminin pluriel, devant avoir : prises.",
+                "de": "Les steht für ces photos, feminin Plural, vor avoir: prises."
+              }
+            },
+            {
+              "type": "grammar_error_spotter",
+              "itemId": "ex-pron-spot-2",
+              "tokens": [
+                { "tokenId": "t-1", "text": "Il" },
+                { "tokenId": "t-2", "text": "a" },
+                { "tokenId": "t-3", "text": "écrite" },
+                { "tokenId": "t-4", "text": "une" },
+                { "tokenId": "t-5", "text": "lettre" },
+                { "tokenId": "t-6", "text": "." }
+              ],
+              "faultyTokenId": "t-3",
+              "correction": { "mode": "type", "accepted": { "answers": ["écrit"] }, "choices": [] },
+              "ruleIds": ["rule-no-agreement"],
+              "answerExplanation": {
+                "en": "Une lettre comes after the verb: no agreement, so écrit.",
+                "fr": "Une lettre est après le verbe : pas d’accord, donc écrit.",
+                "de": "Une lettre steht nach dem Verb: keine Angleichung, also écrit."
+              }
+            },
+            {
+              "type": "grammar_error_spotter",
+              "itemId": "ex-pron-spot-3",
+              "tokens": [
+                { "tokenId": "t-1", "text": "La" },
+                { "tokenId": "t-2", "text": "lettre" },
+                { "tokenId": "t-3", "text": "," },
+                { "tokenId": "t-4", "text": "je" },
+                { "tokenId": "t-5", "text": "l'ai" },
+                { "tokenId": "t-6", "text": "écrit" },
+                { "tokenId": "t-7", "text": "." }
+              ],
+              "faultyTokenId": "t-6",
+              "correction": {
+                "mode": "select",
+                "accepted": { "answers": ["écrite"] },
+                "choices": ["écrite", "écrit", "écrits"]
+              },
+              "ruleIds": ["rule-cod-before"],
+              "answerExplanation": {
+                "en": "L' stands for la lettre, feminine singular, before avoir: écrite.",
+                "fr": "L’ remplace la lettre, féminin singulier, devant avoir : écrite.",
+                "de": "L' steht für la lettre, feminin Singular, vor avoir: écrite."
+              }
+            },
+            {
+              "type": "grammar_error_spotter",
+              "itemId": "ex-pron-spot-4",
+              "tokens": [
+                { "tokenId": "t-1", "text": "Elles" },
+                { "tokenId": "t-2", "text": "ont" },
+                { "tokenId": "t-3", "text": "dormies" },
+                { "tokenId": "t-4", "text": "toute" },
+                { "tokenId": "t-5", "text": "la" },
+                { "tokenId": "t-6", "text": "nuit" },
+                { "tokenId": "t-7", "text": "." }
+              ],
+              "faultyTokenId": "t-3",
+              "correction": { "mode": "type", "accepted": { "answers": ["dormi"] }, "choices": [] },
+              "ruleIds": ["rule-no-agreement"],
+              "answerExplanation": {
+                "en": "There is no object, and the subject does not matter with avoir: dormi.",
+                "fr": "Il n’y a pas de COD, et le sujet ne compte pas avec avoir : dormi.",
+                "de": "Es gibt kein Objekt, und das Subjekt spielt bei avoir keine Rolle: dormi."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "block-relative-explanation",
+      "role": "explanation",
+      "blockId": "block-relative",
+      "label": {
+        "en": "Que and quel + noun",
+        "fr": "Que et quel + nom",
+        "de": "Que und quel + Nomen"
+      },
+      "pages": [
+        {
+          "pageId": "block-relative-explanation",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the explanation and the examples.",
+            "fr": "Lisez l’explication et les exemples.",
+            "de": "Lies die Erklärung und die Beispiele."
+          },
+          "items": [
+            {
+              "type": "grammar_explanation",
+              "itemId": "block-relative-explanation",
+              "ruleIds": ["rule-que-quel"],
+              "heading": {
+                "en": "Que and quel: the object is in front",
+                "fr": "Que et quel : le COD est devant",
+                "de": "Que und quel: Das Objekt steht davor"
+              },
+              "text": {
+                "en": "The relative pronoun `que` (or `qu'`) is a direct object: it stands for a noun placed before the verb. The participle therefore agrees with that noun: `La lettre que j'ai écrite est partie.` `Les villes qu'il a visitées sont belles.`\n\nThe same rule applies in a question with `quel`: `Quelles villes as-tu visitées ?` The object `quelles villes` comes before `avoir`.\n\n- Look for the object by asking `quoi ?` after the verb.\n- Check whether it comes before `avoir`.\n- If so, make the participle agree with it.",
+                "fr": "Le pronom relatif `que` (ou `qu'`) est un COD : il reprend un nom placé avant le verbe. Le participe s’accorde donc avec ce nom : `La lettre que j'ai écrite est partie.` `Les villes qu'il a visitées sont belles.`\n\nMême règle dans une question avec `quel` : `Quelles villes as-tu visitées ?` Le COD `quelles villes` est devant `avoir`.\n\n- Cherchez le COD en posant la question `quoi ?` après le verbe.\n- Regardez s’il est placé avant `avoir`.\n- Si oui, accordez le participe avec lui.",
+                "de": "Das Relativpronomen `que` (oder `qu'`) ist ein direktes Objekt: Es vertritt ein Nomen vor dem Verb. Deshalb gleicht sich das Partizip an dieses Nomen an: `La lettre que j'ai écrite est partie.` `Les villes qu'il a visitées sont belles.`\n\nDie gleiche Regel gilt in einer Frage mit `quel`: `Quelles villes as-tu visitées ?` Das Objekt `quelles villes` steht vor `avoir`.\n\n- Such das Objekt, indem du nach dem Verb `quoi ?` fragst.\n- Prüfe, ob es vor `avoir` steht.\n- Wenn ja, gleiche das Partizip daran an."
+              },
+              "formTable": [
+                { "subject": "la lettre que j'ai", "form": "écrite", "example": null },
+                { "subject": "les villes qu'il a", "form": "visitées", "example": null },
+                { "subject": "quels livres as-tu", "form": "lus", "example": null }
+              ],
+              "examples": [
+                {
+                  "text": "La lettre que j'ai écrite est partie.",
+                  "translation": {
+                    "en": "The letter that I wrote has gone.",
+                    "de": "Der Brief, den ich geschrieben habe, ist abgeschickt."
+                  }
+                },
+                {
+                  "text": "Les villes qu'il a visitées sont belles.",
+                  "translation": {
+                    "en": "The cities he visited are beautiful.",
+                    "de": "Die Städte, die er besucht hat, sind schön."
+                  }
+                },
+                {
+                  "text": "Quelles villes as-tu visitées ?",
+                  "translation": {
+                    "en": "Which cities did you visit?",
+                    "de": "Welche Städte hast du besucht?"
+                  }
+                },
+                {
+                  "text": "Quels livres as-tu lus ?",
+                  "translation": {
+                    "en": "Which books did you read?",
+                    "de": "Welche Bücher hast du gelesen?"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-rel-choice",
+      "role": "exercise",
+      "blockId": "block-relative",
+      "label": {
+        "en": "Choose the participle",
+        "fr": "Choisir le participe",
+        "de": "Partizip auswählen"
+      },
+      "pages": [
+        {
+          "pageId": "ex-rel-choice-page",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-rel-choice-1",
+              "before": "La robe que j'ai",
+              "after": "est trop petite.",
+              "choices": [
+                { "choiceId": "c-1", "text": "acheté" },
+                { "choiceId": "c-2", "text": "achetée" },
+                { "choiceId": "c-3", "text": "achetés" },
+                { "choiceId": "c-4", "text": "achetées" }
+              ],
+              "answerChoiceId": "c-2",
+              "hint": null,
+              "ruleIds": ["rule-que-quel"],
+              "answerExplanation": {
+                "en": "Que stands for la robe, feminine singular, before avoir: achetée.",
+                "fr": "Que reprend la robe, féminin singulier, devant avoir : achetée.",
+                "de": "Que steht für la robe, feminin Singular, vor avoir: achetée."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-rel-choice-2",
+              "before": "Les chansons qu'elle a",
+              "after": "sont très belles.",
+              "choices": [
+                { "choiceId": "c-1", "text": "chanté" },
+                { "choiceId": "c-2", "text": "chantée" },
+                { "choiceId": "c-3", "text": "chantés" },
+                { "choiceId": "c-4", "text": "chantées" }
+              ],
+              "answerChoiceId": "c-4",
+              "hint": null,
+              "ruleIds": ["rule-que-quel"],
+              "answerExplanation": {
+                "en": "Qu' stands for les chansons, feminine plural: chantées.",
+                "fr": "Qu’ reprend les chansons, féminin pluriel : chantées.",
+                "de": "Qu' steht für les chansons, feminin Plural: chantées."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-rel-choice-3",
+              "before": "Quelle ville as-tu",
+              "after": "en premier ?",
+              "choices": [
+                { "choiceId": "c-1", "text": "visité" },
+                { "choiceId": "c-2", "text": "visitée" },
+                { "choiceId": "c-3", "text": "visités" },
+                { "choiceId": "c-4", "text": "visitées" }
+              ],
+              "answerChoiceId": "c-2",
+              "hint": null,
+              "ruleIds": ["rule-que-quel"],
+              "answerExplanation": {
+                "en": "Quelle ville is feminine singular and comes before avoir: visitée.",
+                "fr": "Quelle ville, féminin singulier, est placé devant avoir : visitée.",
+                "de": "Quelle ville ist feminin Singular und steht vor avoir: visitée."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-rel-choice-4",
+              "before": "Le pull qu'il a",
+              "after": "hier est bleu.",
+              "choices": [
+                { "choiceId": "c-1", "text": "mis" },
+                { "choiceId": "c-2", "text": "mise" },
+                { "choiceId": "c-3", "text": "mises" },
+                { "choiceId": "c-4", "text": "mit" }
+              ],
+              "answerChoiceId": "c-1",
+              "hint": null,
+              "ruleIds": ["rule-que-quel"],
+              "answerExplanation": {
+                "en": "Qu' stands for le pull, masculine singular: mis, with nothing added.",
+                "fr": "Qu’ reprend le pull, masculin singulier : mis, sans rien ajouter.",
+                "de": "Qu' steht für le pull, maskulin Singular: mis, ohne Endung."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-rel-typing",
+      "role": "exercise",
+      "blockId": "block-relative",
+      "label": {
+        "en": "Type the participle",
+        "fr": "Écrire le participe",
+        "de": "Partizip schreiben"
+      },
+      "pages": [
+        {
+          "pageId": "ex-rel-typing-page",
+          "estimatedDurationS": 80,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-rel-typing-1",
+              "before": "Les exercices que le professeur a",
+              "after": "sont faciles.",
+              "accepted": { "answers": ["donnés"] },
+              "hint": {
+                "en": "donner, masculine plural",
+                "fr": "donner, masculin pluriel",
+                "de": "donner, maskulin Plural"
+              },
+              "ruleIds": ["rule-que-quel"],
+              "answerExplanation": {
+                "en": "Que stands for les exercices, masculine plural: donnés.",
+                "fr": "Que reprend les exercices, masculin pluriel : donnés.",
+                "de": "Que steht für les exercices, maskulin Plural: donnés."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-rel-typing-2",
+              "before": "La femme que nous avons",
+              "after": "hier est médecin.",
+              "accepted": { "answers": ["rencontrée"] },
+              "hint": {
+                "en": "rencontrer, feminine singular",
+                "fr": "rencontrer, féminin singulier",
+                "de": "rencontrer, feminin Singular"
+              },
+              "ruleIds": ["rule-que-quel"],
+              "answerExplanation": {
+                "en": "Que stands for la femme, feminine singular: rencontrée.",
+                "fr": "Que reprend la femme, féminin singulier : rencontrée.",
+                "de": "Que steht für la femme, feminin Singular: rencontrée."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-rel-typing-3",
+              "before": "Quels films avez-vous",
+              "after": "cet été ?",
+              "accepted": { "answers": ["vus"] },
+              "hint": {
+                "en": "voir, masculine plural",
+                "fr": "voir, masculin pluriel",
+                "de": "voir, maskulin Plural"
+              },
+              "ruleIds": ["rule-que-quel"],
+              "answerExplanation": {
+                "en": "Quels films is masculine plural and comes before avoir: vus.",
+                "fr": "Quels films, masculin pluriel, est placé devant avoir : vus.",
+                "de": "Quels films ist maskulin Plural und steht vor avoir: vus."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-rel-typing-4",
+              "before": "Les histoires qu'il nous a",
+              "after": "m'ont fait rire.",
+              "accepted": { "answers": ["racontées"] },
+              "hint": {
+                "en": "raconter, feminine plural",
+                "fr": "raconter, féminin pluriel",
+                "de": "raconter, feminin Plural"
+              },
+              "ruleIds": ["rule-que-quel"],
+              "answerExplanation": {
+                "en": "Qu' stands for les histoires, feminine plural: racontées.",
+                "fr": "Qu’ reprend les histoires, féminin pluriel : racontées.",
+                "de": "Qu' steht für les histoires, feminin Plural: racontées."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-rel-order",
+      "role": "exercise",
+      "blockId": "block-relative",
+      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
+      "pages": [
+        {
+          "pageId": "ex-rel-order-page",
+          "estimatedDurationS": 80,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-rel-order-1",
+              "tokens": [
+                { "tokenId": "t-1", "text": "est" },
+                { "tokenId": "t-2", "text": "La" },
+                { "tokenId": "t-3", "text": "écoutée" },
+                { "tokenId": "t-4", "text": "jolie" },
+                { "tokenId": "t-5", "text": "chanson" },
+                { "tokenId": "t-6", "text": "j'ai" },
+                { "tokenId": "t-7", "text": "que" },
+                { "tokenId": "t-8", "text": "." }
+              ],
+              "acceptedOrders": [["t-2", "t-5", "t-7", "t-6", "t-3", "t-1", "t-4", "t-8"]],
+              "ruleIds": ["rule-que-quel"],
+              "answerExplanation": {
+                "en": "Que stands for la chanson, so the participle is écoutée.",
+                "fr": "Que reprend la chanson, donc le participe est écoutée.",
+                "de": "Que steht für la chanson, also lautet das Partizip écoutée."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-rel-order-2",
+              "tokens": [
+                { "tokenId": "t-1", "text": "prises" },
+                { "tokenId": "t-2", "text": "as-tu" },
+                { "tokenId": "t-3", "text": "?" },
+                { "tokenId": "t-4", "text": "Quelles" },
+                { "tokenId": "t-5", "text": "photos" }
+              ],
+              "acceptedOrders": [["t-4", "t-5", "t-2", "t-1", "t-3"]],
+              "ruleIds": ["rule-que-quel"],
+              "answerExplanation": {
+                "en": "Quelles photos is feminine plural and comes first: prises.",
+                "fr": "Quelles photos, féminin pluriel, vient en premier : prises.",
+                "de": "Quelles photos ist feminin Plural und steht zuerst: prises."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-rel-order-3",
+              "tokens": [
+                { "tokenId": "t-1", "text": "sont" },
+                { "tokenId": "t-2", "text": "qu'il" },
+                { "tokenId": "t-3", "text": "Les" },
+                { "tokenId": "t-4", "text": "fanées" },
+                { "tokenId": "t-5", "text": "offertes" },
+                { "tokenId": "t-6", "text": "fleurs" },
+                { "tokenId": "t-7", "text": "a" },
+                { "tokenId": "t-8", "text": "." }
+              ],
+              "acceptedOrders": [["t-3", "t-6", "t-2", "t-7", "t-5", "t-1", "t-4", "t-8"]],
+              "ruleIds": ["rule-que-quel"],
+              "answerExplanation": {
+                "en": "Qu' stands for les fleurs, feminine plural: offertes.",
+                "fr": "Qu’ reprend les fleurs, féminin pluriel : offertes.",
+                "de": "Qu' steht für les fleurs, feminin Plural: offertes."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-rel-order-4",
+              "tokens": [
+                { "tokenId": "t-1", "text": "écrites" },
+                { "tokenId": "t-2", "text": "Les" },
+                { "tokenId": "t-3", "text": "as" },
+                { "tokenId": "t-4", "text": "longues" },
+                { "tokenId": "t-5", "text": "lettres" },
+                { "tokenId": "t-6", "text": "tu" },
+                { "tokenId": "t-7", "text": "sont" },
+                { "tokenId": "t-8", "text": "que" },
+                { "tokenId": "t-9", "text": "." }
+              ],
+              "acceptedOrders": [["t-2", "t-5", "t-8", "t-6", "t-3", "t-1", "t-7", "t-4", "t-9"]],
+              "ruleIds": ["rule-que-quel"],
+              "answerExplanation": {
+                "en": "Que stands for les lettres, feminine plural: écrites.",
+                "fr": "Que reprend les lettres, féminin pluriel : écrites.",
+                "de": "Que steht für les lettres, feminin Plural: écrites."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "feedback",
+      "role": "feedback",
+      "blockId": null,
+      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "pages": [
+        {
+          "pageId": "feedback",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Continue to the final exam.",
+            "fr": "Passez à l’examen final.",
+            "de": "Weiter zur Abschlussprüfung."
+          },
+          "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "role": "exam",
+      "blockId": null,
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam-pronoun",
+          "estimatedDurationS": 80,
+          "timeLimitS": 130,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-pronoun-1",
+              "before": "Cette histoire, je l'ai",
+              "after": "à mes enfants.",
+              "accepted": { "answers": ["racontée"] },
+              "hint": null,
+              "ruleIds": ["rule-cod-before"],
+              "answerExplanation": {
+                "en": "L' stands for cette histoire, feminine singular, before avoir: racontée.",
+                "fr": "L’ remplace cette histoire, féminin singulier, devant avoir : racontée.",
+                "de": "L' steht für cette histoire, feminin Singular, vor avoir: racontée."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-pronoun-2",
+              "before": "Les voisins ? Nous les avons",
+              "after": "ce matin.",
+              "accepted": { "answers": ["croisés"] },
+              "hint": null,
+              "ruleIds": ["rule-cod-before"],
+              "answerExplanation": {
+                "en": "Les stands for les voisins, masculine plural: croisés.",
+                "fr": "Les remplace les voisins, masculin pluriel : croisés.",
+                "de": "Les steht für les voisins, maskulin Plural: croisés."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-pronoun-3",
+              "before": "Hier, ils ont",
+              "after": "un très bon film.",
+              "accepted": { "answers": ["vu"] },
+              "hint": null,
+              "ruleIds": ["rule-no-agreement"],
+              "answerExplanation": {
+                "en": "Un très bon film comes after the verb: no agreement, so vu.",
+                "fr": "Un très bon film est après le verbe : pas d’accord, donc vu.",
+                "de": "Un très bon film steht nach dem Verb: keine Angleichung, also vu."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-pronoun-4",
+              "before": "Nathalie a",
+              "after": "ses clés sur la table.",
+              "accepted": { "answers": ["laissé"] },
+              "hint": null,
+              "ruleIds": ["rule-no-agreement"],
+              "answerExplanation": {
+                "en": "Ses clés comes after the verb: the participle does not change.",
+                "fr": "Ses clés est après le verbe : le participe ne change pas.",
+                "de": "Ses clés steht nach dem Verb: Das Partizip bleibt unverändert."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-relative",
+          "estimatedDurationS": 80,
+          "timeLimitS": 130,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-relative-1",
+              "before": "Les pommes que ma grand-mère a",
+              "after": "sont délicieuses.",
+              "accepted": { "answers": ["cueillies"] },
+              "hint": null,
+              "ruleIds": ["rule-que-quel"],
+              "answerExplanation": {
+                "en": "Que stands for les pommes, feminine plural: cueillies.",
+                "fr": "Que reprend les pommes, féminin pluriel : cueillies.",
+                "de": "Que steht für les pommes, feminin Plural: cueillies."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-relative-2",
+              "before": "La maison qu'ils ont",
+              "after": "est près de la mer.",
+              "accepted": { "answers": ["louée"] },
+              "hint": null,
+              "ruleIds": ["rule-que-quel"],
+              "answerExplanation": {
+                "en": "Qu' stands for la maison, feminine singular: louée.",
+                "fr": "Qu’ reprend la maison, féminin singulier : louée.",
+                "de": "Qu' steht für la maison, feminin Singular: louée."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-relative-3",
+              "before": "Quels cadeaux as-tu",
+              "after": "pour Noël ?",
+              "accepted": { "answers": ["reçus"] },
+              "hint": null,
+              "ruleIds": ["rule-que-quel"],
+              "answerExplanation": {
+                "en": "Quels cadeaux is masculine plural and comes before avoir: reçus.",
+                "fr": "Quels cadeaux, masculin pluriel, est placé devant avoir : reçus.",
+                "de": "Quels cadeaux ist maskulin Plural und steht vor avoir: reçus."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-relative-4",
+              "before": "L'exposition que nous avons",
+              "after": "m'a beaucoup plu.",
+              "accepted": { "answers": ["visitée"] },
+              "hint": null,
+              "ruleIds": ["rule-que-quel"],
+              "answerExplanation": {
+                "en": "Que stands for l'exposition, feminine singular: visitée.",
+                "fr": "Que reprend l’exposition, féminin singulier : visitée.",
+                "de": "Que steht für l'exposition, feminin Singular: visitée."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-order",
+          "estimatedDurationS": 75,
+          "timeLimitS": 120,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "exam-order-1",
+              "tokens": [
+                { "tokenId": "t-1", "text": "chères" },
+                { "tokenId": "t-2", "text": "as" },
+                { "tokenId": "t-3", "text": "Les" },
+                { "tokenId": "t-4", "text": "achetées" },
+                { "tokenId": "t-5", "text": "tu" },
+                { "tokenId": "t-6", "text": "chaussures" },
+                { "tokenId": "t-7", "text": "sont" },
+                { "tokenId": "t-8", "text": "que" },
+                { "tokenId": "t-9", "text": "." }
+              ],
+              "acceptedOrders": [["t-3", "t-6", "t-8", "t-5", "t-2", "t-4", "t-7", "t-1", "t-9"]],
+              "ruleIds": ["rule-que-quel"],
+              "answerExplanation": {
+                "en": "Que stands for les chaussures, feminine plural: achetées.",
+                "fr": "Que reprend les chaussures, féminin pluriel : achetées.",
+                "de": "Que steht für les chaussures, feminin Plural: achetées."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "exam-order-2",
+              "tokens": [
+                { "tokenId": "t-1", "text": "as-tu" },
+                { "tokenId": "t-2", "text": "?" },
+                { "tokenId": "t-3", "text": "choisie" },
+                { "tokenId": "t-4", "text": "Quelle" },
+                { "tokenId": "t-5", "text": "robe" }
+              ],
+              "acceptedOrders": [["t-4", "t-5", "t-1", "t-3", "t-2"]],
+              "ruleIds": ["rule-que-quel"],
+              "answerExplanation": {
+                "en": "Quelle robe is feminine singular and comes first: choisie.",
+                "fr": "Quelle robe, féminin singulier, vient en premier : choisie.",
+                "de": "Quelle robe ist feminin Singular und steht zuerst: choisie."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "exam-order-3",
+              "tokens": [
+                { "tokenId": "t-1", "text": "bientôt" },
+                { "tokenId": "t-2", "text": "que" },
+                { "tokenId": "t-3", "text": "Les" },
+                { "tokenId": "t-4", "text": "invités" },
+                { "tokenId": "t-5", "text": "arrivent" },
+                { "tokenId": "t-6", "text": "amis" },
+                { "tokenId": "t-7", "text": "j'ai" },
+                { "tokenId": "t-8", "text": "." }
+              ],
+              "acceptedOrders": [["t-3", "t-6", "t-2", "t-7", "t-4", "t-5", "t-1", "t-8"]],
+              "ruleIds": ["rule-que-quel"],
+              "answerExplanation": {
+                "en": "Que stands for les amis, masculine plural: invités.",
+                "fr": "Que reprend les amis, masculin pluriel : invités.",
+                "de": "Que steht für les amis, maskulin Plural: invités."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

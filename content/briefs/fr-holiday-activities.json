@@ -6,60 +6,64 @@
   "locales": ["en", "fr", "de"],
   "title": "Les activités de vacances",
   "objective": {
-    "en": "Name a dozen holiday activities to say what you did on holiday.",
+    "en": "Name twelve holiday activities so you can say what you did on holiday.",
     "fr": "Nommer une douzaine d’activités de vacances pour dire ce qu’on a fait.",
-    "de": "Ein Dutzend Urlaubsaktivitäten benennen, um zu sagen, was man gemacht hat."
+    "de": "Zwölf Urlaubsaktivitäten benennen, um zu sagen, was man im Urlaub gemacht hat."
   },
   "estimatedMinutes": 19,
   "provenance": {
     "generator": "ft lessons:author",
-    "model": "claude-sonnet-5-5",
+    "model": "sonnet",
     "promptVersion": "author-2",
-    "generatedAt": "2026-11-01T00:28:43.034Z",
+    "generatedAt": "2026-11-01T18:34:25.027Z",
     "inputHashes": { "outline": "09befd649a1f56e7ece772ec8362297387903c9bdc52e6473939e177d35d553f" }
   },
   "kind": "vocabulary",
   "theme": "free_time",
   "coverageNotes": {
-    "en": "Twelve common holiday expressions: sea and rest activities, then walks, visits and camping. They prepare the learner to tell a holiday story in the past.",
-    "fr": "Douze expressions courantes de vacances : la mer et le repos, puis les promenades, les visites et le camping. Elles préparent à raconter des vacances au passé.",
-    "de": "Zwölf gängige Urlaubsausdrücke: Meer und Erholung, dann Spaziergänge, Besichtigungen und Camping. Sie bereiten darauf vor, Urlaub in der Vergangenheit zu erzählen."
+    "en": "Twelve everyday holiday expressions in two groups: the sea and the sun, then discovering and moving around. They are the activities learners need to say what they did on holiday.",
+    "fr": "Douze expressions courantes de vacances en deux groupes : la mer et le soleil, puis la découverte et le mouvement. Ce sont les activités dont on a besoin pour dire ce qu’on a fait en vacances.",
+    "de": "Zwölf alltägliche Urlaubsausdrücke in zwei Gruppen: Meer und Sonne, dann Entdecken und Bewegung. Das sind die Aktivitäten, die man braucht, um zu sagen, was man im Urlaub gemacht hat."
   },
   "targetCount": 12,
   "countRationale": {
-    "en": "Twelve expressions match the outline's dozen and fit in two groups of manageable size.",
-    "fr": "Douze expressions correspondent à la douzaine du plan et se répartissent en deux groupes de taille raisonnable.",
-    "de": "Zwölf Ausdrücke entsprechen dem Dutzend der Gliederung und lassen sich in zwei gut überschaubare Gruppen teilen."
+    "en": "Twelve expressions match the outline's dozen and fit two groups of six.",
+    "fr": "Douze expressions correspondent à la douzaine du plan et forment deux groupes de six.",
+    "de": "Zwölf Ausdrücke entsprechen dem Dutzend der Gliederung und bilden zwei Gruppen zu sechs."
   },
   "difficultyBalance": {
-    "en": "Mostly core expressions; reflexive verbs and longer expressions are the demanding ones.",
-    "fr": "Surtout des expressions de base ; les verbes pronominaux et les expressions plus longues sont plus difficiles.",
-    "de": "Überwiegend Grundausdrücke; reflexive Verben und längere Wendungen sind anspruchsvoller."
+    "en": "Mostly core expressions; the reflexive verbs and the idiom faire la grasse matinée are more demanding.",
+    "fr": "Surtout des expressions de base ; les verbes pronominaux et l’expression faire la grasse matinée sont plus difficiles.",
+    "de": "Überwiegend Grundausdrücke; die reflexiven Verben und der Ausdruck faire la grasse matinée sind anspruchsvoller."
   },
   "prerequisites": [],
   "groups": [
     {
-      "id": "mer-repos",
-      "label": { "en": "Sea and rest", "fr": "La mer et le repos", "de": "Meer und Erholung" },
-      "targetIds": ["baigner", "bronzer", "plage", "plongee", "reposer"],
+      "id": "mer-soleil",
+      "label": {
+        "en": "The sea, the sun and rest",
+        "fr": "La mer, le soleil et le repos",
+        "de": "Meer, Sonne und Erholung"
+      },
+      "targetIds": ["baigner", "bronzer", "plage", "reposer", "grasse-matinee", "camping"],
       "introduction": {
-        "en": "These expressions say what you do by the sea or to relax:\n\n- `se baigner`\n- `bronzer`\n- `aller à la plage`\n- `faire de la plongée`\n- `se reposer`",
-        "fr": "Ces expressions disent ce qu’on fait à la mer ou pour se détendre :\n\n- `se baigner`\n- `bronzer`\n- `aller à la plage`\n- `faire de la plongée`\n- `se reposer`",
-        "de": "Diese Ausdrücke sagen, was man am Meer oder zur Erholung macht:\n\n- `se baigner`\n- `bronzer`\n- `aller à la plage`\n- `faire de la plongée`\n- `se reposer`"
+        "en": "On holiday, many people **relax** by the sea or outdoors. Here are six expressions:\n\n- `se baigner`\n- `bronzer`\n- `aller à la plage`\n- `se reposer`\n- `faire la grasse matinée`\n- `faire du camping`\n\nYou will use them later in the past: **j’ai fait du camping**.",
+        "fr": "En vacances, beaucoup de gens **se détendent** au bord de la mer ou dehors. Voici six expressions :\n\n- `se baigner`\n- `bronzer`\n- `aller à la plage`\n- `se reposer`\n- `faire la grasse matinée`\n- `faire du camping`\n\nVous les utiliserez ensuite au passé : **j’ai fait du camping**.",
+        "de": "Im Urlaub **entspannen** sich viele am Meer oder draußen. Hier sind sechs Ausdrücke:\n\n- `se baigner`\n- `bronzer`\n- `aller à la plage`\n- `se reposer`\n- `faire la grasse matinée`\n- `faire du camping`\n\nSpäter benutzt du sie in der Vergangenheit: **j’ai fait du camping**."
       }
     },
     {
-      "id": "nature-visites",
+      "id": "decouvertes",
       "label": {
-        "en": "Nature and visits",
-        "fr": "Nature et visites",
-        "de": "Natur und Besichtigungen"
+        "en": "Discovering and moving around",
+        "fr": "Découvrir et bouger",
+        "de": "Entdecken und sich bewegen"
       },
-      "targetIds": ["randonnee", "velo", "promener", "camping", "musee", "photos", "souvenirs"],
+      "targetIds": ["randonnee", "musee", "promener", "photos", "velo", "souvenirs"],
       "introduction": {
-        "en": "These expressions say what you do outdoors or while visiting a place:\n\n- `faire une randonnée`\n- `faire du vélo`\n- `se promener`\n- `faire du camping`\n- `visiter un musée`\n- `prendre des photos`\n- `acheter des souvenirs`",
-        "fr": "Ces expressions disent ce qu’on fait dehors ou en visitant un lieu :\n\n- `faire une randonnée`\n- `faire du vélo`\n- `se promener`\n- `faire du camping`\n- `visiter un musée`\n- `prendre des photos`\n- `acheter des souvenirs`",
-        "de": "Diese Ausdrücke sagen, was man draußen oder bei einer Besichtigung macht:\n\n- `faire une randonnée`\n- `faire du vélo`\n- `se promener`\n- `faire du camping`\n- `visiter un musée`\n- `prendre des photos`\n- `acheter des souvenirs`"
+        "en": "Holidays are also for **discovering** a place and staying active. Here are six more expressions:\n\n- `faire une randonnée`\n- `visiter un musée`\n- `se promener`\n- `prendre des photos`\n- `faire du vélo`\n- `acheter des souvenirs`\n\nMost of them use the verb `faire` or `prendre` with a noun.",
+        "fr": "Les vacances servent aussi à **découvrir** un lieu et à rester actif. Voici six autres expressions :\n\n- `faire une randonnée`\n- `visiter un musée`\n- `se promener`\n- `prendre des photos`\n- `faire du vélo`\n- `acheter des souvenirs`\n\nLa plupart utilisent le verbe `faire` ou `prendre` avec un nom.",
+        "de": "Im Urlaub **entdeckt** man auch einen Ort und bleibt aktiv. Hier sind sechs weitere Ausdrücke:\n\n- `faire une randonnée`\n- `visiter un musée`\n- `se promener`\n- `prendre des photos`\n- `faire du vélo`\n- `acheter des souvenirs`\n\nDie meisten benutzen das Verb `faire` oder `prendre` mit einem Nomen."
       }
     }
   ],
@@ -67,11 +71,8 @@
     {
       "id": "baigner",
       "term": "se baigner",
-      "translations": {
-        "en": ["to go swimming", "to swim"],
-        "de": ["baden gehen", "schwimmen gehen"]
-      },
-      "wordClass": "phrase",
+      "translations": { "en": ["to go for a swim", "to swim"], "de": ["baden gehen"] },
+      "wordClass": "verb",
       "genders": [],
       "number": null,
       "teachingForm": "se baigner",
@@ -89,30 +90,30 @@
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Se baigner means to go swimming in the sea or a lake. It is a reflexive verb.",
-        "fr": "Se baigner veut dire nager dans la mer ou dans un lac. C’est un verbe pronominal.",
-        "de": "Se baigner bedeutet, im Meer oder in einem See baden zu gehen. Es ist ein reflexives Verb."
+        "en": "Se baigner means to go into the water to swim or play.",
+        "fr": "Se baigner, c’est entrer dans l’eau pour nager ou jouer.",
+        "de": "Se baigner heißt: ins Wasser gehen, um zu schwimmen oder zu planschen."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Il fait très chaud ! On va ",
+        "before": "Il fait très chaud : on va ",
         "after": " dans la mer.",
         "accepted": { "answers": ["se baigner"] },
-        "referenceTargetIds": ["baigner", "randonnee", "musee", "photos"],
+        "referenceTargetIds": ["baigner", "velo", "musee", "souvenirs"],
         "explanation": {
-          "en": "Swimming in the sea when it is hot: se baigner.",
-          "fr": "Dans la mer quand il fait chaud : se baigner.",
-          "de": "Im Meer, wenn es heiß ist: se baigner."
+          "en": "Only se baigner fits: you go into the sea to swim.",
+          "fr": "Seul « se baigner » convient : on entre dans la mer pour nager.",
+          "de": "Nur „se baigner“ passt: Man geht im Meer schwimmen."
         }
       },
-      "listeningOptionTargetIds": ["baigner", "promener", "reposer", "bronzer"]
+      "listeningOptionTargetIds": ["baigner", "bronzer", "reposer", "promener"]
     },
     {
       "id": "bronzer",
       "term": "bronzer",
-      "translations": { "en": ["to sunbathe", "to tan"], "de": ["sich sonnen", "braun werden"] },
+      "translations": { "en": ["to get a tan", "to sunbathe"], "de": ["braun werden"] },
       "wordClass": "verb",
       "genders": [],
       "number": null,
@@ -123,334 +124,33 @@
       "pronunciation": "/bʁɔ̃ze/",
       "difficulty": "core",
       "context": {
-        "sentence": "J’ai bronzé sur la plage tout l’après-midi.",
+        "sentence": "Elle a bronzé sur la plage.",
         "translation": {
-          "en": "I sunbathed on the beach all afternoon.",
-          "de": "Ich habe mich den ganzen Nachmittag am Strand gesonnt."
+          "en": "She got a tan on the beach.",
+          "de": "Sie ist am Strand braun geworden."
         }
       },
       "ambiguityNote": null,
       "explanation": {
         "en": "Bronzer means that your skin becomes darker in the sun.",
-        "fr": "Bronzer veut dire que la peau devient plus foncée au soleil.",
-        "de": "Bronzer bedeutet, dass die Haut in der Sonne braun wird."
+        "fr": "Bronzer, c’est avoir la peau qui devient plus foncée au soleil.",
+        "de": "Bronzer heißt: Die Haut wird in der Sonne dunkler."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Au soleil, ma peau commence à ",
-        "after": ".",
+        "before": "Elle aime ",
+        "after": " : sa peau devient brune en été.",
         "accepted": { "answers": ["bronzer"] },
-        "referenceTargetIds": ["bronzer", "camping", "souvenirs", "velo"],
+        "referenceTargetIds": ["bronzer", "reposer", "velo", "musee"],
         "explanation": {
-          "en": "Skin in the sun: it starts to bronzer.",
-          "fr": "La peau au soleil : elle commence à bronzer.",
-          "de": "Haut in der Sonne: sie fängt an zu bronzer."
+          "en": "Only bronzer fits: the skin turns brown in the sun.",
+          "fr": "Seul « bronzer » convient : la peau devient brune au soleil.",
+          "de": "Nur „bronzer“ passt: Die Haut wird in der Sonne braun."
         }
       },
-      "listeningOptionTargetIds": ["bronzer", "baigner", "plongee", "randonnee"]
-    },
-    {
-      "id": "randonnee",
-      "term": "faire une randonnée",
-      "translations": {
-        "en": ["to go hiking", "to go on a hike"],
-        "de": ["wandern gehen", "eine Wanderung machen"]
-      },
-      "wordClass": "phrase",
-      "genders": [],
-      "number": null,
-      "teachingForm": "faire une randonnée",
-      "examForms": ["faire une randonnée"],
-      "articleException": null,
-      "genderVariants": [],
-      "pronunciation": "/fɛʁ yn ʁɑ̃dɔne/",
-      "difficulty": "core",
-      "context": {
-        "sentence": "Hier, nous avons fait une randonnée de trois heures.",
-        "translation": {
-          "en": "Yesterday we went on a three-hour hike.",
-          "de": "Gestern haben wir eine dreistündige Wanderung gemacht."
-        }
-      },
-      "ambiguityNote": null,
-      "explanation": {
-        "en": "Faire une randonnée means to walk for a long time in nature, for example in the mountains.",
-        "fr": "Faire une randonnée veut dire marcher longtemps dans la nature, par exemple en montagne.",
-        "de": "Faire une randonnée bedeutet, lange in der Natur zu wandern, zum Beispiel in den Bergen."
-      },
-      "genderExplanation": null,
-      "matchingLabel": null,
-      "examPrompt": null,
-      "gap": {
-        "before": "Samedi, nous voulons marcher six heures dans les montagnes : nous allons ",
-        "after": ".",
-        "accepted": { "answers": ["faire une randonnée"] },
-        "referenceTargetIds": ["randonnee", "plage", "musee", "photos"],
-        "explanation": {
-          "en": "Walking for hours in the mountains: faire une randonnée.",
-          "fr": "Marcher des heures en montagne : faire une randonnée.",
-          "de": "Stundenlang in den Bergen gehen: faire une randonnée."
-        }
-      },
-      "listeningOptionTargetIds": ["randonnee", "promener", "plage", "plongee"]
-    },
-    {
-      "id": "musee",
-      "term": "visiter un musée",
-      "translations": { "en": ["to visit a museum"], "de": ["ein Museum besuchen"] },
-      "wordClass": "phrase",
-      "genders": [],
-      "number": null,
-      "teachingForm": "visiter un musée",
-      "examForms": ["visiter un musée"],
-      "articleException": null,
-      "genderVariants": [],
-      "pronunciation": "/vizite œ̃ myze/",
-      "difficulty": "core",
-      "context": {
-        "sentence": "Elle a visité un musée à Paris.",
-        "translation": {
-          "en": "She visited a museum in Paris.",
-          "de": "Sie hat in Paris ein Museum besucht."
-        }
-      },
-      "ambiguityNote": null,
-      "explanation": {
-        "en": "Visiter un musée means to go and see a museum. Visiter is used for places, not for people.",
-        "fr": "Visiter un musée veut dire aller voir un musée. On visite des lieux, pas des personnes.",
-        "de": "Visiter un musée bedeutet, ein Museum zu besichtigen. Visiter wird für Orte benutzt, nicht für Personen."
-      },
-      "genderExplanation": null,
-      "matchingLabel": null,
-      "examPrompt": null,
-      "gap": {
-        "before": "Il pleut, alors nous allons ",
-        "after": " d’art moderne.",
-        "accepted": { "answers": ["visiter un musée"] },
-        "referenceTargetIds": ["musee", "plage", "camping", "velo"],
-        "explanation": {
-          "en": "A rainy day and a place of art: visiter un musée.",
-          "fr": "Un jour de pluie et un lieu d’art : visiter un musée.",
-          "de": "Ein Regentag und ein Ort der Kunst: visiter un musée."
-        }
-      },
-      "listeningOptionTargetIds": ["musee", "souvenirs", "photos", "camping"]
-    },
-    {
-      "id": "camping",
-      "term": "faire du camping",
-      "translations": { "en": ["to go camping"], "de": ["zelten gehen", "campen"] },
-      "wordClass": "phrase",
-      "genders": [],
-      "number": null,
-      "teachingForm": "faire du camping",
-      "examForms": ["faire du camping"],
-      "articleException": null,
-      "genderVariants": [],
-      "pronunciation": "/fɛʁ dy kɑ̃piŋ/",
-      "difficulty": "core",
-      "context": {
-        "sentence": "Ils ont fait du camping près d’un lac.",
-        "translation": {
-          "en": "They went camping near a lake.",
-          "de": "Sie haben an einem See gezeltet."
-        }
-      },
-      "ambiguityNote": null,
-      "explanation": {
-        "en": "Faire du camping means to sleep in a tent during the holidays.",
-        "fr": "Faire du camping veut dire dormir sous la tente pendant les vacances.",
-        "de": "Faire du camping bedeutet, im Urlaub im Zelt zu schlafen."
-      },
-      "genderExplanation": null,
-      "matchingLabel": null,
-      "examPrompt": null,
-      "gap": {
-        "before": "Nous dormons sous la tente : nous aimons ",
-        "after": " en forêt.",
-        "accepted": { "answers": ["faire du camping"] },
-        "referenceTargetIds": ["camping", "musee", "souvenirs", "plongee"],
-        "explanation": {
-          "en": "Sleeping in a tent: faire du camping.",
-          "fr": "Dormir sous la tente : faire du camping.",
-          "de": "Im Zelt schlafen: faire du camping."
-        }
-      },
-      "listeningOptionTargetIds": ["camping", "plage", "musee", "velo"]
-    },
-    {
-      "id": "reposer",
-      "term": "se reposer",
-      "translations": { "en": ["to rest"], "de": ["sich ausruhen"] },
-      "wordClass": "phrase",
-      "genders": [],
-      "number": null,
-      "teachingForm": "se reposer",
-      "examForms": ["se reposer"],
-      "articleException": null,
-      "genderVariants": [],
-      "pronunciation": "/sə ʁəpoze/",
-      "difficulty": "demanding",
-      "context": {
-        "sentence": "Je me suis reposé toute la journée.",
-        "translation": {
-          "en": "I rested all day.",
-          "de": "Ich habe mich den ganzen Tag ausgeruht."
-        }
-      },
-      "ambiguityNote": null,
-      "explanation": {
-        "en": "Se reposer means to do nothing tiring in order to recover. It is a reflexive verb.",
-        "fr": "Se reposer veut dire ne rien faire de fatigant pour récupérer. C’est un verbe pronominal.",
-        "de": "Se reposer bedeutet, nichts Anstrengendes zu tun, um sich zu erholen. Es ist ein reflexives Verb."
-      },
-      "genderExplanation": null,
-      "matchingLabel": null,
-      "examPrompt": null,
-      "gap": {
-        "before": "On est fatigué : on va ",
-        "after": " à l’hôtel.",
-        "accepted": { "answers": ["se reposer"] },
-        "referenceTargetIds": ["reposer", "plongee", "randonnee", "photos"],
-        "explanation": {
-          "en": "Being tired and staying at the hotel: se reposer.",
-          "fr": "Être fatigué et rester à l’hôtel : se reposer.",
-          "de": "Müde sein und im Hotel bleiben: se reposer."
-        }
-      },
-      "listeningOptionTargetIds": ["reposer", "promener", "baigner", "photos"]
-    },
-    {
-      "id": "promener",
-      "term": "se promener",
-      "translations": { "en": ["to go for a walk"], "de": ["spazieren gehen"] },
-      "wordClass": "phrase",
-      "genders": [],
-      "number": null,
-      "teachingForm": "se promener",
-      "examForms": ["se promener"],
-      "articleException": null,
-      "genderVariants": [],
-      "pronunciation": "/sə pʁɔmne/",
-      "difficulty": "demanding",
-      "context": {
-        "sentence": "On s’est promené dans le vieux village.",
-        "translation": {
-          "en": "We walked around the old village.",
-          "de": "Wir sind durch das alte Dorf spaziert."
-        }
-      },
-      "ambiguityNote": {
-        "en": "Se promener is a short, relaxed walk; faire une randonnée is a long walk in nature.",
-        "fr": "Se promener, c’est une promenade courte et tranquille ; faire une randonnée, c’est une longue marche dans la nature.",
-        "de": "Se promener ist ein kurzer, entspannter Spaziergang; faire une randonnée ist eine lange Wanderung in der Natur."
-      },
-      "explanation": {
-        "en": "Se promener means to walk for pleasure, without hurry. It is a reflexive verb.",
-        "fr": "Se promener veut dire marcher pour le plaisir, sans se presser. C’est un verbe pronominal.",
-        "de": "Se promener bedeutet, zum Vergnügen und ohne Eile zu gehen. Es ist ein reflexives Verb."
-      },
-      "genderExplanation": null,
-      "matchingLabel": null,
-      "examPrompt": null,
-      "gap": {
-        "before": "Le soir, on aime ",
-        "after": " dans les petites rues du village.",
-        "accepted": { "answers": ["se promener"] },
-        "referenceTargetIds": ["promener", "bronzer", "souvenirs", "musee"],
-        "explanation": {
-          "en": "Walking slowly in small streets: se promener.",
-          "fr": "Marcher doucement dans les petites rues : se promener.",
-          "de": "Langsam durch kleine Gassen gehen: se promener."
-        }
-      },
-      "listeningOptionTargetIds": ["promener", "reposer", "baigner", "randonnee"]
-    },
-    {
-      "id": "photos",
-      "term": "prendre des photos",
-      "translations": { "en": ["to take photos"], "de": ["Fotos machen"] },
-      "wordClass": "phrase",
-      "genders": [],
-      "number": null,
-      "teachingForm": "prendre des photos",
-      "examForms": ["prendre des photos"],
-      "articleException": null,
-      "genderVariants": [],
-      "pronunciation": "/pʁɑ̃dʁ de fɔto/",
-      "difficulty": "core",
-      "context": {
-        "sentence": "J’ai pris des photos de la montagne.",
-        "translation": {
-          "en": "I took photos of the mountain.",
-          "de": "Ich habe Fotos von den Bergen gemacht."
-        }
-      },
-      "ambiguityNote": null,
-      "explanation": {
-        "en": "In French you take photos: prendre des photos, not faire des photos.",
-        "fr": "En français, on prend des photos : prendre des photos.",
-        "de": "Im Französischen „nimmt“ man Fotos auf: prendre des photos."
-      },
-      "genderExplanation": null,
-      "matchingLabel": null,
-      "examPrompt": null,
-      "gap": {
-        "before": "Le paysage est magnifique ! Je vais ",
-        "after": " avec mon téléphone.",
-        "accepted": { "answers": ["prendre des photos"] },
-        "referenceTargetIds": ["photos", "reposer", "camping", "plage"],
-        "explanation": {
-          "en": "A phone and a beautiful view: prendre des photos.",
-          "fr": "Un téléphone et un beau paysage : prendre des photos.",
-          "de": "Ein Handy und eine schöne Aussicht: prendre des photos."
-        }
-      },
-      "listeningOptionTargetIds": ["photos", "plongee", "plage", "musee"]
-    },
-    {
-      "id": "souvenirs",
-      "term": "acheter des souvenirs",
-      "translations": { "en": ["to buy souvenirs"], "de": ["Souvenirs kaufen"] },
-      "wordClass": "phrase",
-      "genders": [],
-      "number": null,
-      "teachingForm": "acheter des souvenirs",
-      "examForms": ["acheter des souvenirs"],
-      "articleException": null,
-      "genderVariants": [],
-      "pronunciation": "/aʃte de suvniʁ/",
-      "difficulty": "core",
-      "context": {
-        "sentence": "Nous avons acheté des souvenirs pour la famille.",
-        "translation": {
-          "en": "We bought souvenirs for the family.",
-          "de": "Wir haben Souvenirs für die Familie gekauft."
-        }
-      },
-      "ambiguityNote": null,
-      "explanation": {
-        "en": "Acheter des souvenirs means to buy small objects to remember a trip or to give as presents.",
-        "fr": "Acheter des souvenirs veut dire acheter de petits objets pour se rappeler un voyage ou pour offrir.",
-        "de": "Acheter des souvenirs bedeutet, kleine Andenken zur Erinnerung an eine Reise oder als Geschenke zu kaufen."
-      },
-      "genderExplanation": null,
-      "matchingLabel": null,
-      "examPrompt": null,
-      "gap": {
-        "before": "Avant de partir, nous allons ",
-        "after": " pour nos amis.",
-        "accepted": { "answers": ["acheter des souvenirs"] },
-        "referenceTargetIds": ["souvenirs", "bronzer", "velo", "reposer"],
-        "explanation": {
-          "en": "Small presents for friends before leaving: acheter des souvenirs.",
-          "fr": "De petits cadeaux pour les amis avant de partir : acheter des souvenirs.",
-          "de": "Kleine Geschenke für Freunde vor der Abreise: acheter des souvenirs."
-        }
-      },
-      "listeningOptionTargetIds": ["souvenirs", "musee", "photos", "reposer"]
+      "listeningOptionTargetIds": ["bronzer", "baigner", "plage", "velo"]
     },
     {
       "id": "plage",
@@ -466,33 +166,321 @@
       "pronunciation": "/ale a la plaʒ/",
       "difficulty": "core",
       "context": {
-        "sentence": "Samedi, nous sommes allés à la plage.",
+        "sentence": "Hier, nous sommes allés à la plage.",
         "translation": {
-          "en": "On Saturday we went to the beach.",
-          "de": "Am Samstag sind wir an den Strand gegangen."
+          "en": "Yesterday we went to the beach.",
+          "de": "Gestern sind wir an den Strand gegangen."
         }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Aller à la plage means to go to the beach. In the past, aller takes être: je suis allé.",
-        "fr": "Aller à la plage veut dire se rendre au bord de la mer. Au passé, aller prend être : je suis allé.",
-        "de": "Aller à la plage bedeutet, an den Strand zu gehen. In der Vergangenheit steht aller mit être: je suis allé."
+        "en": "Aller à la plage means to spend time at the seaside, on the sand.",
+        "fr": "Aller à la plage, c’est passer du temps au bord de la mer, sur le sable.",
+        "de": "Aller à la plage heißt: Zeit am Meer im Sand verbringen."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Il fait beau : on peut ",
-        "after": " avec les enfants.",
+        "before": "En été, nous voulons ",
+        "after": " pour nager et jouer sur le sable.",
         "accepted": { "answers": ["aller à la plage"] },
-        "referenceTargetIds": ["plage", "randonnee", "souvenirs", "photos"],
+        "referenceTargetIds": ["plage", "velo", "musee", "souvenirs"],
         "explanation": {
-          "en": "Nice weather with the children by the sea: aller à la plage.",
-          "fr": "Beau temps avec les enfants au bord de la mer : aller à la plage.",
-          "de": "Schönes Wetter mit den Kindern am Meer: aller à la plage."
+          "en": "Only aller à la plage fits: swimming and playing on the sand happen at the beach.",
+          "fr": "Seul « aller à la plage » convient : on nage et on joue sur le sable à la plage.",
+          "de": "Nur „aller à la plage“ passt: Schwimmen und Spielen im Sand findet am Strand statt."
         }
       },
-      "listeningOptionTargetIds": ["plage", "plongee", "photos", "camping"]
+      "listeningOptionTargetIds": ["plage", "baigner", "grasse-matinee", "bronzer"]
+    },
+    {
+      "id": "reposer",
+      "term": "se reposer",
+      "translations": { "en": ["to rest"], "de": ["sich ausruhen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "se reposer",
+      "examForms": ["se reposer"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/sə ʁəpoze/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Après le voyage, je me suis reposé.",
+        "translation": {
+          "en": "After the trip, I rested.",
+          "de": "Nach der Reise habe ich mich ausgeruht."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Se reposer means to rest when you are tired.",
+        "fr": "Se reposer, c’est prendre du repos quand on est fatigué.",
+        "de": "Se reposer heißt: sich ausruhen, wenn man müde ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Après la randonnée, ils vont ",
+        "after": " : ils sont très fatigués.",
+        "accepted": { "answers": ["se reposer"] },
+        "referenceTargetIds": ["reposer", "randonnee", "photos", "souvenirs"],
+        "explanation": {
+          "en": "Only se reposer fits: they are tired and need rest.",
+          "fr": "Seul « se reposer » convient : ils sont fatigués et ont besoin de repos.",
+          "de": "Nur „se reposer“ passt: Sie sind müde und brauchen Ruhe."
+        }
+      },
+      "listeningOptionTargetIds": ["reposer", "baigner", "promener", "camping"]
+    },
+    {
+      "id": "grasse-matinee",
+      "term": "faire la grasse matinée",
+      "translations": { "en": ["to sleep in"], "de": ["ausschlafen"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "faire la grasse matinée",
+      "examForms": ["faire la grasse matinée"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fɛʁ la ɡʁas matine/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Dimanche, j’ai fait la grasse matinée.",
+        "translation": { "en": "On Sunday I slept in.", "de": "Am Sonntag habe ich ausgeschlafen." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Faire la grasse matinée is a set expression: to stay in bed late in the morning.",
+        "fr": "Faire la grasse matinée est une expression figée : rester au lit tard le matin.",
+        "de": "Faire la grasse matinée ist ein fester Ausdruck: morgens lange im Bett bleiben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "En vacances, je n’ai pas de réveil : j’aime ",
+        "after": " et me lever à dix heures.",
+        "accepted": { "answers": ["faire la grasse matinée"] },
+        "referenceTargetIds": ["grasse-matinee", "camping", "musee", "photos"],
+        "explanation": {
+          "en": "Only faire la grasse matinée fits: no alarm clock, getting up at ten.",
+          "fr": "Seul « faire la grasse matinée » convient : pas de réveil, on se lève à dix heures.",
+          "de": "Nur „faire la grasse matinée“ passt: kein Wecker, Aufstehen um zehn Uhr."
+        }
+      },
+      "listeningOptionTargetIds": ["grasse-matinee", "reposer", "camping", "musee"]
+    },
+    {
+      "id": "camping",
+      "term": "faire du camping",
+      "translations": { "en": ["to go camping"], "de": ["zelten"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "faire du camping",
+      "examForms": ["faire du camping"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fɛʁ dy kɑ̃piŋ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Nous avons fait du camping près d’un lac.",
+        "translation": {
+          "en": "We went camping near a lake.",
+          "de": "Wir haben an einem See gezeltet."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Faire du camping means to sleep outdoors in a tent.",
+        "fr": "Faire du camping, c’est dormir dehors dans une tente.",
+        "de": "Faire du camping heißt: draußen im Zelt schlafen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nous aimons ",
+        "after": " : nous dormons dans une tente.",
+        "accepted": { "answers": ["faire du camping"] },
+        "referenceTargetIds": ["camping", "musee", "photos", "souvenirs"],
+        "explanation": {
+          "en": "Only faire du camping fits: you sleep in a tent.",
+          "fr": "Seul « faire du camping » convient : on dort dans une tente.",
+          "de": "Nur „faire du camping“ passt: Man schläft im Zelt."
+        }
+      },
+      "listeningOptionTargetIds": ["camping", "velo", "randonnee", "grasse-matinee"]
+    },
+    {
+      "id": "randonnee",
+      "term": "faire une randonnée",
+      "translations": { "en": ["to go on a hike"], "de": ["wandern gehen"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "faire une randonnée",
+      "examForms": ["faire une randonnée"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fɛʁ yn ʁɑ̃dɔne/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ils ont fait une randonnée dans les Alpes.",
+        "translation": {
+          "en": "They went on a hike in the Alps.",
+          "de": "Sie sind in den Alpen wandern gegangen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Faire une randonnée means to walk a long way in nature, for example in the mountains.",
+        "fr": "Faire une randonnée, c’est marcher longtemps dans la nature, par exemple en montagne.",
+        "de": "Faire une randonnée heißt: lange in der Natur wandern, zum Beispiel in den Bergen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nous allons ",
+        "after": " de quinze kilomètres dans la montagne.",
+        "accepted": { "answers": ["faire une randonnée"] },
+        "referenceTargetIds": ["randonnee", "plage", "souvenirs", "photos"],
+        "explanation": {
+          "en": "Only faire une randonnée fits: a long walk of fifteen kilometres in the mountains.",
+          "fr": "Seul « faire une randonnée » convient : une longue marche de quinze kilomètres en montagne.",
+          "de": "Nur „faire une randonnée“ passt: eine lange Wanderung von fünfzehn Kilometern in den Bergen."
+        }
+      },
+      "listeningOptionTargetIds": ["randonnee", "camping", "velo", "musee"]
+    },
+    {
+      "id": "musee",
+      "term": "visiter un musée",
+      "translations": { "en": ["to visit a museum"], "de": ["ein Museum besuchen"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "visiter un musée",
+      "examForms": ["visiter un musée"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/vizite œ̃ myze/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "J’ai visité un musée avec ma sœur.",
+        "translation": {
+          "en": "I visited a museum with my sister.",
+          "de": "Ich habe mit meiner Schwester ein Museum besucht."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Visiter un musée means to go and look at the works or objects of a museum.",
+        "fr": "Visiter un musée, c’est aller voir les œuvres ou les objets d’un musée.",
+        "de": "Visiter un musée heißt: hingehen und die Werke oder Objekte eines Museums ansehen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Quand il pleut, on peut ",
+        "after": " : il y a de belles peintures.",
+        "accepted": { "answers": ["visiter un musée"] },
+        "referenceTargetIds": ["musee", "randonnee", "velo", "camping"],
+        "explanation": {
+          "en": "Only visiter un musée fits: that is where you see paintings, and it suits a rainy day.",
+          "fr": "Seul « visiter un musée » convient : on y voit des peintures, et c’est idéal quand il pleut.",
+          "de": "Nur „visiter un musée“ passt: Dort sieht man Gemälde, und es passt zu Regenwetter."
+        }
+      },
+      "listeningOptionTargetIds": ["musee", "souvenirs", "photos", "promener"]
+    },
+    {
+      "id": "promener",
+      "term": "se promener",
+      "translations": { "en": ["to go for a walk"], "de": ["spazieren gehen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "se promener",
+      "examForms": ["se promener"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/sə pʁɔmne/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "On s’est promenés dans le vieux village.",
+        "translation": {
+          "en": "We went for a walk in the old village.",
+          "de": "Wir sind durch das alte Dorf spaziert."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Se promener means to walk slowly for pleasure, without a goal.",
+        "fr": "Se promener, c’est marcher doucement pour le plaisir, sans but précis.",
+        "de": "Se promener heißt: zum Vergnügen langsam und ohne bestimmtes Ziel gehen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le soir, on aime ",
+        "after": " dans le village, sans but.",
+        "accepted": { "answers": ["se promener"] },
+        "referenceTargetIds": ["promener", "camping", "photos", "souvenirs"],
+        "explanation": {
+          "en": "Only se promener fits: a walk with no goal.",
+          "fr": "Seul « se promener » convient : une balade sans but.",
+          "de": "Nur „se promener“ passt: ein Spaziergang ohne Ziel."
+        }
+      },
+      "listeningOptionTargetIds": ["promener", "baigner", "reposer", "randonnee"]
+    },
+    {
+      "id": "photos",
+      "term": "prendre des photos",
+      "translations": { "en": ["to take photos"], "de": ["Fotos machen"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "prendre des photos",
+      "examForms": ["prendre des photos"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/pʁɑ̃dʁ de fɔto/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Elle a pris beaucoup de photos.",
+        "translation": { "en": "She took a lot of photos.", "de": "Sie hat viele Fotos gemacht." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Prendre des photos means to photograph what you see on holiday.",
+        "fr": "Prendre des photos, c’est photographier ce qu’on voit en vacances.",
+        "de": "Prendre des photos heißt: im Urlaub fotografieren, was man sieht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Elle a un appareil photo pour ",
+        "after": " du paysage.",
+        "accepted": { "answers": ["prendre des photos"] },
+        "referenceTargetIds": ["photos", "camping", "grasse-matinee", "reposer"],
+        "explanation": {
+          "en": "Only prendre des photos fits: a camera is used to photograph the landscape.",
+          "fr": "Seul « prendre des photos » convient : l’appareil photo sert à photographier le paysage.",
+          "de": "Nur „prendre des photos“ passt: Mit der Kamera fotografiert man die Landschaft."
+        }
+      },
+      "listeningOptionTargetIds": ["photos", "souvenirs", "musee", "velo"]
     },
     {
       "id": "velo",
@@ -508,75 +496,75 @@
       "pronunciation": "/fɛʁ dy velo/",
       "difficulty": "core",
       "context": {
-        "sentence": "Elle a fait du vélo au bord de la rivière.",
+        "sentence": "Nous avons fait du vélo au bord du canal.",
         "translation": {
-          "en": "She went cycling by the river.",
-          "de": "Sie ist am Fluss Rad gefahren."
+          "en": "We went cycling along the canal.",
+          "de": "Wir sind am Kanal Rad gefahren."
         }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Faire du vélo means to ride a bike for pleasure or sport.",
-        "fr": "Faire du vélo veut dire se déplacer à bicyclette pour le plaisir ou le sport.",
-        "de": "Faire du vélo bedeutet, zum Vergnügen oder als Sport Rad zu fahren."
+        "en": "Faire du vélo means to ride a bicycle for pleasure or sport.",
+        "fr": "Faire du vélo, c’est se déplacer à bicyclette pour le plaisir ou le sport.",
+        "de": "Faire du vélo heißt: zum Vergnügen oder für den Sport Fahrrad fahren."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Il y a des pistes cyclables : nous pouvons ",
-        "after": " autour du lac.",
+        "before": "Pour pédaler dans la forêt, on peut ",
+        "after": ".",
         "accepted": { "answers": ["faire du vélo"] },
-        "referenceTargetIds": ["velo", "reposer", "musee", "bronzer"],
+        "referenceTargetIds": ["velo", "musee", "photos", "souvenirs"],
         "explanation": {
-          "en": "Cycle paths around a lake: faire du vélo.",
-          "fr": "Des pistes cyclables autour d’un lac : faire du vélo.",
-          "de": "Radwege um einen See: faire du vélo."
+          "en": "Only faire du vélo fits: you pedal on a bicycle.",
+          "fr": "Seul « faire du vélo » convient : on pédale sur une bicyclette.",
+          "de": "Nur „faire du vélo“ passt: Man tritt in die Pedale eines Fahrrads."
         }
       },
-      "listeningOptionTargetIds": ["velo", "plage", "camping", "bronzer"]
+      "listeningOptionTargetIds": ["velo", "camping", "randonnee", "plage"]
     },
     {
-      "id": "plongee",
-      "term": "faire de la plongée",
-      "translations": { "en": ["to go diving"], "de": ["tauchen gehen"] },
+      "id": "souvenirs",
+      "term": "acheter des souvenirs",
+      "translations": { "en": ["to buy souvenirs"], "de": ["Souvenirs kaufen"] },
       "wordClass": "phrase",
       "genders": [],
       "number": null,
-      "teachingForm": "faire de la plongée",
-      "examForms": ["faire de la plongée"],
+      "teachingForm": "acheter des souvenirs",
+      "examForms": ["acheter des souvenirs"],
       "articleException": null,
       "genderVariants": [],
-      "pronunciation": "/fɛʁ də la plɔ̃ʒe/",
-      "difficulty": "demanding",
+      "pronunciation": "/aʃte de suvniʁ/",
+      "difficulty": "core",
       "context": {
-        "sentence": "Il a fait de la plongée en Corse.",
+        "sentence": "J’ai acheté des souvenirs pour mes amis.",
         "translation": {
-          "en": "He went diving in Corsica.",
-          "de": "Er ist auf Korsika tauchen gegangen."
+          "en": "I bought souvenirs for my friends.",
+          "de": "Ich habe Souvenirs für meine Freunde gekauft."
         }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Faire de la plongée means to swim underwater to see fish and the sea floor.",
-        "fr": "Faire de la plongée veut dire nager sous l’eau pour voir les poissons et le fond de la mer.",
-        "de": "Faire de la plongée bedeutet, unter Wasser zu schwimmen, um Fische und den Meeresboden zu sehen."
+        "en": "Acheter des souvenirs means to buy small objects to remember a trip or give as gifts.",
+        "fr": "Acheter des souvenirs, c’est acheter de petits objets pour se rappeler un voyage ou les offrir.",
+        "de": "Acheter des souvenirs heißt: kleine Dinge kaufen, die an eine Reise erinnern oder die man verschenkt."
       },
       "genderExplanation": null,
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Sous l’eau, on voit des poissons : j’ai envie de ",
-        "after": " avec un moniteur.",
-        "accepted": { "answers": ["faire de la plongée"] },
-        "referenceTargetIds": ["plongee", "promener", "souvenirs", "reposer"],
+        "before": "Avant de partir, je vais ",
+        "after": " pour ma famille.",
+        "accepted": { "answers": ["acheter des souvenirs"] },
+        "referenceTargetIds": ["souvenirs", "camping", "velo", "reposer"],
         "explanation": {
-          "en": "Fish under the water with an instructor: faire de la plongée.",
-          "fr": "Des poissons sous l’eau avec un moniteur : faire de la plongée.",
-          "de": "Fische unter Wasser mit einem Lehrer: faire de la plongée."
+          "en": "Only acheter des souvenirs fits: you buy gifts for your family before leaving.",
+          "fr": "Seul « acheter des souvenirs » convient : on achète des cadeaux pour sa famille avant de partir.",
+          "de": "Nur „acheter des souvenirs“ passt: Vor der Abreise kauft man Geschenke für die Familie."
         }
       },
-      "listeningOptionTargetIds": ["plongee", "plage", "bronzer", "randonnee"]
+      "listeningOptionTargetIds": ["souvenirs", "photos", "musee", "promener"]
     }
   ],
   "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }

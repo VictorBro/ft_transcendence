@@ -1,0 +1,547 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-conceding-connectors",
+  "lang": "fr",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Certes, toutefois, néanmoins",
+  "objective": {
+    "en": "Concede a point, then move beyond it, using about ten connectors such as certes, toutefois and néanmoins.",
+    "fr": "Concéder un point avant de le dépasser avec une dizaine de connecteurs : certes, toutefois, néanmoins, n’empêche que…",
+    "de": "Einen Punkt zugestehen und ihn dann mit rund zehn Konnektoren wie certes, toutefois und néanmoins überwinden."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:53:26.267Z",
+    "inputHashes": { "outline": "6dbdcdecf083dc36197957d08383f924e566c35bac899ab05138f456d49971f1" }
+  },
+  "kind": "vocabulary",
+  "theme": "language",
+  "coverageNotes": {
+    "en": "Ten connectors of concession and counter-argument, from the concession (certes, il est vrai que, sans doute) to the counter-argument (toutefois, néanmoins, cependant, pour autant, n'empêche que, tout de même, il n'en reste pas moins que). Argument structuring, debate vocabulary and the subjunctive concessions (bien que) belong to neighbouring lessons.",
+    "fr": "Dix connecteurs de concession et de contre-argument, de la concession (certes, il est vrai que, sans doute) au contre-argument (toutefois, néanmoins, cependant, pour autant, n'empêche que, tout de même, il n'en reste pas moins que). La structuration de l’argumentation, le vocabulaire du débat et les concessions au subjonctif (bien que) relèvent d’autres leçons.",
+    "de": "Zehn Konnektoren des Zugeständnisses und des Gegenarguments, vom Zugeständnis (certes, il est vrai que, sans doute) bis zum Gegenargument (toutefois, néanmoins, cependant, pour autant, n'empêche que, tout de même, il n'en reste pas moins que). Argumentationsaufbau, Debattenwortschatz und Zugeständnisse mit Subjonctif (bien que) gehören zu anderen Lektionen."
+  },
+  "targetCount": 10,
+  "countRationale": {
+    "en": "Ten items match the outline's “about ten” and keep the two groups short enough to memorise.",
+    "fr": "Dix éléments correspondent à « une dizaine » du plan et gardent deux groupes assez courts pour être mémorisés.",
+    "de": "Zehn Einträge entsprechen dem „rund zehn“ der Gliederung und halten die beiden Gruppen kurz genug zum Einprägen."
+  },
+  "difficultyBalance": {
+    "en": "Seven core connectors and three demanding ones whose register or position is harder (pour autant, n'empêche que, il n'en reste pas moins que).",
+    "fr": "Sept connecteurs de base et trois plus exigeants par leur registre ou leur place (pour autant, n'empêche que, il n'en reste pas moins que).",
+    "de": "Sieben Grundkonnektoren und drei anspruchsvollere wegen Register oder Stellung (pour autant, n'empêche que, il n'en reste pas moins que)."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "concession",
+      "label": {
+        "en": "Conceding a point",
+        "fr": "Concéder un point",
+        "de": "Einen Punkt zugestehen"
+      },
+      "targetIds": ["certes", "il-est-vrai-que", "sans-doute"],
+      "introduction": {
+        "en": "To concede is to accept a point before answering it. Start with **a concession**:\n\n- `certes`\n- `il est vrai que`\n- `sans doute`\n\nThe objection then follows, usually after **mais**.",
+        "fr": "Concéder, c’est accepter un point avant d’y répondre. Commencez par **une concession** :\n\n- `certes`\n- `il est vrai que`\n- `sans doute`\n\nL’objection suit ensuite, souvent après **mais**.",
+        "de": "Zugestehen heißt, einen Punkt anzuerkennen, bevor man antwortet. Beginne mit **einem Zugeständnis**:\n\n- `certes`\n- `il est vrai que`\n- `sans doute`\n\nDer Einwand folgt danach, meist nach **mais**."
+      }
+    },
+    {
+      "id": "counter",
+      "label": { "en": "Going beyond it", "fr": "Le dépasser", "de": "Darüber hinausgehen" },
+      "targetIds": [
+        "toutefois",
+        "neanmoins",
+        "cependant",
+        "pour-autant",
+        "n-empeche-que",
+        "tout-de-meme",
+        "il-n-en-reste-pas-moins-que"
+      ],
+      "introduction": {
+        "en": "These words **introduce the counter-argument** and go further than the concession:\n\n- `toutefois`\n- `néanmoins`\n- `cependant`\n- `pour autant`\n- `n'empêche que`\n- `tout de même`\n- `il n'en reste pas moins que`\n\nMost of them open the sentence after a comma or a semicolon. `pour autant` is different: it comes after a negative verb.",
+        "fr": "Ces mots **introduisent le contre-argument** et vont plus loin que la concession :\n\n- `toutefois`\n- `néanmoins`\n- `cependant`\n- `pour autant`\n- `n'empêche que`\n- `tout de même`\n- `il n'en reste pas moins que`\n\nLa plupart ouvrent la phrase après une virgule ou un point-virgule. `pour autant` est différent : il se place après un verbe à la forme négative.",
+        "de": "Diese Wörter **leiten das Gegenargument ein** und gehen weiter als das Zugeständnis:\n\n- `toutefois`\n- `néanmoins`\n- `cependant`\n- `pour autant`\n- `n'empêche que`\n- `tout de même`\n- `il n'en reste pas moins que`\n\nDie meisten stehen am Satzanfang nach einem Komma oder Semikolon. `pour autant` ist anders: Es steht nach einem verneinten Verb."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "certes",
+      "term": "certes",
+      "translations": { "en": ["admittedly", "certainly"], "de": ["zwar", "freilich"] },
+      "wordClass": "adverb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "certes",
+      "examForms": ["certes"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/sɛʁt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Cette solution est certes coûteuse, mais elle est efficace.",
+        "translation": {
+          "en": "This solution is admittedly expensive, but it is effective.",
+          "de": "Diese Lösung ist zwar teuer, aber sie ist wirksam."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Certes grants a point that the speaker will then limit, usually with mais.",
+        "fr": "Certes accorde un point que le locuteur va ensuite limiter, souvent avec mais.",
+        "de": "Certes räumt einen Punkt ein, den der Sprecher danach einschränkt, meist mit mais."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Cette solution est ",
+        "after": " coûteuse, mais elle est efficace.",
+        "accepted": { "answers": ["certes"] },
+        "referenceTargetIds": [
+          "certes",
+          "pour-autant",
+          "n-empeche-que",
+          "il-n-en-reste-pas-moins-que"
+        ],
+        "explanation": {
+          "en": "Certes concedes the cost before mais gives the counterpoint.",
+          "fr": "Certes concède le coût avant que mais apporte la nuance.",
+          "de": "Certes räumt die Kosten ein, bevor mais den Gegenpunkt bringt."
+        }
+      },
+      "listeningOptionTargetIds": ["certes", "sans-doute", "cependant", "toutefois"]
+    },
+    {
+      "id": "il-est-vrai-que",
+      "term": "il est vrai que",
+      "translations": { "en": ["it is true that"], "de": ["es stimmt, dass", "es ist wahr, dass"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "il est vrai que",
+      "examForms": ["il est vrai que"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/il ɛ vʁɛ kə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Il est vrai que le budget est limité, mais l’enjeu est essentiel.",
+        "translation": {
+          "en": "It is true that the budget is limited, but the stakes are essential.",
+          "de": "Es stimmt, dass das Budget begrenzt ist, aber der Einsatz ist entscheidend."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Il est vrai que is followed by a full clause and admits the opponent's point before the objection.",
+        "fr": "Il est vrai que est suivi d’une proposition complète et admet le point de l’adversaire avant l’objection.",
+        "de": "Il est vrai que wird von einem vollständigen Satz gefolgt und erkennt den Punkt des Gegners vor dem Einwand an."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Je comprends votre position : ",
+        "after": " le budget est limité, mais l’enjeu est essentiel.",
+        "accepted": { "answers": ["il est vrai que"] },
+        "referenceTargetIds": [
+          "il-est-vrai-que",
+          "pour-autant",
+          "tout-de-meme",
+          "il-n-en-reste-pas-moins-que"
+        ],
+        "explanation": {
+          "en": "Il est vrai que admits the limited budget; the idea is then reversed by mais.",
+          "fr": "Il est vrai que admet le budget limité ; l’idée est ensuite renversée par mais.",
+          "de": "Il est vrai que erkennt das begrenzte Budget an; der Gedanke wird dann durch mais umgekehrt."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "il-est-vrai-que",
+        "il-n-en-reste-pas-moins-que",
+        "n-empeche-que",
+        "sans-doute"
+      ]
+    },
+    {
+      "id": "sans-doute",
+      "term": "sans doute",
+      "translations": { "en": ["probably", "no doubt"], "de": ["wahrscheinlich", "zweifellos"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "sans doute",
+      "examForms": ["sans doute"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/sɑ̃ dut/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Elle a sans doute raison, mais je reste prudent.",
+        "translation": {
+          "en": "She is probably right, but I remain cautious.",
+          "de": "Sie hat wahrscheinlich recht, aber ich bleibe vorsichtig."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Sans doute means “probably”, not “without any doubt”; here it softens a concession.",
+        "fr": "Sans doute veut dire « probablement », et non « sans aucun doute » ; ici il adoucit une concession.",
+        "de": "Sans doute bedeutet „wahrscheinlich“, nicht „ohne jeden Zweifel“; hier mildert es ein Zugeständnis."
+      },
+      "explanation": {
+        "en": "Sans doute concedes a point as likely, which leaves room for an objection.",
+        "fr": "Sans doute concède un point comme probable, ce qui laisse place à une objection.",
+        "de": "Sans doute räumt einen Punkt als wahrscheinlich ein und lässt Raum für einen Einwand."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Elle a ",
+        "after": " raison, mais je reste prudent.",
+        "accepted": { "answers": ["sans doute"] },
+        "referenceTargetIds": [
+          "sans-doute",
+          "pour-autant",
+          "il-n-en-reste-pas-moins-que",
+          "n-empeche-que"
+        ],
+        "explanation": {
+          "en": "Sans doute fits between a verb and its object and concedes that she is probably right.",
+          "fr": "Sans doute s’insère entre le verbe et son complément et concède qu’elle a probablement raison.",
+          "de": "Sans doute steht zwischen Verb und Objekt und räumt ein, dass sie wahrscheinlich recht hat."
+        }
+      },
+      "listeningOptionTargetIds": ["sans-doute", "cependant", "certes", "pour-autant"]
+    },
+    {
+      "id": "toutefois",
+      "term": "toutefois",
+      "translations": { "en": ["however"], "de": ["jedoch", "allerdings"] },
+      "wordClass": "adverb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "toutefois",
+      "examForms": ["toutefois"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/tutfwa/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Le projet coûte cher ; toutefois, il est utile.",
+        "translation": {
+          "en": "The project is expensive; however, it is useful.",
+          "de": "Das Projekt ist teuer; jedoch ist es nützlich."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Toutefois introduces a counterpoint that limits what was just conceded.",
+        "fr": "Toutefois introduit une nuance qui limite ce qui vient d’être concédé.",
+        "de": "Toutefois leitet einen Gegenpunkt ein, der das eben Zugestandene einschränkt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Certes, le projet coûte cher ; ",
+        "after": ", il est utile.",
+        "accepted": { "answers": ["toutefois"] },
+        "referenceTargetIds": ["toutefois", "certes", "il-est-vrai-que", "sans-doute"],
+        "explanation": {
+          "en": "After a concession (certes), toutefois brings the counterpoint.",
+          "fr": "Après une concession (certes), toutefois apporte la nuance.",
+          "de": "Nach einem Zugeständnis (certes) bringt toutefois den Gegenpunkt."
+        }
+      },
+      "listeningOptionTargetIds": ["toutefois", "tout-de-meme", "pour-autant", "cependant"]
+    },
+    {
+      "id": "neanmoins",
+      "term": "néanmoins",
+      "translations": {
+        "en": ["nevertheless", "nonetheless"],
+        "de": ["dennoch", "nichtsdestoweniger"]
+      },
+      "wordClass": "adverb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "néanmoins",
+      "examForms": ["néanmoins"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/neɑ̃mwɛ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Il est vrai que le trajet est long ; néanmoins, il est agréable.",
+        "translation": {
+          "en": "It is true that the journey is long; nevertheless, it is pleasant.",
+          "de": "Es stimmt, dass die Fahrt lang ist; dennoch ist sie angenehm."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Néanmoins is a slightly formal way to say that the point still stands despite the concession.",
+        "fr": "Néanmoins est une façon un peu soutenue de dire que le point reste valable malgré la concession.",
+        "de": "Néanmoins ist eine leicht gehobene Art zu sagen, dass der Punkt trotz des Zugeständnisses bestehen bleibt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il est vrai que le trajet est long ; ",
+        "after": ", il est agréable.",
+        "accepted": { "answers": ["néanmoins"] },
+        "referenceTargetIds": ["neanmoins", "certes", "sans-doute", "il-est-vrai-que"],
+        "explanation": {
+          "en": "The concession is already made, so only the counterpoint néanmoins fits.",
+          "fr": "La concession est déjà faite, donc seul le contre-argument néanmoins convient.",
+          "de": "Das Zugeständnis ist schon gemacht, deshalb passt nur das Gegenargument néanmoins."
+        }
+      },
+      "listeningOptionTargetIds": ["neanmoins", "cependant", "toutefois", "certes"]
+    },
+    {
+      "id": "cependant",
+      "term": "cependant",
+      "translations": { "en": ["yet", "still"], "de": ["gleichwohl", "indes"] },
+      "wordClass": "adverb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "cependant",
+      "examForms": ["cependant"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/s(ə)pɑ̃dɑ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Sans doute le film est-il long ; cependant, il vaut le détour.",
+        "translation": {
+          "en": "The film is no doubt long; yet it is worth the trip.",
+          "de": "Der Film ist wohl lang; gleichwohl lohnt er den Umweg."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Cependant opposes a second idea to the first one without cancelling it.",
+        "fr": "Cependant oppose une seconde idée à la première sans l’annuler.",
+        "de": "Cependant stellt der ersten Idee eine zweite entgegen, ohne sie aufzuheben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Sans doute le film est-il long ; ",
+        "after": ", il vaut le détour.",
+        "accepted": { "answers": ["cependant"] },
+        "referenceTargetIds": ["cependant", "certes", "il-est-vrai-que", "sans-doute"],
+        "explanation": {
+          "en": "After the concession, cependant introduces the opposing idea.",
+          "fr": "Après la concession, cependant introduit l’idée opposée.",
+          "de": "Nach dem Zugeständnis leitet cependant den entgegengesetzten Gedanken ein."
+        }
+      },
+      "listeningOptionTargetIds": ["cependant", "sans-doute", "neanmoins", "pour-autant"]
+    },
+    {
+      "id": "pour-autant",
+      "term": "pour autant",
+      "translations": { "en": ["for all that", "for that reason"], "de": ["deswegen", "deshalb"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "pour autant",
+      "examForms": ["pour autant"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/puʁ otɑ̃/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Il a gagné, mais il n’est pas heureux pour autant.",
+        "translation": {
+          "en": "He won, but he is not happy for all that.",
+          "de": "Er hat gewonnen, aber deswegen ist er nicht glücklich."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Pour autant is almost always used in a negative or interrogative sentence and sits after the verb.",
+        "fr": "Pour autant s’emploie presque toujours dans une phrase négative ou interrogative et se place après le verbe.",
+        "de": "Pour autant steht fast immer in einem verneinten oder Fragesatz und folgt dem Verb."
+      },
+      "explanation": {
+        "en": "Pour autant says that the first fact does not lead to the expected consequence.",
+        "fr": "Pour autant indique que le premier fait n’entraîne pas la conséquence attendue.",
+        "de": "Pour autant besagt, dass die erste Tatsache nicht die erwartete Folge hat."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il a gagné, mais il n’est pas heureux ",
+        "after": ".",
+        "accepted": { "answers": ["pour autant"] },
+        "referenceTargetIds": ["pour-autant", "certes", "il-est-vrai-que", "sans-doute"],
+        "explanation": {
+          "en": "Pour autant comes at the end of a negative clause: not happy for all that.",
+          "fr": "Pour autant se place à la fin d’une proposition négative : pas heureux pour autant.",
+          "de": "Pour autant steht am Ende eines verneinten Satzes: deswegen nicht glücklich."
+        }
+      },
+      "listeningOptionTargetIds": ["pour-autant", "toutefois", "tout-de-meme", "cependant"]
+    },
+    {
+      "id": "n-empeche-que",
+      "term": "n'empêche que",
+      "translations": {
+        "en": ["even so", "that doesn't change the fact that"],
+        "de": ["trotzdem", "das ändert nichts daran, dass"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "n'empêche que",
+      "examForms": ["n'empêche que", "n’empêche que"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/nɑ̃pɛʃ kə/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Tu as peut-être raison ; n’empêche que je ne suis pas convaincu.",
+        "translation": {
+          "en": "You may be right; even so, I am not convinced.",
+          "de": "Du hast vielleicht recht; trotzdem bin ich nicht überzeugt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "N'empêche que is a spoken, informal way to keep your view after conceding.",
+        "fr": "N'empêche que est une façon familière, surtout orale, de maintenir son avis après avoir concédé.",
+        "de": "N'empêche que ist eine umgangssprachliche, vor allem mündliche Art, nach einem Zugeständnis bei der eigenen Meinung zu bleiben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Tu as peut-être raison ; ",
+        "after": " je ne suis pas convaincu.",
+        "accepted": { "answers": ["n'empêche que", "n’empêche que"] },
+        "referenceTargetIds": ["n-empeche-que", "certes", "il-est-vrai-que", "pour-autant"],
+        "explanation": {
+          "en": "N'empêche que is followed by a full clause and keeps the speaker's position.",
+          "fr": "N'empêche que est suivi d’une proposition complète et maintient la position du locuteur.",
+          "de": "N'empêche que wird von einem vollständigen Satz gefolgt und hält die Position des Sprechers aufrecht."
+        }
+      },
+      "listeningOptionTargetIds": ["n-empeche-que", "neanmoins", "il-est-vrai-que", "certes"]
+    },
+    {
+      "id": "tout-de-meme",
+      "term": "tout de même",
+      "translations": {
+        "en": ["all the same", "even so, still"],
+        "de": ["trotz allem", "trotzdem noch"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "tout de même",
+      "examForms": ["tout de même"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/tu də mɛm/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Il pleut, mais je sors tout de même.",
+        "translation": {
+          "en": "It is raining, but I am going out all the same.",
+          "de": "Es regnet, aber ich gehe trotz allem hinaus."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Tout de même shows that an action or opinion holds despite an obstacle.",
+        "fr": "Tout de même montre qu’une action ou une opinion se maintient malgré un obstacle.",
+        "de": "Tout de même zeigt, dass eine Handlung oder Meinung trotz eines Hindernisses bestehen bleibt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il pleut, mais je sors ",
+        "after": ".",
+        "accepted": { "answers": ["tout de même"] },
+        "referenceTargetIds": ["tout-de-meme", "certes", "il-est-vrai-que", "n-empeche-que"],
+        "explanation": {
+          "en": "Tout de même closes the sentence and marks the action as done despite the rain.",
+          "fr": "Tout de même termine la phrase et marque que l’action a lieu malgré la pluie.",
+          "de": "Tout de même schließt den Satz und zeigt, dass die Handlung trotz des Regens stattfindet."
+        }
+      },
+      "listeningOptionTargetIds": ["tout-de-meme", "toutefois", "pour-autant", "certes"]
+    },
+    {
+      "id": "il-n-en-reste-pas-moins-que",
+      "term": "il n'en reste pas moins que",
+      "translations": {
+        "en": ["the fact remains that"],
+        "de": ["es bleibt dabei, dass", "nichtsdestoweniger bleibt, dass"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "il n'en reste pas moins que",
+      "examForms": ["il n'en reste pas moins que", "il n’en reste pas moins que"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/il nɑ̃ ʁɛst pa mwɛ̃ kə/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Le plan est imparfait ; il n’en reste pas moins que nous devons agir.",
+        "translation": {
+          "en": "The plan is imperfect; the fact remains that we must act.",
+          "de": "Der Plan ist unvollkommen; es bleibt dabei, dass wir handeln müssen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Il n'en reste pas moins que is formal and stresses that the main point survives the concession.",
+        "fr": "Il n'en reste pas moins que est soutenu et souligne que l’essentiel subsiste malgré la concession.",
+        "de": "Il n'en reste pas moins que ist gehoben und betont, dass die Hauptsache trotz des Zugeständnisses bestehen bleibt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le plan est imparfait ; ",
+        "after": " nous devons agir.",
+        "accepted": { "answers": ["il n'en reste pas moins que", "il n’en reste pas moins que"] },
+        "referenceTargetIds": [
+          "il-n-en-reste-pas-moins-que",
+          "certes",
+          "sans-doute",
+          "pour-autant"
+        ],
+        "explanation": {
+          "en": "The long connector is followed by a clause and stresses what still holds.",
+          "fr": "Le long connecteur est suivi d’une proposition et souligne ce qui reste vrai.",
+          "de": "Der lange Konnektor wird von einem Satz gefolgt und betont, was weiterhin gilt."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "il-n-en-reste-pas-moins-que",
+        "il-est-vrai-que",
+        "n-empeche-que",
+        "neanmoins"
+      ]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

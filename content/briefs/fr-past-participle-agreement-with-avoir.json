@@ -1,0 +1,237 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-past-participle-agreement-with-avoir",
+  "lang": "fr",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "L’accord du participe passé avec avoir",
+  "objective": {
+    "en": "Make the past participle agree with a direct object placed before avoir: la lettre que j'ai écrite, je les ai prises, quelles villes as-tu visitées ?",
+    "fr": "Accorder le participe passé avec le COD placé avant avoir : la lettre que j'ai écrite, ces photos, je les ai prises, quelles villes as-tu visitées ?",
+    "de": "Das Partizip mit einem vor avoir stehenden direkten Objekt angleichen: la lettre que j'ai écrite, je les ai prises, quelles villes as-tu visitées ?"
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:50:17.665Z",
+    "inputHashes": { "outline": "5da05023c62754664d78188307fcb711c9ae6776c422fa8e056dd9dd98440b66" }
+  },
+  "kind": "grammar",
+  "topic": "agreement",
+  "scopeBoundaries": {
+    "en": "Covers agreement with a direct object before avoir: pronouns le, la, l', les, the relative que and quel + noun questions. Excludes être, pronominal verbs, the pronoun en and verbs followed by an infinitive.",
+    "fr": "Couvre l'accord avec le COD placé avant avoir : les pronoms le, la, l', les, le relatif que et les questions avec quel + nom. Exclut être, les verbes pronominaux, le pronom en et les verbes suivis d'un infinitif.",
+    "de": "Behandelt die Angleichung an ein direktes Objekt vor avoir: die Pronomen le, la, l', les, das Relativpronomen que und Fragen mit quel + Nomen. Ausgeschlossen sind être, reflexive Verben, das Pronomen en und Verben mit Infinitiv."
+  },
+  "prerequisites": [
+    {
+      "en": "The passé composé with avoir and common past participles",
+      "fr": "Le passé composé avec avoir et les participes passés courants",
+      "de": "Das passé composé mit avoir und gängige Partizipien"
+    },
+    {
+      "en": "Direct object pronouns: le, la, l', les",
+      "fr": "Les pronoms COD : le, la, l', les",
+      "de": "Direkte Objektpronomen: le, la, l', les"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-cod-before",
+      "summary": {
+        "en": "A direct object pronoun (le, la, l', les) before avoir makes the participle agree in gender and number.",
+        "fr": "Un pronom COD (le, la, l', les) placé avant avoir : le participe s'accorde en genre et en nombre.",
+        "de": "Steht ein direktes Objektpronomen (le, la, l', les) vor avoir, richtet sich das Partizip nach Genus und Numerus."
+      }
+    },
+    {
+      "id": "rule-que-quel",
+      "summary": {
+        "en": "The relative que and quel + noun questions put the object before avoir: the participle agrees with it.",
+        "fr": "Le relatif que et les questions avec quel + nom placent le COD avant avoir : le participe s'accorde avec lui.",
+        "de": "Das Relativpronomen que und Fragen mit quel + Nomen stellen das Objekt vor avoir: Das Partizip gleicht sich an."
+      }
+    },
+    {
+      "id": "rule-no-agreement",
+      "summary": {
+        "en": "No agreement when the object comes after the verb or when there is no object.",
+        "fr": "Pas d'accord quand le COD est après le verbe ou quand il n'y en a pas.",
+        "de": "Keine Angleichung, wenn das Objekt nach dem Verb steht oder es kein Objekt gibt."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-pronoun",
+      "title": {
+        "en": "Object pronoun before avoir",
+        "fr": "Le pronom COD avant avoir",
+        "de": "Objektpronomen vor avoir"
+      },
+      "ruleIds": ["rule-cod-before", "rule-no-agreement"],
+      "explanationPlan": {
+        "en": "Explain that the participle with avoir is invariable by default, then agrees with a direct object placed before the verb, mostly le, la, l', les. Contrast with a direct object after the verb and with verbs without object.",
+        "fr": "Expliquer que le participe avec avoir est invariable par défaut, puis s'accorde avec un COD placé avant le verbe, surtout le, la, l', les. Opposer au COD après le verbe et aux verbes sans COD.",
+        "de": "Erklären, dass das Partizip mit avoir normalerweise unveränderlich ist und sich an ein vor dem Verb stehendes direktes Objekt anpasst, meist le, la, l', les. Gegenüberstellen: Objekt nach dem Verb und Verben ohne Objekt."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "La lettre, je l'ai écrite.",
+          "translation": {
+            "en": "The letter, I wrote it.",
+            "de": "Den Brief habe ich geschrieben."
+          }
+        },
+        {
+          "text": "Ces photos, je les ai prises.",
+          "translation": {
+            "en": "These photos, I took them.",
+            "de": "Diese Fotos habe ich gemacht."
+          }
+        },
+        {
+          "text": "Le film, nous l'avons vu.",
+          "translation": { "en": "The film, we saw it.", "de": "Den Film haben wir gesehen." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "The -e of the feminine is often silent: check the object, not your ear.",
+          "fr": "Le -e du féminin ne s'entend souvent pas : vérifiez le COD, pas l'oreille.",
+          "de": "Das feminine -e hört man oft nicht: Prüfe das Objekt, nicht das Gehör."
+        },
+        {
+          "en": "Do not agree the participle with the subject: Ils ont dormi.",
+          "fr": "N'accordez pas le participe avec le sujet : Ils ont dormi.",
+          "de": "Gleiche das Partizip nicht an das Subjekt an: Ils ont dormi."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-pron-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-cod-before", "rule-no-agreement"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-pron-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-cod-before"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-pron-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 4,
+          "ruleIds": ["rule-cod-before", "rule-no-agreement"],
+          "estimatedDurationS": 100
+        }
+      ]
+    },
+    {
+      "id": "block-relative",
+      "title": {
+        "en": "Que and quel + noun",
+        "fr": "Que et quel + nom",
+        "de": "Que und quel + Nomen"
+      },
+      "ruleIds": ["rule-que-quel"],
+      "explanationPlan": {
+        "en": "Show that the relative pronoun que is a direct object standing for a noun before the verb, so the participle agrees with that noun. Same rule for questions with quel + noun. Give a three-step method: find the object, check its place, agree.",
+        "fr": "Montrer que le relatif que est un COD qui reprend un nom placé avant le verbe : le participe s'accorde avec ce nom. Même règle pour les questions avec quel + nom. Donner une méthode en trois étapes : trouver le COD, vérifier sa place, accorder.",
+        "de": "Zeigen, dass das Relativpronomen que ein direktes Objekt ist, das ein Nomen vor dem Verb vertritt, sodass sich das Partizip daran angleicht. Gleiche Regel bei Fragen mit quel + Nomen. Methode in drei Schritten: Objekt finden, Stellung prüfen, angleichen."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "La lettre que j'ai écrite est partie.",
+          "translation": {
+            "en": "The letter that I wrote has gone.",
+            "de": "Der Brief, den ich geschrieben habe, ist abgeschickt."
+          }
+        },
+        {
+          "text": "Les villes qu'il a visitées sont belles.",
+          "translation": {
+            "en": "The cities he visited are beautiful.",
+            "de": "Die Städte, die er besucht hat, sind schön."
+          }
+        },
+        {
+          "text": "Quelles villes as-tu visitées ?",
+          "translation": {
+            "en": "Which cities did you visit?",
+            "de": "Welche Städte hast du besucht?"
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not agree the participle with the noun that follows it: J'ai visité de belles villes.",
+          "fr": "N'accordez pas le participe avec le nom qui le suit : J'ai visité de belles villes.",
+          "de": "Gleiche das Partizip nicht an das folgende Nomen an: J'ai visité de belles villes."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-rel-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-que-quel"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-rel-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-que-quel"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-rel-order",
+          "type": "grammar_word_order",
+          "itemCount": 4,
+          "ruleIds": ["rule-que-quel"],
+          "estimatedDurationS": 80
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-pronoun",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-cod-before", "rule-no-agreement"],
+        "estimatedDurationS": 80,
+        "timeLimitS": 130
+      },
+      {
+        "pageId": "exam-relative",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-que-quel"],
+        "estimatedDurationS": 80,
+        "timeLimitS": 130
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-que-quel"],
+        "estimatedDurationS": 75,
+        "timeLimitS": 120
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

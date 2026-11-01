@@ -1,0 +1,535 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-verbal-tics",
+  "lang": "fr",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "En vrai, au final, j’avoue",
+  "objective": {
+    "en": "Spot today’s verbal tics and judge their effect on the listener, with ten examples.",
+    "fr": "Repérer les tics de langage d’aujourd’hui et leur effet sur l’auditeur, avec dix exemples.",
+    "de": "Heutige Sprechtics erkennen und ihre Wirkung auf die Zuhörer einschätzen, anhand von zehn Beispielen."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:58:39.847Z",
+    "inputHashes": { "outline": "6522afb30771b8e85e7be9a64cf1adf9f7eea772b0b46fcd91d03832984696e0" }
+  },
+  "kind": "vocabulary",
+  "theme": "language",
+  "coverageNotes": {
+    "en": "Ten spoken-French tics in two groups: fillers that organise speech (en vrai, au final, de base, juste, genre) and reactions that approve or stress (j’avoue, c’est clair, carrément, grave, voilà). Each is taught with its effect on the listener.",
+    "fr": "Dix tics du français oral en deux groupes : ceux qui organisent le discours (en vrai, au final, de base, juste, genre) et ceux qui approuvent ou renforcent (j’avoue, c’est clair, carrément, grave, voilà). Chacun est présenté avec son effet sur l’auditeur.",
+    "de": "Zehn Tics des gesprochenen Französisch in zwei Gruppen: solche, die die Rede gliedern (en vrai, au final, de base, juste, genre), und solche, die zustimmen oder verstärken (j’avoue, c’est clair, carrément, grave, voilà). Jeder wird mit seiner Wirkung auf die Zuhörer vorgestellt."
+  },
+  "targetCount": 10,
+  "countRationale": {
+    "en": "Ten tics are enough to cover the most frequent ones without turning the lesson into a list.",
+    "fr": "Dix tics suffisent pour couvrir les plus fréquents sans transformer la leçon en simple liste.",
+    "de": "Zehn Tics reichen, um die häufigsten abzudecken, ohne dass die Lektion zur bloßen Liste wird."
+  },
+  "difficultyBalance": {
+    "en": "Most items are common and easy to hear; the demanding ones (genre as a quotative, de base, voilà) need a finer ear for their effect.",
+    "fr": "La plupart sont courants et faciles à repérer ; les plus exigeants (genre qui introduit une citation, de base, voilà) demandent une oreille plus fine pour leur effet.",
+    "de": "Die meisten sind häufig und leicht zu hören; die anspruchsvollen (genre als Zitateinleitung, de base, voilà) verlangen ein feineres Gehör für ihre Wirkung."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "connecteurs",
+      "label": {
+        "en": "Fillers that organise speech",
+        "fr": "Les tics qui organisent le discours",
+        "de": "Tics, die die Rede gliedern"
+      },
+      "targetIds": ["en-vrai", "au-final", "de-base", "juste", "genre"],
+      "introduction": {
+        "en": "These tics punctuate today’s speech. They are **handy** at times, but they can **tire** the listener:\n\n- `en vrai`\n- `au final`\n- `de base`\n- `juste`\n- `genre`",
+        "fr": "Ces tics ponctuent l’oral d’aujourd’hui. Ils sont parfois **commodes**, mais ils peuvent **lasser** l’auditeur :\n\n- `en vrai`\n- `au final`\n- `de base`\n- `juste`\n- `genre`",
+        "de": "Diese Tics gliedern die heutige Alltagssprache. Sie sind manchmal **praktisch**, können die Zuhörer aber **ermüden**:\n\n- `en vrai`\n- `au final`\n- `de base`\n- `juste`\n- `genre`"
+      }
+    },
+    {
+      "id": "reactions",
+      "label": {
+        "en": "Reactions that approve or stress",
+        "fr": "Les tics qui approuvent ou renforcent",
+        "de": "Tics, die zustimmen oder verstärken"
+      },
+      "targetIds": ["javoue", "cest-clair", "carrement", "grave", "voila"],
+      "introduction": {
+        "en": "Here the effect changes: the speaker **agrees**, **stresses** or **closes** the exchange, often without adding any content:\n\n- `j’avoue`\n- `c’est clair`\n- `carrément`\n- `grave`\n- `voilà`",
+        "fr": "Ici, l’effet change : le locuteur **approuve**, **renforce** ou **clôt** l’échange, souvent sans rien ajouter au contenu :\n\n- `j’avoue`\n- `c’est clair`\n- `carrément`\n- `grave`\n- `voilà`",
+        "de": "Hier ändert sich die Wirkung: Die Sprecherin oder der Sprecher **stimmt zu**, **verstärkt** oder **beendet** den Austausch, oft ohne inhaltlich etwas hinzuzufügen:\n\n- `j’avoue`\n- `c’est clair`\n- `carrément`\n- `grave`\n- `voilà`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "en-vrai",
+      "term": "en vrai",
+      "translations": {
+        "en": ["honestly", "in reality"],
+        "de": ["ehrlich gesagt", "in Wirklichkeit"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "en vrai",
+      "examForms": ["en vrai"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɑ̃ vʁɛ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "En vrai, je n’avais aucune envie d’y aller.",
+        "translation": {
+          "en": "Honestly, I had no wish to go at all.",
+          "de": "Ehrlich gesagt hatte ich überhaupt keine Lust hinzugehen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "En vrai announces a frank correction: reality differs from what was shown or said before.",
+        "fr": "« En vrai » annonce une correction franche : la réalité diffère de ce qui était montré ou dit avant.",
+        "de": "„En vrai“ kündigt eine offene Korrektur an: Die Wirklichkeit weicht von dem ab, was vorher gezeigt oder gesagt wurde."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "honestly (frank correction, spoken tic)",
+        "de": "ehrlich gesagt (offene Korrektur, Sprechtic)"
+      },
+      "gap": {
+        "before": "Sur les photos, elle a l’air heureuse ; ",
+        "after": ", elle est épuisée.",
+        "accepted": { "answers": ["en vrai"] },
+        "referenceTargetIds": ["en-vrai", "juste", "genre", "au-final"],
+        "explanation": {
+          "en": "The sentence contrasts appearance with reality, which is exactly what en vrai does.",
+          "fr": "La phrase oppose l’apparence à la réalité, ce que fait précisément « en vrai ».",
+          "de": "Der Satz stellt Anschein und Wirklichkeit gegenüber, genau das leistet „en vrai“."
+        }
+      },
+      "listeningOptionTargetIds": ["en-vrai", "au-final", "de-base", "genre"]
+    },
+    {
+      "id": "au-final",
+      "term": "au final",
+      "translations": { "en": ["in the end", "all in all"], "de": ["am Ende", "letztlich"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "au final",
+      "examForms": ["au final"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/o fi.nal/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Au final, personne n’a rien décidé.",
+        "translation": {
+          "en": "In the end, nobody decided anything.",
+          "de": "Am Ende hat niemand etwas entschieden."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Au final introduces a conclusion; it is heard so often that it can sound like a stock phrase, where finalement or en définitive sound more careful.",
+        "fr": "« Au final » introduit une conclusion ; entendu sans cesse, il sonne comme une formule toute faite, là où « finalement » ou « en définitive » paraissent plus soignés.",
+        "de": "„Au final“ leitet ein Fazit ein; so oft gehört wirkt es wie eine Floskel, während „finalement“ oder „en définitive“ sorgfältiger klingen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "in the end (introducing a conclusion)",
+        "de": "am Ende (leitet ein Fazit ein)"
+      },
+      "gap": {
+        "before": "Après trois heures de débat, ",
+        "after": ", on n’a rien décidé.",
+        "accepted": { "answers": ["au final"] },
+        "referenceTargetIds": ["au-final", "de-base", "juste", "genre"],
+        "explanation": {
+          "en": "The sentence draws a conclusion from a long discussion: only au final fits.",
+          "fr": "La phrase tire une conclusion d’une longue discussion : seul « au final » convient.",
+          "de": "Der Satz zieht ein Fazit aus einer langen Diskussion: Nur „au final“ passt."
+        }
+      },
+      "listeningOptionTargetIds": ["au-final", "en-vrai", "juste", "voila"]
+    },
+    {
+      "id": "de-base",
+      "term": "de base",
+      "translations": { "en": ["basically", "by default"], "de": ["im Grunde", "grundsätzlich"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "de base",
+      "examForms": ["de base"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/də bɑz/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "De base, je suis plutôt timide.",
+        "translation": {
+          "en": "Basically, I am rather shy.",
+          "de": "Im Grunde bin ich eher schüchtern."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "De base states a starting point or a default state, but as a tic it often adds nothing and only blurs the statement.",
+        "fr": "« De base » pose un point de départ ou un état par défaut, mais comme tic il n’apporte souvent rien et brouille l’énoncé.",
+        "de": "„De base“ nennt einen Ausgangspunkt oder Normalzustand, doch als Tic fügt es oft nichts hinzu und verwischt die Aussage."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "basically (starting point, spoken tic)",
+        "de": "im Grunde (Ausgangspunkt, Sprechtic)"
+      },
+      "gap": {
+        "before": "Moi, ",
+        "after": ", je suis plutôt thé, mais je veux bien goûter.",
+        "accepted": { "answers": ["de base"] },
+        "referenceTargetIds": ["de-base", "voila", "cest-clair", "grave"],
+        "explanation": {
+          "en": "The speaker gives a default preference before an exception: de base.",
+          "fr": "Le locuteur donne une préférence par défaut avant une exception : « de base ».",
+          "de": "Der Sprecher nennt eine Grundvorliebe vor einer Ausnahme: „de base“."
+        }
+      },
+      "listeningOptionTargetIds": ["de-base", "en-vrai", "grave", "juste"]
+    },
+    {
+      "id": "juste",
+      "term": "juste",
+      "translations": { "en": ["just", "simply"], "de": ["einfach", "schlicht"] },
+      "wordClass": "adverb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "juste",
+      "examForms": ["juste"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʒyst/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "C’est juste génial !",
+        "translation": { "en": "It is just great!", "de": "Es ist einfach genial!" }
+      },
+      "ambiguityNote": {
+        "en": "Do not confuse it with the adjective juste (fair, correct).",
+        "fr": "À ne pas confondre avec l’adjectif « juste » (équitable, exact).",
+        "de": "Nicht mit dem Adjektiv „juste“ (gerecht, richtig) verwechseln."
+      },
+      "explanation": {
+        "en": "Juste before an adjective (juste génial) stresses it: it is an intensifier that has drifted from its sense of “only”.",
+        "fr": "« Juste » devant un adjectif (« juste génial ») le renforce : c’est un intensif qui s’est éloigné de son sens de « seulement ».",
+        "de": "„Juste“ vor einem Adjektiv („juste génial“) verstärkt es: Es ist ein Intensivierer, der sich von der Bedeutung „nur“ entfernt hat."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "just, simply (intensifier before an adjective)",
+        "de": "einfach, schlicht (Verstärker vor einem Adjektiv)"
+      },
+      "gap": {
+        "before": "Le concert d’hier ? C’était ",
+        "after": " génial !",
+        "accepted": { "answers": ["juste"] },
+        "referenceTargetIds": ["juste", "au-final", "voila", "cest-clair"],
+        "explanation": {
+          "en": "Only juste can stress the adjective génial in this way.",
+          "fr": "Seul « juste » peut renforcer ainsi l’adjectif « génial ».",
+          "de": "Nur „juste“ kann das Adjektiv „génial“ auf diese Weise verstärken."
+        }
+      },
+      "listeningOptionTargetIds": ["juste", "genre", "grave", "carrement"]
+    },
+    {
+      "id": "genre",
+      "term": "genre",
+      "translations": { "en": ["like (filler)", "sort of"], "de": ["sozusagen", "quasi"] },
+      "wordClass": "other",
+      "genders": [],
+      "number": null,
+      "teachingForm": "genre",
+      "examForms": ["genre"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʒɑ̃ʁ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Il m’a dit un truc, genre : « Tu devrais te calmer. »",
+        "translation": {
+          "en": "He told me something like: “You should calm down.”",
+          "de": "Er hat mir so etwas gesagt wie: „Du solltest dich beruhigen.“"
+        }
+      },
+      "ambiguityNote": {
+        "en": "Do not confuse it with the noun un genre (a kind, a gender).",
+        "fr": "À ne pas confondre avec le nom « un genre » (sorte, catégorie grammaticale).",
+        "de": "Nicht mit dem Nomen „un genre“ (Art, Genus) verwechseln."
+      },
+      "explanation": {
+        "en": "Genre introduces an approximation or a quotation. Repeated, it makes speech vague and the listener loses the thread.",
+        "fr": "« Genre » introduit une approximation ou une citation. Répété, il rend le propos flou et l’auditeur perd le fil.",
+        "de": "„Genre“ leitet eine Annäherung oder ein Zitat ein. Wiederholt macht es die Rede vage, und die Zuhörer verlieren den Faden."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "like, sort of (filler introducing a quotation)",
+        "de": "sozusagen, quasi (Füllwort vor einem Zitat)"
+      },
+      "gap": {
+        "before": "Il m’a dit un truc, ",
+        "after": " : « Tu devrais te calmer. »",
+        "accepted": { "answers": ["genre"] },
+        "referenceTargetIds": ["genre", "juste", "de-base", "grave"],
+        "explanation": {
+          "en": "Genre followed by a colon introduces the reported words, as in “he said, like: …”.",
+          "fr": "« Genre » suivi de deux-points introduit les paroles rapportées, comme « il a dit, du style : … ».",
+          "de": "„Genre“ mit folgendem Doppelpunkt leitet die wiedergegebenen Worte ein, etwa „er sagte so etwas wie: …“."
+        }
+      },
+      "listeningOptionTargetIds": ["genre", "juste", "grave", "javoue"]
+    },
+    {
+      "id": "javoue",
+      "term": "j’avoue",
+      "translations": { "en": ["I admit it", "fair enough"], "de": ["ich geb’s zu", "stimmt"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "j’avoue",
+      "examForms": ["j’avoue", "j'avoue"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʒa.vu/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "— Ce film était trop long. — J’avoue !",
+        "translation": {
+          "en": "“That film was too long.” “Fair enough!”",
+          "de": "„Der Film war zu lang.“ „Stimmt!“"
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "J’avoue is used to agree with someone, even when nothing is being confessed. It shows complicity with the speaker.",
+        "fr": "« J’avoue » sert à donner raison à quelqu’un, même quand rien n’est avoué. Il marque la complicité avec l’interlocuteur.",
+        "de": "„J’avoue“ dient dazu, jemandem zuzustimmen, auch wenn nichts gestanden wird. Es zeigt Komplizenschaft mit dem Gegenüber."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "I admit it, fair enough (agreeing with someone)",
+        "de": "ich geb’s zu, stimmt (Zustimmung)"
+      },
+      "gap": {
+        "before": "— Ce film était trop long. — ",
+        "after": " !",
+        "accepted": { "answers": ["j’avoue", "j'avoue"] },
+        "referenceTargetIds": ["javoue", "en-vrai", "de-base", "au-final"],
+        "explanation": {
+          "en": "The reply agrees with the remark about the film: j’avoue.",
+          "fr": "La réponse donne raison à la remarque sur le film : « j’avoue ».",
+          "de": "Die Antwort stimmt der Bemerkung über den Film zu: „j’avoue“."
+        }
+      },
+      "listeningOptionTargetIds": ["javoue", "voila", "en-vrai", "cest-clair"]
+    },
+    {
+      "id": "cest-clair",
+      "term": "c’est clair",
+      "translations": { "en": ["obviously", "got it"], "de": ["klar", "logisch"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "c’est clair",
+      "examForms": ["c’est clair", "c'est clair"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/sɛ klɛʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "— Il faut tout rendre lundi. — C’est clair.",
+        "translation": {
+          "en": "“Everything is due on Monday.” “Understood.”",
+          "de": "„Alles muss bis Montag abgegeben werden.“ „Klar.“"
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "C’est clair confirms that one has understood or agrees. It replaces a real answer and can sound curt.",
+        "fr": "« C’est clair » confirme qu’on a compris ou qu’on est d’accord. Il remplace une vraie réponse et peut sembler sec.",
+        "de": "„C’est clair“ bestätigt, dass man verstanden hat oder einverstanden ist. Es ersetzt eine richtige Antwort und kann knapp wirken."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "obviously, understood (confirming)",
+        "de": "klar, logisch (Bestätigung)"
+      },
+      "gap": {
+        "before": "— Tu as compris la consigne ? — Oui, ",
+        "after": ", il faut tout rendre lundi.",
+        "accepted": { "answers": ["c’est clair", "c'est clair"] },
+        "referenceTargetIds": ["cest-clair", "genre", "juste", "de-base"],
+        "explanation": {
+          "en": "The speaker confirms having understood the instruction: c’est clair.",
+          "fr": "Le locuteur confirme avoir compris la consigne : « c’est clair ».",
+          "de": "Der Sprecher bestätigt, die Anweisung verstanden zu haben: „c’est clair“."
+        }
+      },
+      "listeningOptionTargetIds": ["cest-clair", "carrement", "grave", "javoue"]
+    },
+    {
+      "id": "carrement",
+      "term": "carrément",
+      "translations": { "en": ["totally", "absolutely"], "de": ["total", "absolut"] },
+      "wordClass": "adverb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "carrément",
+      "examForms": ["carrément"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ka.ʁe.mɑ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Il a carrément quitté son travail.",
+        "translation": {
+          "en": "He actually quit his job.",
+          "de": "Er hat tatsächlich einfach seinen Job gekündigt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Carrément stresses a bold or extreme action. Used alone it can also mean “absolutely”, in answer to a question.",
+        "fr": "« Carrément » souligne une action audacieuse ou extrême. Seul, il peut aussi signifier « tout à fait », en réponse à une question.",
+        "de": "„Carrément“ unterstreicht eine kühne oder extreme Handlung. Allein kann es auch „ganz und gar“ bedeuten, als Antwort auf eine Frage."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "totally, absolutely (stressing a bold action)",
+        "de": "total, absolut (betont eine kühne Handlung)"
+      },
+      "gap": {
+        "before": "Il n’a pas hésité : il a ",
+        "after": " quitté son travail.",
+        "accepted": { "answers": ["carrément"] },
+        "referenceTargetIds": ["carrement", "voila", "au-final", "en-vrai"],
+        "explanation": {
+          "en": "The adverb stresses how radical the decision was: carrément.",
+          "fr": "L’adverbe souligne le caractère radical de la décision : « carrément ».",
+          "de": "Das Adverb betont, wie radikal die Entscheidung war: „carrément“."
+        }
+      },
+      "listeningOptionTargetIds": ["carrement", "cest-clair", "grave", "voila"]
+    },
+    {
+      "id": "grave",
+      "term": "grave",
+      "translations": { "en": ["seriously", "a lot"], "de": ["echt", "voll"] },
+      "wordClass": "adverb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "grave",
+      "examForms": ["grave"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡʁav/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Je suis grave fatigué ce matin.",
+        "translation": {
+          "en": "I am seriously tired this morning.",
+          "de": "Ich bin heute Morgen echt müde."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Here grave is an informal adverb; the adjective grave means “serious”.",
+        "fr": "Ici « grave » est un adverbe familier ; l’adjectif « grave » signifie « sérieux ».",
+        "de": "Hier ist „grave“ ein umgangssprachliches Adverb; das Adjektiv „grave“ bedeutet „ernst“."
+      },
+      "explanation": {
+        "en": "Grave used as an intensifier is informal, very young in tone. In a formal setting it would be replaced by très.",
+        "fr": "« Grave » employé comme intensif est familier, très jeune de ton. Dans un cadre formel, on le remplacerait par « très ».",
+        "de": "„Grave“ als Verstärker ist umgangssprachlich und klingt sehr jugendlich. In formellem Rahmen würde man es durch „très“ ersetzen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "seriously, a lot (informal intensifier)",
+        "de": "echt, voll (umgangssprachlicher Verstärker)"
+      },
+      "gap": {
+        "before": "Je suis ",
+        "after": " fatigué ce matin.",
+        "accepted": { "answers": ["grave"] },
+        "referenceTargetIds": ["grave", "voila", "au-final", "en-vrai"],
+        "explanation": {
+          "en": "Only grave works as an informal intensifier before fatigué.",
+          "fr": "Seul « grave » fonctionne comme intensif familier devant « fatigué ».",
+          "de": "Nur „grave“ funktioniert als umgangssprachlicher Verstärker vor „fatigué“."
+        }
+      },
+      "listeningOptionTargetIds": ["grave", "genre", "carrement", "juste"]
+    },
+    {
+      "id": "voila",
+      "term": "voilà",
+      "translations": { "en": ["there you go", "that’s it"], "de": ["na bitte", "das war’s"] },
+      "wordClass": "interjection",
+      "genders": [],
+      "number": null,
+      "teachingForm": "voilà",
+      "examForms": ["voilà"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/vwa.la/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Vous prenez la première rue à gauche, et voilà : vous êtes arrivés.",
+        "translation": {
+          "en": "Take the first street on the left, and there you go: you have arrived.",
+          "de": "Sie nehmen die erste Straße links, und schon sind Sie da."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Voilà closes a sentence or a point. As a tic it ends a hesitant sentence without really concluding it.",
+        "fr": "« Voilà » clôt une phrase ou un point. Comme tic, il termine une phrase hésitante sans vraiment conclure.",
+        "de": "„Voilà“ schließt einen Satz oder Punkt ab. Als Tic beendet es einen zögerlichen Satz, ohne wirklich zu einem Schluss zu kommen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "there you go, that’s it (closing a point)",
+        "de": "na bitte, das war’s (schließt einen Punkt ab)"
+      },
+      "gap": {
+        "before": "Vous prenez la première rue à gauche, et ",
+        "after": " : vous êtes arrivés.",
+        "accepted": { "answers": ["voilà"] },
+        "referenceTargetIds": ["voila", "juste", "de-base", "au-final"],
+        "explanation": {
+          "en": "Voilà announces the result of the directions just given.",
+          "fr": "« Voilà » annonce le résultat des indications qui viennent d’être données.",
+          "de": "„Voilà“ kündigt das Ergebnis der eben gegebenen Wegbeschreibung an."
+        }
+      },
+      "listeningOptionTargetIds": ["voila", "javoue", "au-final", "de-base"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

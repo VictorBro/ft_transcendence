@@ -1,0 +1,535 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-increase-and-strengthen",
+  "lang": "fr",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Accroître, renforcer, amplifier",
+  "objective": {
+    "en": "Choose the right verb for a rise, a strengthening or a worsening: augmenter, accroître, renforcer, amplifier, attiser, décupler…",
+    "fr": "Choisir le verbe juste pour exprimer une hausse, un renforcement ou une aggravation : augmenter, accroître, renforcer, amplifier, attiser, décupler…",
+    "de": "Das passende Verb für einen Anstieg, eine Stärkung oder eine Verschlechterung wählen: augmenter, accroître, renforcer, amplifier, attiser, décupler…"
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:58:19.668Z",
+    "inputHashes": { "outline": "253eac2eb399890bb420b16aa22af7c5eff1ec2898a2dccc319a4113335b059e" }
+  },
+  "kind": "vocabulary",
+  "theme": "language",
+  "coverageNotes": {
+    "en": "Ten verbs of increase and reinforcement, split into two groups: neutral or positive rises and reinforcements (augmenter, accroître, renforcer, consolider, amplifier) and verbs of build-up in intensity, often negative (intensifier, aggraver, exacerber, attiser, décupler). Exacerber is added to the outline list because it is the natural neighbour of aggraver and attiser.",
+    "fr": "Dix verbes de hausse et de renforcement, en deux groupes : les hausses et renforcements neutres ou positifs (augmenter, accroître, renforcer, consolider, amplifier) et les verbes de montée en intensité, souvent négatifs (intensifier, aggraver, exacerber, attiser, décupler). Exacerber s’ajoute à la liste du plan, car c’est le voisin naturel d’aggraver et d’attiser.",
+    "de": "Zehn Verben der Steigerung und Verstärkung in zwei Gruppen: neutrale oder positive Zunahmen und Verstärkungen (augmenter, accroître, renforcer, consolider, amplifier) und Verben der Intensitätssteigerung, oft negativ (intensifier, aggraver, exacerber, attiser, décupler). Exacerber ergänzt die Liste der Gliederung, weil es der natürliche Nachbar von aggraver und attiser ist."
+  },
+  "targetCount": 10,
+  "countRationale": {
+    "en": "Ten verbs are enough to contrast their nuances without overloading a C1 learner.",
+    "fr": "Dix verbes suffisent pour opposer les nuances sans surcharger un apprenant de niveau C1.",
+    "de": "Zehn Verben genügen, um die Nuancen gegenüberzustellen, ohne Lernende auf C1-Niveau zu überfordern."
+  },
+  "difficultyBalance": {
+    "en": "Augmenter, renforcer and intensifier are core; accroître, consolider, exacerber, attiser and décupler are demanding because of register and collocations.",
+    "fr": "Augmenter, renforcer et intensifier sont de base ; accroître, consolider, exacerber, attiser et décupler sont plus exigeants à cause du registre et des collocations.",
+    "de": "Augmenter, renforcer und intensifier sind Grundwörter; accroître, consolider, exacerber, attiser und décupler sind wegen Register und Kollokationen anspruchsvoller."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "hausse",
+      "label": {
+        "en": "Increasing and strengthening",
+        "fr": "Augmenter et renforcer",
+        "de": "Erhöhen und stärken"
+      },
+      "targetIds": ["augmenter", "accroitre", "renforcer", "consolider", "amplifier"],
+      "introduction": {
+        "en": "These verbs express a **rise** or a **strengthening**, neutral or positive. Learn the nuance of each one:\n\n- `augmenter`: the neutral term for a quantity;\n- `accroître`: more formal, for a capacity or an influence;\n- `renforcer`: make more solid or more effective;\n- `consolider`: make what has been gained last;\n- `amplifier`: give a phenomenon or a sound more scale.",
+        "fr": "Ces verbes expriment une **hausse** ou un **renforcement**, neutre ou positif. Retenez la nuance de chacun :\n\n- `augmenter` : le terme neutre pour une quantité ;\n- `accroître` : plus soutenu, pour une capacité ou une influence ;\n- `renforcer` : rendre plus solide ou plus efficace ;\n- `consolider` : rendre durable ce qui est acquis ;\n- `amplifier` : donner plus d’ampleur à un phénomène ou à un son.",
+        "de": "Diese Verben drücken einen **Anstieg** oder eine **Stärkung** aus, neutral oder positiv. Lerne die Nuance jedes Verbs:\n\n- `augmenter`: der neutrale Begriff für eine Menge;\n- `accroître`: gehobener, für eine Fähigkeit oder einen Einfluss;\n- `renforcer`: solider oder wirksamer machen;\n- `consolider`: das Erreichte dauerhaft machen;\n- `amplifier`: einem Phänomen oder einem Ton mehr Ausmaß geben."
+      }
+    },
+    {
+      "id": "intensite",
+      "label": {
+        "en": "Intensifying and worsening",
+        "fr": "Intensifier et aggraver",
+        "de": "Verstärken und verschärfen"
+      },
+      "targetIds": ["intensifier", "aggraver", "exacerber", "attiser", "decupler"],
+      "introduction": {
+        "en": "These verbs describe a build-up in force, often in a context of crisis, tension or passion. The choice of verb changes the meaning:\n\n- `intensifier`: make an action or an effort more intense;\n- `aggraver`: make an already bad situation more serious;\n- `exacerber`: push a feeling or a tension to the extreme;\n- `attiser`: rekindle a fire, a conflict or a passion;\n- `décupler`: multiply by ten.",
+        "fr": "Ces verbes décrivent une montée en force, souvent dans un contexte de crise, de tension ou de passion. Le choix du verbe change le sens :\n\n- `intensifier` : rendre plus intense une action ou un effort ;\n- `aggraver` : rendre plus grave une situation déjà mauvaise ;\n- `exacerber` : pousser à l’extrême un sentiment ou une tension ;\n- `attiser` : ranimer un feu, un conflit ou une passion ;\n- `décupler` : multiplier par dix.",
+        "de": "Diese Verben beschreiben eine Zunahme an Stärke, oft in einer Krise, bei Spannungen oder Leidenschaft. Die Wahl des Verbs verändert den Sinn:\n\n- `intensifier`: eine Handlung oder Anstrengung intensiver machen;\n- `aggraver`: eine schon schlechte Lage ernster machen;\n- `exacerber`: ein Gefühl oder eine Spannung auf die Spitze treiben;\n- `attiser`: ein Feuer, einen Konflikt oder eine Leidenschaft neu entfachen;\n- `décupler`: mit zehn multiplizieren."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "augmenter",
+      "term": "augmenter",
+      "translations": { "en": ["to increase", "to raise"], "de": ["erhöhen", "anheben"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "augmenter",
+      "examForms": ["augmenter"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/oɡmɑ̃te/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Le prix de l’énergie a augmenté de douze pour cent en un an.",
+        "translation": {
+          "en": "The price of energy rose by twelve percent in a year.",
+          "de": "Der Energiepreis ist innerhalb eines Jahres um zwölf Prozent gestiegen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Augmenter is the neutral, all-purpose verb for a rise in quantity, price or level; the other verbs add a nuance.",
+        "fr": "Augmenter est le verbe neutre et général pour une hausse de quantité, de prix ou de niveau ; les autres verbes ajoutent une nuance.",
+        "de": "Augmenter ist das neutrale Allzweckverb für einen Anstieg von Menge, Preis oder Niveau; die anderen Verben fügen eine Nuance hinzu."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to increase (neutral, general verb)",
+        "de": "erhöhen (neutrales, allgemeines Verb)"
+      },
+      "gap": {
+        "before": "La mairie envisage d’",
+        "after": " les tarifs du stationnement de dix pour cent.",
+        "accepted": { "answers": ["augmenter"] },
+        "referenceTargetIds": ["augmenter", "attiser", "decupler", "consolider"],
+        "explanation": {
+          "en": "A ten percent rise in prices calls for the neutral verb augmenter; décupler would mean tenfold.",
+          "fr": "Une hausse de dix pour cent des tarifs appelle le verbe neutre augmenter ; décupler voudrait dire multiplier par dix.",
+          "de": "Eine Preiserhöhung um zehn Prozent verlangt das neutrale Verb augmenter; décupler würde verzehnfachen bedeuten."
+        }
+      },
+      "listeningOptionTargetIds": ["augmenter", "amplifier", "accroitre", "attiser"]
+    },
+    {
+      "id": "accroitre",
+      "term": "accroître",
+      "translations": { "en": ["to augment", "to heighten"], "de": ["vermehren", "steigern"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "accroître",
+      "examForms": ["accroître"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/akʁwɑtʁ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Cette réforme vise à accroître l’autonomie des universités.",
+        "translation": {
+          "en": "This reform aims to increase the autonomy of universities.",
+          "de": "Diese Reform zielt darauf ab, die Autonomie der Universitäten zu erweitern."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Accroître is more formal than augmenter and goes with abstract nouns: autonomy, influence, capacity, risk.",
+        "fr": "Accroître est plus soutenu qu’augmenter et s’emploie avec des noms abstraits : autonomie, influence, capacité, risque.",
+        "de": "Accroître ist gehobener als augmenter und steht bei abstrakten Nomen: Autonomie, Einfluss, Fähigkeit, Risiko."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to augment (formal: increase an abstract capacity or influence)",
+        "de": "vermehren (gehoben, für abstrakte Größen wie Einfluss oder Fähigkeit)"
+      },
+      "gap": {
+        "before": "Ce partenariat devrait ",
+        "after": " notre capacité de production.",
+        "accepted": { "answers": ["accroître"] },
+        "referenceTargetIds": ["accroitre", "aggraver", "attiser", "exacerber"],
+        "explanation": {
+          "en": "Only accroître suits a production capacity; the other verbs suggest something negative or a conflict.",
+          "fr": "Seul accroître convient à une capacité de production ; les autres verbes évoquent un mal ou un conflit.",
+          "de": "Nur accroître passt zu einer Produktionskapazität; die anderen Verben deuten auf etwas Negatives oder einen Konflikt hin."
+        }
+      },
+      "listeningOptionTargetIds": ["accroitre", "aggraver", "augmenter", "attiser"]
+    },
+    {
+      "id": "renforcer",
+      "term": "renforcer",
+      "translations": { "en": ["to strengthen", "to reinforce"], "de": ["stärken", "verstärken"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "renforcer",
+      "examForms": ["renforcer"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʁɑ̃fɔʁse/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Le gouvernement veut renforcer les contrôles aux frontières.",
+        "translation": {
+          "en": "The government wants to strengthen border checks.",
+          "de": "Die Regierung will die Grenzkontrollen verstärken."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Renforcer makes something more solid, more effective or more numerous: a structure, a team, a measure.",
+        "fr": "Renforcer, c’est rendre quelque chose plus solide, plus efficace ou plus nombreux : une structure, une équipe, une mesure.",
+        "de": "Renforcer macht etwas solider, wirksamer oder zahlreicher: eine Struktur, ein Team, eine Maßnahme."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to strengthen (make more solid, more effective or more numerous)",
+        "de": "stärken (solider, wirksamer oder zahlreicher machen)"
+      },
+      "gap": {
+        "before": "Il faut ",
+        "after": " les digues avant la saison des crues.",
+        "accepted": { "answers": ["renforcer"] },
+        "referenceTargetIds": ["renforcer", "decupler", "attiser", "aggraver"],
+        "explanation": {
+          "en": "Dikes are made sturdier before floods: only renforcer fits.",
+          "fr": "On rend les digues plus solides avant les crues : seul renforcer convient.",
+          "de": "Deiche werden vor Hochwasser widerstandsfähiger gemacht: Nur renforcer passt."
+        }
+      },
+      "listeningOptionTargetIds": ["renforcer", "consolider", "exacerber", "decupler"]
+    },
+    {
+      "id": "consolider",
+      "term": "consolider",
+      "translations": {
+        "en": ["to consolidate", "to solidify"],
+        "de": ["festigen", "konsolidieren"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "consolider",
+      "examForms": ["consolider"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kɔ̃sɔlide/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Elle a tout fait pour consolider ses acquis.",
+        "translation": {
+          "en": "She did everything to consolidate her gains.",
+          "de": "Sie hat alles getan, um ihre Errungenschaften zu festigen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Consolider makes something already acquired stable and lasting: gains, a position, an alliance.",
+        "fr": "Consolider rend stable et durable ce qui est déjà acquis : des acquis, une position, une alliance.",
+        "de": "Consolider macht etwas bereits Erreichtes stabil und dauerhaft: Errungenschaften, eine Position, ein Bündnis."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to consolidate (make something already gained lasting and stable)",
+        "de": "festigen (etwas Erreichtes dauerhaft und stabil machen)"
+      },
+      "gap": {
+        "before": "Après deux bonnes années, l’entreprise cherche à ",
+        "after": " sa position sur le marché.",
+        "accepted": { "answers": ["consolider"] },
+        "referenceTargetIds": ["consolider", "aggraver", "attiser", "exacerber"],
+        "explanation": {
+          "en": "After two good years, the company wants to make its position lasting: consolider.",
+          "fr": "Après deux bonnes années, l’entreprise veut rendre sa position durable : consolider.",
+          "de": "Nach zwei guten Jahren will das Unternehmen seine Position dauerhaft machen: consolider."
+        }
+      },
+      "listeningOptionTargetIds": ["consolider", "amplifier", "intensifier", "renforcer"]
+    },
+    {
+      "id": "amplifier",
+      "term": "amplifier",
+      "translations": { "en": ["to amplify", "to magnify"], "de": ["verstärken", "ausweiten"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "amplifier",
+      "examForms": ["amplifier"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɑ̃plifje/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Les médias ont amplifié l’affaire en quelques heures.",
+        "translation": {
+          "en": "The media magnified the affair within a few hours.",
+          "de": "Die Medien haben die Affäre binnen weniger Stunden aufgebauscht."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Amplifier gives a phenomenon, a movement, a sound or a message greater scale and resonance.",
+        "fr": "Amplifier donne plus d’ampleur et de résonance à un phénomène, un mouvement, un son ou un message.",
+        "de": "Amplifier verleiht einem Phänomen, einer Bewegung, einem Ton oder einer Botschaft mehr Ausmaß und Resonanz."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to amplify (give a phenomenon, a sound or a message greater scale)",
+        "de": "verstärken (einem Phänomen, Ton oder einer Botschaft mehr Ausmaß geben)"
+      },
+      "gap": {
+        "before": "Ce micro permet d’",
+        "after": " la voix de l’orateur dans toute la salle.",
+        "accepted": { "answers": ["amplifier"] },
+        "referenceTargetIds": ["amplifier", "consolider", "aggraver", "attiser"],
+        "explanation": {
+          "en": "A microphone makes a voice louder: only amplifier fits.",
+          "fr": "Un micro rend la voix plus forte : seul amplifier convient.",
+          "de": "Ein Mikrofon macht die Stimme lauter: Nur amplifier passt."
+        }
+      },
+      "listeningOptionTargetIds": ["amplifier", "intensifier", "consolider", "aggraver"]
+    },
+    {
+      "id": "intensifier",
+      "term": "intensifier",
+      "translations": {
+        "en": ["to intensify", "to step up"],
+        "de": ["intensivieren", "anspornen"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "intensifier",
+      "examForms": ["intensifier"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɛ̃tɑ̃sifje/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Les secours ont intensifié leurs recherches à la tombée de la nuit.",
+        "translation": {
+          "en": "Rescuers stepped up their search at nightfall.",
+          "de": "Die Rettungskräfte haben ihre Suche bei Einbruch der Nacht intensiviert."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Intensifier makes an action, an effort or an exchange more intense and more active.",
+        "fr": "Intensifier rend une action, un effort ou des échanges plus intenses et plus actifs.",
+        "de": "Intensifier macht eine Handlung, eine Anstrengung oder einen Austausch intensiver und aktiver."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to intensify (make an effort or action more intense)",
+        "de": "intensivieren (eine Anstrengung oder Handlung intensiver machen)"
+      },
+      "gap": {
+        "before": "Pour rattraper son retard, l’équipe doit ",
+        "after": " ses efforts.",
+        "accepted": { "answers": ["intensifier"] },
+        "referenceTargetIds": ["intensifier", "consolider", "aggraver", "attiser"],
+        "explanation": {
+          "en": "To catch up, a team makes its efforts more intense: intensifier.",
+          "fr": "Pour rattraper son retard, une équipe rend ses efforts plus intenses : intensifier.",
+          "de": "Um aufzuholen, macht ein Team seine Anstrengungen intensiver: intensifier."
+        }
+      },
+      "listeningOptionTargetIds": ["intensifier", "amplifier", "consolider", "exacerber"]
+    },
+    {
+      "id": "aggraver",
+      "term": "aggraver",
+      "translations": {
+        "en": ["to worsen", "to aggravate"],
+        "de": ["verschlimmern", "verschärfen"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "aggraver",
+      "examForms": ["aggraver"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/aɡʁave/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Cette décision a aggravé les inégalités entre les régions.",
+        "translation": {
+          "en": "This decision worsened inequalities between regions.",
+          "de": "Diese Entscheidung hat die Ungleichheiten zwischen den Regionen verschärft."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Aggraver only applies to something already negative (a crisis, a debt, an illness): it makes it more serious.",
+        "fr": "Aggraver ne s’applique qu’à ce qui est déjà négatif (une crise, une dette, une maladie) : on le rend plus grave.",
+        "de": "Aggraver bezieht sich nur auf etwas bereits Negatives (eine Krise, eine Schuld, eine Krankheit): Es wird ernster."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to worsen (make an already bad situation more serious)",
+        "de": "verschlimmern (eine schon schlechte Lage ernster machen)"
+      },
+      "gap": {
+        "before": "Marcher sur cette cheville risque d’",
+        "after": " la blessure.",
+        "accepted": { "answers": ["aggraver"] },
+        "referenceTargetIds": ["aggraver", "consolider", "renforcer", "amplifier"],
+        "explanation": {
+          "en": "An injury can only be made worse: aggraver.",
+          "fr": "Une blessure ne peut qu’être rendue plus grave : aggraver.",
+          "de": "Eine Verletzung kann nur schlimmer gemacht werden: aggraver."
+        }
+      },
+      "listeningOptionTargetIds": ["aggraver", "accroitre", "attiser", "exacerber"]
+    },
+    {
+      "id": "exacerber",
+      "term": "exacerber",
+      "translations": { "en": ["to exacerbate", "to inflame"], "de": ["verschärfen", "zuspitzen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "exacerber",
+      "examForms": ["exacerber"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɛɡzasɛʁbe/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "La pénurie a exacerbé les rivalités entre les clans.",
+        "translation": {
+          "en": "The shortage exacerbated rivalries between the clans.",
+          "de": "Die Knappheit hat die Rivalitäten zwischen den Clans zugespitzt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Exacerber pushes a feeling, a pain or a tension to its extreme point; it is more emotional and stronger than aggraver.",
+        "fr": "Exacerber pousse un sentiment, une douleur ou une tension à son paroxysme ; c’est plus intense et plus émotionnel qu’aggraver.",
+        "de": "Exacerber treibt ein Gefühl, einen Schmerz oder eine Spannung auf die Spitze; es ist stärker und emotionaler als aggraver."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to exacerbate (push a feeling, a pain or a tension to the extreme)",
+        "de": "verschärfen (ein Gefühl, einen Schmerz oder eine Spannung auf die Spitze treiben)"
+      },
+      "gap": {
+        "before": "Le froid risque d’",
+        "after": " cette douleur déjà vive.",
+        "accepted": { "answers": ["exacerber"] },
+        "referenceTargetIds": ["exacerber", "consolider", "renforcer", "attiser"],
+        "explanation": {
+          "en": "A pain that is already sharp is pushed to the extreme: exacerber.",
+          "fr": "Une douleur déjà vive est poussée à l’extrême : exacerber.",
+          "de": "Ein schon heftiger Schmerz wird auf die Spitze getrieben: exacerber."
+        }
+      },
+      "listeningOptionTargetIds": ["exacerber", "aggraver", "renforcer", "attiser"]
+    },
+    {
+      "id": "attiser",
+      "term": "attiser",
+      "translations": { "en": ["to stoke", "to fan"], "de": ["anfachen", "schüren"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "attiser",
+      "examForms": ["attiser"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/atize/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Ses propos ont attisé la colère des manifestants.",
+        "translation": {
+          "en": "His words stoked the anger of the demonstrators.",
+          "de": "Seine Worte haben die Wut der Demonstranten geschürt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Attiser literally means to poke a fire so that it burns brighter; figuratively, to fan a conflict, anger or desire.",
+        "fr": "Attiser, au sens propre, c’est remuer un feu pour qu’il brûle mieux ; au sens figuré, c’est raviver un conflit, une colère ou un désir.",
+        "de": "Attiser heißt wörtlich, ein Feuer zu schüren, damit es heller brennt; im übertragenen Sinn einen Konflikt, Zorn oder Verlangen anzufachen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to stoke (rekindle a fire, a conflict or a passion)",
+        "de": "anfachen (ein Feuer, einen Konflikt oder eine Leidenschaft neu entfachen)"
+      },
+      "gap": {
+        "before": "Il souffle sur les braises pour ",
+        "after": " le feu.",
+        "accepted": { "answers": ["attiser"] },
+        "referenceTargetIds": ["attiser", "consolider", "renforcer", "aggraver"],
+        "explanation": {
+          "en": "Blowing on embers revives a fire: attiser.",
+          "fr": "Souffler sur les braises ravive le feu : attiser.",
+          "de": "Wer auf die Glut bläst, facht das Feuer an: attiser."
+        }
+      },
+      "listeningOptionTargetIds": ["attiser", "augmenter", "aggraver", "decupler"]
+    },
+    {
+      "id": "decupler",
+      "term": "décupler",
+      "translations": {
+        "en": ["to increase tenfold", "to multiply tenfold"],
+        "de": ["verzehnfachen", "vervielfachen"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "décupler",
+      "examForms": ["décupler"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/dekyple/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "L’automatisation a décuplé la productivité de l’usine.",
+        "translation": {
+          "en": "Automation increased the plant’s productivity tenfold.",
+          "de": "Die Automatisierung hat die Produktivität der Fabrik verzehnfacht."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Décupler literally means to multiply by ten; by extension, to increase enormously.",
+        "fr": "Décupler signifie au sens propre multiplier par dix ; par extension, augmenter énormément.",
+        "de": "Décupler heißt wörtlich mit zehn multiplizieren; im weiteren Sinn enorm steigern."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to increase tenfold (multiply by ten; by extension, enormously)",
+        "de": "verzehnfachen (mit zehn multiplizieren; im weiteren Sinn enorm steigern)"
+      },
+      "gap": {
+        "before": "Cette technologie permet de ",
+        "after": " la vitesse de calcul : elle est dix fois plus rapide.",
+        "accepted": { "answers": ["décupler"] },
+        "referenceTargetIds": ["decupler", "consolider", "aggraver", "attiser"],
+        "explanation": {
+          "en": "Ten times faster means multiplied by ten: décupler.",
+          "fr": "Dix fois plus rapide, c’est multiplié par dix : décupler.",
+          "de": "Zehnmal schneller heißt mit zehn multipliziert: décupler."
+        }
+      },
+      "listeningOptionTargetIds": ["decupler", "amplifier", "renforcer", "attiser"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

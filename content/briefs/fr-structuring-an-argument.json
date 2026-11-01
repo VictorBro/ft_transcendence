@@ -1,0 +1,637 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-structuring-an-argument",
+  "lang": "fr",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Structurer une argumentation",
+  "objective": {
+    "en": "Structure an argument with twelve connectors: open, add, justify and conclude.",
+    "fr": "Structurer une argumentation avec douze connecteurs : ouvrir, ajouter, justifier et conclure.",
+    "de": "Eine Argumentation mit zwölf Konnektoren gliedern: eröffnen, ergänzen, begründen und abschließen."
+  },
+  "estimatedMinutes": 20,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:53:30.828Z",
+    "inputHashes": { "outline": "61a28da9f9cb98fcedacad1d39100dc5d233fe58bcb90d0de6367fe579cea9db" }
+  },
+  "kind": "vocabulary",
+  "theme": "language",
+  "coverageNotes": {
+    "en": "Twelve connectors in three groups: ordering an argument (tout d'abord, en premier lieu, en second lieu, enfin), adding and justifying (en outre, par ailleurs, qui plus est, en effet) and drawing a conclusion (par conséquent, en somme, en définitive, pour conclure).",
+    "fr": "Douze connecteurs en trois groupes : ordonner l'argumentation (tout d'abord, en premier lieu, en second lieu, enfin), ajouter et justifier (en outre, par ailleurs, qui plus est, en effet) et conclure (par conséquent, en somme, en définitive, pour conclure).",
+    "de": "Zwölf Konnektoren in drei Gruppen: die Argumentation ordnen (tout d'abord, en premier lieu, en second lieu, enfin), ergänzen und begründen (en outre, par ailleurs, qui plus est, en effet) und schlussfolgern (par conséquent, en somme, en définitive, pour conclure)."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve connectors cover the whole path of an argument without overloading a B2 learner.",
+    "fr": "Douze connecteurs couvrent tout le parcours d'une argumentation sans surcharger un apprenant B2.",
+    "de": "Zwölf Konnektoren decken den ganzen Weg einer Argumentation ab, ohne Lernende auf B2 zu überfordern."
+  },
+  "difficultyBalance": {
+    "en": "Most connectors are common in writing; qui plus est, par ailleurs, en somme and en définitive are subtler in nuance.",
+    "fr": "La plupart des connecteurs sont courants à l'écrit ; qui plus est, par ailleurs, en somme et en définitive demandent plus de nuance.",
+    "de": "Die meisten Konnektoren sind im Schriftlichen üblich; qui plus est, par ailleurs, en somme und en définitive sind nuancierter."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "ordonner",
+      "label": {
+        "en": "Ordering the arguments",
+        "fr": "Ordonner les arguments",
+        "de": "Die Argumente ordnen"
+      },
+      "targetIds": ["tout-dabord", "premier-lieu", "second-lieu", "enfin"],
+      "introduction": {
+        "en": "These connectors **open and order** your arguments. Use them in this sequence:\n\n- `tout d'abord`: to begin\n- `en premier lieu`: the first point\n- `en second lieu`: the second point\n- `enfin`: the last point",
+        "fr": "Ces connecteurs **ouvrent et ordonnent** vos arguments. Utilisez-les dans cet ordre :\n\n- `tout d'abord` : pour commencer\n- `en premier lieu` : le premier point\n- `en second lieu` : le deuxième point\n- `enfin` : le dernier point",
+        "de": "Diese Konnektoren **eröffnen und ordnen** deine Argumente. Verwende sie in dieser Reihenfolge:\n\n- `tout d'abord`: zu Beginn\n- `en premier lieu`: der erste Punkt\n- `en second lieu`: der zweite Punkt\n- `enfin`: der letzte Punkt"
+      }
+    },
+    {
+      "id": "ajouter",
+      "label": {
+        "en": "Adding and justifying",
+        "fr": "Ajouter et justifier",
+        "de": "Ergänzen und begründen"
+      },
+      "targetIds": ["en-outre", "par-ailleurs", "qui-plus-est", "en-effet"],
+      "introduction": {
+        "en": "These connectors **add** an argument or **justify** a claim:\n\n- `en outre`: adds a further argument\n- `par ailleurs`: adds a point from another angle\n- `qui plus est`: adds a stronger argument\n- `en effet`: explains why the previous claim is true",
+        "fr": "Ces connecteurs **ajoutent** un argument ou **justifient** une affirmation :\n\n- `en outre` : ajoute un argument supplémentaire\n- `par ailleurs` : ajoute un point sous un autre angle\n- `qui plus est` : ajoute un argument plus fort\n- `en effet` : explique pourquoi l'affirmation précédente est vraie",
+        "de": "Diese Konnektoren **ergänzen** ein Argument oder **begründen** eine Aussage:\n\n- `en outre`: fügt ein weiteres Argument hinzu\n- `par ailleurs`: fügt einen Punkt aus anderer Sicht hinzu\n- `qui plus est`: fügt ein stärkeres Argument hinzu\n- `en effet`: erklärt, warum die vorige Aussage stimmt"
+      }
+    },
+    {
+      "id": "conclure",
+      "label": {
+        "en": "Drawing a conclusion",
+        "fr": "Conclure",
+        "de": "Schlussfolgern und abschließen"
+      },
+      "targetIds": ["par-consequent", "en-somme", "en-definitive", "pour-conclure"],
+      "introduction": {
+        "en": "These connectors **draw a conclusion** from what came before:\n\n- `par conséquent`: states a result\n- `en somme`: sums up in a few words\n- `en définitive`: gives the final judgement\n- `pour conclure`: announces the end of the talk",
+        "fr": "Ces connecteurs **tirent une conclusion** de ce qui précède :\n\n- `par conséquent` : énonce une conséquence\n- `en somme` : résume en quelques mots\n- `en définitive` : donne le jugement final\n- `pour conclure` : annonce la fin de l'exposé",
+        "de": "Diese Konnektoren **ziehen eine Schlussfolgerung** aus dem Vorangehenden:\n\n- `par conséquent`: nennt eine Folge\n- `en somme`: fasst in wenigen Worten zusammen\n- `en définitive`: gibt das abschließende Urteil\n- `pour conclure`: kündigt das Ende des Vortrags an"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "tout-dabord",
+      "term": "tout d'abord",
+      "translations": {
+        "en": ["first of all", "to begin with"],
+        "de": ["zunächst", "zuallererst"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "tout d'abord",
+      "examForms": ["tout d'abord"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/tu dabɔʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Tout d'abord, je voudrais définir le sujet.",
+        "translation": {
+          "en": "First of all, I would like to define the topic.",
+          "de": "Zunächst möchte ich das Thema definieren."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Tout d'abord opens an argument and announces that other points will follow.",
+        "fr": "Tout d'abord ouvre une argumentation et annonce que d'autres points vont suivre.",
+        "de": "Tout d'abord eröffnet eine Argumentation und kündigt weitere Punkte an."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Pour construire un exposé, il faut ",
+        "after": " définir les termes du sujet, puis annoncer le plan.",
+        "accepted": { "answers": ["tout d'abord"] },
+        "referenceTargetIds": ["tout-dabord", "en-somme", "pour-conclure", "par-consequent"],
+        "explanation": {
+          "en": "The sentence describes the first step, so only tout d'abord fits.",
+          "fr": "La phrase décrit la première étape : seul « tout d'abord » convient.",
+          "de": "Der Satz beschreibt den ersten Schritt, daher passt nur „tout d'abord“."
+        }
+      },
+      "listeningOptionTargetIds": ["tout-dabord", "premier-lieu", "second-lieu", "enfin"]
+    },
+    {
+      "id": "premier-lieu",
+      "term": "en premier lieu",
+      "translations": {
+        "en": ["in the first place", "firstly"],
+        "de": ["an erster Stelle", "erstens"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "en premier lieu",
+      "examForms": ["en premier lieu"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɑ̃ pʁəmje ljø/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "En premier lieu, cette mesure est injuste.",
+        "translation": {
+          "en": "In the first place, this measure is unfair.",
+          "de": "An erster Stelle ist diese Maßnahme ungerecht."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "En premier lieu introduces the first of several numbered arguments.",
+        "fr": "En premier lieu introduit le premier de plusieurs arguments numérotés.",
+        "de": "En premier lieu leitet das erste von mehreren nummerierten Argumenten ein."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Je défends cette idée pour deux raisons : ",
+        "after": ", elle est juste ; en second lieu, elle est utile.",
+        "accepted": { "answers": ["en premier lieu"] },
+        "referenceTargetIds": ["premier-lieu", "en-somme", "en-effet", "pour-conclure"],
+        "explanation": {
+          "en": "The second reason begins with en second lieu, so the first one needs en premier lieu.",
+          "fr": "La seconde raison commence par « en second lieu » : la première demande « en premier lieu ».",
+          "de": "Der zweite Grund beginnt mit „en second lieu“, der erste braucht also „en premier lieu“."
+        }
+      },
+      "listeningOptionTargetIds": ["tout-dabord", "premier-lieu", "second-lieu", "enfin"]
+    },
+    {
+      "id": "second-lieu",
+      "term": "en second lieu",
+      "translations": {
+        "en": ["secondly", "in the second place"],
+        "de": ["zweitens", "an zweiter Stelle"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "en second lieu",
+      "examForms": ["en second lieu"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɑ̃ səɡɔ̃ ljø/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "En second lieu, elle coûte très cher.",
+        "translation": {
+          "en": "Secondly, it is very expensive.",
+          "de": "Zweitens ist sie sehr teuer."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "En second lieu introduces the second argument, after en premier lieu.",
+        "fr": "En second lieu introduit le deuxième argument, après « en premier lieu ».",
+        "de": "En second lieu leitet das zweite Argument nach „en premier lieu“ ein."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "En premier lieu, le projet coûte cher ; ",
+        "after": ", il crée peu d'emplois.",
+        "accepted": { "answers": ["en second lieu"] },
+        "referenceTargetIds": ["second-lieu", "pour-conclure", "en-effet", "par-consequent"],
+        "explanation": {
+          "en": "The sentence already has a first point, so the second needs en second lieu.",
+          "fr": "La phrase a déjà un premier point : le deuxième demande « en second lieu ».",
+          "de": "Der Satz hat schon einen ersten Punkt, der zweite braucht „en second lieu“."
+        }
+      },
+      "listeningOptionTargetIds": ["tout-dabord", "premier-lieu", "second-lieu", "enfin"]
+    },
+    {
+      "id": "enfin",
+      "term": "enfin",
+      "translations": { "en": ["finally", "lastly"], "de": ["schließlich", "zuletzt"] },
+      "wordClass": "adverb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "enfin",
+      "examForms": ["enfin"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɑ̃fɛ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Enfin, je rappellerai les enjeux écologiques.",
+        "translation": {
+          "en": "Finally, I will recall the ecological stakes.",
+          "de": "Schließlich werde ich an die ökologischen Herausforderungen erinnern."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Enfin introduces the last point of a list of arguments.",
+        "fr": "Enfin introduit le dernier point d'une série d'arguments.",
+        "de": "Enfin leitet den letzten Punkt einer Reihe von Argumenten ein."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nous avons parlé du coût, puis des délais ; ",
+        "after": ", abordons la question de l'environnement.",
+        "accepted": { "answers": ["enfin"] },
+        "referenceTargetIds": ["enfin", "en-effet", "par-consequent", "tout-dabord"],
+        "explanation": {
+          "en": "The sentence comes after two points and introduces the last one: enfin.",
+          "fr": "La phrase vient après deux points et introduit le dernier : « enfin ».",
+          "de": "Der Satz folgt auf zwei Punkte und leitet den letzten ein: „enfin“."
+        }
+      },
+      "listeningOptionTargetIds": ["tout-dabord", "premier-lieu", "second-lieu", "enfin"]
+    },
+    {
+      "id": "en-outre",
+      "term": "en outre",
+      "translations": {
+        "en": ["in addition", "furthermore"],
+        "de": ["darüber hinaus", "außerdem"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "en outre",
+      "examForms": ["en outre"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɑ̃n utʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ce projet est cher ; en outre, il arrive trop tard.",
+        "translation": {
+          "en": "This project is expensive; in addition, it comes too late.",
+          "de": "Dieses Projekt ist teuer; darüber hinaus kommt es zu spät."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "En outre adds a further argument in the same direction as the previous one.",
+        "fr": "En outre ajoute un argument supplémentaire qui va dans le même sens que le précédent.",
+        "de": "En outre fügt ein weiteres Argument in dieselbe Richtung hinzu."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ce plan est réaliste ; ",
+        "after": ", il est financé par l'État.",
+        "accepted": { "answers": ["en outre"] },
+        "referenceTargetIds": ["en-outre", "tout-dabord", "pour-conclure", "en-somme"],
+        "explanation": {
+          "en": "The sentence adds a second positive argument, which is the role of en outre.",
+          "fr": "La phrase ajoute un deuxième argument positif : c'est le rôle de « en outre ».",
+          "de": "Der Satz fügt ein zweites positives Argument hinzu, das ist die Rolle von „en outre“."
+        }
+      },
+      "listeningOptionTargetIds": ["en-outre", "en-effet", "en-somme", "en-definitive"]
+    },
+    {
+      "id": "par-ailleurs",
+      "term": "par ailleurs",
+      "translations": {
+        "en": ["besides", "on another note"],
+        "de": ["im Übrigen", "andererseits"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "par ailleurs",
+      "examForms": ["par ailleurs"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/paʁ ajœʁ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Par ailleurs, les transports restent insuffisants.",
+        "translation": {
+          "en": "Besides, public transport remains inadequate.",
+          "de": "Im Übrigen bleibt der Nahverkehr unzureichend."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Par ailleurs brings in a point from another angle; en outre simply reinforces the same point.",
+        "fr": "Par ailleurs introduit un point sous un autre angle ; en outre renforce simplement le même point.",
+        "de": "Par ailleurs bringt einen Punkt aus anderer Sicht ein; en outre verstärkt einfach denselben Punkt."
+      },
+      "explanation": {
+        "en": "Par ailleurs adds a point that looks at the subject from another angle.",
+        "fr": "Par ailleurs ajoute un point qui aborde le sujet sous un autre angle.",
+        "de": "Par ailleurs fügt einen Punkt hinzu, der das Thema aus einem anderen Blickwinkel betrachtet."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Cette ville manque de logements ; ",
+        "after": ", ses transports sont saturés.",
+        "accepted": { "answers": ["par ailleurs"] },
+        "referenceTargetIds": ["par-ailleurs", "tout-dabord", "pour-conclure", "en-definitive"],
+        "explanation": {
+          "en": "The sentence moves to a different problem of the city, so par ailleurs fits.",
+          "fr": "La phrase passe à un autre problème de la ville : « par ailleurs » convient.",
+          "de": "Der Satz geht zu einem anderen Problem der Stadt über, daher passt „par ailleurs“."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "par-ailleurs",
+        "par-consequent",
+        "pour-conclure",
+        "qui-plus-est"
+      ]
+    },
+    {
+      "id": "qui-plus-est",
+      "term": "qui plus est",
+      "translations": { "en": ["what is more"], "de": ["mehr noch"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "qui plus est",
+      "examForms": ["qui plus est"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ki plys ɛ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Elle est compétente et, qui plus est, très motivée.",
+        "translation": {
+          "en": "She is competent and, what is more, very motivated.",
+          "de": "Sie ist kompetent und, mehr noch, sehr motiviert."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Qui plus est adds an even stronger argument, often between commas.",
+        "fr": "Qui plus est ajoute un argument encore plus fort, souvent entre virgules.",
+        "de": "Qui plus est fügt ein noch stärkeres Argument hinzu, oft zwischen Kommas."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il est ponctuel, sérieux et, ",
+        "after": ", très créatif.",
+        "accepted": { "answers": ["qui plus est"] },
+        "referenceTargetIds": ["qui-plus-est", "tout-dabord", "en-definitive", "pour-conclure"],
+        "explanation": {
+          "en": "The sentence stacks qualities and ends on the strongest, which calls for qui plus est.",
+          "fr": "La phrase accumule des qualités et finit sur la plus forte : « qui plus est ».",
+          "de": "Der Satz reiht Eigenschaften aneinander und endet mit der stärksten: „qui plus est“."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "par-ailleurs",
+        "par-consequent",
+        "pour-conclure",
+        "qui-plus-est"
+      ]
+    },
+    {
+      "id": "en-effet",
+      "term": "en effet",
+      "translations": { "en": ["indeed", "as a matter of fact"], "de": ["tatsächlich", "nämlich"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "en effet",
+      "examForms": ["en effet"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɑ̃n efɛ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Le projet est utile ; en effet, il crée des emplois.",
+        "translation": {
+          "en": "The project is useful; indeed, it creates jobs.",
+          "de": "Das Projekt ist nützlich; es schafft nämlich Arbeitsplätze."
+        }
+      },
+      "ambiguityNote": {
+        "en": "En effet justifies the previous sentence; it does not add a new, separate argument.",
+        "fr": "En effet justifie la phrase précédente ; il n'ajoute pas un argument nouveau et distinct.",
+        "de": "En effet begründet den vorigen Satz; es fügt kein neues, eigenständiges Argument hinzu."
+      },
+      "explanation": {
+        "en": "En effet introduces a reason or proof for what was just said.",
+        "fr": "En effet introduit une raison ou une preuve de ce qui vient d'être dit.",
+        "de": "En effet leitet einen Grund oder Beleg für das gerade Gesagte ein."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le projet est nécessaire : ",
+        "after": ", la ville manque d'écoles.",
+        "accepted": { "answers": ["en effet"] },
+        "referenceTargetIds": ["en-effet", "tout-dabord", "pour-conclure", "enfin"],
+        "explanation": {
+          "en": "The second part explains why the project is necessary, so en effet fits.",
+          "fr": "La seconde partie explique pourquoi le projet est nécessaire : « en effet » convient.",
+          "de": "Der zweite Teil erklärt, warum das Projekt nötig ist, daher passt „en effet“."
+        }
+      },
+      "listeningOptionTargetIds": ["en-outre", "en-effet", "en-somme", "en-definitive"]
+    },
+    {
+      "id": "par-consequent",
+      "term": "par conséquent",
+      "translations": { "en": ["therefore", "as a result"], "de": ["folglich", "deshalb"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "par conséquent",
+      "examForms": ["par conséquent"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/paʁ kɔ̃sekɑ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Les prix ont augmenté ; par conséquent, on consomme moins.",
+        "translation": {
+          "en": "Prices have risen; therefore, people consume less.",
+          "de": "Die Preise sind gestiegen; folglich konsumiert man weniger."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Par conséquent introduces the logical result of what was just said.",
+        "fr": "Par conséquent introduit le résultat logique de ce qui vient d'être dit.",
+        "de": "Par conséquent leitet das logische Ergebnis des gerade Gesagten ein."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Les prix ont fortement augmenté ; ",
+        "after": ", beaucoup de familles réduisent leurs dépenses.",
+        "accepted": { "answers": ["par conséquent"] },
+        "referenceTargetIds": ["par-consequent", "tout-dabord", "pour-conclure", "second-lieu"],
+        "explanation": {
+          "en": "Families spend less as a result of the price rise, so par conséquent fits.",
+          "fr": "Les familles dépensent moins à cause de la hausse des prix : « par conséquent » convient.",
+          "de": "Die Familien geben wegen der Preissteigerung weniger aus, daher passt „par conséquent“."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "par-ailleurs",
+        "par-consequent",
+        "pour-conclure",
+        "qui-plus-est"
+      ]
+    },
+    {
+      "id": "en-somme",
+      "term": "en somme",
+      "translations": { "en": ["in short", "all in all"], "de": ["kurzum", "insgesamt"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "en somme",
+      "examForms": ["en somme"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɑ̃ sɔm/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "En somme, le plan est réaliste.",
+        "translation": {
+          "en": "In short, the plan is realistic.",
+          "de": "Kurzum ist der Plan realistisch."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "En somme sums up several points in one short statement.",
+        "fr": "En somme résume plusieurs points en une seule phrase courte.",
+        "de": "En somme fasst mehrere Punkte in einer kurzen Aussage zusammen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "J'ai étudié les coûts, les délais et les risques : ",
+        "after": ", le projet est viable.",
+        "accepted": { "answers": ["en somme"] },
+        "referenceTargetIds": ["en-somme", "tout-dabord", "en-outre", "qui-plus-est"],
+        "explanation": {
+          "en": "The sentence sums up three points, which is the job of en somme.",
+          "fr": "La phrase résume trois points : c'est le rôle de « en somme ».",
+          "de": "Der Satz fasst drei Punkte zusammen, das ist die Aufgabe von „en somme“."
+        }
+      },
+      "listeningOptionTargetIds": ["en-outre", "en-effet", "en-somme", "en-definitive"]
+    },
+    {
+      "id": "en-definitive",
+      "term": "en définitive",
+      "translations": {
+        "en": ["ultimately", "when all is said and done"],
+        "de": ["letztlich", "im Endeffekt"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "en définitive",
+      "examForms": ["en définitive"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɑ̃ definitiv/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "En définitive, c'est aux citoyens de décider.",
+        "translation": {
+          "en": "Ultimately, it is up to the citizens to decide.",
+          "de": "Letztlich müssen die Bürger entscheiden."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "En définitive gives the final judgement after weighing everything.",
+        "fr": "En définitive donne le jugement final après avoir tout pesé.",
+        "de": "En définitive gibt das abschließende Urteil, nachdem alles abgewogen wurde."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Après avoir pesé le pour et le contre, ",
+        "after": ", la solution la plus simple est la meilleure.",
+        "accepted": { "answers": ["en définitive"] },
+        "referenceTargetIds": ["en-definitive", "tout-dabord", "second-lieu", "par-ailleurs"],
+        "explanation": {
+          "en": "The sentence follows a weighing of arguments and gives a final verdict: en définitive.",
+          "fr": "La phrase suit une pesée des arguments et donne un verdict final : « en définitive ».",
+          "de": "Der Satz folgt auf ein Abwägen der Argumente und gibt ein Schlussurteil: „en définitive“."
+        }
+      },
+      "listeningOptionTargetIds": ["en-outre", "en-effet", "en-somme", "en-definitive"]
+    },
+    {
+      "id": "pour-conclure",
+      "term": "pour conclure",
+      "translations": { "en": ["to conclude"], "de": ["abschließend"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "pour conclure",
+      "examForms": ["pour conclure"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/puʁ kɔ̃klyʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Pour conclure, je dirai que le débat reste ouvert.",
+        "translation": {
+          "en": "To conclude, I would say the debate remains open.",
+          "de": "Abschließend möchte ich sagen, dass die Debatte offen bleibt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Pour conclure announces that the talk or text is about to end.",
+        "fr": "Pour conclure annonce que l'exposé ou le texte touche à sa fin.",
+        "de": "Pour conclure kündigt an, dass der Vortrag oder Text zu Ende geht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Mon exposé s'achève ici. ",
+        "after": ", je vous remercie de votre attention.",
+        "accepted": { "answers": ["Pour conclure", "pour conclure"] },
+        "referenceTargetIds": ["pour-conclure", "tout-dabord", "en-outre", "second-lieu"],
+        "explanation": {
+          "en": "The talk is ending, so pour conclure is the only fitting connector.",
+          "fr": "L'exposé se termine : seul « pour conclure » convient.",
+          "de": "Der Vortrag endet, daher passt nur „pour conclure“."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "par-ailleurs",
+        "par-consequent",
+        "pour-conclure",
+        "qui-plus-est"
+      ]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

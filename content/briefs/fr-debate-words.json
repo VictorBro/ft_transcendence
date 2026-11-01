@@ -1,0 +1,618 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-debate-words",
+  "lang": "fr",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Polémique, consensus, compromis",
+  "objective": {
+    "en": "Talk about a debate: name the controversy, the stakes, the consensus and the compromise, and know how to settle a question.",
+    "fr": "Parler d’un débat : nommer la polémique, l’enjeu, le consensus et le compromis, et savoir trancher.",
+    "de": "Über eine Debatte sprechen: Kontroverse, Einsatz, Konsens und Kompromiss benennen und eine Frage entscheiden können."
+  },
+  "estimatedMinutes": 20,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:53:32.942Z",
+    "inputHashes": { "outline": "0e8ca75c30820f405d089463659102d80c8de82dd1da453b6b4053a09da25fe4" }
+  },
+  "kind": "vocabulary",
+  "theme": "language",
+  "coverageNotes": {
+    "en": "Twelve B2 words for describing a public debate: what sparks it (controversy, stakes, divides) and how it ends (consensus, compromise, stance, deciding, reconciling, weighty argument).",
+    "fr": "Douze mots B2 pour décrire un débat public : ce qui le déclenche (polémique, enjeu, clivage) et comment il se termine (consensus, compromis, prise de position, trancher, concilier, argument de poids).",
+    "de": "Zwölf B2-Wörter, um eine öffentliche Debatte zu beschreiben: was sie auslöst (Kontroverse, Einsatz, Spaltung) und wie sie endet (Konsens, Kompromiss, Stellungnahme, entscheiden, vereinbaren, gewichtiges Argument)."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words in two groups of six keep the lesson dense but manageable at B2.",
+    "fr": "Douze mots en deux groupes de six : une leçon dense mais réalisable au niveau B2.",
+    "de": "Zwölf Wörter in zwei Sechsergruppen: eine dichte, aber auf B2 gut machbare Lektion."
+  },
+  "difficultyBalance": {
+    "en": "Mostly core abstract nouns, with the fixed expressions and verbs as the demanding words.",
+    "fr": "Surtout des noms abstraits de base ; les expressions figées et certains verbes sont les mots exigeants.",
+    "de": "Überwiegend abstrakte Grundnomen; die festen Wendungen und einige Verben sind die anspruchsvollen Wörter."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "debat",
+      "label": { "en": "A debate begins", "fr": "Un débat s’ouvre", "de": "Eine Debatte beginnt" },
+      "targetIds": ["polemique", "enjeu", "controverse", "faire-debat", "desaccord", "clivage"],
+      "introduction": {
+        "en": "A debate starts with a dispute and something at stake:\n\n- `une polémique`\n- `un enjeu`\n- `controversé`\n- `faire débat`\n- `un désaccord`\n- `un clivage`",
+        "fr": "Un débat naît d’un conflit et d’un enjeu :\n\n- `une polémique`\n- `un enjeu`\n- `controversé`\n- `faire débat`\n- `un désaccord`\n- `un clivage`",
+        "de": "Eine Debatte entsteht aus einem Streit und aus dem, was auf dem Spiel steht:\n\n- `une polémique`\n- `un enjeu`\n- `controversé`\n- `faire débat`\n- `un désaccord`\n- `un clivage`"
+      }
+    },
+    {
+      "id": "decision",
+      "label": {
+        "en": "Reaching a decision",
+        "fr": "Parvenir à une décision",
+        "de": "Zu einer Entscheidung kommen"
+      },
+      "targetIds": [
+        "consensus",
+        "compromis",
+        "prise-position",
+        "trancher",
+        "argument-poids",
+        "concilier"
+      ],
+      "introduction": {
+        "en": "To end a debate, you take a **stance**, give arguments and look for an agreement:\n\n- `un consensus`\n- `un compromis`\n- `une prise de position`\n- `trancher`\n- `un argument de poids`\n- `concilier`",
+        "fr": "Pour clore un débat, on prend **position**, on avance des arguments et on cherche un accord :\n\n- `un consensus`\n- `un compromis`\n- `une prise de position`\n- `trancher`\n- `un argument de poids`\n- `concilier`",
+        "de": "Um eine Debatte zu beenden, bezieht man **Stellung**, bringt Argumente vor und sucht eine Einigung:\n\n- `un consensus`\n- `un compromis`\n- `une prise de position`\n- `trancher`\n- `un argument de poids`\n- `concilier`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "polemique",
+      "term": "polémique",
+      "translations": { "en": ["controversy"], "de": ["Kontroverse", "Polemik"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une polémique",
+      "examForms": ["une polémique"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/pɔ.le.mik/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Cette polémique divise tout le pays.",
+        "translation": {
+          "en": "This controversy is dividing the whole country.",
+          "de": "Diese Kontroverse spaltet das ganze Land."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Une polémique is a sharp public controversy, often in the media.",
+        "fr": "Une polémique est une vive discussion publique, souvent dans les médias.",
+        "de": "Une polémique ist eine heftige öffentliche Auseinandersetzung, oft in den Medien."
+      },
+      "genderExplanation": {
+        "en": "Polémique is feminine, so we say une polémique.",
+        "fr": "Polémique est féminin : on dit une polémique.",
+        "de": "Polémique ist feminin, also sagt man une polémique."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Les propos du ministre ont déclenché une ",
+        "after": " sur les réseaux sociaux.",
+        "accepted": { "answers": ["polémique"] },
+        "referenceTargetIds": ["polemique", "enjeu", "consensus", "compromis"],
+        "explanation": {
+          "en": "Only polémique is feminine and fits after « une » here.",
+          "fr": "Seul « polémique » est féminin et convient après « une ».",
+          "de": "Nur „polémique“ ist feminin und passt hier nach „une“."
+        }
+      },
+      "listeningOptionTargetIds": ["polemique", "controverse", "clivage", "desaccord"]
+    },
+    {
+      "id": "enjeu",
+      "term": "enjeu",
+      "translations": { "en": ["stake", "issue at stake"], "de": ["Einsatz", "Tragweite"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un enjeu",
+      "examForms": ["un enjeu"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɑ̃.ʒø/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "L’enjeu de cette réunion est important.",
+        "translation": {
+          "en": "What is at stake in this meeting is important.",
+          "de": "Was bei diesem Treffen auf dem Spiel steht, ist wichtig."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Un enjeu is what can be won or lost in a situation.",
+        "fr": "Un enjeu est ce que l’on peut gagner ou perdre dans une situation.",
+        "de": "Un enjeu ist das, was man in einer Situation gewinnen oder verlieren kann."
+      },
+      "genderExplanation": {
+        "en": "Enjeu is masculine, so we say un enjeu.",
+        "fr": "Enjeu est masculin : on dit un enjeu.",
+        "de": "Enjeu ist maskulin, also sagt man un enjeu."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Quel est l’",
+        "after": " de cette réforme pour les jeunes ?",
+        "accepted": { "answers": ["enjeu"] },
+        "referenceTargetIds": ["enjeu", "polemique", "consensus", "clivage"],
+        "explanation": {
+          "en": "After « l’ » only enjeu fits: the other words would take le or la.",
+          "fr": "Après « l’ », seul « enjeu » convient : les autres mots demandent le ou la.",
+          "de": "Nach „l’“ passt nur „enjeu“: die anderen Wörter verlangen le oder la."
+        }
+      },
+      "listeningOptionTargetIds": ["enjeu", "polemique", "faire-debat", "desaccord"]
+    },
+    {
+      "id": "controverse",
+      "term": "controversé",
+      "translations": { "en": ["controversial"], "de": ["umstritten"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "controversé",
+      "examForms": ["controversé"],
+      "articleException": null,
+      "genderVariants": ["controversée"],
+      "pronunciation": "/kɔ̃.tʁɔ.vɛʁ.se/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "C’est un sujet très controversé.",
+        "translation": {
+          "en": "It is a very controversial subject.",
+          "de": "Das ist ein sehr umstrittenes Thema."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Controversé describes something that people strongly disagree about.",
+        "fr": "Controversé qualifie ce qui provoque de fortes oppositions.",
+        "de": "Controversé beschreibt etwas, worüber die Meinungen stark auseinandergehen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ce projet de loi est très ",
+        "after": " : la moitié du pays y est opposée.",
+        "accepted": { "answers": ["controversé"] },
+        "referenceTargetIds": ["controverse", "enjeu", "consensus", "desaccord"],
+        "explanation": {
+          "en": "Only the adjective controversé can follow « très » to describe the bill.",
+          "fr": "Seul l’adjectif « controversé » peut suivre « très » pour qualifier le projet de loi.",
+          "de": "Nur das Adjektiv „controversé“ kann nach „très“ den Gesetzentwurf beschreiben."
+        }
+      },
+      "listeningOptionTargetIds": ["controverse", "polemique", "clivage", "enjeu"]
+    },
+    {
+      "id": "faire-debat",
+      "term": "faire débat",
+      "translations": { "en": ["to spark debate"], "de": ["für Diskussionen sorgen"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "faire débat",
+      "examForms": ["faire débat"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fɛʁ de.ba/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Cette mesure fait débat depuis des mois.",
+        "translation": {
+          "en": "This measure has been sparking debate for months.",
+          "de": "Diese Maßnahme sorgt seit Monaten für Diskussionen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Faire débat means that a subject is discussed and divides opinion.",
+        "fr": "Faire débat signifie qu’un sujet est discuté et divise les opinions.",
+        "de": "Faire débat bedeutet, dass ein Thema diskutiert wird und die Meinungen spaltet."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Cette question continue de ",
+        "after": " chez les historiens.",
+        "accepted": { "answers": ["faire débat"] },
+        "referenceTargetIds": ["faire-debat", "trancher", "concilier", "enjeu"],
+        "explanation": {
+          "en": "After « continue de » we need an infinitive that fits a question discussed by historians: faire débat.",
+          "fr": "Après « continue de », il faut un infinitif qui convient à une question discutée par les historiens : faire débat.",
+          "de": "Nach „continue de“ braucht man einen Infinitiv, der zu einer unter Historikern diskutierten Frage passt: faire débat."
+        }
+      },
+      "listeningOptionTargetIds": ["faire-debat", "enjeu", "controverse", "desaccord"]
+    },
+    {
+      "id": "desaccord",
+      "term": "désaccord",
+      "translations": { "en": ["disagreement"], "de": ["Meinungsverschiedenheit", "Uneinigkeit"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un désaccord",
+      "examForms": ["un désaccord"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/de.za.kɔʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Nous sommes en désaccord sur ce point.",
+        "translation": {
+          "en": "We disagree on this point.",
+          "de": "In diesem Punkt sind wir uneinig."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Un désaccord is a difference of opinion between people.",
+        "fr": "Un désaccord est une différence d’opinion entre des personnes.",
+        "de": "Un désaccord ist ein Meinungsunterschied zwischen Personen."
+      },
+      "genderExplanation": {
+        "en": "Désaccord is masculine, so we say un désaccord.",
+        "fr": "Désaccord est masculin : on dit un désaccord.",
+        "de": "Désaccord ist maskulin, also sagt man un désaccord."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Les deux partis sont en ",
+        "after": " sur le budget.",
+        "accepted": { "answers": ["désaccord"] },
+        "referenceTargetIds": ["desaccord", "clivage", "compromis", "enjeu"],
+        "explanation": {
+          "en": "The set phrase is « être en désaccord » (to disagree).",
+          "fr": "L’expression figée est « être en désaccord ».",
+          "de": "Die feste Wendung lautet „être en désaccord“ (uneinig sein)."
+        }
+      },
+      "listeningOptionTargetIds": ["desaccord", "clivage", "polemique", "enjeu"]
+    },
+    {
+      "id": "clivage",
+      "term": "clivage",
+      "translations": { "en": ["divide", "split"], "de": ["Spaltung", "Graben"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un clivage",
+      "examForms": ["un clivage"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kli.vaʒ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Le clivage entre les générations s’accentue.",
+        "translation": {
+          "en": "The divide between generations is widening.",
+          "de": "Die Spaltung zwischen den Generationen wird größer."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Un clivage is a deep division between groups with opposed positions.",
+        "fr": "Un clivage est une division profonde entre des groupes aux positions opposées.",
+        "de": "Un clivage ist eine tiefe Trennung zwischen Gruppen mit gegensätzlichen Positionen."
+      },
+      "genderExplanation": {
+        "en": "Clivage is masculine, so we say un clivage.",
+        "fr": "Clivage est masculin : on dit un clivage.",
+        "de": "Clivage ist maskulin, also sagt man un clivage."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le ",
+        "after": " gauche-droite structure encore la vie politique française.",
+        "accepted": { "answers": ["clivage"] },
+        "referenceTargetIds": ["clivage", "enjeu", "polemique", "prise-position"],
+        "explanation": {
+          "en": "Only clivage is masculine and starts with a consonant, so it fits after « le ».",
+          "fr": "Seul « clivage » est masculin et commence par une consonne : il convient après « le ».",
+          "de": "Nur „clivage“ ist maskulin und beginnt mit einem Konsonanten, passt also nach „le“."
+        }
+      },
+      "listeningOptionTargetIds": ["clivage", "desaccord", "controverse", "enjeu"]
+    },
+    {
+      "id": "consensus",
+      "term": "consensus",
+      "translations": { "en": ["consensus"], "de": ["Konsens", "Einigkeit"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un consensus",
+      "examForms": ["un consensus"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kɔ̃.sɛ̃.sys/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Il n’y a pas de consensus sur ce sujet.",
+        "translation": {
+          "en": "There is no consensus on this subject.",
+          "de": "Zu diesem Thema gibt es keinen Konsens."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Un consensus is a general agreement shared by almost everyone.",
+        "fr": "Un consensus est un accord général partagé par presque tous.",
+        "de": "Un consensus ist eine allgemeine Übereinstimmung, die fast alle teilen."
+      },
+      "genderExplanation": {
+        "en": "Consensus is masculine, so we say un consensus.",
+        "fr": "Consensus est masculin : on dit un consensus.",
+        "de": "Consensus ist maskulin, also sagt man un consensus."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il y a un large ",
+        "after": " scientifique sur le réchauffement climatique.",
+        "accepted": { "answers": ["consensus"] },
+        "referenceTargetIds": ["consensus", "polemique", "prise-position", "concilier"],
+        "explanation": {
+          "en": "Only consensus is masculine and fits after « un large ».",
+          "fr": "Seul « consensus » est masculin et convient après « un large ».",
+          "de": "Nur „consensus“ ist maskulin und passt nach „un large“."
+        }
+      },
+      "listeningOptionTargetIds": ["consensus", "compromis", "concilier", "trancher"]
+    },
+    {
+      "id": "compromis",
+      "term": "compromis",
+      "translations": { "en": ["compromise"], "de": ["Kompromiss"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un compromis",
+      "examForms": ["un compromis"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kɔ̃.pʁɔ.mi/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Les deux camps ont enfin accepté un compromis.",
+        "translation": {
+          "en": "The two sides finally accepted a compromise.",
+          "de": "Die beiden Lager haben endlich einen Kompromiss akzeptiert."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Un compromis is an agreement in which each side gives something up.",
+        "fr": "Un compromis est un accord où chacun fait des concessions.",
+        "de": "Un compromis ist eine Einigung, bei der jede Seite Zugeständnisse macht."
+      },
+      "genderExplanation": {
+        "en": "Compromis is masculine, so we say un compromis.",
+        "fr": "Compromis est masculin : on dit un compromis.",
+        "de": "Compromis ist maskulin, also sagt man un compromis."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Dans un couple, il faut savoir faire des ",
+        "after": ".",
+        "accepted": { "answers": ["compromis"] },
+        "referenceTargetIds": ["compromis", "consensus", "enjeu", "clivage"],
+        "explanation": {
+          "en": "The usual collocation is « faire des compromis » (the noun does not change in the plural).",
+          "fr": "La collocation habituelle est « faire des compromis » (le nom ne change pas au pluriel).",
+          "de": "Die übliche Verbindung ist „faire des compromis“ (das Nomen bleibt im Plural unverändert)."
+        }
+      },
+      "listeningOptionTargetIds": ["compromis", "consensus", "concilier", "prise-position"]
+    },
+    {
+      "id": "prise-position",
+      "term": "prise de position",
+      "translations": { "en": ["stance", "stand"], "de": ["Stellungnahme", "Positionierung"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une prise de position",
+      "examForms": ["une prise de position"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/pʁiz də pɔ.zi.sjɔ̃/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Sa prise de position a surpris tout le monde.",
+        "translation": {
+          "en": "His stance surprised everyone.",
+          "de": "Seine Stellungnahme hat alle überrascht."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Une prise de position is a public statement of one’s opinion on a question.",
+        "fr": "Une prise de position est l’expression publique de son opinion sur une question.",
+        "de": "Une prise de position ist die öffentliche Äußerung der eigenen Meinung zu einer Frage."
+      },
+      "genderExplanation": {
+        "en": "Prise de position is feminine, so we say une prise de position.",
+        "fr": "Prise de position est féminin : on dit une prise de position.",
+        "de": "Prise de position ist feminin, also sagt man une prise de position."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le syndicat a publié une ",
+        "after": " claire contre la réforme.",
+        "accepted": { "answers": ["prise de position"] },
+        "referenceTargetIds": ["prise-position", "polemique", "clivage", "trancher"],
+        "explanation": {
+          "en": "A union publishes a stance: une prise de position.",
+          "fr": "Un syndicat publie une prise de position.",
+          "de": "Eine Gewerkschaft veröffentlicht eine Stellungnahme: une prise de position."
+        }
+      },
+      "listeningOptionTargetIds": ["prise-position", "compromis", "trancher", "argument-poids"]
+    },
+    {
+      "id": "trancher",
+      "term": "trancher",
+      "translations": {
+        "en": ["to settle", "to decide"],
+        "de": ["entscheiden", "eine Entscheidung treffen"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "trancher",
+      "examForms": ["trancher"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/tʁɑ̃.ʃe/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Le président va trancher demain.",
+        "translation": {
+          "en": "The president will make the decision tomorrow.",
+          "de": "Der Präsident wird morgen entscheiden."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Trancher means to make a final decision between several options.",
+        "fr": "Trancher signifie prendre une décision définitive entre plusieurs possibilités.",
+        "de": "Trancher bedeutet, zwischen mehreren Möglichkeiten endgültig zu entscheiden."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le comité devra ",
+        "after": " entre ces deux options avant vendredi.",
+        "accepted": { "answers": ["trancher"] },
+        "referenceTargetIds": ["trancher", "concilier", "faire-debat", "enjeu"],
+        "explanation": {
+          "en": "One decides between two options: trancher entre.",
+          "fr": "On tranche entre deux options : trancher entre.",
+          "de": "Man entscheidet zwischen zwei Optionen: trancher entre."
+        }
+      },
+      "listeningOptionTargetIds": ["trancher", "concilier", "consensus", "argument-poids"]
+    },
+    {
+      "id": "argument-poids",
+      "term": "argument de poids",
+      "translations": {
+        "en": ["weighty argument", "strong argument"],
+        "de": ["gewichtiges Argument", "starkes Argument"]
+      },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un argument de poids",
+      "examForms": ["un argument de poids"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/aʁ.ɡy.mɑ̃ də pwa/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "C’est un argument de poids pour nous convaincre.",
+        "translation": {
+          "en": "It is a weighty argument to convince us.",
+          "de": "Das ist ein gewichtiges Argument, um uns zu überzeugen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Un argument de poids is a strong argument that can change people’s minds.",
+        "fr": "Un argument de poids est un argument fort qui peut faire changer d’avis.",
+        "de": "Un argument de poids ist ein starkes Argument, das andere umstimmen kann."
+      },
+      "genderExplanation": {
+        "en": "Argument is masculine, so we say un argument de poids.",
+        "fr": "Argument est masculin : on dit un argument de poids.",
+        "de": "Argument ist maskulin, also sagt man un argument de poids."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le coût est un ",
+        "after": " en faveur de cette solution.",
+        "accepted": { "answers": ["argument de poids"] },
+        "referenceTargetIds": ["argument-poids", "consensus", "clivage", "desaccord"],
+        "explanation": {
+          "en": "Cost can be a strong argument in favour of a solution; the other words are not arguments.",
+          "fr": "Le coût peut être un argument fort en faveur d’une solution ; les autres mots ne sont pas des arguments.",
+          "de": "Die Kosten können ein starkes Argument für eine Lösung sein; die anderen Wörter sind keine Argumente."
+        }
+      },
+      "listeningOptionTargetIds": ["argument-poids", "prise-position", "consensus", "compromis"]
+    },
+    {
+      "id": "concilier",
+      "term": "concilier",
+      "translations": { "en": ["to reconcile"], "de": ["in Einklang bringen", "vereinbaren"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "concilier",
+      "examForms": ["concilier"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kɔ̃.si.lje/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Elle essaie de concilier travail et études.",
+        "translation": {
+          "en": "She is trying to reconcile work and studies.",
+          "de": "Sie versucht, Arbeit und Studium zu vereinbaren."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Concilier means to make two opposed things or positions work together.",
+        "fr": "Concilier signifie faire coexister deux choses ou deux positions opposées.",
+        "de": "Concilier bedeutet, zwei gegensätzliche Dinge oder Positionen miteinander in Einklang zu bringen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il est difficile de ",
+        "after": " vie professionnelle et vie familiale.",
+        "accepted": { "answers": ["concilier"] },
+        "referenceTargetIds": ["concilier", "trancher", "faire-debat", "prise-position"],
+        "explanation": {
+          "en": "Concilier takes a direct object: to reconcile two things.",
+          "fr": "Concilier se construit avec un complément direct : concilier deux choses.",
+          "de": "Concilier steht mit direktem Objekt: zwei Dinge in Einklang bringen."
+        }
+      },
+      "listeningOptionTargetIds": ["concilier", "consensus", "compromis", "trancher"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

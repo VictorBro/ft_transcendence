@@ -6,318 +6,218 @@
   "locales": ["en", "fr", "de"],
   "title": "Les verbes en -er au présent",
   "objective": {
-    "en": "Conjugate regular -er verbs (parler, habiter, aimer) in the present tense with all pronouns and pronounce silent endings correctly.",
-    "fr": "Conjuguer les verbes en -er (parler, habiter, aimer) au présent avec tous les pronoms et prononcer les terminaisons muettes.",
-    "de": "Konjugieren Sie regelmäßige Verben auf -er (parler, habiter, aimer) im Präsens mit allen Pronomen und sprechen Sie stumme Endungen korrekt aus."
+    "en": "Conjugate parler, habiter and aimer in the present with every pronoun, and know that the endings -e, -es and -ent are silent: je parle, ils parlent.",
+    "fr": "Conjuguer parler, habiter et aimer au présent avec tous les pronoms et savoir que les terminaisons -e, -es et -ent ne se prononcent pas : je parle, ils parlent.",
+    "de": "Parler, habiter und aimer im Präsens mit allen Pronomen konjugieren und wissen, dass die Endungen -e, -es und -ent nicht gesprochen werden: je parle, ils parlent."
   },
   "estimatedMinutes": 15,
   "provenance": {
-    "generator": "claude-code-direct-authoring",
-    "model": "claude-opus-5-5",
-    "promptVersion": "brief-v7",
-    "generatedAt": "2026-10-16T17:56:28.761Z",
-    "inputHashes": {
-      "outline": "4bae78ce67d7f31114d89dc0592f67d49937b48f4040d52ddbd1eed5560181b1"
-    }
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:29:58.754Z",
+    "inputHashes": { "outline": "4bae78ce67d7f31114d89dc0592f67d49937b48f4040d52ddbd1eed5560181b1" }
   },
   "kind": "grammar",
   "topic": "verbs_morphology",
   "scopeBoundaries": {
-    "en": "Covers present tense conjugation and pronunciation of regular -er verbs (parler, habiter, aimer). Excludes irregular verbs and other tenses.",
-    "fr": "Couvre la conjugaison et la prononciation des verbes réguliers en -er (parler, habiter, aimer) au présent. Exclut les verbes irréguliers et les autres temps.",
-    "de": "Deckt die Präsenskonjugation und Aussprache regelmäßiger Verben auf -er (parler, habiter, aimer) ab. Schließt unregelmäßige Verben und andere Zeiten aus."
+    "en": "Covers the present of regular -er verbs through parler, habiter and aimer, silent endings and je becoming j'. Excludes irregular verbs, negation, questions and other tenses.",
+    "fr": "Couvre le présent des verbes réguliers en -er avec parler, habiter et aimer, les terminaisons muettes et je devenant j'. Exclut les verbes irréguliers, la négation, les questions et les autres temps.",
+    "de": "Behandelt das Präsens regelmäßiger Verben auf -er anhand von parler, habiter und aimer, stumme Endungen und je zu j'. Ausgeschlossen sind unregelmäßige Verben, Verneinung, Fragen und andere Zeiten."
   },
   "prerequisites": [
     {
-      "en": "Subject pronouns in French (je, tu, il, elle, on, nous, vous, ils, elles)",
-      "fr": "Les pronoms sujets en français (je, tu, il, elle, on, nous, vous, ils, elles)",
-      "de": "Französische Subjektpronomen (je, tu, il, elle, on, nous, vous, ils, elles)"
+      "en": "The subject pronouns je, tu, il, elle, on, nous, vous, ils, elles and the verb être.",
+      "fr": "Les pronoms sujets je, tu, il, elle, on, nous, vous, ils, elles et le verbe être.",
+      "de": "Die Subjektpronomen je, tu, il, elle, on, nous, vous, ils, elles und das Verb être."
     }
   ],
   "rules": [
     {
-      "id": "rule-er-singular",
+      "id": "rule-er-endings",
       "summary": {
-        "en": "Remove -er from the infinitive and add -e (je), -es (tu), and -e (il/elle/on).",
-        "fr": "Retirez -er de l'infinitif et ajoutez -e (je), -es (tu) et -e (il/elle/on).",
-        "de": "Entfernen Sie -er vom Infinitiv und fügen Sie -e (je), -es (tu) und -e (il/elle/on) hinzu."
-      }
-    },
-    {
-      "id": "rule-er-plural",
-      "summary": {
-        "en": "Add endings -ons (nous), -ez (vous), and -ent (ils/elles) to the verb stem.",
-        "fr": "Ajoutez les terminaisons -ons (nous), -ez (vous) et -ent (ils/elles) au radical du verbe.",
-        "de": "Fügen Sie die Endungen -ons (nous), -ez (vous) und -ent (ils/elles) an den Verbstamm an."
+        "en": "Regular -er verbs take the endings -e, -es, -e, -ons, -ez, -ent added to the stem: je parle, nous parlons.",
+        "fr": "Les verbes réguliers en -er prennent les terminaisons -e, -es, -e, -ons, -ez, -ent après le radical : je parle, nous parlons.",
+        "de": "Regelmäßige Verben auf -er erhalten an den Stamm die Endungen -e, -es, -e, -ons, -ez, -ent: je parle, nous parlons."
       }
     },
     {
       "id": "rule-silent-endings",
       "summary": {
-        "en": "The endings -e, -es, and -ent are silent in pronunciation.",
-        "fr": "Les terminaisons -e, -es et -ent sont muettes à la prononciation.",
-        "de": "Die Endungen -e, -es und -ent werden bei der Aussprache nicht gesprochen."
+        "en": "The endings -e, -es and -ent are not pronounced: je parle, tu parles, il parle and ils parlent sound the same.",
+        "fr": "Les terminaisons -e, -es et -ent ne se prononcent pas : je parle, tu parles, il parle et ils parlent ont le même son.",
+        "de": "Die Endungen -e, -es und -ent werden nicht gesprochen: je parle, tu parles, il parle und ils parlent klingen gleich."
+      }
+    },
+    {
+      "id": "rule-elision",
+      "summary": {
+        "en": "Before a vowel or a mute h, je becomes j': j'habite, j'aime.",
+        "fr": "Devant une voyelle ou un h muet, je devient j' : j'habite, j'aime.",
+        "de": "Vor einem Vokal oder stummen h wird je zu j': j'habite, j'aime."
       }
     }
   ],
   "blocks": [
     {
-      "id": "block-singular-forms",
+      "id": "block-endings",
       "title": {
-        "en": "Singular Forms and Silent Endings",
-        "fr": "Formes du singulier et terminaisons muettes",
-        "de": "Singularformen und stumme Endungen"
+        "en": "The endings of parler",
+        "fr": "Les terminaisons de parler",
+        "de": "Die Endungen von parler"
       },
-      "ruleIds": ["rule-er-singular", "rule-silent-endings"],
+      "ruleIds": ["rule-er-endings"],
       "explanationPlan": {
-        "en": "Learn to form singular present tense for -er verbs by removing -er and adding -e, -es, -e. Practice recognizing that these endings are silent.",
-        "fr": "Apprenez à former le présent du singulier pour les verbes en -er en retirant -er et en ajoutant -e, -es, -e. Entraînez-vous à retenir que ces terminaisons sont muettes.",
-        "de": "Lernen Sie die Bildung der Präsens-Singularformen für Verben auf -er durch Entfernen von -er und Hinzufügen von -e, -es, -e. Beachten Sie die stumme Aussprache."
+        "en": "Show the pattern stem + ending with parler, then habiter and aimer. Give the six forms in a table and examples.",
+        "fr": "Montrer le modèle radical + terminaison avec parler, puis habiter et aimer. Donner les six formes dans un tableau et des exemples.",
+        "de": "Das Muster Stamm + Endung mit parler zeigen, dann habiter und aimer. Die sechs Formen in einer Tabelle und Beispiele geben."
       },
       "explanationDurationS": 120,
       "examples": [
         {
           "text": "Je parle français.",
-          "translation": {
-            "en": "I speak French.",
-            "de": "Ich spreche Französisch."
-          }
+          "translation": { "en": "I speak French.", "de": "Ich spreche Französisch." }
         },
         {
-          "text": "Tu habites à Paris.",
-          "translation": {
-            "en": "You live in Paris.",
-            "de": "Du wohnst in Paris."
-          }
+          "text": "Tu habites à Paris ?",
+          "translation": { "en": "Do you live in Paris?", "de": "Wohnst du in Paris?" }
         },
         {
-          "text": "Elle aime la musique.",
-          "translation": {
-            "en": "She likes music.",
-            "de": "Sie mag Musik."
-          }
+          "text": "Ils parlent anglais.",
+          "translation": { "en": "They speak English.", "de": "Sie sprechen Englisch." }
         }
       ],
       "pitfalls": [
         {
-          "en": "Do not pronounce the final -s in tu habites or the -e in je parle.",
-          "fr": "Ne prononcez pas le -s final dans tu habites ni le -e dans je parle.",
-          "de": "Sprechen Sie weder das finale -s bei tu habites noch das -e bei je parle aus."
+          "en": "Do not add -s to the je form or forget the -ent of ils and elles.",
+          "fr": "N'ajoutez pas de -s à la forme de je et n'oubliez pas le -ent de ils et elles.",
+          "de": "Hänge kein -s an die Form von je und vergiss das -ent bei ils und elles nicht."
         }
       ],
       "exercises": [
         {
-          "id": "ex-singular-persons",
+          "id": "ex-b1-match",
           "type": "grammar_person_matching",
-          "itemCount": 2,
-          "ruleIds": ["rule-er-singular"],
-          "estimatedDurationS": 48
+          "itemCount": 1,
+          "ruleIds": ["rule-er-endings"],
+          "estimatedDurationS": 60
         },
         {
-          "id": "ex-singular-choice",
+          "id": "ex-b1-choice",
           "type": "grammar_gap_choice",
-          "itemCount": 3,
-          "ruleIds": ["rule-er-singular", "rule-silent-endings"],
-          "estimatedDurationS": 30
+          "itemCount": 4,
+          "ruleIds": ["rule-er-endings"],
+          "estimatedDurationS": 40
         },
         {
-          "id": "ex-singular-typing",
+          "id": "ex-b1-typing",
           "type": "grammar_gap_typing",
-          "itemCount": 3,
-          "ruleIds": ["rule-er-singular"],
-          "estimatedDurationS": 45
-        },
-        {
-          "id": "ex-singular-spot",
-          "type": "grammar_error_spotter",
-          "itemCount": 3,
-          "ruleIds": ["rule-silent-endings", "rule-er-singular"],
-          "estimatedDurationS": 75
+          "itemCount": 4,
+          "ruleIds": ["rule-er-endings"],
+          "estimatedDurationS": 60
         }
       ]
     },
     {
-      "id": "block-plural-forms",
+      "id": "block-sound",
       "title": {
-        "en": "Plural Forms (-ons, -ez, -ent)",
-        "fr": "Formes du pluriel (-ons, -ez, -ent)",
-        "de": "Pluralformen (-ons, -ez, -ent)"
+        "en": "Silent endings and j'",
+        "fr": "Terminaisons muettes et j'",
+        "de": "Stumme Endungen und j'"
       },
-      "ruleIds": ["rule-er-plural"],
+      "ruleIds": ["rule-er-endings", "rule-silent-endings", "rule-elision"],
       "explanationPlan": {
-        "en": "Learn plural endings -ons, -ez, and -ent. Note that -ons and -ez are pronounced, whereas -ent is silent.",
-        "fr": "Découvrez les terminaisons du pluriel -ons, -ez et -ent. Notez que -ons et -ez se prononcent, tandis que -ent est muet.",
-        "de": "Lernen Sie die Pluralendungen -ons, -ez und -ent. Beachten Sie, dass -ons und -ez ausgesprochen werden, während -ent stumm ist."
+        "en": "Explain that -e, -es and -ent are silent, so four forms sound alike, and that je becomes j' before a vowel or mute h. Remind that the written ending depends on the subject.",
+        "fr": "Expliquer que -e, -es et -ent sont muets, donc quatre formes se prononcent pareil, et que je devient j' devant une voyelle ou un h muet. Rappeler que la terminaison écrite dépend du sujet.",
+        "de": "Erklären, dass -e, -es und -ent stumm sind und vier Formen gleich klingen, und dass je vor Vokal oder stummem h zu j' wird. Daran erinnern, dass die geschriebene Endung vom Subjekt abhängt."
       },
-      "explanationDurationS": 120,
+      "explanationDurationS": 150,
       "examples": [
         {
-          "text": "Nous parlons italien.",
-          "translation": {
-            "en": "We speak Italian.",
-            "de": "Wir sprechen Italienisch."
-          }
+          "text": "J'habite à Lyon.",
+          "translation": { "en": "I live in Lyon.", "de": "Ich wohne in Lyon." }
         },
         {
-          "text": "Vous habitez ici.",
-          "translation": {
-            "en": "You live here.",
-            "de": "Sie wohnen hier."
-          }
+          "text": "J'aime chanter.",
+          "translation": { "en": "I like singing.", "de": "Ich singe gern." }
         },
         {
-          "text": "Ils aiment le chocolat.",
-          "translation": {
-            "en": "They like chocolate.",
-            "de": "Sie mögen Schokolade."
-          }
+          "text": "Elles parlent italien.",
+          "translation": { "en": "They speak Italian.", "de": "Sie sprechen Italienisch." }
         }
       ],
       "pitfalls": [
         {
-          "en": "Do not pronounce the ending -ent in ils/elles aiment; it sounds the same as il aime.",
-          "fr": "Ne prononcez pas la terminaison -ent dans ils/elles aiment ; elle se prononce comme il aime.",
-          "de": "Sprechen Sie die Endung -ent bei ils/elles aiment nicht aus; sie klingt wie il aime."
+          "en": "Writing the singular ending for a plural subject because the sound is the same.",
+          "fr": "Écrire la terminaison du singulier avec un sujet pluriel parce que le son est le même.",
+          "de": "Die Singularendung bei einem Plural-Subjekt schreiben, weil der Klang gleich ist."
         }
       ],
       "exercises": [
         {
-          "id": "ex-persons",
-          "type": "grammar_person_matching",
-          "itemCount": 1,
-          "ruleIds": ["rule-er-singular", "rule-er-plural"],
-          "estimatedDurationS": 48
-        },
-        {
-          "id": "ex-plural-forms",
+          "id": "ex-b2-forms",
           "type": "grammar_pronoun_form_typing",
           "itemCount": 2,
-          "ruleIds": ["rule-er-plural"],
+          "ruleIds": ["rule-er-endings", "rule-elision"],
           "estimatedDurationS": 90
         },
         {
-          "id": "ex-plural-choice",
+          "id": "ex-b2-choice",
           "type": "grammar_gap_choice",
-          "itemCount": 4,
-          "ruleIds": ["rule-er-plural"],
-          "estimatedDurationS": 40
+          "itemCount": 3,
+          "ruleIds": ["rule-silent-endings", "rule-elision"],
+          "estimatedDurationS": 30
         },
         {
-          "id": "ex-plural-typing",
+          "id": "ex-b2-typing",
           "type": "grammar_gap_typing",
           "itemCount": 4,
-          "ruleIds": ["rule-er-plural"],
+          "ruleIds": ["rule-er-endings", "rule-silent-endings", "rule-elision"],
           "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-b2-order",
+          "type": "grammar_word_order",
+          "itemCount": 2,
+          "ruleIds": ["rule-silent-endings", "rule-elision"],
+          "estimatedDurationS": 40
         }
       ]
     }
   ],
-  "feedbackPlaceholder": {
-    "estimatedDurationS": 30
-  },
+  "newVerbs": [
+    { "infinitive": "parler", "translations": { "en": "to speak", "de": "sprechen" } },
+    { "infinitive": "habiter", "translations": { "en": "to live (somewhere)", "de": "wohnen" } },
+    { "infinitive": "aimer", "translations": { "en": "to like, to love", "de": "mögen, lieben" } }
+  ],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
   "exam": {
     "pages": [
       {
         "pageId": "exam-forms",
         "type": "grammar_pronoun_form_typing",
         "itemCount": 2,
-        "ruleIds": ["rule-er-singular", "rule-silent-endings", "rule-er-plural"],
+        "ruleIds": ["rule-er-endings", "rule-elision"],
         "estimatedDurationS": 90,
-        "timeLimitS": 140
+        "timeLimitS": 150
       },
       {
-        "pageId": "exam-singular",
+        "pageId": "exam-gaps",
         "type": "grammar_gap_typing",
-        "itemCount": 3,
-        "ruleIds": ["rule-er-singular", "rule-silent-endings"],
-        "estimatedDurationS": 45,
-        "timeLimitS": 70
+        "itemCount": 4,
+        "ruleIds": ["rule-er-endings", "rule-silent-endings", "rule-elision"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
       },
       {
-        "pageId": "exam-plural",
-        "type": "grammar_gap_typing",
-        "itemCount": 3,
-        "ruleIds": ["rule-er-plural"],
-        "estimatedDurationS": 45,
-        "timeLimitS": 70
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 2,
+        "ruleIds": ["rule-er-endings", "rule-silent-endings"],
+        "estimatedDurationS": 40,
+        "timeLimitS": 80
       }
     ]
   },
-  "scoring": {
-    "practiceWeight": 35,
-    "examWeight": 65,
-    "orthographyCredit": 0.5
-  },
-  "newVerbs": [
-    {
-      "infinitive": "parler",
-      "translations": {
-        "en": "to speak",
-        "de": "sprechen"
-      }
-    },
-    {
-      "infinitive": "habiter",
-      "translations": {
-        "en": "to live (somewhere)",
-        "de": "wohnen"
-      }
-    },
-    {
-      "infinitive": "aimer",
-      "translations": {
-        "en": "to like, to love",
-        "de": "mögen, lieben"
-      }
-    },
-    {
-      "infinitive": "travailler",
-      "translations": {
-        "en": "to work",
-        "de": "arbeiten"
-      }
-    },
-    {
-      "infinitive": "regarder",
-      "translations": {
-        "en": "to watch, to look at",
-        "de": "ansehen, anschauen"
-      }
-    },
-    {
-      "infinitive": "écouter",
-      "translations": {
-        "en": "to listen (to)",
-        "de": "hören, zuhören"
-      }
-    },
-    {
-      "infinitive": "chanter",
-      "translations": {
-        "en": "to sing",
-        "de": "singen"
-      }
-    },
-    {
-      "infinitive": "danser",
-      "translations": {
-        "en": "to dance",
-        "de": "tanzen"
-      }
-    },
-    {
-      "infinitive": "jouer",
-      "translations": {
-        "en": "to play",
-        "de": "spielen"
-      }
-    },
-    {
-      "infinitive": "étudier",
-      "translations": {
-        "en": "to study",
-        "de": "studieren, lernen"
-      }
-    }
-  ]
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
 }

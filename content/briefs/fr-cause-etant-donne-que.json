@@ -1,0 +1,253 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-cause-etant-donne-que",
+  "lang": "fr",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Étant donné que, vu que, à force de",
+  "objective": {
+    "en": "Express cause precisely with étant donné que, vu que, dans la mesure où, sous prétexte que and à force de.",
+    "fr": "Exprimer la cause avec précision grâce à étant donné que, vu que, dans la mesure où, sous prétexte que et à force de.",
+    "de": "Ursachen präzise ausdrücken mit étant donné que, vu que, dans la mesure où, sous prétexte que und à force de."
+  },
+  "estimatedMinutes": 17,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:55:33.916Z",
+    "inputHashes": { "outline": "01b0bf08f8cd45f4283d0f5ec1c59b0c88e5f488a0f8b95ab119098ff5924367" }
+  },
+  "kind": "grammar",
+  "topic": "subordinate_clauses",
+  "scopeBoundaries": {
+    "en": "Covers five cause expressions with the indicative, infinitive or noun. Excludes parce que, car, puisque, grâce à, à cause de and non que + subjunctive.",
+    "fr": "Couvre cinq expressions de la cause avec l'indicatif, l'infinitif ou le nom. Exclut parce que, car, puisque, grâce à, à cause de et non que + subjonctif.",
+    "de": "Behandelt fünf Ausdrücke der Ursache mit Indikativ, Infinitiv oder Nomen. Ausgeschlossen sind parce que, car, puisque, grâce à, à cause de und non que + Subjonctif."
+  },
+  "prerequisites": [
+    {
+      "en": "Basic causal links: parce que, car, puisque",
+      "fr": "Les liens causaux de base : parce que, car, puisque",
+      "de": "Grundlegende kausale Verbindungen: parce que, car, puisque"
+    },
+    {
+      "en": "The present and the passé composé of the indicative",
+      "fr": "Le présent et le passé composé de l'indicatif",
+      "de": "Präsens und Passé composé im Indikativ"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-known-cause",
+      "summary": {
+        "en": "Étant donné que and vu que + indicative present a cause as a known fact.",
+        "fr": "Étant donné que et vu que + indicatif présentent la cause comme un fait connu.",
+        "de": "Étant donné que und vu que + Indikativ stellen die Ursache als bekannte Tatsache dar."
+      }
+    },
+    {
+      "id": "rule-limited-cause",
+      "summary": {
+        "en": "Dans la mesure où + indicative gives a cause that holds only within a limit.",
+        "fr": "Dans la mesure où + indicatif donne une cause valable dans une certaine limite.",
+        "de": "Dans la mesure où + Indikativ nennt eine Ursache, die nur in gewissen Grenzen gilt."
+      }
+    },
+    {
+      "id": "rule-pretext",
+      "summary": {
+        "en": "Sous prétexte que + indicative or sous prétexte de + infinitive introduces a doubtful excuse.",
+        "fr": "Sous prétexte que + indicatif ou sous prétexte de + infinitif introduit une excuse douteuse.",
+        "de": "Sous prétexte que + Indikativ oder sous prétexte de + Infinitiv leitet eine zweifelhafte Ausrede ein."
+      }
+    },
+    {
+      "id": "rule-repetition",
+      "summary": {
+        "en": "À force de + infinitive or noun expresses a repeated or lasting cause with a marked result.",
+        "fr": "À force de + infinitif ou nom exprime une cause répétée ou durable au résultat marqué.",
+        "de": "À force de + Infinitiv oder Nomen drückt eine wiederholte oder andauernde Ursache mit auffälligem Ergebnis aus."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "b-known",
+      "title": {
+        "en": "A known cause: étant donné que, vu que, dans la mesure où",
+        "fr": "Une cause connue : étant donné que, vu que, dans la mesure où",
+        "de": "Eine bekannte Ursache: étant donné que, vu que, dans la mesure où"
+      },
+      "ruleIds": ["rule-known-cause", "rule-limited-cause"],
+      "explanationPlan": {
+        "en": "Show étant donné que (formal) and vu que (everyday) with the indicative for a cause the listener knows. Then dans la mesure où for a cause that holds only within a limit. Give a table and four examples.",
+        "fr": "Montrer étant donné que (soutenu) et vu que (courant) avec l'indicatif pour une cause connue de l'interlocuteur. Puis dans la mesure où pour une cause valable dans une limite. Donner un tableau et quatre exemples.",
+        "de": "étant donné que (förmlich) und vu que (alltäglich) mit dem Indikativ für eine bekannte Ursache zeigen. Dann dans la mesure où für eine Ursache mit Einschränkung. Tabelle und vier Beispiele geben."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Vu qu'il pleut, on reste à la maison.",
+          "translation": {
+            "en": "Since it is raining, we are staying home.",
+            "de": "Da es regnet, bleiben wir zu Hause."
+          }
+        },
+        {
+          "text": "Étant donné que le train est en retard, nous partons plus tard.",
+          "translation": {
+            "en": "Given that the train is late, we are leaving later.",
+            "de": "Da der Zug Verspätung hat, fahren wir später los."
+          }
+        },
+        {
+          "text": "Cette solution est acceptable, dans la mesure où elle ne coûte rien.",
+          "translation": {
+            "en": "This solution is acceptable, in so far as it costs nothing.",
+            "de": "Diese Lösung ist akzeptabel, insofern sie nichts kostet."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not use the subjunctive after étant donné que or vu que: they take the indicative.",
+          "fr": "N'employez pas le subjonctif après étant donné que ou vu que : ils se construisent avec l'indicatif.",
+          "de": "Nach étant donné que oder vu que steht kein Subjonctif, sondern der Indikativ."
+        },
+        {
+          "en": "Dans la mesure où is not a simple synonym of vu que: it adds a limit to the cause.",
+          "fr": "Dans la mesure où n'est pas un simple synonyme de vu que : il ajoute une limite à la cause.",
+          "de": "Dans la mesure où ist kein einfaches Synonym von vu que: Es fügt der Ursache eine Einschränkung hinzu."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-known-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 5,
+          "ruleIds": ["rule-known-cause", "rule-limited-cause"],
+          "estimatedDurationS": 75
+        },
+        {
+          "id": "ex-known-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-known-cause", "rule-limited-cause"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-known-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-known-cause", "rule-limited-cause"],
+          "estimatedDurationS": 75
+        }
+      ]
+    },
+    {
+      "id": "b-excuse",
+      "title": {
+        "en": "Excuse and repetition: sous prétexte que, à force de",
+        "fr": "Excuse et répétition : sous prétexte que, à force de",
+        "de": "Ausrede und Wiederholung: sous prétexte que, à force de"
+      },
+      "ruleIds": ["rule-pretext", "rule-repetition"],
+      "explanationPlan": {
+        "en": "Explain sous prétexte que + indicative and sous prétexte de + infinitive for an excuse the speaker doubts. Then à force de + infinitive or noun for a cause that is repeated or lasts, with a result often negative or surprising. Table and four examples.",
+        "fr": "Expliquer sous prétexte que + indicatif et sous prétexte de + infinitif pour une excuse dont le locuteur doute. Puis à force de + infinitif ou nom pour une cause répétée ou durable, au résultat souvent négatif ou surprenant. Tableau et quatre exemples.",
+        "de": "sous prétexte que + Indikativ und sous prétexte de + Infinitiv für eine Ausrede erklären, an der der Sprecher zweifelt. Dann à force de + Infinitiv oder Nomen für eine wiederholte oder andauernde Ursache mit oft negativem oder überraschendem Ergebnis. Tabelle und vier Beispiele."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "Il est resté chez lui sous prétexte qu'il était malade.",
+          "translation": {
+            "en": "He stayed home on the pretext that he was ill.",
+            "de": "Er blieb zu Hause unter dem Vorwand, krank zu sein."
+          }
+        },
+        {
+          "text": "À force de travailler, il a réussi.",
+          "translation": {
+            "en": "By dint of working, he succeeded.",
+            "de": "Durch ständiges Arbeiten hat er es geschafft."
+          }
+        },
+        {
+          "text": "À force de crier, il a perdu la voix.",
+          "translation": {
+            "en": "From shouting so much, he lost his voice.",
+            "de": "Vom vielen Schreien hat er seine Stimme verloren."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not use sous prétexte que for a true reason: it suggests that the reason is false.",
+          "fr": "N'employez pas sous prétexte que pour une vraie raison : il suggère que la raison est fausse.",
+          "de": "Verwende sous prétexte que nicht für einen wahren Grund: Es deutet an, dass der Grund falsch ist."
+        },
+        {
+          "en": "À force de is followed by an infinitive or a noun, never by a conjugated verb.",
+          "fr": "À force de est suivi d'un infinitif ou d'un nom, jamais d'un verbe conjugué.",
+          "de": "Nach à force de steht ein Infinitiv oder ein Nomen, nie ein konjugiertes Verb."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-excuse-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-pretext", "rule-repetition"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-excuse-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-pretext", "rule-repetition"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-excuse-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 4,
+          "ruleIds": ["rule-pretext", "rule-repetition"],
+          "estimatedDurationS": 100
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-gaps1",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-known-cause", "rule-limited-cause"],
+        "estimatedDurationS": 80,
+        "timeLimitS": 120
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 4,
+        "ruleIds": ["rule-known-cause", "rule-limited-cause", "rule-pretext", "rule-repetition"],
+        "estimatedDurationS": 100,
+        "timeLimitS": 160
+      },
+      {
+        "pageId": "exam-gaps2",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-pretext", "rule-repetition"],
+        "estimatedDurationS": 80,
+        "timeLimitS": 120
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

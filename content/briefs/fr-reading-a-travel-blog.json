@@ -8,129 +8,129 @@
   "objective": {
     "en": "Read a blog post about three days in Marseille and find the order of the visits, the small problem on day two and the best moment.",
     "fr": "Lire un billet de blog sur trois jours à Marseille et retrouver l’ordre des visites, le petit problème du deuxième jour et le meilleur moment.",
-    "de": "Einen Blogbeitrag über drei Tage in Marseille lesen und die Reihenfolge der Besuche, das kleine Problem am zweiten Tag und den schönsten Moment finden."
+    "de": "Einen Blogeintrag über drei Tage in Marseille lesen und die Reihenfolge der Besuche, das kleine Problem am zweiten Tag und den besten Moment finden."
   },
   "estimatedMinutes": 8,
   "provenance": {
     "generator": "ft lessons:author",
-    "model": "claude-sonnet-5-5",
+    "model": "sonnet",
     "promptVersion": "author-2",
-    "generatedAt": "2026-11-01T00:01:51.769Z",
+    "generatedAt": "2026-11-01T18:34:07.239Z",
     "inputHashes": { "outline": "9be1383d037fc7c64d01aa016b01e7aa3f5ef772e7f2ed65351c9e5cc28a10f6" }
   },
   "kind": "reading",
   "theme": "travel",
   "genre": "article",
   "situation": {
-    "en": "Camille writes a travel blog post for her readers about her three days in Marseille with her friend Karim.",
-    "fr": "Camille écrit un billet de blog pour ses lecteurs sur ses trois jours à Marseille avec son ami Karim.",
-    "de": "Camille schreibt für ihre Leser einen Blogbeitrag über ihre drei Tage in Marseille mit ihrem Freund Karim."
+    "en": "Camille, a traveller, writes a post on her blog to tell her readers about her three days in Marseille.",
+    "fr": "Camille, une voyageuse, écrit un billet sur son blog pour raconter ses trois jours à Marseille à ses lecteurs.",
+    "de": "Camille, eine Reisende, schreibt in ihrem Blog einen Eintrag, um ihren Lesern von ihren drei Tagen in Marseille zu erzählen."
   },
   "readerTask": {
-    "en": "Find the order of the visits, the small problem on the second day and the best moment of the trip.",
-    "fr": "Retrouver l’ordre des visites, le petit problème du deuxième jour et le meilleur moment du voyage.",
-    "de": "Die Reihenfolge der Besuche, das kleine Problem am zweiten Tag und den schönsten Moment der Reise finden."
+    "en": "Find what Camille visited each day, what went wrong on day two, and her best moment.",
+    "fr": "Retrouver ce que Camille a visité chaque jour, ce qui n’a pas marché le deuxième jour, et son meilleur moment.",
+    "de": "Herausfinden, was Camille an jedem Tag besucht hat, was am zweiten Tag nicht klappte und was ihr bester Moment war."
   },
   "keywords": [
     {
-      "id": "malheureusement",
-      "term": "malheureusement",
-      "translations": { "en": ["unfortunately"], "de": ["leider"] },
+      "id": "calanque",
+      "term": "une calanque",
+      "translations": { "en": ["a rocky inlet", "a creek"], "de": ["eine Felsbucht"] },
       "explanation": {
-        "en": "Introduces bad news. It often announces a problem in a story.",
-        "fr": "Introduit une mauvaise nouvelle. Il annonce souvent un problème dans un récit.",
-        "de": "Leitet eine schlechte Nachricht ein. Es kündigt oft ein Problem in einer Erzählung an."
-      }
-    },
-    {
-      "id": "heureusement",
-      "term": "heureusement",
-      "translations": { "en": ["fortunately", "luckily"], "de": ["zum Glück", "glücklicherweise"] },
-      "explanation": {
-        "en": "Introduces good news after a problem. It is the opposite of malheureusement.",
-        "fr": "Introduit une bonne nouvelle après un problème. C’est le contraire de malheureusement.",
-        "de": "Leitet nach einem Problem eine gute Nachricht ein. Es ist das Gegenteil von malheureusement."
-      }
-    },
-    {
-      "id": "oublier",
-      "term": "oublier",
-      "translations": { "en": ["to forget"], "de": ["vergessen"] },
-      "explanation": {
-        "en": "Not to remember or not to take something. In the text: nous avons oublié l’eau.",
-        "fr": "Ne pas se souvenir ou ne pas prendre quelque chose. Dans le texte : nous avons oublié l’eau.",
-        "de": "Sich nicht erinnern oder etwas nicht mitnehmen. Im Text: nous avons oublié l’eau."
-      }
-    },
-    {
-      "id": "coucher-soleil",
-      "term": "le coucher du soleil",
-      "translations": { "en": ["the sunset"], "de": ["der Sonnenuntergang"] },
-      "explanation": {
-        "en": "The moment in the evening when the sun goes down.",
-        "fr": "Le moment, le soir, où le soleil descend.",
-        "de": "Der Moment am Abend, in dem die Sonne untergeht."
+        "en": "A narrow bay between high white rocks, typical of the coast near Marseille.",
+        "fr": "Une petite baie étroite entre des rochers blancs, typique de la côte près de Marseille.",
+        "de": "Eine schmale Bucht zwischen hohen weißen Felsen, typisch für die Küste bei Marseille."
       }
     },
     {
       "id": "quartier",
-      "term": "le quartier",
+      "term": "un quartier",
       "translations": {
-        "en": ["the neighbourhood", "the district"],
-        "de": ["das Viertel", "der Stadtteil"]
+        "en": ["a neighbourhood", "a district"],
+        "de": ["ein Viertel", "ein Stadtteil"]
       },
       "explanation": {
-        "en": "A part of a city, for example le Panier in Marseille.",
-        "fr": "Une partie d’une ville, par exemple le Panier à Marseille.",
-        "de": "Ein Teil einer Stadt, zum Beispiel le Panier in Marseille."
+        "en": "A part of a city. Le Panier is an old quartier of Marseille.",
+        "fr": "Une partie d’une ville. Le Panier est un vieux quartier de Marseille.",
+        "de": "Ein Teil einer Stadt. Le Panier ist ein altes Viertel von Marseille."
+      }
+    },
+    {
+      "id": "ferme",
+      "term": "fermé",
+      "translations": { "en": ["closed"], "de": ["geschlossen"] },
+      "explanation": {
+        "en": "Not open: you cannot go in or through. The opposite is ouvert.",
+        "fr": "Pas ouvert : on ne peut pas entrer ou passer. Le contraire est ouvert.",
+        "de": "Nicht offen: Man kann nicht hinein oder hindurch. Das Gegenteil ist ouvert."
+      }
+    },
+    {
+      "id": "dommage",
+      "term": "Quel dommage !",
+      "translations": { "en": ["What a pity!"], "de": ["Wie schade!"] },
+      "explanation": {
+        "en": "You say it when something is a bit sad or disappointing.",
+        "fr": "On le dit quand quelque chose est un peu triste ou décevant.",
+        "de": "Man sagt es, wenn etwas ein bisschen traurig oder enttäuschend ist."
+      }
+    },
+    {
+      "id": "coucher",
+      "term": "le coucher du soleil",
+      "translations": { "en": ["the sunset"], "de": ["der Sonnenuntergang"] },
+      "explanation": {
+        "en": "The moment in the evening when the sun goes down.",
+        "fr": "Le moment du soir où le soleil descend.",
+        "de": "Der Moment am Abend, in dem die Sonne untergeht."
       }
     }
   ],
   "documents": {
     "main": {
-      "targetWords": 105,
+      "targetWords": 100,
       "contents": {
-        "en": "A blog post in three parts. Day 1: arrival, the Vieux-Port, fish at a restaurant. Day 2: the calanques with Karim, they forgot the water and it was hot, a lady gave them a bottle, then a swim. Day 3: the Panier neighbourhood, then the sunset over the port, the best moment.",
-        "fr": "Un billet de blog en trois parties. Jour 1 : arrivée, le Vieux-Port, poisson au restaurant. Jour 2 : les calanques avec Karim, ils oublient l’eau et il fait chaud, une dame leur donne une bouteille, puis baignade. Jour 3 : le quartier du Panier, puis le coucher du soleil sur le port, le meilleur moment.",
-        "de": "Ein Blogbeitrag in drei Teilen. Tag 1: Ankunft, der Vieux-Port, Fisch im Restaurant. Tag 2: die Calanques mit Karim, sie vergessen das Wasser und es ist heiß, eine Dame gibt ihnen eine Flasche, dann Baden. Tag 3: das Viertel Le Panier, dann der Sonnenuntergang über dem Hafen, der schönste Moment."
+        "en": "A blog post by Camille in three paragraphs: day 1 the Old Port (boats, an ice cream, dinner in a small restaurant); day 2 a calanque, but the path was closed because of the wind, so she took a boat; day 3 the Panier district and the sunset from the hill, the best moment.",
+        "fr": "Un billet de blog de Camille en trois paragraphes : jour 1 le Vieux-Port (bateaux, glace, dîner dans un petit restaurant) ; jour 2 une calanque, mais le chemin est fermé à cause du vent, alors elle prend un bateau ; jour 3 le quartier du Panier et le coucher du soleil depuis la colline, le meilleur moment.",
+        "de": "Ein Blogeintrag von Camille in drei Absätzen: Tag 1 der Alte Hafen (Boote, Eis, Abendessen in einem kleinen Restaurant); Tag 2 eine Felsbucht, aber der Weg war wegen des Windes gesperrt, also nahm sie ein Boot; Tag 3 das Viertel Panier und der Sonnenuntergang auf dem Hügel, der beste Moment."
       }
     },
     "exam": {
-      "targetWords": 69,
+      "targetWords": 55,
       "contents": {
-        "en": "A short blog post by Hugo about two days in Annecy with his sister: Saturday old town and ice cream by the lake, Sunday rain, a lost map, a man shows the way, hot chocolate.",
-        "fr": "Un court billet de blog de Hugo sur deux jours à Annecy avec sa sœur : samedi vieille ville et glace près du lac, dimanche pluie, plan perdu, un homme montre le chemin, chocolat chaud.",
-        "de": "Ein kurzer Blogbeitrag von Hugo über zwei Tage in Annecy mit seiner Schwester: Samstag Altstadt und Eis am See, Sonntag Regen, Stadtplan verloren, ein Mann zeigt den Weg, heiße Schokolade."
+        "en": "A short blog post by Marc about a weekend in Annecy: Saturday old town and fondue; Sunday rain, so the hotel, then sun in the evening and a bike ride around the lake; best moment the walk by the water.",
+        "fr": "Un court billet de blog de Marc sur un week-end à Annecy : samedi vieille ville et fondue ; dimanche de la pluie, donc l’hôtel, puis le soleil le soir et du vélo autour du lac ; meilleur moment la promenade au bord de l’eau.",
+        "de": "Ein kurzer Blogeintrag von Marc über ein Wochenende in Annecy: Samstag Altstadt und Fondue; Sonntag Regen, also Hotel, dann abends Sonne und eine Radtour um den See; bester Moment der Spaziergang am Wasser."
       }
     }
   },
-  "skim": { "focus": "genre" },
+  "skim": { "focus": "purpose" },
   "detailQuestions": [
     {
-      "id": "q-place2",
+      "id": "q-first",
       "type": "reading_choice",
       "focus": {
-        "en": "Where they go on the second day",
-        "fr": "Où ils vont le deuxième jour",
-        "de": "Wohin sie am zweiten Tag gehen"
+        "en": "What Camille visited on the first day",
+        "fr": "Ce que Camille a visité le premier jour",
+        "de": "Was Camille am ersten Tag besucht hat"
       }
     },
     {
       "id": "q-problem",
       "type": "reading_choice",
       "focus": {
-        "en": "The small problem of the second day",
+        "en": "The small problem on the second day",
         "fr": "Le petit problème du deuxième jour",
         "de": "Das kleine Problem am zweiten Tag"
       }
     },
     {
-      "id": "q-help",
+      "id": "q-rain",
       "type": "reading_true_false",
       "focus": {
-        "en": "Who helps them on the second day",
-        "fr": "Qui les aide le deuxième jour",
-        "de": "Wer ihnen am zweiten Tag hilft"
+        "en": "The cause of the problem: wind, not rain",
+        "fr": "La cause du problème : le vent, pas la pluie",
+        "de": "Die Ursache des Problems: Wind, nicht Regen"
       }
     },
     {
@@ -139,7 +139,7 @@
       "focus": {
         "en": "The best moment of the trip",
         "fr": "Le meilleur moment du voyage",
-        "de": "Der schönste Moment der Reise"
+        "de": "Der beste Moment der Reise"
       }
     }
   ],

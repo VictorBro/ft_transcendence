@@ -6,103 +6,97 @@
   "locales": ["en", "fr", "de"],
   "title": "Le verbe être au présent",
   "objective": {
-    "en": "Conjugate the irregular verb être in the present tense with all subject pronouns to express nationality, profession, and state.",
-    "fr": "Conjuguer le verbe irrégulier être au présent avec tous les pronoms sujets pour exprimer la nationalité, la profession et l'état.",
-    "de": "Das unregelmäßige Verb être im Präsens mit allen Subjektpronomen konjugieren, um Nationalität, Beruf und Zustand auszudrücken."
+    "en": "Conjugate the irregular verb être in the present tense with all subject pronouns to say your nationality, job or state: je suis, tu es, il est, nous sommes…",
+    "fr": "Conjuguer le verbe irrégulier être au présent avec tous les pronoms pour dire sa nationalité, sa profession ou son état : je suis, tu es, il est, nous sommes…",
+    "de": "Das unregelmäßige Verb être im Präsens mit allen Pronomen konjugieren, um Nationalität, Beruf oder Zustand zu nennen: je suis, tu es, il est, nous sommes…"
   },
-  "estimatedMinutes": 15,
+  "estimatedMinutes": 17,
   "provenance": {
-    "generator": "claude-code-direct-authoring",
-    "model": "claude-opus-5-5",
-    "promptVersion": "brief-v7",
-    "generatedAt": "2026-10-16T17:56:28.329Z",
-    "inputHashes": {
-      "outline": "37f20906353e39b156b85e7597e3a6ecc18c349368249261ec098196b3e8c0b3"
-    }
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:28:48.785Z",
+    "inputHashes": { "outline": "37f20906353e39b156b85e7597e3a6ecc18c349368249261ec098196b3e8c0b3" }
   },
   "kind": "grammar",
   "topic": "verbs_morphology",
   "scopeBoundaries": {
-    "en": "Covers present indicative forms of être for all subject pronouns. Excludes past tenses, subjunctive, and complex adjective agreement rules.",
-    "fr": "Couvre les formes du présent de l'indicatif d'être pour tous les pronoms sujets. Exclut les temps du passé, le subjonctif et l'accord complexe des adjectifs.",
-    "de": "Behandelt die Präsensformen von être für alle Subjektpronomen. Ausgeschlossen sind Vergangenheitsformen, Konjunktiv und komplexe Adjektivangleichungen."
+    "en": "Present tense of être with all subject pronouns, used for nationality, job and state. Excludes negation, questions, other tenses and detailed adjective agreement.",
+    "fr": "Présent de l’indicatif d’être avec tous les pronoms sujets, pour la nationalité, le métier et l’état. Exclut la négation, les questions, les autres temps et l’accord détaillé des adjectifs.",
+    "de": "Präsens von être mit allen Subjektpronomen für Nationalität, Beruf und Zustand. Ausgeschlossen sind Verneinung, Fragen, andere Zeiten und detaillierte Adjektivangleichung."
   },
   "prerequisites": [
     {
-      "en": "Basic subject pronouns: je, tu, il, elle, on, nous, vous, ils, elles",
-      "fr": "Les pronoms sujets de base : je, tu, il, elle, on, nous, vous, ils, elles",
-      "de": "Grundlegende Subjektpronomen: je, tu, il, elle, on, nous, vous, ils, elles"
+      "en": "The subject pronouns je, tu, il, elle, on, nous, vous, ils, elles",
+      "fr": "Les pronoms sujets je, tu, il, elle, on, nous, vous, ils, elles",
+      "de": "Die Subjektpronomen je, tu, il, elle, on, nous, vous, ils, elles"
+    },
+    {
+      "en": "A few nationalities, such as français or japonais",
+      "fr": "Quelques nationalités, comme français ou japonais",
+      "de": "Einige Nationalitäten, zum Beispiel français oder japonais"
     }
   ],
   "rules": [
     {
-      "id": "rule-singular-forms",
+      "id": "rule-singular",
       "summary": {
         "en": "Singular forms of être: je suis, tu es, il/elle/on est.",
-        "fr": "Formes du singulier d'être : je suis, tu es, il/elle/on est.",
+        "fr": "Formes du singulier d’être : je suis, tu es, il/elle/on est.",
         "de": "Singularformen von être: je suis, tu es, il/elle/on est."
       }
     },
     {
-      "id": "rule-plural-forms",
+      "id": "rule-plural",
       "summary": {
         "en": "Plural forms of être: nous sommes, vous êtes, ils/elles sont.",
-        "fr": "Formes du pluriel d'être : nous sommes, vous êtes, ils/elles sont.",
+        "fr": "Formes du pluriel d’être : nous sommes, vous êtes, ils/elles sont.",
         "de": "Pluralformen von être: nous sommes, vous êtes, ils/elles sont."
       }
     },
     {
-      "id": "rule-liaison-pronunciation",
+      "id": "rule-usage",
       "summary": {
-        "en": "Pronounce obligatory liaisons with vous êtes [vu zɛt] and ils sont vs ils ont.",
-        "fr": "Prononcer la liaison obligatoire pour vous êtes [vu zɛt] et distinguer ils sont de ils ont.",
-        "de": "Obligatorische Liaison bei vous êtes [vu zɛt] aussprechen und ils sont von ils ont unterscheiden."
+        "en": "Use être to give nationality, job (no article) or state.",
+        "fr": "Employer être pour dire la nationalité, le métier (sans article) ou l’état.",
+        "de": "être verwenden, um Nationalität, Beruf (ohne Artikel) oder Zustand zu nennen."
       }
     }
   ],
   "blocks": [
     {
-      "id": "block-singular",
+      "id": "block-sg",
       "title": {
-        "en": "Singular forms: je, tu, il, elle, on",
-        "fr": "Les formes du singulier : je, tu, il, elle, on",
-        "de": "Die Singularformen: je, tu, il, elle, on"
+        "en": "Singular: je, tu, il, elle, on",
+        "fr": "Le singulier : je, tu, il, elle, on",
+        "de": "Der Singular: je, tu, il, elle, on"
       },
-      "ruleIds": ["rule-singular-forms"],
+      "ruleIds": ["rule-singular"],
       "explanationPlan": {
-        "en": "Introduce the irregular singular forms of être. Detail usage with professions, nationalities, and basic feelings.",
-        "fr": "Présenter les formes irrégulières du singulier d'être. Détailler l'emploi pour les professions, nationalités et états simples.",
-        "de": "Einführung der unregelmäßigen Singularformen von être. Verwendung für Berufe, Nationalitäten und einfache Zustände erklären."
+        "en": "Present être as irregular. Give je suis, tu es, il/elle/on est. Point out that tu es and il est sound the same but are written differently, and that a name takes the il/elle form.",
+        "fr": "Présenter être comme irrégulier. Donner je suis, tu es, il/elle/on est. Souligner que tu es et il est se prononcent pareil mais s’écrivent différemment, et qu’un prénom prend la forme de il/elle.",
+        "de": "être als unregelmäßig vorstellen. je suis, tu es, il/elle/on est zeigen. Betonen, dass tu es und il est gleich klingen, aber anders geschrieben werden, und dass ein Vorname die il/elle-Form verlangt."
       },
-      "explanationDurationS": 120,
+      "explanationDurationS": 90,
       "examples": [
         {
-          "text": "Je suis étudiant.",
-          "translation": {
-            "en": "I am a student.",
-            "de": "Ich bin Student."
-          }
+          "text": "Je suis professeur.",
+          "translation": { "en": "I am a teacher.", "de": "Ich bin Lehrer." }
         },
         {
-          "text": "Tu es fatigué ?",
-          "translation": {
-            "en": "Are you tired?",
-            "de": "Bist du müde?"
-          }
+          "text": "Tu es italien ?",
+          "translation": { "en": "Are you Italian?", "de": "Bist du Italiener?" }
         },
         {
-          "text": "Elle est française.",
-          "translation": {
-            "en": "She is French.",
-            "de": "Sie ist Französin."
-          }
+          "text": "Paul est canadien.",
+          "translation": { "en": "Paul is Canadian.", "de": "Paul ist Kanadier." }
         }
       ],
       "pitfalls": [
         {
-          "en": "Do not confuse 'tu es' with 'il est', despite identical pronunciation [ɛ].",
-          "fr": "Ne confondez pas 'tu es' et 'il est', malgré la prononciation identique [ɛ].",
-          "de": "Verwechsle nicht 'tu es' mit 'il est', trotz identischer Aussprache [ɛ]."
+          "en": "Do not write est after tu: it is tu es.",
+          "fr": "N’écrivez pas est après tu : on dit tu es.",
+          "de": "Schreibe nach tu nicht est: es heißt tu es."
         }
       ],
       "exercises": [
@@ -110,72 +104,58 @@
           "id": "ex-sg-choice",
           "type": "grammar_gap_choice",
           "itemCount": 3,
-          "ruleIds": ["rule-singular-forms"],
-          "estimatedDurationS": 30
+          "ruleIds": ["rule-singular"],
+          "estimatedDurationS": 36
         },
         {
           "id": "ex-sg-typing",
           "type": "grammar_gap_typing",
           "itemCount": 3,
-          "ruleIds": ["rule-singular-forms"],
+          "ruleIds": ["rule-singular"],
           "estimatedDurationS": 45
         },
         {
           "id": "ex-sg-spot",
           "type": "grammar_error_spotter",
-          "itemCount": 4,
-          "ruleIds": ["rule-singular-forms"],
-          "estimatedDurationS": 100
+          "itemCount": 3,
+          "ruleIds": ["rule-singular"],
+          "estimatedDurationS": 60
         }
       ]
     },
     {
-      "id": "block-plural",
+      "id": "block-pl",
       "title": {
-        "en": "Plural forms and liaisons: nous, vous, ils, elles",
-        "fr": "Les formes du pluriel et liaisons : nous, vous, ils, elles",
-        "de": "Die Pluralformen und Liaison: nous, vous, ils, elles"
+        "en": "Plural: nous, vous, ils, elles",
+        "fr": "Le pluriel : nous, vous, ils, elles",
+        "de": "Der Plural: nous, vous, ils, elles"
       },
-      "ruleIds": ["rule-plural-forms", "rule-liaison-pronunciation"],
+      "ruleIds": ["rule-plural"],
       "explanationPlan": {
-        "en": "Teach nous sommes, vous êtes, and ils/elles sont. Emphasize the z-liaison in vous êtes and the distinction between ils sont [s] and ils ont [z].",
-        "fr": "Enseigner nous sommes, vous êtes et ils/elles sont. Insister sur la liaison en [z] pour vous êtes et la distinction entre ils sont [s] et ils ont [z].",
-        "de": "Nous sommes, vous êtes und ils/elles sont vermitteln. Betonung der z-Liaison bei vous êtes und des Unterschieds zwischen ils sont [s] und ils ont [z]."
+        "en": "Give nous sommes, vous êtes, ils/elles sont. Explain that vous is also the polite singular, ils is for a mixed group, and êtes has an accent circonflexe.",
+        "fr": "Donner nous sommes, vous êtes, ils/elles sont. Expliquer que vous sert aussi de singulier de politesse, que ils désigne un groupe mixte et que êtes prend un accent circonflexe.",
+        "de": "nous sommes, vous êtes, ils/elles sont zeigen. Erklären, dass vous auch die höfliche Singularform ist, ils für gemischte Gruppen steht und êtes einen Accent circonflexe hat."
       },
-      "explanationDurationS": 150,
+      "explanationDurationS": 100,
       "examples": [
         {
-          "text": "Nous sommes à Paris.",
-          "translation": {
-            "en": "We are in Paris.",
-            "de": "Wir sind in Paris."
-          }
+          "text": "Nous sommes en classe.",
+          "translation": { "en": "We are in class.", "de": "Wir sind im Unterricht." }
         },
         {
-          "text": "Vous êtes prêts ?",
-          "translation": {
-            "en": "Are you ready?",
-            "de": "Seid ihr bereit / Sind Sie bereit?"
-          }
+          "text": "Vous êtes suisses ?",
+          "translation": { "en": "Are you Swiss?", "de": "Seid ihr Schweizer?" }
         },
         {
-          "text": "Ils sont en retard.",
-          "translation": {
-            "en": "They are late.",
-            "de": "Sie sind zu spät."
-          }
+          "text": "Elles sont japonaises.",
+          "translation": { "en": "They are Japanese.", "de": "Sie sind Japanerinnen." }
         }
       ],
       "pitfalls": [
         {
-          "en": "Do not omit the circumflex accent on 'vous êtes'.",
-          "fr": "N'oubliez pas l'accent circonflexe sur 'vous êtes'.",
-          "de": "Vergiss nicht den Zirkumflex-Akzent auf 'vous êtes'."
-        },
-        {
-          "en": "Avoid confusing 'ils sont' (they are, with an s sound) with 'ils ont' (they have, with a z sound).",
-          "fr": "Attention à ne pas confondre 'ils sont' (son [s]) et 'ils ont' (son [z]).",
-          "de": "Nicht 'ils sont' (s-Laut) mit 'ils ont' (z-Laut) verwechseln."
+          "en": "Do not forget the accent circonflexe on êtes.",
+          "fr": "N’oubliez pas l’accent circonflexe sur êtes.",
+          "de": "Vergiss den Accent circonflexe auf êtes nicht."
         }
       ],
       "exercises": [
@@ -183,76 +163,103 @@
           "id": "ex-pl-persons",
           "type": "grammar_person_matching",
           "itemCount": 1,
-          "ruleIds": ["rule-singular-forms", "rule-plural-forms"],
-          "estimatedDurationS": 48
+          "ruleIds": ["rule-singular", "rule-plural"],
+          "estimatedDurationS": 60
         },
         {
           "id": "ex-pl-typing",
           "type": "grammar_pronoun_form_typing",
           "itemCount": 2,
-          "ruleIds": ["rule-plural-forms"],
+          "ruleIds": ["rule-plural"],
           "estimatedDurationS": 90
         },
         {
           "id": "ex-pl-choice",
           "type": "grammar_gap_choice",
-          "itemCount": 4,
-          "ruleIds": ["rule-plural-forms", "rule-liaison-pronunciation"],
-          "estimatedDurationS": 40
+          "itemCount": 3,
+          "ruleIds": ["rule-plural"],
+          "estimatedDurationS": 36
+        }
+      ]
+    },
+    {
+      "id": "block-use",
+      "title": { "en": "Saying who you are", "fr": "Dire qui on est", "de": "Sagen, wer man ist" },
+      "ruleIds": ["rule-usage"],
+      "explanationPlan": {
+        "en": "Show that être gives nationality, job and state. No article before a job. Mention briefly that adjectives take -e for a woman and -s for several people.",
+        "fr": "Montrer qu’être sert à dire la nationalité, le métier et l’état. Pas d’article devant un métier. Mentionner brièvement que l’adjectif prend -e pour une femme et -s pour plusieurs personnes.",
+        "de": "Zeigen, dass être Nationalität, Beruf und Zustand ausdrückt. Kein Artikel vor einem Beruf. Kurz erwähnen, dass Adjektive für eine Frau -e und für mehrere Personen -s erhalten."
+      },
+      "explanationDurationS": 100,
+      "examples": [
+        {
+          "text": "Je suis japonais.",
+          "translation": { "en": "I am Japanese.", "de": "Ich bin Japaner." }
         },
         {
-          "id": "ex-pl-gap",
-          "type": "grammar_gap_typing",
-          "itemCount": 4,
-          "ruleIds": ["rule-plural-forms", "rule-liaison-pronunciation"],
+          "text": "Marc est dentiste.",
+          "translation": { "en": "Marc is a dentist.", "de": "Marc ist Zahnarzt." }
+        },
+        {
+          "text": "Nous sommes contents.",
+          "translation": { "en": "We are happy.", "de": "Wir sind zufrieden." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not put un or une before a job after être at this level.",
+          "fr": "À ce niveau, ne mettez pas un ou une devant un métier après être.",
+          "de": "Setze auf diesem Niveau nach être kein un oder une vor einen Beruf."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-use-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-usage"],
           "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-use-gap",
+          "type": "grammar_gap_typing",
+          "itemCount": 3,
+          "ruleIds": ["rule-usage"],
+          "estimatedDurationS": 45
         }
       ]
     }
   ],
-  "feedbackPlaceholder": {
-    "estimatedDurationS": 30
-  },
+  "newVerbs": [{ "infinitive": "être", "translations": { "en": "to be", "de": "sein" } }],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
   "exam": {
     "pages": [
       {
         "pageId": "exam-forms",
         "type": "grammar_pronoun_form_typing",
         "itemCount": 2,
-        "ruleIds": ["rule-singular-forms", "rule-plural-forms"],
-        "estimatedDurationS": 90,
-        "timeLimitS": 140
+        "ruleIds": ["rule-singular", "rule-plural"],
+        "estimatedDurationS": 120,
+        "timeLimitS": 200
       },
       {
-        "pageId": "exam-singular",
+        "pageId": "exam-gaps",
         "type": "grammar_gap_typing",
-        "itemCount": 3,
-        "ruleIds": ["rule-singular-forms"],
-        "estimatedDurationS": 45,
-        "timeLimitS": 70
+        "itemCount": 4,
+        "ruleIds": ["rule-singular", "rule-usage"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 120
       },
       {
-        "pageId": "exam-plural",
-        "type": "grammar_gap_typing",
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
         "itemCount": 3,
-        "ruleIds": ["rule-plural-forms", "rule-liaison-pronunciation"],
-        "estimatedDurationS": 45,
-        "timeLimitS": 70
+        "ruleIds": ["rule-plural", "rule-usage"],
+        "estimatedDurationS": 75,
+        "timeLimitS": 150
       }
     ]
   },
-  "scoring": {
-    "practiceWeight": 35,
-    "examWeight": 65,
-    "orthographyCredit": 0.5
-  },
-  "newVerbs": [
-    {
-      "infinitive": "être",
-      "translations": {
-        "en": "to be",
-        "de": "sein"
-      }
-    }
-  ]
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
 }
