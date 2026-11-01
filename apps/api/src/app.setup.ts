@@ -6,6 +6,7 @@ import session from 'express-session';
 import { cleanupOpenApiDoc } from 'nestjs-zod';
 
 import { ErrorCodeFilter } from './error-code.filter';
+import { SessionIoAdapter } from './gateway/session-io.adapter';
 import { httpMetrics } from './metrics/http-metrics.middleware';
 import { RedisService } from './redis/redis.service';
 import { CodeValidationPipe } from './validation.pipe';
@@ -75,25 +76,27 @@ export function configureApp(app: INestApplication): void {
   // body, an unknown route, a crash.
   app.useGlobalFilters(new ErrorCodeFilter(app.getHttpAdapter()));
 
-  app.use(
-    session({
-      name: SESSION_COOKIE,
-      secret: requireSessionSecret(),
-      store: new RedisStore({ client: app.get(RedisService).client, prefix: SESSION_KEY_PREFIX }),
-      // The cookie is an opaque id, so there is nothing to write back unless the
-      // session itself changed, and an anonymous visitor gets no session at all.
-      resave: false,
-      saveUninitialized: false,
-      rolling: true,
-      cookie: {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'lax',
-        maxAge: SESSION_TTL_MS,
-        path: '/',
-      },
-    }),
-  );
+  const sessionMiddleware = session({
+    name: SESSION_COOKIE,
+    secret: requireSessionSecret(),
+    store: new RedisStore({ client: app.get(RedisService).client, prefix: SESSION_KEY_PREFIX }),
+    // The cookie is an opaque id, so there is nothing to write back unless the
+    // session itself changed, and an anonymous visitor gets no session at all.
+    resave: false,
+    saveUninitialized: false,
+    rolling: true,
+    cookie: {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      maxAge: SESSION_TTL_MS,
+      path: '/',
+    },
+  });
+  app.use(sessionMiddleware);
+  // engine.io answers /ws before Express does, so the gateway gets the same
+  // middleware. Here, before init, which is when gateways bind.
+  app.useWebSocketAdapter(new SessionIoAdapter(app, sessionMiddleware));
 
   const config = new DocumentBuilder()
     .setTitle('ft_transcendence API')

@@ -1,4 +1,11 @@
-import { LEARNABLE_LANGUAGES, LEVELS, QUESTION_CATEGORIES } from '@ft/shared';
+import {
+  CLIENT_EVENTS,
+  type ClientEventName,
+  LEARNABLE_LANGUAGES,
+  LEVELS,
+  QUESTION_CATEGORIES,
+  SERVER_EVENTS,
+} from '@ft/shared';
 import { Counter, Gauge, Histogram, Registry } from '@prometheus-io/client';
 
 // Module level, not an injected service: the services that record are built by
@@ -17,6 +24,21 @@ export const httpRequestDuration = new Histogram({
 export const httpRequestsInFlight = new Gauge({
   name: 'http_requests_in_flight',
   help: 'HTTP requests being served',
+  registers: [registry],
+});
+
+export const wsConnections = new Gauge({
+  name: 'ft_ws_connections',
+  help: 'Open WebSocket connections',
+  registers: [registry],
+});
+
+export const WS_OUTCOMES = ['ok', 'invalid', 'rate_limited'] as const;
+
+export const wsEvents = new Counter({
+  name: 'ft_ws_events_total',
+  help: 'WebSocket events by direction (in, out), event and outcome',
+  labelNames: ['direction', 'event', 'outcome'] as const,
   registers: [registry],
 });
 
@@ -135,6 +157,13 @@ for (const lang of LEARNABLE_LANGUAGES) {
 for (const category of QUESTION_CATEGORIES) {
   for (const reason of RESTOCK_FAILURE_REASONS)
     questionRestockFailures.inc({ category, reason }, 0);
+}
+for (const event of Object.values(SERVER_EVENTS)) {
+  wsEvents.inc({ direction: 'out', event, outcome: 'ok' }, 0);
+}
+// A name the gateway does not know is counted as `unknown`: the label stays bounded.
+for (const event of [...Object.values<ClientEventName>(CLIENT_EVENTS), 'unknown']) {
+  for (const outcome of WS_OUTCOMES) wsEvents.inc({ direction: 'in', event, outcome }, 0);
 }
 // The auth panels of the API dashboard, routes as routeOf() names them. Not
 // every route: each set is 14 series.

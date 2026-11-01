@@ -315,7 +315,7 @@ The team tracks each module's current status and points on the wiki:
 | i18n, ≥3 languages | Minor | 1 | locales declared, `next-intl` not wired |
 | Additional browsers (≥2) | Minor | 1 | Playwright projects + documentation |
 | Complete LLM interface | Major | 2 | interface exists, no provider |
-| Real-time via WebSockets | Major | 2 | route reserved, no gateway |
+| Real-time via WebSockets | Major | 2 | gateway on `/ws`, live course updates (#154) |
 | Complete RAG system | Major | 2 | pgvector installed, no corpus |
 | User interaction: chat, profiles, friends | Major | 2 | not started |
 | | | **16** | |
@@ -377,7 +377,7 @@ reconnection story and a second cancellation path, for no gain. One gateway, one
 | | Transport | Examples |
 |---|---|---|
 | **Everything CRUD** | REST, Nest controllers, documented in Swagger | `POST /api/courses`, `GET /api/courses/:lang/today`, `GET /api/courses/:lang/lessons`, `PUT /api/courses/:lang/lessons/:id/result` |
-| **Everything live** | socket.io on `/ws` | `tutor:stream`, `session:join`, `chat:send`, `presence:update`, `notification:new` |
+| **Everything live** | socket.io on `/ws` | `course:updated`, `presence:update`; friend and message events to come |
 
 **The course stays in the path, and the API is language-neutral.** No route takes a `locale`
 parameter. A lesson is written in one language, the course's, like a question in the bank, so the
@@ -406,9 +406,10 @@ Use it. Four rules:
    `namespace` is a logical channel multiplexed over it. The Caddyfile routes `/ws/*` to the
    api, so the gateway is `@WebSocketGateway({ path: '/ws' })` and the client is
    `io({ path: '/ws' })`. Namespaces are for later, when tutor and chat want separating.
-2. **Authenticate the handshake.** A guard reads the same signed session cookie the REST side
-   uses, same origin, so the cookie is sent automatically, and populates
-   `SocketData { userId, locale }`. An unauthenticated socket is disconnected, not tolerated.
+2. **Authenticate the handshake.** The same express-session middleware the REST side runs reads
+   the signed session cookie (same origin, so the browser sends it), the Origin must be ours
+   (same-site is not same-origin), and the socket gets `SocketData { userId, sessionId }`. An
+   unauthenticated socket is refused at the handshake, never connected.
 3. **Parse every inbound payload with the shared Zod schema.** `CLIENT_EVENT_SCHEMAS` exists for
    this. Anything arriving on a gateway is untrusted, including from our own client.
 4. **Rate-limit per socket.** `@nestjs/throttler`'s guard is HTTP-only; socket events bypass it

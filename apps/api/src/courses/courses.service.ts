@@ -5,7 +5,8 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { StartCourseDto, SetGoalDto, SetLevelDto } from './courses.dto';
-import { CourseSchema, DailyGoal, Language, Level, SessionUser } from '@ft/shared';
+import { CourseSchema, DailyGoal, Language, Level, SERVER_EVENTS, SessionUser } from '@ft/shared';
+import { SocketsService } from '../gateway/sockets.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { checkCourse } from '../lessons/course-lookup';
 import { currentDay, lockCourse, meetGoal } from '../lessons/goal';
@@ -15,7 +16,10 @@ type CourseWrite = { dailyGoal: DailyGoal; level?: never } | { level: Level; dai
 
 @Injectable()
 export class CoursesService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly sockets: SocketsService,
+  ) {}
 
   async listCoursesUser(userId: string) {
     const user = await this.prisma.user.findUnique({
@@ -56,8 +60,8 @@ export class CoursesService {
    * meet today with the lessons already done, and a finish at the same moment
    * must not meet it a second time. A higher goal never unmeets a day.
    */
-  setGoal(user: SessionUser, lang: Language, dto: SetGoalDto, now: Date) {
-    return this.prisma.$transaction(async (tx) => {
+  async setGoal(user: SessionUser, lang: Language, dto: SetGoalDto, now: Date) {
+    const course = await this.prisma.$transaction(async (tx) => {
       const locked = checkCourse(await lockCourse(tx, user.id, lang));
       const course = await tx.userLevel.update({
         where: { id: locked.id },
@@ -68,10 +72,16 @@ export class CoursesService {
       await meetGoal(tx, course, await currentDay(tx, course, user.timeZone, now));
       return CourseSchema.parse(course);
     });
+    // After the commit: sent from inside the transaction, the other tab could
+    // read the old row, or a row that then rolls back.
+    this.sockets.toUser(user.id, SERVER_EVENTS.COURSE_UPDATED, { lang });
+    return course;
   }
 
-  setLevel(userId: string, lang: Language, dto: SetLevelDto) {
-    return this.write(userId, lang, { level: dto.level });
+  async setLevel(userId: string, lang: Language, dto: SetLevelDto) {
+    const course = await this.write(userId, lang, { level: dto.level });
+    this.sockets.toUser(userId, SERVER_EVENTS.COURSE_UPDATED, { lang });
+    return course;
   }
 
   private async write(userId: string, lang: Language, data: CourseWrite) {

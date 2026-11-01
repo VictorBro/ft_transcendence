@@ -5,6 +5,7 @@ import type { Today } from '@ft/shared';
 import { AuthService } from '../src/auth/auth.service';
 import { CoursesService } from '../src/courses/courses.service';
 import { atLocalTime } from '../src/demo/demo.clock';
+import { SocketsService } from '../src/gateway/sockets.service';
 import { DEMO_PROFILES, type DemoProfile, SMALLEST_LEVEL } from '../src/demo/demo.data';
 import { type DemoServices, replayLearner } from '../src/demo/demo';
 import type { Prisma } from '../src/generated/prisma/client';
@@ -82,7 +83,8 @@ describe('demo learners replay (e2e)', () => {
     services = {
       prisma,
       auth: new AuthService(prisma),
-      courses: new CoursesService(prisma),
+      // Never attached outside Nest: the replay's level changes reach no socket.
+      courses: new CoursesService(prisma, new SocketsService()),
       lessons: new LessonsService(prisma),
     };
 

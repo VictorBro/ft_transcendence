@@ -91,6 +91,15 @@ jobs:
       - name: Run the suite
         run: pnpm --filter @ft/e2e run test:e2e
 
+      # Alone and after the suite: it restarts the API, which every test beside
+      # it and SSR would lose. Once, on Chromium: two restarts in 15 minutes
+      # fire ApiRestarting. The spec calls plain `docker compose`, so the job's
+      # file list goes in through COMPOSE_FILE.
+      - name: Restart the API under an open page
+        run: pnpm --filter @ft/e2e run test:e2e:restart
+        env:
+          COMPOSE_FILE: compose.yml:compose.prod.yml
+
       # Container logs are the only way to tell an app bug from an
       # infrastructure one once the stack is gone.
       - name: Dump container logs

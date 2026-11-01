@@ -172,6 +172,12 @@ lesson is edited or moved, never deleted.
 docker compose -f compose.deploy.yml ps
 curl -sS https://transcendence.dpdns.org/api/health
 curl -sS https://transcendence.dpdns.org/grafana/api/health
+# The gateway: 101, then curl times out (expected). Without a cookie, since a
+# refused session is answered over the socket, not with an HTTP status.
+curl -sS -o /dev/null -w '%{http_code}\n' --http1.1 --max-time 3 \
+  -H 'Connection: Upgrade' -H 'Upgrade: websocket' -H 'Sec-WebSocket-Version: 13' \
+  -H "Sec-WebSocket-Key: $(openssl rand -base64 16)" \
+  'https://transcendence.dpdns.org/ws/?EIO=4&transport=websocket'
 docker compose -f compose.deploy.yml logs caddy    # if the certificate fails
 ```
 
@@ -419,5 +425,11 @@ minute of the first request.
 ```bash
 curl -sS https://trans.vyantares.ch/api/health
 curl -sS https://trans.vyantares.ch/grafana/api/health
+# The gateway: 101, then curl times out (expected). Without a cookie, since a
+# refused session is answered over the socket, not with an HTTP status.
+curl -sS -o /dev/null -w '%{http_code}\n' --http1.1 --max-time 3 \
+  -H 'Connection: Upgrade' -H 'Upgrade: websocket' -H 'Sec-WebSocket-Version: 13' \
+  -H "Sec-WebSocket-Key: $(openssl rand -base64 16)" \
+  'https://trans.vyantares.ch/ws/?EIO=4&transport=websocket'
 docker logs caddy 2>&1 | grep trans.vyantares.ch    # the front proxy, if the certificate fails
 ```

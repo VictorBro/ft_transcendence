@@ -5,6 +5,7 @@ import {
   Get,
   HttpCode,
   HttpStatus,
+  Logger,
   Post,
   Req,
   Res,
@@ -29,6 +30,7 @@ import type {
 } from '@ft/shared';
 import type { Request, Response } from 'express';
 
+import { SocketsService } from '../gateway/sockets.service';
 import { ThrottleByIp } from '../throttler/throttle-by-ip.decorator';
 import { CurrentUser, Public } from './auth.decorators';
 import {
@@ -51,8 +53,10 @@ import { TwoFactorService } from './two-factor.service';
  * Without it, an id planted before login stays valid afterwards, which is
  * session fixation. The pending step regenerates too, so the id that carried an
  * unauthenticated visitor is not the one that carries a half-finished login.
+ * Resolves with the id it replaced, whose sockets the caller closes.
  */
-function regenerate(request: Request, assign: () => void): Promise<void> {
+function regenerate(request: Request, assign: () => void): Promise<string> {
+  const replaced = request.sessionID;
   return new Promise((resolve, reject) => {
     request.session.regenerate((error) => {
       if (error) {
@@ -65,20 +69,20 @@ function regenerate(request: Request, assign: () => void): Promise<void> {
           reject(saveError instanceof Error ? saveError : new Error(String(saveError)));
           return;
         }
-        resolve();
+        resolve(replaced);
       });
     });
   });
 }
 
-function startSession(request: Request, userId: string): Promise<void> {
+function startSession(request: Request, userId: string): Promise<string> {
   return regenerate(request, () => {
     request.session.userId = userId;
     delete request.session.pendingUserId;
   });
 }
 
-function startPendingSession(request: Request, userId: string): Promise<void> {
+function startPendingSession(request: Request, userId: string): Promise<string> {
   return regenerate(request, () => {
     request.session.pendingUserId = userId;
   });
@@ -87,9 +91,12 @@ function startPendingSession(request: Request, userId: string): Promise<void> {
 @ApiTags('auth')
 @Controller('auth')
 export class AuthController {
+  private readonly logger = new Logger(AuthController.name);
+
   constructor(
     private readonly auth: AuthService,
     private readonly twoFactor: TwoFactorService,
+    private readonly sockets: SocketsService,
   ) {}
 
   @Public()
@@ -105,7 +112,7 @@ export class AuthController {
   @ApiConflictResponse({ description: 'Email or display name already taken' })
   async signUp(@Body() body: SignUpDto, @Req() request: Request): Promise<SessionUser> {
     const user = await this.auth.signUp(body);
-    await startSession(request, user.id);
+    this.sockets.closeSession(await startSession(request, user.id));
     return user;
   }
 
@@ -133,14 +140,14 @@ export class AuthController {
     );
 
     if (twoFactorEnabled) {
-      await startPendingSession(request, user.id);
+      this.sockets.closeSession(await startPendingSession(request, user.id));
       // 202 rather than 200: the credentials were accepted, the login is not
       // finished, and the body carries no user for a caller to mistake for one.
       response.status(HttpStatus.ACCEPTED);
       return { twoFactorRequired: true };
     }
 
-    await startSession(request, user.id);
+    this.sockets.closeSession(await startSession(request, user.id));
     return user;
   }
 
@@ -171,7 +178,7 @@ export class AuthController {
       throw new UnauthorizedException('auth.passwordFirst');
     }
 
-    await startSession(request, user.id);
+    this.sockets.closeSession(await startSession(request, user.id));
     return user;
   }
 
@@ -203,8 +210,11 @@ export class AuthController {
   async enableTwoFactor(
     @Body() body: EnableTwoFactorDto,
     @CurrentUser() user: SessionUser,
+    @Req() request: Request,
   ): Promise<RecoveryCodes> {
-    return { recoveryCodes: await this.twoFactor.confirmEnrolment(user.id, body.code) };
+    const recoveryCodes = await this.twoFactor.confirmEnrolment(user.id, body.code);
+    await this.rotateSession(request, user.id);
+    return { recoveryCodes };
   }
 
   @Delete('2fa')
@@ -218,6 +228,7 @@ export class AuthController {
   async disableTwoFactor(
     @Body() body: DisableTwoFactorDto,
     @CurrentUser() user: SessionUser,
+    @Req() request: Request,
   ): Promise<void> {
     // The password again, not just the session: an unattended browser should not
     // be enough to remove a factor.
@@ -225,6 +236,7 @@ export class AuthController {
       throw new UnauthorizedException('auth.incorrectPassword');
     }
     await this.twoFactor.disable(user.id);
+    await this.rotateSession(request, user.id);
   }
 
   // Public so that logging out of an expired session is not itself a 401.
@@ -234,6 +246,7 @@ export class AuthController {
   @ApiOperation({ summary: 'Destroy the current session', security: [] })
   @ApiNoContentResponse({ description: 'Signed out, whether or not there was a session' })
   async logout(@Req() request: Request): Promise<void> {
+    const ended = request.sessionID;
     // Failing loudly rather than returning 204: if the store entry survives, the
     // session is still usable and reporting success would be a lie.
     await new Promise<void>((resolve, reject) => {
@@ -245,6 +258,9 @@ export class AuthController {
         resolve();
       });
     });
+    // After the DEL, so a new handshake finds the session gone. One already past
+    // express-session can still join; the gateway's sweep closes it within a minute.
+    this.sockets.closeSession(ended);
     // The store entry is gone; this clears the now-dangling browser cookie.
     request.res?.clearCookie('ft.sid', { path: '/' });
   }
@@ -255,5 +271,17 @@ export class AuthController {
   @ApiUnauthorizedResponse({ description: 'No valid session' })
   me(@CurrentUser() user: SessionUser): SessionUser {
     return user;
+  }
+
+  /**
+   * Privileges changed: a fresh id, and the old id's sockets go with it. Logged,
+   * not thrown: the change is already committed, and the codes must reach the user.
+   */
+  private async rotateSession(request: Request, userId: string): Promise<void> {
+    try {
+      this.sockets.closeSession(await startSession(request, userId));
+    } catch (error) {
+      this.logger.warn(`session not rotated: ${String(error)}`);
+    }
   }
 }

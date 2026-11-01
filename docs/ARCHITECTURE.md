@@ -36,7 +36,7 @@ flowchart LR
             web["web<br/><small>Next.js 16 :3000<br/>standalone build</small>"]
             api["api<br/><small>NestJS 11 :3001<br/>global prefix /api</small>"]
             db[("db<br/><small>Postgres 18<br/>+ pgvector :5432</small>")]
-            redis[("redis<br/><small>sessions, throttler<br/>:6379</small>")]
+            redis[("redis<br/><small>sessions<br/>:6379</small>")]
 
             subgraph mon["monitoring (profile in dev, always on with make)"]
                 prometheus["prometheus<br/><small>:9090, 15 d / 1 GB</small>"]
@@ -160,7 +160,80 @@ Two details worth knowing:
 
 ---
 
-## 4. Development (`make dev`)
+## 4. A live update over the gateway
+
+A goal or level change in one tab shows in the account's other open tabs. The
+gateway is socket.io on `/ws`, inside the api and on its http server, so Caddy's
+`/ws/*` route above is all the plumbing.
+
+```mermaid
+sequenceDiagram
+    participant A as Tab A
+    participant B as Tab B
+    participant C as caddy
+    participant N as api (NestJS)
+    participant P as db
+
+    Note over B,N: on load: wss /ws/ with ft.sid, joins user:<id>
+    A->>C: PATCH /api/courses/de {dailyGoal}
+    C->>N: proxy
+    N->>P: transaction, COMMIT
+    N-->>A: 200 Course
+    N->>C: course:updated {lang} to room user:<id>
+    C->>B: over the open WebSocket
+    B->>B: router.refresh()
+    B->>C: GET /en/learn/de (server components)
+```
+
+- **The cookie is the only credential.** engine.io answers `/ws` before Express
+  does, so `SessionIoAdapter` hands it the same express-session middleware:
+  same cookie, same store, nothing parsed by hand. A socket.io middleware then
+  refuses a page of another origin, a session with no `userId` and a deleted
+  account, all with `auth.sessionRequired`. The Origin check matters because
+  `ft.sid` is `SameSite=Lax`, and same-site is not same-origin: a page on a
+  sibling subdomain would send it too.
+- **Refused quietly.** A refusal is a CONNECT_ERROR over a WebSocket that opened
+  fine, which the browser does not log; an HTTP 401 on the upgrade would be a
+  console error.
+- **Rooms, never a broadcast.** Each socket joins `user:<id>` and
+  `session:<sid>` before its CONNECT reply. `SocketsService.toUser()` is the
+  only way to reach a user; the gateway itself only answers the socket that sent
+  a bad event.
+- **Sockets close with their session**: on logout (that session's sockets
+  only), on every session id change (signup, login, 2FA verify, 2FA enable and
+  disable), and when a session ends any other way, through a sweep every 60 s
+  that asks Redis for each open socket's `sess:<sid>` (known keys, never a scan).
+- **One screen for every inbound event**: 20 events per 10 s per socket, frames
+  capped at 16 KiB, a zod parse from `CLIENT_EVENT_SCHEMAS`. A bad event gets
+  `app:error { code }`, an `ERROR_CODES` entry, and is dropped, never a crash;
+  past the limit, the first one is told `server.rateLimited` and the rest are
+  dropped.
+  No cap on sockets per user: on one instance it is not worth the code.
+- **Sent after the commit.** `course:updated { lang }` means "read this course
+  again": the page is rendered on the server, so the tab calls
+  `router.refresh()` rather than keeping a second copy of the course.
+- **One connection per tab**, held in module scope (`components/tab-socket.ts`)
+  and opened by `SessionNav` for a signed-in user, so a route group remount or a
+  locale switch never drops it and an anonymous page never opens one. WebSocket
+  transport only: a long poll keeps a request open, and a polled 502 is a
+  console error.
+- **Reconnecting without console noise.** A failed WebSocket dial is a console
+  error no code can hide, so each retry (1, 2, 4, 8, then every 10 s, jittered)
+  first asks `/healthz/api`, a web route that always answers 200, and dials only
+  once the api answers. "Reconnecting…" shows meanwhile, and coming back
+  refreshes the page, since events sent while away are lost.
+- **What the probe cannot hide**: the api dying between a probe and the dial
+  (one line), and the probe's own failure when web restarts too or the laptop
+  goes offline.
+- **In dev**, every save in `apps/api` restarts the process, so sockets drop and
+  the badge flashes; Fast Refresh of `tab-socket.ts` leaves the old socket open
+  until a reload.
+- **No CSP today.** If one is added, `connect-src 'self'` covers same-origin
+  `wss:` in current engines.
+
+---
+
+## 5. Development (`make dev`)
 
 Files: `compose.yml` + `compose.override.yml`, which loads automatically. Images
 are built at the `dev` stage, source is bind-mounted, and both apps hot reload.
@@ -248,7 +321,7 @@ so they reach the monitoring containers too. Day to day:
 
 ---
 
-## 5. Tools that are not services
+## 6. Tools that are not services
 
 Neither runs as part of the stack; both are throwaway containers on the same
 network, built from the api `build` stage (`ft_transcendence/api-tooling`).
@@ -281,7 +354,7 @@ database browser, and it already knows the schema.
 
 ---
 
-## 6. What CI runs
+## 7. What CI runs
 
 Four workflows. `ci` and `e2e` are the ones that gate a merge on behaviour.
 
@@ -295,7 +368,7 @@ flowchart TB
     end
 
     subgraph e2e["e2e.yml"]
-        e1["build prod images<br/>compose up"] --> em["monitoring check<br/>every target up"] --> e2["Playwright"] --> e3["console gate<br/>legal pages"]
+        e1["build prod images<br/>compose up"] --> em["monitoring check<br/>every target up"] --> e2["Playwright"] --> e3["console gate<br/>legal pages"] --> e4["API restart run<br/>Chromium, alone"]
     end
 
     subgraph hygiene["hygiene.yml"]
@@ -319,7 +392,7 @@ production stack, the live monitoring check and Playwright.
 
 ---
 
-## 7. Where the code lives
+## 8. Where the code lives
 
 ```mermaid
 flowchart TB
