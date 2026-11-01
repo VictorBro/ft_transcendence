@@ -48,7 +48,7 @@ export class RateLimitError extends Error {}
  * Narrow on purpose: a crash that only says "limit" somewhere (a memory
  * limit, a line limit) fails one lesson, not the run.
  */
-export const QUOTA_MESSAGE = /usage limit|limit reached|quota/i;
+export const QUOTA_MESSAGE = /usage limit|quota/i;
 
 /** The words of a short refusal, which a pause fixes. */
 export const RATE_LIMIT_MESSAGE = /rate limit|too many requests/i;

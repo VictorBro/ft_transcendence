@@ -112,6 +112,15 @@ function pickLessons(outline: LessonOutlineFile, o: Options): LessonOutlineEntry
     .filter((e) => !o.kind || e.kind === o.kind)
     .filter((e) => !o.only || o.only.includes(e.id))
     .slice(0, o.max);
+  // The lessons with files are the level's first entries (#84): a selection must not leave a gap.
+  const last = outline.entries.findIndex((e) => e.id === todo.at(-1)?.id);
+  const gaps = outline.entries
+    .slice(0, last + 1)
+    .filter((e) => filesOf(e) === 'none' && !todo.includes(e));
+  if (gaps.length > 0)
+    throw new Error(
+      `${gaps.map((e) => e.id).join(', ')} would stay without files, before ${todo.at(-1)?.id}: pick the entries in position order`,
+    );
   for (const id of o.only ?? [])
     if (!todo.some((e) => e.id === id))
       console.warn(`! ${id}: not in this outline, or already written`);
