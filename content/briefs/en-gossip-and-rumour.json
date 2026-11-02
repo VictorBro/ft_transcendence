@@ -77,7 +77,7 @@
       "term": "grapevine",
       "translations": {
         "fr": ["le bouche-à-oreille", "le téléphone arabe"],
-        "de": ["Buschfunk", "Gerüchteküche"]
+        "de": ["Buschfunk", "Mundpropaganda"]
       },
       "wordClass": "noun",
       "genders": [],
@@ -128,7 +128,7 @@
       "genders": [],
       "number": "singular",
       "teachingForm": "rumour mill",
-      "examForms": ["rumour mill"],
+      "examForms": ["rumour mill", "rumor mill"],
       "articleException": null,
       "genderVariants": [],
       "pronunciation": "/ˈruːmə mɪl/",
@@ -152,7 +152,7 @@
       "gap": {
         "before": "The ",
         "after": " has been working overtime since the announcement.",
-        "accepted": { "answers": ["rumour mill"] },
+        "accepted": { "answers": ["rumour mill", "rumor mill"] },
         "referenceTargetIds": ["rumour-mill", "hearsay", "chinwag", "unfounded"],
         "explanation": {
           "en": "Only rumour mill fits: it is said to work overtime.",
@@ -257,7 +257,7 @@
       "term": "dish the dirt",
       "translations": {
         "fr": ["déballer les potins", "étaler des ragots"],
-        "de": ["Schmutzige Details ausplaudern", "den neuesten Klatsch erzählen"]
+        "de": ["schmutzige Details ausplaudern", "den neuesten Klatsch erzählen"]
       },
       "wordClass": "phrase",
       "genders": [],

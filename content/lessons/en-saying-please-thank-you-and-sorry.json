@@ -691,9 +691,9 @@
               ],
               "answerOptionId": "o1",
               "answerExplanation": {
-                "en": "She orders politely with please.",
-                "fr": "Elle commande poliment avec please.",
-                "de": "Sie bestellt höflich mit please."
+                "en": "The customer orders politely with please.",
+                "fr": "Le client commande poliment avec please.",
+                "de": "Der Kunde bestellt höflich mit please."
               }
             }
           ]
@@ -722,9 +722,9 @@
               ],
               "answerOptionId": "o1",
               "answerExplanation": {
-                "en": "She thanks the assistant.",
-                "fr": "Elle remercie le vendeur.",
-                "de": "Sie bedankt sich beim Verkäufer."
+                "en": "The customer thanks the shop assistant.",
+                "fr": "Le client remercie le vendeur.",
+                "de": "Der Kunde bedankt sich beim Verkäufer."
               }
             }
           ]
@@ -784,9 +784,9 @@
               ],
               "answerOptionId": "o1",
               "answerExplanation": {
-                "en": "She apologises for the mistake.",
-                "fr": "Elle s’excuse de l’erreur.",
-                "de": "Sie entschuldigt sich für das Versehen."
+                "en": "The customer apologises for the mistake.",
+                "fr": "Le client s’excuse de l’erreur.",
+                "de": "Der Kunde entschuldigt sich für das Versehen."
               }
             }
           ]
@@ -815,9 +815,9 @@
               ],
               "answerOptionId": "o1",
               "answerExplanation": {
-                "en": "She starts a polite question with Excuse me.",
-                "fr": "Elle commence une question polie avec Excuse me.",
-                "de": "Sie beginnt eine höfliche Frage mit Excuse me."
+                "en": "The customer starts a polite question with Excuse me.",
+                "fr": "Le client commence une question polie avec Excuse me.",
+                "de": "Der Kunde beginnt eine höfliche Frage mit Excuse me."
               }
             }
           ]
@@ -846,9 +846,9 @@
               ],
               "answerOptionId": "o1",
               "answerExplanation": {
-                "en": "He accepts the apology with That’s OK.",
-                "fr": "Il accepte les excuses avec That’s OK.",
-                "de": "Er nimmt die Entschuldigung mit That’s OK an."
+                "en": "The shop assistant accepts the apology with That’s OK.",
+                "fr": "Le vendeur accepte les excuses avec That’s OK.",
+                "de": "Der Verkäufer nimmt die Entschuldigung mit That’s OK an."
               }
             }
           ]
@@ -1015,8 +1015,8 @@
                   "roleId": "assistant",
                   "before": "",
                   "translation": {
-                    "fr": "De rien. C’est gratuit.",
-                    "de": "Gern geschehen. Er ist gratis."
+                    "fr": "De rien. C’est gratuit. Autre chose ?",
+                    "de": "Gern geschehen. Er ist gratis. Sonst noch etwas?"
                   },
                   "gap": {
                     "gapId": "gap-4",
@@ -1028,7 +1028,7 @@
                       "de": "You’re welcome antwortet auf einen Dank."
                     }
                   },
-                  "after": ". It’s free."
+                  "after": ". It’s free. Anything else?"
                 },
                 {
                   "lineId": "exam-line-5",
@@ -1063,11 +1063,11 @@
                   "gap": {
                     "gapId": "gap-7",
                     "expressionId": "sorry",
-                    "accepted": { "answers": ["Sorry"] },
+                    "accepted": { "answers": ["Sorry", "I’m sorry"] },
                     "answerExplanation": {
-                      "en": "She says Sorry because of a small problem.",
-                      "fr": "Elle dit Sorry à cause d’un petit problème.",
-                      "de": "Sie sagt Sorry wegen eines kleinen Problems."
+                      "en": "The customer says Sorry because of a small problem.",
+                      "fr": "Le client dit Sorry à cause d’un petit problème.",
+                      "de": "Der Kunde sagt Sorry wegen eines kleinen Problems."
                     }
                   },
                   "after": ", I only have a five-pound note."

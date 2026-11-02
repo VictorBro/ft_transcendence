@@ -723,7 +723,11 @@
                 { "tokenId": "t-7", "text": "," },
                 { "tokenId": "t-8", "text": "I" },
                 { "tokenId": "t-9", "text": "don't" },
-                { "tokenId": "t-10", "text": "." }
+                { "tokenId": "t-10", "text": "." },
+                { "tokenId": "t-11", "text": "I" },
+                { "tokenId": "t-12", "text": "love" },
+                { "tokenId": "t-13", "text": "it" },
+                { "tokenId": "t-14", "text": "." }
               ],
               "faultyTokenId": "t-9",
               "correction": { "mode": "type", "accepted": { "answers": ["do"] }, "choices": [] },
@@ -747,7 +751,12 @@
                 { "tokenId": "t-7", "text": "," },
                 { "tokenId": "t-8", "text": "he" },
                 { "tokenId": "t-9", "text": "is" },
-                { "tokenId": "t-10", "text": "." }
+                { "tokenId": "t-10", "text": "." },
+                { "tokenId": "t-11", "text": "He" },
+                { "tokenId": "t-12", "text": "is" },
+                { "tokenId": "t-13", "text": "my" },
+                { "tokenId": "t-14", "text": "brother" },
+                { "tokenId": "t-15", "text": "." }
               ],
               "faultyTokenId": "t-9",
               "correction": {
@@ -771,7 +780,10 @@
                 { "tokenId": "t-3", "text": "see" },
                 { "tokenId": "t-4", "text": "my" },
                 { "tokenId": "t-5", "text": "keys" },
-                { "tokenId": "t-6", "text": "?" }
+                { "tokenId": "t-6", "text": "since" },
+                { "tokenId": "t-7", "text": "this" },
+                { "tokenId": "t-8", "text": "morning" },
+                { "tokenId": "t-9", "text": "?" }
               ],
               "faultyTokenId": "t-3",
               "correction": { "mode": "type", "accepted": { "answers": ["seen"] }, "choices": [] },
@@ -786,15 +798,22 @@
               "type": "grammar_error_spotter",
               "itemId": "ex-use-spot-4",
               "tokens": [
-                { "tokenId": "t-1", "text": "Why" },
-                { "tokenId": "t-2", "text": "doesn't" },
-                { "tokenId": "t-3", "text": "they" },
-                { "tokenId": "t-4", "text": "answer" },
-                { "tokenId": "t-5", "text": "the" },
-                { "tokenId": "t-6", "text": "phone" },
-                { "tokenId": "t-7", "text": "?" }
+                { "tokenId": "t-1", "text": "My" },
+                { "tokenId": "t-2", "text": "parents" },
+                { "tokenId": "t-3", "text": "are" },
+                { "tokenId": "t-4", "text": "at" },
+                { "tokenId": "t-5", "text": "home" },
+                { "tokenId": "t-6", "text": "," },
+                { "tokenId": "t-7", "text": "so" },
+                { "tokenId": "t-8", "text": "why" },
+                { "tokenId": "t-9", "text": "doesn't" },
+                { "tokenId": "t-10", "text": "they" },
+                { "tokenId": "t-11", "text": "answer" },
+                { "tokenId": "t-12", "text": "the" },
+                { "tokenId": "t-13", "text": "phone" },
+                { "tokenId": "t-14", "text": "?" }
               ],
-              "faultyTokenId": "t-2",
+              "faultyTokenId": "t-9",
               "correction": {
                 "mode": "select",
                 "accepted": { "answers": ["don't"] },
@@ -863,15 +882,15 @@
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-forms-2",
-              "before": "",
-              "after": "that the best pizza you have ever eaten?",
-              "accepted": { "answers": ["Isn't", "Wasn't"] },
+              "before": "Why",
+              "after": "your parents at the wedding? Everyone was asking about them.",
+              "accepted": { "answers": ["weren't"] },
               "hint": null,
-              "ruleIds": ["r-use", "r-form"],
+              "ruleIds": ["r-form"],
               "answerExplanation": {
-                "en": "That is followed by be, and the question invites agreement: Isn't that...?",
-                "fr": "That est suivi de be, et la question invite à approuver : Isn't that...?",
-                "de": "Auf that folgt be, und die Frage lädt zur Zustimmung ein: Isn't that...?"
+                "en": "Parents is plural and the wedding is in the past, so the auxiliary is weren't.",
+                "fr": "Parents est au pluriel et le mariage est passé : l'auxiliaire est weren't.",
+                "de": "Parents ist Plural und die Hochzeit ist vorbei, also heißt das Hilfsverb weren't."
               }
             },
             {
@@ -891,15 +910,15 @@
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-forms-4",
-              "before": "",
-              "after": "she tell you about the change of plan? You look shocked.",
-              "accepted": { "answers": ["Didn't"] },
+              "before": "Why",
+              "after": "she tell you about the change of plan? You had to find out from me!",
+              "accepted": { "answers": ["didn't"] },
               "hint": null,
               "ruleIds": ["r-use"],
               "answerExplanation": {
-                "en": "The question shows surprise about a past event, so it uses Didn't.",
-                "fr": "La question montre la surprise face à un événement passé : Didn't.",
-                "de": "Die Frage zeigt Überraschung über ein vergangenes Ereignis, also Didn't."
+                "en": "The question complains about a past event, so it uses didn't.",
+                "fr": "La question se plaint d'un événement passé : didn't.",
+                "de": "Die Frage beschwert sich über ein vergangenes Ereignis, also didn't."
               }
             }
           ]

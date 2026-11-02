@@ -379,7 +379,7 @@
       "genders": [],
       "number": null,
       "teachingForm": "be running late",
-      "examForms": ["be running late"],
+      "examForms": ["be running late", "running late"],
       "articleException": null,
       "genderVariants": [],
       "pronunciation": "/biː ˈrʌnɪŋ leɪt/",

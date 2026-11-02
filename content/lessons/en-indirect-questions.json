@@ -755,7 +755,7 @@
               "correction": {
                 "mode": "select",
                 "accepted": { "answers": ["if", "whether"] },
-                "choices": ["if", "who", "why"]
+                "choices": ["if", "who", "what"]
               },
               "ruleIds": ["rule-if"],
               "answerExplanation": {
@@ -857,7 +857,7 @@
               "type": "grammar_gap_typing",
               "itemId": "exam-wh-3",
               "before": "Could you tell me why Daniel",
-              "after": "so angry yesterday?",
+              "after": "so angry yesterday? (be)",
               "accepted": { "answers": ["was"] },
               "hint": null,
               "ruleIds": ["rule-wh-order"],
@@ -871,7 +871,7 @@
               "type": "grammar_gap_typing",
               "itemId": "exam-wh-4",
               "before": "Do you know how much a ticket",
-              "after": "?",
+              "after": "these days? (cost)",
               "accepted": { "answers": ["costs"] },
               "hint": null,
               "ruleIds": ["rule-no-do"],

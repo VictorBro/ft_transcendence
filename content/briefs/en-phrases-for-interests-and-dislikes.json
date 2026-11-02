@@ -137,7 +137,7 @@
       "examPrompt": null,
       "gap": {
         "before": "He is really ",
-        "after": " old vinyl records.",
+        "after": " old vinyl records; he buys a new one every week.",
         "accepted": { "answers": ["into"] },
         "referenceTargetIds": ["into", "bear", "sick", "enough"],
         "explanation": {
@@ -221,7 +221,7 @@
       "examPrompt": null,
       "gap": {
         "before": "She is ",
-        "after": " horror films; she watches one every night.",
+        "after": " horror films; she watches one every night and never gets tired of them.",
         "accepted": { "answers": ["crazy about"] },
         "referenceTargetIds": ["crazy", "bear", "fan", "sick"],
         "explanation": {
@@ -263,7 +263,7 @@
       "examPrompt": null,
       "gap": {
         "before": "Tom is ",
-        "after": " saving the planet.",
+        "after": " saving the planet; he gives all his free time to it.",
         "accepted": { "answers": ["passionate about"] },
         "referenceTargetIds": ["passionate", "stand", "sick", "thing"],
         "explanation": {
@@ -475,7 +475,7 @@
         "before": "I'm ",
         "after": " spicy food, to be honest.",
         "accepted": { "answers": ["not a big fan of"] },
-        "referenceTargetIds": ["fan", "stand", "enough", "keen"],
+        "referenceTargetIds": ["fan", "stand", "enough", "thing"],
         "explanation": {
           "en": "Not a big fan of fits: it gently says you don't like spicy food.",
           "fr": "Not a big fan of convient : cela dit doucement qu'on n'aime pas le piquant.",
@@ -515,7 +515,7 @@
       "examPrompt": null,
       "gap": {
         "before": "I'm ",
-        "after": " eating the same lunch every day.",
+        "after": " eating the same lunch every day; I want something different.",
         "accepted": { "answers": ["sick of"] },
         "referenceTargetIds": ["sick", "crazy", "enough", "bear"],
         "explanation": {

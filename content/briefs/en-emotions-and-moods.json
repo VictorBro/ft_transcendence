@@ -235,7 +235,7 @@
       "examPrompt": null,
       "gap": {
         "before": "We were ",
-        "after": " that the concert was cancelled.",
+        "after": " that the concert was cancelled; we had waited months for it.",
         "accepted": { "answers": ["disappointed"] },
         "referenceTargetIds": ["disappointed", "proud", "relieved", "good-mood"],
         "explanation": {
@@ -291,7 +291,7 @@
     {
       "id": "jealous",
       "term": "jealous",
-      "translations": { "fr": ["jaloux"], "de": ["eifersüchtig"] },
+      "translations": { "fr": ["jaloux"], "de": ["neidisch", "eifersüchtig"] },
       "wordClass": "adjective",
       "genders": [],
       "number": null,
@@ -305,7 +305,7 @@
         "sentence": "He is jealous of his brother's success.",
         "translation": {
           "fr": "Il est jaloux du succès de son frère.",
-          "de": "Er ist eifersüchtig auf den Erfolg seines Bruders."
+          "de": "Er ist neidisch auf den Erfolg seines Bruders."
         }
       },
       "ambiguityNote": null,
@@ -325,7 +325,7 @@
         "explanation": {
           "en": "Wanting what your sister has makes you jealous.",
           "fr": "Vouloir ce que possède sa sœur rend jaloux.",
-          "de": "Zu wollen, was die Schwester hat, macht eifersüchtig."
+          "de": "Zu wollen, was die Schwester hat, macht neidisch."
         }
       },
       "listeningOptionTargetIds": ["jealous", "embarrassed", "anxious", "relieved"]
@@ -529,7 +529,7 @@
       "examPrompt": null,
       "gap": {
         "before": "I'm ",
-        "after": " about tomorrow's job interview.",
+        "after": " about tomorrow's job interview and couldn't sleep last night.",
         "accepted": { "answers": ["anxious"] },
         "referenceTargetIds": ["anxious", "delighted", "good-mood", "proud"],
         "explanation": {

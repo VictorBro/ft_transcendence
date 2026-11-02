@@ -229,8 +229,8 @@
             {
               "type": "grammar_gap_typing",
               "itemId": "ex-pr-typing-1",
-              "before": "My brother",
-              "after": "help at home, whatever you think!",
+              "before": "You think he never helps, but my brother",
+              "after": "help at home!",
               "accepted": { "answers": ["does"] },
               "hint": {
                 "en": "emphasis, third person singular",
@@ -572,7 +572,7 @@
             {
               "type": "grammar_gap_typing",
               "itemId": "ex-pa-typing-1",
-              "before": "I",
+              "before": "You say you didn't know, but I",
               "after": "tell you about the meeting on Monday!",
               "accepted": { "answers": ["did"] },
               "hint": {
@@ -590,7 +590,7 @@
             {
               "type": "grammar_gap_typing",
               "itemId": "ex-pa-typing-2",
-              "before": "She",
+              "before": "You thought she had failed, but she",
               "after": "pass the exam, after all.",
               "accepted": { "answers": ["did"] },
               "hint": {
@@ -608,8 +608,8 @@
             {
               "type": "grammar_gap_typing",
               "itemId": "ex-pa-typing-3",
-              "before": "We",
-              "after": "lock the door, I remember it clearly.",
+              "before": "Don't worry, we",
+              "after": "lock the door; I remember it clearly.",
               "accepted": { "answers": ["did"] },
               "hint": {
                 "en": "past, stress it",
@@ -627,7 +627,7 @@
               "type": "grammar_gap_typing",
               "itemId": "ex-pa-typing-4",
               "before": "The shop",
-              "after": "open on Sunday, despite the sign.",
+              "after": "open on Sunday, despite the sign saying it was closed.",
               "accepted": { "answers": ["did"] },
               "hint": {
                 "en": "past, contrast",
@@ -670,7 +670,8 @@
                 { "tokenId": "t-3", "text": "called" },
                 { "tokenId": "t-4", "text": "you" },
                 { "tokenId": "t-5", "text": "twice" },
-                { "tokenId": "t-6", "text": "!" }
+                { "tokenId": "t-6", "text": "yesterday" },
+                { "tokenId": "t-7", "text": "!" }
               ],
               "faultyTokenId": "t-3",
               "correction": { "mode": "type", "accepted": { "answers": ["call"] }, "choices": [] },
@@ -796,8 +797,8 @@
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-present-1",
-              "before": "Your sister",
-              "after": "look like you, honestly.",
+              "before": "You say she's nothing like you, but your sister",
+              "after": "look like you.",
               "accepted": { "answers": ["does"] },
               "hint": null,
               "ruleIds": ["rule-emphatic-present"],
@@ -864,7 +865,7 @@
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-past-1",
-              "before": "I",
+              "before": "You say you never got it, but I",
               "after": "send you the invoice last week.",
               "accepted": { "answers": ["did"] },
               "hint": null,
@@ -892,8 +893,8 @@
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-past-3",
-              "before": "We",
-              "after": "see the film, even if you don't believe it.",
+              "before": "You don't believe us, but we",
+              "after": "see the film: we went on Friday.",
               "accepted": { "answers": ["did"] },
               "hint": null,
               "ruleIds": ["rule-emphatic-past"],
@@ -906,7 +907,7 @@
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-past-4",
-              "before": "He",
+              "before": "You say he never asked, but he",
               "after": "ask me about the money, and I told him.",
               "accepted": { "answers": ["did"] },
               "hint": null,

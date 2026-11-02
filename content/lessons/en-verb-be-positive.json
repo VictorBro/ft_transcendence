@@ -575,9 +575,9 @@
           "estimatedDurationS": 45,
           "timeLimitS": null,
           "instructions": {
-            "en": "Type the form for each pronoun.",
-            "fr": "Écrivez la forme pour chaque pronom.",
-            "de": "Schreib die Form zu jedem Pronomen."
+            "en": "Type the short form of be for each pronoun.",
+            "fr": "Écrivez la forme courte de be pour chaque pronom.",
+            "de": "Schreib die Kurzform von be zu jedem Pronomen."
           },
           "items": [
             {
@@ -949,9 +949,9 @@
           "estimatedDurationS": 60,
           "timeLimitS": 100,
           "instructions": {
-            "en": "Type the form for each pronoun.",
-            "fr": "Écrivez la forme pour chaque pronom.",
-            "de": "Schreib die Form zu jedem Pronomen."
+            "en": "Type the full form of be (am, is, are) for each pronoun.",
+            "fr": "Écrivez la forme complète de be (am, is, are) pour chaque pronom.",
+            "de": "Schreib die volle Form von be (am, is, are) zu jedem Pronomen."
           },
           "items": [
             {

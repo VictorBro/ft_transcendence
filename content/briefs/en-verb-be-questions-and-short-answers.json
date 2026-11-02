@@ -85,7 +85,7 @@
         },
         {
           "text": "Is she from Italy?",
-          "translation": { "fr": "Elle est italienne ?", "de": "Kommt sie aus Italien?" }
+          "translation": { "fr": "Elle vient d'Italie ?", "de": "Kommt sie aus Italien?" }
         },
         {
           "text": "Am I late?",
@@ -148,7 +148,7 @@
         {
           "text": "Is she from Italy? No, she isn't.",
           "translation": {
-            "fr": "Elle est italienne ? Non, elle ne l'est pas.",
+            "fr": "Elle vient d'Italie ? Non.",
             "de": "Kommt sie aus Italien? Nein, ist sie nicht."
           }
         },

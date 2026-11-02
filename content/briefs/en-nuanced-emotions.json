@@ -623,7 +623,7 @@
         "before": "She gave a ",
         "after": " smile as she looked at a photograph of the life she might have lived.",
         "accepted": { "answers": ["wistful"] },
-        "referenceTargetIds": ["wistful", "elated", "bittersweet", "nostalgic"],
+        "referenceTargetIds": ["wistful", "elated", "indignant", "nostalgic"],
         "explanation": {
           "en": "Wistful fits: quiet sadness about what might have been.",
           "fr": "Wistful convient : une tristesse discrète à propos de ce qui aurait pu être.",

@@ -338,7 +338,7 @@
       "genders": [],
       "number": null,
       "teachingForm": "hard-working",
-      "examForms": ["hard-working"],
+      "examForms": ["hard-working", "hardworking"],
       "articleException": null,
       "genderVariants": [],
       "pronunciation": "/ˌhɑːdˈwɜːkɪŋ/",

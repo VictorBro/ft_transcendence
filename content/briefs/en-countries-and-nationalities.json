@@ -194,7 +194,7 @@
       "genders": [],
       "number": "singular",
       "teachingForm": "the UK",
-      "examForms": ["the UK", "UK"],
+      "examForms": ["the UK", "UK", "the United Kingdom", "United Kingdom"],
       "articleException": null,
       "genderVariants": [],
       "pronunciation": "/ðə ˌjuː ˈkeɪ/",

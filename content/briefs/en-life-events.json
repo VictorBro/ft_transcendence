@@ -68,9 +68,9 @@
         "retire"
       ],
       "introduction": {
-        "en": "These phrases describe **adult life**. Many use `get` or `have` with a word:\n\n- `fall in love`\n- `move house`\n- `get married`\n- `have a baby`\n- `get divorced`\n- `retire`",
-        "fr": "Ces expressions décrivent **la vie adulte**. Beaucoup utilisent `get` ou `have` avec un mot :\n\n- `fall in love`\n- `move house`\n- `get married`\n- `have a baby`\n- `get divorced`\n- `retire`",
-        "de": "Diese Ausdrücke beschreiben **das Erwachsenenleben**. Viele benutzen `get` oder `have` mit einem Wort:\n\n- `fall in love`\n- `move house`\n- `get married`\n- `have a baby`\n- `get divorced`\n- `retire`"
+        "en": "These phrases describe **adult life**. Some use `get` or `have` with a word:\n\n- `fall in love`\n- `move house`\n- `get married`\n- `have a baby`\n- `get divorced`\n- `retire`",
+        "fr": "Ces expressions décrivent **la vie adulte**. Certaines utilisent `get` ou `have` avec un mot :\n\n- `fall in love`\n- `move house`\n- `get married`\n- `have a baby`\n- `get divorced`\n- `retire`",
+        "de": "Diese Ausdrücke beschreiben **das Erwachsenenleben**. Einige benutzen `get` oder `have` mit einem Wort:\n\n- `fall in love`\n- `move house`\n- `get married`\n- `have a baby`\n- `get divorced`\n- `retire`"
       }
     }
   ],
@@ -142,7 +142,7 @@
       },
       "genderExplanation": null,
       "matchingLabel": null,
-      "examPrompt": null,
+      "examPrompt": { "fr": "grandir (devenir adulte)", "de": "aufwachsen" },
       "gap": {
         "before": "Children need food and sleep to ",
         "after": " healthy and strong.",
@@ -212,7 +212,7 @@
       "genders": [],
       "number": null,
       "teachingForm": "leave school",
-      "examForms": ["leave school"],
+      "examForms": ["leave school", "finish school"],
       "articleException": null,
       "genderVariants": [],
       "pronunciation": "/liːv ˈskuːl/",
@@ -251,7 +251,7 @@
       "term": "go to university",
       "translations": {
         "fr": ["aller à l’université", "faire des études"],
-        "de": ["studieren", "an die Universität gehen"]
+        "de": ["an die Universität gehen", "studieren"]
       },
       "wordClass": "phrase",
       "genders": [],
@@ -302,7 +302,7 @@
       "genders": [],
       "number": null,
       "teachingForm": "get a job",
-      "examForms": ["get a job"],
+      "examForms": ["get a job", "find a job"],
       "articleException": null,
       "genderVariants": [],
       "pronunciation": "/ɡet ə ˈdʒɒb/",
@@ -366,8 +366,8 @@
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "They met at a party and began to ",
-        "after": " very quickly.",
+        "before": "They met at a party and soon began to ",
+        "after": " with each other.",
         "accepted": { "answers": ["fall in love"] },
         "referenceTargetIds": ["fall-in-love", "get-married", "have-baby", "retire"],
         "explanation": {
@@ -386,7 +386,7 @@
       "genders": [],
       "number": null,
       "teachingForm": "move house",
-      "examForms": ["move house"],
+      "examForms": ["move house", "move"],
       "articleException": null,
       "genderVariants": [],
       "pronunciation": "/muːv ˈhaʊs/",
@@ -425,7 +425,7 @@
       "genders": [],
       "number": null,
       "teachingForm": "get married",
-      "examForms": ["get married"],
+      "examForms": ["get married", "marry"],
       "articleException": null,
       "genderVariants": [],
       "pronunciation": "/ɡet ˈmærid/",
@@ -509,7 +509,7 @@
       "genders": [],
       "number": null,
       "teachingForm": "get divorced",
-      "examForms": ["get divorced"],
+      "examForms": ["get divorced", "divorce"],
       "articleException": null,
       "genderVariants": [],
       "pronunciation": "/ɡet dɪˈvɔːst/",

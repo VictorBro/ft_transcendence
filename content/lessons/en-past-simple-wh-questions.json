@@ -111,7 +111,7 @@
               "type": "grammar_gap_choice",
               "itemId": "b1-choice-1",
               "before": "Where",
-              "after": "you go on Saturday?",
+              "after": "you go last Saturday?",
               "choices": [
                 { "choiceId": "c-1", "text": "do" },
                 { "choiceId": "c-2", "text": "did" },
@@ -207,7 +207,7 @@
               "type": "grammar_gap_choice",
               "itemId": "b1-choice-4",
               "before": "What",
-              "after": "you eat for dinner?",
+              "after": "you eat for dinner last night?",
               "choices": [
                 { "choiceId": "c-1", "text": "are" },
                 { "choiceId": "c-2", "text": "have" },
@@ -1074,15 +1074,15 @@
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-gaps-2",
-              "before": "Why did Tom",
-              "after": "the window?",
-              "accepted": { "answers": ["close", "open", "shut"] },
+              "before": "Tom closed the window. Why did he",
+              "after": "it?",
+              "accepted": { "answers": ["close", "shut"] },
               "hint": null,
               "ruleIds": ["r-base-form"],
               "answerExplanation": {
-                "en": "After did the verb stays in the base form: close, not closed.",
-                "fr": "Après did, le verbe reste à la forme de base : close, pas closed.",
-                "de": "Nach did bleibt das Verb in der Grundform: close, nicht closed."
+                "en": "Tom closed it, but after did the verb stays in the base form: Why did he close it?",
+                "fr": "Tom closed it, mais après did le verbe reste à la forme de base : Why did he close it ?",
+                "de": "Tom closed it, aber nach did bleibt das Verb in der Grundform: Why did he close it?"
               }
             },
             {
@@ -1103,14 +1103,14 @@
               "type": "grammar_gap_typing",
               "itemId": "exam-gaps-4",
               "before": "When did they",
-              "after": "to Canada?",
+              "after": "to Canada? (move)",
               "accepted": { "answers": ["move"] },
               "hint": null,
               "ruleIds": ["r-base-form"],
               "answerExplanation": {
-                "en": "After did the verb is in the base form: move, not moved.",
-                "fr": "Après did, le verbe est à la forme de base : move, pas moved.",
-                "de": "Nach did steht das Verb in der Grundform: move, nicht moved."
+                "en": "After did the verb is in the base form: When did they move to Canada?",
+                "fr": "Après did, le verbe est à la forme de base : When did they move to Canada ?",
+                "de": "Nach did steht das Verb in der Grundform: When did they move to Canada?"
               }
             }
           ]
@@ -1131,19 +1131,20 @@
               "tokens": [
                 { "tokenId": "t-1", "text": "night" },
                 { "tokenId": "t-2", "text": "did" },
-                { "tokenId": "t-3", "text": "you" },
+                { "tokenId": "t-3", "text": "the" },
                 { "tokenId": "t-4", "text": "Why" },
                 { "tokenId": "t-5", "text": "?" },
-                { "tokenId": "t-6", "text": "call" },
+                { "tokenId": "t-6", "text": "miss" },
                 { "tokenId": "t-7", "text": "Ben" },
-                { "tokenId": "t-8", "text": "last" }
+                { "tokenId": "t-8", "text": "last" },
+                { "tokenId": "t-9", "text": "bus" }
               ],
-              "acceptedOrders": [["t-4", "t-2", "t-7", "t-6", "t-3", "t-8", "t-1", "t-5"]],
+              "acceptedOrders": [["t-4", "t-2", "t-7", "t-6", "t-3", "t-9", "t-8", "t-1", "t-5"]],
               "ruleIds": ["r-wh-order"],
               "answerExplanation": {
-                "en": "Question word + did + subject + base form: Why did Ben call you...?",
-                "fr": "Mot interrogatif + did + sujet + forme de base : Why did Ben call you... ?",
-                "de": "Fragewort + did + Subjekt + Grundform: Why did Ben call you...?"
+                "en": "Question word + did + subject + base form: Why did Ben miss the bus last night?",
+                "fr": "Mot interrogatif + did + sujet + forme de base : Why did Ben miss the bus last night ?",
+                "de": "Fragewort + did + Subjekt + Grundform: Why did Ben miss the bus last night?"
               }
             },
             {

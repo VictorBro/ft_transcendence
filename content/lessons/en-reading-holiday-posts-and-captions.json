@@ -176,18 +176,18 @@
             {
               "type": "reading_choice",
               "itemId": "q-where",
-              "question": "Which city did Mia visit?",
+              "question": "Which city did Mia spend the week in?",
               "options": [
                 { "optionId": "o1", "text": "Madrid" },
                 { "optionId": "o2", "text": "Lisbon" },
-                { "optionId": "o3", "text": "Cascais" },
+                { "optionId": "o3", "text": "Porto" },
                 { "optionId": "o4", "text": "Edinburgh" }
               ],
               "answerOptionId": "o2",
               "answerExplanation": {
-                "en": "The title says Our week in Lisbon. Cascais is a beach near the city.",
-                "fr": "Le titre dit Our week in Lisbon. Cascais est une plage près de la ville.",
-                "de": "Der Titel lautet Our week in Lisbon. Cascais ist ein Strand in der Nähe der Stadt."
+                "en": "The title says Our week in Lisbon. Cascais is a town by the sea near the city.",
+                "fr": "Le titre dit Our week in Lisbon. Cascais est une ville au bord de la mer, près de Lisbonne.",
+                "de": "Der Titel lautet Our week in Lisbon. Cascais ist ein Ort am Meer in der Nähe der Stadt."
               }
             },
             {

@@ -145,7 +145,7 @@
         "accepted": { "answers": ["glimpsed"] },
         "referenceTargetIds": ["glimpse", "glance", "peep", "scan"],
         "explanation": {
-          "en": "Only glimpsed fits: you catch sight of her coat for a moment. Glance and peep need a preposition or a gap.",
+          "en": "Only glimpsed fits: you catch sight of her coat for a moment. Glance and peep need a preposition such as at or through.",
           "fr": "Seul « glimpsed » convient : on aperçoit son manteau un instant. Glance et peep ne s’emploient pas ainsi.",
           "de": "Nur „glimpsed“ passt: Man erhascht kurz ihren Mantel. Glance und peep passen hier grammatisch nicht."
         }
@@ -474,7 +474,10 @@
       },
       "genderExplanation": null,
       "matchingLabel": null,
-      "examPrompt": null,
+      "examPrompt": {
+        "fr": "regarder d’un air lubrique, avec un sourire mauvais",
+        "de": "lüstern und mit fiesem Grinsen blicken"
+      },
       "gap": {
         "before": "The man at the bar ",
         "after": " at her with a nasty, suggestive grin.",

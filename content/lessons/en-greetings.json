@@ -339,7 +339,7 @@
               "roleId": "anna",
               "before": "",
               "after": "",
-              "choiceExpressionIds": ["good-morning", "goodbye", "how-are-you", "fine-thanks"],
+              "choiceExpressionIds": ["good-morning", "goodbye", "see-you-later", "fine-thanks"],
               "answerExplanation": {
                 "en": "In the morning you can say Good morning!",
                 "fr": "Le matin, on peut dire Good morning !",
@@ -449,9 +449,9 @@
               "after": "Have a nice day.",
               "choiceExpressionIds": ["goodbye", "good-morning", "how-are-you", "fine-thanks"],
               "answerExplanation": {
-                "en": "The day is over, so Tom says Goodbye!",
-                "fr": "La journée est finie, donc Tom dit Goodbye !",
-                "de": "Der Tag ist zu Ende, deshalb sagt Tom Goodbye!"
+                "en": "Anna is leaving, so Tom says Goodbye!",
+                "fr": "Anna part, donc Tom dit Goodbye !",
+                "de": "Anna geht, deshalb sagt Tom Goodbye!"
               }
             }
           ]
@@ -993,7 +993,10 @@
               "type": "function_word_order",
               "itemId": "reply-1",
               "expressionId": "good-morning",
-              "context": { "roleId": "tom", "text": "Welcome, Anna. Here is the team." },
+              "context": {
+                "roleId": "tom",
+                "text": "It’s nine o’clock in the morning. Welcome, Anna. Here is the team."
+              },
               "roleId": "anna",
               "tokens": [
                 { "tokenId": "t1", "text": "Good" },
@@ -1140,7 +1143,14 @@
                   "gap": {
                     "gapId": "gap-2",
                     "expressionId": "fine-thanks",
-                    "accepted": { "answers": ["Fine, thanks.", "Fine, thanks"] },
+                    "accepted": {
+                      "answers": [
+                        "Fine, thanks.",
+                        "Fine, thanks",
+                        "I’m fine, thanks.",
+                        "I’m fine, thanks"
+                      ]
+                    },
                     "answerExplanation": {
                       "en": "She answers How are you? with Fine, thanks.",
                       "fr": "Elle répond à How are you ? par Fine, thanks.",
@@ -1174,10 +1184,10 @@
                 {
                   "lineId": "exam-line-7",
                   "roleId": "tom",
-                  "before": "No problem. Have a good day!",
+                  "before": "No problem.",
                   "translation": {
-                    "fr": "Pas de problème. Bonne journée !",
-                    "de": "Kein Problem. Einen schönen Tag!"
+                    "fr": "Pas de problème.",
+                    "de": "Kein Problem."
                   },
                   "gap": null,
                   "after": ""
@@ -1185,12 +1195,12 @@
                 {
                   "lineId": "exam-line-8",
                   "roleId": "anna",
-                  "before": "Thanks, Tom.",
-                  "translation": { "fr": "Merci, Tom. Salut !", "de": "Danke, Tom. Tschüss!" },
+                  "before": "OK, Tom.",
+                  "translation": { "fr": "D’accord, Tom. Salut !", "de": "Okay, Tom. Tschüss!" },
                   "gap": {
                     "gapId": "gap-3",
                     "expressionId": "bye",
-                    "accepted": { "answers": ["Bye", "Bye!"] },
+                    "accepted": { "answers": ["Bye", "Bye!", "Goodbye", "Goodbye!"] },
                     "answerExplanation": {
                       "en": "A short, informal goodbye: Bye!",
                       "fr": "Un au revoir court et familier : Bye !",

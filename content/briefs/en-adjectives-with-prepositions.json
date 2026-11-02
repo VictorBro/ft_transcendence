@@ -273,7 +273,7 @@
       "examPrompt": null,
       "gap": {
         "before": "Tom is ",
-        "after": " his brother's new bike.",
+        "after": " his brother's new bike and wants one too.",
         "accepted": { "answers": ["jealous of"] },
         "referenceTargetIds": ["jealous", "responsible", "similar", "married"],
         "explanation": {
@@ -292,7 +292,7 @@
       "genders": [],
       "number": null,
       "teachingForm": "bored with",
-      "examForms": ["bored with"],
+      "examForms": ["bored with", "bored of", "bored by"],
       "articleException": null,
       "genderVariants": [],
       "pronunciation": "/bɔːd wɪð/",
@@ -306,9 +306,9 @@
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Bored with (or bored of) something means it is no longer interesting.",
-        "fr": "Bored with (ou bored of) signifie que quelque chose n’est plus intéressant.",
-        "de": "Bored with (oder bored of) bedeutet, dass etwas nicht mehr interessant ist."
+        "en": "Bored with (or bored of, bored by) something means it is no longer interesting.",
+        "fr": "Bored with (ou bored of, bored by) signifie que quelque chose n’est plus intéressant.",
+        "de": "Bored with (oder bored of, bored by) bedeutet, dass etwas nicht mehr interessant ist."
       },
       "genderExplanation": null,
       "matchingLabel": null,
@@ -316,12 +316,12 @@
       "gap": {
         "before": "The students were ",
         "after": " the long lecture.",
-        "accepted": { "answers": ["bored with"] },
+        "accepted": { "answers": ["bored with", "bored of", "bored by"] },
         "referenceTargetIds": ["bored", "famous", "married", "similar"],
         "explanation": {
-          "en": "A long lecture often makes students bored with it.",
-          "fr": "Un long cours rend souvent les étudiants « bored with » celui-ci.",
-          "de": "Eine lange Vorlesung langweilt Studierende oft: „bored with“."
+          "en": "A long lecture often makes students bored with it (bored of and bored by are also correct).",
+          "fr": "Un long cours rend souvent les étudiants « bored with » celui-ci (« bored of » et « bored by » sont aussi corrects).",
+          "de": "Eine lange Vorlesung langweilt Studierende oft: „bored with“ („bored of“ und „bored by“ sind auch richtig)."
         }
       },
       "listeningOptionTargetIds": ["bored", "proud", "tired", "different"]
@@ -357,7 +357,7 @@
       "examPrompt": null,
       "gap": {
         "before": "We are ",
-        "after": " our trip to Rome next week.",
+        "after": " our trip to Rome next week and can't wait.",
         "accepted": { "answers": ["excited about"] },
         "referenceTargetIds": ["excited", "responsible", "different", "married"],
         "explanation": {
@@ -440,13 +440,13 @@
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "The manager is ",
-        "after": " the whole team.",
+        "before": "As the manager, she is ",
+        "after": " the whole team and its results.",
         "accepted": { "answers": ["responsible for"] },
-        "referenceTargetIds": ["responsible", "bored", "married", "excited"],
+        "referenceTargetIds": ["responsible", "similar", "married", "good-at"],
         "explanation": {
           "en": "A manager is in charge of the team, so responsible for fits.",
-          "fr": "Un responsable dirige l’équipe : « responsible for » convient.",
+          "fr": "Une responsable dirige l’équipe : « responsible for » convient.",
           "de": "Eine Managerin leitet das Team, daher passt „responsible for“."
         }
       },
@@ -525,7 +525,7 @@
       "examPrompt": null,
       "gap": {
         "before": "My sister is ",
-        "after": " a doctor from Leeds.",
+        "after": " a doctor from Leeds; their wedding was in May.",
         "accepted": { "answers": ["married to"] },
         "referenceTargetIds": ["married", "tired", "famous", "ashamed"],
         "explanation": {
@@ -625,7 +625,7 @@
       "genders": [],
       "number": null,
       "teachingForm": "different from",
-      "examForms": ["different from"],
+      "examForms": ["different from", "different to", "different than"],
       "articleException": null,
       "genderVariants": [],
       "pronunciation": "/ˈdɪfrənt frɒm/",
@@ -653,12 +653,12 @@
       "gap": {
         "before": "Life in a big city is very ",
         "after": " life in a village.",
-        "accepted": { "answers": ["different from"] },
+        "accepted": { "answers": ["different from", "different to", "different than"] },
         "referenceTargetIds": ["different", "afraid", "proud", "married"],
         "explanation": {
-          "en": "The sentence compares two ways of life that are not alike.",
-          "fr": "La phrase compare deux modes de vie qui ne se ressemblent pas : « different from ».",
-          "de": "Der Satz vergleicht zwei verschiedene Lebensweisen: „different from“."
+          "en": "The sentence compares two ways of life that are not alike: different from (different to and different than are also correct).",
+          "fr": "La phrase compare deux modes de vie qui ne se ressemblent pas : « different from » (« different to » et « different than » sont aussi corrects).",
+          "de": "Der Satz vergleicht zwei verschiedene Lebensweisen: „different from“ („different to“ und „different than“ sind auch richtig)."
         }
       },
       "listeningOptionTargetIds": ["different", "similar", "bored", "interested"]

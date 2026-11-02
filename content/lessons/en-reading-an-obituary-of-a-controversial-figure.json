@@ -33,7 +33,7 @@
         "Sir Gerald Maddox, who died on Monday at the age of 90, was one of the most divisive figures in postwar British politics, a man whom colleagues revered, voters feared and cartoonists adored in roughly equal measure.",
         "The son of a Doncaster signalman, he won a scholarship to grammar school and then to Oxford, where he made his name as a debater before he had made any friends. He entered Parliament in 1964 and, within a decade, had risen to the Treasury, where his reforms of the tax system were hailed by admirers as visionary and denounced by detractors as reckless.",
         "Few disputed his intellect. Fewer still would have described him as patient. Maddox did not suffer fools gladly, and in his book the category was generous: it took in most of the Cabinet, the entire press gallery and, on one memorable occasion, a visiting head of state. Civil servants recall being sent back to rewrite memoranda three times, in green ink, with the single word “again” in the margin.",
-        "His private life was no less eventful. Thrice married, he was, as one friend put it, a man of generous appetites, and he enjoyed a colourful private life that the tabloids pursued with a zeal he affected to find tiresome. He never confirmed any of the stories, and never denied them either, an omission that said more than a denial might have done.",
+        "Outside politics, his life was no less eventful. Thrice married, he was, as one friend put it, a man of generous appetites, and he enjoyed a colourful private life that the tabloids pursued with a zeal he affected to find tiresome. He never confirmed any of the stories, and never denied them either, an omission that said more than a denial might have done.",
         "The 1981 election marked the summit of his influence and the beginning of his decline. His plan to close fourteen coal mines, which he defended as economic realism, left whole communities without work, and the bitterness lingers in the north to this day. Maddox, who was no stranger to controversy, made little attempt to soothe it. Asked years later whether he regretted the closures, he replied that regret was a luxury for people who had never had to balance a budget.",
         "He left office in 1990 under a cloud, having been criticised by a select committee for what its report called a lapse of judgement in the handling of a donation from a property developer. Maddox called the inquiry a farce and the report a piece of fiction. He was unrepentant to the last, and in his memoirs, which ran to nine hundred pages, the word “sorry” does not appear.",
         "Yet the same man gave away much of his income to a charity for retired miners, a fact he forbade his staff to mention, and sat for twenty years on the board of a hospice in his Doncaster constituency. Those who worked for him speak of a loyalty that was fierce and, to outsiders, wholly unexpected. “He was impossible,” said a former aide, “and I would have followed him anywhere.”",
@@ -415,9 +415,9 @@
               "statement": "Her friend’s remark suggests that she could show kindness and anger at the same moment.",
               "answer": "true",
               "answerExplanation": {
-                "en": "True: “kind and furious in the same sentence” affectionately captures her mix of warmth and ferocity.",
-                "fr": "Vrai : « gentille et furieuse dans la même phrase » résume avec affection son mélange de chaleur et de férocité.",
-                "de": "Richtig: „kind and furious in the same sentence“ fasst liebevoll ihre Mischung aus Wärme und Schärfe zusammen."
+                "en": "True: “kind and furious in the same sentence” affectionately captures her mix of kindness and ferocity.",
+                "fr": "Vrai : « gentille et furieuse dans la même phrase » résume avec affection son mélange de bonté et de férocité.",
+                "de": "Richtig: „kind and furious in the same sentence“ fasst liebevoll ihre Mischung aus Güte und Schärfe zusammen."
               }
             }
           ]

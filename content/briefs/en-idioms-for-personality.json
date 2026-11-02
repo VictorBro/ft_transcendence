@@ -281,7 +281,7 @@
       "gap": {
         "before": "Ever since he missed the promotion, he seems to ",
         "after": " about everything.",
-        "accepted": { "answers": ["have a chip on his shoulder", "have a chip on the shoulder"] },
+        "accepted": { "answers": ["have a chip on his shoulder"] },
         "referenceTargetIds": [
           "chip-on-shoulder",
           "two-faced",
@@ -430,8 +430,8 @@
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "Despite her stern look, I think she may ",
-        "after": ", though.",
+        "before": "She looks stern, but everyone who knows her says she seems to ",
+        "after": ".",
         "accepted": { "answers": ["have a heart of gold"] },
         "referenceTargetIds": ["heart-of-gold", "short-fuse", "big-mouth", "heart-on-sleeve"],
         "explanation": {
@@ -584,11 +584,7 @@
         "before": "Nina can't hide anything; she tends to ",
         "after": ".",
         "accepted": {
-          "answers": [
-            "wear her heart on her sleeve",
-            "wear your heart on your sleeve",
-            "wear their heart on their sleeve"
-          ]
+          "answers": ["wear her heart on her sleeve"]
         },
         "referenceTargetIds": [
           "heart-on-sleeve",
@@ -650,8 +646,7 @@
           "answers": [
             "keep himself to himself",
             "keep herself to herself",
-            "keep themselves to themselves",
-            "keep yourself to yourself"
+            "keep themselves to themselves"
           ]
         },
         "referenceTargetIds": [

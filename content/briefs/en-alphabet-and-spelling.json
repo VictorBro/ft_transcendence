@@ -6,9 +6,9 @@
   "locales": ["en", "fr", "de"],
   "title": "The alphabet and spelling",
   "objective": {
-    "en": "Say the letters and spell a name or an email address aloud, and ask: How do you spell that?",
-    "fr": "Dire les lettres et épeler un nom ou une adresse e-mail à voix haute, et demander : How do you spell that ?",
-    "de": "Die Buchstaben sagen, einen Namen oder eine E-Mail-Adresse buchstabieren und fragen: How do you spell that?"
+    "en": "Use the words for spelling a name or an email address aloud (letter, capital letter, dot, at, hyphen, double) and ask: How do you spell that?",
+    "fr": "Employer les mots pour épeler un nom ou une adresse e-mail à voix haute (letter, capital letter, dot, at, hyphen, double) et demander : How do you spell that ?",
+    "de": "Die Wörter zum Buchstabieren eines Namens oder einer E-Mail-Adresse verwenden (letter, capital letter, dot, at, hyphen, double) und fragen: How do you spell that?"
   },
   "estimatedMinutes": 19,
   "provenance": {
@@ -445,7 +445,12 @@
       "genders": [],
       "number": null,
       "teachingForm": "How do you spell that?",
-      "examForms": ["How do you spell that?", "How do you spell it?"],
+      "examForms": [
+        "How do you spell that?",
+        "How do you spell it?",
+        "How do you spell that",
+        "How do you spell it"
+      ],
       "articleException": null,
       "genderVariants": [],
       "pronunciation": "/haʊ duː juː spel ðæt/",
@@ -469,7 +474,14 @@
       "gap": {
         "before": "“My name is Siobhan.” — “",
         "after": "” — “S-I-O-B-H-A-N.”",
-        "accepted": { "answers": ["How do you spell that?", "How do you spell it?"] },
+        "accepted": {
+          "answers": [
+            "How do you spell that?",
+            "How do you spell it?",
+            "How do you spell that",
+            "How do you spell it"
+          ]
+        },
         "referenceTargetIds": ["how-spell", "spell", "name", "letter"],
         "explanation": {
           "en": "You ask “How do you spell that?” and the answer is the letters.",

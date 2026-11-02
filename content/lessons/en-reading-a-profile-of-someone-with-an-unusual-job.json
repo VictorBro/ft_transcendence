@@ -272,7 +272,7 @@
               "type": "reading_order",
               "itemId": "order",
               "pieces": [
-                { "pieceId": "p4", "text": "Ruth explains why she stayed in the job" },
+                { "pieceId": "p4", "text": "Ruth answers whether she is lonely up in the tower" },
                 { "pieceId": "p1", "text": "A Monday morning climb up the tower" },
                 { "pieceId": "p5", "text": "The writer says why her story matters" },
                 { "pieceId": "p3", "text": "The difficulties of the job" },
@@ -280,9 +280,9 @@
               ],
               "acceptedOrders": [["p1", "p2", "p3", "p4", "p5"]],
               "answerExplanation": {
-                "en": "The text opens with the Monday climb, tells how she changed career, describes the hard side, then her view of the tower, and ends with the writer’s point.",
-                "fr": "Le texte s’ouvre sur la montée du lundi, raconte sa reconversion, décrit les difficultés, puis son regard sur la tour, et finit par l’idée de l’auteur.",
-                "de": "Der Text beginnt mit dem Aufstieg am Montag, erzählt den Berufswechsel, beschreibt die Schwierigkeiten, dann ihre Sicht auf den Turm und endet mit der Aussage des Autors."
+                "en": "The text opens with the Monday climb, tells how she changed career, describes the hard side, then her answer to whether she is lonely, and ends with the writer’s point.",
+                "fr": "Le texte s’ouvre sur la montée du lundi, raconte sa reconversion, décrit les difficultés, puis sa réponse à la question de la solitude, et finit par l’idée de l’auteur.",
+                "de": "Der Text beginnt mit dem Aufstieg am Montag, erzählt den Berufswechsel, beschreibt die Schwierigkeiten, dann ihre Antwort auf die Frage, ob sie einsam ist, und endet mit der Aussage des Autors."
               }
             }
           ]
@@ -360,7 +360,7 @@
             {
               "type": "reading_choice",
               "itemId": "x-reaction",
-              "question": "How does Tomás react when the lawyers reject a name?",
+              "question": "How does Tomás react when one of his names is rejected?",
               "options": [
                 { "optionId": "o1", "text": "He argues with them" },
                 { "optionId": "o2", "text": "He thinks about leaving the job" },

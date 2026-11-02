@@ -212,10 +212,10 @@
                 {
                   "lineId": "line-10",
                   "roleId": "mia",
-                  "text": "That’s nice too. See you on Monday!",
+                  "text": "That’s nice too. See you later!",
                   "translation": {
-                    "fr": "C’est bien aussi. À lundi !",
-                    "de": "Das ist auch schön. Bis Montag!"
+                    "fr": "C’est bien aussi. À plus tard !",
+                    "de": "Das ist auch schön. Bis später!"
                   },
                   "note": {
                     "en": "A friendly way to end.",
@@ -358,7 +358,7 @@
               "after": "",
               "choiceExpressionIds": [
                 "what-did-you-do",
-                "how-was",
+                "there-was",
                 "then-we-had-lunch",
                 "it-was-great"
               ],
@@ -1044,13 +1044,19 @@
                   "roleId": "ben",
                   "before": "You look happy.",
                   "translation": {
-                    "fr": "Tu as l’air content. Comment s’est passé ton week-end ?",
+                    "fr": "Tu as l’air contente. Comment s’est passé ton week-end ?",
                     "de": "Du siehst glücklich aus. Wie war dein Wochenende?"
                   },
                   "gap": {
                     "gapId": "gap-1",
                     "expressionId": "how-was",
-                    "accepted": { "answers": ["How was your weekend?", "How was your weekend"] },
+                    "accepted": {
+                      "answers": [
+                        "How was your weekend?",
+                        "How was your weekend ?",
+                        "How was your weekend"
+                      ]
+                    },
                     "answerExplanation": {
                       "en": "Ben asks about her weekend: How was your weekend?",
                       "fr": "Ben demande son week-end : How was your weekend?",
@@ -1081,7 +1087,9 @@
                   "gap": {
                     "gapId": "gap-2",
                     "expressionId": "what-did-you-do",
-                    "accepted": { "answers": ["What did you do?", "What did you do"] },
+                    "accepted": {
+                      "answers": ["What did you do?", "What did you do ?", "What did you do"]
+                    },
                     "answerExplanation": {
                       "en": "He asks for details: What did you do?",
                       "fr": "Il demande des détails : What did you do?",
@@ -1144,10 +1152,10 @@
                 {
                   "lineId": "exam-line-8",
                   "roleId": "ben",
-                  "before": "I am happy for you. See you on Monday!",
+                  "before": "I am happy for you. See you later!",
                   "translation": {
-                    "fr": "Je suis content pour toi. À lundi !",
-                    "de": "Ich freue mich für dich. Bis Montag!"
+                    "fr": "Je suis content pour toi. À plus tard !",
+                    "de": "Ich freue mich für dich. Bis später!"
                   },
                   "gap": null,
                   "after": ""

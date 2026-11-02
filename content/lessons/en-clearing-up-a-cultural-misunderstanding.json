@@ -83,7 +83,7 @@
                   "text": "Have you got a minute? I’m a bit worried about Kenji; he barely looked at me in the meeting.",
                   "translation": {
                     "fr": "Vous avez une minute ? Je suis un peu inquiet pour Kenji ; il m’a à peine regardé pendant la réunion.",
-                    "de": "Hast du kurz Zeit? Ich mache mir etwas Sorgen um Kenji; er hat mich in der Besprechung kaum angesehen."
+                    "de": "Haben Sie kurz Zeit? Ich mache mir etwas Sorgen um Kenji; er hat mich in der Besprechung kaum angesehen."
                   },
                   "note": {
                     "en": "The manager starts with a worry, not an accusation.",
@@ -140,17 +140,17 @@
                 {
                   "lineId": "line-5",
                   "roleId": "manager",
-                  "text": "Oh, I see. I thought he was bored or didn’t like the idea.",
+                  "text": "Oh, I see. I thought he was bored or didn’t like the idea. I didn’t mean to offend you, or him.",
                   "translation": {
-                    "fr": "Ah, je vois. Je pensais qu’il s’ennuyait ou n’aimait pas l’idée.",
-                    "de": "Ach so. Ich dachte, er langweilt sich oder findet die Idee nicht gut."
+                    "fr": "Ah, je vois. Je pensais qu’il s’ennuyait ou n’aimait pas l’idée. Je ne voulais pas vous offenser, ni lui.",
+                    "de": "Ach so. Ich dachte, er langweilt sich oder findet die Idee nicht gut. Ich wollte weder Sie noch ihn beleidigen."
                   },
                   "note": {
-                    "en": "The manager admits what he had assumed.",
-                    "fr": "Le responsable admet ce qu’il avait supposé.",
-                    "de": "Der Vorgesetzte gibt zu, was er angenommen hatte."
+                    "en": "The manager admits what he had assumed, then apologises: it was not on purpose.",
+                    "fr": "Le responsable admet ce qu’il avait supposé, puis s’excuse : ce n’était pas voulu.",
+                    "de": "Der Vorgesetzte gibt zu, was er angenommen hatte, und entschuldigt sich: Es war keine Absicht."
                   },
-                  "expressionIds": []
+                  "expressionIds": ["didnt-mean-offend"]
                 },
                 {
                   "lineId": "line-6",
@@ -170,40 +170,40 @@
                 {
                   "lineId": "line-7",
                   "roleId": "manager",
-                  "text": "I feel bad. I didn’t mean to offend you, or him.",
+                  "text": "So he doesn’t want to speak at all?",
                   "translation": {
-                    "fr": "Je m’en veux. Je ne voulais pas vous offenser, ni lui.",
-                    "de": "Das tut mir leid. Ich wollte weder Sie noch ihn beleidigen."
+                    "fr": "Alors il ne veut pas parler du tout ?",
+                    "de": "Er will also überhaupt nicht sprechen?"
                   },
                   "note": {
-                    "en": "A short apology that says it was not on purpose.",
-                    "fr": "Une courte excuse qui précise que ce n’était pas voulu.",
-                    "de": "Eine kurze Entschuldigung, die klarstellt, dass es keine Absicht war."
+                    "en": "The manager takes her words the wrong way.",
+                    "fr": "Le responsable comprend mal ce qu’elle a dit.",
+                    "de": "Der Vorgesetzte versteht ihre Worte falsch."
                   },
-                  "expressionIds": ["didnt-mean-offend"]
+                  "expressionIds": []
                 },
                 {
                   "lineId": "line-8",
                   "roleId": "colleague",
-                  "text": "It’s fine. What I meant was that he’d prefer to answer in writing first.",
+                  "text": "No, what I meant was that he’d prefer to answer in writing first.",
                   "translation": {
-                    "fr": "Ce n’est pas grave. Ce que je voulais dire, c’est qu’il préférerait d’abord répondre par écrit.",
-                    "de": "Schon gut. Was ich meinte, war, dass er lieber zuerst schriftlich antworten würde."
+                    "fr": "Non, ce que je voulais dire, c’est qu’il préférerait d’abord répondre par écrit.",
+                    "de": "Nein, was ich meinte, war, dass er lieber zuerst schriftlich antworten würde."
                   },
                   "note": {
-                    "en": "Moving on to a practical suggestion.",
-                    "fr": "On passe à une suggestion pratique.",
-                    "de": "Weiter zu einem praktischen Vorschlag."
+                    "en": "She restates her point because he took it the wrong way.",
+                    "fr": "Elle reformule son idée parce qu’il l’a mal comprise.",
+                    "de": "Sie formuliert ihren Gedanken neu, weil er ihn falsch aufgefasst hat."
                   },
                   "expressionIds": ["what-i-meant"]
                 },
                 {
                   "lineId": "line-9",
                   "roleId": "manager",
-                  "text": "That’s a good idea. I’ll send him the questions by email next time.",
+                  "text": "That makes sense. I’ll send him the questions by email next time.",
                   "translation": {
-                    "fr": "Bonne idée. La prochaine fois, je lui enverrai les questions par e-mail.",
-                    "de": "Gute Idee. Beim nächsten Mal schicke ich ihm die Fragen per E-Mail."
+                    "fr": "Je comprends. La prochaine fois, je lui enverrai les questions par e-mail.",
+                    "de": "Das leuchtet ein. Beim nächsten Mal schicke ich ihm die Fragen per E-Mail."
                   },
                   "note": {
                     "en": "The manager changes his own behaviour.",
@@ -821,9 +821,9 @@
               ],
               "answerOptionId": "o3",
               "answerExplanation": {
-                "en": "She says he is not angry and gives the real reason.",
-                "fr": "Elle dit qu’il n’est pas fâché et donne la vraie raison.",
-                "de": "Sie sagt, dass er nicht verärgert ist, und nennt den wahren Grund."
+                "en": "He says the guest is not angry and gives the real reason.",
+                "fr": "Il dit que l’invité n’est pas fâché et donne la vraie raison.",
+                "de": "Er sagt, dass der Gast nicht verärgert ist, und nennt den wahren Grund."
               }
             }
           ]
@@ -1191,7 +1191,13 @@
                   "gap": {
                     "gapId": "gap-2",
                     "expressionId": "wasnt-rude",
-                    "accepted": { "answers": ["He wasn’t being rude, he was just"] },
+                    "accepted": {
+                      "answers": [
+                        "he wasn’t being rude, he was just",
+                        "he was not being rude, he was just",
+                        "He wasn’t being rude, he was just"
+                      ]
+                    },
                     "answerExplanation": {
                       "en": "She defends Ravi and gives the real reason for his behaviour.",
                       "fr": "Elle défend Ravi et donne la vraie raison de son comportement.",
@@ -1238,7 +1244,7 @@
                   "roleId": "colleague",
                   "before": "Sorry for laughing earlier.",
                   "translation": {
-                    "fr": "Désolé d’avoir ri tout à l’heure. Je ne voulais pas vous offenser du tout.",
+                    "fr": "Désolée d’avoir ri tout à l’heure. Je ne voulais pas vous offenser du tout.",
                     "de": "Entschuldigung, dass ich vorhin gelacht habe. Ich wollte Sie überhaupt nicht beleidigen."
                   },
                   "gap": {

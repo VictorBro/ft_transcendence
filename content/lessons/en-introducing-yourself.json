@@ -230,7 +230,7 @@
                   "answerExplanation": {
                     "en": "Says your country or city: I'm from + place.",
                     "fr": "Pour dire son pays ou sa ville : I'm from + lieu.",
-                    "de": "Nennt Ihr Land oder Ihre Stadt: I'm from + Ort."
+                    "de": "Nennt dein Land oder deine Stadt: I'm from + Ort."
                   }
                 },
                 {
@@ -286,7 +286,7 @@
               "context": { "roleId": "tom", "text": "Hello!" },
               "roleId": "ana",
               "before": "",
-              "after": "Maria.",
+              "after": "Ana.",
               "choiceExpressionIds": ["hi-im", "im-from", "where-are-you-from", "nice-to-meet-you"],
               "answerExplanation": {
                 "en": "She says her name: Hi, I'm + name.",
@@ -876,7 +876,16 @@
                   "gap": {
                     "gapId": "gap-1",
                     "expressionId": "hi-im",
-                    "accepted": { "answers": ["Hi, I'm", "Hello, I'm"] },
+                    "accepted": {
+                      "answers": [
+                        "Hi, I'm",
+                        "Hello, I'm",
+                        "Hi! I'm",
+                        "Hello! I'm",
+                        "Hi, I am",
+                        "Hello, I am"
+                      ]
+                    },
                     "answerExplanation": {
                       "en": "She says her name: Hi, I'm + name.",
                       "fr": "Elle dit son prénom : Hi, I'm + prénom.",
@@ -904,7 +913,14 @@
                   "gap": {
                     "gapId": "gap-3",
                     "expressionId": "whats-your-name",
-                    "accepted": { "answers": ["What's your name?"] },
+                    "accepted": {
+                      "answers": [
+                        "What's your name?",
+                        "What's your name",
+                        "What is your name?",
+                        "What is your name"
+                      ]
+                    },
                     "answerExplanation": {
                       "en": "She asks for his name: What's your name?",
                       "fr": "Elle demande son prénom : What's your name ?",
@@ -924,7 +940,7 @@
                   "gap": {
                     "gapId": "gap-4",
                     "expressionId": "where-are-you-from",
-                    "accepted": { "answers": ["Where are you from?"] },
+                    "accepted": { "answers": ["Where are you from?", "Where are you from"] },
                     "answerExplanation": {
                       "en": "He asks about her country: Where are you from?",
                       "fr": "Il demande son pays : Where are you from ?",
@@ -944,7 +960,7 @@
                   "gap": {
                     "gapId": "gap-5",
                     "expressionId": "im-from",
-                    "accepted": { "answers": ["I'm from"] },
+                    "accepted": { "answers": ["I'm from", "I am from"] },
                     "answerExplanation": {
                       "en": "She names her country: I'm from + country.",
                       "fr": "Elle nomme son pays : I'm from + pays.",

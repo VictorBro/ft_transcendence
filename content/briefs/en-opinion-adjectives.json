@@ -57,9 +57,9 @@
       },
       "targetIds": ["awful", "terrible", "horrible", "disgusting", "strange", "boring"],
       "introduction": {
-        "en": "Use these adjectives when you **do not like** something, or when it is odd:\n\n- `awful`\n- `terrible`\n- `horrible`\n- `disgusting`\n- `strange`\n- `boring`\n\n`Awful`, `terrible` and `horrible` are all very bad. `Disgusting` is for food or smells. `Strange` means unusual.",
-        "fr": "Utilisez ces adjectifs quand vous **n'aimez pas** quelque chose, ou quand c'est bizarre :\n\n- `awful`\n- `terrible`\n- `horrible`\n- `disgusting`\n- `strange`\n- `boring`\n\n`Awful`, `terrible` et `horrible` veulent tous dire très mauvais. `Disgusting` s'emploie pour la nourriture ou les odeurs. `Strange` veut dire inhabituel.",
-        "de": "Benutze diese Adjektive, wenn dir etwas **nicht gefällt** oder wenn es komisch ist:\n\n- `awful`\n- `terrible`\n- `horrible`\n- `disgusting`\n- `strange`\n- `boring`\n\n`Awful`, `terrible` und `horrible` bedeuten alle sehr schlecht. `Disgusting` sagst du bei Essen oder Gerüchen. `Strange` bedeutet ungewöhnlich."
+        "en": "Use these adjectives when you **do not like** something, or when it is odd:\n\n- `awful`\n- `terrible`\n- `horrible`\n- `disgusting`\n- `strange`\n- `boring`\n\n`Awful`, `terrible` and `horrible` are all very bad. `Disgusting` is for things that make you feel sick, like bad food, smells or dirty places. `Strange` means unusual.",
+        "fr": "Utilisez ces adjectifs quand vous **n'aimez pas** quelque chose, ou quand c'est bizarre :\n\n- `awful`\n- `terrible`\n- `horrible`\n- `disgusting`\n- `strange`\n- `boring`\n\n`Awful`, `terrible` et `horrible` veulent tous dire très mauvais. `Disgusting` s'emploie pour ce qui donne envie de vomir : une nourriture avariée, une odeur, un endroit sale. `Strange` veut dire inhabituel.",
+        "de": "Benutze diese Adjektive, wenn dir etwas **nicht gefällt** oder wenn es komisch ist:\n\n- `awful`\n- `terrible`\n- `horrible`\n- `disgusting`\n- `strange`\n- `boring`\n\n`Awful`, `terrible` und `horrible` bedeuten alle sehr schlecht. `Disgusting` sagst du bei Dingen, bei denen dir übel wird: schlechtes Essen, Gerüche oder schmutzige Orte. `Strange` bedeutet ungewöhnlich."
       }
     }
   ],

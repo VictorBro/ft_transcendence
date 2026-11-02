@@ -429,8 +429,8 @@
               "choiceExpressionIds": [
                 "all-went-wrong",
                 "little-did-i-know",
-                "cut-long-story-short",
-                "never-believe"
+                "so-there-i-was",
+                "getting-ahead"
               ],
               "answerExplanation": {
                 "en": "It announces the turning point where things fail.",
@@ -527,8 +527,8 @@
               "after": ": the dog answered the door!",
               "choiceExpressionIds": [
                 "never-believe",
-                "cut-long-story-short",
-                "all-went-wrong",
+                "so-there-i-was",
+                "getting-ahead",
                 "little-did-i-know"
               ],
               "answerExplanation": {

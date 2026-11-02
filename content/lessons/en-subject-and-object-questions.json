@@ -783,7 +783,7 @@
               "type": "grammar_gap_typing",
               "itemId": "exam-subject-2",
               "before": "Who",
-              "after": "the Spanish class on Fridays?",
+              "after": "the Spanish class on Fridays this year? (teach)",
               "accepted": { "answers": ["teaches"] },
               "hint": null,
               "ruleIds": ["rule-verb-form"],
@@ -797,7 +797,7 @@
               "type": "grammar_gap_typing",
               "itemId": "exam-subject-3",
               "before": "Which runner",
-              "after": "the race last year?",
+              "after": "the race last year? (win)",
               "accepted": { "answers": ["won"] },
               "hint": null,
               "ruleIds": ["rule-verb-form"],
@@ -837,7 +837,7 @@
               "type": "grammar_gap_typing",
               "itemId": "exam-object-2",
               "before": "What",
-              "after": "you usually eat for breakfast?",
+              "after": "you usually eat for breakfast these days?",
               "accepted": { "answers": ["do"] },
               "hint": null,
               "ruleIds": ["rule-object-aux"],
@@ -851,7 +851,7 @@
               "type": "grammar_gap_typing",
               "itemId": "exam-object-3",
               "before": "Which song",
-              "after": "your cousin like best?",
+              "after": "your cousin like best at the moment?",
               "accepted": { "answers": ["does"] },
               "hint": null,
               "ruleIds": ["rule-object-aux"],
@@ -924,7 +924,10 @@
                 { "tokenId": "t-7", "text": "Lena" },
                 { "tokenId": "t-8", "text": "did" }
               ],
-              "acceptedOrders": [["t-3", "t-8", "t-7", "t-4", "t-1", "t-6", "t-2", "t-5"]],
+              "acceptedOrders": [
+                ["t-3", "t-8", "t-7", "t-4", "t-1", "t-6", "t-2", "t-5"],
+                ["t-3", "t-8", "t-6", "t-2", "t-4", "t-1", "t-7", "t-5"]
+              ],
               "ruleIds": ["rule-object-aux"],
               "answerExplanation": {
                 "en": "What is the thing Lena bought, so it is the object: What + did + Lena + base verb.",

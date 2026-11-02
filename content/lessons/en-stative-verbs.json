@@ -544,9 +544,9 @@
                 "de": "Think und have auf zwei Arten"
               },
               "text": {
-                "en": "Two verbs have **two meanings**. Check which one you want.\n\n- `think`: an opinion is simple (`I think she is right.`); the process of thinking is continuous (`I'm thinking about the answer.`).\n- `have`: owning is simple (`I have a sister.`); activities such as eating, meeting or showering can be continuous (`We're having lunch.`).\n\nWe do not say `I'm having a car.` or `I'm thinking he's late.` To ask for an opinion, use the simple form: `What do you think of it?`",
-                "fr": "Deux verbes ont **deux sens**. Vérifiez lequel vous voulez dire.\n\n- `think` : l’opinion se met au présent simple (`I think she is right.`) ; le fait de réfléchir se met au présent continu (`I'm thinking about the answer.`).\n- `have` : la possession se met au présent simple (`I have a sister.`) ; les activités comme manger, avoir une réunion ou prendre une douche peuvent être au continu (`We're having lunch.`).\n\nOn ne dit pas `I'm having a car.` ni `I'm thinking he's late.` Pour demander un avis, utilisez le présent simple : `What do you think of it?`",
-                "de": "Zwei Verben haben **zwei Bedeutungen**. Prüfe, welche du meinst.\n\n- `think`: Eine Meinung steht in der einfachen Form (`I think she is right.`); das Nachdenken steht in der Verlaufsform (`I'm thinking about the answer.`).\n- `have`: Besitz steht in der einfachen Form (`I have a sister.`); Tätigkeiten wie essen, ein Treffen haben oder duschen können in der Verlaufsform stehen (`We're having lunch.`).\n\nMan sagt nicht `I'm having a car.` und nicht `I'm thinking he's late.` Für die Frage nach einer Meinung nimmt man die einfache Form: `What do you think of it?`"
+                "en": "These two verbs have **two meanings**. Check which one you want.\n\n- `think`: an opinion is simple (`I think she is right.`); the process of thinking can be continuous (`I'm thinking about the answer.`).\n- `have`: owning is simple (`I have a sister.`); activities such as eating, meeting or showering can be continuous (`We're having lunch.`).\n\nWe do not say `I'm having a car.` or `I'm thinking he's late.` To ask for an opinion, use the simple form: `What do you think of it?`",
+                "fr": "Ces deux verbes ont **deux sens**. Vérifiez lequel vous voulez dire.\n\n- `think` : l’opinion se met au présent simple (`I think she is right.`) ; le fait de réfléchir peut se mettre au présent continu (`I'm thinking about the answer.`).\n- `have` : la possession se met au présent simple (`I have a sister.`) ; les activités comme manger, avoir une réunion ou prendre une douche peuvent être au continu (`We're having lunch.`).\n\nOn ne dit pas `I'm having a car.` ni `I'm thinking he's late.` Pour demander un avis, utilisez le présent simple : `What do you think of it?`",
+                "de": "Diese zwei Verben haben **zwei Bedeutungen**. Prüfe, welche du meinst.\n\n- `think`: Eine Meinung steht in der einfachen Form (`I think she is right.`); das Nachdenken kann in der Verlaufsform stehen (`I'm thinking about the answer.`).\n- `have`: Besitz steht in der einfachen Form (`I have a sister.`); Tätigkeiten wie essen, ein Treffen haben oder duschen können in der Verlaufsform stehen (`We're having lunch.`).\n\nMan sagt nicht `I'm having a car.` und nicht `I'm thinking he's late.` Für die Frage nach einer Meinung nimmt man die einfache Form: `What do you think of it?`"
               },
               "formTable": [
                 { "subject": "opinion", "form": "think", "example": "I think this song is great." },
@@ -1005,7 +1005,7 @@
               "type": "grammar_gap_typing",
               "itemId": "exam-stative-1",
               "before": "My parents",
-              "after": "a house near the sea.",
+              "after": "a house near the sea. (own)",
               "accepted": { "answers": ["own"] },
               "hint": null,
               "ruleIds": ["rule-state-simple"],
@@ -1019,7 +1019,7 @@
               "type": "grammar_gap_typing",
               "itemId": "exam-stative-2",
               "before": "Maria",
-              "after": "spicy food, so she never orders curry.",
+              "after": "spicy food, so she never orders curry. (hate)",
               "accepted": { "answers": ["hates"] },
               "hint": null,
               "ruleIds": ["rule-state-simple"],
@@ -1144,7 +1144,7 @@
               "type": "grammar_gap_typing",
               "itemId": "exam-think-have-1",
               "before": "Don't call me now. I",
-              "after": "dinner with my family.",
+              "after": "dinner with my family. (have)",
               "accepted": { "answers": ["am having"] },
               "hint": null,
               "ruleIds": ["rule-have-meaning"],
@@ -1173,13 +1173,13 @@
               "itemId": "exam-think-have-3",
               "before": "Mia",
               "after": "about moving to another city, but she hasn't decided yet.",
-              "accepted": { "answers": ["is thinking"] },
+              "accepted": { "answers": ["is thinking", "has been thinking"] },
               "hint": null,
               "ruleIds": ["rule-think-meaning"],
               "answerExplanation": {
-                "en": "Think about is a process still going on, so the continuous is right: is thinking.",
-                "fr": "Think about est un processus en cours, donc le continu convient : is thinking.",
-                "de": "Think about ist ein noch laufender Prozess, also passt die Verlaufsform: is thinking."
+                "en": "Think about is a process still going on, so the continuous is right: is thinking (or has been thinking).",
+                "fr": "Think about est un processus en cours, donc le continu convient : is thinking (ou has been thinking).",
+                "de": "Think about ist ein noch laufender Prozess, also passt die Verlaufsform: is thinking (oder has been thinking)."
               }
             }
           ]

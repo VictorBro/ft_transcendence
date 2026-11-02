@@ -224,8 +224,8 @@
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "When he heard the price, he was so surprised that he had to ",
-        "after": " before he could speak.",
+        "before": "You might ",
+        "after": " when you hear something surprising.",
         "accepted": { "answers": ["raise your eyebrows"] },
         "referenceTargetIds": ["raise-eyebrows", "nod", "fold-arms", "eye-contact"],
         "explanation": {

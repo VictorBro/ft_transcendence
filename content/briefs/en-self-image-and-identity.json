@@ -307,7 +307,7 @@
       "genders": [],
       "number": "singular",
       "teachingForm": "impostor syndrome",
-      "examForms": ["impostor syndrome"],
+      "examForms": ["impostor syndrome", "imposter syndrome"],
       "articleException": null,
       "genderVariants": [],
       "pronunciation": "/ɪmˈpɒstə ˈsɪndrəʊm/",
@@ -331,7 +331,7 @@
       "gap": {
         "before": "Despite her promotion, she suffered from ",
         "after": ", convinced she had fooled everyone into thinking she was competent.",
-        "accepted": { "answers": ["impostor syndrome"] },
+        "accepted": { "answers": ["impostor syndrome", "imposter syndrome"] },
         "referenceTargetIds": ["impostor-syndrome", "self-awareness", "belonging", "comfort-zone"],
         "explanation": {
           "en": "Impostor syndrome fits: she feels she has fooled everyone.",

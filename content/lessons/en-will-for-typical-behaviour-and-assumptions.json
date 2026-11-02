@@ -166,7 +166,7 @@
             {
               "type": "grammar_gap_choice",
               "itemId": "ex-habit-choice-3",
-              "before": "Don't phone Ben yet. He",
+              "before": "Don't phone Ben at work. He",
               "after": "have left the office by now.",
               "choices": [
                 { "choiceId": "c-1", "text": "is" },
@@ -232,7 +232,7 @@
               "itemId": "ex-habit-typing-1",
               "before": "Teenagers",
               "after": "sleep until noon if you let them.",
-              "accepted": { "answers": ["will"] },
+              "accepted": { "answers": ["will", "tend to"] },
               "hint": {
                 "en": "typical behaviour",
                 "fr": "comportement typique",
@@ -250,7 +250,7 @@
               "itemId": "ex-habit-typing-2",
               "before": "It's nearly midnight, so the children",
               "after": "asleep by now.",
-              "accepted": { "answers": ["will be"] },
+              "accepted": { "answers": ["will be", "must be"] },
               "hint": {
                 "en": "confident guess about now",
                 "fr": "supposition sûre sur le présent",
@@ -266,7 +266,7 @@
             {
               "type": "grammar_gap_typing",
               "itemId": "ex-habit-typing-3",
-              "before": "Every evening my uncle",
+              "before": "These days, every evening my uncle",
               "after": "by the window and watch the street for hours.",
               "accepted": { "answers": ["will sit"] },
               "hint": {
@@ -286,7 +286,7 @@
               "itemId": "ex-habit-typing-4",
               "before": "Don't worry about the keys. Sam",
               "after": "locked up before leaving.",
-              "accepted": { "answers": ["will have"] },
+              "accepted": { "answers": ["will have", "must have"] },
               "hint": {
                 "en": "confident guess about the past",
                 "fr": "supposition sûre sur le passé",
@@ -782,7 +782,7 @@
               "itemId": "ex-annoy-typing-2",
               "before": "As a child, I",
               "after": "hide under the table whenever visitors arrived.",
-              "accepted": { "answers": ["would"] },
+              "accepted": { "answers": ["would", "used to"] },
               "hint": {
                 "en": "past habit",
                 "fr": "habitude passée",
@@ -818,7 +818,7 @@
               "itemId": "ex-annoy-typing-4",
               "before": "In those days our teacher",
               "after": "make us stand up whenever she came in.",
-              "accepted": { "answers": ["would"] },
+              "accepted": { "answers": ["would", "used to"] },
               "hint": {
                 "en": "past habit",
                 "fr": "habitude passée",
@@ -875,7 +875,7 @@
               "itemId": "exam-habit-1",
               "before": "Grandfather",
               "after": "fall asleep in his armchair whenever the news starts.",
-              "accepted": { "answers": ["will"] },
+              "accepted": { "answers": ["will", "tends to"] },
               "hint": null,
               "ruleIds": ["rule-typical-habit"],
               "answerExplanation": {
@@ -887,29 +887,29 @@
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-habit-2",
-              "before": "The lights are on, so someone",
+              "before": "The lights are on and the car is outside, so someone",
               "after": "home.",
-              "accepted": { "answers": ["will be"] },
+              "accepted": { "answers": ["will be", "must be", "should be", "is"] },
               "hint": null,
               "ruleIds": ["rule-confident-guess"],
               "answerExplanation": {
-                "en": "A confident guess about now uses will + be.",
-                "fr": "Une supposition sûre sur le présent se fait avec will + be.",
-                "de": "Eine sichere Vermutung über die Gegenwart steht mit will + be."
+                "en": "A confident guess about now uses will + be. Must be and is are also correct here.",
+                "fr": "Une supposition sûre sur le présent se fait avec will + be. Must be et is sont aussi corrects ici.",
+                "de": "Eine sichere Vermutung über die Gegenwart steht mit will + be. Must be und is sind hier auch richtig."
               }
             },
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-habit-3",
-              "before": "I can't find the file, but Maria",
+              "before": "Don't worry about the file: Maria backs everything up, so she",
               "after": "saved it on the shared drive.",
-              "accepted": { "answers": ["will have"] },
+              "accepted": { "answers": ["will have", "must have", "should have"] },
               "hint": null,
               "ruleIds": ["rule-confident-guess"],
               "answerExplanation": {
-                "en": "A confident guess about an earlier time uses will have + past participle.",
-                "fr": "Une supposition sûre sur un moment antérieur se fait avec will have + participe passé.",
-                "de": "Eine sichere Vermutung über früher steht mit will have + Partizip Perfekt."
+                "en": "A confident guess about an earlier time uses will have + past participle. Must have is also correct here.",
+                "fr": "Une supposition sûre sur un moment antérieur se fait avec will have + participe passé. Must have est aussi correct ici.",
+                "de": "Eine sichere Vermutung über früher steht mit will have + Partizip Perfekt. Must have ist hier auch richtig."
               }
             },
             {
@@ -942,7 +942,7 @@
               "type": "grammar_gap_typing",
               "itemId": "exam-annoy-1",
               "before": "I've told you twice, but you",
-              "after": "leave the door open.",
+              "after": "always leave the door open.",
               "accepted": { "answers": ["will", "WILL"] },
               "hint": null,
               "ruleIds": ["rule-annoying-habit"],
@@ -957,7 +957,7 @@
               "itemId": "exam-annoy-2",
               "before": "When we shared a flat, Tom",
               "after": "play the drums at midnight.",
-              "accepted": { "answers": ["would", "WOULD"] },
+              "accepted": { "answers": ["would", "WOULD", "used to"] },
               "hint": null,
               "ruleIds": ["rule-annoying-habit"],
               "answerExplanation": {
@@ -970,7 +970,7 @@
               "type": "grammar_gap_typing",
               "itemId": "exam-annoy-3",
               "before": "She's a lovely person, but she",
-              "after": "talk over everyone at dinner.",
+              "after": "always talk over everyone at dinner.",
               "accepted": { "answers": ["will", "WILL"] },
               "hint": null,
               "ruleIds": ["rule-annoying-habit"],

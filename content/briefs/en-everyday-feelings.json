@@ -109,7 +109,7 @@
     {
       "id": "sleepy",
       "term": "sleepy",
-      "translations": { "fr": ["somnolent"], "de": ["schläfrig"] },
+      "translations": { "fr": ["qui a sommeil"], "de": ["schläfrig"] },
       "wordClass": "adjective",
       "genders": [],
       "number": null,
@@ -148,7 +148,7 @@
     {
       "id": "hungry",
       "term": "hungry",
-      "translations": { "fr": ["affamé"], "de": ["hungrig"] },
+      "translations": { "fr": ["qui a faim"], "de": ["hungrig"] },
       "wordClass": "adjective",
       "genders": [],
       "number": null,
@@ -187,7 +187,7 @@
     {
       "id": "thirsty",
       "term": "thirsty",
-      "translations": { "fr": ["assoiffé"], "de": ["durstig"] },
+      "translations": { "fr": ["qui a soif"], "de": ["durstig"] },
       "wordClass": "adjective",
       "genders": [],
       "number": null,
@@ -248,8 +248,8 @@
       },
       "ambiguityNote": {
         "en": "In English you say I'm cold, not I have cold.",
-        "fr": "En anglais on dit I'm cold (je suis froid), pas I have cold.",
-        "de": "Im Englischen sagt man I'm cold (ich bin kalt), nicht I have cold."
+        "fr": "En anglais on dit I'm cold (j'ai froid), pas I have cold.",
+        "de": "Im Englischen sagt man I'm cold (mir ist kalt), nicht I have cold."
       },
       "explanation": {
         "en": "Cold describes how your body feels: I'm cold.",
@@ -356,7 +356,7 @@
     {
       "id": "bored",
       "term": "bored",
-      "translations": { "fr": ["ennuyé"], "de": ["gelangweilt"] },
+      "translations": { "fr": ["qui s'ennuie"], "de": ["gelangweilt"] },
       "wordClass": "adjective",
       "genders": [],
       "number": null,

@@ -926,7 +926,10 @@
                 { "tokenId": "t-5", "text": "Ben" },
                 { "tokenId": "t-6", "text": "and" }
               ],
-              "acceptedOrders": [["t-5", "t-6", "t-2", "t-3", "t-1", "t-4"]],
+              "acceptedOrders": [
+                ["t-5", "t-6", "t-2", "t-3", "t-1", "t-4"],
+                ["t-2", "t-6", "t-5", "t-3", "t-1", "t-4"]
+              ],
               "ruleIds": ["r-are-not"],
               "answerExplanation": {
                 "en": "Two people take aren't: Ben and Tom aren't busy.",

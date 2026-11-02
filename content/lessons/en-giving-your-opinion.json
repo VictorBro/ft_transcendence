@@ -975,7 +975,10 @@
                 { "tokenId": "t7", "text": "am" }
               ],
               "distractorTokenIds": ["t7"],
-              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "acceptedOrders": [
+                ["t1", "t2", "t3", "t4", "t5", "t6"],
+                ["t4", "t5", "t6", "t1", "t2", "t3"]
+              ],
               "answerExplanation": {
                 "en": "Agree is a verb: I agree, never I am agree.",
                 "fr": "Agree est un verbe : I agree, jamais I am agree.",
@@ -998,7 +1001,10 @@
                 { "tokenId": "t7", "text": "not" }
               ],
               "distractorTokenIds": ["t7"],
-              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "acceptedOrders": [
+                ["t1", "t2", "t3", "t4", "t5", "t6"],
+                ["t4", "t5", "t6", "t1", "t2", "t3"]
+              ],
               "answerExplanation": {
                 "en": "The negative is I don't agree, not I not agree.",
                 "fr": "La négation est I don't agree, pas I not agree.",
@@ -1063,7 +1069,7 @@
                   "gap": {
                     "gapId": "gap-3",
                     "expressionId": "i-thought-it-was",
-                    "accepted": { "answers": ["I thought it was"] },
+                    "accepted": { "answers": ["I thought it was", "I found it"] },
                     "answerExplanation": {
                       "en": "Lily gives her opinion: I thought it was + adjective.",
                       "fr": "Lily donne son avis : I thought it was + adjectif.",
@@ -1083,7 +1089,7 @@
                   "gap": {
                     "gapId": "gap-4",
                     "expressionId": "really",
-                    "accepted": { "answers": ["Really?", "Really"] },
+                    "accepted": { "answers": ["Really?", "Really ?", "Really"] },
                     "answerExplanation": {
                       "en": "Sam is surprised, because his opinion is different.",
                       "fr": "Sam est surpris, parce que son avis est différent.",

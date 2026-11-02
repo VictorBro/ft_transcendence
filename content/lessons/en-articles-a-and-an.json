@@ -209,9 +209,9 @@
           "estimatedDurationS": 60,
           "timeLimitS": null,
           "instructions": {
-            "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
-            "de": "Schreib die fehlenden Wörter."
+            "en": "Type a or an.",
+            "fr": "Écrivez a ou an.",
+            "de": "Schreib a oder an."
           },
           "items": [
             {
@@ -285,9 +285,9 @@
           "estimatedDurationS": 60,
           "timeLimitS": null,
           "instructions": {
-            "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
-            "de": "Finde das falsche Wort und korrigiere es."
+            "en": "Find the wrong word and correct it with a or an.",
+            "fr": "Trouvez le mot faux et corrigez-le avec a ou an.",
+            "de": "Finde das falsche Wort und korrigiere es mit a oder an."
           },
           "items": [
             {
@@ -323,7 +323,7 @@
               "correction": {
                 "mode": "select",
                 "accepted": { "answers": ["an"] },
-                "choices": ["an", "a", "the"]
+                "choices": ["an", "a", "two"]
               },
               "ruleIds": ["r-an"],
               "answerExplanation": {
@@ -396,10 +396,10 @@
                   "translation": { "fr": "J'attends une heure.", "de": "Ich warte eine Stunde." }
                 },
                 {
-                  "text": "She goes to a university.",
+                  "text": "She wears a uniform.",
                   "translation": {
-                    "fr": "Elle va à l'université.",
-                    "de": "Sie geht zur Universität."
+                    "fr": "Elle porte un uniforme.",
+                    "de": "Sie trägt eine Uniform."
                   }
                 },
                 {
@@ -535,9 +535,9 @@
           "estimatedDurationS": 60,
           "timeLimitS": null,
           "instructions": {
-            "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
-            "de": "Schreib die fehlenden Wörter."
+            "en": "Type a or an.",
+            "fr": "Écrivez a ou an.",
+            "de": "Schreib a oder an."
           },
           "items": [
             {
@@ -694,9 +694,9 @@
           "estimatedDurationS": 60,
           "timeLimitS": null,
           "instructions": {
-            "en": "Find the wrong word and correct it.",
-            "fr": "Trouvez le mot faux et corrigez-le.",
-            "de": "Finde das falsche Wort und korrigiere es."
+            "en": "Find the wrong word and correct it with a or an.",
+            "fr": "Trouvez le mot faux et corrigez-le avec a ou an.",
+            "de": "Finde das falsche Wort und korrigiere es mit a oder an."
           },
           "items": [
             {
@@ -754,7 +754,7 @@
               "correction": {
                 "mode": "select",
                 "accepted": { "answers": ["a"] },
-                "choices": ["a", "an", "the"]
+                "choices": ["a", "an", "two"]
               },
               "ruleIds": ["r-job"],
               "answerExplanation": {
@@ -797,9 +797,9 @@
           "estimatedDurationS": 80,
           "timeLimitS": 140,
           "instructions": {
-            "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
-            "de": "Schreib die fehlenden Wörter."
+            "en": "Type a or an.",
+            "fr": "Écrivez a ou an.",
+            "de": "Schreib a oder an."
           },
           "items": [
             {
@@ -865,9 +865,9 @@
           "estimatedDurationS": 60,
           "timeLimitS": 100,
           "instructions": {
-            "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
-            "de": "Schreib die fehlenden Wörter."
+            "en": "Type a or an.",
+            "fr": "Écrivez a ou an.",
+            "de": "Schreib a oder an."
           },
           "items": [
             {

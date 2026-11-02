@@ -54,9 +54,9 @@
                 "de": "Pronomen für eine Person oder Sache"
               },
               "text": {
-                "en": "A **subject pronoun** replaces a name or a noun and comes before the verb. For one person or thing we use `I`, `you`, `he`, `she` and `it`.\n\n- `I` is the person who speaks. It is always a capital letter.\n- `you` is the person you talk to.\n- `he` is a man or a boy: `Tom` → `he`.\n- `she` is a woman or a girl: `Anna` → `she`.\n- `it` is a thing or an animal: `the book` → `it`, `the cat` → `it`.\n\nEvery English sentence needs a subject: say `She can swim.`, not `Can swim.`",
-                "fr": "Un **pronom sujet** remplace un nom ou un prénom et se place avant le verbe. Pour une seule personne ou chose, on utilise `I`, `you`, `he`, `she` et `it`.\n\n- `I` est la personne qui parle. On l’écrit toujours avec une majuscule.\n- `you` est la personne à qui vous parlez.\n- `he` désigne un homme ou un garçon : `Tom` → `he`.\n- `she` désigne une femme ou une fille : `Anna` → `she`.\n- `it` désigne une chose ou un animal : `the book` → `it`, `the cat` → `it`.\n\nChaque phrase anglaise a besoin d’un sujet : dites `She can swim.`, pas `Can swim.`",
-                "de": "Ein **Subjektpronomen** ersetzt einen Namen oder ein Nomen und steht vor dem Verb. Für eine Person oder Sache benutzt man `I`, `you`, `he`, `she` und `it`.\n\n- `I` ist die Person, die spricht. Es wird immer großgeschrieben.\n- `you` ist die Person, mit der du sprichst.\n- `he` steht für einen Mann oder Jungen: `Tom` → `he`.\n- `she` steht für eine Frau oder ein Mädchen: `Anna` → `she`.\n- `it` steht für eine Sache oder ein Tier: `the book` → `it`, `the cat` → `it`.\n\nJeder englische Satz braucht ein Subjekt: Sag `She can swim.`, nicht `Can swim.`"
+                "en": "A **subject pronoun** replaces a name or a noun and comes before the verb. For one person or thing we use `I`, `you`, `he`, `she` and `it`.\n\n- `I` is the person who speaks. It is always a capital letter.\n- `you` is the person you talk to.\n- `he` is a man or a boy: `Tom` → `he`.\n- `she` is a woman or a girl: `Anna` → `she`.\n- `it` is a thing or an animal: `the book` → `it`, `the cat` → `it`.\n\nAn English statement always needs a subject: say `She can swim.`, not `Can swim.`",
+                "fr": "Un **pronom sujet** remplace un nom ou un prénom et se place avant le verbe. Pour une seule personne ou chose, on utilise `I`, `you`, `he`, `she` et `it`.\n\n- `I` est la personne qui parle. On l’écrit toujours avec une majuscule.\n- `you` est la personne à qui vous parlez.\n- `he` désigne un homme ou un garçon : `Tom` → `he`.\n- `she` désigne une femme ou une fille : `Anna` → `she`.\n- `it` désigne une chose ou un animal : `the book` → `it`, `the cat` → `it`.\n\nEn anglais, une phrase déclarative a toujours besoin d’un sujet : dites `She can swim.`, pas `Can swim.`",
+                "de": "Ein **Subjektpronomen** ersetzt einen Namen oder ein Nomen und steht vor dem Verb. Für eine Person oder Sache benutzt man `I`, `you`, `he`, `she` und `it`.\n\n- `I` ist die Person, die spricht. Es wird immer großgeschrieben.\n- `you` ist die Person, mit der du sprichst.\n- `he` steht für einen Mann oder Jungen: `Tom` → `he`.\n- `she` steht für eine Frau oder ein Mädchen: `Anna` → `she`.\n- `it` steht für eine Sache oder ein Tier: `the book` → `it`, `the cat` → `it`.\n\nEin englischer Aussagesatz braucht immer ein Subjekt: Sag `She can swim.`, nicht `Can swim.`"
               },
               "formTable": [
                 { "subject": "the speaker", "form": "I", "example": "I can cook." },
@@ -789,9 +789,9 @@
               },
               "ruleIds": ["rule-we"],
               "answerExplanation": {
-                "en": "You talk to Anna and Tom, so you say you. It is also plural.",
-                "fr": "On parle à Anna et Tom, donc on dit you. Il est aussi pluriel.",
-                "de": "Du sprichst mit Anna und Tom, also sagst du you. Es ist auch Plural."
+                "en": "You talk to Anna and Tom, so you say you. You is also plural.",
+                "fr": "On parle à Anna et Tom, donc on dit you. You est aussi pluriel.",
+                "de": "Du sprichst mit Anna und Tom, also sagst du you. You ist auch Plural."
               }
             }
           ]
@@ -1085,7 +1085,7 @@
               "type": "grammar_gap_typing",
               "itemId": "exam-gaps-1",
               "before": "Anna, can",
-              "after": "open the window, please?",
+              "after": "open the window for me, please?",
               "accepted": { "answers": ["you"] },
               "hint": null,
               "ruleIds": ["rule-i-you"],
@@ -1099,7 +1099,7 @@
               "type": "grammar_gap_typing",
               "itemId": "exam-gaps-2",
               "before": "Ben and I play tennis on Friday.",
-              "after": "love it.",
+              "after": "both love it.",
               "accepted": { "answers": ["We"] },
               "hint": null,
               "ruleIds": ["rule-we"],
@@ -1127,7 +1127,7 @@
               "type": "grammar_gap_typing",
               "itemId": "exam-gaps-4",
               "before": "I have a new phone.",
-              "after": "can take good photos.",
+              "after": "has a very good camera.",
               "accepted": { "answers": ["It"] },
               "hint": null,
               "ruleIds": ["rule-it"],

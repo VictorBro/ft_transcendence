@@ -59,7 +59,7 @@
       "explanation": {
         "en": "Says your country or city: I'm from + place.",
         "fr": "Pour dire son pays ou sa ville : I'm from + lieu.",
-        "de": "Nennt Ihr Land oder Ihre Stadt: I'm from + Ort."
+        "de": "Nennt dein Land oder deine Stadt: I'm from + Ort."
       },
       "example": {
         "text": "I'm from Brazil.",

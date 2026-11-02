@@ -49,8 +49,8 @@
       "title": "Roald Dahl",
       "meta": ["A short biography"],
       "paragraphs": [
-        "Roald Dahl was born in Cardiff, Wales, in 1916. As a boy, he loved sweets and stories. In 1934 he moved to Africa for his job.",
-        "Later he became a pilot. After the war he started to write books for children. He is known for Charlie and the Chocolate Factory and Matilda. He died in 1990."
+        "Roald Dahl was born in Cardiff, Wales, in 1916. As a boy, he loved sweets and stories. In 1938 he moved to Africa for his job.",
+        "Later he became a pilot in the war. After that, he started to write books for children. He is known for Charlie and the Chocolate Factory and Matilda. He died in 1990."
       ],
       "highlights": []
     }
@@ -291,7 +291,7 @@
       "pages": [
         {
           "pageId": "exam",
-          "estimatedDurationS": 141,
+          "estimatedDurationS": 142,
           "timeLimitS": 215,
           "instructions": {
             "en": "Read the new document and answer the questions. No help this time.",
@@ -326,12 +326,12 @@
             {
               "type": "reading_true_false",
               "itemId": "x-africa",
-              "statement": "Roald Dahl moved to Africa in 1934.",
+              "statement": "Roald Dahl moved to Africa in 1938.",
               "answer": "true",
               "answerExplanation": {
-                "en": "True: In 1934 he moved to Africa for his job.",
-                "fr": "Vrai : In 1934 he moved to Africa for his job.",
-                "de": "Richtig: In 1934 he moved to Africa for his job."
+                "en": "True: In 1938 he moved to Africa for his job.",
+                "fr": "Vrai : In 1938 he moved to Africa for his job.",
+                "de": "Richtig: In 1938 he moved to Africa for his job."
               }
             },
             {
@@ -354,12 +354,12 @@
             {
               "type": "reading_true_false",
               "itemId": "x-adults",
-              "statement": "After the war, Roald Dahl started to write books for adults.",
+              "statement": "Roald Dahl wrote books for children before he became a pilot.",
               "answer": "false",
               "answerExplanation": {
-                "en": "False: after the war he started to write books for children.",
-                "fr": "Faux : après la guerre, il a commencé à écrire des livres pour enfants.",
-                "de": "Falsch: Nach dem Krieg fing er an, Kinderbücher zu schreiben."
+                "en": "False: first he became a pilot, and after that he started to write books for children.",
+                "fr": "Faux : il est d’abord devenu pilote, et ensuite il a commencé à écrire des livres pour enfants.",
+                "de": "Falsch: Zuerst wurde er Pilot, und danach fing er an, Kinderbücher zu schreiben."
               }
             },
             {

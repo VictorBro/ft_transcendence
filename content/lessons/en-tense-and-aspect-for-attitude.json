@@ -800,7 +800,7 @@
               "after": "been travelling for nearly a day.",
               "choices": [
                 { "choiceId": "c-1", "text": "will" },
-                { "choiceId": "c-2", "text": "would have" },
+                { "choiceId": "c-2", "text": "would" },
                 { "choiceId": "c-3", "text": "will have" },
                 { "choiceId": "c-4", "text": "are" }
               ],
@@ -1066,9 +1066,9 @@
           "estimatedDurationS": 100,
           "timeLimitS": 150,
           "instructions": {
-            "en": "Type the missing words.",
-            "fr": "Écrivez les mots manquants.",
-            "de": "Schreib die fehlenden Wörter."
+            "en": "Type the missing words. Use past forms to make the requests tentative.",
+            "fr": "Écrivez les mots manquants. Employez des formes du passé pour rendre les demandes hésitantes.",
+            "de": "Schreib die fehlenden Wörter. Benutze Vergangenheitsformen, damit die Bitten zurückhaltend klingen."
           },
           "items": [
             {
@@ -1103,7 +1103,7 @@
               "type": "grammar_gap_typing",
               "itemId": "exam-tentative-3",
               "before": "Hi Anna, I",
-              "after": "to ask whether you could babysit on Saturday.",
+              "after": "to ask whether you could babysit on Saturday. (want)",
               "accepted": { "answers": ["wanted"] },
               "hint": null,
               "ruleIds": ["rule-tentative-past"],
@@ -1117,14 +1117,14 @@
               "type": "grammar_gap_typing",
               "itemId": "exam-tentative-4",
               "before": "I",
-              "after": "whether you had a moment to look at my draft.",
-              "accepted": { "answers": ["wondered"] },
+              "after": "whether you had a moment to look at my draft. (wonder)",
+              "accepted": { "answers": ["was wondering", "wondered"] },
               "hint": null,
               "ruleIds": ["rule-tentative-past"],
               "answerExplanation": {
-                "en": "The past simple wondered also sounds polite and indirect.",
-                "fr": "Le prétérit wondered est aussi poli et indirect.",
-                "de": "Das Simple Past wondered klingt ebenfalls höflich und indirekt."
+                "en": "Was wondering is the softest form, and wondered is polite and indirect too.",
+                "fr": "Was wondering est la forme la plus douce, et wondered est aussi poli et indirect.",
+                "de": "Was wondering ist die weichste Form, und auch wondered klingt höflich und indirekt."
               }
             }
           ]
@@ -1143,7 +1143,7 @@
               "type": "grammar_gap_typing",
               "itemId": "exam-irritation-1",
               "before": "My flatmate",
-              "after": "constantly borrowing my clothes!",
+              "after": "constantly borrowing my clothes, and it's driving me mad!",
               "accepted": { "answers": ["is"] },
               "hint": null,
               "ruleIds": ["rule-irritation-continuous"],
@@ -1157,7 +1157,7 @@
               "type": "grammar_gap_typing",
               "itemId": "exam-irritation-2",
               "before": "You",
-              "after": "forever losing your umbrella!",
+              "after": "forever losing your umbrella! That's the third one this month.",
               "accepted": { "answers": ["are"] },
               "hint": null,
               "ruleIds": ["rule-irritation-continuous"],
@@ -1171,7 +1171,7 @@
               "type": "grammar_gap_typing",
               "itemId": "exam-irritation-3",
               "before": "The kids",
-              "after": "always arguing over the remote.",
+              "after": "always arguing over the remote, and I'm sick of it.",
               "accepted": { "answers": ["are"] },
               "hint": null,
               "ruleIds": ["rule-irritation-continuous"],

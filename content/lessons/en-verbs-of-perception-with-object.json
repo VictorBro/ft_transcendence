@@ -1014,15 +1014,15 @@
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-ing-3",
-              "before": "I woke up and felt the rain",
+              "before": "I woke up and could still feel the rain",
               "after": "(drip) through the roof.",
               "accepted": { "answers": ["dripping"] },
               "hint": null,
               "ruleIds": ["rule-ing"],
               "answerExplanation": {
-                "en": "The dripping was going on: feel + object + -ing.",
-                "fr": "Les gouttes tombaient en continu : feel + objet + -ing.",
-                "de": "Das Tropfen dauerte an: feel + Objekt + -ing."
+                "en": "Still shows the dripping was going on: feel + object + -ing.",
+                "fr": "Still montre que les gouttes tombaient encore : feel + objet + -ing.",
+                "de": "Still zeigt, dass das Tropfen noch andauerte: feel + Objekt + -ing."
               }
             }
           ]

@@ -634,14 +634,14 @@
               "faultyTokenId": "t-4",
               "correction": {
                 "mode": "type",
-                "accepted": { "answers": ["really"] },
+                "accepted": { "answers": ["really", "very"] },
                 "choices": []
               },
               "ruleIds": ["r-so"],
               "answerExplanation": {
-                "en": "Not a so hot day: say a really hot day, or The day was so hot.",
-                "fr": "Pas a so hot day : dites a really hot day, ou The day was so hot.",
-                "de": "Nicht a so hot day: sag a really hot day oder The day was so hot."
+                "en": "Not a so hot day: say a really hot day (or a very hot day), or The day was so hot.",
+                "fr": "Pas a so hot day : dites a really hot day (ou a very hot day), ou The day was so hot.",
+                "de": "Nicht a so hot day: sag a really hot day (oder a very hot day) oder The day was so hot."
               }
             },
             {
@@ -847,7 +847,7 @@
               "itemId": "exam-typing1-1",
               "before": "My shoes are",
               "after": "wet, but it doesn't matter.",
-              "accepted": { "answers": ["a bit", "a little"] },
+              "accepted": { "answers": ["a bit", "a little", "slightly"] },
               "hint": null,
               "ruleIds": ["r-bit"],
               "answerExplanation": {
@@ -861,7 +861,7 @@
               "itemId": "exam-typing1-2",
               "before": "Our flight was",
               "after": "late, so we missed the connection.",
-              "accepted": { "answers": ["really", "extremely", "so"] },
+              "accepted": { "answers": ["really", "extremely", "so", "very"] },
               "hint": null,
               "ruleIds": ["r-really"],
               "answerExplanation": {
@@ -875,7 +875,7 @@
               "itemId": "exam-typing1-3",
               "before": "Don't worry. The exercise is only",
               "after": "difficult.",
-              "accepted": { "answers": ["a bit", "a little"] },
+              "accepted": { "answers": ["a bit", "a little", "slightly"] },
               "hint": null,
               "ruleIds": ["r-bit"],
               "answerExplanation": {
@@ -889,13 +889,13 @@
               "itemId": "exam-typing1-4",
               "before": "I had a",
               "after": "good weekend, thank you.",
-              "accepted": { "answers": ["really"] },
+              "accepted": { "answers": ["really", "very"] },
               "hint": null,
               "ruleIds": ["r-really"],
               "answerExplanation": {
-                "en": "Before a noun phrase with a, use really: a really good weekend.",
-                "fr": "Dans un groupe nominal avec a, on emploie really : a really good weekend.",
-                "de": "In einer Nominalgruppe mit a steht really: a really good weekend."
+                "en": "In a noun phrase with a, use really (or very), not so: a really good weekend.",
+                "fr": "Dans un groupe nominal avec a, on emploie really (ou very), pas so : a really good weekend.",
+                "de": "In einer Nominalgruppe mit a steht really (oder very), nicht so: a really good weekend."
               }
             }
           ]
@@ -913,9 +913,9 @@
             {
               "type": "grammar_gap_typing",
               "itemId": "exam-typing2-1",
-              "before": "Please be quiet. I'm",
-              "after": "tired and I have a headache.",
-              "accepted": { "answers": ["so", "really", "extremely"] },
+              "before": "I need to go to bed. I'm",
+              "after": "tired! I can't keep my eyes open.",
+              "accepted": { "answers": ["so", "really", "extremely", "very"] },
               "hint": null,
               "ruleIds": ["r-so"],
               "answerExplanation": {
@@ -929,7 +929,7 @@
               "itemId": "exam-typing2-2",
               "before": "Her new phone was",
               "after": "expensive: it cost two thousand euros.",
-              "accepted": { "answers": ["extremely", "really", "so"] },
+              "accepted": { "answers": ["extremely", "really", "so", "very"] },
               "hint": null,
               "ruleIds": ["r-extremely"],
               "answerExplanation": {

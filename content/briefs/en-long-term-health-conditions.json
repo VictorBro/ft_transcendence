@@ -558,9 +558,9 @@
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Medication is the medicine you take to treat or control a condition; it is not used in the plural.",
-        "fr": "Medication (médicament) désigne les médicaments pris pour soigner ou contrôler une maladie ; le mot ne s’emploie pas au pluriel.",
-        "de": "Medication (Medikament) bezeichnet die Arznei, die man zur Behandlung oder Kontrolle einer Erkrankung nimmt; das Wort hat keinen Plural."
+        "en": "Medication is the medicine you take to treat or control a condition; it is often used as an uncountable noun (take medication), though medications is also common.",
+        "fr": "Medication (médicament) désigne les médicaments pris pour soigner ou contrôler une maladie ; le mot s’emploie souvent comme nom indénombrable (take medication), mais medications est aussi courant.",
+        "de": "Medication (Medikament) bezeichnet die Arznei, die man zur Behandlung oder Kontrolle einer Erkrankung nimmt; das Wort wird oft als unzählbares Nomen gebraucht (take medication), aber medications ist ebenfalls üblich."
       },
       "genderExplanation": null,
       "matchingLabel": null,
@@ -568,12 +568,12 @@
       "gap": {
         "before": "He takes daily ",
         "after": " to keep his blood pressure under control.",
-        "accepted": { "answers": ["medication"] },
+        "accepted": { "answers": ["medication", "medications"] },
         "referenceTargetIds": ["medication", "chronic", "flare-up", "manage"],
         "explanation": {
-          "en": "Only medication fits: it is the noun for what you take every day.",
-          "fr": "Seul « medication » convient : c’est le nom de ce qu’on prend chaque jour.",
-          "de": "Nur „medication“ passt: Es ist das Nomen für das, was man täglich einnimmt."
+          "en": "Medication fits: it is the noun for what you take every day; the plural medications is also possible.",
+          "fr": "« Medication » convient : c’est le nom de ce qu’on prend chaque jour ; le pluriel medications est aussi possible.",
+          "de": "„Medication“ passt: Es ist das Nomen für das, was man täglich einnimmt; der Plural medications ist auch möglich."
         }
       },
       "listeningOptionTargetIds": ["medication", "manage", "migraine", "chronic"]

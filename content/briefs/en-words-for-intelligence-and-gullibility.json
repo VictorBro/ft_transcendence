@@ -374,7 +374,7 @@
       "genders": [],
       "number": null,
       "teachingForm": "dim-witted",
-      "examForms": ["dim-witted"],
+      "examForms": ["dim-witted", "dimwitted"],
       "articleException": null,
       "genderVariants": [],
       "pronunciation": "/ˌdɪmˈwɪtɪd/",
@@ -398,7 +398,7 @@
       "gap": {
         "before": "The film’s villain has a ",
         "after": " henchman who forgets his own password every morning.",
-        "accepted": { "answers": ["dim-witted"] },
+        "accepted": { "answers": ["dim-witted", "dimwitted"] },
         "referenceTargetIds": ["dim-witted", "erudite", "savvy", "quick-witted"],
         "explanation": {
           "en": "Forgetting a password every day shows a lack of intelligence, so only dim-witted fits.",
@@ -541,7 +541,10 @@
     {
       "id": "unworldly",
       "term": "unworldly",
-      "translations": { "fr": ["ingénu"], "de": ["weltfremd"] },
+      "translations": {
+        "fr": ["peu au fait des réalités pratiques", "ingénu"],
+        "de": ["weltfremd"]
+      },
       "wordClass": "adjective",
       "genders": [],
       "number": null,

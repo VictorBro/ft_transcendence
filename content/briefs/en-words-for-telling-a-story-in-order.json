@@ -226,9 +226,9 @@
       },
       "genderExplanation": null,
       "matchingLabel": null,
-      "examPrompt": null,
+      "examPrompt": { "fr": "ensuite, à l'étape suivante", "de": "als Nächstes" },
       "gap": {
-        "before": "What do we do ",
+        "before": "Step one is done. What do we do ",
         "after": "?",
         "accepted": { "answers": ["next"] },
         "referenceTargetIds": ["next", "suddenly", "in-the-end", "at-first"],
@@ -479,7 +479,7 @@
       },
       "genderExplanation": null,
       "matchingLabel": null,
-      "examPrompt": null,
+      "examPrompt": { "fr": "au bout du compte", "de": "am Ende" },
       "gap": {
         "before": "We argued for hours, but ",
         "after": " we agreed.",

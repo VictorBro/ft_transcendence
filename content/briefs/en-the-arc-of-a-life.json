@@ -345,7 +345,7 @@
       "genders": [],
       "number": "singular",
       "teachingForm": "swan song",
-      "examForms": ["swan song"],
+      "examForms": ["swan song", "swansong"],
       "articleException": null,
       "genderVariants": [],
       "pronunciation": "/ˈswɒn sɒŋ/",
@@ -369,7 +369,7 @@
       "gap": {
         "before": "The concerto turned out to be the composer's ",
         "after": ": he never wrote another note.",
-        "accepted": { "answers": ["swan song"] },
+        "accepted": { "answers": ["swan song", "swansong"] },
         "referenceTargetIds": ["swan-song", "heyday", "rite-of-passage", "formative-years"],
         "explanation": {
           "en": "Only swan song fits: a final work, with nothing after it.",

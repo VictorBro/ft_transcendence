@@ -141,7 +141,7 @@
       "examPrompt": null,
       "gap": {
         "before": "My first name is Anna and my ",
-        "after": " is Marie.",
+        "after": " is Marie, so my full name is Anna Marie Smith.",
         "accepted": { "answers": ["middle name"] },
         "referenceTargetIds": ["middle-name", "nickname", "initials", "maiden-name"],
         "explanation": {
@@ -563,10 +563,16 @@
       "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "They decided to ",
-        "after": " their grandfather, so the baby is called George.",
+        "before": "When their son was born, they decided to ",
+        "after": " his grandfather, so the baby is called George.",
         "accepted": {
-          "answers": ["name him after", "name the baby after", "name the child after"]
+          "answers": [
+            "name him after",
+            "name their son after",
+            "name the baby after",
+            "name the boy after",
+            "name the child after"
+          ]
         },
         "referenceTargetIds": ["name-after", "go-by", "nickname", "stage-name"],
         "explanation": {

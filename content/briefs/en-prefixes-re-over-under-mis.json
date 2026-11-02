@@ -227,13 +227,13 @@
       "examPrompt": null,
       "gap": {
         "before": "I think you ",
-        "after": " me: I never said that.",
+        "after": " me: that is not what I mean.",
         "accepted": { "answers": ["misunderstand"] },
         "referenceTargetIds": ["misunderstand", "overcook", "rewrite", "post-war"],
         "explanation": {
-          "en": "If you got my words wrong, you misunderstand me.",
-          "fr": "Si vous avez mal saisi mes mots, vous me comprenez mal : you misunderstand me.",
-          "de": "Wenn du meine Worte falsch aufgefasst hast, missverstehst du mich."
+          "en": "If you get my words wrong, you misunderstand me.",
+          "fr": "Si vous saisissez mal mes mots, vous me comprenez mal : you misunderstand me.",
+          "de": "Wenn du meine Worte falsch auffasst, missverstehst du mich."
         }
       },
       "listeningOptionTargetIds": ["misunderstand", "underestimate", "misinterpret", "overestimate"]

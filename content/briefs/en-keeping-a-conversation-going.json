@@ -52,7 +52,7 @@
       "example": {
         "text": "Hi, I’m Sam. What brings you here?",
         "translation": {
-          "fr": "Salut, moi c’est Sam. Qu’est-ce qui vous amène ici ?",
+          "fr": "Salut, moi c’est Sam. Qu’est-ce qui t’amène ici ?",
           "de": "Hallo, ich bin Sam. Was führt dich hierher?"
         }
       }

@@ -121,7 +121,7 @@
       },
       "genderExplanation": null,
       "matchingLabel": null,
-      "examPrompt": null,
+      "examPrompt": { "fr": "zéro (en maths)", "de": "null (in Mathe)" },
       "gap": {
         "before": "Ten minus ten is ",
         "after": ".",

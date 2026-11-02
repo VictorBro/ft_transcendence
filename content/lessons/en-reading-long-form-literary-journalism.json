@@ -38,7 +38,7 @@
         "I ask him what it was. He gives me a wry smile, the kind a man gives a child who has asked where the sun goes at night. 'Doesn't matter,' he says. His reticence is not coyness; it is a kind of ethics, I begin to think, or perhaps a kind of fear. Either way, the story I have come for sits at the centre of the afternoon like a locked room, and everything else in the gym is arranged around its door.",
         "So I look at the door instead. There are vestiges of the career everywhere, if you know where to look: a belt in a biscuit tin, a nose that has been broken in three different directions, a pair of gloves hung on a nail with the laces still tied. Marsh points to none of them. He talks, when he talks at all, about the bus timetable, about his late wife's allotment, about a pigeon that has taken up residence above the showers.",
         "It is Beck's daughter, Maureen, who tells me, obliquely and over the phone, that I am asking the wrong question. 'You keep wanting to know what he did,' she says. 'Ask what he didn't do.' Then she hangs up, and I am left in a hired car outside a petrol station, holding a sentence I do not yet know how to use.",
-        "Back in the gym, Marsh has finished the floor. He rings out the mop, hangs it on its hook, and says, to nobody in particular, 'Tea's gone cold.' I take this, for now, as an invitation."
+        "Back in the gym, Marsh has finished the floor. He wrings out the mop, hangs it on its hook, and says, to nobody in particular, 'Tea's gone cold.' I take this, for now, as an invitation."
       ],
       "highlights": [
         { "keywordId": "taciturn", "text": "taciturn" },
@@ -290,9 +290,9 @@
               ],
               "acceptedOrders": [["p1", "p2", "p3", "p4", "p5"]],
               "answerExplanation": {
-                "en": "The text opens on the mopping scene, quotes the postcard, then steps back to admit its method, dramatises the fight, and ends on Maureen’s phone call.",
-                "fr": "Le texte s’ouvre sur la scène du ring, cite la carte, puis recule pour avouer sa méthode, dramatise le combat et finit sur l’appel de Maureen.",
-                "de": "Der Text beginnt mit der Szene am Ring, zitiert die Postkarte, tritt dann zurück und gesteht seine Methode, dramatisiert den Kampf und endet mit Maureens Anruf."
+                "en": "The text opens on the mopping scene, quotes the postcard, then steps back to admit its method, dramatises the fight, and later comes to Maureen’s phone call.",
+                "fr": "Le texte s’ouvre sur la scène du ring, cite la carte, puis recule pour avouer sa méthode, dramatise le combat et en vient plus tard à l’appel de Maureen.",
+                "de": "Der Text beginnt mit der Szene am Ring, zitiert die Postkarte, tritt dann zurück und gesteht seine Methode, dramatisiert den Kampf und kommt später zu Maureens Anruf."
               }
             }
           ]
@@ -327,14 +327,14 @@
               "itemId": "x-include",
               "question": "Why does the narrator include the exchange on the ferry, though a reporter would normally leave it out?",
               "options": [
-                { "optionId": "o1", "text": "It was the only conversation she overheard" },
+                { "optionId": "o1", "text": "It was the only conversation he overheard" },
                 { "optionId": "o2", "text": "It gains meaning from what Rudd revealed later" },
                 { "optionId": "o3", "text": "The editor insisted on a lighter moment" },
                 { "optionId": "o4", "text": "It proves the ferry was unsafe" }
               ],
               "answerOptionId": "o2",
               "answerExplanation": {
-                "en": "The narrator says she includes it 'because of what Rudd told me afterwards'. A small exchange becomes significant in hindsight.",
+                "en": "The narrator says he includes it 'because of what Rudd told me afterwards'. A small exchange becomes significant in hindsight.",
                 "fr": "Le narrateur l’inclut 'because of what Rudd told me afterwards'. Un échange banal prend du sens après coup.",
                 "de": "Der Erzähler nimmt ihn auf 'because of what Rudd told me afterwards'. Ein kleiner Wortwechsel gewinnt im Rückblick Bedeutung."
               }

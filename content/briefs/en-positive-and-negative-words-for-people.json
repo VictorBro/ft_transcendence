@@ -47,9 +47,9 @@
       },
       "targetIds": ["sensitive", "touchy", "thrifty", "tight-fisted", "inquisitive", "nosy"],
       "introduction": {
-        "en": "The same trait can earn **praise** or **criticism**. Compare each pair:\n\n- `sensitive` shows approval; `touchy` is a criticism.\n- `thrifty` shows approval; `tight-fisted` is a criticism.\n- `inquisitive` shows approval; `nosy` is a criticism.",
-        "fr": "Un même trait peut valoir un **éloge** ou une **critique**. Comparez chaque paire :\n\n- `sensitive` est élogieux ; `touchy` est une critique.\n- `thrifty` est élogieux ; `tight-fisted` est une critique.\n- `inquisitive` est élogieux ; `nosy` est une critique.",
-        "de": "Dieselbe Eigenschaft kann **Lob** oder **Kritik** bedeuten. Vergleiche jedes Paar:\n\n- `sensitive` ist anerkennend; `touchy` ist Kritik.\n- `thrifty` ist anerkennend; `tight-fisted` ist Kritik.\n- `inquisitive` ist anerkennend; `nosy` ist Kritik."
+        "en": "The same trait can earn **praise** or **criticism**. Compare each pair:\n\n- `sensitive` usually shows approval (aware of other people’s feelings), though it can also mean easily hurt; `touchy` is a criticism.\n- `thrifty` shows approval; `tight-fisted` is a criticism.\n- `inquisitive` usually shows approval; `nosy` is a criticism.",
+        "fr": "Un même trait peut valoir un **éloge** ou une **critique**. Comparez chaque paire :\n\n- `sensitive` est le plus souvent élogieux (attentif aux sentiments des autres), mais peut aussi vouloir dire facilement blessé ; `touchy` est une critique.\n- `thrifty` est élogieux ; `tight-fisted` est une critique.\n- `inquisitive` est le plus souvent élogieux ; `nosy` est une critique.",
+        "de": "Dieselbe Eigenschaft kann **Lob** oder **Kritik** bedeuten. Vergleiche jedes Paar:\n\n- `sensitive` ist meist anerkennend (achtsam gegenüber den Gefühlen anderer), kann aber auch leicht verletzlich bedeuten; `touchy` ist Kritik.\n- `thrifty` ist anerkennend; `tight-fisted` ist Kritik.\n- `inquisitive` ist meist anerkennend; `nosy` ist Kritik."
       }
     },
     {
@@ -90,9 +90,9 @@
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Sensitive is approving: it describes someone who understands and respects other people’s feelings.",
-        "fr": "Sensitive est élogieux : il décrit une personne qui comprend et respecte les sentiments des autres.",
-        "de": "Sensitive ist anerkennend: Es beschreibt jemanden, der die Gefühle anderer versteht und respektiert."
+        "en": "Sensitive is usually approving: it describes someone who understands and respects other people’s feelings. It can also mean easily hurt, as in sensitive about his weight.",
+        "fr": "Sensitive est le plus souvent élogieux : il décrit une personne qui comprend et respecte les sentiments des autres. Il peut aussi vouloir dire facilement blessé, comme dans sensitive about his weight.",
+        "de": "Sensitive ist meist anerkennend: Es beschreibt jemanden, der die Gefühle anderer versteht und respektiert. Es kann auch leicht verletzlich bedeuten, wie in sensitive about his weight."
       },
       "genderExplanation": null,
       "matchingLabel": null,
@@ -106,9 +106,9 @@
         "accepted": { "answers": ["sensitive"] },
         "referenceTargetIds": ["sensitive", "touchy", "thrifty", "nosy"],
         "explanation": {
-          "en": "Sensitive is the approving word for someone who notices others’ feelings; touchy would be a criticism and does not fit this praise.",
-          "fr": "Sensitive est le mot élogieux pour quelqu’un qui remarque les sentiments des autres ; touchy serait une critique.",
-          "de": "Sensitive ist das anerkennende Wort für jemanden, der die Gefühle anderer bemerkt; touchy wäre Kritik."
+          "en": "Sensitive is the approving word here, for someone who notices others’ feelings; touchy would be a criticism and does not fit this praise.",
+          "fr": "Sensitive est ici le mot élogieux, pour quelqu’un qui remarque les sentiments des autres ; touchy serait une critique.",
+          "de": "Sensitive ist hier das anerkennende Wort, für jemanden, der die Gefühle anderer bemerkt; touchy wäre Kritik."
         }
       },
       "listeningOptionTargetIds": ["sensitive", "inquisitive", "persistent", "self-assured"]
@@ -146,14 +146,14 @@
         "de": "empfindlich (Kritik: schnell gekränkt)"
       },
       "gap": {
-        "before": "Don’t joke about his accent; he is so ",
-        "after": " that he will sulk for days over the slightest remark.",
+        "before": "Don’t speak to him before his coffee: in the mornings he is so ",
+        "after": " that he snaps at anyone who says a word to him.",
         "accepted": { "answers": ["touchy"] },
         "referenceTargetIds": ["touchy", "sensitive", "frank", "cocky"],
         "explanation": {
-          "en": "Touchy fits because he is easily offended and sulks; sensitive would be praise and does not describe this over-reaction.",
-          "fr": "Touchy convient car il se vexe facilement et boude ; sensitive serait un éloge.",
-          "de": "Touchy passt, weil er schnell beleidigt ist und schmollt; sensitive wäre Lob."
+          "en": "Touchy fits because he is irritable and snaps at people over nothing; sensitive means aware of feelings or easily hurt, not bad-tempered.",
+          "fr": "Touchy convient car il est irritable et rembarre les gens pour un rien ; sensitive veut dire attentif aux sentiments ou facilement blessé, pas de mauvaise humeur.",
+          "de": "Touchy passt, weil er gereizt ist und Leute wegen nichts anfährt; sensitive bedeutet achtsam oder leicht verletzlich, nicht schlecht gelaunt."
         }
       },
       "listeningOptionTargetIds": ["touchy", "tactless", "tight-fisted", "thrifty"]
@@ -270,9 +270,9 @@
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "Inquisitive is approving: it describes someone who is eager to learn and asks good questions.",
-        "fr": "Inquisitive est élogieux : il décrit quelqu’un qui a envie d’apprendre et pose de bonnes questions.",
-        "de": "Inquisitive ist anerkennend: Es beschreibt jemanden, der lernbegierig ist und gute Fragen stellt."
+        "en": "Inquisitive is usually approving: it describes someone who is eager to learn and asks good questions. It can sometimes suggest too much curiosity about others.",
+        "fr": "Inquisitive est le plus souvent élogieux : il décrit quelqu’un qui a envie d’apprendre et pose de bonnes questions. Il peut parfois suggérer une curiosité excessive envers les autres.",
+        "de": "Inquisitive ist meist anerkennend: Es beschreibt jemanden, der lernbegierig ist und gute Fragen stellt. Manchmal deutet es auch auf zu viel Neugier gegenüber anderen hin."
       },
       "genderExplanation": null,
       "matchingLabel": null,
@@ -329,11 +329,11 @@
         "before": "Our ",
         "after": " neighbour keeps peering through the curtains; I wish she would mind her own business.",
         "accepted": { "answers": ["nosy", "nosey"] },
-        "referenceTargetIds": ["nosy", "inquisitive", "thrifty", "self-assured"],
+        "referenceTargetIds": ["nosy", "persistent", "thrifty", "self-assured"],
         "explanation": {
-          "en": "Nosy fits because she spies on private matters and the speaker is annoyed; inquisitive would be too positive.",
-          "fr": "Nosy convient car elle épie la vie privée et le locuteur est agacé ; inquisitive serait trop positif.",
-          "de": "Nosy passt, weil sie das Privatleben ausspäht und der Sprecher genervt ist; inquisitive wäre zu positiv."
+          "en": "Nosy fits because she spies on private matters and the speaker is annoyed; nosy is the critical word for prying into other people’s lives.",
+          "fr": "Nosy convient car elle épie la vie privée et le locuteur est agacé ; nosy est le mot critique pour qui fouine dans la vie des autres.",
+          "de": "Nosy passt, weil sie das Privatleben ausspäht und der Sprecher genervt ist; nosy ist das kritische Wort für jemanden, der im Leben anderer herumschnüffelt."
         }
       },
       "listeningOptionTargetIds": ["nosy", "cocky", "pushy", "frank"]
@@ -510,13 +510,13 @@
       },
       "gap": {
         "before": "The salesman was so ",
-        "after": " that I felt pressured, and I left without buying anything.",
+        "after": " that he kept pushing the contract into my hand and wouldn’t let me leave.",
         "accepted": { "answers": ["pushy"] },
         "referenceTargetIds": ["pushy", "persistent", "sensitive", "tactless"],
         "explanation": {
-          "en": "Pushy fits because the pressure made the speaker uncomfortable; persistent would be approving.",
-          "fr": "Pushy convient car la pression a mis le locuteur mal à l’aise ; persistent serait élogieux.",
-          "de": "Pushy passt, weil der Druck dem Sprecher unangenehm war; persistent wäre anerkennend."
+          "en": "Pushy fits because he rudely forces the contract on the speaker; persistent praises determination in your own efforts, not pressure on others.",
+          "fr": "Pushy convient car il impose grossièrement le contrat au locuteur ; persistent loue la ténacité dans ses propres efforts, pas la pression sur les autres.",
+          "de": "Pushy passt, weil er dem Sprecher den Vertrag rücksichtslos aufdrängt; persistent lobt Beharrlichkeit bei den eigenen Bemühungen, nicht Druck auf andere."
         }
       },
       "listeningOptionTargetIds": ["nosy", "cocky", "pushy", "frank"]
@@ -602,7 +602,7 @@
         "before": "It was ",
         "after": " of him to ask about her weight in front of everyone.",
         "accepted": { "answers": ["tactless"] },
-        "referenceTargetIds": ["tactless", "frank", "nosy", "tight-fisted"],
+        "referenceTargetIds": ["tactless", "frank", "thrifty", "tight-fisted"],
         "explanation": {
           "en": "Tactless fits because the question was embarrassing; frank would praise honesty and does not suit this rude question.",
           "fr": "Tactless convient car la question était gênante ; frank louerait l’honnêteté, ce qui ne convient pas ici.",

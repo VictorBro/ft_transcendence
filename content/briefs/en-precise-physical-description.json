@@ -385,7 +385,7 @@
       "genders": [],
       "number": null,
       "teachingForm": "dishevelled",
-      "examForms": ["dishevelled"],
+      "examForms": ["dishevelled", "disheveled"],
       "articleException": null,
       "genderVariants": [],
       "pronunciation": "/dɪˈʃevəld/",
@@ -413,7 +413,7 @@
       "gap": {
         "before": "She arrived ",
         "after": ", her hair tangled and her blouse half untucked after running for the bus.",
-        "accepted": { "answers": ["dishevelled"] },
+        "accepted": { "answers": ["dishevelled", "disheveled"] },
         "referenceTargetIds": ["dishevelled", "immaculate", "petite", "clean-shaven"],
         "explanation": {
           "en": "Tangled hair and a half-untucked blouse after running mean dishevelled.",
