@@ -6,136 +6,173 @@
   "locales": ["en", "fr", "de"],
   "title": "Les nombres de 0 à 20",
   "objective": {
-    "en": "Learn to count from 0 to 20 in French and recognize these numbers orally in context such as page or room numbers.",
-    "fr": "Apprendre à compter de 0 à 20 en français et reconnaître ces nombres à l'oral dans des contextes comme des numéros de page ou de salle.",
-    "de": "Lernen Sie auf Französisch von 0 bis 20 zu zählen und diese Zahlen mündlich in Kontexten wie Seitenzahlen oder Raumnummern zu verstehen."
+    "en": "Count from zero to twenty and recognise these numbers when you hear them, such as a page or room number.",
+    "fr": "Compter de zéro à vingt et reconnaître ces nombres à l’oral, par exemple un numéro de page ou de salle.",
+    "de": "Von null bis zwanzig zählen und diese Zahlen beim Hören erkennen, etwa eine Seiten- oder Raumnummer."
   },
-  "estimatedMinutes": 15,
+  "estimatedMinutes": 33,
   "provenance": {
-    "generator": "lesson-prototype",
-    "model": "gemini-3.6-flash",
-    "promptVersion": "brief-v2",
-    "generatedAt": "2026-10-06T14:33:11.013Z",
-    "inputHashes": {
-      "outline": "f5c2e26f0d49c85474c605075c68524cc8c43d498b7bbc757ed8b9fe4c45b346"
-    }
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:27:50.389Z",
+    "inputHashes": { "outline": "f5c2e26f0d49c85474c605075c68524cc8c43d498b7bbc757ed8b9fe4c45b346" }
   },
   "kind": "vocabulary",
   "theme": "personal_identification",
   "coverageNotes": {
-    "en": "Covers the most used cardinal numbers up to 15, with special focus on the pronunciation of final consonants in six and dix.",
-    "fr": "Couvre les nombres cardinaux les plus utilisés jusqu'à 15, avec une attention particulière à la prononciation des consonnes finales de six et dix.",
-    "de": "Deckt die häufigsten Grundzahlen bis 15 ab, mit besonderem Augenmerk auf die Aussprache der Endkonsonanten von six und dix."
+    "en": "All the numbers from 0 to 20, split into two groups: 0 to 10 and 11 to 20. Pronunciation of six, dix and vingt is highlighted.",
+    "fr": "Tous les nombres de 0 à 20, en deux groupes : de 0 à 10 et de 11 à 20. La prononciation de six, dix et vingt est mise en avant.",
+    "de": "Alle Zahlen von 0 bis 20 in zwei Gruppen: 0 bis 10 und 11 bis 20. Die Aussprache von six, dix und vingt wird hervorgehoben."
   },
-  "targetCount": 9,
+  "targetCount": 21,
   "countRationale": {
-    "en": "9 numbers keep the lesson within 15 minutes: 1 to 6, 10, and the irregular 11 and 15; the introduction names every number from 0 to 10.",
-    "fr": "9 nombres gardent la leçon sous 15 minutes : de 1 à 6, 10, et les irréguliers 11 et 15 ; l'introduction nomme tous les nombres de 0 à 10.",
-    "de": "9 Zahlen halten die Lektion unter 15 Minuten: 1 bis 6, 10 und die unregelmäßigen 11 und 15; die Einführung nennt alle Zahlen von 0 bis 10."
+    "en": "Twenty-one numbers make the complete range the outline asks for, and none can be left out when counting.",
+    "fr": "Vingt et un nombres couvrent toute la plage demandée par le plan, et aucun ne peut manquer quand on compte.",
+    "de": "Einundzwanzig Zahlen decken den ganzen Bereich der Gliederung ab, und beim Zählen darf keine fehlen."
   },
   "difficultyBalance": {
-    "en": "Numbers 1–10 are core foundational words; onze and quinze are demanding because of their irregular endings.",
-    "fr": "Les nombres de 1 à 10 sont essentiels ; onze et quinze sont plus exigeants en raison de leurs terminaisons irrégulières.",
-    "de": "Die Zahlen 1–10 sind grundlegend; onze und quinze sind wegen ihrer unregelmäßigen Endungen anspruchsvoller."
+    "en": "The small numbers are core; the numbers with tricky sounds or compound forms are demanding.",
+    "fr": "Les petits nombres sont de base ; les nombres à la prononciation délicate ou composés sont plus exigeants.",
+    "de": "Die kleinen Zahlen sind Grundwortschatz; Zahlen mit schwieriger Aussprache oder zusammengesetzter Form sind anspruchsvoller."
   },
-  "prerequisites": [
-    {
-      "en": "Basic French vowel pronunciation",
-      "fr": "Prononciation de base des voyelles françaises",
-      "de": "Grundlegende französische Vokalaussprache"
-    }
-  ],
+  "prerequisites": [],
   "groups": [
     {
-      "id": "group-0-to-10",
+      "id": "zero-ten",
       "label": {
-        "en": "Numbers 0 to 10",
+        "en": "Numbers from 0 to 10",
         "fr": "Les nombres de 0 à 10",
-        "de": "Zahlen 0 bis 10"
+        "de": "Die Zahlen von 0 bis 10"
       },
-      "targetIds": ["num-1", "num-2", "num-3", "num-4", "num-5", "num-6", "num-10"],
+      "targetIds": [
+        "zero",
+        "un",
+        "deux",
+        "trois",
+        "quatre",
+        "cinq",
+        "six",
+        "sept",
+        "huit",
+        "neuf",
+        "dix"
+      ],
       "introduction": {
-        "en": "Say the numbers **0 to 10** aloud and link each word to its number: `zéro`, `un`, `deux`, `trois`, `quatre`, `cinq`, `six`, `sept`, `huit`, `neuf`, `dix`.\n\nListen to how some endings change:\n\n- Counted alone, `six` and `dix` end in an s sound; before a consonant it disappears (six livres), before a vowel it becomes z (six amis).\n- The t of `vingt` is silent alone and before a consonant, but heard before a vowel: vingt ans.\n\nIn the exam, write the number words, not digits.",
-        "fr": "Dites les nombres **de 0 à 10** à voix haute et associez chaque mot à son chiffre : `zéro`, `un`, `deux`, `trois`, `quatre`, `cinq`, `six`, `sept`, `huit`, `neuf`, `dix`.\n\nÉcoutez comment certaines finales changent :\n\n- Seuls, `six` et `dix` finissent par le son s ; devant une consonne, il disparaît (six livres), devant une voyelle il devient z (six amis).\n- Le t de `vingt` est muet seul et devant une consonne, mais on l'entend devant une voyelle : vingt ans.\n\nÀ l'examen, écrivez les nombres en lettres, pas en chiffres.",
-        "de": "Sprich die Zahlen **0 bis 10** laut und verbinde jedes Wort mit seiner Zahl: `zéro`, `un`, `deux`, `trois`, `quatre`, `cinq`, `six`, `sept`, `huit`, `neuf`, `dix`.\n\nAchte darauf, wie sich manche Endungen ändern:\n\n- Allein enden `six` und `dix` auf einen s-Laut; vor einem Konsonanten fällt er weg (six livres), vor einem Vokal wird er zu z (six amis).\n- Das t von `vingt` ist allein und vor Konsonanten stumm, vor Vokalen hört man es: vingt ans.\n\nSchreibe in der Prüfung Zahlwörter, keine Ziffern."
+        "en": "Learn the numbers from **0 to 10**: `zéro`, `un`, `deux`, `trois`, `quatre`, `cinq`, `six`, `sept`, `huit`, `neuf`, `dix`.\n\nWhen you say a number alone, for example a page, **six** sounds like `sis` and **dix** like `dis`.",
+        "fr": "Apprenez les nombres de **0 à 10** : `zéro`, `un`, `deux`, `trois`, `quatre`, `cinq`, `six`, `sept`, `huit`, `neuf`, `dix`.\n\nQuand on dit un nombre seul, par exemple une page, **six** se prononce `sis` et **dix** se prononce `dis`.",
+        "de": "Lerne die Zahlen von **0 bis 10**: `zéro`, `un`, `deux`, `trois`, `quatre`, `cinq`, `six`, `sept`, `huit`, `neuf`, `dix`.\n\nWenn du eine Zahl allein sagst, zum Beispiel eine Seite, klingt **six** wie `sis` und **dix** wie `dis`."
       }
     },
     {
-      "id": "group-11-to-16",
+      "id": "eleven-twenty",
       "label": {
-        "en": "Numbers 11 to 16",
-        "fr": "Les nombres de 11 à 16",
-        "de": "Zahlen 11 bis 16"
+        "en": "Numbers from 11 to 20",
+        "fr": "Les nombres de 11 à 20",
+        "de": "Die Zahlen von 11 bis 20"
       },
-      "targetIds": ["num-11", "num-15"],
+      "targetIds": [
+        "onze",
+        "douze",
+        "treize",
+        "quatorze",
+        "quinze",
+        "seize",
+        "dix-sept",
+        "dix-huit",
+        "dix-neuf",
+        "vingt"
+      ],
       "introduction": {
-        "en": "**11 to 16**. Say each number aloud and study its example:\n\n- `onze` – 11: C'est la ligne onze.\n- `quinze` – 15: Le train part dans quinze minutes.",
-        "fr": "**De 11 à 16**. Dites chaque nombre à voix haute et étudiez son exemple :\n\n- `onze` : C'est la ligne onze.\n- `quinze` : Le train part dans quinze minutes.",
-        "de": "**11 bis 16**. Sprich jede Zahl laut und lies das Beispiel:\n\n- `onze` – 11: C'est la ligne onze.\n- `quinze` – 15: Le train part dans quinze minutes."
+        "en": "Learn the numbers from **11 to 20**: `onze`, `douze`, `treize`, `quatorze`, `quinze`, `seize`, `dix-sept`, `dix-huit`, `dix-neuf`, `vingt`.\n\nThe numbers 17, 18 and 19 are built as ten plus a number: `dix-sept`, `dix-huit`, `dix-neuf`. The last letters of **vingt** are silent: it sounds like `vɛ̃`.",
+        "fr": "Apprenez les nombres de **11 à 20** : `onze`, `douze`, `treize`, `quatorze`, `quinze`, `seize`, `dix-sept`, `dix-huit`, `dix-neuf`, `vingt`.\n\nLes nombres 17, 18 et 19 se forment avec dix plus un nombre : `dix-sept`, `dix-huit`, `dix-neuf`. Les dernières lettres de **vingt** ne se prononcent pas : on dit `vɛ̃`.",
+        "de": "Lerne die Zahlen von **11 bis 20**: `onze`, `douze`, `treize`, `quatorze`, `quinze`, `seize`, `dix-sept`, `dix-huit`, `dix-neuf`, `vingt`.\n\nDie Zahlen 17, 18 und 19 bestehen aus zehn plus einer Zahl: `dix-sept`, `dix-huit`, `dix-neuf`. Die letzten Buchstaben von **vingt** sind stumm: Es klingt wie `vɛ̃`."
       }
     }
   ],
   "targets": [
     {
-      "id": "num-1",
-      "term": "un",
-      "translations": {
-        "en": ["one"],
-        "de": ["eins", "ein"]
+      "id": "zero",
+      "term": "zéro",
+      "translations": { "en": ["zero"], "de": ["null"] },
+      "wordClass": "numeral",
+      "genders": [],
+      "number": null,
+      "teachingForm": "zéro",
+      "examForms": ["zéro"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ze.ʁo/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Il fait zéro degré.",
+        "translation": { "en": "It is zero degrees.", "de": "Es hat null Grad." }
       },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Zéro is the number 0.",
+        "fr": "Zéro est le nombre 0.",
+        "de": "Zéro ist die Zahl 0."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Cinq moins cinq font ",
+        "after": ".",
+        "accepted": { "answers": ["zéro"] },
+        "referenceTargetIds": ["zero", "un", "onze", "huit"],
+        "explanation": {
+          "en": "Five minus five is zero, so only zéro fits.",
+          "fr": "Cinq moins cinq font zéro : seul « zéro » convient.",
+          "de": "Fünf minus fünf ist null, also passt nur „zéro“."
+        }
+      },
+      "listeningOptionTargetIds": ["zero", "un", "onze", "huit"]
+    },
+    {
+      "id": "un",
+      "term": "un",
+      "translations": { "en": ["one"], "de": ["eins", "ein"] },
       "wordClass": "numeral",
       "genders": [],
       "number": null,
       "teachingForm": "un",
       "examForms": ["un"],
       "articleException": null,
-      "genderVariants": ["une"],
-      "pronunciation": "œ̃",
+      "genderVariants": [],
+      "pronunciation": "/œ̃/",
       "difficulty": "core",
       "context": {
-        "sentence": "J'ai un livre.",
-        "translation": {
-          "en": "I have one book.",
-          "de": "Ich habe ein Buch."
-        }
+        "sentence": "Je lis la page un.",
+        "translation": { "en": "I am reading page one.", "de": "Ich lese Seite eins." }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "un means one. ",
-        "fr": "La forme à retenir est « un ». ",
-        "de": "un bedeutet eins. "
+        "en": "Un is the number 1.",
+        "fr": "Un est le nombre 1.",
+        "de": "Un ist die Zahl 1."
       },
       "genderExplanation": null,
-      "matchingLabel": {
-        "en": "one",
-        "de": "eins"
-      },
-      "examPrompt": {
-        "en": "one (masculine singular form)",
-        "de": "eins (männliche Singularform)"
-      },
+      "matchingLabel": null,
+      "examPrompt": null,
       "gap": {
-        "before": "1 s’écrit en lettres : ",
+        "before": "Trois moins deux font ",
         "after": ".",
-        "accepted": {
-          "answers": ["un"]
-        },
-        "referenceTargetIds": ["num-2", "num-1", "num-4", "num-3"],
+        "accepted": { "answers": ["un"] },
+        "referenceTargetIds": ["un", "deux", "onze", "vingt"],
         "explanation": {
-          "en": "un means one. ",
-          "fr": "La forme à retenir est « un ». ",
-          "de": "un bedeutet eins. "
+          "en": "Three minus two is one, so only un fits.",
+          "fr": "Trois moins deux font un : seul « un » convient.",
+          "de": "Drei minus zwei ist eins, also passt nur „un“."
         }
       },
-      "listeningOptionTargetIds": ["num-2", "num-1", "num-4", "num-3"]
+      "listeningOptionTargetIds": ["un", "deux", "onze", "vingt"]
     },
     {
-      "id": "num-2",
+      "id": "deux",
       "term": "deux",
-      "translations": {
-        "en": ["two"],
-        "de": ["zwei"]
-      },
+      "translations": { "en": ["two"], "de": ["zwei"] },
       "wordClass": "numeral",
       "genders": [],
       "number": null,
@@ -143,49 +180,38 @@
       "examForms": ["deux"],
       "articleException": null,
       "genderVariants": [],
-      "pronunciation": "dø",
+      "pronunciation": "/dø/",
       "difficulty": "core",
       "context": {
-        "sentence": "Il y a deux stylos.",
-        "translation": {
-          "en": "There are two pens.",
-          "de": "Es gibt zwei Stifte."
-        }
+        "sentence": "J’ai deux amis.",
+        "translation": { "en": "I have two friends.", "de": "Ich habe zwei Freunde." }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "deux means two. ",
-        "fr": "La forme à retenir est « deux ». ",
-        "de": "deux bedeutet zwei. "
+        "en": "Deux is the number 2.",
+        "fr": "Deux est le nombre 2.",
+        "de": "Deux ist die Zahl 2."
       },
       "genderExplanation": null,
-      "matchingLabel": {
-        "en": "two",
-        "de": "zwei"
-      },
+      "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "2 s’écrit en lettres : ",
+        "before": "Un plus un font ",
         "after": ".",
-        "accepted": {
-          "answers": ["deux"]
-        },
-        "referenceTargetIds": ["num-3", "num-2", "num-5", "num-4"],
+        "accepted": { "answers": ["deux"] },
+        "referenceTargetIds": ["deux", "douze", "dix", "trois"],
         "explanation": {
-          "en": "deux means two. ",
-          "fr": "La forme à retenir est « deux ». ",
-          "de": "deux bedeutet zwei. "
+          "en": "One plus one is two, so only deux fits.",
+          "fr": "Un plus un font deux : seul « deux » convient.",
+          "de": "Eins plus eins ist zwei, also passt nur „deux“."
         }
       },
-      "listeningOptionTargetIds": ["num-3", "num-2", "num-5", "num-4"]
+      "listeningOptionTargetIds": ["deux", "douze", "dix", "trois"]
     },
     {
-      "id": "num-3",
+      "id": "trois",
       "term": "trois",
-      "translations": {
-        "en": ["three"],
-        "de": ["drei"]
-      },
+      "translations": { "en": ["three"], "de": ["drei"] },
       "wordClass": "numeral",
       "genders": [],
       "number": null,
@@ -193,49 +219,38 @@
       "examForms": ["trois"],
       "articleException": null,
       "genderVariants": [],
-      "pronunciation": "tʁwa",
+      "pronunciation": "/tʁwa/",
       "difficulty": "core",
       "context": {
-        "sentence": "Elle a trois chats.",
-        "translation": {
-          "en": "She has three cats.",
-          "de": "Sie hat drei Katzen."
-        }
+        "sentence": "Lisez la page trois.",
+        "translation": { "en": "Read page three.", "de": "Lesen Sie Seite drei." }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "trois means three. ",
-        "fr": "La forme à retenir est « trois ». ",
-        "de": "trois bedeutet drei. "
+        "en": "Trois is the number 3.",
+        "fr": "Trois est le nombre 3.",
+        "de": "Trois ist die Zahl 3."
       },
       "genderExplanation": null,
-      "matchingLabel": {
-        "en": "three",
-        "de": "drei"
-      },
+      "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "3 s’écrit en lettres : ",
+        "before": "Deux plus un font ",
         "after": ".",
-        "accepted": {
-          "answers": ["trois"]
-        },
-        "referenceTargetIds": ["num-4", "num-3", "num-6", "num-5"],
+        "accepted": { "answers": ["trois"] },
+        "referenceTargetIds": ["trois", "treize", "six", "cinq"],
         "explanation": {
-          "en": "trois means three. ",
-          "fr": "La forme à retenir est « trois ». ",
-          "de": "trois bedeutet drei. "
+          "en": "Two plus one is three, so only trois fits.",
+          "fr": "Deux plus un font trois : seul « trois » convient.",
+          "de": "Zwei plus eins ist drei, also passt nur „trois“."
         }
       },
-      "listeningOptionTargetIds": ["num-4", "num-3", "num-6", "num-5"]
+      "listeningOptionTargetIds": ["trois", "treize", "six", "cinq"]
     },
     {
-      "id": "num-4",
+      "id": "quatre",
       "term": "quatre",
-      "translations": {
-        "en": ["four"],
-        "de": ["vier"]
-      },
+      "translations": { "en": ["four"], "de": ["vier"] },
       "wordClass": "numeral",
       "genders": [],
       "number": null,
@@ -243,49 +258,38 @@
       "examForms": ["quatre"],
       "articleException": null,
       "genderVariants": [],
-      "pronunciation": "katʁ",
+      "pronunciation": "/katʁ/",
       "difficulty": "core",
       "context": {
-        "sentence": "Ouvrez à la page quatre.",
-        "translation": {
-          "en": "Open to page four.",
-          "de": "Öffnen Sie auf Seite vier."
-        }
+        "sentence": "Nous sommes quatre.",
+        "translation": { "en": "There are four of us.", "de": "Wir sind vier." }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "quatre means four. ",
-        "fr": "La forme à retenir est « quatre ». ",
-        "de": "quatre bedeutet vier. "
+        "en": "Quatre is the number 4.",
+        "fr": "Quatre est le nombre 4.",
+        "de": "Quatre ist die Zahl 4."
       },
       "genderExplanation": null,
-      "matchingLabel": {
-        "en": "four",
-        "de": "vier"
-      },
+      "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "4 s’écrit en lettres : ",
+        "before": "Deux plus deux font ",
         "after": ".",
-        "accepted": {
-          "answers": ["quatre"]
-        },
-        "referenceTargetIds": ["num-5", "num-4", "num-6", "num-1"],
+        "accepted": { "answers": ["quatre"] },
+        "referenceTargetIds": ["quatre", "quatorze", "cinq", "trois"],
         "explanation": {
-          "en": "quatre means four. ",
-          "fr": "La forme à retenir est « quatre ». ",
-          "de": "quatre bedeutet vier. "
+          "en": "Two plus two is four, so only quatre fits.",
+          "fr": "Deux plus deux font quatre : seul « quatre » convient.",
+          "de": "Zwei plus zwei ist vier, also passt nur „quatre“."
         }
       },
-      "listeningOptionTargetIds": ["num-5", "num-4", "num-6", "num-1"]
+      "listeningOptionTargetIds": ["quatre", "quatorze", "cinq", "trois"]
     },
     {
-      "id": "num-5",
+      "id": "cinq",
       "term": "cinq",
-      "translations": {
-        "en": ["five"],
-        "de": ["fünf"]
-      },
+      "translations": { "en": ["five"], "de": ["fünf"] },
       "wordClass": "numeral",
       "genders": [],
       "number": null,
@@ -293,49 +297,38 @@
       "examForms": ["cinq"],
       "articleException": null,
       "genderVariants": [],
-      "pronunciation": "sɛ̃k",
+      "pronunciation": "/sɛ̃k/",
       "difficulty": "core",
       "context": {
         "sentence": "Il est cinq heures.",
-        "translation": {
-          "en": "It is five o'clock.",
-          "de": "Es ist fünf Uhr."
-        }
+        "translation": { "en": "It is five o’clock.", "de": "Es ist fünf Uhr." }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "cinq means five. ",
-        "fr": "La forme à retenir est « cinq ». ",
-        "de": "cinq bedeutet fünf. "
+        "en": "Cinq is the number 5.",
+        "fr": "Cinq est le nombre 5.",
+        "de": "Cinq ist die Zahl 5."
       },
       "genderExplanation": null,
-      "matchingLabel": {
-        "en": "five",
-        "de": "fünf"
-      },
+      "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "5 s’écrit en lettres : ",
+        "before": "Trois plus deux font ",
         "after": ".",
-        "accepted": {
-          "answers": ["cinq"]
-        },
-        "referenceTargetIds": ["num-6", "num-5", "num-1", "num-2"],
+        "accepted": { "answers": ["cinq"] },
+        "referenceTargetIds": ["cinq", "six", "sept", "vingt"],
         "explanation": {
-          "en": "cinq means five. ",
-          "fr": "La forme à retenir est « cinq ». ",
-          "de": "cinq bedeutet fünf. "
+          "en": "Three plus two is five, so only cinq fits.",
+          "fr": "Trois plus deux font cinq : seul « cinq » convient.",
+          "de": "Drei plus zwei ist fünf, also passt nur „cinq“."
         }
       },
-      "listeningOptionTargetIds": ["num-6", "num-5", "num-1", "num-2"]
+      "listeningOptionTargetIds": ["cinq", "six", "sept", "vingt"]
     },
     {
-      "id": "num-6",
+      "id": "six",
       "term": "six",
-      "translations": {
-        "en": ["six"],
-        "de": ["sechs"]
-      },
+      "translations": { "en": ["six"], "de": ["sechs"] },
       "wordClass": "numeral",
       "genders": [],
       "number": null,
@@ -343,49 +336,162 @@
       "examForms": ["six"],
       "articleException": null,
       "genderVariants": [],
-      "pronunciation": "sis",
+      "pronunciation": "/sis/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Je suis dans la salle six.",
+        "translation": { "en": "I am in room six.", "de": "Ich bin in Raum sechs." }
+      },
+      "ambiguityNote": {
+        "en": "Alone, six ends with the sound s: sis. Before a consonant (six livres), the x is silent.",
+        "fr": "Seul, six se termine par le son s : sis. Devant une consonne (six livres), le x ne se prononce pas.",
+        "de": "Allein endet six auf den Laut s: sis. Vor einem Konsonanten (six livres) ist das x stumm."
+      },
+      "explanation": {
+        "en": "Six is the number 6. Said alone, it sounds like sis.",
+        "fr": "Six est le nombre 6. Dit seul, il se prononce sis.",
+        "de": "Six ist die Zahl 6. Allein gesprochen klingt es wie sis."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Quatre plus deux font ",
+        "after": ".",
+        "accepted": { "answers": ["six"] },
+        "referenceTargetIds": ["six", "dix", "cinq", "seize"],
+        "explanation": {
+          "en": "Four plus two is six, so only six fits.",
+          "fr": "Quatre plus deux font six : seul « six » convient.",
+          "de": "Vier plus zwei ist sechs, also passt nur „six“."
+        }
+      },
+      "listeningOptionTargetIds": ["six", "dix", "cinq", "seize"]
+    },
+    {
+      "id": "sept",
+      "term": "sept",
+      "translations": { "en": ["seven"], "de": ["sieben"] },
+      "wordClass": "numeral",
+      "genders": [],
+      "number": null,
+      "teachingForm": "sept",
+      "examForms": ["sept"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/sɛt/",
       "difficulty": "core",
       "context": {
-        "sentence": "Voici la salle six.",
+        "sentence": "Il se lève à sept heures.",
+        "translation": { "en": "He gets up at seven o’clock.", "de": "Er steht um sieben Uhr auf." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Sept is the number 7. The p is silent.",
+        "fr": "Sept est le nombre 7. Le p ne se prononce pas.",
+        "de": "Sept ist die Zahl 7. Das p ist stumm."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il y a ",
+        "after": " jours dans une semaine.",
+        "accepted": { "answers": ["sept"] },
+        "referenceTargetIds": ["sept", "seize", "cinq", "huit"],
+        "explanation": {
+          "en": "A week has seven days, so only sept fits.",
+          "fr": "Une semaine a sept jours : seul « sept » convient.",
+          "de": "Eine Woche hat sieben Tage, also passt nur „sept“."
+        }
+      },
+      "listeningOptionTargetIds": ["sept", "seize", "cinq", "huit"]
+    },
+    {
+      "id": "huit",
+      "term": "huit",
+      "translations": { "en": ["eight"], "de": ["acht"] },
+      "wordClass": "numeral",
+      "genders": [],
+      "number": null,
+      "teachingForm": "huit",
+      "examForms": ["huit"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɥit/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Le cours commence à huit heures.",
         "translation": {
-          "en": "Here is room six.",
-          "de": "Hier ist Raum sechs."
+          "en": "The class starts at eight o’clock.",
+          "de": "Der Unterricht beginnt um acht Uhr."
         }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "six means six. ",
-        "fr": "La forme à retenir est « six ». ",
-        "de": "six bedeutet sechs. "
+        "en": "Huit is the number 8.",
+        "fr": "Huit est le nombre 8.",
+        "de": "Huit ist die Zahl 8."
       },
       "genderExplanation": null,
-      "matchingLabel": {
-        "en": "six",
-        "de": "sechs"
-      },
+      "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "6 s’écrit en lettres : ",
+        "before": "Quatre plus quatre font ",
         "after": ".",
-        "accepted": {
-          "answers": ["six"]
-        },
-        "referenceTargetIds": ["num-6", "num-1", "num-2", "num-3"],
+        "accepted": { "answers": ["huit"] },
+        "referenceTargetIds": ["huit", "neuf", "dix-huit", "sept"],
         "explanation": {
-          "en": "six means six. ",
-          "fr": "La forme à retenir est « six ». ",
-          "de": "six bedeutet sechs. "
+          "en": "Four plus four is eight, so only huit fits.",
+          "fr": "Quatre plus quatre font huit : seul « huit » convient.",
+          "de": "Vier plus vier ist acht, also passt nur „huit“."
         }
       },
-      "listeningOptionTargetIds": ["num-6", "num-1", "num-2", "num-3"]
+      "listeningOptionTargetIds": ["huit", "neuf", "dix-huit", "sept"]
     },
     {
-      "id": "num-10",
-      "term": "dix",
-      "translations": {
-        "en": ["ten"],
-        "de": ["zehn"]
+      "id": "neuf",
+      "term": "neuf",
+      "translations": { "en": ["nine"], "de": ["neun"] },
+      "wordClass": "numeral",
+      "genders": [],
+      "number": null,
+      "teachingForm": "neuf",
+      "examForms": ["neuf"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/nœf/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "J’ai neuf ans.",
+        "translation": { "en": "I am nine years old.", "de": "Ich bin neun Jahre alt." }
       },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Neuf is the number 9.",
+        "fr": "Neuf est le nombre 9.",
+        "de": "Neuf ist die Zahl 9."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Trois fois trois font ",
+        "after": ".",
+        "accepted": { "answers": ["neuf"] },
+        "referenceTargetIds": ["neuf", "dix-neuf", "huit", "un"],
+        "explanation": {
+          "en": "Three times three is nine, so only neuf fits.",
+          "fr": "Trois fois trois font neuf : seul « neuf » convient.",
+          "de": "Dreimal drei ist neun, also passt nur „neuf“."
+        }
+      },
+      "listeningOptionTargetIds": ["neuf", "dix-neuf", "huit", "un"]
+    },
+    {
+      "id": "dix",
+      "term": "dix",
+      "translations": { "en": ["ten"], "de": ["zehn"] },
       "wordClass": "numeral",
       "genders": [],
       "number": null,
@@ -393,49 +499,42 @@
       "examForms": ["dix"],
       "articleException": null,
       "genderVariants": [],
-      "pronunciation": "dis",
-      "difficulty": "core",
+      "pronunciation": "/dis/",
+      "difficulty": "demanding",
       "context": {
-        "sentence": "Regardez la page dix.",
-        "translation": {
-          "en": "Look at page ten.",
-          "de": "Schauen Sie auf Seite zehn."
-        }
+        "sentence": "Il y a dix élèves.",
+        "translation": { "en": "There are ten students.", "de": "Es gibt zehn Schüler." }
       },
-      "ambiguityNote": null,
+      "ambiguityNote": {
+        "en": "Alone, dix ends with the sound s: dis. Before a consonant (dix livres), the x is silent.",
+        "fr": "Seul, dix se termine par le son s : dis. Devant une consonne (dix livres), le x ne se prononce pas.",
+        "de": "Allein endet dix auf den Laut s: dis. Vor einem Konsonanten (dix livres) ist das x stumm."
+      },
       "explanation": {
-        "en": "dix means ten. ",
-        "fr": "La forme à retenir est « dix ». ",
-        "de": "dix bedeutet zehn. "
+        "en": "Dix is the number 10. Said alone, it sounds like dis.",
+        "fr": "Dix est le nombre 10. Dit seul, il se prononce dis.",
+        "de": "Dix ist die Zahl 10. Allein gesprochen klingt es wie dis."
       },
       "genderExplanation": null,
-      "matchingLabel": {
-        "en": "ten",
-        "de": "zehn"
-      },
+      "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "10 s’écrit en lettres : ",
+        "before": "Cinq plus cinq font ",
         "after": ".",
-        "accepted": {
-          "answers": ["dix"]
-        },
-        "referenceTargetIds": ["num-11", "num-10", "num-1", "num-2"],
+        "accepted": { "answers": ["dix"] },
+        "referenceTargetIds": ["dix", "six", "deux", "dix-sept"],
         "explanation": {
-          "en": "dix means ten. ",
-          "fr": "La forme à retenir est « dix ». ",
-          "de": "dix bedeutet zehn. "
+          "en": "Five plus five is ten, so only dix fits.",
+          "fr": "Cinq plus cinq font dix : seul « dix » convient.",
+          "de": "Fünf plus fünf ist zehn, also passt nur „dix“."
         }
       },
-      "listeningOptionTargetIds": ["num-11", "num-10", "num-1", "num-2"]
+      "listeningOptionTargetIds": ["dix", "six", "deux", "dix-sept"]
     },
     {
-      "id": "num-11",
+      "id": "onze",
       "term": "onze",
-      "translations": {
-        "en": ["eleven"],
-        "de": ["elf"]
-      },
+      "translations": { "en": ["eleven"], "de": ["elf"] },
       "wordClass": "numeral",
       "genders": [],
       "number": null,
@@ -443,49 +542,155 @@
       "examForms": ["onze"],
       "articleException": null,
       "genderVariants": [],
-      "pronunciation": "ɔ̃z",
-      "difficulty": "demanding",
+      "pronunciation": "/ɔ̃z/",
+      "difficulty": "core",
       "context": {
-        "sentence": "C'est la ligne onze.",
-        "translation": {
-          "en": "It is line eleven.",
-          "de": "Das ist Linie elf."
-        }
+        "sentence": "Il est onze heures.",
+        "translation": { "en": "It is eleven o’clock.", "de": "Es ist elf Uhr." }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "onze means eleven. ",
-        "fr": "La forme à retenir est « onze ». ",
-        "de": "onze bedeutet elf. "
+        "en": "Onze is the number 11.",
+        "fr": "Onze est le nombre 11.",
+        "de": "Onze ist die Zahl 11."
       },
       "genderExplanation": null,
-      "matchingLabel": {
-        "en": "eleven",
-        "de": "elf"
-      },
+      "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "11 s’écrit en lettres : ",
+        "before": "Dix plus un font ",
         "after": ".",
-        "accepted": {
-          "answers": ["onze"]
-        },
-        "referenceTargetIds": ["num-11", "num-15", "num-1", "num-2"],
+        "accepted": { "answers": ["onze"] },
+        "referenceTargetIds": ["onze", "douze", "un", "treize"],
         "explanation": {
-          "en": "onze means eleven. ",
-          "fr": "La forme à retenir est « onze ». ",
-          "de": "onze bedeutet elf. "
+          "en": "Ten plus one is eleven, so only onze fits.",
+          "fr": "Dix plus un font onze : seul « onze » convient.",
+          "de": "Zehn plus eins ist elf, also passt nur „onze“."
         }
       },
-      "listeningOptionTargetIds": ["num-11", "num-15", "num-1", "num-2"]
+      "listeningOptionTargetIds": ["onze", "douze", "un", "treize"]
     },
     {
-      "id": "num-15",
-      "term": "quinze",
-      "translations": {
-        "en": ["fifteen"],
-        "de": ["fünfzehn"]
+      "id": "douze",
+      "term": "douze",
+      "translations": { "en": ["twelve"], "de": ["zwölf"] },
+      "wordClass": "numeral",
+      "genders": [],
+      "number": null,
+      "teachingForm": "douze",
+      "examForms": ["douze"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/duz/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Elle a douze ans.",
+        "translation": { "en": "She is twelve years old.", "de": "Sie ist zwölf Jahre alt." }
       },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Douze is the number 12.",
+        "fr": "Douze est le nombre 12.",
+        "de": "Douze ist die Zahl 12."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il y a ",
+        "after": " mois dans une année.",
+        "accepted": { "answers": ["douze"] },
+        "referenceTargetIds": ["douze", "deux", "treize", "onze"],
+        "explanation": {
+          "en": "A year has twelve months, so only douze fits.",
+          "fr": "Une année a douze mois : seul « douze » convient.",
+          "de": "Ein Jahr hat zwölf Monate, also passt nur „douze“."
+        }
+      },
+      "listeningOptionTargetIds": ["douze", "deux", "treize", "onze"]
+    },
+    {
+      "id": "treize",
+      "term": "treize",
+      "translations": { "en": ["thirteen"], "de": ["dreizehn"] },
+      "wordClass": "numeral",
+      "genders": [],
+      "number": null,
+      "teachingForm": "treize",
+      "examForms": ["treize"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/tʁɛz/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "La page treize est ici.",
+        "translation": { "en": "Page thirteen is here.", "de": "Seite dreizehn ist hier." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Treize is the number 13.",
+        "fr": "Treize est le nombre 13.",
+        "de": "Treize ist die Zahl 13."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Dix plus trois font ",
+        "after": ".",
+        "accepted": { "answers": ["treize"] },
+        "referenceTargetIds": ["treize", "trois", "seize", "quatorze"],
+        "explanation": {
+          "en": "Ten plus three is thirteen, so only treize fits.",
+          "fr": "Dix plus trois font treize : seul « treize » convient.",
+          "de": "Zehn plus drei ist dreizehn, also passt nur „treize“."
+        }
+      },
+      "listeningOptionTargetIds": ["treize", "trois", "seize", "quatorze"]
+    },
+    {
+      "id": "quatorze",
+      "term": "quatorze",
+      "translations": { "en": ["fourteen"], "de": ["vierzehn"] },
+      "wordClass": "numeral",
+      "genders": [],
+      "number": null,
+      "teachingForm": "quatorze",
+      "examForms": ["quatorze"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ka.tɔʁz/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "C’est la salle quatorze.",
+        "translation": { "en": "It is room fourteen.", "de": "Das ist Raum vierzehn." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Quatorze is the number 14.",
+        "fr": "Quatorze est le nombre 14.",
+        "de": "Quatorze ist die Zahl 14."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Sept plus sept font ",
+        "after": ".",
+        "accepted": { "answers": ["quatorze"] },
+        "referenceTargetIds": ["quatorze", "quatre", "quinze", "treize"],
+        "explanation": {
+          "en": "Seven plus seven is fourteen, so only quatorze fits.",
+          "fr": "Sept plus sept font quatorze : seul « quatorze » convient.",
+          "de": "Sieben plus sieben ist vierzehn, also passt nur „quatorze“."
+        }
+      },
+      "listeningOptionTargetIds": ["quatorze", "quatre", "quinze", "treize"]
+    },
+    {
+      "id": "quinze",
+      "term": "quinze",
+      "translations": { "en": ["fifteen"], "de": ["fünfzehn"] },
       "wordClass": "numeral",
       "genders": [],
       "number": null,
@@ -493,46 +698,242 @@
       "examForms": ["quinze"],
       "articleException": null,
       "genderVariants": [],
-      "pronunciation": "kɛ̃z",
+      "pronunciation": "/kɛ̃z/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Nous avons quinze minutes.",
+        "translation": { "en": "We have fifteen minutes.", "de": "Wir haben fünfzehn Minuten." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Quinze is the number 15.",
+        "fr": "Quinze est le nombre 15.",
+        "de": "Quinze ist die Zahl 15."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Dix plus cinq font ",
+        "after": ".",
+        "accepted": { "answers": ["quinze"] },
+        "referenceTargetIds": ["quinze", "cinq", "seize", "quatorze"],
+        "explanation": {
+          "en": "Ten plus five is fifteen, so only quinze fits.",
+          "fr": "Dix plus cinq font quinze : seul « quinze » convient.",
+          "de": "Zehn plus fünf ist fünfzehn, also passt nur „quinze“."
+        }
+      },
+      "listeningOptionTargetIds": ["quinze", "cinq", "seize", "quatorze"]
+    },
+    {
+      "id": "seize",
+      "term": "seize",
+      "translations": { "en": ["sixteen"], "de": ["sechzehn"] },
+      "wordClass": "numeral",
+      "genders": [],
+      "number": null,
+      "teachingForm": "seize",
+      "examForms": ["seize"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/sɛz/",
       "difficulty": "demanding",
       "context": {
-        "sentence": "Le train part dans quinze minutes.",
+        "sentence": "Mon frère a seize ans.",
         "translation": {
-          "en": "The train leaves in fifteen minutes.",
-          "de": "Der Zug fährt in fünfzehn Minuten ab."
+          "en": "My brother is sixteen years old.",
+          "de": "Mein Bruder ist sechzehn Jahre alt."
         }
       },
       "ambiguityNote": null,
       "explanation": {
-        "en": "quinze means fifteen. ",
-        "fr": "La forme à retenir est « quinze ». ",
-        "de": "quinze bedeutet fünfzehn. "
+        "en": "Seize is the number 16.",
+        "fr": "Seize est le nombre 16.",
+        "de": "Seize ist die Zahl 16."
       },
       "genderExplanation": null,
-      "matchingLabel": {
-        "en": "fifteen",
-        "de": "fünfzehn"
-      },
+      "matchingLabel": null,
       "examPrompt": null,
       "gap": {
-        "before": "15 s’écrit en lettres : ",
+        "before": "Huit plus huit font ",
         "after": ".",
-        "accepted": {
-          "answers": ["quinze"]
-        },
-        "referenceTargetIds": ["num-15", "num-11", "num-1", "num-2"],
+        "accepted": { "answers": ["seize"] },
+        "referenceTargetIds": ["seize", "six", "sept", "quinze"],
         "explanation": {
-          "en": "quinze means fifteen. ",
-          "fr": "La forme à retenir est « quinze ». ",
-          "de": "quinze bedeutet fünfzehn. "
+          "en": "Eight plus eight is sixteen, so only seize fits.",
+          "fr": "Huit plus huit font seize : seul « seize » convient.",
+          "de": "Acht plus acht ist sechzehn, also passt nur „seize“."
         }
       },
-      "listeningOptionTargetIds": ["num-15", "num-11", "num-1", "num-2"]
+      "listeningOptionTargetIds": ["seize", "six", "sept", "quinze"]
+    },
+    {
+      "id": "dix-sept",
+      "term": "dix-sept",
+      "translations": { "en": ["seventeen"], "de": ["siebzehn"] },
+      "wordClass": "numeral",
+      "genders": [],
+      "number": null,
+      "teachingForm": "dix-sept",
+      "examForms": ["dix-sept"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/di.sɛt/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Lisez la page dix-sept.",
+        "translation": { "en": "Read page seventeen.", "de": "Lesen Sie Seite siebzehn." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Dix-sept is the number 17: ten plus seven.",
+        "fr": "Dix-sept est le nombre 17 : dix plus sept.",
+        "de": "Dix-sept ist die Zahl 17: zehn plus sieben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Dix plus sept font ",
+        "after": ".",
+        "accepted": { "answers": ["dix-sept"] },
+        "referenceTargetIds": ["dix-sept", "sept", "dix-huit", "dix"],
+        "explanation": {
+          "en": "Ten plus seven is seventeen, so only dix-sept fits.",
+          "fr": "Dix plus sept font dix-sept : seul « dix-sept » convient.",
+          "de": "Zehn plus sieben ist siebzehn, also passt nur „dix-sept“."
+        }
+      },
+      "listeningOptionTargetIds": ["dix-sept", "sept", "dix-huit", "dix"]
+    },
+    {
+      "id": "dix-huit",
+      "term": "dix-huit",
+      "translations": { "en": ["eighteen"], "de": ["achtzehn"] },
+      "wordClass": "numeral",
+      "genders": [],
+      "number": null,
+      "teachingForm": "dix-huit",
+      "examForms": ["dix-huit"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/di.zɥit/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Ma sœur a dix-huit ans.",
+        "translation": {
+          "en": "My sister is eighteen years old.",
+          "de": "Meine Schwester ist achtzehn Jahre alt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Dix-huit is the number 18: ten plus eight.",
+        "fr": "Dix-huit est le nombre 18 : dix plus huit.",
+        "de": "Dix-huit ist die Zahl 18: zehn plus acht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Neuf plus neuf font ",
+        "after": ".",
+        "accepted": { "answers": ["dix-huit"] },
+        "referenceTargetIds": ["dix-huit", "huit", "dix-neuf", "dix-sept"],
+        "explanation": {
+          "en": "Nine plus nine is eighteen, so only dix-huit fits.",
+          "fr": "Neuf plus neuf font dix-huit : seul « dix-huit » convient.",
+          "de": "Neun plus neun ist achtzehn, also passt nur „dix-huit“."
+        }
+      },
+      "listeningOptionTargetIds": ["dix-huit", "huit", "dix-neuf", "dix-sept"]
+    },
+    {
+      "id": "dix-neuf",
+      "term": "dix-neuf",
+      "translations": { "en": ["nineteen"], "de": ["neunzehn"] },
+      "wordClass": "numeral",
+      "genders": [],
+      "number": null,
+      "teachingForm": "dix-neuf",
+      "examForms": ["dix-neuf"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/diz.nœf/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Le bus dix-neuf passe ici.",
+        "translation": {
+          "en": "The number nineteen bus comes by here.",
+          "de": "Der Bus Nummer neunzehn kommt hier vorbei."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Dix-neuf is the number 19: ten plus nine.",
+        "fr": "Dix-neuf est le nombre 19 : dix plus neuf.",
+        "de": "Dix-neuf ist die Zahl 19: zehn plus neun."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Vingt moins un font ",
+        "after": ".",
+        "accepted": { "answers": ["dix-neuf"] },
+        "referenceTargetIds": ["dix-neuf", "neuf", "dix-huit", "vingt"],
+        "explanation": {
+          "en": "Twenty minus one is nineteen, so only dix-neuf fits.",
+          "fr": "Vingt moins un font dix-neuf : seul « dix-neuf » convient.",
+          "de": "Zwanzig minus eins ist neunzehn, also passt nur „dix-neuf“."
+        }
+      },
+      "listeningOptionTargetIds": ["dix-neuf", "neuf", "dix-huit", "vingt"]
+    },
+    {
+      "id": "vingt",
+      "term": "vingt",
+      "translations": { "en": ["twenty"], "de": ["zwanzig"] },
+      "wordClass": "numeral",
+      "genders": [],
+      "number": null,
+      "teachingForm": "vingt",
+      "examForms": ["vingt"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/vɛ̃/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Il y a vingt livres.",
+        "translation": { "en": "There are twenty books.", "de": "Es gibt zwanzig Bücher." }
+      },
+      "ambiguityNote": {
+        "en": "Said alone, vingt sounds like vɛ̃: the g and the t are silent.",
+        "fr": "Dit seul, vingt se prononce vɛ̃ : le g et le t ne se prononcent pas.",
+        "de": "Allein gesprochen klingt vingt wie vɛ̃: Das g und das t sind stumm."
+      },
+      "explanation": {
+        "en": "Vingt is the number 20. Said alone, it sounds like vɛ̃.",
+        "fr": "Vingt est le nombre 20. Dit seul, il se prononce vɛ̃.",
+        "de": "Vingt ist die Zahl 20. Allein gesprochen klingt es wie vɛ̃."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Dix plus dix font ",
+        "after": ".",
+        "accepted": { "answers": ["vingt"] },
+        "referenceTargetIds": ["vingt", "un", "dix", "cinq"],
+        "explanation": {
+          "en": "Ten plus ten is twenty, so only vingt fits.",
+          "fr": "Dix plus dix font vingt : seul « vingt » convient.",
+          "de": "Zehn plus zehn ist zwanzig, also passt nur „vingt“."
+        }
+      },
+      "listeningOptionTargetIds": ["vingt", "un", "dix", "cinq"]
     }
   ],
-  "scoring": {
-    "practiceWeight": 35,
-    "examWeight": 65,
-    "orthographyCredit": 0.5
-  }
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
 }

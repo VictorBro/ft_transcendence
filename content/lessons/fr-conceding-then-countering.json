@@ -1,0 +1,1195 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-conceding-then-countering",
+  "lang": "fr",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Concéder pour mieux contre-argumenter",
+  "objective": {
+    "en": "Acknowledge what is right in the opponent’s argument before putting forward your own, with « Je vous accorde que… », « C’est vrai, sauf que… » and « Admettons, mais… ».",
+    "fr": "Reconnaître ce qu’il y a de juste dans l’argument adverse avant d’opposer le sien, avec « Je vous accorde que… », « C’est vrai, sauf que… » et « Admettons, mais… ».",
+    "de": "Anerkennen, was am Argument des Gegenübers stimmt, bevor man das eigene vorbringt: « Je vous accorde que… », « C’est vrai, sauf que… », « Admettons, mais… »."
+  },
+  "estimatedMinutes": 15,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:54:45.308Z",
+    "inputHashes": {
+      "outline": "0b7c44b4fcec107e0899a6c829dce519ef5bf4bb68004cd9445d85fa34011c4c",
+      "brief": "e3a38e6b7bc3d533b6130172b68e3f5107077bfc4224b546885f7879008a56c3"
+    }
+  },
+  "kind": "functions",
+  "theme": "language",
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "presentation",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "cards-expressions",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Recall each expression, then turn the card to check it.",
+            "fr": "Rappelez-vous chaque expression, puis retournez la carte pour vérifier.",
+            "de": "Erinnere dich an jeden Ausdruck und dreh dann die Karte um."
+          },
+          "items": [
+            {
+              "type": "function_flashcards",
+              "itemId": "cards-expressions",
+              "side": "expressions",
+              "ids": [
+                "je-vous-accorde",
+                "cest-vrai-sauf-que",
+                "admettons-mais",
+                "vous-navez-pas-tort",
+                "sur-ce-point"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue",
+      "stage": "dialogue",
+      "role": "presentation",
+      "label": { "en": "Dialogue", "fr": "Dialogue", "de": "Dialog" },
+      "pages": [
+        {
+          "pageId": "dialogue",
+          "estimatedDurationS": 140,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read and listen. Turn a line to see its translation and a note.",
+            "fr": "Lisez et écoutez. Retournez une réplique pour voir sa traduction et une remarque.",
+            "de": "Lies und hör zu. Dreh eine Zeile um, um Übersetzung und Hinweis zu sehen."
+          },
+          "items": [
+            {
+              "type": "function_dialogue",
+              "itemId": "dialogue",
+              "lines": [
+                {
+                  "lineId": "line-1",
+                  "roleId": "lambert",
+                  "text": "Pour moi, les applications sont la meilleure façon d’apprendre une langue.",
+                  "translation": {
+                    "en": "For me, apps are the best way to learn a language.",
+                    "de": "Für mich sind Apps der beste Weg, eine Sprache zu lernen."
+                  },
+                  "note": {
+                    "en": "Mrs Lambert states her position.",
+                    "fr": "Mme Lambert énonce sa position.",
+                    "de": "Frau Lambert nennt ihre Position."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-2",
+                  "roleId": "girard",
+                  "text": "Je vous accorde que c’est pratique, mais on n’apprend pas à parler avec un écran.",
+                  "translation": {
+                    "en": "I grant you that it is practical, but you do not learn to speak with a screen.",
+                    "de": "Ich gebe Ihnen recht, dass es praktisch ist, aber mit einem Bildschirm lernt man nicht sprechen."
+                  },
+                  "note": {
+                    "en": "He concedes a fact, then counters with mais.",
+                    "fr": "Il concède un fait, puis contre-argumente avec mais.",
+                    "de": "Er räumt eine Tatsache ein und widerspricht dann mit mais."
+                  },
+                  "expressionIds": ["je-vous-accorde"]
+                },
+                {
+                  "lineId": "line-3",
+                  "roleId": "lambert",
+                  "text": "C’est vrai, sauf que beaucoup d’applications proposent maintenant des conversations en direct.",
+                  "translation": {
+                    "en": "That’s true, except that many apps now offer live conversations.",
+                    "de": "Das stimmt, nur bieten viele Apps inzwischen Live-Gespräche an."
+                  },
+                  "note": {
+                    "en": "Sauf que introduces the limit of his objection.",
+                    "fr": "Sauf que introduit la limite de son objection.",
+                    "de": "Sauf que nennt die Grenze seines Einwands."
+                  },
+                  "expressionIds": ["cest-vrai-sauf-que"]
+                },
+                {
+                  "lineId": "line-4",
+                  "roleId": "girard",
+                  "text": "Admettons, mais un professeur corrige vos erreurs et vous motive.",
+                  "translation": {
+                    "en": "Let’s grant that, but a teacher corrects your mistakes and motivates you.",
+                    "de": "Nehmen wir an, aber ein Lehrer korrigiert Ihre Fehler und motiviert Sie."
+                  },
+                  "note": {
+                    "en": "He accepts the point with some distance, then objects.",
+                    "fr": "Il accepte le point avec distance, puis s’y oppose.",
+                    "de": "Er lässt den Punkt mit Abstand gelten und widerspricht dann."
+                  },
+                  "expressionIds": ["admettons-mais"]
+                },
+                {
+                  "lineId": "line-5",
+                  "roleId": "lambert",
+                  "text": "Vous n’avez pas tort, mais une application me corrige aussi, à toute heure.",
+                  "translation": {
+                    "en": "You’re not wrong, but an app corrects me too, at any hour.",
+                    "de": "Sie haben nicht unrecht, aber eine App korrigiert mich auch, zu jeder Uhrzeit."
+                  },
+                  "note": {
+                    "en": "A measured agreement before her counter-argument.",
+                    "fr": "Un accord mesuré avant son contre-argument.",
+                    "de": "Eine abgemilderte Zustimmung vor ihrem Gegenargument."
+                  },
+                  "expressionIds": ["vous-navez-pas-tort"]
+                },
+                {
+                  "lineId": "line-6",
+                  "roleId": "girard",
+                  "text": "Et les abonnements ? Certains coûtent presque aussi cher qu’un cours.",
+                  "translation": {
+                    "en": "And the subscriptions? Some cost almost as much as a class.",
+                    "de": "Und die Abonnements? Manche kosten fast so viel wie ein Kurs."
+                  },
+                  "note": {
+                    "en": "He raises a new argument: the price.",
+                    "fr": "Il avance un nouvel argument : le prix.",
+                    "de": "Er bringt ein neues Argument: den Preis."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-7",
+                  "roleId": "lambert",
+                  "text": "Sur ce point, vous avez raison, mais il existe des versions gratuites très correctes.",
+                  "translation": {
+                    "en": "On this point, you are right, but there are free versions that are quite good.",
+                    "de": "In diesem Punkt haben Sie recht, aber es gibt sehr brauchbare kostenlose Versionen."
+                  },
+                  "note": {
+                    "en": "She limits her agreement to the price only.",
+                    "fr": "Elle limite son accord au seul prix.",
+                    "de": "Sie beschränkt ihre Zustimmung auf den Preis."
+                  },
+                  "expressionIds": ["sur-ce-point"]
+                },
+                {
+                  "lineId": "line-8",
+                  "roleId": "girard",
+                  "text": "Peut-être. Mais comment vérifier le sérieux de ces applications ?",
+                  "translation": {
+                    "en": "Perhaps. But how can you check how reliable these apps are?",
+                    "de": "Vielleicht. Aber wie prüft man, wie seriös diese Apps sind?"
+                  },
+                  "note": {
+                    "en": "A short, cooler concession, then a question.",
+                    "fr": "Une brève concession plus froide, puis une question.",
+                    "de": "Ein knappes, kühleres Zugeständnis, dann eine Frage."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-9",
+                  "roleId": "lambert",
+                  "text": "On peut lire les avis et tester plusieurs versions gratuites avant de choisir.",
+                  "translation": {
+                    "en": "You can read the reviews and try several free versions before choosing.",
+                    "de": "Man kann Bewertungen lesen und mehrere kostenlose Versionen testen, bevor man wählt."
+                  },
+                  "note": {
+                    "en": "She answers with a practical solution.",
+                    "fr": "Elle répond par une solution pratique.",
+                    "de": "Sie antwortet mit einer praktischen Lösung."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-10",
+                  "roleId": "girard",
+                  "text": "Eh bien, utilisez les deux : l’application pour s’entraîner, le cours pour parler.",
+                  "translation": {
+                    "en": "Well, use both: the app to practise, the class to speak.",
+                    "de": "Nun, nutzen Sie beides: die App zum Üben, den Kurs zum Sprechen."
+                  },
+                  "note": {
+                    "en": "After the concessions, a compromise.",
+                    "fr": "Après les concessions, un compromis.",
+                    "de": "Nach den Zugeständnissen ein Kompromiss."
+                  },
+                  "expressionIds": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "match-expressions-1",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each expression with its translation.",
+            "fr": "Associez chaque expression à sa traduction.",
+            "de": "Ordne jedem Ausdruck seine Übersetzung zu."
+          },
+          "items": [
+            {
+              "type": "function_matching",
+              "itemId": "match-expressions-1",
+              "side": "expressions",
+              "pairs": [
+                {
+                  "id": "je-vous-accorde",
+                  "answerExplanation": {
+                    "en": "Formal concession of a fact, followed by mais.",
+                    "fr": "Concession formelle d’un fait, suivie de mais.",
+                    "de": "Förmliches Zugeständnis einer Tatsache, gefolgt von mais."
+                  }
+                },
+                {
+                  "id": "cest-vrai-sauf-que",
+                  "answerExplanation": {
+                    "en": "Agrees, then gives the exception with sauf que.",
+                    "fr": "Approuve, puis donne l’exception avec sauf que.",
+                    "de": "Stimmt zu und nennt dann mit sauf que die Ausnahme."
+                  }
+                },
+                {
+                  "id": "admettons-mais",
+                  "answerExplanation": {
+                    "en": "Accepts a point with distance before objecting.",
+                    "fr": "Accepte un point avec distance avant de s’y opposer.",
+                    "de": "Lässt einen Punkt mit Abstand gelten, bevor man widerspricht."
+                  }
+                },
+                {
+                  "id": "vous-navez-pas-tort",
+                  "answerExplanation": {
+                    "en": "A measured agreement (litotes).",
+                    "fr": "Un accord mesuré (litote).",
+                    "de": "Eine abgemilderte Zustimmung (Litotes)."
+                  }
+                },
+                {
+                  "id": "sur-ce-point",
+                  "answerExplanation": {
+                    "en": "Agreement limited to one point.",
+                    "fr": "Un accord limité à un seul point.",
+                    "de": "Eine auf einen Punkt beschränkte Zustimmung."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-gaps",
+      "stage": "dialogue_gaps",
+      "role": "exercise",
+      "label": { "en": "Dialogue gaps", "fr": "Dialogue à trous", "de": "Dialoglücken" },
+      "pages": [
+        {
+          "pageId": "gap-1",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-1",
+              "expressionId": "je-vous-accorde",
+              "context": {
+                "roleId": "girard",
+                "text": "Les films en version originale sous-titrée aident vraiment à progresser."
+              },
+              "roleId": "lambert",
+              "before": "",
+              "after": "c’est utile, mais cela ne suffit pas pour apprendre à parler.",
+              "choiceExpressionIds": [
+                "je-vous-accorde",
+                "cest-vrai-sauf-que",
+                "admettons-mais",
+                "sur-ce-point"
+              ],
+              "answerExplanation": {
+                "en": "Je vous accorde que + a fact: she concedes it, then adds mais.",
+                "fr": "Je vous accorde que + un fait : elle le concède, puis ajoute mais.",
+                "de": "Je vous accorde que + eine Tatsache: Sie räumt sie ein und fügt dann mais an."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-2",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-2",
+              "expressionId": "cest-vrai-sauf-que",
+              "context": {
+                "roleId": "lambert",
+                "text": "Un cours collectif, c’est lent : on avance au rythme du plus faible."
+              },
+              "roleId": "girard",
+              "before": "",
+              "after": "le groupe motive et permet de parler.",
+              "choiceExpressionIds": [
+                "cest-vrai-sauf-que",
+                "vous-navez-pas-tort",
+                "je-vous-accorde",
+                "admettons-mais"
+              ],
+              "answerExplanation": {
+                "en": "He agrees, then sauf que introduces the advantage of the group.",
+                "fr": "Il approuve, puis sauf que introduit l’avantage du groupe.",
+                "de": "Er stimmt zu, dann nennt sauf que den Vorteil der Gruppe."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-3",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-3",
+              "expressionId": "admettons-mais",
+              "context": {
+                "roleId": "girard",
+                "text": "Avec les traducteurs automatiques, la grammaire ne sert presque plus à rien."
+              },
+              "roleId": "lambert",
+              "before": "",
+              "after": "la grammaire aide aussi à comprendre comment une langue fonctionne.",
+              "choiceExpressionIds": [
+                "admettons-mais",
+                "je-vous-accorde",
+                "vous-navez-pas-tort",
+                "sur-ce-point"
+              ],
+              "answerExplanation": {
+                "en": "She accepts the claim only for the sake of argument, then objects.",
+                "fr": "Elle n’accepte l’affirmation que pour la discussion, puis s’y oppose.",
+                "de": "Sie lässt die Behauptung nur für die Diskussion gelten und widerspricht dann."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-4",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-4",
+              "expressionId": "vous-navez-pas-tort",
+              "context": {
+                "roleId": "lambert",
+                "text": "Sans patience, on abandonne au bout de trois semaines."
+              },
+              "roleId": "girard",
+              "before": "",
+              "after": "sur la patience, mais la méthode compte autant.",
+              "choiceExpressionIds": [
+                "vous-navez-pas-tort",
+                "sur-ce-point",
+                "cest-vrai-sauf-que",
+                "admettons-mais"
+              ],
+              "answerExplanation": {
+                "en": "A measured agreement (litotes), then mais and the counter-argument.",
+                "fr": "Un accord mesuré (litote), puis mais et le contre-argument.",
+                "de": "Eine abgemilderte Zustimmung (Litotes), dann mais und das Gegenargument."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-5",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-5",
+              "expressionId": "sur-ce-point",
+              "context": {
+                "roleId": "girard",
+                "text": "Pour se perfectionner, un séjour à l’étranger reste irremplaçable."
+              },
+              "roleId": "lambert",
+              "before": "",
+              "after": "à cent pour cent, mais tout le monde ne peut pas partir.",
+              "choiceExpressionIds": [
+                "sur-ce-point",
+                "vous-navez-pas-tort",
+                "je-vous-accorde",
+                "cest-vrai-sauf-que"
+              ],
+              "answerExplanation": {
+                "en": "She fully agrees on one point, then limits it with mais.",
+                "fr": "Elle approuve pleinement un point, puis le limite avec mais.",
+                "de": "Sie stimmt einem Punkt voll zu und schränkt ihn dann mit mais ein."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "word-order",
+      "stage": "word_order",
+      "role": "exercise",
+      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
+      "pages": [
+        {
+          "pageId": "order-1",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-1",
+              "expressionId": "je-vous-accorde",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Je" },
+                { "tokenId": "t2", "text": "vous" },
+                { "tokenId": "t3", "text": "accorde" },
+                { "tokenId": "t4", "text": "que" },
+                { "tokenId": "t5", "text": "le" },
+                { "tokenId": "t6", "text": "prix" },
+                { "tokenId": "t7", "text": "compte," },
+                { "tokenId": "t8", "text": "mais" },
+                { "tokenId": "t9", "text": "pas" },
+                { "tokenId": "t10", "text": "seulement." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9", "t10"]],
+              "answerExplanation": {
+                "en": "The concession comes first, then mais and the counter-argument.",
+                "fr": "La concession vient d’abord, puis mais et le contre-argument.",
+                "de": "Zuerst das Zugeständnis, dann mais und das Gegenargument."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-2",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-2",
+              "expressionId": "cest-vrai-sauf-que",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "C’est" },
+                { "tokenId": "t2", "text": "vrai," },
+                { "tokenId": "t3", "text": "sauf" },
+                { "tokenId": "t4", "text": "que" },
+                { "tokenId": "t5", "text": "personne" },
+                { "tokenId": "t6", "text": "ne" },
+                { "tokenId": "t7", "text": "parle" },
+                { "tokenId": "t8", "text": "pendant" },
+                { "tokenId": "t9", "text": "les" },
+                { "tokenId": "t10", "text": "cours." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9", "t10"]],
+              "answerExplanation": {
+                "en": "C’est vrai first, then sauf que and the exception.",
+                "fr": "C’est vrai d’abord, puis sauf que et l’exception.",
+                "de": "Zuerst C’est vrai, dann sauf que und die Ausnahme."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-3",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-3",
+              "expressionId": "admettons-mais",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Admettons," },
+                { "tokenId": "t2", "text": "mais" },
+                { "tokenId": "t3", "text": "cela" },
+                { "tokenId": "t4", "text": "ne" },
+                { "tokenId": "t5", "text": "change" },
+                { "tokenId": "t6", "text": "pas" },
+                { "tokenId": "t7", "text": "le" },
+                { "tokenId": "t8", "text": "problème" },
+                { "tokenId": "t9", "text": "de" },
+                { "tokenId": "t10", "text": "fond." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9", "t10"]],
+              "answerExplanation": {
+                "en": "Admettons, mais opens the sentence and the objection follows.",
+                "fr": "Admettons, mais ouvre la phrase et l’objection suit.",
+                "de": "Admettons, mais eröffnet den Satz, dann folgt der Einwand."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-4",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-4",
+              "expressionId": "vous-navez-pas-tort",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Vous" },
+                { "tokenId": "t2", "text": "n’avez" },
+                { "tokenId": "t3", "text": "pas" },
+                { "tokenId": "t4", "text": "tort," },
+                { "tokenId": "t5", "text": "mais" },
+                { "tokenId": "t6", "text": "il" },
+                { "tokenId": "t7", "text": "faut" },
+                { "tokenId": "t8", "text": "nuancer." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8"]],
+              "answerExplanation": {
+                "en": "Vous n’avez pas tort is followed by mais and the nuance.",
+                "fr": "Vous n’avez pas tort est suivi de mais et de la nuance.",
+                "de": "Auf Vous n’avez pas tort folgen mais und die Nuance."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-5",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-5",
+              "expressionId": "sur-ce-point",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Sur" },
+                { "tokenId": "t2", "text": "ce" },
+                { "tokenId": "t3", "text": "point," },
+                { "tokenId": "t4", "text": "vous" },
+                { "tokenId": "t5", "text": "avez" },
+                { "tokenId": "t6", "text": "raison," },
+                { "tokenId": "t7", "text": "mais" },
+                { "tokenId": "t8", "text": "le" },
+                { "tokenId": "t9", "text": "reste" },
+                { "tokenId": "t10", "text": "est" },
+                { "tokenId": "t11", "text": "discutable." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [
+                ["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9", "t10", "t11"]
+              ],
+              "answerExplanation": {
+                "en": "The agreement is limited to « ce point », the rest is disputed.",
+                "fr": "L’accord est limité à « ce point », le reste est contesté.",
+                "de": "Die Zustimmung gilt nur für « ce point », der Rest wird bestritten."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "listening",
+      "stage": "listening",
+      "role": "exercise",
+      "label": { "en": "Listening", "fr": "Écoute", "de": "Hören" },
+      "pages": [
+        {
+          "pageId": "listening-1",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-1",
+              "expressionId": "je-vous-accorde",
+              "context": {
+                "roleId": "girard",
+                "text": "Les applications, c’est gratuit et on peut s’entraîner n’importe où."
+              },
+              "roleId": "lambert",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "Je vous accorde que c’est pratique, mais on manque de conversation."
+                },
+                { "optionId": "o2", "text": "Parce que le cours commence à huit heures." },
+                { "optionId": "o3", "text": "Excusez-moi, je termine ma phrase." },
+                { "optionId": "o4", "text": "Tout d’abord, il faut s’inscrire." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "She concedes the practical side, then objects with mais.",
+                "fr": "Elle concède l’aspect pratique, puis objecte avec mais.",
+                "de": "Sie räumt den praktischen Aspekt ein und widerspricht dann mit mais."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-2",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-2",
+              "expressionId": "cest-vrai-sauf-que",
+              "context": {
+                "roleId": "lambert",
+                "text": "Un professeur particulier coûte trop cher pour la plupart des gens."
+              },
+              "roleId": "girard",
+              "options": [
+                { "optionId": "o1", "text": "Il est parti hier soir à Lyon." },
+                {
+                  "optionId": "o2",
+                  "text": "C’est vrai, sauf que les cours en groupe sont bien moins chers."
+                },
+                { "optionId": "o3", "text": "Bonne idée, allons déjeuner." },
+                { "optionId": "o4", "text": "Les cours commencent en septembre." }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "He agrees about private lessons, then names the cheaper alternative.",
+                "fr": "Il approuve pour les cours particuliers, puis cite l’alternative moins chère.",
+                "de": "Er stimmt bei Privatunterricht zu und nennt dann die günstigere Alternative."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-3",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-3",
+              "expressionId": "admettons-mais",
+              "context": {
+                "roleId": "girard",
+                "text": "Les traducteurs automatiques rendront bientôt l’apprentissage inutile."
+              },
+              "roleId": "lambert",
+              "options": [
+                { "optionId": "o1", "text": "Oui, j’ai pris le train de huit heures." },
+                { "optionId": "o2", "text": "Je vous remercie pour le café." },
+                { "optionId": "o3", "text": "Admettons, mais traduire n’est pas comprendre." },
+                { "optionId": "o4", "text": "Elle habite à côté de la gare." }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "She accepts the claim for the sake of argument, then objects.",
+                "fr": "Elle accepte l’affirmation pour la discussion, puis objecte.",
+                "de": "Sie lässt die Behauptung für die Diskussion gelten und widerspricht dann."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-4",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-4",
+              "expressionId": "vous-navez-pas-tort",
+              "context": {
+                "roleId": "lambert",
+                "text": "L’immersion reste le meilleur moyen de progresser vite."
+              },
+              "roleId": "girard",
+              "options": [
+                { "optionId": "o1", "text": "Il pleut beaucoup à Paris en automne." },
+                { "optionId": "o2", "text": "Je prendrai un jus d’orange." },
+                { "optionId": "o3", "text": "Mon voisin apprend l’italien depuis longtemps." },
+                {
+                  "optionId": "o4",
+                  "text": "Vous n’avez pas tort, mais tout le monde ne peut pas partir à l’étranger."
+                }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "He agrees in a measured way, then points out a limit.",
+                "fr": "Il approuve de façon mesurée, puis signale une limite.",
+                "de": "Er stimmt abgemildert zu und nennt dann eine Grenze."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-5",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-5",
+              "expressionId": "sur-ce-point",
+              "context": {
+                "roleId": "girard",
+                "text": "L’abonnement coûte douze euros par mois, c’est raisonnable."
+              },
+              "roleId": "lambert",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "Sur ce point, vous avez raison, mais le contenu est limité."
+                },
+                { "optionId": "o2", "text": "Le train part à quinze heures." },
+                { "optionId": "o3", "text": "Nous avons visité le musée hier." },
+                { "optionId": "o4", "text": "Il fait beau aujourd’hui." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "She agrees on the price only, then criticises the content.",
+                "fr": "Elle approuve seulement pour le prix, puis critique le contenu.",
+                "de": "Sie stimmt nur beim Preis zu und kritisiert dann den Inhalt."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam-replies-1",
+          "estimatedDurationS": 120,
+          "timeLimitS": 180,
+          "instructions": {
+            "en": "Build the answer. Not every word fits.",
+            "fr": "Construisez la réponse. Tous les mots ne servent pas.",
+            "de": "Bilde die Antwort. Nicht jedes Wort passt."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "reply-1",
+              "expressionId": "je-vous-accorde",
+              "context": {
+                "roleId": "girard",
+                "text": "Le cours en ligne est tout de même moins cher que le cours en classe."
+              },
+              "roleId": "lambert",
+              "tokens": [
+                { "tokenId": "t1", "text": "Je" },
+                { "tokenId": "t2", "text": "vous" },
+                { "tokenId": "t3", "text": "accorde" },
+                { "tokenId": "t4", "text": "que" },
+                { "tokenId": "t5", "text": "c’est" },
+                { "tokenId": "t6", "text": "moins" },
+                { "tokenId": "t7", "text": "cher," },
+                { "tokenId": "t8", "text": "mais" },
+                { "tokenId": "t9", "text": "la" },
+                { "tokenId": "t10", "text": "qualité" },
+                { "tokenId": "t11", "text": "est" },
+                { "tokenId": "t12", "text": "inégale." },
+                { "tokenId": "t13", "text": "accordes" },
+                { "tokenId": "t14", "text": "qualités" }
+              ],
+              "distractorTokenIds": ["t13", "t14"],
+              "acceptedOrders": [
+                ["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9", "t10", "t11", "t12"]
+              ],
+              "answerExplanation": {
+                "en": "Je vous accorde que + fact, then mais + the counter-argument.",
+                "fr": "Je vous accorde que + fait, puis mais + le contre-argument.",
+                "de": "Je vous accorde que + Tatsache, dann mais + das Gegenargument."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-2",
+              "expressionId": "cest-vrai-sauf-que",
+              "context": {
+                "roleId": "lambert",
+                "text": "Les sous-titres en français m’aident beaucoup à comprendre les séries."
+              },
+              "roleId": "girard",
+              "tokens": [
+                { "tokenId": "t1", "text": "C’est" },
+                { "tokenId": "t2", "text": "vrai," },
+                { "tokenId": "t3", "text": "sauf" },
+                { "tokenId": "t4", "text": "que" },
+                { "tokenId": "t5", "text": "les" },
+                { "tokenId": "t6", "text": "sous-titres" },
+                { "tokenId": "t7", "text": "détournent" },
+                { "tokenId": "t8", "text": "l’oreille." },
+                { "tokenId": "t9", "text": "détourne" },
+                { "tokenId": "t10", "text": "ce" }
+              ],
+              "distractorTokenIds": ["t9", "t10"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8"]],
+              "answerExplanation": {
+                "en": "The verb agrees with the plural subject: les sous-titres détournent.",
+                "fr": "Le verbe s’accorde avec le sujet pluriel : les sous-titres détournent.",
+                "de": "Das Verb richtet sich nach dem Plural: les sous-titres détournent."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-3",
+              "expressionId": "admettons-mais",
+              "context": {
+                "roleId": "lambert",
+                "text": "Les jeunes apprennent mieux sur leur téléphone que dans une salle de classe."
+              },
+              "roleId": "girard",
+              "tokens": [
+                { "tokenId": "t1", "text": "Admettons," },
+                { "tokenId": "t2", "text": "mais" },
+                { "tokenId": "t3", "text": "cela" },
+                { "tokenId": "t4", "text": "dépend" },
+                { "tokenId": "t5", "text": "beaucoup" },
+                { "tokenId": "t6", "text": "de" },
+                { "tokenId": "t7", "text": "la" },
+                { "tokenId": "t8", "text": "motivation." },
+                { "tokenId": "t9", "text": "dépendent" },
+                { "tokenId": "t10", "text": "pour" }
+              ],
+              "distractorTokenIds": ["t9", "t10"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8"]],
+              "answerExplanation": {
+                "en": "Cela is singular, so the verb is dépend.",
+                "fr": "Cela est singulier, donc le verbe est dépend.",
+                "de": "Cela steht im Singular, deshalb heißt das Verb dépend."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-4",
+              "expressionId": "vous-navez-pas-tort",
+              "context": {
+                "roleId": "girard",
+                "text": "Sans professeur, la plupart des gens abandonnent après un mois."
+              },
+              "roleId": "lambert",
+              "tokens": [
+                { "tokenId": "t1", "text": "Vous" },
+                { "tokenId": "t2", "text": "n’avez" },
+                { "tokenId": "t3", "text": "pas" },
+                { "tokenId": "t4", "text": "tort," },
+                { "tokenId": "t5", "text": "mais" },
+                { "tokenId": "t6", "text": "l’application" },
+                { "tokenId": "t7", "text": "envoie" },
+                { "tokenId": "t8", "text": "des" },
+                { "tokenId": "t9", "text": "rappels" },
+                { "tokenId": "t10", "text": "chaque" },
+                { "tokenId": "t11", "text": "jour." },
+                { "tokenId": "t12", "text": "envoient" },
+                { "tokenId": "t13", "text": "ne" }
+              ],
+              "distractorTokenIds": ["t12", "t13"],
+              "acceptedOrders": [
+                ["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9", "t10", "t11"]
+              ],
+              "answerExplanation": {
+                "en": "The agreement comes first, then mais and the counter-argument.",
+                "fr": "L’accord vient d’abord, puis mais et le contre-argument.",
+                "de": "Zuerst die Zustimmung, dann mais und das Gegenargument."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-dialogue",
+          "estimatedDurationS": 180,
+          "timeLimitS": 270,
+          "instructions": {
+            "en": "Fill each gap with an expression from this lesson.",
+            "fr": "Complétez chaque trou avec une expression de la leçon.",
+            "de": "Fülle jede Lücke mit einem Ausdruck aus dieser Lektion."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_typing",
+              "itemId": "exam-dialogue",
+              "lines": [
+                {
+                  "lineId": "exam-line-1",
+                  "roleId": "lambert",
+                  "before": "Je pense qu’on devrait enseigner une deuxième langue dès l’école primaire.",
+                  "translation": {
+                    "en": "I think a second language should be taught from primary school.",
+                    "de": "Ich finde, man sollte schon in der Grundschule eine zweite Sprache unterrichten."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-2",
+                  "roleId": "girard",
+                  "before": "",
+                  "translation": {
+                    "en": "I grant you that children learn quickly, but the classes are already overcrowded.",
+                    "de": "Ich gebe Ihnen recht, dass Kinder schnell lernen, aber die Klassen sind schon überfüllt."
+                  },
+                  "gap": {
+                    "gapId": "gap-1",
+                    "expressionId": "je-vous-accorde",
+                    "accepted": { "answers": ["Je vous accorde que"] },
+                    "answerExplanation": {
+                      "en": "He concedes a fact: Je vous accorde que.",
+                      "fr": "Il concède un fait : Je vous accorde que.",
+                      "de": "Er räumt eine Tatsache ein: Je vous accorde que."
+                    }
+                  },
+                  "after": "les enfants apprennent vite, mais les classes sont déjà surchargées."
+                },
+                {
+                  "lineId": "exam-line-3",
+                  "roleId": "lambert",
+                  "before": "",
+                  "translation": {
+                    "en": "That’s true, except that small-group classes do not necessarily cost more.",
+                    "de": "Das stimmt, nur kosten Kurse in kleinen Gruppen nicht unbedingt mehr."
+                  },
+                  "gap": {
+                    "gapId": "gap-2",
+                    "expressionId": "cest-vrai-sauf-que",
+                    "accepted": { "answers": ["C’est vrai, sauf que"] },
+                    "answerExplanation": {
+                      "en": "She agrees, then gives the limit: C’est vrai, sauf que.",
+                      "fr": "Elle approuve, puis donne la limite : C’est vrai, sauf que.",
+                      "de": "Sie stimmt zu und nennt die Grenze: C’est vrai, sauf que."
+                    }
+                  },
+                  "after": "des cours en petits groupes ne coûtent pas forcément plus cher."
+                },
+                {
+                  "lineId": "exam-line-4",
+                  "roleId": "girard",
+                  "before": "",
+                  "translation": {
+                    "en": "Let’s grant that, but who will pay for training all these teachers?",
+                    "de": "Nehmen wir an, aber wer bezahlt die Ausbildung all dieser Lehrkräfte?"
+                  },
+                  "gap": {
+                    "gapId": "gap-3",
+                    "expressionId": "admettons-mais",
+                    "accepted": { "answers": ["Admettons, mais"] },
+                    "answerExplanation": {
+                      "en": "He accepts the point at a distance: Admettons, mais.",
+                      "fr": "Il accepte le point à distance : Admettons, mais.",
+                      "de": "Er lässt den Punkt mit Abstand gelten: Admettons, mais."
+                    }
+                  },
+                  "after": "qui paiera la formation de tous ces enseignants ?"
+                },
+                {
+                  "lineId": "exam-line-5",
+                  "roleId": "lambert",
+                  "before": "L’État, bien sûr, comme pour les autres matières.",
+                  "translation": {
+                    "en": "The State, of course, as for the other subjects.",
+                    "de": "Der Staat natürlich, wie bei den anderen Fächern."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-6",
+                  "roleId": "girard",
+                  "before": "",
+                  "translation": {
+                    "en": "You’re not wrong in principle, but the education budget is already very tight.",
+                    "de": "Im Prinzip haben Sie nicht unrecht, aber das Bildungsbudget ist schon sehr knapp."
+                  },
+                  "gap": {
+                    "gapId": "gap-4",
+                    "expressionId": "vous-navez-pas-tort",
+                    "accepted": { "answers": ["Vous n’avez pas tort"] },
+                    "answerExplanation": {
+                      "en": "A measured agreement: Vous n’avez pas tort.",
+                      "fr": "Un accord mesuré : Vous n’avez pas tort.",
+                      "de": "Eine abgemilderte Zustimmung: Vous n’avez pas tort."
+                    }
+                  },
+                  "after": "sur le principe, mais le budget de l’éducation est déjà très limité."
+                },
+                {
+                  "lineId": "exam-line-7",
+                  "roleId": "lambert",
+                  "before": "",
+                  "translation": {
+                    "en": "On this point you are partly right, but the budget could be reorganised rather than increased.",
+                    "de": "In diesem Punkt haben Sie teilweise recht, aber man könnte das Budget umschichten, statt es zu erhöhen."
+                  },
+                  "gap": {
+                    "gapId": "gap-5",
+                    "expressionId": "sur-ce-point",
+                    "accepted": { "answers": ["Sur ce point, vous avez raison"] },
+                    "answerExplanation": {
+                      "en": "Agreement on one point only: Sur ce point, vous avez raison.",
+                      "fr": "Un accord sur un seul point : Sur ce point, vous avez raison.",
+                      "de": "Zustimmung nur in einem Punkt: Sur ce point, vous avez raison."
+                    }
+                  },
+                  "after": "en partie, mais on peut réorganiser le budget plutôt que l’augmenter."
+                },
+                {
+                  "lineId": "exam-line-8",
+                  "roleId": "girard",
+                  "before": "On pourrait commencer par quelques écoles pilotes.",
+                  "translation": {
+                    "en": "We could start with a few pilot schools.",
+                    "de": "Man könnte mit ein paar Pilotschulen beginnen."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-9",
+                  "roleId": "lambert",
+                  "before": "Bonne idée ; nous pourrions en reparler lors de la prochaine réunion.",
+                  "translation": {
+                    "en": "Good idea; we could discuss it again at the next meeting.",
+                    "de": "Gute Idee; wir könnten bei der nächsten Sitzung noch einmal darüber sprechen."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-10",
+                  "roleId": "girard",
+                  "before": "Entendu, nous en reparlerons.",
+                  "translation": {
+                    "en": "Agreed, we will talk about it again.",
+                    "de": "Einverstanden, wir werden darüber noch einmal sprechen."
+                  },
+                  "gap": null,
+                  "after": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

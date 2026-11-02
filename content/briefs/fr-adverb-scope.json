@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-adverb-scope",
+  "lang": "fr",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Où placer l’adverbe ? Seulement, même, heureusement",
+  "objective": {
+    "en": "Place an adverb to target the right element (sentence, verb or a precise word) and see how its position changes the meaning: heureusement, seulement, même, ne… que.",
+    "fr": "Placer un adverbe pour viser le bon élément (phrase, verbe ou mot précis) et mesurer comment sa position change le sens : heureusement, seulement, même, ne… que.",
+    "de": "Ein Adverb so platzieren, dass es sich auf das richtige Element bezieht (Satz, Verb oder ein Wort), und sehen, wie seine Stellung die Bedeutung ändert: heureusement, seulement, même, ne… que."
+  },
+  "estimatedMinutes": 18,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:00:57.968Z",
+    "inputHashes": { "outline": "3fe79df4643224a01dc5d750aac491a063bf0071c9a13a8f505c9470bbce3d6f" }
+  },
+  "kind": "grammar",
+  "topic": "adverbs",
+  "scopeBoundaries": {
+    "en": "Covers sentence adverbs, manner adverbs and focus adverbs (seulement, même, surtout, ne… que) and their position. Excludes adverbs of time and degree, and the vocabulary of judging adverbs taught elsewhere.",
+    "fr": "Couvre les adverbes de phrase, de manière et de focalisation (seulement, même, surtout, ne… que) et leur place. Exclut les adverbes de temps et de degré, et le lexique des adverbes de jugement vu ailleurs.",
+    "de": "Behandelt Satzadverbien, Adverbien der Art und Weise und Fokusadverbien (seulement, même, surtout, ne… que) und ihre Stellung. Ausgeschlossen sind Zeit- und Gradadverbien sowie der Wortschatz der Urteilsadverbien, der anderswo behandelt wird."
+  },
+  "prerequisites": [
+    {
+      "en": "Adverbs in -ment (heureusement, calmement, franchement)",
+      "fr": "Les adverbes en -ment (heureusement, calmement, franchement)",
+      "de": "Adverbien auf -ment (heureusement, calmement, franchement)"
+    },
+    {
+      "en": "The passé composé and the negation ne… pas",
+      "fr": "Le passé composé et la négation ne… pas",
+      "de": "Das passé composé und die Verneinung ne… pas"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-sentence-adverb",
+      "summary": {
+        "en": "A sentence adverb (heureusement, malheureusement, franchement) comments on the whole sentence; it is usually set off at the start by a comma.",
+        "fr": "Un adverbe de phrase (heureusement, malheureusement, franchement) commente toute la phrase ; il est souvent placé en tête, suivi d’une virgule.",
+        "de": "Ein Satzadverb (heureusement, malheureusement, franchement) kommentiert den ganzen Satz; es steht meist am Anfang mit Komma."
+      }
+    },
+    {
+      "id": "rule-manner-adverb",
+      "summary": {
+        "en": "A manner adverb placed after the verb describes how the action is done; at the start with a comma, the same adverb judges the action.",
+        "fr": "Un adverbe de manière placé après le verbe décrit comment l’action se fait ; en tête avec une virgule, le même adverbe juge l’action.",
+        "de": "Ein Adverb der Art und Weise nach dem Verb beschreibt, wie etwas geschieht; am Anfang mit Komma bewertet dasselbe Adverb die Handlung."
+      }
+    },
+    {
+      "id": "rule-focus-adverb",
+      "summary": {
+        "en": "A focus adverb (seulement, même, surtout) points at the word right after it; moving it changes what it targets and the meaning.",
+        "fr": "Un adverbe de focalisation (seulement, même, surtout) vise le mot qui le suit ; le déplacer change l’élément visé et le sens.",
+        "de": "Ein Fokusadverb (seulement, même, surtout) bezieht sich auf das Wort direkt dahinter; verschiebt man es, ändern sich Bezug und Bedeutung."
+      }
+    },
+    {
+      "id": "rule-ne-que",
+      "summary": {
+        "en": "ne… que around the verb means only and targets the element right after que without any doubt; do not use seulement in place of que after ne (ne… pas seulement = not only is correct).",
+        "fr": "ne… que autour du verbe signifie seulement et vise sans ambiguïté l’élément placé après que ; seulement ne remplace pas que après ne (ne… pas seulement = non seulement est correct).",
+        "de": "ne… que um das Verb bedeutet nur und bezieht sich eindeutig auf das Element nach que; seulement ersetzt nach ne nicht que (ne… pas seulement = nicht nur ist korrekt)."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-sentence",
+      "title": {
+        "en": "Sentence adverb or manner adverb",
+        "fr": "Adverbe de phrase ou de manière",
+        "de": "Satzadverb oder Adverb der Art und Weise"
+      },
+      "ruleIds": ["rule-sentence-adverb", "rule-manner-adverb"],
+      "explanationPlan": {
+        "en": "Contrast the comment on the whole sentence (Heureusement, il a compris) with the manner after the verb (Il a répondu sagement) and with the same adverb at the start (Sagement, il a répondu). Note that heureusement barely changes meaning inside the verb group, but sagement can be ambiguous.",
+        "fr": "Opposer le commentaire sur toute la phrase (Heureusement, il a compris) à la manière après le verbe (Il a répondu sagement) et au même adverbe en tête (Sagement, il a répondu). Noter que heureusement change peu le sens dans le groupe verbal, alors que sagement peut être ambigu.",
+        "de": "Den Kommentar zum ganzen Satz (Heureusement, il a compris) der Art und Weise nach dem Verb (Il a répondu sagement) und demselben Adverb am Anfang (Sagement, il a répondu) gegenüberstellen. Zeigen, dass heureusement in der Verbgruppe kaum etwas ändert, sagement aber mehrdeutig sein kann."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "Heureusement, il a compris.",
+          "translation": { "en": "Luckily, he understood.", "de": "Zum Glück hat er verstanden." }
+        },
+        {
+          "text": "Il a répondu sagement.",
+          "translation": { "en": "He answered wisely.", "de": "Er hat klug geantwortet." }
+        },
+        {
+          "text": "Sagement, il a répondu.",
+          "translation": {
+            "en": "It was wise of him to answer.",
+            "de": "Es war klug von ihm zu antworten."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not treat a manner adverb as a comment: Il a répondu sagement and Sagement, il a répondu do not mean the same thing.",
+          "fr": "Ne traitez pas un adverbe de manière comme un commentaire : Il a répondu sagement et Sagement, il a répondu n’ont pas le même sens.",
+          "de": "Behandle ein Adverb der Art und Weise nicht als Kommentar: Il a répondu sagement und Sagement, il a répondu bedeuten nicht dasselbe."
+        },
+        {
+          "en": "Between the auxiliary and the participle, a manner adverb can be ambiguous: move it after the verb to be clear.",
+          "fr": "Entre l’auxiliaire et le participe, un adverbe de manière peut être ambigu : placez-le après le verbe pour être clair.",
+          "de": "Zwischen Hilfsverb und Partizip kann ein Adverb der Art und Weise mehrdeutig sein: Setze es nach dem Verb, um klar zu sein."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-s-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-sentence-adverb", "rule-manner-adverb"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-s-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-sentence-adverb", "rule-manner-adverb"],
+          "estimatedDurationS": 72
+        },
+        {
+          "id": "ex-s-order",
+          "type": "grammar_word_order",
+          "itemCount": 4,
+          "ruleIds": ["rule-sentence-adverb", "rule-manner-adverb"],
+          "estimatedDurationS": 80
+        }
+      ]
+    },
+    {
+      "id": "block-focus",
+      "title": {
+        "en": "Focus adverbs: seulement, même, ne… que",
+        "fr": "Adverbes de focalisation : seulement, même, ne… que",
+        "de": "Fokusadverbien: seulement, même, ne… que"
+      },
+      "ruleIds": ["rule-focus-adverb", "rule-ne-que"],
+      "explanationPlan": {
+        "en": "Show that seulement and même point at the word right after them: Il a seulement lu le résumé vs Il a lu seulement le résumé, Même Paul a refusé vs Paul a même refusé. Then present ne… que as the unambiguous way to target one element.",
+        "fr": "Montrer que seulement et même visent le mot qui les suit : Il a seulement lu le résumé / Il a lu seulement le résumé, Même Paul a refusé / Paul a même refusé. Présenter ensuite ne… que comme moyen sans ambiguïté de viser un élément.",
+        "de": "Zeigen, dass seulement und même sich auf das folgende Wort beziehen: Il a seulement lu le résumé / Il a lu seulement le résumé, Même Paul a refusé / Paul a même refusé. Dann ne… que als eindeutige Möglichkeit vorstellen, ein Element zu fokussieren."
+      },
+      "explanationDurationS": 180,
+      "examples": [
+        {
+          "text": "Il a seulement lu le résumé.",
+          "translation": {
+            "en": "He merely read the summary.",
+            "de": "Er hat die Zusammenfassung nur gelesen."
+          }
+        },
+        {
+          "text": "Il n’a lu que le résumé.",
+          "translation": {
+            "en": "He read only the summary.",
+            "de": "Er hat nur die Zusammenfassung gelesen."
+          }
+        },
+        {
+          "text": "Même Paul a refusé.",
+          "translation": { "en": "Even Paul refused.", "de": "Sogar Paul hat abgelehnt." }
+        },
+        {
+          "text": "Paul a même refusé.",
+          "translation": { "en": "Paul even refused.", "de": "Paul hat sogar abgelehnt." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not use seulement in place of que after ne: say Il ne parle que français, not Il ne parle seulement français. Ne… pas seulement (not only) is correct: Il ne parle pas seulement français.",
+          "fr": "N’employez pas seulement à la place de que après ne : on dit Il ne parle que français, pas Il ne parle seulement français. Ne… pas seulement (non seulement) est correct : Il ne parle pas seulement français.",
+          "de": "Verwende seulement nach ne nicht anstelle von que: Es heißt Il ne parle que français, nicht Il ne parle seulement français. Ne… pas seulement (nicht nur) ist korrekt: Il ne parle pas seulement français."
+        },
+        {
+          "en": "Même before the subject and même after the auxiliary do not target the same thing.",
+          "fr": "Même devant le sujet et même après l’auxiliaire ne visent pas la même chose.",
+          "de": "Même vor dem Subjekt und même nach dem Hilfsverb beziehen sich nicht auf dasselbe."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-f-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-focus-adverb", "rule-ne-que"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-f-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-focus-adverb", "rule-ne-que"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-f-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-focus-adverb", "rule-ne-que"],
+          "estimatedDurationS": 72
+        },
+        {
+          "id": "ex-f-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["rule-focus-adverb", "rule-ne-que"],
+          "estimatedDurationS": 75
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-sentence",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["rule-sentence-adverb", "rule-manner-adverb"],
+        "estimatedDurationS": 75,
+        "timeLimitS": 120
+      },
+      {
+        "pageId": "exam-focus",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["rule-focus-adverb", "rule-ne-que"],
+        "estimatedDurationS": 75,
+        "timeLimitS": 120
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 4,
+        "ruleIds": [
+          "rule-sentence-adverb",
+          "rule-manner-adverb",
+          "rule-focus-adverb",
+          "rule-ne-que"
+        ],
+        "estimatedDurationS": 100,
+        "timeLimitS": 150
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

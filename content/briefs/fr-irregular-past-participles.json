@@ -1,0 +1,237 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-irregular-past-participles",
+  "lang": "fr",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Les participes passés irréguliers",
+  "objective": {
+    "en": "Tell a story in the passé composé with the most frequent irregular participles: mis, dit, écrit, lu, ouvert, pu, voulu, dû, su, connu, reçu.",
+    "fr": "Raconter au passé composé avec les participes irréguliers fréquents : mis, dit, écrit, lu, ouvert, pu, voulu, dû, su, connu, reçu.",
+    "de": "Im passé composé erzählen, mit den häufigsten unregelmäßigen Partizipien: mis, dit, écrit, lu, ouvert, pu, voulu, dû, su, connu, reçu."
+  },
+  "estimatedMinutes": 15,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:35:38.861Z",
+    "inputHashes": { "outline": "a830fbb6563661631e8a007f3de644aeb44e34fab607d9c305149544f6d4fd16" }
+  },
+  "kind": "grammar",
+  "topic": "verbs_morphology",
+  "scopeBoundaries": {
+    "en": "Covers avoir + irregular participle for eleven frequent verbs. Excludes être verbs, negation in the past, and agreement of the participle.",
+    "fr": "Couvre avoir + participe irrégulier pour onze verbes fréquents. Exclut les verbes avec être, la négation au passé et l'accord du participe.",
+    "de": "Behandelt avoir + unregelmäßiges Partizip bei elf häufigen Verben. Ausgeschlossen sind Verben mit être, die Verneinung in der Vergangenheit und die Angleichung des Partizips."
+  },
+  "prerequisites": [
+    {
+      "en": "The present of avoir and the regular passé composé with -é.",
+      "fr": "Le présent d'avoir et le passé composé régulier en -é.",
+      "de": "Das Präsens von avoir und das regelmäßige passé composé auf -é."
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-avoir-participle",
+      "summary": {
+        "en": "The passé composé is avoir in the present + a past participle; the participle does not change with the subject.",
+        "fr": "Le passé composé = avoir au présent + un participe passé, qui ne change pas avec le sujet.",
+        "de": "Das passé composé = avoir im Präsens + Partizip II, das sich nicht mit dem Subjekt ändert."
+      }
+    },
+    {
+      "id": "rule-participles-a",
+      "summary": {
+        "en": "Irregular participles: mettre → mis, dire → dit, écrire → écrit, lire → lu, ouvrir → ouvert.",
+        "fr": "Participes irréguliers : mettre → mis, dire → dit, écrire → écrit, lire → lu, ouvrir → ouvert.",
+        "de": "Unregelmäßige Partizipien: mettre → mis, dire → dit, écrire → écrit, lire → lu, ouvrir → ouvert."
+      }
+    },
+    {
+      "id": "rule-participles-b",
+      "summary": {
+        "en": "Irregular participles with the sound u: pouvoir → pu, vouloir → voulu, devoir → dû, savoir → su, connaître → connu, recevoir → reçu.",
+        "fr": "Participes irréguliers en son u : pouvoir → pu, vouloir → voulu, devoir → dû, savoir → su, connaître → connu, recevoir → reçu.",
+        "de": "Unregelmäßige Partizipien mit dem Laut u: pouvoir → pu, vouloir → voulu, devoir → dû, savoir → su, connaître → connu, recevoir → reçu."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-1",
+      "title": {
+        "en": "Past participles: mis, dit, écrit, lu, ouvert",
+        "fr": "Les participes : mis, dit, écrit, lu, ouvert",
+        "de": "Die Partizipien: mis, dit, écrit, lu, ouvert"
+      },
+      "ruleIds": ["rule-avoir-participle", "rule-participles-a"],
+      "explanationPlan": {
+        "en": "Recall that the passé composé uses avoir + participle. Present mettre/mis, dire/dit, écrire/écrit, lire/lu, ouvrir/ouvert as forms to learn by heart, and show that the participle does not change with the subject.",
+        "fr": "Rappeler que le passé composé se forme avec avoir + participe. Présenter mettre/mis, dire/dit, écrire/écrit, lire/lu, ouvrir/ouvert comme formes à apprendre par cœur et montrer que le participe ne change pas avec le sujet.",
+        "de": "Daran erinnern, dass das passé composé mit avoir + Partizip gebildet wird. mettre/mis, dire/dit, écrire/écrit, lire/lu, ouvrir/ouvert als auswendig zu lernende Formen zeigen und erklären, dass sich das Partizip nicht mit dem Subjekt ändert."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "J'ai mis mon manteau.",
+          "translation": { "en": "I put on my coat.", "de": "Ich habe meinen Mantel angezogen." }
+        },
+        {
+          "text": "Il a écrit un message.",
+          "translation": { "en": "He wrote a message.", "de": "Er hat eine Nachricht geschrieben." }
+        },
+        {
+          "text": "Nous avons lu ce livre.",
+          "translation": { "en": "We read this book.", "de": "Wir haben dieses Buch gelesen." }
+        },
+        {
+          "text": "Elle a ouvert la porte.",
+          "translation": { "en": "She opened the door.", "de": "Sie hat die Tür geöffnet." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not add -é or -i to the verb: say mis, not metté; ouvert, not ouvri.",
+          "fr": "N'ajoutez pas -é ou -i au verbe : on dit mis et non metté, ouvert et non ouvri.",
+          "de": "Hänge nicht -é oder -i an das Verb an: mis, nicht metté; ouvert, nicht ouvri."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-aux-persons",
+          "type": "grammar_person_matching",
+          "itemCount": 1,
+          "ruleIds": ["rule-avoir-participle"],
+          "estimatedDurationS": 90
+        },
+        {
+          "id": "ex-a-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-participles-a"],
+          "estimatedDurationS": 40
+        },
+        {
+          "id": "ex-a-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-avoir-participle", "rule-participles-a"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-a-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["rule-participles-a"],
+          "estimatedDurationS": 75
+        }
+      ]
+    },
+    {
+      "id": "block-2",
+      "title": {
+        "en": "Participles with the sound u: pu, voulu, dû, su, connu, reçu",
+        "fr": "Les participes en son u : pu, voulu, dû, su, connu, reçu",
+        "de": "Die Partizipien mit u: pu, voulu, dû, su, connu, reçu"
+      },
+      "ruleIds": ["rule-participles-b"],
+      "explanationPlan": {
+        "en": "Present pouvoir/pu, vouloir/voulu, devoir/dû, savoir/su, connaître/connu, recevoir/reçu. Name the accent circonflexe of dû and the cédille of reçu.",
+        "fr": "Présenter pouvoir/pu, vouloir/voulu, devoir/dû, savoir/su, connaître/connu, recevoir/reçu. Nommer l'accent circonflexe de dû et la cédille de reçu.",
+        "de": "pouvoir/pu, vouloir/voulu, devoir/dû, savoir/su, connaître/connu, recevoir/reçu vorstellen. Den Accent circonflexe bei dû und die Cédille bei reçu benennen."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "Nous avons pu venir.",
+          "translation": { "en": "We were able to come.", "de": "Wir haben kommen können." }
+        },
+        {
+          "text": "J'ai dû travailler.",
+          "translation": { "en": "I had to work.", "de": "Ich musste arbeiten." }
+        },
+        {
+          "text": "Il a su la réponse.",
+          "translation": { "en": "He knew the answer.", "de": "Er hat die Antwort gewusst." }
+        },
+        {
+          "text": "Vous avez reçu un colis.",
+          "translation": { "en": "You received a parcel.", "de": "Sie haben ein Paket erhalten." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not forget the accent circonflexe on dû and the cédille on reçu.",
+          "fr": "N'oubliez pas l'accent circonflexe sur dû et la cédille sur reçu.",
+          "de": "Vergiss nicht den Accent circonflexe bei dû und die Cédille bei reçu."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-b-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-participles-b"],
+          "estimatedDurationS": 40
+        },
+        {
+          "id": "ex-b-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-participles-b"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-b-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-participles-b"],
+          "estimatedDurationS": 60
+        }
+      ]
+    }
+  ],
+  "newVerbs": [
+    { "infinitive": "mettre", "translations": { "en": "to put", "de": "legen, stellen" } },
+    { "infinitive": "écrire", "translations": { "en": "to write", "de": "schreiben" } },
+    { "infinitive": "ouvrir", "translations": { "en": "to open", "de": "öffnen" } },
+    { "infinitive": "recevoir", "translations": { "en": "to receive", "de": "erhalten" } },
+    {
+      "infinitive": "connaître",
+      "translations": { "en": "to know (a person or place)", "de": "kennen" }
+    },
+    { "infinitive": "devoir", "translations": { "en": "to have to", "de": "müssen" } }
+  ],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-a",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-avoir-participle", "rule-participles-a"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      },
+      {
+        "pageId": "exam-b",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["rule-participles-b"],
+        "estimatedDurationS": 45,
+        "timeLimitS": 80
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-avoir-participle", "rule-participles-b"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 110
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

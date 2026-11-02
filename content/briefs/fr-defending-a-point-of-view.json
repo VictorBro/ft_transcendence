@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-defending-a-point-of-view",
+  "lang": "fr",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Défendre son point de vue",
+  "objective": {
+    "en": "Defend a position in a debate: announce it clearly, support it with two ranked arguments and conclude firmly.",
+    "fr": "Défendre une position dans un débat : l’annoncer, la soutenir par deux arguments hiérarchisés et conclure avec fermeté.",
+    "de": "Eine Position in einer Debatte vertreten: klar ankündigen, mit zwei gewichteten Argumenten stützen und entschieden schließen."
+  },
+  "estimatedMinutes": 13,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:53:52.672Z",
+    "inputHashes": { "outline": "f35d033e6f679321b6d70130f8d837394a83d583614dcd7512db2531ad377a0e" }
+  },
+  "kind": "functions",
+  "theme": "language",
+  "situation": {
+    "en": "In a radio debate, a moderator questions a debater who defends her position.",
+    "fr": "Dans un débat à la radio, un animateur interroge une débatteuse qui défend sa position.",
+    "de": "In einer Radiodebatte befragt ein Moderator eine Debattierende, die ihre Position vertritt."
+  },
+  "coverageNotes": {
+    "en": "Four expressions follow the speech: announcing the position (Je défends l’idée que), the main argument (Mon argument principal est que), the second argument (À cela s’ajoute le fait que) and the firm conclusion (Je suis fermement convaincue que).",
+    "fr": "Quatre expressions suivent le fil du discours : annoncer la position (Je défends l’idée que), l’argument principal (Mon argument principal est que), le second argument (À cela s’ajoute le fait que) et la conclusion ferme (Je suis fermement convaincue que).",
+    "de": "Vier Ausdrücke folgen dem Redeaufbau: die Position ankündigen (Je défends l’idée que), das Hauptargument (Mon argument principal est que), das zweite Argument (À cela s’ajoute le fait que) und der feste Schluss (Je suis fermement convaincue que)."
+  },
+  "prerequisites": [],
+  "roles": [
+    {
+      "id": "animateur",
+      "label": "l’animateur",
+      "translation": { "en": "the moderator", "de": "der Moderator" }
+    },
+    {
+      "id": "debatteuse",
+      "label": "la débatteuse",
+      "translation": { "en": "the debater", "de": "die Debattierende" }
+    }
+  ],
+  "expressions": [
+    {
+      "id": "defendre-idee",
+      "text": "Je défends l’idée que",
+      "openEnd": true,
+      "translations": {
+        "en": ["I defend the idea that"],
+        "de": ["Ich vertrete die Auffassung, dass"]
+      },
+      "explanation": {
+        "en": "Announces your position at the start: Je défends l’idée que + your thesis.",
+        "fr": "Annonce votre position au début : Je défends l’idée que + votre thèse.",
+        "de": "Kündigt Ihre Position am Anfang an: Je défends l’idée que + Ihre These."
+      },
+      "example": {
+        "text": "Je défends l’idée que l’on doit apprendre une langue étrangère dès six ans.",
+        "translation": {
+          "en": "I defend the idea that one must learn a foreign language from the age of six.",
+          "de": "Ich vertrete die Auffassung, dass man schon ab sechs Jahren eine Fremdsprache lernen muss."
+        }
+      }
+    },
+    {
+      "id": "argument-principal",
+      "text": "Mon argument principal est que",
+      "openEnd": true,
+      "translations": {
+        "en": ["My main argument is that"],
+        "de": ["Mein wichtigstes Argument ist, dass"]
+      },
+      "explanation": {
+        "en": "Introduces your strongest argument, the one that matters most.",
+        "fr": "Introduit votre argument le plus fort, celui qui compte le plus.",
+        "de": "Leitet Ihr stärkstes Argument ein, das wichtigste."
+      },
+      "example": {
+        "text": "Mon argument principal est que les enfants imitent facilement les sons.",
+        "translation": {
+          "en": "My main argument is that children imitate sounds easily.",
+          "de": "Mein wichtigstes Argument ist, dass Kinder Laute leicht nachahmen."
+        }
+      }
+    },
+    {
+      "id": "a-cela-sajoute",
+      "text": "À cela s’ajoute le fait que",
+      "openEnd": true,
+      "translations": {
+        "en": ["On top of that, there is the fact that"],
+        "de": ["Hinzu kommt, dass"]
+      },
+      "explanation": {
+        "en": "Adds a second argument, less important than the first.",
+        "fr": "Ajoute un second argument, moins important que le premier.",
+        "de": "Fügt ein zweites, weniger wichtiges Argument hinzu."
+      },
+      "example": {
+        "text": "À cela s’ajoute le fait que le plurilinguisme est un atout sur le marché du travail.",
+        "translation": {
+          "en": "On top of that, there is the fact that multilingualism is an asset on the job market.",
+          "de": "Hinzu kommt, dass Mehrsprachigkeit auf dem Arbeitsmarkt ein Vorteil ist."
+        }
+      }
+    },
+    {
+      "id": "fermement-convaincu",
+      "text": "Je suis fermement convaincue que",
+      "openEnd": true,
+      "translations": {
+        "en": ["I am firmly convinced that"],
+        "de": ["Ich bin fest davon überzeugt, dass"]
+      },
+      "explanation": {
+        "en": "Concludes with strength: you are sure of your position. Say it last. Convaincu agrees with the speaker: convaincue for a woman, convaincu for a man.",
+        "fr": "Conclut avec force : vous êtes sûr de votre position. À dire en dernier. Convaincu s’accorde avec la personne qui parle : convaincue pour une femme, convaincu pour un homme.",
+        "de": "Schließt nachdrücklich: Sie sind sich Ihrer Position sicher. Als Letztes sagen. Convaincu richtet sich nach der sprechenden Person: convaincue für eine Frau, convaincu für einen Mann."
+      },
+      "example": {
+        "text": "Je suis fermement convaincue que cette réforme est nécessaire.",
+        "translation": {
+          "en": "I am firmly convinced that this reform is necessary.",
+          "de": "Ich bin fest davon überzeugt, dass diese Reform notwendig ist."
+        }
+      }
+    }
+  ],
+  "words": [],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

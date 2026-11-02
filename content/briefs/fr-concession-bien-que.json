@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-concession-bien-que",
+  "lang": "fr",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Bien que, quoique : concéder avec le subjonctif",
+  "objective": {
+    "en": "Concede a fact with bien que and quoique + subjunctive, and tell them apart from même si + indicative.",
+    "fr": "Concéder un fait avec bien que et quoique + subjonctif, et les distinguer de même si + indicatif.",
+    "de": "Eine Tatsache mit bien que und quoique + Subjonctif einräumen und von même si + Indikativ unterscheiden."
+  },
+  "estimatedMinutes": 15,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:54:47.275Z",
+    "inputHashes": { "outline": "fe46f15cb6bc5b394e299ebb0169c903ff8a0b9123c74d914459fcaead4d0aca" }
+  },
+  "kind": "grammar",
+  "topic": "subordinate_clauses",
+  "scopeBoundaries": {
+    "en": "Covers bien que and quoique + present subjunctive of common verbs, and même si + indicative as a contrast. Excludes the past subjunctive, bien que + participle or adjective, and other concessive conjunctions (alors que, tandis que).",
+    "fr": "Couvre bien que et quoique + subjonctif présent des verbes courants, et même si + indicatif en contraste. Exclut le subjonctif passé, bien que + participe ou adjectif, et les autres conjonctions concessives (alors que, tandis que).",
+    "de": "Behandelt bien que und quoique + Subjonctif présent häufiger Verben sowie même si + Indikativ als Kontrast. Ausgeschlossen sind der Subjonctif passé, bien que + Partizip oder Adjektiv und andere konzessive Konjunktionen (alors que, tandis que)."
+  },
+  "prerequisites": [
+    {
+      "en": "The present subjunctive of common verbs after il faut que.",
+      "fr": "Le subjonctif présent des verbes courants après il faut que.",
+      "de": "Der Subjonctif présent häufiger Verben nach il faut que."
+    },
+    {
+      "en": "Concessive connectors such as certes, toutefois, néanmoins.",
+      "fr": "Les connecteurs de concession comme certes, toutefois, néanmoins.",
+      "de": "Konzessive Konnektoren wie certes, toutefois, néanmoins."
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-subjonctif",
+      "summary": {
+        "en": "Bien que and quoique introduce a real fact that does not stop the main action, and take the subjunctive, never the indicative.",
+        "fr": "Bien que et quoique introduisent un fait réel qui n'empêche pas l'action principale et se construisent avec le subjonctif, jamais l'indicatif.",
+        "de": "Bien que und quoique leiten eine reale Tatsache ein, die die Haupthandlung nicht verhindert, und stehen mit dem Subjonctif, nie mit dem Indikativ."
+      }
+    },
+    {
+      "id": "rule-formes",
+      "summary": {
+        "en": "Common irregular subjunctive forms: soit, ait, aie, fasse, puisse, aille, and the elision quoiqu'il / bien qu'il.",
+        "fr": "Formes irrégulières courantes du subjonctif : soit, ait, aie, fasse, puisse, aille, et l'élision quoiqu'il / bien qu'il.",
+        "de": "Häufige unregelmäßige Subjonctif-Formen: soit, ait, aie, fasse, puisse, aille, sowie die Elision quoiqu'il / bien qu'il."
+      }
+    },
+    {
+      "id": "rule-meme-si",
+      "summary": {
+        "en": "Même si takes the indicative (present, or imperfect with the conditional) and can suggest a mere possibility, unlike bien que.",
+        "fr": "Même si se construit avec l'indicatif (présent, ou imparfait avec le conditionnel) et peut suggérer une simple possibilité, contrairement à bien que.",
+        "de": "Même si steht mit dem Indikativ (Präsens oder Imparfait mit Conditionnel) und kann im Gegensatz zu bien que nur eine Möglichkeit andeuten."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-bienque",
+      "title": {
+        "en": "Bien que and quoique + subjunctive",
+        "fr": "Bien que et quoique + subjonctif",
+        "de": "Bien que und quoique + Subjonctif"
+      },
+      "ruleIds": ["rule-subjonctif", "rule-formes"],
+      "explanationPlan": {
+        "en": "Explain that bien que and quoique concede a real fact and always take the subjunctive. Present the common irregular forms (être, avoir, faire, pouvoir, aller), the elision before a vowel, and warn against the indicative.",
+        "fr": "Expliquer que bien que et quoique concèdent un fait réel et sont toujours suivis du subjonctif. Présenter les formes irrégulières courantes (être, avoir, faire, pouvoir, aller), l'élision devant une voyelle, et mettre en garde contre l'indicatif.",
+        "de": "Erklären, dass bien que und quoique eine reale Tatsache einräumen und immer den Subjonctif nach sich haben. Die häufigen unregelmäßigen Formen (être, avoir, faire, pouvoir, aller), die Elision vor Vokal vorstellen und vor dem Indikativ warnen."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Bien qu'il soit tard, je continue.",
+          "translation": {
+            "en": "Although it is late, I carry on.",
+            "de": "Obwohl es spät ist, mache ich weiter."
+          }
+        },
+        {
+          "text": "Quoiqu'elle ait raison, personne ne l'écoute.",
+          "translation": {
+            "en": "Although she is right, nobody listens to her.",
+            "de": "Obwohl sie recht hat, hört ihr niemand zu."
+          }
+        },
+        {
+          "text": "Bien qu'il fasse froid, nous sortons.",
+          "translation": {
+            "en": "Although it is cold, we go out.",
+            "de": "Obwohl es kalt ist, gehen wir raus."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not use the indicative: bien qu'il est tard is wrong, say bien qu'il soit tard.",
+          "fr": "N'employez pas l'indicatif : bien qu'il est tard est faux, dites bien qu'il soit tard.",
+          "de": "Kein Indikativ: bien qu'il est tard ist falsch, richtig ist bien qu'il soit tard."
+        },
+        {
+          "en": "Do not forget the elision: quoiqu'il, bien qu'elle, not quoique il.",
+          "fr": "N'oubliez pas l'élision : quoiqu'il, bien qu'elle, et non quoique il.",
+          "de": "Die Elision nicht vergessen: quoiqu'il, bien qu'elle, nicht quoique il."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-b1-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-subjonctif", "rule-formes"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-b1-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-subjonctif", "rule-formes"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-b1-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 4,
+          "ruleIds": ["rule-subjonctif", "rule-formes"],
+          "estimatedDurationS": 100
+        }
+      ]
+    },
+    {
+      "id": "block-memesi",
+      "title": {
+        "en": "Même si + indicative, compared with bien que",
+        "fr": "Même si + indicatif, comparé à bien que",
+        "de": "Même si + Indikativ im Vergleich zu bien que"
+      },
+      "ruleIds": ["rule-meme-si", "rule-subjonctif"],
+      "explanationPlan": {
+        "en": "Show that même si takes the indicative, never the subjunctive. Contrast bien que (certain fact) with même si (possibility), and give the tense pairs: present for a likely case, imperfect plus conditional for an unlikely one.",
+        "fr": "Montrer que même si se construit avec l'indicatif, jamais le subjonctif. Opposer bien que (fait certain) et même si (possibilité), et donner les couples de temps : présent pour un cas probable, imparfait et conditionnel pour un cas peu probable.",
+        "de": "Zeigen, dass même si mit dem Indikativ steht, nie mit dem Subjonctif. Bien que (sichere Tatsache) und même si (Möglichkeit) gegenüberstellen und die Zeitenpaare nennen: Präsens für einen wahrscheinlichen Fall, Imparfait plus Conditionnel für einen unwahrscheinlichen."
+      },
+      "explanationDurationS": 100,
+      "examples": [
+        {
+          "text": "Même s'il est tard, je continue.",
+          "translation": {
+            "en": "Even if it is late, I carry on.",
+            "de": "Auch wenn es spät ist, mache ich weiter."
+          }
+        },
+        {
+          "text": "Même si j'avais le temps, je ne viendrais pas.",
+          "translation": {
+            "en": "Even if I had time, I would not come.",
+            "de": "Selbst wenn ich Zeit hätte, würde ich nicht kommen."
+          }
+        },
+        {
+          "text": "Bien qu'il pleuve, nous allons au marché.",
+          "translation": {
+            "en": "Although it is raining, we go to the market.",
+            "de": "Obwohl es regnet, gehen wir zum Markt."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not put the subjunctive after même si: même s'il pleuve is wrong.",
+          "fr": "Ne mettez pas le subjonctif après même si : même s'il pleuve est faux.",
+          "de": "Kein Subjonctif nach même si: même s'il pleuve ist falsch."
+        },
+        {
+          "en": "Do not put a conditional right after même si: say même si j'avais, not même si j'aurais.",
+          "fr": "Pas de conditionnel juste après même si : dites même si j'avais, et non même si j'aurais.",
+          "de": "Kein Conditionnel direkt nach même si: sage même si j'avais, nicht même si j'aurais."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-b2-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-meme-si", "rule-subjonctif"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-b2-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-meme-si", "rule-subjonctif"],
+          "estimatedDurationS": 75
+        },
+        {
+          "id": "ex-b2-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-meme-si", "rule-subjonctif"],
+          "estimatedDurationS": 80
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-subj",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-subjonctif", "rule-formes"],
+        "estimatedDurationS": 80,
+        "timeLimitS": 130
+      },
+      {
+        "pageId": "exam-meme-si",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["rule-meme-si"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-subjonctif", "rule-meme-si"],
+        "estimatedDurationS": 75,
+        "timeLimitS": 120
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

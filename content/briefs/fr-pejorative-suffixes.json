@@ -1,0 +1,643 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-pejorative-suffixes",
+  "lang": "fr",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Chauffard, paperasse, bellâtre",
+  "objective": {
+    "en": "Understand the pejorative value of words in -ard, -asse, -âtre, -aille, -aud and -ailler.",
+    "fr": "Comprendre la valeur péjorative de mots en -ard, -asse, -âtre, -aille, -aud et -ailler.",
+    "de": "Den abwertenden Wert von Wörtern auf -ard, -asse, -âtre, -aille, -aud und -ailler verstehen."
+  },
+  "estimatedMinutes": 21,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:59:10.698Z",
+    "inputHashes": { "outline": "e593cfb1adaad5e084bdbbeba48bc958bf0c9e2172b39d87e66bc6d1adba04bd" }
+  },
+  "kind": "vocabulary",
+  "theme": "language",
+  "coverageNotes": {
+    "en": "Twelve words in -ard, -âtre, -aud, -aille, -asse and -ailler: people, a crowd, things, appearances and verbs. Not every word in -ard is pejorative (vieillard, richard), so the lesson keeps to clearly scornful uses.",
+    "fr": "Douze mots en -ard, -âtre, -aud, -aille, -asse et -ailler : des personnes, une foule, des choses, des apparences et des verbes. Tous les mots en -ard ne sont pas péjoratifs (vieillard, richard) : la leçon se limite aux emplois nettement méprisants.",
+    "de": "Zwölf Wörter auf -ard, -âtre, -aud, -aille, -asse und -ailler: Personen, eine Menge, Dinge, Erscheinungen und Verben. Nicht jedes Wort auf -ard ist abwertend (vieillard, richard); die Lektion beschränkt sich auf eindeutig verächtliche Verwendungen."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words, two or three per suffix: enough to hear the pattern without overloading a C2 learner.",
+    "fr": "Douze mots, deux ou trois par suffixe : assez pour percevoir le procédé sans surcharger un apprenant de niveau C2.",
+    "de": "Zwölf Wörter, zwei bis drei pro Suffix: genug, um das Muster zu erkennen, ohne Lernende auf C2-Niveau zu überfordern."
+  },
+  "difficultyBalance": {
+    "en": "Seven core scornful words; bellâtre, marmaille, fadasse, écrivailler and discutailler are more demanding.",
+    "fr": "Sept mots méprisants courants ; bellâtre, marmaille, fadasse, écrivailler et discutailler sont plus exigeants.",
+    "de": "Sieben gebräuchliche abwertende Wörter; bellâtre, marmaille, fadasse, écrivailler und discutailler sind anspruchsvoller."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "personnes",
+      "label": {
+        "en": "People and crowds",
+        "fr": "Personnes et foules",
+        "de": "Personen und Menschenmengen"
+      },
+      "targetIds": ["chauffard", "froussard", "bellatre", "lourdaud", "marmaille"],
+      "introduction": {
+        "en": "The suffixes **-ard**, **-âtre**, **-aud** and **-aille** add contempt to a word. Each of these words judges a person or a crowd:\n\n- `un chauffard` : a driver who endangers others\n- `un froussard` : someone ruled by fear\n- `un bellâtre` : a handsome but vain man\n- `un lourdaud` : a clumsy, slow person\n- `une marmaille` : a noisy swarm of children",
+        "fr": "Les suffixes **-ard**, **-âtre**, **-aud** et **-aille** ajoutent du mépris à un mot. Chacun de ces mots juge une personne ou une foule :\n\n- `un chauffard` : un conducteur qui met les autres en danger\n- `un froussard` : quelqu’un que la peur gouverne\n- `un bellâtre` : un bel homme, mais vaniteux\n- `un lourdaud` : une personne maladroite et lente\n- `une marmaille` : une bande bruyante d’enfants",
+        "de": "Die Suffixe **-ard**, **-âtre**, **-aud** und **-aille** fügen einem Wort Verachtung hinzu. Jedes dieser Wörter urteilt über eine Person oder eine Menge:\n\n- `un chauffard` : ein Fahrer, der andere gefährdet\n- `un froussard` : jemand, den die Angst beherrscht\n- `un bellâtre` : ein schöner, aber eitler Mann\n- `un lourdaud` : eine ungeschickte, schwerfällige Person\n- `une marmaille` : eine lärmende Kinderschar"
+      }
+    },
+    {
+      "id": "choses",
+      "label": {
+        "en": "Things and appearances",
+        "fr": "Choses et apparences",
+        "de": "Dinge und Erscheinungen"
+      },
+      "targetIds": ["paperasse", "vinasse", "fadasse", "rougeaud"],
+      "introduction": {
+        "en": "Other suffixes target things and looks. **-asse** suggests poor quality, and **-aud** can mock a face:\n\n- `des paperasses` : tiresome administrative papers\n- `une vinasse` : cheap, bad wine\n- `fadasse` : insipid, said with disgust\n- `rougeaud` : with a coarse, red complexion",
+        "fr": "D’autres suffixes visent les choses et les apparences. **-asse** suggère la mauvaise qualité, et **-aud** peut se moquer d’un visage :\n\n- `des paperasses` : des papiers administratifs fastidieux\n- `une vinasse` : un mauvais vin bon marché\n- `fadasse` : insipide, dit avec dégoût\n- `rougeaud` : au teint rouge et grossier",
+        "de": "Andere Suffixe zielen auf Dinge und Aussehen. **-asse** deutet schlechte Qualität an, und **-aud** kann ein Gesicht verspotten:\n\n- `des paperasses` : lästige Amtspapiere\n- `une vinasse` : billiger, schlechter Wein\n- `fadasse` : fade, voller Abscheu gesagt\n- `rougeaud` : mit grobem, rotem Teint"
+      }
+    },
+    {
+      "id": "verbes",
+      "label": { "en": "Verbs in -ailler", "fr": "Verbes en -ailler", "de": "Verben auf -ailler" },
+      "targetIds": ["criailler", "ecrivailler", "discutailler"],
+      "introduction": {
+        "en": "The suffix **-ailler** turns a verb into a repeated, untidy action that is not worth much. The speaker looks down on it:\n\n- `criailler` : to shout in an irritating way\n- `écrivailler` : to write a lot and badly\n- `discutailler` : to argue endlessly over trifles",
+        "fr": "Le suffixe **-ailler** transforme un verbe en une action répétée, brouillonne et de peu de valeur. Celui qui parle la regarde de haut :\n\n- `criailler` : crier de façon irritante\n- `écrivailler` : écrire beaucoup et mal\n- `discutailler` : discuter sans fin sur des riens",
+        "de": "Das Suffix **-ailler** macht aus einem Verb eine wiederholte, unordentliche Handlung von geringem Wert. Der Sprecher blickt darauf herab:\n\n- `criailler` : auf lästige Weise schreien\n- `écrivailler` : viel und schlecht schreiben\n- `discutailler` : endlos über Nichtigkeiten diskutieren"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "chauffard",
+      "term": "chauffard",
+      "translations": { "en": ["reckless driver", "road hog"], "de": ["Verkehrsrowdy", "Raser"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un chauffard",
+      "examForms": ["un chauffard"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/œ̃ ʃofaʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ce chauffard a grillé trois feux rouges en une minute.",
+        "translation": {
+          "en": "That reckless driver ran three red lights in one minute.",
+          "de": "Dieser Verkehrsrowdy hat in einer Minute drei rote Ampeln überfahren."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "-ard turns chauffeur into a scornful word: a driver who endangers others.",
+        "fr": "Le suffixe -ard transforme « chauffeur » en mot méprisant : un conducteur qui met les autres en danger.",
+        "de": "Das Suffix -ard macht aus „chauffeur“ ein verächtliches Wort: ein Fahrer, der andere gefährdet."
+      },
+      "genderExplanation": {
+        "en": "Chauffard is masculine, so its indefinite article is un.",
+        "fr": "Chauffard est masculin : on dit un chauffard.",
+        "de": "Chauffard ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": { "en": "a reckless driver", "de": "ein Verkehrsrowdy" },
+      "gap": {
+        "before": "Ce ",
+        "after": " a grillé le feu rouge et failli renverser un piéton.",
+        "accepted": { "answers": ["chauffard"] },
+        "referenceTargetIds": ["chauffard", "froussard", "lourdaud", "bellatre"],
+        "explanation": {
+          "en": "Only chauffard fits: it names someone who drives dangerously.",
+          "fr": "Seul « chauffard » convient : le mot désigne celui qui conduit dangereusement.",
+          "de": "Nur „chauffard“ passt: Das Wort bezeichnet jemanden, der gefährlich fährt."
+        }
+      },
+      "listeningOptionTargetIds": ["chauffard", "froussard", "rougeaud", "lourdaud"]
+    },
+    {
+      "id": "froussard",
+      "term": "froussard",
+      "translations": { "en": ["coward", "scaredy-cat"], "de": ["Angsthase", "Feigling"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un froussard",
+      "examForms": ["un froussard"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/œ̃ fʁusaʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Quel froussard, il a peur d’une souris !",
+        "translation": {
+          "en": "What a coward, he is afraid of a mouse!",
+          "de": "Was für ein Angsthase, er hat Angst vor einer Maus!"
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Froussard comes from la frousse (fear) plus -ard: someone ruled by fear, seen with contempt.",
+        "fr": "Froussard vient de « frousse » (peur) et de -ard : quelqu’un que la peur gouverne, vu avec mépris.",
+        "de": "Froussard stammt von „frousse“ (Angst) plus -ard: jemand, den die Angst beherrscht, mit Verachtung betrachtet."
+      },
+      "genderExplanation": {
+        "en": "Froussard is masculine, so its indefinite article is un.",
+        "fr": "Froussard est masculin : on dit un froussard.",
+        "de": "Froussard ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": { "en": "a coward", "de": "ein Angsthase" },
+      "gap": {
+        "before": "Ce ",
+        "after": " n’ose même pas monter dans le grand huit.",
+        "accepted": { "answers": ["froussard"] },
+        "referenceTargetIds": ["froussard", "chauffard", "lourdaud", "bellatre"],
+        "explanation": {
+          "en": "Only froussard fits: the person is afraid of a simple fairground ride.",
+          "fr": "Seul « froussard » convient : la personne a peur d’un simple manège.",
+          "de": "Nur „froussard“ passt: Die Person hat Angst vor einer harmlosen Jahrmarktsfahrt."
+        }
+      },
+      "listeningOptionTargetIds": ["froussard", "chauffard", "lourdaud", "rougeaud"]
+    },
+    {
+      "id": "bellatre",
+      "term": "bellâtre",
+      "translations": { "en": ["pretty boy", "vain dandy"], "de": ["Schönling", "Geck"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un bellâtre",
+      "examForms": ["un bellâtre"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/œ̃ bɛlɑtʁ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Ce bellâtre sourit à toutes les vitrines.",
+        "translation": {
+          "en": "That pretty boy smiles at every shop window.",
+          "de": "Dieser Schönling lächelt jedes Schaufenster an."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Do not confuse the scornful -âtre of bellâtre with the -âtre of rougeâtre, which only means ‘tending towards red’.",
+        "fr": "Ne confondez pas le -âtre méprisant de bellâtre avec le -âtre de rougeâtre, qui signifie seulement « tirant sur le rouge ».",
+        "de": "Verwechsle das verächtliche -âtre von bellâtre nicht mit dem -âtre von rougeâtre, das nur „ins Rote gehend“ bedeutet."
+      },
+      "explanation": {
+        "en": "Bellâtre adds -âtre to bel: a man who is handsome but vain and empty.",
+        "fr": "Bellâtre ajoute -âtre à « bel » : un homme beau, mais vaniteux et creux.",
+        "de": "Bellâtre fügt -âtre an „bel“: ein Mann, der schön, aber eitel und leer ist."
+      },
+      "genderExplanation": {
+        "en": "Bellâtre is masculine, so its indefinite article is un.",
+        "fr": "Bellâtre est masculin : on dit un bellâtre.",
+        "de": "Bellâtre ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": { "en": "a vain, handsome man", "de": "ein eitler, gutaussehender Mann" },
+      "gap": {
+        "before": "Il se prend pour un séducteur, mais ce n’est qu’un ",
+        "after": " qui passe des heures devant son miroir.",
+        "accepted": { "answers": ["bellâtre"] },
+        "referenceTargetIds": ["bellatre", "froussard", "lourdaud", "chauffard"],
+        "explanation": {
+          "en": "Only bellâtre fits: a vain man who admires himself in the mirror.",
+          "fr": "Seul « bellâtre » convient : un homme vaniteux qui s’admire dans le miroir.",
+          "de": "Nur „bellâtre“ passt: ein eitler Mann, der sich im Spiegel bewundert."
+        }
+      },
+      "listeningOptionTargetIds": ["bellatre", "fadasse", "vinasse", "paperasse"]
+    },
+    {
+      "id": "lourdaud",
+      "term": "lourdaud",
+      "translations": { "en": ["clumsy oaf", "lump"], "de": ["Tollpatsch", "Trampel"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un lourdaud",
+      "examForms": ["un lourdaud"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/œ̃ luʁdo/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Quel lourdaud, il a encore marché sur mon pied !",
+        "translation": {
+          "en": "What a clumsy oaf, he stepped on my foot again!",
+          "de": "Was für ein Trampel, er ist mir schon wieder auf den Fuß getreten!"
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Lourdaud comes from lourd plus -aud: someone heavy in body or mind, named mockingly.",
+        "fr": "Lourdaud vient de « lourd » et de -aud : quelqu’un de lourd de corps ou d’esprit, nommé avec moquerie.",
+        "de": "Lourdaud stammt von „lourd“ plus -aud: jemand, der schwerfällig an Körper oder Geist ist, spöttisch benannt."
+      },
+      "genderExplanation": {
+        "en": "Lourdaud is masculine, so its indefinite article is un.",
+        "fr": "Lourdaud est masculin : on dit un lourdaud.",
+        "de": "Lourdaud ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": { "en": "a clumsy oaf", "de": "ein Tollpatsch" },
+      "gap": {
+        "before": "Quel ",
+        "after": " ! Il a renversé le vase en voulant me le passer.",
+        "accepted": { "answers": ["lourdaud"] },
+        "referenceTargetIds": ["lourdaud", "chauffard", "bellatre", "froussard"],
+        "explanation": {
+          "en": "Only lourdaud fits: the clumsy person who knocks the vase over.",
+          "fr": "Seul « lourdaud » convient : la personne maladroite qui renverse le vase.",
+          "de": "Nur „lourdaud“ passt: die ungeschickte Person, die die Vase umstößt."
+        }
+      },
+      "listeningOptionTargetIds": ["lourdaud", "rougeaud", "chauffard", "froussard"]
+    },
+    {
+      "id": "marmaille",
+      "term": "marmaille",
+      "translations": { "en": ["brats", "swarm of kids"], "de": ["Gören", "Kinderschar"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une marmaille",
+      "examForms": ["une marmaille"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/yn maʁmaj/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Il a quatre enfants : une vraie marmaille !",
+        "translation": {
+          "en": "He has four children: a real swarm of kids!",
+          "de": "Er hat vier Kinder: eine richtige Kinderschar!"
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "-aille is a collective, scornful suffix: marmaille presents children as a noisy, undifferentiated crowd.",
+        "fr": "-aille est un suffixe collectif et méprisant : marmaille présente les enfants comme une foule bruyante et indistincte.",
+        "de": "-aille ist ein kollektives, verächtliches Suffix: marmaille zeigt Kinder als laute, gesichtslose Menge."
+      },
+      "genderExplanation": {
+        "en": "Marmaille is feminine, so its indefinite article is une.",
+        "fr": "Marmaille est féminin : on dit une marmaille.",
+        "de": "Marmaille ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": { "en": "a gang of noisy kids", "de": "eine lärmende Kinderschar" },
+      "gap": {
+        "before": "Toute la ",
+        "after": " a envahi le jardin en criant.",
+        "accepted": { "answers": ["marmaille"] },
+        "referenceTargetIds": ["marmaille", "paperasse", "vinasse", "lourdaud"],
+        "explanation": {
+          "en": "Only marmaille fits: a noisy crowd of children in a garden.",
+          "fr": "Seul « marmaille » convient : une foule bruyante d’enfants dans un jardin.",
+          "de": "Nur „marmaille“ passt: eine laute Kinderschar in einem Garten."
+        }
+      },
+      "listeningOptionTargetIds": ["marmaille", "paperasse", "vinasse", "criailler"]
+    },
+    {
+      "id": "paperasse",
+      "term": "paperasse",
+      "translations": {
+        "en": ["paperwork", "bureaucratic papers"],
+        "de": ["Papierkram", "Schreibkram"]
+      },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "plural",
+      "teachingForm": "des paperasses",
+      "examForms": ["des paperasses"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/de papʁas/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Je passe mes soirées à trier des paperasses.",
+        "translation": {
+          "en": "I spend my evenings sorting paperwork.",
+          "de": "Ich verbringe meine Abende damit, Papierkram zu sortieren."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Paperasse (papier plus -asse) means useless or tiresome administrative papers; it is often plural or collective.",
+        "fr": "Paperasse (papier + -asse) désigne des papiers administratifs inutiles ou fastidieux ; le mot est souvent pluriel ou collectif.",
+        "de": "Paperasse (papier plus -asse) bezeichnet nutzlose oder lästige Amtspapiere; das Wort steht oft im Plural oder als Sammelbegriff."
+      },
+      "genderExplanation": {
+        "en": "Paperasse is feminine; in the plural its indefinite article is des.",
+        "fr": "Paperasse est féminin ; au pluriel, l’article indéfini est des : des paperasses.",
+        "de": "Paperasse ist feminin; im Plural lautet der unbestimmte Artikel des."
+      },
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "tiresome administrative papers (plural)",
+        "de": "lästige Amtspapiere (Plural)"
+      },
+      "gap": {
+        "before": "Je croule sous la ",
+        "after": " administrative depuis lundi.",
+        "accepted": { "answers": ["paperasse"] },
+        "referenceTargetIds": ["paperasse", "marmaille", "vinasse", "fadasse"],
+        "explanation": {
+          "en": "Only paperasse fits: it is the administrative burden one is buried under.",
+          "fr": "Seul « paperasse » convient : c’est la charge administrative sous laquelle on croule.",
+          "de": "Nur „paperasse“ passt: Es ist die Verwaltungslast, unter der man erstickt."
+        }
+      },
+      "listeningOptionTargetIds": ["paperasse", "vinasse", "fadasse", "marmaille"]
+    },
+    {
+      "id": "vinasse",
+      "term": "vinasse",
+      "translations": { "en": ["plonk", "cheap wine"], "de": ["Gesöff", "Fusel"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une vinasse",
+      "examForms": ["une vinasse"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/yn vinas/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Il a servi une vinasse qui râpait la gorge.",
+        "translation": {
+          "en": "He served some plonk that scraped the throat.",
+          "de": "Er schenkte ein Gesöff aus, das im Hals kratzte."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Vinasse is vin plus -asse: a cheap, bad wine, named with disgust.",
+        "fr": "Vinasse est « vin » + -asse : un mauvais vin bon marché, nommé avec dégoût.",
+        "de": "Vinasse ist „vin“ plus -asse: ein billiger, schlechter Wein, mit Abscheu benannt."
+      },
+      "genderExplanation": {
+        "en": "Vinasse is feminine, so its indefinite article is une.",
+        "fr": "Vinasse est féminin : on dit une vinasse.",
+        "de": "Vinasse ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": { "en": "a cheap, bad wine", "de": "ein billiger, schlechter Wein" },
+      "gap": {
+        "before": "Il ne boit que de la ",
+        "after": " à deux euros la bouteille.",
+        "accepted": { "answers": ["vinasse"] },
+        "referenceTargetIds": ["vinasse", "paperasse", "marmaille", "fadasse"],
+        "explanation": {
+          "en": "Only vinasse fits: a bad wine sold for two euros a bottle.",
+          "fr": "Seul « vinasse » convient : un mauvais vin vendu deux euros la bouteille.",
+          "de": "Nur „vinasse“ passt: ein schlechter Wein für zwei Euro die Flasche."
+        }
+      },
+      "listeningOptionTargetIds": ["vinasse", "paperasse", "fadasse", "bellatre"]
+    },
+    {
+      "id": "fadasse",
+      "term": "fadasse",
+      "translations": { "en": ["insipid", "wishy-washy"], "de": ["fade", "labberig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "fadasse",
+      "examForms": ["fadasse"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fadas/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Ce café est fadasse, on dirait de l’eau sale.",
+        "translation": {
+          "en": "This coffee is watery, it tastes like dirty water.",
+          "de": "Dieser Kaffee ist labberig, er schmeckt wie Spülwasser."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Fadasse is fade plus -asse: so bland that it disgusts. It describes tastes, colours and people.",
+        "fr": "Fadasse est « fade » + -asse : si insipide que cela dégoûte. Le mot s’applique aux goûts, aux couleurs et aux personnes.",
+        "de": "Fadasse ist „fade“ plus -asse: so unschmackhaft, dass es anwidert. Es beschreibt Geschmack, Farben und Personen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "insipid (unflattering, of a taste)",
+        "de": "fade (abwertend, vom Geschmack)"
+      },
+      "gap": {
+        "before": "Cette soupe est complètement ",
+        "after": " : elle n’a aucun goût.",
+        "accepted": { "answers": ["fadasse"] },
+        "referenceTargetIds": ["fadasse", "rougeaud", "vinasse", "paperasse"],
+        "explanation": {
+          "en": "Only fadasse fits: it describes a soup with no taste.",
+          "fr": "Seul « fadasse » convient : le mot décrit une soupe sans goût.",
+          "de": "Nur „fadasse“ passt: Es beschreibt eine Suppe ohne Geschmack."
+        }
+      },
+      "listeningOptionTargetIds": ["fadasse", "vinasse", "paperasse", "bellatre"]
+    },
+    {
+      "id": "rougeaud",
+      "term": "rougeaud",
+      "translations": { "en": ["red-faced", "ruddy"], "de": ["rotgesichtig", "krebsrot"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "rougeaud",
+      "examForms": ["rougeaud"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʁuʒo/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Un homme rougeaud se tenait au comptoir.",
+        "translation": {
+          "en": "A red-faced man was standing at the bar.",
+          "de": "Ein rotgesichtiger Mann stand an der Theke."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Rougeaud is rouge plus -aud: a coarse, florid complexion, described with a touch of contempt.",
+        "fr": "Rougeaud est « rouge » + -aud : un teint rouge et grossier, décrit avec une pointe de mépris.",
+        "de": "Rougeaud ist „rouge“ plus -aud: ein grober, roter Teint, mit einem Hauch Verachtung beschrieben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "red-faced (unflattering, of a complexion)",
+        "de": "rotgesichtig (abwertend, vom Teint)"
+      },
+      "gap": {
+        "before": "Il avait le teint ",
+        "after": ", celui des gens qui boivent beaucoup et mangent trop.",
+        "accepted": { "answers": ["rougeaud"] },
+        "referenceTargetIds": ["rougeaud", "paperasse", "vinasse", "marmaille"],
+        "explanation": {
+          "en": "Only rougeaud fits: it describes the complexion of a heavy drinker.",
+          "fr": "Seul « rougeaud » convient : il décrit le teint d’un gros buveur.",
+          "de": "Nur „rougeaud“ passt: Es beschreibt den Teint eines starken Trinkers."
+        }
+      },
+      "listeningOptionTargetIds": ["rougeaud", "lourdaud", "chauffard", "froussard"]
+    },
+    {
+      "id": "criailler",
+      "term": "criailler",
+      "translations": { "en": ["to squawk", "to screech"], "de": ["keifen", "kreischen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "criailler",
+      "examForms": ["criailler"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kʁijaje/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Arrête de criailler, on t’entend depuis la rue !",
+        "translation": {
+          "en": "Stop screeching, we can hear you from the street!",
+          "de": "Hör auf zu keifen, man hört dich bis auf die Straße!"
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Criailler is crier plus -ailler: to shout again and again in an irritating way.",
+        "fr": "Criailler est « crier » + -ailler : crier sans cesse de façon irritante.",
+        "de": "Criailler ist „crier“ plus -ailler: immer wieder auf lästige Weise schreien."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": { "en": "to squawk (verb, scornful)", "de": "keifen (Verb, abwertend)" },
+      "gap": {
+        "before": "Les mouettes ne cessent de ",
+        "after": " au-dessus du port.",
+        "accepted": { "answers": ["criailler"] },
+        "referenceTargetIds": ["criailler", "ecrivailler", "marmaille", "vinasse"],
+        "explanation": {
+          "en": "Only criailler fits: it is what gulls do above a harbour.",
+          "fr": "Seul « criailler » convient : c’est ce que font les mouettes au-dessus d’un port.",
+          "de": "Nur „criailler“ passt: Das tun Möwen über einem Hafen."
+        }
+      },
+      "listeningOptionTargetIds": ["criailler", "ecrivailler", "discutailler", "marmaille"]
+    },
+    {
+      "id": "ecrivailler",
+      "term": "écrivailler",
+      "translations": {
+        "en": ["to scribble away", "to write hack work"],
+        "de": ["viel und schlecht schreiben", "Schund schreiben"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "écrivailler",
+      "examForms": ["écrivailler"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ekʁivaje/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Il écrivaille des articles pour gagner sa vie.",
+        "translation": {
+          "en": "He churns out articles to make a living.",
+          "de": "Er schreibt ein paar Artikel zusammen, um sein Geld zu verdienen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Écrivailler is écrire plus -ailler: to write a lot, carelessly and without talent.",
+        "fr": "Écrivailler est « écrire » + -ailler : écrire beaucoup, sans soin et sans talent.",
+        "de": "Écrivailler ist „écrire“ plus -ailler: viel, nachlässig und ohne Talent schreiben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to write a lot and badly (verb)",
+        "de": "viel und schlecht schreiben (Verb)"
+      },
+      "gap": {
+        "before": "Il passe ses nuits à ",
+        "after": " des romans que personne ne lira.",
+        "accepted": { "answers": ["écrivailler"] },
+        "referenceTargetIds": ["ecrivailler", "criailler", "vinasse", "paperasse"],
+        "explanation": {
+          "en": "Only écrivailler fits: it is about writing novels nobody will read.",
+          "fr": "Seul « écrivailler » convient : il s’agit d’écrire des romans que personne ne lira.",
+          "de": "Nur „écrivailler“ passt: Es geht um das Schreiben von Romanen, die niemand lesen wird."
+        }
+      },
+      "listeningOptionTargetIds": ["ecrivailler", "criailler", "discutailler", "marmaille"]
+    },
+    {
+      "id": "discutailler",
+      "term": "discutailler",
+      "translations": {
+        "en": ["to quibble", "to argue over trifles"],
+        "de": ["endlos herumdiskutieren", "sich in Kleinigkeiten verzetteln"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "discutailler",
+      "examForms": ["discutailler"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/diskytaje/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "On n’avance pas si l’on se met à discutailler.",
+        "translation": {
+          "en": "We will make no progress if we start quibbling.",
+          "de": "Wir kommen nicht voran, wenn wir anfangen, endlos herumzudiskutieren."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Discutailler is discuter plus -ailler: to argue endlessly over unimportant things.",
+        "fr": "Discutailler est « discuter » + -ailler : discuter sans fin sur des choses sans importance.",
+        "de": "Discutailler ist „discuter“ plus -ailler: endlos über Unwichtiges diskutieren."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to argue endlessly over trifles (verb)",
+        "de": "endlos über Nichtigkeiten diskutieren (Verb)"
+      },
+      "gap": {
+        "before": "Ils ont passé la réunion à ",
+        "after": " sur la virgule d’un paragraphe, sans jamais conclure.",
+        "accepted": { "answers": ["discutailler"] },
+        "referenceTargetIds": ["discutailler", "chauffard", "paperasse", "lourdaud"],
+        "explanation": {
+          "en": "Only discutailler fits: arguing endlessly over a comma, with no conclusion.",
+          "fr": "Seul « discutailler » convient : discuter sans fin sur une virgule, sans conclure.",
+          "de": "Nur „discutailler“ passt: endlos über ein Komma diskutieren, ohne Ergebnis."
+        }
+      },
+      "listeningOptionTargetIds": ["discutailler", "criailler", "ecrivailler", "marmaille"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

@@ -1,0 +1,546 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-examples-and-illustrations",
+  "lang": "fr",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Notamment, entre autres, à titre d’exemple",
+  "objective": {
+    "en": "Illustrate an argument with about ten expressions: par exemple, notamment, entre autres, à titre d’exemple, tel que, à savoir.",
+    "fr": "Illustrer un argument avec une dizaine d’expressions : par exemple, notamment, entre autres, à titre d’exemple, tel que, à savoir.",
+    "de": "Ein Argument mit etwa zehn Ausdrücken veranschaulichen: par exemple, notamment, entre autres, à titre d’exemple, tel que, à savoir."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:54:07.084Z",
+    "inputHashes": { "outline": "a5887e9f5dc83b0567a670fa90f9de8cea43526178e79b5b8ca62d42b87d716a" }
+  },
+  "kind": "vocabulary",
+  "theme": "language",
+  "coverageNotes": {
+    "en": "Ten expressions for giving examples in an argued text: five that introduce an example in a sentence or between sentences, and five that tie an example, a proof or a precision more tightly to the argument.",
+    "fr": "Dix expressions pour donner des exemples dans un texte argumenté : cinq qui introduisent un exemple dans la phrase ou entre deux phrases, et cinq qui relient plus étroitement un exemple, une preuve ou une précision à l’argument.",
+    "de": "Zehn Ausdrücke, um in einem argumentierenden Text Beispiele zu geben: fünf, die ein Beispiel im Satz oder zwischen zwei Sätzen einleiten, und fünf, die ein Beispiel, einen Beleg oder eine Präzisierung enger an das Argument binden."
+  },
+  "targetCount": 10,
+  "countRationale": {
+    "en": "The eight expressions of the outline plus ainsi and à l’image de make ten, a manageable set for B2 learners.",
+    "fr": "Les huit expressions du plan, plus ainsi et à l’image de, font dix : un ensemble gérable pour des apprenants de niveau B2.",
+    "de": "Die acht Ausdrücke der Gliederung plus ainsi und à l’image de ergeben zehn, eine für B2-Lernende gut bewältigbare Menge."
+  },
+  "difficultyBalance": {
+    "en": "Common expressions such as par exemple and notamment are core; the more formal or syntactically demanding ones (tel que, comme en témoigne, à savoir) are demanding.",
+    "fr": "Les expressions courantes comme par exemple et notamment sont de base ; les plus soutenues ou délicates sur le plan syntaxique (tel que, comme en témoigne, à savoir) sont exigeantes.",
+    "de": "Gängige Ausdrücke wie par exemple und notamment sind Grundwortschatz; die gehobeneren oder syntaktisch anspruchsvolleren (tel que, comme en témoigne, à savoir) sind anspruchsvoll."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "introduire",
+      "label": {
+        "en": "Introducing an example",
+        "fr": "Introduire un exemple",
+        "de": "Ein Beispiel einleiten"
+      },
+      "targetIds": ["par-exemple", "notamment", "entre-autres", "a-titre-d-exemple", "ainsi"],
+      "introduction": {
+        "en": "These expressions introduce an example that supports your argument:\n\n- `par exemple`: the neutral choice, in speech and writing\n- `notamment`: singles out one case among several\n- `entre autres`: signals that the list is not complete\n- `à titre d’exemple`: formal, for one illustrative case\n- `ainsi`: opens a concrete example that follows from the idea",
+        "fr": "Ces expressions introduisent un exemple qui soutient votre argument :\n\n- `par exemple` : le choix neutre, à l’oral comme à l’écrit\n- `notamment` : isole un cas parmi plusieurs\n- `entre autres` : signale que la liste n’est pas complète\n- `à titre d’exemple` : soutenu, pour un seul cas illustratif\n- `ainsi` : ouvre un exemple concret qui découle de l’idée",
+        "de": "Diese Ausdrücke leiten ein Beispiel ein, das dein Argument stützt:\n\n- `par exemple`: die neutrale Wahl, mündlich wie schriftlich\n- `notamment`: hebt einen Fall unter mehreren hervor\n- `entre autres`: zeigt an, dass die Aufzählung nicht vollständig ist\n- `à titre d’exemple`: gehoben, für einen einzelnen Beispielfall\n- `ainsi`: eröffnet ein konkretes Beispiel, das sich aus der Idee ergibt"
+      }
+    },
+    {
+      "id": "relier",
+      "label": {
+        "en": "Tying the example to the argument",
+        "fr": "Relier l’exemple à l’argument",
+        "de": "Das Beispiel an das Argument binden"
+      },
+      "targetIds": [
+        "tel-que",
+        "comme-en-temoigne",
+        "prenons-le-cas-de",
+        "a-savoir",
+        "a-l-image-de"
+      ],
+      "introduction": {
+        "en": "These expressions tie the example more tightly to the sentence:\n\n- `tel que`: agrees with the noun and introduces examples within a sentence\n- `comme en témoigne`: cites a fact as evidence\n- `prenons le cas de`: invites the reader to examine one case\n- `à savoir`: specifies exactly what was just announced\n- `à l’image de`: compares to a model that illustrates the idea",
+        "fr": "Ces expressions relient l’exemple plus étroitement à la phrase :\n\n- `tel que` : s’accorde avec le nom et introduit des exemples dans la phrase\n- `comme en témoigne` : cite un fait comme preuve\n- `prenons le cas de` : invite le lecteur à examiner un cas\n- `à savoir` : précise exactement ce qui vient d’être annoncé\n- `à l’image de` : compare à un modèle qui illustre l’idée",
+        "de": "Diese Ausdrücke binden das Beispiel enger an den Satz:\n\n- `tel que`: richtet sich nach dem Nomen und leitet Beispiele im Satz ein\n- `comme en témoigne`: nennt eine Tatsache als Beleg\n- `prenons le cas de`: lädt dazu ein, einen Fall zu prüfen\n- `à savoir`: präzisiert genau, was gerade angekündigt wurde\n- `à l’image de`: vergleicht mit einem Vorbild, das die Idee veranschaulicht"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "par-exemple",
+      "term": "par exemple",
+      "translations": {
+        "en": ["for example", "for instance"],
+        "de": ["zum Beispiel", "beispielsweise"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "par exemple",
+      "examForms": ["par exemple"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/paʁ ɛɡ.zɑ̃pl/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Beaucoup de pays investissent dans le rail ; la Suisse, par exemple, a un réseau très dense.",
+        "translation": {
+          "en": "Many countries are investing in rail; Switzerland, for example, has a very dense network.",
+          "de": "Viele Länder investieren in die Bahn; die Schweiz hat zum Beispiel ein sehr dichtes Netz."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Par exemple is the most common, neutral way to introduce an example.",
+        "fr": "« Par exemple » est la façon la plus courante et la plus neutre d’introduire un exemple.",
+        "de": "„Par exemple“ ist die gängigste, neutrale Art, ein Beispiel einzuleiten."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "for example (the neutral, everyday expression)",
+        "de": "zum Beispiel (die neutrale, alltägliche Wendung)"
+      },
+      "gap": {
+        "before": "Certaines villes limitent les voitures : Copenhague, ",
+        "after": ", a créé de grandes zones piétonnes.",
+        "accepted": { "answers": ["par exemple"] },
+        "referenceTargetIds": ["par-exemple", "a-savoir", "tel-que", "prenons-le-cas-de"],
+        "explanation": {
+          "en": "Par exemple fits: set off by commas, it introduces Copenhagen as one example.",
+          "fr": "« Par exemple » convient : entre virgules, il présente Copenhague comme un exemple.",
+          "de": "„Par exemple“ passt: Zwischen Kommas stellt es Kopenhagen als ein Beispiel vor."
+        }
+      },
+      "listeningOptionTargetIds": ["par-exemple", "a-titre-d-exemple", "a-savoir", "tel-que"]
+    },
+    {
+      "id": "notamment",
+      "term": "notamment",
+      "translations": { "en": ["notably", "in particular"], "de": ["insbesondere", "vor allem"] },
+      "wordClass": "adverb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "notamment",
+      "examForms": ["notamment"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/nɔ.ta.mɑ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Le télétravail présente des avantages, notamment un gain de temps.",
+        "translation": {
+          "en": "Remote work has advantages, notably time saved.",
+          "de": "Homeoffice hat Vorteile, insbesondere Zeitersparnis."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Notamment points to the most important case; à savoir lists everything that was announced.",
+        "fr": "« Notamment » désigne le cas le plus important ; « à savoir » énumère tout ce qui a été annoncé.",
+        "de": "„Notamment“ hebt den wichtigsten Fall hervor; „à savoir“ nennt alles, was angekündigt wurde."
+      },
+      "explanation": {
+        "en": "Notamment singles out one important case among several.",
+        "fr": "« Notamment » met en avant un cas important parmi plusieurs.",
+        "de": "„Notamment“ hebt einen wichtigen Fall unter mehreren hervor."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "notably (singles out one case)",
+        "de": "insbesondere (hebt einen Fall hervor)"
+      },
+      "gap": {
+        "before": "Ce quartier souffre de plusieurs problèmes, ",
+        "after": " du bruit et du manque de parkings.",
+        "accepted": { "answers": ["notamment"] },
+        "referenceTargetIds": ["notamment", "prenons-le-cas-de", "tel-que", "a-l-image-de"],
+        "explanation": {
+          "en": "Notamment fits: it singles out two problems among several, directly followed by du.",
+          "fr": "« Notamment » convient : il met en avant deux problèmes parmi plusieurs, suivi directement de « du ».",
+          "de": "„Notamment“ passt: Es hebt zwei Probleme unter mehreren hervor, direkt gefolgt von „du“."
+        }
+      },
+      "listeningOptionTargetIds": ["notamment", "comme-en-temoigne", "entre-autres", "ainsi"]
+    },
+    {
+      "id": "entre-autres",
+      "term": "entre autres",
+      "translations": {
+        "en": ["among others", "among other things"],
+        "de": ["unter anderem", "u. a."]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "entre autres",
+      "examForms": ["entre autres"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɑ̃tʁ o.tʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Cette réforme concerne, entre autres, les écoles et les hôpitaux.",
+        "translation": {
+          "en": "This reform affects, among others, schools and hospitals.",
+          "de": "Diese Reform betrifft unter anderem Schulen und Krankenhäuser."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Entre autres signals that the examples given are only some of a larger set.",
+        "fr": "« Entre autres » signale que les exemples donnés ne sont qu’une partie d’un ensemble plus large.",
+        "de": "„Entre autres“ zeigt an, dass die genannten Beispiele nur ein Teil einer größeren Menge sind."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "among others (the list is incomplete)",
+        "de": "unter anderem (die Aufzählung ist unvollständig)"
+      },
+      "gap": {
+        "before": "Ce musée expose, ",
+        "after": ", des œuvres de Monet et de Renoir.",
+        "accepted": { "answers": ["entre autres"] },
+        "referenceTargetIds": ["entre-autres", "tel-que", "ainsi", "a-savoir"],
+        "explanation": {
+          "en": "Entre autres fits: between commas, it shows that Monet and Renoir are not the only artists.",
+          "fr": "« Entre autres » convient : entre virgules, il montre que Monet et Renoir ne sont pas les seuls artistes.",
+          "de": "„Entre autres“ passt: Zwischen Kommas zeigt es, dass Monet und Renoir nicht die einzigen Künstler sind."
+        }
+      },
+      "listeningOptionTargetIds": ["entre-autres", "notamment", "tel-que", "ainsi"]
+    },
+    {
+      "id": "a-titre-d-exemple",
+      "term": "à titre d’exemple",
+      "translations": {
+        "en": ["as an example", "by way of example"],
+        "de": ["als Beispiel", "exemplarisch"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "à titre d’exemple",
+      "examForms": ["à titre d’exemple", "à titre d'exemple"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/a titʁ dɛɡ.zɑ̃pl/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "À titre d’exemple, une famille sur trois n’a pas de voiture.",
+        "translation": {
+          "en": "As an example, one family in three has no car.",
+          "de": "Als Beispiel: Jede dritte Familie hat kein Auto."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "À titre d’exemple is a formal way to present a single illustrative case, often with a figure.",
+        "fr": "« À titre d’exemple » est une façon soutenue de présenter un seul cas illustratif, souvent chiffré.",
+        "de": "„À titre d’exemple“ ist eine gehobene Art, einen einzelnen Beispielfall vorzustellen, oft mit einer Zahl."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": { "en": "as an example (formal)", "de": "als Beispiel (gehoben)" },
+      "gap": {
+        "before": "Les loyers ont fortement augmenté ; ",
+        "after": ", un studio coûte aujourd’hui 800 euros.",
+        "accepted": { "answers": ["à titre d’exemple", "à titre d'exemple"] },
+        "referenceTargetIds": ["a-titre-d-exemple", "notamment", "tel-que", "comme-en-temoigne"],
+        "explanation": {
+          "en": "À titre d’exemple fits: it presents one figure that illustrates the general statement.",
+          "fr": "« À titre d’exemple » convient : il présente un chiffre qui illustre l’affirmation générale.",
+          "de": "„À titre d’exemple“ passt: Es stellt eine Zahl vor, die die allgemeine Aussage veranschaulicht."
+        }
+      },
+      "listeningOptionTargetIds": ["a-titre-d-exemple", "par-exemple", "a-savoir", "a-l-image-de"]
+    },
+    {
+      "id": "ainsi",
+      "term": "ainsi",
+      "translations": { "en": ["thus", "in this way"], "de": ["so", "auf diese Weise"] },
+      "wordClass": "adverb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ainsi",
+      "examForms": ["ainsi"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɛ̃.si/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Les prix ont augmenté ; ainsi, le pain coûte aujourd’hui deux fois plus cher qu’en 2010.",
+        "translation": {
+          "en": "Prices have risen; thus, bread now costs twice as much as in 2010.",
+          "de": "Die Preise sind gestiegen; so kostet Brot heute doppelt so viel wie 2010."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Ainsi can open a concrete example that follows from the idea just stated.",
+        "fr": "« Ainsi » peut ouvrir un exemple concret qui découle de l’idée qui vient d’être énoncée.",
+        "de": "„Ainsi“ kann ein konkretes Beispiel einleiten, das sich aus der soeben genannten Idee ergibt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "thus (to open an example, one word)",
+        "de": "so (um ein Beispiel zu eröffnen, ein Wort)"
+      },
+      "gap": {
+        "before": "Le prix du pain a doublé en dix ans ; ",
+        "after": ", une baguette coûte désormais plus d’un euro.",
+        "accepted": { "answers": ["ainsi"] },
+        "referenceTargetIds": ["ainsi", "prenons-le-cas-de", "a-l-image-de", "comme-en-temoigne"],
+        "explanation": {
+          "en": "Ainsi fits: it opens a concrete illustration of the price rise.",
+          "fr": "« Ainsi » convient : il ouvre une illustration concrète de la hausse des prix.",
+          "de": "„Ainsi“ passt: Es eröffnet eine konkrete Veranschaulichung des Preisanstiegs."
+        }
+      },
+      "listeningOptionTargetIds": ["ainsi", "a-savoir", "tel-que", "notamment"]
+    },
+    {
+      "id": "tel-que",
+      "term": "tel que",
+      "translations": { "en": ["such as"], "de": ["wie", "wie etwa"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "tel que",
+      "examForms": ["tel que", "telle que", "tels que", "telles que"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/tɛl kə/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Les langues romanes, telles que l’espagnol ou l’italien, viennent du latin.",
+        "translation": {
+          "en": "Romance languages, such as Spanish or Italian, come from Latin.",
+          "de": "Romanische Sprachen wie Spanisch oder Italienisch stammen aus dem Lateinischen."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Tel agrees in gender and number with the noun before it: telle, tels, telles.",
+        "fr": "« Tel » s’accorde en genre et en nombre avec le nom qui précède : telle, tels, telles.",
+        "de": "„Tel“ richtet sich in Genus und Numerus nach dem vorangehenden Nomen: telle, tels, telles."
+      },
+      "explanation": {
+        "en": "Tel que introduces examples inside a sentence and agrees with the noun it follows.",
+        "fr": "« Tel que » introduit des exemples dans la phrase et s’accorde avec le nom qui précède.",
+        "de": "„Tel que“ leitet Beispiele im Satz ein und richtet sich nach dem vorangehenden Nomen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": { "en": "such as (before a noun)", "de": "wie etwa (vor einem Nomen)" },
+      "gap": {
+        "before": "Les langues romanes, ",
+        "after": " l’espagnol ou l’italien, viennent du latin.",
+        "accepted": { "answers": ["telles que"] },
+        "referenceTargetIds": ["tel-que", "prenons-le-cas-de", "comme-en-temoigne", "a-savoir"],
+        "explanation": {
+          "en": "Telles que fits: it agrees with the feminine plural langues and introduces two examples.",
+          "fr": "« Telles que » convient : il s’accorde avec « langues », féminin pluriel, et introduit deux exemples.",
+          "de": "„Telles que“ passt: Es richtet sich nach dem Femininum Plural „langues“ und leitet zwei Beispiele ein."
+        }
+      },
+      "listeningOptionTargetIds": ["tel-que", "ainsi", "a-savoir", "comme-en-temoigne"]
+    },
+    {
+      "id": "comme-en-temoigne",
+      "term": "comme en témoigne",
+      "translations": {
+        "en": ["as evidenced by", "as shown by"],
+        "de": ["wie … belegt", "wie … zeigt"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "comme en témoigne",
+      "examForms": ["comme en témoigne"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kɔm ɑ̃ te.mwaɲ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Le public s’intéresse à l’écologie, comme en témoigne le succès de ce festival.",
+        "translation": {
+          "en": "The public cares about ecology, as the success of this festival shows.",
+          "de": "Die Öffentlichkeit interessiert sich für Ökologie, wie der Erfolg dieses Festivals zeigt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Comme en témoigne cites a fact as proof of what you have just claimed; the noun follows it.",
+        "fr": "« Comme en témoigne » cite un fait comme preuve de ce qu’on vient d’affirmer ; le nom vient après.",
+        "de": "„Comme en témoigne“ nennt eine Tatsache als Beleg für das gerade Behauptete; das Nomen folgt danach."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": { "en": "as evidenced by (citing proof)", "de": "wie … belegt (als Beleg)" },
+      "gap": {
+        "before": "L’intérêt pour le vélo grandit, ",
+        "after": " la hausse des ventes depuis 2020.",
+        "accepted": { "answers": ["comme en témoigne"] },
+        "referenceTargetIds": ["comme-en-temoigne", "prenons-le-cas-de", "ainsi", "tel-que"],
+        "explanation": {
+          "en": "Comme en témoigne fits: the rise in sales is offered as proof of the claim.",
+          "fr": "« Comme en témoigne » convient : la hausse des ventes est donnée comme preuve de l’affirmation.",
+          "de": "„Comme en témoigne“ passt: Der Verkaufsanstieg wird als Beleg für die Behauptung angeführt."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "comme-en-temoigne",
+        "prenons-le-cas-de",
+        "notamment",
+        "a-l-image-de"
+      ]
+    },
+    {
+      "id": "prenons-le-cas-de",
+      "term": "prenons le cas de",
+      "translations": {
+        "en": ["let us take the case of", "take the case of"],
+        "de": ["nehmen wir den Fall von", "betrachten wir den Fall von"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "prenons le cas de",
+      "examForms": ["prenons le cas de"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/pʁə.nɔ̃ lə ka də/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Prenons le cas de l’Islande : presque toute son énergie est renouvelable.",
+        "translation": {
+          "en": "Take the case of Iceland: almost all its energy is renewable.",
+          "de": "Nehmen wir den Fall Islands: Fast ihre gesamte Energie ist erneuerbar."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Prenons le cas de invites the reader to examine one case in detail to support the argument.",
+        "fr": "« Prenons le cas de » invite le lecteur à examiner un cas en détail pour appuyer l’argument.",
+        "de": "„Prenons le cas de“ lädt den Leser ein, einen Fall im Detail zu prüfen, um das Argument zu stützen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Beaucoup de pays changent leur modèle. ",
+        "after": " l’Islande : presque toute son énergie est renouvelable.",
+        "accepted": { "answers": ["Prenons le cas de", "prenons le cas de"] },
+        "referenceTargetIds": ["prenons-le-cas-de", "ainsi", "a-savoir", "comme-en-temoigne"],
+        "explanation": {
+          "en": "Prenons le cas de fits: it starts a sentence and invites us to look at one country, Iceland.",
+          "fr": "« Prenons le cas de » convient : il commence la phrase et invite à regarder un pays, l’Islande.",
+          "de": "„Prenons le cas de“ passt: Es eröffnet den Satz und lädt ein, ein Land zu betrachten, Island."
+        }
+      },
+      "listeningOptionTargetIds": ["prenons-le-cas-de", "comme-en-temoigne", "a-savoir", "ainsi"]
+    },
+    {
+      "id": "a-savoir",
+      "term": "à savoir",
+      "translations": { "en": ["namely", "that is to say"], "de": ["nämlich", "und zwar"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "à savoir",
+      "examForms": ["à savoir"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/a sa.vwaʁ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Il manque une qualité essentielle, à savoir la clarté.",
+        "translation": {
+          "en": "An essential quality is missing, namely clarity.",
+          "de": "Es fehlt eine wesentliche Eigenschaft, nämlich Klarheit."
+        }
+      },
+      "ambiguityNote": {
+        "en": "À savoir gives the complete detail of what was announced; entre autres leaves the list open.",
+        "fr": "« À savoir » donne le détail complet de ce qui a été annoncé ; « entre autres » laisse la liste ouverte.",
+        "de": "„À savoir“ nennt das vollständige Detail des Angekündigten; „entre autres“ lässt die Aufzählung offen."
+      },
+      "explanation": {
+        "en": "À savoir specifies exactly what was announced, with nothing left out.",
+        "fr": "« À savoir » précise exactement ce qui a été annoncé, sans rien laisser de côté.",
+        "de": "„À savoir“ präzisiert genau, was angekündigt wurde, ohne etwas auszulassen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le jury exige deux pièces, ",
+        "after": " un passeport et un justificatif de domicile.",
+        "accepted": { "answers": ["à savoir"] },
+        "referenceTargetIds": ["a-savoir", "notamment", "prenons-le-cas-de", "a-titre-d-exemple"],
+        "explanation": {
+          "en": "À savoir fits: it names exactly the two documents announced, with nothing else.",
+          "fr": "« À savoir » convient : il nomme exactement les deux pièces annoncées, sans autre.",
+          "de": "„À savoir“ passt: Es nennt genau die beiden angekündigten Unterlagen, sonst keine."
+        }
+      },
+      "listeningOptionTargetIds": ["a-savoir", "a-l-image-de", "a-titre-d-exemple", "tel-que"]
+    },
+    {
+      "id": "a-l-image-de",
+      "term": "à l’image de",
+      "translations": {
+        "en": ["just like", "in the image of"],
+        "de": ["nach dem Vorbild von", "wie bei"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "à l’image de",
+      "examForms": ["à l’image de", "à l'image de"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/a li.maʒ də/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Plusieurs villes se réinventent, à l’image de Nantes.",
+        "translation": {
+          "en": "Several cities are reinventing themselves, like Nantes.",
+          "de": "Mehrere Städte erfinden sich neu, wie Nantes."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "À l’image de compares a situation with a model that illustrates the same idea.",
+        "fr": "« À l’image de » compare une situation à un modèle qui illustre la même idée.",
+        "de": "„À l’image de“ vergleicht eine Situation mit einem Vorbild, das dieselbe Idee veranschaulicht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Cette entreprise cherche à innover ",
+        "after": " ses concurrentes américaines.",
+        "accepted": { "answers": ["à l’image de", "à l'image de"] },
+        "referenceTargetIds": ["a-l-image-de", "entre-autres", "a-savoir", "comme-en-temoigne"],
+        "explanation": {
+          "en": "À l’image de fits: the company follows the model of its competitors.",
+          "fr": "« À l’image de » convient : l’entreprise suit le modèle de ses concurrentes.",
+          "de": "„À l’image de“ passt: Das Unternehmen folgt dem Vorbild seiner Konkurrentinnen."
+        }
+      },
+      "listeningOptionTargetIds": ["a-l-image-de", "a-savoir", "notamment", "par-exemple"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

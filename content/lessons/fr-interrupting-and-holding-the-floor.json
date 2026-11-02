@@ -1,0 +1,1218 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-interrupting-and-holding-the-floor",
+  "lang": "fr",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Interrompre et garder la parole",
+  "objective": {
+    "en": "Cut in politely during a lively discussion and keep the floor when someone interrupts you.",
+    "fr": "Couper la parole poliment dans une discussion animée et ne pas se laisser interrompre.",
+    "de": "In einer lebhaften Diskussion höflich ins Wort fallen und sich selbst nicht das Wort nehmen lassen."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:54:22.621Z",
+    "inputHashes": {
+      "outline": "51ece53f1fa46fc5d67a114c1339cd0745f2431409b79205956ee0473211da5f",
+      "brief": "19ba38d0de96946cee6d617457298ed1554fcb672fa8c0f701da24bcd5b0c2c8"
+    }
+  },
+  "kind": "functions",
+  "theme": "language",
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "presentation",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "cards-expressions",
+          "estimatedDurationS": 72,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Recall each expression, then turn the card to check it.",
+            "fr": "Rappelez-vous chaque expression, puis retournez la carte pour vérifier.",
+            "de": "Erinnere dich an jeden Ausdruck und dreh dann die Karte um."
+          },
+          "items": [
+            {
+              "type": "function_flashcards",
+              "itemId": "cards-expressions",
+              "side": "expressions",
+              "ids": [
+                "excusez-moi",
+                "puis-je-ajouter",
+                "je-termine",
+                "laissez-moi-finir",
+                "permettez-moi",
+                "revenons"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue",
+      "stage": "dialogue",
+      "role": "presentation",
+      "label": { "en": "Dialogue", "fr": "Dialogue", "de": "Dialog" },
+      "pages": [
+        {
+          "pageId": "dialogue",
+          "estimatedDurationS": 140,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read and listen. Turn a line to see its translation and a note.",
+            "fr": "Lisez et écoutez. Retournez une réplique pour voir sa traduction et une remarque.",
+            "de": "Lies und hör zu. Dreh eine Zeile um, um Übersetzung und Hinweis zu sehen."
+          },
+          "items": [
+            {
+              "type": "function_dialogue",
+              "itemId": "dialogue",
+              "lines": [
+                {
+                  "lineId": "line-1",
+                  "roleId": "marc",
+                  "text": "Je trouve que ce projet est trop cher, et que nous devons y renoncer avant de perdre plus d’argent.",
+                  "translation": {
+                    "en": "I think this project is too expensive and we must drop it before losing more money.",
+                    "de": "Ich finde, dieses Projekt ist zu teuer und wir müssen darauf verzichten, bevor wir mehr Geld verlieren."
+                  },
+                  "note": {
+                    "en": "Marc takes the floor with a long sentence.",
+                    "fr": "Marc prend la parole avec une longue phrase.",
+                    "de": "Marc ergreift das Wort mit einem langen Satz."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-2",
+                  "roleId": "lea",
+                  "text": "Excusez-moi, juste un mot : les chiffres de ce trimestre sont meilleurs que prévu.",
+                  "translation": {
+                    "en": "Excuse me, just a word: this quarter’s figures are better than expected.",
+                    "de": "Entschuldigung, nur ein Wort: Die Zahlen dieses Quartals sind besser als erwartet."
+                  },
+                  "note": {
+                    "en": "Léa cuts in politely with a short remark.",
+                    "fr": "Léa coupe la parole poliment avec une courte remarque.",
+                    "de": "Léa fällt höflich mit einer kurzen Bemerkung ins Wort."
+                  },
+                  "expressionIds": ["excusez-moi"]
+                },
+                {
+                  "lineId": "line-3",
+                  "roleId": "marc",
+                  "text": "Laissez-moi finir, s’il vous plaît. Je disais que les coûts augmentent chaque mois.",
+                  "translation": {
+                    "en": "Let me finish, please. I was saying that costs rise every month.",
+                    "de": "Lassen Sie mich bitte ausreden. Ich sagte, dass die Kosten jeden Monat steigen."
+                  },
+                  "note": {
+                    "en": "Marc firmly stops the interruption, but stays polite.",
+                    "fr": "Marc arrête fermement l’interruption, mais reste poli.",
+                    "de": "Marc stoppt die Unterbrechung bestimmt, bleibt aber höflich."
+                  },
+                  "expressionIds": ["laissez-moi-finir"]
+                },
+                {
+                  "lineId": "line-4",
+                  "roleId": "lea",
+                  "text": "Pardon, je ne voulais pas vous couper. Allez-y.",
+                  "translation": {
+                    "en": "Sorry, I didn’t mean to cut you off. Go ahead.",
+                    "de": "Verzeihung, ich wollte Sie nicht unterbrechen. Bitte sehr."
+                  },
+                  "note": {
+                    "en": "She apologises and gives the floor back.",
+                    "fr": "Elle s’excuse et rend la parole.",
+                    "de": "Sie entschuldigt sich und gibt das Wort zurück."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-5",
+                  "roleId": "marc",
+                  "text": "Merci. Donc, si nous continuons ainsi, nous dépasserons le budget.",
+                  "translation": {
+                    "en": "Thank you. So, if we carry on like this, we will exceed the budget.",
+                    "de": "Danke. Wenn wir so weitermachen, überschreiten wir also das Budget."
+                  },
+                  "note": {
+                    "en": "Marc goes on with his argument.",
+                    "fr": "Marc poursuit son argument.",
+                    "de": "Marc führt sein Argument fort."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-6",
+                  "roleId": "lea",
+                  "text": "Puis-je ajouter quelque chose ? Le budget a déjà été révisé en mars.",
+                  "translation": {
+                    "en": "May I add something? The budget was already revised in March.",
+                    "de": "Darf ich etwas hinzufügen? Das Budget wurde schon im März überarbeitet."
+                  },
+                  "note": {
+                    "en": "This time she asks permission first.",
+                    "fr": "Cette fois, elle demande d’abord la permission.",
+                    "de": "Diesmal bittet sie zuerst um Erlaubnis."
+                  },
+                  "expressionIds": ["puis-je-ajouter"]
+                },
+                {
+                  "lineId": "line-7",
+                  "roleId": "marc",
+                  "text": "Bien sûr, mais permettez-moi de finir mon calcul avant.",
+                  "translation": {
+                    "en": "Of course, but allow me to finish my calculation first.",
+                    "de": "Natürlich, aber erlauben Sie mir, vorher meine Rechnung zu beenden."
+                  },
+                  "note": {
+                    "en": "Permettez-moi de + infinitive is formal.",
+                    "fr": "Permettez-moi de + infinitif est formel.",
+                    "de": "Permettez-moi de + Infinitiv ist formell."
+                  },
+                  "expressionIds": ["permettez-moi"]
+                },
+                {
+                  "lineId": "line-8",
+                  "roleId": "lea",
+                  "text": "Vous avez raison, je vous écoute.",
+                  "translation": {
+                    "en": "You are right, I’m listening.",
+                    "de": "Sie haben recht, ich höre Ihnen zu."
+                  },
+                  "note": {
+                    "en": "She lets him speak.",
+                    "fr": "Elle le laisse parler.",
+                    "de": "Sie lässt ihn sprechen."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-9",
+                  "roleId": "marc",
+                  "text": "Je termine ma phrase : sans économies, nous n’avons aucune marge.",
+                  "translation": {
+                    "en": "I’ll finish my sentence: without savings, we have no margin.",
+                    "de": "Ich spreche den Satz zu Ende: Ohne Einsparungen haben wir keinen Spielraum."
+                  },
+                  "note": {
+                    "en": "A calm way of keeping the floor.",
+                    "fr": "Une façon calme de garder la parole.",
+                    "de": "Eine ruhige Art, das Wort zu behalten."
+                  },
+                  "expressionIds": ["je-termine"]
+                },
+                {
+                  "lineId": "line-10",
+                  "roleId": "lea",
+                  "text": "Revenons à ce que je disais : le budget est déjà révisé.",
+                  "translation": {
+                    "en": "Let’s get back to what I was saying: the budget has already been revised.",
+                    "de": "Kommen wir zurück auf das, was ich sagte: Das Budget ist schon überarbeitet."
+                  },
+                  "note": {
+                    "en": "She takes up her earlier point again.",
+                    "fr": "Elle reprend son point de tout à l’heure.",
+                    "de": "Sie nimmt ihren früheren Punkt wieder auf."
+                  },
+                  "expressionIds": ["revenons"]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "match-expressions-1",
+          "estimatedDurationS": 72,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each expression with its translation.",
+            "fr": "Associez chaque expression à sa traduction.",
+            "de": "Ordne jedem Ausdruck seine Übersetzung zu."
+          },
+          "items": [
+            {
+              "type": "function_matching",
+              "itemId": "match-expressions-1",
+              "side": "expressions",
+              "pairs": [
+                {
+                  "id": "excusez-moi",
+                  "answerExplanation": {
+                    "en": "Politely cuts in to place a short remark.",
+                    "fr": "Pour couper la parole poliment et placer une courte remarque.",
+                    "de": "Um höflich ins Wort zu fallen und kurz etwas einzuwerfen."
+                  }
+                },
+                {
+                  "id": "puis-je-ajouter",
+                  "answerExplanation": {
+                    "en": "Asks permission before adding your point.",
+                    "fr": "Pour demander l’autorisation d’intervenir.",
+                    "de": "Um um Erlaubnis zu bitten, bevor man etwas ergänzt."
+                  }
+                },
+                {
+                  "id": "je-termine",
+                  "answerExplanation": {
+                    "en": "Shows calmly that you are not finished.",
+                    "fr": "Pour montrer calmement qu’on n’a pas fini.",
+                    "de": "Zeigt ruhig, dass man noch nicht fertig ist."
+                  }
+                },
+                {
+                  "id": "laissez-moi-finir",
+                  "answerExplanation": {
+                    "en": "Firmer: stops an interruption.",
+                    "fr": "Plus ferme : arrête une interruption.",
+                    "de": "Bestimmter: stoppt eine Unterbrechung."
+                  }
+                },
+                {
+                  "id": "permettez-moi",
+                  "answerExplanation": {
+                    "en": "Formal start of a sentence, followed by an infinitive.",
+                    "fr": "Début de phrase formel, suivi d’un infinitif.",
+                    "de": "Formeller Satzanfang, gefolgt von einem Infinitiv."
+                  }
+                },
+                {
+                  "id": "revenons",
+                  "answerExplanation": {
+                    "en": "Takes back the thread after an interruption.",
+                    "fr": "Pour reprendre le fil après une interruption.",
+                    "de": "Um nach einer Unterbrechung den Faden wieder aufzunehmen."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-gaps",
+      "stage": "dialogue_gaps",
+      "role": "exercise",
+      "label": { "en": "Dialogue gaps", "fr": "Dialogue à trous", "de": "Dialoglücken" },
+      "pages": [
+        {
+          "pageId": "gap-1",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-1",
+              "expressionId": "excusez-moi",
+              "context": { "roleId": "marc", "text": "Nous devons donc supprimer ce poste." },
+              "roleId": "lea",
+              "before": "",
+              "after": ": nous avons recruté quelqu’un la semaine dernière.",
+              "choiceExpressionIds": [
+                "excusez-moi",
+                "laissez-moi-finir",
+                "puis-je-ajouter",
+                "revenons"
+              ],
+              "answerExplanation": {
+                "en": "Léa cuts in politely with a short remark.",
+                "fr": "Léa coupe la parole poliment avec une courte remarque.",
+                "de": "Léa fällt höflich mit einer kurzen Bemerkung ins Wort."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-2",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-2",
+              "expressionId": "laissez-moi-finir",
+              "context": { "roleId": "lea", "text": "Mais ce n’est pas ce que vous aviez dit !" },
+              "roleId": "marc",
+              "before": "Un instant,",
+              "after": "avant de répondre.",
+              "choiceExpressionIds": [
+                "laissez-moi-finir",
+                "permettez-moi",
+                "excusez-moi",
+                "puis-je-ajouter"
+              ],
+              "answerExplanation": {
+                "en": "Marc firmly asks not to be interrupted.",
+                "fr": "Marc demande fermement qu’on ne l’interrompe pas.",
+                "de": "Marc bittet bestimmt darum, nicht unterbrochen zu werden."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-3",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-3",
+              "expressionId": "puis-je-ajouter",
+              "context": { "roleId": "marc", "text": "Voilà, c’est mon avis sur la question." },
+              "roleId": "lea",
+              "before": "Merci.",
+              "after": "",
+              "choiceExpressionIds": [
+                "je-termine",
+                "puis-je-ajouter",
+                "revenons",
+                "laissez-moi-finir"
+              ],
+              "answerExplanation": {
+                "en": "Léa asks permission to speak, since Marc has finished.",
+                "fr": "Léa demande la permission de parler, car Marc a fini.",
+                "de": "Léa bittet um Erlaubnis zu sprechen, da Marc fertig ist."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-4",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-4",
+              "expressionId": "je-termine",
+              "context": {
+                "roleId": "lea",
+                "text": "Mais ce n’est pas du tout ce que dit le rapport !"
+              },
+              "roleId": "marc",
+              "before": "",
+              "after": ", puis vous répondrez.",
+              "choiceExpressionIds": ["revenons", "je-termine", "excusez-moi", "puis-je-ajouter"],
+              "answerExplanation": {
+                "en": "Marc calmly keeps the floor.",
+                "fr": "Marc garde calmement la parole.",
+                "de": "Marc behält ruhig das Wort."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-5",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-5",
+              "expressionId": "permettez-moi",
+              "context": { "roleId": "lea", "text": "Ce chiffre me paraît pourtant faux." },
+              "roleId": "marc",
+              "before": "",
+              "after": "préciser d’où il vient.",
+              "choiceExpressionIds": [
+                "excusez-moi",
+                "laissez-moi-finir",
+                "permettez-moi",
+                "revenons"
+              ],
+              "answerExplanation": {
+                "en": "Permettez-moi de is followed by an infinitive: préciser.",
+                "fr": "Permettez-moi de est suivi d’un infinitif : préciser.",
+                "de": "Permettez-moi de wird von einem Infinitiv gefolgt: préciser."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-6",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-6",
+              "expressionId": "revenons",
+              "context": { "roleId": "marc", "text": "Bref, passons au point suivant." },
+              "roleId": "lea",
+              "before": "Pas encore !",
+              "after": ": le budget n’est pas voté.",
+              "choiceExpressionIds": ["puis-je-ajouter", "je-termine", "permettez-moi", "revenons"],
+              "answerExplanation": {
+                "en": "She takes back the thread of her earlier point.",
+                "fr": "Elle reprend le fil de son point précédent.",
+                "de": "Sie nimmt den Faden ihres früheren Punktes wieder auf."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "word-order",
+      "stage": "word_order",
+      "role": "exercise",
+      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
+      "pages": [
+        {
+          "pageId": "order-1",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-1",
+              "expressionId": "excusez-moi",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Excusez-moi," },
+                { "tokenId": "t2", "text": "juste" },
+                { "tokenId": "t3", "text": "un" },
+                { "tokenId": "t4", "text": "mot" },
+                { "tokenId": "t5", "text": "sur" },
+                { "tokenId": "t6", "text": "ce" },
+                { "tokenId": "t7", "text": "point." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
+              "answerExplanation": {
+                "en": "The expression comes first, then the topic of your remark.",
+                "fr": "L’expression vient d’abord, puis le sujet de la remarque.",
+                "de": "Zuerst der Ausdruck, dann das Thema der Bemerkung."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-2",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-2",
+              "expressionId": "laissez-moi-finir",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Laissez-moi" },
+                { "tokenId": "t2", "text": "finir," },
+                { "tokenId": "t3", "text": "puis" },
+                { "tokenId": "t4", "text": "vous" },
+                { "tokenId": "t5", "text": "répondrez." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]],
+              "answerExplanation": {
+                "en": "Stop the interruption first, then promise the other person a turn.",
+                "fr": "On arrête l’interruption d’abord, puis on promet son tour à l’autre.",
+                "de": "Erst die Unterbrechung stoppen, dann dem anderen das Wort zusagen."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-3",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-3",
+              "expressionId": "puis-je-ajouter",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Puis-je" },
+                { "tokenId": "t2", "text": "ajouter" },
+                { "tokenId": "t3", "text": "quelque" },
+                { "tokenId": "t4", "text": "chose" },
+                { "tokenId": "t5", "text": "avant" },
+                { "tokenId": "t6", "text": "la" },
+                { "tokenId": "t7", "text": "pause" },
+                { "tokenId": "t8", "text": "?" }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8"]],
+              "answerExplanation": {
+                "en": "A question with inversion: Puis-je + infinitive.",
+                "fr": "Une question avec inversion : Puis-je + infinitif.",
+                "de": "Eine Frage mit Inversion: Puis-je + Infinitiv."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-4",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-4",
+              "expressionId": "je-termine",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Je" },
+                { "tokenId": "t2", "text": "termine" },
+                { "tokenId": "t3", "text": "ma" },
+                { "tokenId": "t4", "text": "phrase" },
+                { "tokenId": "t5", "text": "et" },
+                { "tokenId": "t6", "text": "je" },
+                { "tokenId": "t7", "text": "vous" },
+                { "tokenId": "t8", "text": "cède" },
+                { "tokenId": "t9", "text": "la" },
+                { "tokenId": "t10", "text": "parole." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9", "t10"]],
+              "answerExplanation": {
+                "en": "You finish first, then give the other person the floor.",
+                "fr": "On finit d’abord, puis on donne la parole à l’autre.",
+                "de": "Erst spricht man zu Ende, dann gibt man dem anderen das Wort."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-5",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-5",
+              "expressionId": "permettez-moi",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Permettez-moi" },
+                { "tokenId": "t2", "text": "de" },
+                { "tokenId": "t3", "text": "préciser" },
+                { "tokenId": "t4", "text": "ma" },
+                { "tokenId": "t5", "text": "pensée." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]],
+              "answerExplanation": {
+                "en": "Permettez-moi de + infinitive (préciser).",
+                "fr": "Permettez-moi de + infinitif (préciser).",
+                "de": "Permettez-moi de + Infinitiv (préciser)."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-6",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-6",
+              "expressionId": "revenons",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Revenons" },
+                { "tokenId": "t2", "text": "à" },
+                { "tokenId": "t3", "text": "ce" },
+                { "tokenId": "t4", "text": "que" },
+                { "tokenId": "t5", "text": "je" },
+                { "tokenId": "t6", "text": "disais" },
+                { "tokenId": "t7", "text": "tout" },
+                { "tokenId": "t8", "text": "à" },
+                { "tokenId": "t9", "text": "l’heure." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9"]],
+              "answerExplanation": {
+                "en": "Revenons à ce que je disais takes back the earlier thread.",
+                "fr": "Revenons à ce que je disais reprend le fil de tout à l’heure.",
+                "de": "Revenons à ce que je disais nimmt den früheren Faden wieder auf."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "listening",
+      "stage": "listening",
+      "role": "exercise",
+      "label": { "en": "Listening", "fr": "Écoute", "de": "Hören" },
+      "pages": [
+        {
+          "pageId": "listening-1",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-1",
+              "expressionId": "excusez-moi",
+              "context": {
+                "roleId": "marc",
+                "text": "Donc je propose de fermer ce service dès le mois prochain."
+              },
+              "roleId": "lea",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "Excusez-moi, juste un mot : ce service est très utilisé."
+                },
+                { "optionId": "o2", "text": "Oui, c’est une excellente idée." },
+                { "optionId": "o3", "text": "Je vous écoute, continuez." },
+                { "optionId": "o4", "text": "Merci de votre attention." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "She cuts in politely to object.",
+                "fr": "Elle coupe la parole poliment pour objecter.",
+                "de": "Sie fällt höflich ins Wort, um zu widersprechen."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-2",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-2",
+              "expressionId": "laissez-moi-finir",
+              "context": { "roleId": "lea", "text": "Excusez-moi, mais ce n’est pas exact !" },
+              "roleId": "marc",
+              "options": [
+                { "optionId": "o1", "text": "Vous avez tout à fait raison." },
+                { "optionId": "o2", "text": "Laissez-moi finir, je vous en prie." },
+                { "optionId": "o3", "text": "Je n’ai rien à ajouter." },
+                { "optionId": "o4", "text": "Merci, c’est très clair." }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "He was interrupted, so he asks to finish.",
+                "fr": "Il a été interrompu, donc il demande à finir.",
+                "de": "Er wurde unterbrochen und bittet deshalb, zu Ende sprechen zu dürfen."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-3",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-3",
+              "expressionId": "puis-je-ajouter",
+              "context": {
+                "roleId": "marc",
+                "text": "Voilà ce que je voulais dire sur ce projet."
+              },
+              "roleId": "lea",
+              "options": [
+                { "optionId": "o1", "text": "Vous m’avez mal comprise." },
+                { "optionId": "o2", "text": "Moi, je n’ai pas d’avis." },
+                { "optionId": "o3", "text": "Merci. Puis-je ajouter quelque chose ?" },
+                { "optionId": "o4", "text": "Je ne suis pas là demain." }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "Marc has finished, so she asks permission to speak.",
+                "fr": "Marc a fini, donc elle demande la permission de parler.",
+                "de": "Marc ist fertig, deshalb bittet sie um Erlaubnis zu sprechen."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-4",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-4",
+              "expressionId": "je-termine",
+              "context": {
+                "roleId": "lea",
+                "text": "Oui, mais enfin, vous oubliez les salaires !"
+              },
+              "roleId": "marc",
+              "options": [
+                { "optionId": "o1", "text": "Bonne idée, parlons-en." },
+                { "optionId": "o2", "text": "Vous avez raison, j’arrête." },
+                { "optionId": "o3", "text": "Les salaires, c’est vrai." },
+                { "optionId": "o4", "text": "Je termine ma phrase, puis vous parlerez." }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "He keeps the floor calmly.",
+                "fr": "Il garde calmement la parole.",
+                "de": "Er behält ruhig das Wort."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-5",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-5",
+              "expressionId": "permettez-moi",
+              "context": { "roleId": "lea", "text": "Ce chiffre ne peut pas être exact." },
+              "roleId": "marc",
+              "options": [
+                { "optionId": "o1", "text": "Permettez-moi de vérifier la source." },
+                { "optionId": "o2", "text": "Je ne sais pas du tout." },
+                { "optionId": "o3", "text": "Peu importe, passons." },
+                { "optionId": "o4", "text": "Excusez-moi, je dois partir." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "A formal way of defending his figure.",
+                "fr": "Une façon formelle de défendre son chiffre.",
+                "de": "Eine formelle Art, seine Zahl zu verteidigen."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-6",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-6",
+              "expressionId": "revenons",
+              "context": { "roleId": "marc", "text": "Mais on s’éloigne du sujet, non ?" },
+              "roleId": "lea",
+              "options": [
+                { "optionId": "o1", "text": "Oui, changeons de sujet." },
+                {
+                  "optionId": "o2",
+                  "text": "Revenons à ce que je disais : la date est trop proche."
+                },
+                { "optionId": "o3", "text": "Je suis tout à fait d’accord." },
+                { "optionId": "o4", "text": "Bonne soirée à tous." }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "She takes back the thread of her point.",
+                "fr": "Elle reprend le fil de son point.",
+                "de": "Sie nimmt den Faden ihres Punktes wieder auf."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam-replies-1",
+          "estimatedDurationS": 120,
+          "timeLimitS": 180,
+          "instructions": {
+            "en": "Build the answer. Not every word fits.",
+            "fr": "Construisez la réponse. Tous les mots ne servent pas.",
+            "de": "Bilde die Antwort. Nicht jedes Wort passt."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "reply-1",
+              "expressionId": "excusez-moi",
+              "context": {
+                "roleId": "marc",
+                "text": "Notre priorité, c’est donc de réduire les dépenses."
+              },
+              "roleId": "lea",
+              "tokens": [
+                { "tokenId": "t1", "text": "Excusez-moi," },
+                { "tokenId": "t2", "text": "juste" },
+                { "tokenId": "t3", "text": "un" },
+                { "tokenId": "t4", "text": "mot" },
+                { "tokenId": "t5", "text": "sur" },
+                { "tokenId": "t6", "text": "les" },
+                { "tokenId": "t7", "text": "recettes." },
+                { "tokenId": "t8", "text": "mots" },
+                { "tokenId": "t9", "text": "moi" }
+              ],
+              "distractorTokenIds": ["t8", "t9"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
+              "answerExplanation": {
+                "en": "Excusez-moi, juste un mot, then the topic.",
+                "fr": "Excusez-moi, juste un mot, puis le sujet.",
+                "de": "Excusez-moi, juste un mot, dann das Thema."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-2",
+              "expressionId": "laissez-moi-finir",
+              "context": { "roleId": "lea", "text": "Mais vous ne répondez pas à ma question !" },
+              "roleId": "marc",
+              "tokens": [
+                { "tokenId": "t1", "text": "Laissez-moi" },
+                { "tokenId": "t2", "text": "finir," },
+                { "tokenId": "t3", "text": "ensuite" },
+                { "tokenId": "t4", "text": "je" },
+                { "tokenId": "t5", "text": "répondrai." },
+                { "tokenId": "t6", "text": "finis" },
+                { "tokenId": "t7", "text": "laisse-moi" }
+              ],
+              "distractorTokenIds": ["t6", "t7"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5"]],
+              "answerExplanation": {
+                "en": "With vous, the imperative is laissez-moi; finir stays in the infinitive.",
+                "fr": "Avec vous, l’impératif est laissez-moi ; finir reste à l’infinitif.",
+                "de": "Mit vous lautet der Imperativ laissez-moi; finir bleibt im Infinitiv."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-3",
+              "expressionId": "je-termine",
+              "context": {
+                "roleId": "lea",
+                "text": "Pardon, mais vous parlez depuis dix minutes."
+              },
+              "roleId": "marc",
+              "tokens": [
+                { "tokenId": "t1", "text": "Je" },
+                { "tokenId": "t2", "text": "termine" },
+                { "tokenId": "t3", "text": "ma" },
+                { "tokenId": "t4", "text": "phrase" },
+                { "tokenId": "t5", "text": "et" },
+                { "tokenId": "t6", "text": "c’est" },
+                { "tokenId": "t7", "text": "fini." },
+                { "tokenId": "t8", "text": "terminez" }
+              ],
+              "distractorTokenIds": ["t8"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
+              "answerExplanation": {
+                "en": "With je, the verb is termine.",
+                "fr": "Avec je, le verbe est termine.",
+                "de": "Mit je lautet das Verb termine."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-4",
+              "expressionId": "permettez-moi",
+              "context": { "roleId": "marc", "text": "Ce projet est trop risqué, à mon avis." },
+              "roleId": "lea",
+              "tokens": [
+                { "tokenId": "t1", "text": "Permettez-moi" },
+                { "tokenId": "t2", "text": "de" },
+                { "tokenId": "t3", "text": "vous" },
+                { "tokenId": "t4", "text": "contredire" },
+                { "tokenId": "t5", "text": "sur" },
+                { "tokenId": "t6", "text": "ce" },
+                { "tokenId": "t7", "text": "point." },
+                { "tokenId": "t8", "text": "du" },
+                { "tokenId": "t9", "text": "à" }
+              ],
+              "distractorTokenIds": ["t8", "t9"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
+              "answerExplanation": {
+                "en": "Permettez-moi de + infinitive (contredire).",
+                "fr": "Permettez-moi de + infinitif (contredire).",
+                "de": "Permettez-moi de + Infinitiv (contredire)."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-dialogue",
+          "estimatedDurationS": 140,
+          "timeLimitS": 210,
+          "instructions": {
+            "en": "Fill each gap with an expression from this lesson.",
+            "fr": "Complétez chaque trou avec une expression de la leçon.",
+            "de": "Fülle jede Lücke mit einem Ausdruck aus dieser Lektion."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_typing",
+              "itemId": "exam-dialogue",
+              "lines": [
+                {
+                  "lineId": "exam-line-1",
+                  "roleId": "marc",
+                  "before": "Selon moi, le télétravail fait baisser la productivité de toute l’équipe.",
+                  "translation": {
+                    "en": "In my view, remote work lowers the whole team’s productivity.",
+                    "de": "Meiner Meinung nach senkt Homeoffice die Produktivität des ganzen Teams."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-2",
+                  "roleId": "lea",
+                  "before": "Merci, Marc.",
+                  "translation": {
+                    "en": "Thank you, Marc. May I add something? The surveys say the opposite.",
+                    "de": "Danke, Marc. Darf ich etwas hinzufügen? Die Umfragen sagen das Gegenteil."
+                  },
+                  "gap": {
+                    "gapId": "gap-1",
+                    "expressionId": "puis-je-ajouter",
+                    "accepted": {
+                      "answers": [
+                        "Puis-je ajouter quelque chose ?",
+                        "Puis-je ajouter quelque chose?",
+                        "Puis-je ajouter quelque chose"
+                      ]
+                    },
+                    "answerExplanation": {
+                      "en": "She asks permission to speak: Puis-je ajouter quelque chose ?",
+                      "fr": "Elle demande la permission de parler : Puis-je ajouter quelque chose ?",
+                      "de": "Sie bittet um Erlaubnis zu sprechen: Puis-je ajouter quelque chose ?"
+                    }
+                  },
+                  "after": "Les enquêtes disent l’inverse."
+                },
+                {
+                  "lineId": "exam-line-3",
+                  "roleId": "marc",
+                  "before": "Attendez,",
+                  "translation": {
+                    "en": "Wait, let me finish my argument.",
+                    "de": "Moment, lassen Sie mich meinen Gedankengang zu Ende führen."
+                  },
+                  "gap": {
+                    "gapId": "gap-2",
+                    "expressionId": "laissez-moi-finir",
+                    "accepted": { "answers": ["laissez-moi finir", "Laissez-moi finir"] },
+                    "answerExplanation": {
+                      "en": "He keeps the floor: Laissez-moi finir.",
+                      "fr": "Il garde la parole : Laissez-moi finir.",
+                      "de": "Er behält das Wort: Laissez-moi finir."
+                    }
+                  },
+                  "after": "mon raisonnement."
+                },
+                {
+                  "lineId": "exam-line-4",
+                  "roleId": "lea",
+                  "before": "Pardon, je vous en prie, continuez.",
+                  "translation": {
+                    "en": "Sorry, please go on.",
+                    "de": "Verzeihung, bitte fahren Sie fort."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-5",
+                  "roleId": "marc",
+                  "before": "Donc, en résumé, les réunions à distance coûtent plus cher qu’on ne le croit.",
+                  "translation": {
+                    "en": "So, in short, remote meetings cost more than people think.",
+                    "de": "Also, kurz gesagt, Besprechungen aus der Ferne kosten mehr, als man glaubt."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-6",
+                  "roleId": "lea",
+                  "before": "Ces chiffres datent d’avant la crise, pourtant.",
+                  "translation": {
+                    "en": "Those figures date from before the crisis, though.",
+                    "de": "Diese Zahlen stammen allerdings aus der Zeit vor der Krise."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-7",
+                  "roleId": "marc",
+                  "before": "Vous m’interrompez encore, et nous perdons le fil.",
+                  "translation": {
+                    "en": "You are interrupting me again, and we are losing the thread.",
+                    "de": "Sie unterbrechen mich schon wieder, und wir verlieren den Faden."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-8",
+                  "roleId": "lea",
+                  "before": "Désolée.",
+                  "translation": {
+                    "en": "Sorry. Let’s get back to what I was saying: the surveys are more recent.",
+                    "de": "Entschuldigung. Kommen wir zurück auf das, was ich sagte: Die Umfragen sind aktueller."
+                  },
+                  "gap": {
+                    "gapId": "gap-3",
+                    "expressionId": "revenons",
+                    "accepted": { "answers": ["Revenons à ce que je disais"] },
+                    "answerExplanation": {
+                      "en": "She takes back her thread: Revenons à ce que je disais.",
+                      "fr": "Elle reprend son fil : Revenons à ce que je disais.",
+                      "de": "Sie nimmt ihren Faden wieder auf: Revenons à ce que je disais."
+                    }
+                  },
+                  "after": ": les enquêtes sont plus récentes."
+                },
+                {
+                  "lineId": "exam-line-9",
+                  "roleId": "marc",
+                  "before": "D’accord, vérifions les dates avant de décider.",
+                  "translation": {
+                    "en": "All right, let’s check the dates before deciding.",
+                    "de": "Einverstanden, prüfen wir die Daten, bevor wir entscheiden."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-10",
+                  "roleId": "lea",
+                  "before": "Très bien, merci à tous.",
+                  "translation": {
+                    "en": "Very good, thank you all.",
+                    "de": "Sehr gut, danke an alle."
+                  },
+                  "gap": null,
+                  "after": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
