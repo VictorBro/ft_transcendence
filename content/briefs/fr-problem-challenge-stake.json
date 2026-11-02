@@ -1,0 +1,520 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-problem-challenge-stake",
+  "lang": "fr",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Problème, enjeu, défi, écueil",
+  "objective": {
+    "en": "Choose the right noun to describe a difficulty: problème, obstacle, écueil, enjeu, défi, gageure, frein, impasse.",
+    "fr": "Choisir le nom juste pour parler d'une difficulté : problème, obstacle, écueil, enjeu, défi, gageure, frein, impasse.",
+    "de": "Das passende Nomen für eine Schwierigkeit wählen: problème, obstacle, écueil, enjeu, défi, gageure, frein, impasse."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:57:54.821Z",
+    "inputHashes": { "outline": "7c737fa39573c5dbd2a6a53cc0e06090875de91874db953e1ac226354c7351f0" }
+  },
+  "kind": "vocabulary",
+  "theme": "language",
+  "coverageNotes": {
+    "en": "Nine close nouns for talking about a difficulty at C1 level, in two groups: what gets in the way (problème, difficulté, obstacle, écueil, frein, impasse) and what must be faced (enjeu, défi, gageure). Each differs by seriousness, origin or point of view.",
+    "fr": "Neuf noms proches pour parler d'une difficulté au niveau C1, en deux groupes : ce qui gêne (problème, difficulté, obstacle, écueil, frein, impasse) et ce qu'il faut affronter (enjeu, défi, gageure). Chacun se distingue par sa gravité, son origine ou son point de vue.",
+    "de": "Neun nahe Nomen, um auf C1-Niveau über eine Schwierigkeit zu sprechen, in zwei Gruppen: was behindert (problème, difficulté, obstacle, écueil, frein, impasse) und dem man sich stellen muss (enjeu, défi, gageure). Sie unterscheiden sich in Schwere, Ursprung und Blickwinkel."
+  },
+  "targetCount": 9,
+  "countRationale": {
+    "en": "Nine words are enough to contrast the nuances without mixing them up; the outline asks for about ten.",
+    "fr": "Neuf mots suffisent pour opposer les nuances sans les confondre ; le plan en demande une dizaine.",
+    "de": "Neun Wörter genügen, um die Nuancen gegenüberzustellen, ohne sie zu vermischen; die Gliederung verlangt etwa zehn."
+  },
+  "difficultyBalance": {
+    "en": "Five common words (problème, difficulté, obstacle, frein, défi) and four more demanding ones (écueil, enjeu, gageure, impasse).",
+    "fr": "Cinq mots courants (problème, difficulté, obstacle, frein, défi) et quatre plus exigeants (écueil, enjeu, gageure, impasse).",
+    "de": "Fünf gebräuchliche Wörter (problème, difficulté, obstacle, frein, défi) und vier anspruchsvollere (écueil, enjeu, gageure, impasse)."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "gene",
+      "label": {
+        "en": "What gets in the way",
+        "fr": "Ce qui gêne ou bloque",
+        "de": "Was behindert oder blockiert"
+      },
+      "targetIds": ["probleme", "difficulte", "obstacle", "ecueil", "frein", "impasse"],
+      "introduction": {
+        "en": "These nouns name what **gets in the way**. Choose according to the kind of difficulty:\n\n- `un problème` : the general word, a question to solve\n- `une difficulté` : trouble in doing something\n- `un obstacle` : something that blocks the way\n- `un écueil` : a hidden danger to avoid\n- `un frein` : something that slows progress down\n- `une impasse` : a situation with no way out\n\nIn a formal text, `un écueil` and `un frein` sound more precise than `un problème`.",
+        "fr": "Ces noms désignent ce qui **gêne**. Choisissez selon le type de difficulté :\n\n- `un problème` : le mot général, une question à résoudre\n- `une difficulté` : la peine à faire quelque chose\n- `un obstacle` : ce qui barre la route\n- `un écueil` : un danger caché à éviter\n- `un frein` : ce qui ralentit le progrès\n- `une impasse` : une situation sans issue\n\nDans un texte soutenu, `un écueil` et `un frein` sont plus précis que `un problème`.",
+        "de": "Diese Nomen bezeichnen, was **behindert**. Wähle nach der Art der Schwierigkeit:\n\n- `un problème` : das allgemeine Wort, eine zu lösende Aufgabe\n- `une difficulté` : Mühe bei etwas\n- `un obstacle` : etwas, das den Weg versperrt\n- `un écueil` : eine versteckte Gefahr, die man meiden muss\n- `un frein` : etwas, das den Fortschritt bremst\n- `une impasse` : eine Lage ohne Ausweg\n\nIn einem gehobenen Text sind `un écueil` und `un frein` genauer als `un problème`."
+      }
+    },
+    {
+      "id": "face",
+      "label": {
+        "en": "What must be faced",
+        "fr": "Ce qu'il faut affronter",
+        "de": "Dem man sich stellen muss"
+      },
+      "targetIds": ["enjeu", "defi", "gageure"],
+      "introduction": {
+        "en": "These nouns name what must be **faced**, not only what gets in the way:\n\n- `un enjeu` : what can be won or lost\n- `un défi` : a test one chooses to take up\n- `une gageure` : an undertaking that seems almost impossible\n\nTwo frequent expressions: `relever un défi` and `tenir de la gageure`.",
+        "fr": "Ces noms désignent ce qu'il faut **affronter**, et pas seulement ce qui gêne :\n\n- `un enjeu` : ce que l'on peut gagner ou perdre\n- `un défi` : une épreuve que l'on choisit de relever\n- `une gageure` : une entreprise qui semble presque impossible\n\nDeux expressions fréquentes : `relever un défi` et `tenir de la gageure`.",
+        "de": "Diese Nomen bezeichnen, dem man sich **stellen** muss, nicht nur, was behindert:\n\n- `un enjeu` : was man gewinnen oder verlieren kann\n- `un défi` : eine Prüfung, die man bewusst annimmt\n- `une gageure` : ein Unterfangen, das fast unmöglich scheint\n\nZwei häufige Wendungen: `relever un défi` und `tenir de la gageure`."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "probleme",
+      "term": "problème",
+      "translations": { "en": ["problem"], "de": ["Problem"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un problème",
+      "examForms": ["un problème"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/pʁɔ.blɛm/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Nous devons résoudre ce problème avant lundi.",
+        "translation": {
+          "en": "We must solve this problem before Monday.",
+          "de": "Wir müssen dieses Problem vor Montag lösen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Un problème is the general word for something that must be solved.",
+        "fr": "Un problème est le mot général pour ce qu'il faut résoudre.",
+        "de": "Un problème ist das allgemeine Wort für etwas, das gelöst werden muss."
+      },
+      "genderExplanation": {
+        "en": "Problème is masculine, so its indefinite article is un, despite its ending in -e.",
+        "fr": "Problème est masculin : on dit un problème, malgré la finale en -e.",
+        "de": "Problème ist maskulin, daher un, trotz der Endung auf -e."
+      },
+      "matchingLabel": null,
+      "examPrompt": { "en": "problem (something to solve)", "de": "Problem (zu lösende Aufgabe)" },
+      "gap": {
+        "before": "Pour résoudre ce ",
+        "after": " de connexion, redémarrez d'abord le routeur.",
+        "accepted": { "answers": ["problème"] },
+        "referenceTargetIds": ["probleme", "enjeu", "frein", "obstacle"],
+        "explanation": {
+          "en": "One resolves a problem; the other words do not go with résoudre here.",
+          "fr": "On résout un problème ; les autres mots ne s'emploient pas avec résoudre ici.",
+          "de": "Ein Problem löst man; die anderen Wörter passen hier nicht zu résoudre."
+        }
+      },
+      "listeningOptionTargetIds": ["probleme", "obstacle", "ecueil", "enjeu"]
+    },
+    {
+      "id": "difficulte",
+      "term": "difficulté",
+      "translations": { "en": ["difficulty"], "de": ["Schwierigkeit"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une difficulté",
+      "examForms": ["une difficulté"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/di.fi.kyl.te/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Il éprouve une difficulté à se concentrer.",
+        "translation": {
+          "en": "He has difficulty concentrating.",
+          "de": "Er hat Schwierigkeiten, sich zu konzentrieren."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Une difficulté is the trouble one has in doing something; it is followed by à + infinitive.",
+        "fr": "Une difficulté est la peine que l'on a à faire quelque chose ; elle se construit avec à + infinitif.",
+        "de": "Une difficulté ist die Mühe bei einer Tätigkeit; es wird mit à + Infinitiv gebildet."
+      },
+      "genderExplanation": {
+        "en": "Difficulté is feminine, like most nouns in -té, so its indefinite article is une.",
+        "fr": "Difficulté est féminin, comme la plupart des noms en -té : on dit une difficulté.",
+        "de": "Difficulté ist feminin, wie die meisten Nomen auf -té, daher une."
+      },
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "difficulty (trouble doing something)",
+        "de": "Schwierigkeit (Mühe bei etwas)"
+      },
+      "gap": {
+        "before": "Malgré une légère ",
+        "after": " à prononcer les « r », l'enfant se fait bien comprendre.",
+        "accepted": { "answers": ["difficulté"] },
+        "referenceTargetIds": ["difficulte", "gageure", "impasse", "probleme"],
+        "explanation": {
+          "en": "Difficulté is the word that takes à + infinitive here; the article une also rules out problème.",
+          "fr": "Difficulté est le mot qui se construit avec à + infinitif ici ; l'article une exclut aussi problème.",
+          "de": "Difficulté ist hier das Wort mit à + Infinitiv; der Artikel une schließt zudem problème aus."
+        }
+      },
+      "listeningOptionTargetIds": ["difficulte", "defi", "frein", "gageure"]
+    },
+    {
+      "id": "obstacle",
+      "term": "obstacle",
+      "translations": { "en": ["obstacle"], "de": ["Hindernis"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un obstacle",
+      "examForms": ["un obstacle"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɔp.stakl/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Le manque de financement reste un obstacle majeur.",
+        "translation": {
+          "en": "The lack of funding remains a major obstacle.",
+          "de": "Der Mangel an Finanzierung bleibt ein großes Hindernis."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Un obstacle is something that physically or figuratively blocks the way.",
+        "fr": "Un obstacle est ce qui barre la route, au sens propre ou figuré.",
+        "de": "Un obstacle ist, was den Weg versperrt, wörtlich oder im übertragenen Sinn."
+      },
+      "genderExplanation": {
+        "en": "Obstacle is masculine, so its indefinite article is un.",
+        "fr": "Obstacle est masculin : on dit un obstacle.",
+        "de": "Obstacle ist maskulin, daher un."
+      },
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "obstacle (something blocking the way)",
+        "de": "Hindernis (etwas, das im Weg steht)"
+      },
+      "gap": {
+        "before": "Le torrent en crue formait un ",
+        "after": " infranchissable pour les randonneurs.",
+        "accepted": { "answers": ["obstacle"] },
+        "referenceTargetIds": ["obstacle", "ecueil", "frein", "enjeu"],
+        "explanation": {
+          "en": "Only an obstacle can physically block hikers and be called infranchissable.",
+          "fr": "Seul un obstacle peut barrer physiquement la route aux randonneurs et être dit infranchissable.",
+          "de": "Nur ein obstacle kann Wanderern physisch den Weg versperren und infranchissable sein."
+        }
+      },
+      "listeningOptionTargetIds": ["obstacle", "probleme", "ecueil", "impasse"]
+    },
+    {
+      "id": "ecueil",
+      "term": "écueil",
+      "translations": { "en": ["pitfall"], "de": ["Fallstrick", "Klippe"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un écueil",
+      "examForms": ["un écueil"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/e.kœj/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Il faut éviter l'écueil du jargon dans un exposé.",
+        "translation": {
+          "en": "You must avoid the pitfall of jargon in a talk.",
+          "de": "In einem Vortrag muss man den Fallstrick des Fachjargons vermeiden."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Un écueil is a hidden danger you can avoid by being careful; an obstacle is simply in the way.",
+        "fr": "Un écueil est un danger caché que l'on peut éviter en étant prudent ; un obstacle est simplement sur la route.",
+        "de": "Un écueil ist eine versteckte Gefahr, die man mit Vorsicht meiden kann; un obstacle steht einfach im Weg."
+      },
+      "explanation": {
+        "en": "Un écueil is originally a reef; figuratively, a hidden danger on which one can fail.",
+        "fr": "Un écueil est à l'origine un récif ; au figuré, un danger caché sur lequel on peut échouer.",
+        "de": "Un écueil ist ursprünglich ein Riff; im übertragenen Sinn eine versteckte Gefahr, an der man scheitern kann."
+      },
+      "genderExplanation": {
+        "en": "Écueil is masculine, so its indefinite article is un.",
+        "fr": "Écueil est masculin : on dit un écueil.",
+        "de": "Écueil ist maskulin, daher un."
+      },
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "pitfall (hidden danger to avoid)",
+        "de": "Fallstrick (versteckte Gefahr)"
+      },
+      "gap": {
+        "before": "Le calque est un ",
+        "after": " classique dans lequel tombent souvent les traducteurs débutants.",
+        "accepted": { "answers": ["écueil"] },
+        "referenceTargetIds": ["ecueil", "obstacle", "enjeu", "frein"],
+        "explanation": {
+          "en": "One falls into an écueil, a classic hidden danger of a method.",
+          "fr": "On tombe dans un écueil, danger classique et caché d'une méthode.",
+          "de": "In einen écueil tappt man, eine klassische versteckte Gefahr einer Methode."
+        }
+      },
+      "listeningOptionTargetIds": ["ecueil", "enjeu", "obstacle", "frein"]
+    },
+    {
+      "id": "frein",
+      "term": "frein",
+      "translations": { "en": ["hindrance", "brake"], "de": ["Hemmschuh", "Bremse"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un frein",
+      "examForms": ["un frein"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fʁɛ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "La peur de l'échec est un frein à l'initiative.",
+        "translation": {
+          "en": "Fear of failure is a brake on initiative.",
+          "de": "Die Angst vor dem Scheitern ist ein Hemmschuh für die Initiative."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Un frein slows progress down; it is followed by à + noun.",
+        "fr": "Un frein ralentit le progrès ; il se construit avec à + nom.",
+        "de": "Un frein bremst den Fortschritt; es wird mit à + Nomen gebildet."
+      },
+      "genderExplanation": {
+        "en": "Frein is masculine, so its indefinite article is un.",
+        "fr": "Frein est masculin : on dit un frein.",
+        "de": "Frein ist maskulin, daher un."
+      },
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "hindrance (a brake on progress)",
+        "de": "Hemmschuh (Bremse für den Fortschritt)"
+      },
+      "gap": {
+        "before": "La bureaucratie reste un ",
+        "after": " à l'investissement dans les petites entreprises.",
+        "accepted": { "answers": ["frein"] },
+        "referenceTargetIds": ["frein", "enjeu", "ecueil", "defi"],
+        "explanation": {
+          "en": "Un frein à + noun is the usual way to say something slows an activity down.",
+          "fr": "Un frein à + nom est la façon habituelle de dire que quelque chose ralentit une activité.",
+          "de": "Un frein à + Nomen ist die übliche Wendung dafür, dass etwas eine Tätigkeit bremst."
+        }
+      },
+      "listeningOptionTargetIds": ["frein", "impasse", "difficulte", "enjeu"]
+    },
+    {
+      "id": "impasse",
+      "term": "impasse",
+      "translations": { "en": ["deadlock"], "de": ["Sackgasse"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une impasse",
+      "examForms": ["une impasse"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɛ̃.pas/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Les discussions sont dans l'impasse depuis des semaines.",
+        "translation": {
+          "en": "The talks have been deadlocked for weeks.",
+          "de": "Die Gespräche stecken seit Wochen in der Sackgasse."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Une impasse is a situation with no way out; one is dans l'impasse.",
+        "fr": "Une impasse est une situation sans issue ; on est dans l'impasse.",
+        "de": "Une impasse ist eine Lage ohne Ausweg; man ist dans l'impasse."
+      },
+      "genderExplanation": {
+        "en": "Impasse is feminine, so its indefinite article is une.",
+        "fr": "Impasse est féminin : on dit une impasse.",
+        "de": "Impasse ist feminin, daher une."
+      },
+      "matchingLabel": null,
+      "examPrompt": { "en": "deadlock (no way out)", "de": "Sackgasse (kein Ausweg)" },
+      "gap": {
+        "before": "Les négociations sont dans l'",
+        "after": " depuis trois semaines, car aucune partie ne veut céder.",
+        "accepted": { "answers": ["impasse"] },
+        "referenceTargetIds": ["impasse", "enjeu", "ecueil", "obstacle"],
+        "explanation": {
+          "en": "Être dans l'impasse is the fixed expression for talks that cannot move forward.",
+          "fr": "Être dans l'impasse est l'expression figée pour des négociations qui n'avancent plus.",
+          "de": "Être dans l'impasse ist die feste Wendung für Verhandlungen, die nicht vorankommen."
+        }
+      },
+      "listeningOptionTargetIds": ["impasse", "enjeu", "ecueil", "obstacle"]
+    },
+    {
+      "id": "enjeu",
+      "term": "enjeu",
+      "translations": { "en": ["stake"], "de": ["Einsatz"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un enjeu",
+      "examForms": ["un enjeu"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɑ̃.ʒø/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "L'enjeu de ce sommet est la réduction des émissions.",
+        "translation": {
+          "en": "The stake of this summit is the reduction of emissions.",
+          "de": "Worum es bei diesem Gipfel geht, ist die Verringerung der Emissionen."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Un enjeu is not a difficulty: it is what one can win or lose in a situation.",
+        "fr": "Un enjeu n'est pas une difficulté : c'est ce que l'on peut gagner ou perdre dans une situation.",
+        "de": "Un enjeu ist keine Schwierigkeit: Es ist das, was man in einer Lage gewinnen oder verlieren kann."
+      },
+      "explanation": {
+        "en": "Un enjeu is what can be won or lost in a situation, not a difficulty in itself.",
+        "fr": "Un enjeu est ce que l'on peut gagner ou perdre dans une situation, pas une difficulté en soi.",
+        "de": "Un enjeu ist das, was man in einer Lage gewinnen oder verlieren kann, nicht selbst eine Schwierigkeit."
+      },
+      "genderExplanation": {
+        "en": "Enjeu is masculine, so its indefinite article is un.",
+        "fr": "Enjeu est masculin : on dit un enjeu.",
+        "de": "Enjeu ist maskulin, daher un."
+      },
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "stake (what can be won or lost)",
+        "de": "Einsatz (was gewonnen oder verloren werden kann)"
+      },
+      "gap": {
+        "before": "Pour les électeurs, l'",
+        "after": " de ce référendum, c'est l'avenir du système de santé.",
+        "accepted": { "answers": ["enjeu"] },
+        "referenceTargetIds": ["enjeu", "frein", "impasse", "ecueil"],
+        "explanation": {
+          "en": "The future of the health system is what is at stake in the vote, so enjeu fits.",
+          "fr": "L'avenir du système de santé est ce qui est en jeu dans le vote : enjeu convient.",
+          "de": "Die Zukunft des Gesundheitssystems steht bei der Abstimmung auf dem Spiel, daher passt enjeu."
+        }
+      },
+      "listeningOptionTargetIds": ["enjeu", "ecueil", "frein", "probleme"]
+    },
+    {
+      "id": "defi",
+      "term": "défi",
+      "translations": { "en": ["challenge"], "de": ["Herausforderung"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un défi",
+      "examForms": ["un défi"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/de.fi/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Elle a relevé le défi de courir un marathon.",
+        "translation": {
+          "en": "She took up the challenge of running a marathon.",
+          "de": "Sie hat die Herausforderung angenommen, einen Marathon zu laufen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Un défi is a test one chooses to take up; the usual verb is relever.",
+        "fr": "Un défi est une épreuve que l'on choisit de relever ; le verbe habituel est relever.",
+        "de": "Un défi ist eine Prüfung, die man bewusst annimmt; das übliche Verb ist relever."
+      },
+      "genderExplanation": {
+        "en": "Défi is masculine, so its indefinite article is un.",
+        "fr": "Défi est masculin : on dit un défi.",
+        "de": "Défi ist maskulin, daher un."
+      },
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "challenge (a test to take up)",
+        "de": "Herausforderung (Prüfung, die man annimmt)"
+      },
+      "gap": {
+        "before": "Gravir l'Everest sans oxygène est un ",
+        "after": " que peu d'alpinistes osent relever.",
+        "accepted": { "answers": ["défi"] },
+        "referenceTargetIds": ["defi", "gageure", "obstacle", "probleme"],
+        "explanation": {
+          "en": "One relève un défi: it is the noun that goes with the verb relever.",
+          "fr": "On relève un défi : c'est le nom qui s'emploie avec le verbe relever.",
+          "de": "Man relève un défi: Es ist das Nomen, das zum Verb relever gehört."
+        }
+      },
+      "listeningOptionTargetIds": ["defi", "difficulte", "frein", "gageure"]
+    },
+    {
+      "id": "gageure",
+      "term": "gageure",
+      "translations": { "en": ["tall order"], "de": ["Wagnis"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une gageure",
+      "examForms": ["une gageure"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡa.ʒyʁ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Convaincre tout le monde en dix minutes relève de la gageure.",
+        "translation": {
+          "en": "Convincing everyone in ten minutes is a tall order.",
+          "de": "Alle in zehn Minuten zu überzeugen, ist ein fast unmögliches Unterfangen."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Gageure is pronounced like gajur: the letters -eu- sound like u.",
+        "fr": "Gageure se prononce « gajur » : les lettres -eu- se prononcent comme u.",
+        "de": "Gageure spricht man wie „gajür“: Die Buchstaben -eu- klingen wie ü."
+      },
+      "explanation": {
+        "en": "Une gageure is an undertaking that seems almost impossible; the usual expression is tenir de la gageure.",
+        "fr": "Une gageure est une entreprise qui semble presque impossible ; l'expression usuelle est tenir de la gageure.",
+        "de": "Une gageure ist ein Unterfangen, das fast unmöglich scheint; die übliche Wendung ist tenir de la gageure."
+      },
+      "genderExplanation": {
+        "en": "Gageure is feminine, so its indefinite article is une.",
+        "fr": "Gageure est féminin : on dit une gageure.",
+        "de": "Gageure ist feminin, daher une."
+      },
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "tall order (an almost impossible undertaking)",
+        "de": "Wagnis (fast unmögliches Unterfangen)"
+      },
+      "gap": {
+        "before": "Boucler le budget sans hausse d'impôts ni coupes relève de la ",
+        "after": " : il manque trois milliards.",
+        "accepted": { "answers": ["gageure"] },
+        "referenceTargetIds": ["gageure", "impasse", "difficulte", "enjeu"],
+        "explanation": {
+          "en": "Relever de la gageure is the set expression for an almost impossible task.",
+          "fr": "Relever de la gageure est l'expression figée pour une tâche presque impossible.",
+          "de": "Relever de la gageure ist die feste Wendung für eine fast unmögliche Aufgabe."
+        }
+      },
+      "listeningOptionTargetIds": ["gageure", "impasse", "difficulte", "defi"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

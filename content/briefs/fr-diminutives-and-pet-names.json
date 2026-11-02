@@ -1,0 +1,540 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-diminutives-and-pet-names",
+  "lang": "fr",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Fillette, frérot, mon lapin",
+  "objective": {
+    "en": "Recognise diminutives and pet names in -et, -ette, -ot, -on and sense their tender or condescending effect.",
+    "fr": "Reconnaître les diminutifs et mots tendres en -et, -ette, -ot, -on et leur effet de tendresse ou de condescendance.",
+    "de": "Verkleinerungsformen und Kosewörter auf -et, -ette, -ot, -on erkennen und ihre zärtliche oder herablassende Wirkung spüren."
+  },
+  "estimatedMinutes": 18,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:57:43.726Z",
+    "inputHashes": { "outline": "d11a20b979653a1997221dc4a11930aa17e758aa00236872702585f3e5f3c892" }
+  },
+  "kind": "vocabulary",
+  "theme": "language",
+  "coverageNotes": {
+    "en": "Ten diminutives and pet names grouped by suffix: -et/-ette, -ot/-on, and two tender address words. Each shows tenderness or, said of an adult, condescension.",
+    "fr": "Dix diminutifs et mots tendres classés par suffixe : -et/-ette, -ot/-on, et deux appellations affectueuses. Chacun exprime la tendresse ou, dit d’un adulte, la condescendance.",
+    "de": "Zehn Verkleinerungsformen und Kosewörter nach Suffix geordnet: -et/-ette, -ot/-on und zwei zärtliche Anreden. Jedes drückt Zärtlichkeit oder, auf Erwachsene bezogen, Herablassung aus."
+  },
+  "targetCount": 10,
+  "countRationale": {
+    "en": "Ten words match the outline's intent and keep the lesson short enough for C2 revision.",
+    "fr": "Dix mots correspondent à l’intention du plan et gardent une leçon assez courte pour un travail de niveau C2.",
+    "de": "Zehn Wörter entsprechen der Vorgabe der Gliederung und halten die Lektion für C2 kompakt."
+  },
+  "difficultyBalance": {
+    "en": "Common words (chaton, fillette) alongside rarer or more nuanced ones (jeunot, blondinet, garçonnet).",
+    "fr": "Des mots courants (chaton, fillette) à côté de mots plus rares ou nuancés (jeunot, blondinet, garçonnet).",
+    "de": "Geläufige Wörter (chaton, fillette) neben selteneren oder nuancierteren (jeunot, blondinet, garçonnet)."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "et-ette",
+      "label": {
+        "en": "Diminutives in -et and -ette",
+        "fr": "Diminutifs en -et et -ette",
+        "de": "Verkleinerungsformen auf -et und -ette"
+      },
+      "targetIds": ["fillette", "garconnet", "blondinet", "maisonnette"],
+      "introduction": {
+        "en": "The suffix **-et / -ette** makes a word smaller and often more tender:\n\n- `une fillette`\n- `un garçonnet`\n- `un blondinet`\n- `une maisonnette`\n\nSaid of an adult or of a grown child, the same suffix can sound condescending.",
+        "fr": "Le suffixe **-et / -ette** rend le mot plus petit et souvent plus tendre :\n\n- `une fillette`\n- `un garçonnet`\n- `un blondinet`\n- `une maisonnette`\n\nDit d’un adulte ou d’un grand enfant, le même suffixe peut sembler condescendant.",
+        "de": "Das Suffix **-et / -ette** macht ein Wort kleiner und oft zärtlicher:\n\n- `une fillette`\n- `un garçonnet`\n- `un blondinet`\n- `une maisonnette`\n\nAuf einen Erwachsenen oder ein größeres Kind bezogen, kann dasselbe Suffix herablassend klingen."
+      }
+    },
+    {
+      "id": "ot-on",
+      "label": {
+        "en": "Diminutives in -ot and -on",
+        "fr": "Diminutifs en -ot et -on",
+        "de": "Verkleinerungsformen auf -ot und -on"
+      },
+      "targetIds": ["frerot", "fiston", "jeunot", "chaton"],
+      "introduction": {
+        "en": "The suffixes **-ot** and **-on** are familiar and affectionate, but may also patronise:\n\n- `un frérot`\n- `un fiston`\n- `un jeunot`\n- `un chaton`\n\nBetween relatives the tone is warm; from a superior to a newcomer, `un jeunot` is rather condescending.",
+        "fr": "Les suffixes **-ot** et **-on** sont familiers et affectueux, mais peuvent aussi rabaisser :\n\n- `un frérot`\n- `un fiston`\n- `un jeunot`\n- `un chaton`\n\nEntre proches le ton est chaleureux ; d’un supérieur à un débutant, `un jeunot` est plutôt condescendant.",
+        "de": "Die Suffixe **-ot** und **-on** sind vertraulich und liebevoll, können aber auch herablassend wirken:\n\n- `un frérot`\n- `un fiston`\n- `un jeunot`\n- `un chaton`\n\nUnter Verwandten ist der Ton warm; von einem Vorgesetzten zu einem Neuling ist `un jeunot` eher herablassend."
+      }
+    },
+    {
+      "id": "mots-tendres",
+      "label": { "en": "Tender words of address", "fr": "Mots tendres", "de": "Zärtliche Anreden" },
+      "targetIds": ["chou", "lapin"],
+      "introduction": {
+        "en": "Some animals and foods become pet names when preceded by **mon**:\n\n- `mon chou`\n- `mon lapin`\n\nThese words express affection, but used with a stranger or a colleague they sound patronising.",
+        "fr": "Certains animaux et aliments deviennent des mots tendres après **mon** :\n\n- `mon chou`\n- `mon lapin`\n\nCes mots expriment l’affection, mais adressés à un inconnu ou à un collègue, ils paraissent condescendants.",
+        "de": "Manche Tiere und Lebensmittel werden nach **mon** zu Kosewörtern:\n\n- `mon chou`\n- `mon lapin`\n\nDiese Wörter drücken Zuneigung aus, wirken aber bei Fremden oder Kollegen herablassend."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "fillette",
+      "term": "fillette",
+      "translations": { "en": ["little girl"], "de": ["kleines Mädchen"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une fillette",
+      "examForms": ["une fillette"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fi.jɛt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "La fillette dessine un soleil.",
+        "translation": {
+          "en": "The little girl is drawing a sun.",
+          "de": "Das kleine Mädchen malt eine Sonne."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Fillette is the tender diminutive of fille, formed with -ette.",
+        "fr": "Fillette est le diminutif tendre de fille, formé avec -ette.",
+        "de": "Fillette ist die zärtliche Verkleinerungsform von fille, gebildet mit -ette."
+      },
+      "genderExplanation": {
+        "en": "Fillette is feminine, so it takes une.",
+        "fr": "Fillette est féminin : on dit une fillette.",
+        "de": "Fillette ist feminin und steht mit une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Cette ",
+        "after": " joue dans le jardin avec sa poupée.",
+        "accepted": { "answers": ["fillette"] },
+        "referenceTargetIds": ["fillette", "frerot", "fiston", "jeunot"],
+        "explanation": {
+          "en": "Only fillette fits: it is a girl playing with a doll.",
+          "fr": "Seul « fillette » convient : c’est une fille qui joue à la poupée.",
+          "de": "Nur „fillette“ passt: Es ist ein Mädchen, das mit einer Puppe spielt."
+        }
+      },
+      "listeningOptionTargetIds": ["fillette", "maisonnette", "blondinet", "garconnet"]
+    },
+    {
+      "id": "garconnet",
+      "term": "garçonnet",
+      "translations": { "en": ["little boy"], "de": ["kleiner Junge"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un garçonnet",
+      "examForms": ["un garçonnet"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡaʁ.sɔ.nɛ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Le garçonnet de quatre ans tient la main de sa mère.",
+        "translation": {
+          "en": "The four-year-old little boy holds his mother's hand.",
+          "de": "Der vierjährige kleine Junge hält die Hand seiner Mutter."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Garçonnet is a slightly formal diminutive of garçon, with -et.",
+        "fr": "Garçonnet est un diminutif un peu soutenu de garçon, avec -et.",
+        "de": "Garçonnet ist eine leicht gehobene Verkleinerungsform von garçon mit -et."
+      },
+      "genderExplanation": {
+        "en": "Garçonnet is masculine, so it takes un.",
+        "fr": "Garçonnet est masculin : on dit un garçonnet.",
+        "de": "Garçonnet ist maskulin und steht mit un."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le ",
+        "after": " de quatre ans tient la main de sa mère.",
+        "accepted": { "answers": ["garçonnet"] },
+        "referenceTargetIds": ["garconnet", "maisonnette", "chaton", "lapin"],
+        "explanation": {
+          "en": "Only garçonnet fits: a four-year-old boy holding his mother's hand.",
+          "fr": "Seul « garçonnet » convient : un petit garçon de quatre ans.",
+          "de": "Nur „garçonnet“ passt: ein vierjähriger Junge an der Hand seiner Mutter."
+        }
+      },
+      "listeningOptionTargetIds": ["garconnet", "blondinet", "maisonnette", "fillette"]
+    },
+    {
+      "id": "blondinet",
+      "term": "blondinet",
+      "translations": { "en": ["fair-haired boy"], "de": ["Blondschopf"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un blondinet",
+      "examForms": ["un blondinet"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/blɔ̃.di.nɛ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Le petit blondinet saute dans les vagues.",
+        "translation": {
+          "en": "The little fair-haired boy jumps in the waves.",
+          "de": "Der kleine Blondschopf springt in die Wellen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Blondinet is a tender diminutive of blond, used for a fair-haired child.",
+        "fr": "Blondinet est un diminutif tendre de blond, dit d’un enfant aux cheveux clairs.",
+        "de": "Blondinet ist eine zärtliche Verkleinerungsform von blond für ein Kind mit hellem Haar."
+      },
+      "genderExplanation": {
+        "en": "Blondinet is masculine, so it takes un.",
+        "fr": "Blondinet est masculin : on dit un blondinet.",
+        "de": "Blondinet ist maskulin und steht mit un."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le petit ",
+        "after": " aux cheveux clairs saute dans les vagues.",
+        "accepted": { "answers": ["blondinet"] },
+        "referenceTargetIds": ["blondinet", "chou", "maisonnette", "chaton"],
+        "explanation": {
+          "en": "Only blondinet fits: a child with fair hair.",
+          "fr": "Seul « blondinet » convient : un enfant aux cheveux clairs.",
+          "de": "Nur „blondinet“ passt: ein Kind mit hellem Haar."
+        }
+      },
+      "listeningOptionTargetIds": ["blondinet", "garconnet", "fillette", "jeunot"]
+    },
+    {
+      "id": "maisonnette",
+      "term": "maisonnette",
+      "translations": { "en": ["small house"], "de": ["Häuschen"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une maisonnette",
+      "examForms": ["une maisonnette"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/mɛ.zɔ.nɛt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ils habitent une maisonnette avec un jardin.",
+        "translation": {
+          "en": "They live in a small house with a garden.",
+          "de": "Sie wohnen in einem Häuschen mit Garten."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Maisonnette is the diminutive of maison, with -ette: a small, charming house.",
+        "fr": "Maisonnette est le diminutif de maison, avec -ette : une petite maison charmante.",
+        "de": "Maisonnette ist die Verkleinerungsform von maison mit -ette: ein kleines, reizendes Haus."
+      },
+      "genderExplanation": {
+        "en": "Maisonnette is feminine, so it takes une.",
+        "fr": "Maisonnette est féminin : on dit une maisonnette.",
+        "de": "Maisonnette ist feminin und steht mit une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ils habitent dans une petite ",
+        "after": " avec un jardin.",
+        "accepted": { "answers": ["maisonnette"] },
+        "referenceTargetIds": ["maisonnette", "fillette", "frerot", "lapin"],
+        "explanation": {
+          "en": "Only maisonnette fits: a small house with a garden.",
+          "fr": "Seul « maisonnette » convient : une petite maison avec jardin.",
+          "de": "Nur „maisonnette“ passt: ein kleines Haus mit Garten."
+        }
+      },
+      "listeningOptionTargetIds": ["maisonnette", "fillette", "garconnet", "chaton"]
+    },
+    {
+      "id": "frerot",
+      "term": "frérot",
+      "translations": { "en": ["little brother"], "de": ["Brüderchen"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un frérot",
+      "examForms": ["un frérot"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fʁe.ʁo/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mon frérot m’a prêté son vélo.",
+        "translation": {
+          "en": "My little brother lent me his bike.",
+          "de": "Mein Brüderchen hat mir sein Fahrrad geliehen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Frérot is a familiar, affectionate form of frère, with -ot.",
+        "fr": "Frérot est une forme familière et affectueuse de frère, avec -ot.",
+        "de": "Frérot ist eine vertrauliche, liebevolle Form von frère mit -ot."
+      },
+      "genderExplanation": {
+        "en": "Frérot is masculine, so it takes un.",
+        "fr": "Frérot est masculin : on dit un frérot.",
+        "de": "Frérot ist maskulin und steht mit un."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Mon petit ",
+        "after": " m’a prêté son vélo.",
+        "accepted": { "answers": ["frérot"] },
+        "referenceTargetIds": ["frerot", "maisonnette", "chaton", "fillette"],
+        "explanation": {
+          "en": "Only frérot fits: a brother who lends a bike.",
+          "fr": "Seul « frérot » convient : un frère qui prête son vélo.",
+          "de": "Nur „frérot“ passt: ein Bruder, der sein Fahrrad leiht."
+        }
+      },
+      "listeningOptionTargetIds": ["frerot", "jeunot", "chaton", "fiston"]
+    },
+    {
+      "id": "fiston",
+      "term": "fiston",
+      "translations": { "en": ["sonny"], "de": ["Söhnchen"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un fiston",
+      "examForms": ["un fiston"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fis.tɔ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Bravo, fiston, tu as réussi !",
+        "translation": {
+          "en": "Well done, son, you made it!",
+          "de": "Bravo, mein Junge, du hast es geschafft!"
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Fiston is an affectionate form of fils, with -on; it can also patronise a young man.",
+        "fr": "Fiston est une forme affectueuse de fils, avec -on ; il peut aussi rabaisser un jeune homme.",
+        "de": "Fiston ist eine liebevolle Form von fils mit -on; es kann einen jungen Mann auch herablassend behandeln."
+      },
+      "genderExplanation": {
+        "en": "Fiston is masculine, so it takes un.",
+        "fr": "Fiston est masculin : on dit un fiston.",
+        "de": "Fiston ist maskulin und steht mit un."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Bravo, ",
+        "after": " ! Ton père est fier de toi.",
+        "accepted": { "answers": ["fiston"] },
+        "referenceTargetIds": ["fiston", "maisonnette", "blondinet", "chaton"],
+        "explanation": {
+          "en": "Only fiston fits: a father addressing his son.",
+          "fr": "Seul « fiston » convient : un père s’adresse à son fils.",
+          "de": "Nur „fiston“ passt: Ein Vater spricht seinen Sohn an."
+        }
+      },
+      "listeningOptionTargetIds": ["fiston", "chaton", "frerot", "jeunot"]
+    },
+    {
+      "id": "jeunot",
+      "term": "jeunot",
+      "translations": { "en": ["young fellow"], "de": ["Jungspund"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un jeunot",
+      "examForms": ["un jeunot"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʒœ.no/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Le chef a dit : « Tu n’es qu’un jeunot. »",
+        "translation": {
+          "en": "The boss said: \"You're only a youngster.\"",
+          "de": "Der Chef sagte: „Du bist nur ein Jungspund.“"
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Jeunot, from jeune with -ot, is rather condescending: it stresses someone's inexperience.",
+        "fr": "Jeunot, de jeune avec -ot, est plutôt condescendant : il souligne l’inexpérience de quelqu’un.",
+        "de": "Jeunot, von jeune mit -ot, ist eher herablassend: Es betont die Unerfahrenheit einer Person."
+      },
+      "genderExplanation": {
+        "en": "Jeunot is masculine, so it takes un.",
+        "fr": "Jeunot est masculin : on dit un jeunot.",
+        "de": "Jeunot ist maskulin und steht mit un."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le chef a dit : « Tu n’es qu’un ",
+        "after": ", tu as tout à apprendre. »",
+        "accepted": { "answers": ["jeunot"] },
+        "referenceTargetIds": ["jeunot", "maisonnette", "chaton", "fillette"],
+        "explanation": {
+          "en": "Only jeunot fits: a boss belittling a newcomer.",
+          "fr": "Seul « jeunot » convient : un chef rabaisse un débutant.",
+          "de": "Nur „jeunot“ passt: Ein Chef macht einen Neuling klein."
+        }
+      },
+      "listeningOptionTargetIds": ["jeunot", "frerot", "blondinet", "chou"]
+    },
+    {
+      "id": "chaton",
+      "term": "chaton",
+      "translations": { "en": ["kitten"], "de": ["Kätzchen"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un chaton",
+      "examForms": ["un chaton"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʃa.tɔ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Le chaton ronronne sur le canapé.",
+        "translation": {
+          "en": "The kitten is purring on the sofa.",
+          "de": "Das Kätzchen schnurrt auf dem Sofa."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Chaton is the young of a chat, formed with -on; it is also a pet name.",
+        "fr": "Chaton est le petit du chat, formé avec -on ; c’est aussi un mot tendre.",
+        "de": "Chaton ist das Junge der Katze, gebildet mit -on; es ist auch ein Kosewort."
+      },
+      "genderExplanation": {
+        "en": "Chaton is masculine, so it takes un.",
+        "fr": "Chaton est masculin : on dit un chaton.",
+        "de": "Chaton ist maskulin und steht mit un."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le ",
+        "after": " ronronne sur le canapé.",
+        "accepted": { "answers": ["chaton"] },
+        "referenceTargetIds": ["chaton", "lapin", "jeunot", "fiston"],
+        "explanation": {
+          "en": "Only chaton fits: it is the one that purrs.",
+          "fr": "Seul « chaton » convient : c’est lui qui ronronne.",
+          "de": "Nur „chaton“ passt: Es ist das Tier, das schnurrt."
+        }
+      },
+      "listeningOptionTargetIds": ["chaton", "fiston", "lapin", "frerot"]
+    },
+    {
+      "id": "chou",
+      "term": "chou",
+      "translations": { "en": ["sweetheart"], "de": ["Schatz"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un chou",
+      "examForms": ["un chou"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʃu/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Viens, mon chou, on rentre.",
+        "translation": {
+          "en": "Come, sweetheart, we're going home.",
+          "de": "Komm, mein Schatz, wir gehen nach Hause."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Mon chou is a tender way to address someone you love, from the vegetable chou.",
+        "fr": "Mon chou est une façon tendre d’appeler quelqu’un qu’on aime, à partir du légume chou.",
+        "de": "Mon chou ist eine zärtliche Anrede für einen geliebten Menschen, vom Gemüse chou abgeleitet."
+      },
+      "genderExplanation": {
+        "en": "Chou is masculine, so it takes un (and mon in the pet name).",
+        "fr": "Chou est masculin : on dit un chou (et mon chou).",
+        "de": "Chou ist maskulin und steht mit un (und mon im Kosewort)."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Viens, mon ",
+        "after": ", on rentre.",
+        "accepted": { "answers": ["chou"] },
+        "referenceTargetIds": ["chou", "maisonnette", "fillette", "garconnet"],
+        "explanation": {
+          "en": "Only chou fits the pet name mon chou.",
+          "fr": "Seul « chou » convient dans l’expression tendre « mon chou ».",
+          "de": "Nur „chou“ passt in das Kosewort „mon chou“."
+        }
+      },
+      "listeningOptionTargetIds": ["chou", "lapin", "jeunot", "fiston"]
+    },
+    {
+      "id": "lapin",
+      "term": "lapin",
+      "translations": { "en": ["bunny"], "de": ["Häschen"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un lapin",
+      "examForms": ["un lapin"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/la.pɛ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ça va, mon lapin ?",
+        "translation": { "en": "Are you all right, my bunny?", "de": "Alles gut, mein Häschen?" }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Mon lapin is a tender pet name, from the animal lapin.",
+        "fr": "Mon lapin est un mot tendre, tiré de l’animal lapin.",
+        "de": "Mon lapin ist ein Kosewort, vom Tier lapin abgeleitet."
+      },
+      "genderExplanation": {
+        "en": "Lapin is masculine, so it takes un (and mon in the pet name).",
+        "fr": "Lapin est masculin : on dit un lapin (et mon lapin).",
+        "de": "Lapin ist maskulin und steht mit un (und mon im Kosewort)."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il a de longues oreilles : c’est un ",
+        "after": ".",
+        "accepted": { "answers": ["lapin"] },
+        "referenceTargetIds": ["lapin", "chou", "maisonnette", "jeunot"],
+        "explanation": {
+          "en": "Only lapin fits: it is the animal with long ears.",
+          "fr": "Seul « lapin » convient : c’est l’animal aux longues oreilles.",
+          "de": "Nur „lapin“ passt: Es ist das Tier mit den langen Ohren."
+        }
+      },
+      "listeningOptionTargetIds": ["lapin", "chaton", "chou", "frerot"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

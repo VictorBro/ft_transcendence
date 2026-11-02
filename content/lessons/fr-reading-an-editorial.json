@@ -1,0 +1,410 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-reading-an-editorial",
+  "lang": "fr",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Lire un éditorial",
+  "objective": {
+    "en": "Read a newspaper editorial, state its thesis in one sentence and spot the devices meant to persuade: rhetorical questions, striking figures, il est temps que.",
+    "fr": "Lire l’éditorial d’un quotidien, formuler sa thèse en une phrase et repérer les procédés qui doivent convaincre.",
+    "de": "Den Leitartikel einer Tageszeitung lesen, seine These in einem Satz formulieren und die Überzeugungsmittel erkennen: rhetorische Fragen, Schockzahlen, il est temps que."
+  },
+  "estimatedMinutes": 10,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:53:18.984Z",
+    "inputHashes": {
+      "outline": "a730c40e10217bda96a17b52811717c078f5f11dd3d6ccfbc915e85fe009bb8c",
+      "brief": "d1d584c0f311df8798f0f6053022b222387f7937df3970da50eff6c68e17fbec"
+    }
+  },
+  "kind": "reading",
+  "theme": "services",
+  "genre": "article",
+  "documents": [
+    {
+      "documentId": "main",
+      "title": "Le dernier guichet",
+      "meta": ["Éditorial", "Mardi 14 octobre"],
+      "paragraphs": [
+        "Combien de temps faudra-t-il encore pour que l’on s’alarme ? En dix ans, un bureau de poste sur cinq a fermé dans nos campagnes, et près de treize millions de Français déclarent ne pas être à l’aise avec les démarches en ligne. Le constat est sans appel : on a remplacé des guichets par des écrans, sans demander l’avis de ceux qui s’en servent.",
+        "Bien sûr, le numérique fait gagner du temps à beaucoup d’entre nous. Mais à quel prix ? Une retraitée qui n’arrive pas à renouveler sa carte d’identité, un jeune sans connexion qui rate une aide au logement : ces citoyens n’existent-ils plus pour l’administration ? Un service public qui exclut n’est plus un service public.",
+        "On nous répond que la dématérialisation permet des économies. C’est vrai : 400 millions d’euros par an, selon le ministère. Mais ce chiffre ne dit rien du coût humain : files d’attente au téléphone, démarches abandonnées, droits perdus. Faire des économies sur le dos des plus fragiles n’est pas une politique, c’est un renoncement.",
+        "Il est temps que l’État change de méthode. Il est temps que chaque mairie puisse compter sur un point d’accueil ouvert, avec une personne qui répond. Il est temps, enfin, de mesurer la réussite d’un service non pas au nombre de clics, mais au nombre de personnes réellement aidées.",
+        "Personne ne demande de revenir au papier. On demande simplement qu’aucun citoyen ne soit laissé sur le bord de la route. Le progrès qui oublie une partie du pays n’est pas un progrès : c’est une fracture que nous creusons de nos propres mains."
+      ],
+      "highlights": [
+        { "keywordId": "il-est-temps-que", "text": "Il est temps que" },
+        { "keywordId": "sans-appel", "text": "sans appel" },
+        { "keywordId": "a-quel-prix", "text": "à quel prix" },
+        { "keywordId": "dematerialisation", "text": "la dématérialisation" },
+        { "keywordId": "renoncement", "text": "un renoncement" }
+      ]
+    },
+    {
+      "documentId": "exam",
+      "title": "Ce train qu’on supprime",
+      "meta": ["Éditorial", "Jeudi 16 octobre"],
+      "paragraphs": [
+        "Faut-il vraiment fermer la ligne qui relie Aurillac à Brive ? Chaque matin, 1 200 voyageurs la prennent pour aller travailler ou étudier. La direction annonce sa suppression en janvier, au nom de la rentabilité. Le calcul est simple : trop peu de monde, trop cher.",
+        "Mais ce calcul oublie l’essentiel. Sans train, ces voyageurs prendront la voiture, et 1 200 voitures de plus sur une route déjà dangereuse, est-ce vraiment une économie ? Les lycéens qui n’ont pas de permis, eux, n’auront pas le choix : ils renonceront à leurs études.",
+        "Il est grand temps que les élus regardent la réalité en face. Une ligne n’est pas seulement une dépense : c’est une promesse faite à ceux qui vivent loin des grandes villes. Rompre cette promesse, c’est dire à toute une région qu’elle ne compte plus."
+      ],
+      "highlights": []
+    }
+  ],
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "exercise",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "flashcards",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Turn each card to learn the key words of the text.",
+            "fr": "Retournez chaque carte pour découvrir les mots clés du texte.",
+            "de": "Dreh jede Karte um und lerne die Schlüsselwörter des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_flashcards",
+              "itemId": "cards",
+              "keywordIds": [
+                "il-est-temps-que",
+                "sans-appel",
+                "a-quel-prix",
+                "dematerialisation",
+                "renoncement"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "matching",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each key word with its meaning.",
+            "fr": "Associez chaque mot clé à son sens.",
+            "de": "Ordne jedem Schlüsselwort seine Bedeutung zu."
+          },
+          "items": [
+            {
+              "type": "reading_keyword_matching",
+              "itemId": "matching",
+              "keywordIds": [
+                "il-est-temps-que",
+                "sans-appel",
+                "a-quel-prix",
+                "dematerialisation",
+                "renoncement"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skim",
+      "stage": "skim",
+      "role": "exercise",
+      "label": { "en": "Skim", "fr": "Survol", "de": "Überfliegen" },
+      "pages": [
+        {
+          "pageId": "skim",
+          "estimatedDurationS": 145,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Look over the document quickly. When the time is up it is put away; then answer the question.",
+            "fr": "Parcourez rapidement le document. À la fin du temps, il disparaît ; répondez ensuite à la question.",
+            "de": "Überfliege das Dokument. Wenn die Zeit um ist, verschwindet es; beantworte dann die Frage."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "skim-document",
+              "documentId": "main",
+              "view": "skim",
+              "skimSeconds": 125
+            },
+            {
+              "type": "reading_skim_choice",
+              "itemId": "skim-question",
+              "focus": "purpose",
+              "question": "Dans quel but l’auteur écrit-il cet éditorial ?",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "Défendre un accueil humain dans les services publics"
+                },
+                { "optionId": "o2", "text": "Annoncer la fermeture d’un bureau de poste" },
+                { "optionId": "o3", "text": "Présenter une nouvelle application de l’État" },
+                { "optionId": "o4", "text": "Raconter un souvenir d’enfance" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "The editorial defends a position: the State must keep real people to welcome citizens, not only screens. It is an opinion text, not an announcement or a story.",
+                "fr": "L’éditorial défend une position : l’État doit garder des personnes réelles pour accueillir les citoyens, pas seulement des écrans. C’est un texte d’opinion, pas une annonce ni un récit.",
+                "de": "Der Leitartikel vertritt eine Position: Der Staat muss echte Menschen für den Empfang der Bürger behalten, nicht nur Bildschirme. Es ist ein Meinungstext, keine Ankündigung und keine Erzählung."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detail",
+      "stage": "detail",
+      "role": "exercise",
+      "label": { "en": "Detail", "fr": "Détails", "de": "Details" },
+      "pages": [
+        {
+          "pageId": "detail",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the document carefully and answer the questions.",
+            "fr": "Lisez le document attentivement et répondez aux questions.",
+            "de": "Lies das Dokument genau und beantworte die Fragen."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "detail-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-chiffre",
+              "question": "Combien de Français ne sont pas à l’aise avec les démarches en ligne, selon l’éditorial ?",
+              "options": [
+                { "optionId": "o1", "text": "Un sur cinq" },
+                { "optionId": "o2", "text": "Près de treize millions" },
+                { "optionId": "o3", "text": "Quatre cents millions" },
+                { "optionId": "o4", "text": "Une dizaine" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "The figure is près de treize millions. It is a striking figure meant to show that the problem is not marginal. Un sur cinq concerns post offices.",
+                "fr": "Le chiffre est près de treize millions. C’est un chiffre choc qui montre que le problème n’est pas marginal. Un sur cinq concerne les bureaux de poste.",
+                "de": "Die Zahl lautet près de treize millions. Es ist eine Schockzahl, die zeigt, dass das Problem kein Randphänomen ist. Un sur cinq betrifft die Postämter."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-exemples",
+              "question": "Pourquoi l’auteur évoque-t-il une retraitée et un jeune sans connexion ?",
+              "options": [
+                { "optionId": "o1", "text": "Pour critiquer les retraités et les jeunes" },
+                { "optionId": "o2", "text": "Pour proposer une nouvelle application" },
+                {
+                  "optionId": "o3",
+                  "text": "Pour donner des exemples concrets de personnes exclues"
+                },
+                { "optionId": "o4", "text": "Pour expliquer le calcul des économies" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "Two concrete cases make the argument more human and touch the reader. The rhetorical question that follows (n’existent-ils plus ?) reinforces the effect.",
+                "fr": "Deux cas concrets rendent l’argument plus humain et touchent le lecteur. La question rhétorique qui suit (n’existent-ils plus ?) renforce l’effet.",
+                "de": "Zwei konkrete Fälle machen das Argument menschlicher und berühren den Leser. Die folgende rhetorische Frage (n’existent-ils plus ?) verstärkt die Wirkung."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "q-economies",
+              "statement": "L’auteur nie que la dématérialisation permette des économies.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: he admits it (C’est vrai : 400 millions d’euros), then contradicts the argument with the human cost. It is a concession before a counter-argument.",
+                "fr": "Faux : il l’admet (C’est vrai : 400 millions d’euros), puis il retourne l’argument en parlant du coût humain. C’est une concession avant un contre-argument.",
+                "de": "Falsch: Er gibt es zu (C’est vrai : 400 millions d’euros) und kehrt das Argument dann mit den menschlichen Kosten um. Es ist ein Zugeständnis vor einem Gegenargument."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-demande",
+              "question": "Que demande l’auteur à l’État ?",
+              "options": [
+                { "optionId": "o1", "text": "Un retour complet au papier" },
+                {
+                  "optionId": "o2",
+                  "text": "Un point d’accueil avec une personne dans chaque mairie"
+                },
+                { "optionId": "o3", "text": "La fermeture de tous les guichets" },
+                { "optionId": "o4", "text": "Plus de démarches en ligne" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "After the repeated Il est temps que, the request is clear: a reception point with a person who answers in every town hall. The text says Personne ne demande de revenir au papier.",
+                "fr": "Après les Il est temps que répétés, la demande est claire : un point d’accueil avec une personne qui répond dans chaque mairie. Le texte dit Personne ne demande de revenir au papier.",
+                "de": "Nach den wiederholten Il est temps que ist die Forderung klar: ein Anlaufpunkt mit einer Person, die antwortet, in jedem Rathaus. Der Text sagt Personne ne demande de revenir au papier."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "structure",
+      "stage": "structure",
+      "role": "exercise",
+      "label": { "en": "Structure", "fr": "Structure", "de": "Aufbau" },
+      "pages": [
+        {
+          "pageId": "structure",
+          "estimatedDurationS": 75,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the information in the order the text gives it.",
+            "fr": "Remettez les informations dans l’ordre du texte.",
+            "de": "Bring die Informationen in die Reihenfolge des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "structure-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_order",
+              "itemId": "order",
+              "pieces": [
+                { "pieceId": "p3", "text": "La réponse sur les économies et le coût humain" },
+                { "pieceId": "p1", "text": "Un constat chiffré sur les fermetures" },
+                { "pieceId": "p5", "text": "La conclusion : le progrès ne doit oublier personne" },
+                { "pieceId": "p2", "text": "Des exemples de citoyens exclus" },
+                { "pieceId": "p4", "text": "L’appel au changement avec Il est temps que" }
+              ],
+              "acceptedOrders": [["p1", "p2", "p3", "p4", "p5"]],
+              "answerExplanation": {
+                "en": "The editorial moves from the facts to the examples, answers the objection about savings, then makes its demand and closes on a general idea. This progression helps to convince.",
+                "fr": "L’éditorial va des faits aux exemples, répond à l’objection sur les économies, puis formule sa demande et termine sur une idée générale. Cette progression aide à convaincre.",
+                "de": "Der Leitartikel geht von den Fakten zu den Beispielen, beantwortet den Einwand zu den Einsparungen, stellt dann seine Forderung und endet mit einem allgemeinen Gedanken. Dieser Aufbau hilft zu überzeugen."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam",
+          "estimatedDurationS": 165,
+          "timeLimitS": 250,
+          "instructions": {
+            "en": "Read the new document and answer the questions. No help this time.",
+            "fr": "Lisez le nouveau document et répondez aux questions. Cette fois, sans aide.",
+            "de": "Lies das neue Dokument und beantworte die Fragen. Diesmal ohne Hilfe."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "exam-document",
+              "documentId": "exam",
+              "view": "exam",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-these",
+              "question": "Quelle est la thèse de l’auteur ?",
+              "options": [
+                { "optionId": "o1", "text": "Il faut construire une nouvelle autoroute" },
+                { "optionId": "o2", "text": "Il faut maintenir la ligne de train" },
+                { "optionId": "o3", "text": "Les voyageurs doivent faire du covoiturage" },
+                { "optionId": "o4", "text": "La rentabilité est le seul critère valable" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "The whole text argues against the closing of the line: it must be kept for the people who depend on it.",
+                "fr": "Tout le texte s’oppose à la suppression de la ligne : elle doit être maintenue pour ceux qui en dépendent.",
+                "de": "Der ganze Text wendet sich gegen die Stilllegung der Linie: Sie muss für die Menschen, die auf sie angewiesen sind, erhalten bleiben."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-procede",
+              "question": "Quel procédé l’auteur utilise-t-il dès la première phrase ?",
+              "options": [
+                { "optionId": "o1", "text": "Une citation d’un ministre" },
+                { "optionId": "o2", "text": "Une anecdote personnelle" },
+                { "optionId": "o3", "text": "Une question rhétorique" },
+                { "optionId": "o4", "text": "Une définition" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "Faut-il vraiment fermer la ligne… ? is a rhetorical question: the author already knows his answer and wants the reader to share it.",
+                "fr": "Faut-il vraiment fermer la ligne… ? est une question rhétorique : l’auteur connaît déjà sa réponse et veut que le lecteur la partage.",
+                "de": "Faut-il vraiment fermer la ligne… ? ist eine rhetorische Frage: Der Autor kennt seine Antwort schon und will, dass der Leser sie teilt."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-chiffre",
+              "question": "Que représente le chiffre « 1 200 » dans le texte ?",
+              "options": [
+                { "optionId": "o1", "text": "Le prix d’un billet" },
+                { "optionId": "o2", "text": "Le nombre de kilomètres de la ligne" },
+                { "optionId": "o3", "text": "Le nombre d’élus de la région" },
+                { "optionId": "o4", "text": "Le nombre de voyageurs chaque matin" }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "Chaque matin, 1 200 voyageurs la prennent. The figure shows how many people depend on the line.",
+                "fr": "Chaque matin, 1 200 voyageurs la prennent. Le chiffre montre combien de personnes dépendent de la ligne.",
+                "de": "Chaque matin, 1 200 voyageurs la prennent. Die Zahl zeigt, wie viele Menschen auf die Linie angewiesen sind."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-economie",
+              "statement": "Selon l’auteur, supprimer la ligne ferait réaliser une vraie économie.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: he doubts it (est-ce vraiment une économie ?) because of the extra cars and the danger of the road.",
+                "fr": "Faux : il en doute (est-ce vraiment une économie ?) à cause des voitures en plus et du danger de la route.",
+                "de": "Falsch: Er bezweifelt es (est-ce vraiment une économie ?) wegen der zusätzlichen Autos und der Gefahr auf der Straße."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-lyceens",
+              "statement": "L’auteur pense que des lycéens pourraient abandonner leurs études.",
+              "answer": "true",
+              "answerExplanation": {
+                "en": "True: les lycéens qui n’ont pas de permis… ils renonceront à leurs études. It is a concrete consequence used as an argument.",
+                "fr": "Vrai : les lycéens qui n’ont pas de permis… ils renonceront à leurs études. C’est une conséquence concrète utilisée comme argument.",
+                "de": "Richtig: les lycéens qui n’ont pas de permis… ils renonceront à leurs études. Es ist eine konkrete Folge, die als Argument dient."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

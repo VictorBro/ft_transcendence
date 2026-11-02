@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-popularising-a-complex-idea",
+  "lang": "fr",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Vulgariser une notion complexe",
+  "objective": {
+    "en": "Explain a complex notion to a non-specialist with an analogy and a concrete example, without distorting the idea, and flag where the image stops working.",
+    "fr": "Expliquer une notion complexe à un non-spécialiste avec une analogie et un exemple concret, sans fausser l’idée, en signalant les limites de l’image.",
+    "de": "Einem Laien einen komplexen Begriff mit einer Analogie und einem konkreten Beispiel erklären, ohne die Idee zu verfälschen, und die Grenzen des Bildes benennen."
+  },
+  "estimatedMinutes": 15,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:59:22.173Z",
+    "inputHashes": { "outline": "767ac170a607dc3d48e719353dbe3fe0daa3aca5480a161b224cb0c2f58b0d8d" }
+  },
+  "kind": "functions",
+  "theme": "language",
+  "situation": {
+    "en": "At a science festival, a researcher explains a difficult notion to a curious visitor.",
+    "fr": "Lors d’une fête de la science, une chercheuse explique une notion difficile à un visiteur curieux.",
+    "de": "Auf einem Wissenschaftsfest erklärt eine Forscherin einem neugierigen Besucher einen schwierigen Begriff."
+  },
+  "coverageNotes": {
+    "en": "Opening an analogy (Imaginez que, C’est un peu comme), moving to the concrete consequence (Concrètement, ça veut dire que), rephrasing (Autrement dit) and flagging where the image stops being accurate (L’image a ses limites).",
+    "fr": "Ouvrir une analogie (Imaginez que, C’est un peu comme), passer à la conséquence concrète (Concrètement, ça veut dire que), reformuler (Autrement dit) et signaler où l’image cesse d’être exacte (L’image a ses limites).",
+    "de": "Eine Analogie eröffnen (Imaginez que, C’est un peu comme), zur konkreten Folge übergehen (Concrètement, ça veut dire que), umformulieren (Autrement dit) und benennen, wo das Bild ungenau wird (L’image a ses limites)."
+  },
+  "prerequisites": [],
+  "roles": [
+    {
+      "id": "chercheuse",
+      "label": "la chercheuse",
+      "translation": { "en": "the researcher", "de": "die Forscherin" }
+    },
+    {
+      "id": "visiteur",
+      "label": "le visiteur",
+      "translation": { "en": "the visitor", "de": "der Besucher" }
+    }
+  ],
+  "expressions": [
+    {
+      "id": "imaginez-que",
+      "text": "Imaginez que",
+      "openEnd": true,
+      "translations": { "en": ["Imagine that"], "de": ["Stellen Sie sich vor, dass"] },
+      "explanation": {
+        "en": "Invites the listener into a scenario; the verb that follows is usually in the subjunctive (formal, vous).",
+        "fr": "Invite l’auditeur à entrer dans un scénario ; le verbe qui suit est le plus souvent au subjonctif (registre soutenu, vous).",
+        "de": "Lädt den Zuhörer in ein Szenario ein; das folgende Verb steht meist im Subjonctif (gehoben, vous)."
+      },
+      "example": {
+        "text": "Imaginez que chaque atome soit une bille minuscule.",
+        "translation": {
+          "en": "Imagine that each atom is a tiny marble.",
+          "de": "Stellen Sie sich vor, jedes Atom sei eine winzige Murmel."
+        }
+      }
+    },
+    {
+      "id": "un-peu-comme",
+      "text": "C’est un peu comme",
+      "openEnd": true,
+      "translations": { "en": ["It’s a bit like"], "de": ["Das ist ein bisschen wie"] },
+      "explanation": {
+        "en": "Introduces an analogy; un peu signals that the comparison is approximate.",
+        "fr": "Introduit une analogie ; « un peu » signale que la comparaison est approximative.",
+        "de": "Leitet eine Analogie ein; un peu zeigt, dass der Vergleich nur ungefähr gilt."
+      },
+      "example": {
+        "text": "La mémoire vive, c’est un peu comme un plan de travail : tout ce qu’on y pose reste à portée de main.",
+        "translation": {
+          "en": "RAM is a bit like a worktop: everything you put on it stays within reach.",
+          "de": "Der Arbeitsspeicher ist ein bisschen wie eine Arbeitsplatte: Alles, was man darauf legt, bleibt in Reichweite."
+        }
+      }
+    },
+    {
+      "id": "concretement",
+      "text": "Concrètement, ça veut dire que",
+      "openEnd": true,
+      "translations": {
+        "en": ["In concrete terms, that means"],
+        "de": ["Konkret heißt das, dass"]
+      },
+      "explanation": {
+        "en": "Moves from the abstract idea to its practical consequence for the listener.",
+        "fr": "Fait passer de l’idée abstraite à sa conséquence pratique pour l’auditeur.",
+        "de": "Führt von der abstrakten Idee zur praktischen Folge für den Zuhörer."
+      },
+      "example": {
+        "text": "Concrètement, ça veut dire que le moteur consomme moins pour la même distance.",
+        "translation": {
+          "en": "In concrete terms, that means the engine uses less for the same distance.",
+          "de": "Konkret heißt das, dass der Motor für dieselbe Strecke weniger verbraucht."
+        }
+      }
+    },
+    {
+      "id": "autrement-dit",
+      "text": "Autrement dit",
+      "openEnd": true,
+      "translations": { "en": ["In other words"], "de": ["Anders gesagt"] },
+      "explanation": {
+        "en": "Rephrases what was just said in simpler terms, or checks that you have understood it.",
+        "fr": "Reformule en termes plus simples ce qui vient d’être dit, ou vérifie qu’on a compris.",
+        "de": "Formuliert das eben Gesagte einfacher um oder prüft, ob man es verstanden hat."
+      },
+      "example": {
+        "text": "Autrement dit, le contrat protège surtout celui qui l’a rédigé.",
+        "translation": {
+          "en": "In other words, the contract mainly protects whoever drafted it.",
+          "de": "Anders gesagt schützt der Vertrag vor allem denjenigen, der ihn verfasst hat."
+        }
+      }
+    },
+    {
+      "id": "image-limites",
+      "text": "L’image a ses limites",
+      "openEnd": false,
+      "translations": { "en": ["The image has its limits"], "de": ["Das Bild hat seine Grenzen"] },
+      "explanation": {
+        "en": "Said after an analogy to show where it stops being accurate, so that the idea is not distorted.",
+        "fr": "Se dit après une analogie pour montrer où elle cesse d’être exacte, afin de ne pas fausser l’idée.",
+        "de": "Wird nach einer Analogie gesagt, um zu zeigen, wo sie ungenau wird, damit die Idee nicht verfälscht wird."
+      },
+      "example": {
+        "text": "Le réseau routier aide à comprendre, mais l’image a ses limites.",
+        "translation": {
+          "en": "The road network helps, but the image has its limits.",
+          "de": "Das Straßennetz hilft beim Verstehen, aber das Bild hat seine Grenzen."
+        }
+      }
+    }
+  ],
+  "words": [],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

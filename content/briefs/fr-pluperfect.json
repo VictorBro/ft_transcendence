@@ -1,0 +1,300 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-pluperfect",
+  "lang": "fr",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Le plus-que-parfait",
+  "objective": {
+    "en": "Form the plus-que-parfait (j'avais fini, elle était partie) and use it for an action that happened before a past moment.",
+    "fr": "Former le plus-que-parfait (j'avais fini, elle était partie) et l'employer pour une action antérieure à un moment passé.",
+    "de": "Das plus-que-parfait bilden (j'avais fini, elle était partie) und für eine Handlung vor einem vergangenen Zeitpunkt verwenden."
+  },
+  "estimatedMinutes": 21,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:46:02.977Z",
+    "inputHashes": { "outline": "e0949a2863899698d1ba34ef6d3977d93457755990aee9cc1bce5c3acf79c55b" }
+  },
+  "kind": "grammar",
+  "topic": "verbs_morphology",
+  "scopeBoundaries": {
+    "en": "Covers the formation with avoir and être (with agreement) and its main use: an action before another past action. Excludes the full narrative system, si-clauses and reported speech.",
+    "fr": "Couvre la formation avec avoir et être (avec accord) et l'emploi principal : une action antérieure à une autre action passée. Exclut le système complet du récit, les phrases en si et le discours rapporté.",
+    "de": "Behandelt die Bildung mit avoir und être (mit Angleichung) und die Hauptverwendung: eine Handlung vor einer anderen vergangenen Handlung. Ausgeschlossen sind das gesamte Erzählsystem, si-Sätze und indirekte Rede."
+  },
+  "prerequisites": [
+    {
+      "en": "The passé composé with avoir and être, and its past participles.",
+      "fr": "Le passé composé avec avoir et être, et ses participes passés.",
+      "de": "Das passé composé mit avoir und être und seine Partizipien."
+    },
+    {
+      "en": "The imperfect of avoir and être.",
+      "fr": "L'imparfait d'avoir et d'être.",
+      "de": "Das Imparfait von avoir und être."
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-avoir-forms",
+      "summary": {
+        "en": "With most verbs, the plus-que-parfait is avoir in the imperfect + past participle: j'avais fini.",
+        "fr": "Avec la plupart des verbes, le plus-que-parfait = avoir à l'imparfait + participe passé : j'avais fini.",
+        "de": "Bei den meisten Verben: avoir im Imparfait + Partizip Perfekt: j'avais fini."
+      }
+    },
+    {
+      "id": "rule-etre-forms",
+      "summary": {
+        "en": "With movement verbs and pronominal verbs, it is être in the imperfect + participle, which agrees with the subject: elle était partie.",
+        "fr": "Avec les verbes de mouvement et les verbes pronominaux : être à l'imparfait + participe, accordé avec le sujet : elle était partie.",
+        "de": "Bei Bewegungsverben und reflexiven Verben: être im Imparfait + Partizip, das sich nach dem Subjekt richtet: elle était partie."
+      }
+    },
+    {
+      "id": "rule-anteriority",
+      "summary": {
+        "en": "It shows an action finished before another past moment: Quand je suis arrivé, le film avait commencé.",
+        "fr": "Il exprime une action terminée avant un autre moment passé : Quand je suis arrivé, le film avait commencé.",
+        "de": "Es drückt eine Handlung aus, die vor einem anderen vergangenen Zeitpunkt abgeschlossen war: Quand je suis arrivé, le film avait commencé."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-avoir",
+      "title": {
+        "en": "Forming it with avoir",
+        "fr": "La formation avec avoir",
+        "de": "Die Bildung mit avoir"
+      },
+      "ruleIds": ["rule-avoir-forms"],
+      "explanationPlan": {
+        "en": "Present the plus-que-parfait as avoir in the imperfect + past participle. Show all six persons and remind that the participle is the one of the passé composé.",
+        "fr": "Présenter le plus-que-parfait comme avoir à l'imparfait + participe passé. Montrer les six personnes et rappeler que le participe est celui du passé composé.",
+        "de": "Das plus-que-parfait als avoir im Imparfait + Partizip Perfekt einführen. Alle sechs Personen zeigen und daran erinnern, dass das Partizip das des passé composé ist."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "J'avais fini mes devoirs avant le dîner.",
+          "translation": {
+            "en": "I had finished my homework before dinner.",
+            "de": "Ich hatte meine Hausaufgaben vor dem Abendessen beendet."
+          }
+        },
+        {
+          "text": "Nous avions déjà vu ce film.",
+          "translation": {
+            "en": "We had already seen that film.",
+            "de": "Wir hatten diesen Film schon gesehen."
+          }
+        },
+        {
+          "text": "Ils avaient pris le train de huit heures.",
+          "translation": {
+            "en": "They had taken the eight o'clock train.",
+            "de": "Sie hatten den Zug um acht Uhr genommen."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not use the present of avoir (j'ai fini): that is the passé composé.",
+          "fr": "N'employez pas le présent d'avoir (j'ai fini) : c'est le passé composé.",
+          "de": "Verwende nicht das Präsens von avoir (j'ai fini): das ist das passé composé."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-av-match",
+          "type": "grammar_person_matching",
+          "itemCount": 1,
+          "ruleIds": ["rule-avoir-forms"],
+          "estimatedDurationS": 90
+        },
+        {
+          "id": "ex-av-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 3,
+          "ruleIds": ["rule-avoir-forms"],
+          "estimatedDurationS": 45
+        },
+        {
+          "id": "ex-av-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 3,
+          "ruleIds": ["rule-avoir-forms"],
+          "estimatedDurationS": 75
+        }
+      ]
+    },
+    {
+      "id": "block-etre",
+      "title": {
+        "en": "Forming it with être",
+        "fr": "La formation avec être",
+        "de": "Die Bildung mit être"
+      },
+      "ruleIds": ["rule-etre-forms"],
+      "explanationPlan": {
+        "en": "Explain that movement verbs (aller, partir, arriver, venir, rester) and pronominal verbs take être in the imperfect. Stress the agreement of the participle with the subject.",
+        "fr": "Expliquer que les verbes de mouvement (aller, partir, arriver, venir, rester) et les verbes pronominaux prennent être à l'imparfait. Insister sur l'accord du participe avec le sujet.",
+        "de": "Erklären, dass Bewegungsverben (aller, partir, arriver, venir, rester) und reflexive Verben être im Imparfait nehmen. Die Angleichung des Partizips an das Subjekt betonen."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "Elle était partie avant mon arrivée.",
+          "translation": {
+            "en": "She had left before I arrived.",
+            "de": "Sie war vor meiner Ankunft gegangen."
+          }
+        },
+        {
+          "text": "Nous étions arrivés trop tard.",
+          "translation": { "en": "We had arrived too late.", "de": "Wir waren zu spät angekommen." }
+        },
+        {
+          "text": "Je m'étais levé très tôt ce matin-là.",
+          "translation": {
+            "en": "I had got up very early that morning.",
+            "de": "Ich war an jenem Morgen sehr früh aufgestanden."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not forget to make the participle agree: elle était partie, not parti.",
+          "fr": "N'oubliez pas d'accorder le participe : elle était partie, et non parti.",
+          "de": "Vergiss die Angleichung des Partizips nicht: elle était partie, nicht parti."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-et-form",
+          "type": "grammar_pronoun_form_typing",
+          "itemCount": 2,
+          "ruleIds": ["rule-etre-forms"],
+          "estimatedDurationS": 90
+        },
+        {
+          "id": "ex-et-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 3,
+          "ruleIds": ["rule-etre-forms"],
+          "estimatedDurationS": 45
+        },
+        {
+          "id": "ex-et-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["rule-etre-forms"],
+          "estimatedDurationS": 75
+        }
+      ]
+    },
+    {
+      "id": "block-usage",
+      "title": {
+        "en": "Using it: the action that came first",
+        "fr": "L'emploi : l'action qui vient d'abord",
+        "de": "Die Verwendung: die Handlung, die zuerst kam"
+      },
+      "ruleIds": ["rule-anteriority"],
+      "explanationPlan": {
+        "en": "Show that the plus-que-parfait marks an action finished before another action in the passé composé. The order of the sentence does not matter, only the order of events. Mention déjà, ne… pas encore, jamais.",
+        "fr": "Montrer que le plus-que-parfait marque une action terminée avant une autre action au passé composé. L'ordre dans la phrase importe peu, seul l'ordre des événements compte. Mentionner déjà, ne… pas encore, jamais.",
+        "de": "Zeigen, dass das plus-que-parfait eine Handlung markiert, die vor einer anderen Handlung im passé composé abgeschlossen war. Die Satzreihenfolge ist egal, nur die Reihenfolge der Ereignisse zählt. déjà, ne… pas encore, jamais erwähnen."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "Quand je suis arrivé, le film avait commencé.",
+          "translation": {
+            "en": "When I arrived, the film had started.",
+            "de": "Als ich ankam, hatte der Film angefangen."
+          }
+        },
+        {
+          "text": "Il n'avait jamais vu la mer avant ce voyage.",
+          "translation": {
+            "en": "He had never seen the sea before that trip.",
+            "de": "Er hatte das Meer vor dieser Reise noch nie gesehen."
+          }
+        },
+        {
+          "text": "Elle a tout compris parce que son frère lui avait tout expliqué.",
+          "translation": {
+            "en": "She understood everything because her brother had explained it all to her.",
+            "de": "Sie verstand alles, weil ihr Bruder ihr alles erklärt hatte."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Use the passé composé for the later action, not the plus-que-parfait for both.",
+          "fr": "Mettez l'action la plus récente au passé composé, pas les deux actions au plus-que-parfait.",
+          "de": "Setze die spätere Handlung ins passé composé, nicht beide ins plus-que-parfait."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-us-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 3,
+          "ruleIds": ["rule-anteriority"],
+          "estimatedDurationS": 45
+        },
+        {
+          "id": "ex-us-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-anteriority"],
+          "estimatedDurationS": 75
+        },
+        {
+          "id": "ex-us-gap",
+          "type": "grammar_gap_typing",
+          "itemCount": 3,
+          "ruleIds": ["rule-anteriority"],
+          "estimatedDurationS": 75
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-avoir",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-avoir-forms"],
+        "estimatedDurationS": 80,
+        "timeLimitS": 130
+      },
+      {
+        "pageId": "exam-etre",
+        "type": "grammar_pronoun_form_typing",
+        "itemCount": 1,
+        "ruleIds": ["rule-etre-forms"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      },
+      {
+        "pageId": "exam-usage",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-anteriority"],
+        "estimatedDurationS": 75,
+        "timeLimitS": 120
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

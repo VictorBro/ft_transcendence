@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-refuting-an-argument",
+  "lang": "fr",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Réfuter un argument",
+  "objective": {
+    "en": "Contest an argument point by point without attacking the person: say why it fails, ask for evidence, point out a confusion.",
+    "fr": "Contester un argument point par point sans attaquer la personne : dire pourquoi il ne tient pas, exiger des preuves, relever une confusion.",
+    "de": "Ein Argument Punkt für Punkt widerlegen, ohne die Person anzugreifen: Gründe nennen, Belege verlangen, Verwechslungen aufzeigen."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:55:03.033Z",
+    "inputHashes": { "outline": "c3eb44bc4c5cea6a4369e153255f11936dfedca70f2c1f480873465e0fc8dfce" }
+  },
+  "kind": "functions",
+  "theme": "language",
+  "situation": {
+    "en": "Two colleagues debate in a meeting; Inès contests Marc’s arguments one by one.",
+    "fr": "Deux collègues débattent en réunion ; Inès conteste les arguments de Marc un par un.",
+    "de": "Zwei Kollegen debattieren in einer Besprechung; Inès widerlegt Marcs Argumente einzeln."
+  },
+  "coverageNotes": {
+    "en": "Rejecting an argument with a reason (Cet argument ne tient pas, car), demanding evidence (Rien ne prouve que), pointing out a confusion (C’est confondre), disagreeing politely (Je ne vous suis pas sur ce point), denouncing a hasty conclusion and a hidden premise (Vous tirez une conclusion hâtive, Vous partez du principe que). All of them target the argument, never the person.",
+    "fr": "Rejeter un argument en donnant la raison (Cet argument ne tient pas, car), exiger des preuves (Rien ne prouve que), relever une confusion (C’est confondre), marquer son désaccord poliment (Je ne vous suis pas sur ce point), dénoncer une conclusion hâtive et un présupposé caché (Vous tirez une conclusion hâtive, Vous partez du principe que). Toutes visent l’argument, jamais la personne.",
+    "de": "Ein Argument mit Begründung zurückweisen (Cet argument ne tient pas, car), Belege verlangen (Rien ne prouve que), eine Verwechslung aufzeigen (C’est confondre), höflich widersprechen (Je ne vous suis pas sur ce point), einen voreiligen Schluss und eine versteckte Voraussetzung benennen (Vous tirez une conclusion hâtive, Vous partez du principe que). Alle richten sich gegen das Argument, nie gegen die Person."
+  },
+  "prerequisites": [],
+  "roles": [
+    { "id": "ines", "label": "Inès", "translation": { "en": "Inès", "de": "Inès" } },
+    { "id": "marc", "label": "Marc", "translation": { "en": "Marc", "de": "Marc" } }
+  ],
+  "expressions": [
+    {
+      "id": "ne-tient-pas",
+      "text": "Cet argument ne tient pas, car",
+      "openEnd": true,
+      "translations": {
+        "en": ["This argument doesn’t hold up, because"],
+        "de": ["Dieses Argument greift nicht, denn"]
+      },
+      "explanation": {
+        "en": "Rejects an argument and gives the reason straight away, without attacking the person.",
+        "fr": "Rejette un argument et donne aussitôt la raison, sans attaquer la personne.",
+        "de": "Weist ein Argument zurück und nennt sofort den Grund, ohne die Person anzugreifen."
+      },
+      "example": {
+        "text": "Cet argument ne tient pas, car il repose sur des chiffres de 2015.",
+        "translation": {
+          "en": "This argument doesn’t hold up, because it rests on figures from 2015.",
+          "de": "Dieses Argument greift nicht, denn es beruht auf Zahlen von 2015."
+        }
+      }
+    },
+    {
+      "id": "rien-ne-prouve",
+      "text": "Rien ne prouve que",
+      "openEnd": true,
+      "translations": { "en": ["Nothing proves that"], "de": ["Nichts beweist, dass"] },
+      "explanation": {
+        "en": "Challenges a claim that is presented as a fact but has no evidence behind it.",
+        "fr": "Conteste une affirmation présentée comme un fait mais sans preuve.",
+        "de": "Stellt eine Behauptung infrage, die als Tatsache auftritt, aber nicht belegt ist."
+      },
+      "example": {
+        "text": "Rien ne prouve que cette mesure ait fait baisser le chômage.",
+        "translation": {
+          "en": "Nothing proves that this measure brought unemployment down.",
+          "de": "Nichts beweist, dass diese Maßnahme die Arbeitslosigkeit gesenkt hat."
+        }
+      }
+    },
+    {
+      "id": "confondre",
+      "text": "C’est confondre",
+      "openEnd": true,
+      "translations": { "en": ["That is confusing"], "de": ["Das heißt, zu verwechseln"] },
+      "explanation": {
+        "en": "Points out that the other person mixes up two different ideas: C’est confondre A et B.",
+        "fr": "Montre que l’autre mélange deux idées différentes : C’est confondre A et B.",
+        "de": "Zeigt, dass der andere zwei verschiedene Dinge vermischt: C’est confondre A et B."
+      },
+      "example": {
+        "text": "C’est confondre corrélation et causalité.",
+        "translation": {
+          "en": "That is confusing correlation with causation.",
+          "de": "Das heißt, Korrelation und Kausalität zu verwechseln."
+        }
+      }
+    },
+    {
+      "id": "je-ne-vous-suis-pas",
+      "text": "Je ne vous suis pas sur ce point",
+      "openEnd": false,
+      "translations": {
+        "en": ["I don’t agree with you on this point"],
+        "de": ["Da folge ich Ihnen nicht"]
+      },
+      "explanation": {
+        "en": "A polite, firm way to say you disagree before giving your reason (vous).",
+        "fr": "Une façon polie et ferme de marquer son désaccord avant de donner sa raison (vous).",
+        "de": "Eine höfliche, aber klare Art zu widersprechen, bevor man den Grund nennt (vous)."
+      },
+      "example": {
+        "text": "Je ne vous suis pas sur ce point : le coût a doublé.",
+        "translation": {
+          "en": "I don’t agree with you on this point: the cost has doubled.",
+          "de": "Da folge ich Ihnen nicht: Die Kosten haben sich verdoppelt."
+        }
+      }
+    },
+    {
+      "id": "conclusion-hative",
+      "text": "Vous tirez une conclusion hâtive",
+      "openEnd": false,
+      "translations": {
+        "en": ["You’re jumping to a conclusion"],
+        "de": ["Sie ziehen einen voreiligen Schluss"]
+      },
+      "explanation": {
+        "en": "Says that the evidence is too thin for the conclusion drawn; it criticises the reasoning, not the person.",
+        "fr": "Dit que les preuves sont trop minces pour la conclusion tirée ; elle critique le raisonnement, pas la personne.",
+        "de": "Sagt, dass die Belege für den gezogenen Schluss zu dünn sind; kritisiert wird das Denken, nicht die Person."
+      },
+      "example": {
+        "text": "Vous tirez une conclusion hâtive : deux témoignages ne font pas une statistique.",
+        "translation": {
+          "en": "You’re jumping to a conclusion: two testimonies don’t make a statistic.",
+          "de": "Sie ziehen einen voreiligen Schluss: Zwei Zeugnisse ergeben noch keine Statistik."
+        }
+      }
+    },
+    {
+      "id": "partez-du-principe",
+      "text": "Vous partez du principe que",
+      "openEnd": true,
+      "translations": { "en": ["You are assuming that"], "de": ["Sie gehen davon aus, dass"] },
+      "explanation": {
+        "en": "Brings out a hidden premise in the other person’s argument so that it can be questioned.",
+        "fr": "Fait apparaître le présupposé caché de l’argument adverse pour pouvoir le discuter.",
+        "de": "Macht die versteckte Voraussetzung im Argument des anderen sichtbar, damit man sie hinterfragen kann."
+      },
+      "example": {
+        "text": "Vous partez du principe que tout le monde a une voiture.",
+        "translation": {
+          "en": "You are assuming that everyone has a car.",
+          "de": "Sie gehen davon aus, dass jeder ein Auto hat."
+        }
+      }
+    }
+  ],
+  "words": [],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

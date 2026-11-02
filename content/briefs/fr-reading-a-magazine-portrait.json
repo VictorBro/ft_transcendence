@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-reading-a-magazine-portrait",
+  "lang": "fr",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Lire un portrait dans un magazine",
+  "objective": {
+    "en": "Read a magazine portrait of a woman who became a baker at forty and explain why she changed, how she did it (training, loan) and what she thinks of it.",
+    "fr": "Lire le portrait d’une femme devenue boulangère à quarante ans et expliquer pourquoi elle a changé, comment elle s’y est prise (formation, prêt) et ce qu’elle en pense.",
+    "de": "Das Porträt einer Frau lesen, die mit vierzig Bäckerin wurde, und erklären, warum sie gewechselt hat, wie sie es geschafft hat (Ausbildung, Kredit) und was sie davon hält."
+  },
+  "estimatedMinutes": 10,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:45:44.805Z",
+    "inputHashes": { "outline": "3a0126ec2e7379ff7319462d5b657d9fffbaa592570e11ffb13e0656a5fa963a" }
+  },
+  "kind": "reading",
+  "theme": "personal_identification",
+  "genre": "article",
+  "situation": {
+    "en": "A journalist, Camille Roux, writes a portrait of Sophie Marchand for a magazine. Sophie worked in insurance and became a baker three years ago.",
+    "fr": "Une journaliste, Camille Roux, écrit pour un magazine le portrait de Sophie Marchand. Sophie travaillait dans les assurances et elle est devenue boulangère il y a trois ans.",
+    "de": "Eine Journalistin, Camille Roux, schreibt für ein Magazin das Porträt von Sophie Marchand. Sophie arbeitete in der Versicherung und wurde vor drei Jahren Bäckerin."
+  },
+  "readerTask": {
+    "en": "Find why Sophie changed jobs, how she prepared (training, loan), what she thinks of her new life, and put the steps of her change in order.",
+    "fr": "Retrouver pourquoi Sophie a changé de métier, comment elle s’est préparée (formation, prêt), ce qu’elle pense de sa nouvelle vie, et remettre les étapes de son changement dans l’ordre.",
+    "de": "Herausfinden, warum Sophie den Beruf gewechselt hat, wie sie sich vorbereitet hat (Ausbildung, Kredit), was sie von ihrem neuen Leben hält, und die Etappen ihres Wechsels ordnen."
+  },
+  "keywords": [
+    {
+      "id": "reconversion",
+      "term": "une reconversion",
+      "translations": { "en": ["career change"], "de": ["Berufswechsel", "Neuanfang im Beruf"] },
+      "explanation": {
+        "en": "A complete change of profession, often as an adult. Here: from insurance to baking.",
+        "fr": "Un changement complet de métier, souvent à l’âge adulte. Ici : des assurances à la boulangerie.",
+        "de": "Ein kompletter Berufswechsel, oft im Erwachsenenalter. Hier: von der Versicherung zur Bäckerei."
+      }
+    },
+    {
+      "id": "formation",
+      "term": "une formation",
+      "translations": {
+        "en": ["training course", "training"],
+        "de": ["Ausbildung", "Weiterbildung"]
+      },
+      "explanation": {
+        "en": "A course that teaches you a job. Sophie followed one for ten months.",
+        "fr": "Un cours qui apprend un métier. Sophie en a suivi une pendant dix mois.",
+        "de": "Ein Kurs, in dem man einen Beruf lernt. Sophie hat zehn Monate lang eine besucht."
+      }
+    },
+    {
+      "id": "pret",
+      "term": "un prêt",
+      "translations": { "en": ["loan"], "de": ["Kredit", "Darlehen"] },
+      "explanation": {
+        "en": "Money a bank lends you and that you pay back later.",
+        "fr": "De l’argent qu’une banque vous prête et que vous rendez plus tard.",
+        "de": "Geld, das eine Bank einem leiht und das man später zurückzahlt."
+      }
+    },
+    {
+      "id": "regretter",
+      "term": "regretter",
+      "translations": { "en": ["to regret"], "de": ["bereuen"] },
+      "explanation": {
+        "en": "To be sorry about a choice. Ne rien regretter means having no regrets.",
+        "fr": "Être triste d’avoir fait un choix. Ne rien regretter, c’est n’avoir aucun regret.",
+        "de": "Eine Entscheidung schade finden. Ne rien regretter heißt, nichts zu bereuen."
+      }
+    },
+    {
+      "id": "fier",
+      "term": "fier, fière",
+      "translations": { "en": ["proud"], "de": ["stolz"] },
+      "explanation": {
+        "en": "Happy about what you did. Fière is the feminine form, used for a woman.",
+        "fr": "Content de ce qu’on a fait. Fière est le féminin, pour une femme.",
+        "de": "Zufrieden mit dem, was man geschafft hat. Fière ist die weibliche Form, für eine Frau."
+      }
+    }
+  ],
+  "documents": {
+    "main": {
+      "targetWords": 230,
+      "contents": {
+        "en": "A portrait in five paragraphs: Sophie at the oven at 4 a.m., formerly in insurance; her boredom and her love of baking bread, and her decision at forty; a ten-month training course and a bank loan; hard beginnings, then success; today she is tired but has no regrets and is proud.",
+        "fr": "Un portrait en cinq paragraphes : Sophie devant le four à quatre heures du matin, ancienne employée d’assurances ; son ennui, son goût pour le pain et sa décision à quarante ans ; une formation de dix mois et un prêt de la banque ; des débuts difficiles puis le succès ; aujourd’hui elle est fatiguée mais ne regrette rien et est fière.",
+        "de": "Ein Porträt in fünf Absätzen: Sophie um vier Uhr morgens am Ofen, früher in der Versicherung; ihre Langeweile, ihre Liebe zum Brotbacken und ihre Entscheidung mit vierzig; eine zehnmonatige Ausbildung und ein Bankkredit; schwere Anfänge, dann Erfolg; heute ist sie müde, bereut nichts und ist stolz."
+      }
+    },
+    "exam": {
+      "targetWords": 105,
+      "contents": {
+        "en": "A short portrait of Marc Dupuis, a nurse for twenty years who became a gardener at fifty: his exhaustion, a shared garden, a one-year training course, and his happier life with less money.",
+        "fr": "Un court portrait de Marc Dupuis, infirmier pendant vingt ans devenu jardinier à cinquante ans : son épuisement, un jardin partagé, une formation d’un an et une vie plus heureuse avec moins d’argent.",
+        "de": "Ein kurzes Porträt von Marc Dupuis, zwanzig Jahre Krankenpfleger, der mit fünfzig Gärtner wurde: seine Erschöpfung, ein Gemeinschaftsgarten, eine einjährige Ausbildung und ein glücklicheres Leben mit weniger Geld."
+      }
+    }
+  },
+  "skim": { "focus": "purpose" },
+  "detailQuestions": [
+    {
+      "id": "q-why",
+      "type": "reading_choice",
+      "focus": {
+        "en": "Why Sophie changed jobs",
+        "fr": "Pourquoi Sophie a changé de métier",
+        "de": "Warum Sophie den Beruf gewechselt hat"
+      }
+    },
+    {
+      "id": "q-how",
+      "type": "reading_choice",
+      "focus": {
+        "en": "How she paid for her bakery",
+        "fr": "Comment elle a financé sa boulangerie",
+        "de": "Wie sie ihre Bäckerei finanziert hat"
+      }
+    },
+    {
+      "id": "q-training",
+      "type": "reading_true_false",
+      "focus": {
+        "en": "The length of her training",
+        "fr": "La durée de sa formation",
+        "de": "Die Dauer ihrer Ausbildung"
+      }
+    },
+    {
+      "id": "q-opinion",
+      "type": "reading_choice",
+      "focus": {
+        "en": "What she thinks of her new life",
+        "fr": "Ce qu’elle pense de sa nouvelle vie",
+        "de": "Was sie von ihrem neuen Leben hält"
+      }
+    }
+  ],
+  "exam": { "types": ["reading_choice", "reading_true_false"] },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

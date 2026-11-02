@@ -1,0 +1,400 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-reading-a-magazine-portrait",
+  "lang": "fr",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Lire un portrait dans un magazine",
+  "objective": {
+    "en": "Read a magazine portrait of a woman who became a baker at forty and explain why she changed, how she did it (training, loan) and what she thinks of it.",
+    "fr": "Lire le portrait d’une femme devenue boulangère à quarante ans et expliquer pourquoi elle a changé, comment elle s’y est prise (formation, prêt) et ce qu’elle en pense.",
+    "de": "Das Porträt einer Frau lesen, die mit vierzig Bäckerin wurde, und erklären, warum sie gewechselt hat, wie sie es geschafft hat (Ausbildung, Kredit) und was sie davon hält."
+  },
+  "estimatedMinutes": 10,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:45:44.805Z",
+    "inputHashes": {
+      "outline": "3a0126ec2e7379ff7319462d5b657d9fffbaa592570e11ffb13e0656a5fa963a",
+      "brief": "cc0772619891ced19545c259b5f543638a354667c3d62860d9a10d0b6a0c77f9"
+    }
+  },
+  "kind": "reading",
+  "theme": "personal_identification",
+  "genre": "article",
+  "documents": [
+    {
+      "documentId": "main",
+      "title": "Sophie Marchand, boulangère à quarante ans",
+      "meta": ["Portrait", "Par Camille Roux"],
+      "paragraphs": [
+        "Il est quatre heures du matin à Lyon, et la lumière brille déjà dans la boulangerie de la rue des Fleurs. Sophie Marchand, quarante-trois ans, sort les premières baguettes du four. Il y a trois ans, elle travaillait dans une compagnie d’assurances.",
+        "« Je gagnais bien ma vie, mais je m’ennuyais, raconte-t-elle. Le dimanche, je faisais du pain pour toute la famille, et c’était le meilleur moment de ma semaine. » Le jour de ses quarante ans, elle a décidé de changer de métier. Cette reconversion lui faisait peur, mais l’idée ne la quittait plus.",
+        "Elle a d’abord suivi une formation de dix mois pour obtenir un CAP de boulanger. Elle étudiait le soir et travaillait dans une boulangerie le matin, dès cinq heures. Ensuite, il fallait trouver de l’argent pour ouvrir sa propre boulangerie. La banque lui a accordé un prêt de 60 000 euros.",
+        "Les débuts ont été difficiles : les clients venaient peu. « Certains jours, j’avais envie de tout arrêter », avoue-t-elle. Mais peu à peu, le quartier a adopté son pain au levain, et la boulangerie est toujours pleine.",
+        "Aujourd’hui, Sophie travaille six jours par semaine et elle est souvent fatiguée. Pourtant, elle ne regrette rien. « J’ai perdu du temps libre, mais j’ai gagné de la liberté, dit-elle. Quand un client me dit que mon pain est bon, je suis fière de moi. »"
+      ],
+      "highlights": [
+        { "keywordId": "reconversion", "text": "reconversion" },
+        { "keywordId": "formation", "text": "formation" },
+        { "keywordId": "pret", "text": "prêt" },
+        { "keywordId": "regretter", "text": "regrette" },
+        { "keywordId": "fier", "text": "fière" }
+      ]
+    },
+    {
+      "documentId": "exam",
+      "title": "Marc Dupuis, jardinier à cinquante ans",
+      "meta": ["Par Julie Morel"],
+      "paragraphs": [
+        "Pendant vingt ans, Marc Dupuis a été infirmier à l’hôpital de Nantes. Il aimait son métier, mais il se sentait épuisé : trop de travail, pas assez de repos.",
+        "Un jour, il a décidé de passer ses week-ends dans un jardin partagé. Il y a découvert une passion. Il a alors suivi une formation d’un an et il a créé sa petite entreprise de jardinage.",
+        "Aujourd’hui, Marc gagne moins d’argent qu’avant, mais il dort mieux. « Je travaille dehors, au soleil, et mes clients sont contents, dit-il. Ma famille trouve que j’ai l’air plus heureux. Je ne changerais pour rien au monde. »"
+      ],
+      "highlights": []
+    }
+  ],
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "exercise",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "flashcards",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Turn each card to learn the key words of the text.",
+            "fr": "Retournez chaque carte pour découvrir les mots clés du texte.",
+            "de": "Dreh jede Karte um und lerne die Schlüsselwörter des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_flashcards",
+              "itemId": "cards",
+              "keywordIds": ["reconversion", "formation", "pret", "regretter", "fier"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "matching",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each key word with its meaning.",
+            "fr": "Associez chaque mot clé à son sens.",
+            "de": "Ordne jedem Schlüsselwort seine Bedeutung zu."
+          },
+          "items": [
+            {
+              "type": "reading_keyword_matching",
+              "itemId": "matching",
+              "keywordIds": ["reconversion", "formation", "pret", "regretter", "fier"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skim",
+      "stage": "skim",
+      "role": "exercise",
+      "label": { "en": "Skim", "fr": "Survol", "de": "Überfliegen" },
+      "pages": [
+        {
+          "pageId": "skim",
+          "estimatedDurationS": 150,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Look over the document quickly. When the time is up it is put away; then answer the question.",
+            "fr": "Parcourez rapidement le document. À la fin du temps, il disparaît ; répondez ensuite à la question.",
+            "de": "Überfliege das Dokument. Wenn die Zeit um ist, verschwindet es; beantworte dann die Frage."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "skim-document",
+              "documentId": "main",
+              "view": "skim",
+              "skimSeconds": 130
+            },
+            {
+              "type": "reading_skim_choice",
+              "itemId": "skim-question",
+              "focus": "purpose",
+              "question": "Pourquoi ce texte a-t-il été écrit ?",
+              "options": [
+                { "optionId": "o1", "text": "Pour vendre le pain d’une boulangerie" },
+                {
+                  "optionId": "o2",
+                  "text": "Pour raconter le parcours d’une femme devenue boulangère"
+                },
+                { "optionId": "o3", "text": "Pour donner la recette d’une baguette" },
+                { "optionId": "o4", "text": "Pour annoncer l’ouverture d’un magasin" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "The article tells Sophie’s story: her job in insurance, her decision at forty and her new life as a baker. It is a portrait, not an advertisement or a recipe.",
+                "fr": "L’article raconte l’histoire de Sophie : son travail dans les assurances, sa décision à quarante ans et sa nouvelle vie de boulangère. C’est un portrait, pas une publicité ni une recette.",
+                "de": "Der Artikel erzählt Sophies Geschichte: ihre Arbeit in der Versicherung, ihre Entscheidung mit vierzig und ihr neues Leben als Bäckerin. Es ist ein Porträt, keine Werbung und kein Rezept."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detail",
+      "stage": "detail",
+      "role": "exercise",
+      "label": { "en": "Detail", "fr": "Détails", "de": "Details" },
+      "pages": [
+        {
+          "pageId": "detail",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the document carefully and answer the questions.",
+            "fr": "Lisez le document attentivement et répondez aux questions.",
+            "de": "Lies das Dokument genau und beantworte die Fragen."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "detail-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-why",
+              "question": "Pourquoi Sophie a-t-elle changé de métier ?",
+              "options": [
+                { "optionId": "o1", "text": "Elle gagnait trop peu d’argent" },
+                { "optionId": "o2", "text": "Elle a perdu son travail" },
+                { "optionId": "o3", "text": "Elle s’ennuyait et aimait faire du pain" },
+                { "optionId": "o4", "text": "Son mari le lui a demandé" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "She says: je gagnais bien ma vie, mais je m’ennuyais. On Sundays she baked bread for her family and loved it.",
+                "fr": "Elle dit : je gagnais bien ma vie, mais je m’ennuyais. Le dimanche, elle faisait du pain pour sa famille et elle adorait ça.",
+                "de": "Sie sagt: je gagnais bien ma vie, mais je m’ennuyais. Sonntags backte sie Brot für ihre Familie und liebte es."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-how",
+              "question": "Comment Sophie a-t-elle payé sa boulangerie ?",
+              "options": [
+                { "optionId": "o1", "text": "Elle a gagné un prix" },
+                { "optionId": "o2", "text": "Elle a vendu sa maison" },
+                { "optionId": "o3", "text": "Elle a reçu de l’argent de sa famille" },
+                { "optionId": "o4", "text": "Elle a obtenu un prêt de la banque" }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "La banque lui a accordé un prêt de 60 000 euros: the bank lent her the money.",
+                "fr": "La banque lui a accordé un prêt de 60 000 euros : la banque lui a prêté l’argent.",
+                "de": "La banque lui a accordé un prêt de 60 000 euros: Die Bank hat ihr das Geld geliehen."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "q-training",
+              "statement": "Sophie a suivi une formation de deux ans.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: her training lasted dix mois, ten months, not two years.",
+                "fr": "Faux : sa formation a duré dix mois, pas deux ans.",
+                "de": "Falsch: Ihre Ausbildung dauerte dix mois, zehn Monate, nicht zwei Jahre."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-opinion",
+              "question": "Que pense Sophie de sa nouvelle vie ?",
+              "options": [
+                { "optionId": "o1", "text": "Elle voudrait retrouver son ancien travail" },
+                { "optionId": "o2", "text": "Elle pense que ce changement était une erreur" },
+                { "optionId": "o3", "text": "Elle trouve son métier trop facile" },
+                { "optionId": "o4", "text": "Elle est fatiguée, mais elle ne regrette rien" }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "She is often tired, but the text says elle ne regrette rien, and she is fière of her bread.",
+                "fr": "Elle est souvent fatiguée, mais le texte dit qu’elle ne regrette rien et qu’elle est fière de son pain.",
+                "de": "Sie ist oft müde, aber im Text steht elle ne regrette rien, und sie ist fière auf ihr Brot."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "structure",
+      "stage": "structure",
+      "role": "exercise",
+      "label": { "en": "Structure", "fr": "Structure", "de": "Aufbau" },
+      "pages": [
+        {
+          "pageId": "structure",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the information in the order the text gives it.",
+            "fr": "Remettez les informations dans l’ordre du texte.",
+            "de": "Bring die Informationen in die Reihenfolge des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "structure-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_order",
+              "itemId": "order",
+              "pieces": [
+                { "pieceId": "p3", "text": "La banque lui accorde un prêt." },
+                {
+                  "pieceId": "p1",
+                  "text": "Elle décide de changer de métier le jour de ses quarante ans."
+                },
+                { "pieceId": "p4", "text": "Le quartier adopte son pain au levain." },
+                { "pieceId": "p2", "text": "Elle suit une formation de dix mois." }
+              ],
+              "acceptedOrders": [["p1", "p2", "p3", "p4"]],
+              "answerExplanation": {
+                "en": "The text starts in the present, then goes back: decision at forty (paragraph 2), training and loan (paragraph 3), then the hard beginnings and the success of her bread (paragraph 4).",
+                "fr": "Le texte commence au présent, puis revient en arrière : décision à quarante ans (paragraphe 2), formation et prêt (paragraphe 3), puis débuts difficiles et succès de son pain (paragraphe 4).",
+                "de": "Der Text beginnt in der Gegenwart und geht dann zurück: Entscheidung mit vierzig (Absatz 2), Ausbildung und Kredit (Absatz 3), dann schwere Anfänge und der Erfolg ihres Brots (Absatz 4)."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam",
+          "estimatedDurationS": 159,
+          "timeLimitS": 240,
+          "instructions": {
+            "en": "Read the new document and answer the questions. No help this time.",
+            "fr": "Lisez le nouveau document et répondez aux questions. Cette fois, sans aide.",
+            "de": "Lies das neue Dokument und beantworte die Fragen. Diesmal ohne Hilfe."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "exam-document",
+              "documentId": "exam",
+              "view": "exam",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-job",
+              "question": "Quel était le métier de Marc avant ?",
+              "options": [
+                { "optionId": "o1", "text": "Jardinier" },
+                { "optionId": "o2", "text": "Infirmier" },
+                { "optionId": "o3", "text": "Professeur" },
+                { "optionId": "o4", "text": "Boulanger" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "Marc a été infirmier à l’hôpital de Nantes for twenty years.",
+                "fr": "Marc a été infirmier à l’hôpital de Nantes pendant vingt ans.",
+                "de": "Marc a été infirmier à l’hôpital de Nantes, zwanzig Jahre lang."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-why",
+              "question": "Pourquoi Marc voulait-il changer de vie professionnelle ?",
+              "options": [
+                { "optionId": "o1", "text": "Il n’aimait pas ses collègues" },
+                { "optionId": "o2", "text": "Il voulait gagner plus d’argent" },
+                { "optionId": "o3", "text": "Il était épuisé par son travail" },
+                { "optionId": "o4", "text": "Il devait quitter Nantes" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "He loved his job but felt épuisé: too much work and not enough rest.",
+                "fr": "Il aimait son métier mais il se sentait épuisé : trop de travail, pas assez de repos.",
+                "de": "Er mochte seinen Beruf, fühlte sich aber épuisé, erschöpft: zu viel Arbeit, zu wenig Ruhe."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-how",
+              "question": "Comment Marc s’est-il préparé à son nouveau métier ?",
+              "options": [
+                { "optionId": "o1", "text": "Il a demandé un prêt à la banque" },
+                { "optionId": "o2", "text": "Il a suivi une formation d’un an" },
+                { "optionId": "o3", "text": "Il a changé d’hôpital" },
+                { "optionId": "o4", "text": "Il a voyagé à l’étranger" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "Il a alors suivi une formation d’un an: he took a one-year training course.",
+                "fr": "Il a alors suivi une formation d’un an.",
+                "de": "Il a alors suivi une formation d’un an: Er hat eine einjährige Ausbildung gemacht."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-money",
+              "statement": "Marc gagne plus d’argent qu’avant.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: Marc gagne moins d’argent qu’avant, but he sleeps better.",
+                "fr": "Faux : Marc gagne moins d’argent qu’avant, mais il dort mieux.",
+                "de": "Falsch: Marc gagne moins d’argent qu’avant, aber er schläft besser."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-opinion",
+              "question": "Qu’est-ce que Marc pense de son changement ?",
+              "options": [
+                { "optionId": "o1", "text": "Il regrette son ancien métier" },
+                { "optionId": "o2", "text": "Il trouve le travail dehors trop fatigant" },
+                { "optionId": "o3", "text": "Il voudrait retourner à l’hôpital" },
+                { "optionId": "o4", "text": "Il est plus heureux, même s’il gagne moins" }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "He says his family finds him plus heureux and that he would not change for anything (je ne changerais pour rien au monde).",
+                "fr": "Il dit que sa famille le trouve plus heureux et qu’il ne changerait pour rien au monde.",
+                "de": "Er sagt, seine Familie finde ihn plus heureux und er würde um nichts in der Welt tauschen (je ne changerais pour rien au monde)."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,497 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-verbs-of-opinion",
+  "lang": "fr",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Estimer, considérer, soutenir",
+  "objective": {
+    "en": "Choose precisely among ten verbs of opinion according to how firm the position is.",
+    "fr": "Choisir le verbe d’opinion juste selon la force de la position exprimée.",
+    "de": "Unter zehn Meinungsverben nach der Stärke der Position das passende wählen."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:57:24.532Z",
+    "inputHashes": { "outline": "0595e8f52927bcb2228ca5f065edede24bf01c6cf78a5a11a170c772c90ac0be" }
+  },
+  "kind": "vocabulary",
+  "theme": "language",
+  "coverageNotes": {
+    "en": "Ten verbs of opinion, from the cautious judgement (estimer, juger) to firm assertion (soutenir, affirmer) and to acceptance or rejection (admettre, contester, récuser, se rallier à, adhérer à).",
+    "fr": "Dix verbes d’opinion, du jugement prudent (estimer, juger) à l’affirmation ferme (soutenir, affirmer), puis à l’acceptation ou au rejet (admettre, contester, récuser, se rallier à, adhérer à).",
+    "de": "Zehn Meinungsverben, vom vorsichtigen Urteil (estimer, juger) über die feste Behauptung (soutenir, affirmer) bis zu Annahme und Ablehnung (admettre, contester, récuser, se rallier à, adhérer à)."
+  },
+  "targetCount": 10,
+  "countRationale": {
+    "en": "Ten verbs, as listed in the outline entry, in two groups of five for a manageable load at C1.",
+    "fr": "Dix verbes, comme dans l’entrée du plan, en deux groupes de cinq pour une charge raisonnable au niveau C1.",
+    "de": "Zehn Verben, wie im Eintrag der Gliederung, in zwei Gruppen zu fünf für eine angemessene Menge auf C1."
+  },
+  "difficultyBalance": {
+    "en": "Mostly core verbs; récuser, se rallier à and adhérer à are demanding because of their precise sense and construction.",
+    "fr": "Surtout des verbes de base ; récuser, se rallier à et adhérer à sont exigeants par leur sens précis et leur construction.",
+    "de": "Überwiegend Grundverben; récuser, se rallier à und adhérer à sind wegen ihrer genauen Bedeutung und Konstruktion anspruchsvoll."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "position",
+      "label": {
+        "en": "Forming and stating a view",
+        "fr": "Former et énoncer un avis",
+        "de": "Eine Meinung bilden und äußern"
+      },
+      "targetIds": ["estimer", "considerer", "juger", "soutenir", "affirmer"],
+      "introduction": {
+        "en": "These verbs state a position, from the most reasoned to the most firm:\n\n- `estimer` and `considérer` give a measured view\n- `juger` evaluates against a criterion\n- `soutenir` defends a view against objections\n- `affirmer` states it as certain\n\nThe **stronger** the verb, the more the speaker commits to the claim.",
+        "fr": "Ces verbes énoncent une position, de la plus réfléchie à la plus ferme :\n\n- `estimer` et `considérer` donnent un avis mesuré\n- `juger` évalue selon un critère\n- `soutenir` défend une idée face aux objections\n- `affirmer` la présente comme certaine\n\nPlus le verbe est **fort**, plus le locuteur s’engage sur ce qu’il dit.",
+        "de": "Diese Verben drücken eine Position aus, von der überlegtesten bis zur festesten:\n\n- `estimer` und `considérer` geben eine abgewogene Meinung wieder\n- `juger` bewertet nach einem Maßstab\n- `soutenir` verteidigt eine Ansicht gegen Einwände\n- `affirmer` stellt sie als sicher dar\n\nJe **stärker** das Verb, desto mehr legt sich der Sprecher fest."
+      }
+    },
+    {
+      "id": "accord",
+      "label": {
+        "en": "Accepting or rejecting",
+        "fr": "Accepter ou rejeter",
+        "de": "Annehmen oder ablehnen"
+      },
+      "targetIds": ["admettre", "contester", "recuser", "se-rallier", "adherer"],
+      "introduction": {
+        "en": "These verbs show whether you accept or reject someone else’s position:\n\n- `admettre` accepts a point, sometimes reluctantly\n- `contester` questions it\n- `récuser` rejects it, or a person, on principle\n- `se rallier à` joins a view after hesitating\n- `adhérer à` shows full agreement\n\nNote the **preposition** à with the last two.",
+        "fr": "Ces verbes montrent si l’on accepte ou rejette la position d’autrui :\n\n- `admettre` accepte un point, parfois à regret\n- `contester` le remet en cause\n- `récuser` le rejette, ou une personne, par principe\n- `se rallier à` rejoint un avis après avoir hésité\n- `adhérer à` marque un accord complet\n\nAttention à la **préposition** à avec les deux derniers.",
+        "de": "Diese Verben zeigen, ob man die Position anderer annimmt oder ablehnt:\n\n- `admettre` räumt einen Punkt ein, manchmal widerwillig\n- `contester` stellt ihn infrage\n- `récuser` weist ihn oder eine Person grundsätzlich zurück\n- `se rallier à` schließt sich nach Zögern einer Ansicht an\n- `adhérer à` bedeutet volle Zustimmung\n\nAchte auf die **Präposition** à bei den letzten beiden."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "estimer",
+      "term": "estimer",
+      "translations": { "en": ["to deem"], "de": ["erachten"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "estimer",
+      "examForms": ["estimer"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɛs.ti.me/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "J’estime que cette décision est prématurée.",
+        "translation": {
+          "en": "I deem this decision premature.",
+          "de": "Ich erachte diese Entscheidung als verfrüht."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Estimer introduces a reasoned, measured opinion: j’estime que…",
+        "fr": "Estimer introduit un avis réfléchi et mesuré : j’estime que…",
+        "de": "Estimer leitet eine überlegte, abgewogene Meinung ein: j’estime que…"
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Les experts ",
+        "after": " que le chantier coûtera environ deux millions d’euros.",
+        "accepted": { "answers": ["estiment"] },
+        "referenceTargetIds": ["estimer", "contester", "adherer", "recuser"],
+        "explanation": {
+          "en": "Only estimer fits: it gives an approximate, reasoned assessment.",
+          "fr": "Seul estimer convient : il donne une évaluation approximative et raisonnée.",
+          "de": "Nur estimer passt: Es gibt eine ungefähre, begründete Einschätzung."
+        }
+      },
+      "listeningOptionTargetIds": ["estimer", "considerer", "juger", "admettre"]
+    },
+    {
+      "id": "considerer",
+      "term": "considérer",
+      "translations": { "en": ["to regard"], "de": ["betrachten"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "considérer",
+      "examForms": ["considérer"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kɔ̃.si.de.ʁe/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "On considère cette loi comme une avancée majeure.",
+        "translation": {
+          "en": "This law is regarded as a major step forward.",
+          "de": "Dieses Gesetz wird als großer Fortschritt betrachtet."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Considérer … comme… presents how something is viewed, after weighing it up.",
+        "fr": "Considérer … comme… présente la façon dont on voit quelque chose, après réflexion.",
+        "de": "Considérer … comme… zeigt, wie man etwas sieht, nachdem man es abgewogen hat."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "On ",
+        "after": " généralement cette réforme comme un tournant historique.",
+        "accepted": { "answers": ["considère"] },
+        "referenceTargetIds": ["considerer", "admettre", "adherer", "recuser"],
+        "explanation": {
+          "en": "Only considérer works with the structure … comme ….",
+          "fr": "Seul considérer fonctionne avec la structure … comme ….",
+          "de": "Nur considérer passt zur Struktur … comme …."
+        }
+      },
+      "listeningOptionTargetIds": ["considerer", "estimer", "contester", "recuser"]
+    },
+    {
+      "id": "juger",
+      "term": "juger",
+      "translations": { "en": ["to judge"], "de": ["beurteilen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "juger",
+      "examForms": ["juger"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʒy.ʒe/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Je juge ce plan trop risqué.",
+        "translation": {
+          "en": "I judge this plan too risky.",
+          "de": "Ich beurteile diesen Plan als zu riskant."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Juger evaluates something against a criterion: je juge ce plan trop risqué.",
+        "fr": "Juger évalue quelque chose selon un critère : je juge ce plan trop risqué.",
+        "de": "Juger bewertet etwas nach einem Maßstab: je juge ce plan trop risqué."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le jury doit ",
+        "after": " chaque candidat sur la clarté de son exposé.",
+        "accepted": { "answers": ["juger"] },
+        "referenceTargetIds": ["juger", "adherer", "se-rallier", "affirmer"],
+        "explanation": {
+          "en": "Only juger means to evaluate a person against a criterion.",
+          "fr": "Seul juger signifie évaluer une personne selon un critère.",
+          "de": "Nur juger bedeutet, eine Person nach einem Maßstab zu bewerten."
+        }
+      },
+      "listeningOptionTargetIds": ["juger", "estimer", "affirmer", "admettre"]
+    },
+    {
+      "id": "soutenir",
+      "term": "soutenir",
+      "translations": { "en": ["to maintain"], "de": ["vertreten"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "soutenir",
+      "examForms": ["soutenir"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/sut.niʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Elle soutient que ce modèle est dépassé.",
+        "translation": {
+          "en": "She maintains that this model is outdated.",
+          "de": "Sie vertritt die Ansicht, dass dieses Modell überholt ist."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Soutenir que means to hold a view and defend it, even against objections.",
+        "fr": "Soutenir que, c’est maintenir une idée et la défendre, même face aux objections.",
+        "de": "Soutenir que heißt, eine Ansicht zu vertreten und zu verteidigen, auch gegen Einwände."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Face aux critiques, elle ",
+        "after": " avec constance que le projet reste viable.",
+        "accepted": { "answers": ["soutient"] },
+        "referenceTargetIds": ["soutenir", "recuser", "se-rallier", "adherer"],
+        "explanation": {
+          "en": "Only soutenir fits: it expresses a view held firmly despite criticism.",
+          "fr": "Seul soutenir convient : il exprime une position tenue fermement malgré les critiques.",
+          "de": "Nur soutenir passt: Es drückt eine trotz Kritik fest vertretene Position aus."
+        }
+      },
+      "listeningOptionTargetIds": ["soutenir", "contester", "affirmer", "adherer"]
+    },
+    {
+      "id": "affirmer",
+      "term": "affirmer",
+      "translations": { "en": ["to assert"], "de": ["behaupten"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "affirmer",
+      "examForms": ["affirmer"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/a.fiʁ.me/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Le ministre affirme que le budget sera respecté.",
+        "translation": {
+          "en": "The minister asserts that the budget will be respected.",
+          "de": "Der Minister behauptet, dass der Haushalt eingehalten wird."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Affirmer states something as certain, without hedging.",
+        "fr": "Affirmer présente quelque chose comme certain, sans nuance.",
+        "de": "Affirmer stellt etwas als sicher dar, ohne Abschwächung."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le témoin ",
+        "after": " catégoriquement n’avoir rien vu ce soir-là.",
+        "accepted": { "answers": ["affirme"] },
+        "referenceTargetIds": ["affirmer", "adherer", "se-rallier", "juger"],
+        "explanation": {
+          "en": "Only affirmer fits: it expresses a categorical statement.",
+          "fr": "Seul affirmer convient : il exprime une déclaration catégorique.",
+          "de": "Nur affirmer passt: Es drückt eine kategorische Aussage aus."
+        }
+      },
+      "listeningOptionTargetIds": ["affirmer", "adherer", "admettre", "soutenir"]
+    },
+    {
+      "id": "admettre",
+      "term": "admettre",
+      "translations": { "en": ["to admit"], "de": ["zugeben"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "admettre",
+      "examForms": ["admettre"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ad.mɛtʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Il admet que son raisonnement comportait une faille.",
+        "translation": {
+          "en": "He admits that his reasoning had a flaw.",
+          "de": "Er gibt zu, dass seine Argumentation eine Schwäche hatte."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Admettre accepts a point as true, often after resisting it.",
+        "fr": "Admettre accepte un point comme vrai, souvent après avoir résisté.",
+        "de": "Admettre erkennt einen Punkt als wahr an, oft nach anfänglichem Widerstand."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Après réflexion, il a fini par ",
+        "after": " qu’il s’était trompé.",
+        "accepted": { "answers": ["admettre"] },
+        "referenceTargetIds": ["admettre", "juger", "recuser", "adherer"],
+        "explanation": {
+          "en": "Only admettre fits: he recognises his own mistake.",
+          "fr": "Seul admettre convient : il reconnaît sa propre erreur.",
+          "de": "Nur admettre passt: Er erkennt seinen eigenen Fehler an."
+        }
+      },
+      "listeningOptionTargetIds": ["admettre", "affirmer", "estimer", "contester"]
+    },
+    {
+      "id": "contester",
+      "term": "contester",
+      "translations": { "en": ["to dispute"], "de": ["bestreiten"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "contester",
+      "examForms": ["contester"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kɔ̃.tɛs.te/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Les syndicats contestent ces chiffres.",
+        "translation": {
+          "en": "The unions dispute these figures.",
+          "de": "Die Gewerkschaften bestreiten diese Zahlen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Contester questions the validity of a claim or a decision.",
+        "fr": "Contester remet en cause la validité d’une affirmation ou d’une décision.",
+        "de": "Contester stellt die Gültigkeit einer Aussage oder Entscheidung infrage."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Les syndicats ",
+        "after": " la validité de ce chiffre et exigent une nouvelle enquête.",
+        "accepted": { "answers": ["contestent"] },
+        "referenceTargetIds": ["contester", "estimer", "se-rallier", "adherer"],
+        "explanation": {
+          "en": "Only contester fits: they question the figure and demand a new inquiry.",
+          "fr": "Seul contester convient : ils remettent le chiffre en cause et exigent une enquête.",
+          "de": "Nur contester passt: Sie stellen die Zahl infrage und fordern eine neue Untersuchung."
+        }
+      },
+      "listeningOptionTargetIds": ["contester", "considerer", "soutenir", "recuser"]
+    },
+    {
+      "id": "recuser",
+      "term": "récuser",
+      "translations": { "en": ["to reject"], "de": ["zurückweisen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "récuser",
+      "examForms": ["récuser"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʁe.ky.ze/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Elle récuse toute responsabilité dans cet échec.",
+        "translation": {
+          "en": "She rejects any responsibility for this failure.",
+          "de": "Sie weist jede Verantwortung für dieses Scheitern zurück."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Stronger than contester: récuser rejects outright, and in law means to challenge a judge or witness.",
+        "fr": "Plus fort que contester : récuser rejette d’emblée ; en droit, c’est refuser un juge ou un témoin.",
+        "de": "Stärker als contester: récuser weist von vornherein zurück; im Recht heißt es, einen Richter oder Zeugen abzulehnen."
+      },
+      "explanation": {
+        "en": "Récuser rejects a claim, an authority or a person outright.",
+        "fr": "Récuser rejette d’emblée une affirmation, une autorité ou une personne.",
+        "de": "Récuser weist eine Behauptung, eine Autorität oder eine Person von vornherein zurück."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "L’avocat a demandé à ",
+        "after": " un juge soupçonné de partialité.",
+        "accepted": { "answers": ["récuser"] },
+        "referenceTargetIds": ["recuser", "soutenir", "adherer", "considerer"],
+        "explanation": {
+          "en": "Only récuser fits: it means to challenge a judge.",
+          "fr": "Seul récuser convient : il signifie refuser un juge.",
+          "de": "Nur récuser passt: Es bedeutet, einen Richter abzulehnen."
+        }
+      },
+      "listeningOptionTargetIds": ["recuser", "considerer", "contester", "se-rallier"]
+    },
+    {
+      "id": "se-rallier",
+      "term": "se rallier à",
+      "translations": { "en": ["to come round to"], "de": ["sich anschließen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "se rallier à",
+      "examForms": ["se rallier à"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/sə ʁa.lje a/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Plusieurs élus se sont ralliés à cette position.",
+        "translation": {
+          "en": "Several elected officials came round to this position.",
+          "de": "Mehrere Abgeordnete haben sich dieser Position angeschlossen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Se rallier à means to join a view or camp, often after first hesitating.",
+        "fr": "Se rallier à, c’est rejoindre un avis ou un camp, souvent après avoir hésité.",
+        "de": "Se rallier à heißt, sich einer Ansicht oder einem Lager anzuschließen, oft nach Zögern."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Après de longs débats, la majorité a fini par ",
+        "after": " à la proposition du président.",
+        "accepted": { "answers": ["se rallier"] },
+        "referenceTargetIds": ["se-rallier", "juger", "affirmer", "considerer"],
+        "explanation": {
+          "en": "Only se rallier fits before à: the majority joins the president’s view.",
+          "fr": "Seul se rallier convient devant à : la majorité rejoint l’avis du président.",
+          "de": "Nur se rallier passt vor à: Die Mehrheit schließt sich der Ansicht des Präsidenten an."
+        }
+      },
+      "listeningOptionTargetIds": ["se-rallier", "adherer", "recuser", "soutenir"]
+    },
+    {
+      "id": "adherer",
+      "term": "adhérer à",
+      "translations": { "en": ["to subscribe to"], "de": ["zustimmen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "adhérer à",
+      "examForms": ["adhérer à"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/a.de.ʁe a/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "J’adhère pleinement à cette analyse.",
+        "translation": {
+          "en": "I fully subscribe to this analysis.",
+          "de": "Ich stimme dieser Analyse voll und ganz zu."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Adhérer à expresses full, lasting agreement with an idea or a principle.",
+        "fr": "Adhérer à exprime un accord complet et durable avec une idée ou un principe.",
+        "de": "Adhérer à drückt volle, dauerhafte Zustimmung zu einer Idee oder einem Prinzip aus."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Elle n’",
+        "after": " pas à cette théorie, qu’elle trouve trop simpliste.",
+        "accepted": { "answers": ["adhère"] },
+        "referenceTargetIds": ["adherer", "juger", "affirmer", "contester"],
+        "explanation": {
+          "en": "Only adhérer fits before à: she does not agree with the theory.",
+          "fr": "Seul adhérer convient devant à : elle n’est pas d’accord avec la théorie.",
+          "de": "Nur adhérer passt vor à: Sie stimmt der Theorie nicht zu."
+        }
+      },
+      "listeningOptionTargetIds": ["adherer", "se-rallier", "admettre", "affirmer"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

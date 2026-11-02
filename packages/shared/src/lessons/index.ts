@@ -23,3 +23,14 @@ export {
   type LessonContent,
 } from './schemas/artifacts';
 export * as player from './player';
+export { ARTIFACT_SCHEMA_VERSION } from './schemas/artifactCommon';
+
+// The authoring kit (#83) computes what the validators check to the second.
+export { vocabularyLesson, vocabularyMinutes } from './domain/vocabularyLesson';
+export { functionsPageEstimate, functionsTimeLimit } from './domain/functionsLesson';
+export {
+  readingMinutes,
+  readingPageEstimate,
+  readingSkimSeconds,
+  readingTimeLimit,
+} from './domain/readingLesson';
