@@ -1,0 +1,663 @@
+{
+  "schemaVersion": 2,
+  "id": "en-prefixes-re-over-under-mis",
+  "lang": "en",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Prefixes re-, over-, under-, mis-, pre- and post-",
+  "objective": {
+    "en": "Change the meaning of words with the prefixes re-, over-, under-, mis-, pre- and post-.",
+    "fr": "Modifier le sens de mots avec les préfixes re-, over-, under-, mis-, pre- et post-.",
+    "de": "Die Bedeutung von Wörtern mit den Präfixen re-, over-, under-, mis-, pre- und post- verändern."
+  },
+  "estimatedMinutes": 23,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:48:44.841Z",
+    "inputHashes": { "outline": "0025bf9cb80cfff7acdc6ba23fda6165e83c894a9d5366e4fbf235fac01962c2" }
+  },
+  "kind": "vocabulary",
+  "theme": "language",
+  "coverageNotes": {
+    "en": "Fourteen words show six productive prefixes: re- (again), mis- (wrongly), over- (too much), under- (too little), pre- (before) and post- (after).",
+    "fr": "Quatorze mots illustrent six préfixes productifs : re- (de nouveau), mis- (à tort), over- (trop), under- (pas assez), pre- (avant) et post- (après).",
+    "de": "Vierzehn Wörter zeigen sechs produktive Präfixe: re- (noch einmal), mis- (falsch), over- (zu viel), under- (zu wenig), pre- (vor) und post- (nach)."
+  },
+  "targetCount": 14,
+  "countRationale": {
+    "en": "Fourteen words cover each prefix with two or three clear examples.",
+    "fr": "Quatorze mots couvrent chaque préfixe avec deux ou trois exemples clairs.",
+    "de": "Vierzehn Wörter decken jedes Präfix mit zwei oder drei klaren Beispielen ab."
+  },
+  "difficultyBalance": {
+    "en": "Most words are common at B2; a few, such as misinterpret and post-war, are more demanding.",
+    "fr": "La plupart des mots sont courants au niveau B2 ; quelques-uns, comme misinterpret et post-war, sont plus exigeants.",
+    "de": "Die meisten Wörter sind auf B2 gebräuchlich; einige, etwa misinterpret und post-war, sind anspruchsvoller."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "re-mis",
+      "label": { "en": "re- and mis-", "fr": "re- et mis-", "de": "re- und mis-" },
+      "targetIds": ["rewrite", "reconsider", "rebuild", "misunderstand", "misinterpret"],
+      "introduction": {
+        "en": "Add **re-** to do something again, and **mis-** to do it wrongly:\n\n- `rewrite`: write again\n- `reconsider`: think about again\n- `rebuild`: build again\n- `misunderstand`: understand wrongly\n- `misinterpret`: interpret wrongly",
+        "fr": "Ajoutez **re-** pour faire quelque chose de nouveau, et **mis-** pour le faire de travers :\n\n- `rewrite` : écrire à nouveau\n- `reconsider` : réfléchir de nouveau\n- `rebuild` : construire à nouveau\n- `misunderstand` : mal comprendre\n- `misinterpret` : mal interpréter",
+        "de": "Mit **re-** tut man etwas noch einmal, mit **mis-** tut man es falsch:\n\n- `rewrite`: noch einmal schreiben\n- `reconsider`: noch einmal überdenken\n- `rebuild`: wieder aufbauen\n- `misunderstand`: falsch verstehen\n- `misinterpret`: falsch deuten"
+      }
+    },
+    {
+      "id": "over-under",
+      "label": { "en": "over- and under-", "fr": "over- et under-", "de": "over- und under-" },
+      "targetIds": ["overcook", "overestimate", "overreact", "underpaid", "underestimate"],
+      "introduction": {
+        "en": "Add **over-** for too much and **under-** for too little:\n\n- `overcook`: cook for too long\n- `overestimate`: think something is bigger or better than it is\n- `overreact`: react too strongly\n- `underpaid`: paid too little\n- `underestimate`: think something is smaller or weaker than it is",
+        "fr": "Ajoutez **over-** pour « trop » et **under-** pour « pas assez » :\n\n- `overcook` : cuire trop longtemps\n- `overestimate` : croire qu’une chose est plus grande ou meilleure qu’elle n’est\n- `overreact` : réagir trop fortement\n- `underpaid` : payé trop peu\n- `underestimate` : croire qu’une chose est plus petite ou plus faible qu’elle n’est",
+        "de": "Mit **over-** drückt man „zu viel“ aus, mit **under-** „zu wenig“:\n\n- `overcook`: zu lange kochen\n- `overestimate`: etwas für größer oder besser halten, als es ist\n- `overreact`: zu heftig reagieren\n- `underpaid`: zu schlecht bezahlt\n- `underestimate`: etwas für kleiner oder schwächer halten, als es ist"
+      }
+    },
+    {
+      "id": "pre-post",
+      "label": { "en": "pre- and post-", "fr": "pre- et post-", "de": "pre- und post-" },
+      "targetIds": ["pre-order", "preheat", "pre-war", "post-war"],
+      "introduction": {
+        "en": "Add **pre-** for before and **post-** for after:\n\n- `pre-order`: order before a product is released\n- `preheat`: heat before using\n- `pre-war`: from the time before a war\n- `post-war`: from the time after a war",
+        "fr": "Ajoutez **pre-** pour « avant » et **post-** pour « après » :\n\n- `pre-order` : commander avant la sortie d’un produit\n- `preheat` : chauffer avant d’utiliser\n- `pre-war` : d’avant une guerre\n- `post-war` : d’après une guerre",
+        "de": "Mit **pre-** drückt man „vor“ aus, mit **post-** „nach“:\n\n- `pre-order`: vor dem Erscheinen eines Produkts bestellen\n- `preheat`: vor der Benutzung vorheizen\n- `pre-war`: aus der Zeit vor einem Krieg\n- `post-war`: aus der Zeit nach einem Krieg"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "rewrite",
+      "term": "rewrite",
+      "translations": { "fr": ["réécrire"], "de": ["neu schreiben", "umschreiben"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "rewrite",
+      "examForms": ["rewrite"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/riːˈraɪt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "I had to rewrite my essay after the teacher’s comments.",
+        "translation": {
+          "fr": "J’ai dû réécrire ma dissertation après les remarques du professeur.",
+          "de": "Ich musste meinen Aufsatz nach den Anmerkungen des Lehrers neu schreiben."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Re- means again, so rewrite means to write something again.",
+        "fr": "Re- signifie « de nouveau » : rewrite veut dire écrire quelque chose à nouveau.",
+        "de": "Re- bedeutet „noch einmal“: rewrite heißt, etwas noch einmal zu schreiben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The editor asked me to ",
+        "after": " the whole introduction.",
+        "accepted": { "answers": ["rewrite"] },
+        "referenceTargetIds": ["rewrite", "preheat", "overreact", "pre-war"],
+        "explanation": {
+          "en": "You can rewrite an introduction, which means write it again.",
+          "fr": "On peut réécrire une introduction, c’est-à-dire l’écrire à nouveau.",
+          "de": "Man kann eine Einleitung neu schreiben, also noch einmal verfassen."
+        }
+      },
+      "listeningOptionTargetIds": ["rewrite", "rebuild", "reconsider", "overreact"]
+    },
+    {
+      "id": "reconsider",
+      "term": "reconsider",
+      "translations": { "fr": ["reconsidérer"], "de": ["überdenken"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "reconsider",
+      "examForms": ["reconsider"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌriːkənˈsɪdə/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "The board agreed to reconsider the proposal.",
+        "translation": {
+          "fr": "Le conseil a accepté de reconsidérer la proposition.",
+          "de": "Der Vorstand erklärte sich bereit, den Vorschlag zu überdenken."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Re- means again, so reconsider means to think about something again.",
+        "fr": "Re- signifie « de nouveau » : reconsider veut dire y réfléchir à nouveau.",
+        "de": "Re- bedeutet „noch einmal“: reconsider heißt, noch einmal darüber nachzudenken."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Please ",
+        "after": " your decision before it is too late.",
+        "accepted": { "answers": ["reconsider"] },
+        "referenceTargetIds": ["reconsider", "underpaid", "post-war", "overcook"],
+        "explanation": {
+          "en": "To reconsider a decision is to think about it again.",
+          "fr": "Reconsidérer une décision, c’est y réfléchir de nouveau.",
+          "de": "Eine Entscheidung zu überdenken heißt, noch einmal darüber nachzudenken."
+        }
+      },
+      "listeningOptionTargetIds": ["reconsider", "rewrite", "rebuild", "misinterpret"]
+    },
+    {
+      "id": "rebuild",
+      "term": "rebuild",
+      "translations": { "fr": ["reconstruire"], "de": ["wieder aufbauen", "neu bauen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "rebuild",
+      "examForms": ["rebuild"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/riːˈbɪld/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "They plan to rebuild the old theatre.",
+        "translation": {
+          "fr": "Ils prévoient de reconstruire l’ancien théâtre.",
+          "de": "Sie planen, das alte Theater wieder aufzubauen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Re- means again, so rebuild means to build something again.",
+        "fr": "Re- signifie « de nouveau » : rebuild veut dire construire à nouveau.",
+        "de": "Re- bedeutet „noch einmal“: rebuild heißt, etwas wieder aufzubauen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "After the flood, the villagers had to ",
+        "after": " their bridge.",
+        "accepted": { "answers": ["rebuild"] },
+        "referenceTargetIds": ["rebuild", "misunderstand", "pre-order", "underestimate"],
+        "explanation": {
+          "en": "After a flood, people rebuild a bridge: they build it again.",
+          "fr": "Après une inondation, on reconstruit un pont : on le construit à nouveau.",
+          "de": "Nach einer Flut baut man eine Brücke wieder auf, also noch einmal."
+        }
+      },
+      "listeningOptionTargetIds": ["rebuild", "rewrite", "reconsider", "overcook"]
+    },
+    {
+      "id": "misunderstand",
+      "term": "misunderstand",
+      "translations": { "fr": ["mal comprendre"], "de": ["missverstehen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "misunderstand",
+      "examForms": ["misunderstand"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌmɪsʌndəˈstænd/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Many people misunderstand what he really means.",
+        "translation": {
+          "fr": "Beaucoup de gens comprennent mal ce qu’il veut vraiment dire.",
+          "de": "Viele Leute missverstehen, was er wirklich meint."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Mis- means wrongly, so misunderstand means to understand something in the wrong way.",
+        "fr": "Mis- signifie « de travers » : misunderstand veut dire comprendre de manière erronée.",
+        "de": "Mis- bedeutet „falsch“: misunderstand heißt, etwas falsch zu verstehen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "I think you ",
+        "after": " me: that is not what I mean.",
+        "accepted": { "answers": ["misunderstand"] },
+        "referenceTargetIds": ["misunderstand", "overcook", "rewrite", "post-war"],
+        "explanation": {
+          "en": "If you get my words wrong, you misunderstand me.",
+          "fr": "Si vous saisissez mal mes mots, vous me comprenez mal : you misunderstand me.",
+          "de": "Wenn du meine Worte falsch auffasst, missverstehst du mich."
+        }
+      },
+      "listeningOptionTargetIds": ["misunderstand", "underestimate", "misinterpret", "overestimate"]
+    },
+    {
+      "id": "misinterpret",
+      "term": "misinterpret",
+      "translations": { "fr": ["mal interpréter"], "de": ["falsch deuten", "fehlinterpretieren"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "misinterpret",
+      "examForms": ["misinterpret"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌmɪsɪnˈtɜːprɪt/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Tourists often misinterpret a friendly gesture as rude.",
+        "translation": {
+          "fr": "Les touristes interprètent souvent mal un geste amical comme impoli.",
+          "de": "Touristen deuten eine freundliche Geste oft fälschlich als unhöflich."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Mis- means wrongly, so misinterpret means to explain the meaning of something wrongly.",
+        "fr": "Mis- signifie « de travers » : misinterpret veut dire donner un sens erroné à quelque chose.",
+        "de": "Mis- bedeutet „falsch“: misinterpret heißt, die Bedeutung von etwas falsch zu deuten."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Tourists may ",
+        "after": " a friendly gesture as rude.",
+        "accepted": { "answers": ["misinterpret"] },
+        "referenceTargetIds": ["misinterpret", "preheat", "underpaid", "overestimate"],
+        "explanation": {
+          "en": "The pattern misinterpret something as rude means to read it wrongly.",
+          "fr": "La construction misinterpret something as rude veut dire en comprendre le sens de travers.",
+          "de": "Die Wendung misinterpret something as rude bedeutet, etwas falsch zu deuten."
+        }
+      },
+      "listeningOptionTargetIds": ["misinterpret", "misunderstand", "reconsider", "overestimate"]
+    },
+    {
+      "id": "overcook",
+      "term": "overcook",
+      "translations": { "fr": ["trop cuire"], "de": ["zu lange kochen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "overcook",
+      "examForms": ["overcook"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌəʊvəˈkʊk/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Don’t overcook the vegetables or they will go soft.",
+        "translation": {
+          "fr": "Ne faites pas trop cuire les légumes, sinon ils seront mous.",
+          "de": "Koch das Gemüse nicht zu lange, sonst wird es weich."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Over- means too much, so overcook means to cook food for too long.",
+        "fr": "Over- signifie « trop » : overcook veut dire cuire un aliment trop longtemps.",
+        "de": "Over- bedeutet „zu viel“: overcook heißt, ein Essen zu lange zu kochen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Don’t ",
+        "after": " the pasta or it will go soft.",
+        "accepted": { "answers": ["overcook"] },
+        "referenceTargetIds": ["overcook", "rebuild", "pre-war", "reconsider"],
+        "explanation": {
+          "en": "Pasta goes soft when you cook it for too long: you overcook it.",
+          "fr": "Les pâtes ramollissent quand on les cuit trop longtemps : on les overcook.",
+          "de": "Nudeln werden weich, wenn man sie zu lange kocht: man overcook sie."
+        }
+      },
+      "listeningOptionTargetIds": ["overcook", "overreact", "overestimate", "preheat"]
+    },
+    {
+      "id": "overestimate",
+      "term": "overestimate",
+      "translations": { "fr": ["surestimer"], "de": ["überschätzen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "overestimate",
+      "examForms": ["overestimate"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌəʊvərˈestɪmeɪt/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Many students overestimate how much they can do in one evening.",
+        "translation": {
+          "fr": "Beaucoup d’étudiants surestiment ce qu’ils peuvent faire en une soirée.",
+          "de": "Viele Studenten überschätzen, wie viel sie an einem Abend schaffen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Over- means too much, so overestimate means to think something is greater than it really is.",
+        "fr": "Over- signifie « trop » : overestimate veut dire croire qu’une chose est plus grande qu’elle ne l’est.",
+        "de": "Over- bedeutet „zu viel“: overestimate heißt, etwas für größer zu halten, als es wirklich ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Don’t ",
+        "after": " how much you can finish in one day.",
+        "accepted": { "answers": ["overestimate"] },
+        "referenceTargetIds": ["overestimate", "rewrite", "post-war", "preheat"],
+        "explanation": {
+          "en": "To overestimate how much you can finish is to think you can do more than you can.",
+          "fr": "Overestimate how much you can finish, c’est croire pouvoir en faire plus qu’on ne peut.",
+          "de": "Overestimate how much you can finish heißt, sich mehr zuzutrauen, als man schafft."
+        }
+      },
+      "listeningOptionTargetIds": ["overestimate", "underestimate", "overreact", "overcook"]
+    },
+    {
+      "id": "overreact",
+      "term": "overreact",
+      "translations": { "fr": ["réagir de manière excessive"], "de": ["überreagieren"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "overreact",
+      "examForms": ["overreact"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌəʊvəriˈækt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She tends to overreact when things go wrong.",
+        "translation": {
+          "fr": "Elle a tendance à réagir de manière excessive quand les choses tournent mal.",
+          "de": "Sie neigt dazu, überzureagieren, wenn etwas schiefgeht."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Over- means too much, so overreact means to react more strongly than is necessary.",
+        "fr": "Over- signifie « trop » : overreact veut dire réagir plus fortement que nécessaire.",
+        "de": "Over- bedeutet „zu viel“: overreact heißt, stärker zu reagieren als nötig."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "It was only a small mistake, so try not to ",
+        "after": ".",
+        "accepted": { "answers": ["overreact"] },
+        "referenceTargetIds": ["overreact", "pre-order", "rebuild", "underpaid"],
+        "explanation": {
+          "en": "Overreact is used without an object: it means to react too strongly.",
+          "fr": "Overreact s’emploie sans complément : il veut dire réagir trop fortement.",
+          "de": "Overreact steht ohne Objekt und bedeutet, zu heftig zu reagieren."
+        }
+      },
+      "listeningOptionTargetIds": ["overreact", "overcook", "overestimate", "rewrite"]
+    },
+    {
+      "id": "underpaid",
+      "term": "underpaid",
+      "translations": { "fr": ["sous-payé"], "de": ["unterbezahlt"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "underpaid",
+      "examForms": ["underpaid"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌʌndəˈpeɪd/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Many nurses feel underpaid for the work they do.",
+        "translation": {
+          "fr": "Beaucoup d’infirmières se sentent sous-payées pour le travail qu’elles font.",
+          "de": "Viele Krankenschwestern fühlen sich für ihre Arbeit unterbezahlt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Under- means too little, so underpaid describes someone who gets less money than they deserve.",
+        "fr": "Under- signifie « pas assez » : underpaid décrit quelqu’un qui gagne moins qu’il ne mérite.",
+        "de": "Under- bedeutet „zu wenig“: underpaid beschreibt jemanden, der weniger Geld bekommt, als er verdient."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Many nurses feel ",
+        "after": " for the work they do.",
+        "accepted": { "answers": ["underpaid"] },
+        "referenceTargetIds": ["underpaid", "preheat", "misunderstand", "pre-war"],
+        "explanation": {
+          "en": "Only underpaid fits after feel and before for the work they do.",
+          "fr": "Seul underpaid convient après feel et avant for the work they do.",
+          "de": "Nur underpaid passt nach feel und vor for the work they do."
+        }
+      },
+      "listeningOptionTargetIds": ["underpaid", "underestimate", "pre-order", "overreact"]
+    },
+    {
+      "id": "underestimate",
+      "term": "underestimate",
+      "translations": { "fr": ["sous-estimer"], "de": ["unterschätzen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "underestimate",
+      "examForms": ["underestimate"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌʌndərˈestɪmeɪt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Never underestimate how hard the exam is.",
+        "translation": {
+          "fr": "Ne sous-estimez jamais la difficulté de l’examen.",
+          "de": "Unterschätze nie, wie schwer die Prüfung ist."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Under- means too little, so underestimate means to think something is smaller or weaker than it is.",
+        "fr": "Under- signifie « pas assez » : underestimate veut dire croire qu’une chose est plus petite ou plus faible qu’elle ne l’est.",
+        "de": "Under- bedeutet „zu wenig“: underestimate heißt, etwas für kleiner oder schwächer zu halten, als es ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Never ",
+        "after": " your opponent: she is very fast.",
+        "accepted": { "answers": ["underestimate"] },
+        "referenceTargetIds": ["underestimate", "overcook", "rewrite", "post-war"],
+        "explanation": {
+          "en": "If you think a fast opponent is weak, you underestimate her.",
+          "fr": "Si vous croyez qu’une adversaire rapide est faible, vous la sous-estimez.",
+          "de": "Wer eine schnelle Gegnerin für schwach hält, unterschätzt sie."
+        }
+      },
+      "listeningOptionTargetIds": ["underestimate", "overestimate", "misunderstand", "underpaid"]
+    },
+    {
+      "id": "pre-order",
+      "term": "pre-order",
+      "translations": { "fr": ["précommander"], "de": ["vorbestellen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "pre-order",
+      "examForms": ["pre-order", "preorder"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌpriːˈɔːdə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "You can pre-order the new game online.",
+        "translation": {
+          "fr": "Vous pouvez précommander le nouveau jeu en ligne.",
+          "de": "Du kannst das neue Spiel online vorbestellen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Pre- means before, so pre-order means to order something before it is released.",
+        "fr": "Pre- signifie « avant » : pre-order veut dire commander quelque chose avant sa sortie.",
+        "de": "Pre- bedeutet „vor“: pre-order heißt, etwas vor seinem Erscheinen zu bestellen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "You can ",
+        "after": " the new game online before it comes out.",
+        "accepted": { "answers": ["pre-order", "preorder"] },
+        "referenceTargetIds": ["pre-order", "reconsider", "overreact", "underpaid"],
+        "explanation": {
+          "en": "You order a game before it comes out: you pre-order it.",
+          "fr": "On commande un jeu avant sa sortie : on le pre-order.",
+          "de": "Ein Spiel bestellt man vor dem Erscheinen: man pre-order es."
+        }
+      },
+      "listeningOptionTargetIds": ["pre-order", "preheat", "pre-war", "rewrite"]
+    },
+    {
+      "id": "preheat",
+      "term": "preheat",
+      "translations": { "fr": ["préchauffer"], "de": ["vorheizen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "preheat",
+      "examForms": ["preheat"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌpriːˈhiːt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Preheat the oven to 200 degrees before you start.",
+        "translation": {
+          "fr": "Préchauffez le four à 200 degrés avant de commencer.",
+          "de": "Heize den Ofen auf 200 Grad vor, bevor du anfängst."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Pre- means before, so preheat means to heat something before you use it.",
+        "fr": "Pre- signifie « avant » : preheat veut dire chauffer quelque chose avant de l’utiliser.",
+        "de": "Pre- bedeutet „vor“: preheat heißt, etwas vor der Benutzung aufzuheizen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Please ",
+        "after": " the oven to 200 degrees.",
+        "accepted": { "answers": ["preheat"] },
+        "referenceTargetIds": ["preheat", "misinterpret", "rebuild", "overestimate"],
+        "explanation": {
+          "en": "You heat an oven before cooking: you preheat it.",
+          "fr": "On chauffe un four avant de cuisiner : on le preheat.",
+          "de": "Einen Ofen heizt man vor dem Kochen auf: man preheat ihn."
+        }
+      },
+      "listeningOptionTargetIds": ["preheat", "pre-order", "pre-war", "overcook"]
+    },
+    {
+      "id": "pre-war",
+      "term": "pre-war",
+      "translations": { "fr": ["d’avant-guerre"], "de": ["Vorkriegs-"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "pre-war",
+      "examForms": ["pre-war", "prewar"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌpriːˈwɔː/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Many pre-war houses survived in this street.",
+        "translation": {
+          "fr": "Beaucoup de maisons d’avant-guerre ont survécu dans cette rue.",
+          "de": "In dieser Straße haben viele Vorkriegshäuser überlebt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Pre- means before, so pre-war describes something from the time before a war.",
+        "fr": "Pre- signifie « avant » : pre-war décrit ce qui date de la période précédant une guerre.",
+        "de": "Pre- bedeutet „vor“: pre-war beschreibt etwas aus der Zeit vor einem Krieg."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Many ",
+        "after": " houses in this street survived the bombing.",
+        "accepted": { "answers": ["pre-war", "prewar"] },
+        "referenceTargetIds": ["pre-war", "misunderstand", "overcook", "rewrite"],
+        "explanation": {
+          "en": "Houses built before the war are pre-war houses.",
+          "fr": "Des maisons construites avant la guerre sont des maisons pre-war.",
+          "de": "Häuser, die vor dem Krieg gebaut wurden, sind pre-war houses."
+        }
+      },
+      "listeningOptionTargetIds": ["pre-war", "post-war", "pre-order", "preheat"]
+    },
+    {
+      "id": "post-war",
+      "term": "post-war",
+      "translations": { "fr": ["d’après-guerre"], "de": ["Nachkriegs-"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "post-war",
+      "examForms": ["post-war", "postwar"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌpəʊstˈwɔː/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "The post-war period saw rapid economic growth.",
+        "translation": {
+          "fr": "La période d’après-guerre a connu une croissance économique rapide.",
+          "de": "In der Nachkriegszeit wuchs die Wirtschaft schnell."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Post- means after, so post-war describes something from the time after a war.",
+        "fr": "Post- signifie « après » : post-war décrit ce qui date de la période suivant une guerre.",
+        "de": "Post- bedeutet „nach“: post-war beschreibt etwas aus der Zeit nach einem Krieg."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The ",
+        "after": " period saw rapid economic growth in Europe.",
+        "accepted": { "answers": ["post-war", "postwar"] },
+        "referenceTargetIds": ["post-war", "underestimate", "preheat", "reconsider"],
+        "explanation": {
+          "en": "The period after the war is the post-war period.",
+          "fr": "La période qui suit la guerre est la période post-war.",
+          "de": "Die Zeit nach dem Krieg ist die post-war period."
+        }
+      },
+      "listeningOptionTargetIds": ["post-war", "pre-war", "pre-order", "preheat"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

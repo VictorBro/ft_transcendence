@@ -1,0 +1,602 @@
+{
+  "schemaVersion": 2,
+  "id": "en-gossip-and-rumour",
+  "lang": "en",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Gossip and rumour",
+  "objective": {
+    "en": "Talk about gossip and rumour with twelve informal and formal words and phrases.",
+    "fr": "Parler des potins et des rumeurs avec douze mots et expressions familiers et soutenus.",
+    "de": "Über Klatsch und Gerüchte mit zwölf informellen und formellen Wörtern und Wendungen sprechen."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:52:24.864Z",
+    "inputHashes": { "outline": "f9a55cc57b5175d48333158b9c118fee28062df74daac9eaa3aecddcb3ab150a" }
+  },
+  "kind": "vocabulary",
+  "theme": "relations",
+  "coverageNotes": {
+    "en": "Twelve words for gossip and rumour, split by register: seven informal or colloquial items and five more formal or critical ones.",
+    "fr": "Douze mots pour les potins et les rumeurs, répartis par registre : sept termes familiers et cinq termes plus soutenus ou critiques.",
+    "de": "Zwölf Wörter für Klatsch und Gerüchte, nach Register geordnet: sieben informelle und fünf formellere oder kritische."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words match the outline's intent and keep the lesson to a manageable length at C2.",
+    "fr": "Douze mots correspondent à l’intention du plan et gardent une durée raisonnable au niveau C2.",
+    "de": "Zwölf Wörter entsprechen der Vorgabe der Gliederung und halten die Lektion auf C2-Niveau überschaubar."
+  },
+  "difficultyBalance": {
+    "en": "Mostly demanding items, because informal British idioms and formal legal or critical terms are hard at C2.",
+    "fr": "Surtout des mots exigeants, car les expressions familières britanniques et les termes soutenus sont difficiles au niveau C2.",
+    "de": "Überwiegend anspruchsvolle Einträge, da informelle britische Wendungen und formelle Fachbegriffe auf C2 schwierig sind."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "informal",
+      "label": { "en": "Informal gossip", "fr": "Potins familiers", "de": "Informeller Klatsch" },
+      "targetIds": [
+        "grapevine",
+        "rumour-mill",
+        "tittle-tattle",
+        "chinwag",
+        "dish-the-dirt",
+        "tell-tales",
+        "scuttlebutt"
+      ],
+      "introduction": {
+        "en": "These words and phrases are **informal** and colourful. People use them when chatting about who said what:\n\n- `grapevine`\n- `rumour mill`\n- `tittle-tattle`\n- `chinwag`\n- `dish the dirt`\n- `tell tales`\n- `scuttlebutt`",
+        "fr": "Ces mots et expressions sont **familiers** et imagés. On les emploie en bavardant sur qui a dit quoi :\n\n- `grapevine`\n- `rumour mill`\n- `tittle-tattle`\n- `chinwag`\n- `dish the dirt`\n- `tell tales`\n- `scuttlebutt`",
+        "de": "Diese Wörter und Wendungen sind **informell** und bildhaft. Man benutzt sie, wenn man darüber plaudert, wer was gesagt hat:\n\n- `grapevine`\n- `rumour mill`\n- `tittle-tattle`\n- `chinwag`\n- `dish the dirt`\n- `tell tales`\n- `scuttlebutt`"
+      }
+    },
+    {
+      "id": "formal",
+      "label": {
+        "en": "Formal and critical terms",
+        "fr": "Termes soutenus et critiques",
+        "de": "Formelle und kritische Begriffe"
+      },
+      "targetIds": ["hearsay", "unfounded", "backbiting", "insinuation", "gossipmonger"],
+      "introduction": {
+        "en": "These words are **more formal** or more critical. You find them in the press, in courts and in serious discussion of rumour:\n\n- `hearsay`\n- `unfounded`\n- `backbiting`\n- `insinuation`\n- `gossipmonger`",
+        "fr": "Ces mots sont **plus soutenus** ou plus critiques. On les trouve dans la presse, devant les tribunaux et dans les discussions sérieuses sur les rumeurs :\n\n- `hearsay`\n- `unfounded`\n- `backbiting`\n- `insinuation`\n- `gossipmonger`",
+        "de": "Diese Wörter sind **formeller** oder kritischer. Man findet sie in der Presse, vor Gericht und in ernsthaften Gesprächen über Gerüchte:\n\n- `hearsay`\n- `unfounded`\n- `backbiting`\n- `insinuation`\n- `gossipmonger`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "grapevine",
+      "term": "grapevine",
+      "translations": {
+        "fr": ["le bouche-à-oreille", "le téléphone arabe"],
+        "de": ["Buschfunk", "Mundpropaganda"]
+      },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "grapevine",
+      "examForms": ["grapevine"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɡreɪpvaɪn/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "I heard it on the grapevine.",
+        "translation": {
+          "fr": "Je l’ai appris par le bouche-à-oreille.",
+          "de": "Ich habe es über den Buschfunk gehört."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "The grapevine is the informal network through which news and gossip spread.",
+        "fr": "The grapevine désigne le réseau informel par lequel les nouvelles et les potins circulent.",
+        "de": "The grapevine bezeichnet das informelle Netz, über das Neuigkeiten und Klatsch verbreitet werden."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "I heard through the ",
+        "after": " that she is leaving.",
+        "accepted": { "answers": ["grapevine"] },
+        "referenceTargetIds": ["grapevine", "chinwag", "backbiting", "unfounded"],
+        "explanation": {
+          "en": "Only grapevine fits: we hear things through the grapevine.",
+          "fr": "Seul « grapevine » convient : on apprend les choses through the grapevine.",
+          "de": "Nur „grapevine“ passt: Man hört Dinge through the grapevine."
+        }
+      },
+      "listeningOptionTargetIds": ["grapevine", "gossipmonger", "insinuation", "unfounded"]
+    },
+    {
+      "id": "rumour-mill",
+      "term": "rumour mill",
+      "translations": {
+        "fr": ["l’usine à rumeurs", "la machine à rumeurs"],
+        "de": ["Gerüchteküche"]
+      },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "rumour mill",
+      "examForms": ["rumour mill", "rumor mill"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈruːmə mɪl/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "The rumour mill has been working overtime.",
+        "translation": {
+          "fr": "L’usine à rumeurs a tourné à plein régime.",
+          "de": "Die Gerüchteküche hat auf Hochtouren gebrodelt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "The rumour mill is the way rumours seem to be produced and passed round constantly.",
+        "fr": "The rumour mill évoque la façon dont les rumeurs semblent se fabriquer et circuler sans cesse.",
+        "de": "The rumour mill beschreibt, wie Gerüchte scheinbar ständig entstehen und weitergereicht werden."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The ",
+        "after": " has been working overtime since the announcement.",
+        "accepted": { "answers": ["rumour mill", "rumor mill"] },
+        "referenceTargetIds": ["rumour-mill", "hearsay", "chinwag", "unfounded"],
+        "explanation": {
+          "en": "Only rumour mill fits: it is said to work overtime.",
+          "fr": "Seul « rumour mill » convient : on dit qu’il tourne à plein régime.",
+          "de": "Nur „rumour mill“ passt: Man sagt, sie arbeite auf Hochtouren."
+        }
+      },
+      "listeningOptionTargetIds": ["rumour-mill", "tittle-tattle", "chinwag", "scuttlebutt"]
+    },
+    {
+      "id": "tittle-tattle",
+      "term": "tittle-tattle",
+      "translations": {
+        "fr": ["les commérages", "les potins"],
+        "de": ["Klatsch und Tratsch", "Geschwätz"]
+      },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "tittle-tattle",
+      "examForms": ["tittle-tattle"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈtɪtl ˌtætl/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "I have no time for idle tittle-tattle.",
+        "translation": {
+          "fr": "Je n’ai pas de temps à perdre avec de vains commérages.",
+          "de": "Für müßigen Klatsch und Tratsch habe ich keine Zeit."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Tittle-tattle is trivial, idle talk about other people's private lives.",
+        "fr": "Tittle-tattle désigne des bavardages futiles sur la vie privée des autres.",
+        "de": "Tittle-tattle bezeichnet belanglose Gespräche über das Privatleben anderer."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "I can't be bothered with all this ",
+        "after": " about who is dating whom.",
+        "accepted": { "answers": ["tittle-tattle"] },
+        "referenceTargetIds": ["tittle-tattle", "unfounded", "dish-the-dirt", "gossipmonger"],
+        "explanation": {
+          "en": "Only tittle-tattle fits as a noun meaning trivial gossip.",
+          "fr": "Seul « tittle-tattle » convient comme nom signifiant des potins futiles.",
+          "de": "Nur „tittle-tattle“ passt als Nomen für belanglosen Klatsch."
+        }
+      },
+      "listeningOptionTargetIds": ["tittle-tattle", "chinwag", "scuttlebutt", "backbiting"]
+    },
+    {
+      "id": "chinwag",
+      "term": "chinwag",
+      "translations": {
+        "fr": ["la causette", "le brin de causette"],
+        "de": ["Plausch", "Schwatz"]
+      },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "chinwag",
+      "examForms": ["chinwag"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈtʃɪnwæɡ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "We had a good chinwag over a cup of tea.",
+        "translation": {
+          "fr": "Nous avons bien papoté autour d’une tasse de thé.",
+          "de": "Wir hatten bei einer Tasse Tee einen netten Plausch."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A chinwag is a friendly, informal chat, often with some gossip.",
+        "fr": "Un chinwag est une conversation amicale et décontractée, souvent avec quelques potins.",
+        "de": "Ein chinwag ist ein freundliches, ungezwungenes Gespräch, oft mit etwas Klatsch."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Pop round on Sunday and we'll have a good ",
+        "after": " over tea.",
+        "accepted": { "answers": ["chinwag"] },
+        "referenceTargetIds": ["chinwag", "hearsay", "insinuation", "unfounded"],
+        "explanation": {
+          "en": "Only chinwag fits: it is something you have with a friend.",
+          "fr": "Seul « chinwag » convient : on en a un avec un ami.",
+          "de": "Nur „chinwag“ passt: Man hat es mit einem Freund."
+        }
+      },
+      "listeningOptionTargetIds": ["chinwag", "tittle-tattle", "grapevine", "backbiting"]
+    },
+    {
+      "id": "dish-the-dirt",
+      "term": "dish the dirt",
+      "translations": {
+        "fr": ["déballer les potins", "étaler des ragots"],
+        "de": ["schmutzige Details ausplaudern", "den neuesten Klatsch erzählen"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "dish the dirt",
+      "examForms": ["dish the dirt"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/dɪʃ ðə dɜːt/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "She loves to dish the dirt on her ex-colleagues.",
+        "translation": {
+          "fr": "Elle adore déballer les potins sur ses anciens collègues.",
+          "de": "Sie plaudert gern schmutzige Details über ihre ehemaligen Kollegen aus."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To dish the dirt is to reveal scandalous or embarrassing details about someone.",
+        "fr": "Dish the dirt signifie révéler des détails scandaleux ou gênants sur quelqu’un.",
+        "de": "Dish the dirt bedeutet, skandalöse oder peinliche Details über jemanden preiszugeben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Over a bottle of wine they love to ",
+        "after": " on their old colleagues.",
+        "accepted": { "answers": ["dish the dirt"] },
+        "referenceTargetIds": ["dish-the-dirt", "hearsay", "unfounded", "gossipmonger"],
+        "explanation": {
+          "en": "Only dish the dirt is a verb phrase that fits after to.",
+          "fr": "Seul « dish the dirt » est une locution verbale qui convient après to.",
+          "de": "Nur „dish the dirt“ ist eine Verbalphrase, die nach to passt."
+        }
+      },
+      "listeningOptionTargetIds": ["dish-the-dirt", "tell-tales", "chinwag", "backbiting"]
+    },
+    {
+      "id": "tell-tales",
+      "term": "tell tales",
+      "translations": { "fr": ["rapporter", "cafarder"], "de": ["petzen"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "tell tales",
+      "examForms": ["tell tales"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/tel teɪlz/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Nobody likes a child who tells tales.",
+        "translation": {
+          "fr": "Personne n’aime un enfant qui rapporte.",
+          "de": "Niemand mag ein Kind, das petzt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To tell tales is to report someone's misdeeds to an authority, usually to get them into trouble.",
+        "fr": "Tell tales signifie rapporter les méfaits de quelqu’un à une autorité, souvent pour lui causer des ennuis.",
+        "de": "Tell tales bedeutet, die Verfehlungen eines anderen einer Autorität zu melden, meist um ihm zu schaden."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Stop trying to ",
+        "after": " to the teacher about your sister!",
+        "accepted": { "answers": ["tell tales"] },
+        "referenceTargetIds": ["tell-tales", "scuttlebutt", "backbiting", "unfounded"],
+        "explanation": {
+          "en": "Only tell tales fits: it is a verb phrase meaning to report on someone.",
+          "fr": "Seul « tell tales » convient : c’est une locution verbale qui signifie rapporter.",
+          "de": "Nur „tell tales“ passt: Es ist eine Verbalphrase mit der Bedeutung petzen."
+        }
+      },
+      "listeningOptionTargetIds": ["tell-tales", "dish-the-dirt", "tittle-tattle", "hearsay"]
+    },
+    {
+      "id": "scuttlebutt",
+      "term": "scuttlebutt",
+      "translations": { "fr": ["les bruits de couloir"], "de": ["Flurfunk"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "scuttlebutt",
+      "examForms": ["scuttlebutt"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈskʌtlbʌt/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "According to the office scuttlebutt, the director is about to resign.",
+        "translation": {
+          "fr": "Selon les bruits de couloir du bureau, le directeur va démissionner.",
+          "de": "Laut Flurfunk im Büro steht der Direktor kurz vor dem Rücktritt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Scuttlebutt is informal gossip or rumour, especially about a workplace.",
+        "fr": "Scuttlebutt désigne des rumeurs ou potins familiers, surtout sur un lieu de travail.",
+        "de": "Scuttlebutt bezeichnet informellen Klatsch oder Gerüchte, besonders über den Arbeitsplatz."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "According to the office ",
+        "after": ", the director is about to resign.",
+        "accepted": { "answers": ["scuttlebutt"] },
+        "referenceTargetIds": ["scuttlebutt", "unfounded", "insinuation", "tell-tales"],
+        "explanation": {
+          "en": "Only scuttlebutt fits: it means workplace rumour.",
+          "fr": "Seul « scuttlebutt » convient : il désigne les rumeurs de bureau.",
+          "de": "Nur „scuttlebutt“ passt: Es bedeutet Gerüchte am Arbeitsplatz."
+        }
+      },
+      "listeningOptionTargetIds": ["scuttlebutt", "backbiting", "chinwag", "tittle-tattle"]
+    },
+    {
+      "id": "hearsay",
+      "term": "hearsay",
+      "translations": { "fr": ["l’ouï-dire", "les on-dit"], "de": ["Hörensagen"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "hearsay",
+      "examForms": ["hearsay"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈhɪəseɪ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "The judge dismissed the claim as mere hearsay.",
+        "translation": {
+          "fr": "Le juge a rejeté l’affirmation comme un simple ouï-dire.",
+          "de": "Der Richter wies die Behauptung als bloßes Hörensagen zurück."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Hearsay is information heard from others that cannot be confirmed; it is the usual legal term.",
+        "fr": "Hearsay désigne une information entendue de seconde main et invérifiable ; c’est le terme juridique habituel.",
+        "de": "Hearsay bezeichnet Informationen vom Hörensagen, die sich nicht bestätigen lassen; es ist der übliche juristische Begriff."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The court refused to accept ",
+        "after": " as evidence.",
+        "accepted": { "answers": ["hearsay"] },
+        "referenceTargetIds": ["hearsay", "grapevine", "chinwag", "tell-tales"],
+        "explanation": {
+          "en": "Only hearsay fits: courts reject it as evidence.",
+          "fr": "Seul « hearsay » convient : les tribunaux le rejettent comme preuve.",
+          "de": "Nur „hearsay“ passt: Gerichte lehnen es als Beweis ab."
+        }
+      },
+      "listeningOptionTargetIds": ["hearsay", "insinuation", "gossipmonger", "chinwag"]
+    },
+    {
+      "id": "unfounded",
+      "term": "unfounded",
+      "translations": { "fr": ["infondé", "sans fondement"], "de": ["unbegründet", "haltlos"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "unfounded",
+      "examForms": ["unfounded"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʌnˈfaʊndɪd/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "The allegations proved entirely unfounded.",
+        "translation": {
+          "fr": "Les accusations se sont révélées totalement infondées.",
+          "de": "Die Vorwürfe erwiesen sich als völlig unbegründet."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Unfounded describes a claim or rumour with no evidence or basis behind it.",
+        "fr": "Unfounded qualifie une affirmation ou une rumeur sans preuve ni fondement.",
+        "de": "Unfounded beschreibt eine Behauptung oder ein Gerücht ohne Beweis oder Grundlage."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The allegations proved entirely ",
+        "after": ".",
+        "accepted": { "answers": ["unfounded"] },
+        "referenceTargetIds": ["unfounded", "hearsay", "backbiting", "gossipmonger"],
+        "explanation": {
+          "en": "Only unfounded fits: it is the adjective that completes proved entirely.",
+          "fr": "Seul « unfounded » convient : c’est l’adjectif qui complète proved entirely.",
+          "de": "Nur „unfounded“ passt: Es ist das Adjektiv, das proved entirely ergänzt."
+        }
+      },
+      "listeningOptionTargetIds": ["unfounded", "backbiting", "insinuation", "hearsay"]
+    },
+    {
+      "id": "backbiting",
+      "term": "backbiting",
+      "translations": { "fr": ["la médisance"], "de": ["Lästerei", "üble Nachrede"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "backbiting",
+      "examForms": ["backbiting"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈbækbaɪtɪŋ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "The team was poisoned by constant backbiting.",
+        "translation": {
+          "fr": "L’équipe était empoisonnée par une médisance constante.",
+          "de": "Das Team wurde durch ständige Lästerei vergiftet."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Backbiting is spiteful talk about someone who is not there to defend themselves.",
+        "fr": "Backbiting désigne des propos malveillants sur quelqu’un qui n’est pas là pour se défendre.",
+        "de": "Backbiting bezeichnet boshaftes Reden über jemanden, der sich nicht verteidigen kann."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The team was poisoned by constant ",
+        "after": " and petty jealousy.",
+        "accepted": { "answers": ["backbiting"] },
+        "referenceTargetIds": ["backbiting", "unfounded", "chinwag", "scuttlebutt"],
+        "explanation": {
+          "en": "Only backbiting fits: it is spiteful talk that poisons a team.",
+          "fr": "Seul « backbiting » convient : ce sont des propos malveillants qui empoisonnent une équipe.",
+          "de": "Nur „backbiting“ passt: Es ist boshaftes Reden, das ein Team vergiftet."
+        }
+      },
+      "listeningOptionTargetIds": ["backbiting", "hearsay", "scuttlebutt", "tittle-tattle"]
+    },
+    {
+      "id": "insinuation",
+      "term": "insinuation",
+      "translations": {
+        "fr": ["l’insinuation", "le sous-entendu"],
+        "de": ["Unterstellung", "Andeutung"]
+      },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "insinuation",
+      "examForms": ["insinuation"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɪnˌsɪnjuˈeɪʃn/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "I resent the insinuation that I knew about the fraud.",
+        "translation": {
+          "fr": "Je n’apprécie pas l’insinuation selon laquelle j’étais au courant de la fraude.",
+          "de": "Ich verwahre mich gegen die Unterstellung, ich hätte von dem Betrug gewusst."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "An insinuation is an indirect suggestion of something unpleasant, without stating it openly.",
+        "fr": "Une insinuation suggère indirectement quelque chose de désagréable, sans l’énoncer ouvertement.",
+        "de": "Eine insinuation deutet indirekt etwas Unangenehmes an, ohne es offen auszusprechen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "I resent the ",
+        "after": " that I knew about the fraud.",
+        "accepted": { "answers": ["insinuation"] },
+        "referenceTargetIds": ["insinuation", "unfounded", "chinwag", "tell-tales"],
+        "explanation": {
+          "en": "Only insinuation fits: it takes a that-clause about a hint.",
+          "fr": "Seul « insinuation » convient : il se construit avec une proposition en that.",
+          "de": "Nur „insinuation“ passt: Es wird mit einem that-Satz über eine Andeutung verbunden."
+        }
+      },
+      "listeningOptionTargetIds": ["insinuation", "unfounded", "hearsay", "gossipmonger"]
+    },
+    {
+      "id": "gossipmonger",
+      "term": "gossipmonger",
+      "translations": {
+        "fr": ["le colporteur de ragots", "la commère"],
+        "de": ["Klatschbase", "Klatschmaul"]
+      },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "gossipmonger",
+      "examForms": ["gossipmonger"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɡɒsɪpˌmʌŋɡə/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "She is a notorious gossipmonger, so tell her nothing.",
+        "translation": {
+          "fr": "C’est une commère notoire, ne lui dis donc rien.",
+          "de": "Sie ist eine berüchtigte Klatschbase, also erzähl ihr nichts."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A gossipmonger is someone who habitually spreads gossip; the tone is disapproving.",
+        "fr": "Un gossipmonger est quelqu’un qui répand habituellement des potins ; le ton est désapprobateur.",
+        "de": "Ein gossipmonger ist jemand, der gewohnheitsmäßig Klatsch verbreitet; der Ton ist missbilligend."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She is a notorious ",
+        "after": ", so don't tell her anything.",
+        "accepted": { "answers": ["gossipmonger"] },
+        "referenceTargetIds": ["gossipmonger", "hearsay", "unfounded", "scuttlebutt"],
+        "explanation": {
+          "en": "Only gossipmonger fits: it names a person who spreads gossip.",
+          "fr": "Seul « gossipmonger » convient : il désigne une personne qui répand des potins.",
+          "de": "Nur „gossipmonger“ passt: Es bezeichnet eine Person, die Klatsch verbreitet."
+        }
+      },
+      "listeningOptionTargetIds": ["gossipmonger", "grapevine", "hearsay", "insinuation"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

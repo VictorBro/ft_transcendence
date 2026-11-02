@@ -1,0 +1,616 @@
+{
+  "schemaVersion": 2,
+  "id": "en-hair-face-and-build",
+  "lang": "en",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Describing hair, face and build",
+  "objective": {
+    "en": "Describe what someone looks like in detail: hair, face and body.",
+    "fr": "Décrire en détail l'apparence de quelqu'un : cheveux, visage et corps.",
+    "de": "Das Aussehen einer Person genau beschreiben: Haare, Gesicht und Körper."
+  },
+  "estimatedMinutes": 21,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:09.456Z",
+    "inputHashes": { "outline": "de25fb105310cbb8bc15497a7c759649115a4e8d9d41ed17f6803264beb2dd24" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Thirteen words for describing appearance: hair shape and style, facial hair, marks on the face and body shape. Character and emotions are taught in neighbouring lessons.",
+    "fr": "Treize mots pour décrire l'apparence : forme et coiffure des cheveux, pilosité du visage, marques du visage et corpulence. Le caractère et les émotions sont traités dans les leçons voisines.",
+    "de": "Dreizehn Wörter zur Beschreibung des Aussehens: Haarform und Frisur, Gesichtsbehaarung, Merkmale im Gesicht und Körperbau. Charakter und Gefühle werden in benachbarten Lektionen behandelt."
+  },
+  "targetCount": 13,
+  "countRationale": {
+    "en": "Thirteen words give enough range for a detailed description without overloading a B1 learner.",
+    "fr": "Treize mots offrent assez de variété pour une description détaillée sans surcharger un apprenant B1.",
+    "de": "Dreizehn Wörter bieten genug Vielfalt für eine genaue Beschreibung, ohne B1-Lernende zu überfordern."
+  },
+  "difficultyBalance": {
+    "en": "Most words are common core vocabulary; spiky, moustache, dimples and well-built are more demanding.",
+    "fr": "La plupart des mots sont du vocabulaire courant ; spiky, moustache, dimples et well-built sont plus difficiles.",
+    "de": "Die meisten Wörter sind Grundwortschatz; spiky, moustache, dimples und well-built sind anspruchsvoller."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "hair",
+      "label": {
+        "en": "Hair and facial hair",
+        "fr": "Cheveux et pilosité du visage",
+        "de": "Haare und Gesichtsbehaarung"
+      },
+      "targetIds": ["curly", "wavy", "straight", "spiky", "ponytail", "bald", "beard", "moustache"],
+      "introduction": {
+        "en": "Use these words to describe someone's **hair**:\n\n- `curly`, `wavy`, `straight`, `spiky`: the shape of the hair\n- `ponytail`, `bald`: a hairstyle, or no hair at all\n- `beard`, `moustache`: hair on the face\n\nWe often use **with** or **has**: `a man with a beard`.",
+        "fr": "Utilisez ces mots pour décrire les **cheveux** de quelqu'un :\n\n- `curly`, `wavy`, `straight`, `spiky` : la forme des cheveux\n- `ponytail`, `bald` : une coiffure, ou l'absence de cheveux\n- `beard`, `moustache` : les poils du visage\n\nOn utilise souvent **with** ou **has** : `a man with a beard`.",
+        "de": "Mit diesen Wörtern beschreibst du die **Haare** einer Person:\n\n- `curly`, `wavy`, `straight`, `spiky`: die Form der Haare\n- `ponytail`, `bald`: eine Frisur oder gar keine Haare\n- `beard`, `moustache`: Haare im Gesicht\n\nOft benutzt man **with** oder **has**: `a man with a beard`."
+      }
+    },
+    {
+      "id": "face-body",
+      "label": {
+        "en": "Face and build",
+        "fr": "Visage et corpulence",
+        "de": "Gesicht und Körperbau"
+      },
+      "targetIds": ["freckles", "wrinkles", "dimples", "slim", "well-built"],
+      "introduction": {
+        "en": "These words describe the **face** and the **body**:\n\n- `freckles`, `wrinkles`, `dimples`: small marks and lines on the face\n- `slim`, `well-built`: the shape of the body\n\n`Freckles`, `wrinkles` and `dimples` are usually **plural**: `She has freckles.`",
+        "fr": "Ces mots décrivent le **visage** et le **corps** :\n\n- `freckles`, `wrinkles`, `dimples` : petites marques et lignes sur le visage\n- `slim`, `well-built` : la forme du corps\n\n`Freckles`, `wrinkles` et `dimples` sont en général au **pluriel** : `She has freckles.`",
+        "de": "Diese Wörter beschreiben das **Gesicht** und den **Körper**:\n\n- `freckles`, `wrinkles`, `dimples`: kleine Merkmale und Linien im Gesicht\n- `slim`, `well-built`: die Form des Körpers\n\n`Freckles`, `wrinkles` und `dimples` stehen meist im **Plural**: `She has freckles.`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "curly",
+      "term": "curly",
+      "translations": { "fr": ["frisé", "bouclé"], "de": ["lockig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "curly",
+      "examForms": ["curly"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈkɜːli/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "My sister has long curly hair.",
+        "translation": {
+          "fr": "Ma sœur a de longs cheveux bouclés.",
+          "de": "Meine Schwester hat lange lockige Haare."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Curly describes hair that forms tight spirals or curls.",
+        "fr": "Curly décrit des cheveux qui forment des boucles serrées.",
+        "de": "Curly beschreibt Haare, die enge Locken bilden."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She has tight little spirals in her hair; it is very ",
+        "after": ".",
+        "accepted": { "answers": ["curly"] },
+        "referenceTargetIds": ["curly", "wavy", "straight", "spiky"],
+        "explanation": {
+          "en": "Tight spirals mean the hair is curly.",
+          "fr": "Des boucles serrées signifient que les cheveux sont curly.",
+          "de": "Enge Locken bedeuten, dass die Haare curly sind."
+        }
+      },
+      "listeningOptionTargetIds": ["curly", "wavy", "straight", "spiky"]
+    },
+    {
+      "id": "wavy",
+      "term": "wavy",
+      "translations": { "fr": ["ondulé"], "de": ["wellig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "wavy",
+      "examForms": ["wavy"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈweɪvi/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He has short wavy brown hair.",
+        "translation": {
+          "fr": "Il a des cheveux bruns courts et ondulés.",
+          "de": "Er hat kurze, wellige braune Haare."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Wavy hair is between straight and curly: it has soft waves.",
+        "fr": "Des cheveux wavy sont entre raides et bouclés : ils ont de douces ondulations.",
+        "de": "Wavy sind Haare zwischen glatt und lockig: Sie haben weiche Wellen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "His hair is not straight or curly. It has soft, gentle waves, so it is ",
+        "after": ".",
+        "accepted": { "answers": ["wavy"] },
+        "referenceTargetIds": ["wavy", "curly", "straight", "bald"],
+        "explanation": {
+          "en": "Soft, gentle waves mean the hair is wavy.",
+          "fr": "De douces ondulations signifient que les cheveux sont wavy.",
+          "de": "Sanfte Wellen bedeuten, dass die Haare wavy sind."
+        }
+      },
+      "listeningOptionTargetIds": ["wavy", "curly", "straight", "spiky"]
+    },
+    {
+      "id": "straight",
+      "term": "straight",
+      "translations": { "fr": ["raide", "lisse"], "de": ["glatt"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "straight",
+      "examForms": ["straight"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/streɪt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She has straight black hair.",
+        "translation": {
+          "fr": "Elle a des cheveux noirs lisses.",
+          "de": "Sie hat glatte schwarze Haare."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Straight hair has no waves or curls.",
+        "fr": "Des cheveux straight n'ont ni ondulations ni boucles.",
+        "de": "Straight sind Haare ohne Wellen und Locken."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Her hair has no waves or curls at all; it is completely ",
+        "after": ".",
+        "accepted": { "answers": ["straight"] },
+        "referenceTargetIds": ["straight", "curly", "wavy", "bald"],
+        "explanation": {
+          "en": "No waves or curls means the hair is straight.",
+          "fr": "Sans ondulations ni boucles, les cheveux sont straight.",
+          "de": "Ohne Wellen und Locken sind die Haare straight."
+        }
+      },
+      "listeningOptionTargetIds": ["straight", "curly", "wavy", "spiky"]
+    },
+    {
+      "id": "spiky",
+      "term": "spiky",
+      "translations": { "fr": ["en pointes", "hérissé"], "de": ["stachelig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "spiky",
+      "examForms": ["spiky"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈspaɪki/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "He wears his short hair spiky with gel.",
+        "translation": {
+          "fr": "Il porte ses cheveux courts en pointes avec du gel.",
+          "de": "Er trägt seine kurzen Haare mit Gel stachelig."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Spiky hair stands up in sharp points, often with gel.",
+        "fr": "Des cheveux spiky se dressent en pointes, souvent avec du gel.",
+        "de": "Spiky sind Haare, die spitz nach oben stehen, oft mit Gel."
+      },
+      "genderExplanation": null,
+      "matchingLabel": { "fr": "en pointes (cheveux)", "de": "stachelig (Haare)" },
+      "examPrompt": null,
+      "gap": {
+        "before": "He puts gel in his short hair to make it stand up in sharp points: it looks ",
+        "after": ".",
+        "accepted": { "answers": ["spiky"] },
+        "referenceTargetIds": ["spiky", "straight", "bald", "curly"],
+        "explanation": {
+          "en": "Hair that stands up in sharp points is spiky.",
+          "fr": "Des cheveux dressés en pointes sont spiky.",
+          "de": "Haare, die spitz abstehen, sind spiky."
+        }
+      },
+      "listeningOptionTargetIds": ["spiky", "curly", "wavy", "straight"]
+    },
+    {
+      "id": "ponytail",
+      "term": "ponytail",
+      "translations": { "fr": ["queue-de-cheval"], "de": ["Pferdeschwanz"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "ponytail",
+      "examForms": ["ponytail"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈpəʊniteɪl/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She wears her hair in a ponytail for sport.",
+        "translation": {
+          "fr": "Elle porte les cheveux en queue-de-cheval pour faire du sport.",
+          "de": "Beim Sport trägt sie ihre Haare als Pferdeschwanz."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A ponytail is a hairstyle with the hair tied back high behind the head.",
+        "fr": "Une ponytail est une coiffure où les cheveux sont attachés haut derrière la tête.",
+        "de": "Ein Ponytail ist eine Frisur, bei der die Haare hoch hinter dem Kopf zusammengebunden sind."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She tied her long hair back in a ",
+        "after": ".",
+        "accepted": { "answers": ["ponytail"] },
+        "referenceTargetIds": ["ponytail", "beard", "moustache", "freckles"],
+        "explanation": {
+          "en": "Hair tied back is a ponytail.",
+          "fr": "Des cheveux attachés forment une ponytail.",
+          "de": "Zusammengebundene Haare sind ein ponytail."
+        }
+      },
+      "listeningOptionTargetIds": ["ponytail", "bald", "beard", "moustache"]
+    },
+    {
+      "id": "bald",
+      "term": "bald",
+      "translations": { "fr": ["chauve"], "de": ["kahl"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "bald",
+      "examForms": ["bald"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/bɔːld/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "My uncle went bald when he was thirty.",
+        "translation": {
+          "fr": "Mon oncle est devenu chauve à trente ans.",
+          "de": "Mein Onkel wurde mit dreißig kahl."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Bald means having little or no hair on the head.",
+        "fr": "Bald signifie avoir peu ou pas de cheveux sur la tête.",
+        "de": "Bald bedeutet, wenig oder keine Haare auf dem Kopf zu haben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "My grandfather has no hair on his head. He is completely ",
+        "after": ".",
+        "accepted": { "answers": ["bald"] },
+        "referenceTargetIds": ["bald", "curly", "slim", "wavy"],
+        "explanation": {
+          "en": "No hair on the head means bald.",
+          "fr": "Pas de cheveux sur la tête se dit bald.",
+          "de": "Keine Haare auf dem Kopf heißt bald."
+        }
+      },
+      "listeningOptionTargetIds": ["bald", "ponytail", "beard", "moustache"]
+    },
+    {
+      "id": "beard",
+      "term": "beard",
+      "translations": { "fr": ["barbe"], "de": ["Bart"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "beard",
+      "examForms": ["beard"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/bɪəd/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "My father has a grey beard.",
+        "translation": {
+          "fr": "Mon père a une barbe grise.",
+          "de": "Mein Vater hat einen grauen Bart."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A beard is the hair that grows on a man's chin and cheeks.",
+        "fr": "Une beard est l'ensemble des poils qui poussent sur le menton et les joues.",
+        "de": "Ein Beard ist das Haar, das am Kinn und an den Wangen wächst."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He hasn't shaved for months, so he has a long ",
+        "after": " on his chin and cheeks.",
+        "accepted": { "answers": ["beard"] },
+        "referenceTargetIds": ["beard", "moustache", "ponytail", "wrinkles"],
+        "explanation": {
+          "en": "Hair on the chin and cheeks is a beard.",
+          "fr": "Les poils du menton et des joues forment une beard.",
+          "de": "Haare an Kinn und Wangen sind ein beard."
+        }
+      },
+      "listeningOptionTargetIds": ["beard", "bald", "ponytail", "moustache"]
+    },
+    {
+      "id": "moustache",
+      "term": "moustache",
+      "translations": { "fr": ["moustache"], "de": ["Schnurrbart"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "moustache",
+      "examForms": ["moustache", "mustache"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/məˈstɑːʃ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "The waiter has a thin black moustache.",
+        "translation": {
+          "fr": "Le serveur a une fine moustache noire.",
+          "de": "Der Kellner hat einen dünnen schwarzen Schnurrbart."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A moustache is the hair that grows above the upper lip.",
+        "fr": "Une moustache est l'ensemble des poils au-dessus de la lèvre supérieure.",
+        "de": "Ein Moustache ist das Haar über der Oberlippe."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He shaves his chin every day, but he keeps a ",
+        "after": " above his upper lip.",
+        "accepted": { "answers": ["moustache", "mustache"] },
+        "referenceTargetIds": ["moustache", "beard", "dimples", "ponytail"],
+        "explanation": {
+          "en": "Hair above the upper lip is a moustache.",
+          "fr": "Les poils au-dessus de la lèvre supérieure forment une moustache.",
+          "de": "Haare über der Oberlippe sind ein moustache."
+        }
+      },
+      "listeningOptionTargetIds": ["moustache", "beard", "bald", "ponytail"]
+    },
+    {
+      "id": "freckles",
+      "term": "freckles",
+      "translations": { "fr": ["taches de rousseur"], "de": ["Sommersprossen"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "plural",
+      "teachingForm": "freckles",
+      "examForms": ["freckles"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈfrekəlz/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She has freckles on her nose.",
+        "translation": {
+          "fr": "Elle a des taches de rousseur sur le nez.",
+          "de": "Sie hat Sommersprossen auf der Nase."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Freckles are small brown spots on the skin, often on the nose and cheeks.",
+        "fr": "Les freckles sont de petites taches brunes sur la peau, souvent sur le nez et les joues.",
+        "de": "Freckles sind kleine braune Flecken auf der Haut, oft auf Nase und Wangen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She has little brown spots on her nose and cheeks; they are ",
+        "after": ".",
+        "accepted": { "answers": ["freckles"] },
+        "referenceTargetIds": ["freckles", "wrinkles", "dimples", "beard"],
+        "explanation": {
+          "en": "Small brown spots on the skin are freckles.",
+          "fr": "De petites taches brunes sur la peau sont des freckles.",
+          "de": "Kleine braune Flecken auf der Haut sind freckles."
+        }
+      },
+      "listeningOptionTargetIds": ["freckles", "wrinkles", "dimples", "slim"]
+    },
+    {
+      "id": "wrinkles",
+      "term": "wrinkles",
+      "translations": { "fr": ["rides"], "de": ["Falten"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "plural",
+      "teachingForm": "wrinkles",
+      "examForms": ["wrinkles"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈrɪŋkəlz/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "My grandmother has deep wrinkles around her eyes.",
+        "translation": {
+          "fr": "Ma grand-mère a de profondes rides autour des yeux.",
+          "de": "Meine Großmutter hat tiefe Falten um die Augen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Wrinkles are lines in the skin, which often appear with age.",
+        "fr": "Les wrinkles sont des lignes dans la peau, qui apparaissent souvent avec l'âge.",
+        "de": "Wrinkles sind Linien in der Haut, die oft mit dem Alter entstehen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "My grandmother has lines on her forehead and around her eyes. These are ",
+        "after": " that come with age.",
+        "accepted": { "answers": ["wrinkles"] },
+        "referenceTargetIds": ["wrinkles", "freckles", "dimples", "beard"],
+        "explanation": {
+          "en": "Lines in the skin that come with age are wrinkles.",
+          "fr": "Les lignes de la peau liées à l'âge sont des wrinkles.",
+          "de": "Linien in der Haut, die mit dem Alter kommen, sind wrinkles."
+        }
+      },
+      "listeningOptionTargetIds": ["wrinkles", "freckles", "dimples", "slim"]
+    },
+    {
+      "id": "dimples",
+      "term": "dimples",
+      "translations": { "fr": ["fossettes"], "de": ["Grübchen"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "plural",
+      "teachingForm": "dimples",
+      "examForms": ["dimples"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈdɪmpəlz/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "He has dimples when he smiles.",
+        "translation": {
+          "fr": "Il a des fossettes quand il sourit.",
+          "de": "Wenn er lächelt, hat er Grübchen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Dimples are small hollows in the cheeks, often seen when someone smiles.",
+        "fr": "Les dimples sont de petits creux dans les joues, visibles quand on sourit.",
+        "de": "Dimples sind kleine Vertiefungen in den Wangen, die man beim Lächeln sieht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "When he smiles, you can see small hollows in his cheeks: he has ",
+        "after": ".",
+        "accepted": { "answers": ["dimples"] },
+        "referenceTargetIds": ["dimples", "freckles", "wrinkles", "moustache"],
+        "explanation": {
+          "en": "Small hollows in the cheeks are dimples.",
+          "fr": "De petits creux dans les joues sont des dimples.",
+          "de": "Kleine Vertiefungen in den Wangen sind dimples."
+        }
+      },
+      "listeningOptionTargetIds": ["dimples", "freckles", "wrinkles", "slim"]
+    },
+    {
+      "id": "slim",
+      "term": "slim",
+      "translations": { "fr": ["mince"], "de": ["schlank"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "slim",
+      "examForms": ["slim", "thin"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/slɪm/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She is tall and slim.",
+        "translation": { "fr": "Elle est grande et mince.", "de": "Sie ist groß und schlank." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Slim describes a body that is thin in an attractive way.",
+        "fr": "Slim décrit un corps mince de façon agréable.",
+        "de": "Slim beschreibt einen Körper, der auf angenehme Weise schlank ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She is thin in a nice, healthy way: she is tall and ",
+        "after": ".",
+        "accepted": { "answers": ["slim"] },
+        "referenceTargetIds": ["slim", "bald", "wavy", "freckles"],
+        "explanation": {
+          "en": "A thin, attractive body is slim.",
+          "fr": "Un corps mince et agréable est slim.",
+          "de": "Ein schlanker, angenehmer Körper ist slim."
+        }
+      },
+      "listeningOptionTargetIds": ["slim", "well-built", "wrinkles", "wavy"]
+    },
+    {
+      "id": "well-built",
+      "term": "well-built",
+      "translations": { "fr": ["bien bâti", "costaud"], "de": ["kräftig gebaut"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "well-built",
+      "examForms": ["well-built", "well built"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌwel ˈbɪlt/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "The new security guard is tall and well-built.",
+        "translation": {
+          "fr": "Le nouvel agent de sécurité est grand et bien bâti.",
+          "de": "Der neue Sicherheitsmann ist groß und kräftig gebaut."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Well-built describes a strong, muscular body.",
+        "fr": "Well-built décrit un corps fort et musclé.",
+        "de": "Well-built beschreibt einen kräftigen, muskulösen Körper."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He lifts weights and has strong shoulders and big muscles: he is very ",
+        "after": ".",
+        "accepted": { "answers": ["well-built", "well built"] },
+        "referenceTargetIds": ["well-built", "slim", "bald", "wavy"],
+        "explanation": {
+          "en": "A strong, muscular body is well-built.",
+          "fr": "Un corps fort et musclé est well-built.",
+          "de": "Ein kräftiger, muskulöser Körper ist well-built."
+        }
+      },
+      "listeningOptionTargetIds": ["well-built", "wavy", "wrinkles", "slim"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

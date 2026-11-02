@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 2,
+  "id": "en-telling-a-story-for-effect",
+  "lang": "en",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Telling a story for effect",
+  "objective": {
+    "en": "Tell a story from your own life with timing, suspense and humour, using the phrases a storyteller uses to set a scene and build tension.",
+    "fr": "Raconter une histoire de sa vie avec du rythme, du suspense et de l’humour, grâce aux expressions du conteur pour planter le décor et faire monter la tension.",
+    "de": "Eine Geschichte aus dem eigenen Leben mit Timing, Spannung und Humor erzählen und dabei Wendungen nutzen, die eine Szene aufbauen und Spannung erzeugen."
+  },
+  "estimatedMinutes": 17,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:53:48.711Z",
+    "inputHashes": { "outline": "b034566ecf5f44714e492675bcd0d14414317a95beba7817706dccfd08fc7b11" }
+  },
+  "kind": "functions",
+  "theme": "personal_identification",
+  "situation": {
+    "en": "A friend tells another friend a funny story about a night that went wrong, and the listener reacts.",
+    "fr": "Un ami raconte à un autre une histoire drôle sur une nuit qui a mal tourné, et l’auditeur réagit.",
+    "de": "Ein Freund erzählt einem anderen eine lustige Geschichte über eine Nacht, die schiefging, und der Zuhörer reagiert."
+  },
+  "coverageNotes": {
+    "en": "Opening a scene (So there I was), foreshadowing (Little did I know), the turning point (And that’s when it all went wrong), keeping the order (But I’m getting ahead of myself), building suspense (You’ll never believe what happened next) and closing quickly (To cut a long story short).",
+    "fr": "Ouvrir une scène (So there I was), annoncer un malheur (Little did I know), le tournant (And that’s when it all went wrong), garder l’ordre (But I’m getting ahead of myself), créer du suspense (You’ll never believe what happened next) et conclure vite (To cut a long story short).",
+    "de": "Eine Szene eröffnen (So there I was), Unheil andeuten (Little did I know), der Wendepunkt (And that’s when it all went wrong), die Reihenfolge wahren (But I’m getting ahead of myself), Spannung erzeugen (You’ll never believe what happened next) und schnell abschließen (To cut a long story short)."
+  },
+  "prerequisites": [],
+  "roles": [
+    {
+      "id": "narrator",
+      "label": "the storyteller",
+      "translation": { "fr": "le conteur", "de": "der Erzähler" }
+    },
+    {
+      "id": "friend",
+      "label": "the listener",
+      "translation": { "fr": "l’auditeur", "de": "der Zuhörer" }
+    }
+  ],
+  "expressions": [
+    {
+      "id": "so-there-i-was",
+      "text": "So there I was",
+      "openEnd": true,
+      "translations": { "fr": ["Et là, je me retrouve"], "de": ["Und da stand ich also"] },
+      "explanation": {
+        "en": "Sets the scene at the start of a story, dropping the listener into the moment.",
+        "fr": "Plante le décor au début d’un récit et plonge l’auditeur dans l’instant.",
+        "de": "Baut am Anfang einer Geschichte die Szene auf und versetzt den Zuhörer in den Moment."
+      },
+      "example": {
+        "text": "So there I was, locked out in my pyjamas.",
+        "translation": {
+          "fr": "Et là, je me retrouve enfermé dehors en pyjama.",
+          "de": "Und da stand ich im Schlafanzug ausgesperrt vor der Tür."
+        }
+      }
+    },
+    {
+      "id": "little-did-i-know",
+      "text": "Little did I know",
+      "openEnd": true,
+      "translations": { "fr": ["Je ne me doutais pas que"], "de": ["Ich ahnte ja nicht"] },
+      "explanation": {
+        "en": "Hints at a coming problem; the inversion (did I know) is literary and builds suspense.",
+        "fr": "Annonce un problème à venir ; l’inversion (did I know) est littéraire et crée du suspense.",
+        "de": "Deutet ein kommendes Problem an; die Inversion (did I know) wirkt literarisch und erzeugt Spannung."
+      },
+      "example": {
+        "text": "Little did I know, the real trouble was just beginning.",
+        "translation": {
+          "fr": "Je ne me doutais pas que les vrais ennuis commençaient à peine.",
+          "de": "Ich ahnte nicht, dass der eigentliche Ärger gerade erst begann."
+        }
+      }
+    },
+    {
+      "id": "all-went-wrong",
+      "text": "And that’s when it all went wrong",
+      "openEnd": false,
+      "translations": {
+        "fr": ["Et c’est là que tout a mal tourné"],
+        "de": ["Und genau da ging alles schief"]
+      },
+      "explanation": {
+        "en": "Marks the turning point where the story goes badly, often with comic effect.",
+        "fr": "Marque le tournant où l’histoire dérape, souvent avec un effet comique.",
+        "de": "Markiert den Wendepunkt, an dem die Geschichte schiefgeht, oft mit komischer Wirkung."
+      },
+      "example": {
+        "text": "The cake looked perfect. And that’s when it all went wrong.",
+        "translation": {
+          "fr": "Le gâteau avait l’air parfait. Et c’est là que tout a mal tourné.",
+          "de": "Der Kuchen sah perfekt aus. Und genau da ging alles schief."
+        }
+      }
+    },
+    {
+      "id": "cut-long-story-short",
+      "text": "To cut a long story short",
+      "openEnd": true,
+      "translations": { "fr": ["Pour faire court"], "de": ["Um es kurz zu machen"] },
+      "explanation": {
+        "en": "Skips the details to reach the outcome; it signals a summary.",
+        "fr": "Saute les détails pour arriver au dénouement ; il annonce un résumé.",
+        "de": "Überspringt die Details, um zum Ausgang zu kommen; es kündigt eine Zusammenfassung an."
+      },
+      "example": {
+        "text": "To cut a long story short, we never got the deposit back.",
+        "translation": {
+          "fr": "Pour faire court, nous n’avons jamais récupéré la caution.",
+          "de": "Um es kurz zu machen: Die Kaution haben wir nie zurückbekommen."
+        }
+      }
+    },
+    {
+      "id": "getting-ahead",
+      "text": "But I’m getting ahead of myself",
+      "openEnd": false,
+      "translations": { "fr": ["Mais je brûle les étapes"], "de": ["Aber ich greife vor"] },
+      "explanation": {
+        "en": "Stops you giving away the ending too early and puts the story back in order.",
+        "fr": "Évite de révéler la fin trop tôt et remet le récit dans l’ordre.",
+        "de": "Verhindert, das Ende zu früh zu verraten, und bringt die Geschichte zurück in die Reihenfolge."
+      },
+      "example": {
+        "text": "She turned out to be the thief. But I’m getting ahead of myself.",
+        "translation": {
+          "fr": "Elle s’est révélée être la voleuse. Mais je brûle les étapes.",
+          "de": "Sie war die Diebin. Aber ich greife vor."
+        }
+      }
+    },
+    {
+      "id": "never-believe",
+      "text": "You’ll never believe what happened next",
+      "openEnd": false,
+      "translations": {
+        "fr": ["Tu ne croiras jamais ce qui s’est passé ensuite"],
+        "de": ["Du wirst nie glauben, was dann passierte"]
+      },
+      "explanation": {
+        "en": "Builds suspense just before the surprising event.",
+        "fr": "Crée du suspense juste avant l’événement surprenant.",
+        "de": "Erzeugt Spannung kurz vor dem überraschenden Ereignis."
+      },
+      "example": {
+        "text": "You’ll never believe what happened next.",
+        "translation": {
+          "fr": "Tu ne croiras jamais ce qui s’est passé ensuite.",
+          "de": "Du wirst nie glauben, was dann passierte."
+        }
+      }
+    }
+  ],
+  "words": [],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

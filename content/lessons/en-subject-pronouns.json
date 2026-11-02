@@ -1,0 +1,1214 @@
+{
+  "schemaVersion": 2,
+  "id": "en-subject-pronouns",
+  "lang": "en",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Subject pronouns: I, you, he, she, it, we, they",
+  "objective": {
+    "en": "Use I, you, he, she, it, we and they as the subject of a sentence, and choose the right pronoun for a person, a thing or a group.",
+    "fr": "Utiliser I, you, he, she, it, we et they comme sujet d’une phrase et choisir le bon pronom pour une personne, une chose ou un groupe.",
+    "de": "I, you, he, she, it, we und they als Subjekt eines Satzes verwenden und das richtige Pronomen für eine Person, eine Sache oder eine Gruppe wählen."
+  },
+  "estimatedMinutes": 15,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:19.494Z",
+    "inputHashes": {
+      "outline": "29e1213f22fee3d89f26a7dc20e084fd99f6ea81d1c2a44ede480f2468978884",
+      "brief": "4878a43c5174b35fe2597d05991ca2014b0055bca9050bee75d8a881fd11ae56"
+    }
+  },
+  "kind": "grammar",
+  "topic": "pronouns",
+  "steps": [
+    {
+      "id": "block-singular-explanation",
+      "role": "explanation",
+      "blockId": "block-singular",
+      "label": {
+        "en": "One person or thing: I, you, he, she, it",
+        "fr": "Une personne ou une chose : I, you, he, she, it",
+        "de": "Eine Person oder Sache: I, you, he, she, it"
+      },
+      "pages": [
+        {
+          "pageId": "block-singular-explanation",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the explanation and the examples.",
+            "fr": "Lisez l’explication et les exemples.",
+            "de": "Lies die Erklärung und die Beispiele."
+          },
+          "items": [
+            {
+              "type": "grammar_explanation",
+              "itemId": "block-singular-explanation",
+              "ruleIds": ["rule-i-you", "rule-he-she", "rule-it"],
+              "heading": {
+                "en": "Pronouns for one person or thing",
+                "fr": "Les pronoms pour une personne ou une chose",
+                "de": "Pronomen für eine Person oder Sache"
+              },
+              "text": {
+                "en": "A **subject pronoun** replaces a name or a noun and comes before the verb. For one person or thing we use `I`, `you`, `he`, `she` and `it`.\n\n- `I` is the person who speaks. It is always a capital letter.\n- `you` is the person you talk to.\n- `he` is a man or a boy: `Tom` → `he`.\n- `she` is a woman or a girl: `Anna` → `she`.\n- `it` is a thing or an animal: `the book` → `it`, `the cat` → `it`.\n\nAn English statement always needs a subject: say `She can swim.`, not `Can swim.`",
+                "fr": "Un **pronom sujet** remplace un nom ou un prénom et se place avant le verbe. Pour une seule personne ou chose, on utilise `I`, `you`, `he`, `she` et `it`.\n\n- `I` est la personne qui parle. On l’écrit toujours avec une majuscule.\n- `you` est la personne à qui vous parlez.\n- `he` désigne un homme ou un garçon : `Tom` → `he`.\n- `she` désigne une femme ou une fille : `Anna` → `she`.\n- `it` désigne une chose ou un animal : `the book` → `it`, `the cat` → `it`.\n\nEn anglais, une phrase déclarative a toujours besoin d’un sujet : dites `She can swim.`, pas `Can swim.`",
+                "de": "Ein **Subjektpronomen** ersetzt einen Namen oder ein Nomen und steht vor dem Verb. Für eine Person oder Sache benutzt man `I`, `you`, `he`, `she` und `it`.\n\n- `I` ist die Person, die spricht. Es wird immer großgeschrieben.\n- `you` ist die Person, mit der du sprichst.\n- `he` steht für einen Mann oder Jungen: `Tom` → `he`.\n- `she` steht für eine Frau oder ein Mädchen: `Anna` → `she`.\n- `it` steht für eine Sache oder ein Tier: `the book` → `it`, `the cat` → `it`.\n\nEin englischer Aussagesatz braucht immer ein Subjekt: Sag `She can swim.`, nicht `Can swim.`"
+              },
+              "formTable": [
+                { "subject": "the speaker", "form": "I", "example": "I can cook." },
+                { "subject": "the person you talk to", "form": "you", "example": "You can cook." },
+                { "subject": "Tom", "form": "he", "example": "He can cook." },
+                { "subject": "Anna", "form": "she", "example": "She can cook." },
+                { "subject": "the cat", "form": "it", "example": "It can jump." }
+              ],
+              "examples": [
+                {
+                  "text": "I can swim.",
+                  "translation": { "fr": "Je sais nager.", "de": "Ich kann schwimmen." }
+                },
+                {
+                  "text": "Tom has a bike. He likes it.",
+                  "translation": {
+                    "fr": "Tom a un vélo. Il l’aime bien.",
+                    "de": "Tom hat ein Fahrrad. Er mag es."
+                  }
+                },
+                {
+                  "text": "Anna can cook. She can make pizza.",
+                  "translation": {
+                    "fr": "Anna sait cuisiner. Elle sait faire des pizzas.",
+                    "de": "Anna kann kochen. Sie kann Pizza machen."
+                  }
+                },
+                {
+                  "text": "You can sit here.",
+                  "translation": {
+                    "fr": "Tu peux t’asseoir ici.",
+                    "de": "Du kannst dich hier hinsetzen."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-s-persons",
+      "role": "exercise",
+      "blockId": "block-singular",
+      "label": {
+        "en": "Person matching",
+        "fr": "Relier les personnes",
+        "de": "Personen verbinden"
+      },
+      "pages": [
+        {
+          "pageId": "ex-s-persons-1",
+          "estimatedDurationS": 45,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Connect each pronoun with its partner.",
+            "fr": "Reliez chaque pronom à son partenaire.",
+            "de": "Verbinde jedes Pronomen mit seinem Partner."
+          },
+          "items": [
+            {
+              "type": "grammar_person_matching",
+              "itemId": "ex-s-persons-1",
+              "ruleIds": ["rule-i-you", "rule-he-she"],
+              "mode": "translation",
+              "rows": [
+                {
+                  "person": "1sg",
+                  "pronoun": null,
+                  "native": { "fr": "je", "de": "ich" },
+                  "answer": "I",
+                  "answerExplanation": {
+                    "en": "The person who speaks says I, with a capital letter.",
+                    "fr": "La personne qui parle dit I, avec une majuscule.",
+                    "de": "Wer spricht, sagt I, mit großem Anfangsbuchstaben."
+                  }
+                },
+                {
+                  "person": "2sg",
+                  "pronoun": null,
+                  "native": { "fr": "tu", "de": "du" },
+                  "answer": "you",
+                  "answerExplanation": {
+                    "en": "You is the person you talk to.",
+                    "fr": "You est la personne à qui l’on parle.",
+                    "de": "You ist die Person, mit der man spricht."
+                  }
+                },
+                {
+                  "person": "3sg",
+                  "pronoun": null,
+                  "native": { "fr": "il (Tom)", "de": "er (Tom)" },
+                  "answer": "he",
+                  "answerExplanation": {
+                    "en": "Tom is a man, so we say he.",
+                    "fr": "Tom est un homme, donc on dit he.",
+                    "de": "Tom ist ein Mann, also sagt man he."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-s-typing",
+      "role": "exercise",
+      "blockId": "block-singular",
+      "label": {
+        "en": "Name to pronoun",
+        "fr": "Du nom au pronom",
+        "de": "Vom Namen zum Pronomen"
+      },
+      "pages": [
+        {
+          "pageId": "ex-s-typing-1",
+          "estimatedDurationS": 45,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the pronoun that replaces each name or noun.",
+            "fr": "Écrivez le pronom qui remplace chaque nom.",
+            "de": "Schreib das Pronomen, das jeden Namen oder jedes Nomen ersetzt."
+          },
+          "items": [
+            {
+              "type": "grammar_pronoun_form_typing",
+              "itemId": "ex-s-typing-1",
+              "ruleIds": ["rule-he-she", "rule-it"],
+              "rows": [
+                {
+                  "rowId": "r-1",
+                  "pronoun": "Tom",
+                  "accepted": { "answers": ["he"] },
+                  "answerExplanation": {
+                    "en": "Tom is a man, so we say he.",
+                    "fr": "Tom est un homme, donc on dit he.",
+                    "de": "Tom ist ein Mann, also sagt man he."
+                  }
+                },
+                {
+                  "rowId": "r-2",
+                  "pronoun": "Anna",
+                  "accepted": { "answers": ["she"] },
+                  "answerExplanation": {
+                    "en": "Anna is a woman, so we say she.",
+                    "fr": "Anna est une femme, donc on dit she.",
+                    "de": "Anna ist eine Frau, also sagt man she."
+                  }
+                },
+                {
+                  "rowId": "r-3",
+                  "pronoun": "the cat",
+                  "accepted": { "answers": ["it"] },
+                  "answerExplanation": {
+                    "en": "A cat is an animal, so we say it.",
+                    "fr": "Un chat est un animal, donc on dit it.",
+                    "de": "Eine Katze ist ein Tier, also sagt man it."
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "pageId": "ex-s-typing-2",
+          "estimatedDurationS": 45,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the pronoun that replaces each name or noun.",
+            "fr": "Écrivez le pronom qui remplace chaque nom.",
+            "de": "Schreib das Pronomen, das jeden Namen oder jedes Nomen ersetzt."
+          },
+          "items": [
+            {
+              "type": "grammar_pronoun_form_typing",
+              "itemId": "ex-s-typing-2",
+              "ruleIds": ["rule-he-she", "rule-it"],
+              "rows": [
+                {
+                  "rowId": "r-1",
+                  "pronoun": "my sister",
+                  "accepted": { "answers": ["she"] },
+                  "answerExplanation": {
+                    "en": "A sister is a woman or a girl: she.",
+                    "fr": "Une sœur est une femme ou une fille : she.",
+                    "de": "Eine Schwester ist eine Frau oder ein Mädchen: she."
+                  }
+                },
+                {
+                  "rowId": "r-2",
+                  "pronoun": "the car",
+                  "accepted": { "answers": ["it"] },
+                  "answerExplanation": {
+                    "en": "A car is a thing, so we say it.",
+                    "fr": "Une voiture est une chose, donc on dit it.",
+                    "de": "Ein Auto ist eine Sache, also sagt man it."
+                  }
+                },
+                {
+                  "rowId": "r-3",
+                  "pronoun": "Mr Lee",
+                  "accepted": { "answers": ["he"] },
+                  "answerExplanation": {
+                    "en": "Mr Lee is a man, so we say he.",
+                    "fr": "Mr Lee est un homme, donc on dit he.",
+                    "de": "Mr Lee ist ein Mann, also sagt man he."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-s-choice",
+      "role": "exercise",
+      "blockId": "block-singular",
+      "label": {
+        "en": "Multiple-choice gaps 1",
+        "fr": "Phrases à trous à choix multiple 1",
+        "de": "Lücken mit Auswahl 1"
+      },
+      "pages": [
+        {
+          "pageId": "ex-s-choice-1",
+          "estimatedDurationS": 12,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-s-choice-1",
+              "before": "Tom, can",
+              "after": "help me?",
+              "choices": [
+                { "choiceId": "c-1", "text": "I" },
+                { "choiceId": "c-2", "text": "you" },
+                { "choiceId": "c-3", "text": "it" },
+                { "choiceId": "c-4", "text": "she" }
+              ],
+              "answerChoiceId": "c-2",
+              "hint": {
+                "en": "You are talking to Tom.",
+                "fr": "Vous parlez à Tom.",
+                "de": "Du sprichst mit Tom."
+              },
+              "ruleIds": ["rule-i-you"],
+              "answerExplanation": {
+                "en": "You talk to Tom, so you say you.",
+                "fr": "On parle à Tom, donc on dit you.",
+                "de": "Du sprichst mit Tom, also sagst du you."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-s-choice-2",
+          "estimatedDurationS": 12,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-s-choice-2",
+              "before": "Eva can sing.",
+              "after": "can sing very well.",
+              "choices": [
+                { "choiceId": "c-1", "text": "She" },
+                { "choiceId": "c-2", "text": "He" },
+                { "choiceId": "c-3", "text": "It" },
+                { "choiceId": "c-4", "text": "They" }
+              ],
+              "answerChoiceId": "c-1",
+              "hint": null,
+              "ruleIds": ["rule-he-she"],
+              "answerExplanation": {
+                "en": "Eva is a woman or a girl, so we say she.",
+                "fr": "Eva est une femme ou une fille, donc on dit she.",
+                "de": "Eva ist eine Frau oder ein Mädchen, also sagt man she."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-s-choice-3",
+          "estimatedDurationS": 12,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-s-choice-3",
+              "before": "Look at the red bike!",
+              "after": "can go very fast.",
+              "choices": [
+                { "choiceId": "c-1", "text": "He" },
+                { "choiceId": "c-2", "text": "It" },
+                { "choiceId": "c-3", "text": "She" },
+                { "choiceId": "c-4", "text": "I" }
+              ],
+              "answerChoiceId": "c-2",
+              "hint": null,
+              "ruleIds": ["rule-it"],
+              "answerExplanation": {
+                "en": "A bike is a thing: it.",
+                "fr": "Un vélo est une chose : it.",
+                "de": "Ein Fahrrad ist eine Sache: it."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-s-choice-4",
+          "estimatedDurationS": 12,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-s-choice-4",
+              "before": "Look at Mr Lee!",
+              "after": "can play the piano.",
+              "choices": [
+                { "choiceId": "c-1", "text": "She" },
+                { "choiceId": "c-2", "text": "It" },
+                { "choiceId": "c-3", "text": "He" },
+                { "choiceId": "c-4", "text": "We" }
+              ],
+              "answerChoiceId": "c-3",
+              "hint": null,
+              "ruleIds": ["rule-he-she"],
+              "answerExplanation": {
+                "en": "Mr Lee is a man, so we say he.",
+                "fr": "Mr Lee est un homme, donc on dit he.",
+                "de": "Mr Lee ist ein Mann, also sagt man he."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-s-gap",
+      "role": "exercise",
+      "blockId": "block-singular",
+      "label": {
+        "en": "Typed gaps 1",
+        "fr": "Phrases à trous à écrire 1",
+        "de": "Lücken zum Schreiben 1"
+      },
+      "pages": [
+        {
+          "pageId": "ex-s-gap-1",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-s-gap-1",
+              "before": "Sam says: \"",
+              "after": "can play the guitar.\"",
+              "accepted": { "answers": ["I"] },
+              "hint": {
+                "en": "the speaker, Sam",
+                "fr": "celui qui parle, Sam",
+                "de": "der Sprecher, Sam"
+              },
+              "ruleIds": ["rule-i-you"],
+              "answerExplanation": {
+                "en": "Sam speaks about himself, so he says I, with a capital letter.",
+                "fr": "Sam parle de lui-même, donc il dit I, avec une majuscule.",
+                "de": "Sam spricht über sich selbst, also sagt er I, mit großem Anfangsbuchstaben."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-s-gap-2",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-s-gap-2",
+              "before": "Anna has a violin.",
+              "after": "can play it very well.",
+              "accepted": { "answers": ["She"] },
+              "hint": { "en": "Anna", "fr": "Anna", "de": "Anna" },
+              "ruleIds": ["rule-he-she"],
+              "answerExplanation": {
+                "en": "Anna is a woman or a girl, so we say she.",
+                "fr": "Anna est une femme ou une fille, donc on dit she.",
+                "de": "Anna ist eine Frau oder ein Mädchen, also sagt man she."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-s-gap-3",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-s-gap-3",
+              "before": "I have a small cat.",
+              "after": "can jump very high.",
+              "accepted": { "answers": ["It"] },
+              "hint": { "en": "the cat", "fr": "le chat", "de": "die Katze" },
+              "ruleIds": ["rule-it"],
+              "answerExplanation": {
+                "en": "A cat is an animal, so we say it.",
+                "fr": "Un chat est un animal, donc on dit it.",
+                "de": "Eine Katze ist ein Tier, also sagt man it."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "block-plural-explanation",
+      "role": "explanation",
+      "blockId": "block-plural",
+      "label": {
+        "en": "More than one: we, you, they",
+        "fr": "Plusieurs personnes : we, you, they",
+        "de": "Mehrere: we, you, they"
+      },
+      "pages": [
+        {
+          "pageId": "block-plural-explanation",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the explanation and the examples.",
+            "fr": "Lisez l’explication et les exemples.",
+            "de": "Lies die Erklärung und die Beispiele."
+          },
+          "items": [
+            {
+              "type": "grammar_explanation",
+              "itemId": "block-plural-explanation",
+              "ruleIds": ["rule-we", "rule-they"],
+              "heading": {
+                "en": "Pronouns for more than one",
+                "fr": "Les pronoms pour plusieurs personnes",
+                "de": "Pronomen für mehrere"
+              },
+              "text": {
+                "en": "For more than one person we use `we`, `you` and `they`.\n\n- `we` is the speaker and other people: `Tom and I` → `we`.\n- `you` can also be plural: `Tom, Anna, can you help?`\n- `they` is more than one person, animal or thing: `Tom and Anna` → `they`, `the books` → `they`.\n\nThere is no he or she in the plural: use `they` for everyone.",
+                "fr": "Pour plusieurs personnes, on utilise `we`, `you` et `they`.\n\n- `we` est la personne qui parle et d’autres personnes : `Tom and I` → `we`.\n- `you` peut aussi être pluriel : `Tom, Anna, can you help?`\n- `they` désigne plusieurs personnes, animaux ou choses : `Tom and Anna` → `they`, `the books` → `they`.\n\nAu pluriel, il n’y a ni he ni she : on utilise `they` pour tous.",
+                "de": "Für mehrere Personen benutzt man `we`, `you` und `they`.\n\n- `we` ist die sprechende Person und andere: `Tom and I` → `we`.\n- `you` kann auch Plural sein: `Tom, Anna, can you help?`\n- `they` steht für mehrere Personen, Tiere oder Sachen: `Tom and Anna` → `they`, `the books` → `they`.\n\nIm Plural gibt es kein he oder she: Man benutzt `they` für alle."
+              },
+              "formTable": [
+                { "subject": "Tom and I", "form": "we", "example": "We can cook." },
+                {
+                  "subject": "Tom and Anna, you talk to them",
+                  "form": "you",
+                  "example": "You can cook."
+                },
+                { "subject": "Tom and Anna", "form": "they", "example": "They can cook." },
+                { "subject": "the cats", "form": "they", "example": "They can jump." }
+              ],
+              "examples": [
+                {
+                  "text": "Tom and I can swim. We love the sea.",
+                  "translation": {
+                    "fr": "Tom et moi savons nager. Nous aimons la mer.",
+                    "de": "Tom und ich können schwimmen. Wir lieben das Meer."
+                  }
+                },
+                {
+                  "text": "Tom and Anna have a dog. They love it.",
+                  "translation": {
+                    "fr": "Tom et Anna ont un chien. Ils l’adorent.",
+                    "de": "Tom und Anna haben einen Hund. Sie lieben ihn."
+                  }
+                },
+                {
+                  "text": "I have two cats. They can jump high.",
+                  "translation": {
+                    "fr": "J’ai deux chats. Ils savent sauter haut.",
+                    "de": "Ich habe zwei Katzen. Sie können hoch springen."
+                  }
+                },
+                {
+                  "text": "Tom, Anna, can you help me?",
+                  "translation": {
+                    "fr": "Tom, Anna, pouvez-vous m’aider ?",
+                    "de": "Tom, Anna, könnt ihr mir helfen?"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-p-persons",
+      "role": "exercise",
+      "blockId": "block-plural",
+      "label": {
+        "en": "Person matching",
+        "fr": "Relier les personnes",
+        "de": "Personen verbinden"
+      },
+      "pages": [
+        {
+          "pageId": "ex-p-persons-1",
+          "estimatedDurationS": 45,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Connect each pronoun with its partner.",
+            "fr": "Reliez chaque pronom à son partenaire.",
+            "de": "Verbinde jedes Pronomen mit seinem Partner."
+          },
+          "items": [
+            {
+              "type": "grammar_person_matching",
+              "itemId": "ex-p-persons-1",
+              "ruleIds": ["rule-we", "rule-they"],
+              "mode": "translation",
+              "rows": [
+                {
+                  "person": "1pl",
+                  "pronoun": null,
+                  "native": { "fr": "nous", "de": "wir" },
+                  "answer": "we",
+                  "answerExplanation": {
+                    "en": "The speaker and other people: we.",
+                    "fr": "Celui qui parle et d’autres personnes : we.",
+                    "de": "Die sprechende Person und andere: we."
+                  }
+                },
+                {
+                  "person": "2pl",
+                  "pronoun": null,
+                  "native": { "fr": "vous", "de": "ihr" },
+                  "answer": "you",
+                  "answerExplanation": {
+                    "en": "You is also used for several people you talk to.",
+                    "fr": "You s’emploie aussi pour plusieurs personnes à qui l’on parle.",
+                    "de": "You wird auch für mehrere angesprochene Personen benutzt."
+                  }
+                },
+                {
+                  "person": "3pl",
+                  "pronoun": null,
+                  "native": { "fr": "ils (Tom et Anna)", "de": "sie (Tom und Anna)" },
+                  "answer": "they",
+                  "answerExplanation": {
+                    "en": "More than one person: they.",
+                    "fr": "Plusieurs personnes : they.",
+                    "de": "Mehrere Personen: they."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-p-choice",
+      "role": "exercise",
+      "blockId": "block-plural",
+      "label": {
+        "en": "Multiple-choice gaps 2",
+        "fr": "Phrases à trous à choix multiple 2",
+        "de": "Lücken mit Auswahl 2"
+      },
+      "pages": [
+        {
+          "pageId": "ex-p-choice-1",
+          "estimatedDurationS": 12,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-p-choice-1",
+              "before": "Eva and I live in Berlin.",
+              "after": "love the city.",
+              "choices": [
+                { "choiceId": "c-1", "text": "We" },
+                { "choiceId": "c-2", "text": "They" },
+                { "choiceId": "c-3", "text": "You" },
+                { "choiceId": "c-4", "text": "He" }
+              ],
+              "answerChoiceId": "c-1",
+              "hint": null,
+              "ruleIds": ["rule-we"],
+              "answerExplanation": {
+                "en": "Eva and I means the speaker and another person: we.",
+                "fr": "Eva and I désigne celui qui parle et une autre personne : we.",
+                "de": "Eva and I sind die sprechende Person und eine andere: we."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-p-choice-2",
+          "estimatedDurationS": 12,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-p-choice-2",
+              "before": "Tom and Anna have a boat.",
+              "after": "can sail very well.",
+              "choices": [
+                { "choiceId": "c-1", "text": "We" },
+                { "choiceId": "c-2", "text": "She" },
+                { "choiceId": "c-3", "text": "They" },
+                { "choiceId": "c-4", "text": "It" }
+              ],
+              "answerChoiceId": "c-3",
+              "hint": null,
+              "ruleIds": ["rule-they"],
+              "answerExplanation": {
+                "en": "Tom and Anna is more than one person: they.",
+                "fr": "Tom and Anna, ce sont plusieurs personnes : they.",
+                "de": "Tom and Anna sind mehrere Personen: they."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-p-choice-3",
+          "estimatedDurationS": 12,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-p-choice-3",
+              "before": "I have two dogs.",
+              "after": "can run very fast.",
+              "choices": [
+                { "choiceId": "c-1", "text": "It" },
+                { "choiceId": "c-2", "text": "He" },
+                { "choiceId": "c-3", "text": "We" },
+                { "choiceId": "c-4", "text": "They" }
+              ],
+              "answerChoiceId": "c-4",
+              "hint": null,
+              "ruleIds": ["rule-they"],
+              "answerExplanation": {
+                "en": "Two dogs is more than one animal: they.",
+                "fr": "Deux chiens, ce sont plusieurs animaux : they.",
+                "de": "Zwei Hunde sind mehrere Tiere: they."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-p-choice-4",
+          "estimatedDurationS": 12,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-p-choice-4",
+              "before": "Anna and Tom, can",
+              "after": "help me?",
+              "choices": [
+                { "choiceId": "c-1", "text": "we" },
+                { "choiceId": "c-2", "text": "they" },
+                { "choiceId": "c-3", "text": "you" },
+                { "choiceId": "c-4", "text": "it" }
+              ],
+              "answerChoiceId": "c-3",
+              "hint": {
+                "en": "You are talking to Anna and Tom.",
+                "fr": "Vous parlez à Anna et Tom.",
+                "de": "Du sprichst mit Anna und Tom."
+              },
+              "ruleIds": ["rule-we"],
+              "answerExplanation": {
+                "en": "You talk to Anna and Tom, so you say you. You is also plural.",
+                "fr": "On parle à Anna et Tom, donc on dit you. You est aussi pluriel.",
+                "de": "Du sprichst mit Anna und Tom, also sagst du you. You ist auch Plural."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-p-gap",
+      "role": "exercise",
+      "blockId": "block-plural",
+      "label": {
+        "en": "Typed gaps 2",
+        "fr": "Phrases à trous à écrire 2",
+        "de": "Lücken zum Schreiben 2"
+      },
+      "pages": [
+        {
+          "pageId": "ex-p-gap-1",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-p-gap-1",
+              "before": "Mum and I like music.",
+              "after": "can sing.",
+              "accepted": { "answers": ["We"] },
+              "hint": { "en": "Mum and I", "fr": "Maman et moi", "de": "Mama und ich" },
+              "ruleIds": ["rule-we"],
+              "answerExplanation": {
+                "en": "Mum and I means the speaker and another person: we.",
+                "fr": "Mum and I désigne celui qui parle et une autre personne : we.",
+                "de": "Mum and I sind die sprechende Person und eine andere: we."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-p-gap-2",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-p-gap-2",
+              "before": "The boys have a ball.",
+              "after": "play with it.",
+              "accepted": { "answers": ["They"] },
+              "hint": { "en": "the boys", "fr": "les garçons", "de": "die Jungen" },
+              "ruleIds": ["rule-they"],
+              "answerExplanation": {
+                "en": "The boys is more than one person: they.",
+                "fr": "The boys, ce sont plusieurs personnes : they.",
+                "de": "The boys sind mehrere Personen: they."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-p-gap-3",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-p-gap-3",
+              "before": "Eva has two sisters.",
+              "after": "live in Paris.",
+              "accepted": { "answers": ["They"] },
+              "hint": { "en": "two sisters", "fr": "deux sœurs", "de": "zwei Schwestern" },
+              "ruleIds": ["rule-they"],
+              "answerExplanation": {
+                "en": "Two sisters is more than one person: they.",
+                "fr": "Deux sœurs, ce sont plusieurs personnes : they.",
+                "de": "Zwei Schwestern sind mehrere Personen: they."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-p-order",
+      "role": "exercise",
+      "blockId": "block-plural",
+      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
+      "pages": [
+        {
+          "pageId": "ex-p-order-1",
+          "estimatedDurationS": 20,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-p-order-1",
+              "tokens": [
+                { "tokenId": "t-1", "text": "play" },
+                { "tokenId": "t-2", "text": "They" },
+                { "tokenId": "t-3", "text": "." },
+                { "tokenId": "t-4", "text": "can" },
+                { "tokenId": "t-5", "text": "chess" }
+              ],
+              "acceptedOrders": [["t-2", "t-4", "t-1", "t-5", "t-3"]],
+              "ruleIds": ["rule-they"],
+              "answerExplanation": {
+                "en": "The subject they comes first, before the verb.",
+                "fr": "Le sujet they vient en premier, avant le verbe.",
+                "de": "Das Subjekt they steht zuerst, vor dem Verb."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-p-order-2",
+          "estimatedDurationS": 20,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-p-order-2",
+              "tokens": [
+                { "tokenId": "t-1", "text": "house" },
+                { "tokenId": "t-2", "text": "We" },
+                { "tokenId": "t-3", "text": "this" },
+                { "tokenId": "t-4", "text": "like" },
+                { "tokenId": "t-5", "text": "." }
+              ],
+              "acceptedOrders": [["t-2", "t-4", "t-3", "t-1", "t-5"]],
+              "ruleIds": ["rule-we"],
+              "answerExplanation": {
+                "en": "The subject we comes first, before the verb.",
+                "fr": "Le sujet we vient en premier, avant le verbe.",
+                "de": "Das Subjekt we steht zuerst, vor dem Verb."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-p-order-3",
+          "estimatedDurationS": 20,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-p-order-3",
+              "tokens": [
+                { "tokenId": "t-1", "text": "we" },
+                { "tokenId": "t-2", "text": "swim" },
+                { "tokenId": "t-3", "text": "They" },
+                { "tokenId": "t-4", "text": "." },
+                { "tokenId": "t-5", "text": "know" },
+                { "tokenId": "t-6", "text": "can" }
+              ],
+              "acceptedOrders": [["t-3", "t-5", "t-1", "t-6", "t-2", "t-4"]],
+              "ruleIds": ["rule-we", "rule-they"],
+              "answerExplanation": {
+                "en": "Each verb has its own subject: they know, we can swim.",
+                "fr": "Chaque verbe a son propre sujet : they know, we can swim.",
+                "de": "Jedes Verb hat sein eigenes Subjekt: they know, we can swim."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "feedback",
+      "role": "feedback",
+      "blockId": null,
+      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "pages": [
+        {
+          "pageId": "feedback",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Continue to the final exam.",
+            "fr": "Passez à l’examen final.",
+            "de": "Weiter zur Abschlussprüfung."
+          },
+          "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "role": "exam",
+      "blockId": null,
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam-pronouns",
+          "estimatedDurationS": 80,
+          "timeLimitS": 120,
+          "instructions": {
+            "en": "Type the pronoun that replaces each name or noun.",
+            "fr": "Écrivez le pronom qui remplace chaque nom.",
+            "de": "Schreib das Pronomen, das jeden Namen oder jedes Nomen ersetzt."
+          },
+          "items": [
+            {
+              "type": "grammar_pronoun_form_typing",
+              "itemId": "exam-pronouns-1",
+              "ruleIds": ["rule-he-she", "rule-it", "rule-they"],
+              "rows": [
+                {
+                  "rowId": "r-1",
+                  "pronoun": "my brother",
+                  "accepted": { "answers": ["he"] },
+                  "answerExplanation": {
+                    "en": "A brother is a man or a boy: he.",
+                    "fr": "Un frère est un homme ou un garçon : he.",
+                    "de": "Ein Bruder ist ein Mann oder Junge: he."
+                  }
+                },
+                {
+                  "rowId": "r-2",
+                  "pronoun": "the phone",
+                  "accepted": { "answers": ["it"] },
+                  "answerExplanation": {
+                    "en": "A phone is a thing, so we say it.",
+                    "fr": "Un téléphone est une chose, donc on dit it.",
+                    "de": "Ein Telefon ist eine Sache, also sagt man it."
+                  }
+                },
+                {
+                  "rowId": "r-3",
+                  "pronoun": "Mia and Jo",
+                  "accepted": { "answers": ["they"] },
+                  "answerExplanation": {
+                    "en": "Mia and Jo is more than one person: they.",
+                    "fr": "Mia and Jo, ce sont plusieurs personnes : they.",
+                    "de": "Mia and Jo sind mehrere Personen: they."
+                  }
+                },
+                {
+                  "rowId": "r-4",
+                  "pronoun": "Mrs Green",
+                  "accepted": { "answers": ["she"] },
+                  "answerExplanation": {
+                    "en": "Mrs Green is a woman, so we say she.",
+                    "fr": "Mrs Green est une femme, donc on dit she.",
+                    "de": "Mrs Green ist eine Frau, also sagt man she."
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "pageId": "exam-gaps",
+          "estimatedDurationS": 80,
+          "timeLimitS": 120,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-gaps-1",
+              "before": "Anna, can",
+              "after": "open the window for me, please?",
+              "accepted": { "answers": ["you"] },
+              "hint": null,
+              "ruleIds": ["rule-i-you"],
+              "answerExplanation": {
+                "en": "You talk to Anna, so you say you.",
+                "fr": "On parle à Anna, donc on dit you.",
+                "de": "Du sprichst mit Anna, also sagst du you."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-gaps-2",
+              "before": "Ben and I play tennis on Friday.",
+              "after": "both love it.",
+              "accepted": { "answers": ["We"] },
+              "hint": null,
+              "ruleIds": ["rule-we"],
+              "answerExplanation": {
+                "en": "Ben and I means the speaker and another person: we.",
+                "fr": "Ben and I désigne celui qui parle et une autre personne : we.",
+                "de": "Ben and I sind die sprechende Person und eine andere: we."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-gaps-3",
+              "before": "Look at my grandfather!",
+              "after": "can run very fast.",
+              "accepted": { "answers": ["He"] },
+              "hint": null,
+              "ruleIds": ["rule-he-she"],
+              "answerExplanation": {
+                "en": "A grandfather is a man, so we say he.",
+                "fr": "Un grand-père est un homme, donc on dit he.",
+                "de": "Ein Großvater ist ein Mann, also sagt man he."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-gaps-4",
+              "before": "I have a new phone.",
+              "after": "has a very good camera.",
+              "accepted": { "answers": ["It"] },
+              "hint": null,
+              "ruleIds": ["rule-it"],
+              "answerExplanation": {
+                "en": "A phone is a thing, so we say it.",
+                "fr": "Un téléphone est une chose, donc on dit it.",
+                "de": "Ein Telefon ist eine Sache, also sagt man it."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-order",
+          "estimatedDurationS": 60,
+          "timeLimitS": 100,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "exam-order-1",
+              "tokens": [
+                { "tokenId": "t-1", "text": "speak" },
+                { "tokenId": "t-2", "text": "English" },
+                { "tokenId": "t-3", "text": "They" },
+                { "tokenId": "t-4", "text": "can" },
+                { "tokenId": "t-5", "text": "." }
+              ],
+              "acceptedOrders": [["t-3", "t-4", "t-1", "t-2", "t-5"]],
+              "ruleIds": ["rule-they"],
+              "answerExplanation": {
+                "en": "The subject they comes first, before the verb.",
+                "fr": "Le sujet they vient en premier, avant le verbe.",
+                "de": "Das Subjekt they steht zuerst, vor dem Verb."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "exam-order-2",
+              "tokens": [
+                { "tokenId": "t-1", "text": "big" },
+                { "tokenId": "t-2", "text": "a" },
+                { "tokenId": "t-3", "text": "We" },
+                { "tokenId": "t-4", "text": "dog" },
+                { "tokenId": "t-5", "text": "have" },
+                { "tokenId": "t-6", "text": "." }
+              ],
+              "acceptedOrders": [["t-3", "t-5", "t-2", "t-1", "t-4", "t-6"]],
+              "ruleIds": ["rule-we"],
+              "answerExplanation": {
+                "en": "The subject we comes first, before the verb.",
+                "fr": "Le sujet we vient en premier, avant le verbe.",
+                "de": "Das Subjekt we steht zuerst, vor dem Verb."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "exam-order-3",
+              "tokens": [
+                { "tokenId": "t-1", "text": "like" },
+                { "tokenId": "t-2", "text": "girls" },
+                { "tokenId": "t-3", "text": "it" },
+                { "tokenId": "t-4", "text": "The" },
+                { "tokenId": "t-5", "text": "they" },
+                { "tokenId": "t-6", "text": "say" },
+                { "tokenId": "t-7", "text": "." }
+              ],
+              "acceptedOrders": [["t-4", "t-2", "t-6", "t-5", "t-1", "t-3", "t-7"]],
+              "ruleIds": ["rule-they"],
+              "answerExplanation": {
+                "en": "They replaces the girls and comes before the verb like.",
+                "fr": "They remplace the girls et se place avant le verbe like.",
+                "de": "They ersetzt the girls und steht vor dem Verb like."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

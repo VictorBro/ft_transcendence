@@ -1,0 +1,239 @@
+{
+  "schemaVersion": 2,
+  "id": "en-emphatic-do-and-did",
+  "lang": "en",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Emphatic do and did: I did call you",
+  "objective": {
+    "en": "Stress that something is true, contrast or correct, and make invitations warmer with do, does or did + base form: I did call you, twice! She does look tired. Do sit down.",
+    "fr": "Insister sur la vérité d'un fait, opposer ou corriger, et rendre une invitation plus chaleureuse avec do, does ou did + forme de base : I did call you, twice! She does look tired. Do sit down.",
+    "de": "Betonen, dass etwas stimmt, einen Gegensatz oder eine Korrektur ausdrücken und Einladungen herzlicher machen mit do, does oder did + Grundform: I did call you, twice! She does look tired. Do sit down."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:50:09.883Z",
+    "inputHashes": { "outline": "0c174ccfc068f87b81d13d8f78231f4df79a1c9738bf17c36817ed55948a480b" }
+  },
+  "kind": "grammar",
+  "topic": "information_structure_and_pragmatics",
+  "scopeBoundaries": {
+    "en": "Covers emphatic do, does and did + base form in positive sentences, and invitations with Do + base form. Excludes do as a normal auxiliary in questions and negatives, and other emphasis structures such as cleft sentences.",
+    "fr": "Couvre do, does et did d'insistance + forme de base dans les phrases affirmatives, et les invitations avec Do + forme de base. Exclut do auxiliaire ordinaire dans les questions et les négations, et les autres procédés d'insistance comme les phrases clivées.",
+    "de": "Behandelt betontes do, does und did + Grundform in bejahten Sätzen sowie Einladungen mit Do + Grundform. Ausgeschlossen sind do als normales Hilfsverb in Fragen und Verneinungen und andere Betonungsstrukturen wie Spaltsätze."
+  },
+  "prerequisites": [
+    {
+      "en": "Present simple and past simple, including do, does and did in questions and negatives",
+      "fr": "Présent simple et prétérit simple, y compris do, does et did dans les questions et les négations",
+      "de": "Present simple und past simple, auch do, does und did in Fragen und Verneinungen"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-emphatic-present",
+      "summary": {
+        "en": "Do or does + base form in a positive present sentence stresses that something is true, to contrast or correct: She does look tired.",
+        "fr": "Do ou does + forme de base dans une phrase affirmative au présent insiste sur la vérité d'un fait, pour opposer ou corriger : She does look tired.",
+        "de": "Do oder does + Grundform in einem bejahten Präsenssatz betont, dass etwas stimmt, um zu kontrastieren oder zu korrigieren: She does look tired."
+      }
+    },
+    {
+      "id": "rule-invitation-do",
+      "summary": {
+        "en": "Do + base form makes a polite invitation or offer warmer: Do sit down.",
+        "fr": "Do + forme de base rend une invitation ou une offre polie plus chaleureuse : Do sit down.",
+        "de": "Do + Grundform macht eine höfliche Einladung oder ein Angebot herzlicher: Do sit down."
+      }
+    },
+    {
+      "id": "rule-emphatic-past",
+      "summary": {
+        "en": "Did + base form stresses that a past event really happened; the verb stays in the base form: I did call you.",
+        "fr": "Did + forme de base insiste sur le fait qu'un événement passé a vraiment eu lieu ; le verbe reste à la forme de base : I did call you.",
+        "de": "Did + Grundform betont, dass ein vergangenes Ereignis wirklich stattfand; das Verb bleibt in der Grundform: I did call you."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-present",
+      "title": {
+        "en": "Emphatic do and does, and warm invitations",
+        "fr": "Do et does d'insistance, et invitations chaleureuses",
+        "de": "Betontes do und does und herzliche Einladungen"
+      },
+      "ruleIds": ["rule-emphatic-present", "rule-invitation-do"],
+      "explanationPlan": {
+        "en": "Show that positive present sentences normally have no do, and that adding do or does before the base form adds stress for contrast or correction. Remind learners that the verb after does has no -s. Then show Do + base form in invitations, and explain that it suits polite offers, not orders.",
+        "fr": "Montrer que les phrases affirmatives au présent n'ont normalement pas de do, et qu'ajouter do ou does devant la forme de base ajoute de l'insistance pour opposer ou corriger. Rappeler que le verbe après does n'a pas de -s. Montrer ensuite Do + forme de base dans les invitations, pour des offres polies et non des ordres.",
+        "de": "Zeigen, dass bejahte Präsenssätze normalerweise kein do haben und dass do oder does vor der Grundform Betonung für Kontrast oder Korrektur schafft. Daran erinnern, dass das Verb nach does kein -s hat. Dann Do + Grundform in Einladungen zeigen; es passt zu höflichen Angeboten, nicht zu Befehlen."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "She does look tired.",
+          "translation": {
+            "fr": "Elle a vraiment l'air fatiguée.",
+            "de": "Sie sieht wirklich müde aus."
+          }
+        },
+        {
+          "text": "I do like your new flat.",
+          "translation": {
+            "fr": "Ton nouvel appartement me plaît vraiment.",
+            "de": "Deine neue Wohnung gefällt mir wirklich."
+          }
+        },
+        {
+          "text": "He does help at home!",
+          "translation": {
+            "fr": "Il aide vraiment à la maison !",
+            "de": "Er hilft wirklich zu Hause!"
+          }
+        },
+        {
+          "text": "Do sit down.",
+          "translation": { "fr": "Asseyez-vous donc.", "de": "Setzen Sie sich doch." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not add -s to the verb after does: He does know, not He does knows.",
+          "fr": "N'ajoutez pas -s au verbe après does : He does know, et non He does knows.",
+          "de": "Setze kein -s an das Verb nach does: He does know, nicht He does knows."
+        },
+        {
+          "en": "Do not use emphatic do in every sentence; keep it for real contrast, correction or warmth.",
+          "fr": "N'employez pas do d'insistance dans chaque phrase ; réservez-le à un vrai contraste, une correction ou de la chaleur.",
+          "de": "Benutze betontes do nicht in jedem Satz; spare es für echten Kontrast, Korrektur oder Herzlichkeit auf."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-pr-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-emphatic-present", "rule-invitation-do"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-pr-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-emphatic-present", "rule-invitation-do"],
+          "estimatedDurationS": 100
+        },
+        {
+          "id": "ex-pr-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-emphatic-present", "rule-invitation-do"],
+          "estimatedDurationS": 75
+        }
+      ]
+    },
+    {
+      "id": "block-past",
+      "title": {
+        "en": "Emphatic did: I did call you",
+        "fr": "Did d'insistance : I did call you",
+        "de": "Betontes did: I did call you"
+      },
+      "ruleIds": ["rule-emphatic-past"],
+      "explanationPlan": {
+        "en": "Teach did + base form to stress that a past event really happened, especially to correct a mistaken idea or show contrast. Stress that the verb after did stays in the base form, never the past form. Mention that the stress falls on did when speaking.",
+        "fr": "Enseigner did + forme de base pour insister sur le fait qu'un événement passé a vraiment eu lieu, surtout pour corriger une idée fausse ou marquer un contraste. Souligner que le verbe après did reste à la forme de base, jamais au passé. Mentionner que l'accent tombe sur did à l'oral.",
+        "de": "did + Grundform vermitteln, um zu betonen, dass ein vergangenes Ereignis wirklich stattfand, besonders um eine falsche Annahme zu korrigieren oder einen Gegensatz zu zeigen. Betonen, dass das Verb nach did in der Grundform bleibt, nie in der Vergangenheitsform. Erwähnen, dass beim Sprechen did betont wird."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "I did call you, twice!",
+          "translation": {
+            "fr": "Je t'ai bel et bien appelé, deux fois !",
+            "de": "Ich habe dich wirklich angerufen, zweimal!"
+          }
+        },
+        {
+          "text": "It did rain, but we still had fun.",
+          "translation": {
+            "fr": "Il a bien plu, mais nous nous sommes quand même amusés.",
+            "de": "Es hat tatsächlich geregnet, aber wir hatten trotzdem Spaß."
+          }
+        },
+        {
+          "text": "They did warn us.",
+          "translation": {
+            "fr": "Ils nous avaient bel et bien prévenus.",
+            "de": "Sie haben uns tatsächlich gewarnt."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not put the verb in the past after did: I did call, not I did called.",
+          "fr": "Ne mettez pas le verbe au passé après did : I did call, et non I did called.",
+          "de": "Setze das Verb nach did nicht in die Vergangenheit: I did call, nicht I did called."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-pa-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-emphatic-past"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-pa-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-emphatic-past"],
+          "estimatedDurationS": 100
+        },
+        {
+          "id": "ex-pa-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 4,
+          "ruleIds": ["rule-emphatic-past"],
+          "estimatedDurationS": 120
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-present",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-emphatic-present", "rule-invitation-do"],
+        "estimatedDurationS": 100,
+        "timeLimitS": 160
+      },
+      {
+        "pageId": "exam-past",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-emphatic-past"],
+        "estimatedDurationS": 100,
+        "timeLimitS": 160
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-emphatic-present", "rule-invitation-do", "rule-emphatic-past"],
+        "estimatedDurationS": 90,
+        "timeLimitS": 150
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

@@ -1,0 +1,603 @@
+{
+  "schemaVersion": 2,
+  "id": "en-the-arc-of-a-life",
+  "lang": "en",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "The arc of a life",
+  "objective": {
+    "en": "Tell the story of a life with precise words: formative years, turning point, heyday, twilight years, legacy, posthumous.",
+    "fr": "Raconter le parcours d'une vie avec des mots précis : formative years, turning point, heyday, legacy, posthumous.",
+    "de": "Den Lebensweg mit präzisen Wörtern erzählen: formative years, turning point, heyday, legacy, posthumous."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:52:19.842Z",
+    "inputHashes": { "outline": "6afa4c0cfd628f37ca41e6a45c32419bd1ad9e624be9ed2dd0fec7156811650e" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Twelve words and phrases that cover a life from childhood to its afterlife in memory. Words for events already taught in Life events are left out; this lesson names the stages and their significance.",
+    "fr": "Douze mots et expressions qui couvrent une vie, de l'enfance à sa survie dans les mémoires. Les événements déjà vus dans Life events sont exclus : cette leçon nomme les étapes et leur importance.",
+    "de": "Zwölf Wörter und Ausdrücke, die ein Leben von der Kindheit bis zum Nachleben in der Erinnerung abdecken. Ereignisse aus Life events fehlen; diese Lektion benennt die Lebensphasen und ihre Bedeutung."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve items fit two groups of six: the first half of a life, then its last chapters and what remains.",
+    "fr": "Douze éléments forment deux groupes de six : la première moitié de la vie, puis ses derniers chapitres et ce qui reste.",
+    "de": "Zwölf Einträge ergeben zwei Gruppen zu sechs: die erste Lebenshälfte, dann die letzten Kapitel und das, was bleibt."
+  },
+  "difficultyBalance": {
+    "en": "Fixed phrases such as heyday and swan song are core C2 vocabulary; dotage, posterity and posthumous are more demanding.",
+    "fr": "Des expressions figées comme heyday et swan song sont du vocabulaire C2 de base ; dotage, posterity et posthumous sont plus exigeants.",
+    "de": "Feste Wendungen wie heyday und swan song gehören zum C2-Kernwortschatz; dotage, posterity und posthumous sind anspruchsvoller."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "beginnings",
+      "label": {
+        "en": "Early life and turning points",
+        "fr": "Début de vie et tournants",
+        "de": "Frühes Leben und Wendepunkte"
+      },
+      "targetIds": [
+        "formative-years",
+        "coming-of-age",
+        "turning-point",
+        "rite-of-passage",
+        "heyday",
+        "prime-of-life"
+      ],
+      "introduction": {
+        "en": "Six expressions for **the first half** of a life, from childhood to its peak:\n\n- `formative years`\n- `coming of age`\n- `turning point`\n- `rite of passage`\n- `heyday`\n- `prime of life`",
+        "fr": "Six expressions pour **la première moitié** d'une vie, de l'enfance à son sommet :\n\n- `formative years`\n- `coming of age`\n- `turning point`\n- `rite of passage`\n- `heyday`\n- `prime of life`",
+        "de": "Sechs Ausdrücke für **die erste Lebenshälfte**, von der Kindheit bis zum Höhepunkt:\n\n- `formative years`\n- `coming of age`\n- `turning point`\n- `rite of passage`\n- `heyday`\n- `prime of life`"
+      }
+    },
+    {
+      "id": "endings",
+      "label": {
+        "en": "Late life and what remains",
+        "fr": "Fin de vie et ce qui reste",
+        "de": "Spätes Leben und das Bleibende"
+      },
+      "targetIds": ["swan-song", "twilight-years", "dotage", "legacy", "posthumous", "posterity"],
+      "introduction": {
+        "en": "Six words for **the last chapters** of a life and for what survives it:\n\n- `swan song`\n- `twilight years`\n- `dotage`\n- `legacy`\n- `posthumous`\n- `posterity`",
+        "fr": "Six mots pour **les derniers chapitres** d'une vie et pour ce qui lui survit :\n\n- `swan song`\n- `twilight years`\n- `dotage`\n- `legacy`\n- `posthumous`\n- `posterity`",
+        "de": "Sechs Wörter für **die letzten Kapitel** eines Lebens und für das, was es überdauert:\n\n- `swan song`\n- `twilight years`\n- `dotage`\n- `legacy`\n- `posthumous`\n- `posterity`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "formative-years",
+      "term": "formative years",
+      "translations": { "fr": ["les années de formation"], "de": ["prägende Jahre"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "plural",
+      "teachingForm": "formative years",
+      "examForms": ["formative years"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈfɔːmətɪv jɪəz/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Her formative years were spent in rural Wales.",
+        "translation": {
+          "fr": "Elle a passé ses années de formation dans le pays de Galles rural.",
+          "de": "Ihre prägenden Jahre verbrachte sie im ländlichen Wales."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Formative years are the early years that shape who you become; the phrase is plural.",
+        "fr": "Les formative years sont les premières années qui façonnent la personnalité ; l'expression est au pluriel.",
+        "de": "Formative years sind die frühen Jahre, die die Persönlichkeit prägen; der Ausdruck steht im Plural."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She spent her ",
+        "after": " in a tiny mining village, and it shaped her whole outlook.",
+        "accepted": { "answers": ["formative years"] },
+        "referenceTargetIds": ["formative-years", "heyday", "legacy", "posthumous"],
+        "explanation": {
+          "en": "Only formative years fits: early years that shape a person.",
+          "fr": "Seul « formative years » convient : les premières années qui façonnent une personne.",
+          "de": "Nur „formative years“ passt: die frühen, prägenden Jahre."
+        }
+      },
+      "listeningOptionTargetIds": ["formative-years", "twilight-years", "posterity", "legacy"]
+    },
+    {
+      "id": "coming-of-age",
+      "term": "coming of age",
+      "translations": { "fr": ["le passage à l'âge adulte"], "de": ["das Erwachsenwerden"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "coming of age",
+      "examForms": ["coming of age"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈkʌmɪŋ əv eɪdʒ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "The film is about coming of age in a small town.",
+        "translation": {
+          "fr": "Le film parle du passage à l'âge adulte dans une petite ville.",
+          "de": "Der Film handelt vom Erwachsenwerden in einer Kleinstadt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Coming of age is the process of becoming an adult, often used for stories about growing up.",
+        "fr": "Coming of age désigne le passage à l'âge adulte, souvent dans des récits d'apprentissage.",
+        "de": "Coming of age bezeichnet den Übergang ins Erwachsenenalter, oft in Entwicklungsgeschichten."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The novel is a classic tale of ",
+        "after": " in 1950s Ohio.",
+        "accepted": { "answers": ["coming of age"] },
+        "referenceTargetIds": ["coming-of-age", "swan-song", "posterity", "dotage"],
+        "explanation": {
+          "en": "Only coming of age fits a story about growing up.",
+          "fr": "Seul « coming of age » convient à un récit sur le passage à l'âge adulte.",
+          "de": "Nur „coming of age“ passt zu einer Geschichte über das Erwachsenwerden."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "coming-of-age",
+        "rite-of-passage",
+        "prime-of-life",
+        "turning-point"
+      ]
+    },
+    {
+      "id": "turning-point",
+      "term": "turning point",
+      "translations": { "fr": ["un tournant"], "de": ["Wendepunkt"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "turning point",
+      "examForms": ["turning point"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈtɜːnɪŋ pɔɪnt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "The war was the turning point of his life.",
+        "translation": {
+          "fr": "La guerre a été le tournant de sa vie.",
+          "de": "Der Krieg war der Wendepunkt seines Lebens."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A turning point is the moment when things change direction for good.",
+        "fr": "Un turning point est le moment où les choses changent définitivement de direction.",
+        "de": "Ein turning point ist der Moment, in dem sich die Richtung dauerhaft ändert."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Losing her job proved to be the ",
+        "after": " of her career; it pushed her to start her own firm.",
+        "accepted": { "answers": ["turning point"] },
+        "referenceTargetIds": ["turning-point", "rite-of-passage", "posterity", "posthumous"],
+        "explanation": {
+          "en": "Only turning point fits: a moment that changes direction.",
+          "fr": "Seul « turning point » convient : un moment qui change la direction.",
+          "de": "Nur „turning point“ passt: ein Moment, der die Richtung ändert."
+        }
+      },
+      "listeningOptionTargetIds": ["turning-point", "swan-song", "twilight-years", "coming-of-age"]
+    },
+    {
+      "id": "rite-of-passage",
+      "term": "rite of passage",
+      "translations": { "fr": ["un rite de passage"], "de": ["Übergangsritus"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "rite of passage",
+      "examForms": ["rite of passage"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/raɪt əv ˈpæsɪdʒ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Leaving home is a rite of passage for most students.",
+        "translation": {
+          "fr": "Quitter le foyer est un rite de passage pour la plupart des étudiants.",
+          "de": "Der Auszug von zu Hause ist für die meisten Studierenden ein Übergangsritus."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A rite of passage is an event or ritual that marks a move to a new stage of life.",
+        "fr": "Un rite of passage est un événement ou un rituel qui marque l'entrée dans une nouvelle étape de la vie.",
+        "de": "Ein rite of passage ist ein Ereignis oder Ritual, das den Übergang in einen neuen Lebensabschnitt markiert."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "For many teenagers, passing the driving test is a ",
+        "after": " into adulthood.",
+        "accepted": { "answers": ["rite of passage"] },
+        "referenceTargetIds": ["rite-of-passage", "dotage", "swan-song", "posthumous"],
+        "explanation": {
+          "en": "Only rite of passage fits: a ritual marking a move to a new stage.",
+          "fr": "Seul « rite of passage » convient : un rituel qui marque une nouvelle étape.",
+          "de": "Nur „rite of passage“ passt: ein Ritual, das einen neuen Abschnitt markiert."
+        }
+      },
+      "listeningOptionTargetIds": ["rite-of-passage", "coming-of-age", "prime-of-life", "heyday"]
+    },
+    {
+      "id": "heyday",
+      "term": "heyday",
+      "translations": { "fr": ["l'apogée"], "de": ["Blütezeit"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "heyday",
+      "examForms": ["heyday"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈheɪdeɪ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "The mill town reached its heyday in the 1900s.",
+        "translation": {
+          "fr": "La ville industrielle a connu son apogée dans les années 1900.",
+          "de": "Die Fabrikstadt erlebte ihre Blütezeit um 1900."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Heyday is the period of greatest success, popularity or strength of a person or thing.",
+        "fr": "Heyday désigne la période de plus grand succès, de popularité ou de force d'une personne ou d'une chose.",
+        "de": "Heyday bezeichnet die Zeit des größten Erfolgs, der größten Beliebtheit oder Stärke."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "In its ",
+        "after": ", the cinema drew crowds of thousands every night.",
+        "accepted": { "answers": ["heyday"] },
+        "referenceTargetIds": ["heyday", "dotage", "posterity", "posthumous"],
+        "explanation": {
+          "en": "Only heyday fits: the period of greatest success.",
+          "fr": "Seul « heyday » convient : la période de plus grand succès.",
+          "de": "Nur „heyday“ passt: die Zeit des größten Erfolgs."
+        }
+      },
+      "listeningOptionTargetIds": ["heyday", "dotage", "legacy", "swan-song"]
+    },
+    {
+      "id": "prime-of-life",
+      "term": "prime of life",
+      "translations": { "fr": ["la force de l'âge"], "de": ["die besten Jahre"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "prime of life",
+      "examForms": ["prime of life"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/praɪm əv laɪf/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "At fifty, she felt she was in the prime of life.",
+        "translation": {
+          "fr": "À cinquante ans, elle se sentait dans la force de l'âge.",
+          "de": "Mit fünfzig fühlte sie sich in den besten Jahren."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "The prime of life is the time when a person is strongest and most capable, usually the middle years.",
+        "fr": "The prime of life est le moment où l'on est le plus fort et le plus capable, en général au milieu de la vie.",
+        "de": "The prime of life ist die Zeit, in der man am kräftigsten und leistungsfähigsten ist, meist die mittleren Jahre."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He was struck down in the ",
+        "after": ", aged just forty-two.",
+        "accepted": { "answers": ["prime of life"] },
+        "referenceTargetIds": ["prime-of-life", "dotage", "legacy", "posthumous"],
+        "explanation": {
+          "en": "Only prime of life fits a man of forty-two at his strongest.",
+          "fr": "Seul « prime of life » convient à un homme de quarante-deux ans en pleine force.",
+          "de": "Nur „prime of life“ passt zu einem Zweiundvierzigjährigen in voller Kraft."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "prime-of-life",
+        "rite-of-passage",
+        "coming-of-age",
+        "twilight-years"
+      ]
+    },
+    {
+      "id": "swan-song",
+      "term": "swan song",
+      "translations": { "fr": ["le chant du cygne"], "de": ["Schwanengesang"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "swan song",
+      "examForms": ["swan song", "swansong"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈswɒn sɒŋ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "His final novel was a magnificent swan song.",
+        "translation": {
+          "fr": "Son dernier roman fut un magnifique chant du cygne.",
+          "de": "Sein letzter Roman war ein großartiger Schwanengesang."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A swan song is a final performance or work before retirement or death.",
+        "fr": "Un swan song est une dernière performance ou œuvre avant la retraite ou la mort.",
+        "de": "Ein swan song ist ein letzter Auftritt oder ein letztes Werk vor dem Ruhestand oder dem Tod."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The concerto turned out to be the composer's ",
+        "after": ": he never wrote another note.",
+        "accepted": { "answers": ["swan song", "swansong"] },
+        "referenceTargetIds": ["swan-song", "heyday", "rite-of-passage", "formative-years"],
+        "explanation": {
+          "en": "Only swan song fits: a final work, with nothing after it.",
+          "fr": "Seul « swan song » convient : une dernière œuvre, rien ne suit.",
+          "de": "Nur „swan song“ passt: ein letztes Werk, danach kommt nichts mehr."
+        }
+      },
+      "listeningOptionTargetIds": ["swan-song", "twilight-years", "turning-point", "heyday"]
+    },
+    {
+      "id": "twilight-years",
+      "term": "twilight years",
+      "translations": { "fr": ["le soir de la vie"], "de": ["Lebensabend"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "plural",
+      "teachingForm": "twilight years",
+      "examForms": ["twilight years"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈtwaɪlaɪt jɪəz/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "They moved to the coast for their twilight years.",
+        "translation": {
+          "fr": "Ils ont déménagé sur la côte pour le soir de leur vie.",
+          "de": "Sie zogen für ihren Lebensabend an die Küste."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Twilight years is a gentle, slightly poetic phrase for the last years of a long life.",
+        "fr": "Twilight years est une expression douce, un peu poétique, pour les dernières années d'une longue vie.",
+        "de": "Twilight years ist ein sanfter, leicht poetischer Ausdruck für die letzten Jahre eines langen Lebens."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She spent her ",
+        "after": " tending roses and writing letters to old friends.",
+        "accepted": { "answers": ["twilight years"] },
+        "referenceTargetIds": ["twilight-years", "swan-song", "posthumous", "turning-point"],
+        "explanation": {
+          "en": "Only twilight years fits: the last, peaceful years of life.",
+          "fr": "Seul « twilight years » convient : les dernières années paisibles de la vie.",
+          "de": "Nur „twilight years“ passt: die letzten, ruhigen Lebensjahre."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "twilight-years",
+        "formative-years",
+        "swan-song",
+        "prime-of-life"
+      ]
+    },
+    {
+      "id": "dotage",
+      "term": "dotage",
+      "translations": { "fr": ["le gâtisme"], "de": ["Greisenalter"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "dotage",
+      "examForms": ["dotage"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈdəʊtɪdʒ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "He seemed to be sliding into dotage.",
+        "translation": {
+          "fr": "Il semblait sombrer dans le gâtisme.",
+          "de": "Er schien ins Greisenalter abzugleiten."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Unlike twilight years, dotage is unkind: it implies mental weakness in old age.",
+        "fr": "Contrairement à twilight years, dotage est peu aimable : il suggère un affaiblissement mental dû à l'âge.",
+        "de": "Anders als twilight years ist dotage unfreundlich: Es deutet geistigen Abbau im Alter an."
+      },
+      "explanation": {
+        "en": "Dotage is old age marked by weakness of mind; it is rather unkind.",
+        "fr": "Dotage désigne la vieillesse marquée par un affaiblissement de l'esprit ; le mot est plutôt cruel.",
+        "de": "Dotage bezeichnet ein Alter mit geistiger Schwäche; das Wort ist eher unfreundlich."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Her grandfather, now in his ",
+        "after": ", often forgets who his visitors are.",
+        "accepted": { "answers": ["dotage"] },
+        "referenceTargetIds": ["dotage", "legacy", "rite-of-passage", "heyday"],
+        "explanation": {
+          "en": "Only dotage fits: old age with failing memory.",
+          "fr": "Seul « dotage » convient : la vieillesse avec une mémoire défaillante.",
+          "de": "Nur „dotage“ passt: das hohe Alter mit nachlassendem Gedächtnis."
+        }
+      },
+      "listeningOptionTargetIds": ["dotage", "heyday", "legacy", "posterity"]
+    },
+    {
+      "id": "legacy",
+      "term": "legacy",
+      "translations": { "fr": ["l'héritage"], "de": ["Vermächtnis"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "legacy",
+      "examForms": ["legacy"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈlɛɡəsi/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She left a remarkable legacy of charitable work.",
+        "translation": {
+          "fr": "Elle a laissé un remarquable héritage d'œuvres caritatives.",
+          "de": "Sie hinterließ ein bemerkenswertes Vermächtnis wohltätiger Arbeit."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A legacy is what a person leaves behind, such as achievements, influence or money.",
+        "fr": "Un legacy est ce qu'une personne laisse derrière elle : réalisations, influence ou argent.",
+        "de": "Ein legacy ist das, was ein Mensch hinterlässt: Leistungen, Einfluss oder Geld."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The founder's real ",
+        "after": " is the network of schools that still bear her name.",
+        "accepted": { "answers": ["legacy"] },
+        "referenceTargetIds": ["legacy", "dotage", "swan-song", "coming-of-age"],
+        "explanation": {
+          "en": "Only legacy fits: what she left behind after her death.",
+          "fr": "Seul « legacy » convient : ce qu'elle a laissé après sa mort.",
+          "de": "Nur „legacy“ passt: das, was sie nach ihrem Tod hinterlassen hat."
+        }
+      },
+      "listeningOptionTargetIds": ["legacy", "posterity", "posthumous", "dotage"]
+    },
+    {
+      "id": "posthumous",
+      "term": "posthumous",
+      "translations": { "fr": ["posthume"], "de": ["posthum"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "posthumous",
+      "examForms": ["posthumous"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈpɒstjʊməs/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "The painter received posthumous recognition.",
+        "translation": {
+          "fr": "Le peintre a reçu une reconnaissance posthume.",
+          "de": "Der Maler erhielt eine posthume Anerkennung."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Posthumous describes something that happens or appears after a person's death.",
+        "fr": "Posthumous décrit ce qui arrive ou paraît après la mort d'une personne.",
+        "de": "Posthumous beschreibt etwas, das nach dem Tod eines Menschen geschieht oder erscheint."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The poet won a ",
+        "after": " award, ten years after his death.",
+        "accepted": { "answers": ["posthumous"] },
+        "referenceTargetIds": ["posthumous", "dotage", "heyday", "rite-of-passage"],
+        "explanation": {
+          "en": "Only posthumous fits: an award given after death.",
+          "fr": "Seul « posthumous » convient : un prix décerné après la mort.",
+          "de": "Nur „posthumous“ passt: eine Auszeichnung nach dem Tod."
+        }
+      },
+      "listeningOptionTargetIds": ["posthumous", "posterity", "legacy", "formative-years"]
+    },
+    {
+      "id": "posterity",
+      "term": "posterity",
+      "translations": { "fr": ["la postérité"], "de": ["Nachwelt"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "posterity",
+      "examForms": ["posterity"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/pɒˈstɛrɪti/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Historians write for posterity.",
+        "translation": {
+          "fr": "Les historiens écrivent pour la postérité.",
+          "de": "Historiker schreiben für die Nachwelt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Posterity means future generations, often in the phrase for posterity.",
+        "fr": "Posterity désigne les générations futures, souvent dans l'expression for posterity.",
+        "de": "Posterity bedeutet die künftigen Generationen, oft in der Wendung for posterity."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He kept every letter, convinced that they would interest ",
+        "after": ".",
+        "accepted": { "answers": ["posterity"] },
+        "referenceTargetIds": ["posterity", "legacy", "dotage", "heyday"],
+        "explanation": {
+          "en": "Only posterity fits: future generations who will read the letters.",
+          "fr": "Seul « posterity » convient : les générations futures qui liront les lettres.",
+          "de": "Nur „posterity“ passt: die künftigen Generationen, die die Briefe lesen."
+        }
+      },
+      "listeningOptionTargetIds": ["posterity", "posthumous", "legacy", "prime-of-life"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

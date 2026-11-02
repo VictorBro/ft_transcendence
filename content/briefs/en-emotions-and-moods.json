@@ -1,0 +1,587 @@
+{
+  "schemaVersion": 2,
+  "id": "en-emotions-and-moods",
+  "lang": "en",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Emotions and moods",
+  "objective": {
+    "en": "Say exactly how you feel using twelve words for emotions and moods.",
+    "fr": "Dire précisément ce que vous ressentez avec douze mots pour les émotions et les humeurs.",
+    "de": "Mit zwölf Wörtern genau sagen, wie du dich fühlst."
+  },
+  "estimatedMinutes": 20,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:03.716Z",
+    "inputHashes": { "outline": "9f8007fda928e5a8925420d378412f9c2887c58e1d13c1efafa53e32650e1095" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Twelve adjectives and phrases for feelings at B1: good feelings, bad feelings and uneasy feelings, all used after be or feel.",
+    "fr": "Douze adjectifs et expressions de sentiments au niveau B1 : sentiments positifs, négatifs et inconfortables, tous utilisés après be ou feel.",
+    "de": "Zwölf Adjektive und Wendungen für Gefühle auf B1-Niveau: gute, schlechte und unangenehme Gefühle, alle nach be oder feel verwendet."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words give a wide range of feelings without overloading a B1 learner.",
+    "fr": "Douze mots offrent une grande variété de sentiments sans surcharger un apprenant B1.",
+    "de": "Zwölf Wörter decken viele Gefühle ab, ohne Lernende auf B1 zu überfordern."
+  },
+  "difficultyBalance": {
+    "en": "Most words are core feelings; fed up, jealous, embarrassed and anxious are more demanding.",
+    "fr": "La plupart des mots sont des sentiments de base ; fed up, jealous, embarrassed et anxious sont plus difficiles.",
+    "de": "Die meisten Wörter sind Grundgefühle; fed up, jealous, embarrassed und anxious sind anspruchsvoller."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "good",
+      "label": { "en": "Good feelings", "fr": "Sentiments positifs", "de": "Gute Gefühle" },
+      "targetIds": ["delighted", "relieved", "proud", "good-mood"],
+      "introduction": {
+        "en": "These words show **good feelings**. Use them after `be` or `feel`:\n\n- `delighted`\n- `relieved`\n- `proud`\n- `in a good mood`",
+        "fr": "Ces mots expriment des **sentiments positifs**. Utilisez-les après `be` ou `feel` :\n\n- `delighted`\n- `relieved`\n- `proud`\n- `in a good mood`",
+        "de": "Diese Wörter drücken **gute Gefühle** aus. Verwende sie nach `be` oder `feel`:\n\n- `delighted`\n- `relieved`\n- `proud`\n- `in a good mood`"
+      }
+    },
+    {
+      "id": "bad",
+      "label": {
+        "en": "Upset and annoyed",
+        "fr": "Contrarié et agacé",
+        "de": "Aufgewühlt und genervt"
+      },
+      "targetIds": ["upset", "annoyed", "disappointed", "fed-up", "jealous", "bad-mood"],
+      "introduction": {
+        "en": "These words show **bad feelings**. Notice the prepositions: `fed up with`, `jealous of`, `disappointed with`:\n\n- `upset`\n- `annoyed`\n- `disappointed`\n- `fed up`\n- `jealous`\n- `in a bad mood`",
+        "fr": "Ces mots expriment des **sentiments négatifs**. Remarquez les prépositions : `fed up with`, `jealous of`, `disappointed with` :\n\n- `upset`\n- `annoyed`\n- `disappointed`\n- `fed up`\n- `jealous`\n- `in a bad mood`",
+        "de": "Diese Wörter drücken **schlechte Gefühle** aus. Beachte die Präpositionen: `fed up with`, `jealous of`, `disappointed with`:\n\n- `upset`\n- `annoyed`\n- `disappointed`\n- `fed up`\n- `jealous`\n- `in a bad mood`"
+      }
+    },
+    {
+      "id": "uneasy",
+      "label": {
+        "en": "Uneasy feelings",
+        "fr": "Sentiments inconfortables",
+        "de": "Unangenehme Gefühle"
+      },
+      "targetIds": ["embarrassed", "anxious"],
+      "introduction": {
+        "en": "These two words describe **uneasy feelings** before or after a difficult moment:\n\n- `embarrassed`\n- `anxious`",
+        "fr": "Ces deux mots décrivent des **sentiments inconfortables** avant ou après un moment difficile :\n\n- `embarrassed`\n- `anxious`",
+        "de": "Diese zwei Wörter beschreiben **unangenehme Gefühle** vor oder nach einem schwierigen Moment:\n\n- `embarrassed`\n- `anxious`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "delighted",
+      "term": "delighted",
+      "translations": { "fr": ["ravi"], "de": ["begeistert"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "delighted",
+      "examForms": ["delighted"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/dɪˈlaɪtɪd/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She was delighted with her new job.",
+        "translation": {
+          "fr": "Elle était ravie de son nouveau travail.",
+          "de": "Sie war begeistert von ihrer neuen Arbeit."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Delighted means very happy about something good.",
+        "fr": "Delighted veut dire très heureux à propos de quelque chose de bien.",
+        "de": "Delighted bedeutet sehr glücklich über etwas Gutes."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She was absolutely ",
+        "after": " when she won the prize.",
+        "accepted": { "answers": ["delighted"] },
+        "referenceTargetIds": ["delighted", "jealous", "fed-up", "anxious"],
+        "explanation": {
+          "en": "Winning a prize makes you delighted.",
+          "fr": "Gagner un prix rend ravi.",
+          "de": "Einen Preis zu gewinnen macht begeistert."
+        }
+      },
+      "listeningOptionTargetIds": ["delighted", "relieved", "disappointed", "annoyed"]
+    },
+    {
+      "id": "upset",
+      "term": "upset",
+      "translations": { "fr": ["bouleversé", "contrarié"], "de": ["aufgewühlt", "betrübt"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "upset",
+      "examForms": ["upset"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʌpˈsɛt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He was upset when his friend forgot his birthday.",
+        "translation": {
+          "fr": "Il était bouleversé quand son ami a oublié son anniversaire.",
+          "de": "Er war aufgewühlt, als sein Freund seinen Geburtstag vergaß."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Upset means sad and troubled because something bad happened.",
+        "fr": "Upset veut dire triste et troublé parce que quelque chose de mal est arrivé.",
+        "de": "Upset bedeutet traurig und aufgewühlt, weil etwas Schlimmes passiert ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He was very ",
+        "after": " when his dog got lost.",
+        "accepted": { "answers": ["upset"] },
+        "referenceTargetIds": ["upset", "proud", "relieved", "delighted"],
+        "explanation": {
+          "en": "Losing a pet makes you upset.",
+          "fr": "Perdre un animal rend bouleversé.",
+          "de": "Ein Haustier zu verlieren macht aufgewühlt."
+        }
+      },
+      "listeningOptionTargetIds": ["upset", "annoyed", "anxious", "proud"]
+    },
+    {
+      "id": "annoyed",
+      "term": "annoyed",
+      "translations": { "fr": ["agacé"], "de": ["genervt"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "annoyed",
+      "examForms": ["annoyed"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/əˈnɔɪd/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "I'm annoyed because the bus is late again.",
+        "translation": {
+          "fr": "Je suis agacé parce que le bus est encore en retard.",
+          "de": "Ich bin genervt, weil der Bus schon wieder zu spät ist."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Annoyed means a little angry because of something irritating.",
+        "fr": "Annoyed veut dire un peu en colère à cause de quelque chose d'irritant.",
+        "de": "Annoyed bedeutet ein wenig wütend wegen etwas Lästigem."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "I'm ",
+        "after": " because my neighbour plays loud music every night.",
+        "accepted": { "answers": ["annoyed"] },
+        "referenceTargetIds": ["annoyed", "relieved", "proud", "delighted"],
+        "explanation": {
+          "en": "Noisy neighbours make you annoyed.",
+          "fr": "Des voisins bruyants rendent agacé.",
+          "de": "Laute Nachbarn machen genervt."
+        }
+      },
+      "listeningOptionTargetIds": ["annoyed", "upset", "delighted", "embarrassed"]
+    },
+    {
+      "id": "disappointed",
+      "term": "disappointed",
+      "translations": { "fr": ["déçu"], "de": ["enttäuscht"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "disappointed",
+      "examForms": ["disappointed"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌdɪsəˈpɔɪntɪd/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "We were disappointed with the film.",
+        "translation": {
+          "fr": "Nous avons été déçus par le film.",
+          "de": "Wir waren von dem Film enttäuscht."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Disappointed means sad because something was not as good as you hoped.",
+        "fr": "Disappointed veut dire triste parce que quelque chose n'était pas aussi bien qu'espéré.",
+        "de": "Disappointed bedeutet traurig, weil etwas nicht so gut war wie erhofft."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "We were ",
+        "after": " that the concert was cancelled; we had waited months for it.",
+        "accepted": { "answers": ["disappointed"] },
+        "referenceTargetIds": ["disappointed", "proud", "relieved", "good-mood"],
+        "explanation": {
+          "en": "A cancelled concert makes you disappointed.",
+          "fr": "Un concert annulé rend déçu.",
+          "de": "Ein abgesagtes Konzert macht enttäuscht."
+        }
+      },
+      "listeningOptionTargetIds": ["disappointed", "delighted", "annoyed", "embarrassed"]
+    },
+    {
+      "id": "fed-up",
+      "term": "fed up",
+      "translations": { "fr": ["en avoir marre"], "de": ["es satt haben"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "fed up",
+      "examForms": ["fed up"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌfɛd ˈʌp/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "I'm fed up with this cold weather.",
+        "translation": {
+          "fr": "J'en ai marre de ce temps froid.",
+          "de": "Ich habe dieses kalte Wetter satt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Fed up means tired of something that has gone on too long. It is followed by with.",
+        "fr": "Fed up veut dire excédé par quelque chose qui dure trop longtemps. On dit fed up with.",
+        "de": "Fed up bedeutet, etwas leid zu sein, das zu lange dauert. Danach folgt with."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "I'm ",
+        "after": " with this rain; it has been raining for a week.",
+        "accepted": { "answers": ["fed up"] },
+        "referenceTargetIds": ["fed-up", "delighted", "proud", "relieved"],
+        "explanation": {
+          "en": "Rain for a whole week makes you fed up.",
+          "fr": "Une semaine de pluie fait qu'on en a marre.",
+          "de": "Eine ganze Woche Regen lässt einen es satt haben."
+        }
+      },
+      "listeningOptionTargetIds": ["fed-up", "upset", "annoyed", "bad-mood"]
+    },
+    {
+      "id": "jealous",
+      "term": "jealous",
+      "translations": { "fr": ["jaloux"], "de": ["neidisch", "eifersüchtig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "jealous",
+      "examForms": ["jealous"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈdʒɛləs/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "He is jealous of his brother's success.",
+        "translation": {
+          "fr": "Il est jaloux du succès de son frère.",
+          "de": "Er ist neidisch auf den Erfolg seines Bruders."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Jealous means unhappy because someone has something you want. It is followed by of.",
+        "fr": "Jealous veut dire malheureux parce que quelqu'un a quelque chose que l'on veut. On dit jealous of.",
+        "de": "Jealous bedeutet unglücklich, weil jemand etwas hat, das man selbst will. Danach folgt of."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She felt ",
+        "after": " of her sister's new bike.",
+        "accepted": { "answers": ["jealous"] },
+        "referenceTargetIds": ["jealous", "relieved", "delighted", "anxious"],
+        "explanation": {
+          "en": "Wanting what your sister has makes you jealous.",
+          "fr": "Vouloir ce que possède sa sœur rend jaloux.",
+          "de": "Zu wollen, was die Schwester hat, macht neidisch."
+        }
+      },
+      "listeningOptionTargetIds": ["jealous", "embarrassed", "anxious", "relieved"]
+    },
+    {
+      "id": "relieved",
+      "term": "relieved",
+      "translations": { "fr": ["soulagé"], "de": ["erleichtert"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "relieved",
+      "examForms": ["relieved"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/rɪˈliːvd/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "I was relieved when the test was over.",
+        "translation": {
+          "fr": "J'étais soulagé quand l'examen était fini.",
+          "de": "Ich war erleichtert, als die Prüfung vorbei war."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Relieved means happy because a worry has gone away.",
+        "fr": "Relieved veut dire heureux parce qu'une inquiétude a disparu.",
+        "de": "Relieved bedeutet froh, weil eine Sorge verschwunden ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "I was so ",
+        "after": " when I found my keys.",
+        "accepted": { "answers": ["relieved"] },
+        "referenceTargetIds": ["relieved", "annoyed", "jealous", "upset"],
+        "explanation": {
+          "en": "Finding lost keys makes you relieved.",
+          "fr": "Retrouver ses clés perdues rend soulagé.",
+          "de": "Verlorene Schlüssel zu finden macht erleichtert."
+        }
+      },
+      "listeningOptionTargetIds": ["relieved", "delighted", "jealous", "disappointed"]
+    },
+    {
+      "id": "bad-mood",
+      "term": "in a bad mood",
+      "translations": { "fr": ["de mauvaise humeur"], "de": ["schlecht gelaunt"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "in a bad mood",
+      "examForms": ["in a bad mood"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɪn ə bæd muːd/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Dad is in a bad mood this morning.",
+        "translation": {
+          "fr": "Papa est de mauvaise humeur ce matin.",
+          "de": "Papa ist heute Morgen schlecht gelaunt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "In a bad mood describes a general unhappy or irritable state, often without a clear reason.",
+        "fr": "In a bad mood décrit un état général de mécontentement ou d'irritation, souvent sans raison claire.",
+        "de": "In a bad mood beschreibt einen allgemein unzufriedenen oder gereizten Zustand, oft ohne klaren Grund."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Don't talk to him; he's ",
+        "after": " today.",
+        "accepted": { "answers": ["in a bad mood"] },
+        "referenceTargetIds": ["bad-mood", "good-mood", "proud", "delighted"],
+        "explanation": {
+          "en": "People avoid someone who is in a bad mood.",
+          "fr": "On évite quelqu'un qui est de mauvaise humeur.",
+          "de": "Man meidet jemanden, der schlecht gelaunt ist."
+        }
+      },
+      "listeningOptionTargetIds": ["bad-mood", "good-mood", "fed-up", "upset"]
+    },
+    {
+      "id": "good-mood",
+      "term": "in a good mood",
+      "translations": { "fr": ["de bonne humeur"], "de": ["gut gelaunt"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "in a good mood",
+      "examForms": ["in a good mood"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɪn ə ɡʊd muːd/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She is in a good mood today.",
+        "translation": {
+          "fr": "Elle est de bonne humeur aujourd'hui.",
+          "de": "Sie ist heute gut gelaunt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "In a good mood describes a cheerful, positive state.",
+        "fr": "In a good mood décrit un état joyeux et positif.",
+        "de": "In a good mood beschreibt einen fröhlichen, positiven Zustand."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She is singing in the kitchen. She's ",
+        "after": " today.",
+        "accepted": { "answers": ["in a good mood"] },
+        "referenceTargetIds": ["good-mood", "bad-mood", "upset", "fed-up"],
+        "explanation": {
+          "en": "Singing shows that someone is in a good mood.",
+          "fr": "Chanter montre que quelqu'un est de bonne humeur.",
+          "de": "Singen zeigt, dass jemand gut gelaunt ist."
+        }
+      },
+      "listeningOptionTargetIds": ["good-mood", "bad-mood", "proud", "delighted"]
+    },
+    {
+      "id": "embarrassed",
+      "term": "embarrassed",
+      "translations": { "fr": ["gêné"], "de": ["verlegen"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "embarrassed",
+      "examForms": ["embarrassed"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɪmˈbærəst/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "He felt embarrassed when he forgot her name.",
+        "translation": {
+          "fr": "Il était gêné quand il a oublié son prénom.",
+          "de": "Er war verlegen, als er ihren Namen vergaß."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Embarrassed means uncomfortable and a little ashamed in front of other people.",
+        "fr": "Embarrassed veut dire mal à l'aise et un peu honteux devant les autres.",
+        "de": "Embarrassed bedeutet unangenehm berührt und ein wenig beschämt vor anderen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He felt ",
+        "after": " when he forgot her name.",
+        "accepted": { "answers": ["embarrassed"] },
+        "referenceTargetIds": ["embarrassed", "proud", "delighted", "relieved"],
+        "explanation": {
+          "en": "Forgetting a name in public makes you embarrassed.",
+          "fr": "Oublier un prénom en public rend gêné.",
+          "de": "Einen Namen in der Öffentlichkeit zu vergessen macht verlegen."
+        }
+      },
+      "listeningOptionTargetIds": ["embarrassed", "jealous", "annoyed", "anxious"]
+    },
+    {
+      "id": "anxious",
+      "term": "anxious",
+      "translations": { "fr": ["anxieux"], "de": ["besorgt"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "anxious",
+      "examForms": ["anxious"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈæŋkʃəs/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "I'm anxious about tomorrow's interview.",
+        "translation": {
+          "fr": "Je suis anxieux à propos de l'entretien de demain.",
+          "de": "Ich bin wegen des morgigen Vorstellungsgesprächs besorgt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Anxious means worried and nervous about something that may happen.",
+        "fr": "Anxious veut dire inquiet et nerveux à propos de quelque chose qui peut arriver.",
+        "de": "Anxious bedeutet besorgt und nervös wegen etwas, das passieren könnte."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "I'm ",
+        "after": " about tomorrow's job interview and couldn't sleep last night.",
+        "accepted": { "answers": ["anxious"] },
+        "referenceTargetIds": ["anxious", "delighted", "good-mood", "proud"],
+        "explanation": {
+          "en": "Waiting for an interview makes you anxious.",
+          "fr": "Attendre un entretien rend anxieux.",
+          "de": "Auf ein Vorstellungsgespräch zu warten macht besorgt."
+        }
+      },
+      "listeningOptionTargetIds": ["anxious", "annoyed", "embarrassed", "jealous"]
+    },
+    {
+      "id": "proud",
+      "term": "proud",
+      "translations": { "fr": ["fier"], "de": ["stolz"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "proud",
+      "examForms": ["proud"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/praʊd/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "My parents are proud of me.",
+        "translation": {
+          "fr": "Mes parents sont fiers de moi.",
+          "de": "Meine Eltern sind stolz auf mich."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Proud means very pleased about something you or someone close to you did. It is followed by of.",
+        "fr": "Proud veut dire très content de ce que vous ou un proche avez fait. On dit proud of.",
+        "de": "Proud bedeutet sehr zufrieden mit etwas, das man selbst oder jemand Nahestehendes getan hat. Danach folgt of."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "My parents are ",
+        "after": " of me because I passed the exam.",
+        "accepted": { "answers": ["proud"] },
+        "referenceTargetIds": ["proud", "upset", "annoyed", "fed-up"],
+        "explanation": {
+          "en": "Passing an exam makes parents proud.",
+          "fr": "Réussir un examen rend les parents fiers.",
+          "de": "Eine bestandene Prüfung macht Eltern stolz."
+        }
+      },
+      "listeningOptionTargetIds": ["proud", "delighted", "relieved", "good-mood"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

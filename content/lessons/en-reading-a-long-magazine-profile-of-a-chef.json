@@ -1,0 +1,428 @@
+{
+  "schemaVersion": 2,
+  "id": "en-reading-a-long-magazine-profile-of-a-chef",
+  "lang": "en",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Reading a long magazine profile of a chef",
+  "objective": {
+    "en": "Read a long magazine profile of a chef and infer her personality from the details the writer chooses to show: habits, small gestures and what other people say.",
+    "fr": "Lire un long portrait de chef dans un magazine et déduire sa personnalité à partir des détails que l’auteur choisit de montrer : habitudes, petits gestes, témoignages.",
+    "de": "Ein langes Magazinporträt einer Köchin lesen und ihre Persönlichkeit aus den Details erschließen, die der Autor zeigt: Gewohnheiten, kleine Gesten und Aussagen anderer."
+  },
+  "estimatedMinutes": 12,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:50:25.816Z",
+    "inputHashes": {
+      "outline": "82fbb58d91e5e2cc9ea7c34837f04a002f8361087899942014c9c81733006226",
+      "brief": "76937944be2f84f2b3d741d876b321aaa8ba3f3187eb12bc651931a75a89c930"
+    }
+  },
+  "kind": "reading",
+  "theme": "personal_identification",
+  "genre": "article",
+  "documents": [
+    {
+      "documentId": "main",
+      "title": "The Quiet Fire of Ines Varga",
+      "meta": ["By Daniel Mercer", "Kitchen Quarterly"],
+      "paragraphs": [
+        "The door of Varga, the restaurant that has held three stars for nine years, is unassuming to the point of being missed: a grey panel between a dry cleaner’s and a bank, with no sign and no handle. At ten to six on a wet Tuesday morning, Ines Varga is already inside, wiping down a steel counter that looks spotless to me. She does it twice, then holds the cloth up to the light.",
+        "Nobody is told to arrive this early. The sous-chef, Tomás, says it simply happened: one by one, the cooks started arriving before she did, hoping to beat her to it. ‘She never raises her voice,’ he tells me. ‘She doesn’t need to. She tastes your sauce with a clean spoon, says nothing, and puts the spoon in the sink. You pour it away and start again.’ Her instructions are terse: ‘Again.’ ‘More salt.’ ‘No.’ Praise, when it comes, is a single nod, and the kitchen talks about it for days.",
+        "Her notebooks are meticulous. There are forty-one of them, shelved behind her office desk, each filled in a small, upright hand with weights, temperatures and the dates on which a dish failed. Failures get their own column, which she calls ‘the useful part’. When I ask to read one, she hesitates, then hands it over with a warning that the early pages are embarrassing.",
+        "Ask her about the third star and she will deflect the question towards her suppliers. She talks for ten minutes about a farmer in the hills who delivers leeks by hand, and about a fishmonger whose daughter she once helped to find a job. The kitchen porter, Mr Alvi, has worked here since the opening. At the staff meal, a plain stew eaten standing up at two o’clock, she serves him first, and he does not seem to find this unusual. Neither does she.",
+        "Not everyone finds the regime easy. A former commis, now running a bistro of his own, calls the standards exacting to the edge of cruelty, then adds, after a pause, that he still cooks every dish the way she taught him. ‘I phone her when I get stuck,’ he says. ‘She answers on the second ring, whatever the hour.’",
+        "By seven the first deliveries arrive and the room fills with noise. Varga stands at the pass, motionless, watching a young cook plate a fillet of turbot. He places a final leaf. She looks at it for a long moment, reaches over, and moves it two millimetres to the left. Then she steps back, and for the first time that morning, I see her smile."
+      ],
+      "highlights": [
+        { "keywordId": "unassuming", "text": "unassuming" },
+        { "keywordId": "terse", "text": "terse" },
+        { "keywordId": "meticulous", "text": "meticulous" },
+        { "keywordId": "deflect", "text": "deflect" },
+        { "keywordId": "exacting", "text": "exacting" }
+      ]
+    },
+    {
+      "documentId": "exam",
+      "title": "The Baker Who Won’t Expand",
+      "meta": ["By Priya Nair"],
+      "paragraphs": [
+        "Hector Bell’s bakery has no queue, because Hector Bell does not want one. The shop opens at seven, closes when the bread runs out, and displays one hand-lettered card in the window: ‘No substitutions, no apologies.’ A tourist who asks for a slice of the sourdough to be toasted is told, politely, that the oven is for baking.",
+        "He is, however, a man of small, unannounced kindnesses. Each Friday a retired teacher, Mrs Okafor, comes in for a single roll; Hector wraps two, and has never once mentioned it. Last winter, when the baker next door lost his oven in a fire, Hector lent him his own for a fortnight and worked nights to fit in his own loaves, telling the local paper only that he ‘had the space’.",
+        "His assistant, Wen, says he is hopeless at compliments. ‘He once told me my crust was “not bad”, and I carried it around like a medal for a month.’ Yet he keeps a notebook of every recipe she has improved, with her initials beside each. ‘I found it by accident,’ she says. ‘He looked mortified.’",
+        "At noon, with the last loaves gone, he sweeps the floor himself, whistling something tuneless. If you thank him, he shrugs and looks at the ceiling. If you ask why he does not expand, he considers the question for a long time. ‘More shops,’ he says finally, ‘would mean more people to disappoint.’"
+      ],
+      "highlights": []
+    }
+  ],
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "exercise",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "flashcards",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Turn each card to learn the key words of the text.",
+            "fr": "Retournez chaque carte pour découvrir les mots clés du texte.",
+            "de": "Dreh jede Karte um und lerne die Schlüsselwörter des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_flashcards",
+              "itemId": "cards",
+              "keywordIds": ["unassuming", "meticulous", "terse", "deflect", "exacting"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "matching",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each key word with its meaning.",
+            "fr": "Associez chaque mot clé à son sens.",
+            "de": "Ordne jedem Schlüsselwort seine Bedeutung zu."
+          },
+          "items": [
+            {
+              "type": "reading_keyword_matching",
+              "itemId": "matching",
+              "keywordIds": ["unassuming", "meticulous", "terse", "deflect", "exacting"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skim",
+      "stage": "skim",
+      "role": "exercise",
+      "label": { "en": "Skim", "fr": "Survol", "de": "Überfliegen" },
+      "pages": [
+        {
+          "pageId": "skim",
+          "estimatedDurationS": 200,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Look over the document quickly. When the time is up it is put away; then answer the question.",
+            "fr": "Parcourez rapidement le document. À la fin du temps, il disparaît ; répondez ensuite à la question.",
+            "de": "Überfliege das Dokument. Wenn die Zeit um ist, verschwindet es; beantworte dann die Frage."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "skim-document",
+              "documentId": "main",
+              "view": "skim",
+              "skimSeconds": 180
+            },
+            {
+              "type": "reading_skim_choice",
+              "itemId": "skim-question",
+              "focus": "purpose",
+              "question": "What is the writer mainly trying to do in this text?",
+              "options": [
+                { "optionId": "o1", "text": "Review the restaurant’s menu and its prices" },
+                {
+                  "optionId": "o2",
+                  "text": "Portray a chef’s character through scenes in which she is seen"
+                },
+                { "optionId": "o3", "text": "Explain how a professional kitchen should be run" },
+                {
+                  "optionId": "o4",
+                  "text": "Argue that three-star restaurants are too strict with their staff"
+                }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "The text shows one morning of Varga’s behaviour and quotes people around her; it never lists her qualities, so it is a portrait, not a review or an argument.",
+                "fr": "Le texte montre une matinée de Varga et cite son entourage ; il n’énumère jamais ses qualités. C’est donc un portrait, pas une critique ni un plaidoyer.",
+                "de": "Der Text zeigt einen Morgen in Vargas Verhalten und zitiert Menschen um sie herum; er zählt nie ihre Eigenschaften auf. Es ist also ein Porträt, keine Kritik und kein Plädoyer."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detail",
+      "stage": "detail",
+      "role": "exercise",
+      "label": { "en": "Detail", "fr": "Détails", "de": "Details" },
+      "pages": [
+        {
+          "pageId": "detail",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the document carefully and answer the questions.",
+            "fr": "Lisez le document attentivement et répondez aux questions.",
+            "de": "Lies das Dokument genau und beantworte die Fragen."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "detail-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-counter",
+              "question": "What does Varga’s habit of wiping the spotless counter twice suggest about her?",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "She is anxious about a visit from a health inspector."
+                },
+                {
+                  "optionId": "o2",
+                  "text": "She holds herself to a standard that others would not even notice."
+                },
+                { "optionId": "o3", "text": "She distrusts the people who clean the restaurant." },
+                { "optionId": "o4", "text": "She has nothing else to do before the staff arrive." }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "The counter ‘looks spotless to me’, yet she wipes it twice and checks the cloth: her standard is higher than anyone else’s. The writer never says so; he lets the gesture speak.",
+                "fr": "Le plan de travail ‘looks spotless to me’, pourtant elle l’essuie deux fois et vérifie le chiffon : son exigence dépasse celle des autres. L’auteur ne le dit pas, il laisse le geste parler.",
+                "de": "Die Arbeitsfläche ‘looks spotless to me’, doch sie wischt sie zweimal und prüft das Tuch: Ihr Maßstab liegt höher als der aller anderen. Der Autor sagt es nicht, er lässt die Geste sprechen."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-control",
+              "question": "How does Varga keep discipline in her kitchen?",
+              "options": [
+                { "optionId": "o1", "text": "By threatening cooks who arrive late" },
+                { "optionId": "o2", "text": "By shouting at anyone who makes a mistake" },
+                {
+                  "optionId": "o3",
+                  "text": "By quiet, minimal reactions that make it clear when something is wrong"
+                },
+                {
+                  "optionId": "o4",
+                  "text": "By offering frequent praise to keep the team motivated"
+                }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "She ‘never raises her voice’: a clean spoon put in the sink says everything. Praise is rare, a single nod.",
+                "fr": "Elle ‘never raises her voice’ : une cuillère propre posée dans l’évier dit tout. Les éloges sont rares, un simple signe de tête.",
+                "de": "Sie ‘never raises her voice’: Ein sauberer Löffel im Spülbecken sagt alles. Lob ist selten, ein einziges Nicken."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "q-credit",
+              "statement": "Varga is happy to talk at length about her own achievement in winning a third star.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: she deflects the question and talks for ten minutes about her suppliers instead.",
+                "fr": "Faux : elle détourne la question et parle dix minutes de ses fournisseurs.",
+                "de": "Falsch: Sie lenkt die Frage ab und spricht stattdessen zehn Minuten über ihre Lieferanten."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-porter",
+              "question": "What does serving Mr Alvi first at the staff meal suggest?",
+              "options": [
+                { "optionId": "o1", "text": "He is the most highly paid member of staff." },
+                {
+                  "optionId": "o2",
+                  "text": "She quietly respects everyone in the kitchen, whatever their role."
+                },
+                { "optionId": "o3", "text": "He is the only person who always arrives on time." },
+                { "optionId": "o4", "text": "She wants the writer to notice how generous she is." }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "It is a habit, not a performance: he ‘does not seem to find this unusual’ and neither does she. The humblest worker comes first.",
+                "fr": "C’est une habitude, pas une mise en scène : il ‘does not seem to find this unusual’, elle non plus. Le plus modeste passe en premier.",
+                "de": "Es ist eine Gewohnheit, keine Show: Er ‘does not seem to find this unusual’, und sie auch nicht. Der Bescheidenste kommt zuerst."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "structure",
+      "stage": "structure",
+      "role": "exercise",
+      "label": { "en": "Structure", "fr": "Structure", "de": "Aufbau" },
+      "pages": [
+        {
+          "pageId": "structure",
+          "estimatedDurationS": 90,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the information in the order the text gives it.",
+            "fr": "Remettez les informations dans l’ordre du texte.",
+            "de": "Bring die Informationen in die Reihenfolge des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "structure-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_order",
+              "itemId": "order",
+              "pieces": [
+                {
+                  "pieceId": "p4",
+                  "text": "She talks about her suppliers rather than her third star."
+                },
+                {
+                  "pieceId": "p1",
+                  "text": "The writer notices the unmarked door of the restaurant."
+                },
+                { "pieceId": "p6", "text": "She moves a leaf on a plate and smiles." },
+                { "pieceId": "p3", "text": "She lets the writer read one of her notebooks." },
+                {
+                  "pieceId": "p5",
+                  "text": "A former cook describes her standards and her loyalty."
+                },
+                { "pieceId": "p2", "text": "The sous-chef explains why the cooks arrive early." }
+              ],
+              "acceptedOrders": [["p1", "p2", "p3", "p4", "p5", "p6"]],
+              "answerExplanation": {
+                "en": "The profile moves from the door, to the sous-chef’s account, the notebooks, the suppliers and the porter, the former cook’s verdict, and ends on the small gesture with the leaf.",
+                "fr": "Le portrait va de la porte au récit du sous-chef, puis aux carnets, aux fournisseurs et au plongeur, au verdict de l’ancien cuisinier, et finit sur le petit geste avec la feuille.",
+                "de": "Das Porträt geht von der Tür über den Bericht des Sous-Chefs, die Notizbücher, die Lieferanten und den Küchenhelfer, das Urteil des früheren Kochs bis zur kleinen Geste mit dem Blatt am Schluss."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam",
+          "estimatedDurationS": 198,
+          "timeLimitS": 300,
+          "instructions": {
+            "en": "Read the new document and answer the questions. No help this time.",
+            "fr": "Lisez le nouveau document et répondez aux questions. Cette fois, sans aide.",
+            "de": "Lies das neue Dokument und beantworte die Fragen. Diesmal ohne Hilfe."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "exam-document",
+              "documentId": "exam",
+              "view": "exam",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-notice",
+              "question": "What does the card in the window suggest about Hector?",
+              "options": [
+                { "optionId": "o1", "text": "He is unfriendly to every customer." },
+                {
+                  "optionId": "o2",
+                  "text": "He is firm about his standards and does not court popularity."
+                },
+                { "optionId": "o3", "text": "He is eager to attract more tourists." },
+                { "optionId": "o4", "text": "He is embarrassed by his own shop." }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "The notice is blunt, yet the tourist is refused ‘politely’: he keeps firm rules without hostility.",
+                "fr": "L’affichette est directe, pourtant le touriste est refusé ‘politely’ : il garde des règles fermes sans hostilité.",
+                "de": "Der Zettel ist direkt, doch der Tourist wird ‘politely’ abgewiesen: Er hat feste Regeln, aber keine Feindseligkeit."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-paper",
+              "statement": "Hector spoke proudly to the local paper about helping the baker next door.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: he told the paper only that he ‘had the space’, playing down his help.",
+                "fr": "Faux : il a dit au journal seulement qu’il ‘had the space’, minimisant son aide.",
+                "de": "Falsch: Er sagte der Zeitung nur, er ‘had the space’, und spielte seine Hilfe herunter."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-rolls",
+              "question": "What can be inferred from Hector wrapping two rolls for Mrs Okafor and never mentioning it?",
+              "options": [
+                { "optionId": "o1", "text": "He often miscounts his orders." },
+                { "optionId": "o2", "text": "He is generous but prefers not to be seen being so." },
+                { "optionId": "o3", "text": "He hopes to turn her into a regular customer." },
+                { "optionId": "o4", "text": "He finds it impossible to refuse any customer." }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "The kindness is repeated each week and kept silent: he gives without wanting credit.",
+                "fr": "La gentillesse se répète chaque semaine et reste silencieuse : il donne sans chercher la reconnaissance.",
+                "de": "Die Freundlichkeit wiederholt sich jede Woche und bleibt stumm: Er gibt, ohne Anerkennung zu wollen."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-crust",
+              "question": "How does Wen’s story about the crust illustrate Hector’s character?",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "He rarely praises anyone, so even mild approval means a great deal."
+                },
+                { "optionId": "o2", "text": "He is careless about the quality of his bread." },
+                { "optionId": "o3", "text": "He dislikes working with assistants." },
+                { "optionId": "o4", "text": "He is often unfairly critical of her work." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "‘Not bad’ felt like a medal: compliments from Hector are so scarce that a lukewarm one is treasured.",
+                "fr": "‘Not bad’ valait une médaille : les compliments de Hector sont si rares qu’un compliment tiède est précieux.",
+                "de": "‘Not bad’ war wie eine Medaille: Komplimente von Hector sind so selten, dass schon ein lauwarmes kostbar ist."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-expand",
+              "statement": "Hector’s main reason for not opening more shops is financial.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: he says more shops would mean ‘more people to disappoint’, which shows how much he cares about standards and people.",
+                "fr": "Faux : il dit que plus de boutiques signifierait ‘more people to disappoint’, ce qui montre l’importance qu’il accorde aux standards et aux gens.",
+                "de": "Falsch: Er sagt, mehr Läden bedeuteten ‘more people to disappoint’, was zeigt, wie viel ihm Maßstäbe und Menschen bedeuten."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

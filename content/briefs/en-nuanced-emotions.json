@@ -1,0 +1,721 @@
+{
+  "schemaVersion": 2,
+  "id": "en-nuanced-emotions",
+  "lang": "en",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Nuanced emotions",
+  "objective": {
+    "en": "Name mixed and precise feelings with fifteen advanced adjectives such as apprehensive, wistful and indignant.",
+    "fr": "Nommer des sentiments mêlés et précis avec quinze adjectifs avancés comme apprehensive, wistful et indignant.",
+    "de": "Gemischte und genaue Gefühle mit fünfzehn anspruchsvollen Adjektiven wie apprehensive, wistful und indignant benennen."
+  },
+  "estimatedMinutes": 24,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:49:05.299Z",
+    "inputHashes": { "outline": "4098a14f4e6de83f4709672fc83b24f323d4fcdcf3c4c222b88bb19fa5946341" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Fifteen adjectives for subtle feelings, in three groups: unease and uncertainty, anger and hurt, joy and longing. Basic words such as happy, sad and angry are assumed.",
+    "fr": "Quinze adjectifs pour des sentiments subtils, en trois groupes : inquiétude et incertitude, colère et blessure, joie et nostalgie. Les mots de base comme happy, sad et angry sont supposés connus.",
+    "de": "Fünfzehn Adjektive für feine Gefühle in drei Gruppen: Unruhe und Unsicherheit, Ärger und Verletzung, Freude und Sehnsucht. Grundwörter wie happy, sad und angry werden vorausgesetzt."
+  },
+  "targetCount": 15,
+  "countRationale": {
+    "en": "Fifteen words fit the outline's intent and make three balanced groups of five, enough to contrast near synonyms without overloading the learner.",
+    "fr": "Quinze mots correspondent à l’intention du plan et forment trois groupes équilibrés de cinq, assez pour contraster des quasi-synonymes sans surcharger.",
+    "de": "Fünfzehn Wörter passen zur Vorgabe und bilden drei ausgewogene Gruppen zu je fünf, genug, um Beinahe-Synonyme zu unterscheiden, ohne zu überfordern."
+  },
+  "difficultyBalance": {
+    "en": "Most words are demanding C1 vocabulary; a few such as wary, sheepish and overwhelmed are more common and act as anchors.",
+    "fr": "La plupart des mots sont du vocabulaire C1 exigeant ; quelques-uns comme wary, sheepish et overwhelmed sont plus courants et servent de repères.",
+    "de": "Die meisten Wörter sind anspruchsvolles C1-Vokabular; einige wie wary, sheepish und overwhelmed sind geläufiger und dienen als Anker."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "unease",
+      "label": {
+        "en": "Unease and uncertainty",
+        "fr": "Inquiétude et incertitude",
+        "de": "Unruhe und Unsicherheit"
+      },
+      "targetIds": ["apprehensive", "wary", "ambivalent", "overwhelmed", "sheepish"],
+      "introduction": {
+        "en": "These adjectives describe feelings that are **uncertain or uncomfortable**, rather than simply bad:\n\n- `apprehensive`: worried about something that may happen\n- `wary`: careful and distrustful because of past experience\n- `ambivalent`: having two opposing feelings at once\n- `overwhelmed`: unable to cope with too much\n- `sheepish`: slightly embarrassed after a small mistake",
+        "fr": "Ces adjectifs décrivent des sentiments **incertains ou inconfortables**, plutôt que simplement mauvais :\n\n- `apprehensive` : inquiet à propos de ce qui pourrait arriver\n- `wary` : prudent et méfiant à cause d’expériences passées\n- `ambivalent` : partagé entre deux sentiments opposés\n- `overwhelmed` : incapable de faire face à trop de choses\n- `sheepish` : un peu gêné après une petite erreur",
+        "de": "Diese Adjektive beschreiben Gefühle, die **unsicher oder unangenehm** sind, nicht einfach schlecht:\n\n- `apprehensive`: besorgt wegen etwas, das passieren könnte\n- `wary`: vorsichtig und misstrauisch wegen früherer Erfahrungen\n- `ambivalent`: zwei gegensätzliche Gefühle zugleich\n- `overwhelmed`: mit zu viel auf einmal überfordert\n- `sheepish`: leicht verlegen nach einem kleinen Fehler"
+      }
+    },
+    {
+      "id": "anger",
+      "label": { "en": "Anger and hurt", "fr": "Colère et blessure", "de": "Ärger und Verletzung" },
+      "targetIds": ["indignant", "resentful", "exasperated", "mortified", "disillusioned"],
+      "introduction": {
+        "en": "Anger and hurt come in many shades. Each word below names a **different cause**:\n\n- `indignant`: angry because something is unfair\n- `resentful`: bitter for a long time about unfair treatment\n- `exasperated`: very irritated after repeated frustration\n- `mortified`: extremely embarrassed or ashamed\n- `disillusioned`: disappointed because a belief proved false",
+        "fr": "La colère et la blessure ont de nombreuses nuances. Chaque mot ci-dessous nomme une **cause différente** :\n\n- `indignant` : en colère parce que quelque chose est injuste\n- `resentful` : amer longtemps à cause d’un traitement injuste\n- `exasperated` : très irrité après des frustrations répétées\n- `mortified` : extrêmement gêné ou honteux\n- `disillusioned` : déçu parce qu’une croyance s’est révélée fausse",
+        "de": "Ärger und Verletzung haben viele Schattierungen. Jedes Wort unten nennt eine **andere Ursache**:\n\n- `indignant`: wütend, weil etwas ungerecht ist\n- `resentful`: lange verbittert über ungerechte Behandlung\n- `exasperated`: sehr gereizt nach wiederholtem Frust\n- `mortified`: äußerst beschämt oder peinlich berührt\n- `disillusioned`: enttäuscht, weil sich ein Glaube als falsch erwies"
+      }
+    },
+    {
+      "id": "longing",
+      "label": { "en": "Joy and longing", "fr": "Joie et nostalgie", "de": "Freude und Sehnsucht" },
+      "targetIds": ["elated", "nostalgic", "wistful", "bittersweet", "forlorn"],
+      "introduction": {
+        "en": "Some feelings mix happiness with sadness, or look back at the past. Notice the **different shades**:\n\n- `elated`: extremely happy and excited\n- `nostalgic`: fondly remembering the past\n- `wistful`: quietly sad about something lost or unreachable\n- `bittersweet`: both happy and sad together\n- `forlorn`: lonely, sad and abandoned",
+        "fr": "Certains sentiments mêlent bonheur et tristesse, ou regardent le passé. Remarquez les **différentes nuances** :\n\n- `elated` : extrêmement heureux et enthousiaste\n- `nostalgic` : se souvenant avec tendresse du passé\n- `wistful` : discrètement triste à cause de ce qui est perdu ou inaccessible\n- `bittersweet` : à la fois heureux et triste\n- `forlorn` : seul, triste et abandonné",
+        "de": "Manche Gefühle mischen Glück mit Traurigkeit oder blicken in die Vergangenheit. Beachte die **verschiedenen Nuancen**:\n\n- `elated`: überglücklich und begeistert\n- `nostalgic`: sich liebevoll an die Vergangenheit erinnernd\n- `wistful`: still traurig über etwas Verlorenes oder Unerreichbares\n- `bittersweet`: froh und traurig zugleich\n- `forlorn`: einsam, traurig und verlassen"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "apprehensive",
+      "term": "apprehensive",
+      "translations": { "fr": ["anxieux", "inquiet"], "de": ["besorgt", "beunruhigt"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "apprehensive",
+      "examForms": ["apprehensive"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌæprɪˈhɛnsɪv/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "She felt apprehensive before her first day at the new job.",
+        "translation": {
+          "fr": "Elle était anxieuse avant son premier jour dans son nouveau travail.",
+          "de": "Sie war vor ihrem ersten Tag im neuen Job besorgt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Apprehensive means worried about something that is going to happen.",
+        "fr": "Apprehensive signifie inquiet à propos de quelque chose qui va arriver.",
+        "de": "Apprehensive bedeutet besorgt über etwas, das bevorsteht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Lena felt ",
+        "after": " as she waited for the results, dreading what they might say.",
+        "accepted": { "answers": ["apprehensive"] },
+        "referenceTargetIds": ["apprehensive", "wary", "overwhelmed", "sheepish"],
+        "explanation": {
+          "en": "Apprehensive fits: she is anxious about a future event.",
+          "fr": "Apprehensive convient : elle redoute un événement à venir.",
+          "de": "Apprehensive passt: Sie fürchtet ein künftiges Ereignis."
+        }
+      },
+      "listeningOptionTargetIds": ["apprehensive", "ambivalent", "overwhelmed", "wary"]
+    },
+    {
+      "id": "wary",
+      "term": "wary",
+      "translations": { "fr": ["méfiant", "prudent"], "de": ["argwöhnisch", "vorsichtig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "wary",
+      "examForms": ["wary"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈwɛəri/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "After being cheated once, he is wary of strangers.",
+        "translation": {
+          "fr": "Après avoir été escroqué une fois, il se méfie des inconnus.",
+          "de": "Nachdem er einmal betrogen wurde, ist er Fremden gegenüber misstrauisch."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Wary means careful and distrustful, often after a bad experience. It is followed by of.",
+        "fr": "Wary signifie prudent et méfiant, souvent après une mauvaise expérience. Il est suivi de of.",
+        "de": "Wary bedeutet vorsichtig und misstrauisch, oft nach einer schlechten Erfahrung. Es wird mit of verbunden."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "After being cheated once, he was ",
+        "after": " of strangers offering free advice.",
+        "accepted": { "answers": ["wary"] },
+        "referenceTargetIds": ["wary", "ambivalent", "overwhelmed", "sheepish"],
+        "explanation": {
+          "en": "Wary fits: he distrusts people because of a past experience.",
+          "fr": "Wary convient : il se méfie des gens à cause d’une expérience passée.",
+          "de": "Wary passt: Er misstraut Menschen wegen einer früheren Erfahrung."
+        }
+      },
+      "listeningOptionTargetIds": ["wary", "apprehensive", "sheepish", "ambivalent"]
+    },
+    {
+      "id": "ambivalent",
+      "term": "ambivalent",
+      "translations": { "fr": ["ambivalent", "partagé"], "de": ["ambivalent", "zwiespältig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ambivalent",
+      "examForms": ["ambivalent"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/æmˈbɪvələnt/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "I feel ambivalent about moving abroad.",
+        "translation": {
+          "fr": "Je suis partagé à l’idée de partir vivre à l’étranger.",
+          "de": "Ich bin zwiespältig, was einen Umzug ins Ausland angeht."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Ambivalent means having two opposing feelings about the same thing.",
+        "fr": "Ambivalent signifie éprouver deux sentiments opposés à propos de la même chose.",
+        "de": "Ambivalent bedeutet, zwei gegensätzliche Gefühle zur selben Sache zu haben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "I’m ",
+        "after": " about moving abroad: part of me longs for it, part of me dreads it.",
+        "accepted": { "answers": ["ambivalent"] },
+        "referenceTargetIds": ["ambivalent", "overwhelmed", "sheepish", "wary"],
+        "explanation": {
+          "en": "Ambivalent fits: the speaker has two opposite feelings.",
+          "fr": "Ambivalent convient : la personne ressent deux sentiments opposés.",
+          "de": "Ambivalent passt: Die Person hat zwei gegensätzliche Gefühle."
+        }
+      },
+      "listeningOptionTargetIds": ["ambivalent", "apprehensive", "overwhelmed", "wary"]
+    },
+    {
+      "id": "overwhelmed",
+      "term": "overwhelmed",
+      "translations": { "fr": ["submergé", "débordé"], "de": ["überwältigt", "überfordert"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "overwhelmed",
+      "examForms": ["overwhelmed"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌəʊvəˈwɛlmd/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She felt overwhelmed by all the emails in her inbox.",
+        "translation": {
+          "fr": "Elle se sentait submergée par tous les e-mails dans sa boîte de réception.",
+          "de": "Sie fühlte sich von all den E-Mails in ihrem Posteingang überwältigt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Overwhelmed means feeling that there is too much to cope with.",
+        "fr": "Overwhelmed signifie avoir l’impression qu’il y a trop de choses à gérer.",
+        "de": "Overwhelmed bedeutet, sich von zu viel auf einmal überfordert zu fühlen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "With three deadlines and a sick child, she felt completely ",
+        "after": " and did not know where to start.",
+        "accepted": { "answers": ["overwhelmed"] },
+        "referenceTargetIds": ["overwhelmed", "wary", "sheepish", "ambivalent"],
+        "explanation": {
+          "en": "Overwhelmed fits: she has too much to deal with at once.",
+          "fr": "Overwhelmed convient : elle a trop de choses à gérer à la fois.",
+          "de": "Overwhelmed passt: Sie hat zu viel auf einmal zu bewältigen."
+        }
+      },
+      "listeningOptionTargetIds": ["overwhelmed", "ambivalent", "apprehensive", "sheepish"]
+    },
+    {
+      "id": "sheepish",
+      "term": "sheepish",
+      "translations": { "fr": ["penaud", "gêné"], "de": ["verlegen", "kleinlaut"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "sheepish",
+      "examForms": ["sheepish"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃiːpɪʃ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "He gave a sheepish grin when he admitted he was late again.",
+        "translation": {
+          "fr": "Il eut un sourire penaud en admettant qu’il était encore en retard.",
+          "de": "Er grinste kleinlaut, als er zugab, wieder zu spät zu sein."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Sheepish means slightly embarrassed because you know you have done something silly.",
+        "fr": "Sheepish signifie légèrement gêné parce qu’on sait qu’on a fait une bêtise.",
+        "de": "Sheepish bedeutet leicht verlegen, weil man weiß, dass man etwas Dummes getan hat."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He gave a ",
+        "after": " grin when he admitted he had forgotten her birthday.",
+        "accepted": { "answers": ["sheepish"] },
+        "referenceTargetIds": ["sheepish", "apprehensive", "wary", "overwhelmed"],
+        "explanation": {
+          "en": "Sheepish fits: a mildly embarrassed grin after a small mistake.",
+          "fr": "Sheepish convient : un sourire un peu gêné après une petite erreur.",
+          "de": "Sheepish passt: ein leicht verlegenes Grinsen nach einem kleinen Fehler."
+        }
+      },
+      "listeningOptionTargetIds": ["sheepish", "wary", "overwhelmed", "apprehensive"]
+    },
+    {
+      "id": "indignant",
+      "term": "indignant",
+      "translations": { "fr": ["indigné", "outré"], "de": ["empört", "entrüstet"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "indignant",
+      "examForms": ["indignant"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɪnˈdɪɡnənt/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "She was indignant at the suggestion that she had lied.",
+        "translation": {
+          "fr": "Elle était indignée à l’idée qu’elle ait pu mentir.",
+          "de": "Sie war empört über die Andeutung, sie habe gelogen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Indignant means angry because you think you have been treated unfairly.",
+        "fr": "Indignant signifie en colère parce qu’on pense être traité injustement.",
+        "de": "Indignant bedeutet wütend, weil man sich ungerecht behandelt fühlt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She was ",
+        "after": " at being accused of cheating when she had done nothing wrong.",
+        "accepted": { "answers": ["indignant"] },
+        "referenceTargetIds": ["indignant", "disillusioned", "mortified", "exasperated"],
+        "explanation": {
+          "en": "Indignant fits: anger at an unfair accusation.",
+          "fr": "Indignant convient : colère face à une accusation injuste.",
+          "de": "Indignant passt: Wut über eine ungerechte Beschuldigung."
+        }
+      },
+      "listeningOptionTargetIds": ["indignant", "resentful", "exasperated", "disillusioned"]
+    },
+    {
+      "id": "resentful",
+      "term": "resentful",
+      "translations": {
+        "fr": ["plein de rancœur", "rancunier"],
+        "de": ["verbittert", "nachtragend"]
+      },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "resentful",
+      "examForms": ["resentful"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/rɪˈzɛntfʊl/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "He felt resentful that his brother got the family business.",
+        "translation": {
+          "fr": "Il éprouvait de la rancœur parce que son frère avait hérité de l’entreprise familiale.",
+          "de": "Er war verbittert, weil sein Bruder das Familienunternehmen bekam."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Resentful means bitter for a long time about something you think is unfair.",
+        "fr": "Resentful signifie amer pendant longtemps à cause de quelque chose qu’on juge injuste.",
+        "de": "Resentful bedeutet lange verbittert über etwas, das man für ungerecht hält."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He remained ",
+        "after": " towards his brother for years because he had been given the family business.",
+        "accepted": { "answers": ["resentful"] },
+        "referenceTargetIds": ["resentful", "indignant", "mortified", "disillusioned"],
+        "explanation": {
+          "en": "Resentful fits: bitterness that lasts for years.",
+          "fr": "Resentful convient : une amertume qui dure des années.",
+          "de": "Resentful passt: Verbitterung, die jahrelang anhält."
+        }
+      },
+      "listeningOptionTargetIds": ["resentful", "indignant", "exasperated", "mortified"]
+    },
+    {
+      "id": "exasperated",
+      "term": "exasperated",
+      "translations": { "fr": ["exaspéré", "à bout"], "de": ["entnervt", "genervt"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "exasperated",
+      "examForms": ["exasperated"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɪɡˈzɑːspəreɪtɪd/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "The teacher was exasperated by the constant interruptions.",
+        "translation": {
+          "fr": "Le professeur était exaspéré par les interruptions constantes.",
+          "de": "Der Lehrer war von den ständigen Unterbrechungen entnervt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Exasperated means very annoyed, especially after the same problem happens again and again.",
+        "fr": "Exasperated signifie très agacé, surtout quand le même problème se répète.",
+        "de": "Exasperated bedeutet sehr genervt, besonders wenn dasselbe Problem immer wieder auftritt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "“I’ve explained this five times already!” he sighed, thoroughly ",
+        "after": ".",
+        "accepted": { "answers": ["exasperated"] },
+        "referenceTargetIds": ["exasperated", "indignant", "resentful", "disillusioned"],
+        "explanation": {
+          "en": "Exasperated fits: he is worn out by having to repeat himself.",
+          "fr": "Exasperated convient : il est à bout de devoir se répéter.",
+          "de": "Exasperated passt: Er ist genervt, weil er sich wiederholen muss."
+        }
+      },
+      "listeningOptionTargetIds": ["exasperated", "indignant", "resentful", "disillusioned"]
+    },
+    {
+      "id": "mortified",
+      "term": "mortified",
+      "translations": {
+        "fr": ["mortifié", "morte de honte"],
+        "de": ["zutiefst beschämt", "mortifiziert"]
+      },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "mortified",
+      "examForms": ["mortified"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈmɔːtɪfaɪd/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "I was mortified when I called my boss by the wrong name.",
+        "translation": {
+          "fr": "J’étais mortifié quand j’ai appelé mon chef par le mauvais prénom.",
+          "de": "Es war mir zutiefst peinlich, als ich meinen Chef mit dem falschen Namen ansprach."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Mortified means extremely embarrassed or ashamed, much stronger than embarrassed.",
+        "fr": "Mortified signifie extrêmement gêné ou honteux, bien plus fort que embarrassed.",
+        "de": "Mortified bedeutet äußerst beschämt, viel stärker als embarrassed."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She was ",
+        "after": " when she realised she had sent the rude message to the whole company.",
+        "accepted": { "answers": ["mortified"] },
+        "referenceTargetIds": ["mortified", "resentful", "disillusioned", "exasperated"],
+        "explanation": {
+          "en": "Mortified fits: intense embarrassment about a public mistake.",
+          "fr": "Mortified convient : une gêne intense après une erreur publique.",
+          "de": "Mortified passt: intensive Scham nach einem öffentlichen Fehler."
+        }
+      },
+      "listeningOptionTargetIds": ["mortified", "indignant", "resentful", "exasperated"]
+    },
+    {
+      "id": "disillusioned",
+      "term": "disillusioned",
+      "translations": {
+        "fr": ["désillusionné", "désabusé"],
+        "de": ["desillusioniert", "ernüchtert"]
+      },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "disillusioned",
+      "examForms": ["disillusioned"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌdɪsɪˈluːʒənd/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "He became disillusioned with politics after ten years in office.",
+        "translation": {
+          "fr": "Il est devenu désabusé de la politique après dix ans au pouvoir.",
+          "de": "Nach zehn Jahren im Amt wurde er von der Politik ernüchtert."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Disillusioned means disappointed because something you believed in turned out not to be true.",
+        "fr": "Disillusioned signifie déçu parce que ce en quoi on croyait s’est révélé faux.",
+        "de": "Disillusioned bedeutet enttäuscht, weil sich etwas, woran man glaubte, als unwahr erwies."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "After ten years in politics, he grew ",
+        "after": " with a system he had once believed in.",
+        "accepted": { "answers": ["disillusioned"] },
+        "referenceTargetIds": ["disillusioned", "indignant", "resentful", "mortified"],
+        "explanation": {
+          "en": "Disillusioned fits: his belief in the system collapsed.",
+          "fr": "Disillusioned convient : sa foi dans le système s’est effondrée.",
+          "de": "Disillusioned passt: Sein Glaube an das System ist zerbrochen."
+        }
+      },
+      "listeningOptionTargetIds": ["disillusioned", "indignant", "exasperated", "mortified"]
+    },
+    {
+      "id": "elated",
+      "term": "elated",
+      "translations": { "fr": ["ravi", "fou de joie"], "de": ["überglücklich", "euphorisch"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "elated",
+      "examForms": ["elated"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɪˈleɪtɪd/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "The whole team was elated after winning the final.",
+        "translation": {
+          "fr": "Toute l’équipe était ravie après avoir gagné la finale.",
+          "de": "Das ganze Team war nach dem Gewinn des Finales überglücklich."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Elated means extremely happy and excited, usually because of a success.",
+        "fr": "Elated signifie extrêmement heureux et excité, généralement après un succès.",
+        "de": "Elated bedeutet überglücklich und aufgeregt, meist nach einem Erfolg."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "They were ",
+        "after": " when they heard they had won the national final.",
+        "accepted": { "answers": ["elated"] },
+        "referenceTargetIds": ["elated", "nostalgic", "wistful", "forlorn"],
+        "explanation": {
+          "en": "Elated fits: great joy at winning.",
+          "fr": "Elated convient : une grande joie après la victoire.",
+          "de": "Elated passt: große Freude über den Sieg."
+        }
+      },
+      "listeningOptionTargetIds": ["elated", "nostalgic", "wistful", "forlorn"]
+    },
+    {
+      "id": "nostalgic",
+      "term": "nostalgic",
+      "translations": { "fr": ["nostalgique"], "de": ["nostalgisch"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "nostalgic",
+      "examForms": ["nostalgic"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/nɒˈstældʒɪk/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Old photographs make my grandfather nostalgic.",
+        "translation": {
+          "fr": "Les vieilles photos rendent mon grand-père nostalgique.",
+          "de": "Alte Fotos machen meinen Großvater nostalgisch."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Nostalgic means fondly remembering the past, often with a gentle longing.",
+        "fr": "Nostalgic signifie se souvenir du passé avec tendresse, souvent avec un doux regret.",
+        "de": "Nostalgic bedeutet, sich liebevoll an die Vergangenheit zu erinnern, oft mit sanfter Sehnsucht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Seeing his old school made him feel ",
+        "after": " for the carefree days of his childhood.",
+        "accepted": { "answers": ["nostalgic"] },
+        "referenceTargetIds": ["nostalgic", "elated", "forlorn", "bittersweet"],
+        "explanation": {
+          "en": "Nostalgic fits: he fondly remembers his past.",
+          "fr": "Nostalgic convient : il se souvient tendrement de son passé.",
+          "de": "Nostalgic passt: Er erinnert sich liebevoll an seine Vergangenheit."
+        }
+      },
+      "listeningOptionTargetIds": ["nostalgic", "wistful", "elated", "forlorn"]
+    },
+    {
+      "id": "wistful",
+      "term": "wistful",
+      "translations": {
+        "fr": ["mélancolique", "pensif et triste"],
+        "de": ["wehmütig", "sehnsüchtig"]
+      },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "wistful",
+      "examForms": ["wistful"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈwɪstfʊl/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "She gave a wistful smile as she looked at the old photograph.",
+        "translation": {
+          "fr": "Elle eut un sourire mélancolique en regardant la vieille photo.",
+          "de": "Sie lächelte wehmütig, als sie das alte Foto betrachtete."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Wistful means quietly sad because of something you wish you had or could do.",
+        "fr": "Wistful signifie discrètement triste à cause de ce qu’on aimerait avoir ou pouvoir faire.",
+        "de": "Wistful bedeutet still traurig wegen etwas, das man gern hätte oder tun könnte."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She gave a ",
+        "after": " smile as she looked at a photograph of the life she might have lived.",
+        "accepted": { "answers": ["wistful"] },
+        "referenceTargetIds": ["wistful", "elated", "indignant", "nostalgic"],
+        "explanation": {
+          "en": "Wistful fits: quiet sadness about what might have been.",
+          "fr": "Wistful convient : une tristesse discrète à propos de ce qui aurait pu être.",
+          "de": "Wistful passt: stille Traurigkeit über das, was hätte sein können."
+        }
+      },
+      "listeningOptionTargetIds": ["wistful", "nostalgic", "forlorn", "elated"]
+    },
+    {
+      "id": "bittersweet",
+      "term": "bittersweet",
+      "translations": { "fr": ["doux-amer", "aigre-doux"], "de": ["bittersüß", "wehmütig-schön"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "bittersweet",
+      "examForms": ["bittersweet"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌbɪtəˈswiːt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Leaving home was a bittersweet moment for her.",
+        "translation": {
+          "fr": "Quitter la maison fut un moment doux-amer pour elle.",
+          "de": "Das Verlassen ihres Zuhauses war für sie ein bittersüßer Moment."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Bittersweet describes an experience that is both happy and sad at the same time.",
+        "fr": "Bittersweet décrit une expérience à la fois heureuse et triste.",
+        "de": "Bittersweet beschreibt eine Erfahrung, die zugleich glücklich und traurig ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Graduation was a ",
+        "after": " day: proud of the achievement, but sad to leave good friends.",
+        "accepted": { "answers": ["bittersweet"] },
+        "referenceTargetIds": ["bittersweet", "elated", "nostalgic", "forlorn"],
+        "explanation": {
+          "en": "Bittersweet fits: the day mixes pride and sadness.",
+          "fr": "Bittersweet convient : la journée mêle fierté et tristesse.",
+          "de": "Bittersweet passt: Der Tag mischt Stolz und Traurigkeit."
+        }
+      },
+      "listeningOptionTargetIds": ["bittersweet", "wistful", "elated", "forlorn"]
+    },
+    {
+      "id": "forlorn",
+      "term": "forlorn",
+      "translations": { "fr": ["esseulé", "désemparé"], "de": ["verlassen", "trostlos"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "forlorn",
+      "examForms": ["forlorn"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fəˈlɔːn/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "The puppy looked forlorn sitting alone at the door.",
+        "translation": {
+          "fr": "Le chiot avait l’air esseulé, assis seul devant la porte.",
+          "de": "Der Welpe wirkte verlassen, wie er allein an der Tür saß."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Forlorn means lonely and sad, as if abandoned or without hope.",
+        "fr": "Forlorn signifie seul et triste, comme abandonné ou sans espoir.",
+        "de": "Forlorn bedeutet einsam und traurig, wie verlassen oder ohne Hoffnung."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The puppy sat ",
+        "after": " by the empty door, alone and abandoned, hoping someone would come back.",
+        "accepted": { "answers": ["forlorn"] },
+        "referenceTargetIds": ["forlorn", "elated", "nostalgic", "bittersweet"],
+        "explanation": {
+          "en": "Forlorn fits: a lonely, abandoned animal.",
+          "fr": "Forlorn convient : un animal seul et abandonné.",
+          "de": "Forlorn passt: ein einsames, verlassenes Tier."
+        }
+      },
+      "listeningOptionTargetIds": ["forlorn", "wistful", "nostalgic", "elated"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

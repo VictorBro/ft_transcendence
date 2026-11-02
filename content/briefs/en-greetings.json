@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 2,
+  "id": "en-greetings",
+  "lang": "en",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Saying hello and goodbye",
+  "objective": {
+    "en": "Greet people and say goodbye, formally or informally, at any time of day, and ask and answer How are you?",
+    "fr": "Saluer et prendre congé, de façon formelle ou informelle, à toute heure du jour, et demander et dire comment on va.",
+    "de": "Menschen begrüßen und sich verabschieden, förmlich oder locker, zu jeder Tageszeit, und fragen und sagen, wie es geht."
+  },
+  "estimatedMinutes": 17,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:08.324Z",
+    "inputHashes": { "outline": "15a3a25e57f0eea74a6b23312b7dfa55bc3e712826b22c4a2bd496c58a8ec0bc" }
+  },
+  "kind": "functions",
+  "theme": "relations",
+  "situation": {
+    "en": "Two colleagues, Anna and Tom, meet in the morning, ask how they are and say goodbye.",
+    "fr": "Deux collègues, Anna et Tom, se retrouvent le matin, demandent comment ils vont et se disent au revoir.",
+    "de": "Zwei Kollegen, Anna und Tom, treffen sich am Morgen, fragen, wie es geht, und verabschieden sich."
+  },
+  "coverageNotes": {
+    "en": "Greetings (Good morning!, Hi!), asking and answering about well-being (How are you?, Fine, thanks.) and leaving (Goodbye!, Bye!, See you later!), from formal to informal.",
+    "fr": "Les salutations (Good morning !, Hi !), demander et dire comment on va (How are you ?, Fine, thanks.) et prendre congé (Goodbye !, Bye !, See you later !), du plus formel au plus familier.",
+    "de": "Begrüßungen (Good morning!, Hi!), Fragen und Antworten zum Befinden (How are you?, Fine, thanks.) und Verabschiedungen (Goodbye!, Bye!, See you later!), von förmlich bis locker."
+  },
+  "prerequisites": [],
+  "roles": [
+    { "id": "anna", "label": "Anna", "translation": { "fr": "Anna", "de": "Anna" } },
+    { "id": "tom", "label": "Tom", "translation": { "fr": "Tom", "de": "Tom" } }
+  ],
+  "expressions": [
+    {
+      "id": "good-morning",
+      "text": "Good morning!",
+      "openEnd": false,
+      "translations": { "fr": ["Bonjour"], "de": ["Guten Morgen"] },
+      "explanation": {
+        "en": "A polite greeting for the morning, until about noon.",
+        "fr": "Une salutation polie pour le matin, jusqu’à midi environ.",
+        "de": "Eine höfliche Begrüßung am Morgen, bis etwa zum Mittag."
+      },
+      "example": {
+        "text": "Good morning, Mrs Day!",
+        "translation": { "fr": "Bonjour, madame Day !", "de": "Guten Morgen, Frau Day!" }
+      }
+    },
+    {
+      "id": "hi",
+      "text": "Hi!",
+      "openEnd": false,
+      "translations": { "fr": ["Salut"], "de": ["Hallo"] },
+      "explanation": {
+        "en": "A short, friendly greeting for friends, at any time of day.",
+        "fr": "Une salutation courte et amicale pour les amis, à toute heure.",
+        "de": "Eine kurze, freundliche Begrüßung unter Freunden, zu jeder Tageszeit."
+      },
+      "example": {
+        "text": "Hi, Sam!",
+        "translation": { "fr": "Salut, Sam !", "de": "Hallo, Sam!" }
+      }
+    },
+    {
+      "id": "how-are-you",
+      "text": "How are you?",
+      "openEnd": false,
+      "translations": { "fr": ["Comment vas-tu ?"], "de": ["Wie geht’s dir?"] },
+      "explanation": {
+        "en": "Asks how someone feels. Use it right after a greeting.",
+        "fr": "Demande comment va quelqu’un. On l’utilise juste après une salutation.",
+        "de": "Fragt, wie es jemandem geht. Man sagt es direkt nach der Begrüßung."
+      },
+      "example": {
+        "text": "Hello, Jo. How are you?",
+        "translation": { "fr": "Bonjour, Jo. Comment vas-tu ?", "de": "Hallo, Jo. Wie geht’s dir?" }
+      }
+    },
+    {
+      "id": "fine-thanks",
+      "text": "Fine, thanks.",
+      "openEnd": false,
+      "translations": { "fr": ["Ça va bien, merci."], "de": ["Gut, danke."] },
+      "explanation": {
+        "en": "The usual answer to How are you? Add And you? to ask back.",
+        "fr": "La réponse habituelle à How are you ? Ajoutez And you ? pour demander en retour.",
+        "de": "Die übliche Antwort auf How are you? Mit And you? fragt man zurück."
+      },
+      "example": {
+        "text": "I’m fine, thanks.",
+        "translation": { "fr": "Je vais bien, merci.", "de": "Mir geht’s gut, danke." }
+      }
+    },
+    {
+      "id": "goodbye",
+      "text": "Goodbye!",
+      "openEnd": false,
+      "translations": { "fr": ["Au revoir"], "de": ["Auf Wiedersehen"] },
+      "explanation": {
+        "en": "A polite way to leave, at any time of day.",
+        "fr": "Une façon polie de partir, à toute heure.",
+        "de": "Eine höfliche Art, sich zu verabschieden, zu jeder Tageszeit."
+      },
+      "example": {
+        "text": "Goodbye, Mrs Day!",
+        "translation": { "fr": "Au revoir, madame Day !", "de": "Auf Wiedersehen, Frau Day!" }
+      }
+    },
+    {
+      "id": "bye",
+      "text": "Bye!",
+      "openEnd": false,
+      "translations": { "fr": ["Ciao"], "de": ["Tschüss"] },
+      "explanation": {
+        "en": "A short, informal goodbye for friends.",
+        "fr": "Un au revoir court et familier pour les amis.",
+        "de": "Ein kurzer, lockerer Abschied unter Freunden."
+      },
+      "example": {
+        "text": "Bye, Sam!",
+        "translation": { "fr": "Ciao, Sam !", "de": "Tschüss, Sam!" }
+      }
+    },
+    {
+      "id": "see-you-later",
+      "text": "See you later!",
+      "openEnd": false,
+      "translations": { "fr": ["À tout à l’heure"], "de": ["Bis später"] },
+      "explanation": {
+        "en": "Said when you will meet the person again soon.",
+        "fr": "On le dit quand on va bientôt revoir la personne.",
+        "de": "Sagt man, wenn man die Person bald wiedersieht."
+      },
+      "example": {
+        "text": "See you later, Jo!",
+        "translation": { "fr": "À tout à l’heure, Jo !", "de": "Bis später, Jo!" }
+      }
+    }
+  ],
+  "words": [],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

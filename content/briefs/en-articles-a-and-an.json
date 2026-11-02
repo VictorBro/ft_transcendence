@@ -1,0 +1,234 @@
+{
+  "schemaVersion": 2,
+  "id": "en-articles-a-and-an",
+  "lang": "en",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "A and an: a book, an apple",
+  "objective": {
+    "en": "Use a before a consonant sound and an before a vowel sound, with one thing or a job: a book, an apple, an hour, a university, she's a nurse.",
+    "fr": "Employer a devant un son consonne et an devant un son voyelle, pour une chose ou un métier : a book, an apple, an hour, a university.",
+    "de": "a vor einem Konsonantenlaut und an vor einem Vokallaut benutzen, für eine Sache oder einen Beruf: a book, an apple, an hour, a university."
+  },
+  "estimatedMinutes": 14,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:09.737Z",
+    "inputHashes": { "outline": "daf0800b6e67643694d5b2f73e7f5684dcb3c463f5068804ec71b3538ed987fe" }
+  },
+  "kind": "grammar",
+  "topic": "nouns_and_determiners",
+  "scopeBoundaries": {
+    "en": "Covers a and an with singular nouns and jobs, choosing by sound. Excludes the, some, any and plural nouns.",
+    "fr": "Couvre a et an devant un nom singulier et un métier, selon le son. Exclut the, some, any et les pluriels.",
+    "de": "Behandelt a und an vor Singularnomen und Berufen, nach dem Laut gewählt. Ausgeschlossen sind the, some, any und Plural."
+  },
+  "prerequisites": [],
+  "rules": [
+    {
+      "id": "r-a",
+      "summary": {
+        "en": "Use a before a word that starts with a consonant sound: a book, a dog.",
+        "fr": "Employez a devant un mot qui commence par un son consonne : a book, a dog.",
+        "de": "Benutze a vor einem Wort, das mit einem Konsonantenlaut beginnt: a book, a dog."
+      }
+    },
+    {
+      "id": "r-an",
+      "summary": {
+        "en": "Use an before a word that starts with a vowel sound: an apple, an egg.",
+        "fr": "Employez an devant un mot qui commence par un son voyelle : an apple, an egg.",
+        "de": "Benutze an vor einem Wort, das mit einem Vokallaut beginnt: an apple, an egg."
+      }
+    },
+    {
+      "id": "r-sound",
+      "summary": {
+        "en": "Choose a or an by the sound, not the letter: an hour, a university.",
+        "fr": "Choisissez a ou an d'après le son, pas la lettre : an hour, a university.",
+        "de": "Wähle a oder an nach dem Laut, nicht nach dem Buchstaben: an hour, a university."
+      }
+    },
+    {
+      "id": "r-job",
+      "summary": {
+        "en": "Use a or an with a job: She's a nurse. Tom is an engineer.",
+        "fr": "Employez a ou an avec un métier : She's a nurse. Tom is an engineer.",
+        "de": "Benutze a oder an bei einem Beruf: She's a nurse. Tom is an engineer."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "b-basic",
+      "title": {
+        "en": "A or an before one thing",
+        "fr": "A ou an devant une chose",
+        "de": "A oder an vor einer Sache"
+      },
+      "ruleIds": ["r-a", "r-an"],
+      "explanationPlan": {
+        "en": "Explain that a and an mean one thing and go before a singular noun. A goes before a consonant sound, an before a vowel sound. Give book, dog, apple, egg. Warn that they are not used with a plural.",
+        "fr": "Expliquer que a et an signifient une chose et se placent devant un nom singulier. A devant un son consonne, an devant un son voyelle. Donner book, dog, apple, egg. Prévenir qu'on ne les emploie pas avec un pluriel.",
+        "de": "Erklären, dass a und an eine Sache bedeuten und vor einem Singularnomen stehen. A vor Konsonantenlaut, an vor Vokallaut. book, dog, apple, egg nennen. Warnen, dass sie nicht vor dem Plural stehen."
+      },
+      "explanationDurationS": 100,
+      "examples": [
+        {
+          "text": "This is a book.",
+          "translation": { "fr": "C'est un livre.", "de": "Das ist ein Buch." }
+        },
+        {
+          "text": "This is an apple.",
+          "translation": { "fr": "C'est une pomme.", "de": "Das ist ein Apfel." }
+        },
+        {
+          "text": "He has a pen.",
+          "translation": { "fr": "Il a un stylo.", "de": "Er hat einen Stift." }
+        },
+        {
+          "text": "She has an orange.",
+          "translation": { "fr": "Elle a une orange.", "de": "Sie hat eine Orange." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not use a or an before a plural noun.",
+          "fr": "N'employez pas a ou an devant un nom pluriel.",
+          "de": "Benutze a oder an nicht vor einem Plural."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-basic-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 5,
+          "ruleIds": ["r-a", "r-an"],
+          "estimatedDurationS": 50
+        },
+        {
+          "id": "ex-basic-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["r-a", "r-an"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-basic-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["r-a", "r-an"],
+          "estimatedDurationS": 60
+        }
+      ]
+    },
+    {
+      "id": "b-sound",
+      "title": {
+        "en": "Sounds and jobs",
+        "fr": "Les sons et les métiers",
+        "de": "Laute und Berufe"
+      },
+      "ruleIds": ["r-sound", "r-job"],
+      "explanationPlan": {
+        "en": "Show that the sound decides, not the letter: an hour (silent h), an honest man, a university and a uniform (u sounds like y in yes). Then show that jobs take a or an: She's a nurse. Tom is an engineer.",
+        "fr": "Montrer que le son décide, pas la lettre : an hour (h muet), an honest man, a university et a uniform (u comme y dans yes). Puis montrer que les métiers prennent a ou an : She's a nurse. Tom is an engineer.",
+        "de": "Zeigen, dass der Laut entscheidet, nicht der Buchstabe: an hour (stummes h), an honest man, a university und a uniform (u wie y in yes). Dann zeigen, dass Berufe a oder an haben: She's a nurse. Tom is an engineer."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "I wait for an hour.",
+          "translation": { "fr": "J'attends une heure.", "de": "Ich warte eine Stunde." }
+        },
+        {
+          "text": "She wears a uniform.",
+          "translation": { "fr": "Elle porte un uniforme.", "de": "Sie trägt eine Uniform." }
+        },
+        {
+          "text": "She is a nurse.",
+          "translation": { "fr": "Elle est infirmière.", "de": "Sie ist Krankenschwester." }
+        },
+        {
+          "text": "Tom is an engineer.",
+          "translation": { "fr": "Tom est ingénieur.", "de": "Tom ist Ingenieur." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not choose by the letter: university starts with u but takes a.",
+          "fr": "Ne choisissez pas d'après la lettre : university commence par u mais prend a.",
+          "de": "Wähle nicht nach dem Buchstaben: university beginnt mit u, hat aber a."
+        },
+        {
+          "en": "Do not forget a or an before a job.",
+          "fr": "N'oubliez pas a ou an devant un métier.",
+          "de": "Vergiss a oder an vor einem Beruf nicht."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-sound-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["r-sound"],
+          "estimatedDurationS": 40
+        },
+        {
+          "id": "ex-sound-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["r-sound"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-job-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["r-job"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-job-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["r-job"],
+          "estimatedDurationS": 60
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-ab",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["r-a", "r-an"],
+        "estimatedDurationS": 80,
+        "timeLimitS": 140
+      },
+      {
+        "pageId": "exam-sound",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["r-sound"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      },
+      {
+        "pageId": "exam-job",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["r-job"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

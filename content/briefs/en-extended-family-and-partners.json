@@ -1,0 +1,576 @@
+{
+  "schemaVersion": 2,
+  "id": "en-extended-family-and-partners",
+  "lang": "en",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Extended family and partners",
+  "objective": {
+    "en": "Name your wider family and partners: aunt, uncle, cousin, niece, nephew, grandson, boyfriend and more.",
+    "fr": "Nommer la famille élargie et les partenaires : tante, oncle, cousin, nièce, neveu, petit-fils, petit ami, etc.",
+    "de": "Die erweiterte Familie und Partner benennen: Tante, Onkel, Cousin, Nichte, Neffe, Enkel, Freund und mehr."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:08.973Z",
+    "inputHashes": { "outline": "f22d3f214b543c40718b78918d0866ad53fbb9e2345c8df6118b4b7b268e6f7a" }
+  },
+  "kind": "vocabulary",
+  "theme": "relations",
+  "coverageNotes": {
+    "en": "Twelve words for relatives beyond the close family, for grandchildren and for in-laws and partners. Parents, brothers, sisters and grandparents are assumed known.",
+    "fr": "Douze mots pour les proches au-delà de la famille proche, les petits-enfants, la belle-famille et les partenaires. Parents, frères, sœurs et grands-parents sont supposés connus.",
+    "de": "Zwölf Wörter für Verwandte außerhalb der engsten Familie, für Enkel sowie für angeheiratete Verwandte und Partner. Eltern, Geschwister und Großeltern gelten als bekannt."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words fit the outline and a short A2 lesson in two groups.",
+    "fr": "Douze mots correspondent au plan et à une courte leçon A2 en deux groupes.",
+    "de": "Zwölf Wörter passen zur Gliederung und zu einer kurzen A2-Lektion in zwei Gruppen."
+  },
+  "difficultyBalance": {
+    "en": "Most words are core family words; the in-law words and nephew are more demanding.",
+    "fr": "La plupart des mots sont des mots de base ; les mots de la belle-famille et nephew sont plus difficiles.",
+    "de": "Die meisten Wörter sind Grundwörter; die Wörter für angeheiratete Verwandte und nephew sind anspruchsvoller."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "relatives",
+      "label": { "en": "Relatives", "fr": "Les proches", "de": "Verwandte" },
+      "targetIds": ["aunt", "uncle", "cousin", "niece", "nephew", "grandson", "granddaughter"],
+      "introduction": {
+        "en": "These are relatives in your wider family. Note that **cousin** can be a boy or a girl:\n\n- `aunt`\n- `uncle`\n- `cousin`\n- `niece`\n- `nephew`\n- `grandson`\n- `granddaughter`",
+        "fr": "Voici les proches de votre famille élargie. Notez que **cousin** peut désigner un garçon ou une fille :\n\n- `aunt`\n- `uncle`\n- `cousin`\n- `niece`\n- `nephew`\n- `grandson`\n- `granddaughter`",
+        "de": "Das sind Verwandte aus deiner erweiterten Familie. Beachte, dass **cousin** ein Junge oder ein Mädchen sein kann:\n\n- `aunt`\n- `uncle`\n- `cousin`\n- `niece`\n- `nephew`\n- `grandson`\n- `granddaughter`"
+      }
+    },
+    {
+      "id": "partners",
+      "label": {
+        "en": "Partners and in-laws",
+        "fr": "Partenaires et belle-famille",
+        "de": "Partner und angeheiratete Verwandte"
+      },
+      "targetIds": ["boyfriend", "girlfriend", "partner", "brother-in-law", "mother-in-law"],
+      "introduction": {
+        "en": "Here are words for people you are in a relationship with, and for your **in-laws** (your partner’s family):\n\n- `boyfriend`\n- `girlfriend`\n- `partner`\n- `brother-in-law`\n- `mother-in-law`",
+        "fr": "Voici des mots pour les personnes avec qui vous êtes en couple, et pour votre **belle-famille** (la famille de votre partenaire) :\n\n- `boyfriend`\n- `girlfriend`\n- `partner`\n- `brother-in-law`\n- `mother-in-law`",
+        "de": "Hier sind Wörter für Menschen, mit denen du in einer Beziehung bist, und für deine **angeheirateten Verwandten** (die Familie deines Partners):\n\n- `boyfriend`\n- `girlfriend`\n- `partner`\n- `brother-in-law`\n- `mother-in-law`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "aunt",
+      "term": "aunt",
+      "translations": { "fr": ["tante"], "de": ["Tante"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "aunt",
+      "examForms": ["aunt"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɑːnt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "My aunt lives in Spain.",
+        "translation": {
+          "fr": "Ma tante habite en Espagne.",
+          "de": "Meine Tante wohnt in Spanien."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "An aunt is the sister of your mother or father, or the wife of your uncle.",
+        "fr": "Une tante est la sœur de votre mère ou de votre père, ou l’épouse de votre oncle.",
+        "de": "Eine Tante ist die Schwester deiner Mutter oder deines Vaters oder die Frau deines Onkels."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "My mother’s sister is my ",
+        "after": ".",
+        "accepted": { "answers": ["aunt"] },
+        "referenceTargetIds": ["aunt", "uncle", "nephew", "partner"],
+        "explanation": {
+          "en": "Only aunt fits: she is your mother’s sister.",
+          "fr": "Seul « aunt » convient : c’est la sœur de votre mère.",
+          "de": "Nur „aunt“ passt: Sie ist die Schwester deiner Mutter."
+        }
+      },
+      "listeningOptionTargetIds": ["aunt", "uncle", "niece", "nephew"]
+    },
+    {
+      "id": "uncle",
+      "term": "uncle",
+      "translations": { "fr": ["oncle"], "de": ["Onkel"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "uncle",
+      "examForms": ["uncle"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʌŋkl/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "My uncle works in a bank.",
+        "translation": {
+          "fr": "Mon oncle travaille dans une banque.",
+          "de": "Mein Onkel arbeitet in einer Bank."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "An uncle is the brother of your mother or father, or the husband of your aunt.",
+        "fr": "Un oncle est le frère de votre mère ou de votre père, ou le mari de votre tante.",
+        "de": "Ein Onkel ist der Bruder deiner Mutter oder deines Vaters oder der Mann deiner Tante."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "My father’s brother is my ",
+        "after": ".",
+        "accepted": { "answers": ["uncle"] },
+        "referenceTargetIds": ["uncle", "aunt", "niece", "girlfriend"],
+        "explanation": {
+          "en": "Only uncle fits: he is your father’s brother.",
+          "fr": "Seul « uncle » convient : c’est le frère de votre père.",
+          "de": "Nur „uncle“ passt: Er ist der Bruder deines Vaters."
+        }
+      },
+      "listeningOptionTargetIds": ["uncle", "aunt", "cousin", "nephew"]
+    },
+    {
+      "id": "cousin",
+      "term": "cousin",
+      "translations": { "fr": ["cousin", "cousine"], "de": ["Cousin", "Cousine"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "cousin",
+      "examForms": ["cousin"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈkʌzn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "My cousin is the same age as me.",
+        "translation": {
+          "fr": "Mon cousin a le même âge que moi.",
+          "de": "Mein Cousin ist so alt wie ich."
+        }
+      },
+      "ambiguityNote": {
+        "en": "In English, cousin is used for both boys and girls.",
+        "fr": "En anglais, cousin s’emploie pour les garçons comme pour les filles.",
+        "de": "Im Englischen steht cousin sowohl für Jungen als auch für Mädchen."
+      },
+      "explanation": {
+        "en": "A cousin is the child of your aunt or uncle. The word is the same for a boy and a girl.",
+        "fr": "Un cousin est l’enfant de votre tante ou de votre oncle. Le mot est le même pour un garçon et une fille.",
+        "de": "Ein Cousin ist das Kind deiner Tante oder deines Onkels. Das Wort ist für Jungen und Mädchen gleich."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "My aunt’s daughter is my ",
+        "after": ".",
+        "accepted": { "answers": ["cousin"] },
+        "referenceTargetIds": ["cousin", "niece", "grandson", "partner"],
+        "explanation": {
+          "en": "Only cousin fits: she is the child of your aunt.",
+          "fr": "Seul « cousin » convient : c’est l’enfant de votre tante.",
+          "de": "Nur „cousin“ passt: Sie ist das Kind deiner Tante."
+        }
+      },
+      "listeningOptionTargetIds": ["cousin", "uncle", "aunt", "grandson"]
+    },
+    {
+      "id": "niece",
+      "term": "niece",
+      "translations": { "fr": ["nièce"], "de": ["Nichte"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "niece",
+      "examForms": ["niece"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/niːs/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "My niece is five years old.",
+        "translation": { "fr": "Ma nièce a cinq ans.", "de": "Meine Nichte ist fünf Jahre alt." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A niece is the daughter of your brother or sister.",
+        "fr": "Une nièce est la fille de votre frère ou de votre sœur.",
+        "de": "Eine Nichte ist die Tochter deines Bruders oder deiner Schwester."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "My brother’s daughter is my ",
+        "after": ".",
+        "accepted": { "answers": ["niece"] },
+        "referenceTargetIds": ["niece", "nephew", "uncle", "girlfriend"],
+        "explanation": {
+          "en": "Only niece fits: she is your brother’s daughter.",
+          "fr": "Seul « niece » convient : c’est la fille de votre frère.",
+          "de": "Nur „niece“ passt: Sie ist die Tochter deines Bruders."
+        }
+      },
+      "listeningOptionTargetIds": ["niece", "nephew", "aunt", "uncle"]
+    },
+    {
+      "id": "nephew",
+      "term": "nephew",
+      "translations": { "fr": ["neveu"], "de": ["Neffe"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "nephew",
+      "examForms": ["nephew"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈnefjuː/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "My nephew plays football every Saturday.",
+        "translation": {
+          "fr": "Mon neveu joue au football tous les samedis.",
+          "de": "Mein Neffe spielt jeden Samstag Fußball."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A nephew is the son of your brother or sister.",
+        "fr": "Un neveu est le fils de votre frère ou de votre sœur.",
+        "de": "Ein Neffe ist der Sohn deines Bruders oder deiner Schwester."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "My sister’s son is my ",
+        "after": ".",
+        "accepted": { "answers": ["nephew"] },
+        "referenceTargetIds": ["nephew", "niece", "aunt", "boyfriend"],
+        "explanation": {
+          "en": "Only nephew fits: he is your sister’s son.",
+          "fr": "Seul « nephew » convient : c’est le fils de votre sœur.",
+          "de": "Nur „nephew“ passt: Er ist der Sohn deiner Schwester."
+        }
+      },
+      "listeningOptionTargetIds": ["nephew", "niece", "uncle", "cousin"]
+    },
+    {
+      "id": "grandson",
+      "term": "grandson",
+      "translations": { "fr": ["petit-fils"], "de": ["Enkel"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "grandson",
+      "examForms": ["grandson"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɡrænsʌn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Her grandson visits her on Sundays.",
+        "translation": {
+          "fr": "Son petit-fils lui rend visite le dimanche.",
+          "de": "Ihr Enkel besucht sie sonntags."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A grandson is the son of your son or daughter.",
+        "fr": "Un petit-fils est le fils de votre fils ou de votre fille.",
+        "de": "Ein Enkel ist der Sohn deines Sohnes oder deiner Tochter."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "My daughter’s son is my ",
+        "after": ".",
+        "accepted": { "answers": ["grandson"] },
+        "referenceTargetIds": ["grandson", "granddaughter", "nephew", "cousin"],
+        "explanation": {
+          "en": "Only grandson fits: he is your daughter’s son.",
+          "fr": "Seul « grandson » convient : c’est le fils de votre fille.",
+          "de": "Nur „grandson“ passt: Er ist der Sohn deiner Tochter."
+        }
+      },
+      "listeningOptionTargetIds": ["grandson", "granddaughter", "nephew", "cousin"]
+    },
+    {
+      "id": "granddaughter",
+      "term": "granddaughter",
+      "translations": { "fr": ["petite-fille"], "de": ["Enkelin"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "granddaughter",
+      "examForms": ["granddaughter"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɡrænˌdɔːtə/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Their granddaughter is learning to swim.",
+        "translation": {
+          "fr": "Leur petite-fille apprend à nager.",
+          "de": "Ihre Enkelin lernt schwimmen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A granddaughter is the daughter of your son or daughter.",
+        "fr": "Une petite-fille est la fille de votre fils ou de votre fille.",
+        "de": "Eine Enkelin ist die Tochter deines Sohnes oder deiner Tochter."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "My son’s daughter is my ",
+        "after": ".",
+        "accepted": { "answers": ["granddaughter"] },
+        "referenceTargetIds": ["granddaughter", "grandson", "niece", "aunt"],
+        "explanation": {
+          "en": "Only granddaughter fits: she is your son’s daughter.",
+          "fr": "Seul « granddaughter » convient : c’est la fille de votre fils.",
+          "de": "Nur „granddaughter“ passt: Sie ist die Tochter deines Sohnes."
+        }
+      },
+      "listeningOptionTargetIds": ["granddaughter", "grandson", "niece", "girlfriend"]
+    },
+    {
+      "id": "boyfriend",
+      "term": "boyfriend",
+      "translations": { "fr": ["petit ami"], "de": ["fester Freund"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "boyfriend",
+      "examForms": ["boyfriend"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈbɔɪfrend/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Her boyfriend is very kind.",
+        "translation": { "fr": "Son petit ami est très gentil.", "de": "Ihr Freund ist sehr nett." }
+      },
+      "ambiguityNote": {
+        "en": "A boyfriend is a romantic partner, not just a male friend.",
+        "fr": "Un boyfriend est un partenaire amoureux, pas seulement un ami.",
+        "de": "Ein boyfriend ist ein Liebespartner, nicht nur ein männlicher Freund."
+      },
+      "explanation": {
+        "en": "A boyfriend is a man or boy in a romantic relationship with someone.",
+        "fr": "Un boyfriend est un homme ou un garçon en couple avec quelqu’un.",
+        "de": "Ein boyfriend ist ein Mann oder Junge, der mit jemandem in einer Beziehung ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": { "fr": "petit ami", "de": "fester Freund (Partner)" },
+      "gap": {
+        "before": "Anna is dating Tom. Tom is her ",
+        "after": ".",
+        "accepted": { "answers": ["boyfriend"] },
+        "referenceTargetIds": ["boyfriend", "girlfriend", "uncle", "nephew"],
+        "explanation": {
+          "en": "Only boyfriend fits: Tom is a man in a relationship with Anna.",
+          "fr": "Seul « boyfriend » convient : Tom est en couple avec Anna.",
+          "de": "Nur „boyfriend“ passt: Tom ist mit Anna in einer Beziehung."
+        }
+      },
+      "listeningOptionTargetIds": ["boyfriend", "girlfriend", "grandson", "brother-in-law"]
+    },
+    {
+      "id": "girlfriend",
+      "term": "girlfriend",
+      "translations": { "fr": ["petite amie"], "de": ["feste Freundin"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "girlfriend",
+      "examForms": ["girlfriend"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɡɜːlfrend/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "His girlfriend works in a hospital.",
+        "translation": {
+          "fr": "Sa petite amie travaille dans un hôpital.",
+          "de": "Seine Freundin arbeitet in einem Krankenhaus."
+        }
+      },
+      "ambiguityNote": {
+        "en": "A girlfriend is a romantic partner, not just a female friend.",
+        "fr": "Une girlfriend est une partenaire amoureuse, pas seulement une amie.",
+        "de": "Eine girlfriend ist eine Liebespartnerin, nicht nur eine Freundin."
+      },
+      "explanation": {
+        "en": "A girlfriend is a woman or girl in a romantic relationship with someone.",
+        "fr": "Une girlfriend est une femme ou une fille en couple avec quelqu’un.",
+        "de": "Eine girlfriend ist eine Frau oder ein Mädchen, die mit jemandem in einer Beziehung ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": { "fr": "petite amie", "de": "feste Freundin (Partnerin)" },
+      "gap": {
+        "before": "Tom is dating Anna. Anna is his ",
+        "after": ".",
+        "accepted": { "answers": ["girlfriend"] },
+        "referenceTargetIds": ["girlfriend", "boyfriend", "aunt", "niece"],
+        "explanation": {
+          "en": "Only girlfriend fits: Anna is a woman in a relationship with Tom.",
+          "fr": "Seul « girlfriend » convient : Anna est en couple avec Tom.",
+          "de": "Nur „girlfriend“ passt: Anna ist mit Tom in einer Beziehung."
+        }
+      },
+      "listeningOptionTargetIds": ["girlfriend", "boyfriend", "granddaughter", "mother-in-law"]
+    },
+    {
+      "id": "partner",
+      "term": "partner",
+      "translations": { "fr": ["partenaire"], "de": ["Partner"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "partner",
+      "examForms": ["partner"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈpɑːtnə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "My partner and I live in London.",
+        "translation": {
+          "fr": "Mon partenaire et moi habitons à Londres.",
+          "de": "Mein Partner und ich wohnen in London."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Your partner is the person you are in a long relationship with. The word works for a man or a woman.",
+        "fr": "Votre partner est la personne avec qui vous êtes en couple depuis longtemps. Le mot s’emploie pour un homme ou une femme.",
+        "de": "Dein partner ist die Person, mit der du in einer langen Beziehung bist. Das Wort gilt für Männer und Frauen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "We are not married, but we live together. Sam is my ",
+        "after": ".",
+        "accepted": { "answers": ["partner"] },
+        "referenceTargetIds": ["partner", "uncle", "niece", "grandson"],
+        "explanation": {
+          "en": "Only partner fits: it is the person you live with in a relationship.",
+          "fr": "Seul « partner » convient : c’est la personne avec qui vous vivez en couple.",
+          "de": "Nur „partner“ passt: Das ist die Person, mit der du in einer Beziehung lebst."
+        }
+      },
+      "listeningOptionTargetIds": ["partner", "boyfriend", "girlfriend", "cousin"]
+    },
+    {
+      "id": "brother-in-law",
+      "term": "brother-in-law",
+      "translations": { "fr": ["beau-frère"], "de": ["Schwager"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "brother-in-law",
+      "examForms": ["brother-in-law"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈbrʌðər ɪn lɔː/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "My brother-in-law is a teacher.",
+        "translation": { "fr": "Mon beau-frère est professeur.", "de": "Mein Schwager ist Lehrer." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Your brother-in-law is your husband’s or wife’s brother, or your sister’s husband.",
+        "fr": "Votre brother-in-law est le frère de votre mari ou de votre femme, ou le mari de votre sœur.",
+        "de": "Dein brother-in-law ist der Bruder deines Mannes oder deiner Frau oder der Mann deiner Schwester."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "My wife’s brother is my ",
+        "after": ".",
+        "accepted": { "answers": ["brother-in-law"] },
+        "referenceTargetIds": ["brother-in-law", "uncle", "nephew", "girlfriend"],
+        "explanation": {
+          "en": "Only brother-in-law fits: he is your wife’s brother.",
+          "fr": "Seul « brother-in-law » convient : c’est le frère de votre femme.",
+          "de": "Nur „brother-in-law“ passt: Er ist der Bruder deiner Frau."
+        }
+      },
+      "listeningOptionTargetIds": ["brother-in-law", "mother-in-law", "boyfriend", "uncle"]
+    },
+    {
+      "id": "mother-in-law",
+      "term": "mother-in-law",
+      "translations": { "fr": ["belle-mère"], "de": ["Schwiegermutter"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "mother-in-law",
+      "examForms": ["mother-in-law"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈmʌðər ɪn lɔː/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "My mother-in-law cooks very well.",
+        "translation": {
+          "fr": "Ma belle-mère cuisine très bien.",
+          "de": "Meine Schwiegermutter kocht sehr gut."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Your mother-in-law is the mother of your husband or wife.",
+        "fr": "Votre mother-in-law est la mère de votre mari ou de votre femme.",
+        "de": "Deine mother-in-law ist die Mutter deines Mannes oder deiner Frau."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "My husband’s mother is my ",
+        "after": ".",
+        "accepted": { "answers": ["mother-in-law"] },
+        "referenceTargetIds": ["mother-in-law", "aunt", "granddaughter", "boyfriend"],
+        "explanation": {
+          "en": "Only mother-in-law fits: she is your husband’s mother.",
+          "fr": "Seul « mother-in-law » convient : c’est la mère de votre mari.",
+          "de": "Nur „mother-in-law“ passt: Sie ist die Mutter deines Mannes."
+        }
+      },
+      "listeningOptionTargetIds": ["mother-in-law", "brother-in-law", "granddaughter", "girlfriend"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

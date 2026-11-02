@@ -1,0 +1,675 @@
+{
+  "schemaVersion": 2,
+  "id": "en-character-strengths-and-weaknesses",
+  "lang": "en",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Character strengths and weaknesses",
+  "objective": {
+    "en": "Describe someone's character, good and bad, with fourteen adjectives such as reliable, generous, selfish and cheeky.",
+    "fr": "Décrire le caractère de quelqu’un, en bien et en mal, avec quatorze adjectifs comme reliable, generous, selfish et cheeky.",
+    "de": "Den Charakter einer Person beschreiben, gut und schlecht, mit vierzehn Adjektiven wie reliable, generous, selfish und cheeky."
+  },
+  "estimatedMinutes": 22,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "claude-code",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:49:56.244Z",
+    "inputHashes": { "outline": "b051c873802581b154dde3e65639c4205ce70a240de14c6baaca5e5295d75e4c" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Fourteen character adjectives at B1: seven strengths (reliable, generous, patient, ambitious, sensible, honest, hard-working) and seven weaknesses (selfish, mean, cheeky, lazy, impatient, bossy, moody). Every word of the outline is there; sensible and mean get a note, as a false friend and a word with two meanings.",
+    "fr": "Quatorze adjectifs de caractère au niveau B1 : sept qualités (reliable, generous, patient, ambitious, sensible, honest, hard-working) et sept défauts (selfish, mean, cheeky, lazy, impatient, bossy, moody). Tous les mots du plan y sont ; sensible et mean ont une remarque, comme faux ami et mot à deux sens.",
+    "de": "Vierzehn Charakteradjektive auf B1: sieben Stärken (reliable, generous, patient, ambitious, sensible, honest, hard-working) und sieben Schwächen (selfish, mean, cheeky, lazy, impatient, bossy, moody). Alle Wörter der Gliederung sind dabei; sensible und mean haben einen Hinweis, als falscher Freund und Wort mit zwei Bedeutungen."
+  },
+  "targetCount": 14,
+  "countRationale": {
+    "en": "Fourteen words, as the outline asks: seven strengths and seven weaknesses, often in opposite pairs.",
+    "fr": "Quatorze mots, comme le demande le plan : sept qualités et sept défauts, souvent par paires de contraires.",
+    "de": "Vierzehn Wörter, wie die Gliederung verlangt: sieben Stärken und sieben Schwächen, oft als Gegensatzpaare."
+  },
+  "difficultyBalance": {
+    "en": "Most words are core; sensible, mean, cheeky, bossy and moody are more demanding because of false friends or British usage.",
+    "fr": "La plupart des mots sont de base ; sensible, mean, cheeky, bossy et moody sont plus exigeants (faux amis ou usage britannique).",
+    "de": "Die meisten Wörter sind Grundwortschatz; sensible, mean, cheeky, bossy und moody sind anspruchsvoller (falsche Freunde oder britischer Gebrauch)."
+  },
+  "prerequisites": [
+    {
+      "en": "Describing people with be + adjective: She's kind.",
+      "fr": "Décrire des personnes avec be + adjectif : She's kind.",
+      "de": "Personen mit be + Adjektiv beschreiben: She's kind."
+    }
+  ],
+  "groups": [
+    {
+      "id": "strengths",
+      "label": { "en": "Strengths", "fr": "Qualités", "de": "Stärken" },
+      "targetIds": [
+        "reliable",
+        "generous",
+        "patient",
+        "ambitious",
+        "sensible",
+        "honest",
+        "hard-working"
+      ],
+      "introduction": {
+        "en": "These adjectives describe **good qualities**. Use them after `be`: `She's very reliable.`\n\n- `reliable`\n- `generous`\n- `patient`\n- `ambitious`\n- `sensible`\n- `honest`\n- `hard-working`",
+        "fr": "Ces adjectifs décrivent des **qualités**. Utilisez-les après `be` : `She's very reliable.`\n\n- `reliable`\n- `generous`\n- `patient`\n- `ambitious`\n- `sensible`\n- `honest`\n- `hard-working`",
+        "de": "Diese Adjektive beschreiben **gute Eigenschaften**. Verwende sie nach `be`: `She's very reliable.`\n\n- `reliable`\n- `generous`\n- `patient`\n- `ambitious`\n- `sensible`\n- `honest`\n- `hard-working`"
+      }
+    },
+    {
+      "id": "weaknesses",
+      "label": { "en": "Weaknesses", "fr": "Défauts", "de": "Schwächen" },
+      "targetIds": ["selfish", "mean", "cheeky", "lazy", "impatient", "bossy", "moody"],
+      "introduction": {
+        "en": "These adjectives describe **weaknesses**. Some are opposites of the strengths: `patient` and `impatient`, `generous` and `mean`, `hard-working` and `lazy`.\n\n- `selfish`\n- `mean`\n- `cheeky`\n- `lazy`\n- `impatient`\n- `bossy`\n- `moody`",
+        "fr": "Ces adjectifs décrivent des **défauts**. Certains sont les contraires des qualités : `patient` et `impatient`, `generous` et `mean`, `hard-working` et `lazy`.\n\n- `selfish`\n- `mean`\n- `cheeky`\n- `lazy`\n- `impatient`\n- `bossy`\n- `moody`",
+        "de": "Diese Adjektive beschreiben **Schwächen**. Manche sind Gegenteile der Stärken: `patient` und `impatient`, `generous` und `mean`, `hard-working` und `lazy`.\n\n- `selfish`\n- `mean`\n- `cheeky`\n- `lazy`\n- `impatient`\n- `bossy`\n- `moody`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "reliable",
+      "term": "reliable",
+      "translations": { "fr": ["fiable"], "de": ["zuverlässig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "reliable",
+      "examForms": ["reliable"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/rɪˈlaɪəbl/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Tom is very reliable: he always does what he promises.",
+        "translation": {
+          "fr": "Tom est très fiable : il fait toujours ce qu’il promet.",
+          "de": "Tom ist sehr zuverlässig: Er tut immer, was er verspricht."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Reliable describes someone you can trust to do what they say.",
+        "fr": "Reliable décrit quelqu’un sur qui on peut compter pour faire ce qu’il dit.",
+        "de": "Reliable beschreibt jemanden, der zuverlässig tut, was er sagt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She's never late and never forgets anything. She's really ",
+        "after": ".",
+        "accepted": { "answers": ["reliable"] },
+        "referenceTargetIds": ["reliable", "lazy", "cheeky", "moody"],
+        "explanation": {
+          "en": "Never late, never forgets: you can count on her.",
+          "fr": "Jamais en retard, n’oublie jamais rien : on peut compter sur elle.",
+          "de": "Nie zu spät, vergisst nie etwas: Man kann sich auf sie verlassen."
+        }
+      },
+      "listeningOptionTargetIds": ["reliable", "sensible", "generous", "honest"]
+    },
+    {
+      "id": "generous",
+      "term": "generous",
+      "translations": { "fr": ["généreux"], "de": ["großzügig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "generous",
+      "examForms": ["generous"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈdʒenərəs/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "My uncle is generous: he always buys presents for everyone.",
+        "translation": {
+          "fr": "Mon oncle est généreux : il achète toujours des cadeaux pour tout le monde.",
+          "de": "Mein Onkel ist großzügig: Er kauft immer Geschenke für alle."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Generous describes someone who likes giving money, time or presents.",
+        "fr": "Generous décrit quelqu’un qui aime donner de l’argent, du temps ou des cadeaux.",
+        "de": "Generous beschreibt jemanden, der gern Geld, Zeit oder Geschenke gibt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He paid for everyone's dinner. That was very ",
+        "after": " of him.",
+        "accepted": { "answers": ["generous"] },
+        "referenceTargetIds": ["generous", "selfish", "impatient", "bossy"],
+        "explanation": {
+          "en": "Paying for everyone is giving: generous.",
+          "fr": "Payer pour tout le monde, c’est donner : generous.",
+          "de": "Für alle bezahlen heißt geben: generous."
+        }
+      },
+      "listeningOptionTargetIds": ["generous", "honest", "ambitious", "reliable"]
+    },
+    {
+      "id": "patient",
+      "term": "patient",
+      "translations": { "fr": ["patient"], "de": ["geduldig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "patient",
+      "examForms": ["patient"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈpeɪʃnt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Good teachers are patient with slow learners.",
+        "translation": {
+          "fr": "Les bons professeurs sont patients avec les élèves lents.",
+          "de": "Gute Lehrer sind geduldig mit langsamen Lernenden."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Patient describes someone who can wait calmly without getting angry.",
+        "fr": "Patient décrit quelqu’un qui sait attendre calmement sans se fâcher.",
+        "de": "Patient beschreibt jemanden, der ruhig warten kann, ohne wütend zu werden."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "My dad explained it ten times and never got angry. He's so ",
+        "after": ".",
+        "accepted": { "answers": ["patient"] },
+        "referenceTargetIds": ["patient", "mean", "moody", "lazy"],
+        "explanation": {
+          "en": "Explaining ten times without getting angry: patient.",
+          "fr": "Expliquer dix fois sans se fâcher : patient.",
+          "de": "Zehnmal erklären, ohne wütend zu werden: patient."
+        }
+      },
+      "listeningOptionTargetIds": ["patient", "impatient", "ambitious", "sensible"]
+    },
+    {
+      "id": "ambitious",
+      "term": "ambitious",
+      "translations": { "fr": ["ambitieux"], "de": ["ehrgeizig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ambitious",
+      "examForms": ["ambitious"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/æmˈbɪʃəs/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She's ambitious and wants to run her own company one day.",
+        "translation": {
+          "fr": "Elle est ambitieuse et veut diriger sa propre entreprise un jour.",
+          "de": "Sie ist ehrgeizig und will eines Tages ihre eigene Firma leiten."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Ambitious describes someone who really wants success, money or power.",
+        "fr": "Ambitious décrit quelqu’un qui veut vraiment réussir, gagner de l’argent ou avoir du pouvoir.",
+        "de": "Ambitious beschreibt jemanden, der unbedingt Erfolg, Geld oder Macht will."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He wants to be the manager in two years. He's very ",
+        "after": ".",
+        "accepted": { "answers": ["ambitious"] },
+        "referenceTargetIds": ["ambitious", "lazy", "cheeky", "selfish"],
+        "explanation": {
+          "en": "Wanting a top job fast: ambitious.",
+          "fr": "Vouloir vite un poste élevé : ambitious.",
+          "de": "Schnell einen hohen Posten wollen: ambitious."
+        }
+      },
+      "listeningOptionTargetIds": ["ambitious", "generous", "impatient", "honest"]
+    },
+    {
+      "id": "sensible",
+      "term": "sensible",
+      "translations": { "fr": ["raisonnable"], "de": ["vernünftig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "sensible",
+      "examForms": ["sensible"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈsensəbl/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Take a coat. That's the sensible thing to do in winter.",
+        "translation": {
+          "fr": "Prends un manteau. C’est ce qu’il est raisonnable de faire en hiver.",
+          "de": "Nimm einen Mantel mit. Das ist im Winter vernünftig."
+        }
+      },
+      "ambiguityNote": {
+        "en": "A false friend: sensible means raisonnable, vernünftig. Someone who is easily hurt is sensitive.",
+        "fr": "Un faux ami : sensible veut dire raisonnable. Une personne sensible se dit sensitive.",
+        "de": "Ein falscher Freund: sensible heißt vernünftig. Ein sensibler Mensch ist sensitive."
+      },
+      "explanation": {
+        "en": "Sensible describes someone who makes good, practical decisions.",
+        "fr": "Sensible décrit quelqu’un qui prend des décisions sages et pratiques.",
+        "de": "Sensible beschreibt jemanden, der gute, praktische Entscheidungen trifft."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She saves money every month and never takes silly risks. She's very ",
+        "after": ".",
+        "accepted": { "answers": ["sensible"] },
+        "referenceTargetIds": ["sensible", "cheeky", "moody", "bossy"],
+        "explanation": {
+          "en": "Saving money and no silly risks: sensible.",
+          "fr": "Économiser et ne pas prendre de risques bêtes : sensible.",
+          "de": "Geld sparen und keine dummen Risiken: sensible."
+        }
+      },
+      "listeningOptionTargetIds": ["sensible", "selfish", "reliable", "patient"]
+    },
+    {
+      "id": "honest",
+      "term": "honest",
+      "translations": { "fr": ["honnête"], "de": ["ehrlich"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "honest",
+      "examForms": ["honest"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɒnɪst/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Be honest: do you like my new haircut?",
+        "translation": {
+          "fr": "Sois honnête : tu aimes ma nouvelle coupe ?",
+          "de": "Sei ehrlich: Gefällt dir meine neue Frisur?"
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Honest describes someone who tells the truth. The h is silent.",
+        "fr": "Honest décrit quelqu’un qui dit la vérité. Le h ne se prononce pas.",
+        "de": "Honest beschreibt jemanden, der die Wahrheit sagt. Das h ist stumm."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He found a wallet and took it to the police. He's an ",
+        "after": " man.",
+        "accepted": { "answers": ["honest"] },
+        "referenceTargetIds": ["honest", "mean", "lazy", "bossy"],
+        "explanation": {
+          "en": "Giving back a wallet: honest. An is used because the h is silent.",
+          "fr": "Rendre un portefeuille : honest. On dit an car le h est muet.",
+          "de": "Eine Brieftasche zurückgeben: honest. An, weil das h stumm ist."
+        }
+      },
+      "listeningOptionTargetIds": ["honest", "ambitious", "hard-working", "generous"]
+    },
+    {
+      "id": "hard-working",
+      "term": "hard-working",
+      "translations": { "fr": ["travailleur"], "de": ["fleißig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "hard-working",
+      "examForms": ["hard-working", "hardworking"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌhɑːdˈwɜːkɪŋ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Anna is hard-working: she often stays late to finish her work.",
+        "translation": {
+          "fr": "Anna est travailleuse : elle reste souvent tard pour finir son travail.",
+          "de": "Anna ist fleißig: Sie bleibt oft länger, um ihre Arbeit fertig zu machen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Hard-working describes someone who works a lot and works well.",
+        "fr": "Hard-working décrit quelqu’un qui travaille beaucoup et bien.",
+        "de": "Hard-working beschreibt jemanden, der viel und gut arbeitet."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He studies every evening and every weekend. He's very ",
+        "after": ".",
+        "accepted": { "answers": ["hard-working", "hardworking"] },
+        "referenceTargetIds": ["hard-working", "lazy", "moody", "mean"],
+        "explanation": {
+          "en": "Studying every evening and weekend: hard-working.",
+          "fr": "Étudier tous les soirs et tous les week-ends : hard-working.",
+          "de": "Jeden Abend und jedes Wochenende lernen: hard-working."
+        }
+      },
+      "listeningOptionTargetIds": ["hard-working", "honest", "reliable", "lazy"]
+    },
+    {
+      "id": "selfish",
+      "term": "selfish",
+      "translations": { "fr": ["égoïste"], "de": ["egoistisch"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "selfish",
+      "examForms": ["selfish"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈselfɪʃ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Don't be selfish. Share the sweets with your brother.",
+        "translation": {
+          "fr": "Ne sois pas égoïste. Partage les bonbons avec ton frère.",
+          "de": "Sei nicht egoistisch. Teil die Süßigkeiten mit deinem Bruder."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Selfish describes someone who only thinks about themselves.",
+        "fr": "Selfish décrit quelqu’un qui ne pense qu’à lui-même.",
+        "de": "Selfish beschreibt jemanden, der nur an sich selbst denkt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He ate all the pizza and didn't leave any for us. He's so ",
+        "after": ".",
+        "accepted": { "answers": ["selfish"] },
+        "referenceTargetIds": ["selfish", "patient", "reliable", "honest"],
+        "explanation": {
+          "en": "Taking everything for himself: selfish.",
+          "fr": "Tout prendre pour soi : selfish.",
+          "de": "Alles für sich nehmen: selfish."
+        }
+      },
+      "listeningOptionTargetIds": ["selfish", "sensible", "cheeky", "moody"]
+    },
+    {
+      "id": "mean",
+      "term": "mean",
+      "translations": { "fr": ["radin"], "de": ["geizig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "mean",
+      "examForms": ["mean"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/miːn/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "He's too mean to buy his friends a coffee.",
+        "translation": {
+          "fr": "Il est trop radin pour offrir un café à ses amis.",
+          "de": "Er ist zu geizig, um seinen Freunden einen Kaffee zu kaufen."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Mean can also mean unkind: Don't be mean to your sister. The opposite of mean with money is generous.",
+        "fr": "Mean peut aussi vouloir dire méchant : Don't be mean to your sister. Le contraire de radin est generous.",
+        "de": "Mean kann auch gemein heißen: Don't be mean to your sister. Das Gegenteil von geizig ist generous."
+      },
+      "explanation": {
+        "en": "In British English, mean describes someone who doesn't like spending or giving money.",
+        "fr": "En anglais britannique, mean décrit quelqu’un qui n’aime pas dépenser ni donner d’argent.",
+        "de": "Im britischen Englisch beschreibt mean jemanden, der ungern Geld ausgibt oder gibt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She has lots of money but never gives a present to anyone. She's really ",
+        "after": ".",
+        "accepted": { "answers": ["mean"] },
+        "referenceTargetIds": ["mean", "patient", "hard-working", "ambitious"],
+        "explanation": {
+          "en": "Lots of money but never giving: mean.",
+          "fr": "Beaucoup d’argent mais ne donne jamais : mean.",
+          "de": "Viel Geld, aber gibt nie etwas: mean."
+        }
+      },
+      "listeningOptionTargetIds": ["mean", "moody", "lazy", "generous"]
+    },
+    {
+      "id": "cheeky",
+      "term": "cheeky",
+      "translations": { "fr": ["effronté"], "de": ["frech"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "cheeky",
+      "examForms": ["cheeky"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈtʃiːki/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "The cheeky boy asked the teacher how old she was.",
+        "translation": {
+          "fr": "Le garçon effronté a demandé à la maîtresse quel âge elle avait.",
+          "de": "Der freche Junge fragte die Lehrerin, wie alt sie sei."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Cheeky describes someone, often a child, who is a little rude, often in a funny way.",
+        "fr": "Cheeky décrit quelqu’un, souvent un enfant, un peu insolent, souvent de façon drôle.",
+        "de": "Cheeky beschreibt jemanden, oft ein Kind, der etwas unverschämt ist, oft auf lustige Art."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "My little sister always answers back to Mum with a smile. She's so ",
+        "after": ".",
+        "accepted": { "answers": ["cheeky"] },
+        "referenceTargetIds": ["cheeky", "reliable", "sensible", "generous"],
+        "explanation": {
+          "en": "Answering back with a smile: a bit rude but funny, cheeky.",
+          "fr": "Répondre avec un sourire : un peu insolent mais drôle, cheeky.",
+          "de": "Mit einem Lächeln widersprechen: etwas frech, aber lustig, cheeky."
+        }
+      },
+      "listeningOptionTargetIds": ["cheeky", "selfish", "bossy", "lazy"]
+    },
+    {
+      "id": "lazy",
+      "term": "lazy",
+      "translations": { "fr": ["paresseux"], "de": ["faul"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "lazy",
+      "examForms": ["lazy"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈleɪzi/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "My brother is too lazy to wash the dishes.",
+        "translation": {
+          "fr": "Mon frère est trop paresseux pour faire la vaisselle.",
+          "de": "Mein Bruder ist zu faul, um abzuwaschen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Lazy describes someone who doesn't want to work or make an effort.",
+        "fr": "Lazy décrit quelqu’un qui ne veut pas travailler ni faire d’effort.",
+        "de": "Lazy beschreibt jemanden, der nicht arbeiten oder sich anstrengen will."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He stays in bed until midday and never helps at home. He's so ",
+        "after": ".",
+        "accepted": { "answers": ["lazy"] },
+        "referenceTargetIds": ["lazy", "ambitious", "honest", "generous"],
+        "explanation": {
+          "en": "Staying in bed and never helping: lazy.",
+          "fr": "Rester au lit et ne jamais aider : lazy.",
+          "de": "Im Bett bleiben und nie helfen: lazy."
+        }
+      },
+      "listeningOptionTargetIds": ["lazy", "hard-working", "mean", "patient"]
+    },
+    {
+      "id": "impatient",
+      "term": "impatient",
+      "translations": { "fr": ["impatient"], "de": ["ungeduldig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "impatient",
+      "examForms": ["impatient"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɪmˈpeɪʃnt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Don't be so impatient! The bus will come soon.",
+        "translation": {
+          "fr": "Ne sois pas si impatient ! Le bus va bientôt arriver.",
+          "de": "Sei nicht so ungeduldig! Der Bus kommt gleich."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Impatient describes someone who hates waiting. It is the opposite of patient.",
+        "fr": "Impatient décrit quelqu’un qui déteste attendre. C’est le contraire de patient.",
+        "de": "Impatient beschreibt jemanden, der Warten hasst. Es ist das Gegenteil von patient."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "If the queue is long, she gets angry after one minute. She's very ",
+        "after": ".",
+        "accepted": { "answers": ["impatient"] },
+        "referenceTargetIds": ["impatient", "generous", "reliable", "sensible"],
+        "explanation": {
+          "en": "Angry after one minute of waiting: impatient.",
+          "fr": "Fâchée après une minute d’attente : impatient.",
+          "de": "Nach einer Minute Warten wütend: impatient."
+        }
+      },
+      "listeningOptionTargetIds": ["impatient", "patient", "ambitious", "honest"]
+    },
+    {
+      "id": "bossy",
+      "term": "bossy",
+      "translations": { "fr": ["autoritaire"], "de": ["herrisch"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "bossy",
+      "examForms": ["bossy"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈbɒsi/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "My older sister is bossy: she always tells me what to do.",
+        "translation": {
+          "fr": "Ma grande sœur est autoritaire : elle me dit toujours quoi faire.",
+          "de": "Meine große Schwester ist herrisch: Sie sagt mir immer, was ich tun soll."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Bossy describes someone who always tells other people what to do.",
+        "fr": "Bossy décrit quelqu’un qui dit toujours aux autres ce qu’ils doivent faire.",
+        "de": "Bossy beschreibt jemanden, der anderen immer sagt, was sie tun sollen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Stop giving everyone orders! Why are you so ",
+        "after": "?",
+        "accepted": { "answers": ["bossy"] },
+        "referenceTargetIds": ["bossy", "patient", "honest", "hard-working"],
+        "explanation": {
+          "en": "Giving everyone orders: bossy.",
+          "fr": "Donner des ordres à tout le monde : bossy.",
+          "de": "Allen Befehle geben: bossy."
+        }
+      },
+      "listeningOptionTargetIds": ["bossy", "moody", "cheeky", "selfish"]
+    },
+    {
+      "id": "moody",
+      "term": "moody",
+      "translations": { "fr": ["lunatique"], "de": ["launisch"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "moody",
+      "examForms": ["moody"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈmuːdi/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "He's quite moody: happy one minute, angry the next.",
+        "translation": {
+          "fr": "Il est assez lunatique : content une minute, fâché la suivante.",
+          "de": "Er ist ziemlich launisch: in einer Minute fröhlich, in der nächsten wütend."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Moody describes someone whose feelings change quickly, often to bad ones.",
+        "fr": "Moody décrit quelqu’un dont l’humeur change vite, souvent en mal.",
+        "de": "Moody beschreibt jemanden, dessen Laune sich schnell ändert, oft zum Schlechten."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "You never know if he'll be happy or angry. He's very ",
+        "after": ".",
+        "accepted": { "answers": ["moody"] },
+        "referenceTargetIds": ["moody", "generous", "ambitious", "reliable"],
+        "explanation": {
+          "en": "Happy or angry, you never know: moody.",
+          "fr": "Content ou fâché, on ne sait jamais : moody.",
+          "de": "Fröhlich oder wütend, man weiß es nie: moody."
+        }
+      },
+      "listeningOptionTargetIds": ["moody", "mean", "bossy", "lazy"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

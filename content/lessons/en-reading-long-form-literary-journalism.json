@@ -1,0 +1,409 @@
+{
+  "schemaVersion": 2,
+  "id": "en-reading-long-form-literary-journalism",
+  "lang": "en",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Reading long-form literary journalism",
+  "objective": {
+    "en": "Read a long narrative piece of journalism about a retired boxer and identify the techniques it borrows from fiction: scene, reconstructed dialogue and withheld information.",
+    "fr": "Lire un long article narratif sur un ancien boxeur et repérer les techniques empruntées à la fiction : scène, dialogue reconstitué et information retenue.",
+    "de": "Einen langen erzählenden Zeitungstext über einen ehemaligen Boxer lesen und die Techniken der Fiktion erkennen: Szene, rekonstruierter Dialog und zurückgehaltene Information."
+  },
+  "estimatedMinutes": 12,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:53:01.559Z",
+    "inputHashes": {
+      "outline": "4649816bd04c0b6f0a40f3b667b1c3e02e3f0ddd4f3ba8ec8d99ba9bd3ef1ff3",
+      "brief": "ef77097022bfdfc84b491c0b09a7204b4e40e2e7f0a8a08b789432347edb6bfb"
+    }
+  },
+  "kind": "reading",
+  "theme": "personal_identification",
+  "genre": "article",
+  "documents": [
+    {
+      "documentId": "main",
+      "title": "The Last Round of Eddie Marsh",
+      "meta": ["Hannah Okafor", "The Long Read"],
+      "paragraphs": [
+        "The gym on Corporation Road smells of damp leather and boiled sweets. At ten past six in the morning, before the shutters go up, a man in a faded cardigan is mopping the canvas of a ring nobody has fought in for eleven years. He works slowly, in long diagonal strokes, and he does not look up when the door bangs.",
+        "This is Eddie Marsh, who was, for three winters in the early nineties, the best middleweight in the north of England. He is seventy-one now, and famously taciturn. When I first wrote to him he replied with a single line on a postcard: 'Come if you like. Bring your own tea.'",
+        "I bring the tea. He drinks it standing up, still holding the mop, and tells me nothing for forty minutes. Then, without warning, he says, 'There was a man called Dennis Pryor. Hull. Nineteen ninety-three.' He stops, as if the sentence has cost him something, and returns to the floor. It is the first of many such offerings: a name, a place, a year, and then a silence you could stand a spoon in.",
+        "What follows is assembled from some thirty hours of conversation, from fight reports in the local paper, and from the recollections of the people who were there. Where I describe what was said in a corner between rounds, I am reconstructing it, as honestly as I can, from two witnesses who disagree about the second sentence.",
+        "The fight, when it comes, arrives without preamble. Round nine, a tired hall in Hull, the smell of cigarettes and wet coats. Marsh is ahead on every card but his left eye is closing, and in the corner his trainer, Walter Beck, leans in and says, 'You've got him. Don't be clever.' Marsh says nothing. He looks across the ring at Pryor, who is twenty-three and weeping with exhaustion, and he understands something he will spend thirty years declining to explain.",
+        "I ask him what it was. He gives me a wry smile, the kind a man gives a child who has asked where the sun goes at night. 'Doesn't matter,' he says. His reticence is not coyness; it is a kind of ethics, I begin to think, or perhaps a kind of fear. Either way, the story I have come for sits at the centre of the afternoon like a locked room, and everything else in the gym is arranged around its door.",
+        "So I look at the door instead. There are vestiges of the career everywhere, if you know where to look: a belt in a biscuit tin, a nose that has been broken in three different directions, a pair of gloves hung on a nail with the laces still tied. Marsh points to none of them. He talks, when he talks at all, about the bus timetable, about his late wife's allotment, about a pigeon that has taken up residence above the showers.",
+        "It is Beck's daughter, Maureen, who tells me, obliquely and over the phone, that I am asking the wrong question. 'You keep wanting to know what he did,' she says. 'Ask what he didn't do.' Then she hangs up, and I am left in a hired car outside a petrol station, holding a sentence I do not yet know how to use.",
+        "Back in the gym, Marsh has finished the floor. He wrings out the mop, hangs it on its hook, and says, to nobody in particular, 'Tea's gone cold.' I take this, for now, as an invitation."
+      ],
+      "highlights": [
+        { "keywordId": "taciturn", "text": "taciturn" },
+        { "keywordId": "wry", "text": "wry" },
+        { "keywordId": "vestiges", "text": "vestiges" },
+        { "keywordId": "obliquely", "text": "obliquely" },
+        { "keywordId": "reticence", "text": "reticence" }
+      ]
+    },
+    {
+      "documentId": "exam",
+      "title": "What the Ferryman Knew",
+      "meta": ["Tomas Reid", "Weekend Magazine"],
+      "paragraphs": [
+        "At dusk the ferry slips its moorings at Carrick Quay, and Alan Rudd, who has crossed this estuary some forty thousand times, stands at the wheel with a flask of coffee and the patience of a man who has long since stopped counting. There are six passengers tonight. He knows them all except one.",
+        "The exception sits alone at the stern, a woman in a grey raincoat with a suitcase between her feet. She has not looked at the water once. When Rudd comes aft to collect the fare she hands over exact change and says, 'I used to live over there. A long time ago.' Rudd, who is not a man for questions, nods and says the tide is turning.",
+        "It is the sort of exchange that a reporter would normally leave out. I include it because of what Rudd told me afterwards, in the pub, three pints into a story he had refused to tell for a year. The woman, he said, was the daughter of the last family evacuated from the island after the flood of 1987. He had recognised her chin. He had said nothing, because, in his words, 'some people come back to look, and some come back to be looked at, and you can't always tell which.'",
+        "On the crossing itself, though, the reader knows none of this. The scene ends as the lights of the far shore come up, the woman standing at last, her hand resting on the rail. Rudd lowers the ramp. She steps off without a word. I have chosen to let you watch her go, and to hold back, for another eleven paragraphs, the fact that her mother is buried a hundred yards from where she lands."
+      ],
+      "highlights": []
+    }
+  ],
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "exercise",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "flashcards",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Turn each card to learn the key words of the text.",
+            "fr": "Retournez chaque carte pour découvrir les mots clés du texte.",
+            "de": "Dreh jede Karte um und lerne die Schlüsselwörter des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_flashcards",
+              "itemId": "cards",
+              "keywordIds": ["taciturn", "wry", "vestiges", "obliquely", "reticence"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "matching",
+          "estimatedDurationS": 50,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each key word with its meaning.",
+            "fr": "Associez chaque mot clé à son sens.",
+            "de": "Ordne jedem Schlüsselwort seine Bedeutung zu."
+          },
+          "items": [
+            {
+              "type": "reading_keyword_matching",
+              "itemId": "matching",
+              "keywordIds": ["taciturn", "wry", "vestiges", "obliquely", "reticence"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skim",
+      "stage": "skim",
+      "role": "exercise",
+      "label": { "en": "Skim", "fr": "Survol", "de": "Überfliegen" },
+      "pages": [
+        {
+          "pageId": "skim",
+          "estimatedDurationS": 235,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Look over the document quickly. When the time is up it is put away; then answer the question.",
+            "fr": "Parcourez rapidement le document. À la fin du temps, il disparaît ; répondez ensuite à la question.",
+            "de": "Überfliege das Dokument. Wenn die Zeit um ist, verschwindet es; beantworte dann die Frage."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "skim-document",
+              "documentId": "main",
+              "view": "skim",
+              "skimSeconds": 215
+            },
+            {
+              "type": "reading_skim_choice",
+              "itemId": "skim-question",
+              "focus": "genre",
+              "question": "Which description best fits this piece of writing?",
+              "options": [
+                { "optionId": "o1", "text": "A neutral report of the result of a boxing match" },
+                {
+                  "optionId": "o2",
+                  "text": "A narrative feature that uses the methods of fiction"
+                },
+                {
+                  "optionId": "o3",
+                  "text": "A transcript of an interview with minimal commentary"
+                },
+                { "optionId": "o4", "text": "An obituary written shortly after a death" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "The piece has scenes, dialogue and a withheld secret, and the writer appears as a character: it is narrative feature writing, not a match report, a transcript or an obituary.",
+                "fr": "Le texte contient des scènes, des dialogues et un secret retenu, et l’auteure est un personnage : c’est un reportage narratif, pas un compte rendu de match, une transcription ou une nécrologie.",
+                "de": "Der Text hat Szenen, Dialoge und ein zurückgehaltenes Geheimnis, und die Autorin tritt als Figur auf: Es ist eine erzählende Reportage, kein Spielbericht, Transkript oder Nachruf."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "detail",
+      "stage": "detail",
+      "role": "exercise",
+      "label": { "en": "Detail", "fr": "Détails", "de": "Details" },
+      "pages": [
+        {
+          "pageId": "detail",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the document carefully and answer the questions.",
+            "fr": "Lisez le document attentivement et répondez aux questions.",
+            "de": "Lies das Dokument genau und beantworte die Fragen."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "detail-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-reply",
+              "question": "How does Marsh respond when the writer first contacts him?",
+              "options": [
+                { "optionId": "o1", "text": "He sends a postcard that invites her on his terms" },
+                { "optionId": "o2", "text": "He refuses to see her until she apologises" },
+                { "optionId": "o3", "text": "He writes a long letter about his career" },
+                { "optionId": "o4", "text": "He telephones Maureen to arrange a meeting" }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "His one-line postcard, 'Come if you like. Bring your own tea,' is brief and conditional, which fits the label taciturn.",
+                "fr": "Sa carte d’une ligne, 'Come if you like. Bring your own tea', est brève et conditionnelle, ce qui correspond à taciturn.",
+                "de": "Seine einzeilige Postkarte, 'Come if you like. Bring your own tea', ist knapp und an Bedingungen geknüpft, passend zu taciturn."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-method",
+              "question": "Why does the writer admit that the corner dialogue is reconstructed?",
+              "options": [
+                { "optionId": "o1", "text": "Because she could not hear Marsh over the crowd" },
+                { "optionId": "o2", "text": "Because the editor demanded a disclaimer" },
+                { "optionId": "o3", "text": "Because her witnesses disagree about what was said" },
+                { "optionId": "o4", "text": "Because Marsh forbade her to quote Beck" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "She says she works from two witnesses who disagree about the second sentence, so the exact words cannot be guaranteed. The admission is honest, not apologetic.",
+                "fr": "Elle dit s’appuyer sur deux témoins en désaccord sur la deuxième phrase : les mots exacts ne sont pas garantis. L’aveu est honnête, non une excuse.",
+                "de": "Sie stützt sich auf zwei Zeugen, die über den zweiten Satz uneins sind, daher sind die genauen Worte nicht gesichert. Das Geständnis ist ehrlich, nicht entschuldigend."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "q-pryor",
+              "statement": "Marsh explains to the writer what he understood during the fight against Pryor.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: he says 'Doesn't matter' and changes the subject. The secret is withheld from both the writer and the reader.",
+                "fr": "Faux : il répond 'Doesn't matter' et change de sujet. Le secret est retenu, pour l’auteure comme pour le lecteur.",
+                "de": "Falsch: Er sagt 'Doesn't matter' und wechselt das Thema. Das Geheimnis bleibt der Autorin und dem Leser vorenthalten."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "q-maureen",
+              "question": "What does Maureen’s remark, 'Ask what he didn't do', suggest?",
+              "options": [
+                { "optionId": "o1", "text": "That Marsh never really fought Pryor" },
+                {
+                  "optionId": "o2",
+                  "text": "That the answer lies in something Marsh held back from doing"
+                },
+                { "optionId": "o3", "text": "That the writer has asked too few questions" },
+                { "optionId": "o4", "text": "That Beck regretted his advice in the corner" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "Combined with Beck’s 'Don't be clever' and Marsh’s weeping opponent, it hints that the key moment was an action he chose not to take. The writer leaves it unsaid.",
+                "fr": "Avec le 'Don't be clever' de Beck et l’adversaire en larmes, elle laisse penser que le moment clé est un geste que Marsh a choisi de ne pas faire. L’auteure ne le dit pas.",
+                "de": "Zusammen mit Becks 'Don't be clever' und dem weinenden Gegner deutet sie an, dass der Schlüsselmoment eine Handlung war, die Marsh unterließ. Die Autorin sagt es nicht."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "structure",
+      "stage": "structure",
+      "role": "exercise",
+      "label": { "en": "Structure", "fr": "Structure", "de": "Aufbau" },
+      "pages": [
+        {
+          "pageId": "structure",
+          "estimatedDurationS": 75,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the information in the order the text gives it.",
+            "fr": "Remettez les informations dans l’ordre du texte.",
+            "de": "Bring die Informationen in die Reihenfolge des Textes."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "structure-document",
+              "documentId": "main",
+              "view": "open",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_order",
+              "itemId": "order",
+              "pieces": [
+                { "pieceId": "p4", "text": "The Hull fight is told as a present-tense scene." },
+                { "pieceId": "p2", "text": "Marsh’s curt postcard reply is quoted." },
+                { "pieceId": "p5", "text": "A trainer’s daughter says the question is wrong." },
+                { "pieceId": "p1", "text": "A man mops the ring in an empty gym." },
+                { "pieceId": "p3", "text": "The writer admits some scenes are reconstructed." }
+              ],
+              "acceptedOrders": [["p1", "p2", "p3", "p4", "p5"]],
+              "answerExplanation": {
+                "en": "The text opens on the mopping scene, quotes the postcard, then steps back to admit its method, dramatises the fight, and later comes to Maureen’s phone call.",
+                "fr": "Le texte s’ouvre sur la scène du ring, cite la carte, puis recule pour avouer sa méthode, dramatise le combat et en vient plus tard à l’appel de Maureen.",
+                "de": "Der Text beginnt mit der Szene am Ring, zitiert die Postkarte, tritt dann zurück und gesteht seine Methode, dramatisiert den Kampf und kommt später zu Maureens Anruf."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam",
+          "estimatedDurationS": 204,
+          "timeLimitS": 310,
+          "instructions": {
+            "en": "Read the new document and answer the questions. No help this time.",
+            "fr": "Lisez le nouveau document et répondez aux questions. Cette fois, sans aide.",
+            "de": "Lies das neue Dokument und beantworte die Fragen. Diesmal ohne Hilfe."
+          },
+          "items": [
+            {
+              "type": "reading_document",
+              "itemId": "exam-document",
+              "documentId": "exam",
+              "view": "exam",
+              "skimSeconds": null
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-include",
+              "question": "Why does the narrator include the exchange on the ferry, though a reporter would normally leave it out?",
+              "options": [
+                { "optionId": "o1", "text": "It was the only conversation he overheard" },
+                { "optionId": "o2", "text": "It gains meaning from what Rudd revealed later" },
+                { "optionId": "o3", "text": "The editor insisted on a lighter moment" },
+                { "optionId": "o4", "text": "It proves the ferry was unsafe" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "The narrator says he includes it 'because of what Rudd told me afterwards'. A small exchange becomes significant in hindsight.",
+                "fr": "Le narrateur l’inclut 'because of what Rudd told me afterwards'. Un échange banal prend du sens après coup.",
+                "de": "Der Erzähler nimmt ihn auf 'because of what Rudd told me afterwards'. Ein kleiner Wortwechsel gewinnt im Rückblick Bedeutung."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-identity",
+              "statement": "The reader learns who the woman is during the crossing itself.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: the narrator says the reader knows none of this on the crossing and holds the fact back for another eleven paragraphs.",
+                "fr": "Faux : le narrateur dit que le lecteur ignore tout pendant la traversée et retient le fait pendant onze paragraphes de plus.",
+                "de": "Falsch: Der Erzähler sagt, der Leser wisse während der Überfahrt nichts davon, und hält die Tatsache noch elf Absätze lang zurück."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-ending",
+              "question": "What is the effect of ending the scene as she steps off without a word?",
+              "options": [
+                { "optionId": "o1", "text": "It closes the story so the reader forgets her" },
+                { "optionId": "o2", "text": "It shows that Rudd disapproves of her" },
+                { "optionId": "o3", "text": "It proves she was only a stranger" },
+                {
+                  "optionId": "o4",
+                  "text": "It leaves tension: the reader senses significance without explanation"
+                }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "The silent departure gives no explanation, so curiosity is created and held, as in a short story. Nothing suggests disapproval or that she was a stranger.",
+                "fr": "Ce départ silencieux n’explique rien : la curiosité naît et se maintient, comme dans une nouvelle. Rien n’indique de la désapprobation ni qu’elle soit une inconnue.",
+                "de": "Der stumme Abgang erklärt nichts, so entsteht und bleibt Neugier, wie in einer Kurzgeschichte. Nichts deutet auf Missbilligung hin oder darauf, dass sie eine Fremde war."
+              }
+            },
+            {
+              "type": "reading_true_false",
+              "itemId": "x-pub",
+              "statement": "Rudd told the story to the narrator as soon as they met.",
+              "answer": "false",
+              "answerExplanation": {
+                "en": "False: he had refused to tell the story for a year and only did so three pints into an evening.",
+                "fr": "Faux : il avait refusé de raconter l’histoire pendant un an et ne l’a fait qu’après trois pintes.",
+                "de": "Falsch: Er hatte sich ein Jahr lang geweigert, die Geschichte zu erzählen, und tat es erst nach drei Pints."
+              }
+            },
+            {
+              "type": "reading_choice",
+              "itemId": "x-quote",
+              "question": "Which technique is most evident in Rudd’s remark about people who come back 'to look' or 'to be looked at'?",
+              "options": [
+                { "optionId": "o1", "text": "A statistical summary of returning islanders" },
+                { "optionId": "o2", "text": "A neutral list of verified facts" },
+                {
+                  "optionId": "o3",
+                  "text": "Speech that lets a character’s own voice carry the theme"
+                },
+                { "optionId": "o4", "text": "An editorial opinion from the narrator" }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "The narrator quotes Rudd’s words directly, so a character’s voice expresses the idea, as in fiction, rather than the narrator stating it.",
+                "fr": "Le narrateur cite directement Rudd : c’est la voix d’un personnage qui exprime l’idée, comme dans la fiction, plutôt que le narrateur.",
+                "de": "Der Erzähler zitiert Rudd direkt: Die Stimme einer Figur drückt den Gedanken aus, wie in der Fiktion, statt des Erzählers."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

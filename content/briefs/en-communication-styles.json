@@ -1,0 +1,588 @@
+{
+  "schemaVersion": 2,
+  "id": "en-communication-styles",
+  "lang": "en",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Communication styles",
+  "objective": {
+    "en": "Describe how people speak and express themselves with twelve precise adjectives such as blunt, tactful, evasive and reticent.",
+    "fr": "Décrire la façon dont les gens s’expriment avec douze adjectifs précis comme blunt, tactful, evasive et reticent.",
+    "de": "Beschreiben, wie Menschen sich ausdrücken, mit zwölf präzisen Adjektiven wie blunt, tactful, evasive und reticent."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:48:58.590Z",
+    "inputHashes": { "outline": "825e52b3a95f01385ca9ca602402afd4206b500f0183c7780ec9107ba6fe585f" }
+  },
+  "kind": "vocabulary",
+  "theme": "relations",
+  "coverageNotes": {
+    "en": "Twelve adjectives describing speaking styles: directness and tact, openness and reserve, and fluency and vagueness.",
+    "fr": "Douze adjectifs décrivant les styles de parole : franchise et tact, ouverture et réserve, aisance et flou.",
+    "de": "Zwölf Adjektive für Sprechstile: Direktheit und Takt, Offenheit und Zurückhaltung, Gewandtheit und Vagheit."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words match the outline and split into two groups of six for manageable matching and exam pages.",
+    "fr": "Douze mots correspondent au plan et se répartissent en deux groupes de six pour des pages gérables.",
+    "de": "Zwölf Wörter entsprechen der Gliederung und bilden zwei Gruppen zu sechs für übersichtliche Seiten."
+  },
+  "difficultyBalance": {
+    "en": "Mostly demanding C1 words; the near-synonyms blunt, candid and outspoken are contrasted on purpose.",
+    "fr": "Surtout des mots exigeants de niveau C1 ; les quasi-synonymes blunt, candid et outspoken sont volontairement opposés.",
+    "de": "Überwiegend anspruchsvolle C1-Wörter; die Beinahe-Synonyme blunt, candid und outspoken werden bewusst gegenübergestellt."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "directness",
+      "label": {
+        "en": "Direct, tactful or reserved",
+        "fr": "Direct, plein de tact ou réservé",
+        "de": "Direkt, taktvoll oder zurückhaltend"
+      },
+      "targetIds": ["blunt", "tactful", "outspoken", "candid", "curt", "reticent"],
+      "introduction": {
+        "en": "Six adjectives for **how directly people say things**:\n\n- `blunt`: says things without softening them\n- `tactful`: careful not to hurt anyone’s feelings\n- `outspoken`: freely gives strong opinions\n- `candid`: honest and open\n- `curt`: rudely short and abrupt\n- `reticent`: unwilling to share thoughts",
+        "fr": "Six adjectifs pour dire **avec quelle franchise on s’exprime** :\n\n- `blunt` : dit les choses sans les adoucir\n- `tactful` : attentif à ne blesser personne\n- `outspoken` : donne librement des opinions tranchées\n- `candid` : honnête et ouvert\n- `curt` : sec et abrupt, de façon impolie\n- `reticent` : peu enclin à partager ses pensées",
+        "de": "Sechs Adjektive dafür, **wie direkt Menschen etwas sagen**:\n\n- `blunt`: sagt Dinge ohne sie abzumildern\n- `tactful`: achtet darauf, niemanden zu verletzen\n- `outspoken`: äußert offen starke Meinungen\n- `candid`: ehrlich und offen\n- `curt`: unhöflich knapp und abrupt\n- `reticent`: nicht bereit, Gedanken zu teilen"
+      }
+    },
+    {
+      "id": "clarity",
+      "label": {
+        "en": "Clear, vague or fluent",
+        "fr": "Clair, vague ou aisé",
+        "de": "Klar, vage oder gewandt"
+      },
+      "targetIds": ["evasive", "guarded", "long-winded", "articulate", "glib", "inarticulate"],
+      "introduction": {
+        "en": "Six adjectives for **how clearly and openly people express themselves**:\n\n- `evasive`: avoids giving a direct answer\n- `guarded`: careful not to reveal too much\n- `long-winded`: uses far too many words\n- `articulate`: expresses ideas clearly and well\n- `glib`: speaks easily but not sincerely\n- `inarticulate`: unable to express oneself clearly",
+        "fr": "Six adjectifs pour dire **avec quelle clarté et quelle ouverture on s’exprime** :\n\n- `evasive` : évite de répondre directement\n- `guarded` : prend soin de ne pas trop en dire\n- `long-winded` : utilise beaucoup trop de mots\n- `articulate` : exprime ses idées clairement et bien\n- `glib` : parle avec facilité mais sans sincérité\n- `inarticulate` : incapable de s’exprimer clairement",
+        "de": "Sechs Adjektive dafür, **wie klar und offen Menschen sich ausdrücken**:\n\n- `evasive`: vermeidet eine direkte Antwort\n- `guarded`: achtet darauf, nicht zu viel zu verraten\n- `long-winded`: braucht viel zu viele Worte\n- `articulate`: drückt Gedanken klar und gut aus\n- `glib`: spricht leicht, aber nicht aufrichtig\n- `inarticulate`: unfähig, sich klar auszudrücken"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "blunt",
+      "term": "blunt",
+      "translations": { "fr": ["franc, sans ménagement"], "de": ["unverblümt", "direkt"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "blunt",
+      "examForms": ["blunt"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/blʌnt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He was blunt about the report: it was simply not good enough.",
+        "translation": {
+          "fr": "Il a été sans ménagement à propos du rapport : il n’était tout simplement pas assez bon.",
+          "de": "Er war unverblümt, was den Bericht anging: Er war einfach nicht gut genug."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Blunt describes someone who says things directly, without softening them.",
+        "fr": "Blunt décrit une personne qui dit les choses directement, sans les adoucir.",
+        "de": "Blunt beschreibt jemanden, der Dinge direkt sagt, ohne sie abzumildern."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Her feedback was so ",
+        "after": " that half the team left the meeting upset.",
+        "accepted": { "answers": ["blunt"] },
+        "referenceTargetIds": ["blunt", "tactful", "evasive", "articulate"],
+        "explanation": {
+          "en": "Only blunt fits: feedback that upsets people is not softened.",
+          "fr": "Seul blunt convient : des remarques qui contrarient ne sont pas adoucies.",
+          "de": "Nur blunt passt: Rückmeldungen, die verärgern, sind nicht abgemildert."
+        }
+      },
+      "listeningOptionTargetIds": ["blunt", "glib", "curt", "guarded"]
+    },
+    {
+      "id": "tactful",
+      "term": "tactful",
+      "translations": { "fr": ["plein de tact", "diplomate"], "de": ["taktvoll", "feinfühlig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "tactful",
+      "examForms": ["tactful"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈtæktfəl/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "It was tactful of her not to mention his mistake in front of everyone.",
+        "translation": {
+          "fr": "Elle a fait preuve de tact en ne mentionnant pas son erreur devant tout le monde.",
+          "de": "Es war taktvoll von ihr, seinen Fehler nicht vor allen zu erwähnen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Tactful describes someone who speaks carefully so as not to offend or hurt others.",
+        "fr": "Tactful décrit une personne qui parle avec précaution pour ne pas offenser ni blesser.",
+        "de": "Tactful beschreibt jemanden, der vorsichtig spricht, um niemanden zu kränken."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He was always ",
+        "after": ", phrasing even harsh criticism so gently that nobody felt hurt.",
+        "accepted": { "answers": ["tactful"] },
+        "referenceTargetIds": ["tactful", "blunt", "curt", "outspoken"],
+        "explanation": {
+          "en": "Only tactful fits: gentle phrasing that hurts nobody is tact.",
+          "fr": "Seul tactful convient : une formulation douce qui ne blesse personne est du tact.",
+          "de": "Nur tactful passt: sanfte Formulierungen, die niemanden verletzen, sind Takt."
+        }
+      },
+      "listeningOptionTargetIds": ["tactful", "curt", "candid", "reticent"]
+    },
+    {
+      "id": "outspoken",
+      "term": "outspoken",
+      "translations": { "fr": ["qui a son franc-parler"], "de": ["freimütig", "offen"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "outspoken",
+      "examForms": ["outspoken"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌaʊtˈspəʊkən/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "She is an outspoken supporter of the new law.",
+        "translation": {
+          "fr": "Elle soutient la nouvelle loi avec un franc-parler assumé.",
+          "de": "Sie ist eine freimütige Befürworterin des neuen Gesetzes."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Outspoken describes someone who states strong opinions openly, even when they are controversial.",
+        "fr": "Outspoken décrit une personne qui exprime ouvertement des opinions tranchées, même controversées.",
+        "de": "Outspoken beschreibt jemanden, der starke Meinungen offen äußert, auch wenn sie umstritten sind."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She is an ",
+        "after": " critic of the government and never hesitates to say so in public.",
+        "accepted": { "answers": ["outspoken"] },
+        "referenceTargetIds": ["outspoken", "tactful", "curt", "evasive"],
+        "explanation": {
+          "en": "Only outspoken fits: she says what she thinks in public without hesitation.",
+          "fr": "Seul outspoken convient : elle dit publiquement ce qu’elle pense sans hésiter.",
+          "de": "Nur outspoken passt: Sie sagt öffentlich ohne Zögern, was sie denkt."
+        }
+      },
+      "listeningOptionTargetIds": ["outspoken", "tactful", "evasive", "articulate"]
+    },
+    {
+      "id": "candid",
+      "term": "candid",
+      "translations": { "fr": ["sincère", "franc"], "de": ["aufrichtig", "ehrlich"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "candid",
+      "examForms": ["candid"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈkændɪd/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "To be candid, I was disappointed with the result.",
+        "translation": {
+          "fr": "Pour être sincère, j’ai été déçu du résultat.",
+          "de": "Um ehrlich zu sein: Ich war vom Ergebnis enttäuscht."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Candid is about honesty and openness; blunt adds a lack of softening.",
+        "fr": "Candid renvoie à l’honnêteté et à l’ouverture ; blunt ajoute l’absence d’adoucissement.",
+        "de": "Candid betont Ehrlichkeit und Offenheit; blunt kommt noch ohne jede Abmilderung hinzu."
+      },
+      "explanation": {
+        "en": "Candid describes someone who is honest and open about what they really think.",
+        "fr": "Candid décrit une personne honnête et ouverte sur ce qu’elle pense vraiment.",
+        "de": "Candid beschreibt jemanden, der ehrlich und offen sagt, was er wirklich denkt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "In a surprisingly ",
+        "after": " interview, the manager admitted that he had made serious mistakes.",
+        "accepted": { "answers": ["candid"] },
+        "referenceTargetIds": ["candid", "evasive", "guarded", "curt"],
+        "explanation": {
+          "en": "Only candid fits: admitting mistakes openly is a sign of honesty.",
+          "fr": "Seul candid convient : admettre ses erreurs ouvertement est un signe d’honnêteté.",
+          "de": "Nur candid passt: Fehler offen zuzugeben zeugt von Ehrlichkeit."
+        }
+      },
+      "listeningOptionTargetIds": ["candid", "curt", "guarded", "glib"]
+    },
+    {
+      "id": "curt",
+      "term": "curt",
+      "translations": { "fr": ["sec, laconique"], "de": ["kurz angebunden", "barsch"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "curt",
+      "examForms": ["curt"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kɜːt/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "His curt reply made it clear that he did not want to talk.",
+        "translation": {
+          "fr": "Sa réponse sèche montrait clairement qu’il ne voulait pas parler.",
+          "de": "Seine kurz angebundene Antwort machte klar, dass er nicht reden wollte."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Curt describes a reply that is so short that it sounds rude or unfriendly.",
+        "fr": "Curt décrit une réponse si brève qu’elle paraît impolie ou peu aimable.",
+        "de": "Curt beschreibt eine Antwort, die so kurz ist, dass sie unhöflich oder unfreundlich wirkt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "His ",
+        "after": " reply, just three words, made it clear that he did not want to chat.",
+        "accepted": { "answers": ["curt"] },
+        "referenceTargetIds": ["curt", "long-winded", "tactful", "articulate"],
+        "explanation": {
+          "en": "Only curt fits: a three-word reply that discourages conversation is curt.",
+          "fr": "Seul curt convient : une réponse de trois mots qui décourage la conversation est sèche.",
+          "de": "Nur curt passt: Eine Antwort aus drei Wörtern, die jedes Gespräch abwürgt, ist barsch."
+        }
+      },
+      "listeningOptionTargetIds": ["curt", "blunt", "candid", "guarded"]
+    },
+    {
+      "id": "reticent",
+      "term": "reticent",
+      "translations": {
+        "fr": ["réservé", "peu communicatif"],
+        "de": ["zurückhaltend", "verschlossen"]
+      },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "reticent",
+      "examForms": ["reticent"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈretɪsənt/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "He was reticent about his past and rarely spoke of his family.",
+        "translation": {
+          "fr": "Il restait réservé sur son passé et parlait rarement de sa famille.",
+          "de": "Er war zurückhaltend, was seine Vergangenheit anging, und sprach selten über seine Familie."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Reticent means unwilling to speak about something; it is not the same as reluctant.",
+        "fr": "Reticent signifie peu disposé à parler de quelque chose ; ce n’est pas la même chose que reluctant.",
+        "de": "Reticent heißt, nicht bereit zu sein, über etwas zu sprechen; es ist nicht dasselbe wie reluctant."
+      },
+      "explanation": {
+        "en": "Reticent describes someone who is unwilling to speak openly about their thoughts or feelings.",
+        "fr": "Reticent décrit une personne peu disposée à parler ouvertement de ses pensées ou de ses sentiments.",
+        "de": "Reticent beschreibt jemanden, der nicht bereit ist, offen über Gedanken oder Gefühle zu sprechen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Normally chatty, Tom was strangely ",
+        "after": " about his new job and would not say how it was going.",
+        "accepted": { "answers": ["reticent"] },
+        "referenceTargetIds": ["reticent", "outspoken", "blunt", "long-winded"],
+        "explanation": {
+          "en": "Only reticent fits: he is unwilling to say anything about the job.",
+          "fr": "Seul reticent convient : il refuse de dire quoi que ce soit sur son travail.",
+          "de": "Nur reticent passt: Er will über die Arbeit nichts sagen."
+        }
+      },
+      "listeningOptionTargetIds": ["reticent", "evasive", "tactful", "articulate"]
+    },
+    {
+      "id": "evasive",
+      "term": "evasive",
+      "translations": { "fr": ["évasif"], "de": ["ausweichend"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "evasive",
+      "examForms": ["evasive"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɪˈveɪsɪv/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "The witness was evasive when the lawyer asked where he had been.",
+        "translation": {
+          "fr": "Le témoin est resté évasif quand l’avocat lui a demandé où il était.",
+          "de": "Der Zeuge blieb ausweichend, als der Anwalt ihn fragte, wo er gewesen sei."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Evasive describes an answer that avoids the question instead of answering it directly.",
+        "fr": "Evasive décrit une réponse qui évite la question au lieu d’y répondre directement.",
+        "de": "Evasive beschreibt eine Antwort, die der Frage ausweicht, statt direkt zu antworten."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Asked directly about the missing money, the minister gave an ",
+        "after": " answer and changed the subject.",
+        "accepted": { "answers": ["evasive"] },
+        "referenceTargetIds": ["evasive", "candid", "blunt", "articulate"],
+        "explanation": {
+          "en": "Only evasive fits: changing the subject avoids a direct answer.",
+          "fr": "Seul evasive convient : changer de sujet évite une réponse directe.",
+          "de": "Nur evasive passt: Das Thema zu wechseln heißt, einer direkten Antwort auszuweichen."
+        }
+      },
+      "listeningOptionTargetIds": ["evasive", "reticent", "outspoken", "guarded"]
+    },
+    {
+      "id": "guarded",
+      "term": "guarded",
+      "translations": { "fr": ["sur ses gardes", "prudent"], "de": ["vorsichtig", "zugeknöpft"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "guarded",
+      "examForms": ["guarded"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɡɑːdɪd/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Her answers were guarded, and she revealed very little.",
+        "translation": {
+          "fr": "Ses réponses étaient prudentes et elle en révélait très peu.",
+          "de": "Ihre Antworten waren vorsichtig, und sie verriet nur sehr wenig."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Guarded describes someone who speaks carefully so as not to reveal too much.",
+        "fr": "Guarded décrit une personne qui parle avec prudence pour ne pas en révéler trop.",
+        "de": "Guarded beschreibt jemanden, der vorsichtig spricht, um nicht zu viel preiszugeben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "After being misquoted, she became ",
+        "after": " in interviews, weighing every word before she answered.",
+        "accepted": { "answers": ["guarded"] },
+        "referenceTargetIds": ["guarded", "outspoken", "long-winded", "glib"],
+        "explanation": {
+          "en": "Only guarded fits: weighing every word shows she is careful not to reveal too much.",
+          "fr": "Seul guarded convient : peser chaque mot montre qu’elle veille à ne pas en dire trop.",
+          "de": "Nur guarded passt: Jedes Wort abzuwägen zeigt, dass sie nicht zu viel verraten will."
+        }
+      },
+      "listeningOptionTargetIds": ["guarded", "blunt", "glib", "candid"]
+    },
+    {
+      "id": "long-winded",
+      "term": "long-winded",
+      "translations": { "fr": ["verbeux", "prolixe"], "de": ["langatmig", "weitschweifig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "long-winded",
+      "examForms": ["long-winded"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌlɒŋ ˈwɪndɪd/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "The professor’s long-winded explanation confused everyone.",
+        "translation": {
+          "fr": "L’explication verbeuse du professeur a embrouillé tout le monde.",
+          "de": "Die langatmige Erklärung des Professors verwirrte alle."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Long-winded describes speech or writing that uses far more words than necessary.",
+        "fr": "Long-winded décrit un discours ou un texte qui utilise bien plus de mots que nécessaire.",
+        "de": "Long-winded beschreibt Reden oder Schreiben, das weit mehr Worte braucht als nötig."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "His ",
+        "after": " speech lasted an hour and could have been said in five minutes.",
+        "accepted": { "answers": ["long-winded"] },
+        "referenceTargetIds": ["long-winded", "curt", "tactful", "inarticulate"],
+        "explanation": {
+          "en": "Only long-winded fits: a speech that takes an hour for five minutes of content.",
+          "fr": "Seul long-winded convient : un discours d’une heure pour cinq minutes de contenu.",
+          "de": "Nur long-winded passt: Eine Rede, die eine Stunde für fünf Minuten Inhalt braucht."
+        }
+      },
+      "listeningOptionTargetIds": ["long-winded", "outspoken", "articulate", "curt"]
+    },
+    {
+      "id": "articulate",
+      "term": "articulate",
+      "translations": { "fr": ["qui s’exprime clairement"], "de": ["redegewandt"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "articulate",
+      "examForms": ["articulate"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɑːˈtɪkjʊlət/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "She is an articulate speaker who can explain difficult ideas simply.",
+        "translation": {
+          "fr": "C’est une oratrice qui s’exprime clairement et sait expliquer des idées difficiles simplement.",
+          "de": "Sie ist eine redegewandte Sprecherin, die schwierige Ideen einfach erklären kann."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Articulate describes someone who expresses ideas clearly and effectively in words.",
+        "fr": "Articulate décrit une personne qui exprime ses idées avec clarté et efficacité.",
+        "de": "Articulate beschreibt jemanden, der Gedanken klar und wirkungsvoll in Worte fasst."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She is remarkably ",
+        "after": " for her age and explains complex ideas clearly and precisely.",
+        "accepted": { "answers": ["articulate"] },
+        "referenceTargetIds": ["articulate", "inarticulate", "evasive", "guarded"],
+        "explanation": {
+          "en": "Only articulate fits: explaining complex ideas clearly is the sign of an articulate speaker.",
+          "fr": "Seul articulate convient : expliquer clairement des idées complexes est la marque de cette qualité.",
+          "de": "Nur articulate passt: Komplexe Ideen klar zu erklären zeichnet gute Redner aus."
+        }
+      },
+      "listeningOptionTargetIds": ["articulate", "inarticulate", "reticent", "tactful"]
+    },
+    {
+      "id": "glib",
+      "term": "glib",
+      "translations": { "fr": ["trop facile, peu sincère"], "de": ["aalglatt", "oberflächlich"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "glib",
+      "examForms": ["glib"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡlɪb/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "His glib reply sounded rehearsed and not at all sincere.",
+        "translation": {
+          "fr": "Sa réponse trop facile semblait répétée et pas du tout sincère.",
+          "de": "Seine aalglatte Antwort klang einstudiert und überhaupt nicht aufrichtig."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Glib describes words that come easily but sound shallow or insincere.",
+        "fr": "Glib décrit des paroles qui viennent facilement mais semblent superficielles ou peu sincères.",
+        "de": "Glib beschreibt Worte, die leicht fallen, aber oberflächlich oder unaufrichtig klingen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "His ",
+        "after": " answers sounded impressive, but there was no real thought or sincerity behind them.",
+        "accepted": { "answers": ["glib"] },
+        "referenceTargetIds": ["glib", "candid", "reticent", "tactful"],
+        "explanation": {
+          "en": "Only glib fits: impressive-sounding words with no sincerity behind them.",
+          "fr": "Seul glib convient : des paroles impressionnantes sans sincérité derrière.",
+          "de": "Nur glib passt: Beeindruckend klingende Worte ohne Aufrichtigkeit dahinter."
+        }
+      },
+      "listeningOptionTargetIds": ["glib", "blunt", "guarded", "candid"]
+    },
+    {
+      "id": "inarticulate",
+      "term": "inarticulate",
+      "translations": { "fr": ["qui s’exprime mal"], "de": ["unbeholfen im Ausdruck"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "inarticulate",
+      "examForms": ["inarticulate"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌɪnɑːˈtɪkjʊlət/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "He felt inarticulate with rage and could not find the right words.",
+        "translation": {
+          "fr": "Il s’exprimait mal sous l’effet de la rage et ne trouvait pas les mots justes.",
+          "de": "Er war vor Wut unbeholfen im Ausdruck und fand nicht die richtigen Worte."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Inarticulate describes someone who cannot express thoughts or feelings clearly in words.",
+        "fr": "Inarticulate décrit une personne qui ne parvient pas à exprimer clairement ses pensées ou ses sentiments.",
+        "de": "Inarticulate beschreibt jemanden, der Gedanken oder Gefühle nicht klar in Worte fassen kann."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Furious and ",
+        "after": " with shock, he could only stammer a few broken words.",
+        "accepted": { "answers": ["inarticulate"] },
+        "referenceTargetIds": ["inarticulate", "articulate", "tactful", "long-winded"],
+        "explanation": {
+          "en": "Only inarticulate fits: he can only stammer, so he cannot express himself.",
+          "fr": "Seul inarticulate convient : il ne peut que bégayer, donc il ne parvient pas à s’exprimer.",
+          "de": "Nur inarticulate passt: Er kann nur stammeln und sich daher nicht ausdrücken."
+        }
+      },
+      "listeningOptionTargetIds": ["inarticulate", "articulate", "reticent", "evasive"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

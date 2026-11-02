@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 2,
+  "id": "en-reading-a-long-magazine-profile-of-a-chef",
+  "lang": "en",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Reading a long magazine profile of a chef",
+  "objective": {
+    "en": "Read a long magazine profile of a chef and infer her personality from the details the writer chooses to show: habits, small gestures and what other people say.",
+    "fr": "Lire un long portrait de chef dans un magazine et déduire sa personnalité à partir des détails que l’auteur choisit de montrer : habitudes, petits gestes, témoignages.",
+    "de": "Ein langes Magazinporträt einer Köchin lesen und ihre Persönlichkeit aus den Details erschließen, die der Autor zeigt: Gewohnheiten, kleine Gesten und Aussagen anderer."
+  },
+  "estimatedMinutes": 12,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:50:25.816Z",
+    "inputHashes": { "outline": "82fbb58d91e5e2cc9ea7c34837f04a002f8361087899942014c9c81733006226" }
+  },
+  "kind": "reading",
+  "theme": "personal_identification",
+  "genre": "article",
+  "situation": {
+    "en": "A magazine writer spends a morning in the kitchen of a three-star restaurant and portrays its chef through what he sees and hears, not through labels.",
+    "fr": "Un journaliste passe une matinée dans la cuisine d’un restaurant trois étoiles et dresse le portrait de la cheffe par ce qu’il voit et entend, sans étiquettes.",
+    "de": "Ein Magazinautor verbringt einen Morgen in der Küche eines Drei-Sterne-Restaurants und porträtiert die Chefköchin durch das, was er sieht und hört, nicht durch Etiketten."
+  },
+  "readerTask": {
+    "en": "Infer the chef’s personality from the scenes, gestures and quotations the writer selects, and follow the order in which the profile presents them.",
+    "fr": "Déduire la personnalité de la cheffe à partir des scènes, des gestes et des citations choisis par l’auteur, et suivre l’ordre dans lequel le portrait les présente.",
+    "de": "Die Persönlichkeit der Chefköchin aus den Szenen, Gesten und Zitaten erschließen, die der Autor auswählt, und der Reihenfolge des Porträts folgen."
+  },
+  "keywords": [
+    {
+      "id": "unassuming",
+      "term": "unassuming",
+      "translations": { "fr": ["modeste", "discret"], "de": ["bescheiden", "unauffällig"] },
+      "explanation": {
+        "en": "Not showy or proud; plain and modest. It can describe people and places.",
+        "fr": "Qui ne cherche pas à se faire remarquer ; simple et modeste. Se dit des personnes et des lieux.",
+        "de": "Nicht auffällig oder stolz; schlicht und bescheiden. Es passt zu Menschen und zu Orten."
+      }
+    },
+    {
+      "id": "meticulous",
+      "term": "meticulous",
+      "translations": { "fr": ["méticuleux", "minutieux"], "de": ["akribisch", "sorgfältig"] },
+      "explanation": {
+        "en": "Extremely careful about every small detail.",
+        "fr": "Extrêmement attentif au moindre détail.",
+        "de": "Äußerst genau bei jedem kleinen Detail."
+      }
+    },
+    {
+      "id": "terse",
+      "term": "terse",
+      "translations": { "fr": ["laconique", "sec"], "de": ["knapp", "kurz angebunden"] },
+      "explanation": {
+        "en": "Using very few words, often in a way that feels abrupt.",
+        "fr": "Qui emploie très peu de mots, souvent de façon abrupte.",
+        "de": "Mit sehr wenigen Worten, oft etwas schroff."
+      }
+    },
+    {
+      "id": "deflect",
+      "term": "deflect",
+      "translations": { "fr": ["détourner", "esquiver"], "de": ["ablenken", "abwehren"] },
+      "explanation": {
+        "en": "To turn attention or a question away from yourself.",
+        "fr": "Détourner l’attention ou une question de soi.",
+        "de": "Aufmerksamkeit oder eine Frage von sich weglenken."
+      }
+    },
+    {
+      "id": "exacting",
+      "term": "exacting",
+      "translations": { "fr": ["exigeant"], "de": ["anspruchsvoll", "streng"] },
+      "explanation": {
+        "en": "Demanding very high standards of others or of yourself.",
+        "fr": "Qui exige des normes très élevées des autres ou de soi-même.",
+        "de": "Sehr hohe Maßstäbe an andere oder an sich selbst stellend."
+      }
+    }
+  ],
+  "documents": {
+    "main": {
+      "targetWords": 447,
+      "contents": {
+        "en": "A profile of Ines Varga, a three-star chef: the unmarked door, her 6 a.m. counter-wiping, her silent tasting and terse orders, her notebooks of failures, her deflecting of praise towards suppliers, serving the porter first, a former cook’s mixed verdict, and a final small gesture and smile.",
+        "fr": "Portrait d’Ines Varga, cheffe trois étoiles : la porte sans enseigne, l’essuyage du plan de travail à l’aube, la dégustation silencieuse et les ordres laconiques, les carnets d’échecs, les éloges renvoyés vers les fournisseurs, le plongeur servi en premier, le verdict nuancé d’un ancien cuisinier, et un dernier petit geste suivi d’un sourire.",
+        "de": "Porträt von Ines Varga, Drei-Sterne-Köchin: die unscheinbare Tür, das Abwischen der Arbeitsfläche im Morgengrauen, stilles Abschmecken und knappe Anweisungen, Notizbücher voller Fehlschläge, Lob wird auf Lieferanten umgelenkt, der Küchenhelfer wird zuerst bedient, das gemischte Urteil eines früheren Kochs und eine letzte kleine Geste mit einem Lächeln."
+      }
+    },
+    "exam": {
+      "targetWords": 245,
+      "contents": {
+        "en": "A short profile of Hector Bell, a baker who refuses to expand: a firm window notice, quiet kindnesses to a regular and a neighbour, hopeless at compliments but secretly crediting his assistant, and a reason for staying small.",
+        "fr": "Court portrait de Hector Bell, boulanger qui refuse de s’agrandir : une affichette ferme, de discrètes gentillesses envers une cliente et un voisin, maladroit avec les compliments mais reconnaissant en secret le travail de son assistante, et la raison pour laquelle il reste petit.",
+        "de": "Kurzporträt von Hector Bell, einem Bäcker, der nicht expandieren will: ein strenger Zettel im Fenster, stille Freundlichkeiten gegenüber einer Stammkundin und einem Nachbarn, hilflos bei Komplimenten, aber heimlich dankbar gegenüber seiner Assistentin, und der Grund, klein zu bleiben."
+      }
+    }
+  },
+  "skim": { "focus": "purpose" },
+  "detailQuestions": [
+    {
+      "id": "q-counter",
+      "type": "reading_choice",
+      "focus": {
+        "en": "What wiping the clean counter twice suggests",
+        "fr": "Ce que suggère le plan de travail essuyé deux fois",
+        "de": "Was das zweifache Abwischen der sauberen Arbeitsfläche andeutet"
+      }
+    },
+    {
+      "id": "q-control",
+      "type": "reading_choice",
+      "focus": {
+        "en": "How she keeps discipline without shouting",
+        "fr": "Comment elle maintient la discipline sans crier",
+        "de": "Wie sie ohne Schreien Disziplin hält"
+      }
+    },
+    {
+      "id": "q-credit",
+      "type": "reading_true_false",
+      "focus": {
+        "en": "How she reacts to talk of her third star",
+        "fr": "Sa réaction quand on parle de sa troisième étoile",
+        "de": "Wie sie auf das Gespräch über ihren dritten Stern reagiert"
+      }
+    },
+    {
+      "id": "q-porter",
+      "type": "reading_choice",
+      "focus": {
+        "en": "What serving the porter first suggests",
+        "fr": "Ce que suggère le fait de servir le plongeur en premier",
+        "de": "Was das Zuerst-Bedienen des Küchenhelfers andeutet"
+      }
+    }
+  ],
+  "exam": { "types": ["reading_choice", "reading_true_false"] },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

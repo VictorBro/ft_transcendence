@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 2,
+  "id": "en-reading-a-long-email-from-a-pen-friend",
+  "lang": "en",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Reading a long email from a pen friend",
+  "objective": {
+    "en": "Read a long email from a US pen pal and follow how the writer feels about each event and what they hope will happen next.",
+    "fr": "Lire un long e-mail d’un correspondant américain et suivre ce que l’auteur ressent pour chaque événement et ce qu’il espère ensuite.",
+    "de": "Eine lange E-Mail eines US-Brieffreunds lesen und verstehen, was der Schreiber zu jedem Ereignis empfindet und was er sich für die Zukunft erhofft."
+  },
+  "estimatedMinutes": 9,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:08.856Z",
+    "inputHashes": { "outline": "c279d708690eedba77319af4d02ec1b41ffd8e4f59045a6e84c0a64eadd7e4c8" }
+  },
+  "kind": "reading",
+  "theme": "relations",
+  "genre": "email",
+  "situation": {
+    "en": "Jake, a pen pal from Denver, writes a long email to his friend Sam to share his recent news and ask about Sam’s life.",
+    "fr": "Jake, un correspondant de Denver, écrit un long e-mail à son ami Sam pour partager ses nouvelles et prendre des nouvelles de Sam.",
+    "de": "Jake, ein Brieffreund aus Denver, schreibt seinem Freund Sam eine lange E-Mail, um von seinen Neuigkeiten zu erzählen und nach Sams Leben zu fragen."
+  },
+  "readerTask": {
+    "en": "Find how Jake feels about each piece of news and what he hopes will happen next, and put the news in order.",
+    "fr": "Trouver ce que Jake ressent pour chaque nouvelle et ce qu’il espère ensuite, et remettre les nouvelles dans l’ordre.",
+    "de": "Herausfinden, was Jake bei jeder Neuigkeit empfindet und was er sich erhofft, und die Neuigkeiten ordnen."
+  },
+  "keywords": [
+    {
+      "id": "so-excited",
+      "term": "I'm so excited",
+      "translations": { "fr": ["Je suis super enthousiaste"], "de": ["Ich freue mich riesig"] },
+      "explanation": {
+        "en": "Strong happy feeling about something good that is happening or will happen.",
+        "fr": "Une forte joie à propos de quelque chose de bien qui arrive ou va arriver.",
+        "de": "Starke Freude über etwas Gutes, das passiert oder passieren wird."
+      }
+    },
+    {
+      "id": "bit-worried",
+      "term": "I'm a bit worried",
+      "translations": {
+        "fr": ["Je suis un peu inquiet"],
+        "de": ["Ich mache mir ein bisschen Sorgen"]
+      },
+      "explanation": {
+        "en": "A small worry. A bit makes the feeling weaker.",
+        "fr": "Une petite inquiétude. A bit rend le sentiment plus faible.",
+        "de": "Eine kleine Sorge. A bit schwächt das Gefühl ab."
+      }
+    },
+    {
+      "id": "hoping-to",
+      "term": "I'm hoping to",
+      "translations": { "fr": ["J’espère pouvoir"], "de": ["Ich hoffe, … zu können"] },
+      "explanation": {
+        "en": "Followed by a verb: it says what you would like to do in the future.",
+        "fr": "Suivi d’un verbe : cela dit ce que vous aimeriez faire à l’avenir.",
+        "de": "Mit einem Verb: Es sagt, was man in Zukunft gern tun möchte."
+      }
+    },
+    {
+      "id": "cant-wait",
+      "term": "I can't wait",
+      "translations": { "fr": ["J’ai tellement hâte"], "de": ["Ich kann es kaum erwarten"] },
+      "explanation": {
+        "en": "You are very impatient for something good to happen. Often followed by to + verb.",
+        "fr": "Vous êtes très impatient que quelque chose de bien arrive. Souvent suivi de to + verbe.",
+        "de": "Man ist sehr ungeduldig, dass etwas Schönes passiert. Oft mit to + Verb."
+      }
+    },
+    {
+      "id": "fingers-crossed",
+      "term": "fingers crossed",
+      "translations": { "fr": ["je croise les doigts"], "de": ["ich drücke die Daumen"] },
+      "explanation": {
+        "en": "An expression for hoping for luck. In English you cross your fingers.",
+        "fr": "Expression pour souhaiter de la chance. En anglais, on croise les doigts.",
+        "de": "Ein Ausdruck, um auf Glück zu hoffen. Im Englischen kreuzt man die Finger."
+      }
+    }
+  ],
+  "documents": {
+    "main": {
+      "targetWords": 175,
+      "contents": {
+        "en": "Jake thanks Sam, then shares three pieces of news: a new bookshop job (excited, a bit worried, hoping to keep playing soccer), his sister Emma moving to New York (proud, will miss her, can't wait to visit), and a lost final (disappointed, fingers crossed for next season). He asks about Sam’s school.",
+        "fr": "Jake remercie Sam, puis donne trois nouvelles : un nouveau travail en librairie (enthousiaste, un peu inquiet, espère continuer le foot), sa sœur Emma qui part à New York (fière, elle lui manquera, a hâte de lui rendre visite) et une finale perdue (déçu, croise les doigts pour la saison prochaine). Il demande des nouvelles de l’école de Sam.",
+        "de": "Jake bedankt sich bei Sam und erzählt drei Neuigkeiten: einen neuen Job in der Buchhandlung (aufgeregt, etwas besorgt, hofft weiter Fußball zu spielen), den Umzug seiner Schwester Emma nach New York (stolz, vermisst sie, freut sich auf den Besuch) und ein verlorenes Finale (enttäuscht, drückt die Daumen für nächste Saison). Er fragt nach Sams Schule."
+      }
+    },
+    "exam": {
+      "targetWords": 90,
+      "contents": {
+        "en": "Mia writes from her grandparents’ farm. She is thrilled to learn horse riding but a little nervous about tomorrow’s lesson, and she is hoping to visit Sam in December.",
+        "fr": "Mia écrit depuis la ferme de ses grands-parents. Elle est ravie d’apprendre l’équitation mais un peu nerveuse pour le cours de demain, et elle espère rendre visite à Sam en décembre.",
+        "de": "Mia schreibt vom Bauernhof ihrer Großeltern. Sie freut sich riesig, Reiten zu lernen, ist aber vor der morgigen Stunde etwas nervös, und sie hofft, Sam im Dezember zu besuchen."
+      }
+    }
+  },
+  "skim": { "focus": "purpose" },
+  "detailQuestions": [
+    {
+      "id": "q-job",
+      "type": "reading_choice",
+      "focus": {
+        "en": "How Jake feels about his new job",
+        "fr": "Ce que Jake ressent pour son nouveau travail",
+        "de": "Was Jake bei seinem neuen Job empfindet"
+      }
+    },
+    {
+      "id": "q-sister",
+      "type": "reading_choice",
+      "focus": {
+        "en": "How Jake feels about Emma’s move",
+        "fr": "Ce que Jake ressent pour le départ d’Emma",
+        "de": "Was Jake beim Umzug von Emma empfindet"
+      }
+    },
+    {
+      "id": "q-match",
+      "type": "reading_true_false",
+      "focus": {
+        "en": "The result of the final",
+        "fr": "Le résultat de la finale",
+        "de": "Das Ergebnis des Finales"
+      }
+    },
+    {
+      "id": "q-hope",
+      "type": "reading_choice",
+      "focus": {
+        "en": "What Jake hopes for next season",
+        "fr": "Ce que Jake espère pour la saison prochaine",
+        "de": "Was Jake sich für die nächste Saison erhofft"
+      }
+    }
+  ],
+  "exam": { "types": ["reading_choice", "reading_true_false"] },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

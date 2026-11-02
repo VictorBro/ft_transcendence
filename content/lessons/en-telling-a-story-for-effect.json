@@ -1,0 +1,1267 @@
+{
+  "schemaVersion": 2,
+  "id": "en-telling-a-story-for-effect",
+  "lang": "en",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Telling a story for effect",
+  "objective": {
+    "en": "Tell a story from your own life with timing, suspense and humour, using the phrases a storyteller uses to set a scene and build tension.",
+    "fr": "Raconter une histoire de sa vie avec du rythme, du suspense et de l’humour, grâce aux expressions du conteur pour planter le décor et faire monter la tension.",
+    "de": "Eine Geschichte aus dem eigenen Leben mit Timing, Spannung und Humor erzählen und dabei Wendungen nutzen, die eine Szene aufbauen und Spannung erzeugen."
+  },
+  "estimatedMinutes": 17,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:53:48.711Z",
+    "inputHashes": {
+      "outline": "b034566ecf5f44714e492675bcd0d14414317a95beba7817706dccfd08fc7b11",
+      "brief": "04a5ff188bd505435e6c3e0ca84145d3d9767d57df7ad31fef8bbbad86424ca5"
+    }
+  },
+  "kind": "functions",
+  "theme": "personal_identification",
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "presentation",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "cards-expressions",
+          "estimatedDurationS": 72,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Recall each expression, then turn the card to check it.",
+            "fr": "Rappelez-vous chaque expression, puis retournez la carte pour vérifier.",
+            "de": "Erinnere dich an jeden Ausdruck und dreh dann die Karte um."
+          },
+          "items": [
+            {
+              "type": "function_flashcards",
+              "itemId": "cards-expressions",
+              "side": "expressions",
+              "ids": [
+                "so-there-i-was",
+                "little-did-i-know",
+                "all-went-wrong",
+                "cut-long-story-short",
+                "getting-ahead",
+                "never-believe"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue",
+      "stage": "dialogue",
+      "role": "presentation",
+      "label": { "en": "Dialogue", "fr": "Dialogue", "de": "Dialog" },
+      "pages": [
+        {
+          "pageId": "dialogue",
+          "estimatedDurationS": 164,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read and listen. Turn a line to see its translation and a note.",
+            "fr": "Lisez et écoutez. Retournez une réplique pour voir sa traduction et une remarque.",
+            "de": "Lies und hör zu. Dreh eine Zeile um, um Übersetzung und Hinweis zu sehen."
+          },
+          "items": [
+            {
+              "type": "function_dialogue",
+              "itemId": "dialogue",
+              "lines": [
+                {
+                  "lineId": "line-1",
+                  "roleId": "narrator",
+                  "text": "Right, so this is how I ended up on a goat farm. So there I was, standing on a deserted platform at midnight.",
+                  "translation": {
+                    "fr": "Bon, voilà comment j’ai fini dans une ferme de chèvres. Et là, je me retrouve sur un quai désert à minuit.",
+                    "de": "Also, so bin ich auf einem Ziegenhof gelandet. Und da stand ich nun, um Mitternacht auf einem verlassenen Bahnsteig."
+                  },
+                  "note": {
+                    "en": "So there I was sets the scene and puts the listener right inside the moment.",
+                    "fr": "So there I was plante le décor et plonge l’auditeur dans l’instant.",
+                    "de": "So there I was baut die Szene auf und versetzt den Zuhörer mitten ins Geschehen."
+                  },
+                  "expressionIds": ["so-there-i-was"]
+                },
+                {
+                  "lineId": "line-2",
+                  "roleId": "friend",
+                  "text": "On your own? In the middle of nowhere?",
+                  "translation": {
+                    "fr": "Tout seul ? Au milieu de nulle part ?",
+                    "de": "Ganz allein? Mitten im Nirgendwo?"
+                  },
+                  "note": {
+                    "en": "The listener reacts, which keeps the story alive.",
+                    "fr": "L’auditeur réagit, ce qui garde le récit vivant.",
+                    "de": "Der Zuhörer reagiert, das hält die Geschichte lebendig."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-3",
+                  "roleId": "narrator",
+                  "text": "Completely. I’d missed the last train, and my phone had died. Little did I know, the station was about to lock its gates.",
+                  "translation": {
+                    "fr": "Complètement. J’avais raté le dernier train et mon téléphone était mort. Je ne me doutais pas que la gare allait fermer ses grilles.",
+                    "de": "Völlig. Ich hatte den letzten Zug verpasst und mein Handy war leer. Ich ahnte ja nicht, dass der Bahnhof gleich seine Tore schließen würde."
+                  },
+                  "note": {
+                    "en": "Little did I know hints at trouble the narrator could not yet see.",
+                    "fr": "Little did I know annonce un problème que le narrateur ne voyait pas encore.",
+                    "de": "Little did I know deutet ein Problem an, das der Erzähler noch nicht sah."
+                  },
+                  "expressionIds": ["little-did-i-know"]
+                },
+                {
+                  "lineId": "line-4",
+                  "roleId": "friend",
+                  "text": "Oh no. What did you do?",
+                  "translation": {
+                    "fr": "Oh non. Qu’as-tu fait ?",
+                    "de": "Oh nein. Was hast du gemacht?"
+                  },
+                  "note": {
+                    "en": "A short question that pushes the story forward.",
+                    "fr": "Une question courte qui fait avancer le récit.",
+                    "de": "Eine kurze Frage, die die Geschichte vorantreibt."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-5",
+                  "roleId": "narrator",
+                  "text": "I did what any sensible person would do: I panicked. And that’s when it all went wrong: a van pulled up, and the driver offered me a lift.",
+                  "translation": {
+                    "fr": "J’ai fait ce que ferait toute personne raisonnable : j’ai paniqué. Et c’est là que tout a mal tourné : une camionnette s’est arrêtée et le conducteur m’a proposé de me déposer.",
+                    "de": "Ich tat, was jeder Vernünftige tun würde: Ich geriet in Panik. Und genau da ging alles schief: Ein Transporter hielt, und der Fahrer bot mir an, mich mitzunehmen."
+                  },
+                  "note": {
+                    "en": "The mock-serious joke comes first; then the turning point of the story.",
+                    "fr": "La blague pince-sans-rire vient d’abord ; ensuite le tournant du récit.",
+                    "de": "Erst kommt der ironisch ernste Scherz, dann der Wendepunkt der Geschichte."
+                  },
+                  "expressionIds": ["all-went-wrong"]
+                },
+                {
+                  "lineId": "line-6",
+                  "roleId": "friend",
+                  "text": "You didn’t get in, surely?",
+                  "translation": {
+                    "fr": "Tu n’es pas monté, quand même ?",
+                    "de": "Du bist doch wohl nicht eingestiegen?"
+                  },
+                  "note": {
+                    "en": "Surely expresses disbelief and invites a surprise.",
+                    "fr": "Surely exprime l’incrédulité et appelle une surprise.",
+                    "de": "Surely drückt Unglauben aus und lädt zur Überraschung ein."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-7",
+                  "roleId": "narrator",
+                  "text": "I did, and I’ll explain why. But I’m getting ahead of myself: the driver was my old geography teacher.",
+                  "translation": {
+                    "fr": "Si, et je vais t’expliquer pourquoi. Mais je brûle les étapes : le conducteur était mon ancien prof de géographie.",
+                    "de": "Doch, und ich erkläre dir gleich, warum. Aber ich greife vor: Der Fahrer war mein alter Erdkundelehrer."
+                  },
+                  "note": {
+                    "en": "The narrator catches a slip in the order of events, with a touch of humour.",
+                    "fr": "Le narrateur rattrape un écart dans l’ordre des faits, avec une pointe d’humour.",
+                    "de": "Der Erzähler korrigiert einen Sprung in der Reihenfolge, mit einer Prise Humor."
+                  },
+                  "expressionIds": ["getting-ahead"]
+                },
+                {
+                  "lineId": "line-8",
+                  "roleId": "friend",
+                  "text": "No! Please tell me he drove you home.",
+                  "translation": {
+                    "fr": "Non ! Dis-moi qu’il t’a ramené chez toi.",
+                    "de": "Nein! Sag mir bitte, dass er dich nach Hause gefahren hat."
+                  },
+                  "note": {
+                    "en": "The listener hopes for a happy ending, which sets up the joke.",
+                    "fr": "L’auditeur espère une fin heureuse, ce qui prépare la chute.",
+                    "de": "Der Zuhörer hofft auf ein gutes Ende, das bereitet die Pointe vor."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-9",
+                  "roleId": "narrator",
+                  "text": "You’ll never believe what happened next. He took a wrong turn, and we ended up at his cousin’s goat farm.",
+                  "translation": {
+                    "fr": "Tu ne croiras jamais ce qui s’est passé ensuite. Il s’est trompé de route et nous avons atterri dans la ferme de chèvres de son cousin.",
+                    "de": "Du wirst nie glauben, was dann passierte. Er bog falsch ab, und wir landeten auf dem Ziegenhof seines Cousins."
+                  },
+                  "note": {
+                    "en": "A short pause for suspense, then the surprise.",
+                    "fr": "Une courte pause pour le suspense, puis la surprise.",
+                    "de": "Eine kurze Pause für die Spannung, dann die Überraschung."
+                  },
+                  "expressionIds": ["never-believe"]
+                },
+                {
+                  "lineId": "line-10",
+                  "roleId": "friend",
+                  "text": "Goats? You’re making this up!",
+                  "translation": {
+                    "fr": "Des chèvres ? Tu inventes !",
+                    "de": "Ziegen? Du erfindest das doch!"
+                  },
+                  "note": {
+                    "en": "Playful disbelief rewards the storyteller.",
+                    "fr": "L’incrédulité amusée récompense le conteur.",
+                    "de": "Spielerischer Unglaube belohnt den Erzähler."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-11",
+                  "roleId": "narrator",
+                  "text": "To cut a long story short, I spent the night with forty goats and caught the first train at dawn.",
+                  "translation": {
+                    "fr": "Pour faire court, j’ai passé la nuit avec quarante chèvres et pris le premier train à l’aube.",
+                    "de": "Um es kurz zu machen: Ich verbrachte die Nacht mit vierzig Ziegen und nahm im Morgengrauen den ersten Zug."
+                  },
+                  "note": {
+                    "en": "The narrator skips the details and delivers the ending.",
+                    "fr": "Le narrateur saute les détails et livre la fin.",
+                    "de": "Der Erzähler überspringt die Details und liefert das Ende."
+                  },
+                  "expressionIds": ["cut-long-story-short"]
+                },
+                {
+                  "lineId": "line-12",
+                  "roleId": "friend",
+                  "text": "Honestly, I’d have paid to see that.",
+                  "translation": {
+                    "fr": "Franchement, j’aurais payé pour voir ça.",
+                    "de": "Ehrlich, dafür hätte ich bezahlt."
+                  },
+                  "note": {
+                    "en": "I’d have paid to see that is a warm closing reaction.",
+                    "fr": "I’d have paid to see that est une réaction finale chaleureuse.",
+                    "de": "I’d have paid to see that ist eine herzliche Schlussreaktion."
+                  },
+                  "expressionIds": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "match-expressions-1",
+          "estimatedDurationS": 72,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each expression with its translation.",
+            "fr": "Associez chaque expression à sa traduction.",
+            "de": "Ordne jedem Ausdruck seine Übersetzung zu."
+          },
+          "items": [
+            {
+              "type": "function_matching",
+              "itemId": "match-expressions-1",
+              "side": "expressions",
+              "pairs": [
+                {
+                  "id": "so-there-i-was",
+                  "answerExplanation": {
+                    "en": "Sets the scene at the start of a story.",
+                    "fr": "Plante le décor au début d’un récit.",
+                    "de": "Baut am Anfang einer Geschichte die Szene auf."
+                  }
+                },
+                {
+                  "id": "little-did-i-know",
+                  "answerExplanation": {
+                    "en": "Hints at a coming problem, with inversion.",
+                    "fr": "Annonce un problème à venir, avec inversion.",
+                    "de": "Deutet ein kommendes Problem an, mit Inversion."
+                  }
+                },
+                {
+                  "id": "all-went-wrong",
+                  "answerExplanation": {
+                    "en": "Marks the turning point where things go badly.",
+                    "fr": "Marque le tournant où les choses dérapent.",
+                    "de": "Markiert den Wendepunkt, an dem es schiefgeht."
+                  }
+                },
+                {
+                  "id": "cut-long-story-short",
+                  "answerExplanation": {
+                    "en": "Skips the details to reach the outcome.",
+                    "fr": "Saute les détails pour arriver au dénouement.",
+                    "de": "Überspringt die Details bis zum Ausgang."
+                  }
+                },
+                {
+                  "id": "getting-ahead",
+                  "answerExplanation": {
+                    "en": "Puts the story back in order.",
+                    "fr": "Remet le récit dans l’ordre.",
+                    "de": "Bringt die Geschichte zurück in die Reihenfolge."
+                  }
+                },
+                {
+                  "id": "never-believe",
+                  "answerExplanation": {
+                    "en": "Builds suspense before a surprise.",
+                    "fr": "Crée du suspense avant une surprise.",
+                    "de": "Erzeugt Spannung vor einer Überraschung."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-gaps",
+      "stage": "dialogue_gaps",
+      "role": "exercise",
+      "label": { "en": "Dialogue gaps", "fr": "Dialogue à trous", "de": "Dialoglücken" },
+      "pages": [
+        {
+          "pageId": "gap-1",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-1",
+              "expressionId": "so-there-i-was",
+              "context": { "roleId": "friend", "text": "Go on, then. Where did it all begin?" },
+              "roleId": "narrator",
+              "before": "",
+              "after": ", ankle-deep in mud, with no map.",
+              "choiceExpressionIds": [
+                "so-there-i-was",
+                "never-believe",
+                "cut-long-story-short",
+                "getting-ahead"
+              ],
+              "answerExplanation": {
+                "en": "The story starts by setting the scene.",
+                "fr": "L’histoire commence par planter le décor.",
+                "de": "Die Geschichte beginnt mit dem Aufbau der Szene."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-2",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-2",
+              "expressionId": "little-did-i-know",
+              "context": { "roleId": "friend", "text": "Was the wedding fun?" },
+              "roleId": "narrator",
+              "before": "I felt rather pleased with myself.",
+              "after": ", the best man was about to lose the rings.",
+              "choiceExpressionIds": [
+                "little-did-i-know",
+                "all-went-wrong",
+                "so-there-i-was",
+                "getting-ahead"
+              ],
+              "answerExplanation": {
+                "en": "It foreshadows a problem the narrator could not see.",
+                "fr": "Il annonce un problème que le narrateur ne voyait pas.",
+                "de": "Es deutet ein Problem an, das der Erzähler nicht sah."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-3",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-3",
+              "expressionId": "all-went-wrong",
+              "context": { "roleId": "friend", "text": "The talk was going well, wasn’t it?" },
+              "roleId": "narrator",
+              "before": "For ten minutes it was.",
+              "after": ": the projector burst into flames.",
+              "choiceExpressionIds": [
+                "all-went-wrong",
+                "little-did-i-know",
+                "so-there-i-was",
+                "getting-ahead"
+              ],
+              "answerExplanation": {
+                "en": "It announces the turning point where things fail.",
+                "fr": "Il annonce le tournant où les choses échouent.",
+                "de": "Es kündigt den Wendepunkt an, an dem etwas scheitert."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-4",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-4",
+              "expressionId": "cut-long-story-short",
+              "context": {
+                "roleId": "friend",
+                "text": "Sorry, I’ve got to leave in five minutes. What happened?"
+              },
+              "roleId": "narrator",
+              "before": "",
+              "after": ", we missed the flight and ended up in Lisbon.",
+              "choiceExpressionIds": [
+                "cut-long-story-short",
+                "so-there-i-was",
+                "getting-ahead",
+                "all-went-wrong"
+              ],
+              "answerExplanation": {
+                "en": "The listener is short of time, so the narrator summarises.",
+                "fr": "L’auditeur manque de temps, donc le narrateur résume.",
+                "de": "Der Zuhörer hat wenig Zeit, also fasst der Erzähler zusammen."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-5",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-5",
+              "expressionId": "getting-ahead",
+              "context": { "roleId": "friend", "text": "Wait, why was the dog in the car?" },
+              "roleId": "narrator",
+              "before": "Hold on, I’ll explain.",
+              "after": ": first you need to hear about the key.",
+              "choiceExpressionIds": [
+                "getting-ahead",
+                "never-believe",
+                "little-did-i-know",
+                "so-there-i-was"
+              ],
+              "answerExplanation": {
+                "en": "The narrator jumped ahead and returns to the right order.",
+                "fr": "Le narrateur a pris de l’avance et revient à l’ordre juste.",
+                "de": "Der Erzähler ist vorgeprescht und kehrt zur richtigen Reihenfolge zurück."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-6",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-6",
+              "expressionId": "never-believe",
+              "context": { "roleId": "friend", "text": "So did the neighbours ever find out?" },
+              "roleId": "narrator",
+              "before": "Oh, wait for it.",
+              "after": ": the dog answered the door!",
+              "choiceExpressionIds": [
+                "never-believe",
+                "so-there-i-was",
+                "getting-ahead",
+                "little-did-i-know"
+              ],
+              "answerExplanation": {
+                "en": "It builds suspense just before the surprise.",
+                "fr": "Il crée du suspense juste avant la surprise.",
+                "de": "Es erzeugt Spannung kurz vor der Überraschung."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "word-order",
+      "stage": "word_order",
+      "role": "exercise",
+      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
+      "pages": [
+        {
+          "pageId": "order-1",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-1",
+              "expressionId": "so-there-i-was",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "So" },
+                { "tokenId": "t2", "text": "there" },
+                { "tokenId": "t3", "text": "I" },
+                { "tokenId": "t4", "text": "was," },
+                { "tokenId": "t5", "text": "knee-deep" },
+                { "tokenId": "t6", "text": "in" },
+                { "tokenId": "t7", "text": "mud." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
+              "answerExplanation": {
+                "en": "So there I was opens the scene, then the detail.",
+                "fr": "So there I was ouvre la scène, puis vient le détail.",
+                "de": "So there I was eröffnet die Szene, dann folgt das Detail."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-2",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-2",
+              "expressionId": "little-did-i-know",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Little" },
+                { "tokenId": "t2", "text": "did" },
+                { "tokenId": "t3", "text": "I" },
+                { "tokenId": "t4", "text": "know," },
+                { "tokenId": "t5", "text": "the" },
+                { "tokenId": "t6", "text": "worst" },
+                { "tokenId": "t7", "text": "was" },
+                { "tokenId": "t8", "text": "yet" },
+                { "tokenId": "t9", "text": "to" },
+                { "tokenId": "t10", "text": "come." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9", "t10"]],
+              "answerExplanation": {
+                "en": "After Little, the auxiliary did comes before the subject I.",
+                "fr": "Après Little, l’auxiliaire did précède le sujet I.",
+                "de": "Nach Little steht das Hilfsverb did vor dem Subjekt I."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-3",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-3",
+              "expressionId": "all-went-wrong",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "And" },
+                { "tokenId": "t2", "text": "that’s" },
+                { "tokenId": "t3", "text": "when" },
+                { "tokenId": "t4", "text": "it" },
+                { "tokenId": "t5", "text": "all" },
+                { "tokenId": "t6", "text": "went" },
+                { "tokenId": "t7", "text": "wrong." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
+              "answerExplanation": {
+                "en": "The fixed phrase keeps its order: that’s when, then it all went wrong.",
+                "fr": "L’expression figée garde son ordre : that’s when, puis it all went wrong.",
+                "de": "Die feste Wendung behält ihre Reihenfolge: that’s when, dann it all went wrong."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-4",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-4",
+              "expressionId": "cut-long-story-short",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "To" },
+                { "tokenId": "t2", "text": "cut" },
+                { "tokenId": "t3", "text": "a" },
+                { "tokenId": "t4", "text": "long" },
+                { "tokenId": "t5", "text": "story" },
+                { "tokenId": "t6", "text": "short," },
+                { "tokenId": "t7", "text": "we" },
+                { "tokenId": "t8", "text": "missed" },
+                { "tokenId": "t9", "text": "the" },
+                { "tokenId": "t10", "text": "flight." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9", "t10"]],
+              "answerExplanation": {
+                "en": "The phrase comes first, followed by a comma and the outcome.",
+                "fr": "L’expression vient d’abord, suivie d’une virgule et du résultat.",
+                "de": "Die Wendung steht zuerst, danach Komma und Ergebnis."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-5",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-5",
+              "expressionId": "getting-ahead",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "But" },
+                { "tokenId": "t2", "text": "I’m" },
+                { "tokenId": "t3", "text": "getting" },
+                { "tokenId": "t4", "text": "ahead" },
+                { "tokenId": "t5", "text": "of" },
+                { "tokenId": "t6", "text": "myself." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "answerExplanation": {
+                "en": "Continuous tense, and myself closes the phrase.",
+                "fr": "Temps continu, et myself ferme l’expression.",
+                "de": "Verlaufsform, und myself schließt die Wendung ab."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-6",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-6",
+              "expressionId": "never-believe",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "You’ll" },
+                { "tokenId": "t2", "text": "never" },
+                { "tokenId": "t3", "text": "believe" },
+                { "tokenId": "t4", "text": "what" },
+                { "tokenId": "t5", "text": "happened" },
+                { "tokenId": "t6", "text": "next." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6"]],
+              "answerExplanation": {
+                "en": "Never goes between will and the verb; the clause what happened next has normal order.",
+                "fr": "Never se place entre will et le verbe ; la proposition what happened next garde l’ordre normal.",
+                "de": "Never steht zwischen will und dem Verb; der Satz what happened next hat normale Wortstellung."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "listening",
+      "stage": "listening",
+      "role": "exercise",
+      "label": { "en": "Listening", "fr": "Écoute", "de": "Hören" },
+      "pages": [
+        {
+          "pageId": "listening-1",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-1",
+              "expressionId": "so-there-i-was",
+              "context": { "roleId": "friend", "text": "Go on, where were you when it happened?" },
+              "roleId": "narrator",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "So there I was, halfway up a ladder with a pot of paint."
+                },
+                { "optionId": "o2", "text": "Thanks, I’ll have the soup." },
+                { "optionId": "o3", "text": "Sorry, I’ve already seen that film." },
+                { "optionId": "o4", "text": "The bus leaves at seven." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "The narrator sets the scene to begin the story.",
+                "fr": "Le narrateur plante le décor pour commencer l’histoire.",
+                "de": "Der Erzähler baut die Szene auf, um die Geschichte zu beginnen."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-2",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-2",
+              "expressionId": "little-did-i-know",
+              "context": { "roleId": "friend", "text": "Did you enjoy the party?" },
+              "roleId": "narrator",
+              "options": [
+                { "optionId": "o1", "text": "Yes, I’ll have a coffee, please." },
+                {
+                  "optionId": "o2",
+                  "text": "Little did I know, I’d soon regret that third slice of cake."
+                },
+                { "optionId": "o3", "text": "Perhaps we should check the timetable." },
+                { "optionId": "o4", "text": "It’s quite far from here, isn’t it?" }
+              ],
+              "answerOptionId": "o2",
+              "answerExplanation": {
+                "en": "The narrator foreshadows a problem to come.",
+                "fr": "Le narrateur annonce un problème à venir.",
+                "de": "Der Erzähler deutet ein kommendes Problem an."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-3",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-3",
+              "expressionId": "all-went-wrong",
+              "context": { "roleId": "friend", "text": "The interview went well, I hope?" },
+              "roleId": "narrator",
+              "options": [
+                { "optionId": "o1", "text": "I’m afraid the shop is closed today." },
+                { "optionId": "o2", "text": "Please send me the address." },
+                { "optionId": "o3", "text": "For a while. And that’s when it all went wrong." },
+                { "optionId": "o4", "text": "I’ve never been to Spain." }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "The narrator admits the story turned bad.",
+                "fr": "Le narrateur avoue que l’histoire a mal tourné.",
+                "de": "Der Erzähler gibt zu, dass die Geschichte schiefging."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-4",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-4",
+              "expressionId": "cut-long-story-short",
+              "context": {
+                "roleId": "friend",
+                "text": "Sorry, could you get to the point? I’m late."
+              },
+              "roleId": "narrator",
+              "options": [
+                { "optionId": "o1", "text": "Of course, I’ll hold the door." },
+                { "optionId": "o2", "text": "I haven’t decided yet." },
+                { "optionId": "o3", "text": "We can sit by the window." },
+                {
+                  "optionId": "o4",
+                  "text": "To cut a long story short, I never saw the money again."
+                }
+              ],
+              "answerOptionId": "o4",
+              "answerExplanation": {
+                "en": "The narrator summarises because time is short.",
+                "fr": "Le narrateur résume parce que le temps manque.",
+                "de": "Der Erzähler fasst zusammen, weil die Zeit knapp ist."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-5",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-5",
+              "expressionId": "getting-ahead",
+              "context": {
+                "roleId": "friend",
+                "text": "Hang on, why is your uncle in this story?"
+              },
+              "roleId": "narrator",
+              "options": [
+                { "optionId": "o1", "text": "Good question. But I’m getting ahead of myself." },
+                { "optionId": "o2", "text": "He lives in Leeds." },
+                { "optionId": "o3", "text": "I’d rather have tea." },
+                { "optionId": "o4", "text": "It was a lovely evening." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "The narrator realises he is telling events out of order.",
+                "fr": "Le narrateur se rend compte qu’il raconte les faits dans le désordre.",
+                "de": "Der Erzähler merkt, dass er die Ereignisse durcheinander erzählt."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-6",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-6",
+              "expressionId": "never-believe",
+              "context": { "roleId": "friend", "text": "And then what happened with the dog?" },
+              "roleId": "narrator",
+              "options": [
+                { "optionId": "o1", "text": "The dog is called Biscuit." },
+                { "optionId": "o2", "text": "I’m not sure it’s a good idea." },
+                {
+                  "optionId": "o3",
+                  "text": "You’ll never believe what happened next: it opened the fridge."
+                },
+                { "optionId": "o4", "text": "It’s twenty past three." }
+              ],
+              "answerOptionId": "o3",
+              "answerExplanation": {
+                "en": "The narrator builds suspense before the surprise.",
+                "fr": "Le narrateur crée du suspense avant la surprise.",
+                "de": "Der Erzähler erzeugt Spannung vor der Überraschung."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam-replies-1",
+          "estimatedDurationS": 120,
+          "timeLimitS": 180,
+          "instructions": {
+            "en": "Build the answer. Not every word fits.",
+            "fr": "Construisez la réponse. Tous les mots ne servent pas.",
+            "de": "Bilde die Antwort. Nicht jedes Wort passt."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "reply-1",
+              "expressionId": "little-did-i-know",
+              "context": { "roleId": "friend", "text": "You looked so relaxed in that photo." },
+              "roleId": "narrator",
+              "tokens": [
+                { "tokenId": "t1", "text": "Relaxed," },
+                { "tokenId": "t2", "text": "yes." },
+                { "tokenId": "t3", "text": "Little" },
+                { "tokenId": "t4", "text": "did" },
+                { "tokenId": "t5", "text": "I" },
+                { "tokenId": "t6", "text": "know," },
+                { "tokenId": "t7", "text": "the" },
+                { "tokenId": "t8", "text": "tide" },
+                { "tokenId": "t9", "text": "was" },
+                { "tokenId": "t10", "text": "coming" },
+                { "tokenId": "t11", "text": "in." },
+                { "tokenId": "t12", "text": "do" },
+                { "tokenId": "t13", "text": "knew" }
+              ],
+              "distractorTokenIds": ["t12", "t13"],
+              "acceptedOrders": [
+                ["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9", "t10", "t11"]
+              ],
+              "answerExplanation": {
+                "en": "After Little, did comes before I, and know stays in the base form.",
+                "fr": "Après Little, did précède I, et know reste à la forme de base.",
+                "de": "Nach Little steht did vor I, und know bleibt in der Grundform."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-2",
+              "expressionId": "all-went-wrong",
+              "context": { "roleId": "friend", "text": "The speech was going so well, wasn’t it?" },
+              "roleId": "narrator",
+              "tokens": [
+                { "tokenId": "t1", "text": "It" },
+                { "tokenId": "t2", "text": "was." },
+                { "tokenId": "t3", "text": "And" },
+                { "tokenId": "t4", "text": "that’s" },
+                { "tokenId": "t5", "text": "when" },
+                { "tokenId": "t6", "text": "it" },
+                { "tokenId": "t7", "text": "all" },
+                { "tokenId": "t8", "text": "went" },
+                { "tokenId": "t9", "text": "wrong." },
+                { "tokenId": "t10", "text": "goes" },
+                { "tokenId": "t11", "text": "right" }
+              ],
+              "distractorTokenIds": ["t10", "t11"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9"]],
+              "answerExplanation": {
+                "en": "The story is in the past, so it went wrong, not goes.",
+                "fr": "L’histoire est au passé, donc went wrong et non goes.",
+                "de": "Die Geschichte steht in der Vergangenheit, also went wrong, nicht goes."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-3",
+              "expressionId": "getting-ahead",
+              "context": { "roleId": "friend", "text": "Wait, how did the goat get on the roof?" },
+              "roleId": "narrator",
+              "tokens": [
+                { "tokenId": "t1", "text": "Hold" },
+                { "tokenId": "t2", "text": "on." },
+                { "tokenId": "t3", "text": "But" },
+                { "tokenId": "t4", "text": "I’m" },
+                { "tokenId": "t5", "text": "getting" },
+                { "tokenId": "t6", "text": "ahead" },
+                { "tokenId": "t7", "text": "of" },
+                { "tokenId": "t8", "text": "myself." },
+                { "tokenId": "t9", "text": "behind" }
+              ],
+              "distractorTokenIds": ["t9"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8"]],
+              "answerExplanation": {
+                "en": "Getting ahead means jumping forward in the story; behind would mean the opposite.",
+                "fr": "Getting ahead signifie sauter en avant dans le récit ; behind voudrait dire le contraire.",
+                "de": "Getting ahead heißt, in der Geschichte vorzuspringen; behind wäre das Gegenteil."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-4",
+              "expressionId": "never-believe",
+              "context": { "roleId": "friend", "text": "Don’t keep me in suspense!" },
+              "roleId": "narrator",
+              "tokens": [
+                { "tokenId": "t1", "text": "Honestly," },
+                { "tokenId": "t2", "text": "you’ll" },
+                { "tokenId": "t3", "text": "never" },
+                { "tokenId": "t4", "text": "believe" },
+                { "tokenId": "t5", "text": "what" },
+                { "tokenId": "t6", "text": "happened" },
+                { "tokenId": "t7", "text": "next." },
+                { "tokenId": "t8", "text": "always" },
+                { "tokenId": "t9", "text": "ever" }
+              ],
+              "distractorTokenIds": ["t8", "t9"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
+              "answerExplanation": {
+                "en": "The phrase uses never with will; always or ever would change the meaning.",
+                "fr": "L’expression emploie never avec will ; always ou ever changerait le sens.",
+                "de": "Die Wendung verwendet never mit will; always oder ever würde die Bedeutung ändern."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-dialogue",
+          "estimatedDurationS": 160,
+          "timeLimitS": 240,
+          "instructions": {
+            "en": "Fill each gap with an expression from this lesson.",
+            "fr": "Complétez chaque trou avec une expression de la leçon.",
+            "de": "Fülle jede Lücke mit einem Ausdruck aus dieser Lektion."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_typing",
+              "itemId": "exam-dialogue",
+              "lines": [
+                {
+                  "lineId": "exam-line-1",
+                  "roleId": "narrator",
+                  "before": "",
+                  "translation": {
+                    "fr": "Et là, je me retrouve devant le tapis à bagages, à regarder tourner les valises des autres.",
+                    "de": "Und da stand ich am Gepäckband und sah zu, wie die Koffer aller anderen vorbeifuhren."
+                  },
+                  "gap": {
+                    "gapId": "gap-1",
+                    "expressionId": "so-there-i-was",
+                    "accepted": { "answers": ["So there I was"] },
+                    "answerExplanation": {
+                      "en": "The story opens by setting the scene: So there I was.",
+                      "fr": "L’histoire s’ouvre en plantant le décor : So there I was.",
+                      "de": "Die Geschichte beginnt mit dem Aufbau der Szene: So there I was."
+                    }
+                  },
+                  "after": ", at the baggage carousel, watching everyone else’s bags go round."
+                },
+                {
+                  "lineId": "exam-line-2",
+                  "roleId": "friend",
+                  "before": "And yours never came?",
+                  "translation": {
+                    "fr": "Et la tienne n’est jamais arrivée ?",
+                    "de": "Und deiner kam nie an?"
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-3",
+                  "roleId": "narrator",
+                  "before": "I waited an hour.",
+                  "translation": {
+                    "fr": "J’ai attendu une heure. Je ne me doutais pas qu’elle était déjà en route pour Lisbonne.",
+                    "de": "Ich wartete eine Stunde. Ich ahnte nicht, dass er schon auf dem Weg nach Lissabon war."
+                  },
+                  "gap": {
+                    "gapId": "gap-3",
+                    "expressionId": "little-did-i-know",
+                    "accepted": { "answers": ["Little did I know"] },
+                    "answerExplanation": {
+                      "en": "It foreshadows the hidden problem: Little did I know.",
+                      "fr": "Il annonce le problème caché : Little did I know.",
+                      "de": "Es deutet das verborgene Problem an: Little did I know."
+                    }
+                  },
+                  "after": ", it was already on its way to Lisbon."
+                },
+                {
+                  "lineId": "exam-line-4",
+                  "roleId": "friend",
+                  "before": "Lisbon? You’re joking.",
+                  "translation": {
+                    "fr": "Lisbonne ? Tu plaisantes.",
+                    "de": "Lissabon? Du machst Witze."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-5",
+                  "roleId": "narrator",
+                  "before": "I wish. They found it two days later.",
+                  "translation": {
+                    "fr": "Si seulement. Ils l’ont retrouvée deux jours plus tard.",
+                    "de": "Schön wär’s. Sie fanden ihn zwei Tage später."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-6",
+                  "roleId": "friend",
+                  "before": "And then?",
+                  "translation": { "fr": "Et ensuite ?", "de": "Und dann?" },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-7",
+                  "roleId": "narrator",
+                  "before": "",
+                  "translation": {
+                    "fr": "Tu ne croiras jamais la suite : la valise n’était même pas la mienne.",
+                    "de": "Du wirst nie glauben, was dann passierte: Der Koffer war nicht einmal meiner."
+                  },
+                  "gap": {
+                    "gapId": "gap-7",
+                    "expressionId": "never-believe",
+                    "accepted": {
+                      "answers": [
+                        "You’ll never believe what happened next",
+                        "You'll never believe what happened next"
+                      ]
+                    },
+                    "answerExplanation": {
+                      "en": "It builds suspense before the surprise.",
+                      "fr": "Il crée du suspense avant la surprise.",
+                      "de": "Es erzeugt Spannung vor der Überraschung."
+                    }
+                  },
+                  "after": ": the suitcase wasn’t even mine."
+                },
+                {
+                  "lineId": "exam-line-8",
+                  "roleId": "friend",
+                  "before": "Whose was it?",
+                  "translation": { "fr": "C’était la valise de qui ?", "de": "Wem gehörte er?" },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-9",
+                  "roleId": "narrator",
+                  "before": "",
+                  "translation": {
+                    "fr": "Pour faire court, j’ai fini par porter le costume d’un inconnu au mariage de ma sœur.",
+                    "de": "Um es kurz zu machen: Ich trug am Ende den Anzug eines Fremden auf der Hochzeit meiner Schwester."
+                  },
+                  "gap": {
+                    "gapId": "gap-9",
+                    "expressionId": "cut-long-story-short",
+                    "accepted": { "answers": ["To cut a long story short"] },
+                    "answerExplanation": {
+                      "en": "The narrator skips the details and gives the outcome.",
+                      "fr": "Le narrateur saute les détails et donne le résultat.",
+                      "de": "Der Erzähler überspringt die Details und nennt das Ergebnis."
+                    }
+                  },
+                  "after": ", I ended up wearing a stranger’s suit to my sister’s wedding."
+                },
+                {
+                  "lineId": "exam-line-10",
+                  "roleId": "friend",
+                  "before": "Well, at least it fitted?",
+                  "translation": { "fr": "Au moins, il t’allait ?", "de": "Passte er wenigstens?" },
+                  "gap": null,
+                  "after": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

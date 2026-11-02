@@ -1,0 +1,573 @@
+{
+  "schemaVersion": 2,
+  "id": "en-phrases-for-interests-and-dislikes",
+  "lang": "en",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Phrases for likes and dislikes",
+  "objective": {
+    "en": "Say what you love and hate using twelve phrases such as be keen on, be into, can't stand and not my thing.",
+    "fr": "Dire ce que vous adorez et détestez avec douze expressions comme be keen on, be into, can't stand et not my thing.",
+    "de": "Sagen, was du liebst und hasst, mit zwölf Wendungen wie be keen on, be into, can't stand und not my thing."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:08.799Z",
+    "inputHashes": { "outline": "1929c655fdc6548d7208ab540fd6bfa2bf790e54480dc70c58808383c68c17c1" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Twelve phrases for strong likes and dislikes: six for what you love and six for what you cannot tolerate or simply do not enjoy.",
+    "fr": "Douze expressions pour les goûts et dégoûts marqués : six pour ce qu'on aime et six pour ce qu'on ne supporte pas ou n'apprécie simplement pas.",
+    "de": "Zwölf Wendungen für starke Vorlieben und Abneigungen: sechs für das, was man liebt, und sechs für das, was man nicht erträgt oder einfach nicht mag."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve phrases match the outline and fit two balanced groups of six.",
+    "fr": "Douze expressions correspondent au plan et forment deux groupes équilibrés de six.",
+    "de": "Zwölf Wendungen entsprechen der Gliederung und ergeben zwei ausgewogene Gruppen zu sechs."
+  },
+  "difficultyBalance": {
+    "en": "Common B1 phrases come first; idiomatic ones such as can't get enough of and have no time for are harder.",
+    "fr": "Les expressions courantes de niveau B1 viennent d'abord ; les plus idiomatiques comme can't get enough of et have no time for sont plus difficiles.",
+    "de": "Gängige B1-Wendungen stehen vorn; idiomatische wie can't get enough of und have no time for sind schwieriger."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "likes",
+      "label": { "en": "Things you love", "fr": "Ce que vous aimez", "de": "Was du liebst" },
+      "targetIds": ["keen", "into", "fond", "crazy", "passionate", "enough"],
+      "introduction": {
+        "en": "These phrases say what you **like or love**. Most are followed by a noun or an -ing form:\n\n- `be keen on`\n- `be into`\n- `be fond of`\n- `be crazy about`\n- `be passionate about`\n- `can't get enough of`",
+        "fr": "Ces expressions disent ce que vous **aimez ou adorez**. La plupart sont suivies d'un nom ou d'une forme en -ing :\n\n- `be keen on`\n- `be into`\n- `be fond of`\n- `be crazy about`\n- `be passionate about`\n- `can't get enough of`",
+        "de": "Diese Wendungen sagen, was du **magst oder liebst**. Die meisten stehen vor einem Nomen oder einer -ing-Form:\n\n- `be keen on`\n- `be into`\n- `be fond of`\n- `be crazy about`\n- `be passionate about`\n- `can't get enough of`"
+      }
+    },
+    {
+      "id": "dislikes",
+      "label": {
+        "en": "Things you dislike",
+        "fr": "Ce que vous n'aimez pas",
+        "de": "Was du nicht magst"
+      },
+      "targetIds": ["stand", "bear", "thing", "fan", "sick", "notime"],
+      "introduction": {
+        "en": "These phrases say what you **dislike or hate**. Some are strong and some are polite:\n\n- `can't stand`\n- `can't bear`\n- `not my thing`\n- `not a big fan of`\n- `be sick of`\n- `have no time for`",
+        "fr": "Ces expressions disent ce que vous **n'aimez pas ou détestez**. Certaines sont fortes, d'autres polies :\n\n- `can't stand`\n- `can't bear`\n- `not my thing`\n- `not a big fan of`\n- `be sick of`\n- `have no time for`",
+        "de": "Diese Wendungen sagen, was du **nicht magst oder hasst**. Manche sind stark, andere höflich:\n\n- `can't stand`\n- `can't bear`\n- `not my thing`\n- `not a big fan of`\n- `be sick of`\n- `have no time for`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "keen",
+      "term": "be keen on",
+      "translations": { "fr": ["être enthousiaste pour"], "de": ["sehr gern mögen"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "be keen on",
+      "examForms": ["be keen on", "keen on"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/bi kiːn ɒn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "My sister is really keen on hiking.",
+        "translation": {
+          "fr": "Ma sœur est vraiment enthousiaste pour la randonnée.",
+          "de": "Meine Schwester mag Wandern wirklich sehr."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Be keen on means to like something a lot and be enthusiastic about it.",
+        "fr": "Be keen on signifie aimer beaucoup quelque chose et s'y intéresser avec enthousiasme.",
+        "de": "Be keen on bedeutet, etwas sehr zu mögen und dafür begeistert zu sein."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "My sister is really ",
+        "after": " hiking.",
+        "accepted": { "answers": ["keen on"] },
+        "referenceTargetIds": ["keen", "stand", "thing", "bear"],
+        "explanation": {
+          "en": "Keen on fits: she is enthusiastic about hiking.",
+          "fr": "Keen on convient : elle est enthousiaste pour la randonnée.",
+          "de": "Keen on passt: Sie ist vom Wandern begeistert."
+        }
+      },
+      "listeningOptionTargetIds": ["keen", "into", "fond", "crazy"]
+    },
+    {
+      "id": "into",
+      "term": "be into",
+      "translations": { "fr": ["être branché par"], "de": ["stehen auf"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "be into",
+      "examForms": ["be into", "into"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/bi ˈɪntuː/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He is really into old vinyl records.",
+        "translation": {
+          "fr": "Il est vraiment branché vieux vinyles.",
+          "de": "Er steht total auf alte Schallplatten."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Be into is an informal way to say you are very interested in something.",
+        "fr": "Be into est une façon familière de dire qu'on s'intéresse beaucoup à quelque chose.",
+        "de": "Be into ist eine umgangssprachliche Art zu sagen, dass man sich sehr für etwas interessiert."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He is really ",
+        "after": " old vinyl records; he buys a new one every week.",
+        "accepted": { "answers": ["into"] },
+        "referenceTargetIds": ["into", "bear", "sick", "enough"],
+        "explanation": {
+          "en": "Into fits: he is very interested in old records.",
+          "fr": "Into convient : il s'intéresse beaucoup aux vieux disques.",
+          "de": "Into passt: Er interessiert sich sehr für alte Schallplatten."
+        }
+      },
+      "listeningOptionTargetIds": ["into", "keen", "fond", "crazy"]
+    },
+    {
+      "id": "fond",
+      "term": "be fond of",
+      "translations": { "fr": ["avoir de l'affection pour"], "de": ["gernhaben"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "be fond of",
+      "examForms": ["be fond of", "fond of"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/bi fɒnd əv/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "I am very fond of my grandmother's cat.",
+        "translation": {
+          "fr": "J'ai beaucoup d'affection pour le chat de ma grand-mère.",
+          "de": "Ich habe die Katze meiner Großmutter sehr gern."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Be fond of means to like someone or something in a warm, gentle way.",
+        "fr": "Be fond of signifie aimer quelqu'un ou quelque chose avec tendresse.",
+        "de": "Be fond of bedeutet, jemanden oder etwas auf warme, zärtliche Weise zu mögen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "I am very ",
+        "after": " my grandmother's cat.",
+        "accepted": { "answers": ["fond of"] },
+        "referenceTargetIds": ["fond", "fan", "notime", "thing"],
+        "explanation": {
+          "en": "Fond of fits: it expresses warm affection for the cat.",
+          "fr": "Fond of convient : il exprime une tendre affection pour le chat.",
+          "de": "Fond of passt: Es drückt herzliche Zuneigung zur Katze aus."
+        }
+      },
+      "listeningOptionTargetIds": ["fond", "keen", "into", "crazy"]
+    },
+    {
+      "id": "crazy",
+      "term": "be crazy about",
+      "translations": { "fr": ["être fou de"], "de": ["verrückt sein nach"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "be crazy about",
+      "examForms": ["be crazy about", "crazy about"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/bi ˈkreɪzi əˈbaʊt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She is crazy about horror films.",
+        "translation": {
+          "fr": "Elle est folle de films d'horreur.",
+          "de": "Sie ist verrückt nach Horrorfilmen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Be crazy about means to love something very much, almost too much.",
+        "fr": "Be crazy about signifie adorer quelque chose, presque à l'excès.",
+        "de": "Be crazy about bedeutet, etwas sehr zu lieben, fast übertrieben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She is ",
+        "after": " horror films; she watches one every night and never gets tired of them.",
+        "accepted": { "answers": ["crazy about"] },
+        "referenceTargetIds": ["crazy", "bear", "fan", "sick"],
+        "explanation": {
+          "en": "Crazy about fits: she loves horror films and watches one every night.",
+          "fr": "Crazy about convient : elle adore les films d'horreur et en regarde un chaque soir.",
+          "de": "Crazy about passt: Sie liebt Horrorfilme und sieht jeden Abend einen."
+        }
+      },
+      "listeningOptionTargetIds": ["crazy", "keen", "into", "fond"]
+    },
+    {
+      "id": "passionate",
+      "term": "be passionate about",
+      "translations": { "fr": ["être passionné par"], "de": ["eine Leidenschaft haben für"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "be passionate about",
+      "examForms": ["be passionate about", "passionate about"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/bi ˈpæʃənət əˈbaʊt/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Tom is passionate about saving the planet.",
+        "translation": {
+          "fr": "Tom est passionné par la protection de la planète.",
+          "de": "Tom hat eine Leidenschaft dafür, den Planeten zu retten."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Be passionate about is stronger than like: it means something matters deeply to you.",
+        "fr": "Be passionate about est plus fort que « aimer » : quelque chose compte profondément pour vous.",
+        "de": "Be passionate about ist stärker als „mögen“: Etwas liegt dir sehr am Herzen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Tom is ",
+        "after": " saving the planet; he gives all his free time to it.",
+        "accepted": { "answers": ["passionate about"] },
+        "referenceTargetIds": ["passionate", "stand", "sick", "thing"],
+        "explanation": {
+          "en": "Passionate about fits: it shows how deeply the cause matters to Tom.",
+          "fr": "Passionate about convient : cela montre combien la cause compte pour Tom.",
+          "de": "Passionate about passt: Es zeigt, wie wichtig Tom die Sache ist."
+        }
+      },
+      "listeningOptionTargetIds": ["passionate", "crazy", "keen", "enough"]
+    },
+    {
+      "id": "enough",
+      "term": "can't get enough of",
+      "translations": { "fr": ["ne pas se lasser de"], "de": ["nicht genug bekommen von"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "can't get enough of",
+      "examForms": ["can't get enough of"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kɑːnt ɡet ɪˈnʌf əv/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "I can't get enough of this song.",
+        "translation": {
+          "fr": "Je ne me lasse pas de cette chanson.",
+          "de": "Ich kann von diesem Lied nicht genug bekommen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Can't get enough of means you like something so much that you always want more.",
+        "fr": "Can't get enough of signifie qu'on aime tellement quelque chose qu'on en veut toujours plus.",
+        "de": "Can't get enough of bedeutet, dass du etwas so sehr magst, dass du immer mehr willst."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "These cookies are great. I ",
+        "after": " them!",
+        "accepted": { "answers": ["can't get enough of", "cannot get enough of"] },
+        "referenceTargetIds": ["enough", "keen", "notime", "thing"],
+        "explanation": {
+          "en": "Can't get enough of fits: you love the cookies and want more.",
+          "fr": "Can't get enough of convient : vous adorez les biscuits et en voulez encore.",
+          "de": "Can't get enough of passt: Du liebst die Kekse und willst mehr."
+        }
+      },
+      "listeningOptionTargetIds": ["enough", "into", "fond", "passionate"]
+    },
+    {
+      "id": "stand",
+      "term": "can't stand",
+      "translations": { "fr": ["ne pas supporter"], "de": ["nicht ausstehen können"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "can't stand",
+      "examForms": ["can't stand"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kɑːnt stænd/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "I can't stand waiting in long queues.",
+        "translation": {
+          "fr": "Je ne supporte pas de faire la queue longtemps.",
+          "de": "Ich kann es nicht ausstehen, in langen Schlangen zu warten."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Can't stand means you strongly dislike something and find it very annoying.",
+        "fr": "Can't stand signifie qu'on déteste fortement quelque chose et qu'on le trouve très agaçant.",
+        "de": "Can't stand bedeutet, dass du etwas stark ablehnst und sehr lästig findest."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "I ",
+        "after": " waiting in long queues.",
+        "accepted": { "answers": ["can't stand", "cannot stand"] },
+        "referenceTargetIds": ["stand", "into", "fond", "thing"],
+        "explanation": {
+          "en": "Can't stand fits: it says you strongly dislike queuing.",
+          "fr": "Can't stand convient : cela dit qu'on déteste faire la queue.",
+          "de": "Can't stand passt: Es sagt, dass du Schlangestehen verabscheust."
+        }
+      },
+      "listeningOptionTargetIds": ["stand", "bear", "thing", "fan"]
+    },
+    {
+      "id": "bear",
+      "term": "can't bear",
+      "translations": { "fr": ["ne pas pouvoir tolérer"], "de": ["nicht ertragen können"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "can't bear",
+      "examForms": ["can't bear"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kɑːnt beə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "I can't bear the noise of the traffic at night.",
+        "translation": {
+          "fr": "Je ne peux pas tolérer le bruit de la circulation la nuit.",
+          "de": "Ich kann den Verkehrslärm in der Nacht nicht ertragen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Can't bear is a slightly more formal way to say you cannot tolerate something.",
+        "fr": "Can't bear est une façon un peu plus soutenue de dire qu'on ne tolère pas quelque chose.",
+        "de": "Can't bear ist eine etwas förmlichere Art zu sagen, dass du etwas nicht aushältst."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "I ",
+        "after": " the noise of the traffic at night.",
+        "accepted": { "answers": ["can't bear", "cannot bear"] },
+        "referenceTargetIds": ["bear", "keen", "crazy", "fan"],
+        "explanation": {
+          "en": "Can't bear fits: you cannot tolerate the noise.",
+          "fr": "Can't bear convient : on ne tolère pas le bruit.",
+          "de": "Can't bear passt: Du erträgst den Lärm nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["bear", "stand", "sick", "fan"]
+    },
+    {
+      "id": "thing",
+      "term": "not my thing",
+      "translations": { "fr": ["ce n'est pas mon truc"], "de": ["nicht mein Ding"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "not my thing",
+      "examForms": ["not my thing"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/nɒt maɪ θɪŋ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Jazz is not my thing, to be honest.",
+        "translation": {
+          "fr": "Le jazz, ce n'est pas mon truc, pour être honnête.",
+          "de": "Jazz ist ehrlich gesagt nicht mein Ding."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Not my thing is a mild, polite way to say you don't enjoy something.",
+        "fr": "Not my thing est une façon douce et polie de dire qu'on n'aime pas vraiment quelque chose.",
+        "de": "Not my thing ist eine milde, höfliche Art zu sagen, dass dir etwas nicht gefällt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Jazz? Honestly, it's ",
+        "after": ".",
+        "accepted": { "answers": ["not my thing"] },
+        "referenceTargetIds": ["thing", "into", "passionate", "sick"],
+        "explanation": {
+          "en": "Not my thing fits: it politely says you don't enjoy jazz.",
+          "fr": "Not my thing convient : cela dit poliment qu'on n'aime pas le jazz.",
+          "de": "Not my thing passt: Es sagt höflich, dass dir Jazz nicht gefällt."
+        }
+      },
+      "listeningOptionTargetIds": ["thing", "stand", "fan", "notime"]
+    },
+    {
+      "id": "fan",
+      "term": "not a big fan of",
+      "translations": { "fr": ["ne pas être fan de"], "de": ["kein großer Fan von"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "not a big fan of",
+      "examForms": ["not a big fan of"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/nɒt ə bɪɡ fæn əv/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "I'm not a big fan of spicy food.",
+        "translation": {
+          "fr": "Je ne suis pas fan de la nourriture épicée.",
+          "de": "Ich bin kein großer Fan von scharfem Essen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Not a big fan of is a polite, understated way to say you dislike something.",
+        "fr": "Not a big fan of est une façon polie et nuancée de dire qu'on n'aime pas quelque chose.",
+        "de": "Not a big fan of ist eine höfliche, zurückhaltende Art zu sagen, dass du etwas nicht magst."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "I'm ",
+        "after": " spicy food, to be honest.",
+        "accepted": { "answers": ["not a big fan of"] },
+        "referenceTargetIds": ["fan", "stand", "enough", "thing"],
+        "explanation": {
+          "en": "Not a big fan of fits: it gently says you don't like spicy food.",
+          "fr": "Not a big fan of convient : cela dit doucement qu'on n'aime pas le piquant.",
+          "de": "Not a big fan of passt: Es sagt sanft, dass du scharfes Essen nicht magst."
+        }
+      },
+      "listeningOptionTargetIds": ["fan", "stand", "bear", "thing"]
+    },
+    {
+      "id": "sick",
+      "term": "be sick of",
+      "translations": { "fr": ["en avoir marre de"], "de": ["die Nase voll haben von"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "be sick of",
+      "examForms": ["be sick of", "sick of"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/bi sɪk əv/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "I'm sick of eating the same lunch every day.",
+        "translation": {
+          "fr": "J'en ai marre de manger le même déjeuner tous les jours.",
+          "de": "Ich habe die Nase voll davon, jeden Tag dasselbe Mittagessen zu essen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Be sick of means you are tired of something because it has gone on too long.",
+        "fr": "Be sick of signifie qu'on est las de quelque chose parce que cela dure trop longtemps.",
+        "de": "Be sick of bedeutet, dass du etwas leid bist, weil es zu lange andauert."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "I'm ",
+        "after": " eating the same lunch every day; I want something different.",
+        "accepted": { "answers": ["sick of"] },
+        "referenceTargetIds": ["sick", "crazy", "enough", "bear"],
+        "explanation": {
+          "en": "Sick of fits: you are tired of the repeated lunch.",
+          "fr": "Sick of convient : vous êtes las du même déjeuner répété.",
+          "de": "Sick of passt: Du hast das ewig gleiche Mittagessen satt."
+        }
+      },
+      "listeningOptionTargetIds": ["sick", "bear", "stand", "notime"]
+    },
+    {
+      "id": "notime",
+      "term": "have no time for",
+      "translations": { "fr": ["ne pas avoir de patience pour"], "de": ["nichts übrig haben für"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "have no time for",
+      "examForms": ["have no time for"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/hæv nəʊ taɪm fɔː/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "I have no time for people who are always late.",
+        "translation": {
+          "fr": "Je n'ai pas de patience pour les gens toujours en retard.",
+          "de": "Ich habe nichts übrig für Leute, die ständig zu spät kommen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Have no time for means you have no patience for, or respect for, someone or something.",
+        "fr": "Have no time for signifie qu'on n'a ni patience ni respect pour quelqu'un ou quelque chose.",
+        "de": "Have no time for bedeutet, dass du für jemanden oder etwas weder Geduld noch Respekt hast."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "I ",
+        "after": " people who are always late.",
+        "accepted": { "answers": ["have no time for", "'ve no time for"] },
+        "referenceTargetIds": ["notime", "fond", "into", "thing"],
+        "explanation": {
+          "en": "Have no time for fits: you have no patience for latecomers.",
+          "fr": "Have no time for convient : vous n'avez pas de patience pour les retardataires.",
+          "de": "Have no time for passt: Du hast keine Geduld für Zuspätkommende."
+        }
+      },
+      "listeningOptionTargetIds": ["notime", "thing", "fan", "sick"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 2,
+  "id": "en-clearing-up-a-cultural-misunderstanding",
+  "lang": "en",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Clearing up a cultural misunderstanding",
+  "objective": {
+    "en": "Explain how a remark or gesture was meant when cultures clash, and clear up a misunderstanding politely.",
+    "fr": "Expliquer comment une remarque ou un geste était censé être pris quand les cultures se heurtent, et dissiper poliment un malentendu.",
+    "de": "Erklären, wie eine Bemerkung oder Geste gemeint war, wenn Kulturen aufeinanderprallen, und ein Missverständnis höflich ausräumen."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:50:55.249Z",
+    "inputHashes": { "outline": "6e7321ae5a8d7acea75a344cc8225ded832c4d6ce097d71824a14af94ebba69d" }
+  },
+  "kind": "functions",
+  "theme": "relations",
+  "situation": {
+    "en": "A manager and a colleague talk about a new team member whose behaviour was misunderstood.",
+    "fr": "Un responsable et une collègue parlent d’un nouveau membre de l’équipe dont le comportement a été mal compris.",
+    "de": "Ein Vorgesetzter und eine Kollegin sprechen über ein neues Teammitglied, dessen Verhalten missverstanden wurde."
+  },
+  "coverageNotes": {
+    "en": "Explaining a custom (In my country, it’s normal to), defending someone’s behaviour (He wasn’t being rude, he was just), correcting a misunderstanding, restating a point (What I meant was), apologising and showing understanding (I can see why that came across as).",
+    "fr": "Expliquer une coutume (In my country, it’s normal to), défendre le comportement de quelqu’un (He wasn’t being rude, he was just), corriger un malentendu, reformuler (What I meant was), s’excuser et montrer de la compréhension (I can see why that came across as).",
+    "de": "Einen Brauch erklären (In my country, it’s normal to), das Verhalten eines anderen verteidigen (He wasn’t being rude, he was just), ein Missverständnis korrigieren, etwas neu formulieren (What I meant was), sich entschuldigen und Verständnis zeigen (I can see why that came across as)."
+  },
+  "prerequisites": [],
+  "roles": [
+    {
+      "id": "manager",
+      "label": "the manager",
+      "translation": { "fr": "le responsable", "de": "der Vorgesetzte" }
+    },
+    {
+      "id": "colleague",
+      "label": "the colleague",
+      "translation": { "fr": "la collègue", "de": "die Kollegin" }
+    }
+  ],
+  "expressions": [
+    {
+      "id": "in-my-country",
+      "text": "In my country, it’s normal to",
+      "openEnd": true,
+      "translations": {
+        "fr": ["Dans mon pays, il est normal de"],
+        "de": ["In meinem Land ist es normal,"]
+      },
+      "explanation": {
+        "en": "Explains a custom from your own culture. It is followed by a verb: In my country, it’s normal to + verb.",
+        "fr": "Explique une coutume de votre culture. Elle est suivie d’un verbe : In my country, it’s normal to + verbe.",
+        "de": "Erklärt einen Brauch aus Ihrer Kultur. Danach folgt ein Verb: In my country, it’s normal to + Verb."
+      },
+      "example": {
+        "text": "In my country, it’s normal to take your shoes off at the door.",
+        "translation": {
+          "fr": "Dans mon pays, il est normal d’enlever ses chaussures à la porte.",
+          "de": "In meinem Land ist es normal, die Schuhe an der Tür auszuziehen."
+        }
+      }
+    },
+    {
+      "id": "wasnt-rude",
+      "text": "He wasn’t being rude, he was just",
+      "openEnd": true,
+      "translations": {
+        "fr": ["Il n’était pas impoli, il était simplement"],
+        "de": ["Er war nicht unhöflich, er war einfach nur"]
+      },
+      "explanation": {
+        "en": "Defends someone else’s behaviour by giving the real reason, such as shyness or respect.",
+        "fr": "Défend le comportement de quelqu’un en donnant la vraie raison, comme la timidité ou le respect.",
+        "de": "Verteidigt das Verhalten eines anderen, indem man den wahren Grund nennt, etwa Schüchternheit oder Respekt."
+      },
+      "example": {
+        "text": "Don’t worry. He wasn’t being rude, he was just nervous.",
+        "translation": {
+          "fr": "Ne vous inquiétez pas. Il n’était pas impoli, il était simplement nerveux.",
+          "de": "Keine Sorge. Er war nicht unhöflich, er war einfach nur nervös."
+        }
+      }
+    },
+    {
+      "id": "misunderstanding",
+      "text": "I think there’s been a misunderstanding",
+      "openEnd": false,
+      "translations": {
+        "fr": ["Je crois qu’il y a eu un malentendu"],
+        "de": ["Ich glaube, da gab es ein Missverständnis"]
+      },
+      "explanation": {
+        "en": "A calm, polite way to say that two people have understood each other wrongly, without blaming anyone.",
+        "fr": "Une façon calme et polie de dire que deux personnes se sont mal comprises, sans accuser personne.",
+        "de": "Eine ruhige, höfliche Art zu sagen, dass sich zwei Personen falsch verstanden haben, ohne jemandem die Schuld zu geben."
+      },
+      "example": {
+        "text": "I think there’s been a misunderstanding about the time of the dinner.",
+        "translation": {
+          "fr": "Je crois qu’il y a eu un malentendu sur l’heure du dîner.",
+          "de": "Ich glaube, es gab ein Missverständnis wegen der Uhrzeit des Abendessens."
+        }
+      }
+    },
+    {
+      "id": "what-i-meant",
+      "text": "What I meant was",
+      "openEnd": true,
+      "translations": {
+        "fr": ["Ce que je voulais dire, c’est que"],
+        "de": ["Was ich meinte, war, dass"]
+      },
+      "explanation": {
+        "en": "Restates your point more clearly when someone has taken your words the wrong way.",
+        "fr": "Reformule plus clairement votre idée quand quelqu’un a mal pris vos mots.",
+        "de": "Formuliert Ihren Gedanken klarer, wenn jemand Ihre Worte falsch aufgefasst hat."
+      },
+      "example": {
+        "text": "What I meant was that the food was too spicy for me, not bad.",
+        "translation": {
+          "fr": "Ce que je voulais dire, c’est que la cuisine était trop épicée pour moi, pas mauvaise.",
+          "de": "Was ich meinte, war, dass das Essen für mich zu scharf war, nicht schlecht."
+        }
+      }
+    },
+    {
+      "id": "didnt-mean-offend",
+      "text": "I didn’t mean to offend you",
+      "openEnd": false,
+      "translations": {
+        "fr": ["Je ne voulais pas vous offenser"],
+        "de": ["Ich wollte Sie nicht beleidigen"]
+      },
+      "explanation": {
+        "en": "Apologises when your words or actions upset someone, showing it was not on purpose.",
+        "fr": "S’excuse quand vos mots ou vos actes ont blessé quelqu’un, en montrant que ce n’était pas voulu.",
+        "de": "Entschuldigt sich, wenn Worte oder Handlungen jemanden verletzt haben, und zeigt, dass es keine Absicht war."
+      },
+      "example": {
+        "text": "I’m so sorry. I didn’t mean to offend you with that joke.",
+        "translation": {
+          "fr": "Je suis désolé. Je ne voulais pas vous offenser avec cette blague.",
+          "de": "Es tut mir leid. Ich wollte Sie mit diesem Witz nicht beleidigen."
+        }
+      }
+    },
+    {
+      "id": "came-across-as",
+      "text": "I can see why that came across as",
+      "openEnd": true,
+      "translations": {
+        "fr": ["Je comprends pourquoi cela a paru"],
+        "de": ["Ich verstehe, warum das so wirkte:"]
+      },
+      "explanation": {
+        "en": "Shows empathy: you understand why the other person reacted as they did, without saying they are wrong.",
+        "fr": "Montre de l’empathie : vous comprenez pourquoi l’autre a réagi ainsi, sans dire qu’il a tort.",
+        "de": "Zeigt Einfühlungsvermögen: Sie verstehen, warum der andere so reagiert hat, ohne zu sagen, dass er falsch liegt."
+      },
+      "example": {
+        "text": "I can see why that came across as arrogant, but he is just direct.",
+        "translation": {
+          "fr": "Je comprends pourquoi cela a paru arrogant, mais il est simplement direct.",
+          "de": "Ich verstehe, warum das arrogant wirkte, aber er ist einfach direkt."
+        }
+      }
+    }
+  ],
+  "words": [],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

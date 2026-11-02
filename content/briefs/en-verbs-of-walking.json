@@ -1,0 +1,635 @@
+{
+  "schemaVersion": 2,
+  "id": "en-verbs-of-walking",
+  "lang": "en",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Verbs of walking: from stroll to stagger",
+  "objective": {
+    "en": "Tell apart twelve verbs for ways of walking, such as stroll, saunter, stride, trudge and stagger, and use each one precisely.",
+    "fr": "Distinguer douze verbes désignant des manières de marcher, comme stroll, saunter, stride, trudge et stagger, et les employer avec précision.",
+    "de": "Zwölf Verben für Arten des Gehens wie stroll, saunter, stride, trudge und stagger unterscheiden und genau verwenden."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:52:41.669Z",
+    "inputHashes": { "outline": "78dcf233171a1ff08a2764db4b37c0f7ead3997ed040da491619ffc4d804d889" }
+  },
+  "kind": "vocabulary",
+  "theme": "language",
+  "coverageNotes": {
+    "en": "Twelve verbs of walking in two groups: easy, confident or purposeful walking (stroll, amble, saunter, stride, march, swagger) and heavy, slow, unsteady or careful walking (trudge, plod, shuffle, stagger, limp, tiptoe). Each verb is contrasted with its nearest neighbours.",
+    "fr": "Douze verbes de marche en deux groupes : marche aisée, assurée ou résolue (stroll, amble, saunter, stride, march, swagger) et marche lourde, lente, instable ou prudente (trudge, plod, shuffle, stagger, limp, tiptoe). Chaque verbe est opposé à ses voisins les plus proches.",
+    "de": "Zwölf Verben des Gehens in zwei Gruppen: leichtes, selbstbewusstes oder zielstrebiges Gehen (stroll, amble, saunter, stride, march, swagger) und schweres, langsames, unsicheres oder vorsichtiges Gehen (trudge, plod, shuffle, stagger, limp, tiptoe). Jedes Verb wird mit seinen nächsten Nachbarn kontrastiert."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve verbs, as the outline asks, is enough to show real contrasts without overloading a C2 learner.",
+    "fr": "Douze verbes, comme le demande le plan, suffisent pour montrer de vrais contrastes sans surcharger un apprenant de niveau C2.",
+    "de": "Zwölf Verben, wie in der Gliederung gefordert, genügen, um echte Kontraste zu zeigen, ohne Lernende auf C2-Niveau zu überfordern."
+  },
+  "difficultyBalance": {
+    "en": "Common verbs such as stroll, march, limp and tiptoe anchor the lesson; subtler ones such as amble, saunter, plod and swagger are the demanding contrasts.",
+    "fr": "Des verbes courants comme stroll, march, limp et tiptoe servent d'ancrage ; des verbes plus subtils comme amble, saunter, plod et swagger forment les contrastes difficiles.",
+    "de": "Geläufige Verben wie stroll, march, limp und tiptoe bilden den Anker; feinere wie amble, saunter, plod und swagger sind die anspruchsvollen Kontraste."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "easy-and-confident",
+      "label": {
+        "en": "Easy, confident, purposeful",
+        "fr": "Aisée, assurée, résolue",
+        "de": "Leicht, selbstbewusst, zielstrebig"
+      },
+      "targetIds": ["stroll", "amble", "saunter", "stride", "march", "swagger"],
+      "introduction": {
+        "en": "Six verbs for walking **with ease, confidence or purpose**. Each one also says something about the walker's attitude and speed:\n\n- `stroll`: walk slowly, for pleasure\n- `amble`: walk at a relaxed, unhurried pace\n- `saunter`: walk casually, looking quite unworried\n- `stride`: walk with long, purposeful steps\n- `march`: walk with firm, regular steps\n- `swagger`: walk proudly, to show off\n\nChoose the verb that fits both the **speed** and the **mood**.",
+        "fr": "Six verbes pour marcher **avec aisance, assurance ou détermination**. Chacun dit aussi quelque chose de l'attitude et de la vitesse de la personne :\n\n- `stroll` : marcher lentement, pour le plaisir\n- `amble` : marcher d'un pas tranquille et sans hâte\n- `saunter` : marcher avec nonchalance, l'air insouciant\n- `stride` : marcher à grands pas résolus\n- `march` : marcher d'un pas ferme et régulier\n- `swagger` : marcher fièrement, pour se faire remarquer\n\nChoisissez le verbe qui convient à la fois à la **vitesse** et à l'**humeur**.",
+        "de": "Sechs Verben für Gehen **mit Leichtigkeit, Selbstvertrauen oder Zielstrebigkeit**. Jedes sagt auch etwas über Haltung und Tempo der Person:\n\n- `stroll`: langsam gehen, zum Vergnügen\n- `amble`: in entspanntem, gemächlichem Tempo gehen\n- `saunter`: lässig gehen und dabei unbekümmert wirken\n- `stride`: mit langen, zielstrebigen Schritten gehen\n- `march`: mit festen, gleichmäßigen Schritten gehen\n- `swagger`: stolz gehen, um anzugeben\n\nWähle das Verb, das zu **Tempo** und **Stimmung** passt."
+      }
+    },
+    {
+      "id": "heavy-slow-careful",
+      "label": {
+        "en": "Heavy, slow, unsteady, careful",
+        "fr": "Lourde, lente, instable, prudente",
+        "de": "Schwer, langsam, unsicher, vorsichtig"
+      },
+      "targetIds": ["trudge", "plod", "shuffle", "stagger", "limp", "tiptoe"],
+      "introduction": {
+        "en": "Six verbs for walking that is **heavy, slow, unsteady or careful**. Most suggest tiredness, difficulty or silence:\n\n- `trudge`: walk with great effort through mud, snow or fatigue\n- `plod`: walk slowly with heavy, dull steps\n- `shuffle`: walk without lifting your feet\n- `stagger`: walk unsteadily, almost falling\n- `limp`: walk unevenly because a leg or foot hurts\n- `tiptoe`: walk quietly on the front of your feet\n\nThe difference is often **why** the person walks that way.",
+        "fr": "Six verbes pour une marche **lourde, lente, instable ou prudente**. La plupart suggèrent la fatigue, la difficulté ou le silence :\n\n- `trudge` : marcher avec beaucoup d'effort dans la boue, la neige ou la fatigue\n- `plod` : avancer lentement d'un pas lourd et monotone\n- `shuffle` : marcher sans décoller les pieds du sol\n- `stagger` : marcher de façon instable, au bord de la chute\n- `limp` : marcher de façon inégale parce qu'une jambe ou un pied fait mal\n- `tiptoe` : marcher sans bruit sur la pointe des pieds\n\nLa différence tient souvent à la **raison** pour laquelle on marche ainsi.",
+        "de": "Sechs Verben für Gehen, das **schwer, langsam, unsicher oder vorsichtig** ist. Die meisten deuten Müdigkeit, Mühe oder Stille an:\n\n- `trudge`: mit großer Mühe durch Schlamm, Schnee oder Müdigkeit gehen\n- `plod`: langsam mit schweren, eintönigen Schritten gehen\n- `shuffle`: gehen, ohne die Füße zu heben\n- `stagger`: unsicher gehen, fast fallend\n- `limp`: ungleichmäßig gehen, weil ein Bein oder Fuß schmerzt\n- `tiptoe`: leise auf den Zehenspitzen gehen\n\nDer Unterschied liegt oft im **Grund**, warum jemand so geht."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "stroll",
+      "term": "stroll",
+      "translations": { "fr": ["se promener", "flâner"], "de": ["spazieren gehen", "bummeln"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "stroll",
+      "examForms": ["stroll"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/strəʊl/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "We strolled along the river after lunch.",
+        "translation": {
+          "fr": "Nous nous sommes promenés au bord de la rivière après le déjeuner.",
+          "de": "Nach dem Mittagessen sind wir am Fluss entlang spaziert."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To stroll is to walk slowly and happily, for pleasure rather than to arrive anywhere.",
+        "fr": "Stroll, c'est marcher lentement et avec plaisir, pour le plaisir plutôt que pour arriver quelque part.",
+        "de": "Stroll heißt, langsam und gern zu gehen, zum Vergnügen und nicht, um irgendwo anzukommen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "se promener sans se presser, pour le plaisir",
+        "de": "gemütlich zum Vergnügen spazieren gehen"
+      },
+      "gap": {
+        "before": "On Sunday afternoons we like to ",
+        "after": " along the seafront, with no particular aim.",
+        "accepted": { "answers": ["stroll"] },
+        "referenceTargetIds": ["stroll", "limp", "march", "tiptoe"],
+        "explanation": {
+          "en": "A leisurely walk with no aim is a stroll; limping, marching and tiptoeing do not fit.",
+          "fr": "Une promenade tranquille sans but est un stroll ; limp, march et tiptoe ne conviennent pas.",
+          "de": "Ein gemütlicher Spaziergang ohne Ziel ist ein stroll; limp, march und tiptoe passen nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["stroll", "stride", "stagger", "saunter"]
+    },
+    {
+      "id": "amble",
+      "term": "amble",
+      "translations": { "fr": ["marcher d'un pas tranquille"], "de": ["gemächlich gehen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "amble",
+      "examForms": ["amble"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈæmbl/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "The old farmer ambled across the field, stopping to pat each cow.",
+        "translation": {
+          "fr": "Le vieux fermier traversa le champ d'un pas tranquille, s'arrêtant pour caresser chaque vache.",
+          "de": "Der alte Bauer ging gemächlich über das Feld und blieb stehen, um jede Kuh zu streicheln."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Amble stresses an easy, slow pace; stroll stresses the pleasure of the walk.",
+        "fr": "Amble insiste sur l'allure lente et aisée ; stroll insiste sur le plaisir de la promenade.",
+        "de": "Amble betont das leichte, langsame Tempo; stroll betont die Freude am Spaziergang."
+      },
+      "explanation": {
+        "en": "To amble is to walk at an easy, unhurried pace, with no sense of effort or rush.",
+        "fr": "Amble, c'est marcher d'un pas aisé et sans hâte, sans effort ni précipitation.",
+        "de": "Amble heißt, in leichtem, gemächlichem Tempo zu gehen, ohne Anstrengung oder Eile."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "marcher d'un pas lent et tranquille, sans aucune hâte",
+        "de": "ganz ohne Eile in leichtem, langsamem Tempo gehen"
+      },
+      "gap": {
+        "before": "He liked to ",
+        "after": " down to the village shop, taking an easy, unhurried pace.",
+        "accepted": { "answers": ["amble"] },
+        "referenceTargetIds": ["amble", "stagger", "march", "trudge"],
+        "explanation": {
+          "en": "An easy, unhurried pace is an amble; staggering, marching and trudging do not fit.",
+          "fr": "Une allure aisée et sans hâte est un amble ; stagger, march et trudge ne conviennent pas.",
+          "de": "Ein leichtes, gemächliches Tempo ist ein amble; stagger, march und trudge passen nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["amble", "march", "tiptoe", "swagger"]
+    },
+    {
+      "id": "saunter",
+      "term": "saunter",
+      "translations": {
+        "fr": ["déambuler avec nonchalance"],
+        "de": ["schlendern", "lässig gehen"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "saunter",
+      "examForms": ["saunter"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈsɔːntə/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "He sauntered in twenty minutes late, hands in his pockets.",
+        "translation": {
+          "fr": "Il est entré en flânant avec vingt minutes de retard, les mains dans les poches.",
+          "de": "Er schlenderte zwanzig Minuten zu spät herein, die Hände in den Taschen."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Saunter suggests a casual, unbothered attitude; swagger suggests pride and showing off.",
+        "fr": "Saunter suggère une attitude nonchalante et détachée ; swagger suggère la fierté et l'envie de se faire remarquer.",
+        "de": "Saunter deutet eine lässige, unbekümmerte Haltung an; swagger deutet Stolz und Angeberei an."
+      },
+      "explanation": {
+        "en": "To saunter is to walk in a relaxed, confident way, as if nothing could worry you.",
+        "fr": "Saunter, c'est marcher de façon détendue et assurée, comme si rien ne pouvait vous inquiéter.",
+        "de": "Saunter heißt, entspannt und selbstsicher zu gehen, als könne einen nichts beunruhigen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "marcher nonchalamment, l'air détendu et sans souci",
+        "de": "lässig und unbekümmert gehen, als hätte man keine Sorgen"
+      },
+      "gap": {
+        "before": "He tried to ",
+        "after": " into the room as if he had not a care in the world.",
+        "accepted": { "answers": ["saunter"] },
+        "referenceTargetIds": ["saunter", "plod", "limp", "tiptoe"],
+        "explanation": {
+          "en": "Walking in as if without a care is a saunter; plodding, limping and tiptoeing do not fit.",
+          "fr": "Entrer comme si de rien n'était, c'est saunter ; plod, limp et tiptoe ne conviennent pas.",
+          "de": "Hereinzugehen, als hätte man keine Sorgen, ist ein saunter; plod, limp und tiptoe passen nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["stroll", "stride", "stagger", "saunter"]
+    },
+    {
+      "id": "stride",
+      "term": "stride",
+      "translations": { "fr": ["marcher à grands pas"], "de": ["mit großen Schritten gehen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "stride",
+      "examForms": ["stride"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/straɪd/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She strode into the meeting and took the chair.",
+        "translation": {
+          "fr": "Elle est entrée à grands pas dans la réunion et a pris la présidence.",
+          "de": "Sie ging mit großen Schritten in die Besprechung und übernahm den Vorsitz."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To stride is to walk with long, firm steps, usually quickly and with a clear purpose.",
+        "fr": "Stride, c'est marcher à longues enjambées fermes, en général vite et avec un but clair.",
+        "de": "Stride heißt, mit langen, festen Schritten zu gehen, meist schnell und mit klarem Ziel."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "marcher à longues enjambées, avec détermination",
+        "de": "mit langen, entschlossenen Schritten gehen"
+      },
+      "gap": {
+        "before": "The director began to ",
+        "after": " across the stage, her long steps full of purpose.",
+        "accepted": { "answers": ["stride"] },
+        "referenceTargetIds": ["stride", "shuffle", "limp", "amble"],
+        "explanation": {
+          "en": "Long steps full of purpose describe a stride; shuffling, limping and ambling do not fit.",
+          "fr": "De longs pas pleins de détermination, c'est un stride ; shuffle, limp et amble ne conviennent pas.",
+          "de": "Lange, zielstrebige Schritte sind ein stride; shuffle, limp und amble passen nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["stroll", "stride", "stagger", "saunter"]
+    },
+    {
+      "id": "march",
+      "term": "march",
+      "translations": { "fr": ["marcher au pas"], "de": ["marschieren"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "march",
+      "examForms": ["march"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/mɑːtʃ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "The soldiers marched through the square in perfect step.",
+        "translation": {
+          "fr": "Les soldats ont traversé la place au pas cadencé.",
+          "de": "Die Soldaten marschierten im Gleichschritt über den Platz."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To march is to walk with firm, regular steps, like soldiers, or in an angry, determined way.",
+        "fr": "March, c'est marcher d'un pas ferme et régulier, comme des soldats, ou de façon furieuse et déterminée.",
+        "de": "March heißt, mit festen, gleichmäßigen Schritten zu gehen, wie Soldaten, oder wütend und entschlossen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "marcher d'un pas ferme et régulier, comme des soldats",
+        "de": "mit festen, gleichmäßigen Schritten gehen wie Soldaten"
+      },
+      "gap": {
+        "before": "The soldiers began to ",
+        "after": " in step across the parade ground.",
+        "accepted": { "answers": ["march"] },
+        "referenceTargetIds": ["march", "saunter", "shuffle", "tiptoe"],
+        "explanation": {
+          "en": "Soldiers moving in step march; sauntering, shuffling and tiptoeing do not fit.",
+          "fr": "Des soldats qui avancent au pas marchent (march) ; saunter, shuffle et tiptoe ne conviennent pas.",
+          "de": "Soldaten im Gleichschritt marschieren (march); saunter, shuffle und tiptoe passen nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["amble", "march", "tiptoe", "swagger"]
+    },
+    {
+      "id": "swagger",
+      "term": "swagger",
+      "translations": { "fr": ["se pavaner"], "de": ["stolzieren"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "swagger",
+      "examForms": ["swagger"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈswæɡə/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "He swaggered around the dressing room after scoring twice.",
+        "translation": {
+          "fr": "Il se pavanait dans le vestiaire après avoir marqué deux buts.",
+          "de": "Er stolzierte durch die Umkleidekabine, nachdem er zweimal getroffen hatte."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To swagger is to walk with a proud, self-satisfied air, as if you want everyone to notice.",
+        "fr": "Swagger, c'est marcher d'un air fier et satisfait, comme pour se faire remarquer de tous.",
+        "de": "Swagger heißt, mit stolzer, selbstzufriedener Miene zu gehen, als solle es jeder bemerken."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "marcher d'un air fier et satisfait de soi, pour être remarqué",
+        "de": "stolz und selbstzufrieden gehen, um aufzufallen"
+      },
+      "gap": {
+        "before": "After winning, he began to ",
+        "after": " round the dressing room, chest out, so pleased with himself.",
+        "accepted": { "answers": ["swagger"] },
+        "referenceTargetIds": ["swagger", "trudge", "tiptoe", "plod"],
+        "explanation": {
+          "en": "Walking proudly, chest out, is a swagger; trudging, tiptoeing and plodding do not fit.",
+          "fr": "Marcher fièrement, le torse bombé, c'est swagger ; trudge, tiptoe et plod ne conviennent pas.",
+          "de": "Stolz mit geschwellter Brust zu gehen ist ein swagger; trudge, tiptoe und plod passen nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["amble", "march", "tiptoe", "swagger"]
+    },
+    {
+      "id": "trudge",
+      "term": "trudge",
+      "translations": { "fr": ["marcher péniblement"], "de": ["sich dahinschleppen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "trudge",
+      "examForms": ["trudge"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/trʌdʒ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "We trudged through the snow for hours.",
+        "translation": {
+          "fr": "Nous avons marché péniblement dans la neige pendant des heures.",
+          "de": "Wir stapften stundenlang durch den Schnee."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Trudge stresses the difficult ground or tiredness; plod stresses slow, dull persistence.",
+        "fr": "Trudge insiste sur le terrain difficile ou la fatigue ; plod insiste sur une persévérance lente et monotone.",
+        "de": "Trudge betont den schwierigen Untergrund oder die Müdigkeit; plod betont langsames, eintöniges Durchhalten."
+      },
+      "explanation": {
+        "en": "To trudge is to walk slowly and with great effort, often through mud or snow, or when very tired.",
+        "fr": "Trudge, c'est marcher lentement et avec beaucoup d'effort, souvent dans la boue ou la neige, ou très fatigué.",
+        "de": "Trudge heißt, langsam und mit großer Mühe zu gehen, oft durch Schlamm oder Schnee oder wenn man sehr müde ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "marcher lentement et péniblement, par exemple dans la boue ou la neige",
+        "de": "langsam und mühsam gehen, z. B. durch Schlamm oder Schnee"
+      },
+      "gap": {
+        "before": "We had to ",
+        "after": " through deep mud for three miles, soaked and exhausted.",
+        "accepted": { "answers": ["trudge"] },
+        "referenceTargetIds": ["trudge", "stroll", "swagger", "stride"],
+        "explanation": {
+          "en": "Deep mud and exhaustion call for trudge; strolling, swaggering and striding do not fit.",
+          "fr": "La boue épaisse et l'épuisement appellent trudge ; stroll, swagger et stride ne conviennent pas.",
+          "de": "Tiefer Schlamm und Erschöpfung verlangen trudge; stroll, swagger und stride passen nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["trudge", "plod", "shuffle", "limp"]
+    },
+    {
+      "id": "plod",
+      "term": "plod",
+      "translations": { "fr": ["avancer d'un pas lourd"], "de": ["trotten"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "plod",
+      "examForms": ["plod"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/plɒd/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "The tired horse plodded on down the endless road.",
+        "translation": {
+          "fr": "Le cheval fatigué avançait lourdement sur la route interminable.",
+          "de": "Das müde Pferd trottete die endlose Straße entlang."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Plod can also describe slow, dull work: to plod through a long report.",
+        "fr": "Plod peut aussi décrire un travail lent et monotone : plod through a long report.",
+        "de": "Plod kann auch langsame, eintönige Arbeit beschreiben: plod through a long report."
+      },
+      "explanation": {
+        "en": "To plod is to walk slowly with heavy, steady steps, in a dull, tired way.",
+        "fr": "Plod, c'est avancer lentement d'un pas lourd et régulier, de façon monotone et fatiguée.",
+        "de": "Plod heißt, langsam mit schweren, gleichmäßigen Schritten zu gehen, eintönig und müde."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "avancer lentement d'un pas lourd et monotone",
+        "de": "langsam mit schweren, eintönigen Schritten weitergehen"
+      },
+      "gap": {
+        "before": "The old horse could only ",
+        "after": " on with heavy, dull steps along the endless road.",
+        "accepted": { "answers": ["plod"] },
+        "referenceTargetIds": ["plod", "saunter", "tiptoe", "limp"],
+        "explanation": {
+          "en": "Heavy, dull steps on an endless road describe plodding; sauntering, tiptoeing and limping do not fit.",
+          "fr": "Des pas lourds et monotones sur une route sans fin, c'est plod ; saunter, tiptoe et limp ne conviennent pas.",
+          "de": "Schwere, eintönige Schritte auf endloser Straße sind plod; saunter, tiptoe und limp passen nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["trudge", "plod", "shuffle", "limp"]
+    },
+    {
+      "id": "shuffle",
+      "term": "shuffle",
+      "translations": { "fr": ["traîner les pieds"], "de": ["schlurfen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "shuffle",
+      "examForms": ["shuffle"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈʃʌfl/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Grandfather shuffled to the kitchen in his slippers.",
+        "translation": {
+          "fr": "Grand-père a traîné les pieds jusqu'à la cuisine en pantoufles.",
+          "de": "Großvater schlurfte in Pantoffeln in die Küche."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To shuffle is to walk without lifting your feet properly, so they slide along the ground.",
+        "fr": "Shuffle, c'est marcher sans bien lever les pieds, qui glissent sur le sol.",
+        "de": "Shuffle heißt, zu gehen, ohne die Füße richtig zu heben, sodass sie über den Boden schleifen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "marcher en traînant les pieds sur le sol, sans les lever",
+        "de": "gehen und dabei die Füße über den Boden schleifen lassen"
+      },
+      "gap": {
+        "before": "In his slippers, Grandfather would ",
+        "after": " down the hall, barely lifting his feet.",
+        "accepted": { "answers": ["shuffle"] },
+        "referenceTargetIds": ["shuffle", "stride", "swagger", "march"],
+        "explanation": {
+          "en": "Barely lifting the feet is a shuffle; striding, swaggering and marching do not fit.",
+          "fr": "Lever à peine les pieds, c'est shuffle ; stride, swagger et march ne conviennent pas.",
+          "de": "Die Füße kaum zu heben ist ein shuffle; stride, swagger und march passen nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["trudge", "plod", "shuffle", "limp"]
+    },
+    {
+      "id": "stagger",
+      "term": "stagger",
+      "translations": { "fr": ["tituber"], "de": ["taumeln"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "stagger",
+      "examForms": ["stagger"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈstæɡə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He staggered out of the bar and leant against a wall.",
+        "translation": {
+          "fr": "Il est sorti du bar en titubant et s'est appuyé contre un mur.",
+          "de": "Er taumelte aus der Bar und lehnte sich an eine Wand."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To stagger is to walk unsteadily, as if you might fall, because of drink, injury or shock.",
+        "fr": "Stagger, c'est marcher de façon instable, au bord de la chute, à cause de l'alcool, d'une blessure ou d'un choc.",
+        "de": "Stagger heißt, unsicher zu gehen, als würde man fallen, wegen Alkohol, Verletzung oder Schock."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "marcher de façon instable, comme si on allait tomber",
+        "de": "unsicher gehen, als würde man gleich fallen"
+      },
+      "gap": {
+        "before": "After the blow to his head, he began to ",
+        "after": " about, unable to keep his balance.",
+        "accepted": { "answers": ["stagger"] },
+        "referenceTargetIds": ["stagger", "stroll", "stride", "saunter"],
+        "explanation": {
+          "en": "Losing one's balance after a blow is staggering; strolling, striding and sauntering do not fit.",
+          "fr": "Perdre l'équilibre après un coup, c'est stagger ; stroll, stride et saunter ne conviennent pas.",
+          "de": "Nach einem Schlag das Gleichgewicht zu verlieren ist stagger; stroll, stride und saunter passen nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["stroll", "stride", "stagger", "saunter"]
+    },
+    {
+      "id": "limp",
+      "term": "limp",
+      "translations": { "fr": ["boiter"], "de": ["humpeln"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "limp",
+      "examForms": ["limp"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/lɪmp/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She limped off the pitch with a sprained ankle.",
+        "translation": {
+          "fr": "Elle a quitté le terrain en boitant, la cheville foulée.",
+          "de": "Sie humpelte mit verstauchtem Knöchel vom Platz."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To limp is to walk unevenly because one leg or foot is hurt or weak.",
+        "fr": "Limp, c'est marcher de façon inégale parce qu'une jambe ou un pied est blessé ou faible.",
+        "de": "Limp heißt, ungleichmäßig zu gehen, weil ein Bein oder Fuß verletzt oder schwach ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "marcher de façon inégale parce qu'une jambe fait mal",
+        "de": "ungleichmäßig gehen, weil ein Bein wehtut"
+      },
+      "gap": {
+        "before": "She twisted her ankle and had to ",
+        "after": " home, favouring the injured foot.",
+        "accepted": { "answers": ["limp"] },
+        "referenceTargetIds": ["limp", "amble", "swagger", "march"],
+        "explanation": {
+          "en": "Favouring an injured foot is limping; ambling, swaggering and marching do not fit.",
+          "fr": "Ménager un pied blessé, c'est limp ; amble, swagger et march ne conviennent pas.",
+          "de": "Einen verletzten Fuß zu schonen ist limp; amble, swagger und march passen nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["trudge", "plod", "shuffle", "limp"]
+    },
+    {
+      "id": "tiptoe",
+      "term": "tiptoe",
+      "translations": {
+        "fr": ["marcher sur la pointe des pieds"],
+        "de": ["auf Zehenspitzen gehen"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "tiptoe",
+      "examForms": ["tiptoe"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈtɪptəʊ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "We tiptoed past the baby's room.",
+        "translation": {
+          "fr": "Nous sommes passés sur la pointe des pieds devant la chambre du bébé.",
+          "de": "Wir schlichen auf Zehenspitzen am Zimmer des Babys vorbei."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "To tiptoe is to walk quietly on the front of your feet so that nobody hears you.",
+        "fr": "Tiptoe, c'est marcher sans bruit sur l'avant des pieds pour que personne n'entende.",
+        "de": "Tiptoe heißt, leise auf den Zehenspitzen zu gehen, damit niemand einen hört."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "fr": "marcher sans bruit sur l'avant des pieds, pour ne pas être entendu",
+        "de": "leise auf den Zehenspitzen gehen, um nicht gehört zu werden"
+      },
+      "gap": {
+        "before": "We had to ",
+        "after": " past the baby's room so as not to wake her.",
+        "accepted": { "answers": ["tiptoe"] },
+        "referenceTargetIds": ["tiptoe", "trudge", "stride", "plod"],
+        "explanation": {
+          "en": "Walking quietly so as not to wake a baby is tiptoeing; trudging, striding and plodding do not fit.",
+          "fr": "Marcher sans bruit pour ne pas réveiller un bébé, c'est tiptoe ; trudge, stride et plod ne conviennent pas.",
+          "de": "Leise zu gehen, um ein Baby nicht zu wecken, ist tiptoe; trudge, stride und plod passen nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["amble", "march", "tiptoe", "swagger"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

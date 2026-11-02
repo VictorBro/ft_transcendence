@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 2,
+  "id": "en-reading-long-form-literary-journalism",
+  "lang": "en",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Reading long-form literary journalism",
+  "objective": {
+    "en": "Read a long narrative piece of journalism about a retired boxer and identify the techniques it borrows from fiction: scene, reconstructed dialogue and withheld information.",
+    "fr": "Lire un long article narratif sur un ancien boxeur et repérer les techniques empruntées à la fiction : scène, dialogue reconstitué et information retenue.",
+    "de": "Einen langen erzählenden Zeitungstext über einen ehemaligen Boxer lesen und die Techniken der Fiktion erkennen: Szene, rekonstruierter Dialog und zurückgehaltene Information."
+  },
+  "estimatedMinutes": 12,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:53:01.559Z",
+    "inputHashes": { "outline": "4649816bd04c0b6f0a40f3b667b1c3e02e3f0ddd4f3ba8ec8d99ba9bd3ef1ff3" }
+  },
+  "kind": "reading",
+  "theme": "personal_identification",
+  "genre": "article",
+  "situation": {
+    "en": "A magazine writer spends weeks in a Northern gym with Eddie Marsh, a retired middleweight who refuses to explain the fight that defined his career.",
+    "fr": "Une journaliste de magazine passe des semaines dans une salle de boxe du nord de l’Angleterre avec Eddie Marsh, ancien poids moyen qui refuse d’expliquer le combat qui a marqué sa carrière.",
+    "de": "Eine Magazinautorin verbringt Wochen in einer Boxhalle in Nordengland bei Eddie Marsh, einem ehemaligen Mittelgewichtler, der den Kampf seines Lebens nicht erklären will."
+  },
+  "readerTask": {
+    "en": "Identify how the writer uses scene, reconstructed dialogue and withheld information to build a narrative, and say what each technique achieves.",
+    "fr": "Repérer comment l’auteure utilise la scène, le dialogue reconstitué et l’information retenue pour construire un récit, et ce que chaque technique produit.",
+    "de": "Erkennen, wie die Autorin Szene, rekonstruierten Dialog und zurückgehaltene Information einsetzt, und was jede Technik bewirkt."
+  },
+  "keywords": [
+    {
+      "id": "taciturn",
+      "term": "taciturn",
+      "translations": { "fr": ["taciturne", "peu bavard"], "de": ["wortkarg", "schweigsam"] },
+      "explanation": {
+        "en": "Saying very little, by nature. It describes a person, not a single silence.",
+        "fr": "Qui parle très peu, par nature. Le mot décrit une personne, pas un silence isolé.",
+        "de": "Von Natur aus sehr sparsam im Reden. Das Wort beschreibt eine Person, nicht ein einzelnes Schweigen."
+      }
+    },
+    {
+      "id": "wry",
+      "term": "wry",
+      "translations": { "fr": ["narquois", "ironique"], "de": ["ironisch", "trocken"] },
+      "explanation": {
+        "en": "Showing dry, slightly mocking humour, often with a hint of resignation.",
+        "fr": "Qui montre un humour sec, légèrement moqueur, souvent teinté de résignation.",
+        "de": "Mit trockenem, leicht spöttischem Humor, oft mit einem Hauch Resignation."
+      }
+    },
+    {
+      "id": "vestiges",
+      "term": "vestiges",
+      "translations": { "fr": ["vestiges", "traces"], "de": ["Überreste", "Spuren"] },
+      "explanation": {
+        "en": "Small remaining traces of something that once existed or was important.",
+        "fr": "Petites traces qui restent de quelque chose qui a existé ou compté.",
+        "de": "Kleine Spuren von etwas, das einmal existierte oder wichtig war."
+      }
+    },
+    {
+      "id": "obliquely",
+      "term": "obliquely",
+      "translations": {
+        "fr": ["indirectement", "de biais"],
+        "de": ["indirekt", "andeutungsweise"]
+      },
+      "explanation": {
+        "en": "In an indirect way, hinting rather than saying plainly.",
+        "fr": "De façon indirecte, en suggérant plutôt qu’en disant clairement.",
+        "de": "Auf indirekte Weise, mit Andeutungen statt klaren Worten."
+      }
+    },
+    {
+      "id": "reticence",
+      "term": "reticence",
+      "translations": { "fr": ["réserve", "retenue"], "de": ["Zurückhaltung", "Verschwiegenheit"] },
+      "explanation": {
+        "en": "A deliberate unwillingness to speak freely about something.",
+        "fr": "Un refus délibéré de parler librement de quelque chose.",
+        "de": "Die bewusste Weigerung, offen über etwas zu sprechen."
+      }
+    }
+  ],
+  "documents": {
+    "main": {
+      "targetWords": 594,
+      "contents": {
+        "en": "The opening of a long feature. The writer visits an empty gym where Marsh mops the ring, receives a terse postcard, and hears fragments of a story. She admits some scenes are reconstructed from witnesses, tells the Hull fight as a present-tense scene, and notes Marsh’s refusal to explain it. A trainer’s daughter says to ask what he didn’t do.",
+        "fr": "Début d’un long reportage. L’auteure visite une salle vide où Marsh lave le ring, reçoit une carte laconique et entend des bribes d’histoire. Elle avoue que certaines scènes sont reconstituées d’après des témoins, raconte le combat de Hull au présent et note le refus de Marsh de l’expliquer. La fille d’un entraîneur dit de demander ce qu’il n’a pas fait.",
+        "de": "Der Beginn einer langen Reportage. Die Autorin besucht eine leere Halle, in der Marsh den Ring wischt, erhält eine knappe Postkarte und hört Bruchstücke einer Geschichte. Sie gesteht, dass manche Szenen aus Zeugenaussagen rekonstruiert sind, erzählt den Kampf in Hull im Präsens und erwähnt Marshs Weigerung, ihn zu erklären. Die Tochter eines Trainers rät zu fragen, was er nicht getan hat."
+      }
+    },
+    "exam": {
+      "targetWords": 296,
+      "contents": {
+        "en": "A new feature extract: a ferryman, a silent woman returning to an island, a scene without explanation, and an afterwards-revealed backstory that the writer deliberately withholds from the reader for several paragraphs.",
+        "fr": "Nouvel extrait de reportage : un passeur, une femme silencieuse qui revient sur une île, une scène sans explication, et une histoire révélée après coup que l’auteur retient volontairement pendant plusieurs paragraphes.",
+        "de": "Ein neuer Reportageauszug: ein Fährmann, eine schweigsame Frau auf dem Weg zurück zu einer Insel, eine Szene ohne Erklärung und eine nachträglich enthüllte Vorgeschichte, die der Autor mehrere Absätze lang bewusst zurückhält."
+      }
+    }
+  },
+  "skim": { "focus": "genre" },
+  "detailQuestions": [
+    {
+      "id": "q-reply",
+      "type": "reading_choice",
+      "focus": {
+        "en": "How Marsh answers the writer’s first approach",
+        "fr": "Comment Marsh répond à la première démarche de l’auteure",
+        "de": "Wie Marsh auf die erste Kontaktaufnahme reagiert"
+      }
+    },
+    {
+      "id": "q-method",
+      "type": "reading_choice",
+      "focus": {
+        "en": "Why the writer admits reconstructing dialogue",
+        "fr": "Pourquoi l’auteure avoue reconstituer des dialogues",
+        "de": "Warum die Autorin die Rekonstruktion von Dialogen zugibt"
+      }
+    },
+    {
+      "id": "q-pryor",
+      "type": "reading_true_false",
+      "focus": {
+        "en": "Whether Marsh explains what he understood in the Pryor fight",
+        "fr": "Si Marsh explique ce qu’il a compris lors du combat contre Pryor",
+        "de": "Ob Marsh erklärt, was er im Kampf gegen Pryor begriffen hat"
+      }
+    },
+    {
+      "id": "q-maureen",
+      "type": "reading_choice",
+      "focus": {
+        "en": "What Maureen’s remark implies",
+        "fr": "Ce que laisse entendre la remarque de Maureen",
+        "de": "Was Maureens Bemerkung andeutet"
+      }
+    }
+  ],
+  "exam": { "types": ["reading_choice", "reading_true_false"] },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

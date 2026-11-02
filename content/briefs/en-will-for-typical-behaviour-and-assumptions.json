@@ -1,0 +1,242 @@
+{
+  "schemaVersion": 2,
+  "id": "en-will-for-typical-behaviour-and-assumptions",
+  "lang": "en",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Will for typical behaviour and confident guesses",
+  "objective": {
+    "en": "Use will to describe typical behaviour, make confident guesses about now, and complain about annoying habits with stressed will or would.",
+    "fr": "Employer will pour décrire un comportement typique, faire des suppositions sûres sur le présent et se plaindre d'habitudes agaçantes avec will ou would accentués.",
+    "de": "Mit will typisches Verhalten beschreiben, sichere Vermutungen über die Gegenwart äußern und mit betontem will oder would nervige Gewohnheiten beanstanden."
+  },
+  "estimatedMinutes": 20,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:50:43.191Z",
+    "inputHashes": { "outline": "321aa9beac16a5e60d287ed69c30f7e4e8e96077db1018f97cdd56872298cbac" }
+  },
+  "kind": "grammar",
+  "topic": "verb_usage",
+  "scopeBoundaries": {
+    "en": "Covers will for typical behaviour, will and will have for confident guesses, stressed will and would for complaints, and unstressed would for past habits. Excludes future will and used to.",
+    "fr": "Couvre will pour le comportement typique, will et will have pour les suppositions sûres, will et would accentués pour les reproches, et would non accentué pour les habitudes passées. Exclut le futur avec will et used to.",
+    "de": "Behandelt will für typisches Verhalten, will und will have für sichere Vermutungen, betontes will und would für Vorwürfe und unbetontes would für vergangene Gewohnheiten. Ausgeschlossen sind will als Zukunft und used to."
+  },
+  "prerequisites": [
+    {
+      "en": "Will for the future and the modal verbs form",
+      "fr": "Will pour le futur et la forme des verbes modaux",
+      "de": "Will für die Zukunft und die Form der Modalverben"
+    },
+    {
+      "en": "Past participles and the perfect infinitive",
+      "fr": "Les participes passés et l'infinitif passé",
+      "de": "Partizipien Perfekt und der Infinitiv Perfekt"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-typical-habit",
+      "summary": {
+        "en": "Will + infinitive describes typical, repeated behaviour of people and things.",
+        "fr": "Will + infinitif décrit le comportement typique et répété des personnes et des choses.",
+        "de": "Will + Infinitiv beschreibt typisches, wiederholtes Verhalten von Personen und Dingen."
+      }
+    },
+    {
+      "id": "rule-confident-guess",
+      "summary": {
+        "en": "Will be, will + infinitive and will have + past participle express confident guesses about now or earlier.",
+        "fr": "Will be, will + infinitif et will have + participe passé expriment des suppositions sûres sur le présent ou le passé.",
+        "de": "Will be, will + Infinitiv und will have + Partizip Perfekt drücken sichere Vermutungen über jetzt oder früher aus."
+      }
+    },
+    {
+      "id": "rule-annoying-habit",
+      "summary": {
+        "en": "Stressed WILL or WOULD complains about a habit; unstressed would describes a past habit.",
+        "fr": "WILL ou WOULD accentué exprime un reproche sur une habitude ; would non accentué décrit une habitude passée.",
+        "de": "Betontes WILL oder WOULD beanstandet eine Gewohnheit; unbetontes would beschreibt eine vergangene Gewohnheit."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-typical",
+      "title": {
+        "en": "Typical behaviour and confident guesses",
+        "fr": "Comportement typique et suppositions sûres",
+        "de": "Typisches Verhalten und sichere Vermutungen"
+      },
+      "ruleIds": ["rule-typical-habit", "rule-confident-guess"],
+      "explanationPlan": {
+        "en": "Show that will is not only future: it describes typical behaviour (She'll sit for hours reading) and makes confident guesses about now (That'll be Sam), about actions in progress (will be + -ing) and about earlier time (will have + past participle).",
+        "fr": "Montrer que will n'est pas seulement un futur : il décrit un comportement typique (She'll sit for hours reading) et exprime des suppositions sûres sur le présent (That'll be Sam), sur une action en cours (will be + -ing) et sur un moment antérieur (will have + participe passé).",
+        "de": "Zeigen, dass will nicht nur Zukunft ist: Es beschreibt typisches Verhalten (She'll sit for hours reading) und drückt sichere Vermutungen aus über jetzt (That'll be Sam), laufende Handlungen (will be + -ing) und früher (will have + Partizip Perfekt)."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "She'll sit for hours reading.",
+          "translation": {
+            "fr": "Elle reste assise des heures à lire.",
+            "de": "Sie sitzt stundenlang da und liest."
+          }
+        },
+        {
+          "text": "That'll be Sam.",
+          "translation": { "fr": "Ça doit être Sam.", "de": "Das wird Sam sein." }
+        },
+        {
+          "text": "They'll have left already.",
+          "translation": {
+            "fr": "Ils seront déjà partis.",
+            "de": "Sie werden schon gegangen sein."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "After 'll in a guess about now, use be or a base verb, not a conjugated form: That'll be Sam.",
+          "fr": "Après 'll dans une supposition sur le présent, employez be ou un verbe à l'infinitif, pas une forme conjuguée : That'll be Sam.",
+          "de": "Nach 'll steht bei einer Vermutung über jetzt be oder der Infinitiv, keine gebeugte Form: That'll be Sam."
+        },
+        {
+          "en": "A guess about an earlier time needs will have + past participle.",
+          "fr": "Une supposition sur un moment antérieur demande will have + participe passé.",
+          "de": "Eine Vermutung über früher braucht will have + Partizip Perfekt."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-habit-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-typical-habit", "rule-confident-guess"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-habit-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-typical-habit", "rule-confident-guess"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-habit-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 4,
+          "ruleIds": ["rule-typical-habit", "rule-confident-guess"],
+          "estimatedDurationS": 120
+        }
+      ]
+    },
+    {
+      "id": "block-annoyance",
+      "title": {
+        "en": "Stressed will and would: complaints and past habits",
+        "fr": "will et would accentués : reproches et habitudes passées",
+        "de": "Betontes will und would: Vorwürfe und vergangene Gewohnheiten"
+      },
+      "ruleIds": ["rule-annoying-habit"],
+      "explanationPlan": {
+        "en": "Teach stressed WILL for irritation at a present habit (He WILL leave his socks on the floor), stressed WOULD for a past one, and unstressed would for neutral past habits. Warn that stressed forms sound critical.",
+        "fr": "Enseigner WILL accentué pour l'agacement devant une habitude présente (He WILL leave his socks on the floor), WOULD accentué pour une habitude passée et would non accentué pour les habitudes passées neutres. Avertir que les formes accentuées semblent critiques.",
+        "de": "Betontes WILL für Ärger über eine gegenwärtige Gewohnheit (He WILL leave his socks on the floor), betontes WOULD für eine vergangene und unbetontes would für neutrale vergangene Gewohnheiten vermitteln. Darauf hinweisen, dass die betonten Formen kritisch klingen."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "He WILL leave his socks on the floor.",
+          "translation": {
+            "fr": "Il laisse TOUJOURS ses chaussettes par terre !",
+            "de": "Er lässt seine Socken ja immer auf dem Boden liegen!"
+          }
+        },
+        {
+          "text": "She WOULD interrupt me.",
+          "translation": {
+            "fr": "Elle devait toujours m'interrompre.",
+            "de": "Sie musste mich ja immer unterbrechen."
+          }
+        },
+        {
+          "text": "Every summer we would swim before breakfast.",
+          "translation": {
+            "fr": "Chaque été, nous nous baignions avant le petit-déjeuner.",
+            "de": "Jeden Sommer schwammen wir vor dem Frühstück."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not stress will in a neutral statement: the stress signals irritation.",
+          "fr": "N'accentuez pas will dans une phrase neutre : l'accent signale l'agacement.",
+          "de": "Betone will nicht in einer neutralen Aussage: Die Betonung zeigt Ärger an."
+        },
+        {
+          "en": "Would for past habits is not used for states: say I lived in Leeds, not I would live in Leeds.",
+          "fr": "Would pour les habitudes passées ne s'emploie pas pour les états : I lived in Leeds, et non I would live in Leeds.",
+          "de": "Would für vergangene Gewohnheiten steht nicht bei Zuständen: I lived in Leeds, nicht I would live in Leeds."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-annoy-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-annoying-habit"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-annoy-order",
+          "type": "grammar_word_order",
+          "itemCount": 4,
+          "ruleIds": ["rule-annoying-habit"],
+          "estimatedDurationS": 140
+        },
+        {
+          "id": "ex-annoy-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-annoying-habit"],
+          "estimatedDurationS": 80
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-habit",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-typical-habit", "rule-confident-guess"],
+        "estimatedDurationS": 120,
+        "timeLimitS": 200
+      },
+      {
+        "pageId": "exam-annoy",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["rule-annoying-habit"],
+        "estimatedDurationS": 90,
+        "timeLimitS": 150
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-typical-habit", "rule-confident-guess", "rule-annoying-habit"],
+        "estimatedDurationS": 105,
+        "timeLimitS": 180
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

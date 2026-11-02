@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 2,
+  "id": "en-reading-a-profile-of-someone-with-an-unusual-job",
+  "lang": "en",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Reading a profile of someone with an unusual job",
+  "objective": {
+    "en": "Read a magazine profile of someone with an unusual job and find the facts, her attitude to the work and the writer’s purpose in telling her story.",
+    "fr": "Lire le portrait d’une personne au métier insolite et trouver les faits, son attitude face au travail et l’intention de l’auteur.",
+    "de": "Ein Magazinporträt über einen ungewöhnlichen Beruf lesen und Fakten, die Haltung zur Arbeit und die Absicht des Autors erkennen."
+  },
+  "estimatedMinutes": 11,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:48:47.864Z",
+    "inputHashes": { "outline": "b962bea3a7839ba16aa361687eac3f2b9303e47c9f410646a1d7fcd05e6da27b" }
+  },
+  "kind": "reading",
+  "theme": "personal_identification",
+  "genre": "profile",
+  "situation": {
+    "en": "A weekend magazine profiles Ruth Calder, who looks after the clock of a cathedral tower, written by a journalist for general readers.",
+    "fr": "Un magazine du week-end présente Ruth Calder, qui s’occupe de l’horloge d’une tour de cathédrale ; l’article est écrit par un journaliste pour le grand public.",
+    "de": "Ein Wochenendmagazin porträtiert Ruth Calder, die sich um die Uhr eines Kathedralenturms kümmert; ein Journalist schreibt für ein breites Publikum."
+  },
+  "readerTask": {
+    "en": "Find the facts about her job, understand how she feels about the work, and work out why the writer tells her story.",
+    "fr": "Retrouver les faits sur son métier, comprendre ce qu’elle pense de son travail et deviner pourquoi l’auteur raconte son histoire.",
+    "de": "Fakten über ihren Beruf finden, verstehen, wie sie über die Arbeit denkt, und erkennen, warum der Autor ihre Geschichte erzählt."
+  },
+  "keywords": [
+    {
+      "id": "painstaking",
+      "term": "painstaking",
+      "translations": { "fr": ["minutieux", "méticuleux"], "de": ["sorgfältig", "akribisch"] },
+      "explanation": {
+        "en": "Done slowly and with great care for every detail.",
+        "fr": "Fait lentement et avec un grand soin pour chaque détail.",
+        "de": "Langsam und mit großer Sorgfalt für jedes Detail erledigt."
+      }
+    },
+    {
+      "id": "vocation",
+      "term": "vocation",
+      "translations": { "fr": ["vocation"], "de": ["Berufung"] },
+      "explanation": {
+        "en": "A job you feel strongly you were meant to do, not just a way to earn money.",
+        "fr": "Un métier que l’on sent fait pour soi, pas seulement un moyen de gagner sa vie.",
+        "de": "Eine Arbeit, zu der man sich gerufen fühlt, nicht nur ein Weg, Geld zu verdienen."
+      }
+    },
+    {
+      "id": "dwindling",
+      "term": "dwindling",
+      "translations": { "fr": ["en déclin", "qui diminue"], "de": ["schwindend", "abnehmend"] },
+      "explanation": {
+        "en": "Becoming smaller or fewer over time.",
+        "fr": "Qui devient peu à peu plus petit ou moins nombreux.",
+        "de": "Mit der Zeit kleiner oder weniger werdend."
+      }
+    },
+    {
+      "id": "knack",
+      "term": "knack",
+      "translations": { "fr": ["don", "aptitude naturelle"], "de": ["Händchen", "Talent"] },
+      "explanation": {
+        "en": "A natural or learned skill for doing something well, often hard to explain.",
+        "fr": "Une aptitude naturelle ou acquise pour bien faire quelque chose, souvent difficile à expliquer.",
+        "de": "Ein natürliches oder erlerntes Geschick, etwas gut zu tun, oft schwer zu erklären."
+      }
+    },
+    {
+      "id": "glamorous",
+      "term": "glamorous",
+      "translations": { "fr": ["glamour", "prestigieux"], "de": ["glamourös", "glanzvoll"] },
+      "explanation": {
+        "en": "Exciting and attractive in a way that impresses people; the opposite of ordinary, tiring work.",
+        "fr": "Excitant et séduisant, qui impressionne ; le contraire d’un travail ordinaire et fatigant.",
+        "de": "Aufregend und beeindruckend; das Gegenteil von gewöhnlicher, anstrengender Arbeit."
+      }
+    }
+  ],
+  "documents": {
+    "main": {
+      "targetWords": 340,
+      "contents": {
+        "en": "A profile of Ruth Calder, a former accountant who now winds and maintains a cathedral clock by hand: her routine, how she changed career, the hard side of the job, her calm attitude, and the writer’s point that skilled work often goes unnoticed.",
+        "fr": "Portrait de Ruth Calder, ancienne comptable qui remonte et entretient à la main l’horloge d’une cathédrale : sa routine, sa reconversion, les difficultés du métier, son calme, et l’idée de l’auteur que le travail qualifié passe souvent inaperçu.",
+        "de": "Porträt von Ruth Calder, einer ehemaligen Buchhalterin, die die Kathedralenuhr von Hand aufzieht und wartet: ihr Alltag, der Berufswechsel, die harten Seiten, ihre Gelassenheit und die Aussage des Autors, dass qualifizierte Arbeit oft unbemerkt bleibt."
+      }
+    },
+    "exam": {
+      "targetWords": 160,
+      "contents": {
+        "en": "A short profile of Tomás Ibarra, who invents names for paint colours: his studio, his background in poetry, his view of what a good name does, and how he reacts when a name is rejected.",
+        "fr": "Court portrait de Tomás Ibarra, qui invente des noms pour des couleurs de peinture : son atelier, son passé de poète, sa vision d’un bon nom et sa réaction quand un nom est refusé.",
+        "de": "Kurzporträt von Tomás Ibarra, der Namen für Farbtöne erfindet: sein Atelier, seine Dichtervergangenheit, seine Sicht auf einen guten Namen und seine Reaktion auf eine Ablehnung."
+      }
+    }
+  },
+  "skim": { "focus": "purpose" },
+  "detailQuestions": [
+    {
+      "id": "q-job",
+      "type": "reading_choice",
+      "focus": {
+        "en": "What Ruth’s main task is",
+        "fr": "La tâche principale de Ruth",
+        "de": "Ruths Hauptaufgabe"
+      }
+    },
+    {
+      "id": "q-change",
+      "type": "reading_choice",
+      "focus": {
+        "en": "Why she left accountancy",
+        "fr": "Pourquoi elle a quitté la comptabilité",
+        "de": "Warum sie die Buchhaltung verlassen hat"
+      }
+    },
+    {
+      "id": "q-attitude",
+      "type": "reading_choice",
+      "focus": {
+        "en": "How she feels about the difficulties",
+        "fr": "Ce qu’elle pense des difficultés",
+        "de": "Wie sie zu den Schwierigkeiten steht"
+      }
+    },
+    {
+      "id": "q-lonely",
+      "type": "reading_true_false",
+      "focus": {
+        "en": "Whether she finds the tower lonely",
+        "fr": "Si elle trouve la tour solitaire",
+        "de": "Ob sie den Turm einsam findet"
+      }
+    }
+  ],
+  "exam": { "types": ["reading_choice", "reading_true_false"] },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

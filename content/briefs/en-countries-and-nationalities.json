@@ -1,0 +1,704 @@
+{
+  "schemaVersion": 2,
+  "id": "en-countries-and-nationalities",
+  "lang": "en",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Countries and nationalities",
+  "objective": {
+    "en": "Name eight countries and their nationalities, with a capital letter.",
+    "fr": "Nommer huit pays et leurs nationalités, avec une majuscule.",
+    "de": "Acht Länder und ihre Nationalitäten mit großem Anfangsbuchstaben nennen."
+  },
+  "estimatedMinutes": 25,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:33:23.255Z",
+    "inputHashes": { "outline": "4565a1bfe837cc176831a56ff382ca8f92a23b5ecef3ea7fa77b44117ce37a1a" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Eight countries (Italy, Japan, Brazil, the UK, Spain, France, Germany, China) and the matching nationality words. All of them are written with a capital letter.",
+    "fr": "Huit pays (Italy, Japan, Brazil, the UK, Spain, France, Germany, China) et les mots de nationalité correspondants. Tous s’écrivent avec une majuscule.",
+    "de": "Acht Länder (Italy, Japan, Brazil, the UK, Spain, France, Germany, China) und die passenden Nationalitätswörter. Alle werden großgeschrieben."
+  },
+  "targetCount": 16,
+  "countRationale": {
+    "en": "Eight countries and eight nationalities make sixteen words, a good size for A1.",
+    "fr": "Huit pays et huit nationalités font seize mots, une taille adaptée au niveau A1.",
+    "de": "Acht Länder und acht Nationalitäten ergeben sechzehn Wörter, eine gute Menge für A1."
+  },
+  "difficultyBalance": {
+    "en": "Most words are core. The UK and British are harder because of the article and the spelling.",
+    "fr": "La plupart des mots sont de base. The UK et British sont plus difficiles à cause de l’article et de l’orthographe.",
+    "de": "Die meisten Wörter sind Grundwörter. The UK und British sind wegen Artikel und Schreibweise schwieriger."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "countries",
+      "label": { "en": "Countries", "fr": "Pays", "de": "Länder" },
+      "targetIds": ["italy", "japan", "brazil", "uk", "spain", "france", "germany", "china"],
+      "introduction": {
+        "en": "Learn **eight countries**. Always write them with a **capital letter**:\n\n- `Italy`\n- `Japan`\n- `Brazil`\n- `the UK`\n- `Spain`\n- `France`\n- `Germany`\n- `China`",
+        "fr": "Apprenez **huit pays**. Écrivez-les toujours avec une **majuscule** :\n\n- `Italy`\n- `Japan`\n- `Brazil`\n- `the UK`\n- `Spain`\n- `France`\n- `Germany`\n- `China`",
+        "de": "Lerne **acht Länder**. Schreibe sie immer mit einem **großen Anfangsbuchstaben**:\n\n- `Italy`\n- `Japan`\n- `Brazil`\n- `the UK`\n- `Spain`\n- `France`\n- `Germany`\n- `China`"
+      }
+    },
+    {
+      "id": "nationalities",
+      "label": { "en": "Nationalities", "fr": "Nationalités", "de": "Nationalitäten" },
+      "targetIds": [
+        "italian",
+        "japanese",
+        "brazilian",
+        "british",
+        "spanish",
+        "french",
+        "german",
+        "chinese"
+      ],
+      "introduction": {
+        "en": "Each country has a **nationality** word. It also starts with a **capital letter**:\n\n- `Italian`\n- `Japanese`\n- `Brazilian`\n- `British`\n- `Spanish`\n- `French`\n- `German`\n- `Chinese`",
+        "fr": "Chaque pays a un mot de **nationalité**. Il commence aussi par une **majuscule** :\n\n- `Italian`\n- `Japanese`\n- `Brazilian`\n- `British`\n- `Spanish`\n- `French`\n- `German`\n- `Chinese`",
+        "de": "Jedes Land hat ein Wort für die **Nationalität**. Es beginnt ebenfalls mit einem **großen Buchstaben**:\n\n- `Italian`\n- `Japanese`\n- `Brazilian`\n- `British`\n- `Spanish`\n- `French`\n- `German`\n- `Chinese`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "italy",
+      "term": "Italy",
+      "translations": { "fr": ["Italie"], "de": ["Italien"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "Italy",
+      "examForms": ["Italy"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈɪtəli/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "I am from Italy.",
+        "translation": { "fr": "Je viens d’Italie.", "de": "Ich komme aus Italien." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Italy is a country. Write it with a capital letter.",
+        "fr": "Italy est un pays. On l’écrit avec une majuscule.",
+        "de": "Italy ist ein Land. Man schreibt es mit großem Anfangsbuchstaben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Rome is in ",
+        "after": ".",
+        "accepted": { "answers": ["Italy"] },
+        "referenceTargetIds": ["italy", "japan", "brazil", "uk"],
+        "explanation": {
+          "en": "Rome is in Italy.",
+          "fr": "Rome est en Italie.",
+          "de": "Rom liegt in Italien."
+        }
+      },
+      "listeningOptionTargetIds": ["italy", "italian", "spain", "japan"]
+    },
+    {
+      "id": "japan",
+      "term": "Japan",
+      "translations": { "fr": ["Japon"], "de": ["Japan"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "Japan",
+      "examForms": ["Japan"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/dʒəˈpæn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She lives in Japan.",
+        "translation": { "fr": "Elle habite au Japon.", "de": "Sie wohnt in Japan." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Japan is a country. Write it with a capital letter.",
+        "fr": "Japan est un pays. On l’écrit avec une majuscule.",
+        "de": "Japan ist ein Land. Man schreibt es mit großem Anfangsbuchstaben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Tokyo is in ",
+        "after": ".",
+        "accepted": { "answers": ["Japan"] },
+        "referenceTargetIds": ["japan", "italy", "spain", "china"],
+        "explanation": {
+          "en": "Tokyo is in Japan.",
+          "fr": "Tokyo est au Japon.",
+          "de": "Tokio liegt in Japan."
+        }
+      },
+      "listeningOptionTargetIds": ["japan", "japanese", "china", "spain"]
+    },
+    {
+      "id": "brazil",
+      "term": "Brazil",
+      "translations": { "fr": ["Brésil"], "de": ["Brasilien"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "Brazil",
+      "examForms": ["Brazil"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/brəˈzɪl/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He is from Brazil.",
+        "translation": { "fr": "Il vient du Brésil.", "de": "Er kommt aus Brasilien." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Brazil is a country. Write it with a capital letter.",
+        "fr": "Brazil est un pays. On l’écrit avec une majuscule.",
+        "de": "Brazil ist ein Land. Man schreibt es mit großem Anfangsbuchstaben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Rio de Janeiro is in ",
+        "after": ".",
+        "accepted": { "answers": ["Brazil"] },
+        "referenceTargetIds": ["brazil", "uk", "france", "germany"],
+        "explanation": {
+          "en": "Rio de Janeiro is in Brazil.",
+          "fr": "Rio de Janeiro est au Brésil.",
+          "de": "Rio de Janeiro liegt in Brasilien."
+        }
+      },
+      "listeningOptionTargetIds": ["brazil", "brazilian", "france", "italy"]
+    },
+    {
+      "id": "uk",
+      "term": "UK",
+      "translations": { "fr": ["Royaume-Uni"], "de": ["Vereinigtes Königreich"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "the UK",
+      "examForms": ["the UK", "UK", "the United Kingdom", "United Kingdom"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ðə ˌjuː ˈkeɪ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "We are from the UK.",
+        "translation": {
+          "fr": "Nous venons du Royaume-Uni.",
+          "de": "Wir kommen aus dem Vereinigten Königreich."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "The UK is a country. Say the UK, and write UK with capital letters.",
+        "fr": "The UK est un pays. On dit the UK, et UK s’écrit en majuscules.",
+        "de": "The UK ist ein Land. Man sagt the UK und schreibt UK in Großbuchstaben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "London is in the ",
+        "after": ".",
+        "accepted": { "answers": ["UK"] },
+        "referenceTargetIds": ["uk", "italy", "spain", "brazil"],
+        "explanation": {
+          "en": "London is in the UK.",
+          "fr": "Londres est au Royaume-Uni.",
+          "de": "London liegt im Vereinigten Königreich."
+        }
+      },
+      "listeningOptionTargetIds": ["uk", "british", "china", "japan"]
+    },
+    {
+      "id": "spain",
+      "term": "Spain",
+      "translations": { "fr": ["Espagne"], "de": ["Spanien"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "Spain",
+      "examForms": ["Spain"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/speɪn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "They live in Spain.",
+        "translation": { "fr": "Ils habitent en Espagne.", "de": "Sie wohnen in Spanien." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Spain is a country. Write it with a capital letter.",
+        "fr": "Spain est un pays. On l’écrit avec une majuscule.",
+        "de": "Spain ist ein Land. Man schreibt es mit großem Anfangsbuchstaben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Madrid is in ",
+        "after": ".",
+        "accepted": { "answers": ["Spain"] },
+        "referenceTargetIds": ["spain", "japan", "france", "china"],
+        "explanation": {
+          "en": "Madrid is in Spain.",
+          "fr": "Madrid est en Espagne.",
+          "de": "Madrid liegt in Spanien."
+        }
+      },
+      "listeningOptionTargetIds": ["spain", "spanish", "japan", "france"]
+    },
+    {
+      "id": "france",
+      "term": "France",
+      "translations": { "fr": ["France"], "de": ["Frankreich"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "France",
+      "examForms": ["France"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/frɑːns/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "My friend is from France.",
+        "translation": {
+          "fr": "Mon ami vient de France.",
+          "de": "Mein Freund kommt aus Frankreich."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "France is a country. Write it with a capital letter.",
+        "fr": "France est un pays. On l’écrit avec une majuscule.",
+        "de": "France ist ein Land. Man schreibt es mit großem Anfangsbuchstaben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Paris is in ",
+        "after": ".",
+        "accepted": { "answers": ["France"] },
+        "referenceTargetIds": ["france", "uk", "germany", "italy"],
+        "explanation": {
+          "en": "Paris is in France.",
+          "fr": "Paris est en France.",
+          "de": "Paris liegt in Frankreich."
+        }
+      },
+      "listeningOptionTargetIds": ["france", "french", "spain", "china"]
+    },
+    {
+      "id": "germany",
+      "term": "Germany",
+      "translations": { "fr": ["Allemagne"], "de": ["Deutschland"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "Germany",
+      "examForms": ["Germany"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈdʒɜːməni/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "I work in Germany.",
+        "translation": { "fr": "Je travaille en Allemagne.", "de": "Ich arbeite in Deutschland." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Germany is a country. Write it with a capital letter.",
+        "fr": "Germany est un pays. On l’écrit avec une majuscule.",
+        "de": "Germany ist ein Land. Man schreibt es mit großem Anfangsbuchstaben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Berlin is in ",
+        "after": ".",
+        "accepted": { "answers": ["Germany"] },
+        "referenceTargetIds": ["germany", "brazil", "china", "spain"],
+        "explanation": {
+          "en": "Berlin is in Germany.",
+          "fr": "Berlin est en Allemagne.",
+          "de": "Berlin liegt in Deutschland."
+        }
+      },
+      "listeningOptionTargetIds": ["germany", "german", "japan", "brazil"]
+    },
+    {
+      "id": "china",
+      "term": "China",
+      "translations": { "fr": ["Chine"], "de": ["China"] },
+      "wordClass": "noun",
+      "genders": [],
+      "number": "singular",
+      "teachingForm": "China",
+      "examForms": ["China"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈtʃaɪnə/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She is from China.",
+        "translation": { "fr": "Elle vient de Chine.", "de": "Sie kommt aus China." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "China is a country. Write it with a capital letter.",
+        "fr": "China est un pays. On l’écrit avec une majuscule.",
+        "de": "China ist ein Land. Man schreibt es mit großem Anfangsbuchstaben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Beijing is in ",
+        "after": ".",
+        "accepted": { "answers": ["China"] },
+        "referenceTargetIds": ["china", "japan", "france", "uk"],
+        "explanation": {
+          "en": "Beijing is in China.",
+          "fr": "Pékin est en Chine.",
+          "de": "Peking liegt in China."
+        }
+      },
+      "listeningOptionTargetIds": ["china", "chinese", "japan", "france"]
+    },
+    {
+      "id": "italian",
+      "term": "Italian",
+      "translations": { "fr": ["italien"], "de": ["italienisch"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "Italian",
+      "examForms": ["Italian"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɪˈtæliən/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Marco is Italian.",
+        "translation": { "fr": "Marco est italien.", "de": "Marco ist Italiener." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Italian is the nationality of a person from Italy. Write it with a capital letter.",
+        "fr": "Italian est la nationalité d’une personne venant d’Italie. On l’écrit avec une majuscule.",
+        "de": "Italian ist die Nationalität einer Person aus Italien. Man schreibt es mit großem Anfangsbuchstaben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Marco is from Italy. He is ",
+        "after": ".",
+        "accepted": { "answers": ["Italian"] },
+        "referenceTargetIds": ["italian", "japanese", "french", "british"],
+        "explanation": {
+          "en": "A person from Italy is Italian.",
+          "fr": "Une personne venant d’Italie est italienne.",
+          "de": "Eine Person aus Italien ist Italiener oder Italienerin."
+        }
+      },
+      "listeningOptionTargetIds": ["italian", "italy", "brazilian", "spanish"]
+    },
+    {
+      "id": "japanese",
+      "term": "Japanese",
+      "translations": { "fr": ["japonais"], "de": ["japanisch"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "Japanese",
+      "examForms": ["Japanese"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌdʒæpəˈniːz/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Kenji is Japanese.",
+        "translation": { "fr": "Kenji est japonais.", "de": "Kenji ist Japaner." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Japanese is the nationality of a person from Japan. Write it with a capital letter.",
+        "fr": "Japanese est la nationalité d’une personne venant du Japon. On l’écrit avec une majuscule.",
+        "de": "Japanese ist die Nationalität einer Person aus Japan. Man schreibt es mit großem Anfangsbuchstaben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Kenji is from Japan. He is ",
+        "after": ".",
+        "accepted": { "answers": ["Japanese"] },
+        "referenceTargetIds": ["japanese", "chinese", "spanish", "german"],
+        "explanation": {
+          "en": "A person from Japan is Japanese.",
+          "fr": "Une personne venant du Japon est japonaise.",
+          "de": "Eine Person aus Japan ist Japaner oder Japanerin."
+        }
+      },
+      "listeningOptionTargetIds": ["japanese", "japan", "chinese", "british"]
+    },
+    {
+      "id": "brazilian",
+      "term": "Brazilian",
+      "translations": { "fr": ["brésilien"], "de": ["brasilianisch"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "Brazilian",
+      "examForms": ["Brazilian"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/brəˈzɪliən/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ana is Brazilian.",
+        "translation": { "fr": "Ana est brésilienne.", "de": "Ana ist Brasilianerin." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Brazilian is the nationality of a person from Brazil. Write it with a capital letter.",
+        "fr": "Brazilian est la nationalité d’une personne venant du Brésil. On l’écrit avec une majuscule.",
+        "de": "Brazilian ist die Nationalität einer Person aus Brasilien. Man schreibt es mit großem Anfangsbuchstaben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ana is from Brazil. She is ",
+        "after": ".",
+        "accepted": { "answers": ["Brazilian"] },
+        "referenceTargetIds": ["brazilian", "italian", "chinese", "french"],
+        "explanation": {
+          "en": "A person from Brazil is Brazilian.",
+          "fr": "Une personne venant du Brésil est brésilienne.",
+          "de": "Eine Person aus Brasilien ist Brasilianer oder Brasilianerin."
+        }
+      },
+      "listeningOptionTargetIds": ["brazilian", "brazil", "italian", "british"]
+    },
+    {
+      "id": "british",
+      "term": "British",
+      "translations": { "fr": ["britannique"], "de": ["britisch"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "British",
+      "examForms": ["British"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈbrɪtɪʃ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Tom is British.",
+        "translation": { "fr": "Tom est britannique.", "de": "Tom ist Brite." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "British is the nationality of a person from the UK. Write it with a capital letter.",
+        "fr": "British est la nationalité d’une personne venant du Royaume-Uni. On l’écrit avec une majuscule.",
+        "de": "British ist die Nationalität einer Person aus dem Vereinigten Königreich. Man schreibt es mit großem Anfangsbuchstaben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Tom is from the UK. He is ",
+        "after": ".",
+        "accepted": { "answers": ["British"] },
+        "referenceTargetIds": ["british", "spanish", "german", "japanese"],
+        "explanation": {
+          "en": "A person from the UK is British.",
+          "fr": "Une personne venant du Royaume-Uni est britannique.",
+          "de": "Eine Person aus dem Vereinigten Königreich ist britisch."
+        }
+      },
+      "listeningOptionTargetIds": ["british", "brazilian", "spanish", "italian"]
+    },
+    {
+      "id": "spanish",
+      "term": "Spanish",
+      "translations": { "fr": ["espagnol"], "de": ["spanisch"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "Spanish",
+      "examForms": ["Spanish"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈspænɪʃ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Lucia is Spanish.",
+        "translation": { "fr": "Lucia est espagnole.", "de": "Lucia ist Spanierin." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Spanish is the nationality of a person from Spain. Write it with a capital letter.",
+        "fr": "Spanish est la nationalité d’une personne venant d’Espagne. On l’écrit avec une majuscule.",
+        "de": "Spanish ist die Nationalität einer Person aus Spanien. Man schreibt es mit großem Anfangsbuchstaben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Lucia is from Spain. She is ",
+        "after": ".",
+        "accepted": { "answers": ["Spanish"] },
+        "referenceTargetIds": ["spanish", "brazilian", "italian", "french"],
+        "explanation": {
+          "en": "A person from Spain is Spanish.",
+          "fr": "Une personne venant d’Espagne est espagnole.",
+          "de": "Eine Person aus Spanien ist Spanier oder Spanierin."
+        }
+      },
+      "listeningOptionTargetIds": ["spanish", "spain", "british", "chinese"]
+    },
+    {
+      "id": "french",
+      "term": "French",
+      "translations": { "fr": ["français"], "de": ["französisch"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "French",
+      "examForms": ["French"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/frentʃ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Claire is French.",
+        "translation": { "fr": "Claire est française.", "de": "Claire ist Französin." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "French is the nationality of a person from France. Write it with a capital letter.",
+        "fr": "French est la nationalité d’une personne venant de France. On l’écrit avec une majuscule.",
+        "de": "French ist die Nationalität einer Person aus Frankreich. Man schreibt es mit großem Anfangsbuchstaben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Claire is from France. She is ",
+        "after": ".",
+        "accepted": { "answers": ["French"] },
+        "referenceTargetIds": ["french", "british", "chinese", "german"],
+        "explanation": {
+          "en": "A person from France is French.",
+          "fr": "Une personne venant de France est française.",
+          "de": "Eine Person aus Frankreich ist Franzose oder Französin."
+        }
+      },
+      "listeningOptionTargetIds": ["french", "france", "german", "japanese"]
+    },
+    {
+      "id": "german",
+      "term": "German",
+      "translations": { "fr": ["allemand"], "de": ["deutsch"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "German",
+      "examForms": ["German"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˈdʒɜːmən/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Hans is German.",
+        "translation": { "fr": "Hans est allemand.", "de": "Hans ist Deutscher." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "German is the nationality of a person from Germany. Write it with a capital letter.",
+        "fr": "German est la nationalité d’une personne venant d’Allemagne. On l’écrit avec une majuscule.",
+        "de": "German ist die Nationalität einer Person aus Deutschland. Man schreibt es mit großem Anfangsbuchstaben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Hans is from Germany. He is ",
+        "after": ".",
+        "accepted": { "answers": ["German"] },
+        "referenceTargetIds": ["german", "italian", "british", "brazilian"],
+        "explanation": {
+          "en": "A person from Germany is German.",
+          "fr": "Une personne venant d’Allemagne est allemande.",
+          "de": "Eine Person aus Deutschland ist Deutscher oder Deutsche."
+        }
+      },
+      "listeningOptionTargetIds": ["german", "germany", "japanese", "french"]
+    },
+    {
+      "id": "chinese",
+      "term": "Chinese",
+      "translations": { "fr": ["chinois"], "de": ["chinesisch"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "Chinese",
+      "examForms": ["Chinese"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ˌtʃaɪˈniːz/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Li is Chinese.",
+        "translation": { "fr": "Li est chinoise.", "de": "Li ist Chinesin." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Chinese is the nationality of a person from China. Write it with a capital letter.",
+        "fr": "Chinese est la nationalité d’une personne venant de Chine. On l’écrit avec une majuscule.",
+        "de": "Chinese ist die Nationalität einer Person aus China. Man schreibt es mit großem Anfangsbuchstaben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Li is from China. She is ",
+        "after": ".",
+        "accepted": { "answers": ["Chinese"] },
+        "referenceTargetIds": ["chinese", "spanish", "japanese", "brazilian"],
+        "explanation": {
+          "en": "A person from China is Chinese.",
+          "fr": "Une personne venant de Chine est chinoise.",
+          "de": "Eine Person aus China ist Chinese oder Chinesin."
+        }
+      },
+      "listeningOptionTargetIds": ["chinese", "china", "japanese", "german"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

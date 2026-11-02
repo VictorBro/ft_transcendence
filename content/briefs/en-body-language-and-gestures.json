@@ -1,0 +1,580 @@
+{
+  "schemaVersion": 2,
+  "id": "en-body-language-and-gestures",
+  "lang": "en",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Body language and gestures",
+  "objective": {
+    "en": "Name twelve gestures and facial expressions and say what they show about a person's feelings.",
+    "fr": "Nommer douze gestes et expressions du visage et dire ce qu’ils révèlent des sentiments d’une personne.",
+    "de": "Zwölf Gesten und Gesichtsausdrücke benennen und sagen, was sie über die Gefühle einer Person zeigen."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:48:43.109Z",
+    "inputHashes": { "outline": "0dd32230e14039c13bcf33cb1e44ff328771db47615674df8d91ed6c628174b6" }
+  },
+  "kind": "vocabulary",
+  "theme": "personal_identification",
+  "coverageNotes": {
+    "en": "Twelve verbs and verb phrases for common gestures and facial expressions: eight from the outline plus roll your eyes, shake your head, clench your fists and grin. Each shows a feeling such as anger, shyness or doubt.",
+    "fr": "Douze verbes et locutions verbales pour des gestes et expressions du visage courants : huit du plan, plus roll your eyes, shake your head, clench your fists et grin. Chacun montre un sentiment comme la colère, la timidité ou le doute.",
+    "de": "Zwölf Verben und Verbalphrasen für häufige Gesten und Gesichtsausdrücke: acht aus der Gliederung sowie roll your eyes, shake your head, clench your fists und grin. Jede zeigt ein Gefühl wie Ärger, Schüchternheit oder Zweifel."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve items fit the outline and give two even groups of six, one for the face and one for the body.",
+    "fr": "Douze éléments correspondent au plan et forment deux groupes égaux de six, l’un pour le visage et l’autre pour le corps.",
+    "de": "Zwölf Einträge entsprechen der Gliederung und ergeben zwei gleich große Gruppen zu sechs, eine für das Gesicht und eine für den Körper."
+  },
+  "difficultyBalance": {
+    "en": "Single verbs such as nod and grin are core. Longer phrases and less obvious meanings, such as roll your eyes and make eye contact, are demanding.",
+    "fr": "Les verbes simples comme nod et grin sont de base. Les locutions plus longues et les sens moins évidents, comme roll your eyes et make eye contact, sont exigeants.",
+    "de": "Einfache Verben wie nod und grin sind Grundwortschatz. Längere Wendungen und weniger offensichtliche Bedeutungen, etwa roll your eyes und make eye contact, sind anspruchsvoll."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "face",
+      "label": {
+        "en": "Facial expressions",
+        "fr": "Expressions du visage",
+        "de": "Gesichtsausdrücke"
+      },
+      "targetIds": ["frown", "wink", "blush", "raise-eyebrows", "roll-eyes", "grin"],
+      "introduction": {
+        "en": "These movements of the **face** show feelings without words:\n\n- `frown`\n- `wink`\n- `blush`\n- `raise your eyebrows`\n- `roll your eyes`\n- `grin`\n\nThink about what each one shows: annoyance, a joke, shyness, surprise, boredom or delight.",
+        "fr": "Ces mouvements du **visage** montrent des sentiments sans paroles :\n\n- `frown`\n- `wink`\n- `blush`\n- `raise your eyebrows`\n- `roll your eyes`\n- `grin`\n\nPensez à ce que chacun montre : l’agacement, une plaisanterie, la timidité, la surprise, l’ennui ou la joie.",
+        "de": "Diese Bewegungen des **Gesichts** zeigen Gefühle ohne Worte:\n\n- `frown`\n- `wink`\n- `blush`\n- `raise your eyebrows`\n- `roll your eyes`\n- `grin`\n\nDenke darüber nach, was jede zeigt: Verärgerung, einen Scherz, Schüchternheit, Überraschung, Langeweile oder Freude."
+      }
+    },
+    {
+      "id": "body",
+      "label": {
+        "en": "Gestures and eye contact",
+        "fr": "Gestes et contact visuel",
+        "de": "Gesten und Blickkontakt"
+      },
+      "targetIds": ["nod", "shrug", "shake-head", "fold-arms", "clench-fists", "eye-contact"],
+      "introduction": {
+        "en": "These **gestures** of the head, arms, hands and eyes also say a lot about a person:\n\n- `nod`\n- `shrug`\n- `shake your head`\n- `fold your arms`\n- `clench your fists`\n- `make eye contact`\n\nThey can show agreement, indifference, defensiveness, anger or confidence.",
+        "fr": "Ces **gestes** de la tête, des bras, des mains et des yeux en disent aussi beaucoup sur une personne :\n\n- `nod`\n- `shrug`\n- `shake your head`\n- `fold your arms`\n- `clench your fists`\n- `make eye contact`\n\nIls peuvent montrer l’accord, l’indifférence, une attitude défensive, la colère ou la confiance.",
+        "de": "Diese **Gesten** von Kopf, Armen, Händen und Augen sagen ebenfalls viel über eine Person:\n\n- `nod`\n- `shrug`\n- `shake your head`\n- `fold your arms`\n- `clench your fists`\n- `make eye contact`\n\nSie können Zustimmung, Gleichgültigkeit, Abwehr, Wut oder Selbstvertrauen zeigen."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "frown",
+      "term": "frown",
+      "translations": { "fr": ["froncer les sourcils"], "de": ["die Stirn runzeln"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "frown",
+      "examForms": ["frown"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fraʊn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He frowned at the bill.",
+        "translation": {
+          "fr": "Il a froncé les sourcils en voyant la note.",
+          "de": "Er runzelte die Stirn über die Rechnung."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "You frown when you pull your eyebrows together to show worry, anger or disapproval.",
+        "fr": "On fronce les sourcils pour montrer l’inquiétude, la colère ou la désapprobation.",
+        "de": "Man runzelt die Stirn, um Sorge, Ärger oder Missbilligung zu zeigen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "The teacher began to ",
+        "after": " when she saw the empty folders; she was clearly annoyed.",
+        "accepted": { "answers": ["frown"] },
+        "referenceTargetIds": ["frown", "grin", "wink", "blush"],
+        "explanation": {
+          "en": "Only frown shows annoyance here; a grin, a wink or a blush does not.",
+          "fr": "Seul « frown » montre l’agacement ici ; ni grin, ni wink, ni blush ne conviennent.",
+          "de": "Nur „frown“ zeigt hier Verärgerung; grin, wink und blush passen nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["frown", "grin", "blush", "shrug"]
+    },
+    {
+      "id": "wink",
+      "term": "wink",
+      "translations": { "fr": ["faire un clin d’œil", "cligner de l’œil"], "de": ["zwinkern"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "wink",
+      "examForms": ["wink"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/wɪŋk/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She winked at me to show she was joking.",
+        "translation": {
+          "fr": "Elle m’a fait un clin d’œil pour montrer qu’elle plaisantait.",
+          "de": "Sie zwinkerte mir zu, um zu zeigen, dass sie scherzte."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "You wink by closing one eye briefly, often to share a joke or a secret.",
+        "fr": "On fait un clin d’œil en fermant brièvement un œil, souvent pour partager une plaisanterie ou un secret.",
+        "de": "Man zwinkert, indem man kurz ein Auge schließt, oft um einen Scherz oder ein Geheimnis zu teilen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He tried to ",
+        "after": " at me across the room to show he was only joking.",
+        "accepted": { "answers": ["wink"] },
+        "referenceTargetIds": ["wink", "frown", "shrug", "blush"],
+        "explanation": {
+          "en": "Only wink fits: it is a quick signal of a joke or a secret.",
+          "fr": "Seul « wink » convient : c’est un signal rapide de plaisanterie ou de complicité.",
+          "de": "Nur „wink“ passt: Es ist ein kurzes Zeichen für einen Scherz oder ein Geheimnis."
+        }
+      },
+      "listeningOptionTargetIds": ["wink", "grin", "frown", "nod"]
+    },
+    {
+      "id": "blush",
+      "term": "blush",
+      "translations": { "fr": ["rougir"], "de": ["erröten", "rot werden"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "blush",
+      "examForms": ["blush"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/blʌʃ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He blushed when everyone looked at him.",
+        "translation": {
+          "fr": "Il a rougi quand tout le monde l’a regardé.",
+          "de": "Er errötete, als alle ihn ansahen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "You blush when your face turns red, usually from shyness or embarrassment.",
+        "fr": "On rougit quand le visage devient rouge, généralement par timidité ou par gêne.",
+        "de": "Man errötet, wenn das Gesicht rot wird, meist aus Schüchternheit oder Verlegenheit."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She tends to ",
+        "after": " whenever people stare at her, because she is very shy.",
+        "accepted": { "answers": ["blush"] },
+        "referenceTargetIds": ["blush", "nod", "shrug", "fold-arms"],
+        "explanation": {
+          "en": "Only blush fits: it is the red face of a shy or embarrassed person.",
+          "fr": "Seul « blush » convient : c’est le visage rouge d’une personne timide ou gênée.",
+          "de": "Nur „blush“ passt: Es ist das rote Gesicht einer schüchternen oder verlegenen Person."
+        }
+      },
+      "listeningOptionTargetIds": ["blush", "frown", "grin", "shrug"]
+    },
+    {
+      "id": "raise-eyebrows",
+      "term": "raise your eyebrows",
+      "translations": { "fr": ["lever les sourcils"], "de": ["die Augenbrauen hochziehen"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "raise your eyebrows",
+      "examForms": ["raise your eyebrows"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/reɪz jɔː ˈaɪbraʊz/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "She raised her eyebrows when she heard the price.",
+        "translation": {
+          "fr": "Elle a levé les sourcils en entendant le prix.",
+          "de": "Sie zog die Augenbrauen hoch, als sie den Preis hörte."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "You raise your eyebrows to show surprise, doubt or mild disapproval.",
+        "fr": "On lève les sourcils pour montrer la surprise, le doute ou une légère désapprobation.",
+        "de": "Man zieht die Augenbrauen hoch, um Überraschung, Zweifel oder leichte Missbilligung zu zeigen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "You might ",
+        "after": " when you hear something surprising.",
+        "accepted": { "answers": ["raise your eyebrows"] },
+        "referenceTargetIds": ["raise-eyebrows", "nod", "fold-arms", "eye-contact"],
+        "explanation": {
+          "en": "Raise your eyebrows is the gesture of surprise; the other choices do not show it.",
+          "fr": "« Raise your eyebrows » est le geste de la surprise ; les autres choix ne la montrent pas.",
+          "de": "„Raise your eyebrows“ ist die Geste der Überraschung; die anderen Möglichkeiten zeigen sie nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["raise-eyebrows", "roll-eyes", "eye-contact", "shake-head"]
+    },
+    {
+      "id": "roll-eyes",
+      "term": "roll your eyes",
+      "translations": { "fr": ["lever les yeux au ciel"], "de": ["mit den Augen rollen"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "roll your eyes",
+      "examForms": ["roll your eyes"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/rəʊl jɔːr aɪz/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "My brother rolled his eyes at my joke.",
+        "translation": {
+          "fr": "Mon frère a levé les yeux au ciel devant ma blague.",
+          "de": "Mein Bruder rollte bei meinem Witz mit den Augen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "You roll your eyes to show boredom, impatience or that you think something is silly.",
+        "fr": "On lève les yeux au ciel pour montrer l’ennui, l’impatience ou qu’on trouve quelque chose idiot.",
+        "de": "Man rollt mit den Augen, um Langeweile, Ungeduld oder zu zeigen, dass man etwas albern findet."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Please don't ",
+        "after": " when I'm speaking; it shows you think my idea is silly.",
+        "accepted": { "answers": ["roll your eyes"] },
+        "referenceTargetIds": ["roll-eyes", "nod", "blush", "shrug"],
+        "explanation": {
+          "en": "Roll your eyes shows that you think something is silly or boring, so it feels rude.",
+          "fr": "« Roll your eyes » montre qu’on trouve quelque chose idiot ou ennuyeux, ce qui paraît impoli.",
+          "de": "„Roll your eyes“ zeigt, dass man etwas albern oder langweilig findet, und wirkt deshalb unhöflich."
+        }
+      },
+      "listeningOptionTargetIds": ["roll-eyes", "raise-eyebrows", "shake-head", "eye-contact"]
+    },
+    {
+      "id": "grin",
+      "term": "grin",
+      "translations": { "fr": ["sourire jusqu’aux oreilles"], "de": ["grinsen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "grin",
+      "examForms": ["grin"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɡrɪn/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "The children grinned when they saw the cake.",
+        "translation": {
+          "fr": "Les enfants ont souri jusqu’aux oreilles en voyant le gâteau.",
+          "de": "Die Kinder grinsten, als sie den Kuchen sahen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "You grin when you smile very widely, showing delight or amusement.",
+        "fr": "On sourit largement pour montrer la joie ou l’amusement.",
+        "de": "Man grinst, wenn man sehr breit lächelt und Freude oder Belustigung zeigt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "He couldn't help but ",
+        "after": " from ear to ear when he heard the good news.",
+        "accepted": { "answers": ["grin"] },
+        "referenceTargetIds": ["grin", "frown", "shrug", "fold-arms"],
+        "explanation": {
+          "en": "Grin fits because it means a very wide smile, which goes with good news.",
+          "fr": "« Grin » convient : c’est un très large sourire, qui va avec une bonne nouvelle.",
+          "de": "„Grin“ passt: Es bedeutet ein sehr breites Lächeln, das zu guten Nachrichten gehört."
+        }
+      },
+      "listeningOptionTargetIds": ["grin", "frown", "wink", "blush"]
+    },
+    {
+      "id": "nod",
+      "term": "nod",
+      "translations": { "fr": ["hocher la tête"], "de": ["nicken"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "nod",
+      "examForms": ["nod"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/nɒd/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He nodded to show he understood.",
+        "translation": {
+          "fr": "Il a hoché la tête pour montrer qu’il comprenait.",
+          "de": "Er nickte, um zu zeigen, dass er verstand."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "You nod by moving your head up and down, usually to show agreement or understanding.",
+        "fr": "On hoche la tête de haut en bas, en général pour montrer l’accord ou la compréhension.",
+        "de": "Man nickt, indem man den Kopf auf und ab bewegt, meist um Zustimmung oder Verständnis zu zeigen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "She asked if I agreed, so I just had to ",
+        "after": " to say yes without speaking.",
+        "accepted": { "answers": ["nod"] },
+        "referenceTargetIds": ["nod", "shake-head", "shrug", "frown"],
+        "explanation": {
+          "en": "Nod is the head movement that means yes; shaking your head means no.",
+          "fr": "« Nod » est le mouvement de tête qui veut dire oui ; secouer la tête veut dire non.",
+          "de": "„Nod“ ist die Kopfbewegung für Ja; Kopfschütteln bedeutet Nein."
+        }
+      },
+      "listeningOptionTargetIds": ["nod", "shake-head", "shrug", "wink"]
+    },
+    {
+      "id": "shrug",
+      "term": "shrug",
+      "translations": { "fr": ["hausser les épaules"], "de": ["mit den Schultern zucken"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "shrug",
+      "examForms": ["shrug"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʃrʌɡ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "When I asked why, he just shrugged.",
+        "translation": {
+          "fr": "Quand j’ai demandé pourquoi, il a simplement haussé les épaules.",
+          "de": "Als ich fragte, warum, zuckte er nur mit den Schultern."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "You shrug by lifting your shoulders briefly to show you don't know, or don't care.",
+        "fr": "On hausse les épaules brièvement pour montrer qu’on ne sait pas ou que cela nous est égal.",
+        "de": "Man zuckt mit den Schultern, um kurz zu zeigen, dass man es nicht weiß oder es einem egal ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "When I asked him why, he just decided to ",
+        "after": " as if he neither knew nor cared.",
+        "accepted": { "answers": ["shrug"] },
+        "referenceTargetIds": ["shrug", "nod", "blush", "clench-fists"],
+        "explanation": {
+          "en": "Shrug shows that someone does not know or does not care.",
+          "fr": "« Shrug » montre qu’on ne sait pas ou que cela nous est égal.",
+          "de": "„Shrug“ zeigt, dass jemand es nicht weiß oder es ihm egal ist."
+        }
+      },
+      "listeningOptionTargetIds": ["shrug", "shake-head", "nod", "frown"]
+    },
+    {
+      "id": "shake-head",
+      "term": "shake your head",
+      "translations": { "fr": ["secouer la tête"], "de": ["den Kopf schütteln"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "shake your head",
+      "examForms": ["shake your head"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʃeɪk jɔː hed/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "She shook her head and said no.",
+        "translation": {
+          "fr": "Elle a secoué la tête et a dit non.",
+          "de": "Sie schüttelte den Kopf und sagte nein."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "You shake your head from side to side to say no, to disagree, or to show disbelief.",
+        "fr": "On secoue la tête de gauche à droite pour dire non, être en désaccord ou montrer son incrédulité.",
+        "de": "Man schüttelt den Kopf von einer Seite zur anderen, um Nein zu sagen, nicht zuzustimmen oder Unglauben zu zeigen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "If you disagree, you can ",
+        "after": " instead of saying no out loud.",
+        "accepted": { "answers": ["shake your head"] },
+        "referenceTargetIds": ["shake-head", "wink", "grin", "blush"],
+        "explanation": {
+          "en": "Shake your head is the side-to-side movement that means no.",
+          "fr": "« Shake your head » est le mouvement de gauche à droite qui veut dire non.",
+          "de": "„Shake your head“ ist die seitliche Kopfbewegung, die Nein bedeutet."
+        }
+      },
+      "listeningOptionTargetIds": ["shake-head", "nod", "shrug", "roll-eyes"]
+    },
+    {
+      "id": "fold-arms",
+      "term": "fold your arms",
+      "translations": { "fr": ["croiser les bras"], "de": ["die Arme verschränken"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "fold your arms",
+      "examForms": ["fold your arms"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fəʊld jɔːr ɑːmz/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "He folded his arms and refused to listen.",
+        "translation": {
+          "fr": "Il a croisé les bras et a refusé d’écouter.",
+          "de": "Er verschränkte die Arme und weigerte sich zuzuhören."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "You fold your arms across your chest; it often looks defensive, bored or unwilling to listen.",
+        "fr": "On croise les bras sur la poitrine ; cela paraît souvent défensif, ennuyé ou fermé à l’écoute.",
+        "de": "Man verschränkt die Arme vor der Brust; das wirkt oft abwehrend, gelangweilt oder verschlossen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Try not to ",
+        "after": " when you talk to a customer; it looks defensive.",
+        "accepted": { "answers": ["fold your arms"] },
+        "referenceTargetIds": ["fold-arms", "wink", "grin", "blush"],
+        "explanation": {
+          "en": "Fold your arms is the closed posture that looks defensive.",
+          "fr": "« Fold your arms » est la posture fermée qui paraît défensive.",
+          "de": "„Fold your arms“ ist die verschlossene Haltung, die abwehrend wirkt."
+        }
+      },
+      "listeningOptionTargetIds": ["fold-arms", "clench-fists", "raise-eyebrows", "shake-head"]
+    },
+    {
+      "id": "clench-fists",
+      "term": "clench your fists",
+      "translations": { "fr": ["serrer les poings"], "de": ["die Fäuste ballen"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "clench your fists",
+      "examForms": ["clench your fists"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/klentʃ jɔː fɪsts/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "He clenched his fists, trying to stay calm.",
+        "translation": {
+          "fr": "Il a serré les poings en essayant de rester calme.",
+          "de": "Er ballte die Fäuste und versuchte, ruhig zu bleiben."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "You clench your fists by closing your hands tightly, often from anger or tension.",
+        "fr": "On serre les poings en fermant fortement les mains, souvent par colère ou par tension.",
+        "de": "Man ballt die Fäuste, indem man die Hände fest schließt, oft aus Wut oder Anspannung."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "When you are furious, you might ",
+        "after": " without even noticing.",
+        "accepted": { "answers": ["clench your fists"] },
+        "referenceTargetIds": ["clench-fists", "nod", "wink", "shrug"],
+        "explanation": {
+          "en": "Clench your fists shows anger or tension; the other choices do not.",
+          "fr": "« Clench your fists » montre la colère ou la tension ; les autres choix non.",
+          "de": "„Clench your fists“ zeigt Wut oder Anspannung; die anderen Möglichkeiten nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["clench-fists", "fold-arms", "roll-eyes", "frown"]
+    },
+    {
+      "id": "eye-contact",
+      "term": "make eye contact",
+      "translations": {
+        "fr": ["établir un contact visuel"],
+        "de": ["Blickkontakt halten", "Augenkontakt herstellen"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "make eye contact",
+      "examForms": ["make eye contact"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/meɪk aɪ ˈkɒntækt/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "She made eye contact with the interviewer.",
+        "translation": {
+          "fr": "Elle a établi un contact visuel avec la personne qui menait l’entretien.",
+          "de": "Sie hielt Blickkontakt mit der Person, die das Vorstellungsgespräch führte."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "You make eye contact when you look directly into someone's eyes; it can show confidence and interest.",
+        "fr": "On établit un contact visuel quand on regarde quelqu’un droit dans les yeux ; cela peut montrer de l’assurance et de l’intérêt.",
+        "de": "Man hält Blickkontakt, wenn man jemandem direkt in die Augen sieht; das kann Selbstvertrauen und Interesse zeigen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "In an interview it is important to ",
+        "after": " with the person who is speaking.",
+        "accepted": { "answers": ["make eye contact"] },
+        "referenceTargetIds": ["eye-contact", "blush", "shrug", "frown"],
+        "explanation": {
+          "en": "Make eye contact fits: it means looking directly at the person, which shows interest.",
+          "fr": "« Make eye contact » convient : cela veut dire regarder la personne directement, ce qui montre de l’intérêt.",
+          "de": "„Make eye contact“ passt: Es bedeutet, die Person direkt anzusehen, was Interesse zeigt."
+        }
+      },
+      "listeningOptionTargetIds": ["eye-contact", "raise-eyebrows", "roll-eyes", "fold-arms"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}
