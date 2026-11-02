@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-thanking-and-apologising",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "S’il vous plaît, merci, pardon",
+  "objective": {
+    "en": "Ask politely with s’il te plaît or s’il vous plaît, say thank you, apologise, and answer with de rien or ce n’est pas grave.",
+    "fr": "Demander poliment avec s’il te plaît ou s’il vous plaît, remercier, s’excuser et répondre : merci beaucoup, de rien, pardon, excusez-moi, ce n’est pas grave.",
+    "de": "Höflich mit s’il te plaît oder s’il vous plaît bitten, sich bedanken, sich entschuldigen und mit de rien oder ce n’est pas grave antworten."
+  },
+  "estimatedMinutes": 17,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:29:27.264Z",
+    "inputHashes": { "outline": "ec905b67ae8ef12d888c5306bee8dcbcb77540833368206378e825dbabbd4d7e" }
+  },
+  "kind": "functions",
+  "theme": "relations",
+  "situation": {
+    "en": "A student talks to her teacher at school: she apologises, asks politely, says thank you and gets an answer.",
+    "fr": "Une étudiante parle à sa professeure à l’école : elle s’excuse, demande poliment, remercie et reçoit une réponse.",
+    "de": "Eine Schülerin spricht in der Schule mit ihrer Lehrerin: Sie entschuldigt sich, bittet höflich, bedankt sich und bekommt eine Antwort."
+  },
+  "coverageNotes": {
+    "en": "Polite requests with tu and vous (s’il te plaît, s’il vous plaît), thanking (merci beaucoup) and the answer (de rien), apologising (pardon, excusez-moi) and the answer (ce n’est pas grave).",
+    "fr": "Demandes polies avec tu et vous (s’il te plaît, s’il vous plaît), remercier (merci beaucoup) et répondre (de rien), s’excuser (pardon, excusez-moi) et répondre (ce n’est pas grave).",
+    "de": "Höfliche Bitten mit tu und vous (s’il te plaît, s’il vous plaît), danken (merci beaucoup) und antworten (de rien), sich entschuldigen (pardon, excusez-moi) und antworten (ce n’est pas grave)."
+  },
+  "prerequisites": [],
+  "roles": [
+    { "id": "ines", "label": "Inès", "translation": { "en": "Inès", "de": "Inès" } },
+    {
+      "id": "prof",
+      "label": "la professeure",
+      "translation": { "en": "the teacher", "de": "die Lehrerin" }
+    }
+  ],
+  "expressions": [
+    {
+      "id": "s-il-te-plait",
+      "text": "S’il te plaît",
+      "openEnd": false,
+      "translations": { "en": ["Please (informal, tu)", "Please"], "de": ["Bitte (du)", "Bitte"] },
+      "explanation": {
+        "en": "Polite “please” to a friend, a child or a classmate (tu).",
+        "fr": "Pour demander poliment à un ami, un enfant ou un camarade (tu).",
+        "de": "Höfliches „bitte“ zu einem Freund, Kind oder Mitschüler (tu)."
+      },
+      "example": {
+        "text": "Un stylo, s’il te plaît.",
+        "translation": { "en": "A pen, please.", "de": "Einen Stift, bitte." }
+      }
+    },
+    {
+      "id": "s-il-vous-plait",
+      "text": "S’il vous plaît",
+      "openEnd": false,
+      "translations": { "en": ["Please (formal, vous)", "Please"], "de": ["Bitte (Sie)", "Bitte"] },
+      "explanation": {
+        "en": "Polite “please” to a stranger, an adult or several people (vous).",
+        "fr": "Pour demander poliment à un inconnu, un adulte ou à plusieurs personnes (vous).",
+        "de": "Höfliches „bitte“ zu Fremden, Erwachsenen oder mehreren Personen (vous)."
+      },
+      "example": {
+        "text": "Un ticket, s’il vous plaît, monsieur.",
+        "translation": { "en": "A ticket, please, sir.", "de": "Eine Fahrkarte, bitte." }
+      }
+    },
+    {
+      "id": "merci-beaucoup",
+      "text": "Merci beaucoup",
+      "openEnd": false,
+      "translations": { "en": ["Thank you very much"], "de": ["Vielen Dank"] },
+      "explanation": {
+        "en": "Stronger than merci: you are really grateful.",
+        "fr": "Plus fort que merci : on est vraiment reconnaissant.",
+        "de": "Stärker als merci: Man ist wirklich dankbar."
+      },
+      "example": {
+        "text": "Merci beaucoup pour le livre.",
+        "translation": {
+          "en": "Thank you very much for the book.",
+          "de": "Vielen Dank für das Buch."
+        }
+      }
+    },
+    {
+      "id": "de-rien",
+      "text": "De rien",
+      "openEnd": false,
+      "translations": { "en": ["You’re welcome"], "de": ["Gern geschehen"] },
+      "explanation": {
+        "en": "The usual answer to merci.",
+        "fr": "La réponse habituelle à merci.",
+        "de": "Die übliche Antwort auf merci."
+      },
+      "example": {
+        "text": "Merci, Paul. — De rien !",
+        "translation": {
+          "en": "Thanks, Paul. — You’re welcome!",
+          "de": "Danke, Paul. — Gern geschehen!"
+        }
+      }
+    },
+    {
+      "id": "pardon",
+      "text": "Pardon",
+      "openEnd": false,
+      "translations": { "en": ["Sorry"], "de": ["Entschuldigung"] },
+      "explanation": {
+        "en": "A short word to apologise for a small mistake, with tu or vous.",
+        "fr": "Un mot court pour s’excuser d’une petite erreur, avec tu ou vous.",
+        "de": "Ein kurzes Wort, um sich für einen kleinen Fehler zu entschuldigen, mit tu oder vous."
+      },
+      "example": {
+        "text": "Pardon, monsieur !",
+        "translation": { "en": "Sorry, sir!", "de": "Entschuldigung!" }
+      }
+    },
+    {
+      "id": "excusez-moi",
+      "text": "Excusez-moi",
+      "openEnd": false,
+      "translations": { "en": ["Excuse me (formal, vous)"], "de": ["Entschuldigen Sie"] },
+      "explanation": {
+        "en": "Polite way to get someone’s attention or to apologise (vous).",
+        "fr": "Façon polie d’attirer l’attention de quelqu’un ou de s’excuser (vous).",
+        "de": "Höfliche Art, jemanden anzusprechen oder sich zu entschuldigen (vous)."
+      },
+      "example": {
+        "text": "Excusez-moi, monsieur, vous avez l’heure ?",
+        "translation": {
+          "en": "Excuse me, sir, do you have the time?",
+          "de": "Entschuldigen Sie, haben Sie die Uhrzeit?"
+        }
+      }
+    },
+    {
+      "id": "pas-grave",
+      "text": "Ce n’est pas grave",
+      "openEnd": false,
+      "translations": { "en": ["It’s not a big deal"], "de": ["Das ist nicht schlimm"] },
+      "explanation": {
+        "en": "The answer to an apology: it is nothing serious.",
+        "fr": "La réponse à une excuse : ce n’est rien de sérieux.",
+        "de": "Die Antwort auf eine Entschuldigung: Es ist nichts Schlimmes."
+      },
+      "example": {
+        "text": "Ce n’est pas grave !",
+        "translation": { "en": "It’s not a big deal!", "de": "Das ist nicht schlimm!" }
+      }
+    }
+  ],
+  "words": [],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

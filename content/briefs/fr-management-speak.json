@@ -1,0 +1,588 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-management-speak",
+  "lang": "fr",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Embarquer les équipes, être force de proposition",
+  "objective": {
+    "en": "Decode management jargon and restate it simply with ten common workplace expressions.",
+    "fr": "Décoder le langage managérial et le reformuler simplement avec dix expressions courantes en entreprise.",
+    "de": "Das Managementvokabular entschlüsseln und mit zehn gängigen Ausdrücken einfach umformulieren."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:58:24.752Z",
+    "inputHashes": { "outline": "543f3f68698d4de86557d280a7410bd6417e75aed7c41346988f7fa96d8355f0" }
+  },
+  "kind": "vocabulary",
+  "theme": "language",
+  "coverageNotes": {
+    "en": "Ten expressions of corporate French: six from the outline (embarquer les équipes, être force de proposition, monter en compétences, challenger, prioriser, être aligné) and four frequent companions (faire remonter, piloter, décliner, avoir de la bande passante). Each comes with its plain equivalent.",
+    "fr": "Dix expressions du français d’entreprise : six issues du plan (embarquer les équipes, être force de proposition, monter en compétences, challenger, prioriser, être aligné) et quatre compagnes fréquentes (faire remonter, piloter, décliner, avoir de la bande passante). Chacune est donnée avec son équivalent simple.",
+    "de": "Zehn Ausdrücke des Unternehmensfranzösisch: sechs aus der Gliederung (embarquer les équipes, être force de proposition, monter en compétences, challenger, prioriser, être aligné) und vier häufige Begleiter (faire remonter, piloter, décliner, avoir de la bande passante). Jeder wird mit seiner einfachen Entsprechung gezeigt."
+  },
+  "targetCount": 10,
+  "countRationale": {
+    "en": "Ten expressions, as the outline asks, in two groups of five so that each page stays manageable.",
+    "fr": "Dix expressions, comme le demande le plan, en deux groupes de cinq pour que chaque page reste gérable.",
+    "de": "Zehn Ausdrücke, wie in der Gliederung verlangt, in zwei Gruppen zu fünf, damit jede Seite überschaubar bleibt."
+  },
+  "difficultyBalance": {
+    "en": "Half are very frequent in offices; the others are subtler (challenger, décliner, faire remonter, avoir de la bande passante).",
+    "fr": "La moitié est très fréquente au bureau ; les autres sont plus subtiles (challenger, décliner, faire remonter, avoir de la bande passante).",
+    "de": "Die Hälfte ist im Büro sehr häufig; die übrigen sind subtiler (challenger, décliner, faire remonter, avoir de la bande passante)."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "mobiliser",
+      "label": {
+        "en": "Involving people and passing things on",
+        "fr": "Impliquer les gens et faire circuler",
+        "de": "Menschen einbinden und Dinge weitergeben"
+      },
+      "targetIds": [
+        "embarquer-equipes",
+        "force-proposition",
+        "monter-competences",
+        "etre-aligne",
+        "faire-remonter"
+      ],
+      "introduction": {
+        "en": "These expressions describe how a manager **gets people involved** in a project. Each has a plain equivalent:\n\n- `embarquer les équipes` = win people over to a project\n- `être force de proposition` = suggest ideas without being asked\n- `monter en compétences` = learn and improve one’s skills\n- `être aligné` = share the same view\n- `faire remonter` = pass information up to management",
+        "fr": "Ces expressions disent comment un manager **implique les personnes** dans un projet. Chacune a un équivalent simple :\n\n- `embarquer les équipes` = convaincre les gens de participer\n- `être force de proposition` = suggérer des idées sans qu’on le demande\n- `monter en compétences` = apprendre et progresser\n- `être aligné` = partager le même point de vue\n- `faire remonter` = transmettre l’information à la hiérarchie",
+        "de": "Diese Ausdrücke beschreiben, wie eine Führungskraft **Menschen in ein Projekt einbindet**. Jeder hat eine einfache Entsprechung:\n\n- `embarquer les équipes` = Menschen für ein Projekt gewinnen\n- `être force de proposition` = ungefragt Ideen vorschlagen\n- `monter en compétences` = lernen und besser werden\n- `être aligné` = dieselbe Sicht teilen\n- `faire remonter` = Informationen an die Leitung weitergeben"
+      }
+    },
+    {
+      "id": "piloter-decider",
+      "label": {
+        "en": "Organising and deciding",
+        "fr": "Organiser et décider",
+        "de": "Organisieren und entscheiden"
+      },
+      "targetIds": ["challenger", "prioriser", "piloter", "decliner", "bande-passante"],
+      "introduction": {
+        "en": "These expressions describe how work is **organised and decided**. Each has a plain equivalent:\n\n- `challenger` = question and test critically\n- `prioriser` = put in order of importance\n- `piloter` = lead and follow a project\n- `décliner` = break a strategy down into concrete actions\n- `avoir de la bande passante` = have time and energy available",
+        "fr": "Ces expressions disent comment le travail est **organisé et décidé**. Chacune a un équivalent simple :\n\n- `challenger` = questionner et mettre à l’épreuve\n- `prioriser` = classer par ordre d’importance\n- `piloter` = diriger et suivre un projet\n- `décliner` = traduire une stratégie en actions concrètes\n- `avoir de la bande passante` = avoir du temps et de l’énergie disponibles",
+        "de": "Diese Ausdrücke beschreiben, wie Arbeit **organisiert und entschieden** wird. Jeder hat eine einfache Entsprechung:\n\n- `challenger` = kritisch hinterfragen und prüfen\n- `prioriser` = nach Wichtigkeit ordnen\n- `piloter` = ein Projekt leiten und verfolgen\n- `décliner` = eine Strategie in konkrete Maßnahmen herunterbrechen\n- `avoir de la bande passante` = Zeit und Energie zur Verfügung haben"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "embarquer-equipes",
+      "term": "embarquer les équipes",
+      "translations": {
+        "en": ["get the teams on board", "win the teams over"],
+        "de": ["die Teams mitnehmen", "die Teams ins Boot holen"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "embarquer les équipes",
+      "examForms": ["embarquer les équipes"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɑ̃.baʁ.ke le.zekip/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "La nouvelle directrice a su embarquer les équipes dans la transformation.",
+        "translation": {
+          "en": "The new director managed to get the teams on board with the transformation.",
+          "de": "Die neue Direktorin hat es geschafft, die Teams bei der Transformation mitzunehmen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Embarquer les équipes means to win people’s support so they follow a project willingly; plainly: convince people to take part.",
+        "fr": "Embarquer les équipes, c’est obtenir l’adhésion des collaborateurs à un projet ; plus simplement : les convaincre d’y participer.",
+        "de": "Embarquer les équipes heißt, die Zustimmung der Mitarbeitenden zu gewinnen; einfach gesagt: sie überzeugen mitzumachen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Pour réussir le changement, le directeur devra d’abord ",
+        "after": " dans le projet.",
+        "accepted": { "answers": ["embarquer les équipes"] },
+        "referenceTargetIds": [
+          "embarquer-equipes",
+          "force-proposition",
+          "monter-competences",
+          "etre-aligne"
+        ],
+        "explanation": {
+          "en": "Only “embarquer les équipes” fits: the director must win people over to the project.",
+          "fr": "Seul « embarquer les équipes » convient : le directeur doit rallier les gens au projet.",
+          "de": "Nur „embarquer les équipes“ passt: Der Direktor muss die Leute für das Projekt gewinnen."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "embarquer-equipes",
+        "force-proposition",
+        "monter-competences",
+        "faire-remonter"
+      ]
+    },
+    {
+      "id": "force-proposition",
+      "term": "être force de proposition",
+      "translations": {
+        "en": ["be a driving force for ideas", "come up with proposals"],
+        "de": ["Vorschläge einbringen", "als Ideengeber auftreten"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "être force de proposition",
+      "examForms": ["être force de proposition"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɛtʁ fɔʁs də pʁɔ.po.zi.sjɔ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Dans ce poste, il faut être force de proposition et ne pas attendre les consignes.",
+        "translation": {
+          "en": "In this role you have to come up with proposals and not wait for instructions.",
+          "de": "In dieser Stelle muss man Vorschläge einbringen und nicht auf Anweisungen warten."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Être force de proposition means to suggest ideas and solutions without waiting to be told; plainly: be proactive.",
+        "fr": "Être force de proposition, c’est suggérer des idées et des solutions sans attendre qu’on le demande ; plus simplement : avoir de l’initiative.",
+        "de": "Être force de proposition heißt, von sich aus Ideen und Lösungen vorzuschlagen; einfach gesagt: Initiative zeigen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Au lieu d’attendre des ordres, chacun doit ",
+        "after": " et proposer des solutions.",
+        "accepted": { "answers": ["être force de proposition"] },
+        "referenceTargetIds": [
+          "force-proposition",
+          "monter-competences",
+          "etre-aligne",
+          "faire-remonter"
+        ],
+        "explanation": {
+          "en": "Only “être force de proposition” fits: it means taking the initiative instead of waiting for orders.",
+          "fr": "Seul « être force de proposition » convient : il s’agit de prendre l’initiative plutôt que d’attendre des ordres.",
+          "de": "Nur „être force de proposition“ passt: Es geht darum, die Initiative zu ergreifen, statt auf Befehle zu warten."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "force-proposition",
+        "monter-competences",
+        "etre-aligne",
+        "embarquer-equipes"
+      ]
+    },
+    {
+      "id": "monter-competences",
+      "term": "monter en compétences",
+      "translations": {
+        "en": ["upskill", "develop one’s skills"],
+        "de": ["sich weiterqualifizieren", "Kompetenzen aufbauen"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "monter en compétences",
+      "examForms": ["monter en compétences"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/mɔ̃.te ɑ̃ kɔ̃.pe.tɑ̃s/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Cette formation permet aux assistants de monter en compétences.",
+        "translation": {
+          "en": "This training allows the assistants to upskill.",
+          "de": "Diese Schulung ermöglicht den Assistenten, sich weiterzuqualifizieren."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Monter en compétences means to gain skills through training or experience; plainly: progress, learn.",
+        "fr": "Monter en compétences, c’est acquérir de nouveaux savoir-faire par la formation ou l’expérience ; plus simplement : progresser.",
+        "de": "Monter en compétences heißt, durch Schulung oder Erfahrung neue Fähigkeiten zu erwerben; einfach gesagt: dazulernen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Grâce à ce programme, les jeunes employés peuvent ",
+        "after": " et viser un poste plus élevé.",
+        "accepted": { "answers": ["monter en compétences", "monter en compétence"] },
+        "referenceTargetIds": [
+          "monter-competences",
+          "etre-aligne",
+          "faire-remonter",
+          "embarquer-equipes"
+        ],
+        "explanation": {
+          "en": "Only “monter en compétences” fits: the programme helps employees gain skills before a promotion.",
+          "fr": "Seul « monter en compétences » convient : le programme aide les employés à progresser avant une promotion.",
+          "de": "Nur „monter en compétences“ passt: Das Programm hilft den Angestellten, sich vor einer Beförderung weiterzuentwickeln."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "monter-competences",
+        "etre-aligne",
+        "faire-remonter",
+        "force-proposition"
+      ]
+    },
+    {
+      "id": "etre-aligne",
+      "term": "être aligné",
+      "translations": {
+        "en": ["be on the same page", "be in agreement"],
+        "de": ["auf einer Linie sein", "einer Meinung sein"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "être aligné",
+      "examForms": ["être aligné", "être alignée"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɛtʁ a.li.ɲe/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Avant d’écrire au client, nous devons être alignés sur le message.",
+        "translation": {
+          "en": "Before writing to the client, we need to be on the same page about the message.",
+          "de": "Bevor wir dem Kunden schreiben, müssen wir uns beim Inhalt einig sein."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Être aligné means to share the same position as the others on a subject; plainly: agree. The adjective agrees with its subject.",
+        "fr": "Être aligné, c’est partager la même position que les autres sur un sujet ; plus simplement : être d’accord. L’adjectif s’accorde avec le sujet.",
+        "de": "Être aligné heißt, in einer Frage dieselbe Position wie die anderen zu vertreten; einfach gesagt: einer Meinung sein. Das Adjektiv richtet sich nach dem Subjekt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Avant la réunion, les chefs de service doivent ",
+        "after": " sur la stratégie.",
+        "accepted": { "answers": ["être alignés", "être alignées"] },
+        "referenceTargetIds": [
+          "etre-aligne",
+          "faire-remonter",
+          "embarquer-equipes",
+          "force-proposition"
+        ],
+        "explanation": {
+          "en": "Only “être aligné” fits: the managers must share the same view of the strategy. The subject is plural, so the adjective is too: être alignés (or alignées).",
+          "fr": "Seul « être aligné » convient : les chefs de service doivent partager la même vision de la stratégie. Le sujet est au pluriel, l’adjectif aussi : être alignés (ou alignées).",
+          "de": "Nur „être aligné“ passt: Die Abteilungsleiter müssen die Strategie gleich sehen. Das Subjekt steht im Plural, also auch das Adjektiv: être alignés (oder alignées)."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "etre-aligne",
+        "faire-remonter",
+        "embarquer-equipes",
+        "monter-competences"
+      ]
+    },
+    {
+      "id": "faire-remonter",
+      "term": "faire remonter",
+      "translations": {
+        "en": ["pass up the chain", "report upward"],
+        "de": ["nach oben weitergeben", "melden"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "faire remonter",
+      "examForms": ["faire remonter"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fɛʁ ʁə.mɔ̃.te/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Il faut faire remonter les problèmes du terrain jusqu’à la direction.",
+        "translation": {
+          "en": "Problems on the ground must be passed up to management.",
+          "de": "Probleme vor Ort müssen bis zur Geschäftsleitung weitergegeben werden."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Here faire remonter is about information moving up the hierarchy, not about physically going back up.",
+        "fr": "Ici faire remonter concerne l’information qui monte dans la hiérarchie, et non un déplacement vers le haut.",
+        "de": "Hier geht es um Informationen, die in der Hierarchie nach oben wandern, nicht um eine Bewegung nach oben."
+      },
+      "explanation": {
+        "en": "Faire remonter means to pass information or a problem up to the hierarchy; plainly: report to those above.",
+        "fr": "Faire remonter, c’est transmettre une information ou un problème à la hiérarchie ; plus simplement : signaler à ses supérieurs.",
+        "de": "Faire remonter heißt, eine Information oder ein Problem an die Hierarchie weiterzugeben; einfach gesagt: den Vorgesetzten melden."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Si un client se plaint, il faut ",
+        "after": " l’information à la direction.",
+        "accepted": { "answers": ["faire remonter"] },
+        "referenceTargetIds": [
+          "faire-remonter",
+          "embarquer-equipes",
+          "force-proposition",
+          "monter-competences"
+        ],
+        "explanation": {
+          "en": "Only “faire remonter” fits: the complaint must travel up to management.",
+          "fr": "Seul « faire remonter » convient : la plainte doit monter jusqu’à la direction.",
+          "de": "Nur „faire remonter“ passt: Die Beschwerde muss bis zur Leitung gelangen."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "faire-remonter",
+        "embarquer-equipes",
+        "force-proposition",
+        "etre-aligne"
+      ]
+    },
+    {
+      "id": "challenger",
+      "term": "challenger",
+      "translations": {
+        "en": ["challenge", "question critically"],
+        "de": ["hinterfragen", "herausfordern"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "challenger",
+      "examForms": ["challenger"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʃa.lɑ̃.ʒe/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Il faut challenger les hypothèses avant de décider.",
+        "translation": {
+          "en": "We must challenge the assumptions before deciding.",
+          "de": "Wir müssen die Annahmen hinterfragen, bevor wir entscheiden."
+        }
+      },
+      "ambiguityNote": {
+        "en": "An anglicism: in this sense it means to question an idea critically, not to compete against someone.",
+        "fr": "Anglicisme : dans ce sens, il s’agit de questionner une idée de façon critique, et non de rivaliser avec quelqu’un.",
+        "de": "Ein Anglizismus: In dieser Bedeutung heißt es, eine Idee kritisch zu hinterfragen, nicht mit jemandem zu konkurrieren."
+      },
+      "explanation": {
+        "en": "Challenger comes from English: it means to question an idea to test its strength; plainly: examine critically.",
+        "fr": "Challenger vient de l’anglais : c’est mettre une idée en question pour éprouver sa solidité ; plus simplement : examiner de façon critique.",
+        "de": "Challenger stammt aus dem Englischen: Es heißt, eine Idee zu hinterfragen, um ihre Tragfähigkeit zu prüfen; einfach gesagt: kritisch prüfen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Avant de valider le budget, la direction va ",
+        "after": " les hypothèses de chacun.",
+        "accepted": { "answers": ["challenger"] },
+        "referenceTargetIds": ["challenger", "prioriser", "piloter", "decliner"],
+        "explanation": {
+          "en": "Only “challenger” fits: the management will test everyone’s assumptions before approving.",
+          "fr": "Seul « challenger » convient : la direction va éprouver les hypothèses de chacun avant d’approuver.",
+          "de": "Nur „challenger“ passt: Die Leitung wird die Annahmen aller prüfen, bevor sie genehmigt."
+        }
+      },
+      "listeningOptionTargetIds": ["challenger", "prioriser", "piloter", "bande-passante"]
+    },
+    {
+      "id": "prioriser",
+      "term": "prioriser",
+      "translations": {
+        "en": ["prioritize", "rank by importance"],
+        "de": ["priorisieren", "Prioritäten setzen"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "prioriser",
+      "examForms": ["prioriser"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/pʁi.jɔ.ʁi.ze/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Avec autant de dossiers, il faut prioriser.",
+        "translation": {
+          "en": "With so many files, you have to prioritize.",
+          "de": "Bei so vielen Akten muss man priorisieren."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Prioriser means to rank tasks by importance or urgency; plainly: decide what comes first.",
+        "fr": "Prioriser, c’est classer les tâches selon leur importance ou leur urgence ; plus simplement : décider de ce qui passe en premier.",
+        "de": "Prioriser heißt, Aufgaben nach Wichtigkeit oder Dringlichkeit zu ordnen; einfach gesagt: entscheiden, was zuerst kommt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Nous n’avons pas le temps de tout faire : il faut ",
+        "after": " les tâches urgentes.",
+        "accepted": { "answers": ["prioriser"] },
+        "referenceTargetIds": ["prioriser", "piloter", "decliner", "bande-passante"],
+        "explanation": {
+          "en": "Only “prioriser” fits: with too little time, urgent tasks must come first.",
+          "fr": "Seul « prioriser » convient : faute de temps, les tâches urgentes passent en premier.",
+          "de": "Nur „prioriser“ passt: Bei Zeitmangel kommen die dringenden Aufgaben zuerst."
+        }
+      },
+      "listeningOptionTargetIds": ["prioriser", "piloter", "decliner", "challenger"]
+    },
+    {
+      "id": "piloter",
+      "term": "piloter",
+      "translations": { "en": ["manage", "steer"], "de": ["steuern", "leiten"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "piloter",
+      "examForms": ["piloter"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/pi.lɔ.te/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "C’est elle qui va piloter le déploiement du nouvel outil.",
+        "translation": {
+          "en": "She is the one who will manage the rollout of the new tool.",
+          "de": "Sie wird die Einführung des neuen Tools leiten."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Piloter a project means to lead it and make sure it moves forward; plainly: manage it.",
+        "fr": "Piloter un projet, c’est le diriger et veiller à ce qu’il avance ; plus simplement : le gérer.",
+        "de": "Piloter ein Projekt heißt, es zu leiten und dafür zu sorgen, dass es vorankommt; einfach gesagt: es managen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "La directrice a choisi Marc pour ",
+        "after": " le projet de fusion.",
+        "accepted": { "answers": ["piloter"] },
+        "referenceTargetIds": ["piloter", "decliner", "bande-passante", "challenger"],
+        "explanation": {
+          "en": "Only “piloter” fits: Marc is chosen to lead the merger project.",
+          "fr": "Seul « piloter » convient : Marc est choisi pour diriger le projet de fusion.",
+          "de": "Nur „piloter“ passt: Marc wird ausgewählt, das Fusionsprojekt zu leiten."
+        }
+      },
+      "listeningOptionTargetIds": ["piloter", "decliner", "bande-passante", "prioriser"]
+    },
+    {
+      "id": "decliner",
+      "term": "décliner",
+      "translations": {
+        "en": ["break down", "adapt at each level"],
+        "de": ["herunterbrechen", "auf Ebenen umsetzen"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "décliner",
+      "examForms": ["décliner"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/de.kli.ne/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Il faut maintenant décliner la stratégie du groupe en objectifs par service.",
+        "translation": {
+          "en": "The group strategy must now be broken down into objectives for each department.",
+          "de": "Die Konzernstrategie muss nun in Ziele für jede Abteilung heruntergebrochen werden."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Décliner also means to refuse (décliner une invitation); in management speak it means to break a plan down into concrete actions.",
+        "fr": "Décliner veut aussi dire refuser (décliner une invitation) ; dans le jargon managérial, c’est traduire un plan en actions concrètes.",
+        "de": "Décliner heißt auch ablehnen (décliner une invitation); im Managementjargon bedeutet es, einen Plan in konkrete Maßnahmen zu übersetzen."
+      },
+      "explanation": {
+        "en": "Décliner a strategy means to turn a general plan into concrete actions at each level; plainly: break it down.",
+        "fr": "Décliner une stratégie, c’est traduire un plan général en actions concrètes à chaque niveau ; plus simplement : la détailler.",
+        "de": "Eine Strategie décliner heißt, einen allgemeinen Plan auf jeder Ebene in konkrete Maßnahmen zu übersetzen; einfach gesagt: sie herunterbrechen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Une fois la stratégie validée, chaque direction devra la ",
+        "after": " en objectifs concrets.",
+        "accepted": { "answers": ["décliner"] },
+        "referenceTargetIds": ["decliner", "bande-passante", "challenger", "prioriser"],
+        "explanation": {
+          "en": "Only “décliner” fits: each department turns the strategy into concrete objectives.",
+          "fr": "Seul « décliner » convient : chaque direction traduit la stratégie en objectifs concrets.",
+          "de": "Nur „décliner“ passt: Jede Abteilung übersetzt die Strategie in konkrete Ziele."
+        }
+      },
+      "listeningOptionTargetIds": ["decliner", "bande-passante", "challenger", "piloter"]
+    },
+    {
+      "id": "bande-passante",
+      "term": "avoir de la bande passante",
+      "translations": {
+        "en": ["have bandwidth", "have the capacity"],
+        "de": ["Kapazitäten frei haben", "Zeit und Kraft haben"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "avoir de la bande passante",
+      "examForms": ["avoir de la bande passante"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/a.vwaʁ də la bɑ̃d pa.sɑ̃t/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Est-ce que quelqu’un a de la bande passante pour reprendre ce dossier ?",
+        "translation": {
+          "en": "Does anyone have the capacity to take over this file?",
+          "de": "Hat jemand Kapazitäten, um diese Akte zu übernehmen?"
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Avoir de la bande passante comes from computing: it means having enough time and mental energy for a task; plainly: be available.",
+        "fr": "Avoir de la bande passante vient de l’informatique : c’est avoir assez de temps et d’énergie pour une tâche ; plus simplement : être disponible.",
+        "de": "Avoir de la bande passante stammt aus der Informatik: Es heißt, genug Zeit und Energie für eine Aufgabe zu haben; einfach gesagt: verfügbar sein."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Pour accepter un dossier de plus, il faut ",
+        "after": ", et je suis déjà débordé.",
+        "accepted": { "answers": ["avoir de la bande passante"] },
+        "referenceTargetIds": ["bande-passante", "challenger", "prioriser", "piloter"],
+        "explanation": {
+          "en": "Only “avoir de la bande passante” fits: the speaker has no spare time or energy for another file.",
+          "fr": "Seul « avoir de la bande passante » convient : la personne n’a ni temps ni énergie pour un dossier de plus.",
+          "de": "Nur „avoir de la bande passante“ passt: Die Person hat weder Zeit noch Energie für eine weitere Akte."
+        }
+      },
+      "listeningOptionTargetIds": ["bande-passante", "challenger", "prioriser", "decliner"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

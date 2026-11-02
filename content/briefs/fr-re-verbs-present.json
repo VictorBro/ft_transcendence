@@ -1,0 +1,297 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-re-verbs-present",
+  "lang": "fr",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "Attendre, vendre, répondre au présent",
+  "objective": {
+    "en": "Conjugate attendre, vendre, répondre, entendre and perdre in the present and form their past participle in -u.",
+    "fr": "Conjuguer attendre, vendre, répondre, entendre et perdre au présent et former leur participe passé en -u.",
+    "de": "Attendre, vendre, répondre, entendre und perdre im Präsens konjugieren und ihr Participe passé auf -u bilden."
+  },
+  "estimatedMinutes": 20,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:35:56.300Z",
+    "inputHashes": { "outline": "ea1e49ea77d27e9bf7a4213fd9f4289e6b81f0a2e9127d759903330e1b8828bd" }
+  },
+  "kind": "grammar",
+  "topic": "verbs_morphology",
+  "scopeBoundaries": {
+    "en": "Covers the present of regular -re verbs and their participle in -u with avoir. Excludes irregular -re verbs (prendre, mettre, dire), the agreement of the participle and verbs with être.",
+    "fr": "Couvre le présent des verbes réguliers en -re et leur participe en -u avec avoir. Exclut les verbes irréguliers en -re (prendre, mettre, dire), l'accord du participe et les verbes avec être.",
+    "de": "Behandelt das Präsens der regelmäßigen Verben auf -re und ihr Partizip auf -u mit avoir. Ausgeschlossen sind unregelmäßige Verben auf -re (prendre, mettre, dire), die Angleichung des Partizips und Verben mit être."
+  },
+  "prerequisites": [
+    {
+      "en": "Subject pronouns: je, tu, il, elle, on, nous, vous, ils, elles",
+      "fr": "Les pronoms sujets : je, tu, il, elle, on, nous, vous, ils, elles",
+      "de": "Subjektpronomen: je, tu, il, elle, on, nous, vous, ils, elles"
+    },
+    {
+      "en": "The present of regular -er verbs",
+      "fr": "Le présent des verbes réguliers en -er",
+      "de": "Das Präsens der regelmäßigen Verben auf -er"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-singular",
+      "summary": {
+        "en": "Singular: drop -re and add -s, -s, nothing: j'attends, tu attends, il attend.",
+        "fr": "Singulier : on enlève -re et on ajoute -s, -s, rien : j'attends, tu attends, il attend.",
+        "de": "Singular: -re wegfallen lassen und -s, -s, nichts anhängen: j'attends, tu attends, il attend."
+      }
+    },
+    {
+      "id": "rule-plural",
+      "summary": {
+        "en": "Plural: add -ons, -ez, -ent to the stem: nous attendons, vous attendez, ils attendent.",
+        "fr": "Pluriel : on ajoute -ons, -ez, -ent au radical : nous attendons, vous attendez, ils attendent.",
+        "de": "Plural: -ons, -ez, -ent an den Stamm hängen: nous attendons, vous attendez, ils attendent."
+      }
+    },
+    {
+      "id": "rule-participle",
+      "summary": {
+        "en": "The participle of these verbs ends in -u: attendu, vendu, répondu, entendu, perdu.",
+        "fr": "Le participe passé de ces verbes finit en -u : attendu, vendu, répondu, entendu, perdu.",
+        "de": "Das Participe passé dieser Verben endet auf -u: attendu, vendu, répondu, entendu, perdu."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-singular",
+      "title": {
+        "en": "Singular: j'attends, tu vends, il répond",
+        "fr": "Le singulier : j'attends, tu vends, il répond",
+        "de": "Der Singular: j'attends, tu vends, il répond"
+      },
+      "ruleIds": ["rule-singular"],
+      "explanationPlan": {
+        "en": "Show that -re verbs drop -re and take -s, -s and no ending in the singular. Insist on the final d of il attend, elle vend, on répond.",
+        "fr": "Montrer que les verbes en -re perdent -re et prennent -s, -s et aucune terminaison au singulier. Insister sur le d final de il attend, elle vend, on répond.",
+        "de": "Zeigen, dass Verben auf -re das -re verlieren und im Singular -s, -s und keine Endung bekommen. Das End-d bei il attend, elle vend, on répond betonen."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "J'attends le bus.",
+          "translation": { "en": "I am waiting for the bus.", "de": "Ich warte auf den Bus." }
+        },
+        {
+          "text": "Tu vends ta voiture ?",
+          "translation": { "en": "Are you selling your car?", "de": "Verkaufst du dein Auto?" }
+        },
+        {
+          "text": "Il répond à Paul.",
+          "translation": { "en": "He answers Paul.", "de": "Er antwortet Paul." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not add -t in the 3rd person: say il attend, not il attendt.",
+          "fr": "N'ajoutez pas de -t à la 3e personne : on dit il attend, pas il attendt.",
+          "de": "Hänge in der 3. Person kein -t an: es heißt il attend, nicht il attendt."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-a-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-singular"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-a-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-singular"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-a-forms",
+          "type": "grammar_pronoun_form_typing",
+          "itemCount": 1,
+          "ruleIds": ["rule-singular"],
+          "estimatedDurationS": 45
+        }
+      ]
+    },
+    {
+      "id": "block-plural",
+      "title": {
+        "en": "Plural: nous attendons, vous vendez, ils répondent",
+        "fr": "Le pluriel : nous attendons, vous vendez, ils répondent",
+        "de": "Der Plural: nous attendons, vous vendez, ils répondent"
+      },
+      "ruleIds": ["rule-plural"],
+      "explanationPlan": {
+        "en": "Teach -ons, -ez, -ent added to the stem, the same endings as -er verbs. Explain that the d is heard in ils répondent but not in il répond.",
+        "fr": "Enseigner -ons, -ez, -ent ajoutés au radical, comme pour les verbes en -er. Expliquer que le d s'entend dans ils répondent mais pas dans il répond.",
+        "de": "-ons, -ez, -ent am Stamm vermitteln, wie bei den Verben auf -er. Erklären, dass man das d bei ils répondent hört, bei il répond aber nicht."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "Nous attendons le train.",
+          "translation": { "en": "We are waiting for the train.", "de": "Wir warten auf den Zug." }
+        },
+        {
+          "text": "Vous vendez des fleurs ?",
+          "translation": { "en": "Do you sell flowers?", "de": "Verkaufen Sie Blumen?" }
+        },
+        {
+          "text": "Elles perdent leurs billets.",
+          "translation": {
+            "en": "They are losing their tickets.",
+            "de": "Sie verlieren ihre Fahrkarten."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not use the singular stem sound for ils: ils répondent has a pronounced d.",
+          "fr": "N'utilisez pas la prononciation du singulier pour ils : dans ils répondent, le d se prononce.",
+          "de": "Verwende für ils nicht die Aussprache des Singulars: Bei ils répondent spricht man das d."
+        },
+        {
+          "en": "The ending of vous is -ez, not -ons or -ent.",
+          "fr": "La terminaison de vous est -ez, pas -ons ni -ent.",
+          "de": "Die Endung bei vous ist -ez, nicht -ons oder -ent."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-b-persons",
+          "type": "grammar_person_matching",
+          "itemCount": 1,
+          "ruleIds": ["rule-singular", "rule-plural"],
+          "estimatedDurationS": 72
+        },
+        {
+          "id": "ex-b-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-plural"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-b-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-plural"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-b-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["rule-plural"],
+          "estimatedDurationS": 60
+        }
+      ]
+    },
+    {
+      "id": "block-participle",
+      "title": {
+        "en": "The participle in -u: j'ai attendu",
+        "fr": "Le participe en -u : j'ai attendu",
+        "de": "Das Partizip auf -u: j'ai attendu"
+      },
+      "ruleIds": ["rule-participle"],
+      "explanationPlan": {
+        "en": "Show how to form the participle (drop -re, add -u) and use it with avoir to say what happened: j'ai attendu, il a vendu, ils ont perdu.",
+        "fr": "Montrer comment former le participe (enlever -re, ajouter -u) et l'employer avec avoir pour dire ce qui s'est passé : j'ai attendu, il a vendu, ils ont perdu.",
+        "de": "Zeigen, wie das Partizip gebildet wird (-re streichen, -u anhängen) und wie man es mit avoir benutzt: j'ai attendu, il a vendu, ils ont perdu."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "J'ai attendu une heure.",
+          "translation": { "en": "I waited for an hour.", "de": "Ich habe eine Stunde gewartet." }
+        },
+        {
+          "text": "Il a vendu sa maison.",
+          "translation": { "en": "He sold his house.", "de": "Er hat sein Haus verkauft." }
+        },
+        {
+          "text": "Tu as entendu la nouvelle ?",
+          "translation": { "en": "Did you hear the news?", "de": "Hast du die Neuigkeit gehört?" }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not keep the infinitive after avoir: say j'ai vendu, not j'ai vendre.",
+          "fr": "Ne gardez pas l'infinitif après avoir : on dit j'ai vendu, pas j'ai vendre.",
+          "de": "Behalte nach avoir nicht den Infinitiv: es heißt j'ai vendu, nicht j'ai vendre."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-c-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 3,
+          "ruleIds": ["rule-participle"],
+          "estimatedDurationS": 36
+        },
+        {
+          "id": "ex-c-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-participle"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-c-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-participle"],
+          "estimatedDurationS": 75
+        }
+      ]
+    }
+  ],
+  "newVerbs": [
+    { "infinitive": "attendre", "translations": { "en": "to wait", "de": "warten" } },
+    { "infinitive": "vendre", "translations": { "en": "to sell", "de": "verkaufen" } },
+    { "infinitive": "répondre", "translations": { "en": "to answer", "de": "antworten" } },
+    { "infinitive": "entendre", "translations": { "en": "to hear", "de": "hören" } },
+    { "infinitive": "perdre", "translations": { "en": "to lose", "de": "verlieren" } }
+  ],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-forms",
+        "type": "grammar_pronoun_form_typing",
+        "itemCount": 1,
+        "ruleIds": ["rule-singular", "rule-plural"],
+        "estimatedDurationS": 80,
+        "timeLimitS": 120
+      },
+      {
+        "pageId": "exam-gaps",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-singular", "rule-plural"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      },
+      {
+        "pageId": "exam-participle",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-participle"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

@@ -1,0 +1,530 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-buzzwords",
+  "lang": "fr",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Les mots à la mode du discours public",
+  "objective": {
+    "en": "Spot fashionable words of public speech and what they wear out or hide.",
+    "fr": "Repérer les mots à la mode du discours public et savoir ce qu’ils usent ou cachent.",
+    "de": "Modewörter der öffentlichen Rede erkennen und wissen, was sie abnutzen oder verbergen."
+  },
+  "estimatedMinutes": 17,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:58:03.198Z",
+    "inputHashes": { "outline": "4e5a8f3d1f18b941ef5ad0079fd86151b354b08a3409fc0d921922283afd7a2c" }
+  },
+  "kind": "vocabulary",
+  "theme": "language",
+  "coverageNotes": {
+    "en": "Ten buzzwords of political, media and corporate speech: values (résilience, bienveillance), adjectives (sociétal, inclusif, transversal, vertueux), a connector (au niveau de) and verbs and nouns of reports (acter, impacter, enjeu).",
+    "fr": "Dix mots à la mode des discours politique, médiatique et d’entreprise : valeurs (résilience, bienveillance), adjectifs (sociétal, inclusif, transversal, vertueux), un connecteur (au niveau de) et des mots de rapport (acter, impacter, enjeu).",
+    "de": "Zehn Modewörter der politischen, medialen und betrieblichen Rede: Werte (résilience, bienveillance), Adjektive (sociétal, inclusif, transversal, vertueux), ein Verbinder (au niveau de) sowie Berichtswörter (acter, impacter, enjeu)."
+  },
+  "targetCount": 10,
+  "countRationale": {
+    "en": "Ten words, in two groups of five, cover the outline list plus two frequent companions without overloading a C2 session.",
+    "fr": "Dix mots en deux groupes de cinq couvrent la liste du plan et deux compagnons fréquents sans surcharger une séance de niveau C2.",
+    "de": "Zehn Wörter in zwei Fünfergruppen decken die Liste der Gliederung und zwei häufige Begleiter ab, ohne eine C2-Einheit zu überfrachten."
+  },
+  "difficultyBalance": {
+    "en": "Most words are well known but their nuance is hard; acter, impacter and au niveau de are the most demanding because of register and usage debates.",
+    "fr": "La plupart des mots sont connus mais leur nuance est délicate ; acter, impacter et au niveau de sont les plus exigeants à cause du registre et des débats d’usage.",
+    "de": "Die meisten Wörter sind bekannt, ihre Nuance ist aber heikel; acter, impacter und au niveau de sind wegen Register und Streit um den Gebrauch am anspruchsvollsten."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "valeurs",
+      "label": { "en": "Words of values", "fr": "Les mots de valeur", "de": "Wörter der Werte" },
+      "targetIds": ["resilience", "bienveillance", "societal", "inclusif", "vertueux"],
+      "introduction": {
+        "en": "These words sound noble and fill public speech. For each one, ask what it **wears out** or **hides**:\n\n- `une résilience`: once a term from physics, now a cure-all for any hardship.\n- `une bienveillance`: a virtue that is often demanded rather than practised.\n- `sociétal`: a vague cousin of the plainer word social.\n- `inclusif`: open to all, but sometimes only a label.\n- `vertueux`: moral by name, often merely profitable.",
+        "fr": "Ces mots sonnent bien et peuplent le discours public. Pour chacun, demandez-vous ce qu’il **use** ou ce qu’il **cache** :\n\n- `une résilience` : terme de physique devenu remède à toute épreuve.\n- `une bienveillance` : une vertu qu’on réclame souvent au lieu de la pratiquer.\n- `sociétal` : cousin flou de l’adjectif social.\n- `inclusif` : ouvert à tous, parfois simple étiquette.\n- `vertueux` : moral par le nom, souvent seulement rentable.",
+        "de": "Diese Wörter klingen edel und füllen die öffentliche Rede. Frag dich bei jedem, was es **abnutzt** oder **verbirgt**:\n\n- `une résilience`: ursprünglich ein Begriff der Physik, heute ein Allheilmittel für jede Prüfung.\n- `une bienveillance`: eine Tugend, die oft eingefordert statt gelebt wird.\n- `sociétal`: ein unscharfer Verwandter des schlichteren Wortes social.\n- `inclusif`: offen für alle, manchmal nur ein Etikett.\n- `vertueux`: dem Namen nach moralisch, oft nur rentabel."
+      }
+    },
+    {
+      "id": "rapports",
+      "label": {
+        "en": "Words of reports and meetings",
+        "fr": "Les mots des rapports et des réunions",
+        "de": "Wörter für Berichte und Besprechungen"
+      },
+      "targetIds": ["transversal", "enjeu", "niveau", "acter", "impacter"],
+      "introduction": {
+        "en": "These are the connectors, nouns and verbs of reports and press releases. Learn to **translate** them back into plain words:\n\n- `transversal`: concerns every department, often a way of not naming who is responsible.\n- `un enjeu`: what is at stake, often replacing the plainer word for problem.\n- `au niveau de`: a catch-all for about, in or among.\n- `acter`: to record formally, now often just to decide.\n- `impacter`: to have an effect on, disliked by purists.",
+        "fr": "Ce sont les connecteurs, noms et verbes des rapports et des communiqués. Apprenez à les **traduire** en mots simples :\n\n- `transversal` : qui concerne tous les services, souvent une façon de ne pas nommer le responsable.\n- `un enjeu` : ce qui est en jeu, souvent à la place du mot plus simple problème.\n- `au niveau de` : un fourre-tout pour dire sur, dans ou chez.\n- `acter` : consigner officiellement, aujourd’hui souvent simplement décider.\n- `impacter` : avoir un effet sur, mal aimé des puristes.",
+        "de": "Das sind die Verbinder, Nomen und Verben von Berichten und Pressemitteilungen. Lerne, sie in einfache Wörter **zurückzuübersetzen**:\n\n- `transversal`: betrifft alle Abteilungen, oft ein Weg, die Verantwortlichen nicht zu nennen.\n- `un enjeu`: was auf dem Spiel steht, oft statt des schlichteren Wortes für Problem.\n- `au niveau de`: ein Sammelbegriff für über, in oder bei.\n- `acter`: förmlich festhalten, heute oft einfach beschließen.\n- `impacter`: sich auswirken auf, von Puristen abgelehnt."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "resilience",
+      "term": "résilience",
+      "translations": { "en": ["resilience"], "de": ["Resilienz", "Widerstandsfähigkeit"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une résilience",
+      "examForms": ["une résilience"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʁe.zi.ljɑ̃s/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "On nous parle de résilience à chaque nouvelle crise.",
+        "translation": {
+          "en": "We hear about resilience with every new crisis.",
+          "de": "Bei jeder neuen Krise hört man von Resilienz."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Used for people, firms and states alike, the word can excuse hardship by turning it into a duty to endure.",
+        "fr": "Appliqué aux personnes, aux entreprises et aux États, le mot peut excuser l’épreuve en la transformant en devoir d’encaisser.",
+        "de": "Für Menschen, Firmen und Staaten gleichermaßen verwendet, kann das Wort Not entschuldigen, indem es sie zur Pflicht des Aushaltens macht."
+      },
+      "explanation": {
+        "en": "Résilience, from physics, now covers any ability to recover; overused, it can hide the cause of the hardship.",
+        "fr": "Résilience, venu de la physique, désigne toute capacité à se remettre ; trop employé, il peut cacher la cause de l’épreuve.",
+        "de": "Résilience stammt aus der Physik und meint jede Fähigkeit, sich zu erholen; zu oft gebraucht, kann es die Ursache der Not verbergen."
+      },
+      "genderExplanation": {
+        "en": "Résilience is feminine, so its indefinite article is une.",
+        "fr": "Résilience est féminin : on dit une résilience.",
+        "de": "Résilience ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Après la faillite, sa ",
+        "after": " a surpris tout le monde.",
+        "accepted": { "answers": ["résilience"] },
+        "referenceTargetIds": ["resilience", "acter", "niveau", "vertueux"],
+        "explanation": {
+          "en": "Only résilience is a noun that fits after sa and means recovering from failure.",
+          "fr": "Seul « résilience » est un nom qui convient après « sa » et évoque le rebond après l’échec.",
+          "de": "Nur „résilience“ ist ein Nomen, das nach „sa“ passt und das Wiederaufrappeln nach dem Scheitern meint."
+        }
+      },
+      "listeningOptionTargetIds": ["resilience", "bienveillance", "inclusif", "impacter"]
+    },
+    {
+      "id": "bienveillance",
+      "term": "bienveillance",
+      "translations": { "en": ["benevolence", "kindliness"], "de": ["Wohlwollen"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une bienveillance",
+      "examForms": ["une bienveillance"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/bjɛ̃.vɛ.jɑ̃s/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "La direction demande de la bienveillance entre collègues.",
+        "translation": {
+          "en": "Management asks for kindliness between colleagues.",
+          "de": "Die Leitung verlangt Wohlwollen unter Kollegen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Bienveillance is a real virtue, but when it is demanded in every memo it replaces concrete rules.",
+        "fr": "La bienveillance est une vraie vertu, mais réclamée dans chaque note, elle remplace des règles concrètes.",
+        "de": "Bienveillance ist eine echte Tugend, doch wenn sie in jeder Mitteilung verlangt wird, ersetzt sie konkrete Regeln."
+      },
+      "genderExplanation": {
+        "en": "Bienveillance is feminine, so its indefinite article is une.",
+        "fr": "Bienveillance est féminin : on dit une bienveillance.",
+        "de": "Bienveillance ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le directeur a répondu avec une ",
+        "after": " désarmante.",
+        "accepted": { "answers": ["bienveillance"] },
+        "referenceTargetIds": ["bienveillance", "impacter", "transversal", "enjeu"],
+        "explanation": {
+          "en": "Only bienveillance is a feminine noun that fits after une and before désarmante.",
+          "fr": "Seul « bienveillance » est un nom féminin qui convient entre « une » et « désarmante ».",
+          "de": "Nur „bienveillance“ ist ein feminines Nomen, das zwischen „une“ und „désarmante“ passt."
+        }
+      },
+      "listeningOptionTargetIds": ["bienveillance", "resilience", "vertueux", "enjeu"]
+    },
+    {
+      "id": "societal",
+      "term": "sociétal",
+      "translations": { "en": ["societal"], "de": ["gesellschaftlich"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "sociétal",
+      "examForms": ["sociétal"],
+      "articleException": null,
+      "genderVariants": ["sociétale"],
+      "pronunciation": "/sɔ.sje.tal/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Les enjeux sociétaux de cette loi sont considérables.",
+        "translation": {
+          "en": "The societal stakes of this law are considerable.",
+          "de": "Die gesellschaftlichen Folgen dieses Gesetzes sind beträchtlich."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Sociétal concerns society as a whole, while social concerns relations between groups; the two are often confused.",
+        "fr": "Sociétal concerne la société entière, alors que social touche aux rapports entre groupes ; on les confond souvent.",
+        "de": "Sociétal betrifft die ganze Gesellschaft, social die Beziehungen zwischen Gruppen; beide werden oft verwechselt."
+      },
+      "explanation": {
+        "en": "Sociétal sounds broader than social, but it is often used to avoid taking a precise stand.",
+        "fr": "Sociétal sonne plus large que social, mais il sert souvent à éviter de prendre position avec précision.",
+        "de": "Sociétal klingt weiter als social, dient aber oft dazu, sich nicht genau festzulegen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ce débat ",
+        "after": " dépasse la seule économie.",
+        "accepted": { "answers": ["sociétal"] },
+        "referenceTargetIds": ["societal", "acter", "enjeu", "bienveillance"],
+        "explanation": {
+          "en": "Only sociétal is a masculine adjective that fits after débat and speaks of society as a whole.",
+          "fr": "Seul « sociétal » est un adjectif masculin qui convient après « débat » et évoque la société entière.",
+          "de": "Nur „sociétal“ ist ein maskulines Adjektiv, das nach „débat“ passt und die ganze Gesellschaft meint."
+        }
+      },
+      "listeningOptionTargetIds": ["societal", "transversal", "vertueux", "niveau"]
+    },
+    {
+      "id": "inclusif",
+      "term": "inclusif",
+      "translations": { "en": ["inclusive"], "de": ["inklusiv"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "inclusif",
+      "examForms": ["inclusif"],
+      "articleException": null,
+      "genderVariants": ["inclusive"],
+      "pronunciation": "/ɛ̃.kly.zif/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Elle défend un langage plus inclusif.",
+        "translation": {
+          "en": "She defends more inclusive language.",
+          "de": "Sie verteidigt eine inklusivere Sprache."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Inclusif promises that nobody is left out; as a label it can hide how little has changed.",
+        "fr": "Inclusif promet que personne n’est laissé de côté ; comme simple étiquette, il peut cacher le peu qui a changé.",
+        "de": "Inclusif verspricht, dass niemand ausgeschlossen wird; als bloßes Etikett kann es verbergen, wie wenig sich geändert hat."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Elle défend un langage ",
+        "after": ".",
+        "accepted": { "answers": ["inclusif"] },
+        "referenceTargetIds": ["inclusif", "impacter", "niveau", "resilience"],
+        "explanation": {
+          "en": "Only inclusif is a masculine adjective that fits after langage and means open to everyone.",
+          "fr": "Seul « inclusif » est un adjectif masculin qui convient après « langage » et signifie ouvert à tous.",
+          "de": "Nur „inclusif“ ist ein maskulines Adjektiv, das nach „langage“ passt und „offen für alle“ bedeutet."
+        }
+      },
+      "listeningOptionTargetIds": ["inclusif", "impacter", "resilience", "acter"]
+    },
+    {
+      "id": "vertueux",
+      "term": "vertueux",
+      "translations": { "en": ["virtuous"], "de": ["tugendhaft"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "vertueux",
+      "examForms": ["vertueux"],
+      "articleException": null,
+      "genderVariants": ["vertueuse"],
+      "pronunciation": "/vɛʁ.tɥø/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Les promoteurs vantent un modèle économique vertueux.",
+        "translation": {
+          "en": "The promoters praise a virtuous economic model.",
+          "de": "Die Befürworter loben ein tugendhaftes Wirtschaftsmodell."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Vertueux describes a loop where good actions feed each other; in ads, it often hides a profit motive.",
+        "fr": "Vertueux décrit un cercle où les bonnes actions s’entraînent ; dans la publicité, il cache souvent un motif de profit.",
+        "de": "Vertueux beschreibt einen Kreislauf, in dem gute Taten einander stützen; in der Werbung verbirgt es oft ein Gewinnmotiv."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "On nous vante un cercle ",
+        "after": " : plus on recycle, plus on économise.",
+        "accepted": { "answers": ["vertueux"] },
+        "referenceTargetIds": ["vertueux", "niveau", "impacter", "enjeu"],
+        "explanation": {
+          "en": "Only vertueux is an adjective that fits after cercle and describes a loop of good effects.",
+          "fr": "Seul « vertueux » est un adjectif qui convient après « cercle » et décrit une boucle d’effets positifs.",
+          "de": "Nur „vertueux“ ist ein Adjektiv, das nach „cercle“ passt und eine Schleife guter Wirkungen beschreibt."
+        }
+      },
+      "listeningOptionTargetIds": ["vertueux", "bienveillance", "societal", "niveau"]
+    },
+    {
+      "id": "transversal",
+      "term": "transversal",
+      "translations": { "en": ["cross-cutting"], "de": ["bereichsübergreifend"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "transversal",
+      "examForms": ["transversal"],
+      "articleException": null,
+      "genderVariants": ["transversale"],
+      "pronunciation": "/tʁɑ̃s.vɛʁ.sal/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "C’est un projet transversal à toute l’entreprise.",
+        "translation": {
+          "en": "It is a project that cuts across the whole company.",
+          "de": "Es ist ein Projekt, das das ganze Unternehmen betrifft."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Transversal says that a topic concerns every service; it often hides that nobody is in charge.",
+        "fr": "Transversal dit qu’un sujet concerne tous les services ; il cache souvent que personne n’en est responsable.",
+        "de": "Transversal sagt, dass ein Thema alle Abteilungen betrifft; es verbirgt oft, dass niemand zuständig ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il dirige un projet ",
+        "after": ", qui touche tous les services.",
+        "accepted": { "answers": ["transversal"] },
+        "referenceTargetIds": ["transversal", "acter", "bienveillance", "niveau"],
+        "explanation": {
+          "en": "Only transversal is an adjective that matches projet and the idea of touching all services.",
+          "fr": "Seul « transversal » est un adjectif qui s’accorde avec « projet » et exprime l’idée de toucher tous les services.",
+          "de": "Nur „transversal“ ist ein Adjektiv, das zu „projet“ passt und den Gedanken ausdrückt, alle Abteilungen zu berühren."
+        }
+      },
+      "listeningOptionTargetIds": ["transversal", "societal", "enjeu", "acter"]
+    },
+    {
+      "id": "enjeu",
+      "term": "enjeu",
+      "translations": { "en": ["stake"], "de": ["Einsatz", "Herausforderung"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un enjeu",
+      "examForms": ["un enjeu"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɑ̃.ʒø/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "L’enjeu de cette réunion est le budget.",
+        "translation": {
+          "en": "The stake of this meeting is the budget.",
+          "de": "Bei dieser Sitzung geht es um das Budget."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Enjeu names what can be won or lost; in reports it often replaces problem and makes it sound weighty.",
+        "fr": "Enjeu nomme ce qu’on peut gagner ou perdre ; dans les rapports, il remplace souvent problème et le rend plus grave.",
+        "de": "Enjeu nennt, was man gewinnen oder verlieren kann; in Berichten ersetzt es oft problème und klingt gewichtiger."
+      },
+      "genderExplanation": {
+        "en": "Enjeu is masculine, so its indefinite article is un.",
+        "fr": "Enjeu est masculin : on dit un enjeu.",
+        "de": "Enjeu ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le vrai ",
+        "after": " de ce vote, c’est l’avenir du budget.",
+        "accepted": { "answers": ["enjeu"] },
+        "referenceTargetIds": ["enjeu", "vertueux", "impacter", "societal"],
+        "explanation": {
+          "en": "Only enjeu is a masculine noun that fits after Le vrai and means what is at stake.",
+          "fr": "Seul « enjeu » est un nom masculin qui convient après « Le vrai » et désigne ce qui est en jeu.",
+          "de": "Nur „enjeu“ ist ein maskulines Nomen, das nach „Le vrai“ passt und bedeutet, was auf dem Spiel steht."
+        }
+      },
+      "listeningOptionTargetIds": ["enjeu", "bienveillance", "niveau", "transversal"]
+    },
+    {
+      "id": "niveau",
+      "term": "au niveau de",
+      "translations": {
+        "en": ["in terms of", "at the level of"],
+        "de": ["in Bezug auf", "auf der Ebene von"]
+      },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "au niveau de",
+      "examForms": ["au niveau de"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/o ni.vo də/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Au niveau de la sécurité, tout est prévu.",
+        "translation": {
+          "en": "As regards security, everything is planned.",
+          "de": "Was die Sicherheit betrifft, ist alles geplant."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Au niveau de is correct for a real level (au niveau de la mer), but vague when it only means about.",
+        "fr": "Au niveau de est correct pour un vrai niveau (au niveau de la mer), mais flou quand il veut seulement dire à propos de.",
+        "de": "Au niveau de ist richtig für ein echtes Niveau (au niveau de la mer), aber vage, wenn es nur „bezüglich“ meint."
+      },
+      "explanation": {
+        "en": "Au niveau de is a catch-all that saves choosing between sur, dans, chez or quant à; it blurs precision.",
+        "fr": "Au niveau de est un fourre-tout qui évite de choisir entre sur, dans, chez ou quant à ; il brouille la précision.",
+        "de": "Au niveau de ist ein Sammelbegriff, der die Wahl zwischen sur, dans, chez oder quant à erspart; er verwischt die Genauigkeit."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il y a un vrai souci ",
+        "after": " la communication.",
+        "accepted": { "answers": ["au niveau de"] },
+        "referenceTargetIds": ["niveau", "resilience", "societal", "acter"],
+        "explanation": {
+          "en": "Only au niveau de is a prepositional phrase that links souci to the topic la communication.",
+          "fr": "Seul « au niveau de » est une locution prépositive qui relie « souci » à « la communication ».",
+          "de": "Nur „au niveau de“ ist eine Präpositionalgruppe, die „souci“ mit „la communication“ verbindet."
+        }
+      },
+      "listeningOptionTargetIds": ["niveau", "vertueux", "societal", "enjeu"]
+    },
+    {
+      "id": "acter",
+      "term": "acter",
+      "translations": {
+        "en": ["to formalize", "to record officially"],
+        "de": ["festschreiben", "förmlich beschließen"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "acter",
+      "examForms": ["acter"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ak.te/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Le comité a acté le départ du directeur.",
+        "translation": {
+          "en": "The committee formalized the director’s departure.",
+          "de": "Das Komitee hat den Abgang des Direktors festgeschrieben."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Acter originally means to record in a formal document; today it often just means to decide or to accept a fact.",
+        "fr": "Acter signifie d’abord consigner dans un acte officiel ; aujourd’hui il veut souvent dire simplement décider ou admettre un fait.",
+        "de": "Acter heißt ursprünglich, in einer förmlichen Urkunde festzuhalten; heute bedeutet es oft nur beschließen oder eine Tatsache hinnehmen."
+      },
+      "explanation": {
+        "en": "Acter sounds official and final; it can hide the fact that a decision was made quietly or by others.",
+        "fr": "Acter sonne officiel et définitif ; il peut cacher qu’une décision a été prise discrètement ou par d’autres.",
+        "de": "Acter klingt amtlich und endgültig; es kann verbergen, dass eine Entscheidung still oder von anderen getroffen wurde."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le conseil a décidé d’",
+        "after": " la fusion.",
+        "accepted": { "answers": ["acter"] },
+        "referenceTargetIds": ["acter", "inclusif", "enjeu", "transversal"],
+        "explanation": {
+          "en": "Only acter is a verb in the infinitive that fits after d’ and takes la fusion as object.",
+          "fr": "Seul « acter » est un verbe à l’infinitif qui convient après « d’ » et se construit avec « la fusion ».",
+          "de": "Nur „acter“ ist ein Verb im Infinitiv, das nach „d’“ passt und „la fusion“ als Objekt nimmt."
+        }
+      },
+      "listeningOptionTargetIds": ["acter", "impacter", "inclusif", "transversal"]
+    },
+    {
+      "id": "impacter",
+      "term": "impacter",
+      "translations": {
+        "en": ["to impact", "to affect"],
+        "de": ["beeinflussen", "sich auswirken auf"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "impacter",
+      "examForms": ["impacter"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɛ̃.pak.te/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Cette décision va impacter tous les salariés.",
+        "translation": {
+          "en": "This decision will impact every employee.",
+          "de": "Diese Entscheidung wird alle Angestellten beeinflussen."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Purists prefer avoir un impact sur, toucher or affecter; impacter is nonetheless frequent in business and press speech.",
+        "fr": "Les puristes préfèrent avoir un impact sur, toucher ou affecter ; impacter reste pourtant fréquent dans l’entreprise et la presse.",
+        "de": "Puristen bevorzugen avoir un impact sur, toucher oder affecter; impacter ist in Wirtschaft und Presse trotzdem häufig."
+      },
+      "explanation": {
+        "en": "Impacter makes any effect sound forceful and neutral; it hides whether the effect is good or bad.",
+        "fr": "Impacter donne à tout effet un air énergique et neutre ; il cache si l’effet est bon ou mauvais.",
+        "de": "Impacter lässt jede Wirkung kraftvoll und neutral klingen; es verbirgt, ob die Wirkung gut oder schlecht ist."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Cette hausse va lourdement ",
+        "after": " nos marges.",
+        "accepted": { "answers": ["impacter"] },
+        "referenceTargetIds": ["impacter", "resilience", "niveau", "inclusif"],
+        "explanation": {
+          "en": "Only impacter is a verb in the infinitive that fits after va lourdement and takes nos marges as object.",
+          "fr": "Seul « impacter » est un verbe à l’infinitif qui convient après « va lourdement » et se construit avec « nos marges ».",
+          "de": "Nur „impacter“ ist ein Verb im Infinitiv, das nach „va lourdement“ passt und „nos marges“ als Objekt nimmt."
+        }
+      },
+      "listeningOptionTargetIds": ["impacter", "acter", "inclusif", "resilience"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

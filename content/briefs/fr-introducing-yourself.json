@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-introducing-yourself",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Se présenter et poser des questions",
+  "objective": {
+    "en": "Introduce yourself with your name, nationality, city and languages, then ask the other person the same questions.",
+    "fr": "Se présenter avec son nom, sa nationalité, sa ville et ses langues, puis poser les mêmes questions à l’autre.",
+    "de": "Sich mit Name, Nationalität, Wohnort und Sprachen vorstellen und der anderen Person dieselben Fragen stellen."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:28:34.529Z",
+    "inputHashes": { "outline": "55c168005472eb261544672c9d49cb40636a8425bfeacee3e4348b182c795679" }
+  },
+  "kind": "functions",
+  "theme": "personal_identification",
+  "situation": {
+    "en": "Two people meet for the first time and get to know each other.",
+    "fr": "Deux personnes se rencontrent pour la première fois et font connaissance.",
+    "de": "Zwei Personen treffen sich zum ersten Mal und lernen sich kennen."
+  },
+  "coverageNotes": {
+    "en": "Saying your name (Je m’appelle), your nationality (Je suis), your city (J’habite à) and your languages (Je parle), and asking the informal questions Tu t’appelles comment ? and Tu habites où ?",
+    "fr": "Dire son nom (Je m’appelle), sa nationalité (Je suis), sa ville (J’habite à) et ses langues (Je parle), et poser les questions Tu t’appelles comment ? et Tu habites où ?",
+    "de": "Den eigenen Namen (Je m’appelle), die Nationalität (Je suis), den Wohnort (J’habite à) und die Sprachen (Je parle) nennen und die Fragen Tu t’appelles comment ? und Tu habites où ? stellen."
+  },
+  "prerequisites": [],
+  "roles": [
+    { "id": "marc", "label": "Marc", "translation": { "en": "Marc", "de": "Marc" } },
+    { "id": "sofia", "label": "Sofia", "translation": { "en": "Sofia", "de": "Sofia" } }
+  ],
+  "expressions": [
+    {
+      "id": "je-mappelle",
+      "text": "Je m’appelle",
+      "openEnd": true,
+      "translations": { "en": ["My name is"], "de": ["Ich heiße"] },
+      "explanation": {
+        "en": "Use it to say your name: Je m’appelle + your first name.",
+        "fr": "Pour dire son nom : Je m’appelle + son prénom.",
+        "de": "Damit sagst du deinen Namen: Je m’appelle + Vorname."
+      },
+      "example": {
+        "text": "Je m’appelle Léa.",
+        "translation": { "en": "My name is Léa.", "de": "Ich heiße Léa." }
+      }
+    },
+    {
+      "id": "tu-tappelles-comment",
+      "text": "Tu t’appelles comment ?",
+      "openEnd": false,
+      "translations": { "en": ["What’s your name?"], "de": ["Wie heißt du?"] },
+      "explanation": {
+        "en": "Asks someone’s name. Informal (tu): use it with a friend or someone your age.",
+        "fr": "Pour demander le nom de quelqu’un. Familier (tu) : avec un ami ou une personne de votre âge.",
+        "de": "Fragt nach dem Namen. Informell (tu): unter Freunden oder Gleichaltrigen."
+      },
+      "example": {
+        "text": "Bonjour ! Tu t’appelles comment ?",
+        "translation": { "en": "Hello! What’s your name?", "de": "Hallo! Wie heißt du?" }
+      }
+    },
+    {
+      "id": "je-suis",
+      "text": "Je suis",
+      "openEnd": true,
+      "translations": { "en": ["I am"], "de": ["Ich bin"] },
+      "explanation": {
+        "en": "Use it to say your nationality: Je suis + nationality.",
+        "fr": "Pour dire sa nationalité : Je suis + nationalité.",
+        "de": "Damit sagst du deine Nationalität: Je suis + Nationalität."
+      },
+      "example": {
+        "text": "Je suis espagnole.",
+        "translation": { "en": "I am Spanish.", "de": "Ich bin Spanierin." }
+      }
+    },
+    {
+      "id": "jhabite-a",
+      "text": "J’habite à",
+      "openEnd": true,
+      "translations": { "en": ["I live in"], "de": ["Ich wohne in"] },
+      "explanation": {
+        "en": "Use it to say the city where you live: J’habite à + city.",
+        "fr": "Pour dire la ville où l’on habite : J’habite à + ville.",
+        "de": "Damit sagst du, in welcher Stadt du wohnst: J’habite à + Stadt."
+      },
+      "example": {
+        "text": "J’habite à Bordeaux.",
+        "translation": { "en": "I live in Bordeaux.", "de": "Ich wohne in Bordeaux." }
+      }
+    },
+    {
+      "id": "tu-habites-ou",
+      "text": "Tu habites où ?",
+      "openEnd": false,
+      "translations": { "en": ["Where do you live?"], "de": ["Wo wohnst du?"] },
+      "explanation": {
+        "en": "Asks where someone lives. Informal (tu).",
+        "fr": "Pour demander où habite quelqu’un. Familier (tu).",
+        "de": "Fragt, wo jemand wohnt. Informell (tu)."
+      },
+      "example": {
+        "text": "Salut ! Tu habites où ?",
+        "translation": { "en": "Hi! Where do you live?", "de": "Hallo! Wo wohnst du?" }
+      }
+    },
+    {
+      "id": "je-parle",
+      "text": "Je parle",
+      "openEnd": true,
+      "translations": { "en": ["I speak"], "de": ["Ich spreche"] },
+      "explanation": {
+        "en": "Use it to say which languages you speak: Je parle + language.",
+        "fr": "Pour dire quelles langues on parle : Je parle + langue.",
+        "de": "Damit sagst du, welche Sprachen du sprichst: Je parle + Sprache."
+      },
+      "example": {
+        "text": "Je parle un peu allemand.",
+        "translation": {
+          "en": "I speak a little German.",
+          "de": "Ich spreche ein bisschen Deutsch."
+        }
+      }
+    }
+  ],
+  "words": [],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

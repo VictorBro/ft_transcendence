@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-stylistic-on",
+  "lang": "fr",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Les visages de on",
+  "objective": {
+    "en": "Interpret on from context and effect: modesty, reproach, complicity or exclusion, and agree participles and adjectives with the real person.",
+    "fr": "Interpréter on selon le contexte et l'effet produit : modestie, reproche, complicité ou exclusion, et accorder participes et attributs avec la personne réelle.",
+    "de": "on aus Kontext und Wirkung deuten: Bescheidenheit, Vorwurf, Komplizenschaft oder Ausschluss, und Partizipien und Adjektive nach der tatsächlichen Person angleichen."
+  },
+  "estimatedMinutes": 21,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:00:50.155Z",
+    "inputHashes": { "outline": "a211720108ac0e1abf6765f4ed5425a57dc0471a7e96d688b6c73b06c73b02ff" }
+  },
+  "kind": "grammar",
+  "topic": "pronouns",
+  "scopeBoundaries": {
+    "en": "Covers the stylistic values of on (je, tu/vous, nous, ils) and the agreement that follows. Excludes the generic on (on dit que), the passive-like on and regional uses.",
+    "fr": "Couvre les valeurs stylistiques de on (je, tu/vous, nous, ils) et l'accord qui en découle. Exclut le on générique (on dit que), le on à valeur passive et les usages régionaux.",
+    "de": "Behandelt die stilistischen Werte von on (je, tu/vous, nous, ils) und die Angleichung. Ausgeschlossen sind das generische on (on dit que), das passivische on und regionale Verwendungen."
+  },
+  "prerequisites": [
+    {
+      "en": "Subject pronouns and the present tense; the basic use of on as nous in everyday speech.",
+      "fr": "Les pronoms sujets et le présent ; l'emploi courant de on pour nous à l'oral.",
+      "de": "Subjektpronomen und Präsens; der übliche Gebrauch von on für nous in der gesprochenen Sprache."
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-modesty-reproach",
+      "summary": {
+        "en": "On replaces je (modesty) or tu/vous (reproach, irony, caring condescension); context and tone decide.",
+        "fr": "On remplace je (modestie) ou tu/vous (reproche, ironie, sollicitude condescendante) ; le contexte et le ton décident.",
+        "de": "on ersetzt je (Bescheidenheit) oder tu/vous (Vorwurf, Ironie, bevormundende Fürsorge); Kontext und Ton entscheiden."
+      }
+    },
+    {
+      "id": "rule-complicity",
+      "summary": {
+        "en": "On replaces nous with a value of complicity or familiarity: On y va ?",
+        "fr": "On remplace nous avec une valeur de complicité ou de familiarité : On y va ?",
+        "de": "on ersetzt nous mit dem Wert von Komplizenschaft oder Vertraulichkeit: On y va ?"
+      }
+    },
+    {
+      "id": "rule-exclusion",
+      "summary": {
+        "en": "On replaces ils or les autres to mark distance, sometimes disdain.",
+        "fr": "On remplace ils ou les autres pour marquer la distance, parfois le dédain.",
+        "de": "on ersetzt ils oder les autres, um Distanz, manchmal Geringschätzung, auszudrücken."
+      }
+    },
+    {
+      "id": "rule-agreement",
+      "summary": {
+        "en": "The verb after on stays 3rd person singular, but the adjective and participle may agree with the real person.",
+        "fr": "Le verbe de on reste à la 3e personne du singulier, mais l'attribut et le participe peuvent s'accorder avec la personne réelle.",
+        "de": "Das Verb nach on bleibt in der 3. Person Singular, aber Adjektiv und Partizip können sich nach der tatsächlichen Person richten."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-je-tu",
+      "title": {
+        "en": "On for je, tu or vous: modesty and reproach",
+        "fr": "On pour je, tu ou vous : modestie et reproche",
+        "de": "on für je, tu oder vous: Bescheidenheit und Vorwurf"
+      },
+      "ruleIds": ["rule-modesty-reproach"],
+      "explanationPlan": {
+        "en": "Show that on can hide je (modest author), tu/vous (ironic reproach) or a caring vous (nurse, teacher). Teach the learner to ask: who speaks, to whom, with what effect?",
+        "fr": "Montrer que on peut cacher je (auteur modeste), tu/vous (reproche ironique) ou un vous attentionné (soignant, enseignant). Apprendre à se demander : qui parle, à qui, avec quel effet ?",
+        "de": "Zeigen, dass on je (bescheidener Autor), tu/vous (ironischer Vorwurf) oder ein fürsorgliches vous (Pflegekraft, Lehrerin) verbergen kann. Fragen lernen: Wer spricht, mit wem, mit welcher Wirkung?"
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "Dans cet article, on a voulu montrer que la crise est aussi culturelle.",
+          "translation": {
+            "en": "In this article, I wanted to show that the crisis is also cultural.",
+            "de": "In diesem Artikel wollte ich zeigen, dass die Krise auch kulturell ist."
+          }
+        },
+        {
+          "text": "Alors, on ne dit plus bonjour ?",
+          "translation": {
+            "en": "So, we've stopped saying hello, have we?",
+            "de": "Na, wir grüßen wohl nicht mehr?"
+          }
+        },
+        {
+          "text": "Alors, on a bien dormi, monsieur Durand ?",
+          "translation": {
+            "en": "Did we sleep well, Mr Durand?",
+            "de": "Haben wir gut geschlafen, Herr Durand?"
+          }
+        },
+        {
+          "text": "On se calme, les enfants !",
+          "translation": {
+            "en": "Calm down, children!",
+            "de": "Jetzt beruhigen wir uns mal, Kinder!"
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not always translate on as 'one' or 'we': in a reproach it targets the listener.",
+          "fr": "Ne traduisez pas toujours on par « nous » : dans un reproche, il vise l'interlocuteur.",
+          "de": "on nicht immer mit 'wir' oder 'man' übersetzen: Im Vorwurf zielt es auf den Gesprächspartner."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-1-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 5,
+          "ruleIds": ["rule-modesty-reproach"],
+          "estimatedDurationS": 100
+        },
+        {
+          "id": "ex-1-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-modesty-reproach"],
+          "estimatedDurationS": 100
+        },
+        {
+          "id": "ex-1-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-modesty-reproach"],
+          "estimatedDurationS": 90
+        }
+      ]
+    },
+    {
+      "id": "block-nous-ils",
+      "title": {
+        "en": "On for nous or ils: complicity, exclusion and agreement",
+        "fr": "On pour nous ou ils : complicité, exclusion et accord",
+        "de": "on für nous oder ils: Komplizenschaft, Ausschluss und Angleichung"
+      },
+      "ruleIds": ["rule-complicity", "rule-exclusion", "rule-agreement"],
+      "explanationPlan": {
+        "en": "Contrast the inclusive on (nous, warmth) with the excluding on (ils, distance). Then show that the verb stays singular while the adjective or participle can agree with the real persons.",
+        "fr": "Opposer le on inclusif (nous, chaleur) au on qui exclut (ils, distance). Montrer ensuite que le verbe reste au singulier alors que l'attribut ou le participe peuvent s'accorder avec les personnes réelles.",
+        "de": "Das einschließende on (nous, Wärme) dem ausschließenden on (ils, Distanz) gegenüberstellen. Dann zeigen, dass das Verb im Singular bleibt, während Adjektiv oder Partizip sich nach den tatsächlichen Personen richten können."
+      },
+      "explanationDurationS": 180,
+      "examples": [
+        {
+          "text": "Le dimanche, on se retrouve tous chez mamie, comme avant.",
+          "translation": {
+            "en": "On Sundays, we all meet at Grandma's, just like before.",
+            "de": "Sonntags treffen wir uns alle bei Oma, wie früher."
+          }
+        },
+        {
+          "text": "Chez eux, on dîne à vingt-deux heures.",
+          "translation": {
+            "en": "At their place, they dine at ten p.m.",
+            "de": "Bei denen isst man erst um zweiundzwanzig Uhr."
+          }
+        },
+        {
+          "text": "Ces gens-là, on ne les voit jamais au marché.",
+          "translation": {
+            "en": "Those people, one never sees them at the market.",
+            "de": "Diese Leute sieht man nie auf dem Markt."
+          }
+        },
+        {
+          "text": "Entre copines, on s'est bien amusées.",
+          "translation": {
+            "en": "We girls had a great time.",
+            "de": "Wir Freundinnen haben uns gut amüsiert."
+          }
+        },
+        {
+          "text": "On est contents de vous voir.",
+          "translation": { "en": "We are glad to see you.", "de": "Wir freuen uns, Sie zu sehen." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Never conjugate the verb with nous after on: on est, not on sommes.",
+          "fr": "Ne conjuguez jamais le verbe avec nous après on : on est, et non on sommes.",
+          "de": "Das Verb nach on nie mit nous konjugieren: on est, nicht on sommes."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-2-persons",
+          "type": "grammar_person_matching",
+          "itemCount": 1,
+          "ruleIds": ["rule-complicity", "rule-exclusion"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-2-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-complicity", "rule-exclusion"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-2-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 4,
+          "ruleIds": ["rule-agreement"],
+          "estimatedDurationS": 100
+        },
+        {
+          "id": "ex-2-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-agreement", "rule-complicity"],
+          "estimatedDurationS": 100
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-gaps",
+        "type": "grammar_gap_typing",
+        "itemCount": 6,
+        "ruleIds": ["rule-modesty-reproach", "rule-complicity", "rule-exclusion", "rule-agreement"],
+        "estimatedDurationS": 150,
+        "timeLimitS": 240
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 4,
+        "ruleIds": ["rule-modesty-reproach", "rule-complicity", "rule-exclusion"],
+        "estimatedDurationS": 120,
+        "timeLimitS": 200
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

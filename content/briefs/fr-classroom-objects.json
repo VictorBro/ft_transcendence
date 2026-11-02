@@ -1,0 +1,584 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-classroom-objects",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Les objets de la classe",
+  "objective": {
+    "en": "Name twelve classroom objects with their article: un livre, une table, un tableau…",
+    "fr": "Nommer douze objets de la classe avec leur article : un livre, une table, un tableau…",
+    "de": "Zwölf Gegenstände im Klassenzimmer mit Artikel benennen: un livre, une table, un tableau…"
+  },
+  "estimatedMinutes": 21,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:27:16.433Z",
+    "inputHashes": { "outline": "07ba863701d3938c7c04d1efc9513eee109bfc497d967f7969eaa65b87019e87" }
+  },
+  "kind": "vocabulary",
+  "theme": "education",
+  "coverageNotes": {
+    "en": "Twelve everyday objects, six for school supplies and six for the room. Each noun is taught with un or une; the plural and the definite article come in other lessons.",
+    "fr": "Douze objets courants, six pour le matériel scolaire et six pour la salle. Chaque nom est appris avec un ou une ; le pluriel et l’article défini viennent dans d’autres leçons.",
+    "de": "Zwölf alltägliche Gegenstände, sechs für das Schulmaterial und sechs für den Raum. Jedes Nomen wird mit un oder une gelernt; Plural und bestimmter Artikel folgen in anderen Lektionen."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words match the outline and make two groups of six, which suits an A1 learner.",
+    "fr": "Douze mots correspondent au plan et forment deux groupes de six, adaptés à un débutant A1.",
+    "de": "Zwölf Wörter entsprechen der Gliederung und bilden zwei Sechsergruppen, passend für A1."
+  },
+  "difficultyBalance": {
+    "en": "Mostly concrete core words; table and règle are marked demanding for their gender or spelling.",
+    "fr": "Surtout des mots concrets de base ; table et règle sont plus exigeants pour le genre ou l’orthographe.",
+    "de": "Meist konkrete Grundwörter; table und règle sind wegen Genus oder Schreibweise anspruchsvoller."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "materiel",
+      "label": { "en": "School supplies", "fr": "Le matériel", "de": "Schulmaterial" },
+      "targetIds": ["livre", "cahier", "stylo", "crayon", "gomme", "regle"],
+      "introduction": {
+        "en": "Here are **six school supplies** you use every day:\n\n- `un livre`\n- `un cahier`\n- `un stylo`\n- `un crayon`\n- `une gomme`\n- `une règle`",
+        "fr": "Voici **six objets scolaires** que vous utilisez tous les jours :\n\n- `un livre`\n- `un cahier`\n- `un stylo`\n- `un crayon`\n- `une gomme`\n- `une règle`",
+        "de": "Hier sind **sechs Schulsachen**, die du jeden Tag benutzt:\n\n- `un livre`\n- `un cahier`\n- `un stylo`\n- `un crayon`\n- `une gomme`\n- `une règle`"
+      }
+    },
+    {
+      "id": "salle",
+      "label": { "en": "The classroom", "fr": "La salle de classe", "de": "Das Klassenzimmer" },
+      "targetIds": ["sac", "table", "chaise", "tableau", "porte", "fenetre"],
+      "introduction": {
+        "en": "Now look around the room. Learn **six more objects**:\n\n- `un sac`\n- `une table`\n- `une chaise`\n- `un tableau`\n- `une porte`\n- `une fenêtre`",
+        "fr": "Regardez maintenant autour de vous. Apprenez **six autres objets** :\n\n- `un sac`\n- `une table`\n- `une chaise`\n- `un tableau`\n- `une porte`\n- `une fenêtre`",
+        "de": "Sieh dich jetzt im Raum um. Lerne **sechs weitere Gegenstände**:\n\n- `un sac`\n- `une table`\n- `une chaise`\n- `un tableau`\n- `une porte`\n- `une fenêtre`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "livre",
+      "term": "livre",
+      "translations": { "en": ["book"], "de": ["Buch"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un livre",
+      "examForms": ["un livre"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/œ̃ livʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Je lis un livre.",
+        "translation": { "en": "I am reading a book.", "de": "Ich lese ein Buch." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Livre is masculine, so its indefinite article is un.",
+        "fr": "Livre est masculin : on dit un livre.",
+        "de": "Livre ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "genderExplanation": {
+        "en": "Livre is masculine, so its indefinite article is un.",
+        "fr": "Livre est masculin : on dit un livre.",
+        "de": "Livre ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": { "en": "a book", "de": "ein Buch" },
+      "gap": {
+        "before": "Je lis un ",
+        "after": ".",
+        "accepted": { "answers": ["livre"] },
+        "referenceTargetIds": ["livre", "chaise", "porte", "gomme"],
+        "explanation": {
+          "en": "You read a book; you cannot read a chair, a door or an eraser.",
+          "fr": "On lit un livre, pas une chaise, une porte ou une gomme.",
+          "de": "Man liest ein Buch, keinen Stuhl, keine Tür und keinen Radiergummi."
+        }
+      },
+      "listeningOptionTargetIds": ["livre", "cahier", "sac", "table"]
+    },
+    {
+      "id": "cahier",
+      "term": "cahier",
+      "translations": { "en": ["notebook"], "de": ["Heft"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un cahier",
+      "examForms": ["un cahier"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/œ̃ kaje/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mon cahier est rouge.",
+        "translation": { "en": "My notebook is red.", "de": "Mein Heft ist rot." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Cahier is masculine, so its indefinite article is un.",
+        "fr": "Cahier est masculin : on dit un cahier.",
+        "de": "Cahier ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "genderExplanation": {
+        "en": "Cahier is masculine, so its indefinite article is un.",
+        "fr": "Cahier est masculin : on dit un cahier.",
+        "de": "Cahier ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": { "en": "a notebook", "de": "ein Heft" },
+      "gap": {
+        "before": "J’écris mon nom dans mon ",
+        "after": ".",
+        "accepted": { "answers": ["cahier"] },
+        "referenceTargetIds": ["cahier", "chaise", "fenetre", "porte"],
+        "explanation": {
+          "en": "You write your name in a notebook, not in a chair, a window or a door.",
+          "fr": "On écrit son nom dans un cahier, pas dans une chaise, une fenêtre ou une porte.",
+          "de": "Man schreibt seinen Namen in ein Heft, nicht in einen Stuhl, ein Fenster oder eine Tür."
+        }
+      },
+      "listeningOptionTargetIds": ["cahier", "livre", "crayon", "porte"]
+    },
+    {
+      "id": "stylo",
+      "term": "stylo",
+      "translations": { "en": ["pen"], "de": ["Kugelschreiber", "Stift"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un stylo",
+      "examForms": ["un stylo"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/œ̃ stilo/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "J’ai un stylo noir.",
+        "translation": {
+          "en": "I have a black pen.",
+          "de": "Ich habe einen schwarzen Kugelschreiber."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Stylo is masculine, so its indefinite article is un.",
+        "fr": "Stylo est masculin : on dit un stylo.",
+        "de": "Stylo ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "genderExplanation": {
+        "en": "Stylo is masculine, so its indefinite article is un.",
+        "fr": "Stylo est masculin : on dit un stylo.",
+        "de": "Stylo ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": { "en": "a pen", "de": "ein Kugelschreiber" },
+      "gap": {
+        "before": "J’écris avec un ",
+        "after": ".",
+        "accepted": { "answers": ["stylo"] },
+        "referenceTargetIds": ["stylo", "table", "porte", "chaise"],
+        "explanation": {
+          "en": "You write with a pen, not with a table, a door or a chair.",
+          "fr": "On écrit avec un stylo, pas avec une table, une porte ou une chaise.",
+          "de": "Man schreibt mit einem Stift, nicht mit einem Tisch, einer Tür oder einem Stuhl."
+        }
+      },
+      "listeningOptionTargetIds": ["stylo", "table", "tableau", "sac"]
+    },
+    {
+      "id": "crayon",
+      "term": "crayon",
+      "translations": { "en": ["pencil"], "de": ["Bleistift"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un crayon",
+      "examForms": ["un crayon"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/œ̃ kʁɛjɔ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Le crayon est petit.",
+        "translation": { "en": "The pencil is small.", "de": "Der Bleistift ist klein." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Crayon is masculine, so its indefinite article is un.",
+        "fr": "Crayon est masculin : on dit un crayon.",
+        "de": "Crayon ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "genderExplanation": {
+        "en": "Crayon is masculine, so its indefinite article is un.",
+        "fr": "Crayon est masculin : on dit un crayon.",
+        "de": "Crayon ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": { "en": "a pencil", "de": "ein Bleistift" },
+      "gap": {
+        "before": "Je dessine avec un ",
+        "after": " gris.",
+        "accepted": { "answers": ["crayon"] },
+        "referenceTargetIds": ["crayon", "table", "fenetre", "porte"],
+        "explanation": {
+          "en": "You draw with a pencil; a table, a window and a door cannot draw.",
+          "fr": "On dessine avec un crayon ; une table, une fenêtre ou une porte ne dessinent pas.",
+          "de": "Man zeichnet mit einem Bleistift; ein Tisch, ein Fenster und eine Tür zeichnen nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["crayon", "cahier", "chaise", "gomme"]
+    },
+    {
+      "id": "gomme",
+      "term": "gomme",
+      "translations": { "en": ["eraser"], "de": ["Radiergummi"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une gomme",
+      "examForms": ["une gomme"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/yn ɡɔm/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Je prends la gomme.",
+        "translation": { "en": "I take the eraser.", "de": "Ich nehme den Radiergummi." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Gomme is feminine, so its indefinite article is une.",
+        "fr": "Gomme est féminin : on dit une gomme.",
+        "de": "Gomme ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "genderExplanation": {
+        "en": "Gomme is feminine, so its indefinite article is une.",
+        "fr": "Gomme est féminin : on dit une gomme.",
+        "de": "Gomme ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": { "en": "an eraser", "de": "ein Radiergummi" },
+      "gap": {
+        "before": "J’efface mon erreur avec une ",
+        "after": ".",
+        "accepted": { "answers": ["gomme"] },
+        "referenceTargetIds": ["gomme", "chaise", "table", "fenetre"],
+        "explanation": {
+          "en": "You erase a mistake with an eraser, not with a chair, a table or a window.",
+          "fr": "On efface une erreur avec une gomme, pas avec une chaise, une table ou une fenêtre.",
+          "de": "Man radiert einen Fehler mit einem Radiergummi weg, nicht mit Stuhl, Tisch oder Fenster."
+        }
+      },
+      "listeningOptionTargetIds": ["gomme", "crayon", "porte", "livre"]
+    },
+    {
+      "id": "regle",
+      "term": "règle",
+      "translations": { "en": ["ruler"], "de": ["Lineal"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une règle",
+      "examForms": ["une règle"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/yn ʁɛɡl/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "La règle est longue.",
+        "translation": { "en": "The ruler is long.", "de": "Das Lineal ist lang." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Règle is feminine, so its indefinite article is une. It is written with a grave accent.",
+        "fr": "Règle est féminin : on dit une règle. Il s’écrit avec un accent grave.",
+        "de": "Règle ist feminin, daher lautet der unbestimmte Artikel une. Es wird mit einem Accent grave geschrieben."
+      },
+      "genderExplanation": {
+        "en": "Règle is feminine, so its indefinite article is une.",
+        "fr": "Règle est féminin : on dit une règle.",
+        "de": "Règle ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": { "en": "a ruler", "de": "ein Lineal" },
+      "gap": {
+        "before": "Je trace une ligne droite avec une ",
+        "after": ".",
+        "accepted": { "answers": ["règle"] },
+        "referenceTargetIds": ["regle", "chaise", "porte", "fenetre"],
+        "explanation": {
+          "en": "You draw a straight line with a ruler, not with a chair, a door or a window.",
+          "fr": "On trace une ligne droite avec une règle, pas avec une chaise, une porte ou une fenêtre.",
+          "de": "Eine gerade Linie zieht man mit einem Lineal, nicht mit Stuhl, Tür oder Fenster."
+        }
+      },
+      "listeningOptionTargetIds": ["regle", "table", "gomme", "chaise"]
+    },
+    {
+      "id": "sac",
+      "term": "sac",
+      "translations": { "en": ["bag"], "de": ["Tasche", "Schultasche"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un sac",
+      "examForms": ["un sac"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/œ̃ sak/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mon sac est lourd.",
+        "translation": { "en": "My bag is heavy.", "de": "Meine Tasche ist schwer." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Sac is masculine, so its indefinite article is un.",
+        "fr": "Sac est masculin : on dit un sac.",
+        "de": "Sac ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "genderExplanation": {
+        "en": "Sac is masculine, so its indefinite article is un.",
+        "fr": "Sac est masculin : on dit un sac.",
+        "de": "Sac ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": { "en": "a bag", "de": "eine Tasche" },
+      "gap": {
+        "before": "Mes livres sont dans mon ",
+        "after": ".",
+        "accepted": { "answers": ["sac"] },
+        "referenceTargetIds": ["sac", "fenetre", "porte", "chaise"],
+        "explanation": {
+          "en": "Books go in a bag, not in a window, a door or a chair.",
+          "fr": "Les livres sont dans un sac, pas dans une fenêtre, une porte ou une chaise.",
+          "de": "Bücher sind in einer Tasche, nicht in einem Fenster, einer Tür oder einem Stuhl."
+        }
+      },
+      "listeningOptionTargetIds": ["sac", "stylo", "table", "tableau"]
+    },
+    {
+      "id": "table",
+      "term": "table",
+      "translations": { "en": ["table"], "de": ["Tisch"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une table",
+      "examForms": ["une table"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/yn tabl/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "La table est grande.",
+        "translation": { "en": "The table is big.", "de": "Der Tisch ist groß." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Table is feminine, so its indefinite article is une.",
+        "fr": "Table est féminin : on dit une table.",
+        "de": "Table ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "genderExplanation": {
+        "en": "Table is feminine, so its indefinite article is une.",
+        "fr": "Table est féminin : on dit une table.",
+        "de": "Table ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": { "en": "a table", "de": "ein Tisch" },
+      "gap": {
+        "before": "Je pose mon livre sur la ",
+        "after": ".",
+        "accepted": { "answers": ["table"] },
+        "referenceTargetIds": ["table", "fenetre", "porte", "regle"],
+        "explanation": {
+          "en": "You put a book on a table, not on a window, a door or a ruler.",
+          "fr": "On pose un livre sur la table, pas sur la fenêtre, la porte ou la règle.",
+          "de": "Ein Buch legt man auf den Tisch, nicht auf Fenster, Tür oder Lineal."
+        }
+      },
+      "listeningOptionTargetIds": ["table", "tableau", "stylo", "sac"]
+    },
+    {
+      "id": "chaise",
+      "term": "chaise",
+      "translations": { "en": ["chair"], "de": ["Stuhl"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une chaise",
+      "examForms": ["une chaise"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/yn ʃɛz/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "La chaise est bleue.",
+        "translation": { "en": "The chair is blue.", "de": "Der Stuhl ist blau." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Chaise is feminine, so its indefinite article is une.",
+        "fr": "Chaise est féminin : on dit une chaise.",
+        "de": "Chaise ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "genderExplanation": {
+        "en": "Chaise is feminine, so its indefinite article is une.",
+        "fr": "Chaise est féminin : on dit une chaise.",
+        "de": "Chaise ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": { "en": "a chair", "de": "ein Stuhl" },
+      "gap": {
+        "before": "Je m’assieds sur la ",
+        "after": ".",
+        "accepted": { "answers": ["chaise"] },
+        "referenceTargetIds": ["chaise", "porte", "fenetre", "gomme"],
+        "explanation": {
+          "en": "You sit on a chair, not on a door, a window or an eraser.",
+          "fr": "On s’assied sur une chaise, pas sur une porte, une fenêtre ou une gomme.",
+          "de": "Man sitzt auf einem Stuhl, nicht auf Tür, Fenster oder Radiergummi."
+        }
+      },
+      "listeningOptionTargetIds": ["chaise", "cahier", "porte", "sac"]
+    },
+    {
+      "id": "tableau",
+      "term": "tableau",
+      "translations": { "en": ["board"], "de": ["Tafel"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un tableau",
+      "examForms": ["un tableau"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/œ̃ tablo/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Le tableau est blanc.",
+        "translation": { "en": "The board is white.", "de": "Die Tafel ist weiß." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Tableau is masculine, so its indefinite article is un.",
+        "fr": "Tableau est masculin : on dit un tableau.",
+        "de": "Tableau ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "genderExplanation": {
+        "en": "Tableau is masculine, so its indefinite article is un.",
+        "fr": "Tableau est masculin : on dit un tableau.",
+        "de": "Tableau ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": { "en": "a board", "de": "eine Tafel" },
+      "gap": {
+        "before": "Le professeur écrit au ",
+        "after": ".",
+        "accepted": { "answers": ["tableau"] },
+        "referenceTargetIds": ["tableau", "chaise", "porte", "gomme"],
+        "explanation": {
+          "en": "The teacher writes on the board, not on a chair, a door or an eraser.",
+          "fr": "Le professeur écrit au tableau, pas à la chaise, à la porte ou à la gomme.",
+          "de": "Der Lehrer schreibt an die Tafel, nicht an Stuhl, Tür oder Radiergummi."
+        }
+      },
+      "listeningOptionTargetIds": ["tableau", "table", "stylo", "sac"]
+    },
+    {
+      "id": "porte",
+      "term": "porte",
+      "translations": { "en": ["door"], "de": ["Tür"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une porte",
+      "examForms": ["une porte"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/yn pɔʁt/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "La porte est ouverte.",
+        "translation": { "en": "The door is open.", "de": "Die Tür ist offen." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Porte is feminine, so its indefinite article is une.",
+        "fr": "Porte est féminin : on dit une porte.",
+        "de": "Porte ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "genderExplanation": {
+        "en": "Porte is feminine, so its indefinite article is une.",
+        "fr": "Porte est féminin : on dit une porte.",
+        "de": "Porte ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": { "en": "a door", "de": "eine Tür" },
+      "gap": {
+        "before": "Je ferme la ",
+        "after": ".",
+        "accepted": { "answers": ["porte"] },
+        "referenceTargetIds": ["porte", "chaise", "table", "gomme"],
+        "explanation": {
+          "en": "You close a door, not a chair, a table or an eraser.",
+          "fr": "On ferme la porte, pas la chaise, la table ou la gomme.",
+          "de": "Man schließt eine Tür, keinen Stuhl, Tisch oder Radiergummi."
+        }
+      },
+      "listeningOptionTargetIds": ["porte", "sac", "stylo", "chaise"]
+    },
+    {
+      "id": "fenetre",
+      "term": "fenêtre",
+      "translations": { "en": ["window"], "de": ["Fenster"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une fenêtre",
+      "examForms": ["une fenêtre"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/yn fənɛtʁ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "La fenêtre est grande.",
+        "translation": { "en": "The window is big.", "de": "Das Fenster ist groß." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Fenêtre is feminine, so its indefinite article is une. It is written with a circumflex accent.",
+        "fr": "Fenêtre est féminin : on dit une fenêtre. Il s’écrit avec un accent circonflexe.",
+        "de": "Fenêtre ist feminin, daher lautet der unbestimmte Artikel une. Es wird mit einem Accent circonflexe geschrieben."
+      },
+      "genderExplanation": {
+        "en": "Fenêtre is feminine, so its indefinite article is une.",
+        "fr": "Fenêtre est féminin : on dit une fenêtre.",
+        "de": "Fenêtre ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": { "en": "a window", "de": "ein Fenster" },
+      "gap": {
+        "before": "J’ouvre la ",
+        "after": " pour avoir de l’air.",
+        "accepted": { "answers": ["fenêtre"] },
+        "referenceTargetIds": ["fenetre", "chaise", "table", "gomme"],
+        "explanation": {
+          "en": "You open a window to get fresh air, not a chair, a table or an eraser.",
+          "fr": "On ouvre la fenêtre pour avoir de l’air, pas la chaise, la table ou la gomme.",
+          "de": "Man öffnet ein Fenster für frische Luft, keinen Stuhl, Tisch oder Radiergummi."
+        }
+      },
+      "listeningOptionTargetIds": ["fenetre", "table", "porte", "tableau"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

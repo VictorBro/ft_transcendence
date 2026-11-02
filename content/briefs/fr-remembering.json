@@ -1,0 +1,539 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-remembering",
+  "lang": "fr",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Se souvenir, ça me manque",
+  "objective": {
+    "en": "Talk about memories with ten expressions: remembering, recalling, forgetting, missing someone, feeling nostalgic.",
+    "fr": "Parler de ses souvenirs avec une dizaine d’expressions : se souvenir, se rappeler, oublier, ça me manque, la nostalgie.",
+    "de": "Über Erinnerungen sprechen mit zehn Ausdrücken: sich erinnern, vergessen, vermissen, Nostalgie empfinden."
+  },
+  "estimatedMinutes": 17,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:49:03.501Z",
+    "inputHashes": { "outline": "7e893dd99f103a63b08583c089cd8fb6350641012a2bb948e4aebb48cb5a1879" }
+  },
+  "kind": "vocabulary",
+  "theme": "relations",
+  "coverageNotes": {
+    "en": "Ten expressions for talking about memory and feelings about the past: finding a memory, forgetting, missing someone and nostalgia.",
+    "fr": "Dix expressions pour parler de la mémoire et des sentiments liés au passé : retrouver un souvenir, oublier, regretter quelqu’un, avoir la nostalgie.",
+    "de": "Zehn Ausdrücke, um über das Gedächtnis und Gefühle zur Vergangenheit zu sprechen: sich erinnern, vergessen, jemanden vermissen, Nostalgie haben."
+  },
+  "targetCount": 10,
+  "countRationale": {
+    "en": "Ten expressions match the outline’s intent and give two groups of five at B1.",
+    "fr": "Dix expressions correspondent à l’intention du plan et donnent deux groupes de cinq au niveau B1.",
+    "de": "Zehn Ausdrücke entsprechen der Vorgabe der Gliederung und ergeben auf B1 zwei Gruppen mit fünf."
+  },
+  "difficultyBalance": {
+    "en": "Most expressions are core B1; the nostalgia and memory-lapse phrases are more demanding.",
+    "fr": "La plupart des expressions sont de base pour le B1 ; la nostalgie et le trou de mémoire sont plus exigeants.",
+    "de": "Die meisten Ausdrücke sind B1-Grundwortschatz; Nostalgie und Gedächtnislücke sind anspruchsvoller."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "retrouver",
+      "label": {
+        "en": "Finding a memory",
+        "fr": "Retrouver un souvenir",
+        "de": "Eine Erinnerung wiederfinden"
+      },
+      "targetIds": ["se-souvenir-de", "se-rappeler", "ca-me-rappelle", "ca-me-revient", "oublier"],
+      "introduction": {
+        "en": "To **find a memory** or to lose it, you can say:\n\n- `se souvenir de`\n- `se rappeler`\n- `ça me rappelle`\n- `ça me revient`\n- `oublier`\n\nBe careful: we say `je me souviens de`, but `je me rappelle` without a preposition.",
+        "fr": "Pour **retrouver un souvenir** ou le perdre, on peut dire :\n\n- `se souvenir de`\n- `se rappeler`\n- `ça me rappelle`\n- `ça me revient`\n- `oublier`\n\nAttention : on dit `je me souviens de`, mais `je me rappelle` sans préposition.",
+        "de": "Um **eine Erinnerung wiederzufinden** oder sie zu verlieren, kannst du sagen:\n\n- `se souvenir de`\n- `se rappeler`\n- `ça me rappelle`\n- `ça me revient`\n- `oublier`\n\nAchtung: Man sagt `je me souviens de`, aber `je me rappelle` ohne Präposition."
+      }
+    },
+    {
+      "id": "memoire",
+      "label": {
+        "en": "Memory and feelings",
+        "fr": "Mémoire et sentiments",
+        "de": "Gedächtnis und Gefühle"
+      },
+      "targetIds": [
+        "bon-souvenir",
+        "ca-me-manque",
+        "nostalgie",
+        "trou-de-memoire",
+        "bonne-memoire"
+      ],
+      "introduction": {
+        "en": "To talk about **memory** and about feelings towards the past:\n\n- `un bon souvenir`\n- `ça me manque`\n- `avoir la nostalgie de`\n- `avoir un trou de mémoire`\n- `avoir une bonne mémoire`",
+        "fr": "Pour parler de la **mémoire** et des sentiments liés au passé :\n\n- `un bon souvenir`\n- `ça me manque`\n- `avoir la nostalgie de`\n- `avoir un trou de mémoire`\n- `avoir une bonne mémoire`",
+        "de": "Um über das **Gedächtnis** und über Gefühle zur Vergangenheit zu sprechen:\n\n- `un bon souvenir`\n- `ça me manque`\n- `avoir la nostalgie de`\n- `avoir un trou de mémoire`\n- `avoir une bonne mémoire`"
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "se-souvenir-de",
+      "term": "se souvenir de",
+      "translations": { "en": ["to remember"], "de": ["sich erinnern"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "se souvenir de",
+      "examForms": ["se souvenir de"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/sə suvniʁ də/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Je me souviens de mon premier jour d’école.",
+        "translation": {
+          "en": "I remember my first day of school.",
+          "de": "Ich erinnere mich an meinen ersten Schultag."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Do not confuse with se rappeler, which takes a direct object without de.",
+        "fr": "Ne pas confondre avec se rappeler, qui se construit sans de.",
+        "de": "Nicht mit se rappeler verwechseln, das ohne de steht."
+      },
+      "explanation": {
+        "en": "Se souvenir is always followed by de: je me souviens de quelque chose.",
+        "fr": "Se souvenir se construit toujours avec de : je me souviens de quelque chose.",
+        "de": "Se souvenir steht immer mit de: je me souviens de quelque chose."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "to remember (verb followed by de)",
+        "de": "sich erinnern (Verb mit de)"
+      },
+      "gap": {
+        "before": "Tu te ",
+        "after": " de notre premier voyage ?",
+        "accepted": { "answers": ["souviens"] },
+        "referenceTargetIds": ["se-souvenir-de", "se-rappeler", "oublier", "ca-me-manque"],
+        "explanation": {
+          "en": "With de after the gap, only se souvenir fits: tu te souviens de.",
+          "fr": "Avec de après le trou, seul se souvenir convient : tu te souviens de.",
+          "de": "Mit de nach der Lücke passt nur se souvenir: tu te souviens de."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "se-souvenir-de",
+        "se-rappeler",
+        "ca-me-rappelle",
+        "ca-me-revient"
+      ]
+    },
+    {
+      "id": "se-rappeler",
+      "term": "se rappeler",
+      "translations": { "en": ["to recall"], "de": ["sich entsinnen"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "se rappeler",
+      "examForms": ["se rappeler"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/sə ʁaple/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Je me rappelle ton adresse.",
+        "translation": {
+          "en": "I remember your address.",
+          "de": "Ich erinnere mich an deine Adresse."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Se rappeler takes a direct object, without de: je me rappelle ton nom.",
+        "fr": "Se rappeler se construit avec un complément direct, sans de : je me rappelle ton nom.",
+        "de": "Se rappeler steht mit direktem Objekt, ohne de: je me rappelle ton nom."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": { "en": "to recall (verb without de)", "de": "sich entsinnen (Verb ohne de)" },
+      "gap": {
+        "before": "Je ne me ",
+        "after": " plus son nom.",
+        "accepted": { "answers": ["rappelle"] },
+        "referenceTargetIds": ["se-rappeler", "se-souvenir-de", "oublier", "trou-de-memoire"],
+        "explanation": {
+          "en": "Without de, the verb is se rappeler: je ne me rappelle plus son nom.",
+          "fr": "Sans de, le verbe est se rappeler : je ne me rappelle plus son nom.",
+          "de": "Ohne de ist das Verb se rappeler: je ne me rappelle plus son nom."
+        }
+      },
+      "listeningOptionTargetIds": ["se-rappeler", "se-souvenir-de", "ca-me-rappelle", "oublier"]
+    },
+    {
+      "id": "ca-me-rappelle",
+      "term": "ça me rappelle",
+      "translations": { "en": ["it reminds me of"], "de": ["das erinnert mich an"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ça me rappelle",
+      "examForms": ["ça me rappelle"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/sa mə ʁapɛl/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Cette chanson me rappelle mon enfance.",
+        "translation": {
+          "en": "This song reminds me of my childhood.",
+          "de": "Dieses Lied erinnert mich an meine Kindheit."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Rappeler quelque chose à quelqu’un means to remind: ça me rappelle mon enfance.",
+        "fr": "Rappeler quelque chose à quelqu’un, c’est faire penser à : ça me rappelle mon enfance.",
+        "de": "Rappeler quelque chose à quelqu’un heißt erinnern: ça me rappelle mon enfance."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Cette chanson ",
+        "after": " mon enfance.",
+        "accepted": { "answers": ["me rappelle"] },
+        "referenceTargetIds": ["ca-me-rappelle", "ca-me-revient", "ca-me-manque", "se-rappeler"],
+        "explanation": {
+          "en": "The song makes me think of my childhood: me rappelle.",
+          "fr": "La chanson me fait penser à mon enfance : me rappelle.",
+          "de": "Das Lied lässt mich an meine Kindheit denken: me rappelle."
+        }
+      },
+      "listeningOptionTargetIds": ["ca-me-rappelle", "se-rappeler", "ca-me-revient", "ca-me-manque"]
+    },
+    {
+      "id": "ca-me-revient",
+      "term": "ça me revient",
+      "translations": { "en": ["it’s coming back to me"], "de": ["es fällt mir wieder ein"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ça me revient",
+      "examForms": ["ça me revient"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/sa mə ʁəvjɛ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Attends, ça me revient : il s’appelait Thomas !",
+        "translation": {
+          "en": "Wait, it’s coming back to me: he was called Thomas!",
+          "de": "Warte, es fällt mir wieder ein: Er hieß Thomas!"
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Ça me revient is said when a forgotten memory returns to mind.",
+        "fr": "On dit ça me revient quand un souvenir oublié refait surface.",
+        "de": "Man sagt ça me revient, wenn eine vergessene Erinnerung zurückkommt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Son nom, ça me ",
+        "after": " : il s’appelait Thomas !",
+        "accepted": { "answers": ["revient"] },
+        "referenceTargetIds": ["ca-me-revient", "trou-de-memoire", "oublier", "se-rappeler"],
+        "explanation": {
+          "en": "A memory coming back: ça me revient.",
+          "fr": "Un souvenir qui revient : ça me revient.",
+          "de": "Eine Erinnerung kommt zurück: ça me revient."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "ca-me-revient",
+        "ca-me-rappelle",
+        "se-rappeler",
+        "se-souvenir-de"
+      ]
+    },
+    {
+      "id": "oublier",
+      "term": "oublier",
+      "translations": { "en": ["to forget"], "de": ["vergessen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "oublier",
+      "examForms": ["oublier"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ublije/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "J’ai oublié mon parapluie dans le train.",
+        "translation": {
+          "en": "I forgot my umbrella on the train.",
+          "de": "Ich habe meinen Regenschirm im Zug vergessen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Oublier is the opposite of se souvenir and takes a direct object.",
+        "fr": "Oublier est le contraire de se souvenir et se construit avec un complément direct.",
+        "de": "Oublier ist das Gegenteil von se souvenir und steht mit direktem Objekt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "N’",
+        "after": " pas ton parapluie, il va pleuvoir !",
+        "accepted": { "answers": ["oublie"] },
+        "referenceTargetIds": ["oublier", "se-souvenir-de", "se-rappeler", "ca-me-manque"],
+        "explanation": {
+          "en": "The warning not to forget something: n’oublie pas.",
+          "fr": "Pour demander de ne pas laisser quelque chose : n’oublie pas.",
+          "de": "Die Aufforderung, etwas nicht zu vergessen: n’oublie pas."
+        }
+      },
+      "listeningOptionTargetIds": ["oublier", "se-souvenir-de", "ca-me-manque", "bonne-memoire"]
+    },
+    {
+      "id": "bon-souvenir",
+      "term": "bon souvenir",
+      "translations": { "en": ["a good memory"], "de": ["eine schöne Erinnerung"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un bon souvenir",
+      "examForms": ["un bon souvenir"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/œ̃ bɔ̃ suvniʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Cette fête est un très bon souvenir pour moi.",
+        "translation": {
+          "en": "That party is a very good memory for me.",
+          "de": "Dieses Fest ist für mich eine sehr schöne Erinnerung."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Souvenir is a masculine noun: un bon souvenir, un mauvais souvenir.",
+        "fr": "Souvenir est un nom masculin : un bon souvenir, un mauvais souvenir.",
+        "de": "Souvenir ist ein maskulines Nomen: un bon souvenir, un mauvais souvenir."
+      },
+      "genderExplanation": {
+        "en": "Souvenir is masculine, so we say un bon souvenir.",
+        "fr": "Souvenir est masculin : on dit un bon souvenir.",
+        "de": "Souvenir ist maskulin, daher sagt man un bon souvenir."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Cette fête est un très bon ",
+        "after": " pour moi.",
+        "accepted": { "answers": ["souvenir"] },
+        "referenceTargetIds": ["bon-souvenir", "nostalgie", "ca-me-manque", "bonne-memoire"],
+        "explanation": {
+          "en": "After bon, the noun is souvenir: un bon souvenir.",
+          "fr": "Après bon, le nom est souvenir : un bon souvenir.",
+          "de": "Nach bon steht das Nomen souvenir: un bon souvenir."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "bon-souvenir",
+        "ca-me-manque",
+        "bonne-memoire",
+        "trou-de-memoire"
+      ]
+    },
+    {
+      "id": "ca-me-manque",
+      "term": "ça me manque",
+      "translations": { "en": ["I miss it"], "de": ["ich vermisse es"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ça me manque",
+      "examForms": ["ça me manque"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/sa mə mɑ̃k/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mes grands-parents habitent loin et ils me manquent beaucoup.",
+        "translation": {
+          "en": "My grandparents live far away and I miss them a lot.",
+          "de": "Meine Großeltern wohnen weit weg und ich vermisse sie sehr."
+        }
+      },
+      "ambiguityNote": {
+        "en": "The thing or person missed is the subject: ils me manquent means I miss them.",
+        "fr": "Ce qui manque est le sujet : ils me manquent veut dire que je m’ennuie d’eux.",
+        "de": "Das Vermisste ist das Subjekt: ils me manquent heißt, dass ich sie vermisse."
+      },
+      "explanation": {
+        "en": "Manquer à quelqu’un: the missed person is the subject, ça or ils me manque(nt).",
+        "fr": "Manquer à quelqu’un : ce qui manque est le sujet, ça me manque ou ils me manquent.",
+        "de": "Manquer à quelqu’un: Das Vermisste ist das Subjekt, ça me manque oder ils me manquent."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Mes grands-parents habitent loin et ils ",
+        "after": " beaucoup.",
+        "accepted": { "answers": ["me manquent"] },
+        "referenceTargetIds": ["ca-me-manque", "nostalgie", "bon-souvenir", "trou-de-memoire"],
+        "explanation": {
+          "en": "The subject ils is plural, so the verb is me manquent.",
+          "fr": "Le sujet ils est au pluriel : me manquent.",
+          "de": "Das Subjekt ils steht im Plural: me manquent."
+        }
+      },
+      "listeningOptionTargetIds": ["ca-me-manque", "ca-me-rappelle", "nostalgie", "oublier"]
+    },
+    {
+      "id": "nostalgie",
+      "term": "avoir la nostalgie de",
+      "translations": { "en": ["to feel nostalgic for"], "de": ["sich zurücksehnen nach"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "avoir la nostalgie de",
+      "examForms": ["avoir la nostalgie de"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/avwaʁ la nɔstalʒi də/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "J’ai la nostalgie de mon village d’enfance.",
+        "translation": {
+          "en": "I feel nostalgic for the village I grew up in.",
+          "de": "Ich sehne mich nach meinem Heimatdorf aus der Kindheit zurück."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Avoir la nostalgie de is followed by what we miss from the past.",
+        "fr": "Avoir la nostalgie de se construit avec ce qu’on regrette du passé.",
+        "de": "Avoir la nostalgie de steht mit dem, was man aus der Vergangenheit vermisst."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Quand je vois ces photos, j’ai la ",
+        "after": " de ma jeunesse.",
+        "accepted": { "answers": ["nostalgie"] },
+        "referenceTargetIds": ["nostalgie", "ca-me-manque", "bon-souvenir", "bonne-memoire"],
+        "explanation": {
+          "en": "The feeling for the past is la nostalgie.",
+          "fr": "Le sentiment du passé s’appelle la nostalgie.",
+          "de": "Das Gefühl für die Vergangenheit heißt la nostalgie."
+        }
+      },
+      "listeningOptionTargetIds": ["nostalgie", "ca-me-manque", "bon-souvenir", "trou-de-memoire"]
+    },
+    {
+      "id": "trou-de-memoire",
+      "term": "avoir un trou de mémoire",
+      "translations": { "en": ["to have a memory lapse"], "de": ["eine Gedächtnislücke haben"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "avoir un trou de mémoire",
+      "examForms": ["avoir un trou de mémoire"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/avwaʁ œ̃ tʁu də memwaʁ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Excusez-moi, j’ai un trou de mémoire : je ne retrouve plus son prénom.",
+        "translation": {
+          "en": "Sorry, my mind has gone blank: I can’t find her first name.",
+          "de": "Entschuldigung, ich habe eine Gedächtnislücke: Ich komme nicht mehr auf ihren Vornamen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "A trou de mémoire is a sudden blank when we cannot find a word or name.",
+        "fr": "Un trou de mémoire est un blanc soudain quand on ne retrouve pas un mot ou un nom.",
+        "de": "Ein trou de mémoire ist ein plötzlicher Aussetzer, wenn man ein Wort oder einen Namen nicht findet."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Excusez-moi, j’ai un ",
+        "after": " : je ne retrouve plus son prénom.",
+        "accepted": { "answers": ["trou de mémoire"] },
+        "referenceTargetIds": ["trou-de-memoire", "ca-me-revient", "nostalgie", "bonne-memoire"],
+        "explanation": {
+          "en": "Not finding a name is a trou de mémoire.",
+          "fr": "Ne plus retrouver un prénom, c’est un trou de mémoire.",
+          "de": "Einen Vornamen nicht zu finden ist ein trou de mémoire."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "trou-de-memoire",
+        "bonne-memoire",
+        "bon-souvenir",
+        "ca-me-revient"
+      ]
+    },
+    {
+      "id": "bonne-memoire",
+      "term": "avoir une bonne mémoire",
+      "translations": { "en": ["to have a good memory"], "de": ["ein gutes Gedächtnis haben"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "avoir une bonne mémoire",
+      "examForms": ["avoir une bonne mémoire"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/avwaʁ yn bɔn memwaʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Mon grand-père a une très bonne mémoire.",
+        "translation": {
+          "en": "My grandfather has a very good memory.",
+          "de": "Mein Großvater hat ein sehr gutes Gedächtnis."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "La mémoire is the ability to remember; it is feminine: une bonne mémoire.",
+        "fr": "La mémoire est la capacité à se souvenir ; elle est féminine : une bonne mémoire.",
+        "de": "La mémoire ist die Fähigkeit, sich zu erinnern; sie ist feminin: une bonne mémoire."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Mon grand-père a une très bonne ",
+        "after": " : il connaît tout par cœur.",
+        "accepted": { "answers": ["mémoire"] },
+        "referenceTargetIds": ["bonne-memoire", "bon-souvenir", "nostalgie", "trou-de-memoire"],
+        "explanation": {
+          "en": "The ability to remember is la mémoire.",
+          "fr": "La capacité à se souvenir s’appelle la mémoire.",
+          "de": "Die Fähigkeit, sich zu erinnern, heißt la mémoire."
+        }
+      },
+      "listeningOptionTargetIds": [
+        "bonne-memoire",
+        "trou-de-memoire",
+        "bon-souvenir",
+        "ca-me-manque"
+      ]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

@@ -1,0 +1,262 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-elevated-comparisons",
+  "lang": "fr",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Plus bête que méchant, tant s'en faut",
+  "objective": {
+    "en": "Handle the comparisons of formal French: plus bête que méchant, tant s'en faut, rien de moins que, ni plus ni moins, on ne peut plus.",
+    "fr": "Manier les comparaisons de la langue soutenue : plus bête que méchant, tant s'en faut, rien de moins que, ni plus ni moins, on ne peut plus.",
+    "de": "Die Vergleiche der gehobenen Sprache beherrschen: plus bête que méchant, tant s'en faut, rien de moins que, ni plus ni moins, on ne peut plus."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:00:36.558Z",
+    "inputHashes": { "outline": "4fe11a91e45bdb204a2d8fce9826f1440624b6ea4f2ea86d4826712199f82c8c" }
+  },
+  "kind": "grammar",
+  "topic": "comparison_and_quantity",
+  "scopeBoundaries": {
+    "en": "Covers the comparison of two qualities of one subject, the expressions tant s'en faut and peu s'en faut, rien de moins que, ni plus ni moins and on ne peut plus. Excludes ordinary comparatives and superlatives.",
+    "fr": "Couvre la comparaison de deux qualités d'un même sujet, tant s'en faut et peu s'en faut, rien de moins que, ni plus ni moins et on ne peut plus. Exclut les comparatifs et superlatifs ordinaires.",
+    "de": "Behandelt den Vergleich zweier Eigenschaften desselben Subjekts, tant s'en faut und peu s'en faut, rien de moins que, ni plus ni moins und on ne peut plus. Ausgeschlossen sind gewöhnliche Komparative und Superlative."
+  },
+  "prerequisites": [
+    {
+      "en": "Ordinary comparatives (plus, moins, aussi) and the present subjunctive",
+      "fr": "Les comparatifs ordinaires (plus, moins, aussi) et le subjonctif présent",
+      "de": "Gewöhnliche Komparative (plus, moins, aussi) und der Subjonctif présent"
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-plus-que",
+      "summary": {
+        "en": "Plus … que (or moins … que) weighs two qualities of one subject and keeps the more accurate one: il est plus bête que méchant. The second term is introduced by que, never by de.",
+        "fr": "Plus … que (ou moins … que) pèse deux qualités d'un même sujet et retient la plus juste : il est plus bête que méchant. Le second terme est introduit par que, jamais par de.",
+        "de": "Plus … que (oder moins … que) wägt zwei Eigenschaften desselben Subjekts ab und wählt die treffendere: il est plus bête que méchant. Der zweite Teil wird mit que eingeleitet, nie mit de."
+      }
+    },
+    {
+      "id": "r-tant-s-en-faut",
+      "summary": {
+        "en": "Tant s'en faut means far from it; peu s'en faut means almost; il s'en faut de beaucoup que takes the subjunctive.",
+        "fr": "Tant s'en faut signifie bien au contraire ; peu s'en faut signifie presque ; il s'en faut de beaucoup que se construit avec le subjonctif.",
+        "de": "Tant s'en faut heißt ganz im Gegenteil; peu s'en faut heißt beinahe; il s'en faut de beaucoup que steht mit dem Subjonctif."
+      }
+    },
+    {
+      "id": "r-rien-de-moins",
+      "summary": {
+        "en": "Rien de moins que stresses the scale of what is claimed; ni plus ni moins says that it is exactly that.",
+        "fr": "Rien de moins que souligne l'ampleur de ce qui est affirmé ; ni plus ni moins dit que c'est exactement cela.",
+        "de": "Rien de moins que betont das Ausmaß einer Aussage; ni plus ni moins sagt, dass es genau das ist."
+      }
+    },
+    {
+      "id": "r-on-ne-peut-plus",
+      "summary": {
+        "en": "On ne peut plus + adjective or adverb expresses the highest degree; it negates nothing and takes no pas.",
+        "fr": "On ne peut plus + adjectif ou adverbe exprime le plus haut degré ; il ne nie rien et ne prend pas de pas.",
+        "de": "On ne peut plus + Adjektiv oder Adverb drückt den höchsten Grad aus; es verneint nichts und steht ohne pas."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-comparer",
+      "title": {
+        "en": "More this than that: plus … que, tant s'en faut",
+        "fr": "Plus l'un que l'autre : plus … que, tant s'en faut",
+        "de": "Mehr das eine als das andere: plus … que, tant s'en faut"
+      },
+      "ruleIds": ["r-plus-que", "r-tant-s-en-faut"],
+      "explanationPlan": {
+        "en": "Show that plus … que and moins … que correct a judgment between two qualities of the same subject, with que and never de. Then teach tant s'en faut, peu s'en faut and il s'en faut de beaucoup que + subjunctive.",
+        "fr": "Montrer que plus … que et moins … que rectifient un jugement entre deux qualités d'un même sujet, avec que et jamais de. Puis enseigner tant s'en faut, peu s'en faut et il s'en faut de beaucoup que + subjonctif.",
+        "de": "Zeigen, dass plus … que und moins … que ein Urteil zwischen zwei Eigenschaften desselben Subjekts korrigieren, mit que und nie mit de. Dann tant s'en faut, peu s'en faut und il s'en faut de beaucoup que + Subjonctif vermitteln."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Il est plus bête que méchant.",
+          "translation": {
+            "en": "He is more stupid than malicious.",
+            "de": "Er ist eher dumm als böse."
+          }
+        },
+        {
+          "text": "Elle est moins timide que réservée.",
+          "translation": {
+            "en": "She is less shy than reserved.",
+            "de": "Sie ist weniger schüchtern als zurückhaltend."
+          }
+        },
+        {
+          "text": "Le problème est résolu ? Tant s'en faut.",
+          "translation": {
+            "en": "The problem is solved? Far from it.",
+            "de": "Das Problem ist gelöst? Weit gefehlt."
+          }
+        },
+        {
+          "text": "Il a fini, ou peu s'en faut.",
+          "translation": {
+            "en": "He has finished, or very nearly.",
+            "de": "Er ist fertig, oder es fehlt nicht viel."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not write plus bête de méchant: the second quality is introduced by que.",
+          "fr": "N'écrivez pas plus bête de méchant : la seconde qualité est introduite par que.",
+          "de": "Schreibe nicht plus bête de méchant: Die zweite Eigenschaft wird mit que eingeleitet."
+        },
+        {
+          "en": "Do not confuse tant s'en faut (far from it) with peu s'en faut (almost).",
+          "fr": "Ne confondez pas tant s'en faut (bien au contraire) et peu s'en faut (presque).",
+          "de": "Verwechsle tant s'en faut (ganz im Gegenteil) nicht mit peu s'en faut (beinahe)."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-b1-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["r-plus-que", "r-tant-s-en-faut"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-b1-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["r-plus-que", "r-tant-s-en-faut"],
+          "estimatedDurationS": 100
+        },
+        {
+          "id": "ex-b1-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 4,
+          "ruleIds": ["r-plus-que", "r-tant-s-en-faut"],
+          "estimatedDurationS": 120
+        }
+      ]
+    },
+    {
+      "id": "block-renforcer",
+      "title": {
+        "en": "Emphasis: rien de moins que, ni plus ni moins, on ne peut plus",
+        "fr": "Renforcer : rien de moins que, ni plus ni moins, on ne peut plus",
+        "de": "Verstärken: rien de moins que, ni plus ni moins, on ne peut plus"
+      },
+      "ruleIds": ["r-rien-de-moins", "r-on-ne-peut-plus"],
+      "explanationPlan": {
+        "en": "Present rien de moins que, ni plus ni moins and on ne peut plus + adjective or adverb as three ways to strengthen a statement. Warn that on ne peut plus negates nothing and takes no pas.",
+        "fr": "Présenter rien de moins que, ni plus ni moins et on ne peut plus + adjectif ou adverbe comme trois manières de renforcer une affirmation. Prévenir que on ne peut plus ne nie rien et ne prend pas de pas.",
+        "de": "Rien de moins que, ni plus ni moins und on ne peut plus + Adjektiv oder Adverb als drei Arten vorstellen, eine Aussage zu verstärken. Darauf hinweisen, dass on ne peut plus nichts verneint und kein pas hat."
+      },
+      "explanationDurationS": 140,
+      "examples": [
+        {
+          "text": "Il ne demande rien de moins que ma démission.",
+          "translation": {
+            "en": "He is asking for nothing less than my resignation.",
+            "de": "Er verlangt nichts Geringeres als meinen Rücktritt."
+          }
+        },
+        {
+          "text": "C'est de la jalousie, ni plus ni moins.",
+          "translation": {
+            "en": "It is jealousy, no more and no less.",
+            "de": "Das ist Eifersucht, nicht mehr und nicht weniger."
+          }
+        },
+        {
+          "text": "Le contrat est on ne peut plus clair.",
+          "translation": {
+            "en": "The contract could not be clearer.",
+            "de": "Der Vertrag könnte nicht klarer sein."
+          }
+        },
+        {
+          "text": "Elles ont été on ne peut plus aimables.",
+          "translation": {
+            "en": "They could not have been kinder.",
+            "de": "Sie waren überaus freundlich."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "On ne peut plus is not a negation: never add pas.",
+          "fr": "On ne peut plus n'est pas une négation : n'ajoutez jamais pas.",
+          "de": "On ne peut plus ist keine Verneinung: Füge nie pas hinzu."
+        },
+        {
+          "en": "The adjective after on ne peut plus agrees with the subject.",
+          "fr": "L'adjectif après on ne peut plus s'accorde avec le sujet.",
+          "de": "Das Adjektiv nach on ne peut plus richtet sich nach dem Subjekt."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-b2-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["r-rien-de-moins", "r-on-ne-peut-plus"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-b2-order",
+          "type": "grammar_word_order",
+          "itemCount": 4,
+          "ruleIds": ["r-rien-de-moins", "r-on-ne-peut-plus"],
+          "estimatedDurationS": 120
+        },
+        {
+          "id": "ex-b2-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["r-rien-de-moins", "r-on-ne-peut-plus"],
+          "estimatedDurationS": 100
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-gaps-1",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["r-plus-que", "r-tant-s-en-faut"],
+        "estimatedDurationS": 100,
+        "timeLimitS": 160
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["r-tant-s-en-faut", "r-rien-de-moins"],
+        "estimatedDurationS": 105,
+        "timeLimitS": 180
+      },
+      {
+        "pageId": "exam-gaps-2",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["r-rien-de-moins", "r-on-ne-peut-plus"],
+        "estimatedDurationS": 100,
+        "timeLimitS": 160
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

@@ -1,0 +1,544 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-opinion-adjectives",
+  "lang": "fr",
+  "level": "A2",
+  "locales": ["en", "fr", "de"],
+  "title": "C’était génial, c’était nul",
+  "objective": {
+    "en": "Say what something was like with a dozen opinion adjectives and answer “C’était comment ?”.",
+    "fr": "Dire comment c’était avec une douzaine d’adjectifs et répondre à « C’était comment ? ».",
+    "de": "Mit einem Dutzend Adjektiven sagen, wie etwas war, und auf „C’était comment ?“ antworten."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:34:15.641Z",
+    "inputHashes": { "outline": "5e45d6a4c0a67fae9f8f0603fa87ffcdde824a6d7ba63c57add592db64795453" }
+  },
+  "kind": "vocabulary",
+  "theme": "free_time",
+  "coverageNotes": {
+    "en": "Twelve adjectives to give an opinion about a film, a trip or a meal: six positive ones and six average, negative or surprising ones.",
+    "fr": "Douze adjectifs pour donner son avis sur un film, un voyage ou un repas : six positifs et six moyens, négatifs ou surprenants.",
+    "de": "Zwölf Adjektive, um eine Meinung über einen Film, eine Reise oder ein Essen zu äußern: sechs positive und sechs mittelmäßige, negative oder überraschende."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve words fit the A2 level and the intent: enough to give a nuanced opinion without overloading the learner.",
+    "fr": "Douze mots conviennent au niveau A2 et à l’intention : assez pour nuancer son avis sans surcharger l’apprenant.",
+    "de": "Zwölf Wörter passen zum Niveau A2 und zum Ziel: genug für eine nuancierte Meinung, ohne zu überfordern."
+  },
+  "difficultyBalance": {
+    "en": "Most words are common and easy to guess; pas mal, moyen and bizarre are harder to use in the right situation.",
+    "fr": "La plupart des mots sont courants et faciles à deviner ; pas mal, moyen et bizarre sont plus difficiles à employer au bon moment.",
+    "de": "Die meisten Wörter sind häufig und leicht zu erraten; pas mal, moyen und bizarre sind schwieriger passend zu verwenden."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "positif",
+      "label": { "en": "It was good", "fr": "C’était bien", "de": "Es war gut" },
+      "targetIds": ["genial", "super", "passionnant", "interessant", "drole", "magnifique"],
+      "introduction": {
+        "en": "To answer `C’était comment ?`, use **C’était** + an adjective:\n\n- `C’était génial !`\n- `C’était super !`\n- `C’était passionnant !`\n- `C’était intéressant !`\n- `C’était drôle !`\n- `C’était magnifique !`\n\nThese words tell your friend that you liked it.",
+        "fr": "Pour répondre à `C’était comment ?`, dis **C’était** + un adjectif :\n\n- `C’était génial !`\n- `C’était super !`\n- `C’était passionnant !`\n- `C’était intéressant !`\n- `C’était drôle !`\n- `C’était magnifique !`\n\nCes mots disent à ton ami que tu as aimé.",
+        "de": "Um auf `C’était comment ?` zu antworten, sag **C’était** + ein Adjektiv:\n\n- `C’était génial !`\n- `C’était super !`\n- `C’était passionnant !`\n- `C’était intéressant !`\n- `C’était drôle !`\n- `C’était magnifique !`\n\nDiese Wörter sagen deinem Freund, dass es dir gefallen hat."
+      }
+    },
+    {
+      "id": "bof",
+      "label": {
+        "en": "Average, bad or strange",
+        "fr": "Moyen, nul ou bizarre",
+        "de": "Mittelmäßig, schlecht oder seltsam"
+      },
+      "targetIds": ["pas-mal", "moyen", "ennuyeux", "fatigant", "nul", "bizarre"],
+      "introduction": {
+        "en": "Not everything is great. Use these words to say it was **average**, **bad** or strange:\n\n- `C’était pas mal.`\n- `C’était moyen.`\n- `C’était ennuyeux.`\n- `C’était fatigant.`\n- `C’était nul !`\n- `C’était bizarre.`\n\nWith `pas mal`, the opinion is quite good.",
+        "fr": "Tout n’est pas génial. Avec ces mots, dis que c’était **moyen**, **mauvais** ou étrange :\n\n- `C’était pas mal.`\n- `C’était moyen.`\n- `C’était ennuyeux.`\n- `C’était fatigant.`\n- `C’était nul !`\n- `C’était bizarre.`\n\nAvec `pas mal`, l’avis est plutôt bon.",
+        "de": "Nicht alles ist toll. Mit diesen Wörtern sagst du, dass es **mittelmäßig**, **schlecht** oder seltsam war:\n\n- `C’était pas mal.`\n- `C’était moyen.`\n- `C’était ennuyeux.`\n- `C’était fatigant.`\n- `C’était nul !`\n- `C’était bizarre.`\n\nMit `pas mal` ist die Meinung ziemlich gut."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "genial",
+      "term": "génial",
+      "translations": { "en": ["fantastic", "great"], "de": ["toll", "genial"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "génial",
+      "examForms": ["génial"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʒe.njal/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Le concert était génial.",
+        "translation": { "en": "The concert was fantastic.", "de": "Das Konzert war toll." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Génial means fantastic: you say it about something you loved.",
+        "fr": "Génial veut dire « très, très bien » : on le dit de ce qu’on a adoré.",
+        "de": "Génial bedeutet „toll“: Man sagt es über etwas, das man geliebt hat."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le concert était ",
+        "after": " : j’ai adoré !",
+        "accepted": { "answers": ["génial"] },
+        "referenceTargetIds": ["genial", "ennuyeux", "moyen", "bizarre"],
+        "explanation": {
+          "en": "After “j’ai adoré”, only génial fits; the other words are not enthusiastic.",
+          "fr": "Après « j’ai adoré », seul « génial » convient ; les autres mots ne sont pas enthousiastes.",
+          "de": "Nach „j’ai adoré“ passt nur „génial“; die anderen Wörter sind nicht begeistert."
+        }
+      },
+      "listeningOptionTargetIds": ["genial", "magnifique", "fatigant", "moyen"]
+    },
+    {
+      "id": "super",
+      "term": "super",
+      "translations": { "en": ["super"], "de": ["super"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "super",
+      "examForms": ["super"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/sy.pɛʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Le week-end était super.",
+        "translation": { "en": "The weekend was super.", "de": "Das Wochenende war super." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Super is a very common, informal word for something really good. It never changes.",
+        "fr": "Super est un mot très courant et familier pour quelque chose de vraiment bien. Il ne change pas.",
+        "de": "Super ist ein sehr häufiges, umgangssprachliches Wort für etwas wirklich Gutes. Es verändert sich nicht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "— C’était comment, le film ? — C’était ",
+        "after": " ! Je veux le revoir.",
+        "accepted": { "answers": ["super"] },
+        "referenceTargetIds": ["super", "nul", "fatigant", "moyen"],
+        "explanation": {
+          "en": "“Je veux le revoir” shows a very positive opinion, so only super fits.",
+          "fr": "« Je veux le revoir » montre un avis très positif : seul « super » convient.",
+          "de": "„Je veux le revoir“ zeigt eine sehr positive Meinung, also passt nur „super“."
+        }
+      },
+      "listeningOptionTargetIds": ["super", "nul", "drole", "bizarre"]
+    },
+    {
+      "id": "passionnant",
+      "term": "passionnant",
+      "translations": { "en": ["exciting"], "de": ["spannend"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "passionnant",
+      "examForms": ["passionnant"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/pa.sjɔ.nɑ̃/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Ce livre est passionnant.",
+        "translation": { "en": "This book is exciting.", "de": "Dieses Buch ist spannend." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Passionnant describes something so interesting that you cannot stop.",
+        "fr": "Passionnant décrit quelque chose de si intéressant qu’on ne peut pas s’arrêter.",
+        "de": "Passionnant beschreibt etwas, das so interessant ist, dass man nicht aufhören kann."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ce livre est ",
+        "after": " : je ne peux pas arrêter de lire.",
+        "accepted": { "answers": ["passionnant"] },
+        "referenceTargetIds": ["passionnant", "ennuyeux", "moyen", "nul"],
+        "explanation": {
+          "en": "If you cannot stop reading, the book is passionnant, not boring or bad.",
+          "fr": "Si on ne peut pas arrêter de lire, le livre est passionnant, pas ennuyeux ni nul.",
+          "de": "Wenn man nicht aufhören kann zu lesen, ist das Buch passionnant, nicht langweilig oder schlecht."
+        }
+      },
+      "listeningOptionTargetIds": ["passionnant", "interessant", "fatigant", "ennuyeux"]
+    },
+    {
+      "id": "interessant",
+      "term": "intéressant",
+      "translations": { "en": ["interesting"], "de": ["interessant"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "intéressant",
+      "examForms": ["intéressant"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɛ̃.te.ʁɛ.sɑ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Le musée est très intéressant.",
+        "translation": {
+          "en": "The museum is very interesting.",
+          "de": "Das Museum ist sehr interessant."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Intéressant is used for something you learn from or enjoy thinking about. It is written with an acute accent on the first e.",
+        "fr": "Intéressant se dit de ce dont on apprend quelque chose. Il s’écrit avec un accent aigu sur le premier e.",
+        "de": "Intéressant sagt man über etwas, woraus man etwas lernt. Es wird mit einem Akut auf dem ersten e geschrieben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le musée était ",
+        "after": " : j’ai appris beaucoup de choses.",
+        "accepted": { "answers": ["intéressant"] },
+        "referenceTargetIds": ["interessant", "nul", "bizarre", "fatigant"],
+        "explanation": {
+          "en": "Learning many things makes a museum intéressant; the other words do not fit.",
+          "fr": "Apprendre beaucoup de choses rend un musée intéressant ; les autres mots ne conviennent pas.",
+          "de": "Wenn man viel lernt, ist ein Museum intéressant; die anderen Wörter passen nicht."
+        }
+      },
+      "listeningOptionTargetIds": ["interessant", "passionnant", "magnifique", "moyen"]
+    },
+    {
+      "id": "drole",
+      "term": "drôle",
+      "translations": { "en": ["funny"], "de": ["lustig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "drôle",
+      "examForms": ["drôle"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/dʁol/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ce film est drôle.",
+        "translation": { "en": "This film is funny.", "de": "Dieser Film ist lustig." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Drôle describes something or someone that makes you laugh. It is written with a circumflex accent on the o.",
+        "fr": "Drôle décrit ce ou celui qui fait rire. Il s’écrit avec un accent circonflexe sur le o.",
+        "de": "Drôle beschreibt etwas oder jemanden, das oder der zum Lachen bringt. Es wird mit einem Zirkumflex auf dem o geschrieben."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ton ami est ",
+        "after": " : on rit tout le temps.",
+        "accepted": { "answers": ["drôle"] },
+        "referenceTargetIds": ["drole", "ennuyeux", "fatigant", "moyen"],
+        "explanation": {
+          "en": "People who make you laugh are drôle.",
+          "fr": "Les personnes qui font rire sont drôles.",
+          "de": "Menschen, die zum Lachen bringen, sind drôle."
+        }
+      },
+      "listeningOptionTargetIds": ["drole", "nul", "genial", "bizarre"]
+    },
+    {
+      "id": "magnifique",
+      "term": "magnifique",
+      "translations": { "en": ["beautiful"], "de": ["wunderschön"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "magnifique",
+      "examForms": ["magnifique"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ma.ɲi.fik/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "La vue est magnifique.",
+        "translation": { "en": "The view is beautiful.", "de": "Die Aussicht ist wunderschön." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Magnifique is used for something very beautiful, like a view or a trip.",
+        "fr": "Magnifique se dit de quelque chose de très beau, comme un paysage ou un voyage.",
+        "de": "Magnifique sagt man über etwas sehr Schönes, zum Beispiel eine Aussicht oder eine Reise."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le paysage était ",
+        "after": " : les montagnes étaient superbes.",
+        "accepted": { "answers": ["magnifique"] },
+        "referenceTargetIds": ["magnifique", "nul", "moyen", "fatigant"],
+        "explanation": {
+          "en": "Superb mountains make a landscape magnifique.",
+          "fr": "Des montagnes superbes rendent un paysage magnifique.",
+          "de": "Prächtige Berge machen eine Landschaft magnifique."
+        }
+      },
+      "listeningOptionTargetIds": ["magnifique", "genial", "fatigant", "pas-mal"]
+    },
+    {
+      "id": "pas-mal",
+      "term": "pas mal",
+      "translations": { "en": ["not bad"], "de": ["nicht schlecht"] },
+      "wordClass": "phrase",
+      "genders": [],
+      "number": null,
+      "teachingForm": "pas mal",
+      "examForms": ["pas mal"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/pa mal/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Le spectacle, c’était pas mal.",
+        "translation": { "en": "The show was not bad.", "de": "Die Show war nicht schlecht." }
+      },
+      "ambiguityNote": {
+        "en": "Pas mal is a compliment in French: it means quite good, not just average.",
+        "fr": "Pas mal est un compliment en français : cela veut dire plutôt bien, pas seulement moyen.",
+        "de": "Pas mal ist im Französischen ein Kompliment: Es bedeutet ziemlich gut, nicht nur mittelmäßig."
+      },
+      "explanation": {
+        "en": "Pas mal means not bad, so quite good. It never changes.",
+        "fr": "Pas mal veut dire « plutôt bien ». Il ne change pas.",
+        "de": "Pas mal bedeutet „nicht schlecht“, also ziemlich gut. Es verändert sich nicht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le repas n’était pas excellent, mais c’était ",
+        "after": ", on a bien mangé.",
+        "accepted": { "answers": ["pas mal"] },
+        "referenceTargetIds": ["pas-mal", "nul", "ennuyeux", "fatigant"],
+        "explanation": {
+          "en": "“On a bien mangé” is positive but not enthusiastic: pas mal fits.",
+          "fr": "« On a bien mangé » est positif sans être enthousiaste : « pas mal » convient.",
+          "de": "„On a bien mangé“ ist positiv, aber nicht begeistert: „pas mal“ passt."
+        }
+      },
+      "listeningOptionTargetIds": ["pas-mal", "moyen", "magnifique", "nul"]
+    },
+    {
+      "id": "moyen",
+      "term": "moyen",
+      "translations": { "en": ["average"], "de": ["mittelmäßig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "moyen",
+      "examForms": ["moyen"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/mwa.jɛ̃/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Le repas était moyen.",
+        "translation": { "en": "The meal was average.", "de": "Das Essen war mittelmäßig." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Moyen means neither good nor bad: just average.",
+        "fr": "Moyen veut dire ni bon ni mauvais : simplement moyen.",
+        "de": "Moyen bedeutet weder gut noch schlecht: einfach mittelmäßig."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le film n’était ni bon ni mauvais : c’était ",
+        "after": ".",
+        "accepted": { "answers": ["moyen"] },
+        "referenceTargetIds": ["moyen", "genial", "nul", "passionnant"],
+        "explanation": {
+          "en": "“Neither good nor bad” describes something average.",
+          "fr": "« Ni bon ni mauvais » décrit quelque chose de moyen.",
+          "de": "„Ni bon ni mauvais“ beschreibt etwas Mittelmäßiges."
+        }
+      },
+      "listeningOptionTargetIds": ["moyen", "pas-mal", "bizarre", "drole"]
+    },
+    {
+      "id": "ennuyeux",
+      "term": "ennuyeux",
+      "translations": { "en": ["boring"], "de": ["langweilig"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ennuyeux",
+      "examForms": ["ennuyeux"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɑ̃.nɥi.jø/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Le cours était ennuyeux.",
+        "translation": { "en": "The class was boring.", "de": "Der Unterricht war langweilig." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Ennuyeux describes something boring, where time passes slowly.",
+        "fr": "Ennuyeux décrit quelque chose qui n’amuse pas et où le temps passe lentement.",
+        "de": "Ennuyeux beschreibt etwas Langweiliges, bei dem die Zeit langsam vergeht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le cours était ",
+        "after": " : je regardais l’heure toutes les cinq minutes.",
+        "accepted": { "answers": ["ennuyeux"] },
+        "referenceTargetIds": ["ennuyeux", "genial", "drole", "passionnant"],
+        "explanation": {
+          "en": "Checking the time all the time means the class was boring.",
+          "fr": "Regarder l’heure tout le temps veut dire que le cours était ennuyeux.",
+          "de": "Ständig auf die Uhr zu schauen bedeutet, dass der Unterricht langweilig war."
+        }
+      },
+      "listeningOptionTargetIds": ["ennuyeux", "passionnant", "fatigant", "interessant"]
+    },
+    {
+      "id": "fatigant",
+      "term": "fatigant",
+      "translations": { "en": ["tiring"], "de": ["anstrengend"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "fatigant",
+      "examForms": ["fatigant"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fa.ti.ɡɑ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Le voyage était fatigant.",
+        "translation": { "en": "The trip was tiring.", "de": "Die Reise war anstrengend." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Fatigant describes something that makes you tired.",
+        "fr": "Fatigant décrit quelque chose qui rend fatigué.",
+        "de": "Fatigant beschreibt etwas, das müde macht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le trajet était ",
+        "after": " : j’étais épuisé après.",
+        "accepted": { "answers": ["fatigant"] },
+        "referenceTargetIds": ["fatigant", "drole", "magnifique", "super"],
+        "explanation": {
+          "en": "Being exhausted afterwards means the journey was tiring.",
+          "fr": "Être épuisé après veut dire que le trajet était fatigant.",
+          "de": "Danach erschöpft zu sein bedeutet, dass die Fahrt anstrengend war."
+        }
+      },
+      "listeningOptionTargetIds": ["fatigant", "passionnant", "ennuyeux", "genial"]
+    },
+    {
+      "id": "nul",
+      "term": "nul",
+      "translations": { "en": ["rubbish"], "de": ["mies"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "nul",
+      "examForms": ["nul"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/nyl/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Le match était nul.",
+        "translation": { "en": "The match was rubbish.", "de": "Das Spiel war mies." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Nul is an informal word for something really bad.",
+        "fr": "Nul est un mot familier pour quelque chose de vraiment mauvais.",
+        "de": "Nul ist ein umgangssprachliches Wort für etwas wirklich Schlechtes."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le film ? Je n’ai rien aimé, c’était vraiment ",
+        "after": ".",
+        "accepted": { "answers": ["nul"] },
+        "referenceTargetIds": ["nul", "genial", "magnifique", "interessant"],
+        "explanation": {
+          "en": "“I liked nothing” means the film was really bad: nul.",
+          "fr": "« Je n’ai rien aimé » veut dire que le film était vraiment mauvais : nul.",
+          "de": "„Je n’ai rien aimé“ bedeutet, dass der Film wirklich schlecht war: nul."
+        }
+      },
+      "listeningOptionTargetIds": ["nul", "drole", "super", "moyen"]
+    },
+    {
+      "id": "bizarre",
+      "term": "bizarre",
+      "translations": { "en": ["strange"], "de": ["seltsam"] },
+      "wordClass": "adjective",
+      "genders": [],
+      "number": null,
+      "teachingForm": "bizarre",
+      "examForms": ["bizarre"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/bi.zaʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Cette histoire est bizarre.",
+        "translation": { "en": "This story is strange.", "de": "Diese Geschichte ist seltsam." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Bizarre describes something unusual that surprises you.",
+        "fr": "Bizarre décrit quelque chose d’inhabituel qui surprend.",
+        "de": "Bizarre beschreibt etwas Ungewöhnliches, das überrascht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "C’était ",
+        "after": " : un chat parlait et personne ne trouvait ça normal.",
+        "accepted": { "answers": ["bizarre"] },
+        "referenceTargetIds": ["bizarre", "super", "moyen", "fatigant"],
+        "explanation": {
+          "en": "A talking cat that nobody finds normal is strange: bizarre.",
+          "fr": "Un chat qui parle et que personne ne trouve normal, c’est bizarre.",
+          "de": "Eine sprechende Katze, die niemand normal findet, ist bizarre."
+        }
+      },
+      "listeningOptionTargetIds": ["bizarre", "magnifique", "super", "pas-mal"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

@@ -1,0 +1,1006 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-er-verbs-present",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Les verbes en -er au présent",
+  "objective": {
+    "en": "Conjugate parler, habiter and aimer in the present with every pronoun, and know that the endings -e, -es and -ent are silent: je parle, ils parlent.",
+    "fr": "Conjuguer parler, habiter et aimer au présent avec tous les pronoms et savoir que les terminaisons -e, -es et -ent ne se prononcent pas : je parle, ils parlent.",
+    "de": "Parler, habiter und aimer im Präsens mit allen Pronomen konjugieren und wissen, dass die Endungen -e, -es und -ent nicht gesprochen werden: je parle, ils parlent."
+  },
+  "estimatedMinutes": 15,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:29:58.754Z",
+    "inputHashes": {
+      "outline": "4bae78ce67d7f31114d89dc0592f67d49937b48f4040d52ddbd1eed5560181b1",
+      "brief": "14b563cbe14b4bbddc7f256cfa83a7b3376c15604040375e6190018cb29a41c9"
+    }
+  },
+  "kind": "grammar",
+  "topic": "verbs_morphology",
+  "steps": [
+    {
+      "id": "block-endings-explanation",
+      "role": "explanation",
+      "blockId": "block-endings",
+      "label": {
+        "en": "The endings of parler",
+        "fr": "Les terminaisons de parler",
+        "de": "Die Endungen von parler"
+      },
+      "pages": [
+        {
+          "pageId": "block-endings-explanation",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the explanation and the examples.",
+            "fr": "Lisez l’explication et les exemples.",
+            "de": "Lies die Erklärung und die Beispiele."
+          },
+          "items": [
+            {
+              "type": "grammar_explanation",
+              "itemId": "block-endings-explanation",
+              "ruleIds": ["rule-er-endings"],
+              "heading": {
+                "en": "Verbs in -er",
+                "fr": "Les verbes en -er",
+                "de": "Verben auf -er"
+              },
+              "text": {
+                "en": "Regular verbs ending in `-er` follow one pattern. Take the stem of `parler` (to speak), `parl-`, and add the ending.\n\n- `je parle`, `tu parles`, `il / elle / on parle`\n- `nous parlons`, `vous parlez`, `ils / elles parlent`\n\n`habiter` (to live) and `aimer` (to like) work the same way: `j'habite`, `nous habitons`, `ils aiment`.",
+                "fr": "Les verbes réguliers en `-er` suivent un même modèle. On prend le radical de `parler`, `parl-`, et on ajoute la terminaison.\n\n- `je parle`, `tu parles`, `il / elle / on parle`\n- `nous parlons`, `vous parlez`, `ils / elles parlent`\n\n`habiter` et `aimer` se conjuguent de la même façon : `j'habite`, `nous habitons`, `ils aiment`.",
+                "de": "Regelmäßige Verben auf `-er` folgen einem Muster. Nimm den Stamm von `parler` (sprechen), `parl-`, und hänge die Endung an.\n\n- `je parle`, `tu parles`, `il / elle / on parle`\n- `nous parlons`, `vous parlez`, `ils / elles parlent`\n\n`habiter` und `aimer` werden genauso konjugiert: `j'habite`, `nous habitons`, `ils aiment`."
+              },
+              "formTable": [
+                { "subject": "je", "form": "parle", "example": "Je parle français." },
+                { "subject": "tu", "form": "parles", "example": "Tu parles français." },
+                { "subject": "il / elle / on", "form": "parle", "example": "Elle parle français." },
+                { "subject": "nous", "form": "parlons", "example": "Nous parlons français." },
+                { "subject": "vous", "form": "parlez", "example": "Vous parlez français." },
+                { "subject": "ils / elles", "form": "parlent", "example": "Ils parlent français." }
+              ],
+              "examples": [
+                {
+                  "text": "Je parle français.",
+                  "translation": { "en": "I speak French.", "de": "Ich spreche Französisch." }
+                },
+                {
+                  "text": "Tu habites à Paris ?",
+                  "translation": { "en": "Do you live in Paris?", "de": "Wohnst du in Paris?" }
+                },
+                {
+                  "text": "Nous aimons cuisiner.",
+                  "translation": { "en": "We like cooking.", "de": "Wir kochen gern." }
+                },
+                {
+                  "text": "Ils parlent anglais.",
+                  "translation": { "en": "They speak English.", "de": "Sie sprechen Englisch." }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-b1-match",
+      "role": "exercise",
+      "blockId": "block-endings",
+      "label": {
+        "en": "Person matching",
+        "fr": "Relier les personnes",
+        "de": "Personen verbinden"
+      },
+      "pages": [
+        {
+          "pageId": "ex-b1-match-1",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Connect each pronoun with its partner.",
+            "fr": "Reliez chaque pronom à son partenaire.",
+            "de": "Verbinde jedes Pronomen mit seinem Partner."
+          },
+          "items": [
+            {
+              "type": "grammar_person_matching",
+              "itemId": "ex-b1-match-1",
+              "ruleIds": ["rule-er-endings"],
+              "mode": "forms",
+              "rows": [
+                {
+                  "person": "1sg",
+                  "pronoun": "je",
+                  "native": null,
+                  "answer": "parle",
+                  "answerExplanation": {
+                    "en": "With je, the ending is -e: je parle.",
+                    "fr": "Avec je, la terminaison est -e : je parle.",
+                    "de": "Zu je gehört die Endung -e: je parle."
+                  }
+                },
+                {
+                  "person": "2sg",
+                  "pronoun": "tu",
+                  "native": null,
+                  "answer": "parles",
+                  "answerExplanation": {
+                    "en": "With tu, the ending is -es: tu parles.",
+                    "fr": "Avec tu, la terminaison est -es : tu parles.",
+                    "de": "Zu tu gehört die Endung -es: tu parles."
+                  }
+                },
+                {
+                  "person": "3sg",
+                  "pronoun": "il / elle / on",
+                  "native": null,
+                  "answer": "parle",
+                  "answerExplanation": {
+                    "en": "With il, elle, on, the ending is -e: il parle.",
+                    "fr": "Avec il, elle, on, la terminaison est -e : il parle.",
+                    "de": "Zu il, elle, on gehört die Endung -e: il parle."
+                  }
+                },
+                {
+                  "person": "1pl",
+                  "pronoun": "nous",
+                  "native": null,
+                  "answer": "parlons",
+                  "answerExplanation": {
+                    "en": "With nous, the ending is -ons: nous parlons.",
+                    "fr": "Avec nous, la terminaison est -ons : nous parlons.",
+                    "de": "Zu nous gehört die Endung -ons: nous parlons."
+                  }
+                },
+                {
+                  "person": "2pl",
+                  "pronoun": "vous",
+                  "native": null,
+                  "answer": "parlez",
+                  "answerExplanation": {
+                    "en": "With vous, the ending is -ez: vous parlez.",
+                    "fr": "Avec vous, la terminaison est -ez : vous parlez.",
+                    "de": "Zu vous gehört die Endung -ez: vous parlez."
+                  }
+                },
+                {
+                  "person": "3pl",
+                  "pronoun": "ils / elles",
+                  "native": null,
+                  "answer": "parlent",
+                  "answerExplanation": {
+                    "en": "With ils, elles, the ending is -ent: ils parlent.",
+                    "fr": "Avec ils, elles, la terminaison est -ent : ils parlent.",
+                    "de": "Zu ils, elles gehört die Endung -ent: ils parlent."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-b1-choice",
+      "role": "exercise",
+      "blockId": "block-endings",
+      "label": {
+        "en": "Multiple-choice gaps",
+        "fr": "Phrases à trous à choix multiple",
+        "de": "Lücken mit Auswahl"
+      },
+      "pages": [
+        {
+          "pageId": "ex-b1-choice-1",
+          "estimatedDurationS": 40,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-b1-choice-1",
+              "before": "Je",
+              "after": "français.",
+              "choices": [
+                { "choiceId": "c-1", "text": "parle" },
+                { "choiceId": "c-2", "text": "parles" },
+                { "choiceId": "c-3", "text": "parlons" },
+                { "choiceId": "c-4", "text": "parlent" }
+              ],
+              "answerChoiceId": "c-1",
+              "hint": null,
+              "ruleIds": ["rule-er-endings"],
+              "answerExplanation": {
+                "en": "With je, the ending is -e: je parle.",
+                "fr": "Avec je, la terminaison est -e : je parle.",
+                "de": "Zu je gehört die Endung -e: je parle."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-b1-choice-2",
+              "before": "Nous",
+              "after": "anglais.",
+              "choices": [
+                { "choiceId": "c-1", "text": "parle" },
+                { "choiceId": "c-2", "text": "parlez" },
+                { "choiceId": "c-3", "text": "parlons" },
+                { "choiceId": "c-4", "text": "parlent" }
+              ],
+              "answerChoiceId": "c-3",
+              "hint": null,
+              "ruleIds": ["rule-er-endings"],
+              "answerExplanation": {
+                "en": "With nous, the ending is -ons: nous parlons.",
+                "fr": "Avec nous, la terminaison est -ons : nous parlons.",
+                "de": "Zu nous gehört die Endung -ons: nous parlons."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-b1-choice-3",
+              "before": "Vous",
+              "after": "espagnol ?",
+              "choices": [
+                { "choiceId": "c-1", "text": "parlons" },
+                { "choiceId": "c-2", "text": "parles" },
+                { "choiceId": "c-3", "text": "parlez" },
+                { "choiceId": "c-4", "text": "parlent" }
+              ],
+              "answerChoiceId": "c-3",
+              "hint": null,
+              "ruleIds": ["rule-er-endings"],
+              "answerExplanation": {
+                "en": "With vous, the ending is -ez: vous parlez.",
+                "fr": "Avec vous, la terminaison est -ez : vous parlez.",
+                "de": "Zu vous gehört die Endung -ez: vous parlez."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-b1-choice-4",
+              "before": "Elles",
+              "after": "allemand.",
+              "choices": [
+                { "choiceId": "c-1", "text": "parle" },
+                { "choiceId": "c-2", "text": "parles" },
+                { "choiceId": "c-3", "text": "parlons" },
+                { "choiceId": "c-4", "text": "parlent" }
+              ],
+              "answerChoiceId": "c-4",
+              "hint": null,
+              "ruleIds": ["rule-er-endings"],
+              "answerExplanation": {
+                "en": "With ils, elles, the ending is -ent: elles parlent.",
+                "fr": "Avec ils, elles, la terminaison est -ent : elles parlent.",
+                "de": "Zu ils, elles gehört die Endung -ent: elles parlent."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-b1-typing",
+      "role": "exercise",
+      "blockId": "block-endings",
+      "label": {
+        "en": "Typed gaps",
+        "fr": "Phrases à trous à écrire",
+        "de": "Lücken zum Schreiben"
+      },
+      "pages": [
+        {
+          "pageId": "ex-b1-typing-1",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-b1-typing-1",
+              "before": "Tu",
+              "after": "italien ?",
+              "accepted": { "answers": ["parles"] },
+              "hint": {
+                "en": "parler, 2nd person singular",
+                "fr": "parler, 2e personne du singulier",
+                "de": "parler, 2. Person Singular"
+              },
+              "ruleIds": ["rule-er-endings"],
+              "answerExplanation": {
+                "en": "With tu, the ending is -es: tu parles.",
+                "fr": "Avec tu, la terminaison est -es : tu parles.",
+                "de": "Zu tu gehört die Endung -es: tu parles."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-b1-typing-2",
+              "before": "Il",
+              "after": "à Paris.",
+              "accepted": { "answers": ["habite"] },
+              "hint": {
+                "en": "habiter, 3rd person singular",
+                "fr": "habiter, 3e personne du singulier",
+                "de": "habiter, 3. Person Singular"
+              },
+              "ruleIds": ["rule-er-endings"],
+              "answerExplanation": {
+                "en": "With il, the ending is -e: il habite.",
+                "fr": "Avec il, la terminaison est -e : il habite.",
+                "de": "Zu il gehört die Endung -e: il habite."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-b1-typing-3",
+              "before": "Nous",
+              "after": "à Lyon.",
+              "accepted": { "answers": ["habitons"] },
+              "hint": {
+                "en": "habiter, 1st person plural",
+                "fr": "habiter, 1re personne du pluriel",
+                "de": "habiter, 1. Person Plural"
+              },
+              "ruleIds": ["rule-er-endings"],
+              "answerExplanation": {
+                "en": "With nous, the ending is -ons: nous habitons.",
+                "fr": "Avec nous, la terminaison est -ons : nous habitons.",
+                "de": "Zu nous gehört die Endung -ons: nous habitons."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-b1-typing-4",
+              "before": "Ils",
+              "after": "voyager.",
+              "accepted": { "answers": ["aiment"] },
+              "hint": {
+                "en": "aimer, 3rd person plural",
+                "fr": "aimer, 3e personne du pluriel",
+                "de": "aimer, 3. Person Plural"
+              },
+              "ruleIds": ["rule-er-endings"],
+              "answerExplanation": {
+                "en": "With ils, the ending is -ent: ils aiment.",
+                "fr": "Avec ils, la terminaison est -ent : ils aiment.",
+                "de": "Zu ils gehört die Endung -ent: ils aiment."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "block-sound-explanation",
+      "role": "explanation",
+      "blockId": "block-sound",
+      "label": {
+        "en": "Silent endings and j'",
+        "fr": "Terminaisons muettes et j'",
+        "de": "Stumme Endungen und j'"
+      },
+      "pages": [
+        {
+          "pageId": "block-sound-explanation",
+          "estimatedDurationS": 150,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the explanation and the examples.",
+            "fr": "Lisez l’explication et les exemples.",
+            "de": "Lies die Erklärung und die Beispiele."
+          },
+          "items": [
+            {
+              "type": "grammar_explanation",
+              "itemId": "block-sound-explanation",
+              "ruleIds": ["rule-silent-endings", "rule-elision"],
+              "heading": {
+                "en": "What you hear and what you write",
+                "fr": "Ce qu'on entend et ce qu'on écrit",
+                "de": "Was man hört und was man schreibt"
+              },
+              "text": {
+                "en": "When speaking, the endings `-e`, `-es` and `-ent` are silent: `je parle`, `tu parles`, `il parle` and `ils parlent` all sound the same. Only `nous parlons` and `vous parlez` sound different.\n\nBefore a vowel or a mute h, the s of `nous`, `vous`, `ils` and `elles` is pronounced z: `ils aiment`, `elles habitent`. So `ils aiment` does not sound like `il aime`.\n\nBefore a vowel or a mute h, `je` becomes `j'`:\n\n- `j'habite`\n- `j'aime`\n\nIn writing, check the subject to choose the right ending: `Marie parle`, `Marie et Paul parlent`.",
+                "fr": "À l'oral, les terminaisons `-e`, `-es` et `-ent` ne se prononcent pas : `je parle`, `tu parles`, `il parle` et `ils parlent` ont le même son. Seuls `nous parlons` et `vous parlez` sonnent différemment.\n\nDevant une voyelle ou un h muet, le s de `nous`, `vous`, `ils` et `elles` se prononce z : `ils aiment`, `elles habitent`. Donc `ils aiment` ne se prononce pas comme `il aime`.\n\nDevant une voyelle ou un h muet, `je` devient `j'` :\n\n- `j'habite`\n- `j'aime`\n\nÀ l'écrit, vérifiez le sujet pour choisir la bonne terminaison : `Marie parle`, `Marie et Paul parlent`.",
+                "de": "Gesprochen werden die Endungen `-e`, `-es` und `-ent` nicht: `je parle`, `tu parles`, `il parle` und `ils parlent` klingen gleich. Nur `nous parlons` und `vous parlez` klingen anders.\n\nVor einem Vokal oder stummen h wird das s von `nous`, `vous`, `ils` und `elles` als z gesprochen: `ils aiment`, `elles habitent`. Deshalb klingt `ils aiment` nicht wie `il aime`.\n\nVor einem Vokal oder stummen h wird `je` zu `j'`:\n\n- `j'habite`\n- `j'aime`\n\nSchriftlich prüfst du das Subjekt, um die richtige Endung zu wählen: `Marie parle`, `Marie et Paul parlent`."
+              },
+              "formTable": [
+                { "subject": "j'", "form": "habite", "example": null },
+                { "subject": "j'", "form": "aime", "example": null },
+                { "subject": "elles", "form": "parlent", "example": null }
+              ],
+              "examples": [
+                {
+                  "text": "J'habite à Lyon.",
+                  "translation": { "en": "I live in Lyon.", "de": "Ich wohne in Lyon." }
+                },
+                {
+                  "text": "J'aime chanter.",
+                  "translation": { "en": "I like singing.", "de": "Ich singe gern." }
+                },
+                {
+                  "text": "Elles parlent italien.",
+                  "translation": { "en": "They speak Italian.", "de": "Sie sprechen Italienisch." }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-b2-forms",
+      "role": "exercise",
+      "blockId": "block-sound",
+      "label": {
+        "en": "Pronoun–form typing",
+        "fr": "Écrire la forme pour chaque pronom",
+        "de": "Form zum Pronomen schreiben"
+      },
+      "pages": [
+        {
+          "pageId": "ex-b2-forms-1",
+          "estimatedDurationS": 90,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the form for each pronoun.",
+            "fr": "Écrivez la forme pour chaque pronom.",
+            "de": "Schreib die Form zu jedem Pronomen."
+          },
+          "items": [
+            {
+              "type": "grammar_pronoun_form_typing",
+              "itemId": "ex-b2-forms-1",
+              "ruleIds": ["rule-er-endings", "rule-elision"],
+              "rows": [
+                {
+                  "rowId": "r-1",
+                  "pronoun": "j' (aimer)",
+                  "accepted": { "answers": ["aime"] },
+                  "answerExplanation": {
+                    "en": "Je becomes j' before a vowel, and the ending is -e: j'aime.",
+                    "fr": "Je devient j' devant une voyelle, et la terminaison est -e : j'aime.",
+                    "de": "Je wird vor einem Vokal zu j', die Endung ist -e: j'aime."
+                  }
+                },
+                {
+                  "rowId": "r-2",
+                  "pronoun": "tu (aimer)",
+                  "accepted": { "answers": ["aimes"] },
+                  "answerExplanation": {
+                    "en": "With tu, the ending is -es: tu aimes.",
+                    "fr": "Avec tu, la terminaison est -es : tu aimes.",
+                    "de": "Zu tu gehört die Endung -es: tu aimes."
+                  }
+                },
+                {
+                  "rowId": "r-3",
+                  "pronoun": "nous (aimer)",
+                  "accepted": { "answers": ["aimons"] },
+                  "answerExplanation": {
+                    "en": "With nous, the ending is -ons: nous aimons.",
+                    "fr": "Avec nous, la terminaison est -ons : nous aimons.",
+                    "de": "Zu nous gehört die Endung -ons: nous aimons."
+                  }
+                }
+              ]
+            },
+            {
+              "type": "grammar_pronoun_form_typing",
+              "itemId": "ex-b2-forms-2",
+              "ruleIds": ["rule-er-endings", "rule-elision"],
+              "rows": [
+                {
+                  "rowId": "r-1",
+                  "pronoun": "j' (habiter)",
+                  "accepted": { "answers": ["habite"] },
+                  "answerExplanation": {
+                    "en": "Je becomes j' before a mute h, and the ending is -e: j'habite.",
+                    "fr": "Je devient j' devant un h muet, et la terminaison est -e : j'habite.",
+                    "de": "Je wird vor einem stummen h zu j', die Endung ist -e: j'habite."
+                  }
+                },
+                {
+                  "rowId": "r-2",
+                  "pronoun": "ils (habiter)",
+                  "accepted": { "answers": ["habitent"] },
+                  "answerExplanation": {
+                    "en": "With ils, the ending is -ent: ils habitent.",
+                    "fr": "Avec ils, la terminaison est -ent : ils habitent.",
+                    "de": "Zu ils gehört die Endung -ent: ils habitent."
+                  }
+                },
+                {
+                  "rowId": "r-3",
+                  "pronoun": "vous (habiter)",
+                  "accepted": { "answers": ["habitez"] },
+                  "answerExplanation": {
+                    "en": "With vous, the ending is -ez: vous habitez.",
+                    "fr": "Avec vous, la terminaison est -ez : vous habitez.",
+                    "de": "Zu vous gehört die Endung -ez: vous habitez."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-b2-choice",
+      "role": "exercise",
+      "blockId": "block-sound",
+      "label": {
+        "en": "Multiple-choice gaps",
+        "fr": "Phrases à trous à choix multiple",
+        "de": "Lücken mit Auswahl"
+      },
+      "pages": [
+        {
+          "pageId": "ex-b2-choice-1",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-b2-choice-1",
+              "before": "J'",
+              "after": "à Marseille.",
+              "choices": [
+                { "choiceId": "c-1", "text": "habite" },
+                { "choiceId": "c-2", "text": "habites" },
+                { "choiceId": "c-3", "text": "habitons" },
+                { "choiceId": "c-4", "text": "habitent" }
+              ],
+              "answerChoiceId": "c-1",
+              "hint": null,
+              "ruleIds": ["rule-elision"],
+              "answerExplanation": {
+                "en": "Je becomes j' before a mute h: j'habite.",
+                "fr": "Je devient j' devant un h muet : j'habite.",
+                "de": "Je wird vor einem stummen h zu j': j'habite."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-b2-choice-2",
+              "before": "Elles",
+              "after": "danser.",
+              "choices": [
+                { "choiceId": "c-1", "text": "aime" },
+                { "choiceId": "c-2", "text": "aimes" },
+                { "choiceId": "c-3", "text": "aiment" },
+                { "choiceId": "c-4", "text": "aimons" }
+              ],
+              "answerChoiceId": "c-3",
+              "hint": null,
+              "ruleIds": ["rule-silent-endings"],
+              "answerExplanation": {
+                "en": "With elles, the ending is -ent: elles aiment. The -ent is silent but must be written, and you hear a z between elles and aiment.",
+                "fr": "Avec elles, la terminaison est -ent : elles aiment. Le -ent ne se prononce pas mais s'écrit, et on entend un z entre elles et aiment.",
+                "de": "Zu elles gehört die Endung -ent: elles aiment. Das -ent ist stumm, wird aber geschrieben, und zwischen elles und aiment hört man ein z."
+              }
+            },
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-b2-choice-3",
+              "before": "Tu",
+              "after": "ici ?",
+              "choices": [
+                { "choiceId": "c-1", "text": "habite" },
+                { "choiceId": "c-2", "text": "habites" },
+                { "choiceId": "c-3", "text": "habitez" },
+                { "choiceId": "c-4", "text": "habitent" }
+              ],
+              "answerChoiceId": "c-2",
+              "hint": null,
+              "ruleIds": ["rule-silent-endings"],
+              "answerExplanation": {
+                "en": "Tu habites sounds like il habite, but tu takes -es in writing.",
+                "fr": "Tu habites se prononce comme il habite, mais tu prend -es à l'écrit.",
+                "de": "Tu habites klingt wie il habite, aber tu hat schriftlich -es."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-b2-typing",
+      "role": "exercise",
+      "blockId": "block-sound",
+      "label": {
+        "en": "Typed gaps",
+        "fr": "Phrases à trous à écrire",
+        "de": "Lücken zum Schreiben"
+      },
+      "pages": [
+        {
+          "pageId": "ex-b2-typing-1",
+          "estimatedDurationS": 60,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-b2-typing-1",
+              "before": "J'",
+              "after": "danser.",
+              "accepted": { "answers": ["aime"] },
+              "hint": {
+                "en": "aimer, 1st person singular",
+                "fr": "aimer, 1re personne du singulier",
+                "de": "aimer, 1. Person Singular"
+              },
+              "ruleIds": ["rule-elision"],
+              "answerExplanation": {
+                "en": "Je becomes j' before a vowel: j'aime.",
+                "fr": "Je devient j' devant une voyelle : j'aime.",
+                "de": "Je wird vor einem Vokal zu j': j'aime."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-b2-typing-2",
+              "before": "Vous",
+              "after": "à Genève ?",
+              "accepted": { "answers": ["habitez"] },
+              "hint": {
+                "en": "habiter, 2nd person plural",
+                "fr": "habiter, 2e personne du pluriel",
+                "de": "habiter, 2. Person Plural"
+              },
+              "ruleIds": ["rule-er-endings"],
+              "answerExplanation": {
+                "en": "With vous, the ending is -ez: vous habitez.",
+                "fr": "Avec vous, la terminaison est -ez : vous habitez.",
+                "de": "Zu vous gehört die Endung -ez: vous habitez."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-b2-typing-3",
+              "before": "Elles",
+              "after": "français.",
+              "accepted": { "answers": ["parlent"] },
+              "hint": {
+                "en": "parler, 3rd person plural",
+                "fr": "parler, 3e personne du pluriel",
+                "de": "parler, 3. Person Plural"
+              },
+              "ruleIds": ["rule-silent-endings"],
+              "answerExplanation": {
+                "en": "The -ent is silent but must be written: elles parlent.",
+                "fr": "Le -ent ne se prononce pas mais s'écrit : elles parlent.",
+                "de": "Das -ent wird nicht gesprochen, aber geschrieben: elles parlent."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-b2-typing-4",
+              "before": "Léa et Tom",
+              "after": "à Nice.",
+              "accepted": { "answers": ["habitent"] },
+              "hint": { "en": "habiter", "fr": "habiter", "de": "habiter" },
+              "ruleIds": ["rule-silent-endings"],
+              "answerExplanation": {
+                "en": "Léa et Tom is plural (like ils), so the silent ending -ent is written.",
+                "fr": "Léa et Tom est pluriel (comme ils) : on écrit le -ent muet.",
+                "de": "Léa et Tom ist Plural (wie ils), also wird das stumme -ent geschrieben."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-b2-order",
+      "role": "exercise",
+      "blockId": "block-sound",
+      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
+      "pages": [
+        {
+          "pageId": "ex-b2-order-1",
+          "estimatedDurationS": 40,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-b2-order-1",
+              "tokens": [
+                { "tokenId": "t-1", "text": "aime" },
+                { "tokenId": "t-2", "text": "Paris" },
+                { "tokenId": "t-3", "text": "J'" },
+                { "tokenId": "t-4", "text": "." }
+              ],
+              "acceptedOrders": [["t-3", "t-1", "t-2", "t-4"]],
+              "ruleIds": ["rule-elision"],
+              "answerExplanation": {
+                "en": "Je becomes j' before aime: J'aime Paris.",
+                "fr": "Je devient j' devant aime : J'aime Paris.",
+                "de": "Je wird vor aime zu j': J'aime Paris."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-b2-order-2",
+              "tokens": [
+                { "tokenId": "t-1", "text": "anglais" },
+                { "tokenId": "t-2", "text": "Ils" },
+                { "tokenId": "t-3", "text": "." },
+                { "tokenId": "t-4", "text": "parlent" }
+              ],
+              "acceptedOrders": [["t-2", "t-4", "t-1", "t-3"]],
+              "ruleIds": ["rule-silent-endings"],
+              "answerExplanation": {
+                "en": "Subject, verb with -ent, then the rest: Ils parlent anglais.",
+                "fr": "Sujet, verbe en -ent, puis le reste : Ils parlent anglais.",
+                "de": "Subjekt, Verb auf -ent, dann der Rest: Ils parlent anglais."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "feedback",
+      "role": "feedback",
+      "blockId": null,
+      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "pages": [
+        {
+          "pageId": "feedback",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Continue to the final exam.",
+            "fr": "Passez à l’examen final.",
+            "de": "Weiter zur Abschlussprüfung."
+          },
+          "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "role": "exam",
+      "blockId": null,
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam-forms",
+          "estimatedDurationS": 90,
+          "timeLimitS": 150,
+          "instructions": {
+            "en": "Type the form for each pronoun.",
+            "fr": "Écrivez la forme pour chaque pronom.",
+            "de": "Schreib die Form zu jedem Pronomen."
+          },
+          "items": [
+            {
+              "type": "grammar_pronoun_form_typing",
+              "itemId": "exam-forms-1",
+              "ruleIds": ["rule-er-endings"],
+              "rows": [
+                {
+                  "rowId": "r-1",
+                  "pronoun": "je (parler)",
+                  "accepted": { "answers": ["parle"] },
+                  "answerExplanation": {
+                    "en": "With je, the ending is -e: je parle.",
+                    "fr": "Avec je, la terminaison est -e : je parle.",
+                    "de": "Zu je gehört die Endung -e: je parle."
+                  }
+                },
+                {
+                  "rowId": "r-2",
+                  "pronoun": "nous (habiter)",
+                  "accepted": { "answers": ["habitons"] },
+                  "answerExplanation": {
+                    "en": "With nous, the ending is -ons: nous habitons.",
+                    "fr": "Avec nous, la terminaison est -ons : nous habitons.",
+                    "de": "Zu nous gehört die Endung -ons: nous habitons."
+                  }
+                },
+                {
+                  "rowId": "r-3",
+                  "pronoun": "ils (aimer)",
+                  "accepted": { "answers": ["aiment"] },
+                  "answerExplanation": {
+                    "en": "With ils, the ending is -ent: ils aiment.",
+                    "fr": "Avec ils, la terminaison est -ent : ils aiment.",
+                    "de": "Zu ils gehört die Endung -ent: ils aiment."
+                  }
+                }
+              ]
+            },
+            {
+              "type": "grammar_pronoun_form_typing",
+              "itemId": "exam-forms-2",
+              "ruleIds": ["rule-er-endings", "rule-elision"],
+              "rows": [
+                {
+                  "rowId": "r-1",
+                  "pronoun": "j' (habiter)",
+                  "accepted": { "answers": ["habite"] },
+                  "answerExplanation": {
+                    "en": "Je becomes j' before a mute h, and the ending is -e: j'habite.",
+                    "fr": "Je devient j' devant un h muet, et la terminaison est -e : j'habite.",
+                    "de": "Je wird vor einem stummen h zu j', die Endung ist -e: j'habite."
+                  }
+                },
+                {
+                  "rowId": "r-2",
+                  "pronoun": "vous (parler)",
+                  "accepted": { "answers": ["parlez"] },
+                  "answerExplanation": {
+                    "en": "With vous, the ending is -ez: vous parlez.",
+                    "fr": "Avec vous, la terminaison est -ez : vous parlez.",
+                    "de": "Zu vous gehört die Endung -ez: vous parlez."
+                  }
+                },
+                {
+                  "rowId": "r-3",
+                  "pronoun": "elle (aimer)",
+                  "accepted": { "answers": ["aime"] },
+                  "answerExplanation": {
+                    "en": "With elle, the ending is -e: elle aime.",
+                    "fr": "Avec elle, la terminaison est -e : elle aime.",
+                    "de": "Zu elle gehört die Endung -e: elle aime."
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "pageId": "exam-gaps",
+          "estimatedDurationS": 60,
+          "timeLimitS": 100,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-gaps-1",
+              "before": "Tu",
+              "after": "à Rome ?",
+              "accepted": { "answers": ["habites"] },
+              "hint": null,
+              "ruleIds": ["rule-er-endings"],
+              "answerExplanation": {
+                "en": "With tu, the ending is -es: tu habites.",
+                "fr": "Avec tu, la terminaison est -es : tu habites.",
+                "de": "Zu tu gehört die Endung -es: tu habites."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-gaps-2",
+              "before": "Mes parents",
+              "after": "russe.",
+              "accepted": { "answers": ["parlent"] },
+              "hint": null,
+              "ruleIds": ["rule-silent-endings"],
+              "answerExplanation": {
+                "en": "Mes parents is plural (like ils), so the silent ending -ent is written.",
+                "fr": "Mes parents est pluriel (comme ils) : on écrit le -ent muet.",
+                "de": "Mes parents ist Plural (wie ils), also wird das stumme -ent geschrieben."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-gaps-3",
+              "before": "J'",
+              "after": "voyager.",
+              "accepted": { "answers": ["aime"] },
+              "hint": null,
+              "ruleIds": ["rule-elision"],
+              "answerExplanation": {
+                "en": "Je becomes j' before a vowel: j'aime.",
+                "fr": "Je devient j' devant une voyelle : j'aime.",
+                "de": "Je wird vor einem Vokal zu j': j'aime."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-gaps-4",
+              "before": "Nous",
+              "after": "chanter.",
+              "accepted": { "answers": ["aimons"] },
+              "hint": null,
+              "ruleIds": ["rule-er-endings"],
+              "answerExplanation": {
+                "en": "With nous, the ending is -ons: nous aimons.",
+                "fr": "Avec nous, la terminaison est -ons : nous aimons.",
+                "de": "Zu nous gehört die Endung -ons: nous aimons."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-order",
+          "estimatedDurationS": 40,
+          "timeLimitS": 80,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "exam-order-1",
+              "tokens": [
+                { "tokenId": "t-1", "text": "à" },
+                { "tokenId": "t-2", "text": "Vous" },
+                { "tokenId": "t-3", "text": "habitez" },
+                { "tokenId": "t-4", "text": "Nantes" },
+                { "tokenId": "t-5", "text": "." }
+              ],
+              "acceptedOrders": [["t-2", "t-3", "t-1", "t-4", "t-5"]],
+              "ruleIds": ["rule-er-endings"],
+              "answerExplanation": {
+                "en": "Subject, verb with -ez, then the place: Vous habitez à Nantes.",
+                "fr": "Sujet, verbe en -ez, puis le lieu : Vous habitez à Nantes.",
+                "de": "Subjekt, Verb auf -ez, dann der Ort: Vous habitez à Nantes."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "exam-order-2",
+              "tokens": [
+                { "tokenId": "t-1", "text": "chanter" },
+                { "tokenId": "t-2", "text": "Les" },
+                { "tokenId": "t-3", "text": "." },
+                { "tokenId": "t-4", "text": "enfants" },
+                { "tokenId": "t-5", "text": "aiment" }
+              ],
+              "acceptedOrders": [["t-2", "t-4", "t-5", "t-1", "t-3"]],
+              "ruleIds": ["rule-silent-endings"],
+              "answerExplanation": {
+                "en": "Les enfants is plural, so the verb ends in -ent: Les enfants aiment chanter.",
+                "fr": "Les enfants est pluriel : le verbe finit par -ent : Les enfants aiment chanter.",
+                "de": "Les enfants ist Plural, das Verb endet auf -ent: Les enfants aiment chanter."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

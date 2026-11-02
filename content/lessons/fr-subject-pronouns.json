@@ -1,0 +1,1166 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-subject-pronouns",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Les pronoms sujets : je, tu, il, elle…",
+  "objective": {
+    "en": "Use the subject pronouns je, tu, il, elle, on, nous, vous, ils and elles, choose tu or vous, ils or elles, and use on for nous in everyday speech.",
+    "fr": "Employer je, tu, il, elle, on, nous, vous, ils et elles, choisir tu ou vous, ils ou elles, et dire on à la place de nous à l'oral.",
+    "de": "Die Subjektpronomen je, tu, il, elle, on, nous, vous, ils und elles verwenden, tu oder vous, ils oder elles wählen und on statt nous im Alltag benutzen."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:29:17.841Z",
+    "inputHashes": {
+      "outline": "0367546f1045976bcb4939d146c3b21f6c14226474b17a8ca564d616f4ff3afe",
+      "brief": "62aea30775a63c4b6c1a053cd1188b938db9719a6db4a4af9b84d4ce38a2799e"
+    }
+  },
+  "kind": "grammar",
+  "topic": "pronouns",
+  "steps": [
+    {
+      "id": "block-singular-explanation",
+      "role": "explanation",
+      "blockId": "block-singular",
+      "label": {
+        "en": "One person: je, tu, il, elle",
+        "fr": "Une personne : je, tu, il, elle",
+        "de": "Eine Person: je, tu, il, elle"
+      },
+      "pages": [
+        {
+          "pageId": "block-singular-explanation",
+          "estimatedDurationS": 100,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the explanation and the examples.",
+            "fr": "Lisez l’explication et les exemples.",
+            "de": "Lies die Erklärung und die Beispiele."
+          },
+          "items": [
+            {
+              "type": "grammar_explanation",
+              "itemId": "block-singular-explanation",
+              "ruleIds": ["rule-singular", "rule-tu-vous"],
+              "heading": {
+                "en": "Pronouns for one person",
+                "fr": "Les pronoms pour une personne",
+                "de": "Pronomen für eine Person"
+              },
+              "text": {
+                "en": "A **subject pronoun** replaces the name of the person who acts: `je` (I), `tu` (you), `il` (he) and `elle` (she). Before a vowel you say `j'habite`.\n\nFor one person you can say `tu` or `vous`:\n\n- Use `tu` with a friend, a family member or a child.\n- Use `vous` with a stranger, an older person or in a formal setting.\n- `il` is for a man or a masculine noun, `elle` for a woman or a feminine noun.\n\nWhen in doubt, choose `vous`: it is always polite.",
+                "fr": "Un **pronom sujet** remplace le nom de la personne qui agit : `je` (moi), `tu` (toi), `il` (un homme) et `elle` (une femme). Devant une voyelle, on dit `j'habite`.\n\nPour une seule personne, on peut dire `tu` ou `vous` :\n\n- On dit `tu` à un ami, à un membre de la famille ou à un enfant.\n- On dit `vous` à un inconnu, à une personne plus âgée ou dans un cadre formel.\n- `il` désigne un homme ou un nom masculin, `elle` une femme ou un nom féminin.\n\nEn cas de doute, choisissez `vous` : c'est toujours poli.",
+                "de": "Ein **Subjektpronomen** ersetzt den Namen der handelnden Person: `je` (ich), `tu` (du), `il` (er) und `elle` (sie). Vor einem Vokal sagt man `j'habite`.\n\nFür eine einzelne Person kann man `tu` oder `vous` sagen:\n\n- Man sagt `tu` zu Freunden, Familienmitgliedern und Kindern.\n- Man sagt `vous` zu Fremden, älteren Personen und in formellen Situationen.\n- `il` steht für einen Mann oder ein maskulines Nomen, `elle` für eine Frau oder ein feminines Nomen.\n\nIm Zweifel wähle `vous`: Es ist immer höflich."
+              },
+              "formTable": [
+                { "subject": "moi", "form": "je", "example": "Je suis étudiante." },
+                { "subject": "toi, un ami", "form": "tu", "example": "Tu parles bien français." },
+                { "subject": "un homme", "form": "il", "example": "Il habite à Lyon." },
+                { "subject": "une femme", "form": "elle", "example": "Elle est médecin." }
+              ],
+              "examples": [
+                {
+                  "text": "Je suis étudiante.",
+                  "translation": { "en": "I am a student.", "de": "Ich bin Studentin." }
+                },
+                {
+                  "text": "Tu parles bien français.",
+                  "translation": {
+                    "en": "You speak French well.",
+                    "de": "Du sprichst gut Französisch."
+                  }
+                },
+                {
+                  "text": "Il habite à Lyon.",
+                  "translation": { "en": "He lives in Lyon.", "de": "Er wohnt in Lyon." }
+                },
+                {
+                  "text": "Elle est médecin.",
+                  "translation": { "en": "She is a doctor.", "de": "Sie ist Ärztin." }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-pm-sg",
+      "role": "exercise",
+      "blockId": "block-singular",
+      "label": {
+        "en": "Person matching",
+        "fr": "Relier les personnes",
+        "de": "Personen verbinden"
+      },
+      "pages": [
+        {
+          "pageId": "ex-pm-sg-1",
+          "estimatedDurationS": 45,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Connect each pronoun with its partner.",
+            "fr": "Reliez chaque pronom à son partenaire.",
+            "de": "Verbinde jedes Pronomen mit seinem Partner."
+          },
+          "items": [
+            {
+              "type": "grammar_person_matching",
+              "itemId": "ex-pm-sg-1",
+              "ruleIds": ["rule-singular", "rule-tu-vous"],
+              "mode": "translation",
+              "rows": [
+                {
+                  "person": "1sg",
+                  "pronoun": null,
+                  "native": { "en": "I", "de": "ich" },
+                  "answer": "je",
+                  "answerExplanation": {
+                    "en": "Je means I; before a vowel it becomes j'.",
+                    "fr": "Je correspond à moi ; devant une voyelle, il devient j'.",
+                    "de": "Je entspricht ich; vor einem Vokal wird es zu j'."
+                  }
+                },
+                {
+                  "person": "2sg",
+                  "pronoun": null,
+                  "native": { "en": "you (one friend)", "de": "du" },
+                  "answer": "tu",
+                  "answerExplanation": {
+                    "en": "Tu is for one friend, a relative or a child.",
+                    "fr": "Tu s'emploie pour un ami, un proche ou un enfant.",
+                    "de": "Tu verwendet man für einen Freund, Verwandten oder ein Kind."
+                  }
+                },
+                {
+                  "person": "3sg",
+                  "pronoun": null,
+                  "native": { "en": "he", "de": "er" },
+                  "answer": "il",
+                  "answerExplanation": {
+                    "en": "Il stands for a man or a masculine noun.",
+                    "fr": "Il remplace un homme ou un nom masculin.",
+                    "de": "Il ersetzt einen Mann oder ein maskulines Nomen."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-ch-sg",
+      "role": "exercise",
+      "blockId": "block-singular",
+      "label": {
+        "en": "Multiple-choice gaps 1",
+        "fr": "Phrases à trous à choix multiple 1",
+        "de": "Lücken mit Auswahl 1"
+      },
+      "pages": [
+        {
+          "pageId": "ex-ch-sg-1",
+          "estimatedDurationS": 12,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-ch-sg-1",
+              "before": "Anna est canadienne et",
+              "after": "habite à Montréal.",
+              "choices": [
+                { "choiceId": "c-1", "text": "il" },
+                { "choiceId": "c-2", "text": "elle" },
+                { "choiceId": "c-3", "text": "tu" },
+                { "choiceId": "c-4", "text": "je" }
+              ],
+              "answerChoiceId": "c-2",
+              "hint": null,
+              "ruleIds": ["rule-singular"],
+              "answerExplanation": {
+                "en": "Anna is a woman, so we use elle.",
+                "fr": "Anna est une femme, donc on emploie elle.",
+                "de": "Anna ist eine Frau, also verwendet man elle."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-ch-sg-2",
+          "estimatedDurationS": 12,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-ch-sg-2",
+              "before": "Merci beaucoup, madame,",
+              "after": "êtes très gentille.",
+              "choices": [
+                { "choiceId": "c-1", "text": "tu" },
+                { "choiceId": "c-2", "text": "vous" },
+                { "choiceId": "c-3", "text": "elle" },
+                { "choiceId": "c-4", "text": "nous" }
+              ],
+              "answerChoiceId": "c-2",
+              "hint": {
+                "en": "To a lady you do not know",
+                "fr": "À une dame que l'on ne connaît pas",
+                "de": "Zu einer fremden Dame"
+              },
+              "ruleIds": ["rule-tu-vous"],
+              "answerExplanation": {
+                "en": "With a stranger we are polite and use vous.",
+                "fr": "Avec une personne inconnue, on est poli et on dit vous.",
+                "de": "Bei einer fremden Person ist man höflich und sagt vous."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-ch-sg-3",
+          "estimatedDurationS": 12,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-ch-sg-3",
+              "before": "Lucas, mon fils,",
+              "after": "habites à Paris ?",
+              "choices": [
+                { "choiceId": "c-1", "text": "vous" },
+                { "choiceId": "c-2", "text": "il" },
+                { "choiceId": "c-3", "text": "tu" },
+                { "choiceId": "c-4", "text": "ils" }
+              ],
+              "answerChoiceId": "c-3",
+              "hint": { "en": "To your son", "fr": "À son fils", "de": "Zu deinem Sohn" },
+              "ruleIds": ["rule-tu-vous"],
+              "answerExplanation": {
+                "en": "With a child or a relative we say tu.",
+                "fr": "Avec un enfant ou un proche, on dit tu.",
+                "de": "Bei einem Kind oder Verwandten sagt man tu."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-ch-sg-4",
+          "estimatedDurationS": 12,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-ch-sg-4",
+              "before": "Bonjour ! Moi,",
+              "after": "m'appelle Anna.",
+              "choices": [
+                { "choiceId": "c-1", "text": "je" },
+                { "choiceId": "c-2", "text": "tu" },
+                { "choiceId": "c-3", "text": "il" },
+                { "choiceId": "c-4", "text": "on" }
+              ],
+              "answerChoiceId": "c-1",
+              "hint": null,
+              "ruleIds": ["rule-singular"],
+              "answerExplanation": {
+                "en": "When you speak about yourself, you use je.",
+                "fr": "Quand on parle de soi, on emploie je.",
+                "de": "Wenn man über sich selbst spricht, verwendet man je."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-ty-sg",
+      "role": "exercise",
+      "blockId": "block-singular",
+      "label": {
+        "en": "Typed gaps 1",
+        "fr": "Phrases à trous à écrire 1",
+        "de": "Lücken zum Schreiben 1"
+      },
+      "pages": [
+        {
+          "pageId": "ex-ty-sg-1",
+          "estimatedDurationS": 20,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-ty-sg-1",
+              "before": "Paul est français et",
+              "after": "habite à Nice.",
+              "accepted": { "answers": ["il"] },
+              "hint": { "en": "one man", "fr": "un seul homme", "de": "ein Mann" },
+              "ruleIds": ["rule-singular"],
+              "answerExplanation": {
+                "en": "Paul is a man, so we use il.",
+                "fr": "Paul est un homme, donc on emploie il.",
+                "de": "Paul ist ein Mann, also verwendet man il."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-ty-sg-2",
+          "estimatedDurationS": 20,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-ty-sg-2",
+              "before": "Marie est ma sœur et",
+              "after": "est étudiante.",
+              "accepted": { "answers": ["elle"] },
+              "hint": { "en": "one woman", "fr": "une seule femme", "de": "eine Frau" },
+              "ruleIds": ["rule-singular"],
+              "answerExplanation": {
+                "en": "Marie is a woman, so we use elle.",
+                "fr": "Marie est une femme, donc on emploie elle.",
+                "de": "Marie ist eine Frau, also verwendet man elle."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-ty-sg-3",
+          "estimatedDurationS": 20,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-ty-sg-3",
+              "before": "Léo, mon copain,",
+              "after": "aimes le football ?",
+              "accepted": { "answers": ["tu"] },
+              "hint": { "en": "to a friend", "fr": "à un ami", "de": "zu einem Freund" },
+              "ruleIds": ["rule-tu-vous"],
+              "answerExplanation": {
+                "en": "Léo is a friend, so we say tu.",
+                "fr": "Léo est un ami, donc on dit tu.",
+                "de": "Léo ist ein Freund, also sagt man tu."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-ty-sg-4",
+          "estimatedDurationS": 20,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-ty-sg-4",
+              "before": "Bonjour monsieur Martin,",
+              "after": "parlez français ?",
+              "accepted": { "answers": ["vous"] },
+              "hint": {
+                "en": "to a stranger, politely",
+                "fr": "à un inconnu, poliment",
+                "de": "zu einem Fremden, höflich"
+              },
+              "ruleIds": ["rule-tu-vous"],
+              "answerExplanation": {
+                "en": "Monsieur Martin is a stranger, so we say vous.",
+                "fr": "Monsieur Martin est un inconnu, donc on dit vous.",
+                "de": "Monsieur Martin ist ein Fremder, also sagt man vous."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "block-plural-explanation",
+      "role": "explanation",
+      "blockId": "block-plural",
+      "label": {
+        "en": "Several people: nous, vous, ils, elles, on",
+        "fr": "Plusieurs personnes : nous, vous, ils, elles, on",
+        "de": "Mehrere Personen: nous, vous, ils, elles, on"
+      },
+      "pages": [
+        {
+          "pageId": "block-plural-explanation",
+          "estimatedDurationS": 120,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read the explanation and the examples.",
+            "fr": "Lisez l’explication et les exemples.",
+            "de": "Lies die Erklärung und die Beispiele."
+          },
+          "items": [
+            {
+              "type": "grammar_explanation",
+              "itemId": "block-plural-explanation",
+              "ruleIds": ["rule-ils-elles", "rule-on-nous"],
+              "heading": {
+                "en": "Pronouns for several people",
+                "fr": "Les pronoms pour plusieurs personnes",
+                "de": "Pronomen für mehrere Personen"
+              },
+              "text": {
+                "en": "The plural pronouns are `nous` (we), `vous` (you, several people), `ils` and `elles` (they).\n\n- Use `ils` for men, or for a mixed group, even with just one man among many women.\n- Use `elles` only when everyone is female.\n- In everyday speech, people say `on` instead of `nous`: `on mange` means we eat.\n\nThe verb after `on` is the same as after `il`: `il mange`, `on mange`.",
+                "fr": "Les pronoms du pluriel sont `nous`, `vous`, `ils` et `elles`.\n\n- On dit `ils` pour des hommes ou pour un groupe mixte, même avec un seul homme parmi beaucoup de femmes.\n- On dit `elles` seulement si toutes les personnes sont des femmes.\n- À l'oral, on dit souvent `on` à la place de `nous` : `on mange` veut dire nous mangeons.\n\nLe verbe après `on` est comme après `il` : `il mange`, `on mange`.",
+                "de": "Die Pluralpronomen sind `nous` (wir), `vous` (ihr), `ils` und `elles` (sie).\n\n- Man sagt `ils` für Männer oder für eine gemischte Gruppe, auch bei nur einem Mann unter vielen Frauen.\n- Man sagt `elles` nur, wenn alle Personen weiblich sind.\n- Im Alltag sagt man oft `on` statt `nous`: `on mange` bedeutet wir essen.\n\nDas Verb nach `on` ist wie nach `il`: `il mange`, `on mange`."
+              },
+              "formTable": [
+                {
+                  "subject": "moi et les autres",
+                  "form": "nous",
+                  "example": "Nous parlons français."
+                },
+                {
+                  "subject": "plusieurs personnes, un inconnu",
+                  "form": "vous",
+                  "example": "Vous êtes étudiants ?"
+                },
+                {
+                  "subject": "des hommes, un groupe mixte",
+                  "form": "ils",
+                  "example": "Ils sont amis."
+                },
+                { "subject": "des femmes", "form": "elles", "example": "Elles habitent à Paris." },
+                { "subject": "nous, à l'oral", "form": "on", "example": "On mange ensemble ?" }
+              ],
+              "examples": [
+                {
+                  "text": "Nous parlons français.",
+                  "translation": { "en": "We speak French.", "de": "Wir sprechen Französisch." }
+                },
+                {
+                  "text": "Vous êtes étudiants ?",
+                  "translation": { "en": "Are you students?", "de": "Seid ihr Studenten?" }
+                },
+                {
+                  "text": "Ils sont amis.",
+                  "translation": { "en": "They are friends.", "de": "Sie sind Freunde." }
+                },
+                {
+                  "text": "Elles habitent à Paris.",
+                  "translation": { "en": "They live in Paris.", "de": "Sie wohnen in Paris." }
+                },
+                {
+                  "text": "On mange ensemble ?",
+                  "translation": { "en": "Shall we eat together?", "de": "Essen wir zusammen?" }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-pm-pl",
+      "role": "exercise",
+      "blockId": "block-plural",
+      "label": {
+        "en": "Person matching",
+        "fr": "Relier les personnes",
+        "de": "Personen verbinden"
+      },
+      "pages": [
+        {
+          "pageId": "ex-pm-pl-1",
+          "estimatedDurationS": 45,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Connect each pronoun with its partner.",
+            "fr": "Reliez chaque pronom à son partenaire.",
+            "de": "Verbinde jedes Pronomen mit seinem Partner."
+          },
+          "items": [
+            {
+              "type": "grammar_person_matching",
+              "itemId": "ex-pm-pl-1",
+              "ruleIds": ["rule-ils-elles", "rule-on-nous"],
+              "mode": "translation",
+              "rows": [
+                {
+                  "person": "1pl",
+                  "pronoun": null,
+                  "native": { "en": "we", "de": "wir" },
+                  "answer": "nous",
+                  "answerExplanation": {
+                    "en": "Nous means we; in speech you can also say on.",
+                    "fr": "Nous correspond à nous ; à l'oral, on peut aussi dire on.",
+                    "de": "Nous entspricht wir; im Alltag kann man auch on sagen."
+                  }
+                },
+                {
+                  "person": "2pl",
+                  "pronoun": null,
+                  "native": { "en": "you (several people)", "de": "ihr" },
+                  "answer": "vous",
+                  "answerExplanation": {
+                    "en": "Vous is used for several people, or for one stranger.",
+                    "fr": "Vous s'emploie pour plusieurs personnes, ou pour un inconnu.",
+                    "de": "Vous verwendet man für mehrere Personen oder einen Fremden."
+                  }
+                },
+                {
+                  "person": "3pl",
+                  "pronoun": null,
+                  "native": {
+                    "en": "they (men or mixed group)",
+                    "de": "sie (Männer oder gemischte Gruppe)"
+                  },
+                  "answer": "ils",
+                  "answerExplanation": {
+                    "en": "Ils is for men or a mixed group.",
+                    "fr": "Ils s'emploie pour des hommes ou un groupe mixte.",
+                    "de": "Ils steht für Männer oder eine gemischte Gruppe."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-ch-pl",
+      "role": "exercise",
+      "blockId": "block-plural",
+      "label": {
+        "en": "Multiple-choice gaps 2",
+        "fr": "Phrases à trous à choix multiple 2",
+        "de": "Lücken mit Auswahl 2"
+      },
+      "pages": [
+        {
+          "pageId": "ex-ch-pl-1",
+          "estimatedDurationS": 12,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-ch-pl-1",
+              "before": "Léa et Paul sont amis :",
+              "after": "parlent anglais.",
+              "choices": [
+                { "choiceId": "c-1", "text": "elles" },
+                { "choiceId": "c-2", "text": "ils" },
+                { "choiceId": "c-3", "text": "nous" },
+                { "choiceId": "c-4", "text": "vous" }
+              ],
+              "answerChoiceId": "c-2",
+              "hint": null,
+              "ruleIds": ["rule-ils-elles"],
+              "answerExplanation": {
+                "en": "Léa and Paul are a mixed group, so we use ils.",
+                "fr": "Léa et Paul forment un groupe mixte, donc on emploie ils.",
+                "de": "Léa und Paul sind eine gemischte Gruppe, also verwendet man ils."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-ch-pl-2",
+          "estimatedDurationS": 12,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-ch-pl-2",
+              "before": "Anna et Julie sont sœurs :",
+              "after": "habitent à Lille.",
+              "choices": [
+                { "choiceId": "c-1", "text": "ils" },
+                { "choiceId": "c-2", "text": "vous" },
+                { "choiceId": "c-3", "text": "on" },
+                { "choiceId": "c-4", "text": "elles" }
+              ],
+              "answerChoiceId": "c-4",
+              "hint": null,
+              "ruleIds": ["rule-ils-elles"],
+              "answerExplanation": {
+                "en": "Anna and Julie are both women, so we use elles.",
+                "fr": "Anna et Julie sont deux femmes, donc on emploie elles.",
+                "de": "Anna und Julie sind beides Frauen, also verwendet man elles."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-ch-pl-3",
+          "estimatedDurationS": 12,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-ch-pl-3",
+              "before": "Ce soir, entre amis,",
+              "after": "mange au restaurant.",
+              "choices": [
+                { "choiceId": "c-1", "text": "nous" },
+                { "choiceId": "c-2", "text": "ils" },
+                { "choiceId": "c-3", "text": "vous" },
+                { "choiceId": "c-4", "text": "on" }
+              ],
+              "answerChoiceId": "c-4",
+              "hint": {
+                "en": "Informal: we",
+                "fr": "Familier : nous",
+                "de": "Umgangssprachlich: wir"
+              },
+              "ruleIds": ["rule-on-nous"],
+              "answerExplanation": {
+                "en": "On means we, and its verb is like the verb after il.",
+                "fr": "On signifie nous, et son verbe est comme celui de il.",
+                "de": "On bedeutet wir, und sein Verb ist wie das von il."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-ch-pl-4",
+          "estimatedDurationS": 12,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the word that completes the sentence.",
+            "fr": "Choisissez le mot qui complète la phrase.",
+            "de": "Wähle das Wort, das den Satz ergänzt."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_choice",
+              "itemId": "ex-ch-pl-4",
+              "before": "Mes amis et moi,",
+              "after": "parlons français en classe.",
+              "choices": [
+                { "choiceId": "c-1", "text": "ils" },
+                { "choiceId": "c-2", "text": "on" },
+                { "choiceId": "c-3", "text": "nous" },
+                { "choiceId": "c-4", "text": "vous" }
+              ],
+              "answerChoiceId": "c-3",
+              "hint": null,
+              "ruleIds": ["rule-on-nous"],
+              "answerExplanation": {
+                "en": "My friends and I means we, and the verb parlons goes with nous.",
+                "fr": "Mes amis et moi signifie nous, et le verbe parlons va avec nous.",
+                "de": "Meine Freunde und ich bedeutet wir, und das Verb parlons gehört zu nous."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-ty-pl",
+      "role": "exercise",
+      "blockId": "block-plural",
+      "label": {
+        "en": "Typed gaps 2",
+        "fr": "Phrases à trous à écrire 2",
+        "de": "Lücken zum Schreiben 2"
+      },
+      "pages": [
+        {
+          "pageId": "ex-ty-pl-1",
+          "estimatedDurationS": 20,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-ty-pl-1",
+              "before": "Pierre et Marie sont à la maison :",
+              "after": "regardent la télé.",
+              "accepted": { "answers": ["ils"] },
+              "hint": {
+                "en": "a mixed group",
+                "fr": "un groupe mixte",
+                "de": "eine gemischte Gruppe"
+              },
+              "ruleIds": ["rule-ils-elles"],
+              "answerExplanation": {
+                "en": "Pierre and Marie are a mixed group, so we use ils.",
+                "fr": "Pierre et Marie forment un groupe mixte, donc on emploie ils.",
+                "de": "Pierre und Marie sind eine gemischte Gruppe, also verwendet man ils."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-ty-pl-2",
+          "estimatedDurationS": 20,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-ty-pl-2",
+              "before": "Clara, Emma et Lola sont en classe :",
+              "after": "écoutent le professeur.",
+              "accepted": { "answers": ["elles"] },
+              "hint": { "en": "only women", "fr": "seulement des femmes", "de": "nur Frauen" },
+              "ruleIds": ["rule-ils-elles"],
+              "answerExplanation": {
+                "en": "Clara, Emma and Lola are all women, so we use elles.",
+                "fr": "Clara, Emma et Lola sont toutes des femmes, donc on emploie elles.",
+                "de": "Clara, Emma und Lola sind alle Frauen, also verwendet man elles."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-ty-pl-3",
+          "estimatedDurationS": 20,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-ty-pl-3",
+              "before": "Samedi,",
+              "after": "va au parc avec les enfants.",
+              "accepted": { "answers": ["on"] },
+              "hint": {
+                "en": "informal: we",
+                "fr": "familier : nous",
+                "de": "umgangssprachlich: wir"
+              },
+              "ruleIds": ["rule-on-nous"],
+              "answerExplanation": {
+                "en": "In everyday speech on replaces nous.",
+                "fr": "À l'oral, on remplace nous.",
+                "de": "Im Alltag ersetzt on das nous."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-ty-pl-4",
+          "estimatedDurationS": 20,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "ex-ty-pl-4",
+              "before": "Mes parents et moi,",
+              "after": "habitons à Bordeaux.",
+              "accepted": { "answers": ["nous"] },
+              "hint": { "en": "we", "fr": "nous", "de": "wir" },
+              "ruleIds": ["rule-on-nous"],
+              "answerExplanation": {
+                "en": "My parents and I means we, so we use nous.",
+                "fr": "Mes parents et moi signifie nous, donc on emploie nous.",
+                "de": "Meine Eltern und ich bedeutet wir, also verwendet man nous."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex-wo-pl",
+      "role": "exercise",
+      "blockId": "block-plural",
+      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
+      "pages": [
+        {
+          "pageId": "ex-wo-pl-1",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-wo-pl-1",
+              "tokens": [
+                { "tokenId": "t-1", "text": "à" },
+                { "tokenId": "t-2", "text": "Elles" },
+                { "tokenId": "t-3", "text": "." },
+                { "tokenId": "t-4", "text": "Paris" },
+                { "tokenId": "t-5", "text": "habitent" }
+              ],
+              "acceptedOrders": [["t-2", "t-5", "t-1", "t-4", "t-3"]],
+              "ruleIds": ["rule-ils-elles"],
+              "answerExplanation": {
+                "en": "The pronoun elles comes first, then the verb.",
+                "fr": "Le pronom elles vient en premier, puis le verbe.",
+                "de": "Das Pronomen elles steht zuerst, dann das Verb."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-wo-pl-2",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-wo-pl-2",
+              "tokens": [
+                { "tokenId": "t-1", "text": "ensemble" },
+                { "tokenId": "t-2", "text": "." },
+                { "tokenId": "t-3", "text": "On" },
+                { "tokenId": "t-4", "text": "mange" }
+              ],
+              "acceptedOrders": [["t-3", "t-4", "t-1", "t-2"]],
+              "ruleIds": ["rule-on-nous"],
+              "answerExplanation": {
+                "en": "The pronoun on comes first, then the verb.",
+                "fr": "Le pronom on vient en premier, puis le verbe.",
+                "de": "Das Pronomen on steht zuerst, dann das Verb."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "ex-wo-pl-3",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "ex-wo-pl-3",
+              "tokens": [
+                { "tokenId": "t-1", "text": "la" },
+                { "tokenId": "t-2", "text": "Nous" },
+                { "tokenId": "t-3", "text": "." },
+                { "tokenId": "t-4", "text": "musique" },
+                { "tokenId": "t-5", "text": "aimons" }
+              ],
+              "acceptedOrders": [["t-2", "t-5", "t-1", "t-4", "t-3"]],
+              "ruleIds": ["rule-on-nous"],
+              "answerExplanation": {
+                "en": "The pronoun nous comes first, then the verb.",
+                "fr": "Le pronom nous vient en premier, puis le verbe.",
+                "de": "Das Pronomen nous steht zuerst, dann das Verb."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "feedback",
+      "role": "feedback",
+      "blockId": null,
+      "label": { "en": "Your feedback", "fr": "Votre retour", "de": "Dein Feedback" },
+      "pages": [
+        {
+          "pageId": "feedback",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Continue to the final exam.",
+            "fr": "Passez à l’examen final.",
+            "de": "Weiter zur Abschlussprüfung."
+          },
+          "items": [{ "type": "production_feedback_placeholder", "itemId": "feedback" }]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "role": "exam",
+      "blockId": null,
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam-sg",
+          "estimatedDurationS": 80,
+          "timeLimitS": 120,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-sg-1",
+              "before": "Mon père s'appelle Jean :",
+              "after": "travaille à l'hôpital.",
+              "accepted": { "answers": ["il"] },
+              "hint": null,
+              "ruleIds": ["rule-singular"],
+              "answerExplanation": {
+                "en": "Jean is a man, so we use il.",
+                "fr": "Jean est un homme, donc on emploie il.",
+                "de": "Jean ist ein Mann, also verwendet man il."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-sg-2",
+              "before": "Lisa est ma voisine et",
+              "after": "parle italien.",
+              "accepted": { "answers": ["elle"] },
+              "hint": null,
+              "ruleIds": ["rule-singular"],
+              "answerExplanation": {
+                "en": "Lisa is a woman, so we use elle.",
+                "fr": "Lisa est une femme, donc on emploie elle.",
+                "de": "Lisa ist eine Frau, also verwendet man elle."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-sg-3",
+              "before": "Camille, ma petite sœur,",
+              "after": "aimes le chocolat ?",
+              "accepted": { "answers": ["tu"] },
+              "hint": null,
+              "ruleIds": ["rule-tu-vous"],
+              "answerExplanation": {
+                "en": "Camille is a relative, so we say tu.",
+                "fr": "Camille est une proche, donc on dit tu.",
+                "de": "Camille ist eine Verwandte, also sagt man tu."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-sg-4",
+              "before": "Madame Roux,",
+              "after": "avez un stylo ?",
+              "accepted": { "answers": ["vous"] },
+              "hint": null,
+              "ruleIds": ["rule-tu-vous"],
+              "answerExplanation": {
+                "en": "Madame Roux is addressed politely, so we say vous.",
+                "fr": "On s'adresse poliment à madame Roux, donc on dit vous.",
+                "de": "Madame Roux wird höflich angesprochen, also sagt man vous."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-pl",
+          "estimatedDurationS": 80,
+          "timeLimitS": 120,
+          "instructions": {
+            "en": "Type the missing words.",
+            "fr": "Écrivez les mots manquants.",
+            "de": "Schreib die fehlenden Wörter."
+          },
+          "items": [
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-pl-1",
+              "before": "Karim et Samir sont frères :",
+              "after": "jouent au foot.",
+              "accepted": { "answers": ["ils"] },
+              "hint": null,
+              "ruleIds": ["rule-ils-elles"],
+              "answerExplanation": {
+                "en": "Karim and Samir are men, so we use ils.",
+                "fr": "Karim et Samir sont des hommes, donc on emploie ils.",
+                "de": "Karim und Samir sind Männer, also verwendet man ils."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-pl-2",
+              "before": "Nina et Zoé sont cousines :",
+              "after": "aiment danser.",
+              "accepted": { "answers": ["elles"] },
+              "hint": null,
+              "ruleIds": ["rule-ils-elles"],
+              "answerExplanation": {
+                "en": "Nina and Zoé are both women, so we use elles.",
+                "fr": "Nina et Zoé sont deux femmes, donc on emploie elles.",
+                "de": "Nina und Zoé sind beides Frauen, also verwendet man elles."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-pl-3",
+              "before": "Le dimanche, chez moi,",
+              "after": "mange tous ensemble.",
+              "accepted": { "answers": ["on"] },
+              "hint": null,
+              "ruleIds": ["rule-on-nous"],
+              "answerExplanation": {
+                "en": "In everyday speech on replaces nous, and its verb is like il.",
+                "fr": "À l'oral, on remplace nous, et son verbe est comme celui de il.",
+                "de": "Im Alltag ersetzt on das nous, und sein Verb ist wie das von il."
+              }
+            },
+            {
+              "type": "grammar_gap_typing",
+              "itemId": "exam-pl-4",
+              "before": "Ma sœur et moi,",
+              "after": "aimons le cinéma.",
+              "accepted": { "answers": ["nous"] },
+              "hint": null,
+              "ruleIds": ["rule-on-nous"],
+              "answerExplanation": {
+                "en": "My sister and I means we, and the verb aimons goes with nous.",
+                "fr": "Ma sœur et moi signifie nous, et le verbe aimons va avec nous.",
+                "de": "Meine Schwester und ich bedeutet wir, und das Verb aimons gehört zu nous."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-order",
+          "estimatedDurationS": 90,
+          "timeLimitS": 150,
+          "instructions": {
+            "en": "Put the words in the right order.",
+            "fr": "Mettez les mots dans le bon ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "grammar_word_order",
+              "itemId": "exam-order-1",
+              "tokens": [
+                { "tokenId": "t-1", "text": "monsieur" },
+                { "tokenId": "t-2", "text": "?" },
+                { "tokenId": "t-3", "text": "Vous" },
+                { "tokenId": "t-4", "text": "," },
+                { "tokenId": "t-5", "text": "français" },
+                { "tokenId": "t-6", "text": "parlez" }
+              ],
+              "acceptedOrders": [["t-3", "t-6", "t-5", "t-4", "t-1", "t-2"]],
+              "ruleIds": ["rule-tu-vous"],
+              "answerExplanation": {
+                "en": "Vous is polite, so it suits a monsieur you do not know.",
+                "fr": "Vous est poli, il convient pour un monsieur que l'on ne connaît pas.",
+                "de": "Vous ist höflich und passt zu einem fremden Herrn."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "exam-order-2",
+              "tokens": [
+                { "tokenId": "t-1", "text": "Berlin" },
+                { "tokenId": "t-2", "text": "?" },
+                { "tokenId": "t-3", "text": "Tu" },
+                { "tokenId": "t-4", "text": "à" },
+                { "tokenId": "t-5", "text": "habites" }
+              ],
+              "acceptedOrders": [["t-3", "t-5", "t-4", "t-1", "t-2"]],
+              "ruleIds": ["rule-tu-vous"],
+              "answerExplanation": {
+                "en": "Tu is used with a friend, and the verb habites goes with tu.",
+                "fr": "Tu s'emploie avec un ami, et le verbe habites va avec tu.",
+                "de": "Tu verwendet man bei einem Freund, und das Verb habites gehört zu tu."
+              }
+            },
+            {
+              "type": "grammar_word_order",
+              "itemId": "exam-order-3",
+              "tokens": [
+                { "tokenId": "t-1", "text": "tennis" },
+                { "tokenId": "t-2", "text": "." },
+                { "tokenId": "t-3", "text": "joue" },
+                { "tokenId": "t-4", "text": "On" },
+                { "tokenId": "t-5", "text": "au" }
+              ],
+              "acceptedOrders": [["t-4", "t-3", "t-5", "t-1", "t-2"]],
+              "ruleIds": ["rule-on-nous"],
+              "answerExplanation": {
+                "en": "On means we, and its verb joue is like the verb after il.",
+                "fr": "On signifie nous, et son verbe joue est comme celui de il.",
+                "de": "On bedeutet wir, und sein Verb joue ist wie das von il."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

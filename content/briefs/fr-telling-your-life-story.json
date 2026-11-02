@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-telling-your-life-story",
+  "lang": "fr",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Raconter son parcours",
+  "objective": {
+    "en": "Tell your personal or professional story by linking its stages: after school, back then, after two years, that's where, since then.",
+    "fr": "Raconter son parcours en reliant les étapes : après le bac, à l’époque, au bout de deux ans, c’est là que, depuis.",
+    "de": "Den eigenen Lebensweg erzählen und die Etappen verknüpfen: nach dem Abitur, damals, nach zwei Jahren, genau dort, seitdem."
+  },
+  "estimatedMinutes": 17,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:47:36.623Z",
+    "inputHashes": { "outline": "87471b37d9d849f632411fde155f43c88a1fcbb5f7a941e447d97b3524baedc0" }
+  },
+  "kind": "functions",
+  "theme": "personal_identification",
+  "situation": {
+    "en": "A radio host interviews a guest who tells the story of his life and career.",
+    "fr": "Une animatrice de radio interroge un invité qui raconte son parcours de vie et de travail.",
+    "de": "Eine Radiomoderatorin interviewt einen Gast, der seinen Lebens- und Berufsweg erzählt."
+  },
+  "coverageNotes": {
+    "en": "Six linking expressions to tell a life story in order: the first step (Après le bac), the setting (À l’époque), time passing (Au bout de deux ans), a key place or moment (C’est là que), a cause (C’est comme ça que) and the present result (Depuis).",
+    "fr": "Six expressions de liaison pour raconter un parcours dans l’ordre : la première étape (Après le bac), le décor (À l’époque), le temps qui passe (Au bout de deux ans), un lieu ou moment clé (C’est là que), une cause (C’est comme ça que) et le résultat actuel (Depuis).",
+    "de": "Sechs Verbindungsausdrücke, um einen Lebensweg der Reihe nach zu erzählen: der erste Schritt (Après le bac), der Hintergrund (À l’époque), vergehende Zeit (Au bout de deux ans), ein Schlüsselort oder -moment (C’est là que), eine Ursache (C’est comme ça que) und das heutige Ergebnis (Depuis)."
+  },
+  "prerequisites": [],
+  "roles": [
+    {
+      "id": "animatrice",
+      "label": "l’animatrice",
+      "translation": { "en": "the host", "de": "die Moderatorin" }
+    },
+    { "id": "invite", "label": "l’invité", "translation": { "en": "the guest", "de": "der Gast" } }
+  ],
+  "expressions": [
+    {
+      "id": "apres-le-bac",
+      "text": "Après le bac",
+      "openEnd": true,
+      "translations": { "en": ["After the baccalauréat"], "de": ["Nach dem Abitur"] },
+      "explanation": {
+        "en": "Marks the first step after school. Put it at the start of a sentence, then continue in the passé composé.",
+        "fr": "Marque la première étape après le lycée. On le place en début de phrase, puis on continue au passé composé.",
+        "de": "Markiert den ersten Schritt nach der Schule. Man setzt es an den Satzanfang und fährt im passé composé fort."
+      },
+      "example": {
+        "text": "Après le bac, je suis parti à Lyon pour étudier la chimie.",
+        "translation": {
+          "en": "After the baccalauréat, I went to Lyon to study chemistry.",
+          "de": "Nach dem Abitur bin ich nach Lyon gegangen, um Chemie zu studieren."
+        }
+      }
+    },
+    {
+      "id": "a-lepoque",
+      "text": "À l’époque",
+      "openEnd": true,
+      "translations": { "en": ["At that time"], "de": ["Damals"] },
+      "explanation": {
+        "en": "Sets the scene in the past. The verb that follows is often in the imparfait.",
+        "fr": "Plante le décor dans le passé. Le verbe qui suit est souvent à l’imparfait.",
+        "de": "Beschreibt den Hintergrund in der Vergangenheit. Das folgende Verb steht oft im imparfait."
+      },
+      "example": {
+        "text": "À l’époque, j’habitais chez mes parents à Lille.",
+        "translation": {
+          "en": "At that time, I lived with my parents in Lille.",
+          "de": "Damals wohnte ich bei meinen Eltern in Lille."
+        }
+      }
+    },
+    {
+      "id": "au-bout-de",
+      "text": "Au bout de deux ans",
+      "openEnd": true,
+      "translations": { "en": ["After two years"], "de": ["Nach zwei Jahren"] },
+      "explanation": {
+        "en": "Says how much time passed before the next step: Au bout de + a length of time.",
+        "fr": "Dit combien de temps a passé avant l’étape suivante : Au bout de + une durée.",
+        "de": "Sagt, wie viel Zeit bis zum nächsten Schritt verging: Au bout de + Zeitdauer."
+      },
+      "example": {
+        "text": "Au bout de deux ans, j’ai changé de travail.",
+        "translation": {
+          "en": "After two years, I changed jobs.",
+          "de": "Nach zwei Jahren habe ich den Job gewechselt."
+        }
+      }
+    },
+    {
+      "id": "cest-la-que",
+      "text": "C’est là que",
+      "openEnd": true,
+      "translations": { "en": ["That’s where"], "de": ["Genau dort, wo"] },
+      "explanation": {
+        "en": "Highlights a key place or moment of your story: C’est là que + passé composé.",
+        "fr": "Met en valeur un lieu ou un moment clé de votre histoire : C’est là que + passé composé.",
+        "de": "Hebt einen Schlüsselort oder -moment deiner Geschichte hervor: C’est là que + passé composé."
+      },
+      "example": {
+        "text": "J’ai trouvé un poste à Nantes, et c’est là que j’ai rencontré mon mari.",
+        "translation": {
+          "en": "I found a job in Nantes, and that’s where I met my husband.",
+          "de": "Ich habe eine Stelle in Nantes gefunden, und genau dort habe ich meinen Mann kennengelernt."
+        }
+      }
+    },
+    {
+      "id": "cest-comme-ca-que",
+      "text": "C’est comme ça que",
+      "openEnd": true,
+      "translations": { "en": ["That’s how"], "de": ["So kam es, dass"] },
+      "explanation": {
+        "en": "Explains how something began, after you have described the events that led to it.",
+        "fr": "Explique comment quelque chose a commencé, après avoir décrit les événements qui y ont mené.",
+        "de": "Erklärt, wie etwas begonnen hat, nachdem man die Ereignisse beschrieben hat, die dazu führten."
+      },
+      "example": {
+        "text": "Une amie m’a présenté un éditeur, et c’est comme ça que j’ai commencé à écrire.",
+        "translation": {
+          "en": "A friend introduced me to a publisher, and that’s how I started writing.",
+          "de": "Eine Freundin hat mich einem Verleger vorgestellt, und so habe ich angefangen zu schreiben."
+        }
+      }
+    },
+    {
+      "id": "depuis",
+      "text": "Depuis",
+      "openEnd": true,
+      "translations": { "en": ["Since then"], "de": ["Seitdem"] },
+      "explanation": {
+        "en": "Links the past to the present: what began then still continues now. The verb is in the present.",
+        "fr": "Relie le passé au présent : ce qui a commencé alors continue maintenant. Le verbe est au présent.",
+        "de": "Verbindet Vergangenheit und Gegenwart: Was damals begann, dauert noch an. Das Verb steht im Präsens."
+      },
+      "example": {
+        "text": "Depuis, je travaille dans une petite école de musique.",
+        "translation": {
+          "en": "Since then, I have worked in a small music school.",
+          "de": "Seitdem arbeite ich in einer kleinen Musikschule."
+        }
+      }
+    }
+  ],
+  "words": [],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

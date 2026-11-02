@@ -1,0 +1,211 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-here-there-now-tomorrow",
+  "lang": "fr",
+  "level": "A1",
+  "locales": ["en", "fr", "de"],
+  "title": "Ici, là, maintenant, demain",
+  "objective": {
+    "en": "Place a person or an action in space and time with ici, là, maintenant, aujourd'hui, demain, bientôt and tout de suite.",
+    "fr": "Situer une personne ou une action dans l'espace et le temps avec ici, là, maintenant, aujourd'hui, demain, bientôt et tout de suite.",
+    "de": "Eine Person oder Handlung mit ici, là, maintenant, aujourd'hui, demain, bientôt und tout de suite örtlich und zeitlich einordnen."
+  },
+  "estimatedMinutes": 13,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:29:26.039Z",
+    "inputHashes": { "outline": "0c4fac30a03f1b75a15894cc0ab8190bcf7cc3661c04d68c6a668d5eb2ae7a55" }
+  },
+  "kind": "grammar",
+  "topic": "adverbs",
+  "scopeBoundaries": {
+    "en": "Covers ici and là for place, and maintenant, aujourd'hui, tout de suite, demain and bientôt for time. Excludes past-time adverbs, là-bas and other tenses.",
+    "fr": "Couvre ici et là pour le lieu, et maintenant, aujourd'hui, tout de suite, demain et bientôt pour le temps. Exclut les adverbes du passé, là-bas et les autres temps.",
+    "de": "Behandelt ici und là für den Ort sowie maintenant, aujourd'hui, tout de suite, demain und bientôt für die Zeit. Ausgeschlossen sind Adverbien der Vergangenheit, là-bas und andere Zeiten."
+  },
+  "prerequisites": [
+    {
+      "en": "The verb être and -er verbs in the present tense",
+      "fr": "Le verbe être et les verbes en -er au présent",
+      "de": "Das Verb être und die -er-Verben im Präsens"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-place",
+      "summary": {
+        "en": "Use ici for the place where I am, and là for a place a little farther or one we both see.",
+        "fr": "Employer ici pour l'endroit où je suis, et là pour un endroit un peu plus loin ou que nous voyons tous les deux.",
+        "de": "ici für den Ort, an dem ich bin, und là für einen etwas weiter entfernten oder gemeinsam gesehenen Ort verwenden."
+      }
+    },
+    {
+      "id": "rule-time-now",
+      "summary": {
+        "en": "Use maintenant, aujourd'hui and tout de suite for the present moment, today and right away.",
+        "fr": "Employer maintenant, aujourd'hui et tout de suite pour le moment présent, ce jour et sans attendre.",
+        "de": "maintenant, aujourd'hui und tout de suite für den jetzigen Moment, heute und sofort verwenden."
+      }
+    },
+    {
+      "id": "rule-time-future",
+      "summary": {
+        "en": "Use demain and bientôt for tomorrow and soon; time adverbs go at the end or at the start with a comma.",
+        "fr": "Employer demain et bientôt pour le lendemain et dans peu de temps ; l'adverbe de temps est à la fin ou au début avec une virgule.",
+        "de": "demain und bientôt für morgen und bald verwenden; Zeitadverbien stehen am Ende oder am Anfang mit Komma."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-place",
+      "title": { "en": "Where? ici and là", "fr": "Où ? ici et là", "de": "Wo? ici und là" },
+      "ruleIds": ["rule-place"],
+      "explanationPlan": {
+        "en": "Explain ici (where I am) and là (farther, or a place we both see). Show the adverb after the verb.",
+        "fr": "Expliquer ici (où je suis) et là (plus loin, ou un lieu que nous voyons tous les deux). Montrer l'adverbe après le verbe.",
+        "de": "ici (wo ich bin) und là (weiter weg oder gemeinsam gesehener Ort) erklären. Das Adverb nach dem Verb zeigen."
+      },
+      "explanationDurationS": 100,
+      "examples": [
+        { "text": "Je suis ici.", "translation": { "en": "I am here.", "de": "Ich bin hier." } },
+        { "text": "Tu es là ?", "translation": { "en": "Are you there?", "de": "Bist du da?" } },
+        {
+          "text": "Marie est là.",
+          "translation": { "en": "Marie is there.", "de": "Marie ist da." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not forget the accent grave on là; la without an accent is an article.",
+          "fr": "N'oubliez pas l'accent grave sur là ; la sans accent est un article.",
+          "de": "Den Accent grave auf là nicht vergessen; la ohne Akzent ist ein Artikel."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-place-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-place"],
+          "estimatedDurationS": 40
+        },
+        {
+          "id": "ex-place-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 3,
+          "ruleIds": ["rule-place"],
+          "estimatedDurationS": 45
+        },
+        {
+          "id": "ex-place-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-place"],
+          "estimatedDurationS": 60
+        }
+      ]
+    },
+    {
+      "id": "block-time",
+      "title": {
+        "en": "When? maintenant, aujourd'hui, demain, bientôt",
+        "fr": "Quand ? maintenant, aujourd'hui, demain, bientôt",
+        "de": "Wann? maintenant, aujourd'hui, demain, bientôt"
+      },
+      "ruleIds": ["rule-time-now", "rule-time-future"],
+      "explanationPlan": {
+        "en": "Present maintenant, tout de suite, aujourd'hui, demain and bientôt with short sentences. Show their place in the sentence.",
+        "fr": "Présenter maintenant, tout de suite, aujourd'hui, demain et bientôt avec des phrases courtes. Montrer leur place dans la phrase.",
+        "de": "maintenant, tout de suite, aujourd'hui, demain und bientôt mit kurzen Sätzen vorstellen. Ihre Stellung im Satz zeigen."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "J'arrive tout de suite.",
+          "translation": { "en": "I am coming right away.", "de": "Ich komme sofort." }
+        },
+        {
+          "text": "Elle arrive demain.",
+          "translation": { "en": "She arrives tomorrow.", "de": "Sie kommt morgen an." }
+        },
+        {
+          "text": "Le professeur arrive bientôt.",
+          "translation": { "en": "The teacher is arriving soon.", "de": "Der Lehrer kommt bald." }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Write aujourd'hui with an apostrophe, and bientôt with an accent circonflexe on the o.",
+          "fr": "Écrivez aujourd'hui avec une apostrophe, et bientôt avec un accent circonflexe sur le o.",
+          "de": "aujourd'hui mit Apostroph und bientôt mit Accent circonflexe auf dem o schreiben."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-time-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-time-now", "rule-time-future"],
+          "estimatedDurationS": 40
+        },
+        {
+          "id": "ex-time-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-time-now", "rule-time-future"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-time-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-time-now", "rule-time-future"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-time-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 3,
+          "ruleIds": ["rule-time-now", "rule-time-future"],
+          "estimatedDurationS": 60
+        }
+      ]
+    }
+  ],
+  "newVerbs": [
+    { "infinitive": "arriver", "translations": { "en": "to arrive", "de": "ankommen" } }
+  ],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-place",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["rule-place"],
+        "estimatedDurationS": 45,
+        "timeLimitS": 80
+      },
+      {
+        "pageId": "exam-time",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-time-now", "rule-time-future"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-place", "rule-time-now", "rule-time-future"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

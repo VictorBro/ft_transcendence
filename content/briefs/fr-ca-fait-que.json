@@ -1,0 +1,264 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-ca-fait-que",
+  "lang": "fr",
+  "level": "B1",
+  "locales": ["en", "fr", "de"],
+  "title": "Ça fait deux ans que…",
+  "objective": {
+    "en": "Say how long a situation has lasted with ça fait… que, il y a… que and depuis, and tell depuis apart from il y a.",
+    "fr": "Dire depuis combien de temps dure une situation avec ça fait… que, il y a… que et depuis, et distinguer depuis de il y a.",
+    "de": "Mit ça fait… que, il y a… que und depuis sagen, wie lange eine Situation dauert, und depuis von il y a unterscheiden."
+  },
+  "estimatedMinutes": 15,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:51:16.892Z",
+    "inputHashes": { "outline": "f4566aabec9e8a03ffc32e653cdf8839f8d160e4352f7d00fc7f5086e4198cc6" }
+  },
+  "kind": "grammar",
+  "topic": "syntax_and_sentence_structure",
+  "scopeBoundaries": {
+    "en": "Covers ça fait / il y a + duration + que + present, depuis + duration or starting point, and the contrast with il y a + passé composé. Excludes depuis que + clause, which belongs to the time-clauses lesson.",
+    "fr": "Couvre ça fait / il y a + durée + que + présent, depuis + durée ou point de départ, et le contraste avec il y a + passé composé. Exclut depuis que + proposition, vu dans la leçon sur les subordonnées de temps.",
+    "de": "Behandelt ça fait / il y a + Zeitspanne + que + Präsens, depuis + Zeitspanne oder Anfangspunkt und den Kontrast zu il y a + Passé composé. Ausgeschlossen ist depuis que + Nebensatz (Lektion zu den Zeitsätzen)."
+  },
+  "prerequisites": [
+    {
+      "en": "Present tense of regular and common irregular verbs",
+      "fr": "Le présent des verbes réguliers et des verbes irréguliers courants",
+      "de": "Präsens regelmäßiger und häufiger unregelmäßiger Verben"
+    },
+    {
+      "en": "Passé composé, including the negative and pronominal verbs",
+      "fr": "Le passé composé, y compris au négatif et avec les verbes pronominaux",
+      "de": "Passé composé, auch in der Verneinung und mit reflexiven Verben"
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-ca-fait-que",
+      "summary": {
+        "en": "Ça fait + duration + que + present says how long a situation has lasted.",
+        "fr": "Ça fait + durée + que + présent dit depuis combien de temps dure une situation.",
+        "de": "Ça fait + Zeitspanne + que + Präsens sagt, wie lange eine Situation dauert."
+      }
+    },
+    {
+      "id": "r-il-y-a-que",
+      "summary": {
+        "en": "Il y a + duration + que + present has the same meaning; with ne... pas, for something that has not happened, the passé composé is used (je ne l'ai pas vu); with ne... plus, the present stays (elle ne fume plus).",
+        "fr": "Il y a + durée + que + présent a le même sens ; avec ne... pas, pour ce qui ne s'est pas produit, on emploie le passé composé (je ne l'ai pas vu) ; avec ne... plus, le présent reste (elle ne fume plus).",
+        "de": "Il y a + Zeitspanne + que + Präsens hat dieselbe Bedeutung; mit ne... pas, für etwas, das nicht geschehen ist, steht das Passé composé (je ne l'ai pas vu); mit ne... plus bleibt das Präsens (elle ne fume plus)."
+      }
+    },
+    {
+      "id": "r-depuis",
+      "summary": {
+        "en": "Depuis + duration or starting point + present; question: depuis quand ?",
+        "fr": "Depuis + durée ou point de départ + présent ; question : depuis quand ?",
+        "de": "Depuis + Zeitspanne oder Anfangspunkt + Präsens; Frage: depuis quand ?"
+      }
+    },
+    {
+      "id": "r-il-y-a-passe",
+      "summary": {
+        "en": "Il y a + duration without que dates a finished action, with the passé composé; do not confuse it with depuis.",
+        "fr": "Il y a + durée sans que situe une action terminée, avec le passé composé ; ne pas confondre avec depuis.",
+        "de": "Il y a + Zeitspanne ohne que datiert eine abgeschlossene Handlung, mit Passé composé; nicht mit depuis verwechseln."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-ca-fait",
+      "title": {
+        "en": "Ça fait… que and il y a… que",
+        "fr": "Ça fait… que et il y a… que",
+        "de": "Ça fait… que und il y a… que"
+      },
+      "ruleIds": ["r-ca-fait-que", "r-il-y-a-que"],
+      "explanationPlan": {
+        "en": "Explain ça fait / il y a + duration + que + present for a situation that continues, ne... pas with the passé composé but ne... plus with the present, and that both structures mean the same.",
+        "fr": "Expliquer ça fait / il y a + durée + que + présent pour une situation qui continue, ne... pas avec le passé composé mais ne... plus avec le présent, et le fait que les deux structures ont le même sens.",
+        "de": "Ça fait / il y a + Zeitspanne + que + Präsens für andauernde Situationen erklären, ne... pas mit Passé composé, ne... plus aber mit Präsens, und dass beide Strukturen dasselbe bedeuten."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Ça fait cinq ans que Marc travaille à Paris.",
+          "translation": {
+            "en": "Marc has been working in Paris for five years.",
+            "de": "Marc arbeitet seit fünf Jahren in Paris."
+          }
+        },
+        {
+          "text": "Il y a longtemps qu'on ne s'est pas vus.",
+          "translation": {
+            "en": "We haven't seen each other for a long time.",
+            "de": "Wir haben uns lange nicht gesehen."
+          }
+        },
+        {
+          "text": "Ça fait une heure que je t'attends.",
+          "translation": {
+            "en": "I've been waiting for you for an hour.",
+            "de": "Ich warte seit einer Stunde auf dich."
+          }
+        },
+        {
+          "text": "Il y a un mois qu'elle ne fume plus.",
+          "translation": {
+            "en": "She hasn't smoked for a month.",
+            "de": "Sie raucht seit einem Monat nicht mehr."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not use the passé composé for a situation that continues: say ça fait deux ans que j'habite ici, not que j'ai habité.",
+          "fr": "N'employez pas le passé composé pour une situation qui continue : ça fait deux ans que j'habite ici, et non que j'ai habité.",
+          "de": "Verwende kein Passé composé für eine andauernde Situation: ça fait deux ans que j'habite ici, nicht que j'ai habité."
+        },
+        {
+          "en": "Do not forget que after the duration.",
+          "fr": "N'oubliez pas que après la durée.",
+          "de": "Vergiss que nach der Zeitspanne nicht."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "b1-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["r-ca-fait-que", "r-il-y-a-que"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "b1-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["r-ca-fait-que", "r-il-y-a-que"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "b1-order",
+          "type": "grammar_word_order",
+          "itemCount": 4,
+          "ruleIds": ["r-ca-fait-que", "r-il-y-a-que"],
+          "estimatedDurationS": 100
+        }
+      ]
+    },
+    {
+      "id": "block-depuis",
+      "title": {
+        "en": "Depuis, and the difference with il y a",
+        "fr": "Depuis, et la différence avec il y a",
+        "de": "Depuis und der Unterschied zu il y a"
+      },
+      "ruleIds": ["r-depuis", "r-il-y-a-passe"],
+      "explanationPlan": {
+        "en": "Explain depuis + duration or starting point + present, the questions depuis quand and ça fait combien de temps que, and the contrast with il y a + passé composé.",
+        "fr": "Expliquer depuis + durée ou point de départ + présent, les questions depuis quand et ça fait combien de temps que, et le contraste avec il y a + passé composé.",
+        "de": "Depuis + Zeitspanne oder Anfangspunkt + Präsens erklären, die Fragen depuis quand und ça fait combien de temps que sowie den Kontrast zu il y a + Passé composé."
+      },
+      "explanationDurationS": 120,
+      "examples": [
+        {
+          "text": "Je travaille ici depuis mars.",
+          "translation": {
+            "en": "I have worked here since March.",
+            "de": "Ich arbeite seit März hier."
+          }
+        },
+        {
+          "text": "Nous sommes mariés depuis dix ans.",
+          "translation": {
+            "en": "We have been married for ten years.",
+            "de": "Wir sind seit zehn Jahren verheiratet."
+          }
+        },
+        {
+          "text": "Il est parti il y a une semaine.",
+          "translation": { "en": "He left a week ago.", "de": "Er ist vor einer Woche abgereist." }
+        },
+        {
+          "text": "Depuis quand apprends-tu le russe ?",
+          "translation": {
+            "en": "How long have you been learning Russian?",
+            "de": "Seit wann lernst du Russisch?"
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Il y a + duration alone means ago and goes with the passé composé; it does not mean since.",
+          "fr": "Il y a + durée seul veut dire il y a (ago) et s'emploie avec le passé composé ; il ne veut pas dire depuis.",
+          "de": "Il y a + Zeitspanne allein bedeutet vor und steht mit dem Passé composé; es bedeutet nicht seit."
+        },
+        {
+          "en": "A continuing situation takes depuis + present, not the passé composé.",
+          "fr": "Une situation qui continue demande depuis + présent, pas le passé composé.",
+          "de": "Eine andauernde Situation verlangt depuis + Präsens, nicht das Passé composé."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "b2-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["r-depuis", "r-il-y-a-passe"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "b2-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["r-depuis", "r-il-y-a-passe"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "b2-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 4,
+          "ruleIds": ["r-depuis", "r-il-y-a-passe"],
+          "estimatedDurationS": 100
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-que",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["r-ca-fait-que", "r-il-y-a-que"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      },
+      {
+        "pageId": "exam-depuis",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["r-depuis", "r-il-y-a-passe"],
+        "estimatedDurationS": 45,
+        "timeLimitS": 80
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["r-ca-fait-que", "r-il-y-a-que", "r-depuis"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 100
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}
