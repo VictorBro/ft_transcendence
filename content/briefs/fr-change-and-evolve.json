@@ -1,0 +1,603 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-change-and-evolve",
+  "lang": "fr",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Modifier, transformer, évoluer",
+  "objective": {
+    "en": "Express nuances of change with twelve precise French verbs.",
+    "fr": "Nuancer l’idée de changement avec douze verbes précis.",
+    "de": "Nuancen der Veränderung mit zwölf präzisen französischen Verben ausdrücken."
+  },
+  "estimatedMinutes": 19,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:58:10.052Z",
+    "inputHashes": { "outline": "5eca3755819ca95402849b59087743f2bb3555db3db912b81c80387b07b4fbc0" }
+  },
+  "kind": "vocabulary",
+  "theme": "language",
+  "coverageNotes": {
+    "en": "Twelve verbs of change in two groups: partial or controlled changes (modifier, ajuster, remanier, réformer, infléchir, altérer) and deep or lasting ones (transformer, bouleverser, révolutionner, évoluer, muter, se métamorphoser). The outline list is extended with altérer and révolutionner to reach a dozen.",
+    "fr": "Douze verbes du changement en deux groupes : les changements partiels ou maîtrisés (modifier, ajuster, remanier, réformer, infléchir, altérer) et les changements profonds ou durables (transformer, bouleverser, révolutionner, évoluer, muter, se métamorphoser). La liste du plan est complétée par altérer et révolutionner pour atteindre une douzaine.",
+    "de": "Zwölf Verben der Veränderung in zwei Gruppen: teilweise oder gesteuerte Veränderungen (modifier, ajuster, remanier, réformer, infléchir, altérer) und tiefgreifende oder dauerhafte (transformer, bouleverser, révolutionner, évoluer, muter, se métamorphoser). Die Liste der Gliederung wird um altérer und révolutionner auf ein Dutzend ergänzt."
+  },
+  "targetCount": 12,
+  "countRationale": {
+    "en": "Twelve verbs make a dozen, the size announced by the outline, and allow two balanced groups of six.",
+    "fr": "Douze verbes font la douzaine annoncée par le plan et permettent deux groupes équilibrés de six.",
+    "de": "Zwölf Verben ergeben das in der Gliederung angekündigte Dutzend und erlauben zwei ausgewogene Gruppen von sechs."
+  },
+  "difficultyBalance": {
+    "en": "Five core verbs (modifier, transformer, réformer, évoluer, ajuster) and seven demanding ones whose nuance is subtle (infléchir, remanier, altérer, muter…).",
+    "fr": "Cinq verbes de base (modifier, transformer, réformer, évoluer, ajuster) et sept verbes exigeants à la nuance fine (infléchir, remanier, altérer, muter…).",
+    "de": "Fünf Grundverben (modifier, transformer, réformer, évoluer, ajuster) und sieben anspruchsvolle mit feiner Nuance (infléchir, remanier, altérer, muter …)."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "retoucher",
+      "label": {
+        "en": "Adjust, rework, steer",
+        "fr": "Retoucher, remanier, orienter",
+        "de": "Anpassen, überarbeiten, steuern"
+      },
+      "targetIds": ["modifier", "ajuster", "remanier", "reformer", "inflechir", "alterer"],
+      "introduction": {
+        "en": "These verbs describe a **partial or controlled change**: you touch up, adjust or steer something without starting again from scratch.\n\n- `modifier`\n- `ajuster`\n- `remanier`\n- `réformer`\n- `infléchir`\n- `altérer`\n\nNote that `altérer` is negative: the change damages or distorts.",
+        "fr": "Ces verbes décrivent un **changement partiel ou maîtrisé** : on retouche, on règle ou on oriente sans tout reprendre à zéro.\n\n- `modifier`\n- `ajuster`\n- `remanier`\n- `réformer`\n- `infléchir`\n- `altérer`\n\nAttention, `altérer` est négatif : le changement abîme ou déforme.",
+        "de": "Diese Verben beschreiben eine **teilweise oder gesteuerte Veränderung**: Man bessert nach, stellt ein oder lenkt um, ohne bei null anzufangen.\n\n- `modifier`\n- `ajuster`\n- `remanier`\n- `réformer`\n- `infléchir`\n- `altérer`\n\nAchtung: `altérer` ist negativ, die Veränderung beschädigt oder verfälscht."
+      }
+    },
+    {
+      "id": "en-profondeur",
+      "label": {
+        "en": "Deep and lasting change",
+        "fr": "Les changements profonds",
+        "de": "Tiefgreifende Veränderungen"
+      },
+      "targetIds": [
+        "transformer",
+        "bouleverser",
+        "revolutionner",
+        "evoluer",
+        "muter",
+        "se-metamorphoser"
+      ],
+      "introduction": {
+        "en": "These verbs describe a **deep or lasting change**: the nature, the shape or the whole state of things shifts.\n\n- `transformer`\n- `bouleverser`\n- `révolutionner`\n- `évoluer`\n- `muter`\n- `se métamorphoser`\n\nOnly `évoluer`, `muter` and `se métamorphoser` take no direct object: things change by themselves.",
+        "fr": "Ces verbes décrivent un **changement profond ou durable** : la nature, la forme ou tout l’état des choses se déplace.\n\n- `transformer`\n- `bouleverser`\n- `révolutionner`\n- `évoluer`\n- `muter`\n- `se métamorphoser`\n\nSeuls `évoluer`, `muter` et `se métamorphoser` n’ont pas de complément d’objet direct : les choses changent d’elles-mêmes.",
+        "de": "Diese Verben beschreiben eine **tiefgreifende oder dauerhafte Veränderung**: Wesen, Form oder der ganze Zustand der Dinge verschiebt sich.\n\n- `transformer`\n- `bouleverser`\n- `révolutionner`\n- `évoluer`\n- `muter`\n- `se métamorphoser`\n\nNur `évoluer`, `muter` und `se métamorphoser` haben kein direktes Objekt: Die Dinge verändern sich von selbst."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "modifier",
+      "term": "modifier",
+      "translations": { "en": ["to modify", "to change"], "de": ["ändern", "verändern"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "modifier",
+      "examForms": ["modifier"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/mɔ.di.fje/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Le ministre a modifié trois articles du projet de loi.",
+        "translation": {
+          "en": "The minister modified three articles of the bill.",
+          "de": "Der Minister hat drei Artikel des Gesetzentwurfs geändert."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Modifier means to change one element of something while the whole stays the same.",
+        "fr": "Modifier, c’est changer un élément de quelque chose en laissant le reste intact.",
+        "de": "Modifier bedeutet, ein Element von etwas zu ändern, während das Ganze bestehen bleibt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Vous pouvez ",
+        "after": " votre mot de passe depuis les paramètres du compte.",
+        "accepted": { "answers": ["modifier"] },
+        "referenceTargetIds": ["modifier", "ajuster", "alterer", "remanier"],
+        "explanation": {
+          "en": "Only modifier fits: you change a password in the settings.",
+          "fr": "Seul « modifier » convient : on change un mot de passe dans les paramètres.",
+          "de": "Nur „modifier“ passt: Ein Passwort ändert man in den Einstellungen."
+        }
+      },
+      "listeningOptionTargetIds": ["modifier", "remanier", "reformer", "muter"]
+    },
+    {
+      "id": "ajuster",
+      "term": "ajuster",
+      "translations": { "en": ["to adjust", "to fine-tune"], "de": ["anpassen", "nachjustieren"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "ajuster",
+      "examForms": ["ajuster"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/a.ʒys.te/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Il faut ajuster le tir avant la prochaine campagne.",
+        "translation": {
+          "en": "We must fine-tune our approach before the next campaign.",
+          "de": "Wir müssen vor der nächsten Kampagne nachjustieren."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Ajuster means to make a small change so that something fits a need or a measure exactly.",
+        "fr": "Ajuster, c’est faire un petit changement pour que quelque chose corresponde exactement à un besoin ou à une mesure.",
+        "de": "Ajuster bedeutet, eine kleine Änderung vorzunehmen, damit etwas genau zu einem Bedarf oder Maß passt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Avant de monter à vélo, pense à ",
+        "after": " la hauteur de la selle.",
+        "accepted": { "answers": ["ajuster"] },
+        "referenceTargetIds": ["ajuster", "reformer", "bouleverser", "muter"],
+        "explanation": {
+          "en": "Only ajuster fits: you adjust the saddle to your size.",
+          "fr": "Seul « ajuster » convient : on règle la selle à sa taille.",
+          "de": "Nur „ajuster“ passt: Den Sattel stellt man auf die eigene Größe ein."
+        }
+      },
+      "listeningOptionTargetIds": ["ajuster", "inflechir", "alterer", "modifier"]
+    },
+    {
+      "id": "remanier",
+      "term": "remanier",
+      "translations": {
+        "en": ["to rework", "to reshuffle"],
+        "de": ["umgestalten", "überarbeiten", "umbilden"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "remanier",
+      "examForms": ["remanier"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʁə.ma.nje/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "L’auteur a remanié son texte avant la publication.",
+        "translation": {
+          "en": "The author reworked his text before publication.",
+          "de": "Der Autor hat seinen Text vor der Veröffentlichung überarbeitet."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Remanier means to reorganise or rewrite something that already exists, such as a text or a government team.",
+        "fr": "Remanier, c’est réorganiser ou réécrire ce qui existe déjà, comme un texte ou une équipe gouvernementale.",
+        "de": "Remanier bedeutet, etwas Bestehendes neu zu ordnen oder umzuschreiben, etwa einen Text oder ein Regierungsteam."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le Premier ministre va ",
+        "after": " son gouvernement après la démission de deux ministres.",
+        "accepted": { "answers": ["remanier"] },
+        "referenceTargetIds": ["remanier", "evoluer", "muter", "se-metamorphoser"],
+        "explanation": {
+          "en": "Only remanier fits: a government is reshuffled when ministers leave.",
+          "fr": "Seul « remanier » convient : on remanie un gouvernement quand des ministres partent.",
+          "de": "Nur „remanier“ passt: Eine Regierung wird umgebildet, wenn Minister gehen."
+        }
+      },
+      "listeningOptionTargetIds": ["remanier", "reformer", "modifier", "evoluer"]
+    },
+    {
+      "id": "reformer",
+      "term": "réformer",
+      "translations": { "en": ["to reform"], "de": ["reformieren"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "réformer",
+      "examForms": ["réformer"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʁe.fɔʁ.me/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Le pays tente de réformer son système éducatif.",
+        "translation": {
+          "en": "The country is trying to reform its education system.",
+          "de": "Das Land versucht, sein Bildungssystem zu reformieren."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Réformer means to change an institution, a law or a system in order to improve it.",
+        "fr": "Réformer, c’est changer une institution, une loi ou un système pour l’améliorer.",
+        "de": "Réformer bedeutet, eine Institution, ein Gesetz oder ein System zu ändern, um es zu verbessern."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le gouvernement veut ",
+        "after": " le système des retraites par une loi votée au printemps.",
+        "accepted": { "answers": ["réformer"] },
+        "referenceTargetIds": ["reformer", "evoluer", "muter", "se-metamorphoser"],
+        "explanation": {
+          "en": "Only réformer fits: a law reforms a system.",
+          "fr": "Seul « réformer » convient : une loi réforme un système.",
+          "de": "Nur „réformer“ passt: Ein Gesetz reformiert ein System."
+        }
+      },
+      "listeningOptionTargetIds": ["reformer", "remanier", "transformer", "alterer"]
+    },
+    {
+      "id": "inflechir",
+      "term": "infléchir",
+      "translations": {
+        "en": ["to shift the course of", "to soften"],
+        "de": ["umlenken", "abschwächen"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "infléchir",
+      "examForms": ["infléchir"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɛ̃.fle.ʃiʁ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Le président a infléchi sa politique sur l’immigration.",
+        "translation": {
+          "en": "The president shifted the course of his immigration policy.",
+          "de": "Der Präsident hat den Kurs seiner Einwanderungspolitik korrigiert."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Infléchir means to change the direction of a policy or trend slightly, without breaking with it.",
+        "fr": "Infléchir, c’est modifier légèrement la direction d’une politique ou d’une tendance, sans rompre avec elle.",
+        "de": "Infléchir bedeutet, die Richtung einer Politik oder Tendenz leicht zu ändern, ohne mit ihr zu brechen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Sous la pression de l’opinion, le président a dû ",
+        "after": " légèrement sa politique sans la renier.",
+        "accepted": { "answers": ["infléchir"] },
+        "referenceTargetIds": ["inflechir", "bouleverser", "muter", "se-metamorphoser"],
+        "explanation": {
+          "en": "Only infléchir fits: a slight change of direction that does not renounce the policy.",
+          "fr": "Seul « infléchir » convient : un léger changement de direction qui ne renie pas la politique.",
+          "de": "Nur „infléchir“ passt: eine leichte Kursänderung, die die Politik nicht verleugnet."
+        }
+      },
+      "listeningOptionTargetIds": ["inflechir", "ajuster", "reformer", "alterer"]
+    },
+    {
+      "id": "alterer",
+      "term": "altérer",
+      "translations": {
+        "en": ["to alter", "to distort", "to spoil"],
+        "de": ["verfälschen", "beeinträchtigen", "verderben"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "altérer",
+      "examForms": ["altérer"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/al.te.ʁe/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "La chaleur altère le goût du vin.",
+        "translation": {
+          "en": "Heat alters the taste of wine.",
+          "de": "Hitze beeinträchtigt den Geschmack des Weins."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Altérer means to change something for the worse: its quality, its taste or its meaning is damaged.",
+        "fr": "Altérer, c’est changer quelque chose en pire : sa qualité, son goût ou son sens est abîmé.",
+        "de": "Altérer bedeutet, etwas zum Schlechteren zu verändern: Qualität, Geschmack oder Sinn werden beschädigt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "La chaleur peut ",
+        "after": " le goût du vin et en gâcher la saveur.",
+        "accepted": { "answers": ["altérer"] },
+        "referenceTargetIds": ["alterer", "remanier", "evoluer", "reformer"],
+        "explanation": {
+          "en": "Only altérer fits: the heat spoils the taste, a change for the worse.",
+          "fr": "Seul « altérer » convient : la chaleur abîme le goût, un changement en pire.",
+          "de": "Nur „altérer“ passt: Die Hitze verdirbt den Geschmack, eine Veränderung zum Schlechteren."
+        }
+      },
+      "listeningOptionTargetIds": ["alterer", "evoluer", "ajuster", "muter"]
+    },
+    {
+      "id": "transformer",
+      "term": "transformer",
+      "translations": { "en": ["to transform", "to turn into"], "de": ["umwandeln", "verwandeln"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "transformer",
+      "examForms": ["transformer"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/tʁɑ̃s.fɔʁ.me/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "On a transformé l’ancienne gare en musée.",
+        "translation": {
+          "en": "The old station was turned into a museum.",
+          "de": "Der alte Bahnhof wurde in ein Museum umgewandelt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Transformer means to give something a new form or function, often with en + noun.",
+        "fr": "Transformer, c’est donner à quelque chose une nouvelle forme ou une nouvelle fonction, souvent avec en + nom.",
+        "de": "Transformer bedeutet, etwas eine neue Form oder Funktion zu geben, oft mit en + Nomen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ils ont décidé de ",
+        "after": " cette ancienne usine en logements.",
+        "accepted": { "answers": ["transformer"] },
+        "referenceTargetIds": ["transformer", "evoluer", "muter", "se-metamorphoser"],
+        "explanation": {
+          "en": "Only transformer takes an object and en: the factory becomes housing.",
+          "fr": "Seul « transformer » prend un complément d’objet et « en » : l’usine devient des logements.",
+          "de": "Nur „transformer“ nimmt ein Objekt und „en“: Die Fabrik wird zu Wohnungen."
+        }
+      },
+      "listeningOptionTargetIds": ["transformer", "reformer", "remanier", "revolutionner"]
+    },
+    {
+      "id": "bouleverser",
+      "term": "bouleverser",
+      "translations": {
+        "en": ["to upend", "to overturn", "to disrupt"],
+        "de": ["auf den Kopf stellen", "umwälzen", "erschüttern"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "bouleverser",
+      "examForms": ["bouleverser"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/bul.vɛʁ.se/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Cette découverte a bouleversé nos certitudes.",
+        "translation": {
+          "en": "This discovery upended our certainties.",
+          "de": "Diese Entdeckung hat unsere Gewissheiten erschüttert."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Bouleverser means to disturb an order so violently that everything has to be rethought; it can also mean to move someone deeply.",
+        "fr": "Bouleverser, c’est déranger un ordre si fortement qu’il faut tout repenser ; le verbe peut aussi dire émouvoir profondément.",
+        "de": "Bouleverser bedeutet, eine Ordnung so stark zu stören, dass alles neu gedacht werden muss; es kann auch tief bewegen heißen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Cette découverte risque de tout ",
+        "after": " et d’obliger à repenser entièrement la théorie.",
+        "accepted": { "answers": ["bouleverser"] },
+        "referenceTargetIds": ["bouleverser", "ajuster", "inflechir", "muter"],
+        "explanation": {
+          "en": "Only bouleverser fits: everything is shaken and the theory must be rethought.",
+          "fr": "Seul « bouleverser » convient : tout est ébranlé et la théorie est à repenser.",
+          "de": "Nur „bouleverser“ passt: Alles wird erschüttert, und die Theorie muss neu gedacht werden."
+        }
+      },
+      "listeningOptionTargetIds": ["bouleverser", "revolutionner", "evoluer", "ajuster"]
+    },
+    {
+      "id": "revolutionner",
+      "term": "révolutionner",
+      "translations": { "en": ["to revolutionise"], "de": ["revolutionieren"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "révolutionner",
+      "examForms": ["révolutionner"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʁe.vɔ.ly.sjɔ.ne/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Internet a révolutionné notre façon de communiquer.",
+        "translation": {
+          "en": "The internet revolutionised the way we communicate.",
+          "de": "Das Internet hat unsere Art zu kommunizieren revolutioniert."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Révolutionner means to change a field so radically and so positively that it enters a new era.",
+        "fr": "Révolutionner, c’est changer un domaine de façon si radicale et si novatrice qu’il entre dans une nouvelle ère.",
+        "de": "Révolutionner bedeutet, ein Gebiet so radikal und neuartig zu verändern, dass es in eine neue Ära eintritt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Internet a fini par ",
+        "after": " complètement notre façon de communiquer.",
+        "accepted": { "answers": ["révolutionner"] },
+        "referenceTargetIds": ["revolutionner", "evoluer", "muter", "ajuster"],
+        "explanation": {
+          "en": "Only révolutionner fits: a radical, innovative change of a whole field.",
+          "fr": "Seul « révolutionner » convient : un changement radical et novateur de tout un domaine.",
+          "de": "Nur „révolutionner“ passt: eine radikale, innovative Veränderung eines ganzen Bereichs."
+        }
+      },
+      "listeningOptionTargetIds": ["revolutionner", "evoluer", "bouleverser", "reformer"]
+    },
+    {
+      "id": "evoluer",
+      "term": "évoluer",
+      "translations": { "en": ["to evolve"], "de": ["sich entwickeln"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "évoluer",
+      "examForms": ["évoluer"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/e.vɔ.lɥe/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "La langue évolue avec ses locuteurs.",
+        "translation": {
+          "en": "Language evolves with its speakers.",
+          "de": "Die Sprache entwickelt sich mit ihren Sprechern."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Évoluer means to change gradually and naturally, without anyone imposing the change; it takes no object.",
+        "fr": "Évoluer, c’est changer progressivement et naturellement, sans que personne n’impose le changement ; le verbe n’a pas de complément d’objet.",
+        "de": "Évoluer bedeutet, sich allmählich und natürlich zu verändern, ohne dass jemand die Änderung erzwingt; das Verb hat kein Objekt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le sens d’un mot peut ",
+        "after": " au fil des siècles sans que personne ne l’ait décidé.",
+        "accepted": { "answers": ["évoluer"] },
+        "referenceTargetIds": ["evoluer", "modifier", "transformer", "remanier"],
+        "explanation": {
+          "en": "Only évoluer fits: the change happens by itself and needs no object.",
+          "fr": "Seul « évoluer » convient : le changement se fait de lui-même, sans complément d’objet.",
+          "de": "Nur „évoluer“ passt: Die Veränderung geschieht von selbst und braucht kein Objekt."
+        }
+      },
+      "listeningOptionTargetIds": ["evoluer", "revolutionner", "alterer", "bouleverser"]
+    },
+    {
+      "id": "muter",
+      "term": "muter",
+      "translations": { "en": ["to mutate"], "de": ["mutieren"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "muter",
+      "examForms": ["muter"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/my.te/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Le virus a muté en quelques semaines.",
+        "translation": {
+          "en": "The virus mutated within a few weeks.",
+          "de": "Das Virus ist innerhalb weniger Wochen mutiert."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Muter also means to transfer an employee to another post: l’entreprise a muté deux cadres.",
+        "fr": "Muter signifie aussi affecter un employé à un autre poste : l’entreprise a muté deux cadres.",
+        "de": "Muter bedeutet auch, einen Angestellten auf eine andere Stelle zu versetzen: l’entreprise a muté deux cadres."
+      },
+      "explanation": {
+        "en": "Muter means to change in a sudden, deep way, first of all in biology (genes), then figuratively for a society or a company.",
+        "fr": "Muter, c’est changer de façon brusque et profonde, d’abord en biologie (les gènes), puis au sens figuré pour une société ou une entreprise.",
+        "de": "Muter bedeutet, sich plötzlich und tiefgreifend zu verändern, zuerst in der Biologie (Gene), dann im übertragenen Sinn für eine Gesellschaft oder ein Unternehmen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ce virus a la capacité de ",
+        "after": " rapidement et d’échapper aux vaccins.",
+        "accepted": { "answers": ["muter"] },
+        "referenceTargetIds": ["muter", "ajuster", "remanier", "inflechir"],
+        "explanation": {
+          "en": "Only muter fits: a virus changes genetically.",
+          "fr": "Seul « muter » convient : un virus change génétiquement.",
+          "de": "Nur „muter“ passt: Ein Virus verändert sich genetisch."
+        }
+      },
+      "listeningOptionTargetIds": ["muter", "modifier", "alterer", "ajuster"]
+    },
+    {
+      "id": "se-metamorphoser",
+      "term": "se métamorphoser",
+      "translations": {
+        "en": ["to metamorphose", "to be completely transformed"],
+        "de": ["sich verwandeln"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "se métamorphoser",
+      "examForms": ["se métamorphoser"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/sə me.ta.mɔʁ.fo.ze/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "En quelques années, la ville s’est métamorphosée.",
+        "translation": {
+          "en": "In a few years, the city has been completely transformed.",
+          "de": "In wenigen Jahren hat sich die Stadt völlig verwandelt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Se métamorphoser means to change so completely that the result looks like something else; it is a reflexive verb.",
+        "fr": "Se métamorphoser, c’est changer si complètement que le résultat paraît tout autre ; c’est un verbe pronominal.",
+        "de": "Se métamorphoser bedeutet, sich so vollständig zu verändern, dass das Ergebnis ganz anders aussieht; es ist ein reflexives Verb."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "La chenille finit par ",
+        "after": " en papillon après quelques semaines.",
+        "accepted": { "answers": ["se métamorphoser"] },
+        "referenceTargetIds": ["se-metamorphoser", "ajuster", "remanier", "inflechir"],
+        "explanation": {
+          "en": "Only se métamorphoser fits: a caterpillar completely changes form and becomes a butterfly.",
+          "fr": "Seul « se métamorphoser » convient : la chenille change complètement de forme et devient papillon.",
+          "de": "Nur „se métamorphoser“ passt: Die Raupe ändert ihre Form völlig und wird zum Schmetterling."
+        }
+      },
+      "listeningOptionTargetIds": ["se-metamorphoser", "transformer", "modifier", "muter"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

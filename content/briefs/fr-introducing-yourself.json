@@ -4,278 +4,132 @@
   "lang": "fr",
   "level": "A1",
   "locales": ["en", "fr", "de"],
-  "title": "Se présenter",
+  "title": "Se présenter et poser des questions",
   "objective": {
-    "en": "Introduce yourself with your name, nationality, city and languages, and ask the other person the same questions.",
-    "fr": "Se présenter avec son nom, sa nationalité, sa ville et ses langues, et poser les mêmes questions à l’autre.",
-    "de": "Sich mit Namen, Nationalität, Wohnort und Sprachen vorstellen und dem anderen dieselben Fragen stellen."
+    "en": "Introduce yourself with your name, nationality, city and languages, then ask the other person the same questions.",
+    "fr": "Se présenter avec son nom, sa nationalité, sa ville et ses langues, puis poser les mêmes questions à l’autre.",
+    "de": "Sich mit Name, Nationalität, Wohnort und Sprachen vorstellen und der anderen Person dieselben Fragen stellen."
   },
-  "estimatedMinutes": 19,
+  "estimatedMinutes": 16,
   "provenance": {
-    "generator": "claude-code-direct-authoring",
-    "model": "claude-opus-5-5",
-    "promptVersion": "functions-v1",
-    "generatedAt": "2026-10-28T17:48:59.112Z",
-    "inputHashes": {
-      "outline": "55c168005472eb261544672c9d49cb40636a8425bfeacee3e4348b182c795679"
-    }
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:28:34.529Z",
+    "inputHashes": { "outline": "55c168005472eb261544672c9d49cb40636a8425bfeacee3e4348b182c795679" }
   },
   "kind": "functions",
   "theme": "personal_identification",
   "situation": {
-    "en": "On the first day of a French course in Lyon, Emma and Lucas meet and introduce themselves.",
-    "fr": "Le premier jour d’un cours de français à Lyon, Emma et Lucas se rencontrent et se présentent.",
-    "de": "Am ersten Tag eines Französischkurses in Lyon lernen sich Emma und Lucas kennen und stellen sich vor."
+    "en": "Two people meet for the first time and get to know each other.",
+    "fr": "Deux personnes se rencontrent pour la première fois et font connaissance.",
+    "de": "Zwei Personen treffen sich zum ersten Mal und lernen sich kennen."
   },
   "coverageNotes": {
-    "en": "Saying your name (je m’appelle), nationality (je suis), city (j’habite à) and languages (je parle), and asking back with tu: Tu t’appelles comment ?, Tu habites où ?",
-    "fr": "Dire son nom (je m’appelle), sa nationalité (je suis), sa ville (j’habite à) et ses langues (je parle), et poser les questions avec tu : Tu t’appelles comment ?, Tu habites où ?",
-    "de": "Den Namen (je m’appelle), die Nationalität (je suis), den Wohnort (j’habite à) und die Sprachen (je parle) nennen und mit tu zurückfragen: Tu t’appelles comment ?, Tu habites où ?"
+    "en": "Saying your name (Je m’appelle), your nationality (Je suis), your city (J’habite à) and your languages (Je parle), and asking the informal questions Tu t’appelles comment ? and Tu habites où ?",
+    "fr": "Dire son nom (Je m’appelle), sa nationalité (Je suis), sa ville (J’habite à) et ses langues (Je parle), et poser les questions Tu t’appelles comment ? et Tu habites où ?",
+    "de": "Den eigenen Namen (Je m’appelle), die Nationalität (Je suis), den Wohnort (J’habite à) und die Sprachen (Je parle) nennen und die Fragen Tu t’appelles comment ? und Tu habites où ? stellen."
   },
   "prerequisites": [],
   "roles": [
-    {
-      "id": "lucas",
-      "label": "Lucas",
-      "translation": {
-        "en": "Lucas",
-        "de": "Lucas"
-      }
-    },
-    {
-      "id": "emma",
-      "label": "Emma",
-      "translation": {
-        "en": "Emma",
-        "de": "Emma"
-      }
-    }
+    { "id": "marc", "label": "Marc", "translation": { "en": "Marc", "de": "Marc" } },
+    { "id": "sofia", "label": "Sofia", "translation": { "en": "Sofia", "de": "Sofia" } }
   ],
   "expressions": [
     {
       "id": "je-mappelle",
       "text": "Je m’appelle",
       "openEnd": true,
-      "translations": {
-        "en": ["My name is", "I am called"],
-        "de": ["Ich heiße"]
-      },
+      "translations": { "en": ["My name is"], "de": ["Ich heiße"] },
       "explanation": {
-        "en": "Je m’appelle + your first name, or your first name and surname.",
-        "fr": "Je m’appelle + votre prénom, ou votre prénom et votre nom.",
-        "de": "Je m’appelle + Ihr Vorname, oder Vor- und Nachname."
+        "en": "Use it to say your name: Je m’appelle + your first name.",
+        "fr": "Pour dire son nom : Je m’appelle + son prénom.",
+        "de": "Damit sagst du deinen Namen: Je m’appelle + Vorname."
       },
       "example": {
-        "text": "Je m’appelle Sophie Martin.",
-        "translation": {
-          "en": "My name is Sophie Martin.",
-          "de": "Ich heiße Sophie Martin."
-        }
+        "text": "Je m’appelle Léa.",
+        "translation": { "en": "My name is Léa.", "de": "Ich heiße Léa." }
       }
     },
     {
       "id": "tu-tappelles-comment",
       "text": "Tu t’appelles comment ?",
       "openEnd": false,
-      "translations": {
-        "en": ["What’s your name?"],
-        "de": ["Wie heißt du?"]
-      },
+      "translations": { "en": ["What’s your name?"], "de": ["Wie heißt du?"] },
       "explanation": {
-        "en": "Asks a friend or another young person their name (tu).",
-        "fr": "Demande son nom à un ami ou à un autre jeune (tu).",
-        "de": "Fragt einen Freund oder einen anderen jungen Menschen nach dem Namen (tu)."
+        "en": "Asks someone’s name. Informal (tu): use it with a friend or someone your age.",
+        "fr": "Pour demander le nom de quelqu’un. Familier (tu) : avec un ami ou une personne de votre âge.",
+        "de": "Fragt nach dem Namen. Informell (tu): unter Freunden oder Gleichaltrigen."
       },
       "example": {
-        "text": "Et toi, tu t’appelles comment ?",
-        "translation": {
-          "en": "And you, what’s your name?",
-          "de": "Und du, wie heißt du?"
-        }
+        "text": "Bonjour ! Tu t’appelles comment ?",
+        "translation": { "en": "Hello! What’s your name?", "de": "Hallo! Wie heißt du?" }
       }
     },
     {
       "id": "je-suis",
       "text": "Je suis",
       "openEnd": true,
-      "translations": {
-        "en": ["I am"],
-        "de": ["Ich bin"]
-      },
+      "translations": { "en": ["I am"], "de": ["Ich bin"] },
       "explanation": {
-        "en": "Je suis + your nationality. It agrees: je suis allemand (man), je suis allemande (woman).",
-        "fr": "Je suis + votre nationalité. Elle s’accorde : je suis allemand (homme), je suis allemande (femme).",
-        "de": "Je suis + Ihre Nationalität. Sie wird angeglichen: je suis allemand (Mann), je suis allemande (Frau)."
+        "en": "Use it to say your nationality: Je suis + nationality.",
+        "fr": "Pour dire sa nationalité : Je suis + nationalité.",
+        "de": "Damit sagst du deine Nationalität: Je suis + Nationalität."
       },
       "example": {
-        "text": "Je suis italien, de Rome.",
-        "translation": {
-          "en": "I am Italian, from Rome.",
-          "de": "Ich bin Italiener, aus Rom."
-        }
+        "text": "Je suis espagnole.",
+        "translation": { "en": "I am Spanish.", "de": "Ich bin Spanierin." }
       }
     },
     {
       "id": "jhabite-a",
       "text": "J’habite à",
       "openEnd": true,
-      "translations": {
-        "en": ["I live in"],
-        "de": ["Ich wohne in"]
-      },
+      "translations": { "en": ["I live in"], "de": ["Ich wohne in"] },
       "explanation": {
-        "en": "J’habite à + a city. Je becomes j’ before a vowel or a silent h.",
-        "fr": "J’habite à + une ville. Je devient j’ devant une voyelle ou un h muet.",
-        "de": "J’habite à + eine Stadt. Je wird vor Vokal oder stummem h zu j’."
+        "en": "Use it to say the city where you live: J’habite à + city.",
+        "fr": "Pour dire la ville où l’on habite : J’habite à + ville.",
+        "de": "Damit sagst du, in welcher Stadt du wohnst: J’habite à + Stadt."
       },
       "example": {
-        "text": "J’habite à Paris.",
-        "translation": {
-          "en": "I live in Paris.",
-          "de": "Ich wohne in Paris."
-        }
+        "text": "J’habite à Bordeaux.",
+        "translation": { "en": "I live in Bordeaux.", "de": "Ich wohne in Bordeaux." }
       }
     },
     {
       "id": "tu-habites-ou",
       "text": "Tu habites où ?",
       "openEnd": false,
-      "translations": {
-        "en": ["Where do you live?"],
-        "de": ["Wo wohnst du?"]
-      },
+      "translations": { "en": ["Where do you live?"], "de": ["Wo wohnst du?"] },
       "explanation": {
-        "en": "Asks a friend where they live; où (where) takes an accent grave.",
-        "fr": "Demande à un ami où il habite ; où prend un accent grave.",
-        "de": "Fragt einen Freund, wo er wohnt; où (wo) hat einen accent grave."
+        "en": "Asks where someone lives. Informal (tu).",
+        "fr": "Pour demander où habite quelqu’un. Familier (tu).",
+        "de": "Fragt, wo jemand wohnt. Informell (tu)."
       },
       "example": {
-        "text": "Et toi, Marie, tu habites où ?",
-        "translation": {
-          "en": "And you, Marie, where do you live?",
-          "de": "Und du, Marie, wo wohnst du?"
-        }
+        "text": "Salut ! Tu habites où ?",
+        "translation": { "en": "Hi! Where do you live?", "de": "Hallo! Wo wohnst du?" }
       }
     },
     {
       "id": "je-parle",
       "text": "Je parle",
       "openEnd": true,
-      "translations": {
-        "en": ["I speak"],
-        "de": ["Ich spreche"]
-      },
+      "translations": { "en": ["I speak"], "de": ["Ich spreche"] },
       "explanation": {
-        "en": "Je parle + a language, without an article: je parle anglais.",
-        "fr": "Je parle + une langue, sans article : je parle anglais.",
-        "de": "Je parle + eine Sprache, ohne Artikel: je parle anglais."
+        "en": "Use it to say which languages you speak: Je parle + language.",
+        "fr": "Pour dire quelles langues on parle : Je parle + langue.",
+        "de": "Damit sagst du, welche Sprachen du sprichst: Je parle + Sprache."
       },
       "example": {
-        "text": "Je parle anglais et français.",
+        "text": "Je parle un peu allemand.",
         "translation": {
-          "en": "I speak English and French.",
-          "de": "Ich spreche Englisch und Französisch."
+          "en": "I speak a little German.",
+          "de": "Ich spreche ein bisschen Deutsch."
         }
       }
     }
   ],
-  "words": [
-    {
-      "id": "prenom",
-      "term": "prénom",
-      "teachingForm": "un prénom",
-      "translations": {
-        "en": ["first name"],
-        "de": ["Vorname"]
-      },
-      "wordClass": "noun",
-      "genders": ["masculine"],
-      "explanation": {
-        "en": "Masculine noun: un prénom, like Emma or Lucas.",
-        "fr": "Nom masculin : un prénom, comme Emma ou Lucas.",
-        "de": "Maskulines Nomen: un prénom, wie Emma oder Lucas."
-      },
-      "example": {
-        "text": "Mon prénom, c’est Emma.",
-        "translation": {
-          "en": "My first name is Emma.",
-          "de": "Mein Vorname ist Emma."
-        }
-      }
-    },
-    {
-      "id": "nom",
-      "term": "nom",
-      "teachingForm": "un nom",
-      "translations": {
-        "en": ["surname"],
-        "de": ["Nachname"]
-      },
-      "wordClass": "noun",
-      "genders": ["masculine"],
-      "explanation": {
-        "en": "Masculine noun: un nom, the family name, like Martin.",
-        "fr": "Nom masculin : un nom, le nom de famille, comme Martin.",
-        "de": "Maskulines Nomen: un nom, der Familienname, wie Martin."
-      },
-      "example": {
-        "text": "Mon nom, c’est Martin.",
-        "translation": {
-          "en": "My surname is Martin.",
-          "de": "Mein Nachname ist Martin."
-        }
-      }
-    },
-    {
-      "id": "ville",
-      "term": "ville",
-      "teachingForm": "une ville",
-      "translations": {
-        "en": ["city"],
-        "de": ["Stadt"]
-      },
-      "wordClass": "noun",
-      "genders": ["feminine"],
-      "explanation": {
-        "en": "Feminine noun: une ville.",
-        "fr": "Nom féminin : une ville.",
-        "de": "Feminines Nomen: une ville."
-      },
-      "example": {
-        "text": "Lyon est une grande ville.",
-        "translation": {
-          "en": "Lyon is a big city.",
-          "de": "Lyon ist eine große Stadt."
-        }
-      }
-    },
-    {
-      "id": "langue",
-      "term": "langue",
-      "teachingForm": "une langue",
-      "translations": {
-        "en": ["language"],
-        "de": ["Sprache"]
-      },
-      "wordClass": "noun",
-      "genders": ["feminine"],
-      "explanation": {
-        "en": "Feminine noun: une langue, like le français or l’anglais.",
-        "fr": "Nom féminin : une langue, comme le français ou l’anglais.",
-        "de": "Feminines Nomen: une langue, wie le français oder l’anglais."
-      },
-      "example": {
-        "text": "Je parle deux langues.",
-        "translation": {
-          "en": "I speak two languages.",
-          "de": "Ich spreche zwei Sprachen."
-        }
-      }
-    }
-  ],
-  "scoring": {
-    "practiceWeight": 35,
-    "examWeight": 65,
-    "orthographyCredit": 0.5
-  }
+  "words": [],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
 }

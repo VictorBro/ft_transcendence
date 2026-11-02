@@ -1,0 +1,1293 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-refuting-an-argument",
+  "lang": "fr",
+  "level": "B2",
+  "locales": ["en", "fr", "de"],
+  "title": "Réfuter un argument",
+  "objective": {
+    "en": "Contest an argument point by point without attacking the person: say why it fails, ask for evidence, point out a confusion.",
+    "fr": "Contester un argument point par point sans attaquer la personne : dire pourquoi il ne tient pas, exiger des preuves, relever une confusion.",
+    "de": "Ein Argument Punkt für Punkt widerlegen, ohne die Person anzugreifen: Gründe nennen, Belege verlangen, Verwechslungen aufzeigen."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:55:03.033Z",
+    "inputHashes": {
+      "outline": "c3eb44bc4c5cea6a4369e153255f11936dfedca70f2c1f480873465e0fc8dfce",
+      "brief": "d1b41b0c97aeb4796cc724ed245cecfcfcb420058d1d13c4334f085b7a4a7294"
+    }
+  },
+  "kind": "functions",
+  "theme": "language",
+  "steps": [
+    {
+      "id": "flashcards",
+      "stage": "flashcards",
+      "role": "presentation",
+      "label": { "en": "Flashcards", "fr": "Cartes mémoire", "de": "Karteikarten" },
+      "pages": [
+        {
+          "pageId": "cards-expressions",
+          "estimatedDurationS": 72,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Recall each expression, then turn the card to check it.",
+            "fr": "Rappelez-vous chaque expression, puis retournez la carte pour vérifier.",
+            "de": "Erinnere dich an jeden Ausdruck und dreh dann die Karte um."
+          },
+          "items": [
+            {
+              "type": "function_flashcards",
+              "itemId": "cards-expressions",
+              "side": "expressions",
+              "ids": [
+                "ne-tient-pas",
+                "rien-ne-prouve",
+                "confondre",
+                "je-ne-vous-suis-pas",
+                "conclusion-hative",
+                "partez-du-principe"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue",
+      "stage": "dialogue",
+      "role": "presentation",
+      "label": { "en": "Dialogue", "fr": "Dialogue", "de": "Dialog" },
+      "pages": [
+        {
+          "pageId": "dialogue",
+          "estimatedDurationS": 140,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Read and listen. Turn a line to see its translation and a note.",
+            "fr": "Lisez et écoutez. Retournez une réplique pour voir sa traduction et une remarque.",
+            "de": "Lies und hör zu. Dreh eine Zeile um, um Übersetzung und Hinweis zu sehen."
+          },
+          "items": [
+            {
+              "type": "function_dialogue",
+              "itemId": "dialogue",
+              "lines": [
+                {
+                  "lineId": "line-1",
+                  "roleId": "marc",
+                  "text": "Il faut interdire les voitures en centre-ville : tous les commerçants y gagneraient.",
+                  "translation": {
+                    "en": "We must ban cars from the city centre: all the shopkeepers would benefit.",
+                    "de": "Man muss Autos aus der Innenstadt verbannen: Alle Händler würden profitieren."
+                  },
+                  "note": {
+                    "en": "Marc states a claim that Inès will now examine.",
+                    "fr": "Marc avance une thèse qu’Inès va maintenant examiner.",
+                    "de": "Marc stellt eine Behauptung auf, die Inès nun prüft."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-2",
+                  "roleId": "ines",
+                  "text": "Je ne vous suis pas sur ce point. Cet argument ne tient pas, car plusieurs commerçants ont perdu des clients.",
+                  "translation": {
+                    "en": "I don’t agree with you on this point. This argument doesn’t hold up, because several shopkeepers lost customers.",
+                    "de": "Da folge ich Ihnen nicht. Dieses Argument greift nicht, denn mehrere Händler haben Kunden verloren."
+                  },
+                  "note": {
+                    "en": "She marks her disagreement politely, then gives the reason with car.",
+                    "fr": "Elle marque son désaccord poliment, puis donne la raison avec car.",
+                    "de": "Sie widerspricht höflich und nennt dann mit car den Grund."
+                  },
+                  "expressionIds": ["je-ne-vous-suis-pas", "ne-tient-pas"]
+                },
+                {
+                  "lineId": "line-3",
+                  "roleId": "marc",
+                  "text": "Mais à Strasbourg, les ventes ont augmenté après la piétonnisation.",
+                  "translation": {
+                    "en": "But in Strasbourg, sales rose after the centre was pedestrianised.",
+                    "de": "Aber in Straßburg sind die Umsätze nach der Einrichtung der Fußgängerzone gestiegen."
+                  },
+                  "note": {
+                    "en": "Marc answers with an example.",
+                    "fr": "Marc répond avec un exemple.",
+                    "de": "Marc antwortet mit einem Beispiel."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-4",
+                  "roleId": "ines",
+                  "text": "Rien ne prouve que ce soit grâce à la piétonnisation. C’est confondre une coïncidence et une explication.",
+                  "translation": {
+                    "en": "Nothing proves that it is thanks to pedestrianisation. That is confusing a coincidence with an explanation.",
+                    "de": "Nichts beweist, dass es an der Fußgängerzone liegt. Das heißt, einen Zufall mit einer Erklärung zu verwechseln."
+                  },
+                  "note": {
+                    "en": "Rien ne prouve que asks for evidence; C’est confondre names the mix-up.",
+                    "fr": "Rien ne prouve que demande une preuve ; C’est confondre nomme la confusion.",
+                    "de": "Rien ne prouve que verlangt einen Beleg; C’est confondre benennt die Verwechslung."
+                  },
+                  "expressionIds": ["rien-ne-prouve", "confondre"]
+                },
+                {
+                  "lineId": "line-5",
+                  "roleId": "marc",
+                  "text": "Pourtant, les études montrent que la pollution baisse.",
+                  "translation": {
+                    "en": "Yet the studies show that pollution falls.",
+                    "de": "Trotzdem zeigen die Studien, dass die Verschmutzung sinkt."
+                  },
+                  "note": {
+                    "en": "Marc falls back on studies.",
+                    "fr": "Marc se rabat sur des études.",
+                    "de": "Marc beruft sich auf Studien."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-6",
+                  "roleId": "ines",
+                  "text": "Vous tirez une conclusion hâtive : il n’y a que deux études, et elles datent de 2012.",
+                  "translation": {
+                    "en": "You’re jumping to a conclusion: there are only two studies, and they date from 2012.",
+                    "de": "Sie ziehen einen voreiligen Schluss: Es gibt nur zwei Studien, und sie stammen von 2012."
+                  },
+                  "note": {
+                    "en": "She criticises the reasoning and backs it with a fact.",
+                    "fr": "Elle critique le raisonnement et l’appuie sur un fait.",
+                    "de": "Sie kritisiert die Argumentation und stützt sich auf eine Tatsache."
+                  },
+                  "expressionIds": ["conclusion-hative"]
+                },
+                {
+                  "lineId": "line-7",
+                  "roleId": "marc",
+                  "text": "Les habitants veulent des rues plus calmes, tout le monde le dit.",
+                  "translation": {
+                    "en": "Residents want quieter streets, everybody says so.",
+                    "de": "Die Anwohner wollen ruhigere Straßen, das sagen alle."
+                  },
+                  "note": {
+                    "en": "Tout le monde le dit is a generalisation.",
+                    "fr": "Tout le monde le dit est une généralisation.",
+                    "de": "Tout le monde le dit ist eine Verallgemeinerung."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-8",
+                  "roleId": "ines",
+                  "text": "Vous partez du principe que tout le monde habite près du centre. Les personnes âgées n’ont pas toujours le choix.",
+                  "translation": {
+                    "en": "You are assuming that everyone lives near the centre. Elderly people don’t always have a choice.",
+                    "de": "Sie gehen davon aus, dass alle in der Nähe des Zentrums wohnen. Ältere Menschen haben nicht immer die Wahl."
+                  },
+                  "note": {
+                    "en": "She exposes the hidden premise behind the claim.",
+                    "fr": "Elle révèle le présupposé caché derrière l’affirmation.",
+                    "de": "Sie deckt die versteckte Voraussetzung hinter der Behauptung auf."
+                  },
+                  "expressionIds": ["partez-du-principe"]
+                },
+                {
+                  "lineId": "line-9",
+                  "roleId": "marc",
+                  "text": "D’accord, mais il faut bien commencer quelque part.",
+                  "translation": {
+                    "en": "Fine, but we have to start somewhere.",
+                    "de": "Einverstanden, aber irgendwo muss man anfangen."
+                  },
+                  "note": {
+                    "en": "Marc gives ground a little.",
+                    "fr": "Marc cède un peu de terrain.",
+                    "de": "Marc gibt ein wenig nach."
+                  },
+                  "expressionIds": []
+                },
+                {
+                  "lineId": "line-10",
+                  "roleId": "ines",
+                  "text": "Commençons par mesurer l’effet réel. Je ne vous attaque pas : je conteste seulement l’argument.",
+                  "translation": {
+                    "en": "Let’s start by measuring the real effect. I’m not attacking you: I’m only challenging the argument.",
+                    "de": "Fangen wir damit an, die tatsächliche Wirkung zu messen. Ich greife Sie nicht an: Ich bestreite nur das Argument."
+                  },
+                  "note": {
+                    "en": "The goal is to contest the argument, never the person.",
+                    "fr": "Le but est de contester l’argument, jamais la personne.",
+                    "de": "Ziel ist es, das Argument zu bestreiten, nie die Person."
+                  },
+                  "expressionIds": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "stage": "matching",
+      "role": "exercise",
+      "label": { "en": "Matching", "fr": "Association", "de": "Zuordnen" },
+      "pages": [
+        {
+          "pageId": "match-expressions-1",
+          "estimatedDurationS": 72,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Match each expression with its translation.",
+            "fr": "Associez chaque expression à sa traduction.",
+            "de": "Ordne jedem Ausdruck seine Übersetzung zu."
+          },
+          "items": [
+            {
+              "type": "function_matching",
+              "itemId": "match-expressions-1",
+              "side": "expressions",
+              "pairs": [
+                {
+                  "id": "ne-tient-pas",
+                  "answerExplanation": {
+                    "en": "It rejects the argument and gives the reason at once.",
+                    "fr": "Elle rejette l’argument et donne aussitôt la raison.",
+                    "de": "Sie weist das Argument zurück und nennt sofort den Grund."
+                  }
+                },
+                {
+                  "id": "rien-ne-prouve",
+                  "answerExplanation": {
+                    "en": "It asks for evidence behind a claim.",
+                    "fr": "Elle exige une preuve derrière une affirmation.",
+                    "de": "Sie verlangt einen Beleg für eine Behauptung."
+                  }
+                },
+                {
+                  "id": "confondre",
+                  "answerExplanation": {
+                    "en": "It points out that two ideas are being mixed up.",
+                    "fr": "Elle montre que deux idées sont mélangées.",
+                    "de": "Sie zeigt, dass zwei Dinge vermischt werden."
+                  }
+                },
+                {
+                  "id": "je-ne-vous-suis-pas",
+                  "answerExplanation": {
+                    "en": "It is a polite way to say you disagree.",
+                    "fr": "C’est une façon polie de dire son désaccord.",
+                    "de": "Das ist eine höfliche Art, zu widersprechen."
+                  }
+                },
+                {
+                  "id": "conclusion-hative",
+                  "answerExplanation": {
+                    "en": "It says the conclusion goes beyond the evidence.",
+                    "fr": "Elle dit que la conclusion dépasse les preuves.",
+                    "de": "Sie sagt, dass der Schluss über die Belege hinausgeht."
+                  }
+                },
+                {
+                  "id": "partez-du-principe",
+                  "answerExplanation": {
+                    "en": "It reveals a hidden premise.",
+                    "fr": "Elle révèle un présupposé caché.",
+                    "de": "Sie deckt eine versteckte Voraussetzung auf."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dialogue-gaps",
+      "stage": "dialogue_gaps",
+      "role": "exercise",
+      "label": { "en": "Dialogue gaps", "fr": "Dialogue à trous", "de": "Dialoglücken" },
+      "pages": [
+        {
+          "pageId": "gap-1",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-1",
+              "expressionId": "ne-tient-pas",
+              "context": {
+                "roleId": "marc",
+                "text": "Il faut supprimer cette taxe : elle ne rapporte presque rien."
+              },
+              "roleId": "ines",
+              "before": "Non.",
+              "after": "elle rapporte trois millions par an.",
+              "choiceExpressionIds": [
+                "ne-tient-pas",
+                "rien-ne-prouve",
+                "confondre",
+                "partez-du-principe"
+              ],
+              "answerExplanation": {
+                "en": "She rejects the argument and gives the reason with car.",
+                "fr": "Elle rejette l’argument et donne la raison avec car.",
+                "de": "Sie weist das Argument zurück und nennt mit car den Grund."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-2",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-2",
+              "expressionId": "rien-ne-prouve",
+              "context": {
+                "roleId": "marc",
+                "text": "Les élèves réussissent mieux depuis la réforme."
+              },
+              "roleId": "ines",
+              "before": "",
+              "after": "la réforme en soit la cause.",
+              "choiceExpressionIds": [
+                "rien-ne-prouve",
+                "ne-tient-pas",
+                "je-ne-vous-suis-pas",
+                "conclusion-hative"
+              ],
+              "answerExplanation": {
+                "en": "She doubts that the reform is the cause: no evidence.",
+                "fr": "Elle doute que la réforme soit la cause : pas de preuve.",
+                "de": "Sie bezweifelt, dass die Reform die Ursache ist: kein Beleg."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-3",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-3",
+              "expressionId": "confondre",
+              "context": {
+                "roleId": "marc",
+                "text": "Les gens qui lisent beaucoup sont plus heureux, donc lire rend heureux."
+              },
+              "roleId": "ines",
+              "before": "",
+              "after": "une corrélation et une cause.",
+              "choiceExpressionIds": [
+                "confondre",
+                "partez-du-principe",
+                "conclusion-hative",
+                "rien-ne-prouve"
+              ],
+              "answerExplanation": {
+                "en": "She names the mix-up between two ideas: C’est confondre A et B.",
+                "fr": "Elle nomme la confusion entre deux idées : C’est confondre A et B.",
+                "de": "Sie benennt die Verwechslung zweier Dinge: C’est confondre A et B."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-4",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-4",
+              "expressionId": "je-ne-vous-suis-pas",
+              "context": {
+                "roleId": "marc",
+                "text": "Le télétravail rend tout le monde moins efficace."
+              },
+              "roleId": "ines",
+              "before": "",
+              "after": ": mon équipe a livré plus vite.",
+              "choiceExpressionIds": [
+                "je-ne-vous-suis-pas",
+                "ne-tient-pas",
+                "rien-ne-prouve",
+                "confondre"
+              ],
+              "answerExplanation": {
+                "en": "She disagrees politely, then offers a counter-example.",
+                "fr": "Elle marque son désaccord poliment, puis donne un contre-exemple.",
+                "de": "Sie widerspricht höflich und nennt dann ein Gegenbeispiel."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-5",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-5",
+              "expressionId": "conclusion-hative",
+              "context": {
+                "roleId": "marc",
+                "text": "J’ai goûté deux fois dans ce restaurant et c’était mauvais : il est nul."
+              },
+              "roleId": "ines",
+              "before": "",
+              "after": ": un mauvais soir ne suffit pas à juger un restaurant.",
+              "choiceExpressionIds": [
+                "conclusion-hative",
+                "je-ne-vous-suis-pas",
+                "partez-du-principe",
+                "ne-tient-pas"
+              ],
+              "answerExplanation": {
+                "en": "Two experiences are too little for such a conclusion.",
+                "fr": "Deux expériences, c’est trop peu pour une telle conclusion.",
+                "de": "Zwei Erfahrungen sind zu wenig für einen solchen Schluss."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "gap-6",
+          "estimatedDurationS": 15,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Choose the expression that fits the gap.",
+            "fr": "Choisissez l’expression qui complète la réplique.",
+            "de": "Wähle den Ausdruck, der in die Lücke passt."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_choice",
+              "itemId": "gap-6",
+              "expressionId": "partez-du-principe",
+              "context": { "roleId": "marc", "text": "Tout le monde peut payer cet abonnement." },
+              "roleId": "ines",
+              "before": "",
+              "after": "que tout le monde en a les moyens.",
+              "choiceExpressionIds": [
+                "partez-du-principe",
+                "rien-ne-prouve",
+                "ne-tient-pas",
+                "confondre"
+              ],
+              "answerExplanation": {
+                "en": "She brings out the hidden premise: everyone can afford it.",
+                "fr": "Elle fait apparaître le présupposé : tout le monde peut se le permettre.",
+                "de": "Sie macht die versteckte Voraussetzung sichtbar: Jeder kann es sich leisten."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "word-order",
+      "stage": "word_order",
+      "role": "exercise",
+      "label": { "en": "Word order", "fr": "Ordre des mots", "de": "Wortstellung" },
+      "pages": [
+        {
+          "pageId": "order-1",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-1",
+              "expressionId": "ne-tient-pas",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Cet" },
+                { "tokenId": "t2", "text": "argument" },
+                { "tokenId": "t3", "text": "ne" },
+                { "tokenId": "t4", "text": "tient" },
+                { "tokenId": "t5", "text": "pas," },
+                { "tokenId": "t6", "text": "car" },
+                { "tokenId": "t7", "text": "il" },
+                { "tokenId": "t8", "text": "est" },
+                { "tokenId": "t9", "text": "trop" },
+                { "tokenId": "t10", "text": "ancien." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9", "t10"]],
+              "answerExplanation": {
+                "en": "The verdict comes first, then car and the reason.",
+                "fr": "Le verdict vient d’abord, puis car et la raison.",
+                "de": "Zuerst das Urteil, dann car und der Grund."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-2",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-2",
+              "expressionId": "rien-ne-prouve",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Rien" },
+                { "tokenId": "t2", "text": "ne" },
+                { "tokenId": "t3", "text": "prouve" },
+                { "tokenId": "t4", "text": "que" },
+                { "tokenId": "t5", "text": "cette" },
+                { "tokenId": "t6", "text": "réforme" },
+                { "tokenId": "t7", "text": "soit" },
+                { "tokenId": "t8", "text": "efficace." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8"]],
+              "answerExplanation": {
+                "en": "Rien comes first, with ne before the verb.",
+                "fr": "Rien vient en premier, avec ne devant le verbe.",
+                "de": "Rien steht am Anfang, ne vor dem Verb."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-3",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-3",
+              "expressionId": "confondre",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "C’est" },
+                { "tokenId": "t2", "text": "confondre" },
+                { "tokenId": "t3", "text": "le" },
+                { "tokenId": "t4", "text": "prix" },
+                { "tokenId": "t5", "text": "et" },
+                { "tokenId": "t6", "text": "la" },
+                { "tokenId": "t7", "text": "valeur." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7"]],
+              "answerExplanation": {
+                "en": "C’est confondre A et B: the two ideas are linked by et.",
+                "fr": "C’est confondre A et B : les deux idées sont reliées par et.",
+                "de": "C’est confondre A et B: Die beiden Dinge werden mit et verbunden."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-4",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-4",
+              "expressionId": "je-ne-vous-suis-pas",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Je" },
+                { "tokenId": "t2", "text": "ne" },
+                { "tokenId": "t3", "text": "vous" },
+                { "tokenId": "t4", "text": "suis" },
+                { "tokenId": "t5", "text": "pas" },
+                { "tokenId": "t6", "text": "sur" },
+                { "tokenId": "t7", "text": "ce" },
+                { "tokenId": "t8", "text": "point," },
+                { "tokenId": "t9", "text": "monsieur." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9"]],
+              "answerExplanation": {
+                "en": "The pronoun vous sits between ne and the verb.",
+                "fr": "Le pronom vous se place entre ne et le verbe.",
+                "de": "Das Pronomen vous steht zwischen ne und dem Verb."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-5",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-5",
+              "expressionId": "conclusion-hative",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Vous" },
+                { "tokenId": "t2", "text": "tirez" },
+                { "tokenId": "t3", "text": "une" },
+                { "tokenId": "t4", "text": "conclusion" },
+                { "tokenId": "t5", "text": "hâtive" },
+                { "tokenId": "t6", "text": "à" },
+                { "tokenId": "t7", "text": "partir" },
+                { "tokenId": "t8", "text": "d’un" },
+                { "tokenId": "t9", "text": "seul" },
+                { "tokenId": "t10", "text": "cas." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9", "t10"]],
+              "answerExplanation": {
+                "en": "Hâtive is feminine and follows conclusion.",
+                "fr": "Hâtive est féminin et suit conclusion.",
+                "de": "Hâtive ist feminin und steht nach conclusion."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "order-6",
+          "estimatedDurationS": 25,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Put the words in order.",
+            "fr": "Mettez les mots dans l’ordre.",
+            "de": "Bring die Wörter in die richtige Reihenfolge."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "order-6",
+              "expressionId": "partez-du-principe",
+              "context": null,
+              "roleId": null,
+              "tokens": [
+                { "tokenId": "t1", "text": "Vous" },
+                { "tokenId": "t2", "text": "partez" },
+                { "tokenId": "t3", "text": "du" },
+                { "tokenId": "t4", "text": "principe" },
+                { "tokenId": "t5", "text": "que" },
+                { "tokenId": "t6", "text": "les" },
+                { "tokenId": "t7", "text": "prix" },
+                { "tokenId": "t8", "text": "resteront" },
+                { "tokenId": "t9", "text": "stables." }
+              ],
+              "distractorTokenIds": [],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9"]],
+              "answerExplanation": {
+                "en": "Partir du principe que introduces the premise being assumed.",
+                "fr": "Partir du principe que introduit le présupposé.",
+                "de": "Partir du principe que leitet die angenommene Voraussetzung ein."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "listening",
+      "stage": "listening",
+      "role": "exercise",
+      "label": { "en": "Listening", "fr": "Écoute", "de": "Hören" },
+      "pages": [
+        {
+          "pageId": "listening-1",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-1",
+              "expressionId": "ne-tient-pas",
+              "context": { "roleId": "marc", "text": "Cette taxe va sauver les petits commerces." },
+              "roleId": "ines",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "Cet argument ne tient pas, car elle ne concerne que les grandes enseignes."
+                },
+                { "optionId": "o2", "text": "Vous avez raison, c’est un excellent argument." },
+                { "optionId": "o3", "text": "Je n’ai pas bien entendu la question." },
+                { "optionId": "o4", "text": "Votre argument est stupide et vous le savez." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "She rejects the argument with a reason. The last option attacks the person.",
+                "fr": "Elle rejette l’argument en donnant une raison. La dernière option attaque la personne.",
+                "de": "Sie weist das Argument mit einem Grund zurück. Die letzte Option greift die Person an."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-2",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-2",
+              "expressionId": "rien-ne-prouve",
+              "context": {
+                "roleId": "marc",
+                "text": "Les jeux vidéo rendent les enfants violents."
+              },
+              "roleId": "ines",
+              "options": [
+                { "optionId": "o1", "text": "Rien ne prouve que ce lien soit réel." },
+                { "optionId": "o2", "text": "Tout le monde sait que c’est vrai." },
+                { "optionId": "o3", "text": "Vous n’y connaissez rien, de toute façon." },
+                { "optionId": "o4", "text": "Je vous l’accorde entièrement." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "She asks for proof of the link.",
+                "fr": "Elle demande une preuve du lien.",
+                "de": "Sie verlangt einen Beleg für den Zusammenhang."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-3",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-3",
+              "expressionId": "confondre",
+              "context": {
+                "roleId": "marc",
+                "text": "Les pays qui mangent beaucoup de chocolat ont plus de prix Nobel, donc le chocolat rend intelligent."
+              },
+              "roleId": "ines",
+              "options": [
+                { "optionId": "o1", "text": "C’est confondre une coïncidence et une cause." },
+                { "optionId": "o2", "text": "C’est une idée vraiment très originale." },
+                { "optionId": "o3", "text": "Bravo, vous avez parfaitement raison." },
+                { "optionId": "o4", "text": "Vous êtes incapable de raisonner correctement." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "She points out the confusion between coincidence and cause.",
+                "fr": "Elle relève la confusion entre coïncidence et cause.",
+                "de": "Sie zeigt die Verwechslung von Zufall und Ursache auf."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-4",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-4",
+              "expressionId": "je-ne-vous-suis-pas",
+              "context": { "roleId": "marc", "text": "Les réseaux sociaux ne servent à rien." },
+              "roleId": "ines",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "Je ne vous suis pas sur ce point : ils informent beaucoup de gens."
+                },
+                { "optionId": "o2", "text": "Je vous suis tout à fait sur ce point." },
+                { "optionId": "o3", "text": "Vous mentez, comme d’habitude." },
+                { "optionId": "o4", "text": "Je préfère ne pas en parler aujourd’hui." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "She disagrees politely and gives a reason.",
+                "fr": "Elle marque son désaccord poliment et donne une raison.",
+                "de": "Sie widerspricht höflich und nennt einen Grund."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-5",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-5",
+              "expressionId": "conclusion-hative",
+              "context": {
+                "roleId": "marc",
+                "text": "Mon voisin est arrivé en retard deux fois : il est paresseux."
+              },
+              "roleId": "ines",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "Vous tirez une conclusion hâtive : il a peut-être eu des problèmes de transport."
+                },
+                { "optionId": "o2", "text": "Vous avez parfaitement compris la situation." },
+                { "optionId": "o3", "text": "Les voisins sont toujours paresseux." },
+                { "optionId": "o4", "text": "Je ne l’ai jamais rencontré." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "Two delays are not enough to judge someone.",
+                "fr": "Deux retards ne suffisent pas pour juger quelqu’un.",
+                "de": "Zwei Verspätungen reichen nicht, um jemanden zu beurteilen."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "listening-6",
+          "estimatedDurationS": 30,
+          "timeLimitS": null,
+          "instructions": {
+            "en": "Listen, then choose the reply that fits.",
+            "fr": "Écoutez, puis choisissez la réponse qui convient.",
+            "de": "Hör zu und wähle dann die passende Antwort."
+          },
+          "items": [
+            {
+              "type": "function_listening_choice",
+              "itemId": "listening-6",
+              "expressionId": "partez-du-principe",
+              "context": {
+                "roleId": "marc",
+                "text": "Ce site est gratuit, donc tout le monde peut l’utiliser."
+              },
+              "roleId": "ines",
+              "options": [
+                {
+                  "optionId": "o1",
+                  "text": "Vous partez du principe que tout le monde a une connexion."
+                },
+                { "optionId": "o2", "text": "Le site est vraiment très facile à utiliser." },
+                { "optionId": "o3", "text": "Vous avez raison, c’est gratuit." },
+                { "optionId": "o4", "text": "Je ne comprends pas la question." }
+              ],
+              "answerOptionId": "o1",
+              "answerExplanation": {
+                "en": "She exposes the hidden premise: everyone has a connection.",
+                "fr": "Elle révèle le présupposé : tout le monde a une connexion.",
+                "de": "Sie deckt die Voraussetzung auf: Alle haben eine Verbindung."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "stage": "exam",
+      "role": "exam",
+      "label": { "en": "Final exam", "fr": "Examen final", "de": "Abschlussprüfung" },
+      "pages": [
+        {
+          "pageId": "exam-replies-1",
+          "estimatedDurationS": 120,
+          "timeLimitS": 180,
+          "instructions": {
+            "en": "Build the answer. Not every word fits.",
+            "fr": "Construisez la réponse. Tous les mots ne servent pas.",
+            "de": "Bilde die Antwort. Nicht jedes Wort passt."
+          },
+          "items": [
+            {
+              "type": "function_word_order",
+              "itemId": "reply-1",
+              "expressionId": "ne-tient-pas",
+              "context": {
+                "roleId": "marc",
+                "text": "La ville doit construire un nouveau parking : il n’y a jamais de place."
+              },
+              "roleId": "ines",
+              "tokens": [
+                { "tokenId": "t1", "text": "Cet" },
+                { "tokenId": "t2", "text": "argument" },
+                { "tokenId": "t3", "text": "ne" },
+                { "tokenId": "t4", "text": "tient" },
+                { "tokenId": "t5", "text": "pas," },
+                { "tokenId": "t6", "text": "car" },
+                { "tokenId": "t7", "text": "les" },
+                { "tokenId": "t8", "text": "parkings" },
+                { "tokenId": "t9", "text": "sont" },
+                { "tokenId": "t10", "text": "vides" },
+                { "tokenId": "t11", "text": "le" },
+                { "tokenId": "t12", "text": "soir." },
+                { "tokenId": "t13", "text": "tiennent" },
+                { "tokenId": "t14", "text": "donc" }
+              ],
+              "distractorTokenIds": ["t13", "t14"],
+              "acceptedOrders": [
+                ["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9", "t10", "t11", "t12"]
+              ],
+              "answerExplanation": {
+                "en": "Verdict, then car and the reason; tient agrees with argument (singular).",
+                "fr": "Le verdict, puis car et la raison ; tient s’accorde avec argument (singulier).",
+                "de": "Urteil, dann car und der Grund; tient richtet sich nach argument (Singular)."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-2",
+              "expressionId": "rien-ne-prouve",
+              "context": {
+                "roleId": "marc",
+                "text": "Depuis cette loi, il y a moins d’accidents : elle fonctionne."
+              },
+              "roleId": "ines",
+              "tokens": [
+                { "tokenId": "t1", "text": "Rien" },
+                { "tokenId": "t2", "text": "ne" },
+                { "tokenId": "t3", "text": "prouve" },
+                { "tokenId": "t4", "text": "que" },
+                { "tokenId": "t5", "text": "la" },
+                { "tokenId": "t6", "text": "loi" },
+                { "tokenId": "t7", "text": "en" },
+                { "tokenId": "t8", "text": "soit" },
+                { "tokenId": "t9", "text": "la" },
+                { "tokenId": "t10", "text": "raison." },
+                { "tokenId": "t11", "text": "prouvent" },
+                { "tokenId": "t12", "text": "aucun" }
+              ],
+              "distractorTokenIds": ["t11", "t12"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9", "t10"]],
+              "answerExplanation": {
+                "en": "Rien is the subject, so the verb stays singular: prouve.",
+                "fr": "Rien est le sujet, donc le verbe reste au singulier : prouve.",
+                "de": "Rien ist das Subjekt, daher bleibt das Verb im Singular: prouve."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-3",
+              "expressionId": "confondre",
+              "context": {
+                "roleId": "ines",
+                "text": "Les villes riches ont plus de cinémas : les cinémas rendent donc les villes riches."
+              },
+              "roleId": "marc",
+              "tokens": [
+                { "tokenId": "t1", "text": "C’est" },
+                { "tokenId": "t2", "text": "confondre" },
+                { "tokenId": "t3", "text": "la" },
+                { "tokenId": "t4", "text": "cause" },
+                { "tokenId": "t5", "text": "et" },
+                { "tokenId": "t6", "text": "la" },
+                { "tokenId": "t7", "text": "conséquence" },
+                { "tokenId": "t8", "text": "confondu" },
+                { "tokenId": "t9", "text": "les" }
+              ],
+              "distractorTokenIds": ["t8", "t9"],
+              "acceptedOrders": [
+                ["t1", "t2", "t3", "t4", "t5", "t6", "t7"],
+                ["t1", "t2", "t3", "t7", "t5", "t6", "t4"]
+              ],
+              "answerExplanation": {
+                "en": "C’est confondre + A + et + B; the two ideas can swap places.",
+                "fr": "C’est confondre + A + et + B ; les deux idées peuvent échanger leur place.",
+                "de": "C’est confondre + A + et + B; die beiden Begriffe können die Plätze tauschen."
+              }
+            },
+            {
+              "type": "function_word_order",
+              "itemId": "reply-4",
+              "expressionId": "conclusion-hative",
+              "context": {
+                "roleId": "marc",
+                "text": "J’ai lu un seul article sur ce régime : il est dangereux."
+              },
+              "roleId": "ines",
+              "tokens": [
+                { "tokenId": "t1", "text": "Vous" },
+                { "tokenId": "t2", "text": "tirez" },
+                { "tokenId": "t3", "text": "une" },
+                { "tokenId": "t4", "text": "conclusion" },
+                { "tokenId": "t5", "text": "hâtive" },
+                { "tokenId": "t6", "text": "à" },
+                { "tokenId": "t7", "text": "partir" },
+                { "tokenId": "t8", "text": "d’un" },
+                { "tokenId": "t9", "text": "seul" },
+                { "tokenId": "t10", "text": "article." },
+                { "tokenId": "t11", "text": "hâtif" },
+                { "tokenId": "t12", "text": "tire" }
+              ],
+              "distractorTokenIds": ["t11", "t12"],
+              "acceptedOrders": [["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9", "t10"]],
+              "answerExplanation": {
+                "en": "With vous the verb ends in -ez, and hâtive agrees with conclusion (feminine).",
+                "fr": "Avec vous, le verbe finit en -ez, et hâtive s’accorde avec conclusion (féminin).",
+                "de": "Mit vous endet das Verb auf -ez, und hâtive richtet sich nach conclusion (feminin)."
+              }
+            }
+          ]
+        },
+        {
+          "pageId": "exam-dialogue",
+          "estimatedDurationS": 160,
+          "timeLimitS": 240,
+          "instructions": {
+            "en": "Fill each gap with an expression from this lesson.",
+            "fr": "Complétez chaque trou avec une expression de la leçon.",
+            "de": "Fülle jede Lücke mit einem Ausdruck aus dieser Lektion."
+          },
+          "items": [
+            {
+              "type": "function_dialogue_gap_typing",
+              "itemId": "exam-dialogue",
+              "lines": [
+                {
+                  "lineId": "exam-line-1",
+                  "roleId": "marc",
+                  "before": "L’uniforme à l’école réduirait les inégalités entre élèves.",
+                  "translation": {
+                    "en": "School uniforms would reduce inequality between pupils.",
+                    "de": "Schuluniformen würden die Ungleichheit zwischen den Schülern verringern."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-2",
+                  "roleId": "ines",
+                  "before": "Là,",
+                  "translation": {
+                    "en": "Here I don’t agree with you: the differences remain visible elsewhere.",
+                    "de": "Da folge ich Ihnen nicht: Die Unterschiede bleiben anderswo sichtbar."
+                  },
+                  "gap": {
+                    "gapId": "gap-1",
+                    "expressionId": "je-ne-vous-suis-pas",
+                    "accepted": {
+                      "answers": [
+                        "je ne vous suis pas sur ce point",
+                        "Je ne vous suis pas sur ce point"
+                      ]
+                    },
+                    "answerExplanation": {
+                      "en": "She disagrees politely: Je ne vous suis pas sur ce point.",
+                      "fr": "Elle marque son désaccord poliment : Je ne vous suis pas sur ce point.",
+                      "de": "Sie widerspricht höflich: Je ne vous suis pas sur ce point."
+                    }
+                  },
+                  "after": ": les différences restent visibles ailleurs."
+                },
+                {
+                  "lineId": "exam-line-3",
+                  "roleId": "marc",
+                  "before": "Pourtant, dans les pays qui l’ont adopté, les résultats sont meilleurs.",
+                  "translation": {
+                    "en": "Yet in the countries that adopted it, results are better.",
+                    "de": "Trotzdem sind die Ergebnisse in den Ländern besser, die ihn eingeführt haben."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-4",
+                  "roleId": "ines",
+                  "before": "",
+                  "translation": {
+                    "en": "Nothing proves that the uniform is the cause.",
+                    "de": "Nichts beweist, dass die Uniform die Ursache ist."
+                  },
+                  "gap": {
+                    "gapId": "gap-2",
+                    "expressionId": "rien-ne-prouve",
+                    "accepted": { "answers": ["Rien ne prouve que", "rien ne prouve que"] },
+                    "answerExplanation": {
+                      "en": "She asks for evidence of the cause: Rien ne prouve que.",
+                      "fr": "Elle demande la preuve de la cause : Rien ne prouve que.",
+                      "de": "Sie verlangt den Beleg für die Ursache: Rien ne prouve que."
+                    }
+                  },
+                  "after": "l’uniforme en soit la cause."
+                },
+                {
+                  "lineId": "exam-line-5",
+                  "roleId": "marc",
+                  "before": "Les élèves portent le même vêtement, donc ils se sentent égaux.",
+                  "translation": {
+                    "en": "Pupils wear the same clothes, so they feel equal.",
+                    "de": "Die Schüler tragen dieselbe Kleidung, also fühlen sie sich gleich."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-6",
+                  "roleId": "ines",
+                  "before": "Ah bon ?",
+                  "translation": {
+                    "en": "Really? You are assuming that equality is decided by clothes.",
+                    "de": "Wirklich? Sie gehen davon aus, dass Gleichheit durch Kleidung entsteht."
+                  },
+                  "gap": {
+                    "gapId": "gap-3",
+                    "expressionId": "partez-du-principe",
+                    "accepted": {
+                      "answers": ["Vous partez du principe que", "vous partez du principe que"]
+                    },
+                    "answerExplanation": {
+                      "en": "She exposes the hidden premise: Vous partez du principe que.",
+                      "fr": "Elle révèle le présupposé : Vous partez du principe que.",
+                      "de": "Sie deckt die Voraussetzung auf: Vous partez du principe que."
+                    }
+                  },
+                  "after": "l’égalité se joue dans les vêtements."
+                },
+                {
+                  "lineId": "exam-line-7",
+                  "roleId": "marc",
+                  "before": "Les élèves les plus pauvres ont moins honte avec un uniforme, c’est évident.",
+                  "translation": {
+                    "en": "The poorest pupils feel less ashamed with a uniform, it’s obvious.",
+                    "de": "Die ärmsten Schüler schämen sich mit Uniform weniger, das ist offensichtlich."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-8",
+                  "roleId": "ines",
+                  "before": "",
+                  "translation": {
+                    "en": "That is confusing appearance with social reality.",
+                    "de": "Das heißt, Schein und soziale Wirklichkeit zu verwechseln."
+                  },
+                  "gap": {
+                    "gapId": "gap-4",
+                    "expressionId": "confondre",
+                    "accepted": { "answers": ["C’est confondre", "c’est confondre"] },
+                    "answerExplanation": {
+                      "en": "She names the mix-up: C’est confondre A et B.",
+                      "fr": "Elle nomme la confusion : C’est confondre A et B.",
+                      "de": "Sie benennt die Verwechslung: C’est confondre A et B."
+                    }
+                  },
+                  "after": "l’apparence et la réalité sociale."
+                },
+                {
+                  "lineId": "exam-line-9",
+                  "roleId": "marc",
+                  "before": "Admettons. Mais l’école devrait au moins essayer pendant un an.",
+                  "translation": {
+                    "en": "Let’s say so. But the school should at least try for a year.",
+                    "de": "Sagen wir es so. Aber die Schule sollte es wenigstens ein Jahr lang versuchen."
+                  },
+                  "gap": null,
+                  "after": ""
+                },
+                {
+                  "lineId": "exam-line-10",
+                  "roleId": "ines",
+                  "before": "Essayer, pourquoi pas, mais mesurons d’abord les effets.",
+                  "translation": {
+                    "en": "Trying, why not, but let’s measure the effects first.",
+                    "de": "Ausprobieren, warum nicht, aber messen wir zuerst die Wirkungen."
+                  },
+                  "gap": null,
+                  "after": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

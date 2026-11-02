@@ -1,0 +1,513 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-show-and-prove",
+  "lang": "fr",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Montrer, démontrer, attester",
+  "objective": {
+    "en": "Choose the right verb of proof according to its strength, from montrer to corroborer.",
+    "fr": "Choisir le verbe de la preuve juste selon sa force, de montrer à corroborer.",
+    "de": "Das passende Verb des Beweisens nach seiner Stärke wählen, von montrer bis corroborer."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:57:40.262Z",
+    "inputHashes": { "outline": "e4beee4a2e92767532ef96614cbdee8d8398bc04ef7fa63d42cab119440203a1" }
+  },
+  "kind": "vocabulary",
+  "theme": "language",
+  "coverageNotes": {
+    "en": "Ten verbs ranked by strength: four that point or hint (montrer, indiquer, suggérer, révéler) and six that establish a truth (démontrer, prouver, établir, attester, témoigner de, corroborer). The lesson stresses the difference between hinting, proving, certifying and confirming.",
+    "fr": "Dix verbes classés selon leur force : quatre qui signalent ou laissent entendre (montrer, indiquer, suggérer, révéler) et six qui établissent une vérité (démontrer, prouver, établir, attester, témoigner de, corroborer). La leçon insiste sur la différence entre suggérer, prouver, certifier et confirmer.",
+    "de": "Zehn Verben nach ihrer Stärke geordnet: vier, die zeigen oder andeuten (montrer, indiquer, suggérer, révéler), und sechs, die eine Wahrheit festigen (démontrer, prouver, établir, attester, témoigner de, corroborer). Im Mittelpunkt steht der Unterschied zwischen andeuten, beweisen, bescheinigen und bestätigen."
+  },
+  "targetCount": 10,
+  "countRationale": {
+    "en": "Ten verbs cover the full scale of proof without overloading a C1 learner.",
+    "fr": "Dix verbes couvrent toute l’échelle de la preuve sans surcharger l’apprenant de niveau C1.",
+    "de": "Zehn Verben decken die gesamte Skala des Beweisens ab, ohne Lernende auf C1-Niveau zu überfordern."
+  },
+  "difficultyBalance": {
+    "en": "Montrer and indiquer are core; the fine contrasts between établir, attester and corroborer are demanding.",
+    "fr": "Montrer et indiquer sont de base ; les nuances entre établir, attester et corroborer sont plus exigeantes.",
+    "de": "Montrer und indiquer sind Grundwortschatz; die feinen Unterschiede zwischen établir, attester und corroborer sind anspruchsvoll."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "indices",
+      "label": {
+        "en": "Pointing and hinting",
+        "fr": "Signaler et laisser entendre",
+        "de": "Zeigen und andeuten"
+      },
+      "targetIds": ["montrer", "indiquer", "suggerer", "reveler"],
+      "introduction": {
+        "en": "These verbs **point to** an idea without settling it:\n\n- `montrer`: make something visible\n- `indiquer`: give a precise sign\n- `suggérer`: let something be understood\n- `révéler`: bring something hidden to light\n\nThe force rises from `suggérer` to `révéler`.",
+        "fr": "Ces verbes **signalent** une idée sans la trancher :\n\n- `montrer` : rendre visible\n- `indiquer` : donner un signe précis\n- `suggérer` : laisser entendre\n- `révéler` : mettre au jour ce qui était caché\n\nLa force augmente de `suggérer` à `révéler`.",
+        "de": "Diese Verben **weisen** auf eine Idee **hin**, ohne sie zu entscheiden:\n\n- `montrer`: etwas sichtbar machen\n- `indiquer`: ein genaues Zeichen geben\n- `suggérer`: etwas durchblicken lassen\n- `révéler`: Verborgenes ans Licht bringen\n\nDie Stärke steigt von `suggérer` zu `révéler`."
+      }
+    },
+    {
+      "id": "preuves",
+      "label": {
+        "en": "Proving and confirming",
+        "fr": "Prouver et confirmer",
+        "de": "Beweisen und bestätigen"
+      },
+      "targetIds": ["demontrer", "prouver", "etablir", "attester", "temoigner", "corroborer"],
+      "introduction": {
+        "en": "These verbs **establish** a truth, with growing rigour:\n\n- `démontrer`: prove by reasoning\n- `prouver`: leave no doubt\n- `établir`: fix a fact as certain\n- `attester`: certify on a witness or a document\n- `témoigner de`: be a sign of\n- `corroborer`: confirm a claim with another element\n\nUse `attester` and `témoigner de` with a witness or a sign, and `corroborer` to support a claim already made.",
+        "fr": "Ces verbes **établissent** une vérité, avec une rigueur croissante :\n\n- `démontrer` : prouver par un raisonnement\n- `prouver` : ne laisser aucun doute\n- `établir` : fixer un fait comme certain\n- `attester` : certifier sur un témoin ou un document\n- `témoigner de` : être le signe de\n- `corroborer` : confirmer une thèse par un autre élément\n\nEmployez `attester` et `témoigner de` avec un témoin ou un signe, et `corroborer` pour appuyer une thèse déjà avancée.",
+        "de": "Diese Verben **festigen** eine Wahrheit mit wachsender Strenge:\n\n- `démontrer`: durch Argumentation beweisen\n- `prouver`: keinen Zweifel lassen\n- `établir`: eine Tatsache als gesichert festhalten\n- `attester`: aufgrund eines Zeugen oder Dokuments bescheinigen\n- `témoigner de`: Zeichen von etwas sein\n- `corroborer`: eine These durch ein weiteres Element bestätigen\n\nGebrauche `attester` und `témoigner de` mit einem Zeugen oder einem Zeichen und `corroborer`, um eine bereits aufgestellte These zu stützen."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "montrer",
+      "term": "montrer",
+      "translations": { "en": ["to show"], "de": ["zeigen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "montrer",
+      "examForms": ["montrer"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/mɔ̃.tʁe/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Cette étude montre une baisse nette de la natalité.",
+        "translation": {
+          "en": "This study shows a clear fall in the birth rate.",
+          "de": "Diese Studie zeigt einen deutlichen Rückgang der Geburtenrate."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Montrer makes something visible or evident, without guaranteeing a proof.",
+        "fr": "Montrer rend une chose visible ou évidente, sans en garantir la preuve.",
+        "de": "Montrer macht etwas sichtbar oder offensichtlich, ohne einen Beweis zu garantieren."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Cette photographie ",
+        "after": " le port au lever du jour.",
+        "accepted": { "answers": ["montre"] },
+        "referenceTargetIds": ["montrer", "attester", "corroborer", "etablir"],
+        "explanation": {
+          "en": "Only montrer fits: the photograph makes the port visible.",
+          "fr": "Seul « montrer » convient : la photographie rend le port visible.",
+          "de": "Nur „montrer“ passt: Das Foto macht den Hafen sichtbar."
+        }
+      },
+      "listeningOptionTargetIds": ["montrer", "demontrer", "indiquer", "prouver"]
+    },
+    {
+      "id": "indiquer",
+      "term": "indiquer",
+      "translations": { "en": ["to indicate"], "de": ["hinweisen auf", "anzeigen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "indiquer",
+      "examForms": ["indiquer"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɛ̃.di.ke/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Les premiers résultats indiquent une tendance à la hausse.",
+        "translation": {
+          "en": "The first results indicate an upward trend.",
+          "de": "Die ersten Ergebnisse weisen auf einen Aufwärtstrend hin."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Indiquer gives a precise sign or piece of information, without going as far as proof.",
+        "fr": "Indiquer donne un signe ou une information précise, sans aller jusqu’à la preuve.",
+        "de": "Indiquer liefert ein Zeichen oder eine genaue Information, ohne bis zum Beweis zu gehen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "La flèche rouge ",
+        "after": " la sortie de secours.",
+        "accepted": { "answers": ["indique"] },
+        "referenceTargetIds": ["indiquer", "corroborer", "temoigner", "demontrer"],
+        "explanation": {
+          "en": "Only indiquer fits: the arrow gives a direction.",
+          "fr": "Seul « indiquer » convient : la flèche donne une direction.",
+          "de": "Nur „indiquer“ passt: Der Pfeil gibt eine Richtung an."
+        }
+      },
+      "listeningOptionTargetIds": ["indiquer", "suggerer", "montrer", "etablir"]
+    },
+    {
+      "id": "suggerer",
+      "term": "suggérer",
+      "translations": { "en": ["to suggest"], "de": ["nahelegen", "andeuten"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "suggérer",
+      "examForms": ["suggérer"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/syɡ.ʒe.ʁe/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ces données suggèrent que le phénomène est plus ancien.",
+        "translation": {
+          "en": "These data suggest that the phenomenon is older.",
+          "de": "Diese Daten legen nahe, dass das Phänomen älter ist."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Suggérer is the weakest verb of the lesson: it never asserts, it lets a conclusion be drawn.",
+        "fr": "Suggérer est le verbe le plus faible de la leçon : il n’affirme jamais, il laisse tirer une conclusion.",
+        "de": "Suggérer ist das schwächste Verb der Lektion: Es behauptet nie, sondern lässt einen Schluss zu."
+      },
+      "explanation": {
+        "en": "Suggérer is the weakest verb: it lets something be understood without asserting it.",
+        "fr": "Suggérer est le verbe le plus faible : il laisse entendre sans affirmer.",
+        "de": "Suggérer ist das schwächste Verb: Es lässt etwas durchblicken, ohne es zu behaupten."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ce silence ",
+        "after": " que l’auteur hésite, sans l’affirmer.",
+        "accepted": { "answers": ["suggère"] },
+        "referenceTargetIds": ["suggerer", "prouver", "etablir", "attester"],
+        "explanation": {
+          "en": "Only suggérer fits: the hesitation is hinted, not asserted.",
+          "fr": "Seul « suggérer » convient : l’hésitation est suggérée, non affirmée.",
+          "de": "Nur „suggérer“ passt: Das Zögern wird angedeutet, nicht behauptet."
+        }
+      },
+      "listeningOptionTargetIds": ["suggerer", "indiquer", "reveler", "corroborer"]
+    },
+    {
+      "id": "reveler",
+      "term": "révéler",
+      "translations": { "en": ["to reveal"], "de": ["offenbaren", "enthüllen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "révéler",
+      "examForms": ["révéler"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʁe.ve.le/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "L’enquête a révélé l’existence d’un fonds secret.",
+        "translation": {
+          "en": "The investigation revealed the existence of a secret fund.",
+          "de": "Die Untersuchung hat die Existenz eines geheimen Fonds enthüllt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Révéler brings to light something that was hidden or unknown.",
+        "fr": "Révéler met au jour ce qui était caché ou inconnu.",
+        "de": "Révéler bringt ans Licht, was verborgen oder unbekannt war."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "L’enquête ",
+        "after": " l’identité, jusque-là secrète, du donateur.",
+        "accepted": { "answers": ["révèle"] },
+        "referenceTargetIds": ["reveler", "corroborer", "attester", "temoigner"],
+        "explanation": {
+          "en": "Only révéler fits: the identity was hidden and comes to light.",
+          "fr": "Seul « révéler » convient : l’identité était cachée et apparaît au jour.",
+          "de": "Nur „révéler“ passt: Die Identität war verborgen und kommt ans Licht."
+        }
+      },
+      "listeningOptionTargetIds": ["reveler", "suggerer", "etablir", "attester"]
+    },
+    {
+      "id": "demontrer",
+      "term": "démontrer",
+      "translations": { "en": ["to demonstrate"], "de": ["nachweisen", "darlegen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "démontrer",
+      "examForms": ["démontrer"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/de.mɔ̃.tʁe/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "L’auteur démontre sa thèse en trois temps.",
+        "translation": {
+          "en": "The author demonstrates his thesis in three stages.",
+          "de": "Der Autor weist seine These in drei Schritten nach."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Démontrer stresses the reasoning that leads to the proof; prouver stresses the evidence.",
+        "fr": "Démontrer insiste sur le raisonnement qui mène à la preuve ; prouver insiste sur les éléments probants.",
+        "de": "Démontrer betont die Argumentation, die zum Beweis führt; prouver betont die Belege."
+      },
+      "explanation": {
+        "en": "Démontrer proves by rigorous reasoning or a series of arguments.",
+        "fr": "Démontrer prouve par un raisonnement rigoureux ou une suite d’arguments.",
+        "de": "Démontrer beweist durch strenge Argumentation oder eine Reihe von Argumenten."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le mathématicien ",
+        "after": " ce théorème par récurrence.",
+        "accepted": { "answers": ["démontre"] },
+        "referenceTargetIds": ["demontrer", "suggerer", "reveler", "temoigner"],
+        "explanation": {
+          "en": "Only démontrer fits: a theorem is proved by reasoning.",
+          "fr": "Seul « démontrer » convient : un théorème se démontre par un raisonnement.",
+          "de": "Nur „démontrer“ passt: Ein Theorem wird durch Argumentation bewiesen."
+        }
+      },
+      "listeningOptionTargetIds": ["demontrer", "montrer", "prouver", "corroborer"]
+    },
+    {
+      "id": "prouver",
+      "term": "prouver",
+      "translations": { "en": ["to prove"], "de": ["beweisen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "prouver",
+      "examForms": ["prouver"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/pʁu.ve/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ces documents prouvent qu’il était présent ce soir-là.",
+        "translation": {
+          "en": "These documents prove that he was present that evening.",
+          "de": "Diese Dokumente beweisen, dass er an jenem Abend anwesend war."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Prouver establishes the truth with evidence that leaves no room for doubt.",
+        "fr": "Prouver établit la vérité avec des éléments qui ne laissent aucun doute.",
+        "de": "Prouver stellt die Wahrheit mit Belegen fest, die keinen Zweifel lassen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il ne suffit pas d’accuser : il faut le ",
+        "after": " devant le tribunal.",
+        "accepted": { "answers": ["prouver"] },
+        "referenceTargetIds": ["prouver", "suggerer", "reveler", "indiquer"],
+        "explanation": {
+          "en": "Only prouver fits: an accusation must be backed by proof in court.",
+          "fr": "Seul « prouver » convient : une accusation doit être prouvée devant le tribunal.",
+          "de": "Nur „prouver“ passt: Eine Anschuldigung muss vor Gericht bewiesen werden."
+        }
+      },
+      "listeningOptionTargetIds": ["prouver", "montrer", "demontrer", "temoigner"]
+    },
+    {
+      "id": "etablir",
+      "term": "établir",
+      "translations": { "en": ["to establish"], "de": ["feststellen", "nachweisen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "établir",
+      "examForms": ["établir"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/e.ta.bliʁ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Les experts ont établi les causes de l’accident.",
+        "translation": {
+          "en": "The experts established the causes of the accident.",
+          "de": "Die Experten haben die Ursachen des Unfalls festgestellt."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Établir is used with facts, causes, responsibilities: it fixes them as certain after an investigation.",
+        "fr": "Établir s’emploie avec des faits, des causes, des responsabilités : il les fixe comme certains après une enquête.",
+        "de": "Établir verwendet man mit Tatsachen, Ursachen, Verantwortlichkeiten: Es hält sie nach einer Untersuchung als gesichert fest."
+      },
+      "explanation": {
+        "en": "Établir fixes a fact as certain after investigation or verification.",
+        "fr": "Établir fixe un fait comme certain après une enquête ou une vérification.",
+        "de": "Établir hält eine Tatsache nach einer Untersuchung oder Überprüfung als gesichert fest."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Avant de juger, la cour doit d’abord ",
+        "after": " les faits avec précision.",
+        "accepted": { "answers": ["établir"] },
+        "referenceTargetIds": ["etablir", "suggerer", "temoigner", "indiquer"],
+        "explanation": {
+          "en": "Only établir fits: the facts must first be fixed as certain.",
+          "fr": "Seul « établir » convient : il faut d’abord fixer les faits comme certains.",
+          "de": "Nur „établir“ passt: Die Tatsachen müssen zuerst als gesichert feststehen."
+        }
+      },
+      "listeningOptionTargetIds": ["etablir", "attester", "reveler", "indiquer"]
+    },
+    {
+      "id": "attester",
+      "term": "attester",
+      "translations": { "en": ["to attest"], "de": ["bescheinigen", "bezeugen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "attester",
+      "examForms": ["attester"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/a.tɛs.te/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Un acte officiel atteste la date de naissance.",
+        "translation": {
+          "en": "An official deed attests the date of birth.",
+          "de": "Eine amtliche Urkunde bescheinigt das Geburtsdatum."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Attester certifies that something is true, on the strength of a witness or an official document.",
+        "fr": "Attester certifie qu’une chose est vraie, sur la foi d’un témoin ou d’un document officiel.",
+        "de": "Attester bescheinigt, dass etwas wahr ist, auf Grundlage eines Zeugen oder eines amtlichen Dokuments."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le notaire ",
+        "after": " l’authenticité de la signature.",
+        "accepted": { "answers": ["atteste"] },
+        "referenceTargetIds": ["attester", "suggerer", "reveler", "montrer"],
+        "explanation": {
+          "en": "Only attester fits: a notary certifies officially.",
+          "fr": "Seul « attester » convient : un notaire certifie officiellement.",
+          "de": "Nur „attester“ passt: Ein Notar beglaubigt amtlich."
+        }
+      },
+      "listeningOptionTargetIds": ["attester", "etablir", "temoigner", "corroborer"]
+    },
+    {
+      "id": "temoigner",
+      "term": "témoigner de",
+      "translations": { "en": ["to testify to", "to bear witness to"], "de": ["zeugen von"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "témoigner de",
+      "examForms": ["témoigner de"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/te.mwa.ɲe də/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Ces ruines témoignent de la richesse de la cité antique.",
+        "translation": {
+          "en": "These ruins bear witness to the wealth of the ancient city.",
+          "de": "Diese Ruinen zeugen vom Reichtum der antiken Stadt."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Témoigner de always takes de: a thing is the sign of a quality or a situation.",
+        "fr": "Témoigner de se construit toujours avec de : une chose est le signe d’une qualité ou d’une situation.",
+        "de": "Témoigner de steht immer mit de: Eine Sache ist das Zeichen einer Eigenschaft oder Situation."
+      },
+      "explanation": {
+        "en": "Témoigner de shows that a quality or situation exists, as a sign of it.",
+        "fr": "Témoigner de montre l’existence d’une qualité ou d’une situation, comme un signe.",
+        "de": "Témoigner de zeigt als Zeichen, dass eine Eigenschaft oder Situation besteht."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ses premiers succès ",
+        "after": " d’un talent exceptionnel.",
+        "accepted": { "answers": ["témoignent"] },
+        "referenceTargetIds": ["temoigner", "etablir", "demontrer", "corroborer"],
+        "explanation": {
+          "en": "Only témoigner de fits: the successes are a sign of talent, and the sentence already has de.",
+          "fr": "Seul « témoigner de » convient : les succès sont le signe d’un talent, et la phrase contient déjà « de ».",
+          "de": "Nur „témoigner de“ passt: Die Erfolge sind ein Zeichen von Talent, und der Satz enthält schon „de“."
+        }
+      },
+      "listeningOptionTargetIds": ["temoigner", "attester", "montrer", "indiquer"]
+    },
+    {
+      "id": "corroborer",
+      "term": "corroborer",
+      "translations": { "en": ["to corroborate"], "de": ["bestätigen", "erhärten"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "corroborer",
+      "examForms": ["corroborer"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kɔ.ʁɔ.bɔ.ʁe/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Un second témoin corrobore la version des faits.",
+        "translation": {
+          "en": "A second witness corroborates the account of the facts.",
+          "de": "Ein zweiter Zeuge bestätigt die Darstellung der Ereignisse."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Corroborer needs a claim already made: it adds support, it does not prove from scratch.",
+        "fr": "Corroborer suppose une affirmation déjà avancée : il apporte un appui, il ne prouve pas à partir de rien.",
+        "de": "Corroborer setzt eine bereits aufgestellte Behauptung voraus: Es stützt sie, beweist aber nicht von Grund auf."
+      },
+      "explanation": {
+        "en": "Corroborer confirms an existing claim with a further, independent element.",
+        "fr": "Corroborer confirme une affirmation existante par un autre élément indépendant.",
+        "de": "Corroborer bestätigt eine bestehende Behauptung durch ein weiteres, unabhängiges Element."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Deux témoins indépendants ",
+        "after": " la version du plaignant.",
+        "accepted": { "answers": ["corroborent"] },
+        "referenceTargetIds": ["corroborer", "indiquer", "suggerer", "reveler"],
+        "explanation": {
+          "en": "Only corroborer fits: the witnesses support an account already given.",
+          "fr": "Seul « corroborer » convient : les témoins appuient une version déjà donnée.",
+          "de": "Nur „corroborer“ passt: Die Zeugen stützen eine bereits gegebene Darstellung."
+        }
+      },
+      "listeningOptionTargetIds": ["corroborer", "demontrer", "reveler", "attester"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

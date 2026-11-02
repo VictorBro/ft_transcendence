@@ -1,0 +1,258 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-epistemic-modality",
+  "lang": "fr",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Il se pourrait que, il doit s'agir de",
+  "objective": {
+    "en": "Adjust how certain a statement sounds with devoir, pouvoir, sembler and impersonal phrases such as il se pourrait que or il n'est pas exclu que.",
+    "fr": "Moduler la certitude d'une affirmation avec devoir, pouvoir, sembler et des tournures impersonnelles comme il se pourrait que ou il n'est pas exclu que.",
+    "de": "Die Gewissheit einer Aussage mit devoir, pouvoir, sembler und unpersönlichen Wendungen wie il se pourrait que oder il n'est pas exclu que abstufen."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:00:02.655Z",
+    "inputHashes": { "outline": "94eccca3fac52b3ef16daff817e1b6feb35e93773391c95540fb00f28cfb40b0" }
+  },
+  "kind": "grammar",
+  "topic": "verb_usage",
+  "scopeBoundaries": {
+    "en": "Covers epistemic devoir and pouvoir, impersonal phrases of possibility and doubt with the subjunctive, and sembler. Excludes the conditional of hypothesis and adverbs of probability.",
+    "fr": "Couvre devoir et pouvoir épistémiques, les tournures impersonnelles de possibilité et de doute avec le subjonctif, et sembler. Exclut le conditionnel d'hypothèse et les adverbes de probabilité.",
+    "de": "Behandelt epistemisches devoir und pouvoir, unpersönliche Wendungen der Möglichkeit und des Zweifels mit dem Konjunktiv sowie sembler. Ausgeschlossen sind das Konditional der Hypothese und Wahrscheinlichkeitsadverbien."
+  },
+  "prerequisites": [
+    {
+      "en": "The present subjunctive of common verbs (être, avoir, aller, faire).",
+      "fr": "Le subjonctif présent des verbes courants (être, avoir, aller, faire).",
+      "de": "Der Subjonctif présent gebräuchlicher Verben (être, avoir, aller, faire)."
+    },
+    {
+      "en": "The passé composé with avoir.",
+      "fr": "Le passé composé avec avoir.",
+      "de": "Das passé composé mit avoir."
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-devoir",
+      "summary": {
+        "en": "Devoir + infinitive expresses near-certainty, a logical deduction: il doit s'agir de, elle a dû se tromper.",
+        "fr": "Devoir + infinitif exprime la quasi-certitude, une déduction logique : il doit s'agir de, elle a dû se tromper.",
+        "de": "Devoir + Infinitiv drückt fast sichere Annahme aus, einen logischen Schluss: il doit s'agir de, elle a dû se tromper."
+      }
+    },
+    {
+      "id": "rule-pouvoir",
+      "summary": {
+        "en": "Pouvoir + infinitive expresses simple possibility: il peut s'agir de, il a pu se tromper.",
+        "fr": "Pouvoir + infinitif exprime la simple possibilité : il peut s'agir de, il a pu se tromper.",
+        "de": "Pouvoir + Infinitiv drückt bloße Möglichkeit aus: il peut s'agir de, il a pu se tromper."
+      }
+    },
+    {
+      "id": "rule-subj",
+      "summary": {
+        "en": "Impersonal phrases of possibility and doubt take the subjunctive: il se pourrait que, il se peut que, il n'est pas exclu que, il est peu probable que.",
+        "fr": "Les tournures impersonnelles de possibilité et de doute se construisent avec le subjonctif : il se pourrait que, il se peut que, il n'est pas exclu que, il est peu probable que.",
+        "de": "Unpersönliche Wendungen der Möglichkeit und des Zweifels stehen mit dem Konjunktiv: il se pourrait que, il se peut que, il n'est pas exclu que, il est peu probable que."
+      }
+    },
+    {
+      "id": "rule-sembler",
+      "summary": {
+        "en": "Sembler + infinitive, il semble que + subjunctive, il me semble que + indicative (personal opinion).",
+        "fr": "Sembler + infinitif, il semble que + subjonctif, il me semble que + indicatif (opinion personnelle).",
+        "de": "Sembler + Infinitiv, il semble que + Konjunktiv, il me semble que + Indikativ (persönliche Meinung)."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "block-devoir-pouvoir",
+      "title": {
+        "en": "Devoir and pouvoir: deduction and possibility",
+        "fr": "Devoir et pouvoir : déduction et possibilité",
+        "de": "Devoir und pouvoir: Schluss und Möglichkeit"
+      },
+      "ruleIds": ["rule-devoir", "rule-pouvoir"],
+      "explanationPlan": {
+        "en": "Show that devoir and pouvoir before an infinitive measure certainty, not duty or ability. Contrast il doit s'agir de and il peut s'agir de, then the passé composé (il a dû, il a pu).",
+        "fr": "Montrer que devoir et pouvoir devant un infinitif mesurent la certitude, non l'obligation ou la capacité. Opposer il doit s'agir de et il peut s'agir de, puis le passé composé (il a dû, il a pu).",
+        "de": "Zeigen, dass devoir und pouvoir vor einem Infinitiv die Gewissheit messen, nicht Pflicht oder Fähigkeit. Il doit s'agir de und il peut s'agir de gegenüberstellen, dann das passé composé (il a dû, il a pu)."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "Il doit s'agir d'une erreur.",
+          "translation": {
+            "en": "It must be a mistake.",
+            "de": "Es muss sich um einen Irrtum handeln."
+          }
+        },
+        {
+          "text": "Elle a dû se tromper.",
+          "translation": {
+            "en": "She must have made a mistake.",
+            "de": "Sie muss sich geirrt haben."
+          }
+        },
+        {
+          "text": "Il peut s'agir d'un canular.",
+          "translation": {
+            "en": "It may be a hoax.",
+            "de": "Es kann sich um einen Scherz handeln."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not confuse epistemic devoir (deduction) with devoir of obligation: Il doit partir means He has to leave.",
+          "fr": "Ne confondez pas le devoir épistémique (déduction) et le devoir d'obligation : Il doit partir signifie qu'il est obligé de partir.",
+          "de": "Verwechsle epistemisches devoir (Schluss) nicht mit devoir der Pflicht: Il doit partir bedeutet, dass er gehen muss."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-dp-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-devoir", "rule-pouvoir"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-dp-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-devoir", "rule-pouvoir"],
+          "estimatedDurationS": 60
+        },
+        {
+          "id": "ex-dp-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-devoir", "rule-pouvoir"],
+          "estimatedDurationS": 60
+        }
+      ]
+    },
+    {
+      "id": "block-impersonal",
+      "title": {
+        "en": "Impersonal phrases and sembler",
+        "fr": "Tournures impersonnelles et sembler",
+        "de": "Unpersönliche Wendungen und sembler"
+      },
+      "ruleIds": ["rule-subj", "rule-sembler"],
+      "explanationPlan": {
+        "en": "Teach il se pourrait que, il se peut que, il n'est pas exclu que and il est peu probable que with the subjunctive, against il est sûr que with the indicative. Then the three patterns of sembler.",
+        "fr": "Enseigner il se pourrait que, il se peut que, il n'est pas exclu que et il est peu probable que avec le subjonctif, face à il est sûr que avec l'indicatif. Puis les trois constructions de sembler.",
+        "de": "Il se pourrait que, il se peut que, il n'est pas exclu que und il est peu probable que mit dem Konjunktiv vermitteln, im Gegensatz zu il est sûr que mit dem Indikativ. Dann die drei Konstruktionen von sembler."
+      },
+      "explanationDurationS": 180,
+      "examples": [
+        {
+          "text": "Il se pourrait qu'il ait raison.",
+          "translation": { "en": "He might be right.", "de": "Es könnte sein, dass er recht hat." }
+        },
+        {
+          "text": "Il n'est pas exclu qu'elle vienne.",
+          "translation": {
+            "en": "It cannot be ruled out that she will come.",
+            "de": "Es ist nicht ausgeschlossen, dass sie kommt."
+          }
+        },
+        {
+          "text": "Il me semble qu'il a raison.",
+          "translation": {
+            "en": "It seems to me that he is right.",
+            "de": "Mir scheint, dass er recht hat."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "After il se pourrait que, il se peut que and il n'est pas exclu que, use the subjunctive, never the indicative.",
+          "fr": "Après il se pourrait que, il se peut que et il n'est pas exclu que, employez le subjonctif, jamais l'indicatif.",
+          "de": "Nach il se pourrait que, il se peut que und il n'est pas exclu que steht der Konjunktiv, nie der Indikativ."
+        },
+        {
+          "en": "Il me semble que takes the indicative, because it states a personal opinion.",
+          "fr": "Il me semble que se construit avec l'indicatif, car il exprime une opinion personnelle.",
+          "de": "Il me semble que steht mit dem Indikativ, weil es eine persönliche Meinung ausdrückt."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "ex-im-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["rule-subj"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "ex-im-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["rule-subj", "rule-sembler"],
+          "estimatedDurationS": 64
+        },
+        {
+          "id": "ex-im-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 4,
+          "ruleIds": ["rule-subj", "rule-sembler"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "ex-im-order",
+          "type": "grammar_word_order",
+          "itemCount": 3,
+          "ruleIds": ["rule-subj", "rule-sembler"],
+          "estimatedDurationS": 66
+        }
+      ]
+    }
+  ],
+  "newVerbs": [
+    {
+      "infinitive": "s'agir de",
+      "translations": { "en": "to be a matter of", "de": "es geht um" }
+    },
+    { "infinitive": "sembler", "translations": { "en": "to seem", "de": "scheinen" } }
+  ],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-gaps-1",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["rule-devoir", "rule-pouvoir"],
+        "estimatedDurationS": 80,
+        "timeLimitS": 130
+      },
+      {
+        "pageId": "exam-order",
+        "type": "grammar_word_order",
+        "itemCount": 3,
+        "ruleIds": ["rule-subj", "rule-sembler"],
+        "estimatedDurationS": 75,
+        "timeLimitS": 130
+      },
+      {
+        "pageId": "exam-gaps-2",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["rule-subj"],
+        "estimatedDurationS": 45,
+        "timeLimitS": 80
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

@@ -1,0 +1,250 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-proximity-agreement-and-syllepsis",
+  "lang": "fr",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "L’accord de proximité et la syllepse",
+  "objective": {
+    "en": "Master agreements that follow meaning rather than form: la plupart sont venus, un des rares qui soient, de vieilles gens, and the proximity agreement.",
+    "fr": "Maîtriser les accords qui suivent le sens plutôt que la forme : la plupart sont venus, un des rares qui soient, de vieilles gens, l’accord de proximité.",
+    "de": "Kongruenzen beherrschen, die dem Sinn statt der Form folgen: la plupart sont venus, un des rares qui soient, de vieilles gens und die Nähekongruenz."
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T19:00:28.197Z",
+    "inputHashes": { "outline": "019f87e895e76576d98e2e82bac110be32c6794ed8057438d3f6f9cdf8795a1d" }
+  },
+  "kind": "grammar",
+  "topic": "agreement",
+  "scopeBoundaries": {
+    "en": "Covers syllepsis (collectives, quantity expressions, polite vous), the verb after un des… qui and le seul… qui, the word gens, and proximity agreement. Excludes the general rules of agreement.",
+    "fr": "Couvre la syllepse (collectifs, expressions de quantité, vous de politesse), le verbe après un des… qui et le seul… qui, le mot gens et l’accord de proximité. Exclut les règles générales d’accord.",
+    "de": "Behandelt die Syllepse (Kollektiva, Mengenausdrücke, höfliches vous), das Verb nach un des… qui und le seul… qui, das Wort gens und die Nähekongruenz. Die allgemeinen Kongruenzregeln sind ausgeschlossen."
+  },
+  "prerequisites": [
+    {
+      "en": "Standard agreement of the verb, the adjective and the past participle",
+      "fr": "L’accord courant du verbe, de l’adjectif et du participe passé",
+      "de": "Die übliche Kongruenz von Verb, Adjektiv und Partizip Perfekt"
+    },
+    {
+      "en": "The use of the relative pronoun qui",
+      "fr": "L’emploi du pronom relatif qui",
+      "de": "Der Gebrauch des Relativpronomens qui"
+    }
+  ],
+  "rules": [
+    {
+      "id": "r-sens",
+      "summary": {
+        "en": "After a collective or a quantity expression (la plupart, un grand nombre de), the verb is plural; polite vous addressing one person takes a singular attribute.",
+        "fr": "Après un collectif ou une expression de quantité (la plupart, un grand nombre de), le verbe est au pluriel ; vous de politesse adressé à une personne veut un attribut au singulier.",
+        "de": "Nach einem Kollektivum oder Mengenausdruck (la plupart, un grand nombre de) steht das Verb im Plural; höfliches vous für eine Person verlangt ein Prädikativ im Singular."
+      }
+    },
+    {
+      "id": "r-relatif",
+      "summary": {
+        "en": "After un des / un de ceux + plural + qui, the verb is plural; after le seul / l’unique… qui, it is singular.",
+        "fr": "Après un des / un de ceux + pluriel + qui, le verbe est au pluriel ; après le seul / l’unique… qui, il est au singulier.",
+        "de": "Nach un des / un de ceux + Plural + qui steht das Verb im Plural; nach le seul / l’unique… qui im Singular."
+      }
+    },
+    {
+      "id": "r-gens",
+      "summary": {
+        "en": "Gens: an adjective right before it is feminine (de vieilles gens), an adjective after it is masculine (des gens heureux).",
+        "fr": "Gens : l’adjectif placé juste avant est au féminin (de vieilles gens), l’adjectif placé après est au masculin (des gens heureux).",
+        "de": "Gens: Ein Adjektiv direkt davor steht im Femininum (de vieilles gens), ein Adjektiv danach im Maskulinum (des gens heureux)."
+      }
+    },
+    {
+      "id": "r-proximite",
+      "summary": {
+        "en": "Proximity agreement: the adjective or the verb agrees with the nearest noun; it is literary and optional.",
+        "fr": "Accord de proximité : l’adjectif ou le verbe s’accorde avec le nom le plus proche ; il est littéraire et facultatif.",
+        "de": "Nähekongruenz: Adjektiv oder Verb richtet sich nach dem nächsten Nomen; sie ist literarisch und fakultativ."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "b-sens",
+      "title": {
+        "en": "Agreement with the meaning",
+        "fr": "L’accord selon le sens",
+        "de": "Kongruenz nach dem Sinn"
+      },
+      "ruleIds": ["r-sens", "r-relatif"],
+      "explanationPlan": {
+        "en": "Introduce syllepsis: collectives and quantity expressions with a plural verb, polite vous with a singular attribute, then the verb after un des… qui (plural) versus le seul… qui (singular).",
+        "fr": "Présenter la syllepse : collectifs et expressions de quantité avec verbe au pluriel, vous de politesse avec attribut au singulier, puis le verbe après un des… qui (pluriel) et le seul… qui (singulier).",
+        "de": "Die Syllepse einführen: Kollektiva und Mengenausdrücke mit Verb im Plural, höfliches vous mit Prädikativ im Singular, dann das Verb nach un des… qui (Plural) und le seul… qui (Singular)."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "La plupart des invités sont restés.",
+          "translation": {
+            "en": "Most of the guests stayed.",
+            "de": "Die meisten Gäste sind geblieben."
+          }
+        },
+        {
+          "text": "Vous êtes très aimable, madame.",
+          "translation": {
+            "en": "You are very kind, madam.",
+            "de": "Sie sind sehr freundlich, gnädige Frau."
+          }
+        },
+        {
+          "text": "C’est un des rares livres qui soient traduits.",
+          "translation": {
+            "en": "It is one of the few books that are translated.",
+            "de": "Es ist eines der wenigen Bücher, die übersetzt wurden."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "Do not put the verb in the singular just because la plupart or un grand nombre looks singular.",
+          "fr": "Ne mettez pas le verbe au singulier sous prétexte que la plupart ou un grand nombre paraît singulier.",
+          "de": "Setze das Verb nicht in den Singular, nur weil la plupart oder un grand nombre formal singularisch aussieht."
+        },
+        {
+          "en": "After le seul… qui, the verb stays singular, unlike un des… qui.",
+          "fr": "Après le seul… qui, le verbe reste au singulier, contrairement à un des… qui.",
+          "de": "Nach le seul… qui bleibt das Verb im Singular, anders als nach un des… qui."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "e1-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["r-sens", "r-relatif"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "e1-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["r-sens", "r-relatif"],
+          "estimatedDurationS": 80
+        },
+        {
+          "id": "e1-spot",
+          "type": "grammar_error_spotter",
+          "itemCount": 4,
+          "ruleIds": ["r-sens", "r-relatif"],
+          "estimatedDurationS": 100
+        }
+      ]
+    },
+    {
+      "id": "b-gens",
+      "title": {
+        "en": "Gens and proximity agreement",
+        "fr": "Gens et accord de proximité",
+        "de": "Gens und Nähekongruenz"
+      },
+      "ruleIds": ["r-gens", "r-proximite"],
+      "explanationPlan": {
+        "en": "Explain the gender of adjectives with gens (feminine before, masculine after), then proximity agreement with the nearest noun, adjective after the nouns or verb before them, noting it is literary and optional.",
+        "fr": "Expliquer le genre des adjectifs avec gens (féminin avant, masculin après), puis l’accord de proximité avec le nom le plus proche, adjectif après les noms ou verbe avant eux, en précisant qu’il est littéraire et facultatif.",
+        "de": "Das Genus der Adjektive bei gens erklären (davor Femininum, danach Maskulinum), dann die Nähekongruenz mit dem nächsten Nomen, Adjektiv nach den Nomen oder Verb davor, mit dem Hinweis, dass sie literarisch und fakultativ ist."
+      },
+      "explanationDurationS": 150,
+      "examples": [
+        {
+          "text": "Les vieilles gens racontent leurs souvenirs.",
+          "translation": {
+            "en": "Old people tell their memories.",
+            "de": "Alte Leute erzählen ihre Erinnerungen."
+          }
+        },
+        {
+          "text": "Ce sont des gens heureux.",
+          "translation": { "en": "They are happy people.", "de": "Das sind glückliche Leute." }
+        },
+        {
+          "text": "Elle admire des hommes et des femmes courageuses.",
+          "translation": {
+            "en": "She admires brave men and women.",
+            "de": "Sie bewundert mutige Männer und Frauen."
+          }
+        }
+      ],
+      "pitfalls": [
+        {
+          "en": "The adjective is feminine only when it comes right before gens.",
+          "fr": "L’adjectif n’est féminin que s’il précède directement gens.",
+          "de": "Das Adjektiv ist nur dann feminin, wenn es direkt vor gens steht."
+        },
+        {
+          "en": "Proximity agreement is optional: the masculine plural is never wrong.",
+          "fr": "L’accord de proximité est facultatif : le masculin pluriel n’est jamais faux.",
+          "de": "Die Nähekongruenz ist fakultativ: Das Maskulinum Plural ist nie falsch."
+        }
+      ],
+      "exercises": [
+        {
+          "id": "e2-choice",
+          "type": "grammar_gap_choice",
+          "itemCount": 4,
+          "ruleIds": ["r-gens", "r-proximite"],
+          "estimatedDurationS": 48
+        },
+        {
+          "id": "e2-order",
+          "type": "grammar_word_order",
+          "itemCount": 4,
+          "ruleIds": ["r-gens", "r-proximite"],
+          "estimatedDurationS": 100
+        },
+        {
+          "id": "e2-typing",
+          "type": "grammar_gap_typing",
+          "itemCount": 4,
+          "ruleIds": ["r-gens", "r-proximite"],
+          "estimatedDurationS": 80
+        }
+      ]
+    }
+  ],
+  "newVerbs": [],
+  "feedbackPlaceholder": { "estimatedDurationS": 30 },
+  "exam": {
+    "pages": [
+      {
+        "pageId": "exam-sens",
+        "type": "grammar_gap_typing",
+        "itemCount": 4,
+        "ruleIds": ["r-sens", "r-relatif"],
+        "estimatedDurationS": 80,
+        "timeLimitS": 120
+      },
+      {
+        "pageId": "exam-gens",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["r-gens"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 90
+      },
+      {
+        "pageId": "exam-prox",
+        "type": "grammar_gap_typing",
+        "itemCount": 3,
+        "ruleIds": ["r-proximite"],
+        "estimatedDurationS": 60,
+        "timeLimitS": 90
+      }
+    ]
+  },
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

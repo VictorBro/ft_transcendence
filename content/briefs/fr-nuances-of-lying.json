@@ -1,0 +1,501 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-nuances-of-lying",
+  "lang": "fr",
+  "level": "C2",
+  "locales": ["en", "fr", "de"],
+  "title": "Mentir, travestir, affabuler",
+  "objective": {
+    "en": "Choose the right verb to name a lie, a distortion or an embellishment of the truth.",
+    "fr": "Distinguer dix verbes du mensonge et de la déformation : mentir, travestir, falsifier, enjoliver, broder…",
+    "de": "Zehn Verben der Lüge und der Wahrheitsverdrehung unterscheiden: mentir, travestir, falsifier, enjoliver, broder…"
+  },
+  "estimatedMinutes": 16,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:57:53.234Z",
+    "inputHashes": { "outline": "cc331173388a61ba39770f6b181207dd36e50eeb2b8bc94a35f58d0757de1328" }
+  },
+  "kind": "vocabulary",
+  "theme": "language",
+  "coverageNotes": {
+    "en": "Ten verbs, from the plain lie to the harmless embellishment: lying, altering, covering up, embroidering and hoaxing.",
+    "fr": "Dix verbes, du mensonge pur à l’enjolivement inoffensif : mentir, altérer, camoufler, broder et mystifier.",
+    "de": "Zehn Verben, von der glatten Lüge bis zur harmlosen Ausschmückung: lügen, verändern, kaschieren, ausschmücken und zum Narren halten."
+  },
+  "targetCount": 10,
+  "countRationale": {
+    "en": "Ten verbs make a manageable C2 set whose nuances are close enough to be taught side by side.",
+    "fr": "Dix verbes forment un ensemble maniable au niveau C2, dont les nuances sont assez proches pour être comparées.",
+    "de": "Zehn Verben bilden eine überschaubare C2-Menge, deren Nuancen nahe genug beieinanderliegen, um sie zu vergleichen."
+  },
+  "difficultyBalance": {
+    "en": "Mentir and falsifier are core; the verbs of nuance (broder, affabuler, dénaturer, mystifier) are demanding.",
+    "fr": "Mentir et falsifier sont de base ; les verbes de nuance (broder, affabuler, dénaturer, mystifier) sont plus exigeants.",
+    "de": "Mentir und falsifier sind Grundwörter; die Nuancenverben (broder, affabuler, dénaturer, mystifier) sind anspruchsvoller."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "alterer",
+      "label": {
+        "en": "Altering the truth",
+        "fr": "Altérer la vérité",
+        "de": "Die Wahrheit verändern"
+      },
+      "targetIds": ["mentir", "falsifier", "travestir", "maquiller", "deguiser", "denaturer"],
+      "introduction": {
+        "en": "These verbs describe **six ways of leaving the truth**:\n\n- `mentir`: to state what you know is false;\n- `falsifier`: to alter a document or figures;\n- `travestir`, `maquiller`, `déguiser`, `dénaturer`: to give the facts a false look.",
+        "fr": "Ces verbes décrivent **six façons de s’écarter de la vérité** :\n\n- `mentir` : affirmer ce qu’on sait faux ;\n- `falsifier` : altérer un document ou des chiffres ;\n- `travestir`, `maquiller`, `déguiser`, `dénaturer` : donner aux faits un faux aspect.",
+        "de": "Diese Verben beschreiben **sechs Arten, von der Wahrheit abzuweichen**:\n\n- `mentir`: etwas behaupten, das man für falsch hält;\n- `falsifier`: ein Dokument oder Zahlen verändern;\n- `travestir`, `maquiller`, `déguiser`, `dénaturer`: den Tatsachen ein falsches Aussehen geben."
+      }
+    },
+    {
+      "id": "inventer",
+      "label": {
+        "en": "Embellishing and inventing",
+        "fr": "Embellir et inventer",
+        "de": "Ausschmücken und erfinden"
+      },
+      "targetIds": ["enjoliver", "broder", "affabuler", "mystifier"],
+      "introduction": {
+        "en": "Here the truth is not denied but **dressed up or invented**:\n\n- `enjoliver`: to make a true story prettier;\n- `broder`: to add details to a true core;\n- `affabuler`: to invent stories;\n- `mystifier`: to deceive someone for a hoax.",
+        "fr": "Ici, la vérité n’est pas niée mais **parée ou inventée** :\n\n- `enjoliver` : rendre une histoire vraie plus belle ;\n- `broder` : ajouter des détails à un fond vrai ;\n- `affabuler` : inventer des histoires ;\n- `mystifier` : tromper quelqu’un pour un canular.",
+        "de": "Hier wird die Wahrheit nicht geleugnet, sondern **geschmückt oder erfunden**:\n\n- `enjoliver`: eine wahre Geschichte schöner machen;\n- `broder`: einem wahren Kern Details hinzufügen;\n- `affabuler`: Geschichten erfinden;\n- `mystifier`: jemanden für einen Scherz täuschen."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "mentir",
+      "term": "mentir",
+      "translations": { "en": ["to lie"], "de": ["lügen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "mentir",
+      "examForms": ["mentir"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/mɑ̃.tiʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Il a menti à son père.",
+        "translation": { "en": "He lied to his father.", "de": "Er hat seinen Vater angelogen." }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Mentir is the general verb: you say something you know to be false.",
+        "fr": "Mentir est le verbe général : on affirme ce qu’on sait faux.",
+        "de": "Mentir ist das allgemeine Verb: Man sagt etwas, das man als falsch kennt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il vaut mieux se taire que de ",
+        "after": " à ses amis.",
+        "accepted": { "answers": ["mentir"] },
+        "referenceTargetIds": ["mentir", "falsifier", "maquiller", "broder"],
+        "explanation": {
+          "en": "Only mentir takes « à + person »: to lie to someone.",
+          "fr": "Seul « mentir » se construit avec « à » + personne : mentir à quelqu’un.",
+          "de": "Nur „mentir“ wird mit „à“ + Person konstruiert: jemanden anlügen."
+        }
+      },
+      "listeningOptionTargetIds": ["mentir", "mystifier", "maquiller", "denaturer"]
+    },
+    {
+      "id": "falsifier",
+      "term": "falsifier",
+      "translations": { "en": ["to falsify"], "de": ["fälschen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "falsifier",
+      "examForms": ["falsifier"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/fal.si.fje/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Il a falsifié les comptes de l’entreprise.",
+        "translation": {
+          "en": "He falsified the company’s accounts.",
+          "de": "Er hat die Bilanzen der Firma gefälscht."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Falsifier means altering a document, figure or signature in order to deceive.",
+        "fr": "Falsifier, c’est altérer un document, un chiffre ou une signature pour tromper.",
+        "de": "Falsifier heißt, ein Dokument, eine Zahl oder eine Unterschrift zu verändern, um zu täuschen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Pour toucher l’héritage, il a dû ",
+        "after": " la signature de son père.",
+        "accepted": { "answers": ["falsifier"] },
+        "referenceTargetIds": ["falsifier", "mentir", "enjoliver", "affabuler"],
+        "explanation": {
+          "en": "One falsifies a signature, that is, one forges it.",
+          "fr": "On falsifie une signature, c’est-à-dire qu’on la contrefait.",
+          "de": "Man fälscht eine Unterschrift, man ahmt sie also nach."
+        }
+      },
+      "listeningOptionTargetIds": ["falsifier", "mystifier", "enjoliver", "affabuler"]
+    },
+    {
+      "id": "travestir",
+      "term": "travestir",
+      "translations": { "en": ["to misrepresent"], "de": ["entstellen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "travestir",
+      "examForms": ["travestir"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/tʁa.vɛs.tiʁ/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "La presse a travesti ses propos.",
+        "translation": {
+          "en": "The press misrepresented his words.",
+          "de": "Die Presse hat seine Worte entstellt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Travestir presents facts or words in a false light, changing their meaning.",
+        "fr": "Travestir, c’est présenter des faits ou des paroles sous un faux jour, en changeant leur sens.",
+        "de": "Travestir heißt, Fakten oder Worte in falschem Licht darzustellen und ihren Sinn zu verändern."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le journal a cherché à ",
+        "after": " ses propos en une provocation, alors qu’il plaisantait.",
+        "accepted": { "answers": ["travestir"] },
+        "referenceTargetIds": ["travestir", "mentir", "broder", "mystifier"],
+        "explanation": {
+          "en": "Travestir fits: the words are given a false meaning.",
+          "fr": "« Travestir » convient : on donne à ses paroles un faux sens.",
+          "de": "„Travestir“ passt: Den Worten wird ein falscher Sinn gegeben."
+        }
+      },
+      "listeningOptionTargetIds": ["travestir", "maquiller", "falsifier", "deguiser"]
+    },
+    {
+      "id": "maquiller",
+      "term": "maquiller",
+      "translations": { "en": ["to doctor"], "de": ["frisieren", "tarnen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "maquiller",
+      "examForms": ["maquiller"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ma.ki.je/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "On a maquillé le crime en accident.",
+        "translation": {
+          "en": "The crime was made to look like an accident.",
+          "de": "Das Verbrechen wurde als Unfall getarnt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Maquiller hides a fact (a crime, figures) under a harmless appearance.",
+        "fr": "Maquiller, c’est cacher un fait (un crime, des chiffres) sous une apparence anodine.",
+        "de": "Maquiller heißt, eine Tatsache (ein Verbrechen, Zahlen) unter einem harmlosen Anschein zu verbergen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Les enquêteurs pensent qu’on a voulu ",
+        "after": " le meurtre en suicide.",
+        "accepted": { "answers": ["maquiller"] },
+        "referenceTargetIds": ["maquiller", "mentir", "enjoliver", "affabuler"],
+        "explanation": {
+          "en": "One doctors a murder as a suicide: maquiller … en.",
+          "fr": "On maquille un meurtre en suicide : maquiller … en.",
+          "de": "Man tarnt einen Mord als Suizid: maquiller … en."
+        }
+      },
+      "listeningOptionTargetIds": ["maquiller", "mentir", "travestir", "broder"]
+    },
+    {
+      "id": "deguiser",
+      "term": "déguiser",
+      "translations": { "en": ["to disguise (the truth)"], "de": ["verschleiern"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "déguiser",
+      "examForms": ["déguiser"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/de.ɡi.ze/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Il déguise la vérité pour ne pas inquiéter sa mère.",
+        "translation": {
+          "en": "He disguises the truth so as not to worry his mother.",
+          "de": "Er verschleiert die Wahrheit, um seine Mutter nicht zu beunruhigen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Déguiser la vérité means hiding it behind softer words or another appearance.",
+        "fr": "Déguiser la vérité, c’est la cacher derrière des mots plus doux ou une autre apparence.",
+        "de": "Déguiser la vérité heißt, sie hinter sanfteren Worten oder einem anderen Anschein zu verbergen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Par pudeur, elle préfère ",
+        "after": " la vérité plutôt que de l’avouer sans détour.",
+        "accepted": { "answers": ["déguiser"] },
+        "referenceTargetIds": ["deguiser", "affabuler", "mystifier", "falsifier"],
+        "explanation": {
+          "en": "One disguises the truth to soften it: déguiser la vérité.",
+          "fr": "On déguise la vérité pour l’adoucir : déguiser la vérité.",
+          "de": "Man verschleiert die Wahrheit, um sie abzumildern: déguiser la vérité."
+        }
+      },
+      "listeningOptionTargetIds": ["deguiser", "denaturer", "enjoliver", "mentir"]
+    },
+    {
+      "id": "denaturer",
+      "term": "dénaturer",
+      "translations": { "en": ["to distort"], "de": ["verfälschen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "dénaturer",
+      "examForms": ["dénaturer"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/de.na.ty.ʁe/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Ce résumé dénature le sens du texte.",
+        "translation": {
+          "en": "This summary distorts the meaning of the text.",
+          "de": "Diese Zusammenfassung verfälscht den Sinn des Textes."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Dénaturer changes the nature or meaning of something, often by distortion.",
+        "fr": "Dénaturer, c’est changer la nature ou le sens de quelque chose, souvent en le déformant.",
+        "de": "Dénaturer heißt, die Natur oder den Sinn von etwas zu verändern, oft durch Verzerrung."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ce traducteur a été accusé de ",
+        "after": " le sens du roman.",
+        "accepted": { "answers": ["dénaturer"] },
+        "referenceTargetIds": ["denaturer", "mentir", "broder", "mystifier"],
+        "explanation": {
+          "en": "It is the meaning that is distorted: dénaturer le sens.",
+          "fr": "C’est le sens qui est altéré : dénaturer le sens.",
+          "de": "Der Sinn wird verfälscht: dénaturer le sens."
+        }
+      },
+      "listeningOptionTargetIds": ["denaturer", "deguiser", "enjoliver", "falsifier"]
+    },
+    {
+      "id": "enjoliver",
+      "term": "enjoliver",
+      "translations": { "en": ["to embellish"], "de": ["ausschmücken"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "enjoliver",
+      "examForms": ["enjoliver"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɑ̃.ʒɔ.li.ve/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Il enjolive toujours ses souvenirs de jeunesse.",
+        "translation": {
+          "en": "He always embellishes his youthful memories.",
+          "de": "Er schmückt seine Jugenderinnerungen immer aus."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Enjoliver makes a true story prettier by adding pleasant details.",
+        "fr": "Enjoliver, c’est rendre une histoire vraie plus belle en y ajoutant des détails flatteurs.",
+        "de": "Enjoliver heißt, eine wahre Geschichte durch angenehme Details schöner zu machen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "À force de raconter son voyage, il aime ",
+        "after": " les détails pour rendre l’histoire plus belle.",
+        "accepted": { "answers": ["enjoliver"] },
+        "referenceTargetIds": ["enjoliver", "falsifier", "mystifier", "mentir"],
+        "explanation": {
+          "en": "Enjoliver fits: the aim is to make the story prettier.",
+          "fr": "« Enjoliver » convient : le but est de rendre l’histoire plus belle.",
+          "de": "„Enjoliver“ passt: Ziel ist, die Geschichte schöner zu machen."
+        }
+      },
+      "listeningOptionTargetIds": ["enjoliver", "deguiser", "broder", "mentir"]
+    },
+    {
+      "id": "broder",
+      "term": "broder",
+      "translations": { "en": ["to embroider (a story)"], "de": ["dazudichten"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "broder",
+      "examForms": ["broder"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/bʁɔ.de/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Elle brode un peu, mais l’histoire est vraie.",
+        "translation": {
+          "en": "She embroiders a bit, but the story is true.",
+          "de": "Sie dichtet etwas dazu, aber die Geschichte stimmt."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Broder is followed by « sur » + the story: broder sur une anecdote.",
+        "fr": "Broder se construit avec « sur » + le récit : broder sur une anecdote.",
+        "de": "Broder wird mit „sur“ + Erzählung konstruiert: broder sur une anecdote."
+      },
+      "explanation": {
+        "en": "Broder adds invented details to a true core, as one embroiders a canvas.",
+        "fr": "Broder, c’est ajouter des détails inventés à un fond vrai, comme on brode une toile.",
+        "de": "Broder heißt, einem wahren Kern erfundene Details hinzuzufügen, wie man ein Tuch bestickt."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Elle a pris l’habitude de ",
+        "after": " sur chaque anecdote, ajoutant mille détails.",
+        "accepted": { "answers": ["broder"] },
+        "referenceTargetIds": ["broder", "falsifier", "mentir", "maquiller"],
+        "explanation": {
+          "en": "Only broder is followed by « sur » + anecdote.",
+          "fr": "Seul « broder » se construit avec « sur » + anecdote.",
+          "de": "Nur „broder“ wird mit „sur“ + Anekdote konstruiert."
+        }
+      },
+      "listeningOptionTargetIds": ["broder", "enjoliver", "denaturer", "mentir"]
+    },
+    {
+      "id": "affabuler",
+      "term": "affabuler",
+      "translations": {
+        "en": ["to fabricate stories", "to confabulate"],
+        "de": ["fabulieren", "Geschichten erfinden"]
+      },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "affabuler",
+      "examForms": ["affabuler"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/a.fa.by.le/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Le suspect s’est mis à affabuler devant les enquêteurs.",
+        "translation": {
+          "en": "The suspect started spinning tall tales in front of the investigators.",
+          "de": "Der Verdächtige begann, den Ermittlern Geschichten zu erfinden."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Affabuler means inventing stories out of nothing, with a taste for fiction.",
+        "fr": "Affabuler, c’est inventer des histoires de toutes pièces, par goût de la fiction.",
+        "de": "Affabuler heißt, Geschichten aus dem Nichts zu erfinden, aus Lust an der Fiktion."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Inutile d’",
+        "after": " : personne ne croit à cette histoire qu’il a inventée de toutes pièces.",
+        "accepted": { "answers": ["affabuler"] },
+        "referenceTargetIds": ["affabuler", "enjoliver", "mystifier", "falsifier"],
+        "explanation": {
+          "en": "Affabuler needs no object: one simply invents stories.",
+          "fr": "« Affabuler » s’emploie sans complément : on invente des histoires.",
+          "de": "„Affabuler“ steht ohne Objekt: Man erfindet einfach Geschichten."
+        }
+      },
+      "listeningOptionTargetIds": ["affabuler", "falsifier", "mystifier", "maquiller"]
+    },
+    {
+      "id": "mystifier",
+      "term": "mystifier",
+      "translations": { "en": ["to hoax"], "de": ["zum Narren halten", "foppen"] },
+      "wordClass": "verb",
+      "genders": [],
+      "number": null,
+      "teachingForm": "mystifier",
+      "examForms": ["mystifier"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/mis.ti.fje/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Le faux reportage a mystifié tout le pays.",
+        "translation": {
+          "en": "The fake report hoaxed the whole country.",
+          "de": "Die Falschmeldung hat das ganze Land zum Narren gehalten."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Mystifier means to hoax someone; it does not mean to make something mystical.",
+        "fr": "Mystifier, c’est duper quelqu’un pour un canular ; ce n’est pas rendre quelque chose mystique.",
+        "de": "Mystifier heißt, jemanden für einen Scherz zu täuschen; es bedeutet nicht, etwas mystisch zu machen."
+      },
+      "explanation": {
+        "en": "Mystifier means deceiving someone for a hoax or to make fun of them.",
+        "fr": "Mystifier, c’est tromper quelqu’un pour un canular ou pour se moquer de lui.",
+        "de": "Mystifier heißt, jemanden für einen Scherz oder zum Spott zu täuschen."
+      },
+      "genderExplanation": null,
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le célèbre canular a réussi à ",
+        "after": " des milliers d’auditeurs, persuadés d’entendre un vrai reportage.",
+        "accepted": { "answers": ["mystifier"] },
+        "referenceTargetIds": ["mystifier", "mentir", "broder", "travestir"],
+        "explanation": {
+          "en": "The listeners are the ones fooled by the hoax: mystifier quelqu’un.",
+          "fr": "Ce sont les auditeurs qui sont dupés par le canular : mystifier quelqu’un.",
+          "de": "Die Hörer werden durch den Scherz getäuscht: mystifier quelqu’un."
+        }
+      },
+      "listeningOptionTargetIds": ["mystifier", "mentir", "falsifier", "maquiller"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}

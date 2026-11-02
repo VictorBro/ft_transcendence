@@ -1,0 +1,558 @@
+{
+  "schemaVersion": 2,
+  "id": "fr-link-and-relation",
+  "lang": "fr",
+  "level": "C1",
+  "locales": ["en", "fr", "de"],
+  "title": "Rapport, lien, corrélation",
+  "objective": {
+    "en": "Distinguish ten close nouns used to describe a relationship between two things: rapport, lien, corrélation, causalité, analogie.",
+    "fr": "Distinguer dix noms proches pour parler d'une relation entre deux choses : rapport, lien, corrélation, causalité, analogie.",
+    "de": "Zehn nahe Nomen unterscheiden, um eine Beziehung zwischen zwei Dingen zu beschreiben: rapport, lien, corrélation, causalité, analogie."
+  },
+  "estimatedMinutes": 17,
+  "provenance": {
+    "generator": "ft lessons:author",
+    "model": "sonnet",
+    "promptVersion": "author-2",
+    "generatedAt": "2026-11-01T18:57:53.397Z",
+    "inputHashes": { "outline": "a31c5b8700afa2d090c6cea1c37f3cd0c4da20e51f2410fa3b3833e6a57dafc4" }
+  },
+  "kind": "vocabulary",
+  "theme": "language",
+  "coverageNotes": {
+    "en": "Ten abstract nouns for relationships between two things, split into general links (rapport, relation, lien, parallèle, rapprochement) and the precise nature of a link (corrélation, causalité, interdépendance, analogie, implication).",
+    "fr": "Dix noms abstraits pour parler d'une relation entre deux choses, répartis entre les liens généraux (rapport, relation, lien, parallèle, rapprochement) et la nature précise d'un lien (corrélation, causalité, interdépendance, analogie, implication).",
+    "de": "Zehn abstrakte Nomen für Beziehungen zwischen zwei Dingen, aufgeteilt in allgemeine Verbindungen (rapport, relation, lien, parallèle, rapprochement) und die genaue Art einer Verbindung (corrélation, causalité, interdépendance, analogie, implication)."
+  },
+  "targetCount": 10,
+  "countRationale": {
+    "en": "Ten words are enough to cover the nuances without overloading a C1 lesson, in two groups of five.",
+    "fr": "Dix mots suffisent pour couvrir les nuances sans surcharger une leçon de niveau C1, en deux groupes de cinq.",
+    "de": "Zehn Wörter genügen, um die Nuancen abzudecken, ohne eine C1-Lektion zu überladen, in zwei Gruppen zu fünf."
+  },
+  "difficultyBalance": {
+    "en": "Common words (rapport, relation, lien) alongside more technical ones (interdépendance, implication, corrélation).",
+    "fr": "Des mots courants (rapport, relation, lien) à côté de mots plus techniques (interdépendance, implication, corrélation).",
+    "de": "Gängige Wörter (rapport, relation, lien) neben technischeren (interdépendance, implication, corrélation)."
+  },
+  "prerequisites": [],
+  "groups": [
+    {
+      "id": "liens",
+      "label": {
+        "en": "Linking two things",
+        "fr": "Mettre deux choses en lien",
+        "de": "Zwei Dinge verbinden"
+      },
+      "targetIds": ["rapport", "relation", "lien", "parallele", "rapprochement"],
+      "introduction": {
+        "en": "These nouns say that two things are **connected or set side by side**, but each has its own nuance:\n\n- `un rapport`: a logical connection or a proportion between two elements\n- `une relation`: an exchange or connection, often between people\n- `un lien`: what binds, concretely or abstractly\n- `un parallèle`: setting two situations side by side\n- `un rapprochement`: the act of mentally bringing two facts together\n\nBeware: `par rapport à` introduces a comparison.",
+        "fr": "Ces noms disent que deux choses sont **liées ou mises en regard**, mais chacun a sa nuance :\n\n- `un rapport` : le lien logique ou la proportion entre deux éléments\n- `une relation` : l'échange ou la connexion, souvent entre personnes\n- `un lien` : ce qui attache, concrètement ou abstraitement\n- `un parallèle` : la mise en regard de deux situations\n- `un rapprochement` : l'opération qui consiste à rapprocher deux faits\n\nAttention : `par rapport à` introduit une comparaison.",
+        "de": "Diese Nomen sagen, dass zwei Dinge **verbunden oder nebeneinandergestellt** sind, aber jedes hat seine eigene Nuance:\n\n- `un rapport`: ein logischer Zusammenhang oder ein Verhältnis zwischen zwei Elementen\n- `une relation`: ein Austausch oder eine Verbindung, oft zwischen Personen\n- `un lien`: was verbindet, konkret oder abstrakt\n- `un parallèle`: das Nebeneinanderstellen zweier Situationen\n- `un rapprochement`: das gedankliche Zusammenbringen zweier Fakten\n\nAchtung: `par rapport à` leitet einen Vergleich ein."
+      }
+    },
+    {
+      "id": "nature",
+      "label": {
+        "en": "The nature of the link",
+        "fr": "La nature du lien",
+        "de": "Die Art der Verbindung"
+      },
+      "targetIds": ["correlation", "causalite", "interdependance", "analogie", "implication"],
+      "introduction": {
+        "en": "These nouns specify **the nature of the link** between two phenomena:\n\n- `une corrélation`: two variables vary together\n- `une causalité`: one produces the other\n- `une interdépendance`: each depends on the other\n- `une analogie`: a resemblance of structure\n- `une implication`: a logical consequence\n\nRemember: `corrélation` is not `causalité`.",
+        "fr": "Ces noms précisent **la nature du lien** entre deux phénomènes :\n\n- `une corrélation` : deux variables évoluent ensemble\n- `une causalité` : l'un produit l'autre\n- `une interdépendance` : chacun dépend de l'autre\n- `une analogie` : une ressemblance de structure\n- `une implication` : une conséquence logique\n\nRetenez : `corrélation` n'est pas `causalité`.",
+        "de": "Diese Nomen bestimmen **die Art der Verbindung** zwischen zwei Phänomenen:\n\n- `une corrélation`: zwei Variablen verändern sich gemeinsam\n- `une causalité`: das eine bewirkt das andere\n- `une interdépendance`: jedes hängt vom anderen ab\n- `une analogie`: eine Ähnlichkeit der Struktur\n- `une implication`: eine logische Folgerung\n\nMerke: `corrélation` ist nicht `causalité`."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": "rapport",
+      "term": "rapport",
+      "translations": { "en": ["relationship", "connection"], "de": ["Zusammenhang", "Bezug"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un rapport",
+      "examForms": ["un rapport"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʁa.pɔʁ/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Il n'y a aucun rapport entre ces deux événements.",
+        "translation": {
+          "en": "There is no connection between these two events.",
+          "de": "Zwischen diesen beiden Ereignissen besteht kein Zusammenhang."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Un rapport also means a report; here it means a connection or a proportion.",
+        "fr": "Un rapport désigne aussi un compte rendu ; ici, il s'agit d'un lien ou d'une proportion.",
+        "de": "Un rapport bedeutet auch Bericht; hier geht es um einen Zusammenhang oder ein Verhältnis."
+      },
+      "explanation": {
+        "en": "Un rapport is a logical connection or a proportion between two elements; par rapport à compares them.",
+        "fr": "Un rapport est un lien logique ou une proportion entre deux éléments ; « par rapport à » les compare.",
+        "de": "Un rapport ist ein logischer Zusammenhang oder ein Verhältnis zwischen zwei Elementen; „par rapport à“ vergleicht sie."
+      },
+      "genderExplanation": {
+        "en": "Rapport is masculine, so its indefinite article is un.",
+        "fr": "Rapport est masculin : on dit un rapport.",
+        "de": "Rapport ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "a connection or proportion between two facts (not a report)",
+        "de": "ein Zusammenhang oder Verhältnis zwischen zwei Fakten (kein Bericht)"
+      },
+      "gap": {
+        "before": "Les prix ont baissé par ",
+        "after": " à l'année dernière.",
+        "accepted": { "answers": ["rapport"] },
+        "referenceTargetIds": ["rapport", "lien", "parallele", "rapprochement"],
+        "explanation": {
+          "en": "Only rapport forms the expression par rapport à.",
+          "fr": "Seul « rapport » forme la locution par rapport à.",
+          "de": "Nur „rapport“ bildet die Wendung par rapport à."
+        }
+      },
+      "listeningOptionTargetIds": ["rapport", "rapprochement", "parallele", "lien"]
+    },
+    {
+      "id": "relation",
+      "term": "relation",
+      "translations": { "en": ["relation"], "de": ["Beziehung"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une relation",
+      "examForms": ["une relation"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʁə.la.sjɔ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Ils entretiennent une relation de confiance.",
+        "translation": {
+          "en": "They have a relationship of trust.",
+          "de": "Sie pflegen eine Vertrauensbeziehung."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Une relation is a connection or exchange between people or things, often ongoing.",
+        "fr": "Une relation est une connexion ou un échange entre des personnes ou des choses, souvent durable.",
+        "de": "Une relation ist eine Verbindung oder ein Austausch zwischen Personen oder Dingen, oft von Dauer."
+      },
+      "genderExplanation": {
+        "en": "Relation is feminine, so its indefinite article is une.",
+        "fr": "Relation est féminin : on dit une relation.",
+        "de": "Relation ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Il entretient depuis des années une ",
+        "after": " de confiance avec ses voisins.",
+        "accepted": { "answers": ["relation"] },
+        "referenceTargetIds": ["relation", "correlation", "causalite", "analogie"],
+        "explanation": {
+          "en": "Only relation fits the expression relation de confiance.",
+          "fr": "Seul « relation » convient à l'expression relation de confiance.",
+          "de": "Nur „relation“ passt zur Wendung relation de confiance."
+        }
+      },
+      "listeningOptionTargetIds": ["relation", "correlation", "implication", "analogie"]
+    },
+    {
+      "id": "lien",
+      "term": "lien",
+      "translations": { "en": ["link", "bond"], "de": ["Verbindung", "Band"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un lien",
+      "examForms": ["un lien"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ljɛ̃/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "Elle garde un lien fort avec son village.",
+        "translation": {
+          "en": "She keeps a strong bond with her village.",
+          "de": "Sie hat eine starke Bindung an ihr Dorf."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Un lien is what binds two things or people, concretely or abstractly.",
+        "fr": "Un lien est ce qui attache deux choses ou deux personnes, concrètement ou abstraitement.",
+        "de": "Un lien ist das, was zwei Dinge oder Personen verbindet, konkret oder abstrakt."
+      },
+      "genderExplanation": {
+        "en": "Lien is masculine, so its indefinite article is un.",
+        "fr": "Lien est masculin : on dit un lien.",
+        "de": "Lien ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Ils portent le même nom, mais n'ont aucun ",
+        "after": " de parenté.",
+        "accepted": { "answers": ["lien"] },
+        "referenceTargetIds": ["lien", "rapport", "rapprochement", "parallele"],
+        "explanation": {
+          "en": "Only lien fits the expression lien de parenté.",
+          "fr": "Seul « lien » convient à l'expression lien de parenté.",
+          "de": "Nur „lien“ passt zur Wendung lien de parenté."
+        }
+      },
+      "listeningOptionTargetIds": ["rapport", "rapprochement", "parallele", "lien"]
+    },
+    {
+      "id": "parallele",
+      "term": "parallèle",
+      "translations": { "en": ["parallel"], "de": ["Parallele"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un parallèle",
+      "examForms": ["un parallèle"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/pa.ʁa.lɛl/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "L'auteur dresse un parallèle entre deux époques.",
+        "translation": {
+          "en": "The author draws a parallel between two eras.",
+          "de": "Der Autor zieht eine Parallele zwischen zwei Epochen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Un parallèle sets two situations side by side to highlight their similarities.",
+        "fr": "Un parallèle met deux situations en regard pour en faire ressortir les ressemblances.",
+        "de": "Un parallèle stellt zwei Situationen nebeneinander, um ihre Ähnlichkeiten hervorzuheben."
+      },
+      "genderExplanation": {
+        "en": "Parallèle is masculine, so its indefinite article is un.",
+        "fr": "Parallèle est masculin : on dit un parallèle.",
+        "de": "Parallèle ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Les historiens ont dressé un ",
+        "after": " entre la crise de 1929 et celle de 2008, tout en soulignant leurs différences.",
+        "accepted": { "answers": ["parallèle"] },
+        "referenceTargetIds": ["parallele", "analogie", "causalite", "interdependance"],
+        "explanation": {
+          "en": "Only parallèle fits: it is a masculine noun that can be drawn between two periods.",
+          "fr": "Seul « parallèle » convient : c'est un nom masculin que l'on dresse entre deux périodes.",
+          "de": "Nur „parallèle“ passt: Es ist ein maskulines Nomen, das man zwischen zwei Zeiträumen zieht."
+        }
+      },
+      "listeningOptionTargetIds": ["rapport", "rapprochement", "parallele", "lien"]
+    },
+    {
+      "id": "rapprochement",
+      "term": "rapprochement",
+      "translations": { "en": ["comparison"], "de": ["Gegenüberstellung"] },
+      "wordClass": "noun",
+      "genders": ["masculine"],
+      "number": "singular",
+      "teachingForm": "un rapprochement",
+      "examForms": ["un rapprochement"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ʁa.pʁɔʃ.mɑ̃/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Ce rapprochement entre deux faits divers a intrigué la police.",
+        "translation": {
+          "en": "This link drawn between two news items intrigued the police.",
+          "de": "Diese Verknüpfung zweier Vorfälle hat die Polizei stutzig gemacht."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Un rapprochement also means a reconciliation between people; here it is a mental link between facts.",
+        "fr": "Un rapprochement désigne aussi une réconciliation entre personnes ; ici, c'est une mise en lien de faits.",
+        "de": "Un rapprochement bedeutet auch Annäherung zwischen Personen; hier ist es eine gedankliche Verknüpfung von Fakten."
+      },
+      "explanation": {
+        "en": "Un rapprochement is the act of bringing two facts together to see a connection.",
+        "fr": "Un rapprochement est l'opération qui consiste à rapprocher deux faits pour y voir un lien.",
+        "de": "Un rapprochement ist der Vorgang, zwei Fakten zusammenzubringen, um einen Zusammenhang zu erkennen."
+      },
+      "genderExplanation": {
+        "en": "Rapprochement is masculine, so its indefinite article is un.",
+        "fr": "Rapprochement est masculin : on dit un rapprochement.",
+        "de": "Rapprochement ist maskulin, daher lautet der unbestimmte Artikel un."
+      },
+      "matchingLabel": null,
+      "examPrompt": {
+        "en": "the act of drawing two facts together mentally",
+        "de": "das gedankliche Zusammenbringen zweier Fakten"
+      },
+      "gap": {
+        "before": "En faisant un ",
+        "after": " entre ces deux faits divers, les enquêteurs ont soupçonné un même auteur.",
+        "accepted": { "answers": ["rapprochement"] },
+        "referenceTargetIds": ["rapprochement", "implication", "correlation", "relation"],
+        "explanation": {
+          "en": "Only rapprochement fits: it is the investigators' act of connecting two facts.",
+          "fr": "Seul « rapprochement » convient : c'est l'acte des enquêteurs qui relient deux faits.",
+          "de": "Nur „rapprochement“ passt: Es ist die Handlung der Ermittler, zwei Fakten zu verknüpfen."
+        }
+      },
+      "listeningOptionTargetIds": ["rapport", "rapprochement", "parallele", "lien"]
+    },
+    {
+      "id": "correlation",
+      "term": "corrélation",
+      "translations": { "en": ["correlation"], "de": ["Korrelation"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une corrélation",
+      "examForms": ["une corrélation"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/kɔ.ʁe.la.sjɔ̃/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Les chercheurs observent une forte corrélation entre ces deux variables.",
+        "translation": {
+          "en": "The researchers observe a strong correlation between these two variables.",
+          "de": "Die Forschenden beobachten eine starke Korrelation zwischen diesen beiden Variablen."
+        }
+      },
+      "ambiguityNote": {
+        "en": "A correlation is not a cause: do not confuse it with causalité.",
+        "fr": "Une corrélation n'est pas une cause : à ne pas confondre avec la causalité.",
+        "de": "Eine Korrelation ist keine Ursache: nicht mit causalité verwechseln."
+      },
+      "explanation": {
+        "en": "Une corrélation means two variables evolve together, without saying that one causes the other.",
+        "fr": "Une corrélation signifie que deux variables évoluent ensemble, sans dire que l'une cause l'autre.",
+        "de": "Une corrélation bedeutet, dass zwei Variablen sich gemeinsam verändern, ohne zu sagen, dass die eine die andere verursacht."
+      },
+      "genderExplanation": {
+        "en": "Corrélation is feminine, so its indefinite article is une.",
+        "fr": "Corrélation est féminin : on dit une corrélation.",
+        "de": "Corrélation ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le coefficient de ",
+        "after": " mesure à quel point deux variables évoluent ensemble.",
+        "accepted": { "answers": ["corrélation"] },
+        "referenceTargetIds": ["correlation", "causalite", "analogie", "interdependance"],
+        "explanation": {
+          "en": "Only corrélation forms the statistical expression coefficient de corrélation.",
+          "fr": "Seul « corrélation » forme l'expression statistique coefficient de corrélation.",
+          "de": "Nur „corrélation“ bildet den statistischen Ausdruck coefficient de corrélation."
+        }
+      },
+      "listeningOptionTargetIds": ["relation", "correlation", "implication", "analogie"]
+    },
+    {
+      "id": "causalite",
+      "term": "causalité",
+      "translations": { "en": ["causality"], "de": ["Kausalität"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une causalité",
+      "examForms": ["une causalité"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ko.za.li.te/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Rien ne permet d'établir une causalité entre ces deux faits.",
+        "translation": {
+          "en": "Nothing allows us to establish causality between these two facts.",
+          "de": "Nichts erlaubt es, eine Kausalität zwischen diesen beiden Tatsachen herzustellen."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Une causalité is a relationship in which one phenomenon produces the other.",
+        "fr": "Une causalité est une relation où un phénomène produit l'autre.",
+        "de": "Une causalité ist eine Beziehung, in der ein Phänomen das andere hervorbringt."
+      },
+      "genderExplanation": {
+        "en": "Causalité is feminine, so its indefinite article is une.",
+        "fr": "Causalité est féminin : on dit une causalité.",
+        "de": "Causalité ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Corrélation n'est pas ",
+        "after": " : deux phénomènes peuvent varier ensemble sans que l'un provoque l'autre.",
+        "accepted": { "answers": ["causalité"] },
+        "referenceTargetIds": ["causalite", "correlation", "analogie", "relation"],
+        "explanation": {
+          "en": "Only causalité completes the saying: correlation is not causality.",
+          "fr": "Seul « causalité » complète la formule : corrélation n'est pas causalité.",
+          "de": "Nur „causalité“ vervollständigt die Formel: Korrelation ist nicht Kausalität."
+        }
+      },
+      "listeningOptionTargetIds": ["causalite", "correlation", "analogie", "interdependance"]
+    },
+    {
+      "id": "interdependance",
+      "term": "interdépendance",
+      "translations": {
+        "en": ["interdependence"],
+        "de": ["gegenseitige Abhängigkeit", "Interdependenz"]
+      },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une interdépendance",
+      "examForms": ["une interdépendance"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɛ̃.tɛʁ.de.pɑ̃.dɑ̃s/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "L'interdépendance des économies rend les crises contagieuses.",
+        "translation": {
+          "en": "The interdependence of economies makes crises contagious.",
+          "de": "Die gegenseitige Abhängigkeit der Volkswirtschaften macht Krisen ansteckend."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Une interdépendance is a relationship in which each element depends on the other.",
+        "fr": "Une interdépendance est une relation où chaque élément dépend de l'autre.",
+        "de": "Une interdépendance ist eine Beziehung, in der jedes Element vom anderen abhängt."
+      },
+      "genderExplanation": {
+        "en": "Interdépendance is feminine, so its indefinite article is une.",
+        "fr": "Interdépendance est féminin : on dit une interdépendance.",
+        "de": "Interdépendance ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Les économies européennes se caractérisent par une étroite ",
+        "after": " : le ralentissement de l'une affecte aussitôt toutes les autres.",
+        "accepted": { "answers": ["interdépendance"] },
+        "referenceTargetIds": ["interdependance", "analogie", "causalite", "implication"],
+        "explanation": {
+          "en": "Only interdépendance fits: each economy depends on the others.",
+          "fr": "Seul « interdépendance » convient : chaque économie dépend des autres.",
+          "de": "Nur „interdépendance“ passt: Jede Volkswirtschaft hängt von den anderen ab."
+        }
+      },
+      "listeningOptionTargetIds": ["interdependance", "implication", "relation", "causalite"]
+    },
+    {
+      "id": "analogie",
+      "term": "analogie",
+      "translations": { "en": ["analogy"], "de": ["Analogie"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une analogie",
+      "examForms": ["une analogie"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/a.na.lɔ.ʒi/",
+      "difficulty": "core",
+      "context": {
+        "sentence": "On explique souvent l'électricité par analogie avec l'eau.",
+        "translation": {
+          "en": "Electricity is often explained by analogy with water.",
+          "de": "Elektrizität wird oft in Analogie zum Wasser erklärt."
+        }
+      },
+      "ambiguityNote": null,
+      "explanation": {
+        "en": "Une analogie is a resemblance of structure between two things, used to explain one through the other.",
+        "fr": "Une analogie est une ressemblance de structure entre deux choses, qui sert à expliquer l'une par l'autre.",
+        "de": "Une analogie ist eine strukturelle Ähnlichkeit zwischen zwei Dingen, mit der man das eine durch das andere erklärt."
+      },
+      "genderExplanation": {
+        "en": "Analogie is feminine, so its indefinite article is une.",
+        "fr": "Analogie est féminin : on dit une analogie.",
+        "de": "Analogie ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Le cerveau est souvent décrit, par ",
+        "after": " avec un ordinateur, comme un système qui traite l'information.",
+        "accepted": { "answers": ["analogie"] },
+        "referenceTargetIds": ["analogie", "relation", "causalite", "implication"],
+        "explanation": {
+          "en": "Only analogie forms the expression par analogie avec.",
+          "fr": "Seul « analogie » forme la locution par analogie avec.",
+          "de": "Nur „analogie“ bildet die Wendung par analogie avec."
+        }
+      },
+      "listeningOptionTargetIds": ["relation", "correlation", "implication", "analogie"]
+    },
+    {
+      "id": "implication",
+      "term": "implication",
+      "translations": { "en": ["implication"], "de": ["Implikation", "Folgerung"] },
+      "wordClass": "noun",
+      "genders": ["feminine"],
+      "number": "singular",
+      "teachingForm": "une implication",
+      "examForms": ["une implication"],
+      "articleException": null,
+      "genderVariants": [],
+      "pronunciation": "/ɛ̃.pli.ka.sjɔ̃/",
+      "difficulty": "demanding",
+      "context": {
+        "sentence": "Cette hypothèse a des implications importantes.",
+        "translation": {
+          "en": "This hypothesis has important implications.",
+          "de": "Diese Hypothese hat wichtige Implikationen."
+        }
+      },
+      "ambiguityNote": {
+        "en": "Une implication also means personal involvement in something.",
+        "fr": "Une implication désigne aussi l'engagement personnel dans quelque chose.",
+        "de": "Une implication bedeutet auch persönliches Engagement in einer Sache."
+      },
+      "explanation": {
+        "en": "Une implication is a logical consequence that follows necessarily from a statement.",
+        "fr": "Une implication est une conséquence logique qui découle nécessairement d'une affirmation.",
+        "de": "Une implication ist eine logische Folgerung, die sich notwendig aus einer Aussage ergibt."
+      },
+      "genderExplanation": {
+        "en": "Implication is feminine, so its indefinite article is une.",
+        "fr": "Implication est féminin : on dit une implication.",
+        "de": "Implication ist feminin, daher lautet der unbestimmte Artikel une."
+      },
+      "matchingLabel": null,
+      "examPrompt": null,
+      "gap": {
+        "before": "Si A est vrai, alors B l'est aussi : B est une ",
+        "after": " logique de A.",
+        "accepted": { "answers": ["implication"] },
+        "referenceTargetIds": ["implication", "correlation", "causalite", "interdependance"],
+        "explanation": {
+          "en": "Only implication fits: B follows logically from A.",
+          "fr": "Seul « implication » convient : B découle logiquement de A.",
+          "de": "Nur „implication“ passt: B folgt logisch aus A."
+        }
+      },
+      "listeningOptionTargetIds": ["relation", "correlation", "implication", "analogie"]
+    }
+  ],
+  "scoring": { "practiceWeight": 35, "examWeight": 65, "orthographyCredit": 0.5 }
+}
