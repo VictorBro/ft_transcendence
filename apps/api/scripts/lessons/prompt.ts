@@ -23,7 +23,7 @@ import type {
 } from '@ft/shared';
 
 /** Raise it when the prompt changes: every file records the version it was written with. */
-export const PROMPT_VERSION = 'author-2';
+export const PROMPT_VERSION = 'author-3';
 
 const SHARED = join(__dirname, '../../../../packages/shared');
 const LESSONS = join(SHARED, 'src/lessons');
@@ -126,7 +126,19 @@ ${example}
   A path is the one of the issue: dot-separated, numbers are array indices, the "brief." or "content." prefix may stay. Every path refers to the lesson as the issues describe it, even after a delete in the same reply. "value" replaces what is at the path; "delete" removes it. Prefer edits when few things are wrong; resend the whole lesson when the structure is wrong.
 - The example above is a model of the format and the quality expected, not content to copy: write a new lesson for the outline entry you are given, in its course language and level.
 - Title: at most 80 characters, one line, in the course language. objective[course language]: at most 200 characters, one line.
-- Write natural, correct language. Teach exactly what the outline entry's intent says, at its CEFR level.`;
+- Write natural, correct language. Teach exactly what the outline entry's intent says, at its CEFR level.
+
+# What the checks cannot see
+
+The program checks the shape of the lesson, not whether a learner who answers correctly is marked right. Check every item yourself:
+
+- A gap with no hint (every exam gap) has exactly one correct answer. If another word, verb, tense or structure taught in the lesson also fits, rule it out with context, or give the verb in brackets at the end of "after" ("partir à six heures. (devoir)"); otherwise accept every answer that fits.
+- accepted.answers holds every correct spelling the learner may type: lowercase when the gap is mid-sentence, a final ? or ! with and without the space before it. Matching keeps case and punctuation.
+- In a choice item, exactly one choice is correct in that sentence: a distractor must be wrong, not just less usual. The same for every word-order sentence: list every correct order.
+- Agreement follows the sentence: the gender of the speaker (je suis convaincue for a woman), of the noun (la randonnée était fatigante), the number of the subject.
+- A rule, a pitfall or an explanation states no more than is true: no "only", "never" or "nine verbs" unless it holds, and no item, example or answer of the lesson contradicts it.
+- Test only words and forms this lesson or the lessons before it teach.
+- Every text is in its locale's language, and every translation says what the sentence says. A role name matches the name the speaker gives.`;
 }
 
 interface LessonRequest {
